@@ -1,0 +1,28 @@
+{
+  "car-alarm_lastAlarmsTitle": "Zuletzt ausgelöste Alarme",
+  "page-header_title": "Car Alarm",
+  "page-header_description": "Schützen Sie Ihr Fahrzeug vor Diebstahl. Sobald die Sicherheitssysteme des Fahrzeugs einen Fremdzugriff registrieren, erhalten Sie eine Diebstahlwarnung.",
+  "list-violation": [
+    {
+      "title": "Innenraumalarm ausgelöst",
+      "dateTime": "12.03.2017, 12:30 Uhr"
+    },
+    {
+      "title": "Einbruchalarm ausgelöst",
+      "dateTime": "11.02.2017, 09:20 Uhr"
+    },
+    {
+      "title": "Innenraumalarm ausgelöst",
+      "dateTime": "10.02.2017, 12:40 Uhr"
+    },
+    {
+      "title": "Einbruchalarm ausgelöst",
+      "dateTime": "09.01.2017, 11:30 Uhr"
+    },
+    {
+      "title": "Einbruchalarm ausgelöst",
+      "dateTime": "01.01.2017, 00:00 Uhr"
+    }
+  ],
+  "list-violation_tags": false
+}

@@ -1,0 +1,14 @@
+{
+  "chart-bar": [
+    { "percentage": 100 },
+    { "percentage": 100 },
+    { "percentage": 100 },
+    { "percentage": 100 },
+    { "percentage": 100, "middle": true },
+    { "percentage": 100 },
+    { "percentage": 100 },
+    { "percentage": 80 },
+    { "percentage": 0 },
+    { "percentage": 0 }
+  ]
+}

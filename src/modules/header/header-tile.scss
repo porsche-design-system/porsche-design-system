@@ -1,0 +1,54 @@
+@import 'header-tile.setup.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}header-tile {
+  @include -spacing-inner-b;
+  @include -background-grey-8;
+  @include -text-color-white;
+
+  &__title {
+    @include -text-size-3-thin;
+    @include -overflow-ellipsis;
+
+    max-width: $header-tile-max-width;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: $header-tile-icon-margin-right;
+    font-size: $header-tile-icon-font-size;
+    color: $header-tile-icon-color;
+
+    &--tooltip {
+      @include -spacing-12(left);
+      @include -spacing-zero(right);
+
+      font-size: $header-tile-icon-font-size-tooltip;
+      cursor: pointer;
+    }
+  }
+
+  &__right {
+
+    @include breakpoint('s') {
+      float: right;
+    }
+  }
+
+  &__paragraph {
+    @include -text-size-copy;
+  }
+
+  &__subtitle {
+    @include -text-size-copy;
+  }
+}

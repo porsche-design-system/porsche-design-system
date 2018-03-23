@@ -1,0 +1,6 @@
+<div class="visualization-plug-status {{ styleModifier }}">
+  <div class="visualization-plug-status__icon
+             {{#if visualization-plug-status_statePending }} visualization-plug-status__icon--pending {{/if}}
+             {{#if visualization-plug-status_stateError }} visualization-plug-status__icon--error {{/if}}"></div>
+  <div class="visualization-plug-status__label">{{visualization-plug-status_label}}</div>
+</div>

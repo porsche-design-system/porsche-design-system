@@ -1,0 +1,12 @@
+{
+  "media-center-collage-2-1": false,
+  "media-center-collage-1-2": false,
+  "media-center-common": [
+    {
+      "title": "718 Cayman-01",
+      "image": "../../images/media-center/porsche-718-cayman-01.jpg"
+    }
+  ],
+  "media-center-arrows": false,
+  "media-center_paginationDots": false
+}

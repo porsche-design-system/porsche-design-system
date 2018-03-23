@@ -1,0 +1,8 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$car-detail-image-background: $color-palette-white !default;
+
+$car-detail-image-height-xxs: rem(160px) !default;
+$car-detail-image-height-xs: rem(180px) !default;
+$car-detail-image-height-s: rem(240px) !default;

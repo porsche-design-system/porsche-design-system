@@ -1,0 +1,10 @@
+{
+  "car-selector_barSubtitle": "Sie haben 28 Fahrzeuge",
+  "car-selector_buttonAction": "Anderes Modell wählen",
+  "car-selector_buttonActionIcon": "arrow-right-hair",
+
+  "car-selector_open": true,
+  "car-selector_loggedIn": true,
+
+  "car-selector_search": true
+}

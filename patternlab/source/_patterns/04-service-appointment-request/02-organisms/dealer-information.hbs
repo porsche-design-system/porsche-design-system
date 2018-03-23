@@ -1,0 +1,54 @@
+<div class="dealer-information {{ styleModifier }}">
+  <div class="dealer-information__column column column--12">
+    {{> service-appointment-request-dealer-information-map }}
+  </div>
+  <div class="column column--12">
+    <div class="dealer-information__body">
+      {{> molecules-visualization-icon-text
+          visualization-icon-text_icon="dealer" visualization-icon-text_label="611 Montreal Road, K1K 0T8 Ottawa"
+          styleModifier_icon="-text-color-grey-5" styleModifier_label="-text-color-white"
+      }}
+
+      {{> molecules-visualization-icon-text styleModifier="-spacing-a"
+          visualization-icon-text_icon="corporate-sales" visualization-icon-text_label="Montag - Donnerstag: 07:00 - 20:00 Uhr"
+          styleModifier_icon="-text-color-grey-5" styleModifier_label="-text-color-white"
+      }}
+
+      {{> molecules-visualization-icon-text
+          visualization-icon-text_icon=""
+          visualization-icon-text_label="Freitag: 07:00 - 18:00 Uhr"
+          styleModifier_label="-text-color-white"
+      }}
+
+      {{> molecules-visualization-icon-text
+          visualization-icon-text_icon=""
+          visualization-icon-text_label="Samstag: 07:00 - 16:00 Uhr"
+          styleModifier_label="-text-color-white"
+      }}
+
+      {{> molecules-visualization-icon-text
+          visualization-icon-text_icon=""
+          visualization-icon-text_label="Sonntag: Geschlossen"
+          styleModifier_label="-text-color-white"
+      }}
+
+      {{> molecules-link-icon-text link-icon-text_label="+1 613 749-4275" link-icon-text_icon="phone"  styleModifier="-spacing-a" }}
+
+      {{#if dealer-information_showSelectDealerButton }}
+        {{> molecules-button-inline
+            styleModifier_icon="-text-color-red-1"
+            button-inline_seamless=true button-inline_icon="arrow-right-thin"
+            button-inline_label="Porsche Service Partner wählen"
+            button-inline_stretch=true styleModifier="-spacing-b"
+        }}
+      {{/if}}
+      {{> molecules-button-inline styleModifier_icon="-text-color-red-1"
+          button-inline_seamless=true
+          button-inline_icon="arrow-right-thin"
+          button-inline_label="Routenplaner"
+          button-inline_stretch=true
+          styleModifier="-spacing-b"
+      }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+@import '../../../setup/color-palette.setup.scss';
+@import '../../../mixins/px-rem-converter.scss';
+@import '../../../base/spacing/spacing.setup.scss';
+
+$battery-chart-pole-width: 20% !default;
+$battery-chart-pole-width-xs: 22.5% !default;
+$battery-chart-pole-width-m: 22.5% !default;
+$battery-chart-pole-height: 5px !default;
+$battery-chart-pole-height-xs: 7px !default;
+$battery-chart-pole-height-m: 9px !default;
+$battery-chart-pole-position-top: - $battery-chart-pole-height !default;
+$battery-chart-pole-position-top-xs: - $battery-chart-pole-height-xs !default;
+$battery-chart-pole-position-top-m: - $battery-chart-pole-height-m !default;
+$battery-chart-pole-position-horizontal: 31.666667% !default;
+$battery-chart-pole-position-horizontal-xs: 30% !default;
+$battery-chart-pole-position-horizontal-m: 30.612245% !default;
+$battery-chart-pole-offset-vertical: 0 !default;
+$battery-chart-pole-offset-horizontal-left: -50% !default;
+$battery-chart-pole-offset-horizontal-right: 50% !default;
+
+$battery-chart-border-size: 2px !default;
+$battery-chart-border-size-xs: 3px !default;
+$battery-chart-border-size-m: 4px !default;
+$battery-chart-border-color: $color-palette-white !default;
+$battery-chart-outer-width: rem(88px) !default;
+$battery-chart-outer-width-xs: rem(120px) !default;
+$battery-chart-outer-width-m: rem(150px) !default;
+$battery-chart-outer-min-height: rem(170px) !default;
+$battery-chart-outer-min-height-xs: rem(226px) !default;
+$battery-chart-outer-min-height-m: rem(278px) !default;
+$battery-chart-spacing-top: $battery-chart-pole-height - $battery-chart-border-size !default;
+$battery-chart-spacing-top-xs: $battery-chart-pole-height-xs - $battery-chart-border-size-xs !default;
+$battery-chart-spacing-top-m: $battery-chart-pole-height-m - $battery-chart-border-size-m !default;
+$battery-chart-spacing-left: $spacing-24 !default;
+$battery-chart-spacing-left-xs: rem(34px) !default;
+$battery-chart-spacing-left-m: rem(44px) !default;
+
+$battery-chart-pole-border-color: $battery-chart-border-color !default;
+$battery-chart-pole-border-radius: 2px !default;
+
+$battery-chart-wrapper-position: $battery-chart-border-size !default;
+$battery-chart-wrapper-position-xs: $battery-chart-border-size-xs !default;
+$battery-chart-wrapper-position-m: $battery-chart-border-size-m !default;
+
+$battery-chart-graph-position: 0 !default;
+$battery-chart-graph-fill-color: $color-palette-acid-green !default;
+
+$battery-chart-status-position-left: calc(-#{$battery-chart-spacing-left} - #{$battery-chart-wrapper-position} - #{$battery-chart-border-size}) !default;
+$battery-chart-status-position-left-xs: calc(-#{$battery-chart-spacing-left-xs} - #{$battery-chart-wrapper-position-xs} - #{$battery-chart-border-size-xs}) !default;
+$battery-chart-status-position-left-m: calc(-#{$battery-chart-spacing-left-m} - #{$battery-chart-wrapper-position-m} - #{$battery-chart-border-size-m}) !default;
+$battery-chart-status-position-bottom: 0 !default;
+$battery-chart-status-height: 0 !default;
+$battery-chart-status-min-height: rem(35.02px) !default;
+$battery-chart-status-min-height-xs: rem(43.78px) !default;
+$battery-chart-status-min-height-m: rem(52.53px) !default;
+
+$battery-chart-status-pending-min-height: 0 !default;
+
+$battery-chart-pending-width: rem(10px) !default;
+$battery-chart-pending-width-xs: $spacing-12 !default;
+$battery-chart-pending-width-m: rem(14px) !default;
+$battery-chart-pending-spacing-left: $spacing-6 !default;
+$battery-chart-pending-spacing-left-xs: rem(8px) !default;
+$battery-chart-pending-spacing-left-m: rem(10px) !default;
+$battery-chart-pending-min-height: rem(16.28px) !default;
+$battery-chart-pending-min-height-xs: rem(19.53px) !default;
+$battery-chart-pending-min-height-m: rem(22.8px) !default;
+$battery-chart-pending-offset-left: 0 !default;
+$battery-chart-pending-offset-top: -50% !default;
+$battery-chart-pending-fill-color: $color-palette-acid-green !default;
+
+$battery-chart-loading-width: rem(16px) !default;
+$battery-chart-loading-width-xs: rem(20px) !default;
+$battery-chart-loading-width-m: $spacing-24 !default;
+$battery-chart-loading-fill-color: $color-palette-acid-green !default;
+
+$battery-chart-loading-animation-name: battery-chart-animation-fade-in-out !default;
+$battery-chart-loading-animation-speed: 1.6s !default;
+$battery-chart-loading-animation-delay: .2s !default;

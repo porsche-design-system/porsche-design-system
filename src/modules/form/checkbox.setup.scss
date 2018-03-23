@@ -1,0 +1,81 @@
+@import '../../base/text-size/text-size.setup.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+// checkbox
+$checkbox-min-width: rem(26px) !default;
+$checkbox-min-height: rem(26px) !default;
+$checkbox-max-width: 100% !default;
+
+$checkbox-label-text-color: $color-palette-black !default;
+$checkbox-label-link-text-color: $color-palette-black !default;
+$checkbox-label-link-text-color-hover: $color-palette-red-1 !default;
+$checkbox-icon-color: $color-palette-grey-7 !default;
+$checkbox-icon-border-color: $color-palette-grey-7 !default;
+$checkbox-icon-dimension: rem(26px) !default;
+$checkbox-icon-border-width: rem(2px) !default;
+$checkbox-icon-position: 50% !default;
+$checkbox-icon-safe-area: - rem(9px) !default;
+$checkbox-label-min-height: rem(26px) !default;
+$checkbox-label-padding-top: rem(1px) !default;
+$checkbox-label-padding-left: $checkbox-icon-dimension + rem(12px) !default;
+$checkbox-label-padding-reset: 0 !default;
+$checkbox-label-icon-font-size: rem(24px) !default;
+
+// checkbox hovered
+$checkbox-icon-border-color-unchecked-hovered: $color-palette-grey-5 !default;
+
+// checkbox checked
+$checkbox-icon-inner-background-color-checked: $color-palette-grey-7 !default;
+$checkbox-icon-color-checked: $color-palette-grey-7 !default;
+
+// checkbox checked hovered
+$checkbox-icon-background-color-checked-hovered: $color-palette-grey-7 !default;
+$checkbox-icon-inner-background-color-checked-hovered: $color-palette-grey-7 !default;
+$checkbox-icon-color-checked-hovered: $color-palette-white !default;
+
+// checkbox disabled
+$checkbox-icon-border-color-disabled: $color-palette-grey-5 !default;
+$checkbox-icon-color-checked-disabled: $color-palette-grey-5 !default;
+$checkbox-label-text-color-disabled: $color-palette-grey-5 !default;
+$checkbox-label-link-text-color-disabled: $color-palette-grey-5 !default;
+$checkbox-label-link-text-color-disabled-hover: $color-palette-red-1 !default;
+
+// checkbox error
+$checkbox-icon-border-color-error: $color-palette-status-red !default;
+$checkbox-label-text-color-error: $color-palette-status-red !default;
+$checkbox-label-link-text-color-error: $color-palette-status-red !default;
+$checkbox-label-link-text-color-error-hover: $color-palette-red-1 !default;
+
+// checkbox error checked
+$checkbox-icon-color-checked-error: $color-palette-status-red !default;
+
+// checkbox error checked hovered
+$checkbox-icon-background-color-checked-hovered-error: $color-palette-status-red;
+$checkbox-icon-color-checked-hovered-error: $color-palette-white;
+
+// checkbox inverted
+$checkbox-icon-border-color-inverted: $color-palette-white !default;
+$checkbox-icon-color-inverted: $color-palette-white !default;
+$checkbox-label-text-color-inverted: $color-palette-white !default;
+$checkbox-label-link-text-color-inverted: $color-palette-white !default;
+$checkbox-label-link-text-color-inverted-hover: $color-palette-red-1 !default;
+
+// checkbox inverted hovered
+$checkbox-icon-border-color-unchecked-hovered-inverted: $color-palette-grey-5 !default;
+
+// checkbox inverted checked
+$checkbox-icon-color-checked-inverted: $color-palette-white !default;
+
+// checkbox inverted checked hovered
+$checkbox-icon-border-color-checked-hovered-inverted: $color-palette-white !default;
+$checkbox-icon-background-color-checked-hovered-inverted: $color-palette-white !default;
+$checkbox-icon-color-checked-hovered-inverted: $color-palette-black !default;
+
+// checkbox inverted disabled
+$checkbox-icon-border-color-disabled-inverted: $color-palette-grey-5 !default;
+$checkbox-icon-inner-background-color-disabled-inverted: $color-palette-grey-5 !default;
+$checkbox-icon-color-checked-disabled-inverted: $color-palette-grey-5 !default;
+$checkbox-label-text-color-disabled-inverted: $color-palette-grey-5 !default;
+$checkbox-label-link-text-color-disabled-inverted: $color-palette-grey-5 !default;
+$checkbox-label-link-text-color-disabled-inverted-hover: $color-palette-red-1 !default;

@@ -1,0 +1,9 @@
+{
+  "registration-page-second-step_pageTitle": "Registrierung",
+  "registration-page-second-step_headlineContactData": "Kontaktdaten",
+  "registration-page-second-step_centerValue": "",
+  "registration-page-second-step_cityValue" : "",
+  "registration-page-second-step_emailValue": "",
+  "registration-page-second-step_mobilephoneValue": "",
+  "registration-page-second-step_hasError": false
+}

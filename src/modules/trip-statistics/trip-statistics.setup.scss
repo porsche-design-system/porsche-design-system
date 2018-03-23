@@ -1,0 +1,10 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$trip-statistics-text-size: rem(45px) !default;
+$trip-statistics-text-large-size: $spacing-60 !default;
+$trip-statistics-text-small-size: 50% !default;
+$trip-statistics-icon-size: $spacing-30 !default;
+$trip-statistics-reset: 0 !default;
+$trip-statistics-item-spacing: $spacing-42 !default;
+$trip-statistics-spacing-horizontal: $spacing-12 !default;

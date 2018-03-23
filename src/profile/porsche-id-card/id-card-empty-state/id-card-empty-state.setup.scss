@@ -1,0 +1,6 @@
+@import '../../../setup/color-palette.setup.scss';
+@import '../../../mixins/px-rem-converter.scss';
+
+$id-card-empty-state-icon-width: 120px !default;
+$id-card-empty-state-icon-height: 108px !default;
+$id-card-empty-state-icon-background-src: '../images/profile/id-card/icon_id-card-empty-state.svg' !default;

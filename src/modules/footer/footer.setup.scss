@@ -1,0 +1,8 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$footer-paragraph-border-width: 1px !default;
+$footer-paragraph-border-color: $color-palette-grey-8 !default;
+$footer-paragraph-inner-spacing-top: $spacing-f !default;
+$footer-paragraph-inner-spacing-top-s: $spacing-f-s !default;
+$footer-paragraph-inner-spacing-top-l: $spacing-f-l !default;

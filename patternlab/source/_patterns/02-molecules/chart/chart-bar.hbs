@@ -1,0 +1,7 @@
+<div class="chart-bar {{ styleModifier }}">
+  {{#each chart-bar }}
+    <span class="chart-bar__item {{#if middle }} chart-bar__item--middle {{/if}}">
+      <span class="chart-bar__filler" style="width: {{ percentage }}%;"></span>
+    </span>
+  {{/each}}
+</div>

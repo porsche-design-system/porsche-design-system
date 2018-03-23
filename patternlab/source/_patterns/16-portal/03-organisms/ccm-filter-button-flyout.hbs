@@ -1,0 +1,22 @@
+
+<form class="column column--zero column--12 ccm-filter-button-flyout">
+  <div class="ccm-filter-button-flyout__header">
+    <h3 class="ccm-filter-button-flyout__title">{{ ccm-filter-button-flyout_headerTitle }}</h3>
+  </div>
+  <div class="ccm-filter-button-flyout__body">
+    <div class="row">
+      <div class="column column--12">
+        <div class="row">
+          {{#each ccm-filter-button-flyout_filterOptions}}
+            <div class="column column--12 ccm-filter-button-flyout__body-filter-entry">
+              {{> molecules-checkbox checkbox_label=label }}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ccm-filter-button-flyout__footer">
+    {{> organisms-form-button-group }}
+  </div>
+</form>

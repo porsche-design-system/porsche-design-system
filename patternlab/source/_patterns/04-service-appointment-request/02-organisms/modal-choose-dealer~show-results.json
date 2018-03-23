@@ -1,0 +1,52 @@
+{
+  "input_value": "Stuttgart, Deutschland",
+  "modal-choose-dealer_showResults": true,
+  "modal-footer_buttonColorRed": true,
+  "slider-choose-dealer_item": [
+    {
+      "number": "1",
+      "companyName": "Porsche Zentrum Stuttgart",
+      "companyStreet": "Porscheplatz 9",
+      "companyPostalCode": "70435",
+      "companyCity": "Stuttgart",
+      "companyPhoneNumber": "+49 711 911-26220",
+      "isChecked": false
+    },
+    {
+      "number": "2",
+      "companyName": "Porsche Zentrum Flughafen",
+      "companyStreet": "Karl-Benz-Straße 15",
+      "companyPostalCode": "70794",
+      "companyCity": "Filderstadt-Bernhausen",
+      "companyPhoneNumber": "+49 711 707080-0",
+      "isChecked": true
+    },
+    {
+      "number": "3",
+      "companyName": "Porsche Zentrum Böblingen",
+      "companyStreet": "Konrad-Zuse-Straße 2",
+      "companyPostalCode": "71034",
+      "companyCity": "Böblingen",
+      "companyPhoneNumber": "+49 7031 459110",
+      "isChecked": false
+    },
+    {
+      "number": "4",
+      "companyName": "Porsche Zentrum Reutlingen",
+      "companyStreet": "Ernst-Abbé-Straße 29",
+      "companyPostalCode": "72770",
+      "companyCity": "Reutlingen",
+      "companyPhoneNumber": "+49 7121 3015-0",
+      "isChecked": false
+    },
+    {
+      "number": "5",
+      "companyName": "Porsche Zentrum Göppingen",
+      "companyStreet": "Holzheimer Straße 1",
+      "companyPostalCode": "73037",
+      "companyCity": "Göppingen",
+      "companyPhoneNumber": "+49 7161 97828-90",
+      "isChecked": false
+    }
+  ]
+}

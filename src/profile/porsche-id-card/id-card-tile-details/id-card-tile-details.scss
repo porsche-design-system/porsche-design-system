@@ -1,0 +1,29 @@
+@import '../../../setup/global-variables.scss';
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/background/background.mixin.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../base/text-color/text-color.mixin.scss';
+@import './id-card-tile-details.setup.scss';
+
+.#{$global-class-prefix}id-card-tile-details {
+  @include -background-grey-1;
+
+  height: 100%;
+
+  &__button {
+    @include -spacing-18;
+  }
+
+  &__body {
+    @include -spacing-inner-a;
+  }
+
+  &__property-descriptor {
+    @include -text-color-grey-5;
+    @include -text-size-copy;
+  }
+
+  &__property-value {
+    @include -text-size-copy;
+  }
+}

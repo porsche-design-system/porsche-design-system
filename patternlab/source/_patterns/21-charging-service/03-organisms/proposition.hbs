@@ -1,0 +1,18 @@
+<div class="proposition row">
+  {{#each proposition_elements }}
+  <div class="column column--12 column--s-4 flex-s">
+    <div class="proposition__item">
+      <div class="proposition__promo">
+        <div class="proposition__headline">
+          <h3 class="proposition__headline-title">{{ title }}</h3>
+          <p class="proposition__headline-subtitle">{{ subtitle }}</p>
+        </div>
+        <div class="proposition__image">
+          <img src="{{ imgPath }}" alt="{{ imgTitle }}">
+        </div>
+      </div>
+      <p class="proposition__text">{{ text }}</p>
+    </div>
+  </div>
+  {{/each}}
+</div>

@@ -1,0 +1,12 @@
+{
+  "ccm-filter-button-flyout_headerTitle": "Filtern nach Mitteilungstyp",
+
+  "ccm-filter-button-flyout_filterOptions": [{
+    "label": "Allgemeine Mitteilungen"
+  }, {
+    "label": "Service Reminders"
+  }],
+  
+  "form-button-group_primaryActionCta": "Anwenden",
+  "form-button-group_secondaryActionCta": "Abbrechen"
+}

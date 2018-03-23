@@ -1,0 +1,12 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "checkbox_name": "",
+  "checkbox_value": "",
+  "checkbox_label": "Some checkbox",
+  "checkbox_labelLink": false,
+  "checkbox_checked": false,
+  "checkbox_disabled": false,
+  "checkbox_inverted": false,
+  "checkbox_error": false,
+  "ng-checkbox_error": false
+}

@@ -1,0 +1,42 @@
+@import '../../base/align/align.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import 'scroll-with-buttons.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}choose-dealer {
+
+  &__scroll-container {
+    max-height: $scroll-with-buttons-scroll-container-max-height;
+    overflow-y: auto;
+    padding-right: $scroll-with-buttons-scroll-container-inner-spacing-right;
+  }
+
+  &__scroll-wrap {
+    position: relative;
+  }
+
+  &__scroll-button {
+    @include flex;
+    @include -align-center;
+    position: absolute;
+    left: $scroll-with-buttons-scroll-button-position-left;
+    width: $scroll-with-buttons-button-width;
+    background: $scroll-with-buttons-scroll-button-background-color-scroll-buttons;
+    z-index: $scroll-with-buttons-scroll-button-z-index;
+    height: $scroll-with-buttons-scroll-button-height;
+    box-sizing: border-box;
+    border: $scroll-with-buttons-scroll-button-border-width;
+    white-space: nowrap;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__scroll-button-up {
+    top: $scroll-with-buttons-scroll-button-up-position-vertical;
+  }
+
+  &__scroll-button-down {
+    bottom: $scroll-with-buttons-scroll-button-up-position-vertical;
+  }
+}

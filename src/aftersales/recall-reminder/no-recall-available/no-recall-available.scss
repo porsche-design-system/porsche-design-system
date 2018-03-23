@@ -1,0 +1,37 @@
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/text-color/text-color.mixin.scss';
+@import '../../../base/align/align.mixin.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../base/background/background.mixin.scss';
+@import '../../../mixins/breakpoint.scss';
+@import '../../../setup/global-variables.scss';
+@import 'no-recall-available.setup.scss';
+
+.#{$global-class-prefix}no-recall-available {
+  @include -background-grey-10-1;
+  @include -spacing-inner-a;
+  width: $no-recall-available-width;
+
+  &__icon {
+    @include -align-center;
+    color: $no-recall-available-icon-color;
+    font-size: $no-recall-available-icon-size;
+
+    @include breakpoint('m') {
+      font-size: $no-recall-available-icon-size-m;
+    }
+  }
+
+  &__headline {
+    @include -text-color-white;
+    @include -text-size-5-thin;
+    @include -spacing-c;
+    @include -align-center;
+  }
+
+  &__subline {
+    @include -text-size-copy;
+    @include -text-color-white;
+    @include -align-center;
+  }
+}

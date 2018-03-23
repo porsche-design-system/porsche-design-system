@@ -1,0 +1,76 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "notification_sticky": false,
+  "notifications_default": [
+    {
+      "icon": "check",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": false,
+      "close": true
+    }
+  ],
+  "notifications_defaultWithConfirmButton": [
+    {
+      "icon": "check",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": true,
+      "buttonLabel": "OK",
+      "buttonIcon": "arrow-right-thin",
+      "buttonIndent": true,
+      "error": false
+    }
+  ],
+  "notifications_error": [
+    {
+      "icon": "exclamation-mark",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": true,
+      "buttonLabel": "OK",
+      "buttonIcon": "arrow-right-thin",
+      "buttonIndent": true,
+      "error": true
+    }
+  ],
+  "notifications_offlineBanner": [
+    {
+      "icon": "exclamation-mark",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": false,
+      "error": true
+    }
+  ],
+  "notifications_cookie": [
+    {
+      "icon": false,
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": true,
+      "buttonLabel": "Schließen",
+      "buttonIcon": "close",
+      "buttonIndent": false,
+      "cookie": true
+    }
+  ],
+  "notifications_multiple": [
+    {
+      "icon": "check",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": false,
+      "close": true
+    },
+    {
+      "icon": "check",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": false,
+      "close": true
+    },
+    {
+      "icon": "exclamation-mark",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": true,
+      "buttonLabel": "OK",
+      "buttonIcon": "arrow-right-thin",
+      "buttonIndent": true,
+      "error": true
+    }
+  ]
+}

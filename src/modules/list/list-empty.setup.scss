@@ -1,0 +1,8 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$list-empty-spacing-vertical: $spacing-18 !default;
+$list-empty-background-color: $color-palette-white !default;
+
+$list-empty-label-text-color: $color-palette-black !default;

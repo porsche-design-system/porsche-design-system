@@ -1,0 +1,13 @@
+<div class="portal-linking">
+  <h2 class="portal-linking__header">{{ portal-linking_header }}</h2>
+  <ul class="portal-linking__items">
+    {{#each portal-linking_links }}
+      <li class="portal-linking__container">
+        <a href="#" class="portal-linking__link">
+          <span class="portal-linking__icon icon icon--{{icon}}"></span>
+          <span class="portal-linking__text">{{ title }}</span>
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+</div>

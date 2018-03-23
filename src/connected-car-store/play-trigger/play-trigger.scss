@@ -1,0 +1,22 @@
+@import '../../base/grid/flex.mixin.scss';
+@import '../../modules/icon/icon.mixin.scss';
+
+@import 'play-trigger.setup.scss';
+
+.play-trigger {
+  @include flex;
+  @include flex--center-horizontal;
+  @include flex--center-vertical;
+  @include icon-base;
+  font-size: $play-trigger-font-size;
+  border-radius: $play-trigger-border-radius;
+  width: $play-trigger-dimension;
+  height: $play-trigger-dimension;
+  line-height: $play-trigger-dimension;
+  color: $play-trigger-color;
+  background-color: $play-trigger-background-color;
+
+  &::before {
+    @include icon-play2-before;
+  }
+}

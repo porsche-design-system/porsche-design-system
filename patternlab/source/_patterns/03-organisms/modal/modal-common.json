@@ -1,0 +1,20 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "modal-common_title": "a very long modal common title for showing overflow ellipsis",
+  "modal-common_body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.",
+  "modal-common_addFormButtonGroup": true,
+  "modal-common_gridColumns": [
+    {
+      "breakpoint": "xs",
+      "columnSize": "10"
+    },
+    {
+      "breakpoint": "s",
+      "columnSize": "8"
+    },
+    {
+      "breakpoint": "m",
+      "columnSize": "6"
+    }
+  ]
+}

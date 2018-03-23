@@ -1,0 +1,15 @@
+@import 'central-context-menu.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$central-context-menu-flyout-position-horizontal: 0 !default;
+$central-context-menu-flyout-position-vertical: rem(34px) !default;
+$central-context-menu-flyout-z-index: 1 !default;
+$central-context-menu-flyout-width: 100% !default;
+$central-context-menu-flyout-container-width: 100% !default;
+
+$central-context-menu-flyout-close-position-horizontal: 0 !default;
+$central-context-menu-flyout-close-position-vertical: 0 !default;
+$central-context-menu-flyout-close-color: $color-palette-grey-7 !default;
+$central-context-menu-flyout-close-color-hovered: $color-palette-red-1 !default;

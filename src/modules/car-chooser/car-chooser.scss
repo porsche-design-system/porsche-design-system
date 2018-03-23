@@ -1,0 +1,197 @@
+@import '../../base/background/background.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'car-chooser.setup.scss';
+
+.#{$global-class-prefix}car-chooser {
+  position: relative;
+  z-index: $car-chooser-z-index;
+
+  &__bar {
+    @include flex;
+
+    & > * {  // sass-lint:disable-line no-combinators no-universal-selectors
+      @include flex--grow(0);
+      @include flex--shrink(1);
+      @include flex--basis(auto);
+    }
+  }
+
+  &__icon {
+    @include -background-red-1;
+    @include flex;
+    @include flex--center-horizontal;
+    @include flex--center-vertical;
+    @include -text-color-white;
+
+    font-size: $car-chooser-icon-font-size;
+    min-width: $car-chooser-dimension;
+    cursor: pointer;
+
+    @include breakpoint('xs') {
+      width: $car-chooser-dimension-xs;
+    }
+
+    @include breakpoint('s') {
+      height: $car-chooser-dimension-xs;
+    }
+
+    &--open {
+      &::before {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__header {
+    @include -background-grey-9;
+    @include -overflow-ellipsis;
+    @include flex;
+    @include flex--direction(column);
+
+    width: $car-chooser-title-container-width;
+    padding: $car-chooser-title-container-padding-horizontal $car-chooser-title-container-padding-vertical;
+    cursor: pointer;
+
+    @include breakpoint('s') {
+      @include flex--direction(row);
+      @include flex--center-horizontal;
+
+      justify-content: space-between;
+      padding-left: $car-chooser-title-container-padding-vertical-s;
+      padding-right: $car-chooser-title-container-padding-vertical-s;
+    }
+  }
+
+  &__title {
+    @include -text-size-4-thin;
+    @include -text-color-white;
+    @include -overflow-ellipsis;
+  }
+
+  &__vin {
+    @include -text-size-copy;
+    @include -text-color-white;
+    @include -overflow-ellipsis;
+  }
+
+  &__dropdown {
+    $bem-block: &;
+
+    @include -background-white;
+    @include -spacing-inner-a;
+    left: $car-chooser-dropdown-position-left;
+    right: $car-chooser-dropdown-position-right;
+    display: none;
+    position: absolute;
+
+    &--open {
+      display: block;
+    }
+
+    &-column {
+      cursor: pointer;
+      border-bottom: $car-chooser-dropdown-border-size $car-chooser-dropdown-border-color solid;
+      padding-bottom: $car-chooser-dropdown-column-inner-spacing-horizontal;
+
+      &:not(:first-child) {
+        padding-top: $car-chooser-dropdown-column-inner-spacing-horizontal;
+      }
+
+      &:last-child {
+        padding-bottom: $car-chooser-dropdown-column-inner-spacing-reset;
+        border-bottom: 0;
+      }
+
+      @include breakpoint('s') {
+        @include flex;
+        @include flex--direction(column);
+        @include -align-center;
+        @include flex--align-self(flex-end);
+
+        border-bottom: 0;
+        padding-bottom: $car-chooser-dropdown-column-inner-spacing-reset;
+
+        &:not(:first-child) {
+          padding-top: $car-chooser-dropdown-column-inner-spacing-reset;
+        }
+      }
+
+      &:hover #{$bem-block}-title,
+      &:hover #{$bem-block}-vin,
+      &:hover #{$bem-block}-icon {
+        color: $car-chooser-dropdown-text-color-hovered;
+      }
+    }
+
+    &-icon {
+      display: inline;
+
+      @include breakpoint('s') {
+        display: none;
+      }
+    }
+
+    &-image {
+      display: none;
+      width: $car-chooser-image-dimension;
+      height: $car-chooser-image-dimension;
+
+      @include breakpoint('s') {
+        display: inline;
+      }
+    }
+
+    &-title {
+      @include -text-size-4-thin;
+      display: inline;
+
+      @include breakpoint('s') {
+        @include -spacing-18;
+        @include -align-center;
+        display: block;
+      }
+    }
+
+    &-subtitle {
+      @include -text-size-copy;
+      @include -spacing-18;
+      display: block;
+
+      @include breakpoint('s') {
+        @include -align-center;
+      }
+    }
+
+    &-vin {
+      @include -text-size-copy;
+      padding-left: $car-chooser-vin-padding-left;
+
+      @include breakpoint('xxs', 's') {
+        @include -overflow-ellipsis;
+      }
+
+      @include breakpoint('s') {
+        @include -align-center;
+        padding-left: $car-chooser-vin-padding-left-s;
+      }
+    }
+
+    &-input {
+      @include -spacing-c;
+      width: $car-chooser-dropdown-input-field-width;
+      max-width: $car-chooser-dropdown-input-field-max-width;
+
+      @include breakpoint('s') {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}

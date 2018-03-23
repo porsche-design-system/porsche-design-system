@@ -1,0 +1,36 @@
+@import '../../setup/color-palette.setup.scss';
+
+// ### IMPORTANT ###
+// please don't use this variables as color definitions. They are only for the background mixins. Use instead
+// common color-palette variables
+
+// ci colors
+$background-white: $color-palette-white !default;
+$background-grey-1: $color-palette-grey-1 !default;
+$background-grey-2: $color-palette-grey-2 !default;
+$background-grey-3: $color-palette-grey-3 !default;
+$background-grey-4: $color-palette-grey-4 !default;
+$background-grey-5: $color-palette-grey-5 !default;
+$background-grey-6: $color-palette-grey-6 !default;
+$background-grey-7: $color-palette-grey-7 !default;
+$background-grey-8: $color-palette-grey-8 !default;
+$background-grey-9: $color-palette-grey-9 !default;
+$background-grey-9-1: $color-palette-grey-9-1 !default;
+$background-grey-10: $color-palette-grey-10 !default;
+$background-grey-10-1: $color-palette-grey-10-1 !default;
+$background-black: $color-palette-black !default;
+
+$background-red-1: $color-palette-red-1 !default;
+$background-red-2: $color-palette-red-2 !default;
+
+$background-blue-1: $color-palette-blue-1 !default;
+$background-blue-2: $color-palette-blue-2 !default;
+
+// special colors
+$background-acid-green: $color-palette-acid-green !default;
+
+// status colors
+$background-status-green: $color-palette-status-green !default;
+$background-status-yellow: $color-palette-status-yellow !default;
+$background-status-orange: $color-palette-status-orange !default;
+$background-status-red: $color-palette-status-red !default;

@@ -1,0 +1,16 @@
+{
+  "button-inline_label": "Some button label",
+  "button-inline_multilineLabel": false,
+  "button-inline_active": false,
+  "button-inline_icon": "",
+  "button-inline_stretch": false,
+  "button-inline_disabled": false,
+  "button-inline_center": false,
+  "button-inline_iconLarge": false,
+  "button-inline_seamless": false,
+  "button-inline_ghost": false,
+  "button-inline_ghostDark": false,
+  "button-inline_ghostSmallOnly": false,
+  "button-inline-flex": false,
+  "button-inline_loading": false
+}

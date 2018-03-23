@@ -1,0 +1,14 @@
+{
+  "car-control": {
+    "serviceIntervals": {
+      "inspection": {
+        "label": "Unbekannt",
+        "tags": false
+      },
+      "oilChange": {
+        "label": "Unbekannt",
+        "tags": false
+      }
+    }
+  }
+}

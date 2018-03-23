@@ -1,0 +1,9 @@
+{
+  "checkbox-multiple-selector_name": "some name",
+  "checkbox-multiple-selector_value": "some value",
+  "checkbox-multiple-selector_label": "some label",
+  "checkbox-multiple-selector_subLabel":"some sublabel",
+  "checkbox-multiple-selector_icon": "morning",
+  "checkbox-multiple-selector_checked": false,
+  "checkbox-multiple-selector_disabled": false
+}

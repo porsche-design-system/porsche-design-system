@@ -1,0 +1,41 @@
+@import 'loader.setup.scss';
+@import '../../mixins/animation.scss';
+@import '../../setup/global-variables.scss';
+
+//Rename to loader box to loader, when we get rid of pcc-sass css
+.#{$global-class-prefix}loader-box {
+  position: relative;
+  height: $loader-spinner-dimension-tall;
+  min-height: $loader-spinner-dimension;
+  min-width: $loader-spinner-dimension;
+
+  &::after {
+    @include animation($loader-spinner-animation-name, $loader-spinner-animation-duration);
+    content: '';
+    position: absolute;
+    top: $loader-spinner-position-vertical;
+    left: $loader-spinner-position-horizontal;
+    display: block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-top: $loader-spinner-spacing-vertical;
+    margin-left: $loader-spinner-spacing-horizontal;
+    width: $loader-spinner-dimension;
+    height: $loader-spinner-dimension;
+    background-image: url($loader-box-spinner-resource);
+  }
+
+  &--medium {
+    min-height: $loader-spinner-medium-dimension;
+    min-width: $loader-spinner-medium-dimension;
+    margin-right: $loader-spinner-medium-spacing;
+
+    &::after {
+      margin-top: $loader-spinner-medium-spacing-vertical;
+      margin-left: $loader-spinner-medium-spacing-horizontal;
+      width: $loader-spinner-medium-dimension;
+      height: $loader-spinner-medium-dimension;
+      background-image: url($loader-box-spinner-medium-resource);
+    }
+  }
+}

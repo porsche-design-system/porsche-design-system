@@ -1,0 +1,66 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "googleMaps": {
+    "src": "https://maps.googleapis.com/maps/api/staticmap?center=Porsche, Germany&zoom=13&size=600x300&key=***REMOVED***"
+  },
+  "vehicleImage": {
+    "src": "https://pva-picserv-k.porsche.org/picserv/images-api/v1/ef322f10356124da711655d9f7e354fc/2"
+  },
+  "btnText": "Button",
+  "radioButton": {
+    "name": "some-radio-button",
+    "nameDisabled": "some-disabled-radio-button",
+    "nameDarkBG": "some-radio-button--dark-background",
+    "nameDisabledDarkBG": "some-disabled-radio-button--dark-background",
+    "valueOne": "one",
+    "valueTwo": "two",
+    "label": "An unchecked radio button",
+    "labelChecked": "A checked radio button",
+    "labelDisabled": "A disabled radio button",
+    "labelDisabledChecked": "A disabled and checked radio button"
+  },
+  "select": {
+    "optionOne": "Please choose an option",
+    "optionTwo": "This is an option",
+    "optionThree": "This is another option",
+    "optionFour": "This is a third option"
+  },
+  "eRangeMapSelector": {
+    "range": 42,
+    "rangeUnit": "km",
+    "radio": {
+      "labelERange": "elektrische Reichweite",
+      "labelConventionalRange": "konventionelle Reichweite",
+      "nameERange": "e-range-radio-button",
+      "nameConventionalRange": "conventional-range-radio-button"
+    }
+  },
+  "eRangeMap": {
+    "errorMessageCarDataCouldNotBeLoaded": "Die Kartendaten können momentan nicht abgerufen werden.",
+    "errorMessageCarCouldNotBeLocated": "Das Fahrzeug kann momentan nicht geortert werden."
+  },
+  "batteryChart": {
+    "charging": false,
+    "chargeLevel": "12"
+  },
+  "batteryStatus": {
+    "rangeLabel": "E-Range",
+    "rangeValue": "321",
+    "rangeUnit": "km",
+    "plugStatusTextDisconnected": "Fahrzeug nicht verbunden",
+    "plugStatusTextPending": "Warten auf Abfahrtstimer",
+    "plugStatusTextError": "Fahrzeug lädt nicht"
+  },
+  "visualization": {
+    "remainingChargingTime": {
+      "label": "Verbleibende Ladezeit",
+      "value": "09:24",
+      "unit": "h"
+    },
+    "data": {
+      "label": "Label",
+      "value": "432",
+      "unit": "km"
+    }
+  }
+}

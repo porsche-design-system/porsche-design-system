@@ -1,0 +1,33 @@
+{
+  "climate_runtimeStatus": "Laufzeitstatus",
+  "climate_notificationOfflineBanner": false,
+  "climate_blockingLayer": false,
+  "header_title": "Klima",
+  "header_description": "Steuern Sie die Klimatisierung Ihres Fahrzeug aus der Ferne.",
+  "header-tile_title": "Klimatisierungstimer",
+  "list-view": [
+    {
+      "title": "20:30 Uhr",
+      "tags": [
+        {
+          "tag": "03.05.2017",
+          "icon": "registration",
+          "divider": true
+        }
+      ],
+      "active": true,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    }
+  ],
+  "checkbox_label": false,
+  "climate_climatisationControlButtonLabel": "Klimatisierung sofort starten",
+  "climate_climatisationControlButtonDisabled": false,
+  "climate_statusBarIcon": "climate-next",
+  "climate_statusBarLabelPrimary": "Klimatisierung inaktiv",
+  "climate_statusBarLabelSecondary": "",
+  "climate_statusBarActive": false,
+  "climate_statusBarError": false,
+  "climate_carInteriorVentilationFadeInImageActive": false
+}

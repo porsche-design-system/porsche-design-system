@@ -1,0 +1,64 @@
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'radio-button-choose-dealer.setup.scss';
+
+.#{$global-class-prefix}radio-button-choose-dealer {
+  $bem-block: &;
+
+  @include -spacing-24;
+
+  display: block;
+  cursor: pointer;
+
+  &:last-of-type {
+    @include -spacing-24('bottom');
+  }
+
+  &__number {
+    display: none;
+
+    @include breakpoint('s') {
+      @include -text-size-5-thin;
+      @include -text-color-grey-6;
+
+      float: left;
+      display: block;
+      line-height: $radio-button-choose-dealer-line-height;
+    }
+  }
+
+  &__company-name {
+    @include -text-size-5-thin;
+    @include -spacing-zero('left');
+
+    display: block;
+    float: left;
+    line-height: $radio-button-choose-dealer-line-height;
+
+    @include breakpoint('s') {
+      @include -spacing-12('left');
+    }
+  }
+
+  &__company-address {
+    @include -spacing-zero('left', 'padding');
+
+    float: left;
+    width: $radio-button-choose-dealer-company-address-name-width;
+
+    @include breakpoint('s') {
+      @include -spacing-24('left', 'padding');
+    }
+  }
+
+  &__radio-field:checked:not(:disabled) ~ .radio__label #{$bem-block}__number {
+    @include -text-color-red-1;
+  }
+
+  &__radio-field:checked:not(:disabled) ~ .radio__label #{$bem-block}__company-name {
+    @include -text-color-red-1;
+  }
+}

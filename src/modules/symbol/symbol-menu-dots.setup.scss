@@ -1,0 +1,12 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$symbol-menu-dots-size: $spacing-24 !default;
+$symbol-menu-dots-color: $color-palette-red-1 !default;
+$symbol-menu-dots-color-hover: $color-palette-red-2 !default;
+
+$icon-menu-dots-safe-click-area-size: rem(40px) !default;
+$icon-menu-dots-safe-click-area-size-s: rem(45px) !default;
+$icon-menu-dots-safe-click-area-position: 50% !default;
+$icon-menu-dots-safe-click-area-offset: -50% !default;

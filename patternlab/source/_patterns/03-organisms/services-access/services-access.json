@@ -1,0 +1,14 @@
+{
+  "services-access": {
+    "title": "",
+    "bodyText1": "Die Dienste wurden bei dem von Ihnen gewählten Fahrzeug noch nicht aktiviert. Bitte aktivieren Sie Ihre Dienste, um diese nutzen zu können.",
+    "bodyButtons": {
+      "primaryAction": "Dienste jetzt aktivieren",
+      "secondaryAction": "Später erinnern"
+    },
+    "footerButtons": {
+      "primaryAction": "OK",
+      "secondaryAction": "Abbrechen"
+    }
+  }
+}

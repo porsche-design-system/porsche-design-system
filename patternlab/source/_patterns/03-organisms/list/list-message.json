@@ -1,0 +1,12 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "list-message": [
+    {
+      "title": "Some title",
+      "subtitle": "Some subtitle",
+      "dateTitle": "Placeholder date:",
+      "dateTime": "2017/07/28",
+      "detail": false
+    }
+  ]
+}

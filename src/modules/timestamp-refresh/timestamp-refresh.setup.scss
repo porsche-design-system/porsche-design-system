@@ -1,0 +1,7 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$timestamp-refresh-icon-size: rem(20px) !default;
+
+$timestamp-refresh-animation-name: animation-rotate-360 !default;
+$timestamp-refresh-animation-duration: 3s !default;

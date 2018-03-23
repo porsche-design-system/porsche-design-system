@@ -1,0 +1,78 @@
+{
+  "pre-heater_notificationOfflineBanner": false,
+  "pre-heater_blockingLayer": false,
+  "pre-heater_runtimeStatus": "Laufzeitstatus",
+  "page-header_title": "Fahrzeug beheizen und belüften",
+  "page-header_description": "Steuern Sie die Belüftung und Beheizung Ihres Fahrzeug aus der Ferne.",
+  "header-tile_title": "Timer für Abfahrtszeitpunkt setzen",
+  "list-view": [
+    {
+      "title": "20:30 Uhr",
+      "tags": [
+        {
+          "tag": "03.05.2017",
+          "icon": "registration",
+          "divider": true
+        },
+        {
+          "tag": "Timer 1",
+          "icon": "timer-pcm",
+          "divider": true
+        }
+      ],
+      "active": true,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    },
+    {
+      "title": "07:00 Uhr",
+      "tags": [
+        {
+          "tag": "09.05.2017",
+          "icon": "registration",
+          "divider": true
+        },
+        {
+          "tag": "Timer 2",
+          "icon": "timer-pcm",
+          "divider": true
+        }
+      ],
+      "active": false,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    },
+    {
+      "title": "19:00 Uhr",
+      "tags": [
+        {
+          "tag": "01.06.2017",
+          "icon": "registration",
+          "divider": true
+        },
+        {
+          "tag": "Timer 3",
+          "icon": "timer-pcm",
+          "divider": true
+        }
+      ],
+      "active": false,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    }
+  ],
+  "checkbox_label": "",
+  "pre-heater_ventilationControlButtonGroupVisibility": true,
+  "pre-heater_ventilationControlButtonGroupDisabled": false,
+  "pre-heater_ventilationControlButtonLabel": "Standheizung sofort starten",
+  "pre-heater_ventilationControlButtonDisabled": false,
+  "pre-heater_statusBarIcon": "heater-next",
+  "pre-heater_statusBarLabelPrimary": "Standheizung inaktiv",
+  "pre-heater_statusBarLabelSecondary": "",
+  "pre-heater_statusBarActive": false,
+  "pre-heater_statusBarError": false,
+  "pre-heater_carInteriorVentilationFadeInImageActive": false
+}

@@ -1,0 +1,33 @@
+@import '../../base/background/background.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import 'vehicle-information.setup.scss';
+
+.#{$global-class-prefix}vehicle-information {
+  @include -background-white;
+  @include -spacing-inner-a;
+  position: relative;
+  height: auto;
+  width: $vehicle-information-width;
+
+  &__headline {
+    @include -text-size-3-thin;
+  }
+
+  &__vehicle {
+    margin: auto;
+    max-width: $vehicle-information-vehicle-max-width;
+
+    &--no-max-width {
+      max-width: none;
+    }
+  }
+
+  &__image {
+    width: auto;
+    height: auto;
+    max-width: $vehicle-information-image-dimensions;
+    max-height: $vehicle-information-image-dimensions;
+  }
+}

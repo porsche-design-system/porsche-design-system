@@ -1,0 +1,70 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import 'input-mileage-form.setup.scss';
+
+.#{$global-class-prefix}input-mileage-form {
+  $bem-block: &;
+
+  @include -align-center;
+
+  &__title {
+    @include -text-size-copy;
+  }
+
+  &__input {
+    overflow: hidden;
+    margin-top: $input-mileage-form-position-top;
+  }
+
+  &__field {
+    @include -text-size-3-thin;
+    @include -align-center;
+    padding: $input-mileage-form-field-padding;
+    max-height: none;
+
+    &::placeholder {
+      color: $input-mileage-form-placeholder-color;
+    }
+
+    &:focus + #{$bem-block}__label {
+
+      opacity: $input-mileage-form-label-opacity;
+      top: $input-mileage-form-label-position-no-placeholder-shown;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding: $input-mileage-form-field-padding;
+    }
+
+    &:not(:placeholder-shown) + #{$bem-block}__label {
+      top: $input-mileage-form-label-position-no-placeholder-shown;
+    }
+  }
+
+  &__label {
+    @include -text-size-3-thin;
+    cursor: text;
+    color: $input-mileage-form-label-color;
+  }
+
+  &__mileage-label {
+    @include -text-size-3-thin;
+    display: inline;
+  }
+
+  &__notification {
+    @include -text-size-copy;
+  }
+
+  &__edit-mileage-icon {
+    @include -text-size-copy;
+    margin-left: $input-mileage-form-edit-mileage-icon-spacing-left;
+    cursor: pointer;
+
+    &::before {
+      color: $input-mileage-form-edit-mileage-icon-color;
+    }
+  }
+}

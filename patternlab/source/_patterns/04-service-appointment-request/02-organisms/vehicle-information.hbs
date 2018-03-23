@@ -1,0 +1,14 @@
+<div class="vehicle-information row row--zero {{ styleModifier }}">
+  <div class="column column--zero column--12 column--s-7">
+    <h2 class="vehicle-information__headline">{{ vehicle-information_vehicleName }}</h2>
+  </div>
+
+  <div class="vehicle-information__vehicle {{#if vehicle-information_noMaxWidth }} vehicle-information__vehicle--no-max-width {{/if}}">
+    <img class="vehicle-information__image" src="{{ vehicle-information_vehicleImage }}">
+    {{#if vehicle-information_noMaxWidth }}
+
+    {{else}}
+      {{> service-appointment-request-input-mileage-form input-mileage-form_default=true input-mileage-form_mileageIsInputted=false input-mileage-form_notAllowed=false }}
+    {{/if}}
+  </div>
+</div>

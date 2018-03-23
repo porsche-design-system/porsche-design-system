@@ -1,0 +1,41 @@
+@import 'chart-bar.setup.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}chart-bar {
+  @include flex;
+  padding-top: $chart-bar-divider-height-max - $chart-bar-item-height;
+  border-left: $chart-bar-divider-width solid $chart-bar-divider-color;
+
+  &__item {
+    @include flex--grow(1);
+    position: relative;
+    height: $chart-bar-item-height;
+    margin-right: $chart-bar-divider-width * 2;
+    margin-left: $chart-bar-divider-width;
+    background: $chart-bar-item-color;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: $chart-bar-reset;
+      right: -$chart-bar-divider-width * 2;
+      width: $chart-bar-divider-width;
+      height: $chart-bar-divider-height;
+      background: $chart-bar-divider-color;
+    }
+
+    &--middle::after,
+    &:last-child::after {
+      height: $chart-bar-divider-height-max;
+    }
+  }
+
+  &__filler {
+    position: absolute;
+    top: $chart-bar-reset;
+    left: $chart-bar-reset;
+    bottom: $chart-bar-reset;
+    background: $chart-bar-filler-color;
+  }
+}

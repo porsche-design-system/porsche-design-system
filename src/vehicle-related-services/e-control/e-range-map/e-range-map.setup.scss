@@ -1,0 +1,7 @@
+@import '../../../mixins/px-rem-converter.scss';
+
+$e-range-map-width: 100% !default;
+$e-range-map-min-height: rem(300px) !default;
+$e-range-map-min-height-s: rem(364px) !default;
+
+$e-range-map-fallback-image: 'https://dummyimage.com/1280x600/ccc/999.jpg' !default;

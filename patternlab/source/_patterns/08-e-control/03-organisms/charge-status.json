@@ -1,0 +1,14 @@
+{
+  "charge-status_title": "Batterie- und Ladestatus",
+  "charge-status_chargeLevel": 50,
+  "charge-status_eRangeTitle": "E-Range",
+  "charge-status_eRangeValue": "18",
+  "charge-status_eRangeUnit": "km",
+  "charge-status_chargingTimeTitle": "",
+  "charge-status_chargingTimeValue": "",
+  "charge-status_chargingTimeUnit": "",
+  "charge-status_plugStatusLabel": "Fahrzeug nicht verbunden",
+  "charge-status_isCharging": false,
+  "charge-status_isPending": false,
+  "charge-status_hasError": false
+}

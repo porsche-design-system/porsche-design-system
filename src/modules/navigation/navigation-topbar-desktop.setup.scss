@@ -1,0 +1,63 @@
+@import "../../setup/color-palette.setup.scss";
+@import "../../base/spacing/spacing.setup.scss";
+@import "../../mixins/px-rem-converter.scss";
+
+$navigation-topbar-desktop-background-color: $color-palette-grey-1 !default;
+$navigation-topbar-desktop-height: rem(38px) !default;
+$navigation-topbar-desktop-z-index: 1000 !default;
+$navigation-topbar-desktop-container-height: 100% !default;
+
+$navigation-topbar-desktop-limiter-margin-horizontal: auto !default;
+$navigation-topbar-desktop-limiter-padding-horizontal: 0 !default;
+$navigation-topbar-desktop-limiter-padding-left-m: calc(100vw - 100%) !default;
+$navigation-topbar-desktop-limiter-max-width: rem(1376px) !default;
+$navigation-topbar-desktop-limiter-width: calc(100vw - 7vw * 2) !default;
+$navigation-topbar-desktop-limiter-breakpoint: 992px !default;
+
+$navigation-topbar-desktop-item-background-color-hovered: $color-palette-white !default;
+
+$navigation-topbar-desktop-link-height: 100% !default;
+$navigation-topbar-desktop-link-spacing-horizontal: rem(15px) !default;
+$navigation-topbar-desktop-link-background-color-active: $color-palette-white !default;
+
+$navigation-topbar-desktop-link-icon-font-size: rem(20px) !default;
+$navigation-topbar-desktop-link-icon-spacing-horizontal: rem(5px) !default;
+
+$navigation-topbar-desktop-link-text-color: $color-palette-black !default;
+$navigation-topbar-desktop-link-text-color-active: $color-palette-red-1 !default;
+$navigation-topbar-desktop-link-text-color-highlight: $color-palette-red-1 !default;
+$navigation-topbar-desktop-link-text-color-hovered: $color-palette-red-1 !default;
+
+$navigation-topbar-desktop-active-arrow-icon-color: $color-palette-white !default;
+$navigation-topbar-desktop-active-arrow-size-width: rem(8px) !default;
+$navigation-topbar-desktop-active-arrow-size-height: 0 !default;
+$navigation-topbar-desktop-active-arrow-position-bottom: 0 !default;
+$navigation-topbar-desktop-active-arrow-position: 50% !default;
+$navigation-topbar-desktop-active-arrow-border-width-top: 0 !default;
+$navigation-topbar-desktop-active-arrow-border-width: rem(8px) !default;
+
+/** Flyout **/
+$navigation-topbar-desktop-flyout-background-color: $color-palette-white !default;
+$navigation-topbar-desktop-flyout-position-top: rem(38px) !default;
+$navigation-topbar-desktop-flyout-position-right: $navigation-topbar-desktop-limiter-padding-horizontal !default;
+$navigation-topbar-desktop-flyout-z-index: 1000 !default;
+$navigation-topbar-desktop-flyout-inner-spacing-vertical: 0 !default;
+$navigation-topbar-desktop-flyout-inner-spacing-horizontal: $spacing-24 !default;
+$navigation-topbar-desktop-flyout-menu-min-width: rem(270px) !default;
+$navigation-topbar-desktop-flyout-menu-inner-spacing: 0 !default;
+
+/** Flyout Items **/
+$navigation-topbar-desktop-flyout-item-spacing-vertical: $spacing-18!default;
+$navigation-topbar-desktop-flyout-item-spacing-horizontal: 0 !default;
+$navigation-topbar-desktop-flyout-icon-font-size: $spacing-12 !default;
+$navigation-topbar-desktop-flyout-icon-text-color: $color-palette-red-1 !default;
+$navigation-topbar-desktop-flyout-link-text-color: $color-palette-black !default;
+$navigation-topbar-desktop-flyout-link-text-color-hovered: $color-palette-red-1 !default;
+$navigation-topbar-desktop-flyout-item-border-top-size: 1px !default;
+$navigation-topbar-desktop-flyout-item-border-top-color: $color-palette-grey-3 !default;
+
+/** Overlay **/
+$navigation-topbar-desktop-overlay-position: 0 !default;
+$navigation-topbar-desktop-overlay-dimension: 100% !default;
+$navigation-topbar-desktop-overlay-background-color: rgba($color-palette-black, .8) !default;
+$navigation-topbar-desktop-overlay-z-index: 999 !default;

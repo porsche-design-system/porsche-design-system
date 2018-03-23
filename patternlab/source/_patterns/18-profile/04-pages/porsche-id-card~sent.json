@@ -1,0 +1,13 @@
+{
+  "porsche-id-card": {
+    "empty": false,
+    "title": "Porsche ID Card",
+    "details": {
+      "lockButton": false
+    },
+    "description":
+      "Hier finden Sie Details zu Ihrer Porsche ID Card und den damit verknüpften Diensten.",
+    "cardHint":
+      "Ihre Porsche ID Card wurde bereits für Sie bestellt. Diese wird in den nächsten Tagen bei Ihnen eintreffen."
+  }
+}

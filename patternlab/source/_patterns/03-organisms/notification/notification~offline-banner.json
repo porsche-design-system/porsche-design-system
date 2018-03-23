@@ -1,0 +1,11 @@
+{
+  "notification": [
+    {
+      "icon": "exclamation-mark",
+      "text": "Es liegen Verbindungsprobleme vor. Gründe hierfür können eine fehlende Internetverbindung oder ein Verbindungsabbruch zum Server sein.",
+      "button": false,
+      "error": true
+    }
+  ],
+  "notification_sticky": false
+}

@@ -1,0 +1,55 @@
+<div class="slide-tutorial">
+  <div class="row">
+    <div class="column column--12">
+
+      <div class="slide-tutorial__title">
+        {{ slide-tutorial_title }}
+      </div>
+
+      {{#if slide-tutorial_image }}
+        <div class="slide-tutorial__image">
+          {{> molecules-image-cover
+            image-cover_image=slide-tutorial_image }}
+        </div>
+      {{/if}}
+
+      {{#if slide-tutorial_slideshow }}
+        <div class="slide-tutorial__slideshow">
+          <div class="slide-tutorial__slideshow-wrapper">
+            {{#each slide-tutorial_slideshowImages }}
+              <div class="slide-tutorial__image slide-tutorial__image--slideshow">
+                {{> molecules-image-cover
+                  image-cover_image=image }}
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if slide-tutorial_copy1 }}
+        <div class="slide-tutorial__copy slide-tutorial__copy--first">
+          {{ slide-tutorial_copy1 }}
+          {{#if slide-tutorial_copy1Tooltip }}
+            <i class="slide-tutorial__tooltip icon icon--info"></i>
+          {{/if}}
+        </div>
+
+      {{/if}}
+
+      {{#if slide-tutorial_copy2 }}
+        <div class="slide-tutorial__copy">
+          {{ slide-tutorial_copy2 }}
+        </div>
+      {{/if}}
+
+      {{#if slide-tutorial_showPairingCode}}
+        {{> portal-tutorial-pairing-code }}
+      {{/if}}
+
+      {{#if slide-tutorial_showSPinForm}}
+        {{> portal-tutorial-spin-code }}
+      {{/if}}
+
+    </div>
+  </div>
+</div>

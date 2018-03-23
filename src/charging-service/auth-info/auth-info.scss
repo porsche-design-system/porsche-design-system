@@ -1,0 +1,67 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import '../../mixins/breakpoint.scss';
+
+@import 'auth-info.setup.scss';
+
+.#{$global-class-prefix}auth-info {
+  @include -background-white;
+  @include -spacing-inner-a;
+  @include -text-color-black;
+
+  &__item {
+    @include -spacing-e;
+
+    &:first-child {
+      @include -spacing-zero;
+    }
+  }
+
+  &__headline {
+    @include -text-size-4-thin;
+  }
+
+  &__icon-box {
+    @include -spacing-b;
+    @include -align-center;
+    height: $auth-info-icon-box-height;
+  }
+
+  &__icon {
+    margin-left: $auth-info-icon-margin-horizontal;
+    margin-right: $auth-info-icon-margin-horizontal;
+    height: $auth-info-icon-height;
+    display: block;
+
+    @include breakpoint('xs') {
+      @include -spacing-6(top, padding);
+    }
+  }
+
+  &__wysiwyg {
+    @include -text-size-copy;
+    @include -spacing-12;
+    max-width: $auth-info-wysiwyg-max-width;
+
+    @include breakpoint('xs') {
+      @include -spacing-b;
+    }
+
+    // styling for common html elements in wysiwyg editor
+    p {
+      @include -spacing-6;
+
+      &:first-child {
+        @include -spacing-zero;
+      }
+    }
+  }
+
+  &__apps {
+    @include -spacing-18;
+  }
+}

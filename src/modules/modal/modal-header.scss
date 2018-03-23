@@ -1,0 +1,17 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import 'modal-header.setup.scss';
+
+.#{$global-class-prefix}modal-header {
+  @include flex;
+  @include flex--align-items(center);
+  @include flex--justify-content(space-between);
+
+  &__title {
+    @include -text-size-3-thin;
+    @include -overflow-ellipsis;
+    max-width: $modal-header-title-max-width;
+  }
+}

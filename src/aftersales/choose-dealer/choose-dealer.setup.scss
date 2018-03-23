@@ -1,0 +1,28 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$choose-dealer-map-background-color: $color-palette-black !default;
+$choose-dealer-label-color-radio-icon-checked: $color-palette-red-1 !default;
+
+$choose-dealer-map-height: rem(380px) !default;
+$choose-dealer-map-scroll-height: rem(380px) !default;
+
+$choose-dealer-radio-label-spacing-left: rem(26px) !default;
+
+$choose-dealer-item-spacing-bottom: $spacing-30 !default;
+
+$choose-dealer-company-name-spacing-left: 0 !default;
+$choose-dealer-company-name-spacing-left-s: rem(11px) !default;
+
+$choose-dealer-company-address-spacing-left: 0 !default;
+$choose-dealer-company-address-spacing-left-s: rem(25px) !default;
+
+$choose-dealer-input-field-spacing-top: rem(28px) !default;
+$choose-dealer-input-field-spacing-bottom: rem(10px) !default;
+$choose-dealer-input-field-max-height: $spacing-60 !default;
+$choose-dealer-input-field-spacing-bottom-top-xs: rem(19px) !default;
+$choose-dealer-input-field-spacing-left-right-xs: $spacing-18 !default;
+
+$choose-dealer-input-field-label-top-xs: rem(19px) !default;
+$choose-dealer-input-field-label-font-size-xs: rem(14px) !default;

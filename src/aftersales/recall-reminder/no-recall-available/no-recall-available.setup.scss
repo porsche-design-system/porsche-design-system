@@ -1,0 +1,7 @@
+@import '../../../setup/color-palette.setup.scss';
+@import '../../../mixins/px-rem-converter.scss';
+
+$no-recall-available-width: 100% !default;
+$no-recall-available-icon-color: $color-palette-grey-5 !default;
+$no-recall-available-icon-size: rem(80px) !default;
+$no-recall-available-icon-size-m: rem(100px) !default;

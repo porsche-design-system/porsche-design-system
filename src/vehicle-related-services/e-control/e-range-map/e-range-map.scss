@@ -1,0 +1,21 @@
+@import 'e-range-map.setup.scss';
+@import '../../../mixins/breakpoint.scss';
+@import '../../../setup/global-variables.scss';
+
+.#{$global-class-prefix}e-range-map {
+  position: relative;
+  overflow: hidden;
+  width: $e-range-map-width;
+  min-height: $e-range-map-min-height;
+
+  @include breakpoint('s') {
+    min-height: $e-range-map-min-height-s;
+  }
+
+  &--fallback {
+    background-image: url($e-range-map-fallback-image);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+}

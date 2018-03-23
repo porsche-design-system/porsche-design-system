@@ -1,0 +1,8 @@
+{
+  "pre-heater_ventilationControlButtonGroupDisabled": true,
+  "pre-heater_ventilationControlButtonLabel": "Standheizung stoppen",
+  "pre-heater_statusBarLabelPrimary": "Standheizung aktiv",
+  "pre-heater_statusBarLabelSecondary": "00:12 h",
+  "pre-heater_statusBarActive": true,
+  "pre-heater_carInteriorVentilationFadeInImageActive": true
+}

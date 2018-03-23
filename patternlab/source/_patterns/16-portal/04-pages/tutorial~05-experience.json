@@ -1,0 +1,30 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "slide-tutorial_title": "My Porsche erleben",
+  "slide-tutorial_copy1": "Wir wünschen Ihnen nun viel Freude beim Entdecken und Erleben von My Porsche.",
+  "slide-tutorial_copy2": "Sie benötigen Hilfe? Achten Sie auf die integrierten Informationen oder wenden Sie sich direkt an den Porsche Connect Support oder an Ihren Porsche Partner.",
+  "slide-tutorial_image": false,
+  "slide-tutorial_slideshow": true,
+  "slide-tutorial_slideshowImages": [
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-01.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-02.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-03.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-04.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-05.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-06.jpg"
+    }
+  ],
+  "slide-tutorial_showPairingCode": false,
+  "slide-tutorial_showSPinForm": false
+}

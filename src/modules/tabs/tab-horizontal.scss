@@ -1,0 +1,54 @@
+@import './tab-horizontal.setup.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/font/font.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}tab-horizontal {
+  @include -background-grey-9;
+
+  &__list {
+    @include flex;
+    @include flex--align-items(center);
+    @include flex--direction(row);
+    justify-content: center;
+  }
+
+  &__item {
+    @include -font-primary;
+    @include -text-color-white;
+    display: inline-block;
+    padding: $tab-horizontal-spacing;
+    margin: $tab-horizontal-reset $tab-horizontal-spacing-horizontal;
+    cursor: pointer;
+    font-size: $tab-horizontal-text-size;
+
+    &:hover {
+      @include -text-color-red-1;
+    }
+
+    &--active {
+      @include -background-red-1;
+      position: relative;
+
+      &:hover {
+        @include -text-color-white;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -$tab-horizontal-arrow-position-vertical;
+        left: $tab-horizontal-arrow-position-horizontal;
+        transform: translateX(-$tab-horizontal-arrow-position-horizontal);
+        width: $tab-horizontal-reset;
+        height: $tab-horizontal-reset;
+        border-left: $tab-horizontal-arrow-border-width solid transparent;
+        border-right: $tab-horizontal-arrow-border-width solid transparent;
+
+        border-top: $tab-horizontal-arrow-border-width solid $tab-horizontal-arrow-border-color;
+      }
+    }
+  }
+}

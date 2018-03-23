@@ -1,0 +1,10 @@
+{
+  "app-download_items": [
+    {
+      "app-download_logo": "../../images/charging-service/appstore.svg"
+    },
+    {
+      "app-download_logo": "../../images/charging-service/googleplay.svg"
+    }
+  ]
+}

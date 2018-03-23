@@ -1,0 +1,99 @@
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/position/position.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'navigation-footer.setup.scss';
+
+.#{$global-class-prefix}navigation-footer {
+
+  &__item {
+    @include -position(relative);
+
+    border-top: $navigation-footer-item-border-width solid $navigation-footer-item-border-color;
+
+    &:first-child {
+      border-bottom: none;
+    }
+
+    @include breakpoint('s') {
+      display: block;
+      border-top: none;
+      border-bottom: none;
+    }
+  }
+
+  &__item-header {
+    @include flex;
+    @include flex--justify-content(space-between);
+
+    cursor: pointer;
+    padding: {
+      top: $navigation-footer-item-header-inner-spacing-vertical;
+      bottom: $navigation-footer-item-header-inner-spacing-vertical;
+    };
+
+    @include breakpoint('s') {
+      padding: {
+        top: $navigation-footer-item-header-inner-spacing-reset;
+        bottom: $navigation-footer-item-header-inner-spacing-reset;
+      };
+    }
+
+    @include breakpoint('m') {
+      cursor: text;
+    }
+
+    &--open {
+      padding-bottom: $navigation-footer-item-header-inner-spacing-reset;
+    }
+  }
+
+  &__icon {
+    @include -text-color-white;
+
+    font-size: $navigation-footer-item-icon-font-size;
+    line-height: $navigation-footer-item-icon-line-height;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+
+    @include breakpoint('s') {
+      display: none;
+    }
+  }
+
+  &__category-name {
+    @include -text-size-4-thin;
+    @include -text-color-grey-5;
+  }
+
+  &__submenu {
+    @include -spacing-d;
+    display: none;
+
+    @include breakpoint('s') {
+      display: block;
+    }
+
+    &--open {
+      display: block;
+    }
+  }
+
+  &__submenu-link {
+    @include -text-color-white;
+    @include -text-size-copy;
+
+    line-height: $navigation-footer-link-inner-spacing-horizontal;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      @include -text-color-red-1;
+    }
+  }
+}

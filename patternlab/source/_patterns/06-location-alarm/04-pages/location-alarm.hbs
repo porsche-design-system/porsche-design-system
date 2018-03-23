@@ -1,0 +1,50 @@
+<section class="-wrapper-page">
+
+  {{> organisms-page-header styleModifier="-spacing-d" }}
+
+  <div class="row -spacing-c">
+    <div class="column column--12">
+
+      {{> organisms-car-selector-02-logged-in-selected }}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12">
+
+      {{#if location-alarm_fenceForm }}
+        {{> location-alarm-fence-form }}
+      {{else}}
+        {{> organisms-map-action-overview map-action-overview_loading=location-alarm.map-overview.loading }}
+      {{/if}}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12">
+
+      {{> molecules-button-inline button-inline_label="Neu" button-inline_icon="plus" button-inline_seamless=true }}
+
+      {{> organisms-list-view styleModifier="-spacing-12" }}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12">
+
+      <h3 class="-text-size-4-thin -text-color-white">{{ location-alarm_listViolationTitle }}</h3>
+
+      {{> organisms-list-violation styleModifier="-spacing-a" }}
+
+      {{> molecules-button-inline styleModifier="-spacing-3" button-inline_label="Weitere Elemente laden" button-inline_icon="loader" button-inline_stretch=true styleModifier_icon="-text-color-white" }}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12 -align-right">
+
+      {{> molecules-link-icon-text link-icon-text_icon="arrow-up-thin" link-icon-text_label="Zum Listenanfang" }}
+
+    </div>
+  </div>
+</section>

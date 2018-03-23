@@ -1,0 +1,79 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "configurable-services-fallback": false,
+  "configurable-services-loading": false,
+  "configurable-services_services": [
+    {
+      "disabled": false,
+      "icon": "afternoon",
+      "headline": "Car Control",
+      "infoIcon": "arrow-right-hair",
+      "additionalInfo": false,
+      "additionalInfoText": "Konfigurierbar",
+      "styleModifier": ""
+    },
+    {
+      "disabled": true,
+      "icon": "afternoon",
+      "headline": "Carfinder",
+      "infoIcon": "arrow-right-hair",
+      "additionalInfo": true,
+      "additionalInfoText": "Nicht nutzbar",
+      "styleModifier": "-spacing-12"
+    },
+    {
+      "disabled": false,
+      "icon": "afternoon",
+      "headline": "Car Security Paket",
+      "infoIcon": "arrow-right-hair",
+      "additionalInfo": true,
+      "additionalInfoText": "Verlängerbar",
+      "styleModifier": "-spacing-12 -spacing-zero-s"
+    },
+    {
+      "disabled": false,
+      "icon": "afternoon",
+      "headline": "Hupen & Blinken",
+      "infoIcon": "arrow-right-hair",
+      "additionalInfo": false,
+      "additionalInfoText": "Konfigurierbar",
+      "styleModifier": "-spacing-12"
+    },
+    {
+      "disabled": false,
+      "icon": "afternoon",
+      "headline": "LocationAlarm",
+      "infoIcon": "arrow-right-hair",
+      "additionalInfo": false,
+      "additionalInfoText": "Konfigurierbar",
+      "styleModifier": "-spacing-12 -spacing-zero-s"
+    },
+    {
+      "disabled": false,
+      "icon": "afternoon",
+      "headline": "Speed Alarm",
+      "infoIcon": "basket-next",
+      "additionalInfo": true,
+      "additionalInfoText": "Jetzt informieren",
+      "styleModifier": "-spacing-12"
+    },
+    {
+      "disabled": false,
+      "icon": "afternoon",
+      "headline": "Very long Connect Service name",
+      "infoIcon": "arrow-right-hair",
+      "additionalInfo": false,
+      "additionalInfoText": "Konfigurierbar",
+      "styleModifier": "-spacing-12 -spacing-zero-s"
+    },
+    {
+      "disabled": false,
+      "icon": "afternoon",
+      "headline": "Long buyable Connect Service name",
+      "infoIcon": "basket-next",
+      "additionalInfo": true,
+      "additionalInfoText": "Jetzt informieren",
+      "styleModifier": "-spacing-12"
+    }
+  ]
+}

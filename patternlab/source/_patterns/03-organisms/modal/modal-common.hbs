@@ -1,0 +1,25 @@
+<div class="modal-common {{ styleModifier }}">
+    <div class="modal-common__dialog row row--zero">
+        <div class="modal-common__content column column--zero column--12
+         {{#each modal-common_gridColumns }}
+            column--{{breakpoint}}-{{columnSize}}
+         {{/each}}">
+            <div class="modal-common__header">
+                {{#if modal-common_title }}
+                    <h3 class="modal-common__title">{{ modal-common_title }}</h3>
+                {{/if}}
+                {{> molecules-icon-close icon-close_dark=true }}
+            </div>
+            <div class="modal-common__body">
+                {{ modal-common_body }}
+            </div>
+            <div class="modal-common__footer">
+                {{#if modal-common_addFormButtonGroup }}
+                    {{> organisms-form-button-group }}
+                {{else}}
+                    {{> molecules-button-inline button-inline_label="OK" button-inline_icon="arrow-right-thin" button-inline_stretch=true button-inline_active=true }}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

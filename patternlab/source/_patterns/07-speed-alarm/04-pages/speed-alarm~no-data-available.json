@@ -1,0 +1,19 @@
+{
+  "speed-alarm": {
+    "alarms": {
+      "list": [],
+      "emptyState": {
+        "image": "empty-state-speed-alarm.svg",
+        "label": "Konfigurieren Sie einen Speed Alarm durch Klick auf den",
+        "labelContinued": "Button.",
+        "icon": "plus"
+      }
+    },
+    "violations": {
+      "list": [],
+      "emptyState": {
+        "label": "Es liegen noch keine Einträge vor."
+      }
+    }
+  }
+}

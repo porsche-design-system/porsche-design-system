@@ -1,0 +1,10 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "input-mileage-form_title": "Bitte geben Sie Ihren aktuellen Kilometerstand ein",
+  "input-mileage-form_placeholder": "Kilometerstand (ungefähr)",
+  "input-mileage-form_placeholderUnit": "",
+  "input-mileage-form_notAllowedInformation": "Leider ist bei Ihrem Porsche Service Partner, der dieses Fahrzeug betreut, zurzeit keine Online-Terminanfrage möglich. Bitte kontaktieren Sie diesen direkt per Telefon/E-Mail oder wählen Sie einen anderen Porsche Service Partner.",
+  "input-mileage-form_default": true,
+  "input-mileage-form_mileageIsInputted": false,
+  "input-mileage-form_notAllowed": false
+}

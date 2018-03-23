@@ -1,0 +1,35 @@
+{
+  "car-detail_title": "911 Carrera Cabriolet",
+  "car-detail_subtitle": "Pairing Code 68018715",
+  "car-detail_image": "../../images/macan.jpeg",
+  "car-detail_items": [
+    {
+      "label": "User Status",
+      "icon": "icon--info",
+      "text": "You are the main user"
+    },
+    {
+      "label": "Type/model year",
+      "text": "Macan/2017"
+    },
+    {
+      "label": "Registration/vehicle name",
+      "icon": "icon--info",
+      "text": "-"
+    },
+    {
+      "label": "VIN",
+      "icon": "icon--info",
+      "text": "WP0FAC99Z24002783"
+    },
+    {
+      "label": "Warranty valid until",
+      "icon": "icon--info",
+      "text": "-"
+    },
+    {
+      "label": "Exterior colour",
+      "text": "-"
+    }
+  ]
+}

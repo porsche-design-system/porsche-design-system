@@ -1,0 +1,13 @@
+<ul class="list-car-info {{ styleModifier }}">
+  {{#each list-car-info_items}}
+    <li class="list-car-info__item">
+      <div class="list-car-info__left">
+        <span class="list-car-info__icon icon icon--{{icon}}"></span>
+        <span>{{contentLeft}}</span>
+      </div>
+      <div class="list-car-info__right">
+        <span>{{contentRight}}</span>
+      </div>
+    </li>
+  {{/each}}
+</ul>

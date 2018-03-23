@@ -1,0 +1,40 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/tile/tile.setup.scss';
+@import '../../modules/button/button-inline.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$tile-financial-services-background-color: $color-palette-grey-9 !default;
+
+$tile-financial-services-container-min-height-default: calc(#{$tile-height-default} - #{$spacing-inner-a-vertical * 2}) !default;
+$tile-financial-services-container-min-height-s: calc(#{$tile-height-s} - #{$spacing-inner-a-vertical-s * 2}) !default;
+$tile-financial-services-container-min-height-m: calc(#{$tile-height-m} - #{$spacing-inner-a-vertical-s * 2}) !default;
+$tile-financial-services-container-min-height-l: calc(#{$tile-height-l} - #{$spacing-inner-a-vertical-l * 2}) !default;
+
+$file-financial-services-content-width: 100% !default;
+$file-financial-services-content-top-width: 100% !default;
+$file-financial-services-content-bottom-width: 100% !default;
+$tile-financial-services-content-border-color: $color-palette-grey-8 !default;
+$tile-financial-services-content-border-size: 1px !default;
+$tile-financial-services-content-text-color: $color-palette-white !default;
+$tile-financial-services-content-headline-color: $color-palette-white !default;
+$tile-financial-services-content-textarea-color: $color-palette-grey-5 !default;
+$tile-financial-services-content-icon-height: $spacing-24 !default;
+$tile-financial-services-content-icon-color: $color-palette-grey-5 !default;
+
+$tile-financial-services-icon-height-default: rem(76px) !default;
+$tile-financial-services-icon-height-s: rem(90px) !default;
+$tile-financial-services-icon-height-l: rem(120px) !default;
+
+$file-financial-services-button-width: 100% !default;
+
+$tile-financial-services-headline-color: $color-palette-white !default;
+
+$tile-financial-services-icon-color: $color-palette-grey-5 !default;
+
+$tile-financial-services-arrow-height: 5rem !default;
+$tile-financial-services-arrow-left: -1.5rem !default;
+$tile-financial-services-arrow-right: -1.5rem !default;
+$tile-financial-services-arrow-top: calc(50% - (#{$tile-financial-services-arrow-height / 2} + #{$spacing-24 / 2})) !default;
+$tile-financial-services-arrow-color: $color-palette-white !default;
+$tile-financial-services-arrow-color-disabled: $color-palette-grey-8 !default;
+$tile-financial-services-arrow-color-active: $color-palette-red-1 !default;

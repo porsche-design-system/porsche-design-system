@@ -1,0 +1,16 @@
+{
+  "vin-input_title": "Fahrzeug-Identifikationsnummer (FIN)",
+  "vin-input_label": "FIN *",
+  "vin-input_value": "",
+  "vin-input_icon" : "check",
+  "vin-input_hasValue": false,
+  "vin-input_paragraph": "17 Zeichen",
+  "vin-input_number": "0",
+  "vin-input_primaryCtaIcon": "arrow-right-thin",
+  "vin-input_secondaryCtaIcon": "arrow-left-thin",
+  "vin-input_primaryActionCta": "FIN prüfen",
+  "vin-input_secondaryActionCta": "Zurück",
+
+  "header-tile_additionalInformation": true,
+  "header-tile_paragraph": "Wo finde ich meine FIN?"
+}

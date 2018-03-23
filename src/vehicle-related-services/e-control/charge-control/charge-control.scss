@@ -1,0 +1,45 @@
+@import 'charge-control.setup.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/align/align.mixin.scss';
+@import '../../../base/grid/flex.mixin.scss';
+@import '../../../modules/icon/icon.mixin.scss';
+@import '../../../setup/global-variables.scss';
+
+.#{$global-class-prefix}charge-control {
+  @include flex;
+  @include flex--direction('column');
+  @include -spacing-inner-a;
+  width: $charge-control-width;
+  background-color: $charge-control-background;
+
+  &__title {
+    @include flex;
+    @include flex--direction('column');
+    @include flex--justify-content('center');
+    @include flex--align-items('center');
+    @include flex--grow(1);
+    @include -text-size-3-thin;
+    @include -align-center;
+    color: $charge-control-title-color;
+
+    &::before {
+      @include icon-base;
+      @include icon-timer-pcm-before;
+      display: block;
+      font-size: $charge-control-icon-size;
+      color: $charge-control-icon-color;
+    }
+  }
+
+  &__button {
+    @include -spacing-c;
+    height: auto; // fixes 100% height definition for multiline button
+    background: $charge-control-button-background-color;
+    color: $charge-control-button-text-color;
+
+    &:hover {
+      color: $charge-control-button-text-color-hover;
+    }
+  }
+}

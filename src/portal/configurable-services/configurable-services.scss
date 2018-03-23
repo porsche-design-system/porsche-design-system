@@ -1,0 +1,162 @@
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/display/display.mixin.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../base/position/position.mixin.scss';
+@import './configurable-services.setup.scss';
+
+.#{$global-class-prefix}configurable-services {
+
+  @include flex;
+  @include flex--direction(row);
+  @include -spacing-e;
+  @include -spacing-e(bottom);
+
+  &__main {
+    @include flex;
+    @include flex--direction(column);
+    height: $configurable-services-main-height;
+    border-top: $configurable-services-border-height solid $configurable-services-border-color;
+    border-bottom: $configurable-services-border-height solid $configurable-services-border-color;
+  }
+
+  &__headline {
+    @include -spacing-24;
+    @include -text-size-3-thin;
+    @include  -spacing-12(bottom);
+    color: $configurable-services-headline-color;
+  }
+
+  &__subline {
+    @include -spacing-24(bottom);
+    @include -text-size-copy;
+    color: $configurable-services-subline-color;
+  }
+
+  &__link {
+    @include  -spacing-12(bottom);
+    display: block;
+
+    &:first-child {
+      @include  -spacing-24(top);
+    }
+
+    &:last-child {
+      @include  -spacing-24(bottom);
+    }
+
+    @include breakpoint('s', 'm') {
+      @include -spacing-30(left);
+      display: inline-block;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__slider {
+    @include -position(relative);
+    width: $configurable-services-slider-width;
+
+    @include breakpoint('s') {
+      padding-left: calc(#{$configurable-services-arrow-width} + #{$spacing-18});
+      padding-right: calc(#{$configurable-services-arrow-width} + #{$spacing-18});
+    }
+
+    &-arrow {
+      @include -display-none-xxs;
+      @include -display-none-xs;
+      @include -position(absolute);
+      top: $configurable-services-arrow-icon-top;
+      color: $configurable-services-arrow-icon-color;
+      font-size: $configurable-services-arrow-icon-height;
+      line-height: $configurable-services-arrow-icon-height;
+      cursor: pointer;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $configurable-services-arrow-icon-color-active;
+      }
+
+      &--left {
+        left: -$configurable-services-arrow-width;
+      }
+
+      &--right {
+        right: -$configurable-services-arrow-width;
+      }
+
+      &--disabled,
+      &--disabled:focus { // sass-lint:disable-line force-pseudo-nesting
+        pointer-events: none;
+        color: $configurable-services-arrow-icon-color-disabled;
+        cursor: default;
+      }
+    }
+
+    &-container {
+      overflow: hidden;
+    }
+
+    &-wrapper {
+      @include flex;
+      @include flex--direction(column);
+
+      @include breakpoint('s') {
+        @include flex--row-wrap;
+        @include flex--align-content(baseline);
+        @include -spacing-6(left, margin, '-');
+        @include -spacing-6(right, margin, '-');
+        height: $configurable-services-servicelist-height;
+      }
+    }
+
+    &-slide {
+      @include flex;
+      @include flex--direction(column);
+      width: $configurable-services-slide-width;
+
+      @include breakpoint('s') {
+        @include flex-none;
+        @include -spacing-6(left, padding);
+        @include -spacing-6(right, padding);
+        width: $configurable-services-slide-width-s;
+        height: $configurable-services-slide-height-s;
+      }
+
+      @include breakpoint('l') {
+        width: $configurable-services-slide-width-l;
+        height: $configurable-services-slide-height-l;
+      }
+    }
+
+    &--display-none-m-l {
+      @include -display-none-m;
+      @include -display-none-l;
+    }
+  }
+
+  &__button-load-more {
+    @include -display-none-s;
+    @include -display-none-m;
+    @include -display-none-l;
+    @include -spacing-12;
+  }
+
+  &__fallback-headline {
+    @include -spacing-24(top, padding);
+    @include -spacing-24(bottom, padding);
+    @include -text-size-3-thin;
+    display: inline-block;
+    border-top: $configurable-services-border-height solid $configurable-services-border-color;
+    color: $configurable-services-headline-color;
+    width: $configurable-services-fallback-headline-width;
+
+    @include breakpoint('m') {
+      width: $configurable-services-fallback-headline-size-m;
+    }
+  }
+}

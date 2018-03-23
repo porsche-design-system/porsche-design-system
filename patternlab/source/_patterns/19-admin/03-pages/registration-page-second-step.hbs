@@ -1,0 +1,91 @@
+{{> organisms-header }}
+
+<section class="-wrapper-page">
+  <div class="row flex-s">
+    <div class="column column--12 -spacing-d">
+      {{> organisms-page-header
+          page-header_title=registration-page-second-step_pageTitle
+          page-header_description="" }}
+    </div>
+  </div>
+  <div class="row flex-s">
+    <div class="column column--12 -spacing-c">
+
+      <div class="additional-information -background-white {{ styleModifier }}">
+        <div class="-spacing-inner-a  -spacing-b">
+          {{#if registration-page-second-step_hasError}}
+            <div class="row">
+              <div class="column column--12">
+                {{#each registration-page-second-step_errorMessages }}
+                  {{> organisms-notification-error-inline
+                      notification-error-inline_text=message
+                      styleModifier="notification-error-inline--spacing-bottom" }}
+                {{/each}}
+              </div>
+            </div>
+          {{/if}}
+
+          <div class="row">
+            <div class="column column--12">
+              <h4 class="-text-size-5-thin">{{ registration-page-second-step_headlineContactData }}</h4>
+
+              <div class="row">
+                <div class="column column--12 column--s-6">
+                  {{> molecules-input styleModifier="-spacing-a"
+                      input_label="Porsche Zentrum"
+                      input_value=registration-page-second-step_centerValue
+                      ng-input_error=registration-page-second-step_hasError
+                      input_error=registration-page-second-step_hasError }}
+                </div>
+                <div class="column column--12 column--s-6">
+                   {{> molecules-input styleModifier="-spacing-a"
+                       input_label="Stadt"
+                       input_value=registration-page-second-step_cityValue
+                       ng-input_error=registration-page-second-step_hasError
+                       input_error=registration-page-second-step_hasError }}
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="column column--12 column--s-6">
+                  {{> molecules-input styleModifier="-spacing-a"
+                      input_icon="info"
+                      input_label="E-Mail"
+                      input_value=registration-page-second-step_emailValue
+                      ng-input_error=registration-page-second-step_hasError
+                      input_error=registration-page-second-step_hasError }}
+                </div>
+
+                <div class="column column--12 column--s-6 -display-none-xxs -display-none-xs">
+                  {{> molecules-input styleModifier="-spacing-a"
+                      input_label="E-Mail wiederholen"
+                      input_value=registration-page-second-step_emailValue
+                      ng-input_error=registration-page-second-step_hasError
+                      input_error=registration-page-second-step_hasError }}
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="column column--12 column--s-6">
+                  {{> molecules-input styleModifier="-spacing-a"
+                      input_icon="info"
+                      input_label="Mobilfunknummer"
+                      input_value=registration-page-second-step_mobilephoneValue
+                      ng-input_error=registration-page-second-step_hasError
+                      input_error=registration-page-second-step_hasError }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{> molecules-button-inline button-inline_label="Porsche ID Account erstellen"
+            button-inline_icon="arrow-right-thin"
+            button-inline_stretch=true
+            button-inline_active=true }}
+
+      </div>
+
+    </div>
+  </div>
+</section>

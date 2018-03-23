@@ -1,0 +1,37 @@
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/background/background.mixin.scss';
+@import 'service-confirmation-information.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}service-confirmation-information {
+  @include flex;
+  @include flex--direction(column);
+  @include flex--grow(1);
+
+  &__body {
+    @include flex--grow(1);
+    @include -spacing-inner-a;
+    @include -background-white;
+
+    overflow-x: hidden;
+  }
+
+  &__vehicle-name {
+    @include -text-size-4-thin;
+  }
+
+  &__headline {
+    @include -text-size-5-thin;
+    @include -spacing-a;
+  }
+
+  &__image {
+    margin: auto;
+    height: auto;
+    width: $service-confirmation-information-image-width;
+    max-width: $service-confirmation-information-image-dimensions;
+    max-height: $service-confirmation-information-image-dimensions;
+  }
+}

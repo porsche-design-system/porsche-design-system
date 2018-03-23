@@ -1,0 +1,20 @@
+<div class="battery-chart {{ styleModifier }}">
+  <div class="battery-chart__wrapper">
+    <div class="battery-chart__graph" style="height: {{ battery-chart_chargeLevel }}%;"></div>
+    {{#if battery-chart_isCharging }}
+      <div class="battery-chart__status" style="height: {{ battery-chart_chargeLevel }}%;">
+        <svg class="battery-chart__loading" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 51.3 112.3" width="51.3" height="112.3" preserveAspectRatio="xMinYMin" style="enable-background:new 0 0 51.3 112.3;" xml:space="preserve">
+          <polygon points="0,112.3 51.3,112.3 25.6,80.8 "/>
+          <polyline points="25.6,39.4 0,70.8 51.3,70.8 "/>
+          <polyline points="25.6,0 0,31.5 51.3,31.5 "/>
+        </svg>
+      </div>
+    {{else}}
+      <div class="battery-chart__status battery-chart__status--pending" style="height: {{ battery-chart_chargeLevel }}%;">
+        <svg class="battery-chart__pending" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 31.5 51.3" width="31.5" height="51.3" preserveAspectRatio="xMinYMid" style="enable-background:new 0 0 31.5 51.3;" xml:space="preserve">
+          <polyline points="31.5,25.6 0,0 0,51.3 "/>
+        </svg>
+      </div>
+    {{/if}}
+  </div>
+</div>

@@ -1,0 +1,54 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../icon/icon.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import './tile-headline.setup.scss';
+
+.#{$global-class-prefix}tile-headline {
+  @include -text-size-3-thin;
+
+  display: block;
+  position: relative;
+  padding-left: $tile-headline-padding-left;
+
+  &--small {
+    @include -text-size-4-thin;
+  }
+
+  &::before {
+    @include icon-base;
+    @include icon-arrow-right-hair-before;
+
+    display: block;
+    position: absolute;
+    line-height: inherit;
+    color: $color-palette-red-1;
+
+    /* TODO: Due to issues with the font, we have to fiddle with pixels.
+     *       Update to the font should eventually follow, date unknown.
+     */
+    left: $tile-headline-icon-left;
+  }
+
+  &--static {
+    margin-left: $tile-headline-static-margin-left;
+    padding-left: $tile-headline-static-padding-left;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &--regular-s {
+    @include breakpoint('s') {
+      @include -text-size-3-regular;
+    }
+  }
+
+  &--regular-m {
+    @include breakpoint('m') {
+      @include -text-size-3-regular;
+    }
+  }
+}

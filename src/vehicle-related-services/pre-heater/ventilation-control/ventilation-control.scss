@@ -1,0 +1,81 @@
+@import 'ventilation-control.setup.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/align/align.mixin.scss';
+@import '../../../base/grid/flex.mixin.scss';
+@import '../../../setup/global-variables.scss';
+
+.#{$global-class-prefix}ventilation-control {
+  @include flex;
+  @include flex--direction('column');
+  @include -spacing-inner-a;
+  width: $ventilation-control-width;
+  background-color: $ventilation-control-background;
+
+  &__info {
+    @include flex;
+    @include flex--direction('column');
+    @include flex--justify-content('center');
+    @include flex--align-items('center');
+    @include flex--grow(1);
+  }
+
+  &__icon {
+    font-size: $ventilation-control-icon-size;
+    color: $ventilation-control-icon-color;
+  }
+
+  &__title {
+    @include -align-center;
+    @include -text-size-3-thin;
+    color: $ventilation-control-title-color;
+  }
+
+  &__subtitle {
+    @include -spacing-18;
+    @include -align-center;
+    @include -text-size-copy;
+    color: $ventilation-control-subtitle-color;
+  }
+
+  &__button-group {
+    @include flex;
+    @include flex--wrap('wrap');
+    @include flex--justify-content('center');
+    @include -spacing-6;
+    @include -spacing-3('left', 'margin', '-');
+    @include -spacing-3('right', 'margin', '-');
+
+    &::before { // forces line break within flex context
+      @include breakpoint('xxs', 'l') {
+        @include flex--order(1);
+        content: '';
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  &__button-timer {
+    @include -spacing-6;
+    @include -spacing-3('left');
+    @include -spacing-3('right');
+
+    &--active:disabled, // sass-lint:disable-line force-pseudo-nesting
+    &--active:hover:disabled { // sass-lint:disable-line force-pseudo-nesting
+      background-color: $ventilation-control-button-timer-active-background-color;
+      color: $ventilation-control-button-timer-active-text-color;
+    }
+
+    &:nth-child(n + 4) { // forces line break within flex context
+      @include breakpoint('xxs', 'l') {
+        @include flex--order(2);
+      }
+    }
+  }
+
+  &__button {
+    @include -spacing-c;
+    height: auto; // fixes 100% height definition for multiline button
+  }
+}

@@ -1,0 +1,35 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$car-chooser-z-index: 100 !default;
+$car-chooser-dimension-xs: $spacing-60 !default;
+$car-chooser-dimension: rem(40px) !default;
+$car-chooser-icon-font-size: $spacing-24 !default;
+
+$car-chooser-title-container-width: 100% !default;
+$car-chooser-title-container-padding-horizontal: rem(15px) !default;
+$car-chooser-title-container-padding-vertical: $spacing-18 !default;
+$car-chooser-title-container-padding-vertical-s: rem(25px) !default;
+
+$car-chooser-subtitle-padding-left: rem(21px) !default;
+$car-chooser-subtitle-padding-left-s: 0 !default;
+
+$car-chooser-vin-padding-left: rem(21px) !default;
+$car-chooser-vin-padding-left-s: 0 !default;
+
+$car-chooser-dropdown-column-inner-spacing-horizontal: $spacing-24 !default;
+$car-chooser-dropdown-column-inner-spacing-reset: 0 !default;
+$car-chooser-dropdown-width: 100% !default;
+$car-chooser-dropdown-position-right: 0 !default;
+$car-chooser-dropdown-position-left: 0 !default;
+$car-chooser-dropdown-padding: $spacing-18 !default;
+$car-chooser-dropdown-padding-s: $spacing-24 !default;
+$car-chooser-dropdown-text-color-hovered: $color-palette-red-1 !default;
+$car-chooser-dropdown-border-size: 1px !default;
+$car-chooser-dropdown-border-color: $color-palette-grey-7 !default;
+
+$car-chooser-image-dimension: 100% !default;
+
+$car-chooser-dropdown-input-field-width: 100% !default;
+$car-chooser-dropdown-input-field-max-width: rem(610px) !default;

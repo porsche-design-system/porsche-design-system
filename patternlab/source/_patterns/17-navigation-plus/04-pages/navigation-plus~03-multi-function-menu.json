@@ -1,0 +1,42 @@
+{
+  "navigation-plus": {
+    "poi": {
+      "list": [
+        {
+          "label": "1",
+          "title": "Porsche Zentrum",
+          "text": "Porschestraße 9, 70435 Stuttgart, Deutschland",
+          "workFlag": true,
+          "homeFlag": true,
+          "isMultiFunctionMenuOpen": true,
+          "isListItemExpanded": false
+        },
+        {
+          "label": "2",
+          "title": "Porsche Arena",
+          "text": "Mercedesstraße 69, 70372 Stuttgart, Deutschland",
+          "workFlag": false,
+          "homeFlag": true,
+          "isMultiFunctionMenuOpen": false,
+          "isListItemExpanded": false
+        },
+        {
+          "label": "3",
+          "title": "Porsche Museum",
+          "text": "Porscheplatz 1, 70435 Stuttgart, Deutschland",
+          "workFlag": true,
+          "homeFlag": false,
+          "isMultiFunctionMenuOpen": false,
+          "isListItemExpanded": false
+        }
+      ],
+      "multiFunctionMenu": [
+        { "label": "Bearbeiten" },
+        { "label": "Markieren als \"Zuhause\"" },
+        { "label": "Markieren als \"Arbeit\"" },
+        { "label": "An Navigation senden" },
+        { "label": "Löschen" }
+      ]
+    }
+  }
+}

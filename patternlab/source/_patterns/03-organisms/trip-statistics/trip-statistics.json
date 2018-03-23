@@ -1,0 +1,32 @@
+{
+  "trip-statistics_items": [
+    {
+      "label": "Some heading 1",
+      "icon": "duration-next",
+      "text": "22",
+      "textUnit": "km",
+      "eMobility": false
+    },
+    {
+      "label": "Some heading 2",
+      "icon": "route-next",
+      "text": "32",
+      "textUnit": "km",
+      "eMobility": false
+    },
+    {
+      "label": "Some heading 3",
+      "icon": "speed-next",
+      "text": "12",
+      "textUnit": "km",
+      "eMobility": false
+    },
+    {
+      "label": "Some heading 4",
+      "icon": "fuel-next",
+      "text": "55",
+      "textUnit": "km",
+      "eMobility": false
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "checkbox-dealer-service_name": "",
+  "checkbox-dealer-service_value": "",
+  "checkbox-dealer-service_label": "Eine Checkbox",
+  "checkbox-dealer-service_textareaLabel": "Beschreiben Sie Ihren Servicewunsch",
+  "checkbox-dealer-service_checked": false,
+  "checkbox-dealer-service_disabled": false,
+  "checkbox-dealer-service_showTooltip": false
+}

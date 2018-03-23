@@ -1,0 +1,63 @@
+@import 'roadside-assistance.setup.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}roadside-assistance {
+
+  &__imageholder {
+    position: relative;
+    height: $roadside-assistance-height-default;
+    overflow: hidden;
+
+    @include breakpoint('xs') {
+      height: $roadside-assistance-height-s;
+    }
+
+    @include breakpoint('s') {
+      height: auto;
+    }
+  }
+
+  &__content {
+    @include -spacing-inner-c;
+    background: $roadside-assistance-color-background;
+    color: $roadside-assistance-color-text;
+  }
+
+  &__headline {
+    @include -text-size-3-thin;
+    display: inline-block;
+
+    &--additonal-text {
+      display: none;
+
+      @include breakpoint('m') {
+        display: inline;
+      }
+    }
+  }
+
+  &__subheadline {
+    @include -text-size-copy;
+    display: block;
+  }
+
+  &__contact {
+    @include -text-size-small;
+    @include -spacing-c;
+  }
+
+  &__contact-icon {
+    color: $roadside-assistance-color-icon;
+    margin-left: $roadside-assistance-margin-left-icon-fix;
+    font-size: $roadside-assistance-font-size-icon;
+    vertical-align: middle;
+  }
+
+  &__contact-text {
+    vertical-align: middle;
+  }
+
+}

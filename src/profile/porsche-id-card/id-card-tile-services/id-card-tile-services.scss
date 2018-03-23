@@ -1,0 +1,45 @@
+@import '../../../setup/global-variables.scss';
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/background/background.mixin.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../base/text-color/text-color.mixin.scss';
+@import './id-card-tile-services.setup.scss';
+
+.#{$global-class-prefix}id-card-tile-services {
+  @include -background-grey-1;
+
+  height: 100%;
+
+  // sass-lint:disable-block no-combinators
+  &__service-item ~ &__service-item {
+    @include -spacing-24;
+    @include -spacing-24('top', 'padding');
+
+    border-top: $id-card-tile-services-item-separator-size solid
+      $id-card-tile-services-item-separator-color;
+  }
+
+  &__body {
+    @include -spacing-inner-a;
+  }
+
+  &__icon {
+    @include -spacing-b('right');
+
+    flex: none;
+  }
+
+  &__headline {
+    @include -text-size-3-thin;
+  }
+
+  &__property-descriptor {
+    @include -spacing-6;
+    @include -text-color-grey-5;
+    @include -text-size-copy;
+  }
+
+  &__property-value {
+    @include -text-size-copy;
+  }
+}

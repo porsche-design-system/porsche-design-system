@@ -1,0 +1,7 @@
+{
+  "online-remote-update": {
+    "title": "Online Softwareupdate",
+    "description": "Aktivieren oder deaktivieren Sie automatisch online Softwareupdates für Ihr Fahrzeug.",
+    "active": false
+  }
+}

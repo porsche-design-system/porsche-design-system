@@ -1,0 +1,52 @@
+@import '../../../modules/icon/icon.mixin.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/font/font.mixin.scss';
+@import '../../../base/overflow/overflow.mixin.scss';
+@import 'visualization-charging-time.setup.scss';
+@import '../../../setup/global-variables.scss';
+
+.#{$global-class-prefix}visualization-charging-time {
+  width: $visualization-charging-time-width; // needed so that ellipsis works properly with flex layout in charge-status pattern
+
+  &__title {
+    @include -text-size-3-thin;
+    color: $visualization-charging-time-title-color;
+  }
+
+  &__info {
+    @include -spacing-6;
+    @include -overflow-ellipsis;
+
+    color: $visualization-charging-time-info-color;
+  }
+
+  &__icon {
+    @include icon-base;
+
+    &::before {
+      @include icon-plug-pcm-before;
+      font-size: $visualization-charging-time-icon-size;
+      color: $visualization-charging-time-icon-color;
+    }
+  }
+
+  &__value {
+    @include -spacing-12('left');
+    @include -font-primary;
+
+    font-weight: $visualization-charging-time-value-font-weight;
+    font-size: $visualization-charging-time-value-font-size;
+    line-height: $visualization-charging-time-value-line-height;
+
+  }
+
+  &__unit {
+    @include -spacing-a('left');
+    @include -font-primary;
+
+    font-weight: $visualization-charging-time-unit-font-weight;
+    font-size: $visualization-charging-time-unit-font-size;
+    line-height: $visualization-charging-time-unit-line-height;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "list-violation": [
+    {
+      "title": "Fellbach",
+      "coordinates": "48.826986, 9.265199",
+      "location": "Auslösegrund",
+      "dateTime": "12.03.2017, 12:30 Uhr"
+    },
+    {
+      "title": "Fellbach",
+      "coordinates": "48.826986, 9.265199",
+      "location": "Auslösegrund",
+      "dateTime": "11.03.2017, 11:30 Uhr"
+    },
+    {
+      "title": "Fellbach",
+      "coordinates": "48.826986, 9.265199",
+      "location": "Auslösegrund",
+      "dateTime": "10.03.2017, 09:30 Uhr"
+    }
+  ],
+  "list-violation_tags": true
+}

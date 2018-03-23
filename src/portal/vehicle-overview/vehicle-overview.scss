@@ -1,0 +1,69 @@
+@import 'vehicle-overview.setup.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}vehicle-overview {
+  background: $vehicle-overview-color-background;
+
+  &__scene-wrapper {
+    position: relative;
+  }
+
+  &__image-wrapper {
+    @include flex;
+    @include flex--center-vertical;
+  }
+
+  &__image {
+    @include flex--align-self(center);
+    max-width: $vehicle-overview-image-max-width;
+    max-height: $vehicle-overview-image-max-height-default;
+
+    @include breakpoint('xs') {
+      max-height: $vehicle-overview-image-max-height-xs;
+    }
+
+    @include breakpoint('s') {
+      max-height: $vehicle-overview-image-max-height-s;
+    }
+
+    @include breakpoint('l') {
+      max-height: $vehicle-overview-image-max-height-l;
+    }
+  }
+
+  &__details-container {
+    @include -spacing-inner-a;
+    @include flex;
+    position: relative;
+
+    @include breakpoint('xs') {
+      position: absolute;
+      top: $vehicle-overview-details-absolute-position-top;
+      left: $vehicle-overview-details-absolute-position-left;
+    }
+  }
+
+  &__details-icon {
+    @include -text-size-3-thin;
+    line-height: $vehicle-overview-details-icon-line-height;
+  }
+
+  &__details {
+    margin-left: $vehicle-overview-details-margin-left;
+  }
+
+  &__details-model {
+    @include -text-size-3-thin;
+    line-height: $vehicle-overview-details-icon-line-height;
+    color: $vehicle-overview-color-details-model;
+  }
+
+  &__details-subline {
+    @include -text-size-copy;
+    color: $vehicle-overview-color-details-subline;
+  }
+}

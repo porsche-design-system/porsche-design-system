@@ -1,0 +1,4 @@
+@import 'layer-blocking.setup.scss';
+
+$layer-blocking-lower-index: $layer-blocking-z-index - 1 !default;
+$layer-blocking-higher-index: $layer-blocking-z-index + 1 !default;

@@ -1,0 +1,23 @@
+<div class="service-confirmation-information">
+    {{> organisms-header-tile header-tile_title=service-confirmation-information_pageTitle }}
+
+    <div class="service-confirmation-information__body">
+      <div class="row">
+        <div class="column column--12 column--m-2">
+          <img class="image service-confirmation-information__image" src="{{ service-confirmation-information_vehicleImage }}">
+        </div>
+        <div class="column column--12 column--m-10 -spacing-a">
+          <h3 class="service-confirmation-information__vehicle-name">{{ service-confirmation-information_vehicleName }}</h3>
+          <h4 class="service-confirmation-information__headline">{{ service-confirmation-information_titleDate }}: </h4>
+          <span class="-text-size-copy">{{ service-confirmation-information_sublineDate }}</span>
+
+          <h3 class="service-confirmation-information__headline">{{ service-confirmation-information_titleService }}: </h3>
+
+          {{> organisms-list-bullet list-bullet_square=true }}
+
+          <hr class="-spacing-a">
+          <p class="-text-size-copy">{{ service-confirmation-information_footerNotice }}</p>
+        </div>
+      </div>
+    </div>
+</div>

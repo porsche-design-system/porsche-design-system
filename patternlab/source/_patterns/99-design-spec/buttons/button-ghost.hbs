@@ -1,0 +1,187 @@
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Button Ghost</h2>
+
+  <div class="row -spacing-30">
+    <div class="column column--12 column--xs-3">
+      <h4 class="-text-size-5-thin -text-color-black">Default</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12" }}
+    </div>
+    <div class="column column--12 column--xs-3 -spacing-12 -spacing-zero-xs">
+      <h4 class="-text-size-5-thin -text-color-black">Error</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_error=true }}
+    </div>
+    <div class="column column--12 column--xs-3 -spacing-12 -spacing-zero-xs">
+      <h4 class="-text-size-5-thin -text-color-black">Disabled</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_disabled=true }}
+    </div>
+    <div class="column column--12 column--xs-3 -spacing-12 -spacing-zero-xs">
+      <h4 class="-text-size-5-thin -text-color-black">Loading</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_disabled=true
+                                 button-ghost_loading=true }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Stretch</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_stretch=true }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_stretch=true
+                                 button-ghost_error=true }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Disabled</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_stretch=true
+                                 button-ghost_disabled=true }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Loading</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_stretch=true
+                                 button-ghost_disabled=true
+                                 button-ghost_loading=true }}
+    </div>
+  </div>
+</div>
+
+<div class="-background-grey-9-1 -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-white">Button Ghost — Inverted</h2>
+
+  <div class="row -spacing-30">
+    <div class="column column--12 column--xs-3">
+      <h4 class="-text-size-5-thin -text-color-white">Default</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_inverted=true }}
+    </div>
+    <div class="column column--12 column--xs-3 -spacing-12 -spacing-zero-xs">
+      <h4 class="-text-size-5-thin -text-color-white">Error</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_inverted=true
+                                 button-ghost_error=true }}
+    </div>
+    <div class="column column--12 column--xs-3 -spacing-12 -spacing-zero-xs">
+      <h4 class="-text-size-5-thin -text-color-white">Disabled</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_disabled=true
+                                 button-ghost_inverted=true }}
+    </div>
+    <div class="column column--12 column--xs-3 -spacing-12 -spacing-zero-xs">
+      <h4 class="-text-size-5-thin -text-color-white">Loading</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_disabled=true
+                                 button-ghost_loading=true
+                                 button-ghost_inverted=true }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Stretch</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_stretch=true
+                                 button-ghost_inverted=true }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Error</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_stretch=true
+                                 button-ghost_inverted=true
+                                 button-ghost_error=true }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Disabled</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_stretch=true
+                                 button-ghost_disabled=true
+                                 button-ghost_inverted=true }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Loading</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_stretch=true
+                                 button-ghost_disabled=true
+                                 button-ghost_loading=true
+                                 button-ghost_inverted=true }}
+    </div>
+  </div>
+</div>
+
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Edge Case Tests</h2>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+
+      <h4 class="-text-size-5-thin -text-color-black">Button Group &lt;button&gt;</h4>
+      <div class="flex -spacing-12">
+
+        {{> molecules-button-ghost styleModifier=""
+                                   button-ghost_stretch=true
+                                   button-ghost_label="Some Button Label" }}
+
+        {{> molecules-button-primary styleModifier=""
+                                     button-primary_red=true
+                                     button-primary_stretch=true
+                                     button-primary_buttonGroup=true
+                                     button-primary_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." }}
+
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+
+      <h4 class="-text-size-5-thin -text-color-black">Link Group &lt;a href="#"&gt;</h4>
+      <div class="flex -spacing-12">
+
+        {{> molecules-button-ghost styleModifier=""
+                                   button-ghost_link=true
+                                   button-ghost_stretch=true
+                                   button-ghost_label="Some Button Label" }}
+
+        {{> molecules-button-primary styleModifier=""
+                                     button-primary_link=true
+                                     button-primary_red=true
+                                     button-primary_stretch=true
+                                     button-primary_buttonGroup=true
+                                     button-primary_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." }}
+
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Long Label</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_error=true
+                                 button-ghost_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Disabled</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_disabled=true
+                                 button-ghost_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." }}
+    </div>
+    <div class="column column--3 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Loading</h4>
+      {{> molecules-button-ghost styleModifier="-spacing-12"
+                                 button-ghost_disabled=true
+                                 button-ghost_loading=true
+                                 button-ghost_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+@import '../../mixins/breakpoint.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+
+.#{$global-class-prefix}how-to {
+  @include -background-white;
+
+  &__progress {
+    @include breakpoint('s') {
+      @include -spacing-zero(bottom, padding);
+    }
+  }
+
+  &__description {
+    @include -spacing-c;
+    @include -spacing-zero(top, padding);
+
+    @include breakpoint('xxs', 's') {
+      display: none;
+    }
+  }
+}

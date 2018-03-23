@@ -1,0 +1,13 @@
+{
+  "tile-service-interval_title": "Some Title",
+  "tile-service-interval_icon": "wrench",
+  "tile-service-interval_label": "Some label",
+  "tile-service-interval_tags": [
+    {
+      "label": "Some tag"
+    },
+    {
+      "label": "Some tag"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$roadside-assistance-color-background: $color-palette-grey-9 !default;
+$roadside-assistance-color-text: $color-palette-white !default;
+$roadside-assistance-color-icon: $color-palette-red-1 !default;
+
+$roadside-assistance-height-default: rem(144px) !default;
+$roadside-assistance-height-s: rem(182px) !default;
+$roadside-assistance-margin-left-icon-fix: rem(2px) !default;
+
+$roadside-assistance-font-size-icon: 150% !default;

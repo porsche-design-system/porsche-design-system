@@ -1,0 +1,16 @@
+{
+  "e-control": {
+    "chargeStatus": {
+      "isCharging": true
+    },
+    "chargingTime": {
+      "title": "Verbleibende Ladezeit",
+      "value": "01:29",
+      "unit": "h"
+    },
+    "charge-control": {
+      "label": "Laden mit E-Timer",
+      "disabled": false
+    }
+  }
+}

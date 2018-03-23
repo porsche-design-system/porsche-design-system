@@ -1,0 +1,13 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$central-context-menu-margin: 0 !default;
+
+$central-context-menu-bar-width: 100% !default;
+
+$central-context-menu-item-has-flyout-content: '' !default;
+$central-context-menu-flyout-reset: 0 !default;
+$central-context-menu-flyout-arrow-border-color: $color-palette-grey-1 !default;
+$central-context-menu-flyout-arrow-border-size: rem(8px) !default;
+$central-context-menu-flyout-arrow-position-vertical: rem(34px) - $central-context-menu-flyout-arrow-border-size !default;
+$central-context-menu-flyout-arrow-spacing-horizontal: rem(8px) !default;

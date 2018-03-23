@@ -1,0 +1,13 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$input-mileage-form-label-color: $color-palette-grey-7 !default;
+$input-mileage-form-edit-mileage-icon-color: $color-palette-grey-7 !default;
+
+$input-mileage-form-position-top: rem(5px) !default;
+$input-mileage-form-field-padding: rem(16px) !default;
+$input-mileage-form-label-opacity: 1 !default;
+$input-mileage-form-label-position-no-placeholder-shown: -50% !default;
+$input-mileage-form-placeholder-color: $color-palette-grey-7 !default;
+
+$input-mileage-form-edit-mileage-icon-spacing-left: rem(7px) !default;

@@ -1,0 +1,118 @@
+@import 'choose-dealer.setup.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}choose-dealer {
+
+  $bem-block: &;
+
+  &__result {
+    @include breakpoint('s') {
+      flex-direction: column-reverse;
+    }
+
+    @include breakpoint('m') {
+      flex-direction: inherit;
+    }
+  }
+
+  &__field {
+    max-height: $choose-dealer-input-field-max-height;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: $choose-dealer-input-field-spacing-top;
+      padding-bottom: $choose-dealer-input-field-spacing-bottom;
+    }
+
+    @include breakpoint('xs') {
+      padding: $choose-dealer-input-field-spacing-bottom-top-xs $choose-dealer-input-field-spacing-left-right-xs;
+
+      // state: input has value, input has focus
+      &:not(:placeholder-shown) + #{$bem-block}__label,
+      &__field:focus + #{$bem-block}__label {
+        font-size: $choose-dealer-input-field-label-font-size-xs;
+        top: $choose-dealer-input-field-label-top-xs;
+      }
+    }
+  }
+
+  &__column {
+    &-locate {
+      @include -spacing-a;
+
+      @include breakpoint('s') {
+        @include -spacing-zero;
+      }
+    }
+
+    &-input {
+      @include breakpoint('xs') {
+        @include -spacing-a;
+      }
+
+      @include breakpoint('s') {
+        @include -spacing-zero;
+      }
+    }
+  }
+
+  &__map {
+    background: $choose-dealer-map-background-color;
+    height: $choose-dealer-map-height;
+    display: block;
+    position: relative;
+  }
+
+  &__scroll {
+    overflow-y: scroll;
+    height: $choose-dealer-map-scroll-height;
+  }
+
+  &__radio-label {
+    padding-left: $choose-dealer-radio-label-spacing-left;
+  }
+
+  &__item {
+    display: block;
+    margin-bottom: $choose-dealer-item-spacing-bottom;
+  }
+
+  &__list-number {
+    display: none;
+    float: left;
+
+    @include breakpoint('s') {
+      display: block;
+    }
+  }
+
+  &__company-name {
+    @include -overflow-ellipsis;
+    padding-left: $choose-dealer-company-name-spacing-left;
+
+    @include breakpoint('s') {
+      padding-left: $choose-dealer-company-name-spacing-left-s;
+    }
+  }
+
+  &__company-address {
+    @include -overflow-ellipsis;
+    padding-left: $choose-dealer-company-address-spacing-left;
+
+    @include breakpoint('s') {
+      padding-left: $choose-dealer-company-address-spacing-left-s;
+    }
+  }
+
+  &__radio-field:checked:not(:disabled) ~ .radio__label .choose-dealer__list-number {
+    color: $choose-dealer-label-color-radio-icon-checked;
+  }
+
+  &__radio-field:checked:not(:disabled) ~ .radio__label .choose-dealer__company-name {
+    color: $choose-dealer-label-color-radio-icon-checked;
+  }
+}

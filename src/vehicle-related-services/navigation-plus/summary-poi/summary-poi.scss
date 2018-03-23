@@ -1,0 +1,36 @@
+@import '../../../modules/icon/icon.mixin.scss';
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../setup/global-variables.scss';
+
+.#{$global-class-prefix}summary-poi {
+
+  &__title {
+    @include -text-size-4-thin;
+  }
+
+  &__flag {
+    @include icon-base;
+    @include -spacing-6('left');
+
+    vertical-align: middle;
+    line-height: inherit;
+
+    &--home {
+      &::before {
+        @include icon-home-next-before;
+      }
+    }
+
+    &--work {
+      &::before {
+        @include icon-work-next-before;
+      }
+    }
+  }
+
+  &__text {
+    @include -text-size-copy;
+    @include -spacing-3;
+  }
+}

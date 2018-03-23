@@ -1,0 +1,53 @@
+<div class="event-detail-contact {{ styleModifier }}">
+  <div class="column column--zero column--m-6 column--xs-12 event-detail-contact__img-wrapper">
+    <img class="event-detail-contact__img" src="{{ event-detail-contact_map }}">
+    <img class="event-detail-contact__map-pin" src="{{ event-detail-contact_mapPin }}">
+  </div>
+  <div class="column column--zero column--m-6 column--xs-12 event-detail-contact__wrapper">
+    <div class="event-detail-contact__body -text-color-white -text-size-copy">
+      <div>
+
+        {{> molecules-visualization-icon-text
+            visualization-icon-text_icon=event-detail-contact_iconFirst
+            visualization-icon-text_label=event-detail-contact_address
+            styleModifier_icon="-text-color-grey-5"
+            styleModifier_label="-text-red -spacing-a"
+        }}
+
+
+        {{> molecules-visualization-icon-text
+            visualization-icon-text_icon=event-detail-contact_iconSecond
+            visualization-icon-text_label=event-detail-contact_phone
+            styleModifier_icon="-text-color-red-1"
+            styleModifier_label="-spacing-a"
+        }}
+
+        {{> molecules-visualization-icon-text
+            visualization-icon-text_icon=event-detail-contact_iconThird
+            visualization-icon-text_label=event-detail-contact_mail
+        styleModifier_icon="-text-color-red-1"
+        styleModifier_label="-text-color-white -spacing-a"
+        }}
+
+        {{> molecules-button-inline
+            button-inline_seamless=true
+            button-inline_icon="arrow-right-thin -text-color-red-1"
+            button-inline_label=event-detail-contact_buttonLink
+            button-inline_stretch=true
+            styleModifier="-spacing-b"
+        }}
+
+      </div>
+    </div>
+    {{> molecules-button-inline
+        button-inline_active=true
+        button-inline_label=event-detail-contact_buttonLarge
+        button-inline_icon="arrow-right-thin"
+        button-inline_stretch=true
+        styleModifier="event-detail-contact__button"
+    }}
+
+  </div>
+  <div>
+  </div>
+</div>

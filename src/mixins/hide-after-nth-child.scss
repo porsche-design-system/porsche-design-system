@@ -1,0 +1,11 @@
+@mixin hide-after-nth-child($index, $display: block) {
+  // Restore visibility for every item before nth-child
+  &:nth-child(-n + #{$index + 1}) {
+    display: $display;
+  }
+
+  // Hide items after nth-child
+  &:nth-child(n + #{$index + 1}) {
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "event-list_headline":"Your Porsche Events",
+  "event-list_items": [
+    {
+      "event-tile_date": "Saturday, July 16, 2017",
+      "event-tile_image": "../../images/portal/home/event_typ-a-l6_v01_2x.jpg",
+      "event-tile_headline": "CarWash & Breakfast",
+      "event-tile_subheader": "Porsche Atlanta Perimeter",
+      "event-tile_description": "Experience new models up close and enjoy a delicious breakfast together Experience new models up close and enjoy a delicious breakfast together Experience new models up close and enjoy a delicious breakfast together"
+    },
+    {
+      "event-tile_date": "Saturday, July 17, 2017",
+      "event-tile_image": "../../images/portal/home/event_typ-a-l6_v01_2x.jpg",
+      "event-tile_headline": "CarWash & Breakfast",
+      "event-tile_subheader": "Porsche Atlanta Perimeter",
+      "event-tile_description": "Experience new models up close and enjoy a delicious breakfast together Experience new models up close and enjoy a delicious breakfast together Experience new models up close and enjoy a delicious breakfast together"
+    }
+  ],
+  "next-best-actions": [
+    {
+      "label": "Motorsport & Events (Porsche Website)",
+      "icon": "arrow-right-thin",
+      "iconColor": "-text-color-red-1"
+    }
+  ]
+}

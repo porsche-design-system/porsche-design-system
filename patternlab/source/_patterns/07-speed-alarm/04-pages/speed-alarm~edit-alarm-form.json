@@ -1,0 +1,33 @@
+{
+  "speed-alarm": {
+    "alarms": {
+      "list": [
+        {
+          "title": "150 km/h",
+          "tags": [],
+          "active": true,
+          "checkable": true,
+          "hoverable": true,
+          "expanded": false
+        },
+        {
+          "title": "320 km/h",
+          "tags": [],
+          "active": true,
+          "checkable": true,
+          "hoverable": true,
+          "expanded": true
+        },
+        {
+          "title": "70 km/h",
+          "tags": [],
+          "active": false,
+          "checkable": true,
+          "hoverable": true,
+          "expanded": false
+        }
+      ]
+    },
+    "blockingLayer": true
+  }
+}

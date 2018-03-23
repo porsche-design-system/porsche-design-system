@@ -1,0 +1,12 @@
+<div class="timestamp-refresh">
+  <span class="timestamp-refresh__text
+              {{#if timestamp-refresh_button}} timestamp-refresh__text--divider {{/if}}">{{ timestamp-refresh_text }}</span>
+  {{~#if timestamp-refresh_button ~}}
+    <button type="button"
+             class="timestamp-refresh__button
+                   {{#if timestamp-refresh_loading }} timestamp-refresh__button--loading {{/if}}"
+             {{#if timestamp-refresh_disabled }} disabled {{/if}}>
+      {{ timestamp-refresh_label }}
+    </button>
+  {{/if}}
+</div>

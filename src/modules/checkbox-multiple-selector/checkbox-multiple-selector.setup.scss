@@ -1,0 +1,36 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$checkbox-multiple-selector-min-width: rem(115px) !default;
+$checkbox-multiple-selector-min-height: rem(108px) !default;
+$checkbox-multiple-selector-width: 100% !default;
+$checkbox-multiple-selector-background-color: $color-palette-grey-2 !default;
+
+$checkbox-multiple-selector-container-inner-spacing-top: $spacing-12 !default;
+$checkbox-multiple-selector-container-inner-spacing-horizontal: $spacing-12 !default;
+$checkbox-multiple-selector-container-inner-spacing-bottom: $spacing-18 !default;
+$checkbox-multiple-selector-container-border-color: $color-palette-red-1 !default;
+$checkbox-multiple-selector-container-border-color-hovered: $checkbox-multiple-selector-container-border-color !default;
+$checkbox-multiple-selector-container-border-width: 4px !default;
+$checkbox-multiple-selector-container-background-color-hovered: $color-palette-grey-3 !default;
+$checkbox-multiple-selector-container-text-color-disabled: $color-palette-grey-8 !default;
+$checkbox-multiple-selector-container-width: 100% !default;
+$checkbox-multiple-selector-container-height: $checkbox-multiple-selector-min-height !default;
+
+$checkbox-multiple-selector-label-font-size: rem(14px) !default;
+$checkbox-multiple-selector-label-line-height: rem(20px) !default;
+
+$checkbox-multiple-selector-icon-font-size: $spacing-30 !default;
+$checkbox-multiple-selector-icon-text-color: $color-palette-grey-7 !default;
+
+$checkbox-multiple-selector-indicator-dimension: rem(14px) !default;
+$checkbox-multiple-selector-indicator-position: $spacing-12 !default;
+$checkbox-multiple-selector-indicator-icon-position: 50% !default;
+$checkbox-multiple-selector-indicator-border-color: $color-palette-grey-7 !default;
+$checkbox-multiple-selector-indicator-border-width: 1px !default;
+$checkbox-multiple-selector-indicator-font-size: $spacing-12 !default;
+$checkbox-multiple-selector-indicator-border-color-unchecked-hovered: $color-palette-grey-8 !default;
+$checkbox-multiple-selector-indicator-background-color-checked-hovered: $color-palette-grey-7 !default;
+$checkbox-multiple-selector-indicator-icon-color-checked-hovered: $color-palette-white !default;
+$checkbox-multiple-selector-indicator-border-color-unchecked-disabled: $color-palette-grey-8 !default;

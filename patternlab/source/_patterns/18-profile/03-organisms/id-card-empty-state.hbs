@@ -1,0 +1,12 @@
+<div class="id-card-empty-state {{styleModifier}}">
+   <span class="id-card-empty-state__icon"></span>
+    <div class="id-card-empty-state__body">
+      <p class="id-card-empty-state__copytext">{{id-card-empty-state_copytextLine1}}</p>
+      <p class="id-card-empty-state__copytext">{{id-card-empty-state_copytextLine2}}</p>
+
+      {{> molecules-button-ghost styleModifier="id-card-empty-state__store-link"
+                                button-ghost_link=true
+                                button-ghost_inverted=true
+                                button-ghost_label=id-card-empty-state_storeLinkLabel }}
+    </div>
+</div>

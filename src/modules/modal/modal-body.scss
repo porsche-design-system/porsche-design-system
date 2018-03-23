@@ -1,0 +1,15 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'modal-body.setup.scss';
+
+.#{$global-class-prefix}modal-body {
+  @include -text-size-copy;
+  height: $modal-body-max-height;
+  overflow-y: scroll;
+
+  @include breakpoint('xs') {
+    height: auto;
+    overflow-y: auto;
+  }
+}

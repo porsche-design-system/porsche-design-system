@@ -1,0 +1,11 @@
+{
+  "navigation-steps": [
+    {
+      "count": "1",
+      "icon": "",
+      "label": "Some Label",
+      "active": false,
+      "disabled": false
+    }
+  ]
+}

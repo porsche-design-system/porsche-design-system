@@ -1,0 +1,42 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+
+@import 'price-view.setup.scss';
+
+.#{$global-class-prefix}price-view {
+  @include -text-size-copy;
+  @include -background-white;
+  overflow: hidden;
+
+  &__header {
+    @include flex;
+    @include flex--justify-content(space-between);
+    @include -text-color-grey-5;
+    margin-bottom: $price-view-header-margin-bottom;
+  }
+
+  &__row {
+    @include flex;
+    @include flex--justify-content(space-between);
+    border-bottom: $price-view-row-border-bottom-size solid $price-view-row-border-bottom-color;
+    padding: $price-view-row-padding-vertical 0;
+
+    @include breakpoint('s') {
+      padding: $price-view-row-padding-vertical-s 0;
+    }
+  }
+
+  &__column {
+    @include -align-right;
+
+    &:first-child {
+      @include -align-left;
+      @include -spacing-12(right);
+    }
+  }
+}

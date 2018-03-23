@@ -1,0 +1,108 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import 'proposition.setup.scss';
+
+.#{$global-class-prefix}proposition {
+  @include flex;
+  @include flex--direction(column);
+  @include -spacing-6(bottom, margin, '-');
+
+  @include breakpoint ('s') {
+    @include flex--direction(row);
+    @include -spacing-zero(bottom);
+    @include flex--wrap(wrap);
+    @include -spacing-a(bottom, margin, '-');
+  }
+
+  &__item {
+    @include -spacing-inner-a;
+    @include -spacing-6(bottom);
+    @include -text-size-copy;
+    color: $proposition-item-color;
+    background-color: $proposition-item-background-color;
+    width: $proposition-item-width;
+
+    @include breakpoint('s') {
+      @include flex;
+      @include flex--direction(column);
+      @include flex--justify-content(center);
+      @include flex--align-items(center);
+      @include -spacing-a(bottom);
+    }
+  }
+
+  &__promo {
+    @include flex;
+    @include flex--direction(row-reverse);
+    @include flex--justify-content(flex-end);
+
+    @include breakpoint('s') {
+      @include flex--direction(column);
+      @include flex--justify-content(space-between);
+      height: $proposition-promo-height;
+      width: $proposition-promo-width;
+      max-width: $proposition-promo-max-width;
+    }
+  }
+
+  &__headline {
+    @include -spacing-18(left, margin);
+
+    @include breakpoint('s') {
+      @include -spacing-zero(left);
+      @include -align-center;
+    }
+
+    &-title {
+      @include -text-size-5-regular;
+      color: $proposition-headline-title-color;
+
+      @include breakpoint('s') {
+        @include -text-size-4-regular;
+      }
+    }
+
+    &-subtitle {
+      @include -spacing-6;
+
+      @include breakpoint('s') {
+        @include -text-size-copy;
+      }
+    }
+  }
+
+  &__image {
+    @include -spacing-6;
+
+    @include breakpoint('s') {
+      @include flex--align-self(center);
+      @include -spacing-30(top);
+      @include -spacing-30(bottom);
+    }
+
+    img {
+      display: block;
+      width: $proposition-image-width;
+      min-width: $proposition-image-width;
+
+      @include breakpoint('s') {
+        width: $proposition-image-width-s;
+      }
+    }
+  }
+
+  &__text {
+    display: none;
+
+    @include breakpoint('s') {
+      @include -align-center;
+      display: block;
+      width: $proposition-promo-width;
+      max-width: $proposition-promo-max-width;
+    }
+  }
+}

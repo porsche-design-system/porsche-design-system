@@ -1,0 +1,13 @@
+{
+  "vehicle-overview_carImage": "../../images/portal/home/vehicle-overview.jpg",
+  "vehicle-overview_detailsIcon": "arrow-slider-right-next",
+  "vehicle-overview_model": "Macan S Diesel",
+  "vehicle-overview_subline": "S-VM 2016",
+  "vehicle-overview_primaryActionIcon": "arrow-right-hair",
+  "vehicle-overview_primaryActionCta": "Meine Dienste",
+  "vehicle-overview_primaryActionCtaSubline": "Dienste konfigurieren oder verlängern",
+  "vehicle-overview_secondaryActionIcon": "contact",
+  "vehicle-overview_secondaryActionCta": "Nebennutzer verwalten",
+  "vehicle-overview_secondaryActionCtaSubline": "Ich bin Hauptnutzer",
+  "vehicle-overview_formButtonGroupStyleModifier": "form-button-group__buttons-flex"
+}

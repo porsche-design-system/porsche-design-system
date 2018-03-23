@@ -1,0 +1,27 @@
+<ul class="list-orders {{ styleModifier }}">
+  {{#each list-orders }}
+    <li class="list-orders__item">
+      <div class="list-orders__row row">
+        <div class="list-orders__content list-orders__content--left column column--12 column--s-8">
+          <h5 class="list-orders__order-number">Invoice #{{orderNumber}}</h5>
+          <ol class="list-orders__details">
+            <li class="list-orders__details-info-item"><span>Total:</span> {{priceTotal}}</li>
+            {{#if orderType}}
+              <li class="list-orders__list-separator">|</li>
+              <li class="list-orders__details-info-item"><span>{{orderType}}</span></li>
+            {{/if}}
+          </ol>
+        </div>
+
+        <div class="list-orders__content list-orders__content--right column column--12 column--s-4">
+          <div class="list-orders__content-inner">
+            {{> molecules-visualization-icon-text visualization-icon-text_icon="registration" visualization-icon-text_label=dateTime }}
+          </div>
+        </div>
+        {{#if downloadLink}}
+          <a class="list-orders__menu icon icon--download-02" href="{{downloadLink}}" target="_blank"></a>
+        {{/if}}
+      </div>
+    </li>
+  {{/each}}
+</ul>

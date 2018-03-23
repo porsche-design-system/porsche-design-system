@@ -1,0 +1,12 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$scroll-with-buttons-scroll-button-background-color-scroll-buttons: rgba($color-palette-white, .9) !default;
+$scroll-with-buttons-scroll-container-max-height: rem(400px) !default;
+$scroll-with-buttons-scroll-container-inner-spacing-right: rem(22px) !default;
+$scroll-with-buttons-scroll-button-position-left: 0 !default;
+$scroll-with-buttons-button-width: 100% !default;
+$scroll-with-buttons-scroll-button-z-index: 1 !default;
+$scroll-with-buttons-scroll-button-height: rem(32px) !default;
+$scroll-with-buttons-scroll-button-border-width: 0 !default;
+$scroll-with-buttons-scroll-button-up-position-vertical: 0 !default;

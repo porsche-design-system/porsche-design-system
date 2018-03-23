@@ -1,0 +1,36 @@
+@import '../../mixins/breakpoint.scss';
+
+// sass-lint:disable empty-args
+@mixin -display-none() {
+  display: none;
+}
+
+@mixin -display-none-xxs() {
+  @include breakpoint('xxs', 'xs') {
+    display: none;
+  }
+}
+
+@mixin -display-none-xs() {
+  @include breakpoint('xs', 's') {
+    display: none;
+  }
+}
+
+@mixin -display-none-s() {
+  @include breakpoint('s', 'm') {
+    display: none;
+  }
+}
+
+@mixin -display-none-m() {
+  @include breakpoint('m', 'l') {
+    display: none;
+  }
+}
+
+@mixin -display-none-l() {
+  @include breakpoint('l') {
+    display: none;
+  }
+}

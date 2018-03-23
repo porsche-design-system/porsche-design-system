@@ -1,0 +1,56 @@
+<div class="additional-information {{ styleModifier }}">
+    <header class="row -spacing-d">
+        <div class="column column--12">
+            {{> organisms-page-header page-header_title="3/3 Weitere Angaben" page-header_description="Möchten Sie uns noch etwas mitteilen?" }}
+        </div>
+    </header>
+    <div class="-spacing-inner-a -background-white -spacing-b">
+        <div class="row">
+            <div class="column column--12 column--m-6">
+
+                {{> molecules-textarea textarea_label="z.B. Bitte den Lackschaden hinten rechts beheben" }}
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column--12 -spacing-c">
+                <hr class="divider">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column--12 -spacing-c">
+                <h3 class="-text-size-5-thin">{{ additional-information_contactDataHeadline}}</h3>
+                <p class="-text-size-copy -spacing-a">
+                    {{ additional-information_contactDataName }}<br>
+                    {{ additional-information_contactDataStreet }}<br>
+                    {{ additional-information_contactDataZip }} {{ additional-information_contactDataCity }}<br>
+
+                    {{ additional-information_contactDataLabelPhone }}: {{ additional-information_contactDataPhone }}<br>
+                    {{ additional-information_contactDataLabelMobile }}: {{ additional-information_contactDataMobile }}<br>
+                    {{ additional-information_contactDataLabelEmail }}: {{ additional-information_contactDataEmail }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column--12 -spacing-c">
+                <hr class="divider">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column--12 -spacing-c">
+                <h4 class="-text-size-5-thin">{{ additional-information_contactMethodHeadline }}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column--12 -spacing-a">
+                {{> molecules-checkbox checkbox_label="Telefonisch" }}
+            </div>
+            <div class="column column--12 -spacing-a">
+                {{> molecules-checkbox checkbox_label="Per E-Mail" }}
+            </div>
+            <div class="column column--12 -spacing-a">
+                {{> molecules-checkbox checkbox_label="Per SMS" }}
+            </div>
+        </div>
+    </div>
+</div>
