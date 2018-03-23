@@ -1,0 +1,105 @@
+{
+  "e-control": {
+    "chargeStatus": {
+      "isCharging": false,
+      "isPending": false,
+      "hasError": false
+    },
+    "battery": {
+      "chargeLevel": 50
+    },
+    "chargingTime": {
+      "title": "",
+      "value": "",
+      "unit": ""
+    },
+    "eRange": {
+      "title": "E-Range",
+      "value": "48",
+      "unit": "km"
+    },
+    "plugStatus": {
+      "label": "Fahrzeug nicht verbunden"
+    },
+    "charge-control": {
+      "label": "Der Lademodus kann aktuell nicht gewechselt werden.",
+      "disabled": true
+    }
+  },
+
+  "e-control_notificationOfflineBanner": false,
+  "e-control_blockingLayer": false,
+  "page-header_title": "Lademanagement",
+  "page-header_description": "Erhalten Sie einen Überblick über den aktuellen Ladestatus und die elektrische Reichweite Ihres Fahrzeugs. Steuern Sie über einen Timer, wann Ihr Fahrzeug geladen werden soll.",
+  "header-tile_title": "Abfahrstimer",
+  "list-view": [
+    {
+      "title": "06:30 Uhr",
+      "tags": [
+        {
+          "tag": "Mo., Mi,. Fr.",
+          "icon": "replay",
+          "divider": true
+        },
+        {
+          "tag": "Bevorzugte Ladezeit: 23:00 bis 06:00 Uhr",
+          "icon": "check",
+          "divider": true
+        },
+        {
+          "tag": "Klimatisierung",
+          "icon": "check",
+          "divider": true
+        }
+      ],
+      "active": true,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    },
+    {
+      "title": "07:30 Uhr",
+      "tags": [
+        {
+          "tag": "07.04.2017",
+          "icon": "registration",
+          "divider": true
+        }
+      ],
+      "active": false,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    },
+    {
+      "title": "08:30 Uhr",
+      "tags": [
+        {
+          "tag": "07.04.2017",
+          "icon": "registration",
+          "divider": true
+        }
+      ],
+      "active": false,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    }
+  ],
+  "checkbox_label": "",
+  "list-view_eMobility": true,
+  "eRangeMapSelector": {
+    "range": "432",
+    "unit": "km",
+    "subtitle": "Aktuell verbleibende",
+    "eRangeSelected": true,
+    "conventionalRangeSelected": false
+  },
+  "eRangeMap": {
+    "fullyLoaded": true,
+    "loadingPosition": false,
+    "loadingMap": false,
+    "errorPosition": false,
+    "errorFallback": false
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "proposition_elements": [
+    {
+      "title": "Die besten Ladestationen.",
+      "subtitle": "Einfach planen. Zuverlässig ankommen.",
+      "imgPath": "../../images/charging-service/proposition-voltage-pump.svg",
+      "imgTitle":"proposition voltage pump",
+      "text": "Lorem ipsum dolor sit amet, elit ut mattis tellus."
+    },
+    {
+      "title": "Europaweite Preissicherheit.",
+      "subtitle": "Verlässliches Netz mit verlässlichen Preisen.",
+      "imgPath": "../../images/charging-service/proposition-world.svg",
+      "imgTitle":"proposition world",
+      "text": "Lorem ipsum dolor sit amet, elit ut mattis tellus."
+    },
+    {
+      "title": "Einfache Abrechnung.",
+      "subtitle": "Eine Karte für alle Ladevorgänge.",
+      "imgPath": "../../images/charging-service/proposition-card.svg",
+      "imgTitle":"proposition card",
+      "text": "Lorem ipsum dolor sit amet, elit ut mattis tellus."
+    },
+    {
+      "title": "Einfache Abrechnung.",
+      "subtitle": "Eine Karte für alle Ladevorgänge.",
+      "imgPath": "../../images/charging-service/proposition-card.svg",
+      "imgTitle":"proposition card",
+      "text": "Lorem ipsum dolor sit amet, elit ut mattis tellus."
+    },
+    {
+      "title": "Die besten Ladestationen.",
+      "subtitle": "Einfach planen. Zuverlässig ankommen.",
+      "imgPath": "../../images/charging-service/proposition-voltage-pump.svg",
+      "imgTitle":"proposition voltage pump",
+      "text": "Lorem ipsum dolor sit amet, elit ut mattis tellus."
+    },
+    {
+      "title": "Europaweite Preissicherheit.",
+      "subtitle": "Verlässliches Netz mit verlässlichen Preisen.",
+      "imgPath": "../../images/charging-service/proposition-world.svg",
+      "imgTitle":"proposition world",
+      "text": "Lorem ipsum dolor sit amet, elit ut mattis tellus."
+    }
+  ]
+}

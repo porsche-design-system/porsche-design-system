@@ -1,0 +1,21 @@
+<div class="row">
+
+  <div class="column column--12 column--m-6 -spacing-b">
+    {{> molecules-input input_label=tutorial-spin-code_label input_type="password" input_value=tutorial-spin-code_code input_icon="eye"}}
+    <p class="-text-size-copy -spacing-a">{{ tutorial-spin-code_length }}/{{ tutorial-spin-code_maxLength }}</p>
+  </div>
+
+  <div class="column column--12 column--m-6 -spacing-b">
+    {{> molecules-input input_label=tutorial-spin-code_labelRepeat input_type="password" input_value=tutorial-spin-code_code input_icon="eye"}}
+  </div>
+
+  <div class="column column--12 -spacing-18">
+    {{> molecules-button-inline
+      styleModifier=""
+      button-inline_label=tutorial-spin-code_buttonLabel
+      button-inline_icon="arrow-right-thin"
+      button-inline_ghostDark=true
+    }}
+  </div>
+
+</div>

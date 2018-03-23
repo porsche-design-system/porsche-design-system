@@ -1,0 +1,132 @@
+@import '../../mixins/breakpoint.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import 'checkbox-dealer-service.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}checkbox-dealer-service {
+
+  $bem-block: &;
+
+  display: block;
+  text-align: left;
+  user-select: none;
+  width: $checkbox-dealer-service-width;
+  height: $checkbox-dealer-service-height;
+  position: relative;
+
+  @include breakpoint('s') {
+    @include flex;
+    @include flex--align-items(stretch);
+    height: $checkbox-dealer-service-height-m;
+    position: relative;
+  }
+
+  // state: let border color of checkbox icon be white if checbox is hovered
+  &:hover &__icon {
+    border-color: $checkbox-dealer-service-icon-border-color-hovered;
+  }
+
+  &__icon {
+    border-color: $checkbox-dealer-service-icon-border-color;
+
+    @include breakpoint('s') {
+      float: none;
+      display: inline-block;
+    }
+
+    &--info {
+      color: $checkbox-dealer-service-icon-info-color;
+      font-size: $checkbox-dealer-service-icon-font-size;
+      position: absolute;
+      top: $checkbox-dealer-service-icon-position;
+      right: $checkbox-dealer-service-icon-position;
+    }
+  }
+
+  &__label {
+    @include -text-size-5-thin;
+    display: block;
+    color: $checkbox-dealer-service-label-color;
+    margin-top: $checkbox-dealer-service-label-position-top;
+    margin-right: $checkbox-dealer-service-label-position-right;
+    margin-bottom: $checkbox-dealer-service-label-position-reset;
+    margin-left: $checkbox-dealer-service-label-position-left;
+    font-size: $checkbox-dealer-service-label-font-size;
+
+    @include breakpoint('s') {
+      margin-top: $checkbox-dealer-service-label-position-top-m;
+      margin-right: $checkbox-dealer-service-label-position-reset;
+      margin-bottom: $checkbox-dealer-service-label-position-reset;
+      margin-left: $checkbox-dealer-service-label-position-reset;
+      display: block;
+      white-space: normal;
+    }
+  }
+
+  &__container {
+    @include -spacing-inner-a;
+    @include -align-left;
+    background: $checkbox-dealer-service-container-background-color;
+    transition: background $checkbox-dealer-service-container-transition-duration ease;
+    overflow: hidden;
+    display: block;
+    box-sizing: border-box;
+    border-bottom: $checkbox-dealer-service-container-border-width solid $checkbox-dealer-service-container-border-color;
+
+    @include breakpoint('s') {
+      @include flex;
+      @include flex--direction(row);
+      @include flex--center-horizontal;
+      @include flex--center-vertical;
+      @include -align-center;
+
+      width: $checkbox-dealer-service-container-width;
+    }
+
+  }
+
+  &__other {
+    width: $checkbox-dealer-service-other-width;
+    overflow: hidden;
+  }
+
+  // state: checkbox checked and not disabled
+  &__field:checked:not([disabled]) ~ &__container {
+    border-bottom: $checkbox-dealer-service-container-border-width solid $checkbox-dealer-service-container-border-color-checked;
+
+    #{$bem-block}__label {
+      color: $checkbox-dealer-service-label-color-checked;
+    }
+
+    #{$bem-block}__icon {
+      border-color: $checkbox-dealer-service-icon-border-color-checked;
+
+      &::before {
+        visibility: visible;
+        color: $checkbox-dealer-service-icon-color-checked;
+      }
+    }
+  }
+
+  // state: checbkox checked and disabled
+  &__field:checked ~ &__container {
+    border-bottom: $checkbox-dealer-service-container-border-width solid $checkbox-dealer-service-container-border-color-checked;
+
+    #{$bem-block}__label {
+      color: $checkbox-dealer-service-label-color-checked-disabled;
+    }
+
+    #{$bem-block}__icon {
+      border-color: $checkbox-dealer-service-icon-border-color-checked-disabled;
+
+      &::before {
+        visibility: visible;
+        color: $checkbox-dealer-service-icon-color-checked-disabled;
+      }
+    }
+
+  }
+}

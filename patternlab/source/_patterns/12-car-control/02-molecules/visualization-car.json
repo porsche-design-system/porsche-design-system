@@ -1,0 +1,34 @@
+{
+  "visualization-car_image": "../../images/portal-services/car-control/vehicle-911-fallback.png",
+  "visualization-car_isModelSport": false,
+  "visualization-car_isModelSUV": false,
+
+  "visualization-car_tirePressureFrontLeft": "2,6 bar",
+  "visualization-car_tirePressureDiffFrontLeft": "+ 0,1 bar",
+  "visualization-car_tirePressureFrontRight": "2,0 bar",
+  "visualization-car_tirePressureDiffFrontRight": "- 0,5 bar",
+  "visualization-car_tirePressureRearLeft": "2,4 bar",
+  "visualization-car_tirePressureDiffRearLeft": "- 0,1 bar",
+  "visualization-car_tirePressureRearRight": "2,2 bar",
+  "visualization-car_tirePressureDiffRearRight": "- 0,3 bar",
+
+  "visualization-car_isBonnetOpen": false,
+  "visualization-car_isRoofOpen": false,
+  "visualization-car_isTrunkOpen": false,
+
+  "visualization-car_isFrontLeftDoorOpen": false,
+  "visualization-car_isFrontLeftDoorUnlocked": false,
+  "visualization-car_isFrontLeftWindowOpen": false,
+
+  "visualization-car_isFrontRightDoorOpen": false,
+  "visualization-car_isFrontRightDoorUnlocked": false,
+  "visualization-car_isFrontRightWindowOpen": false,
+
+  "visualization-car_isRearLeftDoorOpen": false,
+  "visualization-car_isRearLeftDoorUnlocked": false,
+  "visualization-car_isRearLeftWindowOpen": false,
+
+  "visualization-car_isRearRightDoorOpen": false,
+  "visualization-car_isRearRightDoorUnlocked": false,
+  "visualization-car_isRearRightWindowOpen": false
+}

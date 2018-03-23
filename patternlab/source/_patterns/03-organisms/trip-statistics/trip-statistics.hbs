@@ -1,0 +1,12 @@
+ <div class="trip-statistics {{ styleModifier }}">
+  <ul class="row">
+    {{#each trip-statistics_items}}
+      <li class="trip-statistics__item column column--12 column--s-6 column--m-3">
+        <h4 class="trip-statistics__title">{{label}}</h4>
+        <div class="trip-statistics__info {{#if eMobility }} trip-statistics__info--e-mobility {{/if}}">
+          <span class="trip-statistics__icon icon icon--{{icon}}"></span><span class="trip-statistics__text">{{text}}</span><span>{{textUnit}}</span>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>

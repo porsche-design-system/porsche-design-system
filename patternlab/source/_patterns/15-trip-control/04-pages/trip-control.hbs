@@ -1,0 +1,51 @@
+<section class="-wrapper-page">
+
+  {{> organisms-page-header styleModifier="-spacing-d" }}
+
+  <div class="row -spacing-c">
+    <div class="column column--12">
+
+      {{> organisms-car-selector-02-logged-in-selected }}
+
+    </div>
+  </div>
+  <div class="row -spacing-12">
+    <div class="column column--12">
+
+      {{> organisms-timestamp-refresh }}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12">
+
+      <h3 class="-text-size-4-thin -text-color-white">{{ trip-control_tripStatisticsTitle }}</h3>
+
+      {{> organisms-trip-statistics styleModifier="-spacing-a" }}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12">
+
+      <h3 class="-text-size-4-thin -text-color-white">{{ trip-control_listViewTitle }}</h3>
+
+      {{> organisms-tab-horizontal styleModifier="-spacing-a" }}
+
+      {{#if trip-control_listView }}
+        {{> organisms-list-view styleModifier="-spacing-a" }}
+        {{> molecules-button-inline styleModifier="-spacing-3" button-inline_label="Weitere Elemente laden" button-inline_icon="loader" button-inline_stretch=true styleModifier_icon="-text-color-white" }}
+      {{else}}
+        {{> organisms-state-empty-action styleModifier="-spacing-a" state-empty-action_image="empty-state-trip-control.svg" state-empty-action_title="Zur Zeit sind keine Fahrzeugstatistiken verfügbar." state-empty-action_titleContinue="" state-empty-action_icon="" }}
+      {{/if}}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12 -align-right">
+
+      {{> molecules-link-icon-text link-icon-text_icon="arrow-up-thin" link-icon-text_label="Zum Listenanfang" }}
+
+    </div>
+  </div>
+</section>

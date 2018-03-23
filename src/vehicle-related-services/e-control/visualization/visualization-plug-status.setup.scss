@@ -1,0 +1,13 @@
+@import '../../../setup/color-palette.setup.scss';
+@import '../../../mixins/px-rem-converter.scss';
+@import '../../../base/spacing/spacing.setup.scss';
+
+$visualization-plug-status-icon-size: rem(28px) !default;
+$visualization-plug-status-icon-size-s: $spacing-30 !default;
+$visualization-plug-status-icon-color: $color-palette-white !default;
+
+$visualization-plug-status-icon-pending-color: $color-palette-status-yellow !default;
+
+$visualization-plug-status-icon-error-color: $color-palette-status-red !default;
+
+$visualization-plug-status-label-color: $color-palette-white !default;

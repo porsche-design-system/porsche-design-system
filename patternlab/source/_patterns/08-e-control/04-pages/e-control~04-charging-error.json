@@ -1,0 +1,10 @@
+{
+  "e-control": {
+    "chargeStatus": {
+      "hasError": true
+    },
+    "plugStatus": {
+      "label": "Ladefehler"
+    }
+  }
+}

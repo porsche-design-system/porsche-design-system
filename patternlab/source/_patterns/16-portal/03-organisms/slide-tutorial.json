@@ -1,0 +1,30 @@
+{
+  "slide-tutorial_title": "Tutorial title",
+  "slide-tutorial_copy1": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.",
+  "slide-tutorial_copy1Tooltip": false,
+  "slide-tutorial_copy2": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.",
+  "slide-tutorial_image": false,
+  "slide-tutorial_slideshow": true,
+  "slide-tutorial_slideshowImages": [
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-01.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-02.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-03.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-04.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-05.jpg"
+    },
+    {
+      "image": "../../images/portal/tutorial/tutorial-05-06.jpg"
+    }
+  ],
+  "slide-tutorial_showPairingCode": false,
+  "slide-tutorial_showSPinForm": false
+}

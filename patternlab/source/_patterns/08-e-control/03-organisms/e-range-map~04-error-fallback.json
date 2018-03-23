@@ -1,0 +1,9 @@
+{
+  "eRangeMap": {
+    "fullyLoaded": false,
+    "loadingPosition": false,
+    "loadingMap": false,
+    "errorPosition": false,
+    "errorFallback": true
+  }
+}

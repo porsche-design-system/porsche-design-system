@@ -1,0 +1,10 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "slide-tutorial_title": "Porsche ID",
+  "slide-tutorial_copy1": "Angaben zu Ihrer Porsche ID, zum Beispiel Account- und Kontaktdaten, können Sie jederzeit in der Profilverwaltung einsehen und ändern.",
+  "slide-tutorial_copy2": "Sie erhalten automatische Nachrichten zu Ihrer Porsche ID und My Porsche, welche im Bereich \"Mitteilungen\" abgerufen werden können.",
+  "slide-tutorial_image": "../../images/portal/tutorial/tutorial-02.jpg",
+  "slide-tutorial_slideshow": false,
+  "slide-tutorial_showPairingCode": false,
+  "slide-tutorial_showSPinForm": false
+}

@@ -1,0 +1,14 @@
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'modal-footer.setup.scss';
+
+.#{$global-class-prefix}modal-footer {
+  bottom: $modal-footer-position;
+  left: $modal-footer-position;
+  width: $modal-footer-width;
+
+  @include breakpoint('xs') {
+    position: relative;
+    width: auto;
+  }
+}

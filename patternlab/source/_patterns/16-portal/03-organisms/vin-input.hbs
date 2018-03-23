@@ -1,0 +1,31 @@
+<div class="row {{ styleModifier }}">
+    <div class="column column--12">
+        {{> organisms-header-tile header-tile_title=vin-input_title }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="column column--12">
+        <div class="-background-white -spacing-inner-b">
+            <div class="row">
+                <div class="column column--12 column--s-6">
+                    {{> molecules-input input_label=vin-input_label input_value=vin-input_value input_icon=vin-input_icon styleModifier_icon=vin-input_iconColor }}
+                    <p class="-text-size-copy -spacing-a">{{ vin-input_number }}/{{ vin-input_paragraph }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column column--12">
+        {{> organisms-form-button-group
+            form-button-group_primaryActionIcon=vin-input_primaryCtaIcon
+            form-button-group_primaryActionCta=vin-input_primaryActionCta
+            form-button-group_primaryActionCtaSubline=false
+            form-button-group_secondaryActionIcon=vin-input_secondaryCtaIcon
+            form-button-group_secondaryActionCta=vin-input_secondaryActionCta
+            form-button-group_secondaryActionCtaSubline=false
+        }}
+    </div>
+</div>

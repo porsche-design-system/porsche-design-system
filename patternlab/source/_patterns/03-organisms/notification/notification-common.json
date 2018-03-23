@@ -1,0 +1,7 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "notification-common_title": "Additional notification title",
+  "notification-common_text": "Please enter here the notification text.",
+  "notification-common_error": false,
+  "notification-common_button": false
+}

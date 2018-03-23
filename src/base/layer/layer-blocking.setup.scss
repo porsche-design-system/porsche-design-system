@@ -1,0 +1,5 @@
+@import '../../setup/color-palette.setup.scss';
+
+$layer-blocking-background-color: rgba($color-palette-grey-9-1, .9) !default;
+$layer-blocking-position: 0 !default;
+$layer-blocking-z-index: 9000 !default;

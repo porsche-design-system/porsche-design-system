@@ -1,0 +1,48 @@
+{{> organisms-header }}
+
+<div class="-wrapper-page">
+    <div class="row">
+        <div class="column column--12 -spacing-d">
+            {{> organisms-page-header page-header_title=recall-reminder_headline page-header_description=false }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column column--12">
+            {{> organisms-car-chooser styleModifier="-spacing-b" }}
+        </div>
+    </div>
+
+    {{#if recall-reminder_noRecallAvailable }}
+        <div class="row">
+            <div class="column column--12">
+                {{> recall-reminder-no-recall-available styleModifier="-spacing-b" }}
+            </div>
+        </div>
+    {{else}}
+        <div class="row">
+            <div class="column column--12">
+                {{> recall-reminder-affected-vehicle-information styleModifier="-spacing-b" }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column column--12">
+                {{> organisms-list-message styleModifier="-spacing-b" }}
+            </div>
+        </div>
+    {{/if}}
+    {{#if recall-reminder_additionalRecalls }}
+      <div class="row">
+          <div class="column column--12">
+              {{> recall-reminder-additional-callback-vehicles styleModifier="-spacing-b" }}
+          </div>
+      </div>
+    {{/if}}
+
+    {{> organisms-footer footer_loggedIn=true styleModifier="-spacing-b" }}
+</div>
+{{#if recall-reminder_layerBlocking }}
+  {{> atoms-layer-blocking layer-blocking_sticky=true }}
+{{/if }}
+

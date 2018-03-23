@@ -1,0 +1,5 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$dealer-information-height: 100% !default;
+$dealer-information-entry-text-margin-left: $spacing-48 !default;

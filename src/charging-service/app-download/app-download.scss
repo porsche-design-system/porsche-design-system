@@ -1,0 +1,43 @@
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import '../../mixins/breakpoint.scss';
+
+@import 'app-download.setup.scss';
+
+.#{$global-class-prefix}app-download {
+  overflow: hidden;
+
+  @include breakpoint('xs') {
+    @include -spacing-12(bottom, margin, '-');
+  }
+
+  &__item {
+    @include -spacing-12;
+    display: block;
+    height: $app-download-item-height;
+
+    &:first-child {
+      @include -spacing-zero;
+    }
+
+    @include breakpoint('xs') {
+      @include -spacing-zero;
+      @include -spacing-12(right);
+      @include -spacing-12(bottom);
+      float: left;
+
+      &:last-child {
+        @include -spacing-zero(right);
+      }
+    }
+
+    @include breakpoint('s') {
+      height: $app-download-item-height-s;
+    }
+  }
+
+  &__logo {
+    height: $app-download-logo-height;
+    width: $app-download-logo-width;
+  }
+}

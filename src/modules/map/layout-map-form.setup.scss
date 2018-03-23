@@ -1,0 +1,18 @@
+@import '../../base/spacing/spacing.setup.scss';
+@import '../button/button-icon.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$layout-map-form-spacing-s: 50% !default;
+
+$layout-map-form-container-height-s: rem(398px) !default;
+$layout-map-form-container-height-m: rem(448px) !default;
+$layout-map-form-container-height-l: rem(548px) !default;
+
+$layout-map-form-map-height: rem(300px) !default;
+$layout-map-form-map-height-s: auto !default;
+$layout-map-form-map-alignment-left: - $spacing-inner-a-horizontal !default;
+$layout-map-form-map-alignment-right: - $spacing-inner-a-horizontal !default;
+$layout-map-form-map-position-s: 0 !default;
+
+$layout-map-form-button-delete-height: $button-icon-size !default;
+$layout-map-form-button-delete-spacing-vertical-s: rem(201px) !default;

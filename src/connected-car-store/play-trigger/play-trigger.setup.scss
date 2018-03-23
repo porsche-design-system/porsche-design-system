@@ -1,0 +1,9 @@
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$play-trigger-font-size: rem(100px) !default;
+$play-trigger-border-radius: 50% !default;
+$play-trigger-dimension: rem(50px) !default;
+
+$play-trigger-color: $text-color-black !default;
+$play-trigger-background-color: $text-color-white !default;

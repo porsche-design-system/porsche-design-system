@@ -1,0 +1,93 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+
+@import 'how-to-description.setup.scss';
+
+.#{$global-class-prefix}how-to-description {
+  @include -background-white;
+  @include -text-color-black;
+
+  @include breakpoint('s') {
+    @include -spacing-inner-a;
+    @include flex;
+    @include flex--direction(row);
+  }
+
+  &__media {
+    @include breakpoint('s') {
+      width: $how-to-description-item-width-s;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: $how-to-description-image-width;
+  }
+
+  &__info {
+    @include flex;
+    @include flex--direction(column);
+
+    @include breakpoint('s') {
+      @include -spacing-b(left);
+      width: $how-to-description-info-width-s;
+    }
+  }
+
+  &__info-headline {
+    @include -text-size-5-thin;
+    display: none;
+
+    @include breakpoint('s') {
+      display: block;
+    }
+  }
+
+  &__info-text {
+    @include -text-size-copy;
+    @include -spacing-6;
+
+    &:first-of-type {
+      @include -spacing-b;
+
+      @include breakpoint('s') {
+        @include -spacing-12;
+      }
+    }
+  }
+
+  &__app-download {
+    @include -spacing-18;
+  }
+
+  &__navigate {
+    @include flex;
+    @include flex--direction(row);
+    @include -spacing-e(top, padding);
+
+    @include breakpoint('s') {
+      @include -spacing-24(top, padding);
+      margin-top: auto;
+    }
+
+    .button-ghost {
+      @include flex-cross-axis(center);
+      height: $how-to-description-navigate-button-height;
+    }
+
+    .button-primary {
+      @include flex-cross-axis(center);
+      height: $how-to-description-navigate-button-height;
+
+      @include breakpoint('s') {
+        @include -spacing-12(left);
+      }
+    }
+  }
+}

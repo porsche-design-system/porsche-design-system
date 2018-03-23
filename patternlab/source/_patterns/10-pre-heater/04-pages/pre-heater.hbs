@@ -1,0 +1,62 @@
+{{#if pre-heater_notificationOfflineBanner }}
+  {{> organisms-notification-offline-banner }}
+{{/if}}
+
+<section class="-wrapper-page">
+
+  {{> organisms-page-header styleModifier="-spacing-d" }}
+
+  <div class="row -spacing-c">
+    <div class="column column--12">
+
+      {{> organisms-car-selector-02-logged-in-selected }}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12">
+      <h2 class="-text-size-3-thin -text-color-white">{{ pre-heater_runtimeStatus }}</h2>
+    </div>
+  </div>
+  <div class="row -spacing-18 flex-m">
+    <div class="column column--12 column--m-7 flex-m flex--column">
+
+      {{> organisms-car-interior-ventilation
+          car-interior-ventilation_fadeInImageActive=pre-heater_carInteriorVentilationFadeInImageActive }}
+
+      {{> organisms-status-bar
+          styleModifier="-spacing-b flex--grow"
+          status-bar_icon=pre-heater_statusBarIcon
+          status-bar_labelPrimary=pre-heater_statusBarLabelPrimary
+          status-bar_labelSecondary=pre-heater_statusBarLabelSecondary
+          status-bar_active=pre-heater_statusBarActive
+          status-bar_error=pre-heater_statusBarError }}
+
+    </div>
+    <div class="column column--12 column--m-5 flex-m -spacing-b -spacing-zero-m">
+
+      {{> pre-heater-ventilation-control
+          ventilation-control_buttonGroupVisibility=pre-heater_ventilationControlButtonGroupVisibility
+          ventilation-control_buttonGroupDisabled=pre-heater_ventilationControlButtonGroupDisabled
+          ventilation-control_buttonLabel=pre-heater_ventilationControlButtonLabel
+          ventilation-control_buttonDisabled=pre-heater_ventilationControlButtonDisabled }}
+
+    </div>
+  </div>
+  <div class="row -spacing-b">
+    <div class="column column--12">
+
+      {{> organisms-header-tile }}
+
+      {{#*inline "list-expanded_content"}}
+        {{> pre-heater-form-auxiliary-heating-timer }}
+      {{/inline}}
+      {{> organisms-list-view styleModifier="-spacing-3" }}
+
+    </div>
+  </div>
+</section>
+
+{{#if pre-heater_blockingLayer}}
+  {{> atoms-layer-blocking }}
+{{/if}}

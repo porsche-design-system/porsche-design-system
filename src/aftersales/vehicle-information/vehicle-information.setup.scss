@@ -1,0 +1,7 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$vehicle-information-width: 100% !default;
+
+$vehicle-information-image-dimensions: 100% !default;
+$vehicle-information-vehicle-max-width: rem(368px) !default;

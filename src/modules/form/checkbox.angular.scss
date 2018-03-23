@@ -1,0 +1,64 @@
+@import 'checkbox.setup.scss';
+@import '../../setup/global-variables.scss';
+
+// specific styling for angular
+.ng-submitted {
+  $bem-block: #{$global-class-prefix}checkbox;
+
+  .#{$bem-block} {
+    // angular specific selector, input is invalid
+    .#{$bem-block}__field.ng-invalid ~ .#{$bem-block}__icon { // sass-lint:disable-line no-combinators force-element-nesting
+      border-color: $checkbox-icon-border-color-error;
+
+      &::before { // sass-lint:disable-line nesting-depth
+        color: $checkbox-icon-color-checked-error;
+      }
+    }
+
+    .#{$bem-block}__field.ng-invalid ~ .#{$bem-block}__label { // sass-lint:disable-line no-combinators force-element-nesting
+      color: $checkbox-label-text-color-error;
+
+      .#{$bem-block}__label-link { // sass-lint:disable-line no-combinators nesting-depth
+        color: $checkbox-label-link-text-color-error;
+      }
+    }
+
+    &:hover .#{$bem-block}__field.ng-invalid:not(:checked):not(:disabled) ~ .#{$bem-block}__icon { // sass-lint:disable-line no-combinators force-element-nesting force-pseudo-nesting
+      border-color: $checkbox-icon-border-color-error;
+    }
+
+    &:hover .#{$bem-block}__field.ng-invalid:checked:not(:disabled) ~ .#{$bem-block}__icon { // sass-lint:disable-line no-combinators force-element-nesting force-pseudo-nesting
+      background-color: $checkbox-icon-background-color-checked-hovered-error;
+
+      &::before { // sass-lint:disable-line force-pseudo-nesting
+        background-color: transparent;
+        color: $checkbox-icon-color-checked-hovered-error;
+      }
+    }
+
+    .#{$bem-block}__field.ng-invalid:disabled ~ .#{$bem-block}__icon, // sass-lint:disable-line no-combinators force-element-nesting force-pseudo-nesting
+    &:hover .#{$bem-block}__field.ng-invalid:disabled ~ .#{$bem-block}__icon { // sass-lint:disable-line no-combinators force-element-nesting force-pseudo-nesting
+      border-color: $checkbox-icon-border-color-disabled;
+      background: transparent;
+
+      &::before {
+        color: $checkbox-icon-color-checked-disabled;
+      }
+    }
+
+    .#{$bem-block}__field.ng-invalid:disabled ~ .#{$bem-block}__label, // sass-lint:disable-line no-combinators force-element-nesting force-pseudo-nesting
+    &:hover .#{$bem-block}__field.ng-invalid:disabled ~ .#{$bem-block}__label { // sass-lint:disable-line no-combinators force-element-nesting force-pseudo-nesting
+      color: $checkbox-label-text-color-disabled;
+
+      .#{$bem-block}__label-link { // sass-lint:disable-line no-combinators
+        color: $checkbox-label-link-text-color-disabled;
+
+        &:active,
+        &:focus,
+        &:hover {
+          color: $checkbox-label-link-text-color-disabled-hover;
+        }
+      }
+    }
+  }
+}

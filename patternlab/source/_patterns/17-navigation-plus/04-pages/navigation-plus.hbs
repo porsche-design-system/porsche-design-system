@@ -1,0 +1,76 @@
+<section class="-wrapper-page">
+
+  {{> organisms-page-header styleModifier="-spacing-d"
+                            page-header_title=navigation-plus.title
+                            page-header_description=navigation-plus.description }}
+
+  {{> organisms-car-selector-02-logged-in-selected styleModifier="-spacing-c" }}
+
+  {{#if navigation-plus.poi.isCreateMode }}
+
+    {{> navigation-plus-point-of-interest-form styleModifier="-spacing-b -layer-blocking-higher"
+                                               point-of-interest-form_title=navigation-plus.poi.createForm.title
+                                               point-of-interest-form_inputGroupTitle=navigation-plus.poi.createForm.inputGroupTitle
+                                               point-of-interest-form_checkboxGroupTitle=navigation-plus.poi.createForm.checkboxGroupTitle
+                                               point-of-interest-form_deleteButton=false }}
+
+  {{else}}
+
+    {{> organisms-map-action-overview styleModifier="-spacing-b"
+                                      map-action-overview_buttonLabel=navigation-plus.map-overview.buttonLabel
+                                      map-action-overview_loading=navigation-plus.map-overview.loading }}
+
+  {{/if}}
+
+  {{> molecules-button-inline styleModifier="-spacing-b"
+                              button-inline_label="Neu"
+                              button-inline_icon="plus"
+                              button-inline_seamless=true }}
+
+  {{#if navigation-plus.poi.list }}
+
+    {{#*inline "list-view-poi_content"}}
+      {{> navigation-plus-point-of-interest-form styleModifier="-layer-blocking-higher"
+                                                 point-of-interest-form_title=@root.navigation-plus.poi.editForm.title
+                                                 point-of-interest-form_inputGroupTitle=@root.navigation-plus.poi.editForm.inputGroupTitle
+                                                 point-of-interest-form_checkboxGroupTitle=@root.navigation-plus.poi.editForm.checkboxGroupTitle
+                                                 point-of-interest-form_deleteButton=true }}
+    {{/inline}}
+    {{> navigation-plus-list-view-poi styleModifier="-spacing-12"
+                                      list-view-poi=navigation-plus.poi.list
+                                      list-view-poi_multiFunctionMenu=navigation-plus.poi.multiFunctionMenu }}
+
+    {{> molecules-button-inline styleModifier="-spacing-3"
+                                styleModifier_icon="-text-color-white"
+                                button-inline_label="Weitere Elemente laden"
+                                button-inline_icon="loader"
+                                button-inline_stretch=true }}
+
+  {{else}}
+
+    {{> organisms-state-empty-action styleModifier="-spacing-12"
+                                     state-empty-action_image=navigation-plus.poi.emptyState.image
+                                     state-empty-action_title=navigation-plus.poi.emptyState.label
+                                     state-empty-action_titleContinue=navigation-plus.poi.emptyState.labelContinued
+                                     state-empty-action_icon=navigation-plus.poi.emptyState.icon }}
+
+  {{/if}}
+
+  <div class="-align-right">
+
+    {{> molecules-link-icon-text styleModifier="-spacing-b"
+                                 link-icon-text_label="Zum Listenanfang"
+                                 link-icon-text_icon="arrow-up-thin" }}
+
+  </div>
+
+  {{> organisms-next-best-actions styleModifier="-spacing-d" }}
+
+  {{> organisms-footer styleModifier="-spacing-f"
+      footer_loggedIn=true }}
+
+</section>
+
+{{#if navigation-plus.blockingLayer }}
+  {{> atoms-layer-blocking }}
+{{/if}}

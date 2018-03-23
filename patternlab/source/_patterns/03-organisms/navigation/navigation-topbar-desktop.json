@@ -1,0 +1,32 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "navigation-topbar-desktop_hideOverlay": true,
+  "navigation-topbar-desktop_left": [
+    {
+      "item": "Link Item 1",
+      "customClass": "",
+      "active": false
+    },
+    {
+      "item": "Link Item 2",
+      "customClass": "",
+      "active": false
+    },
+    {
+      "item": "Link Item 3",
+      "customClass": "hidden",
+      "active": false
+    }
+  ],
+
+  "navigation-topbar-desktop_right": [
+    {
+      "icon": "",
+      "linkContent": "Login und Registrierung",
+      "customClass": "",
+      "initialHidden": false,
+      "iconBefore": true,
+      "active": false
+    }
+  ]
+}

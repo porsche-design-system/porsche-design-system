@@ -1,0 +1,15 @@
+{
+  "bodyClass":"sg-wrapper-dark",
+  "additional-information_contactDataHeadline": "Ihre Kontaktdaten",
+  "additional-information_contactDataName": "Matthias Schmied",
+  "additional-information_contactDataStreet": "Stuttgarter Str. 911",
+  "additional-information_contactDataZip": "70190",
+  "additional-information_contactDataCity": "Stuttgart",
+  "additional-information_contactDataLabelPhone": "telefonisch",
+  "additional-information_contactDataLabelMobile": "per SMS",
+  "additional-information_contactDataLabelEmail": "per E-Mail",
+  "additional-information_contactDataPhone": "+49711232323",
+  "additional-information_contactDataMobile": "+491745434222",
+  "additional-information_contactDataEmail": "matthias.schmied@porsche.ag",
+  "additional-information_contactMethodHeadline": "Auf welchem Weg dürfen wir mit Ihnen in Kontakt treten?"
+}

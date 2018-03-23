@@ -1,0 +1,30 @@
+@import 'setup/index.scss';
+@import 'mixins/index.scss';
+
+@import 'common/index.scss';
+@import 'base/index.scss';
+@import 'modules/index.scss';
+
+// framework specific styles
+@import 'porsche-stylesheets.angular.scss';
+
+// custom styles for "Connected Car Store" team
+@import 'connected-car-store/index.scss';
+
+// custom styles for "Charging Service" team
+@import 'charging-service/index.scss';
+
+// custom styles for "After Sales Services" team
+@import 'aftersales/index.scss';
+
+// custom styles for "Portal Services" team
+@import 'vehicle-related-services/index.scss';
+
+// custom styles for "Portal Core" team
+@import 'portal/index.scss';
+
+// custom styles for "Access" team
+@import 'access/index.scss';
+
+// custom styles for profile
+@import 'profile/index.scss';

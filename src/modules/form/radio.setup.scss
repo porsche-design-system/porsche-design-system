@@ -1,0 +1,88 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/text-size/text-size.setup.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+/* ******  radio default  ***** */
+$radio-min-width: rem(26px) !default;
+$radio-min-height: rem(26px) !default;
+$radio-max-width: 100% !default;
+
+$radio-icon-border-color: $color-palette-grey-7 !default;
+$radio-label-text-color: $color-palette-black !default;
+$radio-label-link-text-color: $color-palette-black !default;
+$radio-label-link-text-color-hover: $color-palette-red-1 !default;
+$radio-icon-size: $spacing-30 !default;
+$radio-icon-position-vertical: rem(-2px) !default;
+$radio-icon-position-horizontal: rem(-2px) !default;
+
+$radio-icon-border-size: rem(2px) !default;
+$radio-icon-border-radius: 50% !default;
+$radio-icon-before-position-top: 50% !default;
+$radio-icon-before-position-left: 50% !default;
+$radio-icon-before-size: $spacing-12 !default;
+$radio-icon-safe-clickable-area-position: rem(7px) !default;
+$radio-label-spacing-left: $spacing-30 !default;
+$radio-label-inner-spacing-left: $spacing-18 !default;
+$radio-label-line-height: $spacing-30 !default;
+$radio-label-min-height: rem(26px) !default;
+$radio-label-padding-top: rem(1px) !default;
+$radio-label-padding-left: rem(38px) !default;
+$radio-label-padding-reset: 0 !default;
+
+// radio button hovered
+$radio-icon-border-color-unchecked-hovered: $color-palette-grey-5 !default;
+
+// radio button checked
+$radio-icon-inner-background-color-checked: $color-palette-grey-7 !default;
+
+// radio button checked hovered
+$radio-icon-border-color-checked-hovered: $color-palette-grey-7 !default;
+$radio-icon-outer-background-color-checked-hovered: $color-palette-grey-7 !default;
+$radio-icon-inner-background-color-checked-hovered: $color-palette-white !default;
+
+// radio button disabled
+$radio-icon-border-color-disabled: $color-palette-grey-5 !default;
+$radio-icon-inner-background-color-disabled: $color-palette-grey-5 !default;
+$radio-label-text-color-disabled: $color-palette-grey-5 !default;
+$radio-label-link-text-color-disabled: $color-palette-grey-5 !default;
+$radio-label-link-text-color-disabled-hover: $color-palette-red-1 !default;
+
+// radio button error
+$radio-icon-border-color-error: $color-palette-status-red !default;
+$radio-label-text-color-error: $color-palette-status-red !default;
+$radio-label-link-text-color-error: $color-palette-status-red !default;
+$radio-label-link-text-color-error-hover: $color-palette-red-1 !default;
+
+// radio button error checked
+$radio-icon-inner-background-color-checked-error: $color-palette-status-red !default;
+
+// radio button error checked hovered
+$radio-icon-border-color-checked-hovered-error: $color-palette-status-red !default;
+$radio-icon-outer-background-color-checked-hovered-error: $color-palette-status-red !default;
+$radio-icon-inner-background-color-checked-hovered-error: $color-palette-white !default;
+
+
+/* ******  radio button inverted  ***** */
+$radio-icon-border-color-inverted: $color-palette-white !default;
+$radio-label-text-color-inverted: $color-palette-white !default;
+$radio-label-link-text-color-inverted: $color-palette-white !default;
+$radio-label-link-text-color-inverted-hover: $color-palette-red-1 !default;
+
+// radio button inverted hovered
+$radio-icon-border-color-unchecked-hovered-inverted: $color-palette-grey-5 !default;
+
+// radio button inverted checked
+$radio-icon-inner-background-color-checked-inverted: $color-palette-white !default;
+
+// radio button inverted checked hovered
+$radio-icon-border-color-checked-hovered-inverted: $color-palette-white !default;
+$radio-icon-outer-background-color-checked-hovered-inverted: $color-palette-white !default;
+$radio-icon-inner-background-color-checked-hovered-inverted: $color-palette-black !default;
+
+// radio button inverted disabled
+$radio-icon-border-color-disabled-inverted: $color-palette-grey-5 !default;
+$radio-icon-inner-background-color-disabled-inverted: $color-palette-grey-5 !default;
+$radio-label-text-color-disabled-inverted: $color-palette-grey-5 !default;
+$radio-label-link-text-color-disabled-inverted: $color-palette-grey-5 !default;
+$radio-label-link-text-color-disabled-inverted-hover: $color-palette-red-1 !default;

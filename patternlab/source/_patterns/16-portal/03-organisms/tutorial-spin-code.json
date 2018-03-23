@@ -1,0 +1,8 @@
+{
+  "tutorial-spin-code_label": "Sicherheitscode",
+  "tutorial-spin-code_labelRepeat": "Sicherheitscode wiederholen",
+  "tutorial-spin-code_code": "1234",
+  "tutorial-spin-code_length": 0,
+  "tutorial-spin-code_maxLength": 4,
+  "tutorial-spin-code_buttonLabel": "Speichern"
+}

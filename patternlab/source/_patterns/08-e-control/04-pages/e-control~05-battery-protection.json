@@ -1,0 +1,14 @@
+{
+  "e-control": {
+    "chargeStatus": {
+      "isPending": true
+    },
+    "plugStatus": {
+      "label": "Batterieschonung aktiv"
+    },
+    "charge-control": {
+      "label": "Laden sofort starten",
+      "disabled": false
+    }
+  }
+}

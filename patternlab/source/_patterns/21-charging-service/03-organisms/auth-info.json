@@ -1,0 +1,22 @@
+{
+  "auth-info_items": [
+    {
+      "auth-info_headline": "Authentifizieren und laden mit der App",
+      "auth-info_icon": "../../images/charging-service/icon_mobile.svg",
+      "auth-info_description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+      "auth-info_apps": [
+        {
+          "app-download_logo": "../../images/charging-service/appstore.svg"
+        },
+        {
+          "app-download_logo": "../../images/charging-service/googleplay.svg"
+        }
+      ]
+    },
+    {
+      "auth-info_headline": "Authentifizieren und laden mit der RFID-Card",
+      "auth-info_icon": "../../images/charging-service/icon_rfid-card.svg",
+      "auth-info_description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr at vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    }
+  ]
+}

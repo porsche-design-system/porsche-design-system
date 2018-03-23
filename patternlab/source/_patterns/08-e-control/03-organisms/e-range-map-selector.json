@@ -1,0 +1,10 @@
+{
+  "eRangeMapSelector": {
+    "range": "432",
+    "unit": "km",
+    "subtitle": "Aktuell verbleibende",
+    "eRangeSelected": true,
+    "conventionalRangeSelected": false,
+    "disclaimer": "Schematische Abbildung: Die tatsächliche Reichweite Ihres Fahrzeuges kann geringer sein als dargestellt."
+  }
+}

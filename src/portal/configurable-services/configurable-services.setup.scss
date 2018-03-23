@@ -1,0 +1,32 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$configurable-services-main-height: 100% !default;
+
+$configurable-services-headline-color: $color-palette-white !default;
+$configurable-services-subline-color: $color-palette-white !default;
+$configurable-services-border-color: $color-palette-grey-8 !default;
+$configurable-services-arrow-icon-color: $color-palette-white !default;
+$configurable-services-arrow-icon-color-disabled: $color-palette-grey-8 !default;
+$configurable-services-arrow-icon-color-active: $color-palette-red-1 !default;
+$configurable-services-icon-color: $color-palette-red-1 !default;
+
+$configurable-services-border-height: rem(1px) !default;
+$configurable-services-service-height: 200px !default;
+$configurable-services-servicelist-height: calc(2 * #{$configurable-services-service-height} + #{$spacing-12});
+$configurable-services-link-icon-height: rem(24px) !default;
+$configurable-services-arrow-icon-height: rem(60px) !default;
+$configurable-services-arrow-icon-top: calc(50% - (#{$configurable-services-arrow-icon-height} / 2));
+$configurable-services-arrow-width: rem(20px) !default;
+
+$configurable-services-slider-width: 100% !default;
+
+$configurable-services-slide-width: 100% !default;
+$configurable-services-slide-width-s: 50% !default;
+$configurable-services-slide-height-s: 50% !default;
+$configurable-services-slide-width-l: 33.333333% !default;
+$configurable-services-slide-height-l: 50% !default;
+
+$configurable-services-fallback-headline-width: 100% !default;
+$configurable-services-fallback-headline-size-m: 25% !default;

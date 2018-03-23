@@ -1,0 +1,13 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "tabs-access_labels": [
+    {
+      "name": "Login",
+      "active": false
+    },
+    {
+      "name": "Register",
+      "active": true
+    }
+  ]
+}

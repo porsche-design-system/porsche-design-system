@@ -1,0 +1,17 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../setup/color-palette.setup.scss';
+
+$how-to-progress-bar-steps-navigation-after-width: rem(1px) !default;
+$how-to-progress-bar-steps-navigation-after-width-s: auto !default;
+$how-to-progress-bar-steps-navigation-after-height: rem(1px) !default;
+$how-to-progress-bar-steps-navigation-after-position: 0 !default;
+$how-to-progress-bar-steps-navigation-after-position-top-s: auto !default;
+
+$how-to-progress-bar-steps-margin-right-s: rem(50px) !default;
+
+$how-to-progress-bar-steps-title-width: 100% !default;
+
+$how-to-progress-bar-steps-link-active-border-dimension: rem(4px) !default;
+$how-to-progress-bar-steps-link-active-padding-left: $spacing-18 - $how-to-progress-bar-steps-link-active-border-dimension !default;
+$how-to-progress-bar-steps-link-active-border-color: $color-palette-red-1 !default;

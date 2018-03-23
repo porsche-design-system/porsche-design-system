@@ -1,0 +1,34 @@
+<div class="e-range-map-selector">
+  <div class="visualization-typo e-range-map-selector__range-visualization">
+    {{#if eRangeMapSelector.eRangeSelected }}
+      <p class="visualization-typo__info -text-color-acid-green">
+        <span>{{eRangeMapSelector.range}}</span><!--
+        --><span>{{eRangeMapSelector.unit}}</span>
+      </p>
+    {{/if}}
+    {{#if eRangeMapSelector.conventionalRangeSelected }}
+      <p class="visualization-typo__info -text-color-white">
+        <span>{{eRangeMapSelector.range}}</span><!--
+        --><span>{{eRangeMapSelector.unit}}</span>
+      </p>
+    {{/if}}
+  </div>
+
+  <p class="-text-color-white -text-size-copy -spacing-18">{{ eRangeMapSelector.subtitle }}</p>
+
+  <label class="radio e-range-map-selector__radio">
+    <input class="radio__field e-range-map-selector__radio-field" type="radio" name="{{eRangeMapSelector.radio.nameERange}}" value="{{radioButton.valueOne}}"/>
+    <span class="radio__icon radio__icon--inverted e-range-map-selector__radio-icon--e-range"></span>
+    <span class="radio__label radio__label--inverted e-range-map-selector__radio-label e-range-map-selector__radio-label--e-range">
+      {{ eRangeMapSelector.radio.labelERange }}
+    </span>
+  </label>
+  <label class="radio e-range-map-selector__radio">
+    <input class="radio__field e-range-map-selector__radio-field" type="radio" name="{{eRangeMapSelector.radio.nameERange}}" value="{{radioButton.valueTwo}}"/>
+    <span class="radio__icon radio__icon--inverted"></span>
+    <span class="radio__label radio__label--inverted e-range-map-selector__radio-label">{{ eRangeMapSelector.radio.labelConventionalRange }}</span>
+  </label>
+  <p class="e-range-map-selector__disclaimer">
+    {{ eRangeMapSelector.disclaimer }}
+  </p>
+</div>

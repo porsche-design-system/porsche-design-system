@@ -1,0 +1,41 @@
+<div class="tile-slider {{ styleModifier }}">
+  <div class="tile-slider__slide">
+    <div class="tile-slider__imageholder">
+
+      {{> molecules-image-cover
+          image-cover_image=tile-slider_image
+          image-cover_gradientBannerVisible =tile-slider_imageBannerGradient
+        styleModifier="tile-slider__image" }}
+
+
+    </div>
+    <div class="tile-slider__textarea
+        {{#if tile-slider_textUpperLeft}} tile-slider__textarea--upper-left {{/if}}
+        {{#if tile-slider_textUpperRight}} tile-slider__textarea--upper-right {{/if}}
+        {{#if tile-slider_textLowerLeft}} tile-slider__textarea--lower-left {{/if}}
+        {{#if tile-slider_textLowerRight}} tile-slider__textarea--lower-right {{/if}}
+        {{#if tile-slider_invert}} tile-slider__textarea--inverted {{/if}}">
+      <div class="tile-slider__textwrapper">
+        {{> molecules-tile-headline
+            tile-headline_headline=tile-slider_headline
+            tile-headline_regularM=true
+        }}
+        {{> molecules-tile-paragraph
+            tile-paragraph_text=tile-slider_text
+        }}
+      </div>
+    </div>
+  </div>
+  <div class="tile-slider__pagination">
+    {{> molecules-pagination-dots
+        pagination-dots_dots=tile-slider_pages }}
+  </div>
+  <div class="tile-slider__arrow tile-slider__arrow--prev
+       {{#if tile-slider_prevDisabled}} tile-slider__arrow--disabled {{/if}}">
+    <div class="icon icon--arrow-slider-left-next tile-slider__arrow-icon"></div>
+  </div>
+  <div class="tile-slider__arrow tile-slider__arrow--next
+       {{#if tile-slider_nextDisabled}} tile-slider__arrow--disabled {{/if}}">
+    <div class="icon icon--arrow-slider-right-next tile-slider__arrow-icon"></div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="climatisation-control {{ styleModifier }}">
+  <div class="climatisation-control__info">
+    <span class="climatisation-control__icon icon icon--{{ climatisation-control_icon }}"></span>
+    <h2 class="climatisation-control__title">{{ climatisation-control_title }}</h2>
+  </div>
+
+  {{> molecules-button-inline
+      styleModifier="climatisation-control__button"
+      button-inline_label=climatisation-control_buttonLabel
+      button-inline_icon="arrow-right-hair"
+      button-inline_active=true
+      button-inline_multi-lines-centered=true
+      button-inline_disabled=climatisation-control_buttonDisabled }}
+
+</div>

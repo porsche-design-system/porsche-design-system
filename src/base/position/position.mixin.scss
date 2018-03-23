@@ -1,0 +1,11 @@
+@mixin -position($position-type) {
+  position: $position-type;
+}
+
+@mixin -position-absolute-coordinates($left: 0, $right: 0, $top: 0, $bottom: 0) {
+  @include -position(absolute);
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

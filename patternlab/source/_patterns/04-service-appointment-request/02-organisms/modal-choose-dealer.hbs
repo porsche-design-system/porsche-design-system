@@ -1,0 +1,30 @@
+{{> molecules-modal-base styleModifier="modal-choose-dealer -layer-blocking-higher" }}
+
+{{#*inline "modal-base_content" }}
+
+  {{> molecules-modal-header modal-header_title=modal-choose-dealer_headline }}
+  <div class="row -spacing-d">
+    <div class="column column--12 column--s-4">
+      {{> molecules-input input_icon="search" input_label=modal-choose-dealer_inputLabel }}
+    </div>
+    <div class="column column--12 column--s-8 -spacing-12 -spacing-zero-s">
+      {{> molecules-button-primary button-primary_label="Umkreissuche" button-primary_icon="gps" }}
+    </div>
+  </div>
+  <div class="row modal-choose-dealer__row flex--row-wrap">
+    {{#if modal-choose-dealer_showResults }}
+      <div class="column column--12 column--m-6 column--s-12 column--l-4 -spacing-24 -spacing-zero-m">
+        {{> service-appointment-request-slider-choose-dealer }}
+      </div>
+    {{/if}}
+
+    <div class="column column--12  {{#if modal-choose-dealer_showResults }} column--s-12 column--m-6 column--l-8 {{else}} column--12 column--s-12 column--m-12{{/if}}">
+      <img src="{{googleMaps.src}}" class="modal-choose-dealer__map">
+    </div>
+  </div>
+  {{> molecules-modal-footer
+      styleModifier="-spacing-30"
+      modal-footer_addFormButtonGroup=false
+      modal-footer_addFormButtonGroupCustom=false
+  }}
+{{/inline}}

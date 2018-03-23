@@ -1,0 +1,139 @@
+@import '../../../setup/color-palette.setup.scss';
+@import '../../../mixins/px-rem-converter.scss';
+@import '../../../base/spacing/spacing.setup.scss';
+
+$visualization-car-reset: 0 !default;
+$visualization-car-vertical-spacing: rem(56px) !default;
+$visualization-car-vertical-spacing-xs: $spacing-48 !default;
+$visualization-car-vertical-spacing-s: 0 !default;
+$visualization-car-vertical-spacing-m: $spacing-24 !default;
+$visualization-car-vertical-spacing-l: 0 !default;
+
+$visualization-car-image-original-width: 1920 !default;
+$visualization-car-image-original-height: 1080 !default;
+
+$visualization-car-image-ratio: $visualization-car-image-original-height / $visualization-car-image-original-width * 100% !default;
+$visualization-car-image-position: 50% !default;
+$visualization-car-image-width: 135% !default;
+$visualization-car-image-width-s: 110% !default;
+$visualization-car-image-width-m: 130% !default;
+$visualization-car-image-width-l: 125% !default;
+$visualization-car-image-height: auto !default;
+
+$visualization-car-tire-pressure-line-width: 1px !default;
+$visualization-car-tire-pressure-line-height: rem(128px) !default;
+$visualization-car-tire-pressure-line-horizontal-alignment: auto !default;
+$visualization-car-tire-pressure-line-color: $color-palette-white !default;
+$visualization-car-tire-pressure-line-vertical-spacing: $spacing-6 !default;
+$visualization-car-tire-pressure-line-horizontal-spacing-s: $spacing-12 !default;
+
+$visualization-car-tire-pressure-horizontal-offset: -50% !default;
+$visualization-car-tire-pressure-horizontal-offset-front-s: $visualization-car-tire-pressure-line-horizontal-spacing-s !default;
+$visualization-car-tire-pressure-horizontal-offset-rear-s: calc(-100% - #{$visualization-car-tire-pressure-line-horizontal-spacing-s}) !default;
+$visualization-car-tire-pressure-horizontal-position-front: 76% !default;
+$visualization-car-tire-pressure-horizontal-position-front-s: 71% !default;
+$visualization-car-tire-pressure-horizontal-position-front-m: 75% !default;
+$visualization-car-tire-pressure-horizontal-position-front-l: 74% !default;
+$visualization-car-tire-pressure-horizontal-position-rear: 22% !default;
+$visualization-car-tire-pressure-horizontal-position-rear-s: 27% !default;
+$visualization-car-tire-pressure-horizontal-position-rear-m: 23% !default;
+$visualization-car-tire-pressure-horizontal-position-rear-l: 24% !default;
+$visualization-car-tire-pressure-vertical-position: 0 !default;
+
+$visualization-car-label-color: $color-palette-white !default;
+$visualization-car-label-info-color: $color-palette-grey-5 !default;
+
+$visualization-car-lock-status-size: rem(44px) !default;
+$visualization-car-lock-status-size-l: rem(56px) !default;
+$visualization-car-lock-status-background: rgba($color-palette-grey-9, .75) !default;
+$visualization-car-lock-status-border-color: $color-palette-white !default;
+$visualization-car-lock-status-border-radius: 50% !default;
+$visualization-car-lock-status-border-size: 1px !default;
+$visualization-car-lock-status-box-shadow: 0 0 rem(20px) rem(-2px) rgba($color-palette-black, .3) !default;
+$visualization-car-lock-status-offset: -50% !default;
+$visualization-car-lock-status-icon-size: $spacing-30 !default;
+$visualization-car-lock-status-icon-size-l: rem(40px) !default;
+$visualization-car-lock-status-icon-line-height: $visualization-car-lock-status-size !default;
+$visualization-car-lock-status-icon-line-height-l: $visualization-car-lock-status-size-l !default;
+$visualization-car-lock-status-icon-color: $color-palette-white !default;
+
+$visualization-car-lock-status-bonnet-position-top: 50% !default;
+$visualization-car-lock-status-bonnet-position-left: 82% !default;
+$visualization-car-lock-status-bonnet-position-left-xs: 82% !default;
+$visualization-car-lock-status-bonnet-position-left-s: 75% !default;
+$visualization-car-lock-status-bonnet-position-left-m: 79% !default;
+$visualization-car-lock-status-bonnet-position-left-l: 79% !default;
+
+$visualization-car-lock-status-roof-position-top: 50% !default;
+$visualization-car-lock-status-roof-position-left: 48% !default;
+$visualization-car-lock-status-roof-position-left-xs: 43% !default;
+$visualization-car-lock-status-roof-position-left-s: 43% !default;
+$visualization-car-lock-status-roof-position-left-m: 43% !default;
+$visualization-car-lock-status-roof-position-left-l: 42% !default;
+
+$visualization-car-lock-status-trunk-position-top: 50% !default;
+$visualization-car-lock-status-trunk-position-left: 13% !default;
+$visualization-car-lock-status-trunk-position-left-xs: 13% !default;
+$visualization-car-lock-status-trunk-position-left-s: 19% !default;
+$visualization-car-lock-status-trunk-position-left-m: 13% !default;
+$visualization-car-lock-status-trunk-position-left-l: 15% !default;
+
+$visualization-car-lock-status-position-vertical: 27% !default;
+$visualization-car-lock-status-position-vertical-xs: 26% !default;
+$visualization-car-lock-status-position-vertical-s: 23% !default;
+$visualization-car-lock-status-position-vertical-m: 24% !default;
+$visualization-car-lock-status-position-vertical-l: 21% !default;
+$visualization-car-lock-status-position-front-horizontal: 60% !default;
+$visualization-car-lock-status-position-front-horizontal-xs: 56% !default;
+$visualization-car-lock-status-position-front-horizontal-s: 52% !default;
+$visualization-car-lock-status-position-front-horizontal-m: 52% !default;
+$visualization-car-lock-status-position-front-horizontal-l: 51% !default;
+$visualization-car-lock-status-position-rear-horizontal: 36% !default;
+$visualization-car-lock-status-position-rear-horizontal-xs: 32% !default;
+$visualization-car-lock-status-position-rear-horizontal-s: 36% !default;
+$visualization-car-lock-status-position-rear-horizontal-m: 36% !default;
+$visualization-car-lock-status-position-rear-horizontal-l: 33% !default;
+
+$visualization-car-lock-status-front-left-position-top: $visualization-car-lock-status-position-vertical !default;
+$visualization-car-lock-status-front-left-position-top-xs: $visualization-car-lock-status-position-vertical-xs !default;
+$visualization-car-lock-status-front-left-position-top-s: $visualization-car-lock-status-position-vertical-s !default;
+$visualization-car-lock-status-front-left-position-top-m: $visualization-car-lock-status-position-vertical-m !default;
+$visualization-car-lock-status-front-left-position-top-l: $visualization-car-lock-status-position-vertical-l !default;
+$visualization-car-lock-status-front-left-position-left: $visualization-car-lock-status-position-front-horizontal !default;
+$visualization-car-lock-status-front-left-position-left-xs: $visualization-car-lock-status-position-front-horizontal-xs !default;
+$visualization-car-lock-status-front-left-position-left-s: $visualization-car-lock-status-position-front-horizontal-s !default;
+$visualization-car-lock-status-front-left-position-left-m: $visualization-car-lock-status-position-front-horizontal-m !default;
+$visualization-car-lock-status-front-left-position-left-l: $visualization-car-lock-status-position-front-horizontal-l !default;
+
+$visualization-car-lock-status-front-right-position-top: 100% - $visualization-car-lock-status-position-vertical !default;
+$visualization-car-lock-status-front-right-position-top-xs: 100% - $visualization-car-lock-status-position-vertical-xs !default;
+$visualization-car-lock-status-front-right-position-top-s: 100% - $visualization-car-lock-status-position-vertical-s !default;
+$visualization-car-lock-status-front-right-position-top-m: 100% - $visualization-car-lock-status-position-vertical-m !default;
+$visualization-car-lock-status-front-right-position-top-l: 100% - $visualization-car-lock-status-position-vertical-l !default;
+$visualization-car-lock-status-front-right-position-left: $visualization-car-lock-status-position-front-horizontal !default;
+$visualization-car-lock-status-front-right-position-left-xs: $visualization-car-lock-status-position-front-horizontal-xs !default;
+$visualization-car-lock-status-front-right-position-left-s: $visualization-car-lock-status-position-front-horizontal-s !default;
+$visualization-car-lock-status-front-right-position-left-m: $visualization-car-lock-status-position-front-horizontal-m !default;
+$visualization-car-lock-status-front-right-position-left-l: $visualization-car-lock-status-position-front-horizontal-l !default;
+
+$visualization-car-lock-status-rear-left-position-top: $visualization-car-lock-status-position-vertical !default;
+$visualization-car-lock-status-rear-left-position-top-xs: $visualization-car-lock-status-position-vertical-xs !default;
+$visualization-car-lock-status-rear-left-position-top-s: $visualization-car-lock-status-position-vertical-s !default;
+$visualization-car-lock-status-rear-left-position-top-m: $visualization-car-lock-status-position-vertical-m !default;
+$visualization-car-lock-status-rear-left-position-top-l: $visualization-car-lock-status-position-vertical-l !default;
+$visualization-car-lock-status-rear-left-position-left: $visualization-car-lock-status-position-rear-horizontal !default;
+$visualization-car-lock-status-rear-left-position-left-xs: $visualization-car-lock-status-position-rear-horizontal-xs !default;
+$visualization-car-lock-status-rear-left-position-left-s: $visualization-car-lock-status-position-rear-horizontal-s !default;
+$visualization-car-lock-status-rear-left-position-left-m: $visualization-car-lock-status-position-rear-horizontal-m !default;
+$visualization-car-lock-status-rear-left-position-left-l: $visualization-car-lock-status-position-rear-horizontal-l !default;
+
+$visualization-car-lock-status-rear-right-position-top: 100% - $visualization-car-lock-status-position-vertical !default;
+$visualization-car-lock-status-rear-right-position-top-xs: 100% - $visualization-car-lock-status-position-vertical-xs !default;
+$visualization-car-lock-status-rear-right-position-top-s: 100% - $visualization-car-lock-status-position-vertical-s !default;
+$visualization-car-lock-status-rear-right-position-top-m: 100% - $visualization-car-lock-status-position-vertical-m !default;
+$visualization-car-lock-status-rear-right-position-top-l: 100% - $visualization-car-lock-status-position-vertical-l !default;
+$visualization-car-lock-status-rear-right-position-left: $visualization-car-lock-status-position-rear-horizontal !default;
+$visualization-car-lock-status-rear-right-position-left-xs: $visualization-car-lock-status-position-rear-horizontal-xs !default;
+$visualization-car-lock-status-rear-right-position-left-s: $visualization-car-lock-status-position-rear-horizontal-s !default;
+$visualization-car-lock-status-rear-right-position-left-m: $visualization-car-lock-status-position-rear-horizontal-m !default;
+$visualization-car-lock-status-rear-right-position-left-l: $visualization-car-lock-status-position-rear-horizontal-l !default;

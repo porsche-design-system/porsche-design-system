@@ -1,0 +1,137 @@
+<div class="-background-grey-9-1 -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-white">Loader Base</h2>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Default</h4>
+
+      {{> molecules-loader-base styleModifier="-spacing-12" }}
+
+    </div>
+  </div>
+</div>
+
+<div class="-background-white -spacing-inner-a">
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Dark Version</h4>
+      <p class="-text-size-small -text-color-grey-5">Deprecated naming: PL6</p>
+
+      {{> molecules-loader-base styleModifier="-spacing-12" loader-base_dark=true }}
+
+    </div>
+  </div>
+</div>
+
+<div class="-background-grey-9-1 -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-white">Loader Application</h2>
+  <p class="-text-size-small -text-color-grey-5">Deprecated naming: PL1</p>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+
+      {{> molecules-loader-application }}
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="-background-grey-9-1 -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-white">Loader Application with Text</h2>
+  <p class="-text-size-small -text-color-grey-5">Deprecated naming: PL1</p>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+
+      {{> molecules-loader-application loader-application_label="Lade Anwendung..."}}
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="-background-grey-9-1 -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-white">Loader List</h2>
+  <p class="-text-size-small -text-color-grey-5">Deprecated naming: PL2a</p>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+
+      {{> molecules-loader-list }}
+
+    </div>
+  </div>
+</div>
+
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Loader Button</h2>
+  <p class="-text-size-small -text-color-grey-5">Deprecated naming: PL4</p>
+  <div class="row">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Button Inline with Loader</h4>
+
+      {{> molecules-button-inline styleModifier="-spacing-12" button-inline_label="Some button label" button-inline_icon="registration" button-inline_disabled=true button-inline_loading=true}}
+
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Button Inline Multiline with Loader</h4>
+      <div style="width: 200px;">
+
+        {{> molecules-button-inline styleModifier="-spacing-12" button-inline_label="Some long button label over two lines" button-inline_icon="arrow-right-hair" button-inline_multi-lines-centered=true button-inline_disabled=true button-inline_loading=true}}
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Button Inline Stretch with Loader</h4>
+
+      {{> molecules-button-inline styleModifier="-spacing-12" button-inline_label="Some button label" button-inline_icon="delete" button-inline_stretch=true button-inline_disabled=true button-inline_loading=true}}
+
+    </div>
+  </div>
+</div>
+
+<div class="-background-grey-9-1 -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-white">Loader Module</h2>
+  <p class="-text-size-small -text-color-grey-5">Deprecated naming: PL2b</p>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+
+      <div class="-position-relative" style="width: 70%; height: 300px; margin: 0 auto;">
+
+        {{> molecules-loader-module }}
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Loader Fullpage</h2>
+  <p class="-text-size-small -text-color-grey-5">Deprecated naming: PL5</p>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Default</h4>
+
+      <div class="-position-relative -spacing-12" style="width: 100%; height: 500px;">
+
+        {{> molecules-loader-fullpage }}
+
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="column column--12 -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Without Label</h4>
+
+      <div class="-position-relative -spacing-12" style="width: 100%; height: 500px;">
+
+        {{> molecules-loader-fullpage loader-fullpage_label="" }}
+
+      </div>
+
+    </div>
+  </div>
+</div>

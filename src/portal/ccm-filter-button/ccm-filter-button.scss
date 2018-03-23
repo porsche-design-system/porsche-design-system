@@ -1,0 +1,62 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'ccm-filter-button.setup.scss';
+
+.#{$global-class-prefix}ccm-filter-button-flyout {
+  &__content {
+    height: $filter-flyout-content-dimension;
+    background-color: $filter-flyout-content-background-color;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  &__header {
+    @include -spacing-30('right', 'padding');
+    @include -spacing-30('left', 'padding');
+
+    @include breakpoint('xxs', 's') {
+      @include -spacing-18('right', 'padding');
+      @include -spacing-18('left', 'padding');
+    }
+  }
+
+  &__title {
+    @include -text-size-4-thin;
+    @include -overflow-ellipsis;
+
+    max-width: $filter-flyout-title-max-width;
+  }
+
+  &__body {
+    @include -spacing-30('right', 'padding');
+    @include -spacing-30('left', 'padding');
+    @include -spacing-30('bottom', 'padding');
+
+    @include breakpoint('xxs', 's') {
+      @include -spacing-18('right', 'padding');
+      @include -spacing-18('left', 'padding');
+    }
+
+    &-filter-entry {
+      @include -spacing-18('top', 'margin');
+
+      :first-child {
+        margin-top: $filter-flyout-body-filter-entry-padding-first-child;
+      }
+    }
+  }
+
+  &__footer {
+    left: $filter-flyout-footer-position;
+    width: $filter-flyout-footer-width;
+
+    @include breakpoint('xs') {
+      position: relative;
+      width: auto;
+    }
+  }
+}

@@ -1,0 +1,4 @@
+@import '../../mixins/px-rem-converter.scss';
+
+$price-communication-limiter-width: 70% !default;
+$price-communication-limiter-max-width: rem(800px) !default;

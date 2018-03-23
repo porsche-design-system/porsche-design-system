@@ -1,0 +1,30 @@
+<div class="event-tile">
+  <h2 class="-text-size-3-thin -text-color-white -spacing-b">{{event-tile_date}}</h2>
+  <div class="event-tile__wrapper">
+    <div class="event-tile__inner">
+      <div class="row flex flex--row-wrap">
+        <div class="column column--12 column--l-5  flex flex--column">
+          <img class="event-tile__img" src={{event-tile_image}}>
+        </div>
+        <div class="column column--12 column--l-7 ">
+          <h3 class="-text-color-black -text-size-4-thin event-tile__inner-headline">{{event-tile_headline}}</h3>
+
+          <p class="-text-color-black -text-size-copy">{{event-tile_subheader}}</p>
+
+          <p class="-text-color-black -text-size-copy -spacing-c">{{event-tile_description}}</p>
+
+          <div class="row">
+            <div class="column column--12  column--l-4">
+
+              {{> molecules-button-inline styleModifier="-spacing-18"
+                button-inline_stretch=true
+              button-inline_label="Mehr erfahren"
+              button-inline_icon="arrow-right-thin" }}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

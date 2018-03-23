@@ -1,0 +1,11 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "slide-tutorial_title": "Sicherheitscode erstellen",
+  "slide-tutorial_copy1": "Erstellen Sie einen Sicherheitscode durch Eingabe einer 4-stelligen Zahlenkombination, die Sie sich gut merken können.",
+  "slide-tutorial_copy1Tooltip": true,
+  "slide-tutorial_copy2": false,
+  "slide-tutorial_image": "../../images/portal/tutorial/tutorial-04.jpg",
+  "slide-tutorial_slideshow": false,
+  "slide-tutorial_showPairingCode": false,
+  "slide-tutorial_showSPinForm": true
+}

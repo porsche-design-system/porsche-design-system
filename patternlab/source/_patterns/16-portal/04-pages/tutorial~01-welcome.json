@@ -1,0 +1,10 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "slide-tutorial_title": "Herzlich willkommen, Max Mustermann",
+  "slide-tutorial_copy1": "Ihre Porsche ID wurde erfolgreich aktiviert!",
+  "slide-tutorial_copy2": "Ihre Porsche ID ist Ihr persönlicher Zugang zu My Porsche. So erhalten Sie passend zugeschnittene Informationen, interessante Angebote und hilfreiche Funktionen rund um Porsche.",
+  "slide-tutorial_image": "../../images/portal/tutorial/tutorial-01.jpg",
+  "slide-tutorial_slideshow": false,
+  "slide-tutorial_showPairingCode": false,
+  "slide-tutorial_showSPinForm": false
+}

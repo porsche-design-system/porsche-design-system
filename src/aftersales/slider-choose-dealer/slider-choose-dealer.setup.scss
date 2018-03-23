@@ -1,0 +1,10 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$slider-choose-dealer-container-max-height: rem(400px) !default;
+$slider-choose-dealer-scroll-button-width: 100% !default;
+$slider-choose-dealer-scroll-button-background-color: rgba($color-palette-white, .9) !default;
+$slider-choose-dealer-scroll-button-z-index: 1 !default;
+$slider-choose-dealer-scroll-button-height: $spacing-30 !default;
+$slider-choose-dealer-scroll-button-position-reset: 0 !default;

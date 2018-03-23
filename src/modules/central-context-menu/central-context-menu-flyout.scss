@@ -1,0 +1,60 @@
+@import 'central-context-menu-flyout.setup.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../base/font/font.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/position/position.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}central-context-menu-flyout {
+  $bem-block: &;
+
+  @include -position(absolute);
+
+  width: $central-context-menu-flyout-width;
+  left: $central-context-menu-flyout-position-horizontal;
+  top: $central-context-menu-flyout-position-vertical;
+  z-index: $central-context-menu-flyout-z-index;
+
+  &__container {
+    @include -position(relative);
+    @include -background-grey-1;
+    @include -spacing-inner-a;
+    display: block;
+    width: $central-context-menu-flyout-container-width;
+  }
+
+  &__close {
+    @include -position(absolute);
+    @include -spacing-18(left);
+    @include -spacing-18(top);
+    @include -spacing-18(right);
+    @include -spacing-18(bottom);
+
+    @include breakpoint(s) {
+      @include -spacing-24(left);
+      @include -spacing-24(bottom);
+    }
+
+    @include breakpoint(l) {
+      @include -spacing-30(left);
+      @include -spacing-30(bottom);
+    }
+
+    cursor: pointer;
+    right: $central-context-menu-flyout-close-position-horizontal;
+    top: $central-context-menu-flyout-close-position-vertical;
+    color: $central-context-menu-flyout-close-color;
+
+    &:hover {
+      color: $central-context-menu-flyout-close-color-hovered;
+    }
+  }
+
+  &__content {
+    @include -spacing-18;
+    @include -text-size-copy;
+  }
+}

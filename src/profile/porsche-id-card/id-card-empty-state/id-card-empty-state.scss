@@ -1,0 +1,37 @@
+@import '../../../setup/global-variables.scss';
+@import '../../../base/align/align.mixin.scss';
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/text-color/text-color.mixin.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import './id-card-empty-state.setup.scss';
+
+.#{$global-class-prefix}id-card-empty-state {
+  @include -align-center;
+
+  &__icon {
+    @include -align-center;
+    @include -spacing-30;
+
+    display: inline-block;
+    width: $id-card-empty-state-icon-width;
+    height: $id-card-empty-state-icon-height;
+
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url($id-card-empty-state-icon-background-src);
+  }
+
+  &__body {
+    @include -spacing-12;
+    @include -align-center;
+  }
+
+  &__copytext {
+    @include -text-size-copy;
+    @include -text-color-white;
+  }
+
+  &__store-link {
+    @include -spacing-18;
+  }
+}

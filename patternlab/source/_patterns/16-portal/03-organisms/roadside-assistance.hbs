@@ -1,0 +1,33 @@
+<div class="roadside-assistance flex-s {{ styleModifier }}">
+  <div class="roadside-assistance__imageholder column column--12 column--s-5 column--m-4">
+
+    {{> molecules-image-cover
+        image-cover_image=roadside-assistance_image
+        styleModifier="roadside-assistance__image" }}
+
+  </div>
+  <div class="roadside-assistance__content column column--12 column--s-7 column--m-8">
+    <span class="roadside-assistance__headline" >
+      {{ roadside-assistance_headline }}
+    </span>
+    <span class="roadside-assistance__headline roadside-assistance__headline--additonal-text" >
+      {{ roadside-assistance_headlineAdditonalText }}
+    </span>
+    <span class="roadside-assistance__subheadline" >
+      {{ roadside-assistance_subheadline }}
+    </span>
+    <div class="roadside-assistance__contact">
+      <span class="icon icon--phone roadside-assistance__contact-icon"></span>
+      <span class="roadside-assistance__contact-text">
+        {{ roadside-assistance_text }}
+      </span>
+    </div>
+
+    {{> molecules-button-inline
+        button-inline_label=roadside-assistance_buttonLabel
+        button-inline_icon="info"
+        button-inline_ghostSmall=true
+        styleModifier="-spacing-c" }}
+
+  </div>
+</div>

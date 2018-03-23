@@ -1,0 +1,168 @@
+{
+  "list-view": [
+    {
+      "title": "05.05.2017, 17:17 Uhr",
+      "tags": [
+        {
+          "tag": "Trip ab Start",
+          "icon": false,
+          "divider": true
+        },
+        {
+          "tag": "22 min",
+          "icon": "duration-next",
+          "divider": false
+        },
+        {
+          "tag": "27 km",
+          "icon": "route-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 66 km/h",
+          "icon": "speed-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 2,7 l/100 km",
+          "icon": "fuel-next",
+          "divider": false
+        },
+        {
+          "tag": "12 km",
+          "icon": "route-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 2,8 kWh/100 km",
+          "icon": "e-fuel-next",
+          "divider": false
+        }
+      ],
+      "active": true,
+      "checkable": false,
+      "hoverable": false,
+      "expanded": false
+    },
+    {
+      "title": "05.05.2017, 17:17 Uhr",
+      "tags": [
+        {
+          "tag": "Trip ab Start",
+          "icon": false,
+          "divider": true
+        },
+        {
+          "tag": "22 min",
+          "icon": "duration-next",
+          "divider": false
+        },
+        {
+          "tag": "27 km",
+          "icon": "route-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 66 km/h",
+          "icon": "speed-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 2,7 l/100 km",
+          "icon": "fuel-next",
+          "divider": false
+        },
+        {
+          "tag": "12 km",
+          "icon": "route-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 2,8 kWh/100 km",
+          "icon": "e-fuel-next",
+          "divider": false
+        }
+      ],
+      "active": true,
+      "checkable": false,
+      "hoverable": false,
+      "expanded": false
+    },
+    {
+      "title": "05.05.2017, 17:17 Uhr",
+      "tags": [
+        {
+          "tag": "Trip ab Start",
+          "icon": false,
+          "divider": true
+        },
+        {
+          "tag": "22 min",
+          "icon": "duration-next",
+          "divider": false
+        },
+        {
+          "tag": "27 km",
+          "icon": "route-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 66 km/h",
+          "icon": "speed-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 2,7 l/100 km",
+          "icon": "fuel-next",
+          "divider": false
+        },
+        {
+          "tag": "12 km",
+          "icon": "route-next",
+          "divider": false
+        },
+        {
+          "tag": "ø 2,8 kWh/100 km",
+          "icon": "e-fuel-next",
+          "divider": false
+        }
+      ],
+      "active": true,
+      "checkable": false,
+      "hoverable": false,
+      "expanded": false
+    }
+  ],
+  "trip-statistics_items": [
+    {
+      "label": "Fahrzeit",
+      "icon": "duration-next",
+      "text": "22",
+      "textUnit": "km",
+      "eMobility": false
+    },
+    {
+      "label": "Fahrtstrecke",
+      "icon": "route-next",
+      "text": "32",
+      "textUnit": "km",
+      "eMobility": false
+    },
+    {
+      "label": "Geschwindigkeit",
+      "icon": "speed-next",
+      "text": "12",
+      "textUnit": "km",
+      "eMobility": false
+    },
+    {
+      "label": "Elektr. Verbrauch",
+      "icon": "fuel-next",
+      "text": "55",
+      "textUnit": "km",
+      "eMobility": true
+    }
+  ],
+  "list-view_eMobility": true,
+  "trip-statistics_eMobility": true
+}

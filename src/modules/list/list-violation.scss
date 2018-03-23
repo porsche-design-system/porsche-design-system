@@ -1,0 +1,78 @@
+@import './list-violation.setup.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}list-violation {
+  /* prevent sass render from removing empty selectors */
+
+  &__item {
+    @include -spacing-inner-a;
+    background-color: $list-violation-item-background-color;
+
+    @include breakpoint('s') {
+      padding-top: $list-violation-item-spacing-vertical;
+      padding-bottom: $list-violation-item-spacing-vertical;
+    }
+
+    &:not(:first-child) {
+      @include -spacing-3;
+    }
+  }
+
+  &__row {
+    position: relative;
+
+    @include breakpoint('s') {
+      @include flex;
+    }
+  }
+
+  &__title {
+    @include -text-size-4-thin;
+  }
+
+  &__content {
+    @include -text-size-copy;
+
+    &--left {
+      @include breakpoint('s') {
+        @include flex; // Fix for Safari 6
+        @include flex--center-vertical; // Fix for Safari 6
+        transform: translate(-$list-violation-content-border-size, 0); // Fix for Safari 6
+      }
+    }
+
+    &--right {
+      @include breakpoint('s') {
+        @include flex;
+        @include flex--center-horizontal;
+        transform: translate(-$list-violation-content-border-size, 0);
+        padding-left: $list-violation-content-divider-spacing-horizontal;
+        border-left: $list-violation-content-border-size solid $list-violation-content-separator-color;
+      }
+    }
+  }
+
+  &__tags {
+    @include -spacing-3;
+    @include -text-size-copy;
+
+    li {
+      @include breakpoint('s') {
+        display: inline-block;
+
+        &:not(:first-child)::before {
+          content: '|';
+          padding: {
+            left: $list-violation-tags-divider-spacing-horizontal;
+            right: $list-violation-tags-divider-spacing-horizontal;
+          }
+          color: $list-violation-tags-divider-color;
+        }
+      }
+    }
+  }
+}

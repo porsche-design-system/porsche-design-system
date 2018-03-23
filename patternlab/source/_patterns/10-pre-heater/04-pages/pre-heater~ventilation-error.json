@@ -1,0 +1,6 @@
+{
+  "pre-heater_ventilationControlButtonGroupVisibility": false,
+  "pre-heater_ventilationControlButtonDisabled": true,
+  "pre-heater_statusBarLabelPrimary": "Standheizungsfehler",
+  "pre-heater_statusBarError": true
+}

@@ -1,0 +1,15 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$chart-bar-reset: 0 !default;
+
+$chart-bar-divider-width: 1px !default;
+$chart-bar-divider-height: $spacing-6 !default;
+$chart-bar-divider-height-max: rem(10px) !default;
+$chart-bar-divider-color: rgba($color-palette-white, .5) !default;
+
+$chart-bar-item-height: $spacing-3 !default;
+$chart-bar-item-color: rgba($color-palette-white, .15) !default;
+
+$chart-bar-filler-color: $color-palette-white !default;

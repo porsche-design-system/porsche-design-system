@@ -1,0 +1,7 @@
+@import '../../../setup/color-palette.setup.scss';
+@import '../../../mixins/px-rem-converter.scss';
+
+$over-the-air-update-control-background-color: $color-palette-grey-9 !default;
+
+$over-the-air-update-control-info-width: 100% !default;
+$over-the-air-update-control-info-max-width: rem(800px) !default;

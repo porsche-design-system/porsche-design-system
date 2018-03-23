@@ -1,0 +1,33 @@
+<div class="tile-events {{ styleModifier }}">
+  <div class="tile-events__content">
+    <div class="tile-events__headline">
+      {{ tile-events_headline }}
+    </div>
+    <ul class="tile-events__item-container">
+      {{#each tile-events_items}}
+        <li class="tile-events__item">
+          {{> molecules-tile-headline
+            tile-headline_small=this.small
+            tile-headline_headline=this.headline
+          }}
+          {{> molecules-tile-paragraph
+              tile-paragraph_text=this.date
+          }}
+
+          {{> molecules-tile-paragraph
+              tile-paragraph_text=this.text
+          }}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="tile-events__button">
+
+    {{> molecules-button-inline
+        button-inline_icon=tile-events_buttonIcon
+        button-inline_label=tile-events_buttonLabel
+        button-inline_active=tile-events_buttonActive
+        button-inline_stretch=true }}
+
+  </div>
+</div>

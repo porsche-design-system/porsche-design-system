@@ -1,0 +1,20 @@
+{
+  "service-appointment-confirmation": {
+    "pageHeadline": "Vielen Dank für Ihre Servicetermin-Anfrage.",
+    "pageDescription": "",
+    "nbaHeadline": "Weitere Optionen"
+  },
+
+  "next-best-actions": [
+    {
+      "label": "Zur Startseite",
+      "icon": "arrow-right-thin",
+      "iconColor": "-text-color-red-1"
+    },
+    {
+      "label": "Zur Fahrzeug-Detailseite",
+      "icon": "arrow-right-thin",
+      "iconColor": "-text-color-red-1"
+    }
+  ]
+}

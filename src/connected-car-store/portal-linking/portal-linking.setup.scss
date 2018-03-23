@@ -1,0 +1,19 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$portal-linking-items-space-horizontal: $spacing-6 / 2 !default;
+
+$portal-linking-container-width: 100% !default;
+$portal-linking-container-width-s: 50% !default;
+$portal-linking-container-width-m: 25% !default;
+
+$portal-linking-link-background-color: $color-palette-grey-9 !default;
+$portal-linking-link-background-color-hover: $color-palette-grey-8 !default;
+$portal-linking-link-width: 100% !default;
+$portal-linking-link-color: $color-palette-white !default;
+$portal-linking-link-padding-vertical: $spacing-12 !default;
+$portal-linking-link-border-size: rem(1px) !default;
+
+$portal-linking-icon-fontsize: $spacing-24 !default;
+$portal-linking-icon-fontsize-s: $spacing-60 !default;

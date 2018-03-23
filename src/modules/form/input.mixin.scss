@@ -1,0 +1,111 @@
+@import 'input.setup.scss';
+@import '../../mixins/breakpoint.scss';
+
+@mixin input-field-is-focused {
+  &::placeholder {
+    opacity: $input-placeholder-opacity;
+  }
+}
+
+@mixin input-field-is-disabled {
+  color: $input-field-text-color-disabled;
+
+  &::placeholder {
+    color: $input-field-text-color-disabled;
+  }
+}
+
+@mixin input-field-is-focused-or-input-field-is-not-empty($bem-block) {
+  padding: {
+    top: $input-field-padding-vertical-top-focus;
+    bottom: $input-field-padding-vertical-bottom-focus;
+  }
+
+  @include breakpoint('xs', 'm') {
+    padding: {
+      top: $input-field-padding-vertical-top-focus-xs;
+      bottom: $input-field-padding-vertical-bottom-focus-xs;
+    }
+  }
+
+  @include breakpoint('m') {
+    padding: {
+      top: $input-field-padding-vertical-top-focus-m;
+      bottom: $input-field-padding-vertical-bottom-focus-m;
+    }
+  }
+
+  & + #{$bem-block}__label { // sass-lint:disable-line no-combinators
+    top: $input-label-position-top-focus;
+    opacity: $input-placeholder-opacity-focus;
+
+    @include breakpoint('xs', 'm') {
+      top: $input-label-position-top-focus-xs;
+    }
+
+    @include breakpoint('m') {
+      top: $input-label-position-top-focus-m;
+    }
+  }
+}
+
+@mixin input-field-has-error {
+  color: $input-field-text-color-error;
+  border-color: $input-field-text-color-error;
+  border-width: $input-field-border-size-error;
+  padding: {
+    top: calc(#{$input-field-padding-vertical} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    right: calc(#{$input-field-padding-horizontal} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    bottom: calc(#{$input-field-padding-vertical} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    left: calc(#{$input-field-padding-horizontal} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+  }
+
+  @include breakpoint('xs', 'm') {
+    padding: {
+      top: calc(#{$input-field-padding-vertical-xs} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+      bottom: calc(#{$input-field-padding-vertical-xs} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    }
+  }
+
+  @include breakpoint('m') {
+    padding: {
+      top: calc(#{$input-field-padding-vertical-m} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+      right: calc(#{$input-field-padding-horizontal-m} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+      bottom: calc(#{$input-field-padding-vertical-m} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+      left: calc(#{$input-field-padding-horizontal-m} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    }
+  }
+}
+
+@mixin input-field-with-icon-has-error {
+  padding: {
+    right: calc(#{$input-field-padding-horizontal} * 2 + #{$input-icon-size} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+  }
+
+  @include breakpoint('m') {
+    padding: {
+      right: calc(#{$input-field-padding-horizontal-m} * 2 + #{$input-icon-size-m} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    }
+  }
+}
+
+@mixin input-field-has-error-and-is-focused-or-input-field-has-error-and-is-not-empty {
+  padding: {
+    top: calc(#{$input-field-padding-vertical-top-focus} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    bottom: calc(#{$input-field-padding-vertical-bottom-focus} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+  }
+
+  @include breakpoint('xs', 'm') {
+    padding: {
+      top: calc(#{$input-field-padding-vertical-top-focus-xs} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+      bottom: calc(#{$input-field-padding-vertical-bottom-focus-xs} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    }
+  }
+
+  @include breakpoint('m') {
+    padding: {
+      top: calc(#{$input-field-padding-vertical-top-focus-m} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+      bottom: calc(#{$input-field-padding-vertical-bottom-focus-m} - ( #{$input-field-border-size-error} - #{$input-field-border-size} ));
+    }
+  }
+}

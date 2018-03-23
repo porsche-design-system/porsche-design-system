@@ -1,0 +1,69 @@
+<div class="visualization-car {{ styleModifier }}">
+  <div class="visualization-car__tire-pressure visualization-car__tire-pressure--front-left">
+    <span class="visualization-car__label">{{ visualization-car_tirePressureFrontLeft }}</span>
+    <span class="visualization-car__label visualization-car__label--info">{{ visualization-car_tirePressureDiffFrontLeft }}</span>
+  </div>
+  <div class="visualization-car__tire-pressure visualization-car__tire-pressure--front-right">
+    <span class="visualization-car__label">{{ visualization-car_tirePressureFrontRight }}</span>
+    <span class="visualization-car__label visualization-car__label--info">{{ visualization-car_tirePressureDiffFrontRight }}</span>
+  </div>
+  <div class="visualization-car__tire-pressure visualization-car__tire-pressure--rear-left">
+    <span class="visualization-car__label">{{ visualization-car_tirePressureRearLeft }}</span>
+    <span class="visualization-car__label visualization-car__label--info">{{ visualization-car_tirePressureDiffRearLeft }}</span>
+  </div>
+  <div class="visualization-car__tire-pressure visualization-car__tire-pressure--rear-right">
+    <span class="visualization-car__label">{{ visualization-car_tirePressureRearRight }}</span>
+    <span class="visualization-car__label visualization-car__label--info">{{ visualization-car_tirePressureDiffRearRight }}</span>
+  </div>
+  <img class="visualization-car__image" src="{{ visualization-car_image }}">
+
+  {{# if visualization-car_isBonnetOpen }}
+    <span class="visualization-car__lock-status visualization-car__lock-status--bonnet
+                {{#if visualization-car_isModelSUV}} visualization-car__lock-status--bonnet-open-suv {{/if}}
+                {{#if visualization-car_isModelSport}} visualization-car__lock-status--bonnet-open-sport {{/if}}"></span>
+  {{/ if }}
+
+  {{# if visualization-car_isRoofOpen }}
+    <span class="visualization-car__lock-status visualization-car__lock-status--roof
+                {{#if visualization-car_isModelSUV}} visualization-car__lock-status--roof-open-suv {{/if}}
+                {{#if visualization-car_isModelSport}} visualization-car__lock-status--roof-open-sport {{/if}}"></span>
+  {{/ if }}
+
+  {{# if visualization-car_isTrunkOpen }}
+    <span class="visualization-car__lock-status visualization-car__lock-status--trunk
+                {{#if visualization-car_isModelSUV}} visualization-car__lock-status--trunk-open-suv {{/if}}
+                {{#if visualization-car_isModelSport}} visualization-car__lock-status--trunk-open-sport {{/if}}"></span>
+  {{/ if }}
+
+  {{# if visualization-car_isFrontLeftDoorOpen }}
+    <span class="visualization-car__lock-status visualization-car__lock-status--front-left visualization-car__lock-status--front-left-door-open"></span>
+  {{else if visualization-car_isFrontLeftDoorUnlocked}}
+    <span class="visualization-car__lock-status visualization-car__lock-status--front-left visualization-car__lock-status--front-left-door-unlocked"></span>
+  {{else if visualization-car_isFrontLeftWindowOpen}}
+    <span class="visualization-car__lock-status visualization-car__lock-status--front-left visualization-car__lock-status--front-left-window-open"></span>
+  {{/ if }}
+
+  {{# if visualization-car_isFrontRightDoorOpen }}
+    <span class="visualization-car__lock-status visualization-car__lock-status--front-right visualization-car__lock-status--front-right-door-open"></span>
+  {{else if visualization-car_isFrontRightDoorUnlocked}}
+    <span class="visualization-car__lock-status visualization-car__lock-status--front-right visualization-car__lock-status--front-right-door-unlocked"></span>
+  {{else if visualization-car_isFrontRightWindowOpen}}
+    <span class="visualization-car__lock-status visualization-car__lock-status--front-right visualization-car__lock-status--front-right-window-open"></span>
+  {{/ if }}
+
+  {{# if visualization-car_isRearLeftDoorOpen }}
+    <span class="visualization-car__lock-status visualization-car__lock-status--rear-left visualization-car__lock-status--rear-left-door-open"></span>
+  {{else if visualization-car_isRearLeftDoorUnlocked}}
+    <span class="visualization-car__lock-status visualization-car__lock-status--rear-left visualization-car__lock-status--rear-left-door-unlocked"></span>
+  {{else if visualization-car_isRearLeftWindowOpen}}
+    <span class="visualization-car__lock-status visualization-car__lock-status--rear-left visualization-car__lock-status--rear-left-window-open"></span>
+  {{/ if }}
+
+  {{# if visualization-car_isRearRightDoorOpen }}
+    <span class="visualization-car__lock-status visualization-car__lock-status--rear-right visualization-car__lock-status--rear-right-door-open"></span>
+  {{else if visualization-car_isRearRightDoorUnlocked}}
+    <span class="visualization-car__lock-status visualization-car__lock-status--rear-right visualization-car__lock-status--rear-right-door-unlocked"></span>
+  {{else if visualization-car_isRearRightWindowOpen}}
+    <span class="visualization-car__lock-status visualization-car__lock-status--rear-right visualization-car__lock-status--rear-right-window-open"></span>
+  {{/ if }}
+</div>

@@ -1,0 +1,31 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "recall-reminder_headline": "Aktuelle Rückrufaktionen",
+  "recall-reminder_noRecallAvailable": false,
+  "recall-reminder_additionalRecalls": true,
+  "recall-reminder_layerBlocking": false,
+
+  "list-message": [
+    {
+      "title": "Mängel an Airbags der Modelle 911 Carrera 4 (991 II) und Carrera 4S (991 II)",
+      "subtitle": "Aktionsnummer 12345677",
+      "dateTitle": "Datum Rückrufbericht: ",
+      "dateTime": "2017/07/28",
+      "detail": false
+    },
+    {
+      "title": "Carrera 4S (991 II): Sicherungsring am Lagerblock des Fußhebelwerks kann sich lösen",
+      "subtitle": "Aktionsnummer 12345677",
+      "dateTitle": "Datum Rückrufbericht: ",
+      "dateTime": "2017/07/20",
+      "detail": false
+    },
+    {
+      "title": "Mängel an Airbags der Modelle 911 Carrera 4 (991 II) und Carrera 4S (991 II)",
+      "subtitle": "Aktionsnummer 12345677",
+      "dateTitle": "Datum Rückrufbericht: ",
+      "dateTime": "2017/06/13",
+      "detail": false
+    }
+  ]
+}

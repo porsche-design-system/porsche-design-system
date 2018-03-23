@@ -1,0 +1,29 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$list-message-item-spacing-vertical: $spacing-18 !default;
+$list-message-item-border-color: $color-palette-blue-1 !default;
+$list-message-item-background-color: $color-palette-white !default;
+$list-message-item-text-color: $color-palette-grey-4 !default;
+$list-message-item-spacing-left: rem(45px) !default;
+$list-message-item-spacing-left-xs: rem(95px) !default;
+$list-message-item-border-left-width: $spacing-6 !default;
+$list-message-item-border-left-width-xs: $spacing-12 !default;
+$list-message-item-border-left-width-open: 0 !default;
+
+$list-message-content-divider-spacing-horizontal: $spacing-24 !default;
+$list-message-content-separator-color: $color-palette-grey-3 !default;
+$list-message-content-border-size: 1px !default;
+
+$list-message-title-spacing-horizontal: $spacing-3 !default;
+$list-message-icon-spacing-horizontal: rem(7px) !default;
+$list-message-icon-font-size: rem(32px) !default;
+$list-message-icon-font-size-xs: rem(52px) !default;
+$list-message-icon-position-top: rem(15px) !default;
+$list-message-icon-position-top-xs: rem(13px) !default;
+
+$list-message-icon-position-left: rem(8px) !default;
+$list-message-icon-position-left-xs: rem(19px) !default;
+$list-message-icon-position-left-m: rem(16px) !default;
+$list-message-seperator-spacing-horizontal: rem(10px) !default;

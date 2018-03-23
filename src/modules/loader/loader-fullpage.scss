@@ -1,0 +1,42 @@
+@import 'loader-fullpage.setup.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/position/position.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}loader-fullpage {
+  @include flex;
+  @include flex--direction(column);
+  @include flex--align-items(center);
+  @include flex--justify-content(center);
+  @include -position-absolute-coordinates;
+  @include -spacing-inner-a;
+
+  z-index: $loader-fullpage-z-index;
+  background: $loader-fullpage-background-color;
+
+  &--sticky {
+    position: fixed;
+  }
+
+  &__spinner {
+    width: $loader-fullpage-spinner-size;
+    height: $loader-fullpage-spinner-size;
+
+    @include breakpoint('s') {
+      width: $loader-fullpage-spinner-size-s;
+      height: $loader-fullpage-spinner-size-s;
+    }
+  }
+
+  &__label {
+    @include -text-size-5-thin;
+    @include -text-color-white;
+    @include -align-center;
+    @include -spacing-b;
+  }
+}

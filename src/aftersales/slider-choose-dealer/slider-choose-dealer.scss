@@ -1,0 +1,47 @@
+@import '../../base/position/position.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import 'slider-choose-dealer.setup.scss';
+
+.#{$global-class-prefix}slider-choose-dealer {
+  @include -position(relative);
+
+  &__container {
+    @include -spacing-24('right', 'padding');
+
+    overflow-y: auto;
+    max-height: $slider-choose-dealer-container-max-height;
+  }
+
+  &__scroll-button {
+    @include flex;
+    @include flex--justify-content(center);
+    @include flex--align-items(center);
+    @include -align-center;
+    @include -position(absolute);
+    @include -text-color-red-1;
+
+    left: $slider-choose-dealer-scroll-button-position-reset;
+    width: $slider-choose-dealer-scroll-button-width;
+    background: $slider-choose-dealer-scroll-button-background-color;
+    z-index: $slider-choose-dealer-scroll-button-z-index;
+    height: $slider-choose-dealer-scroll-button-height;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover {
+      @include -text-color-red-2;
+    }
+
+    &--up {
+      top: $slider-choose-dealer-scroll-button-position-reset;
+    }
+
+    &--down {
+      bottom: $slider-choose-dealer-scroll-button-position-reset;
+    }
+  }
+}

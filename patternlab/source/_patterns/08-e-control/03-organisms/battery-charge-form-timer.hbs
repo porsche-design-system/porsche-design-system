@@ -1,0 +1,82 @@
+<div class="-background-white -spacing-inner-a {{ styleModifier }}">
+
+  <h2 class="-text-size-3-thin -text-color-black">{{ @root.battery-charge-form-timer_title }}</h2>
+  <p class="-text-size-copy -text-color-black -spacing-18">{{ @root.battery-charge-form-timer_subtitle }}</p>
+
+  <h4 class="-text-size-4-thin -text-color-black -spacing-c">{{ @root.battery-charge-form-timer_departureTitle }}</h4>
+  <div class="row">
+    <div class="column column--12 column--xs-auto column--m-4">
+      {{> molecules-input styleModifier="-spacing-a" input_label="Abfahrtszeit" input_value="hh:mm" input_icon="timer-pcm" }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      {{> molecules-radio styleModifier="-spacing-a" radio_label="wiederholend" radio_checked=true }}
+    </div>
+    <div class="column">
+      {{> molecules-radio styleModifier="-spacing-a" radio_label="einmalig" }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column column--12 column--xs-auto column--m-4">
+      {{> molecules-input styleModifier="-spacing-a" input_label="Datum" input_value="DD.MM.JJJJ" input_icon="registration" }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column column--12 -spacing-a">
+      <div class="row row--small">
+        <div class="column column--small">
+          {{> molecules-button-inline styleModifier="-spacing-6" button-inline_label="Mo" button-inline_active=true }}
+        </div>
+        <div class="column column--small">
+          {{> molecules-button-inline styleModifier="-spacing-6" button-inline_label="Di" }}
+        </div>
+        <div class="column column--small">
+          {{> molecules-button-inline styleModifier="-spacing-6" button-inline_label="Mi" button-inline_active=true }}
+        </div>
+        <div class="column column--small">
+          {{> molecules-button-inline styleModifier="-spacing-6" button-inline_label="Do" }}
+        </div>
+        <div class="column column--small">
+          {{> molecules-button-inline styleModifier="-spacing-6" button-inline_label="Fr" }}
+        </div>
+        <div class="column column--small">
+          {{> molecules-button-inline styleModifier="-spacing-6" button-inline_label="Sa" }}
+        </div>
+        <div class="column column--small">
+          {{> molecules-button-inline styleModifier="-spacing-6" button-inline_label="So" }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column column--12">
+      <h4 class="-text-size-4-thin -text-color-black -spacing-d">{{ @root.battery-charge-form-timer_optionalTitle }}</h4>
+    </div>
+    <div class="column column--12">
+      {{> molecules-checkbox styleModifier="-spacing-a" checkbox_label="Fahrzeug zur Abfahrtszeit klimatisieren" checkbox_checked=true }}
+    </div>
+    <div class="column column--12">
+      {{> molecules-checkbox styleModifier="-spacing-a" checkbox_label="Bevorzugte Ladezeit einstellen" checkbox_checked=true }}
+    </div>
+  </div>
+
+  <div class="row flex-xs">
+    <div class="column column--12 column--xs-auto column--m-4 -spacing-a">
+      {{> molecules-input input_label="Uhrzeit" input_value="hh:mm" input_icon="timer-pcm" }}
+    </div>
+    <div class="column column--12 column--xs-auto flex-xs flex--center-vertical -text-color-black -text-size-copy -spacing-a">
+      {{ @root.battery-charge-form-timer_preferredChargingTimeTo }}
+    </div>
+    <div class="column column--12 column--xs-auto column--m-4 -spacing-a">
+      {{> molecules-input input_label="Uhrzeit" input_value="hh:mm" input_icon="timer-pcm" }}
+    </div>
+  </div>
+
+</div>
+
+{{> organisms-form-button-group }}

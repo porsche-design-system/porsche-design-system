@@ -1,0 +1,21 @@
+{
+  "climate_blockingLayer": true,
+  "list-view": [
+    {
+      "title": "20:30 Uhr",
+      "tags": [
+        {
+          "tag": "03.05.2017",
+          "icon": "registration",
+          "divider": true
+        }
+      ],
+      "active": true,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": true
+    }
+  ],
+  "list-view_eMobility": true,
+  "checkbox_label": false
+}

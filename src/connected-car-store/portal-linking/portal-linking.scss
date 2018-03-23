@@ -1,0 +1,95 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import 'portal-linking.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}portal-linking {
+  &__header {
+    @include -text-size-3-thin;
+    @include -text-color-white;
+    @include -spacing-b(bottom);
+  }
+
+  &__items {
+    @include flex;
+    @include flex--wrap(wrap);
+    @include -spacing-3($sign: '-');
+    max-width: none;
+
+    @include breakpoint ('s') {
+      @include -spacing-6($sign: '-');
+      margin-left: -$portal-linking-items-space-horizontal;
+      margin-right: - $portal-linking-items-space-horizontal;
+    }
+  }
+
+  &__container {
+    @include -spacing-3(top);
+    width: $portal-linking-container-width;
+
+    @include breakpoint ('s') {
+      @include flex;
+      @include -spacing-6(top);
+      padding-right: $portal-linking-items-space-horizontal;
+      padding-left: $portal-linking-items-space-horizontal;
+      width: $portal-linking-container-width-s;
+    }
+
+    @include breakpoint ('m') {
+      width: $portal-linking-container-width-m;
+    }
+  }
+
+  &__link {
+    @include -text-size-copy;
+    @include -spacing-inner-a;
+    @include flex;
+    background-color: $portal-linking-link-background-color;
+    width: $portal-linking-link-width;
+    color: $portal-linking-link-color;
+    border-top: $portal-linking-link-border-size solid transparent;
+    border-bottom: $portal-linking-link-border-size solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $portal-linking-link-color;
+      background-color: $portal-linking-link-background-color-hover;
+    }
+
+    @include breakpoint ('xxs', 's') {
+      padding-top: $portal-linking-link-padding-vertical;
+      padding-bottom: $portal-linking-link-padding-vertical;
+    }
+
+    @include breakpoint ('s') {
+      @include -align-center;
+      @include flex--direction(column);
+    }
+  }
+
+  &__icon {
+    @include -spacing-12(right);
+    font-size: $portal-linking-icon-fontsize;
+    line-height: $portal-linking-icon-fontsize;
+
+    @include breakpoint ('s') {
+      @include -spacing-zero(right);
+      @include -spacing-6(bottom);
+      display: block;
+      font-size: $portal-linking-icon-fontsize-s;
+      line-height: $portal-linking-icon-fontsize-s;
+    }
+  }
+
+  &__text {
+    @include breakpoint ('s') {
+      @include -text-size-4-thin;
+    }
+  }
+}

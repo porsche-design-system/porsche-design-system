@@ -1,0 +1,17 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "notification-center_pageHeaderTitle": "Mitteilungen",
+  "notification-center_tags": [
+    {
+      "icon": "search",
+      "description": "Suche nach:",
+      "content": "Porsche"
+    },
+    {
+      "icon": "filter",
+      "description": "Filter:",
+      "content": "Service Reminder"
+    }
+  ],
+  "notification-center_showFilter": true
+}

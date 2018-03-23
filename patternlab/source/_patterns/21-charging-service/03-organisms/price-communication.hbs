@@ -1,0 +1,18 @@
+<div class="price-communication">
+  <div class="price-communication__limiter">
+    <h3 class="price-communication__title">{{ price-communication_title }}</h3>
+    <p class="price-communication__description">{{ price-communication_description }}</p>
+
+    <h4 class="price-communication__subtitle">{{ price-communication_country }}</h4>
+
+    {{> molecules-select styleModifier='price-communication__location-selector'}}
+
+    <h4 class="price-communication__subtitle">{{ price-communication_headline }}</h4>
+
+    {{> charging-service-price-view
+        styleModifier="price-communication__price-view"
+    }}
+
+    <p class="price-communication__footnote">{{ price-communication_footnote }}</p>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+@import '../../mixins/px-rem-converter.scss';
+
+$slide-tutorial-image-aspect-ratio-padding: (5 / 13) * 100% !default;
+
+$slide-tutorial-slideshow-flex-shrink: 0 !default;
+
+$slide-tutorial-slideshow-wrapper-width: 100% !default;
+$slide-tutorial-slideshow-wrapper-height: 100% !default;
+$slide-tutorial-slideshow-wrapper-horizontal-position: 0 !default;
+$slide-tutorial-slideshow-wrapper-vertical-position: 0 !default;
+
+$slide-tutorial-slideshow-image-aspect-ratio-padding: (5 / 13) * 100% !default;
+$slide-tutorial-slideshow-image-width: 100% !default;
+$slide-tutorial-slideshow-image-height: 100% !default;
+$slide-tutorial-slideshow-image-horizontal-position: 0 !default;
+$slide-tutorial-slideshow-image-vertical-position: 0 !default;
+
+$slide-tutorial-tooltip-icon-font-size: rem(20px) !default;
+$slide-tutorial-tooltip-icon-position: rem(2px) !default;

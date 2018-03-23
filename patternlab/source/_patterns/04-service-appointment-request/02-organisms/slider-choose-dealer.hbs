@@ -1,0 +1,21 @@
+<div class="slider-choose-dealer {{styleModifier}}">
+  <div class="slider-choose-dealer__container">
+    <div class="slider-choose-dealer__scroll-button slider-choose-dealer__scroll-button--up">
+      <span class="icon icon--arrow-up-thin"></span>
+    </div>
+    {{#each slider-choose-dealer_item }}
+      {{> service-appointment-request-radio-button-choose-dealer
+          radio-button-choose-dealer_number=number
+          radio-button-choose-dealer_companyName=companyName
+          radio-button-choose-dealer_companyStreet=companyStreet
+          radio-button-choose-dealer_companyPostalCode=companyPostalCode
+          radio-button-choose-dealer_companyCity=companyCity
+          radio-button-choose-dealer_companyPhoneNumber=companyPhoneNumber
+          radio-button-choose-dealer_checked=isChecked
+      }}
+    {{/each}}
+    <div class="slider-choose-dealer__scroll-button slider-choose-dealer__scroll-button--down">
+      <span class="icon icon--arrow-down-thin"></span>
+    </div>
+ </div>
+</div>

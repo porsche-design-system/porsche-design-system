@@ -1,0 +1,76 @@
+{
+  "location-alarm": {
+    "map-overview": {
+      "loading": false
+    }
+  },
+  "location-alarm_fenceForm": false,
+  "location-alarm_listViolationTitle": "Letzte Überschreitung(en)",
+  "map-action-overview_buttonLabel": "Location Alarm hinzufügen",
+  "page-header_title": "Geofence konfigurieren",
+  "page-header_description": "Erstellen Sie persönliche Geofences, mit frei wählbarem Ausgangspunkt und Radius, für Ihr Fahrzeug. Sobald Ihr Fahrzeug die Grenzen eines Geofences durch Ein- oder Austritt überschreitet, werden Sie automatisch benachrichtigt.",
+  "list-view": [
+    {
+      "title": "1 — Porsche Zentrum Stuttgart",
+      "tags": [
+        {
+          "tag": "Radius 0,25 km",
+          "icon": false,
+          "divider": true
+        }
+      ],
+      "active": true,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    },
+    {
+      "title": "2 — Remseck",
+      "tags": [
+        {
+          "tag": "Radius 2,00 km",
+          "icon": false,
+          "divider": true
+        }
+      ],
+      "active": false,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    },
+    {
+      "title": "3 — Ludwigsburg",
+      "tags": [
+        {
+          "tag": "Radius 5,00 km",
+          "icon": false,
+          "divider": true
+        }
+      ],
+      "active": false,
+      "checkable": true,
+      "hoverable": true,
+      "expanded": false
+    }
+  ],
+  "list-violation": [
+    {
+      "title": "Fellbach",
+      "coordinates": "48.826986, 9.265199",
+      "location": "Auslösegrund",
+      "dateTime": "12.03.2017, 12:30 Uhr"
+    },
+    {
+      "title": "Fellbach",
+      "coordinates": "48.826986, 9.265199",
+      "location": "Auslösegrund",
+      "dateTime": "12.03.2017, 12:30 Uhr"
+    },
+    {
+      "title": "Fellbach",
+      "coordinates": "48.826986, 9.265199",
+      "location": "Auslösegrund",
+      "dateTime": "12.03.2017, 12:30 Uhr"
+    }
+  ]
+}

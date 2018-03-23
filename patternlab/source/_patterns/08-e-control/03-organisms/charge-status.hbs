@@ -1,0 +1,34 @@
+<div class="charge-status {{ styleModifier }}">
+  <h2 class="charge-status__title">{{ charge-status_title }}</h2>
+  <div class="charge-status__visualization">
+    <div class="charge-status__graph">
+
+      {{> e-control-battery-chart battery-chart_chargeLevel=charge-status_chargeLevel
+                                  battery-chart_isCharging=charge-status_isCharging }}
+
+    </div>
+    <div class="charge-status__range">
+
+      {{> e-control-visualization-e-range visualization-e-range_title=charge-status_eRangeTitle
+                                          visualization-e-range_value=charge-status_eRangeValue
+                                          visualization-e-range_unit=charge-status_eRangeUnit }}
+    </div>
+    <div class="charge-status__plug">
+
+      {{#if charge-status_isCharging}}
+
+        {{> e-control-visualization-charging-time visualization-charging-time_title=charge-status_chargingTimeTitle
+                                                  visualization-charging-time_value=charge-status_chargingTimeValue
+                                                  visualization-charging-time_unit=charge-status_chargingTimeUnit }}
+
+      {{else}}
+
+        {{> e-control-visualization-plug-status visualization-plug-status_label=charge-status_plugStatusLabel
+                                                visualization-plug-status_statePending=charge-status_isPending
+                                                visualization-plug-status_stateError=charge-status_hasError }}
+
+      {{/if}}
+
+    </div>
+  </div>
+</div>

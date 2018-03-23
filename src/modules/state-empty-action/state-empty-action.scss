@@ -1,0 +1,37 @@
+@import 'state-empty-action.setup.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}state-empty-action {
+  @include flex;
+  @include flex--direction(column);
+  @include flex--align-items(center);
+  @include -spacing-inner-a;
+  background: $state-empty-action-background;
+
+  &__image {
+    width: $state-empty-action-image-width;
+    height: auto;
+    opacity: $state-empty-action-image-opacity;
+  }
+
+  &__title {
+    @include -text-size-copy;
+    @include -spacing-12;
+    @include -align-center;
+    width: $state-empty-action-title-width;
+    max-width: $state-empty-action-title-max-width;
+    color: $state-empty-action-title-color;
+  }
+
+  &__icon {
+    display: inline-block;
+    vertical-align: top;
+    font-size: $state-empty-action-icon-size;
+    line-height: inherit;
+    color: $state-empty-action-icon-color;
+  }
+}

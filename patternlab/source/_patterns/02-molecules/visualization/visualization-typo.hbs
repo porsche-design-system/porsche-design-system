@@ -1,0 +1,15 @@
+<div class="visualization-typo {{ styleModifier }}">
+  {{#if visualizationTypo.responsive }}
+    <h4 class="visualization-typo__label visualization-typo__label--responsive -text-color-white">{{ visualizationTypo.label }}</h4>
+    <p class="visualization-typo__info visualization-typo__info--responsive -text-color-acid-green -spacing-a">
+      <span>{{ visualizationTypo.value }}</span><!--
+      --><span>{{ visualizationTypo.unit }}</span>
+    </p>
+  {{else}}
+    <h4 class="visualization-typo__label -text-color-white">{{ visualizationTypo.label }}</h4>
+    <p class="visualization-typo__info -text-color-acid-green -spacing-a">
+      <span>{{ visualizationTypo.value }}</span><!--
+      --><span>{{ visualizationTypo.unit }}</span>
+    </p>
+  {{/if}}
+</div>

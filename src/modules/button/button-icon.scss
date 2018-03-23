@@ -1,0 +1,40 @@
+@import 'button-icon.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}button-icon {
+  position: relative;
+  display: inline-block;
+  appearance: none;
+  outline: none;
+  border: $button-icon-border-width;
+  border-radius: $button-icon-border-radius;
+  padding: $button-icon-spacing;
+  background: transparent;
+  color: $button-icon-text-color;
+  cursor: pointer;
+  font-size: $button-icon-size;
+
+  &[disabled]:hover,
+  &[disabled] {
+    color: $button-icon-text-color-disabled;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: $button-icon-text-color-hovered;
+  }
+
+  &--invert {
+    color: $button-icon-text-color-invert;
+  }
+
+  &::after { // safe clickable area
+    content: '';
+    position: absolute;
+    top: $button-icon-safe-clickable-area;
+    right: $button-icon-safe-clickable-area;
+    bottom: $button-icon-safe-clickable-area;
+    left: $button-icon-safe-clickable-area;
+  }
+}

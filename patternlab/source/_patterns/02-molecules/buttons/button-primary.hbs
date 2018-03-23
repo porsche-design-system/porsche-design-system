@@ -1,0 +1,20 @@
+<{{#if button-primary_link }}a href="#"{{else}}button type="button"{{/if}}
+  class="button-primary
+        {{#if button-primary_error}} button-primary--error {{/if}}
+        {{#if button-primary_black}} button-primary--black {{/if}}
+        {{#if button-primary_red}} button-primary--red {{/if}}
+        {{#if button-primary_acidGreen}} button-primary--acid-green {{/if}}
+        {{#if button-primary_stretch}} button-primary--stretch {{/if}}
+        {{#if button-primary_buttonGroup}} button-primary--button-group {{/if}}
+        {{styleModifier}}"
+  {{#if button-primary_disabled}} disabled {{/if}}>
+
+  <span class="button-primary__icon icon icon--{{ button-primary_icon}}
+              {{#if button-primary_loading}} button-primary__icon--loading {{/if}}">
+
+    {{> molecules-loader-base styleModifier="button-primary__loader" }}
+
+  </span>
+  <span class="button-primary__label">{{ button-primary_label }}</span>
+
+{{#if button-primary_link }}</a>{{else}}</button>{{/if}}

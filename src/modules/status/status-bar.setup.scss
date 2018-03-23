@@ -1,0 +1,17 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$status-bar-spacing-vertical: $spacing-18 !default;
+$status-bar-border-size: 1px !default;
+$status-bar-border-color: $color-palette-grey-8 !default;
+
+$status-bar-icon-size: $spacing-30 !default;
+$status-bar-icon-size-m: rem(40px) !default;
+$status-bar-icon-color: $color-palette-white !default;
+$status-bar-icon-active-color: $color-palette-status-green !default;
+$status-bar-icon-error-color: $color-palette-status-red !default;
+
+$status-bar-label-offset: $spacing-6 !default;
+$status-bar-label-offset-m: $spacing-3 !default;
+$status-bar-label-color: $color-palette-white !default;

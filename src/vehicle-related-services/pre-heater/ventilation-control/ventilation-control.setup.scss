@@ -1,0 +1,16 @@
+@import '../../../setup/color-palette.setup.scss';
+@import '../../../modules/button/button-inline.setup.scss';
+@import '../../../mixins/px-rem-converter.scss';
+
+$ventilation-control-width: 100% !default;
+$ventilation-control-background: $color-palette-grey-9 !default;
+
+$ventilation-control-icon-size: rem(80px) !default;
+$ventilation-control-icon-color: $color-palette-grey-5 !default;
+
+$ventilation-control-title-color: $color-palette-white !default;
+
+$ventilation-control-subtitle-color: $color-palette-grey-5 !default;
+
+$ventilation-control-button-timer-active-background-color: $button-inline-background-color-active !default;
+$ventilation-control-button-timer-active-text-color: $button-inline-text-color !default;

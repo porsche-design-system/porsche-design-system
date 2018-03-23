@@ -1,0 +1,31 @@
+<div class="car-actions-control {{#if car-actions-control_statusUnknown }} flex-m flex--center-vertical {{/if}}">
+  <div class="row">
+    <div class="car-actions-control__section-top column column--12 column--s-6 column--m-12">
+        {{#unless car-actions-control_statusUnknown }}
+          <span class="car-actions-control__icon icon icon--unlock-next"></span>
+        {{/unless}}
+        <h3 class="car-actions-control__title {{#if car-actions-control_statusUnknown }} car-actions-control__title--status-unknown {{/if}}">
+            {{car-actions-control_title}}:<br>
+            {{car-actions-control_subtitle}}
+        </h3>
+        <div class="car-actions-control__button-group row row--small">
+            <div class="column column--6 column--small">
+                {{> molecules-button-inline button-inline_label="" button-inline_active=true button-inline_center=true button-inline_icon="lock-next" button-inline_stretch=true button-inline_iconLarge=true }}
+            </div>
+            <div class="column column--6 column--small">
+                {{> molecules-button-inline button-inline_label="" button-inline_active=true button-inline_center=true button-inline_icon="unlock-next" button-inline_stretch=true button-inline_iconLarge=true }}
+            </div>
+        </div>
+    </div>
+    <div class="car-actions-control__section-bottom column column--12 column--s-6 column--m-12">
+        <div class="row">
+            <div class="column column--12">
+                {{> molecules-button-inline button-inline_label="Some label" button-inline_active=true button-inline_icon="flash-next" button-inline_stretch=true button-inline_iconLarge=true }}
+            </div>
+            <div class="column column--12">
+                {{> molecules-button-inline styleModifier="-spacing-6" button-inline_label="Some label" button-inline_active=true button-inline_icon="horn-next" button-inline_stretch=true button-inline_iconLarge=true }}
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

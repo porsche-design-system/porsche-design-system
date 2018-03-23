@@ -1,0 +1,13 @@
+{
+  "form-button-group_primaryActionIcon": "arrow-right-thin",
+  "form-button-group_primaryActionCta": "Speichern",
+  "form-button-group_primaryActionCtaSubline": false,
+  "form-button-group_secondaryActionIcon": "close",
+  "form-button-group_secondaryActionCta": "Abbrechen",
+  "form-button-group_secondaryActionCtaSubline": false,
+  "form-button-group_buttonsFlex": false,
+  "form-button-group_isFlex": false,
+  "form-button-group_styleModifier": "",
+  "form-button-group_styleModifierIcon": "",
+  "form-button-group_styleModifierLabel": ""
+}

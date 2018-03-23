@@ -1,0 +1,14 @@
+{
+  "price-view_headerLeft": "Ladeleistung der Ladesäule max.",
+  "price-view_headerRight": "Preis / Min",
+  "price-view_rows": [
+    {
+      "label": "22 kW",
+      "value": "22,00 €"
+    },
+    {
+      "label": "50 kW",
+      "value": "50,00 €"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+<div class="service-scheduling {{ styleModifier }}">
+    <header class="row -spacing-d">
+        <div class="column column--12">
+            {{> organisms-page-header page-header_title="2/3 Servicetermin" page-header_description="Wählen Sie Ihren Wunschtermin und weitere Optionen wie z.B. ein Ersatzfahrzeug." }}
+        </div>
+    </header>
+    <div class="service-scheduling__body">
+        <div class="row">
+            <div class="column column--12 column--s-6">
+                <h3 class="-text-size-5-thin">{{ service-scheduling_headlineSelect }}</h3>
+
+                <!-- TODO: this select will be refactored as soon as select molecules are ready to use -->
+                <label class="select -spacing-a">
+                    <select class="select__field">
+                        <option selected="">{{ service-scheduling.select.optionOne }}</option>
+                        <option>
+                            <span>{{ service-scheduling.select.optionTwo }}</span>
+                        </option>
+                        <option>
+                            <span>{{ service-scheduling.select.optionThree }}</span>
+                        </option>
+                        <option>
+                            <span>{{ service-scheduling.select.optionFour }}</span>
+                        </option>
+                    </select>
+                    <span class="select__icon icon icon--arrow-down-thin"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column--12 -spacing-b">
+                <h3 class="-text-size-5-thin">{{ service-scheduling_headlineRadio }}</h3>
+                {{> molecules-radio styleModifier="-spacing-a" radio_label="Zum nächstmöglichen Termin" radio_name="chooseDate" radio_checked=true }}
+            </div>
+            <div class="column column--12 -spacing-a">
+                {{> molecules-radio radio_label="Termin auswählen" radio_name="chooseDate" }}
+            </div>
+        </div>
+        {{#if service-scheduling_choosePreferredDate }}
+            <div class="row">
+                <div class="column column--12">
+                    <div class="row">
+                        <div class="column column--12 column--s-6 -spacing-a">
+                            {{> molecules-input input_label="yyyy-mm-dd" input_icon="registration" }}
+                        </div>
+                    </div>
+
+                    <div class="row -spacing-a">
+                        <div class="column column--small row--small column--12 column--xs-6 column--m-3 column--l-2 -spacing-6">
+                          {{> organisms-checkbox-multiple-selector checkbox-multiple-selector_label="All day" checkbox-multiple-selector_subLabel="(7am - 9pm)" checkbox-multiple-selector_icon="all-day-next"}}
+                        </div>
+
+                        <div class="column column--small column--12 column--xs-6 column--m-3 column--l-2 -spacing-6">
+                          {{> organisms-checkbox-multiple-selector checkbox-multiple-selector_label="Early morning" checkbox-multiple-selector_subLabel="(7am - 10am)" checkbox-multiple-selector_icon="early-morning-next" }}
+                        </div>
+
+                        <div class="column column--small column--12 column--xs-6 column--m-3 column--l-2 -spacing-6">
+                          {{> organisms-checkbox-multiple-selector checkbox-multiple-selector_label="Morning" checkbox-multiple-selector_subLabel="(10am - 12am)" checkbox-multiple-selector_icon="morning-afternoon-next" }}
+                        </div>
+
+                        <div class="column column--small column--12 column--xs-6 column--m-3 column--l-2 -spacing-6">
+                          {{> organisms-checkbox-multiple-selector checkbox-multiple-selector_label="Early afternoon" checkbox-multiple-selector_subLabel="(12am - 3pm)" checkbox-multiple-selector_icon="early-afternoon-next" }}
+                        </div>
+
+                        <div class="column column--small column--12 column--xs-6 column--m-3 column--l-2 -spacing-6">
+                          {{> organisms-checkbox-multiple-selector checkbox-multiple-selector_label="Afternoon" checkbox-multiple-selector_subLabel="(3pm - 6pm)" checkbox-multiple-selector_icon="morning-afternoon-next" }}
+                        </div>
+
+                        <div class="column column--small column--12 column--xs-6 column--m-3 column--l-2 -spacing-6">
+                          {{> organisms-checkbox-multiple-selector checkbox-multiple-selector_label="Evening" checkbox-multiple-selector_subLabel="(6pm - 9pm)" checkbox-multiple-selector_icon="evening-next" }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column column--12 -spacing-a">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column column--12 -spacing-c">
+                            <div class="row">
+                                <div class="column column--12">
+                                    {{> molecules-button-inline button-inline_label="Alternativtermin hinzufügen" button-inline_icon="arrow-right-thin" }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>
+

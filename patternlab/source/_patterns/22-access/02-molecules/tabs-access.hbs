@@ -1,0 +1,7 @@
+<ul class="tabs-access {{styleModifier}}">
+  {{#each tabs-access_labels}}
+    <li class="tabs-access__item">
+      <button class="tabs-access__button {{#if active}} tabs-access__button--active {{/if}}" type="button">{{ name }}</button>
+    </li>
+  {{/each}}
+</ul>

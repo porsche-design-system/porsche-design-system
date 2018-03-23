@@ -1,0 +1,22 @@
+@mixin -overflow-visible() {
+  overflow: visible;
+}
+
+@mixin -overflow-hidden() {
+  overflow: hidden;
+}
+
+@mixin -overflow-scroll() {
+  overflow: scroll;
+}
+
+@mixin -overflow-auto() {
+  overflow: auto;
+}
+
+@mixin -overflow-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}

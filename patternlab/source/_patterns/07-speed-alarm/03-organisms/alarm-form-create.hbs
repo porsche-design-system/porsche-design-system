@@ -1,0 +1,20 @@
+<form>
+  <div class="-spacing-inner-a">
+    <h2 class="-text-size-3-thin -text-color-black">{{ @root.alarm-form-create_title }}</h2>
+    <div class="row">
+      <div class="column column--12">
+
+        {{> molecules-input styleModifier="-spacing-a"
+                            input_label="km/h"
+                            input_value="50"
+                            input_icon="close" }}
+
+      </div>
+    </div>
+  </div>
+
+  {{> organisms-form-button-group
+      form-button-group_primaryActionCta="Speichern"
+      form-button-group_secondaryActionCta="Abbrechen" }}
+
+</form>

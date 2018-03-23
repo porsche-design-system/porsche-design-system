@@ -1,0 +1,145 @@
+@import 'input.setup.scss';
+@import 'input.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/font/font.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}input {
+  $bem-block: &;
+
+  position: relative;
+  display: block;
+
+  &__icon {
+    position: absolute;
+    top: $input-icon-position-top;
+    right: calc(#{$input-field-padding-horizontal} + #{$input-field-border-size});
+    transform: translate(0, $input-icon-position-top-offset);
+    font-size: $input-icon-size;
+    color: $input-icon-color;
+    cursor: pointer;
+
+    @include breakpoint('m') {
+      right: calc(#{$input-field-padding-horizontal-m} + #{$input-field-border-size});
+      font-size: $input-icon-size-m;
+    }
+
+    &:hover {
+      color: $input-icon-color-hovered;
+    }
+
+    & ~ #{$bem-block}__field { // sass-lint:disable-line no-combinators
+      padding-right: calc(#{$input-field-padding-horizontal} * 2 + #{$input-icon-size});
+
+      @include breakpoint('m') {
+        padding-right: calc(#{$input-field-padding-horizontal-m} * 2 + #{$input-icon-size-m});
+      }
+    }
+
+    & ~ #{$bem-block}__field--error { // sass-lint:disable-line no-combinators
+      @include input-field-with-icon-has-error;
+    }
+
+    & ~ #{$bem-block}__label { // sass-lint:disable-line no-combinators
+      right: calc(#{$input-field-padding-horizontal} * 2 + #{$input-icon-size} + #{$input-field-border-size});
+
+      @include breakpoint('m') {
+        right: calc(#{$input-field-padding-horizontal-m} * 2 + #{$input-icon-size-m} + #{$input-field-border-size});
+      }
+    }
+  }
+
+  &__field {
+    @include -font-primary;
+    width: $input-field-width;
+    height: $input-field-height;
+    display: block;
+    padding: $input-field-padding-vertical $input-field-padding-horizontal;
+    outline: none;
+    appearance: none;
+    box-sizing: border-box;
+    border: $input-field-border-size solid $input-field-border-color;
+    background: $input-field-background-color;
+    font-size: $input-field-text-size;
+    line-height: $input-field-line-height;
+    font-weight: normal;
+    color: $input-field-text-color;
+
+    @include breakpoint('xs', 'm') {
+      height: $input-field-height-xs;
+      padding-top: $input-field-padding-vertical-xs;
+      padding-bottom: $input-field-padding-vertical-xs;
+    }
+
+    @include breakpoint('m') {
+      height: $input-field-height-m;
+      padding: $input-field-padding-vertical-m $input-field-padding-horizontal-m;
+    }
+
+    &::placeholder {
+      color: $input-field-text-color;
+    }
+
+    &::-ms-clear { // sass-lint:disable-line no-vendor-prefixes
+      width: $input-field-reset;
+      height: $input-field-reset;
+    }
+
+    // input type number - disabling the arrow icons
+    &[type='number'] {
+      appearance: textfield;
+
+      &::-webkit-outer-spin-button, // sass-lint:disable-line no-vendor-prefixes
+      &::-webkit-inner-spin-button { // sass-lint:disable-line no-vendor-prefixes
+        appearance: none;
+      }
+    }
+
+    &:focus {
+      @include input-field-is-focused;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      @include input-field-is-focused-or-input-field-is-not-empty($bem-block);
+    }
+
+    &:disabled {
+      @include input-field-is-disabled;
+    }
+
+    &--error {
+      @include input-field-has-error;
+
+      &:focus,
+      &:not(:placeholder-shown) {
+        @include input-field-has-error-and-is-focused-or-input-field-has-error-and-is-not-empty;
+      }
+    }
+  }
+
+  &__label {
+    @include -font-primary;
+    @include -overflow-ellipsis;
+    position: absolute;
+    top: $input-label-position-top;
+    left: calc(#{$input-field-padding-horizontal} + #{$input-field-border-size});
+    right: calc(#{$input-field-padding-horizontal} + #{$input-field-border-size});
+    display: inline-block;
+    opacity: $input-placeholder-opacity;
+    transition: top $input-label-transition-speed ease, opacity $input-label-transition-speed ease;
+    transform: translate(0, $input-label-position-top-offset);
+    font-size: $input-label-text-size;
+    line-height: $input-label-line-height;
+    font-weight: normal;
+    color: $input-label-text-color;
+
+    @include breakpoint('m') {
+      left: calc(#{$input-field-padding-horizontal-m} + #{$input-field-border-size});
+      right: calc(#{$input-field-padding-horizontal-m} + #{$input-field-border-size});
+      font-size: $input-label-text-size-m;
+    }
+  }
+}

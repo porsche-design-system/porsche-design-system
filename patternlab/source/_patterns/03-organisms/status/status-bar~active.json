@@ -1,0 +1,5 @@
+{
+  "status-bar_labelPrimary": "Some active label",
+  "status-bar_labelSecondary": "Some additional information",
+  "status-bar_active": true
+}

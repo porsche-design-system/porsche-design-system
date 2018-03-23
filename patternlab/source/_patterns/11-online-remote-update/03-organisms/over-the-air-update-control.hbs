@@ -1,0 +1,11 @@
+<div class="over-the-air-update-control {{ styleModifier }}">
+  <div class="over-the-air-update-control__info">
+    <h2 class="over-the-air-update-control__title">{{ over-the-air-update-control_title }}</h2>
+    <p class="over-the-air-update-control__description">{{ over-the-air-update-control_description }}</p>
+  </div>
+
+  {{> molecules-toggle styleModifier="over-the-air-update-control__toggle"
+                       toggle_inverted=true
+                       toggle_active=over-the-air-update-control_active }}
+
+</div>

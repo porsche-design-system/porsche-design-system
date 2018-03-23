@@ -1,0 +1,14 @@
+{
+  "e-control": {
+    "chargeStatus": {
+      "isPending": true
+    },
+    "plugStatus": {
+      "label": "Warten auf E-Timer"
+    },
+    "charge-control": {
+      "label": "Laden sofort starten",
+      "disabled": false
+    }
+  }
+}

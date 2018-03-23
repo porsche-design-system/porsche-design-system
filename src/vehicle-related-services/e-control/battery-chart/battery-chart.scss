@@ -1,0 +1,188 @@
+@import 'battery-chart.setup.scss';
+@import '../../../mixins/breakpoint.scss';
+@import '../../../mixins/animation.scss';
+@import '../../../base/position/position.mixin.scss';
+@import '../../../setup/global-variables.scss';
+
+.#{$global-class-prefix}battery-chart {
+  position: relative;
+  display: block;
+  width: calc(#{$battery-chart-outer-width} - #{$battery-chart-spacing-left});
+  min-height: calc(#{$battery-chart-outer-min-height} - #{$battery-chart-spacing-top});
+  margin-left: $battery-chart-spacing-left;
+  margin-top: $battery-chart-spacing-top;
+  border: $battery-chart-border-size solid $battery-chart-border-color;
+
+  @include breakpoint('xs', 'm') {
+    width: calc(#{$battery-chart-outer-width-xs} - #{$battery-chart-spacing-left-xs});
+    min-height: calc(#{$battery-chart-outer-min-height-xs} - #{$battery-chart-spacing-top-xs});
+    margin-left: $battery-chart-spacing-left-xs;
+    margin-top: $battery-chart-spacing-top-xs;
+    border-width: $battery-chart-border-size-xs;
+  }
+
+  @include breakpoint('m') {
+    width: calc(#{$battery-chart-outer-width-m} - #{$battery-chart-spacing-left-m});
+    min-height: calc(#{$battery-chart-outer-min-height-m} - #{$battery-chart-spacing-top-m});
+    margin-left: $battery-chart-spacing-left-m;
+    margin-top: $battery-chart-spacing-top-m;
+    border-width: $battery-chart-border-size-m;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: $battery-chart-pole-position-top;
+    width: $battery-chart-pole-width;
+    height: $battery-chart-pole-height;
+    background: $battery-chart-pole-border-color;
+    border-top-left-radius: $battery-chart-pole-border-radius;
+    border-top-right-radius: $battery-chart-pole-border-radius;
+
+    @include breakpoint('xs', 'm') {
+      top: $battery-chart-pole-position-top-xs;
+      height: $battery-chart-pole-height-xs;
+      width: $battery-chart-pole-width-xs;
+    }
+
+    @include breakpoint('m') {
+      top: $battery-chart-pole-position-top-m;
+      height: $battery-chart-pole-height-m;
+      width: $battery-chart-pole-width-m;
+    }
+  }
+
+  &::before {
+    left: $battery-chart-pole-position-horizontal;
+    transform: translate($battery-chart-pole-offset-horizontal-left, $battery-chart-pole-offset-vertical);
+
+    @include breakpoint('xs', 'm') {
+      left: $battery-chart-pole-position-horizontal-xs;
+    }
+
+    @include breakpoint('m') {
+      left: $battery-chart-pole-position-horizontal-m;
+    }
+  }
+
+  &::after {
+    right: $battery-chart-pole-position-horizontal;
+    transform: translate($battery-chart-pole-offset-horizontal-right, $battery-chart-pole-offset-vertical);
+
+    @include breakpoint('xs', 'm') {
+      right: $battery-chart-pole-position-horizontal-xs;
+    }
+
+    @include breakpoint('m') {
+      right: $battery-chart-pole-position-horizontal-m;
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    top: $battery-chart-wrapper-position;
+    bottom: $battery-chart-wrapper-position;
+    left: $battery-chart-wrapper-position;
+    right: $battery-chart-wrapper-position;
+
+    @include breakpoint('xs', 'm') {
+      top: $battery-chart-wrapper-position-xs;
+      bottom: $battery-chart-wrapper-position-xs;
+      left: $battery-chart-wrapper-position-xs;
+      right: $battery-chart-wrapper-position-xs;
+    }
+
+    @include breakpoint('m') {
+      top: $battery-chart-wrapper-position-m;
+      bottom: $battery-chart-wrapper-position-m;
+      left: $battery-chart-wrapper-position-m;
+      right: $battery-chart-wrapper-position-m;
+    }
+  }
+
+  &__graph {
+    @include -position-absolute-coordinates($battery-chart-graph-position, $battery-chart-graph-position, auto, $battery-chart-graph-position);
+    background: $battery-chart-graph-fill-color;
+  }
+
+  &__status {
+    position: absolute;
+    bottom: $battery-chart-status-position-bottom;
+    left: $battery-chart-status-position-left;
+    height: $battery-chart-status-height;
+    min-height: $battery-chart-status-min-height;
+
+    @include breakpoint('xs', 'm') {
+      left: $battery-chart-status-position-left-xs;
+      min-height: $battery-chart-status-min-height-xs;
+    }
+
+    @include breakpoint('m') {
+      left: $battery-chart-status-position-left-m;
+      min-height: $battery-chart-status-min-height-m;
+    }
+
+    &--pending {
+      min-height: $battery-chart-status-pending-min-height;
+    }
+  }
+
+  &__pending {
+    width: $battery-chart-pending-width;
+    min-height: $battery-chart-pending-min-height;
+    height: auto;
+    margin-left: $battery-chart-pending-spacing-left;
+    display: block;
+    fill: $battery-chart-pending-fill-color;
+    transform: translate($battery-chart-pending-offset-left, $battery-chart-pending-offset-top);
+
+    @include breakpoint('xs', 'm') {
+      width: $battery-chart-pending-width-xs;
+      min-height: $battery-chart-pending-min-height-xs;
+      margin-left: $battery-chart-pending-spacing-left-xs;
+    }
+
+    @include breakpoint('m') {
+      width: $battery-chart-pending-width-m;
+      min-height: $battery-chart-pending-min-height-m;
+      margin-left: $battery-chart-pending-spacing-left-m;
+    }
+  }
+
+  &__loading {
+    width: $battery-chart-loading-width;
+    height: auto;
+    display: block;
+    fill: $battery-chart-loading-fill-color;
+
+    @include breakpoint('xs', 'm') {
+      width: $battery-chart-loading-width-xs;
+    }
+
+    @include breakpoint('m') {
+      width: $battery-chart-loading-width-m;
+    }
+
+    :nth-child(1) {
+      @include animation($battery-chart-loading-animation-name, $battery-chart-loading-animation-speed, ease, $battery-chart-loading-animation-delay * 0);
+      opacity: 0;
+    }
+
+    :nth-child(2) {
+      @include animation($battery-chart-loading-animation-name, $battery-chart-loading-animation-speed, ease, $battery-chart-loading-animation-delay * 1);
+      opacity: 0;
+    }
+
+    :nth-child(3) {
+      @include animation($battery-chart-loading-animation-name, $battery-chart-loading-animation-speed, ease, $battery-chart-loading-animation-delay * 2);
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes battery-chart-animation-fade-in-out {
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}

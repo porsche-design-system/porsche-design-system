@@ -1,0 +1,75 @@
+// mixin
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}row {
+  margin-left: -.25rem;
+  margin-right: -.25rem;
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  @include breakpoint('s') {
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+  }
+
+  @include breakpoint('l') {
+    margin-left: -.75rem;
+    margin-right: -.75rem;
+  }
+
+  &--small {
+    margin-left: -.1875rem;
+    margin-right: -.1875rem;
+  }
+
+  &--zero {
+    margin-left: 0;
+    margin-right: 0;
+
+    &-xxs-only {
+      @include breakpoint('xxs', 'xs') {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    &-xs-only {
+      @include breakpoint('xs', 's') {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    &-s-only {
+      @include breakpoint('s', 'm') {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    &-m-only {
+      @include breakpoint('m', 'l') {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    &-l-only {
+      @include breakpoint('l') {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  // TODO: put this to flex class
+  &--flex {
+    display: flex;
+    flex-flow: row wrap;
+  }
+}

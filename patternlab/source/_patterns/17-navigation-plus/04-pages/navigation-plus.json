@@ -1,0 +1,60 @@
+{
+  "navigation-plus": {
+    "title": "Navigation Plus",
+    "description": "Speichern oder bearbeiten Sie persönliche Ziele, wie Adressen von Restaurants, Hotels oder Freunden, in Ihrem Zielspeicher und senden diese direkt an das Navigationssystem Ihres Fahrzeugs.",
+    "map-overview": {
+      "buttonLabel": "Neues Ziel hinzufügen",
+      "loading": false
+    },
+    "poi": {
+      "list": [
+        {
+          "label": "1",
+          "title": "Porsche Zentrum",
+          "text": "Porschestraße 9, 70435 Stuttgart, Deutschland",
+          "workFlag": true,
+          "homeFlag": true,
+          "isMultiFunctionMenuOpen": false,
+          "isListItemExpanded": false
+        },
+        {
+          "label": "2",
+          "title": "Porsche Arena",
+          "text": "Mercedesstraße 69, 70372 Stuttgart, Deutschland",
+          "workFlag": false,
+          "homeFlag": true,
+          "isMultiFunctionMenuOpen": false,
+          "isListItemExpanded": false
+        },
+        {
+          "label": "3",
+          "title": "Porsche Museum",
+          "text": "Porscheplatz 1, 70435 Stuttgart, Deutschland",
+          "workFlag": true,
+          "homeFlag": false,
+          "isMultiFunctionMenuOpen": false,
+          "isListItemExpanded": false
+        }
+      ],
+      "multiFunctionMenu": [],
+      "emptyState": {
+        "image": "",
+        "label": "",
+        "labelContinued": "",
+        "icon": ""
+      },
+      "createForm": {
+        "title": "Neues Ziel hinzufügen",
+        "inputGroupTitle": "Die mit * markierten Angaben sind unbedingt erforderlich.",
+        "checkboxGroupTitle": "Ziel markieren als (mindestens eine Option wählen)*:"
+      },
+      "editForm": {
+        "title": "Ziel bearbeiten",
+        "inputGroupTitle": "Die mit * markierten Angaben sind unbedingt erforderlich.",
+        "checkboxGroupTitle": "Ziel markieren als (mindestens eine Option wählen)*:"
+      },
+      "isCreateMode": false
+    },
+    "blockingLayer": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "navigation-plus": {
+    "poi": {
+      "list": [],
+      "emptyState": {
+        "image": "empty-state-navigation-plus.svg",
+        "label": "Fügen Sie ein Ziel hinzu durch Klick auf den",
+        "labelContinued": "Button oder Klick auf „Neues Ziel hinzufügen‟ in der Karte.",
+        "icon": "plus"
+      }
+    }
+  }
+}

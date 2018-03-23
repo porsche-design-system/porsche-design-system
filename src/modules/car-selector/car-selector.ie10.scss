@@ -1,0 +1,32 @@
+@import '../../mixins/breakpoint.scss';
+
+@import '../../setup/global-variables.scss';
+@import 'car-selector.setup.scss';
+
+.#{$global-class-prefix}car-selector {
+  &__bar {
+    &-title {
+      // fix for IE10: it requires a max-width
+      @include breakpoint('xxs', 'm') {
+        max-width: calc(100% - #{$car-selector-bar-icon-width});
+      }
+    }
+  }
+
+  &__arrow {
+    @include breakpoint('m') {
+      // fix for IE 10
+      min-width: $car-selector-arrow-font-size;
+    }
+  }
+
+  &__box {
+    @include breakpoint('m') {
+      // fix for IE 10:
+      // all direct children (flex-items) should have this config - all browsers set this correct by default - just for IE10, you have to set it explicit
+      > * { // sass-lint:disable-line no-combinators no-universal-selectors
+        flex: 0 1 auto;
+      }
+    }
+  }
+}

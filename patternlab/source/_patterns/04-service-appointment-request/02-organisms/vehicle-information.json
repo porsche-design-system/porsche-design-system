@@ -1,0 +1,9 @@
+{
+  "vehicle-information_vehicleName": "911 Carrera Cabriolet",
+  "vehicle-information_vehicleImage": "https://pva-picserv-k.porsche.org/picserv/images-api/v1/ef322f10356124da711655d9f7e354fc/2",
+  "vehicle-information_minHeight": "min-height: 26rem",
+  "vehicle-information_noMaxWidth": false,
+  "input-mileage-form_title": "Bitte geben Sie Ihren aktuellen Kilometerstand ein",
+  "input-mileage-form_placeholder": "Kilometerstand (ungefähr)",
+  "input-mileage-form_placeholderUnit": ""
+}

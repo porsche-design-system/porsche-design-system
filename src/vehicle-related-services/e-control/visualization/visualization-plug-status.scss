@@ -1,0 +1,43 @@
+@import '../../../base/grid/flex.mixin.scss';
+@import '../../../base/text-size/text-size.mixin.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../modules/icon/icon.mixin.scss';
+@import '../../../mixins/breakpoint.scss';
+@import 'visualization-plug-status.setup.scss';
+@import '../../../setup/global-variables.scss';
+
+.#{$global-class-prefix}visualization-plug-status {
+  @include flex;
+  @include flex--align-items(flex-start);
+  @include -text-size-4-thin;
+
+  &__icon {
+    @include icon-base;
+    line-height: inherit;
+    font-size: $visualization-plug-status-icon-size;
+    color: $visualization-plug-status-icon-color;
+
+    @include breakpoint('s') {
+      font-size: $visualization-plug-status-icon-size-s;
+    }
+
+    &--pending {
+      color: $visualization-plug-status-icon-pending-color;
+    }
+
+    &--error {
+      color: $visualization-plug-status-icon-error-color;
+    }
+
+    &::before {
+      @include icon-plug-pcm-before;
+    }
+  }
+
+  &__label {
+    @include -spacing-12('left');
+
+    width: 100%; // fix for Chrome 29-43
+    color: $visualization-plug-status-label-color;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "slide-tutorial_title": "Fahrzeug verbinden",
+  "slide-tutorial_copy1": "Mit dem Pairing Code können Sie Ihr Fahrzeug mit My Porsche verbinden, um auf Ihre Dienstkonfigurationen zugreifen zu können. Die Verbindung können Sie im PCM Ihres Fahrzeugs verwalten. Drücken Sie dazu im Menü „APPS“ die „OPT“-Taste. Aktivieren Sie außerdem den Fernzugriff, um fahrzeugbezogene Dienste nutzen zu können. Die Fernzugriffsberechtigung können Sie im PCM Ihres Fahrzeugs im Menü „SET“ unter „Porsche Connect“ verwalten.",
+  "slide-tutorial_copy2": false,
+  "slide-tutorial_image": "../../images/portal/tutorial/tutorial-03.jpg",
+  "slide-tutorial_slideshow": false,
+  "slide-tutorial_showPairingCode": true,
+  "slide-tutorial_showSPinForm": false
+}
