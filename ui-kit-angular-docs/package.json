@@ -1,0 +1,33 @@
+{
+  "name": "@porsche/ui-kit-angular-docs",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "start-storybook -p 9001 -c .storybook",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^9.6.0",
+    "@types/webpack-env": "^1.13.5",
+    "babel-core": "^6.26.0",
+    "highlight.js": "^9.12.0",
+    "js-beautify": "^1.7.5",
+    "markdown-loader": "^2.0.2",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "@angular/animations": "^5.2.9",
+    "@angular/common": "^5.2.9",
+    "@angular/compiler": "^5.2.9",
+    "@angular/core": "^5.2.9",
+    "@angular/forms": "^5.2.9",
+    "@angular/platform-browser": "^5.2.9",
+    "@angular/platform-browser-dynamic": "^5.2.9",
+    "@porsche/ui-kit-angular": "file:../ui-kit-angular/dist",
+    "@storybook/addon-actions": "^3.4.0-rc.3",
+    "@storybook/addon-knobs": "^3.4.0-rc.3",
+    "@storybook/addon-links": "^3.4.0-rc.3",
+    "@storybook/angular": "^3.4.0-rc.3",
+    "rxjs": "^5.5.7"
+  }
+}
