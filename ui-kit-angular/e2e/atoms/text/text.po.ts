@@ -20,4 +20,12 @@ export class TextPage {
   getH2Directive() {
     return element(by.css('span[puiH2]'));
   }
+
+  getH3Component() {
+    return element(by.css('pui-h3'));
+  }
+
+  getH3Directive() {
+    return element(by.css('span[puiH3]'));
+  }
 }
