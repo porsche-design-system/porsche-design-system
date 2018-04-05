@@ -9,6 +9,7 @@ import {withKnobs} from '@storybook/addon-knobs/angular';
 import {linkTo} from '@storybook/addon-links';
 import {SyntaxHighlighter} from "./components/syntax-highlighter/syntax-highlighter";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {PuiTextModule} from "@porsche/ui-kit-angular";
 
 
 const markdownContext = require.context('../stories/', true, /\.\/.*\/.*\.md$/);
@@ -73,7 +74,8 @@ markdownContext.keys().forEach(story => {
         ],
         imports: [
           FormsModule,
-          BrowserAnimationsModule
+          BrowserAnimationsModule,
+          PuiTextModule
         ],
         entryComponents: components
       })
