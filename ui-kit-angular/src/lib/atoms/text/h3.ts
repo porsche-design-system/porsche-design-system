@@ -1,24 +1,24 @@
 import {Component, Directive, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  selector: `pui-h1`,
-  exportAs: 'puiHeadline1',
-  templateUrl: 'h1.html',
+  selector: `pui-h3`,
+  exportAs: 'puiHeadline3',
+  templateUrl: 'h3.html',
   styleUrls: [
     '../../../../node_modules/porsche-stylesheets/src/base/text-size/text-size.scss'
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiHeadline1Component {
+export class PuiHeadline3Component {
   @Input() thin;
 }
 
 @Directive({
-  selector: '[puiH1]'
+  selector: '[puiH3]'
 })
-export class PuiHeadline1Directive {
+export class PuiHeadline3Directive {
   protected elementClasses: string[] = [
-    '-text-size-1-regular'
+    '-text-size-3-regular'
   ];
 
   @HostBinding('class')

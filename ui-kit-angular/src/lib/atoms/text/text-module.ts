@@ -10,11 +10,18 @@ import {
   PuiHeadline2Directive
 } from './h2';
 
+import {
+  PuiHeadline3Component,
+  PuiHeadline3Directive
+} from './h3';
+
 const declarations = [
   PuiHeadline1Component,
   PuiHeadline1Directive,
   PuiHeadline2Component,
-  PuiHeadline2Directive
+  PuiHeadline2Directive,
+  PuiHeadline3Component,
+  PuiHeadline3Directive
 ];
 
 @NgModule({
