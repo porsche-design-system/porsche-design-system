@@ -1,8 +1,0 @@
-{
-  "tile-financial-services_account": true,
-  "tile-financial-services_accountPaperless": false,
-  "tile-financial-services_contentBottomTextLabel": "from maturity",
-  "tile-financial-services_contentBottomHeadlineLabel": "62 days",
-  "tile-financial-services_contentBottomTextareaAccountLabel": "Account: ************123",
-  "tile-financial-services_contentBottomTextareaDateLabel": "Due on 08/24/2018"
-}

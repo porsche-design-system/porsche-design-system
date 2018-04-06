@@ -1,7 +1,0 @@
-{
-  "service-appointment-tile_bodyAppointmentRequestText": "Servicetermin anfragen",
-
-  "service-appointment-tile_bodyAppointmentRequestButtonStyle": "column column--12",
-  "service-appointment-tile_bodyAppointmentRequestButtonLabelStyle": "-align-left",
-  "service-appointment-tile_bodyAppointmentRequestButtonIcon": "icon--wrench"
-}

@@ -1,7 +1,0 @@
-{
-  "service-reminder-tile_bodyMessagesAvailableText": "4 neue Service Mitteilungen",
-
-  "service-reminder-tile_bodyMessagesButtonStyle": "column column--12 -align-left",
-  "service-reminder-tile_bodyMessagesButtonLabelStyle": "-align-left",
-  "service-reminder-tile_bodyMessagesButtonIcon": "mail-request"
-}

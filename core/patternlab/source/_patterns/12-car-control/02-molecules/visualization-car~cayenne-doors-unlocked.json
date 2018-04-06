@@ -1,8 +1,0 @@
-{
-  "visualization-car_image": "../../images/portal-services/car-control/vehicle-cayenne-fallback.png",
-  "visualization-car_isModelSUV": true,
-  "visualization-car_isFrontLeftDoorUnlocked": true,
-  "visualization-car_isFrontRightDoorUnlocked": true,
-  "visualization-car_isRearLeftDoorUnlocked": true,
-  "visualization-car_isRearRightDoorUnlocked": true
-}

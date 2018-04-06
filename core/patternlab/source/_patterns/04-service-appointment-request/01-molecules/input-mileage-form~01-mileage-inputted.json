@@ -1,8 +1,0 @@
-{
-  "bodyClass": "sg-wrapper-light",
-  "input-mileage-form_title": "Ihr aktueller Kilometerstand",
-  "input-mileage-form_placeholder": "51.541",
-  "input-mileage-form_placeholderUnit": "km",
-  "input-mileage-form_default": false,
-  "input-mileage-form_mileageIsInputted": true
-}
