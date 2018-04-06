@@ -1,0 +1,413 @@
+{
+    "relPath": "07-speed-alarm/04-pages/speed-alarm.mustache",
+    "fileName": "speed-alarm",
+    "subdir": "07-speed-alarm/04-pages",
+    "fileExtension": ".mustache",
+    "name": "07-speed-alarm-04-pages-speed-alarm",
+    "jsonFileData": {
+        "link-scroll-up_text": "Some link text",
+        "bodyClass": "sg-wrapper-dark",
+        "googleMaps": {
+            "src": "https://maps.googleapis.com/maps/api/staticmap?center=Porsche, Germany&zoom=13&size=600x300&key=AIzaSyBiBRUg34Nzh0BfC9EPspHY_vVDEalkZ7U"
+        },
+        "vehicleImage": {
+            "src": "https://pva-picserv-k.porsche.org/picserv/images-api/v1/ef322f10356124da711655d9f7e354fc/2"
+        },
+        "btnText": "Button",
+        "radioButton": {
+            "name": "some-radio-button",
+            "nameDisabled": "some-disabled-radio-button",
+            "nameDarkBG": "some-radio-button--dark-background",
+            "nameDisabledDarkBG": "some-disabled-radio-button--dark-background",
+            "valueOne": "one",
+            "valueTwo": "two",
+            "label": "An unchecked radio button",
+            "labelChecked": "A checked radio button",
+            "labelDisabled": "A disabled radio button",
+            "labelDisabledChecked": "A disabled and checked radio button"
+        },
+        "select": {
+            "optionOne": "Please choose an option",
+            "optionTwo": "This is an option",
+            "optionThree": "This is another option",
+            "optionFour": "This is a third option"
+        },
+        "eRangeMapSelector": {
+            "range": 42,
+            "rangeUnit": "km",
+            "radio": {
+                "labelERange": "elektrische Reichweite",
+                "labelConventionalRange": "konventionelle Reichweite",
+                "nameERange": "e-range-radio-button",
+                "nameConventionalRange": "conventional-range-radio-button"
+            }
+        },
+        "eRangeMap": {
+            "errorMessageCarDataCouldNotBeLoaded": "Die Kartendaten können momentan nicht abgerufen werden.",
+            "errorMessageCarCouldNotBeLocated": "Das Fahrzeug kann momentan nicht geortert werden."
+        },
+        "batteryChart": {
+            "charging": false,
+            "chargeLevel": "12"
+        },
+        "batteryStatus": {
+            "rangeLabel": "E-Range",
+            "rangeValue": "321",
+            "rangeUnit": "km",
+            "plugStatusTextDisconnected": "Fahrzeug nicht verbunden",
+            "plugStatusTextPending": "Warten auf Abfahrtstimer",
+            "plugStatusTextError": "Fahrzeug lädt nicht"
+        },
+        "visualization": {
+            "remainingChargingTime": {
+                "label": "Verbleibende Ladezeit",
+                "value": "09:24",
+                "unit": "h"
+            },
+            "data": {
+                "label": "Label",
+                "value": "432",
+                "unit": "km"
+            }
+        },
+        "link": {
+            "atoms-background-colors": "/patterns/01-atoms-00-globals-background-colors/01-atoms-00-globals-background-colors.rendered.html",
+            "atoms-text-colors": "/patterns/01-atoms-00-globals-text-colors/01-atoms-00-globals-text-colors.rendered.html",
+            "atoms-fonts": "/patterns/01-atoms-01-fonts-fonts/01-atoms-01-fonts-fonts.rendered.html",
+            "atoms-icons": "/patterns/01-atoms-01-fonts-icons/01-atoms-01-fonts-icons.rendered.html",
+            "atoms-spacing": "/patterns/01-atoms-02-spacing-spacing/01-atoms-02-spacing-spacing.rendered.html",
+            "atoms-layer-blocking": "/patterns/01-atoms-03-layer-layer-blocking/01-atoms-03-layer-layer-blocking.rendered.html",
+            "atoms-layer": "/patterns/01-atoms-03-layer-layer/01-atoms-03-layer-layer.rendered.html",
+            "molecules-button-icon": "/patterns/02-molecules-buttons-button-icon/02-molecules-buttons-button-icon.rendered.html",
+            "molecules-button-inline": "/patterns/02-molecules-buttons-button-inline/02-molecules-buttons-button-inline.rendered.html",
+            "molecules-button-inline-01-with-icon": "/patterns/02-molecules-buttons-button-inline-01-with-icon/02-molecules-buttons-button-inline-01-with-icon.rendered.html",
+            "molecules-button-inline-02-with-icon-and-no-background": "/patterns/02-molecules-buttons-button-inline-02-with-icon-and-no-background/02-molecules-buttons-button-inline-02-with-icon-and-no-background.rendered.html",
+            "molecules-button": "/patterns/02-molecules-buttons-button/02-molecules-buttons-button.rendered.html",
+            "molecules-callout": "/patterns/02-molecules-callout-callout/02-molecules-callout-callout.rendered.html",
+            "molecules-chart-bar": "/patterns/02-molecules-chart-chart-bar/02-molecules-chart-chart-bar.rendered.html",
+            "molecules-checkbox": "/patterns/02-molecules-form-elements-checkbox/02-molecules-form-elements-checkbox.rendered.html",
+            "molecules-input": "/patterns/02-molecules-form-elements-input/02-molecules-form-elements-input.rendered.html",
+            "molecules-radio": "/patterns/02-molecules-form-elements-radio/02-molecules-form-elements-radio.rendered.html",
+            "molecules-select": "/patterns/02-molecules-form-elements-select/02-molecules-form-elements-select.rendered.html",
+            "molecules-link-scroll-up": "/patterns/02-molecules-links-link-scroll-up/02-molecules-links-link-scroll-up.rendered.html",
+            "molecules-loader": "/patterns/02-molecules-loader-loader/02-molecules-loader-loader.rendered.html",
+            "molecules-notification-common": "/patterns/02-molecules-notification-notification-common/02-molecules-notification-notification-common.rendered.html",
+            "molecules-overlay": "/patterns/02-molecules-overlay-overlay/02-molecules-overlay-overlay.rendered.html",
+            "molecules-visualization-typo": "/patterns/02-molecules-visualization-visualization-typo/02-molecules-visualization-visualization-typo.rendered.html",
+            "molecules-visualization-typo-01-responsive": "/patterns/02-molecules-visualization-visualization-typo-01-responsive/02-molecules-visualization-visualization-typo-01-responsive.rendered.html",
+            "organisms-car-chooser": "/patterns/03-organisms-car-chooser-car-chooser/03-organisms-car-chooser-car-chooser.rendered.html",
+            "organisms-car-chooser-01-open": "/patterns/03-organisms-car-chooser-car-chooser-01-open/03-organisms-car-chooser-car-chooser-01-open.rendered.html",
+            "organisms-car-chooser-02-open-search": "/patterns/03-organisms-car-chooser-car-chooser-02-open-search/03-organisms-car-chooser-car-chooser-02-open-search.rendered.html",
+            "organisms-form-button-group": "/patterns/03-organisms-form-button-group-form-button-group/03-organisms-form-button-group-form-button-group.rendered.html",
+            "organisms-header-tile": "/patterns/03-organisms-header-header-tile/03-organisms-header-header-tile.rendered.html",
+            "organisms-header-tile-01-with-icon": "/patterns/03-organisms-header-header-tile-01-with-icon/03-organisms-header-header-tile-01-with-icon.rendered.html",
+            "organisms-header": "/patterns/03-organisms-header-header/03-organisms-header-header.rendered.html",
+            "organisms-list-detail": "/patterns/03-organisms-list-list-detail/03-organisms-list-list-detail.rendered.html",
+            "organisms-list-expanded": "/patterns/03-organisms-list-list-expanded/03-organisms-list-list-expanded.rendered.html",
+            "organisms-list-menu": "/patterns/03-organisms-list-list-menu/03-organisms-list-list-menu.rendered.html",
+            "organisms-list-message": "/patterns/03-organisms-list-list-message/03-organisms-list-list-message.rendered.html",
+            "organisms-list-view": "/patterns/03-organisms-list-list-view/03-organisms-list-list-view.rendered.html",
+            "organisms-list-violation": "/patterns/03-organisms-list-list-violation/03-organisms-list-list-violation.rendered.html",
+            "organisms-modal-common": "/patterns/03-organisms-modal-modal-common/03-organisms-modal-modal-common.rendered.html",
+            "organisms-navigation-header": "/patterns/03-organisms-navigation-navigation-header/03-organisms-navigation-navigation-header.rendered.html",
+            "organisms-navigation-topbar-desktop": "/patterns/03-organisms-navigation-navigation-topbar-desktop/03-organisms-navigation-navigation-topbar-desktop.rendered.html",
+            "organisms-navigation-topbar-desktop-01-open": "/patterns/03-organisms-navigation-navigation-topbar-desktop-01-open/03-organisms-navigation-navigation-topbar-desktop-01-open.rendered.html",
+            "organisms-page-header": "/patterns/03-organisms-page-header-page-header/03-organisms-page-header-page-header.rendered.html",
+            "organisms-slider-vehicle": "/patterns/03-organisms-slider-slider-vehicle/03-organisms-slider-slider-vehicle.rendered.html",
+            "organisms-state-empty-action": "/patterns/03-organisms-state-empty-action-state-empty-action/03-organisms-state-empty-action-state-empty-action.rendered.html",
+            "organisms-tile": "/patterns/03-organisms-tile-tile/03-organisms-tile-tile.rendered.html",
+            "organisms-timestamp-refresh": "/patterns/03-organisms-timestamp-refresh-timestamp-refresh/03-organisms-timestamp-refresh-timestamp-refresh.rendered.html",
+            "recall-reminder-no-recall-available": "/patterns/04-recall-reminder-01-molecules-no-recall-available/04-recall-reminder-01-molecules-no-recall-available.rendered.html",
+            "recall-reminder-additional-callback-vehicles": "/patterns/04-recall-reminder-02-organism-additional-callback-vehicles/04-recall-reminder-02-organism-additional-callback-vehicles.rendered.html",
+            "recall-reminder-affected-vehicle-information-detail": "/patterns/04-recall-reminder-02-organism-affected-vehicle-information-detail/04-recall-reminder-02-organism-affected-vehicle-information-detail.rendered.html",
+            "recall-reminder-affected-vehicle-information": "/patterns/04-recall-reminder-02-organism-affected-vehicle-information/04-recall-reminder-02-organism-affected-vehicle-information.rendered.html",
+            "recall-reminder-recall-reminder": "/patterns/04-recall-reminder-03-pages-recall-reminder/04-recall-reminder-03-pages-recall-reminder.rendered.html",
+            "recall-reminder-recall-reminder-01-affected-vehicle-information-detail": "/patterns/04-recall-reminder-03-pages-recall-reminder-01-affected-vehicle-information-detail/04-recall-reminder-03-pages-recall-reminder-01-affected-vehicle-information-detail.rendered.html",
+            "recall-reminder-recall-reminder-02-no-recall-available": "/patterns/04-recall-reminder-03-pages-recall-reminder-02-no-recall-available/04-recall-reminder-03-pages-recall-reminder-02-no-recall-available.rendered.html",
+            "service-appointment-request-checkbox-dealer-service": "/patterns/04-service-appointment-request-01-molecules-checkbox-dealer-service/04-service-appointment-request-01-molecules-checkbox-dealer-service.rendered.html",
+            "service-appointment-request-checkbox-dealer-service-01-other": "/patterns/04-service-appointment-request-01-molecules-checkbox-dealer-service-01-other/04-service-appointment-request-01-molecules-checkbox-dealer-service-01-other.rendered.html",
+            "service-appointment-request-dealer-information-map": "/patterns/04-service-appointment-request-01-molecules-dealer-information-map/04-service-appointment-request-01-molecules-dealer-information-map.rendered.html",
+            "service-appointment-request-input-mileage-form": "/patterns/04-service-appointment-request-01-molecules-input-mileage-form/04-service-appointment-request-01-molecules-input-mileage-form.rendered.html",
+            "service-appointment-request-input-mileage-form-01-mileage-inputted": "/patterns/04-service-appointment-request-01-molecules-input-mileage-form-01-mileage-inputted/04-service-appointment-request-01-molecules-input-mileage-form-01-mileage-inputted.rendered.html",
+            "service-appointment-request-input-mileage-form-02-no-input-allowed": "/patterns/04-service-appointment-request-01-molecules-input-mileage-form-02-no-input-allowed/04-service-appointment-request-01-molecules-input-mileage-form-02-no-input-allowed.rendered.html",
+            "service-appointment-request-additional-information": "/patterns/04-service-appointment-request-02-organisms-additional-information/04-service-appointment-request-02-organisms-additional-information.rendered.html",
+            "service-appointment-request-dealer-information": "/patterns/04-service-appointment-request-02-organisms-dealer-information/04-service-appointment-request-02-organisms-dealer-information.rendered.html",
+            "service-appointment-request-layout-dealer-service": "/patterns/04-service-appointment-request-02-organisms-layout-dealer-service/04-service-appointment-request-02-organisms-layout-dealer-service.rendered.html",
+            "service-appointment-request-service-scheduling": "/patterns/04-service-appointment-request-02-organisms-service-scheduling/04-service-appointment-request-02-organisms-service-scheduling.rendered.html",
+            "service-appointment-request-service-scheduling-01-choose-date": "/patterns/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date.rendered.html",
+            "service-appointment-request-vehicle-information": "/patterns/04-service-appointment-request-02-organisms-vehicle-information/04-service-appointment-request-02-organisms-vehicle-information.rendered.html",
+            "service-appointment-request-service-appointment-request": "/patterns/04-service-appointment-request-03-pages-service-appointment-request/04-service-appointment-request-03-pages-service-appointment-request.rendered.html",
+            "location-alarm-layout-fence-form": "/patterns/06-location-alarm-03-organisms-layout-fence-form/06-location-alarm-03-organisms-layout-fence-form.rendered.html",
+            "location-alarm-map-fence-overview": "/patterns/06-location-alarm-03-organisms-map-fence-overview/06-location-alarm-03-organisms-map-fence-overview.rendered.html",
+            "location-alarm-location-alarm": "/patterns/06-location-alarm-04-pages-location-alarm/06-location-alarm-04-pages-location-alarm.rendered.html",
+            "location-alarm-location-alarm-create-fence": "/patterns/06-location-alarm-04-pages-location-alarm-create-fence/06-location-alarm-04-pages-location-alarm-create-fence.rendered.html",
+            "location-alarm-location-alarm-edit-fence": "/patterns/06-location-alarm-04-pages-location-alarm-edit-fence/06-location-alarm-04-pages-location-alarm-edit-fence.rendered.html",
+            "speed-alarm-alarm-form": "/patterns/07-speed-alarm-03-organisms-alarm-form/07-speed-alarm-03-organisms-alarm-form.rendered.html",
+            "speed-alarm-speed-alarm": "/patterns/07-speed-alarm-04-pages-speed-alarm/07-speed-alarm-04-pages-speed-alarm.rendered.html",
+            "speed-alarm-speed-alarm-edit-alarm-form": "/patterns/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form.rendered.html",
+            "speed-alarm-speed-alarm-list-view-empty-state": "/patterns/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state.rendered.html",
+            "e-control-battery-chart": "/patterns/08-e-control-02-molecules-battery-chart/08-e-control-02-molecules-battery-chart.rendered.html",
+            "e-control-battery-chart-01-pending-low": "/patterns/08-e-control-02-molecules-battery-chart-01-pending-low/08-e-control-02-molecules-battery-chart-01-pending-low.rendered.html",
+            "e-control-battery-chart-02-pending-high": "/patterns/08-e-control-02-molecules-battery-chart-02-pending-high/08-e-control-02-molecules-battery-chart-02-pending-high.rendered.html",
+            "e-control-battery-chart-03-charging-low": "/patterns/08-e-control-02-molecules-battery-chart-03-charging-low/08-e-control-02-molecules-battery-chart-03-charging-low.rendered.html",
+            "e-control-battery-chart-04-charging-high": "/patterns/08-e-control-02-molecules-battery-chart-04-charging-high/08-e-control-02-molecules-battery-chart-04-charging-high.rendered.html",
+            "e-control-plug-status": "/patterns/08-e-control-02-molecules-plug-status/08-e-control-02-molecules-plug-status.rendered.html",
+            "e-control-plug-status-01-disconnected": "/patterns/08-e-control-02-molecules-plug-status-01-disconnected/08-e-control-02-molecules-plug-status-01-disconnected.rendered.html",
+            "e-control-plug-status-02-pending": "/patterns/08-e-control-02-molecules-plug-status-02-pending/08-e-control-02-molecules-plug-status-02-pending.rendered.html",
+            "e-control-plug-status-03-error": "/patterns/08-e-control-02-molecules-plug-status-03-error/08-e-control-02-molecules-plug-status-03-error.rendered.html",
+            "e-control-plug-status-04-charging": "/patterns/08-e-control-02-molecules-plug-status-04-charging/08-e-control-02-molecules-plug-status-04-charging.rendered.html",
+            "e-control-visualization-charging-time": "/patterns/08-e-control-02-molecules-visualization-charging-time/08-e-control-02-molecules-visualization-charging-time.rendered.html",
+            "e-control-battery-charge-form-timer": "/patterns/08-e-control-03-organisms-battery-charge-form-timer/08-e-control-03-organisms-battery-charge-form-timer.rendered.html",
+            "e-control-e-range-map-selector": "/patterns/08-e-control-03-organisms-e-range-map-selector/08-e-control-03-organisms-e-range-map-selector.rendered.html",
+            "e-control-e-range-map-selector-01-conventional-range": "/patterns/08-e-control-03-organisms-e-range-map-selector-01-conventional-range/08-e-control-03-organisms-e-range-map-selector-01-conventional-range.rendered.html",
+            "e-control-e-range-map": "/patterns/08-e-control-03-organisms-e-range-map/08-e-control-03-organisms-e-range-map.rendered.html",
+            "e-control-e-range-map-01-loading-position": "/patterns/08-e-control-03-organisms-e-range-map-01-loading-position/08-e-control-03-organisms-e-range-map-01-loading-position.rendered.html",
+            "e-control-e-range-map-02-loading-map": "/patterns/08-e-control-03-organisms-e-range-map-02-loading-map/08-e-control-03-organisms-e-range-map-02-loading-map.rendered.html",
+            "e-control-e-range-map-03-error-position": "/patterns/08-e-control-03-organisms-e-range-map-03-error-position/08-e-control-03-organisms-e-range-map-03-error-position.rendered.html",
+            "e-control-e-range-map-04-error-fallback": "/patterns/08-e-control-03-organisms-e-range-map-04-error-fallback/08-e-control-03-organisms-e-range-map-04-error-fallback.rendered.html",
+            "e-control-layout-battery-status": "/patterns/08-e-control-03-organisms-layout-battery-status/08-e-control-03-organisms-layout-battery-status.rendered.html",
+            "e-control-layout-battery-status-01-charging": "/patterns/08-e-control-03-organisms-layout-battery-status-01-charging/08-e-control-03-organisms-layout-battery-status-01-charging.rendered.html",
+            "e-control-e-control": "/patterns/08-e-control-04-pages-e-control/08-e-control-04-pages-e-control.rendered.html",
+            "e-control-e-control-edit-timer-mode": "/patterns/08-e-control-04-pages-e-control-edit-timer-mode/08-e-control-04-pages-e-control-edit-timer-mode.rendered.html",
+            "climate-climate": "/patterns/09-climate-04-pages-climate/09-climate-04-pages-climate.rendered.html",
+            "pre-heater-pre-heater": "/patterns/10-pre-heater-04-pages-pre-heater/10-pre-heater-04-pages-pre-heater.rendered.html",
+            "car-alarm-car-alarm": "/patterns/11-car-alarm-04-pages-_car-alarm/11-car-alarm-04-pages-_car-alarm.rendered.html",
+            "car-control-car-actions-control": "/patterns/12-car-control-03-organisms-car-actions-control/12-car-control-03-organisms-car-actions-control.rendered.html",
+            "car-control-layout-car-chart": "/patterns/12-car-control-03-organisms-layout-car-chart/12-car-control-03-organisms-layout-car-chart.rendered.html",
+            "car-control-list-car-info": "/patterns/12-car-control-03-organisms-list-car-info/12-car-control-03-organisms-list-car-info.rendered.html",
+            "car-control-tile-service-interval": "/patterns/12-car-control-03-organisms-tile-service-interval/12-car-control-03-organisms-tile-service-interval.rendered.html",
+            "car-control-tile-service-interval-01-unknown": "/patterns/12-car-control-03-organisms-tile-service-interval-01-unknown/12-car-control-03-organisms-tile-service-interval-01-unknown.rendered.html",
+            "car-control-car-control": "/patterns/12-car-control-04-pages-car-control/12-car-control-04-pages-car-control.rendered.html",
+            "car-control-car-control-parking-brake-not-available": "/patterns/12-car-control-04-pages-car-control-parking-brake-not-available/12-car-control-04-pages-car-control-parking-brake-not-available.rendered.html",
+            "car-control-car-control-unknown-service-interval": "/patterns/12-car-control-04-pages-car-control-unknown-service-interval/12-car-control-04-pages-car-control-unknown-service-interval.rendered.html",
+            "car-finder-car-finder": "/patterns/12-car-finder-04-pages-_car-finder/12-car-finder-04-pages-_car-finder.rendered.html",
+            "horn-indicator-horn-indicator": "/patterns/13-horn-indicator-04-pages-_horn-indicator/13-horn-indicator-04-pages-_horn-indicator.rendered.html",
+            "lock-unlock-lock-unlock": "/patterns/14-lock-unlock-04-pages-_lock-unlock/14-lock-unlock-04-pages-_lock-unlock.rendered.html",
+            "trip-control-trip-control": "/patterns/15-trip-control-04-pages-_trip-control/15-trip-control-04-pages-_trip-control.rendered.html",
+            "design-spec-button-inline": "/patterns/20-design-spec-buttons-button-inline/20-design-spec-buttons-button-inline.rendered.html",
+            "design-spec-checkbox": "/patterns/20-design-spec-form-elements-checkbox/20-design-spec-form-elements-checkbox.rendered.html",
+            "design-spec-input": "/patterns/20-design-spec-form-elements-input/20-design-spec-form-elements-input.rendered.html",
+            "design-spec-radio": "/patterns/20-design-spec-form-elements-radio/20-design-spec-form-elements-radio.rendered.html",
+            "design-spec-link-scroll-up": "/patterns/20-design-spec-links-link-scroll-up/20-design-spec-links-link-scroll-up.rendered.html",
+            "design-spec-loader": "/patterns/20-design-spec-loaders-loader/20-design-spec-loaders-loader.rendered.html",
+            "-head": "/patterns/-Users/mtschimev/workspace/porsche/porsche-stylesheets/patternlab/source/_meta-_00-head/-Users/mtschimev/workspace/porsche/porsche-stylesheets/patternlab/source/_meta-_00-head.rendered.html",
+            "-foot": "/patterns/-Users/mtschimev/workspace/porsche/porsche-stylesheets/patternlab/source/_meta-_01-foot/-Users/mtschimev/workspace/porsche/porsche-stylesheets/patternlab/source/_meta-_01-foot.rendered.html"
+        },
+        "patternLabHead": "<!-- never cache patterns -->\n<meta http-equiv=\"cache-control\" content=\"max-age=0\" />\n<meta http-equiv=\"cache-control\" content=\"no-cache\" />\n<meta http-equiv=\"expires\" content=\"0\" />\n<meta http-equiv=\"expires\" content=\"Tue, 01 Jan 1980 1:00:00 GMT\" />\n<meta http-equiv=\"pragma\" content=\"no-cache\" />\n\n<link rel=\"stylesheet\" href=\"../../styleguide/css/styleguide.min.css?1498601846606\" media=\"all\">\n<link rel=\"stylesheet\" href=\"../../styleguide/css/prism-typeahead.min.css?1498601846606\" media=\"all\" />\n",
+        "cacheBuster": 1498601846606,
+        "patternLabFoot": "<script type=\"text/json\" id=\"sg-pattern-data-footer\" class=\"sg-pattern-data\">\n  {\"cssEnabled\":false,\"patternLineageExists\":true,\"patternLineages\":[{\"lineagePattern\":\"organisms-page-header\",\"lineagePath\":\"../../patterns/03-organisms-page-header-page-header/03-organisms-page-header-page-header.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-list-view\",\"lineagePath\":\"../../patterns/03-organisms-list-list-view/03-organisms-list-list-view.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-state-empty-action\",\"lineagePath\":\"../../patterns/03-organisms-state-empty-action-state-empty-action/03-organisms-state-empty-action-state-empty-action.rendered.html\"},{\"lineagePattern\":\"organisms-list-violation\",\"lineagePath\":\"../../patterns/03-organisms-list-list-violation/03-organisms-list-list-violation.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"molecules-button-inline\",\"lineagePath\":\"../../patterns/02-molecules-buttons-button-inline/02-molecules-buttons-button-inline.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"molecules-link-scroll-up\",\"lineagePath\":\"../../patterns/02-molecules-links-link-scroll-up/02-molecules-links-link-scroll-up.rendered.html\",\"lineageState\":\"inreview\"}],\"lineage\":[{\"lineagePattern\":\"organisms-page-header\",\"lineagePath\":\"../../patterns/03-organisms-page-header-page-header/03-organisms-page-header-page-header.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-list-view\",\"lineagePath\":\"../../patterns/03-organisms-list-list-view/03-organisms-list-list-view.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-state-empty-action\",\"lineagePath\":\"../../patterns/03-organisms-state-empty-action-state-empty-action/03-organisms-state-empty-action-state-empty-action.rendered.html\"},{\"lineagePattern\":\"organisms-list-violation\",\"lineagePath\":\"../../patterns/03-organisms-list-list-violation/03-organisms-list-list-violation.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"molecules-button-inline\",\"lineagePath\":\"../../patterns/02-molecules-buttons-button-inline/02-molecules-buttons-button-inline.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"molecules-link-scroll-up\",\"lineagePath\":\"../../patterns/02-molecules-links-link-scroll-up/02-molecules-links-link-scroll-up.rendered.html\",\"lineageState\":\"inreview\"}],\"patternLineageRExists\":false,\"patternLineagesR\":[],\"lineageR\":[],\"patternLineageEExists\":true,\"patternDesc\":\"\",\"patternBreadcrumb\":{\"patternType\":\"speed-alarm\",\"patternSubtype\":\"pages\"},\"patternExtension\":\"mustache\",\"patternName\":\"Speed Alarm\",\"patternPartial\":\"speed-alarm-speed-alarm\",\"patternState\":\"inprogress\",\"patternEngineName\":\"mustache\",\"extraOutput\":{}}\n</script>\n\n<script>\n  /*!\n   * scriptLoader - v0.1\n   *\n   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com\n   * Licensed under the MIT license\n   *\n   */\n  \n  var scriptLoader = {\n    \n    run: function(js,cb,target) {\n      var s  = document.getElementById(target+'-'+cb);\n      for (var i = 0; i < js.length; i++) {\n        var src = (typeof js[i] != 'string') ? js[i].src : js[i];\n        var c   = document.createElement('script');\n        c.src   = '../../'+src+'?'+cb;\n        if (typeof js[i] != 'string') {\n          if (js[i].dep !== undefined) {\n            c.onload = function(dep,cb,target) {\n              return function() {\n                scriptLoader.run(dep,cb,target);\n              }\n            }(js[i].dep,cb,target);\n          }\n        }\n        s.parentNode.insertBefore(c,s);\n      }\n    }\n    \n  }\n</script>\n\n<script id=\"pl-js-polyfill-insert-1498601846606\">\n  (function() {\n    if (self != top) {\n      var cb = '1498601846606';\n      var js = [];\n      if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {\n        js.push('styleguide/bower_components/classList.min.js');\n      }\n      scriptLoader.run(js,cb,'pl-js-polyfill-insert');\n    }\n  })();\n</script>\n\n<script id=\"pl-js-insert-1498601846606\">\n  (function() {\n    if (self != top) {\n      var cb = '1498601846606';\n      var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];\n      scriptLoader.run(js,cb,'pl-js-insert');\n    }\n  })();\n</script>\n",
+        "button-inline_label": "Some button label",
+        "button-inline_active": false,
+        "button-inline_icon": "",
+        "button-inline_stretch": false,
+        "button-inline_disabled": false,
+        "button-inline_center": false,
+        "button-inline_iconLarge": false,
+        "button-inline_seamless": false,
+        "list-violation": [
+            {
+                "title": "Speed Alarm",
+                "coordinates": "48.826986, 9.265199",
+                "location": "Auslösegrund",
+                "dateTime": "12.03.2017, 12:30 Uhr"
+            },
+            {
+                "title": "Speed Alarm",
+                "coordinates": "48.826986, 9.265199",
+                "location": "Auslösegrund",
+                "dateTime": "12.03.2017, 12:30 Uhr"
+            },
+            {
+                "title": "Speed Alarm",
+                "coordinates": "48.826986, 9.265199",
+                "location": "Auslösegrund",
+                "dateTime": "12.03.2017, 12:30 Uhr"
+            }
+        ],
+        "list-violation_tags": false,
+        "state-empty-action_title": "Some text",
+        "state-empty-action_titleContinue": "action button",
+        "state-empty-action_iconLarge": "highspeed",
+        "state-empty-action_icon": "plus",
+        "button-icon_icon": "delete",
+        "button-icon_invert": false,
+        "input_name": "",
+        "input_value": "",
+        "input_label": "Some input",
+        "input_disabled": false,
+        "input_error": false,
+        "ng-input_error": false,
+        "input_type": "text",
+        "input_icon": "",
+        "alarm-form_title": "Speedfence bearbeiten",
+        "battery-charge-form-timer_title": "Abfahrtstimer bearbeiten",
+        "battery-charge-form-timer_subtitle": "Die mit * markierten Angaben sind unbedingt erforderlich.",
+        "battery-charge-form-timer_departureTitle": "Abfahrtszeit und Datum *",
+        "battery-charge-form-timer_optionalTitle": "Weitere Optionen",
+        "battery-charge-form-timer_preferredChargingTimeTo": "bis",
+        "list-expanded_vehicleRelatedServicesBatteryChargeFormTimer": false,
+        "list-expanded_alarmForm": false,
+        "checkbox_name": "",
+        "checkbox_value": "",
+        "checkbox_label": "",
+        "checkbox_checked": false,
+        "checkbox_disabled": false,
+        "checkbox_inverted": false,
+        "checkbox_error": false,
+        "ng-checkbox_error": false,
+        "list-view": [
+            {
+                "title": "150 km/h",
+                "tags": [
+                    {
+                        "tag": "Some tag",
+                        "icon": "replay"
+                    }
+                ],
+                "active": true,
+                "expanded": false
+            },
+            {
+                "title": "320 km/h",
+                "tags": [],
+                "active": true,
+                "expanded": false
+            },
+            {
+                "title": "70 km/h",
+                "tags": [],
+                "active": false,
+                "expanded": false
+            }
+        ],
+        "list-view_tags": false,
+        "list-view_eMobility": false,
+        "page-header_title": "Geschwindigkeitswarnung",
+        "page-header_description": "Legen Sie eine Höchstgeschwindigkeit für Ihr Fahrzeug fest. Sobald die definierte Höchstgeschwindigkeit überschritten wird, erhalten Sie eine Benachrichtigung."
+    },
+    "patternBaseName": "speed-alarm",
+    "patternName": "Speed Alarm",
+    "patternGroup": "speed-alarm",
+    "patternType": "07-speed-alarm",
+    "patternSubGroup": "pages",
+    "patternSubType": "04-pages",
+    "flatPatternPath": "07-speed-alarm-04-pages",
+    "patternLink": "07-speed-alarm-04-pages-speed-alarm/07-speed-alarm-04-pages-speed-alarm.rendered.html",
+    "patternPartial": "speed-alarm-speed-alarm",
+    "verbosePartial": "07-speed-alarm/04-pages/speed-alarm",
+    "isPattern": true,
+    "isFlatPattern": false,
+    "patternState": "inprogress",
+    "template": "<section class=\"content\">\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n      {{> organisms-page-header }}\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n      {{# speed-alarm_listView }}\n        {{> organisms-list-view }}\n      {{/ speed-alarm_listView }}\n\n      {{# speed-alarm_listViewEmpty }}\n        {{> organisms-state-empty-action }}\n      {{/ speed-alarm_listViewEmpty }}\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n      {{> organisms-list-violation }}\n\n      {{> molecules-button-inline:-spacing-static-a(button-inline_label: \"Weitere Elemente laden\", button-inline_icon: \"loader\", button-inline_stretch: true, styleModifier_icon: \"-text-color-red-1\") }}\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12 -align-right\">\n\n      {{> molecules-link-scroll-up(link-scroll-up_text: \"Zum Listenanfang\") }}\n\n    </div>\n  </div>\n</section>",
+    "patternPartialCode": "<section class=\"content\">\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n      <div class=\"page-header \">\n  <h1 class=\"page-header__title\">Geschwindigkeitswarnung</h1>\n    <p class=\"page-header__description\">Legen Sie eine Höchstgeschwindigkeit für Ihr Fahrzeug fest. Sobald die definierte Höchstgeschwindigkeit überschritten wird, erhalten Sie eine Benachrichtigung.</p>\n</div>\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n      <ul class=\"list-violation \">\n        <li class=\"list-violation__item\">\n            <div class=\"list-violation__row row\">\n                <div class=\"list-violation__content list-violation__content--left column column--12 column--s-8\">\n                    <h5 class=\"list-violation__title\">Speed Alarm</h5>\n                </div>\n                <div class=\"list-violation__content list-violation__content--right column column--12 column--s-4\">\n                    <span class=\"list-violation__icon icon icon--registration\"></span>\n                    <span>12.03.2017, 12:30 Uhr</span>\n                </div>\n            </div>\n        </li>\n        <li class=\"list-violation__item\">\n            <div class=\"list-violation__row row\">\n                <div class=\"list-violation__content list-violation__content--left column column--12 column--s-8\">\n                    <h5 class=\"list-violation__title\">Speed Alarm</h5>\n                </div>\n                <div class=\"list-violation__content list-violation__content--right column column--12 column--s-4\">\n                    <span class=\"list-violation__icon icon icon--registration\"></span>\n                    <span>12.03.2017, 12:30 Uhr</span>\n                </div>\n            </div>\n        </li>\n        <li class=\"list-violation__item\">\n            <div class=\"list-violation__row row\">\n                <div class=\"list-violation__content list-violation__content--left column column--12 column--s-8\">\n                    <h5 class=\"list-violation__title\">Speed Alarm</h5>\n                </div>\n                <div class=\"list-violation__content list-violation__content--right column column--12 column--s-4\">\n                    <span class=\"list-violation__icon icon icon--registration\"></span>\n                    <span>12.03.2017, 12:30 Uhr</span>\n                </div>\n            </div>\n        </li>\n</ul>\n\n      <button type=\"button\" class=\"button-inline   button-inline--stretch    -spacing-static-a\"  >\n        <span class=\"button-inline__icon icon icon--loader   -text-color-red-1\"></span>\n      <span class=\"button-inline__label button-inline__label--icon\">Weitere Elemente laden</span>\n</button>\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12 -align-right\">\n\n      <a href=\"javascript:void(0);\" class=\"link-scroll-up \">\n  <span class=\"icon icon--arrow-up-thin link-scroll-up__icon\"></span>\n  <span>Zum Listenanfang</span>\n</a>\n\n    </div>\n  </div>\n</section>",
+    "lineage": [
+        {
+            "lineagePattern": "organisms-page-header",
+            "lineagePath": "../../patterns/03-organisms-page-header-page-header/03-organisms-page-header-page-header.rendered.html",
+            "lineageState": "inreview"
+        },
+        {
+            "lineagePattern": "organisms-list-view",
+            "lineagePath": "../../patterns/03-organisms-list-list-view/03-organisms-list-list-view.rendered.html",
+            "lineageState": "inreview"
+        },
+        {
+            "lineagePattern": "organisms-state-empty-action",
+            "lineagePath": "../../patterns/03-organisms-state-empty-action-state-empty-action/03-organisms-state-empty-action-state-empty-action.rendered.html"
+        },
+        {
+            "lineagePattern": "organisms-list-violation",
+            "lineagePath": "../../patterns/03-organisms-list-list-violation/03-organisms-list-list-violation.rendered.html",
+            "lineageState": "inprogress"
+        },
+        {
+            "lineagePattern": "molecules-button-inline",
+            "lineagePath": "../../patterns/02-molecules-buttons-button-inline/02-molecules-buttons-button-inline.rendered.html",
+            "lineageState": "inreview"
+        },
+        {
+            "lineagePattern": "molecules-link-scroll-up",
+            "lineagePath": "../../patterns/02-molecules-links-link-scroll-up/02-molecules-links-link-scroll-up.rendered.html",
+            "lineageState": "inreview"
+        }
+    ],
+    "lineageIndex": [
+        "organisms-page-header",
+        "organisms-list-view",
+        "organisms-state-empty-action",
+        "organisms-list-violation",
+        "molecules-button-inline",
+        "molecules-link-scroll-up"
+    ],
+    "lineageR": [],
+    "lineageRIndex": [],
+    "isPseudoPattern": false,
+    "order": 9007199254740991,
+    "engine": {
+        "engine": {
+            "name": "mustache.js",
+            "version": "2.3.0",
+            "tags": [
+                "{{",
+                "}}"
+            ]
+        },
+        "engineName": "mustache",
+        "engineFileExtension": ".mustache",
+        "expandPartials": true,
+        "findPartialsRE": {},
+        "findPartialsWithStyleModifiersRE": {},
+        "findPartialsWithPatternParametersRE": {},
+        "findListItemsRE": {}
+    },
+    "compileState": "building",
+    "lastModified": 1497271635000,
+    "patternDescExists": true,
+    "patternDesc": "",
+    "stylePartials": [
+        "{{> molecules-button-inline:-spacing-static-a(button-inline_label: \"Weitere Elemente laden\", button-inline_icon: \"loader\", button-inline_stretch: true, styleModifier_icon: \"-text-color-red-1\") }}"
+    ],
+    "parameteredPartials": [
+        "{{> molecules-button-inline:-spacing-static-a(button-inline_label: \"Weitere Elemente laden\", button-inline_icon: \"loader\", button-inline_stretch: true, styleModifier_icon: \"-text-color-red-1\") }}",
+        "{{> molecules-link-scroll-up(link-scroll-up_text: \"Zum Listenanfang\") }}"
+    ],
+    "extendedTemplate": "<section class=\"content\">\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n      <div class=\"page-header {{ styleModifier }}\">\n  <h1 class=\"page-header__title\">{{ page-header_title }}</h1>\n  {{# page-header_description }}\n    <p class=\"page-header__description\">{{ page-header_description }}</p>\n  {{/ page-header_description }}\n</div>\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n      {{# speed-alarm_listView }}\n        <ul class=\"list-view {{ styleModifier }}\">\n  {{# list-view }}\n    <li class=\"list-view__item {{# active }}list-view__item--active{{# list-view_eMobility }}-e-mobility{{/ list-view_eMobility }}{{/ active }} {{# expanded }}list-view__item--expanded{{/ expanded }}\">\n      <div class=\"list-view__content {{# active }}list-view__content--active{{/active}}\">\n        <h5 class=\"list-view__title\">{{ title }}</h5>\n        {{# list-view_tags }}\n          <ol class=\"list-view__tags\">\n            {{# tags }}<!-- fighting the space between inline block elements\n           --><li class=\"list-view__tag {{# icon }}list-view__tag--icon{{/ icon}}\">\n                {{# icon }}\n                  <span class=\"list-view__icon {{# active }}list-view__icon--active{{/ active }} icon icon--{{ icon }}\"></span>\n                {{/ icon }}\n                <span>{{ tag }}</span>\n              </li><!-- fighting the space between inline block elements\n         -->{{/ tags }}\n          </ol>\n        {{/list-view_tags}}\n      </div>\n      <label class=\"checkbox list-view__checkbox\">\n  <input class=\"checkbox__field {{# ng-checkbox_error }} ng-invalid {{/ ng-checkbox_error }}\"\n         type=\"checkbox\"\n         name=\"{{checkbox_name}}\"\n         value=\"{{checkbox_value}}\"\n         {{# checkbox_checked }} checked=\"checked\" {{/ checkbox_checked }}\n         {{# checkbox_disabled }} disabled=\"disabled\" readonly {{/ checkbox_disabled }}>\n\n  <span class=\"checkbox__icon icon icon--check {{# checkbox_inverted }} checkbox__icon--inverted {{/ checkbox_inverted }} {{# checkbox_error }} checkbox__icon--error {{/ checkbox_error }}\"></span>\n  {{# checkbox_label }}\n    <span class=\"checkbox__label {{# checkbox_inverted }} checkbox__label--inverted {{/ checkbox_inverted }}\">{{ checkbox_label }}</span>\n  {{/ checkbox_label }}\n</label>\n      <div class=\"list-view__menu icon icon--edit\"></div>\n      {{# expanded }}\n        <div class=\"list-expanded\">\n  <span class=\"list-expanded__close icon icon--close\"></span>\n\n  {{# list-expanded_vehicleRelatedServicesBatteryChargeFormTimer }}\n    <div class=\"-background-module -spacing-inner-a {{ styleModifier }}\">\n\n  <h2 class=\"-font-secondary -typo-headline-2 -text-color-black\">{{ battery-charge-form-timer_title }}</h2>\n  <p class=\"-font-primary -typo-copy -text-color-black -spacing-static-d\">{{ battery-charge-form-timer_subtitle }}</p>\n\n  <div class=\"row\">\n    <div class=\"column column--12 column--s-6\">\n      <h4 class=\"-font-secondary -typo-headline-3 -text-color-black -spacing-b\">{{ battery-charge-form-timer_departureTitle }}</h4>\n      <label class=\"input -spacing-f\">\n    <span class=\"input__icon icon icon--timer-pcm\"></span>\n  <input class=\"input__field  \"\n         type=\"\"\n         name=\"\"\n         value=\"hh:mm\"\n         placeholder=\"Abfahrtszeit\"\n         >\n  <span class=\"input__label\">Abfahrtszeit</span>\n</label>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"column\">\n      <label class=\"radio -spacing-f\">\n  <input class=\"radio__field \"\n         type=\"radio\"\n         name=\"\"\n         value=\"\"\n          checked=\"checked\" \n         >\n\n  <span class=\"radio__icon  \"></span>\n    <span class=\"radio__label \">wiederholend</span>\n</label>\n    </div>\n    <div class=\"column\">\n      <label class=\"radio -spacing-f\">\n  <input class=\"radio__field \"\n         type=\"radio\"\n         name=\"\"\n         value=\"\"\n         \n         >\n\n  <span class=\"radio__icon  \"></span>\n    <span class=\"radio__label \">einmalig</span>\n</label>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"column column--12 column--s-3\">\n      <label class=\"input -spacing-f\">\n    <span class=\"input__icon icon icon--registration\"></span>\n  <input class=\"input__field  \"\n         type=\"\"\n         name=\"\"\n         value=\"DD.MM.JJJJ\"\n         placeholder=\"Datum\"\n         >\n  <span class=\"input__label\">Datum</span>\n</label>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"column column--12 column--s-6 -spacing-f\">\n      <div class=\"row row--small\">\n        <div class=\"column column--small\">\n          <button type=\"button\" class=\"button-inline  button-inline--active     -spacing-static-b\"  >\n      <span class=\"button-inline__label \">Mo</span>\n</button>\n        </div>\n        <div class=\"column column--small\">\n          <button type=\"button\" class=\"button-inline     -spacing-static-b\"  >\n      <span class=\"button-inline__label \">Di</span>\n</button>\n        </div>\n        <div class=\"column column--small\">\n          <button type=\"button\" class=\"button-inline  button-inline--active     -spacing-static-b\"  >\n      <span class=\"button-inline__label \">Mi</span>\n</button>\n        </div>\n        <div class=\"column column--small\">\n          <button type=\"button\" class=\"button-inline     -spacing-static-b\"  >\n      <span class=\"button-inline__label \">Do</span>\n</button>\n        </div>\n        <div class=\"column column--small\">\n          <button type=\"button\" class=\"button-inline     -spacing-static-b\"  >\n      <span class=\"button-inline__label \">Fr</span>\n</button>\n        </div>\n        <div class=\"column column--small\">\n          <button type=\"button\" class=\"button-inline     -spacing-static-b\"  >\n      <span class=\"button-inline__label \">Sa</span>\n</button>\n        </div>\n        <div class=\"column column--small\">\n          <button type=\"button\" class=\"button-inline     -spacing-static-b\"  >\n      <span class=\"button-inline__label \">So</span>\n</button>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"column column--12 column--s-6 -spacing-b\">\n      <div class=\"divider\"></div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"column column--12\">\n      <h4 class=\"-font-secondary -typo-headline-3 -text-color-black -spacing-b\">{{ battery-charge-form-timer_optionalTitle }}</h4>\n    </div>\n    <div class=\"column column--12\">\n      <label class=\"checkbox -spacing-f\">\n  <input class=\"checkbox__field \"\n         type=\"checkbox\"\n         name=\"\"\n         value=\"\"\n          checked=\"checked\" \n         >\n\n  <span class=\"checkbox__icon icon icon--check  \"></span>\n    <span class=\"checkbox__label \">Fahrzeug zur Abfahrtszeit klimatisieren</span>\n</label>\n    </div>\n    <div class=\"column column--12\">\n      <label class=\"checkbox -spacing-f\">\n  <input class=\"checkbox__field \"\n         type=\"checkbox\"\n         name=\"\"\n         value=\"\"\n          checked=\"checked\" \n         >\n\n  <span class=\"checkbox__icon icon icon--check  \"></span>\n    <span class=\"checkbox__label \">Bevorzugte Ladezeit einstellen</span>\n</label>\n    </div>\n  </div>\n\n  <div class=\"row flex-xs\">\n    <div class=\"column column--12 column--xs-auto -spacing-f\">\n      <label class=\"input mm\">\n    <span class=\"input__icon icon icon--timer-pcm\"></span>\n  <input class=\"input__field  \"\n         type=\"\"\n         name=\"\"\n         value=\"hh:mm\"\n         placeholder=\"Uhrzeit\"\n         >\n  <span class=\"input__label\">Uhrzeit</span>\n</label>\n    </div>\n    <div class=\"column column--12 column--xs-auto flex-xs flex--center-vertical -text-color-black -font-primary -typo-copy -spacing-f\">\n      {{ battery-charge-form-timer_preferredChargingTimeTo }}\n    </div>\n    <div class=\"column column--12 column--xs-auto -spacing-f\">\n      <label class=\"input mm\">\n    <span class=\"input__icon icon icon--timer-pcm\"></span>\n  <input class=\"input__field  \"\n         type=\"\"\n         name=\"\"\n         value=\"hh:mm\"\n         placeholder=\"Uhrzeit\"\n         >\n  <span class=\"input__label\">Uhrzeit</span>\n</label>\n    </div>\n  </div>\n\n</div>\n  {{/list-expanded_vehicleRelatedServicesBatteryChargeFormTimer}}\n\n  {{# list-expanded_alarmForm}}\n    <div class=\"-background-module\">\n    <div class=\" -spacing-inner-a\">\n        <h2 class=\"-font-secondary -typo-headline-2 -text-color-black\">{{ alarm-form_title }}</h2>\n        <div class=\"row\">\n            <div class=\"column column--12 column--s-6\">\n                <label class=\"input -spacing-f\">\n    <span class=\"input__icon icon icon--close\"></span>\n  <input class=\"input__field  \"\n         type=\"\"\n         name=\"\"\n         value=\"150\"\n         placeholder=\"km&#x2F;h\"\n         >\n  <span class=\"input__label\">km&#x2F;h</span>\n</label>\n            </div>\n        </div>\n        <div class=\"-align-right -spacing-a\">\n        <button type=\"button\" class=\"button-icon icon icon--delete  \"></button>\n        </div>\n    </div>\n    <div class=\"row row--zero\">\n  <div class=\"column column--zero column--reverse-s column--12 column--s-6\">\n    <button type=\"button\" class=\"button-inline  button-inline--active   button-inline--stretch    \"  >\n        <span class=\"button-inline__icon icon icon--arrow-right-thin   \"></span>\n      <span class=\"button-inline__label button-inline__label--icon\">Speichern</span>\n</button>\n  </div>\n  <div class=\"column column--zero column--reverse-s column--12 column--s-6\">\n    <button type=\"button\" class=\"button-inline   button-inline--stretch    \"  >\n        <span class=\"button-inline__icon icon icon--close   \"></span>\n      <span class=\"button-inline__label button-inline__label--icon\">Abbrechen</span>\n</button>\n  </div>\n</div>\n</div>\n  {{/ list-expanded_alarmForm}}\n\n</div>\n      {{/ expanded }}\n    </li>\n  {{/ list-view }}\n</ul>\n      {{/ speed-alarm_listView }}\n\n      {{# speed-alarm_listViewEmpty }}\n        <div class=\"state-empty-action {{styleModifier}}\">\n    <img src=\"../../../images/sampe-image.svg\"  class=\"state-empty-action__image\" />\n    <div class=\"state-empty-action__section\">\n        <span class=\"state-empty-action__title\">{{ state-empty-action_title }}</span>\n        <span class=\"state-empty-action__icon icon icon--{{ state-empty-action_icon }}\"></span>\n        <span class=\"state-empty-action__title\">{{ state-empty-action_titleContinue }}</span>\n    </div>\n</div>\n      {{/ speed-alarm_listViewEmpty }}\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12\">\n\n      <ul class=\"list-violation {{ styleModifier }}\">\n    {{# list-violation }}\n        <li class=\"list-violation__item\">\n            <div class=\"list-violation__row row\">\n                <div class=\"list-violation__content list-violation__content--left column column--12 column--s-8\">\n                    <h5 class=\"list-violation__title\">{{ title }}</h5>\n                    {{# list-violation_tags }}\n                      <ol class=\"list-violation__tags\">\n                          <li>{{ coordinates }}</li>\n                          <li class=\"list__seperator\">|</li>\n                          <li>{{ location }}</li>\n                      </ol>\n                    {{/ list-violation_tags }}\n                </div>\n                <div class=\"list-violation__content list-violation__content--right column column--12 column--s-4\">\n                    <span class=\"list-violation__icon icon icon--registration\"></span>\n                    <span>{{ dateTime }}</span>\n                </div>\n            </div>\n        </li>\n    {{/ list-violation }}\n</ul>\n\n      <button type=\"button\" class=\"button-inline   button-inline--stretch    -spacing-static-a\"  >\n        <span class=\"button-inline__icon icon icon--loader   -text-color-red-1\"></span>\n      <span class=\"button-inline__label button-inline__label--icon\">Weitere Elemente laden</span>\n</button>\n\n    </div>\n  </div>\n  <div class=\"row -spacing-widget-default\">\n    <div class=\"column column--12 -align-right\">\n\n      <a href=\"javascript:void(0);\" class=\"link-scroll-up \">\n  <span class=\"icon icon--arrow-up-thin link-scroll-up__icon\"></span>\n  <span>Zum Listenanfang</span>\n</a>\n\n    </div>\n  </div>\n</section>",
+    "lineageState": "inprogress",
+    "patternLineages": [
+        {
+            "lineagePattern": "organisms-page-header",
+            "lineagePath": "../../patterns/03-organisms-page-header-page-header/03-organisms-page-header-page-header.rendered.html",
+            "lineageState": "inreview"
+        },
+        {
+            "lineagePattern": "organisms-list-view",
+            "lineagePath": "../../patterns/03-organisms-list-list-view/03-organisms-list-list-view.rendered.html",
+            "lineageState": "inreview"
+        },
+        {
+            "lineagePattern": "organisms-state-empty-action",
+            "lineagePath": "../../patterns/03-organisms-state-empty-action-state-empty-action/03-organisms-state-empty-action-state-empty-action.rendered.html"
+        },
+        {
+            "lineagePattern": "organisms-list-violation",
+            "lineagePath": "../../patterns/03-organisms-list-list-violation/03-organisms-list-list-violation.rendered.html",
+            "lineageState": "inprogress"
+        },
+        {
+            "lineagePattern": "molecules-button-inline",
+            "lineagePath": "../../patterns/02-molecules-buttons-button-inline/02-molecules-buttons-button-inline.rendered.html",
+            "lineageState": "inreview"
+        },
+        {
+            "lineagePattern": "molecules-link-scroll-up",
+            "lineagePath": "../../patterns/02-molecules-links-link-scroll-up/02-molecules-links-link-scroll-up.rendered.html",
+            "lineageState": "inreview"
+        }
+    ],
+    "patternLineageExists": true,
+    "patternLineagesR": [],
+    "patternLineageRExists": false,
+    "patternLineageEExists": true,
+    "header": "<!DOCTYPE html>\n<html class=\"{{ htmlClass }}\">\n  <head>\n    <title>{{ title }}</title>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width\" />\n\n    <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->\n    {{{ patternLabHead }}}\n\n    <link rel=\"stylesheet\" href=\"../../css/styleguide-scaffolding.css?{{ cacheBuster }}\" media=\"all\"/>\n    <link rel=\"stylesheet\" href=\"../../css/porsche-stylesheets.css?{{ cacheBuster }}\" media=\"all\"/>\n\n  </head>\n  <body class=\"{{ bodyClass }}\">\n\n",
+    "patternData": "{\"cssEnabled\":false,\"patternLineageExists\":true,\"patternLineages\":[{\"lineagePattern\":\"organisms-page-header\",\"lineagePath\":\"../../patterns/03-organisms-page-header-page-header/03-organisms-page-header-page-header.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-list-view\",\"lineagePath\":\"../../patterns/03-organisms-list-list-view/03-organisms-list-list-view.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-state-empty-action\",\"lineagePath\":\"../../patterns/03-organisms-state-empty-action-state-empty-action/03-organisms-state-empty-action-state-empty-action.rendered.html\"},{\"lineagePattern\":\"organisms-list-violation\",\"lineagePath\":\"../../patterns/03-organisms-list-list-violation/03-organisms-list-list-violation.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"molecules-button-inline\",\"lineagePath\":\"../../patterns/02-molecules-buttons-button-inline/02-molecules-buttons-button-inline.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"molecules-link-scroll-up\",\"lineagePath\":\"../../patterns/02-molecules-links-link-scroll-up/02-molecules-links-link-scroll-up.rendered.html\",\"lineageState\":\"inreview\"}],\"lineage\":[{\"lineagePattern\":\"organisms-page-header\",\"lineagePath\":\"../../patterns/03-organisms-page-header-page-header/03-organisms-page-header-page-header.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-list-view\",\"lineagePath\":\"../../patterns/03-organisms-list-list-view/03-organisms-list-list-view.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-state-empty-action\",\"lineagePath\":\"../../patterns/03-organisms-state-empty-action-state-empty-action/03-organisms-state-empty-action-state-empty-action.rendered.html\"},{\"lineagePattern\":\"organisms-list-violation\",\"lineagePath\":\"../../patterns/03-organisms-list-list-violation/03-organisms-list-list-violation.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"molecules-button-inline\",\"lineagePath\":\"../../patterns/02-molecules-buttons-button-inline/02-molecules-buttons-button-inline.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"molecules-link-scroll-up\",\"lineagePath\":\"../../patterns/02-molecules-links-link-scroll-up/02-molecules-links-link-scroll-up.rendered.html\",\"lineageState\":\"inreview\"}],\"patternLineageRExists\":false,\"patternLineagesR\":[],\"lineageR\":[],\"patternLineageEExists\":true,\"patternDesc\":\"\",\"patternBreadcrumb\":{\"patternType\":\"speed-alarm\",\"patternSubtype\":\"pages\"},\"patternExtension\":\"mustache\",\"patternName\":\"Speed Alarm\",\"patternPartial\":\"speed-alarm-speed-alarm\",\"patternState\":\"inprogress\",\"patternEngineName\":\"mustache\",\"extraOutput\":{}}"
+}

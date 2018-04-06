@@ -56,7 +56,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@bitbucket.web.porsche.biz:2222/pcccom/porsche-stylesheets.git"
+    "url": "ssh://git@bitbucket.org:porschedev/porsche-ui-kit.git"
   },
   "keywords": [
     "porsche",
@@ -78,6 +78,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "@porsche/plugin-node-sass-dependency-collector": "file:../tools/plugin-node-sass-dependency-collector",
     "autoprefixer": "8.2.0",
     "better-npm-run": "0.1.0",
     "browser-sync": "2.23.6",
@@ -94,7 +95,6 @@
     "patternlab-node": "2.12.0",
     "plugin-node-clipboard": "1.0.0",
     "plugin-node-data-inheritance": "1.0.0-alpha",
-    "plugin-node-sass-dependency-collector": "0.0.3",
     "postcss": "6.0.21",
     "postcss-cli": "2.6.0",
     "postcss-flexboxfixer": "0.0.5",
