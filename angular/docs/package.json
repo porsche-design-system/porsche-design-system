@@ -16,6 +16,7 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
+    "porsche-stylesheets": "../../core",
     "@angular/animations": "^5.2.9",
     "@angular/common": "^5.2.9",
     "@angular/compiler": "^5.2.9",
@@ -23,7 +24,7 @@
     "@angular/forms": "^5.2.9",
     "@angular/platform-browser": "^5.2.9",
     "@angular/platform-browser-dynamic": "^5.2.9",
-    "@porsche/ui-kit-angular": "file:../ui-kit-angular/dist",
+    "@porsche/ui-kit-angular": "file:../ui-kit/dist",
     "@storybook/addon-actions": "^3.4.0-rc.3",
     "@storybook/addon-knobs": "^3.4.0-rc.3",
     "@storybook/addon-links": "^3.4.0-rc.3",
