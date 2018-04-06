@@ -7,7 +7,7 @@ $breakpoints: $breakpoints !default;
   @if ($minBreakpoint and $maxBreakpoint) {
     @if map-has-key($breakpoints, $minBreakpoint) and map-has-key($breakpoints, $maxBreakpoint) {
 
-      @media (min-width: #{map-get($breakpoints, $minBreakpoint)}) and (max-width: #{map-get($breakpoints, $maxBreakpoint)} - 1px) {
+      @media (min-width: #{map-get($breakpoints, $minBreakpoint)}) and (max-width: #{map-get($breakpoints, $maxBreakpoint) - 1px}) {
         @content;
       }
 
@@ -33,7 +33,6 @@ $breakpoints: $breakpoints !default;
       @media (min-width: $minBreakpoint) {
         @content;
       }
-
     }
   }
 }

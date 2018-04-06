@@ -100,7 +100,8 @@
   }
 
   &__company-address {
-    @include -overflow-ellipsis;
+    white-space: normal;
+    display: block;
     padding-left: $choose-dealer-company-address-spacing-left;
 
     @include breakpoint('s') {

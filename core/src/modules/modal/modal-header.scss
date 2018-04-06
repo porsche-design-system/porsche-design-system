@@ -10,8 +10,9 @@
   @include flex--justify-content(space-between);
 
   &__title {
+    white-space: normal;
     @include -text-size-3-thin;
-    @include -overflow-ellipsis;
+    display: block;
     max-width: $modal-header-title-max-width;
   }
 }

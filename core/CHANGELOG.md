@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 
+## [0.95.5] - 2018-04-04
+* Bugfix for latest node-sass version 4.8.3 to make sure variable interpolation and calculation works as desired
+
+## [0.95.4] - 2018-04-03
+* Add core pattern for common unordered list
+* Bugfix: "modal-header", white-space property was updated
+* Bugfix: "choose-dealer", white-space property was updated
+* Bugfix: "additional-callback-vehicles", white-space property was updated
+
 ## [0.95.3] - 2018-03-21
 * Extended font-family language codes with standardized ISO 639-1 language codes
 
@@ -1240,7 +1249,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * initial project setup
 
-[unreleased]: https://bitbucket.web.porsche.biz/projects/PCCCOM/repos/porsche-stylesheets/compare/diff?targetBranch=refs%2Ftags%2Fv0.95.3&sourceBranch=refs%2Fheads%2Fmaster
+[unreleased]: https://bitbucket.web.porsche.biz/projects/PCCCOM/repos/porsche-stylesheets/compare/diff?targetBranch=refs%2Ftags%2Fv0.95.5&sourceBranch=refs%2Fheads%2Fmaster
+[0.95.5]: https://bitbucket.web.porsche.biz/projects/PCCCOM/repos/porsche-stylesheets/commits?until=refs%2Ftags%2Fv0.95.4
+[0.95.4]: https://bitbucket.web.porsche.biz/projects/PCCCOM/repos/porsche-stylesheets/commits?until=refs%2Ftags%2Fv0.95.3
 [0.95.3]: https://bitbucket.web.porsche.biz/projects/PCCCOM/repos/porsche-stylesheets/commits?until=refs%2Ftags%2Fv0.95.2
 [0.95.2]: https://bitbucket.web.porsche.biz/projects/PCCCOM/repos/porsche-stylesheets/commits?until=refs%2Ftags%2Fv0.95.1
 [0.95.1]: https://bitbucket.web.porsche.biz/projects/PCCCOM/repos/porsche-stylesheets/commits?until=refs%2Ftags%2Fv0.95.0
