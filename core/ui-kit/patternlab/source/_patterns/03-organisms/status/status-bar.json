@@ -1,8 +1,0 @@
-{
-  "bodyClass": "sg-wrapper-dark",
-  "status-bar_icon": "climate-next",
-  "status-bar_labelPrimary": "Some initial label",
-  "status-bar_labelSecondary": "",
-  "status-bar_active": false,
-  "status-bar_error": false
-}
