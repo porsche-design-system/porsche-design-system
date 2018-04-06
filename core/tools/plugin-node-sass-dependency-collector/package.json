@@ -1,0 +1,28 @@
+{
+  "name": "@porsche/plugin-node-sass-dependency-collector",
+  "version": "0.0.3",
+  "description": "Collects all related scss dependencies",
+  "main": "index.js",
+  "dependencies": {
+    "colors": "1.1.2",
+    "fs-extra": "4.0.3",
+    "glob": "7.1.2",
+    "lodash": "4.17.4",
+    "node-sass": "4.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:porschedev/porsche-ui-kit.git"
+  },
+  "scripts": {
+    "postinstall": "node ./postinstall.js",
+    "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
+  },
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Mitko Tschimev <net.mitko.tschimev@mhp.com>",
+    "Stephan Schröter <stephan.schroeter@mhp.com>"
+  ],
+  "license": "MIT",
+  "homepage": ""
+}

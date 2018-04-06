@@ -1,0 +1,474 @@
+{
+    "relPath": "02-molecules/buttons/button-inline~01-with-icon.json",
+    "fileName": "button-inline~01-with-icon",
+    "subdir": "02-molecules/buttons",
+    "fileExtension": ".mustache",
+    "name": "02-molecules-buttons-button-inline-01-with-icon",
+    "jsonFileData": {
+        "button-inline_icon": "registration",
+        "button-inline_label": "Some button label",
+        "button-inline_active": false,
+        "button-inline_stretch": false,
+        "button-inline_disabled": false,
+        "button-inline_center": false,
+        "button-inline_iconLarge": false,
+        "button-inline_seamless": false,
+        "bodyClass": "sg-wrapper-dark",
+        "googleMaps": {
+            "src": "https://maps.googleapis.com/maps/api/staticmap?center=Porsche, Germany&zoom=13&size=600x300&key=***REMOVED***"
+        },
+        "vehicleImage": {
+            "src": "https://pva-picserv-k.porsche.org/picserv/images-api/v1/ef322f10356124da711655d9f7e354fc/2"
+        },
+        "btnText": "Button",
+        "radioButton": {
+            "name": "some-radio-button",
+            "nameDisabled": "some-disabled-radio-button",
+            "nameDarkBG": "some-radio-button--dark-background",
+            "nameDisabledDarkBG": "some-disabled-radio-button--dark-background",
+            "valueOne": "one",
+            "valueTwo": "two",
+            "label": "An unchecked radio button",
+            "labelChecked": "A checked radio button",
+            "labelDisabled": "A disabled radio button",
+            "labelDisabledChecked": "A disabled and checked radio button"
+        },
+        "select": {
+            "optionOne": "Please choose an option",
+            "optionTwo": "This is an option",
+            "optionThree": "This is another option",
+            "optionFour": "This is a third option"
+        },
+        "eRangeMapSelector": {
+            "range": 42,
+            "rangeUnit": "km",
+            "radio": {
+                "labelERange": "elektrische Reichweite",
+                "labelConventionalRange": "konventionelle Reichweite",
+                "nameERange": "e-range-radio-button",
+                "nameConventionalRange": "conventional-range-radio-button"
+            }
+        },
+        "eRangeMap": {
+            "errorMessageCarDataCouldNotBeLoaded": "Die Kartendaten können momentan nicht abgerufen werden.",
+            "errorMessageCarCouldNotBeLocated": "Das Fahrzeug kann momentan nicht geortert werden."
+        },
+        "batteryChart": {
+            "charging": false,
+            "chargeLevel": "12"
+        },
+        "batteryStatus": {
+            "rangeLabel": "E-Range",
+            "rangeValue": "321",
+            "rangeUnit": "km",
+            "plugStatusTextDisconnected": "Fahrzeug nicht verbunden",
+            "plugStatusTextPending": "Warten auf Abfahrtstimer",
+            "plugStatusTextError": "Fahrzeug lädt nicht"
+        },
+        "visualization": {
+            "remainingChargingTime": {
+                "label": "Verbleibende Ladezeit",
+                "value": "09:24",
+                "unit": "h"
+            },
+            "data": {
+                "label": "Label",
+                "value": "432",
+                "unit": "km"
+            }
+        },
+
+        "patternLabHead": "<!-- never cache patterns -->\n<meta http-equiv=\"cache-control\" content=\"max-age=0\" />\n<meta http-equiv=\"cache-control\" content=\"no-cache\" />\n<meta http-equiv=\"expires\" content=\"0\" />\n<meta http-equiv=\"expires\" content=\"Tue, 01 Jan 1980 1:00:00 GMT\" />\n<meta http-equiv=\"pragma\" content=\"no-cache\" />\n\n<link rel=\"stylesheet\" href=\"../../styleguide/css/styleguide.min.css?1498598989967\" media=\"all\">\n<link rel=\"stylesheet\" href=\"../../styleguide/css/prism-typeahead.min.css?1498598989967\" media=\"all\" />\n",
+        "cacheBuster": 1498598989967,
+        "patternLabFoot": "<script type=\"text/json\" id=\"sg-pattern-data-footer\" class=\"sg-pattern-data\">\n  {\"cssEnabled\":false,\"patternLineageExists\":false,\"patternLineages\":[],\"lineage\":[],\"patternLineageRExists\":false,\"patternLineagesR\":[],\"lineageR\":[],\"patternLineageEExists\":false,\"patternDesc\":\"\",\"patternBreadcrumb\":{\"patternType\":\"molecules\",\"patternSubtype\":\"buttons\"},\"patternExtension\":\"mustache\",\"patternName\":\"Button Inline 01 With Icon\",\"patternPartial\":\"molecules-button-inline-01-with-icon\",\"patternState\":\"inreview\",\"patternEngineName\":\"mustache\",\"extraOutput\":{}}\n</script>\n\n<script>\n  /*!\n   * scriptLoader - v0.1\n   *\n   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com\n   * Licensed under the MIT license\n   *\n   */\n  \n  var scriptLoader = {\n    \n    run: function(js,cb,target) {\n      var s  = document.getElementById(target+'-'+cb);\n      for (var i = 0; i < js.length; i++) {\n        var src = (typeof js[i] != 'string') ? js[i].src : js[i];\n        var c   = document.createElement('script');\n        c.src   = '../../'+src+'?'+cb;\n        if (typeof js[i] != 'string') {\n          if (js[i].dep !== undefined) {\n            c.onload = function(dep,cb,target) {\n              return function() {\n                scriptLoader.run(dep,cb,target);\n              }\n            }(js[i].dep,cb,target);\n          }\n        }\n        s.parentNode.insertBefore(c,s);\n      }\n    }\n    \n  }\n</script>\n\n<script id=\"pl-js-polyfill-insert-1498598989967\">\n  (function() {\n    if (self != top) {\n      var cb = '1498598989967';\n      var js = [];\n      if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {\n        js.push('styleguide/bower_components/classList.min.js');\n      }\n      scriptLoader.run(js,cb,'pl-js-polyfill-insert');\n    }\n  })();\n</script>\n\n<script id=\"pl-js-insert-1498598989967\">\n  (function() {\n    if (self != top) {\n      var cb = '1498598989967';\n      var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];\n      scriptLoader.run(js,cb,'pl-js-insert');\n    }\n  })();\n</script>\n"
+    },
+    "patternBaseName": "button-inline-01-with-icon",
+    "patternName": "Button Inline 01 With Icon",
+    "patternGroup": "molecules",
+    "patternType": "02-molecules",
+    "patternSubGroup": "buttons",
+    "patternSubType": "buttons",
+    "flatPatternPath": "02-molecules-buttons",
+    "patternLink": "02-molecules-buttons-button-inline-01-with-icon/02-molecules-buttons-button-inline-01-with-icon.rendered.html",
+    "patternPartial": "molecules-button-inline-01-with-icon",
+    "verbosePartial": "02-molecules/buttons/button-inline~01-with-icon",
+    "isPattern": true,
+    "isFlatPattern": false,
+    "patternState": "inreview",
+    "template": "<button type=\"button\" class=\"button-inline {{# button-inline_active }} button-inline--active {{/button-inline_active}} {{# button-inline_stretch}} button-inline--stretch {{/button-inline_stretch}} {{# button-inline_seamless }} button-inline--seamless {{/ button-inline_seamless }} {{# button-inline_center }} button-inline--center {{/button-inline_center}} {{ styleModifier }}\" {{# button-inline_disabled }} disabled {{/ button-inline_disabled}} >\n    {{# button-inline_icon}}\n        <span class=\"button-inline__icon icon icon--{{ button-inline_icon }} {{# button-inline_center }} button-inline__icon--center {{/ button-inline_center }} {{# button-inline_iconLarge }} button-inline__icon--large {{/button-inline_iconLarge}} {{ styleModifier_icon }}\"></span>\n    {{/ button-inline_icon}}\n    {{# button-inline_label }}\n      <span class=\"button-inline__label {{# button-inline_icon }}button-inline__label--icon{{/ button-inline_icon }}\">{{ button-inline_label }}</span>\n    {{/ button-inline_label }}\n</button>",
+    "patternPartialCode": "<button type=\"button\" class=\"button-inline     \"  >\n        <span class=\"button-inline__icon icon icon--registration   \"></span>\n      <span class=\"button-inline__label button-inline__label--icon\">Some button label</span>\n</button>",
+    "lineage": [],
+    "lineageIndex": [],
+    "lineageR": [],
+    "lineageRIndex": [],
+    "isPseudoPattern": true,
+    "order": 9007199254740991,
+    "engine": {
+        "engine": {
+            "name": "mustache.js",
+            "version": "2.3.0",
+            "tags": [
+                "{{",
+                "}}"
+            ]
+        },
+        "engineName": "mustache",
+        "engineFileExtension": ".mustache",
+        "expandPartials": true,
+        "findPartialsRE": {},
+        "findPartialsWithStyleModifiersRE": {},
+        "findPartialsWithPatternParametersRE": {},
+        "findListItemsRE": {}
+    },
+    "compileState": "building",
+    "lastModified": 1497271635000,
+    "parameteredPartials": null,
+    "stylePartials": null,
+    "basePattern": {
+        "relPath": "02-molecules/buttons/button-inline.mustache",
+        "fileName": "button-inline",
+        "subdir": "02-molecules/buttons",
+        "fileExtension": ".mustache",
+        "name": "02-molecules-buttons-button-inline",
+        "jsonFileData": {
+            "button-inline_label": "Some button label",
+            "button-inline_active": false,
+            "button-inline_icon": "",
+            "button-inline_stretch": false,
+            "button-inline_disabled": false,
+            "button-inline_center": false,
+            "button-inline_iconLarge": false,
+            "button-inline_seamless": false,
+            "bodyClass": "sg-wrapper-dark",
+            "googleMaps": {
+                "src": "https://maps.googleapis.com/maps/api/staticmap?center=Porsche, Germany&zoom=13&size=600x300&key=***REMOVED***"
+            },
+            "vehicleImage": {
+                "src": "https://pva-picserv-k.porsche.org/picserv/images-api/v1/ef322f10356124da711655d9f7e354fc/2"
+            },
+            "btnText": "Button",
+            "radioButton": {
+                "name": "some-radio-button",
+                "nameDisabled": "some-disabled-radio-button",
+                "nameDarkBG": "some-radio-button--dark-background",
+                "nameDisabledDarkBG": "some-disabled-radio-button--dark-background",
+                "valueOne": "one",
+                "valueTwo": "two",
+                "label": "An unchecked radio button",
+                "labelChecked": "A checked radio button",
+                "labelDisabled": "A disabled radio button",
+                "labelDisabledChecked": "A disabled and checked radio button"
+            },
+            "select": {
+                "optionOne": "Please choose an option",
+                "optionTwo": "This is an option",
+                "optionThree": "This is another option",
+                "optionFour": "This is a third option"
+            },
+            "eRangeMapSelector": {
+                "range": 42,
+                "rangeUnit": "km",
+                "radio": {
+                    "labelERange": "elektrische Reichweite",
+                    "labelConventionalRange": "konventionelle Reichweite",
+                    "nameERange": "e-range-radio-button",
+                    "nameConventionalRange": "conventional-range-radio-button"
+                }
+            },
+            "eRangeMap": {
+                "errorMessageCarDataCouldNotBeLoaded": "Die Kartendaten können momentan nicht abgerufen werden.",
+                "errorMessageCarCouldNotBeLocated": "Das Fahrzeug kann momentan nicht geortert werden."
+            },
+            "batteryChart": {
+                "charging": false,
+                "chargeLevel": "12"
+            },
+            "batteryStatus": {
+                "rangeLabel": "E-Range",
+                "rangeValue": "321",
+                "rangeUnit": "km",
+                "plugStatusTextDisconnected": "Fahrzeug nicht verbunden",
+                "plugStatusTextPending": "Warten auf Abfahrtstimer",
+                "plugStatusTextError": "Fahrzeug lädt nicht"
+            },
+            "visualization": {
+                "remainingChargingTime": {
+                    "label": "Verbleibende Ladezeit",
+                    "value": "09:24",
+                    "unit": "h"
+                },
+                "data": {
+                    "label": "Label",
+                    "value": "432",
+                    "unit": "km"
+                }
+            },
+            
+            "patternLabHead": "<!-- never cache patterns -->\n<meta http-equiv=\"cache-control\" content=\"max-age=0\" />\n<meta http-equiv=\"cache-control\" content=\"no-cache\" />\n<meta http-equiv=\"expires\" content=\"0\" />\n<meta http-equiv=\"expires\" content=\"Tue, 01 Jan 1980 1:00:00 GMT\" />\n<meta http-equiv=\"pragma\" content=\"no-cache\" />\n\n<link rel=\"stylesheet\" href=\"../../styleguide/css/styleguide.min.css?1498598989967\" media=\"all\">\n<link rel=\"stylesheet\" href=\"../../styleguide/css/prism-typeahead.min.css?1498598989967\" media=\"all\" />\n",
+            "cacheBuster": 1498598989967,
+            "patternLabFoot": "<script type=\"text/json\" id=\"sg-pattern-data-footer\" class=\"sg-pattern-data\">\n  {\"cssEnabled\":false,\"patternLineageExists\":false,\"patternLineages\":[],\"lineage\":[],\"patternLineageRExists\":true,\"patternLineagesR\":[{\"lineagePattern\":\"organisms-navigation-topbar-desktop-01-open\",\"lineagePath\":\"../../patterns/03-organisms-navigation-navigation-topbar-desktop-01-open/03-organisms-navigation-navigation-topbar-desktop-01-open.rendered.html\"},{\"lineagePattern\":\"service-appointment-request-service-scheduling-01-choose-date\",\"lineagePath\":\"../../patterns/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date.rendered.html\"},{\"lineagePattern\":\"location-alarm-location-alarm-create-fence\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm-create-fence/06-location-alarm-04-pages-location-alarm-create-fence.rendered.html\"},{\"lineagePattern\":\"location-alarm-location-alarm-edit-fence\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm-edit-fence/06-location-alarm-04-pages-location-alarm-edit-fence.rendered.html\"},{\"lineagePattern\":\"speed-alarm-speed-alarm-edit-alarm-form\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form.rendered.html\"},{\"lineagePattern\":\"speed-alarm-speed-alarm-list-view-empty-state\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state.rendered.html\"},{\"lineagePattern\":\"organisms-form-button-group\",\"lineagePath\":\"../../patterns/03-organisms-form-button-group-form-button-group/03-organisms-form-button-group-form-button-group.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"recall-reminder-affected-vehicle-information-detail\",\"lineagePath\":\"../../patterns/04-recall-reminder-02-organism-affected-vehicle-information-detail/04-recall-reminder-02-organism-affected-vehicle-information-detail.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"e-control-battery-charge-form-timer\",\"lineagePath\":\"../../patterns/08-e-control-03-organisms-battery-charge-form-timer/08-e-control-03-organisms-battery-charge-form-timer.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-modal-common\",\"lineagePath\":\"../../patterns/03-organisms-modal-modal-common/03-organisms-modal-modal-common.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-navigation-topbar-desktop\",\"lineagePath\":\"../../patterns/03-organisms-navigation-navigation-topbar-desktop/03-organisms-navigation-navigation-topbar-desktop.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"recall-reminder-affected-vehicle-information\",\"lineagePath\":\"../../patterns/04-recall-reminder-02-organism-affected-vehicle-information/04-recall-reminder-02-organism-affected-vehicle-information.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"service-appointment-request-service-scheduling\",\"lineagePath\":\"../../patterns/04-service-appointment-request-02-organisms-service-scheduling/04-service-appointment-request-02-organisms-service-scheduling.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"service-appointment-request-service-appointment-request\",\"lineagePath\":\"../../patterns/04-service-appointment-request-03-pages-service-appointment-request/04-service-appointment-request-03-pages-service-appointment-request.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"location-alarm-map-fence-overview\",\"lineagePath\":\"../../patterns/06-location-alarm-03-organisms-map-fence-overview/06-location-alarm-03-organisms-map-fence-overview.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"location-alarm-location-alarm\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm/06-location-alarm-04-pages-location-alarm.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"speed-alarm-speed-alarm\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm/07-speed-alarm-04-pages-speed-alarm.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"car-control-car-actions-control\",\"lineagePath\":\"../../patterns/12-car-control-03-organisms-car-actions-control/12-car-control-03-organisms-car-actions-control.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"design-spec-button-inline\",\"lineagePath\":\"../../patterns/20-design-spec-buttons-button-inline/20-design-spec-buttons-button-inline.rendered.html\",\"lineageState\":\"inprogress\"}],\"lineageR\":[{\"lineagePattern\":\"organisms-navigation-topbar-desktop-01-open\",\"lineagePath\":\"../../patterns/03-organisms-navigation-navigation-topbar-desktop-01-open/03-organisms-navigation-navigation-topbar-desktop-01-open.rendered.html\"},{\"lineagePattern\":\"service-appointment-request-service-scheduling-01-choose-date\",\"lineagePath\":\"../../patterns/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date.rendered.html\"},{\"lineagePattern\":\"location-alarm-location-alarm-create-fence\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm-create-fence/06-location-alarm-04-pages-location-alarm-create-fence.rendered.html\"},{\"lineagePattern\":\"location-alarm-location-alarm-edit-fence\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm-edit-fence/06-location-alarm-04-pages-location-alarm-edit-fence.rendered.html\"},{\"lineagePattern\":\"speed-alarm-speed-alarm-edit-alarm-form\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form.rendered.html\"},{\"lineagePattern\":\"speed-alarm-speed-alarm-list-view-empty-state\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state.rendered.html\"},{\"lineagePattern\":\"organisms-form-button-group\",\"lineagePath\":\"../../patterns/03-organisms-form-button-group-form-button-group/03-organisms-form-button-group-form-button-group.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"recall-reminder-affected-vehicle-information-detail\",\"lineagePath\":\"../../patterns/04-recall-reminder-02-organism-affected-vehicle-information-detail/04-recall-reminder-02-organism-affected-vehicle-information-detail.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"e-control-battery-charge-form-timer\",\"lineagePath\":\"../../patterns/08-e-control-03-organisms-battery-charge-form-timer/08-e-control-03-organisms-battery-charge-form-timer.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-modal-common\",\"lineagePath\":\"../../patterns/03-organisms-modal-modal-common/03-organisms-modal-modal-common.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-navigation-topbar-desktop\",\"lineagePath\":\"../../patterns/03-organisms-navigation-navigation-topbar-desktop/03-organisms-navigation-navigation-topbar-desktop.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"recall-reminder-affected-vehicle-information\",\"lineagePath\":\"../../patterns/04-recall-reminder-02-organism-affected-vehicle-information/04-recall-reminder-02-organism-affected-vehicle-information.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"service-appointment-request-service-scheduling\",\"lineagePath\":\"../../patterns/04-service-appointment-request-02-organisms-service-scheduling/04-service-appointment-request-02-organisms-service-scheduling.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"service-appointment-request-service-appointment-request\",\"lineagePath\":\"../../patterns/04-service-appointment-request-03-pages-service-appointment-request/04-service-appointment-request-03-pages-service-appointment-request.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"location-alarm-map-fence-overview\",\"lineagePath\":\"../../patterns/06-location-alarm-03-organisms-map-fence-overview/06-location-alarm-03-organisms-map-fence-overview.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"location-alarm-location-alarm\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm/06-location-alarm-04-pages-location-alarm.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"speed-alarm-speed-alarm\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm/07-speed-alarm-04-pages-speed-alarm.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"car-control-car-actions-control\",\"lineagePath\":\"../../patterns/12-car-control-03-organisms-car-actions-control/12-car-control-03-organisms-car-actions-control.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"design-spec-button-inline\",\"lineagePath\":\"../../patterns/20-design-spec-buttons-button-inline/20-design-spec-buttons-button-inline.rendered.html\",\"lineageState\":\"inprogress\"}],\"patternLineageEExists\":true,\"patternDesc\":\"\",\"patternBreadcrumb\":{\"patternType\":\"molecules\",\"patternSubtype\":\"buttons\"},\"patternExtension\":\"mustache\",\"patternName\":\"Button Inline\",\"patternPartial\":\"molecules-button-inline\",\"patternState\":\"inreview\",\"patternEngineName\":\"mustache\",\"extraOutput\":{}}\n</script>\n\n<script>\n  /*!\n   * scriptLoader - v0.1\n   *\n   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com\n   * Licensed under the MIT license\n   *\n   */\n  \n  var scriptLoader = {\n    \n    run: function(js,cb,target) {\n      var s  = document.getElementById(target+'-'+cb);\n      for (var i = 0; i < js.length; i++) {\n        var src = (typeof js[i] != 'string') ? js[i].src : js[i];\n        var c   = document.createElement('script');\n        c.src   = '../../'+src+'?'+cb;\n        if (typeof js[i] != 'string') {\n          if (js[i].dep !== undefined) {\n            c.onload = function(dep,cb,target) {\n              return function() {\n                scriptLoader.run(dep,cb,target);\n              }\n            }(js[i].dep,cb,target);\n          }\n        }\n        s.parentNode.insertBefore(c,s);\n      }\n    }\n    \n  }\n</script>\n\n<script id=\"pl-js-polyfill-insert-1498598989967\">\n  (function() {\n    if (self != top) {\n      var cb = '1498598989967';\n      var js = [];\n      if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {\n        js.push('styleguide/bower_components/classList.min.js');\n      }\n      scriptLoader.run(js,cb,'pl-js-polyfill-insert');\n    }\n  })();\n</script>\n\n<script id=\"pl-js-insert-1498598989967\">\n  (function() {\n    if (self != top) {\n      var cb = '1498598989967';\n      var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];\n      scriptLoader.run(js,cb,'pl-js-insert');\n    }\n  })();\n</script>\n"
+        },
+        "patternBaseName": "button-inline",
+        "patternName": "Button Inline",
+        "patternGroup": "molecules",
+        "patternType": "02-molecules",
+        "patternSubGroup": "buttons",
+        "patternSubType": "buttons",
+        "flatPatternPath": "02-molecules-buttons",
+        "patternLink": "02-molecules-buttons-button-inline/02-molecules-buttons-button-inline.rendered.html",
+        "patternPartial": "molecules-button-inline",
+        "verbosePartial": "02-molecules/buttons/button-inline",
+        "isPattern": true,
+        "isFlatPattern": false,
+        "patternState": "inreview",
+        "template": "<button type=\"button\" class=\"button-inline {{# button-inline_active }} button-inline--active {{/button-inline_active}} {{# button-inline_stretch}} button-inline--stretch {{/button-inline_stretch}} {{# button-inline_seamless }} button-inline--seamless {{/ button-inline_seamless }} {{# button-inline_center }} button-inline--center {{/button-inline_center}} {{ styleModifier }}\" {{# button-inline_disabled }} disabled {{/ button-inline_disabled}} >\n    {{# button-inline_icon}}\n        <span class=\"button-inline__icon icon icon--{{ button-inline_icon }} {{# button-inline_center }} button-inline__icon--center {{/ button-inline_center }} {{# button-inline_iconLarge }} button-inline__icon--large {{/button-inline_iconLarge}} {{ styleModifier_icon }}\"></span>\n    {{/ button-inline_icon}}\n    {{# button-inline_label }}\n      <span class=\"button-inline__label {{# button-inline_icon }}button-inline__label--icon{{/ button-inline_icon }}\">{{ button-inline_label }}</span>\n    {{/ button-inline_label }}\n</button>",
+        "patternPartialCode": "<button type=\"button\" class=\"button-inline     \"  >\n      <span class=\"button-inline__label \">Some button label</span>\n</button>",
+        "lineage": [],
+        "lineageIndex": [],
+        "lineageR": [
+            {
+                "lineagePattern": "organisms-navigation-topbar-desktop-01-open",
+                "lineagePath": "../../patterns/03-organisms-navigation-navigation-topbar-desktop-01-open/03-organisms-navigation-navigation-topbar-desktop-01-open.rendered.html"
+            },
+            {
+                "lineagePattern": "service-appointment-request-service-scheduling-01-choose-date",
+                "lineagePath": "../../patterns/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date.rendered.html"
+            },
+            {
+                "lineagePattern": "location-alarm-location-alarm-create-fence",
+                "lineagePath": "../../patterns/06-location-alarm-04-pages-location-alarm-create-fence/06-location-alarm-04-pages-location-alarm-create-fence.rendered.html"
+            },
+            {
+                "lineagePattern": "location-alarm-location-alarm-edit-fence",
+                "lineagePath": "../../patterns/06-location-alarm-04-pages-location-alarm-edit-fence/06-location-alarm-04-pages-location-alarm-edit-fence.rendered.html"
+            },
+            {
+                "lineagePattern": "speed-alarm-speed-alarm-edit-alarm-form",
+                "lineagePath": "../../patterns/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form.rendered.html"
+            },
+            {
+                "lineagePattern": "speed-alarm-speed-alarm-list-view-empty-state",
+                "lineagePath": "../../patterns/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state.rendered.html"
+            },
+            {
+                "lineagePattern": "organisms-form-button-group",
+                "lineagePath": "../../patterns/03-organisms-form-button-group-form-button-group/03-organisms-form-button-group-form-button-group.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "recall-reminder-affected-vehicle-information-detail",
+                "lineagePath": "../../patterns/04-recall-reminder-02-organism-affected-vehicle-information-detail/04-recall-reminder-02-organism-affected-vehicle-information-detail.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "e-control-battery-charge-form-timer",
+                "lineagePath": "../../patterns/08-e-control-03-organisms-battery-charge-form-timer/08-e-control-03-organisms-battery-charge-form-timer.rendered.html",
+                "lineageState": "inreview"
+            },
+            {
+                "lineagePattern": "organisms-modal-common",
+                "lineagePath": "../../patterns/03-organisms-modal-modal-common/03-organisms-modal-modal-common.rendered.html",
+                "lineageState": "inreview"
+            },
+            {
+                "lineagePattern": "organisms-navigation-topbar-desktop",
+                "lineagePath": "../../patterns/03-organisms-navigation-navigation-topbar-desktop/03-organisms-navigation-navigation-topbar-desktop.rendered.html",
+                "lineageState": "inreview"
+            },
+            {
+                "lineagePattern": "recall-reminder-affected-vehicle-information",
+                "lineagePath": "../../patterns/04-recall-reminder-02-organism-affected-vehicle-information/04-recall-reminder-02-organism-affected-vehicle-information.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "service-appointment-request-service-scheduling",
+                "lineagePath": "../../patterns/04-service-appointment-request-02-organisms-service-scheduling/04-service-appointment-request-02-organisms-service-scheduling.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "service-appointment-request-service-appointment-request",
+                "lineagePath": "../../patterns/04-service-appointment-request-03-pages-service-appointment-request/04-service-appointment-request-03-pages-service-appointment-request.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "location-alarm-map-fence-overview",
+                "lineagePath": "../../patterns/06-location-alarm-03-organisms-map-fence-overview/06-location-alarm-03-organisms-map-fence-overview.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "location-alarm-location-alarm",
+                "lineagePath": "../../patterns/06-location-alarm-04-pages-location-alarm/06-location-alarm-04-pages-location-alarm.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "speed-alarm-speed-alarm",
+                "lineagePath": "../../patterns/07-speed-alarm-04-pages-speed-alarm/07-speed-alarm-04-pages-speed-alarm.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "car-control-car-actions-control",
+                "lineagePath": "../../patterns/12-car-control-03-organisms-car-actions-control/12-car-control-03-organisms-car-actions-control.rendered.html",
+                "lineageState": "inreview"
+            },
+            {
+                "lineagePattern": "design-spec-button-inline",
+                "lineagePath": "../../patterns/20-design-spec-buttons-button-inline/20-design-spec-buttons-button-inline.rendered.html",
+                "lineageState": "inprogress"
+            }
+        ],
+        "lineageRIndex": [
+            "organisms-navigation-topbar-desktop-01-open",
+            "service-appointment-request-service-scheduling-01-choose-date",
+            "location-alarm-location-alarm-create-fence",
+            "location-alarm-location-alarm-edit-fence",
+            "speed-alarm-speed-alarm-edit-alarm-form",
+            "speed-alarm-speed-alarm-list-view-empty-state",
+            "organisms-form-button-group",
+            "recall-reminder-affected-vehicle-information-detail",
+            "e-control-battery-charge-form-timer",
+            "organisms-modal-common",
+            "organisms-navigation-topbar-desktop",
+            "recall-reminder-affected-vehicle-information",
+            "service-appointment-request-service-scheduling",
+            "service-appointment-request-service-appointment-request",
+            "location-alarm-map-fence-overview",
+            "location-alarm-location-alarm",
+            "speed-alarm-speed-alarm",
+            "car-control-car-actions-control",
+            "design-spec-button-inline"
+        ],
+        "isPseudoPattern": false,
+        "order": 9007199254740991,
+        "engine": {
+            "engine": {
+                "name": "mustache.js",
+                "version": "2.3.0",
+                "tags": [
+                    "{{",
+                    "}}"
+                ]
+            },
+            "engineName": "mustache",
+            "engineFileExtension": ".mustache",
+            "expandPartials": true,
+            "findPartialsRE": {},
+            "findPartialsWithStyleModifiersRE": {},
+            "findPartialsWithPatternParametersRE": {},
+            "findListItemsRE": {}
+        },
+        "compileState": "clean",
+        "lastModified": 1497271635000,
+        "patternDescExists": true,
+        "patternDesc": "",
+        "stylePartials": null,
+        "parameteredPartials": null,
+        "extendedTemplate": "<button type=\"button\" class=\"button-inline {{# button-inline_active }} button-inline--active {{/button-inline_active}} {{# button-inline_stretch}} button-inline--stretch {{/button-inline_stretch}} {{# button-inline_seamless }} button-inline--seamless {{/ button-inline_seamless }} {{# button-inline_center }} button-inline--center {{/button-inline_center}} {{ styleModifier }}\" {{# button-inline_disabled }} disabled {{/ button-inline_disabled}} >\n    {{# button-inline_icon}}\n        <span class=\"button-inline__icon icon icon--{{ button-inline_icon }} {{# button-inline_center }} button-inline__icon--center {{/ button-inline_center }} {{# button-inline_iconLarge }} button-inline__icon--large {{/button-inline_iconLarge}} {{ styleModifier_icon }}\"></span>\n    {{/ button-inline_icon}}\n    {{# button-inline_label }}\n      <span class=\"button-inline__label {{# button-inline_icon }}button-inline__label--icon{{/ button-inline_icon }}\">{{ button-inline_label }}</span>\n    {{/ button-inline_label }}\n</button>",
+        "lineageState": "inreview",
+        "patternLineages": [],
+        "patternLineageExists": false,
+        "patternLineagesR": [
+            {
+                "lineagePattern": "organisms-navigation-topbar-desktop-01-open",
+                "lineagePath": "../../patterns/03-organisms-navigation-navigation-topbar-desktop-01-open/03-organisms-navigation-navigation-topbar-desktop-01-open.rendered.html"
+            },
+            {
+                "lineagePattern": "service-appointment-request-service-scheduling-01-choose-date",
+                "lineagePath": "../../patterns/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date.rendered.html"
+            },
+            {
+                "lineagePattern": "location-alarm-location-alarm-create-fence",
+                "lineagePath": "../../patterns/06-location-alarm-04-pages-location-alarm-create-fence/06-location-alarm-04-pages-location-alarm-create-fence.rendered.html"
+            },
+            {
+                "lineagePattern": "location-alarm-location-alarm-edit-fence",
+                "lineagePath": "../../patterns/06-location-alarm-04-pages-location-alarm-edit-fence/06-location-alarm-04-pages-location-alarm-edit-fence.rendered.html"
+            },
+            {
+                "lineagePattern": "speed-alarm-speed-alarm-edit-alarm-form",
+                "lineagePath": "../../patterns/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form.rendered.html"
+            },
+            {
+                "lineagePattern": "speed-alarm-speed-alarm-list-view-empty-state",
+                "lineagePath": "../../patterns/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state.rendered.html"
+            },
+            {
+                "lineagePattern": "organisms-form-button-group",
+                "lineagePath": "../../patterns/03-organisms-form-button-group-form-button-group/03-organisms-form-button-group-form-button-group.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "recall-reminder-affected-vehicle-information-detail",
+                "lineagePath": "../../patterns/04-recall-reminder-02-organism-affected-vehicle-information-detail/04-recall-reminder-02-organism-affected-vehicle-information-detail.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "e-control-battery-charge-form-timer",
+                "lineagePath": "../../patterns/08-e-control-03-organisms-battery-charge-form-timer/08-e-control-03-organisms-battery-charge-form-timer.rendered.html",
+                "lineageState": "inreview"
+            },
+            {
+                "lineagePattern": "organisms-modal-common",
+                "lineagePath": "../../patterns/03-organisms-modal-modal-common/03-organisms-modal-modal-common.rendered.html",
+                "lineageState": "inreview"
+            },
+            {
+                "lineagePattern": "organisms-navigation-topbar-desktop",
+                "lineagePath": "../../patterns/03-organisms-navigation-navigation-topbar-desktop/03-organisms-navigation-navigation-topbar-desktop.rendered.html",
+                "lineageState": "inreview"
+            },
+            {
+                "lineagePattern": "recall-reminder-affected-vehicle-information",
+                "lineagePath": "../../patterns/04-recall-reminder-02-organism-affected-vehicle-information/04-recall-reminder-02-organism-affected-vehicle-information.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "service-appointment-request-service-scheduling",
+                "lineagePath": "../../patterns/04-service-appointment-request-02-organisms-service-scheduling/04-service-appointment-request-02-organisms-service-scheduling.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "service-appointment-request-service-appointment-request",
+                "lineagePath": "../../patterns/04-service-appointment-request-03-pages-service-appointment-request/04-service-appointment-request-03-pages-service-appointment-request.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "location-alarm-map-fence-overview",
+                "lineagePath": "../../patterns/06-location-alarm-03-organisms-map-fence-overview/06-location-alarm-03-organisms-map-fence-overview.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "location-alarm-location-alarm",
+                "lineagePath": "../../patterns/06-location-alarm-04-pages-location-alarm/06-location-alarm-04-pages-location-alarm.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "speed-alarm-speed-alarm",
+                "lineagePath": "../../patterns/07-speed-alarm-04-pages-speed-alarm/07-speed-alarm-04-pages-speed-alarm.rendered.html",
+                "lineageState": "inprogress"
+            },
+            {
+                "lineagePattern": "car-control-car-actions-control",
+                "lineagePath": "../../patterns/12-car-control-03-organisms-car-actions-control/12-car-control-03-organisms-car-actions-control.rendered.html",
+                "lineageState": "inreview"
+            },
+            {
+                "lineagePattern": "design-spec-button-inline",
+                "lineagePath": "../../patterns/20-design-spec-buttons-button-inline/20-design-spec-buttons-button-inline.rendered.html",
+                "lineageState": "inprogress"
+            }
+        ],
+        "patternLineageRExists": true,
+        "patternLineageEExists": true,
+        "header": "<!DOCTYPE html>\n<html class=\"{{ htmlClass }}\">\n  <head>\n    <title>{{ title }}</title>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width\" />\n\n    <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->\n    {{{ patternLabHead }}}\n\n    <link rel=\"stylesheet\" href=\"../../css/styleguide-scaffolding.css?{{ cacheBuster }}\" media=\"all\"/>\n    <link rel=\"stylesheet\" href=\"../../css/porsche-stylesheets.css?{{ cacheBuster }}\" media=\"all\"/>\n\n  </head>\n  <body class=\"{{ bodyClass }}\">\n\n",
+        "patternData": "{\"cssEnabled\":false,\"patternLineageExists\":false,\"patternLineages\":[],\"lineage\":[],\"patternLineageRExists\":true,\"patternLineagesR\":[{\"lineagePattern\":\"organisms-navigation-topbar-desktop-01-open\",\"lineagePath\":\"../../patterns/03-organisms-navigation-navigation-topbar-desktop-01-open/03-organisms-navigation-navigation-topbar-desktop-01-open.rendered.html\"},{\"lineagePattern\":\"service-appointment-request-service-scheduling-01-choose-date\",\"lineagePath\":\"../../patterns/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date.rendered.html\"},{\"lineagePattern\":\"location-alarm-location-alarm-create-fence\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm-create-fence/06-location-alarm-04-pages-location-alarm-create-fence.rendered.html\"},{\"lineagePattern\":\"location-alarm-location-alarm-edit-fence\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm-edit-fence/06-location-alarm-04-pages-location-alarm-edit-fence.rendered.html\"},{\"lineagePattern\":\"speed-alarm-speed-alarm-edit-alarm-form\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form.rendered.html\"},{\"lineagePattern\":\"speed-alarm-speed-alarm-list-view-empty-state\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state.rendered.html\"},{\"lineagePattern\":\"organisms-form-button-group\",\"lineagePath\":\"../../patterns/03-organisms-form-button-group-form-button-group/03-organisms-form-button-group-form-button-group.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"recall-reminder-affected-vehicle-information-detail\",\"lineagePath\":\"../../patterns/04-recall-reminder-02-organism-affected-vehicle-information-detail/04-recall-reminder-02-organism-affected-vehicle-information-detail.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"e-control-battery-charge-form-timer\",\"lineagePath\":\"../../patterns/08-e-control-03-organisms-battery-charge-form-timer/08-e-control-03-organisms-battery-charge-form-timer.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-modal-common\",\"lineagePath\":\"../../patterns/03-organisms-modal-modal-common/03-organisms-modal-modal-common.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-navigation-topbar-desktop\",\"lineagePath\":\"../../patterns/03-organisms-navigation-navigation-topbar-desktop/03-organisms-navigation-navigation-topbar-desktop.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"recall-reminder-affected-vehicle-information\",\"lineagePath\":\"../../patterns/04-recall-reminder-02-organism-affected-vehicle-information/04-recall-reminder-02-organism-affected-vehicle-information.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"service-appointment-request-service-scheduling\",\"lineagePath\":\"../../patterns/04-service-appointment-request-02-organisms-service-scheduling/04-service-appointment-request-02-organisms-service-scheduling.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"service-appointment-request-service-appointment-request\",\"lineagePath\":\"../../patterns/04-service-appointment-request-03-pages-service-appointment-request/04-service-appointment-request-03-pages-service-appointment-request.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"location-alarm-map-fence-overview\",\"lineagePath\":\"../../patterns/06-location-alarm-03-organisms-map-fence-overview/06-location-alarm-03-organisms-map-fence-overview.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"location-alarm-location-alarm\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm/06-location-alarm-04-pages-location-alarm.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"speed-alarm-speed-alarm\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm/07-speed-alarm-04-pages-speed-alarm.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"car-control-car-actions-control\",\"lineagePath\":\"../../patterns/12-car-control-03-organisms-car-actions-control/12-car-control-03-organisms-car-actions-control.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"design-spec-button-inline\",\"lineagePath\":\"../../patterns/20-design-spec-buttons-button-inline/20-design-spec-buttons-button-inline.rendered.html\",\"lineageState\":\"inprogress\"}],\"lineageR\":[{\"lineagePattern\":\"organisms-navigation-topbar-desktop-01-open\",\"lineagePath\":\"../../patterns/03-organisms-navigation-navigation-topbar-desktop-01-open/03-organisms-navigation-navigation-topbar-desktop-01-open.rendered.html\"},{\"lineagePattern\":\"service-appointment-request-service-scheduling-01-choose-date\",\"lineagePath\":\"../../patterns/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date/04-service-appointment-request-02-organisms-service-scheduling-01-choose-date.rendered.html\"},{\"lineagePattern\":\"location-alarm-location-alarm-create-fence\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm-create-fence/06-location-alarm-04-pages-location-alarm-create-fence.rendered.html\"},{\"lineagePattern\":\"location-alarm-location-alarm-edit-fence\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm-edit-fence/06-location-alarm-04-pages-location-alarm-edit-fence.rendered.html\"},{\"lineagePattern\":\"speed-alarm-speed-alarm-edit-alarm-form\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form/07-speed-alarm-04-pages-speed-alarm-edit-alarm-form.rendered.html\"},{\"lineagePattern\":\"speed-alarm-speed-alarm-list-view-empty-state\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state/07-speed-alarm-04-pages-speed-alarm-list-view-empty-state.rendered.html\"},{\"lineagePattern\":\"organisms-form-button-group\",\"lineagePath\":\"../../patterns/03-organisms-form-button-group-form-button-group/03-organisms-form-button-group-form-button-group.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"recall-reminder-affected-vehicle-information-detail\",\"lineagePath\":\"../../patterns/04-recall-reminder-02-organism-affected-vehicle-information-detail/04-recall-reminder-02-organism-affected-vehicle-information-detail.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"e-control-battery-charge-form-timer\",\"lineagePath\":\"../../patterns/08-e-control-03-organisms-battery-charge-form-timer/08-e-control-03-organisms-battery-charge-form-timer.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-modal-common\",\"lineagePath\":\"../../patterns/03-organisms-modal-modal-common/03-organisms-modal-modal-common.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"organisms-navigation-topbar-desktop\",\"lineagePath\":\"../../patterns/03-organisms-navigation-navigation-topbar-desktop/03-organisms-navigation-navigation-topbar-desktop.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"recall-reminder-affected-vehicle-information\",\"lineagePath\":\"../../patterns/04-recall-reminder-02-organism-affected-vehicle-information/04-recall-reminder-02-organism-affected-vehicle-information.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"service-appointment-request-service-scheduling\",\"lineagePath\":\"../../patterns/04-service-appointment-request-02-organisms-service-scheduling/04-service-appointment-request-02-organisms-service-scheduling.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"service-appointment-request-service-appointment-request\",\"lineagePath\":\"../../patterns/04-service-appointment-request-03-pages-service-appointment-request/04-service-appointment-request-03-pages-service-appointment-request.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"location-alarm-map-fence-overview\",\"lineagePath\":\"../../patterns/06-location-alarm-03-organisms-map-fence-overview/06-location-alarm-03-organisms-map-fence-overview.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"location-alarm-location-alarm\",\"lineagePath\":\"../../patterns/06-location-alarm-04-pages-location-alarm/06-location-alarm-04-pages-location-alarm.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"speed-alarm-speed-alarm\",\"lineagePath\":\"../../patterns/07-speed-alarm-04-pages-speed-alarm/07-speed-alarm-04-pages-speed-alarm.rendered.html\",\"lineageState\":\"inprogress\"},{\"lineagePattern\":\"car-control-car-actions-control\",\"lineagePath\":\"../../patterns/12-car-control-03-organisms-car-actions-control/12-car-control-03-organisms-car-actions-control.rendered.html\",\"lineageState\":\"inreview\"},{\"lineagePattern\":\"design-spec-button-inline\",\"lineagePath\":\"../../patterns/20-design-spec-buttons-button-inline/20-design-spec-buttons-button-inline.rendered.html\",\"lineageState\":\"inprogress\"}],\"patternLineageEExists\":true,\"patternDesc\":\"\",\"patternBreadcrumb\":{\"patternType\":\"molecules\",\"patternSubtype\":\"buttons\"},\"patternExtension\":\"mustache\",\"patternName\":\"Button Inline\",\"patternPartial\":\"molecules-button-inline\",\"patternState\":\"inreview\",\"patternEngineName\":\"mustache\",\"extraOutput\":{}}"
+    },
+    "extendedTemplate": "<button type=\"button\" class=\"button-inline {{# button-inline_active }} button-inline--active {{/button-inline_active}} {{# button-inline_stretch}} button-inline--stretch {{/button-inline_stretch}} {{# button-inline_seamless }} button-inline--seamless {{/ button-inline_seamless }} {{# button-inline_center }} button-inline--center {{/button-inline_center}} {{ styleModifier }}\" {{# button-inline_disabled }} disabled {{/ button-inline_disabled}} >\n    {{# button-inline_icon}}\n        <span class=\"button-inline__icon icon icon--{{ button-inline_icon }} {{# button-inline_center }} button-inline__icon--center {{/ button-inline_center }} {{# button-inline_iconLarge }} button-inline__icon--large {{/button-inline_iconLarge}} {{ styleModifier_icon }}\"></span>\n    {{/ button-inline_icon}}\n    {{# button-inline_label }}\n      <span class=\"button-inline__label {{# button-inline_icon }}button-inline__label--icon{{/ button-inline_icon }}\">{{ button-inline_label }}</span>\n    {{/ button-inline_label }}\n</button>",
+    "lineageState": "inreview",
+    "patternLineages": [],
+    "patternLineageExists": false,
+    "patternLineagesR": [],
+    "patternLineageRExists": false,
+    "patternLineageEExists": false,
+    "header": "<!DOCTYPE html>\n<html class=\"{{ htmlClass }}\">\n  <head>\n    <title>{{ title }}</title>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width\" />\n\n    <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->\n    {{{ patternLabHead }}}\n\n    <link rel=\"stylesheet\" href=\"../../css/styleguide-scaffolding.css?{{ cacheBuster }}\" media=\"all\"/>\n    <link rel=\"stylesheet\" href=\"../../css/porsche-stylesheets.css?{{ cacheBuster }}\" media=\"all\"/>\n\n  </head>\n  <body class=\"{{ bodyClass }}\">\n\n",
+    "patternData": "{\"cssEnabled\":false,\"patternLineageExists\":false,\"patternLineages\":[],\"lineage\":[],\"patternLineageRExists\":false,\"patternLineagesR\":[],\"lineageR\":[],\"patternLineageEExists\":false,\"patternDesc\":\"\",\"patternBreadcrumb\":{\"patternType\":\"molecules\",\"patternSubtype\":\"buttons\"},\"patternExtension\":\"mustache\",\"patternName\":\"Button Inline 01 With Icon\",\"patternPartial\":\"molecules-button-inline-01-with-icon\",\"patternState\":\"inreview\",\"patternEngineName\":\"mustache\",\"extraOutput\":{}}"
+}
