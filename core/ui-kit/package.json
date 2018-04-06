@@ -21,7 +21,8 @@
     "help": "gulp patternlab:help",
     "build": "gulp patternlab:build",
     "serve": "gulp patternlab:serve",
-    "find-outdated-dependencies": "npm outdated | grep --invert-match -E '(postcss-cli)'"
+    "find-outdated-dependencies": "npm outdated | grep --invert-match -E '(postcss-cli)'",
+    "clean": "rm -rf ./dist rm -rf ./patternlab/public rm -rf ./node_modules"
   },
   "betterScripts": {
     "build:all": {

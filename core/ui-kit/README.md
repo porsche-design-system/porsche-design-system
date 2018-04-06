@@ -4,11 +4,11 @@
 
 _TODO: describe ideal usage_
 
-As a project developer: the SASS files of Porsche Stylesheets should be included into your project. Therefore, Porsche Stylesheets should be a dependency, depending on the framework you use to run and build your project.
+As a project developer: the SASS files of Porsche UI Kit Core should be included into your project. Therefore, @porsche/ui-kit-core should be a dependency, depending on the framework you use to run and build your project.
 
 You can use the handlebar templates directly or copy the generated HTML of the pattern(s) into your project.  One big drawback of this is that you have to handle updating the patterns on your own.
 
-As a Porsche Stylesheets developer: please see `CONTRIBUTING.md` file for development information.
+As a Porsche UI Kit Core developer: please see `CONTRIBUTING.md` file for development information.
 
 ## Pattern inspection
 
@@ -20,10 +20,13 @@ If you want to inspect patterns of a different branch, replace `master` with the
 
 ### Local installation
 
-Check out the project, install and run it:
+Check out the project, install @porsche/plugin-node-sass-dependency-collector dependencies, install @porsche/ui-kit-core dependencies and run it:
 
 ```
-> git checkout ssh://git@bitbucket.web.porsche.biz:2222/pcccom/porsche-stylesheets.git
+> git clone git@bitbucket.org:porschedev/porsche-ui-kit.git
+> cd ./porsche-ui-kit/core/tools/plugin-node-sass-dependency-collector
+> npm install
+> cd ./../../ui-kit
 > npm install
 > npm start
 ```

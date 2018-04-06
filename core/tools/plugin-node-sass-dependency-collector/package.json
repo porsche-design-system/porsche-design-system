@@ -16,7 +16,8 @@
   },
   "scripts": {
     "postinstall": "node ./postinstall.js",
-    "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
+    "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/",
+    "clean": "rm -rf ./node_modules"
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
