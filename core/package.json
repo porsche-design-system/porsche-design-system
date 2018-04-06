@@ -1,7 +1,7 @@
 {
-  "name": "porsche-stylesheets",
-  "version": "0.95.3",
-  "description": "Porsche Stylesheets contains all neccessary styles for the porsche patternlab components",
+  "name": "@porsche/ui-kit-core",
+  "version": "0.1.0",
+  "description": "Porsche UI Kit Core contains all neccessary styles for the Porsche Pattern Lab components",
   "main": "index.js",
   "scripts": {
     "test": "test",
@@ -14,8 +14,7 @@
     "build:all:prod": "better-npm-run build:all:prod",
     "postcss:dev": "better-npm-run postcss:dev",
     "postcss:prod": "better-npm-run postcss:prod",
-    "publish-nexus2": "npm publish --registry https://pccbuild.web.porsche.de/nexus/content/repositories/npm-internal/",
-    "publish-nexus3": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/",
+    "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/",
     "postinstall": "[ -d \"./patternlab\" ] && node patternlab/scripts/postinstall.js || echo",
     "gulp": "gulp -- ",
     "release": "npm i && npm run lint:scss && npm run build:all:dev && npm run build",
