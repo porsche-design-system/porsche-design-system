@@ -1,9 +1,0 @@
-{
-  "eRangeMapSelector": {
-    "range": "123",
-    "unit": "km",
-    "subtitle": "Aktuell verbleibende",
-    "eRangeSelected": false,
-    "conventionalRangeSelected": true
-  }
-}

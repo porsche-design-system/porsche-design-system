@@ -1,9 +1,0 @@
-{
-  "visualization-car_image": "../../images/portal-services/car-control/vehicle-911-fallback.png",
-  "visualization-car_isModelSport": true,
-  "visualization-car_isBonnetOpen": true,
-  "visualization-car_isRoofOpen": true,
-  "visualization-car_isTrunkOpen": true,
-  "visualization-car_isFrontLeftDoorOpen": true,
-  "visualization-car_isFrontRightDoorOpen": true
-}

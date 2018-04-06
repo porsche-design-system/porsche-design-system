@@ -1,8 +1,0 @@
-{
-  "licenseactivation-panel": {
-    "description": "Die Dienste dieses Fahrzeugs wurden vom Hauptnutzer noch nicht aktiviert. Wenden Sie sich an den Hauptnutzer, der die Aktivierung vornehmen kann.",
-    "buttons": {
-      "next": null
-    }
-  }
-}
