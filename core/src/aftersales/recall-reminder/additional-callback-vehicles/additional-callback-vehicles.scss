@@ -16,6 +16,7 @@
     @include -spacing-inner-a;
     @include flex;
     @include flex--center-vertical;
+    display: block;
 
     @include breakpoint('m') {
       @include flex--center-horizontal;
