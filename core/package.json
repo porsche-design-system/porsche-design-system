@@ -101,7 +101,7 @@
     "postcss-gradientfixer": "0.0.6",
     "postcss-unprefix": "2.1.2",
     "sass-lint": "1.12.1",
-    "styleguidekit-assets-default-ps": "3.5.2",
+    "styleguidekit-assets-default": "3.5.2",
     "styleguidekit-mustache-default": "3.1.0"
   }
 }
