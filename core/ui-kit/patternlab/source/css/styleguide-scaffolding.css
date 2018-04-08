@@ -4,6 +4,10 @@
  * These styles will not be your production CSS.
  */
 
+.sg-wrapper-default {
+  background-color: #f1f1f1;
+}
+
 .sg-wrapper-dark {
   background-color: #1c2225;
 }
@@ -94,7 +98,7 @@
   top: 50%;
   right: 0;
   transform: translate(0, -50%);
-  background: #1c2225;
+  background: #f1f1f1;
   padding: 3px 0 3px 6px;
   font-family: 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   font-size: 12px;
