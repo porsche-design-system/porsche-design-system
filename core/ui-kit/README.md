@@ -20,7 +20,7 @@ If you want to inspect patterns of a different branch, replace `master` with the
 
 ### Local installation
 
-Check out the project, install @porsche/plugin-node-sass-dependency-collector dependencies, install @porsche/ui-kit-core dependencies and run it:
+Check out the project, install plugin-node-sass-dependency-collector dependencies, install @porsche/ui-kit-core dependencies and run it:
 
 ```
 > git clone git@bitbucket.org:porschedev/porsche-ui-kit.git
