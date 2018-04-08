@@ -1,0 +1,19 @@
+@import 'loader-base.setup.scss';
+@import '../../mixins/animation.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}loader-base {
+  @include animation($loader-base-animation-name, $loader-base-animation-duration);
+
+  display: block;
+  width: $loader-base-size;
+  height: $loader-base-size;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url($loader-base-resource);
+
+  &--dark {
+    background-image: url($loader-base-dark-resource);
+  }
+}

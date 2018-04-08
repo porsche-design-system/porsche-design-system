@@ -1,0 +1,23 @@
+@import 'symbol-marker.setup.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}symbol-marker {
+  @include -text-size-4-thin;
+
+  display: table;
+
+  @include breakpoint('s') {
+    @include -text-size-copy;
+    @include -align-center;
+
+    width: $symbol-marker-width;
+    height: $symbol-marker-height;
+    line-height: $symbol-marker-line-height;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url($symbol-marker-background-image-url);
+  }
+}

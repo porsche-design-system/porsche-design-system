@@ -1,0 +1,55 @@
+@import "../../../common";
+@import "./flyout.setup";
+
+.#{$global-class-prefix}flyout {
+    position: absolute;
+    top: calc(100% + #{$flyout-arrow-size});
+    border: 1px solid $grey-light;
+    background: $white;
+    z-index: 100;
+    min-width: $flyout-min-width;
+
+    // css arrow
+    &::after,
+    &::before {
+        bottom: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &::after {
+        border-color: rgba(255, 255, 255, 0);
+        border-bottom-color: #fff;
+        border-width: calc(#{$flyout-arrow-size} - 1px);
+        margin-left: calc(-#{$flyout-arrow-size} + 1px);
+    }
+
+    &::before {
+        border-color: rgba(200, 202, 203, 0);
+        border-bottom-color: $grey-light;
+        border-width: $flyout-arrow-size;
+        margin-left: -$flyout-arrow-size;
+    }
+
+    &--left {
+        left: 0;
+
+        &::after,
+        &::before {
+            left: $flyout-arrow-margin;
+        }
+    }
+
+    &--right {
+        right: 0;
+
+        &::after,
+        &::before {
+            left: calc(100% - #{$flyout-arrow-margin});
+        }
+    }
+}

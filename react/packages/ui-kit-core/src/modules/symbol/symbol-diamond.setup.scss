@@ -1,0 +1,5 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../setup/color-palette.setup.scss';
+
+$symbol-diamond-size: rem(16px) !default;
+$symbol-diamond-background-color: $color-palette-grey-1 !default;

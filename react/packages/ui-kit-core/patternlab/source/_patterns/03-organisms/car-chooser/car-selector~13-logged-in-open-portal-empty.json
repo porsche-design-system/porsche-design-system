@@ -1,0 +1,11 @@
+{
+  "car-selector_barTitle": "Kein Fahrzeug vorhanden",
+  "car-selector_buttonAction": "Fahrzeug hinzufügen",
+  "car-selector_buttonActionIcon": "plus",
+
+  "car-selector_open": true,
+  "car-selector_loggedIn": true,
+  "car-selector_empty": true,
+
+  "car-selector_customerPortal": true
+}

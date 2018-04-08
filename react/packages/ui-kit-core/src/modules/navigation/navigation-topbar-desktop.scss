@@ -1,0 +1,158 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import 'navigation-topbar-desktop.setup.scss';
+
+.#{$global-class-prefix}navigation-topbar-desktop {
+  position: relative;
+  background-color: $navigation-topbar-desktop-background-color;
+  height: $navigation-topbar-desktop-height;
+  z-index: $navigation-topbar-desktop-z-index;
+
+  @media only screen and (max-width: #{'\'${scope.breakpoints.mobile}\''}) {
+    display: none;
+  }
+
+  &__limiter {
+    position: relative;
+    box-sizing: content-box;
+    margin: 0 $navigation-topbar-desktop-limiter-margin-horizontal;
+    padding: 0 $navigation-topbar-desktop-limiter-padding-horizontal;
+    height: $navigation-topbar-desktop-height;
+    width: $navigation-topbar-desktop-limiter-width;
+    max-width: $navigation-topbar-desktop-limiter-max-width;
+
+    @media (min-width: $navigation-topbar-desktop-limiter-breakpoint) {
+      padding-left: $navigation-topbar-desktop-limiter-padding-left-m;
+    }
+  }
+
+  &__left {
+    @include flex;
+    @include flex--center-horizontal;
+    @include flex--direction(row);
+
+    float: left;
+    height: $navigation-topbar-desktop-container-height;
+    margin-left: -$navigation-topbar-desktop-link-spacing-horizontal;
+  }
+
+  &__right {
+    @include flex;
+    @include flex--center-horizontal;
+    @include flex--direction(row);
+
+    float: right;
+    height: $navigation-topbar-desktop-container-height;
+    margin-right: -$navigation-topbar-desktop-link-spacing-horizontal;
+  }
+
+  &__link {
+    @include flex;
+    @include flex--center-horizontal;
+    @include flex--center-vertical;
+    @include flex--direction(row);
+
+    position: relative;
+    padding-left: $navigation-topbar-desktop-link-spacing-horizontal;
+    padding-right: $navigation-topbar-desktop-link-spacing-horizontal;
+
+    text-decoration: none;
+    color: $navigation-topbar-desktop-link-text-color;
+    height: $navigation-topbar-desktop-link-height;
+    cursor: pointer;
+
+    &:hover {
+      color: $navigation-topbar-desktop-link-text-color-hovered;
+    }
+
+    &-icon {
+      font-size: $navigation-topbar-desktop-link-icon-font-size;
+      margin-right: $navigation-topbar-desktop-link-icon-spacing-horizontal;
+      margin-left: $navigation-topbar-desktop-link-icon-spacing-horizontal;
+    }
+
+    &-title {
+      @include -text-size-copy;
+    }
+
+    &--active::after {
+      content: '';
+      width: $navigation-topbar-desktop-active-arrow-size-width;
+      height: $navigation-topbar-desktop-active-arrow-size-height;
+      bottom: $navigation-topbar-desktop-active-arrow-position-bottom;
+      position: absolute;
+      right: $navigation-topbar-desktop-active-arrow-position;
+      transform: translateX($navigation-topbar-desktop-active-arrow-position);
+      border-style: solid;
+      border-width: $navigation-topbar-desktop-active-arrow-border-width-top $navigation-topbar-desktop-active-arrow-border-width $navigation-topbar-desktop-active-arrow-border-width $navigation-topbar-desktop-active-arrow-border-width;
+      border-color: transparent transparent $navigation-topbar-desktop-active-arrow-icon-color transparent;
+    }
+
+    &--highlight {
+      color: $navigation-topbar-desktop-link-text-color-highlight;
+    }
+  }
+
+  &__flyout {
+    position: absolute;
+    right: $navigation-topbar-desktop-flyout-position-right;
+    top: $navigation-topbar-desktop-flyout-position-top;
+    background: $navigation-topbar-desktop-flyout-background-color;
+    z-index: $navigation-topbar-desktop-flyout-z-index;
+    padding: $navigation-topbar-desktop-flyout-inner-spacing-vertical $navigation-topbar-desktop-flyout-inner-spacing-horizontal;
+
+    &-menu {
+      min-width: $navigation-topbar-desktop-flyout-menu-min-width;
+      padding: $navigation-topbar-desktop-flyout-menu-inner-spacing;
+    }
+
+    /*
+      The `$item` variable is not intended to be changed!  It's only added for
+      a shorter line for the selectors.  Therefore it's not extracted to
+      the setup file.
+    */
+    $item: #{$global-class-prefix}navigation-topbar-desktop__flyout-item;
+    &-item:not(.#{$item}--hidden) ~ .#{$item}:not(.#{$item}--hidden) {
+      border-top: $navigation-topbar-desktop-flyout-item-border-top-size solid $navigation-topbar-desktop-flyout-item-border-top-color;
+    }
+
+    &-link-icon {
+      font-size: $navigation-topbar-desktop-flyout-icon-font-size;
+      color: $navigation-topbar-desktop-flyout-icon-text-color;
+    }
+
+    &-headline {
+      @include -text-size-4-thin;
+    }
+
+    &-link {
+      text-decoration: none;
+      display: block;
+      color: $navigation-topbar-desktop-flyout-link-text-color;
+      padding: $navigation-topbar-desktop-flyout-item-spacing-vertical $navigation-topbar-desktop-flyout-item-spacing-horizontal;
+
+      &:hover {
+        color: $navigation-topbar-desktop-flyout-link-text-color-hovered;
+      }
+    }
+
+    &-link-title {
+      @include -text-size-copy;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: $navigation-topbar-desktop-overlay-position;
+    left: $navigation-topbar-desktop-overlay-position;
+    width: $navigation-topbar-desktop-overlay-dimension;
+    height: $navigation-topbar-desktop-overlay-dimension;
+    background-color: $navigation-topbar-desktop-overlay-background-color;
+    z-index: $navigation-topbar-desktop-overlay-z-index;
+
+    &--hidden {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "@porsche/eslint-config",
+    "scope": "@porsche",
+    "private": true,
+    "version": "1.0.0",
+    "main": "index.js",
+    "description": "Javascript coding guidelines for the MHP Companion project.",
+    "author": "MHP Management- und IT-Beratung GmbH",
+    "contributors": [
+        "Christoph Albert <christoph.albert@mhp.com>",
+        "Christian Senk <christian.Senk@mhp.com>"
+    ],
+    "scripts": {},
+    "devDependencies": {
+        "eslint": "^4.4.1",
+        "eslint-config-airbnb": "^16.1.0",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-jsx-a11y": "^6.0.3",
+        "eslint-plugin-react": "^7.6.1"
+    },
+    "peerDependencies": {
+        "eslint": "^4.16.0",
+        "eslint-config-airbnb": "^16.1.0",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-jsx-a11y": "^6.0.3",
+        "eslint-plugin-react": "^7.6.1"
+    },
+    "engines": {
+        "node": ">= 4"
+    }
+}

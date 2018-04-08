@@ -1,0 +1,29 @@
+{
+    "name": "@porsche/tslint-config",
+    "scope": "@porsche",
+    "private": true,
+    "version": "1.0.0",
+    "main": "tslint.json",
+    "description": "Typescript coding guidelines for the MHP Companion project.",
+    "author": "MHP Management- und IT-Beratung GmbH",
+    "contributors": [
+        "Christoph Albert <christoph.albert@mhp.com>",
+        "Christian Senk <christian.Senk@mhp.com>"
+    ],
+    "files": [
+        "eslint.js",
+        "tslint.json",
+        ".stylelintrc"
+    ],
+    "scripts": {},
+    "devDependencies": {
+        "tslint": "^5.6.0",
+        "tslint-react": "^3.4.0",
+        "typescript": "~2.8.0"
+    },
+    "peerDependencies": {
+        "tslint": "^5.6.0",
+        "tslint-react": "^3.4.0",
+        "typescript": "~2.8.0"
+    }
+}

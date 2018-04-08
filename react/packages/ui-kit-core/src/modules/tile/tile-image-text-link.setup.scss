@@ -1,0 +1,52 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../modules/button/button-inline.setup.scss';
+@import '../../base/tile/tile.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$tile-image-text-link-textarea-background-color: $color-palette-grey-9 !default;
+
+$tile-image-text-link-headline-color: $color-palette-white !default;
+
+$tile-image-text-link-icon-color: $color-palette-red-1 !default;
+$tile-image-text-link-hover-color: $color-palette-red-1 !default;
+
+$tile-image-text-link-margin-m: $spacing-42 !default;
+$tile-image-text-link-padding-m: $spacing-18 !default;
+$tile-image-text-link-textarea-width-offset-m: 40% !default;
+
+$tile-image-text-link-height-default: $tile-height-default - $button-inline-height !default;
+$tile-image-text-link-height-xs: $tile-height-xs !default;
+$tile-image-text-link-height-s: $tile-height-s !default;
+$tile-image-text-link-height-m: $tile-height-m !default;
+$tile-image-text-link-height-l: $tile-height-l !default;
+
+$tile-image-text-link-static-height-s: rem(560px) !default;
+$tile-image-text-link-static-height-l: rem(530px) !default;
+
+$tile-image-text-link-static-imageholder-margin: rem(106px) !default;
+$tile-image-text-link-static-imageholder-margin-zero: 0 !default;
+$tile-image-text-link-static-imageholder-padding-l: 29.8125rem !default;
+$tile-image-text-link-static-imageholder-padding-m: 20.625rem !default;
+$tile-image-text-link-static-imageholder-padding-s: 15.875rem !default;
+$tile-image-text-link-static-imageholder-padding-xxs: 9.875rem !default;
+$tile-image-text-link-static-imageholder-padding-zero: 0 !default;
+$tile-image-text-link-static-imageholder-height-zero: 0 !default;
+
+$tile-image-text-link-textarea-inverted-padding-zero: 0 !default;
+$tile-image-text-link-textarea-inverted-padding: 1.875rem !default;
+
+$tile-image-text-link-position-modifier-top: 0 !default;
+$tile-image-text-link-position-modifier-bottom: 0 !default;
+$tile-image-text-link-position-modifier-left: 0 !default;
+$tile-image-text-link-position-modifier-right: 0 !default;
+
+$tile-image-text-link-animation-vertical-offset: $tile-animation-vertical-offset !default;
+$tile-image-text-link-animation-horizontal-offset: $tile-animation-horizontal-offset !default;
+$tile-image-text-link-animation-scale: $tile-animation-scale !default;
+$tile-image-text-link-animation-no-scale: 1 !default;
+
+$tile-image-text-link-textarea-height: 100% !default;
+$tile-image-text-link-textarea-text-width-default: 100% !default;
+$tile-image-text-link-textarea-text-width: 75% !default;
+$tile-image-text-link-textarea-text-width-m: 85% !default;

@@ -1,0 +1,176 @@
+@import 'column.setup.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}column {
+  max-width: $column-max-width;
+  min-height: $column-min-height; // prevents layout even when column is empty
+  padding: {
+    left: $column-spacing-horizontal;
+    right: $column-spacing-horizontal;
+  }
+  float: left;
+  box-sizing: border-box;
+
+  &--reverse {
+    float: right;
+
+    &-xs { @include breakpoint('xs') { float: right; } }
+    &-s { @include breakpoint('s') { float: right; } }
+    &-m { @include breakpoint('m') { float: right; } }
+    &-l { @include breakpoint('l') { float: right; } }
+  }
+
+  &--auto { width: auto; }
+  &--1    { width: $column-1-width; }
+  &--2    { width: $column-2-width; }
+  &--3    { width: $column-3-width; }
+  &--4    { width: $column-4-width; }
+  &--5    { width: $column-5-width; }
+  &--6    { width: $column-6-width; }
+  &--7    { width: $column-7-width; }
+  &--8    { width: $column-8-width; }
+  &--9    { width: $column-9-width; }
+  &--10   { width: $column-10-width; }
+  &--11   { width: $column-11-width; }
+  &--12   { width: $column-12-width; }
+
+  @include breakpoint('xs') {
+    &--xs-auto  { width: auto; }
+    &--xs-1     { width: $column-1-width; }
+    &--xs-2     { width: $column-2-width; }
+    &--xs-3     { width: $column-3-width; }
+    &--xs-4     { width: $column-4-width; }
+    &--xs-5     { width: $column-5-width; }
+    &--xs-6     { width: $column-6-width; }
+    &--xs-7     { width: $column-7-width; }
+    &--xs-8     { width: $column-8-width; }
+    &--xs-9     { width: $column-9-width; }
+    &--xs-10    { width: $column-10-width; }
+    &--xs-11    { width: $column-11-width; }
+    &--xs-12    { width: $column-12-width; }
+  }
+
+  @include breakpoint('s') {
+    padding: {
+      left: $column-spacing-horizontal-s;
+      right: $column-spacing-horizontal-s;
+    }
+
+    &--s-auto  { width: auto; }
+    &--s-1     { width: $column-1-width; }
+    &--s-2     { width: $column-2-width; }
+    &--s-3     { width: $column-3-width; }
+    &--s-4     { width: $column-4-width; }
+    &--s-5     { width: $column-5-width; }
+    &--s-6     { width: $column-6-width; }
+    &--s-7     { width: $column-7-width; }
+    &--s-8     { width: $column-8-width; }
+    &--s-9     { width: $column-9-width; }
+    &--s-10    { width: $column-10-width; }
+    &--s-11    { width: $column-11-width; }
+    &--s-12    { width: $column-12-width; }
+  }
+
+  @include breakpoint('m') {
+    &--m-auto { width: auto; }
+    &--m-1    { width: $column-1-width; }
+    &--m-2    { width: $column-2-width; }
+    &--m-3    { width: $column-3-width; }
+    &--m-4    { width: $column-4-width; }
+    &--m-5    { width: $column-5-width; }
+    &--m-6    { width: $column-6-width; }
+    &--m-7    { width: $column-7-width; }
+    &--m-8    { width: $column-8-width; }
+    &--m-9    { width: $column-9-width; }
+    &--m-10   { width: $column-10-width; }
+    &--m-11   { width: $column-11-width; }
+    &--m-12   { width: $column-12-width; }
+  }
+
+  @include breakpoint('l') {
+    padding: {
+      left: $column-spacing-horizontal-l;
+      right: $column-spacing-horizontal-l;
+    }
+
+    &--l-auto { width: auto; }
+    &--l-1    { width: $column-1-width; }
+    &--l-2    { width: $column-2-width; }
+    &--l-3    { width: $column-3-width; }
+    &--l-4    { width: $column-4-width; }
+    &--l-5    { width: $column-5-width; }
+    &--l-6    { width: $column-6-width; }
+    &--l-7    { width: $column-7-width; }
+    &--l-8    { width: $column-8-width; }
+    &--l-9    { width: $column-9-width; }
+    &--l-10   { width: $column-10-width; }
+    &--l-11   { width: $column-11-width; }
+    &--l-12   { width: $column-12-width; }
+  }
+
+  // TODO: this selector with its properties should not be here at all!
+  &--flex-centered {
+    display: flex;
+    align-items: center;
+  }
+
+  &--zero {
+    padding: {
+      left: $column-zero-spacing-horizontal;
+      right: $column-zero-spacing-horizontal;
+    }
+
+    &-xxs-only {
+      @include breakpoint('xxs', 'xs') {
+        padding: {
+          left: $column-zero-spacing-horizontal;
+          right: $column-zero-spacing-horizontal;
+        }
+      }
+    }
+
+    &-xs-only {
+      @include breakpoint('xs', 's') {
+        padding: {
+          left: $column-zero-spacing-horizontal;
+          right: $column-zero-spacing-horizontal;
+        }
+      }
+    }
+
+    &-s-only {
+      @include breakpoint('s', 'm') {
+        padding: {
+          left: $column-zero-spacing-horizontal;
+          right: $column-zero-spacing-horizontal;
+        }
+      }
+    }
+
+    &-m-only {
+      @include breakpoint('m', 'l') {
+        padding: {
+          left: $column-zero-spacing-horizontal;
+          right: $column-zero-spacing-horizontal;
+        }
+      }
+    }
+
+    &-l-only {
+      @include breakpoint('l') {
+        padding: {
+          left: $column-zero-spacing-horizontal;
+          right: $column-zero-spacing-horizontal;
+        }
+      }
+    }
+  }
+
+  &--small {
+    padding: {
+      left: $column-small-spacing-horizontal;
+      right: $column-small-spacing-horizontal;
+    }
+  }
+}

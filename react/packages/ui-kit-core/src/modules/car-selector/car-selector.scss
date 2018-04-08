@@ -1,0 +1,472 @@
+@import '../../base/background/background.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/font/font.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'car-selector.setup.scss';
+
+.#{$global-class-prefix}car-selector {
+  $bem-block: &;
+
+  position: relative;
+
+  &__bar {
+    @include -spacing-a(top, padding);
+    @include -spacing-a(bottom, padding);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    border: {
+      top: $car-selector-bar-border-width solid $car-selector-bar-border-color;
+      bottom: $car-selector-bar-border-width solid $car-selector-bar-border-color;
+    }
+
+    @include breakpoint('m') {
+      @include flex;
+      @include -spacing-zero($type: 'padding');
+      border-top-style: none;
+    }
+
+    &--open {
+      @include breakpoint('xxs', 'm') {
+        border-bottom-style: none;
+      }
+    }
+
+    &:hover {
+      #{$bem-block}__bar-title {
+        @include -text-color-red-1;
+      }
+    }
+
+    &-header {
+      @include flex;
+    }
+
+    &-icon {
+      @include -text-color-red-1;
+      display: block;
+      position: relative;
+      font-size: $car-selector-bar-icon-font-size;
+      width: $car-selector-bar-icon-width;
+
+      @include breakpoint('s') {
+        font-size: $car-selector-bar-icon-font-size-s;
+        width: $car-selector-bar-icon-width-s;
+      }
+
+      @include breakpoint('m') {
+        font-size: $car-selector-bar-icon-font-size-m;
+        width: $car-selector-bar-icon-width-m;
+
+        &::before {
+          position: absolute;
+          bottom: 0;
+        }
+      }
+
+      &--open {
+        transform: rotate(180deg);
+      }
+    }
+
+    &-title {
+      @include -text-size-4-thin;
+      @include -text-color-white;
+      @include -overflow-ellipsis;
+      @include -spacing-a(left, padding);
+      @include -spacing-12(right, padding);
+
+      @include breakpoint('m') {
+        @include -spacing-zero(right, padding);
+      }
+    }
+
+    &-subtitle {
+      @include -text-size-copy;
+      @include -overflow-ellipsis;
+      @include -spacing-3;
+      @include -spacing-12(right, padding);
+      @include -spacing-a(left, padding);
+      @include -text-color-grey-5;
+      margin-left: $car-selector-bar-icon-width;
+
+      @include breakpoint('m') {
+        @include flex--align-self(flex-end);
+        @include -spacing-12(left, padding);
+        @include -spacing-12(right, padding);
+        @include -spacing-zero(left);
+      }
+    }
+  }
+
+  &__dropdown {
+    display: none;
+
+    &--open {
+      display: block;
+    }
+  }
+
+  &__box {
+    width: $car-selector-box-width;
+
+    @include breakpoint('m') {
+      @include -spacing-18;
+      @include flex;
+    }
+
+    //sass-lint:disable no-combinators
+    + #{$bem-block}__box {
+      @include -spacing-3;
+
+      @include breakpoint('m') {
+        @include -spacing-12;
+      }
+    }
+  }
+
+  &__arrow {
+    display: none;
+
+    @include breakpoint('m') {
+      @include flex;
+      @include flex--center-horizontal;
+      @include -background-white;
+      @include -text-color-grey-7;
+      cursor: pointer;
+      font-size: $car-selector-arrow-font-size;
+
+      &:hover {
+        @include -text-color-red-1;
+      }
+
+      &--left {
+        @include -spacing-a(left, margin, '-');
+      }
+
+      &--right {
+        @include -spacing-a(right, margin, '-');
+      }
+
+      &--disabled {
+        @include -text-color-grey-3;
+        cursor: default;
+
+        &:hover {
+          @include -text-color-grey-3;
+        }
+      }
+    }
+  }
+
+  &__content {
+    @include -background-white;
+    @include -spacing-inner-a;
+    @include -text-size-copy;
+
+    @include breakpoint('m') {
+      width: $car-selector-content-width-m;
+    }
+  }
+
+  &__car-list {
+    @include -background-white;
+    position: relative;
+
+    @include breakpoint('m') {
+      width: $car-selector-car-list-width-m;
+    }
+
+    &--full {
+      @include breakpoint('m') {
+        width: $car-selector-car-list-full-width-m;
+      }
+    }
+  }
+
+  &__car-list-carousel {
+    @include breakpoint('m') {
+      @include -spacing-a(left, padding);
+      @include -spacing-a(right, padding);
+      overflow: hidden;
+      display: flex;
+    }
+
+    @include breakpoint('xxs', 'm') {
+      padding: $car-selector-car-list-carousel-padding;
+    }
+  }
+
+  &__car-list-item {
+    display: block;
+    position: relative;
+
+    @include breakpoint('xxs', 'm') {
+      @include -spacing-c(left, padding);
+      @include -spacing-c(right, padding);
+      @include -spacing-18(top, padding);
+      @include -spacing-18(bottom, padding);
+      border-bottom: $car-selector-car-list-item-border-width solid $car-selector-car-list-item-border-color;
+
+      &:last-of-type {
+        border-bottom-style: none;
+      }
+    }
+
+    @include breakpoint('m') {
+      @include -spacing-42(bottom, padding);
+      float: left;
+      overflow: hidden;
+      margin: $car-selector-car-list-item-margin-m;
+      width: $car-selector-car-list-item-width-m;
+    }
+
+    @include breakpoint('l') {
+      margin: $car-selector-car-list-item-margin-m;
+      width: $car-selector-car-list-item-width-l;
+    }
+
+    &--active {
+      &::before {
+        content: '';
+        position: absolute;
+        left: $car-selector-car-list-item-active-position-left;
+        bottom: $car-selector-car-list-item-active-position-bottom;
+
+        @include breakpoint('xxs', 'm') {
+          top: $car-selector-car-list-item-active-position-top;
+          border-left: $car-selector-car-list-item-active-border-width solid $car-selector-car-list-item-active-border-color;
+        }
+
+        @include breakpoint('m') {
+          right: $car-selector-car-list-item-active-position-right;
+          border-bottom: $car-selector-car-list-item-active-border-width-m solid $car-selector-car-list-item-active-border-color;
+        }
+      }
+    }
+
+    &--search {
+      @include breakpoint('m') {
+        width: $car-selector-car-list-item-search-width-m;
+      }
+
+      @include breakpoint('l') {
+        width: $car-selector-car-list-item-search-width-l;
+      }
+    }
+
+    &--single {
+      @include breakpoint('m') {
+        @include flex;
+        @include flex--center-horizontal;
+        width: $car-selector-car-list-item-single-width-m;
+        padding-bottom: $car-selector-car-list-item-active-border-width-m;
+      }
+
+      @include breakpoint('l') {
+        width: $car-selector-car-list-item-single-width-l;
+      }
+    }
+
+    &-box {
+      @include breakpoint('m') {
+        @include flex;
+        @include flex--direction(column);
+        @include flex--justify-content(space-between);
+        height: $car-selector-car-list-item-box-height;
+      }
+    }
+
+    &-info {
+      text-decoration: none;
+
+      @include breakpoint('m') {
+        display: block;
+        overflow: hidden;
+
+        #{$bem-block}__car-list-item-image {
+          opacity: $car-selector-car-list-item-info-opacity-m;
+        }
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        #{$bem-block}__car-list-item-image {
+          opacity: $car-selector-car-list-item-info-opacity-hover;
+        }
+
+        #{$bem-block}__car-list-item-title {
+          @include -text-color-red-1;
+        }
+      }
+
+      &--active {
+        cursor: default;
+
+        #{$bem-block}__car-list-item-image {
+          opacity: $car-selector-car-list-item-info-opacity-hover;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+          #{$bem-block}__car-list-item-title {
+            @include -text-color-black;
+          }
+        }
+      }
+    }
+
+    &-image {
+      display: none;
+
+      @include breakpoint('m') {
+        display: block;
+        width: $car-selector-car-list-item-image-width;
+
+        &--single {
+          width: $car-selector-car-list-item-image-single-width-m;
+        }
+      }
+    }
+
+    &-content {
+      @include breakpoint('m') {
+        &--single {
+          @include -spacing-24(left, padding);
+          width: $car-selector-car-list-item-content-single-width-m;
+        }
+      }
+    }
+
+    &-title {
+      @include -text-size-4-thin;
+      @include -spacing-30(right);
+      @include -text-color-black;
+      display: block;
+
+      @include breakpoint('m') {
+        @include -align-center;
+        @include -spacing-12;
+        @include -spacing-zero(right);
+        word-wrap: break-word;
+
+        &--single {
+          @include -align-left;
+        }
+      }
+    }
+
+    &-subtitle {
+      @include -text-size-copy;
+      @include -spacing-3;
+      @include -text-color-grey-5;
+      display: block;
+
+      @include breakpoint('m') {
+        @include -align-center;
+        @include -spacing-6;
+        @include -text-color-black;
+        word-wrap: break-word;
+
+        &--single {
+          @include -align-left;
+        }
+      }
+    }
+  }
+
+  &__car-list-dots {
+    position: absolute;
+    bottom: $car-selector-car-list-dots-position-bottom;
+    width: $car-selector-car-list-dots-width;
+
+    @include breakpoint('xxs', 'm') {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  &__search-input {
+    @include breakpoint('l') {
+      width: $car-selector-search-input-width-l;
+    }
+  }
+
+  &__search-input-field {
+    border: $car-selector-search-input-field-border-width solid $car-selector-search-input-field-border-color;
+  }
+
+  &__button-action {
+    @include -background-grey-1;
+    @include -text-color-black;
+    @include -text-size-copy;
+    @include -spacing-c(left, padding);
+    @include -spacing-c(right, padding);
+    @include -spacing-12(top, padding);
+    @include -spacing-12(bottom, padding);
+    border: $car-selector-button-action-border-width solid $car-selector-button-action-border-color;
+    cursor: pointer;
+    border-radius: 0; // fix for Chrome and Safari
+
+    @include breakpoint('m') {
+      @include flex;
+      @include flex--align-items(center);
+      @include flex--justify-content(center);
+      width: $car-selector-button-action-width-m;
+      min-width: $car-selector-button-action-width-m;
+      line-height: $car-selector-button-action-line-height-m;
+      font-size: $car-selector-button-action-font-size-m;
+    }
+
+    &:hover {
+      @include -text-color-red-1;
+    }
+
+    &-align {
+      position: relative;
+    }
+
+    &-icon {
+      @include -text-color-red-1;
+      position: absolute;
+      display: block;
+      line-height: inherit;
+
+      @include breakpoint('m') {
+        display: inline-block;
+      }
+    }
+
+    &-label {
+      @include -spacing-24('left', 'padding');
+      display: block;
+
+      @include breakpoint('m') {
+        @include -spacing-30('left', 'padding');
+        @include -font-primary;
+        font-weight: $car-selector-button-action-label-font-weight-m;
+        display: inline-block;
+      }
+    }
+
+    &--search-box {
+      @include breakpoint('xxs', 'm') {
+        display: none;
+      }
+    }
+
+    &--search-results {
+      @include breakpoint('m') {
+        display: none;
+      }
+    }
+  }
+}

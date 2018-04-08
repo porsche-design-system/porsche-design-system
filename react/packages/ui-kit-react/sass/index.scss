@@ -1,0 +1,4 @@
+// This file includes all fontfaces, globals and components needed for ui-kit-react to be displayed properly.
+// Include it once in your main scss file instead of fontaces, base and components if you don't want to pick only what you need.
+@import "base/index";
+@import "components/index";

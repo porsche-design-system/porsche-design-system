@@ -1,0 +1,22 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "list-view": [
+    {
+      "title": "Some title",
+      "tags": [
+        {
+          "tag": "Some tag",
+          "icon": "replay",
+          "divider": false
+        }
+      ],
+      "active": true,
+      "checkable": false,
+      "hoverable": false,
+      "expanded": false
+    }
+  ],
+  "list-view_menuIcon": "edit",
+  "list-view_eMobility": false,
+  "checkbox_label": ""
+}

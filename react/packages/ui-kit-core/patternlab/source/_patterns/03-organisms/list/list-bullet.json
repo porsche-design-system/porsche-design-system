@@ -1,0 +1,9 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "list-bullet_square": false,
+  "list-bullet_items": [
+    {
+      "label": "Some Item"
+    }
+  ]
+}

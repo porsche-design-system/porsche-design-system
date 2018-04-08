@@ -1,0 +1,16 @@
+@import "../../../node_modules/@porsche/ui-kit-core/src/base/font/font";
+@import "../../common";
+
+html,
+body {
+    @include -font-primary();
+    @include -typo-body-1();
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    @include -font-primary();
+}

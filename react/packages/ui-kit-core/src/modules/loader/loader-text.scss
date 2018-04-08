@@ -1,0 +1,39 @@
+@import '../../base/background/background.mixin.scss';
+@import '../../mixins/animation.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import 'loader-text.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}loader-text {
+  display: inline-block;
+
+  &__dot {
+    @include animation($loader-text-dot-animation-name, $loader-text-dot-animation-duration);
+
+    width: $loader-text-dot-size;
+    height: $loader-text-dot-size;
+    float: left;
+    border-radius: $loader-text-dot-border-radius;
+    background-color: $loader-text-dot-background-color;
+    margin-right: $loader-text-dot-spacing-right;
+    opacity: $loader-text-dot-opacity;
+
+    &:nth-child(2) {
+      animation-delay: $loader-text-dot-second-child-animation-delay;
+    }
+
+    &:nth-child(3) {
+      @include -spacing-zero('right');
+
+      animation-delay: $loader-text-dot-third-child-animation-delay;
+    }
+
+    &--dark {
+      background-color: $loader-text-dot-background-color-dark;
+    }
+
+    &--light {
+      background-color: $loader-text-dot-background-color-light;
+    }
+  }
+}

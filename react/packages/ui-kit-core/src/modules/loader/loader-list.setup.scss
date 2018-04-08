@@ -1,0 +1,5 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$loader-list-spacing-vertical: $spacing-48 !default;
+$loader-list-spacing-vertical-s: rem(100px) !default;

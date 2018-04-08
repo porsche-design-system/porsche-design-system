@@ -1,0 +1,64 @@
+@import '../../base/font/font.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import 'textarea.setup.scss';
+
+.#{$global-class-prefix}textarea {
+  position: relative;
+  display: block;
+
+  &__field {
+    @include -font-primary;
+    @include -text-size-copy;
+    width: $textarea-field-width;
+    height: $textarea-field-height;
+    padding-top: $textarea-field-inner-spacing-vertical;
+    padding-left: $textarea-field-inner-spacing-horizontal;
+    padding-right: $textarea-field-inner-spacing-horizontal;
+    outline: none;
+    appearance: none;
+    resize: none;
+    border: $textarea-field-border-width solid $textarea-field-border-color;
+    background: $textarea-field-background-color;
+    font-size: $textarea-field-text-size;
+    color: $textarea-field-text-color;
+
+    &--error {
+      border: $textarea-field-border-width solid $textarea-field-border-color-error;
+    }
+  }
+
+  &__field::placeholder {
+    color: $textarea-field-placeholder-text-color;
+  }
+
+  &__label {
+    @include -font-primary;
+    @include -text-size-copy;
+    @include -overflow-ellipsis;
+
+    position: absolute;
+    background: $textarea-label-background-color;
+    top: $textarea-label-position-vertical;
+    left: $textarea-label-position-horizontal;
+    right: $textarea-label-position-right;
+    font-size: $textarea-label-text-size;
+    color: $textarea-label-text-color;
+    padding-top: $textarea-label-inner-spacing-top;
+    padding-left: $textarea-label-inner-spacing-horizontal;
+    padding-right: $textarea-label-inner-spacing-horizontal;
+  }
+
+  &__field:focus + &__label {
+    color: $textarea-label-text-color-focused;
+  }
+
+  &__field:disabled::placeholder {
+    user-select: none;
+  }
+
+  &__field:not(:placeholder-shown) + &__label {
+    color: $textarea-label-text-color-focused;
+  }
+}

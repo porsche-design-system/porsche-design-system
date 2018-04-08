@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitUseStrict": true,
+    "removeComments": false,
+    "strictNullChecks": true,
+    "module": "es6",
+    "target": "es5",
+    "lib": [
+        "es5",
+        "es2015",
+        "es2016",
+        "es2017",
+        "dom",
+        "scripthost"
+      ]
+  },
+  "include": [
+    "./@types/**/*.d.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.d.ts"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "node_modules",
+    "dist",
+    "build"
+  ]
+}

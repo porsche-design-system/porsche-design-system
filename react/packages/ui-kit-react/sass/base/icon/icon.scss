@@ -1,0 +1,413 @@
+@import "icon.mixin.scss";
+@import "../../variables";
+
+// TODO: The icon font differs from porsche-stylesheet. This could possibly be removed.
+.#{$global-class-prefix}icon {
+    @include icon-base();
+
+    vertical-align: middle;
+    text-align: center;
+    speak: none;
+    backface-visibility: hidden;
+
+    &--small {
+        font-size: 18px;
+    }
+
+    &--medium {
+        font-size: 24px;
+    }
+
+    &--large {
+        font-size: 32px;
+    }
+
+    /**
+      * ICON NAMES
+      */
+
+    &--4WD::before {
+        content: "\e900";
+    }
+
+    &--111_points_check::before {
+        content: "\e901";
+    }
+
+    &--accident_free::before {
+        content: "\e902";
+    }
+
+    &--arrow_both_ways_hair::before {
+        content: "\e903";
+    }
+
+    &--arrow_down_hair::before {
+        content: "\e95b";
+    }
+
+    &--arrow_open_full_down::before {
+        content: "\e905";
+    }
+
+    &--arrow_open_full_up::before {
+        content: "\e906";
+    }
+
+    &--arrow_left_hair::before {
+        content: "\e95c";
+    }
+
+    &--arrow_right_hair::before {
+        content: "\e95d";
+    }
+
+    &--arrow_left_hair_first::before {
+        content: "\e958";
+    }
+
+    &--arrow_up_hair::before {
+        content: "\e95e";
+    }
+
+    &--arrow_up::before {
+        content: "\e90a";
+    }
+
+    &--loader::before {
+        content: "\e908";
+    }
+
+    &--bin::before {
+        content: "\e90b";
+    }
+
+    &--box::before {
+        content: "\e90c";
+    }
+
+    &--calendar::before {
+        content: "\e90d";
+    }
+
+    &--cancel::before {
+        content: "\e90e";
+    }
+
+    &--check::before {
+        content: "\e32f";
+    }
+
+    &--circle_check::before {
+        content: "\e910";
+    }
+
+    &--circle_crossed_small::before {
+        content: "\e911";
+    }
+
+    &--circle::before {
+        content: "\e912";
+    }
+
+    &--clock_time::before {
+        content: "\e913";
+    }
+
+    &--closed_eye::before {
+        content: "\e914";
+    }
+
+    &--compare::before {
+        content: "\e915";
+    }
+
+    &--copy::before {
+        content: "\e916";
+    }
+
+    &--delete_entry::before {
+        content: "\e917";
+    }
+
+    &--edit_outline::before {
+        content: "\e918";
+    }
+
+    &--edit::before {
+        content: "\e919";
+    }
+
+    &--export::before {
+        content: "\e91a";
+    }
+
+    &--eye::before {
+        content: "\e91b";
+    }
+
+    &--facebook::before {
+        content: "\e91c";
+    }
+
+    &--filter::before {
+        content: "\e91d";
+    }
+
+    &--fuel_outline::before {
+        content: "\e91e";
+    }
+
+    &--fuel::before {
+        content: "\e91f";
+    }
+
+    &--full_service_history::before {
+        content: "\e920";
+    }
+
+    &--google::before {
+        content: "\e921";
+    }
+
+    &--help::before {
+        content: "\e922";
+    }
+
+    &--information_outline::before {
+        content: "\e923";
+    }
+
+    &--information::before {
+        content: "\e924";
+    }
+
+    &--linkedin::before {
+        content: "\e925";
+    }
+
+    &--list::before {
+        content: "\e926";
+    }
+
+    &--magnify_glass::before {
+        content: "\e927";
+    }
+
+    &--map_pin::before {
+        content: "\e928";
+    }
+
+    &--menu_dots_vertical::before {
+        content: "\e929";
+    }
+
+    &--menu_dots::before {
+        content: "\e907";
+    }
+
+    &--message_outline::before {
+        content: "\e92a";
+    }
+
+    &--message::before {
+        content: "\e92b";
+    }
+
+    &--minus::before {
+        content: "\e92c";
+    }
+
+    &--mute::before {
+        content: "\e955";
+    }
+
+    &--navigation::before {
+        content: "\e92d";
+    }
+
+    &--electricity::before {
+        content: "\e959";
+    }
+
+    &--arrow_right_hair_last::before {
+        content: "\e957";
+    }
+
+    &--document::before {
+        content: "\e909";
+    }
+
+    &--person_add::before {
+        content: "\e95a";
+    }
+
+    &--message_outline_request::before {
+        content: "\e904";
+    }
+
+    &--option_close::before {
+        content: "\e92e";
+    }
+
+    &--option_open::before {
+        content: "\e92f";
+    }
+
+    &--option_sort::before {
+        content: "\e930";
+    }
+
+    &--option_view_1::before {
+        content: "\e931";
+    }
+
+    &--organizer::before {
+        content: "\e932";
+    }
+
+    &--overrevs_checked::before {
+        content: "\e933";
+    }
+
+    &--overview::before {
+        content: "\e934";
+    }
+
+    &--painting_checked::before {
+        content: "\e935";
+    }
+
+    &--person_outline::before {
+        content: "\e936";
+    }
+
+    &--person::before {
+        content: "\e937";
+    }
+
+    &--phone_receiver::before {
+        content: "\e938";
+    }
+
+    &--picture_import::before {
+        content: "\e939";
+    }
+
+    &--picture::before {
+        content: "\e93a";
+    }
+
+    &--pause::before {
+        content: "\e956";
+    }
+
+    &--pinterest::before {
+        content: "\e93b";
+    }
+
+    &--play_circle::before {
+        content: "\e93c";
+    }
+
+    &--play::before {
+        content: "\e93d";
+    }
+
+    &--plus::before {
+        content: "\e93e";
+    }
+
+    &--porsche_assistance::before {
+        content: "\e93f";
+    }
+
+    &--porsche_genuine_parts::before {
+        content: "\e940";
+    }
+
+    &--print::before {
+        content: "\e941";
+    }
+
+    &--profile_depth_3_mm::before {
+        content: "\e90f";
+    }
+
+    &--radio-button::before {
+        content: "\e943";
+    }
+
+    &--readout::before {
+        content: "\e942";
+    }
+
+    &--reset::before {
+        content: "\e944";
+    }
+
+    &--restart::before {
+        content: "\e945";
+    }
+
+    &--saved::before {
+        content: "\e946";
+    }
+
+    &--share::before {
+        content: "\e947";
+    }
+
+    &--smoking_forbidden::before {
+        content: "\e948";
+    }
+
+    &--smoking::before {
+        content: "\e949";
+    }
+
+    &--star_outline::before {
+        content: "\e94a";
+    }
+
+    &--star::before {
+        content: "\e94b";
+    }
+
+    &--sub_menu::before {
+        content: "\e94c";
+    }
+
+    &--timer::before {
+        content: "\e94d";
+    }
+
+    &--transmission::before {
+        content: "\e94e";
+    }
+
+    &--twitter::before {
+        content: "\e94f";
+    }
+
+    &--update_save::before {
+        content: "\e950";
+    }
+
+    &--warning_circle::before {
+        content: "\e951";
+    }
+
+    &--warning_filled::before {
+        content: "\e952";
+    }
+
+    &--wechat::before {
+        content: "\e953";
+    }
+
+    &--whatsapp::before {
+        content: "\e954";
+    }
+}
+

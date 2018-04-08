@@ -1,0 +1,13 @@
+!dist/
+
+*.log*
+*.iml
+
+.DS_Store
+.idea/
+.yarn-cache/
+
+coverage/
+build/
+dist/
+node_modules/

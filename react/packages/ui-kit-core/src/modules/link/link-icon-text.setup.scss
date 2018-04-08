@@ -1,0 +1,5 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$link-icon-text-icon-horizontal-spacing: rem(5px) !default;
+$link-icon-text-label-spacing-left: $spacing-24 !default;

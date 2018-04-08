@@ -1,0 +1,23 @@
+@import 'wrapper.setup.scss';
+@import '../../mixins/breakpoint.scss';
+
+@mixin -wrapper-page {
+  padding: {
+    top: $wrapper-page-spacing-inner-top;
+    right: $wrapper-page-spacing-inner-horizontal;
+    bottom: $wrapper-page-spacing-inner-bottom;
+    left: $wrapper-page-spacing-inner-horizontal;
+  }
+  width: $wrapper-page-width;
+  max-width: $wrapper-page-max-width;
+  margin: $wrapper-page-spacing-outer-vertical $wrapper-page-spacing-outer-horizontal;
+  box-sizing: content-box;
+
+  @include breakpoint('s') {
+    padding-bottom: $wrapper-page-spacing-inner-bottom-s;
+  }
+
+  @include breakpoint('m') {
+    padding-left: $wrapper-page-spacing-inner-left-m;
+  }
+}

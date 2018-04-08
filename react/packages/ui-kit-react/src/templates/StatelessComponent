@@ -1,0 +1,61 @@
+import * as React from "react"
+import cx from "classnames"
+
+import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
+import { META, getElementType, prefix } from "../../../lib"
+
+export interface <Component>Props {
+    /** The html element type to render as. */
+    as?: string
+
+    /** Additional CSS classes. */
+    className?: string
+
+    /** Custom dom attributes. */
+    customAttributes?: {[key: string]: any}
+}
+
+const defaultProps: Partial<<Component>Props> = {
+}
+
+const _meta: ComponentMeta = {
+    name: "<Component>",
+    type: META.TYPES.ATOM
+}
+
+const _<Component>: React.StatelessComponent<<Component>Props> & Partial<MetaCategorizable> = (props) => {
+    const {
+        as,
+        className,
+        children,
+        customAttributes,
+        ...rest
+    } = props
+
+    const ElementType = getElementType(as, "div")
+
+    const classes = cx(
+        className
+    )
+
+    // You need to return a react element so that react-docgen understands this as a component.
+    // If you're unsure look at the compiled output and check for return React.createElement(…)
+    return (
+        <ElementType
+            className={classes}
+            {...customAttributes}
+            {...rest}
+        >
+            {children}
+        </ElementType>
+    )
+}
+
+_<Component>.defaultProps = defaultProps
+
+_<Component>._meta = _meta
+
+/**
+* A <Component>.
+*/
+export const <Component> = _<Component> as React.StatelessComponent<<Component>Props>

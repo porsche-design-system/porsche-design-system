@@ -1,0 +1,32 @@
+@import 'list-expanded.setup.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}list-expanded {
+  position: relative;
+  min-height: $list-expanded-min-height;
+  background: $list-expanded-background-color;
+
+  &__close {
+    position: absolute;
+    top: $list-expanded-close-position;
+    right: $list-expanded-close-position;
+    padding: $list-expanded-close-safe-click-area;
+    margin: $list-expanded-close-spacing-vertical $list-expanded-close-spacing-horizontal;
+    cursor: pointer;
+    font-size: $list-expanded-close-size;
+    color: $list-expanded-close-color;
+
+    @include breakpoint('s') {
+      margin: $list-expanded-close-spacing-vertical-s $list-expanded-close-spacing-horizontal-s;
+    }
+
+    @include breakpoint('l') {
+      margin: $list-expanded-close-spacing-vertical-l $list-expanded-close-spacing-horizontal-l;
+    }
+
+    &:hover {
+      color: $list-expanded-close-color-hover;
+    }
+  }
+}

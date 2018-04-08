@@ -1,0 +1,38 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../modules/visualization/visualization-icon-text.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$notification-sticky-position: 0 !default;
+$notification-sticky-max-height: 100% !default;
+
+$notification-item-spacing-inner-vertical: $spacing-18 !default;
+$notification-item-background-color: $color-palette-blue-1 !default;
+$notification-item-error-background-color: $color-palette-red-1 !default;
+$notification-item-cookie-background-color: $color-palette-grey-9 !default;
+$notification-item-separator-size: rem(2px) !default;
+$notification-item-separator-color: $color-palette-grey-9-1 !default;
+
+$notification-text-width: 100% !default;
+$notification-text-max-width: rem(800px) !default;
+$notification-text-spacing-right: $spacing-12 !default;
+$notification-text-color: $color-palette-white !default;
+
+$notification-cookie-text-color: $color-palette-grey-5 !default;
+
+$notification-icon-text-width: $notification-text-width !default;
+$notification-icon-text-max-width: $notification-text-max-width !default;
+$notification-icon-text-spacing-right: $notification-text-spacing-right !default;
+$notification-icon-text-color: $notification-text-color !default;
+
+
+$notification-button-width: 100% !default;
+$notification-button-spacing-left: $visualization-icon-text-icon-size + $visualization-icon-text-label-spacing-left !default;
+
+$notification-close-spacing-inner: $spacing-12;
+$notification-close-size: rem(16px) !default;
+$notification-close-color: $color-palette-white !default;
+$notification-close-position-top: 0 !default;
+$notification-close-position-top-s: - $notification-item-spacing-inner-vertical !default;
+$notification-close-position-right: 0 !default;
+$notification-close-position-right-s: - $notification-close-spacing-inner !default;

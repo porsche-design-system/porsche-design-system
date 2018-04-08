@@ -1,0 +1,15 @@
+<label class="input {{ styleModifier }}">
+  {{#if input_icon }}
+    <span class="input__icon icon icon--{{ input_icon }}"></span>
+  {{/if}}
+  <input class="input__field
+              {{#if ng-input_error }} ng-invalid {{/if}}
+              {{#if input_error }} input__field--error {{/if}}
+              {{styleModifier_field}}"
+         type="{{ input_type }}"
+         name="{{ input_name }}"
+         value="{{ input_value }}"
+         placeholder="{{ input_label }}"
+         {{#if input_disabled }} disabled="disabled" readonly {{/if}}>
+  <span class="input__label">{{ input_label }}</span>
+</label>

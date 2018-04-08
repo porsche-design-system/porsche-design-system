@@ -1,0 +1,36 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/tile/tile.setup.scss';
+
+$tile-slider-textarea-background-color: $color-palette-grey-9 !default;
+
+$tile-slider-headline-color: $color-palette-white !default;
+$tile-slider-headline-color-inverted: $color-palette-grey-10-1 !default;
+
+$tile-slider-icon-color: $color-palette-red-1 !default;
+$tile-slider-text-hover-color: $color-palette-red-1 !default;
+
+$tile-slider-margin-m: $spacing-42 !default;
+$tile-slider-padding-m: $spacing-18 !default;
+$tile-slider-textarea-width-offset-m: 40% !default;
+
+$tile-slider-height-default: rem(106px) !default;
+$tile-slider-height-xs: rem(158px) !default;
+$tile-slider-height-s: rem(254px) !default;
+$tile-slider-height-m: $tile-height-m !default;
+$tile-slider-height-l: $tile-height-l !default;
+
+$tile-slider-animation-vertical-offset: $tile-animation-vertical-offset !default;
+$tile-slider-animation-horizontal-offset: $tile-animation-horizontal-offset !default;
+$tile-slider-animation-scale: $tile-animation-scale !default;
+
+$tiles-slider-position-modifier-top: 0 !default;
+$tiles-slider-position-modifier-bottom: 0 !default;
+$tiles-slider-position-modifier-left: 0 !default;
+$tiles-slider-position-modifier-right: 0 !default;
+
+$tiles-slider-arrow-size-s: rem(80px) !default;
+$tiles-slider-arrow-size-l: rem(96px) !default;
+$tiles-slider-arrow-color: $color-palette-grey-4 !default;
+$tiles-slider-arrow-color-disabled: $color-palette-grey-9 !default;

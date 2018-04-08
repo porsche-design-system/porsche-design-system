@@ -1,0 +1,7 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "textarea_label": "Some textarea label",
+  "textarea_error": false,
+  "textarea_disabled": false,
+  "ng-textarea_error": false
+}

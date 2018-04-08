@@ -1,0 +1,70 @@
+@import "../../../common";
+
+.#{$global-class-prefix}nav-mobile {
+    &--active {
+        overflow: hidden;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    &__trigger {
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+
+    &__bar {
+        height: 65px;
+    }
+
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translate3d(100%, 0, 0);
+        transition: transform 0.3s ease-in-out;
+        background-color: $white;
+        z-index: 999;
+        will-change: transform;
+    }
+
+    &__overlay--active {
+        transform: translate3d(0, 0, 0);
+    }
+
+    &__bgtop {
+        background-color: $grey-lighter;
+    }
+
+    &__top {
+        height: 65px;
+    }
+
+    &__icon {
+        color: $brand-red-light;
+    }
+
+    &__row {
+        list-style-type: none;
+    }
+
+    &__item {
+        display: flex;
+        width: 100%;
+        min-height: 60px;
+        align-items: center;
+        border-bottom: 1px solid $grey-light;
+    }
+
+    &__item-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+}
