@@ -14,15 +14,14 @@
   cursor: pointer;
   font-size: $button-icon-size;
 
-  &[disabled]:hover,
+  &:hover {
+    color: $button-icon-text-color-hovered;
+  }
+
   &[disabled] {
     color: $button-icon-text-color-disabled;
     cursor: default;
     pointer-events: none;
-  }
-
-  &:hover {
-    color: $button-icon-text-color-hovered;
   }
 
   &--invert {

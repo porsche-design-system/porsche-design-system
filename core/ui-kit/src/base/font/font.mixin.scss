@@ -2,69 +2,121 @@
 
 // sass-lint:disable empty-args
 @mixin -font-primary() {
+  $selector: &;
+
   font-family: $font-primary-family;
 
-  html[lang="ru"] &,
-  html[lang="ru-RU"] & {
-    font-family: $font-primary-family-cyrilic;
+  @at-root html {
+    &[lang='ru'],
+    &[lang='ru-RU'] {
+      #{$selector} {
+        font-family: $font-primary-family-cyrilic;
+      }
+    }
   }
 
-  html[lang="zh"] &,
-  html[lang="zh-CN"] & {
-    font-family: $font-primary-family-chinese;
+  @at-root html {
+    &[lang='zh'],
+    &[lang='zh-CN'] {
+      #{$selector} {
+        font-family: $font-primary-family-chinese;
+      }
+    }
   }
 
-  html[lang="ar"] &,
-  html[lang="ar-AE"] & {
-    font-family: $font-primary-family-arabic;
+  @at-root html {
+    &[lang='ar'],
+    &[lang='ar-AE'] {
+      #{$selector} {
+        font-family: $font-primary-family-arabic;
+      }
+    }
   }
 
-  html[lang="ps"] &,
-  html[lang="ps-AR"] & {
-    font-family: $font-primary-family-pashto;
+  @at-root html {
+    &[lang='ps'],
+    &[lang='ps-AR'] {
+      #{$selector} {
+        font-family: $font-primary-family-pashto;
+      }
+    }
   }
 
-  html[lang="fa"] &,
-  html[lang="fa-IR"] & {
-    font-family: $font-primary-family-persian;
+  @at-root html {
+    &[lang='fa'],
+    &[lang='fa-IR'] {
+      #{$selector} {
+        font-family: $font-primary-family-persian;
+      }
+    }
   }
 
-  html[lang="ur"] &,
-  html[lang="ur-PK"] & {
-    font-family: $font-primary-family-urdu;
+  @at-root html {
+    &[lang='ur'],
+    &[lang='ur-PK'] {
+      #{$selector} {
+        font-family: $font-primary-family-urdu;
+      }
+    }
   }
 }
 
 @mixin -font-default($family: $font-default-family) {
+  $selector: &;
+
   font-family: $family;
 
-  html[lang="ru"] &,
-  html[lang="ru-RU"] & {
-    font-family: $font-default-family-cyrilic;
+  @at-root html {
+    &[lang='ru'],
+    &[lang='ru-RU'] {
+      #{$selector} {
+        font-family: $font-default-family-cyrilic;
+      }
+    }
   }
 
-  html[lang="zh"] &,
-  html[lang="zh-CN"] & {
-    font-family: $font-default-family-chinese;
+  @at-root html {
+    &[lang='zh'],
+    &[lang='zh-CN'] {
+      #{$selector} {
+        font-family: $font-default-family-chinese;
+      }
+    }
   }
 
-  html[lang="ar"] &,
-  html[lang="ar-AE"] & {
-    font-family: $font-default-family-arabic;
+  @at-root html {
+    &[lang='ar'],
+    &[lang='ar-AE'] {
+      #{$selector} {
+        font-family: $font-default-family-arabic;
+      }
+    }
   }
 
-  html[lang="ps"] &,
-  html[lang="ps-AR"] & {
-    font-family: $font-default-family-pashto;
+  @at-root html {
+    &[lang='ps'],
+    &[lang='ps-AR'] {
+      #{$selector} {
+        font-family: $font-default-family-pashto;
+      }
+    }
   }
 
-  html[lang="fa"] &,
-  html[lang="fa-IR"] & {
-    font-family: $font-default-family-persian;
+  @at-root html {
+    &[lang='fa'],
+    &[lang='fa-IR'] {
+      #{$selector} {
+        font-family: $font-default-family-persian;
+      }
+    }
   }
 
-  html[lang="ur"] &,
-  html[lang="ur-PK"] & {
-    font-family: $font-default-family-urdu;
+  @at-root html {
+    &[lang='ur'],
+    &[lang='ur-PK'] {
+      #{$selector} {
+        font-family: $font-default-family-urdu;
+      }
+    }
   }
 }

@@ -26,12 +26,14 @@
   line-height: $button-inline-height;
   border-radius: $button-inline-border-radius;
 
-  &[disabled]:hover,
   &[disabled] {
-    background-color: $button-inline-background-color-disabled;
-    color: $button-inline-text-color-disabled;
-    cursor: default;
-    pointer-events: none;
+    &,
+    &:hover {
+      background-color: $button-inline-background-color-disabled;
+      color: $button-inline-text-color-disabled;
+      cursor: default;
+      pointer-events: none;
+    }
   }
 
   &--multi-lines-centered {
@@ -63,12 +65,14 @@
       background: $button-inline-stretch-background-color-hovered;
     }
 
-    &[disabled]:hover,
     &[disabled] {
-      background-color: $button-inline-stretch-background-color-disabled;
-      color: $button-inline-stretch-text-color-disabled;
-      cursor: default;
-      pointer-events: none;
+      &,
+      &:hover {
+        background-color: $button-inline-stretch-background-color-disabled;
+        color: $button-inline-stretch-text-color-disabled;
+        cursor: default;
+        pointer-events: none;
+      }
     }
   }
 
@@ -98,9 +102,11 @@
       background: transparent;
     }
 
-    &[disabled]:hover,
     &[disabled] {
-      background: transparent;
+      &,
+      &:hover {
+        background: transparent;
+      }
     }
 
     &__label--icon {

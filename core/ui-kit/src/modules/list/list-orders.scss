@@ -112,11 +112,12 @@
 
     &.icon--download-02 {
       top: $list-orders-menu-icon-offset-top;
-
       text-decoration: none;
 
-      &:hover::before {
-        @include -text-color-white;
+      &:hover {
+        &::before {
+          @include -text-color-white;
+        }
       }
 
       &::before {

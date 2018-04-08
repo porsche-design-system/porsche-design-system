@@ -1,5 +1,5 @@
 ---
-title: slider vehicle
+title: Slider Vehicle
 state: inprogress
 ---
 

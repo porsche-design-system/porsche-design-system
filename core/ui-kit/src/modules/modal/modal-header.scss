@@ -10,8 +10,8 @@
   @include flex--justify-content(space-between);
 
   &__title {
-    white-space: normal;
     @include -text-size-3-thin;
+    white-space: normal;
     display: block;
     max-width: $modal-header-title-max-width;
   }

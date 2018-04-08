@@ -5,6 +5,8 @@
 @import 'textarea.setup.scss';
 
 .#{$global-class-prefix}textarea {
+  $bem-block: &;
+
   position: relative;
   display: block;
 
@@ -27,10 +29,24 @@
     &--error {
       border: $textarea-field-border-width solid $textarea-field-border-color-error;
     }
-  }
 
-  &__field::placeholder {
-    color: $textarea-field-placeholder-text-color;
+    &::placeholder {
+      color: $textarea-field-placeholder-text-color;
+    }
+
+    &:disabled {
+      &::placeholder {
+        user-select: none;
+      }
+    }
+
+    &:focus + #{$bem-block}__label { // sass-lint:disable-line no-combinators
+      color: $textarea-label-text-color-focused;
+    }
+
+    &:not(:placeholder-shown) + #{$bem-block}__label { // sass-lint:disable-line no-combinators
+      color: $textarea-label-text-color-focused;
+    }
   }
 
   &__label {
@@ -48,17 +64,5 @@
     padding-top: $textarea-label-inner-spacing-top;
     padding-left: $textarea-label-inner-spacing-horizontal;
     padding-right: $textarea-label-inner-spacing-horizontal;
-  }
-
-  &__field:focus + &__label {
-    color: $textarea-label-text-color-focused;
-  }
-
-  &__field:disabled::placeholder {
-    user-select: none;
-  }
-
-  &__field:not(:placeholder-shown) + &__label {
-    color: $textarea-label-text-color-focused;
   }
 }
