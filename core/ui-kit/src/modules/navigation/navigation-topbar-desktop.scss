@@ -76,17 +76,19 @@
       @include -text-size-copy;
     }
 
-    &--active::after {
-      content: '';
-      width: $navigation-topbar-desktop-active-arrow-size-width;
-      height: $navigation-topbar-desktop-active-arrow-size-height;
-      bottom: $navigation-topbar-desktop-active-arrow-position-bottom;
-      position: absolute;
-      right: $navigation-topbar-desktop-active-arrow-position;
-      transform: translateX($navigation-topbar-desktop-active-arrow-position);
-      border-style: solid;
-      border-width: $navigation-topbar-desktop-active-arrow-border-width-top $navigation-topbar-desktop-active-arrow-border-width $navigation-topbar-desktop-active-arrow-border-width $navigation-topbar-desktop-active-arrow-border-width;
-      border-color: transparent transparent $navigation-topbar-desktop-active-arrow-icon-color transparent;
+    &--active {
+      &::after {
+        content: '';
+        width: $navigation-topbar-desktop-active-arrow-size-width;
+        height: $navigation-topbar-desktop-active-arrow-size-height;
+        bottom: $navigation-topbar-desktop-active-arrow-position-bottom;
+        position: absolute;
+        right: $navigation-topbar-desktop-active-arrow-position;
+        transform: translateX($navigation-topbar-desktop-active-arrow-position);
+        border-style: solid;
+        border-width: $navigation-topbar-desktop-active-arrow-border-width-top $navigation-topbar-desktop-active-arrow-border-width $navigation-topbar-desktop-active-arrow-border-width $navigation-topbar-desktop-active-arrow-border-width; // sass-lint:disable-line shorthand-values
+        border-color: transparent transparent $navigation-topbar-desktop-active-arrow-icon-color transparent; // sass-lint:disable-line shorthand-values
+      }
     }
 
     &--highlight {
@@ -113,7 +115,7 @@
       the setup file.
     */
     $item: #{$global-class-prefix}navigation-topbar-desktop__flyout-item;
-    &-item:not(.#{$item}--hidden) ~ .#{$item}:not(.#{$item}--hidden) {
+    &-item:not(.#{$item}--hidden) ~ .#{$item}:not(.#{$item}--hidden) { // sass-lint:disable-line empty-line-between-blocks no-combinators force-pseudo-nesting
       border-top: $navigation-topbar-desktop-flyout-item-border-top-size solid $navigation-topbar-desktop-flyout-item-border-top-color;
     }
 

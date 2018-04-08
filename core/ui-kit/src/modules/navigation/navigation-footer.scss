@@ -15,13 +15,13 @@
     border-top: $navigation-footer-item-border-width solid $navigation-footer-item-border-color;
 
     &:first-child {
-      border-bottom: none;
+      border-bottom: 0;
     }
 
     @include breakpoint('s') {
       display: block;
-      border-top: none;
-      border-bottom: none;
+      border-top: 0;
+      border-bottom: 0;
     }
   }
 
