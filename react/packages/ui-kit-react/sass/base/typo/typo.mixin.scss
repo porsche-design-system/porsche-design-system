@@ -1,7 +1,7 @@
-@import "../../../node_modules/@porsche/ui-kit-core/src/mixins/breakpoint";
-@import "../../../node_modules/@porsche/ui-kit-core/src/base/font/font.setup";
-@import "../../../node_modules/@porsche/ui-kit-core/src/base/font/font.mixin";
-@import "../../../node_modules/@porsche/ui-kit-core/src/base/text-size/text-size.mixin";
+@import "../../../../../node_modules/@porsche/ui-kit-core/src/mixins/breakpoint";
+@import "../../../../../node_modules/@porsche/ui-kit-core/src/base/font/font.setup";
+@import "../../../../../node_modules/@porsche/ui-kit-core/src/base/font/font.mixin";
+@import "../../../../../node_modules/@porsche/ui-kit-core/src/base/text-size/text-size.mixin";
 
 //TODO: These mixins are outdated and should be removed
 @mixin -typo-caption() {

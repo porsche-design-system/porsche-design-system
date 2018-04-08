@@ -1,9 +1,9 @@
 @import "../../../common";
 
-@import '../../../../node_modules/@porsche/ui-kit-core/src/base/grid/flex.mixin.scss';
-@import '../../../../node_modules/@porsche/ui-kit-core/src/base/grid/flex.setup.scss';
-@import '../../../../node_modules/@porsche/ui-kit-core/src/mixins/breakpoint.scss';
-@import '../../../../node_modules/@porsche/ui-kit-core/src/setup/global-variables.scss';
+@import '../../../../../../node_modules/@porsche/ui-kit-core/src/base/grid/flex.mixin.scss';
+@import '../../../../../../node_modules/@porsche/ui-kit-core/src/base/grid/flex.setup.scss';
+@import '../../../../../../node_modules/@porsche/ui-kit-core/src/mixins/breakpoint.scss';
+@import '../../../../../../node_modules/@porsche/ui-kit-core/src/setup/global-variables.scss';
 
 // Grid spacings
 $flex-child-spacing-horizontal: rem(4px) !default;
