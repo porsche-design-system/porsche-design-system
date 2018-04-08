@@ -1,5 +1,0 @@
----
-title: Footer
-state: inprogress
----
-

@@ -1,7 +1,7 @@
 // @important: Only variable definitions and mixins go in here
 @import "./variables";
-@import "../node_modules/@porsche/ui-kit-core/src/mixins/px-rem-converter";
-@import "../node_modules/@porsche/ui-kit-core/src/mixins/breakpoint";
-@import "../node_modules/@porsche/ui-kit-core/src/base/overflow/overflow.mixin";
+@import "../../../node_modules/@porsche/ui-kit-core/src/mixins/px-rem-converter";
+@import "../../../node_modules/@porsche/ui-kit-core/src/mixins/breakpoint";
+@import "../../../node_modules/@porsche/ui-kit-core/src/base/overflow/overflow.mixin";
 @import "./base/typo/typo.mixin";
 @import "./base/icon/icon.mixin";

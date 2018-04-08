@@ -70,7 +70,7 @@
         "test": "jest"
     },
     "dependencies": {
-        "@porsche/ui-kit-core": "*",
+        "@porsche/ui-kit-core": "file:../core/ui-kit",
         "classnames": "git+https://github.com/JedWatson/classnames.git#915186aaa510e0c6be6c2cf20788aac474790e27",
         "lodash": "^4.17.4",
         "prop-types": "^15.5.10",

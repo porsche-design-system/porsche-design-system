@@ -1,6 +1,6 @@
 @import "../../../common";
-@import "../../../../node_modules/@porsche/ui-kit-core/src/base/text-size/text-size";
-@import "../../../../node_modules/@porsche/ui-kit-core/src/base/text-color/text-color";
+@import "../../../../../../node_modules/@porsche/ui-kit-core/src/base/text-size/text-size";
+@import "../../../../../../node_modules/@porsche/ui-kit-core/src/base/text-color/text-color";
 
 .#{$global-class-prefix}text {
     &--inline {
