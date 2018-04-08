@@ -71,7 +71,7 @@
       transform: translateY(-$navigation-topbar-mobile-item-border-position-top);
     }
 
-    &:first-child{
+    &:first-child {
       padding-left: $navigation-topbar-mobile-item-inner-spacing-horizontal-reset;
     }
 
@@ -176,8 +176,8 @@
       padding: $navigation-topbar-mobile-link-inner-spacing-vertical $navigation-topbar-mobile-flyout-link-inner-spacing-horizontal;
     }
 
-    &-link:hover &-link-title,
-    &-link:hover &-icon {
+    &-link:hover &-link-title, // sass-lint:disable-line force-pseudo-nesting
+    &-link:hover &-icon { // sass-lint:disable-line force-pseudo-nesting
       @include -text-color-red-1;
     }
 
@@ -195,6 +195,7 @@
       &--left {
         font-size: $navigation-topbar-mobile-flyout-icon-font-size-left;
       }
+
       &--right {
         @include -text-color-red-1;
 

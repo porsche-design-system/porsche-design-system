@@ -1,6 +1,6 @@
-@import "../../setup/color-palette.setup.scss";
-@import "../../base/spacing/spacing.setup.scss";
-@import "../../mixins/px-rem-converter.scss";
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
 
 $navigation-topbar-desktop-background-color: $color-palette-grey-1 !default;
 $navigation-topbar-desktop-height: rem(38px) !default;
@@ -47,7 +47,7 @@ $navigation-topbar-desktop-flyout-menu-min-width: rem(270px) !default;
 $navigation-topbar-desktop-flyout-menu-inner-spacing: 0 !default;
 
 /** Flyout Items **/
-$navigation-topbar-desktop-flyout-item-spacing-vertical: $spacing-18!default;
+$navigation-topbar-desktop-flyout-item-spacing-vertical: $spacing-18 !default;
 $navigation-topbar-desktop-flyout-item-spacing-horizontal: 0 !default;
 $navigation-topbar-desktop-flyout-icon-font-size: $spacing-12 !default;
 $navigation-topbar-desktop-flyout-icon-text-color: $color-palette-red-1 !default;

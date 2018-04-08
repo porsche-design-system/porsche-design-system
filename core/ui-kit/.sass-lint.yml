@@ -3,8 +3,6 @@ options:
   max-warnings: 50
 files:
   include: 'src/**/*.s+(a|c)ss'
-  ignore:
-    - 'src/modules/navigation/*.scss'
 rules:
   attribute-quotes: 2
   bem-depth: 2
