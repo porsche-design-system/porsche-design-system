@@ -1,0 +1,24 @@
+@import "../../../common";
+
+$select-border-color: $grey-light !default;
+$select-background-color: $white !default;
+$select-text-color: $body-txt-color !default;
+$select-text-color-disabled: $grey !default;
+$select-text-color-error: $brand-red-light !default;
+$select-border-size: 1px !default;
+$select-border-size-error: 1px !default;
+$select-height: 50px !default;
+$select-padding-horizontal-left: $basic-spacing*2 !default;
+$select-padding-horizontal-right: $basic-spacing*5 !default;
+$select-padding-vertical: 12px !default;
+$select-padding-vertical-top-focus: $basic-spacing*3 !default;
+
+$select-label-text-color: $grey !default;
+$select-label-position-top: $basic-spacing*2 !default;
+$select-label-placeholder-color: $grey !default;
+
+$select-error-message-margin-top: $basic-spacing !default;
+
+$select-required-margin-top: $basic-spacing !default;
+
+$select-arrow-icon-size: 16px;

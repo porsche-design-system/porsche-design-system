@@ -1,0 +1,12 @@
+{
+    "name": "ui-kit-react",
+    "private": true,
+    "scripts": {
+        "bootstrap": "lerna bootstrap --hoist",
+        "distribute": "lerna run distribute"
+    },
+    "devDependencies": {
+        "lerna": "^2.5.1"
+    },
+    "dependencies": {}
+}

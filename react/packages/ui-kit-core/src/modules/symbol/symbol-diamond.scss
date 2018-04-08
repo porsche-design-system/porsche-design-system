@@ -1,0 +1,10 @@
+@import 'symbol-diamond.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}symbol-diamond {
+  width: $symbol-diamond-size;
+  height: $symbol-diamond-size;
+  display: table;
+  background-color: $symbol-diamond-background-color;
+  transform: rotate(45deg);
+}

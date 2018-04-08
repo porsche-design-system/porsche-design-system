@@ -1,0 +1,70 @@
+@import "../node_modules/@porsche/ui-kit-core/src/base/spacing/spacing.setup";
+@import "../node_modules/@porsche/ui-kit-core/src/setup/global-variables";
+@import "../node_modules/@porsche/ui-kit-core/src/setup/color-palette.setup";
+
+// TODO: Remove doubled variables
+
+// Globals
+$global-class-prefix: "pui-";
+
+// Colors
+$black:                 $color-palette-black;
+$grey-darker:           $color-palette-grey-9;
+$grey-dark:             $color-palette-grey-7;
+$grey:                  $color-palette-grey-5;
+$grey-light:            $color-palette-grey-3;
+$grey-lighter:          $color-palette-grey-1;
+$white:                 $color-palette-white;
+
+$brand-red:             $color-palette-red-2;
+$brand-red-light:       $color-palette-red-1;
+$brand-red-lighter:     #f2b2ba;
+$brand-red-contour:     lighten($brand-red-light, 30%);
+
+$brand-green:           #009c51;
+$brand-green-light:     #b2e1ca;
+$brand-green-contour:   lighten($brand-green, 30%);
+
+$brand-blue:            $color-palette-blue-2;
+$brand-blue-light:      $color-palette-blue-1;
+$brand-blue-lighter:    #bad2e0;
+
+$brand-orange:          #faaf4b;
+$brand-orange-light:    #fde7c9;
+
+$color-facebook:        #2753a7; // Source: porsche.com
+$color-twitter:         #55acee; // Source: porsche.com
+$color-google:          #dc4e41; // Source: porsche.com
+$color-pinterest:       #cd242b; // Source: porsche.com
+$color-linkedin:        #0274b3; // Source: porsche.com
+$color-whatsapp:        #25d366; // Source: whatsappbrand.com
+$color-wechat:          #7bb23e; // Source: brandcolors.net/b/wechat
+
+// Global Body
+$body-txt-color:        $black;
+
+// Spaces  |  basic-spacing x1, x2, x3, x4, x5, x6, x8, x10, ...
+$basic-spacing: 8px;
+
+/* paddings of content for each breakpoint */
+$padding-horizontal-xxs: 5.2%;
+$padding-horizontal-xs:  5.2%;
+$padding-horizontal-s:   6.25%;
+$padding-horizontal-m:   6.64%;
+$padding-horizontal-l:   6.5%;
+
+// content wrapper max width
+$content-wrapper-max-width: 1600px;
+
+// Animation timings
+$transition-color:          240ms;
+
+// Breakpoints
+$breakpoints: (
+    "xxs": 0,
+    "xs": 480px,
+    "s": 768px,
+    "m": 992px,
+    "l": 1200px,
+    "xl": 1600px
+);

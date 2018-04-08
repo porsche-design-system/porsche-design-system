@@ -1,0 +1,13 @@
+{
+  "button-primary_label": "Some button label",
+  "button-primary_icon": "arrow-right-hair",
+  "button-primary_link": false,
+  "button-primary_stretch": false,
+  "button-primary_buttonGroup": false,
+  "button-primary_error": false,
+  "button-primary_disabled": false,
+  "button-primary_loading": false,
+  "button-primary_black": false,
+  "button-primary_red": false,
+  "button-primary_acidGreen": false
+}

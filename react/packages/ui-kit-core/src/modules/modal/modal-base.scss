@@ -1,0 +1,80 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'modal-base.setup.scss';
+
+.#{$global-class-prefix}modal-base {
+  position: absolute;
+  background: $modal-base-overlay-background-color;
+  width: $modal-base-overlay-dimensions;
+  height: $modal-base-overlay-dimensions;
+  top: $modal-base-overlay-position;
+  left: $modal-base-overlay-position;
+  bottom: $modal-base-overlay-position;
+
+  @include breakpoint('xs') {
+    @include flex;
+    @include flex--center-horizontal;
+    @include flex--center-vertical;
+  }
+
+  &__dialog {
+    width: $modal-base-dialog-width;
+    max-width: $modal-base-dialog-max-width;
+    margin: $modal-base-dialog-outer-spacing-vertical auto;
+    height: $modal-base-dialog-height;
+
+    @include breakpoint('xs') {
+      @include flex;
+      @include flex--center-vertical;
+      @include flex--direction(row);
+
+      padding: $modal-base-dialog-inner-spacing-vertical $modal-base-dialog-inner-spacing-horizontal;
+      height: auto;
+    }
+  }
+
+  &__content {
+    @include -spacing-inner-a;
+    height: $modal-base-content-dimension;
+    background-color: $modal-base-content-background-color;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  &__icon {
+    color: $modal-base-icon-color;
+    position: absolute;
+    cursor: pointer;
+    top: $modal-base-icon-safe-area;
+    right: $modal-base-icon-safe-area;
+
+    @include breakpoint('xs') {
+      top: $modal-base-icon-safe-area-xs;
+      right: $modal-base-icon-safe-area-xs;
+    }
+
+    &:hover {
+      color: $modal-base-icon-color-hovered;
+    }
+
+    &::after { // safe clickable area
+      content: '';
+      position: absolute;
+      top: -$modal-base-icon-safe-area;
+      right: -$modal-base-icon-safe-area;
+      bottom: -$modal-base-icon-safe-area;
+      left: -$modal-base-icon-safe-area;
+
+      @include breakpoint('xs') {
+        top: -$modal-base-icon-safe-area-xs;
+        right: -$modal-base-icon-safe-area-xs;
+        bottom: -$modal-base-icon-safe-area-xs;
+        left: -$modal-base-icon-safe-area-xs;
+      }
+    }
+  }
+
+}

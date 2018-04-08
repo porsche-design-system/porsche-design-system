@@ -1,0 +1,17 @@
+{
+    "rules": {
+        "at-rule-empty-line-before": null,
+        "rule-empty-line-before": [ "always", {
+            "except": ["first-nested"]
+        }],
+        "comment-whitespace-inside": null,
+        "comment-empty-line-before": null,
+        "selector-pseudo-element-colon-notation": null,
+        "selector-class-pattern": "AP_[a-z0-9]+",
+        "block-no-empty": null,
+        "selector-list-comma-newline-after": "always",
+        "declaration-empty-line-before": "never",
+        "indentation": 4,
+        "max-empty-lines": 2,
+    }
+}

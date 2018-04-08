@@ -1,0 +1,17 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "notification": [
+    {
+      "icon": "check",
+      "text": "Some notification message",
+      "button": true,
+      "buttonLabel": "OK",
+      "buttonIcon": "arrow-right-thin",
+      "buttonIndent": true,
+      "close": false,
+      "error": false,
+      "cookie": false
+    }
+  ],
+  "notification_sticky": true
+}

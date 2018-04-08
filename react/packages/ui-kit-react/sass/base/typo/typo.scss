@@ -1,0 +1,21 @@
+@import "./typo.mixin";
+@import "../../common";
+
+//TODO: These classes are outdated and should be removed
+
+.-typo {
+    &-caption { @include -typo-caption(); }
+    &-body-1 { @include -typo-body-1(); }
+    &-body-2 { @include -typo-body-2(); }
+    &-subheading-1 { @include -typo-subheading-1(); }
+    &-subheading-2 { @include -typo-subheading-2(); }
+    &-subheading-3 { @include -typo-subheading-3(); }
+    &-subheading-4 { @include -typo-subheading-4(); }
+    &-title-1 { @include -typo-title-1(); }
+    &-title-2 { @include -typo-title-2(); }
+    &-headline { @include -typo-headline(); }
+    &-headline-regular { @include -typo-headline-regular(); }
+    &-display { @include -typo-display(); }
+    &-display-regular { @include -typo-display-regular(); }
+    &-elevated { @include -typo-elevated(); }
+}

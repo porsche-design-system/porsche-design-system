@@ -1,0 +1,162 @@
+@import 'button-primary.setup.scss';
+@import '../../base/font/font.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import '../../mixins/breakpoint.scss';
+
+.#{$global-class-prefix}button-primary {
+  $bem-block: &;
+
+  @include flex-inline;
+  @include flex--align-items(flex-start);
+  @include flex--direction(column);
+  @include -align-left;
+  @include -text-size-copy;
+  @include -spacing-c(left, padding);
+  @include -spacing-c(right, padding);
+  @include -spacing-12(top, padding);
+  @include -spacing-12(bottom, padding);
+
+  position: relative;
+  width: $button-primary-width;
+  max-width: 100%; // fix for IE11, forces using multi line label
+  border-radius: 0; // fix for Chrome and Safari
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: $button-primary-background-color;
+  border: $button-primary-border-size solid $button-primary-border-color;
+  color: $button-primary-text-color;
+
+  &::-moz-focus-inner { // sass-lint:disable-line no-vendor-prefixes
+    border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  }
+
+  @include breakpoint('xxs', 'xs') {
+    width: $button-primary-width-xxs-xs;
+  }
+
+  &:not([disabled]) {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $button-primary-background-color-hover;
+      border-color: $button-primary-border-color-hover;
+    }
+  }
+
+  &[disabled] {
+    cursor: default;
+    pointer-events: none;
+    background-color: $button-primary-background-color-disabled;
+    border-color: $button-primary-border-color-disabled;
+    color: $button-primary-text-color-disabled;
+  }
+
+  &--stretch {
+    width: $button-primary-stretch-width;
+  }
+
+  &--button-group {
+    @include -spacing-12('left', 'margin');
+  }
+
+  &--black {
+    background-color: $button-primary-black-background-color;
+    border-color: $button-primary-black-border-color;
+
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        background: $button-primary-black-background-color-hover;
+        border-color: $button-primary-black-border-color-hover;
+      }
+    }
+  }
+
+  &--red {
+    background-color: $button-primary-red-background-color;
+    border-color: $button-primary-red-border-color;
+
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        background: $button-primary-red-background-color-hover;
+        border-color: $button-primary-red-border-color-hover;
+      }
+    }
+  }
+
+  &--acid-green {
+    background-color: $button-primary-acid-green-background-color;
+    border-color: $button-primary-acid-green-border-color;
+    color: $button-primary-acid-green-text-color;
+
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        background: $button-primary-acid-green-background-color-hover;
+        border-color: $button-primary-acid-green-border-color-hover;
+        color: $button-primary-acid-green-text-color-hover;
+      }
+    }
+  }
+
+  &--error {
+    background-color: $button-primary-error-background-color;
+    border-color: $button-primary-error-border-color;
+    color: $button-primary-error-text-color;
+  }
+
+  &__icon {
+    position: absolute;
+    display: block;
+    font-size: $button-primary-icon-font-size;
+    line-height: inherit;
+
+    &--loading {
+
+      &::before {
+        visibility: hidden;
+      }
+
+      & #{$bem-block}__loader {
+        visibility: visible;
+      }
+    }
+  }
+
+  &__loader {
+    position: absolute;
+    top: $button-primary-loader-position;
+    left: $button-primary-loader-position;
+    margin: {
+      top: $button-primary-loader-offset;
+      left: $button-primary-loader-offset;
+    }
+    width: $button-primary-loader-size;
+    height: $button-primary-loader-size;
+    visibility: hidden;
+  }
+
+  &__label {
+    @include -spacing-24('left', 'padding');
+
+    display: block;
+    width: 100%;
+  }
+
+  // fix for Firefox, so that top alignment of button content works when two button are next to each other
+  @-moz-document url-prefix() { //sass-lint:disable-line no-vendor-prefixes
+    &__label {
+      height: 100%;
+    }
+  }
+}

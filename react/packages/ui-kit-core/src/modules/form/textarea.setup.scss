@@ -1,0 +1,28 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$textarea-field-width: 100% !default;
+$textarea-field-height: rem(100px) !default;
+$textarea-field-inner-spacing-vertical: rem(29px) !default;
+$textarea-field-inner-spacing-horizontal: $spacing-18 !default;
+$textarea-field-background-color: $color-palette-white !default;
+
+$textarea-field-border-width: 1px !default;
+
+$textarea-field-border-color: $color-palette-grey-3 !default;
+$textarea-field-border-color-error: $color-palette-status-red !default;
+
+$textarea-field-text-size: rem(14px) !default;
+$textarea-field-placeholder-text-color: $color-palette-white !default;
+$textarea-field-text-color: $color-palette-black !default;
+
+$textarea-label-inner-spacing-top: rem(9px) !default;
+$textarea-label-inner-spacing-horizontal: $spacing-18 !default;
+$textarea-label-position-vertical: $textarea-field-border-width !default;
+$textarea-label-position-horizontal: $textarea-field-border-width !default;
+$textarea-label-position-right: $spacing-18 !default;
+$textarea-label-text-color: $color-palette-black !default;
+$textarea-label-text-color-focused: $color-palette-grey-5 !default;
+$textarea-label-text-size: rem(14px) !default;
+$textarea-label-background-color: $color-palette-white !default;

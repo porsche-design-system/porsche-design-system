@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+      "sourceMap": true,
+      "target": "es6",
+      "jsx": "react",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "allowJs": false,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "declaration": false,
+      "noImplicitAny": true,
+      "noImplicitReturns": true,
+      "removeComments": false,
+      "strictNullChecks": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "allowSyntheticDefaultImports": true,
+      "outDir": "build",
+      "lib": [
+        "es2017",
+        "dom"
+      ],
+      "baseUrl": ".",
+      "paths": {
+        "src/*": [ "./src/*" ],
+        "*": [ "@types/*", "*" ]
+      }
+    },
+    "exclude": [
+      "**/*.spec.ts",
+      "node_modules",
+      "dist",
+      "build"
+    ]
+  }

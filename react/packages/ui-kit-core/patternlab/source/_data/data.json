@@ -1,0 +1,5 @@
+{
+  "googleMaps": {
+    "src": "https://maps.googleapis.com/maps/api/staticmap?center=Porsche, Germany&zoom=13&size=600x300&key=***REMOVED***"
+  }
+}

@@ -1,0 +1,124 @@
+@import "../../../common";
+
+$contextMenuWidth: 32px;
+$rowWidth: 100%;
+
+.#{$global-class-prefix}table {
+    $bem-block: &;
+
+    @include -typo-body-1;
+    width: 100%;
+    border-spacing: 0;
+
+    &__header {
+        color: $grey;
+        width: $rowWidth;
+        padding: $basic-spacing*2 0;
+        border-bottom: 1px solid $grey-light;
+    }
+
+    &__body {
+        color: $black;
+
+        & #{$bem-block}__row-container {
+            &:hover {
+                background: $grey-lighter;
+            }
+
+            a[href="javascript:;"] {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__row-container {
+        position: relative;
+        width: 100%;
+        padding: $basic-spacing*2 0;
+        border-bottom: 1px solid $grey-light;
+    }
+
+    &__row {
+        width: $rowWidth;
+
+        &--clickable {
+            cursor: pointer;
+        }
+    }
+
+    &__cell {
+        flex: 1 0 0px;
+        text-align: left;
+        padding-right: $basic-spacing;
+
+        &--grow-1 { flex-grow: 1; }
+        &--grow-2 { flex-grow: 2; }
+        &--grow-3 { flex-grow: 3; }
+        &--grow-4 { flex-grow: 4; }
+        &--grow-5 { flex-grow: 5; }
+        &--grow-6 { flex-grow: 6; }
+        &--grow-7 { flex-grow: 7; }
+        &--grow-8 { flex-grow: 8; }
+        &--grow-9 { flex-grow: 9; }
+        &--grow-10 { flex-grow: 10; }
+        &--grow-11 { flex-grow: 11; }
+
+        &--clickable {
+            cursor: pointer;
+        }
+    }
+
+    &__cell-menu {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: $contextMenuWidth;
+        cursor: pointer;
+    }
+
+    &__menu {
+        position: relative;
+        width: $contextMenuWidth;
+        text-align: right;
+
+        &__container {
+            text-align: left;
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            z-index: 1;
+            padding: .75rem 1.5rem 0;
+
+            background: $white;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, .1);
+
+            display: none;
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    padding: 0;
+                    margin: 0 0 .75rem;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &:hover {
+            & #{$bem-block}__menu__container {
+                display: block;
+            }
+        }
+
+        &__item {
+            position: relative;
+        }
+    }
+}

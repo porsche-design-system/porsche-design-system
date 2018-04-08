@@ -1,0 +1,118 @@
+{
+    "name": "@porsche/ui-kit-react",
+    "scope": "@porsche",
+    "version": "0.1.0",
+    "description": "The Porsche UI React implementation.",
+    "main": "dist/commonjs/index.js",
+    "module": "dist/es/index.js",
+    "jsnext:main": "dist/es/index.js",
+    "typings": "dist/typings/index",
+    "sideEffects": false,
+    "files": [
+        "dist",
+        "src",
+        "sass",
+        "css"
+    ],
+    "repository": {
+        "type": "git"
+    },
+    "author": "Dr. Ing. h.c. F. Porsche AG",
+    "contributors": [
+        "Christoph Albert <christoph.albert@mhp.com>",
+        "Oliver Hook <oliver.hook@mhp.com>",
+        "Christian Senk <christian.Senk@mhp.com>",
+        "Mario Ulmer <mario.ulmer@mhp.com>"
+    ],
+    "jest": {
+        "testEnvironment": "enzyme",
+        "testEnvironmentOptions": {
+            "enzymeAdapter": "react16"
+        },
+        "setupTestFrameworkScriptFile": "./../../../node_modules/jest-enzyme/lib/index.js",
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(tsx?)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ],
+        "moduleNameMapper": {
+            "^.*\\.scss$": "<rootDir>/test-helper/SCSSStub.js",
+            "src(.*)$": "<rootDir>/src/$1",
+            "test-helper(.*)$": "<rootDir>/test-helper/$1"
+        },
+        "testResultsProcessor": "jest-bamboo-formatter"
+    },
+    "scripts": {
+        "start": "npm run watch",
+        "prebuild": "rimraf ./.tmp && rimraf ./dist && rimraf ./css",
+        "build": "npm run build:es && npm run build:commonjs && npm run build:sass && npm run build:css",
+        "postbuild": "cpx \".tmp/**/*.d.ts\" ./dist/typings",
+        "prewatch": "npm run build",
+        "watch": "npm run watch:es | npm run watch:commonjs | npm run watch:sass | npm run watch:css",
+        "prebuild:es": "cpx \"src/frameworks/**/*.d.ts\" ./dist/typings/frameworks && cpx \"src/frameworks/**/*.js\" ./dist/es/frameworks && cpx \"src/frameworks/**/*.js\" ./dist/commonjs/frameworks",
+        "build:es": "tsc --project ./ --outDir ./dist/es --declaration true --declarationDir ./dist/typings",
+        "watch:es": "npm run build:es -- --watch",
+        "build:commonjs": "tsc --project ./ --outDir ./dist/commonjs --module commonjs",
+        "watch:commonjs": "npm run build:commonjs -- --watch",
+        "build:sass": "node-sass-chokidar --source-map true ./sass --output .tmp/css",
+        "postbuild:sass": "cpx \"node_modules/@porsche/ui-kit-core/src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./sass/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
+        "watch:sass": "npm run build:sass && npm run build:sass -- --watch",
+        "build:css": "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
+        "watch:css": "npm run build:css && npm run build:css -- --watch",
+        "lint:ts": "tslint --project '.' --format codeFrame",
+        "lint:ts:fix": "npm run lint:ts -- --fix",
+        "lint:sass": "stylelint '**/*.sass'",
+        "lint:sass:fix": "npm run lint:sass -- --fix",
+        "test": "jest"
+    },
+    "dependencies": {
+        "@porsche/ui-kit-core": "*",
+        "classnames": "git+https://github.com/JedWatson/classnames.git#915186aaa510e0c6be6c2cf20788aac474790e27",
+        "lodash": "^4.17.4",
+        "prop-types": "^15.5.10",
+        "react-responsive": "^3.0.0",
+        "react-sortable-hoc": "^0.6.8",
+        "tslib": "^1.9.0"
+    },
+    "devDependencies": {
+        "@porsche/tslint-config": "^1.0.0",
+        "@types/enzyme": "^3.1.9",
+        "@types/jest": "^22.2.0",
+        "@types/lodash": "^4.14.85",
+        "@types/node": "^8.0.47",
+        "@types/prop-types": "^15.5.2",
+        "@types/react": "^16.1.0",
+        "@types/react-responsive": "^3.0.0",
+        "@types/react-sortable-hoc": "^0.6.3",
+        "autoprefixer": "^8.1.0",
+        "cpx": "^1.5.0",
+        "cross-env": "^5.0.5",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-15": "^1.0.5",
+        "jest": "^22.4.2",
+        "jest-bamboo-formatter": "^1.0.1",
+        "jest-environment-enzyme": "^5.0.3",
+        "jest-enzyme": "^5.0.3",
+        "node-sass-chokidar": "0.0.3",
+        "postcss": "^6.0.19",
+        "postcss-cli": "^5.0.0",
+        "react": "^16.1.0",
+        "react-dom": "^16.2.0",
+        "rimraf": "^2.6.1",
+        "stylelint": "^8.4.0",
+        "stylelint-config-standard": "^18.0.0",
+        "stylelint-scss": "^2.3.0",
+        "ts-jest": "^22.4.2",
+        "tslint": "^5.6.0",
+        "tslint-react": "^3.4.0",
+        "typescript": "~2.8.0"
+    },
+    "peerDependencies": {
+        "react": ">=0.14.0 <= 16",
+        "react-dom": ">=0.14.0 <= 16"
+    }
+}

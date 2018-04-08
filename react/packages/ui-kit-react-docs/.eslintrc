@@ -1,0 +1,13 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "@porsche/eslint-config",
+    "parser": "babel-eslint",
+    "rules": {
+        "react/forbid-prop-types": 0,
+        "react/sort-comp": 0
+    }
+}

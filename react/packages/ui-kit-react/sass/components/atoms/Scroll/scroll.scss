@@ -1,0 +1,11 @@
+@import "../../../common";
+
+.#{$global-class-prefix}scroll {
+
+    overflow: hidden;
+
+    &--vertical {
+        overflow-y: scroll;
+    }
+
+}

@@ -1,0 +1,131 @@
+@import '../../mixins/breakpoint.scss';
+@import '../../base/layer/layer.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import 'list-message.setup.scss';
+
+.#{$global-class-prefix}list-message {
+  /* prevent sass render from removing empty selectors */
+
+  &__item {
+    @include -spacing-inner-a;
+    background-color: $list-message-item-background-color;
+    border-left: $list-message-item-border-left-width solid $list-message-item-border-color;
+    position: relative;
+    padding-left: $list-message-item-spacing-left;
+
+    @include breakpoint('xs') {
+      border-left-width: $list-message-item-border-left-width-xs;
+      padding-left: $list-message-item-spacing-left-xs;
+    }
+
+    @include breakpoint('s') {
+      padding-top: $list-message-item-spacing-vertical;
+      padding-bottom: $list-message-item-spacing-vertical;
+    }
+
+    &:not(:first-child) {
+      @include -spacing-3;
+    }
+
+    &--open {
+      @include -layer-blocking-higher;
+      @include -spacing-inner-a;
+      border-left: $list-message-item-border-left-width-open;
+    }
+  }
+
+  &__row {
+    position: relative;
+
+    @include breakpoint('m') {
+      @include flex;
+    }
+  }
+
+  &__title {
+    @include -overflow-ellipsis;
+    @include -text-size-5-thin;
+  }
+
+  &__content {
+    @include -text-size-copy;
+
+    &--left {
+      @include breakpoint('m') {
+        border-right: $list-message-content-border-size solid $list-message-content-separator-color;
+      }
+    }
+
+    &--right {
+      @include breakpoint('m') {
+        @include flex;
+        @include flex--center-horizontal;
+        transform: translate(-$list-message-content-border-size, 0);
+        padding-left: $list-message-content-divider-spacing-horizontal;
+        border-left: $list-message-content-border-size solid $list-message-content-separator-color;
+      }
+    }
+  }
+
+  &__tags {
+    @include -spacing-3;
+    @include -text-size-copy;
+
+    li {
+      @include breakpoint('s') {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: $list-message-icon-position-top;
+    left: $list-message-icon-position-left;
+    font-size: $list-message-icon-font-size;
+
+    @include breakpoint('xs') {
+      left: $list-message-icon-position-left-xs;
+      top: $list-message-icon-position-top-xs;
+      font-size: $list-message-icon-font-size-xs;
+    }
+
+    @include breakpoint('m') {
+      left: $list-message-icon-position-left-m;
+    }
+
+    &--error { @include -text-color-status-red; }
+    &--open { display: none; }
+  }
+
+  &__date-time {
+    @include -spacing-42('right', 'padding');
+  }
+
+  &__date-title {
+    display: none;
+
+    @include breakpoint('s') {
+      display: inline-block;
+      margin-right: $list-message-title-spacing-horizontal;
+    }
+  }
+
+  &__date-icon {
+    margin-right: $list-message-icon-spacing-horizontal;
+    vertical-align: middle;
+  }
+
+  &__detail {
+    display: none;
+
+    &--open {
+      display: block;
+    }
+  }
+}

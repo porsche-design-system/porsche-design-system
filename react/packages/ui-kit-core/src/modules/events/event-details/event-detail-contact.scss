@@ -1,0 +1,72 @@
+@import '../../../base/grid/flex.mixin.scss';
+@import '../../../base/spacing/spacing.mixin.scss';
+@import '../../../base/background/background.mixin';
+@import '../../../mixins/breakpoint.scss';
+@import 'event-detail-contact.setup.scss';
+@import '../../../setup/global-variables.scss';
+
+.#{$global-class-prefix}event-detail-contact {
+
+  @include flex;
+  @include -background-grey-9;
+  height: $event-detail-contact-height;
+
+  @include breakpoint('xxs') {
+    @include flex--direction(column);
+
+    &__wrapper {
+      position: relative;
+    }
+
+    &__body {
+      @include -spacing-inner-a;
+    }
+
+    &__button {
+      @include -spacing-c;
+    }
+  }
+
+  @include breakpoint('m') {
+    @include flex--direction(row);
+
+    &__body {
+      @include flex--grow(1);
+      @include -spacing-inner-a;
+    }
+
+    &__wrapper {
+      @include -spacing-zero;
+      position: relative;
+      padding-bottom: $event-detail-contact-offset-bottom;
+    }
+
+    &__button {
+      @include -spacing-zero;
+      position: absolute;
+      left: $event-detail-contact-position-left;
+      bottom: $event-detail-contact-position-bottom;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__img-wrapper {
+    position: relative;
+  }
+
+  &__map-pin {
+    position: absolute;
+    left: $event-detail-contact-map-pin-position-left;
+    top: $event-detail-contact-map-pin-position-top;
+    transform: translate3d(-$event-detail-contact-map-pin-position-left, -$event-detail-contact-map-pin-position-top, $event-detail-contact-map-pin-position-zero);
+    margin-top: $event-detail-contact-map-pin-margin-top;
+  }
+
+  &__img {
+    width: $event-detail-contact-map-width;
+    height: $event-detail-contact-height-m;
+  }
+}

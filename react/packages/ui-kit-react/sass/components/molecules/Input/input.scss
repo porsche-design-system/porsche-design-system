@@ -1,0 +1,182 @@
+@import "input.setup.scss";
+
+.#{$global-class-prefix}input {
+    $bem-block: &;
+
+    position: relative;
+    display: block;
+
+    &__required {
+        @include -typo-caption;
+
+        color: $input-label-text-color;
+        margin-top: $input-required-margin-top;
+    }
+
+    &__error-message {
+        @include -typo-caption;
+
+        margin-top: $input-error-message-margin-top;
+        color: $input-field-text-color-error;
+    }
+
+    &__field {
+        @include -typo-body-1;
+
+        width: 100%;
+        height: $input-field-height;
+        display: block;
+        padding: 0 $input-field-padding-horizontal;
+        outline: none;
+        appearance: none;
+        border-radius: 0;
+        box-sizing: border-box;
+        border: 1px solid $input-field-border-color;
+        background: $input-field-background-color;
+        color: $input-field-text-color;
+        box-shadow: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        -webkit-appearance: none;
+
+        &::placeholder {
+            color: $input-field-text-color;
+        }
+
+        &::-moz-placeholder {
+            opacity: 1;
+        }
+
+        &--error {
+            color: $input-field-text-color-error;
+            border-color: $input-field-text-color-error;
+            padding: 0 $input-field-padding-horizontal;
+        }
+
+        // hide arrows for [type=number]
+        &--number {
+            -moz-appearance: textfield;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        &--with-icon {
+            padding-right: 45px;
+        }
+    }
+
+    &__label {
+        @include -font-primary();
+        @include -overflow-ellipsis();
+        @include -typo-caption;
+
+        position: absolute;
+        top: 50%;
+        left: $input-field-padding-horizontal;
+        right: $input-field-padding-horizontal;
+        display: inline-block;
+        opacity: 0;
+        transition: top 0.4s ease;
+        transform: translate(0, -50%);
+        color: $input-label-text-color;
+
+        &--with-icon {
+            right: 45px;
+        }
+    }
+
+    &__unit {
+        position: absolute;
+        top: 50%;
+        right: $input-field-padding-horizontal;
+        transform: translate(0, -50%);
+        color: $input-unit-color;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        right: $input-field-padding-horizontal;
+        transform: translate(0, -50%);
+        font-size: $input-icon-size;
+        color: $input-icon-color;
+
+        &--error {
+            color: $input-field-text-color-error;
+        }
+
+        & ~ #{$bem-block}__field {
+            padding-right: $input-field-padding-horizontal * 2 + $input-icon-size;
+        }
+
+        & ~ #{$bem-block}__label {
+            right: $input-field-padding-horizontal * 2 + $input-icon-size;
+        }
+    }
+
+    // input is focused
+    &__field:focus {
+        &::placeholder {
+            opacity: 0;
+        }
+    }
+
+    // input is disabled
+    &__field:disabled {
+        color: $input-field-text-color-disabled;
+
+        &::placeholder {
+            color: $input-field-text-color-disabled;
+        }
+    }
+
+    // input is focused or input is not empty
+    &__field:focus,
+    &__field:valid,
+    &__field--has-value {
+        padding-top: $input-field-padding-vertical-top-focus;
+
+        & + #{$bem-block}__label {
+            top: $input-label-position-top;
+            left: $input-label-position-left + 1px;
+            opacity: 1;
+        }
+    }
+
+    // input has error and not focused and has no value
+    &__field--error:placeholder-shown:not(:focus) {
+        & + #{$bem-block}__label {
+            color: $input-field-text-color-error;
+        }
+
+        &::placeholder {
+            color: $input-field-text-color-error;
+        }
+    }
+
+    // input has error and is focused or input has error and is not empty
+    &__field--error:focus,
+    &__field--error:not(:placeholder-shown) {
+        padding-top: $input-field-padding-vertical-top-focus;
+    }
+
+    &__field--no-label {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+
+        &::placeholder {
+            color: $input-field-placeholder-color;
+        }
+
+        &:focus,
+        &:not(:placeholder-shown) {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+    }
+}

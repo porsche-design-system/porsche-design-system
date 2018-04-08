@@ -1,0 +1,11 @@
+@import "~src/styles/common";
+
+.stream-container {
+    max-width: $max-width;
+    min-width: $min-width;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: $spacing-60;
+    padding-left: $spacing-18;
+    padding-right: $spacing-18;
+}

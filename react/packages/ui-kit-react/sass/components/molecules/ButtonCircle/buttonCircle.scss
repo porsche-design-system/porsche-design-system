@@ -1,0 +1,72 @@
+@import "../../../common";
+
+$button-circle--margin-left: 30px;
+$button-circle--icon-box-margin: 2px;
+$button-circle--icon-circle-size: 30px;
+$button-circle--icon-circle-border-size: 1px;
+$button-circle--icon-circle-border-color: $grey-light;
+$button-circle--content-height: 32px;
+$button-circle--content-box-margin-top: 2px;
+
+.#{$global-class-prefix}button-circle {
+    @include -typo-body-1();
+
+    color: $body-txt-color;
+    display: inline-flex;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    background-color: transparent;
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        width: $button-circle--icon-circle-size;
+        height: $button-circle--icon-circle-size;
+        margin: $button-circle--icon-box-margin;
+        border: $button-circle--icon-circle-border-size solid $button-circle--icon-circle-border-color;
+        border-radius: $button-circle--icon-circle-size;
+
+        &--right {
+            order: 1;
+        }
+
+        &--left {
+            order: 0;
+        }
+    }
+
+    &__container {
+        margin-left: $basic-spacing;
+        margin-right: $basic-spacing;
+        margin-top: $button-circle--content-box-margin-top;
+
+        &__content {
+            height: $button-circle--content-height;
+        }
+    }
+
+    &:hover,
+    &:active {
+        .#{$global-class-prefix}button-circle__icon {
+            background: $grey-darker;
+            border-color: $grey-darker;
+            color: $white;
+        }
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        pointer-events: none;
+        color: $grey;
+
+        .#{$global-class-prefix}button-circle__icon {
+            background: $grey-light;
+            border-color: $grey-light;
+            color: $white;
+        }
+    }
+}

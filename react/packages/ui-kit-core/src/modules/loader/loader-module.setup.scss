@@ -1,0 +1,5 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$loader-module-spinner-size: $spacing-48 !default;
+$loader-module-spinner-size-s: $spacing-60 !default;

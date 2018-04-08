@@ -1,0 +1,55 @@
+@import '../../base/font/font.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$text-size-1-font-size: rem(28px) !default;
+$text-size-1-font-size-m: rem(40px) !default;
+$text-size-1-font-size-xl: rem(60px) !default;
+$text-size-1-line-height: rem(36px) !default;
+$text-size-1-line-height-m: rem(52px) !default;
+$text-size-1-line-height-xl: rem(72px) !default;
+$text-size-1-regular-font-weight: $font-weight-regular !default;
+$text-size-1-thin-font-weight: $font-weight-thin !default;
+
+$text-size-2-font-size: rem(26px) !default;
+$text-size-2-font-size-m: rem(32px) !default;
+$text-size-2-font-size-xl: rem(36px) !default;
+$text-size-2-line-height: rem(34px) !default;
+$text-size-2-line-height-m: rem(40px) !default;
+$text-size-2-line-height-xl: rem(44px) !default;
+$text-size-2-regular-font-weight: $font-weight-regular !default;
+$text-size-2-thin-font-weight: $font-weight-thin !default;
+
+$text-size-3-font-size: rem(24px) !default;
+$text-size-3-font-size-m: rem(26px) !default;
+$text-size-3-font-size-xl: rem(28px) !default;
+$text-size-3-line-height: rem(30px) !default;
+$text-size-3-line-height-m: rem(32px) !default;
+$text-size-3-line-height-xl: rem(36px) !default;
+$text-size-3-regular-font-weight: $font-weight-regular !default;
+$text-size-3-thin-font-weight: $font-weight-thin !default;
+
+$text-size-4-font-size: rem(20px) !default;
+$text-size-4-font-size-m: rem(22px) !default;
+$text-size-4-font-size-xl: rem(24px) !default;
+$text-size-4-line-height: rem(28px) !default;
+$text-size-4-line-height-m: rem(30px) !default;
+$text-size-4-line-height-xl: rem(30px) !default;
+$text-size-4-regular-font-weight: $font-weight-regular !default;
+$text-size-4-thin-font-weight: $font-weight-thin !default;
+
+$text-size-5-font-size: rem(20px) !default;
+$text-size-5-line-height: rem(28px) !default;
+$text-size-5-regular-font-weight: $font-weight-regular !default;
+$text-size-5-thin-font-weight: $font-weight-thin !default;
+
+$text-size-copy-font-size: rem(16px) !default;
+$text-size-copy-line-height: rem(24px) !default;
+$text-size-copy-font-weight: $font-weight-regular !default;
+
+$text-size-small-font-size: rem(14px) !default;
+$text-size-small-line-height: rem(20px) !default;
+$text-size-small-font-weight: $font-weight-regular !default;
+
+$text-size-micro-font-size: rem(12px) !default;
+$text-size-micro-line-height: rem(18px) !default;
+$text-size-micro-font-weight: $font-weight-regular !default;

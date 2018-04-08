@@ -1,0 +1,11 @@
+{
+    "extends": [
+        "@porsche/tslint-config"
+    ],
+    "rules": {
+        "no-submodule-imports": false,
+        "no-implicit-dependencies": false,
+        "no-empty-interface": false,
+        "object-literal-key-quotes": false
+    }
+}

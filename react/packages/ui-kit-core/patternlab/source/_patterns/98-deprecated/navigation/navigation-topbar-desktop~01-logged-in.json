@@ -1,0 +1,23 @@
+{
+  "navigation-topbar-desktop_hideOverlay": false,
+  "navigation-topbar-desktop_right": [
+    {
+      "icon": "mail-request",
+      "linkContent": "2",
+      "customClass": "messages",
+      "initialHidden": true,
+      "iconBefore": true,
+      "active": false,
+      "highlight": true
+    },
+    {
+      "icon": "contact",
+      "linkContent": "Max Mustermann",
+      "customClass": "user-name",
+      "initialHidden": true,
+      "iconBefore": false,
+      "active": false,
+      "highlight": false
+    }
+  ]
+}

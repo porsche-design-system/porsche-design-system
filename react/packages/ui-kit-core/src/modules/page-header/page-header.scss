@@ -1,0 +1,19 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}page-header {
+  max-width: 50rem;
+
+  &__title {
+    @include -text-size-2-thin;
+    @include -text-color-white;
+  }
+
+  &__description {
+    @include -text-size-copy;
+    @include -text-color-white;
+    @include -spacing-6;
+  }
+}

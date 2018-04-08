@@ -1,0 +1,12 @@
+{
+    "use": [
+        "postcss-unprefix",
+        "postcss-flexboxfixer",
+        "postcss-gradientfixer",
+        "autoprefixer"
+    ],
+    "output": "dist/porsche-stylesheets.min.css",
+    "autoprefixer": {
+        "browsers": ["IE >= 10", "Firefox >= 28", "Safari >= 6", "Chrome >= 29"]
+    }
+}

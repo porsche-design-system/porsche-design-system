@@ -1,0 +1,11 @@
+{
+  "navigation-steps": [
+    {
+      "count": "",
+      "icon": "payment",
+      "label": "Some Label",
+      "active": false,
+      "disabled": false
+    }
+  ]
+}

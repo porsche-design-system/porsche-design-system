@@ -1,0 +1,26 @@
+@import "../../../common";
+
+.#{$global-class-prefix}theme-wrapper {
+    &--light {
+        background-color: $white;
+    }
+
+    &--dark {
+        background-color: $grey-lighter;
+    }
+
+    &--transparent {
+        background-color: transparent;
+    }
+
+    &--dark,
+    &--light,
+    &--transparent {
+        //To avoid collapsing margins
+        &:after,
+        &:before {
+            content: " ";
+            display: table;
+        }
+    }
+}

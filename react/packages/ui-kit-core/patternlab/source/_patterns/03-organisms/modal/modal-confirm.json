@@ -1,0 +1,9 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "modal-confirm_copy": "Do you really want to delete this entry?",
+  "modal-header_title": "a very long modal common title for showing overflow ellipsis",
+  "modal-base_body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.",
+  "modal-footer_addFormButtonGroup": true,
+  "modal-footer_addFormButtonGroupCustom": false,
+  "modal-footer_buttonGroupCustomContent": ""
+}
