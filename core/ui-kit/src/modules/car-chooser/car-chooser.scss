@@ -123,10 +123,12 @@
         }
       }
 
-      &:hover #{$bem-block}-title,
-      &:hover #{$bem-block}-vin,
-      &:hover #{$bem-block}-icon {
-        color: $car-chooser-dropdown-text-color-hovered;
+      &:hover {
+        #{$bem-block}-title,
+        #{$bem-block}-vin,
+        #{$bem-block}-icon {
+          color: $car-chooser-dropdown-text-color-hovered;
+        }
       }
     }
 

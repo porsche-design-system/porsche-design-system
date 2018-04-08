@@ -1,20 +1,20 @@
-@mixin -overflow-visible() {
+@mixin -overflow-visible {
   overflow: visible;
 }
 
-@mixin -overflow-hidden() {
+@mixin -overflow-hidden {
   overflow: hidden;
 }
 
-@mixin -overflow-scroll() {
+@mixin -overflow-scroll {
   overflow: scroll;
 }
 
-@mixin -overflow-auto() {
+@mixin -overflow-auto {
   overflow: auto;
 }
 
-@mixin -overflow-ellipsis() {
+@mixin -overflow-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

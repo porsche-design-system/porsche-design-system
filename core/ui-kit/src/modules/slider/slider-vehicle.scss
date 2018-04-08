@@ -81,12 +81,14 @@
       max-width: $slider-vehicle-item-max-width;
     }
 
-    &:hover #{$bem-block}__title {
-      color: $slider-vehicle-title-color-hovered;
-    }
+    &:hover {
+      #{$bem-block}__title {
+        color: $slider-vehicle-title-color-hovered;
+      }
 
-    &:hover #{$bem-block}__subtitle {
-      color: $slider-vehicle-subtitle-color-hovered;
+      #{$bem-block}__subtitle {
+        color: $slider-vehicle-subtitle-color-hovered;
+      }
     }
   }
 

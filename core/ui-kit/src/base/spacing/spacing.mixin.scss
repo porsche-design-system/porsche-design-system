@@ -182,7 +182,7 @@
   }
 }
 
-@mixin -spacing-inner-a() {
+@mixin -spacing-inner-a {
   padding: $spacing-inner-a-vertical $spacing-inner-a-horizontal;
 
   @include breakpoint('s') {
@@ -194,7 +194,7 @@
   }
 }
 
-@mixin -spacing-inner-b() {
+@mixin -spacing-inner-b {
   padding: $spacing-inner-b-vertical $spacing-inner-b-horizontal;
 
   @include breakpoint('s') {
@@ -206,7 +206,7 @@
   }
 }
 
-@mixin -spacing-inner-c() {
+@mixin -spacing-inner-c {
   padding: $spacing-inner-c-vertical $spacing-inner-c-horizontal;
 
   @include breakpoint('s') {
@@ -222,7 +222,7 @@
   }
 }
 
-@mixin -spacing-inner-d() {
+@mixin -spacing-inner-d {
   padding: $spacing-inner-d-vertical $spacing-inner-d-horizontal;
 
   @include breakpoint('s') {
@@ -234,6 +234,6 @@
   }
 }
 
-@mixin -spacing-inner-e() {
+@mixin -spacing-inner-e {
   padding: $spacing-inner-e-vertical $spacing-inner-e-horizontal;
 }

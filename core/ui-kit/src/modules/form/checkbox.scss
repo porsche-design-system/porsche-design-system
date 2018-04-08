@@ -84,14 +84,6 @@
   &__label-link {
     color: $checkbox-label-link-text-color;
 
-    &--inverted {
-      color: $checkbox-label-link-text-color-inverted;
-    }
-
-    &--error {
-      color: $checkbox-label-link-text-color-error;
-    }
-
     &:active,
     &:focus,
     &:hover {
@@ -99,16 +91,24 @@
       text-decoration: none;
     }
 
-    &--inverted:active, // sass-lint:disable-line force-pseudo-nesting
-    &--inverted:focus, // sass-lint:disable-line force-pseudo-nesting
-    &--inverted:hover { // sass-lint:disable-line force-pseudo-nesting
-      color: $checkbox-label-link-text-color-inverted-hover;
+    &--inverted {
+      color: $checkbox-label-link-text-color-inverted;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $checkbox-label-link-text-color-inverted-hover;
+      }
     }
 
-    &--error:active, // sass-lint:disable-line force-pseudo-nesting
-    &--error:focus, // sass-lint:disable-line force-pseudo-nesting
-    &--error:hover { // sass-lint:disable-line force-pseudo-nesting
-      color: $checkbox-label-link-text-color-error-hover;
+    &--error {
+      color: $checkbox-label-link-text-color-error;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $checkbox-label-link-text-color-error-hover;
+      }
     }
   }
 
@@ -177,6 +177,7 @@
   }
 
   // checkbox is disabled, unchecked or checked
+  // sass-lint:disable-line force-pseudo-nesting
   &__field:disabled:checked, // sass-lint:disable-line force-pseudo-nesting
   &__field:disabled:not(:checked) { // sass-lint:disable-line force-pseudo-nesting
     & ~ #{$bem-block}__icon { // sass-lint:disable-line no-combinators

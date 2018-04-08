@@ -64,13 +64,15 @@
       @include breakpoint('s') {
         display: inline-block;
 
-        &:not(:first-child)::before {
-          content: '|';
-          padding: {
-            left: $list-violation-tags-divider-spacing-horizontal;
-            right: $list-violation-tags-divider-spacing-horizontal;
+        &:not(:first-child) {
+          &::before {
+            content: '|';
+            padding: {
+              left: $list-violation-tags-divider-spacing-horizontal;
+              right: $list-violation-tags-divider-spacing-horizontal;
+            }
+            color: $list-violation-tags-divider-color;
           }
-          color: $list-violation-tags-divider-color;
         }
       }
     }
