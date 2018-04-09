@@ -1,4 +1,5 @@
 patternlab-config.json
 dist
 patternlab/public
+patternlab/scripts
 gulpfile.js
