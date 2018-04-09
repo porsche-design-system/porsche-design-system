@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 * 
+* Adapt font-weight of button in car-selector
 
 ## [0.1.1] - 2018-04-09
 * Added index.scss to src folder
