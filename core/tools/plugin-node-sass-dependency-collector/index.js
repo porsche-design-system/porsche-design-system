@@ -1,4 +1,4 @@
-let pluginName = 'plugin-node-sass-dependency-collector';
+const pluginName = 'plugin-node-sass-dependency-collector';
 
 const fs = require('fs-extra');
 const glob = require('glob');
