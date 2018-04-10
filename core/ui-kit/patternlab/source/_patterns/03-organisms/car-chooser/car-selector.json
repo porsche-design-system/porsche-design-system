@@ -33,41 +33,41 @@
       "title": "911 Carrera Cabriolet Special Edition 4Motion",
       "vin": "BPOEES95Z13121105",
       "connectPlus": true,
-      "image": "../../images/car-transparent-w640.png"
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png"
     },
     {
       "title": "Panamera 4S Executive Super Efficient",
       "vin": " WP0AF2A79HL150113",
       "connectPlus": true,
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "active": true
     },
     {
       "title": "911 Carrera Cabriolet",
       "vin": "BPOEES95Z13121105",
-      "image": "../../images/car-transparent-w640.png"
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png"
     }
   ],
 
   "car-selector_derivatives": [
     {
       "title": "718",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": false
     },
     {
       "title": "911",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": false
     },
     {
       "title": "Panamera",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": false
     },
     {
       "title": "Cayenne",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": true,
       "name": "generation",
       "text1": "2. Generation",
@@ -75,7 +75,7 @@
     },
     {
       "title": "Macan",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": false
     }
   ]
