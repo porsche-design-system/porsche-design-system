@@ -1,0 +1,25 @@
+{
+  "name": "@porsche/plugin-porsche-ui-kit-core-synchronizer",
+  "version": "0.1.0",
+  "description": "Syncronizes Porsche UI Kit Pattern Lab with a team specific Pattern Lab",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:porschedev/porsche-ui-kit.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish-nexus2": "npm publish --registry https://pccbuild.web.porsche.de/nexus/content/repositories/npm-internal/",
+    "publish-nexus3": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
+  },
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Stephan Schröter <stephan.schroeter@mhp.com>"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "2.3.2",
+    "ncp": "2.0.0",
+    "rimraf": "2.6.2"
+  }
+}
