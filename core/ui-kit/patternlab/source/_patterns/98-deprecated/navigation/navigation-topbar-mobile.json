@@ -1,6 +1,6 @@
 {
   "bodyClass": "sg-wrapper-dark",
-  "navigation-topbar-mobile_crest": "../../images/porsche-svg.svg",
+  "navigation-topbar-mobile_crest": "../../images/porsche-ui-kit-core/porsche-svg.svg",
   "navigation-topbar-mobile_open": false,
   "navigation-topbar-mobile_flyoutFooter": true,
   "navigation-topbar-mobile_headline": "Porsche.de",
