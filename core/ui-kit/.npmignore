@@ -7,7 +7,6 @@
 /patternlab/source/css
 /patternlab/source/favicon.ico
 /.env
-/.sass-lint.yml
 /build.js
 /config.js
 /CONTRIBUTING.md
