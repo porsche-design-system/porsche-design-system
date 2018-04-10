@@ -9,8 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish-nexus2": "npm publish --registry https://pccbuild.web.porsche.de/nexus/content/repositories/npm-internal/",
-    "publish-nexus3": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
+    "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
