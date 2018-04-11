@@ -8,5 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 
+## [0.1.1] - 2018-04-11
+* Optimized sync script and introduced configurable patternlabPath and porscheUIKitCorePath directories
+
 ## [0.1.0] - 2018-04-11
 * Initial setup
