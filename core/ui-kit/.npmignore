@@ -4,7 +4,6 @@
 /patternlab/scripts
 /patternlab/source/_annotations
 /patternlab/source/_meta
-/patternlab/source/css
 /patternlab/source/favicon.ico
 /.env
 /build.js
