@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 
+## [0.1.3] - 2018-04-11
+* Clean up
+
 ## [0.1.2] - 2018-04-09
 * Adapt font-weight of button in car-selector
 * Added notification-icon
@@ -18,7 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.1.0] - 2018-04-06
 * Initial setup based on porsche-stylesheets@0.95.5
 
-[unreleased]: https://bitbucket.org/porschedev/porsche-ui-kit/compare/diff?targetBranch=refs%2Ftags%2Fv0.1.2&sourceBranch=refs%2Fheads%2Fmaster
+[unreleased]: https://bitbucket.org/porschedev/porsche-ui-kit/compare/diff?targetBranch=refs%2Ftags%2Fv0.1.3&sourceBranch=refs%2Fheads%2Fmaster
+[0.1.3]: https://bitbucket.org/porschedev/porsche-ui-kit/commits/all?until=refs%2Ftags%2Fv0.1.3
 [0.1.2]: https://bitbucket.org/porschedev/porsche-ui-kit/commits/all?until=refs%2Ftags%2Fv0.1.2
 [0.1.1]: https://bitbucket.org/porschedev/porsche-ui-kit/commits/all?until=refs%2Ftags%2Fv0.1.1
 [0.1.0]: https://bitbucket.org/porschedev/porsche-ui-kit/commits/all?until=refs%2Ftags%2Fv0.1.0
