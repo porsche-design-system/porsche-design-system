@@ -1,6 +1,6 @@
 {
   "name": "@porsche/plugin-ui-kit-core-synchronizer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Syncronizes Porsche UI Kit Pattern Lab with a team specific Pattern Lab",
   "main": "index.js",
   "repository": {
