@@ -104,5 +104,8 @@
     "sass-lint": "1.12.1",
     "styleguidekit-assets-default": "3.5.2",
     "styleguidekit-mustache-default": "3.1.0"
+  },
+  "publishConfig": {
+    "registry": "https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
   }
 }
