@@ -5,20 +5,27 @@ let ncp = require('ncp').ncp;
 
 class PorscheUIKitCoreSynchronizer {
 
-  constructor() {
+  constructor(patternlabPath, porscheUIKitCorePath) {
+    if (!patternlabPath || !porscheUIKitCorePath) {
+      throw new Error(npmPackage.name +': A local Pattern Lab path and local @porsche/ui-kit-core npm package path needs to be defined when instanciating the synchronizer plugin, e.g. "new (require(\'@porsche/plugin-ui-kit-core-synchronizer\'))(\'./patternlab\', \'./node_modules/@porsche/ui-kit-core\');".');
+    }
+
+    this.patternlabPath = patternlabPath;
+    this.porscheUIKitCorePath = porscheUIKitCorePath;
+
     this.init();
   }
 
   init() {
-    ['01-atoms', '02-molecules', '03-organisms', '98-deprecated', '99-design-spec'].forEach(this.syncPatterns);
-    ['porsche-ui-kit-core.json'].forEach(this.syncData);
-    ['porsche-ui-kit-core'].forEach(this.syncImages);
-    ['porsche-ui-kit-core'].forEach(this.syncScripts);
+    ['01-atoms', '02-molecules', '03-organisms', '98-deprecated', '99-design-spec'].forEach(this.syncPatterns, this);
+    ['porsche-ui-kit-core.json'].forEach(this.syncData, this);
+    ['porsche-ui-kit-core'].forEach(this.syncImages, this);
+    ['porsche-ui-kit-core'].forEach(this.syncScripts, this);
   }
 
-  syncPatterns(folder) {
-    rimraf('./patternlab/source/_patterns/'+ folder, () => {
-      ncp('./node_modules/@porsche/ui-kit-core/patternlab/source/_patterns/'+ folder, './patternlab/source/_patterns/'+ folder, (err) => {
+  syncPatterns(folder, patternlabPath) {
+    rimraf(this.patternlabPath +'/source/_patterns/'+ folder, () => {
+      ncp(this.porscheUIKitCorePath +'/patternlab/source/_patterns/'+ folder, this.patternlabPath +'/source/_patterns/'+ folder, (err) => {
         if (err) {
           return Logger.error(err);
         }
@@ -27,9 +34,9 @@ class PorscheUIKitCoreSynchronizer {
     });
   }
 
-  syncData(file) {
-    rimraf('./patternlab/source/_data/'+ file, () => {
-      ncp('./node_modules/@porsche/ui-kit-core/patternlab/source/_data/'+ file, './patternlab/source/_data/'+ file, (err) => {
+  syncData(file, patternlabPat) {
+    rimraf(this.patternlabPath +'/source/_data/'+ file, () => {
+      ncp(this.porscheUIKitCorePath +'/patternlab/source/_data/'+ file, this.patternlabPath +'/source/_data/'+ file, (err) => {
         if (err) {
           return Logger.error(err);
         }
@@ -38,9 +45,9 @@ class PorscheUIKitCoreSynchronizer {
     });
   }
 
-  syncImages(folder) {
-    rimraf('./patternlab/source/images/'+ folder, () => {
-      ncp('./node_modules/@porsche/ui-kit-core/patternlab/source/images/'+ folder, './patternlab/source/images/'+ folder, (err) => {
+  syncImages(folder, patternlabPat) {
+    rimraf(this.patternlabPath +'/source/images/'+ folder, () => {
+      ncp(this.porscheUIKitCorePath +'/patternlab/source/images/'+ folder, this.patternlabPath +'/source/images/'+ folder, (err) => {
         if (err) {
           return Logger.error(err);
         }
@@ -49,9 +56,9 @@ class PorscheUIKitCoreSynchronizer {
     });
   }
 
-  syncScripts(folder) {
-    rimraf('./patternlab/source/js/'+ folder, () => {
-      ncp('./node_modules/@porsche/ui-kit-core/patternlab/source/js/'+ folder, './patternlab/source/js/'+ folder, (err) => {
+  syncScripts(folder, patternlabPat) {
+    rimraf(this.patternlabPath +'/source/js/'+ folder, () => {
+      ncp(this.porscheUIKitCorePath +'/patternlab/source/js/'+ folder, this.patternlabPath +'/source/js/'+ folder, (err) => {
         if (err) {
           return Logger.error(err);
         }
