@@ -1,7 +1,6 @@
-const colors = require('colors/safe');
-const fs = require('fs-extra');
-const path = require('path');
 const _ = require('lodash');
+const fs = require('fs-extra');
+const Logger = require('./console-logger');
 const PatternScssRegex = require('./pattern-scss-regex');
 
 class PatternScssCollector {
@@ -45,7 +44,7 @@ class PatternScssCollector {
 
     this.writeScssDependencies(formattedCssImports, sassFileOutput);
 
-    console.log(colors.gray('Pattern dependencies:\n'+ formattedCssImports));
+    Logger.info('Pattern dependencies:\n'+ formattedCssImports);
   }
 
   writeScssDependencies(scssDependencies, filename) {
@@ -68,7 +67,7 @@ class PatternScssCollector {
 
         this.getOrderedCssImports(cssClassListWithoutReference, orderedCssClassList, i = i + 1);
       } else {
-        console.warn(colors.yellow('WARNING: css source(s) of '+ this.options.stylesheetPackage +' didn\'t match order rules of plugin-node-sass-dependency-collector:\n\t>>> '+ unorderedCssClassList.join('\n\t>>> ')));
+        Logger.warn('WARNING: css source(s) of '+ this.options.stylesheetPackage +' didn\'t match order rules of plugin-node-sass-dependency-collector:\n\t>>> '+ unorderedCssClassList.join('\n\t>>> '));
       }
     }
 
@@ -112,9 +111,9 @@ class PatternScssCollector {
       });
 
       if (found === 0) {
-        console.warn(colors.yellow('WARNING: css class that is used in pattern couldn\'t be found in '+ this.options.stylesheetPackage +' sources\n\t>>> ".'+ cssClass +'"'));
+        Logger.warn('WARNING: css class that is used in pattern couldn\'t be found in '+ this.options.stylesheetPackage +' sources\n\t>>> ".'+ cssClass +'"');
       } else if (found > 1) {
-        console.log(colors.white('INFO: css class that is used in pattern was found '+ found +'x in '+ this.options.stylesheetPackage +' sources\n\t>>> ".'+ cssClass +'"'));
+        Logger.info('INFO: css class that is used in pattern was found '+ found +'x in '+ this.options.stylesheetPackage +' sources\n\t>>> ".'+ cssClass +'"');
       }
     });
 
