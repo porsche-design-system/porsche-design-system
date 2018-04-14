@@ -34,7 +34,6 @@ class PatternScssCollector {
   getOrderedCssImports(unorderedCssClassList, orderedCssClassList=[], i=0) {
     if (unorderedCssClassList.length > 0) {
       if (i < this.options.order.length) {
-
         let cssClassListWithoutReference = [];
 
         unorderedCssClassList.forEach((cssClassPath) => {
@@ -47,7 +46,11 @@ class PatternScssCollector {
 
         this.getOrderedCssImports(cssClassListWithoutReference, orderedCssClassList, i = i + 1);
       } else {
-        Logger.warn('WARNING: css source(s) of '+ this.options.stylesheetPackage +' didn\'t match order rules of plugin-node-sass-dependency-collector:\n\t>>> '+ unorderedCssClassList.join('\n\t>>> '));
+        unorderedCssClassList.forEach((cssClassPath) => {
+          orderedCssClassList.push(cssClassPath);
+        });
+
+        Logger.warn('WARNING: css source(s) of '+ this.options.stylesheetPackage +' didn\'t match order rules of plugin-node-sass-dependency-collector, please provide a proper "plugin-node-sass-dependency-collector.config.json" configuration file:\n\t>>> '+ unorderedCssClassList.join('\n\t>>> '));
       }
     }
 
@@ -139,6 +142,5 @@ class PatternScssCollector {
     return matches;
   }
 }
-
 
 module.exports = PatternScssCollector;
