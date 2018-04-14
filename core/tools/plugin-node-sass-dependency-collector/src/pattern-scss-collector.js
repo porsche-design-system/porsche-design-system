@@ -8,10 +8,27 @@ class PatternScssCollector {
 
   constructor(patternlab, pattern, stylesheets, options) {
 
+    this.packageName = require('../package.json').name;
+
     this.options = _.merge({
       exclude: [],
       order: []
     }, options);
+
+    this.warnings = {
+      SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES: {
+        occurrence: 0,
+        affected: []
+      },
+      CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE: {
+        occurrence: 0,
+        affected: []
+      },
+      CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE: {
+        occurrence: 0,
+        affected: {}
+      }
+    };
 
     let stylesheetsWithoutExcludedOnes = this.stylesheetsWithoutExcludedOnes(stylesheets);
     let renderedPatternMarkup = this.getRenderedPatternMarkup(pattern);
@@ -24,7 +41,32 @@ class PatternScssCollector {
 
     this.writeScssDependencies(formattedCssImports, sassFileOutput);
 
-    Logger.info('Pattern dependencies:\n'+ formattedCssImports);
+    if (
+      !this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence &&
+      !this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence &&
+      !this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence
+    ) {
+      Logger.success(this.packageName +': SCSS resources were resolved successfully');
+    } else {
+      if (this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence) {
+        Logger.warn(this.packageName +': Some resolved SCSS file(s) did not match SCSS source order rules, please provide a proper "plugin-node-sass-dependency-collector.config.json" configuration file. Affected files are listed below:');
+        Logger.progress('\t'+ this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.affected.join('\n\t'));
+      }
+
+      if (this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence) {
+        Logger.warn(this.packageName +': Some CSS classes that are used in pattern are not defined in any SCSS file. Affected CSS classes are listed below:');
+        Logger.progress('\t'+ this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.affected.join('\n\t'));
+      }
+
+      if (this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence) {
+        Logger.warn(this.packageName +': Some CSS classes that are used in pattern are defined in more than one SCSS file.');
+
+        _.forEach(this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.affected, (cssSources, cssClass) => {
+          Logger.warn('CSS class: "'+ cssClass +'", is used in following files:');
+          Logger.progress('\t'+ cssSources.join('\n\t'));
+        });
+      }
+    }
   }
 
   writeScssDependencies(scssDependencies, filename) {
@@ -50,7 +92,8 @@ class PatternScssCollector {
           orderedCssClassList.push(cssClassPath);
         });
 
-        Logger.warn('WARNING: css source(s) of '+ this.options.stylesheetPackage +' didn\'t match order rules of plugin-node-sass-dependency-collector, please provide a proper "plugin-node-sass-dependency-collector.config.json" configuration file:\n\t>>> '+ unorderedCssClassList.join('\n\t>>> '));
+        this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence++;
+        this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.affected = _.union(this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.affected, unorderedCssClassList);
       }
     }
 
@@ -101,18 +144,20 @@ class PatternScssCollector {
     let cssImports = [];
 
     cssClassList.forEach((cssClass) => {
-      let found = 0;
+      let sourcesFound = [];
       stylesheets.forEach((stylesheet) => {
         if (this.isCssClassUsedInStylesheet(cssClass, stylesheet.css)) {
-          found = found + 1;
+          sourcesFound.push(stylesheet.source);
           cssImports.push(stylesheet.source);
         }
       });
 
-      if (found === 0) {
-        Logger.warn('WARNING: css class that is used in pattern couldn\'t be found in '+ this.options.stylesheetPackage +' sources\n\t>>> ".'+ cssClass +'"');
-      } else if (found > 1) {
-        Logger.info('INFO: css class that is used in pattern was found '+ found +'x in '+ this.options.stylesheetPackage +' sources\n\t>>> ".'+ cssClass +'"');
+      if (sourcesFound.length === 0) {
+        this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence++;
+        this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.affected.push(cssClass);
+      } else if (sourcesFound.length > 1) {
+        this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence++;
+        this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.affected[cssClass] = sourcesFound;
       }
     });
 
