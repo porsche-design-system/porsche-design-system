@@ -9,3 +9,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Extended scss resolver logic
 * Improved performance by clean up stylesheets with exclusion rules before applying resolver
 * Made scss resolver work without order configuration
+* Improved logging

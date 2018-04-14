@@ -2,11 +2,11 @@ let chalk = require('chalk');
 
 class ConsoleLogger {
   static info(text) {
-    //console.log(chalk.white(text));
+    console.log(chalk.white(text));
   }
 
   static warn(text) {
-    //console.log(chalk.yellow(text));
+    console.log(chalk.yellow(text));
   }
 
   static error(text) {
