@@ -106,6 +106,7 @@ function getConfiguration() {
   configFiles.forEach((configFile) => {
     let config = require(path.resolve(process.cwd(), configFile));
 
+    data.verbose = (_.isUndefined(config.verbose)) ? data.verbose : config.verbose;
     data.exclude = _.union(data.exclude, config.exclude);
     data.order = _.union(data.order, config.order);
   });

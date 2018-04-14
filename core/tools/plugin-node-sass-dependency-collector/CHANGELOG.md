@@ -10,3 +10,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Improved performance by clean up stylesheets with exclusion rules before applying resolver
 * Made scss resolver work without order configuration
 * Improved logging
+* Logging can be enabled/disabled via "verbose" property in configuration file
