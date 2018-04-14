@@ -1,12 +1,14 @@
 const pluginName = 'plugin-node-sass-dependency-collector';
 
+const _ = require('lodash');
 const fs = require('fs-extra');
 const glob = require('glob');
 const path = require('path');
 const sass = require('node-sass');
 const PatternScssCollector = require('./src/pattern-scss-collector');
 
-let renderedScssWithSources = [];
+let renderedScssWithSources = getRenderedScssWithSources();
+let configuration = getConfiguration();
 
 function writeConfigToOutput(patternlab, pluginConfig) {
   let pluginConfigPathName = path.resolve(patternlab.config.paths.public.root, 'patternlab-components', 'packages');
@@ -19,7 +21,7 @@ function writeConfigToOutput(patternlab, pluginConfig) {
 }
 
 function onPatternIterate(patternlab, pattern) {
-  let scssImportCollector = new PatternScssCollector(patternlab, pattern, renderedScssWithSources);
+  new PatternScssCollector(patternlab, pattern, renderedScssWithSources, configuration);
 }
 
 /**
@@ -52,15 +54,18 @@ function getPluginFrontendConfig() {
  * A function that is able to scan a directory and subdirectories for a specific file type
  *
  */
-function getFilesInDirectory(path, suffix, files=[]) {
-  fs.readdirSync(path).forEach((file) => {
-    let subpath = path + '/' + file;
-    if (fs.lstatSync(subpath).isDirectory()) {
-      getFilesInDirectory(subpath, suffix, files);
-    } else if (subpath.endsWith(suffix)) {
-      files.push(subpath);
-    }
-  });
+function getFilesInDirectory(dir, suffix, files=[]) {
+  if (fs.existsSync(dir)) {
+    fs.readdirSync(dir).forEach((file) => {
+      let subpath = dir.replace(/\/$/, '') + '/' + file;
+
+      if (fs.statSync(subpath).isDirectory()) {
+        getFilesInDirectory(subpath, suffix, files);
+      } else if (subpath.endsWith(suffix)) {
+        files.push(subpath);
+      }
+    });
+  }
 
   return files;
 }
@@ -69,14 +74,19 @@ function getFilesInDirectory(path, suffix, files=[]) {
  * A function that is able to render scss files and keep the source
  *
  */
-function getRenderedScssWithSources(files) {
+function getRenderedScssWithSources() {
   let data = [];
 
-  files.forEach((file) => {
-    sass.render({ file: file }, (error, result) => {
+  let scssFiles = _.union(
+    getFilesInDirectory('./node_modules/@porsche/ui-kit-core/src', '.scss'),
+    getFilesInDirectory('./src', '.scss')
+  );
+
+  scssFiles.forEach((scssFile) => {
+    sass.render({ file: scssFile }, (error, result) => {
       if (!error) {
         data.push({
-          'source': file,
+          'source': scssFile,
           'css': result.css.toString()
         });
       } else {
@@ -84,6 +94,20 @@ function getRenderedScssWithSources(files) {
         process.exit(1);
       }
     });
+  });
+
+  return data;
+}
+
+function getConfiguration() {
+  let data = {};
+  let configFiles = getFilesInDirectory( './', 'plugin-node-sass-dependency-collector.config.json');
+
+  configFiles.forEach((configFile) => {
+    let config = require(path.resolve(process.cwd(), configFile));
+
+    data.exclude = _.union(data.exclude, config.exclude);
+    data.order = _.union(data.order, config.order);
   });
 
   return data;
@@ -99,9 +123,6 @@ function pluginInit(patternlab) {
     console.error('patternlab object not provided to plugin-init');
     process.exit(1);
   }
-
-  let files = getFilesInDirectory('./src', '.scss');
-  renderedScssWithSources = getRenderedScssWithSources(files);
 
   //write the plugin json to public/patternlab-components
   let pluginConfig = getPluginFrontendConfig();
