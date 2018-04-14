@@ -11,6 +11,7 @@ class PatternScssCollector {
     this.packageName = require('../package.json').name;
 
     this.options = _.merge({
+      verbose: true,
       exclude: [],
       order: []
     }, options);
@@ -40,31 +41,36 @@ class PatternScssCollector {
     let sassFileOutput = patternlab.config.paths.public.patterns + pattern.getPatternLink(patternlab, 'custom', '.scss');
 
     this.writeScssDependencies(formattedCssImports, sassFileOutput);
+    this.doLogging();
+  }
 
-    if (
-      !this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence &&
-      !this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence &&
-      !this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence
-    ) {
-      Logger.success(this.packageName +': SCSS resources were resolved successfully');
-    } else {
-      if (this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence) {
-        Logger.warn(this.packageName +': Some resolved SCSS file(s) did not match SCSS source order rules, please provide a proper "plugin-node-sass-dependency-collector.config.json" configuration file. Affected files are listed below:');
-        Logger.progress('\t'+ this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.affected.join('\n\t'));
-      }
+  doLogging() {
+    if (this.options.verbose) {
+      if (
+        !this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence &&
+        !this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence &&
+        !this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence
+      ) {
+        Logger.success(this.packageName + ': SCSS resources were resolved successfully');
+      } else {
+        if (this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence) {
+          Logger.warn(this.packageName + ': Some resolved SCSS file(s) did not match SCSS source order rules, please provide a proper "plugin-node-sass-dependency-collector.config.json" configuration file. Affected files are listed below:');
+          Logger.progress('\t' + this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.affected.join('\n\t'));
+        }
 
-      if (this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence) {
-        Logger.warn(this.packageName +': Some CSS classes that are used in pattern are not defined in any SCSS file. Affected CSS classes are listed below:');
-        Logger.progress('\t'+ this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.affected.join('\n\t'));
-      }
+        if (this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence) {
+          Logger.warn(this.packageName + ': Some CSS classes that are used in pattern are not defined in any SCSS file. Affected CSS classes are listed below:');
+          Logger.progress('\t' + this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.affected.join('\n\t'));
+        }
 
-      if (this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence) {
-        Logger.warn(this.packageName +': Some CSS classes that are used in pattern are defined in more than one SCSS file.');
+        if (this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence) {
+          Logger.warn(this.packageName + ': Some CSS classes that are used in pattern are defined in more than one SCSS file.');
 
-        _.forEach(this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.affected, (cssSources, cssClass) => {
-          Logger.warn('CSS class: "'+ cssClass +'", is used in following files:');
-          Logger.progress('\t'+ cssSources.join('\n\t'));
-        });
+          _.forEach(this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.affected, (cssSources, cssClass) => {
+            Logger.warn('CSS class: "' + cssClass + '", is used in following files:');
+            Logger.progress('\t' + cssSources.join('\n\t'));
+          });
+        }
       }
     }
   }
