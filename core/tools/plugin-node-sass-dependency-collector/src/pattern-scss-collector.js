@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const fs = require('fs-extra');
+const path = require('path');
 const Logger = require('./console-logger');
 const PatternScssRegex = require('./pattern-scss-regex');
 
@@ -7,32 +8,10 @@ class PatternScssCollector {
 
   constructor(patternlab, pattern, stylesheets, options) {
 
-    this.options = options || {
-      stylesheetPackage: 'porsche-stylesheets',
-      excludes: [
-        /_?index\.scss$/i,
-        /porsche-stylesheets\.scss$/i,
-        /porsche-stylesheets\.angular\.scss$/i
-      ],
-      order: [
-        /\.\/src\/common\//i,
-
-        /\.\/src\/base\//i,
-
-        /\.\/src\/modules\/icon\//i,
-        /\.\/src\/modules\/loader\//i,
-        /\.\/src\/modules\/button\//i,
-        /\.\/src\/modules\/divider\//i,
-        /\.\/src\/modules\/form\//i,
-        /\.\/src\/modules\/list\//i,
-        /\.\/src\/modules\//i,
-
-        /\.\/src\/connected-car-store\//i,
-        /\.\/src\/aftersales\//i,
-        /\.\/src\/portal\//i,
-        /\.\/src\/vehicle-related-services\//i
-      ]
-    };
+    this.options = _.merge({
+      exclude: [],
+      order: []
+    }, options);
 
     let renderedPatternMarkup = this.getRenderedPatternMarkup(pattern);
     let cssClassesFoundInPattern = this.getGroupMatches(renderedPatternMarkup, PatternScssRegex.findCssClasses());
@@ -58,7 +37,7 @@ class PatternScssCollector {
         let cssClassListWithoutReference = [];
 
         unorderedCssClassList.forEach((cssClassPath) => {
-          if (this.options.order[i].test(cssClassPath)) {
+          if (new RegExp(this.options.order[i], 'i').test(cssClassPath)) {
             orderedCssClassList.push(cssClassPath);
           } else {
             cssClassListWithoutReference.push(cssClassPath);
@@ -80,8 +59,8 @@ class PatternScssCollector {
 
   isScssFileIgnored(file) {
     let flag = false;
-    this.options.excludes.forEach((exclude) => {
-      if (exclude.test(file)) {
+    this.options.exclude.forEach((exclude) => {
+      if (new RegExp(exclude, 'i').test(file)) {
         flag = true;
       }
     });
@@ -92,10 +71,14 @@ class PatternScssCollector {
     let cssImports = [];
 
     cssClassList.forEach((cssClassPath) => {
-      cssImports.push('@import \'' + cssClassPath.replace('./', '~'+ this.options.stylesheetPackage +'/') + '\';');
+      if (cssClassPath.startsWith('./node_modules/')) {
+        cssImports.push('@import \'' + cssClassPath.replace('./node_modules/', '~') + '\';');
+      } else {
+        cssImports.push('@import \'' + cssClassPath.replace('./', '~'+ require(path.resolve(process.cwd(), './package.json')).name +'/') + '\';');
+      }
     });
 
-    return cssImports.join("\n")
+    return cssImports.join("\n");
   }
 
   getCssImports(cssClassList, stylesheets) {
