@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * 
 * Added plugin-node-sass-dependency-collector.config.json configuration
 
+## [0.1.7] - 2018-04-14
+* Resolved npm err when package is installed within a node_modules directory
+
 ## [0.1.6] - 2018-04-11
 * Updated npm ignore, /patternlab/source/css/ will be released again
 
