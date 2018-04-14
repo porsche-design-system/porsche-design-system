@@ -1,8 +1,8 @@
 {
   "exclude": [
-    "/_?index\\.scss$",
-    "/\\.setup\\.scss$",
-    "/\\.mixin\\.scss$",
+    "_?index\\.scss$",
+    "\\.setup\\.scss$",
+    "\\.mixin\\.scss$",
     "/porsche-stylesheets\\.scss$",
     "/porsche-stylesheets\\.angular\\.scss$"
   ],

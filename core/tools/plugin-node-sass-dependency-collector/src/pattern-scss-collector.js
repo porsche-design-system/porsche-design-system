@@ -13,10 +13,11 @@ class PatternScssCollector {
       order: []
     }, options);
 
+    let stylesheetsWithoutExcludedOnes = this.stylesheetsWithoutExcludedOnes(stylesheets);
     let renderedPatternMarkup = this.getRenderedPatternMarkup(pattern);
     let cssClassesFoundInPattern = this.getGroupMatches(renderedPatternMarkup, PatternScssRegex.findCssClasses());
     let cssClassList = this.getClassesList(cssClassesFoundInPattern);
-    let cssImports = this.getCssImports(cssClassList, stylesheets);
+    let cssImports = this.getCssImports(cssClassList, stylesheetsWithoutExcludedOnes);
     let orderedCssImports = this.getOrderedCssImports(cssImports);
     let formattedCssImports = this.getFormattedCssImports(orderedCssImports);
     let sassFileOutput = patternlab.config.paths.public.patterns + pattern.getPatternLink(patternlab, 'custom', '.scss');
@@ -57,6 +58,18 @@ class PatternScssCollector {
     return PatternScssRegex.checkCssClassUsage(cssClass).test(stylesheet);
   }
 
+  stylesheetsWithoutExcludedOnes(stylesheets) {
+    let data = [];
+
+    stylesheets.forEach((stylesheet) => {
+      if (!this.isScssFileIgnored(stylesheet.source)) {
+        data.push(stylesheet);
+      }
+    });
+
+    return data;
+  }
+
   isScssFileIgnored(file) {
     let flag = false;
     this.options.exclude.forEach((exclude) => {
@@ -87,7 +100,7 @@ class PatternScssCollector {
     cssClassList.forEach((cssClass) => {
       let found = 0;
       stylesheets.forEach((stylesheet) => {
-        if (!this.isScssFileIgnored(stylesheet.source) && this.isCssClassUsedInStylesheet(cssClass, stylesheet.css)) {
+        if (this.isCssClassUsedInStylesheet(cssClass, stylesheet.css)) {
           found = found + 1;
           cssImports.push(stylesheet.source);
         }
