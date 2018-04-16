@@ -95,7 +95,7 @@
     "patternlab-node": "2.12.0",
     "plugin-node-clipboard": "1.0.0",
     "plugin-node-data-inheritance": "git+https://github.com/Altinn/plugin-node-data-inheritance.git",
-    "plugin-node-sass-dependency-collector": "0.1.0",
+    "plugin-node-sass-dependency-collector": "0.1.1",
     "postcss": "6.0.21",
     "postcss-cli": "2.6.0",
     "postcss-flexboxfixer": "0.0.5",

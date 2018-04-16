@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 * 
-* Added plugin-node-sass-dependency-collector.config.json configuration
+
+## [0.1.8] - 2018-04-16
+* Updated plugin-node-sass-dependency-collector, now it's possible to use tilde importer for sass files
 
 ## [0.1.7] - 2018-04-14
+* Added plugin-node-sass-dependency-collector.config.json configuration
 * Resolved npm err when package is installed within a node_modules directory, removed node-sass-dependency-collector pre install
 
 ## [0.1.6] - 2018-04-11
