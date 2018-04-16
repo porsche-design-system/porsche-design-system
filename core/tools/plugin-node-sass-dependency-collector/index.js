@@ -6,6 +6,7 @@ const glob = require('glob');
 const path = require('path');
 const sass = require('node-sass');
 const PatternScssCollector = require('./src/pattern-scss-collector');
+const tildeImporter = require('node-sass-tilde-importer');
 
 let renderedScssWithSources = getRenderedScssWithSources();
 let configuration = getConfiguration();
@@ -83,7 +84,7 @@ function getRenderedScssWithSources() {
   );
 
   scssFiles.forEach((scssFile) => {
-    sass.render({ file: scssFile }, (error, result) => {
+    sass.render({ file: scssFile, importer: tildeImporter }, (error, result) => {
       if (!error) {
         data.push({
           'source': scssFile,

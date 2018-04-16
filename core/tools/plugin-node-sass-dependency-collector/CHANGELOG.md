@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2018-04-16
+* Extended sass renderer with the possibility of tilde import
+
 ## [0.1.0] - 2018-04-14
 * Initial setup based
 * Extended scss resolver logic
