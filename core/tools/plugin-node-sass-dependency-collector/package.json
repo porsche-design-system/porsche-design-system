@@ -1,6 +1,6 @@
 {
   "name": "plugin-node-sass-dependency-collector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Collects all related scss dependencies",
   "main": "index.js",
   "dependencies": {
