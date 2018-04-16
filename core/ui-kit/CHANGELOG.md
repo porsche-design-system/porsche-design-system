@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 
+## [0.1.9] - 2018-04-16
+* Updated sass renderer
+
 ## [0.1.8] - 2018-04-16
 * Updated plugin-node-sass-dependency-collector, now it's possible to use tilde importer for sass files
 
