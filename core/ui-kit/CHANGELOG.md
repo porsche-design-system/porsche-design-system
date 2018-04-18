@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 
+## [0.1.11] - 2018-04-18
+* Improved npm postinstall again
+
 ## [0.1.10] - 2018-04-18
 * Improved npm postinstall
 
