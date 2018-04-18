@@ -15,7 +15,7 @@
     "postcss:dev": "better-npm-run postcss:dev",
     "postcss:prod": "better-npm-run postcss:prod",
     "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/",
-    "postinstall": "[ -d \"./patternlab\" ] && node patternlab/scripts/postinstall.js || echo",
+    "postinstall": "[ -f \"./patternlab/scripts/postinstall.js\" ] && node patternlab/scripts/postinstall.js || echo",
     "gulp": "gulp -- ",
     "release": "npm install --verbose && npm run lint:scss && npm run build:all:dev && npm run build",
     "help": "gulp patternlab:help",
@@ -72,7 +72,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Mitko Tschimev <net.mitko.tschimev@mhp.com>",
-    "Stephan SchrÃ¶ter <stephan.schroeter@mhp.com>",
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
     "Manuel Niederberger <manuel.niederberger@diconium.com>",
     "Dominik Bauer <dominik.bauer@udg.de>"
   ],
