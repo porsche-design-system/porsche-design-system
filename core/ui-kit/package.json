@@ -15,7 +15,7 @@
     "postcss:dev": "better-npm-run postcss:dev",
     "postcss:prod": "better-npm-run postcss:prod",
     "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/",
-    "postinstall": "[ -f \"./patternlab/scripts/postinstall.js\" ] && node patternlab/scripts/postinstall.js",
+    "postinstall": "[ -f \"./patternlab/scripts/postinstall.js\" ] && node patternlab/scripts/postinstall.js || echo",
     "gulp": "gulp -- ",
     "release": "npm install --verbose && npm run lint:scss && npm run build:all:dev && npm run build",
     "help": "gulp patternlab:help",
