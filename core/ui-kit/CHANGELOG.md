@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 
+## [0.1.12] - 2018-04-18
+* Reverted improvement of @porsche/ui-kit-core@0.1.11
+
 ## [0.1.11] - 2018-04-18
 * Improved npm postinstall again
 
