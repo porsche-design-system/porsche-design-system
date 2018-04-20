@@ -1,75 +1,89 @@
-// mixin
+@import 'row.setup.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}row {
-  margin-left: -.25rem;
-  margin-right: -.25rem;
-
-  &::after {
-    content: '';
-    display: block;
-    clear: both;
+  margin: {
+    left: $row-spacing-horizontal;
+    right: $row-spacing-horizontal;
   }
 
   @include breakpoint('s') {
-    margin-left: -.5rem;
-    margin-right: -.5rem;
+    margin: {
+      left: $row-spacing-horizontal-s;
+      right: $row-spacing-horizontal-s;
+    }
   }
 
   @include breakpoint('l') {
-    margin-left: -.75rem;
-    margin-right: -.75rem;
+    margin: {
+      left: $row-spacing-horizontal-l;
+      right: $row-spacing-horizontal-l;
+    }
   }
 
   &--small {
-    margin-left: -.1875rem;
-    margin-right: -.1875rem;
+    margin: {
+      left: $row-small-spacing-horizontal;
+      right: $row-small-spacing-horizontal;
+    }
   }
 
   &--zero {
-    margin-left: 0;
-    margin-right: 0;
+    margin: {
+      left: 0;
+      right: 0;
+    }
 
     &-xxs-only {
       @include breakpoint('xxs', 'xs') {
-        margin-left: 0;
-        margin-right: 0;
+        margin: {
+          left: 0;
+          right: 0;
+        }
       }
     }
 
     &-xs-only {
       @include breakpoint('xs', 's') {
-        margin-left: 0;
-        margin-right: 0;
+        margin: {
+          left: 0;
+          right: 0;
+        }
       }
     }
 
     &-s-only {
       @include breakpoint('s', 'm') {
-        margin-left: 0;
-        margin-right: 0;
+        margin: {
+          left: 0;
+          right: 0;
+        }
       }
     }
 
     &-m-only {
       @include breakpoint('m', 'l') {
-        margin-left: 0;
-        margin-right: 0;
+        margin: {
+          left: 0;
+          right: 0;
+        }
       }
     }
 
     &-l-only {
       @include breakpoint('l') {
-        margin-left: 0;
-        margin-right: 0;
+        margin: {
+          left: 0;
+          right: 0;
+        }
       }
     }
   }
 
-  // TODO: put this to flex class
-  &--flex {
-    display: flex;
-    flex-flow: row wrap;
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
   }
 }

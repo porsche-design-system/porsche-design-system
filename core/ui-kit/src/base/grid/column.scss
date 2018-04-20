@@ -109,23 +109,24 @@
     &--l-12   { width: $column-12-width; }
   }
 
-  // TODO: this selector with its properties should not be here at all!
-  &--flex-centered {
-    display: flex;
-    align-items: center;
+  &--small {
+    padding: {
+      left: $column-small-spacing-horizontal;
+      right: $column-small-spacing-horizontal;
+    }
   }
 
   &--zero {
     padding: {
-      left: $column-zero-spacing-horizontal;
-      right: $column-zero-spacing-horizontal;
+      left: 0;
+      right: 0;
     }
 
     &-xxs-only {
       @include breakpoint('xxs', 'xs') {
         padding: {
-          left: $column-zero-spacing-horizontal;
-          right: $column-zero-spacing-horizontal;
+          left: 0;
+          right: 0;
         }
       }
     }
@@ -133,8 +134,8 @@
     &-xs-only {
       @include breakpoint('xs', 's') {
         padding: {
-          left: $column-zero-spacing-horizontal;
-          right: $column-zero-spacing-horizontal;
+          left: 0;
+          right: 0;
         }
       }
     }
@@ -142,8 +143,8 @@
     &-s-only {
       @include breakpoint('s', 'm') {
         padding: {
-          left: $column-zero-spacing-horizontal;
-          right: $column-zero-spacing-horizontal;
+          left: 0;
+          right: 0;
         }
       }
     }
@@ -151,8 +152,8 @@
     &-m-only {
       @include breakpoint('m', 'l') {
         padding: {
-          left: $column-zero-spacing-horizontal;
-          right: $column-zero-spacing-horizontal;
+          left: 0;
+          right: 0;
         }
       }
     }
@@ -160,17 +161,10 @@
     &-l-only {
       @include breakpoint('l') {
         padding: {
-          left: $column-zero-spacing-horizontal;
-          right: $column-zero-spacing-horizontal;
+          left: 0;
+          right: 0;
         }
       }
-    }
-  }
-
-  &--small {
-    padding: {
-      left: $column-small-spacing-horizontal;
-      right: $column-small-spacing-horizontal;
     }
   }
 }
