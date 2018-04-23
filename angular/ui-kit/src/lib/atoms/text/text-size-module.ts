@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {
   PuiTextSize1Component,
   PuiTextSize1Directive
-} from './index';
+} from './text-size-1';
 
 const declarations = [
   PuiTextSize1Component,

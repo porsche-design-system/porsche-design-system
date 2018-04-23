@@ -14,4 +14,4 @@ then
 fi
 
 # write version into package.json of build
-sed -i 's/^\([ \t]*"@porsche\/ui-kit-core": *"\)[^"]*/\1'${CORE_VERSION}'/' ../dist/package.json
+sed -i 's/^\([ \t]*"@porscheui-kit-core": *"\)[^"]*/\1'${CORE_VERSION}'/' ../dist/package.json
