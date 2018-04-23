@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PuiE2eAtomsTextComponent} from './pages/atoms/text/text';
+import {PuiE2eAtomsTextSizeComponent} from './pages/atoms/text/text-size.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,12 @@ const routes: Routes = [
         children: [
           {
             path: 'text',
-            component: PuiE2eAtomsTextComponent
+            children: [
+              {
+                path: 'text-size',
+                component: PuiE2eAtomsTextSizeComponent
+              }
+            ]
           }
         ]
       }
