@@ -1,20 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PuiHeadline1Component, PuiHeadline1Directive} from './h1';
+import { PuiTextSize1Component } from './text-size-1.component';
+import { PuiTextSize1Directive } from './text-size-1.directive';
 
 describe('Headline 1', () => {
-  let component: PuiHeadline1Component;
-  let fixture: ComponentFixture<PuiHeadline1Component>;
+  let component: PuiTextSize1Component;
+  let fixture: ComponentFixture<PuiTextSize1Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PuiHeadline1Component, PuiHeadline1Directive ]
+      declarations: [ PuiTextSize1Component, PuiTextSize1Directive ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PuiHeadline1Component);
+    fixture = TestBed.createComponent(PuiTextSize1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
