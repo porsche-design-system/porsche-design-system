@@ -16,7 +16,7 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
-    "porsche-stylesheets": "../../core",
+    "porsche-stylesheets": "../../core/ui-kit",
     "@angular/animations": "^5.2.9",
     "@angular/common": "^5.2.9",
     "@angular/compiler": "^5.2.9",

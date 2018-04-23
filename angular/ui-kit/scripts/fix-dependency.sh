@@ -5,13 +5,13 @@
 cd $( cd "${BASH_SOURCE[0]%/*}" && pwd )
 
 
-CORE_VERSION="..\/..\/..\/core"
+CORE_VERSION="..\/..\/..\/core\/ui-kit"
 
 if [ "$1" == "--prod" ]
 then
    # get current version
-   CORE_VERSION=$(node -p "require('../../../core/package.json').version")
+   CORE_VERSION=$(node -p "require('../../../core/ui-kit/package.json').version")
 fi
 
 # write version into package.json of build
-sed -i 's/^\([ \t]*"porsche-stylesheets": *"\)[^"]*/\1'${CORE_VERSION}'/' ../dist/package.json
+sed -i 's/^\([ \t]*"@porsche\/ui-kit-core": *"\)[^"]*/\1'${CORE_VERSION}'/' ../dist/package.json
