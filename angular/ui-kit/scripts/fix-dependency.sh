@@ -14,4 +14,6 @@ then
 fi
 
 # write version into package.json of build
-sed -i 's/^\([ \t]*"@porscheui-kit-core": *"\)[^"]*/\1'${CORE_VERSION}'/' ../dist/package.json
+# weird sed syntax is because it has to run on linux and os x
+# https://stackoverflow.com/questions/2320564/i-need-my-sed-i-command-for-in-place-editing-to-work-with-both-gnu-sed-and-bsd#comment28112026_2420579
+sed -i"" -e 's/^\([ \t]*"@porsche\/ui-kit-core": *"\)[^"]*/\1'${CORE_VERSION}'/' ../dist/package.json
