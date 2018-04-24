@@ -22,14 +22,16 @@
     }
   }
 
-  &--small {
+  &--small, // @deprecated, backward compatibility
+  &--gap-small {
     margin: {
       left: $row-small-spacing-horizontal;
       right: $row-small-spacing-horizontal;
     }
   }
 
-  &--zero {
+  &--zero, // @deprecated, backward compatibility
+  &--gap-zero {
     margin: {
       left: 0;
       right: 0;

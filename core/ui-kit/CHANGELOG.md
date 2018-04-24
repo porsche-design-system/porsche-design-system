@@ -10,7 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Removed row--flex and column--flex-centered, it's recommended to use a proper flex class with modifier instead [Breaking change]
 * Extracted variables for row and column grid
 * Updated breakpoint definitions
-
+* Introduced css class "column--gap-small" in replacement for "column--small" (deprecated) but kept deprecated class for backward compatibility 
+* Introduced css class "row--gap-small" in replacement for "row--small" (deprecated) but kept deprecated class for backward compatibility 
+* Introduced css class "column--gap-zero" in replacement for "column--zero" (deprecated) but kept deprecated class for backward compatibility 
+* Introduced css class "row--gap-zero" in replacement for "row--zero" (deprecated) but kept deprecated class for backward compatibility 
+* Added "grid-float" pattern
+* Renamed "flex-grid" pattern to "grid-flex"
 
 ## [0.1.12] - 2018-04-18
 * Reverted improvement of @porsche/ui-kit-core@0.1.11
