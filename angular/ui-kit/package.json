@@ -2,6 +2,8 @@
   "name": "@porsche/ui-kit-angular",
   "version": "0.0.0",
   "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
     "build": "npm run build:packagr && npm run build:fixDependency",
     "build:prod": "npm run build -- -- --prod",
     "build:packagr": "ng-packagr -p package.json",
@@ -46,7 +48,7 @@
     "rxjs": "^5.5.10",
     "ts-node": "^6.0.0",
     "tslint": "~5.9.1",
-    "typescript": "^2.8.3",
+    "typescript": "^2.6.2",
     "zone.js": "^0.8.26"
   },
   "peerDependencies": {
