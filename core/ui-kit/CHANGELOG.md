@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * 
 * Removed row--flex and column--flex-centered, it's recommended to use a proper flex class with modifier instead [Breaking change]
 * Extracted variables for row and column grid
+* Updated breakpoint definitions
+
 
 ## [0.1.12] - 2018-04-18
 * Reverted improvement of @porsche/ui-kit-core@0.1.11
