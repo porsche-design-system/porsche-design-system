@@ -11,7 +11,7 @@ export class PuiTextSize1Directive {
   protected thinClass: boolean = false;
 
   @Input() set thin(thin: boolean) {
-    this.thinClass = !!thin;
+    this.thinClass = thin;
     this.regularClass = !thin;
   }
 }
