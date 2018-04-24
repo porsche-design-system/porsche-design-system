@@ -109,14 +109,16 @@
     &--l-12   { width: $column-12-width; }
   }
 
-  &--small {
+  &--small, // @deprecated, backward compatibility
+  &--gap-small {
     padding: {
       left: $column-small-spacing-horizontal;
       right: $column-small-spacing-horizontal;
     }
   }
 
-  &--zero {
+  &--zero, // @deprecated, backward compatibility
+  &--gap-zero {
     padding: {
       left: 0;
       right: 0;
