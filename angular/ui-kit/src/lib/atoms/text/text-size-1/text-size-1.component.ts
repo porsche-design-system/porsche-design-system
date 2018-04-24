@@ -10,5 +10,5 @@ import { Component, ViewEncapsulation, Input } from "@angular/core";
   encapsulation: ViewEncapsulation.None
 })
 export class PuiTextSize1Component {
-  @Input() thin;
+  @Input() thin: boolean = false;
 }
