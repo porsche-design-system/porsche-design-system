@@ -6,10 +6,18 @@ export class TextSizePage {
   }
 
   getTextSize1Component() {
-    return element(by.css('pui-text-size-1'));
+    return element(by.css('.a'));
   }
 
   getTextSize1Directive() {
-    return element(by.css('span[puiTextSize1]'));
+    return element(by.css('.b'));
+  }
+
+  getTextSize1ToggleableComponent() {
+    return element(by.css('.c'));
+  }
+
+  getTextSize1ToggleableDirective() {
+    return element(by.css('.d'));
   }
 }

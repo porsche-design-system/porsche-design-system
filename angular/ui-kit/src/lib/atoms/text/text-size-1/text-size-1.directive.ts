@@ -1,15 +1,17 @@
-import { Directive, HostBinding } from "@angular/core";
+import { Directive, HostBinding, Input } from "@angular/core";
 
 @Directive({
   selector: '[puiTextSize1]'
 })
 export class PuiTextSize1Directive {
-  protected elementClasses: string[] = [
-    '-text-size-1-regular'
-  ];
+  @HostBinding('class.-text-size-1-regular')
+  protected regularClass: boolean = true;
 
-  @HostBinding('class')
-  get elementClass(): string {
-    return this.elementClasses.join(' ');
+  @HostBinding('class.-text-size-1-thin')
+  protected thinClass: boolean = false;
+
+  @Input() set thin(thin: boolean) {
+    this.thinClass = !!thin;
+    this.regularClass = !thin;
   }
 }
