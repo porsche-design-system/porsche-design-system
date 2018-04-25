@@ -13,6 +13,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "lib",
       "scripts": [],
+      "styles": [
+        "styles.scss"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
