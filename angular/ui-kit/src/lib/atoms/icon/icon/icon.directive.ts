@@ -1,6 +1,5 @@
 import {
   Directive,
-  HostBinding,
   Input,
   ElementRef,
   OnInit,
@@ -45,7 +44,7 @@ export class PuiIconDirective implements OnInit, OnChanges {
       this.el.nativeElement.class += ` ${iconClass}`;
     } else {
       const prevIconClass = `icon--${changes.previousValue}`;
-      this.el.nativeElement.class.replace(prevIconClass, iconClass);
+      this.el.nativeElement.class = this.el.nativeElement.class.replace(prevIconClass, iconClass);
     }
 
   }

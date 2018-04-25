@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, ElementRef } from '@angular/core';
 
 @Component({
   selector: `pui-icon`,
@@ -11,4 +11,8 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 })
 export class PuiIconComponent {
   @Input() icon = '';
+
+  constructor(private el: ElementRef) {
+
+  }
 }
