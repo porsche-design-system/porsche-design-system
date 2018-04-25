@@ -102,6 +102,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   column--l-12 => column--12-l
   ```
 * Added global grid setup file
+* Updated -wrapper-page width and offset definitions
+* Removed padding-bottom of -wrapper-page [BREAKING CHANGE]
+  Migration path: Instead please use a -spacing class to define space between modules that have -wrapper-page class applied
 
 ## [0.1.12] - 2018-04-18
 * Reverted improvement of @porsche/ui-kit-core@0.1.11
