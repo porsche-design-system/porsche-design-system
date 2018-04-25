@@ -2,7 +2,10 @@
 @import '../../base/spacing/spacing.setup.scss';
 
 $row-spacing-horizontal: rem(-4px) !default;
+$row-spacing-horizontal-xs: rem(-4px) !default;
 $row-spacing-horizontal-s: rem(-8px) !default;
+$row-spacing-horizontal-m: rem(-8px) !default;
 $row-spacing-horizontal-l: -$spacing-12 !default;
+$row-spacing-horizontal-xl: -$spacing-12 !default;
 
-$row-small-spacing-horizontal: -$spacing-3 !default;
+$row-gap-small-spacing-horizontal: -$spacing-3 !default;

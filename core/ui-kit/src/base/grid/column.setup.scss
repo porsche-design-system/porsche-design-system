@@ -18,7 +18,10 @@ $column-max-width: 100% !default;
 $column-min-height: 1px !default;
 
 $column-spacing-horizontal: rem(4px) !default;
+$column-spacing-horizontal-xs: rem(4px) !default;
 $column-spacing-horizontal-s: rem(8px) !default;
+$column-spacing-horizontal-m: rem(8px) !default;
 $column-spacing-horizontal-l: $spacing-12 !default;
+$column-spacing-horizontal-xl: $spacing-12 !default;
 
-$column-small-spacing-horizontal: $spacing-3 !default;
+$column-gap-small-spacing-horizontal: $spacing-3 !default;
