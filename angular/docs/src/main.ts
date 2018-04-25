@@ -9,6 +9,7 @@ import {withKnobs} from '@storybook/addon-knobs/angular';
 import {linkTo} from '@storybook/addon-links';
 import {SyntaxHighlighter} from "./components/syntax-highlighter/syntax-highlighter";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {PuiLinkIconTextComponent} from "../../ui-kit/src/lib/molecules/link-icon-text/link-icon-text/link-icon-text.component";
 import {PuiTextModule, PuiIconModule} from "@porsche/ui-kit-angular";
 
 
