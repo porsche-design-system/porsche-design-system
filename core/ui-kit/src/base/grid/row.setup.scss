@@ -1,11 +1,12 @@
 @import '../../mixins/px-rem-converter.scss';
 @import '../../base/spacing/spacing.setup.scss';
+@import '../../setup/grid.setup.scss';
 
-$row-spacing-horizontal: rem(-4px) !default;
-$row-spacing-horizontal-xs: rem(-4px) !default;
-$row-spacing-horizontal-s: rem(-8px) !default;
-$row-spacing-horizontal-m: rem(-8px) !default;
-$row-spacing-horizontal-l: -$spacing-12 !default;
-$row-spacing-horizontal-xl: -$spacing-12 !default;
+$row-spacing-horizontal:     - $grid-gutter / 2 !default;
+$row-spacing-horizontal-xs:  - $grid-gutter-xs / 2 !default;
+$row-spacing-horizontal-s:   - $grid-gutter-s / 2 !default;
+$row-spacing-horizontal-m:   - $grid-gutter-m / 2 !default;
+$row-spacing-horizontal-l:   - $grid-gutter-l / 2 !default;
+$row-spacing-horizontal-xl:  - $grid-gutter-xl / 2 !default;
 
 $row-gap-small-spacing-horizontal: -$spacing-3 !default;
