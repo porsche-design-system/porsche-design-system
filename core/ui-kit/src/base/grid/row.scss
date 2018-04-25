@@ -1,85 +1,44 @@
 @import 'row.setup.scss';
+@import 'row.mixin.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}row {
-  margin: {
-    left: $row-spacing-horizontal;
-    right: $row-spacing-horizontal;
-  }
+  @include row-gap-normal;
 
-  @include breakpoint('s') {
-    margin: {
-      left: $row-spacing-horizontal-s;
-      right: $row-spacing-horizontal-s;
-    }
-  }
+  &--gap {
+    &-normal  { @include row-gap-normal; }
+    &-small   { @include row-gap-small; }
+    &-zero    { @include row-gap-zero; }
 
-  @include breakpoint('l') {
-    margin: {
-      left: $row-spacing-horizontal-l;
-      right: $row-spacing-horizontal-l;
-    }
-  }
-
-  &--small, // @deprecated, backward compatibility
-  &--gap-small {
-    margin: {
-      left: $row-small-spacing-horizontal;
-      right: $row-small-spacing-horizontal;
-    }
-  }
-
-  &--zero, // @deprecated, backward compatibility
-  &--gap-zero {
-    margin: {
-      left: 0;
-      right: 0;
+    @include breakpoint('xs') {
+      &-normal-xs { @include row-gap-normal; }
+      &-small-xs  { @include row-gap-small; }
+      &-zero-xs   { @include row-gap-zero; }
     }
 
-    &-xxs-only {
-      @include breakpoint('xxs', 'xs') {
-        margin: {
-          left: 0;
-          right: 0;
-        }
-      }
+    @include breakpoint('s') {
+      &-normal-s { @include row-gap-normal; }
+      &-small-s  { @include row-gap-small; }
+      &-zero-s   { @include row-gap-zero; }
     }
 
-    &-xs-only {
-      @include breakpoint('xs', 's') {
-        margin: {
-          left: 0;
-          right: 0;
-        }
-      }
+    @include breakpoint('m') {
+      &-normal-m { @include row-gap-normal; }
+      &-small-m  { @include row-gap-small; }
+      &-zero-m   { @include row-gap-zero; }
     }
 
-    &-s-only {
-      @include breakpoint('s', 'm') {
-        margin: {
-          left: 0;
-          right: 0;
-        }
-      }
+    @include breakpoint('l') {
+      &-normal-l { @include row-gap-normal; }
+      &-small-l  { @include row-gap-small; }
+      &-zero-l   { @include row-gap-zero; }
     }
 
-    &-m-only {
-      @include breakpoint('m', 'l') {
-        margin: {
-          left: 0;
-          right: 0;
-        }
-      }
-    }
-
-    &-l-only {
-      @include breakpoint('l') {
-        margin: {
-          left: 0;
-          right: 0;
-        }
-      }
+    @include breakpoint('xl') {
+      &-normal-xl { @include row-gap-normal; }
+      &-small-xl  { @include row-gap-small; }
+      &-zero-xl   { @include row-gap-zero; }
     }
   }
 
