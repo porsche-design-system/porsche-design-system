@@ -1,9 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {
-  PuiIconComponent,
-  PuiIconDirective
-} from './icon';
+import { PuiIconComponent } from './icon.component';
+import { PuiIconDirective } from './icon.directive';
 
 const declarations = [
   PuiIconComponent,
