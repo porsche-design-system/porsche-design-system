@@ -7,7 +7,7 @@ import { Component, DebugElement } from '@angular/core';
 @Component({
   template: `
     <span puiTextSize1 id="element1"></span>
-    <span puiTextSize1 id="element2" class="a" [thin]="thin"></span>
+    <span puiTextSize1 id="element2" class="some-additional-class" [thin]="thin"></span>
   `
 })
 class TestComponent {
@@ -52,11 +52,11 @@ describe('Text Size 1 - Directive', () => {
   });
 
   it('should keep existing classes on the element', () => {
-    expect(element2.nativeElement.classList).toContain('a');
+    expect(element2.nativeElement.classList).toContain('some-additional-class');
     expect(element2.nativeElement.classList).toContain('-text-size-1-regular');
     component.thin = true;
     fixture.detectChanges();
-    expect(element2.nativeElement.classList).toContain('a');
+    expect(element2.nativeElement.classList).toContain('some-additional-class');
     expect(element2.nativeElement.classList).toContain('-text-size-1-thin');
   });
 });
