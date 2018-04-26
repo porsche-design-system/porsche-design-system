@@ -6,5 +6,4 @@ import {Component} from '@angular/core';
 })
 export class PuiE2eMoleculesButtonGhostComponent {
   label = 'Test Button';
-  loading:true;
 }

@@ -1,6 +1,6 @@
 <a
   href="#"
-  *ngIf="isLink"
+  *ngIf="link"
   class="button-primary"
   [ngClass]="{
     'button-primary--error': error,
@@ -11,17 +11,17 @@
     'button-primary--button-group': buttonGroup
   }">
   <span
-    class="button-primary__icon icon {{icon}}"
+    class="button-primary__icon icon icon--{{icon}}"
     [ngClass]="{
       'button-primary__icon--loading': loading
     }">
-    <pui-loader-base class="button-primary__loader" *ngIf="loading"></pui-loader-base>
+    <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>
   </span>
   <span class="button-primary__label">{{label}}"></span>
 </a>
 <button
   type="button"
-  *ngIf="!isLink"
+  *ngIf="!link"
   class="button-primary"
   [ngClass]="{
     'button-primary--error': error,
@@ -34,11 +34,11 @@
   [disabled] = 'disabled'
   >
   <span
-    class="button-primary__icon icon {{icon}}"
+    class="button-primary__icon icon icon--{{icon}}"
     [ngClass]="{
       'button-primary__icon--loading': loading
     }">
-    <pui-loader-base class="button-primary__loader" *ngIf="loading"></pui-loader-base>
+    <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>
   </span>
   <span class="button-primary__label">{{label}}</span>
 </button>

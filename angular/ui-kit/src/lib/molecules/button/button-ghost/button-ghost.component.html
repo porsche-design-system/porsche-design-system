@@ -7,11 +7,9 @@
            'button-ghost--inverted': inverted }"
         *ngIf="!link">
 
-  <span class="button-ghost__icon icon {{icon}}"
+  <span class="button-ghost__icon icon icon--{{icon}}"
         [ngClass]="{'button-ghost__icon--loading': loading }">
-
-    <pui-loader-base *ngIf="loading" [loaderDark]="inverted"></pui-loader-base>
-      <span class="loader-base loader-base--dark button-ghost__loader"></span>
+    <pui-loader-base styleModifier="button-ghost__loader" [loaderDark]="!inverted"></pui-loader-base>
   </span>
   <span class="button-ghost__label">{{label}}</span>
 </button>
@@ -25,9 +23,9 @@
    href="#"
    *ngIf="link"
 >
-  <span class="button-ghost__icon icon"
-        [ngClass]=" {'button-ghost__icon--loading': loading, icon : true }">
-    <pui-loader-base *ngIf="loading" [loaderDark]="inverted"></pui-loader-base>
+  <span class="button-ghost__icon icon icon--{{icon}}"
+        [ngClass]=" {'button-ghost__icon--loading': loading }">
+    <pui-loader-base styleModifier="button-ghost__loader" [loaderDark]="!inverted"></pui-loader-base>
   </span>
   <span class="button-ghost__label">{{label}}</span>
 </a>
