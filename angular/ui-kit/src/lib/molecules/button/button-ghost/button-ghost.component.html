@@ -2,9 +2,9 @@
         class="button-ghost"
         [disabled]="disabled"
         [ngClass]="
-          {'button-ghost_stretch' : stretch,
-           'button-ghost_error' : error ,
-           'button-ghost_inverted': inverted }"
+          {'button-ghost--stretch' : stretch,
+           'button-ghost--error' : error ,
+           'button-ghost--inverted': inverted }"
         *ngIf="!link">
 
   <span class="button-ghost__icon icon {{icon}}"
@@ -19,9 +19,9 @@
 <a type="button"
    class="button-ghost"
    [ngClass]="
-    {'button-ghost_stretch' : stretch,
-     'button-ghost_error' : error ,
-     'button-ghost_inverted': inverted }"
+    {'button-ghost--stretch' : stretch,
+     'button-ghost--error' : error ,
+     'button-ghost--inverted': inverted }"
    href="#"
    *ngIf="link"
 >
