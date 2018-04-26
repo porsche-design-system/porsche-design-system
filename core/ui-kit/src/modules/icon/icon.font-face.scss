@@ -1,0 +1,13 @@
+@import 'icon.setup.scss';
+
+@font-face {
+  font-family: 'pag-iconfont';
+  // sass-lint:disable-block no-duplicate-properties indentation
+  src: url('#{$icon-resource-base-path}/pag-iconfont.eot?iaj4st');
+  src: url('#{$icon-resource-base-path}/pag-iconfont.eot?iaj4st#iefix') format('embedded-opentype'),
+  url('#{$icon-resource-base-path}/pag-iconfont.ttf?iaj4st') format('truetype'),
+  url('#{$icon-resource-base-path}/pag-iconfont.woff?iaj4st') format('woff'),
+  url('#{$icon-resource-base-path}/pag-iconfont.svg?iaj4st#pag-iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
