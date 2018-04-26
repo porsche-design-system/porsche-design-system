@@ -3,14 +3,23 @@
 }
 
 .nav {
-  width: 100px;
   border-right: 1px solid grey;
-  margin-right: 20px;
   font-weight: bold;
 
   ul {
     font-weight: normal;
+    margin-left: 3px;
+    border-left: 1px solid black;
   }
+}
+
+.content {
+  flex: 1;
+  position: relative;
+  padding: 20px;
+  margin: 5px;
+  background-color: #1c2225;
+  color: white;
 }
 
 ul {
@@ -25,6 +34,9 @@ li {
 }
 
 a {
+  display: block;
+  padding: 5px;
   text-decoration: none;
+  font-style: italic;
   color: black;
 }
