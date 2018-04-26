@@ -5,4 +5,5 @@ which can be applied to any element.
 
 <pui-docs-example-viewer>
     <pui-text-size-1>text-size-1</pui-text-size-1>
+    <pui-text-size-1 [thin]="true">text-size-1 thin</pui-text-size-1>
 </pui-docs-example-viewer>
