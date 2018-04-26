@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'pui-e2e-molecules-button-primary',
@@ -6,7 +6,4 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PuiE2eMoleculesButtonPrimaryComponent {
   label = 'Test Button';
-
-  constructor() { }
-
 }

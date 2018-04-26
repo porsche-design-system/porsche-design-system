@@ -31,14 +31,13 @@
     'button-primary--stretch': stretch,
     'button-primary--button-group': buttonGroup
   }"
-  [disabled] = 'disabled'
-  >
+  [disabled]='disabled'
+>
   <span
     class="button-primary__icon icon icon--{{icon}}"
-    [ngClass]="{
-      'button-primary__icon--loading': loading
-    }">
+    [ngClass]="{'button-primary__icon--loading': loading}">
     <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>
+
   </span>
   <span class="button-primary__label">{{label}}</span>
 </button>
