@@ -1,1 +1,2 @@
-export * from './link-icon-text';
+export * from './link/link-icon-text';
+export * from './image';

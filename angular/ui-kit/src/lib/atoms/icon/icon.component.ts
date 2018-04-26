@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation, Input, ElementRef } from '@angular/core';
   exportAs: 'puiIcon',
   templateUrl: 'icon.html',
   styleUrls: [
-    '../../../../../node_modules/@porsche/ui-kit-core/src/modules/icon/icon.scss'
+    '../../../../node_modules/@porsche/ui-kit-core/src/modules/icon/icon.scss'
   ],
   encapsulation: ViewEncapsulation.None
 })

@@ -1,25 +1,25 @@
-import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PuiLinkIconTextComponent } from './link-icon-text.component';
-import { DebugElement } from '@angular/core';
+import {PuiImageCoverComponent} from './image-cover.component';
+import {DebugElement} from '@angular/core';
 
 describe('Link Icon TextComponent', () => {
-  let component: PuiLinkIconTextComponent;
-  let fixture: ComponentFixture<PuiLinkIconTextComponent>;
+  let component: PuiImageCoverComponent;
+  let fixture: ComponentFixture<PuiImageCoverComponent>;
   let linkElement: DebugElement;
   let linkLabelElement: DebugElement;
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PuiLinkIconTextComponent ]
+      declarations: [PuiImageCoverComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PuiLinkIconTextComponent);
+    fixture = TestBed.createComponent(PuiImageCoverComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     linkElement = fixture.debugElement.query(By.css('link-icon-text'));
@@ -35,14 +35,8 @@ describe('Link Icon TextComponent', () => {
   });
 
   it('should set the correct text if linkText is set', () => {
-    component.linkText = 'Test Link';
+    component.imageUrl = 'Test Link';
     fixture.detectChanges();
     expect(linkLabelElement.nativeElement.textContent).toContain('Test Link');
-  });
-
-  it('should set the correct url if linkUrl is set', () => {
-    component.linkUrl = 'www.testurl.com';
-    fixture.detectChanges();
-    expect(linkElement.nativeElement.getAttribute('href')).toEqual('www.testurl.com');
   });
 });
