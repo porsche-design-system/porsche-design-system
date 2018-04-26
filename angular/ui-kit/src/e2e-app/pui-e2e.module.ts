@@ -4,12 +4,13 @@ import { NgModule } from '@angular/core';
 import {PuiE2eRoutingModule} from './pui-e2e-routing.module';
 
 import { PuiE2eComponent } from './pui-e2e.component';
-import {PuiTextModule, PuiIconModule, PuiNotificationModule, PuiLinkIconTextModule, PuiImageCoverModule} from '../public_api';
+import {PuiTextModule, PuiIconModule, PuiNotificationModule, PuiLinkIconTextModule, PuiImageCoverModule, PuiLoaderModule} from '../public_api';
 import {PuiE2eAtomsTextSizeComponent} from './pages/atoms/text/text-size.component';
 import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
 import { PuiE2eOrganismsNotificationComponent } from './pages/organisms/notification/notification.component';
 import {PuiE2eMoleculesLinkIconTextComponent} from "./pages/molecules/link-icon-text/link-icon-text.component";
 import {PuiE2eMoleculesImageCoverComponent} from "./pages/molecules/image-cover/image.cover.component";
+import {PuiE2eMoleculesLoaderBaseComponent} from "./pages/molecules/loader-base/loader-base-component";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {PuiE2eMoleculesImageCoverComponent} from "./pages/molecules/image-cover/
     PuiE2eOrganismsNotificationComponent,
     PuiE2eAtomsIconComponent,
     PuiE2eMoleculesLinkIconTextComponent,
-    PuiE2eMoleculesImageCoverComponent
+    PuiE2eMoleculesImageCoverComponent,
+    PuiE2eMoleculesLoaderBaseComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import {PuiE2eMoleculesImageCoverComponent} from "./pages/molecules/image-cover/
     PuiNotificationModule,
     PuiIconModule,
     PuiLinkIconTextModule,
-    PuiImageCoverModule
+    PuiImageCoverModule,
+    PuiLoaderModule
   ],
   bootstrap: [PuiE2eComponent]
 })

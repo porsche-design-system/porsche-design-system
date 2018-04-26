@@ -5,6 +5,7 @@ import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
 import { PuiE2eOrganismsNotificationComponent } from './pages/organisms/notification/notification.component';
 import {PuiE2eMoleculesLinkIconTextComponent} from "./pages/molecules/link-icon-text/link-icon-text.component";
 import {PuiE2eMoleculesImageCoverComponent} from "./pages/molecules/image-cover/image.cover.component";
+import {PuiE2eMoleculesLoaderBaseComponent} from "./pages/molecules/loader-base/loader-base-component";
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
           {
             path: 'image-cover',
             component: PuiE2eMoleculesImageCoverComponent
+          },
+          {
+            path: 'loader-base',
+            component: PuiE2eMoleculesLoaderBaseComponent
           }
         ]
       }
