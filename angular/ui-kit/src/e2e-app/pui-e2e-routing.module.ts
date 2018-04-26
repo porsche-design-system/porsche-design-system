@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {PuiE2eAtomsTextSizeComponent} from './pages/atoms/text/text-size.component';
 import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
+import { PuiE2eOrganismsNotificationComponent } from './pages/organisms/notification/notification.component';
 import {PuiE2eMoleculesLinkIconTextComponent} from "./pages/molecules/link-icon-text/link-icon-text.component";
 import {PuiE2eMoleculesImageCoverComponent} from "./pages/molecules/image-cover/image.cover.component";
 
@@ -24,6 +25,20 @@ const routes: Routes = [
           {
             path: 'icon',
             component: PuiE2eAtomsIconComponent
+          }
+        ]
+      },
+      {
+        path: 'organisms',
+        children: [
+          {
+            path: 'notification',
+            children: [
+              {
+                path: 'notification-error-inline',
+                component: PuiE2eOrganismsNotificationComponent
+              }
+            ]
           }
         ]
       },
