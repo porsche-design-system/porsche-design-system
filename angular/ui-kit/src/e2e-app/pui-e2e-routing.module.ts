@@ -1,7 +1,9 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {PuiE2eAtomsTextSizeComponent} from './pages/atoms/text/text-size.component';
-import {PuiLinkIconTextComponent} from "../lib/molecules/link-icon-text";
+import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
+import {PuiE2eMoleculesLinkIconTextComponent} from "./pages/molecules/link-icon-text/link-icon-text.component";
+import {PuiE2eMoleculesImageCoverComponent} from "./pages/molecules/image-cover/image.cover.component";
 
 const routes: Routes = [
   {
@@ -18,6 +20,10 @@ const routes: Routes = [
                 component: PuiE2eAtomsTextSizeComponent
               }
             ]
+          },
+          {
+            path: 'icon',
+            component: PuiE2eAtomsIconComponent
           }
         ]
       },
@@ -26,7 +32,11 @@ const routes: Routes = [
         children: [
           {
             path: 'link-icon-text',
-            component: PuiLinkIconTextComponent
+            component: PuiE2eMoleculesLinkIconTextComponent
+          },
+          {
+            path: 'image-cover',
+            component: PuiE2eMoleculesImageCoverComponent
           }
         ]
       }
