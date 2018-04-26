@@ -1,0 +1,33 @@
+<button type="button"
+        class="button-ghost"
+        [disabled]="disabled"
+        [ngClass]="
+          {'button-ghost_stretch' : stretch,
+           'button-ghost_error' : error ,
+           'button-ghost_inverted': inverted }"
+        *ngIf="!link">
+
+  <span class="button-ghost__icon icon {{icon}}"
+        [ngClass]="{'button-ghost__icon--loading': loading }">
+
+    <pui-loader-base *ngIf="loading" [loaderDark]="inverted"></pui-loader-base>
+      <span class="loader-base loader-base--dark button-ghost__loader"></span>
+  </span>
+  <span class="button-ghost__label">{{label}}</span>
+</button>
+
+<a type="button"
+   class="button-ghost"
+   [ngClass]="
+    {'button-ghost_stretch' : stretch,
+     'button-ghost_error' : error ,
+     'button-ghost_inverted': inverted }"
+   href="#"
+   *ngIf="link"
+>
+  <span class="button-ghost__icon icon"
+        [ngClass]=" {'button-ghost__icon--loading': loading, icon : true }">
+    <pui-loader-base *ngIf="loading" [loaderDark]="inverted"></pui-loader-base>
+  </span>
+  <span class="button-ghost__label">{{label}}</span>
+</a>
