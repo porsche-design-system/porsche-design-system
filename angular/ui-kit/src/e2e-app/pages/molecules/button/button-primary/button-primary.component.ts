@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PuiE2eMoleculesButtonPrimaryComponent {
   label = 'Test Button';
-  loading:true;
+
   constructor() { }
 
 }

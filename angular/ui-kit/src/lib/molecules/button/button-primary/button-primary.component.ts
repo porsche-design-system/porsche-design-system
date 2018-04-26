@@ -3,9 +3,13 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'pui-button-primary',
   templateUrl: './button-primary.component.html',
-  styleUrls: ['../../.././../../node_modules/@porsche/ui-kit-core/src/modules/button/button-primary.scss']
+  styleUrls: [
+    '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/icon/icon.scss',
+    '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/loader/loader-base.scss',
+    '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/button/button-primary.scss'
+  ]
 })
-export class PuiButtonPrimaryComponent implements OnInit{
+export class PuiButtonPrimaryComponent {
   @Input() link = false;
   @Input() error = false;
   @Input() black = false;
@@ -15,10 +19,6 @@ export class PuiButtonPrimaryComponent implements OnInit{
   @Input() buttonGroup = false;
   @Input() disabled = false;
   @Input() loading = false;
-  @Input() icon = '';
+  @Input() icon = 'arrow-right-hair';
   @Input() label = '';
-
-  ngOnInit() {
-    this.icon = this.icon ? 'icon--' + this.icon : 'icon--arrow-right-hair'
-  }
 }
