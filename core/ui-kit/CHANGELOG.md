@@ -7,103 +7,110 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 * 
-* Removed row--flex and column--flex-centered, it's recommended to use a proper flex class with modifier instead [BREAKING CHANGE]
-* Extracted variables for row and column grid
-* Updated breakpoint definitions
+
+### New Features
 * Added "grid-float" pattern
-* Renamed "flex-grid" pattern to "grid-flex"
 * Added column--gap-normal, column--gap-small and column--gap-zero classes and corresponding min-width breakpoint specific ones
 * Added column--direction-normal and column--direction-reverse classes and corresponding min-width breakpoint specific ones
-* Removed some css classes related to "column" and "row" (grid float) and replaced them with ones that fits convention [BREAKING CHANGE]
+* Added global grid setup file
+
+### Improvements
+* Extracted variables for row and column grid
+* Updated breakpoint definitions
+* Renamed "flex-grid" pattern to "grid-flex"
+* Updated -wrapper-page width and offset definitions
+
+### Breaking changes
+* Removed row--flex and column--flex-centered
+  Migration path: It's recommended to use a proper flex class with modifier instead
+* Removed some css classes related to "column" and "row" (grid float) and replaced them with ones that fits convention
   Migration path: Please search & replace following CSS classes that are used in your
   project in the following order:
-  ```
-  column--reverse => column--direction-reverse
-  column--small => column--gap-small
-  row--small => row--gap-small
-  ```
-* Removed column--zero's and row--zero's breakpoint only classes entirely and replaced them with ones that are min-width breakpoint specific [BREAKING CHANGE]
+```
+column--reverse => column--direction-reverse
+column--small => column--gap-small
+row--small => row--gap-small
+```
+* Removed column--zero's and row--zero's breakpoint only classes entirely and replaced them with ones that are min-width breakpoint specific
   Migration path: Please search & replace following CSS classes that are used in your
   project in the following order (and be aware that the new classes are "min-width" not "only" breakpoint specific):
-  ```
-  column--zero-xxs-only => column--gap-zero
-  column--zero-xs-only => column--gap-zero-xs
-  column--zero-s-only => column--gap-zero-s
-  column--zero-m-only => column--gap-zero-m
-  column--zero-l-only => column--gap-zero-l
-  column--zero => column--gap-zero
-  
-  row--zero-xxs-only => row--gap-zero
-  row--zero-xs-only => row--gap-zero-xs
-  row--zero-s-only => row--gap-zero-s
-  row--zero-m-only => row--gap-zero-m
-  row--zero-l-only => row--gap-zero-l
-  row--zero => row--gap-zero
-  ```
+```
+column--zero-xxs-only => column--gap-zero
+column--zero-xs-only => column--gap-zero-xs
+column--zero-s-only => column--gap-zero-s
+column--zero-m-only => column--gap-zero-m
+column--zero-l-only => column--gap-zero-l
+column--zero => column--gap-zero
+
+row--zero-xxs-only => row--gap-zero
+row--zero-xs-only => row--gap-zero-xs
+row--zero-s-only => row--gap-zero-s
+row--zero-m-only => row--gap-zero-m
+row--zero-l-only => row--gap-zero-l
+row--zero => row--gap-zero
+```
 * Renamed column's modifiers for defining width of a column, but kept old (deprecated) class names in addition for backward compatibility. 
   Anyway it's recommended to follow migration path because deprecated classes will be removed at some point.
   Migration path: Please search & replace following CSS classes that are used in your
   project in the following order:
-  ```
-  column--xs-auto => column--auto-xs
-  column--xs-1 => column--1-xs
-  column--xs-2 => column--2-xs
-  column--xs-3 => column--3-xs
-  column--xs-4 => column--4-xs
-  column--xs-5 => column--5-xs
-  column--xs-6 => column--6-xs
-  column--xs-7 => column--7-xs
-  column--xs-8 => column--8-xs
-  column--xs-9 => column--9-xs
-  column--xs-10 => column--10-xs
-  column--xs-11 => column--11-xs
-  column--xs-12 => column--12-xs
-  
-  column--s-auto => column--auto-s
-  column--s-1 => column--1-s
-  column--s-2 => column--2-s
-  column--s-3 => column--3-s
-  column--s-4 => column--4-s
-  column--s-5 => column--5-s
-  column--s-6 => column--6-s
-  column--s-7 => column--7-s
-  column--s-8 => column--8-s
-  column--s-9 => column--9-s
-  column--s-10 => column--10-s
-  column--s-11 => column--11-s
-  column--s-12 => column--12-s
-  
-  column--m-auto => column--auto-m
-  column--m-1 => column--1-m
-  column--m-2 => column--2-m
-  column--m-3 => column--3-m
-  column--m-4 => column--4-m
-  column--m-5 => column--5-m
-  column--m-6 => column--6-m
-  column--m-7 => column--7-m
-  column--m-8 => column--8-m
-  column--m-9 => column--9-m
-  column--m-10 => column--10-m
-  column--m-11 => column--11-m
-  column--m-12 => column--12-m
-  
-  column--l-auto => column--auto-l
-  column--l-1 => column--1-l
-  column--l-2 => column--2-l
-  column--l-3 => column--3-l
-  column--l-4 => column--4-l
-  column--l-5 => column--5-l
-  column--l-6 => column--6-l
-  column--l-7 => column--7-l
-  column--l-8 => column--8-l
-  column--l-9 => column--9-l
-  column--l-10 => column--10-l
-  column--l-11 => column--11-l
-  column--l-12 => column--12-l
-  ```
-* Added global grid setup file
-* Updated -wrapper-page width and offset definitions
-* Removed padding-bottom of -wrapper-page [BREAKING CHANGE]
+```
+column--xs-auto => column--auto-xs
+column--xs-1 => column--1-xs
+column--xs-2 => column--2-xs
+column--xs-3 => column--3-xs
+column--xs-4 => column--4-xs
+column--xs-5 => column--5-xs
+column--xs-6 => column--6-xs
+column--xs-7 => column--7-xs
+column--xs-8 => column--8-xs
+column--xs-9 => column--9-xs
+column--xs-10 => column--10-xs
+column--xs-11 => column--11-xs
+column--xs-12 => column--12-xs
+
+column--s-auto => column--auto-s
+column--s-1 => column--1-s
+column--s-2 => column--2-s
+column--s-3 => column--3-s
+column--s-4 => column--4-s
+column--s-5 => column--5-s
+column--s-6 => column--6-s
+column--s-7 => column--7-s
+column--s-8 => column--8-s
+column--s-9 => column--9-s
+column--s-10 => column--10-s
+column--s-11 => column--11-s
+column--s-12 => column--12-s
+
+column--m-auto => column--auto-m
+column--m-1 => column--1-m
+column--m-2 => column--2-m
+column--m-3 => column--3-m
+column--m-4 => column--4-m
+column--m-5 => column--5-m
+column--m-6 => column--6-m
+column--m-7 => column--7-m
+column--m-8 => column--8-m
+column--m-9 => column--9-m
+column--m-10 => column--10-m
+column--m-11 => column--11-m
+column--m-12 => column--12-m
+
+column--l-auto => column--auto-l
+column--l-1 => column--1-l
+column--l-2 => column--2-l
+column--l-3 => column--3-l
+column--l-4 => column--4-l
+column--l-5 => column--5-l
+column--l-6 => column--6-l
+column--l-7 => column--7-l
+column--l-8 => column--8-l
+column--l-9 => column--9-l
+column--l-10 => column--10-l
+column--l-11 => column--11-l
+column--l-12 => column--12-l
+```
+* Removed padding-bottom of -wrapper-page
   Migration path: Instead please use a -spacing class to define space between modules that have -wrapper-page class applied
 
 ## [0.1.12] - 2018-04-18
