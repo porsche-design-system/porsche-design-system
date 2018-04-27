@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, Input } from "@angular/core";
+import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { PuiBaseComponent } from '../../../shared';
 
 @Component({
   selector: `pui-text-size-1`,
@@ -9,6 +10,6 @@ import { Component, ViewEncapsulation, Input } from "@angular/core";
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiTextSize1Component {
-  @Input() thin: boolean = false;
+export class PuiTextSize1Component extends PuiBaseComponent {
+  @Input() thin = false;
 }
