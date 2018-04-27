@@ -7,7 +7,7 @@ import {PuiLoaderBaseComponent} from './loader-base/loader-base.component';
     CommonModule
   ],
   declarations: [PuiLoaderBaseComponent],
-  exports:[PuiLoaderBaseComponent]
+  exports: [PuiLoaderBaseComponent]
 })
 export class PuiLoaderModule {
 }
