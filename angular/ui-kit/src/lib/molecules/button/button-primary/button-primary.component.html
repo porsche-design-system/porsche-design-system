@@ -1,43 +1,39 @@
 <a
   href="#"
-  *ngIf="link"
   class="button-primary"
-  [ngClass]="{
-    'button-primary--error': error,
-    'button-primary--black': black,
-    'button-primary--red': red,
-    'button-primary--acid-green': acidGreen,
-    'button-primary--stretch': stretch,
-    'button-primary--button-group': buttonGroup
-  }">
+  [class.button-primary--error]="error"
+  [class.button-primary--black]="black"
+  [class.button-primary--red]="red"
+  [class.button-primary--acid-green]="acidGreen"
+  [class.button-primary--stretch]="stretch"
+  [class.button-primary--button-group]="buttonGroup"
+  *ngIf="link"
+>
   <span
     class="button-primary__icon icon icon--{{icon}}"
-    [ngClass]="{
-      'button-primary__icon--loading': loading
-    }">
+    [class.button-primary__icon--loading]="loading"
+  >
     <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>
   </span>
   <span class="button-primary__label">{{label}}"></span>
 </a>
 <button
   type="button"
-  *ngIf="!link"
   class="button-primary"
-  [ngClass]="{
-    'button-primary--error': error,
-    'button-primary--black': black,
-    'button-primary--red': red,
-    'button-primary--acid-green': acidGreen,
-    'button-primary--stretch': stretch,
-    'button-primary--button-group': buttonGroup
-  }"
+  [class.button-primary--error]="error"
+  [class.button-primary--black]="black"
+  [class.button-primary--red]="red"
+  [class.button-primary--acid-green]="acidGreen"
+  [class.button-primary--stretch]="stretch"
+  [class.button-primary--button-group]="buttonGroup"
   [disabled]='disabled'
+  *ngIf="!link"
 >
   <span
     class="button-primary__icon icon icon--{{icon}}"
-    [ngClass]="{'button-primary__icon--loading': loading}">
+    [class.button-primary__icon--loading]="loading"
+  >
     <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>
-
   </span>
   <span class="button-primary__label">{{label}}</span>
 </button>
