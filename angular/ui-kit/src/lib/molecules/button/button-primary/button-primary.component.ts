@@ -1,5 +1,5 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {PuiBaseComponent} from '../../../shared';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { PuiBaseComponent } from '../../../shared';
 
 @Component({
   selector: 'pui-button-primary',

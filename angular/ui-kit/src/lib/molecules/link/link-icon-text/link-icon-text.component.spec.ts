@@ -1,9 +1,9 @@
-import {By} from '@angular/platform-browser';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PuiLinkIconTextComponent} from './link-icon-text.component';
-import {PuiIconComponent} from '../../../atoms/icon/icon.component';
-import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import { PuiLinkIconTextComponent } from './link-icon-text.component';
+import { PuiIconComponent } from '../../../atoms/icon/icon.component';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('Link Icon TextComponent', () => {
   let component: PuiLinkIconTextComponent;
