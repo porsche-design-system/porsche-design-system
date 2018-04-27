@@ -1,0 +1,31 @@
+<button
+  type="button"
+  class="button-ghost"
+  [class.button-ghost--stretch]="stretch"
+  [class.button-ghost--error]="error"
+  [class.button-ghost--inverted]="inverted"
+  [disabled]="disabled"
+  *ngIf="!link"
+>
+  <span class="button-ghost__icon icon icon--{{icon}}"
+        [class.button-ghost__icon--loading]="loading">
+    <pui-loader-base styleModifier="button-ghost__loader" [loaderDark]="!inverted"></pui-loader-base>
+  </span>
+  <span class="button-ghost__label">{{label}}</span>
+</button>
+
+<a
+  type="button"
+  class="button-ghost"
+  [class.button-ghost--stretch]="stretch"
+  [class.button-ghost--error]="error"
+  [class.button-ghost--inverted]="inverted"
+  href="#"
+  *ngIf="link"
+>
+  <span class="button-ghost__icon icon icon--{{icon}}"
+        [class.button-ghost__icon--loading]="loading">
+    <pui-loader-base styleModifier="button-ghost__loader" [loaderDark]="!inverted"></pui-loader-base>
+  </span>
+  <span class="button-ghost__label">{{label}}</span>
+</a>
