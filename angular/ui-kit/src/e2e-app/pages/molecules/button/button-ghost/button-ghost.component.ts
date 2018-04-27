@@ -4,6 +4,4 @@ import {Component} from '@angular/core';
   selector: 'pui-e2e-molecules-button-ghost',
   templateUrl: './button-ghost.component.html'
 })
-export class PuiE2eMoleculesButtonGhostComponent {
-  label = 'Test Button';
-}
+export class PuiE2eMoleculesButtonGhostComponent {}
