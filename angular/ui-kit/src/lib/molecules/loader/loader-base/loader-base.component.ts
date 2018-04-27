@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { PuiComponentComponent } from '../../../shared';
+import { PuiBaseComponent } from '../../../shared';
 
 @Component({
   selector: `pui-loader-base`,
@@ -10,6 +10,6 @@ import { PuiComponentComponent } from '../../../shared';
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiLoaderBaseComponent extends PuiComponentComponent {
+export class PuiLoaderBaseComponent extends PuiBaseComponent {
   @Input() loaderDark = false;
 }

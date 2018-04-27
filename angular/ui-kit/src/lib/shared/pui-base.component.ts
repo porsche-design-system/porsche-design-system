@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Renderer2, ElementRef } from '@angular/core';
   selector: 'pui-component',
   template: ''
 })
-export class PuiComponentComponent {
+export class PuiBaseComponent {
   private currentStyleModifier: string;
 
   @Input() set styleModifier(styleModifier: string) {

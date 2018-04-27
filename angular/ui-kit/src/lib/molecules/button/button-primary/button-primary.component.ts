@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {PuiComponentComponent} from "../../../shared";
+import {PuiBaseComponent} from '../../../shared';
 
 @Component({
   selector: 'pui-button-primary',
@@ -10,7 +10,7 @@ import {PuiComponentComponent} from "../../../shared";
     '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/button/button-primary.scss'
   ]
 })
-export class PuiButtonPrimaryComponent extends PuiComponentComponent {
+export class PuiButtonPrimaryComponent extends PuiBaseComponent {
   @Input() link = false;
   @Input() error = false;
   @Input() black = false;

@@ -11,7 +11,7 @@ import { Component, DebugElement } from '@angular/core';
   `
 })
 class TestComponent {
-  public thin: boolean = false;
+  public thin = false;
 }
 
 describe('Text Size 1 - Directive', () => {
