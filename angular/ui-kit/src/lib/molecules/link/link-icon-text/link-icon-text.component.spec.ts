@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PuiLinkIconTextComponent} from './link-icon-text.component';
 import {PuiIconComponent} from '../../../atoms/icon/icon.component';
-import {DebugElement} from '@angular/core';
+import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('Link Icon TextComponent', () => {
   let component: PuiLinkIconTextComponent;
@@ -16,7 +16,8 @@ describe('Link Icon TextComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PuiLinkIconTextComponent, PuiIconComponent]
+      declarations: [PuiLinkIconTextComponent, PuiIconComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));
@@ -27,8 +28,8 @@ describe('Link Icon TextComponent', () => {
     component = fixture.componentInstance;
     icon = fixtureIcon.componentInstance;
     fixture.detectChanges();
-    linkElement = fixture.debugElement.query(By.css('link-icon-text'));
-    linkLabelElement = fixture.debugElement.query(By.css('link-icon-text__label'));
+    linkElement = fixture.debugElement.query(By.css('.link-icon-text'));
+    linkLabelElement = fixture.debugElement.query(By.css('.link-icon-text__label'));
   });
 
   it('should create', () => {
