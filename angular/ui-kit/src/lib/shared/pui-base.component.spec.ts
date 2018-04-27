@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PuiComponentComponent } from './pui-component.component';
+import { PuiBaseComponent } from './pui-base.component';
 
 describe('PuiComponentComponent', () => {
-  let component: PuiComponentComponent;
-  let fixture: ComponentFixture<PuiComponentComponent>;
+  let component: PuiBaseComponent;
+  let fixture: ComponentFixture<PuiBaseComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PuiComponentComponent ]
+      declarations: [ PuiBaseComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PuiComponentComponent);
+    fixture = TestBed.createComponent(PuiBaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

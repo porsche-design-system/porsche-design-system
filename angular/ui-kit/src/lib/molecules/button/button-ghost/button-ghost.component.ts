@@ -1,5 +1,5 @@
 import {Component, ViewEncapsulation, Input, OnInit} from '@angular/core';
-import {PuiComponentComponent} from "../../../shared";
+import {PuiBaseComponent} from '../../../shared';
 
 @Component({
   selector: `pui-button-ghost`,
@@ -12,7 +12,7 @@ import {PuiComponentComponent} from "../../../shared";
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiButtonGhostComponent extends PuiComponentComponent {
+export class PuiButtonGhostComponent extends PuiBaseComponent {
   @Input() stretch = false;
   @Input() error = false;
   @Input() inverted = false;

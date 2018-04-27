@@ -5,6 +5,6 @@ import {Component} from '@angular/core';
   templateUrl: './link-icon-text.component.html'
 })
 export class PuiE2eMoleculesLinkIconTextComponent {
-  linkText: string = 'Test Link';
-  linkUrl: string = 'www.testurl.de';
+  linkText = 'Test Link';
+  linkUrl = 'www.testurl.de';
 }

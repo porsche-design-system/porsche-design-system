@@ -1,1 +1,1 @@
-export * from './pui-component.component';
+export * from './pui-base.component';

@@ -1,5 +1,5 @@
 import {Component, ViewEncapsulation, Input} from '@angular/core';
-import {PuiComponentComponent} from "../../../shared";
+import {PuiBaseComponent} from '../../../shared';
 
 @Component({
   selector: `pui-link-icon-text`,
@@ -11,7 +11,7 @@ import {PuiComponentComponent} from "../../../shared";
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiLinkIconTextComponent extends PuiComponentComponent {
+export class PuiLinkIconTextComponent extends PuiBaseComponent {
   @Input() linkUrl = '';
   @Input() linkText = '';
   @Input() labelBlack = false;

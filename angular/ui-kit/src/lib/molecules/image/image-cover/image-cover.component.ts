@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import {PuiComponentComponent} from "../../../shared";
+import {PuiBaseComponent} from '../../../shared';
 
 @Component({
   selector: `pui-image-cover`,
@@ -8,6 +8,6 @@ import {PuiComponentComponent} from "../../../shared";
   styleUrls: ['../../../../../node_modules/@porsche/ui-kit-core/src/modules/image/image-cover.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiImageCoverComponent extends PuiComponentComponent{
+export class PuiImageCoverComponent extends PuiBaseComponent {
   @Input() imageUrl = '';
 }
