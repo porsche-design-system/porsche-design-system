@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {PuiBaseComponent} from '../../../shared';
 
 @Component({
@@ -8,7 +8,8 @@ import {PuiBaseComponent} from '../../../shared';
     '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/icon/icon.scss',
     '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/loader/loader-base.scss',
     '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/button/button-primary.scss'
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class PuiButtonPrimaryComponent extends PuiBaseComponent {
   @Input() link = false;
