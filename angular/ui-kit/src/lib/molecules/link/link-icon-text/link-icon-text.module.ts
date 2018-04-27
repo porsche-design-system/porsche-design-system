@@ -9,7 +9,7 @@ import {PuiIconModule} from '../../../atoms/icon/index';
     PuiIconModule
   ],
   declarations: [PuiLinkIconTextComponent],
-  exports:[PuiLinkIconTextComponent]
+  exports: [PuiLinkIconTextComponent]
 })
 export class PuiLinkIconTextModule {
 }

@@ -21,7 +21,7 @@ describe('Link Icon TextComponent', () => {
     fixture = TestBed.createComponent(PuiLoaderBaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    loaderElement = fixture.debugElement.query(By.css('loader-base'));
+    loaderElement = fixture.debugElement.query(By.css('.loader-base'));
   });
 
   it('should create', () => {
