@@ -7,7 +7,7 @@ import {PuiImageCoverComponent} from './image-cover.component';
     CommonModule
   ],
   declarations: [PuiImageCoverComponent],
-  exports:[PuiImageCoverComponent]
+  exports: [PuiImageCoverComponent]
 })
 export class PuiImageCoverModule {
 }

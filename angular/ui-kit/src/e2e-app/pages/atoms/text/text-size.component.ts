@@ -5,8 +5,8 @@ import {Component} from '@angular/core';
   templateUrl: './text-size.component.html'
 })
 export class PuiE2eAtomsTextSizeComponent {
-  thinComponent: boolean = true;
-  thinDirective: boolean = true;
+  thinComponent = true;
+  thinDirective = true;
 
   toggleComponent() {
     this.thinComponent = !this.thinComponent;
