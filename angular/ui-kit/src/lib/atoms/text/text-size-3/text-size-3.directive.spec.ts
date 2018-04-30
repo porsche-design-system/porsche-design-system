@@ -1,13 +1,13 @@
-import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PuiTextSize1Directive } from './text-size-3.directive';
-import { Component, DebugElement } from '@angular/core';
+import {PuiTextSize3Directive} from './text-size-3.directive';
+import {Component, DebugElement} from '@angular/core';
 
 @Component({
   template: `
-    <span puiTextSize1 id="element1"></span>
-    <span puiTextSize1 id="element2" class="a" [thin]="thin"></span>
+    <span puiTextSize3 id="element1"></span>
+    <span puiTextSize3 id="element2" class="a" [thin]="thin"></span>
   `
 })
 class TestComponent {
@@ -22,7 +22,7 @@ describe('Text Size 3 - Directive', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestComponent, PuiTextSize1Directive ]
+      declarations: [TestComponent, PuiTextSize3Directive]
     })
       .compileComponents();
   }));

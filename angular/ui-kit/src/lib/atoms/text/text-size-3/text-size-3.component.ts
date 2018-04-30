@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation, Input} from '@angular/core';
 import {PuiBaseComponent} from '../../../shared';
 
 @Component({
-  selector: `pui-text-size-3`,
+  selector: 'pui-text-size-3',
   exportAs: 'puiTextSize3',
   templateUrl: 'text-size-3.html',
   styleUrls: [
