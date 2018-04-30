@@ -5,9 +5,16 @@ import {
   PuiTextSize1Directive
 } from './text-size-1';
 
+import {
+  PuiTextSize3Component,
+  PuiTextSize3Directive
+} from './text-size-3';
+
 const declarations = [
   PuiTextSize1Component,
-  PuiTextSize1Directive
+  PuiTextSize1Directive,
+  PuiTextSize3Component,
+  PuiTextSize3Directive
 ];
 
 @NgModule({
