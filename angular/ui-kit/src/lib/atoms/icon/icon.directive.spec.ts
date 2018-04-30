@@ -2,7 +2,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Component, DebugElement } from '@angular/core';
-import { PuiIconDirective } from '.';
+import { PuiIconDirective } from './icon.directive';
 
 @Component({
   template: `

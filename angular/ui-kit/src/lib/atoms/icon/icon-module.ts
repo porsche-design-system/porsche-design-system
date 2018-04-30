@@ -1,5 +1,5 @@
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { PuiIconComponent } from './icon.component';
 import { PuiIconDirective } from './icon.directive';
 

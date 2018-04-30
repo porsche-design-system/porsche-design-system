@@ -1,11 +1,11 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {PuiE2eAtomsTextSizeComponent} from './pages/atoms/text/text-size.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { PuiE2eAtomsTextSizeComponent } from './pages/atoms/text/text-size.component';
 import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
 import { PuiE2eOrganismsNotificationComponent } from './pages/organisms/notification/notification.component';
-import {PuiE2eMoleculesLinkIconTextComponent} from './pages/molecules/link-icon-text/link-icon-text.component';
-import {PuiE2eMoleculesImageCoverComponent} from './pages/molecules/image-cover/image.cover.component';
-import {PuiE2eMoleculesLoaderBaseComponent} from './pages/molecules/loader-base/loader-base-component';
+import { PuiE2eMoleculesLinkIconTextComponent } from './pages/molecules/link-icon-text/link-icon-text.component';
+import { PuiE2eMoleculesImageCoverComponent } from './pages/molecules/image-cover/image.cover.component';
+import { PuiE2eMoleculesLoaderBaseComponent } from './pages/molecules/loader-base/loader-base-component';
 import { PuiE2eMoleculesButtonPrimaryComponent } from './pages/molecules/button/button-primary/button-primary.component';
 import { PuiE2eMoleculesButtonGhostComponent } from './pages/molecules/button/button-ghost/button-ghost.component';
 

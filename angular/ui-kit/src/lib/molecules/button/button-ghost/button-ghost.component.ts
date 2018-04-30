@@ -1,5 +1,5 @@
-import {Component, ViewEncapsulation, Input, OnInit} from '@angular/core';
-import {PuiBaseComponent} from '../../../shared';
+import { Component, ViewEncapsulation, Input, OnInit } from '@angular/core';
+import { PuiBaseComponent } from '../../../shared';
 
 @Component({
   selector: `pui-button-ghost`,

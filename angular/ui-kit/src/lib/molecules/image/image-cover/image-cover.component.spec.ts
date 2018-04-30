@@ -1,8 +1,8 @@
-import {By} from '@angular/platform-browser';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PuiImageCoverComponent} from './image-cover.component';
-import {DebugElement} from '@angular/core';
+import { PuiImageCoverComponent } from './image-cover.component';
+import { DebugElement } from '@angular/core';
 
 describe('Image Cover Component', () => {
   let component: PuiImageCoverComponent;

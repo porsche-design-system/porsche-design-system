@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import {PuiBaseComponent} from '../../../shared';
+import { PuiBaseComponent } from '../../../shared';
 
 @Component({
   selector: `pui-image-cover`,
