@@ -1,8 +1,8 @@
-import {By} from '@angular/platform-browser';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PuiLoaderBaseComponent} from './loader-base.component';
-import {DebugElement} from '@angular/core';
+import { PuiLoaderBaseComponent } from './loader-base.component';
+import { DebugElement } from '@angular/core';
 
 describe('Link Icon TextComponent', () => {
   let component: PuiLoaderBaseComponent;

@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {PuiBaseComponent} from '../../../shared';
+import { Component, OnInit, Input } from '@angular/core';
+import { PuiBaseComponent } from '../../../shared';
 
 @Component({
   selector: 'pui-notification-error-inline',

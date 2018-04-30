@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {PuiE2eModule} from './e2e-app/pui-e2e.module';
+import { PuiE2eModule } from './e2e-app/pui-e2e.module';
 
 enableProdMode();
 
