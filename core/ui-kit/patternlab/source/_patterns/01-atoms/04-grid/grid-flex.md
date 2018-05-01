@@ -1,5 +1,5 @@
 ---
-title: Flex Grid
+title: Grid Flex
 state: inprogress
 ---
 

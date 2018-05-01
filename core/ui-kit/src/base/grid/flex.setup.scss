@@ -1,5 +1,6 @@
 @import '../../mixins/px-rem-converter.scss';
 @import '../../base/spacing/spacing.setup.scss';
+@import '../../setup/grid.setup.scss';
 
 $flex-child-1-width: 8.333333% !default;
 $flex-child-2-width: 16.666667% !default;
@@ -14,8 +15,9 @@ $flex-child-10-width: 83.333333% !default;
 $flex-child-11-width: 91.666667% !default;
 $flex-child-12-width: 100% !default;
 
-$flex-child-spacing-horizontal: rem(4px) !default;
-$flex-child-spacing-horizontal-xs: rem(4px) !default;
-$flex-child-spacing-horizontal-s: rem(8px) !default;
-$flex-child-spacing-horizontal-m: rem(8px) !default;
-$flex-child-spacing-horizontal-l: $spacing-12 !default;
+$flex-child-spacing-horizontal: $grid-gutter / 2 !default;
+$flex-child-spacing-horizontal-xs: $grid-gutter-xs / 2 !default;
+$flex-child-spacing-horizontal-s: $grid-gutter-s / 2 !default;
+$flex-child-spacing-horizontal-m: $grid-gutter-m / 2 !default;
+$flex-child-spacing-horizontal-l: $grid-gutter-l / 2 !default;
+$flex-child-spacing-horizontal-xl: $grid-gutter-xl / 2 !default;
