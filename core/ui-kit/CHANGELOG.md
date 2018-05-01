@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 
+### Improvements
+* Extracted text-size and font as individual pattern
+* Extracted icon as variations
+
 ## [0.1.12] - 2018-04-18
 * Reverted improvement of @porsche/ui-kit-core@0.1.11
 
