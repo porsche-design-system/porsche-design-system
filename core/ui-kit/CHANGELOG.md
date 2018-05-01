@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 
+## [0.2.0] - 2018-05-01
 ### New Features
 * Added "grid-float" pattern
 * Added column--gap-normal, column--gap-small and column--gap-zero classes and corresponding min-width breakpoint specific ones
