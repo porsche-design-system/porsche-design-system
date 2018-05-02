@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 * 
+
+## [0.2.1] - 2018-05-02
 ### Bugfixes
 * Updated handlebars files according to migration path described in @porsche/ui-kit-core@0.2.0
 
