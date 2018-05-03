@@ -1,2 +1,2 @@
-export * from './loader-base';
+export * from './loader-base/index';
 export * from './loader.module';
