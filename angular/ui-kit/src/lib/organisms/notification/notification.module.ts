@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { PuiNotificationErrorInlineComponent } from './notification-error-inline';
+import { PuiNotificationErrorInlineComponent } from './notification-error-inline/index';
 
 const components = [PuiNotificationErrorInlineComponent];
 
