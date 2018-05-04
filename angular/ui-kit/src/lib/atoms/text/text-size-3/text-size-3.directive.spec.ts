@@ -1,8 +1,8 @@
-import {By} from '@angular/platform-browser';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PuiTextSize3Directive} from './text-size-3.directive';
-import {Component, DebugElement} from '@angular/core';
+import { PuiTextSize3Directive } from './text-size-3.directive';
+import { Component, DebugElement } from '@angular/core';
 
 @Component({
   template: `
