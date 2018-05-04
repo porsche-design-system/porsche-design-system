@@ -1,5 +1,4 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { PuiBaseComponent } from '../../../shared';
 
 @Component({
   selector: 'pui-button-primary',
@@ -11,7 +10,7 @@ import { PuiBaseComponent } from '../../../shared';
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiButtonPrimaryComponent extends PuiBaseComponent {
+export class PuiButtonPrimaryComponent{
   @Input() link = false;
   @Input() error = false;
   @Input() black = false;
