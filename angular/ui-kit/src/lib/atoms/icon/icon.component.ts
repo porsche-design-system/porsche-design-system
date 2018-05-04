@@ -12,4 +12,5 @@ import { PuiBaseComponent } from '../../shared';
 })
 export class PuiIconComponent extends PuiBaseComponent {
   @Input() icon = '';
+  @Input() styleModifier = '';
 }

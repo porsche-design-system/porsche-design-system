@@ -1,6 +1,6 @@
 <button
   type="button"
-  class="button-ghost"
+  class="button-ghost {{styleModifier}}"
   [class.button-ghost--stretch]="stretch"
   [class.button-ghost--error]="error"
   [class.button-ghost--inverted]="inverted"
@@ -23,7 +23,7 @@
   href="#"
   *ngIf="link"
 >
-  <span class="button-ghost__icon icon icon--{{icon}}"
+  <span class="button-ghost__icon icon icon--{{icon}} {{styleModifier}}"
         [class.button-ghost__icon--loading]="loading">
     <pui-loader-base styleModifier="button-ghost__loader" [loaderDark]="!inverted"></pui-loader-base>
   </span>

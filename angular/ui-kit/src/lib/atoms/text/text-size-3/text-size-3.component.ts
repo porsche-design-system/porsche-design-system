@@ -13,4 +13,5 @@ import {PuiBaseComponent} from '../../../shared';
 export class PuiTextSize3Component extends PuiBaseComponent {
   @Input() thin = false;
   @Input() white = false;
+  @Input() styleModifier = '';
 }
