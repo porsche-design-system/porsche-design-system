@@ -23,5 +23,6 @@ export class PuiButtonPrimaryComponent extends PuiBaseComponent {
   @Input() loading = false;
   @Input() icon = 'arrow-right-hair';
   @Input() label = '';
+  @Input() styleModifier = '';
 }
 

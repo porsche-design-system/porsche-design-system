@@ -21,4 +21,5 @@ export class PuiButtonGhostComponent extends PuiBaseComponent {
   @Input() link = false;
   @Input() icon = 'arrow-right-hair';
   @Input() label = '';
+  @Input() styleModifier = '';
 }
