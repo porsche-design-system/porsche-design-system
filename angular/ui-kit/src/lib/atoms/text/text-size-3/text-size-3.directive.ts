@@ -18,6 +18,6 @@ export class PuiTextSize3Directive {
     this.regularClass = !thin;
   }
   @Input() set white(white: boolean) {
-    this.whiteClass= white;
+    this.whiteClass = white;
   }
 }

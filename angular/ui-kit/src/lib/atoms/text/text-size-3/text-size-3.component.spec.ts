@@ -1,9 +1,9 @@
-import {By} from '@angular/platform-browser';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PuiTextSize3Component} from './text-size-3.component';
-import {PuiTextSize3Directive} from './text-size-3.directive';
-import {DebugElement} from '@angular/core';
+import { PuiTextSize3Component } from './text-size-3.component';
+import { PuiTextSize3Directive } from './text-size-3.directive';
+import { DebugElement } from '@angular/core';
 
 describe('Text Size 3 Component', () => {
   let component: PuiTextSize3Component;
