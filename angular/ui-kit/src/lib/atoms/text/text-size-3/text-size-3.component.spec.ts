@@ -19,7 +19,9 @@ describe('Text Size 3 Component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PuiTextSize3Component);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
+
     textElement = fixture.debugElement.query(By.css('h1'));
   });
 
