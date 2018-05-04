@@ -23,14 +23,15 @@ describe('Text Size 3 - Directive', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, PuiTextSize3Directive]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
+
     element1 = fixture.debugElement.query(By.css('#element1'));
     element2 = fixture.debugElement.query(By.css('#element2'));
   });
