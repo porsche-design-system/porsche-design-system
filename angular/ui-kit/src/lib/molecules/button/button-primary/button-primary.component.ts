@@ -6,11 +6,12 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   styleUrls: [
     '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/icon/icon.scss',
     '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/loader/loader-base.scss',
-    '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/button/button-primary.scss'
+    '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/button/button-primary.scss',
+    './button-primary.component.scss'
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiButtonPrimaryComponent{
+export class PuiButtonPrimaryComponent {
   @Input() link = false;
   @Input() error = false;
   @Input() black = false;

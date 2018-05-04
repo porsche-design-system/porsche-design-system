@@ -7,7 +7,8 @@ import { Component, ViewEncapsulation, Input, OnInit } from '@angular/core';
   styleUrls: [
     '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/icon/icon.scss',
     '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/loader/loader-base.scss',
-    '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/button/button-ghost.scss'
+    '../../.././../../node_modules/@porsche/ui-kit-core/src/modules/button/button-ghost.scss',
+    './button-ghost.component.scss'
   ],
   encapsulation: ViewEncapsulation.None
 })
