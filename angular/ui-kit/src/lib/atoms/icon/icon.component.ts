@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, Input, ElementRef } from '@angular/core';
-import { PuiBaseComponent } from '../../shared';
 
 @Component({
   selector: `pui-icon`,
@@ -10,6 +9,7 @@ import { PuiBaseComponent } from '../../shared';
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PuiIconComponent extends PuiBaseComponent {
+export class PuiIconComponent {
   @Input() icon = '';
+  @Input() styleModifier = '';
 }
