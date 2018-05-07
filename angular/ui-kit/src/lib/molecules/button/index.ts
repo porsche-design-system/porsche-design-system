@@ -1,3 +1,3 @@
-export * from './button-ghost';
-export * from './button-primary';
+export * from './button-ghost/index';
+export * from './button-primary/index';
 export * from './button.module';

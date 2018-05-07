@@ -1,4 +1,3 @@
-export * from './atoms';
-export * from './organisms';
-export * from './molecules';
-export * from './shared';
+export * from './atoms/index';
+export * from './organisms/index';
+export * from './molecules/index';
