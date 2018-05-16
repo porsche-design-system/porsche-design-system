@@ -120,6 +120,10 @@ column--l-12 => column--12-l
 * Removed padding-bottom of -wrapper-page
   Migration path: Instead please use a -spacing class to define space between modules that have -wrapper-page class applied
 
+### Improvements
+* Extracted text-size and font as individual pattern
+* Extracted icon as variations
+
 ## [0.1.12] - 2018-04-18
 * Reverted improvement of @porsche/ui-kit-core@0.1.11
 
