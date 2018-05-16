@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 * 
+* Extracted font-face for PAG icons and Porsche Next font family [BREAKING CHANGE]
+  Migration path: Import following scss file into application globally: `~@porsche/ui-kit-core/src/common/font-face.scss` 
 
 ## [0.2.1] - 2018-05-02
 ### Bugfixes
