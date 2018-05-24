@@ -1,0 +1,46 @@
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import './media-center-modal.setup.scss';
+
+.#{$global-class-prefix}media-center-modal {
+  @include flex;
+  @include flex--direction(column);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: $media-center-modal-background-color;
+
+  &__header {
+    @include flex;
+    @include flex--direction(row);
+    @include flex-cross-axis(center);
+    @include -spacing-inner-a;
+    @include -text-size-copy;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    color: $media-center-modal-header-color;
+    background-color: $media-center-modal-background-color;
+    opacity: $media-center-modal-header-opacity;
+
+    &-title {
+      @include flex-child-grow(1);
+    }
+
+    &-icon {
+      cursor: pointer;
+
+      &:hover {
+        color: $media-center-modal-header-icon-color;
+      }
+    }
+  }
+
+  &__container {
+    height: $media-center-modal-container-height;
+  }
+}
