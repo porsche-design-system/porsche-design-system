@@ -10,5 +10,7 @@
   "tile-slider_pages": [false, false, true, false],
   "tile-slider_prevDisabled": true,
   "tile-slider_nextDisabled": false,
-  "tile-slider_imageBannerGradient":true
+  "tile-slider_imageBannerGradient": true,
+  "tile-slider_video": false,
+  "tile-slider_video-dark": false
 }
