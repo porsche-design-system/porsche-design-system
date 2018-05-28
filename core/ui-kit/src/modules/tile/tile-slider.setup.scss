@@ -39,4 +39,4 @@ $tiles-slider-video-icon-light-color: $color-palette-white !default;
 $tiles-slider-video-icon-dark-color: $color-palette-black !default;
 $tiles-slider-video-icon-hover-color: $color-palette-red-1 !default;
 $tiles-slider-video-icon-size: rem(92px) !default;
-$tiles-slider-video-icon-pos: calc(50% - #{$tiles-slider-video-icon-size} / 2);
+$tiles-slider-video-icon-pos: calc(50% - #{$tiles-slider-video-icon-size} / 2) !default;
