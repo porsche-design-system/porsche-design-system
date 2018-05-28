@@ -1,4 +1,5 @@
 @import '../../base/grid/flex.mixin.scss';
+@import '../../base/position/position.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import './media-center-modal.setup.scss';
@@ -6,11 +7,11 @@
 .#{$global-class-prefix}media-center-modal {
   @include flex;
   @include flex--direction(column);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
+  @include -position(absolute);
+  top: $media-center-modal-top;
+  left: $media-center-modal-left;
+  height: $media-center-modal-height;
+  width: $media-center-modal-width;
   background-color: $media-center-modal-background-color;
 
   &__header {
@@ -19,13 +20,12 @@
     @include flex-cross-axis(center);
     @include -spacing-inner-a;
     @include -text-size-copy;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
+    @include -position(absolute);
+    top: $media-center-modal-header-top;
+    left: $media-center-modal-header-left;
+    width: $media-center-modal-header-width;
     color: $media-center-modal-header-color;
-    background-color: $media-center-modal-background-color;
-    opacity: $media-center-modal-header-opacity;
+    background-color: $media-center-modal-header-background-color;
 
     &-title {
       @include flex-child-grow(1);
