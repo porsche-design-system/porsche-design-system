@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * 
 * 
 
+## [0.4.0] - 2018-05-28
+### New Features
+* Added "media-center-modal" pattern
+* Extended "tile-slider" pattern to support video's
+
 ## [0.3.0] - 2018-05-16
 ### Improvements
 * Extracted font-face for PAG icons and Porsche Next font family [BREAKING CHANGE]
