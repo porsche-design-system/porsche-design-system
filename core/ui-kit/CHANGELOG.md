@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * 
 * 
 
+### Improvements
+* Added default padding-bottom to body element
+* Removed default outer and inner spacing for button, input, textarea and select elements
+
 ## [0.4.0] - 2018-05-28
 ### New Features
 * Added "media-center-modal" pattern
