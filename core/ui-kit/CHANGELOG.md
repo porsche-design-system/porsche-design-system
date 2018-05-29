@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * 
 * 
 
+## [0.4.1] - 2018-05-28
+### Bugfixes
+* Fix iframe in media-center-modal for ie
+
 ## [0.4.0] - 2018-05-28
 ### New Features
 * Added "media-center-modal" pattern
