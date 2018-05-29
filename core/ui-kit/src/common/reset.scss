@@ -1,5 +1,3 @@
-@import '../base/spacing/spacing.mixin.scss';
-
 // sass-lint:disable no-universal-selectors
 *,
 ::before,
@@ -25,7 +23,6 @@ select, button {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
   vertical-align: baseline;
 }
@@ -37,7 +34,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-  @include -spacing-36(bottom, padding);
+  padding-bottom: 6.25rem;
   line-height: 1;
 }
 
