@@ -1,3 +1,5 @@
+@import '../base/spacing/spacing.mixin.scss';
+
 // sass-lint:disable no-universal-selectors
 *,
 ::before,
@@ -18,7 +20,8 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, input, textarea,
+select, button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -34,6 +37,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
+  @include -spacing-36(bottom, padding);
   line-height: 1;
 }
 
