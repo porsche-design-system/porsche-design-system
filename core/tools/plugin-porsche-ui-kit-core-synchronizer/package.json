@@ -9,7 +9,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
+    "authenticate-registry": "(npm whoami --registry=$npm_config_repository_url || npm login --registry=$npm_config_repository_url)",
+    "modify-publishConfig": "json -I -f package.json -e 'this.publishConfig[\"@porsche:registry\"]=\"'$npm_config_repository_url'\"'",
+    "reset-publishConfig": "json -I -f package.json -e 'this.publishConfig[\"@porsche:registry\"]=\"https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/\"'",
+    "publish-artifact": "npm run authenticate-registry --repository_url=$npm_config_repository_url && npm run modify-publishConfig --repository_url=$npm_config_repository_url && npm publish || npm run reset-publishConfig",
+    "publish-artifactory": "npm run publish-artifact --repository_url=https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/",
+    "publish-nexus3": "npm run publish-artifact --repository_url=https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -21,7 +26,10 @@
     "ncp": "2.0.0",
     "rimraf": "2.6.2"
   },
+  "devDependencies": {
+    "json": "9.0.6"
+  },
   "publishConfig": {
-    "registry": "https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
+    "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/"
   }
 }
