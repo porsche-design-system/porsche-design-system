@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * 
 * 
+## [0.4.2] - 2018-05-30
+### Bugfixes
+* Add clickarea to icon in media-center-modal
 
 ## [0.4.1] - 2018-05-28
 ### Bugfixes
