@@ -32,10 +32,20 @@
     }
 
     &-icon {
+      position: relative;
       cursor: pointer;
 
       &:hover {
         color: $media-center-modal-header-icon-color;
+      }
+
+      &::after { // safe clickable area
+        content: '';
+        position: absolute;
+        top: $media-center-modal-header-icon-clickable-radius;
+        right: $media-center-modal-header-icon-clickable-radius;
+        bottom: $media-center-modal-header-icon-clickable-radius;
+        left: $media-center-modal-header-icon-clickable-radius;
       }
     }
   }
