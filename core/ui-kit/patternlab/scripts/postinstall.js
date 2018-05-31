@@ -1,6 +1,6 @@
 "use strict";
 const symlinkOrCopySync = require('symlink-or-copy').sync;
-var fs = require('fs');
+const fs = require('fs');
 
 console.log('Beginning Pattern Lab Node Gulp postinstall...');
 
