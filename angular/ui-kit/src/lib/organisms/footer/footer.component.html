@@ -1,0 +1,64 @@
+<div class="footer -spacing-f">
+  <ul class="navigation-footer row row--zero"
+      *ngIf="showNavigation">
+    <li class="navigation-footer__item column column--zero column--12 column--s-6"
+        *ngFor="let section of menuTree">
+      <div class="navigation-footer__item-header"
+           [ngClass]="{'navigation-footer__item-header--open': isActiveSection(section)}"
+           (click)="toggleActiveSection(section)">
+        <h3 class="navigation-footer__category-name">{{section.title}}</h3>
+        <span class="icon icon--arrow-down-thin navigation-footer__icon"
+              [ngClass]="{'navigation-footer__icon--open': isActiveSection(section)}"></span>
+      </div>
+      <ul class="navigation-footer__submenu row row--zero"
+          [ngClass]="{'navigation-footer__submenu--open': isActiveSection(section)}">
+        <li class="navigation-footer__submenu-item column column--zero column--zero column--12 column--m-6"
+            *ngFor="let item of section.items">
+          <a href="{{item.url}}"
+             class="navigation-footer__submenu-link"
+             attr.data-protractor-id="footer-link-{{item.key}}">
+            {{item.title}}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="row">
+    <div class="column column--12">
+      <p class="footer__paragraph">
+        &copy;
+        <span translate-values="{copyrightYear: vm.copyrightYear}"
+              translate="FOOTER-COPYRIGHT-TEXT"
+              translate-comment="do-not-translate">
+          {{copyrightYear}} Porsche Connect GmbH.
+        </span>
+        <span class="footer__links">
+          <a href=""
+             class="footer__link"
+             target="_blank">Impressum und Rechtliche Hinweise</a>.
+          <a href=""
+             class="footer__link"
+             target="_blank">Einwilligungserklärung und Hinweise zum Datenschutz</a>.
+          <span *ngIf="showFooterLinkChina">
+            <a href="http://www.miibeian.gov.cn"
+               class="footer__link"
+               target="_blank"
+               url-origin="external">沪ICP备10013326号</a>.
+          </span>
+        </span>
+      </p>
+    </div>
+  </div>
+  <div class="row language-select"
+       *ngIf="showLanguageChooser">
+    <div class="column column--12">
+      <!--<translator translate="INPUT-CHANGE-LANGUAGE-PH">Andere Sprache wählen</translator>-->
+      <span translate="FOOTER-CHANGE-LANGUAGE-LB">Andere Sprache wählen:</span>
+    </div>
+    <select [(ngModel)]="language"
+            (change)="onLanguageChange(language)">
+      <option *ngFor="let lang of languages"
+              [ngValue]="lang.value">{{lang.name}}</option>
+    </select>
+  </div>
+</div>
