@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { FooterMenuTree } from './footer.interfaces';
+import { PuiNotificationErrorInlineComponent } from '../notification/notification-error-inline/notification-error-inline.component';
 
 @Component({
   selector: `pui-footer`,
@@ -14,15 +15,12 @@ import { FooterMenuTree } from './footer.interfaces';
     '../../../../node_modules/@porsche/ui-kit-core/src/modules/footer/footer.scss'
   ]
 })
-export class FooterUiComponent implements OnInit {
+export class PuiFooterComponent implements OnInit {
   @Input() showNavigation: boolean;
   @Input() showFooterLinkChina: boolean;
-  @Input() showLanguageChooser: boolean;
   @Input() menuTree: FooterMenuTree;
+  @Input() metaMenuTree: FooterMenuTree;
   @Input() copyrightYear: string | number = new Date().getFullYear();
-  @Input() language: string;
-  @Input() languages: { value: string; name: string }[];
-  @Output() languageChange: EventEmitter<string> = new EventEmitter();
 
   activeSection?: Object;
 
@@ -41,15 +39,4 @@ export class FooterUiComponent implements OnInit {
 
     this.activeSection = section;
   }
-
-  public onLanguageChange(language: string) {
-    this.languageChange.emit(language);
-  }
-
-  // TODO: link interpolation for VIN still missing (will be done with migration of linkdata service).
-  // What is the equivalent to `$interpolate` in Angular?
-  //
-  // Generic question:
-  // Should this be even implemented here or as part of the link data service?  VIN interpolation
-  // is not specific to the footer but more specific to the link data service.
 }

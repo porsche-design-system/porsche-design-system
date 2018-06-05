@@ -8,6 +8,8 @@ import { PuiE2eMoleculesImageCoverComponent } from './pages/molecules/image-cove
 import { PuiE2eMoleculesLoaderBaseComponent } from './pages/molecules/loader-base/loader-base-component';
 import { PuiE2eMoleculesButtonPrimaryComponent } from './pages/molecules/button/button-primary/button-primary.component';
 import { PuiE2eMoleculesButtonGhostComponent } from './pages/molecules/button/button-ghost/button-ghost.component';
+import { PuiFooterComponent } from '../lib/organisms/footer/footer.component';
+import { PuiE2eOrganismsFooterComponent } from './pages/organisms/footer/footer.component';
 
 const routes: Routes = [
   {
@@ -87,6 +89,10 @@ const routes: Routes = [
                 component: PuiE2eOrganismsNotificationComponent
               }
             ]
+          },
+          {
+            path: 'footer',
+            component: PuiE2eOrganismsFooterComponent
           }
         ]
       }
