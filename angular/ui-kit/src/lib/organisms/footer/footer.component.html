@@ -1,4 +1,4 @@
-<div class="footer -spacing-f">
+<div class="footer">
   <ul class="navigation-footer row row--zero"
       *ngIf="showNavigation">
     <li class="navigation-footer__item column column--zero column--12 column--s-6"
@@ -48,17 +48,5 @@
         </span>
       </p>
     </div>
-  </div>
-  <div class="row language-select"
-       *ngIf="showLanguageChooser">
-    <div class="column column--12">
-      <!--<translator translate="INPUT-CHANGE-LANGUAGE-PH">Andere Sprache wählen</translator>-->
-      <span translate="FOOTER-CHANGE-LANGUAGE-LB">Andere Sprache wählen:</span>
-    </div>
-    <select [(ngModel)]="language"
-            (change)="onLanguageChange(language)">
-      <option *ngFor="let lang of languages"
-              [ngValue]="lang.value">{{lang.name}}</option>
-    </select>
   </div>
 </div>

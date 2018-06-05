@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterMenuTree } from './footer.interfaces';
-import { FooterUiComponent } from './footer.component';
+import { PuiFooterComponent } from './footer.component';
 
 // tslint:disable-next-line:no-any
 function expectFixtureHasDecendant(fixture: ComponentFixture<any>, selector: string): void {
@@ -34,24 +34,24 @@ function expectFixtureHasManyDecendants(
 }
 
 describe('FooterUiComponent', () => {
-  let component: FooterUiComponent;
-  let fixture: ComponentFixture<FooterUiComponent>;
+  let component: PuiFooterComponent;
+  let fixture: ComponentFixture<PuiFooterComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [FooterUiComponent]
+        declarations: [PuiFooterComponent]
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterUiComponent);
+    fixture = TestBed.createComponent(PuiFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
