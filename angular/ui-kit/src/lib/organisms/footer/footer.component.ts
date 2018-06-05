@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { FooterMenuTree } from './footer.interfaces';
-import { PuiNotificationErrorInlineComponent } from '../notification/notification-error-inline/notification-error-inline.component';
+import { FooterMenu, FooterMenuItem } from './footer.interfaces';
 
 @Component({
   selector: `pui-footer`,
@@ -16,11 +15,12 @@ import { PuiNotificationErrorInlineComponent } from '../notification/notificatio
   ]
 })
 export class PuiFooterComponent implements OnInit {
-  @Input() showNavigation: boolean;
+  protected currentYear = new Date().getFullYear();
+
   @Input() showFooterLinkChina: boolean;
-  @Input() menuTree: FooterMenuTree;
-  @Input() metaMenuTree: FooterMenuTree;
-  @Input() copyrightYear: string | number = new Date().getFullYear();
+  @Input() menu: FooterMenu;
+  @Input() metaMenu: FooterMenuItem[];
+  @Input() copyrightInfo = `© ${this.currentYear} Porsche Connect GmbH`;
 
   activeSection?: Object;
 
