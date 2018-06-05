@@ -1,6 +1,6 @@
-export interface FooterMenuTree {
+export interface FooterMenu {
   [index: number]: {
-    title: string;
+    title:  string;
     items: FooterMenuItem[];
   };
 }

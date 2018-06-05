@@ -1,8 +1,7 @@
 <div class="footer">
-  <ul class="navigation-footer row row--zero"
-      *ngIf="showNavigation">
+  <ul class="navigation-footer row row--zero">
     <li class="navigation-footer__item column column--zero column--12 column--s-6"
-        *ngFor="let section of menuTree">
+        *ngFor="let section of menu">
       <div class="navigation-footer__item-header"
            [ngClass]="{'navigation-footer__item-header--open': isActiveSection(section)}"
            (click)="toggleActiveSection(section)">
@@ -26,25 +25,17 @@
   <div class="row">
     <div class="column column--12">
       <p class="footer__paragraph">
-        &copy;
-        <span translate-values="{copyrightYear: vm.copyrightYear}"
-              translate="FOOTER-COPYRIGHT-TEXT"
-              translate-comment="do-not-translate">
-          {{copyrightYear}} Porsche Connect GmbH.
-        </span>
+        {{copyrightInfo}}.
         <span class="footer__links">
-          <a href=""
-             class="footer__link"
-             target="_blank">Impressum und Rechtliche Hinweise</a>.
-          <a href=""
-             class="footer__link"
-             target="_blank">Einwilligungserklärung und Hinweise zum Datenschutz</a>.
-          <span *ngIf="showFooterLinkChina">
+          <ng-container *ngFor="let item of metaMenu">
+            <a [href]="item.url" class="footer__link" target="_blank">{{item.title}}.</a>
+          </ng-container>
+          <ng-container *ngIf="showFooterLinkChina">
             <a href="http://www.miibeian.gov.cn"
                class="footer__link"
                target="_blank"
-               url-origin="external">沪ICP备10013326号</a>.
-          </span>
+               url-origin="external">沪ICP备10013326号.</a>
+            </ng-container>
         </span>
       </p>
     </div>

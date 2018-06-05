@@ -1,3 +1,10 @@
+$font-resource-base-path: '../../node_modules/@porsche/ui-kit-core/src/base/font';
+$icon-resource-base-path: '../../node_modules/@porsche/ui-kit-core/src/modules/icon/pag-iconfont';
+
+@import "~@porsche/ui-kit-core/src/common/reset.scss";
+@import "~@porsche/ui-kit-core/src/common/font-face.scss";
+@import "~@porsche/ui-kit-core/src/base/font/font.scss";
+
 :host {
   display: flex;
 }

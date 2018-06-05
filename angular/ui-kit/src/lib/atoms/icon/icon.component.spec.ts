@@ -19,7 +19,6 @@ describe('Text Size 1 Component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PuiIconComponent);
     component = fixture.componentInstance;
-    component.icon = 'car-next';
     fixture.detectChanges();
     textElement = fixture.debugElement.query(By.css('span'));
   });
@@ -28,15 +27,21 @@ describe('Text Size 1 Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set correct classes', () => {
+  it('should set correct classes', async(() => {
+    component.icon = 'car-next';
+    fixture.detectChanges();
     expect(textElement.nativeElement.classList).toContain('icon');
     expect(textElement.nativeElement.classList).toContain('icon--car-next');
-  });
+  }));
 
-  it('should update classes', () => {
+  it('should update classes', async(() => {
     component.icon = 'arrow-left';
     fixture.detectChanges();
     expect(textElement.nativeElement.classList).toContain('icon');
     expect(textElement.nativeElement.classList).toContain('icon--arrow-left');
-  });
+    component.icon = 'car-next';
+    fixture.detectChanges();
+    expect(textElement.nativeElement.classList).toContain('icon');
+    expect(textElement.nativeElement.classList).toContain('icon--car-next');
+  }));
 });
