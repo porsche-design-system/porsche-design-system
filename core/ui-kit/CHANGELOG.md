@@ -6,8 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Improvements
+* Added setup scss file for various (external) brand colors `external-brands-colors.scss`
 * 
-* 
+
 ## [0.4.2] - 2018-05-30
 ### Bugfixes
 * Add clickarea to icon in media-center-modal
