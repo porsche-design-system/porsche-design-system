@@ -10,7 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * 
 
 ### Improvements
-* Added default padding-bottom to body element
+* Added default padding-bottom to body element. It's necessary to import the common/defaults.scss:
+`@import '~@porsche/ui-kit-core/src/common/defaults.scss';` Or when importing common/index.scss already then nothing
+has to be done because defaults will be auto imported.
 * Removed default outer and inner spacing for button, input, textarea and select elements
 
 ## [0.4.0] - 2018-05-28
