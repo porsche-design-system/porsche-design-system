@@ -1,0 +1,20 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/font/font.setup.scss';
+
+$list-striped-item-odd-background-color: $color-palette-grey-8 !default;
+$list-striped-item-odd-foreground-color: $color-palette-white !default;
+
+$list-striped-item-even-background-color: $color-palette-grey-9 !default;
+$list-striped-item-even-foreground-color: $color-palette-white !default;
+
+$list-striped-item-padding-vertical: $spacing-inner-a-vertical !default;
+$list-striped-item-padding-horizontal: $spacing-inner-a-horizontal !default;
+
+$list-striped-item-line-height: rem(32px) !default;
+
+$list-striped-item-label-icon-color: $color-palette-grey-5 !default;
+$list-striped-item-label-icon-size: rem(20px) !default;
+
+$list-striped-item-value-font-weight: $font-weight-bold !default;

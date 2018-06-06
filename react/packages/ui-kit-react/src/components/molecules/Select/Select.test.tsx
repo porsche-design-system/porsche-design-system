@@ -1,28 +1,19 @@
 import * as React from "react"
 import { shallow } from "enzyme"
 import { SelectProps, Select, SelectOption, HydratedSelectOptionGroup, HydratedSelectOption } from "./Select"
-import { merge } from "lodash"
 
 describe("Select component", () => {
-
-    let onChangeMock: any
-
     const createComponent = (props?: SelectProps) => {
-        onChangeMock = jest.fn()
-        const defaultProps: SelectProps = {
-            onChange: onChangeMock,
-            disabled: false
-        }
-        const mergedProps = merge(props, defaultProps)
-        return shallow(<Select {...mergedProps}/>).instance() as Select
+        return shallow(<Select {...props} />).instance() as Select
     }
 
     describe("handleChange", () => {
-
         it("should call the callback with single value", () => {
             // Arrange
+            const onChangeMock = jest.fn()
             const props: SelectProps = {
-                multi: true
+                multi: true,
+                onChange: onChangeMock
             }
             const instance = createComponent(props)
             // Act
@@ -67,17 +58,19 @@ describe("Select component", () => {
     })
 
     describe("getFlatOptionsList", () => {
-
         it("should flatten the different option groups", () => {
             // Arrange
             const instance = createComponent()
-            const optionGroups: HydratedSelectOptionGroup[] = [{
-                label: "optionGroup1",
-                options: [{ value: "valueOptionGroup1", label: "label1", selected: false }]
-            }, {
-                label: "optionGroup2",
-                options: [{ value: "valueOptionGroup2", label: "label1", selected: true }]
-            }]
+            const optionGroups: HydratedSelectOptionGroup[] = [
+                {
+                    label: "optionGroup1",
+                    options: [{ value: "valueOptionGroup1", label: "label1", selected: false }]
+                },
+                {
+                    label: "optionGroup2",
+                    options: [{ value: "valueOptionGroup2", label: "label1", selected: true }]
+                }
+            ]
 
             // Act
             const result = instance.getFlatOptionsList(optionGroups)
@@ -91,26 +84,28 @@ describe("Select component", () => {
     })
 
     describe("getSelectedValues", () => {
-
         it("should return the selected values for option groups", () => {
             // Arrange
             const props: SelectProps = {
                 value: "valueOptionGroup1b"
             }
             const instance = createComponent(props)
-            const optionGroups: HydratedSelectOptionGroup[] = [{
-                label: "optionGroup1",
-                options: [
-                    { value: "valueGroup1Unselected", label: "unselected", selected: false },
-                    { value: "valueGroup1Selected", label: "selected", selected: true }
-                ]
-            }, {
-                label: "optionGroup2",
-                options: [
-                    { value: "valueGroup2Selected", label: "selected", selected: true },
-                    { value: "valueGroup2Unselected", label: "unselected", selected: false }
-                ]
-            }]
+            const optionGroups: HydratedSelectOptionGroup[] = [
+                {
+                    label: "optionGroup1",
+                    options: [
+                        { value: "valueGroup1Unselected", label: "unselected", selected: false },
+                        { value: "valueGroup1Selected", label: "selected", selected: true }
+                    ]
+                },
+                {
+                    label: "optionGroup2",
+                    options: [
+                        { value: "valueGroup2Selected", label: "selected", selected: true },
+                        { value: "valueGroup2Unselected", label: "unselected", selected: false }
+                    ]
+                }
+            ]
 
             // Act
             const result = instance.getSelectedValues(optionGroups, false) as string[]
@@ -155,7 +150,6 @@ describe("Select component", () => {
         })
 
         describe("multi", () => {
-
             it("should return an empty array when no options are specified", () => {
                 // Arrange
                 const instance = createComponent()
@@ -169,7 +163,6 @@ describe("Select component", () => {
         })
 
         describe("isMobile", () => {
-
             const userAgentMock = jest.fn()
             Object.defineProperty(navigator, "userAgent", {
                 get: userAgentMock

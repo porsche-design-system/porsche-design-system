@@ -1,0 +1,21 @@
+@import 'loader-list.setup.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}loader-list {
+  @include flex;
+  @include flex--justify-content(center);
+
+  padding: {
+    top: $loader-list-spacing-vertical;
+    bottom: $loader-list-spacing-vertical;
+  }
+
+  @include breakpoint('s') {
+    padding: {
+      top: $loader-list-spacing-vertical-s;
+      bottom: $loader-list-spacing-vertical-s;
+    }
+  }
+}

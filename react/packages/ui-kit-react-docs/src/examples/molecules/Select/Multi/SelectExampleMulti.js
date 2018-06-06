@@ -23,19 +23,12 @@ class SelectExampleMulti extends React.Component {
 
     handleChange = (value) => {
         this.setState({
-            value: value
+            value
         })
     }
 
     render() {
-        return (
-            <Select
-                multi
-                options={data}
-                value={this.state.value}
-                onChange={this.handleChange}
-            />
-        )
+        return <Select multi options={data} value={this.state.value} onChange={this.handleChange} />
     }
 }
 

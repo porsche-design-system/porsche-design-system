@@ -1,0 +1,379 @@
+@import 'column.setup.scss';
+@import 'column.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}column {
+  @include column-gap-normal;
+  @include column-direction-normal;
+
+  $bem-block: &;
+
+  max-width: $column-max-width;
+  min-height: $column-min-height; // prevents layout even when column is empty
+  box-sizing: border-box;
+
+  &--auto { @include column-auto; }
+  &--1    { @include column-1; }
+  &--2    { @include column-2; }
+  &--3    { @include column-3; }
+  &--4    { @include column-4; }
+  &--5    { @include column-5; }
+  &--6    { @include column-6; }
+  &--7    { @include column-7; }
+  &--8    { @include column-8; }
+  &--9    { @include column-9; }
+  &--10   { @include column-10; }
+  &--11   { @include column-11; }
+  &--12   { @include column-12; }
+
+  @include breakpoint('xs') {
+    &--xs-auto, // TODO: @deprecated class, kept because of backward compatibility
+    &--auto-xs {
+      @include column-auto;
+    }
+
+    &--xs-1, // TODO: @deprecated class, kept because of backward compatibility
+    &--1-xs {
+      @include column-1;
+    }
+
+    &--xs-2, // TODO: @deprecated class, kept because of backward compatibility
+    &--2-xs {
+      @include column-2;
+    }
+
+    &--xs-3, // TODO: @deprecated class, kept because of backward compatibility
+    &--3-xs {
+      @include column-3;
+    }
+
+    &--xs-4, // TODO: @deprecated class, kept because of backward compatibility
+    &--4-xs {
+      @include column-4;
+    }
+
+    &--xs-5, // TODO: @deprecated class, kept because of backward compatibility
+    &--5-xs {
+      @include column-5;
+    }
+
+    &--xs-6, // TODO: @deprecated class, kept because of backward compatibility
+    &--6-xs {
+      @include column-6;
+    }
+
+    &--xs-7, // TODO: @deprecated class, kept because of backward compatibility
+    &--7-xs {
+      @include column-7;
+    }
+
+    &--xs-8, // TODO: @deprecated class, kept because of backward compatibility
+    &--8-xs {
+      @include column-8;
+    }
+
+    &--xs-9, // TODO: @deprecated class, kept because of backward compatibility
+    &--9-xs {
+      @include column-9;
+    }
+
+    &--xs-10, // TODO: @deprecated class, kept because of backward compatibility
+    &--10-xs {
+      @include column-10;
+    }
+
+    &--xs-11, // TODO: @deprecated class, kept because of backward compatibility
+    &--11-xs {
+      @include column-11;
+    }
+
+    &--xs-12, // TODO: @deprecated class, kept because of backward compatibility
+    &--12-xs {
+      @include column-12;
+    }
+  }
+
+  @include breakpoint('s') {
+    &--s-auto, // TODO: @deprecated class, kept because of backward compatibility
+    &--auto-s {
+      @include column-auto;
+    }
+
+    &--s-1, // TODO: @deprecated class, kept because of backward compatibility
+    &--1-s {
+      @include column-1;
+    }
+
+    &--s-2, // TODO: @deprecated class, kept because of backward compatibility
+    &--2-s {
+      @include column-2;
+    }
+
+    &--s-3, // TODO: @deprecated class, kept because of backward compatibility
+    &--3-s {
+      @include column-3;
+    }
+
+    &--s-4, // TODO: @deprecated class, kept because of backward compatibility
+    &--4-s {
+      @include column-4;
+    }
+
+    &--s-5, // TODO: @deprecated class, kept because of backward compatibility
+    &--5-s {
+      @include column-5;
+    }
+
+    &--s-6, // TODO: @deprecated class, kept because of backward compatibility
+    &--6-s {
+      @include column-6;
+    }
+
+    &--s-7, // TODO: @deprecated class, kept because of backward compatibility
+    &--7-s {
+      @include column-7;
+    }
+
+    &--s-8, // TODO: @deprecated class, kept because of backward compatibility
+    &--8-s {
+      @include column-8;
+    }
+
+    &--s-9, // TODO: @deprecated class, kept because of backward compatibility
+    &--9-s {
+      @include column-9;
+    }
+
+    &--s-10, // TODO: @deprecated class, kept because of backward compatibility
+    &--10-s {
+      @include column-10;
+    }
+
+    &--s-11, // TODO: @deprecated class, kept because of backward compatibility
+    &--11-s {
+      @include column-11;
+    }
+
+    &--s-12, // TODO: @deprecated class, kept because of backward compatibility
+    &--12-s {
+      @include column-12;
+    }
+  }
+
+  @include breakpoint('m') {
+    &--m-auto, // TODO: @deprecated class, kept because of backward compatibility
+    &--auto-m {
+      @include column-auto;
+    }
+
+    &--m-1, // TODO: @deprecated class, kept because of backward compatibility
+    &--1-m {
+      @include column-1;
+    }
+
+    &--m-2, // TODO: @deprecated class, kept because of backward compatibility
+    &--2-m {
+      @include column-2;
+    }
+
+    &--m-3, // TODO: @deprecated class, kept because of backward compatibility
+    &--3-m {
+      @include column-3;
+    }
+
+    &--m-4, // TODO: @deprecated class, kept because of backward compatibility
+    &--4-m {
+      @include column-4;
+    }
+
+    &--m-5, // TODO: @deprecated class, kept because of backward compatibility
+    &--5-m {
+      @include column-5;
+    }
+
+    &--m-6, // TODO: @deprecated class, kept because of backward compatibility
+    &--6-m {
+      @include column-6;
+    }
+
+    &--m-7, // TODO: @deprecated class, kept because of backward compatibility
+    &--7-m {
+      @include column-7;
+    }
+
+    &--m-8, // TODO: @deprecated class, kept because of backward compatibility
+    &--8-m {
+      @include column-8;
+    }
+
+    &--m-9, // TODO: @deprecated class, kept because of backward compatibility
+    &--9-m {
+      @include column-9;
+    }
+
+    &--m-10, // TODO: @deprecated class, kept because of backward compatibility
+    &--10-m {
+      @include column-10;
+    }
+
+    &--m-11, // TODO: @deprecated class, kept because of backward compatibility
+    &--11-m {
+      @include column-11;
+    }
+
+    &--m-12, // TODO: @deprecated class, kept because of backward compatibility
+    &--12-m {
+      @include column-12;
+    }
+  }
+
+  @include breakpoint('l') {
+    &--l-auto, // TODO: @deprecated class, kept because of backward compatibility
+    &--auto-l {
+      @include column-auto;
+    }
+
+    &--l-1, // TODO: @deprecated class, kept because of backward compatibility
+    &--1-l {
+      @include column-1;
+    }
+
+    &--l-2, // TODO: @deprecated class, kept because of backward compatibility
+    &--2-l {
+      @include column-2;
+    }
+
+    &--l-3, // TODO: @deprecated class, kept because of backward compatibility
+    &--3-l {
+      @include column-3;
+    }
+
+    &--l-4, // TODO: @deprecated class, kept because of backward compatibility
+    &--4-l {
+      @include column-4;
+    }
+
+    &--l-5, // TODO: @deprecated class, kept because of backward compatibility
+    &--5-l {
+      @include column-5;
+    }
+
+    &--l-6, // TODO: @deprecated class, kept because of backward compatibility
+    &--6-l {
+      @include column-6;
+    }
+
+    &--l-7, // TODO: @deprecated class, kept because of backward compatibility
+    &--7-l {
+      @include column-7;
+    }
+
+    &--l-8, // TODO: @deprecated class, kept because of backward compatibility
+    &--8-l {
+      @include column-8;
+    }
+
+    &--l-9, // TODO: @deprecated class, kept because of backward compatibility
+    &--9-l {
+      @include column-9;
+    }
+
+    &--l-10, // TODO: @deprecated class, kept because of backward compatibility
+    &--10-l {
+      @include column-10;
+    }
+
+    &--l-11, // TODO: @deprecated class, kept because of backward compatibility
+    &--11-l {
+      @include column-11;
+    }
+
+    &--l-12, // TODO: @deprecated class, kept because of backward compatibility
+    &--12-l {
+      @include column-12;
+    }
+  }
+
+  @include breakpoint('xl') {
+    &--auto-xl  { @include column-auto; }
+    &--1-xl     { @include column-1; }
+    &--2-xl     { @include column-2; }
+    &--3-xl     { @include column-3; }
+    &--4-xl     { @include column-4; }
+    &--5-xl     { @include column-5; }
+    &--6-xl     { @include column-6; }
+    &--7-xl     { @include column-7; }
+    &--8-xl     { @include column-8; }
+    &--9-xl     { @include column-9; }
+    &--10-xl    { @include column-10; }
+    &--11-xl    { @include column-11; }
+    &--12-xl    { @include column-12; }
+  }
+
+  &--direction {
+    &-normal  { @include column-direction-normal; }
+    &-reverse { @include column-direction-reverse; }
+
+    @include breakpoint('xs') {
+      &-normal-xs  { @include column-direction-normal; }
+      &-reverse-xs { @include column-direction-reverse; }
+    }
+
+    @include breakpoint('s') {
+      &-normal-s  { @include column-direction-normal; }
+      &-reverse-s { @include column-direction-reverse; }
+    }
+
+    @include breakpoint('m') {
+      &-normal-m  { @include column-direction-normal; }
+      &-reverse-m { @include column-direction-reverse; }
+    }
+
+    @include breakpoint('l') {
+      &-normal-l  { @include column-direction-normal; }
+      &-reverse-l { @include column-direction-reverse; }
+    }
+
+    @include breakpoint('xl') {
+      &-normal-xl  { @include column-direction-normal; }
+      &-reverse-xl { @include column-direction-reverse; }
+    }
+  }
+
+  &--gap {
+    &-normal  { @include column-gap-normal; }
+    &-small   { @include column-gap-small; }
+    &-zero    { @include column-gap-zero; }
+
+    @include breakpoint('xs') {
+      &-normal-xs { @include column-gap-normal; }
+      &-small-xs  { @include column-gap-small; }
+      &-zero-xs   { @include column-gap-zero; }
+    }
+
+    @include breakpoint('s') {
+      &-normal-s { @include column-gap-normal; }
+      &-small-s  { @include column-gap-small; }
+      &-zero-s   { @include column-gap-zero; }
+    }
+
+    @include breakpoint('m') {
+      &-normal-m { @include column-gap-normal; }
+      &-small-m  { @include column-gap-small; }
+      &-zero-m   { @include column-gap-zero; }
+    }
+
+    @include breakpoint('l') {
+      &-normal-l { @include column-gap-normal; }
+      &-small-l  { @include column-gap-small; }
+      &-zero-l   { @include column-gap-zero; }
+    }
+
+    @include breakpoint('xl') {
+      &-normal-xl { @include column-gap-normal; }
+      &-small-xl  { @include column-gap-small; }
+      &-zero-xl   { @include column-gap-zero; }
+    }
+  }
+}

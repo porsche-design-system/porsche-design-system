@@ -1,0 +1,172 @@
+@import "../../../common";
+
+.#{$global-class-prefix}nav-menu-list {
+    $bem-block: &;
+
+    @include -text-size-copy;
+
+    white-space: nowrap;
+    background-color: $white;
+
+    &--default {
+        width: 100%;
+        padding: $spacing-18 $spacing-24;
+    }
+
+    &--category {
+        width: 100%;
+        padding: $spacing-24;
+
+        @include breakpoint("s") {
+            width: 70vw;
+        }
+
+        @include breakpoint("m") {
+            width: 70vw;
+            max-width: 800px;
+        }
+
+        @include breakpoint("l") {
+            width: 70vw;
+            max-width: 900px;
+        }
+    }
+
+    &__list,
+    &__list-category {
+        list-style-type: none;
+    }
+
+    &__list &__item {
+        flex: 1 1 auto;
+    }
+
+    &--category &__item {
+        @include breakpoint("s") {
+            flex-basis: 50%;
+            flex-grow: 0;
+        }
+
+        @include breakpoint("m") {
+            flex-basis: 33%;
+        }
+
+        @include breakpoint("l") {
+            flex-basis: 25%;
+        }
+    }
+
+    &__link {
+        display: flex;
+        padding: $spacing-18 0;
+        transition: color 240ms;
+        border-top: 1px solid $grey-light;
+        white-space: normal;
+
+        &:focus,
+        &:hover {
+            color: $color-palette-red-1;
+        }
+    }
+
+    &--default &__item:first-child &__link {
+        border-top: none;
+    }
+
+    &--category &__item:first-child &__link {
+        @include breakpoint("xxs", "xs") {
+            border-top: none;
+        }
+    }
+
+    &__text {
+        margin-left: $spacing-6;
+    }
+
+    &__entry-icon {
+        color: $color-palette-red-1;
+        margin-top: 2px;
+    }
+
+    &__category-block + &__category-block {
+        margin-top: $spacing-48;
+    }
+}
+
+// mobile overwrites
+.#{$global-class-prefix}nav-menu-list--mobile {
+    padding: 0;
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+
+    &.#{$global-class-prefix}nav-menu-list--category {
+        width: 100%;
+        max-width: inherit;
+        padding: 0;
+    }
+
+    .#{$global-class-prefix}nav-menu-list__item {
+        width: 100%;
+        padding: 0 $padding-horizontal-xxs;
+
+        @include breakpoint("s", "m") {
+            padding: 0 $padding-horizontal-s;
+        }
+
+        @include breakpoint("m", "l") {
+            padding: 0 $padding-horizontal-m;
+        }
+
+        @include breakpoint("l") {
+            padding: 0 $padding-horizontal-l;
+        }
+    }
+
+    .#{$global-class-prefix}nav-menu-list__item:last-child .#{$global-class-prefix}nav-menu-list__link {
+        border-bottom: 1px solid $grey-light;
+    }
+
+    .#{$global-class-prefix}nav-menu-list__link {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .#{$global-class-prefix}nav-menu-list__entry-icon {
+        order: 2;
+        margin-top: 0;
+    }
+
+    .#{$global-class-prefix}nav-menu-list__text {
+        margin-left: 0;
+    }
+
+    .#{$global-class-prefix}nav-menu-list__category {
+        padding-top: $spacing-24;
+        padding-left: $padding-horizontal-xxs;
+        padding-right: $padding-horizontal-xxs;
+
+        @include breakpoint("s", "m") {
+            padding-left: $padding-horizontal-s;
+            padding-right: $padding-horizontal-s;
+        }
+
+        @include breakpoint("m", "l") {
+            padding-left: $padding-horizontal-m;
+            padding-right: $padding-horizontal-m;
+        }
+
+        @include breakpoint("l") {
+            padding-left: $padding-horizontal-l;
+            padding-right: $padding-horizontal-l;
+        }
+    }
+
+    .#{$global-class-prefix}nav-menu-list__category-block + .#{$global-class-prefix}nav-menu-list__category-block {
+        margin-top: $spacing-24;
+    }
+
+    .#{$global-class-prefix}nav-menu-list__list-category {
+        display: block;
+        margin: 0;
+    }
+}

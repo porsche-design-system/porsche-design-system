@@ -4,9 +4,8 @@ import { Flyout, Divider, Flex, Spacing } from "@porsche/ui-kit-react"
 const FlyoutExampleTypesRightLeft = () => {
     return (
         <Flex>
-
             <div style={{ position: "relative", width: "100px", marginRight: "300px" }}>
-      Arrow Left
+                Arrow Left
                 <Flyout position="left">
                     <div>Row 1</div>
                     <Divider />
@@ -15,7 +14,7 @@ const FlyoutExampleTypesRightLeft = () => {
             </div>
 
             <div style={{ position: "relative", width: "100px", marginLeft: "300px", textAlign: "right" }}>
-      Arrow Right
+                Arrow Right
                 <Flyout position="right">
                     <div>Row 1</div>
                     <Divider />
@@ -24,7 +23,6 @@ const FlyoutExampleTypesRightLeft = () => {
             </div>
 
             <Spacing paddingBottom={48} />
-
         </Flex>
     )
 }

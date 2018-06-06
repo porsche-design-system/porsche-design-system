@@ -1,0 +1,9 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$header-tile-max-width: 100% !default;
+$header-tile-icon-margin-right: rem(16px) !default;
+$header-tile-icon-font-size: $spacing-24 !default;
+$header-tile-icon-font-size-tooltip: rem(20px) !default;
+$header-tile-icon-color: $color-palette-grey-5 !default;

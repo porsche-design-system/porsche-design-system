@@ -1,11 +1,8 @@
 import React from "react"
 import { Divider } from "@porsche/ui-kit-react"
 
-
 const DividerExample = () => {
-    return (
-        <Divider />
-    )
+    return <Divider />
 }
 
 export default DividerExample

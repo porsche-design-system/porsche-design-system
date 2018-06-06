@@ -4,17 +4,9 @@ import cx from "classnames"
 import { DOMAttributes } from "react"
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType, prefix } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface FlyoutProps {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface FlyoutProps extends ClassNameProp, ComponentProp {
     /**
      * The position of the flyout
      * @default left
@@ -32,29 +24,18 @@ const _meta: ComponentMeta = {
 }
 
 const _Flyout: React.StatelessComponent<FlyoutProps> & Partial<MetaCategorizable> = (props) => {
-    const {
-        as,
-        className,
-        position,
-        children,
-        customAttributes,
-        ...rest
-    } = props
+    const { as, className, position, children, ...rest } = props
 
     const ElementType = getElementType(as, "div")
 
     const classes = cx(
         prefix("flyout"),
-        { [prefix("flyout--left")]: position === "left"},
-        { [prefix("flyout--right")]: position === "right"},
+        { [prefix("flyout--left")]: position === "left" },
+        { [prefix("flyout--right")]: position === "right" },
         className
     )
     return (
-        <ElementType
-            className={classes}
-            {...customAttributes}
-            {...rest}
-        >
+        <ElementType className={classes} {...rest}>
             {children}
         </ElementType>
     )

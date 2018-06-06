@@ -36,7 +36,7 @@ class SelectExampleSingleSearchable extends React.Component {
 
     render() {
         return (
-            <Flex>
+            <Flex gap="grid">
                 <Flex.Item width={6}>
                     <Select
                         searchable={false}

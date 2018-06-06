@@ -13,12 +13,7 @@ export function createStore(history: History): Store<ApplicationState> {
 
     const store = createStoreRedux<ApplicationState>(
         applicationStateReducer,
-        composeWithDevTools(
-            applyMiddleware(
-                sagaMiddleware,
-                routerMiddleware(history),
-                createLogger())
-        )
+        composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware(history), createLogger()))
     )
 
     if (module.hot) {

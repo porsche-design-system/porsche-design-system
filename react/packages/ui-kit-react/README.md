@@ -2,6 +2,8 @@
 
 ## Installation
 
+This project is a yarn monorepo, so you need to use yarn instead of npm for everything.
+
 ### Development
 
 Running `npm run docs` will start a webpack dev server. You can reach it at `http://localhost:8080/`.
@@ -18,13 +20,27 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. **Export:** The component needs to be exported in `src/index.ts`.
 1. **Meta Info:** A component needs a `_meta` object that includes the name, meta type, and optional parent of the component.
 1. **Component Description:** A component should have a preceding block comment describing its general purpose.
-1. **Prop Types:** The component has to describe its props using react prop types.
-1. **Prop Descriptions:** Each prop type should have a preceding block comment which will be used in the props documentation.
-1. **Examples:** The examples of the component are developed under `docs/examples` with a mirroring folder structure.
+1. **Props:** The component has to describe its props using typescript types and documentation.
+1. **Examples:** The examples of the component are developed under `ui-kit-react-docs/src/examples` with a mirroring folder structure.
 
 ### Parent Components
 
-### @see References 
+### @see References
 
-Different components can be cross-referenced using the `@see` annotation inside the component description. 
+Different components can be cross-referenced using the `@see` annotation inside the component description.
 Simply put the components name after the annotation and a link to it will automatically appear in the header of the documentation page.
+
+## Publishing artifacts
+
+### Login credentials
+To be able to publish artifacts to the Artifactory repository you have to provide some meta information. First of all you have to provide the lgoin credentials for the artifcatory. In this project we are using NPM scopes to distinguish which artifact should retrieve the dependency from which repository. Therefore you have to execute `curl -uadmin:password "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/auth/porsche"` where admin is your Artifactory ID and password is the genereated API Key (Base64 encoded) which you can generate in the Artifactory's profile section. You'll have to create a .npmrc file in the project folder and paste the information you will get into it. This will look similiar to:
+`@porsche:registry=https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/
+ //porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/:_password=<password>
+ //porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/:username=8354932
+ //porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/:email=<YOUR_EMAIL>
+ //porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/:always-auth=true`
+ The user is a technical user created only for the Artifactory publishing use case.
+ The password can be obtained from Aleksandar Tolev (aleksandar.tolev@porsche.de) or Christoph Albert (christoph.albert@mhp.com).
+
+### Publishing
+ After setting up the metadata you can run `yarn run publish:artifactory` which will deploy the artifact to the Artifactory repository.

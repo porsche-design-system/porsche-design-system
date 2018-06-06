@@ -1,4 +1,3 @@
-
 /** Finds type {[key: string]: any} */
 const isCustomAttribute = (type) => {
     const test = /^{?\s*\[\s*key\s*:\s*string\s*\]\s*:\s*any;?\s*}?$/g
@@ -12,16 +11,18 @@ const isEnum = (type) => {
     const test = /^(\s*\"?[a-z\d-_]+\"?\s*\|\s*){1,}\"?[a-z\d-_]+\"?\s*$/g
     const match = test.exec(type)
 
-    return match
-        && match.length > 0
-        && !type.includes("string")
-        && !type.includes("number")
-        && !type.includes("boolean")
-        && !type.includes("object")
-        && !type.includes("any")
-        && !type.includes("void")
-        && !type.includes("null")
-        && !type.includes("undefined")
+    return (
+        match &&
+        match.length > 0 &&
+        !type.includes("string") &&
+        !type.includes("number") &&
+        !type.includes("boolean") &&
+        !type.includes("object") &&
+        !type.includes("any") &&
+        !type.includes("void") &&
+        !type.includes("null") &&
+        !type.includes("undefined")
+    )
 }
 
 const parseEnumValues = (type) => {

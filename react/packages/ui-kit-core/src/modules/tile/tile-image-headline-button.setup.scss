@@ -1,0 +1,18 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/tile/tile.setup.scss';
+@import '../../modules/button/button-inline.setup.scss';
+
+$tile-image-headline-button-headline-color: $color-palette-white !default;
+$tile-image-headline-button-headline-background-color: $color-palette-grey-9 !default;
+
+$tile-image-headline-button-height-default: $tile-height-default - $button-inline-height !default;
+$tile-image-headline-button-height-xs: $tile-height-xs - $button-inline-height !default;
+$tile-image-headline-button-height-s: $tile-height-s - $button-inline-height !default;
+$tile-image-headline-button-height-m: $tile-height-m - $button-inline-height !default;
+$tile-image-headline-button-height-l: $tile-height-l - $button-inline-height !default;
+
+$tile-image-headline-button-text-width-default: 100% !default;
+$tile-image-headline-button-text-width-s: 85% !default;
+$tile-image-headline-button-text-width-m: 75% !default;
+
+$tile-image-headline-button-headline-height: 100% !default;

@@ -40,7 +40,6 @@ export default (filename) => {
             parsed.docBlock = parseDocBlock(parsed.description)
             delete parsed.description
 
-
             // replace prop `description` strings with a parsed doc block object and updated `type`
             _.each(parsed.props, (propDef, propName) => {
                 const { description, tags } = parseDocBlock(propDef.description)
@@ -74,7 +73,7 @@ export default (filename) => {
 
     function endStream(cb) {
         finalFile = latestFile.clone({ contents: false })
-        finalFile.path = path.join(latestFile.base, (filename || defaultFilename))
+        finalFile.path = path.join(latestFile.base, filename || defaultFilename)
         finalFile.contents = new Buffer(JSON.stringify(result, null, 2))
         this.push(finalFile)
         cb()

@@ -1,11 +1,6 @@
 import { hot } from "react-hot-loader"
 
-import {
-    HashRouter,
-    Redirect,
-    Route,
-    Switch
-} from "react-router-dom"
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 
 import ExternalExampleLayout from "./Components/ExternalExampleLayout"
 import DocsLayout from "./Components/DocsLayout"
@@ -14,11 +9,13 @@ import Introduction from "./Views/Introduction"
 import PageNotFound from "./Views/PageNotFound"
 import React from "react"
 
-const RedirectToIntro = () => { return <Redirect to="/introduction" /> }
+const RedirectToIntro = () => {
+    return <Redirect to="/introduction" />
+}
 
 const Router = () => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Switch>
                 <Route path="/maximize/:kebabCaseName" component={ExternalExampleLayout} />
                 <Switch>
@@ -28,7 +25,7 @@ const Router = () => {
                     <DocsLayout exact path="/*" component={PageNotFound} />
                 </Switch>
             </Switch>
-        </HashRouter>
+        </BrowserRouter>
     )
 }
 

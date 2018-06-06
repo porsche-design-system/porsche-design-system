@@ -5,29 +5,25 @@ import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
 const SelectExampleMulti = () => {
     return (
         <ExampleSection title="Multi Select">
-
             <ComponentExample
-                title="Basics"
+                title="Multi Select with Floating Placeholder"
                 examplePath="molecules/Select/Multi/SelectExampleMulti"
             >
-            A select for multiple values.
+                A select for multiple values with a floating placeholder.
             </ComponentExample>
 
             <ComponentExample
-                title="Disabled"
-                examplePath="molecules/Select/Multi/SelectExampleMultiDisabled"
-            />
+                title="Multi Select with Regular Placeholder"
+                examplePath="molecules/Select/Multi/SelectExampleMultiBasic"
+            >
+                A select for multiple values with a regular placeholder.
+            </ComponentExample>
 
-            <ComponentExample
-                title="Error"
-                examplePath="molecules/Select/Multi/SelectExampleMultiError"
-            />
+            <ComponentExample title="Disabled" examplePath="molecules/Select/Multi/SelectExampleMultiDisabled" />
 
-            <ComponentExample
-                title="Loading"
-                examplePath="molecules/Select/Multi/SelectExampleMultiLoading"
-            />
+            <ComponentExample title="Error" examplePath="molecules/Select/Multi/SelectExampleMultiError" />
 
+            <ComponentExample title="Loading" examplePath="molecules/Select/Multi/SelectExampleMultiLoading" />
         </ExampleSection>
     )
 }

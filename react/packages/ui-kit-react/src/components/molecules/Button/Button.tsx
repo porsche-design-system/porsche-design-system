@@ -6,20 +6,15 @@ import { META, getElementType, prefix } from "../../../lib"
 import { Icon } from "../../../index"
 import { IconName } from "../../atoms/Icon/Icon"
 import { ButtonGroup } from "./ButtonGroup"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface Button extends React.StatelessComponent<ButtonProps> {
     Group: typeof ButtonGroup
 }
 
-export interface ButtonProps {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Primary content. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
+export interface ButtonProps extends ClassNameProp, ComponentProp {
+    /** Sets the button in its active / selected state. */
+    active?: boolean
 
     /** Disables the button. No onClick will be triggered. */
     disabled?: boolean
@@ -43,19 +38,34 @@ export interface ButtonProps {
      */
     onClick?: (event: React.MouseEvent<HTMLButtonElement>, data: ButtonProps) => void
 
+    /**
+     * Shows only the icon by default, and the button content starting from a specific breakpoint
+     */
+    showContent?: "xs" | "s" | "m" | "l" | "xl"
+
     /** A button can stretch to fill the full available width. */
     stretch?: boolean
+
+    /** A button can have centered content (icon/text). */
+    centered?: boolean
 
     /**
      * The display type of the button.
      * @default default
      */
     type?: "default" | "black" | "red" | "blue" | "acid-green" | "ghost" | "ghost-inverted"
+
+    /**
+     * Specifies the HTML Type of the button. If undefined, nothing is set.
+     * @default button
+     */
+    role?: "button" | "submit" | "reset"
 }
 
 const defaultProps: Partial<ButtonProps> = {
     type: "default",
-    icon: "arrow_right_hair"
+    icon: "arrow_right_hair",
+    role: "button"
 }
 
 const _meta: ComponentMeta = {
@@ -70,48 +80,71 @@ const isGhostButton = (type: string | undefined): boolean => {
 const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> & Partial<MetaCategorizable> = (props) => {
     const {
         as,
+        role,
         className,
         children,
-        customAttributes,
-        icon,
-        type,
+        active,
         disabled,
-        loading,
         error,
-        stretch,
+        icon,
+        loading,
         onClick,
+        showContent,
+        stretch,
+        centered,
+        type,
         ...rest
     } = props
 
     const ElementType = getElementType(as, "button")
 
-    const baseClass = isGhostButton(type) ? "button-ghost" : "button-primary"
+    let buttonClasses
+    let iconClasses
+    let loaderClasses
+    let labelClasses
 
-    const buttonClasses = cx(
-        prefix(`${baseClass}`),
-        {[prefix("button-primary--black")]: type === "black"},
-        {[prefix("button-primary--red")]: type === "red"},
-        {[prefix("button-primary--blue")]: type === "blue"},
-        {[prefix("button-primary--acid-green")]: type === "acid-green"},
-        {[prefix("button-ghost--inverted")]: type === "ghost-inverted"},
-        {[prefix(`${baseClass}--error`)]: error},
-        {[prefix(`${baseClass}--stretch`)]: stretch},
-        className
-    )
+    if (isGhostButton(type)) {
+        // Ghost button setup
+        buttonClasses = cx(
+            prefix("button-ghost"),
+            { [prefix("button-ghost--inverted")]: type === "ghost-inverted" },
+            { [prefix("button-ghost--error")]: error },
+            { [prefix("button-ghost--stretch")]: stretch },
+            { [prefix("button-ghost--active")]: active },
+            className
+        )
 
-    const iconClasses = cx(
-        prefix(`${baseClass}__icon`),
-        {[prefix(`${baseClass}__icon--loading`)]: loading}
-    )
+        iconClasses = cx(prefix("button-ghost__icon"), { [prefix("button-ghost__icon--loading")]: loading })
 
-    const loaderClasses = cx(
-        prefix(`${baseClass}__loader`),
-        "loader-base"
-    )
+        loaderClasses = cx(prefix("button-ghost__loader"), prefix("loader-base"))
 
-    const labelClasses = cx(
-        prefix(`${baseClass}__label`)
-    )
+        labelClasses = cx(prefix("button-ghost__label"), {
+            [prefix(`button-ghost__label--show-${showContent}`)]: showContent
+        })
+    } else {
+        // Primary button setup
+        buttonClasses = cx(
+            prefix("button-primary"),
+            { [prefix("button-primary--black")]: type === "black" },
+            { [prefix("button-primary--red")]: type === "red" },
+            { [prefix("button-primary--blue")]: type === "blue" },
+            { [prefix("button-primary--acid-green")]: type === "acid-green" },
+            { [prefix("button-primary--error")]: error },
+            { [prefix("button-primary--stretch")]: stretch },
+            { [prefix("button-primary--centered")]: centered },
+            { [prefix("button-primary--active")]: active },
+
+            className
+        )
+
+        iconClasses = cx(prefix("button-primary__icon"), { [prefix("button-primary__icon--loading")]: loading })
+
+        loaderClasses = cx(prefix("button-primary__loader"), prefix("loader-base"))
+
+        labelClasses = cx(prefix("button-primary__label"), {
+            [prefix(`button-primary__label--show-${showContent}`)]: showContent
+        })
+    }
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!onClick) {
@@ -128,22 +161,17 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> & Partial
 
     return (
         <ElementType
-            type="button"
+            type={role}
             onClick={handleClick}
             className={buttonClasses}
             disabled={disabled || loading}
-            {...customAttributes}
             {...rest}
         >
             {/* Icon cannot be undefined because of default props */}
             <Icon name={icon as IconName} className={iconClasses}>
-                {loading &&
-                    <span className={loaderClasses} />
-                }
+                {loading && <span className={loaderClasses} />}
             </Icon>
-            <span className={labelClasses}>
-                {children}
-            </span>
+            <span className={labelClasses}>{children}</span>
         </ElementType>
     )
 }

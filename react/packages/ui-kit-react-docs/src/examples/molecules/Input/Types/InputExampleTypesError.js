@@ -10,7 +10,7 @@ const InputExampleTypesError = () => {
                 </Flex.Item>
 
                 <Flex.Item width={3}>
-                    <Input error placeholder="Floating Label" value="Value" onChange={() => {}} />
+                    <Input error placeholder="Floating Label" value="Value" />
                 </Flex.Item>
 
                 <Flex.Item width={3}>
@@ -18,7 +18,7 @@ const InputExampleTypesError = () => {
                 </Flex.Item>
 
                 <Flex.Item width={3}>
-                    <Input error placeholder="Placeholder" basic value="Value" onChange={() => {}} />
+                    <Input error placeholder="Placeholder" basic value="Value" />
                 </Flex.Item>
             </Flex>
 

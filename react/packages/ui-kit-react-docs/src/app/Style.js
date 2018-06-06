@@ -1,8 +1,7 @@
 const style = {}
 const sidebarWidth = 300
 
-style.container = {
-}
+style.container = {}
 
 style.menu = {
     position: "fixed",

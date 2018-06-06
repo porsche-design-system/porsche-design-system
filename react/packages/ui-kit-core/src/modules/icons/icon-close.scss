@@ -1,0 +1,47 @@
+@import 'icon-close.setup.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}icon-close { // TODO: Should be renamed to symbol-close to avoid naming confusion with our icon font
+  @include -align-center;
+  @include -spacing-inner-a;
+
+  position: absolute;
+  right: $icon-close-position-reset;
+  top: $icon-close-position-reset;
+  cursor: pointer;
+
+  &--notification {
+    padding: $icon-close-notification-inner-spacing;
+
+    @include breakpoint('s') {
+      position: static;
+      margin-right: -$icon-close-notification-spacing-right;
+    }
+  }
+
+  &__icon {
+    @include -text-color-white;
+
+    font-size: $icon-close-icon-font-size;
+
+    &--dark {
+      @include -text-color-grey-9;
+    }
+
+    &--notification {
+      font-size: $icon-close-icon-font-size-notification;
+    }
+  }
+
+  &:hover &__icon {
+    @include -text-color-red-1;
+
+    &--notification {
+      color: $icon-close-icon-text-color-hovered-notification;
+    }
+  }
+}

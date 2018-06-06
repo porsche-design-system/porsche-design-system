@@ -1,0 +1,56 @@
+@import "../../../common";
+@import "../../../../../../node_modules/@porsche/ui-kit-core/src/base/text-size/text-size";
+@import "../../../../../../node_modules/@porsche/ui-kit-core/src/base/text-color/text-color";
+
+.#{$global-class-prefix}text {
+    &--inline {
+        display: inline;
+    }
+
+    &--align {
+        &-left {
+            text-align: left;
+        }
+
+        &-center {
+            text-align: center;
+        }
+
+        &-right {
+            text-align: right;
+        }
+    }
+
+    &--wrap {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    &--ellipsis {
+        max-width: 100%;
+        @include -overflow-ellipsis();
+    }
+}
+
+.-#{$global-class-prefix}text-color {
+    // Grey helpers
+    &-grey-darker {
+        color: $color-palette-grey-9;
+    }
+
+    &-grey-dark {
+        color: $color-palette-grey-7;
+    }
+
+    &-grey {
+        color: $color-palette-grey-5;
+    }
+
+    &-grey-light {
+        color: $color-palette-grey-3;
+    }
+
+    &-grey-lighter {
+        color: $color-palette-grey-1;
+    }
+}

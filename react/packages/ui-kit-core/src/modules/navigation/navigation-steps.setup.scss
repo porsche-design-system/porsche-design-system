@@ -1,0 +1,33 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$navigation-steps-item-inner-spacing-vertical: $spacing-12 !default;
+$navigation-steps-item-inner-spacing-horizontal: $spacing-12 !default;
+$navigation-steps-item-inner-spacing-bottom-s: $spacing-18 !default;
+$navigation-steps-item-spacing-right-s: ($spacing-12 + $spacing-24) !default;
+$navigation-steps-item-spacing-bottom-s: ($spacing-6 + $spacing-6) !default;
+
+$navigation-steps-border-bottom-width: rem(1px) !default;
+$navigation-steps-border-bottom-color: $color-palette-grey-8 !default;
+
+$navigation-steps-item-active-border-width: rem(4px) !default;
+$navigation-steps-item-active-border-color: $color-palette-red-1 !default;
+
+$navigation-steps-count-inner-spacing-horizontal: $spacing-12 !default;
+$navigation-steps-count-inner-spacing-left-reset: 0 !default;
+
+$navigation-steps-label-inner-spacing-left: $spacing-12 !default;
+$navigation-steps-label-icon-inner-spacing-left: $spacing-6 !default;
+$navigation-steps-label-border-padding-left: $spacing-12 !default;
+$navigation-steps-label-border-width: 1px !default;
+$navigation-steps-label-border-color: $color-palette-grey-5 !default;
+$navigation-steps-label-border-color-active: $color-palette-white !default;
+$navigation-steps-label-border-color-hover: $color-palette-red-1 !default;
+$navigation-steps-label-line-height: 1 !default;
+
+$navigation-steps-icon-font-size: $spacing-24 !default;
+$navigation-steps-icon-spacing-right: $spacing-6 !default;
+$navigation-steps-icon-font-size: rem(24px) !default;
+$navigation-steps-icon-dimension: rem(34px) !default;
+$navigation-steps-icon-position: 50% !default;

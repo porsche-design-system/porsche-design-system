@@ -7,47 +7,39 @@ import { bindActionCreators, Dispatch } from "redux"
 import { connect } from "react-redux"
 import { loadTitle } from "src/stream/redux/actions/loadTitle"
 
-export namespace StreamContainer {
-
-    export interface StateProps {
-        title: string
-    }
-
-    export interface DispatchProps {
-        loadTitle: typeof loadTitle
-    }
-
-    export interface ComponentProps {
-
-    }
-
-    export interface Props extends StateProps, DispatchProps, ComponentProps, RouteComponentProps<any> {
-
-    }
-
+export interface StreamContainerStateProps {
+    title: string
 }
 
-class StreamContainerComponent extends React.PureComponent<StreamContainer.Props, {}> {
+export interface StreamContainerDispatchProps {
+    loadTitle: typeof loadTitle
+}
 
+export interface StreamContainerComponentProps {}
+
+export interface StreamContainerProps
+    extends StreamContainerStateProps,
+        StreamContainerDispatchProps,
+        StreamContainerComponentProps,
+        RouteComponentProps<any> {}
+
+class StreamContainerComponent extends React.PureComponent<StreamContainerProps, {}> {
     handleClick = () => {
         this.props.loadTitle("Test!")
     }
 
     render() {
-        return (
-            <Stream title={this.props.title} onButtonClick={this.handleClick}/>
-        )
+        return <Stream title={this.props.title} onButtonClick={this.handleClick} />
     }
-
 }
 
-function mapStateToProps(state: ApplicationState, props: StreamContainer.ComponentProps): StreamContainer.StateProps {
+function mapStateToProps(state: ApplicationState, props: StreamContainerComponentProps): StreamContainerStateProps {
     return {
         title: state.stream.title
     }
 }
 
-function mapDispatchToProps(dispatch: Dispatch<{}>): StreamContainer.DispatchProps {
+function mapDispatchToProps(dispatch: Dispatch<{}>): StreamContainerDispatchProps {
     return bindActionCreators(
         {
             loadTitle
@@ -56,6 +48,7 @@ function mapDispatchToProps(dispatch: Dispatch<{}>): StreamContainer.DispatchPro
     )
 }
 
-export const StreamContainer = connect<StreamContainer.StateProps, {}, StreamContainer.ComponentProps>
-    (mapStateToProps, mapDispatchToProps)
-    (StreamContainerComponent)
+export const StreamContainer = connect<StreamContainerStateProps, {}, StreamContainerComponentProps>(
+    mapStateToProps,
+    mapDispatchToProps
+)(StreamContainerComponent)

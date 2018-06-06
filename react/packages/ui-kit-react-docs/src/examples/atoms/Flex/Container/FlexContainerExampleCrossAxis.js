@@ -3,7 +3,9 @@ import { Flex } from "@porsche/ui-kit-react"
 
 const containerStyle = { backgroundColor: "WhiteSmoke", marginBottom: "16px" }
 
-const style = (height, color) => { return { height, width: "150px", backgroundColor: color } }
+const style = (height, color) => {
+    return { height, width: "150px", backgroundColor: color }
+}
 
 const FlexAlignCrossAxis = (alignCrossAxis) => {
     return (
@@ -21,9 +23,9 @@ const FlexAlignCrossAxis = (alignCrossAxis) => {
 const FlexContainerExampleCrossAxis = () => {
     return (
         <div>
-            { FlexAlignCrossAxis("start") }
-            { FlexAlignCrossAxis("center") }
-            { FlexAlignCrossAxis("end") }
+            {FlexAlignCrossAxis("start")}
+            {FlexAlignCrossAxis("center")}
+            {FlexAlignCrossAxis("end")}
         </div>
     )
 }

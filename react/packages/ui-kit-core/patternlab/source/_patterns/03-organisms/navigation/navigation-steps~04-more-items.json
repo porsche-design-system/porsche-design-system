@@ -1,0 +1,25 @@
+{
+  "navigation-steps": [
+    {
+      "count": "1",
+      "icon": "",
+      "label": "Some Label",
+      "active": false,
+      "disabled": false
+    },
+    {
+      "count": "2",
+      "icon": "",
+      "label": "Some Label",
+      "active": false,
+      "disabled": false
+    },
+    {
+      "count": "3",
+      "icon": "",
+      "label": "Some Label",
+      "active": false,
+      "disabled": false
+    }
+  ]
+}

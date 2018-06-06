@@ -1,0 +1,35 @@
+<div class="row row--zero
+            {{#if form-button-group_buttonsFlex}}form-button-group {{/if}}">
+  {{#unless form-button-group_buttonsFlex}}
+  <div class="column column--zero column--reverse-s column--12 column--s-6">
+  {{/unless}}
+    {{> deprecated-button-inline
+        button-inline_label=form-button-group_primaryActionCta
+        button-inline_icon=form-button-group_primaryActionIcon
+        button-inline_multilineLabel=form-button-group_primaryActionCtaSubline
+        button-inline_stretch=true
+        button-inline_active=true
+        button-inline-flex=form-button-group_isFlex
+        styleModifier=form-button-group_styleModifier
+        styleModifier_icon=form-button-group_styleModifierIcon
+        styleModifier_label=form-button-group_styleModifierLabel }}
+
+  {{#unless form-button-group_buttonsFlex}}
+  </div>
+  <div class="column column--zero column--reverse-s column--12 column--s-6">
+  {{/unless}}
+
+    {{> deprecated-button-inline
+        button-inline_label=form-button-group_secondaryActionCta
+        button-inline_icon=form-button-group_secondaryActionIcon
+        button-inline_multilineLabel=form-button-group_secondaryActionCtaSubline
+        button-inline_stretch=true
+        button-inline-flex=form-button-group_isFlex
+        styleModifier=form-button-group_styleModifier
+        styleModifier_icon=form_-button-group_styleModifierIcon
+        styleModifier_label=form-button-group_styleModifierLabel }}
+
+  {{#unless form-button-group_buttonsFlex}}
+  </div>
+  {{/unless}}
+</div>

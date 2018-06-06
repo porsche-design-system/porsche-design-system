@@ -15,9 +15,6 @@ export interface Breakpoint extends React.StatelessComponent<BreakpointProps> {
 }
 
 export interface BreakpointProps {
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
     /** The minimum breakpoint that includes the children. */
     minWidth?: "xs" | "s" | "m" | "l" | "xl"
 
@@ -30,25 +27,16 @@ const _meta: ComponentMeta = {
     type: META.TYPES.ATOM
 }
 
-const _Breakpoint: React.StatelessComponent<BreakpointProps> & Partial<Breakpoint> & Partial<MetaCategorizable> = (props) => {
-    const {
-        children,
-        customAttributes,
-        minWidth,
-        maxWidth,
-        ...rest
-    } = props
+const _Breakpoint: React.StatelessComponent<BreakpointProps> & Partial<Breakpoint> & Partial<MetaCategorizable> = (
+    props
+) => {
+    const { children, minWidth, maxWidth, ...rest } = props
 
     const minWidthValue = minWidth ? breakpoints[minWidth] + "px" : undefined
-    const maxWidthValue = maxWidth ? (breakpoints[maxWidth] - 1) + "px" : undefined
+    const maxWidthValue = maxWidth ? breakpoints[maxWidth] - 1 + "px" : undefined
 
     return (
-        <MediaQuery
-            minWidth={minWidthValue}
-            maxWidth={maxWidthValue}
-            {...customAttributes}
-            {...rest}
-        >
+        <MediaQuery minWidth={minWidthValue} maxWidth={maxWidthValue} {...rest}>
             {children}
         </MediaQuery>
     )
@@ -64,5 +52,11 @@ _Breakpoint.xl = breakpoints.xl
 
 /**
  * Show and hide children based on minimum and maximum breakpoints.
+ * The currently defined breakpoints are:
+ * xs: 480,
+ * s: 760,
+ * m: 1000,
+ * l: 1300,
+ * xl: 1760
  */
 export const Breakpoint = _Breakpoint as Breakpoint

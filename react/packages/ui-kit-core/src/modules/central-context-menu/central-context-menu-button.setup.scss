@@ -1,0 +1,29 @@
+@import 'central-context-menu.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$central-context-menu-button-reset: 0 !default;
+$central-context-menu-button-size: rem(22px) !default;
+$central-context-menu-button-safe-clickable-area: - (rem(34px) - $central-context-menu-button-size) / 2 !default;
+
+$central-context-menu-button-text-color: $color-palette-white !default;
+$central-context-menu-button-text-color-hovered: $color-palette-red-1 !default;
+$central-context-menu-button-text-color-active: $color-palette-red-1 !default;
+$central-context-menu-button-text-color-disabled: $color-palette-grey-5 !default;
+
+$central-context-menu-button-icon-font-size: $spacing-18 !default;
+$central-context-menu-button-icon-width: rem(34px) !default;
+$central-context-menu-button-icon-spacing-horizontal: 0 !default;
+$central-context-menu-button-icon-spacing-vertical: 0 !default;
+$central-context-menu-button-icon-spacing-to-label: $central-context-menu-button-icon-font-size + $spacing-12 !default;
+
+$central-context-menu-button-border-width: 0 !default;
+$central-context-menu-button-spacing: 0 !default;
+
+$central-context-menu-button-height: rem(34px) !default;
+$central-context-menu-button-line-height: $central-context-menu-button-height !default;
+$central-context-menu-button-min-width: rem(34px) !default;
+$central-context-menu-button-max-width: 100% !default;
+$central-context-menu-button-spacing-horizontal:  ($central-context-menu-button-icon-width - $central-context-menu-button-icon-font-size) / 2 !default;
+$central-context-menu-button-spacing-vertical: 0 !default;

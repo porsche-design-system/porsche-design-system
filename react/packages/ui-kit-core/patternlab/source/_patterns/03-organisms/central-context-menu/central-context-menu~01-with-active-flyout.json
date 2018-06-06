@@ -1,0 +1,22 @@
+{
+  "central-context-menu_buttonsLeft": [
+    {
+      "label": "Neu",
+      "icon": "plus"
+    },
+    {
+      "label": "Suche",
+      "icon": "search",
+      "active": true,
+      "flyout": true
+    }
+  ],
+
+  "central-context-menu_buttonsRight": [
+    {
+      "label": "Sortieren",
+      "icon": "next-modul",
+      "inverted": true
+    }
+  ]
+}

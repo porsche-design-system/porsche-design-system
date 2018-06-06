@@ -5,6 +5,7 @@ import { META, getElementType, prefix } from "../../../lib"
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { FlexItem } from "./FlexItem"
 import { SpacingValue } from "../../../index"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export type FlexAlignLines = "start" | "center" | "end" | "space-around" | "space-between" | "stretch"
 export type FlexCrossAxis = "start" | "center" | "end" | "baseline" | "stretch"
@@ -16,16 +17,7 @@ export interface Flex extends React.StatelessComponent<FlexProps> {
     Item: typeof FlexItem
 }
 
-export interface FlexProps {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface FlexProps extends ClassNameProp, ComponentProp {
     /** Defines how the flex items are aligned along the cross axis. Corresponds to the "alignItems" css property. */
     alignCrossAxis?: FlexCrossAxis
 
@@ -68,7 +60,6 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> & Partial<MetaC
         as,
         className,
         children,
-        customAttributes,
         alignCrossAxis,
         alignLines,
         alignMainAxis,
@@ -83,17 +74,17 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> & Partial<MetaC
 
     const classes = cx(
         prefix("flex"),
-        {[prefix("flex--inline")]: inline},
-        {[prefix(`flex--direction-${direction}`)]: direction},
-        {[prefix(`flex--main-axis-${alignMainAxis}`)]: alignMainAxis},
-        {[prefix(`flex--cross-axis-${alignCrossAxis}`)]: alignCrossAxis},
-        {[prefix(`flex--align-lines-${alignLines}`)]: alignLines},
-        {[prefix(`m-nl--${gap}`)]: gap && gap !== "grid"},
-        {[prefix(`m-nr--${gap}`)]: gap && gap !== "grid"},
-        {[prefix(`flex--gap`)]: gap && gap === "grid"},
-        {[prefix(`flex--wrap`)]: wrap === true},
-        {[prefix(`flex--nowrap`)]: wrap === false},
-        {[prefix(`flex--wrap-reverse`)]: wrap === "reverse"},
+        { [prefix("flex--inline")]: inline },
+        { [prefix(`flex--direction-${direction}`)]: direction },
+        { [prefix(`flex--main-axis-${alignMainAxis}`)]: alignMainAxis },
+        { [prefix(`flex--cross-axis-${alignCrossAxis}`)]: alignCrossAxis },
+        { [prefix(`flex--align-lines-${alignLines}`)]: alignLines },
+        { [prefix(`m-nl--${gap}`)]: gap && gap !== "grid" },
+        { [prefix(`m-nr--${gap}`)]: gap && gap !== "grid" },
+        { [prefix(`flex--gap`)]: gap && gap === "grid" },
+        { [prefix(`flex--wrap`)]: wrap === true },
+        { [prefix(`flex--nowrap`)]: wrap === false },
+        { [prefix(`flex--wrap-reverse`)]: wrap === "reverse" },
         className
     )
 
@@ -105,30 +96,21 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> & Partial<MetaC
                 return child
             }
 
-            const {
-                className,
-                ...childRest
-            } = child.props
+            const { className, ...childRest } = child.props
 
-            return (
-                React.cloneElement(child, {
-                    className: cx(
-                        className,
-                        {[prefix(`pl--${gap}`)]: gap && gap !== "grid"},
-                        {[prefix(`pr--${gap}`)]: gap && gap !== "grid"},
-                        {[prefix(`flex__child--gap`)]: gap && gap === "grid"}
-                    ),
-                    ...childRest
-                })
-            )
+            return React.cloneElement(child, {
+                className: cx(
+                    className,
+                    { [prefix(`pl--${gap}`)]: gap && gap !== "grid" },
+                    { [prefix(`pr--${gap}`)]: gap && gap !== "grid" },
+                    { [prefix(`flex__child--gap`)]: gap && gap === "grid" }
+                ),
+                ...childRest
+            })
         })
     }
     return (
-        <ElementType
-            className={classes}
-            {...customAttributes}
-            {...rest}
-        >
+        <ElementType className={classes} {...rest}>
             {augmentedChildren}
         </ElementType>
     )
@@ -142,5 +124,6 @@ _Flex._meta = _meta
 
 /**
  * A flex container component used to create flex box layouts.
+ * @see Spacing
  */
 export const Flex = _Flex as Flex

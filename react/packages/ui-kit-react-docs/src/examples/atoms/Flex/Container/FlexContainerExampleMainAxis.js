@@ -3,7 +3,9 @@ import { Flex } from "@porsche/ui-kit-react"
 
 const containerStyle = { maxWidth: "600px", width: "100%", backgroundColor: "WhiteSmoke", marginBottom: "16px" }
 
-const style = (width, color) => { return { width, height: "20px", backgroundColor: color } }
+const style = (width, color) => {
+    return { width, height: "20px", backgroundColor: color }
+}
 
 const FlexAlignMainAxis = (alignMainAxis) => {
     return (
@@ -21,12 +23,12 @@ const FlexAlignMainAxis = (alignMainAxis) => {
 const FlexContainerExampleMainAxis = () => {
     return (
         <div>
-            { FlexAlignMainAxis("start") }
-            { FlexAlignMainAxis("center") }
-            { FlexAlignMainAxis("end") }
-            { FlexAlignMainAxis("space-between") }
-            { FlexAlignMainAxis("space-around") }
-            { FlexAlignMainAxis("space-evenly") }
+            {FlexAlignMainAxis("start")}
+            {FlexAlignMainAxis("center")}
+            {FlexAlignMainAxis("end")}
+            {FlexAlignMainAxis("space-between")}
+            {FlexAlignMainAxis("space-around")}
+            {FlexAlignMainAxis("space-evenly")}
         </div>
     )
 }

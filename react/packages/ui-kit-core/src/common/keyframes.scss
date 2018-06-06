@@ -1,0 +1,31 @@
+
+@keyframes animation-rotate-360 {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    transform-origin: 50% 50%;
+  }
+}
+
+
+@keyframes animation-fade-opacity {
+  0% {
+    opacity: .6;
+  }
+
+  45% {
+    opacity: .85;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .6;
+  }
+}

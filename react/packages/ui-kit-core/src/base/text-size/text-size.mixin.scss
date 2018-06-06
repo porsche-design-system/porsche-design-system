@@ -1,0 +1,124 @@
+@import 'text-size.setup.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/font/font.mixin.scss';
+
+@mixin -text-size-1-regular {
+  @include -font-primary;
+  font-weight: $text-size-1-regular-font-weight;
+  font-size: $text-size-1-font-size;
+  line-height: $text-size-1-line-height;
+
+  @include breakpoint('m', 'xl') {
+    font-size: $text-size-1-font-size-m;
+    line-height: $text-size-1-line-height-m;
+  }
+
+  @include breakpoint('xl') {
+    font-size: $text-size-1-font-size-xl;
+    line-height: $text-size-1-line-height-xl;
+  }
+}
+
+@mixin -text-size-1-thin {
+  @include -text-size-1-regular;
+  font-weight: $text-size-1-thin-font-weight;
+}
+
+@mixin -text-size-2-regular {
+  @include -font-primary;
+  font-weight: $text-size-2-regular-font-weight;
+  font-size: $text-size-2-font-size;
+  line-height: $text-size-2-line-height;
+
+  @include breakpoint('m', 'xl') {
+    font-size: $text-size-2-font-size-m;
+    line-height: $text-size-2-line-height-m;
+  }
+
+  @include breakpoint('xl') {
+    font-size: $text-size-2-font-size-xl;
+    line-height: $text-size-2-line-height-xl;
+  }
+}
+
+@mixin -text-size-2-thin {
+  @include -text-size-2-regular;
+  font-weight: $text-size-2-thin-font-weight;
+}
+
+@mixin -text-size-3-regular {
+  @include -font-primary;
+  font-weight: $text-size-3-regular-font-weight;
+  font-size: $text-size-3-font-size;
+  line-height: $text-size-3-line-height;
+
+  @include breakpoint('m', 'xl') {
+    font-size: $text-size-3-font-size-m;
+    line-height: $text-size-3-line-height-m;
+  }
+
+  @include breakpoint('xl') {
+    font-size: $text-size-3-font-size-xl;
+    line-height: $text-size-3-line-height-xl;
+  }
+}
+
+@mixin -text-size-3-thin {
+  @include -text-size-3-regular;
+  font-weight: $text-size-3-thin-font-weight;
+}
+
+@mixin -text-size-4-regular {
+  @include -font-primary;
+  font-weight: $text-size-4-regular-font-weight;
+  font-size: $text-size-4-font-size;
+  line-height: $text-size-4-line-height;
+
+  @include breakpoint('m', 'xl') {
+    font-size: $text-size-4-font-size-m;
+    line-height: $text-size-4-line-height-m;
+  }
+
+  @include breakpoint('xl') {
+    font-size: $text-size-4-font-size-xl;
+    line-height: $text-size-4-line-height-xl;
+  }
+}
+
+@mixin -text-size-4-thin {
+  @include -text-size-4-regular;
+  font-weight: $text-size-4-thin-font-weight;
+}
+
+@mixin -text-size-5-regular {
+  @include -font-primary;
+  font-weight: $text-size-5-regular-font-weight;
+  font-size: $text-size-5-font-size;
+  line-height: $text-size-5-line-height;
+}
+
+@mixin -text-size-5-thin {
+  @include -text-size-5-regular;
+  font-weight: $text-size-5-thin-font-weight;
+}
+
+@mixin -text-size-copy {
+  @include -font-primary;
+  font-weight: $text-size-copy-font-weight;
+  font-size: $text-size-copy-font-size;
+  line-height: $text-size-copy-line-height;
+}
+
+@mixin -text-size-small {
+  @include -font-primary;
+  font-weight: $text-size-small-font-weight;
+  font-size: $text-size-small-font-size;
+  line-height: $text-size-small-line-height;
+}
+
+@mixin -text-size-micro {
+  @include -font-primary;
+  font-weight: $text-size-micro-font-weight;
+  font-size: $text-size-micro-font-size;
+  line-height: $text-size-micro-line-height;
+}

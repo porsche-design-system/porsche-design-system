@@ -1,0 +1,19 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import 'car-selector.setup.scss';
+
+$car-selector-derivative-list-item-model-width: 100% !default;
+$car-selector-derivative-list-item-image-width: rem(75px) !default;
+$car-selector-derivative-list-item-image-width-m: 100% !default;
+$car-selector-derivative-list-item-generation-position-left: 50% !default;
+$car-selector-derivative-list-item-generation-max-width: 99% !default;
+
+// the width will be set from the slider - this is just the calculation for PatternLab
+$car-selector-derivative-list-item-width-m: calc((100% - (5* #{$spacing-b})) / 5) !default;
+$car-selector-derivative-list-item-width-l: calc((100% - (5* #{$spacing-b-l})) / 5) !default;
+$car-selector-derivative-list-item-logged-in-width-m: calc((100% - (3* #{$spacing-b}) - (2* #{$car-selector-arrow-font-size})) / 4) !default;
+$car-selector-derivative-list-item-logged-in-width-l: calc((100% - (3* #{$spacing-b-l}) - (2* #{$car-selector-arrow-font-size})) / 4) !default;
+
+$car-selector-derivative-list-item-margin-m: 0 ($spacing-b / 2) !default;
+$car-selector-derivative-list-item-margin-l: 0 ($spacing-b-l / 2) !default;

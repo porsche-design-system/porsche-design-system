@@ -1,0 +1,26 @@
+@import 'display.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.-#{$global-class-prefix}display-none {
+  @include -display-none;
+
+  &-xxs {
+    @include -display-none-xxs;
+  }
+
+  &-xs {
+    @include -display-none-xs;
+  }
+
+  &-s {
+    @include -display-none-s;
+  }
+
+  &-m {
+    @include -display-none-m;
+  }
+
+  &-l {
+    @include -display-none-l;
+  }
+}

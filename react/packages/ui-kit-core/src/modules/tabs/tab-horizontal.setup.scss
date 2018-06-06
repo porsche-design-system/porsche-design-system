@@ -1,0 +1,13 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$tab-horizontal-spacing: $spacing-18 !default;
+$tab-horizontal-spacing-horizontal: $spacing-12 !default;
+$tab-horizontal-arrow-border-width: rem(8px) !default;
+$tab-horizontal-arrow-border-color: $color-palette-red-1 !default;
+$tab-horizontal-arrow-position-vertical: rem(8px) !default;
+$tab-horizontal-arrow-position-horizontal: 50% !default;
+$tab-horizontal-text-size: $text-size-copy-font-size !default;
+$tab-horizontal-reset: 0 !default;

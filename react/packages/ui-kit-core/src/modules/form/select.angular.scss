@@ -1,0 +1,11 @@
+@import 'select.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}select {
+  &__field {
+    // angular specific selector, input is invalid
+    &.ng-invalid {
+      border-color: $select-field-error-border-color;
+    }
+  }
+}

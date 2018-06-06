@@ -1,0 +1,13 @@
+@import '../../mixins/px-rem-converter.scss';
+
+$tile-height-default: rem(194px) !default;
+$tile-height-xs: rem(232px) !default;
+$tile-height-s: rem(372px) !default;
+$tile-height-m: rem(330px) !default;
+$tile-height-l: rem(477px) !default;
+
+$tile-animation-vertical-offset: -50% !default;
+$tile-animation-horizontal-offset: -50% !default;
+$tile-animation-scale: 1.03 !default;
+
+$tile-flex-full-width: 100% !default; // IE flex issue fix

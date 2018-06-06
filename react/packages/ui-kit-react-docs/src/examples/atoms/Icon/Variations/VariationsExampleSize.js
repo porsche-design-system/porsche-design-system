@@ -3,11 +3,13 @@ import { Icon } from "@porsche/ui-kit-react"
 
 const VariationsExampleSize = () => {
     return (
-        <div>
+        <React.Fragment>
             <Icon name="magnify_glass" size="small" />
+            <Icon name="magnify_glass" size="regular" />
             <Icon name="magnify_glass" size="medium" />
             <Icon name="magnify_glass" size="large" />
-        </div>
+            <Icon name="magnify_glass" size="huge" />
+        </React.Fragment>
     )
 }
 

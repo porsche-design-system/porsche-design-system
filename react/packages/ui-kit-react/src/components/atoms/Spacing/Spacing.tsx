@@ -3,19 +3,11 @@ import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType, prefix } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export type SpacingValue = 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60
+export type SpacingValue = 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
 
-export interface SpacingProps {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface SpacingProps extends ClassNameProp, ComponentProp {
     /**
      * Set this to true if you always want to create a wrapper, even for single childs.
      * This is useful if the child element does not support className.
@@ -45,7 +37,6 @@ const _Spacing: React.StatelessComponent<SpacingProps> & Partial<MetaCategorizab
         as,
         className,
         children,
-        customAttributes,
         wrap,
         margin,
         marginBottom,
@@ -63,16 +54,16 @@ const _Spacing: React.StatelessComponent<SpacingProps> & Partial<MetaCategorizab
     const ElementType = getElementType(as, "div")
 
     const classes = cx(
-        {[prefix(`m--${margin}`)]: margin},
-        {[prefix(`mt--${marginTop}`)]: marginTop},
-        {[prefix(`ml--${marginLeft}`)]: marginLeft},
-        {[prefix(`mb--${marginBottom}`)]: marginBottom},
-        {[prefix(`mr--${marginRight}`)]: marginRight},
-        {[prefix(`p--${padding}`)]: padding},
-        {[prefix(`pt--${paddingTop}`)]: paddingTop},
-        {[prefix(`pl--${paddingLeft}`)]: paddingLeft},
-        {[prefix(`pb--${paddingBottom}`)]: paddingBottom},
-        {[prefix(`pr--${paddingRight}`)]: paddingRight},
+        { [prefix(`m--${margin}`)]: margin },
+        { [prefix(`mt--${marginTop}`)]: marginTop },
+        { [prefix(`ml--${marginLeft}`)]: marginLeft },
+        { [prefix(`mb--${marginBottom}`)]: marginBottom },
+        { [prefix(`mr--${marginRight}`)]: marginRight },
+        { [prefix(`p--${padding}`)]: padding },
+        { [prefix(`pt--${paddingTop}`)]: paddingTop },
+        { [prefix(`pl--${paddingLeft}`)]: paddingLeft },
+        { [prefix(`pb--${paddingBottom}`)]: paddingBottom },
+        { [prefix(`pr--${paddingRight}`)]: paddingRight },
         className
     )
 
@@ -83,29 +74,17 @@ const _Spacing: React.StatelessComponent<SpacingProps> & Partial<MetaCategorizab
                 return child
             }
 
-            const {
-                className,
-                ...childRest
-            } = child.props
+            const { className: childrenClassName, ...childRest } = child.props
 
-            return (
-                React.cloneElement(child, {
-                    className: cx(
-                        className,
-                        classes
-                    ),
-                    ...childRest
-                })
-            )
+            return React.cloneElement(child, {
+                className: cx(childrenClassName, classes),
+                ...childRest
+            })
         })[0]
     } else {
         // Multiple childs => render wrapper element with spacing classes and unhandled props
         return (
-            <ElementType
-                className={classes}
-                {...customAttributes}
-                {...rest}
-            >
+            <ElementType className={classes} {...rest}>
                 {children}
             </ElementType>
         )
@@ -117,5 +96,6 @@ _Spacing._meta = _meta
 /**
  * A component to add margins and paddings to components.
  * If it has only one child, those classes are added directly to the child to avoid unnecessary wrapper divs.
+ * @see Flex
  */
 export const Spacing = _Spacing as React.StatelessComponent<SpacingProps>

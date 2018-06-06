@@ -5,11 +5,13 @@ import React from "react"
 import { pure } from "src/app/HOC"
 
 const ComponentPropDescription = ({ description }) => {
-    return (_.isNil(description) ? null : (
+    return _.isNil(description) ? null : (
         <p>
-            {_.map(description, (line) => { return [line, <br key={line} />] })}
+            {_.map(description, (line) => {
+                return [line, <br key={line} />]
+            })}
         </p>
-    ))
+    )
 }
 
 ComponentPropDescription.propTypes = {

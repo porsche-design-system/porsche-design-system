@@ -6,38 +6,38 @@ import docInfo from "src/app/docgenInfo.json"
 
 const withDocInfo = (ChildComponent) => {
     return class extends Component {
-  static propTypes = {
-      name: PropTypes.string.isRequired,
-      parent: PropTypes.string,
-      type: PropTypes.string
-  }
+        static propTypes = {
+            name: PropTypes.string.isRequired,
+            parent: PropTypes.string,
+            type: PropTypes.string
+        }
 
-  constructor(props) {
-      super(props)
+        constructor(props) {
+            super(props)
 
-      this.state = this.computeProps(props)
-  }
+            this.state = this.computeProps(props)
+        }
 
-  componentWillReceiveProps(nextProps) {
-      this.setState(this.computeProps(nextProps))
-  }
+        componentWillReceiveProps(nextProps) {
+            this.setState(this.computeProps(nextProps))
+        }
 
-  computeProps = ({ name, parent, type }) => {
-      const { docBlock, path } = docInfo[name]
-      const { description } = docBlock
+        computeProps = ({ name, parent, type }) => {
+            const { docBlock, path } = docInfo[name]
+            const { description } = docBlock
 
-      return {
-          description,
-          path,
-          componentGroup: getComponentGroup(docInfo, name),
-          componentName: name,
-          seeItems: getSeeItems(docInfo, name)
-      }
-  }
+            return {
+                description,
+                path,
+                componentGroup: getComponentGroup(docInfo, name),
+                componentName: name,
+                seeItems: getSeeItems(docInfo, name)
+            }
+        }
 
-  render() {
-      return <ChildComponent {...this.state} />
-  }
+        render() {
+            return <ChildComponent {...this.state} />
+        }
     }
 }
 

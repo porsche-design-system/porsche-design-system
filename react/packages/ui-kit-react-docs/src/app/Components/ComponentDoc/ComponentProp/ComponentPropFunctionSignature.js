@@ -20,7 +20,9 @@ const rowStyle = {
     flexDirection: "row"
 }
 
-const getTagType = (tag) => { return (tag.type.type === "AllLiteral" ? "any" : tag.type.name) }
+const getTagType = (tag) => {
+    return tag.type.type === "AllLiteral" ? "any" : tag.type.name
+}
 
 const ComponentPropFunctionSignature = ({ name, tags }) => {
     const params = _.filter(tags, { title: "param" })
@@ -31,9 +33,17 @@ const ComponentPropFunctionSignature = ({ name, tags }) => {
     if (_.isEmpty(params) && !returns) return null
 
     const paramSignature = params
-        .map((param) => { return `${param.name}: ${getTagType(param)}` })
+        .map((param) => {
+            if (!param.type) {
+                return param.name
+            }
+
+            return `${param.name}: ${getTagType(param)}`
+        })
         // prevent object properties from showing as individual params
-        .filter((p) => { return !_.includes(p, ".") })
+        .filter((p) => {
+            return !_.includes(p, ".")
+        })
         .join(", ")
 
     const tagDescriptionRows = _.compact([...params, returns]).map((tag) => {
@@ -43,15 +53,19 @@ const ComponentPropFunctionSignature = ({ name, tags }) => {
                 <div style={nameStyle}>
                     <code>{title}</code>
                 </div>
-                <div style={descriptionStyle}>
-                    {tag.description}
-                </div>
+                <div style={descriptionStyle}>{tag.description}</div>
             </div>
         )
     })
 
     return (
-        <ComponentPropExtra title={<pre style={{ marginTop: "8px" }}>{name}({paramSignature}){returns ? `: ${getTagType(returns)}` : ""}</pre>}>
+        <ComponentPropExtra
+            title={
+                <pre style={{ marginTop: "8px" }}>
+                    {name}({paramSignature}){returns ? `: ${getTagType(returns)}` : ""}
+                </pre>
+            }
+        >
             {tagDescriptionRows}
         </ComponentPropExtra>
     )

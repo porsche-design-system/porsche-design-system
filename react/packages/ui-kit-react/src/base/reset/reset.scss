@@ -1,0 +1,215 @@
+// TODO: Use ui-kit-core reset instead.
+@import "../../common";
+
+/* -----|| custom global definitions ||----------------------------------------------- */
+/* ----------------------------------------------------------------------------------- */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+main,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+picture,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+header,
+main,
+footer,
+aside {
+    display: block;
+}
+
+html {
+    font-family: sans-serif;
+    text-size-adjust: 100%;
+    font-size: $global-rem-base;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+
+button,
+input,
+select,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: 100%;
+    appearance: none;
+    border-radius: 0;
+}
+
+a,
+button,
+input {
+    /* prevent zooming */
+    -ms-touch-action: none !important;
+}
+
+a {
+    color: $black;
+    text-decoration: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input[type="search"] {
+    appearance: textfield;
+    box-sizing: content-box;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-outer-spin-button,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    appearance: none;
+}
+
+a:hover,
+a:focus,
+a:active,
+button:hover,
+button:focus,
+button:active {
+    outline: 0;
+    cursor: pointer;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+img {
+    display: block;
+    border: 0;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* hide native "X" on IE Browsers in input fields */
+
+input::-ms-clear {
+    display: none;
+}
+
+/* fix blue border around focused buttons */
+
+button:focus {
+    outline: 0;
+}
+
+div:focus {
+    /** dunno why, but sometimes div's can have a focused outline in chrome */
+    outline: none;
+}
+
+* {
+    box-sizing: border-box;
+}

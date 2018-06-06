@@ -1,0 +1,36 @@
+// This file includes all fontfaces, globals and components needed for ui-kit-react to be displayed properly.
+// Include it once in your main scss file instead of the base and components if you don't want to pick only what you need.
+
+@import "base/base";
+
+// Atoms
+@import "components/atoms/Divider/divider";
+@import "components/atoms/Flex/flex";
+@import "components/atoms/Icon/icon";
+@import "components/atoms/Logo/logo";
+@import "components/atoms/Spacing/spacing";
+@import "components/atoms/Text/text";
+
+// Molecules
+@import "components/molecules/Loader/loader";
+@import "components/molecules/Button/button-primary";
+@import "components/molecules/Button/button-ghost";
+@import "components/molecules/Checkbox/checkbox";
+@import "components/molecules/Flyout/flyout";
+@import "components/molecules/Input/input";
+@import "components/molecules/Select/select";
+@import "components/molecules/TextArea/textArea";
+@import "components/molecules/Navigation/navigationMenuList";
+@import "components/molecules/Navigation/navigationDesktop";
+@import "components/molecules/Navigation/navigationMobile";
+@import "components/molecules/Tab/tab";
+
+// Organisms
+@import "components/organisms/Header/header";
+
+// Screens
+@import "components/screens/ErrorScreen/errorScreen";
+@import "components/screens/MaintenanceScreen/maintenanceScreen";
+
+// Structures
+@import "components/structures/ContentWrapper/contentWrapper";

@@ -1,0 +1,15 @@
+@import '../../../setup/color-palette.setup.scss';
+@import '../../../base/tile/tile.setup.scss';
+@import '../../../modules/button/button-inline.setup.scss';
+@import '../../../mixins/px-rem-converter.scss';
+
+$event-detail-icon-color: $color-palette-red-1 !default;
+
+$event-detail-header-height-default: $tile-height-default - $button-inline-height !default;
+$event-detail-header-height-xs: $tile-height-xs !default;
+$event-detail-header-height-s: $tile-height-s !default;
+$event-detail-header-height-m: $tile-height-m !default;
+$event-detail-header-height-l: $tile-height-l !default;
+
+$event-detail-header-textarea-position-bottom: $spacing-30 !default;
+$event-detail-header-textarea-position-left: 0 !default;

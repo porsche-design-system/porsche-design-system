@@ -1,0 +1,56 @@
+@import "../../../common";
+@import "../../../base/icon/icon";
+
+.#{$global-class-prefix}icon {
+    $bem-block: &;
+
+    &--small {
+        font-size: 14px;
+    }
+
+    &--regular {
+        font-size: 18px;
+    }
+
+    &--medium {
+        font-size: 24px;
+    }
+
+    &--large {
+        font-size: 30px;
+    }
+
+    &--huge {
+        font-size: 42px;
+    }
+
+    &--circled {
+        border-color: inherit;
+        border-radius: 50%;
+
+        &#{$bem-block}--small {
+            padding: 3px;
+            border: 1px solid;
+        }
+
+        &#{$bem-block}--regular {
+            padding: 5px;
+            border: 1px solid;
+        }
+
+        &#{$bem-block}--medium {
+            padding: 7px;
+            border: 1px solid;
+        }
+
+        &#{$bem-block}--large {
+            padding: 11px;
+            border: 2px solid;
+        }
+
+        &#{$bem-block}--huge {
+            padding: 17px;
+            border: 2px solid;
+        }
+    }
+}

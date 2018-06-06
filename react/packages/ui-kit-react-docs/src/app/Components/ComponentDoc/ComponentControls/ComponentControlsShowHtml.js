@@ -9,12 +9,7 @@ const ComponentControlsShowHtml = ({ active, onClick }) => {
     return (
         <ComponentControlsToolTip content="Show HTML">
             <Menu.Item active={active} onClick={onClick}>
-                <Icon
-                    color={active ? "green" : "grey"}
-                    name="html5"
-                    fitted
-                    size="large"
-                />
+                <Icon color={active ? "green" : "grey"} name="html5" fitted size="large" />
             </Menu.Item>
         </ComponentControlsToolTip>
     )

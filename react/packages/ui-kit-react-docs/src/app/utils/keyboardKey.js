@@ -79,7 +79,9 @@ const codes = {
 }
 
 // Function Keys (F1-24)
-_.times(24, (i) => { return (codes[112 + i] = `F${i + 1}`) })
+_.times(24, (i) => {
+    return (codes[112 + i] = `F${i + 1}`)
+})
 
 // Alphabet (a-Z)
 _.times(26, (i) => {
@@ -91,13 +93,13 @@ const keyboardKey = {
     codes,
 
     /**
-   * Get the `keyCode` or `which` value from a keyboard event or `key` name.
-   * @param {string|object} name A keyboard event like object or `key` name.
-   * @param {string} [name.key] If object, it must have one of these keys.
-   * @param {string} [name.keyCode] If object, it must have one of these keys.
-   * @param {string} [name.which] If object, it must have one of these keys.
-   * @returns {*}
-   */
+     * Get the `keyCode` or `which` value from a keyboard event or `key` name.
+     * @param {string|object} name A keyboard event like object or `key` name.
+     * @param {string} [name.key] If object, it must have one of these keys.
+     * @param {string} [name.keyCode] If object, it must have one of these keys.
+     * @param {string} [name.which] If object, it must have one of these keys.
+     * @returns {*}
+     */
     getCode(name) {
         if (_.isObject(name)) {
             return name.keyCode || name.which || this[name.key]
@@ -106,13 +108,13 @@ const keyboardKey = {
     },
 
     /**
-   * Get the key name from a keyboard event, `keyCode`, or `which` value.
-   * @param {number|object} code A keyboard event like object or key name.
-   * @param {number} [code.keyCode] If object, it must have one of these keys.
-   * @param {number} [code.which] If object, it must have one of these keys.
-   * @param {number} [code.shiftKey] If object, it must have one of these keys.
-   * @returns {*}
-   */
+     * Get the key name from a keyboard event, `keyCode`, or `which` value.
+     * @param {number|object} code A keyboard event like object or key name.
+     * @param {number} [code.keyCode] If object, it must have one of these keys.
+     * @param {number} [code.which] If object, it must have one of these keys.
+     * @param {number} [code.shiftKey] If object, it must have one of these keys.
+     * @returns {*}
+     */
     getName(code) {
         const isEvent = _.isObject(code)
         let name = codes[isEvent ? code.keyCode || code.which : code]

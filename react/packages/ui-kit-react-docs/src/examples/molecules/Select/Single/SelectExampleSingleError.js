@@ -38,21 +38,11 @@ class SelectExampleSingleError extends React.Component {
         return (
             <Flex gap="grid">
                 <Flex.Item width={6}>
-                    <Select
-                        error
-                        options={data}
-                        value={this.state.value1}
-                        onChange={this.handleValue1Change}
-                    />
+                    <Select error options={data} value={this.state.value1} onChange={this.handleValue1Change} />
                 </Flex.Item>
 
                 <Flex.Item width={6}>
-                    <Select
-                        error
-                        options={data}
-                        value={this.state.value2}
-                        onChange={this.handleValue2Change}
-                    />
+                    <Select error options={data} value={this.state.value2} onChange={this.handleValue2Change} />
                 </Flex.Item>
             </Flex>
         )

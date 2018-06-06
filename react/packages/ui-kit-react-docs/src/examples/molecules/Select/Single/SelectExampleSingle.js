@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Select } from "@porsche/ui-kit-react"
+import { Select } from "@porsche/ui-kit-react"
 
 const data = [
     { value: "one", label: "One" },
@@ -13,28 +13,18 @@ const data = [
 ]
 
 class SelectExampleSingle extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            value: null
-        }
+    state = {
+        value: null
     }
 
     handleChange = (value) => {
         this.setState({
-            value1: value
+            value
         })
     }
 
     render() {
-        return (
-            <Select
-                options={data}
-                value={this.state.value1}
-                onChange={this.handleChange}
-            />
-        )
+        return <Select options={data} value={this.state.value} onChange={this.handleChange} />
     }
 }
 

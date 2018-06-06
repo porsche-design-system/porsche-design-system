@@ -42,10 +42,12 @@ const configuration = {
                 use: [
                     {
                         loader: production ? MiniCssExtractPlugin.loader : "style-loader",
-                        options: !production ? {
-                            // Style loader options
-                            sourceMap: true
-                        } : {}
+                        options: !production
+                            ? {
+                                  // Style loader options
+                                  sourceMap: true
+                              }
+                            : {}
                     },
                     {
                         loader: "css-loader",

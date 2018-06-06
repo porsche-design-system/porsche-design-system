@@ -4,9 +4,7 @@ import { Checkbox, Flex, Spacing } from "@porsche/ui-kit-react"
 const CheckboxExampleError = () => {
     return (
         <Flex wrap>
-            <Checkbox error>
-                Checkbox
-            </Checkbox>
+            <Checkbox error>Checkbox</Checkbox>
 
             <Checkbox error checked>
                 Checkbox
@@ -31,7 +29,6 @@ const CheckboxExampleError = () => {
                     Checkbox
                 </Checkbox>
             </Spacing>
-
         </Flex>
     )
 }

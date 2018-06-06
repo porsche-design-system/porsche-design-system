@@ -9,7 +9,8 @@
 
 .tmp/
 build/
-css/common*
-css/base/
-css/components/
+css/
+dist/
 node_modules/
+
+jest.json

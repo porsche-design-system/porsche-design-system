@@ -1,0 +1,44 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$toggle-width: $spacing-48 !default;
+$toggle-height: $spacing-24 !default;
+$toggle-transition-speed: .2s !default;
+
+$toggle-slider-border-size: 1px !default;
+$toggle-slider-border-color: $color-palette-grey-3 !default;
+$toggle-slider-border-color-active: $color-palette-status-green !default;
+$toggle-slider-border-radius: $toggle-height / 2 !default;
+$toggle-slider-background-color: transparent !default;
+$toggle-slider-background-color-hover: $toggle-slider-border-color !default;
+$toggle-slider-background-color-active: $toggle-slider-border-color-active !default;
+$toggle-slider-background-color-disabled: $toggle-slider-background-color !default;
+$toggle-slider-transition-speed: $toggle-transition-speed !default;
+
+$toggle-slider-inverted-border-color: $color-palette-grey-7 !default;
+$toggle-slider-inverted-background-color-hover: $color-palette-grey-7 !default;
+
+$toggle-slider-icon-width: 50% !default;
+$toggle-slider-icon-size: rem(14px) !default;
+$toggle-slider-icon-color: $toggle-slider-border-color !default;
+$toggle-slider-icon-color-hover: $color-palette-white !default;
+$toggle-slider-icon-color-active: $color-palette-white !default;
+$toggle-slider-icon-color-disabled: $toggle-slider-icon-color !default;
+$toggle-slider-icon-transition-speed: $toggle-transition-speed !default;
+
+$toggle-slider-icon-inverted-color: $color-palette-white !default;
+$toggle-slider-icon-inverted-color-disabled: $toggle-slider-icon-inverted-color !default;
+
+$toggle-slider-circle-size: $toggle-height !default;
+$toggle-slider-circle-offset: - $toggle-slider-border-size !default;
+$toggle-slider-circle-border-size: $toggle-slider-border-size !default;
+$toggle-slider-circle-border-color: $toggle-slider-border-color !default;
+$toggle-slider-circle-border-color-active: $toggle-slider-border-color-active !default;
+$toggle-slider-circle-border-radius: 50% !default;
+$toggle-slider-circle-background-color: $color-palette-white !default;
+$toggle-slider-circle-translate-x: 0 !default;
+$toggle-slider-circle-translate-x-active: $toggle-width - $toggle-slider-circle-size !default;
+$toggle-slider-circle-transition-speed: $toggle-transition-speed !default;
+
+$toggle-slider-inverted-circle-border-color: $color-palette-grey-7 !default;

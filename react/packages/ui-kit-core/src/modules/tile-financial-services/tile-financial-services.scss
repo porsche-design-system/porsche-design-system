@@ -1,0 +1,171 @@
+@import 'tile-financial-services.setup.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+
+@mixin icon-height($height) {
+  font-size: $height;
+  line-height: $height;
+}
+
+.tile-financial-services {
+  @include -spacing-inner-a;
+  @include flex; // IE 11 min-height flex fix
+  @include flex--direction(column); // IE 11 min-height flex fix
+  position: relative;
+  background-color: $tile-financial-services-background-color;
+
+  &__container {
+    @include flex;
+    @include flex--direction(column);
+    min-height: $tile-financial-services-container-min-height-default;
+
+    @include breakpoint('s') {
+      min-height: $tile-financial-services-container-min-height-s;
+    }
+
+    @include breakpoint('m') {
+      min-height: $tile-financial-services-container-min-height-m;
+    }
+
+    @include breakpoint('l') {
+      min-height: $tile-financial-services-container-min-height-l;
+    }
+  }
+
+  &__icon {
+    @include -align-center;
+    @include icon-height($tile-financial-services-icon-height-default);
+    color: $tile-financial-services-icon-color;
+
+    @include breakpoint('s') {
+      @include icon-height($tile-financial-services-icon-height-s);
+    }
+
+    @include breakpoint('l') {
+      @include icon-height($tile-financial-services-icon-height-l);
+    }
+  }
+
+  &__headline {
+    @include -text-size-3-thin;
+    @include -overflow-ellipsis;
+    text-align: center;
+    color: $tile-financial-services-headline-color;
+
+    &--multiline {
+      text-overflow: clip;
+      white-space: normal;
+    }
+  }
+
+  &__pagination {
+    @include -spacing-18('bottom');
+  }
+
+  &__arrow {
+    position: absolute;
+    top: $tile-financial-services-arrow-top;
+    display: none;
+
+    &-icon {
+      @include icon-height($tile-financial-services-arrow-height);
+      cursor: pointer;
+      color: $tile-financial-services-arrow-color;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $tile-financial-services-arrow-color-active;
+      }
+
+      &--disabled {
+        color: $tile-financial-services-arrow-color-disabled;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $tile-financial-services-arrow-color-disabled;
+        }
+      }
+    }
+
+    @include breakpoint('s') {
+      display: block;
+    }
+
+    &--right {
+      right: $tile-financial-services-arrow-right;
+    }
+
+    &--left {
+      left: $tile-financial-services-arrow-left;
+    }
+  }
+
+  &__content {
+    @include flex;
+    @include flex--grow(1);
+    @include flex--direction(column);
+    @include flex--justify-content(center);
+    position: relative;
+    width: $file-financial-services-content-width;
+
+    &-top {
+      width: $file-financial-services-content-top-width;
+
+      &::after {
+        @include -spacing-a;
+        content: '';
+        display: block;
+        height: $tile-financial-services-content-border-size;
+        background: $tile-financial-services-content-border-color;
+      }
+    }
+
+    &-bottom {
+      @include -spacing-a;
+
+      @include breakpoint('s') {
+        @include -spacing-30('left', 'padding');
+        @include -spacing-30('right', 'padding');
+      }
+
+      position: relative;
+      width: $file-financial-services-content-bottom-width;
+
+      &-text {
+        @include -align-center;
+        @include -text-size-copy;
+        @include -spacing-30('bottom');
+        color: $tile-financial-services-content-text-color;
+      }
+
+      &-headline {
+        @include -text-size-3-thin;
+        @include -align-center;
+        @include -spacing-6('bottom');
+        color: $tile-financial-services-content-headline-color;
+      }
+
+      &-textarea {
+        @include -align-center;
+        @include -text-size-copy;
+        @include -spacing-b('bottom');
+        color: $tile-financial-services-content-textarea-color;
+      }
+
+      &-icon {
+        font-size: $tile-financial-services-content-icon-height;
+        color: $tile-financial-services-icon-color;
+      }
+    }
+  }
+
+  &__button {
+    position: relative;
+    width: $file-financial-services-button-width;
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "paths": {
+    "source": {
+      "root": "./patternlab/source/",
+      "patterns": "./patternlab/source/_patterns/",
+      "data": "./patternlab/source/_data/",
+      "meta": "./patternlab/source/_meta/",
+      "annotations": "./patternlab/source/_annotations/",
+      "styleguide": "./node_modules/styleguidekit-assets-default/dist/",
+      "patternlabFiles": "./node_modules/styleguidekit-mustache-default/views/",
+      "js": "./patternlab/source/js",
+      "images": "./patternlab/source/images",
+      "fonts": "./patternlab/source/fonts",
+      "css": "./patternlab/source/css/",
+      "porscheStylesheets": "./"
+    },
+    "public": {
+      "root": "./patternlab/public/",
+      "patterns": "./patternlab/public/patterns/",
+      "data": "./patternlab/public/styleguide/data/",
+      "annotations": "./patternlab/public/annotations/",
+      "styleguide": "./patternlab/public/styleguide/",
+      "js": "./patternlab/public/js",
+      "images": "./patternlab/public/images",
+      "fonts": "./patternlab/public/fonts",
+      "css": "./patternlab/public/css"
+    }
+  },
+  "styleGuideExcludes": [],
+  "defaultPattern": "viewall-design-spec-all",
+  "defaultShowPatternInfo": false,
+  "cleanPublic": true,
+  "patternExtension": "mustache",
+  "ignored-extensions": [
+    "scss",
+    "DS_Store",
+    "less"
+  ],
+  "ignored-directories": [
+    "scss"
+  ],
+  "debug": false,
+  "ishControlsHide": {
+    "s": false,
+    "m": false,
+    "l": false,
+    "full": false,
+    "random": true,
+    "disco": true,
+    "hay": true,
+    "mqs": false,
+    "find": false,
+    "views-all": true,
+    "views-annotations": false,
+    "views-code": false,
+    "views-new": false,
+    "tools-all": false,
+    "tools-docs": true
+  },
+  "ishMinimum": "240",
+  "ishMaximum": "2600",
+  "patternStateCascade": [
+    "inprogress",
+    "inreview",
+    "complete"
+  ],
+  "patternStates": {},
+  "patternExportPatternPartials": [],
+  "patternExportDirectory": "./patternlab/pattern_exports/",
+  "cacheBust": true,
+  "starterkitSubDir": "dist",
+  "outputFileSuffixes": {
+    "rendered": ".rendered",
+    "rawTemplate": "",
+    "markupOnly": ".markup-only"
+  },
+  "cleanOutputHtml": false,
+  "plugins": {
+    "plugin-node-clipboard": {
+      "enabled": true,
+      "initialized": false
+    },
+    "plugin-node-data-inheritance": {
+      "enabled": true,
+      "initialized": false
+    },
+    "plugin-node-sass-dependency-collector": {
+      "enabled": true,
+      "initialized": false
+    }
+  }
+}

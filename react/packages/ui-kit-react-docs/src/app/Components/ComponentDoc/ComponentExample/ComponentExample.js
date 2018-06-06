@@ -36,9 +36,9 @@ const errorStyle = {
 }
 
 /**
-* Renders a `component` and the raw `code` that produced it.
-* Allows toggling the the raw `code` code block.
-*/
+ * Renders a `component` and the raw `code` that produced it.
+ * Allows toggling the the raw `code` code block.
+ */
 class ComponentExample extends Component {
     static propTypes = {
         children: PropTypes.node,
@@ -83,9 +83,13 @@ class ComponentExample extends Component {
         copyToClipboard(location.href)
     }
 
-    handleMouseEnter = () => { return this.setState({ controlsVisible: true }) }
+    handleMouseEnter = () => {
+        return this.setState({ controlsVisible: true })
+    }
 
-    handleMouseLeave = () => { return this.setState({ controlsVisible: false }) }
+    handleMouseLeave = () => {
+        return this.setState({ controlsVisible: false })
+    }
 
     handleShowCodeClick = (e) => {
         e.preventDefault()
@@ -110,13 +114,16 @@ class ComponentExample extends Component {
     copyJSX = () => {
         copyToClipboard(this.state.sourceCode)
         this.setState({ copiedCode: true })
-        setTimeout(() => { return this.setState({ copiedCode: false }) }, 1000)
+        setTimeout(() => {
+            return this.setState({ copiedCode: false })
+        }, 1000)
     }
 
     resetJSX = () => {
         const { sourceCode } = this.state
         const original = this.getOriginalSourceCode()
-        if (sourceCode !== original && confirm("Lose your changes?")) { // eslint-disable-line no-alert
+        if (sourceCode !== original && confirm("Lose your changes?")) {
+            // eslint-disable-line no-alert
             this.setState({ sourceCode: original })
             this.renderSourceCode()
         }
@@ -171,17 +178,19 @@ class ComponentExample extends Component {
             .replace(/ import/g, "\nimport") // one import per line
             .split("\n") // split lines
             .filter(Boolean) // remove empty lines
-            .map((l) => { // rewrite imports to const statements
-                const [
-                    defaultImport,
-                    destructuredImports,
-                    _module
-                ] = _.tail(/import\s+([\w]+)?(?:\s*,\s*)?({[\s\w,]+})?\s+from\s+['"](?:.*\/)?([\w\-_]+)['"]/.exec(l))
+            .map((l) => {
+                // rewrite imports to const statements
+                const [defaultImport, destructuredImports, _module] = _.tail(
+                    /import\s+([\w]+)?(?:\s*,\s*)?({[\s\w,]+})?\s+from\s+['"](?:.*\/)?([\w\-_]+)['"]/.exec(l)
+                )
 
                 const module = _.snakeCase(_module).toUpperCase()
 
                 if (module === "COMMON") {
-                    const componentPath = examplePath.split(__PATH_SEP__).splice(0, 2).join(__PATH_SEP__)
+                    const componentPath = examplePath
+                        .split(__PATH_SEP__)
+                        .splice(0, 2)
+                        .join(__PATH_SEP__)
                     COMMON = require(`src/examples/${componentPath}/common`)
                 }
 
@@ -271,14 +280,8 @@ class ComponentExample extends Component {
         return (
             <div style={style}>
                 {this.renderJSXControls()}
-                <Editor
-                    id={`${this.getKebabExamplePath()}-jsx`}
-                    value={sourceCode}
-                    onChange={this.handleChangeCode}
-                />
-                {error && (
-                    <pre style={errorStyle}>{error}</pre>
-                )}
+                <Editor id={`${this.getKebabExamplePath()}-jsx`} value={sourceCode} onChange={this.handleChangeCode} />
+                {error && <pre style={errorStyle}>{error}</pre>}
             </div>
         )
     }
@@ -289,8 +292,7 @@ class ComponentExample extends Component {
 
         // add new lines between almost all adjacent elements
         // moves inline elements to their own line
-        const preFormattedHTML = markup
-            .replace(/><(?!\/i|\/label|\/span|option)/g, ">\n<")
+        const preFormattedHTML = markup.replace(/><(?!\/i|\/label|\/span|option)/g, ">\n<")
 
         const beautifiedHTML = html(preFormattedHTML, {
             indent_size: 2,
@@ -311,8 +313,7 @@ class ComponentExample extends Component {
     render() {
         const { children, title } = this.props
         const { controlsVisible, exampleElement, showCode, showHTML } = this.state
-        const exampleStyle = {
-        }
+        const exampleStyle = {}
 
         if (showCode || showHTML || location.hash === `#${this.anchorName}`) {
             exampleStyle.boxShadow = "0 0 30px #ccc"
@@ -328,9 +329,7 @@ class ComponentExample extends Component {
             >
                 <Grid.Row style={{ paddingBottom: "0" }}>
                     <Grid.Column style={headerColumnStyle} width={12}>
-                        <ComponentExampleTitle
-                            title={title}
-                        />
+                        <ComponentExampleTitle title={title} />
                     </Grid.Column>
                     <Grid.Column textAlign="right" width={4} style={{ minHeight: "44px" }}>
                         <ComponentControls
@@ -347,9 +346,7 @@ class ComponentExample extends Component {
 
                 {children && (
                     <Grid.Row columns={1} style={{ paddingTop: "0" }}>
-                        <Grid.Column style={childrenStyle}>
-                            {children}
-                        </Grid.Column>
+                        <Grid.Column style={childrenStyle}>{children}</Grid.Column>
                     </Grid.Row>
                 )}
 

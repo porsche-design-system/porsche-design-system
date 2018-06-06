@@ -9,16 +9,15 @@ const ContentWrapperTypes = () => {
                 title="Content Wrapper"
                 examplePath="structures/ContentWrapper/Types/ContentWrapperExample"
             >
-            A simple wrapper for content organisms with max-width and safe area paddings.
+                A simple wrapper for content organisms with max-width and safe area paddings.
             </ComponentExample>
 
             <ComponentExample
                 title="Content Wrapper Raw"
                 examplePath="structures/ContentWrapper/Types/ContentWrapperExampleRaw"
             >
-            A simple wrapper for content organisms with no max width declaration and zero paddings.
+                A simple wrapper for content organisms with no max width declaration and zero paddings.
             </ComponentExample>
-
         </ExampleSection>
     )
 }

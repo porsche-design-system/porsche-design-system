@@ -1,0 +1,41 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'navigation-header.setup.scss';
+
+.#{$global-class-prefix}navigation-header {
+  /* prevent sass render from removing empty selectors */
+
+  &__item {
+    @include -text-size-copy;
+    position: relative;
+    display: inline-block;
+    margin-right: $navigation-header-item-spacing-right;
+
+    &::after {
+      position: absolute;
+      bottom: $navigation-header-item-active-position-reset;
+      left:  $navigation-header-item-active-position-reset;
+      right:  $navigation-header-item-active-position-reset;
+      height: $navigation-header-item-active-border-height;
+      background-color: $navigation-header-item-active-border-background-color;
+    }
+
+    &--active {
+      &::after {
+        content: '';
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: $navigation-header-link-text-color;
+    padding-bottom: $navigation-header-link-inner-spacing-vertical;
+
+    &:hover {
+      color: $navigation-header-link-text-color-hovered;
+    }
+  }
+}

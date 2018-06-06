@@ -1,5 +1,4 @@
 import * as React from "react"
-import * as PropTypes from "prop-types"
 import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
@@ -7,20 +6,6 @@ import { META, prefix, getElementType } from "../../../lib"
 
 import { Flex, Divider, Flyout, Text, Spacing } from "../../../index"
 import { NavigationSection, NavigationProps } from "./Navigation"
-
-const propTypes = {
-    /** The html element type to render as. */
-    as: PropTypes.string,
-
-    /** Additional CSS classes. */
-    className: PropTypes.string,
-
-    /** Custom dom attributes. */
-    customAttributes: PropTypes.object,
-
-    /** The navigation sections to be displayed. */
-    sections: PropTypes.arrayOf(PropTypes.object).isRequired
-}
 
 const _meta: ComponentMeta = {
     name: "NavigationDesktop",
@@ -37,7 +22,6 @@ export interface NavigationDesktopState {
  * A navigation bar intended for larger screen sizes.
  */
 export class NavigationDesktop extends React.PureComponent<NavigationProps, NavigationDesktopState> {
-    static propTypes: any = propTypes
     static defaultProps = {
         as: "nav"
     }
@@ -50,28 +34,31 @@ export class NavigationDesktop extends React.PureComponent<NavigationProps, Navi
     }
 
     renderSection = (section: NavigationSection) => {
+        const LinkElementType = section.component || "a"
         return (
             <Flex.Item
                 as="li"
                 key={section.key}
                 width="auto"
                 className={prefix("nav__item")}
-                customAttributes={{
-                    onClick: this.onSectionUnhovered,
-                    onMouseEnter: () => { this.onSectionHovered(section.key) },
-                    onMouseLeave: this.onSectionUnhovered
+                {...{
+                    onMouseLeave: this.onSectionUnhovered,
+                    onClick: this.onSectionUnhovered
                 }}
             >
-                <a
-                    href={typeof section.link === "string" ? section.link : undefined}
-                    onClick={typeof section.link === "function" ? section.link : undefined}
-                    className={cx(
-                        prefix("nav__item-link"),
-                        {[prefix("nav__item-link--active")]: this.state.isActive}
-                    )}
+                <LinkElementType
+                    // tslint:disable:jsx-no-lambda
+                    onMouseEnter={() => this.onSectionHovered(section.key)}
+                    onTouchStart={() => this.onSectionHovered(section.key)}
+                    onFocus={() => this.onSectionHovered(section.key)}
+                    onTouchEnd={this.onSectionUnhovered}
+                    className={cx(prefix("nav__item-link"), {
+                        [prefix("nav__item-link--active")]: this.state.isActive
+                    })}
+                    {...section.props}
                 >
                     {this.renderLabel(section.label, section.counter)}
-                </a>
+                </LinkElementType>
 
                 {this.renderFlyout(section)}
             </Flex.Item>
@@ -96,13 +83,8 @@ export class NavigationDesktop extends React.PureComponent<NavigationProps, Navi
     }
 
     renderFlyout = (section: NavigationSection) => {
-
         if (this.state.hoveredSectionKey === section.key && section.menu) {
-        return (
-            <Flyout className={prefix("nav__flyout")}>
-                {section.menu}
-            </Flyout>
-        )
+            return <Flyout className={prefix("nav__flyout")}>{section.menu}</Flyout>
         } else {
             return null
         }
@@ -117,29 +99,18 @@ export class NavigationDesktop extends React.PureComponent<NavigationProps, Navi
     }
 
     render() {
-        const {
-            as,
-            className,
-            customAttributes,
-            sections,
-            children,
-            ...rest
-        } = this.props
+        const { as, className, sections, children, ...rest } = this.props
 
         const ElementType = getElementType(as, "nav")
 
         return (
-            <ElementType
-                className={className}
-                {...customAttributes}
-                {...rest}
-            >
+            <ElementType className={className} {...rest}>
                 <Flex as="ul" className={prefix("nav")}>
-                    {this.props.sections && this.props.sections.length > 0 &&
-                        this.props.sections.map(this.renderSection)
-                    }
+                    {this.props.sections &&
+                        this.props.sections.length > 0 &&
+                        this.props.sections.map(this.renderSection)}
                 </Flex>
-                <Divider/>
+                <Divider />
             </ElementType>
         )
     }

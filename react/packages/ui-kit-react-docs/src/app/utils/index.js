@@ -16,9 +16,13 @@ export * as META from "./META"
 export const exampleContext = require.context("src/examples/", true, /(\w+Example\w*|index)\.jsx?$/)
 
 export const parentComponents = (() => {
-    const meta = filter(componentLibrary, (component) => { return META.isMeta(component._meta) })
+    const meta = filter(componentLibrary, (component) => {
+        return META.isMeta(component._meta)
+    })
 
-    const parents = filter(meta, (component) => { return META.isParent(component) })
+    const parents = filter(meta, (component) => {
+        return META.isParent(component)
+    })
 
     return sortBy(parents, "_meta.name")
 })()

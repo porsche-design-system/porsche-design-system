@@ -40,13 +40,13 @@ class SelectExampleSingleOnSearchChanged extends React.Component {
 
     handleChange = (value) => {
         this.setState({
-            value: value
+            value
         })
     }
 
     handleSearchChange = (query) => {
         this.setState({
-            query: query
+            query
         })
     }
 
@@ -54,9 +54,7 @@ class SelectExampleSingleOnSearchChanged extends React.Component {
         return (
             <div>
                 <Spacing marginBottom={18}>
-                    <Text type="copy">
-                        Current search: {convertReadableStringValue(this.state.query)}
-                    </Text>
+                    <Text type="copy">Current search: {convertReadableStringValue(this.state.query)}</Text>
                 </Spacing>
                 <Select
                     options={data}

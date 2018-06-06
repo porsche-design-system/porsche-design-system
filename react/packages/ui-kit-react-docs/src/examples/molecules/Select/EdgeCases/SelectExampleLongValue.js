@@ -3,7 +3,10 @@ import { Flex, Select } from "@porsche/ui-kit-react"
 
 const data = [
     { value: "WithoutWhitespace", label: "WithoutWhitespaceWithoutWhitespaceWithoutWhitespaceWithoutWhitespace" },
-    { value: "With Whitespace", label: "With Whitespace With Whitespace With Whitespace With Whitespace With Whitespace" }
+    {
+        value: "With Whitespace",
+        label: "With Whitespace With Whitespace With Whitespace With Whitespace With Whitespace"
+    }
 ]
 
 const SelectExampleLongValue = () => {
@@ -29,4 +32,3 @@ const SelectExampleLongValue = () => {
 }
 
 export default SelectExampleLongValue
-

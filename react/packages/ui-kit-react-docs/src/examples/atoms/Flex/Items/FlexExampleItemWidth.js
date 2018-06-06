@@ -1,7 +1,9 @@
 import React from "react"
 import { Flex } from "@porsche/ui-kit-react"
 
-const itemStyle = (color) => { return { height: "50px", backgroundColor: color } }
+const itemStyle = (color) => {
+    return { height: "50px", backgroundColor: color }
+}
 
 const FlexExampleItemWidth = () => {
     return (

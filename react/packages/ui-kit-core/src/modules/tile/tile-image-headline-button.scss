@@ -1,0 +1,103 @@
+@import 'tile-image-headline-button.setup.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/position/position.mixin.scss';
+@import '../../base/tile/tile.setup.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../mixins/animation.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}tile-image-headline-button {
+  @include -text-size-copy;
+  @include flex;
+  @include flex--direction(column);
+
+  height: $tile-image-headline-button-headline-height;
+
+  &__content {
+    @include flex;
+    @include flex--direction(column);
+    @include flex--grow(1);
+
+    position: relative;
+
+    @include breakpoint('s') {
+      @include flex--justify-content(flex-end);
+
+      min-height: $tile-image-headline-button-height-s;
+    }
+
+    @include breakpoint('m') {
+      min-height: $tile-image-headline-button-height-m;
+    }
+
+    @include breakpoint('l') {
+      min-height: $tile-image-headline-button-height-l;
+    }
+  }
+
+  &__imageholder {
+    position: relative;
+    min-height: $tile-image-headline-button-height-default;
+
+    @include breakpoint('xs') {
+      min-height: $tile-image-headline-button-height-xs;
+    }
+
+    @include breakpoint('s') {
+      @include -position-absolute-coordinates;
+      min-height: auto;
+    }
+
+    overflow: hidden;
+  }
+
+  &__headlinecontainer {
+    @include -spacing-inner-a;
+    background-color: $tile-image-headline-button-headline-background-color;
+
+    @include breakpoint('s') {
+      background-color: none;
+    }
+  }
+
+  &__headline {
+    @include -text-size-3-thin;
+    color: $tile-image-headline-button-headline-color;
+    position: relative;
+
+    @include breakpoint('s') {
+      @include -text-size-3-regular;
+      width: $tile-image-headline-button-text-width-s;
+    }
+
+    @include breakpoint('m') {
+      width: $tile-image-headline-button-text-width-m;
+    }
+
+    @include breakpoint('l') {
+      @include -overflow-ellipsis;
+    }
+
+    &--width-s {
+      @include breakpoint('s') {
+        width: $tile-image-headline-button-text-width-default;
+      }
+    }
+
+    &--width-m {
+      @include breakpoint('m') {
+        width: $tile-image-headline-button-text-width-s;
+      }
+    }
+
+    &--multiline {
+      @include breakpoint('l') {
+        text-overflow: clip;
+        white-space: normal;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../../common";
+
+.#{$global-class-prefix}divider {
+    &__line {
+        height: 1px;
+        background: $grey-light;
+        width: 100%;
+    }
+
+    &--spacing-small {
+        padding-top: $spacing-18;
+        padding-bottom: $spacing-18;
+    }
+
+    &--spacing-large {
+        padding-top: $spacing-36;
+        padding-bottom: $spacing-36;
+    }
+}

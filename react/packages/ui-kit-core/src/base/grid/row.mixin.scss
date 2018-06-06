@@ -1,0 +1,58 @@
+@import 'row.setup.scss';
+@import '../../mixins/breakpoint.scss';
+
+@mixin row-gap-normal {
+  margin: {
+    left: $row-spacing-horizontal;
+    right: $row-spacing-horizontal;
+  }
+
+  @include breakpoint('xs', 's') {
+    margin: {
+      left: $row-spacing-horizontal-xs;
+      right: $row-spacing-horizontal-xs;
+    }
+  }
+
+  @include breakpoint('s', 'm') {
+    margin: {
+      left: $row-spacing-horizontal-s;
+      right: $row-spacing-horizontal-s;
+    }
+  }
+
+  @include breakpoint('m', 'l') {
+    margin: {
+      left: $row-spacing-horizontal-m;
+      right: $row-spacing-horizontal-m;
+    }
+  }
+
+  @include breakpoint('l', 'xl') {
+    margin: {
+      left: $row-spacing-horizontal-l;
+      right: $row-spacing-horizontal-l;
+    }
+  }
+
+  @include breakpoint('xl') {
+    margin: {
+      left: $row-spacing-horizontal-xl;
+      right: $row-spacing-horizontal-xl;
+    }
+  }
+}
+
+@mixin row-gap-small {
+  margin: {
+    left: $row-gap-small-spacing-horizontal;
+    right: $row-gap-small-spacing-horizontal;
+  }
+}
+
+@mixin row-gap-zero {
+  margin: {
+    left: 0;
+    right: 0;
+  }
+}

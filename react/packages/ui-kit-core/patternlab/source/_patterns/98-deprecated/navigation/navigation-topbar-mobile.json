@@ -1,0 +1,81 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "navigation-topbar-mobile_crest": "../../images/porsche-ui-kit-core/porsche-svg.svg",
+  "navigation-topbar-mobile_open": false,
+  "navigation-topbar-mobile_flyoutFooter": true,
+  "navigation-topbar-mobile_headline": "Porsche.de",
+
+  "navigation-topbar-mobile_items": [
+    {
+      "icon": "contact",
+      "linkTitle": "3",
+      "active": true
+    },
+    {
+      "icon": "",
+      "linkTitle": "Menü",
+      "active": false
+    }
+  ],
+
+  "navigation-topbar-mobile_flyoutItems": [
+    {
+      "icon": "mail-request",
+      "iconHighlight": true,
+      "badge": "99",
+      "badgeHighlight": true,
+      "linkTitle": "Mitteilungen",
+      "active": false
+    },
+    {
+      "icon": "",
+      "iconHighlight": false,
+      "badge": "",
+      "badgeHighlight": false,
+      "linkTitle": "Service & Zubehör",
+      "active": false
+    },
+    {
+      "icon": "",
+      "iconHighlight": false,
+      "badge": "",
+      "badgeHighlight": false,
+      "linkTitle": "Unternehmen",
+      "active": false
+    },
+    {
+      "icon": "",
+      "iconHighlight": false,
+      "badge": "",
+      "badgeHighlight": false,
+      "linkTitle": "Motorsport & Events",
+      "active": false
+    }
+  ],
+
+  "navigation-topbar-mobile_flyoutItemsPorscheId": [
+    {
+      "linkTitle": "Max Mustermann",
+      "active": false
+    },
+    {
+      "linkTitle": "My Porsche",
+      "active": false
+    }
+  ],
+
+  "navigation-topbar-mobile_flyoutFooterItems": [
+    {
+      "icon": "pin",
+      "linkTitle": "Locate a Dealer"
+    },
+    {
+      "icon": "mailbox",
+      "linkTitle": "Newsletter"
+    },
+    {
+      "icon": "mailbox",
+      "linkTitle": "Online Bill Payment"
+    }
+  ]
+}

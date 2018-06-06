@@ -1,46 +1,30 @@
 import * as React from "react"
-import * as PropTypes from "prop-types"
 import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType, prefix } from "../../../lib"
-import { Flex, Spacing, Text, Icon } from "../../../index"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export type NavigationMenuListType = "default" | "categorized"
+import { Flex, Spacing, Text, Icon } from "../../../index"
 
 export interface NavigationMenuListItem {
     key: string
     label: string | JSX.Element
-    link?: string | (() => void)
+    component?: string | React.ComponentClass
+    props?: object
 }
 
-export interface NavigationMenuListCategory {
+export interface NavigationMenuListSubmenu {
     key: string
     label?: string | JSX.Element
     items?: NavigationMenuListItem[]
 }
 
-export interface NavigationMenuListProps {
-    as?: string
-    className?: string
-    customAttributes?: {[key: string]: any}
-
-    type?: NavigationMenuListType
-    categories?: NavigationMenuListCategory[]
-    mobile?: boolean
-}
-
-export const propTypes = {
-    /** The html element type to render as. */
-    as: PropTypes.string,
-
-    /** Additional CSS classes. */
-    className: PropTypes.string,
-
+export interface NavigationMenuListProps extends ClassNameProp, ComponentProp {
     /** The display type of the list. */
-    type: PropTypes.oneOf(["default", "categorized"]),
-
-    contents: PropTypes.array
+    type?: "default" | "categorized"
+    submenu?: NavigationMenuListSubmenu[]
+    mobile?: boolean
 }
 
 const defaultProps: Partial<NavigationMenuListProps> = {
@@ -48,16 +32,7 @@ const defaultProps: Partial<NavigationMenuListProps> = {
 }
 
 const _NavigationMenuList: React.StatelessComponent<NavigationMenuListProps> = (props) => {
-    const {
-        as,
-        className,
-        children,
-        customAttributes,
-        type,
-        categories,
-        mobile,
-        ...rest
-    } = props
+    const { as, className, children, type, submenu, mobile, ...rest } = props
 
     const ElementType = getElementType(as, "div")
 
@@ -69,10 +44,11 @@ const _NavigationMenuList: React.StatelessComponent<NavigationMenuListProps> = (
         className
     )
 
-    const renderCategoryTitle = (category: NavigationMenuListCategory) => {
+    const renderCategoryTitle = (category: NavigationMenuListSubmenu) => {
         return (
             <Spacing key={category.key} marginBottom={18}>
-                <Text type="3-thin" as={"h4"} className={prefix("nav-menu-list__category")}>    {category.label}
+                <Text type="3-thin" as={"h4"} className={prefix("nav-menu-list__category")}>
+                    {category.label}
                 </Text>
             </Spacing>
         )
@@ -80,48 +56,28 @@ const _NavigationMenuList: React.StatelessComponent<NavigationMenuListProps> = (
 
     const renderItems = (items: NavigationMenuListItem[]) => {
         return items.map((item) => {
+            const LinkElementType = item.component || "a"
             return (
-                <Flex.Item
-                    as="li"
-                    key={item.key}
-                    className={prefix("nav-menu-list__item")}
-                >
-                    <a
-                        className={prefix("nav-menu-list__link")}
-                        href={typeof item.link === "string" ? item.link : undefined}
-                        onClick={typeof item.link === "function" ? item.link : undefined}
-                    >
+                <Flex.Item as="li" key={item.key} className={prefix("nav-menu-list__item")}>
+                    <LinkElementType className={prefix("nav-menu-list__link")} {...item.props}>
                         <Icon name="arrow_right_hair" className={prefix("nav-menu-list__entry-icon")} />
-                        <span className={prefix("nav-menu-list__text")}>
-                            {item.label}
-                        </span>
-                    </a>
+                        <span className={prefix("nav-menu-list__text")}>{item.label}</span>
+                    </LinkElementType>
                 </Flex.Item>
             )
         })
     }
 
     return (
-        <ElementType
-            className={NavigationMenuListClasses}
-            {...customAttributes}
-            {...rest}
-        >
-            {categories && categories.map((category) => {
+        <ElementType className={NavigationMenuListClasses} {...rest}>
+            {submenu &&
+                submenu.map((category) => {
                     if (type === "categorized" && category.label && category.items) {
                         return (
-                            <div
-                                key={category.key}
-                                className={prefix("nav-menu-list__category-block")}
-                            >
+                            <div key={category.key} className={prefix("nav-menu-list__category-block")}>
                                 {renderCategoryTitle(category)}
                                 {/* TODO: add responsive grid witdh of 3 to each item */}
-                                <Flex
-                                    as="ul"
-                                    wrap
-                                    gap={12}
-                                    className={prefix("nav-menu-list__list-category")}
-                                >
+                                <Flex as="ul" wrap gap={12} className={prefix("nav-menu-list__list-category")}>
                                     {renderItems(category.items)}
                                 </Flex>
                             </div>
@@ -140,13 +96,11 @@ const _NavigationMenuList: React.StatelessComponent<NavigationMenuListProps> = (
                     } else {
                         return null
                     }
-                })
-            }
+                })}
         </ElementType>
     )
 }
 
-_NavigationMenuList.propTypes = propTypes
 _NavigationMenuList.defaultProps = defaultProps
 
 export const NavigationMenuList = _NavigationMenuList

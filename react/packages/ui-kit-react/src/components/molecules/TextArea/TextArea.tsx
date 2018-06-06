@@ -2,23 +2,22 @@ import * as React from "react"
 import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
-
+import { META, prefix, getElementType } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 import { Icon } from "../../../index"
 import { IconName } from "../../atoms/Icon/Icon"
 
-export interface TextAreaProps {
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface TextAreaProps extends ClassNameProp, ComponentProp {
     basic?: boolean
     disabled?: boolean
     error?: boolean
     icon?: IconName
     maxLength?: number
+
+    /**
+     * Sets the html5 name of the input field.
+     * The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
+     */
     name?: string
 
     /**
@@ -27,7 +26,7 @@ export interface TextAreaProps {
      * @param {React.FormEvent<HTMLTextAreaElement>} event React's original event.
      * @param {TextAreaProps} data All props of the component.
      */
-    onChange: (value: string, event: React.FormEvent<HTMLTextAreaElement>, data: TextAreaProps) => void
+    onChange?: (value: string, event: React.FormEvent<HTMLTextAreaElement>, data: TextAreaProps) => void
 
     placeholder?: string
 
@@ -47,9 +46,9 @@ const _meta: ComponentMeta = {
 
 const _TextArea: React.StatelessComponent<TextAreaProps> & Partial<MetaCategorizable> = (props) => {
     const {
+        as,
         className,
         children,
-        customAttributes,
         basic,
         disabled,
         error,
@@ -63,16 +62,13 @@ const _TextArea: React.StatelessComponent<TextAreaProps> & Partial<MetaCategoriz
         ...rest
     } = props
 
-    const labelClasses = cx(
-        prefix("text-area"),
-        className
-    )
+    const ElementType = getElementType(as, "div")
 
     const inputFieldClasses = cx(
         prefix("text-area__field"),
-        {[prefix("text-area__field--has-value")]: !basic && value && value.length > 0},
-        {[prefix("text-area__field--error")]: !!error},
-        {[prefix("text-area__field--no-label")]: basic}
+        { [prefix("text-area__field--has-value")]: !basic && value && value.length > 0 },
+        { [prefix("text-area__field--error")]: !!error },
+        { [prefix("text-area__field--no-label")]: basic }
     )
 
     const renderMaxLength = (max: number) => {
@@ -92,35 +88,33 @@ const _TextArea: React.StatelessComponent<TextAreaProps> & Partial<MetaCategoriz
             return
         }
 
-        const value = maxLength
+        const result = maxLength
             ? event.currentTarget.value.substring(0, maxLength)
             : event.currentTarget.value.toString()
 
-        onChange(value, event, props)
+        onChange(result, event, props)
     }
 
     return (
-        <label
-            className={labelClasses}
-            {...customAttributes}
-            {...rest}
-        >
-            <textarea
-                className={inputFieldClasses}
-                rows={rows}
-                disabled={disabled}
-                name={name}
-                onChange={handleChange}
-                placeholder={placeholder}
-                required={true}
-                spellCheck={false}
-                value={value}
-            />
+        <ElementType className={className} {...rest}>
+            <label className={prefix("text-area")}>
+                <textarea
+                    className={inputFieldClasses}
+                    rows={rows}
+                    disabled={disabled}
+                    name={name}
+                    onChange={handleChange}
+                    placeholder={placeholder}
+                    required={true}
+                    spellCheck={false}
+                    value={value}
+                />
                 {!basic && <span className={prefix("text-area__label")}>{placeholder}</span>}
-                {icon && <Icon name={icon} className={prefix("text-area__icon")}/>}
+                {icon && <Icon name={icon} className={prefix("text-area__icon")} />}
                 {maxLength && renderMaxLength(maxLength)}
                 {children}
-        </label>
+            </label>
+        </ElementType>
     )
 }
 

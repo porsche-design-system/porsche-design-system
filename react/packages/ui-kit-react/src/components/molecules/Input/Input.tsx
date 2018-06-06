@@ -2,21 +2,18 @@ import * as React from "react"
 import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
+import { META, prefix, getElementType } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { Icon } from "../../../index"
 import { IconName } from "../../atoms/Icon/Icon"
 
-export interface InputProps {
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface InputProps extends ClassNameProp, ComponentProp {
     /**
      * Basic determines if the placeholder disappears when a value is set or entered,
      * or if it floats above the content.
+     * If no placeholder is set, this value has no effect.
+     * @default false
      */
     basic?: boolean
 
@@ -29,7 +26,10 @@ export interface InputProps {
     /** Displays an icon on the right of the input. */
     icon?: IconName
 
-    /** Sets the html5 name of the input field. */
+    /**
+     * Sets the html5 name of the input field.
+     * The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
+     */
     name?: string
 
     /**
@@ -67,9 +67,9 @@ const _meta: ComponentMeta = {
 
 const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> = (props) => {
     const {
+        as,
         className,
         children,
-        customAttributes,
         basic,
         disabled,
         error,
@@ -91,52 +91,41 @@ const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> 
         onChange(event.currentTarget.value, event, props)
     }
 
-    const labelClasses = cx(
-        prefix("input"),
-        className
-    )
+    const ElementType = getElementType(as, "div")
 
     const inputClasses = cx(
         prefix("input__field"),
         { [prefix("input__field--has-value")]: !basic && value && value.length > 0 },
         { [prefix("input__field--error")]: error },
         { [prefix("input__field--number")]: type === "number" },
-        { [prefix("input__field--no-label")]: basic },
+        { [prefix("input__field--no-label")]: basic || placeholder === undefined },
         { [prefix("input__field--with-icon")]: !!icon }
     )
 
-    const floatingPlaceholderClasses = cx(
-        prefix("input__label"),
-        { [prefix("input__label--with-icon")]: !!icon }
-    )
+    const floatingPlaceholderClasses = cx(prefix("input__label"), { [prefix("input__label--with-icon")]: !!icon })
 
-    const iconClasses = cx(
-        prefix("input__icon"),
-        { [prefix("input__icon--error")]: error }
-    )
+    const iconClasses = cx(prefix("input__icon"), { [prefix("input__icon--error")]: error })
 
     return (
-        <label
-            className={labelClasses}
-            {...customAttributes}
-            {...rest}
-        >
-            <input
-                className={inputClasses}
-                disabled={disabled}
-                name={name}
-                onChange={handleChange}
-                placeholder={placeholder}
-                required={true}
-                spellCheck={false}
-                type={type}
-                value={value}
-            />
-            {!basic && <span className={floatingPlaceholderClasses}>{placeholder}</span>}
-            {icon && <Icon name={icon} className={iconClasses}/>}
-            {unit && !icon && <span className={prefix("input__unit")}>{unit}</span>}
-            {children}
-        </label>
+        <ElementType className={className} {...rest}>
+            <label className={prefix("input")}>
+                <input
+                    className={inputClasses}
+                    disabled={disabled}
+                    name={name}
+                    onChange={handleChange}
+                    placeholder={placeholder}
+                    required={true}
+                    spellCheck={false}
+                    type={type}
+                    value={value}
+                />
+                {!basic && <span className={floatingPlaceholderClasses}>{placeholder}</span>}
+                {icon && <Icon name={icon} className={iconClasses} />}
+                {unit && !icon && <span className={prefix("input__unit")}>{unit}</span>}
+                {children}
+            </label>
+        </ElementType>
     )
 }
 
