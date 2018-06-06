@@ -7,9 +7,174 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 * 
+* 
+## [0.4.2] - 2018-05-30
+### Bugfixes
+* Add clickarea to icon in media-center-modal
 
-## [0.0.1] - 2018-04-06
+## [0.4.1] - 2018-05-28
+### Bugfixes
+* Fix iframe in media-center-modal for ie
+
+## [0.4.0] - 2018-05-28
+### New Features
+* Added "media-center-modal" pattern
+* Extended "tile-slider" pattern to support video's
+
+## [0.3.0] - 2018-05-16
+### Improvements
+* Extracted font-face for PAG icons and Porsche Next font family [BREAKING CHANGE]
+  Migration path: Import following scss file into application globally: `~@porsche/ui-kit-core/src/common/font-face.scss` 
+* Extracted text-size and font as individual pattern
+* Extracted icon as variations
+
+## [0.2.1] - 2018-05-02
+### Bugfixes
+* Updated handlebars files according to migration path described in @porsche/ui-kit-core@0.2.0
+
+## [0.2.0] - 2018-05-01
+### New Features
+* Added "grid-float" pattern
+* Added column--gap-normal, column--gap-small and column--gap-zero classes and corresponding min-width breakpoint specific ones
+* Added column--direction-normal and column--direction-reverse classes and corresponding min-width breakpoint specific ones
+* Added global grid setup file
+
+### Improvements
+* Extracted variables for row and column grid
+* Updated breakpoint definitions
+* Renamed "flex-grid" pattern to "grid-flex"
+* Updated -wrapper-page width and offset definitions
+
+### Breaking changes
+* Removed row--flex and column--flex-centered
+  Migration path: It's recommended to use a proper flex class with modifier instead
+* Removed some css classes related to "column" and "row" (grid float) and replaced them with ones that fits convention
+  Migration path: Please search & replace following CSS classes that are used in your
+  project in the following order:
+```
+column--reverse => column--direction-reverse
+column--small => column--gap-small
+row--small => row--gap-small
+```
+* Removed column--zero's and row--zero's breakpoint only classes entirely and replaced them with ones that are min-width breakpoint specific
+  Migration path: Please search & replace following CSS classes that are used in your
+  project in the following order (and be aware that the new classes are "min-width" not "only" breakpoint specific):
+```
+column--zero-xxs-only => column--gap-zero
+column--zero-xs-only => column--gap-zero-xs
+column--zero-s-only => column--gap-zero-s
+column--zero-m-only => column--gap-zero-m
+column--zero-l-only => column--gap-zero-l
+column--zero => column--gap-zero
+
+row--zero-xxs-only => row--gap-zero
+row--zero-xs-only => row--gap-zero-xs
+row--zero-s-only => row--gap-zero-s
+row--zero-m-only => row--gap-zero-m
+row--zero-l-only => row--gap-zero-l
+row--zero => row--gap-zero
+```
+* Renamed column's modifiers for defining width of a column, but kept old (deprecated) class names in addition for backward compatibility. 
+  Anyway it's recommended to follow migration path because deprecated classes will be removed at some point.
+  Migration path: Please search & replace following CSS classes that are used in your
+  project in the following order:
+```
+column--xs-auto => column--auto-xs
+column--xs-1 => column--1-xs
+column--xs-2 => column--2-xs
+column--xs-3 => column--3-xs
+column--xs-4 => column--4-xs
+column--xs-5 => column--5-xs
+column--xs-6 => column--6-xs
+column--xs-7 => column--7-xs
+column--xs-8 => column--8-xs
+column--xs-9 => column--9-xs
+column--xs-10 => column--10-xs
+column--xs-11 => column--11-xs
+column--xs-12 => column--12-xs
+
+column--s-auto => column--auto-s
+column--s-1 => column--1-s
+column--s-2 => column--2-s
+column--s-3 => column--3-s
+column--s-4 => column--4-s
+column--s-5 => column--5-s
+column--s-6 => column--6-s
+column--s-7 => column--7-s
+column--s-8 => column--8-s
+column--s-9 => column--9-s
+column--s-10 => column--10-s
+column--s-11 => column--11-s
+column--s-12 => column--12-s
+
+column--m-auto => column--auto-m
+column--m-1 => column--1-m
+column--m-2 => column--2-m
+column--m-3 => column--3-m
+column--m-4 => column--4-m
+column--m-5 => column--5-m
+column--m-6 => column--6-m
+column--m-7 => column--7-m
+column--m-8 => column--8-m
+column--m-9 => column--9-m
+column--m-10 => column--10-m
+column--m-11 => column--11-m
+column--m-12 => column--12-m
+
+column--l-auto => column--auto-l
+column--l-1 => column--1-l
+column--l-2 => column--2-l
+column--l-3 => column--3-l
+column--l-4 => column--4-l
+column--l-5 => column--5-l
+column--l-6 => column--6-l
+column--l-7 => column--7-l
+column--l-8 => column--8-l
+column--l-9 => column--9-l
+column--l-10 => column--10-l
+column--l-11 => column--11-l
+column--l-12 => column--12-l
+```
+* Removed padding-bottom of -wrapper-page
+  Migration path: Instead please use a -spacing class to define space between modules that have -wrapper-page class applied
+
+## [0.1.12] - 2018-04-18
+* Reverted improvement of @porsche/ui-kit-core@0.1.11
+
+## [0.1.11] - 2018-04-18
+* Improved npm postinstall again
+
+## [0.1.10] - 2018-04-18
+* Improved npm postinstall
+
+## [0.1.9] - 2018-04-16
+* Updated sass renderer
+
+## [0.1.8] - 2018-04-16
+* Updated plugin-node-sass-dependency-collector, now it's possible to use tilde importer for sass files
+
+## [0.1.7] - 2018-04-14
+* Added plugin-node-sass-dependency-collector.config.json configuration
+* Resolved npm err when package is installed within a node_modules directory, removed node-sass-dependency-collector pre install
+
+## [0.1.6] - 2018-04-11
+* Updated npm ignore, /patternlab/source/css/ will be released again
+
+## [0.1.5] - 2018-04-11
+* Updated scaffolding css
+
+## [0.1.4] - 2018-04-11
+* Updated preinstall npm script
+
+## [0.1.3] - 2018-04-11
+* Clean up
+
+## [0.1.2] - 2018-04-09
+* Adapt font-weight of button in car-selector
+* Added notification-icon
+
+## [0.1.1] - 2018-04-09
+* Added index.scss to src folder
+
+## [0.1.0] - 2018-04-06
 * Initial setup based on porsche-stylesheets@0.95.5
-
-[unreleased]: https://bitbucket.org/porschedev/porsche-ui-kit/compare/diff?targetBranch=refs%2Ftags%2Fv0.0.1&sourceBranch=refs%2Fheads%2Fmaster
-[0.0.1]: https://bitbucket.org/porschedev/porsche-ui-kit/commits/all?until=refs%2Ftags%2Fv0.0.1

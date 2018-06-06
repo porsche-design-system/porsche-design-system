@@ -1,0 +1,43 @@
+<div class="footer">
+  <ul class="navigation-footer row row--zero">
+    <li class="navigation-footer__item column column--zero column--12 column--s-6"
+        *ngFor="let section of menu">
+      <div class="navigation-footer__item-header"
+           [ngClass]="{'navigation-footer__item-header--open': isActiveSection(section)}"
+           (click)="toggleActiveSection(section)">
+        <h3 class="navigation-footer__category-name">{{section.title}}</h3>
+        <span class="icon icon--arrow-down-thin navigation-footer__icon"
+              [ngClass]="{'navigation-footer__icon--open': isActiveSection(section)}"></span>
+      </div>
+      <ul class="navigation-footer__submenu row row--zero"
+          [ngClass]="{'navigation-footer__submenu--open': isActiveSection(section)}">
+        <li class="navigation-footer__submenu-item column column--zero column--zero column--12 column--m-6"
+            *ngFor="let item of section.items">
+          <a href="{{item.url}}"
+             class="navigation-footer__submenu-link"
+             attr.data-protractor-id="footer-link-{{item.key}}">
+            {{item.title}}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="row">
+    <div class="column column--12">
+      <p class="footer__paragraph">
+        {{copyrightInfo}}.
+        <span class="footer__links">
+          <ng-container *ngFor="let item of metaMenu">
+            <a [href]="item.url" class="footer__link" target="_blank">{{item.title}}.</a>
+          </ng-container>
+          <ng-container *ngIf="showFooterLinkChina">
+            <a href="http://www.miibeian.gov.cn"
+               class="footer__link"
+               target="_blank"
+               url-origin="external">沪ICP备10013326号.</a>
+            </ng-container>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,22 +1,24 @@
 'use strict';
 
-let sass = require('node-sass');
-let configFile = require('./config');
-let fs = require('fs-extra');
-let path = require('path');
+const sass = require('node-sass');
+const configFile = require('./config');
+const fs = require('fs-extra');
+const path = require('path');
+const tildeImporter = require('node-sass-tilde-importer');
 
 let env = process.env.NODE_ENV || 'development';
 let config = configFile[process.env.BUILD_TYPE || 'stylesheet'][env];
+config.importer = tildeImporter;
 
-sass.render(config, function (err, result) {
-    if (err) {
-        throw new Error(err);
-    }
-    fs.outputFile(path.resolve(config.outFile), result.css);
-    if(result.map) {
-        fs.outputFile(`${path.resolve(config.outFile)}.map`, result.map);
-    }
-});
+let result = sass.renderSync(config);
+
+if (result.css) {
+  fs.outputFile(path.resolve(config.outFile), result.css);
+}
+
+if (result.map) {
+  fs.outputFile(`${path.resolve(config.outFile)}.map`, result.map);
+}
 
 fs.copy('./src/base/font/porsche-next-latin/', './dist/porsche-next-latin/', (error) => {
   if (error) return console.error(error);

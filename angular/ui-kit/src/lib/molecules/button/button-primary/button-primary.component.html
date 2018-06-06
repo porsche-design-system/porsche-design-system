@@ -1,0 +1,39 @@
+<a
+  href="#"
+  class="button-primary {{styleModifier}}"
+  [class.button-primary--error]="error"
+  [class.button-primary--black]="black"
+  [class.button-primary--red]="red"
+  [class.button-primary--acid-green]="acidGreen"
+  [class.button-primary--stretch]="stretch"
+  [class.button-primary--button-group]="buttonGroup"
+  *ngIf="link"
+>
+  <span
+    class="button-primary__icon icon icon--{{icon}}"
+    [class.button-primary__icon--loading]="loading"
+  >
+    <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>
+  </span>
+  <span class="button-primary__label">{{label}}"></span>
+</a>
+<button
+  type="button"
+  class="button-primary {{styleModifier}}"
+  [class.button-primary--error]="error"
+  [class.button-primary--black]="black"
+  [class.button-primary--red]="red"
+  [class.button-primary--acid-green]="acidGreen"
+  [class.button-primary--stretch]="stretch"
+  [class.button-primary--button-group]="buttonGroup"
+  [disabled]='disabled'
+  *ngIf="!link"
+>
+  <span
+    class="button-primary__icon icon icon--{{icon}}"
+    [class.button-primary__icon--loading]="loading"
+  >
+    <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>
+  </span>
+  <span class="button-primary__label">{{label}}</span>
+</button>

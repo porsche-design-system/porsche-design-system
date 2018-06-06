@@ -7,6 +7,10 @@
           image-cover_gradientBannerVisible =tile-slider_imageBannerGradient
         styleModifier="tile-slider__image" }}
 
+      {{#if tile-slider_video}}
+      <span class="tile-slider__play-icon icon icon--play2
+            {{#if tile-slider_video-dark}} tile-slider__play-icon--dark {{/if}}"></span>
+      {{/if}}
 
     </div>
     <div class="tile-slider__textarea

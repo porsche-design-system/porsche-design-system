@@ -13,6 +13,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "lib",
       "scripts": [],
+      "styles": [
+        "styles.scss"
+      ],
+      "assets": [
+        { "glob": "**/*", "input": "./assets/", "output": "./assets/" }
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

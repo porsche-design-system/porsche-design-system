@@ -1,51 +1,78 @@
-const colors = require('colors/safe');
+const _ = require('lodash');
 const fs = require('fs-extra');
 const path = require('path');
-const _ = require('lodash');
+const Logger = require('./console-logger');
 const PatternScssRegex = require('./pattern-scss-regex');
 
 class PatternScssCollector {
 
   constructor(patternlab, pattern, stylesheets, options) {
 
-    this.options = options || {
-      stylesheetPackage: 'porsche-stylesheets',
-      excludes: [
-        /_?index\.scss$/i,
-        /porsche-stylesheets\.scss$/i,
-        /porsche-stylesheets\.angular\.scss$/i
-      ],
-      order: [
-        /\.\/src\/common\//i,
+    this.packageName = require('../package.json').name;
 
-        /\.\/src\/base\//i,
+    this.options = _.merge({
+      verbose: true,
+      exclude: [],
+      order: []
+    }, options);
 
-        /\.\/src\/modules\/icon\//i,
-        /\.\/src\/modules\/loader\//i,
-        /\.\/src\/modules\/button\//i,
-        /\.\/src\/modules\/divider\//i,
-        /\.\/src\/modules\/form\//i,
-        /\.\/src\/modules\/list\//i,
-        /\.\/src\/modules\//i,
-
-        /\.\/src\/connected-car-store\//i,
-        /\.\/src\/aftersales\//i,
-        /\.\/src\/portal\//i,
-        /\.\/src\/vehicle-related-services\//i
-      ]
+    this.warnings = {
+      SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES: {
+        occurrence: 0,
+        affected: []
+      },
+      CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE: {
+        occurrence: 0,
+        affected: []
+      },
+      CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE: {
+        occurrence: 0,
+        affected: {}
+      }
     };
 
+    let stylesheetsWithoutExcludedOnes = this.stylesheetsWithoutExcludedOnes(stylesheets);
     let renderedPatternMarkup = this.getRenderedPatternMarkup(pattern);
     let cssClassesFoundInPattern = this.getGroupMatches(renderedPatternMarkup, PatternScssRegex.findCssClasses());
     let cssClassList = this.getClassesList(cssClassesFoundInPattern);
-    let cssImports = this.getCssImports(cssClassList, stylesheets);
+    let cssImports = this.getCssImports(cssClassList, stylesheetsWithoutExcludedOnes);
     let orderedCssImports = this.getOrderedCssImports(cssImports);
     let formattedCssImports = this.getFormattedCssImports(orderedCssImports);
     let sassFileOutput = patternlab.config.paths.public.patterns + pattern.getPatternLink(patternlab, 'custom', '.scss');
 
     this.writeScssDependencies(formattedCssImports, sassFileOutput);
+    this.doLogging();
+  }
 
-    console.log(colors.gray('Pattern dependencies:\n'+ formattedCssImports));
+  doLogging() {
+    if (this.options.verbose) {
+      if (
+        !this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence &&
+        !this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence &&
+        !this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence
+      ) {
+        Logger.success(this.packageName + ': SCSS resources were resolved successfully');
+      } else {
+        if (this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence) {
+          Logger.warn(this.packageName + ': Some resolved SCSS file(s) did not match SCSS source order rules, please provide a proper "plugin-node-sass-dependency-collector.config.json" configuration file. Affected files are listed below:');
+          Logger.progress('\t' + this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.affected.join('\n\t'));
+        }
+
+        if (this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence) {
+          Logger.warn(this.packageName + ': Some CSS classes that are used in pattern are not defined in any SCSS file. Affected CSS classes are listed below:');
+          Logger.progress('\t' + this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.affected.join('\n\t'));
+        }
+
+        if (this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence) {
+          Logger.warn(this.packageName + ': Some CSS classes that are used in pattern are defined in more than one SCSS file.');
+
+          _.forEach(this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.affected, (cssSources, cssClass) => {
+            Logger.warn('CSS class: "' + cssClass + '", is used in following files:');
+            Logger.progress('\t' + cssSources.join('\n\t'));
+          });
+        }
+      }
+    }
   }
 
   writeScssDependencies(scssDependencies, filename) {
@@ -55,11 +82,10 @@ class PatternScssCollector {
   getOrderedCssImports(unorderedCssClassList, orderedCssClassList=[], i=0) {
     if (unorderedCssClassList.length > 0) {
       if (i < this.options.order.length) {
-
         let cssClassListWithoutReference = [];
 
         unorderedCssClassList.forEach((cssClassPath) => {
-          if (this.options.order[i].test(cssClassPath)) {
+          if (new RegExp(this.options.order[i], 'i').test(cssClassPath)) {
             orderedCssClassList.push(cssClassPath);
           } else {
             cssClassListWithoutReference.push(cssClassPath);
@@ -68,7 +94,12 @@ class PatternScssCollector {
 
         this.getOrderedCssImports(cssClassListWithoutReference, orderedCssClassList, i = i + 1);
       } else {
-        console.warn(colors.yellow('WARNING: css source(s) of '+ this.options.stylesheetPackage +' didn\'t match order rules of plugin-node-sass-dependency-collector:\n\t>>> '+ unorderedCssClassList.join('\n\t>>> ')));
+        unorderedCssClassList.forEach((cssClassPath) => {
+          orderedCssClassList.push(cssClassPath);
+        });
+
+        this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.occurrence++;
+        this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.affected = _.union(this.warnings.SCSS_SOURCES_DID_NOT_MATCH_ORDER_RULES.affected, unorderedCssClassList);
       }
     }
 
@@ -79,10 +110,22 @@ class PatternScssCollector {
     return PatternScssRegex.checkCssClassUsage(cssClass).test(stylesheet);
   }
 
+  stylesheetsWithoutExcludedOnes(stylesheets) {
+    let data = [];
+
+    stylesheets.forEach((stylesheet) => {
+      if (!this.isScssFileIgnored(stylesheet.source)) {
+        data.push(stylesheet);
+      }
+    });
+
+    return data;
+  }
+
   isScssFileIgnored(file) {
     let flag = false;
-    this.options.excludes.forEach((exclude) => {
-      if (exclude.test(file)) {
+    this.options.exclude.forEach((exclude) => {
+      if (new RegExp(exclude, 'i').test(file)) {
         flag = true;
       }
     });
@@ -93,28 +136,34 @@ class PatternScssCollector {
     let cssImports = [];
 
     cssClassList.forEach((cssClassPath) => {
-      cssImports.push('@import \'' + cssClassPath.replace('./', '~'+ this.options.stylesheetPackage +'/') + '\';');
+      if (cssClassPath.startsWith('./node_modules/')) {
+        cssImports.push('@import \'' + cssClassPath.replace('./node_modules/', '~') + '\';');
+      } else {
+        cssImports.push('@import \'' + cssClassPath.replace('./', '~'+ require(path.resolve(process.cwd(), './package.json')).name +'/') + '\';');
+      }
     });
 
-    return cssImports.join("\n")
+    return cssImports.join("\n");
   }
 
   getCssImports(cssClassList, stylesheets) {
     let cssImports = [];
 
     cssClassList.forEach((cssClass) => {
-      let found = 0;
+      let sourcesFound = [];
       stylesheets.forEach((stylesheet) => {
-        if (!this.isScssFileIgnored(stylesheet.source) && this.isCssClassUsedInStylesheet(cssClass, stylesheet.css)) {
-          found = found + 1;
+        if (this.isCssClassUsedInStylesheet(cssClass, stylesheet.css)) {
+          sourcesFound.push(stylesheet.source);
           cssImports.push(stylesheet.source);
         }
       });
 
-      if (found === 0) {
-        console.warn(colors.yellow('WARNING: css class that is used in pattern couldn\'t be found in '+ this.options.stylesheetPackage +' sources\n\t>>> ".'+ cssClass +'"'));
-      } else if (found > 1) {
-        console.log(colors.white('INFO: css class that is used in pattern was found '+ found +'x in '+ this.options.stylesheetPackage +' sources\n\t>>> ".'+ cssClass +'"'));
+      if (sourcesFound.length === 0) {
+        this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.occurrence++;
+        this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_NOT_DEFINED_IN_ANY_SCSS_FILE.affected.push(cssClass);
+      } else if (sourcesFound.length > 1) {
+        this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.occurrence++;
+        this.warnings.CSS_CLASS_USED_IN_PATTERN_IS_DEFINED_IN_MORE_THAN_ONE_SCSS_FILE.affected[cssClass] = sourcesFound;
       }
     });
 
@@ -144,6 +193,5 @@ class PatternScssCollector {
     return matches;
   }
 }
-
 
 module.exports = PatternScssCollector;

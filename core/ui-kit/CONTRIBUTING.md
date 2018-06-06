@@ -54,7 +54,7 @@ To remove the possibility to link the development package again, run the followi
     ├── mixins
     ├── modules
     ├── setup
-    ├── porsche-stylesheets.scss
+    ├── index.scss
     └── ...
 ```
 
