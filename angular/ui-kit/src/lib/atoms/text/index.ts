@@ -1,4 +1,3 @@
-export * from './text-module';
-export * from './h1';
-export * from './h2';
-export * from './h3';
+export * from './text-size-module';
+export * from './text-size-1/index';
+export * from './text-size-3/index';

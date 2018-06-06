@@ -1,14 +1,14 @@
 {
-  "name": "@porsche/plugin-node-sass-dependency-collector",
-  "version": "0.0.3",
+  "name": "plugin-node-sass-dependency-collector",
+  "version": "0.1.1",
   "description": "Collects all related scss dependencies",
   "main": "index.js",
   "dependencies": {
-    "colors": "1.1.2",
-    "fs-extra": "4.0.3",
-    "glob": "7.1.2",
-    "lodash": "4.17.4",
-    "node-sass": "4.8.3"
+    "chalk": "2.3.2",
+    "fs-extra": "5.0.0",
+    "lodash": "4.17.5",
+    "node-sass": "4.8.3",
+    "node-sass-tilde-importer": "1.0.2"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,8 @@
   },
   "scripts": {
     "postinstall": "node ./postinstall.js",
-    "publish-nexus": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/",
+    "publish-nexus2": "npm publish --registry https://pccbuild.web.porsche.de/nexus/content/repositories/npm-internal/",
+    "publish-nexus3": "npm publish --registry https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/",
     "clean": "rm -rf ./node_modules"
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -24,6 +25,5 @@
     "Mitko Tschimev <net.mitko.tschimev@mhp.com>",
     "Stephan Schröter <stephan.schroeter@mhp.com>"
   ],
-  "license": "MIT",
-  "homepage": ""
+  "license": "MIT"
 }

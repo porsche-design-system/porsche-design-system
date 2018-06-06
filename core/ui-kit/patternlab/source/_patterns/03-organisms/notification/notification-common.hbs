@@ -1,23 +1,24 @@
 <div class="notification-common {{#if notification-common_error}}notification-common--error {{/if}} {{styleModifier}}">
   {{#if notification-common_button }}
   <div class="notification-common__row row">
-    <div class="notification-common__column notification-common__column--text column column--xs-12 column--s-8">
+    <div class="notification-common__column notification-common__column--text column column--12-xs column--8-s">
   {{/if}}
-      {{#if notification-common_title }}
-      <p class="notification-common__title {{#if notification-common_error}}notification-common__title--error {{/if}}">
-        {{ notification-common_title }}
+
+    {{#if notification-common_title }}
+    <p class="notification-common__title {{#if notification-common_error}}notification-common__title--error {{/if}}">
+      {{ notification-common_title }}
+    </p>
+    {{/if}}
+
+    {{#> notification-common_content }}
+      <p class="notification-common__text {{#if notification-common_error}}notification-common__text--error {{/if}}">
+        {{ notification-common_text }}
       </p>
-      {{/if}}
+    {{/notification-common_content}}
 
-      {{#> notification-common_content }}
-        <p class="notification-common__text {{#if notification-common_error}}notification-common__text--error {{/if}}">
-          {{ notification-common_text }}
-        </p>
-      {{/notification-common_content}}
-
-    {{#if notification-common_button }}
+  {{#if notification-common_button }}
     </div>
-    <div class="notification-common__column notification-common__column--button column column--xs-12 column--s-4">
+    <div class="notification-common__column notification-common__column--button column column--12-xs column--4-s">
       {{> deprecated-button-inline
           button-inline_active="true"
           button-inline_right="true"
@@ -25,6 +26,6 @@
           button-inline_icon="arrow-right-thin"
       }}
     </div>
-    {{/if}}
   </div>
+  {{/if}}
 </div>

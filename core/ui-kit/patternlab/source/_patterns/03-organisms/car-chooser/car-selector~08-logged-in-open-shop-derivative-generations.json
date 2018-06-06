@@ -10,22 +10,22 @@
   "car-selector_derivatives": [
     {
       "title": "718",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": false
     },
     {
       "title": "911",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": false
     },
     {
       "title": "Panamera",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": false
     },
     {
       "title": "Cayenne",
-      "image": "../../images/car-transparent-w640.png",
+      "image": "../../images/porsche-ui-kit-core/car-transparent-w640.png",
       "generation": true,
       "name": "generation",
       "text1": "2. Generation",

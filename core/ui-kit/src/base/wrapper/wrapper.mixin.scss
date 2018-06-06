@@ -2,22 +2,24 @@
 @import '../../mixins/breakpoint.scss';
 
 @mixin -wrapper-page {
-  padding: {
-    top: $wrapper-page-spacing-inner-top;
-    right: $wrapper-page-spacing-inner-horizontal;
-    bottom: $wrapper-page-spacing-inner-bottom;
-    left: $wrapper-page-spacing-inner-horizontal;
-  }
   width: $wrapper-page-width;
   max-width: $wrapper-page-max-width;
-  margin: $wrapper-page-spacing-outer-vertical $wrapper-page-spacing-outer-horizontal;
+  margin: {
+    left: auto;
+    right: auto;
+  }
   box-sizing: content-box;
 
-  @include breakpoint('s') {
-    padding-bottom: $wrapper-page-spacing-inner-bottom-s;
+  @include breakpoint('m') {
+    // when some module prevents scrolling the page and the scrollbar is hidden,
+    // then the wrapper moves from left to right, the following line fixes this issue
+    // downside is that content is not centered 100% correct if a scrollbar is visible because
+    // content has offset to the right by the width of the scrollbar that's why this fix is only
+    // applied with breakpoint "m"
+    padding-left: calc(100vw - 100%);
   }
 
-  @include breakpoint('m') {
-    padding-left: $wrapper-page-spacing-inner-left-m;
+  @include breakpoint('xl') {
+    width: $wrapper-page-width-xl;
   }
 }

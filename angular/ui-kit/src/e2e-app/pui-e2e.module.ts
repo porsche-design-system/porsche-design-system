@@ -1,22 +1,62 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {PuiE2eRoutingModule} from './pui-e2e-routing.module';
+import { PuiE2eRoutingModule } from './pui-e2e-routing.module';
 
 import { PuiE2eComponent } from './pui-e2e.component';
-import {PuiTextModule} from '../public_api';
-import {PuiE2eAtomsTextComponent} from './pages/atoms/text/text';
+import {
+  PuiTextModule,
+  PuiIconModule,
+  PuiNotificationModule,
+  PuiLinkIconTextModule,
+  PuiImageCoverModule,
+  PuiLoaderModule,
+  PuiButtonModule,
+  PuiFooterModule
+} from '../public_api';
+import { PuiE2eAtomsTextSizeComponent } from './pages/atoms/text/text-size.component';
+import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
+import { PuiE2eOrganismsNotificationComponent } from './pages/organisms/notification/notification.component';
+import { PuiE2eOrganismsFooterComponent } from './pages/organisms/footer/footer.component';
+import { PuiE2eMoleculesLinkIconTextComponent } from './pages/molecules/link-icon-text/link-icon-text.component';
+import { PuiE2eMoleculesImageCoverComponent } from './pages/molecules/image-cover/image.cover.component';
+import { PuiE2eMoleculesLoaderBaseComponent } from './pages/molecules/loader-base/loader-base-component';
+import { PuiE2eMoleculesButtonPrimaryComponent } from './pages/molecules/button/button-primary/button-primary.component';
+import { PuiE2eMoleculesButtonGhostComponent } from './pages/molecules/button/button-ghost/button-ghost.component';
 
+const puiModules = [
+  PuiE2eRoutingModule,
+  PuiTextModule,
+  PuiIconModule,
+  PuiNotificationModule,
+  PuiIconModule,
+  PuiLinkIconTextModule,
+  PuiImageCoverModule,
+  PuiLoaderModule,
+  PuiButtonModule,
+  PuiFooterModule
+];
+
+const e2ePages = [
+  PuiE2eAtomsTextSizeComponent,
+  PuiE2eAtomsIconComponent,
+  PuiE2eMoleculesLinkIconTextComponent,
+  PuiE2eMoleculesImageCoverComponent,
+  PuiE2eMoleculesLoaderBaseComponent,
+  PuiE2eMoleculesButtonGhostComponent,
+  PuiE2eMoleculesButtonPrimaryComponent,
+  PuiE2eOrganismsNotificationComponent,
+  PuiE2eOrganismsFooterComponent
+];
 
 @NgModule({
   declarations: [
     PuiE2eComponent,
-    PuiE2eAtomsTextComponent
+    ...e2ePages
   ],
   imports: [
     BrowserModule,
-    PuiE2eRoutingModule,
-    PuiTextModule
+    ...puiModules
   ],
   bootstrap: [PuiE2eComponent]
 })

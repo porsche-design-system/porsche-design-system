@@ -1,0 +1,21 @@
+{
+  "verbose": true,
+  "exclude": [
+    "_?index\\.scss$",
+    "\\.setup\\.scss$",
+    "\\.mixin\\.scss$",
+    "/porsche-stylesheets\\.scss$",
+    "/porsche-stylesheets\\.angular\\.scss$"
+  ],
+  "order": [
+    "/src/common/",
+    "/src/base/",
+    "/src/modules/icon/",
+    "/src/modules/loader/",
+    "/src/modules/button/",
+    "/src/modules/divider/",
+    "/src/modules/form/",
+    "/src/modules/list/",
+    "/src/modules/"
+  ]
+}

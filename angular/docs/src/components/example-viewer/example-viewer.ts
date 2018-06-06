@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 const ExampleViewerSelector = 'pui-docs-example-viewer';
 

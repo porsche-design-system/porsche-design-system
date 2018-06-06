@@ -145,4 +145,20 @@
       line-height: $tiles-slider-arrow-size-l;
     }
   }
+
+  &__play-icon {
+    position: absolute;
+    left: $tiles-slider-video-icon-pos;
+    top: $tiles-slider-video-icon-pos;
+    font-size: $tiles-slider-video-icon-size;
+    color: $tiles-slider-video-icon-light-color;
+
+    &:hover {
+      color: $tiles-slider-video-icon-hover-color;
+    }
+
+    &--dark {
+      color: $tiles-slider-video-icon-dark-color;
+    }
+  }
 }

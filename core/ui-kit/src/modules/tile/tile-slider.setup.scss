@@ -34,3 +34,9 @@ $tiles-slider-arrow-size-s: rem(80px) !default;
 $tiles-slider-arrow-size-l: rem(96px) !default;
 $tiles-slider-arrow-color: $color-palette-grey-4 !default;
 $tiles-slider-arrow-color-disabled: $color-palette-grey-9 !default;
+
+$tiles-slider-video-icon-light-color: $color-palette-white !default;
+$tiles-slider-video-icon-dark-color: $color-palette-black !default;
+$tiles-slider-video-icon-hover-color: $color-palette-red-1 !default;
+$tiles-slider-video-icon-size: rem(92px) !default;
+$tiles-slider-video-icon-pos: calc(50% - #{$tiles-slider-video-icon-size} / 2) !default;
