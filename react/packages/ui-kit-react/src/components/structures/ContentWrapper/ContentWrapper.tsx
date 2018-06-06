@@ -2,18 +2,10 @@ import * as React from "react"
 import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType } from "../../../lib"
+import { META, getElementType, prefix } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface ContentWrapperProps {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface ContentWrapperProps extends ClassNameProp, ComponentProp {
     /**
      * Render without max width and safe-area.
      * @default false
@@ -26,35 +18,20 @@ const defaultProps: Partial<ContentWrapperProps> = {
 }
 
 const _meta: ComponentMeta = {
-  name: "ContentWrapper",
-  type: META.TYPES.STRUCTURE
+    name: "ContentWrapper",
+    type: META.TYPES.STRUCTURE
 }
 
 const _ContentWrapper: React.StatelessComponent<ContentWrapperProps> & Partial<MetaCategorizable> = (props) => {
-    const {
-        as,
-        className,
-        customAttributes,
-        raw,
-        children,
-        ...rest
-    } = props
+    const { as, className, raw, children, ...rest } = props
 
     const ElementType = getElementType(as, "section")
 
-    const classes = cx(
-        "pui-content-wrapper",
-        {["pui-content-wrapper--raw"]: raw},
-        className
-    )
+    const classes = cx(prefix("content-wrapper"), { [prefix("content-wrapper--raw")]: raw }, className)
 
     return (
-        <ElementType
-            className={classes}
-            {...customAttributes}
-            {...rest}
-        >
-        {children}
+        <ElementType className={classes} {...rest}>
+            <div className={prefix("content-wrapper__child")}>{children}</div>
         </ElementType>
     )
 }

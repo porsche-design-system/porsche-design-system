@@ -1,0 +1,11 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "button-ghost_label": "Some button label",
+  "button-ghost_icon": "arrow-right-hair",
+  "button-ghost_link": false,
+  "button-ghost_stretch": false,
+  "button-ghost_error": false,
+  "button-ghost_disabled": false,
+  "button-ghost_loading": false,
+  "button-ghost_inverted": false
+}

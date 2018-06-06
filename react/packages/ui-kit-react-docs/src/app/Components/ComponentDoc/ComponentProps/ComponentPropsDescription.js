@@ -9,11 +9,7 @@ const descriptionStyle = {
 }
 
 const ComponentPropsDescription = ({ description }) => {
-    return (
-        <div style={descriptionStyle}>
-            {description.join(" ")}
-        </div>
-    )
+    return <div style={descriptionStyle}>{description.join(" ")}</div>
 }
 
 ComponentPropsDescription.propTypes = {

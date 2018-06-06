@@ -5,11 +5,7 @@ import React from "react"
 const EdgeCases = () => {
     return (
         <ExampleSection title="Edge Cases">
-
-            <ComponentExample
-                title="Long Title"
-                examplePath="molecules/Button/EdgeCases/ButtonExampleLongTitle"
-            >
+            <ComponentExample title="Long Title" examplePath="molecules/Button/EdgeCases/ButtonExampleLongTitle">
                 Don't worry, a button can handle an overly long title gracefully.
             </ComponentExample>
 
@@ -19,7 +15,6 @@ const EdgeCases = () => {
             >
                 A button with an overly long title in a button group is also handled gracefully when stretch is set.
             </ComponentExample>
-
         </ExampleSection>
     )
 }

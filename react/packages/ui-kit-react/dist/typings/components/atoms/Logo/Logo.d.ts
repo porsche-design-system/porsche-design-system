@@ -1,16 +1,9 @@
 /// <reference types="react" />
-import * as React from "react";
-export interface LogoProps {
-    /** The html element type to render as. */
-    as?: string;
-    /** Additional CSS classes. */
-    className?: string;
-    /** Custom dom attributes. */
-    customAttributes?: {
-        [key: string]: any;
-    };
-}
+import * as React from "react"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
+export interface LogoProps extends ClassNameProp, ComponentProp {}
 /**
  * The famous and loved Porsche Logo, currently available in like one size.
+ * @see Header
  */
-export declare const Logo: React.StatelessComponent<LogoProps>;
+export declare const Logo: React.StatelessComponent<LogoProps>

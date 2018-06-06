@@ -4,6 +4,8 @@ import { Text } from "@porsche/ui-kit-react"
 const TextExampleTypes = () => {
     return (
         <div>
+            <Text type="elevated">elevated</Text>
+            <br />
             <Text type="1-regular">1-regular</Text>
             <Text type="1-thin">1-thin</Text>
             <br />

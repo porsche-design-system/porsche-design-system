@@ -9,8 +9,13 @@ export interface BreakpointValues<T> {
     xl?: T
 }
 
-export function mapBreakpointPropToClasses(className: string, prop?: string | number | BreakpointValues<string | number>): any {
-    if (prop === undefined) { return {} }
+export function mapBreakpointPropToClasses(
+    className: string,
+    prop?: string | number | BreakpointValues<string | number>
+): any {
+    if (prop === undefined) {
+        return {}
+    }
 
     let classes: any = {}
 
@@ -22,12 +27,12 @@ export function mapBreakpointPropToClasses(className: string, prop?: string | nu
             if (key === "base") {
                 classes = {
                     ...classes,
-                    ...{[prefix(`${className}${value}`)] : !!value}
+                    ...{ [prefix(`${className}${value}`)]: !!value }
                 }
             } else {
                 classes = {
                     ...classes,
-                    ...{[prefix(`${className}${value}-${key}`)] : !!value}
+                    ...{ [prefix(`${className}${value}-${key}`)]: !!value }
                 }
             }
         })

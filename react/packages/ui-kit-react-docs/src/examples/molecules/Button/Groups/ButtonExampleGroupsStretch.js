@@ -5,14 +5,12 @@ const ButtonExampleGroupsStretch = () => {
     return (
         <Button.Group>
             <Button type="red" stretch>
-            Button 1
+                Button 1
             </Button>
             <Button type="black" stretch>
-            Button 2
+                Button 2
             </Button>
-            <Button stretch>
-            Button 3
-            </Button>
+            <Button stretch>Button 3</Button>
         </Button.Group>
     )
 }

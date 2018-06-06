@@ -1,0 +1,83 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../setup/global-variables.scss';
+@import 'modal-common.setup.scss';
+
+.#{$global-class-prefix}modal-common {
+  position: absolute;
+  background: $modal-common-overlay-background-color;
+  width: $modal-common-overlay-dimensions;
+  height: $modal-common-overlay-dimensions;
+  top: $modal-common-overlay-position;
+  left: $modal-common-overlay-position;
+  bottom: $modal-common-overlay-position;
+
+  @include breakpoint('xs') {
+    @include flex;
+    @include flex--center-horizontal;
+    @include flex--center-vertical;
+  }
+
+  &__dialog {
+    max-width: $modal-common-dialog-max-width;
+    margin: $modal-common-dialog-outer-spacing-vertical auto;
+    height: $modal-common-dialog-height;
+
+    @include breakpoint('xs') {
+      @include flex;
+      @include flex--center-vertical;
+      @include flex--direction(row);
+
+      padding: $modal-common-dialog-inner-spacing-vertical $modal-common-dialog-inner-spacing-horizontal;
+      height: auto;
+    }
+  }
+
+  &__content {
+    height: $modal-common-content-dimension;
+    background-color: $modal-common-content-background-color;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  &__header {
+    @include flex;
+    @include flex--center-horizontal;
+    @include -spacing-inner-a;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @include -text-size-4-thin;
+    @include -overflow-ellipsis;
+
+    max-width: $modal-common-title-max-width;
+  }
+
+  &__body {
+    @include -text-size-copy;
+    @include -spacing-inner-a;
+    height: $modal-common-body-max-height;
+    overflow-y: scroll;
+
+    @include breakpoint('xs') {
+      height: auto;
+      overflow-y: auto;
+    }
+  }
+
+  &__footer {
+    position: fixed;
+    bottom: $modal-common-footer-position;
+    left: $modal-common-footer-position;
+    width: $modal-common-footer-width;
+
+    @include breakpoint('xs') {
+      position: relative;
+      width: auto;
+    }
+  }
+}

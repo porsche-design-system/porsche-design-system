@@ -18,13 +18,8 @@ const ComponentDoc = ({ componentGroup, componentName, description, path, seeIte
                 <Grid padded columns="1">
                     <Grid.Column>
                         <ComponentDocHeader componentName={componentName} description={description} />
-                        {seeItems && seeItems.length > 0 &&
-                        <ComponentDocSee items={seeItems} />
-                        }
-                        <ComponentDocLinks
-                            componentName={componentName}
-                            path={cleanPath}
-                        />
+                        {seeItems && seeItems.length > 0 && <ComponentDocSee items={seeItems} />}
+                        <ComponentDocLinks componentName={componentName} path={cleanPath} />
                         <ComponentProps componentGroup={componentGroup} componentName={componentName} />
                     </Grid.Column>
                 </Grid>
@@ -40,7 +35,7 @@ ComponentDoc.propTypes = {
         PropTypes.shape({
             description: PropTypes.arrayOf(PropTypes.string),
             props: PropTypes.array
-        }),
+        })
     ),
     componentName: PropTypes.string.isRequired,
     description: PropTypes.arrayOf(PropTypes.string),
@@ -50,7 +45,7 @@ ComponentDoc.propTypes = {
             description: PropTypes.string,
             name: PropTypes.string,
             type: PropTypes.string
-        }),
+        })
     ).isRequired
 }
 

@@ -1,0 +1,7 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "button-notification_label": "OK",
+  "button-notification_icon": "arrow-right-thin",
+  "button-notification_error": false,
+  "button-notification_cookie": false
+}

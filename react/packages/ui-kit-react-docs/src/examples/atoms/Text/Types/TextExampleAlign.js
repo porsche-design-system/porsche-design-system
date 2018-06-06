@@ -6,9 +6,15 @@ const type = "3-regular"
 const TextExampleAlign = () => {
     return (
         <div>
-            <Text align="left" type={type}>left</Text>
-            <Text align="center" type={type}>center</Text>
-            <Text align="right" type={type}>right</Text>
+            <Text align="left" type={type}>
+                left
+            </Text>
+            <Text align="center" type={type}>
+                center
+            </Text>
+            <Text align="right" type={type}>
+                right
+            </Text>
         </div>
     )
 }

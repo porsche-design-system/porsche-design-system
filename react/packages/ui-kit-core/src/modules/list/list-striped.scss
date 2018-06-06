@@ -1,0 +1,57 @@
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'list-striped.setup.scss';
+
+.#{$global-class-prefix}list-striped {
+
+  &__item {
+    &:nth-child(odd) {
+      background-color: $list-striped-item-odd-background-color;
+      color: $list-striped-item-odd-foreground-color;
+    }
+
+    &:nth-child(even) {
+      background-color: $list-striped-item-even-background-color;
+      color: $list-striped-item-even-foreground-color;
+    }
+  }
+
+  &__item-label {
+    @include flex;
+    @include flex--align-items(center);
+
+    padding: $list-striped-item-padding-vertical $list-striped-item-padding-horizontal;
+
+    @include breakpoint('xxs', 'xs') {
+      padding-bottom: 0;
+    }
+
+    &-text {
+      @include -text-size-copy;
+      @include -spacing-3('right');
+
+      line-height: $list-striped-item-line-height;
+    }
+
+    &-icon {
+      color: $list-striped-item-label-icon-color;
+      font-size: $list-striped-item-label-icon-size;
+    }
+  }
+
+  &__item-value {
+    @include -text-size-copy;
+
+    padding: $list-striped-item-padding-vertical $list-striped-item-padding-horizontal;
+
+    line-height: $list-striped-item-line-height;
+    font-weight: $list-striped-item-value-font-weight;
+
+    @include breakpoint('xxs', 'xs') {
+      padding-top: 0;
+    }
+  }
+}

@@ -3,16 +3,9 @@ import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType, prefix } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface <Component>Props {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
+export interface <Component>Props extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<<Component>Props> = {
@@ -28,7 +21,6 @@ const _<Component>: React.StatelessComponent<<Component>Props> & Partial<MetaCat
         as,
         className,
         children,
-        customAttributes,
         ...rest
     } = props
 
@@ -43,7 +35,6 @@ const _<Component>: React.StatelessComponent<<Component>Props> & Partial<MetaCat
     return (
         <ElementType
             className={classes}
-            {...customAttributes}
             {...rest}
         >
             {children}

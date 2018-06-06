@@ -8,6 +8,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.npmrc
 
 # Runtime data
 pids
@@ -55,10 +56,14 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
+# Yarn repo configuration
+.yarnrc
+
 # dotenv environment variables file
 .env
 
 # Visual Studio Code
 *.code-workspace
 
-# End of https://www.gitignore.io/api/node
+# Jest
+jest.json

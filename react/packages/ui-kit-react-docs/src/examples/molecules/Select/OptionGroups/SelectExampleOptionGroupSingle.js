@@ -38,13 +38,7 @@ class SelectExampleOptionGroupSingle extends React.Component {
     }
 
     render() {
-        return (
-            <Select
-                options={data}
-                value={this.state.value}
-                onChange={this.handleChange}
-            />
-        )
+        return <Select options={data} value={this.state.value} onChange={this.handleChange} />
     }
 }
 

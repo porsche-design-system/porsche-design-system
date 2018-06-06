@@ -1,0 +1,104 @@
+@import "../../../common";
+
+// Current Finder customization
+$button-primary-background-color: $grey-darker;
+$button-primary-border-color: $grey-darker;
+
+@import "../../../../../../node_modules/@porsche/ui-kit-core/src/modules/button/button-primary";
+
+@mixin buttonState($color) {
+    &:hover,
+    &:focus,
+    &:active,
+    &--active {
+        &:not([disabled]) {
+            background: $color;
+            border-color: $color;
+        }
+    }
+}
+
+@mixin showFrom($breakpoint) {
+    &--show-#{$breakpoint} {
+        display: none;
+
+        @include breakpoint($breakpoint) {
+            display: block;
+        }
+    }
+}
+
+// Fix button group spacings
+.#{$global-class-prefix}button-group {
+    &__button:not(:last-child) {
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+}
+
+.#{$global-class-prefix}button-primary {
+    $btnPrimary: &;
+    // Add possibility to set button active with a class
+    @include buttonState($color-palette-red-1);
+
+    // Fix button padding
+    padding-left: $spacing-18;
+    padding-right: $spacing-18;
+
+    // Add possibility to set button active with a class
+    &--blue {
+        @include buttonState($color-palette-blue-2);
+
+        background-color: $color-palette-blue-1;
+        border-color: $color-palette-blue-2;
+    }
+
+    // Add possibility to set button active with a class
+    &--red {
+        @include buttonState($color-palette-red-2);
+
+        background-color: $color-palette-red-1;
+        border-color: $color-palette-red-1;
+    }
+
+    &--error {
+        background-color: $button-primary-error-background-color;
+        border-color: $button-primary-error-border-color;
+        color: $button-primary-error-text-color;
+    }
+
+    &--centered {
+        justify-content: center;
+    }
+
+    // Add possibility to show button content only starting from a breakpoint
+    &__label {
+        width: auto;
+        padding-left: $spacing-6;
+
+        @include showFrom("xs");
+        @include showFrom("s");
+        @include showFrom("m");
+        @include showFrom("l");
+        @include showFrom("xl");
+    }
+
+    // Fix button stretching itself below xs
+    @include breakpoint("xxs", "xs") {
+        &:not(#{$btnPrimary}--stretch) {
+            width: auto;
+        }
+    }
+
+    // TODO: set extra class for buttons with icon only. this prevents possible unwanted overwrites
+    // Fix button with only icon
+    flex-direction: row;
+
+    &__icon {
+        position: relative;
+    }
+
+    // &__loader {
+    //     position: relative;
+    // }
+}

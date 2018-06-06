@@ -4,7 +4,9 @@ import React from "react"
 
 import { pure } from "src/app/HOC"
 
-const ComponentPropDefaultValue = ({ value }) => { return (_.isNil(value) ? null : <code>{value}</code>) }
+const ComponentPropDefaultValue = ({ value }) => {
+    return _.isNil(value) ? null : <code>{value}</code>
+}
 
 ComponentPropDefaultValue.propTypes = {
     value: PropTypes.node

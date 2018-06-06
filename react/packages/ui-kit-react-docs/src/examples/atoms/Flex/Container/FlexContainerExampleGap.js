@@ -1,7 +1,9 @@
 import React from "react"
 import { Flex } from "@porsche/ui-kit-react"
 
-const itemStyle = (color) => { return { height: "50px", minWidth: "100px", backgroundColor: color, marginBottom: "8px" } }
+const itemStyle = (color) => {
+    return { height: "50px", minWidth: "100px", backgroundColor: color, marginBottom: "8px" }
+}
 
 const FlexContainerExampleGap = () => {
     return (

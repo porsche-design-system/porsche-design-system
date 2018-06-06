@@ -8,27 +8,16 @@ import { StreamContainer } from "src/stream/StreamContainer"
 import { connect } from "react-redux"
 
 export namespace ApplicationContainer {
+    export interface StateProps {}
 
-    export interface StateProps {
+    export interface DispatchProps {}
 
-    }
+    export interface ComponentProps {}
 
-    export interface DispatchProps {
-
-    }
-
-    export interface ComponentProps {
-
-    }
-
-    export interface Props extends StateProps, DispatchProps, ComponentProps {
-
-    }
-
+    export interface Props extends StateProps, DispatchProps, ComponentProps {}
 }
 
 class ApplicationContainerComponent extends React.PureComponent<ApplicationContainer.Props, {}> {
-
     render() {
         return (
             <Application>
@@ -45,15 +34,15 @@ class ApplicationContainerComponent extends React.PureComponent<ApplicationConta
     private renderRedirect = () => {
         return <Redirect to="/stream" />
     }
-
 }
 
-function mapStateToProps(state: ApplicationState, props: ApplicationContainer.ComponentProps): ApplicationContainer.StateProps {
-    return {
-
-    }
+function mapStateToProps(
+    state: ApplicationState,
+    props: ApplicationContainer.ComponentProps
+): ApplicationContainer.StateProps {
+    return {}
 }
 
-export const ApplicationContainer = connect<ApplicationContainer.StateProps, {}, ApplicationContainer.ComponentProps>
-    (mapStateToProps)
-    (ApplicationContainerComponent)
+export const ApplicationContainer = connect<ApplicationContainer.StateProps, {}, ApplicationContainer.ComponentProps>(
+    mapStateToProps
+)(ApplicationContainerComponent)

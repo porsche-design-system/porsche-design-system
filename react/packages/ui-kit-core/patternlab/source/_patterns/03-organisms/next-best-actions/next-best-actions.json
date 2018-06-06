@@ -1,0 +1,31 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "next-best-actions_title": "Next Best Actions",
+  "next-best-actions_subtitle": "",
+  "next-best-actions": [
+    {
+      "label": "Some label 1",
+      "icon": "arrow-right-thin"
+    },
+    {
+      "label": "Some label 2",
+      "icon": "arrow-right-thin"
+    },
+    {
+      "label": "Some label 3",
+      "icon": "arrow-right-thin"
+    },
+    {
+      "label": "Some label 4",
+      "icon": "arrow-right-thin"
+    },
+    {
+      "label": "Some label 5",
+      "icon": "arrow-right-thin"
+    },
+    {
+      "label": "Some label 6",
+      "icon": "arrow-right-thin"
+    }
+  ]
+}

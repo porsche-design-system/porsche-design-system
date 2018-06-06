@@ -14,61 +14,65 @@ const propsContainerStyle = {
 }
 
 export default class ComponentProps extends Component {
-  static propTypes = {
-      componentGroup: PropTypes.objectOf(
-          PropTypes.shape({
-              description: PropTypes.arrayOf(PropTypes.string),
-              props: PropTypes.array
-          }),
-      ),
-      componentName: PropTypes.string,
-      props: PropTypes.arrayOf(PropTypes.object)
-  }
+    static propTypes = {
+        componentGroup: PropTypes.objectOf(
+            PropTypes.shape({
+                description: PropTypes.arrayOf(PropTypes.string),
+                props: PropTypes.array
+            })
+        ),
+        componentName: PropTypes.string,
+        props: PropTypes.arrayOf(PropTypes.object)
+    }
 
-  constructor(props) {
-      super(props)
+    constructor(props) {
+        super(props)
 
-      this.state = { activeName: props.componentName }
-  }
+        this.state = { activeName: props.componentName }
+    }
 
-  componentWillReceiveProps({ componentName: next }) {
-      const current = this.props.componentName
+    componentWillReceiveProps({ componentName: next }) {
+        const current = this.props.componentName
 
-      if (current !== next) this.setState({ activeName: next })
-  }
+        if (current !== next) this.setState({ activeName: next })
+    }
 
-  handleComponentClick = (e, { name }) => { return this.setState({ activeName: name }) }
+    handleComponentClick = (e, { name }) => {
+        return this.setState({ activeName: name })
+    }
 
-  handleToggle = () => { return this.setState({ activeName: this.state.activeName ? false : this.props.componentName }) }
+    handleToggle = () => {
+        return this.setState({ activeName: this.state.activeName ? false : this.props.componentName })
+    }
 
-  render() {
-      const { componentGroup, componentName } = this.props
-      const { activeName } = this.state
-      const { description, props } = componentGroup[activeName] || {}
-      const componentNames = _.keys(componentGroup)
+    render() {
+        const { componentGroup, componentName } = this.props
+        const { activeName } = this.state
+        const { description, props } = componentGroup[activeName] || {}
+        const componentNames = _.keys(componentGroup)
 
-      return (
-          <div>
-              <ComponentPropsHeader
-                  hasSubComponents={componentNames.length > 1}
-                  showProps={!!activeName}
-                  onClick={this.handleToggle}
-              />
-              <ComponentPropsComponents
-                  activeName={activeName}
-                  components={componentNames}
-                  onItemClick={this.handleComponentClick}
-                  parent={componentName}
-              />
+        return (
+            <div>
+                <ComponentPropsHeader
+                    hasSubComponents={componentNames.length > 1}
+                    showProps={!!activeName}
+                    onClick={this.handleToggle}
+                />
+                <ComponentPropsComponents
+                    activeName={activeName}
+                    components={componentNames}
+                    onItemClick={this.handleComponentClick}
+                    parent={componentName}
+                />
 
-              {activeName && (
-                  <div style={propsContainerStyle}>
-                      <ComponentPropsDescription description={description} />
-                      <Divider />
-                      <ComponentTable name={activeName} props={props} />
-                  </div>
-              )}
-          </div>
-      )
-  }
+                {activeName && (
+                    <div style={propsContainerStyle}>
+                        <ComponentPropsDescription description={description} />
+                        <Divider />
+                        <ComponentTable name={activeName} props={props} />
+                    </div>
+                )}
+            </div>
+        )
+    }
 }

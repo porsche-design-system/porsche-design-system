@@ -1,0 +1,51 @@
+@import "../../../common";
+
+.#{$global-class-prefix}tab {
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+
+    &__menu-item {
+        @include -text-size-3-thin;
+
+        color: $grey;
+        cursor: pointer;
+        display: block;
+        padding: $spacing-6 0;
+
+        &:hover,
+        &:focus {
+            color: $color-palette-red-1;
+        }
+
+        &:not(:last-child) {
+            margin-right: $spacing-42;
+        }
+
+        &--active {
+            color: $black;
+            border-bottom: $spacing-3 solid $color-palette-red-1;
+
+            &:hover {
+                color: initial;
+            }
+        }
+
+        &--mini {
+            @include -text-size-5-thin;
+
+            &:not(:last-child) {
+                margin-right: $spacing-30;
+            }
+        }
+    }
+
+    &__content {
+        display: none;
+        padding-top: $spacing-18;
+
+        &--active {
+            display: block;
+        }
+    }
+}

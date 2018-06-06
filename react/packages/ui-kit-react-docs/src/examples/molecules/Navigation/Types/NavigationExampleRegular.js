@@ -6,86 +6,126 @@ const sections = [
         key: "1",
         label: "Titel1",
         counter: 6,
-        link: "http://www.google.com",
-        menu: <NavigationMenuList categories={[
-            {
-                key: "all",
-                label: "",
-                items: [
+        component: "a",
+        props: {
+            href: "#"
+        },
+        menu: (
+            <NavigationMenuList
+                submenu={[
                     {
-                        key: "1",
-                        label: "Item 1",
-                        link: () => { alert("Item 1")}
-                    },
-                    {
-                        key: "2",
-                        label: "Item 2",
-                        link: () => { alert("Item 2")}
-                    },
-                    {
-                        key: "3",
-                        label: "Item 3",
-                        link: () => { alert("Item 3")}
+                        key: "all",
+                        label: "",
+                        items: [
+                            {
+                                key: "1",
+                                label: "Item 1",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            },
+                            {
+                                key: "2",
+                                label: "Item 2",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            },
+                            {
+                                key: "3",
+                                label: "Item 3",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            }
+                        ]
                     }
-                ]
-            }
-        ]}/>
+                ]}
+            />
+        )
     },
     {
         key: "2",
         label: "Titel2",
-        link: "http://www.google.com",
-        menu: <NavigationMenuList type="categorized" categories={[
-            {
-                key: "1",
-                label: "Category 1",
-                items: [
+        component: "a",
+        props: {
+            href: "#"
+        },
+        menu: (
+            <NavigationMenuList
+                type="categorized"
+                submenu={[
                     {
                         key: "1",
-                        label: "Item 1",
-                        link: () => { alert("Item 1")}
+                        label: "Category 1",
+                        items: [
+                            {
+                                key: "1",
+                                label: "Item 1",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            },
+                            {
+                                key: "2",
+                                label: "Item 2",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            },
+                            {
+                                key: "3",
+                                label: "Item 3",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            }
+                        ]
                     },
                     {
                         key: "2",
-                        label: "Item 2",
-                        link: () => { alert("Item 2")}
-                    },
-                    {
-                        key: "3",
-                        label: "Item 3",
-                        link: () => { alert("Item 3")}
+                        label: "Category 2",
+                        items: [
+                            {
+                                key: "1",
+                                label: "Item 1",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            },
+                            {
+                                key: "2",
+                                label: "Item 2",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            },
+                            {
+                                key: "3",
+                                label: "Item 3",
+                                component: "a",
+                                props: {
+                                    href: "#"
+                                }
+                            }
+                        ]
                     }
-                ]
-            },
-            {
-                key: "2",
-                label: "Category 2",
-                items: [
-                    {
-                        key: "1",
-                        label: "Item 1",
-                        link: () => { alert("Item 1")}
-                    },
-                    {
-                        key: "2",
-                        label: "Item 2",
-                        link: () => { alert("Item 2")}
-                    },
-                    {
-                        key: "3",
-                        label: "Item 3",
-                        link: () => { alert("Item 3")}
-                    }
-                ]
-            }
-        ]}/>
+                ]}
+            />
+        )
     }
 ]
 
 const NavigationExampleRegular = () => {
-    return (
-        <Navigation sections={sections} />
-    )
+    return <Navigation sections={sections} />
 }
 
 export default NavigationExampleRegular

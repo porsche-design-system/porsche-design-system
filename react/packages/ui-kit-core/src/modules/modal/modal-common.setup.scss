@@ -1,0 +1,20 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$modal-common-overlay-dimensions: 100% !default;
+$modal-common-overlay-position: 0 !default;
+$modal-common-overlay-background-color: rgba($color-palette-grey-9-1, .9) !default;
+$modal-common-content-dimension: 100% !default;
+$modal-common-content-background-color: $color-palette-white !default;
+
+$modal-common-dialog-max-width: rem(1376px) !default;
+$modal-common-dialog-height: 100% !default;
+$modal-common-dialog-outer-spacing-vertical: 0 !default;
+$modal-common-dialog-inner-spacing-vertical: 0 !default;
+$modal-common-dialog-inner-spacing-horizontal: 7% !default;
+
+$modal-common-title-max-width: 90% !default;
+$modal-common-body-max-height: 80% !default;
+
+$modal-common-footer-position: 0 !default;
+$modal-common-footer-width: 100% !default;

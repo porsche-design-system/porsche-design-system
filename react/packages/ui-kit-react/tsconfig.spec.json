@@ -1,0 +1,7 @@
+{
+    "extends": "./tsconfig",
+    "exclude": [
+        "dist",
+        "build"
+    ]
+}

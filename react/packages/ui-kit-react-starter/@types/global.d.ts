@@ -1,14 +1,14 @@
 declare module "*.css" {
     const styles: any
     export = styles
-  }
+}
 
-  declare module "*.scss" {
+declare module "*.scss" {
     const styles: any
     export = styles
-  }
+}
 
-  declare module "*.json" {
+declare module "*.json" {
     const value: any
     export = value
-  }
+}

@@ -4,9 +4,7 @@ import { Checkbox, Flex, Spacing } from "@porsche/ui-kit-react"
 const CheckboxExampleDisabled = () => {
     return (
         <Flex wrap>
-            <Checkbox disabled>
-                Checkbox
-            </Checkbox>
+            <Checkbox disabled>Checkbox</Checkbox>
 
             <Checkbox disabled checked>
                 Checkbox

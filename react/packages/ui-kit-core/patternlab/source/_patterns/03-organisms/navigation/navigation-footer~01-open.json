@@ -1,0 +1,52 @@
+{
+  "navigation-footer_items": [
+    {
+      "item": "Category 1",
+      "isOpen": true,
+      "itemsSubmenu": [
+        {
+          "item": "Footer Navigation Item 1"
+        },
+        {
+          "item": "Footer Navigation Item 2"
+        },
+        {
+          "item": "Footer Navigation Item 3"
+        },
+        {
+          "item": "Footer Navigation Item 4"
+        },
+        {
+          "item": "Footer Navigation Item 5"
+        },
+        {
+          "item": "Footer Navigation Item 6"
+        }
+      ]
+    },
+    {
+      "item": "Category 2",
+      "isOpen": false,
+      "itemsSubmenu": [
+        {
+          "item": "Footer Navigation Item 7"
+        },
+        {
+          "item": "Footer Navigation Item 8"
+        },
+        {
+          "item": "Footer Navigation Item 9"
+        },
+        {
+          "item": "Footer Navigation Item 10"
+        },
+        {
+          "item": "Footer Navigation Item 11"
+        },
+        {
+          "item": "Footer Navigation Item 12"
+        }
+      ]
+    }
+  ]
+}

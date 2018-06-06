@@ -1,47 +1,55 @@
 import * as React from "react"
 import cx from "classnames"
-import * as ReactSelectPlus from "../../../frameworks/react-select-plus-1.1.0"
-import { OptionRendererHandler, OptionValues } from "../../../frameworks/react-select-plus-1.1.0"
-import { Input } from "../../../index"
+
+import * as ReactSelectPlus from "./react-select-plus-1.1.0"
+import { Input, Icon } from "../../../index"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
+import { META, prefix, getElementType } from "../../../lib"
 
 import { SelectArrowRenderer } from "./SelectArrowRenderer"
+import { SelectClearRenderer } from "./SelectClearRenderer"
+
 import { CheckboxOptionRenderer } from "./CheckboxOptionRenderer"
 
 export type SelectValue = string | number | string[]
 
 export interface SelectOptionGroup {
-    label: string,
+    label: string
     options: SelectOption[]
 }
 
 export interface SelectOption {
-    value: string | number,
+    value: string | number
     label: string
 }
 
 export interface HydratedSelectOptionGroup {
-    label: string,
+    label: string
     options: HydratedSelectOption[]
 }
 
 export interface HydratedSelectOption {
-    value: string | number,
+    value: string | number
     label: string
     selected: boolean
 }
 
-export interface SelectProps {
-    /** The html element type to render as. */
-    as?: string
+export interface SelectProps extends ClassNameProp, ComponentProp {
+    /**
+     * Determines if the placeholder disappears when a value is set or entered,
+     * or if it floats above the content.
+     * If no placeholder is set, this value has no effect.
+     * @default false
+     */
+    basic?: boolean
 
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
+    /**
+     * Determines if the select shows an icon to clear selected values.
+     * @default true
+     */
+    clearable?: boolean
 
     /** Disable the select. */
     disabled?: boolean
@@ -57,10 +65,10 @@ export interface SelectProps {
 
     /**
      * Called when the user attempts to change the selection.
-     * @param {SelectValue} value The proposed value after the change.
+     * @param {SelectValue | null} value The proposed value after the change.
      * @param {SelectProps} data All props of the component.
      */
-    onChange?: (value: SelectValue, data: SelectProps) => void
+    onChange?: (value: SelectValue | null, data: SelectProps) => void
 
     /** The displayed options with option label and value. */
     options?: SelectOption[] | SelectOptionGroup[]
@@ -74,12 +82,21 @@ export interface SelectProps {
     /**
      * Called when the user changed the search value.
      * Note that the search value cannot be controlled directly, therefore the change is not a proposal.
+     * Mobile behaviour is disabled if this value is set, since mobile doesn't allow for keyboard input.
      * @param {string | null} value The value that has changed. If the search was cleared, the value will be null.
      */
     onSearchChanged?: (value: string | null) => void
 
     /** The selected value. */
-    value?: SelectValue
+    value?: SelectValue | null
+
+    /**
+     * You can customize the filter behaviour of the select component by providing a custom function.
+     */
+    filterOptions?: (
+        option: SelectOption[] | SelectOptionGroup[],
+        filter: string
+    ) => SelectOption[] | SelectOptionGroup[]
 }
 
 export interface SelectState {
@@ -100,7 +117,9 @@ const _meta: ComponentMeta = {
  */
 export class Select extends React.PureComponent<SelectProps, SelectState> {
     static defaultProps = {
-        searchable: true
+        searchable: true,
+        basic: false,
+        clearable: true
     }
 
     static _meta: ComponentMeta = _meta
@@ -111,7 +130,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
     private selectInput: any
 
-    handleChange = (value: SelectOption) => {
+    handleChange = (value: SelectOption | null) => {
         if (!this.props.onChange) {
             return
         }
@@ -121,13 +140,18 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         }
 
         if (Array.isArray(value)) {
-            this.props.onChange(value.map((option) => { return option.value }), this.props)
+            this.props.onChange(
+                value.map((option) => {
+                    return option.value
+                }),
+                this.props
+            )
         } else {
-            this.props.onChange(value.value, this.props)
+            this.props.onChange(value && value.value, this.props)
         }
     }
 
-    handleInputChange = (value: string) => {
+    handleInputChange = (value: string) => {
         if (this.props.disabled) {
             return
         }
@@ -141,7 +165,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         }
 
         this.setState({
-            query: value || ""
+            query: value || ""
         })
     }
 
@@ -155,9 +179,9 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         }
 
         if (!this.props.multi) {
-            this.props.onChange(e.currentTarget.value, this.props)
+            this.props.onChange(e.currentTarget.value !== "" ? e.currentTarget.value : null, this.props)
         } else {
-            const values = [...e.target.options].filter((o) => o.selected).map((o) => o.value)
+            const values = Array.from(e.currentTarget.selectedOptions).map((o: any) => o.value)
             this.props.onChange(values, this.props)
         }
     }
@@ -174,7 +198,13 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         } else if (!Array.isArray(value)) {
             return option.value.toString() === value.toString()
         } else {
-            return value.includes(option.value.toString())
+            let included = false
+            value.forEach((v: any) => {
+                if (option.value.toString() === v.toString()) {
+                    included = true
+                }
+            })
+            return included
         }
     }
 
@@ -185,19 +215,21 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
      * @param value The selected values.
      * @returns Hydrated options, that include if they are selected or not.
      */
-    hydrateOptions = (options: SelectOption[] | SelectOptionGroup[] | undefined, value: string | number | string[] | undefined | null): HydratedSelectOption[] | HydratedSelectOptionGroup[] => {
+    hydrateOptions = (
+        options: SelectOption[] | SelectOptionGroup[] | undefined,
+        value: string | number | string[] | undefined | null
+    ): HydratedSelectOption[] | HydratedSelectOptionGroup[] => {
         if (!options) {
             return []
         }
 
-        const results = []
+        const results: (HydratedSelectOption | HydratedSelectOptionGroup)[] = []
 
         for (const option of options) {
             if ("options" in option) {
-                const optionGroup = option as SelectOptionGroup // TODO: Remove with Typescript 2.7
                 const element: HydratedSelectOptionGroup = {
                     label: option.label,
-                    options: optionGroup.options.map((e) => {
+                    options: option.options.map((e) => {
                         return {
                             value: e.value,
                             label: e.label,
@@ -207,11 +239,10 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
                 }
                 results.push(element)
             } else {
-                const optionValue = option as SelectOption // TODO: Remove with Typescript 2.7
                 const element: HydratedSelectOption = {
-                    value: optionValue.value,
-                    label: optionValue.label,
-                    selected: value ? this.isOptionSelected(optionValue, value) : false
+                    value: option.value,
+                    label: option.label,
+                    selected: value ? this.isOptionSelected(option, value) : false
                 }
                 results.push(element)
             }
@@ -225,13 +256,13 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
      */
     getFlatOptionsList = (options: HydratedSelectOption[] | HydratedSelectOptionGroup[]): HydratedSelectOption[] => {
         const list: HydratedSelectOption[] = []
-        for (const option of options) {
-            if ("options" in option) {
-                const optionGroup = option as HydratedSelectOptionGroup // TODO: Remove with Typescript 2.7
-                optionGroup.options.map((option) => { list.push(option) })
+        for (const opt of options) {
+            if ("options" in opt) {
+                opt.options.map((option) => {
+                    list.push(option)
+                })
             } else {
-                const optionValue = option as HydratedSelectOption // TODO: Remove with Typescript 2.7
-                list.push(optionValue)
+                list.push(opt)
             }
         }
         return list
@@ -243,7 +274,10 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
      * @param multi Wether multi select is enabled.
      * @returns The selected value or an array of selected values, compatible with <select> value typing.
      */
-    getSelectedValues = (options: HydratedSelectOption[] | HydratedSelectOptionGroup[], multi: boolean): string | number | string[] => {
+    getSelectedValues = (
+        options: HydratedSelectOption[] | HydratedSelectOptionGroup[],
+        multi: boolean
+    ): string | number | string[] => {
         if (options.length < 1) {
             return multi ? [] : ""
         }
@@ -262,7 +296,13 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             return multi ? [] : ""
         }
 
-        const result = options.filter((e) => { return e.selected }).map((e) => { return `${e.value}` })
+        const result = options
+            .filter((e) => {
+                return e.selected
+            })
+            .map((e) => {
+                return `${e.value}`
+            })
 
         if (!multi && result.length === 0) {
             return multi ? [] : ""
@@ -284,14 +324,18 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         }
 
         const labels: string[] = []
-        for (const option of options) {
-            if ("options" in option) {
-                const optionGroup = option as HydratedSelectOptionGroup // TODO: Remove with Typescript 2.7
-                optionGroup.options.filter((option) => { return option.selected }).map((option) => { labels.push(option.label) })
+        for (const opt of options) {
+            if ("options" in opt) {
+                opt.options
+                    .filter((option) => {
+                        return option.selected
+                    })
+                    .map((option) => {
+                        labels.push(option.label)
+                    })
             } else {
-                const optionValue = option as HydratedSelectOption // TODO: Remove with Typescript 2.7
-                if (optionValue.selected) {
-                    labels.push(option.label)
+                if (opt.selected) {
+                    labels.push(opt.label)
                 }
             }
         }
@@ -305,8 +349,12 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
      * of the selected options as label of the first option.
      * If only one option is selected, we don't need to do anything.
      */
-    flattenValueLabelsIfNeeded = (options: HydratedSelectOption[] | HydratedSelectOptionGroup[]): HydratedSelectOption | HydratedSelectOption[] | undefined => {
-        const flatOptions = this.getFlatOptionsList(options).filter((option) => { return option.selected })
+    flattenValueLabelsIfNeeded = (
+        options: HydratedSelectOption[] | HydratedSelectOptionGroup[]
+    ): HydratedSelectOption | HydratedSelectOption[] | undefined => {
+        const flatOptions = this.getFlatOptionsList(options).filter((option) => {
+            return option.selected
+        })
 
         if (flatOptions.length <= 0) {
             return undefined
@@ -329,6 +377,10 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
     /** User Agent detection for android and iOS. */
     isMobile = (): boolean => {
+        if (this.props.onSearchChanged) {
+            return false
+        }
+
         const userAgent = navigator.userAgent || navigator.vendor
         const w: any = window
 
@@ -344,9 +396,18 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         return false
     }
 
-    bindSelect = (input: any) => { this.selectInput = input }
+    preventDefault = (e: any) => {
+        e.preventDefault()
+    }
+
+    bindSelect = (input: any) => {
+        this.selectInput = input
+    }
 
     focusSelect = () => {
+        if (this.props.disabled) {
+            return
+        }
         this.selectInput.focus()
     }
 
@@ -355,7 +416,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             as,
             className,
             children,
-            customAttributes,
             disabled,
             error,
             multi,
@@ -366,22 +426,29 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             searchable,
             value,
             onSearchChanged,
+            basic,
+            clearable,
+            filterOptions,
             ...rest
         } = this.props
 
+        const ElementType = getElementType(as, "div")
         const selectOptions = this.hydrateOptions(options, value)
+
+        const defaultPlaceholder = "Select…"
+        const selectPlaceholder = placeholder !== undefined ? placeholder : defaultPlaceholder
 
         if (this.isMobile()) {
             return (
                 <Input
                     className={className}
-                    basic
+                    basic={basic}
+                    disabled={disabled}
                     value={this.createCombinedLabelString(selectOptions)}
-                    placeholder={placeholder || "Select…"}
+                    placeholder={selectPlaceholder}
                     icon="arrow_down_hair"
                     error={!!error}
-                    customAttributes={{
-                        ...customAttributes,
+                    {...{
                         onFocus: this.focusSelect,
                         onTouchEnd: this.focusSelect,
                         readOnly: true
@@ -392,57 +459,73 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
                         className={prefix("mobile-select")}
                         value={this.getSelectedValues(selectOptions, !!multi)}
                         multiple={multi}
+                        disabled={disabled}
                         ref={this.bindSelect}
                         onChange={this.handleSelectChange}
                     >
-                        {(selectOptions as (HydratedSelectOption | HydratedSelectOptionGroup)[]).map((o) => {
-                            if ("options" in o) {
-                                const optionGroup = o as HydratedSelectOptionGroup // TODO: Remove with Typescript 2.7
+                        {!multi &&
+                            clearable && (
+                                <option key={"–"} value={""}>
+                                    {"–"}
+                                </option>
+                            )}
+                        {(selectOptions as (HydratedSelectOption | HydratedSelectOptionGroup)[]).map((opt) => {
+                            if ("options" in opt) {
                                 return (
-                                    <optgroup key={o.label} label={o.label}>
-                                        {optionGroup.options.map((e) => {
-                                            return <option key={e.value} value={e.value}>{e.label}</option>
+                                    <optgroup key={opt.label} label={opt.label}>
+                                        {opt.options.map((e) => {
+                                            return (
+                                                <option key={e.value} value={e.value}>
+                                                    {e.label}
+                                                </option>
+                                            )
                                         })}
                                     </optgroup>
                                 )
                             } else {
-                                const optionValue = o as HydratedSelectOption // TODO: Remove with Typescript 2.7
-                                return <option key={optionValue.value} value={optionValue.value}>{o.label}</option>
+                                return (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                )
                             }
                         })}
                     </select>
                 </Input>
             )
         } else {
-            const selectValue = this.flattenValueLabelsIfNeeded(selectOptions)
             return (
-                <ReactSelectPlus.default
-                    arrowRenderer={SelectArrowRenderer}
-                    className={cx(
-                        className,
-                        {[prefix("select-is-error")]: !!error},
-                        {[prefix("select-has-query")]: this.state.query && this.state.query.length > 0}
-                    )}
-                    onChange={this.handleChange}
-                    disabled={disabled}
-                    clearable={false}
-                    searchable={!!multi || !!searchable}
-                    options={selectOptions}
-                    value={selectValue}
-                    multi={multi}
-                    placeholder={placeholder}
-                    autosize={false}
-                    removeSelected={false}
-                    noResultsText={noResultsLabel || ""}
-                    closeOnSelect={!multi}
-                    optionRenderer={(multi ? CheckboxOptionRenderer : undefined) as OptionRendererHandler<OptionValues>}
-                    onSelectResetsInput={!multi}
-                    onCloseResetsInput={true}
-                    joinValues={true}
-                    onInputChange={this.handleInputChange}
-                    {...customAttributes}
-                    {...rest}
-                />
+                <ElementType className={className} {...rest}>
+                    <ReactSelectPlus.default
+                        arrowRenderer={SelectArrowRenderer}
+                        clearRenderer={SelectClearRenderer}
+                        className={cx(
+                            { [prefix("select-is-basic")]: basic },
+                            { [prefix("select-is-error")]: !!error },
+                            { [prefix("select-has-query")]: this.state.query && this.state.query.length > 0 }
+                        )}
+                        onChange={this.handleChange}
+                        disabled={disabled}
+                        clearable={clearable}
+                        searchable={!!searchable || !!multi}
+                        options={selectOptions}
+                        value={value}
+                        multi={multi}
+                        placeholder={selectPlaceholder}
+                        autosize={false}
+                        removeSelected={false}
+                        noResultsText={noResultsLabel || ""}
+                        closeOnSelect={!multi}
+                        optionRenderer={multi ? CheckboxOptionRenderer : undefined}
+                        onSelectResetsInput={!multi}
+                        onCloseResetsInput={true}
+                        joinValues={true}
+                        onInputChange={this.handleInputChange}
+                        filterOptions={filterOptions}
+                    >
+                        {!basic && <span className={prefix("Select-label")}>{selectPlaceholder}</span>}
+                    </ReactSelectPlus.default>
+                </ElementType>
             )
         }
     }

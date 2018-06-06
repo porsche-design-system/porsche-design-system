@@ -1,0 +1,117 @@
+@import 'tile-icon-headline-button.setup.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/overflow/overflow.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+@mixin icon-height($height) {
+  font-size: $height;
+  line-height: $height;
+}
+
+.#{$global-class-prefix}tile-icon-headline-button {
+  @include -text-size-copy;
+  @include flex;
+  @include flex--direction(column);
+  height: $tile-icon-headline-button-height;
+
+  &__content {
+    @include flex;
+    @include flex--grow(1);
+    min-height: $tile-icon-headline-button-height-default;
+    background-color: $tile-icon-headline-button-background-color;
+
+    @include breakpoint('xs') {
+      min-height: $tile-icon-headline-button-height-xs;
+    }
+
+    @include breakpoint('s') {
+      min-height: $tile-icon-headline-button-height-s;
+    }
+
+    @include breakpoint('m') {
+      min-height: $tile-icon-headline-button-height-m;
+    }
+
+    @include breakpoint('l') {
+      min-height: $tile-icon-headline-button-height-l;
+    }
+  }
+
+  &__centered-container {
+    @include -spacing-inner-e;
+    @include flex;
+    @include flex--grow(1);
+    @include flex--center-vertical;
+    @include flex--center-horizontal;
+    width: $tile-icon-headline-button-full-width; // IE flex issue fix
+  }
+
+  &__icon {
+    @include -align-center;
+    @include -spacing-18('bottom');
+    @include icon-height($tile-icon-headline-button-icon-height-default);
+    color: $tile-icon-headline-button-icon-color;
+
+    @include breakpoint('xs') {
+      @include -spacing-24('bottom');
+    }
+
+    @include breakpoint('s') {
+      @include icon-height($tile-icon-headline-button-icon-height-s);
+    }
+
+    @include breakpoint('l') {
+      @include icon-height($tile-icon-headline-button-icon-height-l);
+    }
+
+    &--small {
+      @include breakpoint('s') {
+        @include icon-height($tile-icon-headline-button-icon-height-default);
+      }
+
+      @include breakpoint('m') {
+        @include icon-height($tile-icon-headline-button-icon-height-s);
+      }
+
+      @include breakpoint('l') {
+        @include icon-height($tile-icon-headline-button-icon-height-l);
+      }
+    }
+  }
+
+  &__textarea {
+    @include -align-center;
+    width: $tile-icon-headline-button-text-width-default;
+    color: $tile-icon-headline-button-headline-color;
+
+    @include breakpoint('l') {
+      width: $tile-icon-headline-button-text-width-l;
+    }
+
+    &--small {
+      @include breakpoint('l') {
+        width: $tile-icon-headline-button-text-width-default;
+      }
+    }
+  }
+
+  &__headline {
+    @include -text-size-3-thin;
+    @include -overflow-ellipsis;
+
+    &--multiline {
+      text-overflow: clip;
+      white-space: normal;
+    }
+  }
+
+  &__text {
+    &--hide {
+      display: none;
+    }
+  }
+}

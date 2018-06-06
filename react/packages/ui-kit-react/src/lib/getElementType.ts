@@ -1,3 +1,5 @@
+import * as React from "react"
+
 /**
  * Returns a createElement() type based on the props of the Component.
  * Useful for calculating what type a component should render as.
@@ -6,19 +8,26 @@
  * @param {function} [defaultValue] A string as the default element type.
  * @returns {string} A ReactElement type
  */
-export const getElementType = (as: any, defaultValue: string): string => {
-  // ----------------------------------------
-  // user defined "as" element type
+export const getElementType = (
+    as?: string | React.ComponentClass,
+    defaultValue?: string
+): string | React.ComponentClass => {
+    // ----------------------------------------
+    // user defined "as" element type
 
-  if (as) { return as }
+    if (as) {
+        return as
+    }
 
-  // ----------------------------------------
-  // computed default element type
+    // ----------------------------------------
+    // computed default element type
 
-  if (defaultValue) { return defaultValue }
+    if (defaultValue) {
+        return defaultValue
+    }
 
-  // ----------------------------------------
-  // If no props.as and no getDefault, use 'div'
+    // ----------------------------------------
+    // If no props.as and no getDefault, use 'div'
 
-  return "div"
+    return "div"
 }

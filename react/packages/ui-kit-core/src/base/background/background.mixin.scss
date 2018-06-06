@@ -1,0 +1,97 @@
+// sass-lint:disable empty-args
+@import 'background.setup.scss';
+
+// ci colors
+@mixin -background-white() {
+  background-color: $background-white;
+}
+
+@mixin -background-grey-1() {
+  background-color: $background-grey-1;
+}
+
+@mixin -background-grey-2() {
+  background-color: $background-grey-2;
+}
+
+@mixin -background-grey-3() {
+  background-color: $background-grey-3;
+}
+
+@mixin -background-grey-4() {
+  background-color: $background-grey-4;
+}
+
+@mixin -background-grey-5() {
+  background-color: $background-grey-5;
+}
+
+@mixin -background-grey-6() {
+  background-color: $background-grey-6;
+}
+
+@mixin -background-grey-7() {
+  background-color: $background-grey-7;
+}
+
+@mixin -background-grey-8() {
+  background-color: $background-grey-8;
+}
+
+@mixin -background-grey-9() {
+  background-color: $background-grey-9;
+}
+
+@mixin -background-grey-9-1() {
+  background-color: $background-grey-9-1;
+}
+
+@mixin -background-grey-10() {
+  background-color: $background-grey-10;
+}
+
+@mixin -background-grey-10-1() {
+  background-color: $background-grey-10-1;
+}
+
+@mixin -background-black() {
+  background-color: $background-black;
+}
+
+@mixin -background-red-1() {
+  background-color: $background-red-1;
+}
+
+@mixin -background-red-2() {
+  background-color: $background-red-2;
+}
+
+@mixin -background-blue-1() {
+  background-color: $background-blue-1;
+}
+
+@mixin -background-blue-2() {
+  background-color: $background-blue-2;
+}
+
+// special colors
+@mixin -background-acid-green() {
+  background-color: $background-acid-green;
+}
+
+// status colors
+@mixin -background-status-green() {
+  background-color: $background-status-green;
+}
+
+@mixin -background-status-yellow() {
+  background-color: $background-status-yellow;
+}
+
+@mixin -background-status-orange() {
+  background-color: $background-status-orange;
+}
+
+@mixin -background-status-red() {
+  background-color: $background-status-red;
+}

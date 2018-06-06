@@ -2,16 +2,32 @@ import React from "react"
 import { Flex, Select } from "@porsche/ui-kit-react"
 
 const data = [
-    { label: "Group with Whitespace Group with Whitespace",
+    {
+        label: "Group with Whitespace Group with Whitespace",
         options: [
-            { value: "WithoutWhitespace1", label: "WithoutWhitespaceWithoutWhitespaceWithoutWhitespaceWithoutWhitespace" },
-            { value: "With Whitespace1", label: "With Whitespace With Whitespace With Whitespace With Whitespace With Whitespace" }
-        ] },
-    { label: "GroupWithoutWhitespaceGroupWithoutWhitespace",
+            {
+                value: "WithoutWhitespace1",
+                label: "WithoutWhitespaceWithoutWhitespaceWithoutWhitespaceWithoutWhitespace"
+            },
+            {
+                value: "With Whitespace1",
+                label: "With Whitespace With Whitespace With Whitespace With Whitespace With Whitespace"
+            }
+        ]
+    },
+    {
+        label: "GroupWithoutWhitespaceGroupWithoutWhitespace",
         options: [
-            { value: "WithoutWhitespace2", label: "WithoutWhitespaceWithoutWhitespaceWithoutWhitespaceWithoutWhitespace" },
-            { value: "With Whitespace2", label: "With Whitespace With Whitespace With Whitespace With Whitespace With Whitespace" }
-        ] }
+            {
+                value: "WithoutWhitespace2",
+                label: "WithoutWhitespaceWithoutWhitespaceWithoutWhitespaceWithoutWhitespace"
+            },
+            {
+                value: "With Whitespace2",
+                label: "With Whitespace With Whitespace With Whitespace With Whitespace With Whitespace"
+            }
+        ]
+    }
 ]
 
 const SelectExampleLongValueGrouped = () => {
@@ -37,4 +53,3 @@ const SelectExampleLongValueGrouped = () => {
 }
 
 export default SelectExampleLongValueGrouped
-

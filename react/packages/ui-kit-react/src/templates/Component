@@ -3,16 +3,9 @@ import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface <Component>Props {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
+export interface <Component>Props extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<<Component>Props> = {
@@ -35,7 +28,6 @@ export class <Component> extends React.PureComponent<<Component>Props> {
             as,
             className,
             children,
-            customAttributes,
             ...rest
         } = this.props
 
@@ -46,7 +38,7 @@ export class <Component> extends React.PureComponent<<Component>Props> {
         )
 
         return (
-            <ElementType className={classes} {...customAttributes} {...rest}>
+            <ElementType className={classes} {...rest}>
                 {children}
             </ElementType>
         )

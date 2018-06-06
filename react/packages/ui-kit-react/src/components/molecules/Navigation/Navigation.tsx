@@ -1,8 +1,8 @@
 import * as React from "react"
-import * as PropTypes from "prop-types"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { Breakpoint } from "../../../index"
 
@@ -12,31 +12,15 @@ import { NavigationMobile } from "./NavigationMobile"
 export interface NavigationSection {
     key: string
     label: string | JSX.Element
-    link?: string | (() => void)
     counter?: number
     menu?: JSX.Element
+    component?: React.ComponentClass
+    props?: object
 }
 
-export interface NavigationProps {
-    as?: string
-    className?: string
-    customAttributes?: {[key: string]: any}
-
-    sections: NavigationSection[]
-}
-
-const propTypes = {
-    /** The html element type to render as. */
-    as: PropTypes.string,
-
-    /** Additional CSS classes. */
-    className: PropTypes.string,
-
-    /** Custom dom attributes. */
-    customAttributes: PropTypes.object,
-
+export interface NavigationProps extends ClassNameProp, ComponentProp {
     /** The navigation sections to be displayed. */
-    sections: PropTypes.arrayOf(PropTypes.object).isRequired
+    sections: NavigationSection[]
 }
 
 const _meta: ComponentMeta = {
@@ -48,24 +32,20 @@ const _meta: ComponentMeta = {
  * A responsive navigation bar.
  */
 const _Navigation: React.StatelessComponent<NavigationProps> & Partial<MetaCategorizable> = (props) => {
-    const {
-        children,
-        ...rest
-    } = props
+    const { children, ...rest } = props
 
     return (
-        <div>
+        <React.Fragment>
             <Breakpoint maxWidth="s">
                 <NavigationMobile {...rest} />
             </Breakpoint>
             <Breakpoint minWidth="s">
                 <NavigationDesktop {...rest} />
             </Breakpoint>
-        </div>
+        </React.Fragment>
     )
 }
 
-_Navigation.propTypes = propTypes
 _Navigation._meta = _meta
 
 export const Navigation = _Navigation

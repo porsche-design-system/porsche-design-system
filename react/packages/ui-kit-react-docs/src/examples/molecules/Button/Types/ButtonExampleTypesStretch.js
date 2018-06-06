@@ -42,6 +42,12 @@ const ButtonExampleTypesStretch = () => {
                         Ghost Button
                     </Button>
                 </Flex.Item>
+
+                <Flex.Item width={3}>
+                    <Button stretch centered type="default">
+                        Streched and centered Button
+                    </Button>
+                </Flex.Item>
             </Flex>
 
             <Flex gap="grid">

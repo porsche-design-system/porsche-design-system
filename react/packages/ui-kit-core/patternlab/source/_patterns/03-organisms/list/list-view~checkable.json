@@ -1,0 +1,18 @@
+{
+  "list-view": [
+    {
+      "title": "Some title",
+      "tags": [
+        {
+          "tag": "Some tag",
+          "icon": "replay",
+          "divider": false
+        }
+      ],
+      "active": true,
+      "checkable": true,
+      "hoverable": false,
+      "expanded": false
+    }
+  ]
+}

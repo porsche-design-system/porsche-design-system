@@ -1,0 +1,13 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$navigation-header-item-spacing-right: $spacing-30 !default;
+
+$navigation-header-item-active-position-reset: 0 !default;
+$navigation-header-item-active-border-height: 3px !default;
+$navigation-header-item-active-border-background-color: $color-palette-red-1 !default;
+
+$navigation-header-link-text-color: $color-palette-black !default;
+$navigation-header-link-text-color-hovered: $color-palette-red-1 !default;
+$navigation-header-link-inner-spacing-vertical: $spacing-12 !default;

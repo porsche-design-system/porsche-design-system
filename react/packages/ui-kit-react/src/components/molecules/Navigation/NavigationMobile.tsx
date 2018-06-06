@@ -1,6 +1,5 @@
 import * as React from "react"
 import cx from "classnames"
-import * as PropTypes from "prop-types"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, prefix, getElementType } from "../../../lib"
@@ -8,36 +7,21 @@ import { META, prefix, getElementType } from "../../../lib"
 import { ContentWrapper, Flex, Divider, Text, Icon, Spacing } from "../../../index"
 import { NavigationSection, NavigationProps } from "./Navigation"
 
-const propTypes = {
-    /** The html element type to render as. */
-    as: PropTypes.string,
-
-    /** Additional CSS classes. */
-    className: PropTypes.string,
-
-    /** Custom dom attributes. */
-    customAttributes: PropTypes.object,
-
-    /** The navigation sections to be displayed. */
-    sections: PropTypes.arrayOf(PropTypes.object).isRequired
-}
-
 const _meta: ComponentMeta = {
-  name: "NavigationMobile",
-  parent: "Navigation",
-  type: META.TYPES.MOLECULE
+    name: "NavigationMobile",
+    parent: "Navigation",
+    type: META.TYPES.MOLECULE
 }
 
 export interface NavigationMobileState {
-  isOpened: boolean
-  openedSectionKey?: string
+    isOpened: boolean
+    openedSectionKey?: string
 }
 
 /**
  * A navigation bar intended for smaller screen sizes.
  */
 export class NavigationMobile extends React.PureComponent<NavigationProps, NavigationMobileState> {
-    static propTypes: any = propTypes
     static defaultProps = {
         as: "nav"
     }
@@ -59,26 +43,24 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
     }
 
     renderSectionRow = (section: NavigationSection) => {
+        const LinkElementType = section.component || "a"
+
         return (
             <li key={section.key} className={prefix("nav-mobile__row")}>
                 <ContentWrapper as="div" className={prefix("nav-mobile__item-wrapper")}>
-                    <a
+                    <LinkElementType
                         className={prefix("nav-mobile__item")}
                         // tslint:disable-next-line jsx-no-lambda
                         onClick={() => this.setState({ openedSectionKey: section.key })}
+                        {...section.props}
                     >
-                            {this.renderSectionLabel(section.label, section.counter)}
-                            <Spacing marginLeft="auto">
-                                <Icon
-                                    name="arrow_right_hair"
-                                    className={prefix("nav-mobile__icon")}
-                                />
-                            </Spacing>
-                    </a>
+                        {this.renderSectionLabel(section.label, section.counter)}
+                        <Spacing marginLeft="auto">
+                            <Icon name="arrow_right_hair" className={prefix("nav-mobile__icon")} />
+                        </Spacing>
+                    </LinkElementType>
                 </ContentWrapper>
-                {section &&
-                    this.renderSectionOverlay(section)
-                }
+                {section && this.renderSectionOverlay(section)}
             </li>
         )
     }
@@ -95,9 +77,9 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
                     </Spacing>
                 </span>
             )
-            } else {
-                return label
-            }
+        } else {
+            return label
+        }
     }
 
     resetOpenedSectionKey = () => {
@@ -122,59 +104,34 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
                         alignCrossAxis="center"
                         alignMainAxis="center"
                         className={prefix("nav-mobile__top")}
-                        customAttributes={{
+                        {...{
                             onClick: this.resetOpenedSectionKey
                         }}
                     >
                         <Spacing marginRight="auto">
-                            <Icon
-                                name="arrow_left_hair"
-                                className={prefix("nav-mobile__icon")}
-                            />
+                            <Icon name="arrow_left_hair" className={prefix("nav-mobile__icon")} />
                         </Spacing>
                         <Spacing marginRight="auto">
                             <span>{section.label}</span>
                         </Spacing>
                     </Flex>
                 </ContentWrapper>
-                <div
-                    onClick={this.resetEvenMore}
-                >
-                    {section.menu && React.cloneElement(
-                        section.menu,
-                        { mobile: true }
-                    )}
+                <div onClick={this.resetEvenMore}>
+                    {section.menu && React.cloneElement(section.menu, { mobile: true })}
                 </div>
             </div>
         )
     }
 
-    render() {
-        const {
-            as,
-            className,
-            customAttributes,
-            sections,
-            children,
-            ...rest
-        } = this.props
+    render() {
+        const { as, className, sections, children, ...rest } = this.props
 
         const ElementType = getElementType(as, "nav")
 
         return (
-            <ElementType
-                className={className}
-                {...customAttributes}
-                {...rest}
-            >
-                <Flex
-                    className={prefix("nav-mobile__bar")}
-                    alignMainAxis="end"
-                >
-                    <button
-                        className={prefix("nav-mobile__trigger")}
-                        onClick={this.openNav}
-                    >
+            <ElementType className={className} {...rest}>
+                <Flex className={prefix("nav-mobile__bar")} alignMainAxis="end">
+                    <button className={prefix("nav-mobile__trigger")} onClick={this.openNav}>
                         Menu
                     </button>
                 </Flex>
@@ -187,19 +144,10 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
                     )}
                 >
                     <ContentWrapper as="div" className={prefix("nav-mobile__bgtop")}>
-                        <div
-                            onClick={this.closeNav}
-                        >
-                            <Flex
-                                alignCrossAxis="center"
-                                alignMainAxis="center"
-                                className={prefix("nav-mobile__top")}
-                            >
+                        <div onClick={this.closeNav}>
+                            <Flex alignCrossAxis="center" alignMainAxis="center" className={prefix("nav-mobile__top")}>
                                 <Spacing marginRight="auto">
-                                    <Icon
-                                        name="arrow_left_hair"
-                                        className={prefix("nav-mobile__icon")}
-                                    />
+                                    <Icon name="arrow_left_hair" className={prefix("nav-mobile__icon")} />
                                 </Spacing>
                                 <Spacing marginRight="auto">
                                     <span>Menu</span>
@@ -207,9 +155,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
                             </Flex>
                         </div>
                     </ContentWrapper>
-                    <ul>
-                        {this.props.sections.map(this.renderSectionRow)}
-                    </ul>
+                    <ul>{this.props.sections.map(this.renderSectionRow)}</ul>
                 </div>
             </ElementType>
         )

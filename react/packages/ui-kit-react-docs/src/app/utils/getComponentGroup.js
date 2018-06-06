@@ -9,7 +9,9 @@ const getComponentGroup = (docInfo, componentName) => {
             props: _.get("props", docInfo[componentName])
         },
         ..._.flow(
-            _.filter((component) => { return _.get("_meta.parent", component) === componentName }),
+            _.filter((component) => {
+                return _.get("_meta.parent", component) === componentName
+            }),
             _.map("_meta.name"),
             _.map((name) => {
                 return {
@@ -18,7 +20,7 @@ const getComponentGroup = (docInfo, componentName) => {
                     props: _.get("props", docInfo[name])
                 }
             }),
-            _.keyBy("name"),
+            _.keyBy("name")
         )(componentLibrary)
     }
 }

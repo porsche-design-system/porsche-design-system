@@ -7,13 +7,7 @@ import { pure } from "src/app/HOC"
 const headerStyle = { marginBottom: "0.25em" }
 
 const ComponentDocHeader = ({ componentName, description }) => {
-    return (
-        <Header
-            as="h1"
-            content={componentName}
-            style={headerStyle}
-        />
-    )
+    return <Header as="h1" content={componentName} style={headerStyle} />
 }
 
 ComponentDocHeader.propTypes = {

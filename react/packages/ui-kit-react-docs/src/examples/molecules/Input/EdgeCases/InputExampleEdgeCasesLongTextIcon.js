@@ -5,10 +5,7 @@ const InputExampleEdgeCasesLongTextIcon = () => {
     return (
         <Flex gap="grid">
             <Flex.Item width={3}>
-                <Input
-                    icon="magnify_glass"
-                    placeholder="Floating Label Floating Label Floating Label Floating Label"
-                />
+                <Input icon="magnify_glass" placeholder="Floating Label Floating Label Floating Label Floating Label" />
             </Flex.Item>
 
             <Flex.Item width={3}>

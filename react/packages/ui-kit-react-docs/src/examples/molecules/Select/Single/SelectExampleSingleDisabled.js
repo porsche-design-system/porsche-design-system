@@ -16,19 +16,11 @@ const SelectExampleSingleDisabled = () => {
     return (
         <Flex gap="grid">
             <Flex.Item width={6}>
-                <Select
-                    disabled
-                    options={data}
-                    value={null}
-                />
+                <Select disabled options={data} value={null} />
             </Flex.Item>
 
             <Flex.Item width={6}>
-                <Select
-                    disabled
-                    options={data}
-                    value={data[3].value}
-                />
+                <Select disabled options={data} value={data[3].value} />
             </Flex.Item>
         </Flex>
     )

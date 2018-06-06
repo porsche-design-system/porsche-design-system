@@ -39,7 +39,13 @@ export default class DocsLayout extends Component {
         scrollTo(0, 0)
 
         anchors.add("h2, h3, h4, h5, h6")
-        anchors.remove([1, 2, 3, 4, 5, 6].map((n) => { return `.rendered-example h${n}` }).join(", "))
+        anchors.remove(
+            [1, 2, 3, 4, 5, 6]
+                .map((n) => {
+                    return `.rendered-example h${n}`
+                })
+                .join(", ")
+        )
         anchors.remove(".no-anchor")
 
         this.scrollStartTimeout = setTimeout(scrollToAnchor, 500)

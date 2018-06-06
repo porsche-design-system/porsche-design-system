@@ -1,0 +1,8 @@
+@import '../mixins/px-rem-converter.scss';
+
+$grid-gutter:     rem(16px) !default;
+$grid-gutter-xs:  rem(16px) !default;
+$grid-gutter-s:   rem(24px) !default;
+$grid-gutter-m:   rem(36px) !default;
+$grid-gutter-l:   rem(36px) !default;
+$grid-gutter-xl:  rem(36px) !default;

@@ -1,0 +1,43 @@
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+@import 'list-unordered.setup.scss';
+
+.#{$global-class-prefix}list-unordered {
+  @include -text-size-copy;
+  @include -text-color-black;
+  list-style-type: none;
+
+  &--inverted {
+    @include -text-color-white;
+  }
+
+  &__item {
+    @include -spacing-6;
+    position: relative;
+    padding-left: $list-unordered-item-before-padding-left;
+
+    &:first-child {
+      @include -spacing-zero;
+    }
+
+    &::before {
+      @include -background-black;
+      position: absolute;
+      content: '';
+      width: $list-unordered-item-before-dimension;
+      height: $list-unordered-item-before-dimension;
+      left: $list-unordered-item-before-left;
+      top: $list-unordered-item-before-top;
+    }
+
+    &--inverted {
+      &::before {
+        @include -background-white;
+      }
+    }
+  }
+}

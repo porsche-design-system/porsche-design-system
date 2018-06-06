@@ -3,18 +3,10 @@ import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, prefix } from "../../../lib"
-import { Flex } from "../../../index"
+import { Flex, Spacing } from "../../../index"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface ButtonGroupProps {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Primary content. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-}
+export interface ButtonGroupProps extends ClassNameProp, ComponentProp {}
 
 const _meta: ComponentMeta = {
     name: "ButtonGroup",
@@ -23,27 +15,19 @@ const _meta: ComponentMeta = {
 }
 
 const _ButtonGroup: React.StatelessComponent<ButtonGroupProps> & Partial<MetaCategorizable> = (props) => {
-    const {
-        as,
-        className,
-        children,
-        customAttributes,
-        ...rest
-    } = props
+    const { as, className, children, ...rest } = props
 
-    const classes = cx(
-        prefix("button-group"),
-        className
-    )
+    const classes = cx(prefix("button-group"), className)
 
     return (
-        <Flex
-            as={as}
-            className={classes}
-            {...customAttributes}
-            {...rest}
-        >
-            {children}
+        <Flex as={as} className={classes} {...rest}>
+            {React.Children.map(children, (child, i) => {
+                return (
+                    <div key={i} className={prefix("button-group__button")}>
+                        {child}
+                    </div>
+                )
+            })}
         </Flex>
     )
 }

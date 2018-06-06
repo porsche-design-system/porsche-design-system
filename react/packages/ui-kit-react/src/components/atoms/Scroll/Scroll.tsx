@@ -3,17 +3,9 @@ import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType, prefix } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface ScrollProps {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface ScrollProps extends ClassNameProp, ComponentProp {
     /**
      * The scroll direction.
      * @default vertical
@@ -31,29 +23,14 @@ const _meta: ComponentMeta = {
 }
 
 const _Scroll: React.StatelessComponent<ScrollProps> & Partial<MetaCategorizable> = (props) => {
-    const {
-        as,
-        className,
-        children,
-        customAttributes,
-        direction,
-        ...rest
-    } = props
+    const { as, className, children, direction, ...rest } = props
 
     const ElementType = getElementType(as, "div")
 
-    const classes = cx(
-        prefix(`scroll`),
-        prefix(`scroll--${direction}`),
-        className
-    )
+    const classes = cx(prefix(`scroll`), prefix(`scroll--${direction}`), className)
 
     return (
-        <ElementType
-            className={classes}
-            {...customAttributes}
-            {...rest}
-        >
+        <ElementType className={classes} {...rest}>
             {children}
         </ElementType>
     )

@@ -1,0 +1,233 @@
+@import 'checkbox.setup.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/position/position.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}checkbox {
+  $bem-block: &;
+
+  @include -position(relative);
+  display: inline-block;
+  min-width: $checkbox-min-width;
+  min-height: $checkbox-min-height;
+  max-width: $checkbox-max-width;
+  vertical-align: top; // get rid of space underneath because of inline-block
+
+  &__field {
+    display: none;
+  }
+
+  &__icon {
+    @include -position(absolute);
+    top: 0;
+    left: 0;
+    width: $checkbox-icon-dimension;
+    height: $checkbox-icon-dimension;
+    box-sizing: border-box;
+    border: $checkbox-icon-border-width solid $checkbox-icon-border-color;
+    cursor: pointer;
+
+    &--inverted {
+      border-color: $checkbox-icon-border-color-inverted;
+    }
+
+    &--error {
+      border-color: $checkbox-icon-border-color-error;
+    }
+
+    &::before {
+      @include -position(absolute);
+      top: $checkbox-icon-position;
+      left: $checkbox-icon-position;
+      transform: translate(-$checkbox-icon-position, -$checkbox-icon-position);
+      visibility: hidden;
+      color: $checkbox-icon-color;
+    }
+
+    &::after { // safe clickable area
+      @include -position(absolute);
+      content: '';
+      top: $checkbox-icon-safe-area;
+      right: $checkbox-icon-safe-area;
+      bottom: $checkbox-icon-safe-area;
+      left: $checkbox-icon-safe-area;
+    }
+  }
+
+  &__label {
+    @include -text-size-copy;
+    display: block;
+    padding: $checkbox-label-padding-top $checkbox-label-padding-reset $checkbox-label-padding-reset $checkbox-label-padding-left;
+    color: $checkbox-label-text-color;
+    min-height: $checkbox-label-min-height;
+    cursor: pointer;
+
+    &--inverted {
+      color: $checkbox-label-text-color-inverted;
+    }
+
+    &--error {
+      color: $checkbox-label-text-color-error;
+    }
+  }
+
+  &__label-icon {
+    font-size: $checkbox-label-icon-font-size;
+    line-height: inherit;
+    vertical-align: top;
+
+    &::before {
+      vertical-align: top;
+    }
+  }
+
+  &__label-link {
+    color: $checkbox-label-link-text-color;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $checkbox-label-link-text-color-hover;
+      text-decoration: none;
+    }
+
+    &--inverted {
+      color: $checkbox-label-link-text-color-inverted;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $checkbox-label-link-text-color-inverted-hover;
+      }
+    }
+
+    &--error {
+      color: $checkbox-label-link-text-color-error;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $checkbox-label-link-text-color-error-hover;
+      }
+    }
+  }
+
+  // checkbox is hovered, not checked and not disabled
+  &:hover &__field:not(:checked):not(:disabled) { // sass-lint:disable-line force-pseudo-nesting
+    & ~ #{$bem-block}__icon { // sass-lint:disable-line no-combinators
+      border-color: $checkbox-icon-border-color-unchecked-hovered;
+
+      &--inverted {
+        border-color: $checkbox-icon-border-color-unchecked-hovered-inverted;
+      }
+
+      &--error {
+        border-color: $checkbox-icon-border-color-error;
+      }
+    }
+  }
+
+  // checkbox is checked
+  &__field:checked { // sass-lint:disable-line force-pseudo-nesting
+    & ~ #{$bem-block}__icon { // sass-lint:disable-line no-combinators
+
+      &::before {
+        visibility: visible;
+        color: $checkbox-icon-color-checked;
+      }
+
+      &--inverted::before { // sass-lint:disable-line force-pseudo-nesting
+        color: $checkbox-icon-color-checked-inverted;
+      }
+
+      &--error::before { // sass-lint:disable-line force-pseudo-nesting
+        color: $checkbox-icon-color-checked-error;
+      }
+    }
+  }
+
+  // checkbox is hovered, checked and not disabled
+  &:hover &__field:checked:not(:disabled) { // sass-lint:disable-line force-pseudo-nesting
+    & ~ #{$bem-block}__icon { // sass-lint:disable-line no-combinators
+      background-color: $checkbox-icon-background-color-checked-hovered;
+
+      &--inverted {
+        background-color: $checkbox-icon-background-color-checked-hovered-inverted;
+      }
+
+      &::before {
+        background-color: $checkbox-icon-inner-background-color-checked-hovered;
+        color: $checkbox-icon-color-checked-hovered;
+      }
+
+      &--inverted::before { // sass-lint:disable-line force-pseudo-nesting
+        background-color: transparent;
+        color: $checkbox-icon-color-checked-hovered-inverted;
+      }
+
+      &--error {
+        background-color: $checkbox-icon-background-color-checked-hovered-error;
+      }
+
+      &--error::before { // sass-lint:disable-line force-pseudo-nesting
+        background-color: transparent;
+        color: $checkbox-icon-color-checked-hovered-error;
+      }
+    }
+  }
+
+  // checkbox is disabled, unchecked or checked
+  // sass-lint:disable-line force-pseudo-nesting
+  &__field:disabled:checked, // sass-lint:disable-line force-pseudo-nesting
+  &__field:disabled:not(:checked) { // sass-lint:disable-line force-pseudo-nesting
+    & ~ #{$bem-block}__icon { // sass-lint:disable-line no-combinators
+      cursor: default;
+      border-color: $checkbox-icon-border-color-disabled;
+      background: transparent;
+
+      &--inverted {
+        border-color: $checkbox-icon-border-color-disabled-inverted;
+        background: transparent;
+      }
+
+      &::before {
+        color: $checkbox-icon-color-checked-disabled;
+      }
+
+      &--inverted::before { // sass-lint:disable-line force-pseudo-nesting
+        background-color: transparent;
+        color: $checkbox-icon-color-checked-disabled-inverted;
+      }
+    }
+
+    & ~ #{$bem-block}__label { // sass-lint:disable-line no-combinators
+      cursor: default;
+      color: $checkbox-label-text-color-disabled;
+
+      &--inverted {
+        color: $checkbox-label-text-color-disabled-inverted;
+      }
+
+      #{$bem-block}__label-link { // sass-lint:disable-line no-combinators
+        cursor: pointer;
+        color: $checkbox-label-link-text-color-disabled;
+
+        &--inverted {
+          color: $checkbox-label-link-text-color-disabled-inverted;
+        }
+
+        &:active,
+        &:focus,
+        &:hover {
+          color: $checkbox-label-link-text-color-disabled-hover;
+        }
+
+        &--inverted:active, // sass-lint:disable-line force-pseudo-nesting
+        &--inverted:focus, // sass-lint:disable-line force-pseudo-nesting
+        &--inverted:hover { // sass-lint:disable-line force-pseudo-nesting
+          color: $checkbox-label-link-text-color-disabled-inverted-hover;
+        }
+      }
+    }
+  }
+}

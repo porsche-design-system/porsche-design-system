@@ -1,0 +1,117 @@
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+@import 'navigation-steps.setup.scss';
+
+.#{$global-class-prefix}navigation-steps {
+  $bem-block: &;
+
+  @include -text-size-copy;
+  border-bottom: $navigation-steps-border-bottom-width solid $navigation-steps-border-bottom-color;
+
+  &__item {
+    @include -text-color-white;
+    @include -spacing-6('right');
+    @include -spacing-6('bottom', 'padding');
+    display: inline-block;
+    border-bottom: $navigation-steps-item-active-border-width solid transparent;
+
+    @include breakpoint('xxs', 's') {
+      height: $navigation-steps-icon-dimension;
+    }
+
+    @include breakpoint('s') {
+      @include -spacing-12('left');
+      @include -spacing-12('top', 'padding');
+      padding-bottom: $navigation-steps-item-spacing-bottom-s;
+      margin-right: $navigation-steps-item-spacing-right-s;
+    }
+
+    &:last-of-type {
+      @include -spacing-zero('right');
+    }
+
+    &--active {
+      @include -text-color-white;
+      border-color: $navigation-steps-item-active-border-color;
+    }
+
+    &:hover {
+      @include -text-color-red-1;
+      cursor: pointer;
+
+      & #{$bem-block}__label {
+        border-left-color: $navigation-steps-label-border-color-hover;
+      }
+    }
+
+    &--disabled {
+      @include -text-color-grey-5;
+
+      &:hover {
+        @include -text-color-grey-5;
+        cursor: text;
+
+        & #{$bem-block}__label {
+          border-left-color: inherit;
+        }
+      }
+    }
+  }
+
+  &__count {
+    @include -align-center;
+    @include -spacing-12('left', 'padding');
+    @include -spacing-12('right', 'padding');
+    vertical-align: middle;
+
+    @include breakpoint('s') {
+      @include -spacing-12('right', 'padding');
+      padding-left: 0;
+    }
+  }
+
+  &__icon {
+    @include -spacing-12('right', 'padding');
+    position: relative;
+    font-size: $navigation-steps-icon-font-size;
+    vertical-align: middle;
+    display: inline-block;
+
+    @include breakpoint('xxs', 's') {
+      width: $navigation-steps-icon-dimension;
+      height: $navigation-steps-icon-dimension;
+
+      &::before {
+        position: absolute;
+        top: $navigation-steps-icon-position;
+        left: $navigation-steps-icon-position;
+        transform: translate(-$navigation-steps-icon-position, -$navigation-steps-icon-position);
+      }
+    }
+  }
+
+  &__label {
+    display: none;
+    vertical-align: middle;
+    line-height: $navigation-steps-label-line-height;
+    border-left: $navigation-steps-label-border-width solid $navigation-steps-label-border-color;
+    padding-left: $navigation-steps-label-border-padding-left;
+
+    @include breakpoint('s') {
+      display: inline-block;
+    }
+
+    &--active {
+      border-left-color: $navigation-steps-label-border-color-active;
+    }
+
+    &--icon {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+}

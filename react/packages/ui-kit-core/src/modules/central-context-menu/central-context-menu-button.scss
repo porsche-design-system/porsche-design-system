@@ -1,0 +1,77 @@
+@import 'central-context-menu-button.setup.scss';
+@import '../../base/font/font.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/align/align.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}central-context-menu-button {
+  $bem-block: &;
+
+  @include -align-left;
+  border: $central-context-menu-button-border-width;
+
+  position: relative;
+  height: $central-context-menu-button-height;
+  min-width: $central-context-menu-button-min-width;
+  max-width: $central-context-menu-button-max-width;
+  padding: $central-context-menu-button-spacing-vertical $central-context-menu-button-spacing-horizontal;
+  display: inline-block;
+  background: transparent;
+  color: $central-context-menu-button-text-color;
+  appearance: none;
+  outline: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  line-height: $central-context-menu-button-line-height;
+
+  &:hover {
+    color: $central-context-menu-button-text-color-hovered;
+  }
+
+  &:disabled {
+    &,
+    &:hover {
+      color: $central-context-menu-button-text-color-disabled;
+      cursor: default;
+    }
+  }
+
+  &--active {
+    color: $central-context-menu-button-text-color-active;
+  }
+
+  &__icon {
+    float: left;
+    font-size: $central-context-menu-button-icon-font-size;
+    line-height: inherit;
+    padding: $central-context-menu-button-icon-spacing-vertical $central-context-menu-button-icon-spacing-horizontal;
+
+    &--inverted {
+      float: right;
+    }
+  }
+
+  &__label {
+    @include -text-size-copy;
+    white-space: nowrap;
+    line-height: inherit;
+    display: block;
+
+    margin-left: $central-context-menu-button-icon-spacing-to-label;
+
+    @include breakpoint('xxs', 'm') {
+      display: none;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &--inverted {
+      margin-left: $central-context-menu-button-reset;
+      margin-right: $central-context-menu-button-icon-spacing-to-label;
+    }
+  }
+}

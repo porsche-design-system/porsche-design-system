@@ -1,9 +1,9 @@
 export interface MetaCategorizable {
-  _meta: ComponentMeta
+    _meta: ComponentMeta
 }
 
 export interface ComponentMeta {
-  name: string
-  parent?: string
-  type: string
+    name: string
+    parent?: string
+    type: string
 }

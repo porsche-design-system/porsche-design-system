@@ -2,17 +2,12 @@ import * as React from "react"
 import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
+import { META, prefix, getElementType } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface CheckboxProps {
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface CheckboxProps extends ClassNameProp, ComponentProp {
     /** Custom dom attributes for the checkbox element only. */
-    checkboxCustomAttributes?: {[key: string]: any}
+    checkboxProps?: { [key: string]: any }
 
     /**
      * Whether or not the checkbox is checked.
@@ -33,6 +28,13 @@ export interface CheckboxProps {
      * @param {CheckboxProps} data All props of the component.
      */
     onChange?: (value: boolean, event: React.FormEvent<HTMLInputElement>, data: CheckboxProps) => void
+
+    /**
+     * Called after a user's click.
+     * @param {React.MouseEvent<HTMLElement>} event React's original event.
+     * @param {CheckboxProps} data All props of the component.
+     */
+    onClick?: (event: React.MouseEvent<HTMLElement>, data: CheckboxProps) => void
 
     /** A checkbox can be read-only and unable to change states. */
     readOnly?: boolean
@@ -59,41 +61,39 @@ const _meta: ComponentMeta = {
 
 const _Checkbox: React.StatelessComponent<CheckboxProps> & Partial<MetaCategorizable> = (props) => {
     const {
+        as,
         checked,
         children,
         className,
-        customAttributes,
-        checkboxCustomAttributes,
+        checkboxProps,
         disabled,
         error,
         onChange,
+        onClick,
         readOnly,
         singleLine,
         type,
         ...rest
     } = props
 
-    const classes = cx(
-        "pui-checkbox",
-        className
-    )
+    const ElementType = getElementType(as, "div")
 
     const iconClasses = cx(
         prefix("checkbox__icon"),
         prefix("icon"),
         prefix("icon--check"),
-        {[prefix("checkbox__icon--default")]: type === "default"},
-        {[prefix("checkbox__icon--red")]: type === "red"},
-        {[prefix("checkbox__icon--blue")]: type === "blue"},
-        {[prefix("checkbox__icon--inverted")]: type === "inverted"}
+        { [prefix("checkbox__icon--default")]: type === "default" },
+        { [prefix("checkbox__icon--red")]: type === "red" },
+        { [prefix("checkbox__icon--blue")]: type === "blue" },
+        { [prefix("checkbox__icon--inverted")]: type === "inverted" }
     )
 
     const labelClasses = cx(
         prefix("noselect"),
         prefix("checkbox__label"),
-        {[prefix("checkbox__label--error")]: error},
-        {[prefix("checkbox__label--inverted")]: type === "inverted"},
-        {[prefix("checkbox__label--single-line")]: singleLine}
+        { [prefix("checkbox__label--error")]: error },
+        { [prefix("checkbox__label--inverted")]: type === "inverted" },
+        { [prefix("checkbox__label--single-line")]: singleLine }
     )
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -103,31 +103,42 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> & Partial<MetaCategoriz
 
         if (disabled || readOnly) {
             e.preventDefault()
+            e.stopPropagation()
             return
         }
 
         onChange(!checked, e, props)
     }
 
+    const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+        if (!onClick) {
+            return
+        }
+
+        if (disabled || readOnly) {
+            e.preventDefault()
+            e.stopPropagation()
+            return
+        }
+
+        onClick(e, props)
+    }
+
     return (
-        <label
-            className={classes}
-            {...customAttributes}
-            {...rest}
-        >
-            <input
-                className={prefix("checkbox__field")}
-                type="checkbox"
-                checked={checked}
-                disabled={disabled}
-                readOnly={readOnly}
-                onChange={handleChange}
-            />
-            <span className={iconClasses} {...checkboxCustomAttributes}/>
-            <span className={labelClasses}>
-                {children}
-            </span>
-        </label>
+        <ElementType className={className} onClick={handleClick} {...rest}>
+            <label className={prefix("checkbox")}>
+                <input
+                    className={prefix("checkbox__field")}
+                    type="checkbox"
+                    checked={checked}
+                    disabled={disabled}
+                    readOnly={readOnly}
+                    onChange={handleChange}
+                />
+                <span className={iconClasses} {...checkboxProps} />
+                {children && React.Children.count(children) > 0 && <span className={labelClasses}>{children}</span>}
+            </label>
+        </ElementType>
     )
 }
 

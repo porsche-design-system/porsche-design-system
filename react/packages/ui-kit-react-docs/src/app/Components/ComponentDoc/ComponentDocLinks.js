@@ -16,13 +16,7 @@ const linkListStyle = {
 const ComponentDocLinks = ({ componentName, path }) => {
     return (
         <List link style={linkListStyle}>
-            <List.Item
-                content={(
-                    <code>
-                        {path}
-                    </code>
-                )}
-            />
+            <List.Item content={<code>{path}</code>} />
         </List>
     )
 }

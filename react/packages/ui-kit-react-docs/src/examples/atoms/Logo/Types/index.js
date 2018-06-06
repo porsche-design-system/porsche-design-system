@@ -5,13 +5,7 @@ import React from "react"
 const Types = () => {
     return (
         <ExampleSection title="Types">
-
-            <ComponentExample
-                title="Porsche Logo"
-                description=""
-                examplePath="atoms/Logo/Types/LogoExample"
-            />
-
+            <ComponentExample title="Porsche Logo" description="" examplePath="atoms/Logo/Types/LogoExample" />
         </ExampleSection>
     )
 }

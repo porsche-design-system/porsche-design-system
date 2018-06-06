@@ -38,14 +38,7 @@ class SelectExampleOptionGroupMulti extends React.Component {
     }
 
     render() {
-        return (
-            <Select
-                multi
-                options={data}
-                value={this.state.value}
-                onChange={this.handleChange}
-            />
-        )
+        return <Select multi options={data} value={this.state.value} onChange={this.handleChange} />
     }
 }
 

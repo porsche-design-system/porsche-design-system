@@ -3,19 +3,11 @@ import cx from "classnames"
 
 import { META, getElementType, prefix, BreakpointValues, mapBreakpointPropToClasses } from "../../../lib"
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { FlexCrossAxis } from "./Flex"
 
-export interface FlexItemProps {
-    /** The html element type to render as. */
-    as?: string
-
-    /** Additional CSS classes. */
-    className?: string
-
-    /** Custom dom attributes. */
-    customAttributes?: {[key: string]: any}
-
+export interface FlexItemProps extends ClassNameProp, ComponentProp {
     /** Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property. */
     alignCrossAxis?: FlexCrossAxis
 
@@ -33,33 +25,20 @@ const _meta: ComponentMeta = {
 }
 
 const _FlexItem: React.StatelessComponent<FlexItemProps> & Partial<MetaCategorizable> = (props) => {
-    const {
-        as,
-        className,
-        children,
-        customAttributes,
-        alignCrossAxis,
-        offset,
-        width,
-        ...rest
-    } = props
+    const { as, className, children, alignCrossAxis, offset, width, ...rest } = props
 
     const ElementType = getElementType(as, "div")
 
     const classes = cx(
         prefix("flex__child"),
-        {[prefix(`flex__child--cross-axis-${alignCrossAxis}`)]: alignCrossAxis},
+        { [prefix(`flex__child--cross-axis-${alignCrossAxis}`)]: alignCrossAxis },
         mapBreakpointPropToClasses("flex__child--", width),
         mapBreakpointPropToClasses("flex__child--offset-", offset),
         className
     )
 
     return (
-        <ElementType
-            className={classes}
-            {...customAttributes}
-            {...rest}
-        >
+        <ElementType className={classes} {...rest}>
             {children}
         </ElementType>
     )

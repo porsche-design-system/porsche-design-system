@@ -1,0 +1,24 @@
+@import "../../../common";
+
+$select-border-color: $grey-light !default;
+$select-background-color: $white !default;
+$select-text-color: $black !default;
+$select-text-color-disabled: $grey !default;
+$select-text-color-error: $color-palette-red-1 !default;
+$select-border-size: 1px !default;
+$select-border-size-error: 1px !default;
+$select-height: 50px !default;
+$select-padding-horizontal-left: $spacing-12 !default;
+$select-padding-horizontal-right: $spacing-36 !default;
+$select-padding-vertical: 12px !default;
+$select-padding-vertical-top-focus: $spacing-18 !default;
+
+$select-label-text-color: $grey !default;
+$select-label-position-top: $spacing-12 !default;
+$select-label-placeholder-color: $grey !default;
+
+$select-error-message-margin-top: $spacing-6 !default;
+
+$select-required-margin-top: $spacing-6 !default;
+
+$select-arrow-icon-size: 16px;

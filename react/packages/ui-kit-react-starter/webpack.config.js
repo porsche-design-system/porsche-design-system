@@ -1,35 +1,36 @@
-const path = require('path');
+const path = require("path")
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const StringReplacePlugin = require('string-replace-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const StringReplacePlugin = require("string-replace-webpack-plugin")
 
-const production = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === "production"
 
 const configuration = {
     bail: true,
-    entry: ['./src/index.tsx', './src/styles/global.scss'],
+    entry: ["./src/index.tsx", "./src/styles/global.scss"],
     output: {
-        filename: `[name]${production ? '.[chunkhash:8]' : ''}.js`,
-        chunkFilename: `[name].chunk${production ? '.[chunkhash:8]' : ''}.js`,
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        filename: `[name]${production ? ".[chunkhash:8]" : ""}.js`,
+        chunkFilename: `[name].chunk${production ? ".[chunkhash:8]" : ""}.js`,
+        path: path.resolve(__dirname, "dist"),
+        publicPath: "/"
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
+        extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
         alias: {
-            src: path.resolve(__dirname, 'src')
+            src: path.resolve(__dirname, "src")
         }
     },
     module: {
         rules: [
             {
-                enforce: 'pre',
+                enforce: "pre",
                 test: /\.tsx?$/,
                 include: path.resolve(__dirname, "src"),
-                loader: 'tslint-loader',
+                loader: "tslint-loader",
                 options: {
-                    tsConfigFile: 'tsconfig.json'
+                    tsConfigFile: "tsconfig.json",
+                    configFile: "../../tslint.json"
                 }
             },
             {
@@ -37,22 +38,24 @@ const configuration = {
                 include: path.resolve(__dirname, "src"),
                 use: [
                     {
-                        loader: 'babel-loader',
+                        loader: "babel-loader",
                         options: {
-                          babelrc: true,
-                          plugins: ['react-hot-loader/babel'],
-                        },
+                            babelrc: true,
+                            plugins: ["react-hot-loader/babel"]
+                        }
                     },
                     StringReplacePlugin.replace({
-                        replacements: [{
-                            pattern: /\/\*\* @class \*\//ig,
-                            replacement: function (match, p1, offset, string) {
-                                return "/*@__PURE__*/";
+                        replacements: [
+                            {
+                                pattern: /\/\*\* @class \*\//gi,
+                                replacement: function(match, p1, offset, string) {
+                                    return "/*@__PURE__*/"
+                                }
                             }
-                        }]
+                        ]
                     }),
                     {
-                        loader: 'ts-loader'
+                        loader: "ts-loader"
                     }
                 ]
             },
@@ -61,7 +64,7 @@ const configuration = {
                 include: path.resolve(__dirname, "node_modules/@porsche/ui-kit-react"),
                 use: [
                     {
-                        loader: 'babel-loader',
+                        loader: "babel-loader",
                         options: {
                             babelrc: true
                         }
@@ -78,21 +81,23 @@ const configuration = {
                 use: [
                     {
                         loader: production ? MiniCssExtractPlugin.loader : "style-loader",
-                        options: !production ? {
-                            // Style loader options
-                            sourceMap: true,
-                            convertToAbsoluteUrls: true
-                        } : {}
+                        options: !production
+                            ? {
+                                  // Style loader options
+                                  sourceMap: true,
+                                  convertToAbsoluteUrls: true
+                              }
+                            : {}
                     },
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
                             minimize: production,
                             sourceMap: !production,
                             modules: true,
                             camelCase: true,
                             importLoaders: 2,
-                            localIdentName: production ? '[hash:base64]' : '[path][name]__[local]--[hash:base64:5]'
+                            localIdentName: production ? "[hash:base64]" : "[path][name]__[local]--[hash:base64:5]"
                         }
                     },
                     {
@@ -102,10 +107,10 @@ const configuration = {
                         }
                     },
                     {
-                        loader: 'sass-loader',
+                        loader: "sass-loader",
                         options: {
                             sourceMap: true,
-                            outputStyle: 'uncompressed'
+                            outputStyle: "uncompressed"
                         }
                     }
                 ]
@@ -120,21 +125,23 @@ const configuration = {
                 use: [
                     {
                         loader: production ? MiniCssExtractPlugin.loader : "style-loader",
-                        options: !production ? {
-                            // Style loader options
-                            sourceMap: true,
-                            convertToAbsoluteUrls: true
-                        } : {}
+                        options: !production
+                            ? {
+                                  // Style loader options
+                                  sourceMap: true,
+                                  convertToAbsoluteUrls: true
+                              }
+                            : {}
                     },
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
                             minimize: production,
                             sourceMap: !production,
                             modules: false,
                             camelCase: true,
                             importLoaders: 2,
-                            localIdentName: production ? '[hash:base64]' : '[path][name]__[local]--[hash:base64:5]'
+                            localIdentName: production ? "[hash:base64]" : "[path][name]__[local]--[hash:base64:5]"
                         }
                     },
                     {
@@ -144,27 +151,27 @@ const configuration = {
                         }
                     },
                     {
-                        loader: 'sass-loader',
+                        loader: "sass-loader",
                         options: {
                             sourceMap: true,
-                            outputStyle: 'uncompressed'
+                            outputStyle: "uncompressed"
                         }
                     }
                 ]
             },
             {
                 test: /\.(eot|ttf|woff|woff2|svg|png|jpg|jpeg)$/,
-                loader: 'url-loader',
+                loader: "url-loader",
                 query: {
                     limit: 10000,
-                    name: `static/media/[name]${production ? '.[hash:8]' : ''}.[ext]`
+                    name: `static/media/[name]${production ? ".[hash:8]" : ""}.[ext]`
                 }
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: "./src/index.html"
         }),
         new MiniCssExtractPlugin({
             filename: "[name].[chunkhash].css"
@@ -176,12 +183,12 @@ const configuration = {
             rewrites: [
                 {
                     from: /^\/[^/]*\/?[^/]*\/?/,
-                    to: '/index.html'
+                    to: "/index.html"
                 }
             ],
             disableDotRule: true
         }
     }
-};
+}
 
-module.exports = configuration;
+module.exports = configuration

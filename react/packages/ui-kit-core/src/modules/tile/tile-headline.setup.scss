@@ -1,0 +1,9 @@
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$tile-headline-icon-left-bounding-box: rem(8px) !default;
+
+$tile-headline-icon-left: $tile-headline-icon-left-bounding-box * -1 !default;
+$tile-headline-padding-left: $spacing-12 + rem(14px) !default;
+$tile-headline-static-margin-left: 0 !default;
+$tile-headline-static-padding-left: 0 !default;

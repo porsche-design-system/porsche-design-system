@@ -1,0 +1,11 @@
+@import "../../../common";
+
+.#{$global-class-prefix}header {
+    &__divider {
+        display: none;
+
+        @include breakpoint("s") {
+            display: block;
+        }
+    }
+}

@@ -12,13 +12,7 @@ const DocsRoot = (props) => {
     const component = componentLibrary[componentName]
 
     if (!component || !component._meta || !META.isParent(component)) return null
-    return (
-        <ComponentDoc
-            name={component._meta.name}
-            parent={component._meta.parent}
-            type={component._meta.type}
-        />
-    )
+    return <ComponentDoc name={component._meta.name} parent={component._meta.parent} type={component._meta.type} />
 }
 
 DocsRoot.propTypes = {

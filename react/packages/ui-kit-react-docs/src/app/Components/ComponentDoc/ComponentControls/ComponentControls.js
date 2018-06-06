@@ -9,42 +9,19 @@ import React from "react"
 import { updateForKeys } from "src/app/HOC"
 
 const ComponentControls = (props) => {
-    const {
-        anchorName, showHTML, showCode,
-        onCopyLink, onShowHTML, onShowCode,
-        visible
-    } = props
+    const { anchorName, showHTML, showCode, onCopyLink, onShowHTML, onShowCode, visible } = props
 
     return (
-        <Transition
-            transitionOnMount
-            visible={!!visible}
-            unmountOnHide
-        >
+        <Transition transitionOnMount visible={!!visible} unmountOnHide>
             {/* Heads up! Don't remove this `div`, visible Transition applies `display: block`,
           while Menu should have `display: inline-flex`
         */}
             <div>
-                <Menu
-                    color="green"
-                    compact
-                    icon
-                    size="small"
-                    text
-                >
-                    <ComponentControlsCopyLink
-                        anchorName={anchorName}
-                        onClick={onCopyLink}
-                    />
+                <Menu color="green" compact icon size="small" text>
+                    <ComponentControlsCopyLink anchorName={anchorName} onClick={onCopyLink} />
                     <ComponentControlsMaximize anchorName={anchorName} />
-                    <ComponentControlsShowHtml
-                        active={showHTML}
-                        onClick={onShowHTML}
-                    />
-                    <ComponentControlsEditCode
-                        active={showCode}
-                        onClick={onShowCode}
-                    />
+                    <ComponentControlsShowHtml active={showHTML} onClick={onShowHTML} />
+                    <ComponentControlsEditCode active={showCode} onClick={onShowCode} />
                 </Menu>
             </div>
         </Transition>

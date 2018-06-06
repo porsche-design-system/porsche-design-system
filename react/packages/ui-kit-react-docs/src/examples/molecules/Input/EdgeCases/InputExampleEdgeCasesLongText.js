@@ -5,9 +5,7 @@ const InputExampleEdgeCasesLongText = () => {
     return (
         <Flex gap="grid">
             <Flex.Item width={3}>
-                <Input
-                    placeholder="Floating Label Floating Label Floating Label Floating Label"
-                />
+                <Input placeholder="Floating Label Floating Label Floating Label Floating Label" />
             </Flex.Item>
 
             <Flex.Item width={3}>
@@ -19,10 +17,7 @@ const InputExampleEdgeCasesLongText = () => {
             </Flex.Item>
 
             <Flex.Item width={3}>
-                <Input
-                    basic
-                    placeholder="Placeholder Placeholder Placeholder Placeholder Placeholder"
-                />
+                <Input basic placeholder="Placeholder Placeholder Placeholder Placeholder Placeholder" />
             </Flex.Item>
 
             <Flex.Item width={3}>

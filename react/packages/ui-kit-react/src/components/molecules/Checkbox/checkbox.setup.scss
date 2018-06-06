@@ -1,0 +1,67 @@
+@import "../../../common";
+
+$spacing: $basic-spacing !default;
+
+$checkbox-icon-width: 24px;
+
+$checkbox-icon-border-color: $grey-light !default;
+$checkbox-label-text-color: $black !default;
+$checkbox-icon-color: $grey-dark !default;
+
+// checkbox hovered
+$checkbox-label-text-color-hover: $color-palette-red-1 !default;
+
+// checkbox default checked
+$checkbox-icon-border-color-checked: $grey-darker !default;
+$checkbox-icon-inner-background-color-checked: $grey-darker !default;
+$checkbox-icon-color-checked: $white !default;
+
+// checkbox default disabled
+$checkbox-icon-border-color-disabled: $grey-light !default;
+$checkbox-icon-color-checked-disabled: $white !default;
+$checkbox-icon-background-color-checked-disabled: $grey-light !default;
+$checkbox-label-text-color-disabled: $grey-light !default;
+
+// checkbox disabled and checked
+$checkbox-icon-border-color-disabled-checked: transparent !default;
+$checkbox-icon-color-disabled-checked: $black !default;
+$checkbox-label-text-color-disabled-checked: $black !default;
+
+/* ******  checkbox inverted  ***** */
+$checkbox-icon-border-color-inverted: $white !default;
+$checkbox-icon-color-inverted: $white !default;
+$checkbox-label-text-color-inverted: $white !default;
+
+// checkbox inverted checked
+$checkbox-icon-color-checked-inverted: $white !default;
+//$checkbox-icon-inner-background-color-checked-inverted: $white !default;
+
+// checkbox inverted disabled
+$checkbox-icon-border-color-disabled-inverted: $grey-light !default;
+$checkbox-icon-inner-background-color-disabled-inverted: $white !default;
+$checkbox-icon-color-checked-disabled-inverted: $white !default;
+$checkbox-label-text-color-disabled-inverted: $grey-light !default;
+
+// checkbox inverted disabled and checked
+$checkbox-icon-border-color-disabled-checked-inverted: transparent !default;
+$checkbox-label-text-color-disabled-checked-inverted: $white !default;
+$checkbox-icon-color-disabled-checked-inverted: $white !default;
+
+$checkbox-error-message-margin-top: $spacing !default;
+$checkbox-text-color-error: $color-palette-red-1 !default;
+
+// checkbox blue checked and disabled
+$checkbox-icon-color-blue-disabled: $color-palette-blue-1 !default;
+
+// checkbox red checked and disabled
+$checkbox-icon-color-red-disabled: $color-palette-red-1 !default;
+
+// checkbox blue checked and disabled
+$checkbox-icon-border-color-blue: $color-palette-blue-1 !default;
+$checkbox-icon-inner-background-color-blue: $color-palette-blue-1 !default;
+$checkbox-icon-color-blue: $white !default;
+
+// checkbox red checked
+$checkbox-icon-border-color-red: $color-palette-red-1 !default;
+$checkbox-icon-inner-background-color-red: $color-palette-red-1 !default;
+$checkbox-icon-color-red: $white !default;

@@ -27,6 +27,8 @@ import "@porsche/ui-kit-react/css/index.css"
 const mountNode = document.createElement("div")
 document.body.appendChild(mountNode)
 
-const render = (App) => { ReactDOM.render(<App />, mountNode) }
+const render = (App) => {
+    ReactDOM.render(<App />, mountNode)
+}
 
 render(Router)

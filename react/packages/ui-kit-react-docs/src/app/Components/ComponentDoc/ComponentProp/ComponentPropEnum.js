@@ -15,16 +15,12 @@ const ComponentPropEnum = ({ limit, showAll, toggle, type, values }) => {
 
     return (
         <ComponentPropExtra inline title="Enums: ">
-            {exceeds && (
-                <ComponentPropToggle
-                    toggle={toggle}
-                    total={values.length}
-                    showAll={showAll}
-                />
-            )}
+            {exceeds && <ComponentPropToggle toggle={toggle} total={values.length} showAll={showAll} />}
 
             <div>
-                {_.map(sliced, (value) => { return <ComponentPropValue key={value}>{value}</ComponentPropValue> })}
+                {_.map(sliced, (value) => {
+                    return <ComponentPropValue key={value}>{value}</ComponentPropValue>
+                })}
                 {exceeds && !showAll && "..."}
             </div>
         </ComponentPropExtra>

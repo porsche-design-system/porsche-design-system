@@ -9,12 +9,7 @@ const ComponentControlsEditCode = ({ active, onClick }) => {
     return (
         <ComponentControlsToolTip content="Edit Code">
             <Menu.Item active={active} onClick={onClick}>
-                <Icon
-                    color={active ? "green" : "grey"}
-                    fitted
-                    name="code"
-                    size="large"
-                />
+                <Icon color={active ? "green" : "grey"} fitted name="code" size="large" />
             </Menu.Item>
         </ComponentControlsToolTip>
     )

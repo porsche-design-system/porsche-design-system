@@ -1,44 +1,44 @@
 /// <reference types="react" />
-import * as React from "react";
-import { IconName } from "../../atoms/Icon/Icon";
-export interface InputProps {
-    /** Additional CSS classes. */
-    className?: string;
-    /** Custom dom attributes. */
-    customAttributes?: {
-        [key: string]: any;
-    };
+import * as React from "react"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
+import { IconName } from "../../atoms/Icon/Icon"
+export interface InputProps extends ClassNameProp, ComponentProp {
     /**
      * Basic determines if the placeholder disappears when a value is set or entered,
      * or if it floats above the content.
+     * If no placeholder is set, this value has no effect.
+     * @default false
      */
-    basic?: boolean;
+    basic?: boolean
     /** An input can appear disabled and be unable to change states. */
-    disabled?: boolean;
+    disabled?: boolean
     /** An input can display an error. */
-    error?: boolean;
+    error?: boolean
     /** Displays an icon on the right of the input. */
-    icon?: IconName;
-    /** Sets the html5 name of the input field. */
-    name?: string;
+    icon?: IconName
+    /**
+     * Sets the html5 name of the input field.
+     * The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
+     */
+    name?: string
     /**
      * Called when the user attempts to change the input value.
      * @param {string} value The proposed value after the change.
      * @param {React.FormEvent<HTMLInputElement>} event React's original event.
      * @param {InputProps} data All props of the component.
      */
-    onChange?: (value: string, event: React.FormEvent<HTMLInputElement>, data: InputProps) => void;
+    onChange?: (value: string, event: React.FormEvent<HTMLInputElement>, data: InputProps) => void
     /** The placeholder of the input. */
-    placeholder?: string;
+    placeholder?: string
     /**
      * The html input type.
      * @default text
      */
-    type?: "text" | "password" | "number";
+    type?: "text" | "password" | "number"
     /** Displays a unit on the right of the input. */
-    unit?: string;
+    unit?: string
     /** The value of the input. */
-    value?: string;
+    value?: string
 }
 /**
  * An Input is a field used to elicit a textual response from a user.
@@ -47,4 +47,4 @@ export interface InputProps {
  * @see TextArea
  * @see Select
  */
-export declare const Input: React.StatelessComponent<InputProps>;
+export declare const Input: React.StatelessComponent<InputProps>

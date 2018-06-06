@@ -1,0 +1,40 @@
+@import "../../../common";
+
+.#{$global-class-prefix}error-screen {
+    &__content {
+        max-width: 660px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20 * $spacing-6;
+
+        @include breakpoint("m") {
+            margin-top: 24 * $spacing-6;
+        }
+    }
+
+    &__title {
+        @include -font-primary;
+
+        font-size: 5.625rem;      // 90px
+        line-height: 6.75rem;    // 108px
+        font-weight: $font-weight-thin;
+
+        @include breakpoint("s", "m") {
+            font-size: 6.75rem;     // 108px
+            line-height: 8.125rem;   // 130px
+            font-weight: $font-weight-thin;
+        }
+
+        @include breakpoint("m", "l") {
+            font-size: 7.875rem;     // 126px
+            line-height: 9.375rem;   // 150px
+            font-weight: $font-weight-thin;
+        }
+
+        @include breakpoint("l") {
+            font-size: 9rem;         // 144px
+            line-height: 10.75rem;  // 172px
+            font-weight: $font-weight-thin;
+        }
+    }
+}

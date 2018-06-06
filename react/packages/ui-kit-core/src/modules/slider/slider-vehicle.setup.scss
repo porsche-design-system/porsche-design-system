@@ -1,0 +1,45 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$slider-vehicle-full-width: 100% !default;
+
+$slider-vehicle-width: $slider-vehicle-full-width !default;
+$slider-vehicle-inner-spacing-vertical: 0 !default;
+$slider-vehicle-inner-spacing-horizontal: $spacing-18 !default;
+$slider-vehicle-inner-spacing-top-m: rem(10px) !default;
+$slider-vehicle-inner-spacing-vertical-m: $spacing-18 !default;
+$slider-vehicle-inner-spacing-bottom-m: $spacing-30 !default;
+
+// Arrows
+$slider-vehicle-arrow-position-top: 0 !default;
+$slider-vehicle-arrow-position-bottom: 0 !default;
+$slider-vehicle-arrow-icon-font-size: rem(34px) !default;
+$slider-vehicle-arrow-position-prev: 0 !default;
+$slider-vehicle-arrow-position-next: 0 !default;
+$slider-vehicle-arrow-inner-spacing: $spacing-30 !default;
+$slider-vehicle-arrow-icon-color: $color-palette-grey-3 !default;
+$slider-vehicle-arrow-icon-color-hovered: $color-palette-red-1 !default;
+$slider-vehicle-arrow-background-color: $color-palette-white !default;
+
+// Items
+$slider-vehicle-item-max-width: rem(250px) !default;
+$slider-vehicle-item-width: $slider-vehicle-full-width !default;
+$slider-vehicle-item-inner-spacing-vertical: $spacing-18 !default;
+$slider-vehicle-item-inner-spacing-horizontal: 0 !default;
+$slider-vehicle-item-border-color: $color-palette-grey-7 !default;
+$slider-vehicle-item-border-width: 1px !default;
+$slider-vehicle-item-border-reset: 0 !default;
+$slider-vehicle-item-inner-spacing-vertical-m: 0 !default;
+$slider-vehicle-item-inner-spacing-horizontal-m: rem(35px) !default;
+$slider-vehicle-image-max-width: rem(190px) !default;
+$slider-vehicle-icon-text-color: $color-palette-red-1 !default;
+$slider-vehicle-icon-line-height: rem(26px) !default;
+$slider-vehicle-title-margin-left: $spacing-6 !default;
+$slider-vehicle-title-width-m: $slider-vehicle-full-width !default;
+$slider-vehicle-title-max-width: 85% !default;
+$slider-vehicle-title-color-hovered: $color-palette-red-1 !default;
+$slider-vehicle-subtitle-color-hovered: $color-palette-red-1 !default;
+$slider-vehicle-subtitle-margin-left: $spacing-24 !default;
+$slider-vehicle-subtitle-width: $slider-vehicle-full-width !default;
+$slider-vehicle-subtitle-margin-left-m: 0 !default;

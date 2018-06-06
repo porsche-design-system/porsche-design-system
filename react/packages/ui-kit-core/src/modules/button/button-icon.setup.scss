@@ -1,0 +1,12 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$button-icon-size: rem(22px) !default;
+$button-icon-safe-clickable-area: - (rem(40px) - $button-icon-size) / 2 !default;
+$button-icon-text-color: $color-palette-red-1 !default;
+$button-icon-text-color-hovered: $color-palette-red-2 !default;
+$button-icon-text-color-invert: $color-palette-white;
+$button-icon-text-color-disabled: $color-palette-grey-5 !default;
+$button-icon-border-width: 0 !default;
+$button-icon-border-radius: 0 !default;
+$button-icon-spacing: 0 !default;
