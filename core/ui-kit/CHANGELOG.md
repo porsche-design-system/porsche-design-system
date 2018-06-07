@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+
+## [0.4.3] - 2018-06-07
 ### Improvements
 * Added setup scss file for various (external) brand colors `external-brands-colors.scss`
-* 
 
 ## [0.4.2] - 2018-05-30
 ### Bugfixes
