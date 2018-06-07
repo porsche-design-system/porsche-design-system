@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Breaking changes
+Removed deprecated `column` and `row` classes used for "Grid Float", please have a look at migration path mentioned in version 0.2.0
+
 ## [0.4.4] - 2018-06-07
 ### Improvements
 * Added default padding-bottom to body element. It's necessary to import the common/defaults.scss:
