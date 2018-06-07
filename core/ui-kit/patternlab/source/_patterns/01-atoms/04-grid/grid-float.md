@@ -7,7 +7,7 @@ state: inprogress
 
 ## Float grid
 
-The float grid a typical "mobile first" column grid using 12 columns.
+The float grid is a typical "mobile first" column grid using 12 columns.
 
 ### Basics
 
@@ -36,7 +36,7 @@ To define responsive (breakpoint based) columns, you can use the following modif
 
 ```
 <div class="row">
-	<div class="column column--12 column--6-m">Usually I'm using 12 cols, but from M it's only 6</div>
+	<div class="column column--12 column--6-m">Usually I'm using 12 cols, but from M and above it's only 6</div>
 	<div class="column column--12 column--6-m">I'll do the same</div>
 </div>
 ```
@@ -50,3 +50,33 @@ column--(size)-m
 column--(size)-l
 column--(size)-xl
 ```
+
+### Direction classes
+
+#### Normal (default)
+```
+column--direction-normal
+```
+
+#### Reverse
+```
+column--direction-reverse
+```
+
+### Gap classes
+
+### Normal (default)
+```
+column--gap-normal
+```
+
+#### Small
+```
+column--gap-small
+```
+
+#### Zero (none)
+```
+column--gap-zero
+```
+
