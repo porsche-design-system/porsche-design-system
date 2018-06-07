@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.4.5] - 2018-06-07
+### Improvements
+* Added scripts for publishing to multiple repositories (nexus + artifactory)
+
 ## [0.4.4] - 2018-06-07
 ### Improvements
 * Added default padding-bottom to body element. It's necessary to import the common/defaults.scss:
