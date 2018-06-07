@@ -15,7 +15,7 @@ The most basic markup contains one row and one column:
 
 ```
 <div class="row">
-	<div class="column">One column</div>
+	<div class="column column-auto">One column</div>
 </div>
 ```
 
@@ -60,7 +60,10 @@ column--direction-normal
 
 #### Reverse
 ```
-column--direction-reverse
+<div class="row">
+	<div class="column column--8 column--direction-reverse">I should be on the left, but I was reversed</div>
+	<div class="column column--4 column--direction-reverse">Yeah, I'm on the left!</div>
+</div>
 ```
 
 ### Gap classes
