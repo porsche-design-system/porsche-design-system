@@ -20,6 +20,15 @@ If you want to inspect patterns of a different branch, replace `master` with the
 
 ### Local installation
 
+#### Set up your global .npmrc file with your JFROG incredentials
+```
+@porsche:registry=https://porschedev.jfrog.io/porschedev/api/npm/public-npm/
+//porschedev.jfrog.io/porschedev/api/npm/public-npm/:_password=JFROG_TOKEN_KEY
+//porschedev.jfrog.io/porschedev/api/npm/public-npm/:username=JFROG_USER_ID
+//porschedev.jfrog.io/porschedev/api/npm/public-npm/:email=your@email.com
+//porschedev.jfrog.io/porschedev/api/npm/public-npm/:always-auth=true
+```
+
 Check out the project, install dependencies and run it:
 
 ```
