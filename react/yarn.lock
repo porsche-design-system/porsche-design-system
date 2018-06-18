@@ -23,6 +23,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@porsche/ui-kit-core@0.4.5":
+  version "0.4.5"
+  resolved "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.4.5.tgz#b0ed34e87b9161f2e0f94c6b878f697ec4e09492"
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
