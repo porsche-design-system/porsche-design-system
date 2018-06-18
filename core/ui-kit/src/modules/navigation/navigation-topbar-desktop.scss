@@ -22,6 +22,10 @@
     width: $navigation-topbar-desktop-limiter-width;
     max-width: $navigation-topbar-desktop-limiter-max-width;
 
+    @media (min-width: $navigation-topbar-desktop-limiter-breakpoint-xl) {
+      width: $navigation-topbar-desktop-limiter-width-xl;
+    }
+
     @media (min-width: $navigation-topbar-desktop-limiter-breakpoint) {
       padding-left: $navigation-topbar-desktop-limiter-padding-left-m;
     }

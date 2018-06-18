@@ -1,6 +1,6 @@
 // sass-lint:disable-all
-
 @import '../../setup/global-variables.scss';
+@import '../../mixins/breakpoint.scss';
 
 .#{$global-class-prefix}navigation {
   background: #FFF;
@@ -14,6 +14,11 @@
     padding: .78125rem 7%;
     max-width: 86rem;
     margin: 0 auto;
+
+    @media (min-width: 1760px) {
+      width: 80vw;
+      max-width: 1536px;
+    }
   }
 
   &__icon {
@@ -39,8 +44,7 @@
   }
 }
 
-@media
-screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 991px),
+@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 991px),
 screen and (min--moz-device-pixel-ratio: 2) and (max-width: 991px),
 screen and (min-device-pixel-ratio: 2) and (max-width: 991px),
 screen and (min-resolution: 192dpi) and (max-width: 991px),
@@ -92,8 +96,7 @@ screen and (min-resolution: 2dppx) and (max-width: 991px) {
   }
 }
 
-@media
-screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 992px),
+@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 992px),
 screen and (min--moz-device-pixel-ratio: 2) and (min-width: 992px),
 screen and (min-device-pixel-ratio: 2) and (min-width: 992px),
 screen and (min-resolution: 192dpi) and (min-width: 992px),
