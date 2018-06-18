@@ -1,9 +1,0 @@
-@import '../../setup/color-palette.setup.scss';
-@import '../../mixins/px-rem-converter.scss';
-@import '../../base/spacing/spacing.setup.scss';
-
-$notification-error-inline-background-color: $color-palette-white !default;
-$notification-error-inline-border-left-color: $color-palette-status-red !default;
-$notification-error-inline-text-color: $color-palette-status-red !default;
-$notification-error-inline-border-left-width: $spacing-3 !default;
-$notification-error-inline-inner-spacing-horizontal: $spacing-12 !default;

@@ -110,6 +110,7 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> & Partial
             { [prefix("button-ghost--inverted")]: type === "ghost-inverted" },
             { [prefix("button-ghost--error")]: error },
             { [prefix("button-ghost--stretch")]: stretch },
+            { [prefix("button-ghost--centered")]: centered },
             { [prefix("button-ghost--active")]: active },
             className
         )

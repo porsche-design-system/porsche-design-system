@@ -16,6 +16,7 @@
 @mixin showFrom($breakpoint) {
     &--show-#{$breakpoint} {
         display: none;
+
         @include breakpoint($breakpoint) {
             display: block;
         }
@@ -23,15 +24,24 @@
 }
 
 .#{$global-class-prefix}button-ghost {
+    $btnGhost: &;
+
     // Add possibility to set button active with a class
-    @include buttonState($color-palette-red-1, $color-palette-red-1)
+    @include buttonState($color-palette-red-1, $color-palette-red-1);
 
     // Fix button padding
     padding-left: $spacing-18;
     padding-right: $spacing-18;
 
+    &--centered {
+        justify-content: center;
+    }
+
     // Add possibility to show button content only starting from a breakpoint
     &__label {
+        width: auto;
+        padding-left: $spacing-6;
+
         @include showFrom("xs");
         @include showFrom("s");
         @include showFrom("m");
@@ -40,8 +50,10 @@
     }
 
     // Fix button stretching itself below xs
-    @include breakpoint('xxs', 'xs') {
-        width: auto;
+    @include breakpoint("xxs", "xs") {
+        &:not(#{$btnGhost}--stretch) {
+            width: auto;
+        }
     }
 
     // TODO: set extra class for buttons with icon only. this prevents possible unwanted overwrites

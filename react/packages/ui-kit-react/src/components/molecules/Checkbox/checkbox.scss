@@ -29,7 +29,7 @@
         flex: 0 0 $checkbox-icon-width;
         box-sizing: border-box;
         border: 1px solid $checkbox-icon-border-color;
-        align-self: center;
+        align-self: flex-start;
 
         &--default {
             color: $checkbox-icon-color;

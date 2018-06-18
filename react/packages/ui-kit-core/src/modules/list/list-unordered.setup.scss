@@ -1,8 +1,0 @@
-@import '../../mixins/px-rem-converter.scss';
-@import '../../base/spacing/spacing.setup.scss';
-@import '../../base/text-size/text-size.setup.scss';
-
-$list-unordered-item-before-dimension: rem(4px) !default;
-$list-unordered-item-before-padding-left: $list-unordered-item-before-dimension + $spacing-12 !default;
-$list-unordered-item-before-top: ($text-size-copy-line-height / 2) - ($list-unordered-item-before-dimension / 2) !default;
-$list-unordered-item-before-left: 0 !default;
