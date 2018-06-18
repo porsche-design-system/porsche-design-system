@@ -1,6 +1,6 @@
 @import "../../../common";
-@import "../../../../../../node_modules/@porsche/ui-kit-core/src/base/spacing/spacing.setup";
-@import "../../../../../../node_modules/@porsche/ui-kit-core/src/base/spacing/spacing.mixin";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/base/spacing/spacing.setup";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/base/spacing/spacing.mixin";
 
 /**
  * equal responsive paddings which are not set in porsche ui kit core
@@ -9,11 +9,11 @@
 @mixin -spacing-inner-equal-a() {
     padding: $spacing-a;
 
-    @include breakpoint('s') {
+    @include breakpoint("s") {
         padding: $spacing-a-s;
     }
 
-    @include breakpoint('l') {
+    @include breakpoint("l") {
         padding: $spacing-a-l;
     }
 }
@@ -21,11 +21,11 @@
 @mixin -spacing-inner-equal-b() {
     padding: $spacing-b;
 
-    @include breakpoint('s') {
+    @include breakpoint("s") {
         padding: $spacing-b-s;
     }
 
-    @include breakpoint('l') {
+    @include breakpoint("l") {
         padding: $spacing-b-l;
     }
 }
@@ -33,11 +33,11 @@
 @mixin -spacing-inner-equal-c() {
     padding: $spacing-c;
 
-    @include breakpoint('s') {
+    @include breakpoint("s") {
         padding: $spacing-c-s;
     }
 
-    @include breakpoint('l') {
+    @include breakpoint("l") {
         padding: $spacing-c-l;
     }
 }
@@ -45,11 +45,11 @@
 @mixin -spacing-inner-equal-d() {
     padding: $spacing-d;
 
-    @include breakpoint('s') {
+    @include breakpoint("s") {
         padding: $spacing-d-s;
     }
 
-    @include breakpoint('l') {
+    @include breakpoint("l") {
         padding: $spacing-d-l;
     }
 }
@@ -57,11 +57,11 @@
 @mixin -spacing-inner-equal-e() {
     padding: $spacing-e;
 
-    @include breakpoint('s') {
+    @include breakpoint("s") {
         padding: $spacing-e-s;
     }
 
-    @include breakpoint('l') {
+    @include breakpoint("l") {
         padding: $spacing-e-l;
     }
 }
@@ -69,11 +69,11 @@
 @mixin -spacing-inner-equal-f() {
     padding: $spacing-f;
 
-    @include breakpoint('s') {
+    @include breakpoint("s") {
         padding: $spacing-f-s;
     }
 
-    @include breakpoint('l') {
+    @include breakpoint("l") {
         padding: $spacing-f-l;
     }
 }
@@ -96,7 +96,6 @@ $spacings: (
 );
 
 .#{$global-class-prefix}m {
-
     // Static spacings
     @each $name, $spacing in $spacings {
         &--#{$name} {

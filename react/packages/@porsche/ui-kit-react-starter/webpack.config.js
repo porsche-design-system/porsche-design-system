@@ -30,7 +30,7 @@ const configuration = {
                 loader: "tslint-loader",
                 options: {
                     tsConfigFile: "tsconfig.json",
-                    configFile: "../../tslint.json"
+                    configFile: "../../../tslint.json"
                 }
             },
             {
