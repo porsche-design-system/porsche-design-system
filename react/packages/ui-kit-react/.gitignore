@@ -9,8 +9,8 @@
 
 .tmp/
 build/
-css/
-dist/
+css/*
+dist/*
 node_modules/
 
 jest.json

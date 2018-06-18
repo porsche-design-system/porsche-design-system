@@ -1,7 +1,7 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.1.1",
+    "version": "0.1.4",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
@@ -44,12 +44,9 @@
         "testResultsProcessor": "jest-bamboo-formatter"
     },
     "scripts": {
-        "postinstall": "yarn run build",
-        "prepublish": "yarn run test && yarn run build",
         "start": "yarn run watch",
         "prebuild": "rimraf ./.tmp && rimraf ./dist && rimraf ./css",
         "build": "yarn run build:es && yarn run build:commonjs && yarn run build:sass && yarn run build:css",
-        "postbuild": "cpx \".tmp/**/*.d.ts\" ./dist/typings",
         "prewatch": "yarn run build",
         "watch": "yarn run watch:es | yarn run watch:commonjs | yarn run watch:sass | yarn run watch:css",
         "build:es": "tsc --project ./ --outDir ./dist/es --declaration true --declarationDir ./dist/typings",
@@ -66,10 +63,10 @@
         "lint:sass": "stylelint '**/*.scss'",
         "lint:sass:fix": "yarn run lint:sass --fix",
         "test": "jest",
-        "publish:artifactory": "yarn publish"
+        "publish:artifactory": "yarn run test && yarn run build && yarn publish"
     },
     "dependencies": {
-        "@porsche/ui-kit-core": "0.2.0",
+        "@porsche/ui-kit-core": "0.4.5",
         "classnames": "^2.2.5",
         "lodash": "^4.17.4",
         "react-responsive": "^3.0.0",

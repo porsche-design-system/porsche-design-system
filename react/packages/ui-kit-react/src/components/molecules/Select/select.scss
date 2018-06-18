@@ -248,7 +248,7 @@
     vertical-align: middle;
     display: block;
     position: static;
-    padding: 0 $select-padding-horizontal-left 0 $select-padding-horizontal-left;
+    padding: 0 $select-padding-horizontal-left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -315,8 +315,12 @@
     display: none;
 }
 
-.#{$global-class-prefix}Select-option .#{$global-class-prefix}pui-checkbox__label {
+.#{$global-class-prefix}Select-option .#{$global-class-prefix}checkbox__label {
     color: inherit;
+}
+
+.#{$global-class-prefix}Select-option .#{$global-class-prefix}checkbox__icon {
+    align-self: center;
 }
 
 .#{$global-class-prefix}mobile-select {
