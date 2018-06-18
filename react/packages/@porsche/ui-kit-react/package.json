@@ -8,11 +8,7 @@
     "jsnext:main": "dist/es/index.js",
     "typings": "dist/typings/index",
     "sideEffects": false,
-    "files": [
-        "dist",
-        "src",
-        "css"
-    ],
+    "files": ["dist", "src", "css"],
     "repository": {
         "type": "git"
     },
@@ -28,16 +24,12 @@
         "testEnvironmentOptions": {
             "enzymeAdapter": "react16"
         },
-        "setupTestFrameworkScriptFile": "./../../node_modules/jest-enzyme/lib/index.js",
+        "setupTestFrameworkScriptFile": "./../../../node_modules/jest-enzyme/lib/index.js",
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
         },
         "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(tsx?)$",
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js"
-        ],
+        "moduleFileExtensions": ["ts", "tsx", "js"],
         "moduleNameMapper": {
             "^.*\\.scss$": "<rootDir>/src/test-helper/SCSSStub.js"
         },
@@ -54,9 +46,11 @@
         "build:commonjs": "tsc --project ./ --outDir ./dist/commonjs --module commonjs",
         "watch:commonjs": "yarn run build:commonjs --watch",
         "build:sass": "node-sass-chokidar --source-map true ./src --output .tmp/css",
-        "postbuild:sass": "cpx \"../../node_modules/@porsche/ui-kit-core/src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./src/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
+        "postbuild:sass":
+            "cpx \"../../../node_modules/@porsche/ui-kit-core//src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./src/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
         "watch:sass": "yarn run build:sass && yarn run build:sass --watch",
-        "build:css": "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
+        "build:css":
+            "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
         "watch:css": "yarn run build:css && yarn run build:css --watch",
         "lint:ts": "tslint --project '.' --format codeFrame",
         "lint:ts:fix": "yarn run lint:ts --fix",
