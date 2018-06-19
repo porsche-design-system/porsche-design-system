@@ -10,10 +10,7 @@
         }
     },
     "lint-staged": {
-        "*.{ts,tsx,js}": [
-            "prettier --write",
-            "git add"
-        ]
+        "*.{ts,tsx,js}": ["prettier --write", "git add"]
     },
     "devDependencies": {
         "tslint": "^5.6.0",
@@ -25,7 +22,5 @@
         "prettier": "1.12.1"
     },
     "dependencies": {},
-    "workspaces": [
-        "packages/*"
-    ]
+    "workspaces": ["packages/@porsche/*", "packages/*"]
 }

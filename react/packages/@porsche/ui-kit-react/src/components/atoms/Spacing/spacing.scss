@@ -1,0 +1,506 @@
+@import "../../../common";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/base/spacing/spacing.setup";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/base/spacing/spacing.mixin";
+
+/**
+ * equal responsive paddings which are not set in porsche ui kit core
+ * TODO: syncronize with Stephan Schröter about equal spacing mixins
+ */
+@mixin -spacing-inner-equal-a() {
+    padding: $spacing-a;
+
+    @include breakpoint("s") {
+        padding: $spacing-a-s;
+    }
+
+    @include breakpoint("l") {
+        padding: $spacing-a-l;
+    }
+}
+
+@mixin -spacing-inner-equal-b() {
+    padding: $spacing-b;
+
+    @include breakpoint("s") {
+        padding: $spacing-b-s;
+    }
+
+    @include breakpoint("l") {
+        padding: $spacing-b-l;
+    }
+}
+
+@mixin -spacing-inner-equal-c() {
+    padding: $spacing-c;
+
+    @include breakpoint("s") {
+        padding: $spacing-c-s;
+    }
+
+    @include breakpoint("l") {
+        padding: $spacing-c-l;
+    }
+}
+
+@mixin -spacing-inner-equal-d() {
+    padding: $spacing-d;
+
+    @include breakpoint("s") {
+        padding: $spacing-d-s;
+    }
+
+    @include breakpoint("l") {
+        padding: $spacing-d-l;
+    }
+}
+
+@mixin -spacing-inner-equal-e() {
+    padding: $spacing-e;
+
+    @include breakpoint("s") {
+        padding: $spacing-e-s;
+    }
+
+    @include breakpoint("l") {
+        padding: $spacing-e-l;
+    }
+}
+
+@mixin -spacing-inner-equal-f() {
+    padding: $spacing-f;
+
+    @include breakpoint("s") {
+        padding: $spacing-f-s;
+    }
+
+    @include breakpoint("l") {
+        padding: $spacing-f-l;
+    }
+}
+
+/**
+ * Static spacings
+ */
+$spacings: (
+    "3": $spacing-3,
+    "6": $spacing-6,
+    "12": $spacing-12,
+    "18": $spacing-18,
+    "24": $spacing-24,
+    "30": $spacing-30,
+    "36": $spacing-36,
+    "42": $spacing-42,
+    "48": $spacing-48,
+    "54": $spacing-54,
+    "60": $spacing-60
+);
+
+.#{$global-class-prefix}m {
+    // Static spacings
+    @each $name, $spacing in $spacings {
+        &--#{$name} {
+            margin: $spacing;
+        }
+
+        &t--#{$name} {
+            margin-top: $spacing;
+        }
+
+        &l--#{$name} {
+            margin-left: $spacing;
+        }
+
+        &b--#{$name} {
+            margin-bottom: $spacing;
+        }
+
+        &r--#{$name} {
+            margin-right: $spacing;
+        }
+    }
+
+    // Responsive spacings
+    &t--a {
+        @include -spacing-a("top", "margin", "");
+    }
+
+    &r--a {
+        @include -spacing-a("right", "margin", "");
+    }
+
+    &b--a {
+        @include -spacing-a("bottom", "margin", "");
+    }
+
+    &l--a {
+        @include -spacing-a("left", "margin", "");
+    }
+
+    &t--b {
+        @include -spacing-b("top", "margin", "");
+    }
+
+    &r--b {
+        @include -spacing-b("right", "margin", "");
+    }
+
+    &b--b {
+        @include -spacing-b("bottom", "margin", "");
+    }
+
+    &l--b {
+        @include -spacing-b("left", "margin", "");
+    }
+
+    &t--c {
+        @include -spacing-c("top", "margin", "");
+    }
+
+    &r--c {
+        @include -spacing-c("right", "margin", "");
+    }
+
+    &b--c {
+        @include -spacing-c("bottom", "margin", "");
+    }
+
+    &l--c {
+        @include -spacing-c("left", "margin", "");
+    }
+
+    &t--d {
+        @include -spacing-d("top", "margin", "");
+    }
+
+    &r--d {
+        @include -spacing-d("right", "margin", "");
+    }
+
+    &b--d {
+        @include -spacing-d("bottom", "margin", "");
+    }
+
+    &l--d {
+        @include -spacing-d("left", "margin", "");
+    }
+
+    &t--e {
+        @include -spacing-e("top", "margin", "");
+    }
+
+    &r--e {
+        @include -spacing-e("right", "margin", "");
+    }
+
+    &b--e {
+        @include -spacing-e("bottom", "margin", "");
+    }
+
+    &l--e {
+        @include -spacing-e("left", "margin", "");
+    }
+
+    &t--f {
+        @include -spacing-f("top", "margin", "");
+    }
+
+    &r--f {
+        @include -spacing-f("right", "margin", "");
+    }
+
+    &b--f {
+        @include -spacing-f("bottom", "margin", "");
+    }
+
+    &l--f {
+        @include -spacing-f("left", "margin", "");
+    }
+}
+
+.#{$global-class-prefix}m {
+    &--auto {
+        margin: auto;
+    }
+
+    &t--auto {
+        margin-top: auto;
+    }
+
+    &l--auto {
+        margin-left: auto;
+    }
+
+    &b--auto {
+        margin-bottom: auto;
+    }
+
+    &r--auto {
+        margin-right: auto;
+    }
+}
+
+.#{$global-class-prefix}m-n {
+    @each $name, $spacing in $spacings {
+        &--#{$name} {
+            margin: -$spacing;
+        }
+
+        &t--#{$name} {
+            margin-top: -$spacing;
+        }
+
+        &l--#{$name} {
+            margin-left: -$spacing;
+        }
+
+        &b--#{$name} {
+            margin-bottom: -$spacing;
+        }
+
+        &r--#{$name} {
+            margin-right: -$spacing;
+        }
+    }
+
+    // Responsive spacings
+    &t--a {
+        @include -spacing-a("top", "margin", "-");
+    }
+
+    &r--a {
+        @include -spacing-a("right", "margin", "-");
+    }
+
+    &b--a {
+        @include -spacing-a("bottom", "margin", "-");
+    }
+
+    &l--a {
+        @include -spacing-a("left", "margin", "-");
+    }
+
+    &t--b {
+        @include -spacing-b("top", "margin", "-");
+    }
+
+    &r--b {
+        @include -spacing-b("right", "margin", "-");
+    }
+
+    &b--b {
+        @include -spacing-b("bottom", "margin", "-");
+    }
+
+    &l--b {
+        @include -spacing-b("left", "margin", "-");
+    }
+
+    &t--c {
+        @include -spacing-c("top", "margin", "-");
+    }
+
+    &r--c {
+        @include -spacing-c("right", "margin", "-");
+    }
+
+    &b--c {
+        @include -spacing-c("bottom", "margin", "-");
+    }
+
+    &l--c {
+        @include -spacing-c("left", "margin", "-");
+    }
+
+    &t--d {
+        @include -spacing-d("top", "margin", "-");
+    }
+
+    &r--d {
+        @include -spacing-d("right", "margin", "-");
+    }
+
+    &b--d {
+        @include -spacing-d("bottom", "margin", "-");
+    }
+
+    &l--d {
+        @include -spacing-d("left", "margin", "-");
+    }
+
+    &t--e {
+        @include -spacing-e("top", "margin", "-");
+    }
+
+    &r--e {
+        @include -spacing-e("right", "margin", "-");
+    }
+
+    &b--e {
+        @include -spacing-e("bottom", "margin", "-");
+    }
+
+    &l--e {
+        @include -spacing-e("left", "margin", "-");
+    }
+
+    &t--f {
+        @include -spacing-f("top", "margin", "-");
+    }
+
+    &r--f {
+        @include -spacing-f("right", "margin", "-");
+    }
+
+    &b--f {
+        @include -spacing-f("bottom", "margin", "-");
+    }
+
+    &l--f {
+        @include -spacing-f("left", "margin", "-");
+    }
+}
+
+.#{$global-class-prefix}p {
+    @each $name, $spacing in $spacings {
+        &--#{$name} {
+            padding: $spacing;
+        }
+
+        &t--#{$name} {
+            padding-top: $spacing;
+        }
+
+        &l--#{$name} {
+            padding-left: $spacing;
+        }
+
+        &b--#{$name} {
+            padding-bottom: $spacing;
+        }
+
+        &r--#{$name} {
+            padding-right: $spacing;
+        }
+    }
+
+    // Responsive spacings
+    &--a {
+        @include -spacing-inner-equal-a;
+    }
+
+    &t--a {
+        @include -spacing-a("top", "padding", "");
+    }
+
+    &r--a {
+        @include -spacing-a("right", "padding", "");
+    }
+
+    &b--a {
+        @include -spacing-a("bottom", "padding", "");
+    }
+
+    &l--a {
+        @include -spacing-a("left", "padding", "");
+    }
+
+    &--b {
+        @include -spacing-inner-equal-b;
+    }
+
+    &t--b {
+        @include -spacing-b("top", "padding", "");
+    }
+
+    &r--b {
+        @include -spacing-b("right", "padding", "");
+    }
+
+    &b--b {
+        @include -spacing-b("bottom", "padding", "");
+    }
+
+    &l--b {
+        @include -spacing-b("left", "padding", "");
+    }
+
+    &--c {
+        @include -spacing-inner-equal-c;
+    }
+
+    &t--c {
+        @include -spacing-c("top", "padding", "");
+    }
+
+    &r--c {
+        @include -spacing-c("right", "padding", "");
+    }
+
+    &b--c {
+        @include -spacing-c("bottom", "padding", "");
+    }
+
+    &l--c {
+        @include -spacing-c("left", "padding", "");
+    }
+
+    &--d {
+        @include -spacing-inner-equal-d;
+    }
+
+    &t--d {
+        @include -spacing-d("top", "padding", "");
+    }
+
+    &r--d {
+        @include -spacing-d("right", "padding", "");
+    }
+
+    &b--d {
+        @include -spacing-d("bottom", "padding", "");
+    }
+
+    &l--d {
+        @include -spacing-d("left", "padding", "");
+    }
+
+    &--e {
+        @include -spacing-inner-equal-e;
+    }
+
+    &t--e {
+        @include -spacing-e("top", "padding", "");
+    }
+
+    &r--e {
+        @include -spacing-e("right", "padding", "");
+    }
+
+    &b--e {
+        @include -spacing-e("bottom", "padding", "");
+    }
+
+    &l--e {
+        @include -spacing-e("left", "padding", "");
+    }
+
+    &--f {
+        @include -spacing-inner-equal-f;
+    }
+
+    &t--f {
+        @include -spacing-f("top", "padding", "");
+    }
+
+    &r--f {
+        @include -spacing-f("right", "padding", "");
+    }
+
+    &b--f {
+        @include -spacing-f("bottom", "padding", "");
+    }
+
+    &l--f {
+        @include -spacing-f("left", "padding", "");
+    }
+}

@@ -1,4 +1,0 @@
----
-title: Loader
-state: inprogress
----
