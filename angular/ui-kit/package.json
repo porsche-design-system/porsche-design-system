@@ -1,6 +1,6 @@
 {
   "name": "@porsche/ui-kit-angular",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +12,13 @@
     "test:singleRun": "ng test --watch false",
     "test:watch": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "authenticate-registry": "(npm whoami --registry=$npm_config_repository_url || npm login --registry=$npm_config_repository_url)",
+    "modify-publishConfig": "json -I -f package.json -e 'this.publishConfig[\"@porsche:registry\"]=\"'$npm_config_repository_url'\"'",
+    "reset-publishConfig": "json -I -f package.json -e 'this.publishConfig[\"@porsche:registry\"]=\"'https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/'\"'",
+    "publish-artifact": "npm run authenticate-registry --repository_url=$npm_config_repository_url && npm run modify-publishConfig --repository_url=$npm_config_repository_url && npm publish; npm run reset-publishConfig",
+    "publish-artifactory": "npm run publish-artifact --repository_url=https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/",
+    "publish-nexus3": "npm run publish-artifact --repository_url=https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
   },
   "ngPackage": {
     "lib": {
@@ -36,6 +42,7 @@
     "codelyzer": "^4.3.0",
     "jasmine-core": "^3.1.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "json": "9.0.6",
     "karma": "^2.0.2",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "^1.2.1",
@@ -55,6 +62,6 @@
     "rxjs": "^5.5.6"
   },
   "publishConfig": {
-    "registry": "https://pcckbuild.web.porsche.de/nexus/repository/npm-internal-pcck-bunt/"
+    "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/"
   }
 }
