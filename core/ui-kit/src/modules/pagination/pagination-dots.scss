@@ -18,20 +18,19 @@
     @include -background-grey-3;
 
     display: block;
-    width: $pagination-dots-dot-button-dimension;
-    height: $pagination-dots-dot-button-dimension;
-    padding: $pagination-dots-dot-button-padding;
-    margin: $pagination-dots-dot-button-margin;
+    width: $pagination-dots-dot-size-primary;
+    height: $pagination-dots-dot-size-primary;
+    padding: $pagination-dots-dot-padding;
+    margin: $pagination-dots-dot-margin;
 
     border-style: none;
     cursor: pointer;
+
+    border-radius: $pagination-dots-dot-border-radius;
 
     &--active {
       @include -background-red-1;
     }
 
-    &--round {
-      border-radius: $pagination-dots-dot-border-radius;
-    }
   }
 }
