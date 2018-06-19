@@ -1,5 +1,4 @@
 {
-  "pagination-dots_dots": [false, false, true, false],
-  "pagination-dots_dotsRound": false,
+  "pagination-dots_dots": [false, false, true, false, false, false],
   "pagination-dots_hidden-s": false
 }
