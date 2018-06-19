@@ -1,0 +1,16 @@
+!dist/
+
+*.log*
+*.iml
+
+.DS_Store
+.idea/
+.yarn-cache/
+
+.tmp/
+build/
+css/*
+dist/*
+node_modules/
+
+jest.json

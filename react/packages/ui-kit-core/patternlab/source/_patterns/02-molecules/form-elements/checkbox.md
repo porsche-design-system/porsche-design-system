@@ -1,4 +1,0 @@
----
-title: Checkbox
-state: complete
----

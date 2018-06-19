@@ -1,7 +1,0 @@
-@import 'layer.mixin.scss';
-@import '../../setup/global-variables.scss';
-
-.-#{$global-class-prefix}layer {
-  &-blocking-lower { @include -layer-blocking-lower; }
-  &-blocking-higher { @include -layer-blocking-higher; }
-}
