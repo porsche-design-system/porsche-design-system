@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Breaking changes
+Removed deprecated `column` and `row` classes used for "Grid Float", please have a look at migration path mentioned in version 0.2.0
+
 ## [0.4.5] - 2018-06-07
 ### Improvements
 * Added scripts for publishing to multiple repositories (nexus + artifactory)
