@@ -10,10 +10,9 @@ $navigation-topbar-desktop-container-height: 100% !default;
 $navigation-topbar-desktop-limiter-margin-horizontal: auto !default;
 $navigation-topbar-desktop-limiter-padding-horizontal: 0 !default;
 $navigation-topbar-desktop-limiter-padding-left-m: calc(100vw - 100%) !default;
-$navigation-topbar-desktop-limiter-max-width: $wrapper-page-max-width !default;
+$navigation-topbar-desktop-limiter-max-width: rem(1536px) !default;
 $navigation-topbar-desktop-limiter-width: calc(100vw - 7vw * 2) !default;
 $navigation-topbar-desktop-limiter-breakpoint: 992px !default;
-$navigation-topbar-desktop-limiter-breakpoint-xl: 1760px !default;
 $navigation-topbar-desktop-limiter-width-xl: 80vw !default;
 
 

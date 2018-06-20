@@ -2,6 +2,7 @@
 @import '../../setup/global-variables.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../mixins/retina.scss';
+@import '../../base/wrapper/wrapper.mixin.scss';
 
 .#{$global-class-prefix}navigation {
   background: #FFF;
@@ -17,8 +18,7 @@
     margin: 0 auto;
 
     @include breakpoint('xl') {
-      width: 80vw;
-      max-width: 1536px;
+      @include -wrapper-page;
     }
   }
 
@@ -96,7 +96,7 @@
 }
 
 @include retina {
-  @media screen and (min-width: 992px) {
+  @include breakpoint('m') {
 
     .#{$global-class-prefix}navigation {
 
