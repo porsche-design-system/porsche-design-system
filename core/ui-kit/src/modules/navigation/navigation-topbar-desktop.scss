@@ -22,7 +22,7 @@
     width: $navigation-topbar-desktop-limiter-width;
     max-width: $navigation-topbar-desktop-limiter-max-width;
 
-    @media (min-width: $navigation-topbar-desktop-limiter-breakpoint-xl) {
+    @include breakpoint('xl') {
       width: $navigation-topbar-desktop-limiter-width-xl;
     }
 
