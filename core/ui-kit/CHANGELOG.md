@@ -15,7 +15,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   * Pagination dots are now rounded by default, as there are no square ones to be used
   * The modifier class `.pagination-dots__dot-rounded` has been removed
   * The width and height of the dots defaults to 10px (before: 8px)
-  * The variable `$pagination-dots-dot-button-dimension` has been renamed to `$pagination-dots-dot-size-primary`. Please update your settings according to the new name
+  * Various variables have been renamed. Please update your patterns to the new names:
+
+      `$pagination-dots-dot-button-dimension` => `$pagination-dots-dot-size-primary`
+      `$pagination-dots-dot-button-padding` => `$pagination-dots-dot-padding`
+      `$pagination-dots-dot-button-margin` => `$pagination-dots-dot-margin`
+
   * Please check out the pagination dots docs for further use (pagination-dots.md)
 
 * Organism: Car selector / chooser
