@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### New features
+* Updated molecule pagination dots to reflect the latest layout specification
+
+### Breaking changes
+* Molecule: Pagination dots
+  * Pagination dots are now rounded by default, as there are no square ones to be used
+  * The modifier class `.pagination-dots__dot-rounded` has been removed
+  * The width and height of the dots defaults to 10px (before: 8px)
+  * The variable `$pagination-dots-dot-button-dimension` has been renamed to `$pagination-dots-dot-size-primary`. Please update your settings according to the new name
+  * Please check out the pagination dots docs for further use (pagination-dots.md)
+
+* Organism: Car selector / chooser
+  * Updated car selector sass setup `car-selector.setup.scss` to the latest pagination dots variables
+
 ## [0.5.0] - 2018-06-19
 ### Breaking changes
 Removed deprecated `column` and `row` classes used for "Grid Float", please have a look at migration path mentioned in version 0.2.0
