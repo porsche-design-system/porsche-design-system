@@ -16,6 +16,29 @@
     // downside is that content is not centered 100% correct if a scrollbar is visible because
     // content has offset to the right by the width of the scrollbar that's why this fix is only
     // applied with breakpoint "m"
+
+    // Situation:
+    // A user is on a longer page with scrollbars on the right.  On issuing an action, a modal pops
+    // up and the body is set to `overflow: hidden`.  This lets the page's content "jump" from left
+    // to right since it's now positioned between both window borders instead of left border and
+    // right scrollbar.
+    //
+    // Solution:
+    // Place the page's content always between the window borders, no matter if a scrollbar is
+    // shown or not.
+    //
+    // How:
+    // Simulate a left aligned scrollbar through `padding-left`.  The difference between `100%` and
+    // `100vw` is:
+    //  • `100vw` equals the window with *including* the width of the scrollbar while
+    //  • `100%` equals the window with *excluding* the width of the scrollbar, so only the area
+    //    between left window border and scrollbar.
+    // The result of the substraction is the width of the scrollbar itself, which can vary from
+    // devices and OS.  Setting this value as `padding-left` results in elements aligning itself
+    // in the center of the window, no matter if a scrollbar is visible or not.
+    //
+    // Note that this effect is only applied on screens larger than `m`.  Below that only mobile
+    // devices are expected which don't have scrollbars reducing the screen's real estate.
     padding-left: calc(100vw - 100%);
   }
 
