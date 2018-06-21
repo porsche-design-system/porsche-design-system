@@ -9,3 +9,6 @@ Thumbs.db
 *.iml
 *.ipr
 *.iws
+
+# npm
+.npmrc

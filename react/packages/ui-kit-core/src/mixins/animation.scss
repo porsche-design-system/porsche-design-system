@@ -1,9 +1,0 @@
-@import '../common/keyframes.scss';
-
-@mixin animation($name, $duration, $timing-function: linear, $delay: 0s, $iteration-count: infinite, $direction: normal) {
-  animation: $name $duration $timing-function $delay $iteration-count $direction;
-}
-
-@mixin animation-translate-scale($vertical, $horizontal, $scale) {
-  transform: translate($vertical, $horizontal) scale($scale);
-}
