@@ -11,11 +11,13 @@ export interface NotificationProps extends ClassNameProp, ComponentProp {
      * The display type of the notification.
      * @default default
      */
-    type?: "default" | "error" | "cookie"
+    type?: "common" | "cookie"
+
+    role?: "error"
 }
 
 const defaultProps: Partial<NotificationProps> = {
-    type: "default"
+    type: "common"
 }
 
 const _meta: ComponentMeta = {
@@ -23,10 +25,14 @@ const _meta: ComponentMeta = {
     type: META.TYPES.ORGANISM
 }
 
+const isCommonNotification = (type: string | undefined): boolean => {
+    return type === "common"
+}
+
 const _Notification: React.StatelessComponent<NotificationProps> &
     Partial<Notification> &
     Partial<MetaCategorizable> = (props) => {
-    const { as, className, children, type, ...rest } = props
+    const { as, className, children, type, role, ...rest } = props
 
     const ElementType = getElementType(as, "article")
 
@@ -34,21 +40,37 @@ const _Notification: React.StatelessComponent<NotificationProps> &
     let notificationItemClasses
     let notificationTextClasses
 
-    notificationClasses = cx(prefix("notification"), className)
+    if (isCommonNotification(type)) {
+        notificationClasses = cx(prefix("notification-common"), className)
 
-    notificationItemClasses = cx(
-        prefix("notification__item"),
-        { [prefix("notification__item--error")]: type === "error" },
-        { [prefix("notification__item--cookie")]: type === "cookie" },
-        className
-    )
+        notificationItemClasses = cx(
+            prefix("notification-common__item"),
+            { [prefix("notification-common__item--error")]: role === "error" },
+            className
+        )
 
-    notificationTextClasses = cx(
-        prefix("notification__text"),
-        { [prefix("notification__text--error")]: type === "error" },
-        { [prefix("notification__text--cookie")]: type === "cookie" },
-        className
-    )
+        notificationTextClasses = cx(
+            prefix("notification-common__text"),
+            { [prefix("notification-common__text--error")]: role === "error" },
+            className
+        )
+    } else {
+        notificationClasses = cx(prefix("notification"), className)
+
+        notificationItemClasses = cx(
+            prefix("notification__item"),
+            { [prefix("notification__item--error")]: role === "error" },
+            { [prefix("notification__item--cookie")]: type === "cookie" },
+            className
+        )
+
+        notificationTextClasses = cx(
+            prefix("notification__text"),
+            { [prefix("notification__text--error")]: role === "error" },
+            { [prefix("notification__text--cookie")]: type === "cookie" },
+            className
+        )
+    }
 
     return (
         <ElementType type={type} className={notificationClasses} {...rest}>
