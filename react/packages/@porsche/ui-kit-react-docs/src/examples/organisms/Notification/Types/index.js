@@ -4,8 +4,23 @@ import React from "react"
 
 const Types = () => (
     <ExampleSection title="Types">
-        <ComponentExample title="Notification" examplePath="organisms/Notification/Types/NotificationExampleBasic">
-            The default notification component
+        <ComponentExample
+            title="Notification Common"
+            examplePath="organisms/Notification/Types/NotificationExampleCommon"
+        >
+            The common notification component
+        </ComponentExample>
+        <ComponentExample
+            title="Notification Common"
+            examplePath="organisms/Notification/Types/NotificationExampleCommonError"
+        >
+            The common notification component with error state
+        </ComponentExample>
+        <ComponentExample
+            title="Notification Cookie"
+            examplePath="organisms/Notification/Types/NotificationExampleCookie"
+        >
+            The cookie notification component
         </ComponentExample>
     </ExampleSection>
 )
