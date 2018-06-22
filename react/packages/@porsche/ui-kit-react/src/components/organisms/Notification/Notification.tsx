@@ -23,9 +23,7 @@ const _meta: ComponentMeta = {
     type: META.TYPES.ORGANISM
 }
 
-const _Notification: React.StatelessComponent<NotificationProps> &
-    Partial<Notification> &
-    Partial<MetaCategorizable> = (props) => {
+const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaCategorizable> = (props) => {
     const { as, className, children, type, ...rest } = props
 
     const ElementType = getElementType(as, "article")
@@ -69,4 +67,4 @@ _Notification._meta = _meta
 /**
  * The default Porsche notification message.
  */
-export const Notification = _Notification as Notification
+export const Notification = _Notification as React.StatelessComponent<NotificationProps>
