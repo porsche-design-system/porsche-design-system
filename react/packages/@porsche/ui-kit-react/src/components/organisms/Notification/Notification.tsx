@@ -3,7 +3,7 @@ import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType, prefix } from "../../../lib"
-import { Button } from "../../../index"
+import { Icon, ContentWrapper } from "../../../index"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface NotificationProps extends ClassNameProp, ComponentProp {
@@ -13,7 +13,20 @@ export interface NotificationProps extends ClassNameProp, ComponentProp {
      */
     type?: "common" | "cookie"
 
-    role?: "error"
+    /**
+     * Defines the state of the notification
+     */
+    state?: "error"
+
+    /**
+     * The title of the notification
+     */
+    title?: string
+
+    /**
+     * close the notification
+     */
+    onClose?: () => void
 }
 
 const defaultProps: Partial<NotificationProps> = {
@@ -30,26 +43,37 @@ const isCommonNotification = (type: string | undefined): boolean => {
 }
 
 const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaCategorizable> = (props) => {
-    const { as, className, children, type, role, ...rest } = props
+    const { as, className, title, children, type, state, onClose, ...rest } = props
 
     const ElementType = getElementType(as, "article")
 
     let notificationClasses
     let notificationItemClasses
+    let notificationTitleClasses
     let notificationTextClasses
 
     if (isCommonNotification(type)) {
-        notificationClasses = cx(prefix("notification-common"), className)
+        notificationClasses = cx(
+            prefix("notification-common"),
+            { [prefix("notification-common--error")]: state === "error" },
+            className
+        )
 
         notificationItemClasses = cx(
             prefix("notification-common__item"),
-            { [prefix("notification-common__item--error")]: role === "error" },
+            { [prefix("notification-common__item--error")]: state === "error" },
             className
         )
 
         notificationTextClasses = cx(
             prefix("notification-common__text"),
-            { [prefix("notification-common__text--error")]: role === "error" },
+            { [prefix("notification-common__text--error")]: state === "error" },
+            className
+        )
+
+        notificationTitleClasses = cx(
+            prefix("notification-common__title"),
+            { [prefix("notification-common__title--error")]: state === "error" },
             className
         )
     } else {
@@ -57,26 +81,58 @@ const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaC
 
         notificationItemClasses = cx(
             prefix("notification__item"),
-            { [prefix("notification__item--error")]: role === "error" },
+            { [prefix("notification__item--error")]: state === "error" },
             { [prefix("notification__item--cookie")]: type === "cookie" },
+            className
+        )
+
+        notificationTitleClasses = cx(
+            prefix("notification__title"),
+            { [prefix("notification__title--error")]: state === "error" },
             className
         )
 
         notificationTextClasses = cx(
             prefix("notification__text"),
-            { [prefix("notification__text--error")]: role === "error" },
+            { [prefix("notification__text--error")]: state === "error" },
             { [prefix("notification__text--cookie")]: type === "cookie" },
             className
         )
     }
 
+    const handleCloseClick = () => {
+        if (props.onClose) {
+            props.onClose()
+        }
+    }
+
     return (
-        <ElementType type={type} className={notificationClasses} {...rest}>
+        <ElementType className={notificationClasses} {...rest}>
             <div className={notificationItemClasses}>
-                <div className={prefix("notification__wrapper")}>
-                    <p className={notificationTextClasses}>{children}</p>
-                    <Button icon="bin" />
-                </div>
+                {type === "common" ? (
+                    <React.Fragment>
+                        <h6 className={notificationTitleClasses}>{title}</h6>
+                        <p className={notificationTextClasses}>{children}</p>
+                    </React.Fragment>
+                ) : (
+                    <ContentWrapper>
+                        <div className={prefix("notification__wrapper")}>
+                            {title && <h6 className={notificationTitleClasses}>{title}</h6>}
+                            <p className={notificationTextClasses}>{children}</p>
+                            <button
+                                type="button"
+                                onClick={handleCloseClick}
+                                className={cx(
+                                    prefix("notification__icon--close"),
+                                    prefix("icon-close"),
+                                    prefix("icon-close--notification")
+                                )}
+                            >
+                                <Icon name="cancel" />
+                            </button>
+                        </div>
+                    </ContentWrapper>
+                )}
             </div>
         </ElementType>
     )
