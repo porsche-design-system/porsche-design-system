@@ -11,7 +11,7 @@ const Types = () => (
             The common notification component
         </ComponentExample>
         <ComponentExample
-            title="Notification Common"
+            title="Notification Common with error state"
             examplePath="organisms/Notification/Types/NotificationExampleCommonError"
         >
             The common notification component with error state

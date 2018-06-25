@@ -47,7 +47,7 @@ describe("Notification component", () => {
             // Arrange
             const props: NotificationProps = {
                 type: "common",
-                state: "error"
+                error: true
             }
 
             // Act
