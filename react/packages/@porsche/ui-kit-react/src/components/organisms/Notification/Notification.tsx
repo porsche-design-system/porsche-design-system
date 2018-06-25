@@ -9,14 +9,13 @@ import { ClassNameProp, ComponentProp } from "../../../lib/props"
 export interface NotificationProps extends ClassNameProp, ComponentProp {
     /**
      * The display type of the notification.
-     * @default default
      */
     type?: "common" | "cookie"
 
     /**
-     * Defines the state of the notification
+     * A notifcation can have an error state.
      */
-    state?: "error"
+    error?: boolean
 
     /**
      * The title of the notification
@@ -24,7 +23,7 @@ export interface NotificationProps extends ClassNameProp, ComponentProp {
     title?: string
 
     /**
-     * close the notification
+     * Close the notification
      */
     onClick?: () => void
 }
@@ -38,12 +37,8 @@ const _meta: ComponentMeta = {
     type: META.TYPES.ORGANISM
 }
 
-const isCommonNotification = (type: string | undefined): boolean => {
-    return type === "common"
-}
-
 const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaCategorizable> = (props) => {
-    const { as, className, title, children, type, state, onClick, ...rest } = props
+    const { as, className, title, children, type, error, onClick, ...rest } = props
 
     const ElementType = getElementType(as, "article")
 
@@ -52,28 +47,28 @@ const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaC
     let notificationTitleClasses
     let notificationTextClasses
 
-    if (isCommonNotification(type)) {
+    if (type === "common") {
         notificationClasses = cx(
             prefix("notification-common"),
-            { [prefix("notification-common--error")]: state === "error" },
+            { [prefix("notification-common--error")]: error },
             className
         )
 
         notificationItemClasses = cx(
             prefix("notification-common__item"),
-            { [prefix("notification-common__item--error")]: state === "error" },
+            { [prefix("notification-common__item--error")]: error },
             className
         )
 
         notificationTextClasses = cx(
             prefix("notification-common__text"),
-            { [prefix("notification-common__text--error")]: state === "error" },
+            { [prefix("notification-common__text--error")]: error },
             className
         )
 
         notificationTitleClasses = cx(
             prefix("notification-common__title"),
-            { [prefix("notification-common__title--error")]: state === "error" },
+            { [prefix("notification-common__title--error")]: error },
             className
         )
     } else {
@@ -81,20 +76,20 @@ const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaC
 
         notificationItemClasses = cx(
             prefix("notification__item"),
-            { [prefix("notification__item--error")]: state === "error" },
+            { [prefix("notification__item--error")]: error },
             { [prefix("notification__item--cookie")]: type === "cookie" },
             className
         )
 
         notificationTitleClasses = cx(
             prefix("notification__title"),
-            { [prefix("notification__title--error")]: state === "error" },
+            { [prefix("notification__title--error")]: error },
             className
         )
 
         notificationTextClasses = cx(
             prefix("notification__text"),
-            { [prefix("notification__text--error")]: state === "error" },
+            { [prefix("notification__text--error")]: error },
             { [prefix("notification__text--cookie")]: type === "cookie" },
             className
         )
