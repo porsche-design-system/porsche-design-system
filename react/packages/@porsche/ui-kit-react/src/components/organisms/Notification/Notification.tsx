@@ -26,7 +26,7 @@ export interface NotificationProps extends ClassNameProp, ComponentProp {
     /**
      * close the notification
      */
-    onClose?: () => void
+    onClick?: () => void
 }
 
 const defaultProps: Partial<NotificationProps> = {
@@ -43,7 +43,7 @@ const isCommonNotification = (type: string | undefined): boolean => {
 }
 
 const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaCategorizable> = (props) => {
-    const { as, className, title, children, type, state, onClose, ...rest } = props
+    const { as, className, title, children, type, state, onClick, ...rest } = props
 
     const ElementType = getElementType(as, "article")
 
@@ -100,9 +100,9 @@ const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaC
         )
     }
 
-    const handleCloseClick = () => {
-        if (props.onClose) {
-            props.onClose()
+    const handleOnClick = () => {
+        if (props.onClick) {
+            props.onClick()
         }
     }
 
@@ -121,7 +121,7 @@ const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaC
                             <p className={notificationTextClasses}>{children}</p>
                             <button
                                 type="button"
-                                onClick={handleCloseClick}
+                                onClick={handleOnClick}
                                 className={cx(
                                     prefix("notification__icon--close"),
                                     prefix("icon-close"),
