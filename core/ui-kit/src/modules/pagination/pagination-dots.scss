@@ -51,19 +51,33 @@
   }
 
   &--dark {
-    @include -background-grey-8;
 
     #{$this}__dot {
       @include -background-grey-9;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &--active {
+        @include -background-red-1;
+      }
+
     }
 
   }
 
   &--image {
-    @include -background-grey-8;
 
     #{$this}__dot {
       @include -background-grey-4;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &--active {
+        @include -background-red-1;
+      }
+
     }
 
   }
