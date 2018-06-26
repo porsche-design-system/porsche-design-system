@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Updated navigation width to fit with latest design spec
 
 ### Bugfixes
-* Added cursor pointor for nba if no href is present
+* Added cursor pointer for next-best-actions if no href is present
 
 ## [0.5.0] - 2018-06-19
 ### Breaking changes
