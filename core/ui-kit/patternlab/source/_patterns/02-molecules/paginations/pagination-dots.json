@@ -1,4 +1,30 @@
 {
-  "pagination-dots_dots": [false, false, true, false, false, false],
+  "pagination-dots_dots": [
+  	{
+  		"active" : false,
+  		"altsize" : false
+  	},
+  	{
+  		"active" : true,
+  		"altsize" : false
+  	},
+  	{
+  		"active" : false,
+  		"altsize" : false
+  	},
+  	{
+  		"active" : false,
+  		"altsize" : "secondary"
+  	},
+  	{
+  		"active" : false,
+  		"altsize" : "tertiary"
+  	},
+  	{
+  		"active" : false,
+  		"altsize" : "tertiary"
+  	},
+  ]
+  ,
   "pagination-dots_hidden-s": false
 }

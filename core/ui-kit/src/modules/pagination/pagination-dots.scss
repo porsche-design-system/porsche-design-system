@@ -7,6 +7,7 @@
 .#{$global-class-prefix}pagination-dots {
   @include flex;
   @include flex--justify-content(center);
+  @include flex--align-items(center);
 
   &--hidden-s {
     @include breakpoint('s') {
@@ -27,6 +28,16 @@
     cursor: pointer;
 
     border-radius: $pagination-dots-dot-border-radius;
+
+    &--size-secondary {
+      width: $pagination-dots-dot-size-secondary;
+      height: $pagination-dots-dot-size-secondary;
+    }
+
+    &--size-tertiary {
+      width: $pagination-dots-dot-size-tertiary;
+      height: $pagination-dots-dot-size-tertiary;
+    }
 
     &--active {
       @include -background-red-1;
