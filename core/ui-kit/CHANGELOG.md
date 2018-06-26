@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 ### New features
-* Updated molecule pagination dots to reflect the latest layout specification
+* Updated molecule `pagination dots` to reflect the latest design specification
 
 ### Breaking changes
 * Molecule: Pagination dots

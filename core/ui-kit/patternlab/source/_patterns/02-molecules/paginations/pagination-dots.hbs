@@ -1,8 +1,13 @@
-<div class="pagination-dots
-  {{ styleModifier }}
-  {{#if pagination-dots_hidden-s}} pagination-dots--hidden-s {{/if}}">
+<div
+    class="pagination-dots
+    {{ styleModifier }}
+    {{#if pagination-dots_hidden-s}} pagination-dots--hidden-s {{/if}}"
+>
     {{#each pagination-dots_dots}}
-    <div class="pagination-dots__dot
-      {{#if this}} pagination-dots__dot--active {{/if}}"></div>
+    <div
+        class="pagination-dots__dot
+        {{#if active}} pagination-dots__dot--active {{/if}}
+        {{#if altsize}} pagination-dots__dot--size-{{altsize}} {{/if}}"
+    ></div>
     {{/each}}
 </div>
