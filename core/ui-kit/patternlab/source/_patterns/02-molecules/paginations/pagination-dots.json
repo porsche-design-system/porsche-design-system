@@ -26,5 +26,6 @@
   	},
   ]
   ,
-  "pagination-dots_hidden-s": false
+  "pagination-dots_hidden-s": false,
+  "pagination-dots_type" : false
 }
