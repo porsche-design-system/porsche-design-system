@@ -9,6 +9,8 @@
   @include flex--justify-content(center);
   @include flex--align-items(center);
 
+  $this: &;
+
   &--hidden-s {
     @include breakpoint('s') {
       display: none;
@@ -16,7 +18,7 @@
   }
 
   &__dot {
-    @include -background-grey-3;
+    @include -background-grey-2;
 
     display: block;
     width: $pagination-dots-dot-size-primary;
@@ -39,9 +41,31 @@
       height: $pagination-dots-dot-size-tertiary;
     }
 
+    &:hover,
+    &:focus,
+    &:active,
     &--active {
       @include -background-red-1;
     }
 
   }
+
+  &--dark {
+    @include -background-grey-8;
+
+    #{$this}__dot {
+      @include -background-grey-9;
+    }
+
+  }
+
+  &--image {
+    @include -background-grey-8;
+
+    #{$this}__dot {
+      @include -background-grey-4;
+    }
+
+  }
+
 }
