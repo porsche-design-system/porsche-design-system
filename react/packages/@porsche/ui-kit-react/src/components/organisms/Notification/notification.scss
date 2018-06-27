@@ -11,6 +11,8 @@
     }
 
     &__text--cookie {
+        max-width: none;
+
         @include breakpoint("xxs", "s") {
             padding-right: $spacing-48;
         }
