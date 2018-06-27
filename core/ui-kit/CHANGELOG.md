@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.5.2] - 2018-06-27
 ### Bugfixes
 * Fixed notification-button, so that label with multiple words don't get multiline
 
