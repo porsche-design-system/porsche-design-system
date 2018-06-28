@@ -2,7 +2,7 @@
   "bodyClass": "sg-wrapper-dark",
   "car-chooser_barTitle": "911 Carrera Cabriolet",
   "car-chooser_barVin": "BPOEES95Z13121105",
-  "car-chooser_columnCount": "",
+  "car-chooser_isMultiColumn": false,
   "car-chooser_open": false,
   "car-chooser_search": false,
 
