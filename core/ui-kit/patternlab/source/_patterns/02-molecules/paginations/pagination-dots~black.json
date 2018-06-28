@@ -11,13 +11,16 @@
       "typeBlack" : true
     },
     {
-      "typeBlack" : true
+      "typeBlack" : true,
+      "sizeSecondary" : true
     },
     {
-      "typeBlack" : true
+      "typeBlack" : true,
+      "sizeTertiary" : true,
     },
     {
-      "typeBlack" : true
+      "typeBlack" : true,
+      "sizeTertiary" : true,
     }
   ]
 }
