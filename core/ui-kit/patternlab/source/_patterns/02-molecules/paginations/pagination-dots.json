@@ -1,31 +1,38 @@
 {
   "pagination-dots_dots": [
-  	{
-  		"active" : false,
-  		"altsize" : false
-  	},
-  	{
-  		"active" : true,
-  		"altsize" : false
-  	},
-  	{
-  		"active" : false,
-  		"altsize" : false
-  	},
-  	{
-  		"active" : false,
-  		"altsize" : "secondary"
-  	},
-  	{
-  		"active" : false,
-  		"altsize" : "tertiary"
-  	},
-  	{
-  		"active" : false,
-  		"altsize" : "tertiary"
-  	},
+    {
+      "active" : false,
+      "sizeSecondary" : false,
+      "sizeTertiary" : false
+    },
+    {
+      "active" : true,
+      "sizeSecondary" : false,
+      "sizeTertiary" : false
+    },
+    {
+      "active" : false,
+      "sizeSecondary" : false,
+      "sizeTertiary" : false
+    },
+    {
+      "active" : false,
+      "sizeSecondary" : true,
+      "sizeTertiary" : false
+    },
+    {
+      "active" : false,
+      "sizeSecondary" : false,
+      "sizeTertiary" : true
+    },
+    {
+      "active" : false,
+      "sizeSecondary" : false,
+      "sizeTertiary" : true
+    },
   ]
   ,
   "pagination-dots_hidden-s": false,
-  "pagination-dots_type" : false
+  "pagination-dots_type-inverted" : false,
+  "pagination-dots_type-image" : false
 }

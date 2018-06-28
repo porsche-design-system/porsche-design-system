@@ -23,7 +23,6 @@
     display: block;
     width: $pagination-dots-dot-size-primary;
     height: $pagination-dots-dot-size-primary;
-    padding: $pagination-dots-dot-padding;
     margin: $pagination-dots-dot-margin;
 
     border-style: none;
@@ -50,7 +49,7 @@
 
   }
 
-  &--dark {
+  &--inverted {
 
     #{$this}__dot {
       @include -background-grey-9;
