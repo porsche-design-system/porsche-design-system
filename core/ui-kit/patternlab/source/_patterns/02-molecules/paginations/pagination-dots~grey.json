@@ -11,13 +11,16 @@
       "typeGrey" : true
     },
     {
-      "typeGrey" : true
+      "typeGrey" : true,
+      "sizeSecondary" : true
     },
     {
-      "typeGrey" : true
+      "typeGrey" : true,
+      "sizeTertiary" : true
     },
     {
-      "typeGrey" : true
+      "typeGrey" : true,
+      "sizeTertiary" : true
     }
   ]
 }

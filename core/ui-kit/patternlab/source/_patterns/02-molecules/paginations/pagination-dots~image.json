@@ -11,13 +11,16 @@
       "typeImage" : true
     },
     {
-      "typeImage" : true
+      "typeImage" : true,
+      "sizeSecondary" : true
     },
     {
-      "typeImage" : true
+      "typeImage" : true,
+      "sizeTertiary" : true
     },
     {
-      "typeImage" : true
+      "typeImage" : true,
+      "sizeTertiary" : true
     }
   ]
 }
