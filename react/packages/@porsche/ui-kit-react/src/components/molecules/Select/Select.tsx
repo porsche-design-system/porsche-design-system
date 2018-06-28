@@ -463,6 +463,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
                         ref={this.bindSelect}
                         onChange={this.handleSelectChange}
                     >
+                        {/* adding an empty <optgroup> is a fix for older IOS devices <= version 10.2 which had problems with multiselects */}
+                        <optgroup disabled hidden />
                         {!multi &&
                             clearable && (
                                 <option key={"–"} value={""}>

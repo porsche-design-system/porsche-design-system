@@ -10,10 +10,7 @@ import gulpReactDocgen from "../plugins/gulp-react-docgen"
 // ----------------------------------------
 
 function docgenBuild(cb) {
-    src([
-        path.resolve(__dirname, "../../../../../node_modules/@porsche/ui-kit-react/src/components/**/*.tsx"),
-        "!**/index.tsx"
-    ])
+    src([path.resolve(__dirname, "../../../ui-kit-react/src/components/**/*.tsx"), "!**/index.tsx"])
         // do not remove the function keyword
         // we need "this" scope here
         .pipe(
@@ -33,10 +30,7 @@ function docgenBuild(cb) {
 
 function docgenWatch(cb) {
     // rebuild doc info
-    watch(
-        path.resolve(__dirname, "../../../../../node_modules/@porsche/ui-kit-react/src/components/**/*.tsx"),
-        series(docgenBuild)
-    )
+    watch(path.resolve(__dirname, "../../../ui-kit-react/src/components/**/*.tsx"), series(docgenBuild))
 
     cb()
 }

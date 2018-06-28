@@ -47,7 +47,7 @@
         "xl: 1760"
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx"
   },
   "Divider": {
     "displayName": "Divider",
@@ -97,7 +97,7 @@
         "A very basic divider."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Divider/Divider.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Divider/Divider.tsx"
   },
   "Flex": {
     "displayName": "Flex",
@@ -218,7 +218,7 @@
         "A flex container component used to create flex box layouts."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx"
   },
   "FlexItem": {
     "displayName": "FlexItem",
@@ -275,7 +275,7 @@
         "A child of a flex container."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Flex/FlexItem.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/FlexItem.tsx"
   },
   "Icon": {
     "displayName": "Icon",
@@ -350,7 +350,7 @@
         "Display an Icon from the Porsche icon font at various sizes."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx"
   },
   "Logo": {
     "displayName": "Logo",
@@ -385,7 +385,7 @@
         "The famous and loved Porsche Logo, currently available in like one size."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Logo/Logo.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Logo/Logo.tsx"
   },
   "Scroll": {
     "displayName": "Scroll",
@@ -425,7 +425,7 @@
         "Use this component any time you want to provide a scrolling section for long content."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Scroll/Scroll.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Scroll/Scroll.tsx"
   },
   "Spacing": {
     "displayName": "Spacing",
@@ -666,7 +666,7 @@
         "If it has only one child, those classes are added directly to the child to avoid unnecessary wrapper divs."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx"
   },
   "Text": {
     "displayName": "Text",
@@ -699,9 +699,9 @@
         "tags": []
       },
       {
-        "defaultValue": "black",
+        "defaultValue": "inherit",
         "description": [
-          "The style of the color."
+          "The color of the text. By default, the component inherits the color of the surrounding element."
         ],
         "name": "color",
         "required": false,
@@ -753,7 +753,7 @@
         "Use this component any time you want to display plain text anywhere."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx"
   },
   "Button": {
     "displayName": "Button",
@@ -774,6 +774,15 @@
         "name": "as",
         "required": false,
         "type": "string | ComponentClass<{}>",
+        "tags": []
+      },
+      {
+        "description": [
+          "A button can have centered content (icon/text)."
+        ],
+        "name": "centered",
+        "required": false,
+        "type": "boolean",
         "tags": []
       },
       {
@@ -845,6 +854,21 @@
         ]
       },
       {
+        "defaultValue": "button",
+        "description": [
+          "Specifies the HTML Type of the button. If undefined, nothing is set."
+        ],
+        "name": "role",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"reset\"",
+          "\"button\"",
+          "\"submit\""
+        ]
+      },
+      {
         "description": [
           "Shows only the icon by default, and the button content starting from a specific breakpoint"
         ],
@@ -900,7 +924,7 @@
         "The default Porsche button."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx"
   },
   "ButtonGroup": {
     "displayName": "ButtonGroup",
@@ -930,7 +954,7 @@
         "A button group wrapper for the default button."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Button/ButtonGroup.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/ButtonGroup.tsx"
   },
   "Checkbox": {
     "displayName": "Checkbox",
@@ -1020,6 +1044,28 @@
       },
       {
         "description": [
+          "Called after a user's click."
+        ],
+        "name": "onClick",
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "React's original event.",
+            "type": null,
+            "name": "event"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "description": [
           "A checkbox can be read-only and unable to change states."
         ],
         "name": "readOnly",
@@ -1076,183 +1122,7 @@
         "A checkbox allows a user to select a binary value."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx"
-  },
-  "ButtonCircle": {
-    "displayName": "ButtonCircle",
-    "props": [
-      {
-        "defaultValue": "left",
-        "description": [
-          "Align \"left\" puts the icon first, align \"right\" puts the text first."
-        ],
-        "name": "align",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"left\"",
-          "\"right\""
-        ]
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Disables the button. No onClick will be triggered."
-        ],
-        "name": "disabled",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "The icon of the button."
-        ],
-        "name": "icon",
-        "required": true,
-        "type": "IconName",
-        "tags": []
-      },
-      {
-        "description": [
-          "Called after a user's click."
-        ],
-        "name": "onClick",
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "React's original event.",
-            "type": null,
-            "name": "event"
-          },
-          {
-            "title": "param",
-            "description": "All props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "description": [
-          "Shows only the icon by default, and the button content starting from a specific breakpoint"
-        ],
-        "name": "showContent",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"xs\"",
-          "\"s\"",
-          "\"m\"",
-          "\"l\"",
-          "\"xl\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Icon"
-        }
-      ],
-      "description": [
-        "Displays an icon inside a round outlined button. Text can optionally be displayed to the right or left of that button."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/ButtonCircle/ButtonCircle.tsx"
-  },
-  "ColorTile": {
-    "displayName": "ColorTile",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "The size of the color tile."
-        ],
-        "name": "circle",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The primary color of the tile."
-        ],
-        "name": "color",
-        "required": true,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The secondary color of the tile, displayed along the primary color."
-        ],
-        "name": "secondaryColor",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The size of the color tile."
-        ],
-        "name": "size",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"default\"",
-          "\"huge\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A tile that can display one or two colors as a rectangle or circle in various sizes.",
-        "Example usage: Display interior and exterior colors and color combinations."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/ColorTile/ColorTile.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx"
   },
   "Flyout": {
     "displayName": "Flyout",
@@ -1297,7 +1167,7 @@
         "Example usage: Container for the desktop navigation menus."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Flyout/Flyout.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Flyout/Flyout.tsx"
   },
   "Input": {
     "displayName": "Input",
@@ -1458,7 +1328,7 @@
         "An Input is a field used to elicit a textual response from a user."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx"
   },
   "Navigation": {
     "displayName": "Navigation",
@@ -1497,7 +1367,7 @@
         ""
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx"
   },
   "NavigationDesktop": {
     "displayName": "NavigationDesktop",
@@ -1537,7 +1407,7 @@
         "A navigation bar intended for larger screen sizes."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationDesktop.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationDesktop.tsx"
   },
   "NavigationMenuList": {
     "displayName": "NavigationMenuList",
@@ -1598,7 +1468,7 @@
         ""
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMenuList.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMenuList.tsx"
   },
   "NavigationMobile": {
     "displayName": "NavigationMobile",
@@ -1638,7 +1508,7 @@
         "A navigation bar intended for smaller screen sizes."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMobile.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMobile.tsx"
   },
   "Select": {
     "displayName": "Select",
@@ -1703,6 +1573,15 @@
       },
       {
         "description": [
+          "You can customize the filter behaviour of the select component by providing a custom function."
+        ],
+        "name": "filterOptions",
+        "required": false,
+        "type": "(option: SelectOption[] | SelectOptionGroup[], filter: string) => SelectOption[] | SelectOptionGr...",
+        "tags": []
+      },
+      {
+        "description": [
           "Allow multiple selections."
         ],
         "name": "multi",
@@ -1744,7 +1623,8 @@
       {
         "description": [
           "Called when the user changed the search value.",
-          "Note that the search value cannot be controlled directly, therefore the change is not a proposal."
+          "Note that the search value cannot be controlled directly, therefore the change is not a proposal.",
+          "Mobile behaviour is disabled if this value is set, since mobile doesn't allow for keyboard input."
         ],
         "name": "onSearchChanged",
         "required": false,
@@ -1816,7 +1696,7 @@
         "It switches between a custom, searchable dropdown on desktop browsers and a native selection on touch supported devices."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx"
   },
   "SelectArrowRenderer": {
     "displayName": "SelectArrowRenderer",
@@ -1827,7 +1707,7 @@
         ""
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Select/SelectArrowRenderer.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/SelectArrowRenderer.tsx"
   },
   "SelectClearRenderer": {
     "displayName": "SelectClearRenderer",
@@ -1838,299 +1718,7 @@
         ""
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Select/SelectClearRenderer.tsx"
-  },
-  "SortableList": {
-    "displayName": "SortableList",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Called when the user finishes sorting the list."
-        ],
-        "name": "onChange",
-        "required": true,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "The list items after the sort.",
-            "type": null,
-            "name": "value"
-          },
-          {
-            "title": "param",
-            "description": "All props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "description": [
-          "An array of sortable list items with a key and a label."
-        ],
-        "name": "value",
-        "required": true,
-        "type": "SortableListItem[]",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A list where you can sort items via drag and drop."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/SortableList/SortableList.tsx"
-  },
-  "SortableListContainer": {
-    "displayName": "SortableListContainer",
-    "props": [
-      {
-        "description": [
-          ""
-        ],
-        "name": "axis",
-        "required": false,
-        "type": "Axis",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "distance",
-        "required": false,
-        "type": "number",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "getContainer",
-        "required": false,
-        "type": "ContainerGetter",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "getHelperDimensions",
-        "required": false,
-        "type": "func",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "helperClass",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "hideSortableGhost",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "items",
-        "required": true,
-        "type": "SortableListItem[]",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "lockAxis",
-        "required": false,
-        "type": "Axis",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "lockOffset",
-        "required": false,
-        "type": "string | number | [ReactText, ReactText]",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "lockToContainerEdges",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "onSortEnd",
-        "required": false,
-        "type": "SortEndHandler",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "onSortMove",
-        "required": false,
-        "type": "SortMoveHandler",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "onSortStart",
-        "required": false,
-        "type": "SortStartHandler",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "pressDelay",
-        "required": false,
-        "type": "number",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "pressThreshold",
-        "required": false,
-        "type": "number",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "shouldCancelStart",
-        "required": false,
-        "type": "(event: MouseEvent<any> | TouchEvent<any> | (MouseEvent<any> & { target: { tagName: string; }; })...",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "transitionDuration",
-        "required": false,
-        "type": "number",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "useDragHandle",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "useWindowAsScrollContainer",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        ""
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/SortableList/SortableListContainer.tsx"
-  },
-  "SortableListElement": {
-    "displayName": "SortableListElement",
-    "props": [
-      {
-        "description": [
-          ""
-        ],
-        "name": "collection",
-        "required": false,
-        "type": "ReactText",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "disabled",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "index",
-        "required": true,
-        "type": "number",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "item",
-        "required": true,
-        "type": "SortableListItem",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        ""
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/SortableList/SortableListElement.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/SelectClearRenderer.tsx"
   },
   "Tab": {
     "displayName": "Tab",
@@ -2192,7 +1780,7 @@
         "The Tab component is a hidden section of content activated by a Menu."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx"
   },
   "TextArea": {
     "displayName": "TextArea",
@@ -2349,393 +1937,7 @@
         "A TextArea."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx"
-  },
-  "Table": {
-    "displayName": "Table",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A Table."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Table/Table.tsx"
-  },
-  "TableBody": {
-    "displayName": "TableBody",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A TableBody."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Table/TableBody.tsx"
-  },
-  "TableCell": {
-    "displayName": "TableCell",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "1",
-        "description": [
-          "The weight with which remaining space is distributed among the columns of a table.",
-          "This is based on \"flex-grow\".",
-          "A column with grow 2 will be distributed twice as much of the remainings space as a column with grow 1."
-        ],
-        "name": "grow",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "0",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11"
-        ]
-      },
-      {
-        "description": [
-          "Called after a user's click."
-        ],
-        "name": "onClick",
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "React's original event.",
-            "type": null,
-            "name": "event"
-          },
-          {
-            "title": "param",
-            "description": "The props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "defaultValue": "0",
-        "description": [
-          "The minimum width of the cell in pixels.",
-          "The value \"checkbox\" sets a width that is ideal for a single checkbox as content.",
-          "This is based on \"flex-basis\"."
-        ],
-        "name": "width",
-        "required": false,
-        "type": "number | \"checkbox\"",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A TableCell."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Table/TableCell.tsx"
-  },
-  "TableContextMenu": {
-    "displayName": "TableContextMenu",
-    "props": [
-      {
-        "description": [
-          ""
-        ],
-        "name": "items",
-        "required": true,
-        "type": "TableContextMenuItem[]",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        ""
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Table/TableContextMenu.tsx"
-  },
-  "TableContextMenuItem": {
-    "displayName": "TableContextMenuItemComponent",
-    "props": [
-      {
-        "description": [
-          ""
-        ],
-        "name": "item",
-        "required": true,
-        "type": "TableContextMenuItem",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        ""
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Table/TableContextMenuItem.tsx"
-  },
-  "TableHeader": {
-    "displayName": "TableHeader",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A TableHeader."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Table/TableHeader.tsx"
-  },
-  "TableHeaderCell": {
-    "displayName": "TableHeaderCell",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "1",
-        "description": [
-          "The weight with which remaining space is distributed among the columns of a table.",
-          "This is based on \"flex-grow\".",
-          "A column with grow 2 will be distributed twice as much of the remainings space as a column with grow 1."
-        ],
-        "name": "grow",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "0",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11"
-        ]
-      },
-      {
-        "description": [
-          "Called after a user's click."
-        ],
-        "name": "onClick",
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "React's original event.",
-            "type": null,
-            "name": "event"
-          },
-          {
-            "title": "param",
-            "description": "The props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "description": [
-          "Displays an arrow for ascending or descending order."
-        ],
-        "name": "sorted",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"ascending\"",
-          "\"descending\""
-        ]
-      },
-      {
-        "defaultValue": "0",
-        "description": [
-          "The minimum width of the cell in pixels.",
-          "The value \"checkbox\" sets a width that is ideal for a single checkbox as content.",
-          "This is based on \"flex-basis\"."
-        ],
-        "name": "width",
-        "required": false,
-        "type": "number | \"checkbox\"",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A TableHeaderCell."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Table/TableHeaderCell.tsx"
-  },
-  "TableRow": {
-    "displayName": "TableRow",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Adds a context menu to the end of the row for further actions."
-        ],
-        "name": "contextMenuItems",
-        "required": false,
-        "type": "TableContextMenuItem[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "Called after a user's click."
-        ],
-        "name": "onClick",
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "React's original event.",
-            "type": null,
-            "name": "event"
-          },
-          {
-            "title": "param",
-            "description": "The props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A TableRow."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/molecules/Table/TableRow.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx"
   },
   "Header": {
     "displayName": "Header",
@@ -2792,18 +1994,52 @@
         "The page header with logo and navigation bar"
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx"
   },
-  "ContentStructureScreen": {
-    "displayName": "ContentStructureScreen",
-    "props": [],
+  "Notification": {
+    "displayName": "Notification",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "default",
+        "description": [
+          "The display type of the notification."
+        ],
+        "name": "type",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"default\"",
+          "\"error\"",
+          "\"cookie\""
+        ]
+      }
+    ],
     "docBlock": {
       "tags": [],
       "description": [
-        ""
+        "The default Porsche notification message."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/screens/ContentStructureScreen/ContentStructureScreen.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Notification/Notification.tsx"
   },
   "ErrorScreen": {
     "displayName": "ErrorScreen",
@@ -2833,7 +2069,7 @@
         "A generic error screen with a title and a text."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx"
   },
   "MaintenanceScreen": {
     "displayName": "MaintenanceScreen",
@@ -2863,44 +2099,7 @@
         "A generic maintenance screen with a title and a text."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx"
-  },
-  "AreaWrapper": {
-    "displayName": "AreaWrapper",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"header\"",
-          "\"footer\"",
-          "\"main\"",
-          "\"aside\""
-        ]
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "This component is a direct child of \"PageWrapper\" component and defines basic content sections like header, footer, main, etc.",
-        "Direct children of this component may only exist of \"ThemeWrapper\" components."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/structures/AreaWrapper/AreaWrapper.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx"
   },
   "ContentWrapper": {
     "displayName": "ContentWrapper",
@@ -2942,82 +2141,6 @@
         "Direct children of this component may only exist of organisms and molecules."
       ]
     },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/structures/ContentWrapper/ContentWrapper.tsx"
-  },
-  "PageWrapper": {
-    "displayName": "PageWrapper",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "This component must be used as a wrapper of a complete page/view. Direct children may only exist of \"AreaWrapper\" components."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/structures/PageWrapper/PageWrapper.tsx"
-  },
-  "ThemeWrapper": {
-    "displayName": "ThemeWrapper",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "light",
-        "description": [
-          "The type of the wrapper."
-        ],
-        "name": "theme",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"light\"",
-          "\"dark\"",
-          "\"transparent\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "This component is a direct child of \"AreaWrapper\" component and adds basic background themings to visually define larger content sections.",
-        "Direct children of this component may only exist of \"ContentWrapper\" components."
-      ]
-    },
-    "path": "/Users/christophalbert/Dev/porsche-finder/finder-web/node_modules/@porsche/ui-kit-react/src/components/structures/ThemeWrapper/ThemeWrapper.tsx"
+    "path": "/Users/christophalbert/Dev/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/structures/ContentWrapper/ContentWrapper.tsx"
   }
 }
