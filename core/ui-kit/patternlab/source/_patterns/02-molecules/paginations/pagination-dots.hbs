@@ -1,16 +1,17 @@
 <div
     class="pagination-dots
     {{ styleModifier }}
-    {{#if pagination-dots_type-inverted}} pagination-dots--inverted {{/if}}
-    {{#if pagination-dots_type-image}} pagination-dots--image {{/if}}
     {{#if pagination-dots_hidden-s}} pagination-dots--hidden-s {{/if}}"
 >
     {{#each pagination-dots_dots}}
     <div
         class="pagination-dots__dot
-        {{#if active}} pagination-dots__dot--active {{/if}}
+        {{#if typeGrey}} pagination-dots__dot--type-grey {{/if}}
+        {{#if typeBlack}} pagination-dots__dot--type-black {{/if}}
+        {{#if typeImage}} pagination-dots__dot--type-image {{/if}}
         {{#if sizeSecondary}} pagination-dots__dot--size-secondary {{/if}}
-        {{#if sizeTertiary}} pagination-dots__dot--size-tertiary {{/if}}"
+        {{#if sizeTertiary}} pagination-dots__dot--size-tertiary {{/if}}
+        {{#if active}} pagination-dots__dot--active {{/if}}"
     ></div>
     {{/each}}
 </div>

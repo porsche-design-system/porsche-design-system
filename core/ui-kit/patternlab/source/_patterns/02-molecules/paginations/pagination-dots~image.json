@@ -1,3 +1,23 @@
 {
-  "pagination-dots_type-image" : true
+  "pagination-dots_dots": [
+    {
+      "typeImage" : true
+    },
+    {
+      "active" : true,
+      "typeImage" : true
+    },
+    {
+      "typeImage" : true
+    },
+    {
+      "typeImage" : true
+    },
+    {
+      "typeImage" : true
+    },
+    {
+      "typeImage" : true
+    }
+  ]
 }
