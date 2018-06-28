@@ -3,36 +3,52 @@
     {
       "active" : false,
       "sizeSecondary" : false,
-      "sizeTertiary" : false
+      "sizeTertiary" : false,
+      "typeGrey" : false,
+      "typeBlack" : false,
+      "typeImage" : false
     },
     {
       "active" : true,
       "sizeSecondary" : false,
-      "sizeTertiary" : false
+      "sizeTertiary" : false,
+      "typeGrey" : false,
+      "typeBlack" : false,
+      "typeImage" : false
     },
     {
       "active" : false,
       "sizeSecondary" : false,
-      "sizeTertiary" : false
+      "sizeTertiary" : false,
+      "typeGrey" : false,
+      "typeBlack" : false,
+      "typeImage" : false
     },
     {
       "active" : false,
       "sizeSecondary" : true,
-      "sizeTertiary" : false
+      "sizeTertiary" : false,
+      "typeGrey" : false,
+      "typeBlack" : false,
+      "typeImage" : false
     },
     {
       "active" : false,
       "sizeSecondary" : false,
-      "sizeTertiary" : true
+      "sizeTertiary" : true,
+      "typeGrey" : false,
+      "typeBlack" : false,
+      "typeImage" : false
     },
     {
       "active" : false,
       "sizeSecondary" : false,
-      "sizeTertiary" : true
+      "sizeTertiary" : true,
+      "typeGrey" : false,
+      "typeBlack" : false,
+      "typeImage" : false
     },
   ]
   ,
-  "pagination-dots_hidden-s": false,
-  "pagination-dots_type-inverted" : false,
-  "pagination-dots_type-image" : false
+  "pagination-dots_hidden-s": false
 }
