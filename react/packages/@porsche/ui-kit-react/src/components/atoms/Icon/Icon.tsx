@@ -239,6 +239,8 @@ export type ColorType =
     | "blue-1"
     | "blue-2"
 
+export type IconSize = "small" | "regular" | "medium" | "large" | "huge"
+
 export interface Icon extends React.StatelessComponent<IconProps> {
     names: IconName[]
 }
@@ -251,7 +253,7 @@ export interface IconProps extends ClassNameProp, ComponentProp {
      * The size of the icon.
      * @default regular
      */
-    size?: "small" | "regular" | "medium" | "large" | "huge"
+    size?: IconSize
 
     /**
      * The style of the color.
