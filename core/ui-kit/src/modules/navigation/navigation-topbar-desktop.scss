@@ -2,6 +2,8 @@
 @import '../../base/grid/flex.mixin.scss';
 @import '../../setup/global-variables.scss';
 @import 'navigation-topbar-desktop.setup.scss';
+@import '../../base/wrapper/wrapper.mixin.scss';
+
 
 .#{$global-class-prefix}navigation-topbar-desktop {
   position: relative;
@@ -14,17 +16,9 @@
   }
 
   &__limiter {
+    @include -wrapper-page;
     position: relative;
-    box-sizing: content-box;
-    margin: 0 $navigation-topbar-desktop-limiter-margin-horizontal;
-    padding: 0 $navigation-topbar-desktop-limiter-padding-horizontal;
     height: $navigation-topbar-desktop-height;
-    width: $navigation-topbar-desktop-limiter-width;
-    max-width: $navigation-topbar-desktop-limiter-max-width;
-
-    @media (min-width: $navigation-topbar-desktop-limiter-breakpoint) {
-      padding-left: $navigation-topbar-desktop-limiter-padding-left-m;
-    }
   }
 
   &__left {
