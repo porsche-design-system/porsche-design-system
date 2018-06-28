@@ -26,6 +26,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Organism: Car selector / chooser
   * Updated car selector sass setup `car-selector.setup.scss` to the latest pagination dots variables
 
+## [0.5.2] - 2018-06-27
+### Bugfixes
+* Fixed notification-button, so that label with multiple words don't get multiline
+
+## [0.5.1] - 2018-06-26
+### Improvements
+* Updated navigation width to fit with latest design spec
+
+### Bugfixes
+* Added cursor pointer for next-best-actions if no href is present
+
 ## [0.5.0] - 2018-06-19
 ### Breaking changes
 Removed deprecated `column` and `row` classes used for "Grid Float", please have a look at migration path mentioned in version 0.2.0
