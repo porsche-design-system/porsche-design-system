@@ -81,6 +81,7 @@
 
   &__button {
     @include -spacing-18;
+    @include flex--shrink(0);
     width: $notification-button-width;
 
     @include breakpoint('xs') {

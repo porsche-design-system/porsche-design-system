@@ -1,5 +1,5 @@
 {
-  "bodyClass": "sg-wrapper-dark",
+  "bodyClass": "sg-wrapper-light",
   "notification_sticky": false,
   "notifications_default": [
     {
@@ -68,6 +68,17 @@
       "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
       "button": true,
       "buttonLabel": "OK",
+      "buttonIcon": "arrow-right-thin",
+      "buttonIndent": true,
+      "error": true
+    }
+  ],
+  "notifications_edgeCases": [
+    {
+      "icon": "exclamation-mark",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+      "button": true,
+      "buttonLabel": "Should not break into a new line",
       "buttonIcon": "arrow-right-thin",
       "buttonIndent": true,
       "error": true

@@ -1,0 +1,33 @@
+@import "../../../common";
+
+.#{$global-class-prefix}logo {
+    display: block;
+    padding: 12px 0;
+    background: $white;
+    box-shadow: 0 0 0.4375rem rgba(0, 0, 0, 0.15);
+    position: absolute;
+    height: 80px;
+    top: auto;
+    left: 0.375rem;
+    z-index: 2;
+
+    @include breakpoint("s") {
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        padding: 0 8px;
+        margin-top: 12px;
+        margin-bottom: -16px;
+    }
+}
+
+.#{$global-class-prefix}logo__image {
+    padding: 8px;
+    width: 102px;
+    height: auto;
+
+    @include breakpoint("s") {
+        padding: 12px;
+        width: 124px;
+    }
+}
