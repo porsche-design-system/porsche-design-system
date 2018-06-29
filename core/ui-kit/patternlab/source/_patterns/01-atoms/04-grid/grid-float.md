@@ -3,7 +3,7 @@ title: Grid Float
 state: complete
 ---
 
-# UI Kit Core grid manual (wip)
+# UI Kit Core grid manual
 
 ## Float grid
 
@@ -36,8 +36,8 @@ To define responsive (breakpoint based) columns, you can use the following modif
 
 ```
 <div class="row">
-	<div class="column column--12 column--6-m">Usually I'm using 12 cols, but from M and above it's only 6</div>
-	<div class="column column--12 column--6-m">I'll do the same</div>
+	<div class="column column--12 column--6-m column--4-l">Usually I'm using 12 cols, but at M it's 6 and L only 4</div>
+	<div class="column column--12 column--6-m column--8-l">I use 6 cols at M and 8 cols at L and above</div>
 </div>
 ```
 
