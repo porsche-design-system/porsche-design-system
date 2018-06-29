@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Improvements
+* Updated float grid documentation and examples
+
 ## [0.5.2] - 2018-06-27
 ### Bugfixes
 * Fixed notification-button, so that label with multiple words don't get multiline
