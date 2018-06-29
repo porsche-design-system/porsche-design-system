@@ -1,0 +1,112 @@
+{
+    "name": "@porsche/ui-kit-react",
+    "scope": "@porsche",
+    "version": "0.1.14",
+    "description": "The Porsche UI Kit Implementation for React.",
+    "main": "dist/commonjs/index.js",
+    "module": "dist/es/index.js",
+    "jsnext:main": "dist/es/index.js",
+    "typings": "dist/typings/index",
+    "sideEffects": false,
+    "files": [
+        "dist",
+        "src",
+        "css"
+    ],
+    "repository": {
+        "type": "git"
+    },
+    "author": "Dr. Ing. h.c. F. Porsche AG",
+    "contributors": [
+        "Christoph Albert <christoph.albert@mhp.com>",
+        "Oliver Hook <oliver.hook@mhp.com>",
+        "Christian Senk <christian.Senk@mhp.com>",
+        "Mario Ulmer <mario.ulmer@mhp.com>"
+    ],
+    "jest": {
+        "testEnvironment": "enzyme",
+        "testEnvironmentOptions": {
+            "enzymeAdapter": "react16"
+        },
+        "setupTestFrameworkScriptFile": "./../../../node_modules/jest-enzyme/lib/index.js",
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(tsx?)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ],
+        "moduleNameMapper": {
+            "^.*\\.scss$": "<rootDir>/src/test-helper/SCSSStub.js"
+        },
+        "testResultsProcessor": "jest-bamboo-formatter"
+    },
+    "scripts": {
+        "start": "yarn run watch",
+        "prebuild": "rimraf ./.tmp && rimraf ./dist && rimraf ./css",
+        "build": "yarn run build:es && yarn run build:commonjs && yarn run build:sass && yarn run build:css",
+        "prewatch": "yarn run build",
+        "watch": "yarn run watch:es | yarn run watch:commonjs | yarn run watch:sass | yarn run watch:css",
+        "build:es": "tsc --project ./ --outDir ./dist/es --declaration true --declarationDir ./dist/typings",
+        "watch:es": "yarn run build:es --watch",
+        "build:commonjs": "tsc --project ./ --outDir ./dist/commonjs --module commonjs",
+        "watch:commonjs": "yarn run build:commonjs --watch",
+        "build:sass": "node-sass-chokidar --source-map true ./src --output .tmp/css",
+        "postbuild:sass": "cpx \"../../../node_modules/@porsche/ui-kit-core//src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./src/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
+        "watch:sass": "yarn run build:sass && yarn run build:sass --watch",
+        "build:css": "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
+        "watch:css": "yarn run build:css && yarn run build:css --watch",
+        "lint:ts": "tslint --project '.' --format codeFrame",
+        "lint:ts:fix": "yarn run lint:ts --fix",
+        "lint:sass": "stylelint '**/*.scss'",
+        "lint:sass:fix": "yarn run lint:sass --fix",
+        "test": "jest",
+        "publish:artifactory": "yarn run test && yarn run build && yarn publish"
+    },
+    "dependencies": {
+        "@porsche/ui-kit-core": "0.4.5",
+        "classnames": "^2.2.5",
+        "lodash": "^4.17.4",
+        "react-responsive": "^3.0.0",
+        "react-sortable-hoc": "^0.6.8",
+        "tslib": "^1.9.0"
+    },
+    "devDependencies": {
+        "@types/enzyme": "^3.1.9",
+        "@types/jest": "^22.2.0",
+        "@types/lodash": "^4.14.85",
+        "@types/node": "^8.0.47",
+        "@types/react": "^16.1.0",
+        "@types/react-responsive": "^3.0.0",
+        "@types/react-sortable-hoc": "^0.6.0",
+        "autoprefixer": "^8.1.0",
+        "cpx": "^1.5.0",
+        "cross-env": "^5.0.5",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
+        "jest": "^22.4.2",
+        "jest-bamboo-formatter": "^1.0.1",
+        "jest-environment-enzyme": "^5.0.3",
+        "jest-enzyme": "^5.0.3",
+        "node-sass-chokidar": "0.0.3",
+        "postcss": "^6.0.19",
+        "postcss-cli": "^5.0.0",
+        "react": "^16.1.0",
+        "react-dom": "^16.2.0",
+        "rimraf": "^2.6.1",
+        "stylelint": "^8.4.0",
+        "stylelint-config-standard": "^18.0.0",
+        "stylelint-scss": "^2.3.0",
+        "ts-jest": "^22.4.2",
+        "typescript": "~2.8.3"
+    },
+    "peerDependencies": {
+        "react": ">=0.14.0 <= 16",
+        "react-dom": ">=0.14.0 <= 16"
+    },
+    "publishConfig": {
+        "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/"
+    }
+}

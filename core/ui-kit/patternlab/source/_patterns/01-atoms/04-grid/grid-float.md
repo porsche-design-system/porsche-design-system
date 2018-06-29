@@ -1,6 +1,6 @@
 ---
 title: Grid Float
-state: inprogress
+state: complete
 ---
 
 # UI Kit Core grid manual (wip)

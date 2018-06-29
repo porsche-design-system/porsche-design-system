@@ -1,41 +1,22 @@
-<div class="-background-grey-9-1 -spacing-inner-a">
-  <h2 class="-text-size-3-thin -text-color-white">Notifications</h2>
-  <div class="row">
-    <div class="column column--12 -spacing-30">
-      <h4 class="-text-size-5-thin -text-color-white">Default Notification</h4>
+<h2 class="-text-size-3-thin -text-color-black">Notifications</h2>
 
-      {{> organisms-notification styleModifier="-spacing-12" notification=notifications_default }}
+<h4 class="-text-size-5-thin -text-color-black -spacing-30">Default Notification</h4>
+{{> organisms-notification styleModifier="-spacing-12" notification=notifications_default }}
 
-    </div>
-    <div class="column column--12 -spacing-30">
-      <h4 class="-text-size-5-thin -text-color-white">Default Notification with Confirm Button</h4>
+<h4 class="-text-size-5-thin -text-color-black -spacing-30">Default Notification with Confirm Button</h4>
+{{> organisms-notification styleModifier="-spacing-12" notification=notifications_defaultWithConfirmButton }}
 
-      {{> organisms-notification styleModifier="-spacing-12" notification=notifications_defaultWithConfirmButton }}
+<h4 class="-text-size-5-thin -text-color-black -spacing-30">Error Notification</h4>
+{{> organisms-notification styleModifier="-spacing-12" notification=notifications_error }}
 
-    </div>
-    <div class="column column--12 -spacing-30">
-      <h4 class="-text-size-5-thin -text-color-white">Error Notification</h4>
+<h4 class="-text-size-5-thin -text-color-black -spacing-30">Offline Banner Notification</h4>
+{{> organisms-notification styleModifier="-spacing-12" notification=notifications_offlineBanner }}
 
-      {{> organisms-notification styleModifier="-spacing-12" notification=notifications_error }}
+<h4 class="-text-size-5-thin -text-color-black -spacing-30">Cookie Notification</h4>
+{{> organisms-notification styleModifier="-spacing-12" notification=notifications_cookie }}
 
-    </div>
-    <div class="column column--12 -spacing-30">
-      <h4 class="-text-size-5-thin -text-color-white">Offline Banner Notification</h4>
+<h4 class="-text-size-5-thin -text-color-black -spacing-30">Multiple Notifications</h4>
+{{> organisms-notification styleModifier="-spacing-12" notification=notifications_multiple }}
 
-      {{> organisms-notification styleModifier="-spacing-12" notification=notifications_offlineBanner }}
-
-    </div>
-    <div class="column column--12 -spacing-30">
-      <h4 class="-text-size-5-thin -text-color-white">Cookie Notification</h4>
-
-      {{> organisms-notification styleModifier="-spacing-12" notification=notifications_cookie }}
-
-    </div>
-    <div class="column column--12 -spacing-30">
-      <h4 class="-text-size-5-thin -text-color-white">Multiple Notifications</h4>
-
-      {{> organisms-notification styleModifier="-spacing-12" notification=notifications_multiple }}
-
-    </div>
-  </div>
-</div>
+<h4 class="-text-size-5-thin -text-color-black -spacing-30">Edge Case Tests</h4>
+{{> organisms-notification styleModifier="-spacing-12" notification=notifications_edgeCases }}
