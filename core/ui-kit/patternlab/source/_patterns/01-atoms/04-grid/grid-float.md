@@ -15,9 +15,10 @@ The most basic markup contains one row and one column:
 
 ```
 <div class="row">
-	<div class="column column-auto">One column</div>
+	<div class="column column--auto">One column</div>
 </div>
 ```
+*Note: you don't explicitly need to use the class `column--auto`, as it is the default.*
 
 To have rows with multiple columns (up to 12), you need to define the colum size using these the column classes:
 
@@ -66,9 +67,19 @@ column--direction-normal
 </div>
 ```
 
+There are responsive direction modifier classes, too:
+
+```
+column--(direction-type)-xs
+column--(direction-type)-s
+column--(direction-type)-m
+column--(direction-type)-l
+column--(direction-type)-xl
+```
+
 ### Gap classes
 
-### Normal (default)
+#### Normal (default)
 ```
 column--gap-normal
 ```
@@ -82,4 +93,12 @@ column--gap-small
 ```
 column--gap-zero
 ```
+You can use the following responsive gap modifier classes:
 
+```
+column--(gap-type)-xs
+column--(gap-type)-s
+column--(gap-type)-m
+column--(gap-type)-l
+column--(gap-type)-xl
+```
