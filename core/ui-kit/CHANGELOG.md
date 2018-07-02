@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Improvements
 * Updated float grid documentation and examples
+* Minor update to flex grid documentation
 
 ## [0.5.2] - 2018-06-27
 ### Bugfixes
