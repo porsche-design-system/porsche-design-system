@@ -79,6 +79,8 @@ column--(direction-type)-xl
 
 ### Gap classes
 
+*Note: in order to use the gap classes on columns, you need to have the same gap modifier on the row as well.*
+
 #### Normal (default)
 ```
 column--gap-normal
@@ -86,12 +88,18 @@ column--gap-normal
 
 #### Small
 ```
-column--gap-small
+<div class="row row--gap-small">
+	<div class="column column--8 column--gap-small">Our gap is smaller than the default one</div>
+	<div class="column column--4 column--gap-small">Count me in</div>
+</div>
 ```
 
 #### Zero (none)
 ```
-column--gap-zero
+<div class="row row--gap-zero">
+	<div class="column column--8 column--gap-zero">I have no gap at all</div>
+	<div class="column column--4 column--gap-zero">Me neither</div>
+</div>
 ```
 You can use the following responsive gap modifier classes:
 
@@ -101,4 +109,14 @@ column--(gap-type)-s
 column--(gap-type)-m
 column--(gap-type)-l
 column--(gap-type)-xl
+```
+
+And for the rows, accordingly:
+
+```
+row--(gap-type)-xs
+row--(gap-type)-s
+row--(gap-type)-m
+row--(gap-type)-l
+row--(gap-type)-xl
 ```
