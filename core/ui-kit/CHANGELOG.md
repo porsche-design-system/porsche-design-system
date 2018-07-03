@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2018-07-03
 ### New features
 * Updated molecule `pagination dots` to reflect the latest design specification
 
