@@ -1,17 +1,3 @@
 {
-  "bodyClass": "sg-wrapper-light",
-  "modal-base_gridColumns": [
-    {
-      "breakpoint": "xs",
-      "columnSize": "10"
-    },
-    {
-      "breakpoint": "s",
-      "columnSize": "8"
-    },
-    {
-      "breakpoint": "m",
-      "columnSize": "6"
-    }
-  ]
+  "bodyClass": "sg-wrapper-light"
 }
