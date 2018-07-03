@@ -1,11 +1,11 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
+import { ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, prefix, getElementType } from "../../../lib"
+import { Flex, Divider, Flyout, Text, Spacing } from "../../.."
 
-import { Flex, Divider, Flyout, Text, Spacing } from "../../../index"
-import { NavigationSection, NavigationProps } from "./Navigation"
+import { NavigationProps, NavigationSection } from "./Navigation"
 
 const _meta: ComponentMeta = {
     name: "NavigationDesktop",
@@ -52,9 +52,7 @@ export class NavigationDesktop extends React.PureComponent<NavigationProps, Navi
                     onTouchStart={() => this.onSectionHovered(section.key)}
                     onFocus={() => this.onSectionHovered(section.key)}
                     onTouchEnd={this.onSectionUnhovered}
-                    className={cx(prefix("nav__item-link"), {
-                        [prefix("nav__item-link--active")]: this.state.isActive
-                    })}
+                    className={cx(prefix("nav__item-link"))}
                     {...section.props}
                 >
                     {this.renderLabel(section.label, section.counter)}
