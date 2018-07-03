@@ -2,6 +2,8 @@
 @import '../../base/spacing/spacing.setup.scss';
 
 $pagination-dots-dot-border-radius: 100% !default;
-$pagination-dots-dot-button-padding: 0 !default;
-$pagination-dots-dot-button-margin: 0 $spacing-6 !default;
-$pagination-dots-dot-button-dimension: rem(8px) !default;
+$pagination-dots-dot-margin: 0 $spacing-6 !default;
+
+$pagination-dots-dot-size-primary: rem(10px) !default;
+$pagination-dots-dot-size-secondary: rem(8px) !default;
+$pagination-dots-dot-size-tertiary: rem(6px) !default;
