@@ -107,13 +107,13 @@ const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaC
                 {type === "common" ? (
                     <React.Fragment>
                         <h6 className={notificationTitleClasses}>{title}</h6>
-                        <p className={notificationTextClasses}>{children}</p>
+                        <div className={notificationTextClasses}>{children}</div>
                     </React.Fragment>
                 ) : (
                     <ContentWrapper>
                         <div className={prefix("notification__wrapper")}>
                             {title && <h6 className={notificationTitleClasses}>{title}</h6>}
-                            <p className={notificationTextClasses}>{children}</p>
+                            <div className={notificationTextClasses}>{children}</div>
                             <button
                                 type="button"
                                 onClick={handleOnClick}
