@@ -5,14 +5,17 @@
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}pagination-dots {
-  @include flex;
-  @include flex--justify-content(center);
-  @include flex--align-items(center);
 
   &--hidden-s {
     @include breakpoint('s') {
       display: none;
     }
+  }
+
+  &__list {
+    @include flex;
+    @include flex--justify-content(center);
+    @include flex--align-items(center);
   }
 
   &__dot {

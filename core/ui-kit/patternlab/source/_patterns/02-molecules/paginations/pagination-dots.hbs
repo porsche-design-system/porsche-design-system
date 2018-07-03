@@ -5,15 +5,16 @@
 >
     <ul class="pagination-dots__list">
         {{#each pagination-dots_dots}}
-        <li
-            class="pagination-dots__item
+        <li class="pagination-dots__item">
+            <button class="pagination-dots__dot
             {{#if typeGrey}} pagination-dots__dot--type-grey {{/if}}
             {{#if typeBlack}} pagination-dots__dot--type-black {{/if}}
             {{#if typeImage}} pagination-dots__dot--type-image {{/if}}
             {{#if sizeSecondary}} pagination-dots__dot--size-secondary {{/if}}
             {{#if sizeTertiary}} pagination-dots__dot--size-tertiary {{/if}}
-            {{#if active}} pagination-dots__dot--active {{/if}}"
-        ></li>
+            {{#if active}} pagination-dots__dot--active {{/if}}
+            "></button>
+        </li>
         {{/each}}
     </ul>
 </nav>
