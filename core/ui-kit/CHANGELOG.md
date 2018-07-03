@@ -26,6 +26,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Organism: Car selector / chooser
   * Updated car selector sass setup `car-selector.setup.scss` to the latest pagination dots variables
 
+## [0.5.3] - 2018-07-03
+### Bugfixes
+* Fixed forgotten column-classes of demo templates for breaking change of 0.2.0
+
+### Improvements
+* Updated float grid documentation and examples
+* Minor update to flex grid documentation
+
 ## [0.5.2] - 2018-06-27
 ### Bugfixes
 * Fixed notification-button, so that label with multiple words don't get multiline
