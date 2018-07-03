@@ -27,10 +27,8 @@
             height: 4px;
             background-color: $color-palette-red-1;
             opacity: 0;
-            left: 50%;
-            right: 50%;
-            will-change: transition;
-            transition: opacity 0.2s ease-out, left 0.2s ease-out, right 0.2s ease-out;
+            left: $spacing-12;
+            right: $spacing-12;
         }
 
         &:hover,
@@ -41,8 +39,6 @@
 
         &--active::after {
             opacity: 1;
-            left: $spacing-12;
-            right: $spacing-12;
         }
     }
 
