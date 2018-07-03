@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Bugfixes
 * Fixed forgotten column-classes of demo templates for breaking change of 0.2.0
 
+### Improvements
+* Updated float grid documentation and examples
+* Minor update to flex grid documentation
+
 ## [0.5.2] - 2018-06-27
 ### Bugfixes
 * Fixed notification-button, so that label with multiple words don't get multiline
