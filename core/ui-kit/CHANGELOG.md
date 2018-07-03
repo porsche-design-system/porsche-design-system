@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.5.3] - 2018-07-03
 ### Bugfixes
 * Fixed forgotten column-classes of demo templates for breaking change of 0.2.0
 
