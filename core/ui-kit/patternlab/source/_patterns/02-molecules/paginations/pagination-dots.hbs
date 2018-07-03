@@ -1,9 +1,20 @@
-<div class="pagination-dots
-  {{ styleModifier }}
-  {{#if pagination-dots_hidden-s}} pagination-dots--hidden-s {{/if}}">
-    {{#each pagination-dots_dots}}
-    <div class="pagination-dots__dot
-      {{#if ../pagination-dots_dotsRound}} pagination-dots__dot--round {{/if}}
-      {{#if this}} pagination-dots__dot--active {{/if}}"></div>
-    {{/each}}
-</div>
+<nav role="navigation" 
+    class="pagination-dots
+    {{ styleModifier }}
+    {{#if pagination-dots_hidden-s}} pagination-dots--hidden-s {{/if}}"
+>
+    <ul class="pagination-dots__list">
+        {{#each pagination-dots_dots}}
+        <li class="pagination-dots__item">
+            <button class="pagination-dots__dot
+            {{#if typeGrey}} pagination-dots__dot--type-grey {{/if}}
+            {{#if typeBlack}} pagination-dots__dot--type-black {{/if}}
+            {{#if typeImage}} pagination-dots__dot--type-image {{/if}}
+            {{#if sizeSecondary}} pagination-dots__dot--size-secondary {{/if}}
+            {{#if sizeTertiary}} pagination-dots__dot--size-tertiary {{/if}}
+            {{#if active}} pagination-dots__dot--active {{/if}}
+            "></button>
+        </li>
+        {{/each}}
+    </ul>
+</nav>

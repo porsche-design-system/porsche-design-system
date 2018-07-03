@@ -5,8 +5,6 @@
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}pagination-dots {
-  @include flex;
-  @include flex--justify-content(center);
 
   &--hidden-s {
     @include breakpoint('s') {
@@ -14,24 +12,54 @@
     }
   }
 
+  &__list {
+    @include flex;
+    @include flex--justify-content(center);
+    @include flex--align-items(center);
+  }
+
   &__dot {
-    @include -background-grey-3;
+    @include -background-grey-2;
 
     display: block;
-    width: $pagination-dots-dot-button-dimension;
-    height: $pagination-dots-dot-button-dimension;
-    padding: $pagination-dots-dot-button-padding;
-    margin: $pagination-dots-dot-button-margin;
+    width: $pagination-dots-dot-size-primary;
+    height: $pagination-dots-dot-size-primary;
+    margin: $pagination-dots-dot-margin;
 
     border-style: none;
     cursor: pointer;
 
+    border-radius: $pagination-dots-dot-border-radius;
+
+    &--size-secondary {
+      width: $pagination-dots-dot-size-secondary;
+      height: $pagination-dots-dot-size-secondary;
+    }
+
+    &--size-tertiary {
+      width: $pagination-dots-dot-size-tertiary;
+      height: $pagination-dots-dot-size-tertiary;
+    }
+
+    &--type-grey {
+      @include -background-grey-8;
+    }
+
+    &--type-black {
+      @include -background-grey-9;
+    }
+
+    &--type-image {
+      @include -background-grey-4;
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
     &--active {
       @include -background-red-1;
     }
 
-    &--round {
-      border-radius: $pagination-dots-dot-border-radius;
-    }
   }
+
 }

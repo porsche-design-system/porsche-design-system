@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### New features
+* Updated molecule `pagination dots` to reflect the latest design specification
+
+### Breaking changes
+* Molecule: Pagination dots
+  * Pagination dots are now rounded by default, as there are no square ones to be used
+  * The modifier class `.pagination-dots__dot-rounded` has been removed
+  * The variable `$pagination-dots-dot-button-padding` has been removed
+  * The width and height of the dots defaults to 10px (before: 8px)
+  * Various variables have been renamed. Please update your patterns to the new names:
+
+      `$pagination-dots-dot-button-dimension` => `$pagination-dots-dot-size-primary`
+      `$pagination-dots-dot-button-margin` => `$pagination-dots-dot-margin`
+
+  * Please check out the pagination dots docs for further use (pagination-dots.md)
+
+* Organism: Car selector / chooser
+  * Updated car selector sass setup `car-selector.setup.scss` to the latest pagination dots variables
+
 ## [0.5.3] - 2018-07-03
 ### Bugfixes
 * Fixed forgotten column-classes of demo templates for breaking change of 0.2.0
