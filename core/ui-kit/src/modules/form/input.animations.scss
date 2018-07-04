@@ -1,0 +1,9 @@
+@import 'input.setup.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}input {
+
+  &__label {
+    transition: top $input-label-transition-speed ease, opacity $input-label-transition-speed ease;
+  }
+}
