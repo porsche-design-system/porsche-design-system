@@ -1,0 +1,17 @@
+@import 'toggle.setup.scss';
+@import '../../setup/global-variables.scss';
+
+
+.#{$global-class-prefix}toggle {
+  &__slider {
+    transition: $toggle-slider-transition-speed;
+
+    &::after {
+      transition: $toggle-slider-circle-transition-speed;
+    }
+  }
+
+  &__icon {
+    transition: $toggle-slider-icon-transition-speed;
+  }
+}

@@ -1,0 +1,11 @@
+@mixin transform-translate($vertical, $horizontal) {
+  transform: translate($vertical, $horizontal);
+}
+
+@mixin transform-scale($scale) {
+  transform: scale($scale);
+}
+
+@mixin transform-translate-scale($vertical, $horizontal, $scale) {
+  transform: translate($vertical, $horizontal) scale($scale);
+}

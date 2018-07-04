@@ -5,7 +5,7 @@
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/background/background.mixin.scss';
 @import '../../mixins/breakpoint.scss';
-@import '../../mixins/animation.scss';
+@import '../../mixins/transform.scss';
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}tile-image-text-link {
@@ -29,11 +29,7 @@
   }
 
   &:hover &__image {
-    @include animation-translate-scale(
-      $tile-image-text-link-animation-vertical-offset,
-      $tile-image-text-link-animation-horizontal-offset,
-      $tile-image-text-link-animation-scale
-    );
+    @include transform-scale($tile-image-text-link-animation-scale);
   }
 
   &--static {
@@ -57,11 +53,7 @@
       cursor: default;
 
       .image-cover {
-        @include animation-translate-scale(
-          $tile-image-text-link-animation-vertical-offset,
-          $tile-image-text-link-animation-horizontal-offset,
-          $tile-image-text-link-animation-no-scale
-        );
+        @include transform-scale($tile-image-text-link-animation-no-scale);
       }
     }
 
