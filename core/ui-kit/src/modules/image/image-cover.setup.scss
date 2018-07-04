@@ -1,13 +1,10 @@
 @import '../../setup/color-palette.setup';
 
-$image-cover-position-top: 50% !default;
-$image-cover-position-left: 50% !default;
+$image-cover-position-top: 0 !default;
+$image-cover-position-left: 0 !default;
 $image-cover-width: calc(100% + 1px) !default;
 $image-cover-height: calc(100% + 1px) !default;
 
-$image-cover-translate-vertical: -50% !default;
-$image-cover-translate-horizontal: -50% !default;
-$image-cover-scale: 1 !default;
 $image-cover-transition-duration: .3s !default;
 $image-cover-gradient-color: $color-palette-grey-10-1 !default;
 $image-cover-gradient-transparent: transparent !default;

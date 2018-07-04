@@ -73,7 +73,6 @@
     border-radius: $toggle-slider-border-radius;
     background-color: $toggle-slider-background-color;
     cursor: pointer;
-    transition: $toggle-slider-transition-speed;
 
     &::after {
       content: '';
@@ -87,7 +86,6 @@
       border-radius: $toggle-slider-circle-border-radius;
       background-color: $toggle-slider-circle-background-color;
       transform: translate($toggle-slider-circle-translate-x, 0);
-      transition: $toggle-slider-circle-transition-speed;
     }
 
     &--inverted {
@@ -107,7 +105,6 @@
     width: $toggle-slider-icon-width;
     font-size: $toggle-slider-icon-size;
     color: $toggle-slider-icon-color;
-    transition: $toggle-slider-icon-transition-speed;
 
     &--inverted {
       color: $toggle-slider-icon-inverted-color;

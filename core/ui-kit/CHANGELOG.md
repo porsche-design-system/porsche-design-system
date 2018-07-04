@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Breaking change
+* [breaking change] renaming of mixin animation-translate-scale to transform-translate-scale
+  * move transform-translate-scale from mixins/animation.scss to mixin/transform.scss
+* [breaking change] move all animations to corresponding xyz.animations.scss to enable consumers 
+to get patterns without animations included
+  * affected patterns
+    * image-cover
+    * input
+    * toggle
+  * if you imported one of them please import now
+    * image-cover.scss + image-cover.animations.scss
+    * input.scss + input.animations.scss
+    * toggle.scss + toggle.animations.scss
 
 ### New features
 * Updated molecule `pagination dots` to reflect the latest design specification
