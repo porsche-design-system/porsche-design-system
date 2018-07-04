@@ -129,7 +129,6 @@
     right: calc(#{$input-field-padding-horizontal} + #{$input-field-border-size});
     display: inline-block;
     opacity: $input-placeholder-opacity;
-    transition: top $input-label-transition-speed ease, opacity $input-label-transition-speed ease;
     transform: translate(0, $input-label-position-top-offset);
     font-size: $input-label-text-size;
     line-height: $input-label-line-height;
