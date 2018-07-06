@@ -1,6 +1,9 @@
 @import 'image-cover.setup.scss';
 @import '../../setup/global-variables.scss';
 
-.#{$global-class-prefix}image-cover {
-  transition: transform $image-cover-transition-duration ease-out;
+// sass-lint:disable empty-args
+@mixin image-cover-animations() {
+  .#{$global-class-prefix}image-cover {
+    transition: transform $image-cover-transition-duration ease-out;
+  }
 }
