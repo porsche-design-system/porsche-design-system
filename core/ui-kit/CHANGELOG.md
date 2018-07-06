@@ -9,16 +9,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Breaking change
 * [breaking change] renaming of mixin animation-translate-scale to transform-translate-scale
   * move transform-translate-scale from mixins/animation.scss to mixin/transform.scss
-* [breaking change] move all animations to corresponding xyz.animations.scss to enable consumers 
+    
+### Improvements
+* move all animations to corresponding xyz.animations.scss to enable consumers 
 to get patterns without animations included
   * affected patterns
-    * image-cover
     * input
     * toggle
-  * if you imported one of them please import now
-    * image-cover.scss + image-cover.animations.scss
-    * input.scss + input.animations.scss
-    * toggle.scss + toggle.animations.scss
+    * tile-slider
+    * tile-image-text-link
+  * you can now decide if you want to include the css animations via overwriting the following variables
+    * $input-include-animations
+    * $toggle-include-animations
+    * $tile-slider-include-animation
+    * $tile-image-text-link-include-animation
+* removing all animations completely of the image-cover pattern
 
 ### New features
 * Updated molecule `pagination dots` to reflect the latest design specification

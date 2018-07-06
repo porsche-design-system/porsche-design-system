@@ -129,6 +129,6 @@
   }
 }
 
-@if $toggle-import-animations == true {
+@if $toggle-include-animations == true {
   @include toggle-animations;
 }

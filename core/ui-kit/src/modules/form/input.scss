@@ -144,6 +144,6 @@
   }
 }
 
-@if $input-import-animations == true {
+@if $input-include-animations == true {
   @include input-animations;
 }
