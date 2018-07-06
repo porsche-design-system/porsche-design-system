@@ -2,6 +2,8 @@
 @import '../../mixins/px-rem-converter.scss';
 @import '../../base/spacing/spacing.setup.scss';
 
+$toggle-import-animations: true !default;
+
 $toggle-width: $spacing-48 !default;
 $toggle-height: $spacing-24 !default;
 $toggle-transition-speed: .2s !default;

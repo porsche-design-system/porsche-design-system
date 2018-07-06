@@ -1,5 +1,6 @@
 @import 'input.setup.scss';
 @import 'input.mixin.scss';
+@import 'input.animations.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../base/font/font.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
@@ -141,4 +142,8 @@
       font-size: $input-label-text-size-m;
     }
   }
+}
+
+@if $input-import-animations == true {
+  @include input-animations;
 }

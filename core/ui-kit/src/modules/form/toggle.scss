@@ -1,4 +1,5 @@
 @import 'toggle.setup.scss';
+@import 'toggle.animations.scss';
 @import '../../base/position/position.mixin.scss';
 @import '../../modules/icon/icon.mixin.scss';
 @import '../../base/align/align.mixin.scss';
@@ -126,4 +127,8 @@
       }
     }
   }
+}
+
+@if $toggle-import-animations == true {
+  @include toggle-animations;
 }
