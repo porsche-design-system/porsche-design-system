@@ -1,0 +1,55 @@
+@import "../../../common";
+
+.#{$global-class-prefix}modal {
+    max-width: calc(100% - 2 * 16px);
+    max-height: calc(100% - 2 * 16px);
+
+    @include breakpoint("xs") {
+        max-width: calc(100% - 2 * 48px);
+        max-height: calc(100% - 2 * 48px);
+    }
+
+    background: $white;
+    outline: none;
+    border-radius: 6px;
+    overflow-y: scroll;
+
+    &__body {
+        &--open {
+            overflow: hidden;
+        }
+    }
+
+    &__overlay {
+        position: fixed;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 10000;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba($black, 0.9);
+    }
+
+    &__content {
+        padding: $spacing-12;
+    }
+}
+
+.#{$global-class-prefix}modal__portal > div {
+    opacity: 0;
+}
+
+.#{$global-class-prefix}modal__portal .ReactModal__Overlay {
+    transition: opacity 100ms ease-in-out;
+    &--after-open {
+        opacity: 1;
+    }
+    &--before-close {
+        opacity: 0;
+    }
+}
