@@ -19,6 +19,7 @@
     }
 
     @include breakpoint('s') {
+      @include -spacing-b(bottom, margin, '-');
       display: block;
       border-top: 0;
       border-bottom: 0;
@@ -85,7 +86,7 @@
   }
 
   &__submenu-item {
-    @include -spacing-b(bottom);
+    @include -spacing-b(bottom, padding);
   }
 
   &__submenu-link {
