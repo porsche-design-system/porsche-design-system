@@ -8,7 +8,7 @@ const isCustomAttribute = (type) => {
 
 /** Finds types like: 0 | 6 | 12 | "auto_matic" | "red-1" */
 const isEnum = (type) => {
-    const test = /^(\s*\"?[a-z\d-_]+\"?\s*\|\s*){1,}\"?[a-z\d-_]+\"?\s*$/g
+    const test = /^(\s*"?[a-z\d-_]+"?\s*\|\s*){1,}"?[a-z\d-_]+"?\s*$/g
     const match = test.exec(type)
 
     return (
@@ -34,7 +34,7 @@ const parseEnumValues = (type) => {
 
 /** Finds fat arrow functions */
 const isFunction = (type) => {
-    const test = /^\s*\([\w\d\s:<div>,=\[\]]+\)\s*=>\s*\(?[\w\d\s:<div>,=\[\]]+\)?$/g
+    const test = /^\s*\([\w\d\s:<div>,=[\]]*\)\s*=>\s*\(?[\w\d\s:<div>,=[\]]+\)?$/g
     const match = test.exec(type)
 
     return match && match.length > 0

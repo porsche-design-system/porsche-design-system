@@ -56,9 +56,9 @@ export default (filename) => {
                 }
             })
 
-            parsed.path = file.path
-                .replace(new RegExp(_.escapeRegExp(path.sep), "g"), "/")
-                .replace(`${process.cwd()}/`, "")
+            const cwd = process.cwd().replace("@porsche/ui-kit-react-docs", "@porsche/ui-kit-react")
+
+            parsed.path = file.path.replace(new RegExp(_.escapeRegExp(path.sep), "g"), "/").replace(`${cwd}/`, "")
             parsed.props = _.sortBy(parsed.props, "name")
 
             result[componentName] = parsed
