@@ -1,5 +1,4 @@
 @import 'image-cover.setup.scss';
-@import 'image-cover.animations.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../mixins/transform.scss';
 @import '../../setup/global-variables.scss';
@@ -43,8 +42,4 @@
       background: $image-cover-gradient;
     }
   }
-}
-
-@if $image-cover-import-animations == true {
-  @include image-cover-animations;
 }

@@ -1,4 +1,5 @@
 @import 'tile-image-text-link.setup.scss';
+@import '../../base/tile/tile.animations.scss';
 @import '../../base/grid/flex.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
 @import '../../base/position/position.mixin.scss';
@@ -26,6 +27,12 @@
 
   @include breakpoint('l') {
     min-height: $tile-image-text-link-height-l;
+  }
+
+  &__image {
+    @if $tile-image-text-link-include-animation == true {
+      @include tile-animation-image;
+    }
   }
 
   &:hover &__image {
