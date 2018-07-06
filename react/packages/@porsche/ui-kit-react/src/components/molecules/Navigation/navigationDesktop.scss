@@ -32,8 +32,7 @@
         }
 
         &:hover,
-        &:focus,
-        &--active {
+        &:focus {
             color: $color-palette-red-1;
         }
 
