@@ -10,20 +10,13 @@
   &__paragraph {
     @include -text-color-white;
     @include -text-size-copy;
+    @include -spacing-f;
+    @include -spacing-f(top, padding);
 
-    padding-top: $footer-paragraph-inner-spacing-top;
     border-top: $footer-paragraph-border-width solid $footer-paragraph-border-color;
 
-    @include breakpoint('s') {
-      padding-top: $footer-paragraph-inner-spacing-top-s;
-    }
-
-    @include breakpoint('l') {
-      padding-top: $footer-paragraph-inner-spacing-top-l;
-    }
-
-    @include breakpoint('m') {
-      @include -spacing-f;
+    @include breakpoint('xxs', 's') {
+      margin-top: 0;
     }
   }
 

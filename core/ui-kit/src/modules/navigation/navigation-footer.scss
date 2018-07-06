@@ -72,7 +72,7 @@
   }
 
   &__submenu {
-    @include -spacing-d;
+    @include -spacing-c;
     display: none;
 
     @include breakpoint('s') {
@@ -82,6 +82,10 @@
     &--open {
       display: block;
     }
+  }
+
+  &__submenu-item {
+    @include -spacing-b(bottom);
   }
 
   &__submenu-link {
