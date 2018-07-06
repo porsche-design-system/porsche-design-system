@@ -12,8 +12,7 @@ const configuration = {
         filename: `[name]${production ? ".[chunkhash:8]" : ""}.js`,
         chunkFilename: `[name].chunk${production ? ".[chunkhash:8]" : ""}.js`,
         path: path.resolve(__dirname, "dist"),
-        pathinfo: true,
-        publicPath: "/"
+        pathinfo: true
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
