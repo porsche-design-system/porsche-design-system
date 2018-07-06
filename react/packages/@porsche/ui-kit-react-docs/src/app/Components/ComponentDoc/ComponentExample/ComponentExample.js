@@ -46,6 +46,7 @@ class ComponentExample extends Component {
         history: PropTypes.object.isRequired,
         location: PropTypes.object.isRequired,
         match: PropTypes.object.isRequired,
+        noStaticMarkup: PropTypes.bool,
         title: PropTypes.node
     }
 
@@ -56,9 +57,10 @@ class ComponentExample extends Component {
         this.anchorName = _.kebabCase(_.last(examplePath.split("/")))
 
         // show code for direct links to examples
+        // eslint
         const showCode = this.anchorName === location.hash.replace("#", "")
         const exampleElement = this.renderOriginalExample()
-        const markup = renderToStaticMarkup(exampleElement)
+        const markup = !this.props.noStaticMarkup ? renderToStaticMarkup(exampleElement) : ""
 
         this.setState({
             exampleElement,
@@ -229,7 +231,7 @@ class ComponentExample extends Component {
                 this.setState({
                     error,
                     exampleElement,
-                    markup: renderToStaticMarkup(exampleElement)
+                    markup: !this.props.noStaticMarkup ? renderToStaticMarkup(exampleElement) : ""
                 })
             }
         } catch (err) {
@@ -336,7 +338,7 @@ class ComponentExample extends Component {
                             anchorName={this.anchorName}
                             onCopyLink={this.handleDirectLinkClick}
                             onShowCode={this.handleShowCodeClick}
-                            onShowHTML={this.handleShowHTMLClick}
+                            onShowHTML={!this.props.noStaticMarkup ? this.handleShowHTMLClick : undefined}
                             showCode={showCode}
                             showHTML={showHTML}
                             visible={controlsVisible}
