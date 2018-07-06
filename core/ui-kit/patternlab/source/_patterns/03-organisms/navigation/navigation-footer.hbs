@@ -1,13 +1,13 @@
-<ul class="navigation-footer row row--gap-small">
+<ul class="navigation-footer row">
     {{#each navigation-footer_items }}
-        <li class="navigation-footer__item column column--gap-small column--12 column--6-s">
+        <li class="navigation-footer__item column column--12 column--6-s">
             <div class="navigation-footer__item-header {{#if isOpen}}navigation-footer__item-header--open{{/if}}">
                 <h3 class="navigation-footer__category-name"> {{item}} </h3>
                 <span class="icon icon--arrow-down-thin navigation-footer__icon {{#if isOpen}}navigation-footer__icon--open{{/if}}"></span>
             </div>
-            <ul class="navigation-footer__submenu row row--gap-small {{#if isOpen}}navigation-footer__submenu--open{{/if}}">
+            <ul class="navigation-footer__submenu row {{#if isOpen}}navigation-footer__submenu--open{{/if}}">
               {{#each itemsSubmenu }}
-                  <li class="navigation-footer__submenu-item column column--gap-small column--12 column--6-m">
+                  <li class="navigation-footer__submenu-item column column--12 column--6-m">
                       <a href="#" class="navigation-footer__submenu-link"> {{item}} </a>
                   </li>
               {{/each}}
