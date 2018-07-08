@@ -1,2 +1,10 @@
-//$inactive-animations: 'tile-image-text-link', 'input' !default;
+/**
+ * disable animations for specific patterns
+ *
+ * $inactive-animations is a list, if you want e.g. exclude the css animations
+ * for the-slider and tile-image-text-link pattern, you would overwrite the
+ * $inactive-animations variable by passing from outside with the following value(s)
+ *
+ * $inactive-animations: 'tile-slider', 'tile-image-text-link'
+ */
 $inactive-animations: '' !default;

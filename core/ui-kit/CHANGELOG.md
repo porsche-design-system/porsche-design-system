@@ -11,18 +11,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   * move transform-translate-scale from mixins/animation.scss to mixin/transform.scss
     
 ### Improvements
-* move all animations to corresponding xyz.animations.scss to enable consumers 
-to get patterns without animations included
+* encapsulate all animations in a mixin call to be able to suppress the output of the css
+animation for a specific pattern if you want to build the animation via e.g. script 
   * affected patterns
     * input
     * toggle
     * tile-slider
     * tile-image-text-link
-  * you can now decide if you want to include the css animations via overwriting the following variables
-    * $input-include-animations
-    * $toggle-include-animations
-    * $tile-slider-include-animation
-    * $tile-image-text-link-include-animation
+  * you can now overwrite the output of the css animation part by modifying the file
+  `/setup/animations.scss` (see detailed how to in comment)
 * removing all animations completely of the image-cover pattern
 
 ### New features
