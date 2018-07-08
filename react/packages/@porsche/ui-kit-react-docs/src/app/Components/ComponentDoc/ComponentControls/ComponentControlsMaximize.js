@@ -8,7 +8,7 @@ import ComponentControlsToolTip from "./ComponentControlsToolTip"
 const ComponentControlsMaximize = ({ anchorName }) => {
     return (
         <ComponentControlsToolTip content="Full Screen">
-            <Menu.Item href={`/maximize/${anchorName}`} target="_blank">
+            <Menu.Item href={`/#maximize/${anchorName}`} target="_blank">
                 <Icon color="grey" fitted name="window maximize" size="large" />
             </Menu.Item>
         </ComponentControlsToolTip>
