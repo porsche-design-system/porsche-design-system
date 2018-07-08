@@ -22,6 +22,7 @@ animation for a specific pattern if you want to build the animation via e.g. scr
   `/setup/animations.scss` (see detailed how to in comment)
 * removing all animations completely of the image-cover pattern
 
+## [0.6.0] - 2018-07-03
 ### New features
 * Updated molecule `pagination dots` to reflect the latest design specification
 
