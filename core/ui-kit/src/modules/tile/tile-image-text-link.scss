@@ -1,13 +1,15 @@
 @import 'tile-image-text-link.setup.scss';
-@import '../../base/tile/tile.animations.scss';
 @import '../../base/grid/flex.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
 @import '../../base/position/position.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/background/background.mixin.scss';
+@import '../../base/tile/tile.animations.scss';
 @import '../../mixins/breakpoint.scss';
+@import '../../mixins/animation.scss';
 @import '../../mixins/transform.scss';
 @import '../../setup/global-variables.scss';
+@import '../../setup/animations.scss';
 
 .#{$global-class-prefix}tile-image-text-link {
   @include flex;
@@ -30,7 +32,7 @@
   }
 
   &__image {
-    @if $tile-image-text-link-include-animation == true {
+    @include apply-animation('tile-image-text-link') {
       @include tile-animation-image;
     }
   }

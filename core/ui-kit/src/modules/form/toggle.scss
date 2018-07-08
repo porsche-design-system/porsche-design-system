@@ -1,10 +1,11 @@
 @import 'toggle.setup.scss';
-@import 'toggle.animations.scss';
+@import '../../mixins/animation.scss';
 @import '../../base/position/position.mixin.scss';
 @import '../../modules/icon/icon.mixin.scss';
 @import '../../base/align/align.mixin.scss';
 @import '../../base/grid/flex.mixin.scss';
 @import '../../setup/global-variables.scss';
+@import '../../setup/animations.scss';
 
 .#{$global-class-prefix}toggle {
   $bem-block: &;
@@ -69,6 +70,9 @@
     @include -position-absolute-coordinates;
     @include flex;
     @include flex--align-items(center);
+    @include apply-animation('toggle') {
+      transition: $toggle-slider-transition-speed;
+    }
 
     border: $toggle-slider-border-size solid $toggle-slider-border-color;
     border-radius: $toggle-slider-border-radius;
@@ -76,6 +80,10 @@
     cursor: pointer;
 
     &::after {
+      @include apply-animation('toggle') {
+        transition: $toggle-slider-circle-transition-speed;
+      }
+
       content: '';
       display: block;
       position: absolute;
@@ -101,6 +109,9 @@
   &__icon {
     @include icon-base;
     @include -align-center;
+    @include apply-animation('toggle') {
+      transition: $toggle-slider-icon-transition-speed;
+    }
 
     display: inline-block;
     width: $toggle-slider-icon-width;
@@ -127,8 +138,4 @@
       }
     }
   }
-}
-
-@if $toggle-include-animations == true {
-  @include toggle-animations;
 }
