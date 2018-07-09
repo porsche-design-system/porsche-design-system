@@ -1,4 +1,5 @@
 @import 'toggle.setup.scss';
+@import '../../mixins/animation.scss';
 @import '../../base/position/position.mixin.scss';
 @import '../../modules/icon/icon.mixin.scss';
 @import '../../base/align/align.mixin.scss';
@@ -68,14 +69,20 @@
     @include -position-absolute-coordinates;
     @include flex;
     @include flex--align-items(center);
+    @include apply-animation('toggle') {
+      transition: $toggle-slider-transition-speed;
+    }
 
     border: $toggle-slider-border-size solid $toggle-slider-border-color;
     border-radius: $toggle-slider-border-radius;
     background-color: $toggle-slider-background-color;
     cursor: pointer;
-    transition: $toggle-slider-transition-speed;
 
     &::after {
+      @include apply-animation('toggle') {
+        transition: $toggle-slider-circle-transition-speed;
+      }
+
       content: '';
       display: block;
       position: absolute;
@@ -87,7 +94,6 @@
       border-radius: $toggle-slider-circle-border-radius;
       background-color: $toggle-slider-circle-background-color;
       transform: translate($toggle-slider-circle-translate-x, 0);
-      transition: $toggle-slider-circle-transition-speed;
     }
 
     &--inverted {
@@ -102,12 +108,14 @@
   &__icon {
     @include icon-base;
     @include -align-center;
+    @include apply-animation('toggle') {
+      transition: $toggle-slider-icon-transition-speed;
+    }
 
     display: inline-block;
     width: $toggle-slider-icon-width;
     font-size: $toggle-slider-icon-size;
     color: $toggle-slider-icon-color;
-    transition: $toggle-slider-icon-transition-speed;
 
     &--inverted {
       color: $toggle-slider-icon-inverted-color;

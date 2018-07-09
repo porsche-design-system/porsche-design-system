@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Breaking change
+* [breaking change] renaming of mixin animation-translate-scale to transform-translate-scale
+  * move transform-translate-scale from mixins/animation.scss to mixin/transform.scss
+    
+### Improvements
+* encapsulate all animations in a mixin call to be able to suppress the output of the css
+animation for a specific pattern if you want to build the animation via e.g. script 
+  * affected patterns
+    * input
+    * toggle
+    * tile-slider
+    * tile-image-text-link
+  * you can now overwrite the output of the css animation part by modifying the file
+  `/setup/animations.scss` (see detailed how to in comment)
+* removing all animations completely of the image-cover pattern
 
 ## [0.6.1] - 2018-07-09
 ### Bugfixes

@@ -1,0 +1,6 @@
+@import 'tile.setup.scss';
+
+// sass-lint:disable empty-args
+@mixin tile-animation-image() {
+  transition: transform $tile-animation-image-transition-duration ease-out;
+}

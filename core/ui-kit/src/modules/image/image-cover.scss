@@ -1,21 +1,13 @@
 @import 'image-cover.setup.scss';
-@import '../../mixins/animation.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}image-cover {
-  @include animation-translate-scale(
-    $image-cover-translate-vertical,
-    $image-cover-translate-horizontal,
-    $image-cover-scale
-  );
-
   position: absolute;
   top: $image-cover-position-top;
   left: $image-cover-position-left;
   width: $image-cover-width;
   height: $image-cover-height;
-  transition: transform $image-cover-transition-duration ease-out;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

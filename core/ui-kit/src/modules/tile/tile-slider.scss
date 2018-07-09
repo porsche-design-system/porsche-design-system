@@ -2,8 +2,10 @@
 @import '../../base/grid/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/position/position.mixin.scss';
+@import '../../base/tile/tile.animations.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../mixins/animation.scss';
+@import '../../mixins/transform.scss';
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}tile-slider {
@@ -13,12 +15,14 @@
     position: relative;
   }
 
+  &__image {
+    @include apply-animation('tile-slider') {
+      @include tile-animation-image;
+    }
+  }
+
   &:hover &__image {
-    @include animation-translate-scale(
-      $tile-slider-animation-vertical-offset,
-      $tile-slider-animation-horizontal-offset,
-      $tile-slider-animation-scale
-    );
+    @include transform-scale($tile-slider-animation-scale);
   }
 
   &__imageholder {

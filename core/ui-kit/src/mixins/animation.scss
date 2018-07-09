@@ -1,9 +1,13 @@
 @import '../common/keyframes.scss';
+@import '../setup/animations.scss';
+
+// check if animation should be applied
+@mixin apply-animation($type) {
+  @if index($inactive-animations, $type) == null {
+    @content;
+  }
+}
 
 @mixin animation($name, $duration, $timing-function: linear, $delay: 0s, $iteration-count: infinite, $direction: normal) {
   animation: $name $duration $timing-function $delay $iteration-count $direction;
-}
-
-@mixin animation-translate-scale($vertical, $horizontal, $scale) {
-  transform: translate($vertical, $horizontal) scale($scale);
 }
