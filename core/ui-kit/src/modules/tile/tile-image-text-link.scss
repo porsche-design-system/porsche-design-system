@@ -9,7 +9,6 @@
 @import '../../mixins/animation.scss';
 @import '../../mixins/transform.scss';
 @import '../../setup/global-variables.scss';
-@import '../../setup/animations.scss';
 
 .#{$global-class-prefix}tile-image-text-link {
   @include flex;
