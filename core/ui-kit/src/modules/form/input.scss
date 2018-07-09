@@ -1,6 +1,7 @@
 @import 'input.setup.scss';
 @import 'input.mixin.scss';
 @import '../../mixins/breakpoint.scss';
+@import '../../mixins/animation.scss';
 @import '../../base/font/font.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/overflow/overflow.mixin.scss';
@@ -123,13 +124,15 @@
   &__label {
     @include -font-primary;
     @include -overflow-ellipsis;
+    @include apply-animation('input') {
+      transition: top $input-label-transition-speed ease, opacity $input-label-transition-speed ease;
+    }
     position: absolute;
     top: $input-label-position-top;
     left: calc(#{$input-field-padding-horizontal} + #{$input-field-border-size});
     right: calc(#{$input-field-padding-horizontal} + #{$input-field-border-size});
     display: inline-block;
     opacity: $input-placeholder-opacity;
-    transition: top $input-label-transition-speed ease, opacity $input-label-transition-speed ease;
     transform: translate(0, $input-label-position-top-offset);
     font-size: $input-label-text-size;
     line-height: $input-label-line-height;
