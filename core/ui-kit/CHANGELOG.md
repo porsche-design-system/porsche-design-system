@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.7.0] - 2018-07-09
 ### Breaking change
 * [breaking change] renaming of mixin animation-translate-scale to transform-translate-scale
   * move transform-translate-scale from mixins/animation.scss to mixin/transform.scss
