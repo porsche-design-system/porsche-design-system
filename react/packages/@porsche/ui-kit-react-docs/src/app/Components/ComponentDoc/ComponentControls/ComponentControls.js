@@ -20,7 +20,7 @@ const ComponentControls = (props) => {
                 <Menu color="green" compact icon size="small" text>
                     <ComponentControlsCopyLink anchorName={anchorName} onClick={onCopyLink} />
                     <ComponentControlsMaximize anchorName={anchorName} />
-                    <ComponentControlsShowHtml active={showHTML} onClick={onShowHTML} />
+                    {onShowHTML && <ComponentControlsShowHtml active={showHTML} onClick={onShowHTML} />}
                     <ComponentControlsEditCode active={showCode} onClick={onShowCode} />
                 </Menu>
             </div>
