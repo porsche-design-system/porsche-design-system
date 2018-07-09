@@ -8,12 +8,20 @@ import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizab
 import { META, prefix } from "../../../lib"
 import { ClassNameProp } from "../../../lib/props"
 
+import { ModalTitle } from "./ModalTitle"
+import { ModalText } from "./ModalText"
+import { ModalButtons } from "./ModalButtons"
+
 export interface Modal extends React.StatelessComponent<ModalProps> {
     /**
      * Call this to properly hide your application from assistive screenreaders
      * and other assistive technologies while the modal is open.
      */
     setAppElement: (element: string | HTMLElement) => void
+
+    Title: typeof ModalTitle
+    Text: typeof ModalText
+    Buttons: typeof ModalButtons
 }
 
 export interface ModalProps extends ClassNameProp {
@@ -48,9 +56,6 @@ const _meta: ComponentMeta = {
     type: META.TYPES.ORGANISM
 }
 
-/**
- * A modal container with a transparent background.
- */
 const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<MetaCategorizable> = (props) => {
     const { className, children, contentLabel, isOpen, onRequestClose, ariaHideApp, ...rest } = props
 
@@ -82,4 +87,11 @@ _Modal.setAppElement = (element) => {
     ReactModal.setAppElement(element)
 }
 
+_Modal.Title = ModalTitle
+_Modal.Text = ModalText
+_Modal.Buttons = ModalButtons
+
+/**
+ * A modal container with a transparent background.
+ */
 export const Modal = _Modal as Modal

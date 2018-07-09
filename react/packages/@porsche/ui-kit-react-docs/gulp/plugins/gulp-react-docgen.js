@@ -2,6 +2,7 @@ import PluginError from "plugin-error"
 import _ from "lodash"
 import path from "path"
 import through from "through2"
+
 const reactDocgenTypescript = require("react-docgen-typescript")
 
 import { parseDefaultValue, parseDocBlock, parseType } from "./util/index"
@@ -74,7 +75,7 @@ export default (filename) => {
     function endStream(cb) {
         finalFile = latestFile.clone({ contents: false })
         finalFile.path = path.join(latestFile.base, filename || defaultFilename)
-        finalFile.contents = new Buffer(JSON.stringify(result, null, 2))
+        finalFile.contents = Buffer.from(JSON.stringify(result, null, 2))
         this.push(finalFile)
         cb()
     }

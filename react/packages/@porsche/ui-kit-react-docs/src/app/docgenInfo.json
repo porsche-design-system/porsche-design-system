@@ -49,6 +49,56 @@
     },
     "path": "src/components/atoms/Breakpoint/Breakpoint.tsx"
   },
+  "Divider": {
+    "displayName": "Divider",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Adds predefined top and bottom spacing for more consistent layouting.",
+          "If this doesn't fit your purpose you can always customize spacings using the Spacing component."
+        ],
+        "name": "spacing",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"none\"",
+          "\"small\"",
+          "\"large\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Spacing"
+        }
+      ],
+      "description": [
+        "A very basic divider."
+      ]
+    },
+    "path": "src/components/atoms/Divider/Divider.tsx"
+  },
   "Flex": {
     "displayName": "Flex",
     "props": [
@@ -226,56 +276,6 @@
       ]
     },
     "path": "src/components/atoms/Flex/FlexItem.tsx"
-  },
-  "Divider": {
-    "displayName": "Divider",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Adds predefined top and bottom spacing for more consistent layouting.",
-          "If this doesn't fit your purpose you can always customize spacings using the Spacing component."
-        ],
-        "name": "spacing",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"none\"",
-          "\"small\"",
-          "\"large\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        }
-      ],
-      "description": [
-        "A very basic divider."
-      ]
-    },
-    "path": "src/components/atoms/Divider/Divider.tsx"
   },
   "Icon": {
     "displayName": "Icon",
@@ -1932,66 +1932,6 @@
     },
     "path": "src/components/molecules/TextArea/TextArea.tsx"
   },
-  "ErrorScreen": {
-    "displayName": "ErrorScreen",
-    "props": [
-      {
-        "description": [
-          "The text under the large title."
-        ],
-        "name": "text",
-        "required": true,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The title of the error screen, displayed very large."
-        ],
-        "name": "title",
-        "required": true,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A generic error screen with a title and a text."
-      ]
-    },
-    "path": "src/components/screens/ErrorScreen/ErrorScreen.tsx"
-  },
-  "MaintenanceScreen": {
-    "displayName": "MaintenanceScreen",
-    "props": [
-      {
-        "description": [
-          "The text under the large title."
-        ],
-        "name": "text",
-        "required": true,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The title of the maintenance screen, displayed very large."
-        ],
-        "name": "title",
-        "required": true,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A generic maintenance screen with a title and a text."
-      ]
-    },
-    "path": "src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx"
-  },
   "Header": {
     "displayName": "Header",
     "props": [
@@ -2176,6 +2116,66 @@
       ]
     },
     "path": "src/components/organisms/Notification/Notification.tsx"
+  },
+  "ErrorScreen": {
+    "displayName": "ErrorScreen",
+    "props": [
+      {
+        "description": [
+          "The text under the large title."
+        ],
+        "name": "text",
+        "required": true,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The title of the error screen, displayed very large."
+        ],
+        "name": "title",
+        "required": true,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A generic error screen with a title and a text."
+      ]
+    },
+    "path": "src/components/screens/ErrorScreen/ErrorScreen.tsx"
+  },
+  "MaintenanceScreen": {
+    "displayName": "MaintenanceScreen",
+    "props": [
+      {
+        "description": [
+          "The text under the large title."
+        ],
+        "name": "text",
+        "required": true,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The title of the maintenance screen, displayed very large."
+        ],
+        "name": "title",
+        "required": true,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A generic maintenance screen with a title and a text."
+      ]
+    },
+    "path": "src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx"
   },
   "ContentWrapper": {
     "displayName": "ContentWrapper",

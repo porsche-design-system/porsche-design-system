@@ -1,17 +1,25 @@
 @import "../../../common";
 
-.#{$global-class-prefix}modal {
-    max-width: calc(100% - 2 * 16px);
-    max-height: calc(100% - 2 * 16px);
+$modal-max-width: 520px;
 
-    @include breakpoint("xs") {
-        max-width: calc(100% - 2 * 48px);
-        max-height: calc(100% - 2 * 48px);
+.#{$global-class-prefix}modal {
+    max-width: calc(100% - 2 * 24px);
+    max-height: calc(100% - 2 * 48px);
+
+    @media screen and (min-width: rem($modal-max-width) + 2 * $spacing-24) {
+        max-width: $modal-max-width;
+    }
+
+    &--full-width {
+        max-width: calc(100% - 2 * 24px);
+
+        @include breakpoint("s") {
+            max-width: calc(100% - 2 * 48px);
+        }
     }
 
     background: $white;
     outline: none;
-    border-radius: 6px;
     overflow-y: scroll;
 
     &__body {
@@ -22,8 +30,8 @@
 
     &__overlay {
         position: fixed;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
+        // overflow: auto;
+        // -webkit-overflow-scrolling: touch;
         z-index: 10000;
         top: 0;
         right: 0;
@@ -32,11 +40,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba($black, 0.9);
+        background: rgba($black, 0.8);
     }
 
     &__content {
-        padding: $spacing-12;
+        padding-left: $spacing-36;
+        padding-right: $spacing-36;
+        padding-top: $spacing-24;
+        padding-bottom: $spacing-24;
     }
 }
 
