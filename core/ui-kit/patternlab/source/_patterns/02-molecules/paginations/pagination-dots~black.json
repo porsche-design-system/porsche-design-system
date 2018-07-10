@@ -1,26 +1,21 @@
 {
   "pagination-dots_dots": [
     {
-      "typeBlack" : true
     },
     {
-      "active" : true,
-      "typeBlack" : true
+      "active" : true
     },
     {
-      "typeBlack" : true
     },
     {
-      "typeBlack" : true,
       "sizeSecondary" : true
     },
     {
-      "typeBlack" : true,
       "sizeTertiary" : true
     },
     {
-      "typeBlack" : true,
       "sizeTertiary" : true
     }
-  ]
+  ],
+  "typeBlack" : true
 }

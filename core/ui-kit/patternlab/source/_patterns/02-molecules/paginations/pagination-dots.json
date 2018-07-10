@@ -3,52 +3,37 @@
     {
       "active" : false,
       "sizeSecondary" : false,
-      "sizeTertiary" : false,
-      "typeGrey" : false,
-      "typeBlack" : false,
-      "typeImage" : false
+      "sizeTertiary" : false
     },
     {
       "active" : true,
       "sizeSecondary" : false,
-      "sizeTertiary" : false,
-      "typeGrey" : false,
-      "typeBlack" : false,
-      "typeImage" : false
+      "sizeTertiary" : false
     },
     {
       "active" : false,
       "sizeSecondary" : false,
-      "sizeTertiary" : false,
-      "typeGrey" : false,
-      "typeBlack" : false,
-      "typeImage" : false
+      "sizeTertiary" : false
     },
     {
       "active" : false,
       "sizeSecondary" : true,
-      "sizeTertiary" : false,
-      "typeGrey" : false,
-      "typeBlack" : false,
-      "typeImage" : false
+      "sizeTertiary" : false
     },
     {
       "active" : false,
       "sizeSecondary" : false,
-      "sizeTertiary" : true,
-      "typeGrey" : false,
-      "typeBlack" : false,
-      "typeImage" : false
+      "sizeTertiary" : true
     },
     {
       "active" : false,
       "sizeSecondary" : false,
-      "sizeTertiary" : true,
-      "typeGrey" : false,
-      "typeBlack" : false,
-      "typeImage" : false
+      "sizeTertiary" : true
     },
   ]
   ,
-  "pagination-dots_hidden-s": false
+  "pagination-dots_hidden-s": false,
+  "typeGrey" : false,
+  "typeBlack" : false,
+  "typeImage" : false
 }
