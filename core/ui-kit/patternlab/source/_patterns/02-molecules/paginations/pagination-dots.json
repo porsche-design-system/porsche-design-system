@@ -33,7 +33,7 @@
   ]
   ,
   "pagination-dots_hidden-s": false,
-  "typeGrey" : false,
-  "typeBlack" : false,
-  "typeImage" : false
+  "pagination-dots_typeGrey" : false,
+  "pagination-dots_typeBlack" : false,
+  "pagination-dots_typeImage" : false
 }
