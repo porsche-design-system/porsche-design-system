@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Improvements
+* Molecule: Pagination dots
+  * simplified pagination dots json config (type modifiers)
+  * changed markup from `button` to `span` for easier mobile implementation
+  * added safe clickable area per dot
+
 ## [0.7.0] - 2018-07-09
 ### Breaking change
 * [breaking change] renaming of mixin animation-translate-scale to transform-translate-scale

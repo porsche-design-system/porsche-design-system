@@ -22,6 +22,7 @@
     @include -background-grey-2;
 
     display: block;
+    position: relative;
     width: $pagination-dots-dot-size-primary;
     height: $pagination-dots-dot-size-primary;
     margin: $pagination-dots-dot-margin;
@@ -58,6 +59,15 @@
     &:active,
     &--active {
       @include -background-red-1;
+    }
+
+    &::after { // safe clickable area
+      position: absolute;
+      content: '';
+      top: -$pagination-dots-dot-safe-clickable-area-position;
+      right: -$pagination-dots-dot-safe-clickable-area-position;
+      bottom: -$pagination-dots-dot-safe-clickable-area-position;
+      left: -$pagination-dots-dot-safe-clickable-area-position;
     }
 
   }
