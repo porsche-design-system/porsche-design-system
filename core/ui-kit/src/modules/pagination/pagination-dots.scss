@@ -62,7 +62,7 @@
     }
 
     &::after { // safe clickable area
-      @include -position(absolute);
+      position: absolute;
       content: '';
       top: -$pagination-dots-dot-safe-clickable-area-position;
       right: -$pagination-dots-dot-safe-clickable-area-position;
