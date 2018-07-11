@@ -11,6 +11,7 @@ import { ClassNameProp } from "../../../lib/props"
 import { ModalTitle } from "./ModalTitle"
 import { ModalText } from "./ModalText"
 import { ModalButtons } from "./ModalButtons"
+import { Icon } from "../../atoms/Icon/Icon"
 
 export interface Modal extends React.StatelessComponent<ModalProps> {
     /**
@@ -26,9 +27,21 @@ export interface Modal extends React.StatelessComponent<ModalProps> {
 
 export interface ModalProps extends ClassNameProp {
     /**
+     * Use setAppElement to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open.
+     * If you can't you can disable that functionality by setting ariaHideApp={false}, but this is not recommended.
+     */
+    ariaHideApp?: boolean
+
+    /**
      * String indicating how the content container should be announced to screenreaders.
      */
     contentLabel?: string
+
+    /**
+     * Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use fullWidth to allow the modal to span the entire webpage (minus margins).
+     * @default false
+     */
+    fullWidth?: boolean
 
     /**
      * Boolean describing if the modal should be shown or not. Defaults to false.
@@ -41,13 +54,14 @@ export interface ModalProps extends ClassNameProp {
     onRequestClose: () => void
 
     /**
-     * Use setAppElement to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open.
-     * If you can't you can disable that functionality by setting ariaHideApp={false}, but this is not recommended.
+     * A modal shows a close icon at its top right corner. You can disable this by setting showCloseIcon to false.
+     * @default true
      */
-    ariaHideApp?: boolean
+    showCloseIcon?: boolean
 }
 
 const defaultProps: Partial<ModalProps> = {
+    showCloseIcon: true,
     ariaHideApp: true
 }
 
@@ -57,9 +71,19 @@ const _meta: ComponentMeta = {
 }
 
 const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<MetaCategorizable> = (props) => {
-    const { className, children, contentLabel, isOpen, onRequestClose, ariaHideApp, ...rest } = props
+    const {
+        className,
+        children,
+        contentLabel,
+        isOpen,
+        fullWidth,
+        onRequestClose,
+        ariaHideApp,
+        showCloseIcon,
+        ...rest
+    } = props
 
-    const classes = cx(prefix("modal"), className)
+    const classes = cx(prefix("modal"), { [prefix("modal--full-width")]: fullWidth }, className)
 
     return (
         <ReactModal
@@ -75,6 +99,9 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
             ariaHideApp={ariaHideApp}
             {...rest}
         >
+            {showCloseIcon && (
+                <Icon name="cancel" className={prefix("modal__close")} {...{ onClick: onRequestClose }} />
+            )}
             <div className={prefix("modal__content")}>{children}</div>
         </ReactModal>
     )
