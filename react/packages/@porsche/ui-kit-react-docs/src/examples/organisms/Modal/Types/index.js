@@ -8,6 +8,14 @@ const Types = () => {
             <ComponentExample title="Modal" examplePath="organisms/Modal/Types/ModalExample" noStaticMarkup>
                 A modal example.
             </ComponentExample>
+
+            <ComponentExample
+                title="Full Width"
+                examplePath="organisms/Modal/Types/ModalExampleFullWidth"
+                noStaticMarkup
+            >
+                A modal example across the entire width of the page.
+            </ComponentExample>
         </ExampleSection>
     )
 }

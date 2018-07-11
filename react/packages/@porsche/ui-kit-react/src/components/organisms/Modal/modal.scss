@@ -3,6 +3,7 @@
 $modal-max-width: 520px;
 
 .#{$global-class-prefix}modal {
+    position: relative;
     max-width: calc(100% - 2 * 24px);
     max-height: calc(100% - 2 * 48px);
 
@@ -48,6 +49,18 @@ $modal-max-width: 520px;
         padding-right: $spacing-36;
         padding-top: $spacing-24;
         padding-bottom: $spacing-24;
+    }
+
+    &__close {
+        position: absolute;
+        top: $spacing-12;
+        right: $spacing-12;
+        width: 20px !important;
+        height: 20px !important;
+        padding: 0;
+        color: $grey;
+        cursor: pointer;
+        font-size: 20px;
     }
 }
 
