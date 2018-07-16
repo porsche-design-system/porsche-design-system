@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* change footer copyright text
 
 ## [0.7.0] - 2018-07-09
 ### Breaking change
