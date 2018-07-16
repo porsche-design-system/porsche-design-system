@@ -32,16 +32,7 @@ class ModalExample extends React.Component {
                 <Button onClick={this.handleClick}>Show Modal</Button>
 
                 <Modal isOpen={this.state.modal} onRequestClose={this.handleClose}>
-                    <Modal.Title>Ein Modal</Modal.Title>
-                    <Modal.Text>{this.text}</Modal.Text>
-                    <Modal.Buttons>
-                        <Button type="default" onClick={this.handleClose}>
-                            Cancel
-                        </Button>
-                        <Button type="red" onClick={this.handleClose}>
-                            Save
-                        </Button>
-                    </Modal.Buttons>
+                    {this.text}
                 </Modal>
             </div>
         )

@@ -100,7 +100,9 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
             {...rest}
         >
             {showCloseIcon && (
-                <Icon name="cancel" className={prefix("modal__close")} {...{ onClick: onRequestClose }} />
+                <div className={prefix("modal__close-container")}>
+                    <Icon name="cancel" className={prefix("modal__close")} {...{ onClick: onRequestClose }} />
+                </div>
             )}
             <div className={prefix("modal__content")}>{children}</div>
         </ReactModal>
