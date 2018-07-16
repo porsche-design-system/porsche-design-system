@@ -1,7 +1,7 @@
 @import "../../../common";
 
-$modal-max-width: 460px;
-$modal-max-width-full: 1264px;
+$modal-max-width: 30rem;
+$modal-max-width-full: 80rem;
 
 .#{$global-class-prefix}modal {
     $bem-block: &;
@@ -13,7 +13,7 @@ $modal-max-width-full: 1264px;
     max-width: calc(100% - 2 * 24px);
     max-height: calc(100% - 2 * 48px);
 
-    @media screen and (min-width: rem($modal-max-width) + 2 * $spacing-24) {
+    @media screen and (min-width: $modal-max-width + 2 * $spacing-24) {
         max-width: $modal-max-width;
     }
 
@@ -56,7 +56,6 @@ $modal-max-width-full: 1264px;
     &__close {
         color: $grey;
         cursor: pointer;
-        font-size: 18px;
     }
 
     &--full-width {
@@ -67,7 +66,7 @@ $modal-max-width-full: 1264px;
             max-height: calc(100% - 2 * 24px);
         }
 
-        @media screen and (min-width: rem($modal-max-width-full) + 2 * $spacing-24) {
+        @media screen and (min-width: $modal-max-width-full + 2 * $spacing-24) {
             max-width: $modal-max-width-full;
         }
 
