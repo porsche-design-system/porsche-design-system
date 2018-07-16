@@ -1,22 +1,20 @@
 @import "../../../common";
 
-$modal-max-width: 520px;
+$modal-max-width: 460px;
+$modal-max-width-full: 1264px;
 
 .#{$global-class-prefix}modal {
+    $bem-block: &;
+
     position: relative;
+    display: flex;
+    flex-direction: column;
+
     max-width: calc(100% - 2 * 24px);
     max-height: calc(100% - 2 * 48px);
 
     @media screen and (min-width: rem($modal-max-width) + 2 * $spacing-24) {
         max-width: $modal-max-width;
-    }
-
-    &--full-width {
-        max-width: calc(100% - 2 * 24px);
-
-        @include breakpoint("s") {
-            max-width: calc(100% - 2 * 48px);
-        }
     }
 
     background: $white;
@@ -45,22 +43,46 @@ $modal-max-width: 520px;
     }
 
     &__content {
-        padding-left: $spacing-36;
-        padding-right: $spacing-36;
-        padding-top: $spacing-24;
-        padding-bottom: $spacing-24;
+        padding: $spacing-42;
+    }
+
+    &__close-container {
+        padding-top: $spacing-18;
+        padding-right: $spacing-18;
+        position: fixed;
+        align-self: flex-end;
     }
 
     &__close {
-        position: absolute;
-        top: $spacing-12;
-        right: $spacing-12;
-        width: 20px !important;
-        height: 20px !important;
-        padding: 0;
         color: $grey;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    &--full-width {
+        max-width: calc(100% - 2 * 24px);
+        max-height: calc(100% - 2 * 48px);
+
+        @include breakpoint("s") {
+            max-height: calc(100% - 2 * 24px);
+        }
+
+        @media screen and (min-width: rem($modal-max-width-full) + 2 * $spacing-24) {
+            max-width: $modal-max-width-full;
+        }
+
+        & #{$bem-block}__content {
+            @include breakpoint("s") {
+                padding: $spacing-60;
+            }
+        }
+
+        & #{$bem-block}__close-container {
+            @include breakpoint("s") {
+                padding-top: $spacing-30;
+                padding-right: $spacing-30;
+            }
+        }
     }
 }
 
