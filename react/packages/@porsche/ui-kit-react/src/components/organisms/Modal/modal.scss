@@ -1,0 +1,105 @@
+@import "../../../common";
+
+$modal-max-width: 30rem;
+$modal-max-width-full: 80rem;
+
+$modal-padding: 1.5rem;
+
+.#{$global-class-prefix}modal {
+    $bem-block: &;
+
+    position: relative;
+    overflow: hidden;
+
+    background: $white;
+    outline: none;
+
+    &__body {
+        &--open {
+            overflow: hidden;
+        }
+    }
+
+    &__overlay {
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba($black, 0.8);
+    }
+
+    &__content-container {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: calc(100vw - 2 * #{$modal-padding});
+        max-height: calc(100vh - 2 * 2 * #{$modal-padding});
+
+        @media screen and (min-width: $modal-max-width + 2 * $modal-padding) {
+            max-width: $modal-max-width;
+        }
+    }
+
+    &__content {
+        padding: $spacing-42;
+    }
+
+    &__close-container {
+        padding-top: 1rem;
+        padding-right: 1rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    &__close {
+        color: $grey;
+        cursor: pointer;
+    }
+
+    &--full-width {
+        & #{$bem-block}__content-container {
+            max-width: calc(100vw - 2 * #{$modal-padding});
+
+            @include breakpoint("s") {
+                max-width: calc(100vw - 2 * 2 * #{$modal-padding});
+            }
+
+            @media screen and (min-width: $modal-max-width-full + 2 * $modal-padding) {
+                max-width: $modal-max-width-full;
+            }
+        }
+
+        & #{$bem-block}__content {
+            @include breakpoint("s") {
+                padding: $spacing-60;
+            }
+        }
+
+        & #{$bem-block}__close-container {
+            @include breakpoint("s") {
+                padding-top: $spacing-30;
+                padding-right: $spacing-30;
+            }
+        }
+    }
+}
+
+.#{$global-class-prefix}modal__portal > div {
+    opacity: 0;
+}
+
+.#{$global-class-prefix}modal__portal .ReactModal__Overlay {
+    transition: opacity 100ms ease-in-out;
+    &--after-open {
+        opacity: 1;
+    }
+    &--before-close {
+        opacity: 0;
+    }
+}

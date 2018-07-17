@@ -24,6 +24,7 @@ export { Tab, TabProps, TabPane } from "./components/molecules/Tab/Tab"
 
 // Organisms
 export { Header } from "./components/organisms/Header/Header"
+export { Modal } from "./components/organisms/Modal/Modal"
 export { Notification } from "./components/organisms/Notification/Notification"
 
 // Screens
