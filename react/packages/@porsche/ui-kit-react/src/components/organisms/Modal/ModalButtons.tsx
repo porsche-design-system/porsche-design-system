@@ -16,7 +16,7 @@ const _ModalButtons: React.StatelessComponent<ClassNameProp> & Partial<MetaCateg
 
     return (
         <Spacing paddingTop={24}>
-            <Flex gap={6} alignMainAxis="end">
+            <Flex gap={6} alignMainAxis="start">
                 {React.Children.map(children, (child, i) => (
                     <Spacing key={i} wrap marginTop={3} marginBottom={3}>
                         {child}
