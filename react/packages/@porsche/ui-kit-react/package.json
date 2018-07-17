@@ -62,20 +62,16 @@
     "dependencies": {
         "@porsche/ui-kit-core": "0.4.5",
         "classnames": "^2.2.5",
-        "lodash": "^4.17.4",
         "react-responsive": "^3.0.0",
-        "react-sortable-hoc": "^0.6.8",
         "react-modal": "^3.5.1",
         "tslib": "^1.9.0"
     },
     "devDependencies": {
         "@types/enzyme": "^3.1.9",
         "@types/jest": "^22.2.0",
-        "@types/lodash": "^4.14.85",
         "@types/node": "^8.0.47",
         "@types/react": "^16.1.0",
         "@types/react-responsive": "^3.0.0",
-        "@types/react-sortable-hoc": "^0.6.0",
         "@types/react-modal": "^3.2.0",
         "autoprefixer": "^8.1.0",
         "cpx": "^1.5.0",
