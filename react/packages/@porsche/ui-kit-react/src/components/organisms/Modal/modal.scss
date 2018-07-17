@@ -22,8 +22,6 @@ $modal-padding: 1.5rem;
 
     &__overlay {
         position: fixed;
-        // overflow: auto;
-        // -webkit-overflow-scrolling: touch;
         z-index: 10000;
         top: 0;
         right: 0;
@@ -36,7 +34,8 @@ $modal-padding: 1.5rem;
     }
 
     &__content-container {
-        overflow-y: scroll;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         max-width: calc(100vw - 2 * #{$modal-padding});
         max-height: calc(100vh - 2 * 2 * #{$modal-padding});
 
