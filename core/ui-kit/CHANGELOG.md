@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+## [0.7.2] - 2018-07-17
+### Bugfixes
+* added display: inline-block for footer links on breakpoint xxs to prevent wrong block display
+
 
 ## [0.7.1] - 2018-07-10
 ### Improvements
