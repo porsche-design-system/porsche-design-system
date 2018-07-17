@@ -9,19 +9,10 @@ $modal-padding: 1.5rem;
     $bem-block: &;
 
     position: relative;
-    display: flex;
-    flex-direction: column;
-
-    max-width: calc(100% - 2 * #{$modal-padding});
-    max-height: calc(100% - 2 * 2 * #{$modal-padding});
-
-    @media screen and (min-width: $modal-max-width + 2 * $modal-padding) {
-        max-width: $modal-max-width;
-    }
+    overflow: hidden;
 
     background: $white;
     outline: none;
-    overflow-y: scroll;
 
     &__body {
         &--open {
@@ -44,6 +35,16 @@ $modal-padding: 1.5rem;
         background: rgba($black, 0.8);
     }
 
+    &__content-container {
+        overflow-y: scroll;
+        max-width: calc(100vw - 2 * #{$modal-padding});
+        max-height: calc(100vh - 2 * 2 * #{$modal-padding});
+
+        @media screen and (min-width: $modal-max-width + 2 * $modal-padding) {
+            max-width: $modal-max-width;
+        }
+    }
+
     &__content {
         padding: $spacing-42;
     }
@@ -51,8 +52,9 @@ $modal-padding: 1.5rem;
     &__close-container {
         padding-top: 1rem;
         padding-right: 1rem;
-        position: fixed;
-        align-self: flex-end;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 
     &__close {
@@ -61,15 +63,16 @@ $modal-padding: 1.5rem;
     }
 
     &--full-width {
-        max-width: calc(100% - 2 * #{$modal-padding});
-        max-height: calc(100% - 2 * 2 * #{$modal-padding});
+        & #{$bem-block}__content-container {
+            max-width: calc(100vw - 2 * #{$modal-padding});
 
-        @include breakpoint("s") {
-            max-width: calc(100% - 2 * 2 * #{$modal-padding});
-        }
+            @include breakpoint("s") {
+                max-width: calc(100vw - 2 * 2 * #{$modal-padding});
+            }
 
-        @media screen and (min-width: $modal-max-width-full + 2 * $modal-padding) {
-            max-width: $modal-max-width-full;
+            @media screen and (min-width: $modal-max-width-full + 2 * $modal-padding) {
+                max-width: $modal-max-width-full;
+            }
         }
 
         & #{$bem-block}__content {
