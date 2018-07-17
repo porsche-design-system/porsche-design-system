@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
+import {PuiIcon} from "./iconMap";
 
 @Component({
   selector: `pui-icon`,
@@ -10,6 +11,6 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class PuiIconComponent {
-  @Input() icon = '';
+  @Input() icon: PuiIcon;
   @Input() styleModifier = '';
 }
