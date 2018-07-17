@@ -1,6 +1,6 @@
 ---
 title: Pagination Dots
-state: inprogress
+state: complete
 ---
 
 This is a pagination indicator relying on dots.
