@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * change footer copyright text
 
+## [0.7.2] - 2018-07-17
+### Bugfixes
+* added display: inline-block for footer links on breakpoint xxs to prevent wrong block display
+
+
+## [0.7.1] - 2018-07-10
+### Improvements
+* Molecule: Pagination dots
+  * simplified pagination dots json config (type modifiers)
+  * changed markup from `button` to `span` for easier mobile implementation
+  * added safe clickable area per dot
+
 ## [0.7.0] - 2018-07-09
 ### Breaking change
 * [breaking change] renaming of mixin animation-translate-scale to transform-translate-scale
