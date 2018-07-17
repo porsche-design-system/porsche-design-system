@@ -109,7 +109,9 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
                     />
                 </div>
             )}
-            <div className={prefix("modal__content")}>{children}</div>
+            <div className={prefix("modal__content-container")}>
+                <div className={prefix("modal__content")}>{children}</div>
+            </div>
         </ReactModal>
     )
 }
