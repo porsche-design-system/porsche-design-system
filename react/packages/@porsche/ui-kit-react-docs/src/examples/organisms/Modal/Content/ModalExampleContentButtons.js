@@ -36,10 +36,10 @@ class ModalExampleContentButtons extends React.Component {
                     <Modal.Text>{this.text}</Modal.Text>
                     <Modal.Buttons>
                         <Button type="default" onClick={this.handleClose}>
-                            Cancel
-                        </Button>
-                        <Button type="red" onClick={this.handleClose}>
                             Save
+                        </Button>
+                        <Button type="ghost" onClick={this.handleClose}>
+                            Cancel
                         </Button>
                     </Modal.Buttons>
                 </Modal>

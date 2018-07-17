@@ -15,7 +15,7 @@ const _ModalTitle: React.StatelessComponent<ClassNameProp> & Partial<MetaCategor
     const { className, children, ...rest } = props
 
     return (
-        <Spacing paddingBottom={12}>
+        <Spacing paddingBottom={18}>
             <Text className={className} type="2-thin" color="black">
                 {children}
             </Text>

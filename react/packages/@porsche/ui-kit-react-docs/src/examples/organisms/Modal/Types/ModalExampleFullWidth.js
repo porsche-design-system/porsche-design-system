@@ -9,7 +9,7 @@ class ModalExampleFullWidth extends React.Component {
         this.state = { modal: false }
 
         this.text = lorem({
-            count: 4,
+            count: 6,
             units: "sentences"
         })
     }
@@ -32,7 +32,13 @@ class ModalExampleFullWidth extends React.Component {
                 <Button onClick={this.handleClick}>Show Modal</Button>
 
                 <Modal fullWidth isOpen={this.state.modal} onRequestClose={this.handleClose}>
-                    {this.text}
+                    <p>{this.text}</p>
+                    <br />
+                    <p>{this.text}</p>
+                    <br />
+                    <p>{this.text}</p>
+                    <br />
+                    <p>{this.text}</p>
                 </Modal>
             </div>
         )

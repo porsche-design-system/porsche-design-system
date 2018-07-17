@@ -3,6 +3,8 @@
 $modal-max-width: 30rem;
 $modal-max-width-full: 80rem;
 
+$modal-padding: 1.5rem;
+
 .#{$global-class-prefix}modal {
     $bem-block: &;
 
@@ -10,10 +12,10 @@ $modal-max-width-full: 80rem;
     display: flex;
     flex-direction: column;
 
-    max-width: calc(100% - 2 * 24px);
-    max-height: calc(100% - 2 * 48px);
+    max-width: calc(100% - 2 * #{$modal-padding});
+    max-height: calc(100% - 2 * 2 * #{$modal-padding});
 
-    @media screen and (min-width: $modal-max-width + 2 * $spacing-24) {
+    @media screen and (min-width: $modal-max-width + 2 * $modal-padding) {
         max-width: $modal-max-width;
     }
 
@@ -47,8 +49,8 @@ $modal-max-width-full: 80rem;
     }
 
     &__close-container {
-        padding-top: $spacing-18;
-        padding-right: $spacing-18;
+        padding-top: 1rem;
+        padding-right: 1rem;
         position: fixed;
         align-self: flex-end;
     }
@@ -59,14 +61,14 @@ $modal-max-width-full: 80rem;
     }
 
     &--full-width {
-        max-width: calc(100% - 2 * 24px);
-        max-height: calc(100% - 2 * 48px);
+        max-width: calc(100% - 2 * #{$modal-padding});
+        max-height: calc(100% - 2 * 2 * #{$modal-padding});
 
         @include breakpoint("s") {
-            max-height: calc(100% - 2 * 24px);
+            max-width: calc(100% - 2 * 2 * #{$modal-padding});
         }
 
-        @media screen and (min-width: $modal-max-width-full + 2 * $spacing-24) {
+        @media screen and (min-width: $modal-max-width-full + 2 * $modal-padding) {
             max-width: $modal-max-width-full;
         }
 
