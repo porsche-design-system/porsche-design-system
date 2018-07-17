@@ -34,6 +34,10 @@
     text-decoration: underline;
     display: block;
 
+    @include breakpoint('xxs') {
+      display: inline-block;
+    }
+
     @include breakpoint('s') {
       display: inline;
     }
