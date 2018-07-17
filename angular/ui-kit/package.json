@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build:packagr && npm run build:fixDependency",
+    "build": "node iconClassCreator.js && npm run build:packagr && npm run build:fixDependency",
     "build:prod": "npm run build -- -- --prod",
     "build:packagr": "ng-packagr -p package.json",
     "build:fixDependency": "scripts/fix-dependency.sh",
