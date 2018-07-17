@@ -10,8 +10,6 @@ import React from "react"
 import { withDocInfo } from "src/app/HOC"
 
 const ComponentDoc = ({ componentGroup, componentName, description, path, seeItems }) => {
-    const cleanPath = path.split("node_modules/@porsche/ui-kit-react").pop() || path
-
     return (
         <DocumentTitle title={`${componentName} | Porsche UI React`}>
             <div>
@@ -19,7 +17,7 @@ const ComponentDoc = ({ componentGroup, componentName, description, path, seeIte
                     <Grid.Column>
                         <ComponentDocHeader componentName={componentName} description={description} />
                         {seeItems && seeItems.length > 0 && <ComponentDocSee items={seeItems} />}
-                        <ComponentDocLinks componentName={componentName} path={cleanPath} />
+                        <ComponentDocLinks componentName={componentName} path={path} />
                         <ComponentProps componentGroup={componentGroup} componentName={componentName} />
                     </Grid.Column>
                 </Grid>
