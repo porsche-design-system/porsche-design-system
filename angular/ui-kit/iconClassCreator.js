@@ -5,14 +5,13 @@ var fs = require('fs'),
 
 const iconSCSSFilePath = path.join(__dirname, '..', '..', 'core/ui-kit/src/modules/icon/icon.scss'),
   iconInputFilePath = path.join(__dirname, '..', '..', 'core/ui-kit/src/modules/icon/icon.css'),
-  iconMapOutputFile = './src/lib/atoms/icon/iconMap.ts'
+  iconMapOutputFile = './src/lib/atoms/icon/iconMap.ts';
 
 
-main()
-
+main();
 function main() {
-  let map = parseSCSS(iconSCSSFilePath, iconInputFilePath)
-  extractCSSclasses(map, iconMapOutputFile)
+  let map = parseSCSS(iconSCSSFilePath, iconInputFilePath);
+  extractCSSclasses(map, iconMapOutputFile);
 }
 
 /**
@@ -22,16 +21,16 @@ function main() {
  * @return Object {Object}
  */
 function parseSCSS(inputSCSSPath, outputCSSPath) {
-  let inputSCSSFile = fs.readFileSync(inputSCSSPath).toString()
+  let inputSCSSFile = fs.readFileSync(inputSCSSPath).toString();
 
-  var result = sass.renderSync({
+  let result = sass.renderSync({
     file: inputSCSSPath,
     data: inputSCSSFile,
     outputStyle: 'nested',
     outFile: outputCSSPath
-  })
+  });
 
-  return createMapFromString(result.css)
+  return createMapFromString(result.css);
 }
 
 /**
@@ -40,18 +39,18 @@ function parseSCSS(inputSCSSPath, outputCSSPath) {
  * @return {object} map
  */
 function createMapFromString(stringCSS){
-  let re = new RegExp("(\\.(.{1}[\\w-_]+):)", "g")
-  let matches = []
+  let re = new RegExp("(\\.(.{1}[\\w-_]+):)", "g");
+  let matches = [];
 
-  let map ={}
+  let map ={};
   while(matches=re.exec(stringCSS.toString())){
-    let val = matches[2]
-    let startIndexIcon = matches[2].indexOf('--') + 2
-    let attr = matches[2].substring(startIndexIcon).replace(/-/g, "_").toUpperCase()
-    if(!isNaN(attr[0])) attr = 'N' + attr
-    map[attr] = val
+    let val = matches[2];
+    let startIndexIcon = matches[2].indexOf('--') + 2;
+    let attr = matches[2].substring(startIndexIcon).replace(/-/g, "_").toUpperCase();
+    if(!isNaN(attr[0])) attr = 'N' + attr;
+    map[attr] = val;
   }
-  return map
+  return map;
 }
 
 /**
@@ -69,7 +68,7 @@ function extractCSSclasses(classMap, outputEnumTS) {
         if (err) throw err;
       });
     }
-  })
+  });
   fs.appendFileSync(outputEnumTS, '}', (err) => {
     if (err) throw err;
   });
