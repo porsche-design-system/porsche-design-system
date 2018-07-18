@@ -10,15 +10,17 @@ const iconSCSSFilePath = path.join(__dirname, '..', '..', 'core/ui-kit/src/modul
 
 main()
 
-function main(){
-  parseSCSS(iconSCSSFilePath, iconInputFilePath)
-  extractCSSclasses(iconInputFilePath,iconMapOutputFile)
+function main() {
+  let map = parseSCSS(iconSCSSFilePath, iconInputFilePath)
+  console.log(map)
+  extractCSSclasses(map, iconMapOutputFile)
 }
 
 /**
  * parses SCSS file to CSS file and creates/ overwrites CSS file by specified path
  * @param inputSCSSPath {String} Path to SCSS file which should be parsed (use path.join(__dirname, '..','pathto/style.css))
  * @param outputCSSPath {String} Path to CSS output file
+ * @return Object {Object}
  */
 function parseSCSS(inputSCSSPath, outputCSSPath) {
   let inputSCSSFile = fs.readFileSync(inputSCSSPath).toString()
@@ -29,44 +31,36 @@ function parseSCSS(inputSCSSPath, outputCSSPath) {
     outputStyle: 'nested',
     outFile: outputCSSPath
   })
-  fs.writeFileSync(iconInputFilePath, result.css)
+
+  return createMapFromString(result.css)
 }
 
 /**
- * Extracts the css classes and create output Enum for easy access in Angular Apps
- * @param inputCSSPath {String} Path to input CSS file
- * @param outputEnumTS {String} Path to output enum typescript file
+ * Filters out the CSS classes of a String variable
+ * @param {String} stringCSS
+ * @return {object} map
  */
-function extractCSSclasses(inputCSSPath, outputEnumTS) {
-  let classMap = {}
-  let rd = readline.createInterface({
-    input: fs.createReadStream(inputCSSPath),
-    console: false
-  });
+function createMapFromString(stringCSS){
+  let re = new RegExp("(\\.(.{1}[\\w-_]+):)", "g")
+  let matches = []
 
-  rd.on('line', function (line) {
-    if (line.includes('.') && line.includes('{') && line.includes(':')) {
-      let startIndex = line.indexOf('.') + 1
-      let endIndex = line.indexOf(':')
-      let startIndexIcon = line.indexOf('--') + 2
-      let attr = line.substring(startIndexIcon, endIndex).replace(/-/g, "_")
-      if (!isNaN(attr[0])) attr = 'N' + attr
-      classMap[attr.replace(/-/g, "_").toUpperCase()] = 'icon ' + line.substring(startIndex, endIndex)
-    }
-  }).on('close', () => {
-    writeFile(outputEnumTS, classMap)
-    console.log('You successFully created ' + outputEnumTS + '\nHave a great day!');
-    process.exit(0);
-  });
+  let map ={}
+  while(matches=re.exec(stringCSS.toString())){
+    let val = matches[2]
+    let startIndexIcon = matches[2].indexOf('--') + 2
+    let attr = matches[2].substring(startIndexIcon).replace(/-/g, "_").toUpperCase()
+    if(!isNaN(attr[0])) attr = 'N' + attr
+    map[attr] = val
+  }
+  return map
 }
-
 
 /**
  * Write the enum line by line to a typescript file
  * @param outputEnumTS {String} Path to output enum typescript file
  * @param classMap {Object} Object containing css classes and belonging css attributes
  */
-function writeFile(outputEnumTS,classMap) {
+function extractCSSclasses(classMap, outputEnumTS) {
   fs.writeFileSync(outputEnumTS, "export enum PuiIcon {" + Object.keys(classMap)[0] + "= '" + classMap[Object.keys(classMap)[0]] + "',", (err) => {
     if (err) throw err;
   });
@@ -81,4 +75,5 @@ function writeFile(outputEnumTS,classMap) {
     if (err) throw err;
   });
 }
+
 
