@@ -44,7 +44,7 @@ function createMapFromString(stringCSS){
 
   let map ={};
   while(matches=re.exec(stringCSS.toString())){
-    let val = matches[2];
+    let val = 'icon '+matches[2];
     let startIndexIcon = matches[2].indexOf('--') + 2;
     let attr = matches[2].substring(startIndexIcon).replace(/-/g, "_").toUpperCase();
     if(!isNaN(attr[0])) attr = 'N' + attr;
