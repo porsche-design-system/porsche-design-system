@@ -12,5 +12,5 @@ import {PuiIcon} from "./iconMap";
 })
 export class PuiIconComponent {
   @Input() icon: PuiIcon;
-  @Input() styleModifier = '';
+  @Input() styleModifier = ''
 }

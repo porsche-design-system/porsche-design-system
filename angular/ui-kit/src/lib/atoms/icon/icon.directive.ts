@@ -5,6 +5,7 @@ import {
   Renderer2,
   HostBinding
 } from '@angular/core';
+import {PuiIcon} from "./iconMap";
 
 @Directive({
   selector: '[puiIcon]'
@@ -18,8 +19,10 @@ export class PuiIconDirective {
   @Input() set puiIcon(icon: string) {
     if (this.currentIcon) {
       this.renderer.removeClass(this.hostElement.nativeElement, this.currentIcon);
+    } else {
+      this.renderer.addClass(this.hostElement.nativeElement, 'icon');
     }
-    this.currentIcon = `icon--${icon}`;
+    this.currentIcon = icon;
     this.renderer.addClass(this.hostElement.nativeElement, this.currentIcon);
   }
 
