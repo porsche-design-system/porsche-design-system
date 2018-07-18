@@ -1,4 +1,4 @@
-var fs = require('fs'),
+const fs = require('fs'),
   readline = require('readline'),
   path = require("path"),
   sass = require('node-sass');
