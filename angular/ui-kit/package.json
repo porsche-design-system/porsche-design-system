@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build:packagr && npm run build:fixDependency",
+    "build": "node iconClassCreator.js && npm run build:packagr && npm run build:fixDependency",
     "build:prod": "npm run build -- -- --prod",
     "build:packagr": "ng-packagr -p package.json",
     "build:fixDependency": "scripts/fix-dependency.sh",
@@ -49,6 +49,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^1.0.0",
     "ng-packagr": "^2.4.2",
+    "node-sass": "^4.9.2",
     "protractor": "^5.3.1",
     "puppeteer": "^1.3.0",
     "rxjs": "^5.5.10",
