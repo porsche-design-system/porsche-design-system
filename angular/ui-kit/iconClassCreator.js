@@ -26,7 +26,7 @@ function parseSCSS(inputSCSSPath, outputCSSPath) {
   var result = sass.renderSync({
     file: inputSCSSPath,
     data: inputSCSSFile,
-    outputStyle: 'compressed',
+    outputStyle: 'nested',
     outFile: outputCSSPath
   })
   fs.writeFileSync(iconInputFilePath, result.css)
@@ -50,8 +50,8 @@ function extractCSSclasses(inputCSSPath, outputEnumTS) {
       let endIndex = line.indexOf(':')
       let startIndexIcon = line.indexOf('--') + 2
       let attr = line.substring(startIndexIcon, endIndex).replace(/-/g, "_")
-      if (!isNaN(attr[0])) attr = 'n' + attr
-      classMap[attr.replace(/-/g, "_")] = 'icon ' + line.substring(startIndex, endIndex)
+      if (!isNaN(attr[0])) attr = 'N' + attr
+      classMap[attr.replace(/-/g, "_").toUpperCase()] = 'icon ' + line.substring(startIndex, endIndex)
     }
   }).on('close', () => {
     writeFile(outputEnumTS, classMap)
@@ -67,7 +67,7 @@ function extractCSSclasses(inputCSSPath, outputEnumTS) {
  * @param classMap {Object} Object containing css classes and belonging css attributes
  */
 function writeFile(outputEnumTS,classMap) {
-  fs.writeFileSync(outputEnumTS, 'export enum PuiIcon {' + Object.keys(classMap)[0] + "= '" + classMap[Object.keys(classMap)[0]] + "',", (err) => {
+  fs.writeFileSync(outputEnumTS, "export enum PuiIcon {" + Object.keys(classMap)[0] + "= '" + classMap[Object.keys(classMap)[0]] + "',", (err) => {
     if (err) throw err;
   });
   Object.keys(classMap).forEach(function (key, index) {
