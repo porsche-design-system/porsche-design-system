@@ -12,7 +12,6 @@ main()
 
 function main() {
   let map = parseSCSS(iconSCSSFilePath, iconInputFilePath)
-  console.log(map)
   extractCSSclasses(map, iconMapOutputFile)
 }
 
