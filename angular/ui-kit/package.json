@@ -1,6 +1,6 @@
 {
   "name": "@porsche/ui-kit-angular",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
