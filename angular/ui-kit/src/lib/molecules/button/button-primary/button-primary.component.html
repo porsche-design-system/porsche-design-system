@@ -10,7 +10,8 @@
   *ngIf="link"
 >
   <span
-    class="button-primary__icon icon icon--{{icon}}"
+    class="button-primary__icon"
+    [puiIcon]="Icon"
     [class.button-primary__icon--loading]="loading"
   >
     <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>
@@ -30,7 +31,8 @@
   *ngIf="!link"
 >
   <span
-    class="button-primary__icon icon icon--{{icon}}"
+    class="button-primary__icon"
+    [puiIcon]="Icon"
     [class.button-primary__icon--loading]="loading"
   >
     <pui-loader-base styleModifier="button-primary__loader"></pui-loader-base>

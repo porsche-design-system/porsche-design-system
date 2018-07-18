@@ -7,7 +7,8 @@
   [disabled]="disabled"
   *ngIf="!link"
 >
-  <span class="button-ghost__icon icon icon--{{icon}}"
+  <span class="button-ghost__icon"
+        [puiIcon]="Icon"
         [class.button-ghost__icon--loading]="loading">
     <pui-loader-base styleModifier="button-ghost__loader" [loaderDark]="!inverted"></pui-loader-base>
   </span>
@@ -23,7 +24,8 @@
   href="#"
   *ngIf="link"
 >
-  <span class="button-ghost__icon icon icon--{{icon}} {{styleModifier}}"
+  <span class="button-ghost__icon {{styleModifier}}"
+        [puiIcon]="Icon"
         [class.button-ghost__icon--loading]="loading">
     <pui-loader-base styleModifier="button-ghost__loader" [loaderDark]="!inverted"></pui-loader-base>
   </span>
