@@ -17,5 +17,5 @@ export class PuiLinkIconTextComponent {
   @Input() linkText = '';
   @Input() labelBlack = false;
   @Input() styleModifier = '';
-  Icon: PuiIcon =PuiIcon.ARROW_RIGHT_HAIR;
+  @Input() icon: PuiIcon =PuiIcon.ARROW_RIGHT_HAIR;
 }

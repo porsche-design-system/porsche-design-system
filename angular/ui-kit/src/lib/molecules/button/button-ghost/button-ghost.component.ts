@@ -20,8 +20,7 @@ export class PuiButtonGhostComponent {
   @Input() disabled = false;
   @Input() loading = false;
   @Input() link = false;
-  @Input() icon = 'arrow-right-hair';
+  @Input() icon: PuiIcon = PuiIcon.ARROW_RIGHT_HAIR;
   @Input() label = '';
   @Input() styleModifier = '';
-  Icon: PuiIcon = PuiIcon.ARROW_RIGHT_HAIR
 }
