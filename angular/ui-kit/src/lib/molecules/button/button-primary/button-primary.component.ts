@@ -1,4 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { PuiIcon } from '../../../atoms/icon';
 
 @Component({
   selector: 'pui-button-primary',
@@ -21,7 +22,7 @@ export class PuiButtonPrimaryComponent {
   @Input() buttonGroup = false;
   @Input() disabled = false;
   @Input() loading = false;
-  @Input() icon = 'arrow-right-hair';
+  @Input() icon: PuiIcon = PuiIcon.ARROW_RIGHT_HAIR;
   @Input() label = '';
   @Input() styleModifier = '';
 }
