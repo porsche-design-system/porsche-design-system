@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * 
 * 
 
+## [0.2.4] - 2018-07-19
+### Changed
+* Updated Icon Automatic generation of icons enum: 
+* Removed 'icon' class for angular directive 😏
+
 ## [0.2.3] - 2018-07-18
 ### Bugfixes
 * Fixed icon class error
@@ -21,11 +26,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### New Features
 * Added footer presentational component
 * Added scripts for publishing to Artifactory and Nexus
-
-## [0.2.4] - 2018-18-07
-### Changed
-* Updated Icon Automatic generation of icons enum: 
-removed 'icon' class for angular directive 😏
 
 ### Updated
 * Updated Icon directive for using PuiIcon type
