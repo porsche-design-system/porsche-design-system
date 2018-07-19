@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, Input, OnInit } from '@angular/core';
+import { PuiIcon } from '../../../atoms/icon';
 
 @Component({
   selector: `pui-button-ghost`,
@@ -19,7 +20,7 @@ export class PuiButtonGhostComponent {
   @Input() disabled = false;
   @Input() loading = false;
   @Input() link = false;
-  @Input() icon = 'arrow-right-hair';
+  @Input() icon: PuiIcon = PuiIcon.ARROW_RIGHT_HAIR;
   @Input() label = '';
   @Input() styleModifier = '';
 }
