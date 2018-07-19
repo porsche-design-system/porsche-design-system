@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input, OnInit } from '@angular/core';
-import {PuiIcon} from "../../../atoms/icon";
+import { PuiIcon } from '../../../atoms/icon';
 
 @Component({
   selector: `pui-button-ghost`,
