@@ -22,9 +22,8 @@ export class PuiButtonPrimaryComponent {
   @Input() buttonGroup = false;
   @Input() disabled = false;
   @Input() loading = false;
-  @Input() icon = 'arrow-right-hair';
+  @Input() icon: PuiIcon = PuiIcon.ARROW_RIGHT_HAIR;
   @Input() label = '';
   @Input() styleModifier = '';
-  Icon: PuiIcon = PuiIcon.ARROW_RIGHT_HAIR
 }
 

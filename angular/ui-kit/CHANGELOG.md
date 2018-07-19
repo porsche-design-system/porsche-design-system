@@ -22,3 +22,4 @@ removed 'icon' class for angular directive 😏
 * Updated Icon directive for using PuiIcon type
 * Updated Icon Atom to take a PuiIcon input attribute with type PuiIcon
 * Updated molecules to use PuiIcon type: button-ghost, button-primary, link-icon-text
+* updated e2e tests
