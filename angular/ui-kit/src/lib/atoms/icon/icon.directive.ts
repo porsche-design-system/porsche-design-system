@@ -19,9 +19,8 @@ export class PuiIconDirective {
   @Input() set puiIcon(icon: string) {
     if (this.currentIcon) {
       this.renderer.removeClass(this.hostElement.nativeElement, this.currentIcon);
-    } else {
-      this.renderer.addClass(this.hostElement.nativeElement, 'icon');
     }
+
     this.currentIcon = icon;
     this.renderer.addClass(this.hostElement.nativeElement, this.currentIcon);
   }
