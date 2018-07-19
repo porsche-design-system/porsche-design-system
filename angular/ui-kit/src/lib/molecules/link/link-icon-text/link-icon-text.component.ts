@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, Input, Renderer2, ElementRef } from '@angular/core';
-// import { PuiIcon } from "@porsche/ui-kit-angular";
 import { PuiIcon } from '../../../atoms/icon';
 
 @Component({
