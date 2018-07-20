@@ -21,6 +21,8 @@ export interface NavigationSection {
 export interface NavigationProps extends ClassNameProp, ComponentProp {
     /** The navigation sections to be displayed. */
     sections: NavigationSection[]
+    /** The mobile navigation trigger text. */
+    mobiletitle?: string | JSX.Element
 }
 
 const _meta: ComponentMeta = {
