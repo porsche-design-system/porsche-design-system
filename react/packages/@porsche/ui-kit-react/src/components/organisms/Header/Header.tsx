@@ -11,6 +11,9 @@ export interface HeaderProps extends ClassNameProp, ComponentProp {
     /** The navigation sections to be displayed. */
     sections: NavigationSection[]
 
+    /** The mobile navigation trigger text. */
+    mobiletitle?: string | JSX.Element
+
     /** The element type of the logo. */
     logoComponent?: string | React.ComponentClass
 
@@ -36,7 +39,7 @@ const _Header: React.StatelessComponent<HeaderProps> & Partial<MetaCategorizable
                 <Logo as={logoComponent} {...logoProps} />
             </Flex>
             <Divider className={prefix("header__divider")} />
-            {sections.length > 0 ? <Navigation sections={sections} /> : null}
+            {sections.length > 0 ? <Navigation sections={sections} mobiletitle="Menu" /> : null}
         </ElementType>
     )
 }

@@ -133,7 +133,7 @@ const sections = [
 ]
 
 const NavigationExampleRegular = () => {
-    return <Navigation sections={sections} />
+    return <Navigation sections={sections} mobiletitle="Menu" />
 }
 
 export default NavigationExampleRegular
