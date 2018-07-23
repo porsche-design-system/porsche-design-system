@@ -5,11 +5,14 @@ import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizab
 import { META, getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-import { Flex, Breakpoint, Navigation, NavigationSection, Logo, Divider } from "../../../index"
+import { Flex, Navigation, NavigationSection, Logo, Divider } from "../../../index"
 
 export interface HeaderProps extends ClassNameProp, ComponentProp {
     /** The navigation sections to be displayed. */
     sections: NavigationSection[]
+
+    /** The mobile navigation trigger text. */
+    title?: string | JSX.Element
 
     /** The element type of the logo. */
     logoComponent?: string | React.ComponentClass
@@ -24,7 +27,7 @@ const _meta: ComponentMeta = {
 }
 
 const _Header: React.StatelessComponent<HeaderProps> & Partial<MetaCategorizable> = (props) => {
-    const { as, className, children, sections, logoComponent, logoProps, ...rest } = props
+    const { as, className, children, sections, title, logoComponent, logoProps, ...rest } = props
 
     const ElementType = getElementType(as, "div")
 
@@ -36,7 +39,7 @@ const _Header: React.StatelessComponent<HeaderProps> & Partial<MetaCategorizable
                 <Logo as={logoComponent} {...logoProps} />
             </Flex>
             <Divider className={prefix("header__divider")} />
-            {sections.length > 0 ? <Navigation sections={sections} /> : null}
+            {sections.length > 0 ? <Navigation sections={sections} title={title} /> : null}
         </ElementType>
     )
 }
