@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import {PuiIcon} from "./iconMap";
+import { PuiIcon } from './iconMap';
 
 @Component({
   selector: `pui-icon`,
