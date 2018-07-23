@@ -1,5 +1,5 @@
 @import "../../../common";
-@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/modules/button/button-ghost";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/modules/button/button-ghost";
 
 @mixin buttonState($textColor, $borderColor) {
     &:hover,
