@@ -126,7 +126,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
     }
 
     render() {
-        const { as, className, sections, children, ...rest } = this.props
+        const { as, className, sections, children, title, ...rest } = this.props
 
         const ElementType = getElementType(as, "nav")
 
@@ -134,7 +134,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
             <ElementType className={className} {...rest}>
                 <Flex className={prefix("nav-mobile__bar")} alignMainAxis="end">
                     <button className={prefix("nav-mobile__trigger")} onClick={this.openNav}>
-                        Menu
+                        {title}
                     </button>
                 </Flex>
 
@@ -152,7 +152,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
                                     <Icon name="arrow_left_hair" className={prefix("nav-mobile__icon")} />
                                 </Spacing>
                                 <Spacing marginRight="auto">
-                                    <span>Menu</span>
+                                    <span>{title}</span>
                                 </Spacing>
                             </Flex>
                         </div>
