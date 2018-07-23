@@ -1,6 +1,6 @@
 @import "../../../common";
-@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/base/grid/flex.mixin.scss";
-@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/base/grid/flex.setup.scss";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/grid/flex.mixin.scss";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/grid/flex.setup.scss";
 
 // Grid spacings
 .#{$global-class-prefix}flex {
