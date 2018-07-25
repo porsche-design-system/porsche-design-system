@@ -41,9 +41,6 @@
         top: $navigation-footer-item-header-inner-spacing-reset;
         bottom: $navigation-footer-item-header-inner-spacing-reset;
       };
-    }
-
-    @include breakpoint('m') {
       cursor: text;
     }
 
