@@ -58,11 +58,11 @@ $modal-padding: 1.5rem;
     }
 
     &__close {
-        color: $grey;
+        color: $black;
         cursor: pointer;
     }
 
-    &--full-width {
+    &--wide {
         & #{$bem-block}__content-container {
             max-width: calc(100vw - 2 * #{$modal-padding});
 
