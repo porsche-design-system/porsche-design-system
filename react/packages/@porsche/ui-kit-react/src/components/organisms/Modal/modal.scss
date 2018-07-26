@@ -62,7 +62,7 @@ $modal-padding: 1.5rem;
         cursor: pointer;
     }
 
-    &--full-width {
+    &--wide {
         & #{$bem-block}__content-container {
             max-width: calc(100vw - 2 * #{$modal-padding});
 
