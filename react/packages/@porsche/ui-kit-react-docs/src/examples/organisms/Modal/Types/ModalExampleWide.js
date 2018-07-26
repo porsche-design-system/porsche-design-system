@@ -2,7 +2,7 @@ import React from "react"
 import { Modal, Button } from "@porsche/ui-kit-react"
 import lorem from "lorem-ipsum"
 
-class ModalExampleFullWidth extends React.Component {
+class ModalExampleWide extends React.Component {
     constructor(props) {
         super(props)
 
@@ -31,7 +31,7 @@ class ModalExampleFullWidth extends React.Component {
             <div>
                 <Button onClick={this.handleClick}>Show Modal</Button>
 
-                <Modal fullWidth isOpen={this.state.modal} onRequestClose={this.handleClose}>
+                <Modal wide isOpen={this.state.modal} onRequestClose={this.handleClose}>
                     <p>{this.text}</p>
                     <br />
                     <p>{this.text}</p>
@@ -45,4 +45,4 @@ class ModalExampleFullWidth extends React.Component {
     }
 }
 
-export default ModalExampleFullWidth
+export default ModalExampleWide

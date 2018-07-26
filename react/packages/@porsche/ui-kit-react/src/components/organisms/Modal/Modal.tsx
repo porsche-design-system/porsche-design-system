@@ -38,10 +38,10 @@ export interface ModalProps extends ClassNameProp {
     contentLabel?: string
 
     /**
-     * Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use fullWidth to allow the modal to span the entire webpage (minus margins).
+     * Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use wide to allow the modal to span the entire webpage (minus margins).
      * @default false
      */
-    fullWidth?: boolean
+    wide?: boolean
 
     /**
      * Boolean describing if the modal should be shown or not. Defaults to false.
@@ -58,6 +58,11 @@ export interface ModalProps extends ClassNameProp {
      * @default true
      */
     showCloseIcon?: boolean
+
+    /**
+     * option to influence the styling of the modal container class
+     */
+    containerClass?: string
 }
 
 const defaultProps: Partial<ModalProps> = {
@@ -76,14 +81,17 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
         children,
         contentLabel,
         isOpen,
-        fullWidth,
+        wide,
         onRequestClose,
         ariaHideApp,
         showCloseIcon,
+        containerClass,
         ...rest
     } = props
 
-    const classes = cx(prefix("modal"), { [prefix("modal--full-width")]: fullWidth }, className)
+    const classes = cx(prefix("modal"), { [prefix("modal--wide")]: wide }, className)
+
+    const containerClasses = cx(prefix("modal__content-container"), { [`${containerClass}`]: containerClass })
 
     return (
         <ReactModal
@@ -109,7 +117,7 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
                     />
                 </div>
             )}
-            <div className={prefix("modal__content-container")}>
+            <div className={containerClasses}>
                 <div className={prefix("modal__content")}>{children}</div>
             </div>
         </ReactModal>
