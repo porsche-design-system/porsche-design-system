@@ -20,6 +20,14 @@ const Types = () => {
             <ComponentExample title="ReadOnly" examplePath="molecules/Checkbox/Types/CheckboxExampleReadOnly">
                 A checkbox can be read only. No onChange event will be dispatched.
             </ComponentExample>
+
+            <ComponentExample
+                title="Custom HTML label rendering"
+                examplePath="molecules/Checkbox/Types/CheckboxExampleCustomLabel"
+            >
+                A checkbox can be implemented inside a custom label element. So we need to change HTML label rendering
+                to HTML span rendering.
+            </ComponentExample>
         </ExampleSection>
     )
 }
