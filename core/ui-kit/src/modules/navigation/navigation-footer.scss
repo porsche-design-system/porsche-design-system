@@ -45,12 +45,17 @@
     }
 
     &--open {
-      padding-bottom: $navigation-footer-item-header-inner-spacing-reset;
+      @include breakpoint('s') {
+        padding-bottom: $navigation-footer-item-header-inner-spacing-reset;
+      }
     }
   }
 
   &__icon {
     @include -text-color-white;
+    @include apply-animation('navigation-footer') {
+      transition: $navigation-footer-item-icon-transition-duration;
+    }
 
     font-size: $navigation-footer-item-icon-font-size;
     line-height: $navigation-footer-item-icon-line-height;
@@ -74,6 +79,10 @@
     @include -spacing-a(bottom, padding);
     display: none;
 
+    @include breakpoint('xxs', 's') {
+      margin-top: 0;
+    }
+
     @include breakpoint('s') {
       display: block;
       padding-bottom: 0;
@@ -81,6 +90,21 @@
 
     &--open {
       display: block;
+    }
+
+    @include apply-animation('navigation-footer') {
+      @include breakpoint('xxs', 's') {
+        transition: $navigation-footer-submenu-open-transition-duration $navigation-footer-submenu-open-transition-easing;
+        max-height: 0px; // sass-lint:disable-line zero-unit
+        display: block;
+        overflow: hidden;
+        padding-bottom: 0;
+
+        &--open {
+          @include -spacing-a(bottom, padding);
+          max-height: 10000px;
+        }
+      }
     }
   }
 
