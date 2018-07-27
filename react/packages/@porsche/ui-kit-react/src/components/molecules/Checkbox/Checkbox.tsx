@@ -39,8 +39,14 @@ export interface CheckboxProps extends ClassNameProp, ComponentProp {
     /** A checkbox can be read-only and unable to change states. */
     readOnly?: boolean
 
-    /** Determines if the content is wrapped or truncated with an ellipsis */
+    /** Determines if the content is wrapped or truncated with an ellipsis. */
     singleLine?: boolean
+
+    /**
+     * Determine if the checkbox is rendered as HTML label or as span element. Use span if you have use the checkbox together with other elements in a wrapping label.
+     * @default label
+     */
+    labelAs?: "label" | "span"
 
     /**
      * The appearance of the checkbox.
@@ -51,6 +57,7 @@ export interface CheckboxProps extends ClassNameProp, ComponentProp {
 
 const defaultProps: Partial<CheckboxProps> = {
     checked: false,
+    labelAs: "label",
     type: "default"
 }
 
@@ -72,11 +79,13 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> & Partial<MetaCategoriz
         onClick,
         readOnly,
         singleLine,
+        labelAs,
         type,
         ...rest
     } = props
 
     const ElementType = getElementType(as, "div")
+    const ElementLabelType = getElementType(as, labelAs)
 
     const iconClasses = cx(
         prefix("checkbox__icon"),
@@ -126,7 +135,7 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> & Partial<MetaCategoriz
 
     return (
         <ElementType className={className} onClick={handleClick} {...rest}>
-            <label className={prefix("checkbox")}>
+            <ElementLabelType className={prefix("checkbox")}>
                 <input
                     className={prefix("checkbox__field")}
                     type="checkbox"
@@ -137,7 +146,7 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> & Partial<MetaCategoriz
                 />
                 <span className={iconClasses} {...checkboxProps} />
                 {children && React.Children.count(children) > 0 && <span className={labelClasses}>{children}</span>}
-            </label>
+            </ElementLabelType>
         </ElementType>
     )
 }
