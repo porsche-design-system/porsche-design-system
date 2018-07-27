@@ -41,12 +41,9 @@ const configuration = {
                 use: [
                     {
                         loader: production ? MiniCssExtractPlugin.loader : "style-loader",
-                        options: !production
-                            ? {
-                                  // Style loader options
-                                  sourceMap: true
-                              }
-                            : {}
+                        options: {
+                            sourceMap: !production
+                        }
                     },
                     {
                         loader: "css-loader",
@@ -54,7 +51,7 @@ const configuration = {
                             modules: false,
                             sourceMap: true,
                             importLoaders: 0,
-                            localIdentName: !production ? "[local]__[hash:base64:5]" : "[hash:base64:5]"
+                            localIdentName: production ? "[hash:base64:5]" : "[local]__[hash:base64:5]"
                         }
                     }
                 ]
@@ -63,7 +60,7 @@ const configuration = {
                 test: /\.(ttf|otf|woff|woff2|eot|svg|png|ico)$/,
                 loader: "url-loader",
                 query: {
-                    limit: 10000,
+                    limit: 1000,
                     name: `static/media/[name]${production ? ".[hash:8]" : ""}.[ext]`
                 }
             }

@@ -1008,6 +1008,20 @@
         "tags": []
       },
       {
+        "defaultValue": "label",
+        "description": [
+          "Determine if the checkbox is rendered as HTML label or as span element. Use span if you have use the checkbox together with other elements in a wrapping label."
+        ],
+        "name": "labelAs",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"label\"",
+          "\"span\""
+        ]
+      },
+      {
         "description": [
           "Called when the user attempts to change the checked state."
         ],
@@ -1068,7 +1082,7 @@
       },
       {
         "description": [
-          "Determines if the content is wrapped or truncated with an ellipsis"
+          "Determines if the content is wrapped or truncated with an ellipsis."
         ],
         "name": "singleLine",
         "required": false,
@@ -1352,6 +1366,15 @@
         "required": true,
         "type": "NavigationSection[]",
         "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string | Element",
+        "tags": []
       }
     ],
     "docBlock": {
@@ -1391,6 +1414,15 @@
         "name": "sections",
         "required": true,
         "type": "NavigationSection[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string | Element",
         "tags": []
       }
     ],
@@ -1492,6 +1524,15 @@
         "name": "sections",
         "required": true,
         "type": "NavigationSection[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string | Element",
         "tags": []
       }
     ],
@@ -1979,6 +2020,15 @@
         "required": true,
         "type": "NavigationSection[]",
         "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string | Element",
+        "tags": []
       }
     ],
     "docBlock": {
@@ -2013,6 +2063,15 @@
       },
       {
         "description": [
+          "option to influence the styling of the modal container class"
+        ],
+        "name": "containerClass",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
           "String indicating how the content container should be announced to screenreaders."
         ],
         "name": "contentLabel",
@@ -2037,15 +2096,103 @@
         "required": true,
         "type": "func",
         "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "A modal shows a close icon at its top right corner. You can disable this by setting showCloseIcon to false."
+        ],
+        "name": "showCloseIcon",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use wide to allow the modal to span the entire webpage (minus margins)."
+        ],
+        "name": "wide",
+        "required": false,
+        "type": "boolean",
+        "tags": []
       }
     ],
     "docBlock": {
       "tags": [],
       "description": [
-        ""
+        "A modal container with a transparent background."
       ]
     },
     "path": "src/components/organisms/Modal/Modal.tsx"
+  },
+  "ModalButtons": {
+    "displayName": "ModalButtons",
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Button"
+        }
+      ],
+      "description": [
+        "A container for modal action buttons. You should probably only use one or more <Button /> components as children."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalButtons.tsx"
+  },
+  "ModalText": {
+    "displayName": "ModalText",
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The copy text for a modal."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalText.tsx"
+  },
+  "ModalTitle": {
+    "displayName": "ModalTitle",
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The title for a modal."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalTitle.tsx"
   },
   "Notification": {
     "displayName": "Notification",
