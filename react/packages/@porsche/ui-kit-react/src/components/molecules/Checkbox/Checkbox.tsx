@@ -42,7 +42,10 @@ export interface CheckboxProps extends ClassNameProp, ComponentProp {
     /** Determines if the content is wrapped or truncated with an ellipsis. */
     singleLine?: boolean
 
-    /** Determines if the label is rendered as HTML label or as span element. */
+    /**
+     * Determine if the checkbox is rendered as HTML label or as span element. Use span if you have use the checkbox together with other elements in a wrapping label.
+     * @default label
+     */
     labelAs?: "label" | "span"
 
     /**
