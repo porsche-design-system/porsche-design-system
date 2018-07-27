@@ -19,7 +19,7 @@
     }
 
     @include breakpoint('s') {
-      @include -spacing-b(bottom, margin, '-');
+      @include -spacing-a(bottom, margin, '-');
       display: block;
       border-top: 0;
       border-bottom: 0;
@@ -70,11 +70,13 @@
   }
 
   &__submenu {
-    @include -spacing-c;
+    @include -spacing-b;
+    @include -spacing-a(bottom, padding);
     display: none;
 
     @include breakpoint('s') {
       display: block;
+      padding-bottom: 0;
     }
 
     &--open {
@@ -83,14 +85,13 @@
   }
 
   &__submenu-item {
-    @include -spacing-b(bottom, padding);
+    @include -spacing-a(bottom, padding);
   }
 
   &__submenu-link {
     @include -text-color-white;
     @include -text-size-copy;
 
-    line-height: $navigation-footer-link-inner-spacing-horizontal;
     text-decoration: none;
     display: block;
 
