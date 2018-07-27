@@ -16,7 +16,7 @@ const CheckboxExampleCustomLabel = () => {
                 <span style={itemStyle("grey")}>
                     custom content inside custom label <br /> which can be clicked to toggle checkbox
                 </span>
-                <Checkbox onChange={onChange} labelRender={false}>
+                <Checkbox onChange={onChange} labelAs="span">
                     Checkbox
                 </Checkbox>
             </label>

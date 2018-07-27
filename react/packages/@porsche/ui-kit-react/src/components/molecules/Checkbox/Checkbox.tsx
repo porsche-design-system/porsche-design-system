@@ -43,7 +43,7 @@ export interface CheckboxProps extends ClassNameProp, ComponentProp {
     singleLine?: boolean
 
     /** Determines if the label is rendered as HTML label or as span element. */
-    labelRender?: boolean
+    labelAs?: "label" | "span"
 
     /**
      * The appearance of the checkbox.
@@ -54,7 +54,7 @@ export interface CheckboxProps extends ClassNameProp, ComponentProp {
 
 const defaultProps: Partial<CheckboxProps> = {
     checked: false,
-    labelRender: true,
+    labelAs: "label",
     type: "default"
 }
 
@@ -76,13 +76,13 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> & Partial<MetaCategoriz
         onClick,
         readOnly,
         singleLine,
-        labelRender,
+        labelAs,
         type,
         ...rest
     } = props
 
     const ElementType = getElementType(as, "div")
-    const ElementLabelType = getElementType(labelRender ? "label" : "span")
+    const ElementLabelType = getElementType(as, labelAs)
 
     const iconClasses = cx(
         prefix("checkbox__icon"),
