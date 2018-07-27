@@ -44,6 +44,7 @@
 
     &:hover {
       @include -text-color-red-1;
+      text-decoration: none;
     }
   }
 }

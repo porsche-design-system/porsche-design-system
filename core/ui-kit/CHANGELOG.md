@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Bugfixes
 * Fixed navigation-footer item-header cursor from pointer to text up from breakpoint s
 * Fixed/Updated spacings of footer and navigation-footer
+* Fixed wrong text-decoration in footer pattern on hover
 
 ## [0.7.2] - 2018-07-17
 ### Bugfixes
