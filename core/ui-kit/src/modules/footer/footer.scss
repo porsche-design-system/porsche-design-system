@@ -10,8 +10,8 @@
   &__paragraph {
     @include -text-color-white;
     @include -text-size-copy;
-    @include -spacing-f;
-    @include -spacing-f(top, padding);
+    @include -spacing-e;
+    @include -spacing-e(top, padding);
 
     border-top: $footer-paragraph-border-width solid $footer-paragraph-border-color;
 
@@ -44,6 +44,7 @@
 
     &:hover {
       @include -text-color-red-1;
+      text-decoration: none;
     }
   }
 }
