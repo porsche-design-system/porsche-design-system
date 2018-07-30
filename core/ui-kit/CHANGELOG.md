@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+*
+
+## [0.7.3] - 2018-07-30
 ### Bugfixes
 * Fixed navigation-footer item-header cursor from pointer to text up from breakpoint s
 * Fixed/Updated spacings of footer and navigation-footer
