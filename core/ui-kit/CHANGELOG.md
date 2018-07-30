@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Bugfixes
+* Fixed navigation-footer item-header cursor from pointer to text up from breakpoint s
+* Fixed/Updated spacings of footer and navigation-footer
+* Fixed wrong text-decoration in footer pattern on hover
+* Fixed missing open-close animation for navigation-footer pattern on mobile viewports
+
 ## [0.7.2] - 2018-07-17
 ### Bugfixes
 * added display: inline-block for footer links on breakpoint xxs to prevent wrong block display
