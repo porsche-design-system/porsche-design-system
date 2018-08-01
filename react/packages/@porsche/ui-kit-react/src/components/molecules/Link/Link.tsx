@@ -20,6 +20,10 @@ export interface LinkProps extends ClassNameProp, ComponentProp {
      * The target attribute specifies where to open the linked document.
      */
     target?: "_blank" | "_self" | "_parent" | "_top"
+    /**
+     * Defines the title of a link, which appears to the user as a tooltip.
+     */
+    title?: string
 }
 
 const _meta: ComponentMeta = {
