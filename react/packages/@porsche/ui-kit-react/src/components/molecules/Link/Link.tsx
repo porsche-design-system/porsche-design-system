@@ -16,6 +16,10 @@ export interface LinkProps extends ClassNameProp, ComponentProp {
      * The optional href of the link.
      */
     href?: string
+    /**
+     * The target attribute specifies where to open the linked document.
+     */
+    target?: "_blank" | "_self" | "_parent" | "_top"
 }
 
 const _meta: ComponentMeta = {
