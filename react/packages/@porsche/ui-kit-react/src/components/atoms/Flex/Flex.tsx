@@ -89,7 +89,7 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> & Partial<MetaC
         { [prefix(`flex--wrap`)]: wrap === true },
         { [prefix(`flex--nowrap`)]: wrap === false },
         { [prefix(`flex--wrap-reverse`)]: wrap === "reverse" },
-        { [prefix(`flex--shrink-${shrink}`)]: shrink },
+        { [prefix(`flex--shrink-${shrink}`)]: shrink !== undefined },
         className
     )
 
