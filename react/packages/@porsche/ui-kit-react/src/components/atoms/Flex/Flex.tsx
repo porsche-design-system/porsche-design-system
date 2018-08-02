@@ -44,6 +44,9 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
      * @default true
      */
     wrap?: FlexWrap
+
+    /** The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs. */
+    shrink?: 0 | 1
 }
 
 const _meta: ComponentMeta = {
@@ -67,6 +70,7 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> & Partial<MetaC
         gap,
         inline,
         wrap,
+        shrink,
         ...rest
     } = props
 
@@ -85,6 +89,7 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> & Partial<MetaC
         { [prefix(`flex--wrap`)]: wrap === true },
         { [prefix(`flex--nowrap`)]: wrap === false },
         { [prefix(`flex--wrap-reverse`)]: wrap === "reverse" },
+        { [prefix(`flex--shrink-${shrink}`)]: shrink },
         className
     )
 
