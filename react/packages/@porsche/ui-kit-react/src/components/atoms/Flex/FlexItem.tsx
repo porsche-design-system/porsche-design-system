@@ -37,7 +37,7 @@ const _FlexItem: React.StatelessComponent<FlexItemProps> & Partial<MetaCategoriz
         { [prefix(`flex__child--cross-axis-${alignCrossAxis}`)]: alignCrossAxis },
         mapBreakpointPropToClasses("flex__child--", width),
         mapBreakpointPropToClasses("flex__child--offset-", offset),
-        { [prefix(`flex__child--shrink-${shrink}`)]: shrink },
+        { [prefix(`flex__child--shrink-${shrink}`)]: shrink !== undefined },
         className
     )
 
