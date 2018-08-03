@@ -1,6 +1,6 @@
 @import "../../../common";
-@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/base/grid/flex.mixin.scss";
-@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/base/grid/flex.setup.scss";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/grid/flex.mixin.scss";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/grid/flex.setup.scss";
 
 // Grid spacings
 .#{$global-class-prefix}flex {
@@ -980,6 +980,14 @@
         flex-wrap: wrap-reverse;
     }
 
+    &--shrink-0 {
+        flex-shrink: 0;
+    }
+
+    &--shrink-1 {
+        flex-shrink: 1;
+    }
+
     &__child {
         &--cross-axis {
             &-start {
@@ -997,6 +1005,14 @@
             &-stretch {
                 align-self: stretch;
             }
+        }
+
+        &--shrink-0 {
+            flex-shrink: 0;
+        }
+
+        &--shrink-1 {
+            flex-shrink: 1;
         }
     }
 }

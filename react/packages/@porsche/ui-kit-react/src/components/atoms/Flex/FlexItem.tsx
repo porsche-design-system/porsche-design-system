@@ -16,6 +16,9 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
 
     /** The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: "6", l: "3"}. You always need to provide a base value when doing this. */
     offset?: number | BreakpointValues<number>
+
+    /** The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs. */
+    shrink?: 0 | 1
 }
 
 const _meta: ComponentMeta = {
@@ -25,7 +28,7 @@ const _meta: ComponentMeta = {
 }
 
 const _FlexItem: React.StatelessComponent<FlexItemProps> & Partial<MetaCategorizable> = (props) => {
-    const { as, className, children, alignCrossAxis, offset, width, ...rest } = props
+    const { as, className, children, alignCrossAxis, offset, width, shrink, ...rest } = props
 
     const ElementType = getElementType(as, "div")
 
@@ -34,6 +37,7 @@ const _FlexItem: React.StatelessComponent<FlexItemProps> & Partial<MetaCategoriz
         { [prefix(`flex__child--cross-axis-${alignCrossAxis}`)]: alignCrossAxis },
         mapBreakpointPropToClasses("flex__child--", width),
         mapBreakpointPropToClasses("flex__child--offset-", offset),
+        { [prefix(`flex__child--shrink-${shrink}`)]: shrink !== undefined },
         className
     )
 

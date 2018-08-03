@@ -131,6 +131,7 @@ const HeaderExample = () => (
         logoProps={{
             href: "#"
         }}
+        title="Menu"
     />
 )
 
