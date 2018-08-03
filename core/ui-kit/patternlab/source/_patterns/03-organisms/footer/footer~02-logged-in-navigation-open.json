@@ -3,7 +3,7 @@
   "footer_navigationFooterItems": [
     {
       "item": "My Porsche",
-      "isOpen": false,
+      "isOpen": true,
       "itemsSubmenu": [
         {
           "item": "Meine Dienste im Überblick"

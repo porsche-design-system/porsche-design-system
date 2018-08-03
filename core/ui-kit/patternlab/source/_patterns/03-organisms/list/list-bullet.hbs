@@ -1,6 +1,9 @@
-<ul class="list-bullet {{ styleModifier }} {{#if list-bullet_square }} list-bullet--square {{/ if }}">
+<ul class="list-bullet {{ styleModifier }}">
   {{# each list-bullet_items }}
-    <li class="list-bullet__item">
+    <li class="list-bullet__item
+      {{#if list-bullet_item_square }} list-bullet__item--square {{/ if }}
+      {{#if list-bullet_item_square_black }} list-bullet__item--square-black {{/ if }}
+    ">
       <span class="list-bullet__label">{{ label }}</span>
     </li>
   {{/ each }}

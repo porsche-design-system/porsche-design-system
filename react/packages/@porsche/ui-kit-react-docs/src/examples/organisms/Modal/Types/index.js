@@ -11,13 +11,18 @@ const Types = () => {
                 screens.
             </ComponentExample>
 
+            <ComponentExample title="Wide" examplePath="organisms/Modal/Types/ModalExampleWide" noStaticMarkup>
+                If you have more complex content, use the <code>wide</code> prop to let the modal stretch the entire
+                width of the page (minus paddings of course).
+            </ComponentExample>
+
             <ComponentExample
-                title="Full Width"
-                examplePath="organisms/Modal/Types/ModalExampleFullWidth"
+                title="Wide with custom container css"
+                examplePath="organisms/Modal/Types/ModalExampleWideCustomContainer"
                 noStaticMarkup
             >
-                If you have more complex content, use the <code>fullWidth</code> prop to let the modal stretch the
-                entire width of the page (minus paddings of course).
+                If you want to e.g. give the container a fixed width independent from the content, use the
+                "container-css" prop to pass a custom css class.
             </ComponentExample>
 
             <ComponentExample

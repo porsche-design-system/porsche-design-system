@@ -1,3 +1,7 @@
 @import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
 
-$list-bullet-spacing-left: $spacing-18 !default;
+$list-bullet-square-dimensions: rem(4px) !default;
+$list-bullet-spacing-left: $spacing-c !default;
+$list-bullet-square-padding-left: calc(#{$list-bullet-square-dimensions} + #{$spacing-12}) !default;
+$list-bullet-square-position-top: rem(9px) !default;

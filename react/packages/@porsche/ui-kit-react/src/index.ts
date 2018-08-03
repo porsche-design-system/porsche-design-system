@@ -21,6 +21,7 @@ export { NavigationMobile } from "./components/molecules/Navigation/NavigationMo
 export { Select, SelectOption, SelectOptionGroup, SelectValue, SelectProps } from "./components/molecules/Select/Select"
 export { TextArea, TextAreaProps } from "./components/molecules/TextArea/TextArea"
 export { Tab, TabProps, TabPane } from "./components/molecules/Tab/Tab"
+export { Link, LinkProps } from "./components/molecules/Link/Link"
 
 // Organisms
 export { Header } from "./components/organisms/Header/Header"
