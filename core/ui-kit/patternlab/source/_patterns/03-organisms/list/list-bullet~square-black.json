@@ -3,7 +3,7 @@
   "list-bullet_items": [
     {
       "label": "Some Item",
-      "list-bullet_item_square": false
+      "list-bullet_item_square_black": true
     }
   ]
 }
