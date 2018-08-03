@@ -18,7 +18,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.7.2] - 2018-07-17
 ### Bugfixes
 * added display: inline-block for footer links on breakpoint xxs to prevent wrong block display
-
+* changes list-items:
+  * Refactored list items
+  * List style types are customisable now
+  * List style square is now 4px instead of 6px
 
 ## [0.7.1] - 2018-07-10
 ### Improvements
