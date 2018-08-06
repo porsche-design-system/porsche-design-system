@@ -1,0 +1,29 @@
+<div class="pagination {{ styleModifier }}">
+
+  {{#if pagination_isPrevDisabled }}
+    <span class="pagination__prev pagination__prev--disabled"></span>
+  {{ else }}
+    <a class="pagination__prev" href="#"></a>
+  {{/if }}
+
+  <ul class="pagination__items">
+    {{#each pagination_items }}
+      <li class="pagination__item">
+        {{#if isCurrentPage }}
+          <span class="pagination__goto pagination__goto--active">{{ data }}</span>
+        {{ else if isEllipsis }}
+          <span class="pagination__goto pagination__goto--ellipsis"></span>
+        {{ else }}
+          <a class="pagination__goto" href="#">{{ data }}</a>
+        {{/if }}
+      </li>
+    {{/each}}
+  </ul>
+
+  {{#if pagination_isNextDisabled }}
+      <span class="pagination__next pagination__next--disabled"></span>
+  {{ else }}
+      <a class="pagination__next" href="#"></a>
+  {{/if }}
+
+</div>

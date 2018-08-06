@@ -1,0 +1,110 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/position/position.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../modules/icon/icon.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}pagination {
+  @include flex;
+  @include flex-main-axis(center);
+  counter-reset: maxNumberOfLinks 5;
+
+  @include breakpoint('s') {
+    counter-reset: maxNumberOfLinks 7;
+  }
+
+  &__items {
+    @include flex;
+  }
+
+  &__goto,
+  &__prev,
+  &__next {
+    @include flex;
+    @include flex-main-axis(center);
+    @include flex-cross-axis(center);
+    position: relative;
+    width: rem(40px);
+    height: rem(40px);
+  }
+
+  &__goto {
+    @include -text-size-small;
+    @include -text-color-black;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      @include -text-color-red-1;
+    }
+
+    &--active {
+      cursor: default;
+
+      &:hover {
+        @include -text-color-black;
+      }
+
+      &::after {
+        @include -background-red-1;
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: rem(6px);
+        right: rem(6px);
+        height: rem(4px);
+      }
+    }
+
+    &--ellipsis {
+      cursor: default;
+
+      &:hover {
+        @include -text-color-black;
+      }
+
+      &::after {
+        content: '…';
+      }
+    }
+  }
+
+  &__prev,
+  &__next {
+    @include icon-base;
+    @include -text-color-black;
+    font-size: rem(18px);
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      @include -text-color-red-1;
+    }
+
+    &--disabled {
+      @include -text-color-grey-4;
+      cursor: default;
+
+      &:hover {
+        @include -text-color-grey-4;
+      }
+    }
+  }
+
+  &__prev {
+    &::before {
+      @include icon-arrow-left-hair-before;
+    }
+  }
+
+  &__next {
+    &::before {
+      @include icon-arrow-right-hair-before;
+    }
+  }
+}
