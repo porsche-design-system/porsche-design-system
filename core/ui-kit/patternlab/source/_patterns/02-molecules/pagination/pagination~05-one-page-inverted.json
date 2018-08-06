@@ -1,0 +1,13 @@
+{
+  "bodyClass": "sg-wrapper-dark",
+  "pagination_items": [
+    {
+      "data": 1,
+      "isCurrentPage": true,
+      "isEllipsis": false
+    }
+  ],
+  "pagination_isPrevDisabled": true,
+  "pagination_isNextDisabled": true,
+  "pagination_inverted": true
+}

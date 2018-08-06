@@ -1,0 +1,41 @@
+{
+  "pagination_items": [
+    {
+      "data": 1,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    },
+    {
+      "data": null,
+      "isCurrentPage": false,
+      "isEllipsis": true
+    },
+    {
+      "data": 4,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    },
+    {
+      "data": 5,
+      "isCurrentPage": true,
+      "isEllipsis": false
+    },
+    {
+      "data": 6,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    },
+    {
+      "data": null,
+      "isCurrentPage": false,
+      "isEllipsis": true
+    },
+    {
+      "data": 9,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    }
+  ],
+  "pagination_isPrevDisabled": false,
+  "pagination_isNextDisabled": false
+}
