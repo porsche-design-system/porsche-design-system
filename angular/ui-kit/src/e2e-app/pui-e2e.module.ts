@@ -12,12 +12,14 @@ import {
   PuiImageCoverModule,
   PuiLoaderModule,
   PuiButtonModule,
-  PuiFooterModule
+  PuiFooterModule,
+  PuiPageHeaderModule
 } from '../public_api';
 import { PuiE2eAtomsTextSizeComponent } from './pages/atoms/text/text-size.component';
 import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
 import { PuiE2eOrganismsNotificationComponent } from './pages/organisms/notification/notification.component';
 import { PuiE2eOrganismsFooterComponent } from './pages/organisms/footer/footer.component';
+import { PuiE2eOrganismsPageHeaderComponent } from './pages/organisms/page-header/page-header.component';
 import { PuiE2eMoleculesLinkIconTextComponent } from './pages/molecules/link-icon-text/link-icon-text.component';
 import { PuiE2eMoleculesImageCoverComponent } from './pages/molecules/image-cover/image.cover.component';
 import { PuiE2eMoleculesLoaderBaseComponent } from './pages/molecules/loader-base/loader-base-component';
@@ -34,7 +36,8 @@ const puiModules = [
   PuiImageCoverModule,
   PuiLoaderModule,
   PuiButtonModule,
-  PuiFooterModule
+  PuiFooterModule,
+  PuiPageHeaderModule
 ];
 
 const e2ePages = [
@@ -46,7 +49,8 @@ const e2ePages = [
   PuiE2eMoleculesButtonGhostComponent,
   PuiE2eMoleculesButtonPrimaryComponent,
   PuiE2eOrganismsNotificationComponent,
-  PuiE2eOrganismsFooterComponent
+  PuiE2eOrganismsFooterComponent,
+  PuiE2eOrganismsPageHeaderComponent
 ];
 
 @NgModule({

@@ -3,9 +3,9 @@ const fs = require('fs'),
   path = require("path"),
   sass = require('node-sass');
 
-const iconSCSSFilePath = path.join(__dirname, '..', '..', 'core/ui-kit/src/modules/icon/icon.scss'),
-  iconInputFilePath = path.join(__dirname, '..', '..', 'core/ui-kit/src/modules/icon/icon.css'),
-  iconMapOutputFile = './src/lib/atoms/icon/iconMap.ts';
+const iconSCSSFilePath = path.join(__dirname, '..', '..', '..', 'core/ui-kit/src/modules/icon/icon.scss'),
+  iconInputFilePath = path.join(__dirname, '..', '..', '..', 'core/ui-kit/src/modules/icon/icon.css'),
+  iconMapOutputFile = './src/generated/icon-map.ts';
 
 
 main();
@@ -59,17 +59,23 @@ function createMapFromString(stringCSS){
  * @param classMap {Object} Object containing css classes and belonging css attributes
  */
 function extractCSSclasses(classMap, outputEnumTS) {
-  fs.writeFileSync(outputEnumTS, "export enum PuiIcon {" + Object.keys(classMap)[0] + "= '" + classMap[Object.keys(classMap)[0]] + "',", (err) => {
+  fs.writeFileSync(outputEnumTS, "/* tslint:disable */\n", (err) => {
+    if (err) throw err;
+  });
+  fs.appendFileSync(outputEnumTS, "export enum PuiIcon { " + Object.keys(classMap)[0] + " = '" + classMap[Object.keys(classMap)[0]] + "', ", (err) => {
     if (err) throw err;
   });
   Object.keys(classMap).forEach(function (key, index) {
     if (index > 1) {
-      fs.appendFileSync(outputEnumTS, Object.keys(classMap)[index] + "= '" + classMap[Object.keys(classMap)[index]] + "',", (err) => {
+      fs.appendFileSync(outputEnumTS, Object.keys(classMap)[index] + " = '" + classMap[Object.keys(classMap)[index]] + "', ", (err) => {
         if (err) throw err;
       });
     }
   });
   fs.appendFileSync(outputEnumTS, '}', (err) => {
+    if (err) throw err;
+  });
+  fs.appendFileSync(outputEnumTS, "\n/* tslint:enable */\n", (err) => {
     if (err) throw err;
   });
 }
