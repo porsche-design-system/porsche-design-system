@@ -1,6 +1,56 @@
 {
   "bodyClass": "sg-wrapper-dark",
   "footer_loggedIn": false,
+  "footer_navigationFooterItems": [
+    {
+      "item": "My Porsche",
+      "isOpen": false,
+      "itemsSubmenu": [
+        {
+          "item": "Meine Dienste im Überblick"
+        },
+        {
+          "item": "Dienste im Store entdecken"
+        },
+        {
+          "item": "Ergänzende Smartphone Apps"
+        },
+        {
+          "item": "Fragen & Antworten"
+        },
+        {
+          "item": "Kontakt und Support"
+        },
+        {
+          "item": "Allgemeine Geschäftsbedingungen"
+        }
+      ]
+    },
+    {
+      "item": "Porsche im Web",
+      "isOpen": false,
+      "itemsSubmenu": [
+        {
+          "item": "Porsche Website"
+        },
+        {
+          "item": "Porsche Connect Store"
+        },
+        {
+          "item": "Meine Porsche ID"
+        },
+        {
+          "item": "Meinen Porsche konfigurieren"
+        },
+        {
+          "item": "Gebrauchtwagen suchen"
+        },
+        {
+          "item": "Driver's Selection Online Shop"
+        }
+      ]
+    }
+  ],
   "footer_disclaimer": "© 2017 Porsche Connect GmbH.",
   "footer_links": [
     {

@@ -5,7 +5,7 @@ import {
   Renderer2,
   HostBinding
 } from '@angular/core';
-import { PuiIcon } from './iconMap';
+// import { PuiIcon } from './icon-map';
 
 @Directive({
   selector: '[puiIcon]'
