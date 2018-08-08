@@ -8,7 +8,7 @@
     "build:prod": "npm run build -- -- --prod",
     "build:packagr": "ng-packagr -p package.json",
     "build:fixDependency": "scripts/fix-dependency.sh",
-    "generate-icon-map": "node ./scripts/iconClassCreator.js",
+    "generate-icon-map": "node ./scripts/icon-class-creator.js",
     "postinstall": "npm run generate-icon-map",
     "test": "npm run test:singleRun",
     "test:singleRun": "ng test --watch false",
