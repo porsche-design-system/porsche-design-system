@@ -42,9 +42,9 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
-"@porsche/ui-kit-core@0.4.5":
-  version "0.4.5"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.4.5.tgz#b0ed34e87b9161f2e0f94c6b878f697ec4e09492"
+"@porsche/ui-kit-core@0.7.4":
+  version "0.7.4"
+  resolved "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.7.4.tgz#05e2ff089481036ca451d972e1bc45d5ff66ffd5"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
