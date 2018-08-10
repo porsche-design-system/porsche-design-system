@@ -91,7 +91,7 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
 
     const classes = cx(prefix("modal"), { [prefix("modal--wide")]: wide }, className)
 
-    const containerClasses = cx(prefix("modal__content-container"), { [`${containerClassName}`]: containerClassName })
+    const containerClasses = cx(prefix("modal__content-container"), containerClassName)
 
     return (
         <ReactModal
