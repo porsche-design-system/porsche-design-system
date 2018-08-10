@@ -33,12 +33,12 @@ Simply put the components name after the annotation and a link to it will automa
 ## Publishing artifacts
 
 ### Login credentials
-To be able to publish artifacts to the Artifactory repository you have to provide some meta information. First of all you have to provide the lgoin credentials for the artifcatory. In this project we are using NPM scopes to distinguish which artifact should retrieve the dependency from which repository. Therefore you have to execute `curl -uadmin:password "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/auth/porsche"` where admin is your Artifactory ID and password is the genereated API Key (Base64 encoded) which you can generate in the Artifactory's profile section. You'll have to create a .npmrc file in the project folder and paste the information you will get into it. This will look similiar to:
-`@porsche:registry=https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/
- //porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/:_password=<password>
- //porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/:username=8354932
- //porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/:email=<YOUR_EMAIL>
- //porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/:always-auth=true`
+To be able to publish artifacts to the Artifactory repository you have to provide some meta information. First of all you have to provide the login credentials for the Artifactory. In this project we are using NPM scopes to distinguish which artifact should retrieve the dependency from which repository. Therefore you have to execute `curl -uadmin:password "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/auth/porsche"` where admin is your Artifactory ID and password is the genereated API Key (Base64 encoded) which you can generate in the Artifactory's profile section. You'll have to create a .npmrc file in the project folder and paste the information you will get into it. This will look similiar to:
+`@porsche:registry=https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/
+ //porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/:_password=<password>
+ //porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/:username=8354932
+ //porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/:email=<YOUR_EMAIL>
+ //porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/:always-auth=true`
  The user is a technical user created only for the Artifactory publishing use case.
  The password can be obtained from Aleksandar Tolev (aleksandar.tolev@porsche.de) or Christoph Albert (christoph.albert@mhp.com).
 
