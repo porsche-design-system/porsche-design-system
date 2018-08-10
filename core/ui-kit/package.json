@@ -108,6 +108,6 @@
     "symlink-or-copy": "1.2.0"
   },
   "publishConfig": {
-    "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/"
+    "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/"
   }
 }
