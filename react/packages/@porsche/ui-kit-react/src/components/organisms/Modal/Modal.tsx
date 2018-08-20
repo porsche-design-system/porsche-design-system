@@ -60,9 +60,9 @@ export interface ModalProps extends ClassNameProp {
     showCloseIcon?: boolean
 
     /**
-     * option to influence the styling of the modal container class
+     * Additional CSS classes for the modal content container.
      */
-    containerClass?: string
+    containerClassName?: string
 }
 
 const defaultProps: Partial<ModalProps> = {
@@ -85,13 +85,13 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
         onRequestClose,
         ariaHideApp,
         showCloseIcon,
-        containerClass,
+        containerClassName,
         ...rest
     } = props
 
     const classes = cx(prefix("modal"), { [prefix("modal--wide")]: wide }, className)
 
-    const containerClasses = cx(prefix("modal__content-container"), { [`${containerClass}`]: containerClass })
+    const containerClasses = cx(prefix("modal__content-container"), containerClassName)
 
     return (
         <ReactModal

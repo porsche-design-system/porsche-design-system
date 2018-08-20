@@ -1,12 +1,8 @@
 import React from "react"
-import { Divider, Flex, Flyout, Spacing, Link } from "@porsche/ui-kit-react"
+import { Link } from "@porsche/ui-kit-react"
 
 const LinkExampleBasic = () => {
-    return (
-        <React.Fragment>
-            <Link>Link</Link>
-        </React.Fragment>
-    )
+    return <Link>Link</Link>
 }
 
 export default LinkExampleBasic

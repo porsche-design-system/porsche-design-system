@@ -3,8 +3,7 @@ import cx from "classnames"
 
 import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType, prefix } from "../../../lib"
-import { Icon } from "../../../index"
-import { IconName } from "../../atoms/Icon/Icon"
+import { Icon, IconName, Loader } from "../../../index"
 import { ButtonGroup } from "./ButtonGroup"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
@@ -117,7 +116,7 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> & Partial
 
         iconClasses = cx(prefix("button-ghost__icon"), { [prefix("button-ghost__icon--loading")]: loading })
 
-        loaderClasses = cx(prefix("button-ghost__loader"), prefix("loader-base"))
+        loaderClasses = cx(prefix("button-ghost__loader"))
 
         labelClasses = cx(prefix("button-ghost__label"), {
             [prefix(`button-ghost__label--show-${showContent}`)]: showContent
@@ -140,7 +139,7 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> & Partial
 
         iconClasses = cx(prefix("button-primary__icon"), { [prefix("button-primary__icon--loading")]: loading })
 
-        loaderClasses = cx(prefix("button-primary__loader"), prefix("loader-base"))
+        loaderClasses = cx(prefix("button-primary__loader"))
 
         labelClasses = cx(prefix("button-primary__label"), {
             [prefix(`button-primary__label--show-${showContent}`)]: showContent
@@ -170,7 +169,7 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> & Partial
         >
             {/* Icon cannot be undefined because of default props */}
             <Icon name={icon as IconName} className={iconClasses}>
-                {loading && <span className={loaderClasses} />}
+                {loading && <Loader className={loaderClasses} size="small" inverted={type !== "ghost"} />}
             </Icon>
             <span className={labelClasses}>{children}</span>
         </ElementType>

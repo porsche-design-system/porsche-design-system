@@ -197,6 +197,19 @@
         "tags": []
       },
       {
+        "description": [
+          "The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs."
+        ],
+        "name": "shrink",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "0",
+          "1"
+        ]
+      },
+      {
         "defaultValue": "true",
         "description": [
           "If set, overflowing elements will wrap to a new line."
@@ -258,6 +271,19 @@
         "required": false,
         "type": "number | BreakpointValues<number>",
         "tags": []
+      },
+      {
+        "description": [
+          "The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs."
+        ],
+        "name": "shrink",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "0",
+          "1"
+        ]
       },
       {
         "description": [
@@ -2063,9 +2089,9 @@
       },
       {
         "description": [
-          "option to influence the styling of the modal container class"
+          "Additional CSS classes for the modal content container."
         ],
-        "name": "containerClass",
+        "name": "containerClassName",
         "required": false,
         "type": "string",
         "tags": []
