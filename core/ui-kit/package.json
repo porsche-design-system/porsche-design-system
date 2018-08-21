@@ -1,6 +1,6 @@
 {
   "name": "@porsche/ui-kit-core",
-  "version": "0.7.4",
+  "version": "0.8.0",
   "description": "Porsche UI Kit Core contains all neccessary styles for the Porsche Pattern Lab components",
   "main": "index.js",
   "scripts": {
