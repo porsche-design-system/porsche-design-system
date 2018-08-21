@@ -20,7 +20,7 @@ export class PuiFooterComponent implements OnInit {
   @Input() showFooterLinkChina: boolean;
   @Input() menu: FooterMenu;
   @Input() metaMenu: FooterMenuItem[];
-  @Input() copyrightInfo = `© ${this.currentYear} Porsche Connect GmbH`;
+  @Input() copyrightInfo = `© ${this.currentYear} Porsche Smart Mobility GmbH`;
 
   activeSection?: Object;
 
