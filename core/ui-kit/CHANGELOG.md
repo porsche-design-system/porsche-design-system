@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-*
+* fix for pagination-dots for car-chooser to get the corrected active state
 
 ## [0.7.5] - 2018-08-12
 ### Improvements
