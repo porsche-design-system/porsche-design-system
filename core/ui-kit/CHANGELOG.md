@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Updated npm publish scripts to only use JFrog Artifactory
 * Updated npm repository name to official product abbreviation "pouikit-npm"
 
+## [0.8.0] - 2018-08-21
+### Improvements
+* fix for pagination-dots for car-chooser to get the corrected active state
+
+### Breaking changes
+* `car-selector` is now using `pagination-dots` type grey which needs to be updated within the markup
+
+## [0.7.5] - 2018-08-21
+### Improvements
+* Change footer copyright text
+
 ## [0.7.4] - 2018-08-06
 ### Bugfixes
 * "list-bullet":
