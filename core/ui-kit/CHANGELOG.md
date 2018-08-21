@@ -6,9 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+*
+
+## [0.8.0] - 2018-08-21
+### Improvements
 * fix for pagination-dots for car-chooser to get the corrected active state
 
-## [0.7.5] - 2018-08-12
+### Breaking changes
+* `car-selector` is now using `pagination-dots` type grey which needs to be updated within the markup
+
+## [0.7.5] - 2018-08-21
 ### Improvements
 * Change footer copyright text
 
