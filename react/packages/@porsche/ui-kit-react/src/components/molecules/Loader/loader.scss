@@ -1,1 +1,85 @@
-@import "../../../../../../../node_modules/@porsche/ui-kit-core//src/modules/loader/index";
+@import "../../../common";
+
+@mixin loaderTrack($zIndex) {
+    animation: rotate 2s linear infinite;
+    height: 100%;
+    transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    fill: none;
+    z-index: $zIndex;
+}
+
+.#{$global-class-prefix}loader {
+    $bem-block: &;
+
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    stroke-width: 2px;
+
+    &__fg {
+        @include loaderTrack(1);
+
+        &__path {
+            stroke: $grey-darker;
+            animation: dash 2s ease-in-out infinite;
+            stroke-linecap: round;
+        }
+    }
+
+    &__bg {
+        @include loaderTrack(0);
+
+        &__path {
+            stroke: $grey-lighter;
+        }
+    }
+
+    &--inverted {
+        #{$bem-block}__fg {
+            &__path {
+                stroke: $white;
+            }
+        }
+
+        #{$bem-block}__bg {
+            &__path {
+                stroke: $grey-darker;
+            }
+        }
+    }
+
+    &--small {
+        stroke-width: 5px;
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 10000;
+        stroke-dashoffset: -15px;
+    }
+    50% {
+        stroke-dasharray: 30, 10000;
+        stroke-dashoffset: 0px;
+    }
+    100% {
+        stroke-dasharray: 1, 10000;
+        stroke-dashoffset: -15px;
+    }
+}

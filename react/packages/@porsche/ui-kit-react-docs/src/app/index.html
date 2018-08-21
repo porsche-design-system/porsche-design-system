@@ -38,11 +38,11 @@
         }
 
         .ui.vertical.inverted.menu .item:before {
-            background: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 255, 255, 0.12) !important;
         }
 
         .ui.inverted.menu .item:before {
-            background: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 255, 255, 0.12) !important;
         }
 
         .ui.inverted.menu {
@@ -102,17 +102,11 @@
 
         /* Doc site styles */
 
-        #introduction-page p {
-            font-size: 1.125em;
-            margin: 1.5em 0;
-        }
-
         pre {
             margin: 0;
         }
 
         code:not(.hljs) {
-            font-size: 87.5%;
             background-color: rgba(0, 0, 0, 0.04);
             border-radius: 3px;
             white-space: pre;
@@ -128,75 +122,9 @@
             letter-spacing: -0.2em;
             content: "\00a0";
         }
-
-        /* Icon Search */
-
-        .docs-icon-set-column {
-            cursor: pointer;
-        }
-
-        .docs-icon-set-column .icon {
-            font-size: 2em;
-            color: #555;
-            transform: scale(1);
-            transition: opacity 0.2s, color 0.2s, transform 0.2s;
-        }
-
-        .docs-icon-set-column .name {
-            display: block;
-            margin: 1em 0;
-            color: #777;
-        }
-
-        .docs-icon-set-column:hover>.icon,
-        .docs-icon-set-column:hover>.name {
-            color: #000;
-        }
-
-        .docs-icon-set-column:hover>.icon {
-            transform: scale(1.5);
-        }
     </style>
 </head>
 
-<body class="dimmed dimmable">
-    <div id="docs-loading-dimmer" class="ui active page dimmer">
-        <div class="content">
-            <div class="center">
-                <div class="ui large text loader">
-                    <div class="ui inverted teal header">
-                        Loading docs...
-                        <div class="sub header">
-                            Porsche UI Kit React v
-                            <%= htmlWebpackPlugin.options.versions.pui %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        (function () {
-            var delay = 500
-            var dimmer = document.querySelector('#docs-loading-dimmer')
-            dimmer.style.pointerEvents = 'none'
-            dimmer.style.transition = 'opacity ' + delay + 'ms linear'
-
-            function removeDimmer() {
-                dimmer.style.opacity = '0'
-
-                setTimeout(function () {
-                    var dimmer = document.querySelector('#docs-loading-dimmer')
-
-                    document.body.removeChild(dimmer)
-                    document.body.setAttribute("class", "")
-                    window.removeEventListener('load', removeDimmer)
-                }, delay)
-            }
-
-            window.addEventListener('load', removeDimmer)
-        }())
-    </script>
-</body>
+<body></body>
 
 </html>

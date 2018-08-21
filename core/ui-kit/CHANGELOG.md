@@ -7,11 +7,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 * change footer copyright text
+*
+
+## [0.7.4] - 2018-08-06
+### Bugfixes
+* "list-bullet":
+  * Refactored list items
+  * List style types are customisable now
+  * List style square is now 4px instead of 6px
+
+### Breaking changes
+"list-bullet" migration path: the modifier `list-bullet--square` was removed from the ul and needs to be added 
+as `list-bullet__item--square` to each li element. Same goes for the variants e.g. `list-bullet__item--square-black`
+
+## [0.7.3] - 2018-07-30
+### Bugfixes
+* Fixed navigation-footer item-header cursor from pointer to text up from breakpoint s
+* Fixed/Updated spacings of footer and navigation-footer
+* Fixed wrong text-decoration in footer pattern on hover
+* Fixed missing open-close animation for navigation-footer pattern on mobile viewports
 
 ## [0.7.2] - 2018-07-17
 ### Bugfixes
 * added display: inline-block for footer links on breakpoint xxs to prevent wrong block display
-
 
 ## [0.7.1] - 2018-07-10
 ### Improvements
@@ -21,7 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   * added safe clickable area per dot
 
 ## [0.7.0] - 2018-07-09
-### Breaking change
+### Breaking changes
 * [breaking change] renaming of mixin animation-translate-scale to transform-translate-scale
   * move transform-translate-scale from mixins/animation.scss to mixin/transform.scss
     

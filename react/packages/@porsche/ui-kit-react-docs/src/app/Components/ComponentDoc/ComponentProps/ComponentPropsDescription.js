@@ -9,6 +9,10 @@ const descriptionStyle = {
 }
 
 const ComponentPropsDescription = ({ description }) => {
+    if (!description) {
+        return null
+    }
+
     return <div style={descriptionStyle}>{description.join(" ")}</div>
 }
 

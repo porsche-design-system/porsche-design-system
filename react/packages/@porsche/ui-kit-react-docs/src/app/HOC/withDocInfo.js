@@ -23,6 +23,18 @@ const withDocInfo = (ChildComponent) => {
         }
 
         computeProps = ({ name, parent, type }) => {
+            const component = docInfo[name]
+
+            if (!component) {
+                return {
+                    description: [""],
+                    path: "",
+                    componentGroup: getComponentGroup(docInfo, name),
+                    componentName: name,
+                    seeItems: getSeeItems(docInfo, name)
+                }
+            }
+
             const { docBlock, path } = docInfo[name]
             const { description } = docBlock
 

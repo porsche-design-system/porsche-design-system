@@ -1,17 +1,52 @@
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
-@import 'list-bullet.setup.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../base/position/position.mixin.scss';
 @import '../../setup/global-variables.scss';
+@import 'list-bullet.setup.scss';
 
 .#{$global-class-prefix}list-bullet {
   @include -text-size-copy;
   @include -text-color-red-1;
 
-  list-style-type: disc;
-  margin-left: $list-bullet-spacing-left;
+  &__item {
+    @include -position(relative);
+    list-style-type: disc;
+    margin-left: $list-bullet-spacing-left;
+  }
 
-  &--square {
-    list-style-type: square;
+  &__item--square {
+    list-style-type: none;
+    margin-left: auto;
+    padding-left: $list-bullet-square-padding-left;
+
+    &::before {
+      @include -position(absolute);
+      @include -background-red-1;
+      content: '';
+      display: block;
+      width: $list-bullet-square-dimensions;
+      height: $list-bullet-square-dimensions;
+      top: $list-bullet-square-position-top;
+      left: 0;
+    }
+  }
+
+  &__item--square-black {
+    list-style-type: none;
+    margin-left: auto;
+    padding-left: $list-bullet-square-padding-left;
+
+    &::before {
+      @include -position(absolute);
+      @include -background-black;
+      content: '';
+      display: block;
+      width: $list-bullet-square-dimensions;
+      height: $list-bullet-square-dimensions;
+      top: $list-bullet-square-position-top;
+      left: 0;
+    }
   }
 
   &__label {
