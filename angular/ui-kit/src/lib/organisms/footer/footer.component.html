@@ -1,6 +1,6 @@
 <div class="footer">
   <ul class="navigation-footer row row--zero">
-    <li class="navigation-footer__item column column--zero column--12 column--s-6"
+    <li class="navigation-footer__item column column--zero column--12 column--6-s"
         *ngFor="let section of menu">
       <div class="navigation-footer__item-header"
            [ngClass]="{'navigation-footer__item-header--open': isActiveSection(section)}"
@@ -11,7 +11,7 @@
       </div>
       <ul class="navigation-footer__submenu row row--zero"
           [ngClass]="{'navigation-footer__submenu--open': isActiveSection(section)}">
-        <li class="navigation-footer__submenu-item column column--zero column--zero column--12 column--m-6"
+        <li class="navigation-footer__submenu-item column column--zero column--zero column--12 column--6-m"
             *ngFor="let item of section.items">
           <a href="{{item.url}}"
              class="navigation-footer__submenu-link"
