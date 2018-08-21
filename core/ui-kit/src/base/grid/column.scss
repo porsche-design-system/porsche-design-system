@@ -7,8 +7,6 @@
   @include column-gap-normal;
   @include column-direction-normal;
 
-  $bem-block: &;
-
   max-width: $column-max-width;
   min-height: $column-min-height; // prevents layout even when column is empty
   box-sizing: border-box;
