@@ -51,7 +51,9 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
                     <LinkElementType
                         className={prefix("nav-mobile__item")}
                         // tslint:disable-next-line jsx-no-lambda
-                        onClick={() => this.setState({ openedSectionKey: section.key })}
+                        onClick={() =>
+                            !section.menu ? this.resetEvenMore() : this.setState({ openedSectionKey: section.key })
+                        }
                         {...section.props}
                     >
                         {this.renderSectionLabel(section.label, section.counter)}
@@ -60,7 +62,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
                         </Spacing>
                     </LinkElementType>
                 </ContentWrapper>
-                {section && this.renderSectionOverlay(section)}
+                {section && section.menu && this.renderSectionOverlay(section)}
             </li>
         )
     }
@@ -94,7 +96,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
     renderSectionOverlay = (section: NavigationSection) => {
         const classesOverlay = cx(
             prefix("nav-mobile__overlay"),
-            this.state.openedSectionKey === section.key ? prefix("nav-mobile__overlay--active") : null
+            section.menu && this.state.openedSectionKey === section.key ? prefix("nav-mobile__overlay--active") : null
         )
 
         return (
@@ -124,7 +126,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
     }
 
     render() {
-        const { as, className, sections, children, ...rest } = this.props
+        const { as, className, sections, children, title, ...rest } = this.props
 
         const ElementType = getElementType(as, "nav")
 
@@ -132,7 +134,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
             <ElementType className={className} {...rest}>
                 <Flex className={prefix("nav-mobile__bar")} alignMainAxis="end">
                     <button className={prefix("nav-mobile__trigger")} onClick={this.openNav}>
-                        Menu
+                        {title}
                     </button>
                 </Flex>
 
@@ -150,7 +152,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
                                     <Icon name="arrow_left_hair" className={prefix("nav-mobile__icon")} />
                                 </Spacing>
                                 <Spacing marginRight="auto">
-                                    <span>Menu</span>
+                                    <span>{title}</span>
                                 </Spacing>
                             </Flex>
                         </div>

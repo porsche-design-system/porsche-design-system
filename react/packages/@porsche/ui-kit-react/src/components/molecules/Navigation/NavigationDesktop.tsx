@@ -97,7 +97,7 @@ export class NavigationDesktop extends React.PureComponent<NavigationProps, Navi
     }
 
     render() {
-        const { as, className, sections, children, ...rest } = this.props
+        const { as, className, sections, children, title, ...rest } = this.props
 
         const ElementType = getElementType(as, "nav")
 

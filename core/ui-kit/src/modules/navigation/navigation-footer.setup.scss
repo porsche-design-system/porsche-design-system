@@ -9,4 +9,7 @@ $navigation-footer-item-border-color: $color-palette-grey-8 !default;
 
 $navigation-footer-item-icon-font-size: $spacing-18 !default;
 $navigation-footer-item-icon-line-height: rem(28px) !default;
-$navigation-footer-link-inner-spacing-horizontal: $spacing-30 !default;
+
+$navigation-footer-item-icon-transition-duration: .5s !default;
+$navigation-footer-submenu-open-transition-duration: .4s !default;
+$navigation-footer-submenu-open-transition-easing: ease-in-out !default;

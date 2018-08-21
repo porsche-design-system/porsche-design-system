@@ -8,7 +8,7 @@ const sections = [
         counter: 6,
         component: "a",
         props: {
-            href: "#"
+            href: "#/maximize/navigation-example-regular"
         },
         menu: (
             <NavigationMenuList
@@ -22,7 +22,7 @@ const sections = [
                                 label: "Item 1",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             },
                             {
@@ -30,7 +30,7 @@ const sections = [
                                 label: "Item 2",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             },
                             {
@@ -38,7 +38,7 @@ const sections = [
                                 label: "Item 3",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             }
                         ]
@@ -52,7 +52,7 @@ const sections = [
         label: "Titel2",
         component: "a",
         props: {
-            href: "#"
+            href: "#/maximize/navigation-example-regular"
         },
         menu: (
             <NavigationMenuList
@@ -67,7 +67,7 @@ const sections = [
                                 label: "Item 1",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             },
                             {
@@ -75,7 +75,7 @@ const sections = [
                                 label: "Item 2",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             },
                             {
@@ -83,7 +83,7 @@ const sections = [
                                 label: "Item 3",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             }
                         ]
@@ -97,7 +97,7 @@ const sections = [
                                 label: "Item 1",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             },
                             {
@@ -105,7 +105,7 @@ const sections = [
                                 label: "Item 2",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             },
                             {
@@ -113,7 +113,7 @@ const sections = [
                                 label: "Item 3",
                                 component: "a",
                                 props: {
-                                    href: "#"
+                                    href: "#/maximize/navigation-example-regular"
                                 }
                             }
                         ]
@@ -121,11 +121,19 @@ const sections = [
                 ]}
             />
         )
+    },
+    {
+        key: "3",
+        label: "Titel3",
+        component: "a",
+        props: {
+            href: "#/maximize/navigation-example-regular"
+        }
     }
 ]
 
 const NavigationExampleRegular = () => {
-    return <Navigation sections={sections} />
+    return <Navigation sections={sections} title="Menu" />
 }
 
 export default NavigationExampleRegular
