@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.9.0] - 2018-08-21
 ### Improvements
 * Updated npm publish scripts to only use JFrog Artifactory
 * Updated npm repository name to official product abbreviation "pouikit-npm"
