@@ -99,6 +99,6 @@
         "react-dom": ">=0.14.0 <= 16"
     },
     "publishConfig": {
-        "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/"
+        "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/"
     }
 }
