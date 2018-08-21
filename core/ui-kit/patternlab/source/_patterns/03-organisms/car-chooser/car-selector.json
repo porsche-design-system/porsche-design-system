@@ -20,7 +20,17 @@
   "car-selector_empty": false,
   "car-selector_single": false,
   "car-selector_showArrows": true,
-  "car-selector_paginationDots": [true, false, false],
+  "car-selector_paginationDots": [
+    {
+      "active" : true
+    },
+    {
+      "active" : false
+    },
+    {
+      "active" : false
+    }
+  ],
 
   "car-selector_search": false,
   "car-selector_search_noResults":false,

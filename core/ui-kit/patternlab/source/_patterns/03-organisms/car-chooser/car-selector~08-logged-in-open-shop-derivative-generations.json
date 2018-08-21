@@ -4,7 +4,14 @@
   "car-selector_open": true,
   "car-selector_loggedIn": true,
   "car-selector_showDerivatives": true,
-  "car-selector_paginationDots": [true, false],
+  "car-selector_paginationDots": [
+    {
+      "active" : true
+    },
+    {
+      "active" : false
+    }
+  ],
   "car-selector_openGeneration": true,
 
   "car-selector_derivatives": [
