@@ -8,7 +8,7 @@
 /tmp
 /out-tsc
 /e2e-build
-icon-map.ts
+/generated
 
 # dependencies
 /node_modules
