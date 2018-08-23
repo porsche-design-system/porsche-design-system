@@ -2,7 +2,6 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Component, DebugElement } from '@angular/core';
-import { PuiIcon } from './icon.enum';
 import { PuiIconDirective } from './icon.directive';
 
 @Component({
@@ -11,7 +10,7 @@ import { PuiIconDirective } from './icon.directive';
   `
 })
 class TestComponent {
-  public icon = PuiIcon.CAR_NEXT;
+  public icon = 'car-next';
 }
 
 describe('Text Size 1 - Directive', () => {
@@ -43,7 +42,7 @@ describe('Text Size 1 - Directive', () => {
   });
 
   it('should update classes', () => {
-    component.icon = PuiIcon.ARROW_LEFT;
+    component.icon = 'arrow-left';
     fixture.detectChanges();
     expect(directive.nativeElement.classList).toContain('icon');
     expect(directive.nativeElement.classList).toContain('icon--arrow-left');

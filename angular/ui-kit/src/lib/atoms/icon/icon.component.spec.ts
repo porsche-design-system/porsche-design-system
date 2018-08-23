@@ -2,9 +2,9 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DebugElement } from '@angular/core';
-import { PuiIconComponent, PuiIconDirective, PuiIcon } from '.';
+import { PuiIconComponent, PuiIconDirective } from '.';
 
-describe('Icon Component', () => {
+describe('Text Size 1 Component', () => {
   let component: PuiIconComponent;
   let fixture: ComponentFixture<PuiIconComponent>;
   let textElement: DebugElement;
@@ -28,18 +28,18 @@ describe('Icon Component', () => {
   });
 
   it('should set correct classes', async(() => {
-    component.icon = PuiIcon.CAR_NEXT;
+    component.icon = 'car-next';
     fixture.detectChanges();
     expect(textElement.nativeElement.classList).toContain('icon');
     expect(textElement.nativeElement.classList).toContain('icon--car-next');
   }));
 
   it('should update classes', async(() => {
-    component.icon = PuiIcon.ARROW_LEFT;
+    component.icon = 'arrow-left';
     fixture.detectChanges();
     expect(textElement.nativeElement.classList).toContain('icon');
     expect(textElement.nativeElement.classList).toContain('icon--arrow-left');
-    component.icon = PuiIcon.CAR_NEXT;
+    component.icon = 'car-next';
     fixture.detectChanges();
     expect(textElement.nativeElement.classList).toContain('icon');
     expect(textElement.nativeElement.classList).toContain('icon--car-next');
