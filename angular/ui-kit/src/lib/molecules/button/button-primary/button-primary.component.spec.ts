@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PuiButtonPrimaryComponent } from './button-primary.component';
 import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { PuiIconDirective, PuiIcon } from '../../../atoms/icon/';
 
 describe('PuiButtonPrimaryComponent', () => {
   let component: PuiButtonPrimaryComponent;
@@ -24,9 +23,10 @@ describe('PuiButtonPrimaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PuiButtonPrimaryComponent, PuiIconDirective ],
+      declarations: [ PuiButtonPrimaryComponent ],
       schemas: [NO_ERRORS_SCHEMA]
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
@@ -103,7 +103,7 @@ describe('PuiButtonPrimaryComponent', () => {
   });
 
   it('should update icon class', () => {
-    component.icon = PuiIcon.CAR_NEXT;
+    component.icon = 'car-next';
     detectChanges();
     expect(iconElement.nativeElement.classList).toContain('icon--car-next');
   });

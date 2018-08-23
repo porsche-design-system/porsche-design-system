@@ -1,10 +1,10 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { PuiIcon } from './icon.enum';
+import { PuiIcon } from './iconMap';
 
 @Component({
   selector: `pui-icon`,
   exportAs: 'puiIcon',
-  templateUrl: 'icon.component.html',
+  templateUrl: 'icon.html',
   styleUrls: [
     '../../../../node_modules/@porsche/ui-kit-core/src/modules/icon/icon.scss'
   ],

@@ -1,4 +1,5 @@
 export * from './icon-module';
 export * from './icon.component';
 export * from './icon.directive';
-export * from './icon.enum';
+export * from './iconMap';
+
