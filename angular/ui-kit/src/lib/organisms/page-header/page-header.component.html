@@ -1,7 +1,10 @@
 <div class="page-header {{styleModifier}}">
   <h1 class="page-header__title">
-      <ng-content  select=".page-header__title">
-  </ng-content >
+    <ng-content select=".title">
+    </ng-content>
   </h1>
-  <p class="page-header__description" *ngIf="description">{{description}}</p>
+  <p class="page-header__description" *ngIf="description">
+    <ng-content select=".description">
+    </ng-content>
+  </p>
 </div>
