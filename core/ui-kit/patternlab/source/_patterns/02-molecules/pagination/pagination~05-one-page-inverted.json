@@ -9,5 +9,5 @@
   ],
   "pagination_isPrevDisabled": true,
   "pagination_isNextDisabled": true,
-  "pagination_inverted": true
+  "pagination_isThemeInverted": true
 }

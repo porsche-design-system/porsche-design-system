@@ -9,6 +9,7 @@
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}pagination {
+  $root: &;
   @include flex;
   @include flex-main-axis(center);
   counter-reset: maxNumberOfLinks 5;
@@ -30,6 +31,10 @@
     position: relative;
     width: rem(40px);
     height: rem(40px);
+
+    &:focus {
+      outline: 2px $color-palette-grey-5;
+    }
   }
 
   &__goto {
@@ -38,15 +43,27 @@
     text-decoration: none;
     cursor: pointer;
 
-    &:hover {
-      @include -text-color-red-1;
+    #{$root}--theme-inverted & {
+      @include -text-color-white;
     }
 
-    &--active {
+    &:hover {
+      @include -text-color-red-1;
+
+      #{$root}--theme-inverted & {
+        @include -text-color-red-1;
+      }
+    }
+
+    &--current {
       cursor: default;
 
       &:hover {
         @include -text-color-black;
+
+        #{$root}--theme-inverted & {
+          @include -text-color-white;
+        }
       }
 
       &::after {
@@ -66,6 +83,10 @@
 
       &:hover {
         @include -text-color-black;
+
+        #{$root}--theme-inverted & {
+          @include -text-color-white;
+        }
       }
 
       &::after {
@@ -82,16 +103,32 @@
     text-decoration: none;
     cursor: pointer;
 
+    #{$root}--theme-inverted & {
+      @include -text-color-white;
+    }
+
     &:hover {
       @include -text-color-red-1;
+
+      #{$root}--theme-inverted & {
+        @include -text-color-red-1;
+      }
     }
 
     &--disabled {
-      @include -text-color-grey-4;
+      @include -text-color-grey-5;
       cursor: default;
 
+      #{$root}--theme-inverted & {
+        @include -text-color-grey-5;
+      }
+
       &:hover {
-        @include -text-color-grey-4;
+        @include -text-color-grey-5;
+
+        #{$root}--theme-inverted & {
+          @include -text-color-grey-5;
+        }
       }
     }
   }
