@@ -8,6 +8,6 @@ import { Component, ViewEncapsulation, Input, Renderer2, ElementRef } from '@ang
 })
 export class PuiPageHeaderComponent {
   @Input() title = '';
-  @Input() description = '';
+  @Input() description : string;
   @Input() styleModifier = '';
 }
