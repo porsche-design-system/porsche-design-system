@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-* 
+### Improvements
+* Updated npm publish scripts to only use JFrog Artifactory
+* Updated npm repository name to official product abbreviation "pouikit-npm"
 
 ## [0.1.2] - 2018-04-11
 * Added css (scaffolding) synchronization

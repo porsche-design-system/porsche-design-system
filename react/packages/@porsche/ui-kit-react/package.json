@@ -1,18 +1,14 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.1.25",
+    "version": "0.1.27",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
     "jsnext:main": "dist/es/index.js",
     "typings": "dist/typings/index",
     "sideEffects": false,
-    "files": [
-        "dist",
-        "src",
-        "css"
-    ],
+    "files": ["dist", "src", "css"],
     "repository": {
         "type": "git"
     },
@@ -33,11 +29,7 @@
             "^.+\\.tsx?$": "ts-jest"
         },
         "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(tsx?)$",
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js"
-        ],
+        "moduleFileExtensions": ["ts", "tsx", "js"],
         "moduleNameMapper": {
             "^.*\\.scss$": "<rootDir>/src/test-helper/SCSSStub.js"
         },
@@ -54,9 +46,11 @@
         "build:commonjs": "tsc --project ./ --outDir ./dist/commonjs --module commonjs",
         "watch:commonjs": "yarn run build:commonjs --watch",
         "build:sass": "node-sass-chokidar --source-map true ./src --output .tmp/css",
-        "postbuild:sass": "cpx \"../../../node_modules/@porsche/ui-kit-core/src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./src/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
+        "postbuild:sass":
+            "cpx \"../../../node_modules/@porsche/ui-kit-core/src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./src/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
         "watch:sass": "yarn run build:sass && yarn run build:sass --watch",
-        "build:css": "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
+        "build:css":
+            "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
         "watch:css": "yarn run build:css && yarn run build:css --watch",
         "lint:ts": "tslint --project '.' --format codeFrame",
         "lint:ts:fix": "yarn run lint:ts --fix",
@@ -66,7 +60,7 @@
         "publish:artifactory": "yarn run test && yarn run build && yarn publish"
     },
     "dependencies": {
-        "@porsche/ui-kit-core": "0.4.5",
+        "@porsche/ui-kit-core": "0.7.4",
         "classnames": "^2.2.5",
         "react-modal": "^3.5.1",
         "react-responsive": "^3.0.0",
@@ -105,6 +99,6 @@
         "react-dom": ">=0.14.0 <= 16"
     },
     "publishConfig": {
-        "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/myuikit-npm/"
+        "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/"
     }
 }

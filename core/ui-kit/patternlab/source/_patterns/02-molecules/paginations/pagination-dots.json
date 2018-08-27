@@ -29,7 +29,7 @@
       "active" : false,
       "sizeSecondary" : false,
       "sizeTertiary" : true
-    },
+    }
   ]
   ,
   "pagination-dots_hidden-s": false,
