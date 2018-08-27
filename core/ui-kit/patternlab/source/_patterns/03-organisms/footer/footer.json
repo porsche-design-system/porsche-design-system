@@ -1,7 +1,6 @@
 {
   "bodyClass": "sg-wrapper-dark",
   "footer_loggedIn": false,
-<<<<<<< HEAD
   "footer_navigationFooterItems": [
     {
       "item": "My Porsche",
@@ -52,10 +51,7 @@
       ]
     }
   ],
-  "footer_disclaimer": "© 2017 Porsche Connect GmbH.",
-=======
   "footer_disclaimer": "© 2018 Porsche Smart Mobility GmbH.",
->>>>>>> master
   "footer_links": [
     {
       "name": "Impressum und Rechtliche Hinweise."
