@@ -1,5 +1,6 @@
 {
   "bodyClass": "sg-wrapper-dark",
+  "pagination_root": "pagination",
   "pagination_items": [
     {
       "data": 1,
@@ -8,6 +9,21 @@
     },
     {
       "data": 2,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    },
+    {
+      "data": 3,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    },
+    {
+      "data": 4,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    },
+    {
+      "data": 5,
       "isCurrentPage": false,
       "isEllipsis": false
     }

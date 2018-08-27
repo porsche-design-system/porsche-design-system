@@ -14,5 +14,5 @@
   ],
   "pagination_isPrevDisabled": false,
   "pagination_isNextDisabled": true,
-  "pagination_inverted": true
+  "pagination_isThemeInverted": true
 }
