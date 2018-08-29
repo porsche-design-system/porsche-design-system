@@ -27,7 +27,7 @@ $input-field-reset: 0 !default;
 $input-label-text-color: $color-palette-grey-5 !default;
 $input-label-position-top: 50% !default;
 $input-label-position-top-offset: -$input-label-position-top !default;
-$input-label-position-top-focus: rem(12px) !default;
+$input-label-position-top-focus: rem(15px) !default;
 
 $input-label-text-size: rem(12px) !default;
 $input-label-line-height: 1.25 !default;
@@ -35,7 +35,7 @@ $input-label-transition-speed: .4s !default;
 
 $input-icon-position-top: 50% !default;
 $input-icon-position-top-offset: -$input-icon-position-top !default;
-$input-icon-size: $spacing-24 !default;
+$input-icon-size: rem(20px) !default;
 
 $input-icon-color: $color-palette-grey-7 !default;
 $input-icon-color-hovered: $color-palette-red-1 !default;
