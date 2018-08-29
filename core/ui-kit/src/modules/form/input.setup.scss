@@ -13,20 +13,13 @@ $input-field-text-color-disabled: $color-palette-grey-8 !default;
 $input-field-text-color-error: $color-palette-status-red !default;
 $input-field-border-size: 1px !default;
 $input-field-border-size-error: 2px !default;
-$input-field-height: $spacing-42 !default;
-$input-field-height-xs: $spacing-48 !default;
-$input-field-height-m: $spacing-60 !default;
-$input-field-padding-horizontal: $spacing-12 !default;
-$input-field-padding-horizontal-m: $spacing-18 !default;
-$input-field-padding-vertical: rem(8px) !default;
-$input-field-padding-vertical-xs: rem(11px) !default;
-$input-field-padding-vertical-m: rem(17px) !default;
-$input-field-padding-vertical-top-focus: rem(14px) !default;
-$input-field-padding-vertical-top-focus-xs: rem(17px) !default;
-$input-field-padding-vertical-top-focus-m: rem(26px) !default;
-$input-field-padding-vertical-bottom-focus: rem(2px) !default;
-$input-field-padding-vertical-bottom-focus-xs: rem(5px) !default;
-$input-field-padding-vertical-bottom-focus-m: rem(8px) !default;
+
+$input-field-height: $spacing-60 !default;
+$input-field-padding-horizontal: $spacing-18 !default;
+$input-field-padding-vertical: rem(17px) !default;
+$input-field-padding-vertical-top-focus: rem(26px) !default;
+$input-field-padding-vertical-bottom-focus: rem(8px) !default;
+
 $input-field-text-size: rem(14px) !default;
 $input-field-line-height: normal !default;
 $input-field-reset: 0 !default;
@@ -34,17 +27,15 @@ $input-field-reset: 0 !default;
 $input-label-text-color: $color-palette-grey-5 !default;
 $input-label-position-top: 50% !default;
 $input-label-position-top-offset: -$input-label-position-top !default;
-$input-label-position-top-focus: $spacing-12 !default;
-$input-label-position-top-focus-xs: rem(15px) !default;
-$input-label-position-top-focus-m: rem(19px) !default;
-$input-label-text-size: rem(11px) !default;
-$input-label-text-size-m: rem(14px) !default;
+$input-label-position-top-focus: rem(19px) !default;
+
+$input-label-text-size: rem(14px) !default;
 $input-label-line-height: 1.25 !default;
 $input-label-transition-speed: .4s !default;
 
 $input-icon-position-top: 50% !default;
 $input-icon-position-top-offset: -$input-icon-position-top !default;
-$input-icon-size: rem(20px) !default;
-$input-icon-size-m: $spacing-24 !default;
+$input-icon-size: $spacing-24 !default;
+
 $input-icon-color: $color-palette-grey-7 !default;
 $input-icon-color-hovered: $color-palette-red-1 !default;
