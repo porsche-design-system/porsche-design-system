@@ -14,22 +14,22 @@ $input-field-text-color-error: $color-palette-status-red !default;
 $input-field-border-size: 1px !default;
 $input-field-border-size-error: 2px !default;
 
-$input-field-height: $spacing-60 !default;
+$input-field-height: rem(50px) !default;
 $input-field-padding-horizontal: $spacing-18 !default;
 $input-field-padding-vertical: rem(17px) !default;
-$input-field-padding-vertical-top-focus: rem(26px) !default;
+$input-field-padding-vertical-top-focus: rem(20px) !default;
 $input-field-padding-vertical-bottom-focus: rem(8px) !default;
 
-$input-field-text-size: rem(14px) !default;
+$input-field-text-size: rem(16px) !default;
 $input-field-line-height: normal !default;
 $input-field-reset: 0 !default;
 
 $input-label-text-color: $color-palette-grey-5 !default;
 $input-label-position-top: 50% !default;
 $input-label-position-top-offset: -$input-label-position-top !default;
-$input-label-position-top-focus: rem(19px) !default;
+$input-label-position-top-focus: rem(12px) !default;
 
-$input-label-text-size: rem(14px) !default;
+$input-label-text-size: rem(12px) !default;
 $input-label-line-height: 1.25 !default;
 $input-label-transition-speed: .4s !default;
 
