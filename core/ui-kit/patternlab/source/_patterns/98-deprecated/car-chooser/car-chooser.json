@@ -5,12 +5,14 @@
   "car-chooser_isMultiColumn": false,
   "car-chooser_open": false,
   "car-chooser_search": false,
+  "car-chooser_search_empty-result": false,
 
   "car-chooser_vehicles": [
     {
       "name": "911 Carrera Cabriolet",
       "vin": "BPOEES95Z13121105",
-      "image": "//placehold.it/600x400"
+      "image": "//placehold.it/600x400",
+      "active": true
     }
   ]
 }

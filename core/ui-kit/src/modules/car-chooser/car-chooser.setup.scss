@@ -11,6 +11,7 @@ $car-chooser-title-container-width: 100% !default;
 $car-chooser-title-container-padding-horizontal: rem(15px) !default;
 $car-chooser-title-container-padding-vertical: $spacing-18 !default;
 $car-chooser-title-container-padding-vertical-s: rem(25px) !default;
+$car-chooser-title-container-text-color-hovered: $color-palette-red-1 !default;
 
 $car-chooser-subtitle-padding-left: rem(21px) !default;
 $car-chooser-subtitle-padding-left-s: 0 !default;
@@ -28,6 +29,7 @@ $car-chooser-dropdown-padding-s: $spacing-24 !default;
 $car-chooser-dropdown-text-color-hovered: $color-palette-red-1 !default;
 $car-chooser-dropdown-border-size: 1px !default;
 $car-chooser-dropdown-border-color: $color-palette-grey-7 !default;
+$car-chooser-dropdown-search-message-text-color: $color-palette-red-1 !default;
 
 $car-chooser-image-dimension: 100% !default;
 
