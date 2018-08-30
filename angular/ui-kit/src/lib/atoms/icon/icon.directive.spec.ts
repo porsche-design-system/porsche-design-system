@@ -13,7 +13,7 @@ class TestComponent {
   public icon = 'car-next';
 }
 
-describe('Text Size 1 - Directive', () => {
+describe('Icon - Directive', () => {
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
   let directive: DebugElement;
