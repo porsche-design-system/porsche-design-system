@@ -81,12 +81,16 @@
     @include -text-size-4-thin;
     @include -text-color-white;
     @include -overflow-ellipsis;
+
+    transition: .25s ease-in-out;
   }
 
   &__vin {
     @include -text-size-copy;
     @include -text-color-white;
     @include -overflow-ellipsis;
+
+    transition: .25s ease-in-out;
   }
 
   &__dropdown {
@@ -96,13 +100,22 @@
     @include -spacing-inner-a;
     left: $car-chooser-dropdown-position-left;
     right: $car-chooser-dropdown-position-right;
-    display: none;
     position: absolute;
-    animation: dropdown-fade-out .4s ease;
+    max-height: 0;
+    transition: .5s cubic-bezier(.075, .82, .165, 1);
+    opacity: 0;
+
+    & > * { // sass-lint:disable-line no-combinators no-universal-selectors
+      opacity: 0;
+    }
 
     &--open {
-      display: block;
-      animation: dropdown-fade-in .4s ease;
+      max-height: none;
+      opacity: 1;
+
+      & > * { // sass-lint:disable-line no-combinators no-universal-selectors
+        opacity: 1;
+      }
     }
 
     &-column {
