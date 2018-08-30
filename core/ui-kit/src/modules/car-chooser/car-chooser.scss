@@ -43,6 +43,11 @@
       height: $car-chooser-dimension-xs;
     }
 
+    &::before {
+      transform-origin: 50% 50%;
+      transition: .5s cubic-bezier(.3, .3, .1, 1);
+    }
+
     &--open {
       &::before {
         transform: rotate(180deg);
@@ -97,19 +102,20 @@
     $bem-block: &;
 
     @include -background-white;
-    @include -spacing-inner-a;
     left: $car-chooser-dropdown-position-left;
     right: $car-chooser-dropdown-position-right;
     position: absolute;
+    padding: 0;
     max-height: 0;
-    transition: .5s cubic-bezier(.075, .82, .165, 1);
     opacity: 0;
+    transition: .5s cubic-bezier(.075, .82, .165, 1);
 
     & > * { // sass-lint:disable-line no-combinators no-universal-selectors
       opacity: 0;
     }
 
     &--open {
+      @include -spacing-inner-a;
       max-height: none;
       opacity: 1;
 
@@ -226,29 +232,5 @@
       color: $car-chooser-dropdown-search-message-text-color;
       text-align: center;
     }
-  }
-}
-
-@keyframes dropdown-fade-in {
-  0% {
-    max-height: 0;
-    opacity: 0;
-  }
-
-  100% {
-    max-height: 100vh;
-    opacity: 1;
-  }
-}
-
-@keyframes dropdown-fade-out {
-  0% {
-    max-height: 100vh;
-    opacity: 1;
-  }
-
-  100% {
-    max-height: 0;
-    opacity: 0;
   }
 }
