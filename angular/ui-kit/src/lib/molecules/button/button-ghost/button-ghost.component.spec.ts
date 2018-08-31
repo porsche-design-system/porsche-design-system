@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PuiButtonGhostComponent } from './button-ghost.component';
 import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { PuiIcon } from '../../../atoms';
 
 describe('PuiButtonGhostComponent', () => {
   let component: PuiButtonGhostComponent;
@@ -82,7 +83,7 @@ describe('PuiButtonGhostComponent', () => {
   });
 
   it('should update icon class', () => {
-    component.icon = 'car-next';
+    component.icon = PuiIcon.CAR_NEXT;
     detectChanges();
     expect(iconElement.nativeElement.classList).toContain('icon--car-next');
   });
