@@ -164,6 +164,27 @@
     }
   }
 
+  &--gap-offset {
+    margin: {
+      left: -$flex-child-spacing-horizontal;
+      right: -$flex-child-spacing-horizontal;
+    }
+
+    @include breakpoint('s') {
+      margin: {
+        left: -$flex-child-spacing-horizontal-s;
+        right: -$flex-child-spacing-horizontal-s;
+      }
+    }
+
+    @include breakpoint('l') {
+      margin: {
+        left: -$flex-child-spacing-horizontal-l;
+        right: -$flex-child-spacing-horizontal-l;
+      }
+    }
+  }
+
   &__child {
     @include flex-child-grow(1);
     @include flex-child-shrink(1);
@@ -189,6 +210,18 @@
     &--11   { @include flex-none; width: $flex-child-11-width; }
     &--12   { @include flex-none; width: $flex-child-12-width; }
 
+    &--offset-1   { margin-left: $flex-child-1-width; }
+    &--offset-2   { margin-left: $flex-child-2-width; }
+    &--offset-3   { margin-left: $flex-child-3-width; }
+    &--offset-4   { margin-left: $flex-child-4-width; }
+    &--offset-5   { margin-left: $flex-child-5-width; }
+    &--offset-6   { margin-left: $flex-child-6-width; }
+    &--offset-7   { margin-left: $flex-child-7-width; }
+    &--offset-8   { margin-left: $flex-child-8-width; }
+    &--offset-9   { margin-left: $flex-child-9-width; }
+    &--offset-10  { margin-left: $flex-child-10-width; }
+    &--offset-11  { margin-left: $flex-child-11-width; }
+
     @include breakpoint('xs') {
       &--auto-xs  {
         @include flex-child-grow(1);
@@ -209,6 +242,18 @@
       &--10-xs    { @include flex-none; width: $flex-child-10-width; }
       &--11-xs    { @include flex-none; width: $flex-child-11-width; }
       &--12-xs    { @include flex-none; width: $flex-child-12-width; }
+
+      &--offset-1-xs   { margin-left: $flex-child-1-width; }
+      &--offset-2-xs   { margin-left: $flex-child-2-width; }
+      &--offset-3-xs   { margin-left: $flex-child-3-width; }
+      &--offset-4-xs   { margin-left: $flex-child-4-width; }
+      &--offset-5-xs   { margin-left: $flex-child-5-width; }
+      &--offset-6-xs   { margin-left: $flex-child-6-width; }
+      &--offset-7-xs   { margin-left: $flex-child-7-width; }
+      &--offset-8-xs   { margin-left: $flex-child-8-width; }
+      &--offset-9-xs   { margin-left: $flex-child-9-width; }
+      &--offset-10-xs  { margin-left: $flex-child-10-width; }
+      &--offset-11-xs  { margin-left: $flex-child-11-width; }
     }
 
     @include breakpoint('s') {
@@ -231,6 +276,18 @@
       &--10-s    { @include flex-none; width: $flex-child-10-width; }
       &--11-s    { @include flex-none; width: $flex-child-11-width; }
       &--12-s    { @include flex-none; width: $flex-child-12-width; }
+
+      &--offset-1-s   { margin-left: $flex-child-1-width; }
+      &--offset-2-s   { margin-left: $flex-child-2-width; }
+      &--offset-3-s   { margin-left: $flex-child-3-width; }
+      &--offset-4-s   { margin-left: $flex-child-4-width; }
+      &--offset-5-s   { margin-left: $flex-child-5-width; }
+      &--offset-6-s   { margin-left: $flex-child-6-width; }
+      &--offset-7-s   { margin-left: $flex-child-7-width; }
+      &--offset-8-s   { margin-left: $flex-child-8-width; }
+      &--offset-9-s   { margin-left: $flex-child-9-width; }
+      &--offset-10-s  { margin-left: $flex-child-10-width; }
+      &--offset-11-s  { margin-left: $flex-child-11-width; }
     }
 
     @include breakpoint('m') {
@@ -253,6 +310,18 @@
       &--10-m   { @include flex-none; width: $flex-child-10-width; }
       &--11-m   { @include flex-none; width: $flex-child-11-width; }
       &--12-m   { @include flex-none; width: $flex-child-12-width; }
+
+      &--offset-1-m   { margin-left: $flex-child-1-width; }
+      &--offset-2-m   { margin-left: $flex-child-2-width; }
+      &--offset-3-m   { margin-left: $flex-child-3-width; }
+      &--offset-4-m   { margin-left: $flex-child-4-width; }
+      &--offset-5-m   { margin-left: $flex-child-5-width; }
+      &--offset-6-m   { margin-left: $flex-child-6-width; }
+      &--offset-7-m   { margin-left: $flex-child-7-width; }
+      &--offset-8-m   { margin-left: $flex-child-8-width; }
+      &--offset-9-m   { margin-left: $flex-child-9-width; }
+      &--offset-10-m  { margin-left: $flex-child-10-width; }
+      &--offset-11-m  { margin-left: $flex-child-11-width; }
     }
 
     @include breakpoint('l') {
@@ -275,6 +344,18 @@
       &--10-l   { @include flex-none; width: $flex-child-10-width; }
       &--11-l   { @include flex-none; width: $flex-child-11-width; }
       &--12-l   { @include flex-none; width: $flex-child-12-width; }
+
+      &--offset-1-l   { margin-left: $flex-child-1-width; }
+      &--offset-2-l   { margin-left: $flex-child-2-width; }
+      &--offset-3-l   { margin-left: $flex-child-3-width; }
+      &--offset-4-l   { margin-left: $flex-child-4-width; }
+      &--offset-5-l   { margin-left: $flex-child-5-width; }
+      &--offset-6-l   { margin-left: $flex-child-6-width; }
+      &--offset-7-l   { margin-left: $flex-child-7-width; }
+      &--offset-8-l   { margin-left: $flex-child-8-width; }
+      &--offset-9-l   { margin-left: $flex-child-9-width; }
+      &--offset-10-l  { margin-left: $flex-child-10-width; }
+      &--offset-11-l  { margin-left: $flex-child-11-width; }
     }
 
     @include breakpoint('xl') {
@@ -297,129 +378,38 @@
       &--10-xl   { @include flex-none; width: $flex-child-10-width; }
       &--11-xl   { @include flex-none; width: $flex-child-11-width; }
       &--12-xl   { @include flex-none; width: $flex-child-12-width; }
+
+      &--offset-1-xl   { margin-left: $flex-child-1-width; }
+      &--offset-2-xl   { margin-left: $flex-child-2-width; }
+      &--offset-3-xl   { margin-left: $flex-child-3-width; }
+      &--offset-4-xl   { margin-left: $flex-child-4-width; }
+      &--offset-5-xl   { margin-left: $flex-child-5-width; }
+      &--offset-6-xl   { margin-left: $flex-child-6-width; }
+      &--offset-7-xl   { margin-left: $flex-child-7-width; }
+      &--offset-8-xl   { margin-left: $flex-child-8-width; }
+      &--offset-9-xl   { margin-left: $flex-child-9-width; }
+      &--offset-10-xl  { margin-left: $flex-child-10-width; }
+      &--offset-11-xl  { margin-left: $flex-child-11-width; }
     }
 
     &--gap {
-      padding: {
-        left: $flex-child-spacing-horizontal;
-        right: $flex-child-spacing-horizontal;
-      }
-
-      @include breakpoint('xs', 's') {
-        padding: {
-          left: $flex-child-spacing-horizontal-xs;
-          right: $flex-child-spacing-horizontal-xs;
-        }
-      }
-
-      @include breakpoint('s', 'm') {
-        padding: {
-          left: $flex-child-spacing-horizontal-s;
-          right: $flex-child-spacing-horizontal-s;
-        }
-      }
-
-      @include breakpoint('m', 'l') {
-        padding: {
-          left: $flex-child-spacing-horizontal-m;
-          right: $flex-child-spacing-horizontal-m;
-        }
-      }
-
-      @include breakpoint('l', 'xl') {
-        padding: {
-          left: $flex-child-spacing-horizontal-l;
-          right: $flex-child-spacing-horizontal-l;
-        }
-      }
-
-      @include breakpoint('xl') {
-        padding: {
-          left: $flex-child-spacing-horizontal-xl;
-          right: $flex-child-spacing-horizontal-xl;
-        }
-      }
-
-      &-left {
+      &-normal {
         padding: {
           left: $flex-child-spacing-horizontal;
-          right: 0;
-        }
-
-        @include breakpoint('xs', 's') {
-          padding: {
-            left: $flex-child-spacing-horizontal-xs;
-            right: 0;
-          }
-        }
-
-        @include breakpoint('s', 'm') {
-          padding: {
-            left: $flex-child-spacing-horizontal-s;
-            right: 0;
-          }
-        }
-
-        @include breakpoint('m', 'l') {
-          padding: {
-            left: $flex-child-spacing-horizontal-m;
-            right: 0;
-          }
-        }
-
-        @include breakpoint('l', 'xl') {
-          padding: {
-            left: $flex-child-spacing-horizontal-l;
-            right: 0;
-          }
-        }
-
-        @include breakpoint('xl') {
-          padding: {
-            left: $flex-child-spacing-horizontal-xl;
-            right: 0;
-          }
-        }
-      }
-
-      &-right {
-        padding: {
-          left: 0;
           right: $flex-child-spacing-horizontal;
         }
 
-        @include breakpoint('xs', 's') {
+        @include breakpoint('s') {
           padding: {
-            left: 0;
-            right: $flex-child-spacing-horizontal-xs;
-          }
-        }
-
-        @include breakpoint('s', 'm') {
-          padding: {
-            left: 0;
+            left: $flex-child-spacing-horizontal-s;
             right: $flex-child-spacing-horizontal-s;
           }
         }
 
-        @include breakpoint('m', 'l') {
+        @include breakpoint('l') {
           padding: {
-            left: 0;
-            right: $flex-child-spacing-horizontal-m;
-          }
-        }
-
-        @include breakpoint('l', 'xl') {
-          padding: {
-            left: 0;
+            left: $flex-child-spacing-horizontal-l;
             right: $flex-child-spacing-horizontal-l;
-          }
-        }
-
-        @include breakpoint('xl') {
-          padding: {
-            left: 0;
-            right: $flex-child-spacing-horizontal-xl;
           }
         }
       }
@@ -432,117 +422,23 @@
       }
 
       @include breakpoint('xs') {
-        &-xs {
+        &-normal-xs {
           padding: {
             left: $flex-child-spacing-horizontal-xs;
             right: $flex-child-spacing-horizontal-xs;
           }
 
-          @include breakpoint('s', 'm') {
+          @include breakpoint('s') {
             padding: {
               left: $flex-child-spacing-horizontal-s;
               right: $flex-child-spacing-horizontal-s;
             }
           }
 
-          @include breakpoint('m', 'l') {
-            padding: {
-              left: $flex-child-spacing-horizontal-m;
-              right: $flex-child-spacing-horizontal-m;
-            }
-          }
-
-          @include breakpoint('l', 'xl') {
+          @include breakpoint('l') {
             padding: {
               left: $flex-child-spacing-horizontal-l;
               right: $flex-child-spacing-horizontal-l;
-            }
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-xl;
-              right: $flex-child-spacing-horizontal-xl;
-            }
-          }
-        }
-
-        &-left-xs {
-          padding: {
-            left: $flex-child-spacing-horizontal-xs;
-            right: 0;
-          }
-
-          @include breakpoint('s', 'm') {
-            padding: {
-              left: $flex-child-spacing-horizontal-s;
-              right: 0;
-            }
-          }
-
-          @include breakpoint('m', 'l') {
-            padding: {
-              left: $flex-child-spacing-horizontal-m;
-              right: 0;
-            }
-          }
-
-          @include breakpoint('l', 'xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-l;
-              right: 0;
-            }
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-xl;
-              right: 0;
-            }
-          }
-        }
-
-        &-right-xs {
-          &-right {
-            padding: {
-              left: 0;
-              right: $flex-child-spacing-horizontal-xs;
-            }
-          }
-
-          @include breakpoint('s', 'm') {
-            &-right {
-              padding: {
-                left: 0;
-                right: $flex-child-spacing-horizontal-s;
-              }
-            }
-          }
-
-          @include breakpoint('m', 'l') {
-            &-right {
-              padding: {
-                left: 0;
-                right: $flex-child-spacing-horizontal-m;
-              }
-            }
-          }
-
-          @include breakpoint('l', 'xl') {
-            &-right {
-              padding: {
-                left: 0;
-                right: $flex-child-spacing-horizontal-l;
-              }
-            }
-          }
-
-          @include breakpoint('xl') {
-            &-right {
-              padding: {
-                left: 0;
-                right: $flex-child-spacing-horizontal-xl;
-              }
             }
           }
         }
@@ -556,86 +452,23 @@
       }
 
       @include breakpoint('s') {
-        &-s {
+        &-normal-s {
           padding: {
             left: $flex-child-spacing-horizontal-s;
             right: $flex-child-spacing-horizontal-s;
           }
 
-          @include breakpoint('m', 'l') {
+          @include breakpoint('s') {
             padding: {
-              left: $flex-child-spacing-horizontal-m;
-              right: $flex-child-spacing-horizontal-m;
+              left: $flex-child-spacing-horizontal-s;
+              right: $flex-child-spacing-horizontal-s;
             }
           }
 
-          @include breakpoint('l', 'xl') {
+          @include breakpoint('l') {
             padding: {
               left: $flex-child-spacing-horizontal-l;
               right: $flex-child-spacing-horizontal-l;
-            }
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-xl;
-              right: $flex-child-spacing-horizontal-xl;
-            }
-          }
-        }
-
-        &-left-s {
-          padding: {
-            left: $flex-child-spacing-horizontal-s;
-            right: 0;
-          }
-
-          @include breakpoint('m', 'l') {
-            padding: {
-              left: $flex-child-spacing-horizontal-m;
-              right: 0;
-            }
-          }
-
-          @include breakpoint('l', 'xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-l;
-              right: 0;
-            }
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-xl;
-              right: 0;
-            }
-          }
-        }
-
-        &-right-s {
-          padding: {
-            left: 0;
-            right: $flex-child-spacing-horizontal-s;
-          }
-
-          @include breakpoint('m', 'l') {
-            padding: {
-              left: 0;
-              right: $flex-child-spacing-horizontal-m;
-            }
-          }
-
-          @include breakpoint('l', 'xl') {
-            padding: {
-              left: 0;
-              right: $flex-child-spacing-horizontal-l;
-            }
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: 0;
-              right: $flex-child-spacing-horizontal-xl;
             }
           }
         }
@@ -649,7 +482,7 @@
       }
 
       @include breakpoint('m') {
-        &-m {
+        &-normal-m {
           padding: {
             left: $flex-child-spacing-horizontal-m;
             right: $flex-child-spacing-horizontal-m;
@@ -665,48 +498,6 @@
           @include breakpoint('xl') {
             padding: {
               left: $flex-child-spacing-horizontal-xl;
-              right: $flex-child-spacing-horizontal-xl;
-            }
-          }
-        }
-
-        &-left-m {
-          padding: {
-            left: $flex-child-spacing-horizontal-m;
-            right: 0;
-          }
-
-          @include breakpoint('l', 'xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-l;
-              right: 0;
-            }
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-xl;
-              right: 0;
-            }
-          }
-        }
-
-        &-right-m {
-          padding: {
-            left: 0;
-            right: $flex-child-spacing-horizontal-m;
-          }
-
-          @include breakpoint('l', 'xl') {
-            padding: {
-              left: 0;
-              right: $flex-child-spacing-horizontal-l;
-            }
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: 0;
               right: $flex-child-spacing-horizontal-xl;
             }
           }
@@ -721,7 +512,7 @@
       }
 
       @include breakpoint('l') {
-        &-l {
+        &-normal-l {
           padding: {
             left: $flex-child-spacing-horizontal-l;
             right: $flex-child-spacing-horizontal-l;
@@ -730,34 +521,6 @@
           @include breakpoint('xl') {
             padding: {
               left: $flex-child-spacing-horizontal-xl;
-              right: $flex-child-spacing-horizontal-xl;
-            }
-          }
-        }
-
-        &-left-l {
-          padding: {
-            left: $flex-child-spacing-horizontal-l;
-            right: 0;
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-xl;
-              right: 0;
-            }
-          }
-        }
-
-        &-right-l {
-          padding: {
-            left: 0;
-            right: $flex-child-spacing-horizontal-l;
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: 0;
               right: $flex-child-spacing-horizontal-xl;
             }
           }
@@ -772,23 +535,9 @@
       }
 
       @include breakpoint('xl') {
-        &-xl {
+        &-normal-xl {
           padding: {
             left: $flex-child-spacing-horizontal-xl;
-            right: $flex-child-spacing-horizontal-xl;
-          }
-        }
-
-        &-left-xl {
-          padding: {
-            left: $flex-child-spacing-horizontal-xl;
-            right: 0;
-          }
-        }
-
-        &-right-xl {
-          padding: {
-            left: 0;
             right: $flex-child-spacing-horizontal-xl;
           }
         }
