@@ -43,6 +43,15 @@
                         </div>
                     {{/if}}
                 </div>
+            {{else if car-chooser_empty}}
+                <div class="column column--12">
+                    <h4 class="car-chooser__dropdown-title"> {{ car-chooser_title-empty }} </h4>
+                    <p class="car-chooser__dropdown-subtitle"> {{ car-chooser_subtitle-empty }} </p>
+                    {{> molecules-button-primary
+                        styleModifier="car-chooser__dropdown-add-button"
+                        button-primary_label=car-chooser_empty_button-label
+                        button-primary_icon="plus"}}
+                </div>
             {{else}}
                 <div class="row flex flex--row-wrap">
                     {{#each car-chooser_vehicles }}

@@ -1,11 +1,17 @@
 {
   "bodyClass": "sg-wrapper-dark",
+  "car-chooser_title": "Sie haben aktuell 28 Fahrzeuge.",
+  "car-chooser_subtitle": "Wählen Sie ein Fahrzeug durch Eingabe eines Stichwortes, z.B. GTS.",
+  "car-chooser_title-empty": "Sie haben aktuell keine Fahrzeuge.",
+  "car-chooser_subtitle-empty": "Sie haben zur Zeit kein Fahrzeug registriert und können My Porsche Funktionen dadurch nur eingeschränkt nutzen. Klicken Sie hier, um ein neues Fahrzeug hinzuzufügen oder wenden Sie sich an den Porsche Connect Support, wenn Sie Hilfe benötigen.",
   "car-chooser_barTitle": "911 Carrera Cabriolet",
   "car-chooser_barVin": "BPOEES95Z13121105",
   "car-chooser_isMultiColumn": false,
   "car-chooser_open": false,
   "car-chooser_search": false,
   "car-chooser_search_empty-result": false,
+  "car-chooser_empty": false,
+  "car-chooser_empty_button-label": "Neues Fahrzeug hinzufügen",
 
   "car-chooser_vehicles": [
     {
