@@ -45,7 +45,7 @@
 
     &::before {
       transform-origin: 50% 50%;
-      transition: .5s cubic-bezier(.3, .3, .1, 1);
+      transition: $car-chooser-icon-transition-speed cubic-bezier(.075, .82, .165, 1);
     }
 
     &--open {
@@ -108,7 +108,7 @@
     padding: 0;
     max-height: 0;
     opacity: 0;
-    transition: .5s cubic-bezier(.075, .82, .165, 1);
+    transition: $car-chooser-dropdown-transition-speed cubic-bezier(.075, .82, .165, 1);
 
     & > * { // sass-lint:disable-line no-combinators no-universal-selectors
       opacity: 0;
@@ -231,6 +231,13 @@
       display: block;
       color: $car-chooser-dropdown-search-message-text-color;
       text-align: center;
+    }
+
+    &-add-button {
+      @include -spacing-18;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
