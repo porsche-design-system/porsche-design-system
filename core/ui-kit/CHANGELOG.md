@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Improvements
+* Added animations for deprecated car chooser
+* Added empty search result state for deprectaed car chooser
+* Added empty vehicles state for deprectaed car chooser
+
+### Bugfixes
+* Hover effect for deprecated car chooser
+* Highlight for selected vehicles for deprecated car chooser
+* Fixed spacings for deprecated car chooser
 
 ## [0.9.1] - 2018-08-21
 ### Improvements
