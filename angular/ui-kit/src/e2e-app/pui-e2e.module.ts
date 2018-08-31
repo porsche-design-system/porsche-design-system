@@ -13,7 +13,8 @@ import {
   PuiLoaderModule,
   PuiButtonModule,
   PuiFooterModule,
-  PuiPageHeaderModule
+  PuiPageHeaderModule,
+  PuiInputModule
 } from '../public_api';
 import { PuiE2eAtomsTextSizeComponent } from './pages/atoms/text/text-size.component';
 import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
@@ -25,6 +26,7 @@ import { PuiE2eMoleculesImageCoverComponent } from './pages/molecules/image-cove
 import { PuiE2eMoleculesLoaderBaseComponent } from './pages/molecules/loader-base/loader-base-component';
 import { PuiE2eMoleculesButtonPrimaryComponent } from './pages/molecules/button/button-primary/button-primary.component';
 import { PuiE2eMoleculesButtonGhostComponent } from './pages/molecules/button/button-ghost/button-ghost.component';
+import { PuiE2eMoleculesFormInputComponent } from './pages/molecules/form/input/input.component';
 
 const puiModules = [
   PuiE2eRoutingModule,
@@ -37,7 +39,8 @@ const puiModules = [
   PuiLoaderModule,
   PuiButtonModule,
   PuiFooterModule,
-  PuiPageHeaderModule
+  PuiPageHeaderModule,
+  PuiInputModule
 ];
 
 const e2ePages = [
@@ -50,18 +53,13 @@ const e2ePages = [
   PuiE2eMoleculesButtonPrimaryComponent,
   PuiE2eOrganismsNotificationComponent,
   PuiE2eOrganismsFooterComponent,
-  PuiE2eOrganismsPageHeaderComponent
+  PuiE2eOrganismsPageHeaderComponent,
+  PuiE2eMoleculesFormInputComponent
 ];
 
 @NgModule({
-  declarations: [
-    PuiE2eComponent,
-    ...e2ePages
-  ],
-  imports: [
-    BrowserModule,
-    ...puiModules
-  ],
+  declarations: [PuiE2eComponent, ...e2ePages],
+  imports: [BrowserModule, ...puiModules],
   bootstrap: [PuiE2eComponent]
 })
-export class PuiE2eModule { }
+export class PuiE2eModule {}
