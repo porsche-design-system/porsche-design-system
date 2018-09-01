@@ -54,3 +54,5 @@ patternlab.json
 .sass-cache/*
 /sass-cache
 patternlab/public
+spec/snapshots/*.regression.png
+spec/snapshots/*.diff.png

@@ -24,7 +24,7 @@
     "serve": "gulp patternlab:serve",
     "find-outdated-dependencies": "npm outdated | grep --invert-match -E '(postcss-cli)'",
     "clean": "rm -rf ./dist rm -rf ./patternlab/public rm -rf ./node_modules",
-    "visual-regression-test": "ts-node node_modules/jasmine/bin/jasmine --config=spec/jasmine.config.json"
+    "visual-regression-test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.config.json"
   },
   "betterScripts": {
     "build:all": {
