@@ -6,6 +6,30 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Breaking changes
+* Refactoring of flex component.
+  * Migration path:
+    * Add classname `flex--gap-offset` to every flex container (wrapper)
+    * Delete classname `flex--direction-row` from flex container (row is default behaviour)
+    * Renamings of class names of flex children:
+        
+        `flex__child--gap` => `flex__child--gap-normal`
+        `flex__child--gap-left` => `flex__child--gap-normal`
+        `flex__child--gap-right` => `flex__child--gap-normal`
+        `flex__child--gap-left-x` => `flex__child--gap-normal-x`
+        `flex__child--gap-right-x` => `flex__child--gap-normal-x`
+        
+    * Deleted unused/deprecated class names which can be set by more generic classes:
+        
+        `flex--center-vertical` => `flex--direction-column flex--cross-axis-center`
+        `flex--center-horizontal` => `flex--cross-axis-center`
+        `flex--row-reverse` => `flex--direction-row-reverse`
+        `flex--column-reverse` => `flex--direction-column-reverse`
+        `flex--row-wrap` => `flex--wrap`
+        `flex--row-nowrap` => `flex--nowrap`
+        `flex--row` => `flex--direction-row`
+        `flex--column` => `flex--direction-column`
+        `flex--grow` => `flex__child--grow`
 
 ## [0.9.1] - 2018-08-21
 ### Improvements
