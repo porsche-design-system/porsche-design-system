@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* Added visual regression testing
 
 ## [0.9.1] - 2018-08-21
 ### Improvements
