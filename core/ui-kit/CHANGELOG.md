@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### Breaking changes
+### Visual breaking changes
 * Form element `input` updated to current spec (visual: [Invision](https://udg.invisionapp.com/d/main#/console/13100009/277692959/inspect))
   * Changed default height to 50px
   * Changed default text (16px) and label (12px) font size
