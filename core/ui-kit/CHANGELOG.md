@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Improvements
 * Added visual regression testing
+* Set npm registry to default for public available npm packages
 
 ### Visual breaking changes
 * Form element `input` updated to current spec (visual: [Invision](https://udg.invisionapp.com/d/main#/console/13100009/277692959/inspect))
