@@ -25,14 +25,15 @@
                           </span>
                         </div>
                     {{else}}
-                        <div class="row flex flex--row-wrap -spacing-24">
+                        <div class="car-chooser__dropdown-list car-chooser__dropdown-list--search">
                             {{#each car-chooser_vehicles }}
                                 <div class="
                                   car-chooser__dropdown-column
                                   {{#if active }} car-chooser__dropdown-column--active {{/if}}
                                   column
                                   column--12
-                                  {{#if ../car-chooser_isMultiColumn }} column--4-m{{/if}}"
+                                  column--4-s
+                                  {{#if ../car-chooser_lessThanThreeVehicles }} column--6-s{{/if}}"
                                 >
                                     <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
                                     <img src="{{ image }}" alt="{{ name }}" class="car-chooser__dropdown-image">
@@ -50,17 +51,19 @@
                     {{> molecules-button-primary
                         styleModifier="car-chooser__dropdown-add-button"
                         button-primary_label=car-chooser_empty_button-label
+                        button-primary_red=true
                         button-primary_icon="plus"}}
                 </div>
             {{else}}
-                <div class="row flex flex--row-wrap">
+                <div class="car-chooser__dropdown-list">
                     {{#each car-chooser_vehicles }}
                         <div class="
                           car-chooser__dropdown-column
                           {{#if active }} car-chooser__dropdown-column--active {{/if}}
                           column
                           column--12
-                          {{#if ../car-chooser_isMultiColumn }} column--4-m{{/if}}"
+                          column--4-s
+                          {{#if ../car-chooser_lessThanThreeVehicles }} column--6-s{{/if}}"
                         >
                             <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
                             <img src="{{ image }}" alt="{{ name }}" class="car-chooser__dropdown-image">

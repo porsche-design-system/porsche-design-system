@@ -6,7 +6,7 @@
   "car-chooser_subtitle-empty": "Sie haben zur Zeit kein Fahrzeug registriert und können My Porsche Funktionen dadurch nur eingeschränkt nutzen. Klicken Sie hier, um ein neues Fahrzeug hinzuzufügen oder wenden Sie sich an den Porsche Connect Support, wenn Sie Hilfe benötigen.",
   "car-chooser_barTitle": "911 Carrera Cabriolet",
   "car-chooser_barVin": "BPOEES95Z13121105",
-  "car-chooser_isMultiColumn": false,
+  "car-chooser_lessThanThreeVehicles": true,
   "car-chooser_open": false,
   "car-chooser_search": false,
   "car-chooser_search_empty-result": false,

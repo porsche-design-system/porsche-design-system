@@ -3,6 +3,7 @@
 @import '../../base/align/align.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
 @import '../../base/grid/flex.mixin.scss';
+@import '../../base/grid/row.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/overflow/overflow.mixin.scss';
 @import '../../mixins/breakpoint.scss';
@@ -124,6 +125,19 @@
       }
     }
 
+    &-list {
+      @include flex;
+      @include flex-direction(row);
+      @include flex-main-axis(center);
+      @include flex--wrap(wrap);
+      @include row-gap-normal;
+
+      &--search {
+        @include -spacing-24;
+        @include -spacing-18(bottom);
+      }
+    }
+
     &-column {
       cursor: pointer;
       border-bottom: $car-chooser-dropdown-border-size $car-chooser-dropdown-border-color solid;
@@ -193,7 +207,7 @@
 
     &-subtitle {
       @include -text-size-copy;
-      @include -spacing-18;
+      @include -spacing-6;
       display: block;
 
       @include breakpoint('s') {
@@ -216,6 +230,7 @@
     }
 
     &-input {
+      @include -text-size-copy;
       @include -spacing-c;
       width: $car-chooser-dropdown-input-field-width;
       max-width: $car-chooser-dropdown-input-field-max-width;
@@ -230,14 +245,26 @@
       @include -text-size-copy;
       display: block;
       color: $car-chooser-dropdown-search-message-text-color;
-      text-align: center;
+
+      @include breakpoint('s') {
+        text-align: center;
+      }
+
+      &:last-child {
+        @include -spacing-6;
+        @include -spacing-18(bottom);
+      }
     }
 
     &-add-button {
-      @include -spacing-18;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      @include -spacing-24;
+
+      @include breakpoint('s') {
+        @include -spacing-18(bottom);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 }
