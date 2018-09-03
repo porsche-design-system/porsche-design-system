@@ -26,6 +26,14 @@
     &-xl   { @include flex; }
   }
 
+  &--wrap {
+    @include flex--wrap(wrap);
+  }
+
+  &--nowrap {
+    @include flex--wrap(nowrap);
+  }
+
   &--direction {
     &-column          { @include flex-direction(column); }
     &-column-reverse  { @include flex-direction(column-reverse); }
@@ -189,6 +197,14 @@
     @include flex-child-grow(1);
     @include flex-child-shrink(1);
     @include flex-child-basis(0);
+
+    &--grow {
+      @include flex-child-grow(1);
+    }
+
+    &--shrink {
+      @include flex-child-shrink(1);
+    }
 
     &--auto {
       @include flex-child-grow(1);
@@ -594,35 +610,4 @@
     }
   }
 
-  //////////////////////////////////////////////////////////////////////////////////////
-  // TODO: TO BE REPLACED WITH STH. MORE GENERIC
-  //////////////////////////////////////////////////////////////////////////////////////
-
-  // center things vertically
-  &--center-vertical { @include flex--center-vertical; }
-
-  // center things horizontally
-  &--center-horizontal { @include flex--center-horizontal; }
-
-  // revese columns
-  &--column-reverse { @include flex--column-reverse; }
-
-  // revese rows
-  &--row-reverse { @include flex--row-reverse; }
-
-  // wraps the rows
-  &--row-wrap { @include flex--row-wrap; }
-
-  // displays as row
-  &--row { @include flex-direction(row); }
-
-  // displays as column
-  &--column {
-    @include flex-direction(column);
-  }
-
-  // grows elements via flex-grow
-  &--grow {
-    @include flex-child-grow(1);
-  }
 }

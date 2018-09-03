@@ -15,7 +15,7 @@
                     <p class="car-chooser__dropdown-subtitle"> {{ car-chooser_subtitle }} </p>
                     {{> molecules-input styleModifier="car-chooser__dropdown-input" input_icon="search" input_label="Modellname/Kennzeichen" }}
 
-                    <div class="row flex flex--row-wrap -spacing-24">
+                    <div class="row flex flex--wrap -spacing-24">
                         {{#each car-chooser_vehicles }}
                             <div class="car-chooser__dropdown-column column column--12 {{#if ../car-chooser_isMultiColumn }} column--4-m{{/if}}">
                                 <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
@@ -28,7 +28,7 @@
 
                 </div>
             {{else}}
-                <div class="row flex flex--row-wrap -spacing-24">
+                <div class="row flex flex--wrap -spacing-24">
                     {{#each car-chooser_vehicles }}
                         <div class="car-chooser__dropdown-column column column--12 {{#if ../car-chooser_isMultiColumn }} column--4-m{{/if}}">
                             <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
