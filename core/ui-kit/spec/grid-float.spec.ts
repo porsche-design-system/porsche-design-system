@@ -3,7 +3,7 @@ import * as puppeteer from 'puppeteer';
 import { Browser, Page } from 'puppeteer';
 import { VisualRegressionTester } from './testers/visual-regression-tester';
 
-describe('Pagination', () => {
+describe('Grid Float', () => {
   let browser: Browser, page: Page, visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
@@ -13,12 +13,12 @@ describe('Pagination', () => {
     visualRegressionTester = new VisualRegressionTester(page);
   });
 
-  it('should look the same', async () => {
-    expect(await visualRegressionTester.test('pagination', async () => {
+  it('should have no visual regression', async () => {
+    expect(await visualRegressionTester.test('grid-float', async () => {
       
-      await page.goto('http://localhost:4251/de/de_DE', {waitUntil: 'networkidle0'});
+      await page.goto('http://localhost:3000/patterns/01-atoms-04-grid-grid-float/01-atoms-04-grid-grid-float.rendered.html', {waitUntil: 'networkidle0'});
 
-    }, ['.charge-contract-information .notification-icon__text'])).toBeFalsy();
+    })).toBeFalsy();
   });
 
   afterAll(async () => {
