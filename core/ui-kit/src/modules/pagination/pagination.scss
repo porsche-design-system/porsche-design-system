@@ -33,7 +33,12 @@
     height: rem(40px);
 
     &:focus {
-      outline: 2px $color-palette-grey-5;
+      outline: 2px solid $color-palette-grey-5;
+    }
+
+    &:active {
+      outline: none;
+      color: $color-palette-red-1;
     }
   }
 
@@ -120,14 +125,14 @@
       cursor: default;
 
       #{$root}--theme-inverted & {
-        @include -text-color-grey-5;
+        @include -text-color-grey-7;
       }
 
       &:hover {
         @include -text-color-grey-5;
 
         #{$root}--theme-inverted & {
-          @include -text-color-grey-5;
+          @include -text-color-grey-7;
         }
       }
     }
