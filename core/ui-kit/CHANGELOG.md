@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Visual breaking changes
+* Form element `input` updated to current spec (visual: [Invision](https://udg.invisionapp.com/d/main#/console/13100009/277692959/inspect))
+  * Changed default height to 50px
+  * Changed default text (16px) and label (12px) font size
+  * Changed default icon size to 20px
+  * Removed responsive breakpoints
+  * Removed obsolete variables in scss setup
 ### Improvements
 * Added animations for deprecated car chooser
 * Added empty search result state for deprectaed car chooser

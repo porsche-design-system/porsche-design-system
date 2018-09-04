@@ -10,6 +10,7 @@ import { PuiE2eMoleculesButtonPrimaryComponent } from './pages/molecules/button/
 import { PuiE2eMoleculesButtonGhostComponent } from './pages/molecules/button/button-ghost/button-ghost.component';
 import { PuiE2eOrganismsFooterComponent } from './pages/organisms/footer/footer.component';
 import { PuiE2eOrganismsPageHeaderComponent } from './pages/organisms/page-header/page-header.component';
+import { PuiE2eMoleculesFormInputComponent } from './pages/molecules/form/input/input.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,15 @@ const routes: Routes = [
               {
                 path: 'button-primary',
                 component: PuiE2eMoleculesButtonPrimaryComponent
+              }
+            ]
+          },
+          {
+            path: 'form',
+            children: [
+              {
+                path: 'input',
+                component: PuiE2eMoleculesFormInputComponent
               }
             ]
           },
@@ -106,11 +116,11 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: '/atoms/text'
-  }];
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class PuiE2eRoutingModule {
-}
+export class PuiE2eRoutingModule {}

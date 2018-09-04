@@ -1,0 +1,15 @@
+<label class="input {{styleModifier}}">
+  <span *ngIf="icon" [puiIcon]="icon" class="input__icon"></span>
+  <input
+    class="input__field"
+    [ngClass]="{'input__field--error': error}"
+    [type]="type"
+    [name]="name"
+    [value]="value"
+    [placeholder]="label"
+    [disabled]="disabled"
+    [readonly]="disabled"
+    (input)="onValueChanged($event.target.value)"
+  >
+  <span class="input__label">{{label}}</span>
+</label>
