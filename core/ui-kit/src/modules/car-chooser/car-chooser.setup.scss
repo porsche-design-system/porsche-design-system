@@ -7,6 +7,7 @@ $car-chooser-dimension-xs: $spacing-60 !default;
 $car-chooser-dimension: rem(40px) !default;
 $car-chooser-icon-font-size: $spacing-24 !default;
 $car-chooser-icon-transition-speed: .5s !default;
+$car-chooser-text-max-width: rem(800px) !default;
 
 $car-chooser-title-container-width: 100% !default;
 $car-chooser-title-container-padding-horizontal: rem(15px) !default;
@@ -33,7 +34,8 @@ $car-chooser-dropdown-border-color: $color-palette-grey-7 !default;
 $car-chooser-dropdown-search-message-text-color: $color-palette-red-1 !default;
 $car-chooser-dropdown-transition-speed: .5s !default;
 
-$car-chooser-image-dimension: 100% !default;
+$car-chooser-image-max-width: 100% !default;
+$car-chooser-image-max-height: rem(280px) !default;
 
 $car-chooser-dropdown-input-field-width: 100% !default;
 $car-chooser-dropdown-input-field-max-width: rem(610px) !default;

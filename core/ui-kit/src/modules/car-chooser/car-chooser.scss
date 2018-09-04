@@ -186,8 +186,8 @@
 
     &-image {
       display: none;
-      width: $car-chooser-image-dimension;
-      height: $car-chooser-image-dimension;
+      max-width: $car-chooser-image-max-width;
+      max-height: $car-chooser-image-max-height;
 
       @include breakpoint('s') {
         display: inline;
@@ -197,6 +197,9 @@
     &-title {
       @include -text-size-4-thin;
       display: inline;
+      max-width: $car-chooser-text-max-width;
+      margin-left: auto;
+      margin-right: auto;
 
       @include breakpoint('s') {
         @include -spacing-18;
@@ -209,6 +212,9 @@
       @include -text-size-copy;
       @include -spacing-6;
       display: block;
+      max-width: $car-chooser-text-max-width;
+      margin-left: auto;
+      margin-right: auto;
 
       @include breakpoint('s') {
         @include -align-center;
@@ -245,6 +251,9 @@
       @include -text-size-copy;
       display: block;
       color: $car-chooser-dropdown-search-message-text-color;
+      max-width: $car-chooser-text-max-width;
+      margin-left: auto;
+      margin-right: auto;
 
       @include breakpoint('s') {
         text-align: center;
