@@ -437,6 +437,7 @@
         }
       }
 
+      // TODO: rethink the need of responsive gaps to switch between zero and grid gaps
       @include breakpoint('xs') {
         &-normal-xs {
           padding: {
