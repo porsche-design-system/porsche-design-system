@@ -186,6 +186,8 @@
       display: none;
       max-width: $car-chooser-image-max-width;
       max-height: $car-chooser-image-max-height;
+      margin-left: auto;
+      margin-right: auto;
 
       @include breakpoint('s') {
         display: inline;
