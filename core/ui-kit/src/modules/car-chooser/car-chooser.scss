@@ -87,7 +87,6 @@
     @include -text-size-4-thin;
     @include -text-color-white;
     @include -overflow-ellipsis;
-
     transition: .25s ease-in-out;
   }
 
@@ -95,7 +94,6 @@
     @include -text-size-copy;
     @include -text-color-white;
     @include -overflow-ellipsis;
-
     transition: .25s ease-in-out;
   }
 
