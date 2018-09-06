@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Added visual regression testing
 * Set npm registry to default for public available npm packages
 
+## [0.10.1] - 2018-09-04
+### Improvements
+* Added animations for deprecated car chooser
+* Added empty search result state for deprectaed car chooser
+* Added empty vehicles state for deprectaed car chooser
+
+### Bugfixes
+* Hover effect for deprecated car chooser
+* Highlight for selected vehicles for deprecated car chooser
+* Fixed spacings for deprecated car chooser
+
+## [0.10.0] - 2018-09-04
 ### Visual breaking changes
 * Form element `input` updated to current spec (visual: [Invision](https://udg.invisionapp.com/d/main#/console/13100009/277692959/inspect))
   * Changed default height to 50px

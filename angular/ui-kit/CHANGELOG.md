@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.6] - 2018-09-03
+### Improvements
+* Added pui-input component
 
 ## [0.2.5] - 2018-08-28
 ### Improvements
