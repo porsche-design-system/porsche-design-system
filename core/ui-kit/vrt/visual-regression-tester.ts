@@ -7,6 +7,7 @@ interface Options {
   viewports?: number[];
   fixturesDir?: string;
   resultsDir?: string;
+  tolerance?: number;
 }
 
 export class VisualRegressionTester {
@@ -14,7 +15,8 @@ export class VisualRegressionTester {
   private options: Options = {
     viewports: [320, 480, 760, 1000, 1300, 1760],
     fixturesDir: 'vrt/fixtures',
-    resultsDir: 'vrt/results'
+    resultsDir: 'vrt/results',
+    tolerance: 0
   };
 
   constructor(private page: Page, options?: Options) {
@@ -46,7 +48,7 @@ export class VisualRegressionTester {
 
   private async compareSnapshots(reference: Jimp, excludes: string[]): Promise<{image: Jimp, diff: Jimp} | null> {
     const image = await this.createSnapshot(excludes);
-    const diff = await Jimp.diff(reference, image, 0.1);
+    const diff = await Jimp.diff(reference, image, this.options.tolerance);
 
     if (diff.percent === 0) {
       return null;
