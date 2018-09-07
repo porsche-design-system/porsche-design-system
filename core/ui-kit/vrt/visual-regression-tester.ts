@@ -77,7 +77,7 @@ export class VisualRegressionTester {
 
       const paths = {
         reference: `${this.options.fixturesDir}/${snapshotId}.${viewport}.png`,
-        regression: `${this.options.resultsDir}/${snapshotId}.${viewport}.regression.png`,
+        regression: `${this.options.resultsDir}/${snapshotId}.${viewport}.png`,
         diff: `${this.options.resultsDir}/${snapshotId}.${viewport}.diff.png`
       };
 
