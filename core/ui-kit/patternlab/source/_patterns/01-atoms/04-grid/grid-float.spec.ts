@@ -7,7 +7,6 @@ describe('Grid Float', () => {
   let browser: Browser, page: Page, visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
     browser = await puppeteer.launch();
     page = await browser.newPage();
     visualRegressionTester = new VisualRegressionTester(page);
