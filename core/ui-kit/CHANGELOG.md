@@ -8,8 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Breaking changes
 * Refactoring of flex component.
+  * Added missing flex properties
   * Migration path:
-    * Add classname `flex--gap-offset` to every flex container (wrapper)
+    * Add classname `flex--gap-offset-normal` to every flex container (wrapper)
     * Delete classname `flex--direction-row` from flex container (row is default behaviour)
     * Renamings of class names of flex children:
         
@@ -26,10 +27,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
         `flex--row-reverse` => `flex--direction-row-reverse`
         `flex--column-reverse` => `flex--direction-column-reverse`
         `flex--row-wrap` => `flex--wrap`
-        `flex--row-nowrap` => `flex--nowrap`
+        `flex--row-nowrap` => `flex--wrap-no`
         `flex--row` => `flex--direction-row`
         `flex--column` => `flex--direction-column`
-        `flex--grow` => `flex__child--grow`
+        `flex--grow` => `flex__child--grow-1` || `flex__child--grow-0`
 
 ## [0.9.1] - 2018-08-21
 ### Improvements
