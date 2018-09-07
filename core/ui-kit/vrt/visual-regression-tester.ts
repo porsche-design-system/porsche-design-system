@@ -1,13 +1,14 @@
 import * as Jimp from 'jimp/dist';
 import * as del from 'del';
 import * as fs from 'fs';
-import { Page } from "puppeteer";
+import { Page, Response } from 'puppeteer';
 
 interface Options {
   viewports?: number[];
   fixturesDir?: string;
   resultsDir?: string;
   tolerance?: number;
+  baseUrl?: string;
 }
 
 export class VisualRegressionTester {
@@ -16,7 +17,8 @@ export class VisualRegressionTester {
     viewports: [320, 480, 760, 1000, 1300, 1760],
     fixturesDir: 'vrt/fixtures',
     resultsDir: 'vrt/results',
-    tolerance: 0
+    tolerance: 0,
+    baseUrl: 'http://localhost:3000/patterns'
   };
 
   constructor(private page: Page, options?: Options) {
@@ -62,6 +64,10 @@ export class VisualRegressionTester {
 
   private async cleanSnapshots(paths: string[]): Promise<void> {
     await del(paths);
+  }
+
+  public async goTo(url: string): Promise<Response> {
+    return await this.page.goto(`${this.options.baseUrl}/${url}`, {waitUntil: 'networkidle0'});
   }
 
   public async test(snapshotId: string, scenario: Function, maskSelectors: string[] = []): Promise<boolean> {

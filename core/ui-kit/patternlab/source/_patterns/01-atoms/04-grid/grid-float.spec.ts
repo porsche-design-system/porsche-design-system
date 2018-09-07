@@ -16,7 +16,7 @@ describe('Grid Float', () => {
   it('should have no visual regression', async () => {
     expect(await visualRegressionTester.test('grid-float', async () => {
       
-      await page.goto('http://localhost:3000/patterns/01-atoms-04-grid-grid-float/01-atoms-04-grid-grid-float.rendered.html', {waitUntil: 'networkidle0'});
+      await visualRegressionTester.goTo('01-atoms-04-grid-grid-float/01-atoms-04-grid-grid-float.rendered.html');
 
     })).toBeFalsy();
   });
