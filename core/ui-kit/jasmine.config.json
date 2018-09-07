@@ -3,7 +3,9 @@
   "spec_files": [
     "patternlab/source/_patterns/**/*.spec.ts"
   ],
-  "helpers": [],
+  "helpers": [
+    "vrt/helpers/**/*.ts"
+  ],
   "stopSpecOnExpectationFailure": false,
   "random": false
 }
