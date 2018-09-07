@@ -1,7 +1,7 @@
 import 'jasmine';
 import * as puppeteer from 'puppeteer';
 import { Browser, Page } from 'puppeteer';
-import { VisualRegressionTester } from './testers/visual-regression-tester';
+import { VisualRegressionTester } from './../../../../../vrt/visual-regression-tester';
 
 describe('Grid Float', () => {
   let browser: Browser, page: Page, visualRegressionTester: VisualRegressionTester;

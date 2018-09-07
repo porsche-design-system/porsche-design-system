@@ -5,15 +5,17 @@ import { Page } from "puppeteer";
 
 interface Options {
   viewports?: number[];
-  snapshotsDir?: string;
+  fixturesDir?: string;
+  resultsDir?: string;
 }
 
 export class VisualRegressionTester {
 
   private options: Options = {
     viewports: [320, 480, 760, 1000, 1300, 1760],
-    snapshotsDir: 'spec/snapshots'
-  }
+    fixturesDir: 'vrt/fixtures',
+    resultsDir: 'vrt/results'
+  };
 
   constructor(private page: Page, options?: Options) {
     this.options = {
@@ -66,10 +68,10 @@ export class VisualRegressionTester {
     for (const viewport of this.options.viewports) {
 
       const paths = {
-        reference: `${this.options.snapshotsDir}/${snapshotId}.${viewport}.png`,
-        regression: `${this.options.snapshotsDir}/${snapshotId}.${viewport}.regression.png`,
-        diff: `${this.options.snapshotsDir}/${snapshotId}.${viewport}.diff.png`
-      }
+        reference: `${this.options.fixturesDir}/${snapshotId}.${viewport}.png`,
+        regression: `${this.options.resultsDir}/${snapshotId}.${viewport}.regression.png`,
+        diff: `${this.options.resultsDir}/${snapshotId}.${viewport}.diff.png`
+      };
 
       await this.cleanSnapshots([paths.regression, paths.diff]);
 

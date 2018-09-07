@@ -1,11 +1,9 @@
 {
-  "spec_dir": "spec",
+  "spec_dir": "./",
   "spec_files": [
-    "**/*.spec.ts"
+    "patternlab/source/_patterns/**/*.spec.ts"
   ],
-  "helpers": [
-    "helpers/**/*.ts"
-  ],
+  "helpers": [],
   "stopSpecOnExpectationFailure": false,
   "random": false
 }
