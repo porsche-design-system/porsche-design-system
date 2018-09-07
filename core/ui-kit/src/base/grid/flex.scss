@@ -5,33 +5,56 @@
 
 .#{$global-class-prefix}flex {
   @include flex;
+  @include breakpoint('xs') { &-xs  { @include flex; } }
+  @include breakpoint('s')  { &-s   { @include flex; } }
+  @include breakpoint('m')  { &-m   { @include flex; } }
+  @include breakpoint('l')  { &-l   { @include flex; } }
+  @include breakpoint('xl') { &-xl  { @include flex; } }
 
-  @include breakpoint('xs') {
-    &-xs  { @include flex; }
-  }
-
-  @include breakpoint('s') {
-    &-s   { @include flex; }
-  }
-
-  @include breakpoint('m') {
-    &-m   { @include flex; }
-  }
-
-  @include breakpoint('l') {
-    &-l   { @include flex; }
-  }
-
-  @include breakpoint('xl') {
-    &-xl   { @include flex; }
-  }
+  /**
+   * properties for flex parent
+   */
 
   &--wrap {
     @include flex--wrap(wrap);
-  }
 
-  &--nowrap {
-    @include flex--wrap(nowrap);
+    &-no {
+      @include flex--wrap(nowrap);
+    }
+
+    &-reverse {
+      @include flex--wrap(wrap-reverse);
+    }
+
+    @include breakpoint('xs') {
+      &-xs  { @include flex--wrap(wrap); }
+      &-no-xs  { @include flex--wrap(nowrap); }
+      &-reverse-xs  { @include flex--wrap(wrap-reverse); }
+    }
+
+    @include breakpoint('s') {
+      &-s  { @include flex--wrap(wrap); }
+      &-no-s  { @include flex--wrap(nowrap); }
+      &-reverse-s  { @include flex--wrap(wrap-reverse); }
+    }
+
+    @include breakpoint('m') {
+      &-m  { @include flex--wrap(wrap); }
+      &-no-m  { @include flex--wrap(nowrap); }
+      &-reverse-m  { @include flex--wrap(wrap-reverse); }
+    }
+
+    @include breakpoint('l') {
+      &-l  { @include flex--wrap(wrap); }
+      &-no-l  { @include flex--wrap(nowrap); }
+      &-reverse-l  { @include flex--wrap(wrap-reverse); }
+    }
+
+    @include breakpoint('xl') {
+      &-xl  { @include flex--wrap(wrap); }
+      &-no-xl  { @include flex--wrap(nowrap); }
+      &-reverse-xl  { @include flex--wrap(wrap-reverse); }
+    }
   }
 
   &--direction {
@@ -135,12 +158,14 @@
     &-end       { @include flex-cross-axis(flex-end); }
     &-center    { @include flex-cross-axis(center); }
     &-stretch   { @include flex-cross-axis(stretch); }
+    &-baseline   { @include flex-cross-axis(baseline); }
 
     @include breakpoint('xs') {
       &-start-xs    { @include flex-cross-axis(flex-start); }
       &-end-xs      { @include flex-cross-axis(flex-end); }
       &-center-xs   { @include flex-cross-axis(center); }
       &-stretch-xs  { @include flex-cross-axis(stretch); }
+      &-baseline-xs { @include flex-cross-axis(baseline); }
     }
 
     @include breakpoint('s') {
@@ -148,6 +173,7 @@
       &-end-s       { @include flex-cross-axis(flex-end); }
       &-center-s    { @include flex-cross-axis(center); }
       &-stretch-s   { @include flex-cross-axis(stretch); }
+      &-baseline-s  { @include flex-cross-axis(baseline); }
     }
 
     @include breakpoint('m') {
@@ -155,6 +181,7 @@
       &-end-m       { @include flex-cross-axis(flex-end); }
       &-center-m    { @include flex-cross-axis(center); }
       &-stretch-m   { @include flex-cross-axis(stretch); }
+      &-baseline-m  { @include flex-cross-axis(baseline); }
     }
 
     @include breakpoint('l') {
@@ -162,6 +189,7 @@
       &-end-l       { @include flex-cross-axis(flex-end); }
       &-center-l    { @include flex-cross-axis(center); }
       &-stretch-l   { @include flex-cross-axis(stretch); }
+      &-baseline-l  { @include flex-cross-axis(baseline); }
     }
 
     @include breakpoint('xl') {
@@ -169,29 +197,49 @@
       &-end-xl       { @include flex-cross-axis(flex-end); }
       &-center-xl    { @include flex-cross-axis(center); }
       &-stretch-xl   { @include flex-cross-axis(stretch); }
+      &-baseline-xl  { @include flex-cross-axis(baseline); }
     }
   }
 
   &--gap-offset {
-    margin: {
-      left: -$flex-child-spacing-horizontal;
-      right: -$flex-child-spacing-horizontal;
+    &-normal {
+      @include flex-gap-offset;
     }
 
-    @include breakpoint('s') {
-      margin: {
-        left: -$flex-child-spacing-horizontal-s;
-        right: -$flex-child-spacing-horizontal-s;
-      }
+    &-zero {
+      @include flex-gap-offset-zero;
     }
 
-    @include breakpoint('l') {
-      margin: {
-        left: -$flex-child-spacing-horizontal-l;
-        right: -$flex-child-spacing-horizontal-l;
-      }
+    @include breakpoint('xs') {
+      &-normal-xs { @include flex-gap-offset; }
+      &-zero-xs   { @include flex-gap-offset-zero; }
+    }
+
+    @include breakpoint('s')  {
+      &-normal-s  { @include flex-gap-offset; }
+      &-zero-s    { @include flex-gap-offset-zero; }
+    }
+
+    @include breakpoint('m')  {
+      &-normal-m  { @include flex-gap-offset; }
+      &-zero-m    { @include flex-gap-offset-zero; }
+    }
+
+    @include breakpoint('l')  {
+      &-normal-l  { @include flex-gap-offset; }
+      &-zero-l    { @include flex-gap-offset-zero; }
+    }
+
+    @include breakpoint('xl') {
+      &-normal-xl { @include flex-gap-offset; }
+      &-zero-xl   { @include flex-gap-offset-zero; }
     }
   }
+
+
+  /**
+   * properties for flex children items
+   */
 
   &__child {
     @include flex-child-grow(1);
@@ -199,11 +247,13 @@
     @include flex-child-basis(0);
 
     &--grow {
-      @include flex-child-grow(1);
+      &-0 { @include flex-child-grow(0); }
+      &-1 { @include flex-child-grow(1); }
     }
 
     &--shrink {
-      @include flex-child-shrink(1);
+      &-0 { @include flex-child-shrink(0); }
+      &-1 { @include flex-child-shrink(1); }
     }
 
     &--auto {
@@ -239,6 +289,16 @@
     &--offset-11  { margin-left: $flex-child-11-width; }
 
     @include breakpoint('xs') {
+      &--grow {
+        &-0-xs { @include flex-child-grow(0); }
+        &-1-xs { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-xs { @include flex-child-shrink(0); }
+        &-1-xs { @include flex-child-shrink(1); }
+      }
+
       &--auto-xs  {
         @include flex-child-grow(1);
         @include flex-child-shrink(1);
@@ -273,6 +333,16 @@
     }
 
     @include breakpoint('s') {
+      &--grow {
+        &-0-s { @include flex-child-grow(0); }
+        &-1-s { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-s { @include flex-child-shrink(0); }
+        &-1-s { @include flex-child-shrink(1); }
+      }
+
       &--auto-s  {
         @include flex-child-grow(1);
         @include flex-child-shrink(1);
@@ -307,6 +377,16 @@
     }
 
     @include breakpoint('m') {
+      &--grow {
+        &-0-m { @include flex-child-grow(0); }
+        &-1-m { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-m { @include flex-child-shrink(0); }
+        &-1-m { @include flex-child-shrink(1); }
+      }
+
       &--auto-m {
         @include flex-child-grow(1);
         @include flex-child-shrink(1);
@@ -341,6 +421,16 @@
     }
 
     @include breakpoint('l') {
+      &--grow {
+        &-0-l { @include flex-child-grow(0); }
+        &-1-l { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-l { @include flex-child-shrink(0); }
+        &-1-l { @include flex-child-shrink(1); }
+      }
+
       &--auto-l {
         @include flex-child-grow(1);
         @include flex-child-shrink(1);
@@ -375,6 +465,16 @@
     }
 
     @include breakpoint('xl') {
+      &--grow {
+        &-0-xl { @include flex-child-grow(0); }
+        &-1-xl { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-xl { @include flex-child-shrink(0); }
+        &-1-xl { @include flex-child-shrink(1); }
+      }
+
       &--auto-xl {
         @include flex-child-grow(1);
         @include flex-child-shrink(1);
@@ -410,24 +510,7 @@
 
     &--gap {
       &-normal {
-        padding: {
-          left: $flex-child-spacing-horizontal;
-          right: $flex-child-spacing-horizontal;
-        }
-
-        @include breakpoint('s') {
-          padding: {
-            left: $flex-child-spacing-horizontal-s;
-            right: $flex-child-spacing-horizontal-s;
-          }
-        }
-
-        @include breakpoint('l') {
-          padding: {
-            left: $flex-child-spacing-horizontal-l;
-            right: $flex-child-spacing-horizontal-l;
-          }
-        }
+        @include flex-child-gap-normal;
       }
 
       &-zero {
@@ -437,27 +520,9 @@
         }
       }
 
-      // TODO: rethink the need of responsive gaps to switch between zero and grid gaps
       @include breakpoint('xs') {
         &-normal-xs {
-          padding: {
-            left: $flex-child-spacing-horizontal-xs;
-            right: $flex-child-spacing-horizontal-xs;
-          }
-
-          @include breakpoint('s') {
-            padding: {
-              left: $flex-child-spacing-horizontal-s;
-              right: $flex-child-spacing-horizontal-s;
-            }
-          }
-
-          @include breakpoint('l') {
-            padding: {
-              left: $flex-child-spacing-horizontal-l;
-              right: $flex-child-spacing-horizontal-l;
-            }
-          }
+          @include flex-child-gap-normal;
         }
 
         &-zero-xs {
@@ -470,24 +535,7 @@
 
       @include breakpoint('s') {
         &-normal-s {
-          padding: {
-            left: $flex-child-spacing-horizontal-s;
-            right: $flex-child-spacing-horizontal-s;
-          }
-
-          @include breakpoint('s') {
-            padding: {
-              left: $flex-child-spacing-horizontal-s;
-              right: $flex-child-spacing-horizontal-s;
-            }
-          }
-
-          @include breakpoint('l') {
-            padding: {
-              left: $flex-child-spacing-horizontal-l;
-              right: $flex-child-spacing-horizontal-l;
-            }
-          }
+          @include flex-child-gap-normal;
         }
 
         &-zero-s {
@@ -500,24 +548,7 @@
 
       @include breakpoint('m') {
         &-normal-m {
-          padding: {
-            left: $flex-child-spacing-horizontal-m;
-            right: $flex-child-spacing-horizontal-m;
-          }
-
-          @include breakpoint('l', 'xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-l;
-              right: $flex-child-spacing-horizontal-l;
-            }
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-xl;
-              right: $flex-child-spacing-horizontal-xl;
-            }
-          }
+          @include flex-child-gap-normal;
         }
 
         &-zero-m {
@@ -530,17 +561,7 @@
 
       @include breakpoint('l') {
         &-normal-l {
-          padding: {
-            left: $flex-child-spacing-horizontal-l;
-            right: $flex-child-spacing-horizontal-l;
-          }
-
-          @include breakpoint('xl') {
-            padding: {
-              left: $flex-child-spacing-horizontal-xl;
-              right: $flex-child-spacing-horizontal-xl;
-            }
-          }
+          @include flex-child-gap-normal;
         }
 
         &-zero-l {
@@ -553,10 +574,7 @@
 
       @include breakpoint('xl') {
         &-normal-xl {
-          padding: {
-            left: $flex-child-spacing-horizontal-xl;
-            right: $flex-child-spacing-horizontal-xl;
-          }
+          @include flex-child-gap-normal;
         }
 
         &-zero-xl {
@@ -610,5 +628,4 @@
       }
     }
   }
-
 }
