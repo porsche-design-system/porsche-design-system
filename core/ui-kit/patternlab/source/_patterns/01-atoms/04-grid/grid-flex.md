@@ -1,16 +1,15 @@
 ---
-title: Grid Flex
+title: Flex Layout
 state: inprogress
 ---
 
 # Overview
-The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. It uses css flexbox to 
-provide a maximum of flexibility. Breakpoint specific column behaviour (width, offset, alignments, etc.) can easily be set ba adding breakpoint specific classnames. Also decent nestings are supported.
+The Porsche UI Kit flex layout system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas. But it can also be used to layout complete components which are not using grid specific values. Breakpoint specific behaviour (width, offset, alignments, etc.) can easily be set by adding breakpoint specific classnames. Also decent nestings are supported.
 
 # Usage
 
 ## Basic
-For basic implementation, it is recommended to use this basic pattern:
+For basic implementation, it is recommended to use this pattern:
 
 ```
 <div class="flex flex--gap-offset-normal">
@@ -27,7 +26,7 @@ The classes `flex` and `flex--gap-offset-normal` on the parent and `flex__child`
 
 
 ## Offset
-In some cases it can be neccessary to indent columns. The grid gives basic indentions bnased on grid sizings:
+In some cases it can be neccessary to indent columns. The grid gives basic indentions based on grid sizings:
 
 ```
 <div class="flex flex--gap-offset-normal">
@@ -42,6 +41,7 @@ The child column has an offset of 1 column on the left and due to its length of 
 ## Direction
 In some cases it might be neccessary to define or change direction of the columns. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
 
+### Column
 ```
 <div class="flex flex--gap-offset-normal flex--direction-column">
   <div class="flex__child flex__child--gap-normal flex__child--6">
@@ -53,6 +53,7 @@ In some cases it might be neccessary to define or change direction of the column
 </div>
 ```
 
+### Row reverse
 ```
 <div class="flex flex--gap-offset-normal flex--direction-row-reverse">
   <div class="flex__child flex__child--gap-normal flex__child--6">
@@ -64,14 +65,14 @@ In some cases it might be neccessary to define or change direction of the column
 </div>
 ```
 
-The class names must be set on the grid parent container:
-`flex--direction-row` #(default)
-`flex--direction-row-reverse`
-`flex--direction-column`
-`flex--direction-column-reverse`
+Class names must be set on the grid parent container:  
+`flex--direction-row` #(default)  
+`flex--direction-row-reverse`  
+`flex--direction-column`  
+`flex--direction-column-reverse`  
 
 
-##Alignment (for all children)
+## Alignment (for all children)
 Native flexbox alignments can also be set by adding specific class names to the grid parent container.
 
 ### Main axis (horizontal)
@@ -87,13 +88,13 @@ Native flexbox alignments can also be set by adding specific class names to the 
 </div>
 ```
 
-These alignment values can be set:
-`flex--main-axis-start` #(default)
-`flex--main-axis-end`
-`flex--main-axis-center`
-`flex--main-axis-between`
-`flex--main-axis-around`
-`flex--main-axis-evenly`
+These alignment values can be set:  
+`flex--main-axis-start` #(default)  
+`flex--main-axis-end`  
+`flex--main-axis-center`  
+`flex--main-axis-between`  
+`flex--main-axis-around`  
+`flex--main-axis-evenly`  
 
 ### Cross axis (vertical)
 
@@ -108,15 +109,15 @@ These alignment values can be set:
 </div>
 ```
 
-These alignment values can be set:
-`flex--cross-axis-stretch` #(default)
-`flex--cross-axis-start`
-`flex--cross-axis-end`
-`flex--cross-axis-center`
-`flex--cross-axis-baseline`
+These alignment values can be set:  
+`flex--cross-axis-stretch` #(default)  
+`flex--cross-axis-start`  
+`flex--cross-axis-end`  
+`flex--cross-axis-center`  
+`flex--cross-axis-baseline`  
 
 
-###Align self (for specific children)
+### Align self (for specific children)
 
 ```
 <div class="flex flex--gap-offset-normal flex--cross-axis-end">
@@ -129,16 +130,15 @@ These alignment values can be set:
 </div>
 ```
 
-These alignment values can be set:
-`flex__child--align-start` #(default)
-`flex__child--align-end`
-`flex__child--align-center`
-`flex__child--align-stretch`
+These alignment values can be set:  
+`flex__child--align-start` #(default)  
+`flex__child--align-end`  
+`flex__child--align-center`  
+`flex__child--align-stretch`  
 
 
 ## Wrapping
-The flex-wrap property is a sub-property of the Flexible Box Layout module.
-It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in.
+The flex-wrap property is a sub-property of the flexible box layout module. It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in.
 
 ```
 <div class="flex flex--gap-offset-normal flex--wrap">
@@ -151,15 +151,38 @@ It defines whether the flex items are forced in a single line or can be flowed i
 </div>
 ```
 
-These wrapping values can be set:
-`flex--nowrap` #(default)
-`flex--wrap`
-`flex--wrap-reverse`
+These wrapping values can be set:  
+`flex--nowrap` #(default)  
+`flex--wrap`  
+`flex--wrap-reverse`  
 
 
-## Zero gap
-!!!!!!!!!!!
+## Zero gap (native flexbox behaviour)
+The flex layout module is much more than just defining rough grid layout areas. It's there to build complete layouts on component basis by supporting every css flexbox property which can be set by (responsive) class names. Here are some examples to get rid of the default grid gaps and widths an dive into native flexbox layouting.
 
+### 2 items side by side
+```
+<div class="flex">
+  <div class="flex__child">
+    1st item aligned left
+  </div>
+  <div class="flex__child">
+    2nd item aligned left to item 1
+  </div>
+</div>
+```
+
+### 2 items with "space-between"
+```
+<div class="flex flex--main-axis-space-between">
+  <div class="flex__child">
+    1st item aligned left
+  </div>
+  <div class="flex__child">
+    2nd item aligned right
+  </div>
+</div>
+```
 
 ## Nesting
 Basic nesting of grids is supported. "Basic" because of percentage value of width and gaps which couldn't be calculated for each column width. Here are some examples of "dos" and "don'ts":
@@ -197,60 +220,60 @@ The grid system is responsive by itself by using percentages for every value (wi
 </div>
 ```
 
-### Available breakpoint classes for defining breakpoint specific behaviour are:
+### Available breakpoint classes for defining breakpoint specific behaviour
 
-`flex(__child)--(modifier)-xs`
-`flex(__child)--(modifier)-s`
-`flex(__child)--(modifier)-m`
-`flex(__child)--(modifier)-l`
-`flex(__child)--(modifier)-xl`
+`flex(__child)--(modifier)-xs`  
+`flex(__child)--(modifier)-s`  
+`flex(__child)--(modifier)-m`  
+`flex(__child)--(modifier)-l`  
+`flex(__child)--(modifier)-xl`  
 
-### Following values can be set by using breakpoints:
+### Following values can be set by using breakpoints classes
 
-Column width:
-`flex__child--(size)-(breakpoint)`
+Column width:  
+`flex__child--(size)-(breakpoint)`  
 
-Column offset:
-`flex__child--offset-(size)-(breakpoint)`
+Column offset:  
+`flex__child--offset-(size)-(breakpoint)`  
 
-Wrapping:
-`flex--wrap-(breakpoint)`
-`flex--nowrap-(breakpoint)`
-`flex--wrap-reverse-(breakpoint)`
+Wrapping:  
+`flex--wrap-(breakpoint)`  
+`flex--nowrap-(breakpoint)`  
+`flex--wrap-reverse-(breakpoint)`  
 
-Direction (on the parent container):
-`flex--direction-column-(breakpoint)`
-`flex--direction-column-reverse-(breakpoint)`
-`flex--direction-row-(breakpoint)`
-`flex--direction-row-reverse-(breakpoint)`
+Direction (on the parent container):  
+`flex--direction-column-(breakpoint)`  
+`flex--direction-column-reverse-(breakpoint)`  
+`flex--direction-row-(breakpoint)`  
+`flex--direction-row-reverse-(breakpoint)`  
 
-Alignment main axis (horizontal for all children set on the parent container):
-`flex--main-axis-start-(breakpoint)`
-`flex--main-axis-end-(breakpoint)`
-`flex--main-axis-center-(breakpoint)`
-`flex--main-axis-between-(breakpoint)`
-`flex--main-axis-around-(breakpoint)`
-`flex--main-axis-evenly-(breakpoint)`
+Alignment of main axis (horizontal for all children set on the parent container):  
+`flex--main-axis-start-(breakpoint)`  
+`flex--main-axis-end-(breakpoint)`  
+`flex--main-axis-center-(breakpoint)`  
+`flex--main-axis-between-(breakpoint)`  
+`flex--main-axis-around-(breakpoint)`  
+`flex--main-axis-evenly-(breakpoint)`  
 
-Alignment cross axis (vertical for all children set on the parent container):
-`flex--cross-axis-stretch-(breakpoint)`
-`flex--cross-axis-start-(breakpoint)`
-`flex--cross-axis-end-(breakpoint)`
-`flex--cross-axis-center-(breakpoint)`
-`flex--cross-axis-baseline-(breakpoint)`
+Alignment of cross axis (vertical for all children set on the parent container):  
+`flex--cross-axis-stretch-(breakpoint)`  
+`flex--cross-axis-start-(breakpoint)`  
+`flex--cross-axis-end-(breakpoint)`  
+`flex--cross-axis-center-(breakpoint)`  
+`flex--cross-axis-baseline-(breakpoint)`  
 
-Align self (for specific children):
-`flex__child--align-start-(breakpoint)`
-`flex__child--align-end-(breakpoint)`
-`flex__child--align-center-(breakpoint)`
-`flex__child--align-stretch-(breakpoint)`
+Align self (for specific children):  
+`flex__child--align-start-(breakpoint)`  
+`flex__child--align-end-(breakpoint)`  
+`flex__child--align-center-(breakpoint)`  
+`flex__child--align-stretch-(breakpoint)`  
 
-Gaps:
-`flex--gap-offset-normal-(breakpoint)`
-`flex--gap-offset-zero-(breakpoint)`
-`flex__child--gap-normal-(breakpoint)`
-`flex__child--gap-zero-(breakpoint)`
+Gaps:  
+`flex--gap-offset-normal-(breakpoint)`  
+`flex--gap-offset-zero-(breakpoint)`  
+`flex__child--gap-normal-(breakpoint)`  
+`flex__child--gap-zero-(breakpoint)`  
 
-Grow/shrink (with values "0" and "1"):
-`flex__child--grow-(breakpoint)`
-`flex__child--shrink-(breakpoint)`
+Grow/shrink (values "0" and "1"):  
+`flex__child--grow-(breakpoint)`  
+`flex__child--shrink-(breakpoint)`  
