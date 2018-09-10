@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Improvements
+* Added visual regression testing
+* Set npm registry to default for public available npm packages
+
+## [0.10.1] - 2018-09-04
+### Improvements
+* Added animations for deprecated car chooser
+* Added empty search result state for deprectaed car chooser
+* Added empty vehicles state for deprectaed car chooser
+
+### Bugfixes
+* Hover effect for deprecated car chooser
+* Highlight for selected vehicles for deprecated car chooser
+* Fixed spacings for deprecated car chooser
+
+## [0.10.0] - 2018-09-04
+### Visual breaking changes
+* Form element `input` updated to current spec (visual: [Invision](https://udg.invisionapp.com/d/main#/console/13100009/277692959/inspect))
+  * Changed default height to 50px
+  * Changed default text (16px) and label (12px) font size
+  * Changed default icon size to 20px
+  * Removed responsive breakpoints
+  * Removed obsolete variables in scss setup
 
 ## [0.9.1] - 2018-08-21
 ### Improvements

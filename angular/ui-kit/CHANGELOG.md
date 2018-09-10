@@ -6,9 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.2.6] - 2018-09-03
+### Improvements
+* Added pui-input component
+
+## [0.2.5] - 2018-08-28
 ### Improvements
 * Updated npm publish scripts to only use JFrog Artifactory
 * Updated npm repository name to official product abbreviation "pouikit-npm"
+* Added pui-page-header
 
 ## [0.2.4] - 2018-07-19
 ### Changed
