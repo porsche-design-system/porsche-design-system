@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Added visual regression testing
 * Set npm registry to default for public available npm packages
 
+### Breaking change
+* Removed default padding bottom for <body> and deleted `/common/defaults.scss`. Set padding for <body> in your project individually!
+
 ## [0.10.1] - 2018-09-04
 ### Improvements
 * Added animations for deprecated car chooser
