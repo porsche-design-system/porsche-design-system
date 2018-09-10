@@ -1,4 +1,5 @@
 @import '../../mixins/px-rem-converter.scss';
+@import '../../mixins/animation.scss';
 @import '../../base/grid/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/position/position.mixin.scss';
@@ -28,6 +29,7 @@
     @include flex;
     @include flex-main-axis(center);
     @include flex-cross-axis(center);
+    @include transition(color);
     position: relative;
     width: rem(40px);
     height: rem(40px);
