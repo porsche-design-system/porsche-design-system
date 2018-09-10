@@ -36,6 +36,7 @@
 
     &:focus {
       outline: 2px solid $color-palette-grey-5;
+      outline-offset: -2px;
     }
 
     &:active {
