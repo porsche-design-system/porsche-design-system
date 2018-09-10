@@ -6,7 +6,7 @@ state: inprogress
 # UI Kit Core pagination manual
 
 ## Basics
-The pagination is used whenever a content (text, images, videos) is split into several pages. It provides information on the existing amount of pages, shows the current page position and allows the user to navigate between the single content pages.
+The pagination is used whenever a content (text, images, videos) is split into several pages. It provides information on the existing amount of pages, shows the current page position and allows the user to navigate between the single content pages. The pagination is the component of choice primarily for listed content (e.g. search results, archives etc.), where the user wants to find a specific item.
 
 ## Related
 Component Sheet (all states): 
