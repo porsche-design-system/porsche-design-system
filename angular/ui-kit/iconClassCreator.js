@@ -74,4 +74,3 @@ function extractCSSclasses(classMap, outputEnumTS) {
   });
 }
 
-

@@ -56,7 +56,7 @@
         "lint:ts:fix": "yarn run lint:ts --fix",
         "lint:sass": "stylelint '**/*.scss'",
         "lint:sass:fix": "yarn run lint:sass --fix",
-        "test": "jest",
+        "test": "jest && jest --clearCache",
         "publish:artifactory": "yarn run test && yarn run build && yarn publish"
     },
     "dependencies": {
