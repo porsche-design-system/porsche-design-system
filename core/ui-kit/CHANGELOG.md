@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Added pagination pattern
 
 ### Breaking change
-* Removed default padding bottom and deleted `/common/defaults.scss`. Set padding in your project individually!
+* Removed default padding bottom for <body> and deleted `/common/defaults.scss`. Set padding for <body> in your project individually!
 
 ## [0.10.1] - 2018-09-04
 ### Improvements
