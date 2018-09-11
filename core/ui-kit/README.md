@@ -29,6 +29,15 @@ Check out the project, install dependencies and run it:
 > npm start
 ```
 
+# Test Patterns
+## Visual Regression Test
+
+Make sure application is running, then run test
+```
+> npm start
+> npm run visual-regression-test
+```
+
 ## Development guide
 
 Please refer to `CONTRIBUTING.md` file for development information.

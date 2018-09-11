@@ -1,6 +1,6 @@
 {
   "name": "@porsche/ui-kit-core",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Porsche UI Kit Core contains all neccessary styles for the Porsche Pattern Lab components",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,8 @@
     "build": "gulp patternlab:build",
     "serve": "gulp patternlab:serve",
     "find-outdated-dependencies": "npm outdated | grep --invert-match -E '(postcss-cli)'",
-    "clean": "rm -rf ./dist rm -rf ./patternlab/public rm -rf ./node_modules"
+    "clean": "rm -rf ./dist rm -rf ./patternlab/public rm -rf ./node_modules",
+    "visual-regression-test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.config.json"
   },
   "betterScripts": {
     "build:all": {
@@ -81,15 +82,21 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche/plugin-node-sass-dependency-collector": "1.0.0",
-    "autoprefixer": "9.1.0",
+    "@types/es6-shim": "^0.31.37",
+    "@types/jasmine": "^2.8.8",
+    "@types/puppeteer": "^1.6.3",
+    "autoprefixer": "9.1.5",
     "better-npm-run": "0.1.1",
-    "browser-sync": "2.24.6",
+    "browser-sync": "2.24.7",
+    "del": "^3.0.0",
     "exorcist": "1.0.1",
     "fs-extra": "7.0.0",
     "gulp": "4.0.0",
     "gulp-cached": "1.1.1",
     "gulp-sass-lint": "1.4.0",
     "husky": "0.14.3",
+    "jasmine": "^3.2.0",
+    "jimp": "^0.4.0",
     "minimist": "1.2.0",
     "node-sass": "4.9.3",
     "node-sass-tilde-importer": "1.0.2",
@@ -102,10 +109,13 @@
     "postcss-cli": "2.6.0",
     "postcss-flexboxfixer": "0.0.5",
     "postcss-gradientfixer": "0.0.6",
+    "puppeteer": "^1.8.0",
     "sass-lint": "1.12.1",
     "styleguidekit-assets-default": "3.5.2",
     "styleguidekit-mustache-default": "3.1.0",
-    "symlink-or-copy": "1.2.0"
+    "symlink-or-copy": "1.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
   },
   "publishConfig": {
     "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/"
