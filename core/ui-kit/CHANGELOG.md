@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Improvements
+* Added visual regression testing
+* Set npm registry to default for public available npm packages
+* Optimized `disableCSSAnimations` url parameter to disable CSS animations and transitions
+
+### Breaking change
+* Removed default padding bottom for <body> and deleted `/common/defaults.scss`.  
+  __Migration path:__ Set padding for <body> in your project individually!
+
+## [0.10.1] - 2018-09-04
+### Improvements
 * Added animations for deprecated car chooser
 * Added empty search result state for deprectaed car chooser
 * Added empty vehicles state for deprectaed car chooser

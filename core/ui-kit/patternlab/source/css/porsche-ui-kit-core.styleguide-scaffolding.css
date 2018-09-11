@@ -4,6 +4,10 @@
  * These styles will not be your production CSS.
  */
 
+html, body {
+  overflow-x: hidden;
+}
+
 .sg-wrapper-default {
   background-color: #f1f1f1;
 }
