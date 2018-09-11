@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.11.0] - 2018-09-11
 ### Improvements
 * Added visual regression testing
 * Set npm registry to default for public available npm packages
