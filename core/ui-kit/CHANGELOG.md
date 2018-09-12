@@ -31,7 +31,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
         `flex--row` => `flex--direction-row`
         `flex--column` => `flex--direction-column`
         `flex--grow` => `flex__child--grow-1` || `flex__child--grow-0`
-        
+
+## [0.11.0] - 2018-09-11
 ### Improvements
 * Added visual regression testing
 * Set npm registry to default for public available npm packages
