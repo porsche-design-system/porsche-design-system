@@ -3,6 +3,7 @@
 @import '../../base/align/align.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
 @import '../../base/grid/flex.mixin.scss';
+@import '../../base/grid/row.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/overflow/overflow.mixin.scss';
 @import '../../mixins/breakpoint.scss';
@@ -10,6 +11,7 @@
 @import 'car-chooser.setup.scss';
 
 .#{$global-class-prefix}car-chooser {
+  $bem-block: &;
   position: relative;
   z-index: $car-chooser-z-index;
 
@@ -42,6 +44,11 @@
       height: $car-chooser-dimension-xs;
     }
 
+    &::before {
+      transform-origin: 50% 50%;
+      transition: $car-chooser-icon-transition-speed cubic-bezier(.075, .82, .165, 1);
+    }
+
     &--open {
       &::before {
         transform: rotate(180deg);
@@ -59,6 +66,13 @@
     padding: $car-chooser-title-container-padding-horizontal $car-chooser-title-container-padding-vertical;
     cursor: pointer;
 
+    &:hover {
+      #{$bem-block}__title,
+      #{$bem-block}__vin {
+        color: $car-chooser-title-container-text-color-hovered;
+      }
+    }
+
     @include breakpoint('s') {
       @include flex--direction(row);
       @include flex--center-horizontal;
@@ -73,26 +87,53 @@
     @include -text-size-4-thin;
     @include -text-color-white;
     @include -overflow-ellipsis;
+    transition: .25s ease-in-out;
   }
 
   &__vin {
     @include -text-size-copy;
     @include -text-color-white;
     @include -overflow-ellipsis;
+    transition: .25s ease-in-out;
   }
 
   &__dropdown {
     $bem-block: &;
 
     @include -background-white;
-    @include -spacing-inner-a;
     left: $car-chooser-dropdown-position-left;
     right: $car-chooser-dropdown-position-right;
-    display: none;
     position: absolute;
+    padding: 0;
+    max-height: 0;
+    opacity: 0;
+    transition: $car-chooser-dropdown-transition-speed cubic-bezier(.075, .82, .165, 1);
+
+    & > * { // sass-lint:disable-line no-combinators no-universal-selectors
+      opacity: 0;
+    }
 
     &--open {
-      display: block;
+      @include -spacing-inner-a;
+      max-height: none;
+      opacity: 1;
+
+      & > * { // sass-lint:disable-line no-combinators no-universal-selectors
+        opacity: 1;
+      }
+    }
+
+    &-list {
+      @include flex;
+      @include flex-direction(row);
+      @include flex-main-axis(center);
+      @include flex--wrap(wrap);
+      @include row-gap-normal;
+
+      &--search {
+        @include -spacing-24;
+        @include -spacing-18(bottom);
+      }
     }
 
     &-column {
@@ -123,6 +164,7 @@
         }
       }
 
+      &--active,
       &:hover {
         #{$bem-block}-title,
         #{$bem-block}-vin,
@@ -142,8 +184,10 @@
 
     &-image {
       display: none;
-      width: $car-chooser-image-dimension;
-      height: $car-chooser-image-dimension;
+      max-width: $car-chooser-image-max-width;
+      max-height: $car-chooser-image-max-height;
+      margin-left: auto;
+      margin-right: auto;
 
       @include breakpoint('s') {
         display: inline;
@@ -153,6 +197,9 @@
     &-title {
       @include -text-size-4-thin;
       display: inline;
+      max-width: $car-chooser-text-max-width;
+      margin-left: auto;
+      margin-right: auto;
 
       @include breakpoint('s') {
         @include -spacing-18;
@@ -163,8 +210,11 @@
 
     &-subtitle {
       @include -text-size-copy;
-      @include -spacing-18;
+      @include -spacing-6;
       display: block;
+      max-width: $car-chooser-text-max-width;
+      margin-left: auto;
+      margin-right: auto;
 
       @include breakpoint('s') {
         @include -align-center;
@@ -186,11 +236,41 @@
     }
 
     &-input {
+      @include -text-size-copy;
       @include -spacing-c;
       width: $car-chooser-dropdown-input-field-width;
       max-width: $car-chooser-dropdown-input-field-max-width;
 
       @include breakpoint('s') {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &-search-message {
+      @include -text-size-copy;
+      display: block;
+      color: $car-chooser-dropdown-search-message-text-color;
+      max-width: $car-chooser-text-max-width;
+      margin-left: auto;
+      margin-right: auto;
+
+      @include breakpoint('s') {
+        text-align: center;
+      }
+
+      &:last-child {
+        @include -spacing-6;
+        @include -spacing-18(bottom);
+      }
+    }
+
+    &-add-button {
+      @include -spacing-24;
+
+      @include breakpoint('s') {
+        @include -spacing-18(bottom);
+        display: block;
         margin-left: auto;
         margin-right: auto;
       }
