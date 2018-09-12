@@ -32,6 +32,10 @@ export type ColorType =
     | "red-2"
     | "blue-1"
     | "blue-2"
+    | "status-green"
+    | "status-yellow"
+    | "status-orange"
+    | "status-red"
 
 export type TextAlignType = "left" | "center" | "right"
 

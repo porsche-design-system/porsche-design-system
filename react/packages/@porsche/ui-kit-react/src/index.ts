@@ -3,7 +3,7 @@ export { Breakpoint, BreakpointProps } from "./components/atoms/Breakpoint/Break
 export { Divider, DividerProps } from "./components/atoms/Divider/Divider"
 export { Flex, FlexProps } from "./components/atoms/Flex/Flex"
 export { FlexItem, FlexItemProps } from "./components/atoms/Flex/FlexItem"
-export { Icon, IconProps, IconName, IconSize } from "./components/atoms/Icon/Icon"
+export { Icon, IconProps, IconName, IconSize, ColorType } from "./components/atoms/Icon/Icon"
 export { Logo, LogoProps } from "./components/atoms/Logo/Logo"
 export { Spacing, SpacingProps, SpacingValue } from "./components/atoms/Spacing/Spacing"
 export { Text, TextProps } from "./components/atoms/Text/Text"
