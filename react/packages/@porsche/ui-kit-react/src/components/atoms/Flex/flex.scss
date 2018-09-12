@@ -460,7 +460,7 @@
 
         @include breakpoint("xs") {
             &--auto-xs {
-                @include flex-child-grow(1);
+                @include flex-child-grow(0);
                 @include flex-child-shrink(1);
                 @include flex-child-basis(auto);
                 width: auto;
@@ -552,7 +552,7 @@
 
         @include breakpoint("s") {
             &--auto-s {
-                @include flex-child-grow(1);
+                @include flex-child-grow(0);
                 @include flex-child-shrink(1);
                 @include flex-child-basis(auto);
                 width: auto;
@@ -644,7 +644,7 @@
 
         @include breakpoint("m") {
             &--auto-m {
-                @include flex-child-grow(1);
+                @include flex-child-grow(0);
                 @include flex-child-shrink(1);
                 @include flex-child-basis(auto);
                 width: auto;
@@ -736,7 +736,7 @@
 
         @include breakpoint("l") {
             &--auto-l {
-                @include flex-child-grow(1);
+                @include flex-child-grow(0);
                 @include flex-child-shrink(1);
                 @include flex-child-basis(auto);
                 width: auto;
@@ -828,7 +828,7 @@
 
         @include breakpoint("xl") {
             &--auto-xl {
-                @include flex-child-grow(1);
+                @include flex-child-grow(0);
                 @include flex-child-shrink(1);
                 @include flex-child-basis(auto);
                 width: auto;
