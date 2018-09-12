@@ -6,15 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### New feature
+* Added pagination pattern
 
 ## [0.11.0] - 2018-09-11
 ### Improvements
 * Added visual regression testing
 * Set npm registry to default for public available npm packages
 * Optimized `disableCSSAnimations` url parameter to disable CSS animations and transitions
-
-### New feature
-* Added pagination pattern
 
 ### Breaking change
 * Removed default padding bottom for <body> and deleted `/common/defaults.scss`.  
