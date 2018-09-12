@@ -31,7 +31,12 @@ Check out the project, install dependencies and run it:
 
 # Test Patterns
 ## Visual Regression Test
-* Run ```npm run visual-regression-test```
+
+Make sure application is running, then run test
+```
+> npm start
+> npm run visual-regression-test
+```
 
 ## Development guide
 
