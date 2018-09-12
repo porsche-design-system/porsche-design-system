@@ -15,10 +15,9 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class PuiPageHeaderComponent {
+
   @Input()
-  title = '';
-  @Input()
-  description: string;
+  showDescription: boolean;
   @Input()
   styleModifier = '';
 }

@@ -15,22 +15,56 @@
                     <p class="car-chooser__dropdown-subtitle"> {{ car-chooser_subtitle }} </p>
                     {{> molecules-input styleModifier="car-chooser__dropdown-input" input_icon="search" input_label="Modellname/Kennzeichen" }}
 
-                    <div class="row flex flex--wrap -spacing-24">
-                        {{#each car-chooser_vehicles }}
-                            <div class="car-chooser__dropdown-column column column--12 {{#if ../car-chooser_isMultiColumn }} column--4-m{{/if}}">
-                                <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
-                                <img src="{{ image }}" alt="{{ name }}" class="car-chooser__dropdown-image">
-                                <h4 class="car-chooser__dropdown-title">{{ name }}</h4>
-                                <p class="car-chooser__dropdown-vin">{{ vin }}</p>
-                            </div>
-                        {{/each}}
-                    </div>
-
+                    {{#if car-chooser_search_empty-result}}
+                        <div class="-spacing-24">
+                          <span class="car-chooser__dropdown-search-message">
+                            Keine Fahrzeuge gefunden.
+                          </span>
+                          <span class="car-chooser__dropdown-search-message">
+                            Geben sie den Modellnamen, das Kennzeichen oder die Fahrzeugidentifikationsnummer (FIN) des gesuchten Fahrzeugs ein.
+                          </span>
+                        </div>
+                    {{else}}
+                        <div class="car-chooser__dropdown-list car-chooser__dropdown-list--search">
+                            {{#each car-chooser_vehicles }}
+                                <div class="
+                                  car-chooser__dropdown-column
+                                  {{#if active }} car-chooser__dropdown-column--active {{/if}}
+                                  column
+                                  column--12
+                                  column--4-s
+                                  {{#if ../car-chooser_lessThanThreeVehicles }} column--6-s{{/if}}"
+                                >
+                                    <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
+                                    <img src="{{ image }}" alt="{{ name }}" class="car-chooser__dropdown-image">
+                                    <h4 class="car-chooser__dropdown-title">{{ name }}</h4>
+                                    <p class="car-chooser__dropdown-vin">{{ vin }}</p>
+                                </div>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{else if car-chooser_empty}}
+                <div class="column column--12">
+                    <h4 class="car-chooser__dropdown-title"> {{ car-chooser_title-empty }} </h4>
+                    <p class="car-chooser__dropdown-subtitle"> {{ car-chooser_subtitle-empty }} </p>
+                    {{> molecules-button-primary
+                        styleModifier="car-chooser__dropdown-add-button"
+                        button-primary_label=car-chooser_empty_button-label
+                        button-primary_red=true
+                        button-primary_icon="plus"}}
                 </div>
             {{else}}
-                <div class="row flex flex--wrap -spacing-24">
+                <div class="car-chooser__dropdown-list">
                     {{#each car-chooser_vehicles }}
-                        <div class="car-chooser__dropdown-column column column--12 {{#if ../car-chooser_isMultiColumn }} column--4-m{{/if}}">
+                        <div class="
+                          car-chooser__dropdown-column
+                          {{#if active }} car-chooser__dropdown-column--active {{/if}}
+                          column
+                          column--12
+                          column--4-s
+                          {{#if ../car-chooser_lessThanThreeVehicles }} column--6-s{{/if}}"
+                        >
                             <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
                             <img src="{{ image }}" alt="{{ name }}" class="car-chooser__dropdown-image">
                             <h4 class="car-chooser__dropdown-title">{{ name }}</h4>
