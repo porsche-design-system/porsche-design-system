@@ -10,7 +10,7 @@
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}pagination {
-  $root: &;
+  $bem-block: &;
   @include flex;
   @include flex-main-axis(center);
   counter-reset: maxNumberOfLinks 5;
@@ -51,14 +51,14 @@
     text-decoration: none;
     cursor: pointer;
 
-    #{$root}--theme-inverted & {
+    #{$bem-block}--theme-inverted & {
       @include -text-color-white;
     }
 
     &:hover {
       @include -text-color-red-1;
 
-      #{$root}--theme-inverted & {
+      #{$bem-block}--theme-inverted & {
         @include -text-color-red-1;
       }
     }
@@ -69,7 +69,7 @@
       &:hover {
         @include -text-color-black;
 
-        #{$root}--theme-inverted & {
+        #{$bem-block}--theme-inverted & {
           @include -text-color-white;
         }
       }
@@ -92,7 +92,7 @@
       &:hover {
         @include -text-color-black;
 
-        #{$root}--theme-inverted & {
+        #{$bem-block}--theme-inverted & {
           @include -text-color-white;
         }
       }
@@ -111,14 +111,14 @@
     text-decoration: none;
     cursor: pointer;
 
-    #{$root}--theme-inverted & {
+    #{$bem-block}--theme-inverted & {
       @include -text-color-white;
     }
 
     &:hover {
       @include -text-color-red-1;
 
-      #{$root}--theme-inverted & {
+      #{$bem-block}--theme-inverted & {
         @include -text-color-red-1;
       }
     }
@@ -127,14 +127,14 @@
       @include -text-color-grey-5;
       cursor: default;
 
-      #{$root}--theme-inverted & {
+      #{$bem-block}--theme-inverted & {
         @include -text-color-grey-7;
       }
 
       &:hover {
         @include -text-color-grey-5;
 
-        #{$root}--theme-inverted & {
+        #{$bem-block}--theme-inverted & {
           @include -text-color-grey-7;
         }
       }
