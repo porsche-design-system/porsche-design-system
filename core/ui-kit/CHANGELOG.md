@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Breaking change
+* deprecated car-chooser pattern: removed/refactored wrong usage of style modifiers
+  __Migration path:__ 
+  * add a new block with class `car-chooser__dropdown-input` around the search input field 
+  and remove the style modifier class `car-chooser__dropdown-input` of the input itself
+  * add a new block with class `car-chooser__dropdown-add-button` around the add-button for a new vehicle
+  and remove the style modifier class `car-chooser__dropdown-add-button` of the button itself  
+### Improvements
+* add a class `sg-wrapper-overflow` to patternlab styling for usage with absolute positioned elements in pattern view 
+ 
 
 ## [0.11.0] - 2018-09-11
 ### Improvements
