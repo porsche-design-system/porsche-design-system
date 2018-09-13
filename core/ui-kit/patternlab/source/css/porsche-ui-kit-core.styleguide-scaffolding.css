@@ -16,6 +16,10 @@ html, body {
   background-color: #1c2225;
 }
 
+.sg-wrapper-overflow {
+  overflow-x: visible;
+}
+
 .sg-wrapper-light {
   background-color: #ffffff;
 }
