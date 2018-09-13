@@ -6,7 +6,11 @@
 .#{$global-class-prefix}callout {
   $bem-block: &;
 
+  @include -spacing-inner-a;
+  @include -text-size-copy;
   max-width: $callout-max-width;
+  position: relative;
+  background-color: $callout-panel-background-color;
 
   &__title {
     @include -spacing-6(bottom);
@@ -14,43 +18,28 @@
     color: $callout-title-color;
   }
 
-  &__panel {
-    @include -spacing-inner-a;
-    @include -text-size-copy;
-    position: relative;
-    background-color: $callout-panel-background-color;
-  }
-
   &__arrow {
     position: absolute;
     left: $callout-arrow-left;
     border-color: $callout-panel-background-color;
-    border-left: $callout-arrow-border-size solid transparent;
-    border-right: $callout-arrow-border-size solid transparent;
-    border-bottom: $callout-arrow-border-size solid $callout-panel-background-color;
+    border-left: $callout-arrow-size solid transparent;
+    border-right: $callout-arrow-size solid transparent;
+    border-bottom: $callout-arrow-size solid $callout-panel-background-color;
   }
 
   &--top {
-    @include -spacing-6(top, padding);
-
-    #{$bem-block}__panel {
-      margin-top: $callout-arrow-border-size;
-    }
+    margin-top: $callout-outer-spacing;
 
     #{$bem-block}__arrow {
-      top: -$callout-arrow-border-size;
+      top: -$callout-arrow-size;
     }
   }
 
   &--bottom {
-    @include -spacing-6(bottom, padding);
-
-    #{$bem-block}__panel {
-      margin-bottom: $callout-arrow-border-size;
-    }
+    margin-bottom: $callout-outer-spacing;
 
     #{$bem-block}__arrow {
-      bottom: -$callout-arrow-border-size;
+      bottom: -$callout-arrow-size;
       transform: rotate(180deg);
     }
   }
