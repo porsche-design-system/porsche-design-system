@@ -13,9 +13,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   and remove the style modifier class `car-chooser__dropdown-input` of the input itself
   * add a new block with class `car-chooser__dropdown-add-button` around the add-button for a new vehicle
   and remove the style modifier class `car-chooser__dropdown-add-button` of the button itself  
+### Bugfixes
+* Fixed dropdown animation for deprecated car chooser
 ### Improvements
-* add a class `sg-wrapper-overflow` to patternlab styling for usage with absolute positioned elements in pattern view 
- 
+* add a class `sg-wrapper-overflow` to patternlab styling for usage with absolute positioned elements in pattern view
 
 ## [0.11.0] - 2018-09-11
 ### Improvements
