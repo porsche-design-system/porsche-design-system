@@ -1,8 +1,8 @@
 {
   "bodyClass": "sg-wrapper-dark",
-  "title": "Lorem ipsuma",
-  "message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt",
-  "showTitle": false,
-  "orientation_top": true,
-  "orientation_bottom": false
+  "callout_title": "Lorem ipsuma",
+  "callout_message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt",
+  "callout_showTitle": false,
+  "callout_orientation_top": true,
+  "callout_orientation_bottom": false
 }
