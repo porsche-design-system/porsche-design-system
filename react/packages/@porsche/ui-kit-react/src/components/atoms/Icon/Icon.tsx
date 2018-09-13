@@ -226,7 +226,7 @@ export type IconName =
     | "whatsapp"
     | "youtube"
 
-export type ColorType =
+export type IconColorType =
     | "black"
     | "grey-darker"
     | "grey-dark"
@@ -263,7 +263,7 @@ export interface IconProps extends ClassNameProp, ComponentProp {
      * The style of the color.
      * @default black
      */
-    color?: ColorType
+    color?: IconColorType
 
     /**
      * Puts a circle around the icon
