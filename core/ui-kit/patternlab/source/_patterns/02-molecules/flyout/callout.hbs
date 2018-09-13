@@ -1,22 +1,14 @@
-<!--<div class="callout {{ styleModifier }}">
-
-  {{#> callout_content}}
-    My Content
-  {{/callout_content}}
-
-</div>-->
-
 <div class="
   callout
   {{ styleModifier }}
-  {{#if orientation_top}}callout--top{{/if}}
-  {{#if orientation_bottom}}callout--bottom{{/if}}"
+  {{#if callout_orientation_top}}callout--top{{/if}}
+  {{#if callout_orientation_bottom}}callout--bottom{{/if}}"
 >
   <div class="callout__panel">
-    {{#if showTitle}}
-      <h4 class="callout__title">{{title}}</h4>
+    {{#if callout_showTitle}}
+      <h4 class="callout__title">{{callout_title}}</h4>
     {{/if}}
-    {{message}}
+    {{callout_message}}
     <div class="callout__arrow"></div>
   </div>
 </div>
