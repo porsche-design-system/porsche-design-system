@@ -9,7 +9,7 @@
   max-width: $callout-max-width;
 
   &__title {
-    @include -spacing-18(bottom);
+    @include -spacing-6(bottom);
     @include -text-size-5-thin;
     color: $callout-title-color;
   }
