@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### New feature
 * Added pagination pattern
+
+## [0.12.0] - 2018-09-14
 ### Breaking change
 * deprecated car-chooser pattern: removed/refactored wrong usage of style modifiers
   __Migration path:__ 
