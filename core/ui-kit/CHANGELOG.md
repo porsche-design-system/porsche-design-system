@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.12.0] - 2018-09-14
 ### Breaking change
 * deprecated car-chooser pattern: removed/refactored wrong usage of style modifiers
   __Migration path:__ 
