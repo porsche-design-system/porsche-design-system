@@ -2,15 +2,12 @@
 @import '../../mixins/px-rem-converter.scss';
 @import '../../base/spacing/spacing.setup.scss';
 
+$callout-arrow-size: rem(8px) !default;
+$callout-arrow-left: calc(50% - #{$callout-arrow-size}) !default;
 
-$callout-background-color: $color-palette-grey-1 !default;
-$callout-reset: 0 !default;
-$callout-width: 100% !default;
-$callout-max-width: rem(700px) !default;
-$callout-position-horizontal: rem(7px) !default;
-$callout-spacing-vertical: rem(13px) !default;
+$callout-max-width: rem(400px) !default;
+$callout-outer-spacing: calc(#{$spacing-6} + #{$callout-arrow-size}) !default;
 
-$callout-arrow-border-color: $color-palette-grey-1 !default;
-$callout-arrow-border-size: rem(8px) !default;
-$callout-arrow-position-vertical: rem(8px) !default;
-$callout-arrow-spacing-horizontal: $spacing-6 !default;
+$callout-panel-background-color: $color-palette-grey-1 !default;
+
+$callout-title-color: $color-palette-black !default;
