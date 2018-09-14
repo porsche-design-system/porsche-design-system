@@ -13,7 +13,9 @@
                 <div class="column column--12">
                     <h4 class="car-chooser__dropdown-title"> {{ car-chooser_title }} </h4>
                     <p class="car-chooser__dropdown-subtitle"> {{ car-chooser_subtitle }} </p>
-                    {{> molecules-input styleModifier="car-chooser__dropdown-input" input_icon="search" input_label="Modellname/Kennzeichen" }}
+                    <div class="car-chooser__dropdown-input">
+                      {{> molecules-input input_icon="search" input_label="Modellname/Kennzeichen" }}
+                    </div>
 
                     {{#if car-chooser_search_empty-result}}
                         <div class="-spacing-24">
@@ -48,11 +50,12 @@
                 <div class="column column--12">
                     <h4 class="car-chooser__dropdown-title"> {{ car-chooser_title-empty }} </h4>
                     <p class="car-chooser__dropdown-subtitle"> {{ car-chooser_subtitle-empty }} </p>
-                    {{> molecules-button-primary
-                        styleModifier="car-chooser__dropdown-add-button"
-                        button-primary_label=car-chooser_empty_button-label
-                        button-primary_red=true
-                        button-primary_icon="plus"}}
+                    <div class="car-chooser__dropdown-add-button">
+                      {{> molecules-button-primary
+                          button-primary_label=car-chooser_empty_button-label
+                          button-primary_red=true
+                          button-primary_icon="plus"}}
+                    </div>
                 </div>
             {{else}}
                 <div class="car-chooser__dropdown-list">
