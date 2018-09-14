@@ -10,9 +10,6 @@
     "node-sass": "4.8.3",
     "node-sass-tilde-importer": "1.0.2"
   },
-  "devDependencies": {
-    "json": "9.0.6"
-  },
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:porschedev/porsche-ui-kit.git"
