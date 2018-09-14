@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### New feature
 * Added pagination pattern
+### Improvements
+* Added stylings for callout
+* The consumer of the callout is not responsible to position the arrow, default it is centered
 
 ## [0.11.0] - 2018-09-11
 ### Improvements
