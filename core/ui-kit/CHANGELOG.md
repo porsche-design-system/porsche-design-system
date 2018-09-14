@@ -6,7 +6,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Breaking change
+* deprecated car-chooser pattern: removed/refactored wrong usage of style modifiers
+  __Migration path:__ 
+  * add a new block with class `car-chooser__dropdown-input` around the search input field 
+  and remove the style modifier class `car-chooser__dropdown-input` of the input itself
+  * add a new block with class `car-chooser__dropdown-add-button` around the add-button for a new vehicle
+  and remove the style modifier class `car-chooser__dropdown-add-button` of the button itself  
+### Bugfixes
+* Fixed dropdown animation for deprecated car chooser
 ### Improvements
+* add a class `sg-wrapper-overflow` to patternlab styling for usage with absolute positioned elements in pattern view
 * Added stylings for callout
 * The consumer of the callout is not responsible to position the arrow, default it is centered
 
