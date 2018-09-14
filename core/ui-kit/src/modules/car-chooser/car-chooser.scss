@@ -268,10 +268,10 @@
     }
 
     &-add-button {
-      @include -align-center;
       @include -spacing-24;
 
       @include breakpoint('s') {
+        @include -align-center;
         @include -spacing-18(bottom);
         display: block;
         margin-left: auto;
