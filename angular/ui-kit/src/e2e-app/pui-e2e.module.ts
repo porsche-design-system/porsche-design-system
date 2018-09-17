@@ -14,7 +14,8 @@ import {
   PuiButtonModule,
   PuiFooterModule,
   PuiPageHeaderModule,
-  PuiInputModule
+  PuiInputModule,
+  PuiCalloutModule
 } from '../public_api';
 import { PuiE2eAtomsTextSizeComponent } from './pages/atoms/text/text-size.component';
 import { PuiE2eAtomsIconComponent } from './pages/atoms/icon/icon.component';
@@ -27,6 +28,7 @@ import { PuiE2eMoleculesLoaderBaseComponent } from './pages/molecules/loader-bas
 import { PuiE2eMoleculesButtonPrimaryComponent } from './pages/molecules/button/button-primary/button-primary.component';
 import { PuiE2eMoleculesButtonGhostComponent } from './pages/molecules/button/button-ghost/button-ghost.component';
 import { PuiE2eMoleculesFormInputComponent } from './pages/molecules/form/input/input.component';
+import { PuiE2eMoleculesCalloutComponent } from './pages/molecules/callout/callout.component';
 
 const puiModules = [
   PuiE2eRoutingModule,
@@ -40,7 +42,8 @@ const puiModules = [
   PuiButtonModule,
   PuiFooterModule,
   PuiPageHeaderModule,
-  PuiInputModule
+  PuiInputModule,
+  PuiCalloutModule
 ];
 
 const e2ePages = [
@@ -54,7 +57,8 @@ const e2ePages = [
   PuiE2eOrganismsNotificationComponent,
   PuiE2eOrganismsFooterComponent,
   PuiE2eOrganismsPageHeaderComponent,
-  PuiE2eMoleculesFormInputComponent
+  PuiE2eMoleculesFormInputComponent,
+  PuiE2eMoleculesCalloutComponent
 ];
 
 @NgModule({
