@@ -8,8 +8,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Breaking changes
 * Refactoring of flex component.
+  * Renamed `grid-flex` component to `flex`
   * Added missing flex properties
   * Migration path:
+    * Changed location of files (and corresponding import paths):
+    
+      `04-grid/grid-felx.hbs` => `07-layout/flex.hbs`
+      `grid/flex.setup.scss` => `layout/flex.setup.scss`
+      `grid/flex.mixin.scss` => `layout/flex.mixin.scss`
+      `grid/flex.scss` => `layout/flex.scss`
+      `grid/index.scss` => `layout/index.scss`
+      
     * Add classname `flex--gap-offset-normal` to every flex container (wrapper)
     * Delete classname `flex--direction-row` from flex container (row is default behaviour)
     * Renamings of class names of flex children:
