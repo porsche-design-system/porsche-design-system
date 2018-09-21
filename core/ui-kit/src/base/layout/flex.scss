@@ -201,38 +201,38 @@
     }
   }
 
-  &--gap-offset {
-    &-normal {
-      @include flex-gap-offset;
+  &--gap-shim {
+    &-grid {
+      @include flex-gap-shim-grid;
     }
 
     &-zero {
-      @include flex-gap-offset-zero;
+      @include flex-gap-shim-zero;
     }
 
     @include breakpoint('xs') {
-      &-normal-xs { @include flex-gap-offset; }
-      &-zero-xs   { @include flex-gap-offset-zero; }
+      &-grid-xs { @include flex-gap-shim-grid; }
+      &-zero-xs   { @include flex-gap-shim-zero; }
     }
 
     @include breakpoint('s')  {
-      &-normal-s  { @include flex-gap-offset; }
-      &-zero-s    { @include flex-gap-offset-zero; }
+      &-grid-s  { @include flex-gap-shim-grid; }
+      &-zero-s    { @include flex-gap-shim-zero; }
     }
 
     @include breakpoint('m')  {
-      &-normal-m  { @include flex-gap-offset; }
-      &-zero-m    { @include flex-gap-offset-zero; }
+      &-grid-m  { @include flex-gap-shim-grid; }
+      &-zero-m    { @include flex-gap-shim-zero; }
     }
 
     @include breakpoint('l')  {
-      &-normal-l  { @include flex-gap-offset; }
-      &-zero-l    { @include flex-gap-offset-zero; }
+      &-grid-l  { @include flex-gap-shim-grid; }
+      &-zero-l    { @include flex-gap-shim-zero; }
     }
 
     @include breakpoint('xl') {
-      &-normal-xl { @include flex-gap-offset; }
-      &-zero-xl   { @include flex-gap-offset-zero; }
+      &-grid-xl { @include flex-gap-shim-grid; }
+      &-zero-xl   { @include flex-gap-shim-zero; }
     }
   }
 
@@ -509,8 +509,8 @@
     }
 
     &--gap {
-      &-normal {
-        @include flex-child-gap-normal;
+      &-grid {
+        @include flex-child-gap-grid;
       }
 
       &-zero {
@@ -521,8 +521,8 @@
       }
 
       @include breakpoint('xs') {
-        &-normal-xs {
-          @include flex-child-gap-normal;
+        &-grid-xs {
+          @include flex-child-gap-grid;
         }
 
         &-zero-xs {
@@ -534,8 +534,8 @@
       }
 
       @include breakpoint('s') {
-        &-normal-s {
-          @include flex-child-gap-normal;
+        &-grid-s {
+          @include flex-child-gap-grid;
         }
 
         &-zero-s {
@@ -547,8 +547,8 @@
       }
 
       @include breakpoint('m') {
-        &-normal-m {
-          @include flex-child-gap-normal;
+        &-grid-m {
+          @include flex-child-gap-grid;
         }
 
         &-zero-m {
@@ -560,8 +560,8 @@
       }
 
       @include breakpoint('l') {
-        &-normal-l {
-          @include flex-child-gap-normal;
+        &-grid-l {
+          @include flex-child-gap-grid;
         }
 
         &-zero-l {
@@ -573,8 +573,8 @@
       }
 
       @include breakpoint('xl') {
-        &-normal-xl {
-          @include flex-child-gap-normal;
+        &-grid-xl {
+          @include flex-child-gap-grid;
         }
 
         &-zero-xl {

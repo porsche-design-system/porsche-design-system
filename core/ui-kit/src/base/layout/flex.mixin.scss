@@ -1,3 +1,6 @@
+/**
+ * properties for flex container
+ */
 @mixin flex {
   display: flex;
 }
@@ -13,32 +16,6 @@
 @mixin flex-direction($direction) {
   flex-direction: #{$direction};
 }
-
-@mixin flex-main-axis($align) {
-  justify-content: #{$align};
-}
-
-@mixin flex-cross-axis($align) {
-  align-items: #{$align};
-}
-
-@mixin flex-child-align($align) {
-  align-self: #{$align};
-}
-
-@mixin flex-child-grow($grow) {
-  flex-grow: #{$grow};
-}
-
-@mixin flex-child-shrink($shrink) {
-  flex-shrink: #{$shrink};
-}
-
-@mixin flex-child-basis($basis) {
-  flex-basis: #{$basis};
-}
-
-// properties for flex container
 @mixin flex--direction($direction) {
   flex-direction: #{$direction};
 }
@@ -47,10 +24,16 @@
   flex-wrap: #{$wrap};
 }
 
+@mixin flex-main-axis($align) {
+  justify-content: #{$align};
+}
 @mixin flex--justify-content($align-direction) {
   justify-content: #{$align-direction};
 }
 
+@mixin flex-cross-axis($align) {
+  align-items: #{$align};
+}
 @mixin flex--align-items($align-items) {
   align-items: #{$align-items};
 }
@@ -61,28 +44,7 @@
   align-content: #{$align-content};
 }
 
-// properties for flex items
-@mixin flex--order($order) {
-  order: #{$order};
-}
-
-@mixin flex--grow($grow) {
-  flex-grow: #{$grow};
-}
-
-@mixin flex--shrink($shrink) {
-  flex-shrink: #{$shrink};
-}
-
-@mixin flex--basis($basis) {
-  flex-basis: #{$basis};
-}
-
-@mixin flex--align-self($align-self) {
-  align-self: #{$align-self};
-}
-
-@mixin flex-gap-offset {
+@mixin flex-gap-shim-grid {
   padding-left: 0;
   padding-right: 0;
 
@@ -116,12 +78,48 @@
   }
 }
 
-@mixin flex-gap-offset-zero {
+@mixin flex-gap-shim-zero {
   margin-left: 0;
   margin-right: 0;
 }
 
-@mixin flex-child-gap-normal {
+
+/**
+ * properties for flex child items
+ */
+@mixin flex-child-align($align) {
+  align-self: #{$align};
+}
+@mixin flex--align-self($align-self) {
+  align-self: #{$align-self};
+}
+
+@mixin flex-child-grow($grow) {
+  flex-grow: #{$grow};
+}
+@mixin flex--grow($grow) {
+  flex-grow: #{$grow};
+}
+
+@mixin flex-child-shrink($shrink) {
+  flex-shrink: #{$shrink};
+}
+@mixin flex--shrink($shrink) {
+  flex-shrink: #{$shrink};
+}
+
+@mixin flex-child-basis($basis) {
+  flex-basis: #{$basis};
+}
+@mixin flex--basis($basis) {
+  flex-basis: #{$basis};
+}
+
+@mixin flex--order($order) {
+  order: #{$order};
+}
+
+@mixin flex-child-gap-grid {
   padding: {
     left: $flex-child-spacing-horizontal;
     right: $flex-child-spacing-horizontal;

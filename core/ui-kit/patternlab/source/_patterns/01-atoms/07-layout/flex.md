@@ -8,29 +8,29 @@ The Porsche UI Kit flex layout system is based upon a standard 12 column respons
 
 # Usage
 
-## Basic
-For basic implementation, it is recommended to use this pattern:
+## Basic Grid
+For basic grid implementation, it is recommended to use this pattern:
 
 ```
-<div class="flex flex--gap-offset-normal">
-	<div class="flex__child flex__child--gap-normal flex__child--6">
+<div class="flex flex--gap-shim-grid">
+	<div class="flex__child flex__child--gap-grid flex__child--6">
     Column 1 with a width of 6 columns out of 12
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--6">
+  <div class="flex__child flex__child--gap-grid flex__child--6">
     Column 2 with a width of 6 columns out of 12
   </div>
 </div>
 ```
 
-The classes `flex` and `flex--gap-offset-normal` on the parent and `flex__child` and `flex__child--gap-normal` on the children are mandatory. With `flex__child--(1-12)` it is possible to define column width.
+The classes `flex` and `flex--gap-shim-grid` on the parent and `flex__child` and `flex__child--gap-grid` on the children are mandatory. With `flex__child--(1-12)` it is possible to define column width.
 
 
 ## Offset
 In some cases it can be neccessary to indent columns. The grid gives basic indentions based on grid sizings:
 
 ```
-<div class="flex flex--gap-offset-normal">
-  <div class="flex__child flex__child--gap-normal flex__child--10 flex__child--offset-1">
+<div class="flex flex--gap-shim-grid">
+  <div class="flex__child flex__child--gap-grid flex__child--10 flex__child--offset-1">
     1 column with a width of 10 and an offset left of 1
   </div>
 </div>
@@ -43,11 +43,11 @@ In some cases it might be neccessary to define or change direction of the column
 
 ### Column
 ```
-<div class="flex flex--gap-offset-normal flex--direction-column">
-  <div class="flex__child flex__child--gap-normal flex__child--6">
+<div class="flex flex--gap-shim-grid flex--direction-column">
+  <div class="flex__child flex__child--gap-grid flex__child--6">
     Column 1 with a width of 6 but vertically aligned
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--6">
+  <div class="flex__child flex__child--gap-grid flex__child--6">
     Column 2 with a width of 6 but vertically aligned
   </div>
 </div>
@@ -55,11 +55,11 @@ In some cases it might be neccessary to define or change direction of the column
 
 ### Row reverse
 ```
-<div class="flex flex--gap-offset-normal flex--direction-row-reverse">
-  <div class="flex__child flex__child--gap-normal flex__child--6">
+<div class="flex flex--gap-shim-grid flex--direction-row-reverse">
+  <div class="flex__child flex__child--gap-grid flex__child--6">
     Column 1 with a width of 6 but displayed in a reverse order
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--6">
+  <div class="flex__child flex__child--gap-grid flex__child--6">
     Column 2 with a width of 6 but displayed in a reverse order
   </div>
 </div>
@@ -78,11 +78,11 @@ Native flexbox alignments can also be set by adding specific class names to the 
 ### Main axis (horizontal)
 
 ```
-<div class="flex flex--gap-offset-normal flex--main-axis-end">
-  <div class="flex__child flex__child--gap-normal flex__child--3">
+<div class="flex flex--gap-shim-grid flex--main-axis-end">
+  <div class="flex__child flex__child--gap-grid flex__child--3">
     Column 1 with a width of 3 aligned to the end of container
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--3">
+  <div class="flex__child flex__child--gap-grid flex__child--3">
     Column 2 with a width of 3 aligned to the end of container
   </div>
 </div>
@@ -99,11 +99,11 @@ These alignment values can be set:
 ### Cross axis (vertical)
 
 ```
-<div class="flex flex--gap-offset-normal flex--cross-axis-end">
-  <div class="flex__child flex__child--gap-normal flex__child--3">
+<div class="flex flex--gap-shim-grid flex--cross-axis-end">
+  <div class="flex__child flex__child--gap-grid flex__child--3">
     Column 1 with a width of 3 aligned to the end of container
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--3">
+  <div class="flex__child flex__child--gap-grid flex__child--3">
     Column 2 with a width of 3 aligned to the end of container
   </div>
 </div>
@@ -120,11 +120,11 @@ These alignment values can be set:
 ### Align self (for specific children)
 
 ```
-<div class="flex flex--gap-offset-normal flex--cross-axis-end">
-  <div class="flex__child flex__child--gap-normal flex__child--3">
+<div class="flex flex--gap-shim-grid flex--cross-axis-end">
+  <div class="flex__child flex__child--gap-grid flex__child--3">
     Column 1 with a width of 3 aligned to the end of container
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--3">
+  <div class="flex__child flex__child--gap-grid flex__child--3">
     Column 2 with a width of 3 aligned to the end of container
   </div>
 </div>
@@ -141,11 +141,11 @@ These alignment values can be set:
 The flex-wrap property is a sub-property of the flexible box layout module. It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in.
 
 ```
-<div class="flex flex--gap-offset-normal flex--wrap">
-  <div class="flex__child flex__child--gap-normal flex__child--3">
+<div class="flex flex--gap-shim-grid flex--wrap">
+  <div class="flex__child flex__child--gap-grid flex__child--3">
     Column 1 with a width of 3 aligned to the end of container
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--3">
+  <div class="flex__child flex__child--gap-grid flex__child--3">
     Column 2 with a width of 3 aligned to the end of container
   </div>
 </div>
@@ -207,14 +207,14 @@ Nesting inside columns with the following widths should be prevented, because al
 The grid system is responsive by itself by using percentages for every value (widths, gaps, offsets). But it can also provide breakpoint specific values to fit the needs of certain viewports:
 
 ```
-<div class="flex flex--gap-offset-normal">
-	<div class="flex__child flex__child--gap-normal flex__child--6 flex__child--3-l">
+<div class="flex flex--gap-shim-grid">
+	<div class="flex__child flex__child--gap-grid flex__child--6 flex__child--3-l">
     Column 1 with a width of 6 columns out of 12 (default) and 3 columns (breakpoint "l")
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--6 flex__child--3-l">
+  <div class="flex__child flex__child--gap-grid flex__child--6 flex__child--3-l">
     Column 2 with a width of 6 columns out of 12 (default) and 3 columns (breakpoint "l")
   </div>
-  <div class="flex__child flex__child--gap-normal flex__child--12 flex__child--6-l">
+  <div class="flex__child flex__child--gap-grid flex__child--12 flex__child--6-l">
     Column 3 with a width of 12 columns out of 12 (default) and 6 columns (breakpoint "l")
   </div>
 </div>
@@ -269,9 +269,9 @@ Align self (for specific children):
 `flex__child--align-stretch-(breakpoint)`  
 
 Gaps:  
-`flex--gap-offset-normal-(breakpoint)`  
+`flex--gap-shim-grid-(breakpoint)`  
 `flex--gap-offset-zero-(breakpoint)`  
-`flex__child--gap-normal-(breakpoint)`  
+`flex__child--gap-grid-(breakpoint)`  
 `flex__child--gap-zero-(breakpoint)`  
 
 Grow/shrink (values "0" and "1"):  
