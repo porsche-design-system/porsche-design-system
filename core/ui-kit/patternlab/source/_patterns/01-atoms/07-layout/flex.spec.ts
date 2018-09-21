@@ -3,7 +3,7 @@ import * as puppeteer from 'puppeteer';
 import { Browser, Page } from 'puppeteer';
 import { VisualRegressionTester } from './../../../../../vrt/visual-regression-tester';
 
-describe('Layout Grid', () => {
+describe('Layout Flex', () => {
   let browser: Browser, page: Page, visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
@@ -14,7 +14,7 @@ describe('Layout Grid', () => {
 
   it('should have no visual regression', async () => {
     expect(await visualRegressionTester.test('layout~complete', async () => {
-      await visualRegressionTester.goTo('01-atoms-04-grid-grid-flex/01-atoms-04-grid-grid-flex.rendered.html');
+      await visualRegressionTester.goTo('01-atoms-07-layout-flex/01-atoms-07-layout-flex.rendered.html');
     })).toBeFalsy();
   });
 

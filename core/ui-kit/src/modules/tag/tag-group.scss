@@ -1,6 +1,6 @@
 @import 'tag-group.setup.scss';
 @import '../../mixins/breakpoint.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}tag-group {
