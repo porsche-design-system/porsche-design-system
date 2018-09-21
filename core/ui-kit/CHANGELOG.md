@@ -19,15 +19,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
       `grid/flex.scss` => `layout/flex.scss`
       `grid/index.scss` => `layout/index.scss`
       
-    * Add classname `flex--gap-offset-normal` to every flex container (wrapper)
+    * Add classname `flex--gap-shim-grid` to every flex container which is used as grid (wrapper)
     * Delete classname `flex--direction-row` from flex container (row is default behaviour)
     * Renamings of class names of flex children:
         
-        `flex__child--gap` => `flex__child--gap-normal`
-        `flex__child--gap-left` => `flex__child--gap-normal`
-        `flex__child--gap-right` => `flex__child--gap-normal`
-        `flex__child--gap-left-x` => `flex__child--gap-normal-x`
-        `flex__child--gap-right-x` => `flex__child--gap-normal-x`
+        `flex__child--gap` => `flex__child--gap-grid`
+        `flex__child--gap-left` => `flex__child--gap-grid`
+        `flex__child--gap-right` => `flex__child--gap-grid`
+        `flex__child--gap-left-x` => `flex__child--gap-grid-x`
+        `flex__child--gap-right-x` => `flex__child--gap-grid-x`
         
     * Deleted unused/deprecated class names which can be set by more generic classes:
         
