@@ -13,33 +13,34 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   * Migration path:
     * Changed location of files (and corresponding import paths):
     
-      `04-grid/grid-felx.hbs` => `07-layout/flex.hbs`
-      `grid/flex.setup.scss` => `layout/flex.setup.scss`
-      `grid/flex.mixin.scss` => `layout/flex.mixin.scss`
-      `grid/flex.scss` => `layout/flex.scss`
-      `grid/index.scss` => `layout/index.scss`
+      `04-grid/grid-flex.hbs` => `07-layout/flex.hbs`  
+      `04-grid/grid-flex.md` => `07-layout/flex.md`  
+      `base/grid/flex.setup.scss` => `base/layout/flex.setup.scss`  
+      `base/grid/flex.mixin.scss` => `base/layout/flex.mixin.scss`  
+      `base/grid/flex.scss` => `base/layout/flex.scss`  
+      `base/grid/index.scss` => `base/layout/index.scss`  
       
-    * Add classname `flex--gap-shim-grid` to every flex container which is used as grid (wrapper)
-    * Delete classname `flex--direction-row` from flex container (row is default behaviour)
+    * Added classname `flex--gap-shim-grid` to every flex container which is used as a grid wrapper
+    * Deleted classname `flex--direction-row` from flex container (row is default behaviour)
     * Renamings of class names of flex children:
         
-        `flex__child--gap` => `flex__child--gap-grid`
-        `flex__child--gap-left` => `flex__child--gap-grid`
-        `flex__child--gap-right` => `flex__child--gap-grid`
-        `flex__child--gap-left-x` => `flex__child--gap-grid-x`
-        `flex__child--gap-right-x` => `flex__child--gap-grid-x`
+      `flex__child--gap` => `flex__child--gap-grid`  
+      `flex__child--gap-left` => `flex__child--gap-grid`  
+      `flex__child--gap-right` => `flex__child--gap-grid`  
+      `flex__child--gap-left-x` => `flex__child--gap-grid-x`  
+      `flex__child--gap-right-x` => `flex__child--gap-grid-x`  
         
     * Deleted unused/deprecated class names which can be set by more generic classes:
         
-        `flex--center-vertical` => `flex--direction-column flex--cross-axis-center`
-        `flex--center-horizontal` => `flex--cross-axis-center`
-        `flex--row-reverse` => `flex--direction-row-reverse`
-        `flex--column-reverse` => `flex--direction-column-reverse`
-        `flex--row-wrap` => `flex--wrap`
-        `flex--row-nowrap` => `flex--wrap-no`
-        `flex--row` => `flex--direction-row`
-        `flex--column` => `flex--direction-column`
-        `flex--grow` => `flex__child--grow-1` || `flex__child--grow-0`
+      `flex--center-vertical` => `flex--direction-column flex--cross-axis-center`  
+      `flex--center-horizontal` => `flex--cross-axis-center`  
+      `flex--row-reverse` => `flex--direction-row-reverse`  
+      `flex--column-reverse` => `flex--direction-column-reverse`  
+      `flex--row-wrap` => `flex--wrap`  
+      `flex--row-nowrap` => `flex--wrap-no`  
+      `flex--row` => `flex--direction-row`  
+      `flex--column` => `flex--direction-column`  
+      `flex--grow` => `flex__child--grow-1` || `flex__child--grow-0`  
 
 ## [0.11.0] - 2018-09-11
 ### Improvements

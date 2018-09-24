@@ -270,7 +270,7 @@ Align self (for specific children):
 
 Gaps:  
 `flex--gap-shim-grid-(breakpoint)`  
-`flex--gap-offset-zero-(breakpoint)`  
+`flex--gap-shim-zero-(breakpoint)`  
 `flex__child--gap-grid-(breakpoint)`  
 `flex__child--gap-zero-(breakpoint)`  
 
