@@ -1,6 +1,6 @@
 ---
 title: Pagination  
-state: inprogress
+state: complete
 ---
 
 # UI Kit Core pagination manual
