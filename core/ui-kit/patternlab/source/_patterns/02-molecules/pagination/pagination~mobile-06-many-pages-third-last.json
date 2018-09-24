@@ -1,0 +1,31 @@
+{
+  "pagination_items": [
+    {
+      "data": 1,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    },
+    {
+      "data": null,
+      "isCurrentPage": null,
+      "isEllipsis": true
+    },
+    {
+      "data": 97,
+      "isCurrentPage": true,
+      "isEllipsis": false
+    },
+    {
+      "data": 98,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    },
+    {
+      "data": 99,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    }
+  ],
+  "pagination_isPrevDisabled": false,
+  "pagination_isNextDisabled": false
+}

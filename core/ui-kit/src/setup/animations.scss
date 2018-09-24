@@ -8,3 +8,10 @@
  * $inactive-animations: 'tile-slider', 'tile-image-text-link'
  */
 $inactive-animations: '' !default;
+
+/**
+ * basic hover animation timing (of color and opacity).
+ * timing and bezier should be refactored after official Porsche animation guidelines are defined
+ */
+$animation-hover-duration: .24s;
+$animation-hover-bezier: ease;

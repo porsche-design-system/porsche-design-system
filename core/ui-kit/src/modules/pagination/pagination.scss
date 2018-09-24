@@ -1,0 +1,155 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../mixins/animation.scss';
+@import '../../base/grid/flex.mixin.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+@import '../../base/position/position.mixin.scss';
+@import '../../base/text-size/text-size.mixin.scss';
+@import '../../base/text-color/text-color.mixin.scss';
+@import '../../base/background/background.mixin.scss';
+@import '../../modules/icon/icon.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}pagination {
+  $bem-block: &;
+  @include flex;
+  @include flex-main-axis(center);
+  counter-reset: maxNumberOfLinks 5;
+
+  @include breakpoint('s') {
+    counter-reset: maxNumberOfLinks 7;
+  }
+
+  &__items {
+    @include flex;
+  }
+
+  &__goto,
+  &__prev,
+  &__next {
+    @include flex;
+    @include flex-main-axis(center);
+    @include flex-cross-axis(center);
+    @include transition(color);
+    position: relative;
+    width: rem(40px);
+    height: rem(40px);
+
+    &:focus {
+      outline: 2px solid $color-palette-grey-5;
+      outline-offset: -2px;
+    }
+
+    &:active {
+      outline: none;
+      color: $color-palette-red-1;
+    }
+  }
+
+  &__goto {
+    @include -text-size-small;
+    @include -text-color-black;
+    text-decoration: none;
+    cursor: pointer;
+
+    #{$bem-block}--theme-inverted & {
+      @include -text-color-white;
+    }
+
+    &:hover {
+      @include -text-color-red-1;
+
+      #{$bem-block}--theme-inverted & {
+        @include -text-color-red-1;
+      }
+    }
+
+    &--current {
+      cursor: default;
+
+      &:hover {
+        @include -text-color-black;
+
+        #{$bem-block}--theme-inverted & {
+          @include -text-color-white;
+        }
+      }
+
+      &::after {
+        @include -background-red-1;
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: rem(6px);
+        right: rem(6px);
+        height: rem(4px);
+      }
+    }
+
+    &--ellipsis {
+      cursor: default;
+
+      &:hover {
+        @include -text-color-black;
+
+        #{$bem-block}--theme-inverted & {
+          @include -text-color-white;
+        }
+      }
+
+      &::after {
+        content: '…';
+      }
+    }
+  }
+
+  &__prev,
+  &__next {
+    @include icon-base;
+    @include -text-color-black;
+    font-size: rem(18px);
+    text-decoration: none;
+    cursor: pointer;
+
+    #{$bem-block}--theme-inverted & {
+      @include -text-color-white;
+    }
+
+    &:hover {
+      @include -text-color-red-1;
+
+      #{$bem-block}--theme-inverted & {
+        @include -text-color-red-1;
+      }
+    }
+
+    &--disabled {
+      @include -text-color-grey-5;
+      cursor: default;
+
+      #{$bem-block}--theme-inverted & {
+        @include -text-color-grey-7;
+      }
+
+      &:hover {
+        @include -text-color-grey-5;
+
+        #{$bem-block}--theme-inverted & {
+          @include -text-color-grey-7;
+        }
+      }
+    }
+  }
+
+  &__prev {
+    &::before {
+      @include icon-arrow-left-hair-before;
+    }
+  }
+
+  &__next {
+    &::before {
+      @include icon-arrow-right-hair-before;
+    }
+  }
+}
