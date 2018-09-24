@@ -269,6 +269,8 @@ export interface IconProps extends ClassNameProp, ComponentProp {
      * Puts a circle around the icon
      */
     circled?: boolean
+
+    title?: string
 }
 
 const defaultProps: Partial<IconProps> = {
