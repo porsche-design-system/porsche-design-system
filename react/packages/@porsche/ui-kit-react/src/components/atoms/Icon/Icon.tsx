@@ -270,6 +270,9 @@ export interface IconProps extends ClassNameProp, ComponentProp {
      */
     circled?: boolean
 
+    /**
+     * Adds a native HTML tooltip to the icon
+     */
     title?: string
 }
 
