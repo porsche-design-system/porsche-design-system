@@ -1,5 +1,5 @@
 {
-  "bodyClass": "sg-wrapper-dark",
+  "bodyClass": "sg-wrapper-dark sg-wrapper-overflow",
   "car-chooser_title": "Sie haben aktuell 28 Fahrzeuge.",
   "car-chooser_subtitle": "Wählen Sie ein Fahrzeug durch Eingabe eines Stichwortes, z.B. GTS.",
   "car-chooser_title-empty": "Sie haben aktuell keine Fahrzeuge.",

@@ -105,7 +105,9 @@
     left: $car-chooser-dropdown-position-left;
     right: $car-chooser-dropdown-position-right;
     position: absolute;
-    padding: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
     max-height: 0;
     opacity: 0;
     transition: $car-chooser-dropdown-transition-speed cubic-bezier(.075, .82, .165, 1);
@@ -270,6 +272,7 @@
       @include -spacing-24;
 
       @include breakpoint('s') {
+        @include -align-center;
         @include -spacing-18(bottom);
         display: block;
         margin-left: auto;

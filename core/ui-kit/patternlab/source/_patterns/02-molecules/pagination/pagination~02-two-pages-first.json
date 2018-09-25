@@ -1,0 +1,16 @@
+{
+  "pagination_items": [
+    {
+      "data": 1,
+      "isCurrentPage": true,
+      "isEllipsis": false
+    },
+    {
+      "data": 2,
+      "isCurrentPage": false,
+      "isEllipsis": false
+    }
+  ],
+  "pagination_isPrevDisabled": true,
+  "pagination_isNextDisabled": false
+}

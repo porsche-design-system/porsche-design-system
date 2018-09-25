@@ -11,6 +11,7 @@ import { PuiE2eMoleculesButtonGhostComponent } from './pages/molecules/button/bu
 import { PuiE2eOrganismsFooterComponent } from './pages/organisms/footer/footer.component';
 import { PuiE2eOrganismsPageHeaderComponent } from './pages/organisms/page-header/page-header.component';
 import { PuiE2eMoleculesFormInputComponent } from './pages/molecules/form/input/input.component';
+import { PuiE2eMoleculesCalloutComponent } from './pages/molecules/callout/callout.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
                 component: PuiE2eMoleculesButtonPrimaryComponent
               }
             ]
+          },
+          {
+            path: 'callout',
+            component: PuiE2eMoleculesCalloutComponent
           },
           {
             path: 'form',

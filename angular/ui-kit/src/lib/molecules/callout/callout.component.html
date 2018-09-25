@@ -1,0 +1,9 @@
+<div
+  class="callout {{ styleModifier }}"
+  [class.callout--top]="orientation === 'top'"
+  [class.callout--bottom]="orientation === 'bottom'"
+>
+  <h4 *ngIf="title" class="callout__title">{{title}}</h4>
+  <ng-content></ng-content>
+  <span class="callout__arrow"></span>
+</div>
