@@ -16,31 +16,22 @@
 @mixin flex-direction($direction) {
   flex-direction: #{$direction};
 }
-@mixin flex--direction($direction) {
-  flex-direction: #{$direction};
-}
 
-@mixin flex--wrap($wrap) {
+@mixin flex-wrap($wrap) {
   flex-wrap: #{$wrap};
 }
 
 @mixin flex-main-axis($align) {
   justify-content: #{$align};
 }
-@mixin flex--justify-content($align-direction) {
-  justify-content: #{$align-direction};
-}
 
 @mixin flex-cross-axis($align) {
   align-items: #{$align};
 }
-@mixin flex--align-items($align-items) {
-  align-items: #{$align-items};
-}
 
 // it is similar to align-items, but instead of aligning flex items, it aligns flex lines.
 // Note: There must be multiple lines of items for this property to have any effect!
-@mixin flex--align-content($align-content) {
+@mixin flex-align-content($align-content) {
   align-content: #{$align-content};
 }
 
@@ -90,32 +81,20 @@
 @mixin flex-child-align($align) {
   align-self: #{$align};
 }
-@mixin flex--align-self($align-self) {
-  align-self: #{$align-self};
-}
 
 @mixin flex-child-grow($grow) {
-  flex-grow: #{$grow};
-}
-@mixin flex--grow($grow) {
   flex-grow: #{$grow};
 }
 
 @mixin flex-child-shrink($shrink) {
   flex-shrink: #{$shrink};
 }
-@mixin flex--shrink($shrink) {
-  flex-shrink: #{$shrink};
-}
 
 @mixin flex-child-basis($basis) {
   flex-basis: #{$basis};
 }
-@mixin flex--basis($basis) {
-  flex-basis: #{$basis};
-}
 
-@mixin flex--order($order) {
+@mixin flex-child-order($order) {
   order: #{$order};
 }
 
@@ -138,41 +117,5 @@
       right: $flex-child-spacing-horizontal-l;
     }
   }
-}
-
-
-// TODO: following should not be used anymore
-@mixin flex--center-vertical {
-  flex-direction: column;
-  justify-content: center;
-}
-
-@mixin flex--center-horizontal {
-  align-items: center;
-}
-
-@mixin flex--column-reverse {
-  flex-direction: column-reverse;
-}
-
-@mixin flex--row-reverse {
-  flex-direction: row-reverse;
-}
-
-@mixin flex--row-wrap {
-  flex-wrap: wrap;
-}
-
-@mixin flex--row-nowrap {
-  flex-wrap: nowrap;
-}
-
-@mixin flex--space-between-vertical {
-  flex-direction: column;
-  justify-content: center;
-}
-
-@mixin flex--space-between-horizontal {
-  justify-content: space-between;
 }
 

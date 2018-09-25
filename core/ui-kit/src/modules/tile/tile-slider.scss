@@ -108,8 +108,8 @@
   }
 
   &__arrow {
-    @include flex--direction(column);
-    @include flex--justify-content(center);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
 
     display: none;
     color: $tiles-slider-arrow-color;

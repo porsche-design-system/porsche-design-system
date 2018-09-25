@@ -8,7 +8,7 @@
 .#{$global-class-prefix}tag {
   @include -text-size-copy;
   @include -spacing-6(top);
-  @include flex--direction(row);
+  @include flex-direction(row);
 
   cursor: pointer;
   background-color: $tag-background-color;
@@ -30,7 +30,7 @@
 
   &__container {
     @include flex;
-    @include flex--align-items(center);
+    @include flex-cross-axis(center);
     height: $tag-container-height;
   }
 
@@ -40,7 +40,7 @@
 
   &__icon-container {
     @include -spacing-12(left);
-    @include flex--shrink(0);
+    @include flex-child-shrink(0);
   }
 
   &__icon {
@@ -54,7 +54,7 @@
   }
 
   &__content-container {
-    @include flex--grow(1);
+    @include flex-child-grow(1);
     min-width: $tag-content-container-min-width;
   }
 
@@ -68,7 +68,7 @@
   &__close {
     @include -spacing-18(left);
     @include -spacing-12(right);
-    @include flex--shrink(0);
+    @include flex-child-shrink(0);
     @include -align-right;
   }
 }

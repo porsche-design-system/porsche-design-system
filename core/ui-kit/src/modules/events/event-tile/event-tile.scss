@@ -32,7 +32,7 @@
   }
 
   &__body {
-    @include flex--grow(1);
+    @include flex-child-grow(1);
   }
 
   &__img {

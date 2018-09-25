@@ -7,8 +7,8 @@
 
 .#{$global-class-prefix}state-empty-action {
   @include flex;
-  @include flex--direction(column);
-  @include flex--align-items(center);
+  @include flex-direction(column);
+  @include flex-cross-axis(center);
   @include -spacing-inner-a;
   background: $state-empty-action-background;
 

@@ -21,7 +21,7 @@
 
   &__item-label {
     @include flex;
-    @include flex--align-items(center);
+    @include flex-cross-axis(center);
 
     padding: $list-striped-item-padding-vertical $list-striped-item-padding-horizontal;
 

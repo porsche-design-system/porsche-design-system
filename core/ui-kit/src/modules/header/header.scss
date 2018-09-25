@@ -27,7 +27,7 @@
 
   &__logo {
     @include flex;
-    @include flex--align-items(flex-end);
+    @include flex-cross-axis(flex-end);
 
     position: relative;
     height: $header-logo-height;

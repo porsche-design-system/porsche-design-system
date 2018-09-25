@@ -11,8 +11,8 @@
   $bem-block: &;
 
   @include flex-inline;
-  @include flex--align-items(flex-start);
-  @include flex--direction(column);
+  @include flex-cross-axis(flex-start);
+  @include flex-direction(column);
   @include -align-left;
   @include -text-size-copy;
   @include -spacing-c(left, padding);

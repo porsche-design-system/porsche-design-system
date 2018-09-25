@@ -10,8 +10,8 @@
 
   &__list {
     @include flex;
-    @include flex--align-items(center);
-    @include flex--direction(row);
+    @include flex-cross-axis(center);
+    @include flex-direction(row);
     justify-content: center;
   }
 

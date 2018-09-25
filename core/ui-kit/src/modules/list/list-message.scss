@@ -64,7 +64,7 @@
     &--right {
       @include breakpoint('m') {
         @include flex;
-        @include flex--center-horizontal;
+        @include flex-cross-axis(center);
         transform: translate(-$list-message-content-border-size, 0);
         padding-left: $list-message-content-divider-spacing-horizontal;
         border-left: $list-message-content-border-size solid $list-message-content-separator-color;

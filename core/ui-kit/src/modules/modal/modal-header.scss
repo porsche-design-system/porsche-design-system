@@ -6,8 +6,8 @@
 
 .#{$global-class-prefix}modal-header {
   @include flex;
-  @include flex--align-items(center);
-  @include flex--justify-content(space-between);
+  @include flex-cross-axis(center);
+  @include flex-main-axis(space-between);
 
   &__title {
     @include -text-size-3-thin;

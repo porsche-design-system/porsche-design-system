@@ -5,9 +5,9 @@
 
 .#{$global-class-prefix}tag-group {
   @include flex;
-  @include flex--direction(row);
-  @include flex--wrap(wrap);
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
   @include breakpoint(xxs, xs) {
-    @include flex--direction(column);
+    @include flex-direction(column);
   }
 }

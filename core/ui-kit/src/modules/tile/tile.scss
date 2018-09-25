@@ -9,14 +9,14 @@
 
 .#{$global-class-prefix}tile {
   @include -spacing-inner-b;
-  @include flex--grow(1);
+  @include flex-child-grow(1);
   height: $tile-height;
   background-color: $tile-background-color;
 
   @include breakpoint('s') {
     @include flex;
-    @include flex--space-between-horizontal;
-    @include flex--center-horizontal;
+    @include flex-main-axis(space-between);
+    @include flex-cross-axis(center);
     padding-top: $tile-padding-vertical-s;
     padding-bottom: $tile-padding-vertical-s;
   }

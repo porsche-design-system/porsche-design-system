@@ -41,6 +41,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
       `flex--row` => `flex--direction-row`  
       `flex--column` => `flex--direction-column`  
       `flex--grow` => `flex__child--grow-1` || `flex__child--grow-0`  
+    
+    * Consolidated and deleted doubled mixins (and corresponding includes):
+      
+      `@include flex--direction` => `@include flex-direction`
+      `@include flex--wrap` => `@include flex-wrap`
+      `@include flex--justify-content` => `@include flex-main-axis` 
+      `@include flex--align-items` => `@include flex-cross-axis`  
+      `@include flex--align-content` => `@include flex-align-content`  
+      `@include flex--align-self` => `@include flex-child-align`  
+      `@include flex--grow` => `@include flex-child-grow`  
+      `@include flex--shrink` => `@include flex-child-shrink`  
+      `@include flex--basis` => `@include flex-child-basis`  
+      `@include flex--order` => `@include flex-child-order`  
+      `@include flex--center-vertical` => `@include flex-direction(column) @include flex-main-axis(center)`  
+      `@include flex--center-horizontal` => `@include flex-cross-axis(center)`  
+      `@include flex--column-reverse` => `@include flex-direction(column-reverse)`  
+      `@include flex--row-reverse` => `@include flex-direction(row-reverse)`  
+      `@include flex--row-wrap` => `@include flex-wrap(wrap)`  
+      `@include flex--row-nowrap` => `@include flex-wrap(nowrap)`  
+      `@include flex--space-between-vertical` => `@include flex-direction(column) @include flex-main-axis(center)`  
+      `@include flex--space-between-horizontal` => `@include flex-main-axis(space-between)`  
+      
+      
 
 ## [0.11.0] - 2018-09-11
 ### Improvements

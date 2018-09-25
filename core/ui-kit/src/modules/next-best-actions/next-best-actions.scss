@@ -41,7 +41,7 @@
 
     @include breakpoint('m') {
       @include flex;
-      @include flex--align-items(center);
+      @include flex-cross-axis(center);
     }
 
     @include breakpoint('m', 'l') {
@@ -56,11 +56,11 @@
   &__row {
     @include breakpoint('s') {
       @include flex;
-      @include flex--wrap(wrap);
+      @include flex-wrap(wrap);
     }
 
     @include breakpoint('m') {
-      @include flex--grow(1);
+      @include flex-child-grow(1);
     }
   }
 

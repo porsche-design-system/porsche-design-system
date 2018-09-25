@@ -20,14 +20,15 @@
 
   @include breakpoint('m') {
     @include flex;
-    @include flex--direction(row);
+    @include flex-direction(row);
     justify-content: space-around;
     padding: $slider-vehicle-inner-spacing-top-m $slider-vehicle-inner-spacing-vertical-m $slider-vehicle-inner-spacing-bottom-m;
   }
 
   &__arrow {
-    @include flex--center-horizontal;
-    @include flex--center-vertical;
+    @include flex-cross-axis(center);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
     display: none;
     position: absolute;
     top: $slider-vehicle-arrow-position-top;
