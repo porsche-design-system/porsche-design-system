@@ -1,6 +1,6 @@
 {
   "name": "@porsche/ui-kit-core",
-  "version": "0.11.0",
+  "version": "0.13.0",
   "description": "Porsche UI Kit Core contains all neccessary styles for the Porsche Pattern Lab components",
   "main": "index.js",
   "scripts": {
@@ -59,7 +59,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@bitbucket.org:porschedev/porsche-ui-kit.git"
+    "url": "ssh://git@github.com:myporsche/pouikit-porsche-ui-kit.git"
   },
   "keywords": [
     "porsche",

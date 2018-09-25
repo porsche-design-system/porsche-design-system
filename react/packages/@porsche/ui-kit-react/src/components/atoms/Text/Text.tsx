@@ -20,7 +20,7 @@ export type TextType =
     | "small"
     | "micro"
 
-export type ColorType =
+export type TextColorType =
     | "black"
     | "grey-darker"
     | "grey-dark"
@@ -32,6 +32,10 @@ export type ColorType =
     | "red-2"
     | "blue-1"
     | "blue-2"
+    | "status-green"
+    | "status-yellow"
+    | "status-orange"
+    | "status-red"
 
 export type TextAlignType = "left" | "center" | "right"
 
@@ -43,7 +47,7 @@ export interface TextProps extends ClassNameProp, ComponentProp {
      * The color of the text. By default, the component inherits the color of the surrounding element.
      * @default inherit
      */
-    color?: ColorType
+    color?: TextColorType
 
     /**
      * Adds an ellipsis to a single line of text if it overflows.

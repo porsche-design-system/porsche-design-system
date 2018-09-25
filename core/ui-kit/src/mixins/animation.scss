@@ -11,3 +11,7 @@
 @mixin animation($name, $duration, $timing-function: linear, $delay: 0s, $iteration-count: infinite, $direction: normal) {
   animation: $name $duration $timing-function $delay $iteration-count $direction;
 }
+
+@mixin transition($name, $duration: $animation-hover-duration, $timing-function: $animation-hover-bezier, $delay: 0s) {
+  transition: $name $duration $timing-function $delay;
+}
