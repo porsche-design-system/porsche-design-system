@@ -29,7 +29,7 @@
 
   &__item-header {
     @include flex;
-    @include flex--justify-content(space-between);
+    @include flex-main-axis(space-between);
 
     cursor: pointer;
     padding: {

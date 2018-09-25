@@ -16,44 +16,44 @@
    */
 
   &--wrap {
-    @include flex--wrap(wrap);
+    @include flex-wrap(wrap);
 
     &-no {
-      @include flex--wrap(nowrap);
+      @include flex-wrap(nowrap);
     }
 
     &-reverse {
-      @include flex--wrap(wrap-reverse);
+      @include flex-wrap(wrap-reverse);
     }
 
     @include breakpoint('xs') {
-      &-xs  { @include flex--wrap(wrap); }
-      &-no-xs  { @include flex--wrap(nowrap); }
-      &-reverse-xs  { @include flex--wrap(wrap-reverse); }
+      &-xs  { @include flex-wrap(wrap); }
+      &-no-xs  { @include flex-wrap(nowrap); }
+      &-reverse-xs  { @include flex-wrap(wrap-reverse); }
     }
 
     @include breakpoint('s') {
-      &-s  { @include flex--wrap(wrap); }
-      &-no-s  { @include flex--wrap(nowrap); }
-      &-reverse-s  { @include flex--wrap(wrap-reverse); }
+      &-s  { @include flex-wrap(wrap); }
+      &-no-s  { @include flex-wrap(nowrap); }
+      &-reverse-s  { @include flex-wrap(wrap-reverse); }
     }
 
     @include breakpoint('m') {
-      &-m  { @include flex--wrap(wrap); }
-      &-no-m  { @include flex--wrap(nowrap); }
-      &-reverse-m  { @include flex--wrap(wrap-reverse); }
+      &-m  { @include flex-wrap(wrap); }
+      &-no-m  { @include flex-wrap(nowrap); }
+      &-reverse-m  { @include flex-wrap(wrap-reverse); }
     }
 
     @include breakpoint('l') {
-      &-l  { @include flex--wrap(wrap); }
-      &-no-l  { @include flex--wrap(nowrap); }
-      &-reverse-l  { @include flex--wrap(wrap-reverse); }
+      &-l  { @include flex-wrap(wrap); }
+      &-no-l  { @include flex-wrap(nowrap); }
+      &-reverse-l  { @include flex-wrap(wrap-reverse); }
     }
 
     @include breakpoint('xl') {
-      &-xl  { @include flex--wrap(wrap); }
-      &-no-xl  { @include flex--wrap(nowrap); }
-      &-reverse-xl  { @include flex--wrap(wrap-reverse); }
+      &-xl  { @include flex-wrap(wrap); }
+      &-no-xl  { @include flex-wrap(nowrap); }
+      &-reverse-xl  { @include flex-wrap(wrap-reverse); }
     }
   }
 

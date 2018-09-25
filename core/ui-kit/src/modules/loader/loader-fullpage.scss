@@ -10,9 +10,9 @@
 
 .#{$global-class-prefix}loader-fullpage {
   @include flex;
-  @include flex--direction(column);
-  @include flex--align-items(center);
-  @include flex--justify-content(center);
+  @include flex-direction(column);
+  @include flex-cross-axis(center);
+  @include flex-main-axis(center);
   @include -position-absolute-coordinates;
   @include -spacing-inner-a;
 

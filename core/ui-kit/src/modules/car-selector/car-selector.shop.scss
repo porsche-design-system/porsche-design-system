@@ -80,7 +80,7 @@
 
     &-model {
       @include flex;
-      @include flex--row-reverse;
+      @include flex-direction(row-reverse);
       width: $car-selector-derivative-list-item-model-width;
       justify-content: space-between;
 

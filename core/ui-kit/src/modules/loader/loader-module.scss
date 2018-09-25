@@ -8,8 +8,8 @@
 .#{$global-class-prefix}loader-module {
   @include -position-absolute-coordinates;
   @include flex;
-  @include flex--align-items(center);
-  @include flex--justify-content(center);
+  @include flex-cross-axis(center);
+  @include flex-main-axis(center);
   @include -spacing-inner-a;
   @include -background-grey-10-1;
 

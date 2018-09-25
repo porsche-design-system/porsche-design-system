@@ -7,8 +7,8 @@
 
 .#{$global-class-prefix}button-notification {
   @include flex;
-  @include flex--justify-content(center);
-  @include flex--align-items(center);
+  @include flex-main-axis(center);
+  @include flex-cross-axis(center);
   @include -text-size-small;
   position: relative;
   height: $button-notification-height;

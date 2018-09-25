@@ -12,19 +12,19 @@
 .#{$global-class-prefix}tile-image-headline-button {
   @include -text-size-copy;
   @include flex;
-  @include flex--direction(column);
+  @include flex-direction(column);
 
   height: $tile-image-headline-button-headline-height;
 
   &__content {
     @include flex;
-    @include flex--direction(column);
-    @include flex--grow(1);
+    @include flex-direction(column);
+    @include flex-child-grow(1);
 
     position: relative;
 
     @include breakpoint('s') {
-      @include flex--justify-content(flex-end);
+      @include flex-main-axis(flex-end);
 
       min-height: $tile-image-headline-button-height-s;
     }

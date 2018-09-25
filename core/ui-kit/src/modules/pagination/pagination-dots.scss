@@ -14,8 +14,8 @@
 
   &__list {
     @include flex;
-    @include flex--justify-content(center);
-    @include flex--align-items(center);
+    @include flex-main-axis(center);
+    @include flex-cross-axis(center);
   }
 
   &__dot {

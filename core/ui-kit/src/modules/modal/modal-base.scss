@@ -16,8 +16,9 @@
 
   @include breakpoint('xs') {
     @include flex;
-    @include flex--center-horizontal;
-    @include flex--center-vertical;
+    @include flex-cross-axis(center);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
   }
 
   &__dialog {
@@ -28,8 +29,9 @@
 
     @include breakpoint('xs') {
       @include flex;
-      @include flex--center-vertical;
-      @include flex--direction(row);
+      @include flex-direction(column);
+      @include flex-main-axis(center);
+      @include flex-direction(row);
 
       padding: $modal-base-dialog-inner-spacing-vertical $modal-base-dialog-inner-spacing-horizontal;
       height: auto;

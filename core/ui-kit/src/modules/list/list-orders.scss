@@ -56,7 +56,7 @@
     &--right {
       @include breakpoint('s') {
         @include flex;
-        @include flex--align-items(center);
+        @include flex-cross-axis(center);
         @include -spacing-24('left', 'padding');
 
         transform: translate(-$list-orders-content-border-size, 0);

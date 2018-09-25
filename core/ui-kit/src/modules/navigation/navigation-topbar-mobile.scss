@@ -19,16 +19,18 @@
     @include -font-primary;
     @include -text-color-black;
     @include flex;
-    @include flex--center-horizontal;
-    @include flex--center-vertical;
+    @include flex-cross-axis(center);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
 
     width: $navigation-topbar-mobile-headline-dimension;
   }
 
   &__crest {
     @include flex;
-    @include flex--center-horizontal;
-    @include flex--center-vertical;
+    @include flex-cross-axis(center);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
 
     position: absolute;
     top: $navigation-topbar-mobile-crest-position-top;
@@ -132,9 +134,10 @@
 
     &-header {
       @include flex;
-      @include flex--center-horizontal;
-      @include flex--center-vertical;
-      @include flex--direction(row);
+      @include flex-cross-axis(center);
+      @include flex-direction(column);
+      @include flex-main-axis(center);
+      @include flex-direction(row);
       @include -background-grey-1;
 
       box-sizing: border-box;
@@ -218,8 +221,9 @@
     &-footer {
       @include -background-blue-1;
       @include flex;
-      @include flex--center-vertical;
-      @include flex--center-horizontal;
+      @include flex-direction(column);
+      @include flex-main-axis(center);
+      @include flex-cross-axis(center);
 
       position: fixed;
       bottom: $navigation-topbar-mobile-flyout-footer-position-bottom;
@@ -253,9 +257,10 @@
       @include -text-color-white;
       @include -font-primary;
       @include flex;
-      @include flex--center-horizontal;
-      @include flex--center-vertical;
-      @include flex--direction(column);
+      @include flex-cross-axis(center);
+      @include flex-direction(column);
+      @include flex-main-axis(center);
+      @include flex-direction(column);
 
       height: $navigation-topbar-mobile-flyout-footer-link-height;
       text-decoration: none;

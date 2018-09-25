@@ -5,7 +5,7 @@
 
 .#{$global-class-prefix}loader-list {
   @include flex;
-  @include flex--justify-content(center);
+  @include flex-main-axis(center);
 
   padding: {
     top: $loader-list-spacing-vertical;

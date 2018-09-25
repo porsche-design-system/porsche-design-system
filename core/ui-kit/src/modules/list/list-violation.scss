@@ -40,7 +40,8 @@
     &--left {
       @include breakpoint('s') {
         @include flex; // Fix for Safari 6
-        @include flex--center-vertical; // Fix for Safari 6
+        @include flex-direction(column);
+        @include flex-main-axis(center); // Fix for Safari 6
         transform: translate(-$list-violation-content-border-size, 0); // Fix for Safari 6
       }
     }
@@ -48,7 +49,7 @@
     &--right {
       @include breakpoint('s') {
         @include flex;
-        @include flex--center-horizontal;
+        @include flex-cross-axis(center);
         transform: translate(-$list-violation-content-border-size, 0);
         padding-left: $list-violation-content-divider-spacing-horizontal;
         border-left: $list-violation-content-border-size solid $list-violation-content-separator-color;
