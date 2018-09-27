@@ -1,1 +1,18 @@
 @import "../../../../../../../node_modules/@porsche/ui-kit-core/src/modules/pagination/pagination.scss";
+
+.#{$global-class-prefix}pagination {
+    /** Overwrite because of finder specific icon set
+     * TODO: import standard icon set from ui kit core
+     */
+    &__prev {
+        &::before {
+            content: '\e95c';
+        }
+    }
+
+    &__next {
+        &::before {
+            content: '\e95d';
+        }
+    }
+}

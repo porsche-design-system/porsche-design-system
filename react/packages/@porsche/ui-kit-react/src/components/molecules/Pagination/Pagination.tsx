@@ -7,15 +7,15 @@ import { ClassNameProp, ComponentProp } from "../../../lib/props"
 export interface PaginationProps extends ClassNameProp, ComponentProp {
     /** The different tab items */
     items: PaginationItem[]
-    /** Controls if the component is displayed with a smaller dimension */
-    mini?: boolean
+    /** Defines the theming of the pagination */
+    theme?: "inverted" | undefined
 }
 
 export interface PaginationItem {
     /** The unique identifier */
     key: any
     /** Flag that controls which item is current. */
-    active?: boolean | (() => boolean)
+    isCurrent?: boolean
     /** Callback to handle the click event outside of the component */
     onClick?: (event: React.MouseEvent<HTMLElement>, item: PaginationItem) => void
 }
@@ -25,22 +25,30 @@ const _meta: ComponentMeta = {
     type: META.TYPES.MOLECULE
 }
 
-const _Pagination: React.StatelessComponent<PaginationProps> & Partial<MetaCategorizable> = (props) => {
-    const { as, className, items, mini, ...rest } = props
+const defaultProps: Partial<PaginationProps> = {
+    theme: undefined
+}
 
-    const ElementType = getElementType(as, "div")
-    const classesPagination = cx(prefix("pagination"), className)
+const _Pagination: React.StatelessComponent<PaginationProps> & Partial<MetaCategorizable> = (props) => {
+    const { as, className, items, theme, ...rest } = props
+
+    const ElementType = getElementType(as, "nav")
+    const classesPagination = cx(prefix("pagination"), { [prefix("pagination--theme-inverted")]: theme }, className)
 
     return (
         <ElementType className={classesPagination} {...rest}>
             <span className={cx(prefix("pagination__prev"))} />
             <ul className={cx(prefix("pagination__items"))}>
                 {items.map((item) => {
+                    const classesPaginationGoto = cx(prefix("pagination__goto"), {
+                        [prefix("pagination__goto--current")]: item.isCurrent
+                    })
                     return (
                         <li key={item.key} className={cx(prefix("pagination__item"))}>
                             <a
-                                className={cx(prefix("pagination__goto"))}
+                                className={classesPaginationGoto}
                                 onClick={(event) => item.onClick && item.onClick(event, item)}
+                                href="#"
                             >
                                 {item.key}
                             </a>
@@ -54,6 +62,7 @@ const _Pagination: React.StatelessComponent<PaginationProps> & Partial<MetaCateg
 }
 
 _Pagination._meta = _meta
+_Pagination.defaultProps = defaultProps
 
 /**
  * The Pagination component is a link list to cycle through pages/views
