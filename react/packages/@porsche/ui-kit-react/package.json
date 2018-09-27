@@ -66,7 +66,7 @@
         "publish:artifactory": "yarn run test && yarn run build && yarn publish"
     },
     "dependencies": {
-        "@porsche/ui-kit-core": "0.7.4",
+        "@porsche/ui-kit-core": "0.13.0",
         "classnames": "^2.2.5",
         "react-modal": "^3.5.1",
         "react-responsive": "^3.0.0",
