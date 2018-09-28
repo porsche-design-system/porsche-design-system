@@ -5,6 +5,7 @@ import Logo from "../Components/Logo/Logo"
 import PropTypes from "prop-types"
 import React from "react"
 import pkg from "package.json"
+import reactpkg from "./../../../../ui-kit-react/package"
 
 const HeaderAugmentationJSX = `<Text as='h3'>
   Learn More
@@ -61,7 +62,7 @@ const Introduction = () => {
             <Segment basic textAlign="center">
                 <Logo centered size="small" />
                 <Header as="h1" textAlign="center">
-                    Porsche UI Kit React
+                    Porsche UI Kit React (v.{reactpkg.version})
                     <Header.Subheader>{pkg.description}</Header.Subheader>
                 </Header>
             </Segment>
