@@ -1,4 +1,4 @@
-import { Icon, Input, Menu } from "semantic-ui-react"
+import { Input, Menu } from "semantic-ui-react"
 import React, { Component } from "react"
 import { keyboardKey, parentComponents, META } from "src/app/utils"
 
@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom"
 import PropTypes from "prop-types"
 import _ from "lodash/fp"
 import { findDOMNode } from "react-dom"
-import pkg from "package.json"
 import reactpkg from "./../../../../../ui-kit-react/package.json"
 import { withRouter } from "react-router"
 
@@ -145,7 +144,7 @@ class Sidebar extends Component {
 
     renderSearchItems = () => {
         const { selectedItemIndex, query } = this.state
-        if (!query) return
+        if (!query) return null
 
         let itemIndex = -1
         const startsWithMatches = []
