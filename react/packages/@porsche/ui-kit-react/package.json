@@ -8,11 +8,7 @@
     "jsnext:main": "dist/es/index.js",
     "typings": "dist/typings/index",
     "sideEffects": false,
-    "files": [
-        "dist",
-        "src",
-        "css"
-    ],
+    "files": ["dist", "src", "css"],
     "repository": {
         "type": "git"
     },
@@ -33,11 +29,7 @@
             "^.+\\.tsx?$": "ts-jest"
         },
         "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(tsx?)$",
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js"
-        ],
+        "moduleFileExtensions": ["ts", "tsx", "js"],
         "moduleNameMapper": {
             "^.*\\.scss$": "<rootDir>/src/test-helper/SCSSStub.js"
         },
@@ -54,9 +46,11 @@
         "build:commonjs": "tsc --project ./ --outDir ./dist/commonjs --module commonjs",
         "watch:commonjs": "yarn run build:commonjs --watch",
         "build:sass": "node-sass-chokidar --source-map true ./src --output .tmp/css",
-        "postbuild:sass": "cpx \"../../../node_modules/@porsche/ui-kit-core/src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./src/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
+        "postbuild:sass":
+            "cpx \"../../../node_modules/@porsche/ui-kit-core/src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./src/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
         "watch:sass": "yarn run build:sass && yarn run build:sass --watch",
-        "build:css": "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
+        "build:css":
+            "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
         "watch:css": "yarn run build:css && yarn run build:css --watch",
         "lint:ts": "tslint --project '.' --format codeFrame",
         "lint:ts:fix": "yarn run lint:ts --fix",
@@ -68,37 +62,36 @@
     "dependencies": {
         "@porsche/ui-kit-core": "0.7.4",
         "classnames": "^2.2.5",
-        "react-modal": "^3.5.1",
-        "react-responsive": "^3.0.0",
-        "tslib": "^1.9.0"
+        "react-modal": "^3.6.1",
+        "react-responsive": "^5.0.0",
+        "tslib": "^1.9.3"
     },
     "devDependencies": {
-        "@types/enzyme": "^3.1.9",
-        "@types/jest": "^22.2.0",
-        "@types/node": "^8.0.47",
-        "@types/react": "^16.1.0",
-        "@types/react-modal": "^3.2.0",
+        "@types/enzyme": "^3.1.14",
+        "@types/jest": "^23.3.2",
+        "@types/react": "^16.4.14",
+        "@types/react-modal": "^3.2.1",
         "@types/react-responsive": "^3.0.0",
         "autoprefixer": "^8.1.0",
         "cpx": "^1.5.0",
-        "cross-env": "^5.0.5",
-        "enzyme": "^3.3.0",
-        "enzyme-adapter-react-16": "^1.1.1",
-        "jest": "^22.4.2",
+        "cross-env": "^5.2.0",
+        "enzyme": "^3.6.0",
+        "enzyme-adapter-react-16": "^1.5.0",
+        "jest": "^23.6.0",
         "jest-bamboo-formatter": "^1.0.1",
-        "jest-environment-enzyme": "^5.0.3",
-        "jest-enzyme": "^5.0.3",
-        "node-sass-chokidar": "0.0.3",
-        "postcss": "^6.0.19",
-        "postcss-cli": "^5.0.0",
-        "react": "^16.1.0",
-        "react-dom": "^16.2.0",
+        "jest-environment-enzyme": "^6.1.2",
+        "jest-enzyme": "^6.1.2",
+        "node-sass-chokidar": "^1.3.3",
+        "postcss": "^7.0.4",
+        "postcss-cli": "^6.0.0",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2",
         "rimraf": "^2.6.1",
         "stylelint": "^8.4.0",
         "stylelint-config-standard": "^18.0.0",
         "stylelint-scss": "^2.3.0",
-        "ts-jest": "^22.4.2",
-        "typescript": "~2.8.3"
+        "ts-jest": "^23.10.2",
+        "typescript": "~3.0.3"
     },
     "peerDependencies": {
         "react": ">=0.14.0 <= 16",

@@ -1,4 +1,4 @@
-import { Icon, Input, Menu } from "semantic-ui-react"
+import { Input, Menu } from "semantic-ui-react"
 import React, { Component } from "react"
 import { keyboardKey, parentComponents, META } from "src/app/utils"
 
@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom"
 import PropTypes from "prop-types"
 import _ from "lodash/fp"
 import { findDOMNode } from "react-dom"
-import pkg from "package.json"
+import reactpkg from "./../../../../../ui-kit-react/package.json"
 import { withRouter } from "react-router"
 
 const getRoute = (_meta) => {
@@ -144,7 +144,7 @@ class Sidebar extends Component {
 
     renderSearchItems = () => {
         const { selectedItemIndex, query } = this.state
-        if (!query) return
+        if (!query) return null
 
         let itemIndex = -1
         const startsWithMatches = []
@@ -193,7 +193,7 @@ class Sidebar extends Component {
                     <strong>
                         Porsche UI Kit React &nbsp;
                         <small>
-                            <em>{pkg.version}</em>
+                            <em>(v.{reactpkg.version})</em>
                         </small>
                     </strong>
                 </Menu.Item>
