@@ -1,6 +1,6 @@
 ---
 title: Flex Layout
-state: inprogress
+state: inreview
 ---
 
 # UI Kit Core flex layout manual
