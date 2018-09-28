@@ -29,6 +29,8 @@
 
         &__path {
             stroke: $grey-darker;
+            stroke-dasharray: 100, 200;
+            stroke-dashoffset: 0;
             animation: dash 2s ease-in-out infinite;
             stroke-linecap: round;
         }
