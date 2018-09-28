@@ -12,30 +12,30 @@ describe("Loader component", () => {
         // Arrange
         const props: LoaderProps = {}
         // Act
-        const link = createComponent(props)
+        const loader = createComponent(props)
         // Assert
-        expect(link.find(`.${prefix("loader")}`).length).toBe(1)
-        expect(link.find(`.${prefix("loader--small")}`).length).toBe(0)
-        expect(link.find(`.${prefix("loader--inverted")}`).length).toBe(0)
+        expect(loader.find(`.${prefix("loader")}`).length).toBe(1)
+        expect(loader.find(`.${prefix("loader--small")}`).length).toBe(0)
+        expect(loader.find(`.${prefix("loader--inverted")}`).length).toBe(0)
     })
 
     it("should be rendered as small loader", () => {
         // Arrange
         const props: LoaderProps = { size: "small" }
         // Act
-        const link = createComponent(props)
+        const loader = createComponent(props)
         // Assert
-        expect(link.find(`.${prefix("loader")}`).length).toBe(1)
-        expect(link.find(`.${prefix("loader--small")}`).length).toBe(1)
+        expect(loader.find(`.${prefix("loader")}`).length).toBe(1)
+        expect(loader.find(`.${prefix("loader--small")}`).length).toBe(1)
     })
 
     it("should be rendered as inverted loader", () => {
         // Arrange
         const props: LoaderProps = { inverted: true }
         // Act
-        const link = createComponent(props)
+        const loader = createComponent(props)
         // Assert
-        expect(link.find(`.${prefix("loader")}`).length).toBe(1)
-        expect(link.find(`.${prefix("loader--inverted")}`).length).toBe(1)
+        expect(loader.find(`.${prefix("loader")}`).length).toBe(1)
+        expect(loader.find(`.${prefix("loader--inverted")}`).length).toBe(1)
     })
 })
