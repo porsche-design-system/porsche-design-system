@@ -62,8 +62,8 @@
     "dependencies": {
         "@porsche/ui-kit-core": "0.7.4",
         "classnames": "^2.2.5",
-        "react-modal": "^3.5.1",
-        "react-responsive": "^3.0.0",
+        "react-modal": "^3.6.1",
+        "react-responsive": "^5.0.0",
         "tslib": "^1.9.3"
     },
     "devDependencies": {
