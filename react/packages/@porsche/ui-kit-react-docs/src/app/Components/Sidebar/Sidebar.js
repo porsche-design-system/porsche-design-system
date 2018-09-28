@@ -8,6 +8,7 @@ import PropTypes from "prop-types"
 import _ from "lodash/fp"
 import { findDOMNode } from "react-dom"
 import pkg from "package.json"
+import reactpkg from "./../../../../../ui-kit-react/package.json"
 import { withRouter } from "react-router"
 
 const getRoute = (_meta) => {
@@ -193,7 +194,7 @@ class Sidebar extends Component {
                     <strong>
                         Porsche UI Kit React &nbsp;
                         <small>
-                            <em>{pkg.version}</em>
+                            <em>(v.{reactpkg.version})</em>
                         </small>
                     </strong>
                 </Menu.Item>
