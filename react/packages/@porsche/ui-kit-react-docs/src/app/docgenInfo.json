@@ -340,7 +340,7 @@
         ],
         "name": "color",
         "required": false,
-        "type": "ColorType",
+        "type": "IconColorType",
         "tags": []
       },
       {
@@ -360,6 +360,15 @@
         "name": "size",
         "required": false,
         "type": "IconSize",
+        "tags": []
+      },
+      {
+        "description": [
+          "Adds a native HTML tooltip to the icon"
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string",
         "tags": []
       }
     ],
@@ -724,7 +733,7 @@
         ],
         "name": "color",
         "required": false,
-        "type": "ColorType",
+        "type": "TextColorType",
         "tags": []
       },
       {
@@ -1569,6 +1578,54 @@
       ]
     },
     "path": "src/components/molecules/Navigation/NavigationMobile.tsx"
+  },
+  "Pagination": {
+    "displayName": "Pagination",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The different tab items"
+        ],
+        "name": "items",
+        "required": true,
+        "type": "PaginationItem[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the theming of the pagination"
+        ],
+        "name": "theme",
+        "required": false,
+        "type": "\"inverted\"",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The Pagination component is a link list to cycle through pages/views"
+      ]
+    },
+    "path": "src/components/molecules/Pagination/Pagination.tsx"
   },
   "Select": {
     "displayName": "Select",
