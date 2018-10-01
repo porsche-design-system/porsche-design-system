@@ -5,20 +5,29 @@ import { getElementType, META, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface PaginationProps extends ClassNameProp, ComponentProp {
-    /** The different tab items */
-    items: PaginationItem[]
+    key: number
+    /** The total number of pages */
+    pageTotal: number
+    /** The max number of pages */
+    pageMax: number
+    /** The number of pages before/after ellipsis */
+    pageMargin?: number
+    /** The number of pages between ellipsis */
+    pageRange?: number
     /** Defines the theming of the pagination */
     theme?: "inverted" | undefined
+    /** Handle click events */
+    onClick?: (event: React.MouseEvent<HTMLElement>, item: this) => void
 }
 
-export interface PaginationItem {
-    /** The unique identifier */
-    key: any
-    /** Flag that controls which item is current. */
-    isCurrent?: boolean
-    /** Callback to handle the click event outside of the component */
-    onClick?: (event: React.MouseEvent<HTMLElement>, item: PaginationItem) => void
-}
+// export interface PaginationItem {
+//     /** The unique identifier */
+//     key: any
+//     /** Flag that controls which item is current. */
+//     isCurrent?: boolean
+//     /** Callback to handle the click event outside of the component */
+//     onClick?: (event: React.MouseEvent<HTMLElement>, item: PaginationItem) => void
+// }
 
 const _meta: ComponentMeta = {
     name: "Pagination",
@@ -26,37 +35,63 @@ const _meta: ComponentMeta = {
 }
 
 const defaultProps: Partial<PaginationProps> = {
-    theme: undefined
+    theme: undefined,
+    pageMax: 7,
+    pageMargin: 1,
+    pageRange: 3
 }
 
 const _Pagination: React.StatelessComponent<PaginationProps> & Partial<MetaCategorizable> = (props) => {
-    const { as, className, items, theme, ...rest } = props
+    const { as, className, pageTotal, pageMax, pageMargin, pageRange, theme, onClick, ...rest } = props
 
     const ElementType = getElementType(as, "nav")
     const classesPagination = cx(prefix("pagination"), { [prefix("pagination--theme-inverted")]: theme }, className)
 
+    const goToPrev = (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault()
+    }
+
+    const goToNext = (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault()
+    }
+
+    const goToCurrent = (event: React.MouseEvent<HTMLElement>, page: number) => {
+        event.preventDefault()
+        return page
+    }
+
+    const createList = () => {
+        let index: number
+        const itemsNumber = pageTotal >= pageMax ? pageMax : pageTotal
+        const items = []
+        const classesPaginationGoto = cx(prefix("pagination__goto"))
+        for (index = 1; index <= itemsNumber; index++) {
+            items.push(
+                <li key={index} className={cx(prefix("pagination__item"))}>
+                    <a className={classesPaginationGoto} href="#" onClick={(event) => goToCurrent(event, index)}>
+                        {index}
+                    </a>
+                </li>
+            )
+        }
+        return items
+    }
+
     return (
         <ElementType className={classesPagination} {...rest}>
-            <span className={cx(prefix("pagination__prev"))} />
-            <ul className={cx(prefix("pagination__items"))}>
-                {items.map((item) => {
-                    const classesPaginationGoto = cx(prefix("pagination__goto"), {
-                        [prefix("pagination__goto--current")]: item.isCurrent
-                    })
-                    return (
-                        <li key={item.key} className={cx(prefix("pagination__item"))}>
-                            <a
-                                className={classesPaginationGoto}
-                                onClick={(event) => item.onClick && item.onClick(event, item)}
-                                href="#"
-                            >
-                                {item.key}
-                            </a>
-                        </li>
-                    )
-                })}
-            </ul>
-            <a className={cx(prefix("pagination__next"))} href="#" aria-label="Next" />
+            <a
+                className={cx(prefix("pagination__prev"))}
+                href="#"
+                onClick={(event) => goToPrev(event)}
+                aria-label="Previous"
+            />
+            <ul className={cx(prefix("pagination__items"))}>{createList()}</ul>
+            <a
+                className={cx(prefix("pagination__next"))}
+                href="#"
+                onClick={(event) => goToNext(event)}
+                aria-label="Next"
+            />
         </ElementType>
     )
 }
