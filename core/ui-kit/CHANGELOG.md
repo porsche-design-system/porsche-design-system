@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Improvements
+* Updated all pattern status
 
 ## [0.13.0] - 2018-09-24
 ### New feature
