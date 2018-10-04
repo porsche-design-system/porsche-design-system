@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DebugElement } from '@angular/core';
 import { PuiIconComponent, PuiIconDirective } from '.';
-import { PuiIcon } from './iconMap';
+import { PuiIcon } from './index';
 
 describe('Text Size 1 Component', () => {
   let component: PuiIconComponent;
