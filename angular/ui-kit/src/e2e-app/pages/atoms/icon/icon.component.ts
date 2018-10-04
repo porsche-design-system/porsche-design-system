@@ -6,5 +6,5 @@ import { PuiIcon } from '../../../../lib/atoms/icon';
   templateUrl: './icon.component.html'
 })
 export class PuiE2eAtomsIconComponent {
- carNextIcon: PuiIcon = PuiIcon.CAR_NEXT;
+  carNextIcon = PuiIcon.CAR_NEXT;
 }
