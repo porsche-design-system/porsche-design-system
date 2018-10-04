@@ -40,7 +40,7 @@ To remove the possibility to link the development package again, run the followi
 1. `npm unlink`
 
 ## Release Management
-1. After merge requirements of a pull request are fulfilled, it can be merged to master branch
+1. After merge requirements of a pull request are fulfilled, it can be merged to master branch (don't forget to delete the branch afterwards)
 2. Goto UI Kit Core project in terminal and pull latest commits `git pull`
 3. Either execute `npm version patch` for a patch release or `npm version minor` for a minor release
 4. Open `CHANGELOG.md` and update release notes with proper date and version
