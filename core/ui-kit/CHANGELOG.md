@@ -6,15 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### Breaking changes
-* Refactoring of flex component.
-  * Renamed `grid-flex` component to `flex`
-  * Added missing flex properties
+### Refactoring of flex component.
+* Renamed `grid-flex` component to `flex`
+* Added missing flex properties
+#### Breaking changes
   * Migration path:
     * Changed location of files (and corresponding import paths):
     
-      `04-grid/grid-flex.hbs` => `07-layout/flex.hbs`  
-      `04-grid/grid-flex.md` => `07-layout/flex.md`  
+      `01-atoms/04-grid/grid-flex.hbs` => `04-layout/flex/flex-grid.hbs` + `04-layout/flex/flex-layout.hbs`  
+      `01-atoms/04-grid/grid-flex.md` => `04-layout/flex/flex-grid.md` + `04-layout/flex/flex-layout.md`  
       `base/grid/flex.setup.scss` => `base/layout/flex.setup.scss`  
       `base/grid/flex.mixin.scss` => `base/layout/flex.mixin.scss`  
       `base/grid/flex.scss` => `base/layout/flex.scss`  
