@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * Added new `e-route` icon
 
+## [0.13.1] - 2018-10-04
+### Improvements
+* Updated all pattern status
+
 ## [0.13.0] - 2018-09-24
 ### New feature
 * Added `pagination` pattern
