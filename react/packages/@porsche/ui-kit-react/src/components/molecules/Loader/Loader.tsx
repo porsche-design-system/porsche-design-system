@@ -22,7 +22,7 @@ const _meta: ComponentMeta = {
     type: META.TYPES.MOLECULE
 }
 
-const Loader: React.StatelessComponent<LoaderProps> & Partial<MetaCategorizable> = (props) => {
+const _Loader: React.StatelessComponent<LoaderProps> & Partial<MetaCategorizable> = (props) => {
     const { as, className, children, inverted, size, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -46,9 +46,10 @@ const Loader: React.StatelessComponent<LoaderProps> & Partial<MetaCategorizable>
     )
 }
 
-Loader._meta = _meta
+_Loader._meta = _meta
 
 /**
  * A loader component to show loading states inside single components or across entire modules / pages.
+ * @see Button
  */
-export { Loader }
+export const Loader = _Loader as React.StatelessComponent<LoaderProps>

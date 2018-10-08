@@ -3,7 +3,6 @@ import cx from "classnames"
 
 import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
 import { getElementType, META, prefix } from "../../../lib"
-import { Icon } from "../../.."
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface LinkProps extends ClassNameProp, ComponentProp {
@@ -41,7 +40,7 @@ const _meta: ComponentMeta = {
     type: META.TYPES.MOLECULE
 }
 
-const Link: React.StatelessComponent<LinkProps> & Partial<MetaCategorizable> = (props) => {
+const _Link: React.StatelessComponent<LinkProps> & Partial<MetaCategorizable> = (props) => {
     const { as, className, children, withIcon, onClick, ...rest } = props
 
     const ElementType = getElementType(as, "a")
@@ -66,10 +65,10 @@ const Link: React.StatelessComponent<LinkProps> & Partial<MetaCategorizable> = (
     )
 }
 
-Link._meta = _meta
+_Link._meta = _meta
 
 /**
  * The default Porsche link.
  * @see Icon
  */
-export { Link }
+export const Link = _Link as React.StatelessComponent<LinkProps>

@@ -1,0 +1,24 @@
+@import 'icon.mixin.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}icon {
+@include icon-base;
+
+&--delivery-adress {
+  &::before {
+    @include icon-delivery-adress;
+    }
+  }
+
+&--arrow-back {
+  &::before {
+    @include icon-arrow-back;
+    }
+  }
+
+&--360-degree {
+  &::before {
+    @include icon-360-degree-before;
+    }
+  }
+}

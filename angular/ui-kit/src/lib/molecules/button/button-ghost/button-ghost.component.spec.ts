@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PuiButtonGhostComponent } from './button-ghost.component';
 import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { PuiIcon } from '../../../atoms';
+import { PuiIconDirective, PuiIcon } from '../../../atoms/icon/';
 
 describe('PuiButtonGhostComponent', () => {
   let component: PuiButtonGhostComponent;
@@ -24,7 +24,7 @@ describe('PuiButtonGhostComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PuiButtonGhostComponent ],
+      declarations: [ PuiButtonGhostComponent, PuiIconDirective ],
       schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
