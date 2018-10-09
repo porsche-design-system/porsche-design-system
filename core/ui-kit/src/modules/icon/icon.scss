@@ -4,6 +4,12 @@
 .#{$global-class-prefix}icon {
   @include icon-base;
 
+  &--e-route {
+    &::before {
+      @include icon-e-route;
+    }
+  }
+
   &--delivery-adress {
     &::before {
       @include icon-delivery-adress;

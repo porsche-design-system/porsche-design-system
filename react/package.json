@@ -13,13 +13,13 @@
         "*.{ts,tsx,js}": ["prettier --write", "git add"]
     },
     "devDependencies": {
-        "tslint": "^5.6.0",
-        "tslint-config-prettier": "^1.12.0",
-        "tslint-react": "^3.4.0",
-        "typescript": "~2.8.3",
-        "husky": "^0.14.3",
-        "lint-staged": "^7.0.5",
-        "prettier": "1.12.1"
+        "tslint": "^5.1.0",
+        "tslint-config-prettier": "^1.15.0",
+        "tslint-react": "^3.6.0",
+        "typescript": "~3.0.3",
+        "husky": "^1.0.1",
+        "lint-staged": "^7.3.0",
+        "prettier": "^1.14.3"
     },
     "dependencies": {},
     "workspaces": ["packages/@porsche/*", "packages/*"]

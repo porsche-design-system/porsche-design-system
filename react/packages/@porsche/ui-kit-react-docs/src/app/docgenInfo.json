@@ -340,7 +340,7 @@
         ],
         "name": "color",
         "required": false,
-        "type": "ColorType",
+        "type": "IconColorType",
         "tags": []
       },
       {
@@ -360,6 +360,15 @@
         "name": "size",
         "required": false,
         "type": "IconSize",
+        "tags": []
+      },
+      {
+        "description": [
+          "Adds a native HTML tooltip to the icon"
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string",
         "tags": []
       }
     ],
@@ -724,7 +733,7 @@
         ],
         "name": "color",
         "required": false,
-        "type": "ColorType",
+        "type": "TextColorType",
         "tags": []
       },
       {
@@ -1362,6 +1371,163 @@
       ]
     },
     "path": "src/components/molecules/Input/Input.tsx"
+  },
+  "Link": {
+    "displayName": "Link",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The optional href of the link."
+        ],
+        "name": "href",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called after a user's click."
+        ],
+        "name": "onClick",
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "React's original event.",
+            "type": null,
+            "name": "event"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "description": [
+          "The target attribute specifies where to open the linked document."
+        ],
+        "name": "target",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"_blank\"",
+          "\"_self\"",
+          "\"_parent\"",
+          "\"_top\""
+        ]
+      },
+      {
+        "description": [
+          "Defines the title of a link, which appears to the user as a tooltip."
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "shows the button when 'true'."
+        ],
+        "name": "withIcon",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Icon"
+        }
+      ],
+      "description": [
+        "The default Porsche link."
+      ]
+    },
+    "path": "src/components/molecules/Link/Link.tsx"
+  },
+  "Loader": {
+    "displayName": "Loader",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Inverts the color for use on darker backgrounds."
+        ],
+        "name": "inverted",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "A loader can have different sizes"
+        ],
+        "name": "size",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"default\"",
+          "\"small\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Button"
+        }
+      ],
+      "description": [
+        "A loader component to show loading states inside single components or across entire modules / pages."
+      ]
+    },
+    "path": "src/components/molecules/Loader/Loader.tsx"
   },
   "Navigation": {
     "displayName": "Navigation",

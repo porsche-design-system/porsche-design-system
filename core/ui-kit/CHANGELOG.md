@@ -87,6 +87,13 @@ Every usage of flex component which was used to layout with grid sizings must no
       
       
 
+## [0.13.2] - 2018-10-08
+* Added new `e-route` icon
+
+## [0.13.1] - 2018-10-04
+### Improvements
+* Updated all pattern status
+
 ## [0.13.0] - 2018-09-24
 ### New feature
 * Added `pagination` pattern
