@@ -6,30 +6,52 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Exclusion of grid as a standalone component (from flex).
+Grid behaviour is now excluded from flex component and is developed as a new grid component.  
+That means that all grid related properties from flex component are now maintained under grid.  
+Every usage of flex component which was used to layout with grid sizings must now use grid component classes.  
+
+#### Breaking changes
+* Migration path:
+  * Changed location of files (and corresponding import paths):
+  
+    `01-atoms/04-grid/grid-flex.hbs` => `04-layout/grid/grid.hbs`  
+    `01-atoms/04-grid/grid-flex.md` => `04-layout/grid/grid.md`  
+    `base/grid/flex.setup.scss` => `base/grid/grid.setup.scss`  
+    `base/grid/flex.mixin.scss` => `base/grid/grid.mixin.scss`  
+    `base/grid/flex.scss` => `base/grid/grid.scss`  
+  
+  * Renamings of class names of flex parent:
+    
+    `flex` => `grid`
+    `flex--direction-row` => `grid--direction-row`  
+    `flex--direction-row-reverse` => `grid--direction-row-reverse`  
+    `flex--direction-column` => `grid--direction-column`  
+    `flex--direction-column-reverse` => `grid--direction-column-reverse`  
+    
+  * Renamings of class names of flex children:
+      
+    `flex__child` => `grid__child`  
+    `flex__child--gap-left` => deleted  
+    `flex__child--gap-right` => deleted  
+    `flex__child--gap-left-x` => `grid__child--gap-x`  
+    `flex__child--gap-right-x` => `grid__child--gap-x`  
+    `flex__child--x` => `grid__child--x`  
+  
 ### Refactoring of flex component.
-* Renamed `grid-flex` component to `flex`
 * Added missing flex properties
+
 #### Breaking changes
   * Migration path:
     * Changed location of files (and corresponding import paths):
     
-      `01-atoms/04-grid/grid-flex.hbs` => `04-layout/flex/flex-grid.hbs` + `04-layout/flex/flex-layout.hbs`  
-      `01-atoms/04-grid/grid-flex.md` => `04-layout/flex/flex-grid.md` + `04-layout/flex/flex-layout.md`  
+      `01-atoms/04-grid/grid-flex.hbs` => `04-layout/flex/flex.hbs`  
+      `01-atoms/04-grid/grid-flex.md` => `04-layout/flex/flex.md`  
       `base/grid/flex.setup.scss` => `base/layout/flex.setup.scss`  
       `base/grid/flex.mixin.scss` => `base/layout/flex.mixin.scss`  
       `base/grid/flex.scss` => `base/layout/flex.scss`  
       `base/grid/index.scss` => `base/layout/index.scss`  
       
-    * Added classname `flex--gap-shim-grid` to every flex container which is used as a grid wrapper
-    * Deleted classname `flex--direction-row` from flex container (row is default behaviour)
-    * Renamings of class names of flex children:
-        
-      `flex__child--gap` => `flex__child--gap-grid`  
-      `flex__child--gap-left` => `flex__child--gap-grid`  
-      `flex__child--gap-right` => `flex__child--gap-grid`  
-      `flex__child--gap-left-x` => `flex__child--gap-grid-x`  
-      `flex__child--gap-right-x` => `flex__child--gap-grid-x`  
-        
     * Deleted unused/deprecated class names which can be set by more generic classes:
         
       `flex--center-vertical` => `flex--direction-column flex--cross-axis-center`  
