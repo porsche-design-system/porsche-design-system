@@ -1,73 +1,12 @@
 ---
-title: Flex Layout
+title: Flex
 state: inreview
 ---
 
 # UI Kit Core flex layout manual
 
-
-## UI / UX guidelines
-
-### Recommendation of use
-The grid is a fixed component in the digital Porsche layout. It provides a visual system consisting of a defined number of columns that allow a homogeneous, balanced content placement with standardised horizontal spacings defined by the grid gutter.  
-
-The flexible grid is the central tool to provide a responsive layout by defining a specific number of grid columns for modules or elements for different viewport sizes. Therefore, the grid is a mandatory part of every digital layout process and should always be kept in mind when designing Porsche web experiences.
-
-### Grid layout and behaviour
-The number of grid columns differs for the different viewports. Generally, it is based on 12 columns that is dividable by 2, 3, 4 and 6 and therefore allows a high layout flexibility:
-  * ≤ 759 px: 6 columns (valid for UI design only, technically 12 columns)
-  * ≥ 760 px: 12 columns
-
-Grid gutter:
-  * ≤ 759 px: 16 px
-  *   760-999 px: 24 px
-  * ≥ 1000 px: 36 px
-  
-Margin column:
-  * ≤ 1759 px: 7%
-  * ≥ 1760 px: 10%
-  
-### Main Breakpoints & optimized layout sizes
-* The main breakpoints for all Porsche web experiences are: 760 px / 1000 px / 1300 px and 1760 px. They are based on statistical data on browser size usage and binding, especially for general elements like e.g. header or footer.
-* Depending on the specific component or module, not each and every breakpoint is necessarily to be used. In case more breakpoints are needed for a specific component, you are free to add more. Please make sure that all additional breakpoints must have a minimum difference of 100 px to the existing main breakpoints.
-* Based on the main breakpoints, all Porsche web layouts are to be optimized for the following viewport sizes: 320, 375, 768, 1024, 1366 and 1920 px width.
-
-### Layouting
-* Content elements should be placed within the grid, always starting in a column.
-* It is possible to place elements outside the grid, e.g. browser-width pictures. This should be a well thought out exception.
-
 ## Technical guidelines
-The Porsche UI Kit flex layout system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas. But it can also be used to layout complete components which are not using grid specific values. Breakpoint specific behaviour (width, offset, alignments, etc.) can easily be set by adding breakpoint specific classnames. Also decent nestings are supported.
-
-### Basic Grid
-For basic grid implementation, it is recommended to use this pattern:
-
-```
-<div class="flex flex--gap-shim-grid">
-	<div class="flex__child flex__child--gap-grid flex__child--6">
-    Column 1 with a width of 6 columns out of 12
-  </div>
-  <div class="flex__child flex__child--gap-grid flex__child--6">
-    Column 2 with a width of 6 columns out of 12
-  </div>
-</div>
-```
-
-The classes `flex` and `flex--gap-shim-grid` on the parent and `flex__child` and `flex__child--gap-grid` on the children are mandatory. With `flex__child--(1-12)` it is possible to define column width.
-
-
-### Offset
-In some cases it can be neccessary to indent columns. The grid gives basic indentions based on grid sizings:
-
-```
-<div class="flex flex--gap-shim-grid">
-  <div class="flex__child flex__child--gap-grid flex__child--10 flex__child--offset-1">
-    1 column with a width of 10 and an offset left of 1
-  </div>
-</div>
-```
-The child column has an offset of 1 column on the left and due to its length of 10 columns an offset of 1 column to the right.
-
+The Porsche UI Kit flex layout system is based on native css flex behaviours and can be controlled by class names.
 
 ### Direction
 In some cases it might be neccessary to define or change direction of the columns. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
