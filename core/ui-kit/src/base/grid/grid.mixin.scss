@@ -1,0 +1,60 @@
+@import 'grid.setup.scss';
+/**
+ * properties for grid parent items
+ */
+@mixin grid-gap {
+  margin: {
+    left: -$flex-child-spacing-horizontal;
+    right: -$flex-child-spacing-horizontal;
+  }
+
+  @include breakpoint('s') {
+    margin: {
+      left: -$flex-child-spacing-horizontal-s;
+      right: -$flex-child-spacing-horizontal-s;
+    }
+  }
+
+  @include breakpoint('l') {
+    margin: {
+      left: -$flex-child-spacing-horizontal-l;
+      right: -$flex-child-spacing-horizontal-l;
+    }
+  }
+}
+
+@mixin grid-gap-zero {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+/**
+ * properties for grid child items
+ */
+@mixin grid-child-gap {
+  padding: {
+    left: $flex-child-spacing-horizontal;
+    right: $flex-child-spacing-horizontal;
+  }
+
+  @include breakpoint('s') {
+    padding: {
+      left: $flex-child-spacing-horizontal-s;
+      right: $flex-child-spacing-horizontal-s;
+    }
+  }
+
+  @include breakpoint('l') {
+    padding: {
+      left: $flex-child-spacing-horizontal-l;
+      right: $flex-child-spacing-horizontal-l;
+    }
+  }
+}
+
+@mixin grid-child-gap-zero {
+  padding-left: 0;
+  padding-right: 0;
+}
+

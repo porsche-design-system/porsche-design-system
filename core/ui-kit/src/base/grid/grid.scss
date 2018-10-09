@@ -1,0 +1,215 @@
+@import 'grid.mixin.scss';
+@import 'grid.setup.scss';
+@import '../../mixins/breakpoint.scss';
+
+.#{$global-class-prefix}grid {
+  @include grid-gap;
+  display: flex;
+  flex-wrap: wrap;
+
+  /**
+   * properties for grid parent
+   */
+  &--gap {
+    @include grid-gap;
+    &-zero { @include grid-gap-zero; }
+
+    @include breakpoint('xs') {
+      &-xs { @include grid-gap; }
+      &-zero-xs { @include grid-gap-zero; }
+    }
+
+    @include breakpoint('s')  {
+      &-s  { @include grid-gap; }
+      &-zero-s { @include grid-gap-zero; }
+    }
+
+    @include breakpoint('m')  {
+      &-m  { @include grid-gap; }
+      &-zero-m { @include grid-gap-zero; }
+    }
+
+    @include breakpoint('l')  {
+      &-l  { @include grid-gap; }
+      &-zero-l { @include grid-gap-zero; }
+    }
+
+    @include breakpoint('xl') {
+      &-xl { @include grid-gap; }
+      &-zero-xl { @include grid-gap-zero; }
+    }
+  }
+
+  &--direction {
+    &-column          { flex-direction: column; }
+    &-column-reverse  { flex-direction: column-reverse; }
+    &-row             { flex-direction: row; }
+    &-row-reverse     { flex-direction: row-reverse; }
+
+    @include breakpoint('xs') {
+      &-column-xs         { flex-direction: column; }
+      &-column-reverse-xs { flex-direction: column-reverse; }
+      &-row-xs            { flex-direction: row; }
+      &-row-reverse-xs    { flex-direction: row-reverse; }
+    }
+
+    @include breakpoint('s') {
+      &-column-s          { flex-direction: column; }
+      &-column-reverse-s  { flex-direction: column-reverse; }
+      &-row-s             { flex-direction: row; }
+      &-row-reverse-s     { flex-direction: row-reverse; }
+    }
+
+    @include breakpoint('m') {
+      &-column-m          { flex-direction: column; }
+      &-column-reverse-m  { flex-direction: column-reverse; }
+      &-row-m             { flex-direction: row; }
+      &-row-reverse-m     { flex-direction: row-reverse; }
+    }
+
+    @include breakpoint('l') {
+      &-column-l          { flex-direction: column; }
+      &-column-reverse-l  { flex-direction: column-reverse; }
+      &-row-l             { flex-direction: row; }
+      &-row-reverse-l     { flex-direction: row-reverse; }
+    }
+
+    @include breakpoint('xl') {
+      &-column-xl          { flex-direction: column; }
+      &-column-reverse-xl  { flex-direction: column-reverse; }
+      &-row-xl             { flex-direction: row; }
+      &-row-reverse-xl     { flex-direction: row-reverse; }
+    }
+  }
+
+  /**
+   * properties for grid children items
+   */
+  &__child {
+    @include grid-child-gap;
+
+    @for $i from 1 through 12 {
+      &--#{$i} {
+        width: #{nth($grid-child-width, $i)};
+      }
+
+      &--offset-#{$i} {
+        margin-left: #{nth($grid-child-width, $i)};
+      }
+    }
+
+    &--offset-zero {
+      margin-left: 0;
+    }
+
+    @include breakpoint('xs') {
+      @for $i from 1 through 12 {
+        &--#{$i}-xs {
+          width: #{nth($grid-child-width, $i)};
+        }
+
+        &--offset-#{$i}-xs {
+          margin-left: #{nth($grid-child-width, $i)};
+        }
+      }
+
+      &--offset-zero-xs {
+        margin-left: 0;
+      }
+    }
+
+    @include breakpoint('s') {
+      @for $i from 1 through 12 {
+        &--#{$i}-s {
+          width: #{nth($grid-child-width, $i)};
+        }
+
+        &--offset-#{$i}-s {
+          margin-left: #{nth($grid-child-width, $i)};
+        }
+      }
+
+      &--offset-zero-s {
+        margin-left: 0;
+      }
+    }
+
+    @include breakpoint('m') {
+      @for $i from 1 through 12 {
+        &--#{$i}-m {
+          width: #{nth($grid-child-width, $i)};
+        }
+
+        &--offset-#{$i}-m {
+          margin-left: #{nth($grid-child-width, $i)};
+        }
+      }
+
+      &--offset-zero-m {
+        margin-left: 0;
+      }
+    }
+
+    @include breakpoint('l') {
+      @for $i from 1 through 12 {
+        &--#{$i}-l {
+          width: #{nth($grid-child-width, $i)};
+        }
+
+        &--offset-#{$i}-l {
+          margin-left: #{nth($grid-child-width, $i)};
+        }
+      }
+
+      &--offset-zero-l {
+        margin-left: 0;
+      }
+    }
+
+    @include breakpoint('xl') {
+      @for $i from 1 through 12 {
+        &--#{$i}-xl {
+          width: #{nth($grid-child-width, $i)};
+        }
+
+        &--offset-#{$i}-xl {
+          margin-left: #{nth($grid-child-width, $i)};
+        }
+      }
+
+      &--offset-zero-xl {
+        margin-left: 0;
+      }
+    }
+
+    &--gap {
+      @include grid-child-gap;
+      &-zero { @include grid-child-gap-zero; }
+
+      @include breakpoint('xs') {
+        &-xs { @include grid-child-gap; }
+        &-zero-xs { @include grid-child-gap-zero; }
+      }
+
+      @include breakpoint('s') {
+        &-s { @include grid-child-gap; }
+        &-zero-s { @include grid-child-gap-zero; }
+      }
+
+      @include breakpoint('m') {
+        &-m { @include grid-child-gap; }
+        &-zero-m { @include grid-child-gap-zero; }
+      }
+
+      @include breakpoint('l') {
+        &-l { @include grid-child-gap; }
+        &-zero-l { @include grid-child-gap-zero; }
+      }
+
+      @include breakpoint('xl') {
+        &-xl { @include grid-child-gap; }
+        &-zero-xl { @include grid-child-gap-zero; }
+      }
+    }
+  }
+}
