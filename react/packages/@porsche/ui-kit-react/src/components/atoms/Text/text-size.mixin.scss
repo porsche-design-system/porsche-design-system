@@ -1,0 +1,98 @@
+@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/text-size/text-size.mixin";
+@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/font/font.mixin.scss";
+
+@mixin -text-size-1-bold {
+    @include -font-primary;
+    font-weight: $font-weight-bold;
+    font-size: $text-size-1-font-size;
+    line-height: $text-size-1-line-height;
+
+    @include breakpoint("m", "xl") {
+        font-size: $text-size-1-font-size-m;
+        line-height: $text-size-1-line-height-m;
+    }
+
+    @include breakpoint("xl") {
+        font-size: $text-size-1-font-size-xl;
+        line-height: $text-size-1-line-height-xl;
+    }
+}
+
+@mixin -text-size-2-bold {
+    @include -font-primary;
+    font-weight: $font-weight-bold;
+    font-size: $text-size-2-font-size;
+    line-height: $text-size-2-line-height;
+
+    @include breakpoint("m", "xl") {
+        font-size: $text-size-2-font-size-m;
+        line-height: $text-size-2-line-height-m;
+    }
+
+    @include breakpoint("xl") {
+        font-size: $text-size-2-font-size-xl;
+        line-height: $text-size-2-line-height-xl;
+    }
+}
+
+@mixin -text-size-3-bold {
+    @include -font-primary;
+    font-weight: $font-weight-bold;
+    font-size: $text-size-3-font-size;
+    line-height: $text-size-3-line-height;
+
+    @include breakpoint("m", "xl") {
+        font-size: $text-size-3-font-size-m;
+        line-height: $text-size-3-line-height-m;
+    }
+
+    @include breakpoint("xl") {
+        font-size: $text-size-3-font-size-xl;
+        line-height: $text-size-3-line-height-xl;
+    }
+}
+
+@mixin -text-size-4-bold {
+    @include -font-primary;
+    font-weight: $font-weight-bold;
+    font-size: $text-size-4-font-size;
+    line-height: $text-size-4-line-height;
+
+    @include breakpoint("m", "xl") {
+        font-size: $text-size-4-font-size-m;
+        line-height: $text-size-4-line-height-m;
+    }
+
+    @include breakpoint("xl") {
+        font-size: $text-size-4-font-size-xl;
+        line-height: $text-size-4-line-height-xl;
+    }
+}
+
+@mixin -text-size-5-bold {
+    @include -font-primary;
+    font-weight: $font-weight-bold;
+    font-size: $text-size-5-font-size;
+    line-height: $text-size-5-line-height;
+}
+
+@mixin -text-size-copy-bold {
+    @include -font-primary;
+    font-weight: $font-weight-bold;
+    font-size: $text-size-copy-font-size;
+    line-height: $text-size-copy-line-height;
+}
+
+@mixin -text-size-small-bold {
+    @include -font-primary;
+    font-weight: $font-weight-bold;
+    font-size: $text-size-small-font-size;
+    line-height: $text-size-small-line-height;
+}
+
+@mixin -text-size-micro-bold {
+    @include -font-primary;
+    font-weight: $font-weight-bold;
+    font-size: $text-size-micro-font-size;
+    line-height: $text-size-micro-line-height;
+}
