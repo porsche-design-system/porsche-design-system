@@ -201,50 +201,12 @@
     }
   }
 
-  &--gap-shim {
-    &-grid {
-      @include flex-gap-shim-grid;
-    }
-
-    &-zero {
-      @include flex-gap-shim-zero;
-    }
-
-    @include breakpoint('xs') {
-      &-grid-xs { @include flex-gap-shim-grid; }
-      &-zero-xs   { @include flex-gap-shim-zero; }
-    }
-
-    @include breakpoint('s')  {
-      &-grid-s  { @include flex-gap-shim-grid; }
-      &-zero-s    { @include flex-gap-shim-zero; }
-    }
-
-    @include breakpoint('m')  {
-      &-grid-m  { @include flex-gap-shim-grid; }
-      &-zero-m    { @include flex-gap-shim-zero; }
-    }
-
-    @include breakpoint('l')  {
-      &-grid-l  { @include flex-gap-shim-grid; }
-      &-zero-l    { @include flex-gap-shim-zero; }
-    }
-
-    @include breakpoint('xl') {
-      &-grid-xl { @include flex-gap-shim-grid; }
-      &-zero-xl   { @include flex-gap-shim-zero; }
-    }
-  }
-
 
   /**
    * properties for flex children items
    */
 
   &__child {
-    @include flex-child-grow(1);
-    @include flex-child-shrink(1);
-    @include flex-child-basis(0);
 
     &--grow {
       &-0 { @include flex-child-grow(0); }
@@ -263,31 +225,6 @@
       width: auto;
     }
 
-    &--1    { @include flex-none; width: $flex-child-1-width; }
-    &--2    { @include flex-none; width: $flex-child-2-width; }
-    &--3    { @include flex-none; width: $flex-child-3-width; }
-    &--4    { @include flex-none; width: $flex-child-4-width; }
-    &--5    { @include flex-none; width: $flex-child-5-width; }
-    &--6    { @include flex-none; width: $flex-child-6-width; }
-    &--7    { @include flex-none; width: $flex-child-7-width; }
-    &--8    { @include flex-none; width: $flex-child-8-width; }
-    &--9    { @include flex-none; width: $flex-child-9-width; }
-    &--10   { @include flex-none; width: $flex-child-10-width; }
-    &--11   { @include flex-none; width: $flex-child-11-width; }
-    &--12   { @include flex-none; width: $flex-child-12-width; }
-
-    &--offset-1   { margin-left: $flex-child-1-width; }
-    &--offset-2   { margin-left: $flex-child-2-width; }
-    &--offset-3   { margin-left: $flex-child-3-width; }
-    &--offset-4   { margin-left: $flex-child-4-width; }
-    &--offset-5   { margin-left: $flex-child-5-width; }
-    &--offset-6   { margin-left: $flex-child-6-width; }
-    &--offset-7   { margin-left: $flex-child-7-width; }
-    &--offset-8   { margin-left: $flex-child-8-width; }
-    &--offset-9   { margin-left: $flex-child-9-width; }
-    &--offset-10  { margin-left: $flex-child-10-width; }
-    &--offset-11  { margin-left: $flex-child-11-width; }
-
     @include breakpoint('xs') {
       &--grow {
         &-0-xs { @include flex-child-grow(0); }
@@ -305,31 +242,6 @@
         @include flex-child-basis(auto);
         width: auto;
       }
-
-      &--1-xs     { @include flex-none; width: $flex-child-1-width; }
-      &--2-xs     { @include flex-none; width: $flex-child-2-width; }
-      &--3-xs     { @include flex-none; width: $flex-child-3-width; }
-      &--4-xs     { @include flex-none; width: $flex-child-4-width; }
-      &--5-xs     { @include flex-none; width: $flex-child-5-width; }
-      &--6-xs     { @include flex-none; width: $flex-child-6-width; }
-      &--7-xs     { @include flex-none; width: $flex-child-7-width; }
-      &--8-xs     { @include flex-none; width: $flex-child-8-width; }
-      &--9-xs     { @include flex-none; width: $flex-child-9-width; }
-      &--10-xs    { @include flex-none; width: $flex-child-10-width; }
-      &--11-xs    { @include flex-none; width: $flex-child-11-width; }
-      &--12-xs    { @include flex-none; width: $flex-child-12-width; }
-
-      &--offset-1-xs   { margin-left: $flex-child-1-width; }
-      &--offset-2-xs   { margin-left: $flex-child-2-width; }
-      &--offset-3-xs   { margin-left: $flex-child-3-width; }
-      &--offset-4-xs   { margin-left: $flex-child-4-width; }
-      &--offset-5-xs   { margin-left: $flex-child-5-width; }
-      &--offset-6-xs   { margin-left: $flex-child-6-width; }
-      &--offset-7-xs   { margin-left: $flex-child-7-width; }
-      &--offset-8-xs   { margin-left: $flex-child-8-width; }
-      &--offset-9-xs   { margin-left: $flex-child-9-width; }
-      &--offset-10-xs  { margin-left: $flex-child-10-width; }
-      &--offset-11-xs  { margin-left: $flex-child-11-width; }
     }
 
     @include breakpoint('s') {
@@ -349,31 +261,6 @@
         @include flex-child-basis(auto);
         width: auto;
       }
-
-      &--1-s     { @include flex-none; width: $flex-child-1-width; }
-      &--2-s     { @include flex-none; width: $flex-child-2-width; }
-      &--3-s     { @include flex-none; width: $flex-child-3-width; }
-      &--4-s     { @include flex-none; width: $flex-child-4-width; }
-      &--5-s     { @include flex-none; width: $flex-child-5-width; }
-      &--6-s     { @include flex-none; width: $flex-child-6-width; }
-      &--7-s     { @include flex-none; width: $flex-child-7-width; }
-      &--8-s     { @include flex-none; width: $flex-child-8-width; }
-      &--9-s     { @include flex-none; width: $flex-child-9-width; }
-      &--10-s    { @include flex-none; width: $flex-child-10-width; }
-      &--11-s    { @include flex-none; width: $flex-child-11-width; }
-      &--12-s    { @include flex-none; width: $flex-child-12-width; }
-
-      &--offset-1-s   { margin-left: $flex-child-1-width; }
-      &--offset-2-s   { margin-left: $flex-child-2-width; }
-      &--offset-3-s   { margin-left: $flex-child-3-width; }
-      &--offset-4-s   { margin-left: $flex-child-4-width; }
-      &--offset-5-s   { margin-left: $flex-child-5-width; }
-      &--offset-6-s   { margin-left: $flex-child-6-width; }
-      &--offset-7-s   { margin-left: $flex-child-7-width; }
-      &--offset-8-s   { margin-left: $flex-child-8-width; }
-      &--offset-9-s   { margin-left: $flex-child-9-width; }
-      &--offset-10-s  { margin-left: $flex-child-10-width; }
-      &--offset-11-s  { margin-left: $flex-child-11-width; }
     }
 
     @include breakpoint('m') {
@@ -393,31 +280,6 @@
         @include flex-child-basis(auto);
         width: auto;
       }
-
-      &--1-m    { @include flex-none; width: $flex-child-1-width; }
-      &--2-m    { @include flex-none; width: $flex-child-2-width; }
-      &--3-m    { @include flex-none; width: $flex-child-3-width; }
-      &--4-m    { @include flex-none; width: $flex-child-4-width; }
-      &--5-m    { @include flex-none; width: $flex-child-5-width; }
-      &--6-m    { @include flex-none; width: $flex-child-6-width; }
-      &--7-m    { @include flex-none; width: $flex-child-7-width; }
-      &--8-m    { @include flex-none; width: $flex-child-8-width; }
-      &--9-m    { @include flex-none; width: $flex-child-9-width; }
-      &--10-m   { @include flex-none; width: $flex-child-10-width; }
-      &--11-m   { @include flex-none; width: $flex-child-11-width; }
-      &--12-m   { @include flex-none; width: $flex-child-12-width; }
-
-      &--offset-1-m   { margin-left: $flex-child-1-width; }
-      &--offset-2-m   { margin-left: $flex-child-2-width; }
-      &--offset-3-m   { margin-left: $flex-child-3-width; }
-      &--offset-4-m   { margin-left: $flex-child-4-width; }
-      &--offset-5-m   { margin-left: $flex-child-5-width; }
-      &--offset-6-m   { margin-left: $flex-child-6-width; }
-      &--offset-7-m   { margin-left: $flex-child-7-width; }
-      &--offset-8-m   { margin-left: $flex-child-8-width; }
-      &--offset-9-m   { margin-left: $flex-child-9-width; }
-      &--offset-10-m  { margin-left: $flex-child-10-width; }
-      &--offset-11-m  { margin-left: $flex-child-11-width; }
     }
 
     @include breakpoint('l') {
@@ -437,31 +299,6 @@
         @include flex-child-basis(auto);
         width: auto;
       }
-
-      &--1-l    { @include flex-none; width: $flex-child-1-width; }
-      &--2-l    { @include flex-none; width: $flex-child-2-width; }
-      &--3-l    { @include flex-none; width: $flex-child-3-width; }
-      &--4-l    { @include flex-none; width: $flex-child-4-width; }
-      &--5-l    { @include flex-none; width: $flex-child-5-width; }
-      &--6-l    { @include flex-none; width: $flex-child-6-width; }
-      &--7-l    { @include flex-none; width: $flex-child-7-width; }
-      &--8-l    { @include flex-none; width: $flex-child-8-width; }
-      &--9-l    { @include flex-none; width: $flex-child-9-width; }
-      &--10-l   { @include flex-none; width: $flex-child-10-width; }
-      &--11-l   { @include flex-none; width: $flex-child-11-width; }
-      &--12-l   { @include flex-none; width: $flex-child-12-width; }
-
-      &--offset-1-l   { margin-left: $flex-child-1-width; }
-      &--offset-2-l   { margin-left: $flex-child-2-width; }
-      &--offset-3-l   { margin-left: $flex-child-3-width; }
-      &--offset-4-l   { margin-left: $flex-child-4-width; }
-      &--offset-5-l   { margin-left: $flex-child-5-width; }
-      &--offset-6-l   { margin-left: $flex-child-6-width; }
-      &--offset-7-l   { margin-left: $flex-child-7-width; }
-      &--offset-8-l   { margin-left: $flex-child-8-width; }
-      &--offset-9-l   { margin-left: $flex-child-9-width; }
-      &--offset-10-l  { margin-left: $flex-child-10-width; }
-      &--offset-11-l  { margin-left: $flex-child-11-width; }
     }
 
     @include breakpoint('xl') {
@@ -480,109 +317,6 @@
         @include flex-child-shrink(1);
         @include flex-child-basis(auto);
         width: auto;
-      }
-
-      &--1-xl    { @include flex-none; width: $flex-child-1-width; }
-      &--2-xl    { @include flex-none; width: $flex-child-2-width; }
-      &--3-xl    { @include flex-none; width: $flex-child-3-width; }
-      &--4-xl    { @include flex-none; width: $flex-child-4-width; }
-      &--5-xl    { @include flex-none; width: $flex-child-5-width; }
-      &--6-xl    { @include flex-none; width: $flex-child-6-width; }
-      &--7-xl    { @include flex-none; width: $flex-child-7-width; }
-      &--8-xl    { @include flex-none; width: $flex-child-8-width; }
-      &--9-xl    { @include flex-none; width: $flex-child-9-width; }
-      &--10-xl   { @include flex-none; width: $flex-child-10-width; }
-      &--11-xl   { @include flex-none; width: $flex-child-11-width; }
-      &--12-xl   { @include flex-none; width: $flex-child-12-width; }
-
-      &--offset-1-xl   { margin-left: $flex-child-1-width; }
-      &--offset-2-xl   { margin-left: $flex-child-2-width; }
-      &--offset-3-xl   { margin-left: $flex-child-3-width; }
-      &--offset-4-xl   { margin-left: $flex-child-4-width; }
-      &--offset-5-xl   { margin-left: $flex-child-5-width; }
-      &--offset-6-xl   { margin-left: $flex-child-6-width; }
-      &--offset-7-xl   { margin-left: $flex-child-7-width; }
-      &--offset-8-xl   { margin-left: $flex-child-8-width; }
-      &--offset-9-xl   { margin-left: $flex-child-9-width; }
-      &--offset-10-xl  { margin-left: $flex-child-10-width; }
-      &--offset-11-xl  { margin-left: $flex-child-11-width; }
-    }
-
-    &--gap {
-      &-grid {
-        @include flex-child-gap-grid;
-      }
-
-      &-zero {
-        padding: {
-          left: 0;
-          right: 0;
-        }
-      }
-
-      @include breakpoint('xs') {
-        &-grid-xs {
-          @include flex-child-gap-grid;
-        }
-
-        &-zero-xs {
-          padding: {
-            left: 0;
-            right: 0;
-          }
-        }
-      }
-
-      @include breakpoint('s') {
-        &-grid-s {
-          @include flex-child-gap-grid;
-        }
-
-        &-zero-s {
-          padding: {
-            left: 0;
-            right: 0;
-          }
-        }
-      }
-
-      @include breakpoint('m') {
-        &-grid-m {
-          @include flex-child-gap-grid;
-        }
-
-        &-zero-m {
-          padding: {
-            left: 0;
-            right: 0;
-          }
-        }
-      }
-
-      @include breakpoint('l') {
-        &-grid-l {
-          @include flex-child-gap-grid;
-        }
-
-        &-zero-l {
-          padding: {
-            left: 0;
-            right: 0;
-          }
-        }
-      }
-
-      @include breakpoint('xl') {
-        &-grid-xl {
-          @include flex-child-gap-grid;
-        }
-
-        &-zero-xl {
-          padding: {
-            left: 0;
-            right: 0;
-          }
-        }
       }
     }
 
