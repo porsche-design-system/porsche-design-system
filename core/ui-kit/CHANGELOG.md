@@ -6,10 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### Exclusion of grid as a standalone component (from flex).
-Grid behaviour is now excluded from flex component and is developed as a new grid component.  
+### Grid-Float component is now marked as "deprecated"
+Moved grid-float component to `deprecated` folder.
+
+### Extraction of grid as a standalone component (from flex).
+Grid behaviour is now extracted from flex component and is developed as a new grid component.  
 That means that all grid related properties from flex component are now maintained under grid.  
-Every usage of flex component which was used to layout with grid sizings must now use grid component classes.  
+Every usage of flex component, which was used to layout with grid sizings, must now use grid component classes.  
 
 #### Breaking changes
 * Migration path:
@@ -39,7 +42,7 @@ Every usage of flex component which was used to layout with grid sizings must no
     `flex__child--x` => `grid__child--x`  
   
 ### Refactoring of flex component.
-* Added missing flex properties
+* Added missing flex properties.
 
 #### Breaking changes
   * Migration path:

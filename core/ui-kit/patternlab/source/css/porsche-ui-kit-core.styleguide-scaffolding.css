@@ -70,6 +70,30 @@ html, body {
   background: #fff;
 }
 
+.sg-bg-color-1 {
+  background: rgba(0, 230, 230, 0.2);
+}
+
+.sg-bg-color-2 {
+  background: rgba(0, 230, 230, .4);
+}
+
+.sg-bg-color-3 {
+  background: rgba(0, 230, 230, .6);
+}
+
+.sg-bg-color-4 {
+  background: rgba(0, 230, 230, .8);
+}
+
+.sg-bg-color-5 {
+  background: rgba(0, 230, 230, 1);
+}
+
+.sg-bg-color-hl {
+  background: #ff1493;
+}
+
 .sg-swatch {
   display: block;
   height: 4em;
