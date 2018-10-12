@@ -4,5 +4,8 @@
 @import 'base/index.scss';
 @import 'modules/index.scss';
 
+// import deprecated styles for backwards compatibility
+@import 'deprecated/index.scss';
+
 // js framework specific styles
 @import 'porsche-stylesheets.angular.scss';
