@@ -6,8 +6,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### Grid-Float component is now marked as "deprecated"
+### Grid-Float component is now "deprecated"
 Moved grid-float component to `deprecated` folder.
+
+#### Breaking changes
+* Migration path:
+  * Changed location of files (and corresponding import paths of other components):
+  
+    `base/grid/column.mixin.scss` => `deprecated/grid/column.mixin.scss`  
+    `base/grid/column.scss` => `deprecated/grid/column.scss`  
+    `base/grid/column.setup.scss` => `deprecated/grid/column.setup.scss` 
+    `base/grid/row.mixin.scss` => `deprecated/grid/row.mixin.scss`  
+    `base/grid/row.scss` => `deprecated/grid/row.scss`  
+    `base/grid/row.setup.scss` => `deprecated/grid/row.setup.scss` 
+    `base/grid/index.scss` => `deprecated/grid/index.scss` 
 
 ### Extraction of grid as a standalone component (from flex).
 Grid behaviour is now extracted from flex component and is developed as a new grid component.  
