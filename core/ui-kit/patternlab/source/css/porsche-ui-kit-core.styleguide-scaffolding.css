@@ -71,7 +71,7 @@ html, body {
 }
 
 .sg-bg-color-1 {
-  background: rgba(0, 230, 230, 0.2);
+  background: rgba(0, 230, 230, .2);
 }
 
 .sg-bg-color-2 {

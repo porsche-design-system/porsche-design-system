@@ -1,6 +1,12 @@
 @import '../../mixins/px-rem-converter.scss';
 @import '../../base/spacing/spacing.setup.scss';
-@import '../../setup/grid.setup.scss';
+
+$grid-gutter:     rem(16px) !default;
+$grid-gutter-xs:  rem(16px) !default;
+$grid-gutter-s:   rem(24px) !default;
+$grid-gutter-m:   rem(36px) !default;
+$grid-gutter-l:   rem(36px) !default;
+$grid-gutter-xl:  rem(36px) !default;
 
 $column-1-width: 8.333333% !default;
 $column-2-width: 16.666667% !default;

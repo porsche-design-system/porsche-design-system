@@ -20,6 +20,8 @@ Moved grid-float component to `deprecated` folder.
     `base/grid/row.scss` => `deprecated/grid/row.scss`  
     `base/grid/row.setup.scss` => `deprecated/grid/row.setup.scss` 
     `base/grid/index.scss` => `deprecated/grid/index.scss` 
+  
+  * Deleted global `setup/grid.setup.scss` because these variables are now directly implemented in grid component.
 
 ### Extraction of grid as a standalone component (from flex).
 Grid behaviour is now extracted from flex component and is developed as a new grid component.  
@@ -58,7 +60,7 @@ Every usage of flex component, which was used to layout with grid sizings, must 
   * Migration path:
     * Changed location of files (and corresponding import paths):
     
-      `base/grid/flex.setup.scss` => `base/layout/flex.setup.scss`  
+      `base/grid/flex.setup.scss` => deleted! 
       `base/grid/flex.mixin.scss` => `base/layout/flex.mixin.scss`  
       `base/grid/flex.scss` => `base/layout/flex.scss`  
       `base/grid/index.scss` => `base/layout/index.scss`  
