@@ -125,6 +125,115 @@
     </style>
 </head>
 
-<body></body>
+<body>
+    <div id="root">
+        <!-- START initial preloader -->
+        <!-- hint:
+             as we all know, styles between body tags are creepy.
+             but in this case, it's the easiest way to show and hide a preloader,
+             because react will clean everything inside the root div. -->
+        <style scoped>
+            .loading-indicator {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1000;
+            }
+
+            .theme-light {
+                background-color: rgba($white, .8);
+            }
+
+            .theme-light .circle-fg-path {
+                stroke: #313639;
+            }
+
+            .theme-light .circle-bg-path {
+                stroke: #eff0f1;
+            }
+
+            .loader {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 50px;
+                height: 50px;
+                transform: translate(-50%, -50%);
+            }
+
+            .circle-fg,
+            .circle-bg {
+                animation: rotate 2s linear infinite;
+                height: 100%;
+                transform-origin: center center;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                fill: none;
+            }
+
+            .circle-fg {
+                z-index: 1;
+            }
+
+            .circle-bg {
+                z-index: 0;
+            }
+
+            .circle-fg-path,
+            .circle-bg-path {
+                stroke-width: 2px;
+            }
+
+            .circle-fg-path {
+                stroke-dasharray: 100, 200;
+                stroke-dashoffset: 0;
+                animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+                stroke-linecap: round;
+            }
+
+            @keyframes rotate {
+                100% {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes dash {
+                0% {
+                    stroke-dasharray: 1, 200;
+                    stroke-dashoffset: 0;
+                }
+
+                50% {
+                    stroke-dasharray: 89, 200;
+                    stroke-dashoffset: -35px;
+                }
+
+                100% {
+                    stroke-dasharray: 89, 200;
+                    stroke-dashoffset: -124px;
+                }
+            }
+        </style>
+        <div class="loading-indicator theme-light">
+            <div class="loader">
+                <svg class="circle-fg" viewBox="25 25 50 50">
+                    <circle class="circle-fg-path" cx="50" cy="50" r="20" />
+                </svg>
+                <svg class="circle-bg" viewBox="25 25 50 50">
+                    <circle class="circle-bg-path" cx="50" cy="50" r="20" />
+                </svg>
+            </div>
+        </div>
+        <!-- END initial preloader -->
+    </div>
+</body>
 
 </html>

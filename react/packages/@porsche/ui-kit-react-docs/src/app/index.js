@@ -24,7 +24,7 @@ import "@porsche/ui-kit-react/css/index.css"
 // Rendering
 // ----------------------------------------
 
-const mountNode = document.createElement("div")
+const mountNode = document.getElementById("root")
 document.body.appendChild(mountNode)
 
 const render = (App) => {

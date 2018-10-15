@@ -58,7 +58,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -136,7 +136,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -251,7 +251,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -312,7 +312,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -389,7 +389,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -424,7 +424,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -464,7 +464,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -714,7 +714,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -801,7 +801,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -963,7 +963,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -993,7 +993,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1175,7 +1175,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1220,7 +1220,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1390,7 +1390,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1490,7 +1490,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1547,7 +1547,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1596,7 +1596,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1644,7 +1644,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1706,7 +1706,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1754,7 +1754,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -1812,7 +1812,7 @@
         ],
         "name": "filterOptions",
         "required": false,
-        "type": "(option: SelectOption[] | SelectOptionGroup[], filter: string) => SelectOption[] | SelectOptionGr...",
+        "type": "(option: SelectOption[] | SelectOptionGroup[], filter: string) => SelectOption[] | SelectOptionGroup[]",
         "tags": []
       },
       {
@@ -1978,7 +1978,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -2026,7 +2026,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -2192,7 +2192,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -2210,7 +2210,7 @@
         ],
         "name": "logoComponent",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -2413,7 +2413,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {
@@ -2543,7 +2543,7 @@
         ],
         "name": "as",
         "required": false,
-        "type": "string | ComponentClass<{}>",
+        "type": "string | ComponentClass<{}, any>",
         "tags": []
       },
       {

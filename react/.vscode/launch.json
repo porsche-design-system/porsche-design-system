@@ -1,0 +1,27 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest All",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": ["test", "--runInBand", "--no-cache", "--env=jsdom"],
+            "cwd": "${workspaceRoot}/packages/@porsche/ui-kit-react",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest Current File",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": ["${relativeFile}"],
+            "cwd": "${workspaceRoot}/packages/@porsche/ui-kit-react",
+            "console": "integratedTerminal"
+        }
+    ]
+}
