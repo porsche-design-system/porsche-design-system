@@ -6,8 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-- optimized loading spinner
-- added changelog
+
+## [0.1.33] - 2018-10-15
+- added bold font-weight to `text` component
+- added `autofocus` property to `input` and `textarea` component
 
 ## [0.1.32] - 2018-09-24
 - icon changes
