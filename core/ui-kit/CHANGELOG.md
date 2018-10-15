@@ -30,8 +30,6 @@ Every usage of flex component, which was used to layout with grid sizings, must 
 * Migration path:
   * Changed location of files (and corresponding import paths):
   
-    `01-atoms/04-grid/grid-flex.hbs` => `04-layout/grid/grid.hbs`  
-    `01-atoms/04-grid/grid-flex.md` => `04-layout/grid/grid.md`  
     `base/grid/flex.setup.scss` => `base/grid/grid.setup.scss`  
     `base/grid/flex.mixin.scss` => `base/grid/grid.mixin.scss`  
     `base/grid/flex.scss` => `base/grid/grid.scss`  
@@ -60,8 +58,6 @@ Every usage of flex component, which was used to layout with grid sizings, must 
   * Migration path:
     * Changed location of files (and corresponding import paths):
     
-      `01-atoms/04-grid/grid-flex.hbs` => `04-layout/flex/flex.hbs`  
-      `01-atoms/04-grid/grid-flex.md` => `04-layout/flex/flex.md`  
       `base/grid/flex.setup.scss` => `base/layout/flex.setup.scss`  
       `base/grid/flex.mixin.scss` => `base/layout/flex.mixin.scss`  
       `base/grid/flex.scss` => `base/layout/flex.scss`  
