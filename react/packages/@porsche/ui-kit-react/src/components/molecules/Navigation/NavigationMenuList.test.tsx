@@ -4,7 +4,7 @@ import { NavigationMenuList, NavigationMenuListProps } from "./NavigationMenuLis
 import { prefix } from "../../../lib"
 
 describe("NavigationList component", () => {
-    const createComponent = (props?: NavigationMenuListProps): ReactWrapper => {
+    const createComponent = (props: NavigationMenuListProps): ReactWrapper => {
         return mount(<NavigationMenuList {...props} />)
     }
 
