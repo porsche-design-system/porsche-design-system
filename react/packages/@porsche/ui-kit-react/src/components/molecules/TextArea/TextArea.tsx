@@ -10,6 +10,7 @@ import { IconName } from "../../atoms/Icon/Icon"
 export interface TextAreaProps extends ClassNameProp, ComponentProp {
     basic?: boolean
     disabled?: boolean
+    autofocus?: boolean
     error?: boolean
     icon?: IconName
     maxLength?: number
@@ -51,6 +52,7 @@ const _TextArea: React.StatelessComponent<TextAreaProps> & Partial<MetaCategoriz
         children,
         basic,
         disabled,
+        autofocus,
         error,
         icon,
         maxLength,
@@ -102,6 +104,7 @@ const _TextArea: React.StatelessComponent<TextAreaProps> & Partial<MetaCategoriz
                     className={inputFieldClasses}
                     rows={rows}
                     disabled={disabled}
+                    autoFocus={autofocus}
                     name={name}
                     onChange={handleChange}
                     placeholder={placeholder}
