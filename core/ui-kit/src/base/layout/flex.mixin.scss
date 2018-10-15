@@ -35,46 +35,6 @@
   align-content: #{$align-content};
 }
 
-@mixin flex-gap-shim-grid {
-  padding-left: 0;
-  padding-right: 0;
-
-  @include breakpoint('s') {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  @include breakpoint('l') {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  margin: {
-    left: -$flex-child-spacing-horizontal;
-    right: -$flex-child-spacing-horizontal;
-  }
-
-  @include breakpoint('s') {
-    margin: {
-      left: -$flex-child-spacing-horizontal-s;
-      right: -$flex-child-spacing-horizontal-s;
-    }
-  }
-
-  @include breakpoint('l') {
-    margin: {
-      left: -$flex-child-spacing-horizontal-l;
-      right: -$flex-child-spacing-horizontal-l;
-    }
-  }
-}
-
-@mixin flex-gap-shim-zero {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-
 /**
  * properties for flex child items
  */
@@ -97,25 +57,3 @@
 @mixin flex-child-order($order) {
   order: #{$order};
 }
-
-@mixin flex-child-gap-grid {
-  padding: {
-    left: $flex-child-spacing-horizontal;
-    right: $flex-child-spacing-horizontal;
-  }
-
-  @include breakpoint('s') {
-    padding: {
-      left: $flex-child-spacing-horizontal-s;
-      right: $flex-child-spacing-horizontal-s;
-    }
-  }
-
-  @include breakpoint('l') {
-    padding: {
-      left: $flex-child-spacing-horizontal-l;
-      right: $flex-child-spacing-horizontal-l;
-    }
-  }
-}
-
