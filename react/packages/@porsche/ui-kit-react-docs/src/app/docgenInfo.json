@@ -1224,6 +1224,15 @@
         "tags": []
       },
       {
+        "description": [
+          "An input can have autofocus."
+        ],
+        "name": "autofocus",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
         "defaultValue": "false",
         "description": [
           "Basic determines if the placeholder disappears when a value is set or entered,",
@@ -2018,6 +2027,15 @@
         "name": "as",
         "required": false,
         "type": "string | ComponentClass<{}>",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "autofocus",
+        "required": false,
+        "type": "boolean",
         "tags": []
       },
       {

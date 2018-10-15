@@ -20,6 +20,9 @@ export interface InputProps extends ClassNameProp, ComponentProp {
     /** An input can appear disabled and be unable to change states. */
     disabled?: boolean
 
+    /** An input can have autofocus. */
+    autofocus?: boolean
+
     /** An input can display an error. */
     error?: boolean
 
@@ -72,6 +75,7 @@ const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> 
         children,
         basic,
         disabled,
+        autofocus,
         error,
         icon,
         name,
@@ -112,6 +116,7 @@ const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> 
                 <input
                     className={inputClasses}
                     disabled={disabled}
+                    autoFocus={autofocus}
                     name={name}
                     onChange={handleChange}
                     placeholder={placeholder}
