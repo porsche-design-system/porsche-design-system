@@ -3,43 +3,130 @@
 @import '../../mixins/breakpoint.scss';
 
 .#{$global-class-prefix}grid {
-  @include grid-gap;
+  $bem-block: &;
+  @include grid-gap-normal;
   display: flex;
   flex-wrap: wrap;
 
   /**
-   * properties for grid parent
+   * properties to define grid gaps
    */
+  // sass-lint:disable no-combinators
+  > #{$bem-block}__child {
+    @include grid-child-gap-normal;
+  }
+
   &--gap {
-    @include grid-gap;
-    &-zero { @include grid-gap-zero; }
+    &-normal {
+      @include grid-gap-normal;
+
+      > #{$bem-block}__child {
+        @include grid-child-gap-normal;
+      }
+    }
+
+    &-zero {
+      @include grid-gap-zero;
+
+      > #{$bem-block}__child {
+        @include grid-child-gap-zero;
+      }
+    }
 
     @include breakpoint('xs') {
-      &-xs { @include grid-gap; }
-      &-zero-xs { @include grid-gap-zero; }
+      &-normal-xs {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-xs {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
     }
 
     @include breakpoint('s')  {
-      &-s  { @include grid-gap; }
-      &-zero-s { @include grid-gap-zero; }
+      &-normal-s  {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-s {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
     }
 
     @include breakpoint('m')  {
-      &-m  { @include grid-gap; }
-      &-zero-m { @include grid-gap-zero; }
+      &-normal-m  {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-m {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
     }
 
     @include breakpoint('l')  {
-      &-l  { @include grid-gap; }
-      &-zero-l { @include grid-gap-zero; }
+      &-normal-l  {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-l {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
     }
 
     @include breakpoint('xl') {
-      &-xl { @include grid-gap; }
-      &-zero-xl { @include grid-gap-zero; }
+      &-normal-xl {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-xl {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
     }
   }
 
+  /**
+   * properties to define grid direction
+   */
   &--direction {
     &-column          { flex-direction: column; }
     &-column-reverse  { flex-direction: column-reverse; }
@@ -83,10 +170,9 @@
   }
 
   /**
-   * properties for grid children items
+   * properties for grid children items (widths and offsets)
    */
   &__child {
-    @include grid-child-gap;
 
     @for $i from 1 through 12 {
       &--#{$i} {
@@ -179,36 +265,6 @@
 
       &--offset-zero-xl {
         margin-left: 0;
-      }
-    }
-
-    &--gap {
-      @include grid-child-gap;
-      &-zero { @include grid-child-gap-zero; }
-
-      @include breakpoint('xs') {
-        &-xs { @include grid-child-gap; }
-        &-zero-xs { @include grid-child-gap-zero; }
-      }
-
-      @include breakpoint('s') {
-        &-s { @include grid-child-gap; }
-        &-zero-s { @include grid-child-gap-zero; }
-      }
-
-      @include breakpoint('m') {
-        &-m { @include grid-child-gap; }
-        &-zero-m { @include grid-child-gap-zero; }
-      }
-
-      @include breakpoint('l') {
-        &-l { @include grid-child-gap; }
-        &-zero-l { @include grid-child-gap-zero; }
-      }
-
-      @include breakpoint('xl') {
-        &-xl { @include grid-child-gap; }
-        &-zero-xl { @include grid-child-gap-zero; }
       }
     }
   }

@@ -2,59 +2,63 @@
 /**
  * properties for grid parent items
  */
-@mixin grid-gap {
+@mixin grid-gap-normal {
   margin: {
-    left: -$flex-child-spacing-horizontal;
-    right: -$flex-child-spacing-horizontal;
+    left: -$grid-child-spacing-horizontal;
+    right: -$grid-child-spacing-horizontal;
   }
 
   @include breakpoint('s') {
     margin: {
-      left: -$flex-child-spacing-horizontal-s;
-      right: -$flex-child-spacing-horizontal-s;
+      left: -$grid-child-spacing-horizontal-s;
+      right: -$grid-child-spacing-horizontal-s;
     }
   }
 
   @include breakpoint('l') {
     margin: {
-      left: -$flex-child-spacing-horizontal-l;
-      right: -$flex-child-spacing-horizontal-l;
+      left: -$grid-child-spacing-horizontal-l;
+      right: -$grid-child-spacing-horizontal-l;
     }
   }
 }
 
 @mixin grid-gap-zero {
-  margin-left: 0;
-  margin-right: 0;
+  margin: {
+    left: 0;
+    right: 0;
+  }
 }
 
 
 /**
  * properties for grid child items
  */
-@mixin grid-child-gap {
+@mixin grid-child-gap-normal {
   padding: {
-    left: $flex-child-spacing-horizontal;
-    right: $flex-child-spacing-horizontal;
+    left: $grid-child-spacing-horizontal;
+    right: $grid-child-spacing-horizontal;
   }
 
   @include breakpoint('s') {
     padding: {
-      left: $flex-child-spacing-horizontal-s;
-      right: $flex-child-spacing-horizontal-s;
+      left: $grid-child-spacing-horizontal-s;
+      right: $grid-child-spacing-horizontal-s;
     }
   }
 
   @include breakpoint('l') {
     padding: {
-      left: $flex-child-spacing-horizontal-l;
-      right: $flex-child-spacing-horizontal-l;
+      left: $grid-child-spacing-horizontal-l;
+      right: $grid-child-spacing-horizontal-l;
     }
   }
 }
 
 @mixin grid-child-gap-zero {
-  padding-left: 0;
-  padding-right: 0;
+  padding: {
+    left: 0;
+    right: 0;
+  }
 }
 

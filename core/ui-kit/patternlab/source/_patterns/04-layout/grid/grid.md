@@ -44,7 +44,7 @@ For basic grid implementation, it is recommended to use this pattern:
 
 ```
 <div class="grid">
-	<div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--6">
     Column 1 with a width of 6 columns out of 12
   </div>
   <div class="grid__child grid__child--6">
@@ -109,10 +109,10 @@ In some cases it can be useful to set grid gaps to zero to set elements besides 
 #### 2 items side by side
 ```
 <div class="grid grid--gap-zero">
-  <div class="grid__child grid__child--gap-zero grid__child--6">
+  <div class="grid__child grid__child--6">
     1st item aligned left
   </div>
-  <div class="grid__child grid__child--gap-zero grid__child--6">
+  <div class="grid__child grid__child--6">
     2nd item aligned left to item 1
   </div>
 </div>
@@ -142,7 +142,7 @@ The grid system is responsive by itself by using percentages for every value (wi
 
 ```
 <div class="grid">
-	<div class="grid__child grid__child--6 grid__child--3-l">
+  <div class="grid__child grid__child--6 grid__child--3-l">
     Column 1 with a width of 6 columns out of 12 (default) and 3 columns (breakpoint "l")
   </div>
   <div class="grid__child grid__child--6 grid__child--3-l">
@@ -177,8 +177,7 @@ Direction (on the parent container):
 `grid--direction-row-reverse-(breakpoint)`  
 
 Gaps:  
-`grid--gap-(breakpoint)`  
+`grid--gap-normal-(breakpoint)`  
 `grid--gap-zero-(breakpoint)`  
-`grid__child--gap-(breakpoint)`  
-`grid__child--gap-zero-(breakpoint)`  
+
 
