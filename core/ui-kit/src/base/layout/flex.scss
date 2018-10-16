@@ -16,14 +16,8 @@
 
   &--wrap {
     @include flex-wrap(wrap);
-
-    &-no {
-      @include flex-wrap(nowrap);
-    }
-
-    &-reverse {
-      @include flex-wrap(wrap-reverse);
-    }
+    &-no { @include flex-wrap(nowrap); }
+    &-reverse { @include flex-wrap(wrap-reverse); }
 
     @include breakpoint('xs') {
       &-xs  { @include flex-wrap(wrap); }
