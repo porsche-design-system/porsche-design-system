@@ -1,6 +1,6 @@
 import * as React from "react"
 import cx from "classnames"
-import { Loader, Flex } from "@porsche/ui-kit-react"
+import { Loader, Flex } from "../../../index"
 import { getElementType, META, prefix } from "../../../lib"
 import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
