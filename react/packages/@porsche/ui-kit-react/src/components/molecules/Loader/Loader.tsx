@@ -4,6 +4,11 @@ import cx from "classnames"
 import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
 import { getElementType, META, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
+import { LoaderMask } from "./LoaderMask"
+
+export interface Loader extends React.StatelessComponent<LoaderProps> {
+    Mask: typeof LoaderMask
+}
 
 export interface LoaderProps extends ClassNameProp, ComponentProp {
     /**
@@ -22,7 +27,7 @@ const _meta: ComponentMeta = {
     type: META.TYPES.MOLECULE
 }
 
-const _Loader: React.StatelessComponent<LoaderProps> & Partial<MetaCategorizable> = (props) => {
+const _Loader: React.StatelessComponent<LoaderProps> & Partial<Loader> & Partial<MetaCategorizable> = (props) => {
     const { as, className, children, inverted, size, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -47,9 +52,10 @@ const _Loader: React.StatelessComponent<LoaderProps> & Partial<MetaCategorizable
 }
 
 _Loader._meta = _meta
+_Loader.Mask = LoaderMask
 
 /**
  * A loader component to show loading states inside single components or across entire modules / pages.
  * @see Button
  */
-export const Loader = _Loader as React.StatelessComponent<LoaderProps>
+export const Loader = _Loader as Loader

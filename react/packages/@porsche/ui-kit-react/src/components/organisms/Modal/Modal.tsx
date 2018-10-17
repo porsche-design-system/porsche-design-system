@@ -12,6 +12,7 @@ import { ModalTitle } from "./ModalTitle"
 import { ModalText } from "./ModalText"
 import { ModalButtons } from "./ModalButtons"
 import { Icon } from "../../atoms/Icon/Icon"
+import { Loader } from "../../molecules/Loader/Loader"
 
 export interface Modal extends React.StatelessComponent<ModalProps> {
     /**
@@ -63,6 +64,12 @@ export interface ModalProps extends ClassNameProp {
      * Additional CSS classes for the modal content container.
      */
     containerClassName?: string
+
+    /**
+     * Displays a loader and translucent backdrop above the entire content.
+     * @default false
+     */
+    loading?: boolean
 }
 
 const defaultProps: Partial<ModalProps> = {
@@ -86,6 +93,7 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
         ariaHideApp,
         showCloseIcon,
         containerClassName,
+        loading,
         ...rest
     } = props
 
@@ -118,7 +126,9 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
                 </div>
             )}
             <div className={containerClasses}>
-                <div className={prefix("modal__content")}>{children}</div>
+                <Loader.Mask loading={loading}>
+                    <div className={prefix("modal__content")}>{children}</div>
+                </Loader.Mask>
             </div>
         </ReactModal>
     )

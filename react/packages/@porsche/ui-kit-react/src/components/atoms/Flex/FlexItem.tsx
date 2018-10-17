@@ -22,8 +22,8 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
 }
 
 const _meta: ComponentMeta = {
-    name: "FlexItem",
     parent: "Flex",
+    name: "FlexItem",
     type: META.TYPES.ATOM
 }
 

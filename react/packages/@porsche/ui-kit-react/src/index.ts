@@ -22,6 +22,7 @@ export { Select, SelectOption, SelectOptionGroup, SelectValue, SelectProps } fro
 export { TextArea, TextAreaProps } from "./components/molecules/TextArea/TextArea"
 export { Tab, TabProps, TabPane } from "./components/molecules/Tab/Tab"
 export { Loader, LoaderProps } from "./components/molecules/Loader/Loader"
+export { LoaderMask, LoaderMaskProps } from "./components/molecules/Loader/LoaderMask"
 export { Link, LinkProps } from "./components/molecules/Link/Link"
 
 // Organisms
