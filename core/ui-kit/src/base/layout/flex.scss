@@ -295,8 +295,6 @@
     &--auto {
       @include flex-child-grow(0);
       @include flex-child-shrink(1);
-      @include flex-child-basis(auto);
-      width: auto;
     }
 
     @include breakpoint('xs') {
@@ -313,8 +311,6 @@
       &--auto-xs  {
         @include flex-child-grow(0);
         @include flex-child-shrink(1);
-        @include flex-child-basis(auto);
-        width: auto;
       }
     }
 
@@ -332,8 +328,6 @@
       &--auto-s  {
         @include flex-child-grow(0);
         @include flex-child-shrink(1);
-        @include flex-child-basis(auto);
-        width: auto;
       }
     }
 
@@ -351,8 +345,6 @@
       &--auto-m {
         @include flex-child-grow(0);
         @include flex-child-shrink(1);
-        @include flex-child-basis(auto);
-        width: auto;
       }
     }
 
@@ -370,8 +362,6 @@
       &--auto-l {
         @include flex-child-grow(0);
         @include flex-child-shrink(1);
-        @include flex-child-basis(auto);
-        width: auto;
       }
     }
 
@@ -389,8 +379,6 @@
       &--auto-xl {
         @include flex-child-grow(0);
         @include flex-child-shrink(1);
-        @include flex-child-basis(auto);
-        width: auto;
       }
     }
 
