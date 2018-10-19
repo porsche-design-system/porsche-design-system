@@ -53,7 +53,7 @@ const _ToastList: React.SFC<ToastListProps> & Partial<MetaCategorizable> = (prop
         return (
             <CSSTransition timeout={500} classNames={transitionClasses} key={item.id}>
                 <Spacing marginTop={6}>
-                    <Toast message={item.message} {...{ id: item.id }} onClick={handleToastCancel} />
+                    <Toast message={item.message} type={item.type} {...{ id: item.id }} onClick={handleToastCancel} />
                 </Spacing>
             </CSSTransition>
         )

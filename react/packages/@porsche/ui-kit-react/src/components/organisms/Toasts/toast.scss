@@ -13,6 +13,17 @@
     max-width: 440px;
     border-left: 4px solid $color-palette-status-orange;
 
+    &__text {
+        @include -spacing-a("top", "padding");
+        @include -spacing-a("bottom", "padding");
+        @include -spacing-b("left", "padding");
+        padding-right: 0;
+
+        &--no-close {
+            @include -spacing-b("right", "padding");
+        }
+    }
+
     &--success {
         border-color: $color-palette-status-green;
     }
@@ -27,6 +38,11 @@
     }
 
     &__close {
+        @include -spacing-a("top", "padding");
+        @include -spacing-a("bottom", "padding");
+        @include -spacing-b("right", "padding");
+        @include -spacing-b("left", "padding");
+
         cursor: pointer;
         align-self: start;
         margin-top: 3px;
