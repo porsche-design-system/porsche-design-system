@@ -5,20 +5,16 @@
   display: flex;
 }
 
-@mixin flex-none {
-  flex: none;
-}
-
 @mixin flex-inline {
   display: inline-flex;
 }
 
-@mixin flex-direction($direction) {
-  flex-direction: #{$direction};
-}
-
 @mixin flex-wrap($wrap) {
   flex-wrap: #{$wrap};
+}
+
+@mixin flex-direction($direction) {
+  flex-direction: #{$direction};
 }
 
 @mixin flex-main-axis($align) {
@@ -36,10 +32,6 @@
 /**
  * properties for flex child items
  */
-@mixin flex-child-align($align) {
-  align-self: #{$align};
-}
-
 @mixin flex-child-grow($grow) {
   flex-grow: #{$grow};
 }
@@ -58,6 +50,10 @@
 
 @mixin flex-child-none {
   flex: none;
+}
+
+@mixin flex-child-align($align) {
+  align-self: #{$align};
 }
 
 @mixin flex-child-order($order) {
