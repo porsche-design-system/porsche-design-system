@@ -4,11 +4,38 @@
 
 .#{$global-class-prefix}flex {
   @include flex;
-  @include breakpoint('xs') { &-xs  { @include flex; } }
-  @include breakpoint('s')  { &-s   { @include flex; } }
-  @include breakpoint('m')  { &-m   { @include flex; } }
-  @include breakpoint('l')  { &-l   { @include flex; } }
-  @include breakpoint('xl') { &-xl  { @include flex; } }
+  &--inline { @include flex-inline; }
+  &--none { @include flex-none; }
+
+  @include breakpoint('xs') {
+    &-xs  { @include flex; }
+    &--inline-xs { @include flex-inline; }
+    &--none-xs { @include flex-none; }
+  }
+
+  @include breakpoint('s') {
+    &-s  { @include flex; }
+    &--inline-s { @include flex-inline; }
+    &--none-s { @include flex-none; }
+  }
+
+  @include breakpoint('m') {
+    &-m  { @include flex; }
+    &--inline-m { @include flex-inline; }
+    &--none-m { @include flex-none; }
+  }
+
+  @include breakpoint('l') {
+    &-l  { @include flex; }
+    &--inline-l { @include flex-inline; }
+    &--none-l { @include flex-none; }
+  }
+
+  @include breakpoint('xl') {
+    &-xl  { @include flex; }
+    &--inline-xl { @include flex-inline; }
+    &--none-xl { @include flex-none; }
+  }
 
   /**
    * properties for flex parent
@@ -194,6 +221,60 @@
     }
   }
 
+  &--align-content {
+    &-start     { @include flex-align-content(flex-start); }
+    &-end       { @include flex-align-content(flex-end); }
+    &-center    { @include flex-align-content(center); }
+    &-stretch   { @include flex-align-content(stretch); }
+    &-space-between  { @include flex-align-content(space-between); }
+    &-space-around   { @include flex-align-content(space-around); }
+
+    @include breakpoint('xs') {
+      &-start-xs    { @include flex-align-content(flex-start); }
+      &-end-xs      { @include flex-align-content(flex-end); }
+      &-center-xs   { @include flex-align-content(center); }
+      &-stretch-xs  { @include flex-align-content(stretch); }
+      &-space-between-xs { @include flex-align-content(space-between); }
+      &-space-around-xs  { @include flex-align-content(space-around); }
+    }
+
+    @include breakpoint('s') {
+      &-start-s     { @include flex-align-content(flex-start); }
+      &-end-s       { @include flex-align-content(flex-end); }
+      &-center-s    { @include flex-align-content(center); }
+      &-stretch-s   { @include flex-align-content(stretch); }
+      &-space-between-s  { @include flex-align-content(space-between); }
+      &-space-around-s   { @include flex-align-content(space-around); }
+    }
+
+    @include breakpoint('m') {
+      &-start-m     { @include flex-align-content(flex-start); }
+      &-end-m       { @include flex-align-content(flex-end); }
+      &-center-m    { @include flex-align-content(center); }
+      &-stretch-m   { @include flex-align-content(stretch); }
+      &-space-between-m  { @include flex-align-content(space-between); }
+      &-space-around-m   { @include flex-align-content(space-around); }
+    }
+
+    @include breakpoint('l') {
+      &-start-l     { @include flex-align-content(flex-start); }
+      &-end-l       { @include flex-align-content(flex-end); }
+      &-center-l    { @include flex-align-content(center); }
+      &-stretch-l   { @include flex-align-content(stretch); }
+      &-space-between-l  { @include flex-align-content(space-between); }
+      &-space-around-l   { @include flex-align-content(space-around); }
+    }
+
+    @include breakpoint('xl') {
+      &-start-xl     { @include flex-align-content(flex-start); }
+      &-end-xl       { @include flex-align-content(flex-end); }
+      &-center-xl    { @include flex-align-content(center); }
+      &-stretch-xl   { @include flex-align-content(stretch); }
+      &-space-between-xl  { @include flex-align-content(space-between); }
+      &-space-around-xl   { @include flex-align-content(space-around); }
+    }
+  }
+
 
   /**
    * properties for flex children items
@@ -314,44 +395,56 @@
     }
 
     &--align {
+      &-auto      { @include flex-child-align(auto); }
       &-start     { @include flex-child-align(flex-start); }
       &-end       { @include flex-child-align(flex-end); }
       &-center    { @include flex-child-align(center); }
       &-stretch   { @include flex-child-align(stretch); }
+      &-baseline  { @include flex-child-align(baseline); }
 
       @include breakpoint('xs') {
+        &-auto-xs     { @include flex-child-align(auto); }
         &-start-xs    { @include flex-child-align(flex-start); }
         &-end-xs      { @include flex-child-align(flex-end); }
         &-center-xs   { @include flex-child-align(center); }
         &-stretch-xs  { @include flex-child-align(stretch); }
+        &-baseline-xs { @include flex-child-align(baseline); }
       }
 
       @include breakpoint('s') {
+        &-auto-s      { @include flex-child-align(auto); }
         &-start-s     { @include flex-child-align(flex-start); }
         &-end-s       { @include flex-child-align(flex-end); }
         &-center-s    { @include flex-child-align(center); }
         &-stretch-s   { @include flex-child-align(stretch); }
+        &-baseline-s  { @include flex-child-align(baseline); }
       }
 
       @include breakpoint('m') {
+        &-auto-m      { @include flex-child-align(auto); }
         &-start-m     { @include flex-child-align(flex-start); }
         &-end-m       { @include flex-child-align(flex-end); }
         &-center-m    { @include flex-child-align(center); }
         &-stretch-m   { @include flex-child-align(stretch); }
+        &-baseline-m  { @include flex-child-align(baseline); }
       }
 
       @include breakpoint('l') {
+        &-auto-l      { @include flex-child-align(auto); }
         &-start-l     { @include flex-child-align(flex-start); }
         &-end-l       { @include flex-child-align(flex-end); }
         &-center-l    { @include flex-child-align(center); }
         &-stretch-l   { @include flex-child-align(stretch); }
+        &-baseline-l  { @include flex-child-align(baseline); }
       }
 
       @include breakpoint('xl') {
+        &-auto-xl      { @include flex-child-align(auto); }
         &-start-xl     { @include flex-child-align(flex-start); }
         &-end-xl       { @include flex-child-align(flex-end); }
         &-center-xl    { @include flex-child-align(center); }
         &-stretch-xl   { @include flex-child-align(stretch); }
+        &-baseline-xl  { @include flex-child-align(baseline); }
       }
     }
   }
