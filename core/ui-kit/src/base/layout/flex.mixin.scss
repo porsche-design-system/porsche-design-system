@@ -29,8 +29,6 @@
   align-items: #{$align};
 }
 
-// it is similar to align-items, but instead of aligning flex items, it aligns flex lines.
-// Note: There must be multiple lines of items for this property to have any effect!
 @mixin flex-align-content($align-content) {
   align-content: #{$align-content};
 }

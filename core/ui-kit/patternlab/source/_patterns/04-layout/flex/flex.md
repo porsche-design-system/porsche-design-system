@@ -8,6 +8,33 @@ state: inreview
 ## Technical guidelines
 The Porsche UI Kit flex layout system is based on native css flex behaviours and can be controlled by class names.
 
+### Flex container
+#### Initialization of flex context as a block level element
+
+```
+<div class="flex">
+  <div class="flex__child">
+    Column 1
+  </div>
+  <div class="flex__child">
+    Column 2
+  </div>
+</div>
+```
+
+#### Initialization of flex context as an inline level element
+
+```
+<div class="flex flex--inline">
+  <div class="flex__child">
+    Column 1
+  </div>
+  <div class="flex__child">
+    Column 2
+  </div>
+</div>
+```
+
 ### Direction
 In some cases it might be neccessary to define or change direction of the columns. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
 
@@ -86,6 +113,28 @@ These alignment values can be set:
 `flex--cross-axis-center`  
 `flex--cross-axis-baseline`  
 
+#### Align content
+Note: this property has no effect when there is only one line of flex items.
+
+```
+<div class="flex flex--align-content-center">
+  <div class="flex__child">
+    All columns are centered
+  </div>
+  <div class="flex__child">
+    All columns are centered
+  </div>
+</div>
+```
+
+These alignment values can be set:  
+`flex--align-content-stretch` #(default)  
+`flex--align-content-start` 
+`flex--align-content-end`  
+`flex--align-content-center`  
+`flex--align-content-space-between`  
+`flex--align-content-space-around`  
+
 
 ### Wrapping
 The flex-wrap property is a sub-property of the flexible box layout module. It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in (the cross axis is the axis perpendicular to the main axis. Its direction depends on the main axis direction).
@@ -121,10 +170,12 @@ These wrapping values can be set:
 ```
 
 These alignment values can be set:  
-`flex__child--align-start` #(default)  
+`flex__child--align-auto` #(default)  
+`flex__child--align-start`  
 `flex__child--align-end`  
 `flex__child--align-center`  
 `flex__child--align-stretch`  
+`flex__child--align-baseline`  
 
 ### Grow/shrink/auto
 Flexbox default behaviour on how the childrens widths are rendered (shrinked, stretched, auto) can be overwritten with the following class names.
@@ -161,6 +212,11 @@ The flex system can provide breakpoint specific values to fit the needs of certa
 
 #### Following values can be set by using breakpoints classes
 
+Flex context:
+`flex-(breakpoint)`  
+`flex--inline-(breakpoint)`  
+`flex--none-(breakpoint)`  
+
 Direction (on the parent container):  
 `flex--direction-column-(breakpoint)`  
 `flex--direction-column-reverse-(breakpoint)`  
@@ -182,16 +238,26 @@ Alignment of cross axis (for all children set on the parent container):
 `flex--cross-axis-center-(breakpoint)`  
 `flex--cross-axis-baseline-(breakpoint)`  
 
+Align content (for all children set on the parent container):  
+`flex--align-content-stretch-(breakpoint)`  
+`flex--align-content-start-(breakpoint)`  
+`flex--align-content-end-(breakpoint)`  
+`flex--align-content-center-(breakpoint)`  
+`flex--align-content-space-between-(breakpoint)`  
+`flex--align-content-space-around-(breakpoint)`  
+
 Wrapping:  
 `flex--wrap-(breakpoint)`  
 `flex--nowrap-(breakpoint)`  
 `flex--wrap-reverse-(breakpoint)`  
 
 Align self (for specific children):  
+`flex__child--align-auto-(breakpoint)`  
 `flex__child--align-start-(breakpoint)`  
 `flex__child--align-end-(breakpoint)`  
 `flex__child--align-center-(breakpoint)`  
 `flex__child--align-stretch-(breakpoint)`  
+`flex__child--align-baseline-(breakpoint)`  
 
 Grow/shrink/auto (values "0" and "1"):  
 `flex__child--grow-(value)-(breakpoint)`  

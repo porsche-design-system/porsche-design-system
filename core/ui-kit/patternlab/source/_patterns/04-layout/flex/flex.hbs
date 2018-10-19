@@ -5,6 +5,62 @@
 
     <h2 class="-text-size-3-thin -text-color-black -spacing-30">Modifier for the Parent</h2>
 
+    <!-- ##########  Flex parent  ########## -->
+    <h2 class="-text-size-4-thin -text-color-black -spacing-30">Initialization</h2>
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex" (default)</p>
+    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+      <div class="flex">
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
+        </div>
+      </div>
+    </div>
+    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+      <div class="flex">
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex-inline"</p>
+    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+      <div class="flex flex--inline">
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
+        </div>
+      </div>
+      <div class="flex flex--inline">
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
+        </div>
+      </div>
+    </div>
+
     <!-- ##########  Direction  ########## -->
 
     <h2 class="-text-size-4-thin -text-color-black -spacing-30">Direction ("flex-direction")</h2>
@@ -14,7 +70,7 @@
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"row" (default)</p>
         <div class="sg-bg-color-1" style="padding: 1rem 0;">
-          <div class="flex -spacing-3">
+          <div class="flex">
             <div class="flex__child">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
             </div>
@@ -32,7 +88,7 @@
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"row reverse"</p>
         <div class="sg-bg-color-1" style="padding: 1rem 0;">
-          <div class="flex flex--direction-row-reverse -spacing-3">
+          <div class="flex flex--direction-row-reverse">
             <div class="flex__child">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
             </div>
@@ -53,7 +109,7 @@
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"column"</p>
         <div class="sg-bg-color-1" style="padding: 1rem 0;">
-          <div class="flex flex--direction-column -spacing-3">
+          <div class="flex flex--direction-column">
             <div class="flex__child">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
             </div>
@@ -71,7 +127,7 @@
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"column reverse"</p>
         <div class="sg-bg-color-1" style="padding: 1rem 0;">
-          <div class="flex flex--direction-column-reverse -spacing-3">
+          <div class="flex flex--direction-column-reverse">
             <div class="flex__child -spacing-12">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
             </div>
@@ -94,7 +150,7 @@
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"start" (default)</p>
     <div class="sg-bg-color-1" style="padding: 1rem 0;">
-      <div class="flex flex--main-axis-start -spacing-3">
+      <div class="flex flex--main-axis-start">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
         </div>
@@ -109,7 +165,7 @@
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"end"</p>
     <div class="sg-bg-color-1" style="padding: 1rem 0;">
-      <div class="flex flex--main-axis-end -spacing-3">
+      <div class="flex flex--main-axis-end">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
         </div>
@@ -124,7 +180,7 @@
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"center"</p>
     <div class="sg-bg-color-1" style="padding: 1rem 0;">
-      <div class="flex flex--main-axis-center -spacing-3">
+      <div class="flex flex--main-axis-center">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
         </div>
@@ -139,7 +195,7 @@
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"space between"</p>
     <div class="sg-bg-color-1" style="padding: 1rem 0;">
-      <div class="flex flex--main-axis-space-between -spacing-3">
+      <div class="flex flex--main-axis-space-between">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
         </div>
@@ -154,7 +210,7 @@
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"space around"</p>
     <div class="sg-bg-color-1" style="padding: 1rem 0;">
-      <div class="flex flex--main-axis-space-around -spacing-3">
+      <div class="flex flex--main-axis-space-around">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
         </div>
@@ -169,7 +225,7 @@
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"space evenly"</p>
     <div class="sg-bg-color-1" style="padding: 1rem 0;">
-      <div class="flex flex--main-axis-space-evenly -spacing-3">
+      <div class="flex flex--main-axis-space-evenly">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
         </div>
@@ -190,7 +246,7 @@
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"stretch" (default)</p>
         <div class="sg-bg-color-1">
-          <div class="flex flex--cross-axis-stretch -spacing-3" style="height: 10rem">
+          <div class="flex flex--cross-axis-stretch" style="height: 10rem">
             <div class="flex__child" style="width: 25%;">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 100%;">1</div>
             </div>
@@ -211,7 +267,7 @@
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"start"</p>
         <div class="sg-bg-color-1">
-          <div class="flex flex--cross-axis-start -spacing-3" style="height: 10rem;">
+          <div class="flex flex--cross-axis-start" style="height: 10rem;">
             <div class="flex__child" style="width: 25%;">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 5rem;">1</div>
             </div>
@@ -235,7 +291,7 @@
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"end"</p>
         <div class="sg-bg-color-1">
-          <div class="flex flex--cross-axis-end -spacing-3" style="height: 10rem;">
+          <div class="flex flex--cross-axis-end" style="height: 10rem;">
             <div class="flex__child" style="width: 25%;">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 5rem;">1</div>
             </div>
@@ -257,7 +313,7 @@
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"center"</p>
         <div class="sg-bg-color-1">
-          <div class="flex flex--cross-axis-center -spacing-3" style="height: 10rem;">
+          <div class="flex flex--cross-axis-center" style="height: 10rem;">
             <div class="flex__child" style="width: 25%;">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 5rem;">1</div>
             </div>
@@ -277,6 +333,192 @@
 
     </div>
 
+    <div class="grid">
+      <div class="grid__child grid__child--6">
+        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"baseline"</p>
+        <div class="sg-bg-color-1">
+          <div class="flex flex--cross-axis-baseline" style="height: 10rem;">
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center  -spacing-24 sg-bg-color-2" style="height: 5rem;">1</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">2</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 8rem;">3</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 5rem;">4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ##########  Align content  ########## -->
+
+    <h2 class="-text-size-4-thin -text-color-black -spacing-30">Align content</h2>
+
+    <div class="grid">
+      <div class="grid__child grid__child--6">
+        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex-stretch" (default)</p>
+        <div class="sg-bg-color-1">
+          <div class="flex flex--wrap flex--align-content-stretch" style="height: 10rem;">
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 100%;">1</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 100%;">2</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 100%;">3</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 100%;">4</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 100%;">5</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 100%;">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid__child grid__child--6">
+        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex-start"</p>
+        <div class="sg-bg-color-1">
+          <div class="flex flex--wrap flex--align-content-start" style="height: 10rem;">
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">1</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">2</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 3rem;">3</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 3rem;">4</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">5</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="grid__child grid__child--6">
+        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex-end"</p>
+        <div class="sg-bg-color-1">
+          <div class="flex flex--wrap flex--align-content-end" style="height: 10rem;">
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">1</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">2</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 3rem;">3</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 3rem;">4</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">5</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid__child grid__child--6">
+        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex-center"</p>
+        <div class="sg-bg-color-1">
+          <div class="flex flex--wrap flex--align-content-center" style="height: 10rem;">
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">1</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">2</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 3rem;">3</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 3rem;">4</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">5</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="grid__child grid__child--6">
+        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex-space-between"</p>
+        <div class="sg-bg-color-1">
+          <div class="flex flex--wrap flex--align-content-space-between" style="height: 10rem;">
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">1</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">2</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 3rem;">3</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 3rem;">4</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">5</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid__child grid__child--6">
+        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex-space-around"</p>
+        <div class="sg-bg-color-1">
+          <div class="flex flex--wrap flex--align-content-space-around" style="height: 10rem;">
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">1</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">2</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 3rem;">3</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 3rem;">4</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 3rem;">5</div>
+            </div>
+            <div class="flex__child" style="width: 25%;">
+              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 3rem;">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <div class="grid__child grid__child--12 grid__child--6-m">
 
@@ -285,6 +527,42 @@
     <!-- ##########  Align Self (Flex Child)  ########## -->
 
     <h2 class="-text-size-4-thin -text-color-black -spacing-30">Align ("align-self")</h2>
+
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"auto" (default)</p>
+    <div class="sg-bg-color-1">
+      <div class="flex" style="height: 10rem;">
+        <div class="flex__child" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 5rem;">1</div>
+        </div>
+        <div class="flex__child" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
+        </div>
+        <div class="flex__child flex__child--align-auto" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 3rem;">3</div>
+        </div>
+        <div class="flex__child" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 5rem;">4</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"stretch"</p>
+    <div class="sg-bg-color-1">
+      <div class="flex" style="height: 10rem;">
+        <div class="flex__child" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 5rem;">1</div>
+        </div>
+        <div class="flex__child" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
+        </div>
+        <div class="flex__child flex__child--align-stretch" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 100%;">3</div>
+        </div>
+        <div class="flex__child" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 5rem;">4</div>
+        </div>
+      </div>
+    </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"start"</p>
     <div class="sg-bg-color-1">
@@ -306,7 +584,7 @@
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"end"</p>
     <div class="sg-bg-color-1">
-      <div class="flex -spacing-3" style="height: 10rem;">
+      <div class="flex" style="height: 10rem;">
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 5rem;">1</div>
         </div>
@@ -324,7 +602,7 @@
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"center"</p>
     <div class="sg-bg-color-1">
-      <div class="flex -spacing-3" style="height: 10rem;">
+      <div class="flex" style="height: 10rem;">
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 5rem;">1</div>
         </div>
@@ -340,17 +618,17 @@
       </div>
     </div>
 
-    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"stretch"</p>
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"baseline"</p>
     <div class="sg-bg-color-1">
-      <div class="flex -spacing-3" style="height: 10rem;">
-        <div class="flex__child" style="width: 25%;">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 5rem;">1</div>
+      <div class="flex" style="height: 10rem;">
+        <div class="flex__child flex__child--align-baseline" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center -spacing-24 sg-bg-color-2" style="height: 5rem;">1</div>
         </div>
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
         </div>
-        <div class="flex__child flex__child--align-stretch" style="width: 25%;">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 100%;">3</div>
+        <div class="flex__child flex__child--align-baseline" style="width: 25%;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 3rem;">3</div>
         </div>
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-5" style="height: 5rem;">4</div>
