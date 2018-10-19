@@ -197,6 +197,7 @@ These values can be set:
 `flex__child--shrink-1` #(default)  
 `flex__child--shrink-0`  
 `flex__child--auto`  
+`flex__child--none`  
 
 
 ### Responsive
@@ -263,3 +264,4 @@ Grow/shrink/auto (values "0" and "1"):
 `flex__child--grow-(value)-(breakpoint)`  
 `flex__child--shrink-(value)-(breakpoint)`  
 `flex__child--auto-(breakpoint)`  
+`flex__child--none-(breakpoint)`  
