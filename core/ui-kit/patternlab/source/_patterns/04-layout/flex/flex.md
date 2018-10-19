@@ -215,8 +215,7 @@ The flex system can provide breakpoint specific values to fit the needs of certa
 
 Flex context:
 `flex-(breakpoint)`  
-`flex--inline-(breakpoint)`  
-`flex--none-(breakpoint)`  
+`flex--inline-(breakpoint)` 
 
 Direction (on the parent container):  
 `flex--direction-column-(breakpoint)`  
