@@ -52,6 +52,14 @@
   flex-basis: #{$basis};
 }
 
+@mixin flex-child-auto {
+  flex: auto;
+}
+
+@mixin flex-child-none {
+  flex: none;
+}
+
 @mixin flex-child-order($order) {
   order: #{$order};
 }
