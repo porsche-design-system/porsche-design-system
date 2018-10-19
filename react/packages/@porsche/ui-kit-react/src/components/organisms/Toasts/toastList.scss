@@ -1,0 +1,35 @@
+@import "../../../common";
+
+.#{$global-class-prefix}toast-list {
+    display: flex;
+    flex-direction: column;
+    bottom: $spacing-12;
+    left: $spacing-12;
+    padding-right: $spacing-12;
+    position: fixed;
+    box-sizing: border-box;
+    align-items: flex-start;
+    z-index: 1000;
+
+    @include breakpoint("s") {
+        bottom: $spacing-42;
+        left: $spacing-60;
+    }
+
+    &--fade {
+        &-enter {
+            transform: translate3d(-120%, 0, 0);
+        }
+        &-enter-active {
+            transform: translate3d(0, 0, 0);
+            transition: transform 400ms cubic-bezier(0.46, 0.01, 0.51, 1);
+        }
+        &-exit {
+            transform: translate3d(0, 0, 0);
+        }
+        &-exit-active {
+            transform: translate3d(-120%, 0, 0);
+            transition: transform 300ms cubic-bezier(0.46, 0.01, 0.51, 1);
+        }
+    }
+}
