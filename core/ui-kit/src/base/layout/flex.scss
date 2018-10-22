@@ -269,7 +269,6 @@
     }
   }
 
-
   /**
    * properties for flex children items
    */
@@ -284,6 +283,10 @@
     &--shrink {
       &-0 { @include flex-child-shrink(0); }
       &-1 { @include flex-child-shrink(1); }
+    }
+
+    &--initial {
+      @include flex-child-initial;
     }
 
     &--auto {
@@ -303,6 +306,10 @@
       &--shrink {
         &-0-xs { @include flex-child-shrink(0); }
         &-1-xs { @include flex-child-shrink(1); }
+      }
+
+      &--initial-xs {
+        @include flex-child-initial;
       }
 
       &--auto-xs  {
@@ -325,6 +332,10 @@
         &-1-s { @include flex-child-shrink(1); }
       }
 
+      &--initial-s {
+        @include flex-child-initial;
+      }
+
       &--auto-s  {
         @include flex-child-auto;
       }
@@ -343,6 +354,10 @@
       &--shrink {
         &-0-m { @include flex-child-shrink(0); }
         &-1-m { @include flex-child-shrink(1); }
+      }
+
+      &--initial-m {
+        @include flex-child-initial;
       }
 
       &--auto-m {
@@ -365,6 +380,10 @@
         &-1-l { @include flex-child-shrink(1); }
       }
 
+      &--initial-l {
+        @include flex-child-initial;
+      }
+
       &--auto-l {
         @include flex-child-auto;
       }
@@ -383,6 +402,10 @@
       &--shrink {
         &-0-xl { @include flex-child-shrink(0); }
         &-1-xl { @include flex-child-shrink(1); }
+      }
+
+      &--initial-xl {
+        @include flex-child-initial;
       }
 
       &--auto-xl {
