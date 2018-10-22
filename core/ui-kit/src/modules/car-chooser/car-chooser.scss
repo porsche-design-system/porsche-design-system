@@ -157,7 +157,7 @@
         @include flex;
         @include flex-direction(column);
         @include -align-center;
-        @include flex-child-align(flex-end);
+        @include flex-child-cross-axis(flex-end);
 
         border-bottom: 0;
         padding-bottom: $car-chooser-dropdown-column-inner-spacing-reset;
