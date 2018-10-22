@@ -37,7 +37,7 @@
 
     @include breakpoint('m') {
       @include -spacing-12;
-      @include flex-child-align(center);
+      @include flex-child-cross-axis(center);
     }
   }
 

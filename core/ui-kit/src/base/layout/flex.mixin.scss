@@ -52,7 +52,7 @@
   flex: none;
 }
 
-@mixin flex-child-align($align) {
+@mixin flex-child-cross-axis($align) {
   align-self: #{$align};
 }
 

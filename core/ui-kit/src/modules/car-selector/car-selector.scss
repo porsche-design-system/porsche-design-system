@@ -97,7 +97,7 @@
       margin-left: $car-selector-bar-icon-width;
 
       @include breakpoint('m') {
-        @include flex-child-align(flex-end);
+        @include flex-child-cross-axis(flex-end);
         @include -spacing-12(left, padding);
         @include -spacing-12(right, padding);
         @include -spacing-zero(left);

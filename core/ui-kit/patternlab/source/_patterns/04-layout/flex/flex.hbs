@@ -526,7 +526,7 @@
 
     <!-- ##########  Align Self (Flex Child)  ########## -->
 
-    <h2 class="-text-size-4-thin -text-color-black -spacing-30">Align ("align-self")</h2>
+    <h2 class="-text-size-4-thin -text-color-black -spacing-30">Cross Axis ("align-self")</h2>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"auto" (default)</p>
     <div class="sg-bg-color-1">
@@ -537,7 +537,7 @@
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
         </div>
-        <div class="flex__child flex__child--align-auto" style="width: 25%;">
+        <div class="flex__child flex__child--cross-axis-auto" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 3rem;">3</div>
         </div>
         <div class="flex__child" style="width: 25%;">
@@ -555,7 +555,7 @@
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
         </div>
-        <div class="flex__child flex__child--align-stretch" style="width: 25%;">
+        <div class="flex__child flex__child--cross-axis-stretch" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 100%;">3</div>
         </div>
         <div class="flex__child" style="width: 25%;">
@@ -573,7 +573,7 @@
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
         </div>
-        <div class="flex__child flex__child--align-start" style="width: 25%;">
+        <div class="flex__child flex__child--cross-axis-start" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 3rem;">3</div>
         </div>
         <div class="flex__child" style="width: 25%;">
@@ -591,7 +591,7 @@
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
         </div>
-        <div class="flex__child flex__child--align-end" style="width: 25%;">
+        <div class="flex__child flex__child--cross-axis-end" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 3rem;">3</div>
         </div>
         <div class="flex__child" style="width: 25%;">
@@ -609,7 +609,7 @@
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
         </div>
-        <div class="flex__child flex__child--align-center" style="width: 25%;">
+        <div class="flex__child flex__child--cross-axis-center" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 3rem;">3</div>
         </div>
         <div class="flex__child" style="width: 25%;">
@@ -621,13 +621,13 @@
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"baseline"</p>
     <div class="sg-bg-color-1">
       <div class="flex" style="height: 10rem;">
-        <div class="flex__child flex__child--align-baseline" style="width: 25%;">
+        <div class="flex__child flex__child--cross-axis-baseline" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center -spacing-24 sg-bg-color-2" style="height: 5rem;">1</div>
         </div>
         <div class="flex__child" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 8rem;">2</div>
         </div>
-        <div class="flex__child flex__child--align-baseline" style="width: 25%;">
+        <div class="flex__child flex__child--cross-axis-baseline" style="width: 25%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-hl" style="height: 3rem;">3</div>
         </div>
         <div class="flex__child" style="width: 25%;">
@@ -637,7 +637,10 @@
     </div>
 
 
-    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"grow/shrink/auto"</p>
+  <!-- ##########  Grow/Shrink/Auto  ########## -->
+
+    <h2 class="-text-size-4-thin -text-color-black -spacing-30">Grow/Shrink/Auto</h2>
+
     <div class="sg-bg-color-1">
       <div class="flex" style="height: 10rem;">
         <div class="flex__child flex__child--shrink-1 flex__child--grow-1-l">
