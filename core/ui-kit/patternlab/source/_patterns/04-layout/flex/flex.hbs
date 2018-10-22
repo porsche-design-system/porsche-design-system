@@ -8,7 +8,7 @@
     <!-- ##########  Flex parent  ########## -->
     <h2 class="-text-size-4-thin -text-color-black -spacing-30">Initialization</h2>
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex" (default)</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
@@ -36,7 +36,7 @@
     </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"flex-inline"</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--inline">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
@@ -47,8 +47,8 @@
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
         </div>
-      </div>
-      <div class="flex flex--inline">
+      </div><!-- fighting the space between inline block elements
+   --><div class="flex flex--inline">
         <div class="flex__child">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
@@ -61,46 +61,37 @@
       </div>
     </div>
 
-    <!-- ##########  Direction  ########## -->
+    <!-- ##########  Direction ("flex-direction")  ########## -->
 
     <h2 class="-text-size-4-thin -text-color-black -spacing-30">Direction ("flex-direction")</h2>
 
-    <div class="grid">
-      <div class="grid__child grid__child--size-6">
-
-        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"row" (default)</p>
-        <div class="sg-bg-color-1" style="padding: 1rem 0;">
-          <div class="flex">
-            <div class="flex__child">
-              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
-            </div>
-            <div class="flex__child">
-              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
-            </div>
-            <div class="flex__child">
-              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
-            </div>
-          </div>
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"row" (default)</p>
+    <div class="sg-bg-color-1 sg-padding-tb-1">
+      <div class="flex">
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
-
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
+        </div>
       </div>
-      <div class="grid__child grid__child--size-6">
+    </div>
 
-        <p class="-text-size-copy -text-color-grey-7 -spacing-12">"row reverse"</p>
-        <div class="sg-bg-color-1" style="padding: 1rem 0;">
-          <div class="flex flex--direction-row-reverse">
-            <div class="flex__child">
-              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
-            </div>
-            <div class="flex__child">
-              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
-            </div>
-            <div class="flex__child">
-              <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
-            </div>
-          </div>
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"row reverse"</p>
+    <div class="sg-bg-color-1 sg-padding-tb-1">
+      <div class="flex flex--direction-row-reverse">
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
-
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
+        </div>
+        <div class="flex__child">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
+        </div>
       </div>
     </div>
 
@@ -108,7 +99,7 @@
       <div class="grid__child grid__child--size-6">
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"column"</p>
-        <div class="sg-bg-color-1" style="padding: 1rem 0;">
+        <div class="sg-bg-color-1 sg-padding-tb-1">
           <div class="flex flex--direction-column">
             <div class="flex__child">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
@@ -126,7 +117,7 @@
       <div class="grid__child grid__child--size-6">
 
         <p class="-text-size-copy -text-color-grey-7 -spacing-12">"column reverse"</p>
-        <div class="sg-bg-color-1" style="padding: 1rem 0;">
+        <div class="sg-bg-color-1 sg-padding-tb-1">
           <div class="flex flex--direction-column-reverse">
             <div class="flex__child -spacing-12">
               <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
@@ -143,12 +134,12 @@
       </div>
     </div>
 
-    <!-- ##########  Wrap  ########## -->
+    <!-- ##########  Wrap ("flex-wrap")  ########## -->
 
     <h2 class="-text-size-4-thin -text-color-black -spacing-30">Wrap</h2>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"wrap-no" (default)</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--wrap-no">
         <div class="flex__child" style="width: 50%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
@@ -166,7 +157,7 @@
     </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"wrap"</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--wrap">
         <div class="flex__child" style="width: 50%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
@@ -184,7 +175,7 @@
     </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"wrap-reverse"</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--wrap-reverse">
         <div class="flex__child" style="width: 50%;">
           <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
@@ -202,100 +193,100 @@
     </div>
 
 
-    <!-- ##########  Main Axis (Justify Content)  ########## -->
+    <!-- ##########  Main Axis ("justify-content")  ########## -->
 
     <h2 class="-text-size-4-thin -text-color-black -spacing-30">Main Axis ("justify-content")</h2>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"start" (default)</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--main-axis-start">
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 2rem; width: 100px;">2</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 2rem; width: 100px;">3</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
         </div>
       </div>
     </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"end"</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--main-axis-end">
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 2rem; width: 100px;">2</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 2rem; width: 100px;">3</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
         </div>
       </div>
     </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"center"</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--main-axis-center">
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 2rem; width: 100px;">2</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 2rem; width: 100px;">3</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
         </div>
       </div>
     </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"space between"</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--main-axis-space-between">
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 2rem; width: 100px;">2</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 2rem; width: 100px;">3</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
         </div>
       </div>
     </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"space around"</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--main-axis-space-around">
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 2rem; width: 100px;">2</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 2rem; width: 100px;">3</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
         </div>
       </div>
     </div>
 
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"space evenly"</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex flex--main-axis-space-evenly">
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="height: 2rem; width: 100px;">1</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2" style="width: 100px;">1</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="height: 2rem; width: 100px;">2</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3" style="width: 100px;">2</div>
         </div>
         <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="height: 2rem; width: 100px;">3</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-4" style="width: 100px;">3</div>
         </div>
       </div>
     </div>
-    <!-- ##########  Cross Axis (Align Items)  ########## -->
+    <!-- ##########  Cross Axis ("align-items")  ########## -->
 
     <h2 class="-text-size-4-thin -text-color-black -spacing-30">Cross Axis ("align-items")</h2>
 
@@ -582,7 +573,7 @@
 
     <h2 class="-text-size-3-thin -text-color-black -spacing-30">Modifier for the Children</h2>
 
-    <!-- ##########  Align Self (Flex Child)  ########## -->
+    <!-- ##########  Cross Axis ("align-self")  ########## -->
 
     <h2 class="-text-size-4-thin -text-color-black -spacing-30">Cross Axis ("align-self")</h2>
 
@@ -702,21 +693,21 @@
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"grow-0 (default)"</p>
     <p class="-text-size-copy -text-color-grey-7">"grow-1"</p>
     <p class="-text-size-copy -text-color-grey-7 -spacing-6">Handles how to grow an item based on the space that is left to fulfill the parents width.</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex">
-        <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2 sg-padding-1">1</div>
+        <div class="flex__child" style="width: 100px;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
         </div>
-        <div class="flex__child">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3 sg-padding-1">2</div>
+        <div class="flex__child" style="width: 100px;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3">2</div>
         </div>
       </div>
       <div class="flex">
-        <div class="flex__child flex__child--grow-0">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2 sg-padding-1">1</div>
+        <div class="flex__child flex__child--grow-0" style="width: 100px;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
         </div>
-        <div class="flex__child flex__child--grow-1">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3 sg-padding-1">2</div>
+        <div class="flex__child flex__child--grow-1" style="width: 100px;">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3">2</div>
         </div>
       </div>
     </div>
@@ -724,21 +715,21 @@
     <p class="-text-size-copy -text-color-grey-7 -spacing-12">"shrink-0"</p>
     <p class="-text-size-copy -text-color-grey-7">"shrink-1 (default)"</p>
     <p class="-text-size-copy -text-color-grey-7 -spacing-6">Handles how to shrink an item based on the space that exceeds the parents width to fulfill it.</p>
-    <div class="sg-bg-color-1" style="padding: 1rem 0;">
+    <div class="sg-bg-color-1 sg-padding-tb-1">
       <div class="flex">
         <div class="flex__child" style="width: 80%">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2 sg-padding-1">1</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
         </div>
         <div class="flex__child" style="width: 80%">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3 sg-padding-1">2</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3">2</div>
         </div>
       </div>
       <div class="flex">
         <div class="flex__child flex__child--shrink-0" style="width: 80%">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2 sg-padding-1">1</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-2">1</div>
         </div>
         <div class="flex__child flex__child--shrink-1" style="width: 80%">
-          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3 sg-padding-1">2</div>
+          <div class="-text-size-5-regular -text-color-white -align-center sg-bg-color-3">2</div>
         </div>
       </div>
     </div>

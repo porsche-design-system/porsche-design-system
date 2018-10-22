@@ -134,6 +134,10 @@ html, body {
   padding: 5rem;
 }
 
+.sg-padding-tb-1 {
+  padding: 1rem 0;
+}
+
 .sg-swatch {
   display: block;
   height: 4em;
