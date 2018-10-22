@@ -3,17 +3,19 @@
 .#{$global-class-prefix}toast-list {
     display: flex;
     flex-direction: column;
+    left: 0;
     bottom: $spacing-12;
-    left: $spacing-12;
+    padding-left: $spacing-12;
     padding-right: $spacing-12;
     position: fixed;
+    overflow: hidden;
     box-sizing: border-box;
     align-items: flex-start;
     z-index: 1000;
 
     @include breakpoint("s") {
         bottom: $spacing-42;
-        left: $spacing-60;
+        padding-left: $spacing-60;
     }
 
     &--fade {

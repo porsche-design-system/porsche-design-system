@@ -2,7 +2,7 @@ import React from "react"
 import { Modal, Button } from "@porsche/ui-kit-react"
 import lorem from "lorem-ipsum"
 
-class ModalExampleShowCloseIcon extends React.Component {
+class ModalExampleShowCloseIcon extends React.PureComponent {
     constructor(props) {
         super(props)
 
