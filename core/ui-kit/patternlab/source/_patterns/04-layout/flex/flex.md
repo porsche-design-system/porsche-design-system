@@ -8,7 +8,8 @@ state: inreview
 ## Technical guidelines
 The Porsche UI Kit flex layout system is based on native css flex behaviours and can be controlled by class names.
 
-### Flex container
+### Properties for the Parent
+
 #### Initialization of flex context as a block level element
 
 ```
@@ -35,10 +36,9 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
 </div>
 ```
 
-### Direction
-In some cases it might be neccessary to define or change direction of the columns. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
+#### Direction
+In some cases it might be necessary to define or change direction of the columns. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
 
-#### Column
 ```
 <div class="flex flex--direction-column">
   <div class="flex__child">
@@ -50,27 +50,30 @@ In some cases it might be neccessary to define or change direction of the column
 </div>
 ```
 
-#### Row reverse
-```
-<div class="flex flex--direction-row-reverse">
-  <div class="flex__child">
-    Column 1 displayed in a reverse order
-  </div>
-  <div class="flex__child">
-    Column 2 displayed in a reverse order
-  </div>
-</div>
-```
-
 Class names must be set on the flex parent container:  
 `flex--direction-row` #(default)  
 `flex--direction-row-reverse`  
 `flex--direction-column`  
 `flex--direction-column-reverse`  
 
+#### Wrapping
+The flex-wrap property is a sub-property of the flexible box layout module. It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in (the cross axis is the axis perpendicular to the main axis. Its direction depends on the main axis direction).
 
-### Alignment (for all children)
-Native flexbox alignments can also be set by adding specific class names to the flex parent container.
+```
+<div class="flex flex--wrap">
+  <div class="flex__child">
+    Column 1
+  </div>
+  <div class="flex__child">
+    Column 2
+  </div>
+</div>
+```
+
+These wrapping values can be set:  
+`flex--nowrap` #(default)  
+`flex--wrap`  
+`flex--wrap-reverse`  
 
 #### Main axis
 
@@ -136,27 +139,9 @@ These alignment values can be set:
 `flex--align-content-space-around`  
 
 
-### Wrapping
-The flex-wrap property is a sub-property of the flexible box layout module. It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in (the cross axis is the axis perpendicular to the main axis. Its direction depends on the main axis direction).
+### Properties for the Children
 
-```
-<div class="flex flex--wrap">
-  <div class="flex__child">
-    Column 1
-  </div>
-  <div class="flex__child">
-    Column 2
-  </div>
-</div>
-```
-
-These wrapping values can be set:  
-`flex--nowrap` #(default)  
-`flex--wrap`  
-`flex--wrap-reverse`  
-
-
-### Cross Axis (for specific children)
+#### Cross Axis (for specific children)
 
 ```
 <div class="flex">
@@ -177,8 +162,11 @@ These alignment values can be set:
 `flex__child--cross-axis-stretch`  
 `flex__child--cross-axis-baseline`  
 
-### Grow/shrink/auto
-Flexbox default behaviour on how the childrens widths are rendered (shrinked, stretched, auto) can be overwritten with the following class names.
+#### Grow/Shrink
+Flexbox default behaviour on how the childrens widths are rendered (shrinked, stretched) can be overwritten with the following class names.  
+
+Grow: Handles how to grow an item based on the space that is left to fulfill the parents width.  
+Shrink: Handles how to shrink an item based on the space that exceeds the parents width to fulfill it.  
 
 ```
 <div class="flex">
@@ -196,8 +184,11 @@ These values can be set:
 `flex__child--grow-1`  
 `flex__child--shrink-1` #(default)  
 `flex__child--shrink-0`  
-`flex__child--auto`  
-`flex__child--none`  
+
+Following values can be set and are shorthands for flex-grow and -shrink:
+`flex__child--initial`  #(grow:0 and shrink:1)  
+`flex__child--auto`  #(grow:1 and shrink:1)  
+`flex__child--none`  #(grow:0 and shrink:0)  
 
 
 ### Responsive
@@ -211,7 +202,7 @@ The flex system can provide breakpoint specific values to fit the needs of certa
 `flex(__child)--(modifier)-l`  
 `flex(__child)--(modifier)-xl`  
 
-#### Following values can be set by using breakpoints classes
+#### Following values can be set by using breakpoint classes
 
 Flex context:
 `flex-(breakpoint)`  
@@ -222,6 +213,11 @@ Direction (on the parent container):
 `flex--direction-column-reverse-(breakpoint)`  
 `flex--direction-row-(breakpoint)`  
 `flex--direction-row-reverse-(breakpoint)`  
+
+Wrapping (on the parent container):  
+`flex--wrap-(breakpoint)`  
+`flex--wrap-no-(breakpoint)`  
+`flex--wrap-reverse-(breakpoint)`  
 
 Alignment of main axis (for all children set on the parent container):  
 `flex--main-axis-start-(breakpoint)`  
@@ -246,11 +242,6 @@ Align content (for all children set on the parent container):
 `flex--align-content-space-between-(breakpoint)`  
 `flex--align-content-space-around-(breakpoint)`  
 
-Wrapping:  
-`flex--wrap-(breakpoint)`  
-`flex--nowrap-(breakpoint)`  
-`flex--wrap-reverse-(breakpoint)`  
-
 Cross Axis (for specific children):  
 `flex__child--cross-axis-auto-(breakpoint)`  
 `flex__child--cross-axis-start-(breakpoint)`  
@@ -259,8 +250,9 @@ Cross Axis (for specific children):
 `flex__child--cross-axis-stretch-(breakpoint)`  
 `flex__child--cross-axis-baseline-(breakpoint)`  
 
-Grow/shrink/auto (values "0" and "1"):  
+Grow/shrink (values "0" and "1" are possible for specific children):  
 `flex__child--grow-(value)-(breakpoint)`  
 `flex__child--shrink-(value)-(breakpoint)`  
+`flex__child--initial-(breakpoint)`  
 `flex__child--auto-(breakpoint)`  
 `flex__child--none-(breakpoint)`  

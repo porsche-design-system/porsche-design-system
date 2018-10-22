@@ -9,12 +9,12 @@
   display: inline-flex;
 }
 
-@mixin flex-wrap($wrap) {
-  flex-wrap: #{$wrap};
-}
-
 @mixin flex-direction($direction) {
   flex-direction: #{$direction};
+}
+
+@mixin flex-wrap($wrap) {
+  flex-wrap: #{$wrap};
 }
 
 @mixin flex-main-axis($align) {
@@ -32,6 +32,10 @@
 /**
  * properties for flex child items
  */
+@mixin flex-child-cross-axis($align) {
+  align-self: #{$align};
+}
+
 @mixin flex-child-grow($grow) {
   flex-grow: #{$grow};
 }
@@ -44,16 +48,16 @@
   flex-basis: #{$basis};
 }
 
+@mixin flex-child-initial {
+  flex: initial;
+}
+
 @mixin flex-child-auto {
   flex: auto;
 }
 
 @mixin flex-child-none {
   flex: none;
-}
-
-@mixin flex-child-cross-axis($align) {
-  align-self: #{$align};
 }
 
 @mixin flex-child-order($order) {
