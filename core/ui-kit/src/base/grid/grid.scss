@@ -177,14 +177,14 @@
     &--size {
       @for $i from 1 through 12 {
         &-#{$i} {
-          width: #{nth($grid-child-width, $i + 1)};
+          @include grid-child-size($i + 1);
         }
       }
 
       @include breakpoint('xs') {
         @for $i from 1 through 12 {
           &-#{$i}-xs {
-            width: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-size($i + 1);
           }
         }
       }
@@ -192,7 +192,7 @@
       @include breakpoint('s') {
         @for $i from 1 through 12 {
           &-#{$i}-s {
-            width: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-size($i + 1);
           }
         }
       }
@@ -200,7 +200,7 @@
       @include breakpoint('m') {
         @for $i from 1 through 12 {
           &-#{$i}-m {
-            width: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-size($i + 1);
           }
         }
       }
@@ -208,7 +208,7 @@
       @include breakpoint('l') {
         @for $i from 1 through 12 {
           &-#{$i}-l {
-            width: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-size($i + 1);
           }
         }
       }
@@ -216,7 +216,7 @@
       @include breakpoint('xl') {
         @for $i from 1 through 12 {
           &-#{$i}xl {
-            width: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-size($i + 1);
           }
         }
       }
@@ -225,14 +225,14 @@
     &--offset {
       @for $i from 0 through 11 {
         &-#{$i} {
-          margin-left: #{nth($grid-child-width, $i + 1)};
+          @include grid-child-offset($i + 1);
         }
       }
 
       @include breakpoint('xs') {
         @for $i from 0 through 11 {
           &-#{$i}-xs {
-            margin-left: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-offset($i + 1);
           }
         }
       }
@@ -240,7 +240,7 @@
       @include breakpoint('s') {
         @for $i from 0 through 11 {
           &-#{$i}-s {
-            margin-left: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-offset($i + 1);
           }
         }
       }
@@ -248,7 +248,7 @@
       @include breakpoint('m') {
         @for $i from 0 through 11 {
           &-#{$i}-m {
-            margin-left: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-offset($i + 1);
           }
         }
       }
@@ -256,7 +256,7 @@
       @include breakpoint('l') {
         @for $i from 0 through 11 {
           &-#{$i}-l {
-            margin-left: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-offset($i + 1);
           }
         }
       }
@@ -264,7 +264,7 @@
       @include breakpoint('xl') {
         @for $i from 0 through 11 {
           &-#{$i}xl {
-            margin-left: #{nth($grid-child-width, $i + 1)};
+            @include grid-child-offset($i + 1);
           }
         }
       }
