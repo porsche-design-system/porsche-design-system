@@ -14,7 +14,7 @@ describe('Flex', () => {
 
   it('should have no visual regression', async () => {
     expect(await visualRegressionTester.test('flex~complete', async () => {
-      await visualRegressionTester.goTo('04-layout-flex/04-layout-flex.rendered.html');
+      await visualRegressionTester.goTo('04-layout-flex-flex/04-layout-flex-flex.rendered.html');
     })).toBeFalsy();
   });
 

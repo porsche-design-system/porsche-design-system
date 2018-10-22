@@ -14,7 +14,7 @@ describe('Grid', () => {
 
   it('should have no visual regression', async () => {
     expect(await visualRegressionTester.test('grid~complete', async () => {
-      await visualRegressionTester.goTo('04-layout-grid/04-layout-grid.rendered.html');
+      await visualRegressionTester.goTo('04-layout-grid-grid/04-layout-grid-grid.rendered.html');
     })).toBeFalsy();
   });
 

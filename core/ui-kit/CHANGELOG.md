@@ -49,9 +49,9 @@ Every usage of flex component, which was used to layout with grid sizings, must 
     `flex__child` => `grid__child`  
     `flex__child--gap-left` => deleted  
     `flex__child--gap-right` => deleted  
-    `flex__child--gap-left-x` => `grid__child--gap-x`  
-    `flex__child--gap-right-x` => `grid__child--gap-x`  
-    `flex__child--x` => `grid__child--x`  
+    `flex__child--gap-left-(variant)` => is set on parent only  
+    `flex__child--gap-right-(variant)` => is set on parent only  
+    `flex__child--(size)` => `grid__child--size-(size)`  
   
 ### Refactoring of flex component.
 * Added missing flex properties.
