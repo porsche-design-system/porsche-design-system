@@ -62,3 +62,10 @@
   }
 }
 
+@mixin grid-child-size($i) {
+  width: #{nth($grid-child-width, $i)};
+}
+
+@mixin grid-child-offset($i) {
+  margin-left: #{nth($grid-child-width, $i)};
+}

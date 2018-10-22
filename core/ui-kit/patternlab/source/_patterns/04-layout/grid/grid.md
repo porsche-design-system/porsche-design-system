@@ -39,21 +39,21 @@ Margin column:
 ## Technical guidelines
 The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas. Breakpoint specific behaviour (width, offset, etc.) can easily be set by adding breakpoint specific classnames. Also decent nestings are supported.
 
-### Basic Grid
+### Size
 For basic grid implementation, it is recommended to use this pattern:
 
 ```
 <div class="grid">
-  <div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--size-6">
     Column 1 with a width of 6 columns out of 12
   </div>
-  <div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--size-6">
     Column 2 with a width of 6 columns out of 12
   </div>
 </div>
 ```
 
-The class `grid` on the parent and `grid__child` on the children are mandatory. With `grid__child--(1-12)` it is possible to define column widths.
+The class `grid` on the parent and `grid__child` on the children are mandatory. With `grid__child--size-(1-12)` it is possible to define column widths.
 
 
 ### Offset
@@ -61,12 +61,12 @@ In some cases it can be neccessary to indent columns. The grid gives basic inden
 
 ```
 <div class="grid">
-  <div class="grid__child grid__child--10 grid__child--offset-1">
+  <div class="grid__child grid__child--size-10 grid__child--offset-1">
     1 column with a width of 10 and an offset left of 1
   </div>
 </div>
 ```
-The child column has an offset of 1 column on the left and due to its length of 10 columns an offset of 1 column to the right.
+The child column has an offset of 1 column on the left and due to its length of 10 columns an offset of 1 column to the right. With `grid__child--offset-(0-11)` it is possible to define offsets.
 
 
 ### Direction
@@ -75,10 +75,10 @@ In some cases it might be neccessary to define or change direction of the column
 #### Column
 ```
 <div class="grid grid--direction-column">
-  <div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--size-6">
     Column 1 with a width of 6 but vertically aligned
   </div>
-  <div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--size-6">
     Column 2 with a width of 6 but vertically aligned
   </div>
 </div>
@@ -87,10 +87,10 @@ In some cases it might be neccessary to define or change direction of the column
 #### Row reverse
 ```
 <div class="grid grid--direction-row-reverse">
-  <div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--size-6">
     Column 1 with a width of 6 but displayed in a reverse order
   </div>
-  <div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--size-6">
     Column 2 with a width of 6 but displayed in a reverse order
   </div>
 </div>
@@ -103,31 +103,35 @@ Class names must be set on the grid parent container:
 `grid--direction-column-reverse`  
 
 
-### Zero gap
-In some cases it can be useful to set grid gaps to zero to set elements besides each other without spacings.
+### Gap
+In some cases it might be useful to adapt the gap of the grid. Default is `normal`. But `zero` is also possible to place elements besides each other without spacings.
 
-#### 2 items side by side
+#### Zero
 ```
 <div class="grid grid--gap-zero">
-  <div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--size-6">
     1st item aligned left
   </div>
-  <div class="grid__child grid__child--6">
+  <div class="grid__child grid__child--size-6">
     2nd item aligned left to item 1
   </div>
 </div>
 ```
 
+Class names must be set on the grid parent container:  
+`grid--gap-normal` #(default)  
+`grid--gap-zero`  
+
 ### Nesting
 Basic nesting of grids is supported. "Basic" because of percentage value of width and gaps which couldn't be calculated for each column width. Here are some examples of "dos" and "don'ts":
 
-#### Possible nestings by keeping columns in "the grid"
+#### Possible nesting by keeping columns in "the grid"
 Only columns with the following widths could be nested:
 - total width of 8
 - total width of 6
 - total width of 4
 
-#### Forbidden nestings
+#### Forbidden nesting
 Nesting inside columns with the following widths should be prevented, because all children widths won't be in "the grid" anymore:
 - total width of 11
 - total width of 10
@@ -138,17 +142,17 @@ Nesting inside columns with the following widths should be prevented, because al
 
 
 ### Responsive
-The grid system is responsive by itself by using percentages for every value (widths, gaps, offsets). But it can also provide breakpoint specific values to fit the needs of certain viewports:
+The grid system is fluid/responsive by itself by using percentages for every value (widths, gaps, offsets). But it can also provide breakpoint specific values to fit the needs of certain viewports:
 
 ```
 <div class="grid">
-  <div class="grid__child grid__child--6 grid__child--3-l">
+  <div class="grid__child grid__child--size-6 grid__child--size-3-l">
     Column 1 with a width of 6 columns out of 12 (default) and 3 columns (breakpoint "l")
   </div>
-  <div class="grid__child grid__child--6 grid__child--3-l">
+  <div class="grid__child grid__child--size-6 grid__child--size-3-l">
     Column 2 with a width of 6 columns out of 12 (default) and 3 columns (breakpoint "l")
   </div>
-  <div class="grid__child grid__child--12 grid__child--6-l">
+  <div class="grid__child grid__child--size-12 grid__child--size-6-l">
     Column 3 with a width of 12 columns out of 12 (default) and 6 columns (breakpoint "l")
   </div>
 </div>
@@ -164,13 +168,13 @@ The grid system is responsive by itself by using percentages for every value (wi
 
 #### Following values can be set by using breakpoints classes
 
-Column width:  
-`grid__child--(size)-(breakpoint)`  
+Size:  
+`grid__child--size-(size)-(breakpoint)`  
 
-Column offset:  
-`grid__child--offset-(size)-(breakpoint)`  
+Offset:  
+`grid__child--offset-(offset)-(breakpoint)`  
 
-Direction (on the parent container):  
+Direction:  
 `grid--direction-column-(breakpoint)`  
 `grid--direction-column-reverse-(breakpoint)`  
 `grid--direction-row-(breakpoint)`  
@@ -179,5 +183,3 @@ Direction (on the parent container):
 Gaps:  
 `grid--gap-normal-(breakpoint)`  
 `grid--gap-zero-(breakpoint)`  
-
-

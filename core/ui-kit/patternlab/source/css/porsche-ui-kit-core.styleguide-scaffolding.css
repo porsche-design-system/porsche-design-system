@@ -94,6 +94,46 @@ html, body {
   background: #ff1493;
 }
 
+.sg-box-size-1 {
+  height: 1rem;
+}
+
+.sg-box-size-2 {
+  height: 2rem;
+}
+
+.sg-box-size-3 {
+  height: 3rem;
+}
+
+.sg-box-size-4 {
+  height: 4rem;
+}
+
+.sg-box-size-5 {
+  height: 5rem;
+}
+
+.sg-padding-1 {
+  padding: 1rem;
+}
+
+.sg-padding-2 {
+  padding: 2rem;
+}
+
+.sg-padding-3 {
+  padding: 3rem;
+}
+
+.sg-padding-4 {
+  padding: 4rem;
+}
+
+.sg-padding-5 {
+  padding: 5rem;
+}
+
 .sg-swatch {
   display: block;
   height: 4em;
