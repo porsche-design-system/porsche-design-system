@@ -156,26 +156,26 @@ These wrapping values can be set:
 `flex--wrap-reverse`  
 
 
-### Align self (for specific children)
+### Cross Axis (for specific children)
 
 ```
 <div class="flex">
   <div class="flex__child">
     Column 1
   </div>
-  <div class="flex__child flex__child--align-end">
+  <div class="flex__child flex__child--cross-axis-end">
     Column 2 self aligned to the bottom
   </div>
 </div>
 ```
 
 These alignment values can be set:  
-`flex__child--align-auto` #(default)  
-`flex__child--align-start`  
-`flex__child--align-end`  
-`flex__child--align-center`  
-`flex__child--align-stretch`  
-`flex__child--align-baseline`  
+`flex__child--cross-axis-auto` #(default)  
+`flex__child--cross-axis-start`  
+`flex__child--cross-axis-end`  
+`flex__child--cross-axis-center`  
+`flex__child--cross-axis-stretch`  
+`flex__child--cross-axis-baseline`  
 
 ### Grow/shrink/auto
 Flexbox default behaviour on how the childrens widths are rendered (shrinked, stretched, auto) can be overwritten with the following class names.
@@ -251,13 +251,13 @@ Wrapping:
 `flex--nowrap-(breakpoint)`  
 `flex--wrap-reverse-(breakpoint)`  
 
-Align self (for specific children):  
-`flex__child--align-auto-(breakpoint)`  
-`flex__child--align-start-(breakpoint)`  
-`flex__child--align-end-(breakpoint)`  
-`flex__child--align-center-(breakpoint)`  
-`flex__child--align-stretch-(breakpoint)`  
-`flex__child--align-baseline-(breakpoint)`  
+Cross Axis (for specific children):  
+`flex__child--cross-axis-auto-(breakpoint)`  
+`flex__child--cross-axis-start-(breakpoint)`  
+`flex__child--cross-axis-end-(breakpoint)`  
+`flex__child--cross-axis-center-(breakpoint)`  
+`flex__child--cross-axis-stretch-(breakpoint)`  
+`flex__child--cross-axis-baseline-(breakpoint)`  
 
 Grow/shrink/auto (values "0" and "1"):  
 `flex__child--grow-(value)-(breakpoint)`  
