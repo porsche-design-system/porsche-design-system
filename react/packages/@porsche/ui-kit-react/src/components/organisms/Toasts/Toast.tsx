@@ -4,17 +4,21 @@ import { prefix, Icon, Text, ClassNameProp, ComponentProp, getElementType, Spaci
 import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
 import { META } from "../../../lib"
 import { ToastList } from "./ToastList"
+import { ToastManager } from "./ToastManager"
 
 export interface Toast extends React.StatelessComponent<ToastProps> {
     List: typeof ToastList
+    Manager: typeof ToastManager
 }
+
+export type ToastType = "info" | "success" | "warning" | "error"
 
 export interface ToastProps extends ClassNameProp, ComponentProp {
     /**
      * determines the color of the left border
      * @default info
      */
-    type?: "info" | "success" | "warning" | "error"
+    type?: ToastType
     /**
      * message displayed in the toast
      */
@@ -61,8 +65,6 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable
 
         onClick(props)
     }
-
-    const textPaddingRight = !onClick ? "b" : undefined
     /* TODO: Responsive Spacings with css */
     return (
         <ElementType className={classes} {...rest}>
@@ -78,5 +80,6 @@ _Toast.defaultProps = defaultProps
 _Toast._meta = _meta
 
 _Toast.List = ToastList
+_Toast.Manager = ToastManager
 
 export const Toast = _Toast
