@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- added `Toast` component to display little notifications or messages on the bottom left.
+- added `loading` prop to Modal to show a loading indicator above the content but below the close button
+- added `Loader.Mask` component to complement Loader
 
 ## [0.1.33] - 2018-10-15
 - added bold font-weight to `text` component

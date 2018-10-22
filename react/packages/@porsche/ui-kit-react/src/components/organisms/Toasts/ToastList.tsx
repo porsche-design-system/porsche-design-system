@@ -14,7 +14,8 @@ interface QueuableToast extends Pick<ToastProps, "type" | "message"> {
 export interface ToastListProps extends ClassNameProp, ComponentProp {
     /**
      * An array of the toasts that should be displayed.
-     * New or deleted toasts are automatically animated based on the provided id.
+     * Inserted or deleted toasts are automatically animated based on the provided id.
+     * New toasts should be appended at the end of the array and will be displayed at the bottom.
      */
     toasts: QueuableToast[]
 
