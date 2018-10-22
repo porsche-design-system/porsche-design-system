@@ -33,6 +33,7 @@
       color: $button-inline-text-color-disabled;
       cursor: default;
       pointer-events: none;
+      text-decoration: none;
     }
   }
 
@@ -63,6 +64,7 @@
 
     &:hover {
       background: $button-inline-stretch-background-color-hovered;
+      text-decoration: none;
     }
 
     &[disabled] {
@@ -72,6 +74,7 @@
         color: $button-inline-stretch-text-color-disabled;
         cursor: default;
         pointer-events: none;
+        text-decoration: none;
       }
     }
   }

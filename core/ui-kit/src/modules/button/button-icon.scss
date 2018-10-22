@@ -16,6 +16,7 @@
 
   &:hover {
     color: $button-icon-text-color-hovered;
+    text-decoration: none;
   }
 
   &[disabled] {
