@@ -15,10 +15,10 @@
     }
   }
 
-  @include breakpoint('l') {
+  @include breakpoint('m') {
     margin: {
-      left: -$grid-child-spacing-horizontal-l;
-      right: -$grid-child-spacing-horizontal-l;
+      left: -$grid-child-spacing-horizontal-m;
+      right: -$grid-child-spacing-horizontal-m;
     }
   }
 }
@@ -47,10 +47,10 @@
     }
   }
 
-  @include breakpoint('l') {
+  @include breakpoint('m') {
     padding: {
-      left: $grid-child-spacing-horizontal-l;
-      right: $grid-child-spacing-horizontal-l;
+      left: $grid-child-spacing-horizontal-m;
+      right: $grid-child-spacing-horizontal-m;
     }
   }
 }
