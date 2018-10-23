@@ -40,7 +40,7 @@ const _ToastList: React.SFC<ToastListProps> & Partial<MetaCategorizable> = (prop
 
     const ElementType = getElementType(as, "div")
 
-    const transitionClasses = cx(prefix("toast-list--fade"))
+    const transitionClasses = cx(prefix("toast-list--slide"))
 
     const classes = cx(prefix("toast-list"), className)
 
