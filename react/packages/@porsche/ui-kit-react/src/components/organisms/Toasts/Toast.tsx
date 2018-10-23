@@ -2,17 +2,21 @@ import * as React from "react"
 import cx from "classnames"
 import { prefix, Icon, Text, ClassNameProp, ComponentProp, getElementType } from "../../../index"
 import { ToastList } from "./ToastList"
+import { ToastManager } from "./ToastManager"
 
 export interface Toast extends React.StatelessComponent<ToastProps> {
     List: typeof ToastList
+    Manager: typeof ToastManager
 }
+
+export type ToastType = "info" | "success" | "warning" | "error"
 
 export interface ToastProps extends ClassNameProp, ComponentProp {
     /**
      * determines the color of the left border
      * @default info
      */
-    type?: "info" | "success" | "warning" | "error"
+    type?: ToastType
     /**
      * message displayed in the toast
      */
@@ -43,8 +47,6 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
 
     const textClasses = cx(prefix("toast__text"), { [prefix("toast__text--no-close")]: !onClick })
 
-    // const textClasses = cx(prefix("toast__text"), { [prefix("toast__text--no-close")]: !onClick })
-
     const closeClasses = cx(prefix("toast__close"))
 
     const handleClick = (e: React.SyntheticEvent<HTMLElement>) => {
@@ -54,9 +56,6 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
 
         onClick(props)
     }
-
-    const textPaddingRight = !onClick ? "b" : undefined
-    /* TODO: Responsive Spacings with css */
     return (
         <ElementType className={classes} {...rest}>
             <Text className={textClasses} as={"span"}>
@@ -69,5 +68,6 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
 
 _Toast.defaultProps = defaultProps
 _Toast.List = ToastList
+_Toast.Manager = ToastManager
 
 export const Toast = _Toast

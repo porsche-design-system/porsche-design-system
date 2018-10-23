@@ -17,6 +17,7 @@
         @include -spacing-a("top", "padding");
         @include -spacing-a("bottom", "padding");
         @include -spacing-b("left", "padding");
+
         padding-right: 0;
 
         &--no-close {
