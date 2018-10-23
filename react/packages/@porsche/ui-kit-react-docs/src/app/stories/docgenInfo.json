@@ -49,6 +49,56 @@
     },
     "path": "src/components/atoms/Breakpoint/Breakpoint.tsx"
   },
+  "Divider": {
+    "displayName": "Divider",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Adds predefined top and bottom spacing for more consistent layouting.",
+          "If this doesn't fit your purpose you can always customize spacings using the Spacing component."
+        ],
+        "name": "spacing",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"none\"",
+          "\"small\"",
+          "\"large\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Spacing"
+        }
+      ],
+      "description": [
+        "A very basic divider."
+      ]
+    },
+    "path": "src/components/atoms/Divider/Divider.tsx"
+  },
   "Flex": {
     "displayName": "Flex",
     "props": [
@@ -252,56 +302,6 @@
       ]
     },
     "path": "src/components/atoms/Flex/FlexItem.tsx"
-  },
-  "Divider": {
-    "displayName": "Divider",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Adds predefined top and bottom spacing for more consistent layouting.",
-          "If this doesn't fit your purpose you can always customize spacings using the Spacing component."
-        ],
-        "name": "spacing",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"none\"",
-          "\"small\"",
-          "\"large\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        }
-      ],
-      "description": [
-        "A very basic divider."
-      ]
-    },
-    "path": "src/components/atoms/Divider/Divider.tsx"
   },
   "Icon": {
     "displayName": "Icon",
@@ -2550,43 +2550,44 @@
       },
       {
         "description": [
-          "message displayed in the toast"
+          "The content of the toast."
         ],
         "name": "message",
         "required": true,
-        "type": "string",
+        "type": "string | Element",
         "tags": []
       },
       {
         "description": [
-          "callback when close button is clicked"
+          "Callback when the close button of the toast is clicked."
         ],
         "name": "onClick",
         "required": false,
         "type": "func",
-        "tags": []
+        "tags": [
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
       },
       {
         "defaultValue": "info",
         "description": [
-          "determines the color of the left border"
+          "Toasts can have different urgencies, signified by different status colors."
         ],
         "name": "type",
         "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"info\"",
-          "\"success\"",
-          "\"warning\"",
-          "\"error\""
-        ]
+        "type": "ToastType",
+        "tags": []
       }
     ],
     "docBlock": {
       "tags": [],
       "description": [
-        ""
+        "A small, unintrusive, floating notification that should be closed by clicking or via a timeout."
       ]
     },
     "path": "src/components/organisms/Toasts/Toast.tsx"
@@ -2619,7 +2620,14 @@
         "name": "onCloseClick",
         "required": true,
         "type": "func",
-        "tags": []
+        "tags": [
+          {
+            "title": "param",
+            "description": "The unique identifier of the queueable toast.",
+            "type": null,
+            "name": "toastId"
+          }
+        ]
       },
       {
         "description": [
@@ -2636,10 +2644,21 @@
     "docBlock": {
       "tags": [],
       "description": [
-        ""
+        "A toast list displays an array of toasts. It automatically animates insertions and deletions using the unique identifier of each toast."
       ]
     },
     "path": "src/components/organisms/Toasts/ToastList.tsx"
+  },
+  "ToastManager": {
+    "displayName": "ToastManager",
+    "props": [],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The toast manager automatically queues and displays toasts created with its emit, info, success, warn, error methods."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/ToastManager.tsx"
   },
   "ErrorScreen": {
     "displayName": "ErrorScreen",

@@ -5,6 +5,9 @@ import cx from "classnames"
 import { prefix, getElementType } from "../../../index"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 
+/**
+ * A queueable toast contains all relevant toast information and a unique identifier used for animating transitions.
+ */
 interface QueuableToast extends Pick<ToastProps, "type" | "message"> {
     id: string
 }
@@ -19,6 +22,7 @@ export interface ToastListProps extends ClassNameProp, ComponentProp {
 
     /**
      * Callback when close button of a toast is clicked.
+     * @param {string} toastId The unique identifier of the queueable toast.
      */
     onCloseClick: (toastId: string) => void
 }
@@ -59,4 +63,7 @@ const _ToastList: React.SFC<ToastListProps> = (props) => {
     )
 }
 
+/**
+ * A toast list displays an array of toasts. It automatically animates insertions and deletions using the unique identifier of each toast.
+ */
 export const ToastList = _ToastList as React.StatelessComponent<ToastListProps>
