@@ -1,20 +1,13 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
-import { Flex, Spacing } from "../../../index"
+import { prefix } from "../../../lib"
+import { Flex } from "../../../index"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface ButtonGroupProps extends ClassNameProp, ComponentProp {}
 
-const _meta: ComponentMeta = {
-    name: "ButtonGroup",
-    parent: "Button",
-    type: META.TYPES.MOLECULE
-}
-
-const _ButtonGroup: React.StatelessComponent<ButtonGroupProps> & Partial<MetaCategorizable> = (props) => {
+const _ButtonGroup: React.StatelessComponent<ButtonGroupProps> = (props) => {
     const { as, className, children, ...rest } = props
 
     const classes = cx(prefix("button-group"), className)
@@ -31,8 +24,6 @@ const _ButtonGroup: React.StatelessComponent<ButtonGroupProps> & Partial<MetaCat
         </Flex>
     )
 }
-
-_ButtonGroup._meta = _meta
 
 /**
  * A button group wrapper for the default button.

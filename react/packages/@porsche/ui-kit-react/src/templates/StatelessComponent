@@ -1,7 +1,6 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
 import { META, getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
@@ -16,7 +15,7 @@ const _meta: ComponentMeta = {
     type: META.TYPES.ATOM
 }
 
-const _<Component>: React.StatelessComponent<<Component>Props> & Partial<MetaCategorizable> = (props) => {
+const _<Component>: React.StatelessComponent<<Component>Props> = (props) => {
     const {
         as,
         className,

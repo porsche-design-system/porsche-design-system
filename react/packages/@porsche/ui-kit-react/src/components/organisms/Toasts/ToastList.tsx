@@ -4,8 +4,6 @@ import { ToastProps, Toast } from "./Toast"
 import cx from "classnames"
 import { prefix, getElementType } from "../../../index"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
-import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
-import { META } from "../../../lib"
 
 interface QueuableToast extends Pick<ToastProps, "type" | "message"> {
     id: string
@@ -25,13 +23,7 @@ export interface ToastListProps extends ClassNameProp, ComponentProp {
     onCloseClick: (toastId: string) => void
 }
 
-const _meta: ComponentMeta = {
-    parent: "Toast",
-    name: "ToastList",
-    type: META.TYPES.ORGANISM
-}
-
-const _ToastList: React.SFC<ToastListProps> & Partial<MetaCategorizable> = (props) => {
+const _ToastList: React.SFC<ToastListProps> = (props) => {
     const { as, children, toasts, className, onCloseClick, ...rest } = props
 
     if (toasts === []) {
@@ -66,7 +58,5 @@ const _ToastList: React.SFC<ToastListProps> & Partial<MetaCategorizable> = (prop
         </TransitionGroup>
     )
 }
-
-_ToastList._meta = _meta
 
 export const ToastList = _ToastList as React.StatelessComponent<ToastListProps>

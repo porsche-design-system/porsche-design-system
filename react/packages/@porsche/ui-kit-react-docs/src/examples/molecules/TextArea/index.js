@@ -1,14 +1,9 @@
-import React from "react"
 import Types from "./Types"
 import EdgeCases from "./EdgeCases"
 
-const TextAreaExamples = () => {
-    return (
-        <div>
-            <Types />
-            <EdgeCases />
-        </div>
-    )
-}
+import { TextArea } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default TextAreaExamples
+storiesOf(TYPE.MOLECULE, TextArea, [], module)
+    .add(Types)
+    .add(EdgeCases)

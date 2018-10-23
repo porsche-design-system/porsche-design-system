@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { Icon, IconName, Loader } from "../../../index"
 import { ButtonGroup } from "./ButtonGroup"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
@@ -67,16 +66,11 @@ const defaultProps: Partial<ButtonProps> = {
     role: "button"
 }
 
-const _meta: ComponentMeta = {
-    name: "Button",
-    type: META.TYPES.MOLECULE
-}
-
 const isGhostButton = (type: string | undefined): boolean => {
     return type === "ghost" || type === "ghost-inverted"
 }
 
-const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> & Partial<MetaCategorizable> = (props) => {
+const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> = (props) => {
     const {
         as,
         role,
@@ -177,10 +171,7 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> & Partial
 }
 
 _Button.defaultProps = defaultProps
-
 _Button.Group = ButtonGroup
-
-_Button._meta = _meta
 
 /**
  * The default Porsche button.

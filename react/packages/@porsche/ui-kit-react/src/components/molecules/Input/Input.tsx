@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix, getElementType } from "../../../lib"
+import { prefix, getElementType } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { Icon } from "../../../index"
@@ -63,12 +62,7 @@ const defaultProps: Partial<InputProps> = {
     type: "text"
 }
 
-const _meta: ComponentMeta = {
-    name: "Input",
-    type: META.TYPES.MOLECULE
-}
-
-const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> = (props) => {
+const _Input: React.StatelessComponent<InputProps> = (props) => {
     const {
         as,
         className,
@@ -135,8 +129,6 @@ const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> 
 }
 
 _Input.defaultProps = defaultProps
-
-_Input._meta = _meta
 
 /**
  * An Input is a field used to elicit a textual response from a user.

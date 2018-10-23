@@ -1,14 +1,9 @@
-import React from "react"
 import Types from "./Types"
 import Content from "./Content"
 
-const ModalExamples = () => {
-    return (
-        <div>
-            <Types />
-            <Content />
-        </div>
-    )
-}
+import { Modal } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default ModalExamples
+storiesOf(TYPE.ORGANISM, Modal, [], module)
+    .add(Types)
+    .add(Content)

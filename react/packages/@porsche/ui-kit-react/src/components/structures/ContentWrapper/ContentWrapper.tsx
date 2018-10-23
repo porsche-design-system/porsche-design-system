@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface ContentWrapperProps extends ClassNameProp, ComponentProp {
@@ -17,12 +16,7 @@ const defaultProps: Partial<ContentWrapperProps> = {
     raw: false
 }
 
-const _meta: ComponentMeta = {
-    name: "ContentWrapper",
-    type: META.TYPES.STRUCTURE
-}
-
-const _ContentWrapper: React.StatelessComponent<ContentWrapperProps> & Partial<MetaCategorizable> = (props) => {
+const _ContentWrapper: React.StatelessComponent<ContentWrapperProps> = (props) => {
     const { as, className, raw, children, ...rest } = props
 
     const ElementType = getElementType(as, "section")
@@ -37,8 +31,6 @@ const _ContentWrapper: React.StatelessComponent<ContentWrapperProps> & Partial<M
 }
 
 _ContentWrapper.defaultProps = defaultProps
-
-_ContentWrapper._meta = _meta
 
 /**
  * This component is a direct child of "ThemeWrapper" and defines content sections like section, article.

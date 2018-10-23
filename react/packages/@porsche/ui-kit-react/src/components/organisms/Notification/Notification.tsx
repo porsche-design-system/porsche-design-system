@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { Icon, ContentWrapper } from "../../../index"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
@@ -32,12 +31,7 @@ const defaultProps: Partial<NotificationProps> = {
     type: "common"
 }
 
-const _meta: ComponentMeta = {
-    name: "Notification",
-    type: META.TYPES.ORGANISM
-}
-
-const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaCategorizable> = (props) => {
+const _Notification: React.StatelessComponent<NotificationProps> = (props) => {
     const { as, className, title, children, type, error, onClick, ...rest } = props
 
     const ElementType = getElementType(as, "article")
@@ -134,8 +128,6 @@ const _Notification: React.StatelessComponent<NotificationProps> & Partial<MetaC
 }
 
 _Notification.defaultProps = defaultProps
-
-_Notification._meta = _meta
 
 /**
  * The default Porsche notification message.

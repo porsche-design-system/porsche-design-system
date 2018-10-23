@@ -2,12 +2,11 @@ import React from "react"
 import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
 import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
 
-const MaintenanceScreenExamples = () => {
-    return (
-        <ExampleSection title="">
-            <ComponentExample title="" examplePath="screens/MaintenanceScreen/MaintenanceScreenExample" />
-        </ExampleSection>
-    )
-}
+import { ErrorScreen } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default MaintenanceScreenExamples
+storiesOf(TYPE.SCREEN, ErrorScreen, [], module).add(
+    <ExampleSection title="">
+        <ComponentExample title="" examplePath="screens/MaintenanceScreen/MaintenanceScreenExample" />
+    </ExampleSection>
+)

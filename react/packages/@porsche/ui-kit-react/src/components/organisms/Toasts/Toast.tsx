@@ -1,8 +1,6 @@
 import * as React from "react"
 import cx from "classnames"
-import { prefix, Icon, Text, ClassNameProp, ComponentProp, getElementType, Spacing } from "../../../index"
-import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
-import { META } from "../../../lib"
+import { prefix, Icon, Text, ClassNameProp, ComponentProp, getElementType } from "../../../index"
 import { ToastList } from "./ToastList"
 
 export interface Toast extends React.StatelessComponent<ToastProps> {
@@ -29,12 +27,7 @@ const defaultProps: Partial<ToastProps> = {
     type: "info"
 }
 
-const _meta: ComponentMeta = {
-    name: "Toast",
-    type: META.TYPES.ORGANISM
-}
-
-const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable> = (props) => {
+const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
     const { onClick, message, type, className, as, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -75,8 +68,6 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable
 }
 
 _Toast.defaultProps = defaultProps
-_Toast._meta = _meta
-
 _Toast.List = ToastList
 
 export const Toast = _Toast

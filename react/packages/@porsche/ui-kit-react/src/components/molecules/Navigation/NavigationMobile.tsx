@@ -1,17 +1,10 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix, getElementType } from "../../../lib"
+import { prefix, getElementType } from "../../../lib"
 
-import { ContentWrapper, Flex, Divider, Text, Icon, Spacing } from "../../../index"
+import { ContentWrapper, Flex, Text, Icon, Spacing } from "../../../index"
 import { NavigationSection, NavigationProps } from "./Navigation"
-
-const _meta: ComponentMeta = {
-    name: "NavigationMobile",
-    parent: "Navigation",
-    type: META.TYPES.MOLECULE
-}
 
 export interface NavigationMobileState {
     isOpened: boolean
@@ -25,8 +18,6 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
     static defaultProps = {
         as: "nav"
     }
-
-    static _meta: ComponentMeta = _meta
 
     public state: NavigationMobileState = {
         isOpened: false

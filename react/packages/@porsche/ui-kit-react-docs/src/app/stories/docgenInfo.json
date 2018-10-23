@@ -49,56 +49,6 @@
     },
     "path": "src/components/atoms/Breakpoint/Breakpoint.tsx"
   },
-  "Divider": {
-    "displayName": "Divider",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Adds predefined top and bottom spacing for more consistent layouting.",
-          "If this doesn't fit your purpose you can always customize spacings using the Spacing component."
-        ],
-        "name": "spacing",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"none\"",
-          "\"small\"",
-          "\"large\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        }
-      ],
-      "description": [
-        "A very basic divider."
-      ]
-    },
-    "path": "src/components/atoms/Divider/Divider.tsx"
-  },
   "Flex": {
     "displayName": "Flex",
     "props": [
@@ -302,6 +252,56 @@
       ]
     },
     "path": "src/components/atoms/Flex/FlexItem.tsx"
+  },
+  "Divider": {
+    "displayName": "Divider",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Adds predefined top and bottom spacing for more consistent layouting.",
+          "If this doesn't fit your purpose you can always customize spacings using the Spacing component."
+        ],
+        "name": "spacing",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"none\"",
+          "\"small\"",
+          "\"large\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Spacing"
+        }
+      ],
+      "description": [
+        "A very basic divider."
+      ]
+    },
+    "path": "src/components/atoms/Divider/Divider.tsx"
   },
   "Icon": {
     "displayName": "Icon",
@@ -1581,6 +1581,213 @@
     },
     "path": "src/components/molecules/Loader/LoaderMask.tsx"
   },
+  "Navigation": {
+    "displayName": "Navigation",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The navigation sections to be displayed."
+        ],
+        "name": "sections",
+        "required": true,
+        "type": "NavigationSection[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string | Element",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        ""
+      ]
+    },
+    "path": "src/components/molecules/Navigation/Navigation.tsx"
+  },
+  "NavigationDesktop": {
+    "displayName": "NavigationDesktop",
+    "props": [
+      {
+        "defaultValue": "nav",
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The navigation sections to be displayed."
+        ],
+        "name": "sections",
+        "required": true,
+        "type": "NavigationSection[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string | Element",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A navigation bar intended for larger screen sizes."
+      ]
+    },
+    "path": "src/components/molecules/Navigation/NavigationDesktop.tsx"
+  },
+  "NavigationMenuList": {
+    "displayName": "NavigationMenuList",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "mobile",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "submenu",
+        "required": false,
+        "type": "NavigationMenuListSubmenu[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The display type of the list."
+        ],
+        "name": "type",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"default\"",
+          "\"categorized\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        ""
+      ]
+    },
+    "path": "src/components/molecules/Navigation/NavigationMenuList.tsx"
+  },
+  "NavigationMobile": {
+    "displayName": "NavigationMobile",
+    "props": [
+      {
+        "defaultValue": "nav",
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The navigation sections to be displayed."
+        ],
+        "name": "sections",
+        "required": true,
+        "type": "NavigationSection[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string | Element",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A navigation bar intended for smaller screen sizes."
+      ]
+    },
+    "path": "src/components/molecules/Navigation/NavigationMobile.tsx"
+  },
   "Select": {
     "displayName": "Select",
     "props": [
@@ -1790,213 +1997,6 @@
       ]
     },
     "path": "src/components/molecules/Select/SelectClearRenderer.tsx"
-  },
-  "Navigation": {
-    "displayName": "Navigation",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The navigation sections to be displayed."
-        ],
-        "name": "sections",
-        "required": true,
-        "type": "NavigationSection[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "The mobile navigation trigger text."
-        ],
-        "name": "title",
-        "required": false,
-        "type": "string | Element",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        ""
-      ]
-    },
-    "path": "src/components/molecules/Navigation/Navigation.tsx"
-  },
-  "NavigationDesktop": {
-    "displayName": "NavigationDesktop",
-    "props": [
-      {
-        "defaultValue": "nav",
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The navigation sections to be displayed."
-        ],
-        "name": "sections",
-        "required": true,
-        "type": "NavigationSection[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "The mobile navigation trigger text."
-        ],
-        "name": "title",
-        "required": false,
-        "type": "string | Element",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A navigation bar intended for larger screen sizes."
-      ]
-    },
-    "path": "src/components/molecules/Navigation/NavigationDesktop.tsx"
-  },
-  "NavigationMenuList": {
-    "displayName": "NavigationMenuList",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "mobile",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "submenu",
-        "required": false,
-        "type": "NavigationMenuListSubmenu[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "The display type of the list."
-        ],
-        "name": "type",
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"default\"",
-          "\"categorized\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        ""
-      ]
-    },
-    "path": "src/components/molecules/Navigation/NavigationMenuList.tsx"
-  },
-  "NavigationMobile": {
-    "displayName": "NavigationMobile",
-    "props": [
-      {
-        "defaultValue": "nav",
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The navigation sections to be displayed."
-        ],
-        "name": "sections",
-        "required": true,
-        "type": "NavigationSection[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "The mobile navigation trigger text."
-        ],
-        "name": "title",
-        "required": false,
-        "type": "string | Element",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A navigation bar intended for smaller screen sizes."
-      ]
-    },
-    "path": "src/components/molecules/Navigation/NavigationMobile.tsx"
   },
   "Tab": {
     "displayName": "Tab",
@@ -2526,6 +2526,120 @@
       ]
     },
     "path": "src/components/organisms/Notification/Notification.tsx"
+  },
+  "Toast": {
+    "displayName": "Toast",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "message displayed in the toast"
+        ],
+        "name": "message",
+        "required": true,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "callback when close button is clicked"
+        ],
+        "name": "onClick",
+        "required": false,
+        "type": "func",
+        "tags": []
+      },
+      {
+        "defaultValue": "info",
+        "description": [
+          "determines the color of the left border"
+        ],
+        "name": "type",
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"info\"",
+          "\"success\"",
+          "\"warning\"",
+          "\"error\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        ""
+      ]
+    },
+    "path": "src/components/organisms/Toasts/Toast.tsx"
+  },
+  "ToastList": {
+    "displayName": "ToastList",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Callback when close button of a toast is clicked."
+        ],
+        "name": "onCloseClick",
+        "required": true,
+        "type": "func",
+        "tags": []
+      },
+      {
+        "description": [
+          "An array of the toasts that should be displayed.",
+          "Inserted or deleted toasts are automatically animated based on the provided id.",
+          "New toasts should be appended at the end of the array and will be displayed at the bottom."
+        ],
+        "name": "toasts",
+        "required": true,
+        "type": "QueuableToast[]",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        ""
+      ]
+    },
+    "path": "src/components/organisms/Toasts/ToastList.tsx"
   },
   "ErrorScreen": {
     "displayName": "ErrorScreen",
