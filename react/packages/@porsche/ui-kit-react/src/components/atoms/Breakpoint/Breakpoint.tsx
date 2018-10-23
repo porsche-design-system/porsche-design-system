@@ -3,8 +3,7 @@ import * as React from "react"
 // We need version ^3.0.0 to support react 15. Using fragments might mess this up, maybe we should use matchmediaquery directly
 import MediaQuery from "react-responsive"
 
-import { breakpoints, META } from "../../../lib"
-import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
+import { breakpoints } from "../../../lib"
 
 export interface Breakpoint extends React.StatelessComponent<BreakpointProps> {
     xs: number
@@ -22,14 +21,7 @@ export interface BreakpointProps {
     maxWidth?: "xs" | "s" | "m" | "l" | "xl"
 }
 
-const _meta: ComponentMeta = {
-    name: "Breakpoint",
-    type: META.TYPES.ATOM
-}
-
-const _Breakpoint: React.StatelessComponent<BreakpointProps> & Partial<Breakpoint> & Partial<MetaCategorizable> = (
-    props
-) => {
+const _Breakpoint: React.StatelessComponent<BreakpointProps> & Partial<Breakpoint> = (props) => {
     const { children, minWidth, maxWidth, ...rest } = props
 
     const minWidthValue = minWidth ? breakpoints[minWidth] + "px" : undefined
@@ -41,8 +33,6 @@ const _Breakpoint: React.StatelessComponent<BreakpointProps> & Partial<Breakpoin
         </MediaQuery>
     )
 }
-
-_Breakpoint._meta = _meta
 
 _Breakpoint.xs = breakpoints.xs
 _Breakpoint.s = breakpoints.s

@@ -1,18 +1,16 @@
-import * as componentLibrary from "@porsche/ui-kit-react"
-
 import ComponentDoc from "../Components/ComponentDoc"
-import { META } from "src/app/utils"
 import PropTypes from "prop-types"
 import React from "react"
 import _ from "lodash/fp"
+import { getStoryByName } from "src/app/stories"
 
 const DocsRoot = (props) => {
     const { name } = props.match.params
     const componentName = _.startCase(name).replace(/ /g, "")
-    const component = componentLibrary[componentName]
+    const story = getStoryByName(componentName)
 
-    if (!component || !component._meta || !META.isParent(component)) return null
-    return <ComponentDoc name={component._meta.name} parent={component._meta.parent} type={component._meta.type} />
+    if (!story || !story.name || !story.type) return null
+    return <ComponentDoc name={story.name} type={story.type} />
 }
 
 DocsRoot.propTypes = {

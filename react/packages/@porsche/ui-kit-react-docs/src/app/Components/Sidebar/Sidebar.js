@@ -1,6 +1,7 @@
 import { Input, Menu } from "semantic-ui-react"
 import React, { Component } from "react"
-import { keyboardKey, parentComponents, META } from "src/app/utils"
+import { keyboardKey } from "src/app/utils"
+import { getStories } from "src/app/stories"
 
 import Logo from "src/app/Components/Logo/Logo"
 import { NavLink } from "react-router-dom"
@@ -10,28 +11,8 @@ import { findDOMNode } from "react-dom"
 import reactpkg from "./../../../../../ui-kit-react/package.json"
 import { withRouter } from "react-router"
 
-const getRoute = (_meta) => {
-    return `/${_meta.type}s/${_.kebabCase(_meta.name)}`
-}
+import { groupBy } from "lodash"
 
-const MenuItem = ({ meta, children, ...rest }) => {
-    return (
-        <NavLink to={getRoute(meta)} {...rest}>
-            {children || meta.name}
-        </NavLink>
-    )
-}
-MenuItem.propTypes = {
-    activeClassName: PropTypes.string,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    meta: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired
-}
-MenuItem.defaultProps = {
-    activeClassName: "active",
-    className: "item"
-}
 const selectedItemLabel = (
     <span className="ui green" style={{ float: "right" }}>
         Press Enter
@@ -46,7 +27,7 @@ class Sidebar extends Component {
         style: PropTypes.object
     }
     state = { query: "" }
-    filteredComponents = parentComponents
+    filteredStories = []
 
     componentDidMount() {
         document.addEventListener("keydown", this.handleDocumentKeyDown)
@@ -104,43 +85,47 @@ class Sidebar extends Component {
 
         if (code === keyboardKey.ArrowDown) {
             e.preventDefault()
-            const next = _.min([selectedItemIndex + 1, this.filteredComponents.length - 1])
-            this.selectedRoute = getRoute(this.filteredComponents[next]._meta)
+            const next = _.min([selectedItemIndex + 1, this.filteredStories.length - 1])
+            const nextComponentExample = this.filteredStories[next]
+            this.selectedRoute = nextComponentExample.route
             this.setState({ selectedItemIndex: next })
         }
 
         if (code === keyboardKey.ArrowUp) {
             e.preventDefault()
             const next = _.max([selectedItemIndex - 1, 0])
-            this.selectedRoute = getRoute(this.filteredComponents[next]._meta)
+            const nextComponentExample = this.filteredStories[next]
+            this.selectedRoute = nextComponentExample.route
             this.setState({ selectedItemIndex: next })
         }
     }
 
-    menuItemsByType = _.map((type) => {
-        const items = _.flow(
-            _.filter(META.isType(type)),
-            _.map(({ _meta }) => {
+    menuItemsByType = () => {
+        const groupedStories = groupBy(getStories(), "type")
+        const categories = Object.keys(groupedStories).map((type) => {
+            const category = groupedStories[type]
+            const menuItems = category.map((story) => {
                 return (
                     <Menu.Item
-                        key={_meta.name}
-                        name={_meta.name}
+                        key={story.name}
+                        name={story.name}
                         onClick={this.handleItemClick}
                         as={NavLink}
-                        to={getRoute(_meta)}
+                        to={story.route}
                         activeClassName="active"
                     />
                 )
             })
-        )(parentComponents)
+            return (
+                <Menu.Item key={type}>
+                    <Menu.Header>{_.capitalize(type)}s</Menu.Header>
+                    <Menu.Menu>{menuItems}</Menu.Menu>
+                </Menu.Item>
+            )
+        })
 
-        return (
-            <Menu.Item key={type}>
-                <Menu.Header>{_.capitalize(type)}s</Menu.Header>
-                <Menu.Menu>{items}</Menu.Menu>
-            </Menu.Item>
-        )
-    }, META.typeOrder)
+        return categories
+    }
 
     renderSearchItems = () => {
         const { selectedItemIndex, query } = this.state
@@ -150,35 +135,38 @@ class Sidebar extends Component {
         const startsWithMatches = []
         const containsMatches = []
 
-        _.each((component) => {
-            if (new RegExp(`^${_.escapeRegExp(query)}`, "i").test(component._meta.name)) {
-                startsWithMatches.push(component)
-            } else if (new RegExp(_.escapeRegExp(query), "i").test(component._meta.name)) {
-                containsMatches.push(component)
+        getStories().forEach((story) => {
+            if (new RegExp(`^${_.escapeRegExp(query)}`, "i").test(story.name)) {
+                startsWithMatches.push(story)
+            } else if (new RegExp(_.escapeRegExp(query), "i").test(story.name)) {
+                containsMatches.push(story)
             }
-        }, parentComponents)
+        })
 
-        this.filteredComponents = [...startsWithMatches, ...containsMatches]
-        const menuItems = _.map(({ _meta }) => {
+        this.filteredStories = [...startsWithMatches, ...containsMatches]
+
+        const menuItems = this.filteredStories.map((story) => {
             itemIndex += 1
             const isSelected = itemIndex === selectedItemIndex
 
-            if (isSelected) this.selectedRoute = getRoute(_meta)
+            if (isSelected) {
+                this.selectedRoute = story.route
+            }
 
             return (
                 <Menu.Item
-                    key={_meta.name}
-                    name={_meta.name}
+                    key={story.name}
+                    name={story.name}
                     onClick={this.handleItemClick}
                     active={isSelected}
                     as={NavLink}
-                    to={getRoute(_meta)}
+                    to={story.route}
                 >
-                    {_meta.name}
+                    {story.name}
                     {isSelected && selectedItemLabel}
                 </Menu.Item>
             )
-        }, this.filteredComponents)
+        })
 
         return <Menu.Menu>{menuItems}</Menu.Menu>
     }
@@ -191,9 +179,12 @@ class Sidebar extends Component {
                 <Menu.Item>
                     <Logo spaced="right" size="mini" />
                     <strong>
-                        Porsche UI Kit React &nbsp;
+                        Porsche UI Kit React&nbsp;
                         <small>
-                            <em>(v.{reactpkg.version})</em>
+                            <em>
+                                (v.
+                                {reactpkg.version})
+                            </em>
                         </small>
                     </strong>
                 </Menu.Item>
@@ -215,7 +206,7 @@ class Sidebar extends Component {
                         onKeyDown={this.handleSearchKeyDown}
                     />
                 </Menu.Item>
-                {query ? this.renderSearchItems() : this.menuItemsByType}
+                {query ? this.renderSearchItems() : this.menuItemsByType()}
             </Menu>
         )
     }

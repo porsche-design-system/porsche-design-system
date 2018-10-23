@@ -1,12 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const LogoExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { Logo } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default LogoExamples
+storiesOf(TYPE.ATOM, Logo, [], module).add(Types)

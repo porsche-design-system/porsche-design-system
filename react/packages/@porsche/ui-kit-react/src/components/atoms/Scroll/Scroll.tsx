@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface ScrollProps extends ClassNameProp, ComponentProp {
@@ -17,12 +16,7 @@ const defaultProps: Partial<ScrollProps> = {
     direction: "vertical"
 }
 
-const _meta: ComponentMeta = {
-    name: "Scroll",
-    type: META.TYPES.ATOM
-}
-
-const _Scroll: React.StatelessComponent<ScrollProps> & Partial<MetaCategorizable> = (props) => {
+const _Scroll: React.StatelessComponent<ScrollProps> = (props) => {
     const { as, className, children, direction, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -37,8 +31,6 @@ const _Scroll: React.StatelessComponent<ScrollProps> & Partial<MetaCategorizable
 }
 
 _Scroll.defaultProps = defaultProps
-
-_Scroll._meta = _meta
 
 /**
  * Use this component any time you want to provide a scrolling section for long content.

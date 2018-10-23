@@ -2,8 +2,12 @@ import React from "react"
 import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
 import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
 
-const LoaderExamples = () => {
-    return (
+import { Loader } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
+
+storiesOf(TYPE.MOLECULE, Loader, [], module)
+    .addPropsTable(Loader.Mask)
+    .add(
         <React.Fragment>
             <ExampleSection title="Types">
                 <ComponentExample title="Default Loader" examplePath="molecules/Loader/LoaderExampleBasic">
@@ -28,6 +32,3 @@ const LoaderExamples = () => {
             </ExampleSection>
         </React.Fragment>
     )
-}
-
-export default LoaderExamples

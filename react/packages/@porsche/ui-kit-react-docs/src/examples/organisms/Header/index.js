@@ -1,6 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const HeaderExamples = () => <Types />
+import { Header } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default HeaderExamples
+storiesOf(TYPE.ORGANISM, Header, [], module).add(Types)
