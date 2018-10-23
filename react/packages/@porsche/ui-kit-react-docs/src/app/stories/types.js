@@ -3,5 +3,5 @@ export const TYPE = {
     MOLECULE: "molecule",
     ORGANISM: "organism",
     SCREEN: "screen",
-    SCTRUCTURE: "structure"
+    STRUCTURE: "structure"
 }

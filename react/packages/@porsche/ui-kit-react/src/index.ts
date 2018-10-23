@@ -31,6 +31,7 @@ export { Modal } from "./components/organisms/Modal/Modal"
 export { Notification } from "./components/organisms/Notification/Notification"
 export { Toast, ToastProps } from "./components/organisms/Toasts/Toast"
 export { ToastList, ToastListProps } from "./components/organisms/Toasts/ToastList"
+export { ToastManager } from "./components/organisms/Toasts/ToastManager"
 
 // Screens
 export { ErrorScreen } from "./components/screens/ErrorScreen/ErrorScreen"
