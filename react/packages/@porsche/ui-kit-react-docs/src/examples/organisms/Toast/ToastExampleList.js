@@ -1,5 +1,5 @@
 import React from "react"
-import { Toast } from "@porsche/ui-kit-react"
+import { Toast, Checkbox, Flex, Spacing, Text } from "@porsche/ui-kit-react"
 
 class ToastExampleList extends React.PureComponent {
     constructor(props) {
@@ -16,7 +16,8 @@ class ToastExampleList extends React.PureComponent {
                     message: "The second Toast",
                     type: "error"
                 }
-            ]
+            ],
+            animationOnOff: false
         }
     }
 
@@ -32,13 +33,16 @@ class ToastExampleList extends React.PureComponent {
      * Switches between adding and removing a toast to show toast list animation
      */
     toggleFlashMessage = () => {
+        if (!this.state.animationOnOff) {
+            return
+        }
         if (this.state.toasts.length < 3) {
             this.setState({
                 toasts: [
                     ...this.state.toasts,
                     {
                         id: "3",
-                        message: "A Toast with a very long text that shows the responsiveness of the list.",
+                        message: "The third Toast with a very long text that shows the responsiveness of the list.",
                         type: "warning"
                     }
                 ]
@@ -50,11 +54,29 @@ class ToastExampleList extends React.PureComponent {
         }
     }
 
+    setAnimationOnOrOff = (value) => {
+        this.setState({
+            animationOnOff: value
+        })
+    }
+
     render() {
         return (
-            <div style={{ position: "relative", height: "300px", background: "grey" }}>
-                <Toast.List style={{ position: "absolute" }} toasts={this.state.toasts} />
-            </div>
+            <React.Fragment>
+                <Spacing marginBottom={12}>
+                    <Flex gap={12}>
+                        <Flex.Item width="auto">
+                            <Text>Toggle animations on/ off</Text>
+                        </Flex.Item>
+                        <Flex.Item width="auto">
+                            <Checkbox checked={this.state.animationOnOff} onChange={this.setAnimationOnOrOff} />
+                        </Flex.Item>
+                    </Flex>
+                </Spacing>
+                <div style={{ position: "relative", height: "300px", background: "grey" }}>
+                    <Toast.List style={{ position: "absolute" }} toasts={this.state.toasts} />
+                </div>
+            </React.Fragment>
         )
     }
 }
