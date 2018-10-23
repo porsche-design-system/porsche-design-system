@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Spacing } from "@porsche/ui-kit-react"
+import { Flex } from "@porsche/ui-kit-react"
 
 const boxStyles = { backgroundColor: "#246A97", height: "100px" }
 

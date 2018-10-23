@@ -1,17 +1,10 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix, getElementType } from "../../../lib"
+import { prefix, getElementType } from "../../../lib"
 import { Flex, Divider, Flyout, Text, Spacing } from "../../.."
 
 import { NavigationProps, NavigationSection } from "./Navigation"
-
-const _meta: ComponentMeta = {
-    name: "NavigationDesktop",
-    parent: "Navigation",
-    type: META.TYPES.MOLECULE
-}
 
 export interface NavigationDesktopState {
     hoveredSectionKey?: string
@@ -25,8 +18,6 @@ export class NavigationDesktop extends React.PureComponent<NavigationProps, Navi
     static defaultProps = {
         as: "nav"
     }
-
-    static _meta: ComponentMeta = _meta
 
     public state: NavigationDesktopState = {
         hoveredSectionKey: undefined,

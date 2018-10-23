@@ -674,7 +674,7 @@
       {
         "description": [
           "Set this to true if you always want to create a wrapper, even for single childs.",
-          "This is useful if the child element does not support className."
+          "This is useful if the child element does not support className, or for dynamic children."
         ],
         "name": "wrap",
         "required": false,
@@ -691,7 +691,9 @@
       ],
       "description": [
         "A component to add margins and paddings to components.",
-        "If it has only one child, those classes are added directly to the child to avoid unnecessary wrapper divs."
+        "If this component has only one child, those classes are added directly to the child using the className prop to avoid unnecessary wrapper divs.",
+        "This only works if the child component supports className (which it totally should anyway) and if the number of children isn't dynamic and doesn't change.",
+        "If this is not the case, set the \"wrap\" property to manually create a wrapper div."
       ]
     },
     "path": "src/components/atoms/Spacing/Spacing.tsx"
@@ -1538,6 +1540,47 @@
     },
     "path": "src/components/molecules/Loader/Loader.tsx"
   },
+  "LoaderMask": {
+    "displayName": "LoaderMask",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Displays the loader and backdrop when true, plainly renders all children when false."
+        ],
+        "name": "loading",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "Displays the loader around its children using a translucent backdrop.",
+        "If it is not loading, the children will be rendered without any wrapper components."
+      ]
+    },
+    "path": "src/components/molecules/Loader/LoaderMask.tsx"
+  },
   "Navigation": {
     "displayName": "Navigation",
     "props": [
@@ -2299,6 +2342,16 @@
         "tags": []
       },
       {
+        "defaultValue": "false",
+        "description": [
+          "Displays a loader and translucent backdrop above the entire content."
+        ],
+        "name": "loading",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
         "description": [
           "Function that will be run when the modal is requested to be closed, prior to actually closing."
         ],
@@ -2473,6 +2526,139 @@
       ]
     },
     "path": "src/components/organisms/Notification/Notification.tsx"
+  },
+  "Toast": {
+    "displayName": "Toast",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The content of the toast."
+        ],
+        "name": "message",
+        "required": true,
+        "type": "string | Element",
+        "tags": []
+      },
+      {
+        "description": [
+          "Callback when the close button of the toast is clicked."
+        ],
+        "name": "onClick",
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "defaultValue": "info",
+        "description": [
+          "Toasts can have different urgencies, signified by different status colors."
+        ],
+        "name": "type",
+        "required": false,
+        "type": "ToastType",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A small, unintrusive, floating notification that should be closed by clicking or via a timeout."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/Toast.tsx"
+  },
+  "ToastList": {
+    "displayName": "ToastList",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Callback when close button of a toast is clicked."
+        ],
+        "name": "onCloseClick",
+        "required": true,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "The unique identifier of the queueable toast.",
+            "type": null,
+            "name": "toastId"
+          }
+        ]
+      },
+      {
+        "description": [
+          "An array of the toasts that should be displayed.",
+          "Inserted or deleted toasts are automatically animated based on the provided id.",
+          "New toasts should be appended at the end of the array and will be displayed at the bottom."
+        ],
+        "name": "toasts",
+        "required": true,
+        "type": "QueuableToast[]",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A toast list displays an array of toasts. It automatically animates insertions and deletions using the unique identifier of each toast."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/ToastList.tsx"
+  },
+  "ToastManager": {
+    "displayName": "ToastManager",
+    "props": [],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The toast manager automatically queues and displays toasts created with its emit, info, success, warn, error methods."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/ToastManager.tsx"
   },
   "ErrorScreen": {
     "displayName": "ErrorScreen",

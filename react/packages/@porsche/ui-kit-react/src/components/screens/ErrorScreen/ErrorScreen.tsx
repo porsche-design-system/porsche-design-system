@@ -1,7 +1,6 @@
 import * as React from "react"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
+import { prefix } from "../../../lib"
 
 import { ContentWrapper, Text, Header } from "../../../index"
 
@@ -13,12 +12,7 @@ export interface ErrorScreenProps {
     text: string
 }
 
-const _meta: ComponentMeta = {
-    name: "ErrorScreen",
-    type: META.TYPES.SCREEN
-}
-
-const _ErrorScreen: React.StatelessComponent<ErrorScreenProps> & Partial<MetaCategorizable> = (props) => {
+const _ErrorScreen: React.StatelessComponent<ErrorScreenProps> = (props) => {
     const { title, text, children } = props
 
     return (
@@ -52,8 +46,6 @@ const _ErrorScreen: React.StatelessComponent<ErrorScreenProps> & Partial<MetaCat
         </React.Fragment>
     )
 }
-
-_ErrorScreen._meta = _meta
 
 /**
  * A generic error screen with a title and a text.

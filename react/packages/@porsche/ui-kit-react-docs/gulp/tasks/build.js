@@ -20,7 +20,7 @@ function docgenBuild(cb) {
             })
         )
         .pipe(gulpReactDocgen())
-        .pipe(dest(path.resolve(__dirname, "../../src/app")))
+        .pipe(dest(path.resolve(__dirname, "../../src/app/stories")))
         .on("end", cb)
 }
 

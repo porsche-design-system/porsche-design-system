@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface DividerProps extends ClassNameProp, ComponentProp {
@@ -13,12 +12,7 @@ export interface DividerProps extends ClassNameProp, ComponentProp {
     spacing?: "none" | "small" | "large"
 }
 
-const _meta: ComponentMeta = {
-    name: "Divider",
-    type: META.TYPES.ATOM
-}
-
-const _Divider: React.StatelessComponent<DividerProps> & Partial<MetaCategorizable> = (props) => {
+const _Divider: React.StatelessComponent<DividerProps> = (props) => {
     const { as, className, children, spacing, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -36,8 +30,6 @@ const _Divider: React.StatelessComponent<DividerProps> & Partial<MetaCategorizab
         </ElementType>
     )
 }
-
-_Divider._meta = _meta
 
 /**
  * A very basic divider.

@@ -1,12 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const DividerExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { Divider } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default DividerExamples
+storiesOf(TYPE.ATOM, Divider, [], module).add(Types)
