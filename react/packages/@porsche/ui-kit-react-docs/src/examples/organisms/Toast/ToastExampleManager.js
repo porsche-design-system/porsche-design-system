@@ -51,7 +51,6 @@ class ToastExampleManager extends React.PureComponent {
     render() {
         return (
             <React.Fragment>
-                {/* <!-- Flex noch schön für responsive gestalten --> */}
                 <Flex wrap>
                     <Select
                         placeholder="Type"

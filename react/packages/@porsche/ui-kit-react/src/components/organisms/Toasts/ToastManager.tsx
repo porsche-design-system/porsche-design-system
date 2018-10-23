@@ -46,7 +46,6 @@ class ToastManagerComponent extends React.PureComponent {
         }
     }
 
-    /* statt date hier uuid */
     createToast = (type: ToastType, message: string) => {
         return {
             id: `${new Date().getTime()}`,
