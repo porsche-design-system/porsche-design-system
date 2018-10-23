@@ -1,8 +1,7 @@
 import React, { Component } from "react"
-import { getComponentGroup, getSeeItems } from "src/app/utils"
+import { getStoryByName } from "src/app/stories"
 
 import PropTypes from "prop-types"
-import docInfo from "src/app/docgenInfo.json"
 
 const withDocInfo = (ChildComponent) => {
     return class extends Component {
@@ -15,36 +14,11 @@ const withDocInfo = (ChildComponent) => {
         constructor(props) {
             super(props)
 
-            this.state = this.computeProps(props)
+            this.state = getStoryByName(props.name)
         }
 
         componentWillReceiveProps(nextProps) {
-            this.setState(this.computeProps(nextProps))
-        }
-
-        computeProps = ({ name, parent, type }) => {
-            const component = docInfo[name]
-
-            if (!component) {
-                return {
-                    description: [""],
-                    path: "",
-                    componentGroup: getComponentGroup(docInfo, name),
-                    componentName: name,
-                    seeItems: getSeeItems(docInfo, name)
-                }
-            }
-
-            const { docBlock, path } = docInfo[name]
-            const { description } = docBlock
-
-            return {
-                description,
-                path,
-                componentGroup: getComponentGroup(docInfo, name),
-                componentName: name,
-                seeItems: getSeeItems(docInfo, name)
-            }
+            this.setState(getStoryByName(nextProps.name))
         }
 
         render() {

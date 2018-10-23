@@ -9,20 +9,20 @@ import PropTypes from "prop-types"
 import React from "react"
 import { withDocInfo } from "src/app/HOC"
 
-const ComponentDoc = ({ componentGroup, componentName, description, path, seeItems }) => {
+const ComponentDoc = ({ componentGroup, name, description, path, seeItems }) => {
     return (
-        <DocumentTitle title={`${componentName} | Porsche UI React`}>
+        <DocumentTitle title={`${name} | Porsche UI React`}>
             <div>
                 <Grid padded columns="1">
                     <Grid.Column>
-                        <ComponentDocHeader componentName={componentName} description={description} />
+                        <ComponentDocHeader componentName={name} description={description} />
                         {seeItems && seeItems.length > 0 && <ComponentDocSee items={seeItems} />}
-                        <ComponentDocLinks componentName={componentName} path={path} />
-                        <ComponentProps componentGroup={componentGroup} componentName={componentName} />
+                        <ComponentDocLinks componentName={name} path={path} />
+                        <ComponentProps componentGroup={componentGroup} componentName={name} />
                     </Grid.Column>
                 </Grid>
 
-                <ComponentExamples componentName={componentName} />
+                <ComponentExamples componentName={name} />
             </div>
         </DocumentTitle>
     )
@@ -35,7 +35,7 @@ ComponentDoc.propTypes = {
             props: PropTypes.array
         })
     ),
-    componentName: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     description: PropTypes.arrayOf(PropTypes.string),
     path: PropTypes.string.isRequired,
     seeItems: PropTypes.arrayOf(

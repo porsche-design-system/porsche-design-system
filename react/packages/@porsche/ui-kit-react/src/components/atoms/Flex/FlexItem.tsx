@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { META, getElementType, prefix, BreakpointValues, mapBreakpointPropToClasses } from "../../../lib"
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
+import { getElementType, prefix, BreakpointValues, mapBreakpointPropToClasses } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { FlexCrossAxis } from "./Flex"
@@ -21,13 +20,7 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
     shrink?: 0 | 1
 }
 
-const _meta: ComponentMeta = {
-    name: "FlexItem",
-    parent: "Flex",
-    type: META.TYPES.ATOM
-}
-
-const _FlexItem: React.StatelessComponent<FlexItemProps> & Partial<MetaCategorizable> = (props) => {
+const _FlexItem: React.StatelessComponent<FlexItemProps> = (props) => {
     const { as, className, children, alignCrossAxis, offset, width, shrink, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -47,8 +40,6 @@ const _FlexItem: React.StatelessComponent<FlexItemProps> & Partial<MetaCategoriz
         </ElementType>
     )
 }
-
-_FlexItem._meta = _meta
 
 /**
  * A child of a flex container.

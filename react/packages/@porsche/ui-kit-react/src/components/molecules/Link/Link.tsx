@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
-import { getElementType, META, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface LinkProps extends ClassNameProp, ComponentProp {
@@ -35,12 +34,7 @@ export interface LinkProps extends ClassNameProp, ComponentProp {
     onClick?: (event: React.MouseEvent<HTMLElement>, data: LinkProps) => void
 }
 
-const _meta: ComponentMeta = {
-    name: "Link",
-    type: META.TYPES.MOLECULE
-}
-
-const _Link: React.StatelessComponent<LinkProps> & Partial<MetaCategorizable> = (props) => {
+const _Link: React.StatelessComponent<LinkProps> = (props) => {
     const { as, className, children, withIcon, onClick, ...rest } = props
 
     const ElementType = getElementType(as, "a")
@@ -64,8 +58,6 @@ const _Link: React.StatelessComponent<LinkProps> & Partial<MetaCategorizable> = 
         </ElementType>
     )
 }
-
-_Link._meta = _meta
 
 /**
  * The default Porsche link.

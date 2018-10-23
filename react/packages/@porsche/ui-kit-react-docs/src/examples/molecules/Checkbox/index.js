@@ -1,12 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const CheckboxExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { Checkbox } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default CheckboxExamples
+storiesOf(TYPE.MOLECULE, Checkbox, [], module).add(Types)

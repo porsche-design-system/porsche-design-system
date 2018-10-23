@@ -2,7 +2,7 @@ import React from "react"
 import { Modal, Button } from "@porsche/ui-kit-react"
 import lorem from "lorem-ipsum"
 
-class ModalExampleWide extends React.Component {
+class ModalExampleWide extends React.PureComponent {
     constructor(props) {
         super(props)
 

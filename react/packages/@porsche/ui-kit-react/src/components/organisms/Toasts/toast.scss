@@ -1,0 +1,51 @@
+@import "../../../common";
+
+/* TODO: FInal mit Design nochmal gegenchecken! */
+.#{$global-class-prefix}toast {
+    background-color: rgba($color: $black, $alpha: 0.8);
+    color: $white;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    max-width: 440px;
+    border-left: 4px solid $color-palette-status-orange;
+
+    &__text {
+        @include -spacing-a("top", "padding");
+        @include -spacing-a("bottom", "padding");
+        @include -spacing-b("left", "padding");
+
+        padding-right: 0;
+
+        &--no-close {
+            @include -spacing-b("right", "padding");
+        }
+    }
+
+    &--success {
+        border-color: $color-palette-status-green;
+    }
+    &--info {
+        border-color: $color-palette-status-yellow;
+    }
+    &--warn {
+        border-color: $color-palette-status-orange;
+    }
+    &--error {
+        border-color: $color-palette-status-red;
+    }
+
+    &__close {
+        @include -spacing-a("top", "padding");
+        @include -spacing-a("bottom", "padding");
+        @include -spacing-b("right", "padding");
+        @include -spacing-b("left", "padding");
+
+        cursor: pointer;
+        align-self: start;
+        margin-top: 3px;
+    }
+}

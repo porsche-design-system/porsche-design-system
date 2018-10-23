@@ -4,14 +4,14 @@ import cx from "classnames"
 // import ReactModal from "react-modal"
 const ReactModal = require("react-modal")
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
+import { prefix } from "../../../lib"
 import { ClassNameProp } from "../../../lib/props"
 
 import { ModalTitle } from "./ModalTitle"
 import { ModalText } from "./ModalText"
 import { ModalButtons } from "./ModalButtons"
 import { Icon } from "../../atoms/Icon/Icon"
+import { Loader } from "../../molecules/Loader/Loader"
 
 export interface Modal extends React.StatelessComponent<ModalProps> {
     /**
@@ -63,6 +63,12 @@ export interface ModalProps extends ClassNameProp {
      * Additional CSS classes for the modal content container.
      */
     containerClassName?: string
+
+    /**
+     * Displays a loader and translucent backdrop above the entire content.
+     * @default false
+     */
+    loading?: boolean
 }
 
 const defaultProps: Partial<ModalProps> = {
@@ -70,12 +76,7 @@ const defaultProps: Partial<ModalProps> = {
     ariaHideApp: true
 }
 
-const _meta: ComponentMeta = {
-    name: "Modal",
-    type: META.TYPES.ORGANISM
-}
-
-const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<MetaCategorizable> = (props) => {
+const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> = (props) => {
     const {
         className,
         children,
@@ -86,6 +87,7 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
         ariaHideApp,
         showCloseIcon,
         containerClassName,
+        loading,
         ...rest
     } = props
 
@@ -118,14 +120,15 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
                 </div>
             )}
             <div className={containerClasses}>
-                <div className={prefix("modal__content")}>{children}</div>
+                <Loader.Mask loading={loading}>
+                    <div className={prefix("modal__content")}>{children}</div>
+                </Loader.Mask>
             </div>
         </ReactModal>
     )
 }
 
 _Modal.defaultProps = defaultProps
-_Modal._meta = _meta
 
 _Modal.setAppElement = (element) => {
     ReactModal.setAppElement(element)

@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { Flex, Navigation, NavigationSection, Logo, Divider } from "../../../index"
@@ -21,12 +20,7 @@ export interface HeaderProps extends ClassNameProp, ComponentProp {
     logoProps?: object
 }
 
-const _meta: ComponentMeta = {
-    name: "Header",
-    type: META.TYPES.ORGANISM
-}
-
-const _Header: React.StatelessComponent<HeaderProps> & Partial<MetaCategorizable> = (props) => {
+const _Header: React.StatelessComponent<HeaderProps> = (props) => {
     const { as, className, children, sections, title, logoComponent, logoProps, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -43,8 +37,6 @@ const _Header: React.StatelessComponent<HeaderProps> & Partial<MetaCategorizable
         </ElementType>
     )
 }
-
-_Header._meta = _meta
 
 /**
  * The page header with logo and navigation bar

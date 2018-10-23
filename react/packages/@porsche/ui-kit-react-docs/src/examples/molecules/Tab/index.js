@@ -1,12 +1,6 @@
-import React from "react"
 import { Types } from "./Types"
 
-const TabExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { Tab } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default TabExamples
+storiesOf(TYPE.MOLECULE, Tab, [], module).add(Types)

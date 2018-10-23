@@ -2,11 +2,10 @@ import * as React from "react"
 import cx from "classnames"
 
 import * as ReactSelectPlus from "./react-select-plus-1.1.0"
-import { Input, Icon } from "../../../index"
+import { Input } from "../../../index"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-import { ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix, getElementType } from "../../../lib"
+import { prefix, getElementType } from "../../../lib"
 
 import { SelectArrowRenderer } from "./SelectArrowRenderer"
 import { SelectClearRenderer } from "./SelectClearRenderer"
@@ -103,11 +102,6 @@ export interface SelectState {
     query: string // This is used to hide multiselect values when the user searches something
 }
 
-const _meta: ComponentMeta = {
-    name: "Select",
-    type: META.TYPES.MOLECULE
-}
-
 /**
  * A select compononent to select single or multiple values.
  * It switches between a custom, searchable dropdown on desktop browsers and a native selection on touch supported devices.
@@ -121,8 +115,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         basic: false,
         clearable: true
     }
-
-    static _meta: ComponentMeta = _meta
 
     state = {
         query: ""

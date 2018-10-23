@@ -1,12 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const TextExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { Text } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default TextExamples
+storiesOf(TYPE.ATOM, Text, [], module).add(Types)

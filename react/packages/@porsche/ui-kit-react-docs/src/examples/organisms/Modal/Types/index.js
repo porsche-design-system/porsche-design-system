@@ -34,6 +34,11 @@ const Types = () => {
                 use the <code>showCloseIcon</code> prop. You can always close a modal by clicking or tapping the
                 backdrop.
             </ComponentExample>
+
+            <ComponentExample title="Loading" examplePath="organisms/Modal/Types/ModalExampleLoading" noStaticMarkup>
+                A modal can show a loading indicator across its entire content. The close button is above the loading
+                backdrop and is still clickable.
+            </ComponentExample>
         </ExampleSection>
     )
 }
