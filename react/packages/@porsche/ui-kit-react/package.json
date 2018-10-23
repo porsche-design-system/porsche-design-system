@@ -1,7 +1,7 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
@@ -11,6 +11,7 @@
     "files": [
         "dist",
         "src/**/*.scss",
+        "src/base/icon/pag-iconfont/*",
         "css"
     ],
     "repository": {
