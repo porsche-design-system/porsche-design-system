@@ -29,7 +29,7 @@ export { Link, LinkProps } from "./components/molecules/Link/Link"
 export { Header } from "./components/organisms/Header/Header"
 export { Modal } from "./components/organisms/Modal/Modal"
 export { Notification } from "./components/organisms/Notification/Notification"
-export { Toast, ToastProps } from "./components/organisms/Toasts/Toast"
+export { Toast, ToastProps, ToastType } from "./components/organisms/Toasts/Toast"
 export { ToastList, ToastListProps } from "./components/organisms/Toasts/ToastList"
 export { ToastManager } from "./components/organisms/Toasts/ToastManager"
 
