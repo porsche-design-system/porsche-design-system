@@ -181,10 +181,7 @@ class Sidebar extends Component {
                     <strong>
                         Porsche UI Kit React&nbsp;
                         <small>
-                            <em>
-                                (v.
-                                {reactpkg.version})
-                            </em>
+                            <em>{reactpkg.version}</em>
                         </small>
                     </strong>
                 </Menu.Item>
