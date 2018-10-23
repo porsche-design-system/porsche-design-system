@@ -1,10 +1,15 @@
 import React from "react"
-import { Toast, Button, Select, Input, Flex } from "@porsche/ui-kit-react"
+import { Toast, Spacing, Button, Select, Input, Flex } from "@porsche/ui-kit-react"
 
 const emitToast = (type, message, options) => {
     return () => {
         Toast.Manager.emit(type, message, options)
     }
+}
+
+const style = {
+    marginRight: "12px",
+    marginBottom: "12px"
 }
 
 const data = [
@@ -46,34 +51,37 @@ class ToastExampleManager extends React.PureComponent {
     render() {
         return (
             <React.Fragment>
-                <Flex gap="grid">
-                    <Flex.Item width="2">
-                        <Select
-                            placeholder="Type"
-                            options={data}
-                            value={this.state.type}
-                            onChange={this.handleTypeChange}
-                        />
-                    </Flex.Item>
-                    <Flex.Item width="5">
-                        <Input onChange={this.handleMessageChange} value={this.state.message} placeholder="Message" />
-                    </Flex.Item>
-                    <Flex.Item width="auto">
-                        <Input
-                            onChange={this.handleTimeoutChange}
-                            value={this.state.options && this.state.options.timeout}
-                            placeholder="Timeout in ms"
-                        />
-                    </Flex.Item>
-                    <Flex.Item width="auto">
-                        <Button onClick={emitToast(this.state.type, this.state.message, this.state.options)}>
-                            Emit Toast
-                        </Button>
-                    </Flex.Item>
+                {/* <!-- Flex noch schön für responsive gestalten --> */}
+                <Flex wrap>
+                    <Select
+                        placeholder="Type"
+                        options={data}
+                        style={style}
+                        value={this.state.type}
+                        onChange={this.handleTypeChange}
+                    />
+                    <Input
+                        style={style}
+                        onChange={this.handleMessageChange}
+                        value={this.state.message}
+                        placeholder="Message"
+                    />
+
+                    <Input
+                        onChange={this.handleTimeoutChange}
+                        style={style}
+                        value={this.state.options && this.state.options.timeout}
+                        placeholder="Timeout in ms"
+                    />
+                    <Button style={style} onClick={emitToast(this.state.type, this.state.message, this.state.options)}>
+                        Emit Toast
+                    </Button>
                 </Flex>
-                <div style={{ marginTop: "20px", position: "relative", height: "300px", background: "grey" }}>
-                    <Toast.Manager style={{ position: "absolute" }} />
-                </div>
+                <Spacing marginTop={12}>
+                    <div style={{ position: "relative", height: "300px", background: "grey" }}>
+                        <Toast.Manager style={{ position: "absolute" }} />
+                    </div>
+                </Spacing>
             </React.Fragment>
         )
     }

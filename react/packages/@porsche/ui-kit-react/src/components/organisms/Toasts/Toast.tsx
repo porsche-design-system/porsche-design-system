@@ -54,8 +54,6 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable
 
     const textClasses = cx(prefix("toast__text"), { [prefix("toast__text--no-close")]: !onClick })
 
-    // const textClasses = cx(prefix("toast__text"), { [prefix("toast__text--no-close")]: !onClick })
-
     const closeClasses = cx(prefix("toast__close"))
 
     const handleClick = (e: React.SyntheticEvent<HTMLElement>) => {
@@ -65,7 +63,6 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable
 
         onClick(props)
     }
-    /* TODO: Responsive Spacings with css */
     return (
         <ElementType className={classes} {...rest}>
             <Text className={textClasses} as={"span"}>
