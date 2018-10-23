@@ -46,6 +46,7 @@
     &:active {
       background-color: $button-primary-background-color-hover;
       border-color: $button-primary-border-color-hover;
+      text-decoration: none;
     }
   }
 
@@ -75,6 +76,7 @@
       &:active {
         background: $button-primary-black-background-color-hover;
         border-color: $button-primary-black-border-color-hover;
+        text-decoration: none;
       }
     }
   }
@@ -89,6 +91,7 @@
       &:active {
         background: $button-primary-red-background-color-hover;
         border-color: $button-primary-red-border-color-hover;
+        text-decoration: none;
       }
     }
   }
@@ -105,6 +108,7 @@
         background: $button-primary-acid-green-background-color-hover;
         border-color: $button-primary-acid-green-border-color-hover;
         color: $button-primary-acid-green-text-color-hover;
+        text-decoration: none;
       }
     }
   }

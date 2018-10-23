@@ -46,6 +46,7 @@
     &:active {
       border-color: $button-ghost-border-color-hover;
       color: $button-ghost-text-color-hover;
+      text-decoration: none;
     }
   }
 

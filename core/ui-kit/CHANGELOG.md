@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.13.3] - 2018-10-22
+* Set text-decoration: none to all button patterns to make those patterns more self-contained
+
 ## [0.13.2] - 2018-10-08
 * Added new `e-route` icon
 
