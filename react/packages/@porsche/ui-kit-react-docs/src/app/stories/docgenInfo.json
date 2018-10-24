@@ -455,6 +455,93 @@
     },
     "path": "src/components/atoms/Scroll/Scroll.tsx"
   },
+  "Text": {
+    "displayName": "Text",
+    "props": [
+      {
+        "description": [
+          "The text alignment of the component."
+        ],
+        "name": "align",
+        "required": false,
+        "type": "TextAlignType",
+        "tags": []
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "inherit",
+        "description": [
+          "The color of the text. By default, the component inherits the color of the surrounding element."
+        ],
+        "name": "color",
+        "required": false,
+        "type": "TextColorType",
+        "tags": []
+      },
+      {
+        "description": [
+          "Adds an ellipsis to a single line of text if it overflows."
+        ],
+        "name": "ellipsis",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Sets the text as display: inline."
+        ],
+        "name": "inline",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "copy",
+        "description": [
+          "The style of the text."
+        ],
+        "name": "type",
+        "required": false,
+        "type": "TextType",
+        "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "Wraps the text, even when it has to break a word."
+        ],
+        "name": "wrap",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "Use this component any time you want to display plain text anywhere."
+      ]
+    },
+    "path": "src/components/atoms/Text/Text.tsx"
+  },
   "Spacing": {
     "displayName": "Spacing",
     "props": [
@@ -697,93 +784,6 @@
       ]
     },
     "path": "src/components/atoms/Spacing/Spacing.tsx"
-  },
-  "Text": {
-    "displayName": "Text",
-    "props": [
-      {
-        "description": [
-          "The text alignment of the component."
-        ],
-        "name": "align",
-        "required": false,
-        "type": "TextAlignType",
-        "tags": []
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "inherit",
-        "description": [
-          "The color of the text. By default, the component inherits the color of the surrounding element."
-        ],
-        "name": "color",
-        "required": false,
-        "type": "TextColorType",
-        "tags": []
-      },
-      {
-        "description": [
-          "Adds an ellipsis to a single line of text if it overflows."
-        ],
-        "name": "ellipsis",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Sets the text as display: inline."
-        ],
-        "name": "inline",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "copy",
-        "description": [
-          "The style of the text."
-        ],
-        "name": "type",
-        "required": false,
-        "type": "TextType",
-        "tags": []
-      },
-      {
-        "defaultValue": "true",
-        "description": [
-          "Wraps the text, even when it has to break a word."
-        ],
-        "name": "wrap",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "Use this component any time you want to display plain text anywhere."
-      ]
-    },
-    "path": "src/components/atoms/Text/Text.tsx"
   },
   "Button": {
     "displayName": "Button",
