@@ -1,12 +1,10 @@
 import React from "react"
 import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
 import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
-
-import { Loader } from "@porsche/ui-kit-react"
 import { storiesOf, TYPE } from "src/app/stories"
 
-storiesOf(TYPE.MOLECULE, Loader, [], module)
-    .addPropsTable(Loader.Mask)
+storiesOf(TYPE.MOLECULE, "Loader", [], module)
+    .addPropsTable("Loader.Mask")
     .add(
         <React.Fragment>
             <ExampleSection title="Types">
