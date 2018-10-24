@@ -1,6 +1,6 @@
 import * as React from "react"
 import cx from "classnames"
-import { prefix, Icon, Text, ClassNameProp, ComponentProp, getElementType } from "../../../index"
+import { prefix, Spacing, Icon, Text, ClassNameProp, ComponentProp, getElementType } from "../../../index"
 import { ToastList } from "./ToastList"
 import { ToastManager } from "./ToastManager"
 
@@ -37,8 +37,6 @@ const defaultProps: Partial<ToastProps> = {
 const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
     const { onClick, message, type, className, as, ...rest } = props
 
-    const ElementType = getElementType(as, "div")
-
     const classes = cx(
         prefix("toast"),
         { [prefix("toast--success")]: type === "success" },
@@ -52,6 +50,10 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
 
     const closeClasses = cx(prefix("toast__close"))
 
+    const ElementType = getElementType(as, "div")
+
+    const closeIconClasses = cx(prefix("toast__close__icon"))
+
     const handleClick = (e: React.SyntheticEvent<HTMLElement>) => {
         if (!onClick) {
             return
@@ -60,17 +62,16 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
         onClick(props)
     }
 
-    /* Bei vielen verschachtelten Divs immer kurz schauen, ob jedes Element das richtige HTML-Element hat */
-
-    /* Immer Button bei Actions, weil sie native Browserfunktionen mitbringen (z.b. dass es fokussierbar ist und ich es antabben kann)
-        React UI-KIT: 2 oder der wichtigsten Buttons mit */
     return (
         <ElementType className={classes} {...rest}>
             <Text className={textClasses} as={"p"}>
                 {message}
             </Text>
-            {/* TODO: html-button hier einfügen */}
-            {onClick && <Icon {...{ onClick: handleClick }} className={closeClasses} name={"cancel"} color={"white"} />}
+            {onClick && (
+                <button type="button" className={closeClasses} {...{ onClick: handleClick }}>
+                    <Icon className={closeIconClasses} name={"cancel"} color={"white"} />
+                </button>
+            )}
         </ElementType>
     )
 }
