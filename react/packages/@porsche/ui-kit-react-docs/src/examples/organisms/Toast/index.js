@@ -1,13 +1,11 @@
 import React from "react"
 import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
 import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
-
-import { Toast } from "@porsche/ui-kit-react"
 import { storiesOf, TYPE } from "src/app/stories"
 
-storiesOf(TYPE.ORGANISM, Toast, [], module)
-    .addPropsTable(Toast.List)
-    .addPropsTable(Toast.Manager)
+storiesOf(TYPE.ORGANISM, "Toast", [], module)
+    .addPropsTable("Toast.List")
+    .addPropsTable("Toast.Manager")
     .add(() => (
         <React.Fragment>
             <ExampleSection title="Toast">
