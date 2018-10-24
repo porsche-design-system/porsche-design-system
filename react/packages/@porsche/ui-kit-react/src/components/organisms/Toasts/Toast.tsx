@@ -63,11 +63,17 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable
 
         onClick(props)
     }
+
+    /* Bei vielen verschachtelten Divs immer kurz schauen, ob jedes Element das richtige HTML-Element hat */
+
+    /* Immer Button bei Actions, weil sie native Browserfunktionen mitbringen (z.b. dass es fokussierbar ist und ich es antabben kann)
+        React UI-KIT: 2 oder der wichtigsten Buttons mit */
     return (
         <ElementType className={classes} {...rest}>
-            <Text className={textClasses} as={"span"}>
+            <Text className={textClasses} as={"p"}>
                 {message}
             </Text>
+            {/* TODO: html-button hier einfügen */}
             {onClick && <Icon {...{ onClick: handleClick }} className={closeClasses} name={"cancel"} color={"white"} />}
         </ElementType>
     )
