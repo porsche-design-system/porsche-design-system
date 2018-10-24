@@ -16,7 +16,7 @@ const componentCompleter = {
     getCompletions(editor, session, pos, prefix, callback) {
         const completions = []
 
-        getStories.forEach((story) => {
+        getStories().forEach((story) => {
             completions.push({ caption: story.name, value: story.name, meta: "Component" })
         })
         callback(null, completions)
