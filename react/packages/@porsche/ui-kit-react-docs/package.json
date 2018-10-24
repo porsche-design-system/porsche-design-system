@@ -4,7 +4,9 @@
     "scope": "@porsche",
     "version": "0.1.0",
     "description": "The web documentation for Porsche UI Kit React.",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "repository": {
         "type": "git"
     },
@@ -19,17 +21,15 @@
         "build": "yarn run build:docgen && yarn run build:webpack",
         "start": "yarn run start:webpack",
         "build:webpack": "cross-env NODE_ENV=production webpack --mode production --colors",
-        "start:webpack":
-            "cross-env NODE_ENV=development webpack-dev-server --mode development --devtool cheap-module-eval-source-map --output-pathinfo --hot --inline --progress --colors --port 8080",
+        "start:webpack": "cross-env NODE_ENV=development webpack-dev-server --mode development --devtool cheap-module-eval-source-map --output-pathinfo --hot --inline --progress --colors --port 8080",
         "build:docgen": "gulp build:docgen",
         "watch:docgen": "gulp watch:docgen",
-        "distribute":
-            "yarn run build && cpx \"dist/**\" ../../../../finder-backend/api/src/main/resources/static/static/ui-kit",
+        "distribute": "yarn run build && cpx \"dist/**\" ../../../../finder-backend/api/src/main/resources/static/static/ui-kit",
         "lint:js": "eslint src/**",
         "lint:js:fix": "yarn run lint:js --fix"
     },
     "dependencies": {
-        "@porsche/ui-kit-react": "^0.2.1",
+        "@porsche/ui-kit-react": "^0.2.2",
         "classnames": "^2.2.5",
         "lodash": "^4.17.4",
         "lorem-ipsum": "^1.0.4",

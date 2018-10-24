@@ -3,7 +3,8 @@ import { Toast, Flex } from "@porsche/ui-kit-react"
 
 const style = {
     marginRight: "12px",
-    marginBottom: "12px"
+    marginBottom: "12px",
+    marginTop: 0
 }
 
 const ToastExampleType = () => (
