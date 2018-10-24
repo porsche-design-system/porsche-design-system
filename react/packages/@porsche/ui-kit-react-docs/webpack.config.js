@@ -30,8 +30,13 @@ const configuration = {
                     {
                         loader: "babel-loader",
                         options: {
-                            cacheDirectory: true,
-                            babelrc: true
+                            presets: ["@babel/preset-env", "@babel/preset-react"],
+                            plugins: [
+                                "babel-plugin-lodash",
+                                "@babel/plugin-proposal-class-properties",
+                                "babel-plugin-transform-react-remove-prop-types",
+                                "@babel/plugin-transform-runtime"
+                            ]
                         }
                     }
                 ]

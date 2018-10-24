@@ -1,4 +1,4 @@
-import * as Babel from "babel-standalone"
+import * as Babel from "@babel/standalone"
 
 import { Divider, Grid, Menu } from "semantic-ui-react"
 import React, { Component, createElement, isValidElement } from "react"
@@ -15,7 +15,7 @@ import { renderToStaticMarkup } from "react-dom/server"
 import { withRouter } from "react-router"
 
 const babelConfig = {
-    presets: ["es2015", "react", "stage-1"]
+    presets: ["es2015", "react"]
 }
 
 const headerColumnStyle = {
