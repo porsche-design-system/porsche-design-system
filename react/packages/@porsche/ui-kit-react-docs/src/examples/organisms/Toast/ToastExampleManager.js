@@ -22,7 +22,7 @@ const data = [
 class ToastExampleManager extends React.PureComponent {
     state = {
         type: "info",
-        message: "Message",
+        message: "The message of the toast.",
         options: {
             timeout: 5000
         }
@@ -51,31 +51,41 @@ class ToastExampleManager extends React.PureComponent {
     render() {
         return (
             <React.Fragment>
-                {/* <!-- Flex noch schön für responsive gestalten --> */}
                 <Flex wrap>
-                    <Select
-                        placeholder="Type"
-                        options={data}
-                        style={style}
-                        value={this.state.type}
-                        onChange={this.handleTypeChange}
-                    />
-                    <Input
-                        style={style}
-                        onChange={this.handleMessageChange}
-                        value={this.state.message}
-                        placeholder="Message"
-                    />
-
-                    <Input
-                        onChange={this.handleTimeoutChange}
-                        style={style}
-                        value={this.state.options && this.state.options.timeout}
-                        placeholder="Timeout in ms"
-                    />
-                    <Button style={style} onClick={emitToast(this.state.type, this.state.message, this.state.options)}>
-                        Emit Toast
-                    </Button>
+                    <Flex.Item width={{ base: 6, m: 3 }}>
+                        <Select
+                            clearable={false}
+                            placeholder="Type"
+                            options={data}
+                            style={style}
+                            value={this.state.type}
+                            onChange={this.handleTypeChange}
+                        />
+                    </Flex.Item>
+                    <Flex.Item width={{ base: 6, m: 3 }}>
+                        <Input
+                            style={style}
+                            onChange={this.handleMessageChange}
+                            value={this.state.message}
+                            placeholder="Message"
+                        />
+                    </Flex.Item>
+                    <Flex.Item width={{ base: 6, m: 3 }}>
+                        <Input
+                            onChange={this.handleTimeoutChange}
+                            style={style}
+                            value={this.state.options && this.state.options.timeout}
+                            placeholder="Timeout in ms"
+                        />
+                    </Flex.Item>
+                    <Flex.Item width={{ base: 6, m: 3 }}>
+                        <Button
+                            style={style}
+                            onClick={emitToast(this.state.type, this.state.message, this.state.options)}
+                        >
+                            Emit Toast
+                        </Button>
+                    </Flex.Item>
                 </Flex>
                 <Spacing marginTop={12}>
                     <div style={{ position: "relative", height: "300px", background: "grey" }}>

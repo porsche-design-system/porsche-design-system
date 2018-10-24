@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix, getElementType } from "../../../lib"
+import { prefix, getElementType } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface CheckboxProps extends ClassNameProp, ComponentProp {
@@ -61,12 +60,7 @@ const defaultProps: Partial<CheckboxProps> = {
     type: "default"
 }
 
-const _meta: ComponentMeta = {
-    name: "Checkbox",
-    type: META.TYPES.MOLECULE
-}
-
-const _Checkbox: React.StatelessComponent<CheckboxProps> & Partial<MetaCategorizable> = (props) => {
+const _Checkbox: React.StatelessComponent<CheckboxProps> = (props) => {
     const {
         as,
         checked,
@@ -152,8 +146,6 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> & Partial<MetaCategoriz
 }
 
 _Checkbox.defaultProps = defaultProps
-
-_Checkbox._meta = _meta
 
 /**
  * A checkbox allows a user to select a binary value.

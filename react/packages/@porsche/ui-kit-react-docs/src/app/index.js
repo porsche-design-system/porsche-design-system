@@ -24,6 +24,12 @@ import "@porsche/ui-kit-react/css/index.css"
 // Rendering
 // ----------------------------------------
 
+import "../examples/index.stories"
+
+import { loadStories } from "./stories/storyStore"
+
+loadStories()
+
 const mountNode = document.getElementById("root")
 document.body.appendChild(mountNode)
 

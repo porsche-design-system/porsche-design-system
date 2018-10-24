@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export type TextType =
@@ -83,12 +82,7 @@ const defaultProps: Partial<TextProps> = {
     wrap: true
 }
 
-const _meta: ComponentMeta = {
-    name: "Text",
-    type: META.TYPES.ATOM
-}
-
-const _Text: React.StatelessComponent<TextProps> & Partial<MetaCategorizable> = (props) => {
+const _Text: React.StatelessComponent<TextProps> = (props) => {
     const { as, className, children, ellipsis, align, color, inline, type, wrap, ...rest } = props
 
     const ElementType = getElementType(as, "p")
@@ -111,8 +105,6 @@ const _Text: React.StatelessComponent<TextProps> & Partial<MetaCategorizable> = 
 }
 
 _Text.defaultProps = defaultProps
-
-_Text._meta = _meta
 
 /**
  * Use this component any time you want to display plain text anywhere.

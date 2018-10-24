@@ -1,12 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const FlyoutExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { Flyout } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default FlyoutExamples
+storiesOf(TYPE.MOLECULE, Flyout, [], module).add(Types)

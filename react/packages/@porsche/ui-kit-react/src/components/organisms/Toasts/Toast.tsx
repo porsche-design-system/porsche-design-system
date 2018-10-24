@@ -1,8 +1,6 @@
 import * as React from "react"
 import cx from "classnames"
-import { prefix, Icon, Text, ClassNameProp, ComponentProp, getElementType, Spacing } from "../../../index"
-import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
-import { META } from "../../../lib"
+import { prefix, Icon, Text, ClassNameProp, ComponentProp, getElementType } from "../../../index"
 import { ToastList } from "./ToastList"
 import { ToastManager } from "./ToastManager"
 
@@ -15,16 +13,19 @@ export type ToastType = "info" | "success" | "warning" | "error"
 
 export interface ToastProps extends ClassNameProp, ComponentProp {
     /**
-     * determines the color of the left border
+     * Toasts can have different urgencies, signified by different status colors.
      * @default info
      */
     type?: ToastType
+
     /**
-     * message displayed in the toast
+     * The content of the toast.
      */
-    message: string
+    message: string | JSX.Element
+
     /**
-     * callback when close button is clicked
+     * Callback when the close button of the toast is clicked.
+     * @param {ToastProps} data All props of the component.
      */
     onClick?: (data: ToastProps) => void
 }
@@ -33,12 +34,7 @@ const defaultProps: Partial<ToastProps> = {
     type: "info"
 }
 
-const _meta: ComponentMeta = {
-    name: "Toast",
-    type: META.TYPES.ORGANISM
-}
-
-const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable> = (props) => {
+const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
     const { onClick, message, type, className, as, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -46,7 +42,7 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable
     const classes = cx(
         prefix("toast"),
         { [prefix("toast--success")]: type === "success" },
-        { [prefix("toast--warning")]: type === "warning" },
+        { [prefix("toast--warn")]: type === "warning" },
         { [prefix("toast--info")]: type === "info" },
         { [prefix("toast--error")]: type === "error" },
         className
@@ -80,9 +76,10 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> & Partial<MetaCategorizable
 }
 
 _Toast.defaultProps = defaultProps
-_Toast._meta = _meta
-
 _Toast.List = ToastList
 _Toast.Manager = ToastManager
 
+/**
+ * A small, unintrusive, floating notification that should be closed by clicking or via a timeout.
+ */
 export const Toast = _Toast

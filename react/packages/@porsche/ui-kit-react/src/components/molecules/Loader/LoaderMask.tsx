@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 import { Loader, Flex } from "../../../index"
-import { getElementType, META, prefix } from "../../../lib"
-import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface LoaderMaskProps extends ClassNameProp, ComponentProp {
@@ -13,13 +12,7 @@ export interface LoaderMaskProps extends ClassNameProp, ComponentProp {
     loading?: boolean
 }
 
-const _meta: ComponentMeta = {
-    parent: "Loader",
-    name: "LoaderMask",
-    type: META.TYPES.MOLECULE
-}
-
-const _LoaderMask: React.StatelessComponent<LoaderMaskProps> & Partial<MetaCategorizable> = (props) => {
+const _LoaderMask: React.StatelessComponent<LoaderMaskProps> = (props) => {
     const { as, children, className, loading, ...rest } = props
 
     const ElementType = getElementType(as, "div")
@@ -41,8 +34,6 @@ const _LoaderMask: React.StatelessComponent<LoaderMaskProps> & Partial<MetaCateg
         </ElementType>
     )
 }
-
-_LoaderMask._meta = _meta
 
 /**
  * Displays the loader around its children using a translucent backdrop.

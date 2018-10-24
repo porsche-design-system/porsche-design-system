@@ -1,14 +1,9 @@
-import React from "react"
 import Types from "./Types"
 import EdgeCases from "./EdgeCases"
 
-const InputExamples = () => {
-    return (
-        <div>
-            <Types />
-            <EdgeCases />
-        </div>
-    )
-}
+import { Input } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default InputExamples
+storiesOf(TYPE.MOLECULE, Input, [], module)
+    .add(Types)
+    .add(EdgeCases)

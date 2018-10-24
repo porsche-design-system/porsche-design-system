@@ -1,12 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const ContentWrapperExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { ContentWrapper } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default ContentWrapperExamples
+storiesOf(TYPE.STRUCTURE, ContentWrapper, [], module).add(Types)
