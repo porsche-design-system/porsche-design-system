@@ -13,9 +13,10 @@
   border-bottom: $navigation-steps-border-bottom-width solid $navigation-steps-border-bottom-color;
 
   &__item {
-    @include -text-color-white;
+    @include -text-color-black;
     @include -spacing-6('right');
     @include -spacing-6('bottom', 'padding');
+
     display: inline-block;
     border-bottom: $navigation-steps-item-active-border-width solid transparent;
 
@@ -28,6 +29,10 @@
       @include -spacing-12('top', 'padding');
       padding-bottom: $navigation-steps-item-spacing-bottom-s;
       margin-right: $navigation-steps-item-spacing-right-s;
+    }
+
+    #{$bem-block}--theme-inverted & {
+      @include -text-color-white;
     }
 
     &:last-of-type {
@@ -112,6 +117,20 @@
     &--icon {
       border-left: 0;
       padding-left: 0;
+    }
+  }
+
+  &__body {
+    display: none;
+
+    opacity: 0;
+    visibility: hidden;
+
+    &--active {
+      display: block;
+
+      opacity: 1;
+      visibility: visible;
     }
   }
 }
