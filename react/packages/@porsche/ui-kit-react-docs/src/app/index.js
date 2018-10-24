@@ -17,9 +17,6 @@ import "semantic-ui-css/components/image.css"
 import "semantic-ui-css/components/input.css"
 import "semantic-ui-css/components/segment.css"
 
-import "@porsche/ui-kit-react"
-import "@porsche/ui-kit-react/css/index.css"
-
 // ----------------------------------------
 // Rendering
 // ----------------------------------------
