@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* Add possibility display the navigation-steps on light or dark background
+  __Migration path:__ 
+  * if you need the color to be white on dark background, use the `navigation-steps--theme-inverted`
+  class on the navigation-steps element.
 
 ## [0.13.3] - 2018-10-22
 * Set text-decoration: none to all button patterns to make those patterns more self-contained
