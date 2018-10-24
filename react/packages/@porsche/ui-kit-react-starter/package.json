@@ -4,8 +4,7 @@
     "description": "A starter project for Porsche react web apps.",
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --mode production --progress --colors",
-        "start":
-            "cross-env NODE_ENV=development webpack-dev-server --mode development --devtool cheap-module-eval-source-map --output-pathinfo --hot --inline --progress --colors --port 3000",
+        "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --devtool cheap-module-eval-source-map --output-pathinfo --hot --inline --progress --colors --port 3000",
         "lint:ts": "tslint --project '.' --format codeFrame",
         "lint:ts:fix": "yarn run lint:ts --fix",
         "lint:scss": "stylelint '**/*.scss'",
@@ -16,7 +15,10 @@
         "url": "git@git.mymhp.net:mymhp/cem-companion.git"
     },
     "author": "Dr. Ing. h.c. F. Porsche AG",
-    "contributors": ["Christoph Albert <christoph.albert@mhp.com>", "Christian Senk <christian.Senk@mhp.com>"],
+    "contributors": [
+        "Christoph Albert <christoph.albert@mhp.com>",
+        "Christian Senk <christian.Senk@mhp.com>"
+    ],
     "devDependencies": {
         "@types/history": "^4.6.2",
         "@types/prop-types": "^15.5.2",
@@ -55,7 +57,7 @@
         "webpack-dev-server": "^3.1.9"
     },
     "dependencies": {
-        "@porsche/ui-kit-react": "^0.1.17",
+        "@porsche/ui-kit-react": "^0.2.2",
         "classnames": "^2.2.5",
         "history": "^4.7.2",
         "prop-types": "^15.6.0",

@@ -30,7 +30,6 @@ const configuration = {
                     {
                         loader: "babel-loader",
                         options: {
-                            cacheDirectory: true,
                             babelrc: true
                         }
                     }
