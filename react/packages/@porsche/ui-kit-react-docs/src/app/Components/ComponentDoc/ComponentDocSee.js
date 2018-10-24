@@ -14,15 +14,8 @@ const ComponentDocSee = ({ items }) => {
             <List.Item>
                 <Header color="grey" content={items.length > 0 ? "See:" : " "} size="tiny" />
             </List.Item>
-            {_.map(items, ({ description, name, type }) => {
-                return (
-                    <List.Item
-                        as={Link}
-                        content={description}
-                        key={description}
-                        to={`/${type}s/${_.kebabCase(name)}`}
-                    />
-                )
+            {items.map(({ name, type }) => {
+                return <List.Item as={Link} content={name} key={name} to={`/${type}s/${_.kebabCase(name)}`} />
             })}
         </List>
     )

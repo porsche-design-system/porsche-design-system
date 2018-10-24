@@ -1,6 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const NotificationExamples = () => <Types />
+import { Notification } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default NotificationExamples
+storiesOf(TYPE.ORGANISM, Notification, [], module).add(Types)

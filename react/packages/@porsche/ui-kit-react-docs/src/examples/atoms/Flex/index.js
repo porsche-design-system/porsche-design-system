@@ -1,14 +1,10 @@
-import React from "react"
 import Container from "./Container"
 import Items from "./Items"
 
-const FlexExamples = () => {
-    return (
-        <div>
-            <Container />
-            <Items />
-        </div>
-    )
-}
+import { Flex } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default FlexExamples
+storiesOf(TYPE.ATOM, Flex, [], module)
+    .addPropsTable(Flex.Item)
+    .add(Container)
+    .add(Items)

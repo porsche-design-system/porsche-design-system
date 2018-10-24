@@ -1,14 +1,9 @@
-import React from "react"
 import Variations from "./Variations"
 import IconSet from "./IconSet"
 
-const IconExamples = () => {
-    return (
-        <div>
-            <Variations />
-            <IconSet />
-        </div>
-    )
-}
+import { Icon } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default IconExamples
+storiesOf(TYPE.ATOM, Icon, [], module)
+    .add(Variations)
+    .add(IconSet)

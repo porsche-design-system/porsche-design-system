@@ -1,12 +1,6 @@
-import React from "react"
 import Settings from "./Settings"
 
-const BreakpointExamples = () => {
-    return (
-        <div>
-            <Settings />
-        </div>
-    )
-}
+import { Breakpoint } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default BreakpointExamples
+storiesOf(TYPE.ATOM, Breakpoint, [], module).add(Settings)

@@ -61,7 +61,7 @@ const Introduction = () => {
             <Segment basic textAlign="center">
                 <Logo centered size="small" />
                 <Header as="h1" textAlign="center">
-                    Porsche UI Kit React (v.{reactpkg.version})
+                    Porsche UI Kit React <em>{reactpkg.version}</em>
                     <Header.Subheader>{reactpkg.description}</Header.Subheader>
                 </Header>
             </Segment>

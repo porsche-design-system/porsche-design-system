@@ -1,12 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const LinkExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { Link } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default LinkExamples
+storiesOf(TYPE.MOLECULE, Link, [], module).add(Types)

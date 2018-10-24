@@ -1,12 +1,6 @@
-import React from "react"
 import Types from "./Types"
 
-const NavigationExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
+import { Navigation } from "@porsche/ui-kit-react"
+import { storiesOf, TYPE } from "src/app/stories"
 
-export default NavigationExamples
+storiesOf(TYPE.MOLECULE, Navigation, [], module).add(Types)

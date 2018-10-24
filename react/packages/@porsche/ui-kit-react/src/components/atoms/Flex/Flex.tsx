@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { META, getElementType, prefix } from "../../../lib"
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
+import { getElementType, prefix } from "../../../lib"
 import { FlexItem } from "./FlexItem"
 import { SpacingValue } from "../../../index"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
@@ -49,16 +48,11 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
     shrink?: 0 | 1
 }
 
-const _meta: ComponentMeta = {
-    name: "Flex",
-    type: META.TYPES.ATOM
-}
-
 const defaultProps: Partial<FlexProps> = {
     wrap: true
 }
 
-const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> & Partial<MetaCategorizable> = (props) => {
+const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
     const {
         as,
         className,
@@ -124,8 +118,6 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> & Partial<MetaC
 _Flex.defaultProps = defaultProps
 
 _Flex.Item = FlexItem
-
-_Flex._meta = _meta
 
 /**
  * A flex container component used to create flex box layouts.

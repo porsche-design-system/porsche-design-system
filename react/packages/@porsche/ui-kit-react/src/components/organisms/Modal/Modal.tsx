@@ -4,8 +4,7 @@ import cx from "classnames"
 // import ReactModal from "react-modal"
 const ReactModal = require("react-modal")
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
+import { prefix } from "../../../lib"
 import { ClassNameProp } from "../../../lib/props"
 
 import { ModalTitle } from "./ModalTitle"
@@ -77,12 +76,7 @@ const defaultProps: Partial<ModalProps> = {
     ariaHideApp: true
 }
 
-const _meta: ComponentMeta = {
-    name: "Modal",
-    type: META.TYPES.ORGANISM
-}
-
-const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<MetaCategorizable> = (props) => {
+const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> = (props) => {
     const {
         className,
         children,
@@ -135,7 +129,6 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> & Partial<Me
 }
 
 _Modal.defaultProps = defaultProps
-_Modal._meta = _meta
 
 _Modal.setAppElement = (element) => {
     ReactModal.setAppElement(element)

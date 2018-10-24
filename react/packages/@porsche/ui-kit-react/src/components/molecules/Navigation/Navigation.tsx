@@ -1,7 +1,5 @@
 import * as React from "react"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { Breakpoint } from "../../../index"
@@ -25,15 +23,10 @@ export interface NavigationProps extends ClassNameProp, ComponentProp {
     title?: string | JSX.Element
 }
 
-const _meta: ComponentMeta = {
-    name: "Navigation",
-    type: META.TYPES.MOLECULE
-}
-
 /**
  * A responsive navigation bar.
  */
-const _Navigation: React.StatelessComponent<NavigationProps> & Partial<MetaCategorizable> = (props) => {
+const _Navigation: React.StatelessComponent<NavigationProps> = (props) => {
     const { children, ...rest } = props
 
     return (
@@ -47,7 +40,5 @@ const _Navigation: React.StatelessComponent<NavigationProps> & Partial<MetaCateg
         </React.Fragment>
     )
 }
-
-_Navigation._meta = _meta
 
 export const Navigation = _Navigation

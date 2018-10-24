@@ -3,10 +3,6 @@ import { ToastList } from "./ToastList"
 import { eventManager } from "./eventManager"
 import { ToastType } from "./Toast"
 
-export interface ToastManager extends React.Component {
-    emit: (type: ToastType, message: string, options?: ToastOptions) => void
-}
-
 export interface ToastOptions {
     timeout?: number
 }
@@ -15,7 +11,30 @@ const defaultOptions = {
     timeout: 5000
 }
 
-class ToastManagerComponent extends React.PureComponent {
+/**
+ * The toast manager automatically queues and displays toasts created with its emit, info, success, warn, error methods.
+ */
+export class ToastManager extends React.PureComponent {
+    static emit = (type: ToastType, message: string, options?: ToastOptions) => {
+        eventManager.emit("CREATE_TOAST", type, message, options)
+    }
+
+    static info = (message: string, options?: ToastOptions) => {
+        eventManager.emit("CREATE_TOAST", "info", message, options)
+    }
+
+    static success = (message: string, options?: ToastOptions) => {
+        eventManager.emit("CREATE_TOAST", "success", message, options)
+    }
+
+    static warn = (message: string, options?: ToastOptions) => {
+        eventManager.emit("CREATE_TOAST", "warn", message, options)
+    }
+
+    static error = (message: string, options?: ToastOptions) => {
+        eventManager.emit("CREATE_TOAST", "error", message, options)
+    }
+
     state = {
         toasts: []
     }
@@ -46,7 +65,6 @@ class ToastManagerComponent extends React.PureComponent {
         }
     }
 
-    /* statt date hier uuid */
     createToast = (type: ToastType, message: string) => {
         return {
             id: `${new Date().getTime()}`,
@@ -68,11 +86,3 @@ class ToastManagerComponent extends React.PureComponent {
         }
     }
 }
-
-const emit = (type: ToastType, message: string, options?: ToastOptions) => {
-    eventManager.emit("CREATE_TOAST", type, message, options)
-}
-
-export const ToastManager: React.ComponentType & Partial<ToastManager> = ToastManagerComponent
-
-ToastManager.emit = emit

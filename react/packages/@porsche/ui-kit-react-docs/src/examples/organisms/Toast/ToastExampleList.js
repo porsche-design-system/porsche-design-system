@@ -15,6 +15,11 @@ class ToastExampleList extends React.PureComponent {
                     id: "2",
                     message: "The second Toast",
                     type: "error"
+                },
+                {
+                    id: "3",
+                    message: "The third Toast with a very long text that shows the responsiveness of the list.",
+                    type: "warning"
                 }
             ],
             animationOnOff: false
@@ -66,7 +71,7 @@ class ToastExampleList extends React.PureComponent {
                 <Spacing marginBottom={12}>
                     <Flex gap={12}>
                         <Flex.Item width="auto">
-                            <Text>Toggle animations on/ off</Text>
+                            <Text>Toggle animations</Text>
                         </Flex.Item>
                         <Flex.Item width="auto">
                             <Checkbox checked={this.state.animationOnOff} onChange={this.setAnimationOnOrOff} />
