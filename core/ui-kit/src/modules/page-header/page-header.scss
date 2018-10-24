@@ -4,16 +4,27 @@
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}page-header {
+  $bem-block: &;
+
   max-width: 50rem;
 
   &__title {
     @include -text-size-2-thin;
-    @include -text-color-white;
+    @include -text-color-black;
+
+    #{$bem-block}--theme-inverted & {
+      @include -text-color-white;
+    }
   }
 
   &__description {
     @include -text-size-copy;
-    @include -text-color-white;
+    @include -text-color-black;
     @include -spacing-6;
+
+    #{$bem-block}--theme-inverted & {
+      @include -text-color-white;
+    }
   }
 }
+
