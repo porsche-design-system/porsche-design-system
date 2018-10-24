@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ClassNameProp, ComponentProp, Spacing } from "../../../index"
+import { ClassNameProp, ComponentProp } from "../../../index"
 import { ToastProps, Toast } from "./Toast"
 import cx from "classnames"
 import { prefix, getElementType } from "../../../index"
@@ -36,7 +36,7 @@ const _ToastList: React.SFC<ToastListProps> = (props) => {
 
     const ElementType = getElementType(as, "div")
 
-    const transitionClasses = cx(prefix("toast-list--slide"))
+    const transitionClasses = cx(prefix("toast--slide"))
 
     const classes = cx(prefix("toast-list"), className)
 
@@ -48,10 +48,8 @@ const _ToastList: React.SFC<ToastListProps> = (props) => {
 
     const elements = toasts.map((item) => {
         return (
-            <CSSTransition timeout={500} classNames={transitionClasses} key={item.id}>
-                <Spacing marginTop={6}>
-                    <Toast message={item.message} type={item.type} {...{ id: item.id }} onClick={handleToastCancel} />
-                </Spacing>
+            <CSSTransition timeout={400} classNames={transitionClasses} key={item.id}>
+                <Toast message={item.message} type={item.type} {...{ id: item.id }} onClick={handleToastCancel} />
             </CSSTransition>
         )
     })
