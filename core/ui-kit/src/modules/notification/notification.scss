@@ -1,7 +1,7 @@
 @import 'notification.setup.scss';
 @import '../../base/wrapper/wrapper.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../mixins/breakpoint.scss';
@@ -36,8 +36,8 @@
 
   &__wrapper {
     @include flex;
-    @include flex--direction(column);
-    @include flex--align-items(flex-start);
+    @include flex-direction(column);
+    @include flex-cross-axis(flex-start);
 
     @include -wrapper-page;
     position: relative;
@@ -50,9 +50,9 @@
     }
 
     @include breakpoint('s') {
-      @include flex--direction(row);
-      @include flex--align-items(center);
-      @include flex--justify-content(space-between);
+      @include flex-direction(row);
+      @include flex-cross-axis(center);
+      @include flex-main-axis(space-between);
     }
   }
 
@@ -81,7 +81,7 @@
 
   &__button {
     @include -spacing-18;
-    @include flex--shrink(0);
+    @include flex-child-shrink(0);
     width: $notification-button-width;
 
     @include breakpoint('xs') {

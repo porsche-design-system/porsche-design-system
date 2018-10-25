@@ -3,7 +3,7 @@
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/font/font.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../setup/global-variables.scss';
@@ -80,7 +80,7 @@
 
     &-model {
       @include flex;
-      @include flex--row-reverse;
+      @include flex-direction(row-reverse);
       width: $car-selector-derivative-list-item-model-width;
       justify-content: space-between;
 

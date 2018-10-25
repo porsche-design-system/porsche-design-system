@@ -1,5 +1,5 @@
 @import 'event-tile.setup.scss';
-@import '../../../base/grid/flex.mixin.scss';
+@import '../../../base/layout/flex.mixin.scss';
 @import '../../../base/spacing/spacing.mixin.scss';
 @import '../../../base/text-color/text-color.mixin';
 @import '../../../base/background/background.mixin.scss';
@@ -32,7 +32,7 @@
   }
 
   &__body {
-    @include flex--grow(1);
+    @include flex-child-grow(1);
   }
 
   &__img {

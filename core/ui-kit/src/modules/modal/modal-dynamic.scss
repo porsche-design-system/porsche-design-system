@@ -1,6 +1,6 @@
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../setup/global-variables.scss';
 @import 'modal-dynamic.setup.scss';
@@ -16,8 +16,9 @@
 
   @include breakpoint('xs') {
     @include flex;
-    @include flex--center-horizontal;
-    @include flex--center-vertical;
+    @include flex-cross-axis(center);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
   }
 
   &__dialog {
@@ -27,8 +28,9 @@
 
     @include breakpoint('xs') {
       @include flex;
-      @include flex--center-vertical;
-      @include flex--direction(row);
+      @include flex-direction(column);
+      @include flex-main-axis(center);
+      @include flex-direction(row);
 
       padding: $modal-dynamic-dialog-inner-spacing-vertical $modal-dynamic-dialog-inner-spacing-horizontal;
       height: auto;
@@ -44,7 +46,7 @@
 
   &__header {
     @include flex;
-    @include flex--center-horizontal;
+    @include flex-cross-axis(center);
 
     @include -spacing-30('top', 'padding');
     @include -spacing-30('right', 'padding');
