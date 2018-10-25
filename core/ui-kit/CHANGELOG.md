@@ -7,6 +7,101 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.14.0] - 2018-10-25
+### Grid-Float component is now "deprecated"
+Moved grid-float component to `deprecated` folder.
+
+#### Breaking changes
+* Migration path:
+  * Changed location of files (and corresponding import paths of other components):
+  
+    `base/grid/column.mixin.scss` => `deprecated/grid/column.mixin.scss`  
+    `base/grid/column.scss` => `deprecated/grid/column.scss`  
+    `base/grid/column.setup.scss` => `deprecated/grid/column.setup.scss` 
+    `base/grid/row.mixin.scss` => `deprecated/grid/row.mixin.scss`  
+    `base/grid/row.scss` => `deprecated/grid/row.scss`  
+    `base/grid/row.setup.scss` => `deprecated/grid/row.setup.scss` 
+    `base/grid/index.scss` => `deprecated/grid/index.scss` 
+  
+  * Deleted global `setup/grid.setup.scss` because these variables are now directly implemented in grid component.
+
+### Extraction of grid as a standalone component (from flex).
+Grid behaviour is now extracted from flex component and is developed as a new grid component.  
+That means that all grid related properties from flex component are now maintained under grid.  
+Every usage of flex component, which was used to layout with grid sizings, must now use grid component classes.  
+
+#### Breaking changes
+* Migration path:
+  * Changed location of files (and corresponding import paths):
+  
+    `base/grid/flex.setup.scss` => `base/grid/grid.setup.scss`  
+    `base/grid/flex.mixin.scss` => `base/grid/grid.mixin.scss`  
+    `base/grid/flex.scss` => `base/grid/grid.scss`  
+  
+  * Renamings of class names of flex parent:
+    
+    `flex` => `grid`
+    `flex--direction-row` => `grid--direction-row`  
+    `flex--direction-row-reverse` => `grid--direction-row-reverse`  
+    `flex--direction-column` => `grid--direction-column`  
+    `flex--direction-column-reverse` => `grid--direction-column-reverse`  
+    
+  * Renamings of class names of flex children:
+      
+    `flex__child` => `grid__child`  
+    `flex__child--gap-left` => deleted  
+    `flex__child--gap-right` => deleted  
+    `flex__child--gap-left-(variant)` => is set on parent only  
+    `flex__child--gap-right-(variant)` => is set on parent only  
+    `flex__child--(size)` => `grid__child--size-(size)`  
+  
+### Refactoring of flex component.
+* Added missing flex properties.
+
+#### Breaking changes
+  * Migration path:
+    * Changed location of files (and corresponding import paths):
+    
+      `base/grid/flex.setup.scss` => deleted! 
+      `base/grid/flex.mixin.scss` => `base/layout/flex.mixin.scss`  
+      `base/grid/flex.scss` => `base/layout/flex.scss`  
+      `base/grid/index.scss` => `base/layout/index.scss`  
+      
+    * Deleted unused/deprecated class names which can be set by more generic classes:
+        
+      `flex--center-vertical` => `flex--direction-column flex--cross-axis-center`  
+      `flex--center-horizontal` => `flex--cross-axis-center`  
+      `flex--row-reverse` => `flex--direction-row-reverse`  
+      `flex--column-reverse` => `flex--direction-column-reverse`  
+      `flex--row-wrap` => `flex--wrap`  
+      `flex--row-nowrap` => `flex--wrap-no`  
+      `flex--row` => `flex--direction-row`  
+      `flex--column` => `flex--direction-column`  
+      `flex--grow` => `flex__child--grow-1` || `flex__child--grow-0`  
+    
+    * Consolidated and deleted doubled mixins (and corresponding includes):
+      
+      `@include flex--direction` => `@include flex-direction`
+      `@include flex--wrap` => `@include flex-wrap`
+      `@include flex--justify-content` => `@include flex-main-axis` 
+      `@include flex--align-items` => `@include flex-cross-axis`  
+      `@include flex--align-content` => `@include flex-align-content`  
+      `@include flex--align-self` => `@include flex-child-cross-axis`  
+      `@include flex--grow` => `@include flex-child-grow`  
+      `@include flex--shrink` => `@include flex-child-shrink`  
+      `@include flex--basis` => `@include flex-child-basis`  
+      `@include flex--order` => `@include flex-child-order`  
+      `@include flex--center-vertical` => `@include flex-direction(column) @include flex-main-axis(center)`  
+      `@include flex--center-horizontal` => `@include flex-cross-axis(center)`  
+      `@include flex--column-reverse` => `@include flex-direction(column-reverse)`  
+      `@include flex--row-reverse` => `@include flex-direction(row-reverse)`  
+      `@include flex--row-wrap` => `@include flex-wrap(wrap)`  
+      `@include flex--row-nowrap` => `@include flex-wrap(nowrap)`  
+      `@include flex--space-between-vertical` => `@include flex-direction(column) @include flex-main-axis(center)`  
+      `@include flex--space-between-horizontal` => `@include flex-main-axis(space-between)`  
+      
+      
+
 ## [0.13.3] - 2018-10-22
 * Set text-decoration: none to all button patterns to make those patterns more self-contained
 

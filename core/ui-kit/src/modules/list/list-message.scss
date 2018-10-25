@@ -3,7 +3,7 @@
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/overflow/overflow.mixin.scss';
 @import '../../setup/global-variables.scss';
 @import 'list-message.setup.scss';
@@ -64,7 +64,7 @@
     &--right {
       @include breakpoint('m') {
         @include flex;
-        @include flex--center-horizontal;
+        @include flex-cross-axis(center);
         transform: translate(-$list-message-content-border-size, 0);
         padding-left: $list-message-content-divider-spacing-horizontal;
         border-left: $list-message-content-border-size solid $list-message-content-separator-color;

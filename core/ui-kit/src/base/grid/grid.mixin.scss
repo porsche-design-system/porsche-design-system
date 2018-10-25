@@ -1,0 +1,71 @@
+@import 'grid.setup.scss';
+/**
+ * properties for grid parent items
+ */
+@mixin grid-gap-normal {
+  margin: {
+    left: -$grid-child-spacing-horizontal;
+    right: -$grid-child-spacing-horizontal;
+  }
+
+  @include breakpoint('s') {
+    margin: {
+      left: -$grid-child-spacing-horizontal-s;
+      right: -$grid-child-spacing-horizontal-s;
+    }
+  }
+
+  @include breakpoint('m') {
+    margin: {
+      left: -$grid-child-spacing-horizontal-m;
+      right: -$grid-child-spacing-horizontal-m;
+    }
+  }
+}
+
+@mixin grid-gap-zero {
+  margin: {
+    left: 0;
+    right: 0;
+  }
+}
+
+
+/**
+ * properties for grid child items
+ */
+@mixin grid-child-gap-normal {
+  padding: {
+    left: $grid-child-spacing-horizontal;
+    right: $grid-child-spacing-horizontal;
+  }
+
+  @include breakpoint('s') {
+    padding: {
+      left: $grid-child-spacing-horizontal-s;
+      right: $grid-child-spacing-horizontal-s;
+    }
+  }
+
+  @include breakpoint('m') {
+    padding: {
+      left: $grid-child-spacing-horizontal-m;
+      right: $grid-child-spacing-horizontal-m;
+    }
+  }
+}
+
+@mixin grid-child-gap-zero {
+  padding: {
+    left: 0;
+    right: 0;
+  }
+}
+
+@mixin grid-child-size($i) {
+  width: #{nth($grid-child-width, $i)};
+}
+
+@mixin grid-child-offset($i) {
+  margin-left: #{nth($grid-child-width, $i)};
+}

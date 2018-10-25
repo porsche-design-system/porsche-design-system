@@ -3,7 +3,7 @@
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/font/font.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/overflow/overflow.mixin.scss';
 @import '../../mixins/breakpoint.scss';
@@ -97,7 +97,7 @@
       margin-left: $car-selector-bar-icon-width;
 
       @include breakpoint('m') {
-        @include flex--align-self(flex-end);
+        @include flex-child-cross-axis(flex-end);
         @include -spacing-12(left, padding);
         @include -spacing-12(right, padding);
         @include -spacing-zero(left);
@@ -136,7 +136,7 @@
 
     @include breakpoint('m') {
       @include flex;
-      @include flex--center-horizontal;
+      @include flex-cross-axis(center);
       @include -background-white;
       @include -text-color-grey-7;
       cursor: pointer;
@@ -264,7 +264,7 @@
     &--single {
       @include breakpoint('m') {
         @include flex;
-        @include flex--center-horizontal;
+        @include flex-cross-axis(center);
         width: $car-selector-car-list-item-single-width-m;
         padding-bottom: $car-selector-car-list-item-active-border-width-m;
       }
@@ -277,8 +277,8 @@
     &-box {
       @include breakpoint('m') {
         @include flex;
-        @include flex--direction(column);
-        @include flex--justify-content(space-between);
+        @include flex-direction(column);
+        @include flex-main-axis(space-between);
         height: $car-selector-car-list-item-box-height;
       }
     }
@@ -418,8 +418,8 @@
 
     @include breakpoint('m') {
       @include flex;
-      @include flex--align-items(center);
-      @include flex--justify-content(center);
+      @include flex-cross-axis(center);
+      @include flex-main-axis(center);
       width: $car-selector-button-action-width-m;
       min-width: $car-selector-button-action-width-m;
       line-height: $car-selector-button-action-line-height-m;
