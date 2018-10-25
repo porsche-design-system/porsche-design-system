@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix, getElementType } from "../../../lib"
+import { prefix, getElementType } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { Icon } from "../../../index"
@@ -19,6 +18,9 @@ export interface InputProps extends ClassNameProp, ComponentProp {
 
     /** An input can appear disabled and be unable to change states. */
     disabled?: boolean
+
+    /** An input can have autofocus. */
+    autofocus?: boolean
 
     /** An input can display an error. */
     error?: boolean
@@ -60,18 +62,14 @@ const defaultProps: Partial<InputProps> = {
     type: "text"
 }
 
-const _meta: ComponentMeta = {
-    name: "Input",
-    type: META.TYPES.MOLECULE
-}
-
-const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> = (props) => {
+const _Input: React.StatelessComponent<InputProps> = (props) => {
     const {
         as,
         className,
         children,
         basic,
         disabled,
+        autofocus,
         error,
         icon,
         name,
@@ -112,6 +110,7 @@ const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> 
                 <input
                     className={inputClasses}
                     disabled={disabled}
+                    autoFocus={autofocus}
                     name={name}
                     onChange={handleChange}
                     placeholder={placeholder}
@@ -130,8 +129,6 @@ const _Input: React.StatelessComponent<InputProps> & Partial<MetaCategorizable> 
 }
 
 _Input.defaultProps = defaultProps
-
-_Input._meta = _meta
 
 /**
  * An Input is a field used to elicit a textual response from a user.

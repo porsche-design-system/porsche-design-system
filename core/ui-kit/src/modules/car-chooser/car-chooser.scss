@@ -2,8 +2,8 @@
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/align/align.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
-@import '../../base/grid/row.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
+@import '../../deprecated/grid/row.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/overflow/overflow.mixin.scss';
 @import '../../mixins/breakpoint.scss';
@@ -19,17 +19,18 @@
     @include flex;
 
     & > * {  // sass-lint:disable-line no-combinators no-universal-selectors
-      @include flex--grow(0);
-      @include flex--shrink(1);
-      @include flex--basis(auto);
+      @include flex-child-grow(0);
+      @include flex-child-shrink(1);
+      @include flex-child-basis(auto);
     }
   }
 
   &__icon {
     @include -background-red-1;
     @include flex;
-    @include flex--center-horizontal;
-    @include flex--center-vertical;
+    @include flex-cross-axis(center);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
     @include -text-color-white;
 
     font-size: $car-chooser-icon-font-size;
@@ -60,7 +61,7 @@
     @include -background-grey-9;
     @include -overflow-ellipsis;
     @include flex;
-    @include flex--direction(column);
+    @include flex-direction(column);
 
     width: $car-chooser-title-container-width;
     padding: $car-chooser-title-container-padding-horizontal $car-chooser-title-container-padding-vertical;
@@ -74,8 +75,8 @@
     }
 
     @include breakpoint('s') {
-      @include flex--direction(row);
-      @include flex--center-horizontal;
+      @include flex-direction(row);
+      @include flex-cross-axis(center);
 
       justify-content: space-between;
       padding-left: $car-chooser-title-container-padding-vertical-s;
@@ -129,7 +130,7 @@
       @include flex;
       @include flex-direction(row);
       @include flex-main-axis(center);
-      @include flex--wrap(wrap);
+      @include flex-wrap(wrap);
       @include row-gap-normal;
 
       &--search {
@@ -154,9 +155,9 @@
 
       @include breakpoint('s') {
         @include flex;
-        @include flex--direction(column);
+        @include flex-direction(column);
         @include -align-center;
-        @include flex--align-self(flex-end);
+        @include flex-child-cross-axis(flex-end);
 
         border-bottom: 0;
         padding-bottom: $car-chooser-dropdown-column-inner-spacing-reset;

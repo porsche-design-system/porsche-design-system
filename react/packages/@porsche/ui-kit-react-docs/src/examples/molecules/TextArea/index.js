@@ -1,14 +1,7 @@
-import React from "react"
 import Types from "./Types"
 import EdgeCases from "./EdgeCases"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const TextAreaExamples = () => {
-    return (
-        <div>
-            <Types />
-            <EdgeCases />
-        </div>
-    )
-}
-
-export default TextAreaExamples
+storiesOf(TYPE.MOLECULE, "TextArea", [], module)
+    .add(Types)
+    .add(EdgeCases)

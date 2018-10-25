@@ -1,6 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const NotificationExamples = () => <Types />
-
-export default NotificationExamples
+storiesOf(TYPE.ORGANISM, "Notification", [], module).add(Types)

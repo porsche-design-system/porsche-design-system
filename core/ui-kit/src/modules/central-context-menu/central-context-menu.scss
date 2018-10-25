@@ -1,5 +1,5 @@
 @import 'central-context-menu.setup.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/position/position.mixin.scss';
 @import '../../setup/global-variables.scss';
@@ -7,7 +7,7 @@
 .#{$global-class-prefix}central-context-menu {
   @include -position(relative);
   @include flex;
-  @include flex--direction(column);
+  @include flex-direction(column);
   list-style-type: none;
   margin: $central-context-menu-margin;
 
@@ -20,15 +20,15 @@
 
   &__left {
     @include flex;
-    @include flex--direction(row);
-    @include flex--justify-content(flex-start);
-    @include flex--grow(1);
+    @include flex-direction(row);
+    @include flex-main-axis(flex-start);
+    @include flex-child-grow(1);
   }
 
   &__right {
     @include flex;
-    @include flex--direction(row);
-    @include flex--justify-content(flex-end);
+    @include flex-direction(row);
+    @include flex-main-axis(flex-end);
   }
 
   &__item {

@@ -1,12 +1,4 @@
-import React from "react"
 import Settings from "./Settings"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const BreakpointExamples = () => {
-    return (
-        <div>
-            <Settings />
-        </div>
-    )
-}
-
-export default BreakpointExamples
+storiesOf(TYPE.ATOM, "Breakpoint", [], module).add(Settings)

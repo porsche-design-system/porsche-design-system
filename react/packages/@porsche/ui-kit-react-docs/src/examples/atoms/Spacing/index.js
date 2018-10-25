@@ -1,10 +1,7 @@
-import React from "react"
 import Types from "./Types"
+import EdgeCases from "./EdgeCases"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const SpacingExamples = () => (
-    <div>
-        <Types />
-    </div>
-)
-
-export default SpacingExamples
+storiesOf(TYPE.ATOM, "Spacing", [], module)
+    .add(Types)
+    .add(EdgeCases)

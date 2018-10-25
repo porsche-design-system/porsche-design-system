@@ -1,12 +1,12 @@
 import * as React from "react"
 import { mount, ReactWrapper } from "enzyme"
 import { NavigationMenuList } from "./NavigationMenuList"
-import { NavigationMobile, NavigationMobileState } from "./NavigationMobile"
-import { NavigationSection, Navigation, NavigationProps } from "./Navigation"
+import { NavigationMobile } from "./NavigationMobile"
+import { NavigationProps } from "./Navigation"
 import { prefix } from "../../../lib"
 
 describe("NavigationMobile component", () => {
-    const createComponent = (props?: NavigationProps): ReactWrapper => {
+    const createComponent = (props: NavigationProps): ReactWrapper => {
         return mount(<NavigationMobile {...props} />)
     }
 

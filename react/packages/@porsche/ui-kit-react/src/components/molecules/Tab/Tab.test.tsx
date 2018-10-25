@@ -4,7 +4,7 @@ import { Tab, TabProps } from "./Tab"
 import { prefix } from "../../../lib"
 
 describe("Tab component", () => {
-    const createComponent = (props?: TabProps): ReactWrapper => {
+    const createComponent = (props: TabProps): ReactWrapper => {
         return mount(<Tab {...props} />)
     }
 

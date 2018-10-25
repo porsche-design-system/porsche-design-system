@@ -1,7 +1,6 @@
 import * as React from "react"
 import cx from "classnames"
-import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
-import { getElementType, META, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 import { Divider, Flex } from "../../.."
@@ -29,16 +28,11 @@ export interface TabPane {
     onClick?: (event: React.MouseEvent<HTMLElement>, pane: TabPane) => void
 }
 
-const _meta: ComponentMeta = {
-    name: "Tab",
-    type: META.TYPES.MOLECULE
-}
-
 const defaultProps: Partial<TabProps> = {
     alignment: "center"
 }
 
-const _Tab: React.StatelessComponent<TabProps> & Partial<MetaCategorizable> = (props) => {
+const _Tab: React.StatelessComponent<TabProps> = (props) => {
     const { as, className, panes, alignment, mini, ...rest } = props
 
     const classes = cx(className)
@@ -112,7 +106,6 @@ const toFlag = (arg?: boolean | (() => boolean)): boolean => {
     return false
 }
 
-_Tab._meta = _meta
 _Tab.defaultProps = defaultProps
 
 /**

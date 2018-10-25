@@ -1,12 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const LogoExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default LogoExamples
+storiesOf(TYPE.ATOM, "Logo", [], module).add(Types)

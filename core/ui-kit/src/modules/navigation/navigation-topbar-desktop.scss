@@ -1,5 +1,5 @@
 @import '../../base/text-size/text-size.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../setup/global-variables.scss';
 @import 'navigation-topbar-desktop.setup.scss';
 @import '../../base/wrapper/wrapper.mixin.scss';
@@ -23,8 +23,8 @@
 
   &__left {
     @include flex;
-    @include flex--center-horizontal;
-    @include flex--direction(row);
+    @include flex-cross-axis(center);
+    @include flex-direction(row);
 
     float: left;
     height: $navigation-topbar-desktop-container-height;
@@ -33,8 +33,8 @@
 
   &__right {
     @include flex;
-    @include flex--center-horizontal;
-    @include flex--direction(row);
+    @include flex-cross-axis(center);
+    @include flex-direction(row);
 
     float: right;
     height: $navigation-topbar-desktop-container-height;
@@ -43,9 +43,10 @@
 
   &__link {
     @include flex;
-    @include flex--center-horizontal;
-    @include flex--center-vertical;
-    @include flex--direction(row);
+    @include flex-cross-axis(center);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
+    @include flex-direction(row);
 
     position: relative;
     padding-left: $navigation-topbar-desktop-link-spacing-horizontal;

@@ -2,8 +2,7 @@ import React, { Component, createElement } from "react"
 
 import { Grid } from "semantic-ui-react"
 import PropTypes from "prop-types"
-import _ from "lodash"
-import { exampleContext } from "src/app/utils"
+import { getStoryByName } from "src/app/stories"
 
 export default class ComponentExamples extends Component {
     static propTypes = {
@@ -12,12 +11,21 @@ export default class ComponentExamples extends Component {
 
     renderExamples = () => {
         const { componentName } = this.props
+        const story = getStoryByName(componentName)
 
-        const examplePath = _.find(exampleContext.keys(), (path) => {
-            return new RegExp(`${componentName}/index.jsx?$`).test(path)
-        })
+        if (!story || !story.examples) {
+            return undefined
+        }
 
-        return examplePath && createElement(exampleContext(examplePath).default)
+        if (Array.isArray(story.examples)) {
+            let count = 0
+            return story.examples.map((example) => {
+                count += 1
+                return createElement(example, { key: count })
+            })
+        }
+
+        return createElement(story.examples)
     }
 
     renderMissingExamples = () => {

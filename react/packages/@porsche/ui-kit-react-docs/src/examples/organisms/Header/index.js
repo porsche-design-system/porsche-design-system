@@ -1,6 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const HeaderExamples = () => <Types />
-
-export default HeaderExamples
+storiesOf(TYPE.ORGANISM, "Header", [], module).add(Types)

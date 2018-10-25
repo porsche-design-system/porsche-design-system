@@ -1,14 +1,7 @@
-import React from "react"
 import Variations from "./Variations"
 import IconSet from "./IconSet"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const IconExamples = () => {
-    return (
-        <div>
-            <Variations />
-            <IconSet />
-        </div>
-    )
-}
-
-export default IconExamples
+storiesOf(TYPE.ATOM, "Icon", [], module)
+    .add(Variations)
+    .add(IconSet)

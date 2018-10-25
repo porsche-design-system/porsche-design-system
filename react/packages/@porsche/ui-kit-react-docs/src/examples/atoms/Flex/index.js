@@ -1,14 +1,8 @@
-import React from "react"
 import Container from "./Container"
 import Items from "./Items"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const FlexExamples = () => {
-    return (
-        <div>
-            <Container />
-            <Items />
-        </div>
-    )
-}
-
-export default FlexExamples
+storiesOf(TYPE.ATOM, "Flex", [], module)
+    .addPropsTable("Flex.Item")
+    .add(Container)
+    .add(Items)

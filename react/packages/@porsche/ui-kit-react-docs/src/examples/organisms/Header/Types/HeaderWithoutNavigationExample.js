@@ -1,5 +1,5 @@
 import React from "react"
-import { Header, NavigationMenuList } from "@porsche/ui-kit-react"
+import { Header } from "@porsche/ui-kit-react"
 
 const HeaderWithoutNavigationExample = () => (
     <Header

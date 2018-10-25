@@ -1,12 +1,4 @@
-import React from "react"
 import { Types } from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const TabExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default TabExamples
+storiesOf(TYPE.MOLECULE, "Tab", [], module).add(Types)

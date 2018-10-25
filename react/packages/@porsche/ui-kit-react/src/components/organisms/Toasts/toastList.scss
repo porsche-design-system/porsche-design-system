@@ -1,0 +1,19 @@
+@import "../../../common";
+
+.#{$global-class-prefix}toast-list {
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    bottom: $spacing-12;
+    padding-left: $spacing-12;
+    padding-right: $spacing-12;
+    position: fixed;
+    overflow: hidden;
+    align-items: flex-start;
+    z-index: 9999;
+
+    @include breakpoint("s") {
+        bottom: $spacing-42;
+        padding-left: $spacing-60;
+    }
+}

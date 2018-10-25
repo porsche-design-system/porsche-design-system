@@ -1,1 +1,3 @@
-export default from "./ComponentDoc"
+import ComponentDoc from "./ComponentDoc"
+
+export default ComponentDoc

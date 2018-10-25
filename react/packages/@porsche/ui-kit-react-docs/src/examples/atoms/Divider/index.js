@@ -1,12 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const DividerExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default DividerExamples
+storiesOf(TYPE.ATOM, "Divider", [], module).add(Types)

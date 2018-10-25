@@ -39,6 +39,21 @@ To remove the possibility to link the development package again, run the followi
 
 1. `npm unlink`
 
+## Release Management
+1. After merge requirements of a pull request are fulfilled, it can be merged to master branch (don't forget to delete the branch afterwards)
+2. Goto UI Kit Core project in terminal and pull latest commits `git pull`
+3. Either execute `npm version patch` for a patch release or `npm version minor` for a minor release
+4. Open `CHANGELOG.md` and update release notes with proper date and version
+5. Create a commit with following message structure `Release ui-kit/v0.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION} | PUIK`
+6. Create a Git tag `git tag ui-kit/v0.{MINOR_NUMBER}.{PATCH_NUMBER}`
+7. Run project with `npm start` to be sure everything works as expected
+8. Push local commit with tag to master branch `git push --tags`
+9. Create a npm release by executing `npm run publish-artifactory` or simply `npm publish` when your Artifactory credentials are properly set already
+10. Login to Artifactory and download latest npm package of Porsche UI Kit Core
+11. Rename downloaded package to `@porsche/{PREVIOUS_FILENAME}`
+12. Upload package to Confluence "Porsche UI Kit Releases" page
+13. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel
+
 ## Folder and file structure
 
 ```

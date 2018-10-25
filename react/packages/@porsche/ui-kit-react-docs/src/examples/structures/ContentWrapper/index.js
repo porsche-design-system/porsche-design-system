@@ -1,12 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const ContentWrapperExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default ContentWrapperExamples
+storiesOf(TYPE.STRUCTURE, "ContentWrapper", [], module).add(Types)
