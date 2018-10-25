@@ -1,0 +1,65 @@
+/**
+ * properties for flex container
+ */
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-inline {
+  display: inline-flex;
+}
+
+@mixin flex-direction($direction) {
+  flex-direction: #{$direction};
+}
+
+@mixin flex-wrap($wrap) {
+  flex-wrap: #{$wrap};
+}
+
+@mixin flex-main-axis($align) {
+  justify-content: #{$align};
+}
+
+@mixin flex-cross-axis($align) {
+  align-items: #{$align};
+}
+
+@mixin flex-align-content($align-content) {
+  align-content: #{$align-content};
+}
+
+/**
+ * properties for flex child items
+ */
+@mixin flex-child-cross-axis($align) {
+  align-self: #{$align};
+}
+
+@mixin flex-child-grow($grow) {
+  flex-grow: #{$grow};
+}
+
+@mixin flex-child-shrink($shrink) {
+  flex-shrink: #{$shrink};
+}
+
+@mixin flex-child-basis($basis) {
+  flex-basis: #{$basis};
+}
+
+@mixin flex-child-initial {
+  flex: initial;
+}
+
+@mixin flex-child-auto {
+  flex: auto;
+}
+
+@mixin flex-child-none {
+  flex: none;
+}
+
+@mixin flex-child-order($order) {
+  order: #{$order};
+}

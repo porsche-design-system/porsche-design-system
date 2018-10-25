@@ -1,6 +1,6 @@
 @import 'notification-common.setup.scss';
 @import '../../mixins/breakpoint.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/align/align.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
@@ -57,7 +57,7 @@
 
     &--text {
       @include flex;
-      @include flex--center-horizontal;
+      @include flex-cross-axis(center);
     }
 
     &--button {
