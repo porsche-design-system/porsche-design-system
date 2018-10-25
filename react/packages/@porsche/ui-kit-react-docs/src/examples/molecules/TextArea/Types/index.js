@@ -23,6 +23,10 @@ const Types = () => {
                 A text area can be disabled.
             </ComponentExample>
 
+            <ComponentExample title="Autofocus" examplePath="molecules/TextArea/Types/TextAreaExampleTypesAutofocus">
+                A text area can have an autofocus.
+            </ComponentExample>
+
             <ComponentExample title="Error" examplePath="molecules/TextArea/Types/TextAreaExampleTypesError">
                 A text area can show an error.
             </ComponentExample>

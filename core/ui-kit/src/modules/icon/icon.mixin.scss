@@ -19,6 +19,10 @@
   -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
 }
 
+@mixin icon-e-route {
+  content: '\e96d';
+}
+
 @mixin icon-delivery-adress {
   content: '\e96c';
 }

@@ -1,6 +1,7 @@
 @import "../../../common";
 @import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/text-size/text-size";
 @import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/text-color/text-color";
+@import "./text-size.mixin";
 
 .#{$global-class-prefix}text {
     &--inline {
@@ -52,5 +53,55 @@
 
     &-grey-lighter {
         color: $color-palette-grey-1;
+    }
+}
+
+.-#{$global-class-prefix}text-size {
+    &-1 {
+        &-bold {
+            @include -text-size-1-bold;
+        }
+    }
+
+    &-2 {
+        &-bold {
+            @include -text-size-2-bold;
+        }
+    }
+
+    &-3 {
+        &-bold {
+            @include -text-size-3-bold;
+        }
+    }
+
+    &-4 {
+        &-bold {
+            @include -text-size-4-bold;
+        }
+    }
+
+    &-5 {
+        &-bold {
+            @include -text-size-5-bold;
+        }
+    }
+
+    &-copy {
+        &-bold {
+            @include -text-size-copy-bold;
+        }
+    }
+
+    &-small {
+        &-bold {
+            @include -text-size-small-bold;
+        }
+    }
+
+    &-micro {
+        &-bold {
+            @include -text-size-micro-bold;
+        }
     }
 }

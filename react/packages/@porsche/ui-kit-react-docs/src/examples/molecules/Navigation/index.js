@@ -1,12 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const NavigationExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default NavigationExamples
+storiesOf(TYPE.MOLECULE, "Navigation", [], module).add(Types)

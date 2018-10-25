@@ -1,9 +1,8 @@
 import * as React from "react"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix } from "../../../lib"
+import { prefix } from "../../../lib"
 
-import { ContentWrapper, Flex, Icon, Spacing, Button, Text, Header } from "../../../index"
+import { ContentWrapper, Flex, Icon, Spacing, Text, Header } from "../../../index"
 
 export interface MaintenanceScreenProps {
     /** The title of the maintenance screen, displayed very large. */
@@ -13,12 +12,7 @@ export interface MaintenanceScreenProps {
     text: string
 }
 
-const _meta: ComponentMeta = {
-    name: "MaintenanceScreen",
-    type: META.TYPES.SCREEN
-}
-
-const _MaintenanceScreen: React.StatelessComponent<MaintenanceScreenProps> & Partial<MetaCategorizable> = (props) => {
+const _MaintenanceScreen: React.StatelessComponent<MaintenanceScreenProps> = (props) => {
     const { title, text } = props
 
     return (
@@ -58,8 +52,6 @@ const _MaintenanceScreen: React.StatelessComponent<MaintenanceScreenProps> & Par
         </React.Fragment>
     )
 }
-
-_MaintenanceScreen._meta = _meta
 
 /**
  * A generic maintenance screen with a title and a text.

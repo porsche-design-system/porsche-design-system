@@ -1,4 +1,4 @@
-import { Store, applyMiddleware, combineReducers, createStore as createStoreRedux } from "redux"
+import { Store, applyMiddleware, createStore as createStoreRedux } from "redux"
 
 import { ApplicationState } from "src/redux/ApplicationState"
 import { History } from "history"
@@ -16,8 +16,8 @@ export function createStore(history: History): Store<ApplicationState> {
         composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware(history), createLogger()))
     )
 
-    if (module.hot) {
-        module.hot.accept("src/redux/reducers/applicationStateReducer", () => {
+    if ((module as any).hot) {
+        ;(module as any).hot.accept("src/redux/reducers/applicationStateReducer", () => {
             // tslint:disable-next-line:no-require-imports
             // const nextReducer = require("./src/redux/reducers/applicationStateReducer");
             store.replaceReducer(applicationStateReducer)

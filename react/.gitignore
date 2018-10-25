@@ -62,8 +62,5 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
-# Visual Studio Code
-*.code-workspace
-
 # Jest
 jest.json

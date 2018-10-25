@@ -11,6 +11,7 @@ module.exports = {
         "import/no-extraneous-dependencies": 0,
         "import/no-unresolved": 0,
         "import/no-webpack-loader-syntax": 0,
+        "import/prefer-default-export": false,
         indent: [2, 4],
         "jsx-quotes": [2, "prefer-double"],
         "max-len": 0,

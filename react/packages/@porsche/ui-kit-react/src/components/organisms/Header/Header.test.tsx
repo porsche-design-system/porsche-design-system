@@ -1,10 +1,9 @@
 import * as React from "react"
 import { mount, ReactWrapper } from "enzyme"
 import { Header, HeaderProps } from "./Header"
-import { prefix } from "../../../lib"
 
 describe("Header component", () => {
-    const createComponent = (props?: HeaderProps): ReactWrapper => {
+    const createComponent = (props: HeaderProps): ReactWrapper => {
         return mount(<Header {...props} />)
     }
 

@@ -9,6 +9,11 @@ const Types = () => {
                 The text component supports different text styles.
             </ComponentExample>
 
+            <ComponentExample title="Text Bold Styles" examplePath="atoms/Text/Types/TextExampleBoldTypes">
+                The text component also supports bold as a text style. They shouldn't be used as long as they aren't CI
+                compatible.
+            </ComponentExample>
+
             <ComponentExample title="Text Colors" examplePath="atoms/Text/Types/TextExampleColors">
                 It also supports lots of different colors.
             </ComponentExample>

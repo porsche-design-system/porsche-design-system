@@ -2,7 +2,7 @@ import "./ModalExampleWideCustomContainer.css"
 import React from "react"
 import { Modal, Button } from "@porsche/ui-kit-react"
 
-class ModalExampleWide extends React.Component {
+class ModalExampleWide extends React.PureComponent {
     constructor(props) {
         super(props)
 

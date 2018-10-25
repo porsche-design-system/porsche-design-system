@@ -1,12 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const FlyoutExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default FlyoutExamples
+storiesOf(TYPE.MOLECULE, "Flyout", [], module).add(Types)

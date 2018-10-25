@@ -1,16 +1,11 @@
-import React from "react"
+import { storiesOf, TYPE } from "src/app/stories"
+
 import Types from "./Types"
 import Groups from "./Groups"
 import EdgeCases from "./EdgeCases"
 
-const ButtonExamples = () => {
-    return (
-        <div>
-            <Types />
-            <Groups />
-            <EdgeCases />
-        </div>
-    )
-}
-
-export default ButtonExamples
+storiesOf(TYPE.MOLECULE, "Button", module)
+    .addPropsTable("Button.Group")
+    .add(Types)
+    .add(Groups)
+    .add(EdgeCases)

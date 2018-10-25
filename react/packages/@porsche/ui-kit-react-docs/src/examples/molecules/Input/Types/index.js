@@ -39,6 +39,10 @@ const Types = () => {
                 An input can be disabled.
             </ComponentExample>
 
+            <ComponentExample title="Autofocus" examplePath="molecules/Input/Types/InputExampleTypesAutofocus">
+                An input can have an autofocus.
+            </ComponentExample>
+
             <ComponentExample title="Error" examplePath="molecules/Input/Types/InputExampleTypesError">
                 An input can show an error.
             </ComponentExample>

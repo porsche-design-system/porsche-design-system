@@ -1,7 +1,7 @@
 @import 'button-primary.setup.scss';
 @import '../../base/font/font.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/align/align.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../setup/global-variables.scss';
@@ -11,8 +11,8 @@
   $bem-block: &;
 
   @include flex-inline;
-  @include flex--align-items(flex-start);
-  @include flex--direction(column);
+  @include flex-cross-axis(flex-start);
+  @include flex-direction(column);
   @include -align-left;
   @include -text-size-copy;
   @include -spacing-c(left, padding);
@@ -46,6 +46,7 @@
     &:active {
       background-color: $button-primary-background-color-hover;
       border-color: $button-primary-border-color-hover;
+      text-decoration: none;
     }
   }
 
@@ -75,6 +76,7 @@
       &:active {
         background: $button-primary-black-background-color-hover;
         border-color: $button-primary-black-border-color-hover;
+        text-decoration: none;
       }
     }
   }
@@ -89,6 +91,7 @@
       &:active {
         background: $button-primary-red-background-color-hover;
         border-color: $button-primary-red-border-color-hover;
+        text-decoration: none;
       }
     }
   }
@@ -105,6 +108,7 @@
         background: $button-primary-acid-green-background-color-hover;
         border-color: $button-primary-acid-green-border-color-hover;
         color: $button-primary-acid-green-text-color-hover;
+        text-decoration: none;
       }
     }
   }

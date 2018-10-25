@@ -70,6 +70,74 @@ html, body {
   background: #fff;
 }
 
+.sg-bg-color-1 {
+  background: rgba(0, 230, 230, .2);
+}
+
+.sg-bg-color-2 {
+  background: rgba(0, 230, 230, .4);
+}
+
+.sg-bg-color-3 {
+  background: rgba(0, 230, 230, .6);
+}
+
+.sg-bg-color-4 {
+  background: rgba(0, 230, 230, .8);
+}
+
+.sg-bg-color-5 {
+  background: rgba(0, 230, 230, 1);
+}
+
+.sg-bg-color-hl {
+  background: #ff1493;
+}
+
+.sg-box-size-1 {
+  height: 1rem;
+}
+
+.sg-box-size-2 {
+  height: 2rem;
+}
+
+.sg-box-size-3 {
+  height: 3rem;
+}
+
+.sg-box-size-4 {
+  height: 4rem;
+}
+
+.sg-box-size-5 {
+  height: 5rem;
+}
+
+.sg-padding-1 {
+  padding: 1rem;
+}
+
+.sg-padding-2 {
+  padding: 2rem;
+}
+
+.sg-padding-3 {
+  padding: 3rem;
+}
+
+.sg-padding-4 {
+  padding: 4rem;
+}
+
+.sg-padding-5 {
+  padding: 5rem;
+}
+
+.sg-padding-tb-1 {
+  padding: 1rem 0;
+}
+
 .sg-swatch {
   display: block;
   height: 4em;

@@ -4,7 +4,7 @@ import Editor from "src/app/Components/Editor/Editor"
 import Logo from "../Components/Logo/Logo"
 import PropTypes from "prop-types"
 import React from "react"
-import pkg from "package.json"
+import reactpkg from "./../../../../ui-kit-react/package"
 
 const HeaderAugmentationJSX = `<Text as='h3'>
   Learn More
@@ -61,16 +61,9 @@ const Introduction = () => {
             <Segment basic textAlign="center">
                 <Logo centered size="small" />
                 <Header as="h1" textAlign="center">
-                    Porsche UI Kit React
-                    <Header.Subheader>{pkg.description}</Header.Subheader>
+                    Porsche UI Kit React <em>{reactpkg.version}</em>
+                    <Header.Subheader>{reactpkg.description}</Header.Subheader>
                 </Header>
-            </Segment>
-
-            <Segment basic padded>
-                <Header as="h2" dividing>
-                    Introduction
-                </Header>
-                <p>Porsche UI Kit React is the React implementation of Porsche UI Kit.</p>
             </Segment>
 
             <Segment basic padded>

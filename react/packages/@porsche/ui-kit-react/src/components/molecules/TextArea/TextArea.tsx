@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, prefix, getElementType } from "../../../lib"
+import { prefix, getElementType } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 import { Icon } from "../../../index"
 import { IconName } from "../../atoms/Icon/Icon"
@@ -10,6 +9,7 @@ import { IconName } from "../../atoms/Icon/Icon"
 export interface TextAreaProps extends ClassNameProp, ComponentProp {
     basic?: boolean
     disabled?: boolean
+    autofocus?: boolean
     error?: boolean
     icon?: IconName
     maxLength?: number
@@ -39,18 +39,14 @@ const defaultProps: Partial<TextAreaProps> = {
     rows: 4
 }
 
-const _meta: ComponentMeta = {
-    name: "TextArea",
-    type: META.TYPES.MOLECULE
-}
-
-const _TextArea: React.StatelessComponent<TextAreaProps> & Partial<MetaCategorizable> = (props) => {
+const _TextArea: React.StatelessComponent<TextAreaProps> = (props) => {
     const {
         as,
         className,
         children,
         basic,
         disabled,
+        autofocus,
         error,
         icon,
         maxLength,
@@ -102,6 +98,7 @@ const _TextArea: React.StatelessComponent<TextAreaProps> & Partial<MetaCategoriz
                     className={inputFieldClasses}
                     rows={rows}
                     disabled={disabled}
+                    autoFocus={autofocus}
                     name={name}
                     onChange={handleChange}
                     placeholder={placeholder}
@@ -119,8 +116,6 @@ const _TextArea: React.StatelessComponent<TextAreaProps> & Partial<MetaCategoriz
 }
 
 _TextArea.defaultProps = defaultProps
-
-_TextArea._meta = _meta
 
 /**
  * A TextArea.

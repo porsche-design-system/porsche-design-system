@@ -1,12 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const CheckboxExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default CheckboxExamples
+storiesOf(TYPE.MOLECULE, "Checkbox", [], module).add(Types)

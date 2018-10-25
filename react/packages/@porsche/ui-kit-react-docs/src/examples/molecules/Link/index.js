@@ -1,12 +1,4 @@
-import React from "react"
 import Types from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const LinkExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default LinkExamples
+storiesOf(TYPE.MOLECULE, "Link", [], module).add(Types)

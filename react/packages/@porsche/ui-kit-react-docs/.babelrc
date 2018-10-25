@@ -1,22 +1,14 @@
 {
-  "presets": [
-    "env",
-    "react",
-    "stage-1"
-  ],
-  "plugins": [
-    "lodash",
-    ["transform-react-remove-prop-types", {
-      "mode": "wrap"
-    }],
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": false
-    }]
-  ],
-  "env": {
-    "development": {
-      "plugins": "react-hot-loader/babel"
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "plugins": [
+        "babel-plugin-lodash",
+        "@babel/plugin-proposal-class-properties",
+        "babel-plugin-transform-react-remove-prop-types",
+        "@babel/plugin-transform-runtime"
+    ],
+    "env": {
+        "development": {
+            "plugins": ["react-hot-loader/babel"]
+        }
     }
-  }
 }

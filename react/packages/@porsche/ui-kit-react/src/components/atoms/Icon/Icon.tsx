@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { MetaCategorizable, ComponentMeta } from "../../../types/MetaCategorizable"
-import { META, getElementType, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 const iconNames: IconName[] = [
@@ -280,12 +279,7 @@ const defaultProps: Partial<IconProps> = {
     size: "regular"
 }
 
-const _meta: ComponentMeta = {
-    name: "Icon",
-    type: META.TYPES.ATOM
-}
-
-const _Icon: React.StatelessComponent<IconProps> & Partial<Icon> & Partial<MetaCategorizable> = (props) => {
+const _Icon: React.StatelessComponent<IconProps> & Partial<Icon> = (props) => {
     const { as, className, children, name, color, circled, size, ...rest } = props
 
     const ElementType = getElementType(as, "i")
@@ -309,8 +303,6 @@ const _Icon: React.StatelessComponent<IconProps> & Partial<Icon> & Partial<MetaC
 _Icon.defaultProps = defaultProps
 
 _Icon.names = iconNames
-
-_Icon._meta = _meta
 
 /**
  * Display an Icon from the Porsche icon font at various sizes.

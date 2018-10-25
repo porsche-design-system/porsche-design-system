@@ -1,0 +1,97 @@
+@import "../../../common";
+
+$toast-transition-distance: -140px;
+$toast-transition-curve: cubic-bezier(0.46, 0.01, 0.51, 1);
+$toast-transition-duration: 400ms;
+
+.#{$global-class-prefix}toast {
+    background-color: rgba($color: $black, $alpha: 0.8);
+    display: inline-flex;
+    align-items: flex-start;
+    max-width: 440px;
+    border-left: 4px solid $color-palette-status-orange;
+    color: $color-palette-white;
+
+    &__text {
+        @include -spacing-a("top", "padding");
+        @include -spacing-a("bottom", "padding");
+        @include -spacing-b("left", "padding");
+
+        padding-right: 0;
+
+        &--no-close {
+            @include -spacing-b("right", "padding");
+        }
+    }
+
+    &--success {
+        border-color: $color-palette-status-green;
+    }
+
+    &--info {
+        border-color: $color-palette-status-yellow;
+    }
+
+    &--warn {
+        border-color: $color-palette-status-orange;
+    }
+
+    &--error {
+        border-color: $color-palette-status-red;
+    }
+
+    &--slide {
+        &-enter {
+            opacity: 0;
+            transform: translate3d($toast-transition-distance, 0, 0);
+
+            @include breakpoint("s") {
+                transform: translate3d($toast-transition-distance, 0, 0);
+            }
+        }
+
+        &-enter-active {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            transition: transform $toast-transition-duration $toast-transition-curve,
+                opacity $toast-transition-duration $toast-transition-curve;
+        }
+
+        &-exit {
+            transform: translate3d(0, 0, 0);
+        }
+
+        &-exit-active {
+            opacity: 0;
+            transform: translate3d($toast-transition-distance, 0, 0);
+
+            @include breakpoint("s") {
+                transform: translate3d($toast-transition-distance, 0, 0);
+            }
+
+            transition: transform $toast-transition-duration $toast-transition-curve,
+                opacity $toast-transition-duration $toast-transition-curve;
+        }
+    }
+
+    &__close {
+        @include -spacing-a("top", "padding");
+        @include -spacing-a("bottom", "padding");
+        @include -spacing-b("right", "padding");
+        @include -spacing-b("left", "padding");
+
+        background-color: transparent;
+        margin: 3px 0 0 0;
+        text-align: top;
+        border: none;
+        cursor: pointer;
+
+        &__icon {
+            display: block;
+        }
+    }
+
+    & + & {
+        margin-top: $spacing-6;
+    }
+}

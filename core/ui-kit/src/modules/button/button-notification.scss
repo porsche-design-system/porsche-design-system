@@ -1,5 +1,5 @@
 @import '../../base/text-size/text-size.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/spacing/spacing.setup.scss';
 @import '../../base/position/position.mixin.scss';
 @import 'button-notification.setup.scss';
@@ -7,8 +7,8 @@
 
 .#{$global-class-prefix}button-notification {
   @include flex;
-  @include flex--justify-content(center);
-  @include flex--align-items(center);
+  @include flex-main-axis(center);
+  @include flex-cross-axis(center);
   @include -text-size-small;
   position: relative;
   height: $button-notification-height;
@@ -31,6 +31,7 @@
   &:hover {
     background: $button-notification-background-color-hovered;
     color: $button-notification-text-color-hovered;
+    text-decoration: none;
   }
 
   &--error {
