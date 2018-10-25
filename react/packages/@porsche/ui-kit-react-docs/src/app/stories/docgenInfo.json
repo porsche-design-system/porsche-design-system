@@ -49,8 +49,8 @@
     },
     "path": "src/components/atoms/Breakpoint/Breakpoint.tsx"
   },
-  "Divider": {
-    "displayName": "Divider",
+  "Icon": {
+    "displayName": "Icon",
     "props": [
       {
         "description": [
@@ -63,6 +63,15 @@
       },
       {
         "description": [
+          "Puts a circle around the icon"
+        ],
+        "name": "circled",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
           "Additional CSS classes."
         ],
         "name": "className",
@@ -71,33 +80,51 @@
         "tags": []
       },
       {
+        "defaultValue": "black",
         "description": [
-          "Adds predefined top and bottom spacing for more consistent layouting.",
-          "If this doesn't fit your purpose you can always customize spacings using the Spacing component."
+          "The style of the color."
         ],
-        "name": "spacing",
+        "name": "color",
         "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"none\"",
-          "\"small\"",
-          "\"large\""
-        ]
+        "type": "IconColorType",
+        "tags": []
+      },
+      {
+        "description": [
+          "The icon that should be used."
+        ],
+        "name": "name",
+        "required": true,
+        "type": "IconName",
+        "tags": []
+      },
+      {
+        "defaultValue": "regular",
+        "description": [
+          "The size of the icon."
+        ],
+        "name": "size",
+        "required": false,
+        "type": "IconSize",
+        "tags": []
+      },
+      {
+        "description": [
+          "Adds a native HTML tooltip to the icon"
+        ],
+        "name": "title",
+        "required": false,
+        "type": "string",
+        "tags": []
       }
     ],
     "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        }
-      ],
+      "tags": [],
       "description": [
-        "A very basic divider."
+        "Display an Icon from the Porsche icon font at various sizes."
       ]
     },
-    "path": "src/components/atoms/Divider/Divider.tsx"
+    "path": "src/components/atoms/Icon/Icon.tsx"
   },
   "Flex": {
     "displayName": "Flex",
@@ -303,8 +330,8 @@
     },
     "path": "src/components/atoms/Flex/FlexItem.tsx"
   },
-  "Icon": {
-    "displayName": "Icon",
+  "Divider": {
+    "displayName": "Divider",
     "props": [
       {
         "description": [
@@ -317,15 +344,6 @@
       },
       {
         "description": [
-          "Puts a circle around the icon"
-        ],
-        "name": "circled",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
           "Additional CSS classes."
         ],
         "name": "className",
@@ -334,51 +352,33 @@
         "tags": []
       },
       {
-        "defaultValue": "black",
         "description": [
-          "The style of the color."
+          "Adds predefined top and bottom spacing for more consistent layouting.",
+          "If this doesn't fit your purpose you can always customize spacings using the Spacing component."
         ],
-        "name": "color",
+        "name": "spacing",
         "required": false,
-        "type": "IconColorType",
-        "tags": []
-      },
-      {
-        "description": [
-          "The icon that should be used."
-        ],
-        "name": "name",
-        "required": true,
-        "type": "IconName",
-        "tags": []
-      },
-      {
-        "defaultValue": "regular",
-        "description": [
-          "The size of the icon."
-        ],
-        "name": "size",
-        "required": false,
-        "type": "IconSize",
-        "tags": []
-      },
-      {
-        "description": [
-          "Adds a native HTML tooltip to the icon"
-        ],
-        "name": "title",
-        "required": false,
-        "type": "string",
-        "tags": []
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"none\"",
+          "\"small\"",
+          "\"large\""
+        ]
       }
     ],
     "docBlock": {
-      "tags": [],
+      "tags": [
+        {
+          "title": "see",
+          "description": "Spacing"
+        }
+      ],
       "description": [
-        "Display an Icon from the Porsche icon font at various sizes."
+        "A very basic divider."
       ]
     },
-    "path": "src/components/atoms/Icon/Icon.tsx"
+    "path": "src/components/atoms/Divider/Divider.tsx"
   },
   "Logo": {
     "displayName": "Logo",
@@ -414,133 +414,6 @@
       ]
     },
     "path": "src/components/atoms/Logo/Logo.tsx"
-  },
-  "Scroll": {
-    "displayName": "Scroll",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "vertical",
-        "description": [
-          "The scroll direction."
-        ],
-        "name": "direction",
-        "required": false,
-        "type": "\"vertical\"",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "Use this component any time you want to provide a scrolling section for long content."
-      ]
-    },
-    "path": "src/components/atoms/Scroll/Scroll.tsx"
-  },
-  "Text": {
-    "displayName": "Text",
-    "props": [
-      {
-        "description": [
-          "The text alignment of the component."
-        ],
-        "name": "align",
-        "required": false,
-        "type": "TextAlignType",
-        "tags": []
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "required": false,
-        "type": "string | ComponentClass<{}, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "inherit",
-        "description": [
-          "The color of the text. By default, the component inherits the color of the surrounding element."
-        ],
-        "name": "color",
-        "required": false,
-        "type": "TextColorType",
-        "tags": []
-      },
-      {
-        "description": [
-          "Adds an ellipsis to a single line of text if it overflows."
-        ],
-        "name": "ellipsis",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Sets the text as display: inline."
-        ],
-        "name": "inline",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "copy",
-        "description": [
-          "The style of the text."
-        ],
-        "name": "type",
-        "required": false,
-        "type": "TextType",
-        "tags": []
-      },
-      {
-        "defaultValue": "true",
-        "description": [
-          "Wraps the text, even when it has to break a word."
-        ],
-        "name": "wrap",
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "Use this component any time you want to display plain text anywhere."
-      ]
-    },
-    "path": "src/components/atoms/Text/Text.tsx"
   },
   "Spacing": {
     "displayName": "Spacing",
@@ -784,6 +657,229 @@
       ]
     },
     "path": "src/components/atoms/Spacing/Spacing.tsx"
+  },
+  "Scroll": {
+    "displayName": "Scroll",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "vertical",
+        "description": [
+          "The scroll direction."
+        ],
+        "name": "direction",
+        "required": false,
+        "type": "\"vertical\"",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "Use this component any time you want to provide a scrolling section for long content."
+      ]
+    },
+    "path": "src/components/atoms/Scroll/Scroll.tsx"
+  },
+  "Text": {
+    "displayName": "Text",
+    "props": [
+      {
+        "description": [
+          "The text alignment of the component."
+        ],
+        "name": "align",
+        "required": false,
+        "type": "TextAlignType",
+        "tags": []
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "inherit",
+        "description": [
+          "The color of the text. By default, the component inherits the color of the surrounding element."
+        ],
+        "name": "color",
+        "required": false,
+        "type": "TextColorType",
+        "tags": []
+      },
+      {
+        "description": [
+          "Adds an ellipsis to a single line of text if it overflows."
+        ],
+        "name": "ellipsis",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Sets the text as display: inline."
+        ],
+        "name": "inline",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "copy",
+        "description": [
+          "The style of the text."
+        ],
+        "name": "type",
+        "required": false,
+        "type": "TextType",
+        "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "Wraps the text, even when it has to break a word."
+        ],
+        "name": "wrap",
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "Use this component any time you want to display plain text anywhere."
+      ]
+    },
+    "path": "src/components/atoms/Text/Text.tsx"
+  },
+  "Grid": {
+    "displayName": "Grid",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the direction of the main and cross axis. The default \"row\" defines the main axis as horizontal left to right."
+        ],
+        "name": "direction",
+        "required": false,
+        "type": "\"column-reverse\" | \"column\" | \"row-reverse\" | \"row\" | BreakpointValues<GridDirection>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the gap between contained children. The value \"grid\" sets responsive grid spacings that should be used together with Grid.Child."
+        ],
+        "name": "gap",
+        "required": false,
+        "type": "\"normal\" | \"zero\" | BreakpointValues<\"normal\" | \"zero\">",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A grid container component used to create grid layouts."
+      ]
+    },
+    "path": "src/components/layout/Grid/Grid.tsx"
+  },
+  "GridChild": {
+    "displayName": "GridChild",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "required": false,
+        "type": "string | ComponentClass<{}, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: \"6\", l: \"3\"}. You always need to provide a base value when doing this."
+        ],
+        "name": "offset",
+        "required": false,
+        "type": "number | BreakpointValues<number>",
+        "tags": []
+      },
+      {
+        "description": [
+          "The width of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: \"6\", l: \"3\"}. You always need to provide a base value when doing this."
+        ],
+        "name": "width",
+        "required": false,
+        "type": "number | BreakpointValues<number>",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A child of a grid container."
+      ]
+    },
+    "path": "src/components/layout/Grid/GridChild.tsx"
   },
   "Button": {
     "displayName": "Button",

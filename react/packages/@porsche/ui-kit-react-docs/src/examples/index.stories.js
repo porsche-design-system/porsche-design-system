@@ -22,6 +22,8 @@ import "./organisms/Modal"
 import "./organisms/Notification"
 import "./organisms/Toast"
 
+import "./layout/Grid"
+
 import "./screens/ErrorScreen"
 import "./screens/MaintenanceScreen"
 
