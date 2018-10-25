@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.14.0] - 2018-10-25
 ### Grid-Float component is now "deprecated"
 Moved grid-float component to `deprecated` folder.
 
