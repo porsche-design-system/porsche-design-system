@@ -3,6 +3,9 @@ title: Grid Float
 state: inreview
 ---
 
+# @Deprecated
+Please use Grid Flex component instead
+
 # UI Kit Core grid manual
 
 ## Float grid
