@@ -1,6 +1,6 @@
 ---
 title: Flex
-state: inreview
+state: complete
 ---
 
 # UI Kit Core flex manual
