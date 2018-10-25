@@ -1,6 +1,6 @@
 ---
 title: Grid
-state: inreview
+state: complete
 ---
 
 # UI Kit Core grid manual
