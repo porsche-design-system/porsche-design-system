@@ -33,6 +33,10 @@ export { Toast, ToastProps, ToastType } from "./components/organisms/Toasts/Toas
 export { ToastList, ToastListProps } from "./components/organisms/Toasts/ToastList"
 export { ToastManager } from "./components/organisms/Toasts/ToastManager"
 
+// Layout
+export { Grid, GridProps } from "./components/layout/Grid/Grid"
+export { GridChild, GridChildProps } from "./components/layout/Grid/GridChild"
+
 // Screens
 export { ErrorScreen } from "./components/screens/ErrorScreen/ErrorScreen"
 export { MaintenanceScreen } from "./components/screens/MaintenanceScreen/MaintenanceScreen"
