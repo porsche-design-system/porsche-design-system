@@ -12,6 +12,8 @@ const Types = () => {
             <ComponentExample title="Grid Direction" description="" examplePath="layout/Grid/Types/GridDirection" />
 
             <ComponentExample title="Grid Gap" description="" examplePath="layout/Grid/Types/GridGap" />
+
+            <ComponentExample title="Grid by example" description="" examplePath="layout/Grid/Types/GridExamples" />
         </ExampleSection>
     )
 }

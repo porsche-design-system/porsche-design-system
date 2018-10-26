@@ -9,25 +9,25 @@ const itemStyle = (color) => {
 
 const GridStandard = () => {
     return (
-        <div>
+        <React.Fragment>
             <Grid style={containerStyle}>
-                <Grid.Child width={12}>
+                <Grid.Child size={12}>
                     <div style={itemStyle("DeepSkyBlue")} />
                 </Grid.Child>
             </Grid>
             {_.times(11, (i) => {
                 return (
                     <Grid key={i} style={containerStyle}>
-                        <Grid.Child width={i + 1}>
+                        <Grid.Child size={i + 1}>
                             <div style={itemStyle("DeepSkyBlue")} />
                         </Grid.Child>
-                        <Grid.Child width={11 - i}>
+                        <Grid.Child size={11 - i}>
                             <div style={itemStyle("DeepSkyBlue")} />
                         </Grid.Child>
                     </Grid>
                 )
             })}
-        </div>
+        </React.Fragment>
     )
 }
 
