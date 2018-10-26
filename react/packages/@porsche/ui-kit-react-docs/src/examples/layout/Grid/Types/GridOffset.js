@@ -9,17 +9,17 @@ const itemStyle = (color) => {
 
 const GridOffset = () => {
     return (
-        <div>
+        <React.Fragment>
             {_.times(11, (i) => {
                 return (
                     <Grid key={i} style={containerStyle}>
-                        <Grid.Child offset={i + 1} width={11 - i}>
+                        <Grid.Child offset={i + 1} size={11 - i}>
                             <div style={itemStyle("DeepSkyBlue")} />
                         </Grid.Child>
                     </Grid>
                 )
             })}
-        </div>
+        </React.Fragment>
     )
 }
 

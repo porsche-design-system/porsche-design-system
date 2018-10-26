@@ -16,13 +16,13 @@ const GridGap = () => {
             <h2 className="-pui-text-size-copy">normal (default)</h2>
             <Spacing marginTop={12} marginBottom={30}>
                 <Grid gap="normal">
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>1</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>2</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>3</div>
                     </Grid.Child>
                 </Grid>
@@ -31,13 +31,13 @@ const GridGap = () => {
             <h2 className="-pui-text-size-copy">zero</h2>
             <Spacing marginTop={12}>
                 <Grid gap="zero">
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>1</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>2</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>3</div>
                     </Grid.Child>
                 </Grid>

@@ -16,13 +16,13 @@ const GridDirection = () => {
             <h2 className="-pui-text-size-copy">row (default)</h2>
             <Spacing marginTop={12} marginBottom={30}>
                 <Grid direction="row">
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>1</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>2</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>3</div>
                     </Grid.Child>
                 </Grid>
@@ -31,13 +31,13 @@ const GridDirection = () => {
             <h2 className="-pui-text-size-copy">row-reverse</h2>
             <Spacing marginTop={12} marginBottom={30}>
                 <Grid direction="row-reverse">
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>1</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>2</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>3</div>
                     </Grid.Child>
                 </Grid>
@@ -46,13 +46,13 @@ const GridDirection = () => {
             <h2 className="-pui-text-size-copy">column</h2>
             <Spacing marginTop={12} marginBottom={30}>
                 <Grid direction="column">
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>1</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>2</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>3</div>
                     </Grid.Child>
                 </Grid>
@@ -61,13 +61,13 @@ const GridDirection = () => {
             <h2 className="-pui-text-size-copy">column-reverse</h2>
             <Spacing marginTop={12}>
                 <Grid direction="column-reverse">
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>1</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>2</div>
                     </Grid.Child>
-                    <Grid.Child width={4}>
+                    <Grid.Child size={4}>
                         <div style={itemStyle}>3</div>
                     </Grid.Child>
                 </Grid>

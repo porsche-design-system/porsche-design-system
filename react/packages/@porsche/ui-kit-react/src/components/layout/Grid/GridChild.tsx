@@ -5,21 +5,21 @@ import { getElementType, prefix, BreakpointValues, mapBreakpointPropToClasses } 
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface GridChildProps extends ClassNameProp, ComponentProp {
-    /** The width of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: "6", l: "3"}. You always need to provide a base value when doing this. */
-    width?: number | BreakpointValues<number>
+    /** The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: "6", l: "3"}. You always need to provide a base value when doing this. */
+    size?: number | BreakpointValues<number>
 
     /** The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: "6", l: "3"}. You always need to provide a base value when doing this. */
     offset?: number | BreakpointValues<number>
 }
 
 const _GridChild: React.StatelessComponent<GridChildProps> = (props) => {
-    const { as, className, children, offset, width, ...rest } = props
+    const { as, className, children, offset, size, ...rest } = props
 
     const ElementType = getElementType(as, "div")
 
     const classes = cx(
         prefix("grid__child"),
-        mapBreakpointPropToClasses("grid__child--size-", width),
+        mapBreakpointPropToClasses("grid__child--size-", size),
         mapBreakpointPropToClasses("grid__child--offset-", offset),
         className
     )
