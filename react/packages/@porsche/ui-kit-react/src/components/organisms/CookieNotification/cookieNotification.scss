@@ -1,0 +1,44 @@
+@import "../../../common";
+
+.#{$global-class-prefix}cookie-notification {
+    background-color: $grey-darker;
+    color: $grey;
+
+    &__container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    &__text {
+        @include -spacing-a("top", "padding");
+        @include -spacing-a("bottom", "padding");
+
+        padding-right: 0;
+
+        max-width: none;
+
+        a {
+            color: $grey;
+            text-decoration: underline;
+        }
+    }
+
+    &__close {
+        @include -spacing-a("top", "padding");
+        @include -spacing-a("bottom", "padding");
+
+        padding-right: $spacing-18;
+        padding-left: $spacing-18;
+
+        background-color: transparent;
+        margin: 3px -18px 0 0;
+        text-align: top;
+        border: none;
+        cursor: pointer;
+
+        &__icon {
+            display: block;
+        }
+    }
+}
