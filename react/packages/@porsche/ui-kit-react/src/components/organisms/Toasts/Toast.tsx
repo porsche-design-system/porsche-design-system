@@ -69,7 +69,7 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
             </Text>
             {onClick && (
                 <button type="button" className={closeClasses} {...{ onClick: handleClick }}>
-                    <Icon className={closeIconClasses} name={"cancel"} color={"white"} />
+                    <Icon className={closeIconClasses} name={"cancel"} color={"white"} /> {/* TODO: Hover color */}
                 </button>
             )}
         </ElementType>
