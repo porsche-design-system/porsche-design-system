@@ -11,6 +11,12 @@ const Types = () => {
                 screens.
             </ComponentExample>
 
+            <ComponentExample title="Size" examplePath="organisms/Modal/Types/ModalExampleSize" noStaticMarkup>
+                Usually a modal dynamically sets its width and height depending on its content. If you have dynamic
+                contents and want to prevent the modal from changing its width or height, you can set{" "}
+                <code>max-width</code>, <code>max-height</code> or <code>max</code> with this property.
+            </ComponentExample>
+
             <ComponentExample title="Wide" examplePath="organisms/Modal/Types/ModalExampleWide" noStaticMarkup>
                 If you have more complex content, use the <code>wide</code> prop to let the modal stretch the entire
                 width of the page (minus paddings of course).
