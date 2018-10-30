@@ -44,6 +44,12 @@ export interface ModalProps extends ClassNameProp {
     wide?: boolean
 
     /**
+     * Usually a modal dynamically sets its width and height depending on its content. If you have dynamic contents and want to prevent the modal from changing its width or height, you can set the max-width, max-height or both with this property.
+     * @default dynamic
+     */
+    size?: "dynamic" | "max-width" | "max-height" | "max"
+
+    /**
      * Boolean describing if the modal should be shown or not. Defaults to false.
      */
     isOpen: boolean
@@ -88,12 +94,18 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> = (props) =>
         showCloseIcon,
         containerClassName,
         loading,
+        size,
         ...rest
     } = props
 
     const classes = cx(prefix("modal"), { [prefix("modal--wide")]: wide }, className)
 
-    const containerClasses = cx(prefix("modal__content-container"), containerClassName)
+    const containerClasses = cx(
+        prefix("modal__content-container"),
+        { [prefix("modal__content-container--max-width")]: size === "max" || size === "max-width" },
+        { [prefix("modal__content-container--max-height")]: size === "max" || size === "max-height" },
+        containerClassName
+    )
 
     return (
         <ReactModal
