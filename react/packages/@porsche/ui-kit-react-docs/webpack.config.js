@@ -7,7 +7,12 @@ const production = process.env.NODE_ENV === "production"
 
 const configuration = {
     bail: true,
-    entry: ["./src/app/index.js", "@porsche/ui-kit-react", "@porsche/ui-kit-react/css/index.css"],
+    entry: [
+        "@porsche/ui-kit-react/css/index.css",
+        "@porsche/ui-kit-react",
+        "./src/app/index.css",
+        "./src/app/index.js"
+    ],
     output: {
         filename: `[name]${production ? ".[chunkhash:8]" : ""}.js`,
         chunkFilename: `[name].chunk${production ? ".[chunkhash:8]" : ""}.js`,
