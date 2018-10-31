@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import { keyboardKey } from "src/app/utils"
 import { getStories } from "src/app/stories"
 
-import Logo from "src/app/Components/Logo/Logo"
 import { NavLink } from "react-router-dom"
 import PropTypes from "prop-types"
 import _ from "lodash/fp"
@@ -13,18 +12,14 @@ import { withRouter } from "react-router"
 
 import { groupBy } from "lodash"
 
-const selectedItemLabel = (
-    <span className="ui green" style={{ float: "right" }}>
-        Press Enter
-    </span>
-)
+const selectedItemLabel = <span className="ui green docs-sidebar-select-label">Press Enter</span>
 
 class Sidebar extends Component {
     static propTypes = {
         match: PropTypes.object.isRequired,
         location: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired,
-        style: PropTypes.object
+        className: PropTypes.string
     }
     state = { query: "" }
     filteredStories = []
@@ -172,12 +167,11 @@ class Sidebar extends Component {
     }
 
     render() {
-        const { style } = this.props
+        const { className } = this.props
         const { query } = this.state
         return (
-            <Menu vertical fixed="left" inverted style={{ ...style }}>
+            <Menu vertical fixed="left" inverted className={className}>
                 <Menu.Item>
-                    <Logo spaced="right" size="mini" />
                     <strong>
                         Porsche UI Kit React&nbsp;
                         <small>

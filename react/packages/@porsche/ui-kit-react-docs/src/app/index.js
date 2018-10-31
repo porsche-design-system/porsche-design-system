@@ -15,7 +15,6 @@ import "semantic-ui-css/components/divider.css"
 import "semantic-ui-css/components/table.css"
 import "semantic-ui-css/components/image.css"
 import "semantic-ui-css/components/input.css"
-import "semantic-ui-css/components/segment.css"
 
 // ----------------------------------------
 // Rendering

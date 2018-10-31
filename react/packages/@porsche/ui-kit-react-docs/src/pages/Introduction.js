@@ -1,10 +1,10 @@
-import { Container, Divider, Grid, Header, Icon, Label, Segment } from "semantic-ui-react"
+import { Flex, Text, Spacing, Divider } from "@porsche/ui-kit-react"
 
 import Editor from "src/app/Components/Editor/Editor"
-import Logo from "../Components/Logo/Logo"
+import Logo from "../app/Components/Logo/Logo"
 import PropTypes from "prop-types"
 import React from "react"
-import reactpkg from "./../../../../ui-kit-react/package"
+import reactpkg from "./../../../ui-kit-react/package.json"
 
 const HeaderAugmentationJSX = `<Text as='h3'>
   Learn More
@@ -26,27 +26,16 @@ const MenuItemLinkAugmentationHTML = `<a class="pui-button-primary" href="/home"
 
 const Comparison = ({ jsx, html }) => {
     return (
-        <Segment className="code-example">
-            <Grid columns="equal" centered textAlign="left">
-                <Grid.Column computer="8" largeScreen="7" widescreen="7" width="16">
-                    <Label size="tiny" attached="top left">
-                        JSX
-                    </Label>
+        <div className="docs-box">
+            <Flex gap={12}>
+                <Flex.Item className="docs-box__left" width={6}>
                     <Editor id={btoa(jsx)} value={jsx} readOnly />
-                </Grid.Column>
-                <Grid.Column largeScreen="2" only="large screen" textAlign="center">
-                    <Divider vertical>
-                        <Icon name="right arrow circle" />
-                    </Divider>
-                </Grid.Column>
-                <Grid.Column computer="8" largeScreen="7" widescreen="7" width="16">
-                    <Label size="tiny" attached="top right">
-                        Rendered HTML
-                    </Label>
+                </Flex.Item>
+                <Flex.Item width={6}>
                     <Editor id={btoa(html)} mode="html" value={html} readOnly />
-                </Grid.Column>
-            </Grid>
-        </Segment>
+                </Flex.Item>
+            </Flex>
+        </div>
     )
 }
 
@@ -57,19 +46,26 @@ Comparison.propTypes = {
 
 const Introduction = () => {
     return (
-        <Container id="introduction-page">
-            <Segment basic textAlign="center">
-                <Logo centered size="small" />
-                <Header as="h1" textAlign="center">
+        <article id="introduction-page">
+            <Flex direction="column" alignCrossAxis="center">
+                <Spacing marginTop={18} marginBottom={18}>
+                    <Logo centered size="small" />
+                </Spacing>
+                <Text as="h1" align="center" type="2-bold">
                     Porsche UI Kit React <em>{reactpkg.version}</em>
-                    <Header.Subheader>{reactpkg.description}</Header.Subheader>
-                </Header>
-            </Segment>
+                </Text>
+                <Text as="h2" align="center" type="5-regular" color="grey-dark">
+                    {reactpkg.description}
+                </Text>
+            </Flex>
 
-            <Segment basic padded>
-                <Header as="h2" dividing>
+            <Spacing marginTop={36} marginBottom={36} paddingRight={24} paddingLeft={24}>
+                <Text as="h2" type="3-bold">
                     Augmentation
-                </Header>
+                </Text>
+                <Spacing marginTop={6} marginBottom={18}>
+                    <Divider />
+                </Spacing>
                 <p>
                     Control the rendered HTML tag, or render one component <code>as</code> another component. Extra
                     props are passed to the component you are rendering <code>as</code>.
@@ -82,8 +78,8 @@ const Introduction = () => {
 
                 <Comparison jsx={HeaderAugmentationJSX} html={HeaderAugmentationHTML} />
                 <Comparison jsx={MenuItemLinkAugmentationJSX} html={MenuItemLinkAugmentationHTML} />
-            </Segment>
-        </Container>
+            </Spacing>
+        </article>
     )
 }
 
