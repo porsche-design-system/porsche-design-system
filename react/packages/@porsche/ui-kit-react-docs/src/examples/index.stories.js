@@ -17,9 +17,9 @@ import "./molecules/Select"
 import "./molecules/Tab"
 import "./molecules/TextArea"
 
+import "./organisms/CookieNotification"
 import "./organisms/Header"
 import "./organisms/Modal"
-import "./organisms/Notification"
 import "./organisms/Toast"
 
 import "./screens/ErrorScreen"

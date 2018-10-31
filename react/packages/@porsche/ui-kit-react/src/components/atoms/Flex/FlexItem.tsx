@@ -4,16 +4,14 @@ import cx from "classnames"
 import { getElementType, prefix, BreakpointValues, mapBreakpointPropToClasses } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-import { FlexCrossAxis } from "./Flex"
-
 export interface FlexItemProps extends ClassNameProp, ComponentProp {
     /** Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property. */
-    alignCrossAxis?: FlexCrossAxis
+    alignCrossAxis?: "start" | "center" | "end" | "baseline" | "stretch"
 
-    /** The width of the column. Can be between 1 and 12, or "auto". You can also supply values for specific breakpoints, like {base: "6", l: "3"}. You always need to provide a base value when doing this. */
-    width?: string | number | BreakpointValues<string | number>
+    /** The width of the column. Can be between 1 and 12, or "auto". You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
+    width?: "auto" | number | BreakpointValues<"auto" | number>
 
-    /** The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: "6", l: "3"}. You always need to provide a base value when doing this. */
+    /** The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
     offset?: number | BreakpointValues<number>
 
     /** The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs. */
