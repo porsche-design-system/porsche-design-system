@@ -6,9 +6,9 @@ const isCustomAttribute = (type) => {
     return match && match.length > 0
 }
 
-/** Finds types like: 0 | 6 | 12 | "auto_matic" | "red-1" */
+/** Finds types like: 0 | 6 | 12 | "auto_matic" | ... 98 more ... | "red-1" */
 const isEnum = (type) => {
-    const test = /^(\s*"?[a-z\d-_]+"?\s*\|\s*){1,}"?[a-z\d-_]+"?\s*$/g
+    const test = /^(\s*"?[\w\d-_\.\s]+"?\s*\|\s*){1,}"?[\w\d-_]+"?\s*$/g
     const match = test.exec(type)
 
     return (
@@ -60,5 +60,8 @@ export default ({ type }) => {
         }
     }
 
-    return type
+    return {
+        ...type,
+        name: type.name.replace("ComponentClass<{}, any>", "ComponentClass")
+    }
 }

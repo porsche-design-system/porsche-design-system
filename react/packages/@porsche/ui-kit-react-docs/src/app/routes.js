@@ -5,8 +5,8 @@ import { HashRouter, Redirect, Route, Switch } from "react-router-dom"
 import ExternalExampleLayout from "./Components/ExternalExampleLayout"
 import DocsLayout from "./Components/DocsLayout"
 import DocsRoot from "./Components/DocsRoot"
-import Introduction from "./Views/Introduction"
-import PageNotFound from "./Views/PageNotFound"
+import Introduction from "../pages/Introduction"
+import PageNotFound from "../pages/PageNotFound"
 import React from "react"
 
 const RedirectToIntro = () => {

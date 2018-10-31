@@ -3,10 +3,10 @@ export { Breakpoint, BreakpointProps } from "./components/atoms/Breakpoint/Break
 export { Divider, DividerProps } from "./components/atoms/Divider/Divider"
 export { Flex, FlexProps } from "./components/atoms/Flex/Flex"
 export { FlexItem, FlexItemProps } from "./components/atoms/Flex/FlexItem"
-export { Icon, IconProps, IconName, IconSize, IconColorType } from "./components/atoms/Icon/Icon"
+export { Icon, IconProps } from "./components/atoms/Icon/Icon"
 export { Logo, LogoProps } from "./components/atoms/Logo/Logo"
-export { Spacing, SpacingProps, SpacingValue } from "./components/atoms/Spacing/Spacing"
-export { Text, TextProps, TextColorType } from "./components/atoms/Text/Text"
+export { Spacing, SpacingProps } from "./components/atoms/Spacing/Spacing"
+export { Text, TextProps } from "./components/atoms/Text/Text"
 
 // Molecules
 export { Button, ButtonProps } from "./components/molecules/Button/Button"
@@ -26,19 +26,22 @@ export { LoaderMask, LoaderMaskProps } from "./components/molecules/Loader/Loade
 export { Link, LinkProps } from "./components/molecules/Link/Link"
 
 // Organisms
-export { Header } from "./components/organisms/Header/Header"
-export { Modal } from "./components/organisms/Modal/Modal"
-export { Notification } from "./components/organisms/Notification/Notification"
-export { Toast, ToastProps, ToastType } from "./components/organisms/Toasts/Toast"
+export { Header, HeaderProps } from "./components/organisms/Header/Header"
+export { Modal, ModalProps } from "./components/organisms/Modal/Modal"
+export {
+    CookieNotification,
+    CookieNotificationProps
+} from "./components/organisms/CookieNotification/CookieNotification"
+export { Toast, ToastProps } from "./components/organisms/Toasts/Toast"
 export { ToastList, ToastListProps } from "./components/organisms/Toasts/ToastList"
 export { ToastManager } from "./components/organisms/Toasts/ToastManager"
 
 // Screens
-export { ErrorScreen } from "./components/screens/ErrorScreen/ErrorScreen"
-export { MaintenanceScreen } from "./components/screens/MaintenanceScreen/MaintenanceScreen"
+export { ErrorScreen, ErrorScreenProps } from "./components/screens/ErrorScreen/ErrorScreen"
+export { MaintenanceScreen, MaintenanceScreenProps } from "./components/screens/MaintenanceScreen/MaintenanceScreen"
 
 // Structures
-export { ContentWrapper } from "./components/structures/ContentWrapper/ContentWrapper"
+export { ContentWrapper, ContentWrapperProps } from "./components/structures/ContentWrapper/ContentWrapper"
 
 // Props
 export { ClassNameProp } from "./lib/props/ClassNameProp"

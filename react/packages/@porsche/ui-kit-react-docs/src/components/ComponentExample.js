@@ -1,10 +1,9 @@
 import * as Babel from "@babel/standalone"
 
-import { Divider, Grid, Menu } from "semantic-ui-react"
+import { Divider, Grid, Menu, Header } from "semantic-ui-react"
 import React, { Component, createElement, isValidElement } from "react"
 
-import ComponentControls from "../ComponentControls"
-import ComponentExampleTitle from "./ComponentExampleTitle"
+import ComponentControls from "../app/Components/ComponentDoc/ComponentControls"
 import Editor from "src/app/Components/Editor/Editor"
 import PropTypes from "prop-types"
 import _ from "lodash"
@@ -13,6 +12,27 @@ import { exampleContext } from "src/app/utils"
 import { html } from "js-beautify"
 import { renderToStaticMarkup } from "react-dom/server"
 import { withRouter } from "react-router"
+
+const ComponentExampleTitle = ({ title }) => {
+    return (
+        <div>
+            {title && (
+                <Header
+                    as="h3"
+                    style={{
+                        margin: 0
+                    }}
+                >
+                    {title}
+                </Header>
+            )}
+        </div>
+    )
+}
+
+ComponentExampleTitle.propTypes = {
+    title: PropTypes.node
+}
 
 const babelConfig = {
     presets: ["es2015", "react"]
