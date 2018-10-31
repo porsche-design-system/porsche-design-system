@@ -25,12 +25,6 @@
     }
 
     &__close {
-        @include -spacing-a("top", "padding");
-        @include -spacing-a("bottom", "padding");
-
-        padding-right: $spacing-18;
-        padding-left: $spacing-18;
-
         background-color: transparent;
         margin: 3px -18px 0 0;
         text-align: top;
@@ -39,6 +33,15 @@
 
         &__icon {
             display: block;
+            padding-right: $spacing-18;
+            padding-left: $spacing-18;
+            @include -spacing-a("top", "padding");
+            @include -spacing-a("bottom", "padding");
+            color: $white;
+
+            &:hover {
+                color: $grey;
+            }
         }
     }
 }

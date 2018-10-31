@@ -4,15 +4,16 @@ import { CookieNotification, CookieNotificationProps } from "./CookieNotificatio
 import { prefix } from "../../../lib"
 
 describe("Notification component", () => {
-    const createComponent = (props?: CookieNotificationProps): ReactWrapper => {
+    const createComponent = (props: CookieNotificationProps): ReactWrapper => {
         return mount(<CookieNotification {...props} />)
     }
 
     describe("rendering", () => {
         it("should render the cookie notification", () => {
             // Arrange
+            const onClickMock = jest.fn()
             const props: CookieNotificationProps = {
-                message: "cookie disclaimer"
+                onClick: onClickMock
             }
 
             // Act
@@ -29,13 +30,12 @@ describe("Notification component", () => {
             // Arrange
             const onClickMock = jest.fn()
             const props: CookieNotificationProps = {
-                message: "cookie disclaimer",
                 onClick: onClickMock
             }
 
             // Act
             const component = createComponent(props)
-            component.find(`.${prefix("cookie-notification__icon--close")}`).simulate("click")
+            component.find("button").simulate("click")
 
             // Assert
             expect(onClickMock).toHaveBeenCalled()
