@@ -5,7 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [## [0.14.1] - 2018-11-05]
+### Bugfix
+Added missing "-" seperator on sizes/offset classname at "xl" breakpoint
 
 ## [0.14.0] - 2018-10-25
 ### Grid-Float component is now "deprecated"
