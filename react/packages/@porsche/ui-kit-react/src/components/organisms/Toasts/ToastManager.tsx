@@ -1,7 +1,7 @@
 import * as React from "react"
 import { ToastList } from "./ToastList"
 import { eventManager } from "./eventManager"
-import { ToastType } from "./Toast"
+import { ToastProps } from "./Toast"
 
 export interface ToastOptions {
     timeout?: number
@@ -15,7 +15,7 @@ const defaultOptions = {
  * The toast manager automatically queues and displays toasts created with its emit, info, success, warn, error methods.
  */
 export class ToastManager extends React.PureComponent {
-    static emit = (type: ToastType, message: string, options?: ToastOptions) => {
+    static emit = (type: ToastProps["type"], message: string, options?: ToastOptions) => {
         eventManager.emit("CREATE_TOAST", type, message, options)
     }
 
@@ -52,7 +52,7 @@ export class ToastManager extends React.PureComponent {
         return <ToastList onCloseClick={this.handleToastDelete} toasts={this.state.toasts} {...rest} />
     }
 
-    private handleToastCreate = (type: ToastType, message: string, options?: ToastOptions) => {
+    private handleToastCreate = (type: ToastProps["type"], message: string, options?: ToastOptions) => {
         const opts = { ...defaultOptions, ...options }
         const toast = this.createToast(type, message)
 
@@ -65,7 +65,7 @@ export class ToastManager extends React.PureComponent {
         }
     }
 
-    createToast = (type: ToastType, message: string) => {
+    createToast = (type: ToastProps["type"], message: string) => {
         return {
             id: `${new Date().getTime()}`,
             type,

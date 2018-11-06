@@ -1,0 +1,41 @@
+.docs-body {
+    background: #f7f7f7;
+}
+
+.docs-main {
+    margin-left: 300px;
+    min-width: 600px;
+}
+
+.docs-sidebar {
+    position: "fixed" !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 300px !important;
+    padding-bottom: "1em" !important;
+    overflow-y: scroll !important;
+}
+
+.docs-404 {
+    height: 66vh;
+}
+
+.docs-sidebar-select-label {
+    float: right;
+}
+
+.docs-box {
+    position: relative;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+    box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+    margin: 1rem 0em;
+    padding: 1em 1em;
+    border-radius: 0.28571429rem;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.docs-box__left {
+    border-right: 1px solid #eaeaea;
+}

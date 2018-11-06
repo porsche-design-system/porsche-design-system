@@ -4,7 +4,6 @@ import AnchorJS from "anchor-js"
 import PropTypes from "prop-types"
 import { Route } from "react-router-dom"
 import Sidebar from "src/app/Components/Sidebar/Sidebar"
-import style from "src/app/Style"
 
 import { scrollToAnchor } from "src/app/utils"
 
@@ -57,12 +56,12 @@ export default class DocsLayout extends Component {
 
         if (render) return render()
         return (
-            <div style={style.container}>
-                <Sidebar style={style.menu} />
-                <div style={style.main}>
+            <React.Fragment>
+                <Sidebar className="docs-sidebar" />
+                <main className="docs-main">
                     <Children {...props} />
-                </div>
-            </div>
+                </main>
+            </React.Fragment>
         )
     }
 
