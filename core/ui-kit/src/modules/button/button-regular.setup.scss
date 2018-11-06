@@ -1,0 +1,49 @@
+@import '../../setup/color-palette.setup.scss';
+@import '../../base/spacing/spacing.setup.scss';
+@import '../../mixins/px-rem-converter.scss';
+
+$button-regular-width: auto !default;
+$button-regular-width-xxs-xs: 100% !default;
+$button-regular-background-color: $color-palette-grey-9 !default;
+$button-regular-background-color-hover: $color-palette-grey-7 !default;
+$button-regular-background-color-disabled: $color-palette-grey-5 !default;
+$button-regular-text-color: $color-palette-white !default;
+$button-regular-text-color-disabled: rgba($button-regular-text-color, .4) !default;
+$button-regular-border-size: 1px !default;
+$button-regular-border-color: $button-regular-background-color !default;
+$button-regular-border-color-hover: $button-regular-background-color-hover !default;
+$button-regular-border-color-disabled: $button-regular-background-color-disabled !default;
+
+// $button-regular-black-background-color: $color-palette-black !default;
+// $button-regular-black-background-color-hover: $color-palette-red-1 !default;
+// $button-regular-black-border-color: $button-regular-black-background-color !default;
+// $button-regular-black-border-color-hover: $button-regular-black-background-color-hover !default;
+
+$button-regular-highlight-background-color: $color-palette-red-1 !default;
+$button-regular-highlight-background-color-hover: $color-palette-red-2 !default;
+$button-regular-highlight-border-color: $button-regular-highlight-background-color !default;
+$button-regular-highlight-border-color-hover: $button-regular-highlight-background-color-hover !default;
+
+$button-regular-sales-background-color: $color-palette-blue-1 !default;
+$button-regular-sales-background-color-hover: $color-palette-blue-2 !default;
+$button-regular-sales-border-color: $button-regular-sales-background-color !default;
+$button-regular-sales-border-color-hover: $button-regular-sales-background-color-hover !default;
+
+// $button-regular-acid-green-background-color: $color-palette-acid-green !default;
+// $button-regular-acid-green-background-color-hover: $color-palette-grey-8 !default;
+// $button-regular-acid-green-border-color: $button-regular-acid-green-background-color !default;
+// $button-regular-acid-green-border-color-hover: $button-regular-acid-green-background-color-hover !default;
+// $button-regular-acid-green-text-color: $color-palette-black !default;
+// $button-regular-acid-green-text-color-hover: $color-palette-white !default;
+
+// $button-regular-error-background-color: $color-palette-grey-9 !default;
+// $button-regular-error-border-color: $color-palette-red-1 !default;
+// $button-regular-error-text-color: $color-palette-white !default;
+
+$button-regular-stretch-width: 100% !default;
+
+$button-regular-icon-font-size: rem(16px) !default;
+
+$button-regular-loader-position: 50% !default;
+$button-regular-loader-size: rem(16px) !default;
+$button-regular-loader-offset: - $button-regular-loader-size / 2 !default;

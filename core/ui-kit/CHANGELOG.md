@@ -5,7 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [## [0.14.1] - 2018-11-05]
+## [Unreleased]
+### Button Refactoring
+* added sales button type
+
+#### Breaking changes
+* Migration path:
+  * renamed css and classes:
+  
+  `button-primary` => `button-regular`  
+  `button-primary--red` => `button-regular--highlight`  
+  
+  * deleted following deprecated buttons:  
+  
+  `button-primary--black`  
+  `button-primary--acid-green`  
+  `button-primary--error`  
+  
+  * Changed location of files (and corresponding import paths of other components):
+  
+  `modules/button/button-inline.setup.scss` => `deprecated/button/button-inline.setup.scss`  
+  `modules/button/button-inline.mixin.scss` => `deprecated/button/button-inline.mixin.scss`  
+  `modules/button/button-icon.setup.scss` => `deprecated/button/button-icon.setup.scss`  
+  `modules/button/button-icon.mixin.scss` => `deprecated/button/button-icon.mixin.scss`  
+
+## [0.14.1] - 2018-11-05
 ### Bugfix
 Added missing "-" seperator on sizes/offset classname at "xl" breakpoint
 

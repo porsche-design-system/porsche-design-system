@@ -1,0 +1,13 @@
+{
+  "button-regular_label": "Some button label",
+  "button-regular_icon": "arrow-right-hair",
+  "button-regular_link": false,
+  "button-regular_stretch": false,
+  "button-regular_buttonGroup": false,
+  "button-regular_error": false,
+  "button-regular_disabled": false,
+  "button-regular_loading": false,
+  "button-regular_black": false,
+  "button-regular_red": false,
+  "button-regular_acidGreen": false
+}
