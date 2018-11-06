@@ -14,7 +14,7 @@
     left: 0 !important;
     width: 300px !important;
     padding-bottom: "1em" !important;
-    overflow-y: "scroll" !important;
+    overflow-y: scroll !important;
 }
 
 .docs-404 {
