@@ -1,4 +1,4 @@
 ---
-title: Button Primary
+title: Button Regular
 state: inreview
 ---
