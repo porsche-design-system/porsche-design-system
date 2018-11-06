@@ -199,3 +199,8 @@ html, body {
   line-height: 60px;
   color: black;
 }
+
+
+.sg-pattern-state.deprecated::before {
+  color: #B10DC9 !important;
+}
