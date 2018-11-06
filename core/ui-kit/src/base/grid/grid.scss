@@ -215,7 +215,7 @@
 
       @include breakpoint('xl') {
         @for $i from 1 through 12 {
-          &-#{$i}xl {
+          &-#{$i}-xl {
             @include grid-child-size($i + 1);
           }
         }
@@ -263,7 +263,7 @@
 
       @include breakpoint('xl') {
         @for $i from 0 through 11 {
-          &-#{$i}xl {
+          &-#{$i}-xl {
             @include grid-child-offset($i + 1);
           }
         }
