@@ -4,8 +4,7 @@ import cx from "classnames"
 import { prefix, getElementType } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-import { Icon } from "../../../index"
-import { IconName } from "../../atoms/Icon/Icon"
+import { Icon, IconProps } from "../../../index"
 
 export interface InputProps extends ClassNameProp, ComponentProp {
     /**
@@ -26,7 +25,7 @@ export interface InputProps extends ClassNameProp, ComponentProp {
     error?: boolean
 
     /** Displays an icon on the right of the input. */
-    icon?: IconName
+    icon?: IconProps["name"]
 
     /**
      * Sets the html5 name of the input field.

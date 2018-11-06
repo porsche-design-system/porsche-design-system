@@ -1,5 +1,5 @@
-import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
-import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
+import ComponentExample from "src/components/ComponentExample"
+import ExampleSection from "src/components/ExampleSection"
 import React from "react"
 
 const Types = () => {
@@ -9,6 +9,12 @@ const Types = () => {
                 A simple modal can be created with very little configuration. By default it tries to fit the content and
                 has a fairly narrow <code>max-width</code> to ensure a readable line length for simple content on larger
                 screens.
+            </ComponentExample>
+
+            <ComponentExample title="Size" examplePath="organisms/Modal/Types/ModalExampleSize" noStaticMarkup>
+                Usually a modal dynamically sets its width and height depending on its content. If you have dynamic
+                contents and want to prevent the modal from changing its width or height, you can set{" "}
+                <code>max-width</code>, <code>max-height</code> or <code>max</code> with this property.
             </ComponentExample>
 
             <ComponentExample title="Wide" examplePath="organisms/Modal/Types/ModalExampleWide" noStaticMarkup>

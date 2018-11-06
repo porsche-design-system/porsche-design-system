@@ -3,8 +3,7 @@ import cx from "classnames"
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-import { Divider, Flex } from "../../.."
-import { FlexMainAxis } from "../../atoms/Flex/Flex"
+import { Divider, Flex, FlexProps } from "../../.."
 
 export interface TabProps extends ClassNameProp, ComponentProp {
     /** The different tab items */
@@ -77,7 +76,7 @@ const _Tab: React.StatelessComponent<TabProps> = (props) => {
     )
 }
 
-const toFlexAlignment = (alignment: string): FlexMainAxis => {
+const toFlexAlignment = (alignment: string): FlexProps["alignMainAxis"] => {
     switch (alignment) {
         case "left":
             return "start"

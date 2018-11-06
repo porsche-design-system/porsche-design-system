@@ -9,14 +9,12 @@ export interface Toast extends React.StatelessComponent<ToastProps> {
     Manager: typeof ToastManager
 }
 
-export type ToastType = "info" | "success" | "warning" | "error"
-
 export interface ToastProps extends ClassNameProp, ComponentProp {
     /**
      * Toasts can have different urgencies, signified by different status colors.
      * @default info
      */
-    type?: ToastType
+    type?: "info" | "success" | "warning" | "error"
 
     /**
      * The content of the toast.
@@ -69,7 +67,7 @@ const _Toast: React.SFC<ToastProps> & Partial<Toast> = (props) => {
             </Text>
             {onClick && (
                 <button type="button" className={closeClasses} {...{ onClick: handleClick }}>
-                    <Icon className={closeIconClasses} name={"cancel"} color={"white"} />
+                    <Icon className={closeIconClasses} name={"cancel"} color={"white"} /> {/* TODO: Hover color */}
                 </button>
             )}
         </ElementType>

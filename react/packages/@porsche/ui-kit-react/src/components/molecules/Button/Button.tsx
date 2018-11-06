@@ -2,7 +2,7 @@ import * as React from "react"
 import cx from "classnames"
 
 import { getElementType, prefix } from "../../../lib"
-import { Icon, IconName, Loader } from "../../../index"
+import { Icon, IconProps, Loader } from "../../../index"
 import { ButtonGroup } from "./ButtonGroup"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
@@ -24,7 +24,7 @@ export interface ButtonProps extends ClassNameProp, ComponentProp {
      * The icon of the button.
      * @default arrow_right_hair
      */
-    icon?: IconName
+    icon?: IconProps["name"]
 
     /** Disable the button and show a loading indicator. No onClick will be triggered. */
     loading?: boolean
@@ -162,7 +162,7 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> = (props)
             {...rest}
         >
             {/* Icon cannot be undefined because of default props */}
-            <Icon name={icon as IconName} className={iconClasses}>
+            <Icon name={icon as IconProps["name"]} className={iconClasses}>
                 {loading && <Loader className={loaderClasses} size="small" inverted={type !== "ghost"} />}
             </Icon>
             <span className={labelClasses}>{children}</span>

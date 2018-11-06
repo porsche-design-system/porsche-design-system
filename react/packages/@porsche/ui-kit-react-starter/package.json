@@ -57,7 +57,7 @@
         "webpack-dev-server": "^3.1.9"
     },
     "dependencies": {
-        "@porsche/ui-kit-react": "^0.2.2",
+        "@porsche/ui-kit-react": "^0.3.0",
         "classnames": "^2.2.5",
         "history": "^4.7.2",
         "prop-types": "^15.6.0",
