@@ -1,7 +1,7 @@
 ---
 title: Button Inline
-state: inprogress
+state: deprecated
 ---
 
 # @Deprecated
-Please use "button" pattern instead which fits newest design specs. 
+Please use "button-regular" pattern instead which fits newest design specs. 

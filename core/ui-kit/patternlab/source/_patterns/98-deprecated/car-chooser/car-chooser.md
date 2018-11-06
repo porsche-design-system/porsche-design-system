@@ -1,6 +1,6 @@
 ---
 title: car chooser
-state: inprogress
+state: deprecated
 ---
 
 Keep in mind that you have to implement your own logic for displaying the vehicles in the correct grid
