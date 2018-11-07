@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Added new grid component to specify standard grid behaviour (formerly done with flex component)  
+
+    Migration path:  
+    Change the following occurrencies of flex used as grid (example):
+    
+    ```
+    <Flex gap="grid">
+        <Flex.Item width={{ base: 0, l: 4 }} offset={{ base: 0, l: 2 }}> ... </Flex.Item>
+    </Flex>
+    ```
+    
+    to
+    
+    ```
+    <Grid>
+        <Grid.Child width={{ base: 0, l: 4 }} offset={{ base: 0, l: 2 }}> ... </Grid.Child>
+    </Grid>
+    ```
 
 ## [0.3.0] - 2018-31-10
 - BREAKING: removed `Notification` in favor of `Toast` and `CookieNotification`.
