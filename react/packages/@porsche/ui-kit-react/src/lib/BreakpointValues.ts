@@ -27,12 +27,12 @@ export function mapBreakpointPropToClasses(
             if (key === "base") {
                 classes = {
                     ...classes,
-                    ...{ [prefix(`${className}${value}`)]: !!value }
+                    ...{ [prefix(`${className}${value}`)]: value !== undefined && value !== null }
                 }
             } else {
                 classes = {
                     ...classes,
-                    ...{ [prefix(`${className}${value}-${key}`)]: !!value }
+                    ...{ [prefix(`${className}${value}-${key}`)]: value !== undefined && value !== null }
                 }
             }
         })
