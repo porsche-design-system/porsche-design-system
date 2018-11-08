@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     
     ```
     <Grid>
-        <Grid.Child width={{ base: 0, l: 4 }} offset={{ base: 0, l: 2 }}> ... </Grid.Child>
+        <Grid.Child size={{ base: 0, l: 4 }} offset={{ base: 0, l: 2 }}> ... </Grid.Child>
     </Grid>
     ```
 

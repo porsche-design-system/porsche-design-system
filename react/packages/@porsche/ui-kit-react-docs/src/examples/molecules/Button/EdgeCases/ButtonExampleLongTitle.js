@@ -1,37 +1,37 @@
 import React from "react"
-import { Button, Flex } from "@porsche/ui-kit-react"
+import { Button, Grid } from "@porsche/ui-kit-react"
 
 const ButtonExampleLongTitle = () => {
     return (
-        <Flex gap="grid">
-            <Flex.Item width={3}>
+        <Grid>
+            <Grid.Child size={3}>
                 <Button>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua.
                 </Button>
-            </Flex.Item>
+            </Grid.Child>
 
-            <Flex.Item width={3}>
+            <Grid.Child size={3}>
                 <Button error>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua.
                 </Button>
-            </Flex.Item>
+            </Grid.Child>
 
-            <Flex.Item width={3}>
+            <Grid.Child size={3}>
                 <Button disabled>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua.
                 </Button>
-            </Flex.Item>
+            </Grid.Child>
 
-            <Flex.Item width={3}>
+            <Grid.Child size={3}>
                 <Button loading>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua.
                 </Button>
-            </Flex.Item>
-        </Flex>
+            </Grid.Child>
+        </Grid>
     )
 }
 
