@@ -11,7 +11,9 @@ export interface BreakpointValues<T> {
 
 export function mapBreakpointPropToClasses(
     className: string,
-    prop?: string | number | BreakpointValues<string | number>
+    prop?: string | number | boolean | BreakpointValues<string | number | boolean>,
+    modTrue?: string,
+    modFalse?: string
 ): any {
     if (prop === undefined) {
         return {}
@@ -20,19 +22,33 @@ export function mapBreakpointPropToClasses(
     let classes: any = {}
 
     if (typeof prop === "number" || typeof prop === "string") {
-        classes[prefix(`${className}${prop}`)] = !!prop
+        classes[prefix(`${className}-${prop}`)] = prop !== undefined && prop !== null
+    } else if (typeof prop === "boolean") {
+        classes[prefix(`${className}${modTrue}`)] = prop === true
+        classes[prefix(`${className}${modFalse}`)] = prop === false
     } else {
         Object.keys(prop).forEach((key) => {
-            const value: number = (prop as any)[key]
+            const value: any = (prop as any)[key]
+
             if (key === "base") {
                 classes = {
                     ...classes,
-                    ...{ [prefix(`${className}${value}`)]: value !== undefined && value !== null }
+                    ...{
+                        [prefix(`${className}-${value}`)]:
+                            typeof value !== "boolean" && value !== undefined && value !== null
+                    },
+                    ...{ [prefix(`${className}${modTrue}`)]: value === true },
+                    ...{ [prefix(`${className}${modFalse}`)]: value === false }
                 }
             } else {
                 classes = {
                     ...classes,
-                    ...{ [prefix(`${className}${value}-${key}`)]: value !== undefined && value !== null }
+                    ...{
+                        [prefix(`${className}-${value}-${key}`)]:
+                            typeof value !== "boolean" && value !== undefined && value !== null
+                    },
+                    ...{ [prefix(`${className}${modTrue}-${key}`)]: value === true },
+                    ...{ [prefix(`${className}${modFalse}-${key}`)]: value === false }
                 }
             }
         })

@@ -1,26 +1,36 @@
 import React from "react"
-import { Flex } from "@porsche/ui-kit-react"
+import { Text, Flex } from "@porsche/ui-kit-react"
 
 const itemStyle = (color) => {
-    return { height: "50px", minWidth: "100px", backgroundColor: color, marginBottom: "8px" }
+    return {
+        color: "white",
+        height: "50px",
+        width: "200px",
+        textAlign: "center",
+        backgroundColor: color,
+        marginBottom: "8px"
+    }
 }
 
 const FlexContainerExampleGap = () => {
     return (
-        <Flex gap={6} wrap>
-            <div>
-                <div style={itemStyle("Turquoise")} />
-            </div>
-            <div>
-                <div style={{ ...itemStyle("DeepSkyBlue"), width: "300px" }} />
-            </div>
-            <div>
-                <div style={itemStyle("DeepPink")} />
-            </div>
-            <div>
-                <div style={itemStyle("Orange")} />
-            </div>
-        </Flex>
+        <React.Fragment>
+            <Text>Gap between items:</Text>
+            <Flex gap={6}>
+                <Flex.Item>
+                    <div style={itemStyle("DeepSkyBlue")}>1</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("DeepSkyBlue")}>2</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("DeepSkyBlue")}>3</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("DeepSkyBlue")}>4</div>
+                </Flex.Item>
+            </Flex>
+        </React.Fragment>
     )
 }
 
