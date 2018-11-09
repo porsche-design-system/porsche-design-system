@@ -1,7 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { getElementType, prefix } from "../../../lib"
+import { getElementType, prefix, BreakpointValues, mapBreakpointPropToClasses } from "../../../lib"
 import { FlexItem } from "./FlexItem"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
@@ -10,39 +10,84 @@ export interface Flex extends React.StatelessComponent<FlexProps> {
 }
 
 export interface FlexProps extends ClassNameProp, ComponentProp {
-    /** Defines how the flex items are aligned along the cross axis. Corresponds to the "alignItems" css property. */
-    alignCrossAxis?: "start" | "center" | "end" | "baseline" | "stretch"
-
     /**
-     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "alignMainAxis" aligns individual items along the main axis.
-     * Corresponds to the "alignContent" css property.
+     * Defines the flex container display as inline rather than block.
+     * @default false
      */
-    alignLines?: "start" | "center" | "end" | "space-around" | "space-between" | "stretch"
-
-    /** Defines how the flex items are aligned along the main axis. Corresponds to the "justifyContent" css property. */
-    alignMainAxis?: "start" | "center" | "end" | "space-around" | "space-between" | "space-evenly"
-
-    /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. */
-    direction?: "column-reverse" | "column" | "row-reverse" | "row"
-
-    /** Defines the gap between contained children. The value "grid" sets responsive grid spacings that should be used together with Flex.Item. */
-    gap?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f" | "grid"
-
-    /** Defines the flex container display as inline rather than block. */
-    inline?: boolean
+    inline?: boolean | BreakpointValues<boolean>
 
     /**
      * If set, overflowing elements will wrap to a new line.
      * @default true
      */
-    wrap?: "reverse" | boolean
+    wrap?: "reverse" | boolean | BreakpointValues<"reverse" | boolean>
 
-    /** The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs. */
-    shrink?: 0 | 1
+    /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. */
+    direction?:
+        | "column-reverse"
+        | "column"
+        | "row-reverse"
+        | "row"
+        | BreakpointValues<"column-reverse" | "column" | "row-reverse" | "row">
+
+    /** Defines how the flex items are aligned along the main axis. Corresponds to the "justifyContent" css property. */
+    alignMainAxis?:
+        | "start"
+        | "center"
+        | "end"
+        | "space-around"
+        | "space-between"
+        | "space-evenly"
+        | BreakpointValues<"start" | "center" | "end" | "space-around" | "space-between" | "space-evenly">
+
+    /** Defines how the flex items are aligned along the cross axis. Corresponds to the "alignItems" css property. */
+    alignCrossAxis?:
+        | "start"
+        | "center"
+        | "end"
+        | "baseline"
+        | "stretch"
+        | BreakpointValues<"start" | "center" | "end" | "baseline" | "stretch">
+
+    /**
+     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "alignMainAxis" aligns individual items along the main axis.
+     * Corresponds to the "alignContent" css property.
+     */
+    alignContent?:
+        | "start"
+        | "center"
+        | "end"
+        | "space-around"
+        | "space-between"
+        | "stretch"
+        | BreakpointValues<"start" | "center" | "end" | "space-around" | "space-between" | "stretch">
+
+    /** Defines the gap between contained children. The value "grid" sets responsive grid spacings that should be used together with Flex.Item. */
+    gap?:
+        | 0
+        | 3
+        | 6
+        | 12
+        | 18
+        | 24
+        | 30
+        | 36
+        | 42
+        | 48
+        | 54
+        | 60
+        | "a"
+        | "b"
+        | "c"
+        | "d"
+        | "e"
+        | "f"
+        | BreakpointValues<0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f">
 }
 
 const defaultProps: Partial<FlexProps> = {
-    wrap: true
+    wrap: true,
+    inline: false
 }
 
 const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
@@ -50,33 +95,27 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
         as,
         className,
         children,
-        alignCrossAxis,
-        alignLines,
-        alignMainAxis,
-        direction,
-        gap,
         inline,
         wrap,
-        shrink,
+        direction,
+        alignMainAxis,
+        alignCrossAxis,
+        alignContent,
+        gap,
         ...rest
     } = props
 
     const ElementType = getElementType(as, "div")
 
     const classes = cx(
-        prefix("flex"),
-        { [prefix("flex--inline")]: inline },
-        { [prefix(`flex--direction-${direction}`)]: direction },
-        { [prefix(`flex--main-axis-${alignMainAxis}`)]: alignMainAxis },
-        { [prefix(`flex--cross-axis-${alignCrossAxis}`)]: alignCrossAxis },
-        { [prefix(`flex--align-lines-${alignLines}`)]: alignLines },
-        { [prefix(`m-nl--${gap}`)]: gap && gap !== "grid" },
-        { [prefix(`m-nr--${gap}`)]: gap && gap !== "grid" },
-        { [prefix(`flex--gap`)]: gap && gap === "grid" },
-        { [prefix(`flex--wrap`)]: wrap === true },
-        { [prefix(`flex--nowrap`)]: wrap === false },
-        { [prefix(`flex--wrap-reverse`)]: wrap === "reverse" },
-        { [prefix(`flex--shrink-${shrink}`)]: shrink !== undefined },
+        mapBreakpointPropToClasses("flex", inline, "--inline", ""),
+        mapBreakpointPropToClasses("flex--wrap", wrap, "", "-no"),
+        mapBreakpointPropToClasses("flex--direction", direction),
+        mapBreakpointPropToClasses("flex--main-axis", alignMainAxis),
+        mapBreakpointPropToClasses("flex--cross-axis", alignCrossAxis),
+        mapBreakpointPropToClasses("flex--align-content", alignContent),
+        mapBreakpointPropToClasses("m-nl-", gap),
+        mapBreakpointPropToClasses("m-nr-", gap),
         className
     )
 
@@ -91,12 +130,7 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
             const { className, ...childRest } = child.props
 
             return React.cloneElement(child, {
-                className: cx(
-                    className,
-                    { [prefix(`pl--${gap}`)]: gap && gap !== "grid" },
-                    { [prefix(`pr--${gap}`)]: gap && gap !== "grid" },
-                    { [prefix(`flex__child--gap`)]: gap && gap === "grid" }
-                ),
+                className: cx(className, { [prefix(`pl--${gap}`)]: gap }, { [prefix(`pr--${gap}`)]: gap }),
                 ...childRest
             })
         })

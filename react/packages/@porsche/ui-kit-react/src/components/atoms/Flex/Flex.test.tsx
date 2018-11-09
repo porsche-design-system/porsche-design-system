@@ -8,29 +8,17 @@ describe("Flex component", () => {
         return mount(<Flex {...props} />)
     }
 
-    describe("Flex Shrink", () => {
-        it("should have a shrink modifier with 0", () => {
+    describe("Flex inline", () => {
+        it("should have a inline modifier with inline", () => {
             // Arrange
             const props: FlexProps = {
-                shrink: 0
+                inline: true
             }
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const flexShrink = componentWrapper.find(`.${prefix("flex--shrink-0")}`)
-            expect(flexShrink.length).toBe(1)
-        })
-
-        it("should have a shrink modifier with 1", () => {
-            // Arrange
-            const props: FlexProps = {
-                shrink: 1
-            }
-            // Act
-            const componentWrapper = createComponent(props)
-            // Assert
-            const flexShrink = componentWrapper.find(`.${prefix("flex--shrink-1")}`)
-            expect(flexShrink.length).toBe(1)
+            const flexInline = componentWrapper.find(`.${prefix("flex--inline")}`)
+            expect(flexInline.length).toBe(1)
         })
     })
 })

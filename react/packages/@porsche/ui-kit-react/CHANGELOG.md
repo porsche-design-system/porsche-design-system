@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     </Grid>
     ```
 
+- Refactoring of flex component
+
+    Migration path:  
+    Change the following flex parent properties:  
+    
+    `<Flex gap="grid">` => see above!  
+    `<Flex alignLines={ ... }>` => `<Flex alignContent={ ... }>`  
+    `<Flex shrink={ ... }>` => deleted! (must be set on flex children (Flex.Item)) 
+    
+
 ## [0.3.0] - 2018-31-10
 - BREAKING: removed `Notification` in favor of `Toast` and `CookieNotification`.
 - BREAKING: removed some type exports of some props. If you want to access the type of a prop like `type` of `Text`, you can simply access it directly with `TextProps["type"]`. Every component exports its props as a type.
