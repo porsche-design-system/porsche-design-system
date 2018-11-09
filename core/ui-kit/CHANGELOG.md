@@ -7,27 +7,36 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Button Refactoring
+* Refactoring of button namings and css structure
 * added sales button type
+* Moved old buttons to deprecated folder
 
 #### Breaking changes
-* Migration path:
-  * renamed css and classes:
-  
+Please update asap all deprecated buttons with the new ones.
+
+* Migration path:  
+  * Replace old buttons with new buttons:  
+
   `button-primary` => `button-regular`  
   `button-primary--red` => `button-regular--highlight`  
+  `button-primary--acid-green` => `button-regular--highlight`  
+  `button-primary--error` => deleted!  
+  `button-primary--black` => `button-regular`  
   
-  * deleted following deprecated buttons:  
-  
-  `button-primary--black`  
-  `button-primary--acid-green`  
-  `button-primary--error`  
-  
-  * Changed location of files (and corresponding import paths of other components):
-  
-  `modules/button/button-inline.setup.scss` => `deprecated/button/button-inline.setup.scss`  
-  `modules/button/button-inline.mixin.scss` => `deprecated/button/button-inline.mixin.scss`  
+  * Changed location of old button css to deprecated folder:  
+
+  `modules/button/index.scss` => `deprecated/button/index.scss`  
+  `modules/button/button-primary.setup.scss` => `deprecated/button/button-primary.setup.scss`  
+  `modules/button/button-primary.scss` => `deprecated/button/button-primary.scss` 
+  `modules/button/button-ghost.setup.scss` => `deprecated/button/button-ghost.setup.scss` 
+  `modules/button/button-ghost.scss` => `deprecated/button/button-ghost.scss` 
   `modules/button/button-icon.setup.scss` => `deprecated/button/button-icon.setup.scss`  
-  `modules/button/button-icon.mixin.scss` => `deprecated/button/button-icon.mixin.scss`  
+  `modules/button/button-icon.scss` => `deprecated/button/button-icon.scss`  
+  `modules/button/button-inline.setup.scss` => `deprecated/button/button-inline.setup.scss`  
+  `modules/button/button-inline.mixin.scss` => `deprecated/button/button-inline.mixin.scss` 
+  `modules/button/button-inline.scss` => `deprecated/button/button-inline.scss`  
+  `modules/button/button-notification.setup.scss` => `deprecated/button/button-notification.setup.scss`  
+  `modules/button/button-notification.scss` => `deprecated/button/button-notification.scss`  
 
 ## [0.14.1] - 2018-11-05
 ### Bugfix

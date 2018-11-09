@@ -12,12 +12,8 @@
   $bem-block: &;
 
   @include flex-inline;
-  // @include flex-cross-axis(flex-start);
-  // @include flex-direction(column);
   @include -align-left;
   @include -text-size-copy;
-  // @include -spacing-c(left, padding);
-  // @include -spacing-c(right, padding);
   @include -spacing-12(top, padding);
   @include -spacing-18(right, padding);
   @include -spacing-12(bottom, padding);
@@ -60,30 +56,33 @@
     background-color: $button-regular-background-color-disabled;
     border-color: $button-regular-border-color-disabled;
     color: $button-regular-text-color-disabled;
+
+    // #{$bem-block}__icon {
+    //   opacity: .4;
+    // }
   }
 
-  &--stretch {
-    width: $button-regular-stretch-width;
+  &--ghost {
+    color: $button-regular-ghost-text-color;
+    background-color: $button-regular-ghost-background-color;
+    border-color: $button-regular-ghost-border-color;
+
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        color: $button-regular-ghost-text-color-hover;
+        background: $button-regular-ghost-background-color-hover;
+        border-color: $button-regular-ghost-border-color-hover;
+      }
+    }
+
+    &[disabled] {
+      color: $button-regular-ghost-text-color-disabled;
+      background: $button-regular-ghost-background-color-disabled;
+      border-color: $button-regular-ghost-border-color-disabled;
+    }
   }
-
-  &--button-group {
-    @include -spacing-12('left', 'margin');
-  }
-
-  // &--black {
-  //   background-color: $button-regular-black-background-color;
-  //   border-color: $button-regular-black-border-color;
-
-  //   &:not([disabled]) {
-  //     &:hover,
-  //     &:focus,
-  //     &:active {
-  //       background: $button-regular-black-background-color-hover;
-  //       border-color: $button-regular-black-border-color-hover;
-  //       text-decoration: none;
-  //     }
-  //   }
-  // }
 
   &--highlight {
     background-color: $button-regular-highlight-background-color;
@@ -97,6 +96,11 @@
         border-color: $button-regular-highlight-border-color-hover;
         text-decoration: none;
       }
+    }
+
+    &[disabled] {
+      background-color: $button-regular-highlight-background-color-disabled;
+      border-color: $button-regular-highlight-border-color-disabled;
     }
   }
 
@@ -113,30 +117,47 @@
         text-decoration: none;
       }
     }
+
+    &[disabled] {
+      background-color: $button-regular-sales-background-color-disabled;
+      border-color: $button-regular-sales-border-color-disabled;
+    }
   }
 
-  // &--acid-green {
-  //   background-color: $button-regular-acid-green-background-color;
-  //   border-color: $button-regular-acid-green-border-color;
-  //   color: $button-regular-acid-green-text-color;
+  &--sales-ghost {
+    color: $button-regular-sales-ghost-text-color;
+    background-color: $button-regular-sales-ghost-background-color;
+    border-color: $button-regular-sales-ghost-border-color;
 
-  //   &:not([disabled]) {
-  //     &:hover,
-  //     &:focus,
-  //     &:active {
-  //       background: $button-regular-acid-green-background-color-hover;
-  //       border-color: $button-regular-acid-green-border-color-hover;
-  //       color: $button-regular-acid-green-text-color-hover;
-  //       text-decoration: none;
-  //     }
-  //   }
-  // }
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        color: $button-regular-sales-ghost-text-color-hover;
+        background: $button-regular-sales-ghost-background-color-hover;
+        border-color: $button-regular-sales-ghost-border-color-hover;
+      }
+    }
 
-  // &--error {
-  //   background-color: $button-regular-error-background-color;
-  //   border-color: $button-regular-error-border-color;
-  //   color: $button-regular-error-text-color;
-  // }
+    &[disabled] {
+      color: $button-regular-sales-ghost-text-color-disabled;
+      background: $button-regular-sales-ghost-background-color-disabled;
+      border-color: $button-regular-sales-ghost-border-color-disabled;
+    }
+  }
+
+  &--loading {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &--stretch {
+    width: $button-regular-stretch-width;
+  }
+
+  &--button-group {
+    @include -spacing-12('left', 'margin');
+  }
 
   &__icon {
     position: absolute;
@@ -171,7 +192,6 @@
 
   &__label {
     @include -spacing-24('left', 'padding');
-
     display: block;
     width: 100%;
   }
