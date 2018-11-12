@@ -5,11 +5,12 @@
         {{#if button-regular_ghost}} button-regular--ghost {{/if}}
         {{#if button-regular_sales_ghost}} button-regular--sales-ghost {{/if}}
         {{#if button-regular_loading}} button-regular--loading {{/if}}
+        {{#if button-regular_small}} button-regular--small {{/if}}
         {{#if button-regular_stretch}} button-regular--stretch {{/if}}
         {{#if button-regular_buttonGroup}} button-regular--button-group {{/if}}
+        {{#if button-regular_isThemeInverted}} button-regular--theme-inverted {{/if}}
         {{styleModifier}}"
   {{#if button-regular_disabled}} disabled {{/if}}>
-
   <span class="button-regular__icon icon icon--{{ button-regular_icon}}
               {{#if button-regular_loading}} button-regular__icon--loading {{/if}}">
   {{#if button-regular_loading}}
@@ -18,5 +19,4 @@
 
   </span>
   <span class="button-regular__label">{{ button-regular_label }}</span>
-
 {{#if button-regular_link }}</a>{{else}}</button>{{/if}}

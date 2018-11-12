@@ -8,6 +8,20 @@
 @import '../../setup/animations.scss';
 @import '../../mixins/breakpoint.scss';
 
+// @mixin not($ignore) {
+//   @if (length($ignore) == 1) {
+//     $ignore: nth($ignore, 1);
+//   }
+//   $not-output: '';
+//   @each $not in $ignore {
+//     $not-output: $not-output + ':not(#{$not})';
+//   }
+
+//   &#{$not-output} {
+//     @content;
+//   }
+// }
+
 .#{$global-class-prefix}button-regular {
   $bem-block: &;
 
@@ -15,10 +29,9 @@
   @include -align-left;
   @include -text-size-copy;
   @include -spacing-12(top, padding);
-  @include -spacing-18(right, padding);
   @include -spacing-12(bottom, padding);
-  @include -spacing-18(left, padding);
-
+  padding-left: rem(17px); // 17px width because of 1 px border which leads to 18px
+  padding-right: rem(17px);
   position: relative;
   width: $button-regular-width;
   max-width: 100%; // fix for IE11, forces using multi line label
@@ -36,8 +49,14 @@
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
-  @include breakpoint('xxs', 'xs') {
-    width: $button-regular-width-xxs-xs;
+  // $ignored-items: #{$bem-block}--highlight, #{$bem-block}--sales;
+
+  &--theme-inverted {
+    // @include not($ignored-items) {
+    background-color: $button-regular-background-color-inverted;
+    border-color: $button-regular-border-color-inverted;
+    color: $button-regular-text-color-inverted;
+    // }
   }
 
   &:not([disabled]) {
@@ -47,6 +66,13 @@
       background-color: $button-regular-background-color-hover;
       border-color: $button-regular-border-color-hover;
       text-decoration: none;
+
+      &#{$bem-block}--theme-inverted {
+        // @include not($ignored-items) {
+        background-color: $button-regular-background-color-inverted-hover;
+        border-color: $button-regular-border-color-inverted-hover;
+        // }
+      }
     }
   }
 
@@ -55,17 +81,39 @@
     pointer-events: none;
     background-color: $button-regular-background-color-disabled;
     border-color: $button-regular-border-color-disabled;
-    color: $button-regular-text-color-disabled;
 
-    // #{$bem-block}__icon {
-    //   opacity: .4;
-    // }
+    #{$bem-block}__icon {
+      opacity: .55;
+    }
+
+    #{$bem-block}__label {
+      opacity: .55;
+    }
+
+    &#{$bem-block}--theme-inverted {
+      color: $button-regular-text-color-inverted-disabled;
+      background-color: $button-regular-background-color-inverted-disabled;
+      border-color: $button-regular-border-color-inverted-disabled;
+
+      #{$bem-block}__icon {
+        opacity: .35;
+      }
+
+      #{$bem-block}__label {
+        opacity: .35;
+      }
+    }
   }
 
   &--ghost {
     color: $button-regular-ghost-text-color;
     background-color: $button-regular-ghost-background-color;
     border-color: $button-regular-ghost-border-color;
+
+    &#{$bem-block}--theme-inverted {
+      color: $button-regular-ghost-text-color-inverted;
+      border-color: $button-regular-ghost-border-color-inverted;
+    }
 
     &:not([disabled]) {
       &:hover,
@@ -81,10 +129,19 @@
       color: $button-regular-ghost-text-color-disabled;
       background: $button-regular-ghost-background-color-disabled;
       border-color: $button-regular-ghost-border-color-disabled;
+
+      #{$bem-block}__icon {
+        opacity: 1;
+      }
+
+      #{$bem-block}__label {
+        opacity: 1;
+      }
     }
   }
 
   &--highlight {
+    color: $button-regular-highlight-text-color;
     background-color: $button-regular-highlight-background-color;
     border-color: $button-regular-highlight-border-color;
 
@@ -95,16 +152,36 @@
         background: $button-regular-highlight-background-color-hover;
         border-color: $button-regular-highlight-border-color-hover;
         text-decoration: none;
+
+        &#{$bem-block}--theme-inverted { // sass-lint:disable-line nesting-depth
+          background: $button-regular-highlight-background-color-inverted-hover;
+          border-color: $button-regular-highlight-border-color-inverted-hover;
+        }
       }
     }
 
     &[disabled] {
       background-color: $button-regular-highlight-background-color-disabled;
       border-color: $button-regular-highlight-border-color-disabled;
+
+      #{$bem-block}__icon {
+        opacity: .6;
+      }
+
+      #{$bem-block}__label {
+        opacity: .6;
+      }
+
+      &#{$bem-block}--theme-inverted {
+        color: $button-regular-highlight-text-color-inverted-disabled;
+        background-color: $button-regular-highlight-background-color-inverted-disabled;
+        border-color: $button-regular-highlight-border-color-inverted-disabled;
+      }
     }
   }
 
   &--sales {
+    color: $button-regular-highlight-text-color;
     background-color: $button-regular-sales-background-color;
     border-color: $button-regular-sales-border-color;
 
@@ -115,12 +192,31 @@
         background: $button-regular-sales-background-color-hover;
         border-color: $button-regular-sales-border-color-hover;
         text-decoration: none;
+
+        &#{$bem-block}--theme-inverted { // sass-lint:disable-line nesting-depth
+          background: $button-regular-sales-background-color-inverted-hover;
+          border-color: $button-regular-sales-border-color-inverted-hover;
+        }
       }
     }
 
     &[disabled] {
       background-color: $button-regular-sales-background-color-disabled;
       border-color: $button-regular-sales-border-color-disabled;
+
+      #{$bem-block}__icon {
+        opacity: .6;
+      }
+
+      #{$bem-block}__label {
+        opacity: .6;
+      }
+
+      &#{$bem-block}--theme-inverted {
+        color: $button-regular-sales-text-color-inverted-disabled;
+        background-color: $button-regular-sales-background-color-inverted-disabled;
+        border-color: $button-regular-sales-border-color-inverted-disabled;
+      }
     }
   }
 
@@ -143,6 +239,22 @@
       color: $button-regular-sales-ghost-text-color-disabled;
       background: $button-regular-sales-ghost-background-color-disabled;
       border-color: $button-regular-sales-ghost-border-color-disabled;
+
+      #{$bem-block}__icon {
+        opacity: 1;
+      }
+
+      #{$bem-block}__label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--small {
+    padding: rem(2px) rem(11px);
+
+    #{$bem-block}__icon {
+      @include -spacing-3('right', 'margin');
     }
   }
 
@@ -160,7 +272,8 @@
   }
 
   &__icon {
-    position: absolute;
+    @include -spacing-6('right', 'margin');
+    position: relative;
     display: block;
     font-size: $button-regular-icon-font-size;
     line-height: inherit;
@@ -191,7 +304,7 @@
   }
 
   &__label {
-    @include -spacing-24('left', 'padding');
+    // padding-left: rem(22px);
     display: block;
     width: 100%;
   }
