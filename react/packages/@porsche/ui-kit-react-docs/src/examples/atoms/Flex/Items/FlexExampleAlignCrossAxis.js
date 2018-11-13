@@ -11,7 +11,7 @@ const FlexWithAlignCrossAxis = (alignCrossAxis) => {
     return (
         <div>
             <p>{alignCrossAxis}:</p>
-            <Flex alignMainAxis="space-evenly" alignCrossAxis="center" gap={"grid"} style={containerStyle}>
+            <Flex alignMainAxis="space-evenly" alignCrossAxis="center" gap={12} style={containerStyle}>
                 <Flex.Item width={3}>
                     <div style={defaultItemStyle("20px")} />
                 </Flex.Item>

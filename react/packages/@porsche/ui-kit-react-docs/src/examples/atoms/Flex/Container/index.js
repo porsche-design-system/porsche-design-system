@@ -29,7 +29,16 @@ const Container = () => {
                 line. Think of it as the main axis version for the cross axis (perpendicular to the main axis).
             </ComponentExample>
 
-            <ComponentExample title="Child Spacing" examplePath="atoms/Flex/Container/FlexContainerExampleGap">
+            <ComponentExample title="Align Content" examplePath="atoms/Flex/Container/FlexContainerExampleAlignContent">
+                This aligns a flex containers lines within when there is extra space in the cross-axis, similar to how
+                justify-content aligns individual items within the main-axis. Note: this property has no effect when
+                there is only one line of flex items.
+            </ComponentExample>
+
+            <ComponentExample
+                title="Child Spacing (horizontal)"
+                examplePath="atoms/Flex/Container/FlexContainerExampleGap"
+            >
                 Use <code>gap</code> to apply horizontal spacing to all children of the container. You have to take care
                 of vertical spacing yourself.
             </ComponentExample>

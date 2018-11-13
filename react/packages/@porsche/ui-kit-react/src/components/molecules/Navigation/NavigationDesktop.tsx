@@ -30,7 +30,7 @@ export class NavigationDesktop extends React.PureComponent<NavigationProps, Navi
             <Flex.Item
                 as="li"
                 key={section.key}
-                width="auto"
+                size="auto"
                 className={prefix("nav__item")}
                 {...{
                     onMouseLeave: this.onSectionUnhovered,
