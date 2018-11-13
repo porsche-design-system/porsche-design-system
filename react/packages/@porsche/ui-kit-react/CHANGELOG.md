@@ -25,15 +25,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     </Grid>
     ```
 
-- Refactoring of flex component
+- Refactoring of flex component  
 
     Migration path:  
     Change the following flex parent properties:  
     
-    `<Flex gap="grid">` => see above!  
+    `<Flex gap="grid">` => Use grid component (see above)!  
     `<Flex alignLines={ ... }>` => `<Flex alignContent={ ... }>`  
     `<Flex shrink={ ... }>` => deleted! (must be set on flex children (Flex.Item)) 
     
+    Change the following flex child (item) properties:  
+    
+    `<Flex.Item width={ ... }>` => `<Flex.Item size={ ... }>` Hint: only basic widths are now supported (3 | 4 | 6 | 9 | 12 | "auto")! If you need grid sizes use grid component.
+    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported (3 | 4 | 6 | 9)! If you need grid offsets use grid component.
 
 ## [0.3.0] - 2018-31-10
 - BREAKING: removed `Notification` in favor of `Toast` and `CookieNotification`.

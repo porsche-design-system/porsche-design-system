@@ -7,7 +7,7 @@ const itemStyle = (color) => {
 
 const FlexExampleItemWidthResponsive = () => {
     return (
-        <Flex wrap gap={"grid"}>
+        <Flex wrap gap={12}>
             <Flex.Item width={{ base: 12, l: 4 }}>
                 <div style={itemStyle("DeepSkyBlue")} />
             </Flex.Item>

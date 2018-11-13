@@ -10,23 +10,23 @@ const itemStyle = (color) => {
     }
 }
 
-const FlexExampleItemWidth = () => {
+const FlexExampleItemWidthEqual = () => {
     return (
         <Flex gap={12}>
-            <Flex.Item>
+            <Flex.Item flex={"equal"}>
                 <div style={itemStyle("DeepSkyBlue")}>An element</div>
             </Flex.Item>
-            <Flex.Item>
+            <Flex.Item flex={"equal"}>
                 <div style={itemStyle("DeepSkyBlue")}>An element with a little more text</div>
             </Flex.Item>
-            <Flex.Item>
+            <Flex.Item flex={"equal"}>
                 <div style={itemStyle("DeepSkyBlue")}>An element</div>
             </Flex.Item>
-            <Flex.Item>
+            <Flex.Item flex={"equal"}>
                 <div style={itemStyle("DeepSkyBlue")}>An element with more content</div>
             </Flex.Item>
         </Flex>
     )
 }
 
-export default FlexExampleItemWidth
+export default FlexExampleItemWidthEqual

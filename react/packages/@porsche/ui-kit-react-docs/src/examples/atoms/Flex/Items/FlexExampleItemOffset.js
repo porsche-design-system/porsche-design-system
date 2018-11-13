@@ -13,7 +13,7 @@ const FlexExampleItemOffset = () => {
         <div>
             {_.times(12, (i) => {
                 return (
-                    <Flex key={i} gap={"grid"} style={containerStyle}>
+                    <Flex key={i} gap={12} style={containerStyle}>
                         <Flex.Item offset={i} width={1}>
                             <div style={itemStyle("DeepSkyBlue")} />
                         </Flex.Item>

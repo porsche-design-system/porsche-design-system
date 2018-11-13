@@ -24,6 +24,15 @@ const FlexContainerExampleBasic = () => {
                 </Flex.Item>
             </Flex>
 
+            <Flex>
+                <Flex.Item>
+                    <div style={itemStyle("DeepSkyBlue")}>1</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("LightSkyBlue")}>2</div>
+                </Flex.Item>
+            </Flex>
+
             <Spacing marginTop={30}>
                 <Text>Flex container inline:</Text>
                 <Flex inline>
@@ -35,26 +44,6 @@ const FlexContainerExampleBasic = () => {
                     </Flex.Item>
                 </Flex>
                 <Flex inline>
-                    <Flex.Item>
-                        <div style={itemStyle("LightSkyBlue")}>1</div>
-                    </Flex.Item>
-                    <Flex.Item>
-                        <div style={itemStyle("LightSkyBlue")}>2</div>
-                    </Flex.Item>
-                </Flex>
-            </Spacing>
-
-            <Spacing marginTop={30}>
-                <Text>Flex container (responsive):</Text>
-                <Flex inline={{ base: false, m: true }}>
-                    <Flex.Item>
-                        <div style={itemStyle("DeepSkyBlue")}>1</div>
-                    </Flex.Item>
-                    <Flex.Item>
-                        <div style={itemStyle("DeepSkyBlue")}>2</div>
-                    </Flex.Item>
-                </Flex>
-                <Flex inline={{ base: false, m: true }}>
                     <Flex.Item>
                         <div style={itemStyle("LightSkyBlue")}>1</div>
                     </Flex.Item>

@@ -9,9 +9,7 @@ const itemStyle = (color) => {
         height: "50px",
         width: "200px",
         textAlign: "center",
-        backgroundColor: color,
-        marginRight: "12px",
-        marginBottom: "12px"
+        backgroundColor: color
     }
 }
 

@@ -5,14 +5,16 @@ import React from "react"
 const Items = () => {
     return (
         <ExampleSection title="Flex Items">
-            <ComponentExample title="Flex Items" examplePath="atoms/Flex/Items/FlexExampleItemWidth">
-                You can use <code>Flex.Item</code> to build grids. By default, all items will have the same width and
-                will span the entire width of the container.
-            </ComponentExample>
-
-            <ComponentExample title="Automatic Item Widths" examplePath="atoms/Flex/Items/FlexExampleItemWidthAuto">
+            <ComponentExample
+                title="Automatic Item Width (default)"
+                examplePath="atoms/Flex/Items/FlexExampleItemWidth"
+            >
                 You can use automatic item sizing. With this setting all items will be layouted using their intrinsic
                 content width, and remaining or missing space will be distributed equally between all items.
+            </ComponentExample>
+
+            <ComponentExample title="Equal Item Widths" examplePath="atoms/Flex/Items/FlexExampleItemWidthEqual">
+                Flex Items will have equal widths.
             </ComponentExample>
 
             <ComponentExample title="Specific Item Widths" examplePath="atoms/Flex/Items/FlexExampleItemWidthSpecific">
