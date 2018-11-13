@@ -19,8 +19,8 @@ const _GridChild: React.StatelessComponent<GridChildProps> = (props) => {
 
     const classes = cx(
         prefix("grid__child"),
-        mapBreakpointPropToClasses("grid__child--size-", size),
-        mapBreakpointPropToClasses("grid__child--offset-", offset),
+        mapBreakpointPropToClasses("grid__child--size", size),
+        mapBreakpointPropToClasses("grid__child--offset", offset),
         className
     )
 

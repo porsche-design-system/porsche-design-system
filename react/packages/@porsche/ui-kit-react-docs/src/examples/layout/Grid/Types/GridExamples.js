@@ -1,8 +1,13 @@
 import React from "react"
 import { Text, Grid, Spacing } from "@porsche/ui-kit-react"
 
-const itemStyle = (color) => {
-    return { minHeight: "12px", backgroundColor: color, marginTop: "12px" }
+const itemStyle = (color, padding) => {
+    return {
+        minHeight: "12px",
+        backgroundColor: color,
+        marginTop: "12px",
+        padding
+    }
 }
 
 const GridExamples = () => {
@@ -39,7 +44,7 @@ const GridExamples = () => {
                 <h2 className="-pui-text-size-copy">Breakpoint specific</h2>
                 <Grid gap={{ base: "normal", s: "zero", m: "normal" }}>
                     <Grid.Child className="pui-flex" size={{ base: 12, m: 4, l: 3 }} offset={{ base: 0, m: 2, l: 0 }}>
-                        <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue")}>
+                        <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue", "12px")}>
                             <Text type="4-thin" color="white">
                                 Column 1
                             </Text>
@@ -59,7 +64,7 @@ const GridExamples = () => {
                         }}
                         offset={{ base: 0, s: 3, m: 0 }}
                     >
-                        <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue")}>
+                        <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue", "12px")}>
                             <Text type="4-thin" color="white">
                                 Column 2
                             </Text>
@@ -77,7 +82,7 @@ const GridExamples = () => {
                             l: 3
                         }}
                     >
-                        <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue")}>
+                        <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue", "12px")}>
                             <Text type="4-thin" color="white">
                                 Column 3
                             </Text>
@@ -95,7 +100,7 @@ const GridExamples = () => {
                             l: 3
                         }}
                     >
-                        <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue")}>
+                        <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue", "12px")}>
                             <Text type="4-thin" color="white">
                                 Column 4
                             </Text>
