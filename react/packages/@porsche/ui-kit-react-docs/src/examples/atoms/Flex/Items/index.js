@@ -18,9 +18,9 @@ const Items = () => {
             </ComponentExample>
 
             <ComponentExample title="Specific Item Widths" examplePath="atoms/Flex/Items/FlexExampleItemWidthSpecific">
-                Items can have specific widths to fit your layout, independent of what content they contain. The
-                combined width of a flex row is 12. If items in a row go above that, be sure to set <code>wrap</code> on
-                the container to enable line wrapping.
+                Items can have specific widths to fit your layout, independent of what content they contain. This can be
+                quarter, third, half, 2-thirds anf full. The combined width of a flex row is 12. If items in a row go
+                above that, be sure to set <code>wrap</code> on the container to enable line wrapping.
             </ComponentExample>
 
             <ComponentExample title="Item Offsets" examplePath="atoms/Flex/Items/FlexExampleItemOffset">

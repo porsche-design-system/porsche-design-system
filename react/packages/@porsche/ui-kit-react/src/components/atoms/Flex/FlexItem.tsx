@@ -16,10 +16,10 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
         | BreakpointValues<"auto" | "start" | "center" | "end" | "baseline" | "stretch">
 
     /** The size of the column. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
-    size?: "auto" | 3 | 4 | 6 | 9 | 12 | BreakpointValues<"auto" | 3 | 4 | 6 | 9 | 12>
+    size?: "auto" | 3 | 4 | 6 | 8 | 9 | 12 | BreakpointValues<"auto" | 3 | 4 | 6 | 8 | 9 | 12>
 
     /** The offset of the column. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
-    offset?: 0 | 3 | 4 | 6 | 9 | BreakpointValues<0 | 3 | 4 | 6 | 9>
+    offset?: 0 | 3 | 4 | 6 | 8 | 9 | BreakpointValues<0 | 3 | 4 | 6 | 8 | 9>
 
     /** The ability to allow/disallow the flex child to shrink. */
     shrink?: 0 | 1 | BreakpointValues<0 | 1>
