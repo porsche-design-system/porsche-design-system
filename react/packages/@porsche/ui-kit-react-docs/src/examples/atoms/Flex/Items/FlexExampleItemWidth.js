@@ -12,15 +12,15 @@ const itemStyle = (color) => {
 
 const FlexExampleItemWidth = () => {
     return (
-        <Flex gap={12}>
+        <Flex>
             <Flex.Item>
-                <div style={itemStyle("DeepSkyBlue")}>An element</div>
+                <div style={itemStyle("LightSkyBlue")}>An element</div>
             </Flex.Item>
             <Flex.Item>
                 <div style={itemStyle("DeepSkyBlue")}>An element with a little more text</div>
             </Flex.Item>
             <Flex.Item>
-                <div style={itemStyle("DeepSkyBlue")}>An element</div>
+                <div style={itemStyle("dodgerblue")}>An element</div>
             </Flex.Item>
             <Flex.Item>
                 <div style={itemStyle("DeepSkyBlue")}>An element with more content</div>

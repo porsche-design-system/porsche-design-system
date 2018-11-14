@@ -1,10 +1,14 @@
 @import "../../../common";
 @import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/layout/index";
 
-$flex-child-size: 0% 25% 33.333333% 50% 66.666667% 100%;
+$flex-child-size: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
 @mixin flex-child-size($i) {
-    width: #{nth($flex-child-size, $i)};
+    width: #{nth($flex-child-size, $i+1)};
+}
+
+@mixin flex-child-offset($i) {
+    margin-left: #{nth($flex-child-size, $i)};
 }
 
 @mixin flex-child-equal {
@@ -22,153 +26,137 @@ $flex-child-size: 0% 25% 33.333333% 50% 66.666667% 100%;
             @include flex-child-equal;
 
             @include breakpoint("xs") {
-                &-xs {
-                    @include flex-child-equal;
-                }
+                &-xs { @include flex-child-equal; }
             }
 
             @include breakpoint("s") {
-                &-s {
-                    @include flex-child-equal;
-                }
+                &-s { @include flex-child-equal; }
             }
 
             @include breakpoint("m") {
-                &-m {
-                    @include flex-child-equal;
-                }
+                &-m { @include flex-child-equal; }
             }
 
             @include breakpoint("l") {
-                &-l {
-                    @include flex-child-equal;
-                }
+                &-l { @include flex-child-equal; }
             }
 
             @include breakpoint("xl") {
-                &-xl {
-                    @include flex-child-equal;
-                }
+                &-xl { @include flex-child-equal; }
             }
         }
 
         &--size {
-            @for $i from 1 through 5 {
-                &-#{$i} {
-                    @include flex-child-size($i + 1);
-                }
-            }
-
-            &-auto {
-                width: auto;
-            }
+            &-3 { @include flex-child-size(1); }
+            &-4 { @include flex-child-size(2); }
+            &-6 { @include flex-child-size(3); }
+            &-8 { @include flex-child-size(4); }
+            &-9 { @include flex-child-size(5); }
+            &-12 { @include flex-child-size(6); }
+            &-auto { width: auto; }
 
             @include breakpoint("xs") {
-                @for $i from 1 through 5 {
-                    &-#{$i}-xs {
-                        @include flex-child-size($i + 1);
-                    }
-                }
-
-                &-auto-xs {
-                    width: auto;
-                }
+                &-3-xs { @include flex-child-size(1); }
+                &-4-xs { @include flex-child-size(2); }
+                &-6-xs { @include flex-child-size(3); }
+                &-8-xs { @include flex-child-size(4); }
+                &-9-xs { @include flex-child-size(5); }
+                &-12-xs { @include flex-child-size(6); }
+                &-auto-xs { width: auto; }
             }
 
             @include breakpoint("s") {
-                @for $i from 1 through 5 {
-                    &-#{$i}-s {
-                        @include flex-child-size($i + 1);
-                    }
-
-                    &-auto-s {
-                        width: auto;
-                    }
-                }
+                &-3-s { @include flex-child-size(1); }
+                &-4-s { @include flex-child-size(2); }
+                &-6-s { @include flex-child-size(3); }
+                &-8-s { @include flex-child-size(4); }
+                &-9-s { @include flex-child-size(5); }
+                &-12-s { @include flex-child-size(6); }
+                &-auto-s { width: auto; }
             }
 
             @include breakpoint("m") {
-                @for $i from 1 through 5 {
-                    &-#{$i}-m {
-                        @include flex-child-size($i + 1);
-                    }
-                }
-
-                &-auto-m {
-                    width: auto;
-                }
+                &-3-m { @include flex-child-size(1); }
+                &-4-m { @include flex-child-size(2); }
+                &-6-m { @include flex-child-size(3); }
+                &-8-m { @include flex-child-size(4); }
+                &-9-m { @include flex-child-size(5); }
+                &-12-m { @include flex-child-size(6); }
+                &-auto-m { width: auto; }
             }
 
             @include breakpoint("l") {
-                @for $i from 1 through 5 {
-                    &-#{$i}-l {
-                        @include flex-child-size($i + 1);
-                    }
-                }
-
-                &-auto-l {
-                    width: auto;
-                }
+                &-3-l { @include flex-child-size(1); }
+                &-4-l { @include flex-child-size(2); }
+                &-6-l { @include flex-child-size(3); }
+                &-8-l { @include flex-child-size(4); }
+                &-9-l { @include flex-child-size(5); }
+                &-12-l { @include flex-child-size(6); }
+                &-auto-l { width: auto; }
             }
 
             @include breakpoint("xl") {
-                @for $i from 1 through 5 {
-                    &-#{$i}-xl {
-                        @include flex-child-size($i + 1);
-                    }
-                }
-
-                &-auto-xl {
-                    width: auto;
-                }
+                &-3-xl { @include flex-child-size(1); }
+                &-4-xl { @include flex-child-size(2); }
+                &-6-xl { @include flex-child-size(3); }
+                &-8-xl { @include flex-child-size(4); }
+                &-9-xl { @include flex-child-size(5); }
+                &-12-xl { @include flex-child-size(6); }
+                &-auto-xl { width: auto; }
             }
         }
 
         &--offset {
-            @for $i from 0 through 4 {
-                &-#{$i} {
-                    @include flex-child-size($i + 1);
-                }
-            }
+            &-0 { @include flex-child-offset(1); }
+            &-3 { @include flex-child-offset(2); }
+            &-4 { @include flex-child-offset(3); }
+            &-6 { @include flex-child-offset(4); }
+            &-8 { @include flex-child-offset(5); }
+            &-9 { @include flex-child-offset(6); }
 
             @include breakpoint("xs") {
-                @for $i from 0 through 4 {
-                    &-#{$i}-xs {
-                        @include flex-child-size($i + 1);
-                    }
-                }
+                &-0-xs { @include flex-child-offset(1); }
+                &-3-xs { @include flex-child-offset(2); }
+                &-4-xs { @include flex-child-offset(3); }
+                &-6-xs { @include flex-child-offset(4); }
+                &-8-xs { @include flex-child-offset(5); }
+                &-9-xs { @include flex-child-offset(6); }
             }
 
             @include breakpoint("s") {
-                @for $i from 0 through 4 {
-                    &-#{$i}-s {
-                        @include flex-child-size($i + 1);
-                    }
-                }
+                &-0-s { @include flex-child-offset(1); }
+                &-3-s { @include flex-child-offset(2); }
+                &-4-s { @include flex-child-offset(3); }
+                &-6-s { @include flex-child-offset(4); }
+                &-8-s { @include flex-child-offset(5); }
+                &-9-s { @include flex-child-offset(6); }
             }
 
             @include breakpoint("m") {
-                @for $i from 0 through 4 {
-                    &-#{$i}-m {
-                        @include flex-child-size($i + 1);
-                    }
-                }
+                &-0-m { @include flex-child-offset(1); }
+                &-3-m { @include flex-child-offset(2); }
+                &-4-m { @include flex-child-offset(3); }
+                &-6-m { @include flex-child-offset(4); }
+                &-8-m { @include flex-child-offset(5); }
+                &-9-m { @include flex-child-offset(6); }
             }
 
             @include breakpoint("l") {
-                @for $i from 0 through 4 {
-                    &-#{$i}-l {
-                        @include flex-child-size($i + 1);
-                    }
-                }
+                &-0-l { @include flex-child-offset(1); }
+                &-3-l { @include flex-child-offset(2); }
+                &-4-l { @include flex-child-offset(3); }
+                &-6-l { @include flex-child-offset(4); }
+                &-8-l { @include flex-child-offset(5); }
+                &-9-l { @include flex-child-offset(6); }
             }
 
             @include breakpoint("xl") {
-                @for $i from 0 through 4 {
-                    &-#{$i}-xl {
-                        @include flex-child-size($i + 1);
-                    }
-                }
+                &-0-xl { @include flex-child-offset(1); }
+                &-3-xl { @include flex-child-offset(2); }
+                &-4-xl { @include flex-child-offset(3); }
+                &-6-xl { @include flex-child-offset(4); }
+                &-8-xl { @include flex-child-offset(5); }
+                &-9-xl { @include flex-child-offset(6); }
             }
         }
     }

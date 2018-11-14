@@ -39,8 +39,9 @@ const Container = () => {
                 title="Child Spacing (horizontal)"
                 examplePath="atoms/Flex/Container/FlexContainerExampleGap"
             >
-                Use <code>gap</code> to apply horizontal spacing to all children of the container. You have to take care
-                of vertical spacing yourself.
+                Use <code>gap</code> to apply equal horizontal spacing to all children of the container. You have to
+                take care of vertical spacing yourself. This should not be an alternative to the global grid
+                system/component.
             </ComponentExample>
         </ExampleSection>
     )

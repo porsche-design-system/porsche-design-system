@@ -15,7 +15,7 @@ const itemStyle = (color) => {
 const FlexContainerExampleGap = () => {
     return (
         <React.Fragment>
-            <Text>Gap between items:</Text>
+            <Text>Gap (of 24px) between items:</Text>
             <Flex gap={12}>
                 <Flex.Item>
                     <div style={itemStyle("DeepSkyBlue")}>1</div>
