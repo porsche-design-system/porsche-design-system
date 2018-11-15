@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.1] - 2018-11-15
+- `Logo` is now the plain and simple Porsche Crest with barely any CSS. The box shadow and positioning CSS is now moved to the `Header` component.
+
 ## [0.3.0] - 2018-31-10
 - BREAKING: removed `Notification` in favor of `Toast` and `CookieNotification`.
 - BREAKING: removed some type exports of some props. If you want to access the type of a prop like `type` of `Text`, you can simply access it directly with `TextProps["type"]`. Every component exports its props as a type.
