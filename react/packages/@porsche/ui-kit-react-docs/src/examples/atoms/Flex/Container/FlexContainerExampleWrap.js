@@ -58,6 +58,21 @@ const FlexContainerExampleWrap = () => {
                     })}
                 </Flex>
             </Spacing>
+
+            <Spacing marginTop={30}>
+                <Text>Responsive behaviour (base: true, l: false):</Text>
+                <Flex wrap={{ base: true, l: false }}>
+                    {_.times(9, (i) => {
+                        return (
+                            <Flex.Item>
+                                <div key={i} style={itemStyle("DeepSkyBlue")}>
+                                    {i + 1}
+                                </div>
+                            </Flex.Item>
+                        )
+                    })}
+                </Flex>
+            </Spacing>
         </React.Fragment>
     )
 }

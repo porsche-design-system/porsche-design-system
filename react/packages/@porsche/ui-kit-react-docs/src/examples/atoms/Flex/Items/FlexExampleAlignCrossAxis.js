@@ -1,41 +1,144 @@
 import React from "react"
-import { Flex } from "@porsche/ui-kit-react"
+import { Text, Flex } from "@porsche/ui-kit-react"
 
-const containerStyle = { marginBottom: "16px" }
-const alignedItemStyle = { height: "20px", backgroundColor: "DeepPink" }
-const defaultItemStyle = (height) => {
-    return { height, backgroundColor: "DeepSkyBlue" }
-}
+const containerStyle = { backgroundColor: "WhiteSmoke", marginBottom: "18px", height: "140px" }
 
-const FlexWithAlignCrossAxis = (alignCrossAxis) => {
-    return (
-        <div>
-            <p>{alignCrossAxis}:</p>
-            <Flex alignMainAxis="space-evenly" alignCrossAxis="center" gap={12} style={containerStyle}>
-                <Flex.Item width={3}>
-                    <div style={defaultItemStyle("20px")} />
-                </Flex.Item>
-                <Flex.Item width={3}>
-                    <div style={defaultItemStyle("50px")} />
-                </Flex.Item>
-                <Flex.Item alignCrossAxis={alignCrossAxis} width={3}>
-                    <div style={alignedItemStyle} />
-                </Flex.Item>
-                <Flex.Item width={3}>
-                    <div style={defaultItemStyle("50px")} />
-                </Flex.Item>
-            </Flex>
-        </div>
-    )
+const itemStyle = (height, color) => {
+    return {
+        height,
+        width: "200px",
+        backgroundColor: color,
+        padding: "12px",
+        color: "white"
+    }
 }
 
 const FlexExampleAlignCrossAxis = () => {
     return (
-        <div>
-            {FlexWithAlignCrossAxis("start")}
-            {FlexWithAlignCrossAxis("center")}
-            {FlexWithAlignCrossAxis("end")}
-        </div>
+        <React.Fragment>
+            <Text>Auto (default):</Text>
+            <Flex style={containerStyle}>
+                <Flex.Item>
+                    <div style={itemStyle("50px", "dodgerblue")}>1</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
+                </Flex.Item>
+                <Flex.Item alignCrossAxis="auto">
+                    <div style={itemStyle("50px", "pink")}>3</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
+                </Flex.Item>
+            </Flex>
+
+            <Text>Stretch:</Text>
+            <Flex style={containerStyle}>
+                <Flex.Item>
+                    <div style={itemStyle("50px", "dodgerblue")}>1</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
+                </Flex.Item>
+                <Flex.Item alignCrossAxis="stretch">
+                    <div style={itemStyle("100%", "pink")}>3</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
+                </Flex.Item>
+            </Flex>
+
+            <Text>Start:</Text>
+            <Flex style={containerStyle}>
+                <Flex.Item>
+                    <div style={itemStyle("50px", "dodgerblue")}>1</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
+                </Flex.Item>
+                <Flex.Item alignCrossAxis="start">
+                    <div style={itemStyle("50px", "pink")}>3</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
+                </Flex.Item>
+            </Flex>
+
+            <Text>End:</Text>
+            <Flex style={containerStyle}>
+                <Flex.Item>
+                    <div style={itemStyle("50px", "dodgerblue")}>1</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
+                </Flex.Item>
+                <Flex.Item alignCrossAxis="end">
+                    <div style={itemStyle("50px", "pink")}>3</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
+                </Flex.Item>
+            </Flex>
+
+            <Text>Center:</Text>
+            <Flex style={containerStyle}>
+                <Flex.Item>
+                    <div style={itemStyle("50px", "dodgerblue")}>1</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
+                </Flex.Item>
+                <Flex.Item alignCrossAxis="center">
+                    <div style={itemStyle("50px", "pink")}>3</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
+                </Flex.Item>
+            </Flex>
+
+            <Text>Baseline:</Text>
+            <Flex style={containerStyle}>
+                <Flex.Item alignCrossAxis="baseline">
+                    <div
+                        style={{
+                            height: "50px",
+                            padding: "12px",
+                            width: "200px",
+                            color: "white",
+                            backgroundColor: "DeepSkyBlue",
+                            marginTop: "20px"
+                        }}
+                    >
+                        1
+                    </div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
+                </Flex.Item>
+                <Flex.Item alignCrossAxis="baseline">
+                    <div style={itemStyle("50px", "pink")}>3</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
+                </Flex.Item>
+            </Flex>
+
+            <Text>Responsive behaviour (base: start, l: end):</Text>
+            <Flex style={containerStyle}>
+                <Flex.Item>
+                    <div style={itemStyle("50px", "dodgerblue")}>1</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
+                </Flex.Item>
+                <Flex.Item alignCrossAxis={{ base: "start", l: "end" }}>
+                    <div style={itemStyle("50px", "pink")}>3</div>
+                </Flex.Item>
+                <Flex.Item>
+                    <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
+                </Flex.Item>
+            </Flex>
+        </React.Fragment>
     )
 }
 

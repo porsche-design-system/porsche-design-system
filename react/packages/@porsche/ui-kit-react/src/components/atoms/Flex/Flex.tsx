@@ -63,26 +63,7 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
         | BreakpointValues<"start" | "center" | "end" | "space-around" | "space-between" | "stretch">
 
     /** Defines the gap between contained children. The value "grid" sets responsive grid spacings that should be used together with Flex.Item. */
-    gap?:
-        | 0
-        | 3
-        | 6
-        | 12
-        | 18
-        | 24
-        | 30
-        | 36
-        | 42
-        | 48
-        | 54
-        | 60
-        | "a"
-        | "b"
-        | "c"
-        | "d"
-        | "e"
-        | "f"
-        | BreakpointValues<0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f">
+    gap?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
 }
 
 const defaultProps: Partial<FlexProps> = {
@@ -114,8 +95,8 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
         mapBreakpointPropToClasses("flex--main-axis", alignMainAxis),
         mapBreakpointPropToClasses("flex--cross-axis", alignCrossAxis),
         mapBreakpointPropToClasses("flex--align-content", alignContent),
-        mapBreakpointPropToClasses("m-nl-", gap),
-        mapBreakpointPropToClasses("m-nr-", gap),
+        { [prefix(`m-nl--${gap}`)]: gap },
+        { [prefix(`m-nr--${gap}`)]: gap },
         className
     )
 

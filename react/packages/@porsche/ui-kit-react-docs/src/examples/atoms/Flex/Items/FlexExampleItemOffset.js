@@ -1,7 +1,7 @@
 import React from "react"
 import * as _ from "lodash"
 
-import { Flex } from "@porsche/ui-kit-react"
+import { Text, Flex } from "@porsche/ui-kit-react"
 
 const containerStyle = { marginBottom: "8px" }
 
@@ -40,6 +40,13 @@ const FlexExampleItemOffset = () => {
             <Flex style={containerStyle}>
                 <Flex.Item offset={9} size={3}>
                     <div style={itemStyle("LightSkyBlue")}>Offset: 3 quarters</div>
+                </Flex.Item>
+            </Flex>
+
+            <Text>Responsive behaviour (base: 0, l: 4):</Text>
+            <Flex style={containerStyle}>
+                <Flex.Item offset={{ base: 0, l: 4 }}>
+                    <div style={itemStyle("DeepSkyBlue")}>An element with responsive offset</div>
                 </Flex.Item>
             </Flex>
         </React.Fragment>

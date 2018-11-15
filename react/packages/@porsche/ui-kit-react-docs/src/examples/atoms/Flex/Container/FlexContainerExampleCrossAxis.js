@@ -100,6 +100,21 @@ const FlexAlignCrossAxis = () => {
                     </Flex.Item>
                 </Flex>
             </div>
+
+            <Text>Responsive behaviour (base: start, l: end):</Text>
+            <div style={containerStyle}>
+                <Flex alignCrossAxis={{ base: "start", l: "end" }}>
+                    <Flex.Item>
+                        <div style={itemStyle("20px", "dodgerblue")}>1</div>
+                    </Flex.Item>
+                    <Flex.Item>
+                        <div style={itemStyle("50px", "DeepSkyBlue")}>2</div>
+                    </Flex.Item>
+                    <Flex.Item>
+                        <div style={itemStyle("30px", "LightSkyBlue")}>3</div>
+                    </Flex.Item>
+                </Flex>
+            </div>
         </React.Fragment>
     )
 }

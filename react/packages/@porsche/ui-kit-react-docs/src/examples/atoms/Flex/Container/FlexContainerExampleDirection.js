@@ -72,6 +72,21 @@ const FlexContainerExampleDirection = () => {
                     </Flex.Item>
                 </Flex>
             </Spacing>
+
+            <Spacing marginTop={30}>
+                <Text>Responsive behaviour (base: column, l: row):</Text>
+                <Flex direction={{ base: "column", l: "row" }}>
+                    <Flex.Item>
+                        <div style={itemStyle("DeepSkyBlue")}>1</div>
+                    </Flex.Item>
+                    <Flex.Item>
+                        <div style={itemStyle("DeepSkyBlue")}>2</div>
+                    </Flex.Item>
+                    <Flex.Item>
+                        <div style={itemStyle("DeepSkyBlue")}>3</div>
+                    </Flex.Item>
+                </Flex>
+            </Spacing>
         </React.Fragment>
     )
 }
