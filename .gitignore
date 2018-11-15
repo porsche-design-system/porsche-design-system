@@ -12,3 +12,4 @@ Thumbs.db
 
 # npm
 .npmrc
+node_modules/.yarn-integrity
