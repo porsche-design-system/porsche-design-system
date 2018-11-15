@@ -5,47 +5,13 @@ import React from "react"
 const Items = () => {
     return (
         <ExampleSection title="Flex Items">
-            <ComponentExample
-                title="Automatic Item Width (default)"
-                examplePath="atoms/Flex/Items/FlexExampleItemWidth"
-            >
-                You can use automatic item sizing. With this setting all items will be layouted using their intrinsic
-                content width, and remaining or missing space will be distributed equally between all items.
-            </ComponentExample>
-
-            <ComponentExample title="Equal Item Widths" examplePath="atoms/Flex/Items/FlexExampleItemWidthEqual">
-                Flex Items will have equal widths.
-            </ComponentExample>
-
-            <ComponentExample title="Specific Item Widths" examplePath="atoms/Flex/Items/FlexExampleItemWidthSpecific">
-                Items can have specific widths to fit your layout, independent of what content they contain. This can be
-                quarter, third, half, 2-thirds anf full. The combined width of a flex row is 12. If items in a row go
-                above that, be sure to set <code>wrap</code> on the container to enable line wrapping.
+            <ComponentExample title="Item Width" examplePath="atoms/Flex/Items/FlexExampleItemWidth">
+                The widths of <code>Flex.Items</code> is defined by its contents by default. But it is also possible to
+                define equal widths or even specific widths.
             </ComponentExample>
 
             <ComponentExample title="Item Offsets" examplePath="atoms/Flex/Items/FlexExampleItemOffset">
                 Items can have different offsets that work similar like column widths.
-            </ComponentExample>
-
-            <ComponentExample
-                title="Responsive Item Widths"
-                examplePath="atoms/Flex/Items/FlexExampleItemWidthResponsive"
-            >
-                Items can have different widths for different breakpoints.
-                <br />
-                You need to provide a default value that is applied regardless of the current breakpoint. Then you can
-                customize the behaviour by adding values for the breakpoints <code>xs, s, m and l</code>. Once set, the
-                behaviour is applied for all sizes larger than the breakpoint, until another definition sets another
-                value.
-                <br />
-                You can use this to build responsive layouts. Try this example in fullscreen and resize your browser!
-            </ComponentExample>
-
-            <ComponentExample
-                title="Responsive Item Offset"
-                examplePath="atoms/Flex/Items/FlexExampleItemOffsetResponsive"
-            >
-                Just like with item widths, you can specify different offsets for different breakpoints.
             </ComponentExample>
 
             <ComponentExample title="Align Cross Axis" examplePath="atoms/Flex/Items/FlexExampleAlignCrossAxis">

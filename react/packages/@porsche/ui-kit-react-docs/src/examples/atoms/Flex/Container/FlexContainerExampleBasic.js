@@ -52,6 +52,26 @@ const FlexContainerExampleBasic = () => {
                     </Flex.Item>
                 </Flex>
             </Spacing>
+
+            <Spacing marginTop={30}>
+                <Text>Responsive behaviour (base: flex, l: flex-inline):</Text>
+                <Flex inline={{ base: false, l: true }}>
+                    <Flex.Item>
+                        <div style={itemStyle("DeepSkyBlue")}>1</div>
+                    </Flex.Item>
+                    <Flex.Item>
+                        <div style={itemStyle("DeepSkyBlue")}>2</div>
+                    </Flex.Item>
+                </Flex>
+                <Flex inline={{ base: false, l: true }}>
+                    <Flex.Item>
+                        <div style={itemStyle("LightSkyBlue")}>1</div>
+                    </Flex.Item>
+                    <Flex.Item>
+                        <div style={itemStyle("LightSkyBlue")}>2</div>
+                    </Flex.Item>
+                </Flex>
+            </Spacing>
         </React.Fragment>
     )
 }

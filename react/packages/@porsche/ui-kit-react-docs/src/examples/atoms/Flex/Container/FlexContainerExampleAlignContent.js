@@ -81,6 +81,19 @@ const FlexAlignContent = () => {
                     )
                 })}
             </Flex>
+
+            <Text>Responsive behaviour (base: start, l: end):</Text>
+            <Flex alignContent={{ base: "start", l: "end" }} style={containerStyle}>
+                {_.times(9, (i) => {
+                    return (
+                        <Flex.Item>
+                            <div key={i} style={itemStyle("DeepSkyBlue")}>
+                                {i + 1}
+                            </div>
+                        </Flex.Item>
+                    )
+                })}
+            </Flex>
         </React.Fragment>
     )
 }
