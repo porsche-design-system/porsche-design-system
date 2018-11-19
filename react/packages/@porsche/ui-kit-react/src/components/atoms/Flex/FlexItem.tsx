@@ -15,8 +15,8 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
         | "stretch"
         | BreakpointValues<"auto" | "start" | "center" | "end" | "baseline" | "stretch">
 
-    /** The size of the column. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
-    size?: "auto" | 3 | 4 | 6 | 8 | 9 | 12 | BreakpointValues<"auto" | 3 | 4 | 6 | 8 | 9 | 12>
+    /** The width of the flex item. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
+    width?: "auto" | 3 | 4 | 6 | 8 | 9 | 12 | BreakpointValues<"auto" | 3 | 4 | 6 | 8 | 9 | 12>
 
     /** The offset of the column. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
     offset?: 0 | 3 | 4 | 6 | 8 | 9 | BreakpointValues<0 | 3 | 4 | 6 | 8 | 9>
@@ -32,14 +32,14 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
 }
 
 const _FlexItem: React.StatelessComponent<FlexItemProps> = (props) => {
-    const { as, className, children, alignCrossAxis, size, offset, shrink, grow, flex, ...rest } = props
+    const { as, className, children, alignCrossAxis, width, offset, shrink, grow, flex, ...rest } = props
 
     const ElementType = getElementType(as, "div")
 
     const classes = cx(
         prefix("flex__child"),
         mapBreakpointPropToClasses("flex__child--cross-axis", alignCrossAxis),
-        mapBreakpointPropToClasses("flex__child--size", size),
+        mapBreakpointPropToClasses("flex__child--width", width),
         mapBreakpointPropToClasses("flex__child--offset", offset),
         mapBreakpointPropToClasses("flex__child--shrink", shrink),
         mapBreakpointPropToClasses("flex__child--grow", grow),
