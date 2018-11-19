@@ -36,8 +36,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     
     Change the following flex child (item) properties:  
     
-    `<Flex.Item width={ ... }>` => `<Flex.Item size={ ... }>` Hint: only basic widths are now supported (3 | 4 | 6 | 9 | 12 | "auto")! If you need grid sizes use grid component.
-    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported (3 | 4 | 6 | 9)! If you need grid offsets use grid component.
+    `<Flex.Item width={ ... }>` => `<Flex.Item size={ ... }>` Hint: only basic widths are now supported (3 | 4 | 6 | 8 | 9 | 12 | "auto")! If you need grid sizes use grid component.
+    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported (3 | 4 | 6 | 8 | 9)! If you need grid offsets use grid component.
 
 ## [0.3.0] - 2018-31-10
 - BREAKING: removed `Notification` in favor of `Toast` and `CookieNotification`.
