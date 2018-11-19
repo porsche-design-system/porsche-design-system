@@ -1,31 +1,20 @@
-@import 'button-regular.setup.scss';
 @import '../../base/font/font.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/layout/flex.mixin.scss';
 @import '../../base/align/align.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../setup/global-variables.scss';
+@import '../../setup/color-palette.setup.scss';
 @import '../../setup/animations.scss';
+@import '../../mixins/px-rem-converter.scss';
 @import '../../mixins/breakpoint.scss';
-
-// @mixin not($ignore) {
-//   @if (length($ignore) == 1) {
-//     $ignore: nth($ignore, 1);
-//   }
-//   $not-output: '';
-//   @each $not in $ignore {
-//     $not-output: $not-output + ':not(#{$not})';
-//   }
-
-//   &#{$not-output} {
-//     @content;
-//   }
-// }
 
 .#{$global-class-prefix}button-regular {
   $bem-block: &;
 
   @include flex-inline;
+  @include flex-cross-axis(flex-start);
+  @include flex-direction(column);
   @include -align-left;
   @include -text-size-copy;
   @include -spacing-12(top, padding);
@@ -33,54 +22,48 @@
   padding-left: rem(17px); // 17px width because of 1 px border which leads to 18px
   padding-right: rem(17px);
   position: relative;
-  width: $button-regular-width;
   max-width: 100%; // fix for IE11, forces using multi line label
   border-radius: 0; // fix for Chrome and Safari
   appearance: none;
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  background-color: $button-regular-background-color;
-  border: $button-regular-border-size solid $button-regular-border-color;
-  color: $button-regular-text-color;
+  background-color: $color-palette-grey-9;
+  border: 1px solid $color-palette-grey-9;
+  color: $color-palette-white;
   transition: background-color $animation-hover-duration $animation-hover-bezier, border-color $animation-hover-duration $animation-hover-bezier, color $animation-hover-duration $animation-hover-bezier; // must be globally defined
 
   &::-moz-focus-inner { // sass-lint:disable-line no-vendor-prefixes
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
-  // $ignored-items: #{$bem-block}--highlight, #{$bem-block}--sales;
-
   &--theme-inverted {
-    // @include not($ignored-items) {
-    background-color: $button-regular-background-color-inverted;
-    border-color: $button-regular-border-color-inverted;
-    color: $button-regular-text-color-inverted;
-    // }
+    color: $color-palette-black;
+    background-color: $color-palette-white;
+    border-color: $color-palette-white;
   }
 
   &:not([disabled]) {
     &:hover,
     &:focus,
     &:active {
-      background-color: $button-regular-background-color-hover;
-      border-color: $button-regular-border-color-hover;
+      background-color: $color-palette-grey-10;
+      border-color: $color-palette-grey-10;
       text-decoration: none;
 
       &#{$bem-block}--theme-inverted {
-        // @include not($ignored-items) {
-        background-color: $button-regular-background-color-inverted-hover;
-        border-color: $button-regular-border-color-inverted-hover;
-        // }
+        background-color: $color-palette-grey-2;
+        border-color: $color-palette-grey-2;
       }
     }
   }
 
-  &[disabled] {
+  &[disabled],
+  &[aria-disabled='true'] {
     cursor: default;
     pointer-events: none;
-    background-color: $button-regular-background-color-disabled;
-    border-color: $button-regular-border-color-disabled;
+    background-color: mix($color-palette-grey-9, $color-palette-white, 50%);
+    border-color: mix($color-palette-grey-9, $color-palette-white, 50%);
 
     #{$bem-block}__icon {
       opacity: .55;
@@ -91,9 +74,9 @@
     }
 
     &#{$bem-block}--theme-inverted {
-      color: $button-regular-text-color-inverted-disabled;
-      background-color: $button-regular-background-color-inverted-disabled;
-      border-color: $button-regular-border-color-inverted-disabled;
+      color: $color-palette-black;
+      background-color: mix($color-palette-white, $color-palette-grey-10, 50%);
+      border-color: mix($color-palette-white, $color-palette-grey-10, 50%);
 
       #{$bem-block}__icon {
         opacity: .35;
@@ -106,29 +89,36 @@
   }
 
   &--ghost {
-    color: $button-regular-ghost-text-color;
-    background-color: $button-regular-ghost-background-color;
-    border-color: $button-regular-ghost-border-color;
+    color: $color-palette-black;
+    background-color: transparent;
+    border-color: $color-palette-grey-9;
 
     &#{$bem-block}--theme-inverted {
-      color: $button-regular-ghost-text-color-inverted;
-      border-color: $button-regular-ghost-border-color-inverted;
+      color: $color-palette-white;
+      border-color: $color-palette-white;
     }
 
     &:not([disabled]) {
       &:hover,
       &:focus,
       &:active {
-        color: $button-regular-ghost-text-color-hover;
-        background: $button-regular-ghost-background-color-hover;
-        border-color: $button-regular-ghost-border-color-hover;
+        color: $color-palette-white;
+        background-color: $color-palette-grey-9;
+        border-color: $color-palette-grey-9;
+
+        &#{$bem-block}--theme-inverted {
+          color: $color-palette-black;
+          background-color: $color-palette-white;
+          border-color: $color-palette-white;
+        }
       }
     }
 
-    &[disabled] {
-      color: $button-regular-ghost-text-color-disabled;
-      background: $button-regular-ghost-background-color-disabled;
-      border-color: $button-regular-ghost-border-color-disabled;
+    &[disabled],
+    &[aria-disabled='true'] {
+      color: mix($color-palette-grey-9, $color-palette-white, 40%);
+      background-color: transparent;
+      border-color: mix($color-palette-grey-9, $color-palette-white, 40%);
 
       #{$bem-block}__icon {
         opacity: 1;
@@ -136,33 +126,48 @@
 
       #{$bem-block}__label {
         opacity: 1;
+      }
+
+      &#{$bem-block}--theme-inverted {
+        color: mix($color-palette-white, $color-palette-grey-10, 30%);
+        background-color: transparent;
+        border-color: mix($color-palette-white, $color-palette-grey-10, 30%);
+
+        #{$bem-block}__icon {
+          opacity: 1;
+        }
+
+        #{$bem-block}__label {
+          opacity: 1;
+        }
       }
     }
   }
 
   &--highlight {
-    color: $button-regular-highlight-text-color;
-    background-color: $button-regular-highlight-background-color;
-    border-color: $button-regular-highlight-border-color;
+    color: $color-palette-white;
+    background-color: $color-palette-red-1;
+    border-color: $color-palette-red-1;
 
     &:not([disabled]) {
       &:hover,
       &:focus,
       &:active {
-        background: $button-regular-highlight-background-color-hover;
-        border-color: $button-regular-highlight-border-color-hover;
+        background-color: $color-palette-red-2;
+        border-color: $color-palette-red-2;
         text-decoration: none;
 
         &#{$bem-block}--theme-inverted { // sass-lint:disable-line nesting-depth
-          background: $button-regular-highlight-background-color-inverted-hover;
-          border-color: $button-regular-highlight-border-color-inverted-hover;
+          background-color: $color-palette-red-2;
+          border-color: $color-palette-red-2;
         }
       }
     }
 
-    &[disabled] {
-      background-color: $button-regular-highlight-background-color-disabled;
-      border-color: $button-regular-highlight-border-color-disabled;
+    &[disabled],
+    &[aria-disabled='true'] {
+      background-color: mix($color-palette-red-1, $color-palette-white, 50%);
+      border-color: mix($color-palette-red-1, $color-palette-white, 50%);
 
       #{$bem-block}__icon {
         opacity: .6;
@@ -173,36 +178,45 @@
       }
 
       &#{$bem-block}--theme-inverted {
-        color: $button-regular-highlight-text-color-inverted-disabled;
-        background-color: $button-regular-highlight-background-color-inverted-disabled;
-        border-color: $button-regular-highlight-border-color-inverted-disabled;
+        color: $color-palette-white;
+        background-color: mix($color-palette-red-1, $color-palette-grey-10, 35%);
+        border-color: mix($color-palette-red-1, $color-palette-grey-10, 35%);
+
+        #{$bem-block}__icon {
+          opacity: .35;
+        }
+
+        #{$bem-block}__label {
+          opacity: .35;
+        }
       }
     }
   }
 
   &--sales {
-    color: $button-regular-highlight-text-color;
-    background-color: $button-regular-sales-background-color;
-    border-color: $button-regular-sales-border-color;
+    color: $color-palette-white;
+    background-color: $color-palette-blue-1;
+    border-color: $color-palette-blue-1;
 
     &:not([disabled]) {
       &:hover,
       &:focus,
       &:active {
-        background: $button-regular-sales-background-color-hover;
-        border-color: $button-regular-sales-border-color-hover;
+        background-color: $color-palette-blue-2;
+        border-color: $color-palette-blue-2;
         text-decoration: none;
 
         &#{$bem-block}--theme-inverted { // sass-lint:disable-line nesting-depth
-          background: $button-regular-sales-background-color-inverted-hover;
-          border-color: $button-regular-sales-border-color-inverted-hover;
+          background-color: $color-palette-blue-2;
+          border-color: $color-palette-blue-2;
         }
       }
     }
 
-    &[disabled] {
-      background-color: $button-regular-sales-background-color-disabled;
-      border-color: $button-regular-sales-border-color-disabled;
+    &[disabled],
+    &[aria-disabled='true'] {
+      background-color: mix($color-palette-blue-1, $color-palette-white, 50%);
+      border-color: mix($color-palette-blue-1, $color-palette-white, 50%);
 
       #{$bem-block}__icon {
         opacity: .6;
@@ -213,32 +227,53 @@
       }
 
       &#{$bem-block}--theme-inverted {
-        color: $button-regular-sales-text-color-inverted-disabled;
-        background-color: $button-regular-sales-background-color-inverted-disabled;
-        border-color: $button-regular-sales-border-color-inverted-disabled;
+        color: $color-palette-white;
+        background-color: mix($color-palette-blue-1, $color-palette-grey-10, 30%);
+        border-color: mix($color-palette-blue-1, $color-palette-grey-10, 30%);
+
+        #{$bem-block}__icon {
+          opacity: .35;
+        }
+
+        #{$bem-block}__label {
+          opacity: .35;
+        }
       }
     }
   }
 
   &--sales-ghost {
-    color: $button-regular-sales-ghost-text-color;
-    background-color: $button-regular-sales-ghost-background-color;
-    border-color: $button-regular-sales-ghost-border-color;
+    color: $color-palette-blue-1;
+    background-color: transparent;
+    border-color: $color-palette-blue-1;
+
+    &#{$bem-block}--theme-inverted {
+      color: $color-palette-blue-3;
+      background-color: transparent;
+      border-color: $color-palette-blue-3;
+    }
 
     &:not([disabled]) {
       &:hover,
       &:focus,
       &:active {
-        color: $button-regular-sales-ghost-text-color-hover;
-        background: $button-regular-sales-ghost-background-color-hover;
-        border-color: $button-regular-sales-ghost-border-color-hover;
+        color: $color-palette-white;
+        background-color: $color-palette-blue-1;
+        border-color: $color-palette-blue-1;
+
+        &#{$bem-block}--theme-inverted {
+          color: $color-palette-white;
+          background-color: lighten($color-palette-blue-1, 10);
+          border-color: lighten($color-palette-blue-1, 10);
+        }
       }
     }
 
-    &[disabled] {
-      color: $button-regular-sales-ghost-text-color-disabled;
-      background: $button-regular-sales-ghost-background-color-disabled;
-      border-color: $button-regular-sales-ghost-border-color-disabled;
+    &[disabled],
+    &[aria-disabled='true'] {
+      color: mix($color-palette-blue-1, $color-palette-white, 40%);
+      background-color: transparent;
+      border-color: mix($color-palette-blue-1, $color-palette-white, 40%);
 
       #{$bem-block}__icon {
         opacity: 1;
@@ -246,6 +281,20 @@
 
       #{$bem-block}__label {
         opacity: 1;
+      }
+
+      &#{$bem-block}--theme-inverted {
+        color: mix($color-palette-blue-3, $color-palette-grey-10, 40%);
+        background-color: transparent;
+        border-color: mix($color-palette-blue-3, $color-palette-grey-10, 40%);
+
+        #{$bem-block}__icon {
+          opacity: 1;
+        }
+
+        #{$bem-block}__label {
+          opacity: 1;
+        }
       }
     }
   }
@@ -253,8 +302,8 @@
   &--small {
     padding: rem(2px) rem(11px);
 
-    #{$bem-block}__icon {
-      @include -spacing-3('right', 'margin');
+    #{$bem-block}__label {
+      padding-left: rem(22px);
     }
   }
 
@@ -264,7 +313,7 @@
   }
 
   &--stretch {
-    width: $button-regular-stretch-width;
+    width: 100%;
   }
 
   &--button-group {
@@ -272,10 +321,8 @@
   }
 
   &__icon {
-    @include -spacing-6('right', 'margin');
-    position: relative;
-    display: block;
-    font-size: $button-regular-icon-font-size;
+    position: absolute;
+    font-size: rem(16px);
     line-height: inherit;
 
     &--loading {
@@ -292,19 +339,19 @@
 
   &__loader {
     position: absolute;
-    top: $button-regular-loader-position;
-    left: $button-regular-loader-position;
+    top: 50%;
+    left: 50%;
     margin: {
-      top: $button-regular-loader-offset;
-      left: $button-regular-loader-offset;
+      top: - rem(16px) / 2;
+      left: - rem(16px) / 2;
     }
-    width: $button-regular-loader-size;
-    height: $button-regular-loader-size;
+    width: rem(16px);
+    height: rem(16px);
     visibility: hidden;
   }
 
   &__label {
-    // padding-left: rem(22px);
+    padding-left: rem(22px);
     display: block;
     width: 100%;
   }
