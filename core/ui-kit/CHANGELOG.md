@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+* Added additional property to flex component and additional examples to visualize flex shorthands.
+* Added missing flex mixin changes to migration path.
+* Changed order of scss import of deprecated scss files to prevent css specificity issues.
+* Fixed layout issue of confirmation modal component (which was caused by css specificity mentioned above).
+
 ## [## [0.14.1] - 2018-11-05]
 ### Bugfix
 Added missing "-" seperator on sizes/offset classname at "xl" breakpoint
