@@ -12,9 +12,6 @@ export interface ButtonIconProps extends ClassNameProp, ComponentProp {
     /** Disables the button. No onClick will be triggered. */
     disabled?: boolean
 
-    /** A button can show an error. */
-    error?: boolean
-
     /**
      * The icon of the button.
      * @default arrow_right_hair
@@ -35,7 +32,12 @@ export interface ButtonIconProps extends ClassNameProp, ComponentProp {
      * The display type of the button.
      * @default default
      */
-    type?: "basic" | "highlight" | "sales" | "ghost" | "sales-ghost" | "inverted"
+    type?: "ghost"
+
+    /**
+     * The inverted variant of the button.
+     */
+    inverted?: boolean
 
     /**
      * Specifies the HTML Type of the button. If undefined, nothing is set.
@@ -45,13 +47,12 @@ export interface ButtonIconProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<ButtonIconProps> = {
-    type: "basic",
     icon: "arrow_right_hair",
     role: "button"
 }
 
 const _ButtonIcon: React.StatelessComponent<ButtonIconProps> = (props) => {
-    const { as, role, className, children, active, disabled, icon, loading, onClick, type, ...rest } = props
+    const { as, role, className, children, active, disabled, icon, loading, onClick, type, inverted, ...rest } = props
 
     const ElementType = getElementType(as, "button")
 
@@ -61,8 +62,8 @@ const _ButtonIcon: React.StatelessComponent<ButtonIconProps> = (props) => {
 
     buttonClasses = cx(
         prefix("button-icon"),
-        { [prefix("button-icon--highlight")]: type === "highlight" },
-        { [prefix("button-icon--sales")]: type === "sales" },
+        { [prefix("button-icon--ghost")]: type === "ghost" },
+        { [prefix("button-icon--inverted")]: inverted },
         { [prefix("button-icon--active")]: active },
         className
     )
@@ -93,8 +94,8 @@ const _ButtonIcon: React.StatelessComponent<ButtonIconProps> = (props) => {
             {...rest}
         >
             {/* Icon cannot be undefined because of default props */}
-            <Icon name={icon as IconProps["name"]} className={iconClasses}>
-                {loading && <Loader className={loaderClasses} size="small" inverted={type !== "ghost"} />}
+            <Icon size={"small"} name={icon as IconProps["name"]} className={iconClasses}>
+                {loading && <Loader className={loaderClasses} inverted={type !== "ghost"} />}
             </Icon>
         </ElementType>
     )
