@@ -26,8 +26,8 @@ const _Grid: React.StatelessComponent<GridProps> & Partial<Grid> = (props) => {
 
     const classes = cx(
         prefix("grid"),
-        mapBreakpointPropToClasses("grid--direction-", direction),
-        mapBreakpointPropToClasses("grid--gap-", gap),
+        mapBreakpointPropToClasses("grid--direction", direction),
+        mapBreakpointPropToClasses("grid--gap", gap),
         className
     )
 

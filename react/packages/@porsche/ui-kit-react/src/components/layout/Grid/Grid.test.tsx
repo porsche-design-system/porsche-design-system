@@ -17,8 +17,8 @@ describe("Grid component", () => {
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const gridGap = componentWrapper.find(`.${prefix("grid--gap-zero")}`)
-            expect(gridGap.length).toBe(1)
+            const result = componentWrapper.find(`.${prefix("grid--gap-zero")}`)
+            expect(result.length).toBe(1)
         })
 
         it("should have a gap modifier with normal", () => {
@@ -29,8 +29,8 @@ describe("Grid component", () => {
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const gridGap = componentWrapper.find(`.${prefix("grid--gap-normal")}`)
-            expect(gridGap.length).toBe(1)
+            const result = componentWrapper.find(`.${prefix("grid--gap-normal")}`)
+            expect(result.length).toBe(1)
         })
     })
 
@@ -43,8 +43,8 @@ describe("Grid component", () => {
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const gridDirection = componentWrapper.find(`.${prefix("grid--direction-column")}`)
-            expect(gridDirection.length).toBe(1)
+            const result = componentWrapper.find(`.${prefix("grid--direction-column")}`)
+            expect(result.length).toBe(1)
         })
 
         it("should have a direction modifier with column reverse", () => {
@@ -55,8 +55,8 @@ describe("Grid component", () => {
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const gridDirection = componentWrapper.find(`.${prefix("grid--direction-column-reverse")}`)
-            expect(gridDirection.length).toBe(1)
+            const result = componentWrapper.find(`.${prefix("grid--direction-column-reverse")}`)
+            expect(result.length).toBe(1)
         })
 
         it("should have a direction modifier with row", () => {
@@ -67,8 +67,8 @@ describe("Grid component", () => {
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const gridDirection = componentWrapper.find(`.${prefix("grid--direction-row")}`)
-            expect(gridDirection.length).toBe(1)
+            const result = componentWrapper.find(`.${prefix("grid--direction-row")}`)
+            expect(result.length).toBe(1)
         })
 
         it("should have a direction modifier with row reverse", () => {
@@ -79,8 +79,8 @@ describe("Grid component", () => {
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const gridDirection = componentWrapper.find(`.${prefix("grid--direction-row-reverse")}`)
-            expect(gridDirection.length).toBe(1)
+            const result = componentWrapper.find(`.${prefix("grid--direction-row-reverse")}`)
+            expect(result.length).toBe(1)
         })
     })
 })
