@@ -88,7 +88,7 @@ Every usage of flex component, which was used to layout with grid sizings, must 
       `@include flex--justify-content` => `@include flex-main-axis` 
       `@include flex--align-items` => `@include flex-cross-axis`  
       `@include flex--align-content` => `@include flex-align-content`  
-      `@include flex--align-self` => `@include flex-child-cross-axis`  
+      `@include flex--align-self`, `@include flex-child-align` => `@include flex-child-cross-axis`  
       `@include flex--grow` => `@include flex-child-grow`  
       `@include flex--shrink` => `@include flex-child-shrink`  
       `@include flex--basis` => `@include flex-child-basis`  
