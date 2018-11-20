@@ -63,7 +63,7 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
         | BreakpointValues<"start" | "center" | "end" | "space-around" | "space-between" | "stretch">
 
     /** Defines the gap between contained children. The value "grid" sets responsive grid spacings that should be used together with Flex.Item. */
-    gap?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    gap?: 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
 }
 
 const defaultProps: Partial<FlexProps> = {

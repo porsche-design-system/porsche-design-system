@@ -1,14 +1,14 @@
 @import "../../../common";
 @import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/layout/index";
 
-$flex-child-size: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
+$flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
-@mixin flex-child-size($i) {
-    width: #{nth($flex-child-size, $i+1)};
+@mixin flex-child-width($i) {
+    width: #{nth($flex-child-width, $i+1)};
 }
 
 @mixin flex-child-offset($i) {
-    margin-left: #{nth($flex-child-size, $i)};
+    margin-left: #{nth($flex-child-width, $i)};
 }
 
 @mixin flex-child-equal {
@@ -46,62 +46,62 @@ $flex-child-size: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
             }
         }
 
-        &--size {
-            &-3 { @include flex-child-size(1); }
-            &-4 { @include flex-child-size(2); }
-            &-6 { @include flex-child-size(3); }
-            &-8 { @include flex-child-size(4); }
-            &-9 { @include flex-child-size(5); }
-            &-12 { @include flex-child-size(6); }
+        &--width {
+            &-3 { @include flex-child-width(1); }
+            &-4 { @include flex-child-width(2); }
+            &-6 { @include flex-child-width(3); }
+            &-8 { @include flex-child-width(4); }
+            &-9 { @include flex-child-width(5); }
+            &-12 { @include flex-child-width(6); }
             &-auto { width: auto; }
 
             @include breakpoint("xs") {
-                &-3-xs { @include flex-child-size(1); }
-                &-4-xs { @include flex-child-size(2); }
-                &-6-xs { @include flex-child-size(3); }
-                &-8-xs { @include flex-child-size(4); }
-                &-9-xs { @include flex-child-size(5); }
-                &-12-xs { @include flex-child-size(6); }
+                &-3-xs { @include flex-child-width(1); }
+                &-4-xs { @include flex-child-width(2); }
+                &-6-xs { @include flex-child-width(3); }
+                &-8-xs { @include flex-child-width(4); }
+                &-9-xs { @include flex-child-width(5); }
+                &-12-xs { @include flex-child-width(6); }
                 &-auto-xs { width: auto; }
             }
 
             @include breakpoint("s") {
-                &-3-s { @include flex-child-size(1); }
-                &-4-s { @include flex-child-size(2); }
-                &-6-s { @include flex-child-size(3); }
-                &-8-s { @include flex-child-size(4); }
-                &-9-s { @include flex-child-size(5); }
-                &-12-s { @include flex-child-size(6); }
+                &-3-s { @include flex-child-width(1); }
+                &-4-s { @include flex-child-width(2); }
+                &-6-s { @include flex-child-width(3); }
+                &-8-s { @include flex-child-width(4); }
+                &-9-s { @include flex-child-width(5); }
+                &-12-s { @include flex-child-width(6); }
                 &-auto-s { width: auto; }
             }
 
             @include breakpoint("m") {
-                &-3-m { @include flex-child-size(1); }
-                &-4-m { @include flex-child-size(2); }
-                &-6-m { @include flex-child-size(3); }
-                &-8-m { @include flex-child-size(4); }
-                &-9-m { @include flex-child-size(5); }
-                &-12-m { @include flex-child-size(6); }
+                &-3-m { @include flex-child-width(1); }
+                &-4-m { @include flex-child-width(2); }
+                &-6-m { @include flex-child-width(3); }
+                &-8-m { @include flex-child-width(4); }
+                &-9-m { @include flex-child-width(5); }
+                &-12-m { @include flex-child-width(6); }
                 &-auto-m { width: auto; }
             }
 
             @include breakpoint("l") {
-                &-3-l { @include flex-child-size(1); }
-                &-4-l { @include flex-child-size(2); }
-                &-6-l { @include flex-child-size(3); }
-                &-8-l { @include flex-child-size(4); }
-                &-9-l { @include flex-child-size(5); }
-                &-12-l { @include flex-child-size(6); }
+                &-3-l { @include flex-child-width(1); }
+                &-4-l { @include flex-child-width(2); }
+                &-6-l { @include flex-child-width(3); }
+                &-8-l { @include flex-child-width(4); }
+                &-9-l { @include flex-child-width(5); }
+                &-12-l { @include flex-child-width(6); }
                 &-auto-l { width: auto; }
             }
 
             @include breakpoint("xl") {
-                &-3-xl { @include flex-child-size(1); }
-                &-4-xl { @include flex-child-size(2); }
-                &-6-xl { @include flex-child-size(3); }
-                &-8-xl { @include flex-child-size(4); }
-                &-9-xl { @include flex-child-size(5); }
-                &-12-xl { @include flex-child-size(6); }
+                &-3-xl { @include flex-child-width(1); }
+                &-4-xl { @include flex-child-width(2); }
+                &-6-xl { @include flex-child-width(3); }
+                &-8-xl { @include flex-child-width(4); }
+                &-9-xl { @include flex-child-width(5); }
+                &-12-xl { @include flex-child-width(6); }
                 &-auto-xl { width: auto; }
             }
         }
