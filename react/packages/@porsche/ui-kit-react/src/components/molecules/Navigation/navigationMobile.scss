@@ -1,6 +1,8 @@
 @import "../../../common";
 
 .#{$global-class-prefix}nav-mobile {
+    background: $white;
+
     &--active {
         overflow: hidden;
         position: fixed;
