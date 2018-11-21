@@ -119,310 +119,6 @@
     },
     "path": "src/components/atoms/Divider/Divider.tsx"
   },
-  "Flex": {
-    "displayName": "Flex",
-    "props": [
-      {
-        "description": [
-          "Defines how the flex items are aligned along the cross axis. Corresponds to the \"alignItems\" css property."
-        ],
-        "name": "alignCrossAxis",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"start\"",
-          "\"center\"",
-          "\"end\"",
-          "\"baseline\"",
-          "\"stretch\""
-        ]
-      },
-      {
-        "description": [
-          "This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how \"alignMainAxis\" aligns individual items along the main axis.",
-          "Corresponds to the \"alignContent\" css property."
-        ],
-        "name": "alignLines",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"start\"",
-          "\"center\"",
-          "\"end\"",
-          "\"stretch\"",
-          "\"space-around\"",
-          "\"space-between\""
-        ]
-      },
-      {
-        "description": [
-          "Defines how the flex items are aligned along the main axis. Corresponds to the \"justifyContent\" css property."
-        ],
-        "name": "alignMainAxis",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"start\"",
-          "\"center\"",
-          "\"end\"",
-          "\"space-around\"",
-          "\"space-between\"",
-          "\"space-evenly\""
-        ]
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Defines the direction of the main and cross axis. The default \"row\" defines the main axis as horizontal left to right."
-        ],
-        "name": "direction",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"column-reverse\"",
-          "\"column\"",
-          "\"row-reverse\"",
-          "\"row\""
-        ]
-      },
-      {
-        "description": [
-          "Defines the gap between contained children. The value \"grid\" sets responsive grid spacings that should be used together with Flex.Item."
-        ],
-        "name": "gap",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "0",
-          "3",
-          "6",
-          "12",
-          "18",
-          "24",
-          "30",
-          "36",
-          "42",
-          "48",
-          "54",
-          "60",
-          "\"a\"",
-          "\"b\"",
-          "\"c\"",
-          "\"d\"",
-          "\"e\"",
-          "\"f\"",
-          "\"grid\""
-        ]
-      },
-      {
-        "description": [
-          "Defines the flex container display as inline rather than block."
-        ],
-        "name": "inline",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs."
-        ],
-        "name": "shrink",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "0",
-          "1"
-        ]
-      },
-      {
-        "defaultValue": "true",
-        "description": [
-          "If set, overflowing elements will wrap to a new line."
-        ],
-        "name": "wrap",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "boolean | \"reverse\"",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        }
-      ],
-      "description": [
-        "A flex container component used to create flex box layouts."
-      ]
-    },
-    "path": "src/components/atoms/Flex/Flex.tsx"
-  },
-  "FlexItem": {
-    "displayName": "FlexItem",
-    "props": [
-      {
-        "description": [
-          "Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the \"alignSelf\" css property."
-        ],
-        "name": "alignCrossAxis",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"start\"",
-          "\"center\"",
-          "\"end\"",
-          "\"baseline\"",
-          "\"stretch\""
-        ]
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
-        ],
-        "name": "offset",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "number | BreakpointValues<number>",
-        "tags": []
-      },
-      {
-        "description": [
-          "The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs."
-        ],
-        "name": "shrink",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "0",
-          "1"
-        ]
-      },
-      {
-        "description": [
-          "The width of the column. Can be between 1 and 12, or \"auto\". You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
-        ],
-        "name": "width",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "number | \"auto\" | BreakpointValues<number | \"auto\">",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A child of a flex container."
-      ]
-    },
-    "path": "src/components/atoms/Flex/FlexItem.tsx"
-  },
   "Icon": {
     "displayName": "Icon",
     "props": [
@@ -1215,6 +911,406 @@
     },
     "path": "src/components/atoms/Text/Text.tsx"
   },
+  "Flex": {
+    "displayName": "Flex",
+    "props": [
+      {
+        "description": [
+          "This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how \"alignMainAxis\" aligns individual items along the main axis.",
+          "Corresponds to the \"alignContent\" css property."
+        ],
+        "name": "alignContent",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "\"start\" | \"center\" | \"end\" | \"space-around\" | \"space-between\" | \"stretch\" | BreakpointValues<\"start\" | \"center\" | \"end\" | \"space-around\" | \"space-between\" | \"stretch\">",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines how the flex items are aligned along the cross axis. Corresponds to the \"alignItems\" css property."
+        ],
+        "name": "alignCrossAxis",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "\"start\" | \"center\" | \"end\" | \"baseline\" | \"stretch\" | BreakpointValues<\"start\" | \"center\" | \"end\" | \"baseline\" | \"stretch\">",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines how the flex items are aligned along the main axis. Corresponds to the \"justifyContent\" css property."
+        ],
+        "name": "alignMainAxis",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "\"start\" | \"center\" | \"end\" | \"space-around\" | \"space-between\" | \"space-evenly\" | BreakpointValues<\"start\" | \"center\" | \"end\" | \"space-around\" | \"space-between\" | \"space-evenly\">",
+        "tags": []
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the direction of the main and cross axis. The default \"row\" defines the main axis as horizontal left to right."
+        ],
+        "name": "direction",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "\"column-reverse\" | \"column\" | \"row-reverse\" | \"row\" | BreakpointValues<\"column-reverse\" | \"column\" | \"row-reverse\" | \"row\">",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the gap between contained children. The value \"grid\" sets responsive grid spacings that should be used together with Flex.Item."
+        ],
+        "name": "gap",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "3",
+          "6",
+          "12",
+          "18",
+          "24",
+          "30",
+          "36",
+          "42",
+          "48",
+          "54",
+          "60",
+          "\"a\"",
+          "\"b\"",
+          "\"c\"",
+          "\"d\"",
+          "\"e\"",
+          "\"f\""
+        ]
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Defines the flex container display as inline rather than block."
+        ],
+        "name": "inline",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "boolean | BreakpointValues<boolean>",
+        "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "If set, overflowing elements will wrap to a new line."
+        ],
+        "name": "wrap",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "boolean | \"reverse\" | BreakpointValues<boolean | \"reverse\">",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Spacing"
+        }
+      ],
+      "description": [
+        "A flex container component used to create flex box layouts."
+      ]
+    },
+    "path": "src/components/layout/Flex/Flex.tsx"
+  },
+  "FlexItem": {
+    "displayName": "FlexItem",
+    "props": [
+      {
+        "description": [
+          "Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the \"alignSelf\" css property."
+        ],
+        "name": "alignCrossAxis",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "\"start\" | \"center\" | \"end\" | \"baseline\" | \"stretch\" | \"auto\" | BreakpointValues<\"start\" | \"center\" | \"end\" | \"baseline\" | \"stretch\" | \"auto\">",
+        "tags": []
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The shorthand property for definincombined behaviour of \"shrink\", \"grow\" and \"basis\""
+        ],
+        "name": "flex",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "\"auto\" | \"initial\" | \"none\" | \"equal\" | BreakpointValues<\"auto\" | \"initial\" | \"none\" | \"equal\">",
+        "tags": []
+      },
+      {
+        "description": [
+          "The ability to allow/disallow the flex child to grow."
+        ],
+        "name": "grow",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "0 | 1 | BreakpointValues<0 | 1>",
+        "tags": []
+      },
+      {
+        "description": [
+          "The offset of the column. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
+        ],
+        "name": "offset",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "0 | 3 | 4 | 6 | 8 | 9 | BreakpointValues<0 | 3 | 4 | 6 | 8 | 9>",
+        "tags": []
+      },
+      {
+        "description": [
+          "The ability to allow/disallow the flex child to shrink."
+        ],
+        "name": "shrink",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "0 | 1 | BreakpointValues<0 | 1>",
+        "tags": []
+      },
+      {
+        "description": [
+          "The width of the flex item. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
+        ],
+        "name": "width",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "\"auto\" | 3 | 4 | 6 | 8 | 9 | 12 | BreakpointValues<\"auto\" | 3 | 4 | 6 | 8 | 9 | 12>",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A child of a flex container."
+      ]
+    },
+    "path": "src/components/layout/Flex/FlexItem.tsx"
+  },
+  "Grid": {
+    "displayName": "Grid",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the direction of the main and cross axis. The default \"row\" (default) defines the main axis as horizontal left to right."
+        ],
+        "name": "direction",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
+          "name": "GridProps"
+        },
+        "required": false,
+        "type": "\"row\" | \"row-reverse\" | \"column\" | \"column-reverse\" | BreakpointValues<GridDirection>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the gap between contained children. The value \"normal\" (default) sets responsive grid spacings that should be used together with Grid.Child."
+        ],
+        "name": "gap",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
+          "name": "GridProps"
+        },
+        "required": false,
+        "type": "\"normal\" | \"zero\" | BreakpointValues<\"normal\" | \"zero\">",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A grid container component used to create layouts based on official grid definitions."
+      ]
+    },
+    "path": "src/components/layout/Grid/Grid.tsx"
+  },
+  "GridChild": {
+    "displayName": "GridChild",
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: \"6\", l: \"3\"}. You always need to provide a base value when doing this."
+        ],
+        "name": "offset",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
+          "name": "GridChildProps"
+        },
+        "required": false,
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | BreakpointValues<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>",
+        "tags": []
+      },
+      {
+        "description": [
+          "The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: \"6\", l: \"3\"}. You always need to provide a base value when doing this."
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
+          "name": "GridChildProps"
+        },
+        "required": false,
+        "type": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | BreakpointValues<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A child of a grid container."
+      ]
+    },
+    "path": "src/components/layout/Grid/GridChild.tsx"
+  },
   "Button": {
     "displayName": "Button",
     "props": [
@@ -1899,134 +1995,6 @@
       ]
     },
     "path": "src/components/molecules/Checkbox/Checkbox.tsx"
-  },
-  "Grid": {
-    "displayName": "Grid",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Defines the direction of the main and cross axis. The default \"row\" (default) defines the main axis as horizontal left to right."
-        ],
-        "name": "direction",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
-          "name": "GridProps"
-        },
-        "required": false,
-        "type": "\"row\" | \"row-reverse\" | \"column\" | \"column-reverse\" | BreakpointValues<GridDirection>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Defines the gap between contained children. The value \"normal\" (default) sets responsive grid spacings that should be used together with Grid.Child."
-        ],
-        "name": "gap",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
-          "name": "GridProps"
-        },
-        "required": false,
-        "type": "\"normal\" | \"zero\" | BreakpointValues<\"normal\" | \"zero\">",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A grid container component used to create layouts based on official grid definitions."
-      ]
-    },
-    "path": "src/components/layout/Grid/Grid.tsx"
-  },
-  "GridChild": {
-    "displayName": "GridChild",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: \"6\", l: \"3\"}. You always need to provide a base value when doing this."
-        ],
-        "name": "offset",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
-          "name": "GridChildProps"
-        },
-        "required": false,
-        "type": "number | BreakpointValues<number>",
-        "tags": []
-      },
-      {
-        "description": [
-          "The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: \"6\", l: \"3\"}. You always need to provide a base value when doing this."
-        ],
-        "name": "size",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
-          "name": "GridChildProps"
-        },
-        "required": false,
-        "type": "number | BreakpointValues<number>",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A child of a grid container."
-      ]
-    },
-    "path": "src/components/layout/Grid/GridChild.tsx"
   },
   "Flyout": {
     "displayName": "Flyout",
