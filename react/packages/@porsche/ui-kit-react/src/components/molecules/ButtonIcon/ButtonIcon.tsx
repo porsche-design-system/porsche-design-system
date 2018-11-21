@@ -56,21 +56,15 @@ const _ButtonIcon: React.StatelessComponent<ButtonIconProps> = (props) => {
 
     const ElementType = getElementType(as, "button")
 
-    let buttonClasses
-    let iconClasses
-    let loaderClasses
-
-    buttonClasses = cx(
+    const buttonClasses = cx(
         prefix("button-icon"),
         { [prefix("button-icon--ghost")]: type === "ghost" },
         { [prefix("button-icon--inverted")]: inverted },
         { [prefix("button-icon--active")]: active },
         className
     )
-
-    iconClasses = cx(prefix("button-icon__icon"))
-
-    loaderClasses = cx(prefix("button-icon__loader"))
+    const iconClasses = cx(prefix("button-icon__icon"))
+    const loaderClasses = cx(prefix("button-icon__loader"))
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!onClick) {
@@ -94,7 +88,7 @@ const _ButtonIcon: React.StatelessComponent<ButtonIconProps> = (props) => {
             {...rest}
         >
             {/* Icon cannot be undefined because of default props */}
-            <Icon size={"small"} name={icon as IconProps["name"]} className={iconClasses}>
+            <Icon size={"medium"} name={icon as IconProps["name"]} className={iconClasses}>
                 {loading && <Loader className={loaderClasses} inverted={type !== "ghost"} />}
             </Icon>
         </ElementType>
