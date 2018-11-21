@@ -7,6 +7,7 @@ import "./atoms/Spacing"
 import "./atoms/Text"
 
 import "./molecules/Button"
+import "./molecules/ButtonIcon"
 import "./molecules/Checkbox"
 import "./molecules/Flyout"
 import "./molecules/Input"
