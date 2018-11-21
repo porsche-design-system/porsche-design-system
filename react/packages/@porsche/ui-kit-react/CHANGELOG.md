@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2018-11-21
+- Added new `ButtonIcon` component.
+
 ## [0.3.1] - 2018-11-15
 - `Logo` is now the plain and simple Porsche Crest with barely any CSS. The box shadow and positioning CSS is now moved to the `Header` component.
 
