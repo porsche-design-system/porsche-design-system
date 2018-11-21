@@ -34,10 +34,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     `<Flex alignLines={ ... }>` => `<Flex alignContent={ ... }>`  
     `<Flex shrink={ ... }>` => deleted! (must be set on flex children (Flex.Item)) 
     
-    Change the following flex child (item) properties:  
+    Changes regarding width and offset properties:  
     
-    `<Flex.Item width={ ... }>` => `<Flex.Item size={ ... }>` Hint: only basic widths are now supported (3 | 4 | 6 | 8 | 9 | 12 | "auto")! If you need grid sizes use grid component.
-    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported (3 | 4 | 6 | 8 | 9)! If you need grid offsets use grid component.
+    `<Flex.Item width={ ... }>` => Only basic widths are now supported (3 | 4 | 6 | 8 | 9 | 12 | "auto"). If you need grid sizes use grid component.
+    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported (0 | 3 | 4 | 6 | 8 | 9). If you need grid offsets use grid component.
+
+## [0.4.1] - 2018-11-21
+- Update version in ui-kit react docs.
 
 ## [0.4.0] - 2018-11-21
 - Added new `ButtonIcon` component.
