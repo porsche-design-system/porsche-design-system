@@ -1,8 +1,6 @@
 // Atoms
 export { Breakpoint, BreakpointProps } from "./components/atoms/Breakpoint/Breakpoint"
 export { Divider, DividerProps } from "./components/atoms/Divider/Divider"
-export { Flex, FlexProps } from "./components/atoms/Flex/Flex"
-export { FlexItem, FlexItemProps } from "./components/atoms/Flex/FlexItem"
 export { Icon, IconProps } from "./components/atoms/Icon/Icon"
 export { Logo, LogoProps } from "./components/atoms/Logo/Logo"
 export { Spacing, SpacingProps } from "./components/atoms/Spacing/Spacing"
@@ -40,6 +38,8 @@ export { ToastManager } from "./components/organisms/Toasts/ToastManager"
 // Layout
 export { Grid, GridProps } from "./components/layout/Grid/Grid"
 export { GridChild, GridChildProps } from "./components/layout/Grid/GridChild"
+export { Flex, FlexProps } from "./components/layout/Flex/Flex"
+export { FlexItem, FlexItemProps } from "./components/layout/Flex/FlexItem"
 
 // Screens
 export { ErrorScreen, ErrorScreenProps } from "./components/screens/ErrorScreen/ErrorScreen"
