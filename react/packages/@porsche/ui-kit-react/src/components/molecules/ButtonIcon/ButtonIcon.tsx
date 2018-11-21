@@ -57,14 +57,14 @@ const _ButtonIcon: React.StatelessComponent<ButtonIconProps> = (props) => {
     const ElementType = getElementType(as, "button")
 
     const buttonClasses = cx(
-        prefix("button-icon"),
-        { [prefix("button-icon--ghost")]: type === "ghost" },
-        { [prefix("button-icon--inverted")]: inverted },
-        { [prefix("button-icon--active")]: active },
+        prefix("button-icon-square"),
+        { [prefix("button-icon-square--ghost")]: type === "ghost" },
+        { [prefix("button-icon-square--inverted")]: inverted },
+        { [prefix("button-icon-square--active")]: active },
         className
     )
-    const iconClasses = cx(prefix("button-icon__icon"))
-    const loaderClasses = cx(prefix("button-icon__loader"))
+    const iconClasses = cx(prefix("button-icon-square__icon"))
+    const loaderClasses = cx(prefix("button-icon-square__loader"))
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!onClick) {
