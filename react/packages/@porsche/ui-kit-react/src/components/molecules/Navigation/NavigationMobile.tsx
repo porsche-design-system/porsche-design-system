@@ -122,7 +122,7 @@ export class NavigationMobile extends React.PureComponent<NavigationProps, Navig
         const ElementType = getElementType(as, "nav")
 
         return (
-            <ElementType className={className} {...rest}>
+            <ElementType className={cx(prefix("nav-mobile"), className)} {...rest}>
                 <Flex className={prefix("nav-mobile__bar")} alignMainAxis="end">
                     <button className={prefix("nav-mobile__trigger")} onClick={this.openNav}>
                         {title}

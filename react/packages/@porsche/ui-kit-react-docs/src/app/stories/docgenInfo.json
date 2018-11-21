@@ -1489,6 +1489,187 @@
     },
     "path": "src/components/molecules/Button/ButtonGroup.tsx"
   },
+  "ButtonIcon": {
+    "displayName": "ButtonIcon",
+    "props": [
+      {
+        "description": [
+          "Sets the button in its active / selected state."
+        ],
+        "name": "active",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Disables the button. No onClick will be triggered."
+        ],
+        "name": "disabled",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "arrow_right_hair",
+        "description": [
+          "The icon of the button."
+        ],
+        "name": "icon",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"111_points_check\"",
+          "\"4WD\"",
+          "\"accident_free\"",
+          "\"arrow_both_ways_hair\"",
+          "\"arrow_down_hair\"",
+          "\"arrow_left_hair_first\"",
+          "\"arrow_left_hair\"",
+          "\"arrow_open_full_down\"",
+          "\"arrow_open_full_up\"",
+          "... 98 more ...",
+          "\"youtube\""
+        ]
+      },
+      {
+        "description": [
+          "The inverted variant of the button."
+        ],
+        "name": "inverted",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Disable the button and show a loading indicator. No onClick will be triggered."
+        ],
+        "name": "loading",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called after a user's click."
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "React's original event.",
+            "type": null,
+            "name": "event"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "defaultValue": "button",
+        "description": [
+          "Specifies the HTML Type of the button. If undefined, nothing is set."
+        ],
+        "name": "role",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"reset\"",
+          "\"button\"",
+          "\"submit\""
+        ]
+      },
+      {
+        "defaultValue": "default",
+        "description": [
+          "The display type of the button."
+        ],
+        "name": "type",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "\"ghost\"",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Icon"
+        }
+      ],
+      "description": [
+        "The default Porsche icon only button."
+      ]
+    },
+    "path": "src/components/molecules/ButtonIcon/ButtonIcon.tsx"
+  },
   "Checkbox": {
     "displayName": "Checkbox",
     "props": [

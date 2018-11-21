@@ -11,6 +11,7 @@ export { Text, TextProps } from "./components/atoms/Text/Text"
 // Molecules
 export { Button, ButtonProps } from "./components/molecules/Button/Button"
 export { ButtonGroup, ButtonGroupProps } from "./components/molecules/Button/ButtonGroup"
+export { ButtonIcon, ButtonIconProps } from "./components/molecules/ButtonIcon/ButtonIcon"
 export { Checkbox, CheckboxProps } from "./components/molecules/Checkbox/Checkbox"
 export { Flyout, FlyoutProps } from "./components/molecules/Flyout/Flyout"
 export { Input, InputProps } from "./components/molecules/Input/Input"
