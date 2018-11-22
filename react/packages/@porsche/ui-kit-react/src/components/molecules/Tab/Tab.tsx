@@ -12,6 +12,8 @@ export interface TabProps extends ClassNameProp, ComponentProp {
     alignment?: "left" | "center" | "right"
     /** Controls if the component is displayed with a smaller dimension */
     mini?: boolean
+
+    divider?: boolean
 }
 
 export interface TabPane {
@@ -28,7 +30,8 @@ export interface TabPane {
 }
 
 const defaultProps: Partial<TabProps> = {
-    alignment: "center"
+    alignment: "center",
+    divider: true
 }
 
 const _Tab: React.StatelessComponent<TabProps> = (props) => {
@@ -61,7 +64,7 @@ const _Tab: React.StatelessComponent<TabProps> = (props) => {
                     )
                 })}
             </Flex>
-            <Divider />
+            {props.divider && <Divider />}
             {panes.map((pane) => {
                 const classContent = cx(prefix("tab__content"), {
                     [prefix("tab__content--active")]: toFlag(pane.active)
