@@ -43,12 +43,13 @@ To be able to publish artifacts to the Artifactory repository you have to provid
  The password can be obtained from Aleksandar Tolev (aleksandar.tolev@porsche.de) or Christoph Albert (christoph.albert@mhp.com).
  
 ## Release Management
-1. After merge requirements of a pull request are fulfilled, it can be merged to master branch (don't forget to delete the branch afterwards)
-2. Goto ui-kit-react project in terminal and pull latest commits with `git pull`
-3. Open `CHANGELOG.md` and update release notes with proper date and version
-4. Update version of ui-kit-react in `ui-kit-react-docs/package.json` dependency
-5. Run project with `yarn start` to be sure everything works as expected
-6. Create a commit with following message structure `Release react:v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-7. Run `yarn run publish:artifactory` which will deploy the artifact to the Artifactory repository an creates a git tag.
-8. Push local commit with tag to master branch `git push --tags`
-9. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace
+1. Lookup for local `.yarnrc` file inside `react/packages/@porsche/ui-kit-react/` and check if the following config entry exists: *version-tag-prefix "react/v"*. If not, create file with config line.
+2. After merge requirements of a pull request are fulfilled, it can be merged to master branch (don't forget to delete the branch afterwards)
+3. Goto ui-kit-react project in terminal and pull latest commits with `git pull`
+4. Open `CHANGELOG.md` and update release notes with proper date and version
+5. Update version of ui-kit-react in `ui-kit-react-docs/package.json` dependency
+6. Run project with `yarn start` to be sure everything works as expected
+7. Create a commit with following message structure `Release react:v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+8. Run `yarn run publish:artifactory` which will deploy the artifact to the Artifactory repository an creates a git tag.
+9. Push local commit with tag to master branch `git push --tags`
+10. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace
