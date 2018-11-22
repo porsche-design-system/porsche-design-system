@@ -15,7 +15,8 @@
         "css"
     ],
     "repository": {
-        "type": "git"
+        "type": "git",
+        "url": "ssh://git@github.com:myporsche/pouikit-porsche-ui-kit.git"
     },
     "author": "Dr. Ing. h.c. F. Porsche AG",
     "contributors": [
