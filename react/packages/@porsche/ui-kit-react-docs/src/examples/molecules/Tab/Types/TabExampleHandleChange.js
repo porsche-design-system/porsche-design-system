@@ -1,5 +1,5 @@
 import React from "react"
-import { Tab } from "@porsche/ui-kit-react"
+import { Tab, Spacing } from "@porsche/ui-kit-react"
 
 class TabExampleHandleChange extends React.Component {
     state = {
@@ -19,8 +19,8 @@ class TabExampleHandleChange extends React.Component {
         return (
             <div>
                 <Tab panes={panes} />
-                {this.state.activeTab === "Tab1" ? <div>TabContent1</div> : null}
-                {this.state.activeTab === "Tab2" ? <div>TabContent2</div> : null}
+                {this.state.activeTab === "Tab1" ? <Spacing marginTop={18}>TabContent1</Spacing> : null}
+                {this.state.activeTab === "Tab2" ? <Spacing marginTop={18}>TabContent2</Spacing> : null}
             </div>
         )
     }
