@@ -30,7 +30,7 @@ const _Header: React.StatelessComponent<HeaderProps> = (props) => {
     return (
         <ElementType className={classes} {...rest}>
             <Flex alignMainAxis="center">
-                <Logo as={logoComponent} {...logoProps} />
+                <Logo className={prefix("header__logo")} as={logoComponent} {...logoProps} />
             </Flex>
             <Divider className={prefix("header__divider")} />
             {sections.length > 0 ? <Navigation sections={sections} title={title} /> : null}
