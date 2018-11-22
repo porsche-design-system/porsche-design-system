@@ -1,6 +1,6 @@
 {
   "name": "@porsche/plugin-ui-kit-core-synchronizer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Syncronizes Porsche UI Kit Pattern Lab with a team specific Pattern Lab",
   "main": "index.js",
   "repository": {
@@ -14,7 +14,8 @@
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
-    "Stephan Schröter <stephan.schroeter@mhp.com>"
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Boris Bojic <b.bojic@21torr.com>"
   ],
   "license": "ISC",
   "dependencies": {
