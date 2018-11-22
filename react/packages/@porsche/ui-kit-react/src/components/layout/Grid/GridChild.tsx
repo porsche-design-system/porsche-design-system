@@ -5,8 +5,10 @@ import { getElementType, prefix, BreakpointValues, mapBreakpointPropToClasses } 
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface GridChildProps extends ClassNameProp, ComponentProp {
-    /** The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: "6", l: "3"}. You always need to provide a base value when doing this. */
-    size?:
+    /**
+     * The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: "6", l: "3"}. You always need to provide a base value when doing this.
+     */
+    size:
         | 1
         | 2
         | 3
