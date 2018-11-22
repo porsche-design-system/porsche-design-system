@@ -12,7 +12,7 @@ export interface TabProps extends ClassNameProp, ComponentProp {
     alignment?: "left" | "center" | "right"
     /** Controls if the component is displayed with a smaller dimension */
     mini?: boolean
-
+    /** Controls, if a grey divider line is added to separate content on white background */
     divider?: boolean
 }
 
