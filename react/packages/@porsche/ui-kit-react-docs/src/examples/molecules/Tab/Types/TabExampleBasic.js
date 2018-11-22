@@ -1,5 +1,5 @@
 import React from "react"
-import { Tab } from "@porsche/ui-kit-react"
+import { Tab, Spacing } from "@porsche/ui-kit-react"
 
 class TabExampleBasic extends React.Component {
     state = {
@@ -19,14 +19,14 @@ class TabExampleBasic extends React.Component {
                 key: "Tab1",
                 active: this.state.activeTab === "Tab1",
                 onClick: this.onClick,
-                render: () => "Tab1 Content"
+                render: () => <Spacing marginTop={18}>Tab1 Content</Spacing>
             },
             {
                 menuItem: "Tab2",
                 key: "Tab2",
                 active: this.state.activeTab === "Tab2",
                 onClick: this.onClick,
-                render: () => "Tab2 Content"
+                render: () => <Spacing marginTop={18}>Tab2 Content</Spacing>
             }
         ]
 
