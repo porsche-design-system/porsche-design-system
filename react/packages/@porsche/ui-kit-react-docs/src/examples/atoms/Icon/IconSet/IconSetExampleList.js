@@ -12,7 +12,7 @@ const labelStyle = { textAlign: "center" }
 
 const IconSetExampleList = () => {
     return (
-        <Flex wrap alignMainAxis="center">
+        <Flex alignMainAxis="center">
             {Icon.names.sort().map((type) => {
                 return (
                     <div key={type} style={containerStyle}>
