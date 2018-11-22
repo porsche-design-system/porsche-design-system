@@ -3,7 +3,7 @@ import { Checkbox, Flex, Spacing } from "@porsche/ui-kit-react"
 
 const CheckboxExampleChecked = () => {
     return (
-        <Flex wrap>
+        <Flex>
             <Checkbox>Checkbox</Checkbox>
 
             <Checkbox checked>Checkbox</Checkbox>

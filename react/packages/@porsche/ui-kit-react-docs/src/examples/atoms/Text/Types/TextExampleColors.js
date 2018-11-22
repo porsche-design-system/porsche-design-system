@@ -1,5 +1,5 @@
 import React from "react"
-import { Text, Flex } from "@porsche/ui-kit-react"
+import { Text, Grid } from "@porsche/ui-kit-react"
 
 const type = "3-regular"
 
@@ -43,12 +43,12 @@ const colors = (
 
 const TextExampleColors = () => {
     return (
-        <Flex>
-            <Flex.Item width={6}>{colors}</Flex.Item>
-            <Flex.Item width={6} style={{ backgroundColor: "black" }}>
+        <Grid>
+            <Grid.Child size={6}>{colors}</Grid.Child>
+            <Grid.Child size={6} style={{ backgroundColor: "black" }}>
                 {colors}
-            </Flex.Item>
-        </Flex>
+            </Grid.Child>
+        </Grid>
     )
 }
 

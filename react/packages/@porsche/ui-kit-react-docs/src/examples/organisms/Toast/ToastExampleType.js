@@ -8,7 +8,7 @@ const style = {
 }
 
 const ToastExampleType = () => (
-    <Flex wrap>
+    <Flex>
         <Toast style={style} type="info" message="Info Toast" onClick={() => {}} />
         <Toast style={style} type="warning" message="Warning Toast" onClick={() => {}} />
         <Toast style={style} type="success" message="Success Toast" onClick={() => {}} />
