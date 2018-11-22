@@ -10,6 +10,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 -   BREAKING: removed padding between tab and content area.
 
+## [0.4.0] - 2018-11-21
+
+-   Added new `ButtonIcon` component.
+
+## [0.3.1] - 2018-11-15
+
+-   `Logo` is now the plain and simple Porsche Crest with barely any CSS. The box shadow and positioning CSS is now moved to the `Header` component.
+
 ## [0.3.0] - 2018-31-10
 
 -   BREAKING: removed `Notification` in favor of `Toast` and `CookieNotification`.
