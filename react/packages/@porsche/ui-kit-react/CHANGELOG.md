@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.4.4] - 2018-23-11
+
+-   Hotfix: revert react version to 16.5.2 and its dependencies.
+
 ## [0.4.3] - 2018-22-11
 
 -   BREAKING: removed padding between tab and content area.
