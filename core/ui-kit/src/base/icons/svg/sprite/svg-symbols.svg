@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<symbol id="arrow_left_hair" viewBox="0 0 32 32"> <title>arrow_left_hair</title> <path d="M7.467 16l9.533-12h3l-9.467 12 9.467 12h-3l-9.533-12z"/> </symbol>
+<symbol id="arrow_right_hair" viewBox="0 0 32 32"> <title>arrow_right_hair</title> <path d="M12.533 28l9.467-12-9.467-12h3l9.467 12-9.533 12h-2.933z"/> </symbol>
+<symbol id="bin" viewBox="0 0 32 32"> <title>bin</title> <path d="M24 4h-5.333c0-0.733-0.6-1.333-1.333-1.333h-2.667c-0.733 0-1.333 0.6-1.333 1.333h-5.333c-0.733 0-1.333 0.6-1.333 1.333v1.333h18.667v-1.333c0-0.733-0.6-1.333-1.333-1.333zM9.2 28.133c0.067 0.667 0.667 1.2 1.333 1.2h10.933c0.667 0 1.267-0.533 1.333-1.2l2.533-20.133h-18.667l2.533 20.133zM19.333 10.667h1.333v16h-1.333v-16zM15.333 10.667h1.333v16h-1.333v-16zM11.333 10.667h1.333v16h-1.333v-16z"/> </symbol>
+</svg>
