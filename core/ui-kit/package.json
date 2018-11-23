@@ -28,13 +28,13 @@
   },
   "betterScripts": {
     "build:all": {
-      "command": "node build.js"
+      "command": "node build-sass.js && node build-md.js"
     },
     "build:all:dev": {
-      "command": "node build.js && better-npm-run postcss:dev"
+      "command": "node build-sass.js && node build-md.js && better-npm-run postcss:dev"
     },
     "build:all:prod": {
-      "command": "node build.js && better-npm-run postcss:prod",
+      "command": "node build-sass.js && node build-md.js && better-npm-run postcss:prod",
       "env": {
         "NODE_ENV": "production"
       }
@@ -97,6 +97,7 @@
     "husky": "0.14.3",
     "jasmine": "^3.2.0",
     "jimp": "^0.4.0",
+    "marked": "^0.5.1",
     "minimist": "1.2.0",
     "node-sass": "4.9.3",
     "node-sass-tilde-importer": "1.0.2",
