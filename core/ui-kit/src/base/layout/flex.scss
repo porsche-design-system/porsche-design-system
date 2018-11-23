@@ -293,6 +293,10 @@
       @include flex-child-auto;
     }
 
+    &--equal {
+      @include flex-child-equal;
+    }
+
     &--none {
       @include flex-child-none;
     }
@@ -314,6 +318,10 @@
 
       &--auto-xs  {
         @include flex-child-auto;
+      }
+
+      &--equal-xs {
+        @include flex-child-equal;
       }
 
       &--none-xs {
@@ -340,6 +348,10 @@
         @include flex-child-auto;
       }
 
+      &--equal-s {
+        @include flex-child-equal;
+      }
+
       &--none-s {
         @include flex-child-none;
       }
@@ -362,6 +374,10 @@
 
       &--auto-m {
         @include flex-child-auto;
+      }
+
+      &--equal-m {
+        @include flex-child-equal;
       }
 
       &--none-m {
@@ -388,6 +404,10 @@
         @include flex-child-auto;
       }
 
+      &--equal-l {
+        @include flex-child-equal;
+      }
+
       &--none-l {
         @include flex-child-none;
       }
@@ -410,6 +430,10 @@
 
       &--auto-xl {
         @include flex-child-auto;
+      }
+
+      &--equal-xl {
+        @include flex-child-equal;
       }
 
       &--none-xl {
