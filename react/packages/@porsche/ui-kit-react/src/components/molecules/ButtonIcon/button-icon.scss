@@ -3,7 +3,7 @@
 $animation-hover-duration: 0.24s;
 $animation-hover-bezier: ease;
 
-.#{$global-class-prefix}button-icon {
+.#{$global-class-prefix}button-icon-square {
     $bem-block: &;
 
     display: inline-flex;
@@ -20,13 +20,11 @@ $animation-hover-bezier: ease;
     background-color: $color-palette-grey-9;
     border: 1px solid $color-palette-grey-9;
     color: $color-palette-white;
-    transition:
-        background-color $animation-hover-duration $animation-hover-bezier,
+    transition: background-color $animation-hover-duration $animation-hover-bezier,
         border-color $animation-hover-duration $animation-hover-bezier,
         color $animation-hover-duration $animation-hover-bezier; // must be globally defined
 
     &::-moz-focus-inner {
-
         // sass-lint:disable-line no-vendor-prefixes
         border: 0; // fix for Firefox, avoid dotted outline in button on focus
     }
