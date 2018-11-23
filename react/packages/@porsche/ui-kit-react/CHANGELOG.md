@@ -31,15 +31,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
     
     `<Flex gap="grid">` => Use grid component (see above)!  
     `<Flex alignLines={ ... }>` => `<Flex alignContent={ ... }>`  
-    `<Flex shrink={ ... }>` => deleted! (must be set on flex children (Flex.Item)) 
+    `<Flex shrink={ ... }>` => deleted! (must be set on flex children (Flex.Item))  
     
     Changes regarding width and offset properties:  
     
-    `<Flex.Item width={ ... }>` => Only basic widths are now supported (3 | 4 | 6 | 8 | 9 | 12 | "auto"). If you need grid sizes use grid component.
-    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported (0 | 3 | 4 | 6 | 8 | 9). If you need grid offsets use grid component.
-
-## [0.4.1] - 2018-11-21
-- Update version in ui-kit react docs.
+    `<Flex.Item width={ ... }>` => Only basic widths are now supported (3 | 4 | 6 | 8 | 9 | 12 | "auto"). If you need grid sizes use grid component instead!  
+    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported (0 | 3 | 4 | 6 | 8 | 9). If you need grid offsets use grid component instead!  
 
 ## [0.4.4] - 2018-23-11
 
@@ -49,6 +46,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [0.4.3] - 2018-22-11
 
 -   BREAKING: removed padding between tab and content area.
+
+## [0.4.1] - 2018-11-21
+
+- Update version in ui-kit react docs.
 
 ## [0.4.0] - 2018-11-21
 
