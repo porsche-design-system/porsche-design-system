@@ -11,10 +11,6 @@ $flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
     margin-left: #{nth($flex-child-width, $i)};
 }
 
-@mixin flex-child-equal {
-    flex: 1 1 0;
-}
-
 .#{$global-class-prefix}flex {
     $bem-block: &;
 
@@ -22,30 +18,6 @@ $flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
    * properties for grid children items (widths and offsets)
    */
     &__child {
-        &--equal {
-            @include flex-child-equal;
-
-            @include breakpoint("xs") {
-                &-xs { @include flex-child-equal; }
-            }
-
-            @include breakpoint("s") {
-                &-s { @include flex-child-equal; }
-            }
-
-            @include breakpoint("m") {
-                &-m { @include flex-child-equal; }
-            }
-
-            @include breakpoint("l") {
-                &-l { @include flex-child-equal; }
-            }
-
-            @include breakpoint("xl") {
-                &-xl { @include flex-child-equal; }
-            }
-        }
-
         &--width {
             &-3 { @include flex-child-width(1); }
             &-4 { @include flex-child-width(2); }
