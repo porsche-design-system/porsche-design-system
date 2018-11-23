@@ -75,6 +75,7 @@
   "contributors": [
     "Mitko Tschimev <net.mitko.tschimev@mhp.com>",
     "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Oliver Hook <oliver.hook@mhp.com>",
     "Manuel Niederberger <manuel.niederberger@diconium.com>",
     "Dominik Bauer <dominik.bauer@udg.de>"
   ],
@@ -94,6 +95,7 @@
     "gulp": "4.0.0",
     "gulp-cached": "1.1.1",
     "gulp-sass-lint": "1.4.0",
+    "gulp-svg-symbols": "^3.2.0",
     "husky": "0.14.3",
     "jasmine": "^3.2.0",
     "jimp": "^0.4.0",

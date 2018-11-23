@@ -1,0 +1,23 @@
+
+$icon-icon__arrow-left-hair-width: 32px;
+$icon-icon__arrow-left-hair-height: 32px;
+$icon-icon__arrow-right-hair-width: 32px;
+$icon-icon__arrow-right-hair-height: 32px;
+$icon-icon__bin-width: 32px;
+$icon-icon__bin-height: 32px;
+
+.icon__arrow-left-hair {
+  width: $icon-icon__arrow-left-hair-width;
+  height: $icon-icon__arrow-left-hair-height;
+}
+
+.icon__arrow-right-hair {
+  width: $icon-icon__arrow-right-hair-width;
+  height: $icon-icon__arrow-right-hair-height;
+}
+
+.icon__bin {
+  width: $icon-icon__bin-width;
+  height: $icon-icon__bin-height;
+}
+
