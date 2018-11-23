@@ -185,11 +185,12 @@ These values can be set:
 `flex__child--shrink-1` #(default)  
 `flex__child--shrink-0`  
 
-Following values can be set and are shorthands for flex-grow and -shrink:
-`flex__child--initial`  #(grow:0 and shrink:1)  
-`flex__child--auto`  #(grow:1 and shrink:1)  
-`flex__child--none`  #(grow:0 and shrink:0)  
-
+#### Flex shorthand
+Following values can be set and are shorthands for flex grow, shrink and base:
+`flex__child--initial`  #(grow:0, shrink:1 and base:auto)  
+`flex__child--auto`  #(grow:1, shrink:1 and base:auto)  
+`flex__child--equal`  #(grow:1, shrink:1 and base:0)  
+`flex__child--none`  #(grow:0, shrink:0 and base:auto)  
 
 ### Responsive
 The flex system can provide breakpoint specific values to fit the needs of certain viewports:
