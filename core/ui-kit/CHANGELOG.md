@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.14.2] - 2018-11-23
 * Added additional property to flex component and additional examples to visualize flex shorthands.
 * Added missing flex mixin changes to migration path.
 * Changed order of scss import of deprecated scss files to prevent css specificity issues.
