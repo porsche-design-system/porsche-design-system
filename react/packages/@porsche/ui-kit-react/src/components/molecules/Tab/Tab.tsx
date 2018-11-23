@@ -35,7 +35,7 @@ const defaultProps: Partial<TabProps> = {
 }
 
 const _Tab: React.StatelessComponent<TabProps> = (props) => {
-    const { as, className, panes, alignment, mini, ...rest } = props
+    const { as, className, panes, alignment, mini, divider, ...rest } = props
 
     const classes = cx(className)
 
