@@ -17,7 +17,7 @@ class PorscheUIKitCoreSynchronizer {
   }
 
   init() {
-    ['01-atoms', '02-molecules', '03-organisms', '98-deprecated', '99-design-spec'].forEach(this.syncPatterns, this);
+    ['01-atoms', '02-molecules', '03-organisms', '04-layout', '98-deprecated', '99-design-spec'].forEach(this.syncPatterns, this);
     ['porsche-ui-kit-core.json'].forEach(this.syncData, this);
     ['porsche-ui-kit-core.styleguide-scaffolding.css'].forEach(this.syncCSS, this);
     ['porsche-ui-kit-core'].forEach(this.syncImages, this);
