@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+## [0.14.2] - 2018-11-23
+* Added additional property to flex component and additional examples to visualize flex shorthands.
+* Added missing flex mixin changes to migration path.
+* Changed order of scss import of deprecated scss files to prevent css specificity issues.
+* Fixed layout issue of confirmation modal component (which was caused by css specificity mentioned above).
+
 ## [## [0.14.1] - 2018-11-05]
 ### Bugfix
 Added missing "-" seperator on sizes/offset classname at "xl" breakpoint
@@ -19,10 +27,10 @@ Moved grid-float component to `deprecated` folder.
   
     `base/grid/column.mixin.scss` => `deprecated/grid/column.mixin.scss`  
     `base/grid/column.scss` => `deprecated/grid/column.scss`  
-    `base/grid/column.setup.scss` => `deprecated/grid/column.setup.scss` 
+    `base/grid/column.setup.scss` => `deprecated/grid/column.setup.scss`  
     `base/grid/row.mixin.scss` => `deprecated/grid/row.mixin.scss`  
     `base/grid/row.scss` => `deprecated/grid/row.scss`  
-    `base/grid/row.setup.scss` => `deprecated/grid/row.setup.scss` 
+    `base/grid/row.setup.scss` => `deprecated/grid/row.setup.scss`  
     `base/grid/index.scss` => `deprecated/grid/index.scss` 
   
   * Deleted global `setup/grid.setup.scss` because these variables are now directly implemented in grid component.
@@ -64,7 +72,7 @@ Every usage of flex component, which was used to layout with grid sizings, must 
   * Migration path:
     * Changed location of files (and corresponding import paths):
     
-      `base/grid/flex.setup.scss` => deleted! 
+      `base/grid/flex.setup.scss` => deleted!  
       `base/grid/flex.mixin.scss` => `base/layout/flex.mixin.scss`  
       `base/grid/flex.scss` => `base/layout/flex.scss`  
       `base/grid/index.scss` => `base/layout/index.scss`  
@@ -83,12 +91,12 @@ Every usage of flex component, which was used to layout with grid sizings, must 
     
     * Consolidated and deleted doubled mixins (and corresponding includes):
       
-      `@include flex--direction` => `@include flex-direction`
-      `@include flex--wrap` => `@include flex-wrap`
-      `@include flex--justify-content` => `@include flex-main-axis` 
+      `@include flex--direction` => `@include flex-direction`  
+      `@include flex--wrap` => `@include flex-wrap`  
+      `@include flex--justify-content` => `@include flex-main-axis`  
       `@include flex--align-items` => `@include flex-cross-axis`  
       `@include flex--align-content` => `@include flex-align-content`  
-      `@include flex--align-self` => `@include flex-child-cross-axis`  
+      `@include flex--align-self`, `@include flex-child-align` => `@include flex-child-cross-axis`  
       `@include flex--grow` => `@include flex-child-grow`  
       `@include flex--shrink` => `@include flex-child-shrink`  
       `@include flex--basis` => `@include flex-child-basis`  

@@ -1,7 +1,7 @@
 import React from "react"
 import { Tab, Spacing } from "@porsche/ui-kit-react"
 
-class TabExampleMini extends React.Component {
+class TabExampleBasic extends React.Component {
     state = {
         activeTab: "Tab1"
     }
@@ -30,8 +30,8 @@ class TabExampleMini extends React.Component {
             }
         ]
 
-        return <Tab panes={panes} mini />
+        return <Tab panes={panes} divider={false} />
     }
 }
 
-export default TabExampleMini
+export default TabExampleBasic
