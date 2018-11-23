@@ -186,7 +186,19 @@ These values can be set:
 `flex__child--shrink-0`  
 
 #### Flex shorthand
-Following values can be set and are shorthands for flex grow, shrink and base:
+Setting horthand properties for flex grow, shrink and base:  
+```
+<div class="flex">
+  <div class="flex__child flex__child--equal">
+    Column 1
+  </div>
+  <div class="flex__child flex__child--equal">
+    Column 2
+  </div>
+</div>
+```
+
+Following values can be set and are shorthands for flex grow, shrink and base:  
 `flex__child--initial`  #(grow:0, shrink:1 and base:auto)  
 `flex__child--auto`  #(grow:1, shrink:1 and base:auto)  
 `flex__child--equal`  #(grow:1, shrink:1 and base:0)  
