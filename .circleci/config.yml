@@ -6,11 +6,12 @@ jobs:
         - gh-pages
     docker:
       - image: circleci/node:8
-    working_directory: ~/core/ui-kit
+    working_directory: ~/repo
     environment:
       - TARGET_BRANCH: gh-pages
     steps:
       - checkout
+          path: ~/repo/core/ui-kit
       - run: ls -l
 #      - restore_cache:
 #          keys:
