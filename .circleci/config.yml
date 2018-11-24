@@ -46,3 +46,7 @@ jobs:
               git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
               git push origin $TARGET_BRANCH --force-with-lease
             popd
+      - run:
+          name: GitHub.io URL
+          command: |
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/
