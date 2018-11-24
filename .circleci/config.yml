@@ -32,7 +32,7 @@ jobs:
           name: Deploy to GitHub Pages
           command: |
             ls -l
-            git clone --single-branch -b gh-pages git@github.com:myporsche/pouikit-porsche-ui-kit.git gh-pages
+            git clone --single-branch -b gh-pages $CIRCLE_REPOSITORY_URL gh-pages
             ls -l
 #            git config --global user.email $GH_EMAIL
 #            git config --global user.name $GH_NAME
