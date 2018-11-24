@@ -33,17 +33,11 @@ jobs:
           command: |
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
             pushd $TARGET_BRANCH
-              echo "pushd $TARGET_BRANCH"
               rm -rf ./$CIRCLE_BRANCH
             popd
-            ls -l
-            pushd ./patternlab/public/
-              echo "pushd ./patternlab/public/"
-              ls -l
-            popd
             cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
-            pushd $TARGET_BRANCH
-              echo "pushd $TARGET_BRANCH"
+            pushd $TARGET_BRANCH/master
+              echo "pushd gh-pages/master"
               ls -l
             popd
 
