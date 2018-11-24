@@ -11,8 +11,9 @@ jobs:
       - TARGET_BRANCH: gh-pages
     steps:
       - checkout
-          path: ~/repo/core/ui-kit
+          path: core/ui-kit
       - run: ls -l
+      - run: pwd
 #      - restore_cache:
 #          keys:
 #            - v1-dependencies-{{ checksum "package.json" }}
