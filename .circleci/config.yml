@@ -31,6 +31,8 @@ jobs:
       - deploy:
           name: Deploy to GitHub Pages
           command: |
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
             pushd $TARGET_BRANCH
               rm -rf ./$CIRCLE_BRANCH
@@ -42,8 +44,6 @@ jobs:
               git status
             popd
 
-#            git config --global user.email $GH_EMAIL
-#            git config --global user.name $GH_NAME
 #
 #            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
 #
