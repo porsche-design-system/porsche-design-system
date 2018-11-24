@@ -6,11 +6,12 @@ jobs:
         - gh-pages
     docker:
       - image: circleci/node:8
-    working_directory: ~/repo/core
+    working_directory: ~/repo
     environment:
       - TARGET_BRANCH: gh-pages
     steps:
       - checkout
+          path: ~/repo/core
       - run: ls -l
       - run: pwd
 #      - restore_cache:
