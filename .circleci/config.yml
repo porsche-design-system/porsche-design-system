@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    branches:
+      ignore:
+        - gh-pages
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install npm dependencies
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - deploy:
+          name: Deploy to GitHub Pages
+          command: |
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
+
+            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+
+            pushd $TARGET_BRANCH
+              rm -rf ./$CIRCLE_BRANCH
+            popd
+
+            pushd core/ui-kit
+              npm run release
+              cp -r patternlab/public/. ../../$TARGET_BRANCH/$CIRCLE_BRANCH
+            popd
+
+            pushd $TARGET_BRANCH
+              git add -A
+              git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git push origin $TARGET_BRANCH
+            popd
