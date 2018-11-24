@@ -36,14 +36,16 @@ jobs:
 
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
 
-            pushd $TARGET_BRANCH
-              rm -rf ./$CIRCLE_BRANCH
-            popd
+            ls -l
 
-            cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
-
-            pushd $TARGET_BRANCH
-              git add -A
-              git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
-              git push origin $TARGET_BRANCH
-            popd
+#            pushd $TARGET_BRANCH
+#              rm -rf ./$CIRCLE_BRANCH
+#            popd
+#
+#            cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
+#
+#            pushd $TARGET_BRANCH
+#              git add -A
+#              git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+#              git push origin $TARGET_BRANCH
+#            popd
