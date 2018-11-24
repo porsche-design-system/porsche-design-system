@@ -10,7 +10,7 @@ jobs:
     environment:
       - TARGET_BRANCH: gh-pages
     steps:
-      - checkout
+      - checkout:
           path: ~/repo/core
       - run: ls -l
       - run: pwd
