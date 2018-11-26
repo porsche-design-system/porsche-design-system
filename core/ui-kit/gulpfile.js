@@ -27,11 +27,11 @@ gulp.task('sprites', function() {
     .pipe(svgSymbols({
       templates: ['default-svg'],
       slug: function(name) {
-        return 'icon--'+name.replace(/_/g, '-')
+        return 'icon-'+name.replace(/_/g, '-')
       }
     }))
     .pipe(rename('svg-sprite.svg'))
-    .pipe(gulp.dest(resolvePath(paths().source.images)+'/porsche-ui-kit-core/'))
+    .pipe(gulp.dest(resolvePath(paths().source.images)+'/porsche-ui-kit-docs/'))
 })
 
 /******************************************************
