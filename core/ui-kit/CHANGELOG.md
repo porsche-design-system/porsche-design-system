@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.15.0] - 2018-11-26
 * Add possibility display the navigation-steps on light or dark background
   __Migration path:__ 
   * if you need the color to be white on dark background, use the `navigation-steps--theme-inverted`
