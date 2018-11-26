@@ -1,0 +1,33 @@
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}icon-svg {
+  width: 18px;
+  height: 18px;
+
+  &--size {
+    &-xs {
+      width: 12px;
+      height: 12px;
+    }
+
+    &-s {
+      width: 18px;
+      height: 18px;
+    }
+
+    &-m {
+      width: 24px;
+      height: 24px;
+    }
+
+    &-l {
+      width: 42px;
+      height: 42px;
+    }
+
+    &-xl {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}

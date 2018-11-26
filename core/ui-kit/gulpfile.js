@@ -10,6 +10,7 @@ var gulp = require('gulp'),
   exec = require('child_process').exec,
   sassLint = require('gulp-sass-lint'),
   cache = require('gulp-cached'),
+  rename = require('gulp-rename'),
   svgSymbols = require('gulp-svg-symbols')
 
 function resolvePath(pathInput) {
@@ -22,15 +23,15 @@ function resolvePath(pathInput) {
 // SVG Spriting
 gulp.task('sprites', function() {
   return gulp
-    .src('src/base/icons/svg/*.svg')
+    .src('src/base/icons-svg/*.svg')
     .pipe(svgSymbols({
-      title: '%f',
-      templates: ['default-scss'],
+      templates: ['default-svg'],
       slug: function(name) {
-        return 'icon__'+name.replace(/_/g, '-')
+        return 'icon--'+name.replace(/_/g, '-')
       }
     }))
-    .pipe(gulp.dest('src/base/icons/svg/sprite/'))
+    .pipe(rename('svg-sprite.svg'))
+    .pipe(gulp.dest(resolvePath(paths().source.images)+'/porsche-ui-kit-core/'))
 })
 
 /******************************************************
@@ -167,7 +168,7 @@ gulp.task('patternlab:loadstarterkit', function (done) {
   done();
 });
 
-gulp.task('patternlab:build', gulp.series('pl-assets', 'sprites', build, 'pl-lint:porsche-stylesheet', function (done) {
+gulp.task('patternlab:build', gulp.series('sprites', 'pl-assets', build, 'pl-lint:porsche-stylesheet', function (done) {
   done();
 }));
 
