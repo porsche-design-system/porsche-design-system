@@ -6,7 +6,8 @@
 /patternlab/source/_meta
 /patternlab/source/favicon.ico
 /.env
-/build.js
+/build-md.js
+/build-sass.js
 /config.js
 /CONTRIBUTING.md
 /DOD.md
@@ -15,3 +16,5 @@
 /postcss.config.json
 /postcss.config.prod.json
 /vrt
+/docs
+/legal-notice

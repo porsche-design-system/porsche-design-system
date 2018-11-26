@@ -1,0 +1,166 @@
+@import "../../../common";
+
+$animation-hover-duration: 0.24s;
+$animation-hover-bezier: ease;
+
+.#{$global-class-prefix}button-icon-square {
+    $bem-block: &;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 0; // fix for Chrome and Safari
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: $color-palette-grey-9;
+    border: 1px solid $color-palette-grey-9;
+    color: $color-palette-white;
+    transition: background-color $animation-hover-duration $animation-hover-bezier,
+        border-color $animation-hover-duration $animation-hover-bezier,
+        color $animation-hover-duration $animation-hover-bezier; // must be globally defined
+
+    &::-moz-focus-inner {
+        // sass-lint:disable-line no-vendor-prefixes
+        border: 0; // fix for Firefox, avoid dotted outline in button on focus
+    }
+
+    &--theme-inverted {
+        color: $color-palette-black;
+        background-color: $color-palette-white;
+        border-color: $color-palette-white;
+    }
+
+    &:not([disabled]) {
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $color-palette-grey-10;
+            border-color: $color-palette-grey-10;
+            text-decoration: none;
+
+            &#{$bem-block}--theme-inverted {
+                background-color: $color-palette-grey-2;
+                border-color: $color-palette-grey-2;
+            }
+        }
+    }
+
+    &[disabled],
+    &[aria-disabled="true"] {
+        cursor: default;
+        pointer-events: none;
+        background-color: mix($color-palette-grey-9, $color-palette-white, 50%);
+        border-color: mix($color-palette-grey-9, $color-palette-white, 50%);
+
+        #{$bem-block}__icon {
+            opacity: 0.55;
+        }
+
+        &#{$bem-block}--theme-inverted {
+            color: $color-palette-black;
+            background-color: mix($color-palette-white, $color-palette-grey-10, 50%);
+            border-color: mix($color-palette-white, $color-palette-grey-10, 50%);
+
+            #{$bem-block}__icon {
+                opacity: 0.35;
+            }
+
+            #{$bem-block}__label {
+                opacity: 0.35;
+            }
+        }
+    }
+
+    &--ghost {
+        color: $color-palette-black;
+        background-color: transparent;
+        border-color: $color-palette-grey-9;
+
+        &#{$bem-block}--theme-inverted {
+            color: $color-palette-white;
+            border-color: $color-palette-white;
+        }
+
+        &:not([disabled]) {
+            &:hover,
+            &:focus,
+            &:active {
+                color: $color-palette-white;
+                background-color: $color-palette-grey-9;
+                border-color: $color-palette-grey-9;
+
+                &#{$bem-block}--theme-inverted {
+                    color: $color-palette-black;
+                    background-color: $color-palette-white;
+                    border-color: $color-palette-white;
+                }
+            }
+        }
+
+        &[disabled],
+        &[aria-disabled="true"] {
+            color: mix($color-palette-grey-9, $color-palette-white, 40%);
+            background-color: transparent;
+            border-color: mix($color-palette-grey-9, $color-palette-white, 40%);
+
+            #{$bem-block}__icon {
+                opacity: 1;
+            }
+
+            &#{$bem-block}--theme-inverted {
+                color: mix($color-palette-white, $color-palette-grey-10, 30%);
+                background-color: transparent;
+                border-color: mix($color-palette-white, $color-palette-grey-10, 30%);
+
+                #{$bem-block}__icon {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &--loading {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &__icon {
+        &--loading {
+            &::before {
+                visibility: hidden;
+            }
+
+            & #{$bem-block}__loader {
+                visibility: visible;
+            }
+        }
+    }
+
+    &__loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: {
+            top: -rem(16px) / 2;
+            left: -rem(16px) / 2;
+        }
+
+        width: rem(16px);
+        height: rem(16px);
+        visibility: hidden;
+    }
+
+    // fix for Firefox, so that top alignment of button content works when two button are next to each other
+    @-moz-document url-prefix() {
+        // sass-lint:disable-line no-vendor-prefixes
+
+        &__label {
+            height: 100%;
+        }
+    }
+}

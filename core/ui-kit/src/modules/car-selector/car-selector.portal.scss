@@ -3,7 +3,7 @@
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/font/font.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../setup/global-variables.scss';
@@ -37,7 +37,7 @@
 
     @include breakpoint('m') {
       @include -spacing-12;
-      @include flex--align-self(center);
+      @include flex-child-cross-axis(center);
     }
   }
 

@@ -2,19 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.4.4] - 2018-23-11
+
+-   Hotfix: revert react version to 16.5.2 and its dependencies.
+-   Fixed ButtonIcon width and height, test scripts and rendfering in IE11 
+
+## [0.4.3] - 2018-22-11
+
+-   BREAKING: removed padding between tab and content area.
+
+## [0.4.0] - 2018-11-21
+
+-   Added new `ButtonIcon` component.
+
+## [0.3.1] - 2018-11-15
+
+-   `Logo` is now the plain and simple Porsche Crest with barely any CSS. The box shadow and positioning CSS is now moved to the `Header` component.
+
+## [0.3.0] - 2018-31-10
+
+-   BREAKING: removed `Notification` in favor of `Toast` and `CookieNotification`.
+-   BREAKING: removed some type exports of some props. If you want to access the type of a prop like `type` of `Text`, you can simply access it directly with `TextProps["type"]`. Every component exports its props as a type.
+-   added `size` property to `Modal` to force the modal to use the entire width, height or both regardless of content size.
+
 ## [0.2.0] - 2018-10-23
-- added `Toast`and `Toast.Manager` component to display little notifications or messages on the bottom left.
-- added `loading` prop to Modal to show a loading indicator above the content but below the close button
-- added `Loader.Mask` component to complement Loader
+
+-   added `Toast`and `Toast.Manager` component to display little notifications or messages on the bottom left.
+-   added `loading` prop to `Modal` to show a loading indicator above the content but below the close button
+-   added `Loader.Mask` component to complement Loader
 
 ## [0.1.33] - 2018-10-15
-- added bold font-weight to `text` component
-- added `autofocus` property to `input` and `textarea` component
+
+-   added bold font-weight to `Text` component
+-   added `autofocus` property to `Input` and `TextArea` component
 
 ## [0.1.32] - 2018-09-24
-- icon changes
+
+-   icon changes

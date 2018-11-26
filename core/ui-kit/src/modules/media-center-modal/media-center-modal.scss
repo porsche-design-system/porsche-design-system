@@ -1,4 +1,4 @@
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/position/position.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
@@ -6,7 +6,7 @@
 
 .#{$global-class-prefix}media-center-modal {
   @include flex;
-  @include flex--direction(column);
+  @include flex-direction(column);
   @include -position(absolute);
   top: $media-center-modal-top;
   left: $media-center-modal-left;
@@ -16,7 +16,7 @@
 
   &__header {
     @include flex;
-    @include flex--direction(row);
+    @include flex-direction(row);
     @include flex-cross-axis(center);
     @include -spacing-inner-a;
     @include -text-size-copy;

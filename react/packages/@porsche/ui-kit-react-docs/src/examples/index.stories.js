@@ -7,6 +7,7 @@ import "./atoms/Spacing"
 import "./atoms/Text"
 
 import "./molecules/Button"
+import "./molecules/ButtonIcon"
 import "./molecules/Checkbox"
 import "./molecules/Flyout"
 import "./molecules/Input"
@@ -17,9 +18,9 @@ import "./molecules/Select"
 import "./molecules/Tab"
 import "./molecules/TextArea"
 
+import "./organisms/CookieNotification"
 import "./organisms/Header"
 import "./organisms/Modal"
-import "./organisms/Notification"
 import "./organisms/Toast"
 
 import "./screens/ErrorScreen"

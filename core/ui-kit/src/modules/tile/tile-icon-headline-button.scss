@@ -1,7 +1,7 @@
 @import 'tile-icon-headline-button.setup.scss';
 @import '../../base/align/align.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/overflow/overflow.mixin.scss';
 @import '../../mixins/breakpoint.scss';
@@ -15,12 +15,12 @@
 .#{$global-class-prefix}tile-icon-headline-button {
   @include -text-size-copy;
   @include flex;
-  @include flex--direction(column);
+  @include flex-direction(column);
   height: $tile-icon-headline-button-height;
 
   &__content {
     @include flex;
-    @include flex--grow(1);
+    @include flex-child-grow(1);
     min-height: $tile-icon-headline-button-height-default;
     background-color: $tile-icon-headline-button-background-color;
 
@@ -44,9 +44,10 @@
   &__centered-container {
     @include -spacing-inner-e;
     @include flex;
-    @include flex--grow(1);
-    @include flex--center-vertical;
-    @include flex--center-horizontal;
+    @include flex-child-grow(1);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
+    @include flex-cross-axis(center);
     width: $tile-icon-headline-button-full-width; // IE flex issue fix
   }
 

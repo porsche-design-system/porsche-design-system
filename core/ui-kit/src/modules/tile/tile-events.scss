@@ -1,7 +1,7 @@
 @import 'tile-events.setup.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../mixins/hide-after-nth-child.scss';
 @import '../../setup/global-variables.scss';
@@ -12,7 +12,7 @@
   &__content {
     @include -spacing-inner-a;
     @include flex;
-    @include flex--direction(column);
+    @include flex-direction(column);
     position: relative;
 
     @include breakpoint('s') {
@@ -36,8 +36,8 @@
 
   &__item-container {
     @include flex;
-    @include flex--grow(1);
-    @include flex--direction(column);
+    @include flex-child-grow(1);
+    @include flex-direction(column);
   }
 
   &__item {

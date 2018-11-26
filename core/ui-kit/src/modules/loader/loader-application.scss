@@ -1,6 +1,6 @@
 @import 'loader-application.setup.scss';
 @import '../../mixins/breakpoint.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
 @import '../../base/align/align.mixin.scss';
@@ -9,8 +9,8 @@
 
 .#{$global-class-prefix}loader-application {
   @include flex;
-  @include flex--direction(column);
-  @include flex--align-items(center);
+  @include flex-direction(column);
+  @include flex-cross-axis(center);
   @include -spacing-inner-a;
 
   padding: {

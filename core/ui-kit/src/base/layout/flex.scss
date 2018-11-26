@@ -1,0 +1,498 @@
+@import 'flex.mixin.scss';
+@import '../../mixins/breakpoint.scss';
+@import '../../setup/global-variables.scss';
+
+.#{$global-class-prefix}flex {
+  @include flex;
+  &--inline { @include flex-inline; }
+
+  @include breakpoint('xs') {
+    &-xs          { @include flex; }
+    &--inline-xs  { @include flex-inline; }
+  }
+
+  @include breakpoint('s') {
+    &-s           { @include flex; }
+    &--inline-s   { @include flex-inline; }
+  }
+
+  @include breakpoint('m') {
+    &-m           { @include flex; }
+    &--inline-m   { @include flex-inline; }
+  }
+
+  @include breakpoint('l') {
+    &-l           { @include flex; }
+    &--inline-l   { @include flex-inline; }
+  }
+
+  @include breakpoint('xl') {
+    &-xl          { @include flex; }
+    &--inline-xl  { @include flex-inline; }
+  }
+
+  /**
+   * properties for flex parent
+   */
+
+  &--wrap {
+    @include  flex-wrap(wrap);
+    &-no      { @include flex-wrap(nowrap); }
+    &-reverse { @include flex-wrap(wrap-reverse); }
+
+    @include breakpoint('xs') {
+      &-xs          { @include flex-wrap(wrap); }
+      &-no-xs       { @include flex-wrap(nowrap); }
+      &-reverse-xs  { @include flex-wrap(wrap-reverse); }
+    }
+
+    @include breakpoint('s') {
+      &-s           { @include flex-wrap(wrap); }
+      &-no-s        { @include flex-wrap(nowrap); }
+      &-reverse-s   { @include flex-wrap(wrap-reverse); }
+    }
+
+    @include breakpoint('m') {
+      &-m           { @include flex-wrap(wrap); }
+      &-no-m        { @include flex-wrap(nowrap); }
+      &-reverse-m   { @include flex-wrap(wrap-reverse); }
+    }
+
+    @include breakpoint('l') {
+      &-l           { @include flex-wrap(wrap); }
+      &-no-l        { @include flex-wrap(nowrap); }
+      &-reverse-l   { @include flex-wrap(wrap-reverse); }
+    }
+
+    @include breakpoint('xl') {
+      &-xl          { @include flex-wrap(wrap); }
+      &-no-xl       { @include flex-wrap(nowrap); }
+      &-reverse-xl  { @include flex-wrap(wrap-reverse); }
+    }
+  }
+
+  &--direction {
+    &-column          { @include flex-direction(column); }
+    &-column-reverse  { @include flex-direction(column-reverse); }
+    &-row             { @include flex-direction(row); }
+    &-row-reverse     { @include flex-direction(row-reverse); }
+
+    @include breakpoint('xs') {
+      &-column-xs         { @include flex-direction(column); }
+      &-column-reverse-xs { @include flex-direction(column-reverse); }
+      &-row-xs            { @include flex-direction(row); }
+      &-row-reverse-xs    { @include flex-direction(row-reverse); }
+    }
+
+    @include breakpoint('s') {
+      &-column-s          { @include flex-direction(column); }
+      &-column-reverse-s  { @include flex-direction(column-reverse); }
+      &-row-s             { @include flex-direction(row); }
+      &-row-reverse-s     { @include flex-direction(row-reverse); }
+    }
+
+    @include breakpoint('m') {
+      &-column-m          { @include flex-direction(column); }
+      &-column-reverse-m  { @include flex-direction(column-reverse); }
+      &-row-m             { @include flex-direction(row); }
+      &-row-reverse-m     { @include flex-direction(row-reverse); }
+    }
+
+    @include breakpoint('l') {
+      &-column-l          { @include flex-direction(column); }
+      &-column-reverse-l  { @include flex-direction(column-reverse); }
+      &-row-l             { @include flex-direction(row); }
+      &-row-reverse-l     { @include flex-direction(row-reverse); }
+    }
+
+    @include breakpoint('xl') {
+      &-column-xl          { @include flex-direction(column); }
+      &-column-reverse-xl  { @include flex-direction(column-reverse); }
+      &-row-xl             { @include flex-direction(row); }
+      &-row-reverse-xl     { @include flex-direction(row-reverse); }
+    }
+  }
+
+  &--main-axis {
+    &-start          { @include flex-main-axis(flex-start); }
+    &-end            { @include flex-main-axis(flex-end); }
+    &-center         { @include flex-main-axis(center); }
+    &-space-between  { @include flex-main-axis(space-between); }
+    &-space-around   { @include flex-main-axis(space-around); }
+    &-space-evenly   { @include flex-main-axis(space-evenly); }
+
+    @include breakpoint('xs') {
+      &-start-xs          { @include flex-main-axis(flex-start); }
+      &-end-xs            { @include flex-main-axis(flex-end); }
+      &-center-xs         { @include flex-main-axis(center); }
+      &-space-between-xs  { @include flex-main-axis(space-between); }
+      &-space-around-xs   { @include flex-main-axis(space-around); }
+      &-space-evenly-xs   { @include flex-main-axis(space-evenly); }
+    }
+
+    @include breakpoint('s') {
+      &-start-s           { @include flex-main-axis(flex-start); }
+      &-end-s             { @include flex-main-axis(flex-end); }
+      &-center-s          { @include flex-main-axis(center); }
+      &-space-between-s   { @include flex-main-axis(space-between); }
+      &-space-around-s    { @include flex-main-axis(space-around); }
+      &-space-evenly-s    { @include flex-main-axis(space-evenly); }
+    }
+
+    @include breakpoint('m') {
+      &-start-m           { @include flex-main-axis(flex-start); }
+      &-end-m             { @include flex-main-axis(flex-end); }
+      &-center-m          { @include flex-main-axis(center); }
+      &-space-between-m   { @include flex-main-axis(space-between); }
+      &-space-around-m    { @include flex-main-axis(space-around); }
+      &-space-evenly-m    { @include flex-main-axis(space-evenly); }
+    }
+
+    @include breakpoint('l') {
+      &-start-l           { @include flex-main-axis(flex-start); }
+      &-end-l             { @include flex-main-axis(flex-end); }
+      &-center-l          { @include flex-main-axis(center); }
+      &-space-between-l   { @include flex-main-axis(space-between); }
+      &-space-around-l    { @include flex-main-axis(space-around); }
+      &-space-evenly-l    { @include flex-main-axis(space-evenly); }
+    }
+
+    @include breakpoint('xl') {
+      &-start-xl           { @include flex-main-axis(flex-start); }
+      &-end-xl             { @include flex-main-axis(flex-end); }
+      &-center-xl          { @include flex-main-axis(center); }
+      &-space-between-xl   { @include flex-main-axis(space-between); }
+      &-space-around-xl    { @include flex-main-axis(space-around); }
+      &-space-evenly-xl    { @include flex-main-axis(space-evenly); }
+    }
+  }
+
+  &--cross-axis {
+    &-start     { @include flex-cross-axis(flex-start); }
+    &-end       { @include flex-cross-axis(flex-end); }
+    &-center    { @include flex-cross-axis(center); }
+    &-stretch   { @include flex-cross-axis(stretch); }
+    &-baseline   { @include flex-cross-axis(baseline); }
+
+    @include breakpoint('xs') {
+      &-start-xs    { @include flex-cross-axis(flex-start); }
+      &-end-xs      { @include flex-cross-axis(flex-end); }
+      &-center-xs   { @include flex-cross-axis(center); }
+      &-stretch-xs  { @include flex-cross-axis(stretch); }
+      &-baseline-xs { @include flex-cross-axis(baseline); }
+    }
+
+    @include breakpoint('s') {
+      &-start-s     { @include flex-cross-axis(flex-start); }
+      &-end-s       { @include flex-cross-axis(flex-end); }
+      &-center-s    { @include flex-cross-axis(center); }
+      &-stretch-s   { @include flex-cross-axis(stretch); }
+      &-baseline-s  { @include flex-cross-axis(baseline); }
+    }
+
+    @include breakpoint('m') {
+      &-start-m     { @include flex-cross-axis(flex-start); }
+      &-end-m       { @include flex-cross-axis(flex-end); }
+      &-center-m    { @include flex-cross-axis(center); }
+      &-stretch-m   { @include flex-cross-axis(stretch); }
+      &-baseline-m  { @include flex-cross-axis(baseline); }
+    }
+
+    @include breakpoint('l') {
+      &-start-l     { @include flex-cross-axis(flex-start); }
+      &-end-l       { @include flex-cross-axis(flex-end); }
+      &-center-l    { @include flex-cross-axis(center); }
+      &-stretch-l   { @include flex-cross-axis(stretch); }
+      &-baseline-l  { @include flex-cross-axis(baseline); }
+    }
+
+    @include breakpoint('xl') {
+      &-start-xl     { @include flex-cross-axis(flex-start); }
+      &-end-xl       { @include flex-cross-axis(flex-end); }
+      &-center-xl    { @include flex-cross-axis(center); }
+      &-stretch-xl   { @include flex-cross-axis(stretch); }
+      &-baseline-xl  { @include flex-cross-axis(baseline); }
+    }
+  }
+
+  &--align-content {
+    &-start           { @include flex-align-content(flex-start); }
+    &-end             { @include flex-align-content(flex-end); }
+    &-center          { @include flex-align-content(center); }
+    &-stretch         { @include flex-align-content(stretch); }
+    &-space-between   { @include flex-align-content(space-between); }
+    &-space-around    { @include flex-align-content(space-around); }
+
+    @include breakpoint('xs') {
+      &-start-xs          { @include flex-align-content(flex-start); }
+      &-end-xs            { @include flex-align-content(flex-end); }
+      &-center-xs         { @include flex-align-content(center); }
+      &-stretch-xs        { @include flex-align-content(stretch); }
+      &-space-between-xs  { @include flex-align-content(space-between); }
+      &-space-around-xs   { @include flex-align-content(space-around); }
+    }
+
+    @include breakpoint('s') {
+      &-start-s           { @include flex-align-content(flex-start); }
+      &-end-s             { @include flex-align-content(flex-end); }
+      &-center-s          { @include flex-align-content(center); }
+      &-stretch-s         { @include flex-align-content(stretch); }
+      &-space-between-s   { @include flex-align-content(space-between); }
+      &-space-around-s    { @include flex-align-content(space-around); }
+    }
+
+    @include breakpoint('m') {
+      &-start-m           { @include flex-align-content(flex-start); }
+      &-end-m             { @include flex-align-content(flex-end); }
+      &-center-m          { @include flex-align-content(center); }
+      &-stretch-m         { @include flex-align-content(stretch); }
+      &-space-between-m   { @include flex-align-content(space-between); }
+      &-space-around-m    { @include flex-align-content(space-around); }
+    }
+
+    @include breakpoint('l') {
+      &-start-l           { @include flex-align-content(flex-start); }
+      &-end-l             { @include flex-align-content(flex-end); }
+      &-center-l          { @include flex-align-content(center); }
+      &-stretch-l         { @include flex-align-content(stretch); }
+      &-space-between-l   { @include flex-align-content(space-between); }
+      &-space-around-l    { @include flex-align-content(space-around); }
+    }
+
+    @include breakpoint('xl') {
+      &-start-xl          { @include flex-align-content(flex-start); }
+      &-end-xl            { @include flex-align-content(flex-end); }
+      &-center-xl         { @include flex-align-content(center); }
+      &-stretch-xl        { @include flex-align-content(stretch); }
+      &-space-between-xl  { @include flex-align-content(space-between); }
+      &-space-around-xl   { @include flex-align-content(space-around); }
+    }
+  }
+
+  /**
+   * properties for flex children items
+   */
+
+  &__child {
+
+    &--grow {
+      &-0 { @include flex-child-grow(0); }
+      &-1 { @include flex-child-grow(1); }
+    }
+
+    &--shrink {
+      &-0 { @include flex-child-shrink(0); }
+      &-1 { @include flex-child-shrink(1); }
+    }
+
+    &--initial {
+      @include flex-child-initial;
+    }
+
+    &--auto {
+      @include flex-child-auto;
+    }
+
+    &--equal {
+      @include flex-child-equal;
+    }
+
+    &--none {
+      @include flex-child-none;
+    }
+
+    @include breakpoint('xs') {
+      &--grow {
+        &-0-xs { @include flex-child-grow(0); }
+        &-1-xs { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-xs { @include flex-child-shrink(0); }
+        &-1-xs { @include flex-child-shrink(1); }
+      }
+
+      &--initial-xs {
+        @include flex-child-initial;
+      }
+
+      &--auto-xs  {
+        @include flex-child-auto;
+      }
+
+      &--equal-xs {
+        @include flex-child-equal;
+      }
+
+      &--none-xs {
+        @include flex-child-none;
+      }
+    }
+
+    @include breakpoint('s') {
+      &--grow {
+        &-0-s { @include flex-child-grow(0); }
+        &-1-s { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-s { @include flex-child-shrink(0); }
+        &-1-s { @include flex-child-shrink(1); }
+      }
+
+      &--initial-s {
+        @include flex-child-initial;
+      }
+
+      &--auto-s  {
+        @include flex-child-auto;
+      }
+
+      &--equal-s {
+        @include flex-child-equal;
+      }
+
+      &--none-s {
+        @include flex-child-none;
+      }
+    }
+
+    @include breakpoint('m') {
+      &--grow {
+        &-0-m { @include flex-child-grow(0); }
+        &-1-m { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-m { @include flex-child-shrink(0); }
+        &-1-m { @include flex-child-shrink(1); }
+      }
+
+      &--initial-m {
+        @include flex-child-initial;
+      }
+
+      &--auto-m {
+        @include flex-child-auto;
+      }
+
+      &--equal-m {
+        @include flex-child-equal;
+      }
+
+      &--none-m {
+        @include flex-child-none;
+      }
+    }
+
+    @include breakpoint('l') {
+      &--grow {
+        &-0-l { @include flex-child-grow(0); }
+        &-1-l { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-l { @include flex-child-shrink(0); }
+        &-1-l { @include flex-child-shrink(1); }
+      }
+
+      &--initial-l {
+        @include flex-child-initial;
+      }
+
+      &--auto-l {
+        @include flex-child-auto;
+      }
+
+      &--equal-l {
+        @include flex-child-equal;
+      }
+
+      &--none-l {
+        @include flex-child-none;
+      }
+    }
+
+    @include breakpoint('xl') {
+      &--grow {
+        &-0-xl { @include flex-child-grow(0); }
+        &-1-xl { @include flex-child-grow(1); }
+      }
+
+      &--shrink {
+        &-0-xl { @include flex-child-shrink(0); }
+        &-1-xl { @include flex-child-shrink(1); }
+      }
+
+      &--initial-xl {
+        @include flex-child-initial;
+      }
+
+      &--auto-xl {
+        @include flex-child-auto;
+      }
+
+      &--equal-xl {
+        @include flex-child-equal;
+      }
+
+      &--none-xl {
+        @include flex-child-none;
+      }
+    }
+
+    &--cross-axis {
+      &-auto      { @include flex-child-cross-axis(auto); }
+      &-start     { @include flex-child-cross-axis(flex-start); }
+      &-end       { @include flex-child-cross-axis(flex-end); }
+      &-center    { @include flex-child-cross-axis(center); }
+      &-stretch   { @include flex-child-cross-axis(stretch); }
+      &-baseline  { @include flex-child-cross-axis(baseline); }
+
+      @include breakpoint('xs') {
+        &-auto-xs     { @include flex-child-cross-axis(auto); }
+        &-start-xs    { @include flex-child-cross-axis(flex-start); }
+        &-end-xs      { @include flex-child-cross-axis(flex-end); }
+        &-center-xs   { @include flex-child-cross-axis(center); }
+        &-stretch-xs  { @include flex-child-cross-axis(stretch); }
+        &-baseline-xs { @include flex-child-cross-axis(baseline); }
+      }
+
+      @include breakpoint('s') {
+        &-auto-s      { @include flex-child-cross-axis(auto); }
+        &-start-s     { @include flex-child-cross-axis(flex-start); }
+        &-end-s       { @include flex-child-cross-axis(flex-end); }
+        &-center-s    { @include flex-child-cross-axis(center); }
+        &-stretch-s   { @include flex-child-cross-axis(stretch); }
+        &-baseline-s  { @include flex-child-cross-axis(baseline); }
+      }
+
+      @include breakpoint('m') {
+        &-auto-m      { @include flex-child-cross-axis(auto); }
+        &-start-m     { @include flex-child-cross-axis(flex-start); }
+        &-end-m       { @include flex-child-cross-axis(flex-end); }
+        &-center-m    { @include flex-child-cross-axis(center); }
+        &-stretch-m   { @include flex-child-cross-axis(stretch); }
+        &-baseline-m  { @include flex-child-cross-axis(baseline); }
+      }
+
+      @include breakpoint('l') {
+        &-auto-l      { @include flex-child-cross-axis(auto); }
+        &-start-l     { @include flex-child-cross-axis(flex-start); }
+        &-end-l       { @include flex-child-cross-axis(flex-end); }
+        &-center-l    { @include flex-child-cross-axis(center); }
+        &-stretch-l   { @include flex-child-cross-axis(stretch); }
+        &-baseline-l  { @include flex-child-cross-axis(baseline); }
+      }
+
+      @include breakpoint('xl') {
+        &-auto-xl     { @include flex-child-cross-axis(auto); }
+        &-start-xl    { @include flex-child-cross-axis(flex-start); }
+        &-end-xl      { @include flex-child-cross-axis(flex-end); }
+        &-center-xl   { @include flex-child-cross-axis(center); }
+        &-stretch-xl  { @include flex-child-cross-axis(stretch); }
+        &-baseline-xl { @include flex-child-cross-axis(baseline); }
+      }
+    }
+  }
+}
