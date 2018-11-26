@@ -11,13 +11,12 @@
           {{#if button-regular_isThemeInverted}} button-regular--theme-inverted {{/if}}
           {{styleModifier}}"
     {{#if button-regular_disabled}} aria-disabled="true" {{/if}}>
-    <span class="button-regular__icon icon icon--{{ button-regular_icon}}
-                {{#if button-regular_loading}} button-regular__icon--loading {{/if}}">
+    <i class="button-regular__icon icon-svg">
+      {{> atoms-icon-svg icon_code=button-regular_icon styleModifier="" }}
     {{#if button-regular_loading}}
         {{> molecules-loader-base styleModifier="button-regular__loader" }}
     {{/if}}
-
-    </span>
+    </i>
     <span class="button-regular__label">{{ button-regular_label }}</span>
   </a>
 
@@ -34,13 +33,13 @@
           {{#if button-regular_isThemeInverted}} button-regular--theme-inverted {{/if}}
           {{styleModifier}}"
     {{#if button-regular_disabled}} disabled {{/if}}>
-    <span class="button-regular__icon icon icon--{{ button-regular_icon}}
-                {{#if button-regular_loading}} button-regular__icon--loading {{/if}}">
+    <i class="button-regular__icon icon-svg">
     {{#if button-regular_loading}}
-        {{> molecules-loader-base styleModifier="button-regular__loader" }}
+      {{> molecules-loader-base styleModifier="button-regular__loader" }}
+    {{else}}
+      {{> atoms-icon-svg icon_code=button-regular_icon styleModifier="" }}
     {{/if}}
-
-    </span>
+    </i>
     <span class="button-regular__label">{{ button-regular_label }}</span>
   </button>
 {{/if}}

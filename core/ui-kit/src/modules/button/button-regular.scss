@@ -322,8 +322,9 @@
 
   &__icon {
     position: absolute;
-    font-size: rem(16px);
-    line-height: inherit;
+    margin-top: rem(2px);
+    width: rem(16px);
+    height: rem(16px);
 
     &--loading {
 
