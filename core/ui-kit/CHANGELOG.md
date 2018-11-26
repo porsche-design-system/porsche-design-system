@@ -39,6 +39,17 @@ Please update asap all deprecated buttons with the new ones.
   `modules/button/button-notification.setup.scss` => `deprecated/button/button-notification.setup.scss`  
   `modules/button/button-notification.scss` => `deprecated/button/button-notification.scss`  
 
+## [0.15.0] - 2018-11-26
+* Add possibility display the navigation-steps on light or dark background
+  __Migration path:__ 
+  * if you need the color to be white on dark background, use the `navigation-steps--theme-inverted`
+  class on the navigation-steps element.
+
+* Add possibility display the page header on light or dark background
+  __Migration path:__ 
+  * if you need the color to be white on dark background, use the `page-header--theme-inverted`
+  class on the page-header element.
+
 ## [0.14.2] - 2018-11-23
 * Added additional property to flex component and additional examples to visualize flex shorthands.
 * Added missing flex mixin changes to migration path.
