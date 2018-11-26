@@ -1,12 +1,12 @@
-<ul class="navigation-steps {{ styleModifier }}">
-  {{#each navigation-steps }}
+<ul class="navigation-steps {{#if navigation-steps_isThemeInverted}}navigation-steps--theme-inverted{{/if}} {{ styleModifier }}">
+  {{#each navigation-steps}}
     <li class="navigation-steps__item {{#if active}}navigation-steps__item--active{{/if}} {{#if disabled}}navigation-steps__item--disabled{{/if}}">
       {{#if count}}
         <span class="navigation-steps__count">{{count}}</span>
         <span class="navigation-steps__label {{#if active}}navigation-steps__label--active{{/if}}">{{label}}</span>
       {{else}}
         <span class="navigation-steps__icon icon icon--{{icon}}"></span>
-        <span class="navigation-steps__label navigation-steps__label--icon {{#if active }}navigation-steps__label--active{{/if}}">{{label}}</span>
+        <span class="navigation-steps__label navigation-steps__label--icon {{#if active}}navigation-steps__label--active{{/if}}">{{label}}</span>
       {{/if}}
     </li>
   {{/each}}

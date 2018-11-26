@@ -8390,7 +8390,7 @@ table {
   html[lang='ur'] .navigation-steps, html[lang='ur-PK'] .navigation-steps {
     font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
   .navigation-steps__item {
-    color: #fff;
+    color: #000;
     margin-right: +0.375rem;
     padding-bottom: +0.375rem;
     display: inline-block;
@@ -8404,11 +8404,15 @@ table {
         padding-top: +0.75rem;
         padding-bottom: 0.75rem;
         margin-right: 2.25rem; } }
+    .navigation-steps--theme-inverted .navigation-steps__item {
+      color: #fff; }
     .navigation-steps__item:last-of-type {
       margin-right: 0; }
     .navigation-steps__item--active {
-      color: #fff;
+      color: #000;
       border-color: #d5001c; }
+      .navigation-steps--theme-inverted .navigation-steps__item--active {
+        color: #fff; }
     .navigation-steps__item:hover {
       color: #d5001c;
       cursor: pointer; }
@@ -8416,11 +8420,21 @@ table {
         border-left-color: #d5001c; }
     .navigation-steps__item--disabled {
       color: #959899; }
+      .navigation-steps__item--disabled .navigation-steps__label {
+        border-left-color: #959899; }
       .navigation-steps__item--disabled:hover {
         color: #959899;
         cursor: text; }
         .navigation-steps__item--disabled:hover .navigation-steps__label {
           border-left-color: inherit; }
+      .navigation-steps--theme-inverted .navigation-steps__item--disabled {
+        color: #959899; }
+        .navigation-steps--theme-inverted .navigation-steps__item--disabled .navigation-steps__label {
+          border-left-color: #959899; }
+        .navigation-steps--theme-inverted .navigation-steps__item--disabled:hover {
+          color: #959899; }
+          .navigation-steps--theme-inverted .navigation-steps__item--disabled:hover .navigation-steps__label {
+            border-left-color: inherit; }
   .navigation-steps__count {
     text-align: center;
     padding-left: +0.75rem;
@@ -8455,11 +8469,23 @@ table {
     @media (min-width: 760px) {
       .navigation-steps__label {
         display: inline-block; } }
-    .navigation-steps__label--active {
+    .navigation-steps--theme-inverted .navigation-steps__label {
       border-left-color: #fff; }
+    .navigation-steps__label--active {
+      border-left-color: #000; }
+      .navigation-steps--theme-inverted .navigation-steps__label--active {
+        border-left-color: #fff; }
     .navigation-steps__label--icon {
       border-left: 0;
       padding-left: 0; }
+  .navigation-steps__body {
+    display: none;
+    opacity: 0;
+    visibility: hidden; }
+    .navigation-steps__body--active {
+      display: block;
+      opacity: 1;
+      visibility: visible; }
 
 /**
  * properties for flex container
@@ -8665,7 +8691,7 @@ table {
     font-size: 1.625rem;
     line-height: 2.125rem;
     font-weight: 200;
-    color: #fff; }
+    color: #000; }
     html[lang='ru'] .page-header__title, html[lang='ru-RU'] .page-header__title {
       font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .page-header__title, html[lang='zh-CN'] .page-header__title {
@@ -8686,12 +8712,14 @@ table {
       .page-header__title {
         font-size: 2.25rem;
         line-height: 2.75rem; } }
+    .page-header--theme-inverted .page-header__title {
+      color: #fff; }
   .page-header__description {
     font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5rem;
-    color: #fff;
+    color: #000;
     margin-top: +0.375rem; }
     html[lang='ru'] .page-header__description, html[lang='ru-RU'] .page-header__description {
       font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
@@ -8705,6 +8733,8 @@ table {
       font-family: "Porsche Next Persian", "Arial Narrow", Arial, sans-serif; }
     html[lang='ur'] .page-header__description, html[lang='ur-PK'] .page-header__description {
       font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
+    .page-header--theme-inverted .page-header__description {
+      color: #fff; }
 
 .link-icon-text {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
