@@ -1,33 +1,32 @@
 @import '../../setup/global-variables.scss';
+@import '../../mixins/px-rem-converter.scss';
 
 .#{$global-class-prefix}icon-svg {
-  width: 18px;
-  height: 18px;
+  display: inline-flex;
+  width: rem(12px);
+  height: rem(12px);
+  fill: currentColor;
+  stroke: currentColor;
 
   &--size {
-    &-xs {
-      width: 12px;
-      height: 12px;
-    }
-
     &-s {
-      width: 18px;
-      height: 18px;
+      width: rem(18px);
+      height: rem(18px);
     }
 
     &-m {
-      width: 24px;
-      height: 24px;
+      width: rem(24px);
+      height: rem(24px);
     }
 
     &-l {
-      width: 42px;
-      height: 42px;
+      width: rem(42px);
+      height: rem(42px);
     }
 
     &-xl {
-      width: 60px;
-      height: 60px;
+      width: rem(60px);
+      height: rem(60px);
     }
   }
 }
