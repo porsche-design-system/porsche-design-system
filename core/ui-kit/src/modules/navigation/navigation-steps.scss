@@ -40,8 +40,12 @@
     }
 
     &--active {
-      @include -text-color-white;
+      @include -text-color-black;
       border-color: $navigation-steps-item-active-border-color;
+
+      #{$bem-block}--theme-inverted & {
+        @include -text-color-white;
+      }
     }
 
     &:hover {
@@ -56,12 +60,32 @@
     &--disabled {
       @include -text-color-grey-5;
 
+      & #{$bem-block}__label {
+        border-left-color: $navigation-steps-label-border-color-disabled;
+      }
+
       &:hover {
         @include -text-color-grey-5;
         cursor: text;
 
         & #{$bem-block}__label {
           border-left-color: inherit;
+        }
+      }
+
+      #{$bem-block}--theme-inverted & {
+        @include -text-color-grey-5;
+
+        & #{$bem-block}__label {
+          border-left-color: $navigation-steps-label-border-color-disabled-inverted;
+        }
+
+        &:hover {
+          @include -text-color-grey-5;
+
+          & #{$bem-block}__label {
+            border-left-color: inherit;
+          }
         }
       }
     }
@@ -110,8 +134,16 @@
       display: inline-block;
     }
 
+    #{$bem-block}--theme-inverted & {
+      border-left-color: $navigation-steps-label-border-color-inverted;
+    }
+
     &--active {
       border-left-color: $navigation-steps-label-border-color-active;
+
+      #{$bem-block}--theme-inverted & {
+        border-left-color: $navigation-steps-label-border-color-active-inverted;
+      }
     }
 
     &--icon {
