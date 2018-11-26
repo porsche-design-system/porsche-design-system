@@ -22,8 +22,12 @@ $navigation-steps-label-icon-inner-spacing-left: $spacing-6 !default;
 $navigation-steps-label-border-padding-left: $spacing-12 !default;
 $navigation-steps-label-border-width: 1px !default;
 $navigation-steps-label-border-color: $color-palette-grey-5 !default;
-$navigation-steps-label-border-color-active: $color-palette-white !default;
+$navigation-steps-label-border-color-disabled: $color-palette-grey-5 !default;
+$navigation-steps-label-border-color-active: $color-palette-black !default;
 $navigation-steps-label-border-color-hover: $color-palette-red-1 !default;
+$navigation-steps-label-border-color-inverted: $color-palette-white !default;
+$navigation-steps-label-border-color-disabled-inverted: $color-palette-grey-5 !default;
+$navigation-steps-label-border-color-active-inverted: $color-palette-white !default;
 $navigation-steps-label-line-height: 1 !default;
 
 $navigation-steps-icon-font-size: $spacing-24 !default;
