@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* Add possibility display the page header on light or dark background
+  __Migration path:__ 
+  * if you need the color to be white on dark background, use the `page-header--theme-inverted`
+  class on the page-header element.
 
 ## [0.14.2] - 2018-11-23
 * Added additional property to flex component and additional examples to visualize flex shorthands.
