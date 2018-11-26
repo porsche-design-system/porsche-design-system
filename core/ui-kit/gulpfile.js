@@ -6,14 +6,33 @@
 var gulp = require('gulp'),
   path = require('path'),
   browserSync = require('browser-sync').create(),
-  argv = require('minimist')(process.argv.slice(2))
-  exec = require('child_process').exec
-  sassLint = require('gulp-sass-lint')
-  cache = require('gulp-cached');
+  argv = require('minimist')(process.argv.slice(2)),
+  exec = require('child_process').exec,
+  sassLint = require('gulp-sass-lint'),
+  cache = require('gulp-cached'),
+  rename = require('gulp-rename'),
+  svgSymbols = require('gulp-svg-symbols')
 
 function resolvePath(pathInput) {
   return path.resolve(pathInput).replace(/\\/g, "/");
 }
+
+/******************************************************
+ * CUSTOM TASKS
+******************************************************/
+// SVG Spriting
+gulp.task('sprites', function() {
+  return gulp
+    .src('src/base/icons-svg/*.svg')
+    .pipe(svgSymbols({
+      templates: ['default-svg'],
+      slug: function(name) {
+        return 'icon-'+name.replace(/_/g, '-')
+      }
+    }))
+    .pipe(rename('svg-sprite.svg'))
+    .pipe(gulp.dest(resolvePath(paths().source.images)+'/porsche-ui-kit-docs/'))
+})
 
 /******************************************************
  * COPY TASKS - stream assets from source to destination
@@ -149,7 +168,7 @@ gulp.task('patternlab:loadstarterkit', function (done) {
   done();
 });
 
-gulp.task('patternlab:build', gulp.series('pl-assets', build, 'pl-lint:porsche-stylesheet', function (done) {
+gulp.task('patternlab:build', gulp.series('sprites', 'pl-assets', build, 'pl-lint:porsche-stylesheet', function (done) {
   done();
 }));
 
