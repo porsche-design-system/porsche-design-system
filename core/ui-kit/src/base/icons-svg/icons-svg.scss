@@ -3,30 +3,8 @@
 
 .#{$global-class-prefix}icon-svg {
   display: inline-flex;
-  width: rem(12px);
-  height: rem(12px);
+  width: rem(18px);
+  height: rem(18px);
   fill: currentColor;
   stroke: currentColor;
-
-  &--size {
-    &-s {
-      width: rem(18px);
-      height: rem(18px);
-    }
-
-    &-m {
-      width: rem(24px);
-      height: rem(24px);
-    }
-
-    &-l {
-      width: rem(42px);
-      height: rem(42px);
-    }
-
-    &-xl {
-      width: rem(60px);
-      height: rem(60px);
-    }
-  }
 }
