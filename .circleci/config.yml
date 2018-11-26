@@ -40,7 +40,7 @@ jobs:
             pushd $TARGET_BRANCH
               rm -rf ./$CIRCLE_BRANCH
             popd
-            cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
+            mkdir -p ./$TARGET_BRANCH/$CIRCLE_BRANCH && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
             pushd $TARGET_BRANCH
               git add -A
               git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
