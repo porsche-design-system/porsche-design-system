@@ -1,11 +1,11 @@
 @import 'loader-list.setup.scss';
 @import '../../mixins/breakpoint.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}loader-list {
   @include flex;
-  @include flex--justify-content(center);
+  @include flex-main-axis(center);
 
   padding: {
     top: $loader-list-spacing-vertical;

@@ -3,14 +3,7 @@ import cx from "classnames"
 
 import { getElementType, prefix } from "../../../lib"
 import { FlexItem } from "./FlexItem"
-import { SpacingValue } from "../../../index"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
-
-export type FlexAlignLines = "start" | "center" | "end" | "space-around" | "space-between" | "stretch"
-export type FlexCrossAxis = "start" | "center" | "end" | "baseline" | "stretch"
-export type FlexDirection = "column-reverse" | "column" | "row-reverse" | "row"
-export type FlexMainAxis = "start" | "center" | "end" | "space-around" | "space-between" | "space-evenly"
-export type FlexWrap = "reverse" | boolean
 
 export interface Flex extends React.StatelessComponent<FlexProps> {
     Item: typeof FlexItem
@@ -18,22 +11,22 @@ export interface Flex extends React.StatelessComponent<FlexProps> {
 
 export interface FlexProps extends ClassNameProp, ComponentProp {
     /** Defines how the flex items are aligned along the cross axis. Corresponds to the "alignItems" css property. */
-    alignCrossAxis?: FlexCrossAxis
+    alignCrossAxis?: "start" | "center" | "end" | "baseline" | "stretch"
 
     /**
      * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "alignMainAxis" aligns individual items along the main axis.
      * Corresponds to the "alignContent" css property.
      */
-    alignLines?: FlexAlignLines
+    alignLines?: "start" | "center" | "end" | "space-around" | "space-between" | "stretch"
 
     /** Defines how the flex items are aligned along the main axis. Corresponds to the "justifyContent" css property. */
-    alignMainAxis?: FlexMainAxis
+    alignMainAxis?: "start" | "center" | "end" | "space-around" | "space-between" | "space-evenly"
 
     /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. */
-    direction?: FlexDirection
+    direction?: "column-reverse" | "column" | "row-reverse" | "row"
 
     /** Defines the gap between contained children. The value "grid" sets responsive grid spacings that should be used together with Flex.Item. */
-    gap?: SpacingValue | "grid"
+    gap?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f" | "grid"
 
     /** Defines the flex container display as inline rather than block. */
     inline?: boolean
@@ -42,7 +35,7 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
      * If set, overflowing elements will wrap to a new line.
      * @default true
      */
-    wrap?: FlexWrap
+    wrap?: "reverse" | boolean
 
     /** The ability to allow/disallow the flex child to shrink. Sometimes needed to fix IE11 bugs. */
     shrink?: 0 | 1

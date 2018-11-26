@@ -1,3 +1,5 @@
-export parseDefaultValue from "./parseDefaultValue"
-export parseDocBlock from "./parseDocBlock"
-export parseType from "./parseType"
+import parseDefaultValue from "./parseDefaultValue"
+import parseDocBlock from "./parseDocBlock"
+import parseType from "./parseType"
+
+export { parseDefaultValue, parseDocBlock, parseType }

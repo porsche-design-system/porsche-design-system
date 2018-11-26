@@ -1,0 +1,34 @@
+@import '../../mixins/px-rem-converter.scss';
+@import '../../base/spacing/spacing.setup.scss';
+
+$grid-gutter:     rem(16px) !default;
+$grid-gutter-xs:  rem(16px) !default;
+$grid-gutter-s:   rem(24px) !default;
+$grid-gutter-m:   rem(36px) !default;
+$grid-gutter-l:   rem(36px) !default;
+$grid-gutter-xl:  rem(36px) !default;
+
+$column-1-width: 8.333333% !default;
+$column-2-width: 16.666667% !default;
+$column-3-width: 25% !default;
+$column-4-width: 33.333333% !default;
+$column-5-width: 41.666667% !default;
+$column-6-width: 50% !default;
+$column-7-width: 58.333333% !default;
+$column-8-width: 66.666667% !default;
+$column-9-width: 75% !default;
+$column-10-width: 83.333333% !default;
+$column-11-width: 91.666667% !default;
+$column-12-width: 100% !default;
+
+$column-max-width: 100% !default;
+$column-min-height: 1px !default;
+
+$column-spacing-horizontal:     $grid-gutter / 2 !default;
+$column-spacing-horizontal-xs:  $grid-gutter-xs / 2 !default;
+$column-spacing-horizontal-s:   $grid-gutter-s / 2 !default;
+$column-spacing-horizontal-m:   $grid-gutter-m / 2 !default;
+$column-spacing-horizontal-l:   $grid-gutter-l / 2 !default;
+$column-spacing-horizontal-xl:  $grid-gutter-xl / 2 !default;
+
+$column-gap-small-spacing-horizontal: $spacing-3 !default;

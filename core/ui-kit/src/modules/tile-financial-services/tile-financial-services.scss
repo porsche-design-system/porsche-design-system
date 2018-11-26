@@ -3,7 +3,7 @@
 @import '../../base/align/align.mixin.scss';
 @import '../../base/overflow/overflow.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 
 @mixin icon-height($height) {
   font-size: $height;
@@ -13,13 +13,13 @@
 .tile-financial-services {
   @include -spacing-inner-a;
   @include flex; // IE 11 min-height flex fix
-  @include flex--direction(column); // IE 11 min-height flex fix
+  @include flex-direction(column); // IE 11 min-height flex fix
   position: relative;
   background-color: $tile-financial-services-background-color;
 
   &__container {
     @include flex;
-    @include flex--direction(column);
+    @include flex-direction(column);
     min-height: $tile-financial-services-container-min-height-default;
 
     @include breakpoint('s') {
@@ -107,9 +107,9 @@
 
   &__content {
     @include flex;
-    @include flex--grow(1);
-    @include flex--direction(column);
-    @include flex--justify-content(center);
+    @include flex-child-grow(1);
+    @include flex-direction(column);
+    @include flex-main-axis(center);
     position: relative;
     width: $file-financial-services-content-width;
 

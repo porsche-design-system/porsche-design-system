@@ -1,5 +1,5 @@
 @import 'tile-image-text-link.setup.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
 @import '../../base/position/position.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
@@ -12,8 +12,8 @@
 
 .#{$global-class-prefix}tile-image-text-link {
   @include flex;
-  @include flex--justify-content(flex-end);
-  @include flex--direction(column);
+  @include flex-main-axis(flex-end);
+  @include flex-direction(column);
   position: relative;
   height: $tile-image-text-link-textarea-height;
   cursor: pointer;
@@ -178,8 +178,8 @@
 
   &__textwrapper {
     @include flex;
-    @include flex--direction(column);
-    @include flex--grow(1);
+    @include flex-direction(column);
+    @include flex-child-grow(1);
     width: $tile-image-text-link-textarea-text-width-default;
 
     &:hover {

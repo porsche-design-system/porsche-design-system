@@ -1,5 +1,5 @@
 @import '../../base/spacing/spacing.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../mixins/breakpoint.scss';
 @import '../../setup/global-variables.scss';
@@ -21,7 +21,7 @@
 
   &__item-label {
     @include flex;
-    @include flex--align-items(center);
+    @include flex-cross-axis(center);
 
     padding: $list-striped-item-padding-vertical $list-striped-item-padding-horizontal;
 

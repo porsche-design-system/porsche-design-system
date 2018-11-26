@@ -3,15 +3,14 @@ import cx from "classnames"
 
 import { prefix, getElementType } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
-import { Icon } from "../../../index"
-import { IconName } from "../../atoms/Icon/Icon"
+import { Icon, IconProps } from "../../../index"
 
 export interface TextAreaProps extends ClassNameProp, ComponentProp {
     basic?: boolean
     disabled?: boolean
     autofocus?: boolean
     error?: boolean
-    icon?: IconName
+    icon?: IconProps["name"]
     maxLength?: number
 
     /**

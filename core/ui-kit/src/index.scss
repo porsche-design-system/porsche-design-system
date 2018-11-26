@@ -2,6 +2,7 @@
 @import 'mixins/index.scss';
 @import 'common/index.scss';
 @import 'base/index.scss';
+@import 'deprecated/index.scss'; // import deprecated styles for backwards compatibility
 @import 'modules/index.scss';
 
 // js framework specific styles

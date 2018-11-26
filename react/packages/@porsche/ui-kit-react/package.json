@@ -1,7 +1,7 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.2.2",
+    "version": "0.4.4",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
@@ -15,7 +15,8 @@
         "css"
     ],
     "repository": {
-        "type": "git"
+        "type": "git",
+        "url": "ssh://git@github.com:myporsche/pouikit-porsche-ui-kit.git"
     },
     "author": "Dr. Ing. h.c. F. Porsche AG",
     "contributors": [

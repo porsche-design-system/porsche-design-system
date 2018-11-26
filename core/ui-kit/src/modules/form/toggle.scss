@@ -3,7 +3,7 @@
 @import '../../base/position/position.mixin.scss';
 @import '../../modules/icon/icon.mixin.scss';
 @import '../../base/align/align.mixin.scss';
-@import '../../base/grid/flex.mixin.scss';
+@import '../../base/layout/flex.mixin.scss';
 @import '../../setup/global-variables.scss';
 
 .#{$global-class-prefix}toggle {
@@ -68,7 +68,7 @@
   &__slider {
     @include -position-absolute-coordinates;
     @include flex;
-    @include flex--align-items(center);
+    @include flex-cross-axis(center);
     @include apply-animation('toggle') {
       transition: $toggle-slider-transition-speed;
     }
@@ -122,7 +122,7 @@
     }
 
     &--inactive {
-      @include flex--order(2);
+      @include flex-child-order(2);
 
       &::before {
         @include icon-minus-before;
@@ -130,7 +130,7 @@
     }
 
     &--active {
-      @include flex--order(1);
+      @include flex-child-order(1);
 
       &::before {
         @include icon-check-before;

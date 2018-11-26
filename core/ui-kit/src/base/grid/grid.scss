@@ -1,0 +1,273 @@
+@import 'grid.mixin.scss';
+@import 'grid.setup.scss';
+@import '../../mixins/breakpoint.scss';
+
+.#{$global-class-prefix}grid {
+  $bem-block: &;
+  @include grid-gap-normal;
+  display: flex;
+  flex-wrap: wrap;
+
+  /**
+   * properties to define grid gaps
+   */
+  // sass-lint:disable no-combinators
+  > #{$bem-block}__child {
+    @include grid-child-gap-normal;
+  }
+
+  &--gap {
+    &-normal {
+      @include grid-gap-normal;
+
+      > #{$bem-block}__child {
+        @include grid-child-gap-normal;
+      }
+    }
+
+    &-zero {
+      @include grid-gap-zero;
+
+      > #{$bem-block}__child {
+        @include grid-child-gap-zero;
+      }
+    }
+
+    @include breakpoint('xs') {
+      &-normal-xs {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-xs {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
+    }
+
+    @include breakpoint('s')  {
+      &-normal-s  {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-s {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
+    }
+
+    @include breakpoint('m')  {
+      &-normal-m  {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-m {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
+    }
+
+    @include breakpoint('l')  {
+      &-normal-l  {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-l {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
+    }
+
+    @include breakpoint('xl') {
+      &-normal-xl {
+        @include grid-gap-normal;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-normal;
+        }
+      }
+
+      &-zero-xl {
+        @include grid-gap-zero;
+
+        > #{$bem-block}__child {
+          @include grid-child-gap-zero;
+        }
+      }
+    }
+  }
+
+  /**
+   * properties to define grid direction
+   */
+  &--direction {
+    &-column          { flex-direction: column; }
+    &-column-reverse  { flex-direction: column-reverse; }
+    &-row             { flex-direction: row; }
+    &-row-reverse     { flex-direction: row-reverse; }
+
+    @include breakpoint('xs') {
+      &-column-xs         { flex-direction: column; }
+      &-column-reverse-xs { flex-direction: column-reverse; }
+      &-row-xs            { flex-direction: row; }
+      &-row-reverse-xs    { flex-direction: row-reverse; }
+    }
+
+    @include breakpoint('s') {
+      &-column-s          { flex-direction: column; }
+      &-column-reverse-s  { flex-direction: column-reverse; }
+      &-row-s             { flex-direction: row; }
+      &-row-reverse-s     { flex-direction: row-reverse; }
+    }
+
+    @include breakpoint('m') {
+      &-column-m          { flex-direction: column; }
+      &-column-reverse-m  { flex-direction: column-reverse; }
+      &-row-m             { flex-direction: row; }
+      &-row-reverse-m     { flex-direction: row-reverse; }
+    }
+
+    @include breakpoint('l') {
+      &-column-l          { flex-direction: column; }
+      &-column-reverse-l  { flex-direction: column-reverse; }
+      &-row-l             { flex-direction: row; }
+      &-row-reverse-l     { flex-direction: row-reverse; }
+    }
+
+    @include breakpoint('xl') {
+      &-column-xl          { flex-direction: column; }
+      &-column-reverse-xl  { flex-direction: column-reverse; }
+      &-row-xl             { flex-direction: row; }
+      &-row-reverse-xl     { flex-direction: row-reverse; }
+    }
+  }
+
+  /**
+   * properties for grid children items (widths and offsets)
+   */
+  &__child {
+
+    &--size {
+      @for $i from 1 through 12 {
+        &-#{$i} {
+          @include grid-child-size($i + 1);
+        }
+      }
+
+      @include breakpoint('xs') {
+        @for $i from 1 through 12 {
+          &-#{$i}-xs {
+            @include grid-child-size($i + 1);
+          }
+        }
+      }
+
+      @include breakpoint('s') {
+        @for $i from 1 through 12 {
+          &-#{$i}-s {
+            @include grid-child-size($i + 1);
+          }
+        }
+      }
+
+      @include breakpoint('m') {
+        @for $i from 1 through 12 {
+          &-#{$i}-m {
+            @include grid-child-size($i + 1);
+          }
+        }
+      }
+
+      @include breakpoint('l') {
+        @for $i from 1 through 12 {
+          &-#{$i}-l {
+            @include grid-child-size($i + 1);
+          }
+        }
+      }
+
+      @include breakpoint('xl') {
+        @for $i from 1 through 12 {
+          &-#{$i}-xl {
+            @include grid-child-size($i + 1);
+          }
+        }
+      }
+    }
+
+    &--offset {
+      @for $i from 0 through 11 {
+        &-#{$i} {
+          @include grid-child-offset($i + 1);
+        }
+      }
+
+      @include breakpoint('xs') {
+        @for $i from 0 through 11 {
+          &-#{$i}-xs {
+            @include grid-child-offset($i + 1);
+          }
+        }
+      }
+
+      @include breakpoint('s') {
+        @for $i from 0 through 11 {
+          &-#{$i}-s {
+            @include grid-child-offset($i + 1);
+          }
+        }
+      }
+
+      @include breakpoint('m') {
+        @for $i from 0 through 11 {
+          &-#{$i}-m {
+            @include grid-child-offset($i + 1);
+          }
+        }
+      }
+
+      @include breakpoint('l') {
+        @for $i from 0 through 11 {
+          &-#{$i}-l {
+            @include grid-child-offset($i + 1);
+          }
+        }
+      }
+
+      @include breakpoint('xl') {
+        @for $i from 0 through 11 {
+          &-#{$i}-xl {
+            @include grid-child-offset($i + 1);
+          }
+        }
+      }
+    }
+  }
+}

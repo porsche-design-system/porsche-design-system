@@ -4,8 +4,6 @@ import cx from "classnames"
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export type SpacingValue = 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
-
 export interface SpacingProps extends ClassNameProp, ComponentProp {
     /**
      * Set this to true if you always want to create a wrapper, even for single childs.
@@ -13,17 +11,17 @@ export interface SpacingProps extends ClassNameProp, ComponentProp {
      */
     wrap?: boolean
 
-    margin?: SpacingValue | "auto"
-    marginBottom?: SpacingValue | "auto"
-    marginLeft?: SpacingValue | "auto"
-    marginRight?: SpacingValue | "auto"
-    marginTop?: SpacingValue | "auto"
+    margin?: "auto" | 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    marginBottom?: "auto" | 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    marginLeft?: "auto" | 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    marginRight?: "auto" | 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    marginTop?: "auto" | 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
 
-    padding?: SpacingValue
-    paddingBottom?: SpacingValue
-    paddingLeft?: SpacingValue
-    paddingRight?: SpacingValue
-    paddingTop?: SpacingValue
+    padding?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    paddingBottom?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    paddingLeft?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    paddingRight?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+    paddingTop?: 0 | 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
 }
 
 const _Spacing: React.StatelessComponent<SpacingProps> = (props) => {

@@ -1,21 +1,6 @@
 import docInfo from "./docgenInfo.json"
 import { kebabCase, get, filter } from "lodash"
 
-function getComponentName(component) {
-    const name = component.displayName || component.name
-    return name && name.replace("_", "")
-}
-
-function getComponentNames(components) {
-    if (!components) {
-        return []
-    }
-
-    return components.map((component) => {
-        return getComponentName(component)
-    })
-}
-
 function getStoryRoute(category, name) {
     return `/${category}s/${kebabCase(name)}`
 }
@@ -49,7 +34,7 @@ function getStoryReferenceByName(storyReferences, name) {
     return storyReferences
         .map((item) => {
             return {
-                name: getComponentName(item.component),
+                name: item.component,
                 type: item.type
             }
         })
@@ -59,20 +44,21 @@ function getStoryReferenceByName(storyReferences, name) {
         .shift()
 }
 
-function getComponentGroup(name, subComponentNames) {
+function getComponentGroup(component, subComponents) {
     let result = {
-        [name]: {
-            description: get(docInfo[name], "docBlock.description"),
-            props: get(docInfo[name], "props")
+        [component]: {
+            description: get(docInfo[component], "docBlock.description"),
+            props: get(docInfo[component], "props")
         }
     }
 
-    subComponentNames.forEach((subComponentName) => {
+    subComponents.forEach((subComponent) => {
+        const name = subComponent.replace(".", "")
         result = {
             ...result,
-            [subComponentName]: {
-                description: get(docInfo[subComponentName], "docBlock.description"),
-                props: get(docInfo[subComponentName], "props")
+            [name]: {
+                description: get(docInfo[name], "docBlock.description"),
+                props: get(docInfo[name], "props")
             }
         }
     })
@@ -84,21 +70,18 @@ export function load(storyReferences) {
     const result = []
 
     storyReferences.forEach((ref) => {
-        const name = getComponentName(ref.component)
-        const subComponentNames = getComponentNames(ref.subComponents)
-
-        const docBlock = docInfo[name] || {}
+        const docBlock = docInfo[ref.component] || {}
 
         result.push({
-            name,
+            name: ref.component,
             type: ref.type,
             description: docBlock.description || [""],
             examples: ref.examples,
-            route: getStoryRoute(ref.type, name),
+            route: getStoryRoute(ref.type, ref.component),
             path: docBlock.path || "",
-            subComponentNames,
-            seeItems: getSeeItems(storyReferences, name),
-            componentGroup: getComponentGroup(name, subComponentNames)
+            subComponentNames: ref.subComponents,
+            seeItems: getSeeItems(storyReferences, ref.component),
+            componentGroup: getComponentGroup(ref.component, ref.subComponents)
         })
     })
 

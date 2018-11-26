@@ -1,4 +1,4 @@
-@import '../../../base/grid/flex.mixin.scss';
+@import '../../../base/layout/flex.mixin.scss';
 @import '../../../base/spacing/spacing.mixin.scss';
 @import '../../../base/background/background.mixin';
 @import '../../../mixins/breakpoint.scss';
@@ -12,7 +12,7 @@
   height: $event-detail-contact-height;
 
   @include breakpoint('xxs') {
-    @include flex--direction(column);
+    @include flex-direction(column);
 
     &__wrapper {
       position: relative;
@@ -28,10 +28,10 @@
   }
 
   @include breakpoint('m') {
-    @include flex--direction(row);
+    @include flex-direction(row);
 
     &__body {
-      @include flex--grow(1);
+      @include flex-child-grow(1);
       @include -spacing-inner-a;
     }
 
