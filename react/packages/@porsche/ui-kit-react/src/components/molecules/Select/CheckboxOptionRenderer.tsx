@@ -8,9 +8,5 @@ export const CheckboxOptionRenderer = (option: any, index: number): any => {
     }
 
     // Option, show Checkbox
-    return (
-        <Checkbox checked={option.selected} singleLine>
-            {option.label}
-        </Checkbox>
-    )
+    return <Checkbox checked={option.selected}>{option.label}</Checkbox>
 }
