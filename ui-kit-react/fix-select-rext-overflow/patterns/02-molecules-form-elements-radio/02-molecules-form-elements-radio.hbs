@@ -1,0 +1,18 @@
+<label class="radio {{ styleModifier }}">
+  <input class="radio__field {{#if ng-radio_error }} ng-invalid {{/if}}"
+         type="radio"
+         name="{{radio_name}}"
+         value="{{radio_value}}"
+         {{#if radio_checked }} checked="checked" {{/if}}
+         {{#if radio_disabled }} disabled="disabled" {{/if}}>
+
+  <span class="radio__icon {{#if radio_inverted }} radio__icon--inverted {{/if}} {{#if radio_error }} radio__icon--error {{/if}}"></span>
+  {{#if radio_label }}
+    <span class="radio__label {{#if radio_inverted }} radio__label--inverted {{/if}} {{#if radio_error }} radio__label--error {{/if}}">
+    {{ radio_label }}
+    {{#if radio_labelLink}}
+      <a class="radio__label-link {{#if radio_inverted }} radio__label-link--inverted {{/if}} {{#if radio_error }} radio__label-link--error {{/if}}" href="javascript:;">with a link</a>
+    {{/if}}
+    </span>
+  {{/if}}
+</label>
