@@ -73,6 +73,10 @@
       opacity: .55;
     }
 
+    #{$bem-block}__icon-loader {
+      opacity: 1;
+    }
+
     &#{$bem-block}--theme-inverted {
       color: $color-palette-black;
       background-color: mix($color-palette-white, $color-palette-grey-10, 50%);
@@ -84,6 +88,10 @@
 
       #{$bem-block}__label {
         opacity: .35;
+      }
+
+      #{$bem-block}__icon-loader {
+        opacity: 1;
       }
     }
   }
@@ -177,6 +185,10 @@
         opacity: .6;
       }
 
+      #{$bem-block}__icon-loader {
+        opacity: 1;
+      }
+
       &#{$bem-block}--theme-inverted {
         color: $color-palette-white;
         background-color: mix($color-palette-red-1, $color-palette-grey-10, 35%);
@@ -188,6 +200,10 @@
 
         #{$bem-block}__label {
           opacity: .35;
+        }
+
+        #{$bem-block}__icon-loader {
+          opacity: 1;
         }
       }
     }
@@ -226,6 +242,10 @@
         opacity: .6;
       }
 
+      #{$bem-block}__icon-loader {
+        opacity: 1;
+      }
+
       &#{$bem-block}--theme-inverted {
         color: $color-palette-white;
         background-color: mix($color-palette-blue-1, $color-palette-grey-10, 30%);
@@ -237,6 +257,10 @@
 
         #{$bem-block}__label {
           opacity: .35;
+        }
+
+        #{$bem-block}__icon-loader {
+          opacity: 1;
         }
       }
     }
@@ -307,6 +331,23 @@
     }
   }
 
+  &__icon {
+    position: absolute;
+    margin-top: rem(2px);
+    width: rem(16px);
+    height: rem(16px);
+  }
+
+  &__icon-loader {
+    margin-top: 3px;
+  }
+
+  &__label {
+    padding-left: rem(22px);
+    display: block;
+    width: 100%;
+  }
+
   &--loading {
     cursor: default;
     pointer-events: none;
@@ -318,43 +359,6 @@
 
   &--button-group {
     @include -spacing-12('left', 'margin');
-  }
-
-  &__icon {
-    position: absolute;
-    margin-top: rem(2px);
-    width: rem(16px);
-    height: rem(16px);
-
-    &--loading {
-
-      &::before {
-        visibility: hidden;
-      }
-
-      & #{$bem-block}__loader {
-        visibility: visible;
-      }
-    }
-  }
-
-  &__loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: {
-      top: - rem(16px) / 2;
-      left: - rem(16px) / 2;
-    }
-    width: rem(16px);
-    height: rem(16px);
-    visibility: hidden;
-  }
-
-  &__label {
-    padding-left: rem(22px);
-    display: block;
-    width: 100%;
   }
 
   // fix for Firefox, so that top alignment of button content works when two button are next to each other
