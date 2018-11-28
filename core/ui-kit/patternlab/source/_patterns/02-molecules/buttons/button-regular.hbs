@@ -11,10 +11,11 @@
           {{#if button-regular_isThemeInverted}} button-regular--theme-inverted {{/if}}
           {{styleModifier}}"
     {{#if button-regular_disabled}} aria-disabled="true" {{/if}}>
-    <i class="button-regular__icon icon-svg">
-      {{> atoms-icon-svg icon_code=button-regular_icon styleModifier="" }}
+    <i class="button-regular__icon {{#if button-regular_loading}}button-regular__icon-loader{{else}} icon-svg{{/if}}">
     {{#if button-regular_loading}}
-        {{> molecules-loader-base styleModifier="button-regular__loader" }}
+      {{> molecules-loader loader_small=true styleModifier="button-regular__loader-icon" }}
+    {{else}}
+      {{> atoms-icon-svg icon_code=button-regular_icon styleModifier="" }}
     {{/if}}
     </i>
     <span class="button-regular__label">{{ button-regular_label }}</span>
@@ -33,9 +34,9 @@
           {{#if button-regular_isThemeInverted}} button-regular--theme-inverted {{/if}}
           {{styleModifier}}"
     {{#if button-regular_disabled}} disabled {{/if}}>
-    <i class="button-regular__icon icon-svg">
+    <i class="button-regular__icon {{#if button-regular_loading}}button-regular__icon-loader{{else}} icon-svg{{/if}}">
     {{#if button-regular_loading}}
-      {{> molecules-loader-base styleModifier="button-regular__loader" }}
+      {{> molecules-loader loader_small=true styleModifier="button-regular__loader-icon" }}
     {{else}}
       {{> atoms-icon-svg icon_code=button-regular_icon styleModifier="" }}
     {{/if}}
