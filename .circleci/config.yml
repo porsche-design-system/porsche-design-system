@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build:
+    branches:
+      ignore:
+        - gh-pages
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo/core/ui-kit
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "49:93:de:0f:85:f6:1e:b0:42:52:28:b6:19:5b:c3:33"
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install npm dependencies
+          command: |
+            echo "//porschedev.jfrog.io/porschedev/api/npm/public-npm/:_authToken=$ARTIFACTORY_TOKEN" >> ~/.npmrc
+            npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Build
+          command: npm run release
+      - deploy:
+          name: Deploy to GitHub Pages
+          command: |
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
+            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+            pushd $TARGET_BRANCH
+              rm -rf ./$CIRCLE_BRANCH
+            popd
+            mkdir -p ./$TARGET_BRANCH/$CIRCLE_BRANCH && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
+            pushd $TARGET_BRANCH
+              git add -A
+              git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git push origin $TARGET_BRANCH --force-with-lease
+            popd
+      - run:
+          name: GitHub.io URL
+          command: |
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/
