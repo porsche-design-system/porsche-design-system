@@ -45,13 +45,11 @@
     outline: none;
 }
 
-.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-open
-    > .#{$global-class-prefix}Select-control {
+.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-open > .#{$global-class-prefix}Select-control {
     cursor: text;
 }
 
-.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-focused:not(.#{$global-class-prefix}select-is-open)
-    > .#{$global-class-prefix}Select-control {
+.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-focused:not(.#{$global-class-prefix}select-is-open) > .#{$global-class-prefix}Select-control {
     cursor: text;
 }
 
@@ -115,8 +113,7 @@
     opacity: 0;
 }
 
-.#{$global-class-prefix}Select-control:not(.#{$global-class-prefix}select-is-searchable)
-    > .#{$global-class-prefix}Select-input {
+.#{$global-class-prefix}Select-control:not(.#{$global-class-prefix}select-is-searchable) > .#{$global-class-prefix}Select-input {
     outline: none;
 }
 
@@ -163,7 +160,7 @@
 .#{$global-class-prefix}Select-clear {
     position: absolute;
     top: 50%;
-    right: 0px;
+    right: 0;
     transform: translate(0, -50%);
     font-size: 18px;
     color: $grey;
@@ -187,8 +184,7 @@
 // }
 
 // PICK ONE: Hide select values when select is open
-.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-open
-    .#{$global-class-prefix}Select-value {
+.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-open .#{$global-class-prefix}Select-value {
     display: none;
 }
 
@@ -244,14 +240,10 @@
     background-color: $select-background-color;
     color: $select-text-color;
     cursor: pointer;
-    line-height: $select-height;
-    vertical-align: middle;
+    line-height: 20px;
     display: block;
     position: static;
-    padding: 0 $select-padding-horizontal-left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding: $spacing-12 $select-padding-horizontal-left;
 
     &.#{$global-class-prefix}select-is-focused {
         background-color: inherit;
@@ -319,12 +311,7 @@
     color: inherit;
 }
 
-.#{$global-class-prefix}Select-option .#{$global-class-prefix}checkbox__icon {
-    align-self: center;
-}
-
 .#{$global-class-prefix}mobile-select {
-    // -webkit-tap-highlight-color: rgba(0,0,0,0);
     outline: none;
     position: absolute;
     top: 0;
