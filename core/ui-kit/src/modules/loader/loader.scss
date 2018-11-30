@@ -1,6 +1,6 @@
-@import 'loader.setup.scss';
-@import '../../mixins/animation.scss';
-@import '../../setup/global-variables.scss';
+// @import 'loader.setup.scss';
+// @import '../../mixins/animation.scss';
+// @import '../../setup/global-variables.scss';
 @import '../../setup/color-palette.setup.scss';
 
 //Rename to loader box to loader, when we get rid of pcc-sass css
@@ -106,9 +106,25 @@
     }
   }
 
+  // the exact sizes must be refactored when final SVG icons are in place!
   &--small {
-    width: 16px;
-    height: 16px;
+    width: rem(16px);
+    height: rem(16px);
+  }
+
+  &--medium {
+    width: rem(24px);
+    height: rem(24px);
+  }
+
+  &--large {
+    width: rem(36px);
+    height: rem(36px);
+  }
+
+  &--x-large {
+    width: rem(60px);
+    height: rem(60px);
   }
 }
 
