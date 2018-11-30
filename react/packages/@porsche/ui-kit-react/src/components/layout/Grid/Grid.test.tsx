@@ -9,11 +9,13 @@ describe("Grid component", () => {
     }
 
     describe("Grid default", () => {
-        // Act
-        const componentWrapper = createComponent()
-        // Assert
-        const result = componentWrapper.find(`.${prefix("grid")}`)
-        expect(result.length).toBe(1)
+        it("should have a grid class set", () => {
+            // Act
+            const componentWrapper = createComponent()
+            // Assert
+            const result = componentWrapper.find(`.${prefix("grid")}`)
+            expect(result.length).toBe(1)
+        })
     })
 
     describe("Grid zero gap", () => {
@@ -28,6 +30,14 @@ describe("Grid component", () => {
             const result = componentWrapper.find(`.${prefix("grid--gap-zero")}`)
             expect(result.length).toBe(1)
         })
+
+        it("should have no gap modifier with zero", () => {
+            // Act
+            const componentWrapper = createComponent()
+            // Assert
+            const result = componentWrapper.find(`.${prefix("grid--gap-zero")}`)
+            expect(result.length).toBe(0)
+        })
     })
 
     describe("Grid direction", () => {
@@ -41,6 +51,13 @@ describe("Grid component", () => {
             // Assert
             const result = componentWrapper.find(`.${prefix("grid--direction-column")}`)
             expect(result.length).toBe(1)
+        })
+        it("should have no direction modifier with column", () => {
+            // Act
+            const componentWrapper = createComponent()
+            // Assert
+            const result = componentWrapper.find(`.${prefix("grid--direction-column")}`)
+            expect(result.length).toBe(0)
         })
     })
 })

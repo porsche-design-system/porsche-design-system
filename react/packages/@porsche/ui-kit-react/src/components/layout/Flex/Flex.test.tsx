@@ -9,13 +9,15 @@ describe("Flex component", () => {
     }
 
     describe("Flex default", () => {
-        // Act
-        const componentWrapper = createComponent()
-        // Assert
-        const resultFlex = componentWrapper.find(`.${prefix("flex")}`)
-        const resultWrap = componentWrapper.find(`.${prefix("flex--wrap")}`)
-        expect(resultFlex.length).toBe(1)
-        expect(resultWrap.length).toBe(1)
+        it("should have a flex and a flex-wrap modifier", () => {
+            // Act
+            const componentWrapper = createComponent()
+            // Assert
+            const resultFlex = componentWrapper.find(`.${prefix("flex")}`)
+            const resultWrap = componentWrapper.find(`.${prefix("flex--wrap")}`)
+            expect(resultFlex.length).toBe(1)
+            expect(resultWrap.length).toBe(1)
+        })
     })
 
     describe("Flex inline", () => {

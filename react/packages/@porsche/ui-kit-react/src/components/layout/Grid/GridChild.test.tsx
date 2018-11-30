@@ -10,13 +10,15 @@ describe("Grid Child component", () => {
     }
 
     describe("Grid Child default", () => {
-        // Act
-        const componentWrapper = createComponent()
-        // Assert
-        const resultChild = componentWrapper.find(`.${prefix("grid__child")}`)
-        const resultChildWidth = componentWrapper.find(`.${prefix("grid__child--size-3")}`)
-        expect(resultChild.length).toBe(1)
-        expect(resultChildWidth.length).toBe(1)
+        it("should have a grid-child modifier and a size modifier with size 3", () => {
+            // Act
+            const componentWrapper = createComponent()
+            // Assert
+            const resultChild = componentWrapper.find(`.${prefix("grid__child")}`)
+            const resultChildWidth = componentWrapper.find(`.${prefix("grid__child--size-3")}`)
+            expect(resultChild.length).toBe(1)
+            expect(resultChildWidth.length).toBe(1)
+        })
     })
 
     describe("Grid Child size", () => {
