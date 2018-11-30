@@ -333,13 +333,7 @@
 
   &__icon {
     position: absolute;
-    margin-top: rem(2px);
-    width: rem(16px);
-    height: rem(16px);
-  }
-
-  &__icon-loader {
-    margin-top: 3px;
+    margin-top: .1875em; // this must be adapted if final SVG icons are integrated!
   }
 
   &__label {

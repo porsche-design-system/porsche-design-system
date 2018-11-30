@@ -1,6 +1,6 @@
 {
-  "loader_small": true,
-  "loader_medium": false,
+  "loader_small": false,
+  "loader_medium": true,
   "loader_large": false,
   "loader_x-large": false
 }

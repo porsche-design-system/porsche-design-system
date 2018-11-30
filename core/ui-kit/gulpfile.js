@@ -23,7 +23,7 @@ function resolvePath(pathInput) {
 // SVG Spriting
 gulp.task('sprites', function() {
   return gulp
-    .src('src/base/icons-svg/*.svg')
+    .src('*.svg', { cwd: resolvePath(paths().source.icons) })
     .pipe(svgSymbols({
       templates: ['default-svg'],
       slug: function(name) {
