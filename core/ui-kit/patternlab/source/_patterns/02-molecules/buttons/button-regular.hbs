@@ -11,13 +11,11 @@
           {{#if button-regular_isThemeInverted}} button-regular--theme-inverted {{/if}}
           {{styleModifier}}"
     {{#if button-regular_disabled}} aria-disabled="true" {{/if}}>
-    <i class="button-regular__icon {{#if button-regular_loading}}button-regular__icon-loader{{/if}}">
     {{#if button-regular_loading}}
-      {{> molecules-loader loader_small=true styleModifier="button-regular__loader-icon" }}
+      {{> molecules-loader loader_small=true styleModifier="button-regular__icon-loader" }}
     {{else}}
-      {{> atoms-icon-svg icon_code=button-regular_icon styleModifier="" }}
+      {{> atoms-icon-svg icon_code=button-regular_icon styleModifier="button-regular__icon" }}
     {{/if}}
-    </i>
     <span class="button-regular__label">{{ button-regular_label }}</span>
   </a>
 
