@@ -36,8 +36,8 @@ const Container = () => {
                 title="Align Content"
                 examplePath="layout/Flex/Container/FlexContainerExampleAlignContent"
             >
-                This aligns a flex containers lines within when there is extra space in the cross-axis, similar to how
-                justify-content aligns individual items within the main-axis. Note: this property has no effect when
+                This aligns a flex containers lines within it when there is extra space in the cross-axis, similar to
+                how justify-content aligns individual items within the main-axis. Note: this property has no effect when
                 there is only one line of flex items.
             </ComponentExample>
 

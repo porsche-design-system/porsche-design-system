@@ -10,11 +10,13 @@ describe("Flex Child", () => {
     }
 
     describe("Flex Child default", () => {
-        // Act
-        const componentWrapper = createComponent()
-        // Assert
-        const result = componentWrapper.find(`.${prefix("flex__child")}`)
-        expect(result.length).toBe(1)
+        it("should have a flex-child modifier", () => {
+            // Act
+            const componentWrapper = createComponent()
+            // Assert
+            const result = componentWrapper.find(`.${prefix("flex__child")}`)
+            expect(result.length).toBe(1)
+        })
     })
 
     describe("Flex Child align cross-axis", () => {
