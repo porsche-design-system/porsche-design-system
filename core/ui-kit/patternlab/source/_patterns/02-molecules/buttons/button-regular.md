@@ -1,6 +1,6 @@
 ---
 title: Button Regular
-state: inreview
+state: inprogress
 ---
 
 # UI Kit Core button manual
