@@ -7,13 +7,20 @@
            button-regular--small 
           
           
-          
           "
      disabled >
-    <span class="button-regular__icon icon icon--arrow-right-hair
-                 button-regular__icon--loading ">
-        <span class="loader-base  button-regular__loader"></span>
-
-    </span>
+      <span class="loader
+          loader--small
+          
+          
+          
+          button-regular__icon-loader" aria-busy="true">
+        <svg class="loader__fg loader__fg--small" viewBox="25 25 50 50" role="img" title="loader circle">
+          <circle class="loader__fg-path" cx="50" cy="50" r="20" />
+        </svg>
+        <svg class="loader__bg loader__bg--small" viewBox="25 25 50 50" role="img" title="loader circle">
+          <circle class="loader__bg-path" cx="50" cy="50" r="20" />
+        </svg>
+      </span>
     <span class="button-regular__label">Some button label</span>
   </button>

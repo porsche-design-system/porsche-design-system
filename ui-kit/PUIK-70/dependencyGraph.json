@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1543248280938,
+  "timestamp": 1543849544126,
   "graph": {
     "options": {
       "directed": true,
@@ -102,6 +102,15 @@
         "v": "01-atoms/02-text-size/text-size-small.hbs",
         "value": {
           "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {
+          "compileState": "clean",
+          "lineagePath": "../../patterns/02-molecules-buttons-button-regular/02-molecules-buttons-button-regular.rendered.html",
+          "lineagePattern": "molecules-button-regular",
+          "lineageState": "inprogress"
         }
       },
       {
@@ -1731,37 +1740,19 @@
         }
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-04-highlight-small.json",
+        "v": "02-molecules/buttons/button-regular~02-04-highlight-inverted.json",
         "value": {
           "compileState": "clean"
         }
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-05-highlight-small-disabled.json",
+        "v": "02-molecules/buttons/button-regular~02-05-highlight-inverted-disabled.json",
         "value": {
           "compileState": "clean"
         }
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-06-highlight-small-loading.json",
-        "value": {
-          "compileState": "clean"
-        }
-      },
-      {
-        "v": "02-molecules/buttons/button-regular~02-07-highlight-inverted.json",
-        "value": {
-          "compileState": "clean"
-        }
-      },
-      {
-        "v": "02-molecules/buttons/button-regular~02-08-highlight-inverted-disabled.json",
-        "value": {
-          "compileState": "clean"
-        }
-      },
-      {
-        "v": "02-molecules/buttons/button-regular~02-09-highlight-inverted-loading.json",
+        "v": "02-molecules/buttons/button-regular~02-06-highlight-inverted-loading.json",
         "value": {
           "compileState": "clean"
         }
@@ -1870,6 +1861,60 @@
       },
       {
         "v": "02-molecules/buttons/button-regular~04-06-small-ghost-loading.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-07-small-highlight.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-08-small-highlight-disabled.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-09-small-highlight-loading.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-10-small-sales.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-11-small-sales-disabled.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-12-small-sales-loading.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-13-small-sales-ghost.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-14-small-sales-ghost-disabled.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-15-small-sales-ghost-loading.json",
         "value": {
           "compileState": "clean"
         }
@@ -2135,6 +2180,27 @@
       },
       {
         "v": "02-molecules/loader/loader.hbs",
+        "value": {
+          "compileState": "clean",
+          "lineageState": "inprogress",
+          "lineagePath": "../../patterns/02-molecules-buttons-button-regular-06-03-link-loading/02-molecules-buttons-button-regular-06-03-link-loading.rendered.html",
+          "lineagePattern": "molecules-button-regular-06-03-link-loading"
+        }
+      },
+      {
+        "v": "02-molecules/loader/loader~01-medium.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/loader/loader~02-large.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/loader/loader~03-x-large.json",
         "value": {
           "compileState": "clean"
         }
@@ -4831,8 +4897,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~01-01-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~01-02-loading.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~01-02-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4841,8 +4917,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~01-03-ghost.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~01-04-ghost-disabled.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~01-04-ghost-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4851,8 +4937,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~01-05-ghost-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~01-06-inverted.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~01-06-inverted.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4861,8 +4957,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~01-07-inverted-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~01-08-inverted-loading.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~01-08-inverted-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4871,8 +4977,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~01-09-inverted-ghost.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~01-10-inverted-ghost-disabled.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~01-10-inverted-ghost-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4881,8 +4997,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~01-11-inverted-ghost-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~02-01-highlight.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~02-01-highlight.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4891,38 +5017,48 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~02-02-highlight-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~02-03-highlight-loading.json",
         "w": "02-molecules/buttons/button-regular.hbs",
         "value": {}
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-04-highlight-small.json",
+        "v": "02-molecules/buttons/button-regular~02-03-highlight-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~02-04-highlight-inverted.json",
         "w": "02-molecules/buttons/button-regular.hbs",
         "value": {}
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-05-highlight-small-disabled.json",
+        "v": "02-molecules/buttons/button-regular~02-04-highlight-inverted.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~02-05-highlight-inverted-disabled.json",
         "w": "02-molecules/buttons/button-regular.hbs",
         "value": {}
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-06-highlight-small-loading.json",
+        "v": "02-molecules/buttons/button-regular~02-05-highlight-inverted-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~02-06-highlight-inverted-loading.json",
         "w": "02-molecules/buttons/button-regular.hbs",
         "value": {}
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-07-highlight-inverted.json",
-        "w": "02-molecules/buttons/button-regular.hbs",
-        "value": {}
-      },
-      {
-        "v": "02-molecules/buttons/button-regular~02-08-highlight-inverted-disabled.json",
-        "w": "02-molecules/buttons/button-regular.hbs",
-        "value": {}
-      },
-      {
-        "v": "02-molecules/buttons/button-regular~02-09-highlight-inverted-loading.json",
-        "w": "02-molecules/buttons/button-regular.hbs",
+        "v": "02-molecules/buttons/button-regular~02-06-highlight-inverted-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4931,8 +5067,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~03-01-sales.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~03-02-sales-disabled.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~03-02-sales-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4941,8 +5087,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~03-03-sales-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~03-04-sales-ghost.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~03-04-sales-ghost.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4951,8 +5107,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~03-05-sales-ghost-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~03-06-sales-ghost-loading.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~03-06-sales-ghost-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4961,8 +5127,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~03-07-sales-inverted.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~03-08-sales-inverted-disabled.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~03-08-sales-inverted-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4971,8 +5147,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~03-09-sales-inverted-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~03-10-sales-inverted-ghost.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~03-10-sales-inverted-ghost.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4981,8 +5167,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~03-11-sales-inverted-ghost-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~03-12-sales-inverted-ghost-loading.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~03-12-sales-inverted-ghost-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -4991,8 +5187,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~04-01-small.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~04-02-small-disabled.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-02-small-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -5001,8 +5207,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~04-03-small-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~04-04-small-ghost.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-04-small-ghost.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -5011,8 +5227,108 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~04-05-small-ghost-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~04-06-small-ghost-loading.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-06-small-ghost-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-07-small-highlight.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-07-small-highlight.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-08-small-highlight-disabled.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-08-small-highlight-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-09-small-highlight-loading.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-09-small-highlight-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-10-small-sales.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-10-small-sales.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-11-small-sales-disabled.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-11-small-sales-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-12-small-sales-loading.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-12-small-sales-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-13-small-sales-ghost.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-13-small-sales-ghost.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-14-small-sales-ghost-disabled.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-14-small-sales-ghost-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-15-small-sales-ghost-loading.json",
+        "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-15-small-sales-ghost-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -5021,8 +5337,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~05-01-stretch.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~05-02-stretch-disabled.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~05-02-stretch-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -5031,8 +5357,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~05-03-stretch-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~06-01-link.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~06-01-link.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -5041,8 +5377,18 @@
         "value": {}
       },
       {
+        "v": "02-molecules/buttons/button-regular~06-02-link-disabled.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
+        "value": {}
+      },
+      {
         "v": "02-molecules/buttons/button-regular~06-03-link-loading.json",
         "w": "02-molecules/buttons/button-regular.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~06-03-link-loading.json",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
@@ -5118,6 +5464,21 @@
       {
         "v": "02-molecules/loader/loader-text~02-light.json",
         "w": "02-molecules/loader/loader-text.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader~01-medium.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader~02-large.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader~03-x-large.json",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
@@ -6542,227 +6903,262 @@
       },
       {
         "v": "02-molecules/buttons/button-regular.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular.hbs",
+        "w": "01-atoms/03-icon/icon-svg.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-01-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-02-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-03-ghost.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-04-ghost-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-05-ghost-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-06-inverted.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-07-inverted-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-08-inverted-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-09-inverted-ghost.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-10-inverted-ghost-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~01-11-inverted-ghost-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~02-01-highlight.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~02-02-highlight-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~02-03-highlight-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-04-highlight-small.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "v": "02-molecules/buttons/button-regular~02-04-highlight-inverted.json",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-05-highlight-small-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "v": "02-molecules/buttons/button-regular~02-05-highlight-inverted-disabled.json",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
-        "v": "02-molecules/buttons/button-regular~02-06-highlight-small-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
-        "value": {}
-      },
-      {
-        "v": "02-molecules/buttons/button-regular~02-07-highlight-inverted.json",
-        "w": "02-molecules/loader/loader-base.hbs",
-        "value": {}
-      },
-      {
-        "v": "02-molecules/buttons/button-regular~02-08-highlight-inverted-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
-        "value": {}
-      },
-      {
-        "v": "02-molecules/buttons/button-regular~02-09-highlight-inverted-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "v": "02-molecules/buttons/button-regular~02-06-highlight-inverted-loading.json",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-01-sales.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-02-sales-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-03-sales-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-04-sales-ghost.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-05-sales-ghost-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-06-sales-ghost-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-07-sales-inverted.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-08-sales-inverted-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-09-sales-inverted-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-10-sales-inverted-ghost.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-11-sales-inverted-ghost-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~03-12-sales-inverted-ghost-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~04-01-small.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~04-02-small-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~04-03-small-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~04-04-small-ghost.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~04-05-small-ghost-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~04-06-small-ghost-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-07-small-highlight.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-08-small-highlight-disabled.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-09-small-highlight-loading.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-10-small-sales.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-11-small-sales-disabled.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-12-small-sales-loading.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-13-small-sales-ghost.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-14-small-sales-ghost-disabled.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/buttons/button-regular~04-15-small-sales-ghost-loading.json",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~05-01-stretch.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~05-02-stretch-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~05-03-stretch-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~06-01-link.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~06-02-link-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-regular~06-03-link-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
