@@ -1,8 +1,8 @@
 
 <div class="-background-white -spacing-inner-a">
-  <h2 class="-text-size-3-thin -text-color-black">Button group</h2>
+  <h2 class="-text-size-3-thin -text-color-black">Button group examples</h2>
   <div class="-spacing-30">
-    <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal &lt;button&gt;</h4>
+    <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal</h4>
     <div class="flex button-group">
       {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
       {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
@@ -11,7 +11,7 @@
   </div>
 
   <div class="-spacing-30">
-    <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal stretched &lt;button&gt;</h4>
+    <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal stretched</h4>
     <div class="flex button-group">
       {{> molecules-button-regular styleModifier="flex__child--equal" button-regular_ghost=true button-regular_label="Some Button Label" }}
       {{> molecules-button-regular styleModifier="flex__child--equal" button-regular_label="Some Button Label with more text" }}
@@ -20,7 +20,7 @@
   </div>
 
   <div class="-spacing-30">
-    <h4 class="-text-size-5-thin -text-color-black">Button Group vertical &lt;button&gt;</h4>
+    <h4 class="-text-size-5-thin -text-color-black">Button Group vertical</h4>
     <div class="flex flex--direction-column flex--cross-axis-start button-group button-group--vertical">
       {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
       {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
@@ -29,8 +29,17 @@
   </div>
 
   <div class="-spacing-30">
-    <h4 class="-text-size-5-thin -text-color-black">Button Group vertical stretched &lt;button&gt;</h4>
+    <h4 class="-text-size-5-thin -text-color-black">Button Group vertical stretched</h4>
     <div class="flex flex--direction-column button-group button-group--vertical">
+      {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
+      {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
+      {{> molecules-button-regular styleModifier="" button-regular_highlight=true button-regular_label="Less text" }}
+    </div>
+  </div>
+
+  <div class="-spacing-30">
+    <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal/vertical-stretched (breakpoint specific)</h4>
+    <div class="flex flex--direction-column flex--direction-row-m button-group--vertical button-group--m">
       {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
       {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
       {{> molecules-button-regular styleModifier="" button-regular_highlight=true button-regular_label="Less text" }}

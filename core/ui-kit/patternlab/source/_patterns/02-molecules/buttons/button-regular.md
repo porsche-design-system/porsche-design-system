@@ -91,7 +91,7 @@ To show the loader icon, the default svg icon (probably implemented by `<use>`-t
 ### Button group
 Displaying a group of buttons which are placed side by side (horizontal) or among each other (vertical) can be done by combining `flex` component with `button-group`.
 
-__Button group horizontal:__
+__Button group horizontal:__  
 ```
 <div class="flex button-group">
   <button type="button" class="button-regular">
@@ -109,9 +109,27 @@ __Button group horizontal:__
 </div>
 ```
 
-__Button group vertical:__
+__Button group vertical:__  
 ```
 <div class="flex flex--direction-column flex--cross-axis-start button-group button-group--vertical">
+  <button type="button" class="button-regular">
+      <svg class="icon-svg button-regular__icon" role="img" title="arrow-right-hair">
+        <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"></use>
+      </svg>
+    <span class="button-regular__label">Some Button Label with more text</span>
+  </button>
+  <button type="button" class="button-regular button-regular--highlight">
+      <svg class="icon-svg button-regular__icon" role="img" title="arrow-right-hair">
+        <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"></use>
+      </svg>
+    <span class="button-regular__label">Less text</span>
+  </button>
+</div>
+```
+
+__Breakpoint specific switching between horizontal and vertical layout:__  
+```
+<div class="flex flex--direction-column flex--direction-row-m button-group--vertical button-group--m">
   <button type="button" class="button-regular">
       <svg class="icon-svg button-regular__icon" role="img" title="arrow-right-hair">
         <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"></use>
