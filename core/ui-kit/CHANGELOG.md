@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+* Add svg icon system
+
+#### Breaking changes
+* Renamed `icon` (files and classes) to `icon-font`
+* Moved `icon` files to deprecated folder
+* Added svg icon system
+
+__Migration path:__  
+  * Change include path of `icon/index.scss` (and corresponding files):  
+  `@import '../modules/icon/icon*.scss` => `@import '../deprecated/icon-font/icon-font*.scss`  
+  
+  * Change CSS classes (inclusive --modifier):  
+  `{$global-class-prefix}icon` => `$global-class-prefix}icon-font`  
+  `{$global-class-prefix}icon--*` => `$global-class-prefix}icon-font--*`  
+
+
 ## [0.15.0] - 2018-11-26
 * Add possibility display the navigation-steps on light or dark background
   __Migration path:__ 
