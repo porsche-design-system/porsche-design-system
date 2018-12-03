@@ -1,0 +1,24 @@
+@import '../../setup/global-variables.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+
+.#{$global-class-prefix}button-group {
+  margin-bottom: calc(-1 * #{$spacing-12});
+
+  > .#{$global-class-prefix}button-regular,  // sass-lint:disable-line no-combinators
+  > .#{$global-class-prefix}button-icon {  // sass-lint:disable-line no-combinators
+    @include -spacing-12('right', 'margin');
+    @include -spacing-12('bottom', 'margin');
+
+    &:last-of-type {
+      @include -spacing-0('right', 'margin');
+    }
+  }
+
+  &--vertical {
+    > .#{$global-class-prefix}button-regular,  // sass-lint:disable-line no-combinators
+    > .#{$global-class-prefix}button-icon {  // sass-lint:disable-line no-combinators
+      @include -spacing-0('right', 'margin');
+      @include -spacing-12('bottom', 'margin');
+    }
+  }
+}
