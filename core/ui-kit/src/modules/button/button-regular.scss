@@ -352,10 +352,6 @@
     width: 100%;
   }
 
-  &--button-group {
-    @include -spacing-12('left', 'margin');
-  }
-
   // fix for Firefox, so that top alignment of button content works when two button are next to each other
   @-moz-document url-prefix() { //sass-lint:disable-line no-vendor-prefixes
     &__label {
@@ -363,3 +359,4 @@
     }
   }
 }
+
