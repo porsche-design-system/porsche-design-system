@@ -987,6 +987,12 @@ table {
     .grid__child--offset-11-xl {
       margin-left: 91.66667%; } }
 
+.icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  fill: currentColor; }
+
 /**
  * properties for flex container
  */
