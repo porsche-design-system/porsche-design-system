@@ -12,7 +12,8 @@
       "images": "./patternlab/source/images",
       "fonts": "./patternlab/source/fonts",
       "css": "./patternlab/source/css/",
-      "porscheStylesheets": "./"
+      "porscheStylesheets": "./",
+      "icons": "./src/base/icon-svg"
     },
     "public": {
       "root": "./patternlab/public/",
