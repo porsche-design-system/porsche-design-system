@@ -992,6 +992,21 @@ table {
   width: 1em;
   height: 1em;
   fill: currentColor; }
+  .icon--size-s {
+    width: 1.125rem;
+    height: 1.125rem; }
+  .icon--size-m {
+    width: 1.5rem;
+    height: 1.5rem; }
+  .icon--size-l {
+    width: 1.875rem;
+    height: 1.875rem; }
+  .icon--size-xl {
+    width: 2.625rem;
+    height: 2.625rem; }
+  .icon--size-xxl {
+    width: 3.75rem;
+    height: 3.75rem; }
 
 /**
  * properties for flex container

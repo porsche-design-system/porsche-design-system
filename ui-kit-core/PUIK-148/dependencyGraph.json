@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1543935951993,
+  "timestamp": 1544015536400,
   "graph": {
     "options": {
       "directed": true,
@@ -107,7 +107,9 @@
       {
         "v": "01-atoms/03-icon/icon.hbs",
         "value": {
-          "compileState": "clean"
+          "compileState": "clean",
+          "lineagePath": "../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html",
+          "lineagePattern": "design-spec-icons"
         }
       },
       {
@@ -3265,6 +3267,12 @@
       },
       {
         "v": "99-design-spec/form-elements/toggle.hbs",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "99-design-spec/icons/icons.hbs",
         "value": {
           "compileState": "clean"
         }
@@ -6549,6 +6557,11 @@
       {
         "v": "99-design-spec/form-elements/toggle.hbs",
         "w": "02-molecules/form-elements/toggle.hbs",
+        "value": {}
+      },
+      {
+        "v": "99-design-spec/icons/icons.hbs",
+        "w": "01-atoms/03-icon/icon.hbs",
         "value": {}
       },
       {
