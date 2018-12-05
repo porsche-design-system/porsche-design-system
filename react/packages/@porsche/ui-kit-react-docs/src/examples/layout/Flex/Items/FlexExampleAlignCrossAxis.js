@@ -25,7 +25,7 @@ const FlexExampleAlignCrossAxis = () => {
                     <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
                 </Flex.Item>
                 <Flex.Item alignCrossAxis="auto">
-                    <div style={itemStyle("50px", "pink")}>3</div>
+                    <div style={itemStyle("50px", "DeepPink")}>3</div>
                 </Flex.Item>
                 <Flex.Item>
                     <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
@@ -41,7 +41,7 @@ const FlexExampleAlignCrossAxis = () => {
                     <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
                 </Flex.Item>
                 <Flex.Item alignCrossAxis="stretch">
-                    <div style={itemStyle("100%", "pink")}>3</div>
+                    <div style={itemStyle("100%", "DeepPink")}>3</div>
                 </Flex.Item>
                 <Flex.Item>
                     <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
@@ -57,7 +57,7 @@ const FlexExampleAlignCrossAxis = () => {
                     <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
                 </Flex.Item>
                 <Flex.Item alignCrossAxis="start">
-                    <div style={itemStyle("50px", "pink")}>3</div>
+                    <div style={itemStyle("50px", "DeepPink")}>3</div>
                 </Flex.Item>
                 <Flex.Item>
                     <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
@@ -73,7 +73,7 @@ const FlexExampleAlignCrossAxis = () => {
                     <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
                 </Flex.Item>
                 <Flex.Item alignCrossAxis="end">
-                    <div style={itemStyle("50px", "pink")}>3</div>
+                    <div style={itemStyle("50px", "DeepPink")}>3</div>
                 </Flex.Item>
                 <Flex.Item>
                     <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
@@ -89,7 +89,7 @@ const FlexExampleAlignCrossAxis = () => {
                     <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
                 </Flex.Item>
                 <Flex.Item alignCrossAxis="center">
-                    <div style={itemStyle("50px", "pink")}>3</div>
+                    <div style={itemStyle("50px", "DeepPink")}>3</div>
                 </Flex.Item>
                 <Flex.Item>
                     <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
@@ -116,7 +116,7 @@ const FlexExampleAlignCrossAxis = () => {
                     <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
                 </Flex.Item>
                 <Flex.Item alignCrossAxis="baseline">
-                    <div style={itemStyle("50px", "pink")}>3</div>
+                    <div style={itemStyle("50px", "DeepPink")}>3</div>
                 </Flex.Item>
                 <Flex.Item>
                     <div style={itemStyle("70px", "LightSkyBlue")}>4</div>
@@ -132,7 +132,7 @@ const FlexExampleAlignCrossAxis = () => {
                     <div style={itemStyle("80px", "DeepSkyBlue")}>2</div>
                 </Flex.Item>
                 <Flex.Item alignCrossAxis={{ base: "start", l: "end" }}>
-                    <div style={itemStyle("50px", "pink")}>3</div>
+                    <div style={itemStyle("50px", "DeepPink")}>3</div>
                 </Flex.Item>
                 <Flex.Item>
                     <div style={itemStyle("70px", "LightSkyBlue")}>4</div>

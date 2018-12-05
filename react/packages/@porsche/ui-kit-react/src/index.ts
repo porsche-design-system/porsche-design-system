@@ -56,7 +56,7 @@ export { ComponentProp } from "./lib/props/ComponentProp"
 export { prefix } from "./lib/prefix"
 export { getElementType } from "./lib/getElementType"
 export { breakpoints } from "./lib/breakpoints"
-export { BreakpointValues, mapBreakpointPropToClasses } from "./lib/BreakpointValues"
+export { BreakpointCustomizable, BreakpointValues, mapBreakpointPropToClasses } from "./lib/BreakpointCustomizable"
 
 /**
  * TODO:

@@ -52,74 +52,74 @@ const FlexExampleItemWidth = () => {
             <Spacing marginTop={30}>
                 <Text>Specific widths:</Text>
                 <Flex style={containerStyle}>
-                    <Flex.Item width={3}>
-                        <div style={itemStyle("LightSkyBlue")}>Width: quarter</div>
+                    <Flex.Item width="one-quarter">
+                        <div style={itemStyle("LightSkyBlue")}>one-quarter</div>
                     </Flex.Item>
-                    <Flex.Item width={3}>
-                        <div style={itemStyle("DeepSkyBlue")}>Width: quarter</div>
+                    <Flex.Item width="one-quarter">
+                        <div style={itemStyle("DeepSkyBlue")}>one-quarter</div>
                     </Flex.Item>
-                    <Flex.Item width={3}>
-                        <div style={itemStyle("dodgerblue")}>Width: quarter</div>
+                    <Flex.Item width="one-quarter">
+                        <div style={itemStyle("dodgerblue")}>one-quarter</div>
                     </Flex.Item>
-                    <Flex.Item width={3}>
-                        <div style={itemStyle("DeepSkyBlue")}>Width: quarter</div>
-                    </Flex.Item>
-                </Flex>
-                <Flex style={containerStyle}>
-                    <Flex.Item width={4}>
-                        <div style={itemStyle("LightSkyBlue")}>Width: third</div>
-                    </Flex.Item>
-                    <Flex.Item width={4}>
-                        <div style={itemStyle("DeepSkyBlue")}>Width: third</div>
-                    </Flex.Item>
-                    <Flex.Item width={4}>
-                        <div style={itemStyle("dodgerblue")}>Width: third</div>
+                    <Flex.Item width="one-quarter">
+                        <div style={itemStyle("DeepSkyBlue")}>one-quarter</div>
                     </Flex.Item>
                 </Flex>
                 <Flex style={containerStyle}>
-                    <Flex.Item width={6}>
-                        <div style={itemStyle("LightSkyBlue")}>Width: half</div>
+                    <Flex.Item width="one-third">
+                        <div style={itemStyle("LightSkyBlue")}>one-third</div>
                     </Flex.Item>
-                    <Flex.Item width={6}>
-                        <div style={itemStyle("DeepSkyBlue")}>Width: half</div>
+                    <Flex.Item width="one-third">
+                        <div style={itemStyle("DeepSkyBlue")}>one-third</div>
                     </Flex.Item>
-                </Flex>
-                <Flex style={containerStyle}>
-                    <Flex.Item width={8}>
-                        <div style={itemStyle("LightSkyBlue")}>Width: 2 thirds</div>
-                    </Flex.Item>
-                    <Flex.Item width={4}>
-                        <div style={itemStyle("DeepSkyBlue")}>Width: third</div>
+                    <Flex.Item width="one-third">
+                        <div style={itemStyle("dodgerblue")}>one-third</div>
                     </Flex.Item>
                 </Flex>
                 <Flex style={containerStyle}>
-                    <Flex.Item width={9}>
-                        <div style={itemStyle("LightSkyBlue")}>Width: 3 quarters</div>
+                    <Flex.Item width="half">
+                        <div style={itemStyle("LightSkyBlue")}>half</div>
                     </Flex.Item>
-                    <Flex.Item width={3}>
-                        <div style={itemStyle("DeepSkyBlue")}>Width: quarter</div>
+                    <Flex.Item width="half">
+                        <div style={itemStyle("DeepSkyBlue")}>half</div>
                     </Flex.Item>
                 </Flex>
                 <Flex style={containerStyle}>
-                    <Flex.Item width={12}>
-                        <div style={itemStyle("DeepSkyBlue")}>Width: full</div>
+                    <Flex.Item width="two-thirds">
+                        <div style={itemStyle("LightSkyBlue")}>two-thirds</div>
+                    </Flex.Item>
+                    <Flex.Item width="one-third">
+                        <div style={itemStyle("DeepSkyBlue")}>one-third</div>
+                    </Flex.Item>
+                </Flex>
+                <Flex style={containerStyle}>
+                    <Flex.Item width="three-quarters">
+                        <div style={itemStyle("LightSkyBlue")}>three-quarters</div>
+                    </Flex.Item>
+                    <Flex.Item width="one-quarter">
+                        <div style={itemStyle("DeepSkyBlue")}>one-quarter</div>
+                    </Flex.Item>
+                </Flex>
+                <Flex style={containerStyle}>
+                    <Flex.Item width="full">
+                        <div style={itemStyle("DeepSkyBlue")}>full</div>
                     </Flex.Item>
                 </Flex>
             </Spacing>
 
             <Spacing marginTop={30}>
-                <Text>Responsive behaviour (base: 6, l: 3):</Text>
+                <Text>{'Responsive behaviour (base: "half", l: "one-quarter"):'}</Text>
                 <Flex wrap>
-                    <Flex.Item width={{ base: 6, l: 3 }}>
+                    <Flex.Item width={{ base: "half", l: "one-quarter" }}>
                         <div style={itemStyle("LightSkyBlue")}>An element</div>
                     </Flex.Item>
-                    <Flex.Item width={{ base: 6, l: 3 }}>
+                    <Flex.Item width={{ base: "half", l: "one-quarter" }}>
                         <div style={itemStyle("DeepSkyBlue")}>An element with a little more text</div>
                     </Flex.Item>
-                    <Flex.Item width={{ base: 6, l: 3 }}>
+                    <Flex.Item width={{ base: "half", l: "one-quarter" }}>
                         <div style={itemStyle("dodgerblue")}>An element</div>
                     </Flex.Item>
-                    <Flex.Item width={{ base: 6, l: 3 }}>
+                    <Flex.Item width={{ base: "half", l: "one-quarter" }}>
                         <div style={itemStyle("DeepSkyBlue")}>An element with more content</div>
                     </Flex.Item>
                 </Flex>

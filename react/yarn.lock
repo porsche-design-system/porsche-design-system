@@ -10522,13 +10522,14 @@ semantic-ui-css@^2.2.12:
   dependencies:
     jquery x.*
 
-semantic-ui-react@^0.75.1:
-  version "0.75.1"
-  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.75.1.tgz#81c2ed7ed45562f89e5049c5a64195b9638d8daf"
-  integrity sha512-5bxOPRFULGg64TeNwJvRyEp5Jo7zluljUVF7ixlVRVYJ/2ByQkVnEiomEIyuJ//wVjRcesuJsCbjodM8PNaPrA==
+semantic-ui-react@^0.77.0:
+  version "0.77.2"
+  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.77.2.tgz#c4cf0e3cd5590c906f4d655d163ac5969acd359b"
+  integrity sha512-VwxY6oGLrBO2xoJiAW/vn40GL4WGZYWxtbrHIKYE1xChTOFlDxyIULMdnuAHOTbrbOYbLQ0X7LpdvEEYmieiJw==
   dependencies:
     babel-runtime "^6.25.0"
     classnames "^2.2.5"
+    fbjs "^0.8.16"
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
