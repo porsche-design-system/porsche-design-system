@@ -6,4 +6,29 @@
   width: 1em;
   height: 1em;
   fill: currentColor;
+
+  &--size-s {
+    width: rem(18px);
+    height: rem(18px);
+  }
+
+  &--size-m {
+    width: rem(24px);
+    height: rem(24px);
+  }
+
+  &--size-l {
+    width: rem(30px);
+    height: rem(30px);
+  }
+
+  &--size-xl {
+    width: rem(42px);
+    height: rem(42px);
+  }
+
+  &--size-xxl {
+    width: rem(60px);
+    height: rem(60px);
+  }
 }
