@@ -13,7 +13,7 @@
       "fonts": "./patternlab/source/fonts",
       "css": "./patternlab/source/css/",
       "porscheStylesheets": "./",
-      "icons": "./src/base/icon-svg"
+      "icons": "./src/base/icon"
     },
     "public": {
       "root": "./patternlab/public/",
