@@ -1,5 +1,7 @@
 import { prefix } from "./prefix"
 
+export type BreakpointCustomizable<T> = T | BreakpointValues<T>
+
 export interface BreakpointValues<T> {
     base: T
     xs?: T
@@ -11,7 +13,7 @@ export interface BreakpointValues<T> {
 
 export function mapBreakpointPropToClasses(
     className: string,
-    prop?: string | number | boolean | BreakpointValues<string | number | boolean>,
+    prop?: BreakpointCustomizable<string | number | boolean>,
     modTrue?: string,
     modFalse?: string
 ): any {

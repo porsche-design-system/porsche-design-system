@@ -34,29 +34,29 @@ describe("Flex Child", () => {
     })
 
     describe("Flex Child width", () => {
-        it("should have a width modifier of 3", () => {
+        it("should have a width modifier of one-quarter", () => {
             // Arrange
             const props: FlexItemProps = {
-                width: 3
+                width: "one-quarter"
             }
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const result = componentWrapper.find(`.${prefix("flex__child--width-3")}`)
+            const result = componentWrapper.find(`.${prefix("flex__child--width-one-quarter")}`)
             expect(result.length).toBe(1)
         })
     })
 
     describe("Flex Child offset", () => {
-        it("should have a offset modifier of 3", () => {
+        it("should have a offset modifier of one-quarter", () => {
             // Arrange
             const props: FlexItemProps = {
-                offset: 3
+                offset: "one-quarter"
             }
             // Act
             const componentWrapper = createComponent(props)
             // Assert
-            const result = componentWrapper.find(`.${prefix("flex__child--offset-3")}`)
+            const result = componentWrapper.find(`.${prefix("flex__child--offset-one-quarter")}`)
             expect(result.length).toBe(1)
         })
     })
