@@ -5830,6 +5830,8 @@ table {
       font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
     .input__field::-webkit-input-placeholder {
       color: #000; }
+    .input__field:-ms-input-placeholder {
+      color: #000; }
     .input__field::-ms-input-placeholder {
       color: #000; }
     .input__field::placeholder {
@@ -5846,6 +5848,8 @@ table {
                 appearance: none; }
     .input__field:focus::-webkit-input-placeholder {
       opacity: 0; }
+    .input__field:focus:-ms-input-placeholder {
+      opacity: 0; }
     .input__field:focus::-ms-input-placeholder {
       opacity: 0; }
     .input__field:focus::placeholder {
@@ -5859,6 +5863,8 @@ table {
     .input__field:disabled {
       color: #494e51; }
       .input__field:disabled::-webkit-input-placeholder {
+        color: #494e51; }
+      .input__field:disabled:-ms-input-placeholder {
         color: #494e51; }
       .input__field:disabled::-ms-input-placeholder {
         color: #494e51; }
@@ -6150,6 +6156,8 @@ table {
       border: 1px solid #d5001c; }
     .textarea__field::-webkit-input-placeholder {
       color: #fff; }
+    .textarea__field:-ms-input-placeholder {
+      color: #fff; }
     .textarea__field::-ms-input-placeholder {
       color: #fff; }
     .textarea__field::placeholder {
@@ -6157,6 +6165,9 @@ table {
     .textarea__field:disabled::-webkit-input-placeholder {
       -webkit-user-select: none;
               user-select: none; }
+    .textarea__field:disabled:-ms-input-placeholder {
+      -ms-user-select: none;
+          user-select: none; }
     .textarea__field:disabled::-ms-input-placeholder {
       -ms-user-select: none;
           user-select: none; }
@@ -13510,6 +13521,8 @@ table {
   .ng-submitted .input__field.ng-invalid:disabled {
     color: #494e51; }
     .ng-submitted .input__field.ng-invalid:disabled::-webkit-input-placeholder {
+      color: #494e51; }
+    .ng-submitted .input__field.ng-invalid:disabled:-ms-input-placeholder {
       color: #494e51; }
     .ng-submitted .input__field.ng-invalid:disabled::-ms-input-placeholder {
       color: #494e51; }
