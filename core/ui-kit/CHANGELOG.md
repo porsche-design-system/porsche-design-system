@@ -10,8 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Add svg icon system
 
 #### Breaking changes
-* Renamed `icon` (files and classes) to `icon-font`
 * Moved `icon` files to deprecated folder
+* Renamed `icon` (files and classes) to `icon-font`
 * Added svg icon system
 
 __Migration path:__  

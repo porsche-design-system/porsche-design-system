@@ -7,28 +7,29 @@
   height: 1em;
   fill: currentColor;
 
-  &--size-s {
+  &--x-small {
     width: rem(18px);
     height: rem(18px);
   }
 
-  &--size-m {
+  &--small {
     width: rem(24px);
     height: rem(24px);
   }
 
-  &--size-l {
+  &--medium {
     width: rem(30px);
     height: rem(30px);
   }
 
-  &--size-xl {
+  &--large {
     width: rem(42px);
     height: rem(42px);
   }
 
-  &--size-xxl {
+  &--x-large {
     width: rem(60px);
     height: rem(60px);
   }
+
 }
