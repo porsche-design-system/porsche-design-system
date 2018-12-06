@@ -1,45 +1,45 @@
 import React from "react"
-import { Input, Flex, Spacing } from "@porsche/ui-kit-react"
+import { Input, Spacing, Grid } from "@porsche/ui-kit-react"
 
 const InputExampleTypesError = () => {
     return (
         <div>
-            <Flex gap="grid">
-                <Flex.Item width={3}>
+            <Grid>
+                <Grid.Child size={3}>
                     <Input error placeholder="Floating Label" />
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <Input error placeholder="Floating Label" value="Value" />
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <Input error placeholder="Placeholder" basic />
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <Input error placeholder="Placeholder" basic value="Value" />
-                </Flex.Item>
-            </Flex>
+                </Grid.Child>
+            </Grid>
 
             <Spacing marginTop={24}>
-                <Flex gap="grid">
-                    <Flex.Item width={3}>
+                <Grid>
+                    <Grid.Child size={3}>
                         <Input error icon="cancel" placeholder="Floating Label" />
-                    </Flex.Item>
+                    </Grid.Child>
 
-                    <Flex.Item width={3}>
+                    <Grid.Child size={3}>
                         <Input error icon="cancel" basic placeholder="Placeholder" />
-                    </Flex.Item>
+                    </Grid.Child>
 
-                    <Flex.Item width={3}>
+                    <Grid.Child size={3}>
                         <Input error unit="km" placeholder="Floating Label" />
-                    </Flex.Item>
+                    </Grid.Child>
 
-                    <Flex.Item width={3}>
+                    <Grid.Child size={3}>
                         <Input error unit="km" basic placeholder="Placeholder" />
-                    </Flex.Item>
-                </Flex>
+                    </Grid.Child>
+                </Grid>
             </Spacing>
         </div>
     )

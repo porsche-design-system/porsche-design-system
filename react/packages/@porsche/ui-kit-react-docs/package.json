@@ -91,7 +91,7 @@
         "rimraf": "^2.6.1",
         "sass-loader": "^7.1.0",
         "semantic-ui-css": "^2.2.12",
-        "semantic-ui-react": "^0.75.1",
+        "semantic-ui-react": "^0.77.0",
         "style-loader": "^0.20.3",
         "through2": "^2.0.3",
         "url-loader": "^1.1.1",

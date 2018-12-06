@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Added new grid component to specify standard grid behaviour (formerly done with flex component)  
+
+    Migration path:  
+    Change the following occurrencies of flex used as grid (example):
+    
+    ```
+    <Flex gap="grid">
+        <Flex.Item width={{ base: 0, l: 4 }} offset={{ base: 0, l: 2 }}> ... </Flex.Item>
+    </Flex>
+    ```
+    
+    to
+    
+    ```
+    <Grid>
+        <Grid.Child size={{ base: 0, l: 4 }} offset={{ base: 0, l: 2 }}> ... </Grid.Child>
+    </Grid>
+    ```
+
+- Refactoring of flex component  
+
+    Migration path:  
+    Change the following flex parent properties:  
+    
+    `<Flex gap="grid">` => Use grid component (see above)!  
+    `<Flex alignLines={ ... }>` => `<Flex alignContent={ ... }>`  
+    `<Flex shrink={ ... }>` => deleted! (must be set on flex children (Flex.Item))  
+    
+    Changes regarding width and offset properties:  
+    
+    `<Flex.Item width={ ... }>` => Only basic widths are now supported ("auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full"). If you need grid sizes use grid component instead!  
+    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported ("none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters"). If you need grid offsets use grid component instead!  
 
 
 ## [0.4.5] - 2018-29-11
@@ -19,6 +51,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [0.4.3] - 2018-22-11
 
 -   BREAKING: removed padding between tab and content area.
+
+## [0.4.1] - 2018-11-21
+
+- Update version in ui-kit react docs.
 
 ## [0.4.0] - 2018-11-21
 
