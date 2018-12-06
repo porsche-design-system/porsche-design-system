@@ -18,34 +18,34 @@ const FlexExampleItemOffset = () => {
     return (
         <React.Fragment>
             <Flex style={containerStyle}>
-                <Flex.Item offset={3} width={9}>
+                <Flex.Item offset={"one-quarter"} width={"three-quarters"}>
                     <div style={itemStyle("LightSkyBlue")}>Offset: quarter</div>
                 </Flex.Item>
             </Flex>
             <Flex style={containerStyle}>
-                <Flex.Item offset={4} width={8}>
+                <Flex.Item offset={"one-third"} width={"two-thirds"}>
                     <div style={itemStyle("LightSkyBlue")}>Offset: third</div>
                 </Flex.Item>
             </Flex>
             <Flex style={containerStyle}>
-                <Flex.Item offset={6} width={6}>
+                <Flex.Item offset={"half"} width={"half"}>
                     <div style={itemStyle("LightSkyBlue")}>Offset: half</div>
                 </Flex.Item>
             </Flex>
             <Flex style={containerStyle}>
-                <Flex.Item offset={8} width={4}>
+                <Flex.Item offset={"two-thirds"} width={"one-third"}>
                     <div style={itemStyle("LightSkyBlue")}>Offset: 2 thirds</div>
                 </Flex.Item>
             </Flex>
             <Flex style={containerStyle}>
-                <Flex.Item offset={9} width={3}>
+                <Flex.Item offset={"three-quarters"} width={"one-quarter"}>
                     <div style={itemStyle("LightSkyBlue")}>Offset: 3 quarters</div>
                 </Flex.Item>
             </Flex>
 
-            <Text>Responsive behaviour (base: 0, l: 4):</Text>
+            <Text>Responsive behaviour (base: "none", l: "one-third"):</Text>
             <Flex style={containerStyle}>
-                <Flex.Item offset={{ base: 0, l: 4 }}>
+                <Flex.Item offset={{ base: "none", l: "one-third" }}>
                     <div style={itemStyle("DeepSkyBlue")}>An element with responsive offset</div>
                 </Flex.Item>
             </Flex>
