@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1544015536400,
+  "timestamp": 1544081380578,
   "graph": {
     "options": {
       "directed": true,
@@ -110,6 +110,36 @@
           "compileState": "clean",
           "lineagePath": "../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html",
           "lineagePattern": "design-spec-icons"
+        }
+      },
+      {
+        "v": "01-atoms/03-icon/icon~01-x-small.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-atoms/03-icon/icon~02-small.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-atoms/03-icon/icon~03-medium.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-atoms/03-icon/icon~04-large.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-atoms/03-icon/icon~05-x-large.json",
+        "value": {
+          "compileState": "clean"
         }
       },
       {
@@ -3339,6 +3369,31 @@
       }
     ],
     "edges": [
+      {
+        "v": "01-atoms/03-icon/icon~01-x-small.json",
+        "w": "01-atoms/03-icon/icon.hbs",
+        "value": {}
+      },
+      {
+        "v": "01-atoms/03-icon/icon~02-small.json",
+        "w": "01-atoms/03-icon/icon.hbs",
+        "value": {}
+      },
+      {
+        "v": "01-atoms/03-icon/icon~03-medium.json",
+        "w": "01-atoms/03-icon/icon.hbs",
+        "value": {}
+      },
+      {
+        "v": "01-atoms/03-icon/icon~04-large.json",
+        "w": "01-atoms/03-icon/icon.hbs",
+        "value": {}
+      },
+      {
+        "v": "01-atoms/03-icon/icon~05-x-large.json",
+        "w": "01-atoms/03-icon/icon.hbs",
+        "value": {}
+      },
       {
         "v": "02-molecules/badge/tag~01-longtext.json",
         "w": "02-molecules/badge/tag.hbs",

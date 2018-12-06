@@ -1127,19 +1127,19 @@ table {
   width: 1em;
   height: 1em;
   fill: currentColor; }
-  .icon--size-s {
+  .icon--x-small {
     width: 1.125rem;
     height: 1.125rem; }
-  .icon--size-m {
+  .icon--small {
     width: 1.5rem;
     height: 1.5rem; }
-  .icon--size-l {
+  .icon--medium {
     width: 1.875rem;
     height: 1.875rem; }
-  .icon--size-xl {
+  .icon--large {
     width: 2.625rem;
     height: 2.625rem; }
-  .icon--size-xxl {
+  .icon--x-large {
     width: 3.75rem;
     height: 3.75rem; }
 

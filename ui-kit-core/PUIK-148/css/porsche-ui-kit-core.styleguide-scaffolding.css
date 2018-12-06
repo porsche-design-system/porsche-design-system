@@ -208,6 +208,7 @@ html, body {
   margin-bottom: -12px;
 }
 .sg-icon-list__item {
+  width: 100px;
   border: 1px solid #ddd;
   margin-right: 12px;
   margin-bottom: 12px;
