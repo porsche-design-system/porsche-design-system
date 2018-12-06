@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+
+## [0.5.0] - 2018-06-12
+
 - Added new grid component to specify standard grid behaviour (formerly done with flex component)  
 
     Migration path:  
