@@ -1,7 +1,7 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.4.5",
+    "version": "0.5.0",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
