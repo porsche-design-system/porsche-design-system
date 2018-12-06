@@ -1,9 +1,9 @@
 {
   "bodyClass": "sg-wrapper-light",
   "icon_code": "arrow-right-hair",
-  "icon_size_s": false,
-  "icon_size_m": false,
-  "icon_size_l": false,
-  "icon_size_xl": false,
-  "icon_size_xxl": false
+  "icon_x-small": false,
+  "icon_small": false,
+  "icon_medium": false,
+  "icon_large": false,
+  "icon_x-large": false
 }
