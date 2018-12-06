@@ -758,10 +758,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
   integrity sha512-LAQ1d4OPfSJ/BMbI2DuizmYrrkD9JMaTdi2hQTlI53lQ4kRQPyZQRS4CYQ7O66bnBBnP/oYdRxbk++X0xuFU6A==
 
-"@porsche/ui-kit-core@0.14.1":
-  version "0.14.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.14.1.tgz#93f9262f43253146c42ec67826e6be65a3ef497a"
-  integrity sha1-k/kmL0MlMUbELsZ4Jua+ZaPvSXo=
+"@porsche/ui-kit-core@0.15.0":
+  version "0.15.0"
+  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.15.0.tgz#7608fb2104e22a3db2d1366bf494762e81c47401"
+  integrity sha1-dgj7IQTiKj2y0TZr9JR2LoHEdAE=
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
