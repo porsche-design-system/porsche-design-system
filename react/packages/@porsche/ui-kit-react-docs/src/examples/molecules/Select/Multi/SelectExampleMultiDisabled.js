@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Select } from "@porsche/ui-kit-react"
+import { Grid, Select } from "@porsche/ui-kit-react"
 
 const data = [
     { value: "one", label: "One" },
@@ -35,8 +35,8 @@ class SelectExampleMultiDisabled extends React.Component {
     }
     render() {
         return (
-            <Flex gap="grid">
-                <Flex.Item width={6}>
+            <Grid>
+                <Grid.Child size={6}>
                     <Select
                         disabled
                         multi
@@ -44,9 +44,9 @@ class SelectExampleMultiDisabled extends React.Component {
                         value={this.state.value1}
                         onChange={this.handleValue1Change}
                     />
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={6}>
+                <Grid.Child size={6}>
                     <Select
                         disabled
                         multi
@@ -54,8 +54,8 @@ class SelectExampleMultiDisabled extends React.Component {
                         value={this.state.value2}
                         onChange={this.handleValue2Change}
                     />
-                </Flex.Item>
-            </Flex>
+                </Grid.Child>
+            </Grid>
         )
     }
 }

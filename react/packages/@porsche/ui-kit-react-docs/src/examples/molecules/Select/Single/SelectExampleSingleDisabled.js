@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Select } from "@porsche/ui-kit-react"
+import { Grid, Select } from "@porsche/ui-kit-react"
 
 const data = [
     { value: "one", label: "One" },
@@ -14,15 +14,15 @@ const data = [
 
 const SelectExampleSingleDisabled = () => {
     return (
-        <Flex gap="grid">
-            <Flex.Item width={6}>
+        <Grid>
+            <Grid.Child size={6}>
                 <Select disabled options={data} value={null} />
-            </Flex.Item>
+            </Grid.Child>
 
-            <Flex.Item width={6}>
+            <Grid.Child size={6}>
                 <Select disabled options={data} value={data[3].value} />
-            </Flex.Item>
-        </Flex>
+            </Grid.Child>
+        </Grid>
     )
 }
 

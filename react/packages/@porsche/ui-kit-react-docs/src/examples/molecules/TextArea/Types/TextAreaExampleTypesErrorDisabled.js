@@ -1,26 +1,26 @@
 import React from "react"
-import { TextArea, Flex } from "@porsche/ui-kit-react"
+import { TextArea, Grid } from "@porsche/ui-kit-react"
 
 const TextAreaExampleTypesErrorDisabled = () => {
     return (
         <div>
-            <Flex gap="grid">
-                <Flex.Item width={3}>
+            <Grid>
+                <Grid.Child size={3}>
                     <TextArea error disabled placeholder="Floating Label" />
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <TextArea error disabled placeholder="Floating Label" value="Value" onChange={() => {}} />
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <TextArea error disabled placeholder="Placeholder" basic />
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <TextArea error disabled placeholder="Placeholder" basic value="Value" onChange={() => {}} />
-                </Flex.Item>
-            </Flex>
+                </Grid.Child>
+            </Grid>
         </div>
     )
 }
