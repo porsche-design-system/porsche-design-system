@@ -35,8 +35,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
     
     Changes regarding width and offset properties:  
     
-    `<Flex.Item width={ ... }>` => Only basic widths are now supported (3 | 4 | 6 | 8 | 9 | 12 | "auto"). If you need grid sizes use grid component instead!  
-    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported (0 | 3 | 4 | 6 | 8 | 9). If you need grid offsets use grid component instead!  
+    `<Flex.Item width={ ... }>` => Only basic widths are now supported ("auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full"). If you need grid sizes use grid component instead!  
+    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported ("none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters"). If you need grid offsets use grid component instead!  
 
 
 ## [0.4.5] - 2018-29-11
