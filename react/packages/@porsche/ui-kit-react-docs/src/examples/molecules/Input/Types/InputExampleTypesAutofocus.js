@@ -1,13 +1,13 @@
 import React from "react"
-import { Input, Flex } from "@porsche/ui-kit-react"
+import { Input, Grid } from "@porsche/ui-kit-react"
 
 const InputExampleTypesAutofocus = () => {
     return (
-        <Flex gap="grid">
-            <Flex.Item width={3}>
+        <Grid>
+            <Grid.Child size={3}>
                 <Input autofocus placeholder="Floating Label" />
-            </Flex.Item>
-        </Flex>
+            </Grid.Child>
+        </Grid>
     )
 }
 
