@@ -758,10 +758,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
   integrity sha512-LAQ1d4OPfSJ/BMbI2DuizmYrrkD9JMaTdi2hQTlI53lQ4kRQPyZQRS4CYQ7O66bnBBnP/oYdRxbk++X0xuFU6A==
 
-"@porsche/ui-kit-core@0.7.4":
-  version "0.7.4"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.7.4.tgz#05e2ff089481036ca451d972e1bc45d5ff66ffd5"
-  integrity sha1-BeL/CJSBA2ykUdly4bxF1f9m/9U=
+"@porsche/ui-kit-core@0.15.0":
+  version "0.15.0"
+  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.15.0.tgz#7608fb2104e22a3db2d1366bf494762e81c47401"
+  integrity sha1-dgj7IQTiKj2y0TZr9JR2LoHEdAE=
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -10522,13 +10522,14 @@ semantic-ui-css@^2.2.12:
   dependencies:
     jquery x.*
 
-semantic-ui-react@^0.75.1:
-  version "0.75.1"
-  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.75.1.tgz#81c2ed7ed45562f89e5049c5a64195b9638d8daf"
-  integrity sha512-5bxOPRFULGg64TeNwJvRyEp5Jo7zluljUVF7ixlVRVYJ/2ByQkVnEiomEIyuJ//wVjRcesuJsCbjodM8PNaPrA==
+semantic-ui-react@^0.77.0:
+  version "0.77.2"
+  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.77.2.tgz#c4cf0e3cd5590c906f4d655d163ac5969acd359b"
+  integrity sha512-VwxY6oGLrBO2xoJiAW/vn40GL4WGZYWxtbrHIKYE1xChTOFlDxyIULMdnuAHOTbrbOYbLQ0X7LpdvEEYmieiJw==
   dependencies:
     babel-runtime "^6.25.0"
     classnames "^2.2.5"
+    fbjs "^0.8.16"
     lodash "^4.17.4"
     prop-types "^15.5.10"
 

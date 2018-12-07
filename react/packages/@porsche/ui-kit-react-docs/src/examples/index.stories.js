@@ -1,6 +1,5 @@
 import "./atoms/Breakpoint"
 import "./atoms/Divider"
-import "./atoms/Flex"
 import "./atoms/Icon"
 import "./atoms/Logo"
 import "./atoms/Spacing"
@@ -22,6 +21,9 @@ import "./organisms/CookieNotification"
 import "./organisms/Header"
 import "./organisms/Modal"
 import "./organisms/Toast"
+
+import "./layout/Grid"
+import "./layout/Flex"
 
 import "./screens/ErrorScreen"
 import "./screens/MaintenanceScreen"
