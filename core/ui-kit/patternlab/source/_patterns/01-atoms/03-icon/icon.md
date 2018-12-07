@@ -11,17 +11,21 @@ __TBD__
 
 
 ## Technical guidelines
-UI-Kit Core is using a SVG icon sprite system to present an object visually. 
-Every project using UI-Kit Core must generate and implement their SVG icon sprite by itself regarding to their technical und visual needs.
+Porsche UI-Kit Core is using a SVG icon sprite system to present an object visually. 
+Every project using UI-Kit Core must generate and implement their specific SVG icon sprite by itself regarding to their technical und visual needs.
 
 ### Building the icon sprite
-The icon sprite must be build through out a set of SVG icons. The whole set of icons can be found here:  
+The icon sprite must be build throughout a set of individual SVG icons. 
+The whole set of icons can be found here:  
 `~@porsche/ui-kit-core/src/base/icon/*.svg`  
-Reducing the file size of the icon sprite can be done by picking just the icons which are needed inside the application.
+Building the sprite can be done manually or even better with help of a frontend build system, e.g. https://github.com/jkphl/svg-sprite.  
 
-This can be done manually or even better with help of a frontend build system, e.g. https://github.com/jkphl/svg-sprite.  
+__Hints for optimizations__: 
+* Using just the icons which are needed inside the application is recommended. 
+* Reducing the file size of the icon sprite can be done by optimizing SVG's with a SVG optimizer which strips out unnecessary SVG code.
+* Also activating GZIP compression on the server side can reduce file size up to 50%.
  
-The generated icon sprite should look like this:  
+Finally the generated icon sprite should look something like this:  
 ``` 
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="icon-arrow-down-hair" viewBox="0 0 32 32">
@@ -40,18 +44,22 @@ The generated icon sprite should look like this:
 </svg>
 
 ``` 
+For screen reader accessibility, provide a context-rich title for the SVG using the `<title>` element.
 
-For screen reader accessibility, provide a context-rich title for the SVG using `<title>` element.
+### Including the icon sprite
+For modern browsers (including Chrome, Firefox, Safari, Edge13), setting a direct link to the SVG file is the best choice (shown in the example beyond). 
+If older browsers like IE11 or Edge < 12 need to be supported, an additional polyfill must be included to implement the SVG sprite with AJAX. 
+The best choice therefore is `svg4everybody` (https://github.com/jonathantneal/svg4everybody) which is a well tested and widely adopted SVG polyfill.
 
-### Implementing icons
-Implementing a specific icon must be done like this:  
+### Referencing SVG icon from a static sprite asset (recommended)
+The SVG sprite is used by serving it as a static asset. Then using a path to the SVG sprite file to display the SVG icon.  
 ``` 
 <svg class="icon" role="img" title="arrow down">
   <use xlink:href="/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down"/>
 </svg>
 ``` 
 
-### Sizes
+### Icon sizes
 There are pre-defined icon sizes which can be set by adding one of the following classes:  
 ``` 
 <svg class="icon icon--medium" role="img" title="arrow down">
@@ -67,7 +75,7 @@ Available sizes:
 `icon--x-large` => 60px  
 
 ### Colors
-All icons are rendered in black per default. Changing the icon to a  different color can be done by adding individual color definitions in the CSS code:  
+All icons are rendered in black per default. Changing the icon to a different color can be done by adding individual color definitions in the CSS code:  
 ``` 
 .some-color-class {
   color: $color-palette-white;
