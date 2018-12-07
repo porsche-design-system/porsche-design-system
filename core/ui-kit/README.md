@@ -14,14 +14,14 @@ As a Porsche UI Kit Core developer: please see `CONTRIBUTING.md` file for develo
 
 ### (Internal) public installation
 
-The pattern lab is running on this URL: https://pcc-portal-e-ct.emea.porsche.biz/static/patternlab/origin/master/
+The pattern lab is running on this URL: https://myporsche.github.io/pouikit-porsche-ui-kit/master/
 
-If you want to inspect patterns of a different branch, replace `master` with the desired branch name.  All branches are deployed automatically once they're pushed to the repo.
+If you want to inspect patterns of a different branch, replace `master` with the desired branch name. 
+All branches are deployed automatically once they're pushed to the repo.
 
 ### Local installation
 
 Check out the project, install dependencies and run it:
-
 ```
 > git clone git@bitbucket.org:porschedev/porsche-ui-kit.git
 > cd ./core/ui-kit
@@ -32,10 +32,26 @@ Check out the project, install dependencies and run it:
 # Test Patterns
 ## Visual Regression Test
 
-Make sure application is running, then run test
+Make sure application is running, then run test.
+```
+> cd ./core/ui-kit
+> npm install
+> npm start
+> npm run vrt
+```
+
+# Update npm dependencies
+
+Switch to UI Kit directory and execute update script.
+```
+> cd ./core/ui-kit
+> npm run upgrade-interactive
+```
+Select all desired packages that should be updated with `space` and press `enter`. 
+Make sure application is running and execute visual regression tests.
 ```
 > npm start
-> npm run visual-regression-test
+> npm run vrt
 ```
 
 ## Development guide
