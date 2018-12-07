@@ -987,11 +987,25 @@ table {
     .grid__child--offset-11-xl {
       margin-left: 91.66667%; } }
 
+/**
+ * disable animations for specific patterns
+ *
+ * $inactive-animations is a list, if you want e.g. exclude the css animations
+ * for the-slider and tile-image-text-link pattern, you would overwrite the
+ * $inactive-animations variable by passing from outside with the following value(s)
+ *
+ * $inactive-animations: 'tile-slider', 'tile-image-text-link'
+ */
+/**
+ * basic hover animation timing (of color and opacity).
+ * timing and bezier should be refactored after official Porsche animation guidelines are defined
+ */
 .icon {
   display: inline-flex;
   width: 1em;
   height: 1em;
-  fill: currentColor; }
+  fill: currentColor;
+  transition: fill 0.24s ease; }
   .icon--x-small {
     width: 1.125rem;
     height: 1.125rem; }

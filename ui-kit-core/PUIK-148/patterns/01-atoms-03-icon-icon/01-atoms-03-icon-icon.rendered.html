@@ -13,8 +13,8 @@
 <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 <meta http-equiv="pragma" content="no-cache" />
 
-<link rel="stylesheet" href="../../styleguide/css/styleguide.min.css?1544081375954" media="all">
-<link rel="stylesheet" href="../../styleguide/css/prism-typeahead.min.css?1544081375954" media="all" />
+<link rel="stylesheet" href="../../styleguide/css/styleguide.min.css?1544178361444" media="all">
+<link rel="stylesheet" href="../../styleguide/css/prism-typeahead.min.css?1544178361444" media="all" />
 
 
     <script>
@@ -35,8 +35,8 @@
       }
     </script>
 
-    <link rel="stylesheet" href="../../css/porsche-ui-kit-core.styleguide-scaffolding.css?1544081375954" media="all"/>
-    <link rel="stylesheet" href="../../css/porsche-stylesheets.css?1544081375954" media="all"/>
+    <link rel="stylesheet" href="../../css/porsche-ui-kit-core.styleguide-scaffolding.css?1544178361444" media="all"/>
+    <link rel="stylesheet" href="../../css/porsche-stylesheets.css?1544178361444" media="all"/>
 
   </head>
   <body class="sg-wrapper-light">
@@ -52,7 +52,7 @@
 </svg>
     <!--DO NOT REMOVE-->
     <script type="text/json" id="sg-pattern-data-footer" class="sg-pattern-data">
-  {"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":true,"patternLineagesR":[{"lineagePattern":"design-spec-icons","lineagePath":"../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html"}],"lineageR":[{"lineagePattern":"design-spec-icons","lineagePath":"../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html"}],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"atoms","patternSubtype":"icon"},"patternExtension":"hbs","patternName":"Icon","patternPartial":"atoms-icon","patternState":"inprogress","patternEngineName":"handlebars","extraOutput":{}}
+  {"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":true,"patternLineagesR":[{"lineagePattern":"design-spec-icons","lineagePath":"../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html"}],"lineageR":[{"lineagePattern":"design-spec-icons","lineagePath":"../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html"}],"patternLineageEExists":true,"patternDesc":"<h1>UI Kit Core icon manual</h1>\n<h2>UI / UX guidelines</h2>\n<p><strong>TBD</strong></p>\n<h2>Technical guidelines</h2>\n<p>UI-Kit Core is using a SVG icon sprite system to present an object visually.\nEvery project using UI-Kit Core must generate and implement their SVG icon sprite by itself regarding to their technical und visual needs.</p>\n<h3>Building the icon sprite</h3>\n<p>The icon sprite must be build through out a set of SVG icons. The whole set of icons can be found here:<br>\n<code>~@porsche/ui-kit-core/src/base/icon/*.svg</code><br>\nReducing the file size of the icon sprite can be done by picking just the icons which are needed inside the application.</p>\n<p>This can be done manually or even better with help of a frontend build system, e.g. https://github.com/jkphl/svg-sprite.</p>\n<p>The generated icon sprite should look like this:</p>\n<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;\n  &lt;symbol id=&quot;icon-arrow-down-hair&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down-hair&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-3l12 9.5 12-9.5v3l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  &lt;symbol id=&quot;icon-arrow-down-thin&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down-thin&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-4.5l12 9.5 12-9.5v4.5l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  &lt;symbol id=&quot;icon-arrow-down&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-8l12 9.5 12-9.5v8l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  ...\n&lt;/svg&gt;\n\n</code></pre>\n<p>For screen reader accessibility, provide a context-rich title for the SVG using <code>&lt;title&gt;</code> element.</p>\n<h3>Implementing icons</h3>\n<p>Implementing a specific icon must be done like this:</p>\n<pre><code>&lt;svg class=&quot;icon&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n<h3>Sizes</h3>\n<p>There are pre-defined icon sizes which can be set by adding one of the following classes:</p>\n<pre><code>&lt;svg class=&quot;icon icon--medium&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n<p>Available sizes:<br>\n<code>icon--x-small</code> =&gt; 18px<br>\n<code>icon--small</code> =&gt; 24px<br>\n<code>icon--medium</code> =&gt; 30px<br>\n<code>icon--large</code> =&gt; 42px<br>\n<code>icon--x-large</code> =&gt; 60px</p>\n<h3>Colors</h3>\n<p>All icons are rendered in black per default. Changing the icon to a  different color can be done by adding individual color definitions in the CSS code:</p>\n<pre><code>.some-color-class {\n  color: $color-palette-white;\n}\n\n&lt;svg class=&quot;icon some-color-class&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n","patternBreadcrumb":{"patternType":"atoms","patternSubtype":"icon"},"patternExtension":"hbs","patternName":"Icon","patternPartial":"atoms-icon","patternState":"inprogress","patternEngineName":"handlebars","extraOutput":{}}
 </script>
 
 <script>
@@ -88,10 +88,10 @@
   }
 </script>
 
-<script id="pl-js-polyfill-insert-1544081375954">
+<script id="pl-js-polyfill-insert-1544178361444">
   (function() {
     if (self != top) {
-      var cb = '1544081375954';
+      var cb = '1544178361444';
       var js = [];
       if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {
         js.push('styleguide/bower_components/classList.min.js');
@@ -101,10 +101,10 @@
   })();
 </script>
 
-<script id="pl-js-insert-1544081375954">
+<script id="pl-js-insert-1544178361444">
   (function() {
     if (self != top) {
-      var cb = '1544081375954';
+      var cb = '1544178361444';
       var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];
       scriptLoader.run(js,cb,'pl-js-insert');
     }
