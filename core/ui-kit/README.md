@@ -14,7 +14,7 @@ As a Porsche UI Kit Core developer: please see `CONTRIBUTING.md` file for develo
 
 ### (Internal) public installation
 
-The pattern lab is running on this URL: https://pcc-portal-e-ct.emea.porsche.biz/static/patternlab/origin/master/
+The pattern lab is running on this URL: https://myporsche.github.io/pouikit-porsche-ui-kit/master/
 
 If you want to inspect patterns of a different branch, replace `master` with the desired branch name.  All branches are deployed automatically once they're pushed to the repo.
 
@@ -23,7 +23,7 @@ If you want to inspect patterns of a different branch, replace `master` with the
 Check out the project, install dependencies and run it:
 
 ```
-> git clone git@bitbucket.org:porschedev/porsche-ui-kit.git
+> git clone git@github.com:myporsche/pouikit-porsche-ui-kit.git
 > cd ./core/ui-kit
 > npm install
 > npm start

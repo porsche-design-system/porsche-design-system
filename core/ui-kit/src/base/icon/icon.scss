@@ -1,11 +1,13 @@
 @import '../../setup/global-variables.scss';
 @import '../../mixins/px-rem-converter.scss';
+@import '../../setup/animations.scss';
 
 .#{$global-class-prefix}icon {
   display: inline-flex;
   width: 1em;
   height: 1em;
   fill: currentColor;
+  transition: fill $animation-hover-duration $animation-hover-bezier;
 
   &--x-small {
     width: rem(18px);
