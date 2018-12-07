@@ -82,11 +82,12 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "@myporsche/myservices-visual-regression-tester": "^2.0.1",
     "@porsche/plugin-node-sass-dependency-collector": "^1.0.0",
     "@types/es6-shim": "^0.31.37",
     "@types/jasmine": "^3.3.0",
-    "@types/puppeteer": "^1.6.3",
-    "autoprefixer": "^9.4.0",
+    "@types/puppeteer": "^1.11.1",
+    "autoprefixer": "^9.4.2",
     "better-npm-run": "^0.1.1",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
@@ -96,7 +97,7 @@
     "gulp-cached": "^1.1.1",
     "gulp-sass-lint": "^1.4.0",
     "husky": "^1.2.0",
-    "jasmine": "^3.2.0",
+    "jasmine": "^3.3.1",
     "jimp": "^0.6.0",
     "marked": "^0.5.1",
     "minimist": "^1.2.0",
@@ -118,7 +119,7 @@
     "styleguidekit-mustache-default": "^3.1.0",
     "symlink-or-copy": "^1.2.0",
     "ts-node": "^7.0.1",
-    "typescript": "^3.0.3"
+    "typescript": "^3.2.2"
   },
   "publishConfig": {
     "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/"
