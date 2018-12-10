@@ -101,7 +101,7 @@
     "jimp": "^0.6.0",
     "marked": "^0.5.1",
     "minimist": "^1.2.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.11.0",
     "node-sass-tilde-importer": "^1.0.2",
     "npm-check": "^5.9.0",
     "npm-watch": "^0.5.0",
