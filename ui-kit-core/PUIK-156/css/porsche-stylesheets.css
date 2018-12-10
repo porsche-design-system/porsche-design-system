@@ -4748,11 +4748,27 @@ table {
     height: 2.25rem;
     stroke-width: 3px; }
   .loader--large {
-    width: 3.75rem;
-    height: 3.75rem; }
+    width: 2.625rem;
+    height: 2.625rem; }
+    @media (min-width: 1300px) {
+      .loader--large {
+        width: 3.75rem;
+        height: 3.75rem; } }
   .loader--x-large {
-    width: 5rem;
-    height: 5rem; }
+    width: 2.625rem;
+    height: 2.625rem; }
+    @media (min-width: 1000px) {
+      .loader--x-large {
+        width: 3.375rem;
+        height: 3.375rem; } }
+    @media (min-width: 1300px) {
+      .loader--x-large {
+        width: 4.125rem;
+        height: 4.125rem; } }
+    @media (min-width: 1760px) {
+      .loader--x-large {
+        width: 5.25rem;
+        height: 5.25rem; } }
 
 @-webkit-keyframes rotate {
   100% {
@@ -4887,13 +4903,6 @@ table {
       padding: 1.875rem 1.875rem; } }
   .loader-fullpage--sticky {
     position: fixed; }
-  .loader-fullpage__spinner {
-    width: 4.5rem;
-    height: 4.5rem; }
-    @media (min-width: 760px) {
-      .loader-fullpage__spinner {
-        width: 6.125rem;
-        height: 6.125rem; } }
   .loader-fullpage__label {
     font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
     font-weight: 400;
@@ -4976,13 +4985,6 @@ table {
   @media (min-width: 1300px) {
     .loader-module {
       padding: 1.875rem 1.875rem; } }
-  .loader-module__spinner {
-    width: 3rem;
-    height: 3rem; }
-    @media (min-width: 760px) {
-      .loader-module__spinner {
-        width: 3.75rem;
-        height: 3.75rem; } }
 
 @keyframes animation-rotate-360 {
   0% {
