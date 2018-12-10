@@ -4056,6 +4056,54 @@ table {
     display: block;
     clear: both; }
 
+@keyframes animation-rotate-360 {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%; }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%; } }
+
+@keyframes animation-fade-opacity {
+  0% {
+    opacity: .6; }
+  45% {
+    opacity: .85; }
+  65% {
+    opacity: 1; }
+  100% {
+    opacity: .6; } }
+
+/**
+ * disable animations for specific patterns
+ *
+ * $inactive-animations is a list, if you want e.g. exclude the css animations
+ * for the-slider and tile-image-text-link pattern, you would overwrite the
+ * $inactive-animations variable by passing from outside with the following value(s)
+ *
+ * $inactive-animations: 'tile-slider', 'tile-image-text-link'
+ */
+/**
+ * basic hover animation timing (of color and opacity).
+ * timing and bezier should be refactored after official Porsche animation guidelines are defined
+ */
+.loader-base {
+  -webkit-animation: animation-rotate-360 2s linear 0s infinite normal;
+          animation: animation-rotate-360 2s linear 0s infinite normal;
+  display: block;
+  width: 3.75rem;
+  height: 3.75rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url(%23Unbenannter_Verlauf_11)%7D.cls-2%7Bfill:%23fff%7D.cls-3%7Bfill:url(%23Unbenannter_Verlauf_18)%7D.cls-4%7Bfill:url(%23Unbenannter_Verlauf_14)%7D%3C/style%3E%3ClinearGradient id="Unbenannter_Verlauf_11" y1="25" x2="50" y2="25" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".6"/%3E%3Cstop offset="1" stop-color="%23fff"/%3E%3C/linearGradient%3E%3ClinearGradient id="Unbenannter_Verlauf_18" x1="50" y1="75" x2="100" y2="75" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".4"/%3E%3Cstop offset="1" stop-color="%23fff" stop-opacity="0"/%3E%3C/linearGradient%3E%3ClinearGradient id="Unbenannter_Verlauf_14" y1="75" x2="50" y2="75" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".6"/%3E%3Cstop offset="1" stop-color="%23fff" stop-opacity=".4"/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath class="cls-1" d="M50 8V0A50 50 0 0 0 0 50h8A42 42 0 0 1 50 8z"/%3E%3Cpath class="cls-2" d="M92 50h8A49.75 49.75 0 0 0 50 0v8a42.15 42.15 0 0 1 42 42z"/%3E%3Cpath class="cls-3" d="M50 92v8a49.51 49.51 0 0 0 50-50h-8a42.25 42.25 0 0 1-42 42z"/%3E%3Cpath class="cls-4" d="M8 50H0a49.51 49.51 0 0 0 50 50v-8A42.25 42.25 0 0 1 8 50z"/%3E%3C/svg%3E'); }
+  .loader-base--dark {
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4PSIwIiB5PSIwIiB3aWR0aD0iNjBweCIgaGVpZ2h0PSI2MHB4IiBkYXRhLW5hbWU9IkViZW5lIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4gIDxkZWZzPiAgICA8c3R5bGU+ICAgICAgLmNscy0xe2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzExKTt9ICAgICAgLmNscy0ye2ZpbGw6I2ZmZjt9ICAgICAgLmNscy0ze2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzE4KTt9ICAgICAgLmNscy00e2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzE0KTt9ICAgIDwvc3R5bGU+ICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iVW5iZW5hbm50ZXJfVmVybGF1Zl8xMSIgeTE9IjI1IiB4Mj0iNTAiIHkyPSIyNSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMC42Ii8+ICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjkyYTJlICIvPiAgICA8L2xpbmVhckdyYWRpZW50PiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IlVuYmVuYW5udGVyX1ZlcmxhdWZfMTgiIHgxPSI1MCIgeTE9Ijc1IiB4Mj0iMTAwIiB5Mj0iNzUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4gICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyOTJhMmUgIiBzdG9wLW9wYWNpdHk9IjAuNCIvPiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMCIvPiAgICA8L2xpbmVhckdyYWRpZW50PiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IlVuYmVuYW5udGVyX1ZlcmxhdWZfMTQiIHkxPSI3NSIgeDI9IjUwIiB5Mj0iNzUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4gICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyOTJhMmUgIiBzdG9wLW9wYWNpdHk9IjAuNiIvPiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMC40Ii8+ICAgIDwvbGluZWFyR3JhZGllbnQ+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MCw4VjBBNTAsNTAsMCwwLDAsMCw1MEg4QTQyLDQyLDAsMCwxLDUwLDhaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwKSIvPiAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNOTIsNTBoOEE0OS43NSw0OS43NSwwLDAsMCw1MCwwVjhBNDIuMTUsNDIuMTUsMCwwLDEsOTIsNTBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwKSIvPiAgPHBhdGggY2xhc3M9ImNscy0zIiBkPSJNNTAsOTJ2OGE0OS41MSw0OS41MSwwLDAsMCw1MC01MEg5MkE0Mi4yNSw0Mi4yNSwwLDAsMSw1MCw5MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIi8+ICA8cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik04LDUwSDBhNDkuNTEsNDkuNTEsMCwwLDAsNTAsNTBWOTJBNDIuMjUsNDIuMjUsMCwwLDEsOCw1MFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIi8+PC9zdmc+"); }
+
 .icon {
   font-family: 'pag-iconfont' !important;
   speak: none;
@@ -4669,7 +4717,9 @@ table {
     display: block;
     position: relative;
     fill: none;
-    stroke-width: inherit; }
+    stroke-width: inherit;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); }
   .loader__fg {
     -webkit-transform-origin: center center;
             transform-origin: center center;
@@ -4681,25 +4731,28 @@ table {
     stroke-linecap: round; }
   .loader__bg {
     stroke: #eff0f1; }
-  .loader--inverted .loader__fg {
+  .loader--theme-inverted .loader__fg {
     stroke: #fff; }
-  .loader--inverted .loader__bg {
-    stroke: #313639; }
-  .loader--small {
+  .loader--theme-inverted .loader__bg {
+    stroke: #626669; }
+  .loader--x-small {
     width: 1rem;
     height: 1rem;
     stroke-width: 5px; }
-  .loader--medium {
+  .loader--small {
     width: 1.5rem;
     height: 1.5rem;
     stroke-width: 4px; }
-  .loader--large {
+  .loader--medium {
     width: 2.25rem;
     height: 2.25rem;
     stroke-width: 3px; }
-  .loader--x-large {
+  .loader--large {
     width: 3.75rem;
     height: 3.75rem; }
+  .loader--x-large {
+    width: 5rem;
+    height: 5rem; }
 
 @-webkit-keyframes rotate {
   100% {
@@ -4732,54 +4785,6 @@ table {
   100% {
     stroke-dasharray: 0, 1000;
     stroke-dashoffset: -124.33; } }
-
-@keyframes animation-rotate-360 {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%; }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%; } }
-
-@keyframes animation-fade-opacity {
-  0% {
-    opacity: .6; }
-  45% {
-    opacity: .85; }
-  65% {
-    opacity: 1; }
-  100% {
-    opacity: .6; } }
-
-/**
- * disable animations for specific patterns
- *
- * $inactive-animations is a list, if you want e.g. exclude the css animations
- * for the-slider and tile-image-text-link pattern, you would overwrite the
- * $inactive-animations variable by passing from outside with the following value(s)
- *
- * $inactive-animations: 'tile-slider', 'tile-image-text-link'
- */
-/**
- * basic hover animation timing (of color and opacity).
- * timing and bezier should be refactored after official Porsche animation guidelines are defined
- */
-.loader-base {
-  -webkit-animation: animation-rotate-360 2s linear 0s infinite normal;
-          animation: animation-rotate-360 2s linear 0s infinite normal;
-  display: block;
-  width: 3.75rem;
-  height: 3.75rem;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url(%23Unbenannter_Verlauf_11)%7D.cls-2%7Bfill:%23fff%7D.cls-3%7Bfill:url(%23Unbenannter_Verlauf_18)%7D.cls-4%7Bfill:url(%23Unbenannter_Verlauf_14)%7D%3C/style%3E%3ClinearGradient id="Unbenannter_Verlauf_11" y1="25" x2="50" y2="25" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".6"/%3E%3Cstop offset="1" stop-color="%23fff"/%3E%3C/linearGradient%3E%3ClinearGradient id="Unbenannter_Verlauf_18" x1="50" y1="75" x2="100" y2="75" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".4"/%3E%3Cstop offset="1" stop-color="%23fff" stop-opacity="0"/%3E%3C/linearGradient%3E%3ClinearGradient id="Unbenannter_Verlauf_14" y1="75" x2="50" y2="75" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".6"/%3E%3Cstop offset="1" stop-color="%23fff" stop-opacity=".4"/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath class="cls-1" d="M50 8V0A50 50 0 0 0 0 50h8A42 42 0 0 1 50 8z"/%3E%3Cpath class="cls-2" d="M92 50h8A49.75 49.75 0 0 0 50 0v8a42.15 42.15 0 0 1 42 42z"/%3E%3Cpath class="cls-3" d="M50 92v8a49.51 49.51 0 0 0 50-50h-8a42.25 42.25 0 0 1-42 42z"/%3E%3Cpath class="cls-4" d="M8 50H0a49.51 49.51 0 0 0 50 50v-8A42.25 42.25 0 0 1 8 50z"/%3E%3C/svg%3E'); }
-  .loader-base--dark {
-    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4PSIwIiB5PSIwIiB3aWR0aD0iNjBweCIgaGVpZ2h0PSI2MHB4IiBkYXRhLW5hbWU9IkViZW5lIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4gIDxkZWZzPiAgICA8c3R5bGU+ICAgICAgLmNscy0xe2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzExKTt9ICAgICAgLmNscy0ye2ZpbGw6I2ZmZjt9ICAgICAgLmNscy0ze2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzE4KTt9ICAgICAgLmNscy00e2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzE0KTt9ICAgIDwvc3R5bGU+ICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iVW5iZW5hbm50ZXJfVmVybGF1Zl8xMSIgeTE9IjI1IiB4Mj0iNTAiIHkyPSIyNSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMC42Ii8+ICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjkyYTJlICIvPiAgICA8L2xpbmVhckdyYWRpZW50PiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IlVuYmVuYW5udGVyX1ZlcmxhdWZfMTgiIHgxPSI1MCIgeTE9Ijc1IiB4Mj0iMTAwIiB5Mj0iNzUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4gICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyOTJhMmUgIiBzdG9wLW9wYWNpdHk9IjAuNCIvPiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMCIvPiAgICA8L2xpbmVhckdyYWRpZW50PiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IlVuYmVuYW5udGVyX1ZlcmxhdWZfMTQiIHkxPSI3NSIgeDI9IjUwIiB5Mj0iNzUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4gICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyOTJhMmUgIiBzdG9wLW9wYWNpdHk9IjAuNiIvPiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMC40Ii8+ICAgIDwvbGluZWFyR3JhZGllbnQ+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MCw4VjBBNTAsNTAsMCwwLDAsMCw1MEg4QTQyLDQyLDAsMCwxLDUwLDhaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwKSIvPiAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNOTIsNTBoOEE0OS43NSw0OS43NSwwLDAsMCw1MCwwVjhBNDIuMTUsNDIuMTUsMCwwLDEsOTIsNTBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwKSIvPiAgPHBhdGggY2xhc3M9ImNscy0zIiBkPSJNNTAsOTJ2OGE0OS41MSw0OS41MSwwLDAsMCw1MC01MEg5MkE0Mi4yNSw0Mi4yNSwwLDAsMSw1MCw5MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIi8+ICA8cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik04LDUwSDBhNDkuNTEsNDkuNTEsMCwwLDAsNTAsNTBWOTJBNDIuMjUsNDIuMjUsMCwwLDEsOCw1MFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIi8+PC9zdmc+"); }
 
 /**
  * properties for flex container
