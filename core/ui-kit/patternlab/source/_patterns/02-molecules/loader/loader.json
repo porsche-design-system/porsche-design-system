@@ -1,5 +1,7 @@
 {
-  "loader_small": true,
+  "bodyClass": "sg-wrapper-light",
+  "loader_x-small": false,
+  "loader_small": false,
   "loader_medium": false,
   "loader_large": false,
   "loader_x-large": false,

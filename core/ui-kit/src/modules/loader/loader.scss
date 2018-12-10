@@ -15,7 +15,7 @@
     position: relative;
     fill: none;
     stroke-width: inherit;
-
+    transform: translate3d(0, 0, 0);
   }
 
   &__fg {
@@ -31,38 +31,43 @@
     stroke: $color-palette-grey-1;
   }
 
-  &--inverted {
+  &--theme-inverted {
     #{$bem-block}__fg {
       stroke: $color-palette-white;
     }
 
     #{$bem-block}__bg {
-      stroke: $color-palette-grey-9;
+      stroke: $color-palette-grey-7;
     }
   }
 
   // the exact sizes must be refactored when final SVG icons are in place!
-  &--small {
+  &--x-small {
     width: rem(16px);
     height: rem(16px);
     stroke-width: 5px;
   }
 
-  &--medium {
+  &--small {
     width: rem(24px);
     height: rem(24px);
     stroke-width: 4px;
   }
 
-  &--large {
+  &--medium {
     width: rem(36px);
     height: rem(36px);
     stroke-width: 3px;
   }
 
-  &--x-large {
+  &--large {
     width: rem(60px);
     height: rem(60px);
+  }
+
+  &--x-large {
+    width: rem(80px);
+    height: rem(80px);
   }
 }
 
