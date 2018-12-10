@@ -1,5 +1,6 @@
 @import '../../setup/global-variables.scss';
 @import '../../setup/color-palette.setup.scss';
+@import '../../mixins/breakpoint.scss';
 
 .#{$global-class-prefix}loader {
   $bem-block: &;
@@ -61,13 +62,33 @@
   }
 
   &--large {
-    width: rem(60px);
-    height: rem(60px);
+    width: rem(42px);
+    height: rem(42px);
+
+    @include breakpoint('l') {
+      width: rem(60px);
+      height: rem(60px);
+    }
   }
 
   &--x-large {
-    width: rem(80px);
-    height: rem(80px);
+    width: rem(42px);
+    height: rem(42px);
+
+    @include breakpoint('m') {
+      width: rem(54px);
+      height: rem(54px);
+    }
+
+    @include breakpoint('l') {
+      width: rem(66px);
+      height: rem(66px);
+    }
+
+    @include breakpoint('xl') {
+      width: rem(84px);
+      height: rem(84px);
+    }
   }
 }
 

@@ -2,7 +2,6 @@
 @import '../../base/text-size/text-size.mixin.scss';
 @import '../../base/text-color/text-color.mixin.scss';
 @import '../../base/align/align.mixin.scss';
-@import '../../mixins/breakpoint.scss';
 @import '../../base/layout/flex.mixin.scss';
 @import '../../base/spacing/spacing.mixin.scss';
 @import '../../base/position/position.mixin.scss';
@@ -21,16 +20,6 @@
 
   &--sticky {
     position: fixed;
-  }
-
-  &__spinner {
-    width: $loader-fullpage-spinner-size;
-    height: $loader-fullpage-spinner-size;
-
-    @include breakpoint('s') {
-      width: $loader-fullpage-spinner-size-s;
-      height: $loader-fullpage-spinner-size-s;
-    }
   }
 
   &__label {
