@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+* Refactoring of loader components by adding SVG loader
+  
+  __Migration path:__ 
+  * Renamed CSS class `loader-box` => `loader`
+  * Changed HTML of `loader` component
+
 ## [0.15.0] - 2018-11-26
 * Add possibility display the navigation-steps on light or dark background
   __Migration path:__ 

@@ -1,1 +1,12 @@
-<div class="loader-box {{#if loader_medium }}loader-box--medium{{/if}} {{ styleModifier }}"> </div>
+<span class="loader
+    {{#if loader_small }}loader--small{{/if}}
+    {{#if loader_medium }}loader--medium{{/if}}
+    {{#if loader_large }}loader--large{{/if}}
+    {{#if loader_x-large }}loader--x-large{{/if}}
+    {{#if loader_isThemeInverted}} loader--theme-inverted {{/if}}
+    {{ styleModifier }}" aria-busy="true">
+  <svg class="loader__image" viewBox="0 0 50 50" role="img" title="loader circle">
+    <circle class="loader__bg" cx="50%" cy="50%" r="20" />
+    <circle class="loader__fg" cx="50%" cy="50%" r="20" />
+  </svg>
+</span>
