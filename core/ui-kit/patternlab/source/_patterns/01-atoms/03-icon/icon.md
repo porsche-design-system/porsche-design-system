@@ -85,3 +85,24 @@ All icons are rendered in black per default. Changing the icon to a different co
   <use xlink:href="/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down"/>
 </svg>
 ``` 
+
+### Accessibility
+With using SVG icons, there are options to give more accessibility to users using screen readers. Here are some good practices:
+
+* If icons stand alone, adding descriptive text with an `aria-label` attribute is a good practice:
+```
+<svg class="icon" role="img" focusable="false" aria-label="descriptive text, e.g: close the layer">
+  <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-close"/>
+</svg>
+```
+
+* If an icon is just for visual presentation and has no meaning of its own, it can be hidden from screen readers.  
+A use case for that is, if an arrow icon is palced beside a descriptive button text:
+```
+<button type="button">
+  <svg class="icon" role="img" focusable="false" aria-hidden="true">
+    <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right"/>
+  </svg>
+  go to detail page
+<button>
+```

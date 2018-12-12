@@ -1,6 +1,8 @@
 {
   "bodyClass": "sg-wrapper-light",
   "icon_code": "arrow-right-hair",
+  "icon_title": "descriptive text if icon stands alone",
+  "icon_aria-hidden": false,
   "icon_x-small": false,
   "icon_small": false,
   "icon_medium": false,

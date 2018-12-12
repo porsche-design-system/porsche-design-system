@@ -4,6 +4,6 @@
   {{#if icon_medium}}icon--medium{{/if}}
   {{#if icon_large}}icon--large{{/if}}
   {{#if icon_x-large}}icon--x-large{{/if}}
-  {{ styleModifier }}" role="img" title="{{icon_code}}">
+  {{ styleModifier }}" role="img" focusable="false" {{#if icon_title}}aria-label="{{icon_title}}"{{/if}} {{#if icon_aria-hidden}}aria-hidden="true"{{/if}}>
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-{{icon_code}}"/>
 </svg>
