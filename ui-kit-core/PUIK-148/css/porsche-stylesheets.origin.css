@@ -1002,6 +1002,7 @@ table {
  */
 .icon {
   display: inline-flex;
+  flex-shrink: 0;
   width: 1em;
   height: 1em;
   fill: currentColor;

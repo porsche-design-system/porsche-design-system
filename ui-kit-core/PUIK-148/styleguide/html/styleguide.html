@@ -13,8 +13,8 @@
 <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 <meta http-equiv="pragma" content="no-cache" />
 
-<link rel="stylesheet" href="../../styleguide/css/styleguide.min.css?1544427468968" media="all">
-<link rel="stylesheet" href="../../styleguide/css/prism-typeahead.min.css?1544427468968" media="all" />
+<link rel="stylesheet" href="../../styleguide/css/styleguide.min.css?1544602142544" media="all">
+<link rel="stylesheet" href="../../styleguide/css/prism-typeahead.min.css?1544602142544" media="all" />
 
 
     <script>
@@ -35,8 +35,8 @@
       }
     </script>
 
-    <link rel="stylesheet" href="../../css/porsche-ui-kit-core.styleguide-scaffolding.css?1544427468968" media="all"/>
-    <link rel="stylesheet" href="../../css/porsche-stylesheets.css?1544427468968" media="all"/>
+    <link rel="stylesheet" href="../../css/porsche-ui-kit-core.styleguide-scaffolding.css?1544602142544" media="all"/>
+    <link rel="stylesheet" href="../../css/porsche-stylesheets.css?1544602142544" media="all"/>
 
   </head>
   <body class="sg-wrapper-default">
@@ -505,13 +505,13 @@
   
   
   
-  " role="img" title="arrow-right-hair">
+  " role="img" focusable="false" aria-label="descriptive text if icon stands alone" >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"/>
 </svg>
 
   </div>
   <script type="text/json" id="sg-pattern-data-atoms-icon" class="sg-pattern-data">
-    {"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":true,"patternLineagesR":[{"lineagePattern":"design-spec-icons","lineagePath":"../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html"}],"lineageR":[{"lineagePattern":"design-spec-icons","lineagePath":"../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html"}],"patternLineageEExists":true,"patternDesc":"<h1>UI Kit Core icon manual</h1>\n<h2>UI / UX guidelines</h2>\n<p><strong>TBD</strong></p>\n<h2>Technical guidelines</h2>\n<p>Porsche UI-Kit Core is using a SVG icon sprite system to present an object visually.\nEvery project using UI-Kit Core must generate and implement their specific SVG icon sprite by itself regarding to their technical und visual needs.</p>\n<h3>Building the icon sprite</h3>\n<p>The icon sprite must be build throughout a set of individual SVG icons.\nThe whole set of icons can be found here:<br>\n<code>~@porsche/ui-kit-core/src/base/icon/*.svg</code><br>\nBuilding the sprite can be done manually or even better with help of a frontend build system, e.g. https://github.com/jkphl/svg-sprite.</p>\n<p><strong>Hints for optimizations</strong>:</p>\n<ul>\n<li>Using just the icons which are needed inside the application is recommended.</li>\n<li>Reducing the file size of the icon sprite can be done by optimizing SVG's with a SVG optimizer which strips out unnecessary SVG code.</li>\n<li>Also activating GZIP compression on the server side can reduce file size up to 50%.</li>\n</ul>\n<p>Finally the generated icon sprite should look something like this:</p>\n<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;\n  &lt;symbol id=&quot;icon-arrow-down-hair&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down-hair&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-3l12 9.5 12-9.5v3l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  &lt;symbol id=&quot;icon-arrow-down-thin&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down-thin&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-4.5l12 9.5 12-9.5v4.5l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  &lt;symbol id=&quot;icon-arrow-down&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-8l12 9.5 12-9.5v8l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  ...\n&lt;/svg&gt;\n\n</code></pre>\n<p>For screen reader accessibility, provide a context-rich title for the SVG using the <code>&lt;title&gt;</code> element.</p>\n<h3>Including the icon sprite</h3>\n<p>For modern browsers (including Chrome, Firefox, Safari, Edge13), setting a direct link to the SVG file is the best choice (shown in the example beyond).\nIf older browsers like IE11 or Edge &lt; 12 need to be supported, an additional polyfill must be included to implement the SVG sprite with AJAX.\nThe best choice therefore is <code>svg4everybody</code> (https://github.com/jonathantneal/svg4everybody) which is a well tested and widely adopted SVG polyfill.</p>\n<h3>Referencing SVG icon from a static sprite asset (recommended)</h3>\n<p>The SVG sprite is used by serving it as a static asset. Then using a path to the SVG sprite file to display the SVG icon.</p>\n<pre><code>&lt;svg class=&quot;icon&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n<h3>Icon sizes</h3>\n<p>There are pre-defined icon sizes which can be set by adding one of the following classes:</p>\n<pre><code>&lt;svg class=&quot;icon icon--medium&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n<p>Available sizes:<br>\n<code>icon--x-small</code> =&gt; 18px<br>\n<code>icon--small</code> =&gt; 24px<br>\n<code>icon--medium</code> =&gt; 30px<br>\n<code>icon--large</code> =&gt; 42px<br>\n<code>icon--x-large</code> =&gt; 60px</p>\n<h3>Colors</h3>\n<p>All icons are rendered in black per default. Changing the icon to a different color can be done by adding individual color definitions in the CSS code:</p>\n<pre><code>.some-color-class {\n  color: $color-palette-white;\n}\n\n&lt;svg class=&quot;icon some-color-class&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n","patternBreadcrumb":{"patternType":"atoms","patternSubtype":"icon"},"patternExtension":"hbs","patternName":"Icon","patternPartial":"atoms-icon","patternState":"inprogress","patternEngineName":"handlebars","extraOutput":{}}
+    {"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":true,"patternLineagesR":[{"lineagePattern":"design-spec-icons","lineagePath":"../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html"}],"lineageR":[{"lineagePattern":"design-spec-icons","lineagePath":"../../patterns/99-design-spec-icons-icons/99-design-spec-icons-icons.rendered.html"}],"patternLineageEExists":true,"patternDesc":"<h1>UI Kit Core icon manual</h1>\n<h2>UI / UX guidelines</h2>\n<p><strong>TBD</strong></p>\n<h2>Technical guidelines</h2>\n<p>Porsche UI-Kit Core is using a SVG icon sprite system to present an object visually.\nEvery project using UI-Kit Core must generate and implement their specific SVG icon sprite by itself regarding to their technical und visual needs.</p>\n<h3>Building the icon sprite</h3>\n<p>The icon sprite must be build throughout a set of individual SVG icons.\nThe whole set of icons can be found here:<br>\n<code>~@porsche/ui-kit-core/src/base/icon/*.svg</code><br>\nBuilding the sprite can be done manually or even better with help of a frontend build system, e.g. https://github.com/jkphl/svg-sprite.</p>\n<p><strong>Hints for optimizations</strong>:</p>\n<ul>\n<li>Using just the icons which are needed inside the application is recommended.</li>\n<li>Reducing the file size of the icon sprite can be done by optimizing SVG's with a SVG optimizer which strips out unnecessary SVG code.</li>\n<li>Also activating GZIP compression on the server side can reduce file size up to 50%.</li>\n</ul>\n<p>Finally the generated icon sprite should look something like this:</p>\n<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;\n  &lt;symbol id=&quot;icon-arrow-down-hair&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down-hair&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-3l12 9.5 12-9.5v3l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  &lt;symbol id=&quot;icon-arrow-down-thin&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down-thin&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-4.5l12 9.5 12-9.5v4.5l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  &lt;symbol id=&quot;icon-arrow-down&quot; viewBox=&quot;0 0 32 32&quot;&gt;\n    &lt;title&gt;icon_arrow-down&lt;/title&gt;\n    &lt;path d=&quot;M4 15v-8l12 9.5 12-9.5v8l-12 9.5z&quot;/&gt;\n  &lt;/symbol&gt;\n  ...\n&lt;/svg&gt;\n\n</code></pre>\n<p>For screen reader accessibility, provide a context-rich title for the SVG using the <code>&lt;title&gt;</code> element.</p>\n<h3>Including the icon sprite</h3>\n<p>For modern browsers (including Chrome, Firefox, Safari, Edge13), setting a direct link to the SVG file is the best choice (shown in the example beyond).\nIf older browsers like IE11 or Edge &lt; 12 need to be supported, an additional polyfill must be included to implement the SVG sprite with AJAX.\nThe best choice therefore is <code>svg4everybody</code> (https://github.com/jonathantneal/svg4everybody) which is a well tested and widely adopted SVG polyfill.</p>\n<h3>Referencing SVG icon from a static sprite asset (recommended)</h3>\n<p>The SVG sprite is used by serving it as a static asset. Then using a path to the SVG sprite file to display the SVG icon.</p>\n<pre><code>&lt;svg class=&quot;icon&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n<h3>Icon sizes</h3>\n<p>There are pre-defined icon sizes which can be set by adding one of the following classes:</p>\n<pre><code>&lt;svg class=&quot;icon icon--medium&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n<p>Available sizes:<br>\n<code>icon--x-small</code> =&gt; 18px<br>\n<code>icon--small</code> =&gt; 24px<br>\n<code>icon--medium</code> =&gt; 30px<br>\n<code>icon--large</code> =&gt; 42px<br>\n<code>icon--x-large</code> =&gt; 60px</p>\n<h3>Colors</h3>\n<p>All icons are rendered in black per default. Changing the icon to a different color can be done by adding individual color definitions in the CSS code:</p>\n<pre><code>.some-color-class {\n  color: $color-palette-white;\n}\n\n&lt;svg class=&quot;icon some-color-class&quot; role=&quot;img&quot; title=&quot;arrow down&quot;&gt;\n  &lt;use xlink:href=&quot;/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n<h3>Accessibility</h3>\n<p>With using SVG icons, there are options to give more accessibility to users using screen readers. Here are some good practices:</p>\n<ul>\n<li>If icons stand alone, adding descriptive text with an <code>aria-label</code> attribute is a good practice:</li>\n</ul>\n<pre><code>&lt;svg class=&quot;icon&quot; role=&quot;img&quot; focusable=&quot;false&quot; aria-label=&quot;descriptive text, e.g: close the layer&quot;&gt;\n  &lt;use xlink:href=&quot;../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-close&quot;/&gt;\n&lt;/svg&gt;\n</code></pre>\n<ul>\n<li>If an icon is just for visual presentation and has no meaning of its own, it can be hidden from screen readers.<br>\nA use case for that is, if an arrow icon is palced beside a descriptive button text:</li>\n</ul>\n<pre><code>&lt;button type=&quot;button&quot;&gt;\n  &lt;svg class=&quot;icon&quot; role=&quot;img&quot; focusable=&quot;false&quot; aria-hidden=&quot;true&quot;&gt;\n    &lt;use xlink:href=&quot;../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right&quot;/&gt;\n  &lt;/svg&gt;\n  go to detail page\n&lt;button&gt;\n</code></pre>\n","patternBreadcrumb":{"patternType":"atoms","patternSubtype":"icon"},"patternExtension":"hbs","patternName":"Icon","patternPartial":"atoms-icon","patternState":"inprogress","patternEngineName":"handlebars","extraOutput":{}}
   </script>
 </div><!--end .sg-pattern-->
 <div id="atoms-icon-01-x-small" class="sg-pattern">
@@ -535,7 +535,7 @@
   
   
   
-  " role="img" title="arrow-right-hair">
+  " role="img" focusable="false" aria-label="descriptive text if icon stands alone" >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"/>
 </svg>
 
@@ -565,7 +565,7 @@
   
   
   
-  " role="img" title="arrow-right-hair">
+  " role="img" focusable="false" aria-label="descriptive text if icon stands alone" >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"/>
 </svg>
 
@@ -595,7 +595,7 @@
   icon--medium
   
   
-  " role="img" title="arrow-right-hair">
+  " role="img" focusable="false" aria-label="descriptive text if icon stands alone" >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"/>
 </svg>
 
@@ -625,7 +625,7 @@
   
   icon--large
   
-  " role="img" title="arrow-right-hair">
+  " role="img" focusable="false" aria-label="descriptive text if icon stands alone" >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"/>
 </svg>
 
@@ -655,7 +655,7 @@
   
   
   icon--x-large
-  " role="img" title="arrow-right-hair">
+  " role="img" focusable="false" aria-label="descriptive text if icon stands alone" >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"/>
 </svg>
 
@@ -24899,7 +24899,7 @@
   
   icon--large
   
-  " role="img" title="locked">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-locked"/>
 </svg>
 </span>
@@ -24912,7 +24912,7 @@
   
   icon--large
   
-  " role="img" title="360-Grad">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-360-Grad"/>
 </svg>
 </span>
@@ -24925,7 +24925,7 @@
   
   icon--large
   
-  " role="img" title="acceleration">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-acceleration"/>
 </svg>
 </span>
@@ -24938,7 +24938,7 @@
   
   icon--large
   
-  " role="img" title="add-user">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-add-user"/>
 </svg>
 </span>
@@ -24951,7 +24951,7 @@
   
   icon--large
   
-  " role="img" title="advisor-not-available">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-advisor-not-available"/>
 </svg>
 </span>
@@ -24964,7 +24964,7 @@
   
   icon--large
   
-  " role="img" title="afternoon">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-afternoon"/>
 </svg>
 </span>
@@ -24977,7 +24977,7 @@
   
   icon--large
   
-  " role="img" title="all-day-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-all-day-next"/>
 </svg>
 </span>
@@ -24990,7 +24990,7 @@
   
   icon--large
   
-  " role="img" title="ar">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-ar"/>
 </svg>
 </span>
@@ -25003,7 +25003,7 @@
   
   icon--large
   
-  " role="img" title="archive">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-archive"/>
 </svg>
 </span>
@@ -25016,7 +25016,7 @@
   
   icon--large
   
-  " role="img" title="arrow-back">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-back"/>
 </svg>
 </span>
@@ -25029,7 +25029,7 @@
   
   icon--large
   
-  " role="img" title="arrow-down-hair">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-down-hair"/>
 </svg>
 </span>
@@ -25042,7 +25042,7 @@
   
   icon--large
   
-  " role="img" title="arrow-down-thin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-down-thin"/>
 </svg>
 </span>
@@ -25055,7 +25055,7 @@
   
   icon--large
   
-  " role="img" title="arrow-down">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-down"/>
 </svg>
 </span>
@@ -25068,7 +25068,7 @@
   
   icon--large
   
-  " role="img" title="arrow-left-thin-first">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-left-thin-first"/>
 </svg>
 </span>
@@ -25081,7 +25081,7 @@
   
   icon--large
   
-  " role="img" title="arrow-left-thin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-left-thin"/>
 </svg>
 </span>
@@ -25094,7 +25094,7 @@
   
   icon--large
   
-  " role="img" title="arrow-left">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-left"/>
 </svg>
 </span>
@@ -25107,7 +25107,7 @@
   
   icon--large
   
-  " role="img" title="arrow-right-hair">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"/>
 </svg>
 </span>
@@ -25120,7 +25120,7 @@
   
   icon--large
   
-  " role="img" title="arrow-right-thin-last">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-thin-last"/>
 </svg>
 </span>
@@ -25133,7 +25133,7 @@
   
   icon--large
   
-  " role="img" title="arrow-right-thin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-thin"/>
 </svg>
 </span>
@@ -25146,7 +25146,7 @@
   
   icon--large
   
-  " role="img" title="arrow-right">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right"/>
 </svg>
 </span>
@@ -25159,7 +25159,7 @@
   
   icon--large
   
-  " role="img" title="arrow-slider-left-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-slider-left-next"/>
 </svg>
 </span>
@@ -25172,7 +25172,7 @@
   
   icon--large
   
-  " role="img" title="arrow-slider-right-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-slider-right-next"/>
 </svg>
 </span>
@@ -25185,7 +25185,7 @@
   
   icon--large
   
-  " role="img" title="arrow-up-hair">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-up-hair"/>
 </svg>
 </span>
@@ -25198,7 +25198,7 @@
   
   icon--large
   
-  " role="img" title="arrow-up-thin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-up-thin"/>
 </svg>
 </span>
@@ -25211,7 +25211,7 @@
   
   icon--large
   
-  " role="img" title="arrow-up">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-up"/>
 </svg>
 </span>
@@ -25224,7 +25224,7 @@
   
   icon--large
   
-  " role="img" title="article">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-article"/>
 </svg>
 </span>
@@ -25237,7 +25237,7 @@
   
   icon--large
   
-  " role="img" title="baidu">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-baidu"/>
 </svg>
 </span>
@@ -25250,7 +25250,7 @@
   
   icon--large
   
-  " role="img" title="basket">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-basket"/>
 </svg>
 </span>
@@ -25263,7 +25263,7 @@
   
   icon--large
   
-  " role="img" title="basket-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-basket-next"/>
 </svg>
 </span>
@@ -25276,7 +25276,7 @@
   
   icon--large
   
-  " role="img" title="battery-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-battery-next"/>
 </svg>
 </span>
@@ -25289,7 +25289,7 @@
   
   icon--large
   
-  " role="img" title="breadcrumb">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-breadcrumb"/>
 </svg>
 </span>
@@ -25302,7 +25302,7 @@
   
   icon--large
   
-  " role="img" title="broadcast">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-broadcast"/>
 </svg>
 </span>
@@ -25315,7 +25315,7 @@
   
   icon--large
   
-  " role="img" title="callback">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-callback"/>
 </svg>
 </span>
@@ -25328,7 +25328,7 @@
   
   icon--large
   
-  " role="img" title="car-connect">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-car-connect"/>
 </svg>
 </span>
@@ -25341,7 +25341,7 @@
   
   icon--large
   
-  " role="img" title="car-connect-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-car-connect-next"/>
 </svg>
 </span>
@@ -25354,7 +25354,7 @@
   
   icon--large
   
-  " role="img" title="car">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-car"/>
 </svg>
 </span>
@@ -25367,7 +25367,7 @@
   
   icon--large
   
-  " role="img" title="car-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-car-next"/>
 </svg>
 </span>
@@ -25380,7 +25380,7 @@
   
   icon--large
   
-  " role="img" title="check">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-check"/>
 </svg>
 </span>
@@ -25393,7 +25393,7 @@
   
   icon--large
   
-  " role="img" title="check-small">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-check-small"/>
 </svg>
 </span>
@@ -25406,7 +25406,7 @@
   
   icon--large
   
-  " role="img" title="climate-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-climate-next"/>
 </svg>
 </span>
@@ -25419,7 +25419,7 @@
   
   icon--large
   
-  " role="img" title="close">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-close"/>
 </svg>
 </span>
@@ -25432,7 +25432,7 @@
   
   icon--large
   
-  " role="img" title="closed-eye">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-closed-eye"/>
 </svg>
 </span>
@@ -25445,7 +25445,7 @@
   
   icon--large
   
-  " role="img" title="code-active">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-code-active"/>
 </svg>
 </span>
@@ -25458,7 +25458,7 @@
   
   icon--large
   
-  " role="img" title="code-inactive">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-code-inactive"/>
 </svg>
 </span>
@@ -25471,7 +25471,7 @@
   
   icon--large
   
-  " role="img" title="compare">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-compare"/>
 </svg>
 </span>
@@ -25484,7 +25484,7 @@
   
   icon--large
   
-  " role="img" title="concept">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-concept"/>
 </svg>
 </span>
@@ -25497,7 +25497,7 @@
   
   icon--large
   
-  " role="img" title="configurator">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-configurator"/>
 </svg>
 </span>
@@ -25510,7 +25510,7 @@
   
   icon--large
   
-  " role="img" title="consumption">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-consumption"/>
 </svg>
 </span>
@@ -25523,7 +25523,7 @@
   
   icon--large
   
-  " role="img" title="contact">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-contact"/>
 </svg>
 </span>
@@ -25536,7 +25536,7 @@
   
   icon--large
   
-  " role="img" title="corporate-sales">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-corporate-sales"/>
 </svg>
 </span>
@@ -25549,7 +25549,7 @@
   
   icon--large
   
-  " role="img" title="crosshair">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-crosshair"/>
 </svg>
 </span>
@@ -25562,7 +25562,7 @@
   
   icon--large
   
-  " role="img" title="cubic-capacity">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-cubic-capacity"/>
 </svg>
 </span>
@@ -25575,7 +25575,7 @@
   
   icon--large
   
-  " role="img" title="customer-administration">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-customer-administration"/>
 </svg>
 </span>
@@ -25588,7 +25588,7 @@
   
   icon--large
   
-  " role="img" title="cw-value">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-cw-value"/>
 </svg>
 </span>
@@ -25601,7 +25601,7 @@
   
   icon--large
   
-  " role="img" title="deactivate">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-deactivate"/>
 </svg>
 </span>
@@ -25614,7 +25614,7 @@
   
   icon--large
   
-  " role="img" title="dealer">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-dealer"/>
 </svg>
 </span>
@@ -25627,7 +25627,7 @@
   
   icon--large
   
-  " role="img" title="delete">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-delete"/>
 </svg>
 </span>
@@ -25640,7 +25640,7 @@
   
   icon--large
   
-  " role="img" title="delicious">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-delicious"/>
 </svg>
 </span>
@@ -25653,7 +25653,7 @@
   
   icon--large
   
-  " role="img" title="delivery-adress">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-delivery-adress"/>
 </svg>
 </span>
@@ -25666,7 +25666,7 @@
   
   icon--large
   
-  " role="img" title="desktop">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-desktop"/>
 </svg>
 </span>
@@ -25679,7 +25679,7 @@
   
   icon--large
   
-  " role="img" title="details-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-details-next"/>
 </svg>
 </span>
@@ -25692,7 +25692,7 @@
   
   icon--large
   
-  " role="img" title="digg">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-digg"/>
 </svg>
 </span>
@@ -25705,7 +25705,7 @@
   
   icon--large
   
-  " role="img" title="document">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-document"/>
 </svg>
 </span>
@@ -25718,7 +25718,7 @@
   
   icon--large
   
-  " role="img" title="door-left1-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-door-left1-next"/>
 </svg>
 </span>
@@ -25731,7 +25731,7 @@
   
   icon--large
   
-  " role="img" title="door-left2-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-door-left2-next"/>
 </svg>
 </span>
@@ -25744,7 +25744,7 @@
   
   icon--large
   
-  " role="img" title="door-right1-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-door-right1-next"/>
 </svg>
 </span>
@@ -25757,7 +25757,7 @@
   
   icon--large
   
-  " role="img" title="door-right2-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-door-right2-next"/>
 </svg>
 </span>
@@ -25770,7 +25770,7 @@
   
   icon--large
   
-  " role="img" title="double-arrow-down-thin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-double-arrow-down-thin"/>
 </svg>
 </span>
@@ -25783,7 +25783,7 @@
   
   icon--large
   
-  " role="img" title="double-arrow-left-thin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-double-arrow-left-thin"/>
 </svg>
 </span>
@@ -25796,7 +25796,7 @@
   
   icon--large
   
-  " role="img" title="double-arrow-right-thin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-double-arrow-right-thin"/>
 </svg>
 </span>
@@ -25809,7 +25809,7 @@
   
   icon--large
   
-  " role="img" title="download">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-download"/>
 </svg>
 </span>
@@ -25822,7 +25822,7 @@
   
   icon--large
   
-  " role="img" title="download-02">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-download-02"/>
 </svg>
 </span>
@@ -25835,7 +25835,7 @@
   
   icon--large
   
-  " role="img" title="duration-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-duration-next"/>
 </svg>
 </span>
@@ -25848,7 +25848,7 @@
   
   icon--large
   
-  " role="img" title="e-fuel-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-e-fuel-next"/>
 </svg>
 </span>
@@ -25861,7 +25861,7 @@
   
   icon--large
   
-  " role="img" title="e-performance">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-e-performance"/>
 </svg>
 </span>
@@ -25874,7 +25874,7 @@
   
   icon--large
   
-  " role="img" title="e-power">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-e-power"/>
 </svg>
 </span>
@@ -25887,7 +25887,7 @@
   
   icon--large
   
-  " role="img" title="e-route">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-e-route"/>
 </svg>
 </span>
@@ -25900,7 +25900,7 @@
   
   icon--large
   
-  " role="img" title="early-afternoon-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-early-afternoon-next"/>
 </svg>
 </span>
@@ -25913,7 +25913,7 @@
   
   icon--large
   
-  " role="img" title="early-morning-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-early-morning-next"/>
 </svg>
 </span>
@@ -25926,7 +25926,7 @@
   
   icon--large
   
-  " role="img" title="edit">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-edit"/>
 </svg>
 </span>
@@ -25939,7 +25939,7 @@
   
   icon--large
   
-  " role="img" title="electricity-consumption-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-electricity-consumption-next"/>
 </svg>
 </span>
@@ -25952,7 +25952,7 @@
   
   icon--large
   
-  " role="img" title="email">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-email"/>
 </svg>
 </span>
@@ -25965,7 +25965,7 @@
   
   icon--large
   
-  " role="img" title="emission-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-emission-next"/>
 </svg>
 </span>
@@ -25978,7 +25978,7 @@
   
   icon--large
   
-  " role="img" title="energy">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-energy"/>
 </svg>
 </span>
@@ -25991,7 +25991,7 @@
   
   icon--large
   
-  " role="img" title="error">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-error"/>
 </svg>
 </span>
@@ -26004,7 +26004,7 @@
   
   icon--large
   
-  " role="img" title="evening">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-evening"/>
 </svg>
 </span>
@@ -26017,7 +26017,7 @@
   
   icon--large
   
-  " role="img" title="evening-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-evening-next"/>
 </svg>
 </span>
@@ -26030,7 +26030,7 @@
   
   icon--large
   
-  " role="img" title="exclamation-mark">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-exclamation-mark"/>
 </svg>
 </span>
@@ -26043,7 +26043,7 @@
   
   icon--large
   
-  " role="img" title="expire">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-expire"/>
 </svg>
 </span>
@@ -26056,7 +26056,7 @@
   
   icon--large
   
-  " role="img" title="extend-duration">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-extend-duration"/>
 </svg>
 </span>
@@ -26069,7 +26069,7 @@
   
   icon--large
   
-  " role="img" title="eye">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-eye"/>
 </svg>
 </span>
@@ -26082,7 +26082,7 @@
   
   icon--large
   
-  " role="img" title="facebook">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-facebook"/>
 </svg>
 </span>
@@ -26095,7 +26095,7 @@
   
   icon--large
   
-  " role="img" title="favorite-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-favorite-next"/>
 </svg>
 </span>
@@ -26108,7 +26108,7 @@
   
   icon--large
   
-  " role="img" title="fax">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-fax"/>
 </svg>
 </span>
@@ -26121,7 +26121,7 @@
   
   icon--large
   
-  " role="img" title="filter">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-filter"/>
 </svg>
 </span>
@@ -26134,7 +26134,7 @@
   
   icon--large
   
-  " role="img" title="flash-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-flash-next"/>
 </svg>
 </span>
@@ -26147,7 +26147,7 @@
   
   icon--large
   
-  " role="img" title="forgot-password">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-forgot-password"/>
 </svg>
 </span>
@@ -26160,7 +26160,7 @@
   
   icon--large
   
-  " role="img" title="foursquare">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-foursquare"/>
 </svg>
 </span>
@@ -26173,7 +26173,7 @@
   
   icon--large
   
-  " role="img" title="fuel-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-fuel-next"/>
 </svg>
 </span>
@@ -26186,7 +26186,7 @@
   
   icon--large
   
-  " role="img" title="gebrauchtwagensuche">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-gebrauchtwagensuche"/>
 </svg>
 </span>
@@ -26199,7 +26199,7 @@
   
   icon--large
   
-  " role="img" title="giftbox">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-giftbox"/>
 </svg>
 </span>
@@ -26212,7 +26212,7 @@
   
   icon--large
   
-  " role="img" title="globe">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-globe"/>
 </svg>
 </span>
@@ -26225,7 +26225,7 @@
   
   icon--large
   
-  " role="img" title="gmail">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-gmail"/>
 </svg>
 </span>
@@ -26238,7 +26238,7 @@
   
   icon--large
   
-  " role="img" title="google">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-google"/>
 </svg>
 </span>
@@ -26251,7 +26251,7 @@
   
   icon--large
   
-  " role="img" title="gps">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-gps"/>
 </svg>
 </span>
@@ -26264,7 +26264,7 @@
   
   icon--large
   
-  " role="img" title="grid-view">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-grid-view"/>
 </svg>
 </span>
@@ -26277,7 +26277,7 @@
   
   icon--large
   
-  " role="img" title="hatena-bookmark">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-hatena-bookmark"/>
 </svg>
 </span>
@@ -26290,7 +26290,7 @@
   
   icon--large
   
-  " role="img" title="heater-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-heater-next"/>
 </svg>
 </span>
@@ -26303,7 +26303,7 @@
   
   icon--large
   
-  " role="img" title="help-and-contact">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-help-and-contact"/>
 </svg>
 </span>
@@ -26316,7 +26316,7 @@
   
   icon--large
   
-  " role="img" title="highlight">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-highlight"/>
 </svg>
 </span>
@@ -26329,7 +26329,7 @@
   
   icon--large
   
-  " role="img" title="highspeed">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-highspeed"/>
 </svg>
 </span>
@@ -26342,7 +26342,7 @@
   
   icon--large
   
-  " role="img" title="home2">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-home2"/>
 </svg>
 </span>
@@ -26355,7 +26355,7 @@
   
   icon--large
   
-  " role="img" title="home-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-home-next"/>
 </svg>
 </span>
@@ -26368,7 +26368,7 @@
   
   icon--large
   
-  " role="img" title="horn-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-horn-next"/>
 </svg>
 </span>
@@ -26381,7 +26381,7 @@
   
   icon--large
   
-  " role="img" title="idea">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-idea"/>
 </svg>
 </span>
@@ -26394,7 +26394,7 @@
   
   icon--large
   
-  " role="img" title="igoogle">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-igoogle"/>
 </svg>
 </span>
@@ -26407,7 +26407,7 @@
   
   icon--large
   
-  " role="img" title="info">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-info"/>
 </svg>
 </span>
@@ -26420,7 +26420,7 @@
   
   icon--large
   
-  " role="img" title="informationen-anfordern">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-informationen-anfordern"/>
 </svg>
 </span>
@@ -26433,7 +26433,7 @@
   
   icon--large
   
-  " role="img" title="instagram">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-instagram"/>
 </svg>
 </span>
@@ -26446,7 +26446,7 @@
   
   icon--large
   
-  " role="img" title="kaixin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-kaixin"/>
 </svg>
 </span>
@@ -26459,7 +26459,7 @@
   
   icon--large
   
-  " role="img" title="leaf">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-leaf"/>
 </svg>
 </span>
@@ -26472,7 +26472,7 @@
   
   icon--large
   
-  " role="img" title="limousine-engine-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-limousine-engine-pcm"/>
 </svg>
 </span>
@@ -26485,7 +26485,7 @@
   
   icon--large
   
-  " role="img" title="limousine-hood-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-limousine-hood-pcm"/>
 </svg>
 </span>
@@ -26498,7 +26498,7 @@
   
   icon--large
   
-  " role="img" title="limousine-sunroof-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-limousine-sunroof-pcm"/>
 </svg>
 </span>
@@ -26511,7 +26511,7 @@
   
   icon--large
   
-  " role="img" title="limousine-trunk-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-limousine-trunk-pcm"/>
 </svg>
 </span>
@@ -26524,7 +26524,7 @@
   
   icon--large
   
-  " role="img" title="limousine-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-limousine-pcm"/>
 </svg>
 </span>
@@ -26537,7 +26537,7 @@
   
   icon--large
   
-  " role="img" title="linkedin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-linkedin"/>
 </svg>
 </span>
@@ -26550,7 +26550,7 @@
   
   icon--large
   
-  " role="img" title="list-view">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-list-view"/>
 </svg>
 </span>
@@ -26563,7 +26563,7 @@
   
   icon--large
   
-  " role="img" title="loader">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-loader"/>
 </svg>
 </span>
@@ -26576,7 +26576,7 @@
   
   icon--large
   
-  " role="img" title="locate">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-locate"/>
 </svg>
 </span>
@@ -26589,7 +26589,7 @@
   
   icon--large
   
-  " role="img" title="lock-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-lock-next"/>
 </svg>
 </span>
@@ -26602,7 +26602,7 @@
   
   icon--large
   
-  " role="img" title="logout">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-logout"/>
 </svg>
 </span>
@@ -26615,7 +26615,7 @@
   
   icon--large
   
-  " role="img" title="mail-request">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-mail-request"/>
 </svg>
 </span>
@@ -26628,7 +26628,7 @@
   
   icon--large
   
-  " role="img" title="mailbox">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-mailbox"/>
 </svg>
 </span>
@@ -26641,7 +26641,7 @@
   
   icon--large
   
-  " role="img" title="map-view">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-map-view"/>
 </svg>
 </span>
@@ -26654,7 +26654,7 @@
   
   icon--large
   
-  " role="img" title="mark-as-read">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-mark-as-read"/>
 </svg>
 </span>
@@ -26667,7 +26667,7 @@
   
   icon--large
   
-  " role="img" title="max-efficiency">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-max-efficiency"/>
 </svg>
 </span>
@@ -26680,7 +26680,7 @@
   
   icon--large
   
-  " role="img" title="menu2">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-menu2"/>
 </svg>
 </span>
@@ -26693,7 +26693,7 @@
   
   icon--large
   
-  " role="img" title="menu-dots">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-menu-dots"/>
 </svg>
 </span>
@@ -26706,7 +26706,7 @@
   
   icon--large
   
-  " role="img" title="menue">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-menue"/>
 </svg>
 </span>
@@ -26719,7 +26719,7 @@
   
   icon--large
   
-  " role="img" title="microphone">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-microphone"/>
 </svg>
 </span>
@@ -26732,7 +26732,7 @@
   
   icon--large
   
-  " role="img" title="mileage-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-mileage-next"/>
 </svg>
 </span>
@@ -26745,7 +26745,7 @@
   
   icon--large
   
-  " role="img" title="minus">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-minus"/>
 </svg>
 </span>
@@ -26758,7 +26758,7 @@
   
   icon--large
   
-  " role="img" title="morning-afternoon-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-morning-afternoon-next"/>
 </svg>
 </span>
@@ -26771,7 +26771,7 @@
   
   icon--large
   
-  " role="img" title="morning">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-morning"/>
 </svg>
 </span>
@@ -26784,7 +26784,7 @@
   
   icon--large
   
-  " role="img" title="move-inbox">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-move-inbox"/>
 </svg>
 </span>
@@ -26797,7 +26797,7 @@
   
   icon--large
   
-  " role="img" title="mute">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-mute"/>
 </svg>
 </span>
@@ -26810,7 +26810,7 @@
   
   icon--large
   
-  " role="img" title="next-modul">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-next-modul"/>
 </svg>
 </span>
@@ -26823,7 +26823,7 @@
   
   icon--large
   
-  " role="img" title="oil-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-oil-next"/>
 </svg>
 </span>
@@ -26836,7 +26836,7 @@
   
   icon--large
   
-  " role="img" title="overview">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-overview"/>
 </svg>
 </span>
@@ -26849,7 +26849,7 @@
   
   icon--large
   
-  " role="img" title="ownerservice">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-ownerservice"/>
 </svg>
 </span>
@@ -26862,7 +26862,7 @@
   
   icon--large
   
-  " role="img" title="park-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-park-next"/>
 </svg>
 </span>
@@ -26875,7 +26875,7 @@
   
   icon--large
   
-  " role="img" title="parklight-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-parklight-next"/>
 </svg>
 </span>
@@ -26888,7 +26888,7 @@
   
   icon--large
   
-  " role="img" title="pause">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-pause"/>
 </svg>
 </span>
@@ -26901,7 +26901,7 @@
   
   icon--large
   
-  " role="img" title="payment-calculator">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-payment-calculator"/>
 </svg>
 </span>
@@ -26914,7 +26914,7 @@
   
   icon--large
   
-  " role="img" title="payment">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-payment"/>
 </svg>
 </span>
@@ -26927,7 +26927,7 @@
   
   icon--large
   
-  " role="img" title="pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-pcm"/>
 </svg>
 </span>
@@ -26940,7 +26940,7 @@
   
   icon--large
   
-  " role="img" title="performance">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-performance"/>
 </svg>
 </span>
@@ -26953,7 +26953,7 @@
   
   icon--large
   
-  " role="img" title="phone">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-phone"/>
 </svg>
 </span>
@@ -26966,7 +26966,7 @@
   
   icon--large
   
-  " role="img" title="photo">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-photo"/>
 </svg>
 </span>
@@ -26979,7 +26979,7 @@
   
   icon--large
   
-  " role="img" title="picture">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-picture"/>
 </svg>
 </span>
@@ -26992,7 +26992,7 @@
   
   icon--large
   
-  " role="img" title="pin">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-pin"/>
 </svg>
 </span>
@@ -27005,7 +27005,7 @@
   
   icon--large
   
-  " role="img" title="pinterest">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-pinterest"/>
 </svg>
 </span>
@@ -27018,7 +27018,7 @@
   
   icon--large
   
-  " role="img" title="play">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-play"/>
 </svg>
 </span>
@@ -27031,7 +27031,7 @@
   
   icon--large
   
-  " role="img" title="play2">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-play2"/>
 </svg>
 </span>
@@ -27044,7 +27044,7 @@
   
   icon--large
   
-  " role="img" title="plug-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-plug-pcm"/>
 </svg>
 </span>
@@ -27057,7 +27057,7 @@
   
   icon--large
   
-  " role="img" title="plus">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-plus"/>
 </svg>
 </span>
@@ -27070,7 +27070,7 @@
   
   icon--large
   
-  " role="img" title="porsche-driving-experience">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-porsche-driving-experience"/>
 </svg>
 </span>
@@ -27083,7 +27083,7 @@
   
   icon--large
   
-  " role="img" title="pref-modul">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-pref-modul"/>
 </svg>
 </span>
@@ -27096,7 +27096,7 @@
   
   icon--large
   
-  " role="img" title="print">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-print"/>
 </svg>
 </span>
@@ -27109,7 +27109,7 @@
   
   icon--large
   
-  " role="img" title="qq-share">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-qq-share"/>
 </svg>
 </span>
@@ -27122,7 +27122,7 @@
   
   icon--large
   
-  " role="img" title="qq">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-qq"/>
 </svg>
 </span>
@@ -27135,7 +27135,7 @@
   
   icon--large
   
-  " role="img" title="question-mark">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-question-mark"/>
 </svg>
 </span>
@@ -27148,7 +27148,7 @@
   
   icon--large
   
-  " role="img" title="radio-button">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-radio-button"/>
 </svg>
 </span>
@@ -27161,7 +27161,7 @@
   
   icon--large
   
-  " role="img" title="read-more">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-read-more"/>
 </svg>
 </span>
@@ -27174,7 +27174,7 @@
   
   icon--large
   
-  " role="img" title="registration">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-registration"/>
 </svg>
 </span>
@@ -27187,7 +27187,7 @@
   
   icon--large
   
-  " role="img" title="renren">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-renren"/>
 </svg>
 </span>
@@ -27200,7 +27200,7 @@
   
   icon--large
   
-  " role="img" title="replacement-car">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-replacement-car"/>
 </svg>
 </span>
@@ -27213,7 +27213,7 @@
   
   icon--large
   
-  " role="img" title="replacement-car-not-available">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-replacement-car-not-available"/>
 </svg>
 </span>
@@ -27226,7 +27226,7 @@
   
   icon--large
   
-  " role="img" title="replay">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-replay"/>
 </svg>
 </span>
@@ -27239,7 +27239,7 @@
   
   icon--large
   
-  " role="img" title="reset">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-reset"/>
 </svg>
 </span>
@@ -27252,7 +27252,7 @@
   
   icon--large
   
-  " role="img" title="rfid-card">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-rfid-card"/>
 </svg>
 </span>
@@ -27265,7 +27265,7 @@
   
   icon--large
   
-  " role="img" title="route-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-route-next"/>
 </svg>
 </span>
@@ -27278,7 +27278,7 @@
   
   icon--large
   
-  " role="img" title="rss">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-rss"/>
 </svg>
 </span>
@@ -27291,7 +27291,7 @@
   
   icon--large
   
-  " role="img" title="save">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-save"/>
 </svg>
 </span>
@@ -27304,7 +27304,7 @@
   
   icon--large
   
-  " role="img" title="scrollbar">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-scrollbar"/>
 </svg>
 </span>
@@ -27317,7 +27317,7 @@
   
   icon--large
   
-  " role="img" title="search">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-search"/>
 </svg>
 </span>
@@ -27330,7 +27330,7 @@
   
   icon--large
   
-  " role="img" title="send-code">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-send-code"/>
 </svg>
 </span>
@@ -27343,7 +27343,7 @@
   
   icon--large
   
-  " role="img" title="send">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-send"/>
 </svg>
 </span>
@@ -27356,7 +27356,7 @@
   
   icon--large
   
-  " role="img" title="settings">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-settings"/>
 </svg>
 </span>
@@ -27369,7 +27369,7 @@
   
   icon--large
   
-  " role="img" title="share">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-share"/>
 </svg>
 </span>
@@ -27382,7 +27382,7 @@
   
   icon--large
   
-  " role="img" title="skyrock">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-skyrock"/>
 </svg>
 </span>
@@ -27395,7 +27395,7 @@
   
   icon--large
   
-  " role="img" title="slideshow">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-slideshow"/>
 </svg>
 </span>
@@ -27408,7 +27408,7 @@
   
   icon--large
   
-  " role="img" title="smartphone">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-smartphone"/>
 </svg>
 </span>
@@ -27421,7 +27421,7 @@
   
   icon--large
   
-  " role="img" title="sohu">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sohu"/>
 </svg>
 </span>
@@ -27434,7 +27434,7 @@
   
   icon--large
   
-  " role="img" title="sort">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sort"/>
 </svg>
 </span>
@@ -27447,7 +27447,7 @@
   
   icon--large
   
-  " role="img" title="sound-of-porsche">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sound-of-porsche"/>
 </svg>
 </span>
@@ -27460,7 +27460,7 @@
   
   icon--large
   
-  " role="img" title="sound">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sound"/>
 </svg>
 </span>
@@ -27473,7 +27473,7 @@
   
   icon--large
   
-  " role="img" title="speed-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-speed-next"/>
 </svg>
 </span>
@@ -27486,7 +27486,7 @@
   
   icon--large
   
-  " role="img" title="sport-engine-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sport-engine-pcm"/>
 </svg>
 </span>
@@ -27499,7 +27499,7 @@
   
   icon--large
   
-  " role="img" title="sport-hood-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sport-hood-pcm"/>
 </svg>
 </span>
@@ -27512,7 +27512,7 @@
   
   icon--large
   
-  " role="img" title="sport-sunroof-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sport-sunroof-pcm"/>
 </svg>
 </span>
@@ -27525,7 +27525,7 @@
   
   icon--large
   
-  " role="img" title="sport-trunk-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sport-trunk-pcm"/>
 </svg>
 </span>
@@ -27538,7 +27538,7 @@
   
   icon--large
   
-  " role="img" title="sport-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sport-pcm"/>
 </svg>
 </span>
@@ -27551,7 +27551,7 @@
   
   icon--large
   
-  " role="img" title="standard-features">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-standard-features"/>
 </svg>
 </span>
@@ -27564,7 +27564,7 @@
   
   icon--large
   
-  " role="img" title="sub-menue">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-sub-menue"/>
 </svg>
 </span>
@@ -27577,7 +27577,7 @@
   
   icon--large
   
-  " role="img" title="suv-engine-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-suv-engine-pcm"/>
 </svg>
 </span>
@@ -27590,7 +27590,7 @@
   
   icon--large
   
-  " role="img" title="suv-hood-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-suv-hood-pcm"/>
 </svg>
 </span>
@@ -27603,7 +27603,7 @@
   
   icon--large
   
-  " role="img" title="suv-sunroof-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-suv-sunroof-pcm"/>
 </svg>
 </span>
@@ -27616,7 +27616,7 @@
   
   icon--large
   
-  " role="img" title="suv-trunk-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-suv-trunk-pcm"/>
 </svg>
 </span>
@@ -27629,7 +27629,7 @@
   
   icon--large
   
-  " role="img" title="suv-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-suv-pcm"/>
 </svg>
 </span>
@@ -27642,7 +27642,7 @@
   
   icon--large
   
-  " role="img" title="tablet">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-tablet"/>
 </svg>
 </span>
@@ -27655,7 +27655,7 @@
   
   icon--large
   
-  " role="img" title="tecent">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-tecent"/>
 </svg>
 </span>
@@ -27668,7 +27668,7 @@
   
   icon--large
   
-  " role="img" title="telegram">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-telegram"/>
 </svg>
 </span>
@@ -27681,7 +27681,7 @@
   
   icon--large
   
-  " role="img" title="teq-finder-01">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-teq-finder-01"/>
 </svg>
 </span>
@@ -27694,7 +27694,7 @@
   
   icon--large
   
-  " role="img" title="teq-finder-02">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-teq-finder-02"/>
 </svg>
 </span>
@@ -27707,7 +27707,7 @@
   
   icon--large
   
-  " role="img" title="testdrive">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-testdrive"/>
 </svg>
 </span>
@@ -27720,7 +27720,7 @@
   
   icon--large
   
-  " role="img" title="timer">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-timer"/>
 </svg>
 </span>
@@ -27733,7 +27733,7 @@
   
   icon--large
   
-  " role="img" title="timer-pcm">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-timer-pcm"/>
 </svg>
 </span>
@@ -27746,7 +27746,7 @@
   
   icon--large
   
-  " role="img" title="tumblr">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-tumblr"/>
 </svg>
 </span>
@@ -27759,7 +27759,7 @@
   
   icon--large
   
-  " role="img" title="tutorial">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-tutorial"/>
 </svg>
 </span>
@@ -27772,7 +27772,7 @@
   
   icon--large
   
-  " role="img" title="twitter">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-twitter"/>
 </svg>
 </span>
@@ -27785,7 +27785,7 @@
   
   icon--large
   
-  " role="img" title="twitter-favorite">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-twitter-favorite"/>
 </svg>
 </span>
@@ -27798,7 +27798,7 @@
   
   icon--large
   
-  " role="img" title="twitter-reply">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-twitter-reply"/>
 </svg>
 </span>
@@ -27811,7 +27811,7 @@
   
   icon--large
   
-  " role="img" title="twitter-retweet">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-twitter-retweet"/>
 </svg>
 </span>
@@ -27824,7 +27824,7 @@
   
   icon--large
   
-  " role="img" title="unlock-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-unlock-next"/>
 </svg>
 </span>
@@ -27837,7 +27837,7 @@
   
   icon--large
   
-  " role="img" title="update-in-car">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-update-in-car"/>
 </svg>
 </span>
@@ -27850,7 +27850,7 @@
   
   icon--large
   
-  " role="img" title="upload">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-upload"/>
 </svg>
 </span>
@@ -27863,7 +27863,7 @@
   
   icon--large
   
-  " role="img" title="vertical-line">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-vertical-line"/>
 </svg>
 </span>
@@ -27876,7 +27876,7 @@
   
   icon--large
   
-  " role="img" title="viber">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-viber"/>
 </svg>
 </span>
@@ -27889,7 +27889,7 @@
   
   icon--large
   
-  " role="img" title="video-quali">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-video-quali"/>
 </svg>
 </span>
@@ -27902,7 +27902,7 @@
   
   icon--large
   
-  " role="img" title="video">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-video"/>
 </svg>
 </span>
@@ -27915,7 +27915,7 @@
   
   icon--large
   
-  " role="img" title="vk">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-vk"/>
 </svg>
 </span>
@@ -27928,7 +27928,7 @@
   
   icon--large
   
-  " role="img" title="wechat">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-wechat"/>
 </svg>
 </span>
@@ -27941,7 +27941,7 @@
   
   icon--large
   
-  " role="img" title="weibo">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-weibo"/>
 </svg>
 </span>
@@ -27954,7 +27954,7 @@
   
   icon--large
   
-  " role="img" title="weight-2">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-weight-2"/>
 </svg>
 </span>
@@ -27967,7 +27967,7 @@
   
   icon--large
   
-  " role="img" title="weight">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-weight"/>
 </svg>
 </span>
@@ -27980,7 +27980,7 @@
   
   icon--large
   
-  " role="img" title="whatsapp">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-whatsapp"/>
 </svg>
 </span>
@@ -27993,7 +27993,7 @@
   
   icon--large
   
-  " role="img" title="wind-tunnel">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-wind-tunnel"/>
 </svg>
 </span>
@@ -28006,7 +28006,7 @@
   
   icon--large
   
-  " role="img" title="window-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-window-next"/>
 </svg>
 </span>
@@ -28019,7 +28019,7 @@
   
   icon--large
   
-  " role="img" title="work-next">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-work-next"/>
 </svg>
 </span>
@@ -28032,7 +28032,7 @@
   
   icon--large
   
-  " role="img" title="wrench">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-wrench"/>
 </svg>
 </span>
@@ -28045,7 +28045,7 @@
   
   icon--large
   
-  " role="img" title="xing">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-xing"/>
 </svg>
 </span>
@@ -28058,7 +28058,7 @@
   
   icon--large
   
-  " role="img" title="yahoo">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-yahoo"/>
 </svg>
 </span>
@@ -28071,7 +28071,7 @@
   
   icon--large
   
-  " role="img" title="youku">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-youku"/>
 </svg>
 </span>
@@ -28084,7 +28084,7 @@
   
   icon--large
   
-  " role="img" title="youtube">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-youtube"/>
 </svg>
 </span>
@@ -28097,7 +28097,7 @@
   
   icon--large
   
-  " role="img" title="zoom-in">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-zoom-in"/>
 </svg>
 </span>
@@ -28110,7 +28110,7 @@
   
   icon--large
   
-  " role="img" title="zoom-out">
+  " role="img" focusable="false"  >
 	<use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-zoom-out"/>
 </svg>
 </span>
@@ -29469,10 +29469,10 @@
   }
 </script>
 
-<script id="pl-js-polyfill-insert-1544427468968">
+<script id="pl-js-polyfill-insert-1544602142544">
   (function() {
     if (self != top) {
-      var cb = '1544427468968';
+      var cb = '1544602142544';
       var js = [];
       if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {
         js.push('styleguide/bower_components/classList.min.js');
@@ -29482,10 +29482,10 @@
   })();
 </script>
 
-<script id="pl-js-insert-1544427468968">
+<script id="pl-js-insert-1544602142544">
   (function() {
     if (self != top) {
-      var cb = '1544427468968';
+      var cb = '1544602142544';
       var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];
       scriptLoader.run(js,cb,'pl-js-insert');
     }
