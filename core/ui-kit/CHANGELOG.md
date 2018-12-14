@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* Fixed layout issue of media center modal for mobile + landscape viewports
 
 ## [0.15.0] - 2018-11-26
 * Add possibility display the navigation-steps on light or dark background
