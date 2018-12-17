@@ -1,0 +1,67 @@
+<div class="tile-image-text-link
+           {{#if tile-image-text-link_staticTile}} tile-image-text-link--static {{/if}}
+           {{ styleModifier }}">
+  <div class="tile-image-text-link__imageholder {{#if tile-image-text-link_staticTile}} tile-image-text-link__imageholder--static{{/if}}">
+
+    {{> molecules-image-cover
+        image-cover_image=tile-image-text-link_image
+        image-cover_gradientVisible =tile-image-text-link_imageGradient
+        styleModifier="tile-image-text-link__image"
+    }}
+
+  </div>
+  <div class="tile-image-text-link__textarea
+             {{#if tile-image-text-link_positionAbsolute}} tile-image-text-link__textarea--position-absolute {{/if}}
+             {{#if tile-image-text-link_textUpperLeft}} tile-image-text-link__textarea--upper-left {{/if}}
+             {{#if tile-image-text-link_textUpperRight}} tile-image-text-link__textarea--upper-right {{/if}}
+             {{#if tile-image-text-link_textLowerLeft}} tile-image-text-link__textarea--lower-left {{/if}}
+             {{#if tile-image-text-link_textLowerRight}} tile-image-text-link__textarea--lower-right {{/if}}
+             {{#if tile-image-text-link_showTextBlack}} tile-image-text-link__textarea--text-black-m {{/if}}
+             {{#if tile-image-text-link_invertedTextbar}} tile-image-text-link__textarea--inverted-textbar {{/if}}">
+    <div class="tile-image-text-link__textwrapper">
+      {{#if tile-image-text-link_staticTile}}
+        {{> molecules-tile-headline
+          tile-headline_headline=tile-image-text-link_headline
+          tile-headline_regularM=true
+          tile-headline_static=tile-image-text-link_staticTile
+        }}
+      {{else}}
+        {{> molecules-tile-headline
+            tile-headline_headline=tile-image-text-link_headline
+            tile-headline_regularS=true
+            tile-headline_static=tile-image-text-link_staticTile
+        }}
+      {{/if}}
+      {{#if tile-image-text-link_textInvisible}}
+        {{> molecules-tile-paragraph
+            styleModifier="tile-image-text-link__text--hide"
+            tile-paragraph_text=tile-image-text-link_text
+            tile-paragraph_static=tile-image-text-link_staticTile
+        }}
+      {{else if tile-image-text-link_textWidthS}}
+        {{> molecules-tile-paragraph
+            styleModifier="tile-image-text-link__text--width-s"
+            tile-paragraph_text=tile-image-text-link_text
+            tile-paragraph_static=tile-image-text-link_staticTile
+        }}
+      {{else if tile-image-text-link_textWidthM}}
+        {{> molecules-tile-paragraph
+            styleModifier="tile-image-text-link__text--width-m"
+            tile-paragraph_text=tile-image-text-link_text
+            tile-paragraph_static=tile-image-text-link_staticTile
+        }}
+      {{else}}
+        {{> molecules-tile-paragraph
+            tile-paragraph_text=tile-image-text-link_text
+            tile-paragraph_static=tile-image-text-link_staticTile
+        }}
+      {{/if}}
+        {{#if tile-image-text-link_subTextVisible}}
+          {{> molecules-tile-paragraph
+              tile-paragraph_text=tile-image-text-link_subText
+              tile-paragraph_static=tile-image-text-link_staticTile
+          }}
+        {{/if}}
+    </div>
+  </div>
+</div>
