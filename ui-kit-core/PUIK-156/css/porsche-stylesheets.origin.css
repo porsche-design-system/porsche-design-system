@@ -3949,7 +3949,8 @@ table {
     stroke-dashoffset: 0;
     stroke-linecap: round; }
   .loader__bg {
-    stroke: #eff0f1; }
+    stroke: #eff0f1;
+    opacity: .5; }
   .loader--theme-inverted .loader__fg {
     stroke: #fff; }
   .loader--theme-inverted .loader__bg {
