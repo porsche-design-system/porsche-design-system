@@ -1,5 +1,5 @@
-@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/text-size/text-size.mixin";
-@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/font/font.mixin.scss";
+@import "~@porsche/ui-kit-core/src/base/text-size/text-size.mixin";
+@import "~@porsche/ui-kit-core/src/base/font/font.mixin.scss";
 
 @mixin -text-size-1-bold {
     @include -font-primary;
