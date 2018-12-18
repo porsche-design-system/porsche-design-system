@@ -106,6 +106,9 @@
         position: absolute;
         top: 50%;
         right: 0;
+        transform: translate(0, -50%);
+        padding: $spacing-24;
+        background: transparent;
     }
 
     &__icon {
