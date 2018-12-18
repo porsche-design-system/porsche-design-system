@@ -1,6 +1,6 @@
 @import "../../../common";
-@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/spacing/spacing.setup";
-@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/base/spacing/spacing.mixin";
+@import "~@porsche/ui-kit-core/src/base/spacing/spacing.setup";
+@import "~@porsche/ui-kit-core/src/base/spacing/spacing.mixin";
 
 /**
  * equal responsive paddings which are not set in porsche ui kit core
