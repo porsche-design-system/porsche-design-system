@@ -21,10 +21,8 @@ const FlexAlignContent = () => {
             <Flex alignContent="start" style={containerStyle}>
                 {_.times(9, (i) => {
                     return (
-                        <Flex.Item>
-                            <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                {i + 1}
-                            </div>
+                        <Flex.Item key={i}>
+                            <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                         </Flex.Item>
                     )
                 })}
@@ -34,10 +32,8 @@ const FlexAlignContent = () => {
             <Flex alignContent="center" style={containerStyle}>
                 {_.times(9, (i) => {
                     return (
-                        <Flex.Item>
-                            <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                {i + 1}
-                            </div>
+                        <Flex.Item key={i}>
+                            <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                         </Flex.Item>
                     )
                 })}
@@ -47,10 +43,8 @@ const FlexAlignContent = () => {
             <Flex alignContent="end" style={containerStyle}>
                 {_.times(9, (i) => {
                     return (
-                        <Flex.Item>
-                            <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                {i + 1}
-                            </div>
+                        <Flex.Item key={i}>
+                            <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                         </Flex.Item>
                     )
                 })}
@@ -60,10 +54,8 @@ const FlexAlignContent = () => {
             <Flex alignContent="space-around" style={containerStyle}>
                 {_.times(9, (i) => {
                     return (
-                        <Flex.Item>
-                            <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                {i + 1}
-                            </div>
+                        <Flex.Item key={i}>
+                            <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                         </Flex.Item>
                     )
                 })}
@@ -73,10 +65,8 @@ const FlexAlignContent = () => {
             <Flex alignContent="space-between" style={containerStyle}>
                 {_.times(9, (i) => {
                     return (
-                        <Flex.Item>
-                            <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                {i + 1}
-                            </div>
+                        <Flex.Item key={i}>
+                            <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                         </Flex.Item>
                     )
                 })}
@@ -86,10 +76,8 @@ const FlexAlignContent = () => {
             <Flex alignContent={{ base: "start", l: "end" }} style={containerStyle}>
                 {_.times(9, (i) => {
                     return (
-                        <Flex.Item>
-                            <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                {i + 1}
-                            </div>
+                        <Flex.Item key={i}>
+                            <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                         </Flex.Item>
                     )
                 })}
