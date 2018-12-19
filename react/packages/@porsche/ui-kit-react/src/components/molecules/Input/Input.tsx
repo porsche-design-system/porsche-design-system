@@ -23,7 +23,7 @@ export interface InputProps extends ClassNameProp, ComponentProp {
     error?: boolean
 
     /** Displays an icon on the right of the input. */
-    icon?: IconProps["name"]
+    icon?: IconProps["name"] | JSX.Element
 
     /**
      * Sets the html5 name of the input field.
@@ -38,12 +38,6 @@ export interface InputProps extends ClassNameProp, ComponentProp {
      * @param {InputProps} data All props of the component.
      */
     onChange?: (value: string, event: React.FormEvent<HTMLInputElement>, data: InputProps) => void
-
-    /**
-     * Called when the icon button wrapper is clicked.
-     * @param {React.FormEvent<HTMLButtonElement>} event React's original event.
-     */
-    onIconClicked?: (event: React.FormEvent<HTMLButtonElement>) => void
 
     /** The placeholder of the input. */
     placeholder?: string
@@ -77,7 +71,6 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
         icon,
         name,
         onChange,
-        onIconClicked,
         placeholder,
         type,
         unit,
@@ -106,17 +99,9 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
 
     const floatingPlaceholderClasses = cx(prefix("input__label"), { [prefix("input__label--with-icon")]: !!icon })
 
-    const iconClasses = cx(
-        prefix("input__icon"),
-        { [prefix("input__icon--error")]: error },
-        { [prefix("input__icon--clickable")]: onIconClicked }
-    )
-
-    const renderIcon = (iconName: IconProps["name"]) => {
-        return <Icon name={iconName} className={iconClasses} />
-    }
-
-    const buttonIconClasses = cx({ [prefix("input__button-icon")]: onIconClicked })
+    const iconContainerClasses = cx(prefix("input__icon-container"), {
+        [prefix("input__icon-container--error")]: error
+    })
 
     return (
         <ElementType className={className} {...rest}>
@@ -134,20 +119,9 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
                     value={value}
                 />
                 {!basic && <span className={floatingPlaceholderClasses}>{placeholder}</span>}
-                {icon &&
-                    (onIconClicked ? (
-                        <button
-                            type="button"
-                            className={buttonIconClasses}
-                            {...{
-                                onClick: onIconClicked
-                            }}
-                        >
-                            {renderIcon(icon)}
-                        </button>
-                    ) : (
-                        renderIcon(icon)
-                    ))}
+                {icon && (
+                    <div className={iconContainerClasses}>{typeof icon === "string" ? <Icon name={icon} /> : icon}</div>
+                )}
                 {unit && !icon && <span className={prefix("input__unit")}>{unit}</span>}
                 {children}
             </label>

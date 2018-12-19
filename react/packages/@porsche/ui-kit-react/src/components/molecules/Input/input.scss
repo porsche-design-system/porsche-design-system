@@ -98,20 +98,7 @@
         color: $input-unit-color;
     }
 
-    &__button-icon {
-        padding: 0;
-        margin: 0;
-        border: none;
-        outline: none;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate(0, -50%);
-        padding: $spacing-24;
-        background: transparent;
-    }
-
-    &__icon {
+    &__icon-container {
         position: absolute;
         top: 50%;
         right: $input-field-padding-horizontal;
@@ -129,10 +116,6 @@
 
         & ~ #{$bem-block}__label {
             right: $input-field-padding-horizontal * 2 + $input-icon-size;
-        }
-
-        &--clickable {
-            cursor: pointer;
         }
     }
 
