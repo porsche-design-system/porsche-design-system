@@ -15,13 +15,6 @@ const EdgeCases = () => {
             >
                 Even with an icon the text ellipsis still works.
             </ComponentExample>
-
-            <ComponentExample
-                title="Icon with click handler"
-                examplePath="molecules/Input/EdgeCases/InputExampleEdgeCasesIconClickHandler"
-            >
-                The icon can be clickable
-            </ComponentExample>
         </ExampleSection>
     )
 }
