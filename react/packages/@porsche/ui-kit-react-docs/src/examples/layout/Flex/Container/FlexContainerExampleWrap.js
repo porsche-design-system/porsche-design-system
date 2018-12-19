@@ -20,10 +20,8 @@ const FlexContainerExampleWrap = () => {
             <Flex>
                 {_.times(9, (i) => {
                     return (
-                        <Flex.Item>
-                            <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                {i + 1}
-                            </div>
+                        <Flex.Item key={i}>
+                            <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                         </Flex.Item>
                     )
                 })}
@@ -34,10 +32,8 @@ const FlexContainerExampleWrap = () => {
                 <Flex wrap={false}>
                     {_.times(9, (i) => {
                         return (
-                            <Flex.Item>
-                                <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                    {i + 1}
-                                </div>
+                            <Flex.Item key={i}>
+                                <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                             </Flex.Item>
                         )
                     })}
@@ -49,10 +45,8 @@ const FlexContainerExampleWrap = () => {
                 <Flex wrap="reverse">
                     {_.times(9, (i) => {
                         return (
-                            <Flex.Item>
-                                <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                    {i + 1}
-                                </div>
+                            <Flex.Item key={i}>
+                                <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                             </Flex.Item>
                         )
                     })}
@@ -64,10 +58,8 @@ const FlexContainerExampleWrap = () => {
                 <Flex wrap={{ base: true, l: false }}>
                     {_.times(9, (i) => {
                         return (
-                            <Flex.Item>
-                                <div key={i} style={itemStyle("DeepSkyBlue")}>
-                                    {i + 1}
-                                </div>
+                            <Flex.Item key={i}>
+                                <div style={itemStyle("DeepSkyBlue")}>{i + 1}</div>
                             </Flex.Item>
                         )
                     })}
