@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+- Updated NPM dependencies
+- Update to React v16.6.3 and Typescript v3.1.6
+- Minor fixes on docs examples
+- Deleted "loading" examples of Select component, because "loading" prop doesn't exist yet.
+- Minor housekeeping
 
 ## [0.5.0] - 2018-06-12
 
