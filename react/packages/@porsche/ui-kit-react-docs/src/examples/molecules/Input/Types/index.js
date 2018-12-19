@@ -23,6 +23,13 @@ const Types = () => {
                 An input can show an icon on the right.
             </ComponentExample>
 
+            <ComponentExample
+                title="Input with custom Icon"
+                examplePath="molecules/Input/Types/InputExampleTypesCustomIcon"
+            >
+                You can pass an custom Icon as JSX element
+            </ComponentExample>
+
             <ComponentExample title="Input with Unit" examplePath="molecules/Input/Types/InputExampleTypesUnit">
                 An input can show a unit on the right, if an icon is not shown. You should probably use{" "}
                 <code>basic</code> together with a unit since it aligns much better.
