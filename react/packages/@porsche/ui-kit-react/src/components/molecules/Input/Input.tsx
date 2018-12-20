@@ -1,10 +1,8 @@
-import * as React from "react"
 import cx from "classnames"
-
-import { prefix, getElementType } from "../../../lib"
-import { ClassNameProp, ComponentProp } from "../../../lib/props"
-
+import * as React from "react"
 import { Icon, IconProps } from "../../../index"
+import { getElementType, prefix } from "../../../lib"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface InputProps extends ClassNameProp, ComponentProp {
     /**
@@ -25,7 +23,7 @@ export interface InputProps extends ClassNameProp, ComponentProp {
     error?: boolean
 
     /** Displays an icon on the right of the input. */
-    icon?: IconProps["name"]
+    icon?: IconProps["name"] | JSX.Element
 
     /**
      * Sets the html5 name of the input field.
@@ -101,7 +99,9 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
 
     const floatingPlaceholderClasses = cx(prefix("input__label"), { [prefix("input__label--with-icon")]: !!icon })
 
-    const iconClasses = cx(prefix("input__icon"), { [prefix("input__icon--error")]: error })
+    const iconContainerClasses = cx(prefix("input__icon-container"), {
+        [prefix("input__icon-container--error")]: error
+    })
 
     return (
         <ElementType className={className} {...rest}>
@@ -119,7 +119,9 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
                     value={value}
                 />
                 {!basic && <span className={floatingPlaceholderClasses}>{placeholder}</span>}
-                {icon && <Icon name={icon} className={iconClasses} />}
+                {icon && (
+                    <div className={iconContainerClasses}>{typeof icon === "string" ? <Icon name={icon} /> : icon}</div>
+                )}
                 {unit && !icon && <span className={prefix("input__unit")}>{unit}</span>}
                 {children}
             </label>
