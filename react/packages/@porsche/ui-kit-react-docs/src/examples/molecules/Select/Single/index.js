@@ -33,8 +33,6 @@ const SelectExampleSingle = () => {
 
             <ComponentExample title="Error" examplePath="molecules/Select/Single/SelectExampleSingleError" />
 
-            <ComponentExample title="Loading" examplePath="molecules/Select/Single/SelectExampleSingleLoading" />
-
             <ComponentExample title="Search" examplePath="molecules/Select/Single/SelectExampleSingleOnSearchChanged">
                 The select component can also be used to fetch options dynamically by connecting yourself to the
                 onSearchChanged property.
