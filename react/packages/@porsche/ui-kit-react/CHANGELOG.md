@@ -6,11 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.6.0] - 2018-20-12
+- Enhanced Input component: enable to pass an Icon as custom JSX Element
 - Updated NPM dependencies
 - Update to React v16.6.3 and Typescript v3.1.6
 - Minor fixes on docs examples
 - Deleted "loading" examples of Select component, because "loading" prop doesn't exist yet.
 - Minor housekeeping
+
+__Breaking Change:__ 
+- Changed relative SCSS input paths into `~` (tilde) imports. If you use webpack node-sass you should be fine. If not, install `node-sass-tilde-importer` as dependency.
 
 ## [0.5.0] - 2018-06-12
 
