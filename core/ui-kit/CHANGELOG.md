@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 #### Breaking changes
 Please update asap all deprecated buttons with the new ones.
 
-* Migration path:  
+__Migration path:__  
   * Replace old buttons with new buttons:  
 
   `button-primary` => `button-regular`  
@@ -38,6 +38,15 @@ Please update asap all deprecated buttons with the new ones.
   `modules/button/button-inline.scss` => `deprecated/button/button-inline.scss`  
   `modules/button/button-notification.setup.scss` => `deprecated/button/button-notification.setup.scss`  
   `modules/button/button-notification.scss` => `deprecated/button/button-notification.scss`  
+
+## [0.16.0] - 2019-01-07
+* Refactoring of loader components by adding SVG loader
+  
+  __Migration path:__ 
+  * Renamed CSS class `.loader-box` to `.loader` 
+  * Changed HTML of `loader` component
+  * Moved `loader-base` to deprecated folder. Use `loader` instead
+  * Refactored HTML of `loader-application`, `loader-application-text`, `loader-fullpage`, `loader-list`, `loader-module` which now all include `loader` component
 
 ## [0.15.0] - 2018-11-26
 * Add possibility display the navigation-steps on light or dark background

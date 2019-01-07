@@ -51,7 +51,7 @@ class ToastExampleManager extends React.PureComponent {
     render() {
         return (
             <React.Fragment>
-                <Flex wrap>
+                <Flex>
                     <Flex.Item width={{ base: 6, m: 3 }}>
                         <Select
                             clearable={false}
