@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1545309951018,
+  "timestamp": 1546869704669,
   "graph": {
     "options": {
       "directed": true,
@@ -1951,21 +1951,6 @@
         }
       },
       {
-        "v": "02-molecules/loader/loader-base.hbs",
-        "value": {
-          "compileState": "clean",
-          "lineagePath": "../../patterns/99-design-spec-loaders-loader/99-design-spec-loaders-loader.rendered.html",
-          "lineagePattern": "design-spec-loader",
-          "lineageState": "inprogress"
-        }
-      },
-      {
-        "v": "02-molecules/loader/loader-base~dark.json",
-        "value": {
-          "compileState": "clean"
-        }
-      },
-      {
         "v": "02-molecules/loader/loader-fullpage.hbs",
         "value": {
           "compileState": "clean",
@@ -2015,6 +2000,39 @@
       },
       {
         "v": "02-molecules/loader/loader.hbs",
+        "value": {
+          "compileState": "clean",
+          "lineageState": "inreview",
+          "lineagePath": "../../patterns/99-design-spec-loaders-loader/99-design-spec-loaders-loader.rendered.html",
+          "lineagePattern": "design-spec-loader"
+        }
+      },
+      {
+        "v": "02-molecules/loader/loader~01-01-x-small.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/loader/loader~01-02-small.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/loader/loader~01-03-medium.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/loader/loader~01-04-large.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "02-molecules/loader/loader~01-05-x-large.json",
         "value": {
           "compileState": "clean"
         }
@@ -3154,6 +3172,21 @@
       },
       {
         "v": "98-deprecated/header/header.hbs",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "98-deprecated/loader/loader-base.hbs",
+        "value": {
+          "compileState": "clean",
+          "lineageState": "inprogress",
+          "lineagePath": "../../patterns/98-deprecated-button-inline-button-inline/98-deprecated-button-inline-button-inline.rendered.html",
+          "lineagePattern": "deprecated-button-inline"
+        }
+      },
+      {
+        "v": "98-deprecated/loader/loader-base~dark.json",
         "value": {
           "compileState": "clean"
         }
@@ -4726,18 +4759,13 @@
         "value": {}
       },
       {
-        "v": "02-molecules/loader/loader-base~dark.json",
-        "w": "02-molecules/loader/loader-base.hbs",
-        "value": {}
-      },
-      {
         "v": "02-molecules/loader/loader-fullpage~01-without-label.json",
         "w": "02-molecules/loader/loader-fullpage.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/loader/loader-fullpage~01-without-label.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader-application.hbs",
         "value": {}
       },
       {
@@ -4748,6 +4776,31 @@
       {
         "v": "02-molecules/loader/loader-text~02-light.json",
         "w": "02-molecules/loader/loader-text.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader~01-01-x-small.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader~01-02-small.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader~01-03-medium.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader~01-04-large.json",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader~01-05-x-large.json",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
@@ -6051,6 +6104,11 @@
         "value": {}
       },
       {
+        "v": "98-deprecated/loader/loader-base~dark.json",
+        "w": "98-deprecated/loader/loader-base.hbs",
+        "value": {}
+      },
+      {
         "v": "98-deprecated/navigation/navigation-topbar-desktop~01-logged-in.json",
         "w": "98-deprecated/navigation/navigation-topbar-desktop.hbs",
         "value": {}
@@ -6072,107 +6130,107 @@
       },
       {
         "v": "02-molecules/buttons/button-ghost.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~01-link.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~02-stretch.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~03-long-label.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~04-error.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~05-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~06-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~07-inverted.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~08-inverted-error.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~09-inverted-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-ghost~10-inverted-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~01-link.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~02-stretch.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~03-long-label.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~04-error.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~05-disabled.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~06-loading.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~07-colored-black.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~08-colored-red.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/buttons/button-primary~09-colored-acid-green.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
@@ -6187,27 +6245,32 @@
       },
       {
         "v": "02-molecules/loader/loader-application.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/loader/loader-application~text.json",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/loader/loader-fullpage.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
+        "value": {}
+      },
+      {
+        "v": "02-molecules/loader/loader-fullpage~01-without-label.json",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/loader/loader-list.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
         "v": "02-molecules/loader/loader-module.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {
@@ -6467,7 +6530,7 @@
       },
       {
         "v": "98-deprecated/button-inline/button-inline.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "98-deprecated/loader/loader-base.hbs",
         "value": {}
       },
       {
@@ -6557,7 +6620,7 @@
       },
       {
         "v": "99-design-spec/loaders/loader.hbs",
-        "w": "02-molecules/loader/loader-base.hbs",
+        "w": "02-molecules/loader/loader.hbs",
         "value": {}
       },
       {

@@ -4,7 +4,7 @@
 @import '~@porsche/ui-kit-core/src/base/text-color/text-color.scss';
 @import '~@porsche/ui-kit-core/src/base/position/position.scss';
 @import '~@porsche/ui-kit-core/src/modules/icon/icon.scss';
-@import '~@porsche/ui-kit-core/src/modules/loader/loader-base.scss';
+@import '~@porsche/ui-kit-core/src/modules/loader/loader.scss';
 @import '~@porsche/ui-kit-core/src/modules/loader/loader-application.scss';
 @import '~@porsche/ui-kit-core/src/modules/loader/loader-list.scss';
 @import '~@porsche/ui-kit-core/src/modules/loader/loader-module.scss';
@@ -13,3 +13,4 @@
 @import '~@porsche/ui-kit-core/src/modules/divider/divider.scss';
 @import '~@porsche/ui-kit-core/src/deprecated/grid/row.scss';
 @import '~@porsche/ui-kit-core/src/deprecated/grid/column.scss';
+@import '~@porsche/ui-kit-core/src/deprecated/loader/loader-base.scss';
