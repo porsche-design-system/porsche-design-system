@@ -10,6 +10,7 @@
   width: 50px;
   height: 50px;
   stroke-width: 2px;
+  animation: rotate 2s linear infinite; // basic IE11 fallback
 
   &__image {
     display: block;
@@ -21,7 +22,7 @@
 
   &__fg {
     transform-origin: center center;
-    animation: rotate 1.5s linear infinite, dash 2s ease-in-out infinite;
+    animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
     stroke: $color-palette-grey-9;
     stroke-dasharray: 100, 200;
     stroke-dashoffset: 0;
