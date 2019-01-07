@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+
+## [0.16.0] - 2019-01-07
 * Refactoring of loader components by adding SVG loader
   
   __Migration path:__ 
