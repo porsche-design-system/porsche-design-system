@@ -5,48 +5,20 @@ const boxStyles = { backgroundColor: "#246A97", height: "100px" }
 
 const SpacingExampleStatic = () => {
     return (
-        <Flex gap={"a"}>
-            <Flex.Item width={1}>
+        <Flex gap="a">
+            <Flex.Item width={3}>
                 <div style={{ ...boxStyles }} />
             </Flex.Item>
 
-            <Flex.Item width={1}>
+            <Flex.Item width={3}>
                 <div style={{ ...boxStyles }} />
             </Flex.Item>
 
-            <Flex.Item width={1}>
+            <Flex.Item width={3}>
                 <div style={{ ...boxStyles }} />
             </Flex.Item>
 
-            <Flex.Item width={1}>
-                <div style={{ ...boxStyles }} />
-            </Flex.Item>
-
-            <Flex.Item width={1}>
-                <div style={{ ...boxStyles }} />
-            </Flex.Item>
-
-            <Flex.Item width={1}>
-                <div style={{ ...boxStyles }} />
-            </Flex.Item>
-
-            <Flex.Item width={1}>
-                <div style={{ ...boxStyles }} />
-            </Flex.Item>
-
-            <Flex.Item width={1}>
-                <div style={{ ...boxStyles }} />
-            </Flex.Item>
-
-            <Flex.Item width={1}>
-                <div style={{ ...boxStyles }} />
-            </Flex.Item>
-
-            <Flex.Item width={1}>
-                <div style={{ ...boxStyles }} />
-            </Flex.Item>
-
-            <Flex.Item width={1}>
+            <Flex.Item width={3}>
                 <div style={{ ...boxStyles }} />
             </Flex.Item>
         </Flex>

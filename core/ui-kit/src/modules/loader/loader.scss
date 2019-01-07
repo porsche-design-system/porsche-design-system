@@ -1,58 +1,6 @@
-// @import 'loader.setup.scss';
-// @import '../../mixins/animation.scss';
 @import '../../setup/global-variables.scss';
 @import '../../setup/color-palette.setup.scss';
-
-//Rename to loader box to loader, when we get rid of pcc-sass css
-// .#{$global-class-prefix}loader-box {
-//   position: relative;
-//   height: $loader-spinner-dimension-tall;
-//   min-height: $loader-spinner-dimension;
-//   min-width: $loader-spinner-dimension;
-
-//   &::after {
-//     @include animation($loader-spinner-animation-name, $loader-spinner-animation-duration);
-//     content: '';
-//     position: absolute;
-//     top: $loader-spinner-position-vertical;
-//     left: $loader-spinner-position-horizontal;
-//     display: block;
-//     background-position: center center;
-//     background-repeat: no-repeat;
-//     margin-top: $loader-spinner-spacing-vertical;
-//     margin-left: $loader-spinner-spacing-horizontal;
-//     width: $loader-spinner-dimension;
-//     height: $loader-spinner-dimension;
-//     background-image: url($loader-box-spinner-resource);
-//   }
-
-//   &--medium {
-//     min-height: $loader-spinner-medium-dimension;
-//     min-width: $loader-spinner-medium-dimension;
-//     margin-right: $loader-spinner-medium-spacing;
-
-//     &::after {
-//       margin-top: $loader-spinner-medium-spacing-vertical;
-//       margin-left: $loader-spinner-medium-spacing-horizontal;
-//       width: $loader-spinner-medium-dimension;
-//       height: $loader-spinner-medium-dimension;
-//       background-image: url($loader-box-spinner-medium-resource);
-//     }
-//   }
-// }
-
-@mixin loader-track($z-index) {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  fill: none;
-  stroke-width: 2px;
-  z-index: $z-index;
-}
+@import '../../mixins/breakpoint.scss';
 
 .#{$global-class-prefix}loader {
   $bem-block: &;
@@ -61,70 +9,88 @@
   position: relative;
   width: 50px;
   height: 50px;
+  stroke-width: 2px;
+  animation: rotate 2s linear infinite; // basic IE11 fallback
+
+  &__image {
+    display: block;
+    position: relative;
+    fill: none;
+    stroke-width: inherit;
+    transform: translate3d(0, 0, 0);
+  }
 
   &__fg {
-    @include loader-track(1);
     transform-origin: center center;
-    animation: rotate 1.5s linear infinite;
-
-    &--small {
-      stroke-width: 5px;
-    }
-
-    &-path {
-      stroke: $color-palette-grey-9;
-      stroke-dasharray: 100, 200;
-      stroke-dashoffset: 0;
-      animation: dash 2s ease-in-out infinite;
-      stroke-linecap: round;
-    }
+    animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
+    stroke: $color-palette-grey-9;
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
   }
 
   &__bg {
-    @include loader-track(0);
-
-    &--small {
-      stroke-width: 5px;
-    }
-
-    &-path {
-      stroke: $color-palette-grey-1;
-    }
+    stroke: $color-palette-grey-1;
+    opacity: .5;
   }
 
-  &--inverted {
+  &--theme-inverted {
     #{$bem-block}__fg {
-      &__path {
-        stroke: $color-palette-white;
-      }
+      stroke: $color-palette-white;
     }
 
     #{$bem-block}__bg {
-      &__path {
-        stroke: $color-palette-grey-9;
-      }
+      stroke: $color-palette-grey-7;
     }
   }
 
   // the exact sizes must be refactored when final SVG icons are in place!
-  &--small {
+  &--x-small {
     width: rem(16px);
     height: rem(16px);
+    stroke-width: 5px;
+  }
+
+  &--small {
+    width: rem(24px);
+    height: rem(24px);
+    stroke-width: 4px;
   }
 
   &--medium {
-    width: rem(24px);
-    height: rem(24px);
+    width: rem(36px);
+    height: rem(36px);
+    stroke-width: 3px;
   }
 
   &--large {
-    width: rem(36px);
-    height: rem(36px);
+    width: rem(42px);
+    height: rem(42px);
+
+    @include breakpoint('l') {
+      width: rem(60px);
+      height: rem(60px);
+    }
   }
 
   &--x-large {
-    width: rem(60px);
-    height: rem(60px);
+    width: rem(42px);
+    height: rem(42px);
+
+    @include breakpoint('m') {
+      width: rem(54px);
+      height: rem(54px);
+    }
+
+    @include breakpoint('l') {
+      width: rem(66px);
+      height: rem(66px);
+    }
+
+    @include breakpoint('xl') {
+      width: rem(84px);
+      height: rem(84px);
+    }
   }
 }
 

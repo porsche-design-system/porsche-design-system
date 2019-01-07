@@ -22,8 +22,6 @@ const SelectExampleMulti = () => {
             <ComponentExample title="Disabled" examplePath="molecules/Select/Multi/SelectExampleMultiDisabled" />
 
             <ComponentExample title="Error" examplePath="molecules/Select/Multi/SelectExampleMultiError" />
-
-            <ComponentExample title="Loading" examplePath="molecules/Select/Multi/SelectExampleMultiLoading" />
         </ExampleSection>
     )
 }

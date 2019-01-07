@@ -1,58 +1,60 @@
 import React from "react"
-import { Button, Flex } from "@porsche/ui-kit-react"
+import { Spacing, Button, Grid } from "@porsche/ui-kit-react"
 
 const ButtonExampleTypesDisabled = () => {
     return (
         <div>
-            <Flex gap="grid">
-                <Flex.Item width={3}>
+            <Grid>
+                <Grid.Child size={3}>
                     <Button disabled type="default">
                         Default Button
                     </Button>
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <Button disabled type="red">
                         Red Button
                     </Button>
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <Button disabled type="blue">
                         Blue Button
                     </Button>
-                </Flex.Item>
+                </Grid.Child>
 
-                <Flex.Item width={3}>
+                <Grid.Child size={3}>
                     <Button disabled type="black">
                         Black Button
                     </Button>
-                </Flex.Item>
-            </Flex>
+                </Grid.Child>
+            </Grid>
 
-            <Flex gap="grid" style={{ paddingTop: "16px" }}>
-                <Flex.Item width={3}>
-                    <Button disabled type="acid-green">
-                        Acid-Green Button
-                    </Button>
-                </Flex.Item>
+            <Spacing paddingTop={18}>
+                <Grid>
+                    <Grid.Child size={3}>
+                        <Button disabled type="acid-green">
+                            Acid-Green Button
+                        </Button>
+                    </Grid.Child>
 
-                <Flex.Item width={3}>
-                    <Button disabled type="ghost">
-                        Ghost Button
-                    </Button>
-                </Flex.Item>
-            </Flex>
+                    <Grid.Child size={3}>
+                        <Button disabled type="ghost">
+                            Ghost Button
+                        </Button>
+                    </Grid.Child>
+                </Grid>
+            </Spacing>
 
-            <Flex gap="grid">
-                <Flex.Item width={3}>
+            <Grid>
+                <Grid.Child size={3}>
                     <div style={{ background: "black", padding: "16px", marginTop: "16px" }}>
                         <Button disabled type="ghost-inverted">
                             Ghost Inverted Button
                         </Button>
                     </div>
-                </Flex.Item>
-            </Flex>
+                </Grid.Child>
+            </Grid>
         </div>
     )
 }

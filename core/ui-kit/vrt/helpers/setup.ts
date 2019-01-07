@@ -1,5 +1,34 @@
 import 'jasmine';
+import { VisualRegressionTester, VisualRegressionTestOptions } from '@myporsche/myservices-visual-regression-tester';
+import * as puppeteer from 'puppeteer';
+import { Browser } from 'puppeteer';
 
-beforeAll(async () => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+let browser: Browser;
+let visualRegressionTester: VisualRegressionTester;
+
+const testOptions: VisualRegressionTestOptions = {
+  viewports: [320, 480, 760, 1000, 1300, 1760],
+  fixturesDir: 'vrt/fixtures',
+  resultsDir: 'vrt/results',
+  tolerance: 0,
+  baseUrl: 'http://localhost:3000/patterns'
+};
+
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+
+afterAll(async () => {
+  if (browser) {
+    await browser.close();
+  }
 });
+
+export async function getVisualRegressionTester(): Promise<VisualRegressionTester> {
+  if (!visualRegressionTester) {
+    browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+    visualRegressionTester = new VisualRegressionTester(browser, testOptions);
+  }
+
+  return visualRegressionTester;
+}

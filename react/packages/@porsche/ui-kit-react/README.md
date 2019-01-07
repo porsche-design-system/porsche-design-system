@@ -1,4 +1,4 @@
-# Finder UI Kit
+# Porsche UI Kit React
 
 ## Installation
 
@@ -6,11 +6,11 @@ This project is a yarn monorepo, so you need to use yarn instead of npm for ever
 
 ### Development
 
-Running `npm run docs` will start a webpack dev server. You can reach it at `http://localhost:8080/`.
+Running `yarn start` will start a webpack dev server. You can reach it at `http://localhost:8080/`.
 
 ### Distribution
 
-Running `npm run build` creates a ES6 and CommonJS build under `dist`.
+Running `yarn build` creates a ES6 and CommonJS build under `dist`.
 
 ## Developing New Components
 
