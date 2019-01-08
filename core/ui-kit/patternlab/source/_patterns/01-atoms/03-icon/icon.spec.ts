@@ -1,24 +1,17 @@
 import 'jasmine';
-import * as puppeteer from 'puppeteer';
-import { Browser, Page } from 'puppeteer';
-import { VisualRegressionTester } from './../../../../../vrt/visual-regression-tester';
+import { VisualRegressionTester } from '@myporsche/myservices-visual-regression-tester';
+import { getVisualRegressionTester } from '../../../../../vrt/helpers/setup';
 
 describe('Icon', () => {
-  let browser: Browser, page: Page, visualRegressionTester: VisualRegressionTester;
+  let visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
-    page = await browser.newPage();
-    visualRegressionTester = new VisualRegressionTester(page);
+    visualRegressionTester = await getVisualRegressionTester();
   });
 
-  it('should have no visual regression | size:default', async () => {
+  it('should have no visual regression', async () => {
     expect(await visualRegressionTester.test('icon~default', async () => {
-      await visualRegressionTester.goTo('01-atoms-03-icon-icon/01-atoms-03-icon-icon.rendered.html');
+      await visualRegressionTester.goTo('/01-atoms-03-icon-icon/01-atoms-03-icon-icon.rendered.html');
     })).toBeFalsy();
-  });
-
-  afterAll(async () => {
-    await browser.close();
   });
 });
