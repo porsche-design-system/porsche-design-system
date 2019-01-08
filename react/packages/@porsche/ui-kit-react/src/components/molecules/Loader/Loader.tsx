@@ -28,7 +28,7 @@ const _Loader: React.StatelessComponent<LoaderProps> & Partial<Loader> = (props)
 
     const classes = cx(
         prefix("loader"),
-        { [prefix(`loader--${size}`)]: size !== undefined },
+        { [prefix(`loader--${size}`)]: size },
         { [prefix("loader--theme-inverted")]: inverted },
         className
     )
