@@ -18,6 +18,7 @@ Every project using UI-Kit Core must generate and implement their specific SVG i
 The icon sprite must be build throughout a set of individual SVG icons. 
 The whole set of icons can be found here:  
 `~@porsche/ui-kit-core/src/base/icon/*.svg`  
+
 Building the sprite can be done manually or even better with help of a frontend build system, e.g. https://github.com/jkphl/svg-sprite.  
 
 __Hints for optimizations__: 
@@ -52,7 +53,7 @@ If older browsers like IE11 or Edge < 12 need to be supported, an additional pol
 The best choice therefore is `svg4everybody` (https://github.com/jonathantneal/svg4everybody) which is a well tested and widely adopted SVG polyfill.
 
 ### Referencing SVG icon from a static sprite asset (recommended)
-The SVG sprite is used by serving it as a static asset. Then using a path to the SVG sprite file to display the SVG icon.  
+The SVG sprite is used by serving the icons bundled all together as a static asset. An icon can be referenced by setting a path to the SVG sprite file and adding a hash in combination with the icon ID identifier.  
 ``` 
 <svg class="icon" role="img" title="arrow down">
   <use xlink:href="/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down"/>
@@ -75,7 +76,7 @@ Available sizes:
 `icon--x-large` => 60px  
 
 ### Colors
-All icons are rendered in black per default. Changing the icon to a different color can be done by adding individual color definitions in the CSS code:  
+All icons are rendered in black by default. Changing the icon to a different color can be done by adding individual color definitions inside the CSS code:  
 ``` 
 .some-color-class {
   color: $color-palette-white;
@@ -97,7 +98,7 @@ With using SVG icons, there are options to give more accessibility to users usin
 ```
 
 * If an icon is just for visual presentation and has no meaning of its own, it can be hidden from screen readers.  
-A use case for that is, if an arrow icon is palced beside a descriptive button text:
+Possible use case: if an arrow icon is palced beside a descriptive button text:
 ```
 <button type="button">
   <svg class="icon" role="img" focusable="false" aria-hidden="true">
