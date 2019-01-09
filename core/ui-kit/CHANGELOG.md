@@ -39,6 +39,15 @@ __Migration path:__
   `.#{$global-class-prefix}icon--*` => `.#{$global-class-prefix}icon-font--*`  
 
 
+## [0.16.0] - 2019-01-07
+* Refactoring of loader components by adding SVG loader
+  
+  __Migration path:__ 
+  * Renamed CSS class `.loader-box` to `.loader` 
+  * Changed HTML of `loader` component
+  * Moved `loader-base` to deprecated folder. Use `loader` instead
+  * Refactored HTML of `loader-application`, `loader-application-text`, `loader-fullpage`, `loader-list`, `loader-module` which now all include `loader` component
+
 ## [0.15.0] - 2018-11-26
 * Add possibility display the navigation-steps on light or dark background
   __Migration path:__ 
