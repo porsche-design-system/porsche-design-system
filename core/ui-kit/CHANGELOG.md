@@ -35,8 +35,8 @@ __Migration path:__
   `@import '../modules/icon/icon*.scss` => `@import '../deprecated/icon-font/icon-font*.scss`  
   
   * Change CSS classes (inclusive --modifier):  
-  `{$global-class-prefix}icon` => `$global-class-prefix}icon-font`  
-  `{$global-class-prefix}icon--*` => `$global-class-prefix}icon-font--*`  
+  `.#{$global-class-prefix}icon` => `.#{$global-class-prefix}icon-font`  
+  `.#{$global-class-prefix}icon--*` => `.#{$global-class-prefix}icon-font--*`  
 
 
 ## [0.15.0] - 2018-11-26
