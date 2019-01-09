@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-* Added svg icon system
+* Added svg icon system (@see icon usage documentation)
 
 ### Statement: why switching from icon-font to SVG-sprite for visualization of icons in web applications?
 There seems to be a lot of discussion about the pros and cons of using svg or icon-fonts for icon systems. 
@@ -29,6 +29,8 @@ To suit these needs, SVG seems to be the most generic solution. Here are some be
 * Added svg icon system
 
 __Migration path:__  
+  Follow these steps to continue using icon-fonts until every component which uses this technique is refactored/upgraded to SVG icon system.
+  
   * Change include path of `icon/index.scss` (and corresponding files):  
   `@import '../modules/icon/icon*.scss` => `@import '../deprecated/icon-font/icon-font*.scss`  
   
