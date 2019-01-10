@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+
+## [0.17.0] - 2019-01-10
+
 * Added svg icon system (@see icon usage documentation)
 
 ### Statement: why switching from icon-font to SVG-sprite for visualization of icons in web applications?
