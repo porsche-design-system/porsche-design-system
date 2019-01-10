@@ -48,6 +48,6 @@ fs.copy('./src/base/font/porsche-next-arabic/', './dist/porsche-next-arabic/', (
   if (error) return console.error(error);
 });
 
-fs.copy('./src/modules/icon/pag-iconfont/', './dist/pag-iconfont/', (error) => {
+fs.copy('./src/deprecated/icon-font/pag-iconfont/', './dist/pag-iconfont/', (error) => {
   if (error) return console.error(error);
 });

@@ -1,7 +1,7 @@
 <ul class="list-message {{ styleModifier }}">
     {{#each list-message }}
         <li class="list-message__item {{#if detail }} list-message__item--open {{/if}}">
-            <div class="list-message__icon {{#if detail }} list-message__icon--open {{/if}} icon icon--error list-message__icon--error"></div>
+            <div class="list-message__icon {{#if detail }} list-message__icon--open {{/if}} icon-font icon-font--error list-message__icon--error"></div>
 
             <div class="list-message__row row">
                 <div class="list-message__content list-message__content--left column column--10 column--7-m column--8-l {{#if open }} list-message__content--open {{/if}}">
@@ -11,7 +11,7 @@
                     </ol>
                 </div>
                 <div class="list-message__content list-message__content--right column column--12 column--5-m column--4-l">
-                    <span class="list-message__date-icon icon icon--registration"></span>
+                    <span class="list-message__date-icon icon-font icon-font--registration"></span>
                     <span class="list-message__date-title">{{ dateTitle }}</span>
                     <span class="list-message__date-time">{{ dateTime }}</span>
                 </div>
