@@ -23,7 +23,7 @@ jobs:
           name: Install npm dependencies
           command: |
             echo "//porschedev.jfrog.io/porschedev/api/npm/public-npm/:_authToken=$ARTIFACTORY_TOKEN" >> ~/.npmrc
-            npm install --verbose
+            npm install
       - save_cache:
           paths:
             - node_modules
