@@ -2,17 +2,17 @@
   "list-striped_items": [
     {
       "label": "Lorem ipsum",
-      "icon": "icon--info",
+      "icon": "icon-font--info",
       "text": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
     },
     {
       "label": "Lorem ipsum",
-      "icon": "icon--info",
+      "icon": "icon-font--info",
       "text": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
     },
     {
       "label": "Lorem ipsum",
-      "icon": "icon--info",
+      "icon": "icon-font--info",
       "text": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
     }
   ]

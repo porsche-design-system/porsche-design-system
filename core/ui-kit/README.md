@@ -20,7 +20,7 @@ All branches are deployed automatically once they're pushed to the repo.
 Be sure that your project is configured to be able to install npm packages from My Porsche Artifactory account.  
 Check out the project, install dependencies and run it:
 ```
-> git clone git@bitbucket.org:porschedev/porsche-ui-kit.git
+> git clone git@github.com:myporsche/pouikit-porsche-ui-kit.git
 > cd ./core/ui-kit
 > npm install
 > npm start
