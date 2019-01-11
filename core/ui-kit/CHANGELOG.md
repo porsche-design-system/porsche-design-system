@@ -39,6 +39,40 @@ __Migration path:__
   `modules/button/button-notification.setup.scss` => `deprecated/button/button-notification.setup.scss`  
   `modules/button/button-notification.scss` => `deprecated/button/button-notification.scss`  
 
+## [0.17.0] - 2019-01-10
+
+* Added svg icon system (@see icon usage documentation)
+
+### Statement: why switching from icon-font to SVG-sprite for visualization of icons in web applications?
+There seems to be a lot of discussion about the pros and cons of using svg or icon-fonts for icon systems. 
+And as always, there is no single truth which method is the best except the phrase "it depends". 
+
+Never the less, Porsche Ui-Kit has to fulfill some basic, fundamental and generic concepts which should also be future proof, flexible and "state of the art". 
+To suit these needs, SVG seems to be the most generic solution. Here are some benefits from it:  
+* Better (sharper) and consistent rendering in the browser (high-res screens)
+* Very flexible in usage (sprite, inline, background-image)
+* Accessible (e.g. by using title attributes)
+* Individual sprite generation - each team can individually create custom svg sprites for their own needs
+* Can be fully animated by CSS (inline) or JS (Sprite)
+* Colors, fills, strokes can be manipulated by CSS
+* And last but not least: converting SVG files into fonts and referencing them by an entity inside a CSS pseudo class seemed always a bit hacky
+
+### Breaking changes
+* Moved `icon` files to deprecated folder
+* Renamed `icon` (files and classes) to `icon-font`
+* Added svg icon system
+
+__Migration path:__  
+  Follow these steps to continue using icon-fonts until every component which uses this technique is refactored/upgraded to SVG icon system.
+  
+  * Change include path of `icon/index.scss` (and corresponding files):  
+  `@import '../modules/icon/icon*.scss` => `@import '../deprecated/icon-font/icon-font*.scss`  
+  
+  * Change CSS classes (inclusive --modifier):  
+  `.#{$global-class-prefix}icon` => `.#{$global-class-prefix}icon-font`  
+  `.#{$global-class-prefix}icon--*` => `.#{$global-class-prefix}icon-font--*`  
+
+
 ## [0.16.0] - 2019-01-07
 * Refactoring of loader components by adding SVG loader
   

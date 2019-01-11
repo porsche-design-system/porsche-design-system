@@ -1,7 +1,7 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
@@ -68,7 +68,7 @@
         "publish:artifactory": "yarn run test && yarn run build && yarn publish"
     },
     "dependencies": {
-        "@porsche/ui-kit-core": "0.15.0",
+        "@porsche/ui-kit-core": "0.16.0",
         "classnames": "^2.2.6",
         "react-modal": "^3.7.1",
         "react-responsive": "^6.0.1",

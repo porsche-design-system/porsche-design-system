@@ -18,28 +18,26 @@ export interface LoaderProps extends ClassNameProp, ComponentProp {
     /**
      * A loader can have different sizes
      */
-    size?: "default" | "small"
+    size?: "x-small" | "small" | "medium" | "large" | "x-large"
 }
 
 const _Loader: React.StatelessComponent<LoaderProps> & Partial<Loader> = (props) => {
     const { as, className, children, inverted, size, ...rest } = props
 
-    const ElementType = getElementType(as, "div")
+    const ElementType = getElementType(as, "span")
 
     const classes = cx(
         prefix("loader"),
-        { [prefix("loader--inverted")]: inverted },
-        { [prefix("loader--small")]: size === "small" },
+        { [prefix(`loader--${size}`)]: size },
+        { [prefix("loader--theme-inverted")]: inverted },
         className
     )
 
     return (
-        <ElementType className={classes} {...rest}>
-            <svg className={prefix("loader__fg")} viewBox="25 25 50 50">
-                <circle className={prefix("loader__fg__path")} cx="50" cy="50" r="20" />
-            </svg>
-            <svg className={prefix("loader__bg")} viewBox="25 25 50 50">
-                <circle className={prefix("loader__bg__path")} cx="50" cy="50" r="20" />
+        <ElementType className={classes} {...rest} aria-busy="true">
+            <svg className={prefix("loader__image")} viewBox="0 0 50 50" role="img">
+                <circle className={prefix("loader__bg")} cx="50%" cy="50%" r="20" />
+                <circle className={prefix("loader__fg")} cx="50%" cy="50%" r="20" />
             </svg>
         </ElementType>
     )

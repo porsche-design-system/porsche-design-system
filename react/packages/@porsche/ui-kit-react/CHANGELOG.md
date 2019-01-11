@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+
+## [0.7.0] - 2019-10-01
+- Update Ui-Kit-Core version
+- Changed Loader component to adapt core layout
+
 ## [0.6.0] - 2018-20-12
 - Enhanced Input component: enable to pass an Icon as custom JSX Element
 - Updated NPM dependencies

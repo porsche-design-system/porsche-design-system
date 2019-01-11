@@ -29,7 +29,7 @@ const _LoaderMask: React.StatelessComponent<LoaderMaskProps> = (props) => {
             {children}
 
             <Flex className={maskClasses} alignCrossAxis="center" alignMainAxis="center">
-                <Loader />
+                <Loader size="large" />
             </Flex>
         </ElementType>
     )

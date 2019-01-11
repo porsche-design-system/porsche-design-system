@@ -205,6 +205,31 @@ html, body {
 }
 
 /**
+ * Styles for icon overview
+ */
+.sg-icon-list {
+  list-style-type: none;
+  margin-bottom: -12px;
+}
+.sg-icon-list__item {
+  width: 100px;
+  border: 1px solid #ddd;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+.sg-icon-list__item-icon {
+  display: block;
+  padding: 12px;
+  text-align: center;
+}
+.sg-icon-list__item-label {
+  display: block;
+  padding: 0 12px 12px 12px;
+  background-color: #fff;
+  text-align: center;
+}
+
+/**
  * Styles for marked markdown files
  */
 
