@@ -1,6 +1,6 @@
 ---
 title: Loader Base
-state: inprogress
+state: depreacted
 ---
 
 # @Deprecated

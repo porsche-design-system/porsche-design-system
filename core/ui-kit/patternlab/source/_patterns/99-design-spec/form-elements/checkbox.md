@@ -1,5 +1,5 @@
 ---
 title: Checkbox
-state: inreview
+state: inprogress
 ---
  

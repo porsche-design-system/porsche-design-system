@@ -1,4 +1,4 @@
 ---
 title: Symbol Diamond
-state: inreview
+state: inprogress
 ---

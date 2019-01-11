@@ -1,4 +1,4 @@
 ---
 title: state empty action
-state: inreview
+state: inprogress
 ---

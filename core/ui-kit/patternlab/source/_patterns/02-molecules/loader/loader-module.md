@@ -1,6 +1,6 @@
 ---
 title: Loader Module
-state: inreview
+state: inprogress
 ---
 
 Whenever you use this loader you have to make sure that the parent container has position relative as
