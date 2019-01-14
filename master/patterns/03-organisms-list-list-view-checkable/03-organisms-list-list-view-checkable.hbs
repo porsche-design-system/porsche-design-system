@@ -8,7 +8,7 @@
             {{#each tags }}<!-- fighting the space between inline block elements
            --><li class="list-view__tag {{#if divider }}list-view__tag--divider{{/if}} {{#if icon }}list-view__tag--icon{{/if}}">
                 {{#if icon }}
-                  <span class="list-view__icon {{#if ../active }}list-view__icon--active{{/if}} icon icon--{{ icon }}"></span>
+                  <span class="list-view__icon {{#if ../active }}list-view__icon--active{{/if}} icon-font icon-font--{{ icon }}"></span>
                 {{/if}}
                 <span>{{ tag }}</span>
               </li><!-- fighting the space between inline block elements
@@ -19,7 +19,7 @@
       {{#if checkable}}
         {{> molecules-checkbox checkbox_label=../checkbox_label styleModifier="list-view__checkbox"}}
       {{/if}}
-      <div class="list-view__menu icon icon--{{ ../list-view_menuIcon }}"></div>
+      <div class="list-view__menu icon-font icon-font--{{ ../list-view_menuIcon }}"></div>
       {{#if expanded}}
         {{> organisms-list-expanded }}
       {{/if}}

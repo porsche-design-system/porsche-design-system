@@ -3,7 +3,7 @@
   {{! Bar: START }}
   <div class="car-selector__bar {{#if car-selector_open }} car-selector__bar--open {{/if}}">
     <div class="car-selector__bar-header">
-      <span class="icon icon--arrow-down-hair car-selector__bar-icon {{#if car-selector_open }} car-selector__bar-icon--open {{/if}}"></span>
+      <span class="icon-font icon-font--arrow-down-hair car-selector__bar-icon {{#if car-selector_open }} car-selector__bar-icon--open {{/if}}"></span>
       <h3 class="car-selector__bar-title">{{ car-selector_barTitle }}</h3>
     </div>
     {{#if car-selector_barSubtitle }}
@@ -42,14 +42,14 @@
         {{#if car-selector_search_withResults }}
           <div class="car-selector__button-action car-selector__button-action--search-box">
             <div class="car-selector__button-action-align">
-              <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+              <span class="icon-font icon-font--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
               <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
             </div>
           </div>
         {{else}}
           <div class="car-selector__button-action">
             <div class="car-selector__button-action-align">
-              <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+              <span class="icon-font icon-font--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
               <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
             </div>
           </div>
@@ -61,7 +61,7 @@
           <div class="car-selector__car-list car-selector__car-list--full">
             <div class="car-selector__car-list-carousel">
               {{#if car-selector_showArrows }}
-                <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon icon--arrow-slider-left-next"></span>
+                <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon-font icon-font--arrow-slider-left-next"></span>
               {{/if}}
               {{#each car-selector_vehicles }}
                 <div class="car-selector__car-list-item
@@ -76,7 +76,7 @@
                       <span class="car-selector__car-list-item-title">
                       {{ title }}
                         {{#if ../car-selector_customerPortal }}
-                          <span class="car-selector__icon-warning icon icon--error"></span>
+                          <span class="car-selector__icon-warning icon-font icon-font--error"></span>
                         {{/if}}
                       </span>
                       <p class="car-selector__car-list-item-subtitle">
@@ -90,14 +90,14 @@
                     {{#if ../car-selector_customerPortal }}
                       {{> molecules-button-ghost
                           styleModifier="car-selector__button-details"
-                          button-ghost_icon="icon icon--details-next"
+                          button-ghost_icon="icon-font icon-font--details-next"
                           button-ghost_label="Details" }}
                     {{/if}}
                   </div>
                 </div>
               {{/each}}
               {{#if car-selector_showArrows }}
-                <span class="car-selector__arrow car-selector__arrow--right icon icon--arrow-slider-right-next"></span>
+                <span class="car-selector__arrow car-selector__arrow--right icon-font icon-font--arrow-slider-right-next"></span>
               {{/if}}
             </div>
             {{#if car-selector_showArrows }}
@@ -110,7 +110,7 @@
 
           <div class="car-selector__button-action car-selector__button-action--search-results">
             <div class="car-selector__button-action-align">
-              <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+              <span class="icon-font icon-font--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
               <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
             </div>
           </div>
@@ -127,7 +127,7 @@
           {{#if car-selector_showDerivatives }}
             <div class="car-selector__button-action">
               <div class="car-selector__button-action-align">
-                <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+                <span class="icon-font icon-font--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
                 <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
               </div>
             </div>
@@ -135,7 +135,7 @@
             <div class="car-selector__car-list">
               <div class="car-selector__car-list-carousel">
                 {{#if car-selector_showArrows }}
-                  <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon icon--arrow-slider-left-next"></span>
+                  <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon-font icon-font--arrow-slider-left-next"></span>
                 {{/if}}
                 {{#each car-selector_derivatives }}
                   <a href="javascript:void(0);" class="car-selector__derivative-list-item
@@ -159,7 +159,7 @@
                   </a>
                 {{/each}}
                 {{#if car-selector_showArrows }}
-                  <span class="car-selector__arrow car-selector__arrow--right icon icon--arrow-slider-right-next"></span>
+                  <span class="car-selector__arrow car-selector__arrow--right icon-font icon-font--arrow-slider-right-next"></span>
                 {{/if}}
               </div>
               {{#if car-selector_showArrows }}
@@ -182,7 +182,7 @@
 
             <div class="car-selector__button-action">
               <div class="car-selector__button-action-align">
-                <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+                <span class="icon-font icon-font--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
                 <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
               </div>
             </div>
@@ -204,7 +204,7 @@
                           <span class="car-selector__car-list-item-title car-selector__car-list-item-title--single">
                             {{ title }}
                             {{#if ../car-selector_customerPortal }}
-                              <span class="car-selector__icon-warning icon icon--error"></span>
+                              <span class="car-selector__icon-warning icon-font icon-font--error"></span>
                             {{/if}}
                           </span>
                           <p class="car-selector__car-list-item-subtitle car-selector__car-list-item-subtitle--single">
@@ -217,7 +217,7 @@
                           {{#if ../car-selector_customerPortal }}
                             {{> molecules-button-ghost
                                 styleModifier="car-selector__button-details"
-                                button-ghost_icon="icon icon--details-next"
+                                button-ghost_icon="icon-font icon-font--details-next"
                                 button-ghost_label="Details" }}
                           {{/if}}
                         </div>
@@ -226,7 +226,7 @@
                     {{! Single Car: END }}
                   {{else}}
                     {{#if car-selector_showArrows }}
-                      <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon icon--arrow-slider-left-next"></span>
+                      <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon-font icon-font--arrow-slider-left-next"></span>
                     {{/if}}
                     {{#each car-selector_vehicles }}
                       <div class="car-selector__car-list-item
@@ -241,7 +241,7 @@
                             <span class="car-selector__car-list-item-title">
                               {{ title }}
                               {{#if ../car-selector_customerPortal }}
-                                <span class="car-selector__icon-warning icon icon--error"></span>
+                                <span class="car-selector__icon-warning icon-font icon-font--error"></span>
                               {{/if}}
                             </span>
                             <p class="car-selector__car-list-item-subtitle">
@@ -255,14 +255,14 @@
                           {{#if ../car-selector_customerPortal }}
                             {{> molecules-button-ghost
                                 styleModifier="car-selector__button-details"
-                                button-ghost_icon="icon icon--details-next"
+                                button-ghost_icon="icon-font icon-font--details-next"
                                 button-ghost_label="Details" }}
                           {{/if}}
                         </div>
                       </div>
                     {{/each}}
                     {{#if car-selector_showArrows }}
-                      <span class="car-selector__arrow car-selector__arrow--right icon icon--arrow-slider-right-next"></span>
+                      <span class="car-selector__arrow car-selector__arrow--right icon-font icon-font--arrow-slider-right-next"></span>
                     {{/if}}
                   {{/if}}
                 </div>
@@ -277,7 +277,7 @@
               {{! Special Button - vertical and horizontal aligned with text in h3 and no background-change on hover }}
               <div class="car-selector__button-action">
                 <div class="car-selector__button-action-align">
-                  <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+                  <span class="icon-font icon-font--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
                   <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
                 </div>
               </div>

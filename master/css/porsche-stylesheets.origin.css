@@ -988,6 +988,42 @@ table {
       margin-left: 91.66667%; } }
 
 /**
+ * disable animations for specific patterns
+ *
+ * $inactive-animations is a list, if you want e.g. exclude the css animations
+ * for the-slider and tile-image-text-link pattern, you would overwrite the
+ * $inactive-animations variable by passing from outside with the following value(s)
+ *
+ * $inactive-animations: 'tile-slider', 'tile-image-text-link'
+ */
+/**
+ * basic hover animation timing (of color and opacity).
+ * timing and bezier should be refactored after official Porsche animation guidelines are defined
+ */
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  transition: fill 0.24s ease; }
+  .icon--x-small {
+    width: 1.125rem;
+    height: 1.125rem; }
+  .icon--small {
+    width: 1.5rem;
+    height: 1.5rem; }
+  .icon--medium {
+    width: 1.875rem;
+    height: 1.875rem; }
+  .icon--large {
+    width: 2.625rem;
+    height: 2.625rem; }
+  .icon--x-large {
+    width: 3.75rem;
+    height: 3.75rem; }
+
+/**
  * properties for flex container
  */
 /**
@@ -3285,6 +3321,515 @@ table {
     display: block;
     clear: both; }
 
+.icon-font {
+  font-family: 'pag-iconfont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  .icon-font--e-route::before {
+    content: '\e96d'; }
+  .icon-font--delivery-adress::before {
+    content: '\e96c'; }
+  .icon-font--advisor-not-available::before {
+    content: '\e980'; }
+  .icon-font--arrow-back::before {
+    content: '\e981'; }
+  .icon-font--replacement-car::before {
+    content: '\e982'; }
+  .icon-font--replacement-car-not-available::before {
+    content: '\e983'; }
+  .icon-font--rfid-card::before {
+    content: '\e97f'; }
+  .icon-font--limousine-pcm::before {
+    content: '\e967'; }
+  .icon-font--limousine-engine-pcm::before {
+    content: '\e968'; }
+  .icon-font--limousine-hood-pcm::before {
+    content: '\e969'; }
+  .icon-font--limousine-sunroof-pcm::before {
+    content: '\e96a'; }
+  .icon-font--limousine-trunk-pcm::before {
+    content: '\e96b'; }
+  .icon-font--sport-pcm::before {
+    content: '\e970'; }
+  .icon-font--sport-engine-pcm::before {
+    content: '\e971'; }
+  .icon-font--sport-hood-pcm::before {
+    content: '\e972'; }
+  .icon-font--sport-sunroof-pcm::before {
+    content: '\e973'; }
+  .icon-font--sport-trunk-pcm::before {
+    content: '\e974'; }
+  .icon-font--suv-pcm::before {
+    content: '\e979'; }
+  .icon-font--suv-engine-pcm::before {
+    content: '\e97a'; }
+  .icon-font--send-code::before {
+    content: '\e966'; }
+  .icon-font--leaf::before {
+    content: '\e965'; }
+  .icon-font--favorite-next::before {
+    content: '\e964'; }
+  .icon-font--broadcast::before {
+    content: '\e963'; }
+  .icon-font--basket-next::before {
+    content: '\e960'; }
+  .icon-font--car-next::before {
+    content: '\e961'; }
+  .icon-font--car-connect-next::before {
+    content: '\e962'; }
+  .icon-font--360-degree::before {
+    content: '\e95f'; }
+  .icon-font--work-next::before {
+    content: '\e95e'; }
+  .icon-font--home-next::before {
+    content: '\e95d'; }
+  .icon-font--heater-next::before {
+    content: '\e95c'; }
+  .icon-font--climate-next::before {
+    content: '\e95b'; }
+  .icon-font--morning-afternoon-next::before {
+    content: '\e95a'; }
+  .icon-font--evening-next::before {
+    content: '\e959'; }
+  .icon-font--emission-next::before {
+    content: '\e958'; }
+  .icon-font--electricity-consumption-next::before {
+    content: '\e957'; }
+  .icon-font--early-morning-next::before {
+    content: '\e956'; }
+  .icon-font--early-afternoon-next::before {
+    content: '\e955'; }
+  .icon-font--all-day-next::before {
+    content: '\e954'; }
+  .icon-font--arrow-slider-left-next::before {
+    content: '\e951'; }
+  .icon-font--arrow-slider-right-next::before {
+    content: '\e952'; }
+  .icon-font--details-next::before {
+    content: '\e953'; }
+  .icon-font--telegram::before {
+    content: '\e94f'; }
+  .icon-font--viber::before {
+    content: '\e950'; }
+  .icon-font--duration-next::before {
+    content: '\e94b'; }
+  .icon-font--e-fuel-next::before {
+    content: '\e94c'; }
+  .icon-font--route-next::before {
+    content: '\e94d'; }
+  .icon-font--speed-next::before {
+    content: '\e94e'; }
+  .icon-font--door-left2-next::before {
+    content: '\e943'; }
+  .icon-font--door-left1-next::before {
+    content: '\e944'; }
+  .icon-font--door-right2-next::before {
+    content: '\e945'; }
+  .icon-font--door-right1-next::before {
+    content: '\e946'; }
+  .icon-font--suv-hood-pcm::before {
+    content: '\e947'; }
+  .icon-font--suv-sunroof-pcm::before {
+    content: '\e948'; }
+  .icon-font--suv-trunk-pcm::before {
+    content: '\e949'; }
+  .icon-font--window-next::before {
+    content: '\e94a'; }
+  .icon-font--battery-next::before {
+    content: '\e939'; }
+  .icon-font--flash-next::before {
+    content: '\e93a'; }
+  .icon-font--fuel-next::before {
+    content: '\e93b'; }
+  .icon-font--horn-next::before {
+    content: '\e93c'; }
+  .icon-font--lock-next::before {
+    content: '\e93d'; }
+  .icon-font--mileage-next::before {
+    content: '\e93e'; }
+  .icon-font--oil-next::before {
+    content: '\e93f'; }
+  .icon-font--park-next::before {
+    content: '\e940'; }
+  .icon-font--parklight-next::before {
+    content: '\e941'; }
+  .icon-font--unlock-next::before {
+    content: '\e942'; }
+  .icon-font--crosshair::before {
+    content: '\e937'; }
+  .icon-font--wrench::before {
+    content: '\e938'; }
+  .icon-font--xing::before {
+    content: '\e936'; }
+  .icon-font--timer-pcm::before {
+    content: '\e935'; }
+  .icon-font--energy::before {
+    content: '\e932'; }
+  .icon-font--error::before {
+    content: '\e933'; }
+  .icon-font--plug-pcm::before {
+    content: '\e934'; }
+  .icon-font--settings::before {
+    content: '\e931'; }
+  .icon-font--double-arrow-down-thin::before {
+    content: '\e92e'; }
+  .icon-font--gebrauchtwagensuche::before {
+    content: '\e92f'; }
+  .icon-font--porsche-driving-experience::before {
+    content: '\e930'; }
+  .icon-font--desktop::before {
+    content: '\e92c'; }
+  .icon-font--tablet::before {
+    content: '\e92d'; }
+  .icon-font--whatsapp::before {
+    content: '\e92b'; }
+  .icon-font--add-user::before {
+    content: '\e92a'; }
+  .icon-font--vertical-line::before {
+    content: '\e929'; }
+  .icon-font--consumption::before {
+    content: '\e921'; }
+  .icon-font--cubic-capacity::before {
+    content: '\e922'; }
+  .icon-font--cw-value::before {
+    content: '\e923'; }
+  .icon-font--pcm::before {
+    content: '\e924'; }
+  .icon-font--photo::before {
+    content: '\e925'; }
+  .icon-font--picture::before {
+    content: '\e926'; }
+  .icon-font--weight-2::before {
+    content: '\e927'; }
+  .icon-font--wind-tunnel::before {
+    content: '\e928'; }
+  .icon-font--afternoon::before {
+    content: '\e90f'; }
+  .icon-font--callback::before {
+    content: '\e910'; }
+  .icon-font--code-active::before {
+    content: '\e911'; }
+  .icon-font--code-inactive::before {
+    content: '\e912'; }
+  .icon-font--customer-administration::before {
+    content: '\e913'; }
+  .icon-font--document::before {
+    content: '\e914'; }
+  .icon-font--evening::before {
+    content: '\e915'; }
+  .icon-font--list-view::before {
+    content: '\e916'; }
+  .icon-font--mail-request::before {
+    content: '\e917'; }
+  .icon-font--mailbox::before {
+    content: '\e918'; }
+  .icon-font--map-view::before {
+    content: '\e919'; }
+  .icon-font--mark-as-read::before {
+    content: '\e91a'; }
+  .icon-font--morning::before {
+    content: '\e91b'; }
+  .icon-font--reset::before {
+    content: '\e91c'; }
+  .icon-font--smartphone::before {
+    content: '\e91d'; }
+  .icon-font--tutorial::before {
+    content: '\e91e'; }
+  .icon-font--update-in-car::before {
+    content: '\e91f'; }
+  .icon-font--upload::before {
+    content: '\e920'; }
+  .icon-font--max-efficiency::before {
+    content: '\e90e'; }
+  .icon-font--acceleration::before {
+    content: '\e904'; }
+  .icon-font--car-connect::before {
+    content: '\e905'; }
+  .icon-font--concept::before {
+    content: '\e906'; }
+  .icon-font--e-power::before {
+    content: '\e907'; }
+  .icon-font--e-performance::before {
+    content: '\e908'; }
+  .icon-font--highspeed::before {
+    content: '\e909'; }
+  .icon-font--idea::before {
+    content: '\e90a'; }
+  .icon-font--performance::before {
+    content: '\e90b'; }
+  .icon-font--sound-of-porsche::before {
+    content: '\e90c'; }
+  .icon-font--weight::before {
+    content: '\e90d'; }
+  .icon-font--locked::before {
+    content: '\e903'; }
+  .icon-font--info::before {
+    content: '\e902'; }
+  .icon-font--teq-finder-01::before {
+    content: '\e900'; }
+  .icon-font--teq-finder-02::before {
+    content: '\e901'; }
+  .icon-font--logout::before {
+    content: '\e647'; }
+  .icon-font--move-inbox::before {
+    content: '\e646'; }
+  .icon-font--archive::before {
+    content: '\e645'; }
+  .icon-font--send::before {
+    content: '\e644'; }
+  .icon-font--sort::before {
+    content: '\e640'; }
+  .icon-font--deactivate::before {
+    content: '\e641'; }
+  .icon-font--menu-dots::before {
+    content: '\e642'; }
+  .icon-font--extend-duration::before {
+    content: '\e643'; }
+  .icon-font--exclamation-mark::before {
+    content: '\e63f'; }
+  .icon-font--help-and-contact::before {
+    content: '\e637'; }
+  .icon-font--closed-eye::before {
+    content: '\e638'; }
+  .icon-font--eye::before {
+    content: '\e639'; }
+  .icon-font--forgot-password::before {
+    content: '\e63a'; }
+  .icon-font--question-mark::before {
+    content: '\e63c'; }
+  .icon-font--registration::before {
+    content: '\e63d'; }
+  .icon-font--standard-features::before {
+    content: '\e63e'; }
+  .icon-font--expire::before {
+    content: '\e636'; }
+  .icon-font--payment::before {
+    content: '\e634'; }
+  .icon-font--home::before {
+    content: '\e635'; }
+  .icon-font--arrow-left-thin-first::before {
+    content: '\e632'; }
+  .icon-font--arrow-right-thin-last::before {
+    content: '\e633'; }
+  .icon-font--double-arrow-left-thin::before {
+    content: '\e62a'; }
+  .icon-font--double-arrow-right-thin::before {
+    content: '\e62b'; }
+  .icon-font--giftbox::before {
+    content: '\e631'; }
+  .icon-font--basket::before {
+    content: '\e629'; }
+  .icon-font--article::before {
+    content: '\e62f'; }
+  .icon-font--slideshow::before {
+    content: '\e630'; }
+  .icon-font--corporate-sales::before {
+    content: '\e62e'; }
+  .icon-font--check-small::before {
+    content: '\e62d'; }
+  .icon-font--menu2::before {
+    content: '\e62c'; }
+  .icon-font--car::before {
+    content: '\e628'; }
+  .icon-font--foursquare::before {
+    content: '\e623'; }
+  .icon-font--contact::before {
+    content: '\e621'; }
+  .icon-font--radio-button::before {
+    content: '\e622'; }
+  .icon-font--check::before {
+    content: '\e615'; }
+  .icon-font--list-view2::before {
+    content: '\e616'; }
+  .icon-font--grid-view::before {
+    content: '\e617'; }
+  .icon-font--print::before {
+    content: '\e618'; }
+  .icon-font--testdrive::before {
+    content: '\e619'; }
+  .icon-font--fax::before {
+    content: '\e61a'; }
+  .icon-font--email::before {
+    content: '\e61b'; }
+  .icon-font--ownerservice::before {
+    content: '\e61c'; }
+  .icon-font--twitter-favorite::before {
+    content: '\e612'; }
+  .icon-font--twitter-reply::before {
+    content: '\e613'; }
+  .icon-font--twitter-retweet::before {
+    content: '\e614'; }
+  .icon-font--delicious::before {
+    content: '\e60e'; }
+  .icon-font--gmail::before {
+    content: '\e60f'; }
+  .icon-font--igoogle::before {
+    content: '\e610'; }
+  .icon-font--tumblr::before {
+    content: '\e611'; }
+  .icon-font--hatena-bookmark::before {
+    content: '\e608'; }
+  .icon-font--qq-share::before {
+    content: '\e609'; }
+  .icon-font--skyrock::before {
+    content: '\e60a'; }
+  .icon-font--tecent::before {
+    content: '\e60b'; }
+  .icon-font--vk::before {
+    content: '\e60c'; }
+  .icon-font--wechat::before {
+    content: '\e60d'; }
+  .icon-font--baidu::before {
+    content: '\e605'; }
+  .icon-font--kaixin::before {
+    content: '\e606'; }
+  .icon-font--sohu::before {
+    content: '\e607'; }
+  .icon-font--yahoo::before {
+    content: '\e603'; }
+  .icon-font--digg::before {
+    content: '\e604'; }
+  .icon-font--twitter::before {
+    content: '\e001'; }
+  .icon-font--linkedin::before {
+    content: '\e602'; }
+  .icon-font--pinterest::before {
+    content: '\e006'; }
+  .icon-font--youku::before {
+    content: '\e600'; }
+  .icon-font--google::before {
+    content: '\e008'; }
+  .icon-font--facebook::before {
+    content: '\e009'; }
+  .icon-font--search::before {
+    content: '\e003'; }
+  .icon-font--plus::before {
+    content: '\e004'; }
+  .icon-font--overview::before {
+    content: '\e007'; }
+  .icon-font--download::before {
+    content: '\e00a'; }
+  .icon-font--close::before {
+    content: '\e00b'; }
+  .icon-font--pin::before {
+    content: '\e010'; }
+  .icon-font--locate::before {
+    content: '\e012'; }
+  .icon-font--play::before {
+    content: '\e005'; }
+  .icon-font--video-quali::before {
+    content: '\e018'; }
+  .icon-font--sound::before {
+    content: '\e019'; }
+  .icon-font--zoom-out::before {
+    content: '\e01a'; }
+  .icon-font--zoom-in::before {
+    content: '\e01b'; }
+  .icon-font--next-modul::before {
+    content: '\e017'; }
+  .icon-font--pref-modul::before {
+    content: '\e01c'; }
+  .icon-font--sub-menue::before {
+    content: '\e01d'; }
+  .icon-font--pause::before {
+    content: '\e013'; }
+  .icon-font--replay::before {
+    content: '\e014'; }
+  .icon-font--share::before {
+    content: '\e002'; }
+  .icon-font--mute::before {
+    content: '\e016'; }
+  .icon-font--arrow-up::before {
+    content: '\e00c'; }
+  .icon-font--arrow-right::before {
+    content: '\e00d'; }
+  .icon-font--arrow-left::before {
+    content: '\e00e'; }
+  .icon-font--arrow-down::before {
+    content: '\e00f'; }
+  .icon-font--arrow-up-hair::before {
+    content: '\e022'; }
+  .icon-font--arrow-right-hair::before {
+    content: '\e024'; }
+  .icon-font--arrow-left-hair::before {
+    content: '\e025'; }
+  .icon-font--arrow-down-hair::before {
+    content: '\e026'; }
+  .icon-font--weibo::before {
+    content: '\e027'; }
+  .icon-font--qq::before {
+    content: '\e028'; }
+  .icon-font--renren::before {
+    content: '\e029'; }
+  .icon-font--video::before {
+    content: '\e02a'; }
+  .icon-font--save::before {
+    content: '\e02b'; }
+  .icon-font--minus::before {
+    content: '\e02d'; }
+  .icon-font--configurator::before {
+    content: '\e02e'; }
+  .icon-font--arrow-up-thin::before {
+    content: '\e01e'; }
+  .icon-font--arrow-left-thin::before {
+    content: '\e020'; }
+  .icon-font--arrow-right-thin::before {
+    content: '\e01f'; }
+  .icon-font--arrow-down-thin::before {
+    content: '\e021'; }
+  .icon-font--download-02::before {
+    content: '\e023'; }
+  .icon-font--read-more::before {
+    content: '\e02f'; }
+  .icon-font--phone::before {
+    content: '\e031'; }
+  .icon-font--globe::before {
+    content: '\e032'; }
+  .icon-font--informationen-anfordern::before {
+    content: '\e033'; }
+  .icon-font--dealer::before {
+    content: '\e034'; }
+  .icon-font--compare::before {
+    content: '\e035'; }
+  .icon-font--youtube::before {
+    content: '\f000'; }
+  .icon-font--scrollbar::before {
+    content: '\e050'; }
+  .icon-font--menue::before {
+    content: '\e011'; }
+  .icon-font--breadcrumb::before {
+    content: '\e015'; }
+  .icon-font--highlight::before {
+    content: '\e037'; }
+  .icon-font--loader::before {
+    content: '\e036'; }
+  .icon-font--payment-calculator::before {
+    content: '\e02c'; }
+  .icon-font--instagram::before {
+    content: '\e601'; }
+  .icon-font--timer::before {
+    content: '\e61d'; }
+  .icon-font--gps::before {
+    content: '\e61e'; }
+  .icon-font--microphone::before {
+    content: '\e61f'; }
+  .icon-font--play2::before {
+    content: '\e620'; }
+  .icon-font--delete::before {
+    content: '\e624'; }
+  .icon-font--edit::before {
+    content: '\e625'; }
+  .icon-font--filter::before {
+    content: '\e626'; }
+  .icon-font--rss::before {
+    content: '\e627'; }
+
 @keyframes animation-rotate-360 {
   0% {
     transform: rotate(0deg);
@@ -3327,515 +3872,6 @@ table {
   background-image: url('data:image/svg+xml;charset=utf8,%3Csvg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url(%23Unbenannter_Verlauf_11)%7D.cls-2%7Bfill:%23fff%7D.cls-3%7Bfill:url(%23Unbenannter_Verlauf_18)%7D.cls-4%7Bfill:url(%23Unbenannter_Verlauf_14)%7D%3C/style%3E%3ClinearGradient id="Unbenannter_Verlauf_11" y1="25" x2="50" y2="25" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".6"/%3E%3Cstop offset="1" stop-color="%23fff"/%3E%3C/linearGradient%3E%3ClinearGradient id="Unbenannter_Verlauf_18" x1="50" y1="75" x2="100" y2="75" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".4"/%3E%3Cstop offset="1" stop-color="%23fff" stop-opacity="0"/%3E%3C/linearGradient%3E%3ClinearGradient id="Unbenannter_Verlauf_14" y1="75" x2="50" y2="75" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".6"/%3E%3Cstop offset="1" stop-color="%23fff" stop-opacity=".4"/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath class="cls-1" d="M50 8V0A50 50 0 0 0 0 50h8A42 42 0 0 1 50 8z"/%3E%3Cpath class="cls-2" d="M92 50h8A49.75 49.75 0 0 0 50 0v8a42.15 42.15 0 0 1 42 42z"/%3E%3Cpath class="cls-3" d="M50 92v8a49.51 49.51 0 0 0 50-50h-8a42.25 42.25 0 0 1-42 42z"/%3E%3Cpath class="cls-4" d="M8 50H0a49.51 49.51 0 0 0 50 50v-8A42.25 42.25 0 0 1 8 50z"/%3E%3C/svg%3E'); }
   .loader-base--dark {
     background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIGlkPSJFYmVuZV8xIiB4PSIwIiB5PSIwIiB3aWR0aD0iNjBweCIgaGVpZ2h0PSI2MHB4IiBkYXRhLW5hbWU9IkViZW5lIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4gIDxkZWZzPiAgICA8c3R5bGU+ICAgICAgLmNscy0xe2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzExKTt9ICAgICAgLmNscy0ye2ZpbGw6I2ZmZjt9ICAgICAgLmNscy0ze2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzE4KTt9ICAgICAgLmNscy00e2ZpbGw6dXJsKCNVbmJlbmFubnRlcl9WZXJsYXVmXzE0KTt9ICAgIDwvc3R5bGU+ICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iVW5iZW5hbm50ZXJfVmVybGF1Zl8xMSIgeTE9IjI1IiB4Mj0iNTAiIHkyPSIyNSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMC42Ii8+ICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjkyYTJlICIvPiAgICA8L2xpbmVhckdyYWRpZW50PiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IlVuYmVuYW5udGVyX1ZlcmxhdWZfMTgiIHgxPSI1MCIgeTE9Ijc1IiB4Mj0iMTAwIiB5Mj0iNzUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4gICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyOTJhMmUgIiBzdG9wLW9wYWNpdHk9IjAuNCIvPiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMCIvPiAgICA8L2xpbmVhckdyYWRpZW50PiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IlVuYmVuYW5udGVyX1ZlcmxhdWZfMTQiIHkxPSI3NSIgeDI9IjUwIiB5Mj0iNzUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4gICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyOTJhMmUgIiBzdG9wLW9wYWNpdHk9IjAuNiIvPiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzI5MmEyZSAiIHN0b3Atb3BhY2l0eT0iMC40Ii8+ICAgIDwvbGluZWFyR3JhZGllbnQ+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MCw4VjBBNTAsNTAsMCwwLDAsMCw1MEg4QTQyLDQyLDAsMCwxLDUwLDhaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwKSIvPiAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNOTIsNTBoOEE0OS43NSw0OS43NSwwLDAsMCw1MCwwVjhBNDIuMTUsNDIuMTUsMCwwLDEsOTIsNTBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwKSIvPiAgPHBhdGggY2xhc3M9ImNscy0zIiBkPSJNNTAsOTJ2OGE0OS41MSw0OS41MSwwLDAsMCw1MC01MEg5MkE0Mi4yNSw0Mi4yNSwwLDAsMSw1MCw5MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIi8+ICA8cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik04LDUwSDBhNDkuNTEsNDkuNTEsMCwwLDAsNTAsNTBWOTJBNDIuMjUsNDIuMjUsMCwwLDEsOCw1MFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIi8+PC9zdmc+"); }
-
-.icon {
-  font-family: 'pag-iconfont' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-  .icon--e-route::before {
-    content: '\e96d'; }
-  .icon--delivery-adress::before {
-    content: '\e96c'; }
-  .icon--advisor-not-available::before {
-    content: '\e980'; }
-  .icon--arrow-back::before {
-    content: '\e981'; }
-  .icon--replacement-car::before {
-    content: '\e982'; }
-  .icon--replacement-car-not-available::before {
-    content: '\e983'; }
-  .icon--rfid-card::before {
-    content: '\e97f'; }
-  .icon--limousine-pcm::before {
-    content: '\e967'; }
-  .icon--limousine-engine-pcm::before {
-    content: '\e968'; }
-  .icon--limousine-hood-pcm::before {
-    content: '\e969'; }
-  .icon--limousine-sunroof-pcm::before {
-    content: '\e96a'; }
-  .icon--limousine-trunk-pcm::before {
-    content: '\e96b'; }
-  .icon--sport-pcm::before {
-    content: '\e970'; }
-  .icon--sport-engine-pcm::before {
-    content: '\e971'; }
-  .icon--sport-hood-pcm::before {
-    content: '\e972'; }
-  .icon--sport-sunroof-pcm::before {
-    content: '\e973'; }
-  .icon--sport-trunk-pcm::before {
-    content: '\e974'; }
-  .icon--suv-pcm::before {
-    content: '\e979'; }
-  .icon--suv-engine-pcm::before {
-    content: '\e97a'; }
-  .icon--send-code::before {
-    content: '\e966'; }
-  .icon--leaf::before {
-    content: '\e965'; }
-  .icon--favorite-next::before {
-    content: '\e964'; }
-  .icon--broadcast::before {
-    content: '\e963'; }
-  .icon--basket-next::before {
-    content: '\e960'; }
-  .icon--car-next::before {
-    content: '\e961'; }
-  .icon--car-connect-next::before {
-    content: '\e962'; }
-  .icon--360-degree::before {
-    content: '\e95f'; }
-  .icon--work-next::before {
-    content: '\e95e'; }
-  .icon--home-next::before {
-    content: '\e95d'; }
-  .icon--heater-next::before {
-    content: '\e95c'; }
-  .icon--climate-next::before {
-    content: '\e95b'; }
-  .icon--morning-afternoon-next::before {
-    content: '\e95a'; }
-  .icon--evening-next::before {
-    content: '\e959'; }
-  .icon--emission-next::before {
-    content: '\e958'; }
-  .icon--electricity-consumption-next::before {
-    content: '\e957'; }
-  .icon--early-morning-next::before {
-    content: '\e956'; }
-  .icon--early-afternoon-next::before {
-    content: '\e955'; }
-  .icon--all-day-next::before {
-    content: '\e954'; }
-  .icon--arrow-slider-left-next::before {
-    content: '\e951'; }
-  .icon--arrow-slider-right-next::before {
-    content: '\e952'; }
-  .icon--details-next::before {
-    content: '\e953'; }
-  .icon--telegram::before {
-    content: '\e94f'; }
-  .icon--viber::before {
-    content: '\e950'; }
-  .icon--duration-next::before {
-    content: '\e94b'; }
-  .icon--e-fuel-next::before {
-    content: '\e94c'; }
-  .icon--route-next::before {
-    content: '\e94d'; }
-  .icon--speed-next::before {
-    content: '\e94e'; }
-  .icon--door-left2-next::before {
-    content: '\e943'; }
-  .icon--door-left1-next::before {
-    content: '\e944'; }
-  .icon--door-right2-next::before {
-    content: '\e945'; }
-  .icon--door-right1-next::before {
-    content: '\e946'; }
-  .icon--suv-hood-pcm::before {
-    content: '\e947'; }
-  .icon--suv-sunroof-pcm::before {
-    content: '\e948'; }
-  .icon--suv-trunk-pcm::before {
-    content: '\e949'; }
-  .icon--window-next::before {
-    content: '\e94a'; }
-  .icon--battery-next::before {
-    content: '\e939'; }
-  .icon--flash-next::before {
-    content: '\e93a'; }
-  .icon--fuel-next::before {
-    content: '\e93b'; }
-  .icon--horn-next::before {
-    content: '\e93c'; }
-  .icon--lock-next::before {
-    content: '\e93d'; }
-  .icon--mileage-next::before {
-    content: '\e93e'; }
-  .icon--oil-next::before {
-    content: '\e93f'; }
-  .icon--park-next::before {
-    content: '\e940'; }
-  .icon--parklight-next::before {
-    content: '\e941'; }
-  .icon--unlock-next::before {
-    content: '\e942'; }
-  .icon--crosshair::before {
-    content: '\e937'; }
-  .icon--wrench::before {
-    content: '\e938'; }
-  .icon--xing::before {
-    content: '\e936'; }
-  .icon--timer-pcm::before {
-    content: '\e935'; }
-  .icon--energy::before {
-    content: '\e932'; }
-  .icon--error::before {
-    content: '\e933'; }
-  .icon--plug-pcm::before {
-    content: '\e934'; }
-  .icon--settings::before {
-    content: '\e931'; }
-  .icon--double-arrow-down-thin::before {
-    content: '\e92e'; }
-  .icon--gebrauchtwagensuche::before {
-    content: '\e92f'; }
-  .icon--porsche-driving-experience::before {
-    content: '\e930'; }
-  .icon--desktop::before {
-    content: '\e92c'; }
-  .icon--tablet::before {
-    content: '\e92d'; }
-  .icon--whatsapp::before {
-    content: '\e92b'; }
-  .icon--add-user::before {
-    content: '\e92a'; }
-  .icon--vertical-line::before {
-    content: '\e929'; }
-  .icon--consumption::before {
-    content: '\e921'; }
-  .icon--cubic-capacity::before {
-    content: '\e922'; }
-  .icon--cw-value::before {
-    content: '\e923'; }
-  .icon--pcm::before {
-    content: '\e924'; }
-  .icon--photo::before {
-    content: '\e925'; }
-  .icon--picture::before {
-    content: '\e926'; }
-  .icon--weight-2::before {
-    content: '\e927'; }
-  .icon--wind-tunnel::before {
-    content: '\e928'; }
-  .icon--afternoon::before {
-    content: '\e90f'; }
-  .icon--callback::before {
-    content: '\e910'; }
-  .icon--code-active::before {
-    content: '\e911'; }
-  .icon--code-inactive::before {
-    content: '\e912'; }
-  .icon--customer-administration::before {
-    content: '\e913'; }
-  .icon--document::before {
-    content: '\e914'; }
-  .icon--evening::before {
-    content: '\e915'; }
-  .icon--list-view::before {
-    content: '\e916'; }
-  .icon--mail-request::before {
-    content: '\e917'; }
-  .icon--mailbox::before {
-    content: '\e918'; }
-  .icon--map-view::before {
-    content: '\e919'; }
-  .icon--mark-as-read::before {
-    content: '\e91a'; }
-  .icon--morning::before {
-    content: '\e91b'; }
-  .icon--reset::before {
-    content: '\e91c'; }
-  .icon--smartphone::before {
-    content: '\e91d'; }
-  .icon--tutorial::before {
-    content: '\e91e'; }
-  .icon--update-in-car::before {
-    content: '\e91f'; }
-  .icon--upload::before {
-    content: '\e920'; }
-  .icon--max-efficiency::before {
-    content: '\e90e'; }
-  .icon--acceleration::before {
-    content: '\e904'; }
-  .icon--car-connect::before {
-    content: '\e905'; }
-  .icon--concept::before {
-    content: '\e906'; }
-  .icon--e-power::before {
-    content: '\e907'; }
-  .icon--e-performance::before {
-    content: '\e908'; }
-  .icon--highspeed::before {
-    content: '\e909'; }
-  .icon--idea::before {
-    content: '\e90a'; }
-  .icon--performance::before {
-    content: '\e90b'; }
-  .icon--sound-of-porsche::before {
-    content: '\e90c'; }
-  .icon--weight::before {
-    content: '\e90d'; }
-  .icon--locked::before {
-    content: '\e903'; }
-  .icon--info::before {
-    content: '\e902'; }
-  .icon--teq-finder-01::before {
-    content: '\e900'; }
-  .icon--teq-finder-02::before {
-    content: '\e901'; }
-  .icon--logout::before {
-    content: '\e647'; }
-  .icon--move-inbox::before {
-    content: '\e646'; }
-  .icon--archive::before {
-    content: '\e645'; }
-  .icon--send::before {
-    content: '\e644'; }
-  .icon--sort::before {
-    content: '\e640'; }
-  .icon--deactivate::before {
-    content: '\e641'; }
-  .icon--menu-dots::before {
-    content: '\e642'; }
-  .icon--extend-duration::before {
-    content: '\e643'; }
-  .icon--exclamation-mark::before {
-    content: '\e63f'; }
-  .icon--help-and-contact::before {
-    content: '\e637'; }
-  .icon--closed-eye::before {
-    content: '\e638'; }
-  .icon--eye::before {
-    content: '\e639'; }
-  .icon--forgot-password::before {
-    content: '\e63a'; }
-  .icon--question-mark::before {
-    content: '\e63c'; }
-  .icon--registration::before {
-    content: '\e63d'; }
-  .icon--standard-features::before {
-    content: '\e63e'; }
-  .icon--expire::before {
-    content: '\e636'; }
-  .icon--payment::before {
-    content: '\e634'; }
-  .icon--home::before {
-    content: '\e635'; }
-  .icon--arrow-left-thin-first::before {
-    content: '\e632'; }
-  .icon--arrow-right-thin-last::before {
-    content: '\e633'; }
-  .icon--double-arrow-left-thin::before {
-    content: '\e62a'; }
-  .icon--double-arrow-right-thin::before {
-    content: '\e62b'; }
-  .icon--giftbox::before {
-    content: '\e631'; }
-  .icon--basket::before {
-    content: '\e629'; }
-  .icon--article::before {
-    content: '\e62f'; }
-  .icon--slideshow::before {
-    content: '\e630'; }
-  .icon--corporate-sales::before {
-    content: '\e62e'; }
-  .icon--check-small::before {
-    content: '\e62d'; }
-  .icon--menu2::before {
-    content: '\e62c'; }
-  .icon--car::before {
-    content: '\e628'; }
-  .icon--foursquare::before {
-    content: '\e623'; }
-  .icon--contact::before {
-    content: '\e621'; }
-  .icon--radio-button::before {
-    content: '\e622'; }
-  .icon--check::before {
-    content: '\e615'; }
-  .icon--list-view2::before {
-    content: '\e616'; }
-  .icon--grid-view::before {
-    content: '\e617'; }
-  .icon--print::before {
-    content: '\e618'; }
-  .icon--testdrive::before {
-    content: '\e619'; }
-  .icon--fax::before {
-    content: '\e61a'; }
-  .icon--email::before {
-    content: '\e61b'; }
-  .icon--ownerservice::before {
-    content: '\e61c'; }
-  .icon--twitter-favorite::before {
-    content: '\e612'; }
-  .icon--twitter-reply::before {
-    content: '\e613'; }
-  .icon--twitter-retweet::before {
-    content: '\e614'; }
-  .icon--delicious::before {
-    content: '\e60e'; }
-  .icon--gmail::before {
-    content: '\e60f'; }
-  .icon--igoogle::before {
-    content: '\e610'; }
-  .icon--tumblr::before {
-    content: '\e611'; }
-  .icon--hatena-bookmark::before {
-    content: '\e608'; }
-  .icon--qq-share::before {
-    content: '\e609'; }
-  .icon--skyrock::before {
-    content: '\e60a'; }
-  .icon--tecent::before {
-    content: '\e60b'; }
-  .icon--vk::before {
-    content: '\e60c'; }
-  .icon--wechat::before {
-    content: '\e60d'; }
-  .icon--baidu::before {
-    content: '\e605'; }
-  .icon--kaixin::before {
-    content: '\e606'; }
-  .icon--sohu::before {
-    content: '\e607'; }
-  .icon--yahoo::before {
-    content: '\e603'; }
-  .icon--digg::before {
-    content: '\e604'; }
-  .icon--twitter::before {
-    content: '\e001'; }
-  .icon--linkedin::before {
-    content: '\e602'; }
-  .icon--pinterest::before {
-    content: '\e006'; }
-  .icon--youku::before {
-    content: '\e600'; }
-  .icon--google::before {
-    content: '\e008'; }
-  .icon--facebook::before {
-    content: '\e009'; }
-  .icon--search::before {
-    content: '\e003'; }
-  .icon--plus::before {
-    content: '\e004'; }
-  .icon--overview::before {
-    content: '\e007'; }
-  .icon--download::before {
-    content: '\e00a'; }
-  .icon--close::before {
-    content: '\e00b'; }
-  .icon--pin::before {
-    content: '\e010'; }
-  .icon--locate::before {
-    content: '\e012'; }
-  .icon--play::before {
-    content: '\e005'; }
-  .icon--video-quali::before {
-    content: '\e018'; }
-  .icon--sound::before {
-    content: '\e019'; }
-  .icon--zoom-out::before {
-    content: '\e01a'; }
-  .icon--zoom-in::before {
-    content: '\e01b'; }
-  .icon--next-modul::before {
-    content: '\e017'; }
-  .icon--pref-modul::before {
-    content: '\e01c'; }
-  .icon--sub-menue::before {
-    content: '\e01d'; }
-  .icon--pause::before {
-    content: '\e013'; }
-  .icon--replay::before {
-    content: '\e014'; }
-  .icon--share::before {
-    content: '\e002'; }
-  .icon--mute::before {
-    content: '\e016'; }
-  .icon--arrow-up::before {
-    content: '\e00c'; }
-  .icon--arrow-right::before {
-    content: '\e00d'; }
-  .icon--arrow-left::before {
-    content: '\e00e'; }
-  .icon--arrow-down::before {
-    content: '\e00f'; }
-  .icon--arrow-up-hair::before {
-    content: '\e022'; }
-  .icon--arrow-right-hair::before {
-    content: '\e024'; }
-  .icon--arrow-left-hair::before {
-    content: '\e025'; }
-  .icon--arrow-down-hair::before {
-    content: '\e026'; }
-  .icon--weibo::before {
-    content: '\e027'; }
-  .icon--qq::before {
-    content: '\e028'; }
-  .icon--renren::before {
-    content: '\e029'; }
-  .icon--video::before {
-    content: '\e02a'; }
-  .icon--save::before {
-    content: '\e02b'; }
-  .icon--minus::before {
-    content: '\e02d'; }
-  .icon--configurator::before {
-    content: '\e02e'; }
-  .icon--arrow-up-thin::before {
-    content: '\e01e'; }
-  .icon--arrow-left-thin::before {
-    content: '\e020'; }
-  .icon--arrow-right-thin::before {
-    content: '\e01f'; }
-  .icon--arrow-down-thin::before {
-    content: '\e021'; }
-  .icon--download-02::before {
-    content: '\e023'; }
-  .icon--read-more::before {
-    content: '\e02f'; }
-  .icon--phone::before {
-    content: '\e031'; }
-  .icon--globe::before {
-    content: '\e032'; }
-  .icon--informationen-anfordern::before {
-    content: '\e033'; }
-  .icon--dealer::before {
-    content: '\e034'; }
-  .icon--compare::before {
-    content: '\e035'; }
-  .icon--youtube::before {
-    content: '\f000'; }
-  .icon--scrollbar::before {
-    content: '\e050'; }
-  .icon--menue::before {
-    content: '\e011'; }
-  .icon--breadcrumb::before {
-    content: '\e015'; }
-  .icon--highlight::before {
-    content: '\e037'; }
-  .icon--loader::before {
-    content: '\e036'; }
-  .icon--payment-calculator::before {
-    content: '\e02c'; }
-  .icon--instagram::before {
-    content: '\e601'; }
-  .icon--timer::before {
-    content: '\e61d'; }
-  .icon--gps::before {
-    content: '\e61e'; }
-  .icon--microphone::before {
-    content: '\e61f'; }
-  .icon--play2::before {
-    content: '\e620'; }
-  .icon--delete::before {
-    content: '\e624'; }
-  .icon--edit::before {
-    content: '\e625'; }
-  .icon--filter::before {
-    content: '\e626'; }
-  .icon--rss::before {
-    content: '\e627'; }
 
 .symbol-marker {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
