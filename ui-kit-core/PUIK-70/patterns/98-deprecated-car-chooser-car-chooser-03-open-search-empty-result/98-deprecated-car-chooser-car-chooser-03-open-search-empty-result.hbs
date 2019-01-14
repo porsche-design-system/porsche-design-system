@@ -1,6 +1,6 @@
 <div class="car-chooser {{styleModifier}} {{#if car-chooser_open }} car-chooser--open{{/if}} ">
     <div class="car-chooser__bar">
-        <div class="icon icon--arrow-down-hair car-chooser__icon  {{#if car-chooser_open }} car-chooser__icon--open {{/if}}"></div>
+        <div class="icon-font icon-font--arrow-down-hair car-chooser__icon  {{#if car-chooser_open }} car-chooser__icon--open {{/if}}"></div>
         <div class="car-chooser__header">
             <h4 class="car-chooser__title">{{ car-chooser_barTitle }}</h4>
             <span class="car-chooser__vin">{{ car-chooser_barVin }}</span>
@@ -37,7 +37,7 @@
                                   column--4-s
                                   {{#if ../car-chooser_lessThanThreeVehicles }} column--6-s{{/if}}"
                                 >
-                                    <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
+                                    <span class="car-chooser__dropdown-icon icon-font icon-font--arrow-right-thin"></span>
                                     <img src="{{ image }}" alt="{{ name }}" class="car-chooser__dropdown-image">
                                     <h4 class="car-chooser__dropdown-title">{{ name }}</h4>
                                     <p class="car-chooser__dropdown-vin">{{ vin }}</p>
@@ -68,7 +68,7 @@
                           column--4-s
                           {{#if ../car-chooser_lessThanThreeVehicles }} column--6-s{{/if}}"
                         >
-                            <span class="car-chooser__dropdown-icon icon icon--arrow-right-thin"></span>
+                            <span class="car-chooser__dropdown-icon icon-font icon-font--arrow-right-thin"></span>
                             <img src="{{ image }}" alt="{{ name }}" class="car-chooser__dropdown-image">
                             <h4 class="car-chooser__dropdown-title">{{ name }}</h4>
                             <p class="car-chooser__dropdown-vin">{{ vin }}</p>
