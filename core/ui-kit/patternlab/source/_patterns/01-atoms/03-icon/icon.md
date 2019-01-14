@@ -1,6 +1,6 @@
 ---
 title: Icon
-state: inprogress
+state: complete
 ---
 
 # UI Kit Core icon manual
