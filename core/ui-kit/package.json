@@ -82,7 +82,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "@myporsche/myservices-visual-regression-tester": "^2.0.1",
+    "@porsche/visual-regression-tester": "^1.0.0",
     "@porsche/plugin-node-sass-dependency-collector": "^1.0.0",
     "@types/es6-shim": "^0.31.37",
     "@types/jasmine": "^3.3.5",
@@ -124,6 +124,6 @@
     "typescript": "^3.2.2"
   },
   "publishConfig": {
-    "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/"
+    "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   }
 }

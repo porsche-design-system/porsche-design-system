@@ -28,7 +28,7 @@ Jira Board [On-Prem]: https://atlassianp01.web.porsche.biz/jira/secure/RapidBoar
 ##### Porsche UI Kit Core
 Pattern Lab [On-Prem] (Pattern Library): https://pcc-portal-e-ct.emea.porsche.biz/static/porsche-ui-kit/core/master/ (VPN required)
 GitHub [Cloud] (SCM): https://github.com/myporsche/pouikit-porsche-ui-kit (One Login User + GitHub User required)
-jFrog Artifactory [Cloud] (NPM Registry): https://porschedev.jfrog.io/porschedev/ (One Login User + Artifactory User required)
+jFrog Artifactory [Cloud] (NPM Registry): https://porscheui.jfrog.io (One Login User + Artifactory User required)
 
 InVision Enterprise [Cloud] (Component Sheets): https://porsche.invisionapp.com/d/main#/projects/prototypes/15200048 (Invision User required)
 InVision DSM [Cloud] (Sketch Library): https://porsche.invisionapp.com/dsm/porsche-ag/porsche-ui-kit (Invision User required)
@@ -36,7 +36,7 @@ InVision DSM [Cloud] (Sketch Library): https://porsche.invisionapp.com/dsm/porsc
 ##### Porsche UI Kit React
 Semantic UI React [Cloud] (Component Library): https://s3.eu-central-1.amazonaws.com/finder-bamboo-artifacts/react/packages/%40porsche/ui-kit-react-docs/dist/index.html#/introduction
 GitHub [Cloud] (SCM): https://github.com/myporsche/pouikit-porsche-ui-kit (One Login User + GitHub User required)
-jFrog Artifactory [Cloud] (NPM Registry): https://porschedev.jfrog.io/porschedev/ (One Login User + Artifactory User required)
+jFrog Artifactory [Cloud] (NPM Registry): https://porscheui.jfrog.io (One Login User + Artifactory User required)
 
 __Versioning (Starting from Version 1.0)__
 [Semantic Versioning](https://semver.org/)
