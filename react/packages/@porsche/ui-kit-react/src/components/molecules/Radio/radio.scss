@@ -1,0 +1,80 @@
+@import "../../../common";
+@import "./radio.setup.scss";
+
+.#{$global-class-prefix}radio {
+    $bem-block: &;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &__field {
+        position: absolute;
+        left: -9999px;
+    }
+
+    &__circle {
+        box-sizing: border-box;
+        display: block;
+        height: 40px;
+        width: 40px;
+        min-height: 40px;
+        min-width: 40px;
+        border: 2px solid $radio-circle-border-color;
+        border-radius: 50%;
+    }
+
+    &__label {
+        margin-right: 1.125rem;
+        margin-left: 1.125rem;
+        color: $radio-label-text-color;
+
+        &--single-line {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        // error
+        &--error {
+            color: $radio-text-color-error;
+        }
+    }
+
+    // checkbox is hovered, not checked and not disabled
+    &:hover &__field:not(:disabled) {
+        & ~ #{$bem-block}__label {
+            color: $radio-label-text-color-hover;
+        }
+    }
+
+    // checkbox is hovered, not checked and not disabled
+    &:focus &__field:not(:disabled) {
+        & ~ #{$bem-block}__label {
+            color: $radio-label-text-color-hover;
+        }
+    }
+
+    // checked
+    &__field:checked + #{$bem-block}__circle {
+        border: 12px solid $radio-circle-border-color-checked;
+    }
+
+    // disabled
+    &--disabled {
+        cursor: default;
+    }
+
+    &__field:disabled + #{$bem-block}__circle {
+        border-color: $radio-circle-border-color-disabled;
+    }
+
+    &__field:disabled ~ #{$bem-block}__label {
+        color: $radio-label-text-color-disabled;
+    }
+
+    // disabled and checked
+    &__field:disabled:checked ~ #{$bem-block}__label {
+        color: $radio-label-text-color-disabled-checked;
+    }
+}
