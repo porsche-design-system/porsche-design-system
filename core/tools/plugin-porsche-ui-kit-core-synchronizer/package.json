@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:porschedev/porsche-ui-kit.git"
+    "url": "ssh://git@github.com:myporsche/pouikit-porsche-ui-kit.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,6 +24,6 @@
     "rimraf": "2.6.2"
   },
   "publishConfig": {
-    "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/"
+    "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   }
 }
