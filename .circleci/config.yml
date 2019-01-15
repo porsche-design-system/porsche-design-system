@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Install npm dependencies
           command: |
-            echo "//porschedev.jfrog.io/porschedev/api/npm/public-npm/:_authToken=$ARTIFACTORY_TOKEN" >> ~/.npmrc
+            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> ~/.npmrc
             npm install
       - save_cache:
           paths:
