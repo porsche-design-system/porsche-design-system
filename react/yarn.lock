@@ -747,7 +747,7 @@
 
 "@iamstarkov/listr-update-renderer@0.4.1":
   version "0.4.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@iamstarkov/listr-update-renderer/-/listr-update-renderer-0.4.1.tgz#d7c48092a2dcf90fd672b6c8b458649cb350c77e"
+  resolved "https://registry.yarnpkg.com/@iamstarkov/listr-update-renderer/-/listr-update-renderer-0.4.1.tgz#d7c48092a2dcf90fd672b6c8b458649cb350c77e"
   integrity sha1-18SAkqLc+Q/WcrbItFhknLNQx34=
   dependencies:
     chalk "^1.1.3"
@@ -774,7 +774,7 @@
 
 "@porsche/ui-kit-core@0.16.0":
   version "0.16.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.16.0.tgz#4e08dd106dca59ee62513b2911ba5b98b84526ff"
+  resolved "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.16.0.tgz#4e08dd106dca59ee62513b2911ba5b98b84526ff"
   integrity sha1-TgjdEG3KWe5iUTspEbpbmLhFJv8=
 
 "@samverschueren/stream-to-observable@^0.3.0":
@@ -791,7 +791,7 @@
 
 "@types/enzyme@^3.1.15":
   version "3.1.15"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/enzyme/-/enzyme-3.1.15.tgz#fc9a9695ba9f90cd50c4967e64a8c66ec96913d1"
+  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.1.15.tgz#fc9a9695ba9f90cd50c4967e64a8c66ec96913d1"
   integrity sha1-/JqWlbqfkM1QxJZ+ZKjGbslpE9E=
   dependencies:
     "@types/cheerio" "*"
@@ -799,12 +799,12 @@
 
 "@types/history@*", "@types/history@^4.7.2":
   version "4.7.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
+  resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
   integrity sha1-DmcOolTVWSQbbus4lPh1SZHnMiA=
 
 "@types/jest@^23.3.10":
   version "23.3.10"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/jest/-/jest-23.3.10.tgz#4897974cc317bf99d4fe6af1efa15957fa9c94de"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.10.tgz#4897974cc317bf99d4fe6af1efa15957fa9c94de"
   integrity sha1-SJeXTMMXv5nU/mrx76FZV/qclN4=
 
 "@types/lorem-ipsum@^1.0.2":
@@ -824,19 +824,19 @@
 
 "@types/prop-types@^15.5.8":
   version "15.5.8"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/prop-types/-/prop-types-15.5.8.tgz#8ae4e0ea205fe95c3901a5a1df7f66495e3a56ce"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.8.tgz#8ae4e0ea205fe95c3901a5a1df7f66495e3a56ce"
   integrity sha1-iuTg6iBf6Vw5AaWh339mSV46Vs4=
 
 "@types/react-dom@^16.0.11":
   version "16.0.11"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-dom/-/react-dom-16.0.11.tgz#bd10ccb0d9260343f4b9a49d4f7a8330a5c1f081"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.11.tgz#bd10ccb0d9260343f4b9a49d4f7a8330a5c1f081"
   integrity sha1-vRDMsNkmA0P0uaSdT3qDMKXB8IE=
   dependencies:
     "@types/react" "*"
 
 "@types/react-hot-loader@^4.1.0":
   version "4.1.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-hot-loader/-/react-hot-loader-4.1.0.tgz#8e072b44331ad0182918228c5d2bf514646760de"
+  resolved "https://registry.yarnpkg.com/@types/react-hot-loader/-/react-hot-loader-4.1.0.tgz#8e072b44331ad0182918228c5d2bf514646760de"
   integrity sha1-jgcrRDMa0BgpGCKMXSv1FGRnYN4=
   dependencies:
     "@types/node" "*"
@@ -844,19 +844,19 @@
 
 "@types/react-intl@^2.3.14":
   version "2.3.14"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-intl/-/react-intl-2.3.14.tgz#dbb973c20908a8e7468974a329df35c256cb459d"
+  resolved "https://registry.yarnpkg.com/@types/react-intl/-/react-intl-2.3.14.tgz#dbb973c20908a8e7468974a329df35c256cb459d"
   integrity sha1-27lzwgkIqOdGiXSjKd81wlbLRZ0=
 
 "@types/react-modal@^3.6.0":
   version "3.6.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-modal/-/react-modal-3.6.0.tgz#57e7c74f2b39b1a90116bdb30aeaac89e5e1866a"
+  resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.6.0.tgz#57e7c74f2b39b1a90116bdb30aeaac89e5e1866a"
   integrity sha1-V+fHTys5sakBFr2zCuqsieXhhmo=
   dependencies:
     "@types/react" "*"
 
 "@types/react-redux@^5.0.14":
   version "5.0.21"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-redux/-/react-redux-5.0.21.tgz#98a3a371dfc22c894889f660d7515717639d20f4"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.21.tgz#98a3a371dfc22c894889f660d7515717639d20f4"
   integrity sha1-mKOjcd/CLIlIifZg11FXF2OdIPQ=
   dependencies:
     "@types/react" "*"
@@ -864,14 +864,14 @@
 
 "@types/react-responsive@^3.0.2":
   version "3.0.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-responsive/-/react-responsive-3.0.2.tgz#428fdaf12c28df010508d3374c71e027b1989d8b"
+  resolved "https://registry.yarnpkg.com/@types/react-responsive/-/react-responsive-3.0.2.tgz#428fdaf12c28df010508d3374c71e027b1989d8b"
   integrity sha1-Qo/a8Swo3wEFCNM3THHgJ7GYnYs=
   dependencies:
     "@types/react" "*"
 
 "@types/react-router-dom@^4.3.1":
   version "4.3.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-router-dom/-/react-router-dom-4.3.1.tgz#71fe2918f8f60474a891520def40a63997dafe04"
+  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.3.1.tgz#71fe2918f8f60474a891520def40a63997dafe04"
   integrity sha1-cf4pGPj2BHSokVIN70CmOZfa/gQ=
   dependencies:
     "@types/history" "*"
@@ -880,7 +880,7 @@
 
 "@types/react-router-redux@^5.0.17":
   version "5.0.17"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-router-redux/-/react-router-redux-5.0.17.tgz#f7a3df9b20e52e199b28d12ef94ddcb8868df9c3"
+  resolved "https://registry.yarnpkg.com/@types/react-router-redux/-/react-router-redux-5.0.17.tgz#f7a3df9b20e52e199b28d12ef94ddcb8868df9c3"
   integrity sha1-96PfmyDlLhmbKNEu+U3cuIaN+cM=
   dependencies:
     "@types/history" "*"
@@ -890,7 +890,7 @@
 
 "@types/react-router@*", "@types/react-router@^4.4.3":
   version "4.4.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react-router/-/react-router-4.4.3.tgz#ea68b4021cb576866f83365b2201411537423d50"
+  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.4.3.tgz#ea68b4021cb576866f83365b2201411537423d50"
   integrity sha1-6mi0Ahy1doZvgzZbIgFBFTdCPVA=
   dependencies:
     "@types/history" "*"
@@ -905,7 +905,7 @@
 
 "@types/react@*", "@types/react@^16.7.17":
   version "16.7.17"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/react/-/react-16.7.17.tgz#3242e796a1ffbba4f49eae5915a67f4c079504e9"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.17.tgz#3242e796a1ffbba4f49eae5915a67f4c079504e9"
   integrity sha1-MkLnlqH/u6T0nq5ZFaZ/TAeVBOk=
   dependencies:
     "@types/prop-types" "*"
@@ -920,12 +920,12 @@
 
 "@types/redux-actions@^2.2.3":
   version "2.3.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/redux-actions/-/redux-actions-2.3.1.tgz#b574569d76df9a0963c421bf509bcf2d0c6b17d3"
+  resolved "https://registry.yarnpkg.com/@types/redux-actions/-/redux-actions-2.3.1.tgz#b574569d76df9a0963c421bf509bcf2d0c6b17d3"
   integrity sha1-tXRWnXbfmgljxCG/UJvPLQxrF9M=
 
 "@types/redux-form@^7.0.13":
   version "7.4.13"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/redux-form/-/redux-form-7.4.13.tgz#b6f0e38f773f39fbef50d19254f7f0dcb1db537d"
+  resolved "https://registry.yarnpkg.com/@types/redux-form/-/redux-form-7.4.13.tgz#b6f0e38f773f39fbef50d19254f7f0dcb1db537d"
   integrity sha1-tvDjj3c/OfvvUNGSVPfw3LHbU30=
   dependencies:
     "@types/react" "*"
@@ -933,21 +933,21 @@
 
 "@types/redux-logger@^3.0.5":
   version "3.0.6"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/redux-logger/-/redux-logger-3.0.6.tgz#4cf9d5b596b576b030a4bb671547f0ab63f81a73"
+  resolved "https://registry.yarnpkg.com/@types/redux-logger/-/redux-logger-3.0.6.tgz#4cf9d5b596b576b030a4bb671547f0ab63f81a73"
   integrity sha1-TPnVtZa1drAwpLtnFUfwq2P4GnM=
   dependencies:
     redux "^3.6.0"
 
 "@types/redux@^3.6.0":
   version "3.6.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/redux/-/redux-3.6.0.tgz#f1ebe1e5411518072e4fdfca5c76e16e74c1399a"
+  resolved "https://registry.yarnpkg.com/@types/redux/-/redux-3.6.0.tgz#f1ebe1e5411518072e4fdfca5c76e16e74c1399a"
   integrity sha1-8evh5UEVGAcuT9/KXHbhbnTBOZo=
   dependencies:
     redux "*"
 
 "@types/reselect@^2.2.0":
   version "2.2.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@types/reselect/-/reselect-2.2.0.tgz#c667206cfdc38190e1d379babe08865b2288575f"
+  resolved "https://registry.yarnpkg.com/@types/reselect/-/reselect-2.2.0.tgz#c667206cfdc38190e1d379babe08865b2288575f"
   integrity sha1-xmcgbP3DgZDh03m6vgiGWyKIV18=
   dependencies:
     reselect "*"
@@ -1204,7 +1204,7 @@ ajv@^6.1.0:
 
 ajv@^6.6.1:
   version "6.6.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/ajv/-/ajv-6.6.2.tgz#caceccf474bf3fc3ce3b147443711a24063cc30d"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.2.tgz#caceccf474bf3fc3ce3b147443711a24063cc30d"
   integrity sha1-ys7M9HS/P8POOxR0Q3EaJAY8ww0=
   dependencies:
     fast-deep-equal "^2.0.1"
@@ -1233,7 +1233,7 @@ amdefine@>=0.0.4:
 
 anchor-js@^4.1.1:
   version "4.1.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/anchor-js/-/anchor-js-4.1.1.tgz#943b7605e47b3c663e91e82879b682f2e186a5b1"
+  resolved "https://registry.yarnpkg.com/anchor-js/-/anchor-js-4.1.1.tgz#943b7605e47b3c663e91e82879b682f2e186a5b1"
   integrity sha1-lDt2BeR7PGY+kegoebaC8uGGpbE=
 
 ansi-colors@^1.0.1:
@@ -1665,7 +1665,7 @@ autoprefixer@^6.3.1:
 
 autoprefixer@^9.0.0, autoprefixer@^9.4.3:
   version "9.4.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/autoprefixer/-/autoprefixer-9.4.3.tgz#c97384a8fd80477b78049163a91bbc725d9c41d9"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.4.3.tgz#c97384a8fd80477b78049163a91bbc725d9c41d9"
   integrity sha1-yXOEqP2AR3t4BJFjqRu8cl2cQdk=
   dependencies:
     browserslist "^4.3.6"
@@ -2163,7 +2163,7 @@ browserslist@^4.1.0:
 
 browserslist@^4.3.6:
   version "4.3.6"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/browserslist/-/browserslist-4.3.6.tgz#0f9d9081afc66b36f477c6bdf3813f784f42396a"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.3.6.tgz#0f9d9081afc66b36f477c6bdf3813f784f42396a"
   integrity sha1-D52Qga/Gazb0d8a984E/eE9COWo=
   dependencies:
     caniuse-lite "^1.0.30000921"
@@ -2274,7 +2274,7 @@ call-me-maybe@^1.0.1:
 
 caller-callsite@^2.0.0:
   version "2.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/caller-callsite/-/caller-callsite-2.0.0.tgz#847e0fce0a223750a9a027c54b33731ad3154134"
+  resolved "https://registry.yarnpkg.com/caller-callsite/-/caller-callsite-2.0.0.tgz#847e0fce0a223750a9a027c54b33731ad3154134"
   integrity sha1-hH4PzgoiN1CpoCfFSzNzGtMVQTQ=
   dependencies:
     callsites "^2.0.0"
@@ -2288,7 +2288,7 @@ caller-path@^0.1.0:
 
 caller-path@^2.0.0:
   version "2.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/caller-path/-/caller-path-2.0.0.tgz#468f83044e369ab2010fac5f06ceee15bb2cb1f4"
+  resolved "https://registry.yarnpkg.com/caller-path/-/caller-path-2.0.0.tgz#468f83044e369ab2010fac5f06ceee15bb2cb1f4"
   integrity sha1-Ro+DBE42mrIBD6xfBs7uFbsssfQ=
   dependencies:
     caller-callsite "^2.0.0"
@@ -2370,7 +2370,7 @@ caniuse-lite@^1.0.30000898:
 
 caniuse-lite@^1.0.30000921:
   version "1.0.30000921"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/caniuse-lite/-/caniuse-lite-1.0.30000921.tgz#7a607c1623444b22351d834e093aedda3c42fbe8"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000921.tgz#7a607c1623444b22351d834e093aedda3c42fbe8"
   integrity sha1-emB8FiNESyI1HYNOCTrt2jxC++g=
 
 capture-exit@^1.2.0:
@@ -2964,7 +2964,7 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
 
 cosmiconfig@5.0.6:
   version "5.0.6"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/cosmiconfig/-/cosmiconfig-5.0.6.tgz#dca6cf680a0bd03589aff684700858c81abeeb39"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-5.0.6.tgz#dca6cf680a0bd03589aff684700858c81abeeb39"
   integrity sha1-3KbPaAoL0DWJr/aEcAhYyBq+6zk=
   dependencies:
     is-directory "^0.3.1"
@@ -2983,7 +2983,7 @@ cosmiconfig@^4.0.0:
 
 cosmiconfig@^5.0.0, cosmiconfig@^5.0.7:
   version "5.0.7"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/cosmiconfig/-/cosmiconfig-5.0.7.tgz#39826b292ee0d78eda137dfa3173bd1c21a43b04"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-5.0.7.tgz#39826b292ee0d78eda137dfa3173bd1c21a43b04"
   integrity sha1-OYJrKS7g147aE336MXO9HCGkOwQ=
   dependencies:
     import-fresh "^2.0.0"
@@ -3041,7 +3041,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
 
 create-react-context@^0.2.2:
   version "0.2.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
+  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
   integrity sha1-nsFAppFKIu8EuLCbd3HeiVZ8tvM=
   dependencies:
     fbjs "^0.8.0"
@@ -3180,7 +3180,7 @@ cssesc@^0.1.0:
 
 cssesc@^1.0.1:
   version "1.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/cssesc/-/cssesc-1.0.1.tgz#ef7bd8d0229ed6a3a7051ff7771265fe7330e0a8"
+  resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-1.0.1.tgz#ef7bd8d0229ed6a3a7051ff7771265fe7330e0a8"
   integrity sha1-73vY0CKe1qOnBR/3dxJl/nMw4Kg=
 
 cssnano@^3.10.0:
@@ -3317,7 +3317,7 @@ debug@^3.0.1, debug@^3.1.0:
 
 debug@^4.0.0, debug@^4.0.1:
   version "4.1.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
   integrity sha1-NzaHv/pnizixzZH4YbY4UANd3Ic=
   dependencies:
     ms "^2.1.1"
@@ -3742,7 +3742,7 @@ electron-to-chromium@^1.3.81:
 
 electron-to-chromium@^1.3.92:
   version "1.3.94"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/electron-to-chromium/-/electron-to-chromium-1.3.94.tgz#896dba14f6fefb431295b90543874925ee0cd46e"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.94.tgz#896dba14f6fefb431295b90543874925ee0cd46e"
   integrity sha1-iW26FPb++0MSlbkFQ4dJJe4M1G4=
 
 elegant-spinner@^1.0.1:
@@ -3817,7 +3817,7 @@ entities@^1.1.1, entities@~1.1.1:
 
 enzyme-adapter-react-16@^1.7.1:
   version "1.7.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.7.1.tgz#c37c4cb0fd75e88a063154a7a88096474914496a"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.7.1.tgz#c37c4cb0fd75e88a063154a7a88096474914496a"
   integrity sha1-w3xMsP116IoGMVSnqICWR0kUSWo=
   dependencies:
     enzyme-adapter-utils "^1.9.0"
@@ -3830,7 +3830,7 @@ enzyme-adapter-react-16@^1.7.1:
 
 enzyme-adapter-utils@^1.9.0:
   version "1.9.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/enzyme-adapter-utils/-/enzyme-adapter-utils-1.9.0.tgz#3997c20f3387fdcd932b155b3740829ea10aa86c"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-utils/-/enzyme-adapter-utils-1.9.0.tgz#3997c20f3387fdcd932b155b3740829ea10aa86c"
   integrity sha1-OZfCDzOH/c2TKxVbN0CCnqEKqGw=
   dependencies:
     function.prototype.name "^1.1.0"
@@ -3840,7 +3840,7 @@ enzyme-adapter-utils@^1.9.0:
 
 enzyme-matchers@^7.0.1:
   version "7.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/enzyme-matchers/-/enzyme-matchers-7.0.1.tgz#02e8c3b2bc80a32f19015d058e9a971329519652"
+  resolved "https://registry.yarnpkg.com/enzyme-matchers/-/enzyme-matchers-7.0.1.tgz#02e8c3b2bc80a32f19015d058e9a971329519652"
   integrity sha1-AujDsryAoy8ZAV0FjpqXEylRllI=
   dependencies:
     circular-json-es6 "^2.0.1"
@@ -3855,7 +3855,7 @@ enzyme-to-json@^3.3.0:
 
 enzyme@^3.8.0:
   version "3.8.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/enzyme/-/enzyme-3.8.0.tgz#646d2d5d0798cb98fdec39afcee8a53237b47ad5"
+  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.8.0.tgz#646d2d5d0798cb98fdec39afcee8a53237b47ad5"
   integrity sha1-ZG0tXQeYy5j97DmvzuilMje0etU=
   dependencies:
     array.prototype.flat "^1.2.1"
@@ -4226,7 +4226,7 @@ execa@^0.7.0:
 
 execa@^1.0.0:
   version "1.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
   integrity sha1-xiNqW7TfbW8V6I5/AXeYIWdJ3dg=
   dependencies:
     cross-spawn "^6.0.0"
@@ -4821,7 +4821,7 @@ functional-red-black-tree@^1.0.1:
 
 g-status@^2.0.2:
   version "2.0.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/g-status/-/g-status-2.0.2.tgz#270fd32119e8fc9496f066fe5fe88e0a6bc78b97"
+  resolved "https://registry.yarnpkg.com/g-status/-/g-status-2.0.2.tgz#270fd32119e8fc9496f066fe5fe88e0a6bc78b97"
   integrity sha1-Jw/TIRno/JSW8Gb+X+iOCmvHi5c=
   dependencies:
     arrify "^1.0.1"
@@ -4876,7 +4876,7 @@ get-stream@^3.0.0:
 
 get-stream@^4.0.0:
   version "4.1.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
+  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
   integrity sha1-wbJVV189wh1Zv8ec09K0axw6VLU=
   dependencies:
     pump "^3.0.0"
@@ -5084,7 +5084,7 @@ glogg@^1.0.0:
 
 gonzales-pe@^4.2.3:
   version "4.2.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/gonzales-pe/-/gonzales-pe-4.2.3.tgz#41091703625433285e0aee3aa47829fc1fbeb6f2"
+  resolved "https://registry.yarnpkg.com/gonzales-pe/-/gonzales-pe-4.2.3.tgz#41091703625433285e0aee3aa47829fc1fbeb6f2"
   integrity sha1-QQkXA2JUMyheCu46pHgp/B++tvI=
   dependencies:
     minimist "1.1.x"
@@ -5101,7 +5101,7 @@ growly@^1.3.0:
 
 gud@^1.0.0:
   version "1.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
+  resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
   integrity sha1-pIlYGxfmpwvsqavjrlfeekmYUsA=
 
 gulp-cli@^2.0.0:
@@ -5303,7 +5303,7 @@ history@^4.7.2:
 
 history@^4.8.0-beta.0:
   version "4.8.0-beta.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/history/-/history-4.8.0-beta.0.tgz#8b48c1354ac290341c0d73dd33c763bd140531f4"
+  resolved "https://registry.yarnpkg.com/history/-/history-4.8.0-beta.0.tgz#8b48c1354ac290341c0d73dd33c763bd140531f4"
   integrity sha1-i0jBNUrCkDQcDXPdM8djvRQFMfQ=
   dependencies:
     "@babel/runtime" "^7.1.2"
@@ -5329,12 +5329,12 @@ hoist-non-react-statics@^2.5.0:
 
 hoist-non-react-statics@^2.5.4, hoist-non-react-statics@^2.5.5:
   version "2.5.5"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
   integrity sha1-xZA89AnA39kI84jmGdhrnBF0y0c=
 
 hoist-non-react-statics@^3.1.0:
   version "3.2.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/hoist-non-react-statics/-/hoist-non-react-statics-3.2.1.tgz#c09c0555c84b38a7ede6912b61efddafd6e75e1e"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.2.1.tgz#c09c0555c84b38a7ede6912b61efddafd6e75e1e"
   integrity sha1-wJwFVchLOKft5pErYe/dr9bnXh4=
   dependencies:
     react-is "^16.3.2"
@@ -5509,7 +5509,7 @@ https-browserify@^1.0.0:
 
 husky@^1.3.0:
   version "1.3.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/husky/-/husky-1.3.0.tgz#fbb97b5e52739d945fd86c3bf92def0ea60175c4"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-1.3.0.tgz#fbb97b5e52739d945fd86c3bf92def0ea60175c4"
   integrity sha1-+7l7XlJznZRf2Gw7+S3vDqYBdcQ=
   dependencies:
     cosmiconfig "^5.0.7"
@@ -5576,7 +5576,7 @@ ignore@^3.3.3, ignore@^3.3.5:
 
 ignore@^5.0.4:
   version "5.0.4"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/ignore/-/ignore-5.0.4.tgz#33168af4a21e99b00c5d41cbadb6a6cb49903a45"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.0.4.tgz#33168af4a21e99b00c5d41cbadb6a6cb49903a45"
   integrity sha1-MxaK9KIembAMXUHLrbamy0mQOkU=
 
 import-cwd@^2.0.0:
@@ -5588,7 +5588,7 @@ import-cwd@^2.0.0:
 
 import-fresh@^2.0.0:
   version "2.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/import-fresh/-/import-fresh-2.0.0.tgz#d81355c15612d386c61f9ddd3922d4304822a546"
+  resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-2.0.0.tgz#d81355c15612d386c61f9ddd3922d4304822a546"
   integrity sha1-2BNVwVYS04bGH53dOSLUMEgipUY=
   dependencies:
     caller-path "^2.0.0"
@@ -5603,7 +5603,7 @@ import-from@^2.1.0:
 
 import-lazy@^3.1.0:
   version "3.1.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/import-lazy/-/import-lazy-3.1.0.tgz#891279202c8a2280fdbd6674dbd8da1a1dfc67cc"
+  resolved "https://registry.yarnpkg.com/import-lazy/-/import-lazy-3.1.0.tgz#891279202c8a2280fdbd6674dbd8da1a1dfc67cc"
   integrity sha1-iRJ5ICyKIoD9vWZ029jaGh38Z8w=
 
 import-local@^1.0.0:
@@ -5737,7 +5737,7 @@ intl-messageformat@^2.0.0, intl-messageformat@^2.1.0:
 
 intl-relativeformat@^2.1.0:
   version "2.1.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/intl-relativeformat/-/intl-relativeformat-2.1.0.tgz#010f1105802251f40ac47d0e3e1a201348a255df"
+  resolved "https://registry.yarnpkg.com/intl-relativeformat/-/intl-relativeformat-2.1.0.tgz#010f1105802251f40ac47d0e3e1a201348a255df"
   integrity sha1-AQ8RBYAiUfQKxH0OPhogE0iiVd8=
   dependencies:
     intl-messageformat "^2.0.0"
@@ -6440,7 +6440,7 @@ jest-each@^23.6.0:
 
 jest-environment-enzyme@^7.0.1:
   version "7.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/jest-environment-enzyme/-/jest-environment-enzyme-7.0.1.tgz#03c5bdf40577be2fd117863928a05a881dd38eb2"
+  resolved "https://registry.yarnpkg.com/jest-environment-enzyme/-/jest-environment-enzyme-7.0.1.tgz#03c5bdf40577be2fd117863928a05a881dd38eb2"
   integrity sha1-A8W99AV3vi/RF4Y5KKBaiB3TjrI=
   dependencies:
     jest-environment-jsdom "^22.4.1"
@@ -6473,7 +6473,7 @@ jest-environment-node@^23.4.0:
 
 jest-enzyme@^7.0.1:
   version "7.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/jest-enzyme/-/jest-enzyme-7.0.1.tgz#f6c82df31b19ad520300961fa89b2c40c7026745"
+  resolved "https://registry.yarnpkg.com/jest-enzyme/-/jest-enzyme-7.0.1.tgz#f6c82df31b19ad520300961fa89b2c40c7026745"
   integrity sha1-9sgt8xsZrVIDAJYfqJssQMcCZ0U=
   dependencies:
     enzyme-matchers "^7.0.1"
@@ -6908,7 +6908,7 @@ jsx-ast-utils@^2.0.0, jsx-ast-utils@^2.0.1:
 
 just-curry-it@^3.1.0:
   version "3.1.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/just-curry-it/-/just-curry-it-3.1.0.tgz#ab59daed308a58b847ada166edd0a2d40766fbc5"
+  resolved "https://registry.yarnpkg.com/just-curry-it/-/just-curry-it-3.1.0.tgz#ab59daed308a58b847ada166edd0a2d40766fbc5"
   integrity sha1-q1na7TCKWLhHraFm7dCi1Adm+8U=
 
 just-debounce@^1.0.0:
@@ -6957,7 +6957,7 @@ kleur@^2.0.1:
 
 known-css-properties@^0.10.0:
   version "0.10.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/known-css-properties/-/known-css-properties-0.10.0.tgz#8378a8921e6c815ecc47095744a8900af63d577d"
+  resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.10.0.tgz#8378a8921e6c815ecc47095744a8900af63d577d"
   integrity sha1-g3iokh5sgV7MRwlXRKiQCvY9V30=
 
 last-run@^1.1.0:
@@ -7035,7 +7035,7 @@ liftoff@^2.5.0:
 
 lint-staged@^8.1.0:
   version "8.1.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/lint-staged/-/lint-staged-8.1.0.tgz#dbc3ae2565366d8f20efb9f9799d076da64863f2"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-8.1.0.tgz#dbc3ae2565366d8f20efb9f9799d076da64863f2"
   integrity sha1-28OuJWU2bY8g77n5eZ0HbaZIY/I=
   dependencies:
     "@iamstarkov/listr-update-renderer" "0.4.1"
@@ -7071,7 +7071,7 @@ listr-silent-renderer@^1.1.1:
 
 listr-update-renderer@^0.5.0:
   version "0.5.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/listr-update-renderer/-/listr-update-renderer-0.5.0.tgz#4ea8368548a7b8aecb7e06d8c95cb45ae2ede6a2"
+  resolved "https://registry.yarnpkg.com/listr-update-renderer/-/listr-update-renderer-0.5.0.tgz#4ea8368548a7b8aecb7e06d8c95cb45ae2ede6a2"
   integrity sha1-Tqg2hUinuK7LfgbYyVy0WuLt5qI=
   dependencies:
     chalk "^1.1.3"
@@ -7085,7 +7085,7 @@ listr-update-renderer@^0.5.0:
 
 listr-verbose-renderer@^0.5.0:
   version "0.5.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/listr-verbose-renderer/-/listr-verbose-renderer-0.5.0.tgz#f1132167535ea4c1261102b9f28dac7cba1e03db"
+  resolved "https://registry.yarnpkg.com/listr-verbose-renderer/-/listr-verbose-renderer-0.5.0.tgz#f1132167535ea4c1261102b9f28dac7cba1e03db"
   integrity sha1-8RMhZ1NepMEmEQK58o2sfLoeA9s=
   dependencies:
     chalk "^2.4.1"
@@ -7095,7 +7095,7 @@ listr-verbose-renderer@^0.5.0:
 
 listr@^0.14.2:
   version "0.14.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/listr/-/listr-0.14.3.tgz#2fea909604e434be464c50bddba0d496928fa586"
+  resolved "https://registry.yarnpkg.com/listr/-/listr-0.14.3.tgz#2fea909604e434be464c50bddba0d496928fa586"
   integrity sha1-L+qQlgTkNL5GTFC926DUlpKPpYY=
   dependencies:
     "@samverschueren/stream-to-observable" "^0.3.0"
@@ -7181,7 +7181,7 @@ locate-path@^3.0.0:
 
 lodash-es@^4.17.10:
   version "4.17.11"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/lodash-es/-/lodash-es-4.17.11.tgz#145ab4a7ac5c5e52a3531fb4f310255a152b4be0"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.11.tgz#145ab4a7ac5c5e52a3531fb4f310255a152b4be0"
   integrity sha1-FFq0p6xcXlKjUx+08xAlWhUrS+A=
 
 lodash-es@^4.2.1:
@@ -7336,7 +7336,7 @@ lodash.memoize@^4.1.2:
 
 lodash.merge@^4.6.1:
   version "4.6.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
   integrity sha1-rcJdnLmbk5HFliTzefu6YNcRHVQ=
 
 lodash.mergewith@^4.6.0:
@@ -7371,7 +7371,7 @@ lodash@^4.0.0, lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.3, 
 
 lodash@^4.17.11:
   version "4.17.11"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha1-s56mIp72B+zYniyN8SU2iRysm40=
 
 log-symbols@^1.0.2:
@@ -7390,7 +7390,7 @@ log-symbols@^2.0.0, log-symbols@^2.2.0:
 
 log-update@^2.3.0:
   version "2.3.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/log-update/-/log-update-2.3.0.tgz#88328fd7d1ce7938b29283746f0b1bc126b24708"
+  resolved "https://registry.yarnpkg.com/log-update/-/log-update-2.3.0.tgz#88328fd7d1ce7938b29283746f0b1bc126b24708"
   integrity sha1-iDKP19HOeTiykoN0bwsbwSayRwg=
   dependencies:
     ansi-escapes "^3.0.0"
@@ -7538,7 +7538,7 @@ matchdep@^2.0.0:
 
 matcher@^1.0.0:
   version "1.1.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/matcher/-/matcher-1.1.1.tgz#51d8301e138f840982b338b116bb0c09af62c1c2"
+  resolved "https://registry.yarnpkg.com/matcher/-/matcher-1.1.1.tgz#51d8301e138f840982b338b116bb0c09af62c1c2"
   integrity sha1-UdgwHhOPhAmCszixFrsMCa9iwcI=
   dependencies:
     escape-string-regexp "^1.0.4"
@@ -7628,7 +7628,7 @@ meow@^3.7.0:
 
 meow@^5.0.0:
   version "5.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/meow/-/meow-5.0.0.tgz#dfc73d63a9afc714a5e371760eb5c88b91078aa4"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-5.0.0.tgz#dfc73d63a9afc714a5e371760eb5c88b91078aa4"
   integrity sha1-38c9Y6mvxxSl43F2DrXIi5EHiqQ=
   dependencies:
     camelcase-keys "^4.0.0"
@@ -7891,7 +7891,7 @@ ms@2.0.0:
 
 ms@^2.1.1:
   version "2.1.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha1-MKWGTrPrsKZvLr5tcnrwagnYbgo=
 
 multicast-dns-service-types@^1.1.0:
@@ -8096,14 +8096,14 @@ node-releases@^1.0.0-alpha.15:
 
 node-releases@^1.1.1:
   version "1.1.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/node-releases/-/node-releases-1.1.1.tgz#8fff8aea1cfcad1fb4205f805149054fbf73cafd"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.1.tgz#8fff8aea1cfcad1fb4205f805149054fbf73cafd"
   integrity sha1-j/+K6hz8rR+0IF+AUUkFT79zyv0=
   dependencies:
     semver "^5.3.0"
 
 node-sass-chokidar@^1.3.4:
   version "1.3.4"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/node-sass-chokidar/-/node-sass-chokidar-1.3.4.tgz#2f4539d13b14a0444b3354d4664d660ce9697fdc"
+  resolved "https://registry.yarnpkg.com/node-sass-chokidar/-/node-sass-chokidar-1.3.4.tgz#2f4539d13b14a0444b3354d4664d660ce9697fdc"
   integrity sha1-L0U50TsUoERLM1TUZk1mDOlpf9w=
   dependencies:
     async-foreach "^0.1.3"
@@ -8117,7 +8117,7 @@ node-sass-chokidar@^1.3.4:
 
 node-sass-tilde-importer@^1.0.2:
   version "1.0.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/node-sass-tilde-importer/-/node-sass-tilde-importer-1.0.2.tgz#1a15105c153f648323b4347693fdb0f331bad1ce"
+  resolved "https://registry.yarnpkg.com/node-sass-tilde-importer/-/node-sass-tilde-importer-1.0.2.tgz#1a15105c153f648323b4347693fdb0f331bad1ce"
   integrity sha1-GhUQXBU/ZIMjtDR2k/2w8zG60c4=
   dependencies:
     find-parent-dir "^0.3.0"
@@ -8591,7 +8591,7 @@ p-map@^1.1.1:
 
 p-map@^2.0.0:
   version "2.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/p-map/-/p-map-2.0.0.tgz#be18c5a5adeb8e156460651421aceca56c213a50"
+  resolved "https://registry.yarnpkg.com/p-map/-/p-map-2.0.0.tgz#be18c5a5adeb8e156460651421aceca56c213a50"
   integrity sha1-vhjFpa3rjhVkYGUUIazspWwhOlA=
 
 p-try@^1.0.0:
@@ -8650,7 +8650,7 @@ parse-entities@^1.0.2:
 
 parse-entities@^1.1.0:
   version "1.2.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/parse-entities/-/parse-entities-1.2.0.tgz#9deac087661b2e36814153cb78d7e54a4c5fd6f4"
+  resolved "https://registry.yarnpkg.com/parse-entities/-/parse-entities-1.2.0.tgz#9deac087661b2e36814153cb78d7e54a4c5fd6f4"
   integrity sha1-nerAh2YbLjaBQVPLeNflSkxf1vQ=
   dependencies:
     character-entities "^1.0.0"
@@ -8765,7 +8765,7 @@ path-parse@^1.0.5:
 
 path-parse@^1.0.6:
   version "1.0.6"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
   integrity sha1-1i27VnlAXXLEc37FhgDp3c8G0kw=
 
 path-root-regex@^0.1.0:
@@ -8843,7 +8843,7 @@ pify@^3.0.0:
 
 pify@^4.0.0:
   version "4.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
+  resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha1-SyzSXFDVmHNcUCkiJP2MbfQeMjE=
 
 pinkie-promise@^2.0.0:
@@ -8946,7 +8946,7 @@ postcss-calc@^5.2.0:
 
 postcss-cli@^6.0.1:
   version "6.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-cli/-/postcss-cli-6.0.1.tgz#24c990f9313c7b21b2c4b2301c8f21591240c23f"
+  resolved "https://registry.yarnpkg.com/postcss-cli/-/postcss-cli-6.0.1.tgz#24c990f9313c7b21b2c4b2301c8f21591240c23f"
   integrity sha1-JMmQ+TE8eyGyxLIwHI8hWRJAwj8=
   dependencies:
     chalk "^2.1.0"
@@ -9024,14 +9024,14 @@ postcss-filter-plugins@^2.0.0:
 
 postcss-html@^0.34.0:
   version "0.34.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-html/-/postcss-html-0.34.0.tgz#9bfd637ad8c3d3a43625b5ef844dc804b3370868"
+  resolved "https://registry.yarnpkg.com/postcss-html/-/postcss-html-0.34.0.tgz#9bfd637ad8c3d3a43625b5ef844dc804b3370868"
   integrity sha1-m/1jetjD06Q2JbXvhE3IBLM3CGg=
   dependencies:
     htmlparser2 "^3.9.2"
 
 postcss-jsx@^0.35.0:
   version "0.35.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-jsx/-/postcss-jsx-0.35.0.tgz#1d6cb82393994cdc7e9aa421648e3f0f3f98209b"
+  resolved "https://registry.yarnpkg.com/postcss-jsx/-/postcss-jsx-0.35.0.tgz#1d6cb82393994cdc7e9aa421648e3f0f3f98209b"
   integrity sha1-HWy4I5OZTNx+mqQhZI4/Dz+YIJs=
   dependencies:
     "@babel/core" "^7.1.2"
@@ -9040,7 +9040,7 @@ postcss-jsx@^0.35.0:
 
 postcss-less@^3.1.0:
   version "3.1.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-less/-/postcss-less-3.1.0.tgz#0e14a80206b452f44d3a09d082fa72645e8168cc"
+  resolved "https://registry.yarnpkg.com/postcss-less/-/postcss-less-3.1.0.tgz#0e14a80206b452f44d3a09d082fa72645e8168cc"
   integrity sha1-DhSoAga0UvRNOgnQgvpyZF6BaMw=
   dependencies:
     postcss "^7.0.3"
@@ -9055,7 +9055,7 @@ postcss-load-config@^2.0.0:
 
 postcss-markdown@^0.34.0:
   version "0.34.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-markdown/-/postcss-markdown-0.34.0.tgz#7a043e6eee3ab846a4cefe3ab43d141038e2da79"
+  resolved "https://registry.yarnpkg.com/postcss-markdown/-/postcss-markdown-0.34.0.tgz#7a043e6eee3ab846a4cefe3ab43d141038e2da79"
   integrity sha1-egQ+bu46uEakzv46tD0UEDji2nk=
   dependencies:
     remark "^9.0.0"
@@ -9217,7 +9217,7 @@ postcss-reduce-transforms@^1.0.3:
 
 postcss-reporter@^6.0.0:
   version "6.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-reporter/-/postcss-reporter-6.0.0.tgz#44c873129d8c029a430b6d2186210d79c8de88b8"
+  resolved "https://registry.yarnpkg.com/postcss-reporter/-/postcss-reporter-6.0.0.tgz#44c873129d8c029a430b6d2186210d79c8de88b8"
   integrity sha1-RMhzEp2MAppDC20hhiENecjeiLg=
   dependencies:
     chalk "^2.0.1"
@@ -9232,14 +9232,14 @@ postcss-resolve-nested-selector@^0.1.1:
 
 postcss-safe-parser@^4.0.0:
   version "4.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-safe-parser/-/postcss-safe-parser-4.0.1.tgz#8756d9e4c36fdce2c72b091bbc8ca176ab1fcdea"
+  resolved "https://registry.yarnpkg.com/postcss-safe-parser/-/postcss-safe-parser-4.0.1.tgz#8756d9e4c36fdce2c72b091bbc8ca176ab1fcdea"
   integrity sha1-h1bZ5MNv3OLHKwkbvIyhdqsfzeo=
   dependencies:
     postcss "^7.0.0"
 
 postcss-sass@^0.3.5:
   version "0.3.5"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-sass/-/postcss-sass-0.3.5.tgz#6d3e39f101a53d2efa091f953493116d32beb68c"
+  resolved "https://registry.yarnpkg.com/postcss-sass/-/postcss-sass-0.3.5.tgz#6d3e39f101a53d2efa091f953493116d32beb68c"
   integrity sha1-bT458QGlPS76CR+VNJMRbTK+tow=
   dependencies:
     gonzales-pe "^4.2.3"
@@ -9247,7 +9247,7 @@ postcss-sass@^0.3.5:
 
 postcss-scss@^2.0.0:
   version "2.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-scss/-/postcss-scss-2.0.0.tgz#248b0a28af77ea7b32b1011aba0f738bda27dea1"
+  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-2.0.0.tgz#248b0a28af77ea7b32b1011aba0f738bda27dea1"
   integrity sha1-JIsKKK936nsysQEaug9zi9on3qE=
   dependencies:
     postcss "^7.0.0"
@@ -9272,7 +9272,7 @@ postcss-selector-parser@^3.1.0:
 
 postcss-selector-parser@^4.0.0:
   version "4.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-selector-parser/-/postcss-selector-parser-4.0.0.tgz#50c6570f40579036d8e63f23e6c0626fe5743527"
+  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-4.0.0.tgz#50c6570f40579036d8e63f23e6c0626fe5743527"
   integrity sha1-UMZXD0BXkDbY5j8j5sBib+V0NSc=
   dependencies:
     cssesc "^1.0.1"
@@ -9281,7 +9281,7 @@ postcss-selector-parser@^4.0.0:
 
 postcss-styled@>=0.34.0, postcss-styled@^0.34.0:
   version "0.34.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-styled/-/postcss-styled-0.34.0.tgz#07d47bcb13707289782aa058605fd9feaf84391d"
+  resolved "https://registry.yarnpkg.com/postcss-styled/-/postcss-styled-0.34.0.tgz#07d47bcb13707289782aa058605fd9feaf84391d"
   integrity sha1-B9R7yxNwcol4KqBYYF/Z/q+EOR0=
 
 postcss-svgo@^2.1.1:
@@ -9296,7 +9296,7 @@ postcss-svgo@^2.1.1:
 
 postcss-syntax@^0.34.0:
   version "0.34.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-syntax/-/postcss-syntax-0.34.0.tgz#4a85c022f1cdecea72102775c91af1e7f506d83a"
+  resolved "https://registry.yarnpkg.com/postcss-syntax/-/postcss-syntax-0.34.0.tgz#4a85c022f1cdecea72102775c91af1e7f506d83a"
   integrity sha1-SoXAIvHN7OpyECd1yRrx5/UG2Do=
 
 postcss-unique-selectors@^2.0.2:
@@ -9315,7 +9315,7 @@ postcss-value-parser@^3.0.1, postcss-value-parser@^3.0.2, postcss-value-parser@^
 
 postcss-value-parser@^3.3.1:
   version "3.3.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
+  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
   integrity sha1-n/giVH4okyE88cMO+lGsX9G6goE=
 
 postcss-zindex@^2.0.1:
@@ -9357,7 +9357,7 @@ postcss@^7.0.0:
 
 postcss@^7.0.1, postcss@^7.0.2, postcss@^7.0.3, postcss@^7.0.6, postcss@^7.0.7:
   version "7.0.7"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/postcss/-/postcss-7.0.7.tgz#2754d073f77acb4ef08f1235c36c5721a7201614"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.7.tgz#2754d073f77acb4ef08f1235c36c5721a7201614"
   integrity sha1-J1TQc/d6y07wjxI1w2xXIacgFhQ=
   dependencies:
     chalk "^2.4.1"
@@ -9381,7 +9381,7 @@ preserve@^0.2.0:
 
 prettier@^1.15.3:
   version "1.15.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/prettier/-/prettier-1.15.3.tgz#1feaac5bdd181237b54dbe65d874e02a1472786a"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.15.3.tgz#1feaac5bdd181237b54dbe65d874e02a1472786a"
   integrity sha1-H+qsW90YEje1Tb5l2HTgKhRyeGo=
 
 pretty-error@^2.0.2:
@@ -9521,7 +9521,7 @@ pump@^2.0.0, pump@^2.0.1:
 
 pump@^3.0.0:
   version "3.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/pump/-/pump-3.0.0.tgz#b4a2116815bde2f4e1ea602354e8c75565107a64"
+  resolved "https://registry.yarnpkg.com/pump/-/pump-3.0.0.tgz#b4a2116815bde2f4e1ea602354e8c75565107a64"
   integrity sha1-tKIRaBW94vTh6mAjVOjHVWUQemQ=
   dependencies:
     end-of-stream "^1.1.0"
@@ -9693,7 +9693,7 @@ react-document-title@^2.0.3:
 
 react-dom@^16.6.3:
   version "16.6.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-dom/-/react-dom-16.6.3.tgz#8fa7ba6883c85211b8da2d0efeffc9d3825cccc0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.6.3.tgz#8fa7ba6883c85211b8da2d0efeffc9d3825cccc0"
   integrity sha1-j6e6aIPIUhG42i0O/v/J04JczMA=
   dependencies:
     loose-envify "^1.1.0"
@@ -9715,7 +9715,7 @@ react-hot-loader@^4.0.0:
 
 react-hot-loader@^4.6.2:
   version "4.6.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-hot-loader/-/react-hot-loader-4.6.2.tgz#9844b76a7bf4b6fdd45dd91f7e757ddf3aad5289"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.6.2.tgz#9844b76a7bf4b6fdd45dd91f7e757ddf3aad5289"
   integrity sha1-mES3anv0tv3UXdkffnV93zqtUok=
   dependencies:
     fast-levenshtein "^2.0.6"
@@ -9730,7 +9730,7 @@ react-hot-loader@^4.6.2:
 
 react-intl@^2.7.2:
   version "2.7.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-intl/-/react-intl-2.7.2.tgz#efe97e3fc0e99b4e88a6e6150854d3d1852a4381"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-2.7.2.tgz#efe97e3fc0e99b4e88a6e6150854d3d1852a4381"
   integrity sha1-7+l+P8Dpm06IpuYVCFTT0YUqQ4E=
   dependencies:
     hoist-non-react-statics "^2.5.5"
@@ -9741,7 +9741,7 @@ react-intl@^2.7.2:
 
 react-is@^16.3.2, react-is@^16.5.2, react-is@^16.6.0, react-is@^16.6.1:
   version "16.6.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-is/-/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
   integrity sha1-0tdGL8/L5uwNpWrWkEfkflbn6sA=
 
 react-is@^16.4.1:
@@ -9756,7 +9756,7 @@ react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
 
 react-modal@^3.7.1:
   version "3.7.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-modal/-/react-modal-3.7.1.tgz#342ed170133d0557e6c3e6fc40195bc45c8f09c3"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.7.1.tgz#342ed170133d0557e6c3e6fc40195bc45c8f09c3"
   integrity sha1-NC7RcBM9BVfmw+b8QBlbxFyPCcM=
   dependencies:
     exenv "^1.2.0"
@@ -9766,7 +9766,7 @@ react-modal@^3.7.1:
 
 react-redux@^5.0.6:
   version "5.1.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-redux/-/react-redux-5.1.1.tgz#88e368682c7fa80e34e055cd7ac56f5936b0f52f"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.1.1.tgz#88e368682c7fa80e34e055cd7ac56f5936b0f52f"
   integrity sha1-iONoaCx/qA404FXNesVvWTaw9S8=
   dependencies:
     "@babel/runtime" "^7.1.2"
@@ -9779,7 +9779,7 @@ react-redux@^5.0.6:
 
 react-responsive@^6.0.1:
   version "6.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-responsive/-/react-responsive-6.0.1.tgz#b6fc7772dd55f1d1e3c9352651a798f990145ece"
+  resolved "https://registry.yarnpkg.com/react-responsive/-/react-responsive-6.0.1.tgz#b6fc7772dd55f1d1e3c9352651a798f990145ece"
   integrity sha1-tvx3ct1V8dHjyTUmUaeY+ZAUXs4=
   dependencies:
     hyphenate-style-name "^1.0.0"
@@ -9788,7 +9788,7 @@ react-responsive@^6.0.1:
 
 react-router-dom@^4.3.1:
   version "4.3.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
   integrity sha1-TCYZ/CTE+ofJ/Rj0+0pD/mP71cY=
   dependencies:
     history "^4.7.2"
@@ -9800,7 +9800,7 @@ react-router-dom@^4.3.1:
 
 react-router-dom@^4.4.0-beta.6:
   version "4.4.0-beta.6"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-router-dom/-/react-router-dom-4.4.0-beta.6.tgz#0bec50c8a4276a555b5f1159bb94e7b6fbb73699"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.4.0-beta.6.tgz#0bec50c8a4276a555b5f1159bb94e7b6fbb73699"
   integrity sha1-C+xQyKQnalVbXxFZu5Tntvu3Npk=
   dependencies:
     "@babel/runtime" "^7.1.2"
@@ -9813,7 +9813,7 @@ react-router-dom@^4.4.0-beta.6:
 
 react-router-redux@^5.0.0-alpha.8:
   version "5.0.0-alpha.9"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-router-redux/-/react-router-redux-5.0.0-alpha.9.tgz#825431516e0e6f1fd93b8807f6bd595e23ec3d10"
+  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.9.tgz#825431516e0e6f1fd93b8807f6bd595e23ec3d10"
   integrity sha1-glQxUW4Obx/ZO4gH9r1ZXiPsPRA=
   dependencies:
     history "^4.7.2"
@@ -9822,7 +9822,7 @@ react-router-redux@^5.0.0-alpha.8:
 
 react-router@^4.2.0, react-router@^4.3.1:
   version "4.3.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
   integrity sha1-qtpK7xTICcsuaGsFzuR0IjRQbE4=
   dependencies:
     history "^4.7.2"
@@ -9835,7 +9835,7 @@ react-router@^4.2.0, react-router@^4.3.1:
 
 react-router@^4.4.0-beta.6:
   version "4.4.0-beta.6"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-router/-/react-router-4.4.0-beta.6.tgz#37e1d9ce2be93df397cc1feb1dcd6460ea0b236b"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.4.0-beta.6.tgz#37e1d9ce2be93df397cc1feb1dcd6460ea0b236b"
   integrity sha1-N+HZzivpPfOXzB/rHc1kYOoLI2s=
   dependencies:
     "@babel/runtime" "^7.1.2"
@@ -9869,7 +9869,7 @@ react-test-renderer@^16.0.0-0:
 
 react-transition-group@^2.5.1:
   version "2.5.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react-transition-group/-/react-transition-group-2.5.1.tgz#67fbd8d30ebb1c57a149d554dbb82eabefa61f0d"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.5.1.tgz#67fbd8d30ebb1c57a149d554dbb82eabefa61f0d"
   integrity sha1-Z/vY0w67HFehSdVU27guq++mHw0=
   dependencies:
     dom-helpers "^3.3.1"
@@ -9879,7 +9879,7 @@ react-transition-group@^2.5.1:
 
 react@^16.6.3:
   version "16.6.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/react/-/react-16.6.3.tgz#25d77c91911d6bbdd23db41e70fb094cc1e0871c"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.6.3.tgz#25d77c91911d6bbdd23db41e70fb094cc1e0871c"
   integrity sha1-Jdd8kZEda73SPbQecPsJTMHghxw=
   dependencies:
     loose-envify "^1.1.0"
@@ -10035,12 +10035,12 @@ reduce-function-call@^1.0.1:
 
 reduce-reducers@^0.4.3:
   version "0.4.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/reduce-reducers/-/reduce-reducers-0.4.3.tgz#8e052618801cd8fc2714b4915adaa8937eb6d66c"
+  resolved "https://registry.yarnpkg.com/reduce-reducers/-/reduce-reducers-0.4.3.tgz#8e052618801cd8fc2714b4915adaa8937eb6d66c"
   integrity sha1-jgUmGIAc2PwnFLSRWtqok3621mw=
 
 redux-actions@^2.2.1:
   version "2.6.4"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/redux-actions/-/redux-actions-2.6.4.tgz#e1d9d7d987d274071b0134b707365d3e25ba3b26"
+  resolved "https://registry.yarnpkg.com/redux-actions/-/redux-actions-2.6.4.tgz#e1d9d7d987d274071b0134b707365d3e25ba3b26"
   integrity sha1-4dnX2YfSdAcbATS3BzZdPiW6OyY=
   dependencies:
     invariant "^2.2.4"
@@ -10056,7 +10056,7 @@ redux-devtools-extension@^2.13.2:
 
 redux-form@^7.2.3:
   version "7.4.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/redux-form/-/redux-form-7.4.2.tgz#d6061088fb682eb9fc5fb9749bd8b102f03154b0"
+  resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-7.4.2.tgz#d6061088fb682eb9fc5fb9749bd8b102f03154b0"
   integrity sha1-1gYQiPtoLrn8X7l0m9ixAvAxVLA=
   dependencies:
     es6-error "^4.1.1"
@@ -10077,12 +10077,12 @@ redux-logger@^3.0.6:
 
 redux-saga@^0.16.2:
   version "0.16.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/redux-saga/-/redux-saga-0.16.2.tgz#993662e86bc945d8509ac2b8daba3a8c615cc971"
+  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.16.2.tgz#993662e86bc945d8509ac2b8daba3a8c615cc971"
   integrity sha1-mTZi6GvJRdhQmsK42ro6jGFcyXE=
 
 redux@*, "redux@^3.6.0 || ^4.0.0":
   version "4.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
   integrity sha1-Q2yubMQPvkcnaJ18j65EgI8b/vU=
   dependencies:
     loose-envify "^1.4.0"
@@ -10212,7 +10212,7 @@ relateurl@0.2.x:
 
 remark-parse@^5.0.0:
   version "5.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/remark-parse/-/remark-parse-5.0.0.tgz#4c077f9e499044d1d5c13f80d7a98cf7b9285d95"
+  resolved "https://registry.yarnpkg.com/remark-parse/-/remark-parse-5.0.0.tgz#4c077f9e499044d1d5c13f80d7a98cf7b9285d95"
   integrity sha1-TAd/nkmQRNHVwT+A16mM97koXZU=
   dependencies:
     collapse-white-space "^1.0.2"
@@ -10233,7 +10233,7 @@ remark-parse@^5.0.0:
 
 remark-stringify@^5.0.0:
   version "5.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/remark-stringify/-/remark-stringify-5.0.0.tgz#336d3a4d4a6a3390d933eeba62e8de4bd280afba"
+  resolved "https://registry.yarnpkg.com/remark-stringify/-/remark-stringify-5.0.0.tgz#336d3a4d4a6a3390d933eeba62e8de4bd280afba"
   integrity sha1-M206TUpqM5DZM+66YujeS9KAr7o=
   dependencies:
     ccount "^1.0.0"
@@ -10253,7 +10253,7 @@ remark-stringify@^5.0.0:
 
 remark@^9.0.0:
   version "9.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/remark/-/remark-9.0.0.tgz#c5cfa8ec535c73a67c4b0f12bfdbd3a67d8b2f60"
+  resolved "https://registry.yarnpkg.com/remark/-/remark-9.0.0.tgz#c5cfa8ec535c73a67c4b0f12bfdbd3a67d8b2f60"
   integrity sha1-xc+o7FNcc6Z8Sw8Sv9vTpn2LL2A=
   dependencies:
     remark-parse "^5.0.0"
@@ -10432,12 +10432,12 @@ requires-port@^1.0.0:
 
 reselect@*:
   version "4.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
   integrity sha1-8lKYMOXT0OAhQIskaiBu9OpEN/c=
 
 reselect@^3.0.1:
   version "3.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
   integrity sha1-79qpjqdFEyTQkrKyFjpqHXqaIUc=
 
 resolve-cwd@^2.0.0:
@@ -10509,7 +10509,7 @@ resolve@1.1.7:
 
 resolve@1.x:
   version "1.9.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/resolve/-/resolve-1.9.0.tgz#a14c6fdfa8f92a7df1d996cb7105fa744658ea06"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.9.0.tgz#a14c6fdfa8f92a7df1d996cb7105fa744658ea06"
   integrity sha1-oUxv36j5Kn3x2ZbLcQX6dEZY6gY=
   dependencies:
     path-parse "^1.0.6"
@@ -10615,7 +10615,7 @@ rx-lite@*, rx-lite@^4.0.8:
 
 rxjs@^6.3.3:
   version "6.3.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
   integrity sha1-PGp/pCDoRKgTkPsRWKnsYU9LrVU=
   dependencies:
     tslib "^1.9.0"
@@ -10687,7 +10687,7 @@ sax@^1.2.4, sax@~1.2.1:
 
 scheduler@^0.11.2:
   version "0.11.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/scheduler/-/scheduler-0.11.3.tgz#b5769b90cf8b1464f3f3cfcafe8e3cd7555a2d6b"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.11.3.tgz#b5769b90cf8b1464f3f3cfcafe8e3cd7555a2d6b"
   integrity sha1-tXabkM+LFGTz88/K/o4811VaLWs=
   dependencies:
     loose-envify "^1.1.0"
@@ -10928,7 +10928,7 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
 
 simple-git@^1.85.0:
   version "1.107.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/simple-git/-/simple-git-1.107.0.tgz#12cffaf261c14d6f450f7fdb86c21ccee968b383"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-1.107.0.tgz#12cffaf261c14d6f450f7fdb86c21ccee968b383"
   integrity sha1-Es/68mHBTW9FD3/bhsIczulos4M=
   dependencies:
     debug "^4.0.1"
@@ -10962,7 +10962,7 @@ slice-ansi@1.0.0:
 
 slice-ansi@2.0.0:
   version "2.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/slice-ansi/-/slice-ansi-2.0.0.tgz#5373bdb8559b45676e8541c66916cdd6251612e7"
+  resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-2.0.0.tgz#5373bdb8559b45676e8541c66916cdd6251612e7"
   integrity sha1-U3O9uFWbRWduhUHGaRbN1iUWEuc=
   dependencies:
     ansi-styles "^3.2.0"
@@ -11088,7 +11088,7 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.1:
 
 source-map@^0.7.3:
   version "0.7.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha1-UwL4FpAxc1ImVECS5kmB91F1A4M=
 
 sparkles@^1.0.0:
@@ -11149,7 +11149,7 @@ spdy@^3.4.1:
 
 specificity@^0.4.1:
   version "0.4.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/specificity/-/specificity-0.4.1.tgz#aab5e645012db08ba182e151165738d00887b019"
+  resolved "https://registry.yarnpkg.com/specificity/-/specificity-0.4.1.tgz#aab5e645012db08ba182e151165738d00887b019"
   integrity sha1-qrXmRQEtsIuhguFRFlc40AiHsBk=
 
 split-string@^3.0.1, split-string@^3.0.2:
@@ -11199,7 +11199,7 @@ stack-utils@^1.0.1:
 
 staged-git-files@1.1.2:
   version "1.1.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/staged-git-files/-/staged-git-files-1.1.2.tgz#4326d33886dc9ecfa29a6193bf511ba90a46454b"
+  resolved "https://registry.yarnpkg.com/staged-git-files/-/staged-git-files-1.1.2.tgz#4326d33886dc9ecfa29a6193bf511ba90a46454b"
   integrity sha1-QybTOIbcns+immGTv1EbqQpGRUs=
 
 state-toggle@^1.0.0:
@@ -11436,14 +11436,14 @@ stylelint-config-recommended@^2.1.0:
 
 stylelint-config-standard@^18.2.0:
   version "18.2.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/stylelint-config-standard/-/stylelint-config-standard-18.2.0.tgz#6283149aba7f64f18731aef8f0abfb35cf619e06"
+  resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-18.2.0.tgz#6283149aba7f64f18731aef8f0abfb35cf619e06"
   integrity sha1-YoMUmrp/ZPGHMa748Kv7Nc9hngY=
   dependencies:
     stylelint-config-recommended "^2.1.0"
 
 stylelint-scss@^3.4.1:
   version "3.4.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/stylelint-scss/-/stylelint-scss-3.4.1.tgz#b6155b99964a1c35db40b1643457a76b9f2bb96d"
+  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.4.1.tgz#b6155b99964a1c35db40b1643457a76b9f2bb96d"
   integrity sha1-thVbmZZKHDXbQLFkNFena58ruW0=
   dependencies:
     lodash "^4.17.11"
@@ -11454,7 +11454,7 @@ stylelint-scss@^3.4.1:
 
 stylelint@^9.9.0:
   version "9.9.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/stylelint/-/stylelint-9.9.0.tgz#dde466e9b049e0bd30e912ad280f1a2ecf6efdf8"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-9.9.0.tgz#dde466e9b049e0bd30e912ad280f1a2ecf6efdf8"
   integrity sha1-3eRm6bBJ4L0w6RKtKA8aLs9u/fg=
   dependencies:
     autoprefixer "^9.0.0"
@@ -11515,7 +11515,7 @@ subarg@^1.0.0:
 
 sugarss@^2.0.0:
   version "2.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/sugarss/-/sugarss-2.0.0.tgz#ddd76e0124b297d40bf3cca31c8b22ecb43bc61d"
+  resolved "https://registry.yarnpkg.com/sugarss/-/sugarss-2.0.0.tgz#ddd76e0124b297d40bf3cca31c8b22ecb43bc61d"
   integrity sha1-3dduASSyl9QL88yjHIsi7LQ7xh0=
   dependencies:
     postcss "^7.0.2"
@@ -11596,7 +11596,7 @@ table@4.0.2:
 
 table@^5.0.0:
   version "5.1.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/table/-/table-5.1.1.tgz#92030192f1b7b51b6eeab23ed416862e47b70837"
+  resolved "https://registry.yarnpkg.com/table/-/table-5.1.1.tgz#92030192f1b7b51b6eeab23ed416862e47b70837"
   integrity sha1-kgMBkvG3tRtu6rI+1BaGLke3CDc=
   dependencies:
     ajv "^6.6.1"
@@ -11697,12 +11697,12 @@ timers-browserify@^2.0.4:
 
 tiny-invariant@^1.0.2:
   version "1.0.3"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/tiny-invariant/-/tiny-invariant-1.0.3.tgz#91efaaa0269ccb6271f0296aeedb05fc3e067b7a"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.0.3.tgz#91efaaa0269ccb6271f0296aeedb05fc3e067b7a"
   integrity sha1-ke+qoCacy2Jx8Clq7tsF/D4Ge3o=
 
 tiny-warning@^1.0.0:
   version "1.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/tiny-warning/-/tiny-warning-1.0.1.tgz#5e4d3eb25eb1733252dcd676ff673c3335bff517"
+  resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.1.tgz#5e4d3eb25eb1733252dcd676ff673c3335bff517"
   integrity sha1-Xk0+sl6xczJS3NZ2/2c8MzW/9Rc=
 
 tmp@^0.0.33:
@@ -11732,7 +11732,7 @@ to-arraybuffer@^1.0.0:
 
 to-camel-case@^1.0.0:
   version "1.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/to-camel-case/-/to-camel-case-1.0.0.tgz#1a56054b2f9d696298ce66a60897322b6f423e46"
+  resolved "https://registry.yarnpkg.com/to-camel-case/-/to-camel-case-1.0.0.tgz#1a56054b2f9d696298ce66a60897322b6f423e46"
   integrity sha1-GlYFSy+daWKYzmamCJcyK29CPkY=
   dependencies:
     to-space-case "^1.0.0"
@@ -11749,7 +11749,7 @@ to-fast-properties@^2.0.0:
 
 to-no-case@^1.0.0:
   version "1.0.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/to-no-case/-/to-no-case-1.0.2.tgz#c722907164ef6b178132c8e69930212d1b4aa16a"
+  resolved "https://registry.yarnpkg.com/to-no-case/-/to-no-case-1.0.2.tgz#c722907164ef6b178132c8e69930212d1b4aa16a"
   integrity sha1-xyKQcWTvaxeBMsjmmTAhLRtKoWo=
 
 to-object-path@^0.3.0:
@@ -11779,7 +11779,7 @@ to-regex@^3.0.1, to-regex@^3.0.2:
 
 to-space-case@^1.0.0:
   version "1.0.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/to-space-case/-/to-space-case-1.0.0.tgz#b052daafb1b2b29dc770cea0163e5ec0ebc9fc17"
+  resolved "https://registry.yarnpkg.com/to-space-case/-/to-space-case-1.0.0.tgz#b052daafb1b2b29dc770cea0163e5ec0ebc9fc17"
   integrity sha1-sFLar7Gysp3HcM6gFj5ewOvJ/Bc=
   dependencies:
     to-no-case "^1.0.0"
@@ -11870,7 +11870,7 @@ trough@^1.0.0:
 
 ts-jest@^23.10.5:
   version "23.10.5"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/ts-jest/-/ts-jest-23.10.5.tgz#cdb550df4466a30489bf70ba867615799f388dd5"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-23.10.5.tgz#cdb550df4466a30489bf70ba867615799f388dd5"
   integrity sha1-zbVQ30RmowSJv3C6hnYVeZ84jdU=
   dependencies:
     bs-logger "0.x"
@@ -11906,7 +11906,7 @@ tslib@^1.9.3:
 
 tslint-config-prettier@^1.17.0:
   version "1.17.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/tslint-config-prettier/-/tslint-config-prettier-1.17.0.tgz#946ed6117f98f3659a65848279156d87628c33dc"
+  resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.17.0.tgz#946ed6117f98f3659a65848279156d87628c33dc"
   integrity sha1-lG7WEX+Y82WaZYSCeRVth2KMM9w=
 
 tslint-loader@^3.6.0:
@@ -11929,7 +11929,7 @@ tslint-react@^3.6.0:
 
 tslint@^5.12.0:
   version "5.12.0"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/tslint/-/tslint-5.12.0.tgz#47f2dba291ed3d580752d109866fb640768fca36"
+  resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.12.0.tgz#47f2dba291ed3d580752d109866fb640768fca36"
   integrity sha1-R/LbopHtPVgHUtEJhm+2QHaPyjY=
   dependencies:
     babel-code-frame "^6.22.0"
@@ -11998,7 +11998,7 @@ typedarray@^0.0.6:
 
 typescript@~3.1.6:
   version "3.1.6"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/typescript/-/typescript-3.1.6.tgz#b6543a83cfc8c2befb3f4c8fba6896f5b0c9be68"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.1.6.tgz#b6543a83cfc8c2befb3f4c8fba6896f5b0c9be68"
   integrity sha1-tlQ6g8/Iwr77P0yPumiW9bDJvmg=
 
 ua-parser-js@^0.7.18:
@@ -12168,7 +12168,7 @@ unique-stream@^2.0.2:
 
 unist-util-find-all-after@^1.0.2:
   version "1.0.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/unist-util-find-all-after/-/unist-util-find-all-after-1.0.2.tgz#9be49cfbae5ca1566b27536670a92836bf2f8d6d"
+  resolved "https://registry.yarnpkg.com/unist-util-find-all-after/-/unist-util-find-all-after-1.0.2.tgz#9be49cfbae5ca1566b27536670a92836bf2f8d6d"
   integrity sha1-m+Sc+65coVZrJ1NmcKkoNr8vjW0=
   dependencies:
     unist-util-is "^2.0.0"
@@ -12743,7 +12743,7 @@ wrap-ansi@^2.0.0:
 
 wrap-ansi@^3.0.1:
   version "3.0.1"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
   integrity sha1-KIoE2H7aXChuBg3+jxNc6NAH+Lo=
   dependencies:
     string-width "^2.1.1"
