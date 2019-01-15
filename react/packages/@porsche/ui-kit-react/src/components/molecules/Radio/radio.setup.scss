@@ -1,0 +1,24 @@
+@import "../../../common";
+
+$spacing: $basic-spacing !default;
+
+$radio-circle-border-color: $grey-light !default;
+$radio-label-text-color: $black !default;
+
+// radio hovered
+$radio-label-text-color-hover: $color-palette-red-1 !default;
+
+// radio default checked
+$radio-circle-border-color-checked: $grey-darker !default;
+
+// radio default disabled
+$radio-circle-border-color-disabled: $grey-light !default;
+$radio-label-text-color-disabled: $grey-light !default;
+
+// radio disabled and checked
+$radio-circle-border-color-disabled-checked: transparent !default;
+$radio-label-text-color-disabled-checked: $black !default;
+
+// radio error
+$radio-error-message-margin-top: $spacing !default;
+$radio-text-color-error: $color-palette-red-1 !default;
