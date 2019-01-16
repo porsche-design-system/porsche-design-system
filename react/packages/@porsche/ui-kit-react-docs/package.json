@@ -46,6 +46,7 @@
         "@babel/runtime": "^7.1.2",
         "@babel/standalone": "^7.1.0",
         "@babel/plugin-proposal-class-properties": "^7.1.0",
+        "@porsche/eslint-config": "^1.0.0",
         "@types/lorem-ipsum": "^1.0.2",
         "anchor-js": "^4.1.1",
         "babel-eslint": "^10.0.1",
