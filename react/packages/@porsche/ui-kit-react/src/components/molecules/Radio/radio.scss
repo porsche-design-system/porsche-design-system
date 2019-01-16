@@ -16,28 +16,23 @@
     &__circle {
         box-sizing: border-box;
         display: block;
-        height: 40px;
-        width: 40px;
-        min-height: 40px;
-        min-width: 40px;
-        border: 2px solid $radio-circle-border-color;
+        height: $radio-height;
+        width: $radio-width;
+        min-height: $radio-height;
+        min-width: $radio-width;
+        border: $radio-circle-border-width solid $radio-circle-border-color;
         border-radius: 50%;
     }
 
     &__label {
-        margin-right: 1.125rem;
-        margin-left: 1.125rem;
+        margin-right: 0.75rem;
+        margin-left: 0.75rem;
         color: $radio-label-text-color;
 
         &--single-line {
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
-        }
-
-        // error
-        &--error {
-            color: $radio-text-color-error;
         }
     }
 
@@ -51,30 +46,39 @@
     // checkbox is hovered, not checked and not disabled
     &:focus &__field:not(:disabled) {
         & ~ #{$bem-block}__label {
-            color: $radio-label-text-color-hover;
+            color: $radio-label-text-color-focus;
+            text-decoration: underline;
         }
     }
 
     // checked
     &__field:checked + #{$bem-block}__circle {
-        border: 12px solid $radio-circle-border-color-checked;
+        border: $radio-circle-border-width-checked solid $radio-circle-border-color-checked;
     }
 
     // disabled
     &--disabled {
         cursor: default;
+
+        #{$bem-block}__circle {
+            border-color: $radio-circle-border-color-disabled;
+        }
+        #{$bem-block}__label {
+            color: $radio-label-text-color-disabled;
+        }
+        #{$bem-block}__field:checked ~ #{$bem-block}__label {
+            color: $radio-label-text-color-disabled-checked;
+        }
     }
 
-    &__field:disabled + #{$bem-block}__circle {
-        border-color: $radio-circle-border-color-disabled;
-    }
-
-    &__field:disabled ~ #{$bem-block}__label {
-        color: $radio-label-text-color-disabled;
-    }
-
-    // disabled and checked
-    &__field:disabled:checked ~ #{$bem-block}__label {
-        color: $radio-label-text-color-disabled-checked;
+    // error
+    &--error {
+        #{$bem-block}__circle,
+        #{$bem-block}__field:checked + #{$bem-block}__circle {
+            border-color: $radio-text-color-error;
+        }
+        #{$bem-block}__label {
+            color: $radio-text-color-error;
+        }
     }
 }

@@ -2,18 +2,26 @@
 
 $spacing: $basic-spacing !default;
 
-$radio-circle-border-color: $grey-light !default;
+$radio-width: 24px !default;
+$radio-height: 24px !default;
+$radio-circle-border-width: 2px !default;
+$radio-circle-border-width-checked: 7px !default;
+
+$radio-circle-border-color: $color-palette-grey-3 !default;
 $radio-label-text-color: $black !default;
 
 // radio hovered
 $radio-label-text-color-hover: $color-palette-red-1 !default;
 
+// radio focus
+$radio-label-text-color-focus: $black !default;
+
 // radio default checked
-$radio-circle-border-color-checked: $grey-darker !default;
+$radio-circle-border-color-checked: $color-palette-grey-9 !default;
 
 // radio default disabled
-$radio-circle-border-color-disabled: $grey-light !default;
-$radio-label-text-color-disabled: $grey-light !default;
+$radio-circle-border-color-disabled: $color-palette-grey-3 !default;
+$radio-label-text-color-disabled: $color-palette-grey-5 !default;
 
 // radio disabled and checked
 $radio-circle-border-color-disabled-checked: transparent !default;
