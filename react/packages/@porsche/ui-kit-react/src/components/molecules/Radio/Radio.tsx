@@ -11,7 +11,7 @@ export interface Radio extends React.StatelessComponent<RadioProps> {
 
 export interface RadioProps extends ClassNameProp, ComponentProp {
     /** A Radio needs a name */
-    name: string
+    name?: string
 
     /**
      * Whether or not the radio is checked.
@@ -25,12 +25,12 @@ export interface RadioProps extends ClassNameProp, ComponentProp {
     error?: boolean
 
     /**
-     * Called when the user attempts to change the checked state.
+     * Called when the user attempts to change the selected radio.
      * @param {boolean} value The proposed value after the change.
      * @param {SyntheticEvent} event React's original event.
      * @param {CheckboxProps} data All props of the component.
      */
-    onChange?: (value: boolean, event: React.FormEvent<HTMLInputElement>, data: RadioProps) => void
+    onChange?: (value: string, event: React.FormEvent<HTMLInputElement>, data: RadioProps) => void
 
     /**
      * Called after a user's click.
@@ -76,7 +76,10 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
     const ElementType = getElementType(as, "div")
     const ElementLabelType = getElementType(as, labelAs)
 
-    const elementClasses = cx(prefix("radio"), { [prefix("radio--disabled")]: disabled })
+    const elementClasses = cx(prefix("radio"), {
+        [prefix("radio--disabled")]: disabled,
+        [prefix("radio--error")]: error
+    })
 
     const labelClasses = cx(
         prefix("noselect"),
@@ -86,12 +89,11 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
     )
 
     const handleChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
-        console.log(e.currentTarget.value)
         if (!onChange) {
             return
         }
 
-        onChange(!checked, e, props)
+        onChange(e.currentTarget.value, e, props)
     }
 
     const handleClick = (e: React.MouseEvent<HTMLElement>) => {
