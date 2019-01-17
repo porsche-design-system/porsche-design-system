@@ -74,7 +74,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
     } = props
 
     const ElementType = getElementType(as, "div")
-    const ElementLabelType = getElementType(as, labelAs)
+    const ElementLabelType = getElementType(labelAs, as)
 
     const elementClasses = cx(prefix("radio"), {
         [prefix("radio--disabled")]: disabled,
