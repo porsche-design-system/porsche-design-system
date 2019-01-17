@@ -74,7 +74,6 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
     } = props
 
     const ElementType = getElementType(as, "div")
-    const ElementLabelType = getElementType(labelAs, as)
 
     const elementClasses = cx(prefix("radio"), {
         [prefix("radio--disabled")]: disabled,
@@ -113,7 +112,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
 
     return (
         <ElementType className={className} onClick={handleClick} {...rest}>
-            <ElementLabelType className={elementClasses}>
+            <label className={elementClasses}>
                 <input
                     type="radio"
                     name={name}
@@ -125,7 +124,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
                 />
                 <span className={prefix("radio__circle")} />
                 {children && React.Children.count(children) > 0 && <span className={labelClasses}>{children}</span>}
-            </ElementLabelType>
+            </label>
         </ElementType>
     )
 }
