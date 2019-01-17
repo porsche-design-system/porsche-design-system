@@ -75,17 +75,14 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
 
     const ElementType = getElementType(as, "div")
 
-    const elementClasses = cx(prefix("radio"), {
+    const elementClasses = cx(className, prefix("radio"), {
         [prefix("radio--disabled")]: disabled,
         [prefix("radio--error")]: error
     })
 
-    const labelClasses = cx(
-        prefix("noselect"),
-        prefix("radio__label"),
-        { [prefix("radio__label--error")]: error },
-        { [prefix("radio__label--single-line")]: singleLine }
-    )
+    const labelClasses = cx(prefix("noselect"), prefix("radio__label"), {
+        [prefix("radio__label--single-line")]: singleLine
+    })
 
     const handleChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
         if (!onChange) {
@@ -111,19 +108,18 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
     }
 
     return (
-        <ElementType className={className} onClick={handleClick} {...rest}>
-            <label className={elementClasses}>
-                <input
-                    type="radio"
-                    name={name}
-                    className={prefix("radio__field")}
-                    checked={checked}
-                    disabled={disabled}
-                    onChange={handleChange}
-                    value={value}
-                />
-                <span className={prefix("radio__circle")} />
-                {children && React.Children.count(children) > 0 && <span className={labelClasses}>{children}</span>}
+        <ElementType className={elementClasses} onClick={handleClick} {...rest}>
+            <input
+                type="radio"
+                name={name}
+                className={prefix("radio__field")}
+                checked={checked}
+                disabled={disabled}
+                onChange={handleChange}
+                value={value}
+            />
+            <label className={labelClasses}>
+                {children && React.Children.count(children) > 0 && <span>{children}</span>}
             </label>
         </ElementType>
     )
