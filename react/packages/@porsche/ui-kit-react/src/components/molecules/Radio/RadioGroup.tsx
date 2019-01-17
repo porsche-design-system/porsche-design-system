@@ -10,6 +10,8 @@ import { RadioProps } from "./Radio"
 export interface RadioGroupProps extends ClassNameProp, ComponentProp {
     name: string
 
+    disabled?: boolean
+
     /**
      * Called when the user attempts to change the selected radio.
      * @param {string} value The proposed value after the change.
@@ -20,16 +22,16 @@ export interface RadioGroupProps extends ClassNameProp, ComponentProp {
 }
 
 const _RadioGroup: React.StatelessComponent<RadioGroupProps> = (props) => {
-    const { as, className, children, name, onChange, ...rest } = props
+    const { as, className, children, disabled, name, onChange, ...rest } = props
 
     const classes = cx(prefix("radio-group"), className)
 
     return (
         <Flex as={as} className={classes} {...rest}>
-            {React.Children.map(children, (child: any, i) => {
+            {React.Children.map(children, (child: React.ReactElement<RadioProps>, i) => {
                 return (
                     <div key={i} className={prefix("radio-group__radio")}>
-                        {React.cloneElement(child, { name, onChange })}
+                        {React.cloneElement(child, { name, onChange, disabled })}
                     </div>
                 )
             })}
