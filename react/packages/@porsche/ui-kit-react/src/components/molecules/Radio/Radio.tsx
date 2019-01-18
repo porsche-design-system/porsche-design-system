@@ -74,6 +74,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
     } = props
 
     const ElementType = getElementType(as, "div")
+    const LabelElementType = getElementType(labelAs, as)
 
     const elementClasses = cx(className, prefix("radio"), {
         [prefix("radio--disabled")]: disabled,
@@ -118,9 +119,9 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
                 onChange={handleChange}
                 value={value}
             />
-            <label className={labelClasses}>
+            <LabelElementType className={labelClasses}>
                 {children && React.Children.count(children) > 0 && <span>{children}</span>}
-            </label>
+            </LabelElementType>
         </ElementType>
     )
 }
