@@ -1,0 +1,88 @@
+@import "../../../common";
+@import "./radio.setup.scss";
+
+.#{$global-class-prefix}radio {
+    $bem-block: &;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+
+    &__field {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0 !important;
+        outline: 0;
+        z-index: -1;
+    }
+
+    &__label {
+        padding-right: 0.75rem;
+        padding-left: 2.1875rem;
+        color: $radio-label-text-color;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: $radio-height;
+            height: $radio-width;
+            content: "";
+            border: $radio-circle-border-width solid $radio-circle-border-color;
+            border-radius: 50%;
+        }
+
+        &--single-line {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+
+    // checkbox is hovered, not checked and not disabled
+    &:hover &__field:not(:disabled) {
+        & ~ #{$bem-block}__label {
+            color: $radio-label-text-color-hover;
+        }
+    }
+
+    // checkbox is focused, not checked and not disabled
+    &__field:focus:not(:disabled) ~ #{$bem-block}__label {
+        color: $radio-label-text-color-focus;
+        text-decoration: underline;
+    }
+
+    // checked
+    &__field:checked + #{$bem-block}__label:before {
+        border: $radio-circle-border-width-checked solid $radio-circle-border-color-checked;
+    }
+
+    // disabled
+    &--disabled {
+        cursor: default;
+
+        #{$bem-block}__label:before,
+        #{$bem-block}__field:checked ~ #{$bem-block}__label:before {
+            border-color: $radio-circle-border-color-disabled;
+        }
+        #{$bem-block}__label {
+            color: $radio-label-text-color-disabled;
+        }
+        #{$bem-block}__field:checked ~ #{$bem-block}__label {
+            color: $radio-label-text-color-disabled-checked;
+        }
+    }
+
+    // error
+    &--error {
+        #{$bem-block}__circle,
+        #{$bem-block}__field:checked + #{$bem-block}__label:before {
+            border-color: $radio-text-color-error;
+        }
+        #{$bem-block}__label {
+            color: $radio-text-color-error;
+        }
+    }
+}

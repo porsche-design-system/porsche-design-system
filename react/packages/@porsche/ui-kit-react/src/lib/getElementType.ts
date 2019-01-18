@@ -10,7 +10,7 @@ import * as React from "react"
  */
 export const getElementType = (
     as?: string | React.ComponentClass,
-    defaultValue?: string
+    defaultValue?: string | React.ComponentClass
 ): string | React.ComponentClass => {
     // ----------------------------------------
     // user defined "as" element type
