@@ -8,8 +8,7 @@ const mathSign =
     }
 
 const scrollToAnchor = () => {
-    const locationHash = location.hash
-    // get only "real" hast and ignore the routing hash to prevent errors
+    // get only "real" hash and ignore the routing hash to prevent errors
     const anchor =
         location.hash && location.hash.match(/#[^\/]+/g)
             ? document.querySelector(location.hash.match(/#[^\/]+/g))
