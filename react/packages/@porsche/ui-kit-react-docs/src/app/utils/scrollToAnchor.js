@@ -8,7 +8,12 @@ const mathSign =
     }
 
 const scrollToAnchor = () => {
-    const anchor = location.hash && document.querySelector(location.hash)
+    const locationHash = location.hash
+    // get only "real" hast and ignore the routing hash to prevent errors
+    const anchor =
+        location.hash && location.hash.match(/#[^\/]+/g)
+            ? document.querySelector(location.hash.match(/#[^\/]+/g))
+            : null
     const offsetY = window.scrollY || window.pageYOffset
 
     // no scroll to target, stop
@@ -21,7 +26,7 @@ const scrollToAnchor = () => {
 
     // hit max scroll boundaries, stop
     const isScrolledToTop = offsetY === 0
-    const isScrolledToBottom = offsetY + document.body.clientHeight === document.body.scrollHeight
+    const isScrolledToBottom = offsetY + window.innerHeight === document.body.scrollHeight
     const scrollStep = Math.ceil(Math.abs(elementTop / 8)) * mathSign(elementTop)
 
     if ((isScrolledToBottom && scrollStep > 0) || (isScrolledToTop && scrollStep < 0)) return
