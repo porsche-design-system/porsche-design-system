@@ -30,7 +30,7 @@
   }
 
   &__bg {
-    stroke: $color-palette-grey-1;
+    stroke: $color-palette-grey-3;
     opacity: .5;
   }
 
@@ -40,7 +40,8 @@
     }
 
     #{$bem-block}__bg {
-      stroke: $color-palette-grey-7;
+      stroke: $color-palette-grey-4;
+      opacity: .8;
     }
   }
 

@@ -1,5 +1,6 @@
 {
   "button-regular_highlight": true,
+  "button-regular_loadingInverted": true,
   "button-regular_loading": true,
   "button-regular_disabled": true
 }

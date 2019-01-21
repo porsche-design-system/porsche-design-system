@@ -8,6 +8,7 @@
   "button-regular_link": false,
   "button-regular_stretch": false,
   "button-regular_loading": false,
+  "button-regular_loadingInverted": false,
   "button-regular_label": "Some button label",
   "button-regular_icon": "arrow-right-hair"
 }
