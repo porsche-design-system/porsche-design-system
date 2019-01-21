@@ -4512,12 +4512,13 @@ table {
     stroke-dashoffset: 0;
     stroke-linecap: round; }
   .loader__bg {
-    stroke: #eff0f1;
+    stroke: #c8cacb;
     opacity: .5; }
   .loader--theme-inverted .loader__fg {
     stroke: #fff; }
   .loader--theme-inverted .loader__bg {
-    stroke: #626669; }
+    stroke: #afb1b2;
+    opacity: .8; }
   .loader--x-small {
     width: 1rem;
     height: 1rem;
