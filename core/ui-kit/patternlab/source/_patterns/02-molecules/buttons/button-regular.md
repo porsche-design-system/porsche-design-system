@@ -88,6 +88,16 @@ To show the loader icon, the default svg icon (probably implemented by `<use>`-t
 </span>
 ```
 
+There are 2 types of loaders: regular (like the code example above) and inverted which gets an additional `loader--theme-inverted` class:  
+
+__regular__:
+- button-regular--ghost
+- button-regular--sales-ghost
+
+__inverted__:
+- All other buttons
+
+
 ### Button group
 Displaying a group of buttons which are placed side by side (horizontal) or among each other (vertical) can be done by combining `flex` component with `button-group`.
 
