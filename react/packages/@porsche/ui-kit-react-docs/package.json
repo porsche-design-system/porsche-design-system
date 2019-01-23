@@ -38,6 +38,7 @@
     "devDependencies": {
         "@babel/cli": "^7.1.2",
         "@babel/core": "^7.1.2",
+        "@babel/plugin-proposal-class-properties": "^7.1.0",
         "@babel/plugin-transform-react-display-name": "^7.0.0",
         "@babel/plugin-transform-runtime": "^7.1.0",
         "@babel/preset-env": "^7.1.0",
@@ -45,7 +46,7 @@
         "@babel/register": "^7.0.0",
         "@babel/runtime": "^7.1.2",
         "@babel/standalone": "^7.1.0",
-        "@babel/plugin-proposal-class-properties": "^7.1.0",
+        "@babel/polyfill": "^7.2.5",
         "@porsche/eslint-config": "^1.0.0",
         "@types/lorem-ipsum": "^1.0.2",
         "anchor-js": "^4.1.1",
