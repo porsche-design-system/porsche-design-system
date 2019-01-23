@@ -31,7 +31,7 @@ const _RadioGroup: React.StatelessComponent<RadioGroupProps> = (props) => {
             {React.Children.map(children, (child: React.ReactElement<RadioProps>, i) => {
                 return (
                     <div key={i} className={prefix("radio-group__radio")}>
-                        {React.cloneElement(child, { name, onChange, disabled })}
+                        {React.cloneElement(child, { id: `${name}_${i}`, name, onChange, disabled })}
                     </div>
                 )
             })}
