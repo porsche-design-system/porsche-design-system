@@ -15,8 +15,8 @@ describe("Radio Group", () => {
                 onChange={radioGroupProps.onChange}
                 disabled={radioGroupProps.disabled}
             >
-                <Radio checked={true} value={radio1Props.value} />
-                <Radio value={radio2Props.value} />
+                <Radio id={radio1Props.id} checked={true} value={radio1Props.value} />
+                <Radio id={radio2Props.id} value={radio2Props.value} />
             </Radio.Group>
         )
     }
@@ -30,9 +30,11 @@ describe("Radio Group", () => {
                 onChange
             }
             const radio1Props = {
+                id: "radio1",
                 value: "radio1"
             }
             const radio2Props = {
+                id: "radio2",
                 value: "radio2"
             }
 
@@ -54,9 +56,11 @@ describe("Radio Group", () => {
                 onChange
             }
             const radio1Props = {
+                id: "radio1",
                 value: "radio1"
             }
             const radio2Props = {
+                id: "radio2",
                 value: "radio2"
             }
 
@@ -79,9 +83,11 @@ describe("Radio Group", () => {
                 onChange
             }
             const radio1Props = {
+                id: "radio1",
                 value: "radio1"
             }
             const radio2Props = {
+                id: "radio2",
                 value: "radio2"
             }
 
