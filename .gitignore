@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# WebStorm/IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# npm
+node_modules
