@@ -81,7 +81,7 @@
         "raw-loader": "^0.5.1",
         "react": "^16.6.3",
         "react-ace": "^5.1.2",
-        "react-docgen-typescript": "^1.11.0",
+        "react-docgen-typescript": "^1.12.3",
         "react-document-title": "^2.0.3",
         "react-dom": "^16.6.3",
         "react-hot-loader": "^4.0.0",

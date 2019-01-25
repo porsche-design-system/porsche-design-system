@@ -9502,7 +9502,7 @@ react-ace@^5.1.2:
     lodash.isequal "^4.1.1"
     prop-types "^15.5.8"
 
-react-docgen-typescript@^1.11.0:
+react-docgen-typescript@^1.12.3:
   version "1.12.3"
   resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.12.3.tgz#fe62a5ce82e93573e316366e53adfe8273121c70"
   integrity sha512-s1XswWs4ykNdWKsPyfM4qptV5dT8nnjnVi2IcjoS/vGlRNYrc0TkW0scVOrinHZ+ndKhPqA4iVNrdwhxZBzJcg==
