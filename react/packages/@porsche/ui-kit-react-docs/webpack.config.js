@@ -8,6 +8,7 @@ const production = process.env.NODE_ENV === "production"
 const configuration = {
     bail: true,
     entry: [
+        "@babel/polyfill",
         "@porsche/ui-kit-react/css/index.css",
         "@porsche/ui-kit-react",
         "./src/app/index.css",

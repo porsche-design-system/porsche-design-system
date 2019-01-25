@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.8.0] - 2019-18-01
+- Add Radio Component to molecules
 
 ## [0.7.0] - 2019-10-01
 - Update Ui-Kit-Core version
