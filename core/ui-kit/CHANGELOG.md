@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* Fixed layout issue of media center modal for mobile + landscape viewports
 
 ### Button Refactoring
 * Refactoring of button namings and css structure
