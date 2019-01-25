@@ -1,5 +1,5 @@
-import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
-import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
+import ComponentExample from "src/components/ComponentExample"
+import ExampleSection from "src/components/ExampleSection"
 import React from "react"
 
 const Types = () => {
@@ -21,6 +21,13 @@ const Types = () => {
 
             <ComponentExample title="Input with Icon" examplePath="molecules/Input/Types/InputExampleTypesIcon">
                 An input can show an icon on the right.
+            </ComponentExample>
+
+            <ComponentExample
+                title="Input with custom Icon"
+                examplePath="molecules/Input/Types/InputExampleTypesCustomIcon"
+            >
+                You can pass an custom Icon as JSX element
             </ComponentExample>
 
             <ComponentExample title="Input with Unit" examplePath="molecules/Input/Types/InputExampleTypesUnit">

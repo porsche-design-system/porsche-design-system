@@ -116,4 +116,31 @@ describe("Tab component", () => {
             expect(onClickMock).toHaveBeenCalled()
         })
     })
+
+    describe("divider", () => {
+        it("should be rendered by default", () => {
+            // Arrange
+            const props: TabProps = {
+                panes: []
+            }
+            // Act
+            const componentWrapper = createComponent(props)
+            // Assert
+            const divider = componentWrapper.find(`.${prefix("divider")}`)
+            expect(divider.length).toBe(1)
+        })
+
+        it("should not be rendered", () => {
+            // Arrange
+            const props: TabProps = {
+                divider: false,
+                panes: []
+            }
+            // Act
+            const componentWrapper = createComponent(props)
+            // Assert
+            const divider = componentWrapper.find(`.${prefix("divider")}`)
+            expect(divider.length).toBe(0)
+        })
+    })
 })

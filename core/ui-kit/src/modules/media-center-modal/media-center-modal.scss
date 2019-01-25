@@ -5,13 +5,11 @@
 @import './media-center-modal.setup.scss';
 
 .#{$global-class-prefix}media-center-modal {
-  @include flex;
-  @include flex-direction(column);
   @include -position(absolute);
   top: $media-center-modal-top;
+  bottom: $media-center-modal-bottom;
   left: $media-center-modal-left;
-  height: $media-center-modal-height;
-  width: $media-center-modal-width;
+  right: $media-center-modal-right;
   background-color: $media-center-modal-background-color;
 
   &__header {

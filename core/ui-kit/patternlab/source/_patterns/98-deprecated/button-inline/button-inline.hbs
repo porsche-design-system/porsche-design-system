@@ -15,15 +15,15 @@
   <div>
   {{/if}}
     {{#if button-inline_icon}}
-      <span class="button-inline__icon icon
-                   icon--{{ button-inline_icon}}
+      <span class="button-inline__icon icon-font
+                   icon-font--{{ button-inline_icon}}
                    {{#if button-inline_center}} button-inline__icon--center {{/if}}
                    {{#if button-inline_iconLarge}} button-inline__icon--large {{/if}}
                    {{#if button-inline_multi-lines-centered }} button-inline__icon--multi-lines-centered {{/if}}
                    {{#if button-inline_loading}} button-inline__icon--loading {{/if}}
                    {{styleModifier_icon}}">
 
-        {{> molecules-loader-base styleModifier="button-inline__loader" }}
+        {{> deprecated-loader-base styleModifier="button-inline__loader" }}
 
       </span>
     {{/if}}

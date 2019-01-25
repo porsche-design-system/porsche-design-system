@@ -36,6 +36,6 @@ describe("Loader component", () => {
         const loader = createComponent(props)
         // Assert
         expect(loader.find(`.${prefix("loader")}`).length).toBe(1)
-        expect(loader.find(`.${prefix("loader--inverted")}`).length).toBe(1)
+        expect(loader.find(`.${prefix("loader--theme-inverted")}`).length).toBe(1)
     })
 })

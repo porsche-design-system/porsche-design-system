@@ -4,7 +4,7 @@
 $button-primary-background-color: $grey-darker;
 $button-primary-border-color: $grey-darker;
 
-@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/modules/button/button-primary";
+@import "~@porsche/ui-kit-core/src/modules/button/button-primary";
 
 @mixin buttonState($color) {
     &:hover,

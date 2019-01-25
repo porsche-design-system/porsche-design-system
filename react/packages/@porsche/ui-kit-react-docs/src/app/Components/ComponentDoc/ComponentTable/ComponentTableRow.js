@@ -37,7 +37,18 @@ export default class ComponentTableRow extends Component {
                 <Table.Cell collapsing>
                     <ComponentPropDefaultValue value={defaultValue} />
                 </Table.Cell>
-                <Table.Cell collapsing>{`{${type}}`}</Table.Cell>
+                <Table.Cell collapsing>
+                    <div
+                        style={{
+                            maxWidth: "300px",
+                            textOverflow: "ellipsis",
+                            overflow: "hidden",
+                            whiteSpace: "nowrap"
+                        }}
+                    >
+                        {type}
+                    </div>
+                </Table.Cell>
                 <Table.Cell>
                     <ComponentPropDescription description={description} />
                     <ComponentPropFunctionSignature name={name} tags={tags} />

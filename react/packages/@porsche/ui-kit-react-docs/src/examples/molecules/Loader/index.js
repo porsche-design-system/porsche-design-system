@@ -1,11 +1,11 @@
 import React from "react"
-import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
-import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
+import ComponentExample from "src/components/ComponentExample"
+import ExampleSection from "src/components/ExampleSection"
 import { storiesOf, TYPE } from "src/app/stories"
 
 storiesOf(TYPE.MOLECULE, "Loader", [], module)
     .addPropsTable("Loader.Mask")
-    .add(
+    .add(() => (
         <React.Fragment>
             <ExampleSection title="Types">
                 <ComponentExample title="Default Loader" examplePath="molecules/Loader/LoaderExampleBasic">
@@ -29,4 +29,4 @@ storiesOf(TYPE.MOLECULE, "Loader", [], module)
                 </ComponentExample>
             </ExampleSection>
         </React.Fragment>
-    )
+    ))

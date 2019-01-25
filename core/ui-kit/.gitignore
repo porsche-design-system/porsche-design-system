@@ -55,3 +55,6 @@ patternlab.json
 /sass-cache
 /patternlab/public
 /vrt/results
+/patternlab/source/_patterns/docs
+/patternlab/source/images/porsche-ui-kit-docs/
+/patternlab/source/_patterns/legal-notice
