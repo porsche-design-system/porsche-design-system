@@ -4,7 +4,7 @@ import cx from "classnames"
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export type TextType =
+type TextSize =
     | "1-regular"
     | "1-thin"
     | "1-bold"
@@ -27,34 +27,30 @@ export type TextType =
     | "micro"
     | "micro-bold"
 
-export type TextColorType =
-    | "black"
-    | "grey-darker"
-    | "grey-dark"
-    | "grey"
-    | "grey-light"
-    | "grey-lighter"
-    | "white"
-    | "red-1"
-    | "red-2"
-    | "blue-1"
-    | "blue-2"
-    | "status-green"
-    | "status-yellow"
-    | "status-orange"
-    | "status-red"
-
-export type TextAlignType = "left" | "center" | "right"
-
 export interface TextProps extends ClassNameProp, ComponentProp {
     /** The text alignment of the component. */
-    align?: TextAlignType
+    align?: "left" | "center" | "right"
 
     /**
      * The color of the text. By default, the component inherits the color of the surrounding element.
      * @default inherit
      */
-    color?: TextColorType
+    color?:
+        | "black"
+        | "grey-darker"
+        | "grey-dark"
+        | "grey"
+        | "grey-light"
+        | "grey-lighter"
+        | "white"
+        | "red-1"
+        | "red-2"
+        | "blue-1"
+        | "blue-2"
+        | "status-green"
+        | "status-yellow"
+        | "status-orange"
+        | "status-red"
 
     /**
      * Adds an ellipsis to a single line of text if it overflows.
@@ -68,7 +64,28 @@ export interface TextProps extends ClassNameProp, ComponentProp {
      * The style of the text.
      * @default copy
      */
-    type?: TextType
+    type?:
+        | "1-regular"
+        | "1-thin"
+        | "1-bold"
+        | "2-regular"
+        | "2-thin"
+        | "2-bold"
+        | "3-regular"
+        | "3-thin"
+        | "3-bold"
+        | "4-regular"
+        | "4-thin"
+        | "4-bold"
+        | "5-regular"
+        | "5-thin"
+        | "5-bold"
+        | "copy"
+        | "copy-bold"
+        | "small"
+        | "small-bold"
+        | "micro"
+        | "micro-bold"
 
     /**
      * Wraps the text, even when it has to break a word.

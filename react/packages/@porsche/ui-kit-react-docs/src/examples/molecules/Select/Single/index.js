@@ -1,6 +1,6 @@
 import React from "react"
-import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
-import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
+import ComponentExample from "src/components/ComponentExample"
+import ExampleSection from "src/components/ExampleSection"
 
 const SelectExampleSingle = () => {
     return (
@@ -32,8 +32,6 @@ const SelectExampleSingle = () => {
             <ComponentExample title="Disabled" examplePath="molecules/Select/Single/SelectExampleSingleDisabled" />
 
             <ComponentExample title="Error" examplePath="molecules/Select/Single/SelectExampleSingleError" />
-
-            <ComponentExample title="Loading" examplePath="molecules/Select/Single/SelectExampleSingleLoading" />
 
             <ComponentExample title="Search" examplePath="molecules/Select/Single/SelectExampleSingleOnSearchChanged">
                 The select component can also be used to fetch options dynamically by connecting yourself to the

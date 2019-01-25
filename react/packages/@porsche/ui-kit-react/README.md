@@ -1,4 +1,4 @@
-# Finder UI Kit
+# Porsche UI Kit React
 
 ## Installation
 
@@ -6,11 +6,11 @@ This project is a yarn monorepo, so you need to use yarn instead of npm for ever
 
 ### Development
 
-Running `npm run docs` will start a webpack dev server. You can reach it at `http://localhost:8080/`.
+Running `yarn start` will start a webpack dev server. You can reach it at `http://localhost:8080/`.
 
 ### Distribution
 
-Running `npm run build` creates a ES6 and CommonJS build under `dist`.
+Running `yarn build` creates a ES6 and CommonJS build under `dist`.
 
 ## Developing New Components
 
@@ -32,15 +32,13 @@ Simply put the components name after the annotation and a link to it will automa
 
 ## Publishing artifacts
 
-### Login credentials
-To be able to publish artifacts to the Artifactory repository you have to provide some meta information. First of all you have to provide the login credentials for the Artifactory. In this project we are using NPM scopes to distinguish which artifact should retrieve the dependency from which repository. Therefore you have to execute `curl -uadmin:password "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/auth/porsche"` where admin is your Artifactory ID and password is the genereated API Key (Base64 encoded) which you can generate in the Artifactory's profile section. You'll have to create a .npmrc file in the project folder and paste the information you will get into it. This will look similiar to:
-`@porsche:registry=https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/
- //porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/:_password=<password>
- //porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/:username=8354932
- //porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/:email=<YOUR_EMAIL>
- //porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/:always-auth=true`
- The user is a technical user created only for the Artifactory publishing use case.
- The password can be obtained from Aleksandar Tolev (aleksandar.tolev@porsche.de) or Christoph Albert (christoph.albert@mhp.com).
-
-### Publishing
- After setting up the metadata you can run `yarn run publish:artifactory` which will deploy the artifact to the Artifactory repository.
+## Release Management
+1. After merge requirements of a pull request are fulfilled, it can be merged to master branch (don't forget to delete the branch afterwards)
+2. Goto ui-kit-react project in terminal and pull latest commits with `git pull`
+3. Open `CHANGELOG.md` and update release notes with proper date and version
+4. Update version of ui-kit-react dependency in `ui-kit-react-docs/package.json` and `ui-kit-react-starter/package.json`
+5. Run project with `yarn start` to be sure everything works as expected
+6. Create a commit with following message structure `Release react:v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+7. Run `yarn run publish:artifactory` which will deploy the artifact to the Artifactory repository an creates a git tag.
+8. Push local commit with tag to master branch `git push --tags`
+9. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace

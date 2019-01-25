@@ -6,6 +6,72 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* Fixed layout issue of media center modal for mobile + landscape viewports
+
+
+## [0.17.0] - 2019-01-10
+
+* Added svg icon system (@see icon usage documentation)
+
+### Statement: why switching from icon-font to SVG-sprite for visualization of icons in web applications?
+There seems to be a lot of discussion about the pros and cons of using svg or icon-fonts for icon systems. 
+And as always, there is no single truth which method is the best except the phrase "it depends". 
+
+Never the less, Porsche Ui-Kit has to fulfill some basic, fundamental and generic concepts which should also be future proof, flexible and "state of the art". 
+To suit these needs, SVG seems to be the most generic solution. Here are some benefits from it:  
+* Better (sharper) and consistent rendering in the browser (high-res screens)
+* Very flexible in usage (sprite, inline, background-image)
+* Accessible (e.g. by using title attributes)
+* Individual sprite generation - each team can individually create custom svg sprites for their own needs
+* Can be fully animated by CSS (inline) or JS (Sprite)
+* Colors, fills, strokes can be manipulated by CSS
+* And last but not least: converting SVG files into fonts and referencing them by an entity inside a CSS pseudo class seemed always a bit hacky
+
+### Breaking changes
+* Moved `icon` files to deprecated folder
+* Renamed `icon` (files and classes) to `icon-font`
+* Added svg icon system
+
+__Migration path:__  
+  Follow these steps to continue using icon-fonts until every component which uses this technique is refactored/upgraded to SVG icon system.
+  
+  * Change include path of `icon/index.scss` (and corresponding files):  
+  `@import '../modules/icon/icon*.scss` => `@import '../deprecated/icon-font/icon-font*.scss`  
+  
+  * Change CSS classes (inclusive --modifier):  
+  `.#{$global-class-prefix}icon` => `.#{$global-class-prefix}icon-font`  
+  `.#{$global-class-prefix}icon--*` => `.#{$global-class-prefix}icon-font--*`  
+
+
+## [0.16.0] - 2019-01-07
+* Refactoring of loader components by adding SVG loader
+  
+  __Migration path:__ 
+  * Renamed CSS class `.loader-box` to `.loader` 
+  * Changed HTML of `loader` component
+  * Moved `loader-base` to deprecated folder. Use `loader` instead
+  * Refactored HTML of `loader-application`, `loader-application-text`, `loader-fullpage`, `loader-list`, `loader-module` which now all include `loader` component
+
+## [0.15.0] - 2018-11-26
+* Add possibility display the navigation-steps on light or dark background
+  __Migration path:__ 
+  * if you need the color to be white on dark background, use the `navigation-steps--theme-inverted`
+  class on the navigation-steps element.
+
+* Add possibility display the page header on light or dark background
+  __Migration path:__ 
+  * if you need the color to be white on dark background, use the `page-header--theme-inverted`
+  class on the page-header element.
+
+## [0.14.2] - 2018-11-23
+* Added additional property to flex component and additional examples to visualize flex shorthands.
+* Added missing flex mixin changes to migration path.
+* Changed order of scss import of deprecated scss files to prevent css specificity issues.
+* Fixed layout issue of confirmation modal component (which was caused by css specificity mentioned above).
+
+## [## [0.14.1] - 2018-11-05]
+### Bugfix
+Added missing "-" seperator on sizes/offset classname at "xl" breakpoint
 
 ## [0.14.0] - 2018-10-25
 ### Grid-Float component is now "deprecated"
@@ -17,10 +83,10 @@ Moved grid-float component to `deprecated` folder.
   
     `base/grid/column.mixin.scss` => `deprecated/grid/column.mixin.scss`  
     `base/grid/column.scss` => `deprecated/grid/column.scss`  
-    `base/grid/column.setup.scss` => `deprecated/grid/column.setup.scss` 
+    `base/grid/column.setup.scss` => `deprecated/grid/column.setup.scss`  
     `base/grid/row.mixin.scss` => `deprecated/grid/row.mixin.scss`  
     `base/grid/row.scss` => `deprecated/grid/row.scss`  
-    `base/grid/row.setup.scss` => `deprecated/grid/row.setup.scss` 
+    `base/grid/row.setup.scss` => `deprecated/grid/row.setup.scss`  
     `base/grid/index.scss` => `deprecated/grid/index.scss` 
   
   * Deleted global `setup/grid.setup.scss` because these variables are now directly implemented in grid component.
@@ -62,7 +128,7 @@ Every usage of flex component, which was used to layout with grid sizings, must 
   * Migration path:
     * Changed location of files (and corresponding import paths):
     
-      `base/grid/flex.setup.scss` => deleted! 
+      `base/grid/flex.setup.scss` => deleted!  
       `base/grid/flex.mixin.scss` => `base/layout/flex.mixin.scss`  
       `base/grid/flex.scss` => `base/layout/flex.scss`  
       `base/grid/index.scss` => `base/layout/index.scss`  
@@ -81,12 +147,12 @@ Every usage of flex component, which was used to layout with grid sizings, must 
     
     * Consolidated and deleted doubled mixins (and corresponding includes):
       
-      `@include flex--direction` => `@include flex-direction`
-      `@include flex--wrap` => `@include flex-wrap`
-      `@include flex--justify-content` => `@include flex-main-axis` 
+      `@include flex--direction` => `@include flex-direction`  
+      `@include flex--wrap` => `@include flex-wrap`  
+      `@include flex--justify-content` => `@include flex-main-axis`  
       `@include flex--align-items` => `@include flex-cross-axis`  
       `@include flex--align-content` => `@include flex-align-content`  
-      `@include flex--align-self` => `@include flex-child-cross-axis`  
+      `@include flex--align-self`, `@include flex-child-align` => `@include flex-child-cross-axis`  
       `@include flex--grow` => `@include flex-child-grow`  
       `@include flex--shrink` => `@include flex-child-shrink`  
       `@include flex--basis` => `@include flex-child-basis`  

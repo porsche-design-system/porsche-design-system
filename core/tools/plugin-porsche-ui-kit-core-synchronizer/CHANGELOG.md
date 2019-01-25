@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.1.3] - 2018-011-22
+
+### Updates
+* Added new patternlab folder `04-layout`
+
 ### Improvements
 * Updated npm publish scripts to only use JFrog Artifactory
 * Updated npm repository name to official product abbreviation "pouikit-npm"

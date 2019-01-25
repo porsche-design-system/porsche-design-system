@@ -1,6 +1,6 @@
 import React from "react"
-import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
-import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
+import ComponentExample from "src/components/ComponentExample"
+import ExampleSection from "src/components/ExampleSection"
 
 const SelectExampleMulti = () => {
     return (
@@ -22,8 +22,6 @@ const SelectExampleMulti = () => {
             <ComponentExample title="Disabled" examplePath="molecules/Select/Multi/SelectExampleMultiDisabled" />
 
             <ComponentExample title="Error" examplePath="molecules/Select/Multi/SelectExampleMultiError" />
-
-            <ComponentExample title="Loading" examplePath="molecules/Select/Multi/SelectExampleMultiLoading" />
         </ExampleSection>
     )
 }

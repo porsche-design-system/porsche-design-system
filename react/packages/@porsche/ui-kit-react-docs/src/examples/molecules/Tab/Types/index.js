@@ -1,5 +1,5 @@
-import ComponentExample from "src/app/Components/ComponentDoc/ComponentExample/index"
-import ExampleSection from "src/app/Components/ComponentDoc/ExampleSection"
+import ComponentExample from "src/components/ComponentExample"
+import ExampleSection from "src/components/ExampleSection"
 import React from "react"
 
 const Types = () => {
@@ -9,13 +9,16 @@ const Types = () => {
                 A simple Tab component
             </ComponentExample>
             <ComponentExample title="Mini" examplePath="molecules/Tab/Types/TabExampleMini">
-                The tab component with a smaller dimension
+                The Tab component with a smaller dimension
             </ComponentExample>
             <ComponentExample title="Alignment" examplePath="molecules/Tab/Types/TabExampleAlignment">
-                The tab component left aligned
+                The Tab component left aligned
             </ComponentExample>
             <ComponentExample title="Activation" examplePath="molecules/Tab/Types/TabExampleActivation">
-                The tab component with the second tab activated
+                The Tab component with the second tab activated
+            </ComponentExample>
+            <ComponentExample title="With no divider" examplePath="molecules/Tab/Types/TabExampleNoDivider">
+                The Tab component with no divider displayed
             </ComponentExample>
             <ComponentExample
                 title="Tab change handled outside of component"

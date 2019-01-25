@@ -1,7 +1,7 @@
 @import "../../../common";
 
 $modal-max-width: 30rem;
-$modal-max-width-full: 80rem;
+$modal-max-width-wide: 80rem;
 
 $modal-padding: 1.5rem;
 
@@ -42,6 +42,14 @@ $modal-padding: 1.5rem;
         @media screen and (min-width: $modal-max-width + 2 * $modal-padding) {
             max-width: $modal-max-width;
         }
+
+        &--max-width {
+            width: 100vw;
+        }
+
+        &--max-height {
+            height: 100vh;
+        }
     }
 
     &__content {
@@ -70,8 +78,8 @@ $modal-padding: 1.5rem;
                 max-width: calc(100vw - 2 * 2 * #{$modal-padding});
             }
 
-            @media screen and (min-width: $modal-max-width-full + 2 * $modal-padding) {
-                max-width: $modal-max-width-full;
+            @media screen and (min-width: $modal-max-width-wide + 2 * $modal-padding) {
+                max-width: $modal-max-width-wide;
             }
         }
 

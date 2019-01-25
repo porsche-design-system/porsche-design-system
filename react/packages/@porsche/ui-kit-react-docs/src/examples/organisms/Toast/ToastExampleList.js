@@ -70,10 +70,10 @@ class ToastExampleList extends React.PureComponent {
             <React.Fragment>
                 <Spacing marginBottom={12}>
                     <Flex gap={12}>
-                        <Flex.Item width="auto">
+                        <Flex.Item>
                             <Text>Toggle animations</Text>
                         </Flex.Item>
-                        <Flex.Item width="auto">
+                        <Flex.Item>
                             <Checkbox checked={this.state.animationOnOff} onChange={this.setAnimationOnOrOff} />
                         </Flex.Item>
                     </Flex>

@@ -1,11 +1,11 @@
 {
   "name": "@porsche/plugin-ui-kit-core-synchronizer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Syncronizes Porsche UI Kit Pattern Lab with a team specific Pattern Lab",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:porschedev/porsche-ui-kit.git"
+    "url": "ssh://git@github.com:myporsche/pouikit-porsche-ui-kit.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,8 @@
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
-    "Stephan Schröter <stephan.schroeter@mhp.com>"
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Boris Bojic <b.bojic@21torr.com>"
   ],
   "license": "ISC",
   "dependencies": {
@@ -23,6 +24,6 @@
     "rimraf": "2.6.2"
   },
   "publishConfig": {
-    "@porsche:registry": "https://porschedev.jfrog.io/porschedev/api/npm/pouikit-npm/"
+    "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   }
 }

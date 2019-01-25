@@ -1,24 +1,17 @@
 import 'jasmine';
-import * as puppeteer from 'puppeteer';
-import { Browser, Page } from 'puppeteer';
-import { VisualRegressionTester } from './../../../../../vrt/visual-regression-tester';
+import { VisualRegressionTester } from '@porsche/visual-regression-tester';
+import { getVisualRegressionTester } from '../../../../../vrt/helpers/setup';
 
 describe('Grid', () => {
-  let browser: Browser, page: Page, visualRegressionTester: VisualRegressionTester;
+  let visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
-    page = await browser.newPage();
-    visualRegressionTester = new VisualRegressionTester(page);
+    visualRegressionTester = await getVisualRegressionTester();
   });
 
   it('should have no visual regression', async () => {
     expect(await visualRegressionTester.test('grid~complete', async () => {
-      await visualRegressionTester.goTo('04-layout-grid-grid/04-layout-grid-grid.rendered.html');
+      await visualRegressionTester.goTo('/04-layout-grid-grid/04-layout-grid-grid.rendered.html');
     })).toBeFalsy();
-  });
-
-  afterAll(async () => {
-    await browser.close();
   });
 });

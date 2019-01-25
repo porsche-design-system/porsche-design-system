@@ -3,8 +3,7 @@ import cx from "classnames"
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-import { Divider, Flex } from "../../.."
-import { FlexMainAxis } from "../../atoms/Flex/Flex"
+import { Divider, Flex, FlexProps } from "../../.."
 
 export interface TabProps extends ClassNameProp, ComponentProp {
     /** The different tab items */
@@ -13,6 +12,8 @@ export interface TabProps extends ClassNameProp, ComponentProp {
     alignment?: "left" | "center" | "right"
     /** Controls if the component is displayed with a smaller dimension */
     mini?: boolean
+    /** Controls, if a grey divider line is added to separate content on white background */
+    divider?: boolean
 }
 
 export interface TabPane {
@@ -29,11 +30,12 @@ export interface TabPane {
 }
 
 const defaultProps: Partial<TabProps> = {
-    alignment: "center"
+    alignment: "center",
+    divider: true
 }
 
 const _Tab: React.StatelessComponent<TabProps> = (props) => {
-    const { as, className, panes, alignment, mini, ...rest } = props
+    const { as, className, panes, alignment, mini, divider, ...rest } = props
 
     const classes = cx(className)
 
@@ -62,7 +64,7 @@ const _Tab: React.StatelessComponent<TabProps> = (props) => {
                     )
                 })}
             </Flex>
-            <Divider />
+            {props.divider && <Divider />}
             {panes.map((pane) => {
                 const classContent = cx(prefix("tab__content"), {
                     [prefix("tab__content--active")]: toFlag(pane.active)
@@ -77,7 +79,7 @@ const _Tab: React.StatelessComponent<TabProps> = (props) => {
     )
 }
 
-const toFlexAlignment = (alignment: string): FlexMainAxis => {
+const toFlexAlignment = (alignment: string): FlexProps["alignMainAxis"] => {
     switch (alignment) {
         case "left":
             return "start"

@@ -734,12 +734,69 @@
       </div>
     </div>
 
-    <p class="-text-size-copy -text-color-grey-7 -spacing-12">
-      There are also shorthand css classes available for flex-grow and -shrink.<br>
-      "flex__child--initial" means grow:0 and shrink:1<br>
-      "flex__child--auto" means grow:1 and shrink:1<br>
-      "flex__child--none" means grow:0 and shrink:0
-    </p>
+    <!-- ##########  Shorthand (flex) ########## -->
+
+    <h2 class="-text-size-4-thin -text-color-black -spacing-30">Flex (shorthand)</h2>
+
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"initial" (grow:0, shrink:1 and base:auto)</p>
+    <div class="sg-bg-color-1 sg-padding-tb-1">
+      <div class="flex">
+        <div class="flex__child flex__child--initial">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-2">1 - short content</div>
+        </div>
+        <div class="flex__child flex__child--initial">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-3">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</div>
+        </div>
+        <div class="flex__child flex__child--initial">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-4">3 - short content</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"auto" (grow:1, shrink:1 and base:auto)</p>
+    <div class="sg-bg-color-1 sg-padding-tb-1">
+      <div class="flex">
+        <div class="flex__child flex__child--auto">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-2">1 - short content</div>
+        </div>
+        <div class="flex__child flex__child--auto">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-3">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</div>
+        </div>
+        <div class="flex__child flex__child--auto">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-4">3 - short content</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"equal (grow:1, shrink:1 and base:0)"</p>
+    <div class="sg-bg-color-1 sg-padding-tb-1">
+      <div class="flex">
+        <div class="flex__child flex__child--equal">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-2">1 - short content</div>
+        </div>
+        <div class="flex__child flex__child--equal">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-3">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</div>
+        </div>
+        <div class="flex__child flex__child--equal">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-4">3 - short content</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="-text-size-copy -text-color-grey-7 -spacing-12">"none" (grow:0, shrink:0 and base:auto)</p>
+    <div class="sg-bg-color-1 sg-padding-tb-1">
+      <div class="flex">
+        <div class="flex__child flex__child--none">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-2">1 - short content</div>
+        </div>
+        <div class="flex__child flex__child--none">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-3">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</div>
+        </div>
+        <div class="flex__child flex__child--none">
+          <div class="-text-size-5-regular -text-color-white -align-center sg-padding-1 sg-bg-color-4">3 - short content</div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
