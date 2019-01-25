@@ -18,6 +18,8 @@ SO THAT I _value_
 
 **Notes**  
 Share any further information that is relevant for processing.
+
+**Props** (if relevant)  
 - Name: e.g. Button Square
 - States: e.g. default, hover, focus, active, disabled, loading
 - Variants: e.g. filled, ghost
