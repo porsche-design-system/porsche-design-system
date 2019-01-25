@@ -1,11 +1,9 @@
 import * as React from "react"
 import cx from "classnames"
-import { ComponentMeta, MetaCategorizable } from "../../../types/MetaCategorizable"
-import { getElementType, META, prefix } from "../../../lib"
+import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface PaginationProps extends ClassNameProp, ComponentProp {
-    key: number
     /** The total number of pages */
     pageTotal: number
     /** The max number of pages */
@@ -29,11 +27,6 @@ export interface PaginationProps extends ClassNameProp, ComponentProp {
 //     onClick?: (event: React.MouseEvent<HTMLElement>, item: PaginationItem) => void
 // }
 
-const _meta: ComponentMeta = {
-    name: "Pagination",
-    type: META.TYPES.MOLECULE
-}
-
 const defaultProps: Partial<PaginationProps> = {
     theme: undefined,
     pageMax: 7,
@@ -41,7 +34,7 @@ const defaultProps: Partial<PaginationProps> = {
     pageRange: 3
 }
 
-const _Pagination: React.StatelessComponent<PaginationProps> & Partial<MetaCategorizable> = (props) => {
+const _Pagination: React.StatelessComponent<PaginationProps> = (props) => {
     const { as, className, pageTotal, pageMax, pageMargin, pageRange, theme, onClick, ...rest } = props
 
     const ElementType = getElementType(as, "nav")
@@ -96,7 +89,6 @@ const _Pagination: React.StatelessComponent<PaginationProps> & Partial<MetaCateg
     )
 }
 
-_Pagination._meta = _meta
 _Pagination.defaultProps = defaultProps
 
 /**

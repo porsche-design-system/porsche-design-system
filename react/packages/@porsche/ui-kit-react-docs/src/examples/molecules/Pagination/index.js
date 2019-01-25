@@ -1,12 +1,4 @@
-import React from "react"
 import { Types } from "./Types"
+import { storiesOf, TYPE } from "src/app/stories"
 
-const PaginationExamples = () => {
-    return (
-        <div>
-            <Types />
-        </div>
-    )
-}
-
-export default PaginationExamples
+storiesOf(TYPE.MOLECULE, "Pagination", [], module).add(Types)
