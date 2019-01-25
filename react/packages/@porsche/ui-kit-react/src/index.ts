@@ -20,7 +20,7 @@ export { Navigation, NavigationProps, NavigationSection } from "./components/mol
 export { NavigationMenuList, NavigationMenuListProps } from "./components/molecules/Navigation/NavigationMenuList"
 export { NavigationDesktop } from "./components/molecules/Navigation/NavigationDesktop"
 export { NavigationMobile } from "./components/molecules/Navigation/NavigationMobile"
-export { Pagination } from "./components/molecules/Pagination/Pagination"
+export { Pagination, PaginationProps } from "./components/molecules/Pagination/Pagination"
 export { Select, SelectOption, SelectOptionGroup, SelectValue, SelectProps } from "./components/molecules/Select/Select"
 export { Tab, TabProps, TabPane } from "./components/molecules/Tab/Tab"
 export { TextArea, TextAreaProps } from "./components/molecules/TextArea/TextArea"
