@@ -1,6 +1,7 @@
 {
   "Breakpoint": {
     "displayName": "Breakpoint",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -8,7 +9,7 @@
         ],
         "name": "maxWidth",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx",
           "name": "BreakpointProps"
         },
         "required": false,
@@ -28,7 +29,7 @@
         ],
         "name": "minWidth",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx",
           "name": "BreakpointProps"
         },
         "required": false,
@@ -59,6 +60,7 @@
   },
   "Divider": {
     "displayName": "Divider",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -66,7 +68,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -79,7 +81,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -93,7 +95,7 @@
         ],
         "name": "spacing",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Divider/Divider.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Divider/Divider.tsx",
           "name": "DividerProps"
         },
         "required": false,
@@ -119,8 +121,9 @@
     },
     "path": "src/components/atoms/Divider/Divider.tsx"
   },
-  "Logo": {
-    "displayName": "Logo",
+  "Icon": {
+    "displayName": "Icon",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -128,7 +131,150 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Puts a circle around the icon"
+        ],
+        "name": "circled",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "black",
+        "description": [
+          "The style of the color."
+        ],
+        "name": "color",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"black\"",
+          "\"grey-darker\"",
+          "\"grey-dark\"",
+          "\"grey\"",
+          "\"grey-light\"",
+          "\"grey-lighter\"",
+          "\"white\"",
+          "\"red-1\"",
+          "\"red-2\"",
+          "\"blue-1\"",
+          "\"blue-2\"",
+          "\"status-green\"",
+          "\"status-yellow\"",
+          "\"status-orange\"",
+          "\"status-red\""
+        ]
+      },
+      {
+        "description": [
+          "The icon that should be used."
+        ],
+        "name": "name",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": true,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"111_points_check\"",
+          "\"4WD\"",
+          "\"accident_free\"",
+          "\"arrow_both_ways_hair\"",
+          "\"arrow_down_hair\"",
+          "\"arrow_left_hair_first\"",
+          "\"arrow_left_hair\"",
+          "\"arrow_open_full_down\"",
+          "\"arrow_open_full_up\"",
+          "... 98 more ...",
+          "\"youtube\""
+        ]
+      },
+      {
+        "defaultValue": "regular",
+        "description": [
+          "The size of the icon."
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"small\"",
+          "\"regular\"",
+          "\"medium\"",
+          "\"large\"",
+          "\"huge\""
+        ]
+      },
+      {
+        "description": [
+          "Adds a native HTML tooltip to the icon"
+        ],
+        "name": "title",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "Display an Icon from the Porsche icon font at various sizes."
+      ]
+    },
+    "path": "src/components/atoms/Icon/Icon.tsx"
+  },
+  "Logo": {
+    "displayName": "Logo",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -141,7 +287,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -164,6 +310,7 @@
   },
   "Scroll": {
     "displayName": "Scroll",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -171,7 +318,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -184,7 +331,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -198,7 +345,7 @@
         ],
         "name": "direction",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Scroll/Scroll.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Scroll/Scroll.tsx",
           "name": "ScrollProps"
         },
         "required": false,
@@ -216,6 +363,7 @@
   },
   "Spacing": {
     "displayName": "Spacing",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -223,7 +371,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -236,7 +384,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -249,7 +397,7 @@
         ],
         "name": "margin",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -283,7 +431,7 @@
         ],
         "name": "marginBottom",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -317,7 +465,7 @@
         ],
         "name": "marginLeft",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -351,7 +499,7 @@
         ],
         "name": "marginRight",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -385,7 +533,7 @@
         ],
         "name": "marginTop",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -419,7 +567,7 @@
         ],
         "name": "padding",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -452,7 +600,7 @@
         ],
         "name": "paddingBottom",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -485,7 +633,7 @@
         ],
         "name": "paddingLeft",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -518,7 +666,7 @@
         ],
         "name": "paddingRight",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -551,7 +699,7 @@
         ],
         "name": "paddingTop",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -585,7 +733,7 @@
         ],
         "name": "wrap",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Spacing/Spacing.tsx",
           "name": "SpacingProps"
         },
         "required": false,
@@ -609,150 +757,9 @@
     },
     "path": "src/components/atoms/Spacing/Spacing.tsx"
   },
-  "Icon": {
-    "displayName": "Icon",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Puts a circle around the icon"
-        ],
-        "name": "circled",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
-          "name": "IconProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "black",
-        "description": [
-          "The style of the color."
-        ],
-        "name": "color",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
-          "name": "IconProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"black\"",
-          "\"grey-darker\"",
-          "\"grey-dark\"",
-          "\"grey\"",
-          "\"grey-light\"",
-          "\"grey-lighter\"",
-          "\"white\"",
-          "\"red-1\"",
-          "\"red-2\"",
-          "\"blue-1\"",
-          "\"blue-2\"",
-          "\"status-green\"",
-          "\"status-yellow\"",
-          "\"status-orange\"",
-          "\"status-red\""
-        ]
-      },
-      {
-        "description": [
-          "The icon that should be used."
-        ],
-        "name": "name",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
-          "name": "IconProps"
-        },
-        "required": true,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"111_points_check\"",
-          "\"4WD\"",
-          "\"accident_free\"",
-          "\"arrow_both_ways_hair\"",
-          "\"arrow_down_hair\"",
-          "\"arrow_left_hair_first\"",
-          "\"arrow_left_hair\"",
-          "\"arrow_open_full_down\"",
-          "\"arrow_open_full_up\"",
-          "... 98 more ...",
-          "\"youtube\""
-        ]
-      },
-      {
-        "defaultValue": "regular",
-        "description": [
-          "The size of the icon."
-        ],
-        "name": "size",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
-          "name": "IconProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"small\"",
-          "\"regular\"",
-          "\"medium\"",
-          "\"large\"",
-          "\"huge\""
-        ]
-      },
-      {
-        "description": [
-          "Adds a native HTML tooltip to the icon"
-        ],
-        "name": "title",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
-          "name": "IconProps"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "Display an Icon from the Porsche icon font at various sizes."
-      ]
-    },
-    "path": "src/components/atoms/Icon/Icon.tsx"
-  },
   "Text": {
     "displayName": "Text",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -760,7 +767,7 @@
         ],
         "name": "align",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
           "name": "TextProps"
         },
         "required": false,
@@ -778,7 +785,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -791,7 +798,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -805,7 +812,7 @@
         ],
         "name": "color",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
           "name": "TextProps"
         },
         "required": false,
@@ -835,7 +842,7 @@
         ],
         "name": "ellipsis",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
           "name": "TextProps"
         },
         "required": false,
@@ -848,7 +855,7 @@
         ],
         "name": "inline",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
           "name": "TextProps"
         },
         "required": false,
@@ -862,7 +869,7 @@
         ],
         "name": "type",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
           "name": "TextProps"
         },
         "required": false,
@@ -895,7 +902,7 @@
         ],
         "name": "wrap",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/atoms/Text/Text.tsx",
           "name": "TextProps"
         },
         "required": false,
@@ -911,461 +918,9 @@
     },
     "path": "src/components/atoms/Text/Text.tsx"
   },
-  "Grid": {
-    "displayName": "Grid",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Defines the direction of the main and cross axis. The default \"row\" (default) defines the main axis as horizontal left to right."
-        ],
-        "name": "direction",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
-          "name": "GridProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"row\"",
-          "\"row-reverse\"",
-          "\"column\"",
-          "\"column-reverse\""
-        ]
-      },
-      {
-        "description": [
-          "Defines the gap between contained children. The value \"normal\" (default) sets responsive grid spacings that should be used together with Grid.Child."
-        ],
-        "name": "gap",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
-          "name": "GridProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"normal\"",
-          "\"zero\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        },
-        {
-          "title": "see",
-          "description": "Flex"
-        }
-      ],
-      "description": [
-        "A grid container component used to create layouts based on official grid definitions."
-      ]
-    },
-    "path": "src/components/layout/Grid/Grid.tsx"
-  },
-  "GridChild": {
-    "displayName": "GridChild",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
-        ],
-        "name": "offset",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
-          "name": "GridChildProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "0",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11"
-        ]
-      },
-      {
-        "description": [
-          "The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
-        ],
-        "name": "size",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
-          "name": "GridChildProps"
-        },
-        "required": true,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11",
-          "12"
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A child of a grid container."
-      ]
-    },
-    "path": "src/components/layout/Grid/GridChild.tsx"
-  },
-  "Button": {
-    "displayName": "Button",
-    "props": [
-      {
-        "description": [
-          "Sets the button in its active / selected state."
-        ],
-        "name": "active",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "A button can have centered content (icon/text)."
-        ],
-        "name": "centered",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Disables the button. No onClick will be triggered."
-        ],
-        "name": "disabled",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "A button can show an error."
-        ],
-        "name": "error",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "arrow_right_hair",
-        "description": [
-          "The icon of the button."
-        ],
-        "name": "icon",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"111_points_check\"",
-          "\"4WD\"",
-          "\"accident_free\"",
-          "\"arrow_both_ways_hair\"",
-          "\"arrow_down_hair\"",
-          "\"arrow_left_hair_first\"",
-          "\"arrow_left_hair\"",
-          "\"arrow_open_full_down\"",
-          "\"arrow_open_full_up\"",
-          "... 98 more ...",
-          "\"youtube\""
-        ]
-      },
-      {
-        "description": [
-          "Disable the button and show a loading indicator. No onClick will be triggered."
-        ],
-        "name": "loading",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Called after a user's click."
-        ],
-        "name": "onClick",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "React's original event.",
-            "type": null,
-            "name": "event"
-          },
-          {
-            "title": "param",
-            "description": "All props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "defaultValue": "button",
-        "description": [
-          "Specifies the HTML Type of the button. If undefined, nothing is set."
-        ],
-        "name": "role",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"reset\"",
-          "\"button\"",
-          "\"submit\""
-        ]
-      },
-      {
-        "description": [
-          "Shows only the icon by default, and the button content starting from a specific breakpoint"
-        ],
-        "name": "showContent",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"xs\"",
-          "\"s\"",
-          "\"m\"",
-          "\"l\"",
-          "\"xl\""
-        ]
-      },
-      {
-        "description": [
-          "A button can stretch to fill the full available width."
-        ],
-        "name": "stretch",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "default",
-        "description": [
-          "The display type of the button."
-        ],
-        "name": "type",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
-          "name": "ButtonProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"default\"",
-          "\"black\"",
-          "\"red\"",
-          "\"blue\"",
-          "\"acid-green\"",
-          "\"ghost\"",
-          "\"ghost-inverted\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Icon"
-        }
-      ],
-      "description": [
-        "The default Porsche button."
-      ]
-    },
-    "path": "src/components/molecules/Button/Button.tsx"
-  },
-  "ButtonGroup": {
-    "displayName": "ButtonGroup",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A button group wrapper for the default button."
-      ]
-    },
-    "path": "src/components/molecules/Button/ButtonGroup.tsx"
-  },
   "Flex": {
     "displayName": "Flex",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -1374,7 +929,7 @@
         ],
         "name": "alignContent",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
           "name": "FlexProps"
         },
         "required": false,
@@ -1396,7 +951,7 @@
         ],
         "name": "alignCrossAxis",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
           "name": "FlexProps"
         },
         "required": false,
@@ -1417,7 +972,7 @@
         ],
         "name": "alignMainAxis",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
           "name": "FlexProps"
         },
         "required": false,
@@ -1439,7 +994,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -1452,7 +1007,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -1465,7 +1020,7 @@
         ],
         "name": "direction",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
           "name": "FlexProps"
         },
         "required": false,
@@ -1485,7 +1040,7 @@
         ],
         "name": "gap",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
           "name": "FlexProps"
         },
         "required": false,
@@ -1518,7 +1073,7 @@
         ],
         "name": "inline",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
           "name": "FlexProps"
         },
         "required": false,
@@ -1537,7 +1092,7 @@
         ],
         "name": "wrap",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
           "name": "FlexProps"
         },
         "required": false,
@@ -1570,6 +1125,7 @@
   },
   "FlexItem": {
     "displayName": "FlexItem",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -1577,7 +1133,7 @@
         ],
         "name": "alignCrossAxis",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
           "name": "FlexItemProps"
         },
         "required": false,
@@ -1599,7 +1155,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -1612,7 +1168,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -1625,7 +1181,7 @@
         ],
         "name": "flex",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
           "name": "FlexItemProps"
         },
         "required": false,
@@ -1645,7 +1201,7 @@
         ],
         "name": "grow",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
           "name": "FlexItemProps"
         },
         "required": false,
@@ -1663,7 +1219,7 @@
         ],
         "name": "offset",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
           "name": "FlexItemProps"
         },
         "required": false,
@@ -1685,7 +1241,7 @@
         ],
         "name": "shrink",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
           "name": "FlexItemProps"
         },
         "required": false,
@@ -1703,7 +1259,7 @@
         ],
         "name": "width",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
           "name": "FlexItemProps"
         },
         "required": false,
@@ -1729,29 +1285,17 @@
     },
     "path": "src/components/layout/Flex/FlexItem.tsx"
   },
-  "ButtonIcon": {
-    "displayName": "ButtonIcon",
+  "Grid": {
+    "displayName": "Grid",
+    "methods": [],
     "props": [
-      {
-        "description": [
-          "Sets the button in its active / selected state."
-        ],
-        "name": "active",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
-          "name": "ButtonIconProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
       {
         "description": [
           "The html element type to render as."
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -1764,7 +1308,214 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the direction of the main and cross axis. The default \"row\" (default) defines the main axis as horizontal left to right."
+        ],
+        "name": "direction",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
+          "name": "GridProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"row\"",
+          "\"row-reverse\"",
+          "\"column\"",
+          "\"column-reverse\""
+        ]
+      },
+      {
+        "description": [
+          "Defines the gap between contained children. The value \"normal\" (default) sets responsive grid spacings that should be used together with Grid.Child."
+        ],
+        "name": "gap",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
+          "name": "GridProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"normal\"",
+          "\"zero\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Spacing"
+        },
+        {
+          "title": "see",
+          "description": "Flex"
+        }
+      ],
+      "description": [
+        "A grid container component used to create layouts based on official grid definitions."
+      ]
+    },
+    "path": "src/components/layout/Grid/Grid.tsx"
+  },
+  "GridChild": {
+    "displayName": "GridChild",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
+        ],
+        "name": "offset",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
+          "name": "GridChildProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ]
+      },
+      {
+        "description": [
+          "The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
+          "name": "GridChildProps"
+        },
+        "required": true,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12"
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A child of a grid container."
+      ]
+    },
+    "path": "src/components/layout/Grid/GridChild.tsx"
+  },
+  "Button": {
+    "displayName": "Button",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Sets the button in its active / selected state."
+        ],
+        "name": "active",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "A button can have centered content (icon/text)."
+        ],
+        "name": "centered",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -1777,7 +1528,270 @@
         ],
         "name": "disabled",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "A button can show an error."
+        ],
+        "name": "error",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "arrow_right_hair",
+        "description": [
+          "The icon of the button."
+        ],
+        "name": "icon",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"111_points_check\"",
+          "\"4WD\"",
+          "\"accident_free\"",
+          "\"arrow_both_ways_hair\"",
+          "\"arrow_down_hair\"",
+          "\"arrow_left_hair_first\"",
+          "\"arrow_left_hair\"",
+          "\"arrow_open_full_down\"",
+          "\"arrow_open_full_up\"",
+          "... 98 more ...",
+          "\"youtube\""
+        ]
+      },
+      {
+        "description": [
+          "Disable the button and show a loading indicator. No onClick will be triggered."
+        ],
+        "name": "loading",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called after a user's click."
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "React's original event.",
+            "type": null,
+            "name": "event"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "defaultValue": "button",
+        "description": [
+          "Specifies the HTML Type of the button. If undefined, nothing is set."
+        ],
+        "name": "role",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"reset\"",
+          "\"button\"",
+          "\"submit\""
+        ]
+      },
+      {
+        "description": [
+          "Shows only the icon by default, and the button content starting from a specific breakpoint"
+        ],
+        "name": "showContent",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"xs\"",
+          "\"s\"",
+          "\"m\"",
+          "\"l\"",
+          "\"xl\""
+        ]
+      },
+      {
+        "description": [
+          "A button can stretch to fill the full available width."
+        ],
+        "name": "stretch",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "default",
+        "description": [
+          "The display type of the button."
+        ],
+        "name": "type",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"default\"",
+          "\"black\"",
+          "\"red\"",
+          "\"blue\"",
+          "\"acid-green\"",
+          "\"ghost\"",
+          "\"ghost-inverted\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Icon"
+        }
+      ],
+      "description": [
+        "The default Porsche button."
+      ]
+    },
+    "path": "src/components/molecules/Button/Button.tsx"
+  },
+  "ButtonGroup": {
+    "displayName": "ButtonGroup",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A button group wrapper for the default button."
+      ]
+    },
+    "path": "src/components/molecules/Button/ButtonGroup.tsx"
+  },
+  "ButtonIcon": {
+    "displayName": "ButtonIcon",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Sets the button in its active / selected state."
+        ],
+        "name": "active",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "name": "ButtonIconProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Disables the button. No onClick will be triggered."
+        ],
+        "name": "disabled",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
           "name": "ButtonIconProps"
         },
         "required": false,
@@ -1791,7 +1805,7 @@
         ],
         "name": "icon",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
           "name": "ButtonIconProps"
         },
         "required": false,
@@ -1817,7 +1831,7 @@
         ],
         "name": "inverted",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
           "name": "ButtonIconProps"
         },
         "required": false,
@@ -1830,7 +1844,7 @@
         ],
         "name": "loading",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
           "name": "ButtonIconProps"
         },
         "required": false,
@@ -1843,7 +1857,7 @@
         ],
         "name": "onClick",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
           "name": "ButtonIconProps"
         },
         "required": false,
@@ -1870,7 +1884,7 @@
         ],
         "name": "role",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
           "name": "ButtonIconProps"
         },
         "required": false,
@@ -1889,7 +1903,7 @@
         ],
         "name": "type",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/ButtonIcon/ButtonIcon.tsx",
           "name": "ButtonIconProps"
         },
         "required": false,
@@ -1912,6 +1926,7 @@
   },
   "Checkbox": {
     "displayName": "Checkbox",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -1919,7 +1934,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -1932,7 +1947,7 @@
         ],
         "name": "checkboxProps",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -1946,7 +1961,7 @@
         ],
         "name": "checked",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -1959,7 +1974,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -1972,7 +1987,7 @@
         ],
         "name": "disabled",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -1985,7 +2000,7 @@
         ],
         "name": "error",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -1999,7 +2014,7 @@
         ],
         "name": "labelAs",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -2016,7 +2031,7 @@
         ],
         "name": "onChange",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -2048,7 +2063,7 @@
         ],
         "name": "onClick",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -2074,7 +2089,7 @@
         ],
         "name": "readOnly",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -2087,7 +2102,7 @@
         ],
         "name": "singleLine",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -2101,7 +2116,7 @@
         ],
         "name": "type",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Checkbox/Checkbox.tsx",
           "name": "CheckboxProps"
         },
         "required": false,
@@ -2140,8 +2155,9 @@
     },
     "path": "src/components/molecules/Checkbox/Checkbox.tsx"
   },
-  "Input": {
-    "displayName": "Input",
+  "Flyout": {
+    "displayName": "Flyout",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -2149,7 +2165,65 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "left",
+        "description": [
+          "The position of the flyout"
+        ],
+        "name": "position",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Flyout/Flyout.tsx",
+          "name": "FlyoutProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"left\"",
+          "\"right\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A flyout that can contain arbitrary content.",
+        "Example usage: Container for the desktop navigation menus."
+      ]
+    },
+    "path": "src/components/molecules/Flyout/Flyout.tsx"
+  },
+  "Input": {
+    "displayName": "Input",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2162,7 +2236,7 @@
         ],
         "name": "autofocus",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2178,7 +2252,7 @@
         ],
         "name": "basic",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2191,7 +2265,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -2204,7 +2278,7 @@
         ],
         "name": "disabled",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2217,7 +2291,7 @@
         ],
         "name": "error",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2230,7 +2304,7 @@
         ],
         "name": "icon",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2257,7 +2331,7 @@
         ],
         "name": "name",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2270,7 +2344,7 @@
         ],
         "name": "onChange",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2302,7 +2376,7 @@
         ],
         "name": "placeholder",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2316,7 +2390,7 @@
         ],
         "name": "type",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2329,7 +2403,7 @@
         ],
         "name": "unit",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2342,7 +2416,7 @@
         ],
         "name": "value",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
@@ -2375,65 +2449,9 @@
     },
     "path": "src/components/molecules/Input/Input.tsx"
   },
-  "Flyout": {
-    "displayName": "Flyout",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "left",
-        "description": [
-          "The position of the flyout"
-        ],
-        "name": "position",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Flyout/Flyout.tsx",
-          "name": "FlyoutProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"left\"",
-          "\"right\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A flyout that can contain arbitrary content.",
-        "Example usage: Container for the desktop navigation menus."
-      ]
-    },
-    "path": "src/components/molecules/Flyout/Flyout.tsx"
-  },
   "Link": {
     "displayName": "Link",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -2441,7 +2459,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2454,7 +2472,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -2467,7 +2485,7 @@
         ],
         "name": "href",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
           "name": "LinkProps"
         },
         "required": false,
@@ -2480,7 +2498,7 @@
         ],
         "name": "onClick",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
           "name": "LinkProps"
         },
         "required": false,
@@ -2506,7 +2524,7 @@
         ],
         "name": "target",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
           "name": "LinkProps"
         },
         "required": false,
@@ -2525,7 +2543,7 @@
         ],
         "name": "title",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
           "name": "LinkProps"
         },
         "required": false,
@@ -2539,7 +2557,7 @@
         ],
         "name": "withIcon",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Link/Link.tsx",
           "name": "LinkProps"
         },
         "required": false,
@@ -2562,6 +2580,7 @@
   },
   "Loader": {
     "displayName": "Loader",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -2569,7 +2588,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2582,7 +2601,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -2595,7 +2614,7 @@
         ],
         "name": "inverted",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/Loader.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/Loader.tsx",
           "name": "LoaderProps"
         },
         "required": false,
@@ -2608,7 +2627,7 @@
         ],
         "name": "size",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/Loader.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/Loader.tsx",
           "name": "LoaderProps"
         },
         "required": false,
@@ -2638,6 +2657,7 @@
   },
   "LoaderMask": {
     "displayName": "LoaderMask",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -2645,7 +2665,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2658,7 +2678,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -2672,7 +2692,7 @@
         ],
         "name": "loading",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/LoaderMask.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/LoaderMask.tsx",
           "name": "LoaderMaskProps"
         },
         "required": false,
@@ -2691,6 +2711,7 @@
   },
   "Navigation": {
     "displayName": "Navigation",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -2698,7 +2719,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2711,7 +2732,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -2724,7 +2745,7 @@
         ],
         "name": "sections",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
           "name": "NavigationProps"
         },
         "required": true,
@@ -2737,7 +2758,7 @@
         ],
         "name": "title",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
           "name": "NavigationProps"
         },
         "required": false,
@@ -2755,6 +2776,7 @@
   },
   "NavigationDesktop": {
     "displayName": "NavigationDesktop",
+    "methods": [],
     "props": [
       {
         "defaultValue": "nav",
@@ -2763,7 +2785,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2776,7 +2798,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -2789,7 +2811,7 @@
         ],
         "name": "sections",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
           "name": "NavigationProps"
         },
         "required": true,
@@ -2802,7 +2824,7 @@
         ],
         "name": "title",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
           "name": "NavigationProps"
         },
         "required": false,
@@ -2820,6 +2842,7 @@
   },
   "NavigationMenuList": {
     "displayName": "NavigationMenuList",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -2827,7 +2850,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2840,7 +2863,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -2853,7 +2876,7 @@
         ],
         "name": "mobile",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMenuList.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMenuList.tsx",
           "name": "NavigationMenuListProps"
         },
         "required": false,
@@ -2866,7 +2889,7 @@
         ],
         "name": "submenu",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMenuList.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMenuList.tsx",
           "name": "NavigationMenuListProps"
         },
         "required": false,
@@ -2879,7 +2902,7 @@
         ],
         "name": "type",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMenuList.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/NavigationMenuList.tsx",
           "name": "NavigationMenuListProps"
         },
         "required": false,
@@ -2901,6 +2924,7 @@
   },
   "NavigationMobile": {
     "displayName": "NavigationMobile",
+    "methods": [],
     "props": [
       {
         "defaultValue": "nav",
@@ -2909,7 +2933,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2922,7 +2946,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -2935,7 +2959,7 @@
         ],
         "name": "sections",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
           "name": "NavigationProps"
         },
         "required": true,
@@ -2948,7 +2972,7 @@
         ],
         "name": "title",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Navigation/Navigation.tsx",
           "name": "NavigationProps"
         },
         "required": false,
@@ -2964,8 +2988,9 @@
     },
     "path": "src/components/molecules/Navigation/NavigationMobile.tsx"
   },
-  "Select": {
-    "displayName": "Select",
+  "Pagination": {
+    "displayName": "Pagination",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -2973,7 +2998,440 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "key",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "required": true,
+        "type": "number",
+        "tags": []
+      },
+      {
+        "description": [
+          "Handle click events"
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "required": false,
+        "type": "(event: MouseEvent<HTMLElement, MouseEvent>, item: PaginationProps & { children?: ReactNode; }) => void",
+        "tags": []
+      },
+      {
+        "description": [
+          "The number of pages before/after ellipsis"
+        ],
+        "name": "pageMargin",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "required": false,
+        "type": "number",
+        "tags": []
+      },
+      {
+        "description": [
+          "The max number of pages"
+        ],
+        "name": "pageMax",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "required": true,
+        "type": "number",
+        "tags": []
+      },
+      {
+        "description": [
+          "The number of pages between ellipsis"
+        ],
+        "name": "pageRange",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "required": false,
+        "type": "number",
+        "tags": []
+      },
+      {
+        "description": [
+          "The total number of pages"
+        ],
+        "name": "pageTotal",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "required": true,
+        "type": "number",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the theming of the pagination"
+        ],
+        "name": "theme",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "required": false,
+        "type": "\"inverted\"",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The Pagination component is a link list to cycle through pages/views"
+      ]
+    },
+    "path": "src/components/molecules/Pagination/Pagination.tsx"
+  },
+  "Radio": {
+    "displayName": "Radio",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Whether or not the radio is checked."
+        ],
+        "name": "checked",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "A radio can appear disabled and be unable to change states."
+        ],
+        "name": "disabled",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "A radio can display an error."
+        ],
+        "name": "error",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "A radio needs an id, which is neccessary to connect label and input."
+        ],
+        "name": "id",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": true,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "label",
+        "description": [
+          "Determine if the radio is rendered as HTML label or as span element. Use span if you have use the radio together with other elements in a wrapping label."
+        ],
+        "name": "labelAs",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"label\"",
+          "\"span\""
+        ]
+      },
+      {
+        "description": [
+          "A Radio needs a name"
+        ],
+        "name": "name",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called when the user attempts to change the selected radio."
+        ],
+        "name": "onChange",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "The proposed value after the change.",
+            "type": null,
+            "name": "value"
+          },
+          {
+            "title": "param",
+            "description": "React's original event.",
+            "type": null,
+            "name": "event"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "description": [
+          "Called after a user's click."
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "React's original event.",
+            "type": null,
+            "name": "event"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "description": [
+          "Determines if the content is wrapped or truncated with an ellipsis."
+        ],
+        "name": "singleLine",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "A radio can have a value"
+        ],
+        "name": "value",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        ""
+      ]
+    },
+    "path": "src/components/molecules/Radio/Radio.tsx"
+  },
+  "RadioGroup": {
+    "displayName": "RadioGroup",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "disabled",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/RadioGroup.tsx",
+          "name": "RadioGroupProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "name",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/RadioGroup.tsx",
+          "name": "RadioGroupProps"
+        },
+        "required": true,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called when the user attempts to change the selected radio."
+        ],
+        "name": "onChange",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/RadioGroup.tsx",
+          "name": "RadioGroupProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "The proposed value after the change.",
+            "type": null,
+            "name": "value"
+          },
+          {
+            "title": "param",
+            "description": "React's original event.",
+            "type": null,
+            "name": "event"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        ""
+      ]
+    },
+    "path": "src/components/molecules/Radio/RadioGroup.tsx"
+  },
+  "Select": {
+    "displayName": "Select",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -2989,7 +3447,7 @@
         ],
         "name": "basic",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3002,7 +3460,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -3016,7 +3474,7 @@
         ],
         "name": "clearable",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3029,7 +3487,7 @@
         ],
         "name": "disabled",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3042,7 +3500,7 @@
         ],
         "name": "error",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3055,7 +3513,7 @@
         ],
         "name": "filterOptions",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3068,7 +3526,7 @@
         ],
         "name": "multi",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3081,7 +3539,7 @@
         ],
         "name": "noResultsLabel",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3094,7 +3552,7 @@
         ],
         "name": "onChange",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3122,7 +3580,7 @@
         ],
         "name": "onSearchChanged",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3142,7 +3600,7 @@
         ],
         "name": "options",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3155,7 +3613,7 @@
         ],
         "name": "placeholder",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3169,7 +3627,7 @@
         ],
         "name": "searchable",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3182,7 +3640,7 @@
         ],
         "name": "value",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
           "name": "SelectProps"
         },
         "required": false,
@@ -3214,6 +3672,7 @@
   },
   "SelectArrowRenderer": {
     "displayName": "SelectArrowRenderer",
+    "methods": [],
     "props": [],
     "docBlock": {
       "tags": [],
@@ -3225,6 +3684,7 @@
   },
   "SelectClearRenderer": {
     "displayName": "SelectClearRenderer",
+    "methods": [],
     "props": [],
     "docBlock": {
       "tags": [],
@@ -3234,195 +3694,35 @@
     },
     "path": "src/components/molecules/Select/SelectClearRenderer.tsx"
   },
-  "Radio": {
-    "displayName": "Radio",
+  "Tab": {
+    "displayName": "Tab",
+    "methods": [],
     "props": [
       {
         "description": [
-          "The html element type to render as."
+          "Aligns the tab items horizontally. By default the tabs are centered"
         ],
-        "name": "as",
+        "name": "alignment",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Whether or not the radio is checked."
-        ],
-        "name": "checked",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
-          "name": "RadioProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "A radio can appear disabled and be unable to change states."
-        ],
-        "name": "disabled",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
-          "name": "RadioProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "A radio can display an error."
-        ],
-        "name": "error",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
-          "name": "RadioProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "label",
-        "description": [
-          "Determine if the radio is rendered as HTML label or as span element. Use span if you have use the radio together with other elements in a wrapping label."
-        ],
-        "name": "labelAs",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
-          "name": "RadioProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
+          "name": "TabProps"
         },
         "required": false,
         "type": "enum",
         "tags": [],
         "value": [
-          "\"label\"",
-          "\"span\""
+          "\"left\"",
+          "\"center\"",
+          "\"right\""
         ]
       },
-      {
-        "description": [
-          "A Radio needs a name"
-        ],
-        "name": "name",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
-          "name": "RadioProps"
-        },
-        "required": true,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Called when the user attempts to change the checked state."
-        ],
-        "name": "onChange",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
-          "name": "RadioProps"
-        },
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "The proposed value after the change.",
-            "type": null,
-            "name": "value"
-          },
-          {
-            "title": "param",
-            "description": "React's original event.",
-            "type": null,
-            "name": "event"
-          },
-          {
-            "title": "param",
-            "description": "All props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "description": [
-          "Called after a user's click."
-        ],
-        "name": "onClick",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
-          "name": "RadioProps"
-        },
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "React's original event.",
-            "type": null,
-            "name": "event"
-          },
-          {
-            "title": "param",
-            "description": "All props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "description": [
-          "Determines if the content is wrapped or truncated with an ellipsis."
-        ],
-        "name": "singleLine",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
-          "name": "RadioProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        ""
-      ]
-    },
-    "path": "src/components/molecules/Radio/Radio.tsx"
-  },
-  "RadioGroup": {
-    "displayName": "RadioGroup",
-    "props": [
       {
         "description": [
           "The html element type to render as."
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -3435,7 +3735,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -3444,28 +3744,55 @@
       },
       {
         "description": [
-          ""
+          "Controls, if a grey divider line is added to separate content on white background"
         ],
-        "name": "name",
+        "name": "divider",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/RadioGroup.tsx",
-          "name": "RadioGroupProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
+          "name": "TabProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Controls if the component is displayed with a smaller dimension"
+        ],
+        "name": "mini",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
+          "name": "TabProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "The different tab items"
+        ],
+        "name": "panes",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
+          "name": "TabProps"
         },
         "required": true,
-        "type": "string",
+        "type": "TabPane[]",
         "tags": []
       }
     ],
     "docBlock": {
       "tags": [],
       "description": [
-        ""
+        "The Tab component is a hidden section of content activated by a Menu."
       ]
     },
-    "path": "src/components/molecules/Radio/RadioGroup.tsx"
+    "path": "src/components/molecules/Tab/Tab.tsx"
   },
   "TextArea": {
     "displayName": "TextArea",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -3473,7 +3800,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -3486,7 +3813,7 @@
         ],
         "name": "autofocus",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3499,7 +3826,7 @@
         ],
         "name": "basic",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3512,7 +3839,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -3525,7 +3852,7 @@
         ],
         "name": "disabled",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3538,7 +3865,7 @@
         ],
         "name": "error",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3551,7 +3878,7 @@
         ],
         "name": "icon",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3577,7 +3904,7 @@
         ],
         "name": "maxLength",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3591,7 +3918,7 @@
         ],
         "name": "name",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3604,7 +3931,7 @@
         ],
         "name": "onChange",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3636,7 +3963,7 @@
         ],
         "name": "placeholder",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3649,7 +3976,7 @@
         ],
         "name": "rows",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3662,7 +3989,7 @@
         ],
         "name": "value",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
           "name": "TextAreaProps"
         },
         "required": false,
@@ -3695,193 +4022,9 @@
     },
     "path": "src/components/molecules/TextArea/TextArea.tsx"
   },
-  "Tab": {
-    "displayName": "Tab",
-    "props": [
-      {
-        "description": [
-          "Aligns the tab items horizontally. By default the tabs are centered"
-        ],
-        "name": "alignment",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
-          "name": "TabProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"left\"",
-          "\"center\"",
-          "\"right\""
-        ]
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Controls, if a grey divider line is added to separate content on white background"
-        ],
-        "name": "divider",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
-          "name": "TabProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Controls if the component is displayed with a smaller dimension"
-        ],
-        "name": "mini",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
-          "name": "TabProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "The different tab items"
-        ],
-        "name": "panes",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
-          "name": "TabProps"
-        },
-        "required": true,
-        "type": "TabPane[]",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The Tab component is a hidden section of content activated by a Menu."
-      ]
-    },
-    "path": "src/components/molecules/Tab/Tab.tsx"
-  },
-  "Header": {
-    "displayName": "Header",
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The element type of the logo."
-        ],
-        "name": "logoComponent",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Custom props of the logo."
-        ],
-        "name": "logoProps",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "object",
-        "tags": []
-      },
-      {
-        "description": [
-          "The navigation sections to be displayed."
-        ],
-        "name": "sections",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": true,
-        "type": "NavigationSection[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "The mobile navigation trigger text."
-        ],
-        "name": "title",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "string | Element",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The page header with logo and navigation bar"
-      ]
-    },
-    "path": "src/components/organisms/Header/Header.tsx"
-  },
   "CookieNotification": {
     "displayName": "CookieNotification",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -3889,7 +4032,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -3902,7 +4045,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -3915,7 +4058,7 @@
         ],
         "name": "onClick",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/CookieNotification/CookieNotification.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/CookieNotification/CookieNotification.tsx",
           "name": "CookieNotificationProps"
         },
         "required": true,
@@ -3931,8 +4074,9 @@
     },
     "path": "src/components/organisms/CookieNotification/CookieNotification.tsx"
   },
-  "Toast": {
-    "displayName": "Toast",
+  "Header": {
+    "displayName": "Header",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -3940,7 +4084,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -3953,7 +4097,335 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The element type of the logo."
+        ],
+        "name": "logoComponent",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Custom props of the logo."
+        ],
+        "name": "logoProps",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "object",
+        "tags": []
+      },
+      {
+        "description": [
+          "The navigation sections to be displayed."
+        ],
+        "name": "sections",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": true,
+        "type": "NavigationSection[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "string | Element",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The page header with logo and navigation bar"
+      ]
+    },
+    "path": "src/components/organisms/Header/Header.tsx"
+  },
+  "Modal": {
+    "displayName": "Modal",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Use setAppElement to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open.",
+          "If you can't you can disable that functionality by setting ariaHideApp={false}, but this is not recommended."
+        ],
+        "name": "ariaHideApp",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes for the modal content container."
+        ],
+        "name": "containerClassName",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "String indicating how the content container should be announced to screenreaders."
+        ],
+        "name": "contentLabel",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Boolean describing if the modal should be shown or not. Defaults to false."
+        ],
+        "name": "isOpen",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": true,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Displays a loader and translucent backdrop above the entire content."
+        ],
+        "name": "loading",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Function that will be run when the modal is requested to be closed, prior to actually closing."
+        ],
+        "name": "onRequestClose",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": true,
+        "type": "func",
+        "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "A modal shows a close icon at its top right corner. You can disable this by setting showCloseIcon to false."
+        ],
+        "name": "showCloseIcon",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "dynamic",
+        "description": [
+          "Usually a modal dynamically sets its width and height depending on its content. If you have dynamic contents and want to prevent the modal from changing its width or height, you can set the max-width, max-height or both with this property."
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"dynamic\"",
+          "\"max-width\"",
+          "\"max-height\"",
+          "\"max\""
+        ]
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use wide to allow the modal to span the entire webpage (minus margins)."
+        ],
+        "name": "wide",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A modal container with a transparent background."
+      ]
+    },
+    "path": "src/components/organisms/Modal/Modal.tsx"
+  },
+  "ModalButtons": {
+    "displayName": "ModalButtons",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Button"
+        }
+      ],
+      "description": [
+        "A container for modal action buttons. You should probably only use one or more <Button /> components as children."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalButtons.tsx"
+  },
+  "ModalText": {
+    "displayName": "ModalText",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The copy text for a modal."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalText.tsx"
+  },
+  "ModalTitle": {
+    "displayName": "ModalTitle",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The title for a modal."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalTitle.tsx"
+  },
+  "Toast": {
+    "displayName": "Toast",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -3966,7 +4438,7 @@
         ],
         "name": "message",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
           "name": "ToastProps"
         },
         "required": true,
@@ -3979,7 +4451,7 @@
         ],
         "name": "onClick",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
           "name": "ToastProps"
         },
         "required": false,
@@ -4000,7 +4472,7 @@
         ],
         "name": "type",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
           "name": "ToastProps"
         },
         "required": false,
@@ -4024,6 +4496,7 @@
   },
   "ToastList": {
     "displayName": "ToastList",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -4031,7 +4504,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -4044,7 +4517,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -4057,7 +4530,7 @@
         ],
         "name": "onCloseClick",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
           "name": "ToastListProps"
         },
         "required": true,
@@ -4079,7 +4552,7 @@
         ],
         "name": "toasts",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
           "name": "ToastListProps"
         },
         "required": true,
@@ -4097,6 +4570,7 @@
   },
   "ToastManager": {
     "displayName": "ToastManager",
+    "methods": [],
     "props": [],
     "docBlock": {
       "tags": [],
@@ -4106,241 +4580,9 @@
     },
     "path": "src/components/organisms/Toasts/ToastManager.tsx"
   },
-  "Modal": {
-    "displayName": "Modal",
-    "props": [
-      {
-        "description": [
-          "Use setAppElement to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open.",
-          "If you can't you can disable that functionality by setting ariaHideApp={false}, but this is not recommended."
-        ],
-        "name": "ariaHideApp",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes for the modal content container."
-        ],
-        "name": "containerClassName",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "String indicating how the content container should be announced to screenreaders."
-        ],
-        "name": "contentLabel",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Boolean describing if the modal should be shown or not. Defaults to false."
-        ],
-        "name": "isOpen",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": true,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "false",
-        "description": [
-          "Displays a loader and translucent backdrop above the entire content."
-        ],
-        "name": "loading",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Function that will be run when the modal is requested to be closed, prior to actually closing."
-        ],
-        "name": "onRequestClose",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": true,
-        "type": "func",
-        "tags": []
-      },
-      {
-        "defaultValue": "true",
-        "description": [
-          "A modal shows a close icon at its top right corner. You can disable this by setting showCloseIcon to false."
-        ],
-        "name": "showCloseIcon",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "dynamic",
-        "description": [
-          "Usually a modal dynamically sets its width and height depending on its content. If you have dynamic contents and want to prevent the modal from changing its width or height, you can set the max-width, max-height or both with this property."
-        ],
-        "name": "size",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"dynamic\"",
-          "\"max-width\"",
-          "\"max-height\"",
-          "\"max\""
-        ]
-      },
-      {
-        "defaultValue": "false",
-        "description": [
-          "Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use wide to allow the modal to span the entire webpage (minus margins)."
-        ],
-        "name": "wide",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A modal container with a transparent background."
-      ]
-    },
-    "path": "src/components/organisms/Modal/Modal.tsx"
-  },
-  "ModalButtons": {
-    "displayName": "ModalButtons",
-    "props": [
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Button"
-        }
-      ],
-      "description": [
-        "A container for modal action buttons. You should probably only use one or more <Button /> components as children."
-      ]
-    },
-    "path": "src/components/organisms/Modal/ModalButtons.tsx"
-  },
-  "ModalText": {
-    "displayName": "ModalText",
-    "props": [
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The copy text for a modal."
-      ]
-    },
-    "path": "src/components/organisms/Modal/ModalText.tsx"
-  },
-  "ModalTitle": {
-    "displayName": "ModalTitle",
-    "props": [
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The title for a modal."
-      ]
-    },
-    "path": "src/components/organisms/Modal/ModalTitle.tsx"
-  },
   "ErrorScreen": {
     "displayName": "ErrorScreen",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -4348,7 +4590,7 @@
         ],
         "name": "text",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx",
           "name": "ErrorScreenProps"
         },
         "required": true,
@@ -4361,7 +4603,7 @@
         ],
         "name": "title",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx",
           "name": "ErrorScreenProps"
         },
         "required": true,
@@ -4377,8 +4619,48 @@
     },
     "path": "src/components/screens/ErrorScreen/ErrorScreen.tsx"
   },
+  "MaintenanceScreen": {
+    "displayName": "MaintenanceScreen",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The text under the large title."
+        ],
+        "name": "text",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx",
+          "name": "MaintenanceScreenProps"
+        },
+        "required": true,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The title of the maintenance screen, displayed very large."
+        ],
+        "name": "title",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx",
+          "name": "MaintenanceScreenProps"
+        },
+        "required": true,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A generic maintenance screen with a title and a text."
+      ]
+    },
+    "path": "src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx"
+  },
   "ContentWrapper": {
     "displayName": "ContentWrapper",
+    "methods": [],
     "props": [
       {
         "description": [
@@ -4386,7 +4668,7 @@
         ],
         "name": "as",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
           "name": "ComponentProp"
         },
         "required": false,
@@ -4399,7 +4681,7 @@
         ],
         "name": "className",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
           "name": "ClassNameProp"
         },
         "required": false,
@@ -4413,7 +4695,7 @@
         ],
         "name": "raw",
         "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/structures/ContentWrapper/ContentWrapper.tsx",
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/structures/ContentWrapper/ContentWrapper.tsx",
           "name": "ContentWrapperProps"
         },
         "required": false,
@@ -4430,43 +4712,5 @@
       ]
     },
     "path": "src/components/structures/ContentWrapper/ContentWrapper.tsx"
-  },
-  "MaintenanceScreen": {
-    "displayName": "MaintenanceScreen",
-    "props": [
-      {
-        "description": [
-          "The text under the large title."
-        ],
-        "name": "text",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx",
-          "name": "MaintenanceScreenProps"
-        },
-        "required": true,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The title of the maintenance screen, displayed very large."
-        ],
-        "name": "title",
-        "parent": {
-          "fileName": "/Users/michaelsindlinger/Entwicklung/00_rockstardevelopers/MHP/pouikit-porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx",
-          "name": "MaintenanceScreenProps"
-        },
-        "required": true,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A generic maintenance screen with a title and a text."
-      ]
-    },
-    "path": "src/components/screens/MaintenanceScreen/MaintenanceScreen.tsx"
   }
 }
