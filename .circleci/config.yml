@@ -4,6 +4,7 @@ jobs:
     branches:
       ignore:
         - gh-pages
+        - 1.x
     docker:
       - image: circleci/node:8
     working_directory: ~/repo/core/ui-kit
