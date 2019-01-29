@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_deploy:
+  ui_kit_core_v0_build_deploy:
     docker:
       - image: circleci/node:8
     working_directory: ~/repo/core/ui-kit
@@ -49,9 +49,9 @@ jobs:
             echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/
 workflows:
   version: 2
-  build_and_deploy:
+  ui_kit_core_v0_build_deploy:
     jobs:
-      - build_deploy:
+      - ui_kit_core_v0_build_deploy:
           filters:
             branches:
               ignore:
