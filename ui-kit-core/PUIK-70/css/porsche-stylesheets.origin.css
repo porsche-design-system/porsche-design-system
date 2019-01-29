@@ -11985,13 +11985,11 @@ table {
  * properties for flex child items
  */
 .media-center-modal {
-  display: flex;
-  flex-direction: column;
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  right: 0;
   background-color: #000; }
   .media-center-modal__header {
     display: flex;
@@ -12041,8 +12039,8 @@ table {
         bottom: -0.75rem;
         left: -0.75rem; }
   .media-center-modal__container {
-    height: 56.25vw;
-    width: 100vw; }
+    height: 100%;
+    width: 100%; }
 
 .ng-submitted .input__icon ~ .input__field.ng-invalid {
   padding-right: calc(1.125rem * 2 + 1.25rem - ( 2px - 1px )); }
