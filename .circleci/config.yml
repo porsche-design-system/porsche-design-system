@@ -11,9 +11,6 @@ jobs:
     environment:
       - TARGET_BRANCH: gh-pages
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "49:93:de:0f:85:f6:1e:b0:42:52:28:b6:19:5b:c3:33"
       - checkout:
           path: ~/repo
       - restore_cache:
