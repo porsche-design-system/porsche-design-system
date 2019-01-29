@@ -17,7 +17,14 @@ SO THAT I _value_
 - List topics that are not part of this issue to be worked on.
 
 **Notes**  
-- Share any further information that is relevant for processing.
+Share any further information that is relevant for processing.
+
+**Props** (if relevant)  
+- Name: e.g. Button Square
+- States: e.g. default, hover, focus, active, disabled, loading
+- Variants: e.g. filled, ghost
+- Cases/Templates: e.g. row
+- Themes: e.g. standard + inverted
 
 **Subtasks**  
 - [ ] Create UI decision proposal based on research and testing
