@@ -1,0 +1,54 @@
+{
+  "name": "porsche-ui-kit",
+  "version": "0.0.0",
+  "scope": "@porscheui",
+  "description": "Porsche UI-Kit component library and documentation",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "typings": "dist/typings/index",
+  "license" : "See license in https://github.com/porscheui/porsche-ui-kit/wiki/License",
+  "files": [
+    "dist",
+    "src/**/*.scss",
+    "src/base/icon/pag-iconfont/*",
+    "css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
+  },
+  "keywords": [
+    "porsche",
+    "ui",
+    "components",
+    "design-system",
+    "pattern-lab",
+    "react"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+      "Stephan Schröter <stephan.schroeter@mhp.com>",
+      "Oliver Hook <oliver.hook@mhp.com>",
+      "Anna Krohmer <anna.krohmer@udg.de>",
+      "Marcel Bertram <marcel.bertram@porsche.de>"
+  ],
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-kit/issues"
+  },
+  "homepage": "https://github.com/porscheui/porsche-ui-kit#readme",
+  "scripts": {
+    "test": "Lorem ipsum"
+  },
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "typescript": "^3.2.4"
+  },
+  "devDependencies": {
+    
+  },
+  "publishConfig": {
+    "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+  }
+}
