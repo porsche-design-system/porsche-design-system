@@ -55,5 +55,5 @@ workflows:
           filters:
             branches:
               ignore:
-                - gh-pages
-                - 1.x
+                - /^gh-pages$/
+                - /^1\.x$/
