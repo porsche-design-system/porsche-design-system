@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "module": "esNext",
+    "target": "es5",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es2017", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "test-helper/*": ["../../test-helper/*"]
+    }
+  },
+  "include": ["./@types/**/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "build"]
+}
