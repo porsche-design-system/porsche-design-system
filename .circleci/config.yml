@@ -51,4 +51,9 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build_deploy
+      - build_deploy:
+          filters:
+            branches:
+              ignore:
+                - /^gh-pages$/
+                - /^1\.x$/
