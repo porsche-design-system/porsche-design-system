@@ -12,3 +12,8 @@ Thumbs.db
 
 # npm
 node_modules
+
+# exclude specific folders from 0.x branch
+.tmp/
+dist/
+css/
