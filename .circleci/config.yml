@@ -54,6 +54,4 @@ workflows:
       - build_deploy
           filters:
             branches:
-              ignore:
-                - /^gh-pages$/
-                - /^1\.x$/
+              ignore: /^gh-pages$/
