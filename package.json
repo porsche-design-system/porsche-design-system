@@ -46,7 +46,9 @@
     "typescript": "^3.2.4"
   },
   "devDependencies": {
-    
+    "stylelint": "^9.10.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.1"
   },
   "publishConfig": {
     "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
