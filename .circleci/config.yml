@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  ui_kit_core_v0_build_deploy:
+  ui_kit_v0_core_dev_build_deploy:
     docker:
       - image: circleci/node:8
     working_directory: ~/repo/core/ui-kit
@@ -14,8 +14,8 @@ jobs:
           path: ~/repo
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "package.json" }}
-            - v2-dependencies-
+            - v0-core-dependencies-{{ checksum "package.json" }}
+            - v0-core-dependencies-
       - run:
           name: Install npm dependencies
           command: |
@@ -24,7 +24,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v2-dependencies-{{ checksum "package.json" }}
+          key: v0-core-dependencies-{{ checksum "package.json" }}
       - run:
           name: Build
           command: npm run release
@@ -47,13 +47,137 @@ jobs:
           name: GitHub.io URL
           command: |
             echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/
+  ui_kit_v0_react_dev_build_deploy:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo/react
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          keys:
+            - v0-react-dependencies-{{ checksum "package.json" }}
+            - v0-react-dependencies-
+      - run:
+          name: Install npm dependencies
+          command: |
+            echo "ui_kit_react_v0_dev_build_deploy"
+  ui_kit_v1_dev_build_deploy:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install npm dependencies
+          command: |
+            echo "ui_kit_v1_dev_build_deploy"
+  ui_kit_v0_core_release_build_deploy:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo/core/ui-kit
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          keys:
+            - v0-core-dependencies-{{ checksum "package.json" }}
+            - v0-core-dependencies-
+      - run:
+          name: Install npm dependencies
+          command: |
+            echo "ui_kit_core_v0_release_build_deploy"
+  ui_kit_v0_react_release_build_deploy:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo/react
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          keys:
+            - v0-react-dependencies-{{ checksum "package.json" }}
+            - v0-react-dependencies-
+      - run:
+          name: Install npm dependencies
+          command: |
+            echo "ui_kit_react_v0_release_build_deploy"
+  ui_kit_v1_release_build_deploy:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install npm dependencies
+          command: |
+            echo "ui_kit_v1_release_build_deploy"
 workflows:
   version: 2
-  ui_kit_core_v0_build_deploy:
+  ui_kit_build_deploy:
     jobs:
-      - ui_kit_core_v0_build_deploy:
+      - ui_kit_v0_core_dev_build_deploy:
           filters:
             branches:
-              ignore:
-                - /^gh-pages$/
-                - /^1\.x$/
+              only: /^issue\/[0-9]+\/v0\.x\/core$/
+      - ui_kit_v0_react_dev_build_deploy:
+          filters:
+            branches:
+              only: /^issue\/[0-9]+\/v0\.x\/react$/
+      - ui_kit_v1_dev_build_deploy:
+          filters:
+            branches:
+              only: /^issue\/[0-9]+\/v1\.x$/
+      - ui_kit_v0_core_release_build_deploy:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v0\.[0-9]+\.[0-9]+\/core$/
+      - ui_kit_v0_react_release_build_deploy:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v0\.[0-9]+\.[0-9]+\/react$/
+      - ui_kit_v1_release_build_deploy:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v1\.[0-9]+\.[0-9]+$/
