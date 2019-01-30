@@ -1,0 +1,105 @@
+
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Button group examples</h2>
+  <div class="-spacing-30">
+    <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal</h4>
+    <div class="flex button-group">
+      {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
+      {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
+      {{> molecules-button-regular styleModifier="" button-regular_highlight=true button-regular_label="Less text" }}
+    </div>
+  </div>
+
+  <div class="-spacing-30">
+    <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal stretched</h4>
+    <div class="flex button-group">
+      {{> molecules-button-regular styleModifier="flex__child--equal" button-regular_ghost=true button-regular_label="Some Button Label" }}
+      {{> molecules-button-regular styleModifier="flex__child--equal" button-regular_label="Some Button Label with more text" }}
+      {{> molecules-button-regular styleModifier="flex__child--equal" button-regular_highlight=true button-regular_label="Less text" }}
+    </div>
+  </div>
+
+  <div class="-spacing-30">
+    <h4 class="-text-size-5-thin -text-color-black">Button Group vertical</h4>
+    <div class="flex flex--direction-column flex--cross-axis-start button-group button-group--vertical">
+      {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
+      {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
+      {{> molecules-button-regular styleModifier="" button-regular_highlight=true button-regular_label="Less text" }}
+    </div>
+  </div>
+
+  <div class="-spacing-30">
+    <h4 class="-text-size-5-thin -text-color-black">Button Group vertical stretched</h4>
+    <div class="flex flex--direction-column button-group button-group--vertical">
+      {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
+      {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
+      {{> molecules-button-regular styleModifier="" button-regular_highlight=true button-regular_label="Less text" }}
+    </div>
+  </div>
+
+  <div class="-spacing-30">
+    <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal/vertical-stretched (breakpoint specific)</h4>
+    <div class="flex flex--direction-column flex--direction-row-m button-group--vertical button-group--m">
+      {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
+      {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
+      {{> molecules-button-regular styleModifier="" button-regular_highlight=true button-regular_label="Less text" }}
+    </div>
+  </div>
+
+  <h2 class="-text-size-3-thin -text-color-black -spacing-60">Edge Case Tests</h2>
+  <div class="-spacing-30">
+    <h4 class="-text-size-5-thin -text-color-black">Button Group &lt;button&gt;</h4>
+    <div class="flex button-group">
+      {{> molecules-button-regular styleModifier=""
+                                    button-regular_stretch=true
+                                    button-regular_label="Some Button Label" }}
+
+      {{> molecules-button-regular styleModifier=""
+                                    button-regular_highlight=true
+                                    button-regular_stretch=true
+                                    button-regular_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." }}
+
+    </div>
+  </div>
+  <div class="-spacing-30">
+
+    <h4 class="-text-size-5-thin -text-color-black">Link Group &lt;a href="#"&gt;</h4>
+    <div class="flex button-group">
+
+      {{> molecules-button-regular styleModifier=""
+                                    button-regular_link=true
+                                    button-regular_stretch=true
+                                    button-regular_label="Some Button Label" }}
+
+      {{> molecules-button-regular styleModifier=""
+                                    button-regular_link=true
+                                    button-regular_highlight=true
+                                    button-regular_stretch=true
+                                    button-regular_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." }}
+
+    </div>
+  </div>
+  <div class="-spacing-30">
+    <div class="grid">
+      <div class="grid__child grid__child--size-4">
+        <h4 class="-text-size-5-thin -text-color-black">Long Label</h4>
+        {{> molecules-button-regular
+                                    button-regular_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." }}
+      </div>
+      <div class="grid__child grid__child--size-4">
+        <h4 class="-text-size-5-thin -text-color-black">Disabled</h4>
+        {{> molecules-button-regular
+                                    button-regular_disabled=true
+                                    button-regular_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." }}
+      </div>
+      <div class="grid__child grid__child--size-4">
+        <h4 class="-text-size-5-thin -text-color-black">Loading</h4>
+        {{> molecules-button-regular
+                                    button-regular_disabled=true
+                                    button-regular_loading=true
+                                    loader_isThemeInverted=true
+                                    button-regular_label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." }}
+      </div>
+    </div>
+  </div>
+</div>
