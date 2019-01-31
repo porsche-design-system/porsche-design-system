@@ -17,9 +17,9 @@ jobs:
             - v0-core-dependencies-{{ checksum "package.json" }}
             - v0-core-dependencies-
       - run:
-          name: Install npm dependencies
+          name: Install
           command: |
-            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> ~/.npmrc
+            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> .npmrc
             npm install
       - save_cache:
           paths:
@@ -29,7 +29,7 @@ jobs:
           name: Build
           command: npm run release
       - deploy:
-          name: Deploy to GitHub Pages
+          name: Deploy
           command: |
             git config --global user.email $GH_EMAIL
             git config --global user.name $GH_NAME
@@ -40,7 +40,7 @@ jobs:
             mkdir -p ./$TARGET_BRANCH/$CIRCLE_BRANCH && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
             pushd $TARGET_BRANCH
               git add -A
-              git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_BRANCH}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
               git push origin $TARGET_BRANCH --force-with-lease
             popd
       - run:
@@ -59,14 +59,41 @@ jobs:
             - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
       - checkout:
           path: ~/repo
-      - restore_cache:
-          keys:
-            - v0-react-dependencies-{{ checksum "package.json" }}
-            - v0-react-dependencies-
       - run:
-          name: Install npm dependencies
+          name: Install
           command: |
-            echo "ui_kit_react_v0_dev_build_deploy"
+            pushd packages/@porsche/ui-kit-react
+              echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> .npmrc
+              yarn install
+            popd
+      - run:
+          name: Build
+          command: |
+            pushd packages/@porsche/ui-kit-react
+              yarn run build
+            popd
+            pushd packages/@porsche/ui-kit-react-docs
+              yarn run build
+            popd
+      - deploy:
+          name: Deploy
+          command: |
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
+            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+            pushd $TARGET_BRANCH
+              rm -rf ./$CIRCLE_BRANCH
+            popd
+            mkdir -p ./$TARGET_BRANCH/$CIRCLE_BRANCH && cp -r ./packages/@porsche/ui-kit-react-docs/dist/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
+            pushd $TARGET_BRANCH
+              git add -A
+              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_BRANCH}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git push origin $TARGET_BRANCH --force-with-lease
+            popd
+      - run:
+          name: GitHub.io URL
+          command: |
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/
   ui_kit_v1_dev_build_deploy:
     docker:
       - image: circleci/node:8
@@ -79,10 +106,6 @@ jobs:
             - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
       - checkout:
           path: ~/repo
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
       - run:
           name: Install npm dependencies
           command: |
@@ -104,9 +127,36 @@ jobs:
             - v0-core-dependencies-{{ checksum "package.json" }}
             - v0-core-dependencies-
       - run:
-          name: Install npm dependencies
+          name: Install
           command: |
-            echo "ui_kit_core_v0_release_build_deploy"
+            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> .npmrc
+            npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v0-core-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Build
+          command: npm run release
+      - deploy:
+          name: Deploy
+          command: |
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
+            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+            pushd $TARGET_BRANCH
+              rm -rf ./$CIRCLE_TAG
+            popd
+            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_TAG
+            pushd $TARGET_BRANCH
+              git add -A
+              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git push origin $TARGET_BRANCH --force-with-lease
+            popd
+      - run:
+          name: GitHub.io URL
+          command: |
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_TAG/
   ui_kit_v0_react_release_build_deploy:
     docker:
       - image: circleci/node:8
@@ -119,14 +169,41 @@ jobs:
             - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
       - checkout:
           path: ~/repo
-      - restore_cache:
-          keys:
-            - v0-react-dependencies-{{ checksum "package.json" }}
-            - v0-react-dependencies-
       - run:
-          name: Install npm dependencies
+          name: Install
           command: |
-            echo "ui_kit_react_v0_release_build_deploy"
+            pushd packages/@porsche/ui-kit-react
+              echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> .npmrc
+              yarn install
+            popd
+      - run:
+          name: Build
+          command: |
+            pushd packages/@porsche/ui-kit-react
+              yarn run build
+            popd
+            pushd packages/@porsche/ui-kit-react-docs
+              yarn run build
+            popd
+      - deploy:
+          name: Deploy
+          command: |
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
+            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+            pushd $TARGET_BRANCH
+              rm -rf ./$CIRCLE_TAG
+            popd
+            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./packages/@porsche/ui-kit-react-docs/dist/. ./$TARGET_BRANCH/$CIRCLE_TAG
+            pushd $TARGET_BRANCH
+              git add -A
+              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git push origin $TARGET_BRANCH --force-with-lease
+            popd
+      - run:
+          name: GitHub.io URL
+          command: |
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_TAG/
   ui_kit_v1_release_build_deploy:
     docker:
       - image: circleci/node:8
@@ -139,10 +216,6 @@ jobs:
             - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
       - checkout:
           path: ~/repo
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
       - run:
           name: Install npm dependencies
           command: |
