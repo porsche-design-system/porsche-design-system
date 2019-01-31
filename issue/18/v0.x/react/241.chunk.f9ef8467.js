@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[241],{1013:
+/*!********************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconWindowNext.js ***!
+  \********************************************************************************/
+/*! exports provided: SvgIconWindowNext */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconWindowNext",function(){return i});var c=n(/*! tslib */10),a=n(/*! react */0),i=function(e){return a.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M25.9 13.744l-8.669-4.181a5.978 5.978 0 0 0-2.606-.594H2.875l1.981 9.544c.544 2.631 2.938 4.519 5.719 4.519h18.55v-4.256c0-2.131-1.25-4.081-3.225-5.031zm2.288 8.35H10.575c-2.331 0-4.35-1.587-4.8-3.775l-1.75-8.412h10.6a5.11 5.11 0 0 1 2.2.5l8.669 4.181c1.663.8 2.694 2.406 2.694 4.188v3.319z"}),a.createElement("path",{d:"M15.169 11.781H6.625l.95 4.688h17.8l-8.719-4.344a3.394 3.394 0 0 0-1.488-.344z"}))}}}]);

@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[184],{956:
+/*!*******************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconRouteNext.js ***!
+  \*******************************************************************************/
+/*! exports provided: SvgIconRouteNext */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconRouteNext",function(){return a});var c=n(/*! tslib */10),o=n(/*! react */0),a=function(e){return o.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),o.createElement("path",{d:"M17.225 20.662c-1.223-.258-2.897-.61-3.118-1.054-.055-.109-.1-.265.041-.494.303-.49 1.267-.997 2.357-.997v-1.168c-1.409 0-2.786.637-3.351 1.551-.324.523-.356 1.104-.093 1.631.474.948 1.996 1.268 3.923 1.674 2.017.425 4.527.955 4.79 2.268.055.276-.009.506-.206.747-.696.85-3.424 2.194-13.539 2.553l.002 1.172c8.292-.285 13.034-1.269 14.44-2.984.416-.507.571-1.101.448-1.717-.414-2.069-3.22-2.66-5.695-3.182zM19.016 2.387c-2.872 0-5.208 2.428-5.208 5.413 0 .755.214 2.131 2.06 5.351a48.772 48.772 0 0 0 1.915 3.063l1.234 1.797 1.234-1.797c.039-.057.97-1.417 1.915-3.063 1.846-3.221 2.06-4.596 2.06-5.351 0-2.985-2.337-5.413-5.208-5.413zm.006 8.692a3.512 3.512 0 1 1-.001-7.023 3.512 3.512 0 0 1 .001 7.023z"}))}}}]);

@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[81],{853:
+/*!************************************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconElectricityConsumptionNext.js ***!
+  \************************************************************************************************/
+/*! exports provided: SvgIconElectricityConsumptionNext */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,c){"use strict";c.r(t),c.d(t,"SvgIconElectricityConsumptionNext",function(){return i});var n=c(/*! tslib */10),h=c(/*! react */0),i=function(e){return h.createElement("svg",n.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),h.createElement("path",{d:"M27.856 14.45h-4.625v-4.375h4.625s.925.081.925-.613-1-.6-1-.6l-4.55-.019V6.668h-5.544c-2.775 0-4.994 2.019-5.456 4.619l-.094.25c-2.031 0-6.956-.25-6.956 3.469 0 1.825 1.631 2.981 2.862 3.6 1.387.744 2.125 1.4 2.125 2.144 0 .281-.244 1.925-7.269 1.925v1.456c2.313 0 8.9.219 8.9-3.5 0-1.956-1.506-2.631-2.981-3.381-1.388-.744-2.063-1.713-2.063-2.456 0-1.863 4.006-1.894 5.394-1.894l.094.281c.463 2.606 2.681 4.65 5.456 4.65h5.55v-2.144h4.625c.556 0 .925-.113.925-.65s-.394-.588-.944-.588zm-5.868 2.113h-4c-3.019 0-4.5-2.269-4.5-4.313s1.813-4.344 4.5-4.344h4v8.656z"}))}}}]);

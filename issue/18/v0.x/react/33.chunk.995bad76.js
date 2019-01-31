@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[33],{805:
+/*!******************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconCallback.js ***!
+  \******************************************************************************/
+/*! exports provided: SvgIconCallback */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,n,c){"use strict";c.r(n),c.d(n,"SvgIconCallback",function(){return l});var t=c(/*! tslib */10),a=c(/*! react */0),l=function(e){return a.createElement("svg",t.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M20.279 19.677s-.152.779-.199.892c-.117.407-.162.25-.32.209 0 0-3.282-1.051-5.26-3.038l-.949-.954s-2.59-3.056-2.769-5.313c-.008-.105-.045-.131-.063-.136s-.008 0 0 0a.553.553 0 0 0 .197-.06c.208-.089 1.059-.441 1.059-.441L8.524 4.498l-.633.294s-4.718.468-3.806 3.831l.813 2.443C9.92 19.92 20.086 26.418 20.086 26.418l2.032.944c3.142.984 4.448-3.775 4.448-3.775l.402-1.5zM19.031 10.031h6.5V5.968h-6.5v-3.5l-6.063 5.5 6.063 5.5V10.03z"}))}}}]);

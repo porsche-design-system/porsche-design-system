@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[219],{991:
+/*!***************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconTimer.js ***!
+  \***************************************************************************/
+/*! exports provided: SvgIconTimer */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconTimer",function(){return h});var c=n(/*! tslib */10),r=n(/*! react */0),h=function(e){return r.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),r.createElement("path",{d:"M16.07 9.34c-4.627 0-8.377 3.744-8.377 8.362s3.751 8.362 8.377 8.362c4.627 0 8.377-3.744 8.377-8.362S20.696 9.34 16.07 9.34zm-.026 14.357c-3.344 0-6.055-2.702-6.055-6.034s2.711-6.034 6.055-6.034 6.055 2.702 6.055 6.034c0 3.333-2.711 6.034-6.055 6.034z"}),r.createElement("path",{d:"M15.209 12.331h1.879v5.358h-1.879v-5.358zM14.557 5.958h3.106v2.185h-3.106V5.958zM23.405 8.951l-1.589-1.109-1 1.424 1.589 1.108z"}))}}}]);

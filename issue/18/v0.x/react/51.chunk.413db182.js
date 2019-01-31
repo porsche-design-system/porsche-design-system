@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[51],{823:
+/*!*******************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconCrosshair.js ***!
+  \*******************************************************************************/
+/*! exports provided: SvgIconCrosshair */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,a,n){"use strict";n.r(a),n.d(a,"SvgIconCrosshair",function(){return r});var t=n(/*! tslib */10),c=n(/*! react */0),r=function(e){return c.createElement("svg",t.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),c.createElement("path",{d:"M9.925 11.758a1.283 1.283 0 0 0 1.825 0 1.29 1.29 0 0 0 0-1.825L4.192 2.366a1.29 1.29 0 1 0-1.825 1.825l7.558 7.567zM21.592 19.767a1.29 1.29 0 1 0-1.825 1.825l8.042 8.042a1.283 1.283 0 0 0 1.825 0c.45-.517.475-1.325 0-1.825l-8.042-8.042zM12.225 19.767a1.29 1.29 0 0 0-1.825 0L2.367 27.8a1.283 1.283 0 0 0 0 1.825 1.283 1.283 0 0 0 1.825 0l8.033-8.033c.508-.5.508-1.317 0-1.825zM21.6 12.225l8.033-8.033a1.283 1.283 0 0 0 0-1.825 1.283 1.283 0 0 0-1.825 0L19.775 10.4c-.5.5-.5 1.317 0 1.817.5.508 1.317.517 1.825.008z"}))}}}]);

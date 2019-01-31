@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[132],{904:
+/*!****************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconLocked.js ***!
+  \****************************************************************************/
+/*! exports provided: SvgIconLocked */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,a,n){"use strict";n.r(a),n.d(a,"SvgIconLocked",function(){return v});var t=n(/*! tslib */10),c=n(/*! react */0),v=function(e){return c.createElement("svg",t.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),c.createElement("path",{d:"M21.771 13.072v-2.774a5.945 5.945 0 0 0-5.938-5.942 5.94 5.94 0 0 0-5.938 5.942v2.774a2.378 2.378 0 0 0-2.375 2.384v7.908a2.382 2.382 0 0 0 2.382 2.384h11.861a2.377 2.377 0 0 0 2.382-2.384v-7.908a2.382 2.382 0 0 0-2.375-2.384zm-5.317 6.233v2.65a.622.622 0 0 1-1.242 0v-2.65c-.723-.256-1.055-.852-1.055-1.582a1.676 1.676 0 1 1 3.352 0c0 .73-.332 1.326-1.055 1.582zm2.942-6.233h-7.125V10.3a3.561 3.561 0 0 1 3.563-3.566 3.568 3.568 0 0 1 3.563 3.566v2.772z"}))}}}]);

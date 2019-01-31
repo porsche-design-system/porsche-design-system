@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[247],{1019:
+/*!*****************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconYoutube.js ***!
+  \*****************************************************************************/
+/*! exports provided: SvgIconYoutube */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,c,n){"use strict";n.r(c),n.d(c,"SvgIconYoutube",function(){return o});var t=n(/*! tslib */10),s=n(/*! react */0),o=function(e){return s.createElement("svg",t.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),s.createElement("path",{d:"M28.25 10.981s-.244-1.723-.994-2.481c-.951-.996-2.016-1.001-2.505-1.059-3.498-.253-8.746-.253-8.746-.253h-.011s-5.248 0-8.746.253c-.489.058-1.554.063-2.505 1.059-.75.759-.993 2.481-.993 2.481s-.25 2.023-.25 4.046v1.897c0 2.023.25 4.046.25 4.046s.244 1.723.994 2.481c.951.996 2.2.964 2.757 1.069 2 .192 8.5.251 8.5.251s5.253-.008 8.752-.261c.489-.058 1.554-.063 2.505-1.059.75-.759.994-2.481.994-2.481s.25-2.023.25-4.046v-1.897c0-2.023-.25-4.046-.25-4.046zm-14.831 8.241l-.001-7.024 6.755 3.524-6.754 3.5z"}))}}}]);

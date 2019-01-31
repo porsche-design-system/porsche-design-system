@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[138],{910:
+/*!***********************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconMaxEfficiency.js ***!
+  \***********************************************************************************/
+/*! exports provided: SvgIconMaxEfficiency */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,n,t){"use strict";t.r(n),t.d(n,"SvgIconMaxEfficiency",function(){return l});var a=t(/*! tslib */10),c=t(/*! react */0),l=function(e){return c.createElement("svg",a.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),c.createElement("path",{d:"M19.557 5l1.644 3.378-17.434 8.419 1.356 2.786 17.434-8.419 1.644 3.378 4.033-7.863z"}),c.createElement("path",{d:"M21.573 17.164a1.57 1.57 0 0 1 .033-1.279l.5-1.053-1.434-1.434L8.5 19.276v1.192l1.099.391a1.57 1.57 0 0 1 .893 2.159l-.5 1.053 1.438 1.438 1.053-.5a1.579 1.579 0 0 1 1.279-.033h.001c.411.17.73.507.879.926l.391 1.099h2.033l.388-1.092c.15-.423.473-.763.887-.935.408-.17.868-.158 1.267.032l1.059.503 1.438-1.438-.501-1.053a1.577 1.577 0 0 1 .895-2.158l1.098-.39v-2.033l-1.099-.391a1.573 1.573 0 0 1-.926-.88zm-5.524 5.056a2.769 2.769 0 1 1-.001-5.537 2.769 2.769 0 0 1 .001 5.537z"}))}}}]);

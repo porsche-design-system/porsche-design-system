@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[53],{825:
+/*!********************************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconCustomerAdministration.js ***!
+  \********************************************************************************************/
+/*! exports provided: SvgIconCustomerAdministration */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconCustomerAdministration",function(){return r});var c=n(/*! tslib */10),i=n(/*! react */0),r=function(e){return i.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),i.createElement("path",{d:"M22.538 24.913c0-2.816-5.418-5.92-6.977-6.168-.484-.077-.495-1.408-.495-1.408.566-.93 1.11-2.016 1.567-3.147.79-2.023 1.754-8.775-3.497-8.775s-3.986 7.523-3.665 8.621 1.732 3.301 1.732 3.301-.011 1.331-.495 1.408c-1.563.25-6.996 3.352-6.996 6.168 0 0 1.513.672 9.469.672s9.357-.672 9.357-.672z"}),i.createElement("path",{d:"M23.037 21.29c4.568 0 5.375-.386 5.375-.386 0-1.617-3.111-3.399-4.006-3.541-.278-.044-.284-.808-.284-.808.324-.534.637-1.158.898-1.807.453-1.162 1.007-5.038-2.007-5.038s-2.288 4.318-2.103 4.949.994 1.896.994 1.896-.006.764-.284.808c-.5.079-1.688.666-2.64 1.449 1.13.549 2.541 1.442 3.644 2.476z"}))}}}]);

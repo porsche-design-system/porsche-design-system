@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[152],{924:
+/*!**********************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconOwnerservice.js ***!
+  \**********************************************************************************/
+/*! exports provided: SvgIconOwnerservice */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,n,t){"use strict";t.r(n),t.d(n,"SvgIconOwnerservice",function(){return r});var a=t(/*! tslib */10),c=t(/*! react */0),r=function(e){return c.createElement("svg",a.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),c.createElement("path",{d:"M19.958 15.95c-3.34 0-6.048 2.703-6.048 6.038s2.708 6.038 6.048 6.038 6.048-2.703 6.048-6.038-2.708-6.038-6.048-6.038zm3.437 10.182a.513.513 0 0 1-.761-.029l-3.458-4.027a2.52 2.52 0 0 1-3.598-2.955l1.457 1.455a.563.563 0 0 0 .793 0l.889-.887a.56.56 0 0 0 0-.791l-1.457-1.455a2.52 2.52 0 0 1 2.962 3.591l4.034 3.452c.234.2.247.542.029.76l-.889.887z"}),c.createElement("path",{d:"M12.45 21.987c0-4.139 3.361-7.494 7.508-7.494 1.076 0 2.098.226 3.023.633V5.478H6.99v20.576h6.66a7.452 7.452 0 0 1-1.201-4.067zm.057-14.538H21V8.98h-8.493V7.449zm0 4.028H21v1.551h-8.493v-1.551zM8.464 6.999h2.495V9.51H8.464V6.999zm2.498 6.501H8.454v-2.514h2.508V13.5z"}))}}}]);

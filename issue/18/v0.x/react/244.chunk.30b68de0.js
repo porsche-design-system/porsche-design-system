@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[244],{1016:
+/*!**************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconXing.js ***!
+  \**************************************************************************/
+/*! exports provided: SvgIconXing */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,n,t){"use strict";t.r(n),t.d(n,"SvgIconXing",function(){return o});var c=t(/*! tslib */10),i=t(/*! react */0),o=function(e){return i.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 27 32"},e),i.createElement("path",{d:"M8.377 7.178q-.503-.871-1.28-.871H2.473q-.445 0-.619.29-.213.29.019.716l3.115 5.398c.013.013.013.019 0 .019L.096 21.397a.676.676 0 0 0 .001.699.649.649 0 0 0 .563.327l.037-.001h4.622q.735 0 1.258-.89 4.778-8.474 4.972-8.822zM27.145 1.006q.213-.406 0-.716-.176-.29-.601-.29h-4.662q-.755 0-1.238.87-9.926 17.61-10.274 18.225l6.56 12.034q.464.87 1.28.87h4.624q.426 0 .619-.29.194-.329-.019-.72l-6.506-11.894v-.019z"}))}}}]);

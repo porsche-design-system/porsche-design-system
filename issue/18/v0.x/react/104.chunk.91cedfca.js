@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[104],{876:
+/*!****************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconGoogle.js ***!
+  \****************************************************************************/
+/*! exports provided: SvgIconGoogle */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,c,n){"use strict";n.r(c),n.d(c,"SvgIconGoogle",function(){return i});var t=n(/*! tslib */10),o=n(/*! react */0),i=function(e){return o.createElement("svg",t.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),o.createElement("path",{d:"M1.744 15.269c.075-4.738 4.438-8.881 9.169-8.719 2.269-.106 4.4.881 6.138 2.269a31.358 31.358 0 0 1-2.325 2.412c-2.088-1.444-5.063-1.85-7.15-.188-2.987 2.063-3.125 6.944-.25 9.175 2.794 2.538 8.081 1.281 8.85-2.606-1.756-.025-3.512 0-5.256-.063-.006-1.05-.006-2.088-.006-3.131 2.931-.006 5.85-.012 8.788.006.175 2.456-.15 5.075-1.656 7.1-2.287 3.219-6.875 4.156-10.463 2.781-3.594-1.369-6.138-5.163-5.838-9.037zM25.406 11.775h2.613c.006.875.006 1.756.012 2.619.875.006 1.756.006 2.619.012v2.613c-.875.006-1.75.012-2.619.025-.006.881-.012 1.756-.012 2.619h-2.613c-.006-.875-.006-1.75-.012-2.619-.875-.006-1.756-.012-2.619-.025v-2.613c.875-.006 1.75-.012 2.619-.012 0-.869.006-1.744.012-2.619z"}))}}}]);

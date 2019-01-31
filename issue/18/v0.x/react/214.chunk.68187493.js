@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[214],{986:
+/*!****************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconTecent.js ***!
+  \****************************************************************************/
+/*! exports provided: SvgIconTecent */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconTecent",function(){return r});var a=n(/*! tslib */10),c=n(/*! react */0),r=function(e){return c.createElement("svg",a.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),c.createElement("path",{d:"M16 5.032a9.313 9.313 0 0 0-7.992 14.094c.184.169.521.348.977.029 0 0 .532-.173.298-.935a7.711 7.711 0 0 1-1.043-3.874 7.76 7.76 0 1 1 7.76 7.76 7.782 7.782 0 0 1-1.979-.264l-.005.006s-.531-.213-.78.532c0 0-.309.681.287.943a9.319 9.319 0 0 0 2.476.335 9.313 9.313 0 0 0 0-18.625z"}),c.createElement("path",{d:"M16 11.24a3.104 3.104 0 0 0-2.814 4.414 22.457 22.457 0 0 0-5.509 11.888.874.874 0 0 0 .491.368c.368.099.768-.082 1.089-.445a20.92 20.92 0 0 1 4.931-10.6A3.104 3.104 0 1 0 16 11.242z"}))}}}]);

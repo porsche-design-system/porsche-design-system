@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[233],{1005:
+/*!********************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconVideoQuali.js ***!
+  \********************************************************************************/
+/*! exports provided: SvgIconVideoQuali */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(t,e,n){"use strict";n.r(e),n.d(e,"SvgIconVideoQuali",function(){return c});var i=n(/*! tslib */10),o=n(/*! react */0),c=function(t){return o.createElement("svg",i.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},t),o.createElement("path",{d:"M4.5 19.938l2.375 4.063q1-.625 2.25-.625 1.875 0 3.188 1.344t1.313 3.219h4.688q0-1.25.625-2.25.938-1.625 2.75-2.125t3.438.438l2.375-4.063q-1.063-.625-1.688-1.625-.938-1.625-.438-3.469t2.125-2.781l-2.313-4.063q-1.063.625-2.313.625-1.875 0-3.188-1.313t-1.313-3.25h-4.688q0 1.25-.625 2.313-.938 1.625-2.75 2.094t-3.5-.469l-2.313 4.063q1.063.625 1.688 1.688.938 1.625.438 3.438t-2.125 2.75zM11.188 16q0-2 1.406-3.406T16 11.188t3.406 1.406T20.812 16t-1.406 3.406T16 20.812t-3.406-1.406T11.188 16z"}))}}}]);

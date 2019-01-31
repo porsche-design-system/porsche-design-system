@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[177],{949:
+/*!**********************************************************************************!*\
+  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconRegistration.js ***!
+  \**********************************************************************************/
+/*! exports provided: SvgIconRegistration */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,h,t){"use strict";t.r(h),t.d(h,"SvgIconRegistration",function(){return i});var n=t(/*! tslib */10),v=t(/*! react */0),i=function(e){return v.createElement("svg",n.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),v.createElement("path",{d:"M5.031 6.938v20.063h21.938V6.938zm20.032 18.093H7.04V11h18.023z"}),v.createElement("path",{d:"M9 5h2v3.021H9V5zM21 4.989h2V8.01h-2V4.989zM9 12.989h3.521v3.521H9v-3.521zM14.289 12.989h3.521v3.521h-3.521v-3.521zM19.479 12.989H23v3.521h-3.521v-3.521zM9 18h3.521v3.521H9V18zM14.289 18h3.521v3.521h-3.521V18zM19.479 18H23v3.521h-3.521V18z"}))}}}]);
