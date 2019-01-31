@@ -11,7 +11,6 @@
   "files": [
     "dist",
     "src/**/*.scss",
-    "src/base/icon/pag-iconfont/*",
     "css"
   ],
   "repository": {
