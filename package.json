@@ -2,7 +2,7 @@
   "name": "porsche-ui-kit",
   "version": "0.0.0",
   "scope": "@porscheui",
-  "description": "Porsche UI-Kit component library and documentation",
+  "description": "Porsche UI Kit component library and documentation",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/porscheui/porsche-ui-kit/issues"
   },
-  "homepage": "https://github.com/porscheui/porsche-ui-kit#readme",
+  "homepage": "https://ui.porsche.com",
   "scripts": {
     "precommit": "lint-staged"
   },
@@ -51,8 +51,7 @@
   },
   "dependencies": {
     "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "typescript": "^3.2.4"
+    "react-dom": "^16.7.0"
   },
   "devDependencies": {
     "husky": "^1.3.1",
@@ -63,9 +62,10 @@
     "stylelint-scss": "^3.5.1",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
-    "tslint-react": "^3.6.0"
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.4"
   },
   "publishConfig": {
-    "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+    "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   }
 }
