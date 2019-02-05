@@ -5884,12 +5884,12 @@ table {
   .button-regular--small {
     padding: 0.125rem 0.6875rem; }
     .button-regular--small .button-regular__label {
-      padding-left: 1.375rem; }
+      padding-left: 1.5rem; }
   .button-regular__icon, .button-regular__icon-loader {
     position: absolute;
     margin-top: .1875em; }
   .button-regular__label {
-    padding-left: 1.375rem;
+    padding-left: 1.5rem;
     display: block;
     width: 100%; }
   .button-regular--loading {
