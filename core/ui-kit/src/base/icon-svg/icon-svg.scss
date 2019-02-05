@@ -1,9 +1,0 @@
-@import '../../setup/global-variables.scss';
-@import '../../mixins/px-rem-converter.scss';
-
-.#{$global-class-prefix}icon-svg {
-  display: inline-flex;
-  width: 1em;
-  height: 1em;
-  fill: currentColor;
-}
