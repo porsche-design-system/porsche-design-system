@@ -14,7 +14,7 @@ A Button Regular enables the user to execute an action, change the state of an a
 - The content is always positioned top left aligned within the button. 
 - Button dimensions:
   - __Width:__ By default, the button width is determined by the specific content length.
-  - __Height:__ Standard size 50 px (padding left/right 18 px), small size 30 px (padding left/right 12 px). If it gets multilined, the Button Regular grows to the bottom, keeping its initial padding.
+  - __Height:__ If it gets multilined, the Button Regular grows to the bottom, keeping its initial padding.
 - The Button Regular comes in 2 different sizes. The small size is only to be used in dedicated cases, when a standard size is not appropriate (usually for lack of space).
 - Different types of buttons are available to be used for specific contexts:
   - __Basic:__ Default button in grey (standard) or white (inverted). 
@@ -53,10 +53,9 @@ __The following class modifier can be used to define the needed button type:__
 `button-regular--sales-ghost` => sales ghost button  
 `button-regular--highlight` => highlight button  
 `button-regular--loading` => button with loader (see explanation below)  
-`button-regular--inverted` => inverted button on dark backgrounds  
+`button-regular--theme-inverted` => inverted button on dark backgrounds  
 `button-regular--small` => small button  
 `button-regular--stretch` => stretched button  
-`button-regular--group` => grouped buttons  
 
 __For defining disabled states, the usage of disabled attribute or equivalent aria-role is recommended:__  
 `<button type="button" disabled>Lorem ipsum</button>` => disables a button type="button" element  
