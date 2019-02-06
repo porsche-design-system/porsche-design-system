@@ -220,10 +220,35 @@ jobs:
           name: Install npm dependencies
           command: |
             echo "ui_kit_v1_release_build_deploy"
+  ui_kit_v0_test:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo/core/ui-kit
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
+      - checkout:
+          path: ~/repo
+      - deploy:
+          name: Deploy
+          command: |
+            pwd
+            ls -al
+            pushd ../../
+              pwd
+              ls -al
+            popd
 workflows:
   version: 2
   ui_kit_build_deploy:
     jobs:
+      - ui_kit_v0_test:
+          filters:
+            branches:
+              only: /.*/
       - ui_kit_v0_core_dev_build_deploy:
           filters:
             branches:
