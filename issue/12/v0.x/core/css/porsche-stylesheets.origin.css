@@ -4827,33 +4827,33 @@ table {
     color: #000;
     background-color: #fff;
     border-color: #fff; }
-  .button-regular:not([disabled]):hover, .button-regular:not([disabled]):focus, .button-regular:not([disabled]):active {
+  .button-regular:enabled:hover, .button-regular:enabled:focus, .button-regular:enabled:active, .button-regular:not([disabled]):hover, .button-regular:not([disabled]):focus, .button-regular:not([disabled]):active {
     background-color: #191f22;
     border-color: #191f22;
     text-decoration: none; }
-    .button-regular:not([disabled]):hover.button-regular--theme-inverted, .button-regular:not([disabled]):focus.button-regular--theme-inverted, .button-regular:not([disabled]):active.button-regular--theme-inverted {
+    .button-regular:enabled:hover.button-regular--theme-inverted, .button-regular:enabled:focus.button-regular--theme-inverted, .button-regular:enabled:active.button-regular--theme-inverted, .button-regular:not([disabled]):hover.button-regular--theme-inverted, .button-regular:not([disabled]):focus.button-regular--theme-inverted, .button-regular:not([disabled]):active.button-regular--theme-inverted {
       background-color: #e3e4e4;
       border-color: #e3e4e4; }
-  .button-regular[disabled], .button-regular[aria-disabled='true'] {
+  .button-regular:disabled, .button-regular[disabled], .button-regular[aria-disabled='true'] {
     cursor: default;
     pointer-events: none;
     background-color: #989b9c;
     border-color: #989b9c; }
-    .button-regular[disabled] .button-regular__icon, .button-regular[aria-disabled='true'] .button-regular__icon {
+    .button-regular:disabled .button-regular__icon, .button-regular[disabled] .button-regular__icon, .button-regular[aria-disabled='true'] .button-regular__icon {
       opacity: .55; }
-    .button-regular[disabled] .button-regular__label, .button-regular[aria-disabled='true'] .button-regular__label {
+    .button-regular:disabled .button-regular__label, .button-regular[disabled] .button-regular__label, .button-regular[aria-disabled='true'] .button-regular__label {
       opacity: .55; }
-    .button-regular[disabled] .button-regular__icon-loader, .button-regular[aria-disabled='true'] .button-regular__icon-loader {
+    .button-regular:disabled .button-regular__icon-loader, .button-regular[disabled] .button-regular__icon-loader, .button-regular[aria-disabled='true'] .button-regular__icon-loader {
       opacity: 1; }
-    .button-regular[disabled].button-regular--theme-inverted, .button-regular[aria-disabled='true'].button-regular--theme-inverted {
+    .button-regular:disabled.button-regular--theme-inverted, .button-regular[disabled].button-regular--theme-inverted, .button-regular[aria-disabled='true'].button-regular--theme-inverted {
       color: #000;
       background-color: #8c8f91;
       border-color: #8c8f91; }
-      .button-regular[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
+      .button-regular:disabled.button-regular--theme-inverted .button-regular__icon, .button-regular[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
         opacity: .35; }
-      .button-regular[disabled].button-regular--theme-inverted .button-regular__label, .button-regular[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
+      .button-regular:disabled.button-regular--theme-inverted .button-regular__label, .button-regular[disabled].button-regular--theme-inverted .button-regular__label, .button-regular[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
         opacity: .35; }
-      .button-regular[disabled].button-regular--theme-inverted .button-regular__icon-loader, .button-regular[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon-loader {
+      .button-regular:disabled.button-regular--theme-inverted .button-regular__icon-loader, .button-regular[disabled].button-regular--theme-inverted .button-regular__icon-loader, .button-regular[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon-loader {
         opacity: 1; }
   .button-regular--ghost {
     color: #000;
@@ -4862,89 +4862,89 @@ table {
     .button-regular--ghost.button-regular--theme-inverted {
       color: #fff;
       border-color: #fff; }
-    .button-regular--ghost:not([disabled]):hover, .button-regular--ghost:not([disabled]):focus, .button-regular--ghost:not([disabled]):active {
+    .button-regular--ghost:enabled:hover, .button-regular--ghost:enabled:focus, .button-regular--ghost:enabled:active, .button-regular--ghost:not([disabled]):hover, .button-regular--ghost:not([disabled]):focus, .button-regular--ghost:not([disabled]):active {
       color: #fff;
       background-color: #313639;
       border-color: #313639; }
-      .button-regular--ghost:not([disabled]):hover.button-regular--theme-inverted, .button-regular--ghost:not([disabled]):focus.button-regular--theme-inverted, .button-regular--ghost:not([disabled]):active.button-regular--theme-inverted {
+      .button-regular--ghost:enabled:hover.button-regular--theme-inverted, .button-regular--ghost:enabled:focus.button-regular--theme-inverted, .button-regular--ghost:enabled:active.button-regular--theme-inverted, .button-regular--ghost:not([disabled]):hover.button-regular--theme-inverted, .button-regular--ghost:not([disabled]):focus.button-regular--theme-inverted, .button-regular--ghost:not([disabled]):active.button-regular--theme-inverted {
         color: #000;
         background-color: #fff;
         border-color: #fff; }
-    .button-regular--ghost[disabled], .button-regular--ghost[aria-disabled='true'] {
+    .button-regular--ghost:disabled, .button-regular--ghost[disabled], .button-regular--ghost[aria-disabled='true'] {
       color: #adafb0;
       background-color: transparent;
       border-color: #adafb0; }
-      .button-regular--ghost[disabled] .button-regular__icon, .button-regular--ghost[aria-disabled='true'] .button-regular__icon {
+      .button-regular--ghost:disabled .button-regular__icon, .button-regular--ghost[disabled] .button-regular__icon, .button-regular--ghost[aria-disabled='true'] .button-regular__icon {
         opacity: 1; }
-      .button-regular--ghost[disabled] .button-regular__label, .button-regular--ghost[aria-disabled='true'] .button-regular__label {
+      .button-regular--ghost:disabled .button-regular__label, .button-regular--ghost[disabled] .button-regular__label, .button-regular--ghost[aria-disabled='true'] .button-regular__label {
         opacity: 1; }
-      .button-regular--ghost[disabled].button-regular--theme-inverted, .button-regular--ghost[aria-disabled='true'].button-regular--theme-inverted {
+      .button-regular--ghost:disabled.button-regular--theme-inverted, .button-regular--ghost[disabled].button-regular--theme-inverted, .button-regular--ghost[aria-disabled='true'].button-regular--theme-inverted {
         color: #5e6264;
         background-color: transparent;
         border-color: #5e6264; }
-        .button-regular--ghost[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular--ghost[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
+        .button-regular--ghost:disabled.button-regular--theme-inverted .button-regular__icon, .button-regular--ghost[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular--ghost[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
           opacity: 1; }
-        .button-regular--ghost[disabled].button-regular--theme-inverted .button-regular__label, .button-regular--ghost[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
+        .button-regular--ghost:disabled.button-regular--theme-inverted .button-regular__label, .button-regular--ghost[disabled].button-regular--theme-inverted .button-regular__label, .button-regular--ghost[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
           opacity: 1; }
   .button-regular--highlight {
     color: #fff;
     background-color: #d5001c;
     border-color: #d5001c; }
-    .button-regular--highlight:not([disabled]):hover, .button-regular--highlight:not([disabled]):focus, .button-regular--highlight:not([disabled]):active {
+    .button-regular--highlight:enabled:hover, .button-regular--highlight:enabled:focus, .button-regular--highlight:enabled:active, .button-regular--highlight:not([disabled]):hover, .button-regular--highlight:not([disabled]):focus, .button-regular--highlight:not([disabled]):active {
       background-color: #960014;
       border-color: #960014;
       text-decoration: none; }
-      .button-regular--highlight:not([disabled]):hover.button-regular--theme-inverted, .button-regular--highlight:not([disabled]):focus.button-regular--theme-inverted, .button-regular--highlight:not([disabled]):active.button-regular--theme-inverted {
+      .button-regular--highlight:enabled:hover.button-regular--theme-inverted, .button-regular--highlight:enabled:focus.button-regular--theme-inverted, .button-regular--highlight:enabled:active.button-regular--theme-inverted, .button-regular--highlight:not([disabled]):hover.button-regular--theme-inverted, .button-regular--highlight:not([disabled]):focus.button-regular--theme-inverted, .button-regular--highlight:not([disabled]):active.button-regular--theme-inverted {
         background-color: #960014;
         border-color: #960014; }
-    .button-regular--highlight[disabled], .button-regular--highlight[aria-disabled='true'] {
+    .button-regular--highlight:disabled, .button-regular--highlight[disabled], .button-regular--highlight[aria-disabled='true'] {
       background-color: #ea808e;
       border-color: #ea808e; }
-      .button-regular--highlight[disabled] .button-regular__icon, .button-regular--highlight[aria-disabled='true'] .button-regular__icon {
+      .button-regular--highlight:disabled .button-regular__icon, .button-regular--highlight[disabled] .button-regular__icon, .button-regular--highlight[aria-disabled='true'] .button-regular__icon {
         opacity: .6; }
-      .button-regular--highlight[disabled] .button-regular__label, .button-regular--highlight[aria-disabled='true'] .button-regular__label {
+      .button-regular--highlight:disabled .button-regular__label, .button-regular--highlight[disabled] .button-regular__label, .button-regular--highlight[aria-disabled='true'] .button-regular__label {
         opacity: .6; }
-      .button-regular--highlight[disabled] .button-regular__icon-loader, .button-regular--highlight[aria-disabled='true'] .button-regular__icon-loader {
+      .button-regular--highlight:disabled .button-regular__icon-loader, .button-regular--highlight[disabled] .button-regular__icon-loader, .button-regular--highlight[aria-disabled='true'] .button-regular__icon-loader {
         opacity: 1; }
-      .button-regular--highlight[disabled].button-regular--theme-inverted, .button-regular--highlight[aria-disabled='true'].button-regular--theme-inverted {
+      .button-regular--highlight:disabled.button-regular--theme-inverted, .button-regular--highlight[disabled].button-regular--theme-inverted, .button-regular--highlight[aria-disabled='true'].button-regular--theme-inverted {
         color: #fff;
         background-color: #5b1420;
         border-color: #5b1420; }
-        .button-regular--highlight[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular--highlight[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
+        .button-regular--highlight:disabled.button-regular--theme-inverted .button-regular__icon, .button-regular--highlight[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular--highlight[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
           opacity: .35; }
-        .button-regular--highlight[disabled].button-regular--theme-inverted .button-regular__label, .button-regular--highlight[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
+        .button-regular--highlight:disabled.button-regular--theme-inverted .button-regular__label, .button-regular--highlight[disabled].button-regular--theme-inverted .button-regular__label, .button-regular--highlight[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
           opacity: .35; }
-        .button-regular--highlight[disabled].button-regular--theme-inverted .button-regular__icon-loader, .button-regular--highlight[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon-loader {
+        .button-regular--highlight:disabled.button-regular--theme-inverted .button-regular__icon-loader, .button-regular--highlight[disabled].button-regular--theme-inverted .button-regular__icon-loader, .button-regular--highlight[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon-loader {
           opacity: 1; }
   .button-regular--sales {
     color: #fff;
     background-color: #196a99;
     border-color: #196a99; }
-    .button-regular--sales:not([disabled]):hover, .button-regular--sales:not([disabled]):focus, .button-regular--sales:not([disabled]):active {
+    .button-regular--sales:enabled:hover, .button-regular--sales:enabled:focus, .button-regular--sales:enabled:active, .button-regular--sales:not([disabled]):hover, .button-regular--sales:not([disabled]):focus, .button-regular--sales:not([disabled]):active {
       background-color: #15577e;
       border-color: #15577e;
       text-decoration: none; }
-      .button-regular--sales:not([disabled]):hover.button-regular--theme-inverted, .button-regular--sales:not([disabled]):focus.button-regular--theme-inverted, .button-regular--sales:not([disabled]):active.button-regular--theme-inverted {
+      .button-regular--sales:enabled:hover.button-regular--theme-inverted, .button-regular--sales:enabled:focus.button-regular--theme-inverted, .button-regular--sales:enabled:active.button-regular--theme-inverted, .button-regular--sales:not([disabled]):hover.button-regular--theme-inverted, .button-regular--sales:not([disabled]):focus.button-regular--theme-inverted, .button-regular--sales:not([disabled]):active.button-regular--theme-inverted {
         background-color: #15577e;
         border-color: #15577e; }
-    .button-regular--sales[disabled], .button-regular--sales[aria-disabled='true'] {
+    .button-regular--sales:disabled, .button-regular--sales[disabled], .button-regular--sales[aria-disabled='true'] {
       background-color: #8cb5cc;
       border-color: #8cb5cc; }
-      .button-regular--sales[disabled] .button-regular__icon, .button-regular--sales[aria-disabled='true'] .button-regular__icon {
+      .button-regular--sales:disabled .button-regular__icon, .button-regular--sales[disabled] .button-regular__icon, .button-regular--sales[aria-disabled='true'] .button-regular__icon {
         opacity: .6; }
-      .button-regular--sales[disabled] .button-regular__label, .button-regular--sales[aria-disabled='true'] .button-regular__label {
+      .button-regular--sales:disabled .button-regular__label, .button-regular--sales[disabled] .button-regular__label, .button-regular--sales[aria-disabled='true'] .button-regular__label {
         opacity: .6; }
-      .button-regular--sales[disabled] .button-regular__icon-loader, .button-regular--sales[aria-disabled='true'] .button-regular__icon-loader {
+      .button-regular--sales:disabled .button-regular__icon-loader, .button-regular--sales[disabled] .button-regular__icon-loader, .button-regular--sales[aria-disabled='true'] .button-regular__icon-loader {
         opacity: 1; }
-      .button-regular--sales[disabled].button-regular--theme-inverted, .button-regular--sales[aria-disabled='true'].button-regular--theme-inverted {
+      .button-regular--sales:disabled.button-regular--theme-inverted, .button-regular--sales[disabled].button-regular--theme-inverted, .button-regular--sales[aria-disabled='true'].button-regular--theme-inverted {
         color: #fff;
         background-color: #193646;
         border-color: #193646; }
-        .button-regular--sales[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular--sales[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
+        .button-regular--sales:disabled.button-regular--theme-inverted .button-regular__icon, .button-regular--sales[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular--sales[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
           opacity: .35; }
-        .button-regular--sales[disabled].button-regular--theme-inverted .button-regular__label, .button-regular--sales[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
+        .button-regular--sales:disabled.button-regular--theme-inverted .button-regular__label, .button-regular--sales[disabled].button-regular--theme-inverted .button-regular__label, .button-regular--sales[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
           opacity: .35; }
-        .button-regular--sales[disabled].button-regular--theme-inverted .button-regular__icon-loader, .button-regular--sales[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon-loader {
+        .button-regular--sales:disabled.button-regular--theme-inverted .button-regular__icon-loader, .button-regular--sales[disabled].button-regular--theme-inverted .button-regular__icon-loader, .button-regular--sales[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon-loader {
           opacity: 1; }
   .button-regular--sales-ghost {
     color: #196a99;
@@ -4954,29 +4954,29 @@ table {
       color: #2da6d5;
       background-color: transparent;
       border-color: #2da6d5; }
-    .button-regular--sales-ghost:not([disabled]):hover, .button-regular--sales-ghost:not([disabled]):focus, .button-regular--sales-ghost:not([disabled]):active {
+    .button-regular--sales-ghost:enabled:hover, .button-regular--sales-ghost:enabled:focus, .button-regular--sales-ghost:enabled:active, .button-regular--sales-ghost:not([disabled]):hover, .button-regular--sales-ghost:not([disabled]):focus, .button-regular--sales-ghost:not([disabled]):active {
       color: #fff;
       background-color: #196a99;
       border-color: #196a99; }
-      .button-regular--sales-ghost:not([disabled]):hover.button-regular--theme-inverted, .button-regular--sales-ghost:not([disabled]):focus.button-regular--theme-inverted, .button-regular--sales-ghost:not([disabled]):active.button-regular--theme-inverted {
+      .button-regular--sales-ghost:enabled:hover.button-regular--theme-inverted, .button-regular--sales-ghost:enabled:focus.button-regular--theme-inverted, .button-regular--sales-ghost:enabled:active.button-regular--theme-inverted, .button-regular--sales-ghost:not([disabled]):hover.button-regular--theme-inverted, .button-regular--sales-ghost:not([disabled]):focus.button-regular--theme-inverted, .button-regular--sales-ghost:not([disabled]):active.button-regular--theme-inverted {
         color: #fff;
         background-color: #2088c5;
         border-color: #2088c5; }
-    .button-regular--sales-ghost[disabled], .button-regular--sales-ghost[aria-disabled='true'] {
+    .button-regular--sales-ghost:disabled, .button-regular--sales-ghost[disabled], .button-regular--sales-ghost[aria-disabled='true'] {
       color: #a3c3d6;
       background-color: transparent;
       border-color: #a3c3d6; }
-      .button-regular--sales-ghost[disabled] .button-regular__icon, .button-regular--sales-ghost[aria-disabled='true'] .button-regular__icon {
+      .button-regular--sales-ghost:disabled .button-regular__icon, .button-regular--sales-ghost[disabled] .button-regular__icon, .button-regular--sales-ghost[aria-disabled='true'] .button-regular__icon {
         opacity: 1; }
-      .button-regular--sales-ghost[disabled] .button-regular__label, .button-regular--sales-ghost[aria-disabled='true'] .button-regular__label {
+      .button-regular--sales-ghost:disabled .button-regular__label, .button-regular--sales-ghost[disabled] .button-regular__label, .button-regular--sales-ghost[aria-disabled='true'] .button-regular__label {
         opacity: 1; }
-      .button-regular--sales-ghost[disabled].button-regular--theme-inverted, .button-regular--sales-ghost[aria-disabled='true'].button-regular--theme-inverted {
+      .button-regular--sales-ghost:disabled.button-regular--theme-inverted, .button-regular--sales-ghost[disabled].button-regular--theme-inverted, .button-regular--sales-ghost[aria-disabled='true'].button-regular--theme-inverted {
         color: #21556a;
         background-color: transparent;
         border-color: #21556a; }
-        .button-regular--sales-ghost[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular--sales-ghost[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
+        .button-regular--sales-ghost:disabled.button-regular--theme-inverted .button-regular__icon, .button-regular--sales-ghost[disabled].button-regular--theme-inverted .button-regular__icon, .button-regular--sales-ghost[aria-disabled='true'].button-regular--theme-inverted .button-regular__icon {
           opacity: 1; }
-        .button-regular--sales-ghost[disabled].button-regular--theme-inverted .button-regular__label, .button-regular--sales-ghost[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
+        .button-regular--sales-ghost:disabled.button-regular--theme-inverted .button-regular__label, .button-regular--sales-ghost[disabled].button-regular--theme-inverted .button-regular__label, .button-regular--sales-ghost[aria-disabled='true'].button-regular--theme-inverted .button-regular__label {
           opacity: 1; }
   .button-regular--small {
     padding: 0.125rem 0.6875rem; }
@@ -5000,106 +5000,84 @@ table {
     height: 100%; } }
 
 .button-group {
-  margin: -0.375rem -0.375rem 0; }
-  .button-group > .button-regular,
-  .button-group > .button-icon {
-    margin-left: +0.375rem;
-    margin-right: +0.375rem;
-    margin-top: +0.375rem;
-    margin-bottom: +0.375rem; }
+  margin-top: -0.75rem; }
+  .button-group--horizontal {
+    margin-left: -0.375rem;
+    margin-right: -0.375rem; }
+    .button-group--horizontal > .button-regular,
+    .button-group--horizontal > .button-icon {
+      margin: 0.75rem 0.375rem 0; }
   .button-group--vertical {
-    margin: -0.375rem 0 0; }
+    margin-left: 0;
+    margin-right: 0; }
     .button-group--vertical > .button-regular,
     .button-group--vertical > .button-icon {
-      margin-right: +0rem;
-      margin-left: +0rem;
-      margin-top: +0.375rem;
-      margin-bottom: +0.375rem; }
+      margin: 0.75rem 0 0; }
   @media (min-width: 480px) {
-    .button-group--xs {
-      margin: -0.375rem -0.375rem 0; }
-      .button-group--xs > .button-regular,
-      .button-group--xs > .button-icon {
-        margin-left: +0.375rem;
-        margin-right: +0.375rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; }
+    .button-group--horizontal-xs {
+      margin-left: -0.375rem;
+      margin-right: -0.375rem; }
+      .button-group--horizontal-xs > .button-regular,
+      .button-group--horizontal-xs > .button-icon {
+        margin: 0.75rem 0.375rem 0; }
     .button-group--vertical-xs {
-      margin: -0.375rem 0 0; }
+      margin-left: 0;
+      margin-right: 0; }
       .button-group--vertical-xs > .button-regular,
       .button-group--vertical-xs > .button-icon {
-        margin-right: +0rem;
-        margin-left: +0rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; } }
+        margin: 0.75rem 0 0; } }
   @media (min-width: 760px) {
-    .button-group--s {
-      margin: -0.375rem -0.375rem 0; }
-      .button-group--s > .button-regular,
-      .button-group--s > .button-icon {
-        margin-left: +0.375rem;
-        margin-right: +0.375rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; }
+    .button-group--horizontal-s {
+      margin-left: -0.375rem;
+      margin-right: -0.375rem; }
+      .button-group--horizontal-s > .button-regular,
+      .button-group--horizontal-s > .button-icon {
+        margin: 0.75rem 0.375rem 0; }
     .button-group--vertical-s {
-      margin: -0.375rem 0 0; }
+      margin-left: 0;
+      margin-right: 0; }
       .button-group--vertical-s > .button-regular,
       .button-group--vertical-s > .button-icon {
-        margin-right: +0rem;
-        margin-left: +0rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; } }
+        margin: 0.75rem 0 0; } }
   @media (min-width: 1000px) {
-    .button-group--m {
-      margin: -0.375rem -0.375rem 0; }
-      .button-group--m > .button-regular,
-      .button-group--m > .button-icon {
-        margin-left: +0.375rem;
-        margin-right: +0.375rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; }
+    .button-group--horizontal-m {
+      margin-left: -0.375rem;
+      margin-right: -0.375rem; }
+      .button-group--horizontal-m > .button-regular,
+      .button-group--horizontal-m > .button-icon {
+        margin: 0.75rem 0.375rem 0; }
     .button-group--vertical-m {
-      margin: -0.375rem 0 0; }
+      margin-left: 0;
+      margin-right: 0; }
       .button-group--vertical-m > .button-regular,
       .button-group--vertical-m > .button-icon {
-        margin-right: +0rem;
-        margin-left: +0rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; } }
+        margin: 0.75rem 0 0; } }
   @media (min-width: 1300px) {
-    .button-group--l {
-      margin: -0.375rem -0.375rem 0; }
-      .button-group--l > .button-regular,
-      .button-group--l > .button-icon {
-        margin-left: +0.375rem;
-        margin-right: +0.375rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; }
+    .button-group--horizontal-l {
+      margin-left: -0.375rem;
+      margin-right: -0.375rem; }
+      .button-group--horizontal-l > .button-regular,
+      .button-group--horizontal-l > .button-icon {
+        margin: 0.75rem 0.375rem 0; }
     .button-group--vertical-l {
-      margin: -0.375rem 0 0; }
+      margin-left: 0;
+      margin-right: 0; }
       .button-group--vertical-l > .button-regular,
       .button-group--vertical-l > .button-icon {
-        margin-right: +0rem;
-        margin-left: +0rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; } }
+        margin: 0.75rem 0 0; } }
   @media (min-width: 1760px) {
-    .button-group--xl {
-      margin: -0.375rem -0.375rem 0; }
-      .button-group--xl > .button-regular,
-      .button-group--xl > .button-icon {
-        margin-left: +0.375rem;
-        margin-right: +0.375rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; }
+    .button-group--horizontal-xl {
+      margin-left: -0.375rem;
+      margin-right: -0.375rem; }
+      .button-group--horizontal-xl > .button-regular,
+      .button-group--horizontal-xl > .button-icon {
+        margin: 0.75rem 0.375rem 0; }
     .button-group--vertical-xl {
-      margin: -0.375rem 0 0; }
+      margin-left: 0;
+      margin-right: 0; }
       .button-group--vertical-xl > .button-regular,
       .button-group--vertical-xl > .button-icon {
-        margin-right: +0rem;
-        margin-left: +0rem;
-        margin-top: +0.375rem;
-        margin-bottom: +0.375rem; } }
+        margin: 0.75rem 0 0; } }
 
 .divider {
   width: 100%;

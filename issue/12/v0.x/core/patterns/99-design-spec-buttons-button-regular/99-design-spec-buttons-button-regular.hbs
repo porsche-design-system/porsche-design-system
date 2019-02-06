@@ -3,7 +3,7 @@
   <h2 class="-text-size-3-thin -text-color-black">Button group examples</h2>
   <div class="-spacing-30">
     <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal</h4>
-    <div class="flex button-group">
+    <div class="flex button-group button-group--horizontal">
       {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
       {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
       {{> molecules-button-regular styleModifier="" button-regular_highlight=true button-regular_label="Less text" }}
@@ -12,7 +12,7 @@
 
   <div class="-spacing-30">
     <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal stretched</h4>
-    <div class="flex button-group">
+    <div class="flex button-group button-group--horizontal">
       {{> molecules-button-regular styleModifier="flex__child--equal" button-regular_ghost=true button-regular_label="Some Button Label" }}
       {{> molecules-button-regular styleModifier="flex__child--equal" button-regular_label="Some Button Label with more text" }}
       {{> molecules-button-regular styleModifier="flex__child--equal" button-regular_highlight=true button-regular_label="Less text" }}
@@ -39,7 +39,7 @@
 
   <div class="-spacing-30">
     <h4 class="-text-size-5-thin -text-color-black">Button Group horizontal/vertical-stretched (breakpoint specific)</h4>
-    <div class="flex flex--direction-column flex--direction-row-m button-group--vertical button-group--m">
+    <div class="flex flex--direction-column flex--direction-row-m button-group button-group--vertical button-group--horizontal-m">
       {{> molecules-button-regular styleModifier="" button-regular_ghost=true button-regular_label="Some Button Label" }}
       {{> molecules-button-regular styleModifier="" button-regular_label="Some Button Label with more text" }}
       {{> molecules-button-regular styleModifier="" button-regular_highlight=true button-regular_label="Less text" }}
@@ -49,7 +49,7 @@
   <h2 class="-text-size-3-thin -text-color-black -spacing-60">Edge Case Tests</h2>
   <div class="-spacing-30">
     <h4 class="-text-size-5-thin -text-color-black">Button Group &lt;button&gt;</h4>
-    <div class="flex button-group">
+    <div class="flex button-group button-group--horizontal">
       {{> molecules-button-regular styleModifier=""
                                     button-regular_stretch=true
                                     button-regular_label="Some Button Label" }}
@@ -64,7 +64,7 @@
   <div class="-spacing-30">
 
     <h4 class="-text-size-5-thin -text-color-black">Link Group &lt;a href="#"&gt;</h4>
-    <div class="flex button-group">
+    <div class="flex button-group button-group--horizontal">
 
       {{> molecules-button-regular styleModifier=""
                                     button-regular_link=true
