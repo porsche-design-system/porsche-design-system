@@ -1,73 +1,64 @@
 @import '../../setup/global-variables.scss';
-@import '../../base/spacing/spacing.mixin.scss';
 @import './button-group.mixin.scss';
 
 .#{$global-class-prefix}button-group {
-  @include button-group(horizontal);
-  margin: -#{$spacing-6} -#{$spacing-6} 0;
+  margin-top: -$spacing-12;
+
+  &--horizontal {
+    @include button-group(horizontal);
+  }
 
   &--vertical {
     @include button-group(vertical);
-    margin: -#{$spacing-6} 0 0;
   }
 
   @include breakpoint('xs') {
-    &--xs {
+    &--horizontal-xs {
       @include button-group(horizontal);
-      margin: -#{$spacing-6} -#{$spacing-6} 0;
     }
 
     &--vertical-xs {
       @include button-group(vertical);
-      margin: -#{$spacing-6} 0 0;
     }
   }
 
   @include breakpoint('s') {
-    &--s {
+    &--horizontal-s {
       @include button-group(horizontal);
-      margin: -#{$spacing-6} -#{$spacing-6} 0;
     }
 
     &--vertical-s {
       @include button-group(vertical);
-      margin: -#{$spacing-6} 0 0;
     }
   }
 
   @include breakpoint('m') {
-    &--m {
+    &--horizontal-m {
       @include button-group(horizontal);
-      margin: -#{$spacing-6} -#{$spacing-6} 0;
     }
 
     &--vertical-m {
       @include button-group(vertical);
-      margin: -#{$spacing-6} 0 0;
     }
   }
 
   @include breakpoint('l') {
-    &--l {
+    &--horizontal-l {
       @include button-group(horizontal);
-      margin: -#{$spacing-6} -#{$spacing-6} 0;
     }
 
     &--vertical-l {
       @include button-group(vertical);
-      margin: -#{$spacing-6} 0 0;
     }
   }
 
   @include breakpoint('xl') {
-    &--xl {
+    &--horizontal-xl {
       @include button-group(horizontal);
-      margin: -#{$spacing-6} -#{$spacing-6} 0;
     }
 
     &--vertical-xl {
       @include button-group(vertical);
-      margin: -#{$spacing-6} 0 0;
     }
   }
 }

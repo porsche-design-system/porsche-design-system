@@ -102,7 +102,7 @@ Displaying a group of buttons which are placed side by side (horizontal) or amon
 
 __Button group horizontal:__  
 ```
-<div class="flex button-group">
+<div class="flex button-group button-group--horizontal">
   <button type="button" class="button-regular">
       <svg class="icon-svg button-regular__icon" role="img" title="arrow-right-hair">
         <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"></use>
@@ -138,7 +138,7 @@ __Button group vertical:__
 
 __Breakpoint specific switching between horizontal and vertical layout:__  
 ```
-<div class="flex flex--direction-column flex--direction-row-m button-group--vertical button-group--m">
+<div class="flex flex--direction-column flex--direction-row-m button-group button-group--vertical button-group--horizontal-m">
   <button type="button" class="button-regular">
       <svg class="icon-svg button-regular__icon" role="img" title="arrow-right-hair">
         <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-arrow-right-hair"></use>

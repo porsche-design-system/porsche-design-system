@@ -2,19 +2,21 @@
 @import '../../base/spacing/spacing.mixin.scss';
 
 @mixin button-group($direction) {
+  @if $direction == vertical {
+    margin-left: 0;
+    margin-right: 0;
+  } @else {
+    margin-left: -$spacing-6;
+    margin-right: -$spacing-6;
+  }
+
   // sass-lint:disable no-combinators
   > .#{$global-class-prefix}button-regular,
   > .#{$global-class-prefix}button-icon {
     @if $direction == vertical {
-      @include -spacing-0('right', 'margin');
-      @include -spacing-0('left', 'margin');
-      @include -spacing-6('top', 'margin');
-      @include -spacing-6('bottom', 'margin');
+      margin:  $spacing-12 0 0;
     } @else {
-      @include -spacing-6('left', 'margin');
-      @include -spacing-6('right', 'margin');
-      @include -spacing-6('top', 'margin');
-      @include -spacing-6('bottom', 'margin');
+      margin: $spacing-12 $spacing-6 0;
     }
   }
 }
