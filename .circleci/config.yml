@@ -133,12 +133,12 @@ jobs:
 
             echo "1_______"
             echo $V0X_CORE_VERSION_TAGS
-            echo §V0X_REACT_VERSION_TAGS
+            echo $V0X_REACT_VERSION_TAGS
             echo "--------"
             git tag --sort=-version:refname --list 'v0.*/core'
 
             function v0xCoreReleaseLatest {
-              for tag in $(git tag --sort=-version:refname --list 'v0.*/core')
+              for tag in $V0X_CORE_VERSION_TAGS
               do
                 echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
                 break
@@ -147,7 +147,7 @@ jobs:
 
             function v0xCoreReleaseHistory {
               echo "<ul>"
-              for tag in $(git tag --sort=-version:refname --list 'v0.*/core')
+              for tag in $V0X_CORE_VERSION_TAGS
               do
                 echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
               done
@@ -155,7 +155,7 @@ jobs:
             }
 
             function v0xReactReleaseLatest {
-              for tag in $(git tag --sort=-version:refname --list 'v0.*/react')
+              for tag in $V0X_REACT_VERSION_TAGS
               do
                 echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
                 break
@@ -164,7 +164,7 @@ jobs:
 
             function v0xReactReleaseHistory {
               echo "<ul>"
-              for tag in $(git tag --sort=-version:refname --list 'v0.*/react')
+              for tag in $V0X_REACT_VERSION_TAGS
               do
                 echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
               done
