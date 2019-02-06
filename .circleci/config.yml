@@ -125,52 +125,6 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            DATE="$(date -R)"
-            LATEST_0X_UI_KIT_CORE_VERSION="$(git tag --sort=-version:refname --list 'v0.*/core' | head -n 1 | cut -d "/" -f1 | cut -c 2-)"
-            VERSION_TAG="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
-            V0X_CORE_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/core')
-            V0X_REACT_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/react')
-
-            echo "1_______"
-            echo $V0X_CORE_VERSION_TAGS
-            echo $V0X_REACT_VERSION_TAGS
-            echo "--------"
-            git tag --sort=-version:refname --list 'v0.*/core'
-
-            function v0xCoreReleaseLatest {
-              for tag in $V0X_CORE_VERSION_TAGS
-              do
-                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
-                break
-              done
-            }
-
-            function v0xCoreReleaseHistory {
-              echo "<ul>"
-              for tag in $V0X_CORE_VERSION_TAGS
-              do
-                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
-              done
-              echo "</ul>"
-            }
-
-            function v0xReactReleaseLatest {
-              for tag in $V0X_REACT_VERSION_TAGS
-              do
-                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
-                break
-              done
-            }
-
-            function v0xReactReleaseHistory {
-              echo "<ul>"
-              for tag in $V0X_REACT_VERSION_TAGS
-              do
-                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
-              done
-              echo "</ul>"
-            }
-
             git config --global user.email $GH_EMAIL
             git config --global user.name $GH_NAME
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
@@ -181,10 +135,47 @@ jobs:
             mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_TAG
             mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch && cp ./../../sketch/porsche-ui-kit.sketch ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch/porsche-ui-kit.sketch
 
+            PUBLISH_DATE="$(date -R)"
+            SORTED_V0X_CORE_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/core')
+            SORTED_V0X_REACT_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/react')
+            LATEST_V0X_UI_KIT_CORE_VERSION="$(git tag --sort=-version:refname --list 'v0.*/core' | head -n 1 | cut -d "/" -f1 | cut -c 2-)"
+            CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
+
+            function v0xCoreReleaseLatest {
+              for tag in $SORTED_V0X_CORE_VERSION_TAGS
+              do
+                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
+                break
+              done
+            }
+
+            function v0xCoreReleaseHistory {
+              echo "<ul>"
+              for tag in $SORTED_V0X_CORE_VERSION_TAGS
+              do
+                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
+              done
+              echo "</ul>"
+            }
+
+            function v0xReactReleaseLatest {
+              for tag in $SORTED_V0X_REACT_VERSION_TAGS
+              do
+                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
+                break
+              done
+            }
+
+            function v0xReactReleaseHistory {
+              echo "<ul>"
+              for tag in $SORTED_V0X_REACT_VERSION_TAGS
+              do
+                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
+              done
+              echo "</ul>"
+            }
+
             pushd $TARGET_BRANCH
-              echo "2_______"
-              echo $V0X_CORE_VERSION_TAGS
-              echo §V0X_REACT_VERSION_TAGS
               cat << _EOF_ > index.html
             <!DOCTYPE html>
             <html lang="en">
@@ -196,7 +187,7 @@ jobs:
               <h1>Porsche UI Kit</h1>
               <hr>
               <h2>Links</h2>
-              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml">Link to feed</a> (public)</h4>
+              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml">Add Porsche UI Kit Sketch library</a> (public)</h4>
               <h4>NPM Packages <a href="https://porscheui.jfrog.io">Link npm registry</a> (private)</h4>
               <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit">Link to GitHub</a> (private)</h4>
               <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki">Link to GitHub Wiki</a> (private)</h4>
@@ -250,9 +241,9 @@ jobs:
                 <title>Porsche UI</title>
                 <description>A Porsche UI Sketch library.</description>
                 <item>
-                  <title>Porsche UI Kit (v$LATEST_0X_UI_KIT_CORE_VERSION)</title>
-                  <pubDate>$DATE</pubDate>
-                  <enclosure url="https://ui.porsche.com/v$LATEST_0X_UI_KIT_CORE_VERSION/sketch/porsche-ui-kit.sketch" sparkle:version="$LATEST_0X_UI_KIT_CORE_VERSION" type="application/octet-stream"/>
+                  <title>Porsche UI Kit (v$LATEST_V0X_UI_KIT_CORE_VERSION)</title>
+                  <pubDate>$PUBLISH_DATE</pubDate>
+                  <enclosure url="https://ui.porsche.com/v$LATEST_V0X_UI_KIT_CORE_VERSION/sketch/porsche-ui-kit.sketch" sparkle:version="$LATEST_V0X_UI_KIT_CORE_VERSION" type="application/octet-stream"/>
                 </item>
               </channel>
             </rss>
@@ -261,7 +252,7 @@ jobs:
 
             pushd $TARGET_BRANCH
               git add -A
-              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) & Porsche UI Kit Sketch Library (${VERSION_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) & Porsche UI Kit Sketch Library (${CURRENT_V0X_UI_KIT_CORE_VERSION}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
               git push origin $TARGET_BRANCH --force-with-lease
             popd
       - run:
