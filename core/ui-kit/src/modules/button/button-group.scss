@@ -3,35 +3,71 @@
 @import './button-group.mixin.scss';
 
 .#{$global-class-prefix}button-group {
-  margin-bottom: calc(-1 * #{$spacing-12});
-  @include button-group(horizontal); // sass-lint:disable-line mixins-before-declarations
+  @include button-group(horizontal);
+  margin: -#{$spacing-6} -#{$spacing-6} 0;
 
   &--vertical {
     @include button-group(vertical);
+    margin: -#{$spacing-6} 0 0;
   }
 
   @include breakpoint('xs') {
-    &--xs           { @include button-group(horizontal); }
-    &--vertical-xs  { @include button-group(vertical); }
+    &--xs {
+      @include button-group(horizontal);
+      margin: -#{$spacing-6} -#{$spacing-6} 0;
+    }
+
+    &--vertical-xs {
+      @include button-group(vertical);
+      margin: -#{$spacing-6} 0 0;
+    }
   }
 
   @include breakpoint('s') {
-    &--s           { @include button-group(horizontal); }
-    &--vertical-s { @include button-group(vertical); }
+    &--s {
+      @include button-group(horizontal);
+      margin: -#{$spacing-6} -#{$spacing-6} 0;
+    }
+
+    &--vertical-s {
+      @include button-group(vertical);
+      margin: -#{$spacing-6} 0 0;
+    }
   }
 
   @include breakpoint('m') {
-    &--m           { @include button-group(horizontal); }
-    &--vertical-m { @include button-group(vertical); }
+    &--m {
+      @include button-group(horizontal);
+      margin: -#{$spacing-6} -#{$spacing-6} 0;
+    }
+
+    &--vertical-m {
+      @include button-group(vertical);
+      margin: -#{$spacing-6} 0 0;
+    }
   }
 
   @include breakpoint('l') {
-    &--l           { @include button-group(horizontal); }
-    &--vertical-l { @include button-group(vertical); }
+    &--l {
+      @include button-group(horizontal);
+      margin: -#{$spacing-6} -#{$spacing-6} 0;
+    }
+
+    &--vertical-l {
+      @include button-group(vertical);
+      margin: -#{$spacing-6} 0 0;
+    }
   }
 
   @include breakpoint('xl') {
-    &--xl           { @include button-group(horizontal); }
-    &--vertical-xl { @include button-group(vertical); }
+    &--xl {
+      @include button-group(horizontal);
+      margin: -#{$spacing-6} -#{$spacing-6} 0;
+    }
+
+    &--vertical-xl {
+      @include button-group(vertical);
+      margin: -#{$spacing-6} 0 0;
+    }
   }
 }
