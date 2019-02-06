@@ -125,91 +125,9 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            VERSION="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
-
-            git config --global user.email $GH_EMAIL
-            git config --global user.name $GH_NAME
-            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
-            pushd $TARGET_BRANCH
-              rm -rf ./$CIRCLE_TAG
-            popd
-
-            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_TAG
-            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch && cp ./../../sketch/porsche-ui-kit.sketch ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch/porsche-ui-kit.sketch
-
-            pushd $TARGET_BRANCH
-              git add -A
-              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) & Porsche UI Kit Sketch Library (${VERSION}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
-              git push origin $TARGET_BRANCH --force-with-lease
-            popd
-      - run:
-          name: GitHub.io URL
-          command: |
-            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_TAG/
-  ui_kit_v0_react_release_build_deploy:
-    docker:
-      - image: circleci/node:8
-    working_directory: ~/repo/react
-    environment:
-      - TARGET_BRANCH: gh-pages
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
-      - checkout:
-          path: ~/repo
-      - run:
-          name: Install
-          command: |
-            pushd packages/@porsche/ui-kit-react
-              echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> .npmrc
-              yarn install
-            popd
-      - run:
-          name: Build
-          command: |
-            pushd packages/@porsche/ui-kit-react
-              yarn run build
-            popd
-            pushd packages/@porsche/ui-kit-react-docs
-              yarn run build
-            popd
-      - deploy:
-          name: Deploy
-          command: |
-            git config --global user.email $GH_EMAIL
-            git config --global user.name $GH_NAME
-            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
-            pushd $TARGET_BRANCH
-              rm -rf ./$CIRCLE_TAG
-            popd
-            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./packages/@porsche/ui-kit-react-docs/dist/. ./$TARGET_BRANCH/$CIRCLE_TAG
-            pushd $TARGET_BRANCH
-              git add -A
-              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
-              git push origin $TARGET_BRANCH --force-with-lease
-            popd
-      - run:
-          name: GitHub.io URL
-          command: |
-            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_TAG/
-  ui_kit_v0_core_build_deploy_frontpage_and_sketch_rss_feed:
-    docker:
-      - image: circleci/node:8
-    working_directory: ~/repo
-    environment:
-      - TARGET_BRANCH: gh-pages
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
-      - checkout:
-          path: ~/repo
-      - deploy:
-          name: Deploy
-          command: |
             DATE="$(date -R)"
             LATEST_0X_UI_KIT_CORE_VERSION="$(git tag --sort=-version:refname --list 'v0.*/core' | head -n 1 | cut -d "/" -f1 | cut -c 2-)"
+            VERSION_TAG="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
 
             function v0xCoreReleaseLatest {
               for tag in $(git tag --sort=-version:refname --list 'v0.*/core')
@@ -248,9 +166,14 @@ jobs:
             git config --global user.email $GH_EMAIL
             git config --global user.name $GH_NAME
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+            pushd $TARGET_BRANCH
+              rm -rf ./$CIRCLE_TAG
+            popd
+
+            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_TAG
+            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch && cp ./../../sketch/porsche-ui-kit.sketch ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch/porsche-ui-kit.sketch
 
             pushd $TARGET_BRANCH
-
               cat << _EOF_ > index.html
               <!DOCTYPE html>
               <html lang="en">
@@ -323,12 +246,64 @@ jobs:
                 </channel>
               </rss>
               _EOF_
-
-              git add -A
-              git commit -m "Automated deployment of Porsche UI Frontpage & Porsche UI Kit Sketch Library RSS Feed to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
-              git push origin $TARGET_BRANCH --force-with-lease
-
             popd
+
+            pushd $TARGET_BRANCH
+              git add -A
+              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) & Porsche UI Kit Sketch Library (${VERSION_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git push origin $TARGET_BRANCH --force-with-lease
+            popd
+      - run:
+          name: GitHub.io URL
+          command: |
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_TAG/
+  ui_kit_v0_react_release_build_deploy:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo/react
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "96:78:de:a2:82:44:81:31:e6:3e:36:3b:78:80:c0:68"
+      - checkout:
+          path: ~/repo
+      - run:
+          name: Install
+          command: |
+            pushd packages/@porsche/ui-kit-react
+              echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> .npmrc
+              yarn install
+            popd
+      - run:
+          name: Build
+          command: |
+            pushd packages/@porsche/ui-kit-react
+              yarn run build
+            popd
+            pushd packages/@porsche/ui-kit-react-docs
+              yarn run build
+            popd
+      - deploy:
+          name: Deploy
+          command: |
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
+            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+            pushd $TARGET_BRANCH
+              rm -rf ./$CIRCLE_TAG
+            popd
+            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./packages/@porsche/ui-kit-react-docs/dist/. ./$TARGET_BRANCH/$CIRCLE_TAG
+            pushd $TARGET_BRANCH
+              git add -A
+              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git push origin $TARGET_BRANCH --force-with-lease
+            popd
+      - run:
+          name: GitHub.io URL
+          command: |
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_TAG/
 workflows:
   version: 2
   ui_kit_build_deploy:
@@ -347,9 +322,6 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v0\.[0-9]+\.[0-9]+\/core$/
-      - ui_kit_v0_core_build_deploy_frontpage_and_sketch_rss_feed:
-          requires:
-            - ui_kit_v0_core_release_build_deploy
       - ui_kit_v0_react_release_build_deploy:
           filters:
             branches:
