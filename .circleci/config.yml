@@ -130,6 +130,7 @@ jobs:
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
             pushd $TARGET_BRANCH
               rm -rf ./$CIRCLE_TAG
+              rm -rf ./$CIRCLE_TAG/../sketch
             popd
 
             mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_TAG
@@ -252,7 +253,7 @@ jobs:
 
             pushd $TARGET_BRANCH
               git add -A
-              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) & Porsche UI Kit Sketch Library (${CURRENT_V0X_UI_KIT_CORE_VERSION}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git commit -m "Automated deployment of Porsche UI Frontpage, Porsche UI Kit (${CIRCLE_TAG}) and Porsche UI Kit Sketch Library (${CURRENT_V0X_UI_KIT_CORE_VERSION}) + Sketch RSS Feed to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
               git push origin $TARGET_BRANCH --force-with-lease
             popd
       - run:
@@ -293,13 +294,114 @@ jobs:
             git config --global user.email $GH_EMAIL
             git config --global user.name $GH_NAME
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+
             pushd $TARGET_BRANCH
               rm -rf ./$CIRCLE_TAG
             popd
+
             mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./packages/@porsche/ui-kit-react-docs/dist/. ./$TARGET_BRANCH/$CIRCLE_TAG
+
+            SORTED_V0X_CORE_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/core')
+            SORTED_V0X_REACT_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/react')
+
+            function v0xCoreReleaseLatest {
+              for tag in $SORTED_V0X_CORE_VERSION_TAGS
+              do
+                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
+                break
+              done
+            }
+
+            function v0xCoreReleaseHistory {
+              echo "<ul>"
+              for tag in $SORTED_V0X_CORE_VERSION_TAGS
+              do
+                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
+              done
+              echo "</ul>"
+            }
+
+            function v0xReactReleaseLatest {
+              for tag in $SORTED_V0X_REACT_VERSION_TAGS
+              do
+                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
+                break
+              done
+            }
+
+            function v0xReactReleaseHistory {
+              echo "<ul>"
+              for tag in $SORTED_V0X_REACT_VERSION_TAGS
+              do
+                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
+              done
+              echo "</ul>"
+            }
+
+            pushd $TARGET_BRANCH
+              cat << _EOF_ > index.html
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Porsche UI</title>
+            </head>
+            <body>
+              <h1>Porsche UI Kit</h1>
+              <hr>
+              <h2>Links</h2>
+              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml">Add Porsche UI Kit Sketch library</a> (public)</h4>
+              <h4>NPM Packages <a href="https://porscheui.jfrog.io">Link npm registry</a> (private)</h4>
+              <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit">Link to GitHub</a> (private)</h4>
+              <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki">Link to GitHub Wiki</a> (private)</h4>
+              <h4>Issues <a href="https://github.com/porscheui/porsche-ui-kit/issues">Link to GitHub Issues</a> (private)</h4>
+              <h4>Kanban Board <a href="https://github.com/porscheui/porsche-ui-kit/projects/1">Link to GitHub Projects</a> (private)</h4>
+              <hr>
+              <h2>Documentation</h2>
+              <table border="1">
+                <tr>
+                  <th>Porsche UI Kit v0.x/core</th>
+                  <th>Porsche UI Kit v0.x/react</th>
+                  <th>Porsche UI Kit v1.x</th>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <h4>Latest Release</h4>
+                    $(v0xCoreReleaseLatest)
+                  </td>
+                  <td valign="top">
+                    <h4>Latest Release</h4>
+                    $(v0xReactReleaseLatest)
+                  </td>
+                  <td valign="top">
+                    <h4>Latest Release</h4>
+                    <p>Not yet available</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <h4>History</h4>
+                    $(v0xCoreReleaseHistory)
+                  </td>
+                  <td valign="top">
+                    <h4>History</h4>
+                    $(v0xReactReleaseHistory)
+                  </td>
+                  <td valign="top">
+                    <h4>History</h4>
+                    <p>Not yet available</p>
+                  </td>
+                </tr>
+              </table>
+            </body>
+            </html>
+            _EOF_
+
+            popd
+
             pushd $TARGET_BRANCH
               git add -A
-              git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git commit -m "Automated deployment of Porsche UI Frontpage and Porsche UI Kit (${CIRCLE_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
               git push origin $TARGET_BRANCH --force-with-lease
             popd
       - run:
