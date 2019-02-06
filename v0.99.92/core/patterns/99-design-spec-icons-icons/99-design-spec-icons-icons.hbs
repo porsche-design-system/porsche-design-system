@@ -1,0 +1,11 @@
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Icons</h2>
+  <ul class="flex flex--wrap sg-icon-list -spacing-30">
+    {{#each icons_code}}
+      <li class="sg-icon-list__item">
+        <span class="sg-icon-list__item-icon">{{> atoms-icon icon_code=this icon_large=true styleModifier="" }}</span>
+        <span class="sg-icon-list__item-label -text-size-copy -text-color-black">{{this}}</span>
+      </li>
+    {{/each}}
+  </ul>
+</div>

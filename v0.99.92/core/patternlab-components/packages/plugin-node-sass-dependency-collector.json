@@ -1,0 +1,10 @@
+{
+  "name": "pattern-lab/plugin-node-sass-dependency-collector",
+  "templates": [],
+  "stylesheets": [],
+  "javascripts": [
+    "patternlab-components/pattern-lab/plugin-node-sass-dependency-collector/js/plugin-node-sass-dependency-collector.js"
+  ],
+  "onready": "PluginSassDependencyCollector.init()",
+  "callback": ""
+}
