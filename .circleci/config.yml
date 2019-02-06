@@ -141,14 +141,34 @@ jobs:
       - deploy:
           name: Deploy
           command: |
+            VERSION="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
+            DATE="$(date -R)"
+
             git config --global user.email $GH_EMAIL
             git config --global user.name $GH_NAME
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
             pushd $TARGET_BRANCH
               rm -rf ./$CIRCLE_TAG
             popd
+
             mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_TAG
             mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch && cp ./../../sketch/porsche-ui-kit.sketch ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch/porsche-ui-kit.sketch
+
+            echo "<?xml version="1.0" encoding="utf-8"?>
+            <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
+                 xmlns:dc="http://purl.org/dc/elements/1.1/">
+              <channel>
+                <title>Porsche UI</title>
+                <description>A Porsche UI Sketch library.</description>
+                <item>
+                  <title>Porsche UI Kit (v$VERSION)</title>
+                  <pubDate>$DATE</pubDate>
+                  <enclosure url="https://ui.porsche.com/v$VERSION/sketch/porsche-ui-kit.sketch"
+                             sparkle:version="$VERSION" type="application/octet-stream"/>
+                </item>
+              </channel>
+            </rss>" > $TARGET_BRANCH/sketch.xml
+
             pushd $TARGET_BRANCH
               git add -A
               git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
