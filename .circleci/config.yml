@@ -128,6 +128,14 @@ jobs:
             DATE="$(date -R)"
             LATEST_0X_UI_KIT_CORE_VERSION="$(git tag --sort=-version:refname --list 'v0.*/core' | head -n 1 | cut -d "/" -f1 | cut -c 2-)"
             VERSION_TAG="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
+            V0X_CORE_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/core')
+            V0X_REACT_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/react')
+
+            echo "1_______"
+            echo $V0X_CORE_VERSION_TAGS
+            echo §V0X_REACT_VERSION_TAGS
+            echo "--------"
+            git tag --sort=-version:refname --list 'v0.*/core'
 
             function v0xCoreReleaseLatest {
               for tag in $(git tag --sort=-version:refname --list 'v0.*/core')
@@ -174,6 +182,9 @@ jobs:
             mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch && cp ./../../sketch/porsche-ui-kit.sketch ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch/porsche-ui-kit.sketch
 
             pushd $TARGET_BRANCH
+              echo "2_______"
+              echo $V0X_CORE_VERSION_TAGS
+              echo §V0X_REACT_VERSION_TAGS
               cat << _EOF_ > index.html
             <!DOCTYPE html>
             <html lang="en">
