@@ -43,6 +43,7 @@
     border-color: $color-palette-white;
   }
 
+  &:enabled,
   &:not([disabled]) {
     &:hover,
     &:focus,
@@ -58,6 +59,7 @@
     }
   }
 
+  &:disabled,
   &[disabled],
   &[aria-disabled='true'] {
     cursor: default;
@@ -106,6 +108,7 @@
       border-color: $color-palette-white;
     }
 
+    &:enabled,
     &:not([disabled]) {
       &:hover,
       &:focus,
@@ -122,6 +125,7 @@
       }
     }
 
+    &:disabled,
     &[disabled],
     &[aria-disabled='true'] {
       color: mix($color-palette-grey-9, $color-palette-white, 40%);
@@ -157,6 +161,7 @@
     background-color: $color-palette-red-1;
     border-color: $color-palette-red-1;
 
+    &:enabled,
     &:not([disabled]) {
       &:hover,
       &:focus,
@@ -172,6 +177,7 @@
       }
     }
 
+    &:disabled,
     &[disabled],
     &[aria-disabled='true'] {
       background-color: mix($color-palette-red-1, $color-palette-white, 50%);
@@ -214,6 +220,7 @@
     background-color: $color-palette-blue-1;
     border-color: $color-palette-blue-1;
 
+    &:enabled,
     &:not([disabled]) {
       &:hover,
       &:focus,
@@ -229,6 +236,7 @@
       }
     }
 
+    &:disabled,
     &[disabled],
     &[aria-disabled='true'] {
       background-color: mix($color-palette-blue-1, $color-palette-white, 50%);
@@ -277,6 +285,7 @@
       border-color: $color-palette-blue-3;
     }
 
+    &:enabled,
     &:not([disabled]) {
       &:hover,
       &:focus,
@@ -293,6 +302,7 @@
       }
     }
 
+    &:disabled,
     &[disabled],
     &[aria-disabled='true'] {
       color: mix($color-palette-blue-1, $color-palette-white, 40%);
