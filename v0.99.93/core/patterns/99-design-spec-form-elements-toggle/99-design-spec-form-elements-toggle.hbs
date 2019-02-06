@@ -1,0 +1,45 @@
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Toggle</h2>
+  <p class="-text-size-copy -text-color-grey-5 -spacing-3">Default version for usage on bright backgrounds</p>
+  <div class="row">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Inactive</h4>
+      {{> molecules-toggle styleModifier="-spacing-12" }}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Active</h4>
+      {{> molecules-toggle styleModifier="-spacing-12" toggle_active=true }}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Disabled</h4>
+      {{> molecules-toggle styleModifier="-spacing-12" toggle_disabled=true }}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Disabled + Active</h4>
+      {{> molecules-toggle styleModifier="-spacing-12" toggle_disabled=true toggle_active=true }}
+    </div>
+  </div>
+</div>
+
+<div class="-background-grey-9-1 -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-white">Toggle</h2>
+  <p class="-text-size-copy -text-color-grey-5 -spacing-3">Inverted version for usage on dark backgrounds</p>
+  <div class="row">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Inactive</h4>
+      {{> molecules-toggle styleModifier="-spacing-12" toggle_inverted=true }}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Active</h4>
+      {{> molecules-toggle styleModifier="-spacing-12" toggle_inverted=true toggle_active=true }}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Disabled</h4>
+      {{> molecules-toggle styleModifier="-spacing-12" toggle_inverted=true toggle_disabled=true }}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-white">Disabled + Active</h4>
+      {{> molecules-toggle styleModifier="-spacing-12" toggle_inverted=true toggle_disabled=true toggle_active=true }}
+    </div>
+  </div>
+</div>
