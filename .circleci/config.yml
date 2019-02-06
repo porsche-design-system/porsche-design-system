@@ -231,7 +231,7 @@ jobs:
             </body>
             </html>
             _EOF_
-            
+
               cat << _EOF_ > ./sketch.xml
             <?xml version="1.0" encoding="utf-8"?>
             <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -240,7 +240,7 @@ jobs:
                 <description>A Porsche UI Sketch library.</description>
                 <item>
                   <title>Porsche UI Kit (v$LATEST_0X_UI_KIT_CORE_VERSION)</title>
-                  <pubDate>$(DATE)</pubDate>
+                  <pubDate>$DATE</pubDate>
                   <enclosure url="https://ui.porsche.com/v$LATEST_0X_UI_KIT_CORE_VERSION/sketch/porsche-ui-kit.sketch" sparkle:version="$LATEST_0X_UI_KIT_CORE_VERSION" type="application/octet-stream"/>
                 </item>
               </channel>
