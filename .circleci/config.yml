@@ -190,7 +190,7 @@ jobs:
               <h1>Porsche UI Kit</h1>
               <hr>
               <h2>Links</h2>
-              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml" rel="nofollow">Add Porsche UI Kit Sketch library</a> (public)</h4>
+              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit.sketch.xml" rel="nofollow">Add Porsche UI Kit Sketch library</a> (public)</h4>
               <h4>NPM Packages <a href="https://porscheui.jfrog.io" rel="nofollow">Link npm registry</a> (private)</h4>
               <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit" rel="nofollow">Link to GitHub</a> (private)</h4>
               <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki" rel="nofollow">Link to GitHub Wiki</a> (private)</h4>
@@ -237,7 +237,7 @@ jobs:
             </html>
             _EOF_
 
-              cat << _EOF_ > "./sketch.xml"
+              cat << _EOF_ > "./porsche-ui-kit.sketch.xml"
             <?xml version="1.0" encoding="utf-8"?>
             <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
               <channel>
@@ -354,7 +354,7 @@ jobs:
               <h1>Porsche UI Kit</h1>
               <hr>
               <h2>Links</h2>
-              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml" rel="nofollow">Add Porsche UI Kit Sketch library</a> (public)</h4>
+              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit.sketch.xml" rel="nofollow">Add Porsche UI Kit Sketch library</a> (public)</h4>
               <h4>NPM Packages <a href="https://porscheui.jfrog.io" rel="nofollow">Link npm registry</a> (private)</h4>
               <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit" rel="nofollow">Link to GitHub</a> (private)</h4>
               <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki" rel="nofollow">Link to GitHub Wiki</a> (private)</h4>
