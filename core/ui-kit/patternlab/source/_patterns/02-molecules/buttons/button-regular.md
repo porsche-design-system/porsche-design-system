@@ -98,7 +98,7 @@ __inverted__:
 
 
 ### Button group
-Displaying a group of buttons which are placed side by side (horizontal) or among each other (vertical) can be done by combining `flex` component with `button-group`.
+Displaying a group of buttons which are placed side by side (horizontal) or among each other (vertical) can be done by combining `flex` component with `button-group` and direction modifier.
 
 __Button group horizontal:__  
 ```
