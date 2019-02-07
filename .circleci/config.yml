@@ -46,7 +46,7 @@ jobs:
       - run:
           name: GitHub.io URL
           command: |
-            echo "https://${CIRCLE_PROJECT_USERNAME}.github.io/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}/"
+            echo "https://ui.porsche.com/${CIRCLE_BRANCH}/"
   ui_kit_v0_react_dev_build_deploy:
     docker:
       - image: circleci/node:8
@@ -93,7 +93,7 @@ jobs:
       - run:
           name: GitHub.io URL
           command: |
-            echo "https://${CIRCLE_PROJECT_USERNAME}.github.io/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}/"
+            echo "https://ui.porsche.com/${CIRCLE_BRANCH}/"
   ui_kit_v0_core_release_build_deploy:
     docker:
       - image: circleci/node:8
@@ -261,7 +261,7 @@ jobs:
       - run:
           name: GitHub.io URL
           command: |
-            echo "https://${CIRCLE_PROJECT_USERNAME}.github.io/${CIRCLE_PROJECT_REPONAME}/v${CURRENT_V0X_UI_KIT_CORE_VERSION}/core/"
+            echo "https://ui.porsche.com/${CIRCLE_TAG}/"
   ui_kit_v0_react_release_build_deploy:
     docker:
       - image: circleci/node:8
@@ -411,7 +411,7 @@ jobs:
       - run:
           name: GitHub.io URL
           command: |
-            echo "https://${CIRCLE_PROJECT_USERNAME}.github.io/${CIRCLE_PROJECT_REPONAME}/v${CURRENT_V0X_UI_KIT_CORE_VERSION}/react/"
+            echo "https://ui.porsche.com/${CIRCLE_TAG}/"
 workflows:
   version: 2
   ui_kit_build_deploy:
