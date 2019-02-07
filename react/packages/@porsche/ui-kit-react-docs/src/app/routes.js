@@ -17,7 +17,7 @@ const Router = () => {
     return (
         <HashRouter>
             <Switch>
-                <Route path="/maximize/:kebabCaseName" component={ExternalExampleLayout} />
+                <Route exact={false} path="/maximize/:kebabCaseName" component={ExternalExampleLayout} />
                 <Switch>
                     <DocsLayout exact path="/" render={RedirectToIntro} />
                     <DocsLayout exact path="/introduction" component={Introduction} />
