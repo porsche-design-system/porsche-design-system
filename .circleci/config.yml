@@ -125,11 +125,11 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            PUBLISH_DATE="$(git log -1 --format=%aD $CIRCLE_TAG | cat)"
+            PUBLISH_DATE="$(git log -1 --format=%aD ${CIRCLE_TAG} | cat)"
             SORTED_V0X_CORE_VERSION_TAGS="$(git tag --sort=-version:refname --list 'v0.*/core')"
             SORTED_V0X_REACT_VERSION_TAGS="$(git tag --sort=-version:refname --list 'v0.*/react')"
             LATEST_V0X_UI_KIT_CORE_VERSION="$(git tag --sort=-version:refname --list 'v0.*/core' | head -n 1 | cut -d "/" -f1 | cut -c 2-)"
-            CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
+            CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo ${CIRCLE_TAG} | cut -d "/" -f1 | cut -c 2-)"
 
             git config --global user.email "${GH_EMAIL}"
             git config --global user.name "${GH_NAME}"
@@ -295,7 +295,7 @@ jobs:
           command: |
             SORTED_V0X_CORE_VERSION_TAGS="$(git tag --sort=-version:refname --list 'v0.*/core')"
             SORTED_V0X_REACT_VERSION_TAGS="$(git tag --sort=-version:refname --list 'v0.*/react')"
-            CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
+            CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo ${CIRCLE_TAG} | cut -d "/" -f1 | cut -c 2-)"
 
             git config --global user.email "${GH_EMAIL}"
             git config --global user.name "${GH_NAME}"
