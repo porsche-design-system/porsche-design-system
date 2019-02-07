@@ -1,0 +1,48 @@
+<button type="button"
+        class="button-inline
+              {{#if button-inline_active}} button-inline--active {{/if}}
+              {{#if button-inline_stretch}} button-inline--stretch {{/if}}
+              {{#if button-inline_seamless}} button-inline--seamless {{/if}}
+              {{#if button-inline_ghost}} button-inline--ghost {{/if}}
+              {{#if button-inline_ghostDark}} button-inline--ghost-dark {{/if}}
+              {{#if button-inline_ghostSmallOnly}} button-inline--ghost-small-only {{/if}}
+              {{#if button-inline_center}} button-inline--center {{/if}}
+              {{#if button-inline_multi-lines-centered }} button-inline--multi-lines-centered {{/if}}
+              {{#if button-inline_multilineLabel }} button-inline--multiline {{/if}}
+              {{styleModifier}}"
+        {{#if button-inline_disabled}} disabled {{/if}}>
+  {{#if button-inline-flex}}
+  <div>
+  {{/if}}
+    {{#if button-inline_icon}}
+      <span class="button-inline__icon icon
+                   icon--{{ button-inline_icon}}
+                   {{#if button-inline_center}} button-inline__icon--center {{/if}}
+                   {{#if button-inline_iconLarge}} button-inline__icon--large {{/if}}
+                   {{#if button-inline_multi-lines-centered }} button-inline__icon--multi-lines-centered {{/if}}
+                   {{#if button-inline_loading}} button-inline__icon--loading {{/if}}
+                   {{styleModifier_icon}}">
+
+        {{> deprecated-loader-base styleModifier="button-inline__loader" }}
+
+      </span>
+    {{/if}}
+    {{#if button-inline_label }}
+      <span class="button-inline__label
+                  {{#if button-inline_icon}} button-inline__label--icon {{/if}}
+                  {{#if button-inline_multi-lines-centered }} button-inline__label--multi-lines-centered {{/if}}
+                  {{styleModifier_label}}">
+        <span class="{{#if button-inline_multilineLabel }} button-inline__label--multiline {{/if}}">
+          {{ button-inline_label }}
+        </span>
+        {{#if button-inline_multilineLabel}}
+          <span class="button-inline__label-subline">
+            {{ button-inline_multilineLabel }}
+          </span>
+        {{/if}}
+      </span>
+    {{/if}}
+  {{#if button-inline-flex}}
+  <div>
+  {{/if}}
+</button>

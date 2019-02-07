@@ -1,0 +1,28 @@
+<ul class="list-view {{ styleModifier }}">
+  {{#each list-view}}
+    <li class="list-view__item {{#if active }}list-view__item--active{{#if ../list-view_eMobility }}-e-mobility{{/if}}{{/if}} {{#if expanded }}list-view__item--expanded{{/if}}">
+      <div class="list-view__content {{#if active }} list-view__content--active {{/if}} {{#if checkable }} list-view__content--checkable {{/if}} {{#if hoverable }} list-view__content--hoverable {{/if}}">
+        <h5 class="list-view__title">{{ title }}</h5>
+        {{#if tags }}
+          <ol class="list-view__tags">
+            {{#each tags }}<!-- fighting the space between inline block elements
+           --><li class="list-view__tag {{#if divider }}list-view__tag--divider{{/if}} {{#if icon }}list-view__tag--icon{{/if}}">
+                {{#if icon }}
+                  <span class="list-view__icon {{#if ../active }}list-view__icon--active{{/if}} icon icon--{{ icon }}"></span>
+                {{/if}}
+                <span>{{ tag }}</span>
+              </li><!-- fighting the space between inline block elements
+         -->{{/each}}
+          </ol>
+        {{/if}}
+      </div>
+      {{#if checkable}}
+        {{> molecules-checkbox checkbox_label=../checkbox_label styleModifier="list-view__checkbox"}}
+      {{/if}}
+      <div class="list-view__menu icon icon--{{ ../list-view_menuIcon }}"></div>
+      {{#if expanded}}
+        {{> organisms-list-expanded }}
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>

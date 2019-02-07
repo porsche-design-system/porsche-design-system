@@ -1,0 +1,40 @@
+<div class="navigation-topbar-desktop {{ styleModifier }}">
+  <div class="navigation-topbar-desktop__limiter">
+    <div class="navigation-topbar-desktop__left">
+      {{#each navigation-topbar-desktop_left }}
+        <a href="#" class="navigation-topbar-desktop__link {{#if customClass }} navigation-topbar-desktop__link--{{ customClass }} {{/if}}
+          {{#if active }} navigation-topbar-desktop__link--active {{/if}}">
+          <span class="navigation-topbar-desktop__link-title">{{ item }}</span>
+        </a>
+      {{/each}}
+    </div>
+    <div class="navigation-topbar-desktop__right">
+      {{#each navigation-topbar-desktop_right }}
+        <a class="navigation-topbar-desktop__link {{#if customClass }} navigation-topbar-desktop__link--{{ customClass }} {{/if}} {{#if active }} navigation-topbar-desktop__link--active {{/if}} {{#if highlight }} navigation-topbar-desktop__link--highlight {{/if}} {{#if initialHidden}} navigation-topbar-desktop__link--hidden {{/if}}">
+          {{#if iconBefore }}
+            <span class="navigation-topbar-desktop__link-icon icon icon--{{ icon }} "></span>
+            <span class="navigation-topbar-desktop__link-title">{{ linkContent }}</span>
+          {{else}}
+            <span class="navigation-topbar-desktop__link-title">{{ linkContent }}</span>
+            <span class="navigation-topbar-desktop__link-icon icon icon--{{ icon }} "></span>
+          {{/if}}
+        </a>
+      {{/each}}
+    </div>
+    {{#each navigation-topbar-desktop_flyout }}
+      <div class="navigation-topbar-desktop__flyout navigation-topbar-desktop__flyout--hidden">
+        <ul class="navigation-topbar-desktop__flyout-menu">
+          {{#each items }}
+            <li class="navigation-topbar-desktop__flyout-item {{#if customClass }} navigation-topbar-desktop__flyout-item--{{ customClass }} {{/if}} ">
+              <a href="#" class="navigation-topbar-desktop__flyout-link">
+                <span class="navigation-topbar-desktop__flyout-link-icon icon icon--arrow-right-thin"></span>
+                <span class="navigation-topbar-desktop__flyout-link-title"> {{ item }} </span>
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/each}}
+  </div>
+</div>
+<div class="navigation-topbar-desktop__overlay {{#if navigation-topbar-desktop_hideOverlay }} navigation-topbar-desktop__overlay--hidden {{/if}}"></div>

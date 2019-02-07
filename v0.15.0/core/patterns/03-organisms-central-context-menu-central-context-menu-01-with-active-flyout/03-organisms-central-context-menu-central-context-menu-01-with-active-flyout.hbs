@@ -1,0 +1,42 @@
+<div class="central-context-menu">
+  <div class="central-context-menu__bar">
+    <ul class="central-context-menu__left">
+      {{#each central-context-menu_buttonsLeft}}
+        <li class="central-context-menu__item
+            {{#if flyout}} central-context-menu__item--has-flyout {{/if}}">
+          {{> organisms-central-context-menu-button
+              central-context-menu-button_name=name
+              central-context-menu-button_icon=icon
+              central-context-menu-button_disabled=disabled
+          }}
+          {{#if flyout}}
+            {{> organisms-central-context-menu-flyout }}
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+    <ul class="central-context-menu__right">
+      {{#each central-context-menu_buttonsRight}}
+        <li class="central-context-menu__item central-context-menu__item--right
+            {{#if flyout}} central-context-menu__item--has-flyout {{/if}}">
+          {{> organisms-central-context-menu-button
+              central-context-menu-button_name=name
+              central-context-menu-button_icon=icon
+              central-context-menu-button_disabled=disabled
+              central-context-menu-button_inverted=inverted
+          }}
+          {{#if flyout}}
+            {{> organisms-central-context-menu-flyout
+                central-context-menu-flyout_inverted=inverted
+            }}
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="central-context-menu__filter-container">
+    {{#> central-context-menu_filter}} {{/central-context-menu_filter}}
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+<{{#if button-ghost_link }}a href="#"{{else}}button type="button"{{/if}}
+  class="button-ghost
+        {{#if button-ghost_stretch}} button-ghost--stretch {{/if}}
+        {{#if button-ghost_error}} button-ghost--error {{/if}}
+        {{#if button-ghost_inverted}} button-ghost--inverted {{/if}}
+        {{styleModifier}}"
+  {{#if button-ghost_disabled}} disabled {{/if}}>
+
+  <span class="button-ghost__icon icon icon--{{ button-ghost_icon}}
+              {{#if button-ghost_loading}} button-ghost__icon--loading {{/if}}">
+
+    {{#if button-ghost_inverted}}
+      {{> molecules-loader-base styleModifier="button-ghost__loader"
+                                loader-base_dark=false }}
+    {{else}}
+      {{> molecules-loader-base styleModifier="button-ghost__loader"
+                                loader-base_dark=true }}
+    {{/if}}
+
+  </span>
+  <span class="button-ghost__label">{{ button-ghost_label }}</span>
+
+{{#if button-ghost_link }}</a>{{else}}</button>{{/if}}

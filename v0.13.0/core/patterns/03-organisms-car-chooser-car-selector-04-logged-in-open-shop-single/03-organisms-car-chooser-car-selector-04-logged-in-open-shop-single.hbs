@@ -1,0 +1,322 @@
+<section class="car-selector {{ styleModifier }}">
+
+  {{! Bar: START }}
+  <div class="car-selector__bar {{#if car-selector_open }} car-selector__bar--open {{/if}}">
+    <div class="car-selector__bar-header">
+      <span class="icon icon--arrow-down-hair car-selector__bar-icon {{#if car-selector_open }} car-selector__bar-icon--open {{/if}}"></span>
+      <h3 class="car-selector__bar-title">{{ car-selector_barTitle }}</h3>
+    </div>
+    {{#if car-selector_barSubtitle }}
+      <span class="car-selector__bar-subtitle">{{ car-selector_barSubtitle }}</span>
+    {{/if}}
+  </div>
+  {{! Bar: END }}
+
+  {{! Dropdown: START }}
+  <div class="car-selector__dropdown {{#if car-selector_open }} car-selector__dropdown--open {{/if}}">
+
+    {{! SEARCH: START }}
+    {{#if car-selector_search }}
+      <div class="car-selector__box">
+
+        <div class="car-selector__content">
+          <p>{{ car-selector_searchTitle }}</p>
+          <p>{{ car-selector_searchHint }}</p>
+
+          {{! input field: }}
+          {{> molecules-input
+              styleModifier="car-selector__search-input -spacing-a"
+              styleModifier_field="car-selector__search-input-field"
+              input_icon="search"
+              input_label="Modellname/Kennzeichen"
+              input_value=car-selector_searchText
+          }}
+
+          {{! texts for no results: }}
+          {{#if car-selector_search_noResults }}
+            <p class="-text-color-red-1 -spacing-a">{{ car-selector_searchTitle_noResults }}</p>
+            <p class="-text-color-red-1">{{ car-selector_searchHint_noResults }}</p>
+          {{/if}}
+        </div>
+
+        {{#if car-selector_search_withResults }}
+          <div class="car-selector__button-action car-selector__button-action--search-box">
+            <div class="car-selector__button-action-align">
+              <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+              <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
+            </div>
+          </div>
+        {{else}}
+          <div class="car-selector__button-action">
+            <div class="car-selector__button-action-align">
+              <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+              <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+
+      {{#if car-selector_search_withResults }}
+        <div class="car-selector__box">
+          <div class="car-selector__car-list car-selector__car-list--full">
+            <div class="car-selector__car-list-carousel">
+              {{#if car-selector_showArrows }}
+                <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon icon--arrow-slider-left-next"></span>
+              {{/if}}
+              {{#each car-selector_vehicles }}
+                <div class="car-selector__car-list-item
+                          {{#if active }} car-selector__car-list-item--active {{/if}}
+                          {{#if ../car-selector_search }} car-selector__car-list-item--search {{/if}}
+                ">
+                  <div class="car-selector__car-list-item-box">
+                    <a href="javascript:void(0);" class="car-selector__car-list-item-info
+                          {{#if active }} car-selector__car-list-item-info--active {{/if}}
+                    ">
+                      <img class="car-selector__car-list-item-image" src="{{ image }}" alt="{{ title }}">
+                      <span class="car-selector__car-list-item-title">
+                      {{ title }}
+                        {{#if ../car-selector_customerPortal }}
+                          <span class="car-selector__icon-warning icon icon--error"></span>
+                        {{/if}}
+                      </span>
+                      <p class="car-selector__car-list-item-subtitle">
+                        {{ vin }}
+                        {{#if connectPlus }}
+                          <br />Connect Plus
+                        {{/if}}
+                      </p>
+                    </a>
+
+                    {{#if ../car-selector_customerPortal }}
+                      {{> molecules-button-ghost
+                          styleModifier="car-selector__button-details"
+                          button-ghost_icon="icon icon--details-next"
+                          button-ghost_label="Details" }}
+                    {{/if}}
+                  </div>
+                </div>
+              {{/each}}
+              {{#if car-selector_showArrows }}
+                <span class="car-selector__arrow car-selector__arrow--right icon icon--arrow-slider-right-next"></span>
+              {{/if}}
+            </div>
+            {{#if car-selector_showArrows }}
+              {{> molecules-pagination-dots
+                  styleModifier="car-selector__car-list-dots"
+                  pagination-dots_dots=car-selector_paginationDots
+                  pagination-dots_typeGrey=true }}
+            {{/if}}
+          </div>
+
+          <div class="car-selector__button-action car-selector__button-action--search-results">
+            <div class="car-selector__button-action-align">
+              <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+              <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{! SEARCH: END }}
+
+    {{! NO-SEARCH: START }}
+    {{else}}
+      <div class="car-selector__box">
+        {{#if car-selector_loggedIn }}
+
+          {{! LoggedIn - Derivative-List: START }}
+          {{#if car-selector_showDerivatives }}
+            <div class="car-selector__button-action">
+              <div class="car-selector__button-action-align">
+                <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+                <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
+              </div>
+            </div>
+
+            <div class="car-selector__car-list">
+              <div class="car-selector__car-list-carousel">
+                {{#if car-selector_showArrows }}
+                  <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon icon--arrow-slider-left-next"></span>
+                {{/if}}
+                {{#each car-selector_derivatives }}
+                  <a href="javascript:void(0);" class="car-selector__derivative-list-item
+                            {{#if ../car-selector_openGeneration }}
+                              {{#if generation }} car-selector__derivative-list-item--active {{/if}}
+                            {{/if}}
+                            {{#if ../car-selector_loggedIn }} car-selector__derivative-list-item--logged-in {{/if}}
+                  ">
+                    <div class="car-selector__derivative-list-item-model">
+                      <img class="car-selector__derivative-list-item-image" src="{{ image }}" alt="{{ title }}">
+                      <span class="car-selector__derivative-list-item-title">{{ title }}</span>
+                    </div>
+                    {{#if ../car-selector_openGeneration }}
+                      {{#if generation }}
+                        <div class="car-selector__derivative-list-item-generation">
+                          {{> molecules-radio styleModifier="car-selector__derivative-list-item-radio" radio_label=text1 radio_name=name }}
+                          {{> molecules-radio styleModifier="car-selector__derivative-list-item-radio -spacing-12" radio_label=text2 radio_name=name }}
+                        </div>
+                      {{/if}}
+                    {{/if}}
+                  </a>
+                {{/each}}
+                {{#if car-selector_showArrows }}
+                  <span class="car-selector__arrow car-selector__arrow--right icon icon--arrow-slider-right-next"></span>
+                {{/if}}
+              </div>
+              {{#if car-selector_showArrows }}
+                {{> molecules-pagination-dots
+                    styleModifier="car-selector__car-list-dots"
+                    pagination-dots_dots=car-selector_paginationDots
+                    pagination-dots_typeGrey=true }}
+              {{/if}}
+            </div>
+          {{! LoggedIn - Derivative-List: END }}
+
+          {{! LoggedIn - Car-List: START }}
+          {{else}}
+
+            {{#if car-selector_empty }}
+            <div class="car-selector__content">
+              <p>{{ car-selector_emptyTitle }}</p>
+              <p>{{ car-selector_emptyHint }}</p>
+            </div>
+
+            <div class="car-selector__button-action">
+              <div class="car-selector__button-action-align">
+                <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+                <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
+              </div>
+            </div>
+
+            {{else}}
+              <div class="car-selector__car-list">
+                <div class="car-selector__car-list-carousel">
+                  {{#if car-selector_single }}
+                    {{! Single Car: START }}
+                    {{#each car-selector_vehicles }}
+                      <div class="
+                            car-selector__car-list-item
+                            car-selector__car-list-item--active
+                            car-selector__car-list-item--single
+                      ">
+                        <img class="car-selector__car-list-item-image car-selector__car-list-item-image--single" src="{{ image }}" alt="{{ title }}">
+
+                        <div class="car-selector__car-list-item-content car-selector__car-list-item-content--single">
+                          <span class="car-selector__car-list-item-title car-selector__car-list-item-title--single">
+                            {{ title }}
+                            {{#if ../car-selector_customerPortal }}
+                              <span class="car-selector__icon-warning icon icon--error"></span>
+                            {{/if}}
+                          </span>
+                          <p class="car-selector__car-list-item-subtitle car-selector__car-list-item-subtitle--single">
+                            {{ vin }}
+                            {{#if connectPlus }}
+                              <br>Connect Plus
+                            {{/if}}
+                          </p>
+
+                          {{#if ../car-selector_customerPortal }}
+                            {{> molecules-button-ghost
+                                styleModifier="car-selector__button-details"
+                                button-ghost_icon="icon icon--details-next"
+                                button-ghost_label="Details" }}
+                          {{/if}}
+                        </div>
+                      </div>
+                    {{/each}}
+                    {{! Single Car: END }}
+                  {{else}}
+                    {{#if car-selector_showArrows }}
+                      <span class="car-selector__arrow car-selector__arrow--left car-selector__arrow--disabled icon icon--arrow-slider-left-next"></span>
+                    {{/if}}
+                    {{#each car-selector_vehicles }}
+                      <div class="car-selector__car-list-item
+                            {{#if active }} car-selector__car-list-item--active {{/if}}
+                            {{#if ../car-selector_search }} car-selector__car-list-item--search {{/if}}
+                      ">
+                        <div class="car-selector__car-list-item-box">
+                          <a href="javascript:void(0);" class="car-selector__car-list-item-info
+                                {{#if active }} car-selector__car-list-item-info--active {{/if}}
+                          ">
+                            <img class="car-selector__car-list-item-image" src="{{ image }}" alt="{{ title }}">
+                            <span class="car-selector__car-list-item-title">
+                              {{ title }}
+                              {{#if ../car-selector_customerPortal }}
+                                <span class="car-selector__icon-warning icon icon--error"></span>
+                              {{/if}}
+                            </span>
+                            <p class="car-selector__car-list-item-subtitle">
+                              {{ vin }}
+                              {{#if connectPlus }}
+                                <br />Connect Plus
+                              {{/if}}
+                            </p>
+                          </a>
+
+                          {{#if ../car-selector_customerPortal }}
+                            {{> molecules-button-ghost
+                                styleModifier="car-selector__button-details"
+                                button-ghost_icon="icon icon--details-next"
+                                button-ghost_label="Details" }}
+                          {{/if}}
+                        </div>
+                      </div>
+                    {{/each}}
+                    {{#if car-selector_showArrows }}
+                      <span class="car-selector__arrow car-selector__arrow--right icon icon--arrow-slider-right-next"></span>
+                    {{/if}}
+                  {{/if}}
+                </div>
+                {{#if car-selector_showArrows }}
+                  {{> molecules-pagination-dots
+                      styleModifier="car-selector__car-list-dots"
+                      pagination-dots_dots=car-selector_paginationDots
+                      pagination-dots_typeGrey=true }}
+                {{/if}}
+              </div>
+
+              {{! Special Button - vertical and horizontal aligned with text in h3 and no background-change on hover }}
+              <div class="car-selector__button-action">
+                <div class="car-selector__button-action-align">
+                  <span class="icon icon--{{car-selector_buttonActionIcon}} car-selector__button-action-icon"></span>
+                  <span class="car-selector__button-action-label">{{car-selector_buttonAction}}</span>
+                </div>
+              </div>
+            {{/if}}
+
+          {{/if}}
+        {{! LoggedIn - Car-List: END }}
+
+        {{! LoggedOut: START }}
+        {{else}}
+          <div class="car-selector__car-list car-selector__car-list--full">
+            <div class="car-selector__car-list-carousel">
+              {{#each car-selector_derivatives }}
+                <a href="javascript:void(0);" class="car-selector__derivative-list-item
+                          {{#if ../car-selector_openGeneration }}
+                            {{#if Generation }} car-selector__derivative-list-item--active {{/if}}
+                          {{/if}}
+                ">
+                  <div class="car-selector__derivative-list-item-model">
+                    <img class="car-selector__derivative-list-item-image" src="{{ image }}" alt="{{ title }}">
+                    <span class="car-selector__derivative-list-item-title">{{ title }}</span>
+                  </div>
+                  {{#if car-selector_openGeneration }}
+                    {{#if generation }}
+                      <div class="car-selector__derivative-list-item-generation">
+                        {{> molecules-radio styleModifier="car-selector__derivative-list-item-radio" radio_label=text1 radio_name=name }}
+                        {{> molecules-radio styleModifier="car-selector__derivative-list-item-radio -spacing-12" radio_label=text2 radio_name=name }}
+                      </div>
+                    {{/if}}
+                  {{/if}}
+                </a>
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+        {{! LoggedOut: END }}
+      </div>
+    {{/if}}
+    {{! NO-SEARCH: END }}
+  </div>
+  {{! Dropdown: END }}
+</section>
