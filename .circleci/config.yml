@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Install
           command: |
-            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> .npmrc
+            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${ARTIFACTORY_TOKEN}" >> "./.npmrc"
             npm install
       - save_cache:
           paths:
@@ -31,22 +31,22 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            git config --global user.email $GH_EMAIL
-            git config --global user.name $GH_NAME
-            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
-            pushd $TARGET_BRANCH
-              rm -rf ./$CIRCLE_BRANCH
+            git config --global user.email "${GH_EMAIL}"
+            git config --global user.name "${GH_NAME}"
+            git clone --single-branch -b "${TARGET_BRANCH}" "${CIRCLE_REPOSITORY_URL}" "./${TARGET_BRANCH}"
+            pushd "./${TARGET_BRANCH}"
+              rm -rf "./${CIRCLE_BRANCH}"
             popd
-            mkdir -p ./$TARGET_BRANCH/$CIRCLE_BRANCH && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
-            pushd $TARGET_BRANCH
+            mkdir -p "./${TARGET_BRANCH}/${CIRCLE_BRANCH}" && cp -r "./patternlab/public/." "./${TARGET_BRANCH}/${CIRCLE_BRANCH}"
+            pushd "./${TARGET_BRANCH}"
               git add -A
               git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_BRANCH}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
-              git push origin $TARGET_BRANCH --force-with-lease
+              git push origin "${TARGET_BRANCH}" --force-with-lease
             popd
       - run:
           name: GitHub.io URL
           command: |
-            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/
+            echo "https://${CIRCLE_PROJECT_USERNAME}.github.io/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}/"
   ui_kit_v0_react_dev_build_deploy:
     docker:
       - image: circleci/node:8
@@ -62,38 +62,38 @@ jobs:
       - run:
           name: Install
           command: |
-            pushd packages/@porsche/ui-kit-react
-              echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=$ARTIFACTORY_TOKEN" >> .npmrc
+            pushd "packages/@porsche/ui-kit-react"
+              echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${ARTIFACTORY_TOKEN}" >> "./.npmrc"
               yarn install
             popd
       - run:
           name: Build
           command: |
-            pushd packages/@porsche/ui-kit-react
+            pushd "./packages/@porsche/ui-kit-react"
               yarn run build
             popd
-            pushd packages/@porsche/ui-kit-react-docs
+            pushd "./packages/@porsche/ui-kit-react-docs"
               yarn run build
             popd
       - deploy:
           name: Deploy
           command: |
-            git config --global user.email $GH_EMAIL
-            git config --global user.name $GH_NAME
-            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
-            pushd $TARGET_BRANCH
-              rm -rf ./$CIRCLE_BRANCH
+            git config --global user.email "${GH_EMAIL}"
+            git config --global user.name "${GH_NAME}"
+            git clone --single-branch -b "${TARGET_BRANCH}" "${CIRCLE_REPOSITORY_URL}" "./${TARGET_BRANCH}"
+            pushd "./${TARGET_BRANCH}"
+              rm -rf "./${CIRCLE_BRANCH}"
             popd
-            mkdir -p ./$TARGET_BRANCH/$CIRCLE_BRANCH && cp -r ./packages/@porsche/ui-kit-react-docs/dist/. ./$TARGET_BRANCH/$CIRCLE_BRANCH
-            pushd $TARGET_BRANCH
+            mkdir -p "./${TARGET_BRANCH}/${CIRCLE_BRANCH}" && cp -r "./packages/@porsche/ui-kit-react-docs/dist/." "./${TARGET_BRANCH}/${CIRCLE_BRANCH}"
+            pushd "./${TARGET_BRANCH}"
               git add -A
               git commit -m "Automated deployment of Porsche UI Kit (${CIRCLE_BRANCH}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
-              git push origin $TARGET_BRANCH --force-with-lease
+              git push origin "${TARGET_BRANCH}" --force-with-lease
             popd
       - run:
           name: GitHub.io URL
           command: |
-            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/
+            echo "https://${CIRCLE_PROJECT_USERNAME}.github.io/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}/"
   ui_kit_v0_core_release_build_deploy:
     docker:
       - image: circleci/node:8
@@ -125,22 +125,22 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            git config --global user.email $GH_EMAIL
-            git config --global user.name $GH_NAME
-            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
-            pushd $TARGET_BRANCH
-              rm -rf ./$CIRCLE_TAG
-              rm -rf ./$CIRCLE_TAG/../sketch
-            popd
-
-            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./patternlab/public/. ./$TARGET_BRANCH/$CIRCLE_TAG
-            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch && cp ./../../sketch/porsche-ui-kit.sketch ./$TARGET_BRANCH/$CIRCLE_TAG/../sketch/porsche-ui-kit.sketch
-
             PUBLISH_DATE="$(date -R)"
             SORTED_V0X_CORE_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/core')
             SORTED_V0X_REACT_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/react')
             LATEST_V0X_UI_KIT_CORE_VERSION="$(git tag --sort=-version:refname --list 'v0.*/core' | head -n 1 | cut -d "/" -f1 | cut -c 2-)"
             CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
+
+            git config --global user.email $GH_EMAIL
+            git config --global user.name $GH_NAME
+            git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
+            pushd $TARGET_BRANCH
+              rm -rf ./v$CURRENT_V0X_UI_KIT_CORE_VERSION/core
+              rm -rf ./v$CURRENT_V0X_UI_KIT_CORE_VERSION/sketch
+            popd
+
+            mkdir -p ./$TARGET_BRANCH/v$CURRENT_V0X_UI_KIT_CORE_VERSION/core && cp -r ./patternlab/public/. ./$TARGET_BRANCH/v$CURRENT_V0X_UI_KIT_CORE_VERSION/core
+            mkdir -p ./$TARGET_BRANCH/v$CURRENT_V0X_UI_KIT_CORE_VERSION/sketch && cp ./../../sketch/porsche-ui-kit.sketch ./$TARGET_BRANCH/v$CURRENT_V0X_UI_KIT_CORE_VERSION/sketch/porsche-ui-kit.sketch
 
             function v0xCoreReleaseLatest {
               for tag in $SORTED_V0X_CORE_VERSION_TAGS
@@ -254,13 +254,13 @@ jobs:
 
             pushd $TARGET_BRANCH
               git add -A
-              git commit -m "Automated deployment of Porsche UI Frontpage, Porsche UI Kit (${CIRCLE_TAG}) and Porsche UI Kit Sketch Library (${CURRENT_V0X_UI_KIT_CORE_VERSION}) + Sketch RSS Feed to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git commit -m "Automated deployment of Porsche UI Frontpage, Porsche UI Kit — Core (${CURRENT_V0X_UI_KIT_CORE_VERSION}) and Porsche UI Kit Sketch Library (${CURRENT_V0X_UI_KIT_CORE_VERSION}) + Sketch RSS Feed to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
               git push origin $TARGET_BRANCH --force-with-lease
             popd
       - run:
           name: GitHub.io URL
           command: |
-            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_TAG/
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/v$CURRENT_V0X_UI_KIT_CORE_VERSION/core/
   ui_kit_v0_react_release_build_deploy:
     docker:
       - image: circleci/node:8
@@ -292,18 +292,19 @@ jobs:
       - deploy:
           name: Deploy
           command: |
+            SORTED_V0X_CORE_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/core')
+            SORTED_V0X_REACT_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/react')
+            CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo $CIRCLE_TAG | cut -d "/" -f1 | cut -c 2-)"
+
             git config --global user.email $GH_EMAIL
             git config --global user.name $GH_NAME
             git clone --single-branch -b $TARGET_BRANCH $CIRCLE_REPOSITORY_URL $TARGET_BRANCH
 
             pushd $TARGET_BRANCH
-              rm -rf ./$CIRCLE_TAG
+              rm -rf ./v$CURRENT_V0X_UI_KIT_CORE_VERSION/react
             popd
 
-            mkdir -p ./$TARGET_BRANCH/$CIRCLE_TAG && cp -r ./packages/@porsche/ui-kit-react-docs/dist/. ./$TARGET_BRANCH/$CIRCLE_TAG
-
-            SORTED_V0X_CORE_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/core')
-            SORTED_V0X_REACT_VERSION_TAGS=$(git tag --sort=-version:refname --list 'v0.*/react')
+            mkdir -p ./$TARGET_BRANCH/v$CURRENT_V0X_UI_KIT_CORE_VERSION/react && cp -r ./packages/@porsche/ui-kit-react-docs/dist/. ./$TARGET_BRANCH/v$CURRENT_V0X_UI_KIT_CORE_VERSION/react
 
             function v0xCoreReleaseLatest {
               for tag in $SORTED_V0X_CORE_VERSION_TAGS
@@ -403,13 +404,13 @@ jobs:
 
             pushd $TARGET_BRANCH
               git add -A
-              git commit -m "Automated deployment of Porsche UI Frontpage and Porsche UI Kit (${CIRCLE_TAG}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+              git commit -m "Automated deployment of Porsche UI Frontpage and Porsche UI Kit — React (${CURRENT_V0X_UI_KIT_CORE_VERSION}) to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
               git push origin $TARGET_BRANCH --force-with-lease
             popd
       - run:
           name: GitHub.io URL
           command: |
-            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/$CIRCLE_TAG/
+            echo https://$CIRCLE_PROJECT_USERNAME.github.io/$CIRCLE_PROJECT_REPONAME/v$CURRENT_V0X_UI_KIT_CORE_VERSION/react/
 workflows:
   version: 2
   ui_kit_build_deploy:
