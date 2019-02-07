@@ -145,7 +145,7 @@ jobs:
             function v0xCoreReleaseLatest {
               for tag in $SORTED_V0X_CORE_VERSION_TAGS
               do
-                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
+                echo "<p><a href="http://ui.porsche.com/${tag}/" rel="nofollow">${tag}</a></p>"
                 break
               done
             }
@@ -154,7 +154,7 @@ jobs:
               echo "<ul>"
               for tag in $SORTED_V0X_CORE_VERSION_TAGS
               do
-                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
+                echo "<li><a href="http://ui.porsche.com/${tag}/" rel="nofollow">${tag}</a></li>"
               done
               echo "</ul>"
             }
@@ -162,7 +162,7 @@ jobs:
             function v0xReactReleaseLatest {
               for tag in $SORTED_V0X_REACT_VERSION_TAGS
               do
-                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
+                echo "<p><a href="http://ui.porsche.com/${tag}/" rel="nofollow">${tag}</a></p>"
                 break
               done
             }
@@ -171,7 +171,7 @@ jobs:
               echo "<ul>"
               for tag in $SORTED_V0X_REACT_VERSION_TAGS
               do
-                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
+                echo "<li><a href="http://ui.porsche.com/${tag}/" rel="nofollow">${tag}</a></li>"
               done
               echo "</ul>"
             }
@@ -182,18 +182,19 @@ jobs:
             <html lang="en">
             <head>
               <meta charset="UTF-8">
+              <meta name="robots" content="noindex, nofollow">
               <title>Porsche UI</title>
             </head>
             <body>
               <h1>Porsche UI Kit</h1>
               <hr>
               <h2>Links</h2>
-              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml">Add Porsche UI Kit Sketch library</a> (public)</h4>
-              <h4>NPM Packages <a href="https://porscheui.jfrog.io">Link npm registry</a> (private)</h4>
-              <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit">Link to GitHub</a> (private)</h4>
-              <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki">Link to GitHub Wiki</a> (private)</h4>
-              <h4>Issues <a href="https://github.com/porscheui/porsche-ui-kit/issues">Link to GitHub Issues</a> (private)</h4>
-              <h4>Kanban Board <a href="https://github.com/porscheui/porsche-ui-kit/projects/1">Link to GitHub Projects</a> (private)</h4>
+              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml" rel="nofollow">Add Porsche UI Kit Sketch library</a> (public)</h4>
+              <h4>NPM Packages <a href="https://porscheui.jfrog.io" rel="nofollow">Link npm registry</a> (private)</h4>
+              <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit" rel="nofollow">Link to GitHub</a> (private)</h4>
+              <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki" rel="nofollow">Link to GitHub Wiki</a> (private)</h4>
+              <h4>Issues <a href="https://github.com/porscheui/porsche-ui-kit/issues" rel="nofollow">Link to GitHub Issues</a> (private)</h4>
+              <h4>Kanban Board <a href="https://github.com/porscheui/porsche-ui-kit/projects/1" rel="nofollow">Link to GitHub Projects</a> (private)</h4>
               <hr>
               <h2>Documentation</h2>
               <table border="1">
@@ -307,7 +308,7 @@ jobs:
             function v0xCoreReleaseLatest {
               for tag in $SORTED_V0X_CORE_VERSION_TAGS
               do
-                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
+                echo "<p><a href="http://ui.porsche.com/${tag}/" rel="nofollow">${tag}</a></p>"
                 break
               done
             }
@@ -316,7 +317,7 @@ jobs:
               echo "<ul>"
               for tag in $SORTED_V0X_CORE_VERSION_TAGS
               do
-                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
+                echo "<li><a href="http://ui.porsche.com/${tag}/" rel="nofollow">${tag}</a></li>"
               done
               echo "</ul>"
             }
@@ -324,7 +325,7 @@ jobs:
             function v0xReactReleaseLatest {
               for tag in $SORTED_V0X_REACT_VERSION_TAGS
               do
-                echo "<p><a href="http://ui.porsche.com/${tag}/">${tag}</a></p>"
+                echo "<p><a href="http://ui.porsche.com/${tag}/" rel="nofollow">${tag}</a></p>"
                 break
               done
             }
@@ -333,7 +334,7 @@ jobs:
               echo "<ul>"
               for tag in $SORTED_V0X_REACT_VERSION_TAGS
               do
-                echo "<li><a href="http://ui.porsche.com/${tag}/">${tag}</a></li>"
+                echo "<li><a href="http://ui.porsche.com/${tag}/" rel="nofollow">${tag}</a></li>"
               done
               echo "</ul>"
             }
@@ -344,18 +345,19 @@ jobs:
             <html lang="en">
             <head>
               <meta charset="UTF-8">
+              <meta name="robots" content="noindex, nofollow">
               <title>Porsche UI</title>
             </head>
             <body>
               <h1>Porsche UI Kit</h1>
               <hr>
               <h2>Links</h2>
-              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml">Add Porsche UI Kit Sketch library</a> (public)</h4>
-              <h4>NPM Packages <a href="https://porscheui.jfrog.io">Link npm registry</a> (private)</h4>
-              <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit">Link to GitHub</a> (private)</h4>
-              <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki">Link to GitHub Wiki</a> (private)</h4>
-              <h4>Issues <a href="https://github.com/porscheui/porsche-ui-kit/issues">Link to GitHub Issues</a> (private)</h4>
-              <h4>Kanban Board <a href="https://github.com/porscheui/porsche-ui-kit/projects/1">Link to GitHub Projects</a> (private)</h4>
+              <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fsketch.xml" rel="nofollow">Add Porsche UI Kit Sketch library</a> (public)</h4>
+              <h4>NPM Packages <a href="https://porscheui.jfrog.io" rel="nofollow">Link npm registry</a> (private)</h4>
+              <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit" rel="nofollow">Link to GitHub</a> (private)</h4>
+              <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki" rel="nofollow">Link to GitHub Wiki</a> (private)</h4>
+              <h4>Issues <a href="https://github.com/porscheui/porsche-ui-kit/issues" rel="nofollow">Link to GitHub Issues</a> (private)</h4>
+              <h4>Kanban Board <a href="https://github.com/porscheui/porsche-ui-kit/projects/1" rel="nofollow">Link to GitHub Projects</a> (private)</h4>
               <hr>
               <h2>Documentation</h2>
               <table border="1">
