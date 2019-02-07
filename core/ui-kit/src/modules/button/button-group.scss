@@ -2,7 +2,8 @@
 @import './button-group.mixin.scss';
 
 .#{$global-class-prefix}button-group {
-  margin-top: -$spacing-12;
+  @include button-group(horizontal);
+  margin-bottom: -$spacing-12;
 
   &--horizontal {
     @include button-group(horizontal);
