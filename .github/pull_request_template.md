@@ -1,8 +1,3 @@
----
-name: Pull Request
-title: 'issues/#/'
----
-
 **References**  
 Link the related #Issue Number, the Abstract Collection Design Spec and the published Documentation
 - Closes #
@@ -11,3 +6,6 @@ Link the related #Issue Number, the Abstract Collection Design Spec and the publ
 
 **Scope**  
 Describe shortly the scope of the Pull Request
+
+**Tasks**  
+- [ ] Add corresponding Sketch Library from Abstract
