@@ -5001,88 +5001,105 @@ table {
 
 .button-group {
   margin-left: -0.375rem;
-  margin-right: -0.375rem;
-  margin-bottom: -0.75rem; }
+  margin-right: -0.375rem; }
   .button-group > .button-regular,
   .button-group > .button-icon {
-    margin: 0 0.375rem 0.75rem; }
+    margin: 0 0.375rem; }
   .button-group--horizontal {
     margin-left: -0.375rem;
     margin-right: -0.375rem; }
     .button-group--horizontal > .button-regular,
     .button-group--horizontal > .button-icon {
-      margin: 0 0.375rem 0.75rem; }
+      margin: 0 0.375rem; }
   .button-group--vertical {
     margin-left: 0;
     margin-right: 0; }
     .button-group--vertical > .button-regular,
     .button-group--vertical > .button-icon {
-      margin: 0 0 0.75rem; }
+      margin: 0.75rem 0 0; }
+      .button-group--vertical > .button-regular:first-of-type,
+      .button-group--vertical > .button-icon:first-of-type {
+        margin-top: 0; }
   @media (min-width: 480px) {
     .button-group--horizontal-xs {
       margin-left: -0.375rem;
       margin-right: -0.375rem; }
       .button-group--horizontal-xs > .button-regular,
       .button-group--horizontal-xs > .button-icon {
-        margin: 0 0.375rem 0.75rem; }
+        margin: 0 0.375rem; }
     .button-group--vertical-xs {
       margin-left: 0;
       margin-right: 0; }
       .button-group--vertical-xs > .button-regular,
       .button-group--vertical-xs > .button-icon {
-        margin: 0 0 0.75rem; } }
+        margin: 0.75rem 0 0; }
+        .button-group--vertical-xs > .button-regular:first-of-type,
+        .button-group--vertical-xs > .button-icon:first-of-type {
+          margin-top: 0; } }
   @media (min-width: 760px) {
     .button-group--horizontal-s {
       margin-left: -0.375rem;
       margin-right: -0.375rem; }
       .button-group--horizontal-s > .button-regular,
       .button-group--horizontal-s > .button-icon {
-        margin: 0 0.375rem 0.75rem; }
+        margin: 0 0.375rem; }
     .button-group--vertical-s {
       margin-left: 0;
       margin-right: 0; }
       .button-group--vertical-s > .button-regular,
       .button-group--vertical-s > .button-icon {
-        margin: 0 0 0.75rem; } }
+        margin: 0.75rem 0 0; }
+        .button-group--vertical-s > .button-regular:first-of-type,
+        .button-group--vertical-s > .button-icon:first-of-type {
+          margin-top: 0; } }
   @media (min-width: 1000px) {
     .button-group--horizontal-m {
       margin-left: -0.375rem;
       margin-right: -0.375rem; }
       .button-group--horizontal-m > .button-regular,
       .button-group--horizontal-m > .button-icon {
-        margin: 0 0.375rem 0.75rem; }
+        margin: 0 0.375rem; }
     .button-group--vertical-m {
       margin-left: 0;
       margin-right: 0; }
       .button-group--vertical-m > .button-regular,
       .button-group--vertical-m > .button-icon {
-        margin: 0 0 0.75rem; } }
+        margin: 0.75rem 0 0; }
+        .button-group--vertical-m > .button-regular:first-of-type,
+        .button-group--vertical-m > .button-icon:first-of-type {
+          margin-top: 0; } }
   @media (min-width: 1300px) {
     .button-group--horizontal-l {
       margin-left: -0.375rem;
       margin-right: -0.375rem; }
       .button-group--horizontal-l > .button-regular,
       .button-group--horizontal-l > .button-icon {
-        margin: 0 0.375rem 0.75rem; }
+        margin: 0 0.375rem; }
     .button-group--vertical-l {
       margin-left: 0;
       margin-right: 0; }
       .button-group--vertical-l > .button-regular,
       .button-group--vertical-l > .button-icon {
-        margin: 0 0 0.75rem; } }
+        margin: 0.75rem 0 0; }
+        .button-group--vertical-l > .button-regular:first-of-type,
+        .button-group--vertical-l > .button-icon:first-of-type {
+          margin-top: 0; } }
   @media (min-width: 1760px) {
     .button-group--horizontal-xl {
       margin-left: -0.375rem;
       margin-right: -0.375rem; }
       .button-group--horizontal-xl > .button-regular,
       .button-group--horizontal-xl > .button-icon {
-        margin: 0 0.375rem 0.75rem; }
+        margin: 0 0.375rem; }
     .button-group--vertical-xl {
       margin-left: 0;
       margin-right: 0; }
       .button-group--vertical-xl > .button-regular,
       .button-group--vertical-xl > .button-icon {
-        margin: 0 0 0.75rem; } }
+        margin: 0.75rem 0 0; }
+        .button-group--vertical-xl > .button-regular:first-of-type,
+        .button-group--vertical-xl > .button-icon:first-of-type {
+          margin-top: 0; } }
 
 .divider {
   width: 100%;
