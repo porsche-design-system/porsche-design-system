@@ -1,0 +1,25 @@
+@import "../../styles/base/index";
+
+.#{$global-class-prefix}introduction {
+  text-align: center;
+
+  &__header {
+    padding: $spacing-12 0;
+    background-color: $color-palette-white;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__stage {
+    position: relative;
+    max-width: 1920px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__stage-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
