@@ -1,8 +1,3 @@
----
-name: Pull Request
-title: 'issues/#/v.0.x/'
----
-
 **References** 
 Link the related Issue Number, the Abstract Collection Design Spec and the published Documentation
 - Closes #
