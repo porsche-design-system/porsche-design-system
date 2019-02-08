@@ -11,3 +11,6 @@ Link the related #Issue Number, the Abstract Collection Design Spec and the publ
 
 **Scope**  
 Describe shortly the scope of the Pull Request
+
+**Merging Tasks**
+- [ ] Merge corresponding Sketch master from Abstract
