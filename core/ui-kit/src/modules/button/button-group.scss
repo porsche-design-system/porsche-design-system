@@ -3,7 +3,6 @@
 
 .#{$global-class-prefix}button-group {
   @include button-group(horizontal);
-  margin-bottom: -$spacing-12;
 
   &--horizontal {
     @include button-group(horizontal);

@@ -14,9 +14,13 @@
   > .#{$global-class-prefix}button-regular,
   > .#{$global-class-prefix}button-icon {
     @if $direction == vertical {
-      margin: 0 0 $spacing-12;
+      margin: $spacing-12 0 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
     } @else {
-      margin: 0 $spacing-6 $spacing-12;
+      margin: 0 $spacing-6;
     }
   }
 }
