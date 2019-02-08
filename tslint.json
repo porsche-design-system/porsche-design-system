@@ -11,7 +11,7 @@
       "options": [120]
     },
     "member-access": false,
-    "no-default-export": true,
+    "no-default-export": false,
     "no-duplicate-imports": true,
     "object-literal-sort-keys": false,
     "ordered-imports": false,

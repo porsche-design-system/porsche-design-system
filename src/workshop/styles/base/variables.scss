@@ -1,0 +1,60 @@
+// Globals
+$global-class-prefix: "pui-";
+$global-rem-base: 16px !default;
+
+// ci colors
+$color-palette-white: #fff !default;
+$color-palette-grey-1: #eff0f1 !default;
+$color-palette-grey-2: #e3e4e4 !default;
+$color-palette-grey-3: #c8cacb !default;
+$color-palette-grey-4: #afb1b2 !default;
+$color-palette-grey-5: #959899 !default;
+$color-palette-grey-6: #7b7e80 !default;
+$color-palette-grey-7: #626669 !default;
+$color-palette-grey-8: #494e51 !default;
+$color-palette-grey-9: #313639 !default;
+$color-palette-grey-9-1: #1c2225 !default;
+$color-palette-grey-10: #191f22 !default;
+$color-palette-grey-10-1: #12181c !default;
+$color-palette-black: #000 !default;
+
+$color-palette-red-1: #d5001c !default;
+$color-palette-red-2: #960014 !default;
+
+$color-palette-blue-1: #196a99 !default;
+$color-palette-blue-2: #15577e !default;
+$color-palette-blue-3: #2da6d5 !default;
+
+// special colors
+$color-palette-acid-green: #d2eb2d !default;
+
+// status colors
+$color-palette-status-green: #13d246 !default;
+$color-palette-status-yellow: #ff0 !default;
+$color-palette-status-orange: #e6950a !default;
+$color-palette-status-red: #d5001c !default;
+
+// Spaces  |  basic-spacing x1, x2, x3, x4, x5, x6, x8, x10, ...
+$spacing-0: rem(0) !default;
+$spacing-3: rem(3px) !default;
+$spacing-6: rem(6px) !default;
+$spacing-12: rem(12px) !default;
+$spacing-18: rem(18px) !default;
+$spacing-24: rem(24px) !default;
+$spacing-30: rem(30px) !default;
+$spacing-36: rem(36px) !default;
+$spacing-42: rem(42px) !default;
+$spacing-48: rem(48px) !default;
+$spacing-54: rem(54px) !default;
+$spacing-60: rem(60px) !default;
+
+/* paddings of content for each breakpoint */
+$padding-horizontal-xxs: 7%;
+$padding-horizontal-xs: 7%; // deprecated
+$padding-horizontal-s: 7%; // deprecated
+$padding-horizontal-m: 7%; // deprecated
+$padding-horizontal-l: 7%; // deprecated
+$padding-horizontal-xl: 10%;
+
+// content wrapper max width
+$content-wrapper-max-width: 1920px;
