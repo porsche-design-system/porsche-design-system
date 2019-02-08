@@ -23,7 +23,7 @@ Please also make sure to restart from time to time since some checks are only do
 In some occasions, it might be reasonable to link the Porsche Stylesheets into your project to check out new or changed patterns in the context of your application.  This can be achieved through:
 
 1. Go to the `porsche-stylesheets` project and run: `npm link`
-3. Go to your project and run: `npm link porsche-stylesheets`
+1. Go to your project and run: `npm link porsche-stylesheets`
 
 The Porsche Stylesheets are now available to be used in your project.
 
@@ -32,8 +32,8 @@ The Porsche Stylesheets are now available to be used in your project.
 Once you no longer need the linked development version, follow the following steps to unlink the package and revert to using the published version:
 
 1. Go to the project that consumes `porsche-stylesheets`.
-2. `npm unlink porsche-stylesheets`
-3. `npm install`
+1. `npm unlink porsche-stylesheets`
+1. `npm install`
 
 To remove the possibility to link the development package again, run the following command in the `porsche-stylesheets` project:
 
@@ -41,18 +41,19 @@ To remove the possibility to link the development package again, run the followi
 
 ## Release Management
 1. After merge requirements of a pull request are fulfilled, it can be merged to master branch (don't forget to delete the branch afterwards)
-2. Goto UI Kit Core project in terminal and pull latest commits `git pull`
-3. Either execute `npm version patch` for a patch release or `npm version minor` for a minor release
-4. Open `CHANGELOG.md` and update release notes with proper date and version
-5. Create a commit with following message structure `Release ui-kit/v0.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION} | PUIK`
-6. Create a Git tag `git tag v0.{MINOR_NUMBER}.{PATCH_NUMBER}/core`
-7. Run project with `npm start` to be sure everything works as expected
-8. Push local commit with tag to master branch `git push --tags`
-9. Create a npm release by executing `npm run publish-artifactory` or simply `npm publish` when your Artifactory credentials are properly set already
-10. Login to Artifactory and download latest npm package of Porsche UI Kit Core
-11. Rename downloaded package to `@porsche/{PREVIOUS_FILENAME}`
-12. Upload package to Confluence "Porsche UI Kit Releases" page
-13. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel
+1. Goto UI Kit Core project in terminal and pull latest commits `git pull`
+1. Either execute `npm version patch` for a patch release or `npm version minor` for a minor release
+1. Open `CHANGELOG.md` and update release notes with proper date and version
+1. Get corresponding Sketch version from Abstract and replace it with 
+1. Create a commit with following message structure `Release ui-kit/v0.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION} | PUIK`
+1. Create a Git tag `git tag v0.{MINOR_NUMBER}.{PATCH_NUMBER}/core`
+1. Run project with `npm start` to be sure everything works as expected
+1. Push local commit with tag to master branch `git push --tags`
+1. Create a npm release by executing `npm run publish-artifactory` or simply `npm publish` when your Artifactory credentials are properly set already
+1. Login to Artifactory and download latest npm package of Porsche UI Kit Core
+1. Rename downloaded package to `@porsche/{PREVIOUS_FILENAME}`
+1. Upload package to Confluence "Porsche UI Kit Releases" page
+1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel
 
 ## Folder and file structure
 
