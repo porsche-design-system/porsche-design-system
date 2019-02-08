@@ -1,0 +1,64 @@
+@import '../../setup/global-variables.scss';
+@import './button-group.mixin.scss';
+
+.#{$global-class-prefix}button-group {
+  @include button-group(horizontal);
+
+  &--horizontal {
+    @include button-group(horizontal);
+  }
+
+  &--vertical {
+    @include button-group(vertical);
+  }
+
+  @include breakpoint('xs') {
+    &--horizontal-xs {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-xs {
+      @include button-group(vertical);
+    }
+  }
+
+  @include breakpoint('s') {
+    &--horizontal-s {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-s {
+      @include button-group(vertical);
+    }
+  }
+
+  @include breakpoint('m') {
+    &--horizontal-m {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-m {
+      @include button-group(vertical);
+    }
+  }
+
+  @include breakpoint('l') {
+    &--horizontal-l {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-l {
+      @include button-group(vertical);
+    }
+  }
+
+  @include breakpoint('xl') {
+    &--horizontal-xl {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-xl {
+      @include button-group(vertical);
+    }
+  }
+}

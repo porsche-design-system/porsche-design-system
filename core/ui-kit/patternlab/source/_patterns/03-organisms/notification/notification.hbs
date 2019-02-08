@@ -15,13 +15,13 @@
 
         {{#if button }}
           {{#if buttonIndent }}
-            {{> molecules-button-notification styleModifier="notification__button notification__button--indent"
+            {{> deprecated-button-notification styleModifier="notification__button notification__button--indent"
                 button-notification_error=error
                 button-notification_cookie=cookie
                 button-notification_label=buttonLabel
                 button-notification_icon=buttonIcon }}
           {{else}}
-            {{> molecules-button-notification styleModifier="notification__button"
+            {{> deprecated-button-notification styleModifier="notification__button"
                 button-notification_error=error
                 button-notification_cookie=cookie
                 button-notification_label=buttonLabel

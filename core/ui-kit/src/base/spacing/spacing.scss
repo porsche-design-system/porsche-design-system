@@ -4,6 +4,10 @@
 
 .-#{$global-class-prefix}spacing {
 
+  &-0 {
+    @include -spacing-0;
+  }
+
   &-3 {
     @include -spacing-3;
   }

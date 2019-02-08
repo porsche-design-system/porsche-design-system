@@ -1,6 +1,7 @@
 ---
 title: Button Icon
-state: inprogress
+state: deprecated
 ---
 
-Outdated and will be replaced with button-inline in the near future.
+# @Deprecated
+Outdated and should be replaced with button-square.

@@ -8,6 +8,37 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 * Fixed layout issue of media center modal for mobile + landscape viewports
 
+### Button Refactoring
+* Refactoring of button namings and css structure
+* added sales button type
+* Moved old buttons to deprecated folder
+
+#### Breaking changes
+Please update asap all deprecated buttons with the new ones.
+
+__Migration path:__  
+  * Replace old buttons with new buttons:  
+
+  `button-primary` => `button-regular`  
+  `button-primary--red` => `button-regular--highlight`  
+  `button-primary--acid-green` => `button-regular--highlight`  
+  `button-primary--error` => deleted!  
+  `button-primary--black` => `button-regular`  
+  
+  * Changed location of old button css to deprecated folder:  
+
+  `modules/button/index.scss` => `deprecated/button/index.scss`  
+  `modules/button/button-primary.setup.scss` => `deprecated/button/button-primary.setup.scss`  
+  `modules/button/button-primary.scss` => `deprecated/button/button-primary.scss` 
+  `modules/button/button-ghost.setup.scss` => `deprecated/button/button-ghost.setup.scss` 
+  `modules/button/button-ghost.scss` => `deprecated/button/button-ghost.scss` 
+  `modules/button/button-icon.setup.scss` => `deprecated/button/button-icon.setup.scss`  
+  `modules/button/button-icon.scss` => `deprecated/button/button-icon.scss`  
+  `modules/button/button-inline.setup.scss` => `deprecated/button/button-inline.setup.scss`  
+  `modules/button/button-inline.mixin.scss` => `deprecated/button/button-inline.mixin.scss` 
+  `modules/button/button-inline.scss` => `deprecated/button/button-inline.scss`  
+  `modules/button/button-notification.setup.scss` => `deprecated/button/button-notification.setup.scss`  
+  `modules/button/button-notification.scss` => `deprecated/button/button-notification.scss`  
 
 ## [0.17.0] - 2019-01-10
 
@@ -69,7 +100,7 @@ __Migration path:__
 * Changed order of scss import of deprecated scss files to prevent css specificity issues.
 * Fixed layout issue of confirmation modal component (which was caused by css specificity mentioned above).
 
-## [## [0.14.1] - 2018-11-05]
+## [0.14.1] - 2018-11-05
 ### Bugfix
 Added missing "-" seperator on sizes/offset classname at "xl" breakpoint
 

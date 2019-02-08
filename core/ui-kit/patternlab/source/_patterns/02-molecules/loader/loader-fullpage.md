@@ -1,6 +1,6 @@
 ---
 title: Loader Fullpage
-state: inreview
+state: inprogress
 ---
 
 The Loader Fullpage should be used while saving data.
