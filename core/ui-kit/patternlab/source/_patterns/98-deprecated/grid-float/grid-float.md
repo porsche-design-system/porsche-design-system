@@ -1,10 +1,10 @@
 ---
 title: Grid Float
-state: inreview
+state: deprecated
 ---
 
 # @Deprecated
-Please use Grid Flex component instead
+Please use Grid component instead
 
 # UI Kit Core grid manual
 

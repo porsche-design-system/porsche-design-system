@@ -30,8 +30,8 @@
   }
 
   &__bg {
-    stroke: $color-palette-grey-1;
-    opacity: .5;
+    stroke: $color-palette-grey-9;
+    opacity: .4;
   }
 
   &--theme-inverted {
@@ -40,7 +40,7 @@
     }
 
     #{$bem-block}__bg {
-      stroke: $color-palette-grey-7;
+      stroke: $color-palette-white;
     }
   }
 
