@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+* Added optimized Icon SVG in `src/base/icon/*.min.svg` which results in smaller file size (e.g. SVG sprites)
+
 ## [0.18.0] - 2019-02-08
 
 * Fixed layout issue of media center modal for mobile + landscape viewports
