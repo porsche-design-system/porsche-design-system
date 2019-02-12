@@ -7,9 +7,7 @@
     "jsx-boolean-value": false,
     "jsx-no-multiline-js": false,
     "linebreak-style": [true, "LF"],
-    "max-line-length": {
-      "options": [120]
-    },
+    "max-line-length": false,
     "member-access": false,
     "no-default-export": false,
     "no-duplicate-imports": true,
