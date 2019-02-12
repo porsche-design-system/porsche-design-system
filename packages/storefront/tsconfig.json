@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "allowJs": true
+  },
+  "include": ["../../@types/**/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "build"]
+}

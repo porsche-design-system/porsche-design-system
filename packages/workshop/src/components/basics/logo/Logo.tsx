@@ -1,9 +1,9 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { getElementType, prefix } from "../../../../lib"
-import { base64logo } from "../../../../lib/base64logo"
-import { ClassNameProp, ComponentProp } from "../../../../lib/props"
+import { getElementType, prefix } from "../../../lib"
+import { base64logo } from "../../../lib/base64logo"
+import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface LogoProps extends ClassNameProp, ComponentProp {}
 

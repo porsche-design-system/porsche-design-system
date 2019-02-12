@@ -4,7 +4,7 @@
     "sourceMap": true,
     "module": "esNext",
     "target": "es5",
-    "jsx": "preserve",
+    "jsx": "react",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -13,14 +13,9 @@
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "isolatedModules": true
+    "resolveJsonModule": true
   },
-  "include": ["./@types/**/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
-  "exclude": ["node_modules", "dist", "build"]
+  "references": [{ "path": "./packages/workshop" }]
 }

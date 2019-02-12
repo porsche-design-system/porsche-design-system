@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import cx from "classnames"
-import { prefix } from "../../../lib"
-import { Logo } from "../../../workshop/components/basics/Logo/Logo"
+import { prefix, Logo } from "@porscheui/porsche-ui-kit"
 import Background from "../../assets/img/bg.png"
 import "./introduction.scss"
 
