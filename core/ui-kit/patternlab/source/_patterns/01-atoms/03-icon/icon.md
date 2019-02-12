@@ -19,6 +19,9 @@ The icon sprite must be build throughout a set of individual SVG icons.
 The whole set of icons can be found here:  
 `~@porsche/ui-kit-core/src/base/icon/*.svg`  
 
+If you do not optimize the SVG icons by yourself, you can also use the optimized icon set:  
+`~@porsche/ui-kit-core/src/base/icon/*.min.svg`  
+
 Building the sprite can be done manually or even better with help of a frontend build system, e.g. https://github.com/jkphl/svg-sprite.  
 
 __Hints for optimizations__: 
