@@ -1,5 +1,6 @@
 // Components
-export { Logo } from "./components/basics/logo/Logo"
+export { Flex, FlexProps } from "./components/layout/flex/Flex"
+export { FlexItem, FlexItemProps } from "./components/layout/flex/FlexItem"
 
 // Utilities
 export { prefix } from "./lib/prefix"

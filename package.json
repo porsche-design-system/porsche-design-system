@@ -28,7 +28,9 @@
     "url": "https://github.com/porscheui/porsche-ui-kit/issues"
   },
   "homepage": "https://ui.porsche.com",
-  "scripts": {},
+  "scripts": {
+    "start": "yarn --cwd ./packages/storefront start"
+  },
   "dependencies": {},
   "devDependencies": {},
   "workspaces": [

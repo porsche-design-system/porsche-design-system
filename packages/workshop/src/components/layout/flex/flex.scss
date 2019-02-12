@@ -1,0 +1,291 @@
+@import "../../../styles/index";
+@import "~@porsche/ui-kit-core/src/base/layout/index";
+
+$flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
+
+@mixin flex-child-width($i) {
+  width: #{nth($flex-child-width, $i + 1)};
+}
+
+@mixin flex-child-offset($i) {
+  margin-left: #{nth($flex-child-width, $i)};
+}
+
+.#{$global-class-prefix}flex {
+  $bem-block: &;
+
+  /**
+   * properties for grid children items (widths and offsets)
+   */
+  &__child {
+    &--width {
+      &-one-quarter {
+        @include flex-child-width(1);
+      }
+      &-one-third {
+        @include flex-child-width(2);
+      }
+      &-half {
+        @include flex-child-width(3);
+      }
+      &-two-thirds {
+        @include flex-child-width(4);
+      }
+      &-three-quarters {
+        @include flex-child-width(5);
+      }
+      &-full {
+        @include flex-child-width(6);
+      }
+      &-auto {
+        width: auto;
+      }
+
+      @include breakpoint("xs") {
+        &-one-quarter-xs {
+          @include flex-child-width(1);
+        }
+        &-one-third-xs {
+          @include flex-child-width(2);
+        }
+        &-half-xs {
+          @include flex-child-width(3);
+        }
+        &-two-thirds-xs {
+          @include flex-child-width(4);
+        }
+        &-three-quarters-xs {
+          @include flex-child-width(5);
+        }
+        &-full-xs {
+          @include flex-child-width(6);
+        }
+        &-auto-xs {
+          width: auto;
+        }
+      }
+
+      @include breakpoint("s") {
+        &-one-quarter-s {
+          @include flex-child-width(1);
+        }
+        &-one-third-s {
+          @include flex-child-width(2);
+        }
+        &-half-s {
+          @include flex-child-width(3);
+        }
+        &-two-thirds-s {
+          @include flex-child-width(4);
+        }
+        &-three-quarters-s {
+          @include flex-child-width(5);
+        }
+        &-full-s {
+          @include flex-child-width(6);
+        }
+        &-auto-s {
+          width: auto;
+        }
+      }
+
+      @include breakpoint("m") {
+        &-one-quarter-m {
+          @include flex-child-width(1);
+        }
+        &-one-third-m {
+          @include flex-child-width(2);
+        }
+        &-half-m {
+          @include flex-child-width(3);
+        }
+        &-two-thirds-m {
+          @include flex-child-width(4);
+        }
+        &-three-quarters-m {
+          @include flex-child-width(5);
+        }
+        &-full-m {
+          @include flex-child-width(6);
+        }
+        &-auto-m {
+          width: auto;
+        }
+      }
+
+      @include breakpoint("l") {
+        &-one-quarter-l {
+          @include flex-child-width(1);
+        }
+        &-one-third-l {
+          @include flex-child-width(2);
+        }
+        &-half-l {
+          @include flex-child-width(3);
+        }
+        &-two-thirds-l {
+          @include flex-child-width(4);
+        }
+        &-three-quarters-l {
+          @include flex-child-width(5);
+        }
+        &-full-l {
+          @include flex-child-width(6);
+        }
+        &-auto-l {
+          width: auto;
+        }
+      }
+
+      @include breakpoint("xl") {
+        &-one-quarter-xl {
+          @include flex-child-width(1);
+        }
+        &-one-third-xl {
+          @include flex-child-width(2);
+        }
+        &-half-xl {
+          @include flex-child-width(3);
+        }
+        &-two-thirds-xl {
+          @include flex-child-width(4);
+        }
+        &-three-quarters-xl {
+          @include flex-child-width(5);
+        }
+        &-full-xl {
+          @include flex-child-width(6);
+        }
+        &-auto-xl {
+          width: auto;
+        }
+      }
+    }
+
+    &--offset {
+      &-none {
+        @include flex-child-offset(1);
+      }
+      &-one-quarter {
+        @include flex-child-offset(2);
+      }
+      &-one-third {
+        @include flex-child-offset(3);
+      }
+      &-half {
+        @include flex-child-offset(4);
+      }
+      &-two-thirds {
+        @include flex-child-offset(5);
+      }
+      &-three-quarters {
+        @include flex-child-offset(6);
+      }
+
+      @include breakpoint("xs") {
+        &-none-xs {
+          @include flex-child-offset(1);
+        }
+        &-one-quarter-xs {
+          @include flex-child-offset(2);
+        }
+        &-one-third-xs {
+          @include flex-child-offset(3);
+        }
+        &-half-xs {
+          @include flex-child-offset(4);
+        }
+        &-two-thirds-xs {
+          @include flex-child-offset(5);
+        }
+        &-three-quarters-xs {
+          @include flex-child-offset(6);
+        }
+      }
+
+      @include breakpoint("s") {
+        &-none-s {
+          @include flex-child-offset(1);
+        }
+        &-one-quarter-s {
+          @include flex-child-offset(2);
+        }
+        &-one-third-s {
+          @include flex-child-offset(3);
+        }
+        &-half-s {
+          @include flex-child-offset(4);
+        }
+        &-two-thirds-s {
+          @include flex-child-offset(5);
+        }
+        &-three-quarters-s {
+          @include flex-child-offset(6);
+        }
+      }
+
+      @include breakpoint("m") {
+        &-none-m {
+          @include flex-child-offset(1);
+        }
+        &-one-quarter-m {
+          @include flex-child-offset(2);
+        }
+        &-one-third-m {
+          @include flex-child-offset(3);
+        }
+        &-half-m {
+          @include flex-child-offset(4);
+        }
+        &-two-thirds-m {
+          @include flex-child-offset(5);
+        }
+        &-three-quarters-m {
+          @include flex-child-offset(6);
+        }
+      }
+
+      @include breakpoint("l") {
+        &-none-l {
+          @include flex-child-offset(1);
+        }
+        &-one-quarter-l {
+          @include flex-child-offset(2);
+        }
+        &-one-third-l {
+          @include flex-child-offset(3);
+        }
+        &-half-l {
+          @include flex-child-offset(4);
+        }
+        &-two-thirds-l {
+          @include flex-child-offset(5);
+        }
+        &-three-quarters-l {
+          @include flex-child-offset(6);
+        }
+      }
+
+      @include breakpoint("xl") {
+        &-none-xl {
+          @include flex-child-offset(1);
+        }
+        &-one-quarter-xl {
+          @include flex-child-offset(2);
+        }
+        &-one-third-xl {
+          @include flex-child-offset(3);
+        }
+        &-half-xl {
+          @include flex-child-offset(4);
+        }
+        &-two-thirds-xl {
+          @include flex-child-offset(5);
+        }
+        &-three-quarters-xl {
+          @include flex-child-offset(6);
+        }
+      }
+    }
+  }
+}
