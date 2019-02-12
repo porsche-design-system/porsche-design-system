@@ -1,18 +1,10 @@
 {
-  "name": "porsche-ui-kit",
-  "version": "0.0.0",
+  "name": "porsche-ui-kit-repo",
+  "version": "1.0.0",
   "scope": "@porscheui",
+  "private": true,
   "description": "Porsche UI Kit component library and documentation",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
-  "jsnext:main": "dist/es/index.js",
-  "typings": "dist/typings/index",
   "license": "SEE LICENSE IN https://github.com/porscheui/porsche-ui-kit/wiki/License",
-  "files": [
-    "public",
-    "src/**/*.scss",
-    "css"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
@@ -36,50 +28,10 @@
     "url": "https://github.com/porscheui/porsche-ui-kit/issues"
   },
   "homepage": "https://ui.porsche.com",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,css,scss,html}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "dependencies": {
-    "@types/jest": "24.0.0",
-    "@types/node": "10.12.21",
-    "@types/react": "16.8.2",
-    "@types/react-dom": "16.8.0",
-    "classnames": "^2.2.6",
-    "node-sass": "^4.11.0",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-scripts": "2.1.3",
-    "typescript": "3.3.1"
-  },
-  "devDependencies": {
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.1",
-    "prettier": "^1.16.1",
-    "stylelint": "^9.10.1",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-scss": "^3.5.1",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-react": "^3.6.0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "publishConfig": {
-    "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
-  }
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "workspaces": [
+    "packages/*"
+  ]
 }

@@ -1,8 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import "./storefront/styles/index.scss"
-import Introduction from "./storefront/views/Introduction/Introduction"
-import * as serviceWorker from "./serviceWorker"
+import Introduction from "./storefront/views/introduction/Introduction"
+import * as serviceWorker from "./storefront/serviceWorker"
 
 ReactDOM.render(<Introduction />, document.getElementById("root"))
 
