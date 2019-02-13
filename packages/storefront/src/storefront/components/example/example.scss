@@ -7,11 +7,13 @@
     background-color: $color-palette-grey-1;
   }
   &__info {
+    // Reset styles from story code for editor
     code {
-      padding: 0px;
-      background-color: $color-palette-white;
-      border-radius: 0px;
+      padding: initial;
+      background-color: initial;
+      border-radius: initial;
     }
+
     &__html {
     }
   }

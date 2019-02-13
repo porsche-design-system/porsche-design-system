@@ -29,7 +29,7 @@
   },
   "homepage": "https://ui.porsche.com",
   "scripts": {
-    "start": "concurrently \"yarn --cwd ../workshop watch:es\" \"sleep 5 && react-scripts start\"",
+    "start": "concurrently \"yarn --cwd ../workshop watch:es\" \"react-scripts start\"",
     "build": "yarn --cwd ../workshop build && react-scripts build"
   },
   "dependencies": {
@@ -46,6 +46,7 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/react": "^16.8.2",
     "concurrently": "^4.1.0",
+    "react-syntax-highlighter": "^10.1.2",
     "mdx.macro": "^0.2.8",
     "node-sass": "^4.11.0",
     "react-dom": "^16.8.1",
