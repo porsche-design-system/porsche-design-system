@@ -1,0 +1,31 @@
+@import "../../styles/base/index";
+
+.#{$global-class-prefix}story {
+  padding: $spacing-60 120px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-bottom: $spacing-24;
+    max-width: 60em;
+    line-height: 1.5em;
+  }
+
+  hr {
+    margin-top: $spacing-42;
+    margin-bottom: $spacing-60;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $color-palette-grey-2;
+  }
+
+  code {
+    padding: 3px;
+    background-color: $color-palette-grey-1;
+    border-radius: 2px;
+  }
+}
