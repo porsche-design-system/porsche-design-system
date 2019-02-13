@@ -29,7 +29,8 @@
   },
   "homepage": "https://ui.porsche.com",
   "scripts": {
-    "start": "yarn --cwd ./packages/storefront start"
+    "start": "yarn --cwd ./packages/storefront start",
+    "build": "yarn --cwd ./packages/storefront build"
   },
   "dependencies": {},
   "devDependencies": {
