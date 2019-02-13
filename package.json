@@ -32,7 +32,16 @@
     "start": "yarn --cwd ./packages/storefront start"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.16.4",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.3",
+    "stylelint": "^9.10.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^3.6.0",
+    "tslint": "^5.12.1",
+    "typescript": "~3.3.3"
+  },
   "workspaces": [
     "packages/*"
   ]

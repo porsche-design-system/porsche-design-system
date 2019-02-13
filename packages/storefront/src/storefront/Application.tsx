@@ -6,9 +6,6 @@ import { Story } from "./components/story/Story"
 import { prefix } from "@porscheui/porsche-ui-kit"
 import "./application.scss"
 
-// import { Example } from "./components/example/Example"
-// const useIt = Example // This component is only used in .mdx files. But we need webpack to know about it
-
 export class Application extends React.Component {
   render() {
     return (
