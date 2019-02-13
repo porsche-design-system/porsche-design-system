@@ -1,0 +1,21 @@
+@import "./styles/base/index";
+
+$sidebar-width: 300px;
+
+.#{$global-class-prefix}app {
+  &__sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: $sidebar-width;
+    height: 100%;
+    z-index: 1;
+    overflow-x: hidden;
+    border-right: 1px solid $color-palette-grey-3;
+  }
+
+  &__content {
+    margin-left: $sidebar-width;
+  }
+}

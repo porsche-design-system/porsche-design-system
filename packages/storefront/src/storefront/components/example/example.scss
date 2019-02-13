@@ -1,0 +1,18 @@
+@import "../../styles/base/index";
+
+.#{$global-class-prefix}example {
+  &__render {
+    margin: $spacing-36 0;
+    padding: $spacing-30;
+    background-color: $color-palette-grey-1;
+  }
+  &__info {
+    code {
+      padding: 0px;
+      background-color: $color-palette-white;
+      border-radius: 0px;
+    }
+    &__html {
+    }
+  }
+}
