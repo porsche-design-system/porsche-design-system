@@ -1,5 +1,4 @@
 import React from "react"
-import cx from "classnames"
 import { prefix } from "@porscheui/porsche-ui-kit"
 import "./sidebar.scss"
 import { Stories } from "../../../stories"
@@ -13,7 +12,7 @@ export interface SidebarLinkProps {
 export const SidebarLink: React.FunctionComponent<SidebarLinkProps> = (props) => {
   return (
     <Link to={props.to}>
-      <div className={cx(prefix("sidebar__item"))}>{props.title}</div>
+      <div className={prefix("sidebar__item")}>{props.title}</div>
     </Link>
   )
 }
@@ -24,8 +23,8 @@ export interface SidebarCategory {
 
 export const SidebarCategory: React.FunctionComponent<SidebarCategory> = (props) => {
   return (
-    <div className={cx(prefix("sidebar__category"))}>
-      <div className={cx(prefix("sidebar__category__title"))}>{props.title}</div>
+    <div className={prefix("sidebar__category")}>
+      <div className={prefix("sidebar__category__title")}>{props.title}</div>
       {props.children}
     </div>
   )
@@ -35,7 +34,7 @@ export const Sidebar: React.FunctionComponent = (props) => {
   const categories = Object.keys(Stories)
 
   return (
-    <aside className={cx(prefix("sidebar"))}>
+    <aside className={prefix("sidebar")}>
       {props.children}
       <hr className={prefix("sidebar__hr")} />
       {categories.map((category) => {

@@ -1,5 +1,4 @@
 import React, { Suspense, lazy } from "react"
-import cx from "classnames"
 import { prefix } from "@porscheui/porsche-ui-kit"
 import "./story.scss"
 import { RouteComponentProps, Redirect } from "react-router"
@@ -31,7 +30,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
   const Content = lazy(() => storyFactory)
 
   return (
-    <div className={cx(prefix("story"))}>
+    <div className={prefix("story")}>
       <Suspense fallback={<div>Loading...</div>}>
         <Content />
       </Suspense>

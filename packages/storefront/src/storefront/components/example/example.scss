@@ -2,11 +2,31 @@
 
 .#{$global-class-prefix}example {
   &__render {
-    margin: $spacing-36 0;
-    padding: $spacing-30;
-    background-color: $color-palette-grey-1;
+    margin-top: $spacing-36;
+    margin-bottom: $spacing-12;
+    padding-left: $spacing-30;
+    padding-right: $spacing-30;
+    padding-bottom: $spacing-30;
+
+    &--light {
+      background-color: $color-palette-grey-1;
+    }
+
+    &--dark {
+      background-color: $color-palette-grey-10;
+    }
   }
+
   &__info {
+    &__toggle-html {
+      margin-bottom: $spacing-12;
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      color: $color-palette-black;
+    }
+
     // Reset styles from story code for editor
     code {
       padding: initial;
@@ -15,6 +35,50 @@
     }
 
     &__html {
+      font-size: 16px;
+
+      pre {
+        padding: $spacing-24 $spacing-30 !important;
+      }
+    }
+  }
+
+  &__themes {
+    padding: $spacing-18 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &__button {
+      padding: 0 $spacing-12;
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+
+      &--light {
+        border-right: 1px solid $color-palette-grey-3;
+
+        &--active {
+          color: $color-palette-black;
+        }
+
+        &--inactive {
+          color: $color-palette-grey-5;
+        }
+      }
+
+      &--dark {
+        margin-right: -$spacing-12;
+
+        &--active {
+          color: $color-palette-white;
+        }
+
+        &--inactive {
+          color: $color-palette-grey-5;
+        }
+      }
     }
   }
 }
