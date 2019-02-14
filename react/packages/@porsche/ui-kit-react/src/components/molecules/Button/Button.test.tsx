@@ -9,38 +9,62 @@ describe("Button component", () => {
     }
 
     describe("default", () => {
-        it("should not have active modifier", () => {
+        it("should have button regular class", () => {
             // Act
             const component = createComponent()
             // Assert
-            const result = component.find(`.${prefix("button-primary--active")}`)
-            expect(result.length).toBe(0)
+            const result = component.find(`.${prefix("button-regular")}`)
+            expect(result.length).toBe(1)
         })
     })
 
-    describe("active", () => {
-        it("should have an active modifier", () => {
+    describe("highlight", () => {
+        it("should have a highlight modifier", () => {
             // Arrange
             const props: ButtonProps = {
-                active: true
+                type: "highlight"
             }
             // Act
             const component = createComponent(props)
             // Assert
-            const result = component.find(`.${prefix("button-primary--active")}`)
+            const result = component.find(`.${prefix("button-regular--highlight")}`)
             expect(result.length).toBe(1)
         })
 
-        it("should not have active modifier", () => {
+        it("should have a sales modifier", () => {
             // Arrange
             const props: ButtonProps = {
-                active: false
+                type: "sales"
             }
             // Act
             const component = createComponent(props)
             // Assert
-            const result = component.find(`.${prefix("button-primary--active")}`)
-            expect(result.length).toBe(0)
+            const result = component.find(`.${prefix("button-regular--sales")}`)
+            expect(result.length).toBe(1)
+        })
+
+        it("should have a ghost modifier", () => {
+            // Arrange
+            const props: ButtonProps = {
+                type: "ghost"
+            }
+            // Act
+            const component = createComponent(props)
+            // Assert
+            const result = component.find(`.${prefix("button-regular--ghost")}`)
+            expect(result.length).toBe(1)
+        })
+
+        it("should have a sales-ghost modifier", () => {
+            // Arrange
+            const props: ButtonProps = {
+                type: "sales-ghost"
+            }
+            // Act
+            const component = createComponent(props)
+            // Assert
+            const result = component.find(`.${prefix("button-regular--sales-ghost")}`)
+            expect(result.length).toBe(1)
         })
     })
 })
