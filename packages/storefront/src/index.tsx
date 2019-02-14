@@ -1,9 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import "./storefront/styles/index.scss"
-import * as serviceWorker from "./storefront/serviceWorker"
+import "./styles/index.scss"
+import * as serviceWorker from "./serviceWorker"
 
-import { Application } from "./storefront/Application"
+import { Application } from "./Application"
 
 ReactDOM.render(<Application />, document.getElementById("root"))
 

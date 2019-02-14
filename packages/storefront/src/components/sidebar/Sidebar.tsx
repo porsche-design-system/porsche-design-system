@@ -1,7 +1,7 @@
 import React from "react"
 import { prefix } from "@porscheui/porsche-ui-kit"
 import "./sidebar.scss"
-import { Stories } from "../../../stories"
+import { Stories } from "../../stories"
 import { Link, Redirect } from "react-router-dom"
 
 export interface SidebarLinkProps {
