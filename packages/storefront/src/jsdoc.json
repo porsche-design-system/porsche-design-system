@@ -1,0 +1,364 @@
+{
+  "Flex": {
+    "description": "A flex container component used to create flex box layouts.\n@see Spacing\n@see Grid",
+    "displayName": "Flex",
+    "methods": [],
+    "props": {
+      "inline": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Defines the flex container display as inline rather than block.",
+        "name": "inline",
+        "parent": {
+          "fileName": "components/layout/flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "true",
+            "false"
+          ]
+        }
+      },
+      "wrap": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "If set, overflowing elements will wrap to a new line.",
+        "name": "wrap",
+        "parent": {
+          "fileName": "components/layout/flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "true",
+            "false",
+            "\"reverse\""
+          ]
+        }
+      },
+      "direction": {
+        "defaultValue": null,
+        "description": "Defines the direction of the main and cross axis. The default \"row\" defines the main axis as horizontal left to right.",
+        "name": "direction",
+        "parent": {
+          "fileName": "components/layout/flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "\"column-reverse\"",
+            "\"column\"",
+            "\"row-reverse\"",
+            "\"row\""
+          ]
+        }
+      },
+      "alignMainAxis": {
+        "defaultValue": null,
+        "description": "Defines how the flex items are aligned along the main axis. Corresponds to the \"justifyContent\" css property.",
+        "name": "alignMainAxis",
+        "parent": {
+          "fileName": "components/layout/flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "\"start\"",
+            "\"center\"",
+            "\"end\"",
+            "\"space-around\"",
+            "\"space-between\"",
+            "\"space-evenly\""
+          ]
+        }
+      },
+      "alignCrossAxis": {
+        "defaultValue": null,
+        "description": "Defines how the flex items are aligned along the cross axis. Corresponds to the \"alignItems\" css property.",
+        "name": "alignCrossAxis",
+        "parent": {
+          "fileName": "components/layout/flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "\"start\"",
+            "\"center\"",
+            "\"end\"",
+            "\"baseline\"",
+            "\"stretch\""
+          ]
+        }
+      },
+      "alignContent": {
+        "defaultValue": null,
+        "description": "This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how \"alignMainAxis\" aligns individual items along the main axis.\nCorresponds to the \"alignContent\" css property.",
+        "name": "alignContent",
+        "parent": {
+          "fileName": "components/layout/flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "\"start\"",
+            "\"center\"",
+            "\"end\"",
+            "\"space-around\"",
+            "\"space-between\"",
+            "\"stretch\""
+          ]
+        }
+      },
+      "gap": {
+        "defaultValue": null,
+        "description": "Defines the gap between contained children. The value \"grid\" sets responsive grid spacings that should be used together with Flex.Item.",
+        "name": "gap",
+        "parent": {
+          "fileName": "components/layout/flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "Called after a user's click.\n@param event React's original event.\n@param data All props of the component.",
+        "name": "onClick",
+        "parent": {
+          "fileName": "components/layout/flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": {
+          "name": "func"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Additional CSS classes.",
+        "name": "className",
+        "parent": {
+          "fileName": "lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "The html element type to render as.",
+        "name": "as",
+        "parent": {
+          "fileName": "lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": {
+          "name": "string | ComponentClass"
+        }
+      }
+    },
+    "fileName": "components/layout/flex/Flex.tsx"
+  },
+  "FlexItem": {
+    "description": "A child of a flex container.",
+    "displayName": "FlexItem",
+    "methods": [],
+    "props": {
+      "alignCrossAxis": {
+        "defaultValue": null,
+        "description": "Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the \"alignSelf\" css property.",
+        "name": "alignCrossAxis",
+        "parent": {
+          "fileName": "components/layout/flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "\"start\"",
+            "\"center\"",
+            "\"end\"",
+            "\"baseline\"",
+            "\"stretch\"",
+            "\"auto\""
+          ]
+        }
+      },
+      "width": {
+        "defaultValue": null,
+        "description": "The width of the flex item. You can also supply values for specific breakpoints, like {base: \"full\", l: \"one-quarter\"}. You always need to provide a base value when doing this.",
+        "name": "width",
+        "parent": {
+          "fileName": "components/layout/flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "\"auto\"",
+            "\"one-quarter\"",
+            "\"one-third\"",
+            "\"half\"",
+            "\"two-thirds\"",
+            "\"three-quarters\"",
+            "\"full\""
+          ]
+        }
+      },
+      "offset": {
+        "defaultValue": null,
+        "description": "The offset of the column. You can also supply values for specific breakpoints, like {base: \"none\", l: \"one-quarter\"}. You always need to provide a base value when doing this.",
+        "name": "offset",
+        "parent": {
+          "fileName": "components/layout/flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "\"one-quarter\"",
+            "\"one-third\"",
+            "\"half\"",
+            "\"two-thirds\"",
+            "\"three-quarters\"",
+            "\"none\""
+          ]
+        }
+      },
+      "shrink": {
+        "defaultValue": null,
+        "description": "The ability to allow/disallow the flex child to shrink.",
+        "name": "shrink",
+        "parent": {
+          "fileName": "components/layout/flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "0",
+            "1"
+          ]
+        }
+      },
+      "grow": {
+        "defaultValue": null,
+        "description": "The ability to allow/disallow the flex child to grow.",
+        "name": "grow",
+        "parent": {
+          "fileName": "components/layout/flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "0",
+            "1"
+          ]
+        }
+      },
+      "flex": {
+        "defaultValue": null,
+        "description": "The shorthand property for the combined definition of \"shrink\", \"grow\" and \"basis\"",
+        "name": "flex",
+        "parent": {
+          "fileName": "components/layout/flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "BreakpointCustomizable",
+            "\"auto\"",
+            "\"none\"",
+            "\"initial\"",
+            "\"equal\""
+          ]
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Additional CSS classes.",
+        "name": "className",
+        "parent": {
+          "fileName": "lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "The html element type to render as.",
+        "name": "as",
+        "parent": {
+          "fileName": "lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": {
+          "name": "string | ComponentClass"
+        }
+      }
+    },
+    "fileName": "components/layout/flex/FlexItem.tsx"
+  }
+}

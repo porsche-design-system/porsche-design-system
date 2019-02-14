@@ -9206,6 +9206,11 @@ react-dev-utils@^7.0.1:
     strip-ansi "5.0.0"
     text-table "0.2.0"
 
+react-docgen-typescript@^1.12.3:
+  version "1.12.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-docgen-typescript/-/react-docgen-typescript-1.12.3.tgz#fe62a5ce82e93573e316366e53adfe8273121c70"
+  integrity sha1-/mKlzoLpNXPjFjZuU63+gnMSHHA=
+
 react-dom@^16.8.1:
   version "16.8.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-dom/-/react-dom-16.8.1.tgz#ec860f98853d09d39bafd3a6f1e12389d283dbb4"
