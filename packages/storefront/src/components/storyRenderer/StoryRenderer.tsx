@@ -4,6 +4,7 @@ import "./storyRenderer.scss"
 import { RouteComponentProps, Redirect } from "react-router"
 
 import { Stories, Story } from "../../stories"
+import jsdoc from "../../jsdoc.json"
 
 export interface StoryRendererUrlParams {
   category: string
@@ -31,7 +32,8 @@ export const StoryRenderer: React.FunctionComponent<RouteComponentProps<StoryRen
 
   return (
     <div className={prefix("story")}>
-      <Suspense fallback={<div>Loading...</div>}>
+      {JSON.stringify((jsdoc as any)[story.jsdoc[0]], null, 2)}
+      <Suspense fallback={<div />}>
         <Content />
       </Suspense>
     </div>
