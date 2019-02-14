@@ -1,16 +1,16 @@
 import React, { Suspense, lazy } from "react"
 import { prefix } from "@porscheui/porsche-ui-kit"
-import "./story.scss"
+import "./storyRenderer.scss"
 import { RouteComponentProps, Redirect } from "react-router"
 
-import { Stories } from "../../../stories"
+import { Stories, Story } from "../../stories"
 
-export interface StoryUrlParams {
+export interface StoryRendererUrlParams {
   category: string
   story: string
 }
 
-export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>> = (props) => {
+export const StoryRenderer: React.FunctionComponent<RouteComponentProps<StoryRendererUrlParams>> = (props) => {
   const categoryName = props.match.params.category
   const storyName = props.match.params.story
 
@@ -21,13 +21,13 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
     return <Redirect to="/introduction" />
   }
 
-  const storyFactory = category[decodeParam(storyName)] || category[toTitleCase(decodeParam(storyName))]
+  const story: Story = category[decodeParam(storyName)] || category[toTitleCase(decodeParam(storyName))]
 
-  if (!storyFactory) {
+  if (!story) {
     return <Redirect to="/introduction" />
   }
 
-  const Content = lazy(() => storyFactory)
+  const Content = lazy(() => story.code)
 
   return (
     <div className={prefix("story")}>
