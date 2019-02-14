@@ -1,0 +1,80 @@
+@import "../../../common";
+
+/**
+ * Extends core button-group styles to handle flex layout which is easier to maintain than Flex component properties
+*/
+
+.#{$global-class-prefix}button-group {
+    display: flex;
+    flex-wrap: nowrap;
+
+    &--horizontal {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    &--vertical {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    @include breakpoint("xs") {
+        &--horizontal-xs {
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        &--vertical-xs {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @include breakpoint("s") {
+        &--horizontal-s {
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        &--vertical-s {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @include breakpoint("m") {
+        &--horizontal-m {
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        &--vertical-m {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @include breakpoint("l") {
+        &--horizontal-l {
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        &--vertical-l {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @include breakpoint("xl") {
+        &--horizontal-xl {
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        &--vertical-xl {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}

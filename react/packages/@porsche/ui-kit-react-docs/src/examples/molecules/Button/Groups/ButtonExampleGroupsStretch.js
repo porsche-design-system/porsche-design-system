@@ -1,17 +1,35 @@
 import React from "react"
-import { Button, Flex } from "@porsche/ui-kit-react"
+import { Button, Spacing } from "@porsche/ui-kit-react"
 
 const ButtonExampleGroupsStretch = () => {
     return (
-        <Button.Group>
-            <Button type="red" stretch>
-                Button 1
-            </Button>
-            <Button type="black" stretch>
-                Button 2
-            </Button>
-            <Button stretch>Button 3</Button>
-        </Button.Group>
+        <div>
+            <Button.Group>
+                <Button stretch type="ghost">
+                    Ghost Button
+                </Button>
+                <Button type="highlight" stretch>
+                    Highlight Button
+                </Button>
+                <Button type="sales" stretch>
+                    Sales Button
+                </Button>
+            </Button.Group>
+
+            <Spacing marginTop={30}>
+                <Button.Group direction="vertical">
+                    <Button stretch type="ghost">
+                        Ghost Button
+                    </Button>
+                    <Button stretch type="highlight">
+                        Highlight Button
+                    </Button>
+                    <Button stretch type="sales">
+                        Sales Button
+                    </Button>
+                </Button.Group>
+            </Spacing>
+        </div>
     )
 }
 
