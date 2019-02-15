@@ -63,6 +63,16 @@ The SVG sprite is used by serving the icons bundled all together as a static ass
 </svg>
 ``` 
 
+### Icon inside an icon wrapper
+Sometimes there may be technical reasons (e.g. js components) which cause in adding an additional wrapper element around the icon. In this case, moving the icon classes to the wrapper element is possible:  
+``` 
+<div class="icon">
+  <svg role="img" title="arrow down">
+    <use xlink:href="/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down"/>
+  </svg>
+</div>
+``` 
+
 ### Icon sizes
 There are pre-defined icon sizes which can be set by adding one of the following classes:  
 ``` 
