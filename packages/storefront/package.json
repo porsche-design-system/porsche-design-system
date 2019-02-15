@@ -30,7 +30,8 @@
   "homepage": "https://ui.porsche.com",
   "scripts": {
     "start": "concurrently \"yarn --cwd ../workshop watch:es\" \"react-scripts start\"",
-    "build": "yarn --cwd ../workshop build && react-scripts build"
+    "build": "yarn --cwd ../workshop build && react-scripts build",
+    "docgen": "node ../docgen/docgen.js"
   },
   "dependencies": {
     "@porsche/ui-kit-react": "^0.8.0",

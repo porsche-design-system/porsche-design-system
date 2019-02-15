@@ -39,6 +39,13 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
 
   /** Defines the gap between contained children. The value "grid" sets responsive grid spacings that should be used together with Flex.Item. */
   gap?: 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+
+  /**
+   * Called after a user's click.
+   * @param {React.MouseEvent<HTMLButtonElement>} event React's original event.
+   * @param {ButtonProps} data All props of the component.
+   */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>, data: ButtonProps) => void
 }
 
 const defaultProps: Partial<FlexProps> = {

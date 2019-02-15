@@ -1,0 +1,41 @@
+@import "../../styles/base/index";
+
+.#{$global-class-prefix}props {
+  overflow-x: scroll;
+
+  &__component-description {
+    white-space: pre-wrap;
+  }
+
+  table {
+    min-width: 900px;
+    text-align: left;
+    width: 100%;
+  }
+
+  thead {
+  }
+
+  tbody {
+  }
+
+  tr {
+  }
+
+  th {
+    padding-top: $spacing-24;
+    padding-bottom: $spacing-24;
+    padding-right: $spacing-24;
+  }
+
+  td {
+    border-bottom: 1px solid $color-palette-grey-1;
+    padding-top: $spacing-12;
+    padding-bottom: $spacing-12;
+    padding-right: $spacing-24;
+  }
+
+  &__prop-description {
+    white-space: pre-wrap;
+  }
+}

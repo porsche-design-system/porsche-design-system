@@ -3,13 +3,33 @@
 .#{$global-class-prefix}story {
   padding: $spacing-60 120px;
 
+  &__tabs {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: $spacing-42;
+
+    &__button {
+      margin-right: $spacing-18;
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  }
+
+  &__props {
+    margin-bottom: $spacing-60;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6,
-  p {
+  p,
+  ul,
+  ol {
     margin-bottom: $spacing-24;
     max-width: 60em;
     line-height: 1.5em;

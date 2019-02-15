@@ -1,9 +1,9 @@
 import { importMDX } from "mdx.macro"
 
 export interface Story {
+  examples: any
   design?: any
-  code: any
-  jsdoc: string[]
+  props: string[]
 }
 export interface Stories {
   [category: string]: {
@@ -14,8 +14,9 @@ export const Stories: Stories = {
   Base: {},
   Layout: {
     Flex: {
-      code: importMDX("../../workshop/src/components/layout/flex/Flex.mdx"),
-      jsdoc: ["Flex", "FlexItem"]
+      examples: importMDX("../../workshop/src/components/layout/flex/Flex.mdx"),
+      design: importMDX("../../workshop/src/components/layout/flex/Flex.design.mdx"),
+      props: ["Flex", "FlexItem"]
     }
   }
 }
