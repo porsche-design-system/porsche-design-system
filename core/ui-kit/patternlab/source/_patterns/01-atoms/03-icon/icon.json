@@ -7,5 +7,6 @@
   "icon_small": false,
   "icon_medium": false,
   "icon_large": false,
-  "icon_x-large": false
+  "icon_x-large": false,
+  "icon_wrapped": false
 }
