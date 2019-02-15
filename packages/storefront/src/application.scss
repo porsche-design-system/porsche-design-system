@@ -2,6 +2,10 @@
 
 $sidebar-width: 300px;
 
+* {
+  box-sizing: border-box;
+}
+
 .#{$global-class-prefix}app {
   &__sidebar {
     position: fixed;
