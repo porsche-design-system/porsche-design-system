@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1549957717036,
+  "timestamp": 1550236158890,
   "graph": {
     "options": {
       "directed": true,
@@ -139,6 +139,12 @@
       },
       {
         "v": "01-atoms/03-icon/icon~05-x-large.json",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-atoms/03-icon/icon~06-x-large-wrapped.json",
         "value": {
           "compileState": "clean"
         }
@@ -3704,6 +3710,11 @@
       },
       {
         "v": "01-atoms/03-icon/icon~05-x-large.json",
+        "w": "01-atoms/03-icon/icon.hbs",
+        "value": {}
+      },
+      {
+        "v": "01-atoms/03-icon/icon~06-x-large-wrapped.json",
         "w": "01-atoms/03-icon/icon.hbs",
         "value": {}
       },

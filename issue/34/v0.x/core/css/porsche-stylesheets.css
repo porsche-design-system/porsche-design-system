@@ -1143,6 +1143,16 @@ table {
   width: 1em;
   height: 1em;
   fill: currentColor;
+  vertical-align: top;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-transition: fill 0.24s ease;
   transition: fill 0.24s ease; }
   .icon--x-small {

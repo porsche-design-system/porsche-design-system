@@ -1006,6 +1006,9 @@ table {
   width: 1em;
   height: 1em;
   fill: currentColor;
+  vertical-align: top;
+  align-items: stretch;
+  flex-direction: column;
   transition: fill 0.24s ease; }
   .icon--x-small {
     width: 1.125rem;
