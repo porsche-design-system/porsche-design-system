@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 * Added optimized Icon SVG in `src/base/icon/*.min.svg` which results in smaller file size (e.g. SVG sprites)
+* Fixed path in button vrt
 
 ## [0.18.0] - 2019-02-08
 
