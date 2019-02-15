@@ -6,7 +6,7 @@ const ButtonExampleTypesStretch = () => {
         <div>
             <Grid>
                 <Grid.Child size={3}>
-                    <Button stretch>Default Button</Button>
+                    <Button stretch>Regular Button</Button>
                 </Grid.Child>
 
                 <Grid.Child size={3}>
@@ -42,19 +42,19 @@ const ButtonExampleTypesStretch = () => {
                 <Grid>
                     <Grid.Child size={3}>
                         <Button stretch inverted>
-                            Default Inverted Sretched Button
+                            Regular Inverted Stretched Button
                         </Button>
                     </Grid.Child>
 
                     <Grid.Child size={3}>
                         <Button stretch inverted type="highlight">
-                            Highlight Inverted Sretched Button
+                            Highlight Inverted Stretched Button
                         </Button>
                     </Grid.Child>
 
                     <Grid.Child size={3}>
                         <Button stretch inverted type="sales">
-                            Sales Inverted Sretched Button
+                            Sales Inverted Stretched Button
                         </Button>
                     </Grid.Child>
                 </Grid>
@@ -62,13 +62,13 @@ const ButtonExampleTypesStretch = () => {
                     <Grid>
                         <Grid.Child size={3}>
                             <Button stretch inverted type="ghost">
-                                Ghost Inverted Sretched Button
+                                Ghost Inverted Stretched Button
                             </Button>
                         </Grid.Child>
 
                         <Grid.Child size={3}>
                             <Button stretch inverted type="sales-ghost">
-                                Sales-Ghost Inverted Sretched Button
+                                Sales-Ghost Inverted Stretched Button
                             </Button>
                         </Grid.Child>
                     </Grid>

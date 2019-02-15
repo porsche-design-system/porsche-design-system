@@ -6,7 +6,7 @@ const ButtonExampleTypes = () => {
         <div>
             <Grid>
                 <Grid.Child size={3}>
-                    <Button>Default Button</Button>
+                    <Button>Regular Button</Button>
                 </Grid.Child>
 
                 <Grid.Child size={3}>
@@ -33,7 +33,7 @@ const ButtonExampleTypes = () => {
             <div style={{ background: "black", padding: "16px", marginTop: "16px" }}>
                 <Grid>
                     <Grid.Child size={3}>
-                        <Button inverted>Default Inverted Button</Button>
+                        <Button inverted>Regular Inverted Button</Button>
                     </Grid.Child>
 
                     <Grid.Child size={3}>
