@@ -8,6 +8,9 @@
   width: 1em;
   height: 1em;
   fill: currentColor;
+  vertical-align: top;
+  align-items: stretch;
+  flex-direction: column;
   transition: fill $animation-hover-duration $animation-hover-bezier;
 
   &--x-small {

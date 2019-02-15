@@ -1,5 +1,5 @@
 import 'jasmine';
-import { VisualRegressionTester } from '@myporsche/myservices-visual-regression-tester';
+import { VisualRegressionTester } from '@porsche/visual-regression-tester';
 import { getVisualRegressionTester } from '../../../../../vrt/helpers/setup';
 
 describe('Button Regular', () => {
@@ -65,7 +65,7 @@ describe('Button Regular', () => {
 
   it('should have no visual regression', async () => {
     expect(await visualRegressionTester.test('button-regular~sales-ghost-inverted', async () => {
-      await visualRegressionTester.goTo('02-molecules-buttons-button-regular-03-10-sales-inverted-ghost/02-molecules-buttons-button-regular-03-10-sales-inverted-ghost.rendered.html');
+      await visualRegressionTester.goTo('/02-molecules-buttons-button-regular-03-10-sales-inverted-ghost/02-molecules-buttons-button-regular-03-10-sales-inverted-ghost.rendered.html');
     })).toBeFalsy();
   });
 
