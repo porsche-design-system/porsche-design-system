@@ -60,7 +60,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:myporsche/pouikit-porsche-ui-kit.git"
+    "url": "git@github.com:porscheui/porsche-ui-kit.git"
   },
   "keywords": [
     "porsche",
