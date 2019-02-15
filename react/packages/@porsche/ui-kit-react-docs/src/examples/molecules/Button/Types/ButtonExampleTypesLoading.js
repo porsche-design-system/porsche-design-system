@@ -6,7 +6,7 @@ const ButtonExampleTypesLoading = () => {
         <div>
             <Grid>
                 <Grid.Child size={3}>
-                    <Button loading>Default Button</Button>
+                    <Button loading>Regular Button</Button>
                 </Grid.Child>
 
                 <Grid.Child size={3}>
@@ -42,7 +42,7 @@ const ButtonExampleTypesLoading = () => {
                 <Grid>
                     <Grid.Child size={3}>
                         <Button loading disabled inverted>
-                            Default Inverted Button
+                            Regular Inverted Button
                         </Button>
                     </Grid.Child>
 
