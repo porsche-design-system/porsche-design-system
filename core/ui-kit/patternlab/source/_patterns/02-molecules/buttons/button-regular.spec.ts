@@ -1,5 +1,5 @@
 import 'jasmine';
-import { VisualRegressionTester } from '@myporsche/myservices-visual-regression-tester';
+import { VisualRegressionTester } from '@porsche/visual-regression-tester';
 import { getVisualRegressionTester } from '../../../../../vrt/helpers/setup';
 
 describe('Button Regular', () => {
