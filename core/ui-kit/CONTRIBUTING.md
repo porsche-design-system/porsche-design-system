@@ -45,9 +45,10 @@ To remove the possibility to link the development package again, run the followi
 1. Either execute `npm version patch` for a patch release or `npm version minor` for a minor release
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Get corresponding Sketch version from Abstract and replace it with 
-1. Create a commit with following message structure `Release ui-kit/v0.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION} | PUIK`
+1. Create a commit with following message structure `Release ui-kit/v0.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION} | #{GITHUB_ISSUE_NUMBER}`
 1. Create a Git tag `git tag v0.{MINOR_NUMBER}.{PATCH_NUMBER}/core`
 1. Run project with `npm start` to be sure everything works as expected
+1. Run visual regression tests with `npm run vrt` to be sure everything works as expected
 1. Push local commit with tag to master branch `git push --tags`
 1. Create a npm release by executing `npm run publish-artifactory` or simply `npm publish` when your Artifactory credentials are properly set already
 1. Login to Artifactory and download latest npm package of Porsche UI Kit Core
