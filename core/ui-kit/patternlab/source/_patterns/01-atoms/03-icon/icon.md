@@ -19,6 +19,9 @@ The icon sprite must be build throughout a set of individual SVG icons.
 The whole set of icons can be found here:  
 `~@porsche/ui-kit-core/src/base/icon/*.svg`  
 
+If you do not optimize the SVG icons by yourself, you can also use the optimized icon set:  
+`~@porsche/ui-kit-core/src/base/icon/*.min.svg`  
+
 Building the sprite can be done manually or even better with help of a frontend build system, e.g. https://github.com/jkphl/svg-sprite.  
 
 __Hints for optimizations__: 
@@ -58,6 +61,16 @@ The SVG sprite is used by serving the icons bundled all together as a static ass
 <svg class="icon" role="img" title="arrow down">
   <use xlink:href="/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down"/>
 </svg>
+``` 
+
+### Icon inside an icon wrapper
+Sometimes there may be technical reasons (e.g. js components) which cause in adding an additional wrapper element around the icon. In this case, moving the icon classes to the wrapper element is possible:  
+``` 
+<div class="icon">
+  <svg role="img" title="arrow down">
+    <use xlink:href="/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down"/>
+  </svg>
+</div>
 ``` 
 
 ### Icon sizes

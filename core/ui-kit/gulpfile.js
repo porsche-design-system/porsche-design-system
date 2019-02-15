@@ -11,7 +11,8 @@ var gulp = require('gulp'),
   sassLint = require('gulp-sass-lint'),
   cache = require('gulp-cached'),
   rename = require('gulp-rename'),
-  svgSymbols = require('gulp-svg-symbols')
+  svgSymbols = require('gulp-svg-symbols'),
+  svgmin = require('gulp-svgmin');
 
 function resolvePath(pathInput) {
   return path.resolve(pathInput).replace(/\\/g, "/");
@@ -21,18 +22,38 @@ function resolvePath(pathInput) {
  * CUSTOM TASKS
 ******************************************************/
 // SVG Spriting
+// SVG minification for export
+gulp.task('svgmin', function() {
+  return gulp
+    .src(['*.svg', '!*.min.svg'], { cwd: resolvePath(paths().source.icons) })
+    .pipe(svgmin({
+      plugins: [
+        {
+          removeTitle: false
+        },
+        {
+          removeViewBox: false
+        }
+      ]
+    }))
+    .pipe(rename({
+      suffix: ".min",
+    }))
+    .pipe(gulp.dest(resolvePath(paths().source.icons)))
+});
+
 gulp.task('sprites', function() {
   return gulp
-    .src('*.svg', { cwd: resolvePath(paths().source.icons) })
+    .src('*.min.svg', { cwd: resolvePath(paths().source.icons) })
     .pipe(svgSymbols({
       templates: ['default-svg'],
       slug: function(name) {
-        return name.replace(/_/g, '-')
+        return name.replace(/_/g, '-').replace(/.min$/,'')
       }
     }))
     .pipe(rename('svg-sprite.svg'))
     .pipe(gulp.dest(resolvePath(paths().source.images)+'/porsche-ui-kit-docs/'))
-})
+});
 
 /******************************************************
  * COPY TASKS - stream assets from source to destination
@@ -168,7 +189,7 @@ gulp.task('patternlab:loadstarterkit', function (done) {
   done();
 });
 
-gulp.task('patternlab:build', gulp.series('sprites', 'pl-assets', build, 'pl-lint:porsche-stylesheet', function (done) {
+gulp.task('patternlab:build', gulp.series('svgmin', 'sprites', 'pl-assets', build, 'pl-lint:porsche-stylesheet', function (done) {
   done();
 }));
 
