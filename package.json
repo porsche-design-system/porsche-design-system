@@ -30,11 +30,13 @@
   "homepage": "https://ui.porsche.com",
   "scripts": {
     "start": "yarn --cwd ./packages/storefront start",
-    "build": "yarn --cwd ./packages/storefront build"
+    "build": "yarn --cwd ./packages/storefront build",
+    "stylelint-check": "stylelint-config-prettier-check"
   },
   "dependencies": {},
   "devDependencies": {
     "prettier": "^1.16.4",
+    "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.5.3",
     "stylelint": "^9.10.1",

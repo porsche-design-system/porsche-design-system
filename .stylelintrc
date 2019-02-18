@@ -1,20 +1,23 @@
 {
-  "extends": "stylelint-config-standard",
-  "plugins": [
-    "stylelint-scss"
-  ],
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": ["stylelint-scss"],
   "rules": {
     "at-rule-no-unknown": null,
-    "comment-empty-line-before": [ "always", {
-      "except": ["first-nested"],
-      "ignore": ["after-comment", "stylelint-commands"]
-    } ],
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment", "stylelint-commands"]
+      }
+    ],
     "font-family-no-missing-generic-family-keyword": null,
-    "indentation": 2,
     "scss/at-rule-no-unknown": true,
-    "scss/double-slash-comment-empty-line-before": [ "always", {
-      "ignore": ["between-comments", "stylelint-commands"]
-    } ],
+    "scss/double-slash-comment-empty-line-before": [
+      "always",
+      {
+        "ignore": ["between-comments", "stylelint-commands"]
+      }
+    ],
     "scss/double-slash-comment-whitespace-inside": "always"
   }
 }
