@@ -1,12 +1,4 @@
 // mixins
-@import "~@porsche/ui-kit-core/src/mixins/px-rem-converter";
-@import "~@porsche/ui-kit-core/src/mixins/breakpoint";
-@import "~@porsche/ui-kit-core/src/base/font/font.setup";
-@import "~@porsche/ui-kit-core/src/base/font/font.mixin";
-@import "~@porsche/ui-kit-core/src/base/text-size/text-size.mixin";
-@import "~@porsche/ui-kit-core/src/base/text-color/text-color.mixin";
-@import "~@porsche/ui-kit-core/src/base/overflow/overflow.mixin";
-@import "~@porsche/ui-kit-core/src/base/spacing/spacing.mixin";
 
 // basic styles
 @import "./base/index";

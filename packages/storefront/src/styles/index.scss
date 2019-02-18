@@ -1,5 +1,10 @@
-// import components
-@import "~@porscheui/porsche-ui-kit/src/index.scss";
+// import UI Kit React 0.x
+@import "~@porsche/ui-kit-react/src/components/atoms/Spacing/spacing";
+@import "~@porsche/ui-kit-react/src/components/atoms/Text/text";
+@import "~@porsche/ui-kit-react/src/components/atoms/Logo/logo";
 
-// import ui-kit specific styles
+// import UI Kit 1.x components
+@import "~@porscheui/porsche-ui-kit/src/index";
+
+// import storefront specific styles
 @import "./base/index";
