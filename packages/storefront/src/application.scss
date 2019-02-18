@@ -1,10 +1,6 @@
-@import "./styles/base/index";
+@import "./styles/base/variables";
 
 $sidebar-width: 300px;
-
-* {
-  box-sizing: border-box;
-}
 
 .#{$global-class-prefix}app {
   &__sidebar {

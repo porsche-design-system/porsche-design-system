@@ -4,6 +4,7 @@ import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
 import { Introduction } from "./pages/introduction/Introduction"
 import { Story } from "./components/story/Story"
 import { prefix } from "@porscheui/porsche-ui-kit"
+import { Spacing, Logo, Text } from "@porsche/ui-kit-react"
 import "./application.scss"
 
 export class Application extends React.Component {
@@ -13,6 +14,12 @@ export class Application extends React.Component {
         <React.Fragment>
           <div className={prefix("app__sidebar")}>
             <Sidebar>
+              <Logo className={prefix("sidebar__logo")} />
+              <Spacing marginTop={24}>
+                <Text type="3-thin" align="center" as="h1">
+                  Porsche UI Kit
+                </Text>
+              </Spacing>
               <SidebarLink to="/introduction" title="Introduction" />
             </Sidebar>
           </div>

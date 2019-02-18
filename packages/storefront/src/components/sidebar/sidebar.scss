@@ -1,8 +1,15 @@
-@import "../../styles/base/index";
+@import "../../styles/base/variables";
 
 .#{$global-class-prefix}sidebar {
   position: relative;
   padding: $spacing-24 $spacing-30;
+
+  &__logo {
+    display: block;
+    widows: 100px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
 
   &__hr {
     height: 1px;
