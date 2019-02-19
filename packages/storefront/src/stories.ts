@@ -14,7 +14,7 @@ export const Stories: Stories = {
   Base: {},
   Layout: {
     Flex: {
-      examples: importMDX("../../workshop/src/components/layout/flex/Flex.mdx"),
+      examples: importMDX("../../workshop/src/components/layout/flex/Flex.code.mdx"),
       design: importMDX("../../workshop/src/components/layout/flex/Flex.design.mdx"),
       props: ["Flex", "FlexItem"]
     }
