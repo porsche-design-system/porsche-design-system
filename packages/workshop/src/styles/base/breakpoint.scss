@@ -1,0 +1,38 @@
+@import "./breakpoints.scss";
+
+$breakpoints: $breakpoints !default;
+
+@mixin breakpoint($min-breakpoint: null, $max-breakpoint: null) {
+  @if ($min-breakpoint and $max-breakpoint) {
+    @if map-has-key($breakpoints, $min-breakpoint) and map-has-key($breakpoints, $max-breakpoint) {
+      @media (min-width: #{map-get($breakpoints, $min-breakpoint)}) and (max-width: #{map-get($breakpoints, $max-breakpoint) - 1px}) {
+        @content;
+      }
+    } @else {
+      @if unitless($min-breakpoint) {
+        $min-breakpoint: $min-breakpoint + 0;
+      }
+      @if unitless($max-breakpoint) {
+        $max-breakpoint: $max-breakpoint + 0;
+      }
+
+      @media (min-width: $min-breakpoint) and (max-width: $max-breakpoint) {
+        @content;
+      }
+    }
+  } @else if ($min-breakpoint) {
+    @if map-has-key($breakpoints, $min-breakpoint) {
+      @media (min-width: #{map-get($breakpoints, $min-breakpoint)}) {
+        @content;
+      }
+    } @else {
+      @if unitless($min-breakpoint) {
+        $min-breakpoint: $min-breakpoint + 0;
+      }
+
+      @media (min-width: $min-breakpoint) {
+        @content;
+      }
+    }
+  }
+}
