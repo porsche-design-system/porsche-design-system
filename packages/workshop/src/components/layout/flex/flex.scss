@@ -1,23 +1,8 @@
 @import "../../../styles/index";
 @import "./flex.mixin";
 
-$flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
-
-@mixin flex-child-width($i) {
-  width: #{nth($flex-child-width, $i + 1)};
-}
-
-@mixin flex-child-offset($i) {
-  margin-left: #{nth($flex-child-width, $i)};
-}
-
-/**
- *
- * Core Styles
- * merge with React styles!!!
- *
- */
 .#{$global-class-prefix}flex {
+  $bem-block: &;
   @include flex;
   &--inline {
     @include flex-inline;
@@ -595,7 +580,6 @@ $flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   /**
    * properties for flex children items
    */
-
   &__child {
     &--grow {
       &-0 {
@@ -936,22 +920,7 @@ $flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
     }
-  }
-}
 
-/**
- *
- * React enhancements
- * TODO: merge with above!!!
- *
- */
-.#{$global-class-prefix}flex {
-  $bem-block: &;
-
-  /**
-   * properties for grid children items (widths and offsets)
-   */
-  &__child {
     &--width {
       &-one-quarter {
         @include flex-child-width(1);
