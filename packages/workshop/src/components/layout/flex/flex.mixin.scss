@@ -1,3 +1,13 @@
+$flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
+
+@mixin flex-child-width($i) {
+  width: #{nth($flex-child-width, $i + 1)};
+}
+
+@mixin flex-child-offset($i) {
+  margin-left: #{nth($flex-child-width, $i)};
+}
+
 /**
  * properties for flex container
  */
