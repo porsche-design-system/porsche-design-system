@@ -1,91 +1,57 @@
 import * as React from "react"
-import cx from "classnames"
-import { getElementType, prefix } from "../../../lib"
+
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
+import { Breakpoint } from "../../../index"
+
+import { PaginationList } from "./PaginationList"
+import { getTotalPages, getCurrentActivePage } from "./PaginationHelper"
 
 export interface PaginationProps extends ClassNameProp, ComponentProp {
-    /** The total number of pages */
-    pageTotal: number
-    /** The max number of pages */
-    pageMax: number
-    /** The number of pages before/after ellipsis */
-    pageMargin?: number
-    /** The number of pages between ellipsis */
-    pageRange?: number
-    /** Defines the theming of the pagination */
+    /** Index of the currently active page. */
+    activePage: number
+    /** The total count of items. */
+    totalItemsCount: number
+    /** The total count of items per page.  */
+    itemsPerPage: number
+    /** Defines the theming of the pagination. */
     theme?: "inverted" | undefined
-    /** Handle click events */
-    onClick?: (event: React.MouseEvent<HTMLElement>, item: this) => void
+    /** Handle click events. */
+    onClick: (event: React.MouseEvent<HTMLElement>, page: number) => void
 }
 
-// export interface PaginationItem {
-//     /** The unique identifier */
-//     key: any
-//     /** Flag that controls which item is current. */
-//     isCurrent?: boolean
-//     /** Callback to handle the click event outside of the component */
-//     onClick?: (event: React.MouseEvent<HTMLElement>, item: PaginationItem) => void
-// }
-
 const defaultProps: Partial<PaginationProps> = {
-    theme: undefined,
-    pageMax: 7,
-    pageMargin: 1,
-    pageRange: 3
+    theme: undefined
 }
 
 const _Pagination: React.StatelessComponent<PaginationProps> = (props) => {
-    const { as, className, pageTotal, pageMax, pageMargin, pageRange, theme, onClick, ...rest } = props
+    const { activePage, totalItemsCount, itemsPerPage, theme, onClick, ...rest } = props
 
-    const ElementType = getElementType(as, "nav")
-    const classesPagination = cx(prefix("pagination"), { [prefix("pagination--theme-inverted")]: theme }, className)
-
-    const goToPrev = (event: React.MouseEvent<HTMLElement>) => {
-        event.preventDefault()
-    }
-
-    const goToNext = (event: React.MouseEvent<HTMLElement>) => {
-        event.preventDefault()
-    }
-
-    const goToCurrent = (event: React.MouseEvent<HTMLElement>, page: number) => {
-        event.preventDefault()
-        return page
-    }
-
-    const createList = () => {
-        let index: number
-        const itemsNumber = pageTotal >= pageMax ? pageMax : pageTotal
-        const items = []
-        const classesPaginationGoto = cx(prefix("pagination__goto"))
-        for (index = 1; index <= itemsNumber; index++) {
-            items.push(
-                <li key={index} className={cx(prefix("pagination__item"))}>
-                    <a className={classesPaginationGoto} href="#" onClick={(event) => goToCurrent(event, index)}>
-                        {index}
-                    </a>
-                </li>
-            )
-        }
-        return items
-    }
+    const totalPages = getTotalPages(totalItemsCount, itemsPerPage)
+    const currentActivePage = getCurrentActivePage(activePage, totalPages)
 
     return (
-        <ElementType className={classesPagination} {...rest}>
-            <a
-                className={cx(prefix("pagination__prev"))}
-                href="#"
-                onClick={(event) => goToPrev(event)}
-                aria-label="Previous"
-            />
-            <ul className={cx(prefix("pagination__items"))}>{createList()}</ul>
-            <a
-                className={cx(prefix("pagination__next"))}
-                href="#"
-                onClick={(event) => goToNext(event)}
-                aria-label="Next"
-            />
-        </ElementType>
+        <React.Fragment>
+            <Breakpoint maxWidth="s">
+                <PaginationList
+                    onClick={props.onClick}
+                    activePage={currentActivePage}
+                    pageTotal={totalPages}
+                    pageRange={0}
+                    theme={theme}
+                    {...rest}
+                />
+            </Breakpoint>
+            <Breakpoint minWidth="s">
+                <PaginationList
+                    onClick={props.onClick}
+                    activePage={currentActivePage}
+                    pageTotal={totalPages}
+                    pageRange={1}
+                    theme={theme}
+                    {...rest}
+                />
+            </Breakpoint>
+        </React.Fragment>
     )
 }
 
