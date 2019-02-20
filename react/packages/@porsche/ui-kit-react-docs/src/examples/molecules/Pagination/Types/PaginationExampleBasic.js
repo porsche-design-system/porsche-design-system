@@ -41,7 +41,7 @@ class PaginationExampleBasic extends React.Component {
         return (
             <React.Fragment>
                 <Flex>
-                    <Flex.Item width={{ base: 6, m: 3 }}>
+                    <Flex.Item width={{ base: "half", m: "one-quarter" }}>
                         <Input
                             onChange={this.handleTotalItemsCount}
                             value={this.state.totalItemsCount}
@@ -49,7 +49,7 @@ class PaginationExampleBasic extends React.Component {
                             style={style}
                         />
                     </Flex.Item>
-                    <Flex.Item width={{ base: 6, m: 3 }}>
+                    <Flex.Item width={{ base: "half", m: "one-quarter" }}>
                         <Input
                             onChange={this.handleItemsPerPage}
                             value={this.state.itemsPerPage}
