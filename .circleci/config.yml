@@ -253,6 +253,7 @@ jobs:
               <script>
                 function showRegistrationPopUp() {
                   document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                  document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                   window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"13b643f9690bd1f9c89a65f1f","lid":"0fafac1ad4","uniqueMethods":true}) });
                 }
                 document.getElementById("open-registration-popup").addEventListener("click", showRegistrationPopUp);
@@ -441,6 +442,7 @@ jobs:
               <script>
                 function showRegistrationPopUp() {
                   document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                  document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                   window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"13b643f9690bd1f9c89a65f1f","lid":"0fafac1ad4","uniqueMethods":true}) });
                 }
                 document.getElementById("open-registration-popup").addEventListener("click", showRegistrationPopUp);
