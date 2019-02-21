@@ -1,552 +1,4 @@
 {
-  "Flex": {
-    "displayName": "Flex",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how \"alignMainAxis\" aligns individual items along the main axis.",
-          "Corresponds to the \"alignContent\" css property."
-        ],
-        "name": "alignContent",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"start\"",
-          "\"center\"",
-          "\"end\"",
-          "\"space-around\"",
-          "\"space-between\"",
-          "\"stretch\""
-        ]
-      },
-      {
-        "description": [
-          "Defines how the flex items are aligned along the cross axis. Corresponds to the \"alignItems\" css property."
-        ],
-        "name": "alignCrossAxis",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"start\"",
-          "\"center\"",
-          "\"end\"",
-          "\"baseline\"",
-          "\"stretch\""
-        ]
-      },
-      {
-        "description": [
-          "Defines how the flex items are aligned along the main axis. Corresponds to the \"justifyContent\" css property."
-        ],
-        "name": "alignMainAxis",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"start\"",
-          "\"center\"",
-          "\"end\"",
-          "\"space-around\"",
-          "\"space-between\"",
-          "\"space-evenly\""
-        ]
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Defines the direction of the main and cross axis. The default \"row\" defines the main axis as horizontal left to right."
-        ],
-        "name": "direction",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"column-reverse\"",
-          "\"column\"",
-          "\"row-reverse\"",
-          "\"row\""
-        ]
-      },
-      {
-        "description": [
-          "Defines the gap between contained children. The value \"grid\" sets responsive grid spacings that should be used together with Flex.Item."
-        ],
-        "name": "gap",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "3",
-          "6",
-          "12",
-          "18",
-          "24",
-          "30",
-          "36",
-          "42",
-          "48",
-          "54",
-          "60",
-          "\"a\"",
-          "\"b\"",
-          "\"c\"",
-          "\"d\"",
-          "\"e\"",
-          "\"f\""
-        ]
-      },
-      {
-        "defaultValue": "false",
-        "description": [
-          "Defines the flex container display as inline rather than block."
-        ],
-        "name": "inline",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "true",
-          "false"
-        ]
-      },
-      {
-        "defaultValue": "true",
-        "description": [
-          "If set, overflowing elements will wrap to a new line."
-        ],
-        "name": "wrap",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
-          "name": "FlexProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "true",
-          "false",
-          "\"reverse\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        },
-        {
-          "title": "see",
-          "description": "Grid"
-        }
-      ],
-      "description": [
-        "A flex container component used to create flex box layouts."
-      ]
-    },
-    "path": "src/components/layout/Flex/Flex.tsx"
-  },
-  "FlexItem": {
-    "displayName": "FlexItem",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the \"alignSelf\" css property."
-        ],
-        "name": "alignCrossAxis",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"start\"",
-          "\"center\"",
-          "\"end\"",
-          "\"baseline\"",
-          "\"stretch\"",
-          "\"auto\""
-        ]
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The shorthand property for the combined definition of \"shrink\", \"grow\" and \"basis\""
-        ],
-        "name": "flex",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"auto\"",
-          "\"none\"",
-          "\"initial\"",
-          "\"equal\""
-        ]
-      },
-      {
-        "description": [
-          "The ability to allow/disallow the flex child to grow."
-        ],
-        "name": "grow",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "0",
-          "1"
-        ]
-      },
-      {
-        "description": [
-          "The offset of the column. You can also supply values for specific breakpoints, like {base: \"none\", l: \"one-quarter\"}. You always need to provide a base value when doing this."
-        ],
-        "name": "offset",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"one-quarter\"",
-          "\"one-third\"",
-          "\"half\"",
-          "\"two-thirds\"",
-          "\"three-quarters\"",
-          "\"none\""
-        ]
-      },
-      {
-        "description": [
-          "The ability to allow/disallow the flex child to shrink."
-        ],
-        "name": "shrink",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "0",
-          "1"
-        ]
-      },
-      {
-        "description": [
-          "The width of the flex item. You can also supply values for specific breakpoints, like {base: \"full\", l: \"one-quarter\"}. You always need to provide a base value when doing this."
-        ],
-        "name": "width",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
-          "name": "FlexItemProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"auto\"",
-          "\"one-quarter\"",
-          "\"one-third\"",
-          "\"half\"",
-          "\"two-thirds\"",
-          "\"three-quarters\"",
-          "\"full\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A child of a flex container."
-      ]
-    },
-    "path": "src/components/layout/Flex/FlexItem.tsx"
-  },
-  "Grid": {
-    "displayName": "Grid",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Defines the direction of the main and cross axis. The default \"row\" (default) defines the main axis as horizontal left to right."
-        ],
-        "name": "direction",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
-          "name": "GridProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"row\"",
-          "\"row-reverse\"",
-          "\"column\"",
-          "\"column-reverse\""
-        ]
-      },
-      {
-        "description": [
-          "Defines the gap between contained children. The value \"normal\" (default) sets responsive grid spacings that should be used together with Grid.Child."
-        ],
-        "name": "gap",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
-          "name": "GridProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"normal\"",
-          "\"zero\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        },
-        {
-          "title": "see",
-          "description": "Flex"
-        }
-      ],
-      "description": [
-        "A grid container component used to create layouts based on official grid definitions."
-      ]
-    },
-    "path": "src/components/layout/Grid/Grid.tsx"
-  },
-  "GridChild": {
-    "displayName": "GridChild",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
-        ],
-        "name": "offset",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
-          "name": "GridChildProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "0",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11"
-        ]
-      },
-      {
-        "description": [
-          "The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
-        ],
-        "name": "size",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
-          "name": "GridChildProps"
-        },
-        "required": true,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11",
-          "12"
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A child of a grid container."
-      ]
-    },
-    "path": "src/components/layout/Grid/GridChild.tsx"
-  },
   "Breakpoint": {
     "displayName": "Breakpoint",
     "methods": [],
@@ -1466,307 +918,89 @@
     },
     "path": "src/components/atoms/Text/Text.tsx"
   },
-  "Header": {
-    "displayName": "Header",
+  "Flex": {
+    "displayName": "Flex",
     "methods": [],
     "props": [
       {
         "description": [
-          "The html element type to render as."
+          "This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how \"alignMainAxis\" aligns individual items along the main axis.",
+          "Corresponds to the \"alignContent\" css property."
         ],
-        "name": "as",
+        "name": "alignContent",
         "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The element type of the logo."
-        ],
-        "name": "logoComponent",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Custom props of the logo."
-        ],
-        "name": "logoProps",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "object",
-        "tags": []
-      },
-      {
-        "description": [
-          "The navigation sections to be displayed."
-        ],
-        "name": "sections",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": true,
-        "type": "NavigationSection[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "The mobile navigation trigger text."
-        ],
-        "name": "title",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "string | Element",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The page header with logo and navigation bar"
-      ]
-    },
-    "path": "src/components/organisms/Header/Header.tsx"
-  },
-  "CookieNotification": {
-    "displayName": "CookieNotification",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Called when the user clicks the close button of the notification"
-        ],
-        "name": "onClick",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/CookieNotification/CookieNotification.tsx",
-          "name": "CookieNotificationProps"
-        },
-        "required": true,
-        "type": "func",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The default Porsche notification message."
-      ]
-    },
-    "path": "src/components/organisms/CookieNotification/CookieNotification.tsx"
-  },
-  "Modal": {
-    "displayName": "Modal",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "Use setAppElement to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open.",
-          "If you can't you can disable that functionality by setting ariaHideApp={false}, but this is not recommended."
-        ],
-        "name": "ariaHideApp",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes for the modal content container."
-        ],
-        "name": "containerClassName",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "String indicating how the content container should be announced to screenreaders."
-        ],
-        "name": "contentLabel",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Boolean describing if the modal should be shown or not. Defaults to false."
-        ],
-        "name": "isOpen",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": true,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "false",
-        "description": [
-          "Displays a loader and translucent backdrop above the entire content."
-        ],
-        "name": "loading",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Function that will be run when the modal is requested to be closed, prior to actually closing."
-        ],
-        "name": "onRequestClose",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": true,
-        "type": "func",
-        "tags": []
-      },
-      {
-        "defaultValue": "true",
-        "description": [
-          "A modal shows a close icon at its top right corner. You can disable this by setting showCloseIcon to false."
-        ],
-        "name": "showCloseIcon",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "dynamic",
-        "description": [
-          "Usually a modal dynamically sets its width and height depending on its content. If you have dynamic contents and want to prevent the modal from changing its width or height, you can set the max-width, max-height or both with this property."
-        ],
-        "name": "size",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
         },
         "required": false,
         "type": "enum",
         "tags": [],
         "value": [
-          "\"dynamic\"",
-          "\"max-width\"",
-          "\"max-height\"",
-          "\"max\""
+          "BreakpointCustomizable",
+          "\"start\"",
+          "\"center\"",
+          "\"end\"",
+          "\"space-around\"",
+          "\"space-between\"",
+          "\"stretch\""
         ]
       },
       {
-        "defaultValue": "false",
         "description": [
-          "Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use wide to allow the modal to span the entire webpage (minus margins)."
+          "Defines how the flex items are aligned along the cross axis. Corresponds to the \"alignItems\" css property."
         ],
-        "name": "wide",
+        "name": "alignCrossAxis",
         "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
         },
         "required": false,
-        "type": "boolean",
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"start\"",
+          "\"center\"",
+          "\"end\"",
+          "\"baseline\"",
+          "\"stretch\""
+        ]
+      },
+      {
+        "description": [
+          "Defines how the flex items are aligned along the main axis. Corresponds to the \"justifyContent\" css property."
+        ],
+        "name": "alignMainAxis",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"start\"",
+          "\"center\"",
+          "\"end\"",
+          "\"space-around\"",
+          "\"space-between\"",
+          "\"space-evenly\""
+        ]
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
         "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A modal container with a transparent background."
-      ]
-    },
-    "path": "src/components/organisms/Modal/Modal.tsx"
-  },
-  "ModalButtons": {
-    "displayName": "ModalButtons",
-    "methods": [],
-    "props": [
+      },
       {
         "description": [
           "Additional CSS classes."
@@ -1779,167 +1013,280 @@
         "required": false,
         "type": "string",
         "tags": []
+      },
+      {
+        "description": [
+          "Defines the direction of the main and cross axis. The default \"row\" defines the main axis as horizontal left to right."
+        ],
+        "name": "direction",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"column-reverse\"",
+          "\"column\"",
+          "\"row-reverse\"",
+          "\"row\""
+        ]
+      },
+      {
+        "description": [
+          "Defines the gap between contained children. The value \"grid\" sets responsive grid spacings that should be used together with Flex.Item."
+        ],
+        "name": "gap",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "3",
+          "6",
+          "12",
+          "18",
+          "24",
+          "30",
+          "36",
+          "42",
+          "48",
+          "54",
+          "60",
+          "\"a\"",
+          "\"b\"",
+          "\"c\"",
+          "\"d\"",
+          "\"e\"",
+          "\"f\""
+        ]
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Defines the flex container display as inline rather than block."
+        ],
+        "name": "inline",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "true",
+          "false"
+        ]
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "If set, overflowing elements will wrap to a new line."
+        ],
+        "name": "wrap",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/Flex.tsx",
+          "name": "FlexProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "true",
+          "false",
+          "\"reverse\""
+        ]
       }
     ],
     "docBlock": {
       "tags": [
         {
           "title": "see",
-          "description": "Button"
+          "description": "Spacing"
+        },
+        {
+          "title": "see",
+          "description": "Grid"
         }
       ],
       "description": [
-        "A container for modal action buttons. You should probably only use one or more <Button /> components as children."
+        "A flex container component used to create flex box layouts."
       ]
     },
-    "path": "src/components/organisms/Modal/ModalButtons.tsx"
+    "path": "src/components/layout/Flex/Flex.tsx"
   },
-  "ModalText": {
-    "displayName": "ModalText",
+  "FlexItem": {
+    "displayName": "FlexItem",
     "methods": [],
     "props": [
       {
         "description": [
-          "Additional CSS classes."
+          "Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the \"alignSelf\" css property."
         ],
-        "name": "className",
+        "name": "alignCrossAxis",
         "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The copy text for a modal."
-      ]
-    },
-    "path": "src/components/organisms/Modal/ModalText.tsx"
-  },
-  "ModalTitle": {
-    "displayName": "ModalTitle",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The title for a modal."
-      ]
-    },
-    "path": "src/components/organisms/Modal/ModalTitle.tsx"
-  },
-  "Toast": {
-    "displayName": "Toast",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The content of the toast."
-        ],
-        "name": "message",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
-          "name": "ToastProps"
-        },
-        "required": true,
-        "type": "string | Element",
-        "tags": []
-      },
-      {
-        "description": [
-          "Callback when the close button of the toast is clicked."
-        ],
-        "name": "onClick",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
-          "name": "ToastProps"
-        },
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "All props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "defaultValue": "info",
-        "description": [
-          "Toasts can have different urgencies, signified by different status colors."
-        ],
-        "name": "type",
-        "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
-          "name": "ToastProps"
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
         },
         "required": false,
         "type": "enum",
         "tags": [],
         "value": [
-          "\"info\"",
-          "\"success\"",
-          "\"warning\"",
-          "\"error\""
+          "BreakpointCustomizable",
+          "\"start\"",
+          "\"center\"",
+          "\"end\"",
+          "\"baseline\"",
+          "\"stretch\"",
+          "\"auto\""
+        ]
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The shorthand property for the combined definition of \"shrink\", \"grow\" and \"basis\""
+        ],
+        "name": "flex",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"auto\"",
+          "\"none\"",
+          "\"initial\"",
+          "\"equal\""
+        ]
+      },
+      {
+        "description": [
+          "The ability to allow/disallow the flex child to grow."
+        ],
+        "name": "grow",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "description": [
+          "The offset of the column. You can also supply values for specific breakpoints, like {base: \"none\", l: \"one-quarter\"}. You always need to provide a base value when doing this."
+        ],
+        "name": "offset",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"one-quarter\"",
+          "\"one-third\"",
+          "\"half\"",
+          "\"two-thirds\"",
+          "\"three-quarters\"",
+          "\"none\""
+        ]
+      },
+      {
+        "description": [
+          "The ability to allow/disallow the flex child to shrink."
+        ],
+        "name": "shrink",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "description": [
+          "The width of the flex item. You can also supply values for specific breakpoints, like {base: \"full\", l: \"one-quarter\"}. You always need to provide a base value when doing this."
+        ],
+        "name": "width",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Flex/FlexItem.tsx",
+          "name": "FlexItemProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"auto\"",
+          "\"one-quarter\"",
+          "\"one-third\"",
+          "\"half\"",
+          "\"two-thirds\"",
+          "\"three-quarters\"",
+          "\"full\""
         ]
       }
     ],
     "docBlock": {
       "tags": [],
       "description": [
-        "A small, unintrusive, floating notification that should be closed by clicking or via a timeout."
+        "A child of a flex container."
       ]
     },
-    "path": "src/components/organisms/Toasts/Toast.tsx"
+    "path": "src/components/layout/Flex/FlexItem.tsx"
   },
-  "ToastList": {
-    "displayName": "ToastList",
+  "Grid": {
+    "displayName": "Grid",
     "methods": [],
     "props": [
       {
@@ -1970,59 +1317,154 @@
       },
       {
         "description": [
-          "Callback when close button of a toast is clicked."
+          "Defines the direction of the main and cross axis. The default \"row\" (default) defines the main axis as horizontal left to right."
         ],
-        "name": "onCloseClick",
+        "name": "direction",
         "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
-          "name": "ToastListProps"
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
+          "name": "GridProps"
         },
-        "required": true,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "The unique identifier of the queueable toast.",
-            "type": null,
-            "name": "toastId"
-          }
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"row\"",
+          "\"row-reverse\"",
+          "\"column\"",
+          "\"column-reverse\""
         ]
       },
       {
         "description": [
-          "An array of the toasts that should be displayed.",
-          "Inserted or deleted toasts are automatically animated based on the provided id.",
-          "New toasts should be appended at the end of the array and will be displayed at the bottom."
+          "Defines the gap between contained children. The value \"normal\" (default) sets responsive grid spacings that should be used together with Grid.Child."
         ],
-        "name": "toasts",
+        "name": "gap",
         "parent": {
-          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
-          "name": "ToastListProps"
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
+          "name": "GridProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"normal\"",
+          "\"zero\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Spacing"
+        },
+        {
+          "title": "see",
+          "description": "Flex"
+        }
+      ],
+      "description": [
+        "A grid container component used to create layouts based on official grid definitions."
+      ]
+    },
+    "path": "src/components/layout/Grid/Grid.tsx"
+  },
+  "GridChild": {
+    "displayName": "GridChild",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
+        ],
+        "name": "offset",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
+          "name": "GridChildProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ]
+      },
+      {
+        "description": [
+          "The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
+          "name": "GridChildProps"
         },
         "required": true,
-        "type": "QueuableToast[]",
-        "tags": []
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12"
+        ]
       }
     ],
     "docBlock": {
       "tags": [],
       "description": [
-        "A toast list displays an array of toasts. It automatically animates insertions and deletions using the unique identifier of each toast."
+        "A child of a grid container."
       ]
     },
-    "path": "src/components/organisms/Toasts/ToastList.tsx"
-  },
-  "ToastManager": {
-    "displayName": "ToastManager",
-    "methods": [],
-    "props": [],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The toast manager automatically queues and displays toasts created with its emit, info, success, warn, error methods."
-      ]
-    },
-    "path": "src/components/organisms/Toasts/ToastManager.tsx"
+    "path": "src/components/layout/Grid/GridChild.tsx"
   },
   "Button": {
     "displayName": "Button",
@@ -4765,6 +4207,564 @@
       ]
     },
     "path": "src/components/molecules/TextArea/TextArea.tsx"
+  },
+  "CookieNotification": {
+    "displayName": "CookieNotification",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called when the user clicks the close button of the notification"
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/CookieNotification/CookieNotification.tsx",
+          "name": "CookieNotificationProps"
+        },
+        "required": true,
+        "type": "func",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The default Porsche notification message."
+      ]
+    },
+    "path": "src/components/organisms/CookieNotification/CookieNotification.tsx"
+  },
+  "Header": {
+    "displayName": "Header",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The element type of the logo."
+        ],
+        "name": "logoComponent",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Custom props of the logo."
+        ],
+        "name": "logoProps",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "object",
+        "tags": []
+      },
+      {
+        "description": [
+          "The navigation sections to be displayed."
+        ],
+        "name": "sections",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": true,
+        "type": "NavigationSection[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "string | Element",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The page header with logo and navigation bar"
+      ]
+    },
+    "path": "src/components/organisms/Header/Header.tsx"
+  },
+  "Modal": {
+    "displayName": "Modal",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Use setAppElement to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open.",
+          "If you can't you can disable that functionality by setting ariaHideApp={false}, but this is not recommended."
+        ],
+        "name": "ariaHideApp",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes for the modal content container."
+        ],
+        "name": "containerClassName",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "String indicating how the content container should be announced to screenreaders."
+        ],
+        "name": "contentLabel",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Boolean describing if the modal should be shown or not. Defaults to false."
+        ],
+        "name": "isOpen",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": true,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Displays a loader and translucent backdrop above the entire content."
+        ],
+        "name": "loading",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Function that will be run when the modal is requested to be closed, prior to actually closing."
+        ],
+        "name": "onRequestClose",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": true,
+        "type": "func",
+        "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "A modal shows a close icon at its top right corner. You can disable this by setting showCloseIcon to false."
+        ],
+        "name": "showCloseIcon",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "dynamic",
+        "description": [
+          "Usually a modal dynamically sets its width and height depending on its content. If you have dynamic contents and want to prevent the modal from changing its width or height, you can set the max-width, max-height or both with this property."
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"dynamic\"",
+          "\"max-width\"",
+          "\"max-height\"",
+          "\"max\""
+        ]
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use wide to allow the modal to span the entire webpage (minus margins)."
+        ],
+        "name": "wide",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A modal container with a transparent background."
+      ]
+    },
+    "path": "src/components/organisms/Modal/Modal.tsx"
+  },
+  "ModalButtons": {
+    "displayName": "ModalButtons",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Button"
+        }
+      ],
+      "description": [
+        "A container for modal action buttons. You should probably only use one or more <Button /> components as children."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalButtons.tsx"
+  },
+  "ModalText": {
+    "displayName": "ModalText",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The copy text for a modal."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalText.tsx"
+  },
+  "ModalTitle": {
+    "displayName": "ModalTitle",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The title for a modal."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalTitle.tsx"
+  },
+  "Toast": {
+    "displayName": "Toast",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The content of the toast."
+        ],
+        "name": "message",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "name": "ToastProps"
+        },
+        "required": true,
+        "type": "string | Element",
+        "tags": []
+      },
+      {
+        "description": [
+          "Callback when the close button of the toast is clicked."
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "name": "ToastProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "defaultValue": "info",
+        "description": [
+          "Toasts can have different urgencies, signified by different status colors."
+        ],
+        "name": "type",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "name": "ToastProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"info\"",
+          "\"success\"",
+          "\"warning\"",
+          "\"error\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A small, unintrusive, floating notification that should be closed by clicking or via a timeout."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/Toast.tsx"
+  },
+  "ToastList": {
+    "displayName": "ToastList",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Callback when close button of a toast is clicked."
+        ],
+        "name": "onCloseClick",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
+          "name": "ToastListProps"
+        },
+        "required": true,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "The unique identifier of the queueable toast.",
+            "type": null,
+            "name": "toastId"
+          }
+        ]
+      },
+      {
+        "description": [
+          "An array of the toasts that should be displayed.",
+          "Inserted or deleted toasts are automatically animated based on the provided id.",
+          "New toasts should be appended at the end of the array and will be displayed at the bottom."
+        ],
+        "name": "toasts",
+        "parent": {
+          "fileName": "/Users/julian.richter/DEV/porsche/porsche-ui-kit/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
+          "name": "ToastListProps"
+        },
+        "required": true,
+        "type": "QueuableToast[]",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A toast list displays an array of toasts. It automatically animates insertions and deletions using the unique identifier of each toast."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/ToastList.tsx"
+  },
+  "ToastManager": {
+    "displayName": "ToastManager",
+    "methods": [],
+    "props": [],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The toast manager automatically queues and displays toasts created with its emit, info, success, warn, error methods."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/ToastManager.tsx"
   },
   "ErrorScreen": {
     "displayName": "ErrorScreen",
