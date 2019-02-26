@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.9.0] - 2019-26-02
+
 - Refactoring of Button component
 - Added vertical alignment of radio group component
 
