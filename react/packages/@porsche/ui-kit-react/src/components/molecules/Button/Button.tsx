@@ -131,10 +131,10 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> = (props)
             {...rest}
         >
             {/* Icon cannot be undefined because of default props */}
-            {!loading ? (
-                <Icon name={icon as IconProps["name"]} className={iconClasses} />
-            ) : (
+            {loading ? (
                 <Loader size="x-small" className={loaderClasses} inverted={loaderNotInverted()} />
+                ) : (
+                <Icon name={icon as IconProps["name"]} className={iconClasses} />
             )}
             <span className={labelClasses}>{children}</span>
         </ElementType>
