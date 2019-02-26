@@ -67,4 +67,18 @@ describe("Button component", () => {
             expect(result.length).toBe(1)
         })
     })
+
+    describe("loader", () => {
+        it("should have a loader modifier", () => {
+            // Arrange
+            const props: ButtonProps = {
+                loading: true
+            }
+            // Act
+            const component = createComponent(props)
+            // Assert
+            const result = component.find(`.${prefix("button-regular--loading")}`)
+            expect(result.length).toBe(1)
+        })
+    })
 })
