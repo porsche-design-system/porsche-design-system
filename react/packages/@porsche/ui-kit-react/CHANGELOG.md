@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 - Refactoring of Button component
+- Added vertical alignment of radio group component
 
 __Breaking Change:__ 
 - deleted `active` state property !!
