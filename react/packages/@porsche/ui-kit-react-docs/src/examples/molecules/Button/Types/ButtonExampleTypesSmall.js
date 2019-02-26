@@ -1,31 +1,39 @@
 import React from "react"
 import { Spacing, Button, Grid } from "@porsche/ui-kit-react"
 
-const ButtonExampleTypes = () => {
+const ButtonExampleTypesSmall = () => {
     return (
         <div>
             <Grid>
                 <Grid.Child size={3}>
-                    <Button>Regular Button</Button>
+                    <Button small>Regular Button</Button>
                 </Grid.Child>
 
                 <Grid.Child size={3}>
-                    <Button type="highlight">Highlight Button</Button>
+                    <Button small type="highlight">
+                        Highlight Button
+                    </Button>
                 </Grid.Child>
 
                 <Grid.Child size={3}>
-                    <Button type="sales">Sales Button</Button>
+                    <Button small type="sales">
+                        Sales Button
+                    </Button>
                 </Grid.Child>
             </Grid>
 
             <Spacing paddingTop={18}>
                 <Grid>
                     <Grid.Child size={3}>
-                        <Button type="ghost">Ghost Button</Button>
+                        <Button small type="ghost">
+                            Ghost Button
+                        </Button>
                     </Grid.Child>
 
                     <Grid.Child size={3}>
-                        <Button type="sales-ghost">Sales-Ghost Button</Button>
+                        <Button small type="sales-ghost">
+                            Sales-Ghost Button
+                        </Button>
                     </Grid.Child>
                 </Grid>
             </Spacing>
@@ -33,17 +41,19 @@ const ButtonExampleTypes = () => {
             <div style={{ background: "black", padding: "16px", marginTop: "16px" }}>
                 <Grid>
                     <Grid.Child size={3}>
-                        <Button inverted>Regular Inverted Button</Button>
+                        <Button small inverted>
+                            Regular Inverted Button
+                        </Button>
                     </Grid.Child>
 
                     <Grid.Child size={3}>
-                        <Button inverted type="highlight">
+                        <Button small inverted type="highlight">
                             Highlight Inverted Button
                         </Button>
                     </Grid.Child>
 
                     <Grid.Child size={3}>
-                        <Button inverted type="sales">
+                        <Button small inverted type="sales">
                             Sales Inverted Button
                         </Button>
                     </Grid.Child>
@@ -51,13 +61,13 @@ const ButtonExampleTypes = () => {
                 <Spacing marginTop={18}>
                     <Grid>
                         <Grid.Child size={3}>
-                            <Button inverted type="ghost">
+                            <Button small inverted type="ghost">
                                 Ghost Inverted Button
                             </Button>
                         </Grid.Child>
 
                         <Grid.Child size={3}>
-                            <Button inverted type="sales-ghost">
+                            <Button small inverted type="sales-ghost">
                                 Sales-Ghost Inverted Button
                             </Button>
                         </Grid.Child>
@@ -68,4 +78,4 @@ const ButtonExampleTypes = () => {
     )
 }
 
-export default ButtonExampleTypes
+export default ButtonExampleTypesSmall

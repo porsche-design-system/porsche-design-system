@@ -6,6 +6,35 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+- Refactoring of Button component
+- Added vertical alignment of radio group component
+
+__Breaking Change:__ 
+- deleted `active` state property !!
+- deleted `error` state property !!
+- deleted `showContent` property !!
+- deleted `centered` property !! (buttons are always left aligned, also on mobile vp's)
+- changed `type` properties
+- added `inverted` property
+- added `size` property
+- added `direction`property to ButtonGroup
+
+    Migration path:  
+    - Mapping of button type properties:
+        `default` => `default`  
+        `black` => Deleted!  
+        `red` => `highlight`  
+        `blue` => `sales`  
+        `acid-green` => Deleted!  
+        `ghost` => `ghost`  
+        `ghost-inverted` => Deleted! "inverted" will be a separate property  
+        
+        additional type properties:
+        `sales-ghost`  
+        
+    - On dark backgrounds always add `inverted` property
+        
+
 ## [0.8.0] - 2019-18-01
 - Add Radio Component to molecules
 

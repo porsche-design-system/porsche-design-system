@@ -23,7 +23,7 @@ export { Tab, TabProps, TabPane } from "./components/molecules/Tab/Tab"
 export { Loader, LoaderProps } from "./components/molecules/Loader/Loader"
 export { LoaderMask, LoaderMaskProps } from "./components/molecules/Loader/LoaderMask"
 export { Link, LinkProps } from "./components/molecules/Link/Link"
-export { Radio } from "./components/molecules/Radio/Radio"
+export { Radio, RadioProps } from "./components/molecules/Radio/Radio"
 
 // Organisms
 export { Header, HeaderProps } from "./components/organisms/Header/Header"
