@@ -86,3 +86,13 @@
         }
     }
 }
+
+.#{$global-class-prefix}radio-group--vertical {
+    .#{$global-class-prefix}radio-group__radio {
+        margin-top: 18px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}

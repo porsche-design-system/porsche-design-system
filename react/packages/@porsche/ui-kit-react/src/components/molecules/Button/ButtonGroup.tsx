@@ -1,29 +1,36 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { prefix } from "../../../lib"
+import { getElementType, prefix, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib"
 import { Flex } from "../../../index"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface ButtonGroupProps extends ClassNameProp, ComponentProp {}
+export interface ButtonGroupProps extends ClassNameProp, ComponentProp {
+    /** Direction of buttons */
+    direction?: BreakpointCustomizable<"horizontal" | "vertical">
+}
+
+const defaultProps: Partial<ButtonGroupProps> = {
+    direction: "horizontal"
+}
 
 const _ButtonGroup: React.StatelessComponent<ButtonGroupProps> = (props) => {
-    const { as, className, children, ...rest } = props
+    const { as, className, direction, children, ...rest } = props
 
-    const classes = cx(prefix("button-group"), className)
+    const ElementType = getElementType(as, "div")
+
+    const classes = cx(prefix("button-group"), mapBreakpointPropToClasses("button-group-", direction), className)
 
     return (
-        <Flex as={as} className={classes} {...rest}>
+        <ElementType className={classes} {...rest}>
             {React.Children.map(children, (child, i) => {
-                return (
-                    <div key={i} className={prefix("button-group__button")}>
-                        {child}
-                    </div>
-                )
+                return <React.Fragment key={i}>{child}</React.Fragment>
             })}
-        </Flex>
+        </ElementType>
     )
 }
+
+_ButtonGroup.defaultProps = defaultProps
 
 /**
  * A button group wrapper for the default button.
