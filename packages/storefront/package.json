@@ -34,27 +34,27 @@
     "docgen": "node ../docgen/docgen.js"
   },
   "dependencies": {
-    "@porsche/ui-kit-react": "^0.8.0",
+    "@porsche/ui-kit-react": "^0.9.0",
     "@porscheui/porsche-ui-kit": "1.0.0",
     "classnames": "^2.2.6",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "@types/node": "11.9.4",
-    "@types/react": "^16.8.2",
-    "@types/react-dom": "^16.8.0",
+    "@types/node": "11.9.5",
+    "@types/react": "^16.8.3",
+    "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^4.3.1",
     "concurrently": "^4.1.0",
     "glob": "^7.1.3",
     "mdx.macro": "^0.2.8",
     "node-sass": "^4.11.0",
-    "react": "^16.8.1",
+    "react": "^16.8.3",
     "react-docgen-typescript": "^1.12.3",
-    "react-dom": "^16.8.1",
+    "react-dom": "^16.8.3",
     "react-scripts": "2.1.5",
-    "react-syntax-highlighter": "^10.1.2",
+    "react-syntax-highlighter": "^10.1.3",
     "typescript": "~3.3.3"
   },
   "eslintConfig": {

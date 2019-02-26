@@ -992,17 +992,17 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha1-K1o6s/kYzKSKjHVMCBaOPwPrphs=
 
-"@porsche/ui-kit-core@0.16.0":
-  version "0.16.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.16.0.tgz#4e08dd106dca59ee62513b2911ba5b98b84526ff"
-  integrity sha1-TgjdEG3KWe5iUTspEbpbmLhFJv8=
+"@porsche/ui-kit-core@0.18.0":
+  version "0.18.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.18.0.tgz#3bf7f4470958b39a02b62c9cb7455a65b4d45990"
+  integrity sha1-O/f0RwlYs5oCtiyct0VaZbTUWZA=
 
-"@porsche/ui-kit-react@^0.8.0":
-  version "0.8.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-react/-/@porsche/ui-kit-react-0.8.0.tgz#d8a23a0c103be002f0b0cc2cf42caa5d77f45696"
-  integrity sha1-2KI6DBA74ALwsMws9CyqXXf0VpY=
+"@porsche/ui-kit-react@^0.9.0":
+  version "0.9.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-react/-/@porsche/ui-kit-react-0.9.0.tgz#5c3b33d7755f59dc7dc8c78c0743c9b24772f91e"
+  integrity sha1-XDsz13VfWdx9yMeMB0PJskdy+R4=
   dependencies:
-    "@porsche/ui-kit-core" "0.16.0"
+    "@porsche/ui-kit-core" "0.18.0"
     classnames "^2.2.6"
     react-modal "^3.7.1"
     react-responsive "^6.0.1"
@@ -1120,10 +1120,15 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
   integrity sha1-DmcOolTVWSQbbus4lPh1SZHnMiA=
 
-"@types/node@*", "@types/node@11.9.4":
+"@types/node@*":
   version "11.9.4"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"
   integrity sha1-zrAEilRttFP2JI8tHZXpN6bwChQ=
+
+"@types/node@11.9.5":
+  version "11.9.5"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-11.9.5.tgz#011eece9d3f839a806b63973e228f85967b79ed3"
+  integrity sha1-AR7s6dP4OagGtjlz4ij4WWe3ntM=
 
 "@types/prop-types@*":
   version "15.5.9"
@@ -1135,7 +1140,7 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha1-SP2YwVYf5xi2FzPa7Ub/EVtJbhg=
 
-"@types/react-dom@^16.8.0", "@types/react-dom@^16.8.2":
+"@types/react-dom@^16.8.2":
   version "16.8.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react-dom/-/react-dom-16.8.2.tgz#9bd7d33f908b243ff0692846ef36c81d4941ad12"
   integrity sha1-m9fTP5CLJD/waShG7zbIHUlBrRI=
@@ -1159,7 +1164,7 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.8.2", "@types/react@^16.8.3":
+"@types/react@*", "@types/react@^16.8.3":
   version "16.8.3"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.8.3.tgz#7b67956f682bea30a5a09b3242c0784ff196c848"
   integrity sha1-e2eVb2gr6jCloJsyQsB4T/GWyEg=
@@ -1705,13 +1710,25 @@ atob@^2.1.1:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
 
-autoprefixer@^9.0.0, autoprefixer@^9.4.2, autoprefixer@^9.4.7:
+autoprefixer@^9.0.0, autoprefixer@^9.4.2:
   version "9.4.7"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/autoprefixer/-/autoprefixer-9.4.7.tgz#f997994f9a810eae47b38fa6d8a119772051c4ff"
   integrity sha1-+ZeZT5qBDq5Hs4+m2KEZdyBRxP8=
   dependencies:
     browserslist "^4.4.1"
     caniuse-lite "^1.0.30000932"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^7.0.14"
+    postcss-value-parser "^3.3.1"
+
+autoprefixer@^9.4.9:
+  version "9.4.9"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/autoprefixer/-/autoprefixer-9.4.9.tgz#0d3eb86bc1d1228551abcf55220d6fd246b6cb31"
+  integrity sha1-DT64a8HRIoVRq89VIg1v0ka2yzE=
+  dependencies:
+    browserslist "^4.4.2"
+    caniuse-lite "^1.0.30000939"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.14"
@@ -2261,6 +2278,15 @@ browserslist@4.4.1, browserslist@^4.0.0, browserslist@^4.1.0, browserslist@^4.3.
     electron-to-chromium "^1.3.103"
     node-releases "^1.1.3"
 
+browserslist@^4.4.2:
+  version "4.4.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/browserslist/-/browserslist-4.4.2.tgz#6ea8a74d6464bb0bd549105f659b41197d8f0ba2"
+  integrity sha1-bqinTWRkuwvVSRBfZZtBGX2PC6I=
+  dependencies:
+    caniuse-lite "^1.0.30000939"
+    electron-to-chromium "^1.3.113"
+    node-releases "^1.1.8"
+
 bser@^2.0.0:
   version "2.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/bser/-/bser-2.0.0.tgz#9ac78d3ed5d915804fd87acb158bc797147a1719"
@@ -2430,6 +2456,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000918, caniuse-lite@^1.0.30000929, can
   version "1.0.30000938"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30000938.tgz#b64bf1427438df40183fce910fe24e34feda7a3f"
   integrity sha1-tkvxQnQ430AYP86RD+JONP7aej8=
+
+caniuse-lite@^1.0.30000939:
+  version "1.0.30000939"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30000939.tgz#b9ab7ac9e861bf78840b80c5dfbc471a5cd7e679"
+  integrity sha1-uat6yehhv3iEC4DF37xHGlzX5nk=
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -3724,7 +3755,7 @@ ee-first@1.1.1:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-electron-to-chromium@^1.3.103:
+electron-to-chromium@^1.3.103, electron-to-chromium@^1.3.113:
   version "1.3.113"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/electron-to-chromium/-/electron-to-chromium-1.3.113.tgz#b1ccf619df7295aea17bc6951dc689632629e4a9"
   integrity sha1-scz2Gd9yla6he8aVHcaJYyYp5Kk=
@@ -4830,7 +4861,7 @@ globals@^9.18.0:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
   integrity sha1-qjiWs+abSH8X4x7SFD1pqOMMLYo=
 
-globby@8.0.2, globby@^8.0.0:
+globby@8.0.2:
   version "8.0.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/globby/-/globby-8.0.2.tgz#5697619ccd95c5275dbb2d6faa42087c1a941d8d"
   integrity sha1-VpdhnM2VxSdduy1vqkIIfBqUHY0=
@@ -7465,6 +7496,13 @@ node-releases@^1.1.3:
   dependencies:
     semver "^5.3.0"
 
+node-releases@^1.1.8:
+  version "1.1.8"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/node-releases/-/node-releases-1.1.8.tgz#32a63fff63c5e51b7e0f540ac95947d220fc6862"
+  integrity sha1-MqY//2PF5Rt+D1QKyVlH0iD8aGI=
+  dependencies:
+    semver "^5.3.0"
+
 node-sass-chokidar@^1.3.4:
   version "1.3.4"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/node-sass-chokidar/-/node-sass-chokidar-1.3.4.tgz#2f4539d13b14a0444b3354d4664d660ce9697fdc"
@@ -8192,17 +8230,17 @@ postcss-calc@^7.0.1:
     postcss-selector-parser "^5.0.0-rc.4"
     postcss-value-parser "^3.3.1"
 
-postcss-cli@^6.1.1:
-  version "6.1.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/postcss-cli/-/postcss-cli-6.1.1.tgz#2214bbcfb804724d7f8331c2b220a2da34336560"
-  integrity sha1-IhS7z7gEck1/gzHCsiCi2jQzZWA=
+postcss-cli@^6.1.2:
+  version "6.1.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/postcss-cli/-/postcss-cli-6.1.2.tgz#9c24174614f4d2f6b5b6de8676fed992766173bc"
+  integrity sha1-nCQXRhT00va1tt6Gdv7ZknZhc7w=
   dependencies:
     chalk "^2.1.0"
     chokidar "^2.0.0"
     dependency-graph "^0.8.0"
     fs-extra "^7.0.0"
     get-stdin "^6.0.0"
-    globby "^8.0.0"
+    globby "^9.0.0"
     postcss "^7.0.0"
     postcss-load-config "^2.0.0"
     postcss-reporter "^6.0.0"
@@ -9207,15 +9245,15 @@ react-docgen-typescript@^1.12.3:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-docgen-typescript/-/react-docgen-typescript-1.12.3.tgz#fe62a5ce82e93573e316366e53adfe8273121c70"
   integrity sha1-/mKlzoLpNXPjFjZuU63+gnMSHHA=
 
-react-dom@^16.8.1, react-dom@^16.8.2:
-  version "16.8.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-dom/-/react-dom-16.8.2.tgz#7c8a69545dd554d45d66442230ba04a6a0a3c3d3"
-  integrity sha1-fIppVF3VVNRdZkQiMLoEpqCjw9M=
+react-dom@^16.8.3:
+  version "16.8.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-dom/-/react-dom-16.8.3.tgz#ae236029e66210783ac81999d3015dfc475b9c32"
+  integrity sha1-riNgKeZiEHg6yBmZ0wFd/EdbnDI=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.13.2"
+    scheduler "^0.13.3"
 
 react-error-overlay@^5.1.3:
   version "5.1.3"
@@ -9331,7 +9369,7 @@ react-scripts@2.1.5:
   optionalDependencies:
     fsevents "1.2.4"
 
-react-syntax-highlighter@^10.1.2:
+react-syntax-highlighter@^10.1.3:
   version "10.1.3"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-syntax-highlighter/-/react-syntax-highlighter-10.1.3.tgz#4f1cc4c819ef45eeb0bb1af93f9de9f73949a247"
   integrity sha1-TxzEyBnvRe6wuxr5P53p9zlJokc=
@@ -9352,15 +9390,15 @@ react-transition-group@^2.5.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.8.1, react@^16.8.2:
-  version "16.8.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react/-/react-16.8.2.tgz#83064596feaa98d9c2857c4deae1848b542c9c0c"
-  integrity sha1-gwZFlv6qmNnChXxN6uGEi1QsnAw=
+react@^16.8.3:
+  version "16.8.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react/-/react-16.8.3.tgz#c6f988a2ce895375de216edcfaedd6b9a76451d9"
+  integrity sha1-xvmIos6JU3XeIW7c+u3WuadkUdk=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.13.2"
+    scheduler "^0.13.3"
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -9968,10 +10006,10 @@ sax@^1.2.4, sax@~1.2.4:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha1-KBYjTiN4vdxOU1T6tcqold9xANk=
 
-scheduler@^0.13.2:
-  version "0.13.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/scheduler/-/scheduler-0.13.2.tgz#969eaee2764a51d2e97b20a60963b2546beff8fa"
-  integrity sha1-lp6u4nZKUdLpeyCmCWOyVGvv+Po=
+scheduler@^0.13.3:
+  version "0.13.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/scheduler/-/scheduler-0.13.3.tgz#bed3c5850f62ea9c716a4d781f9daeb9b2a58896"
+  integrity sha1-vtPFhQ9i6pxxak14H52uubKliJY=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -10652,10 +10690,10 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
-stylelint-config-prettier@^4.0.0:
-  version "4.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-config-prettier/-/stylelint-config-prettier-4.0.0.tgz#8c712977be13bd25191ab8b986b5c07a3342a5dc"
-  integrity sha1-jHEpd74TvSUZGri5hrXAejNCpdw=
+stylelint-config-prettier@^5.0.0:
+  version "5.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-config-prettier/-/stylelint-config-prettier-5.0.0.tgz#e7339da065dac8129ca821e234abddcef950b7f8"
+  integrity sha1-5zOdoGXayBKcqCHiNKvdzvlQt/g=
 
 stylelint-config-recommended@^2.1.0:
   version "2.1.0"
@@ -10669,10 +10707,10 @@ stylelint-config-standard@^18.2.0:
   dependencies:
     stylelint-config-recommended "^2.1.0"
 
-stylelint-scss@^3.5.3:
-  version "3.5.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.5.3.tgz#e158b3061eeec26d7f6088f346998a797432f3c8"
-  integrity sha1-4VizBh7uwm1/YIjzRpmKeXQy88g=
+stylelint-scss@^3.5.4:
+  version "3.5.4"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.5.4.tgz#ff3ee989ac48f5c4f57313523b5ace059ffd6cc2"
+  integrity sha1-/z7piaxI9cT1cxNSO1rOBZ/9bMI=
   dependencies:
     lodash "^4.17.11"
     postcss-media-query-parser "^0.2.3"
@@ -11103,10 +11141,10 @@ tslint-react@^3.6.0:
   dependencies:
     tsutils "^2.13.1"
 
-tslint@^5.12.1:
-  version "5.12.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/tslint/-/tslint-5.12.1.tgz#8cec9d454cf8a1de9b0a26d7bdbad6de362e52c1"
-  integrity sha1-jOydRUz4od6bCibXvbrW3jYuUsE=
+tslint@^5.13.0:
+  version "5.13.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/tslint/-/tslint-5.13.0.tgz#239a2357c36b620d72d86744754b6fc088a25359"
+  integrity sha1-I5ojV8NrYg1y2GdEdUtvwIiiU1k=
   dependencies:
     babel-code-frame "^6.22.0"
     builtin-modules "^1.1.1"
@@ -11116,6 +11154,7 @@ tslint@^5.12.1:
     glob "^7.1.1"
     js-yaml "^3.7.0"
     minimatch "^3.0.4"
+    mkdirp "^0.5.1"
     resolve "^1.3.2"
     semver "^5.3.0"
     tslib "^1.8.0"
