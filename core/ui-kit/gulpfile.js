@@ -118,7 +118,7 @@ gulp.task('pl-lint:porsche-stylesheet', function() {
 
 // Porsche Stylesheet build
 gulp.task('pl-build:porsche-stylesheets', function (cb) {
-  exec('npm run build:all:dev', function (err, stdout, stderr) {
+  exec('npm run build:all:dev', {maxBuffer: 1024 * 1000}, function (err, stdout, stderr) {
     cb(err);
   });
 });
