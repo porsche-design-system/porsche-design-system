@@ -83,12 +83,12 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "@porsche/plugin-node-sass-dependency-collector": "^1.0.0",
+    "@porsche/plugin-node-sass-dependency-collector": "^1.0.1",
     "@porsche/visual-regression-tester": "^1.0.0",
     "@types/es6-shim": "^0.31.37",
     "@types/jasmine": "^3.3.5",
     "@types/puppeteer": "^1.11.1",
-    "autoprefixer": "^9.4.4",
+    "autoprefixer": "^9.4.9",
     "better-npm-run": "^0.1.1",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
@@ -103,12 +103,12 @@
     "husky": "^1.3.1",
     "jasmine": "^3.3.1",
     "jimp": "^0.6.0",
-    "marked": "^0.6.0",
+    "marked": "^0.6.1",
     "minimist": "^1.2.0",
     "node-sass": "^4.11.0",
     "node-sass-tilde-importer": "^1.0.2",
     "npm-check": "^5.9.0",
-    "npm-watch": "^0.5.0",
+    "npm-watch": "^0.6.0",
     "patternengine-node-handlebars": "1.0.3",
     "patternlab-node": "^2.12.0",
     "plugin-node-clipboard": "^1.0.0",
@@ -122,8 +122,8 @@
     "styleguidekit-assets-default": "^3.5.2",
     "styleguidekit-mustache-default": "^3.1.0",
     "symlink-or-copy": "^1.2.0",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.2.2"
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
   },
   "publishConfig": {
     "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
