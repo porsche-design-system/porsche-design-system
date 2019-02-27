@@ -1,6 +1,6 @@
 {
   "name": "@porsche/plugin-node-sass-dependency-collector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Collects all related scss dependencies",
   "main": "index.js",
   "dependencies": {
