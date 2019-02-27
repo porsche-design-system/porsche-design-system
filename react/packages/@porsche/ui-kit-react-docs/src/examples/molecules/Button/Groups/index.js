@@ -15,6 +15,13 @@ const Groups = () => {
             >
                 If you want to use the stretch prop, be sure to set it on every button of the group.
             </ComponentExample>
+
+            <ComponentExample
+                title="Button Group Responsive"
+                examplePath="molecules/Button/Groups/ButtonExampleGroupsResponsive"
+            >
+                You can group buttons depending on viewport size.
+            </ComponentExample>
         </ExampleSection>
     )
 }
