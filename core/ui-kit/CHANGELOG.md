@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* Updated default dimension of SVG icons to width and height of 100%
+* Attention: Whenever a SVG icon is implemented within a wrapper element that controls the size, color and position 
+of the child SVG icon then it's recommended to set width and height attributes of the SVG tag to "100%". If the SVG tag
+controls the size, color and position itself then the width and height attributes on the SVG tag don't matter because 
+they will be overwritten by custom CSS definitions anyway.
+* Updated SVG icon overview in design spec section and added filename of optimized SVG icon as label text
 
 ## [0.18.1] - 2019-02-15
 * Added optimized Icon SVG in `src/base/icon/*.min.svg` which results in smaller file size (e.g. SVG sprites)
