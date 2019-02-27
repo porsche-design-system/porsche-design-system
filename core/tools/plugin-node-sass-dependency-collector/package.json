@@ -4,11 +4,14 @@
   "description": "Collects all related scss dependencies",
   "main": "index.js",
   "dependencies": {
-    "chalk": "2.3.2",
-    "fs-extra": "5.0.0",
-    "lodash": "4.17.5",
-    "node-sass": "4.8.3",
-    "node-sass-tilde-importer": "1.0.2"
+    "chalk": "^2.4.2",
+    "fs-extra": "^7.0.1",
+    "lodash": "^4.17.11",
+    "node-sass": "^4.11.0",
+    "node-sass-tilde-importer": "^1.0.2"
+  },
+  "devDependencies": {
+    "npm-check": "^5.9.0"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,8 @@
     "postinstall": "node ./postinstall.js",
     "authenticate-registry": "(npm whoami --registry=$npm_config_repository_url || npm login --registry=$npm_config_repository_url)",
     "publish-artifactory": "npm run authenticate-registry --repository_url=$npm_package_publishConfig__porsche_registry && npm publish",
-    "clean": "rm -rf ./node_modules"
+    "clean": "rm -rf ./node_modules",
+    "upgrade-interactive": "npm-check --update"
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
