@@ -1,5 +1,5 @@
 import React from "react"
-import { prefix } from "@porscheui/porsche-ui-kit"
+import { prefix } from "../../prefix"
 import "./sidebar.scss"
 import { Stories } from "../../stories"
 import { Link, Redirect } from "react-router-dom"

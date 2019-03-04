@@ -1,8 +1,9 @@
-@import "../../styles/base/variables";
+@import "../../styles/variable";
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
-.#{$global-class-prefix}sidebar {
+.#{$sg-prefix}sidebar {
   position: relative;
-  padding: $spacing-24 $spacing-30;
+  padding: $p-spacing-24 $p-spacing-30;
 
   &__logo {
     display: block;
@@ -14,13 +15,13 @@
   &__hr {
     height: 1px;
     border: 0;
-    border-top: 1px solid $color-palette-grey-3;
-    margin-top: $spacing-24;
-    margin-bottom: $spacing-24;
+    border-top: 1px solid $p-color-grey-3;
+    margin-top: $p-spacing-24;
+    margin-bottom: $p-spacing-24;
   }
 
   &__category {
-    margin-top: $spacing-24;
+    margin-top: $p-spacing-24;
     &__title {
       font-weight: bold;
     }

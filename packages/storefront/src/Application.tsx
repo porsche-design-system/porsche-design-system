@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
 import { Introduction } from "./pages/introduction/Introduction"
 import { Story } from "./components/story/Story"
-import { prefix } from "@porscheui/porsche-ui-kit"
+import { prefix } from "./prefix"
 import { Spacing, Logo, Text } from "@porsche/ui-kit-react"
 import "./application.scss"
 
