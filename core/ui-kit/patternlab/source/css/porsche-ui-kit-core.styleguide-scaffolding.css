@@ -212,7 +212,7 @@ html, body {
   margin-bottom: -12px;
 }
 .sg-icon-list__item {
-  width: 100px;
+  width: 200px;
   border: 1px solid #ddd;
   margin-right: 12px;
   margin-bottom: 12px;
@@ -227,6 +227,7 @@ html, body {
   padding: 0 12px 12px 12px;
   background-color: #fff;
   text-align: center;
+  word-break: break-all;
 }
 
 /**
