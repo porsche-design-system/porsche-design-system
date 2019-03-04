@@ -1,6 +1,6 @@
 @import '../../setup/color-palette.setup.scss';
 @import '../../base/tile/tile.setup.scss';
-@import '../../modules/button/button-inline.setup.scss';
+@import '../../deprecated/button/button-inline.setup.scss';
 
 $tile-image-headline-button-headline-color: $color-palette-white !default;
 $tile-image-headline-button-headline-background-color: $color-palette-grey-9 !default;

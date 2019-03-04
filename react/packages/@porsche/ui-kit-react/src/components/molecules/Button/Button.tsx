@@ -11,14 +11,11 @@ export interface Button extends React.StatelessComponent<ButtonProps> {
 }
 
 export interface ButtonProps extends ClassNameProp, ComponentProp {
-    /** Sets the button in its active / selected state. */
-    active?: boolean
-
     /** Disables the button. No onClick will be triggered. */
     disabled?: boolean
 
-    /** A button can show an error. */
-    error?: boolean
+    /** Button on dark background */
+    inverted?: boolean
 
     /**
      * The icon of the button.
@@ -36,22 +33,17 @@ export interface ButtonProps extends ClassNameProp, ComponentProp {
      */
     onClick?: (event: React.MouseEvent<HTMLButtonElement>, data: ButtonProps) => void
 
-    /**
-     * Shows only the icon by default, and the button content starting from a specific breakpoint
-     */
-    showContent?: "xs" | "s" | "m" | "l" | "xl"
-
     /** A button can stretch to fill the full available width. */
     stretch?: boolean
 
-    /** A button can have centered content (icon/text). */
-    centered?: boolean
+    /** A button can be displayed with a smaller size */
+    small?: boolean
 
     /**
      * The display type of the button.
      * @default default
      */
-    type?: "default" | "black" | "red" | "blue" | "acid-green" | "ghost" | "ghost-inverted"
+    type?: "default" | "ghost" | "highlight" | "sales" | "sales-ghost"
 
     /**
      * Specifies the HTML Type of the button. If undefined, nothing is set.
@@ -66,25 +58,19 @@ const defaultProps: Partial<ButtonProps> = {
     role: "button"
 }
 
-const isGhostButton = (type: string | undefined): boolean => {
-    return type === "ghost" || type === "ghost-inverted"
-}
-
 const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> = (props) => {
     const {
         as,
         role,
         className,
         children,
-        active,
         disabled,
-        error,
+        inverted,
         icon,
         loading,
         onClick,
-        showContent,
         stretch,
-        centered,
+        small,
         type,
         ...rest
     } = props
@@ -96,49 +82,22 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> = (props)
     let loaderClasses
     let labelClasses
 
-    if (isGhostButton(type)) {
-        // Ghost button setup
-        buttonClasses = cx(
-            prefix("button-ghost"),
-            { [prefix("button-ghost--inverted")]: type === "ghost-inverted" },
-            { [prefix("button-ghost--error")]: error },
-            { [prefix("button-ghost--stretch")]: stretch },
-            { [prefix("button-ghost--centered")]: centered },
-            { [prefix("button-ghost--active")]: active },
-            className
-        )
+    buttonClasses = cx(
+        prefix("button-regular"),
+        { [prefix("button-regular--ghost")]: type === "ghost" },
+        { [prefix("button-regular--highlight")]: type === "highlight" },
+        { [prefix("button-regular--sales")]: type === "sales" },
+        { [prefix("button-regular--sales-ghost")]: type === "sales-ghost" },
+        { [prefix("button-regular--stretch")]: stretch },
+        { [prefix("button-regular--theme-inverted")]: inverted },
+        { [prefix("button-regular--loading")]: loading },
+        { [prefix("button-regular--small")]: small },
+        className
+    )
 
-        iconClasses = cx(prefix("button-ghost__icon"), { [prefix("button-ghost__icon--loading")]: loading })
-
-        loaderClasses = cx(prefix("button-ghost__loader"))
-
-        labelClasses = cx(prefix("button-ghost__label"), {
-            [prefix(`button-ghost__label--show-${showContent}`)]: showContent
-        })
-    } else {
-        // Primary button setup
-        buttonClasses = cx(
-            prefix("button-primary"),
-            { [prefix("button-primary--black")]: type === "black" },
-            { [prefix("button-primary--red")]: type === "red" },
-            { [prefix("button-primary--blue")]: type === "blue" },
-            { [prefix("button-primary--acid-green")]: type === "acid-green" },
-            { [prefix("button-primary--error")]: error },
-            { [prefix("button-primary--stretch")]: stretch },
-            { [prefix("button-primary--centered")]: centered },
-            { [prefix("button-primary--active")]: active },
-
-            className
-        )
-
-        iconClasses = cx(prefix("button-primary__icon"), { [prefix("button-primary__icon--loading")]: loading })
-
-        loaderClasses = cx(prefix("button-primary__loader"))
-
-        labelClasses = cx(prefix("button-primary__label"), {
-            [prefix(`button-primary__label--show-${showContent}`)]: showContent
-        })
-    }
+    iconClasses = cx(prefix("button-regular__icon"))
+    loaderClasses = cx(prefix("button-regular__icon-loader"))
+    labelClasses = cx(prefix("button-regular__label"))
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!onClick) {
@@ -153,6 +112,16 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> = (props)
         onClick(e, props)
     }
 
+    const loaderNotInverted = () => {
+        return ruleTypeGhost() || ruleTypeSalesGhost() ? false : true
+    }
+    const ruleTypeGhost = () => {
+        return type === "ghost" && !inverted ? true : false
+    }
+    const ruleTypeSalesGhost = () => {
+        return type === "sales-ghost" && !inverted ? true : false
+    }
+
     return (
         <ElementType
             type={role}
@@ -162,9 +131,11 @@ const _Button: React.StatelessComponent<ButtonProps> & Partial<Button> = (props)
             {...rest}
         >
             {/* Icon cannot be undefined because of default props */}
-            <Icon name={icon as IconProps["name"]} className={iconClasses}>
-                {loading && <Loader className={loaderClasses} size="small" inverted={type !== "ghost"} />}
-            </Icon>
+            {loading ? (
+                <Loader size="x-small" className={loaderClasses} inverted={loaderNotInverted()} />
+                ) : (
+                <Icon name={icon as IconProps["name"]} className={iconClasses} />
+            )}
             <span className={labelClasses}>{children}</span>
         </ElementType>
     )

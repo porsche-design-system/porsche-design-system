@@ -11,7 +11,8 @@ var gulp = require('gulp'),
   sassLint = require('gulp-sass-lint'),
   cache = require('gulp-cached'),
   rename = require('gulp-rename'),
-  svgSymbols = require('gulp-svg-symbols')
+  svgSymbols = require('gulp-svg-symbols'),
+  svgmin = require('gulp-svgmin');
 
 function resolvePath(pathInput) {
   return path.resolve(pathInput).replace(/\\/g, "/");
@@ -21,18 +22,54 @@ function resolvePath(pathInput) {
  * CUSTOM TASKS
 ******************************************************/
 // SVG Spriting
+// SVG minification for export
+gulp.task('svgmin', function() {
+  return gulp
+    .src(['*.svg', '!*.min.svg'], { cwd: resolvePath(paths().source.icons) })
+    .pipe(svgmin({
+      plugins: [
+        {
+          removeTitle: false
+        },
+        {
+          removeViewBox: false
+        },
+        {
+          addCustomDimension: {
+            type: 'perItem',
+            description: 'Adds 100% width + height attributes to SVG',
+            params: {},
+            fn: function(item) {
+              if (
+                item.isElem('svg') &&
+                item.hasAttr('viewBox')
+              ) {
+                item.attrs.width = { name: 'width', value: '100%', prefix: '', local: 'width' };
+                item.attrs.height = { name: 'height', value: '100%', prefix: '', local: 'height' };
+              }
+            }
+          }
+        }
+      ]
+    }))
+    .pipe(rename({
+      suffix: ".min",
+    }))
+    .pipe(gulp.dest(resolvePath(paths().source.icons)))
+});
+
 gulp.task('sprites', function() {
   return gulp
-    .src('*.svg', { cwd: resolvePath(paths().source.icons) })
+    .src('*.min.svg', { cwd: resolvePath(paths().source.icons) })
     .pipe(svgSymbols({
       templates: ['default-svg'],
       slug: function(name) {
-        return name.replace(/_/g, '-')
+        return name.replace(/_/g, '-').replace(/.min$/,'')
       }
     }))
     .pipe(rename('svg-sprite.svg'))
     .pipe(gulp.dest(resolvePath(paths().source.images)+'/porsche-ui-kit-docs/'))
-})
+});
 
 /******************************************************
  * COPY TASKS - stream assets from source to destination
@@ -97,7 +134,7 @@ gulp.task('pl-lint:porsche-stylesheet', function() {
 
 // Porsche Stylesheet build
 gulp.task('pl-build:porsche-stylesheets', function (cb) {
-  exec('npm run build:all:dev', function (err, stdout, stderr) {
+  exec('npm run build:all:dev', {maxBuffer: 1024 * 1000}, function (err, stdout, stderr) {
     cb(err);
   });
 });
@@ -168,7 +205,7 @@ gulp.task('patternlab:loadstarterkit', function (done) {
   done();
 });
 
-gulp.task('patternlab:build', gulp.series('sprites', 'pl-assets', build, 'pl-lint:porsche-stylesheet', function (done) {
+gulp.task('patternlab:build', gulp.series('svgmin', 'sprites', 'pl-assets', build, 'pl-lint:porsche-stylesheet', function (done) {
   done();
 }));
 

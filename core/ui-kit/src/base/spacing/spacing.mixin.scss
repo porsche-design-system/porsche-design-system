@@ -1,6 +1,12 @@
 @import 'spacing.setup.scss';
 @import '../../mixins/breakpoint.scss';
 
+@mixin -spacing-0($direction: 'top', $type: 'margin', $sign: '+') {
+  #{$type}: {
+    #{$direction}: #{$sign}$spacing-0;
+  }
+}
+
 @mixin -spacing-3($direction: 'top', $type: 'margin', $sign: '+') {
   #{$type}: {
     #{$direction}: #{$sign}$spacing-3;

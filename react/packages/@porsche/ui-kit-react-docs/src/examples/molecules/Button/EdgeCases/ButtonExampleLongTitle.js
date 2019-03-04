@@ -12,7 +12,7 @@ const ButtonExampleLongTitle = () => {
             </Grid.Child>
 
             <Grid.Child size={3}>
-                <Button error>
+                <Button type="highlight">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua.
                 </Button>

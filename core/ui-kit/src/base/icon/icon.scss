@@ -8,6 +8,7 @@
   width: 1em;
   height: 1em;
   fill: currentColor;
+  vertical-align: top; /* fixes invisible spacing to next element of inline elements */
   transition: fill $animation-hover-duration $animation-hover-bezier;
 
   &--x-small {
@@ -34,5 +35,4 @@
     width: rem(60px);
     height: rem(60px);
   }
-
 }

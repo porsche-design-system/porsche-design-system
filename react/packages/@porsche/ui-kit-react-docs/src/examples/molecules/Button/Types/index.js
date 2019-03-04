@@ -18,6 +18,10 @@ const Types = () => {
                 A button has different types.
             </ComponentExample>
 
+            <ComponentExample title="Button Types Small" examplePath="molecules/Button/Types/ButtonExampleTypesSmall">
+                A button can have different types and a small layout.
+            </ComponentExample>
+
             <ComponentExample title="Stretch" examplePath="molecules/Button/Types/ButtonExampleTypesStretch">
                 A button can stretch to fill the full width.
             </ComponentExample>
@@ -29,15 +33,6 @@ const Types = () => {
             <ComponentExample title="Loading" examplePath="molecules/Button/Types/ButtonExampleTypesLoading">
                 A button can show a loading indicator. It is also automatically disabled when loading. No{" "}
                 <code>onClick</code> will trigger when this property is set.
-            </ComponentExample>
-
-            <ComponentExample title="Error" examplePath="molecules/Button/Types/ButtonExampleTypesError">
-                A button can represent an error.
-            </ComponentExample>
-
-            <ComponentExample title="Show Content" examplePath="molecules/Button/Types/ButtonExampleTypesShowContent">
-                A button can only show its content starting from a specific breakpoint. Below that, only the icon is
-                shown.
             </ComponentExample>
         </ExampleSection>
     )

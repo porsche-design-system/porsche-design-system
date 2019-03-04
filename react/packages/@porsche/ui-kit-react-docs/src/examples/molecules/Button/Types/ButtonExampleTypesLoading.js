@@ -6,26 +6,18 @@ const ButtonExampleTypesLoading = () => {
         <div>
             <Grid>
                 <Grid.Child size={3}>
-                    <Button loading type="default">
-                        Default Button
+                    <Button loading>Regular Button</Button>
+                </Grid.Child>
+
+                <Grid.Child size={3}>
+                    <Button loading type="highlight">
+                        Highlight Button
                     </Button>
                 </Grid.Child>
 
                 <Grid.Child size={3}>
-                    <Button loading type="red">
-                        Red Button
-                    </Button>
-                </Grid.Child>
-
-                <Grid.Child size={3}>
-                    <Button loading type="blue">
-                        Blue Button
-                    </Button>
-                </Grid.Child>
-
-                <Grid.Child size={3}>
-                    <Button loading type="black">
-                        Black Button
+                    <Button loading type="sales">
+                        Sales Button
                     </Button>
                 </Grid.Child>
             </Grid>
@@ -33,28 +25,55 @@ const ButtonExampleTypesLoading = () => {
             <Spacing paddingTop={18}>
                 <Grid>
                     <Grid.Child size={3}>
-                        <Button loading type="acid-green">
-                            Acid-Green Button
+                        <Button loading type="ghost">
+                            Ghost Button
                         </Button>
                     </Grid.Child>
 
                     <Grid.Child size={3}>
-                        <Button loading type="ghost">
-                            Ghost Button
+                        <Button loading type="sales-ghost">
+                            Sales-Ghost Button
                         </Button>
                     </Grid.Child>
                 </Grid>
             </Spacing>
 
-            <Grid>
-                <Grid.Child size={3}>
-                    <div style={{ background: "black", padding: "16px", marginTop: "16px" }}>
-                        <Button loading type="ghost-inverted">
-                            Ghost Inverted Button
+            <div style={{ background: "black", padding: "16px", marginTop: "16px" }}>
+                <Grid>
+                    <Grid.Child size={3}>
+                        <Button loading disabled inverted>
+                            Regular Inverted Button
                         </Button>
-                    </div>
-                </Grid.Child>
-            </Grid>
+                    </Grid.Child>
+
+                    <Grid.Child size={3}>
+                        <Button loading disabled inverted type="highlight">
+                            Highlight Inverted Button
+                        </Button>
+                    </Grid.Child>
+
+                    <Grid.Child size={3}>
+                        <Button loading disabled inverted type="sales">
+                            Sales Inverted Button
+                        </Button>
+                    </Grid.Child>
+                </Grid>
+                <Spacing marginTop={18}>
+                    <Grid>
+                        <Grid.Child size={3}>
+                            <Button loading disabled inverted type="ghost">
+                                Ghost Inverted Button
+                            </Button>
+                        </Grid.Child>
+
+                        <Grid.Child size={3}>
+                            <Button loading disabled inverted type="sales-ghost">
+                                Sales-Ghost Inverted Button
+                            </Button>
+                        </Grid.Child>
+                    </Grid>
+                </Spacing>
+            </div>
         </div>
     )
 }

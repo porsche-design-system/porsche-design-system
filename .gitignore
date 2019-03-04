@@ -13,3 +13,4 @@ Thumbs.db
 # npm
 node_modules
 node_modules/.yarn-integrity
+.vscode

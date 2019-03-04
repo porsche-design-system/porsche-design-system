@@ -6,8 +6,53 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.18.2] - 2019-03-04
+* Updated default dimension of SVG icons to width and height of 100%
+* Attention: Whenever a SVG icon is implemented within a wrapper element that controls the size, color and position of the child SVG icon then it's recommended to set width and height attributes of the SVG tag to "100%". If the SVG tag controls the size, color and position itself then the width and height attributes on the SVG tag don't matter because they will be overwritten by custom CSS definitions anyway.
+* Updated SVG icon overview in design spec section and added filename of optimized SVG icon as label text
+* Fixed pagination font size
+* Renewed VRT fixture images
+
+## [0.18.1] - 2019-02-15
+* Added optimized Icon SVG in `src/base/icon/*.min.svg` which results in smaller file size (e.g. SVG sprites)
+* Fixed path in button vrt
+
+## [0.18.0] - 2019-02-08
+
 * Fixed layout issue of media center modal for mobile + landscape viewports
 
+### Button Refactoring
+* Refactoring of button namings and css structure
+* added sales button type
+* Moved old buttons to deprecated folder
+
+#### Breaking changes
+Please update asap all deprecated buttons with the new ones.
+
+__Migration path:__  
+  * Replace old buttons with new buttons:  
+
+  `button-primary` => `button-regular`  
+  `button-primary--red` => `button-regular--highlight`  
+  `button-primary--acid-green` => `button-regular--highlight`  
+  `button-primary--error` => deleted!  
+  `button-primary--black` => `button-regular`  
+  
+  * Changed location of old button css to deprecated folder:  
+
+  `modules/button/index.scss` => `deprecated/button/index.scss`  
+  `modules/button/button-primary.setup.scss` => `deprecated/button/button-primary.setup.scss`  
+  `modules/button/button-primary.scss` => `deprecated/button/button-primary.scss` 
+  `modules/button/button-ghost.setup.scss` => `deprecated/button/button-ghost.setup.scss` 
+  `modules/button/button-ghost.scss` => `deprecated/button/button-ghost.scss` 
+  `modules/button/button-icon.setup.scss` => `deprecated/button/button-icon.setup.scss`  
+  `modules/button/button-icon.scss` => `deprecated/button/button-icon.scss`  
+  `modules/button/button-inline.setup.scss` => `deprecated/button/button-inline.setup.scss`  
+  `modules/button/button-inline.mixin.scss` => `deprecated/button/button-inline.mixin.scss` 
+  `modules/button/button-inline.scss` => `deprecated/button/button-inline.scss`  
+  `modules/button/button-notification.setup.scss` => `deprecated/button/button-notification.setup.scss`  
+  `modules/button/button-notification.scss` => `deprecated/button/button-notification.scss`  
 
 ## [0.17.0] - 2019-01-10
 
@@ -69,7 +114,7 @@ __Migration path:__
 * Changed order of scss import of deprecated scss files to prevent css specificity issues.
 * Fixed layout issue of confirmation modal component (which was caused by css specificity mentioned above).
 
-## [## [0.14.1] - 2018-11-05]
+## [0.14.1] - 2018-11-05
 ### Bugfix
 Added missing "-" seperator on sizes/offset classname at "xl" breakpoint
 

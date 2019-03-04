@@ -1,5 +1,6 @@
 ---
 title: Navigation Topbar Mobile
-state: inprogress
+state: deprecated
 ---
 
+# @Deprecated

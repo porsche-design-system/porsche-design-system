@@ -1,0 +1,15 @@
+{
+  "bodyClass": "sg-wrapper-light",
+  "button-regular_disabled": false,
+  "button-regular_ghost": false,
+  "button-regular_highlight": false,
+  "button-regular_sales": false,
+  "button-regular-salesGhost": false,
+  "button-regular_link": false,
+  "button-regular_stretch": false,
+  "button-regular_loading": false,
+  "button-regular_isThemeInverted": false,
+  "button-regular_loadingInverted": false,
+  "button-regular_label": "Some button label",
+  "button-regular_icon": "arrow-right-hair"
+}
