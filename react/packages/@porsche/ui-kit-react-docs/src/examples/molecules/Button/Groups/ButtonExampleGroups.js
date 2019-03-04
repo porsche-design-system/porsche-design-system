@@ -1,13 +1,23 @@
 import React from "react"
-import { Button, Flex } from "@porsche/ui-kit-react"
+import { Button, Spacing } from "@porsche/ui-kit-react"
 
 const ButtonExampleGroups = () => {
     return (
-        <Button.Group>
-            <Button type="red">Button 1</Button>
-            <Button type="black">Button 2</Button>
-            <Button>Button 3</Button>
-        </Button.Group>
+        <div>
+            <Button.Group>
+                <Button type="ghost">Ghost Button</Button>
+                <Button type="highlight">Highlight Button</Button>
+                <Button type="sales">Sales Button</Button>
+            </Button.Group>
+
+            <Spacing marginTop={30}>
+                <Button.Group direction="vertical">
+                    <Button type="ghost">Ghost Button</Button>
+                    <Button type="highlight">Highlight Button</Button>
+                    <Button type="sales">Sales Button</Button>
+                </Button.Group>
+            </Spacing>
+        </div>
     )
 }
 

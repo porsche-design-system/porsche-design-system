@@ -21,10 +21,10 @@ export { NavigationMenuList, NavigationMenuListProps } from "./components/molecu
 export { NavigationDesktop } from "./components/molecules/Navigation/NavigationDesktop"
 export { NavigationMobile } from "./components/molecules/Navigation/NavigationMobile"
 export { Pagination, PaginationProps } from "./components/molecules/Pagination/Pagination"
+export { Radio, RadioProps } from "./components/molecules/Radio/Radio"
 export { Select, SelectOption, SelectOptionGroup, SelectValue, SelectProps } from "./components/molecules/Select/Select"
 export { Tab, TabProps, TabPane } from "./components/molecules/Tab/Tab"
 export { TextArea, TextAreaProps } from "./components/molecules/TextArea/TextArea"
-export { Radio } from "./components/molecules/Radio/Radio"
 
 // Organisms
 export { Header, HeaderProps } from "./components/organisms/Header/Header"

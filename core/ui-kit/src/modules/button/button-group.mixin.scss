@@ -1,0 +1,26 @@
+@import '../../setup/global-variables.scss';
+@import '../../base/spacing/spacing.mixin.scss';
+
+@mixin button-group($direction) {
+  @if $direction == vertical {
+    margin-left: 0;
+    margin-right: 0;
+  } @else {
+    margin-left: -$spacing-6;
+    margin-right: -$spacing-6;
+  }
+
+  // sass-lint:disable no-combinators
+  > .#{$global-class-prefix}button-regular,
+  > .#{$global-class-prefix}button-icon {
+    @if $direction == vertical {
+      margin: $spacing-12 0 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    } @else {
+      margin: 0 $spacing-6;
+    }
+  }
+}

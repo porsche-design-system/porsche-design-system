@@ -188,9 +188,14 @@ jobs:
             </head>
             <body>
               <h1>Porsche UI Kit</h1>
+              <p>Welcome to the Porsche UI Kit - the Porsche initiative to unite every digital Porsche product around a common Porsche Design System.</p>
+              <button id="open-registration-popup">Always stay informed about Porsche UI and get access by subscribing to our newsletter</button>
+              <p><a href="https://www.porsche.com/international/legal-notice/">Show Porsche legal notice, copyright notice and consumer information</a></p>
               <hr>
               <h2>Links</h2>
               <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit.sketch.xml" rel="nofollow">Add Porsche UI Kit Sketch library</a> (public)</h4>
+              <p>Please be aware that the current library soon will be split into two seperate libraries that require a integration refresh. For the best possible usage you should install the <a href="https://www.animaapp.com/">Sketch Plugin Anima</a>.</p>
+              <br>
               <h4>NPM Packages <a href="https://porscheui.jfrog.io" rel="nofollow">Link npm registry</a> (private)</h4>
               <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit" rel="nofollow">Link to GitHub</a> (private)</h4>
               <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki" rel="nofollow">Link to GitHub Wiki</a> (private)</h4>
@@ -233,6 +238,26 @@ jobs:
                   </td>
                 </tr>
               </table>
+              <hr>
+              <h2>License</h2>
+              <p>By accessing, using or contributing to the Design System of Porsche ('Porsche UI Kit'), you agree to the following license agreement ('Agreement') with Dr. Ing. h.c. F. Porsche AG, Germany ('Porsche AG'). Porsche reserves the right to change and update this license agreement at any time.</p>
+              <h3>Restrictions</h3>
+              <p>Porsche AG grants you a limited license by giving you a personalized account to access and use the contents and resources of the Porsche UI Kit only for creating software, applications, websites, interfaces and any other products on behalf of Porsche AG or a subsidiary. You may not use the Porsche UI Kit and any of its contents including trade names, trademarks, service marks, or product names of Porsche AG, without the expressly permission of Porsche AG. It is forbidden to copy and or reuse contents of the Porsche UI Kit without an authorized account to access. You may not reproduce and distribute copies of the Porsche UI Kit in any medium, with or without modifications that is not for Porsche AG or a legal entity.</p>
+              <h3>Ownership</h3>
+              <p>You agree that Porsche AG owns all legal right, title and interest of the Porsche UI Kit and its contents, including any intellectual property rights subsisting in the Porsche AG or relating to it. That means any rights under patent law, copyright law, trade secret law, trademark law, and any other proprietary rights. Porsche AG also reserves all rights not expressly granted to you in conjunction to the Porsche UI Kit.</p>
+              <h3>Termination</h3>
+              <p>Porsche AG may terminate this agreement if Porsche AG stops developing and distributing the Porsche UI Kit. This means that you also must stop using the Porsche UI Kit and delete all copies of it.</p>
+              <h3>Warranty</h3>
+              <p>Porsche AG provides the Porsche UI Kit (and each contributor provides its contributions) on an "as is" basis, without warranties or conditions of any kind, either express or implied, including, not limited to the warranties of merchantability, any warranties or conditions of title, non-infringement or fitness for a particular purpose. You are solely responsible for determining the appropriateness of using the Porsche UI Kit and assume any risks associated under this license. In no event shall Porsche AG be liable for any claim, damages or other liability, arising from or in connection with the usage or dealing with it.</p>
+              <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+              <script>
+                function showRegistrationPopUp() {
+                  document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                  document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                  window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"13b643f9690bd1f9c89a65f1f","lid":"0fafac1ad4","uniqueMethods":true}) });
+                }
+                document.getElementById("open-registration-popup").addEventListener("click", showRegistrationPopUp);
+              </script>
             </body>
             </html>
             _EOF_
@@ -352,9 +377,14 @@ jobs:
             </head>
             <body>
               <h1>Porsche UI Kit</h1>
+              <p>Welcome to the Porsche UI Kit - the Porsche initiative to unite every digital Porsche product around a common Porsche Design System.</p>
+              <button id="open-registration-popup">Always stay informed about Porsche UI and get access by subscribing to our newsletter</button>
+              <p><a href="https://www.porsche.com/international/legal-notice/">Show Porsche legal notice, copyright notice and consumer information</a></p>
               <hr>
               <h2>Links</h2>
               <h4>Sketch Library <a href="sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit.sketch.xml" rel="nofollow">Add Porsche UI Kit Sketch library</a> (public)</h4>
+              <p>Please be aware that the current library soon will be split into two seperate libraries that require a integration refresh. For the best possible usage you should install the <a href="https://www.animaapp.com/">Sketch Plugin Anima</a>.</p>
+              <br>
               <h4>NPM Packages <a href="https://porscheui.jfrog.io" rel="nofollow">Link npm registry</a> (private)</h4>
               <h4>SCM <a href="https://github.com/porscheui/porsche-ui-kit" rel="nofollow">Link to GitHub</a> (private)</h4>
               <h4>Wiki <a href="https://github.com/porscheui/porsche-ui-kit/wiki" rel="nofollow">Link to GitHub Wiki</a> (private)</h4>
@@ -397,6 +427,26 @@ jobs:
                   </td>
                 </tr>
               </table>
+              <hr>
+              <h2>License</h2>
+              <p>By accessing, using or contributing to the Design System of Porsche ('Porsche UI Kit'), you agree to the following license agreement ('Agreement') with Dr. Ing. h.c. F. Porsche AG, Germany ('Porsche AG'). Porsche reserves the right to change and update this license agreement at any time.</p>
+              <h3>Restrictions</h3>
+              <p>Porsche AG grants you a limited license by giving you a personalized account to access and use the contents and resources of the Porsche UI Kit only for creating software, applications, websites, interfaces and any other products on behalf of Porsche AG or a subsidiary. You may not use the Porsche UI Kit and any of its contents including trade names, trademarks, service marks, or product names of Porsche AG, without the expressly permission of Porsche AG. It is forbidden to copy and or reuse contents of the Porsche UI Kit without an authorized account to access. You may not reproduce and distribute copies of the Porsche UI Kit in any medium, with or without modifications that is not for Porsche AG or a legal entity.</p>
+              <h3>Ownership</h3>
+              <p>You agree that Porsche AG owns all legal right, title and interest of the Porsche UI Kit and its contents, including any intellectual property rights subsisting in the Porsche AG or relating to it. That means any rights under patent law, copyright law, trade secret law, trademark law, and any other proprietary rights. Porsche AG also reserves all rights not expressly granted to you in conjunction to the Porsche UI Kit.</p>
+              <h3>Termination</h3>
+              <p>Porsche AG may terminate this agreement if Porsche AG stops developing and distributing the Porsche UI Kit. This means that you also must stop using the Porsche UI Kit and delete all copies of it.</p>
+              <h3>Warranty</h3>
+              <p>Porsche AG provides the Porsche UI Kit (and each contributor provides its contributions) on an "as is" basis, without warranties or conditions of any kind, either express or implied, including, not limited to the warranties of merchantability, any warranties or conditions of title, non-infringement or fitness for a particular purpose. You are solely responsible for determining the appropriateness of using the Porsche UI Kit and assume any risks associated under this license. In no event shall Porsche AG be liable for any claim, damages or other liability, arising from or in connection with the usage or dealing with it.</p>
+              <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+              <script>
+                function showRegistrationPopUp() {
+                  document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                  document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                  window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"13b643f9690bd1f9c89a65f1f","lid":"0fafac1ad4","uniqueMethods":true}) });
+                }
+                document.getElementById("open-registration-popup").addEventListener("click", showRegistrationPopUp);
+              </script>
             </body>
             </html>
             _EOF_
