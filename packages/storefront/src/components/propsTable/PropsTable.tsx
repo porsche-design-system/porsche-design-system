@@ -1,5 +1,5 @@
 import React from "react"
-import { prefix } from "@porscheui/porsche-ui-kit"
+import { prefix } from "../../prefix"
 import "./propsTable.scss"
 
 export interface PropsTableProps {

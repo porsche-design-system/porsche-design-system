@@ -1,11 +1,12 @@
-@import "../../styles/base/index";
+@import "../../styles/variable";
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
-.#{$global-class-prefix}introduction {
+.#{$sg-prefix}introduction {
   text-align: center;
 
   &__header {
-    padding: $spacing-12 0;
-    background-color: $color-palette-white;
+    padding: $p-spacing-12 0;
+    background-color: $p-color-white;
     display: flex;
     justify-content: center;
   }

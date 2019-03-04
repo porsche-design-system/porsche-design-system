@@ -1,4 +1,4 @@
-$breakpoints: (
+$p-breakpoints: (
   'xxs': 0,
   'xs': 480px,
   's': 760px,
@@ -9,8 +9,8 @@ $breakpoints: (
 
 @mixin breakpoint($min-breakpoint: null, $max-breakpoint: null) {
   @if ($min-breakpoint and $max-breakpoint) {
-    @if map-has-key($breakpoints, $min-breakpoint) and map-has-key($breakpoints, $max-breakpoint) {
-      @media (min-width: #{map-get($breakpoints, $min-breakpoint)}) and (max-width: #{map-get($breakpoints, $max-breakpoint) - 1px}) {
+    @if map-has-key($p-breakpoints, $min-breakpoint) and map-has-key($p-breakpoints, $max-breakpoint) {
+      @media (min-width: #{map-get($p-breakpoints, $min-breakpoint)}) and (max-width: #{map-get($p-breakpoints, $max-breakpoint) - 1px}) {
         @content;
       }
     } @else {
@@ -26,8 +26,8 @@ $breakpoints: (
       }
     }
   } @else if ($min-breakpoint) {
-    @if map-has-key($breakpoints, $min-breakpoint) {
-      @media (min-width: #{map-get($breakpoints, $min-breakpoint)}) {
+    @if map-has-key($p-breakpoints, $min-breakpoint) {
+      @media (min-width: #{map-get($p-breakpoints, $min-breakpoint)}) {
         @content;
       }
     } @else {

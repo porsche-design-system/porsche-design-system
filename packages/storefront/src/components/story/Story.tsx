@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useState } from "react"
-import { prefix } from "@porscheui/porsche-ui-kit"
+import { prefix } from "../../prefix"
 import "./story.scss"
 import { RouteComponentProps, Redirect } from "react-router"
 

@@ -1,15 +1,16 @@
-@import "../../styles/base/variables";
+@import "../../styles/variable";
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
-.#{$global-class-prefix}story {
-  padding: $spacing-60 120px;
+.#{$sg-prefix}story {
+  padding: $p-spacing-60 120px;
 
   &__tabs {
     display: flex;
     flex-direction: row;
-    margin-bottom: $spacing-42;
+    margin-bottom: $p-spacing-42;
 
     &__button {
-      margin-right: $spacing-18;
+      margin-right: $p-spacing-18;
       background: none;
       border: none;
       font-size: 1em;
@@ -18,7 +19,7 @@
   }
 
   &__props {
-    margin-bottom: $spacing-60;
+    margin-bottom: $p-spacing-60;
   }
 
   h1,
@@ -30,22 +31,22 @@
   p,
   ul,
   ol {
-    margin-bottom: $spacing-24;
+    margin-bottom: $p-spacing-24;
     max-width: 60em;
     line-height: 1.5em;
   }
 
   hr {
-    margin-top: $spacing-42;
-    margin-bottom: $spacing-60;
+    margin-top: $p-spacing-42;
+    margin-bottom: $p-spacing-60;
     height: 1px;
     border: 0;
-    border-top: 1px solid $color-palette-grey-2;
+    border-top: 1px solid $p-color-grey-2;
   }
 
   code {
     padding: 3px;
-    background-color: $color-palette-grey-1;
+    background-color: $p-color-grey-1;
     border-radius: 2px;
   }
 }

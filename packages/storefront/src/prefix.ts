@@ -1,3 +1,3 @@
 export const prefix = (className: string): string => {
-    return `p-${className}`
+    return `sg-${className}`
 }

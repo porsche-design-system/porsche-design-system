@@ -1,6 +1,7 @@
-@import "../../styles/base/variables";
+@import "../../styles/variable";
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
-.#{$global-class-prefix}props {
+.#{$sg-prefix}props {
   overflow-x: scroll;
 
   &__component-description {
@@ -23,16 +24,16 @@
   }
 
   th {
-    padding-top: $spacing-24;
-    padding-bottom: $spacing-24;
-    padding-right: $spacing-24;
+    padding-top: $p-spacing-24;
+    padding-bottom: $p-spacing-24;
+    padding-right: $p-spacing-24;
   }
 
   td {
-    border-bottom: 1px solid $color-palette-grey-1;
-    padding-top: $spacing-12;
-    padding-bottom: $spacing-12;
-    padding-right: $spacing-24;
+    border-bottom: 1px solid $p-color-grey-1;
+    padding-top: $p-spacing-12;
+    padding-bottom: $p-spacing-12;
+    padding-right: $p-spacing-24;
   }
 
   &__prop-description {

@@ -1,3 +1,5 @@
-@import "styles/index";
+// loads global styles, e.g. font-faces
+@import "styles/common/index";
 
-@import "components/layout/flex/Flex";
+// loads component styles
+@import "components/layout/flex/flex";

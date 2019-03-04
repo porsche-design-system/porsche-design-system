@@ -1,13 +1,13 @@
-@import "../../../styles/index";
+@import "../../../styles/utility/index";
 
-$flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
+$p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
 @mixin flex-child-width($i) {
-  width: #{nth($flex-child-width, $i + 1)};
+  width: #{nth($p-flex-child-width, $i + 1)};
 }
 
 @mixin flex-child-offset($i) {
-  margin-left: #{nth($flex-child-width, $i)};
+  margin-left: #{nth($p-flex-child-width, $i)};
 }
 
 /**
@@ -80,7 +80,7 @@ $flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   order: #{$order};
 }
 
-.#{$global-class-prefix}flex {
+.#{$p-global-class-prefix}flex {
   $bem-block: &;
   @include flex;
   &--inline {

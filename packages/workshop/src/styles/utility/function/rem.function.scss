@@ -1,13 +1,12 @@
-@function strip-units($val) {
-  @return ($val / ($val * 0 + 1));
-}
+@import "../variable/global";
+@import "strip-units.function";
 
 @function rem($pxval) {
   @if not unitless($pxval) {
     $pxval: strip-units($pxval);
   }
 
-  $base: $global-rem-base;
+  $base: $p-global-rem-base;
   @if not unitless($base) {
     $base: strip-units($base);
   }
