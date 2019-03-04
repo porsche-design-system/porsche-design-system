@@ -33,6 +33,22 @@ gulp.task('svgmin', function() {
         },
         {
           removeViewBox: false
+        },
+        {
+          addCustomDimension: {
+            type: 'perItem',
+            description: 'Adds 100% width + height attributes to SVG',
+            params: {},
+            fn: function(item) {
+              if (
+                item.isElem('svg') &&
+                item.hasAttr('viewBox')
+              ) {
+                item.attrs.width = { name: 'width', value: '100%', prefix: '', local: 'width' };
+                item.attrs.height = { name: 'height', value: '100%', prefix: '', local: 'height' };
+              }
+            }
+          }
         }
       ]
     }))
