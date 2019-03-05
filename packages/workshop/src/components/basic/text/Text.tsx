@@ -45,7 +45,7 @@ export interface TextProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<TextProps> = {
-  type: "copy",
+  type: "copy-regular",
   wrap: true
 }
 

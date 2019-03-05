@@ -4,7 +4,7 @@ import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
 import { Introduction } from "./pages/introduction/Introduction"
 import { Story } from "./components/story/Story"
 import { prefix } from "./prefix"
-import { Spacing, Logo } from "@porsche/ui-kit-react"
+import { Spacing, Logo, Link } from "@porsche/ui-kit-react"
 import { Text } from "@porscheui/porsche-ui-kit"
 import packageJson from "@porscheui/porsche-ui-kit/package.json"
 import "./application.scss"
@@ -25,12 +25,27 @@ export class Application extends React.Component {
                   Current Release: v{packageJson.version}
                 </Text>
               </Spacing>
-              <SidebarLink to="/introduction" title="Introduction" />
+              <hr className={prefix("sidebar__hr")} />
+              <nav>
+                <ul>
+                  <li className={prefix("sidebar__nav-item")}>
+                    <SidebarLink to="/introduction" title="Introduction" />
+                  </li>
+                  <li className={prefix("sidebar__nav-item")}>
+                    <SidebarLink to="/designing" title="Designing" />
+                  </li>
+                  <li className={prefix("sidebar__nav-item")}>
+                    <SidebarLink to="/coding" title="Coding" />
+                  </li>
+                </ul>
+              </nav>
             </Sidebar>
           </div>
           <div className={prefix("app__content")}>
             <Switch>
               <Route path="/introduction" component={Introduction} />
+              <Route path="/designing" component={Introduction} />
+              <Route path="/coding" component={Introduction} />
               <Route path="/:category/:story" component={Story} />
               <Route path="/" component={() => <Redirect to="/introduction" />} />
             </Switch>
