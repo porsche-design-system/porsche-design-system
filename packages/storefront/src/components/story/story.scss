@@ -1,5 +1,6 @@
 @import "../../styles/variable";
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+@import "~@porscheui/porsche-ui-kit/src/components/basic/text/text";
 
 .#{$sg-prefix}story {
   padding: $p-spacing-60 120px;
@@ -33,7 +34,37 @@
   ol {
     margin-bottom: $p-spacing-24;
     max-width: 60em;
-    line-height: 1.5em;
+  }
+
+  h1 {
+    @include -text-size-1(600);
+    margin-top: $p-spacing-30;
+  }
+
+  h2 {
+    @include -text-size-2(600);
+    margin-top: $p-spacing-30;
+  }
+
+  h3 {
+    @include -text-size-3(600);
+    margin-top: $p-spacing-24;
+  }
+
+  h4 {
+    @include -text-size-4(600);
+    margin-top: $p-spacing-18;
+  }
+
+  h5,
+  h6 {
+    @include -text-size-copy(600);
+    margin-top: $p-spacing-18;
+  }
+
+  p {
+    @include -text-size-copy;
+    margin-top: $p-spacing-18;
   }
 
   hr {
