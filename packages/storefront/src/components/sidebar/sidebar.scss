@@ -4,13 +4,17 @@
 
 .#{$sg-prefix}sidebar {
   position: relative;
-  padding: $p-spacing-42 $p-spacing-30;
+  padding: $p-spacing-42 $p-spacing-30 120px;
 
   &__logo {
     display: block;
-    widows: 100px;
+    width: 100px;
     margin-left: 50%;
     transform: translateX(-50%);
+  }
+  &__logo-item {
+    display: block;
+    width: 100%;
   }
 
   &__hr {

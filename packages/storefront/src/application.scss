@@ -14,6 +14,14 @@
     border-right: 1px solid $p-color-grey-3;
   }
 
+  &__legal {
+    position: fixed;
+    width: 299px;
+    padding: $p-spacing-30;
+    bottom: 0;
+    background-color: $p-color-white;
+  }
+
   &__content {
     margin-left: 300px;
   }

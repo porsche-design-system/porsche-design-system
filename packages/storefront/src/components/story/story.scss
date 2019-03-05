@@ -67,16 +67,41 @@
     margin-top: $p-spacing-18;
   }
 
+  ul,
+  ol {
+    @include -text-size-copy;
+    margin-top: $p-spacing-18;
+    margin-left: $p-spacing-18;
+  }
+
+  li {
+    @include -text-size-copy;
+  }
+
   hr {
     margin-top: $p-spacing-42;
-    margin-bottom: $p-spacing-60;
+    margin-bottom: $p-spacing-42;
     height: 1px;
     border: 0;
     border-top: 1px solid $p-color-grey-2;
   }
 
+  blockquote {
+    padding-left: $p-spacing-18;
+    border-left: 5px solid $p-color-grey-3;
+  }
+
+  pre {
+    display: block;
+    padding: $p-spacing-12;
+    background-color: $p-color-grey-1;
+    code {
+      padding: 0;
+    }
+  }
+
   code {
-    padding: 3px;
+    padding: 2px 5px;
     background-color: $p-color-grey-1;
     border-radius: 2px;
   }

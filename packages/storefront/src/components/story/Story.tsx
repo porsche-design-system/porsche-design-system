@@ -39,7 +39,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
   }
 
   return (
-    <div className={prefix("story")}>
+    <main className={prefix("story")}>
       <div className={prefix("story__tabs")}>
         <button onClick={() => handleTabClick("examples")} className={prefix("story__tabs__button")}>
           Examples
@@ -72,7 +72,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
             </div>
           )
         })}
-    </div>
+    </main>
   )
 }
 

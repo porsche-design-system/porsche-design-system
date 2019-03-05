@@ -21,6 +21,7 @@
   "contributors": [
     "Stephan Schröter <stephan.schroeter@mhp.com>",
     "Oliver Hook <oliver.hook@mhp.com>",
+    "Christoph Albert <christoph.albert@mhp.com>",
     "Anna Krohmer <anna.krohmer@udg.de>",
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
@@ -31,7 +32,7 @@
   "scripts": {
     "start": "concurrently \"yarn --cwd ../workshop watch:es\" \"react-scripts start\"",
     "build": "yarn --cwd ../workshop build && react-scripts build",
-    "docgen": "node ../docgen/docgen.js"
+    "docgen": "node ./docgen/docgen.js"
   },
   "dependencies": {
     "@porsche/ui-kit-react": "^0.9.0",
