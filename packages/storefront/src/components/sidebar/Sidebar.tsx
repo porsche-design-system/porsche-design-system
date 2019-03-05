@@ -26,7 +26,7 @@ export interface SidebarCategory {
 export const SidebarCategory: React.FunctionComponent<SidebarCategory> = (props) => {
   return (
     <div className={prefix("sidebar__category")}>
-      <Text type="4-bold" as="h2" className={prefix("sidebar__category__title")}>
+      <Text type="copy-bold" as="h3" className={prefix("sidebar__category__title")}>
         {props.title}
       </Text>
       {props.children}
@@ -38,9 +38,12 @@ export const Sidebar: React.FunctionComponent = (props) => {
   const categories = Object.keys(Stories)
 
   return (
-    <aside className={prefix("sidebar")}>
+    <div className={prefix("sidebar")}>
       {props.children}
       <hr className={prefix("sidebar__hr")} />
+      <Text type="4-bold" as="h2">
+        Components
+      </Text>
       {categories.map((category) => {
         const stories = Object.keys((Stories as any)[category])
         if (!stories) {
@@ -62,6 +65,6 @@ export const Sidebar: React.FunctionComponent = (props) => {
           </SidebarCategory>
         )
       })}
-    </aside>
+    </div>
   )
 }

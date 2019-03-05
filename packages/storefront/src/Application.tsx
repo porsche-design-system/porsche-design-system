@@ -1,10 +1,10 @@
 import React from "react"
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch, Redirect, Link } from "react-router-dom"
 import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
 import { Introduction } from "./pages/introduction/Introduction"
 import { Story } from "./components/story/Story"
 import { prefix } from "./prefix"
-import { Spacing, Logo, Link } from "@porsche/ui-kit-react"
+import { Spacing, Logo } from "@porsche/ui-kit-react"
 import { Text } from "@porscheui/porsche-ui-kit"
 import packageJson from "@porscheui/porsche-ui-kit/package.json"
 import "./application.scss"
@@ -16,15 +16,19 @@ export class Application extends React.Component {
         <React.Fragment>
           <div className={prefix("app__sidebar")}>
             <Sidebar>
-              <Logo className={prefix("sidebar__logo")} />
-              <Spacing marginTop={18}>
-                <Text type="3-bold" align="center" as="h1">
-                  Porsche UI Kit
-                </Text>
-                <Text type="small-regular" align="center" as="p">
-                  Current Release: v{packageJson.version}
-                </Text>
-              </Spacing>
+              <header>
+                <Link className={prefix("sidebar__logo")} to="/introduction">
+                  <Logo as="span" className={prefix("sidebar__logo-item")} />
+                </Link>
+                <Spacing marginTop={18}>
+                  <Text type="3-bold" align="center" as="h1">
+                    Porsche UI Kit
+                  </Text>
+                  <Text type="small-regular" align="center" as="p">
+                    Current Release: v{packageJson.version}
+                  </Text>
+                </Spacing>
+              </header>
               <hr className={prefix("sidebar__hr")} />
               <nav>
                 <ul>
@@ -40,6 +44,11 @@ export class Application extends React.Component {
                 </ul>
               </nav>
             </Sidebar>
+            <aside className={prefix("app__legal")}>
+              <Text type="small-regular">
+                © 2019 Dr. Ing. h.c. F. Porsche AG. Legal notice. Imprint. Cookies. License.
+              </Text>
+            </aside>
           </div>
           <div className={prefix("app__content")}>
             <Switch>
