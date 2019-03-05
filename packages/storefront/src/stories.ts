@@ -11,7 +11,13 @@ export interface Stories {
   }
 }
 export const Stories: Stories = {
-  Base: {},
+  Base: {
+    Text: {
+      examples: importMDX("../../workshop/src/components/basic/text/text.code.mdx"),
+      design: importMDX("../../workshop/src/components/basic/text/text.design.mdx"),
+      props: ["Text"]
+    }
+  },
   Layout: {
     Flex: {
       examples: importMDX("../../workshop/src/components/layout/flex/flex.code.mdx"),
