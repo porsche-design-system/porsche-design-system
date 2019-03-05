@@ -125,3 +125,107 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-size: rem(14px);
   line-height: 150%;
 }
+
+.#{$p-global-class-prefix}text {
+  &--inline {
+    display: inline;
+  }
+
+  &--align {
+    &-left {
+      text-align: left;
+    }
+
+    &-center {
+      text-align: center;
+    }
+
+    &-right {
+      text-align: right;
+    }
+  }
+
+  &--wrap {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  &--ellipsis {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-size-1-thin {
+    @include -text-size-1($weight: 200);
+  }
+
+  &-size-1-regular {
+    @include -text-size-1($weight: 400);
+  }
+
+  &-size-1-bold {
+    @include -text-size-1($weight: 600);
+  }
+
+  &-size-2-thin {
+    @include -text-size-2($weight: 200);
+  }
+
+  &-size-2-regular {
+    @include -text-size-2($weight: 400);
+  }
+
+  &-size-2-bold {
+    @include -text-size-2($weight: 600);
+  }
+
+  &-size-3-thin {
+    @include -text-size-3($weight: 200);
+  }
+
+  &-size-3-regular {
+    @include -text-size-3($weight: 400);
+  }
+
+  &-size-3-bold {
+    @include -text-size-3($weight: 600);
+  }
+
+  &-size-4-thin {
+    @include -text-size-4($weight: 200);
+  }
+
+  &-size-4-regular {
+    @include -text-size-4($weight: 400);
+  }
+
+  &-size-4-bold {
+    @include -text-size-4($weight: 600);
+  }
+
+  &-size-copy-thin {
+    @include -text-size-copy($weight: 200);
+  }
+
+  &-size-copy-regular {
+    @include -text-size-copy($weight: 400);
+  }
+
+  &-size-copy-bold {
+    @include -text-size-copy($weight: 600);
+  }
+
+  &-size-small-thin {
+    @include -text-size-small($weight: 200);
+  }
+
+  &-size-small-regular {
+    @include -text-size-small($weight: 400);
+  }
+
+  &-size-small-bold {
+    @include -text-size-small($weight: 600);
+  }
+}
