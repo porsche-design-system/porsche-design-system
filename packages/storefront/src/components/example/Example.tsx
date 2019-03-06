@@ -27,6 +27,10 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
     { [prefix("example__render--dark")]: theme === "inverted" }
   )
 
+  const toggleHtmlClasses = cx(prefix("example__info__toggle-html"), {
+    [prefix("example__info__toggle-html--open")]: showHTML
+  })
+
   const handleShowHTMLClicked = () => {
     setShowHTML(!showHTML)
   }
@@ -53,8 +57,8 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
         <div className={renderClasses}>{renderNode(props.children, theme)}</div>
         {props.noHTML !== true && (
           <div className={prefix("example__info")}>
-            <button className={prefix("example__info__toggle-html")} onClick={handleShowHTMLClicked}>
-              {showHTML ? "Hide HTML" : "Show HTML"}
+            <button className={toggleHtmlClasses} onClick={handleShowHTMLClicked}>
+              {showHTML ? "- HTML" : "+ HTML"}
             </button>
             {showHTML && (
               <div className={prefix("example__info__html")}>

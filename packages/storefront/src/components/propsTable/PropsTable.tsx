@@ -18,12 +18,12 @@ export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
     <div className={prefix("props")}>
       {jsdoc.description && <Text className={prefix("props__component-description")}>{jsdoc.description}</Text>}
       <table>
-        <thead>
+        <thead className={prefix("props__table")}>
           <tr>
-            <th className={prefix("props__table-name")}>Name</th>
-            <th className={prefix("props__table-default")}>Default</th>
-            <th className={prefix("props__table-type")}>Type</th>
-            <th className={prefix("props__table-desc")}>Description</th>
+            <th className={prefix("props__cell-name")}>Name</th>
+            <th className={prefix("props__cell-default")}>Default</th>
+            <th className={prefix("props__cell-type")}>Type</th>
+            <th className={prefix("props__cell-desc")}>Description</th>
           </tr>
         </thead>
         <tbody>
@@ -32,14 +32,14 @@ export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
               const prop = jsdoc.props[key]
               return (
                 <tr key={key}>
-                  <td className={prefix("props__table-name")}>
+                  <td className={prefix("props__cell-name")}>
                     <code>{prop.name}</code>
                   </td>
-                  <td className={prefix("props__table-default")}>
+                  <td className={prefix("props__cell-default")}>
                     {prop.defaultValue && <code>{prop.defaultValue.value}</code>}
                   </td>
-                  <td className={prefix("props__table-type")}>{prop.type && prop.type.name}</td>
-                  <td className={prefix("props__table-desc")}>{prop.description}</td>
+                  <td className={prefix("props__cell-type")}>{prop.type && prop.type.name}</td>
+                  <td className={prefix("props__cell-desc")}>{prop.description}</td>
                 </tr>
               )
             })}
