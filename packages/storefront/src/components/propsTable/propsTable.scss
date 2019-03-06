@@ -9,22 +9,26 @@
     white-space: pre-wrap;
   }
 
-  &__table-name {
+  &__table {
+    min-width: 900px;
+  }
+
+  &__cell-name {
     width: 15%;
     min-width: 100px;
   }
 
-  &__table-default {
+  &__cell-default {
     width: 15%;
     min-width: 100px;
   }
 
-  &__table-type {
+  &__cell-type {
     width: 25%;
     min-width: 200px;
   }
 
-  &__table-desc {
+  &__cell-desc {
     white-space: pre-wrap;
   }
 }

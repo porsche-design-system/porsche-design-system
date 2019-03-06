@@ -44,9 +44,10 @@ export class Application extends React.Component {
                 </ul>
               </nav>
             </Sidebar>
-            <footer className={prefix("app__legal")}>
-              <Text type="small-regular">
-                © 2019 Dr. Ing. h.c. F. Porsche AG. Legal notice. Imprint. Cookies. License.
+            <footer>
+              <Text className={prefix("app__legal")} type="small-regular">
+                © 2019 Dr. Ing. h.c. F. Porsche AG. <Link to="/">Legal notice</Link>. <Link to="/">Imprint</Link>.
+                <Link to="/">Cookies</Link>. <Link to="/">License</Link>.
               </Text>
             </footer>
           </div>
