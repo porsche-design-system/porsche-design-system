@@ -1,42 +1,30 @@
 @import "../../styles/variable";
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+@import "~@porscheui/porsche-ui-kit/src/components/basic/text/text";
 
 .#{$sg-prefix}props {
-  overflow-x: scroll;
+  overflow-x: auto;
 
   &__component-description {
     white-space: pre-wrap;
   }
 
-  table {
-    min-width: 900px;
-    text-align: left;
-    width: 100%;
+  &__table-name {
+    width: 15%;
+    min-width: 100px;
   }
 
-  thead {
+  &__table-default {
+    width: 15%;
+    min-width: 100px;
   }
 
-  tbody {
+  &__table-type {
+    width: 25%;
+    min-width: 200px;
   }
 
-  tr {
-  }
-
-  th {
-    padding-top: $p-spacing-24;
-    padding-bottom: $p-spacing-24;
-    padding-right: $p-spacing-24;
-  }
-
-  td {
-    border-bottom: 1px solid $p-color-grey-1;
-    padding-top: $p-spacing-12;
-    padding-bottom: $p-spacing-12;
-    padding-right: $p-spacing-24;
-  }
-
-  &__prop-description {
+  &__table-desc {
     white-space: pre-wrap;
   }
 }

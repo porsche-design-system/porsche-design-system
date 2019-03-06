@@ -44,11 +44,11 @@ export class Application extends React.Component {
                 </ul>
               </nav>
             </Sidebar>
-            <aside className={prefix("app__legal")}>
+            <footer className={prefix("app__legal")}>
               <Text type="small-regular">
                 © 2019 Dr. Ing. h.c. F. Porsche AG. Legal notice. Imprint. Cookies. License.
               </Text>
-            </aside>
+            </footer>
           </div>
           <div className={prefix("app__content")}>
             <Switch>
