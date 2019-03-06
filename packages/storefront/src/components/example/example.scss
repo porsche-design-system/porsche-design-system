@@ -3,11 +3,7 @@
 
 .#{$sg-prefix}example {
   &__render {
-    margin-top: $p-spacing-36;
-    margin-bottom: $p-spacing-12;
-    padding-left: $p-spacing-30;
-    padding-right: $p-spacing-30;
-    padding-bottom: $p-spacing-30;
+    padding: $p-spacing-30;
 
     &--light {
       background-color: $p-color-grey-1;
@@ -50,36 +46,36 @@
     justify-content: flex-end;
     align-items: center;
 
-    &__button {
-      padding: 0 $p-spacing-12;
-      background: none;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
+    // &__button {
+    //   padding: 0 $p-spacing-12;
+    //   background: none;
+    //   border: none;
+    //   font-size: 1em;
+    //   cursor: pointer;
 
-      &--light {
-        border-right: 1px solid $p-color-grey-3;
+    //   &--light {
+    //     border-right: 1px solid $p-color-grey-3;
 
-        &--active {
-          color: $p-color-black;
-        }
+    //     &--active {
+    //       color: $p-color-black;
+    //     }
 
-        &--inactive {
-          color: $p-color-grey-5;
-        }
-      }
+    //     &--inactive {
+    //       color: $p-color-grey-5;
+    //     }
+    //   }
 
-      &--dark {
-        margin-right: -$p-spacing-12;
+    //   &--dark {
+    //     margin-right: -$p-spacing-12;
 
-        &--active {
-          color: $p-color-white;
-        }
+    //     &--active {
+    //       color: $p-color-white;
+    //     }
 
-        &--inactive {
-          color: $p-color-grey-5;
-        }
-      }
-    }
+    //     &--inactive {
+    //       color: $p-color-grey-5;
+    //     }
+    //   }
+    // }
   }
 }

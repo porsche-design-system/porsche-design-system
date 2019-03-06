@@ -51,7 +51,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
 
   return (
     <main className={prefix("story")}>
-      <Tab panes={panes} alignment="left" mini />
+      <Tab panes={panes} alignment="left" />
       {panes[0].active && (
         <Suspense fallback={<div />}>
           <Code />

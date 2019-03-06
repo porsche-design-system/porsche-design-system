@@ -4,6 +4,7 @@
 
 .#{$sg-prefix}story {
   padding: $p-spacing-60 120px;
+  max-width: 1920px;
 
   &__props {
     margin-bottom: $p-spacing-60;
@@ -18,22 +19,23 @@
   p,
   ul,
   ol {
-    margin-bottom: $p-spacing-24;
+    padding: 0;
+    margin: 0;
     max-width: 60em;
   }
 
   h1 {
-    @include -text-size-1(600);
+    @include -text-size-2(600);
     margin-top: $p-spacing-60;
   }
 
   h2 {
-    @include -text-size-2(600);
+    @include -text-size-3(600);
     margin-top: $p-spacing-30;
   }
 
   h3 {
-    @include -text-size-3(600);
+    @include -text-size-4(600);
     margin-top: $p-spacing-24;
   }
 
@@ -90,5 +92,36 @@
     padding: 2px 5px;
     background-color: $p-color-grey-1;
     border-radius: 2px;
+  }
+
+  table {
+    border-collapse: collapse;
+    min-width: 900px;
+    text-align: left;
+    width: 100%;
+    margin-top: $p-spacing-60;
+  }
+
+  thead {
+    @include -text-size-4(600);
+  }
+
+  tbody {
+    @include -text-size-copy(400);
+  }
+
+  tr {
+  }
+
+  th {
+    padding-bottom: $p-spacing-12;
+    padding-right: $p-spacing-24;
+  }
+
+  td {
+    border-bottom: 1px solid $p-color-grey-1;
+    padding-top: $p-spacing-12;
+    padding-bottom: $p-spacing-12;
+    padding-right: $p-spacing-24;
   }
 }

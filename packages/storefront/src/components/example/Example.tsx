@@ -4,6 +4,7 @@ import { prefix } from "../../prefix"
 import { renderToStaticMarkup } from "react-dom/server"
 import { Light as Editor } from "react-syntax-highlighter"
 import languageXml from "react-syntax-highlighter/dist/languages/hljs/xml"
+import { Spacing, Tab } from "@porsche/ui-kit-react"
 
 // More themes at https://highlightjs.org/static/demo/
 import editorTheme from "react-syntax-highlighter/dist/styles/hljs/solarized-dark"
@@ -17,26 +18,13 @@ export interface ExampleProps {
 }
 
 export const Example: React.FunctionComponent<ExampleProps> = (props) => {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("default")
   const [showHTML, setShowHTML] = useState(false)
 
   const renderClasses = cx(
     prefix("example__render"),
-    { [prefix("example__render--light")]: theme === "light" },
-    { [prefix("example__render--dark")]: theme === "dark" }
-  )
-  const lightButtonClasses = cx(
-    prefix("example__themes__button"),
-    prefix("example__themes__button--light"),
-    { [prefix("example__themes__button--light--active")]: theme === "light" },
-    { [prefix("example__themes__button--light--inactive")]: theme !== "light" }
-  )
-
-  const darkButtonClasses = cx(
-    prefix("example__themes__button"),
-    prefix("example__themes__button--dark"),
-    { [prefix("example__themes__button--dark--active")]: theme === "dark" },
-    { [prefix("example__themes__button--dark--inactive")]: theme !== "dark" }
+    { [prefix("example__render--light")]: theme === "default" },
+    { [prefix("example__render--dark")]: theme === "inverted" }
   )
 
   const handleShowHTMLClicked = () => {
@@ -44,41 +32,41 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   }
 
   const handleLightClicked = () => {
-    setTheme("light")
+    setTheme("default")
   }
 
   const handleDarkClicked = () => {
-    setTheme("dark")
+    setTheme("inverted")
   }
 
+  const panes = [
+    { menuItem: "Light", key: "Tab1", active: theme === "default", onClick: () => handleLightClicked() },
+    { menuItem: "Dark", key: "Tab2", active: theme === "inverted", onClick: () => handleDarkClicked() }
+  ]
+
   return (
-    <div className={prefix("example")}>
-      <div className={renderClasses}>
-        <div className={prefix("example__themes")}>
-          <button className={lightButtonClasses} onClick={handleLightClicked}>
-            Light
-          </button>
-          <button className={darkButtonClasses} onClick={handleDarkClicked}>
-            Dark
-          </button>
-        </div>
-        {renderNode(props.children, theme)}
+    <React.Fragment>
+      <div className={prefix("example")}>
+        <Spacing marginTop={60}>
+          <Tab panes={panes} alignment="left" mini />
+        </Spacing>
+        <div className={renderClasses}>{renderNode(props.children, theme)}</div>
+        {props.noHTML !== true && (
+          <div className={prefix("example__info")}>
+            <button className={prefix("example__info__toggle-html")} onClick={handleShowHTMLClicked}>
+              {showHTML ? "Hide HTML" : "Show HTML"}
+            </button>
+            {showHTML && (
+              <div className={prefix("example__info__html")}>
+                <Editor language="xml" style={editorTheme}>
+                  {renderHTML(props.children, theme)}
+                </Editor>
+              </div>
+            )}
+          </div>
+        )}
       </div>
-      {props.noHTML !== true && (
-        <div className={prefix("example__info")}>
-          <button className={prefix("example__info__toggle-html")} onClick={handleShowHTMLClicked}>
-            {showHTML ? "Hide HTML" : "Show HTML"}
-          </button>
-          {showHTML && (
-            <div className={prefix("example__info__html")}>
-              <Editor language="xml" style={editorTheme}>
-                {renderHTML(props.children, theme)}
-              </Editor>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
+    </React.Fragment>
   )
 }
 
