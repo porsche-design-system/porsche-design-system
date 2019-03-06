@@ -2,10 +2,10 @@ import React, { Suspense, lazy, useState } from "react"
 import { prefix } from "../../prefix"
 import "./story.scss"
 import { RouteComponentProps, Redirect } from "react-router"
-
 import { Stories, Story as StoryType } from "../../stories"
 import { PropsTable } from "../propsTable/PropsTable"
 import jsdoc from "../../jsdoc.json"
+import { Tab } from "@porsche/ui-kit-react"
 
 export interface StoryUrlParams {
   category: string
@@ -34,36 +34,35 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
 
   const [selectedTab, setSelectedTab] = useState("examples")
 
-  const handleTabClick = (tab: "examples" | "design" | "props") => {
+  const handleTabClick = (tab: string) => {
     setSelectedTab(tab)
   }
 
+  const panes = [
+    {
+      menuItem: "Examples",
+      key: "Tab1",
+      active: selectedTab === "examples",
+      onClick: () => handleTabClick("examples")
+    },
+    { menuItem: "Design", key: "Tab2", active: selectedTab === "design", onClick: () => handleTabClick("design") },
+    { menuItem: "Props", key: "Tab3", active: selectedTab === "props", onClick: () => handleTabClick("props") }
+  ]
+
   return (
     <main className={prefix("story")}>
-      <div className={prefix("story__tabs")}>
-        <button onClick={() => handleTabClick("examples")} className={prefix("story__tabs__button")}>
-          Examples
-        </button>
-        {Design && (
-          <button onClick={() => handleTabClick("design")} className={prefix("story__tabs__button")}>
-            Design
-          </button>
-        )}
-        <button onClick={() => handleTabClick("props")} className={prefix("story__tabs__button")}>
-          Props
-        </button>
-      </div>
-      {selectedTab === "examples" && (
+      <Tab panes={panes} alignment="left" mini />
+      {panes[0].active && (
         <Suspense fallback={<div />}>
           <Code />
         </Suspense>
       )}
-      {selectedTab === "design" && (
+      {panes[1].active && (
         <Suspense fallback={<div />}>
           <Design />
         </Suspense>
       )}
-      {selectedTab === "props" &&
+      {panes[2].active &&
         story.props.map((component, index) => {
           return (
             <div key={component} className={prefix("story__props")}>
