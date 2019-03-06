@@ -5,20 +5,6 @@
 .#{$sg-prefix}story {
   padding: $p-spacing-60 120px;
 
-  &__tabs {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: $p-spacing-42;
-
-    &__button {
-      margin-right: $p-spacing-18;
-      background: none;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-    }
-  }
-
   &__props {
     margin-bottom: $p-spacing-60;
   }
@@ -38,7 +24,7 @@
 
   h1 {
     @include -text-size-1(600);
-    margin-top: $p-spacing-30;
+    margin-top: $p-spacing-60;
   }
 
   h2 {
