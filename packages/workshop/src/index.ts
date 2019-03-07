@@ -1,3 +1,6 @@
+// icon components
+export { Icon } from "./components/icon/icon/Icon"
+
 // basic components
 export { Text } from "./components/basic/text/Text"
 

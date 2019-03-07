@@ -1147,6 +1147,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-inlinesvg@^0.8.0":
+  version "0.8.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react-inlinesvg/-/react-inlinesvg-0.8.0.tgz#0347931da1b7744561ab6e96a7252a2a78b63f2e"
+  integrity sha1-A0eTHaG3dEVhq26WpyUqKni2Py4=
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-router-dom@^4.3.1":
   version "4.3.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react-router-dom/-/react-router-dom-4.3.1.tgz#71fe2918f8f60474a891520def40a63997dafe04"
@@ -5304,6 +5311,15 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+httpplease@^0.16.4:
+  version "0.16.4"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/httpplease/-/httpplease-0.16.4.tgz#d382ebe230ef5079080b4e9ffebf316a9e75c0da"
+  integrity sha1-04Lr4jDvUHkIC06f/r8xap51wNo=
+  dependencies:
+    urllite "~0.5.0"
+    xmlhttprequest "*"
+    xtend "~3.0.0"
+
 https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
@@ -9260,6 +9276,14 @@ react-error-overlay@^5.1.3:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-error-overlay/-/react-error-overlay-5.1.3.tgz#16fcbde75ed4dc6161dc6dc959b48e92c6ffa9ad"
   integrity sha1-Fvy9517U3GFh3G3JWbSOksb/qa0=
 
+react-inlinesvg@^0.8.4:
+  version "0.8.4"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-inlinesvg/-/react-inlinesvg-0.8.4.tgz#5cdcece95c633d924092fdcabbf4dcab8baef1bd"
+  integrity sha1-XNzs6VxjPZJAkv3Ku/Tcq4uu8b0=
+  dependencies:
+    httpplease "^0.16.4"
+    once "^1.4.0"
+
 react-is@^16.8.1:
   version "16.8.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-is/-/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
@@ -11457,6 +11481,13 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+urllite@~0.5.0:
+  version "0.5.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/urllite/-/urllite-0.5.0.tgz#1b7bb9ca3fb0db9520de113466bbcf7cc341451a"
+  integrity sha1-G3u5yj+w25Ug3hE0ZrvPfMNBRRo=
+  dependencies:
+    xtend "~4.0.0"
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
@@ -12007,15 +12038,25 @@ xml-name-validator@^3.0.0:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha1-auc+Bt5NjG5H+fsYH3jWSK1FfGo=
 
+xmlhttprequest@*:
+  version "1.8.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/xmlhttprequest/-/xmlhttprequest-1.8.0.tgz#67fe075c5c24fef39f9d65f5f7b7fe75171968fc"
+  integrity sha1-Z/4HXFwk/vOfnWX197f+dRcZaPw=
+
 xregexp@4.0.0:
   version "4.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/xregexp/-/xregexp-4.0.0.tgz#e698189de49dd2a18cc5687b05e17c8e43943020"
   integrity sha1-5pgYneSd0qGMxWh7BeF8jkOUMCA=
 
-xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
+xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
   integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
+
+xtend@~3.0.0:
+  version "3.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/xtend/-/xtend-3.0.0.tgz#5cce7407baf642cba7becda568111c493f59665a"
+  integrity sha1-XM50B7r2Qsunvs2laBEcST9ZZlo=
 
 y18n@^3.2.1:
   version "3.2.1"

@@ -18,6 +18,13 @@ export const Stories: Stories = {
       props: ["Text"]
     }
   },
+  Icon: {
+    Icon: {
+      examples: importMDX("../../workshop/src/components/icon/icon/icon.code.mdx"),
+      design: importMDX("../../workshop/src/components/icon/icon/icon.design.mdx"),
+      props: ["Icon"]
+    }
+  },
   Layout: {
     Flex: {
       examples: importMDX("../../workshop/src/components/layout/flex/flex.code.mdx"),

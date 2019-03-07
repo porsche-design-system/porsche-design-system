@@ -1,0 +1,35 @@
+@import "../../../styles/utility/index";
+
+.#{$p-global-class-prefix}icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  transition: fill $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &--x-small {
+    width: rem(18px);
+    height: rem(18px);
+  }
+
+  &--small {
+    width: rem(24px);
+    height: rem(24px);
+  }
+
+  &--medium {
+    width: rem(30px);
+    height: rem(30px);
+  }
+
+  &--large {
+    width: rem(42px);
+    height: rem(42px);
+  }
+
+  &--x-large {
+    width: rem(60px);
+    height: rem(60px);
+  }
+}
