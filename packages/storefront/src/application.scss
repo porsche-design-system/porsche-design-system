@@ -19,7 +19,12 @@
     width: 299px;
     padding: $p-spacing-30;
     bottom: 0;
-    background-color: $p-color-white;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 30%,
+      rgba(255, 255, 255, 1) 100%
+    );
   }
 
   &__content {
