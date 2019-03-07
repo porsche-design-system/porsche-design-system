@@ -37,13 +37,13 @@
   "dependencies": {},
   "devDependencies": {
     "prettier": "^1.16.4",
+    "stylelint": "^9.10.1",
     "stylelint-config-prettier": "^5.0.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.5.4",
-    "stylelint": "^9.10.1",
+    "tslint": "^5.13.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.6.0",
-    "tslint": "^5.13.0",
     "typescript": "~3.3.3"
   },
   "workspaces": [
