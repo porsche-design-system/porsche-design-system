@@ -348,6 +348,120 @@
     },
     "fileName": "components/layout/flex/FlexItem.tsx"
   },
+  "Icon": {
+    "description": "Use this component any time you want to display svg icons.",
+    "displayName": "Icon",
+    "methods": [],
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "The icon reference name that should be used.",
+        "name": "name",
+        "parent": {
+          "fileName": "components/icon/icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "path": {
+        "defaultValue": null,
+        "description": "The path to the folder where icon components are located",
+        "name": "path",
+        "parent": {
+          "fileName": "components/icon/icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "regular"
+        },
+        "description": "The size of the icon.",
+        "name": "size",
+        "parent": {
+          "fileName": "components/icon/icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "\"x-small\"",
+            "\"small\"",
+            "\"medium\"",
+            "\"large\"",
+            "\"x-large\""
+          ]
+        }
+      },
+      "color": {
+        "defaultValue": {
+          "value": "black"
+        },
+        "description": "The style of the color.",
+        "name": "color",
+        "parent": {
+          "fileName": "components/icon/icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "\"black\"",
+            "\"grey-darker\"",
+            "\"grey-dark\"",
+            "\"grey\"",
+            "\"grey-light\"",
+            "\"grey-lighter\"",
+            "\"white\"",
+            "\"red-1\"",
+            "\"red-2\"",
+            "\"blue-1\"",
+            "\"blue-2\"",
+            "\"status-green\"",
+            "\"status-yellow\"",
+            "\"status-orange\"",
+            "\"status-red\""
+          ]
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Additional CSS classes.",
+        "name": "className",
+        "parent": {
+          "fileName": "lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "The html element type to render as.",
+        "name": "as",
+        "parent": {
+          "fileName": "lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": {
+          "name": "string | ComponentClass"
+        }
+      }
+    },
+    "fileName": "components/icon/icon/Icon.tsx"
+  },
   "Text": {
     "description": "Use this component any time you want to display plain text anywhere.",
     "displayName": "Text",
