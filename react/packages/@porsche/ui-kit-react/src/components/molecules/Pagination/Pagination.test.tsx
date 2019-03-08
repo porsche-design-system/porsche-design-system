@@ -33,7 +33,7 @@ describe("Pagination component", () => {
                 activePage: 1,
                 pageTotal: 10,
                 pageRange: 1,
-                theme: "inverted",
+                inverted: true,
                 onClick: () => undefined
             }
 
