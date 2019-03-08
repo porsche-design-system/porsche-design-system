@@ -14,17 +14,13 @@ export interface PaginationProps extends ClassNameProp, ComponentProp {
     /** The total count of items per page.  */
     itemsPerPage: number
     /** Defines the theming of the pagination. */
-    theme?: "inverted" | undefined
+    inverted?: boolean
     /** Handle click events. */
     onClick: (event: React.MouseEvent<HTMLElement>, page: number) => void
 }
 
-const defaultProps: Partial<PaginationProps> = {
-    theme: undefined
-}
-
 const _Pagination: React.StatelessComponent<PaginationProps> = (props) => {
-    const { activePage, totalItemsCount, itemsPerPage, theme, onClick, ...rest } = props
+    const { activePage, totalItemsCount, itemsPerPage, inverted, onClick, ...rest } = props
 
     const totalPages = getTotalPages(totalItemsCount, itemsPerPage)
     const currentActivePage = getCurrentActivePage(activePage, totalPages)
@@ -37,7 +33,7 @@ const _Pagination: React.StatelessComponent<PaginationProps> = (props) => {
                     activePage={currentActivePage}
                     pageTotal={totalPages}
                     pageRange={0}
-                    theme={theme}
+                    inverted={inverted}
                     {...rest}
                 />
             </Breakpoint>
@@ -47,15 +43,13 @@ const _Pagination: React.StatelessComponent<PaginationProps> = (props) => {
                     activePage={currentActivePage}
                     pageTotal={totalPages}
                     pageRange={1}
-                    theme={theme}
+                    inverted={inverted}
                     {...rest}
                 />
             </Breakpoint>
         </React.Fragment>
     )
 }
-
-_Pagination.defaultProps = defaultProps
 
 /**
  * The Pagination component is a link list to cycle through pages/views

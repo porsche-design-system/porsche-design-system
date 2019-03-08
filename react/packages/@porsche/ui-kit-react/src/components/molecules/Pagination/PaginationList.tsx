@@ -15,20 +15,16 @@ export interface PaginationListProps extends ClassNameProp, ComponentProp {
     /** The number of pages between ellipsis. 0 = mobile | 1 = desktop */
     pageRange: 0 | 1
     /** Defines the theming of the pagination. */
-    theme?: "inverted" | undefined
+    inverted?: boolean
     /** Handle click events. */
     onClick?: (event: React.MouseEvent<HTMLElement>, key: number) => void
 }
 
-const defaultProps: Partial<PaginationListProps> = {
-    theme: undefined
-}
-
 const _PaginationList: React.StatelessComponent<PaginationListProps> = (props) => {
-    const { as, className, activePage, pageTotal, pageRange, theme, onClick, ...rest } = props
+    const { as, className, activePage, pageTotal, pageRange, inverted, onClick, ...rest } = props
 
-    const ElementType = getElementType(as, "nav")
-    const classesPagination = cx(prefix("pagination"), { [prefix("pagination--theme-inverted")]: theme }, className)
+    const ElementType: any = getElementType(as, "nav")
+    const classesPagination = cx(prefix("pagination"), { [prefix("pagination--theme-inverted")]: inverted }, className)
 
     // generate pagination items
     const createPaginationItems = () => {
@@ -73,7 +69,5 @@ const _PaginationList: React.StatelessComponent<PaginationListProps> = (props) =
         </ElementType>
     )
 }
-
-_PaginationList.defaultProps = defaultProps
 
 export const PaginationList = _PaginationList as React.StatelessComponent<PaginationListProps>
