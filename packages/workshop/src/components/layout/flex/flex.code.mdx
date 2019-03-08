@@ -1,111 +1,48 @@
 import { Example } from "../../../src/components/example/Example"
-import { Flex } from "@porscheui/porsche-ui-kit"
+import { Flex, Text } from "@porscheui/porsche-ui-kit"
 
 # Flex
 
-## Test Heading
+## Introduction
 
-Lorem Ipsum is `simply dummy` text of _the printing_ and **typesetting industry**. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+The Porsche UI Kit flex layout system is based on native css flex behaviours and can be controlled by class names.
+
+### Flex standard
 
 <Example noTheme>
   {(theme) => {
-    const containerStyle = { marginBottom: "8px" }
     const itemStyle = (color) => {
       return {
         backgroundColor: color,
         padding: "12px",
         color: "white",
-        fontFamily: "Porsche Next"
+        width: "200px"
       }
     }
     return (
       <React.Fragment>
-        {theme}
         <Flex>
           <Flex.Item>
-            <div style={itemStyle("LightSkyBlue")}>An element</div>
+            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+              1
+            </Text>
           </Flex.Item>
           <Flex.Item>
-            <div style={itemStyle("DeepSkyBlue")}>An element with a little more text</div>
+            <Text align="center" style={itemStyle("LightSkyBlue")}>
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+              1
+            </Text>
           </Flex.Item>
           <Flex.Item>
-            <div style={itemStyle("dodgerblue")}>An element</div>
-          </Flex.Item>
-          <Flex.Item>
-            <div style={itemStyle("DeepSkyBlue")}>An element with more content</div>
-          </Flex.Item>
-        </Flex>
-      </React.Fragment>
-    )
-}}
-
-</Example>
-
-<Example noTheme>
-  {() => {
-    const containerStyle = { marginBottom: "8px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white",
-        fontFamily: "Porsche Next"
-      }
-    }
-    return (
-      <React.Fragment>
-        <Flex style={containerStyle}>
-          <Flex.Item width="one-quarter">
-            <div style={itemStyle("LightSkyBlue")}>one-quarter</div>
-          </Flex.Item>
-          <Flex.Item width="one-quarter">
-            <div style={itemStyle("DeepSkyBlue")}>one-quarter</div>
-          </Flex.Item>
-          <Flex.Item width="one-quarter">
-            <div style={itemStyle("dodgerblue")}>one-quarter</div>
-          </Flex.Item>
-          <Flex.Item width="one-quarter">
-            <div style={itemStyle("DeepSkyBlue")}>one-quarter</div>
-          </Flex.Item>
-        </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item width="one-third">
-            <div style={itemStyle("LightSkyBlue")}>one-third</div>
-          </Flex.Item>
-          <Flex.Item width="one-third">
-            <div style={itemStyle("DeepSkyBlue")}>one-third</div>
-          </Flex.Item>
-          <Flex.Item width="one-third">
-            <div style={itemStyle("dodgerblue")}>one-third</div>
-          </Flex.Item>
-        </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item width="half">
-            <div style={itemStyle("LightSkyBlue")}>half</div>
-          </Flex.Item>
-          <Flex.Item width="half">
-            <div style={itemStyle("DeepSkyBlue")}>half</div>
-          </Flex.Item>
-        </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item width="two-thirds">
-            <div style={itemStyle("LightSkyBlue")}>two-thirds</div>
-          </Flex.Item>
-          <Flex.Item width="one-third">
-            <div style={itemStyle("DeepSkyBlue")}>one-third</div>
-          </Flex.Item>
-        </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item width="three-quarters">
-            <div style={itemStyle("LightSkyBlue")}>three-quarters</div>
-          </Flex.Item>
-          <Flex.Item width="one-quarter">
-            <div style={itemStyle("DeepSkyBlue")}>one-quarter</div>
-          </Flex.Item>
-        </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item width="full">
-            <div style={itemStyle("DeepSkyBlue")}>full</div>
+            <Text align="center" style={itemStyle("LightSkyBlue")}>
+              2
+            </Text>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -113,46 +50,85 @@ Lorem Ipsum is `simply dummy` text of _the printing_ and **typesetting industry*
   }}
 </Example>
 
----
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+### Flex inline
 
 <Example noTheme>
-  {() => {
-    const containerStyle = { marginBottom: "8px" }
+  {(theme) => {
     const itemStyle = (color) => {
       return {
         backgroundColor: color,
         padding: "12px",
         color: "white",
-        fontFamily: "Porsche Next"
+        width: "200px"
       }
     }
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
-          <Flex.Item offset={"one-quarter"} width={"three-quarters"}>
-            <div style={itemStyle("LightSkyBlue")}>Offset: quarter</div>
+        <Flex inline>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+              2
+            </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item offset={"one-third"} width={"two-thirds"}>
-            <div style={itemStyle("LightSkyBlue")}>Offset: third</div>
+        <Flex inline>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("LightSkyBlue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("LightSkyBlue")}>
+              2
+            </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item offset={"half"} width={"half"}>
-            <div style={itemStyle("LightSkyBlue")}>Offset: half</div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Flex responsive behaviour (base: flex, l: flex-inline):
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        padding: "12px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex inline={{ base: false, l: true }}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+              2
+            </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item offset={"two-thirds"} width={"one-third"}>
-            <div style={itemStyle("LightSkyBlue")}>Offset: 2 thirds</div>
+        <Flex inline={{ base: false, l: true }}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("LightSkyBlue")}>
+              1
+            </Text>
           </Flex.Item>
-        </Flex>
-        <Flex style={containerStyle}>
-          <Flex.Item offset={"three-quarters"} width={"one-quarter"}>
-            <div style={itemStyle("LightSkyBlue")}>Offset: 3 quarters</div>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("LightSkyBlue")}>
+              2
+            </Text>
           </Flex.Item>
         </Flex>
       </React.Fragment>
