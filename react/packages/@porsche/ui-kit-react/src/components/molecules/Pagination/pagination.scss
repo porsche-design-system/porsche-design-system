@@ -1,4 +1,4 @@
-@import "../../../../../../../node_modules/@porsche/ui-kit-core/src/modules/pagination/pagination.scss";
+@import "~@porsche/ui-kit-core/src/modules/pagination/pagination.scss";
 
 .#{$global-class-prefix}pagination {
     /** Overwrite because of finder specific icon set
@@ -6,13 +6,13 @@
      */
     &__prev {
         &::before {
-            content: '\e95c';
+            content: "\e95c";
         }
     }
 
     &__next {
         &::before {
-            content: '\e95d';
+            content: "\e95d";
         }
     }
 }
