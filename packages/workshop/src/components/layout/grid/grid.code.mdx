@@ -1,0 +1,52 @@
+import { Example } from "../../../src/components/example/Example"
+import { Grid, Text } from "@porscheui/porsche-ui-kit"
+
+# Grid
+
+## Introduction
+
+The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas. Breakpoint specific behaviour (width, offset, etc.) can easily be set by adding breakpoint specific classnames. Also decent nestings are supported.
+
+### Grid standard
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { marginBottom: "8px" }
+    const itemStyle = (color) => {
+      return { height: "12px", backgroundColor: color }
+    }
+    return (
+      <React.Fragment>
+        <Grid style={containerStyle}>
+          <Grid.Child size={12}>
+            <div style={itemStyle("DeepSkyBlue")} />
+          </Grid.Child>
+        </Grid>
+        {/* {_.times(11, (i) => {
+          return (
+            <Grid key={i} style={containerStyle}>
+              <Grid.Child size={i + 1}>
+                <div style={itemStyle("DeepSkyBlue")} />
+              </Grid.Child>
+              <Grid.Child size={11 - i}>
+                <div style={itemStyle("DeepSkyBlue")} />
+              </Grid.Child>
+            </Grid>
+          )
+        })} */}
+        {Array.apply(0, Array(11)).map(function(x, i) {
+          return (
+            <Grid key={i} style={containerStyle}>
+              <Grid.Child size={i + 1}>
+                <div style={itemStyle("DeepSkyBlue")} />
+              </Grid.Child>
+              <Grid.Child size={11 - i}>
+                <div style={itemStyle("DeepSkyBlue")} />
+              </Grid.Child>
+            </Grid>
+          )
+        })}
+      </React.Fragment>
+    )
+  }}
+</Example>
