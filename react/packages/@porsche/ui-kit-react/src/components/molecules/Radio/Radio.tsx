@@ -10,11 +10,6 @@ export interface Radio extends React.StatelessComponent<RadioProps> {
 }
 
 export interface RadioProps extends ClassNameProp, ComponentProp {
-    /**
-     * A radio needs an id, which is neccessary to connect label and input.
-     */
-    id: string
-
     /** A Radio needs a name */
     name?: string
 
@@ -69,7 +64,6 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
         className,
         disabled,
         error,
-        id,
         labelAs,
         name,
         onChange,
@@ -113,6 +107,12 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
 
         onClick(e, props)
     }
+
+    const id =
+        "_" +
+        Math.random()
+            .toString(36)
+            .substr(2, 9)
 
     return (
         <ElementType className={elementClasses} onClick={handleClick} {...rest}>
