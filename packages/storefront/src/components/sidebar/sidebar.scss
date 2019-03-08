@@ -1,6 +1,5 @@
 @import "../../styles/variable";
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
-@import "~@porscheui/porsche-ui-kit/src/components/basic/text/text";
 
 .#{$sg-prefix}sidebar {
   position: relative;
@@ -38,7 +37,6 @@
 
   &__nav-link {
     display: block;
-    @include -text-size-copy;
     padding: $p-spacing-6 0;
     text-decoration: none;
   }
