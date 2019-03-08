@@ -15,6 +15,7 @@ import "./example.scss"
 
 export interface ExampleProps {
   noHTML?: boolean
+  noTheme?: boolean
 }
 
 export const Example: React.FunctionComponent<ExampleProps> = (props) => {
@@ -50,26 +51,26 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div className={prefix("example")}>
-        <Spacing marginTop={60}>
-          <Tab panes={panes} alignment="left" mini />
-        </Spacing>
-        <div className={renderClasses}>{renderNode(props.children, theme)}</div>
-        {props.noHTML !== true && (
-          <div className={prefix("example__info")}>
-            <button className={toggleHtmlClasses} onClick={handleShowHTMLClicked}>
-              {showHTML ? "- HTML" : "+ HTML"}
-            </button>
-            {showHTML && (
-              <div className={prefix("example__info__html")}>
-                <Editor language="xml" style={editorTheme}>
-                  {renderHTML(props.children, theme)}
-                </Editor>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      <Spacing marginTop={60}>
+        <div className={prefix("example")}>
+          {props.noTheme !== true && <Tab panes={panes} alignment="left" mini />}
+          <div className={renderClasses}>{renderNode(props.children, theme)}</div>
+          {props.noHTML !== true && (
+            <div className={prefix("example__info")}>
+              <button className={toggleHtmlClasses} onClick={handleShowHTMLClicked}>
+                {showHTML ? "- HTML" : "+ HTML"}
+              </button>
+              {showHTML && (
+                <div className={prefix("example__info__html")}>
+                  <Editor language="xml" style={editorTheme}>
+                    {renderHTML(props.children, theme)}
+                  </Editor>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </Spacing>
     </React.Fragment>
   )
 }
