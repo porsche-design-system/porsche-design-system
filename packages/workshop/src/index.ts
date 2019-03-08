@@ -7,6 +7,8 @@ export { Text } from "./components/basic/text/Text"
 // layout components
 export { Flex, FlexProps } from "./components/layout/flex/Flex"
 export { FlexItem, FlexItemProps } from "./components/layout/flex/FlexItem"
+export { Grid, GridProps } from "./components/layout/grid/Grid"
+export { GridChild, GridChildProps } from "./components/layout/grid/GridChild"
 
 // Utilities
 export { prefix } from "./lib/prefix"
