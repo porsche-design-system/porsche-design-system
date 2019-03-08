@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
+import cx from "classnames"
 import { BrowserRouter as Router, Route, Switch, Redirect, Link } from "react-router-dom"
 import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
 import { Introduction } from "./pages/introduction/Introduction"
@@ -9,12 +10,37 @@ import { Text } from "@porscheui/porsche-ui-kit"
 import packageJson from "@porscheui/porsche-ui-kit/package.json"
 import "./application.scss"
 
-export class Application extends React.Component {
+export class Application extends React.Component<{}, { sidebarClose: boolean }> {
+  constructor(props: any) {
+    super(props)
+    this.state = {
+      sidebarClose: false
+    }
+  }
+
+  toggleSidebar = () => {
+    this.setState({ sidebarClose: !this.state.sidebarClose })
+  }
+
   render() {
+    const appToggleSidebarClasses = cx(prefix("app__toggle-sidebar"), {
+      [prefix("app__toggle-sidebar--close")]: this.state.sidebarClose
+    })
+
+    const appSidebarClasses = cx(prefix("app__sidebar"), {
+      [prefix("app__sidebar--close")]: this.state.sidebarClose
+    })
+
+    const appContentClasses = cx(prefix("app__content"), {
+      [prefix("app__content--full")]: this.state.sidebarClose
+    })
     return (
       <Router>
         <React.Fragment>
-          <div className={prefix("app__sidebar")}>
+          <button className={appToggleSidebarClasses} onClick={() => this.toggleSidebar()}>
+            {this.state.sidebarClose ? "+ Show" : "- Hide"}
+          </button>
+          <div className={appSidebarClasses}>
             <Sidebar>
               <header>
                 <Link className={prefix("sidebar__logo")} to="/introduction">
@@ -44,14 +70,14 @@ export class Application extends React.Component {
                 </ul>
               </nav>
             </Sidebar>
-            <footer>
-              <Text className={prefix("app__legal")} type="small-regular">
+            <footer className={prefix("app__legal")}>
+              <Text type="small-regular">
                 © 2019 Dr. Ing. h.c. F. Porsche AG. <Link to="/">Legal notice</Link>. <Link to="/">Imprint</Link>.
                 <Link to="/">Cookies</Link>. <Link to="/">License</Link>.
               </Text>
             </footer>
           </div>
-          <div className={prefix("app__content")}>
+          <div className={appContentClasses}>
             <Switch>
               <Route path="/introduction" component={Introduction} />
               <Route path="/designing" component={Introduction} />
