@@ -1,6 +1,0 @@
-import React from "react"
-import {Markdown} from "../../components/markdown/Markdown"
-
-export const CodeIntroduction: React.FunctionComponent = () => {
-  return <Markdown path={require('./code-introduction.md')}/>
-}
