@@ -53,7 +53,7 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
     <React.Fragment>
       <Spacing marginTop={12}>
         <div className={prefix("example")}>
-          {props.noTheme !== true && <Tab panes={panes} alignment="left" mini />}
+          {props.noTheme !== true && <Tab panes={panes} alignment="left" mini divider={false} />}
           <div className={renderClasses}>{renderNode(props.children, theme)}</div>
           {props.noHTML !== true && (
             <div className={prefix("example__info")}>
