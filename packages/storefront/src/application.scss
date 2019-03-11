@@ -40,7 +40,7 @@
   }
 
   &__legal {
-    position: fixed;
+    position: sticky;
     width: 299px;
     padding: $p-spacing-30 $p-spacing-30 $p-spacing-42;
     bottom: 0;
