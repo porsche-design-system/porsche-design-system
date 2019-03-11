@@ -33,11 +33,26 @@
 
   &__nav-item {
     list-style-type: none;
+
+    & & {
+      display: flex;
+
+      &::before {
+        content: "∟";
+        display: flex;
+        align-items: center;
+        margin-right: $p-spacing-3;
+      }
+    }
   }
 
   &__nav-link {
     display: block;
     padding: $p-spacing-6 0;
+    text-decoration: none;
+  }
+
+  .pui-link-text__label {
     text-decoration: none;
   }
 }
