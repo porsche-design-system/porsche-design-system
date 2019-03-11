@@ -2,14 +2,30 @@ import React, {useState} from "react"
 import cx from "classnames"
 import {BrowserRouter as Router, Route, Switch, Redirect, Link} from "react-router-dom"
 import {Sidebar, SidebarLink} from "./components/sidebar/Sidebar"
-import {Introduction} from "./pages/introduction/Introduction"
 import {Story} from "./components/story/Story"
 import {prefix} from "./prefix"
 import {Spacing, Logo} from "@porsche/ui-kit-react"
 import {Text} from "@porscheui/porsche-ui-kit"
 import packageJson from "@porscheui/porsche-ui-kit/package.json"
 import "./application.scss"
-import {Design} from "./pages/design/Design"
+import {Home} from "./pages/home/Home"
+import {Updates} from "./pages/updates/Updates"
+import {Roadmap} from "./pages/roadmap/Roadmap"
+import {Versioning} from "./pages/versioning/Versioning"
+import {Support} from "./pages/support/Support"
+import {License} from "./pages/license/License"
+import {FAQ} from "./pages/faq/FAQ"
+import {Accessibility} from "./pages/accessibility/Accessibility"
+import {DesignIntroduction} from "./pages/design-introduction/DesignIntroduction"
+import {ContributeDesign} from "./pages/contribute-design/ContributeDesign"
+import {Abstract} from "./pages/abstract/Abstract"
+import {LibraryTemplate} from "./pages/library-template/LibraryTemplate"
+import {SketchPlugins} from "./pages/sketch-plugins/SketchPlugins"
+import {CodeIntroduction} from "./pages/code-introduction/CodeIntroduction"
+import {DefinitionOfDone} from "./pages/definition-of-done/DefinitionOfDone"
+import {CICDPipeline} from "./pages/ci-cd-pipeline/CICDPipeline"
+import {BrowserCompatibility} from "./pages/browser-compatibility/BrowserCompatibility"
+import {ContributeCode} from "./pages/contribute-code/ContributeCode"
 
 export const Application: React.FunctionComponent = () => {
   const [hideSidebar, sethideSidebar] = useState(false)
@@ -153,10 +169,30 @@ export const Application: React.FunctionComponent = () => {
         </div>
         <div className={appContentClasses}>
           <Switch>
-            <Route path="/introduction" component={Introduction}/>
-            <Route path="/design" component={Design}/>
-            <Route path="/coding" component={Introduction}/>
+            <Route path="/home" component={Home}/>
+            <Route path="/updates" component={Updates}/>
+            <Route path="/roadmap" component={Roadmap}/>
+            <Route path="/versioning" component={Versioning}/>
+            <Route path="/support" component={Support}/>
+            <Route path="/faq" component={FAQ}/>
+            <Route path="/license" component={License}/>
+
+            <Route path="/accessibility" component={Accessibility}/>
+
+            <Route path="/design-introduction" component={DesignIntroduction}/>
+            <Route path="/sketch-plugins" component={SketchPlugins}/>
+            <Route path="/library-template" component={LibraryTemplate}/>
+            <Route path="/abstract" component={Abstract}/>
+            <Route path="/contribute-design" component={ContributeDesign}/>
+
+            <Route path="/code-introduction" component={CodeIntroduction}/>
+            <Route path="/definition-of-done" component={DefinitionOfDone}/>
+            <Route path="/ci-cd-pipeline" component={CICDPipeline}/>
+            <Route path="/browser-compatibility" component={BrowserCompatibility}/>
+            <Route path="/contribute-code" component={ContributeCode}/>
+
             <Route path="/:category/:story" component={Story}/>
+
             <Route path="/" component={() => <Redirect to="/introduction"/>}/>
           </Switch>
         </div>
