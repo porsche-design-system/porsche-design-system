@@ -8,24 +8,25 @@ import {Spacing, Logo} from "@porsche/ui-kit-react"
 import {Text} from "@porscheui/porsche-ui-kit"
 import packageJson from "@porscheui/porsche-ui-kit/package.json"
 import "./application.scss"
-import {Home} from "./pages/home/Home"
-import {Updates} from "./pages/updates/Updates"
-import {Roadmap} from "./pages/roadmap/Roadmap"
-import {Versioning} from "./pages/versioning/Versioning"
-import {Support} from "./pages/support/Support"
-import {License} from "./pages/license/License"
-import {FAQ} from "./pages/faq/FAQ"
-import {Accessibility} from "./pages/accessibility/Accessibility"
-import {DesignIntroduction} from "./pages/design-introduction/DesignIntroduction"
-import {ContributeDesign} from "./pages/contribute-design/ContributeDesign"
-import {Abstract} from "./pages/abstract/Abstract"
-import {LibraryTemplate} from "./pages/library-template/LibraryTemplate"
-import {SketchPlugins} from "./pages/sketch-plugins/SketchPlugins"
-import {CodeIntroduction} from "./pages/code-introduction/CodeIntroduction"
-import {DefinitionOfDone} from "./pages/definition-of-done/DefinitionOfDone"
-import {CICDPipeline} from "./pages/ci-cd-pipeline/CICDPipeline"
-import {BrowserCompatibility} from "./pages/browser-compatibility/BrowserCompatibility"
-import {ContributeCode} from "./pages/contribute-code/ContributeCode"
+import {Home as GeneralHome} from "./pages/general/home/Home"
+import {Updates as GeneralUpdates} from "./pages/general/updates/Updates"
+import {Roadmap as GeneralRoadmap} from "./pages/general/roadmap/Roadmap"
+import {Versioning as GeneralVersioning} from "./pages/general/versioning/Versioning"
+import {Support as GeneralSupport} from "./pages/general/support/Support"
+import {License as GeneralLicense} from "./pages/general/license/License"
+import {FAQ as GeneralFAQ} from "./pages/general/faq/FAQ"
+import {Accessibility as GuidelinesAccessibility} from "./pages/guidelines/accessibility/Accessibility"
+import {Introduction as DesignIntroduction} from "./pages/design/introduction/Introduction"
+import {Contribution as DesignContribution} from "./pages/design/contribution/Contribution"
+import {Abstract as DesignAbstract} from "./pages/design/abstract/Abstract"
+import {LibraryTemplate as DesignLibraryTemplate} from "./pages/design/library-template/LibraryTemplate"
+import {SketchPlugins as DesignSketchPlugins} from "./pages/design/sketch-plugins/SketchPlugins"
+import {Introduction as CodeIntroduction} from "./pages/code/introduction/Introduction"
+import {DefinitionOfDone as CodeDefinitionOfDone} from "./pages/code/definition-of-done/DefinitionOfDone"
+import {CICD as CodeCICD} from "./pages/code/ci-cd/CICD"
+import {BrowserCompatibility as CodeBrowserCompatibility} from "./pages/code/browser-compatibility/BrowserCompatibility"
+import {Contribution as CodeContribution} from "./pages/code/contribution/Contribution"
+import {Markdown} from "./pages/demo/markdown/Markdown"
 
 export const Application: React.FunctionComponent = () => {
   const [hideSidebar, sethideSidebar] = useState(false)
@@ -68,97 +69,92 @@ export const Application: React.FunctionComponent = () => {
               </Spacing>
             </header>
             <hr className={prefix("sidebar__hr")}/>
-
             <div className={prefix("sidebar__category")}>
               <Text type="copy-bold">General</Text>
               <nav>
                 <ul>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/home" title="Home"/>
+                    <SidebarLink to="/general/home" title="Home"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/updates" title="Updates"/>
+                    <SidebarLink to="/general/updates" title="Updates"/>
                     <ul>
                       <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink to="/roadmap" title="Roadmap"/>
+                        <SidebarLink to="/general/roadmap" title="Roadmap"/>
                       </li>
                       <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink to="/versioning" title="Versioning"/>
+                        <SidebarLink to="/general/versioning" title="Versioning"/>
                       </li>
                     </ul>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/support" title="Support"/>
+                    <SidebarLink to="/general/support" title="Support"/>
                     <ul>
                       <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink to="/faq" title="FAQ"/>
+                        <SidebarLink to="/general/faq" title="FAQ"/>
                       </li>
                     </ul>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/license" title="License"/>
+                    <SidebarLink to="/general/license" title="License"/>
                   </li>
                 </ul>
               </nav>
             </div>
-
             <div className={prefix("sidebar__category")}>
               <Text type="copy-bold">Guidelines</Text>
               <nav>
                 <ul>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/accessibility" title="Accessibility"/>
+                    <SidebarLink to="/guidelines/accessibility" title="Accessibility"/>
                   </li>
                 </ul>
               </nav>
             </div>
-
             <div className={prefix("sidebar__category")}>
               <Text type="copy-bold">Designing</Text>
               <nav>
                 <ul>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/design-introduction" title="Introduction"/>
+                    <SidebarLink to="/design/introduction" title="Introduction"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/sketch-plugins" title="Sketch Plugins"/>
+                    <SidebarLink to="/design/sketch-plugins" title="Sketch Plugins"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/library-template" title="Library Template"/>
+                    <SidebarLink to="/design/library-template" title="Library Template"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/abstract" title="Abstract"/>
+                    <SidebarLink to="/design/abstract" title="Abstract"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/contribute-design" title="Contribute Design"/>
+                    <SidebarLink to="/design/contribution" title="Contribution"/>
                   </li>
                 </ul>
               </nav>
             </div>
-
             <div className={prefix("sidebar__category")}>
               <Text type="copy-bold">Code</Text>
               <nav>
                 <ul>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/code-introduction" title="Introduction"/>
+                    <SidebarLink to="/code/introduction" title="Introduction"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/definition-of-done" title="Definition Of Done"/>
+                    <SidebarLink to="/code/definition-of-done" title="Definition Of Done"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/ci-cd-pipeline" title="CI/CD Pipeline"/>
+                    <SidebarLink to="/code/ci-cd" title="CI/CD"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/browser-compatibility" title="Browser Compatibility"/>
+                    <SidebarLink to="/code/browser-compatibility" title="Browser Compatibility"/>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/contribute-code" title="Contribute Code"/>
+                    <SidebarLink to="/code/contribution" title="Contribution"/>
                   </li>
                 </ul>
               </nav>
             </div>
-
           </Sidebar>
           <footer className={prefix("app__legal")}>
             <Text type="small-regular">
@@ -169,31 +165,27 @@ export const Application: React.FunctionComponent = () => {
         </div>
         <div className={appContentClasses}>
           <Switch>
-            <Route path="/home" component={Home}/>
-            <Route path="/updates" component={Updates}/>
-            <Route path="/roadmap" component={Roadmap}/>
-            <Route path="/versioning" component={Versioning}/>
-            <Route path="/support" component={Support}/>
-            <Route path="/faq" component={FAQ}/>
-            <Route path="/license" component={License}/>
-
-            <Route path="/accessibility" component={Accessibility}/>
-
-            <Route path="/design-introduction" component={DesignIntroduction}/>
-            <Route path="/sketch-plugins" component={SketchPlugins}/>
-            <Route path="/library-template" component={LibraryTemplate}/>
-            <Route path="/abstract" component={Abstract}/>
-            <Route path="/contribute-design" component={ContributeDesign}/>
-
-            <Route path="/code-introduction" component={CodeIntroduction}/>
-            <Route path="/definition-of-done" component={DefinitionOfDone}/>
-            <Route path="/ci-cd-pipeline" component={CICDPipeline}/>
-            <Route path="/browser-compatibility" component={BrowserCompatibility}/>
-            <Route path="/contribute-code" component={ContributeCode}/>
-
+            <Route path="/general/home" component={GeneralHome}/>
+            <Route path="/general/updates" component={GeneralUpdates}/>
+            <Route path="/general/roadmap" component={GeneralRoadmap}/>
+            <Route path="/general/versioning" component={GeneralVersioning}/>
+            <Route path="/general/support" component={GeneralSupport}/>
+            <Route path="/general/faq" component={GeneralFAQ}/>
+            <Route path="/general/license" component={GeneralLicense}/>
+            <Route path="/guidelines/accessibility" component={GuidelinesAccessibility}/>
+            <Route path="/design/introduction" component={DesignIntroduction}/>
+            <Route path="/design/sketch-plugins" component={DesignSketchPlugins}/>
+            <Route path="/design/library-template" component={DesignLibraryTemplate}/>
+            <Route path="/design/abstract" component={DesignAbstract}/>
+            <Route path="/design/contribution" component={DesignContribution}/>
+            <Route path="/code/introduction" component={CodeIntroduction}/>
+            <Route path="/code/definition-of-done" component={CodeDefinitionOfDone}/>
+            <Route path="/code/ci-cd" component={CodeCICD}/>
+            <Route path="/code/browser-compatibility" component={CodeBrowserCompatibility}/>
+            <Route path="/code/contribution" component={CodeContribution}/>
+            <Route path="/demo/markdown" component={Markdown}/>
             <Route path="/:category/:story" component={Story}/>
-
-            <Route path="/" component={() => <Redirect to="/introduction"/>}/>
+            <Route path="/" component={() => <Redirect to="/general/home"/>}/>
           </Switch>
         </div>
       </React.Fragment>
