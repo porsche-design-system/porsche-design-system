@@ -53,7 +53,8 @@
   }
 
   &__content {
-    padding: $p-spacing-60 120px;
+    padding: 5rem 120px;
+    max-width: 1920px;
     margin-left: 300px;
     transition: margin-left 400ms 100ms ease-out;
 

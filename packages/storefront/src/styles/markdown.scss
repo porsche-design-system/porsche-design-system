@@ -1,0 +1,197 @@
+@import "./variable";
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+@import "~@porscheui/porsche-ui-kit/src/components/basic/text/text";
+
+.#{$sg-prefix}markdown > {
+
+  :first-child {
+    margin-top: 0 !important;
+  }
+
+  :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  @at-root #{&},
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6,
+  & p,
+  & blockquote,
+  & ul,
+  & ol,
+  & table,
+  & hr,
+  & b,
+  & strong,
+  & i,
+  & em,
+  & s,
+  & strike,
+  & del,
+  & a,
+  & img,
+  & code,
+  & pre {
+
+    // Typography
+    h1 {
+      @include -text-size-2($p-font-weight-bold);
+      margin-top: $p-spacing-60;
+    }
+
+    h2 {
+      @include -text-size-3($p-font-weight-bold);
+      margin-top: $p-spacing-30;
+    }
+
+    h3 {
+      @include -text-size-4($p-font-weight-bold);
+      margin-top: $p-spacing-24;
+    }
+
+    h4 {
+      @include -text-size-4($p-font-weight-bold);
+      margin-top: $p-spacing-18;
+    }
+
+    h5,
+    h6 {
+      @include -text-size-copy($p-font-weight-bold);
+      margin-top: $p-spacing-18;
+    }
+
+    p {
+      @include -text-size-copy;
+      margin-top: $p-spacing-18;
+    }
+
+    // Horizontal Rules
+    hr {
+      margin: {
+        top: $p-spacing-42;
+        bottom: $p-spacing-42;
+      }
+      border: 0;
+      height: 1px;
+      background-color: $p-color-grey-2;
+    }
+
+    // Emphasis
+    b,
+    strong {
+      font-weight: $p-font-weight-bold;
+    }
+
+    i,
+    em {
+      font-style: italic;
+    }
+
+    s,
+    strike,
+    del {
+      text-decoration: line-through;
+    }
+
+    // Blockquote
+    blockquote {
+      padding-left: $p-spacing-18;
+      border-left: rem(5px) solid $p-color-grey-3;
+    }
+
+    // Lists
+    ul,
+    ol {
+      @include -text-size-copy;
+      margin-top: $p-spacing-18;
+      padding-left: $p-spacing-36;
+
+      ul,
+      ol {
+        margin-top: 0;
+      }
+    }
+
+    // Code
+    code,
+    pre {
+      @include -text-size-small;
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    }
+
+    :not(pre) > code {
+      padding: $p-spacing-3 $p-spacing-6;
+      background-color: mix($p-color-red-1, $p-color-white, 10%);
+      border-radius: 3px;
+      color: $p-color-red-1;
+    }
+
+    pre {
+      margin-top: $p-spacing-6;
+      display: block;
+      padding: $p-spacing-12 $p-spacing-18;
+      word-break: break-all;
+      word-wrap: break-word;
+      background-color: $p-color-grey-1;
+      border: 1px solid $p-color-grey-3;
+      border-radius: 3px;
+      color: $p-color-grey-8;
+    }
+
+    // Tables
+    table {
+      margin-top: $p-spacing-18;
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+
+      thead {
+        @include -text-size-4($p-font-weight-bold);
+      }
+
+      tbody {
+        @include -text-size-copy($p-font-weight-regular);
+      }
+
+      th {
+        padding-bottom: $p-spacing-12;
+      }
+
+      td {
+        padding: {
+          top: $p-spacing-12;
+          bottom: $p-spacing-12;
+        }
+        border-bottom: 1px solid $p-color-grey-1;
+        vertical-align: top;
+      }
+
+      th ~ th,
+      td ~ td {
+        padding-left: $p-spacing-24;
+      }
+    }
+
+    // Links
+    a {
+      text-decoration: none;
+      color: $p-color-red-1;
+      transition: color .3s;
+
+      &:hover {
+        text-decoration: underline;
+        color: $p-color-red-2;
+      }
+    }
+
+    // Media
+    img {
+      max-width: 100%;
+      vertical-align: top;
+    }
+  }
+}
