@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import cx from "classnames"
 import { BrowserRouter as Router, Route, Switch, Redirect, Link } from "react-router-dom"
 import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
@@ -9,6 +9,7 @@ import { Spacing, Logo } from "@porsche/ui-kit-react"
 import { Text } from "@porscheui/porsche-ui-kit"
 import packageJson from "@porscheui/porsche-ui-kit/package.json"
 import "./application.scss"
+import {Design} from "./pages/design/Design"
 
 export const Application: React.FunctionComponent = () => {
   const [hideSidebar, sethideSidebar] = useState(false)
@@ -57,7 +58,7 @@ export const Application: React.FunctionComponent = () => {
                   <SidebarLink to="/introduction" title="Introduction" />
                 </li>
                 <li className={prefix("sidebar__nav-item")}>
-                  <SidebarLink to="/designing" title="Designing" />
+                  <SidebarLink to="/design" title="Design" />
                 </li>
                 <li className={prefix("sidebar__nav-item")}>
                   <SidebarLink to="/coding" title="Coding" />
@@ -75,7 +76,7 @@ export const Application: React.FunctionComponent = () => {
         <div className={appContentClasses}>
           <Switch>
             <Route path="/introduction" component={Introduction} />
-            <Route path="/designing" component={Introduction} />
+            <Route path="/design" component={Design} />
             <Route path="/coding" component={Introduction} />
             <Route path="/:category/:story" component={Story} />
             <Route path="/" component={() => <Redirect to="/introduction" />} />
