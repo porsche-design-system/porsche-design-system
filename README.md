@@ -14,25 +14,25 @@ Give every designer and developer working at the digital Porsche ecosystem a qua
 
 ## Installation
 
-Run `npm install`
+Run `yarn install`
 
 ### Development
 
-Running `npm start` will start storybook and its development server. You can reach it at `http://localhost:8080/`.
+Running `yarn start` will start storefront and its development server. You can reach it at `http://localhost:3000/`.
 
 ### Distribution
 
-Running `npm build` creates a ES6 and CommonJS build under `dist`.
+Running `yarn build` creates a ES6 and CommonJS build under `dist`.
 
 ## Developing New Components
 
 This tool automatically creates a catalog of ui components. For its magic to work, new components have to follow a few rules:
 
-1. **File Location:** A component is developed as a self containing element under `src/components`.
-1. **Export:** The component needs to be exported in `src/index.ts`.
-1. **Component Description:** A component should have a `readme.md` file which describes its general purpose, design/development specifications.
+1. **File Location:** A component is developed as a self containing element under `packages/workshop/src/components`.
+1. **Export:** The component needs to be exported in `packages/workshop/src/index.ts`.
+1. **Component Description:** A component should have a `COMPONENTNAME.code.mdx` and a `COMPONENTNAME.design.mdx` file which describes its general purpose, design/development specifications and examples.
 1. **Props:** The component has to describe its props using typescript types and documentation.
-1. **Examples:** The examples of the component are developed with a `.story` file inside the same component folder.
+
 
 ## Publishing artifacts and release management
 
