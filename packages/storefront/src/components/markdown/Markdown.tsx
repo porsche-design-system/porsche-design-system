@@ -16,7 +16,9 @@ export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
   return (
     markdown &&
     <div className={prefix('markdown')}>
-      <ReactMarkdown source={markdown}/>
+      <div>
+        <ReactMarkdown source={markdown}/>
+      </div>
     </div>
   )
 }

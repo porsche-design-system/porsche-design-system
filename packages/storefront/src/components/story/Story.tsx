@@ -53,14 +53,14 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
     <main className={prefix("story")}>
       <Tab panes={panes} alignment="left" />
       {panes[0].active && (
-        <Suspense fallback={<div />}>
+        <Suspense fallback={null}>
           <div className={prefix("markdown")}>
             <Code />
           </div>
         </Suspense>
       )}
       {panes[1].active && (
-        <Suspense fallback={<div />}>
+        <Suspense fallback={null}>
           <div className={prefix("markdown")}>
             <Design />
           </div>
