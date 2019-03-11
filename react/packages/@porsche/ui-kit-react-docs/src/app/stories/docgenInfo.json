@@ -918,6 +918,187 @@
     },
     "path": "src/components/atoms/Text/Text.tsx"
   },
+  "Grid": {
+    "displayName": "Grid",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the direction of the main and cross axis. The default \"row\" (default) defines the main axis as horizontal left to right."
+        ],
+        "name": "direction",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
+          "name": "GridProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"row\"",
+          "\"row-reverse\"",
+          "\"column\"",
+          "\"column-reverse\""
+        ]
+      },
+      {
+        "description": [
+          "Defines the gap between contained children. The value \"normal\" (default) sets responsive grid spacings that should be used together with Grid.Child."
+        ],
+        "name": "gap",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
+          "name": "GridProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "\"normal\"",
+          "\"zero\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Spacing"
+        },
+        {
+          "title": "see",
+          "description": "Flex"
+        }
+      ],
+      "description": [
+        "A grid container component used to create layouts based on official grid definitions."
+      ]
+    },
+    "path": "src/components/layout/Grid/Grid.tsx"
+  },
+  "GridChild": {
+    "displayName": "GridChild",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
+        ],
+        "name": "offset",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
+          "name": "GridChildProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ]
+      },
+      {
+        "description": [
+          "The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
+          "name": "GridChildProps"
+        },
+        "required": true,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "BreakpointCustomizable",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12"
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A child of a grid container."
+      ]
+    },
+    "path": "src/components/layout/Grid/GridChild.tsx"
+  },
   "Flex": {
     "displayName": "Flex",
     "methods": [],
@@ -1284,187 +1465,6 @@
       ]
     },
     "path": "src/components/layout/Flex/FlexItem.tsx"
-  },
-  "Grid": {
-    "displayName": "Grid",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Defines the direction of the main and cross axis. The default \"row\" (default) defines the main axis as horizontal left to right."
-        ],
-        "name": "direction",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
-          "name": "GridProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"row\"",
-          "\"row-reverse\"",
-          "\"column\"",
-          "\"column-reverse\""
-        ]
-      },
-      {
-        "description": [
-          "Defines the gap between contained children. The value \"normal\" (default) sets responsive grid spacings that should be used together with Grid.Child."
-        ],
-        "name": "gap",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/Grid.tsx",
-          "name": "GridProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "\"normal\"",
-          "\"zero\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Spacing"
-        },
-        {
-          "title": "see",
-          "description": "Flex"
-        }
-      ],
-      "description": [
-        "A grid container component used to create layouts based on official grid definitions."
-      ]
-    },
-    "path": "src/components/layout/Grid/Grid.tsx"
-  },
-  "GridChild": {
-    "displayName": "GridChild",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The offset of the column. Can be between 0 and 11. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
-        ],
-        "name": "offset",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
-          "name": "GridChildProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "0",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11"
-        ]
-      },
-      {
-        "description": [
-          "The size of the column. Can be between 1 and 12. You can also supply values for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this."
-        ],
-        "name": "size",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/layout/Grid/GridChild.tsx",
-          "name": "GridChildProps"
-        },
-        "required": true,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "BreakpointCustomizable",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11",
-          "12"
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A child of a grid container."
-      ]
-    },
-    "path": "src/components/layout/Grid/GridChild.tsx"
   },
   "CookieNotification": {
     "displayName": "CookieNotification",
@@ -3119,6 +3119,137 @@
     },
     "path": "src/components/molecules/Link/Link.tsx"
   },
+  "Loader": {
+    "displayName": "Loader",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Inverts the color for use on darker backgrounds."
+        ],
+        "name": "inverted",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/Loader.tsx",
+          "name": "LoaderProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "A loader can have different sizes"
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/Loader.tsx",
+          "name": "LoaderProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"x-small\"",
+          "\"small\"",
+          "\"medium\"",
+          "\"large\"",
+          "\"x-large\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Button"
+        }
+      ],
+      "description": [
+        "A loader component to show loading states inside single components or across entire modules / pages."
+      ]
+    },
+    "path": "src/components/molecules/Loader/Loader.tsx"
+  },
+  "LoaderMask": {
+    "displayName": "LoaderMask",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Displays the loader and backdrop when true, plainly renders all children when false."
+        ],
+        "name": "loading",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/LoaderMask.tsx",
+          "name": "LoaderMaskProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "Displays the loader around its children using a translucent backdrop.",
+        "If it is not loading, the children will be rendered without any wrapper components."
+      ]
+    },
+    "path": "src/components/molecules/Loader/LoaderMask.tsx"
+  },
   "Navigation": {
     "displayName": "Navigation",
     "methods": [],
@@ -3398,10 +3529,23 @@
     },
     "path": "src/components/molecules/Navigation/NavigationMobile.tsx"
   },
-  "Loader": {
-    "displayName": "Loader",
+  "Pagination": {
+    "displayName": "Pagination",
     "methods": [],
     "props": [
+      {
+        "description": [
+          "Index of the currently active page."
+        ],
+        "name": "activePage",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "required": true,
+        "type": "number",
+        "tags": []
+      },
       {
         "description": [
           "The html element type to render as."
@@ -3430,107 +3574,67 @@
       },
       {
         "description": [
-          "Inverts the color for use on darker backgrounds."
+          "The total count of items per page."
         ],
-        "name": "inverted",
+        "name": "itemsPerPage",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/Loader.tsx",
-          "name": "LoaderProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
         },
-        "required": false,
-        "type": "boolean",
+        "required": true,
+        "type": "number",
         "tags": []
       },
       {
         "description": [
-          "A loader can have different sizes"
+          "Handle click events."
         ],
-        "name": "size",
+        "name": "onClick",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/Loader.tsx",
-          "name": "LoaderProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
         },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"x-small\"",
-          "\"small\"",
-          "\"medium\"",
-          "\"large\"",
-          "\"x-large\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Button"
-        }
-      ],
-      "description": [
-        "A loader component to show loading states inside single components or across entire modules / pages."
-      ]
-    },
-    "path": "src/components/molecules/Loader/Loader.tsx"
-  },
-  "LoaderMask": {
-    "displayName": "LoaderMask",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass",
+        "required": true,
+        "type": "func",
         "tags": []
       },
       {
         "description": [
-          "Additional CSS classes."
+          "Defines the theming of the pagination."
         ],
-        "name": "className",
+        "name": "theme",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
         },
         "required": false,
-        "type": "string",
+        "type": "\"inverted\"",
         "tags": []
       },
       {
-        "defaultValue": "false",
         "description": [
-          "Displays the loader and backdrop when true, plainly renders all children when false."
+          "The total count of items."
         ],
-        "name": "loading",
+        "name": "totalItemsCount",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Loader/LoaderMask.tsx",
-          "name": "LoaderMaskProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/Pagination.tsx",
+          "name": "PaginationProps"
         },
-        "required": false,
-        "type": "boolean",
+        "required": true,
+        "type": "number",
         "tags": []
       }
     ],
     "docBlock": {
       "tags": [],
       "description": [
-        "Displays the loader around its children using a translucent backdrop.",
-        "If it is not loading, the children will be rendered without any wrapper components."
+        "The Pagination component is a link list to cycle through pages/views"
       ]
     },
-    "path": "src/components/molecules/Loader/LoaderMask.tsx"
+    "path": "src/components/molecules/Pagination/Pagination.tsx"
   },
-  "Select": {
-    "displayName": "Select",
+  "PaginationItems": {
+    "displayName": "PrevItem",
     "methods": [],
     "props": [
       {
@@ -3547,22 +3651,6 @@
         "tags": []
       },
       {
-        "defaultValue": "false",
-        "description": [
-          "Determines if the placeholder disappears when a value is set or entered,",
-          "or if it floats above the content.",
-          "If no placeholder is set, this value has no effect."
-        ],
-        "name": "basic",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
         "description": [
           "Additional CSS classes."
         ],
@@ -3576,231 +3664,186 @@
         "tags": []
       },
       {
-        "defaultValue": "true",
         "description": [
-          "Determines if the select shows an icon to clear selected values."
+          "Highlight current page or disable previous/next page links when user is already on first/last page)."
         ],
-        "name": "clearable",
+        "name": "isActive",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationItems.tsx",
+          "name": "PaginationItemProps"
         },
-        "required": false,
+        "required": true,
         "type": "boolean",
         "tags": []
       },
       {
         "description": [
-          "Disable the select."
+          "The unique identifier."
         ],
-        "name": "disabled",
+        "name": "key",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationItems.tsx",
+          "name": "PaginationItemProps"
         },
-        "required": false,
-        "type": "boolean",
+        "required": true,
+        "type": "number",
         "tags": []
       },
       {
         "description": [
-          "Color the select to show that something went wrong."
+          "Called after a user's click."
         ],
-        "name": "error",
+        "name": "onClick",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "You can customize the filter behaviour of the select component by providing a custom function."
-        ],
-        "name": "filterOptions",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
-        },
-        "required": false,
-        "type": "(option: SelectOption[] | SelectOptionGroup[], filter: string) => SelectOption[] | SelectOptionGroup[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "Allow multiple selections."
-        ],
-        "name": "multi",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Display a text when the filter shows no results."
-        ],
-        "name": "noResultsLabel",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
-        },
-        "required": false,
-        "type": "string | Element",
-        "tags": []
-      },
-      {
-        "description": [
-          "Called when the user attempts to change the selection."
-        ],
-        "name": "onChange",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationItems.tsx",
+          "name": "PaginationItemProps"
         },
         "required": false,
         "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "The proposed value after the change.",
-            "type": null,
-            "name": "value"
-          },
-          {
-            "title": "param",
-            "description": "All props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "description": [
-          "Called when the user changed the search value.",
-          "Note that the search value cannot be controlled directly, therefore the change is not a proposal.",
-          "Mobile behaviour is disabled if this value is set, since mobile doesn't allow for keyboard input."
-        ],
-        "name": "onSearchChanged",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
-        },
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "The value that has changed. If the search was cleared, the value will be null.",
-            "type": null,
-            "name": "value"
-          }
-        ]
-      },
-      {
-        "description": [
-          "The displayed options with option label and value."
-        ],
-        "name": "options",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
-        },
-        "required": false,
-        "type": "SelectOption[] | SelectOptionGroup[]",
         "tags": []
       },
       {
         "description": [
-          "The placeholder when no value is selected."
+          "Type of the pagination item."
         ],
-        "name": "placeholder",
+        "name": "type",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationItems.tsx",
+          "name": "PaginationItemProps"
         },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "defaultValue": "true",
-        "description": [
-          "Enables filtering options for single selects. Multi selects are always searchable."
-        ],
-        "name": "searchable",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
-        },
-        "required": false,
-        "type": "boolean",
+        "required": true,
+        "type": "PaginationItemType",
         "tags": []
       },
       {
         "description": [
-          "The selected value."
+          "Number of page that user should navigate to when item is activated."
         ],
         "name": "value",
         "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
-          "name": "SelectProps"
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationItems.tsx",
+          "name": "PaginationItemProps"
         },
-        "required": false,
-        "type": "SelectValue",
+        "required": true,
+        "type": "number",
         "tags": []
       }
     ],
     "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Checkbox"
-        },
-        {
-          "title": "see",
-          "description": "TextArea"
-        },
-        {
-          "title": "see",
-          "description": "Input"
-        }
-      ],
+      "tags": [],
       "description": [
-        "A select compononent to select single or multiple values.",
-        "It switches between a custom, searchable dropdown on desktop browsers and a native selection on touch supported devices."
+        "Previous Page Item"
       ]
     },
-    "path": "src/components/molecules/Select/Select.tsx"
+    "path": "src/components/molecules/Pagination/PaginationItems.tsx"
   },
-  "SelectArrowRenderer": {
-    "displayName": "SelectArrowRenderer",
+  "PaginationList": {
+    "displayName": "PaginationList",
     "methods": [],
-    "props": [],
+    "props": [
+      {
+        "description": [
+          "Index of the currently active page."
+        ],
+        "name": "activePage",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationList.tsx",
+          "name": "PaginationListProps"
+        },
+        "required": true,
+        "type": "number",
+        "tags": []
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Handle click events."
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationList.tsx",
+          "name": "PaginationListProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": []
+      },
+      {
+        "description": [
+          "The number of pages between ellipsis. 0 = mobile | 1 = desktop"
+        ],
+        "name": "pageRange",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationList.tsx",
+          "name": "PaginationListProps"
+        },
+        "required": true,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "description": [
+          "Total number of pages."
+        ],
+        "name": "pageTotal",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationList.tsx",
+          "name": "PaginationListProps"
+        },
+        "required": true,
+        "type": "number",
+        "tags": []
+      },
+      {
+        "description": [
+          "Defines the theming of the pagination."
+        ],
+        "name": "theme",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Pagination/PaginationList.tsx",
+          "name": "PaginationListProps"
+        },
+        "required": false,
+        "type": "\"inverted\"",
+        "tags": []
+      }
+    ],
     "docBlock": {
       "tags": [],
       "description": [
         ""
       ]
     },
-    "path": "src/components/molecules/Select/SelectArrowRenderer.tsx"
-  },
-  "SelectClearRenderer": {
-    "displayName": "SelectClearRenderer",
-    "methods": [],
-    "props": [],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        ""
-      ]
-    },
-    "path": "src/components/molecules/Select/SelectClearRenderer.tsx"
+    "path": "src/components/molecules/Pagination/PaginationList.tsx"
   },
   "Radio": {
     "displayName": "Radio",
@@ -4095,6 +4138,19 @@
             "name": "data"
           }
         ]
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "verticalAlignment",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/RadioGroup.tsx",
+          "name": "RadioGroupProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
       }
     ],
     "docBlock": {
@@ -4104,6 +4160,279 @@
       ]
     },
     "path": "src/components/molecules/Radio/RadioGroup.tsx"
+  },
+  "Select": {
+    "displayName": "Select",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass",
+        "tags": []
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Determines if the placeholder disappears when a value is set or entered,",
+          "or if it floats above the content.",
+          "If no placeholder is set, this value has no effect."
+        ],
+        "name": "basic",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "Determines if the select shows an icon to clear selected values."
+        ],
+        "name": "clearable",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Disable the select."
+        ],
+        "name": "disabled",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Color the select to show that something went wrong."
+        ],
+        "name": "error",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "You can customize the filter behaviour of the select component by providing a custom function."
+        ],
+        "name": "filterOptions",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "(option: SelectOption[] | SelectOptionGroup[], filter: string) => SelectOption[] | SelectOptionGroup[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "Allow multiple selections."
+        ],
+        "name": "multi",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Display a text when the filter shows no results."
+        ],
+        "name": "noResultsLabel",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "string | Element",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called when the user attempts to change the selection."
+        ],
+        "name": "onChange",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "The proposed value after the change.",
+            "type": null,
+            "name": "value"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "description": [
+          "Called when the user changed the search value.",
+          "Note that the search value cannot be controlled directly, therefore the change is not a proposal.",
+          "Mobile behaviour is disabled if this value is set, since mobile doesn't allow for keyboard input."
+        ],
+        "name": "onSearchChanged",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "The value that has changed. If the search was cleared, the value will be null.",
+            "type": null,
+            "name": "value"
+          }
+        ]
+      },
+      {
+        "description": [
+          "The displayed options with option label and value."
+        ],
+        "name": "options",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "SelectOption[] | SelectOptionGroup[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The placeholder when no value is selected."
+        ],
+        "name": "placeholder",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "Enables filtering options for single selects. Multi selects are always searchable."
+        ],
+        "name": "searchable",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "The selected value."
+        ],
+        "name": "value",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/0.x/react/packages/@porsche/ui-kit-react/src/components/molecules/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": false,
+        "type": "SelectValue",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Checkbox"
+        },
+        {
+          "title": "see",
+          "description": "TextArea"
+        },
+        {
+          "title": "see",
+          "description": "Input"
+        }
+      ],
+      "description": [
+        "A select compononent to select single or multiple values.",
+        "It switches between a custom, searchable dropdown on desktop browsers and a native selection on touch supported devices."
+      ]
+    },
+    "path": "src/components/molecules/Select/Select.tsx"
+  },
+  "SelectArrowRenderer": {
+    "displayName": "SelectArrowRenderer",
+    "methods": [],
+    "props": [],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        ""
+      ]
+    },
+    "path": "src/components/molecules/Select/SelectArrowRenderer.tsx"
+  },
+  "SelectClearRenderer": {
+    "displayName": "SelectClearRenderer",
+    "methods": [],
+    "props": [],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        ""
+      ]
+    },
+    "path": "src/components/molecules/Select/SelectClearRenderer.tsx"
   },
   "Tab": {
     "displayName": "Tab",
