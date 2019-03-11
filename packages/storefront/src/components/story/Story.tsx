@@ -5,7 +5,7 @@ import { RouteComponentProps, Redirect } from "react-router"
 import { Stories, Story as StoryType } from "../../stories"
 import { PropsTable } from "../propsTable/PropsTable"
 import jsdoc from "../../jsdoc.json"
-import { Tab } from "@porsche/ui-kit-react"
+import { Tab, Spacing } from "@porsche/ui-kit-react"
 
 export interface StoryUrlParams {
   category: string
@@ -51,7 +51,9 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
 
   return (
     <main className={prefix("story")}>
-      <Tab panes={panes} alignment="left" />
+      <Spacing paddingBottom={60}>
+        <Tab panes={panes} alignment="left" />
+      </Spacing>
       {panes[0].active && (
         <Suspense fallback={null}>
           <div className={prefix("markdown")}>
