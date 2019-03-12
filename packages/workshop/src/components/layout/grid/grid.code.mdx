@@ -15,23 +15,23 @@ For standard grid implementation, it is recommended to use this pattern. The cla
   {(theme) => {
     const containerStyle = { marginBottom: "8px" }
     const itemStyle = (color) => {
-      return { height: "12px", backgroundColor: color }
+      return { height: "20px", backgroundColor: color }
     }
     return (
       <React.Fragment>
         <Grid style={containerStyle}>
           <Grid.Child size={12}>
-            <div style={itemStyle("DeepSkyBlue")} />
+            <div style={itemStyle("deepskyblue")} />
           </Grid.Child>
         </Grid>
         {Array.apply(0, Array(11)).map(function(x, i) {
           return (
             <Grid key={i} style={containerStyle}>
               <Grid.Child size={i + 1}>
-                <div style={itemStyle("DeepSkyBlue")} />
+                <div style={itemStyle("deepskyblue")} />
               </Grid.Child>
               <Grid.Child size={11 - i}>
-                <div style={itemStyle("DeepSkyBlue")} />
+                <div style={itemStyle("deepskyblue")} />
               </Grid.Child>
             </Grid>
           )
@@ -40,6 +40,8 @@ For standard grid implementation, it is recommended to use this pattern. The cla
     )
   }}
 </Example>
+
+---
 
 ### Grid offset
 
@@ -49,7 +51,7 @@ In some cases it can be neccessary to indent columns. The grid gives basic inden
   {(theme) => {
     const containerStyle = { marginBottom: "8px" }
     const itemStyle = (color) => {
-      return { height: "12px", backgroundColor: color }
+      return { height: "20px", backgroundColor: color }
     }
     return (
       <React.Fragment>
@@ -57,7 +59,7 @@ In some cases it can be neccessary to indent columns. The grid gives basic inden
           return (
             <Grid key={i} style={containerStyle}>
               <Grid.Child offset={i + 1} size={11 - i}>
-                <div style={itemStyle("DeepSkyBlue")} />
+                <div style={itemStyle("deepskyblue")} />
               </Grid.Child>
             </Grid>
           )
@@ -66,6 +68,8 @@ In some cases it can be neccessary to indent columns. The grid gives basic inden
     )
   }}
 </Example>
+
+---
 
 ### Grid direction
 
@@ -78,22 +82,26 @@ In some cases it might be neccessary to define or change direction of the column
     const itemStyle = {
       height: "20px",
       width: "100%",
-      backgroundColor: "DeepSkyBlue",
-      marginBottom: "8px",
-      color: "white",
-      textAlign: "center"
+      backgroundColor: "deepskyblue",
+      color: "white"
     }
     return (
       <React.Fragment>
         <Grid direction="row">
           <Grid.Child size={4}>
-            <div style={itemStyle}>1</div>
+            <Text align="center" style={itemStyle}>
+              1
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>2</div>
+            <Text align="center" style={itemStyle}>
+              2
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>3</div>
+            <Text align="center" style={itemStyle}>
+              3
+            </Text>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -108,22 +116,26 @@ In some cases it might be neccessary to define or change direction of the column
     const itemStyle = {
       height: "20px",
       width: "100%",
-      backgroundColor: "DeepSkyBlue",
-      marginBottom: "8px",
-      color: "white",
-      textAlign: "center"
+      backgroundColor: "deepskyblue",
+      color: "white"
     }
     return (
       <React.Fragment>
         <Grid direction="row-reverse">
           <Grid.Child size={4}>
-            <div style={itemStyle}>1</div>
+            <Text align="center" style={itemStyle}>
+              1
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>2</div>
+            <Text align="center" style={itemStyle}>
+              2
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>3</div>
+            <Text align="center" style={itemStyle}>
+              3
+            </Text>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -138,22 +150,26 @@ In some cases it might be neccessary to define or change direction of the column
     const itemStyle = {
       height: "20px",
       width: "100%",
-      backgroundColor: "DeepSkyBlue",
-      marginBottom: "8px",
-      color: "white",
-      textAlign: "center"
+      backgroundColor: "deepskyblue",
+      color: "white"
     }
     return (
       <React.Fragment>
         <Grid direction="column">
           <Grid.Child size={4}>
-            <div style={itemStyle}>1</div>
+            <Text align="center" style={itemStyle}>
+              1
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>2</div>
+            <Text align="center" style={itemStyle}>
+              2
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>3</div>
+            <Text align="center" style={itemStyle}>
+              3
+            </Text>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -168,28 +184,34 @@ In some cases it might be neccessary to define or change direction of the column
     const itemStyle = {
       height: "20px",
       width: "100%",
-      backgroundColor: "DeepSkyBlue",
-      marginBottom: "8px",
-      color: "white",
-      textAlign: "center"
+      backgroundColor: "deepskyblue",
+      color: "white"
     }
     return (
       <React.Fragment>
         <Grid direction="column-reverse">
           <Grid.Child size={4}>
-            <div style={itemStyle}>1</div>
+            <Text align="center" style={itemStyle}>
+              1
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>2</div>
+            <Text align="center" style={itemStyle}>
+              2
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>3</div>
+            <Text align="center" style={itemStyle}>
+              3
+            </Text>
           </Grid.Child>
         </Grid>
       </React.Fragment>
     )
   }}
 </Example>
+
+---
 
 ### Grid gap
 
@@ -202,21 +224,26 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
     const itemStyle = {
       height: "20px",
       width: "100%",
-      backgroundColor: "DeepSkyBlue",
-      color: "white",
-      textAlign: "center"
+      backgroundColor: "deepskyblue",
+      color: "white"
     }
     return (
       <React.Fragment>
         <Grid gap="normal">
           <Grid.Child size={4}>
-            <div style={itemStyle}>1</div>
+            <Text align="center" style={itemStyle}>
+              1
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>2</div>
+            <Text align="center" style={itemStyle}>
+              2
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>3</div>
+            <Text align="center" style={itemStyle}>
+              3
+            </Text>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -231,27 +258,34 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
     const itemStyle = {
       height: "20px",
       width: "100%",
-      backgroundColor: "DeepSkyBlue",
-      color: "white",
-      textAlign: "center"
+      backgroundColor: "deepskyblue",
+      color: "white"
     }
     return (
       <React.Fragment>
         <Grid gap="zero">
           <Grid.Child size={4}>
-            <div style={itemStyle}>1</div>
+            <Text align="center" style={itemStyle}>
+              1
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>2</div>
+            <Text align="center" style={itemStyle}>
+              2
+            </Text>
           </Grid.Child>
           <Grid.Child size={4}>
-            <div style={itemStyle}>3</div>
+            <Text align="center" style={itemStyle}>
+              3
+            </Text>
           </Grid.Child>
         </Grid>
       </React.Fragment>
     )
   }}
 </Example>
+
+---
 
 ### Grid Nesting
 
@@ -288,10 +322,10 @@ Nesting inside columns with the following widths should be prevented, because al
             <div style={itemStyle("lightskyblue")}>
               <Grid>
                 <Grid.Child size={6}>
-                  <div style={itemStyle("DeepSkyBlue")} />
+                  <div style={itemStyle("deepskyblue")} />
                 </Grid.Child>
                 <Grid.Child size={6}>
-                  <div style={itemStyle("DeepSkyBlue")} />
+                  <div style={itemStyle("deepskyblue")} />
                 </Grid.Child>
               </Grid>
             </div>
@@ -300,10 +334,10 @@ Nesting inside columns with the following widths should be prevented, because al
             <div style={itemStyle("lightskyblue")}>
               <Grid>
                 <Grid.Child size={4}>
-                  <div style={itemStyle("DeepSkyBlue")} />
+                  <div style={itemStyle("deepskyblue")} />
                 </Grid.Child>
                 <Grid.Child size={8}>
-                  <div style={itemStyle("DeepSkyBlue")} />
+                  <div style={itemStyle("deepskyblue")} />
                 </Grid.Child>
               </Grid>
             </div>
@@ -313,6 +347,8 @@ Nesting inside columns with the following widths should be prevented, because al
     )
   }}
 </Example>
+
+---
 
 ### Grid Responsive
 
@@ -325,6 +361,7 @@ The grid system is fluid/responsive by itself by using percentages for every val
         minHeight: "20px",
         backgroundColor: color,
         marginTop: "12px",
+        color: "white",
         padding
       }
     }
@@ -332,7 +369,7 @@ The grid system is fluid/responsive by itself by using percentages for every val
       <React.Fragment>
         <Grid gap={{ base: "normal", s: "zero", m: "normal" }}>
           <Grid.Child className="pui-flex" size={{ base: 12, m: 4, l: 3 }} offset={{ base: 0, m: 2, l: 0 }}>
-            <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue", "12px")}>
+            <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("deepskyblue", "12px")}>
               <Text type="4-thin">Column 1</Text>
               <Text>
                 xxs -- size: 12 <br />s -- gap: zero <br />m -- gap: normal, size: 4, offset: 2<br />l -- size: 3,
@@ -350,7 +387,7 @@ The grid system is fluid/responsive by itself by using percentages for every val
             }}
             offset={{ base: 0, s: 3, m: 0 }}
           >
-            <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue", "12px")}>
+            <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("deepskyblue", "12px")}>
               <Text type="4-thin">Column 2</Text>
               <Text>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6, offset: 3<br />m -- gap: normal, size: 4, offset: 0<br />
@@ -366,7 +403,7 @@ The grid system is fluid/responsive by itself by using percentages for every val
               l: 3
             }}
           >
-            <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue", "12px")}>
+            <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("deepskyblue", "12px")}>
               <Text type="4-thin">Column 3</Text>
               <Text>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6<br />m -- gap: normal
@@ -382,7 +419,7 @@ The grid system is fluid/responsive by itself by using percentages for every val
               l: 3
             }}
           >
-            <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("DeepSkyBlue", "12px")}>
+            <div className="pui-flex__child pui-flex__child--auto" style={itemStyle("deepskyblue", "12px")}>
               <Text type="4-thin">Column 4</Text>
               <Text>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6<br />m -- gap: normal

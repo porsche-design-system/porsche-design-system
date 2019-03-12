@@ -14,7 +14,7 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
     const itemStyle = (color) => {
       return {
         backgroundColor: color,
-        padding: "12px",
+        height: "20px",
         color: "white",
         width: "200px"
       }
@@ -23,24 +23,24 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("LightSkyBlue")}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
               2
             </Text>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("LightSkyBlue")}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
               2
             </Text>
           </Flex.Item>
@@ -49,6 +49,8 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
     )
   }}
 </Example>
+
+---
 
 ### Flex inline
 
@@ -57,7 +59,7 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
     const itemStyle = (color) => {
       return {
         backgroundColor: color,
-        padding: "12px",
+        height: "20px",
         color: "white",
         width: "200px"
       }
@@ -66,24 +68,24 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
       <React.Fragment>
         <Flex inline>
           <Flex.Item>
-            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
               2
             </Text>
           </Flex.Item>
         </Flex>
         <Flex inline>
           <Flex.Item>
-            <Text align="center" style={itemStyle("LightSkyBlue")}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("LightSkyBlue")}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
               2
             </Text>
           </Flex.Item>
@@ -93,14 +95,16 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
   }}
 </Example>
 
-### Flex responsive behaviour (base: flex, l: flex-inline):
+---
+
+### Flex responsive
 
 <Example noTheme>
   {(theme) => {
     const itemStyle = (color) => {
       return {
         backgroundColor: color,
-        padding: "12px",
+        height: "20px",
         color: "white",
         width: "200px"
       }
@@ -109,25 +113,1289 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
       <React.Fragment>
         <Flex inline={{ base: false, l: true }}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("DeepSkyBlue")}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
               2
             </Text>
           </Flex.Item>
         </Flex>
         <Flex inline={{ base: false, l: true }}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("LightSkyBlue")}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("LightSkyBlue")}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
               2
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex direction
+
+In some cases it might be necessary to define or change direction of the columns. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
+
+#### Row (default)
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Row reverse
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex direction="row-reverse">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Column
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex direction="column">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Column reverse
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex direction="column-reverse">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Direction responsive
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex direction={{ base: "column", l: "row" }}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex Wrapping
+
+#### Wrap (default)
+
+The flex-wrap property is a sub-property of the flexible box layout module. It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in (the cross axis is the axis perpendicular to the main axis. Its direction depends on the main axis direction).
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px",
+        textAlign: "center"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### No wrap
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px",
+        textAlign: "center"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex wrap={false}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Wrap reverse
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px",
+        textAlign: "center"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex wrap="reverse">
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Wrap responsive
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px",
+        textAlign: "center"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex wrap={{ base: true, l: false }}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex Align Main Axis
+
+This defines the alignment along the main axis. It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size.
+
+#### Start (default)
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignMainAxis="start">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Center
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignMainAxis="center">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### End
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignMainAxis="end">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Space between
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignMainAxis="space-between">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Space around
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignMainAxis="space-around">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Space evenly
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignMainAxis="space-evenly">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align main axis responsive
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignMainAxis={{ base: "start", l: "end" }}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex Align Cross Axis
+
+This defines the default behaviour for how flex items are laid out along the cross axis on the current line. Think of it as the main axis version for the cross axis (perpendicular to the main axis).
+
+#### Start (default)
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignCrossAxis="start">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Center
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignCrossAxis="center">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### End
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignCrossAxis="end">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Stretch
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignCrossAxis="stretch">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Baseline
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignCrossAxis="baseline">
+          <Flex.Item>
+            <Text
+              align="center"
+              style={{
+                height: "20px",
+                width: "200px",
+                color: "white",
+                backgroundColor: "dodgerblue",
+                marginTop: "20px"
+              }}
+            >
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align cross axis responsive
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignCrossAxis={{ base: "start", l: "end" }}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex Align Content
+
+This aligns a flex containers lines within it when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis. Note: this property has no effect when there is only one line of flex items.
+
+#### Start (default)
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignContent="start" style={containerStyle}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Center
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignContent="center" style={containerStyle}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### End
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignContent="end" style={containerStyle}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Space around
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignContent="space-around" style={containerStyle}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Space between
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignContent="space-between" style={containerStyle}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align Content responsive
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex alignContent={{ base: "start", l: "end" }} style={containerStyle}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex Child Spacing
+
+Use `gap` to apply equal horizontal spacing to all children of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component.
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        height: "20px",
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex gap={12}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex Child width
+
+The widths of flex children is defined by its contents by default. But it is also possible to define equal widths or even specific widths.
+
+#### Automatic width
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        padding: "12px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              An element
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              An element with a little more text
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              An element
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              An element with more content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Equal width
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        padding: "12px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="equal">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              An element
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              An element with a little more text
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              An element
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              An element with more content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Specific widths
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { marginTop: "8px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        padding: "12px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item width="one-quarter">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              one-quarter
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-quarter">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              one-quarter
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-quarter">
+            <Text align="center" style={itemStyle("dodgerblue")}>
+              one-quarter
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-quarter">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              one-quarter
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item width="one-third">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              one-third
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-third">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              one-third
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-third">
+            <Text align="center" style={itemStyle("dodgerblue")}>
+              one-third
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item width="half">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              half
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="half">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              half
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item width="two-thirds">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              two-thirds
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-third">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              one-third
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item width="three-quarters">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              three-quarters
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-quarter">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              one-quarter
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item width="full">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              full
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Responsive widths
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        padding: "12px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex wrap>
+          <Flex.Item width={{ base: "half", l: "one-quarter" }}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              An element
+            </Text>
+          </Flex.Item>
+          <Flex.Item width={{ base: "half", l: "one-quarter" }}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              An element with a little more text
+            </Text>
+          </Flex.Item>
+          <Flex.Item width={{ base: "half", l: "one-quarter" }}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              An element
+            </Text>
+          </Flex.Item>
+          <Flex.Item width={{ base: "half", l: "one-quarter" }}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              An element with more content
             </Text>
           </Flex.Item>
         </Flex>
