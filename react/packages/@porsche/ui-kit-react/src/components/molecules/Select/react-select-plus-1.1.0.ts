@@ -417,7 +417,7 @@ let asyncGenerator = (function() {
                 let value = result.value
 
                 if (value instanceof AwaitValue) {
-                    Promise.resolve(value.value).then(
+                    Promise.resolve((value as any).value).then(
                         function(arg) {
                             resume("next", arg)
                         },
