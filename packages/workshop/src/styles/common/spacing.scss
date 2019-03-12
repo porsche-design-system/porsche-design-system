@@ -1,0 +1,90 @@
+@import "./../utility/variable/spacing";
+
+/**
+ * Static spacings
+ */
+$spacings: (
+  "3": $p-spacing-3,
+  "6": $p-spacing-6,
+  "12": $p-spacing-12,
+  "18": $p-spacing-18,
+  "24": $p-spacing-24,
+  "30": $p-spacing-30,
+  "36": $p-spacing-36,
+  "42": $p-spacing-42,
+  "48": $p-spacing-48,
+  "54": $p-spacing-54,
+  "60": $p-spacing-60
+);
+
+.#{$p-global-class-prefix}m {
+  @each $name, $spacing in $spacings {
+    &--#{$name} {
+      margin: $spacing;
+    }
+
+    &t--#{$name} {
+      margin-top: $spacing;
+    }
+
+    &l--#{$name} {
+      margin-left: $spacing;
+    }
+
+    &b--#{$name} {
+      margin-bottom: $spacing;
+    }
+
+    &r--#{$name} {
+      margin-right: $spacing;
+    }
+  }
+}
+
+.#{$p-global-class-prefix}m-n {
+  @each $name, $spacing in $spacings {
+    &--#{$name} {
+      margin: -$spacing;
+    }
+
+    &t--#{$name} {
+      margin-top: -$spacing;
+    }
+
+    &l--#{$name} {
+      margin-left: -$spacing;
+    }
+
+    &b--#{$name} {
+      margin-bottom: -$spacing;
+    }
+
+    &r--#{$name} {
+      margin-right: -$spacing;
+    }
+  }
+}
+
+.#{$p-global-class-prefix}p {
+  @each $name, $spacing in $spacings {
+    &--#{$name} {
+      padding: $spacing;
+    }
+
+    &t--#{$name} {
+      padding-top: $spacing;
+    }
+
+    &l--#{$name} {
+      padding-left: $spacing;
+    }
+
+    &b--#{$name} {
+      padding-bottom: $spacing;
+    }
+
+    &r--#{$name} {
+      padding-right: $spacing;
+    }
+  }
+}
