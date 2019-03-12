@@ -27,12 +27,12 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ### @see References
 
-Different components can be cross-referenced using the `@see` annotation inside the component description.
-Simply put the components name after the annotation and a link to it will automatically appear in the header of the documentation page.
+Different components can be cross-referenced using the `@see` annotation inside the component description. Simply put the components name after the annotation and a link to it will automatically appear in the header of the documentation page.
 
 ## Publishing artifacts
 
 ## Release Management
+
 1. After merge requirements of a pull request are fulfilled, it can be merged to master branch (don't forget to delete the branch afterwards)
 1. Goto ui-kit-react project in terminal and pull latest commits with `git pull`
 1. Open `CHANGELOG.md` and update release notes with proper date and version
@@ -41,5 +41,5 @@ Simply put the components name after the annotation and a link to it will automa
 1. Create a commit with following message structure `Release react:v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Run `yarn run publish:artifactory` which will deploy the artifact to the Artifactory repository an creates a git tag.
 1. Create a Git tag `git tag v0.{MINOR_NUMBER}.{PATCH_NUMBER}/react`
-1. Push local commit with tag to master branch `git push --tags`
+1. Push local commit with tag to `0.x` branch `git push --tags`
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace
