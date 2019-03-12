@@ -47,7 +47,7 @@ export const Sidebar: React.FunctionComponent = (props) => {
       {categories.map((category) => {
         const stories = Object.keys((Stories as any)[category])
         if (!stories) {
-          return <Redirect to="/introduction" />
+          return <Redirect to="/general/home" />
         }
         return (
           <SidebarCategory key={category} title={category}>

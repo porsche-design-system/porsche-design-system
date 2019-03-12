@@ -20,13 +20,13 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>>
     (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))]
 
   if (!category) {
-    return <Redirect to="/introduction" />
+    return <Redirect to="/general/home" />
   }
 
   const story: StoryType = category[decodeParam(storyName)] || category[toTitleCase(decodeParam(storyName))]
 
   if (!story) {
-    return <Redirect to="/introduction" />
+    return <Redirect to="/general/home" />
   }
 
   const Code = lazy(() => story.examples)
