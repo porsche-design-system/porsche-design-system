@@ -5,6 +5,7 @@
 .#{$sg-prefix}example {
   &__render {
     padding: $p-spacing-30;
+    overflow-x: auto;
 
     &--light {
       background-color: $p-color-grey-1;
