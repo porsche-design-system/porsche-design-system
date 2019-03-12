@@ -39,6 +39,7 @@
     "@porscheui/porsche-ui-kit": "1.0.0",
     "classnames": "^2.2.6",
     "react": "^16.8.4",
+    "react-app-polyfill": "^0.2.2",
     "react-dom": "^16.8.4",
     "react-markdown": "^4.0.6",
     "react-router-dom": "^4.3.1"
