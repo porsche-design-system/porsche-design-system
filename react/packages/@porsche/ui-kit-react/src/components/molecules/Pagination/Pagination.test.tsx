@@ -39,10 +39,10 @@ describe("Pagination component", () => {
 
             // Act
             const componentWrapper = createComponent(props)
-            const theme = componentWrapper.prop("theme")
+            const inverted = componentWrapper.prop("inverted")
 
             // Assert
-            expect(theme).toEqual("inverted")
+            expect(inverted).toEqual(true)
         })
     })
 
