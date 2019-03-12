@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Bugfix
+* Add properly encoded resource for deprecated loader
 
 ## [0.18.2] - 2019-03-04
 * Updated default dimension of SVG icons to width and height of 100%
