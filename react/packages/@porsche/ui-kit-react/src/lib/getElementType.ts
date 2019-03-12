@@ -11,7 +11,7 @@ import * as React from "react"
 export const getElementType = (
     as?: string | React.ComponentClass,
     defaultValue?: string | React.ComponentClass
-): string | React.ComponentClass => {
+): any => {
     // ----------------------------------------
     // user defined "as" element type
 
