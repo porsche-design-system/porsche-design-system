@@ -1,6 +1,7 @@
 @import '../../setup/global-variables.scss';
 @import '../../setup/color-palette.setup.scss';
 @import '../../mixins/breakpoint.scss';
+@import '../../mixins/px-rem-converter.scss';
 
 .#{$global-class-prefix}loader {
   $bem-block: &;
