@@ -838,7 +838,7 @@
 
 "@porsche/ui-kit-core@0.18.2":
   version "0.18.2"
-  resolved "https://porschedev.jfrog.io/porschedev/api/npm/public-npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.18.2.tgz#6b811e65071527fd8bc4e54ad7b80fd18bfdcef1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.18.2.tgz#6b811e65071527fd8bc4e54ad7b80fd18bfdcef1"
   integrity sha1-a4EeZQcVJ/2LxOVK17gP0Yv9zvE=
 
 "@samverschueren/stream-to-observable@^0.3.0":
