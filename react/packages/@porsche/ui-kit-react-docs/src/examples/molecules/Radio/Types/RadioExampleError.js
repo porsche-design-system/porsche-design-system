@@ -1,13 +1,13 @@
 import React from "react"
-import { Flex, Spacing, Radio } from "@porsche/ui-kit-react"
+import { Flex, Radio } from "@porsche/ui-kit-react"
 
 const RadioExampleError = () => {
     return (
         <Flex>
-            <Radio id="radio_example_error_1" name="radioExampleError" error={true}>
+            <Radio value="radio_example_error_1" name="radioExampleError" error>
                 Radio
             </Radio>
-            <Radio id="radio_example_error_2" name="radioExampleError" checked={true} error={true}>
+            <Radio value="radio_example_error_2" name="radioExampleError" checked error>
                 Radio
             </Radio>
         </Flex>
