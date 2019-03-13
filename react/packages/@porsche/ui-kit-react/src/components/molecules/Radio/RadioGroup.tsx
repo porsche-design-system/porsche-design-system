@@ -10,7 +10,7 @@ import { RadioProps } from "./Radio"
 export interface RadioGroupProps extends ClassNameProp, ComponentProp {
     name: string
 
-    verticalAlignment?: boolean
+    vertical?: boolean
 
     disabled?: boolean
 
@@ -24,19 +24,19 @@ export interface RadioGroupProps extends ClassNameProp, ComponentProp {
 }
 
 const _RadioGroup: React.StatelessComponent<RadioGroupProps> = (props) => {
-    const { as, className, children, disabled, name, verticalAlignment, onChange, ...rest } = props
+    const { as, className, children, disabled, name, vertical, onChange, ...rest } = props
 
     const classes = cx(
-        verticalAlignment ? `${prefix("radio-group")} ${prefix("radio-group--vertical")}` : prefix("radio-group"),
+        vertical ? `${prefix("radio-group")} ${prefix("radio-group--vertical")}` : prefix("radio-group"),
         className
     )
 
     return (
-        <Flex as={as} className={classes} direction={verticalAlignment ? "column" : "row"} {...rest}>
-            {React.Children.map(children, (child: React.ReactElement<RadioProps>, i) => {
+        <Flex as={as} className={classes} direction={vertical ? "column" : "row"} {...rest}>
+            {React.Children.map(children, (child: React.ReactElement<RadioProps>) => {
                 return (
-                    <div key={i} className={prefix("radio-group__radio")}>
-                        {React.cloneElement(child, { name, onChange, disabled })}
+                    <div key={child.props.value} className={prefix("radio-group__radio")}>
+                        {React.cloneElement(child, { group: name, onChange, disabled })}
                     </div>
                 )
             })}

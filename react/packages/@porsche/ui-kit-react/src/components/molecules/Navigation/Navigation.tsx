@@ -12,7 +12,7 @@ export interface NavigationSection {
     label: string | JSX.Element
     counter?: number
     menu?: JSX.Element
-    component?: React.ComponentClass
+    component?: React.ComponentClass<any, any>
     props?: object
 }
 

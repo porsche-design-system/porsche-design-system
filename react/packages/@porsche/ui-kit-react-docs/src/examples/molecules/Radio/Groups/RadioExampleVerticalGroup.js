@@ -3,8 +3,8 @@ import { Radio } from "@porsche/ui-kit-react"
 
 const RadioExampleVerticalGroup = () => {
     return (
-        <Radio.Group name="radiogroupvertical" verticalAlignment={true}>
-            <Radio value="radio 1" checked={true}>
+        <Radio.Group name="radiogroupvertical" vertical>
+            <Radio value="radio 1" checked>
                 Radio 1
             </Radio>
             <Radio value="radio 2">Radio 2</Radio>
