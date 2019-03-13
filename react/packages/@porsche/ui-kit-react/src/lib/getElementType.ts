@@ -9,9 +9,9 @@ import * as React from "react"
  * @returns {string} A ReactElement type
  */
 export const getElementType = (
-    as?: string | React.ComponentClass,
-    defaultValue?: string | React.ComponentClass
-): any => {
+    as?: string | React.ComponentClass<any, any>,
+    defaultValue?: string | React.ComponentClass<any, any>
+) => {
     // ----------------------------------------
     // user defined "as" element type
 
