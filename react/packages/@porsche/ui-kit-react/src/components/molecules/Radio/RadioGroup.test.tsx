@@ -15,67 +15,63 @@ describe("Radio Group", () => {
                 onChange={radioGroupProps.onChange}
                 disabled={radioGroupProps.disabled}
             >
-                <Radio id={radio1Props.id} checked={true} value={radio1Props.value} />
-                <Radio id={radio2Props.id} value={radio2Props.value} />
+                <Radio checked={true} value={radio1Props.value} />
+                <Radio value={radio2Props.value} />
             </Radio.Group>
         )
     }
 
     describe("onChange", () => {
         it("is called with the value of the input on change", () => {
-            //arrange
+            // arrange
             const onChange = jest.fn()
             const radioGroupProps = {
                 name: "radiotest",
                 onChange
             }
             const radio1Props = {
-                id: "radio1",
                 value: "radio1"
             }
             const radio2Props = {
-                id: "radio2",
                 value: "radio2"
             }
 
-            //act
+            // act
             const component = createComponent(radioGroupProps, radio1Props, radio2Props)
             const input = component.find("input").first()
 
             input.simulate("change")
 
-            //assert
+            // assert
             expect(undefined === input.props().disabled)
             expect(onChange).toHaveBeenCalledWith(radio1Props.value, expect.anything(), expect.anything())
         })
         it("is called with value of second radio if it's checked", () => {
-            //arrange
+            // arrange
             const onChange = jest.fn()
             const radioGroupProps = {
                 name: "radiotest",
                 onChange
             }
             const radio1Props = {
-                id: "radio1",
                 value: "radio1"
             }
             const radio2Props = {
-                id: "radio2",
                 value: "radio2"
             }
 
-            //act
+            // act
             const component = createComponent(radioGroupProps, radio1Props, radio2Props)
             const input = component.find("input").last()
 
             input.simulate("change")
 
-            //assert
+            // assert
             expect(undefined === input.props().disabled)
             expect(onChange).toHaveBeenCalledWith(radio2Props.value, expect.anything(), expect.anything())
         })
         it("is not called since radio is disabled", () => {
-            //arrange
+            // arrange
             const onChange = jest.fn()
             const radioGroupProps = {
                 name: "radiotest",
@@ -83,15 +79,13 @@ describe("Radio Group", () => {
                 onChange
             }
             const radio1Props = {
-                id: "radio1",
                 value: "radio1"
             }
             const radio2Props = {
-                id: "radio2",
                 value: "radio2"
             }
 
-            //act
+            // act
             const component = createComponent(radioGroupProps, radio1Props, radio2Props)
             const inputs = component.find("input")
 
@@ -104,7 +98,7 @@ describe("Radio Group", () => {
                 }
             })
 
-            //assert
+            // assert
             expect(onChange).not.toHaveBeenCalled()
         })
     })
