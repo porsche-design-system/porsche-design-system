@@ -9,7 +9,7 @@ import { Flex, Spacing, Text, Icon } from "../../../index"
 export interface NavigationMenuListItem {
     key: string
     label: string | JSX.Element
-    component?: string | React.ComponentClass
+    component?: string | React.ComponentClass<any, any>
     props?: object
 }
 

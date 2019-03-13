@@ -14,7 +14,7 @@ export interface HeaderProps extends ClassNameProp, ComponentProp {
     title?: string | JSX.Element
 
     /** The element type of the logo. */
-    logoComponent?: string | React.ComponentClass
+    logoComponent?: string | React.ComponentClass<any, any>
 
     /** Custom props of the logo. */
     logoProps?: object

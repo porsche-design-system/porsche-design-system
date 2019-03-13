@@ -31,7 +31,7 @@ class ModalExampleContentTitleText extends React.PureComponent {
             <div>
                 <Button onClick={this.handleClick}>Show Modal</Button>
 
-                <Modal isOpen={this.state.modal} onRequestClose={this.handleClose}>
+                <Modal isOpen={this.state.modal} onRequestClose={this.handleClose} containerRef={this.containerRef}>
                     <Modal.Title>Title and Text</Modal.Title>
                     <Modal.Text>{this.text}</Modal.Text>
                 </Modal>

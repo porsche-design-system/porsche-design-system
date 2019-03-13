@@ -70,6 +70,8 @@ export interface ModalProps extends ClassNameProp {
      */
     containerClassName?: string
 
+    containerRef?: React.RefObject<HTMLDivElement>
+
     /**
      * Displays a loader and translucent backdrop above the entire content.
      * @default false
@@ -93,6 +95,7 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> = (props) =>
         ariaHideApp,
         showCloseIcon,
         containerClassName,
+        containerRef,
         loading,
         size,
         ...rest
@@ -131,7 +134,7 @@ const _Modal: React.StatelessComponent<ModalProps> & Partial<Modal> = (props) =>
                     />
                 </div>
             )}
-            <div className={containerClasses}>
+            <div className={containerClasses} ref={containerRef}>
                 <Loader.Mask loading={loading}>
                     <div className={prefix("modal__content")}>{children}</div>
                 </Loader.Mask>
