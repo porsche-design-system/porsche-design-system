@@ -1,7 +1,7 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
@@ -68,13 +68,12 @@
         "publish:artifactory": "yarn run test && yarn run build && yarn publish"
     },
     "dependencies": {
-        "@porsche/ui-kit-core": "0.18.0",
+        "@porsche/ui-kit-core": "0.18.2",
         "classnames": "^2.2.6",
         "react-modal": "^3.7.1",
         "react-responsive": "^6.0.1",
         "react-transition-group": "^2.5.1",
-        "tslib": "^1.9.3",
-        "typescript": "~3.1.6"
+        "tslib": "^1.9.3"
     },
     "devDependencies": {
         "@types/enzyme": "^3.1.15",
@@ -103,7 +102,8 @@
         "stylelint": "^9.9.0",
         "stylelint-config-standard": "^18.2.0",
         "stylelint-scss": "^3.4.1",
-        "ts-jest": "^23.10.5"
+        "ts-jest": "^23.10.5",
+        "typescript": "3.3.3333"
     },
     "peerDependencies": {
         "react": ">=0.14.0 <= 16",
