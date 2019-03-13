@@ -11,7 +11,7 @@ export interface Radio extends React.StatelessComponent<RadioProps> {
 
 export interface RadioProps extends ClassNameProp, ComponentProp {
     /** If you don't use RadioGroup, you can use this property to group Radio buttons manually. */
-    group?: string
+    name?: string
 
     /**
      * Whether or not the radio is checked.
@@ -65,7 +65,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
         disabled,
         error,
         labelAs,
-        group,
+        name,
         onChange,
         onClick,
         singleLine,
@@ -118,7 +118,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
         <ElementType className={elementClasses} onClick={handleClick} {...rest}>
             <input
                 type="radio"
-                name={group}
+                name={name}
                 className={prefix("radio__field")}
                 checked={checked}
                 disabled={disabled}
