@@ -42,7 +42,6 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<FlexProps> = {
-  wrap: true,
   inline: false
 }
 

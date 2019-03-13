@@ -5,9 +5,9 @@ import { Flex, Text } from "@porscheui/porsche-ui-kit"
 
 ## Introduction
 
-The Porsche UI Kit flex layout system is based on native css flex behaviours and can be controlled by class names.
+The Porsche UI Kit flex layout system is based on native css flex behaviours and can be controlled by changing class names on the parent/child flex item.
 
-### Flex standard
+### Flex - standard
 
 <Example noTheme>
   {(theme) => {
@@ -52,7 +52,7 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
 
 ---
 
-### Flex inline
+### Flex - inline
 
 <Example noTheme>
   {(theme) => {
@@ -97,7 +97,7 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
 
 ---
 
-### Flex responsive
+### Flex - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -146,7 +146,7 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
 
 In some cases it might be necessary to define or change direction of the columns. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
 
-#### Row (default)
+#### Direction - row (default)
 
 <Example noTheme>
   {(theme) => {
@@ -182,7 +182,7 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
-#### Row reverse
+#### Direction - row reverse
 
 <Example noTheme>
   {(theme) => {
@@ -218,7 +218,7 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
-#### Column
+#### Direction - column
 
 <Example noTheme>
   {(theme) => {
@@ -254,7 +254,7 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
-#### Column reverse
+#### Direction - column reverse
 
 <Example noTheme>
   {(theme) => {
@@ -290,7 +290,7 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
-#### Direction responsive
+#### Direction - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -328,11 +328,11 @@ In some cases it might be necessary to define or change direction of the columns
 
 ---
 
-### Flex Wrapping
-
-#### Wrap (default)
+### Flex wrapping
 
 The flex-wrap property is a sub-property of the flexible box layout module. It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in (the cross axis is the axis perpendicular to the main axis. Its direction depends on the main axis direction).
+
+#### Wrap - no (default)
 
 <Example noTheme>
   {(theme) => {
@@ -363,7 +363,7 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
   }}
 </Example>
 
-#### No wrap
+#### Wrap - wrap
 
 <Example noTheme>
   {(theme) => {
@@ -378,7 +378,7 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
     }
     return (
       <React.Fragment>
-        <Flex wrap={false}>
+        <Flex wrap={true}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
@@ -394,7 +394,7 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
   }}
 </Example>
 
-#### Wrap reverse
+#### Wrap - reverse
 
 <Example noTheme>
   {(theme) => {
@@ -425,7 +425,7 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
   }}
 </Example>
 
-#### Wrap responsive
+#### Wrap - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -458,11 +458,11 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
 
 ---
 
-### Flex Align Main Axis
+### Flex align main axis
 
 This defines the alignment along the main axis. It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size.
 
-#### Start (default)
+#### Align main axis - start (default)
 
 <Example noTheme>
   {(theme) => {
@@ -498,7 +498,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Center
+#### Align main axis - center
 
 <Example noTheme>
   {(theme) => {
@@ -534,7 +534,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### End
+#### Align main axis - end
 
 <Example noTheme>
   {(theme) => {
@@ -570,7 +570,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Space between
+#### Align main axis - space between
 
 <Example noTheme>
   {(theme) => {
@@ -606,7 +606,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Space around
+#### Align main axis - space around
 
 <Example noTheme>
   {(theme) => {
@@ -642,7 +642,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Space evenly
+#### Align main axis - space evenly
 
 <Example noTheme>
   {(theme) => {
@@ -678,7 +678,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Align main axis responsive
+#### Align main axis - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -716,11 +716,11 @@ This defines the alignment along the main axis. It helps distribute extra free s
 
 ---
 
-### Flex Align Cross Axis
+### Flex align cross axis
 
 This defines the default behaviour for how flex items are laid out along the cross axis on the current line. Think of it as the main axis version for the cross axis (perpendicular to the main axis).
 
-#### Start (default)
+#### Align cross axis - start (default)
 
 <Example noTheme>
   {(theme) => {
@@ -756,7 +756,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Center
+#### Align cross axis - center
 
 <Example noTheme>
   {(theme) => {
@@ -792,7 +792,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### End
+#### Align cross axis - end
 
 <Example noTheme>
   {(theme) => {
@@ -828,7 +828,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Stretch
+#### Align cross axis - stretch
 
 <Example noTheme>
   {(theme) => {
@@ -844,17 +844,17 @@ This defines the default behaviour for how flex items are laid out along the cro
       <React.Fragment>
         <Flex alignCrossAxis="stretch">
           <Flex.Item>
-            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+            <Text align="center" style={itemStyle("100%", "deepskyblue")}>
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+            <Text align="center" style={itemStyle("100%", "lightskyblue")}>
               3
             </Text>
           </Flex.Item>
@@ -864,7 +864,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Baseline
+#### Align cross axis - baseline
 
 <Example noTheme>
   {(theme) => {
@@ -909,7 +909,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align cross axis responsive
+#### Align cross axis - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -947,11 +947,11 @@ This defines the default behaviour for how flex items are laid out along the cro
 
 ---
 
-### Flex Align Content
+### Flex align content
 
 This aligns a flex containers lines within it when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis. Note: this property has no effect when there is only one line of flex items.
 
-#### Start (default)
+#### Align content - start (default)
 
 <Example noTheme>
   {(theme) => {
@@ -966,7 +966,7 @@ This aligns a flex containers lines within it when there is extra space in the c
     }
     return (
       <React.Fragment>
-        <Flex alignContent="start" style={containerStyle}>
+        <Flex wrap alignContent="start" style={containerStyle}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
@@ -982,7 +982,7 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### Center
+#### Align content - center
 
 <Example noTheme>
   {(theme) => {
@@ -997,7 +997,7 @@ This aligns a flex containers lines within it when there is extra space in the c
     }
     return (
       <React.Fragment>
-        <Flex alignContent="center" style={containerStyle}>
+        <Flex wrap alignContent="center" style={containerStyle}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
@@ -1013,7 +1013,7 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### End
+#### Align content - end
 
 <Example noTheme>
   {(theme) => {
@@ -1028,7 +1028,7 @@ This aligns a flex containers lines within it when there is extra space in the c
     }
     return (
       <React.Fragment>
-        <Flex alignContent="end" style={containerStyle}>
+        <Flex wrap alignContent="end" style={containerStyle}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
@@ -1044,7 +1044,7 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### Space around
+#### Align content - space around
 
 <Example noTheme>
   {(theme) => {
@@ -1059,7 +1059,7 @@ This aligns a flex containers lines within it when there is extra space in the c
     }
     return (
       <React.Fragment>
-        <Flex alignContent="space-around" style={containerStyle}>
+        <Flex wrap alignContent="space-around" style={containerStyle}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
@@ -1075,7 +1075,7 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### Space between
+#### Align content - space between
 
 <Example noTheme>
   {(theme) => {
@@ -1090,7 +1090,7 @@ This aligns a flex containers lines within it when there is extra space in the c
     }
     return (
       <React.Fragment>
-        <Flex alignContent="space-between" style={containerStyle}>
+        <Flex wrap alignContent="space-between" style={containerStyle}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
@@ -1106,7 +1106,7 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### Align Content responsive
+#### Align content - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -1121,7 +1121,7 @@ This aligns a flex containers lines within it when there is extra space in the c
     }
     return (
       <React.Fragment>
-        <Flex alignContent={{ base: "start", l: "end" }} style={containerStyle}>
+        <Flex wrap alignContent={{ base: "start", l: "end" }} style={containerStyle}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
@@ -1139,7 +1139,7 @@ This aligns a flex containers lines within it when there is extra space in the c
 
 ---
 
-### Flex Child Spacing
+### Flex child spacing
 
 Use `gap` to apply equal horizontal spacing to all children of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component.
 
@@ -1179,7 +1179,7 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
 
 ---
 
-### Flex Child width
+### Flex child width
 
 The widths of flex children is defined by its contents by default. But it is also possible to define equal widths or even specific widths.
 
@@ -1396,6 +1396,547 @@ The widths of flex children is defined by its contents by default. But it is als
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
             <Text align="center" style={itemStyle("deepskyblue")}>
               An element with more content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex child offset
+
+Items can have different offsets that work similar like column widths.
+
+#### Offset widths
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { marginTop: "8px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        padding: "12px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex style={containerStyle}>
+          <Flex.Item offset={"one-quarter"} width={"three-quarters"}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              Offset: quarter
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item offset={"one-third"} width={"two-thirds"}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              Offset: third
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item offset={"half"} width={"half"}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              Offset: half
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item offset={"two-thirds"} width={"one-third"}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              Offset: 2 thirds
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex style={containerStyle}>
+          <Flex.Item offset={"three-quarters"} width={"one-quarter"}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              Offset: 3 quarters
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Responsive offset widths
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { marginTop: "8px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        padding: "12px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item offset={{ base: "none", l: "one-third" }}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              An element with responsive offset
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex align cross axis
+
+You can override the cross axis alignment for individual flex items. Note that float, clear and vertical-align have no effect on a flex item.
+
+#### Align cross axis - auto (default)
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        height,
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex style={containerStyle}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignCrossAxis="auto">
+            <Text align="center" style={itemStyle("50px", "deeppink")}>
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align cross axis - stretch
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        height,
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex style={containerStyle}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignCrossAxis="stretch">
+            <Text align="center" style={itemStyle("100%", "deeppink")}>
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align cross axis - start
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        height,
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex style={containerStyle}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignCrossAxis="start">
+            <Text align="center" style={itemStyle("50px", "deeppink")}>
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align cross axis - end
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        height,
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex style={containerStyle}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignCrossAxis="end">
+            <Text align="center" style={itemStyle("50px", "deeppink")}>
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align cross axis - center
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        height,
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex style={containerStyle}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignCrossAxis="center">
+            <Text align="center" style={itemStyle("50px", "deeppink")}>
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align cross axis - baseline
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        height,
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex style={containerStyle}>
+          <Flex.Item alignCrossAxis="baseline">
+            <Text
+              align="center"
+              style={{
+                height: "50px",
+                width: "200px",
+                color: "white",
+                backgroundColor: "dodgerblue",
+                marginTop: "20px"
+              }}
+            >
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignCrossAxis="baseline">
+            <Text align="center" style={itemStyle("50px", "deeppink")}>
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Align cross axis - responsive
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        height,
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex style={containerStyle}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignCrossAxis={{ base: "start", l: "end" }}>
+            <Text align="center" style={itemStyle("50px", "deeppink")}>
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Flex shorthand
+
+Setting shorthand properties for flex grow, shrink and base:
+
+#### Shorthand - initial (grow:0, shrink:1 and base:auto)
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        padding: "12px",
+        color: "white"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="initial">
+            <Text align="center" style={itemStyle("dodgerblue")}>
+              1 - short content
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="initial">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="initial">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              3 - short content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Shorthand - auto (grow:1, shrink:1 and base:auto)
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        padding: "12px",
+        color: "white"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="auto">
+            <Text align="center" style={itemStyle("dodgerblue")}>
+              1 - short content
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="auto">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="auto">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              3 - short content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Shorthand - equal (grow:1, shrink:1 and base:0)
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        padding: "12px",
+        color: "white"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="equal">
+            <Text align="center" style={itemStyle("dodgerblue")}>
+              1 - short content
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              3 - short content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Shorthand - none (grow:0, shrink:0 and base:auto)
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        padding: "12px",
+        color: "white"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="none">
+            <Text align="center" style={itemStyle("dodgerblue")}>
+              1 - short content
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="none">
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="none">
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              3 - short content
             </Text>
           </Flex.Item>
         </Flex>
