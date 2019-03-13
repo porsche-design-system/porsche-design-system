@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.9.1] - 2019-03-12
+
+-   Added compatibility for Typescript 3.3.3333
+
 ## [0.9.0] - 2019-26-02
 
 - Refactoring of Button component

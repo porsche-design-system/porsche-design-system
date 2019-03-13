@@ -55,7 +55,7 @@ const _NavigationMenuList: React.StatelessComponent<NavigationMenuListProps> = (
 
     const renderItems = (items: NavigationMenuListItem[]) => {
         return items.map((item) => {
-            const LinkElementType = item.component || "a"
+            const LinkElementType: any = item.component || "a"
             return (
                 <Flex.Item as="li" key={item.key} className={prefix("nav-menu-list__item")}>
                     <LinkElementType className={prefix("nav-menu-list__link")} {...item.props}>
