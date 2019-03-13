@@ -6,94 +6,89 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.10.0] - 2019-03-13
+
+-   Added Pagination component
+
 ## [0.9.1] - 2019-03-12
 
 -   Added compatibility for Typescript 3.3.3333
 
 ## [0.9.0] - 2019-26-02
 
-- Refactoring of Button component
-- Added vertical alignment of radio group component
+-   Refactoring of Button component
+-   Added vertical alignment of radio group component
 
-__Breaking Change:__ 
-- deleted `active` state property !!
-- deleted `error` state property !!
-- deleted `showContent` property !!
-- deleted `centered` property !! (buttons are always left aligned, also on mobile vp's)
-- changed `type` properties
-- added `inverted` property
-- added `size` property
-- added `direction`property to ButtonGroup
+**Breaking Change:**
 
-    Migration path:  
-    - Mapping of button type properties:
-        `default` => `default`  
-        `black` => Deleted!  
-        `red` => `highlight`  
-        `blue` => `sales`  
-        `acid-green` => Deleted!  
-        `ghost` => `ghost`  
-        `ghost-inverted` => Deleted! "inverted" will be a separate property  
-        
-        additional type properties:
-        `sales-ghost`  
-        
-    - On dark backgrounds always add `inverted` property
-        
+-   deleted `active` state property !!
+-   deleted `error` state property !!
+-   deleted `showContent` property !!
+-   deleted `centered` property !! (buttons are always left aligned, also on mobile vp's)
+-   changed `type` properties
+-   added `inverted` property
+-   added `size` property
+-   added `direction`property to ButtonGroup
+
+    Migration path:
+
+    -   Mapping of button type properties: `default` => `default` `black` => Deleted! `red` => `highlight` `blue` => `sales` `acid-green` => Deleted! `ghost` => `ghost` `ghost-inverted` => Deleted! "inverted" will be a separate property
+
+        additional type properties: `sales-ghost`
+
+    -   On dark backgrounds always add `inverted` property
 
 ## [0.8.0] - 2019-18-01
-- Add Radio Component to molecules
+
+-   Add Radio Component to molecules
 
 ## [0.7.0] - 2019-10-01
-- Update Ui-Kit-Core version
-- Changed Loader component to adapt core layout
+
+-   Update Ui-Kit-Core version
+-   Changed Loader component to adapt core layout
 
 ## [0.6.0] - 2018-20-12
-- Enhanced Input component: enable to pass an Icon as custom JSX Element
-- Updated NPM dependencies
-- Update to React v16.6.3 and Typescript v3.1.6
-- Minor fixes on docs examples
-- Deleted "loading" examples of Select component, because "loading" prop doesn't exist yet.
-- Minor housekeeping
 
-__Breaking Change:__ 
-- Changed relative SCSS input paths into `~` (tilde) imports. If you use webpack node-sass you should be fine. If not, install `node-sass-tilde-importer` as dependency.
+-   Enhanced Input component: enable to pass an Icon as custom JSX Element
+-   Updated NPM dependencies
+-   Update to React v16.6.3 and Typescript v3.1.6
+-   Minor fixes on docs examples
+-   Deleted "loading" examples of Select component, because "loading" prop doesn't exist yet.
+-   Minor housekeeping
+
+**Breaking Change:**
+
+-   Changed relative SCSS input paths into `~` (tilde) imports. If you use webpack node-sass you should be fine. If not, install `node-sass-tilde-importer` as dependency.
 
 ## [0.5.0] - 2018-06-12
 
-- Added new grid component to specify standard grid behaviour (formerly done with flex component)  
+-   Added new grid component to specify standard grid behaviour (formerly done with flex component)
 
-    Migration path:  
-    Change the following occurrencies of flex used as grid (example):
-    
+    Migration path: Change the following occurrencies of flex used as grid (example):
+
     ```
     <Flex gap="grid">
         <Flex.Item width={{ base: 0, l: 4 }} offset={{ base: 0, l: 2 }}> ... </Flex.Item>
     </Flex>
     ```
-    
+
     to
-    
+
     ```
     <Grid>
         <Grid.Child size={{ base: 0, l: 4 }} offset={{ base: 0, l: 2 }}> ... </Grid.Child>
     </Grid>
     ```
 
-- Refactoring of flex component  
+-   Refactoring of flex component
 
-    Migration path:  
-    Change the following flex parent properties:  
-    
-    `<Flex gap="grid">` => Use grid component (see above)!  
-    `<Flex alignLines={ ... }>` => `<Flex alignContent={ ... }>`  
-    `<Flex shrink={ ... }>` => deleted! (must be set on flex children (Flex.Item))  
-    
-    Changes regarding width and offset properties:  
-    
-    `<Flex.Item width={ ... }>` => Only basic widths are now supported ("auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full"). If you need grid sizes use grid component instead!  
-    `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported ("none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters"). If you need grid offsets use grid component instead!  
+    Migration path: Change the following flex parent properties:
 
+    `<Flex gap="grid">` => Use grid component (see above)! `<Flex alignLines={ ... }>` => `<Flex alignContent={ ... }>` `<Flex shrink={ ... }>` => deleted! (must be set on flex children (Flex.Item))
+
+    Changes regarding width and offset properties:
+
+    `<Flex.Item width={ ... }>` => Only basic widths are now supported ("auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full"). If you need grid sizes use grid component instead! `<Flex.Item offset={ ... }>` => Hint: only basic offsets are now supported ("none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters"). If you need grid offsets use grid component instead!
 
 ## [0.4.5] - 2018-29-11
 
@@ -102,7 +97,7 @@ __Breaking Change:__
 ## [0.4.4] - 2018-23-11
 
 -   Hotfix: revert react version to 16.5.2 and its dependencies.
--   Fixed ButtonIcon width and height, test scripts and rendfering in IE11 
+-   Fixed ButtonIcon width and height, test scripts and rendfering in IE11
 
 ## [0.4.3] - 2018-22-11
 
@@ -110,7 +105,7 @@ __Breaking Change:__
 
 ## [0.4.1] - 2018-11-21
 
-- Update version in ui-kit react docs.
+-   Update version in ui-kit react docs.
 
 ## [0.4.0] - 2018-11-21
 

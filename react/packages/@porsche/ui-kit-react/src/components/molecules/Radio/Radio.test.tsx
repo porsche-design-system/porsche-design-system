@@ -3,27 +3,22 @@ import { RadioProps, Radio } from "./Radio"
 import { mount, ReactWrapper } from "enzyme"
 
 describe("Radio", () => {
-    const createComponent = (props: Partial<RadioProps>): ReactWrapper => {
-        const defaultProps: RadioProps = {
-            id: "radio1"
-        }
-
-        return mount(<Radio {...defaultProps} {...props} />)
+    const createComponent = (props: RadioProps): ReactWrapper => {
+        return mount(<Radio {...props} />)
     }
 
     describe("default state", () => {
         it("sets all pass through properties on the input", () => {
-            //arrange
+            // arrange
             const props = {
-                id: "radio1",
                 name: "radiotest",
                 value: "test"
             }
 
-            //act
+            // act
             const component = createComponent(props)
 
-            //assert
+            // assert
             const input = component.find("input")
             expect(input.prop("checked")).toBe(undefined)
             expect(input.prop("name")).toBe("radiotest")
@@ -33,22 +28,21 @@ describe("Radio", () => {
 
     describe("onChange", () => {
         it("is called with the value of the input on change", () => {
-            //arrange
+            // arrange
             const onChange = jest.fn()
             const props = {
-                id: "radio1",
                 name: "radiotest",
                 onChange,
                 value: "test"
             }
 
-            //act
+            // act
             const component = createComponent(props)
             const input = component.find("input")
 
             input.simulate("change")
 
-            //assert
+            // assert
             expect(onChange).toHaveBeenCalledWith("test", expect.anything(), expect.anything())
         })
     })
