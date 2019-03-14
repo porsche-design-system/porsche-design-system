@@ -7,8 +7,9 @@ LABEL "com.github.actions.color"="yellow"
 
 RUN apk add --no-cache \
  jq \
- git
+ git \
+ bash
 
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /opt/porsche-ui-kit/entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/opt/porsche-ui-kit/entrypoint.sh"]
