@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import cx from "classnames"
 import { BrowserRouter as Router, Route, Switch, Redirect, Link } from "react-router-dom"
 import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
@@ -30,6 +30,7 @@ import { Markdown } from "./pages/demo/markdown/Markdown"
 
 export const Application: React.FunctionComponent = () => {
   const [hideSidebar, sethideSidebar] = useState(false)
+  const [featureShowComponents, setFeatureShowComponents] = useState("?featureComponents")
 
   const handleHideSidebarClicked = () => {
     sethideSidebar(!hideSidebar)
@@ -47,6 +48,12 @@ export const Application: React.FunctionComponent = () => {
     [prefix("app__content--full")]: hideSidebar
   })
 
+  useEffect(() => {
+    window.location.search.indexOf("featureComponents") > -1
+      ? setFeatureShowComponents("?featureComponents")
+      : setFeatureShowComponents("")
+  }, [])
+
   return (
     <Router>
       <React.Fragment>
@@ -54,9 +61,9 @@ export const Application: React.FunctionComponent = () => {
           {hideSidebar ? "+ Show" : "- Hide"}
         </button>
         <div className={appSidebarClasses}>
-          <Sidebar>
+          <Sidebar featureState={featureShowComponents}>
             <header>
-              <Link className={prefix("sidebar__logo")} to="/general/home">
+              <Link className={prefix("sidebar__logo")} to={"/general/home" + featureShowComponents}>
                 <Logo as="span" className={prefix("sidebar__logo-item")} />
               </Link>
               <Spacing marginTop={18}>
@@ -74,29 +81,29 @@ export const Application: React.FunctionComponent = () => {
               <nav>
                 <ul>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/general/home" title="Home" />
+                    <SidebarLink to={"/general/home" + featureShowComponents} title="Home" />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/general/updates" title="Updates" />
+                    <SidebarLink to={"/general/updates" + featureShowComponents} title="Updates" />
                     <ul>
                       <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink to="/general/roadmap" title="Roadmap" />
+                        <SidebarLink to={"/general/roadmap" + featureShowComponents} title="Roadmap" />
                       </li>
                       <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink to="/general/versioning" title="Versioning" />
+                        <SidebarLink to={"/general/versioning" + featureShowComponents} title="Versioning" />
                       </li>
                     </ul>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/general/support" title="Support" />
+                    <SidebarLink to={"/general/support" + featureShowComponents} title="Support" />
                     <ul>
                       <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink to="/general/faq" title="FAQ" />
+                        <SidebarLink to={"/general/faq" + featureShowComponents} title="FAQ" />
                       </li>
                     </ul>
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/general/license" title="License" />
+                    <SidebarLink to={"/general/license" + featureShowComponents} title="License" />
                   </li>
                 </ul>
               </nav>
@@ -106,7 +113,7 @@ export const Application: React.FunctionComponent = () => {
               <nav>
                 <ul>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/guidelines/accessibility" title="Accessibility" />
+                    <SidebarLink to={"/guidelines/accessibility" + featureShowComponents} title="Accessibility" />
                   </li>
                 </ul>
               </nav>
@@ -116,19 +123,19 @@ export const Application: React.FunctionComponent = () => {
               <nav>
                 <ul>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/design/introduction" title="Introduction" />
+                    <SidebarLink to={"/design/introduction" + featureShowComponents} title="Introduction" />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/design/sketch-plugins" title="Sketch Plugins" />
+                    <SidebarLink to={"/design/sketch-plugins" + featureShowComponents} title="Sketch Plugins" />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/design/library-template" title="Library Template" />
+                    <SidebarLink to={"/design/library-template" + featureShowComponents} title="Library Template" />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/design/abstract" title="Abstract" />
+                    <SidebarLink to={"/design/abstract" + featureShowComponents} title="Abstract" />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/design/contribution" title="Contribution" />
+                    <SidebarLink to={"/design/contribution" + featureShowComponents} title="Contribution" />
                   </li>
                 </ul>
               </nav>
@@ -138,19 +145,22 @@ export const Application: React.FunctionComponent = () => {
               <nav>
                 <ul>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/code/introduction" title="Introduction" />
+                    <SidebarLink to={"/code/introduction" + featureShowComponents} title="Introduction" />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/code/definition-of-done" title="Definition Of Done" />
+                    <SidebarLink to={"/code/definition-of-done" + featureShowComponents} title="Definition Of Done" />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/code/ci-cd" title="CI/CD" />
+                    <SidebarLink to={"/code/ci-cd" + featureShowComponents} title="CI/CD" />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/code/browser-compatibility" title="Browser Compatibility" />
+                    <SidebarLink
+                      to={"/code/browser-compatibility" + featureShowComponents}
+                      title="Browser Compatibility"
+                    />
                   </li>
                   <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to="/code/contribution" title="Contribution" />
+                    <SidebarLink to={"/code/contribution" + featureShowComponents} title="Contribution" />
                   </li>
                 </ul>
               </nav>
@@ -184,8 +194,11 @@ export const Application: React.FunctionComponent = () => {
             <Route path="/code/browser-compatibility" component={CodeBrowserCompatibility} />
             <Route path="/code/contribution" component={CodeContribution} />
             <Route path="/demo/markdown" component={Markdown} />
-            <Route path="/:category/:story" component={Story} />
-            <Route path="/" component={() => <Redirect to="/general/home" />} />
+            <Route
+              path="/:category/:story"
+              render={(props) => <Story featureState={featureShowComponents} {...props} />}
+            />
+            <Route path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
           </Switch>
         </div>
       </React.Fragment>

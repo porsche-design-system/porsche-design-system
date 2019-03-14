@@ -7,14 +7,21 @@ import { PropsTable } from "../propsTable/PropsTable"
 import jsdoc from "../../jsdoc.json"
 import { Tab, Spacing } from "@porsche/ui-kit-react"
 
+export interface StoryParams {
+  featureState?: string
+}
 export interface StoryUrlParams {
   category: string
   story: string
 }
 
-export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams>> = (props) => {
+export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> & StoryParams> = (props) => {
   const categoryName = props.match.params.category
   const storyName = props.match.params.story
+
+  if (!props.featureState) {
+    return <Redirect to="/general/home" />
+  }
 
   const category =
     (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))]
