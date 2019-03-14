@@ -6,6 +6,9 @@ import { Redirect } from "react-router-dom"
 import { Link } from "@porsche/ui-kit-react"
 import { Text } from "@porscheui/porsche-ui-kit"
 
+export interface SidebarProps {
+  featureState?: string
+}
 export interface SidebarLinkProps {
   to: string
   title: string
@@ -34,37 +37,44 @@ export const SidebarCategory: React.FunctionComponent<SidebarCategory> = (props)
   )
 }
 
-export const Sidebar: React.FunctionComponent = (props) => {
+export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
   const categories = Object.keys(Stories)
 
   return (
     <div className={prefix("sidebar")}>
       {props.children}
-      <hr className={prefix("sidebar__hr")} />
-      <Text type="4-bold" as="h2">
-        Components
-      </Text>
-      {categories.map((category) => {
-        const stories = Object.keys((Stories as any)[category])
-        if (!stories) {
-          return <Redirect to="/general/home" />
-        }
-        return (
-          <SidebarCategory key={category} title={category}>
-            <nav>
-              <ul>
-                {stories.map((story) => {
-                  return (
-                    <li className={prefix("sidebar__nav-item")} key={story}>
-                      <SidebarLink to={`/${category.toLowerCase()}/${story.toLowerCase()}`} title={story} />
-                    </li>
-                  )
-                })}
-              </ul>
-            </nav>
-          </SidebarCategory>
-        )
-      })}
+      {props.featureState && (
+        <React.Fragment>
+          <hr className={prefix("sidebar__hr")} />
+          <Text type="4-bold" as="h2">
+            Components
+          </Text>
+          {categories.map((category) => {
+            const stories = Object.keys((Stories as any)[category])
+            if (!stories) {
+              return <Redirect to="/general/home" />
+            }
+            return (
+              <SidebarCategory key={category} title={category}>
+                <nav>
+                  <ul>
+                    {stories.map((story) => {
+                      return (
+                        <li className={prefix("sidebar__nav-item")} key={story}>
+                          <SidebarLink
+                            to={`/${category.toLowerCase()}/${story.toLowerCase()}${props.featureState}`}
+                            title={story}
+                          />
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </nav>
+              </SidebarCategory>
+            )
+          })}
+        </React.Fragment>
+      )}
     </div>
   )
 }
