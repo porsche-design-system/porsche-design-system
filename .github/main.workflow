@@ -8,4 +8,3 @@ action "install dependencies" {
   runs = ["run-yarn"]
   secrets = ["ARTIFACTORY_TOKEN"]
 }
-
