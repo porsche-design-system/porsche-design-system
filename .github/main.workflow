@@ -5,12 +5,12 @@ workflow "demo action on push" {
 
 action "install dependencies" {
   uses = "./images/node/"
-  runs = ["run-yarn", "install"]
+  runs = ["run-yarn-with-credentials", "install"]
   secrets = ["ARTIFACTORY_TOKEN"]
 }
 
 action "build" {
   needs = "install dependencies"
   uses = "./images/node/"
-  runs = ["run-yarn", "build"]
+  runs = ["yarn", "build"]
 }
