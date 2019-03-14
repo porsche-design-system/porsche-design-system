@@ -1,9 +1,9 @@
 workflow "demo action on push" {
   on = "push"
-  resolves = ["action foo"]
+  resolves = ["install dependencies"]
 }
 
-action "action install-dependencies" {
+action "install dependencies" {
   uses = "./images/node/"
   runs = ["run-yarn"]
   secrets = ["ARTIFACTORY_TOKEN"]
