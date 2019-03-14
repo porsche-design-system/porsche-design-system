@@ -5,9 +5,9 @@ LABEL "com.github.actions.description"="Some Demo Foo Bar Action Description"
 LABEL "com.github.actions.icon"="check-square"
 LABEL "com.github.actions.color"="yellow"
 
-RUN apk add --no-cache \
-    jq \
-    git
+RUN apt-get update && apt-get install -y \
+  jq \
+  git
 
 COPY entrypoint.sh /entrypoint.sh
 
