@@ -38,6 +38,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
 
   const Code = lazy(() => story.examples)
   const Design = story.design && lazy(() => story.design)
+  const Props = story.props
 
   const [selectedTab, setSelectedTab] = useState("examples")
 
@@ -45,45 +46,70 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
     setSelectedTab(tab)
   }
 
-  const panes = [
-    {
+  const panes = []
+
+  if (Code) {
+    panes.push({
       menuItem: "Examples",
-      key: "Tab1",
+      key: "examples",
       active: selectedTab === "examples",
       onClick: () => handleTabClick("examples")
-    },
-    { menuItem: "Design", key: "Tab2", active: selectedTab === "design", onClick: () => handleTabClick("design") },
-    { menuItem: "Props", key: "Tab3", active: selectedTab === "props", onClick: () => handleTabClick("props") }
-  ]
+    })
+  }
+
+  if (Design) {
+    panes.push({
+      menuItem: "Design",
+      key: "design",
+      active: selectedTab === "design",
+      onClick: () => handleTabClick("design")
+    })
+  }
+
+  if (Props) {
+    panes.push({
+      menuItem: "Props",
+      key: "props",
+      active: selectedTab === "props",
+      onClick: () => handleTabClick("props")
+    })
+  }
 
   return (
     <main className={prefix("story")}>
       <Spacing paddingBottom={60}>
         <Tab panes={panes} alignment="left" />
       </Spacing>
-      {panes[0].active && (
-        <Suspense fallback={null}>
-          <div className={prefix("markdown")}>
-            <Code />
-          </div>
-        </Suspense>
-      )}
-      {panes[1].active && (
-        <Suspense fallback={null}>
-          <div className={prefix("markdown")}>
-            <Design />
-          </div>
-        </Suspense>
-      )}
-      {panes[2].active &&
-        story.props.map((component, index) => {
+      {panes.map((item) => {
+        if (item.key === "examples" && item.active) {
           return (
-            <div key={component} className={prefix("story__props")}>
-              <h1>{(jsdoc as any)[component].displayName}</h1>
-              <PropsTable jsdoc={(jsdoc as any)[component]} />
-            </div>
+            <Suspense fallback={null}>
+              <div className={prefix("markdown")}>
+                <Code />
+              </div>
+            </Suspense>
           )
-        })}
+        } else if (item.key === "design" && item.active) {
+          return (
+            <Suspense fallback={null}>
+              <div className={prefix("markdown")}>
+                <Design />
+              </div>
+            </Suspense>
+          )
+        } else if (item.key === "props" && item.active) {
+          return story.props.map((component, index) => {
+            return (
+              <div key={component} className={prefix("story__props")}>
+                <h1>{(jsdoc as any)[component].displayName}</h1>
+                <PropsTable jsdoc={(jsdoc as any)[component]} />
+              </div>
+            )
+          })
+        } else {
+          return null
+        }
+      })}
     </main>
   )
 }
