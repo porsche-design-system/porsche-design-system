@@ -1,0 +1,123 @@
+import { Example } from "../../../src/components/example/Example"
+import { Spacing, Flex } from "@porscheui/porsche-ui-kit"
+
+# Spacing
+
+## Introduction
+
+A component to add margins and paddings to components. If this component has only one child, those classes are added directly to the child using the className prop to avoid unnecessary wrapper divs. This only works if the child component supports className (which it totally should anyway) and if the number of children isn't dynamic and doesn't change. If this is not the case, set the "wrap" property to manually create a wrapper div.
+
+### Static
+
+<Example noTheme>
+  {(theme) => {
+    const boxStyles = { backgroundColor: "deepskyblue" }
+    return (
+      <React.Fragment>
+        <Flex gap={12}>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={3}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={6}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={12}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={18}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={24}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={30}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={36}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={42}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={48}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={54}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom={60}>
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Responsive
+
+<Example noTheme>
+  {(theme) => {
+    const boxStyles = { backgroundColor: "deepskyblue" }
+    return (
+      <React.Fragment>
+        <Flex gap={12}>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom="a">
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom="b">
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom="c">
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom="d">
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom="e">
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Spacing paddingBottom="f">
+              <div style={{ ...boxStyles }} />
+            </Spacing>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>

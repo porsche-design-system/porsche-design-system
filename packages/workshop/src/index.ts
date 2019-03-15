@@ -5,6 +5,7 @@ export { Icon } from "./components/icon/icon/Icon"
 export { Text } from "./components/basic/text/Text"
 
 // layout components
+export { Spacing } from "./components/layout/spacing/Spacing"
 export { Flex, FlexProps } from "./components/layout/flex/Flex"
 export { FlexItem, FlexItemProps } from "./components/layout/flex/FlexItem"
 export { Grid, GridProps } from "./components/layout/grid/Grid"

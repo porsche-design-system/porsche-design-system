@@ -1,0 +1,719 @@
+@import "../../../styles/utility/index";
+
+/**
+ * static spacings vars
+ */
+$spacings: (
+  "3": $p-spacing-3,
+  "6": $p-spacing-6,
+  "12": $p-spacing-12,
+  "18": $p-spacing-18,
+  "24": $p-spacing-24,
+  "30": $p-spacing-30,
+  "36": $p-spacing-36,
+  "42": $p-spacing-42,
+  "48": $p-spacing-48,
+  "54": $p-spacing-54,
+  "60": $p-spacing-60
+);
+
+/*
+ * responsive spacings vars
+ */
+$p-spacing-a: $p-spacing-12;
+$p-spacing-a-s: $p-spacing-18;
+$p-spacing-a-l: $p-spacing-18;
+
+$p-spacing-b: $p-spacing-18;
+$p-spacing-b-s: $p-spacing-24;
+$p-spacing-b-l: $p-spacing-24;
+
+$p-spacing-c: $p-spacing-18;
+$p-spacing-c-s: $p-spacing-24;
+$p-spacing-c-l: $p-spacing-30;
+
+$p-spacing-d: $p-spacing-24;
+$p-spacing-d-s: $p-spacing-30;
+$p-spacing-d-l: $p-spacing-36;
+
+$p-spacing-e: $p-spacing-30;
+$p-spacing-e-s: $p-spacing-36;
+$p-spacing-e-l: $p-spacing-48;
+
+$p-spacing-f: $p-spacing-30;
+$p-spacing-f-s: $p-spacing-48;
+$p-spacing-f-l: $p-spacing-60;
+
+/*
+ * statuc spacing
+ */
+@mixin -spacing-0($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-0;
+  }
+}
+
+@mixin -spacing-3($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-3;
+  }
+}
+
+@mixin -spacing-6($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-6;
+  }
+}
+
+@mixin -spacing-12($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-12;
+  }
+}
+
+@mixin -spacing-18($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-18;
+  }
+}
+
+@mixin -spacing-24($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-24;
+  }
+}
+
+@mixin -spacing-30($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-30;
+  }
+}
+
+@mixin -spacing-36($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-36;
+  }
+}
+
+@mixin -spacing-42($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-42;
+  }
+}
+
+@mixin -spacing-48($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-48;
+  }
+}
+
+@mixin -spacing-54($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-54;
+  }
+}
+
+@mixin -spacing-60($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-60;
+  }
+}
+
+/*
+ * responsive spacing
+ */
+@mixin -spacing-a($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-a;
+  }
+
+  @include breakpoint("s", "l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-a-s;
+    }
+  }
+
+  @include breakpoint("l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-a-l;
+    }
+  }
+}
+
+@mixin -spacing-b($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-b;
+  }
+
+  @include breakpoint("s", "l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-b-s;
+    }
+  }
+
+  @include breakpoint("l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-b-l;
+    }
+  }
+}
+
+@mixin -spacing-c($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-c;
+  }
+
+  @include breakpoint("s", "l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-c-s;
+    }
+  }
+
+  @include breakpoint("l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-c-l;
+    }
+  }
+}
+
+@mixin -spacing-d($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-d;
+  }
+
+  @include breakpoint("s", "l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-d-s;
+    }
+  }
+
+  @include breakpoint("l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-d-l;
+    }
+  }
+}
+
+@mixin -spacing-e($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-e;
+  }
+
+  @include breakpoint("s", "l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-e-s;
+    }
+  }
+
+  @include breakpoint("l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-e-l;
+    }
+  }
+}
+
+@mixin -spacing-f($direction: "top", $type: "margin", $sign: "+") {
+  #{$type}: {
+    #{$direction}: #{$sign}$p-spacing-f;
+  }
+
+  @include breakpoint("s", "l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-f-s;
+    }
+  }
+
+  @include breakpoint("l") {
+    #{$type}: {
+      #{$direction}: #{$sign}$p-spacing-f-l;
+    }
+  }
+}
+
+/*
+ * equal inner spacing
+ */
+@mixin -spacing-inner-equal-a() {
+  padding: $p-spacing-a;
+
+  @include breakpoint("s") {
+    padding: $p-spacing-a-s;
+  }
+
+  @include breakpoint("l") {
+    padding: $p-spacing-a-l;
+  }
+}
+
+@mixin -spacing-inner-equal-b() {
+  padding: $p-spacing-b;
+
+  @include breakpoint("s") {
+    padding: $p-spacing-b-s;
+  }
+
+  @include breakpoint("l") {
+    padding: $p-spacing-b-l;
+  }
+}
+
+@mixin -spacing-inner-equal-c() {
+  padding: $p-spacing-c;
+
+  @include breakpoint("s") {
+    padding: $p-spacing-c-s;
+  }
+
+  @include breakpoint("l") {
+    padding: $p-spacing-c-l;
+  }
+}
+
+@mixin -spacing-inner-equal-d() {
+  padding: $p-spacing-d;
+
+  @include breakpoint("s") {
+    padding: $p-spacing-d-s;
+  }
+
+  @include breakpoint("l") {
+    padding: $p-spacing-d-l;
+  }
+}
+
+@mixin -spacing-inner-equal-e() {
+  padding: $p-spacing-e;
+
+  @include breakpoint("s") {
+    padding: $p-spacing-e-s;
+  }
+
+  @include breakpoint("l") {
+    padding: $p-spacing-e-l;
+  }
+}
+
+@mixin -spacing-inner-equal-f() {
+  padding: $p-spacing-f;
+
+  @include breakpoint("s") {
+    padding: $p-spacing-f-s;
+  }
+
+  @include breakpoint("l") {
+    padding: $p-spacing-f-l;
+  }
+}
+
+@mixin -spacing-zero($direction: "top", $type: "margin") {
+  #{$type}: {
+    #{$direction}: 0;
+  }
+}
+
+.#{$p-global-class-prefix}m {
+  @each $name, $spacing in $spacings {
+    &--#{$name} {
+      margin: $spacing;
+    }
+
+    &t--#{$name} {
+      margin-top: $spacing;
+    }
+
+    &l--#{$name} {
+      margin-left: $spacing;
+    }
+
+    &b--#{$name} {
+      margin-bottom: $spacing;
+    }
+
+    &r--#{$name} {
+      margin-right: $spacing;
+    }
+  }
+
+  // responsive spacings
+  &t--a {
+    @include -spacing-a("top", "margin", "");
+  }
+
+  &r--a {
+    @include -spacing-a("right", "margin", "");
+  }
+
+  &b--a {
+    @include -spacing-a("bottom", "margin", "");
+  }
+
+  &l--a {
+    @include -spacing-a("left", "margin", "");
+  }
+
+  &t--b {
+    @include -spacing-b("top", "margin", "");
+  }
+
+  &r--b {
+    @include -spacing-b("right", "margin", "");
+  }
+
+  &b--b {
+    @include -spacing-b("bottom", "margin", "");
+  }
+
+  &l--b {
+    @include -spacing-b("left", "margin", "");
+  }
+
+  &t--c {
+    @include -spacing-c("top", "margin", "");
+  }
+
+  &r--c {
+    @include -spacing-c("right", "margin", "");
+  }
+
+  &b--c {
+    @include -spacing-c("bottom", "margin", "");
+  }
+
+  &l--c {
+    @include -spacing-c("left", "margin", "");
+  }
+
+  &t--d {
+    @include -spacing-d("top", "margin", "");
+  }
+
+  &r--d {
+    @include -spacing-d("right", "margin", "");
+  }
+
+  &b--d {
+    @include -spacing-d("bottom", "margin", "");
+  }
+
+  &l--d {
+    @include -spacing-d("left", "margin", "");
+  }
+
+  &t--e {
+    @include -spacing-e("top", "margin", "");
+  }
+
+  &r--e {
+    @include -spacing-e("right", "margin", "");
+  }
+
+  &b--e {
+    @include -spacing-e("bottom", "margin", "");
+  }
+
+  &l--e {
+    @include -spacing-e("left", "margin", "");
+  }
+
+  &t--f {
+    @include -spacing-f("top", "margin", "");
+  }
+
+  &r--f {
+    @include -spacing-f("right", "margin", "");
+  }
+
+  &b--f {
+    @include -spacing-f("bottom", "margin", "");
+  }
+
+  &l--f {
+    @include -spacing-f("left", "margin", "");
+  }
+
+  &--auto {
+    margin: auto;
+  }
+
+  &t--auto {
+    margin-top: auto;
+  }
+
+  &l--auto {
+    margin-left: auto;
+  }
+
+  &b--auto {
+    margin-bottom: auto;
+  }
+
+  &r--auto {
+    margin-right: auto;
+  }
+}
+
+.#{$p-global-class-prefix}m-n {
+  @each $name, $spacing in $spacings {
+    &--#{$name} {
+      margin: -$spacing;
+    }
+
+    &t--#{$name} {
+      margin-top: -$spacing;
+    }
+
+    &l--#{$name} {
+      margin-left: -$spacing;
+    }
+
+    &b--#{$name} {
+      margin-bottom: -$spacing;
+    }
+
+    &r--#{$name} {
+      margin-right: -$spacing;
+    }
+  }
+
+  // Responsive spacings
+  &t--a {
+    @include -spacing-a("top", "margin", "-");
+  }
+
+  &r--a {
+    @include -spacing-a("right", "margin", "-");
+  }
+
+  &b--a {
+    @include -spacing-a("bottom", "margin", "-");
+  }
+
+  &l--a {
+    @include -spacing-a("left", "margin", "-");
+  }
+
+  &t--b {
+    @include -spacing-b("top", "margin", "-");
+  }
+
+  &r--b {
+    @include -spacing-b("right", "margin", "-");
+  }
+
+  &b--b {
+    @include -spacing-b("bottom", "margin", "-");
+  }
+
+  &l--b {
+    @include -spacing-b("left", "margin", "-");
+  }
+
+  &t--c {
+    @include -spacing-c("top", "margin", "-");
+  }
+
+  &r--c {
+    @include -spacing-c("right", "margin", "-");
+  }
+
+  &b--c {
+    @include -spacing-c("bottom", "margin", "-");
+  }
+
+  &l--c {
+    @include -spacing-c("left", "margin", "-");
+  }
+
+  &t--d {
+    @include -spacing-d("top", "margin", "-");
+  }
+
+  &r--d {
+    @include -spacing-d("right", "margin", "-");
+  }
+
+  &b--d {
+    @include -spacing-d("bottom", "margin", "-");
+  }
+
+  &l--d {
+    @include -spacing-d("left", "margin", "-");
+  }
+
+  &t--e {
+    @include -spacing-e("top", "margin", "-");
+  }
+
+  &r--e {
+    @include -spacing-e("right", "margin", "-");
+  }
+
+  &b--e {
+    @include -spacing-e("bottom", "margin", "-");
+  }
+
+  &l--e {
+    @include -spacing-e("left", "margin", "-");
+  }
+
+  &t--f {
+    @include -spacing-f("top", "margin", "-");
+  }
+
+  &r--f {
+    @include -spacing-f("right", "margin", "-");
+  }
+
+  &b--f {
+    @include -spacing-f("bottom", "margin", "-");
+  }
+
+  &l--f {
+    @include -spacing-f("left", "margin", "-");
+  }
+}
+
+.#{$p-global-class-prefix}p {
+  @each $name, $spacing in $spacings {
+    &--#{$name} {
+      padding: $spacing;
+    }
+
+    &t--#{$name} {
+      padding-top: $spacing;
+    }
+
+    &l--#{$name} {
+      padding-left: $spacing;
+    }
+
+    &b--#{$name} {
+      padding-bottom: $spacing;
+    }
+
+    &r--#{$name} {
+      padding-right: $spacing;
+    }
+  }
+
+  // Responsive spacings
+  &--a {
+    @include -spacing-inner-equal-a;
+  }
+
+  &t--a {
+    @include -spacing-a("top", "padding", "");
+  }
+
+  &r--a {
+    @include -spacing-a("right", "padding", "");
+  }
+
+  &b--a {
+    @include -spacing-a("bottom", "padding", "");
+  }
+
+  &l--a {
+    @include -spacing-a("left", "padding", "");
+  }
+
+  &--b {
+    @include -spacing-inner-equal-b;
+  }
+
+  &t--b {
+    @include -spacing-b("top", "padding", "");
+  }
+
+  &r--b {
+    @include -spacing-b("right", "padding", "");
+  }
+
+  &b--b {
+    @include -spacing-b("bottom", "padding", "");
+  }
+
+  &l--b {
+    @include -spacing-b("left", "padding", "");
+  }
+
+  &--c {
+    @include -spacing-inner-equal-c;
+  }
+
+  &t--c {
+    @include -spacing-c("top", "padding", "");
+  }
+
+  &r--c {
+    @include -spacing-c("right", "padding", "");
+  }
+
+  &b--c {
+    @include -spacing-c("bottom", "padding", "");
+  }
+
+  &l--c {
+    @include -spacing-c("left", "padding", "");
+  }
+
+  &--d {
+    @include -spacing-inner-equal-d;
+  }
+
+  &t--d {
+    @include -spacing-d("top", "padding", "");
+  }
+
+  &r--d {
+    @include -spacing-d("right", "padding", "");
+  }
+
+  &b--d {
+    @include -spacing-d("bottom", "padding", "");
+  }
+
+  &l--d {
+    @include -spacing-d("left", "padding", "");
+  }
+
+  &--e {
+    @include -spacing-inner-equal-e;
+  }
+
+  &t--e {
+    @include -spacing-e("top", "padding", "");
+  }
+
+  &r--e {
+    @include -spacing-e("right", "padding", "");
+  }
+
+  &b--e {
+    @include -spacing-e("bottom", "padding", "");
+  }
+
+  &l--e {
+    @include -spacing-e("left", "padding", "");
+  }
+
+  &--f {
+    @include -spacing-inner-equal-f;
+  }
+
+  &t--f {
+    @include -spacing-f("top", "padding", "");
+  }
+
+  &r--f {
+    @include -spacing-f("right", "padding", "");
+  }
+
+  &b--f {
+    @include -spacing-f("bottom", "padding", "");
+  }
+
+  &l--f {
+    @include -spacing-f("left", "padding", "");
+  }
+}

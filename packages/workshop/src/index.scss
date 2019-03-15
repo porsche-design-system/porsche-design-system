@@ -1,3 +1,6 @@
+// global utility classes
+@import "styles/utility/index";
+
 // global styles, e.g. font-faces
 @import "styles/common/index";
 
@@ -8,5 +11,6 @@
 @import "components/basic/text/text";
 
 // layout component styles
+@import "components/layout/spacing/spacing";
 @import "components/layout/flex/flex";
 @import "components/layout/grid/grid";
