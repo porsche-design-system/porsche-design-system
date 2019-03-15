@@ -23,6 +23,7 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
 @mixin flex-direction($direction) {
   flex-direction: #{$direction};
+  color: #333;
 }
 
 @mixin flex-wrap($wrap) {
