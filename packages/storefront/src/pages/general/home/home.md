@@ -1,3 +1,5 @@
+![Porsche UI Kit](/assets/img/teaser.jpg)
+
 # Dear friends of great design!  
 
 Welcome to the Porsche UI Kit - the Porsche initiative to unite every digital Porsche product around a common Porsche Design System and Language. We want to support everyone who is working on digital products for Porsche by a qualitative and brand-aligned collection of design elements with complemented guidance.
