@@ -9,6 +9,12 @@ action "install dependencies" {
   secrets = ["ARTIFACTORY_TOKEN"]
 }
 
+action "lint:ts" {
+  needs = "install dependencies"
+  uses = "./images/node/"
+  runs = ["yarn", "lint:ts"]
+}
+
 action "build" {
   needs = "install dependencies"
   uses = "./images/node/"
