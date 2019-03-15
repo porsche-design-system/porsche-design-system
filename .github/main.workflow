@@ -15,8 +15,14 @@ action "lint:ts" {
   runs = ["yarn", "lint:ts"]
 }
 
+action "lint:scss" {
+  needs = "install dependencies"
+  uses = "./images/node/"
+  runs = ["yarn", "lint:scss"]
+}
+
 action "build" {
-  needs = "lint:ts"
+  needs = ["lint:ts", "lint:scss"]
   uses = "./images/node/"
   runs = ["yarn", "build"]
 }

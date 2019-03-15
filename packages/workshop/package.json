@@ -47,6 +47,7 @@
     "build:sass": "node-sass-chokidar --source-map true ./src --output .tmp/css --importer=./../../node_modules/node-sass-tilde-importer",
     "build:css": "postcss --use autoprefixer --map --dir ./css --base .tmp/css \".tmp/css/**/*.css\"",
     "lint:ts": "tslint --project '.' --format codeFrame",
+    "lint:scss": "stylelint src/**/*.scss",
     "lint:ts:fix": "yarn run lint:ts --fix",
     "publish:artifactory": "yarn run test && yarn run build && yarn publish"
   },
