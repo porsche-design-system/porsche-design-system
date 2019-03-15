@@ -21,8 +21,14 @@ action "Lint 'SCSS'" {
   runs = ["yarn", "lint:scss"]
 }
 
-action "Build" {
+action "Branch 1.x" {
   needs = ["Lint 'TS'", "Lint 'SCSS'"]
+  uses = "actions/bin/filter@master"
+  args = "branch 1.x"
+}
+
+action "Build" {
+  needs = "Branch 1.x"
   uses = "./images/node/"
   runs = ["yarn", "build"]
 }
