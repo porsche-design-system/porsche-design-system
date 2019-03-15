@@ -1,28 +1,28 @@
-workflow "demo action on push" {
+workflow "Porsche UI Kit" {
   on = "push"
-  resolves = ["build"]
+  resolves = ["Build"]
 }
 
-action "install dependencies" {
+action "Install" {
   uses = "./images/node/"
   runs = ["run-yarn-with-credentials", "install"]
   secrets = ["ARTIFACTORY_TOKEN"]
 }
 
-action "lint:ts" {
-  needs = "install dependencies"
+action "Lint 'TS'" {
+  needs = "Install"
   uses = "./images/node/"
   runs = ["yarn", "lint:ts"]
 }
 
-action "lint:scss" {
-  needs = "install dependencies"
+action "Lint 'SCSS'" {
+  needs = "Install"
   uses = "./images/node/"
   runs = ["yarn", "lint:scss"]
 }
 
-action "build" {
-  needs = ["lint:ts", "lint:scss"]
+action "Build" {
+  needs = ["Lint 'TS'", "Lint 'SCSS'"]
   uses = "./images/node/"
   runs = ["yarn", "build"]
 }
