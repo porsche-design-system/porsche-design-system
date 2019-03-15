@@ -1,6 +1,6 @@
 workflow "Porsche UI Kit" {
   on = "push"
-  resolves = ["Build"]
+  resolves = ["GitHub Action for Slack"]
 }
 
 action "Branch 1.x" {
@@ -31,4 +31,11 @@ action "Build" {
   needs = ["Lint 'TS'", "Lint 'SCSS'"]
   uses = "./images/node/"
   runs = ["yarn", "build"]
+}
+
+action "GitHub Action for Slack" {
+  uses = "Ilshidur/action-slack@e820f544affdbb77c1dee6d3f752f7f2daf4a0b3"
+  args = "test github actions: A new commit has been pushed and build was successful <3"
+  secrets = ["SLACK_WEBHOOK"]
+  needs = ["Build"]
 }
