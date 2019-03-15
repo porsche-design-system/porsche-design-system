@@ -35,7 +35,7 @@
     "docgen": "node ./docgen/docgen.js"
   },
   "dependencies": {
-    "@porsche/ui-kit-react": "^0.9.0",
+    "@porsche/ui-kit-react": "^0.10.0",
     "@porscheui/porsche-ui-kit": "1.0.0",
     "classnames": "^2.2.6",
     "react": "^16.8.4",
