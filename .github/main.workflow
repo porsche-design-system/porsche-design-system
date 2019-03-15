@@ -34,7 +34,11 @@ action "Build" {
 }
 
 action "GitHub Action for Slack" {
+  needs = "Build"
   uses = "Ilshidur/action-slack@e820f544affdbb77c1dee6d3f752f7f2daf4a0b3"
   args = "test github actions: A new commit has been pushed and build was successful <3"
   secrets = ["SLACK_WEBHOOK"]
+  env = {
+    SLACK_OVERRIDE_MESSAGE = "true"
+  }
 }
