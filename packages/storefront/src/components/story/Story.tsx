@@ -1,11 +1,12 @@
 import React, { Suspense, lazy, useState } from "react"
+import { RouteComponentProps, Redirect } from "react-router"
 import { prefix } from "../../prefix"
 import "./story.scss"
-import { RouteComponentProps, Redirect } from "react-router"
 import { Stories, Story as StoryType } from "../../stories"
 import { PropsTable } from "../propsTable/PropsTable"
 import jsdoc from "../../jsdoc.json"
-import { Tab, Spacing } from "@porsche/ui-kit-react"
+import { Tab } from "@porsche/ui-kit-react"
+import { Spacing } from "@porscheui/porsche-ui-kit"
 
 export interface StoryParams {
   featureState?: string
@@ -83,7 +84,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
       {panes.map((item) => {
         if (item.key === "examples" && item.active) {
           return (
-            <Suspense fallback={null}>
+            <Suspense key={item.key} fallback={null}>
               <div className={prefix("markdown")}>
                 <Code />
               </div>
@@ -91,7 +92,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
           )
         } else if (item.key === "design" && item.active) {
           return (
-            <Suspense fallback={null}>
+            <Suspense key={item.key} fallback={null}>
               <div className={prefix("markdown")}>
                 <Design />
               </div>

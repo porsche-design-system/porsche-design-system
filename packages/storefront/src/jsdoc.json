@@ -624,6 +624,388 @@
     },
     "fileName": "components/icon/icon/Icon.tsx"
   },
+  "Spacing": {
+    "description": "A component to add margins and paddings to components.\nIf this component has only one child, those classes are added directly to the child using the className prop to avoid unnecessary wrapper divs.\nThis only works if the child component supports className (which it totally should anyway) and if the number of children isn't dynamic and doesn't change.\nIf this is not the case, set the \"wrap\" property to manually create a wrapper div.\n@see Flex",
+    "displayName": "Spacing",
+    "methods": [],
+    "props": {
+      "wrap": {
+        "defaultValue": null,
+        "description": "Set this to true if you always want to create a wrapper, even for single childs.\nThis is useful if the child element does not support className, or for dynamic children.",
+        "name": "wrap",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "margin": {
+        "defaultValue": null,
+        "description": "",
+        "name": "margin",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "\"auto\"",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "marginBottom": {
+        "defaultValue": null,
+        "description": "",
+        "name": "marginBottom",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "\"auto\"",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "marginLeft": {
+        "defaultValue": null,
+        "description": "",
+        "name": "marginLeft",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "\"auto\"",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "marginRight": {
+        "defaultValue": null,
+        "description": "",
+        "name": "marginRight",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "\"auto\"",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "marginTop": {
+        "defaultValue": null,
+        "description": "",
+        "name": "marginTop",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "\"auto\"",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "padding": {
+        "defaultValue": null,
+        "description": "",
+        "name": "padding",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "paddingBottom": {
+        "defaultValue": null,
+        "description": "",
+        "name": "paddingBottom",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "paddingLeft": {
+        "defaultValue": null,
+        "description": "",
+        "name": "paddingLeft",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "paddingRight": {
+        "defaultValue": null,
+        "description": "",
+        "name": "paddingRight",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "paddingTop": {
+        "defaultValue": null,
+        "description": "",
+        "name": "paddingTop",
+        "parent": {
+          "fileName": "components/layout/spacing/Spacing.tsx",
+          "name": "SpacingProps"
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            "0",
+            "3",
+            "6",
+            "12",
+            "18",
+            "24",
+            "30",
+            "36",
+            "42",
+            "48",
+            "54",
+            "60",
+            "\"a\"",
+            "\"b\"",
+            "\"c\"",
+            "\"d\"",
+            "\"e\"",
+            "\"f\""
+          ]
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Additional CSS classes.",
+        "name": "className",
+        "parent": {
+          "fileName": "lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "The html element type to render as.",
+        "name": "as",
+        "parent": {
+          "fileName": "lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": {
+          "name": "string | ComponentClass"
+        }
+      }
+    },
+    "fileName": "components/layout/spacing/Spacing.tsx"
+  },
   "Text": {
     "description": "Use this component any time you want to display plain text anywhere.",
     "displayName": "Text",

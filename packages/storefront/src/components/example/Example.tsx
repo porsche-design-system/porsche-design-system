@@ -4,7 +4,8 @@ import { prefix } from "../../prefix"
 import { renderToStaticMarkup } from "react-dom/server"
 import { Light as Editor } from "react-syntax-highlighter"
 import languageXml from "react-syntax-highlighter/dist/languages/hljs/xml"
-import { Spacing, Tab } from "@porsche/ui-kit-react"
+import { Tab } from "@porsche/ui-kit-react"
+import { Spacing } from "@porscheui/porsche-ui-kit"
 
 // More themes at https://highlightjs.org/static/demo/
 import editorTheme from "react-syntax-highlighter/dist/styles/hljs/solarized-dark"
