@@ -27,6 +27,12 @@ action "Lint 'SCSS'" {
   runs = ["yarn", "lint:scss"]
 }
 
+action "Visual Regression Tests" {
+  needs = ["Install"]
+  uses = "./images/node/"
+  runs = ["run-visual-regression-tests"]
+}
+
 action "Build" {
   needs = ["Lint 'TS'", "Lint 'SCSS'"]
   uses = "./images/node/"
