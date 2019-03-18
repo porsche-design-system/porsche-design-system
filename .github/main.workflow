@@ -27,14 +27,20 @@ action "Lint 'SCSS'" {
   runs = ["yarn", "lint:scss"]
 }
 
+action "Visual Regression Tests" {
+  needs = ["Install"]
+  uses = "./images/node/"
+  runs = ["run-visual-regression-tests"]
+}
+
 action "Build" {
-  needs = ["Lint 'TS'", "Lint 'SCSS'"]
+  needs = ["Lint 'TS'", "Lint 'SCSS'", "Visual Regression Tests"]
   uses = "./images/node/"
   runs = ["yarn", "build"]
 }
 
 action "GitHub Action for Slack" {
-  needs = "Build"
+  needs = ["Build"]
   uses = "Ilshidur/action-slack@e820f544affdbb77c1dee6d3f752f7f2daf4a0b3"
   args = "test github actions: A new commit has been pushed and build was successful <3"
   secrets = ["SLACK_WEBHOOK"]
