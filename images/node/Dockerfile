@@ -4,7 +4,9 @@ ENV PATH="/opt/porsche-ui-kit/bin:${PATH}"
 
 RUN echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
-    apk add --no-cache bash \
+    apk add --no-cache \
+      bash \
+      curl \
       chromium@edge \
       harfbuzz@edge \
       nss@edge
