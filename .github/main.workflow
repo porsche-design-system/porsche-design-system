@@ -24,7 +24,7 @@ action "Lint" {
 action "VRT" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["yarn", "vrt"]
+  runs = ["run-visual-regression-tests"]
 }
 
 action "Build" {
