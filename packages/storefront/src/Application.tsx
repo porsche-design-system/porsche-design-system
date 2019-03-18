@@ -173,7 +173,7 @@ export const Application: React.FunctionComponent = () => {
             </Text>
           </footer>
         </div>
-        <div className={appContentClasses}>
+        <main className={appContentClasses}>
           <Switch>
             <Route path="/general/home" component={GeneralHome} />
             <Route path="/general/updates" component={GeneralUpdates} />
@@ -200,7 +200,7 @@ export const Application: React.FunctionComponent = () => {
             />
             <Route path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
           </Switch>
-        </div>
+        </main>
       </React.Fragment>
     </Router>
   )
