@@ -15,26 +15,20 @@ action "Install" {
   secrets = ["ARTIFACTORY_TOKEN"]
 }
 
-action "Lint 'TS'" {
+action "Lint" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["yarn", "lint:ts"]
+  runs = ["yarn", "lint"]
 }
 
-action "Lint 'SCSS'" {
+action "VRT" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["yarn", "lint:scss"]
-}
-
-action "Visual Regression Tests" {
-  needs = ["Install"]
-  uses = "./images/node/"
-  runs = ["run-visual-regression-tests"]
+  runs = ["yarn", "vrt"]
 }
 
 action "Build" {
-  needs = ["Lint 'TS'", "Lint 'SCSS'", "Visual Regression Tests"]
+  needs = ["Lint", "VRT"]
   uses = "./images/node/"
   runs = ["yarn", "build"]
 }
