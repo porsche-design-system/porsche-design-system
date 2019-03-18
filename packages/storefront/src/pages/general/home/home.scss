@@ -1,0 +1,26 @@
+@import "../../../styles/variable";
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+.#{$sg-prefix}home-teaser {
+  position: relative;
+  display: block;
+  margin: -5rem -120px 0;
+
+  .#{$sg-prefix}teaser-img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .#{$sg-prefix}teaser-text {
+    position: absolute;
+    left: 120px;
+    right: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $p-color-white;
+  }
+}
+
+.#{$sg-prefix}home-content {
+  padding-top: 5rem;
+}
