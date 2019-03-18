@@ -1,25 +1,26 @@
-# Dear friends of great design!  
 
-Welcome to Porsche UI - the Porsche initiative to unite digital design at Porsche around a common system with a shared language, tools and partials. We want to empower everyone who is working on digital products for Porsche by a qualitative and brand-aligned collection of design elements with complemented guidance and supporting working methods.
+# Welcome to the Porsche UI Kit
 
-The Porsche UI Kit contains all the fundamental styles and pattern-based components to build aesthetic, familiar and consistent designs for Porsche products. Ready to use both as Sketch Libraries and reusable React Components or compiled HTML and CSS. Everything centrally pre-built and tested with Porsche quality standards and following the global Porsche Corporate Design.
+Our goal is to empower teams and partners globally to create great digital experiences together, that feel like beeing designed by one team. By uniting everyone around a common organisation with shared design tools, methods and components. With enough flexibility of individualisation for various contexts.
+ 
+The Porsche UI Kit provides the fundamental elements to build aesthetic, quialitative and intuitive designs. Ready to use as designed Sketch Libraries, coded React Components or simple CSS with compiled HTML. Everything built and tested following the Porsche Quality Standards and Corporate Design.
 
-## Benefits
+## Benefits for Business, Design and Development
 
 **Ship faster and focus on value.**  
-Use the Porsche UI Kit stops wasting time on repetitive work and creation of what's already existing. Additionally the organization, documentation and methods around, enable faster releases and quick iterations. Design capacity can be focused on more value results and solving the hard design problems.
+Using the Porsche UI Kit stops wasting time on repetitive work and creation of what's already existing. The complementing guidance and workin methods, enable faster releases and quick iterations. Design capacity can be focused on valuable results and solving real design problems.
 
 **Better user experience.**  
-Reuse the pre-built essential design elements increases a consistent look and feel across different products, platforms and disciplines. Repetitive design patterns within the products that match the marketing measures improves the familarity, brand awareness and the overall experience for the user.
+Reusing the pre-built essential design elements increases a consistent look and feel across different products, platforms and disciplines. Repetitive design patterns within the products, that match the marketing measures, improve the familarity, brand awareness and overall experience for the user.
 
 **Quality for the long term.**  
-A designated built and managed design system with standardised components and unified toolings pays off in clean code and design results. 
+A centrally built continuously maintained design system with standardised components and unified toolings pays off in clean and qualitative code and design results. All innately meeting the latest technical requirements and standards of accesibility, performance and usability.
 
 **Laverage knowledge and clarity.**  
 With all teams having access to the system and using the same language, it is much easier to collaborate and share knowledge with a clear understanding. Also the onboarding of new members is much easier and faster.
 
 
-## Our Principles
+## Principles of success
 We foster trust and responsibility rather than policing; Sticking to a continuous evolvement strategy with open collaboration and contribution.
 
 * Use the contents as ingredients for building creative designs - upon and combining them
