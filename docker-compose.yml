@@ -1,0 +1,26 @@
+version: "3.5"
+
+services:
+  ui-kit:
+    build: ./images/node
+    working_dir: /opt/porsche-ui-kit-app
+    user: "${RUN_UID}:${RUN_GID}"
+    volumes:
+      - ./:/opt/porsche-ui-kit-app
+      - home:/home/node
+      - root-node_modules:/opt/porsche-ui-kit-app/node_modules/
+      - storefront-node_modules:/opt/porsche-ui-kit-app/packages/storefront/node_modules/
+      - workshop-node_modules:/opt/porsche-ui-kit-app/packages/workshop/node_modules/
+  change-volume-owner:
+    image: node:10.15.3-alpine@sha256:b85a3b0ef76f5543b3f467e8a25694e72594d2c2bfcf140fa584d4f40ace4130
+    volumes:
+      - home:/opt/porsche-ui-kit-volumes/home
+      - root-node_modules:/opt/porsche-ui-kit-volumes/root-node_modules
+      - storefront-node_modules:/opt/porsche-ui-kit-volumes/storefront-node_modules
+      - workshop-node_modules:/opt/porsche-ui-kit-volumes/workshop-node_modules
+    command: chmod "${RUN_UID}:${RUN_GID}" /opt/porsche-ui-kit-volumes/*
+volumes:
+  home:
+  root-node_modules:
+  storefront-node_modules:
+  workshop-node_modules:

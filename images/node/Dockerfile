@@ -2,7 +2,14 @@ FROM node:10.15.3-alpine@sha256:b85a3b0ef76f5543b3f467e8a25694e72594d2c2bfcf140f
 
 ENV PATH="/opt/porsche-ui-kit/bin:${PATH}"
 
-RUN apk add --no-cache bash
+RUN echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
+    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
+    apk add --no-cache \
+      bash \
+      curl \
+      chromium@edge \
+      harfbuzz@edge \
+      nss@edge
 
 COPY ./entrypoint.sh "/opt/porsche-ui-kit/entrypoint.sh"
 COPY ./bin "/opt/porsche-ui-kit/bin"

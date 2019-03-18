@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+
+ESC=$(printf '\033')
+BLUE="${ESC}[0;34m"
+PINK="${ESC}[0;95m"
+NC="${ESC}[0m"
+
+# whenever one of the following tasks exits the other task will be automatically killed too
+trap "trap - SIGTERM && kill -- -$$ 2>/dev/null" SIGINT SIGTERM EXIT
+
+yarn start 2>&1 | sed -e "s/^/${PINK}ui-kit:  |${NC}  /" &
+"${SCRIPT_DIR}/../shared/wait-for-application.sh" 2>&1 | sed -e "s/^/${BLUE}wait:    |${NC}  /"
+yarn vrt 2>&1 | sed -e "s/^/${BLUE}vrt:     |${NC}  /"
