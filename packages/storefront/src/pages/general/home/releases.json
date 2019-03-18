@@ -1,0 +1,58 @@
+{
+  "releases": {
+    "v0Core": [
+      {
+        "version": "0.18.3",
+        "state": "stable",
+        "scope": "minor bugfix",
+        "changes": "Fixed new feature: xyzbar, and ..",
+        "link": "https://ui.porsche.com/v0.18.3/core/",
+        "published": "2019-01-05T17:00:00+00:00"
+      },
+      {
+        "version": "0.18.2",
+        "state": "stable",
+        "scope": "major fixes",
+        "changes": "Added completely new GUI, etc...",
+        "link": "https://ui.porsche.com/v0.18.2/core/",
+        "published": "2019-02-17T22:50:00+00:00"
+      }
+    ],
+    "v0React": [
+      {
+        "version": "0.10.0",
+        "state": "stable",
+        "scope": "minor bugfix",
+        "changes": "Fixed new feature: xyzbar, and ..",
+        "link": "https://ui.porsche.com/v0.10.0/react/",
+        "published": "2019-01-05T17:00:00+00:00"
+      },
+      {
+        "version": "0.9.0",
+        "state": "stable",
+        "scope": "major fixes",
+        "changes": "Added completely new GUI, etc...",
+        "link": "https://ui.porsche.com/v0.9.0/react/",
+        "published": "2019-02-17T22:50:00+00:00"
+      }
+    ],
+    "v1": [
+      {
+        "version": "1.1.0",
+        "state": "stable",
+        "scope": "minor bugfix",
+        "changes": "Fixed new feature: xyzbar, and ..",
+        "link": "https://ui.porsche.com/v1.1.0/",
+        "published": "2019-01-05T17:00:00+00:00"
+      },
+      {
+        "version": "1.0.0",
+        "state": "stable",
+        "scope": "initial release",
+        "changes": "Added completely new GUI, etc...",
+        "link": "https://ui.porsche.com/v1.0.0/",
+        "published": "2019-02-17T22:50:00+00:00"
+      }
+    ]
+  }
+}
