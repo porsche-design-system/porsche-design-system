@@ -18,7 +18,9 @@ describe('Example integration of visual regression tester', () => {
 
   beforeAll(async () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     visualRegressionTester = new VisualRegressionTester(browser, testOptions);
   });
 
