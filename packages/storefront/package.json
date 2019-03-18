@@ -30,7 +30,7 @@
   },
   "homepage": "https://ui.porsche.com",
   "scripts": {
-    "start": "concurrently \"yarn --cwd ../workshop watch:es\" \"react-scripts start\"",
+    "start": "yarn --cwd ../workshop build && concurrently \"yarn --cwd ../workshop watch:es\" \"react-scripts start\"",
     "build": "yarn --cwd ../workshop build && yarn run docgen && react-scripts build",
     "docgen": "node ./docgen/docgen.js"
   },
