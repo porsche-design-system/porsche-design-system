@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import cx from "classnames"
-import { BrowserRouter as Router, Route, Switch, Redirect, Link, NavLink } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
 import { Story } from "./components/story/Story"
 import { prefix } from "./prefix"
@@ -25,6 +25,7 @@ import { CICD as CodeCICD } from "./pages/code/ci-cd/CICD"
 import { BrowserCompatibility as CodeBrowserCompatibility } from "./pages/code/browser-compatibility/BrowserCompatibility"
 import { Contribution as CodeContribution } from "./pages/code/contribution/Contribution"
 import { Markdown } from "./pages/demo/markdown/Markdown"
+import { Footer } from "./components/footer/Footer"
 
 export const Application: React.FunctionComponent = () => {
   const [hideSidebar, sethideSidebar] = useState(false)
@@ -183,12 +184,7 @@ export const Application: React.FunctionComponent = () => {
               </nav>
             </div>
           </Sidebar>
-          <footer className={prefix("app__legal")}>
-            <Text type="small-regular">
-              © 2019 Dr. Ing. h.c. F. Porsche AG. <Link to="/">Legal notice</Link>. <Link to="/">Imprint</Link>.
-              <Link to="/">Cookies</Link>. <Link to="/">License</Link>.
-            </Text>
-          </footer>
+          <Footer />
         </div>
         <main className={appContentClasses}>
           <Switch>

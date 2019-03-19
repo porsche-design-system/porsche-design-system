@@ -3,7 +3,7 @@
 
 .#{$sg-prefix}sidebar {
   position: relative;
-  padding: $p-spacing-42 $p-spacing-30 120px;
+  padding: $p-spacing-42 $p-spacing-30;
 
   &__logo {
     display: block;
@@ -14,14 +14,6 @@
   &__logo-item {
     display: block;
     width: 100%;
-  }
-
-  &__hr {
-    height: 1px;
-    border: 0;
-    border-top: 1px solid $p-color-grey-3;
-    margin-top: $p-spacing-24;
-    margin-bottom: $p-spacing-24;
   }
 
   &__category {

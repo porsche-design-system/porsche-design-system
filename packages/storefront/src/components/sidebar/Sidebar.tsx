@@ -3,7 +3,7 @@ import { prefix } from "../../prefix"
 import "./sidebar.scss"
 import { Stories } from "../../stories"
 import { Redirect, Link, NavLink } from "react-router-dom"
-import { Logo } from "@porsche/ui-kit-react"
+import { Logo, Divider } from "@porsche/ui-kit-react"
 import { Spacing, Text, Icon } from "@porscheui/porsche-ui-kit"
 import packageJson from "@porscheui/porsche-ui-kit/package.json"
 
@@ -61,11 +61,11 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
           </Text>
         </Spacing>
       </header>
-      <hr className={prefix("sidebar__hr")} />
+      <Divider spacing="small" />
       {props.children}
       {props.featureState && (
         <React.Fragment>
-          <hr className={prefix("sidebar__hr")} />
+          <Divider spacing="small" />
           <Text type="4-bold" as="h2">
             Components
           </Text>
