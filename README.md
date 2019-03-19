@@ -15,7 +15,7 @@
 1. Checkout branch __1.x__ by executing `git checkout 1.x`
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
 1. Enter username, password (Artifactory API Key __not__ Artifactory password!) and e-mail address when asked in terminal
-1. Execute`cat ~/.npmrc`, find following line `//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=` and copy generated _npm registry token_ behind it
+1. Execute`cat ~/.npmrc`, find following line `//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=` and copy generated _npm registry token_ to clipboard
 1. Create an `.env` file within __project root directory__ (never push this file to Git because it will contain secrets, – by default it's ignored by `.gitignore`)
 1. Add _npm registry token_ in following format `ARTIFACTORY_TOKEN=YOUR_TOKEN_GOES_HERE` 
 1. Run `./docker.sh run-install` (make sure that Docker is running)
