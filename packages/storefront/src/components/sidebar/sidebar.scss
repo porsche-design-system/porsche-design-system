@@ -16,7 +16,7 @@
   .#{$sg-prefix}nav-item {
     list-style-type: none;
 
-    & & {
+    .#{$sg-prefix}nav-item {
       display: flex;
 
       &::before {
