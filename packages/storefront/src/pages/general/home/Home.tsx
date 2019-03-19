@@ -15,16 +15,64 @@ export const Home: React.FunctionComponent = () => {
         <img src={Teaser} alt="Porsche UI Kit - teaser" className={prefix("teaser-img")} />
         <div className={prefix("teaser-text")}>
           <Text className={prefix("teaser-headline")} as="h1" type="1-bold" align="center">
-            Porsche UI Kit
+            Welcome to the Porsche UI Kit
           </Text>
           <Text className={prefix("teaser-subline")} as="p" align="center">
-            The Porsche UI Kit enables you to build one-of-a-kind digital Porsche web experiences by providing high
-            quality and CI-approved UI components and corresponding guidelines for usage and implementation.
+            A Porsche initiative to empower teams and partners to create great digital Porsche experiences, that feel
+            like beeing designed by one. United around a global design community with shared tools, methods and
+            components.
           </Text>
+          <Flex>
+            <Flex.Item flex="equal">
+              <Button as="a" {...{ href: "http://eepurl.com/ghVSjH", target: "_blank" }}>
+                Start Designing
+              </Button>
+            </Flex.Item>
+            <Flex.Item flex="equal">
+              <Button as="a" {...{ href: "http://eepurl.com/ghVSjH", target: "_blank" }}>
+                Start Coding
+              </Button>
+            </Flex.Item>
+          </Flex>
         </div>
       </header>
+
+      <Spacing marginTop={30}>
+        <Text as="h3" type="3-bold">
+          Always stay informed
+        </Text>
+        <Text>Join our mailing list and get informed about Porsche UI.</Text>
+        <Flex>
+          <Flex.Item flex="equal">
+            <Button as="a" {...{ href: "http://eepurl.com/ghVSjH", target: "_blank" }}>
+              Subscribe to mailing list
+            </Button>
+          </Flex.Item>
+        </Flex>
+      </Spacing>
+
       <section className={prefix("home-content")}>
         <Markdown path={require("./home.md")} />
+        <Spacing marginTop={30}>
+          <Text as="h3" type="3-bold">
+            Our Principles for success
+          </Text>
+        </Spacing>
+        <Spacing marginTop={30}>
+          <Text>
+            We foster trust and responsibility rather than policing; Sticking to a continuous evolvement strategy with
+            open collaboration and contribution.
+          </Text>
+        </Spacing>
+        <Spacing marginTop={18}>
+          <ul>
+            <li>Use the contents as ingredients for building creative designs - upon and combining them</li>
+            <li>Strive for a deep alignment between design and code through a close collaboration and communication</li>
+            <li>See continuous updating as operation task and avoid growing debts</li>
+            <li>Join our communication channels and community rituals to receive and share information</li>
+            <li>Participate in the evolvement with your contribution and feedback</li>
+          </ul>
+        </Spacing>
       </section>
       <Spacing marginTop={30}>
         <Text as="h3" type="3-bold">
@@ -69,19 +117,6 @@ export const Home: React.FunctionComponent = () => {
                   </li>
                 )
               })}
-          </Flex.Item>
-        </Flex>
-      </Spacing>
-      <Spacing marginTop={30}>
-        <Text as="h3" type="3-bold">
-          Join our mailing list
-        </Text>
-        <Text>Always stay informed about Porsche UI and get access by subscribing to our newsletter.</Text>
-        <Flex>
-          <Flex.Item flex="equal">
-            <Button as="a" {...{ href: "http://eepurl.com/ghVSjH", target: "_blank" }}>
-              Join our mailing list
-            </Button>
           </Flex.Item>
         </Flex>
       </Spacing>
