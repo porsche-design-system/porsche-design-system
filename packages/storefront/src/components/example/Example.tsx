@@ -24,13 +24,13 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   const [showHTML, setShowHTML] = useState(false)
 
   const renderClasses = cx(
-    prefix("example__render"),
-    { [prefix("example__render--light")]: theme === "default" },
-    { [prefix("example__render--dark")]: theme === "inverted" }
+    prefix("render"),
+    { [prefix("render--light")]: theme === "default" },
+    { [prefix("render--dark")]: theme === "inverted" }
   )
 
-  const toggleHtmlClasses = cx(prefix("example__info__toggle-html"), {
-    [prefix("example__info__toggle-html--open")]: showHTML
+  const toggleHtmlClasses = cx(prefix("toggle-html"), {
+    [prefix("toggle-html--open")]: showHTML
   })
 
   const handleShowHTMLClicked = () => {
@@ -57,12 +57,12 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
           {props.noTheme !== true && <Tab panes={panes} alignment="left" mini divider={false} />}
           <div className={renderClasses}>{renderNode(props.children, theme)}</div>
           {props.noHTML !== true && (
-            <div className={prefix("example__info")}>
+            <div className={prefix("info")}>
               <button className={toggleHtmlClasses} onClick={handleShowHTMLClicked}>
                 {showHTML ? "- HTML" : "+ HTML"}
               </button>
               {showHTML && (
-                <div className={prefix("example__info__html")}>
+                <div className={prefix("info__html")}>
                   <Editor language="xml" style={editorTheme}>
                     {renderHTML(props.children, theme)}
                   </Editor>

@@ -2,7 +2,7 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
 .#{$sg-prefix}example {
-  &__render {
+  .#{$sg-prefix}render {
     padding: $p-spacing-30;
     overflow-x: auto;
 
@@ -15,8 +15,8 @@
     }
   }
 
-  &__info {
-    &__toggle-html {
+  .#{$sg-prefix}info {
+    .#{$sg-prefix}toggle-html {
       padding: 0 $p-spacing-6;
       position: relative;
       height: 30px;
@@ -41,7 +41,7 @@
       border-radius: initial;
     }
 
-    &__html {
+    .#{$sg-prefix}html {
       margin-top: -$p-spacing-30;
       font-size: 16px;
       overflow: auto;
