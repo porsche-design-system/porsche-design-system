@@ -1,7 +1,6 @@
 import React, { Suspense, lazy, useState } from "react"
 import { RouteComponentProps, Redirect } from "react-router"
 import { prefix } from "../../prefix"
-import "./story.scss"
 import { Stories, Story as StoryType } from "../../stories"
 import { PropsTable } from "../propsTable/PropsTable"
 import jsdoc from "../../jsdoc.json"

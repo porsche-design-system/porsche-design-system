@@ -16,14 +16,14 @@ export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
 
   return (
     <div className={prefix("props")}>
-      {jsdoc.description && <Text className={prefix("props__component-description")}>{jsdoc.description}</Text>}
+      {jsdoc.description && <Text className={prefix("component-description")}>{jsdoc.description}</Text>}
       <table>
-        <thead className={prefix("props__table")}>
+        <thead className={prefix("table")}>
           <tr>
-            <th className={prefix("props__cell-name")}>Name</th>
-            <th className={prefix("props__cell-default")}>Default</th>
-            <th className={prefix("props__cell-type")}>Type</th>
-            <th className={prefix("props__cell-desc")}>Description</th>
+            <th className={prefix("cell-name")}>Name</th>
+            <th className={prefix("cell-default")}>Default</th>
+            <th className={prefix("cell-type")}>Type</th>
+            <th className={prefix("cell-desc")}>Description</th>
           </tr>
         </thead>
         <tbody>
@@ -32,14 +32,14 @@ export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
               const prop = jsdoc.props[key]
               return (
                 <tr key={key}>
-                  <td className={prefix("props__cell-name")}>
+                  <td className={prefix("cell-name")}>
                     <code>{prop.name}</code>
                   </td>
-                  <td className={prefix("props__cell-default")}>
+                  <td className={prefix("cell-default")}>
                     {prop.defaultValue && <code>{prop.defaultValue.value}</code>}
                   </td>
-                  <td className={prefix("props__cell-type")}>{prop.type && prop.type.name}</td>
-                  <td className={prefix("props__cell-desc")}>{prop.description}</td>
+                  <td className={prefix("cell-type")}>{prop.type && prop.type.name}</td>
+                  <td className={prefix("cell-desc")}>{prop.description}</td>
                 </tr>
               )
             })}
