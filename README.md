@@ -5,40 +5,43 @@
 ## Development
 
 ### Requirements
-* [Docker](https://www.docker.com/)
-* [Node.js](https://nodejs.org/en/)
+* [Docker](https://www.docker.com)
+* [Node.js](https://nodejs.org)
 * [Yarn](https://yarnpkg.com)
 
 ### Getting started
 1. Clone [`porsche-ui-kit` repository](https://github.com/porscheui/porsche-ui-kit)
 1. Switch to __project root directory__
 1. Checkout branch __1.x__ by executing `git checkout 1.x`
+1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
+1. Enter username, password (Artifactory API Key __not__ Artifactory password!) and e-mail address when asked in terminal
+1. Execute`cat ~/.npmrc`, find following line `//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=` and copy generated _npm registry token_ behind it
 1. Create an `.env` file within __project root directory__ (never push this file to Git because it will contain secrets, – by default it's ignored by `.gitignore`)
-1. Add personal Porsche UI Artifactory token in following format `ARTIFACTORY_TOKEN=YOUR_TOKEN_GOES_HERE` 
-1. Run `./local.sh run-install` (make sure that Docker is running)
+1. Add _npm registry token_ in following format `ARTIFACTORY_TOKEN=YOUR_TOKEN_GOES_HERE` 
+1. Run `./docker.sh run-install` (make sure that Docker is running)
 
-*Note: `./local.sh run-install` should be executed after every pull.*
+*Note: `./docker.sh run-install` should be executed after every pull.*
 
 ### Run application
 * Switch to __project root directory__
-* Run `./local.sh run-app`
+* Run `./docker.sh run-app`
 
 ### Linting
 * Switch to __project root directory__
-* Run `./local.sh run-lint`
+* Run `./docker.sh run-lint`
 
 ### Visual Regression Tests
 * Switch to __project root directory__
-* Run `./local.sh run-vrt`
+* Run `./docker.sh run-vrt`
 
 ### Build
 * Switch to __project root directory__
-* Run `./local.sh run-build`
+* Run `./docker.sh run-build`
 
 ### Deploy
 _It's a job exclusively for the CI/CD pipeline, that's why it won't be executable locally._
 * Switch to __project root directory__
-* Run `./local.sh run-deploy`
+* Run `./docker.sh run-deploy`
 
 
 ## Build Status
