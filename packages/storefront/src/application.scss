@@ -2,14 +2,14 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
 .#{$sg-prefix}app {
-  &__toggle-sidebar {
+  .#{$sg-prefix}toggle-sidebar {
     position: fixed;
     left: 0;
     bottom: 0;
     z-index: 10;
     padding: 0 $p-spacing-6;
     height: 30px;
-    background: none;
+    background: $p-color-white;
     border: 1px solid $p-color-grey-4;
     cursor: pointer;
     color: $p-color-black;
@@ -19,7 +19,7 @@
     }
   }
 
-  &__sidebar {
+  .#{$sg-prefix}area-sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -38,7 +38,7 @@
     }
   }
 
-  &__content {
+  .#{$sg-prefix}area-content {
     display: block;
     padding: 5rem 120px;
     max-width: 1920px;

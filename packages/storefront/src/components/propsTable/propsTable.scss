@@ -5,30 +5,30 @@
   overflow-x: auto;
   margin-top: $p-spacing-30;
 
-  &__component-description {
+  .#{$sg-prefix}component-description {
     white-space: pre-wrap;
   }
 
-  &__table {
+  .#{$sg-prefix}table {
     min-width: 900px;
   }
 
-  &__cell-name {
+  .#{$sg-prefix}cell-name {
     width: 15%;
     min-width: 100px;
   }
 
-  &__cell-default {
+  .#{$sg-prefix}cell-default {
     width: 15%;
     min-width: 100px;
   }
 
-  &__cell-type {
+  .#{$sg-prefix}cell-type {
     width: 25%;
     min-width: 200px;
   }
 
-  &__cell-desc {
+  .#{$sg-prefix}cell-desc {
     white-space: pre-wrap;
   }
 }

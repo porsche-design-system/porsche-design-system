@@ -34,16 +34,16 @@ export const Application: React.FunctionComponent = () => {
     sethideSidebar(!hideSidebar)
   }
 
-  const appToggleSidebarClasses = cx(prefix("app__toggle-sidebar"), {
-    [prefix("app__toggle-sidebar--close")]: hideSidebar
+  const appToggleSidebarClasses = cx(prefix("toggle-sidebar"), {
+    [prefix("toggle-sidebar--close")]: hideSidebar
   })
 
-  const appSidebarClasses = cx(prefix("app__sidebar"), {
-    [prefix("app__sidebar--close")]: hideSidebar
+  const appSidebarClasses = cx(prefix("area-sidebar"), {
+    [prefix("area-sidebar--close")]: hideSidebar
   })
 
-  const appContentClasses = cx(prefix("app__content"), {
-    [prefix("app__content--full")]: hideSidebar
+  const appContentClasses = cx(prefix("area-content"), {
+    [prefix("area-content--full")]: hideSidebar
   })
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export const Application: React.FunctionComponent = () => {
 
   return (
     <Router>
-      <React.Fragment>
+      <div className={prefix("app")}>
         <button className={appToggleSidebarClasses} onClick={handleHideSidebarClicked}>
           {hideSidebar ? "+ Show" : "- Hide"}
         </button>
@@ -90,7 +90,7 @@ export const Application: React.FunctionComponent = () => {
             <Route path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
           </Switch>
         </main>
-      </React.Fragment>
+      </div>
     </Router>
   )
 }

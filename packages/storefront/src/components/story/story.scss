@@ -1,8 +1,0 @@
-@import "../../styles/variable";
-@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
-
-.#{$sg-prefix}story {
-  &__props {
-    margin-bottom: $p-spacing-60;
-  }
-}
