@@ -3,4 +3,14 @@
 set -o errexit
 set -o pipefail
 
-yarn --cwd ./packages/storefront start
+node_modules/.bin/concurrently \
+  -n "Workshop" \
+  -c "yellow" \
+  "yarn --cwd ./packages/workshop build" \
+&& \
+node_modules/.bin/concurrently \
+  -k \
+  -n "Workshop,Storefront" \
+  -c "cyan,magenta" \
+  "yarn --cwd ./packages/workshop watch:es" \
+  "yarn --cwd ./packages/storefront react-scripts start"
