@@ -49,6 +49,7 @@
     "lint:ts": "tslint --project '.' --format codeFrame",
     "lint:scss": "stylelint src/**/*.scss",
     "lint:ts:fix": "yarn run lint:ts --fix",
+    "vrt": "ts-node --project vrt/tsconfig.json ../../node_modules/jasmine/bin/jasmine --config=vrt/jasmine.config.json",
     "publish:artifactory": "yarn run test && yarn run build && yarn publish"
   },
   "dependencies": {
