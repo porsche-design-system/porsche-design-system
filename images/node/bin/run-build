@@ -3,4 +3,4 @@
 set -o errexit
 set -o pipefail
 
-yarn start
+yarn --cwd ./packages/storefront build

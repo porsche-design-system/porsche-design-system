@@ -3,4 +3,8 @@
 set -o errexit
 set -o pipefail
 
-yarn lint
+node_modules/.bin/concurrently \
+  -n "TS,SCSS" \
+  -c "cyan,yellow" \
+  "yarn --cwd ./packages/workshop lint:ts" \
+  "yarn --cwd ./packages/workshop lint:scss"
