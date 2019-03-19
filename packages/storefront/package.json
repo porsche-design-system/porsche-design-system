@@ -29,11 +29,7 @@
     "url": "https://github.com/porscheui/porsche-ui-kit/issues"
   },
   "homepage": "https://ui.porsche.com",
-  "scripts": {
-    "start": "yarn --cwd ../workshop build && concurrently \"yarn --cwd ../workshop watch:es\" \"react-scripts start\"",
-    "build": "yarn --cwd ../workshop build && yarn run docgen && react-scripts build",
-    "docgen": "node ./docgen/docgen.js"
-  },
+  "scripts": {},
   "dependencies": {
     "@porsche/ui-kit-react": "^0.10.0",
     "@porscheui/porsche-ui-kit": "1.0.0",
