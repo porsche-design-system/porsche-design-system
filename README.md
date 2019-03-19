@@ -4,13 +4,18 @@
 
 ## Development
 
+### Requirements
+* [Docker](https://www.docker.com/)
+* [Node.js](https://nodejs.org/en/)
+* [Yarn](https://yarnpkg.com)
+
 ### Getting started
 1. Clone [`porsche-ui-kit` repository](https://github.com/porscheui/porsche-ui-kit)
 1. Switch to __project root directory__
 1. Checkout branch __1.x__ by executing `git checkout 1.x`
 1. Create an `.env` file within __project root directory__ (never push this file to Git because it will contain secrets, – by default it's ignored by `.gitignore`)
 1. Add personal Porsche UI Artifactory token in following format `ARTIFACTORY_TOKEN=YOUR_TOKEN_GOES_HERE` 
-1. Run `./local.sh run-install`
+1. Run `./local.sh run-install` (make sure that Docker is running)
 
 *Note: `./local.sh run-install` should be executed after every pull.*
 
