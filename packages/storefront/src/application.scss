@@ -2,51 +2,53 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
 .#{$sg-prefix}app {
-  .#{$sg-prefix}toggle-sidebar {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 10;
-    padding: 0 $p-spacing-6;
-    height: 30px;
-    background: $p-color-white;
-    border: 1px solid $p-color-grey-4;
-    cursor: pointer;
-    color: $p-color-black;
-    @include -text-size-small(600);
-    &:focus {
-      outline: 0;
+  .#{$sg-prefix} {
+    &toggle-sidebar {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 10;
+      padding: 0 $p-spacing-6;
+      height: 30px;
+      background: $p-color-white;
+      border: 1px solid $p-color-grey-4;
+      cursor: pointer;
+      color: $p-color-black;
+      @include -text-size-small(600);
+      &:focus {
+        outline: 0;
+      }
     }
-  }
 
-  .#{$sg-prefix}area-sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 300px;
-    height: 100%;
-    z-index: 1;
-    overflow-x: hidden;
-    border-right: 1px solid $p-color-grey-3;
-    transition: transform 400ms ease-out, opacity 400ms ease-out;
-    will-change: transform, opacity;
+    &area-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 300px;
+      height: 100%;
+      z-index: 1;
+      overflow-x: hidden;
+      border-right: 1px solid $p-color-grey-3;
+      transition: transform 400ms ease-out, opacity 400ms ease-out;
+      will-change: transform, opacity;
 
-    &--close {
-      opacity: 0;
-      transform: translateX(-100%);
+      &--close {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
     }
-  }
 
-  .#{$sg-prefix}area-content {
-    display: block;
-    padding: 5rem 120px;
-    max-width: 1920px;
-    margin-left: 300px;
-    transition: margin-left 400ms ease-out;
+    &area-content {
+      display: block;
+      padding: 5rem 120px;
+      max-width: 1920px;
+      margin-left: 300px;
+      transition: margin-left 400ms ease-out;
 
-    &--full {
-      margin-left: 0;
+      &--full {
+        margin-left: 0;
+      }
     }
   }
 }

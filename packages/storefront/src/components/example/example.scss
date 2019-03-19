@@ -2,21 +2,21 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
 .#{$sg-prefix}example {
-  .#{$sg-prefix}render {
-    padding: $p-spacing-30;
-    overflow-x: auto;
+  .#{$sg-prefix} {
+    &render {
+      padding: $p-spacing-30;
+      overflow-x: auto;
 
-    &--light {
-      background-color: $p-color-grey-1;
+      &--light {
+        background-color: $p-color-grey-1;
+      }
+
+      &--dark {
+        background-color: $p-color-grey-10;
+      }
     }
 
-    &--dark {
-      background-color: $p-color-grey-10;
-    }
-  }
-
-  .#{$sg-prefix}info {
-    .#{$sg-prefix}toggle-html {
+    &toggle-html {
       padding: 0 $p-spacing-6;
       position: relative;
       height: 30px;
@@ -41,7 +41,7 @@
       border-radius: initial;
     }
 
-    .#{$sg-prefix}html {
+    &html {
       margin-top: -$p-spacing-30;
       font-size: 16px;
       overflow: auto;
