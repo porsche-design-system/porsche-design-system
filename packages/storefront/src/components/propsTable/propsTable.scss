@@ -1,6 +1,9 @@
 @import "../../styles/variable";
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
+.#{$sg-prefix}props + .#{$sg-prefix}props {
+  margin-top: $p-spacing-60;
+}
 .#{$sg-prefix}props {
   overflow-x: auto;
   margin-top: $p-spacing-30;
