@@ -44,7 +44,6 @@ export interface IconProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<IconProps> = {
-  size: "small",
   color: "black",
   path: "https://ui.porsche.com/cdn/0.0.1/icon/"
 }

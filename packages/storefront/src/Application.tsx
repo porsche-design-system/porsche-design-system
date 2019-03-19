@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react"
 import cx from "classnames"
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
-import { Sidebar, SidebarLink } from "./components/sidebar/Sidebar"
+import { Sidebar } from "./components/sidebar/Sidebar"
 import { Story } from "./components/story/Story"
 import { prefix } from "./prefix"
-import { Text } from "@porscheui/porsche-ui-kit"
 import "./application.scss"
 import { Home as GeneralHome } from "./pages/general/home/Home"
 import { Updates as GeneralUpdates } from "./pages/general/updates/Updates"
@@ -60,130 +59,7 @@ export const Application: React.FunctionComponent = () => {
           {hideSidebar ? "+ Show" : "- Hide"}
         </button>
         <div className={appSidebarClasses}>
-          <Sidebar featureState={featureShowComponents}>
-            <div className={prefix("sidebar__category")}>
-              <Text type="copy-bold">General</Text>
-              <nav>
-                <ul>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to={{ pathname: "/general/home", search: featureShowComponents }} title="Home" />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to={{ pathname: "/general/updates", search: featureShowComponents }} title="Updates" />
-                    <ul>
-                      <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink
-                          to={{ pathname: "/general/roadmap", search: featureShowComponents }}
-                          title="Roadmap"
-                        />
-                      </li>
-                      <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink
-                          to={{ pathname: "/general/versioning", search: featureShowComponents }}
-                          title="Versioning"
-                        />
-                      </li>
-                    </ul>
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to={{ pathname: "/general/support", search: featureShowComponents }} title="Support" />
-                    <ul>
-                      <li className={prefix("sidebar__nav-item")}>
-                        <SidebarLink to={{ pathname: "/general/faq", search: featureShowComponents }} title="FAQ" />
-                      </li>
-                    </ul>
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to={{ pathname: "/general/license", search: featureShowComponents }} title="License" />
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div className={prefix("sidebar__category")}>
-              <Text type="copy-bold">Guidelines</Text>
-              <nav>
-                <ul>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/guidelines/accessibility", search: featureShowComponents }}
-                      title="Accessibility"
-                    />
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div className={prefix("sidebar__category")}>
-              <Text type="copy-bold">Designing</Text>
-              <nav>
-                <ul>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/design/introduction", search: featureShowComponents }}
-                      title="Introduction"
-                    />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/design/sketch-plugins", search: featureShowComponents }}
-                      title="Sketch Plugins"
-                    />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/design/library-template", search: featureShowComponents }}
-                      title="Library Template"
-                    />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/design/abstract", search: featureShowComponents }}
-                      title="Abstract"
-                    />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/design/contribution", search: featureShowComponents }}
-                      title="Contribution"
-                    />
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div className={prefix("sidebar__category")}>
-              <Text type="copy-bold">Code</Text>
-              <nav>
-                <ul>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/code/introduction", search: featureShowComponents }}
-                      title="Introduction"
-                    />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/code/definition-of-done", search: featureShowComponents }}
-                      title="Definition Of Done"
-                    />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink to={{ pathname: "/code/ci-cd", search: featureShowComponents }} title="CI/CD" />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/code/browser-compatibility", search: featureShowComponents }}
-                      title="Browser Compatibility"
-                    />
-                  </li>
-                  <li className={prefix("sidebar__nav-item")}>
-                    <SidebarLink
-                      to={{ pathname: "/code/contribution", search: featureShowComponents }}
-                      title="Contribution"
-                    />
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </Sidebar>
+          <Sidebar featureState={featureShowComponents} />
           <Footer />
         </div>
         <main className={appContentClasses}>
