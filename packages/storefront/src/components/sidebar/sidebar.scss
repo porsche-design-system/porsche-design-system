@@ -38,18 +38,33 @@
       display: flex;
 
       &::before {
-        content: "∟";
+        content: "";
         display: flex;
         align-items: center;
-        margin-right: $p-spacing-3;
+        margin-right: $p-spacing-12;
       }
     }
   }
 
   &__nav-link {
+    position: relative;
     display: block;
-    padding: $p-spacing-6 0;
+    padding: $p-spacing-6 $p-spacing-6 $p-spacing-6 $p-spacing-24;
     text-decoration: none;
+    color: $p-color-grey-10;
+
+    &--current,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $p-color-red-1;
+    }
+  }
+
+  &__nav-link-icon {
+    position: absolute;
+    left: 0;
+    top: 8px;
   }
 
   .pui-link-text__label {
