@@ -24,12 +24,12 @@ export const Home: React.FunctionComponent = () => {
           </Text>
           <Flex>
             <Flex.Item flex="equal">
-              <Button as="a" {...{ href: "http://eepurl.com/ghVSjH", target: "_blank" }}>
+              <Button as={Link} {...{ to: "/design/introduction" }}>
                 Start Designing
               </Button>
             </Flex.Item>
             <Flex.Item flex="equal">
-              <Button as="a" {...{ href: "http://eepurl.com/ghVSjH", target: "_blank" }}>
+              <Button as={Link} {...{ to: "/code/introduction" }}>
                 Start Coding
               </Button>
             </Flex.Item>
