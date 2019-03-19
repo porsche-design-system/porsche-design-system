@@ -1,12 +1,44 @@
-<div align="center">
-    <img src="https://upload.wikimedia.org/wikipedia/de/thumb/7/70/Porsche_Logo.svg/258px-Porsche_Logo.svg.png" />
-</div>
+![Porsche Marque](https://upload.wikimedia.org/wikipedia/de/thumb/7/70/Porsche_Logo.svg/258px-Porsche_Logo.svg.png)
 
-# Porsche UI-Kit [WIP]
+# Porsche UI-Kit
+
+## Development
+
+### Getting started
+1. Clone [`porsche-ui-kit` repository](https://github.com/porscheui/porsche-ui-kit)
+1. Switch to __project root directory__
+1. Checkout branch __1.x__ by executing `git checkout 1.x`
+1. Create an `.env` file within __project root directory__ (never push this file to Git because it will contain secrets, – by default it's ignored by `.gitignore`)
+1. Add personal Porsche UI Artifactory token in following format `ARTIFACTORY_TOKEN=YOUR_TOKEN_GOES_HERE` 
+1. Run `./local.sh run-install`
+
+*Note: `./local.sh run-install` should be executed after every pull.*
+
+### Run application
+* Switch to __project root directory__
+* Run `./local.sh run-app`
+
+### Linting
+* Switch to __project root directory__
+* Run `./local.sh run-lint`
+
+### Visual Regression Tests
+* Switch to __project root directory__
+* Run `./local.sh run-vrt`
+
+### Build
+* Switch to __project root directory__
+* Run `./local.sh run-build`
+
+### Deploy
+_It's a job exclusively for the CI/CD pipeline, that's why it won't be executable locally._
+* Switch to __project root directory__
+* Run `./local.sh run-deploy`
+
 
 ## Build Status
 
-[![CircleCI](https://circleci.com/gh/porscheui/porsche-ui-kit.svg?style=svg&circle-token=c41c837d241f2dd5cdb806c786e577c2d55c5672)](https://circleci.com/gh/porscheui/porsche-ui-kit)
+[![CircleCI](https://circleci.com/gh/porscheui/porsche-ui-kit.svg?style=svg&circle-token=c41c837d241f2dd5cdb806c786e577c2d55c5672)](https://circleci.com/gh/porscheui/por`sche-ui-kit)
 
 ## Mission
 
