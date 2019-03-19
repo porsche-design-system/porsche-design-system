@@ -8,5 +8,5 @@ node_modules/.bin/concurrently \
   -s "first" \
   -n "APP,VRT" \
   -c "blue,magenta" \
-  "yarn --cwd ./packages/storefront start" \
+  "run-app" \
   "node_modules/.bin/wait-on -t 120000 http-get://localhost:3000 && yarn --cwd ./packages/workshop vrt"
