@@ -3,6 +3,7 @@
 
 .#{$sg-prefix}props {
   overflow-x: auto;
+  margin-top: $p-spacing-30;
 
   &__component-description {
     white-space: pre-wrap;

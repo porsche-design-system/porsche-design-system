@@ -101,8 +101,10 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
         } else if (item.key === "props" && item.active) {
           return story.props.map((component, index) => {
             return (
-              <div key={component} className={prefix("story__props")}>
-                <h1>{(jsdoc as any)[component].displayName}</h1>
+              <div key={component} className={prefix("markdown")}>
+                <div>
+                  <h1>{(jsdoc as any)[component].displayName}</h1>
+                </div>
                 <PropsTable jsdoc={(jsdoc as any)[component]} />
               </div>
             )
