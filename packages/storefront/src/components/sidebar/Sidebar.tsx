@@ -2,23 +2,29 @@ import React from "react"
 import { prefix } from "../../prefix"
 import "./sidebar.scss"
 import { Stories } from "../../stories"
-import { Redirect } from "react-router-dom"
-import { Link } from "@porsche/ui-kit-react"
-import { Text } from "@porscheui/porsche-ui-kit"
+import { Redirect, Link, NavLink } from "react-router-dom"
+import { Logo } from "@porsche/ui-kit-react"
+import { Spacing, Text, Icon } from "@porscheui/porsche-ui-kit"
+import packageJson from "@porscheui/porsche-ui-kit/package.json"
 
 export interface SidebarProps {
   featureState?: string
 }
 export interface SidebarLinkProps {
-  to: string
+  to: string | object
   title: string
 }
 
 export const SidebarLink: React.FunctionComponent<SidebarLinkProps> = (props) => {
   return (
-    <Link className={prefix("sidebar__nav-link")} href={props.to}>
-      {props.title}
-    </Link>
+    <NavLink
+      className={prefix("sidebar__nav-link")}
+      to={props.to}
+      activeClassName={prefix("sidebar__nav-link--current")}
+    >
+      <Icon className={prefix("sidebar__nav-link-icon")} name="icon_arrow-right-hair.min.svg" size="x-small" />
+      <Text as="span">{props.title}</Text>
+    </NavLink>
   )
 }
 
@@ -42,6 +48,20 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
 
   return (
     <div className={prefix("sidebar")}>
+      <header>
+        <Link className={prefix("sidebar__logo")} to={"/general/home"}>
+          <Logo as="span" className={prefix("sidebar__logo-item")} />
+        </Link>
+        <Spacing marginTop={18}>
+          <Text type="3-bold" align="center" as="h1">
+            Porsche UI Kit
+          </Text>
+          <Text type="small-regular" align="center" as="p">
+            Current Release: v{packageJson.version}
+          </Text>
+        </Spacing>
+      </header>
+      <hr className={prefix("sidebar__hr")} />
       {props.children}
       {props.featureState && (
         <React.Fragment>
@@ -62,7 +82,10 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
                       return (
                         <li className={prefix("sidebar__nav-item")} key={story}>
                           <SidebarLink
-                            to={`/${category.toLowerCase()}/${story.toLowerCase()}${props.featureState}`}
+                            to={{
+                              pathname: `/${category.toLowerCase()}/${story.toLowerCase()}`,
+                              search: `${props.featureState}`
+                            }}
                             title={story}
                           />
                         </li>
