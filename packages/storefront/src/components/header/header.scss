@@ -1,0 +1,15 @@
+@import "../../styles/variable";
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+.#{$sg-prefix}header {
+  .#{$sg-prefix}logo {
+    display: block;
+    width: 100px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .#{$sg-prefix}logo-item {
+    display: block;
+    width: 100%;
+  }
+}

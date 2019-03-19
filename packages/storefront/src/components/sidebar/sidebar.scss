@@ -5,25 +5,15 @@
   position: relative;
   padding: $p-spacing-42 $p-spacing-30;
 
-  &__logo {
-    display: block;
-    width: 100px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-  }
-  &__logo-item {
-    display: block;
-    width: 100%;
-  }
-
-  &__category {
+  .#{$sg-prefix}category {
     margin-top: $p-spacing-24;
-    &__title {
-      font-weight: bold;
-    }
   }
 
-  &__nav-item {
+  .#{$sg-prefix}title {
+    font-weight: bold;
+  }
+
+  .#{$sg-prefix}nav-item {
     list-style-type: none;
 
     & & {
@@ -38,10 +28,10 @@
     }
   }
 
-  &__nav-link {
+  .#{$sg-prefix}nav-link {
     position: relative;
     display: block;
-    padding: $p-spacing-6 $p-spacing-6 $p-spacing-6 $p-spacing-24;
+    padding: $p-spacing-6 $p-spacing-6 $p-spacing-6 $p-spacing-18;
     text-decoration: none;
     color: $p-color-grey-10;
 
@@ -53,13 +43,9 @@
     }
   }
 
-  &__nav-link-icon {
+  .#{$sg-prefix}nav-link-icon {
     position: absolute;
     left: 0;
-    top: 8px;
-  }
-
-  .pui-link-text__label {
-    text-decoration: none;
+    top: 9px;
   }
 }
