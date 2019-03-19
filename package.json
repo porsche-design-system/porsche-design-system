@@ -29,10 +29,6 @@
   },
   "homepage": "https://ui.porsche.com",
   "scripts": {
-    "start": "yarn --cwd ./packages/storefront start",
-    "build": "yarn --cwd ./packages/storefront build",
-    "lint": "concurrently -n \"TS,SCSS\" -c \"cyan,yellow\" \"yarn --cwd ./packages/workshop lint:ts\" \"yarn --cwd ./packages/workshop lint:scss\"",
-    "stylelint-check": "stylelint-config-prettier-check",
     "clean": "rm -rf ./packages/workshop/build && rm -rf ./packages/workshop/.tmp && rm -rf ./packages/workshop/css && rm -rf ./packages/storefront/build && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
   },
   "dependencies": {},

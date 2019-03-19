@@ -11,26 +11,26 @@ action "Branch 1.x" {
 action "Install" {
   needs = ["Branch 1.x"]
   uses = "./images/node/"
-  runs = ["run-yarn-with-credentials", "install"]
+  runs = ["run-install"]
   secrets = ["ARTIFACTORY_TOKEN"]
 }
 
 action "Lint" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["yarn", "lint"]
+  runs = ["run-lint"]
 }
 
 action "VRT" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-visual-regression-tests"]
+  runs = ["run-vrt"]
 }
 
 action "Build" {
   needs = ["Lint", "VRT"]
   uses = "./images/node/"
-  runs = ["yarn", "build"]
+  runs = ["run-build"]
 }
 
 action "GitHub Action for Slack" {
