@@ -16,7 +16,7 @@
       }
     }
 
-    &toggle-html {
+    &toggle-button {
       padding: 0 $p-spacing-6;
       position: relative;
       height: 30px;
@@ -41,15 +41,14 @@
       border-radius: initial;
     }
 
-    &html {
-      margin-top: -$p-spacing-30;
+    &codeblock {
       font-size: 16px;
       overflow: auto;
       resize: vertical;
       height: 200px;
 
       pre {
-        padding: $p-spacing-60 $p-spacing-30 $p-spacing-30 !important;
+        padding: $p-spacing-30 !important;
       }
 
       .hljs-tag {
