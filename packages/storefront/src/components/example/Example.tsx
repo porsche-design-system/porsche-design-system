@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server"
 import { Light as Editor } from "react-syntax-highlighter"
 import languageXml from "react-syntax-highlighter/dist/languages/hljs/xml"
 import { Tab } from "@porsche/ui-kit-react"
-import { Spacing } from "@porscheui/porsche-ui-kit"
+import { Spacing, Flex } from "@porscheui/porsche-ui-kit"
 
 // More themes at https://highlightjs.org/static/demo/
 import editorTheme from "react-syntax-highlighter/dist/styles/hljs/solarized-dark"
@@ -17,11 +17,13 @@ import "./example.scss"
 export interface ExampleProps {
   noHTML?: boolean
   noTheme?: boolean
+  noSCSS?: boolean
 }
 
 export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   const [theme, setTheme] = useState("default")
   const [showHTML, setShowHTML] = useState(false)
+  const [showSCSS, setShowSCSS] = useState(false)
 
   const renderClasses = cx(
     prefix("render"),
@@ -29,12 +31,16 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
     { [prefix("render--dark")]: theme === "inverted" }
   )
 
-  const toggleHtmlClasses = cx(prefix("toggle-html"), {
-    [prefix("toggle-html--open")]: showHTML
-  })
+  const toggleButtonClasses = prefix("toggle-button")
 
-  const handleShowHTMLClicked = () => {
-    setShowHTML(!showHTML)
+  const handleShowClicked = (name: string) => {
+    if (name === "html") {
+      setShowHTML(showHTML === false ? true : false)
+      setShowSCSS(showSCSS === true ? false : false)
+    } else if (name === "scss") {
+      setShowSCSS(showSCSS === false ? true : false)
+      setShowHTML(showHTML === true ? false : false)
+    }
   }
 
   const handleLightClicked = () => {
@@ -56,15 +62,41 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
         <div className={prefix("example")}>
           {props.noTheme !== true && <Tab panes={panes} alignment="left" mini divider={false} />}
           <div className={renderClasses}>{renderNode(props.children, theme)}</div>
-          {props.noHTML !== true && (
+          {(!props.noHTML || !props.noSCSS) && (
             <div className={prefix("info")}>
-              <button className={toggleHtmlClasses} onClick={handleShowHTMLClicked}>
-                {showHTML ? "- HTML" : "+ HTML"}
-              </button>
+              <Flex alignMainAxis="end">
+                {!props.noHTML && (
+                  <button
+                    className={cx(toggleButtonClasses, {
+                      [prefix("toggle-button--open")]: showHTML
+                    })}
+                    onClick={() => handleShowClicked("html")}
+                  >
+                    {showHTML ? "- HTML" : "+ HTML"}
+                  </button>
+                )}
+                {!props.noSCSS && (
+                  <button
+                    className={cx(toggleButtonClasses, {
+                      [prefix("toggle-button--open")]: showSCSS
+                    })}
+                    onClick={() => handleShowClicked("scss")}
+                  >
+                    {showSCSS ? "- SCSS" : "+ SCSS"}
+                  </button>
+                )}
+              </Flex>
               {showHTML && (
-                <div className={prefix("info__html")}>
+                <div className={prefix("codeblock")}>
                   <Editor language="xml" style={editorTheme}>
                     {renderHTML(props.children, theme)}
+                  </Editor>
+                </div>
+              )}
+              {showSCSS && (
+                <div className={prefix("codeblock")}>
+                  <Editor language="scss" style={editorTheme}>
+                    # SCSS paths go here
                   </Editor>
                 </div>
               )}
