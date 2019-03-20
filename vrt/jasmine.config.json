@@ -1,0 +1,12 @@
+{
+  "spec_dir": ".",
+  "spec_files": [
+    "packages/storefront/src/**/*.spec.ts",
+    "packages/workshop/src/**/*.spec.ts"
+  ],
+  "helpers": [
+    "vrt/helpers/**/*.ts"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": false
+}

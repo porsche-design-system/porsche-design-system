@@ -4,9 +4,9 @@ set -o errexit
 set -o pipefail
 
 node_modules/.bin/concurrently \
-  -n "storefront:ts,workshop:ts,storefront:scss,workshop:scss" \
+  -n "storefront:lint:ts,workshop:lint:ts,storefront:lint:scss,workshop:lint:scss" \
   -c "cyan,magenta,blue,yellow" \
   "node_modules/.bin/tslint -p 'packages/storefront/tsconfig.json' -t codeFrame" \
   "node_modules/.bin/tslint -p 'packages/workshop/tsconfig.json' -t codeFrame" \
-  "node_modules/.bin/stylelint 'packages/storefront/**/*.scss'" \
-  "node_modules/.bin/stylelint 'packages/workshop/**/*.scss'"
+  "node_modules/.bin/stylelint 'packages/storefront/src/**/*.scss'" \
+  "node_modules/.bin/stylelint 'packages/workshop/src/**/*.scss'"

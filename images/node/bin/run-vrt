@@ -6,7 +6,9 @@ set -o pipefail
 node_modules/.bin/concurrently \
   -k \
   -s "first" \
-  -n "APP,VRT" \
+  -n "app,vrt" \
   -c "blue,magenta" \
   "run-app" \
-  "node_modules/.bin/wait-on -t 120000 http-get://localhost:3000 && yarn --cwd ./packages/workshop vrt"
+  "node_modules/.bin/wait-on -t 120000 http-get://localhost:3000 && \
+   node_modules/.bin/ts-node --project 'vrt/tsconfig.json' \
+   node_modules/.bin/jasmine --config='vrt/jasmine.config.json'"
