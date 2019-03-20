@@ -47,7 +47,10 @@
     "build:sass": "node-sass-chokidar --source-map true ./src --output .tmp/css --importer=./../../node_modules/node-sass-tilde-importer",
     "build:css": "postcss --use autoprefixer --map --dir ./css --base .tmp/css \".tmp/css/**/*.css\"",
     "lint:ts:fix": "yarn run lint:ts --fix",
-    "publish:artifactory": "yarn run test && yarn run build && yarn publish"
+    "publish:artifactory": "yarn run test && yarn run build && yarn publish",
+    "lint": "yarn lint:scss & yarn lint:ts",
+    "lint:scss": "stylelint 'src/**/*.scss'",
+    "lint:ts": "tslint -p 'tsconfig.json' -t codeFrame"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -68,6 +71,13 @@
     "postcss": "^7.0.14",
     "postcss-cli": "^6.1.2",
     "rimraf": "^2.6.3",
+    "stylelint": "^9.10.1",
+    "stylelint-config-prettier": "^5.0.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.4",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^3.6.0",
     "typescript": "~3.3.3"
   },
   "peerDependencies": {
