@@ -1467,10 +1467,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
   integrity sha1-DmcOolTVWSQbbus4lPh1SZHnMiA=
 
-"@types/jasmine@^3.3.9":
-  version "3.3.9"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jasmine/-/jasmine-3.3.9.tgz#ee886a9113db567e722a8a0c37f0e6283f2cefa3"
-  integrity sha1-7ohqkRPbVn5yKooMN/DmKD8s76M=
+"@types/jasmine@^3.3.12":
+  version "3.3.12"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jasmine/-/jasmine-3.3.12.tgz#bf282cb540e9ad7a0a04b742082c073b655eab39"
+  integrity sha1-vygstUDprXoKBLdCCCwHO2Veqzk=
 
 "@types/minimatch@*":
   version "3.0.3"
