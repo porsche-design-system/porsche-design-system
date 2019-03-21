@@ -35,25 +35,25 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
 
   const handleShowClicked = (name: string) => {
     if (name === "html") {
-      setShowHTML(showHTML === false ? true : false)
+      setShowHTML(!showHTML)
       setShowSCSS(showSCSS === true ? false : false)
     } else if (name === "scss") {
-      setShowSCSS(showSCSS === false ? true : false)
+      setShowSCSS(!showSCSS)
       setShowHTML(showHTML === true ? false : false)
     }
   }
 
-  const handleLightClicked = () => {
-    setTheme("default")
-  }
-
-  const handleDarkClicked = () => {
-    setTheme("inverted")
+  const handleThemeClicked = (name: string) => {
+    if (name === "default") {
+      setTheme("default")
+    } else if (name === "inverted") {
+      setTheme("inverted")
+    }
   }
 
   const panes = [
-    { menuItem: "Light", key: "Tab1", active: theme === "default", onClick: () => handleLightClicked() },
-    { menuItem: "Dark", key: "Tab2", active: theme === "inverted", onClick: () => handleDarkClicked() }
+    { menuItem: "Light", key: "Tab1", active: theme === "default", onClick: () => handleThemeClicked("default") },
+    { menuItem: "Inverted", key: "Tab2", active: theme === "inverted", onClick: () => handleThemeClicked("inverted") }
   ]
 
   return (

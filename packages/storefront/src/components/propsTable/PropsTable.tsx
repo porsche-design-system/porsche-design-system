@@ -1,11 +1,10 @@
 import React from "react"
 import { prefix } from "../../prefix"
 import "./propsTable.scss"
-import { Text } from "@porscheui/porsche-ui-kit"
 
 export interface PropsTableProps {
   jsdoc: any
-  title: string
+  title?: string
 }
 
 export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
