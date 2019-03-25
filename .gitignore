@@ -19,9 +19,6 @@ Thumbs.db
 *.ipr
 *.iws
 
-# production
-build
-
 # dependencies
 node_modules
 .pnp
