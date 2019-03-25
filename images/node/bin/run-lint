@@ -3,8 +3,4 @@
 set -o errexit
 set -o pipefail
 
-node_modules/.bin/concurrently \
-  -n "storefront:lint,workshop:lint" \
-  -c "cyan,magenta" \
-  "yarn --cwd ./packages/storefront lint" \
-  "yarn --cwd ./packages/workshop lint"
+yarn lint

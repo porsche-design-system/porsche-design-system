@@ -3,6 +3,4 @@
 set -o errexit
 set -o pipefail
 
-yarn --cwd ./packages/workshop build && \
-node ./packages/storefront/docgen/docgen.js && \
-yarn --cwd ./packages/storefront react-scripts build
+yarn build
