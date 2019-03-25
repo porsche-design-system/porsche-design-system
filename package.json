@@ -1,5 +1,5 @@
 {
-  "name": "porsche-ui-kit-repository",
+  "name": "@porscheui/porsche-ui-kit-repository",
   "version": "1.0.0",
   "scope": "@porscheui",
   "private": true,

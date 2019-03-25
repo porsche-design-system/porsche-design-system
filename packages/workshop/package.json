@@ -37,12 +37,12 @@
   },
   "homepage": "https://ui.porsche.com",
   "scripts": {
-    "prebuild": "rm -rf './build' './css'",
+    "prebuild": "rm -rf './.tmp' './build' './css'",
     "build": "concurrently -c \"white\" -n \"build:es,build:commonjs,build:css\" \"yarn build:es\" \"yarn build:commonjs\" \"yarn build:css\"",
     "postbuild": "rm -rf './.tmp'",
-    "build:es": "tsc --project ./ --outDir ./build/es --declaration true --declarationDir ./build/typings",
-    "watch:es": "tsc --project ./ --outDir ./build/es --declaration true --declarationDir ./build/typings --watch",
-    "build:commonjs": "tsc --project ./ --outDir ./build/commonjs --module commonjs",
+    "build:es": "tsc --project './' --outDir './build/es' --declaration true --declarationDir './build/typings'",
+    "watch:es": "tsc --project './' --outDir './build/es' --declaration true --declarationDir './build/typings' --watch",
+    "build:commonjs": "tsc --project './' --outDir './build/commonjs' --module commonjs",
     "build:css": "node-sass-chokidar --source-map true './src' --output './.tmp/css' --importer=../../node_modules/node-sass-tilde-importer && postcss --use autoprefixer --map --dir './css' --base './.tmp/css' './.tmp/css/**/*.css'",
     "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
     "lint:scss": "stylelint './src/**/*.scss'",
@@ -75,6 +75,6 @@
     "typescript": "~3.3.3"
   },
   "publishConfig": {
-    "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+    "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   }
 }
