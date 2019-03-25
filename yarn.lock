@@ -1486,15 +1486,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha1-PcoOPzOyAPx9ETnAzZbBJoyt/Z0=
 
-"@types/node@*":
+"@types/node@*", "@types/node@11.11.6":
   version "11.11.6"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-11.11.6.tgz#df929d1bb2eee5afdda598a41930fe50b43eaa6a"
   integrity sha1-35KdG7Lu5a/dpZikGTD+ULQ+qmo=
-
-"@types/node@11.11.3":
-  version "11.11.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-11.11.3.tgz#7c6b0f8eaf16ae530795de2ad1b85d34bf2f5c58"
-  integrity sha1-fGsPjq8WrlMHld4q0bhdNL8vXFg=
 
 "@types/prop-types@*":
   version "15.7.0"
@@ -9917,7 +9912,7 @@ react-responsive@^6.0.1:
     matchmediaquery "^0.3.0"
     prop-types "^15.6.1"
 
-react-router-dom@^4.4.0:
+react-router-dom@^5.0.0:
   version "5.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-router-dom/-/react-router-dom-5.0.0.tgz#542a9b86af269a37f0b87218c4c25ea8dcf0c073"
   integrity sha1-VCqbhq8mmjfwuHIYxMJeqNzwwHM=
