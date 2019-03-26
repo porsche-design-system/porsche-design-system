@@ -3,6 +3,7 @@ import { importMDX } from "mdx.macro"
 export interface Story {
   examples: any
   design?: any
+  vrt?: any
   props: string[]
 }
 export interface Stories {
@@ -15,6 +16,7 @@ export const Stories: Stories = {
     Text: {
       examples: importMDX("../../workshop/src/components/basic/text/text.code.mdx"),
       design: importMDX("../../workshop/src/components/basic/text/text.design.mdx"),
+      vrt: importMDX("../../workshop/src/components/basic/text/text.vrt.mdx"),
       props: ["Text"]
     }
   },
