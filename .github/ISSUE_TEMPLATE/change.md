@@ -33,6 +33,7 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - [ ] Create/update related code CSS / JS
 - [ ] Create samples of all possible states and variants
 - [ ] Create Code/Implementation guidelines as .mdx for corresponding component code
-- [ ] Create VRT and Unit test
+- [ ] Create VRT
+- [ ] Create Unit test (Optional)
 - [ ] Test code visual and functional for optimized viewports (only one browser): 320px, 375px, 480px, 768px, 1024px, 1366px, 1920px
 - [ ] Test code visual and functional for all supported browsers in viewports: 320px, 480px, 760px, 1000px, 1300px, 1760px, 1920px
