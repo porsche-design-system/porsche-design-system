@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react"
 import { RouteComponentProps, Redirect } from "react-router"
-import { Stories, Story as StoryType } from "./stories"
+import { Stories, Story as StoryType } from "../stories"
 
 export interface StoryTestParams {
   category: string

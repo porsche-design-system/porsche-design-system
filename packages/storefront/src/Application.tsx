@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import { Storefront } from "./Storefront"
-import { Vrt } from "./Vrt"
+import { Storefront } from "./views/Storefront"
+import { Vrt } from "./views/Vrt"
 
 export const Application: React.FunctionComponent = () => {
   return (
