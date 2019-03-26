@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import cx from "classnames"
-import { prefix } from "../../prefix"
+import { prefix } from "../../lib/prefix"
 import { renderToStaticMarkup } from "react-dom/server"
 import { Light as Editor } from "react-syntax-highlighter"
 import languageXml from "react-syntax-highlighter/dist/languages/hljs/xml"

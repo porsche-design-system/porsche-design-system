@@ -1,7 +1,19 @@
-import { Example } from "../../../src/components/example/Example"
+import { ExampleVrt } from "../../../src/components/exampleVrt/ExampleVrt"
 import { Text } from "@porscheui/porsche-ui-kit"
 
-<Example>
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <Text type="1-bold" as="h1">
+          Headline 1
+        </Text>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="inverted">
   {(theme) => {
     return (
       <React.Fragment>
@@ -11,4 +23,4 @@ import { Text } from "@porscheui/porsche-ui-kit"
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>

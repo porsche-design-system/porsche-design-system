@@ -11,7 +11,6 @@ export interface StoryTestParams {
 export const Vrt: React.FunctionComponent<RouteComponentProps<StoryTestParams>> = (props) => {
   const categoryName = props.match.params.category
   const storyName = props.match.params.story
-  const storyTest = props.match.params.vrt
 
   const category =
     (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))]
@@ -25,12 +24,6 @@ export const Vrt: React.FunctionComponent<RouteComponentProps<StoryTestParams>> 
   if (!story) {
     return <Redirect to="/general/home" />
   }
-
-  // const test: StoryType = category[storyTest] || category[toTitleCase(decodeParam(storyTest))]
-
-  // if (!test) {
-  //   return <Redirect to="/genvrt" />
-  // }
 
   const Code = lazy(() => story.vrt)
 

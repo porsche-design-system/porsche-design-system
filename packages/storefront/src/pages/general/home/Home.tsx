@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { prefix } from "../../../prefix"
+import { prefix } from "../../../lib/prefix"
 import "./home.scss"
 import Teaser from "./assets/img/teaser.jpg"
 import { Button } from "@porsche/ui-kit-react"

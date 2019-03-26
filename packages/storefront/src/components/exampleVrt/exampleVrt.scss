@@ -1,0 +1,11 @@
+@import "../../styles/variable";
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+.#{$sg-prefix}example-vrt {
+  &--light {
+    background-color: $p-color-grey-1;
+  }
+  &--dark {
+    background-color: $p-color-grey-10;
+  }
+}

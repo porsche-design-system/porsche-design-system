@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react"
-import {prefix} from "../../prefix"
+import React, { useEffect, useState } from "react"
+import { prefix } from "../../lib/prefix"
 import ReactMarkdown from "react-markdown"
 
 export interface MarkdownProps {
@@ -14,12 +14,13 @@ export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
   }, [])
 
   return (
-    markdown &&
-    <div className={prefix('markdown')}>
-      <div>
-        <ReactMarkdown source={markdown}/>
+    markdown && (
+      <div className={prefix("markdown")}>
+        <div>
+          <ReactMarkdown source={markdown} />
+        </div>
       </div>
-    </div>
+    )
   )
 }
 
