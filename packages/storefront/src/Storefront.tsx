@@ -56,6 +56,8 @@ export const Storefront: React.FunctionComponent = () => {
       ? setFeatureShowComponents("?featureComponents")
       : setFeatureShowComponents("")
 
+    updateIsMobile()
+
     window.addEventListener(
       "resize",
       throttle(500, () => {
