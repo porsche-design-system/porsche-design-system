@@ -25,6 +25,7 @@
       top: 0;
       left: 0;
       bottom: 0;
+      background-color: $p-color-white;
       width: 300px;
       height: 100%;
       z-index: 1;
@@ -41,13 +42,19 @@
 
     &area-content {
       display: block;
-      padding: 5rem 120px;
-      max-width: 1920px;
+      padding: $p-spacing-30;
+      max-width: 1620px;
+      // min-width: 1000px;
       margin-left: 300px;
       transition: margin-left 400ms ease-out;
 
+      @include breakpoint("s") {
+        padding: $p-spacing-60;
+      }
+
       &--full {
         margin-left: 0;
+        max-width: 1920px;
       }
     }
   }

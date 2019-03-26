@@ -4,23 +4,93 @@
 .#{$sg-prefix}home-teaser {
   position: relative;
   display: block;
-  margin: -5rem -120px 0;
+  margin: #{-$p-spacing-30} #{-$p-spacing-30} 0;
 
-  .#{$sg-prefix}teaser-img {
-    display: block;
-    max-width: 100%;
+  @include breakpoint("s") {
+    margin: #{-$p-spacing-60} #{-$p-spacing-60} 0;
   }
 
-  .#{$sg-prefix}teaser-text {
+  .#{$sg-prefix}img-wrap {
+    position: relative;
+    overflow: hidden;
+    max-height: 240px;
+
+    @include breakpoint("s") {
+      min-height: 340px;
+    }
+
+    @include breakpoint("m") {
+      min-height: 400px;
+    }
+
+    @include breakpoint("xl") {
+      min-height: 500px;
+    }
+  }
+
+  .#{$sg-prefix}img {
+    position: relative;
+    max-width: 100%;
+
+    @include breakpoint("s") {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  .#{$sg-prefix}text {
+    color: $p-color-black;
+    padding: 0 $p-spacing-30;
+
+    @include breakpoint("s") {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      padding: 0 $p-spacing-60;
+      transform: translateY(-50%);
+      color: $p-color-white;
+    }
+  }
+
+  .#{$sg-prefix}headline {
     position: absolute;
-    left: 120px;
-    right: 120px;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    top: $p-spacing-60;
+    padding: 0 $p-spacing-30;
     color: $p-color-white;
+
+    @include breakpoint("s") {
+      position: static;
+      padding: 0 $p-spacing-60;
+    }
+  }
+
+  .#{$sg-prefix}headline-large {
+    display: block;
+    line-height: 1;
+    font-size: rem(48px);
+    @include breakpoint("l") {
+      font-size: rem(72px);
+    }
+    @include breakpoint("xl") {
+      font-size: rem(99px);
+    }
+  }
+
+  .#{$sg-prefix}subline {
+    margin-top: $p-spacing-18;
   }
 }
 
+.#{$sg-prefix}mail-teaser {
+  padding: $p-spacing-24;
+  background-color: $p-color-grey-1;
+}
+
 .#{$sg-prefix}home-content {
-  padding-top: 5rem;
+  padding-top: $p-spacing-30;
 }
