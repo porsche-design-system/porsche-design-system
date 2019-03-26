@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { throttle } from "throttle-debounce"
 import cx from "classnames"
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import { Sidebar } from "./components/sidebar/Sidebar"
@@ -27,11 +28,15 @@ import { Markdown } from "./pages/demo/markdown/Markdown"
 import { Footer } from "./components/footer/Footer"
 
 export const Storefront: React.FunctionComponent = () => {
-  const [hideSidebar, sethideSidebar] = useState(false)
+  const [hideSidebar, setHideSidebar] = useState(false)
   const [featureShowComponents, setFeatureShowComponents] = useState("?featureComponents")
 
   const handleHideSidebarClicked = () => {
-    sethideSidebar(!hideSidebar)
+    setHideSidebar(!hideSidebar)
+  }
+
+  const updateIsMobile = () => {
+    window.innerWidth < 1320 ? setHideSidebar(hideSidebar === false) : setHideSidebar(hideSidebar === true)
   }
 
   const appToggleSidebarClasses = cx(prefix("toggle-sidebar"), {
@@ -50,6 +55,13 @@ export const Storefront: React.FunctionComponent = () => {
     window.location.search.indexOf("featureComponents") > -1
       ? setFeatureShowComponents("?featureComponents")
       : setFeatureShowComponents("")
+
+    window.addEventListener(
+      "resize",
+      throttle(500, () => {
+        updateIsMobile()
+      })
+    )
   }, [])
 
   return (

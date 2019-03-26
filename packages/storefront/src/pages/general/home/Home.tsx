@@ -12,38 +12,45 @@ export const Home: React.FunctionComponent = () => {
   return (
     <React.Fragment>
       <header className={prefix("home-teaser")}>
-        <img src={Teaser} alt="Porsche UI Kit - teaser" className={prefix("teaser-img")} />
-        <div className={prefix("teaser-text")}>
-          <Text className={prefix("teaser-headline")} as="h1" type="1-bold" align="center">
-            Welcome to the Porsche UI Kit
+        <div className={prefix("img-wrap")}>
+          <img src={Teaser} alt="Porsche UI Kit - teaser" className={prefix("img")} />
+        </div>
+        <div className={prefix("text")}>
+          <Text className={prefix("headline")} as="h1" type="1-bold" align="center">
+            Welcome to the
+            <span className={prefix("headline-large")}>Porsche UI Kit</span>
           </Text>
-          <Text className={prefix("teaser-subline")} as="p" align="center">
+          <Text className={prefix("subline")} as="p" align="center">
             A Porsche initiative to empower teams and partners to create great digital Porsche experiences, that feel
-            like beeing designed by one. United around a global design community with shared tools, methods and
-            components.
+            like being designed by one. <br />
+            United around a global design community with shared tools, methods and components.
           </Text>
-          <Flex>
-            <Flex.Item flex="equal">
-              <Button as={Link} {...{ to: "/design/introduction" }}>
-                Start Designing
-              </Button>
-            </Flex.Item>
-            <Flex.Item flex="equal">
-              <Button as={Link} {...{ to: "/code/introduction" }}>
-                Start Coding
-              </Button>
-            </Flex.Item>
-          </Flex>
+          <Spacing marginTop={30}>
+            <Flex alignMainAxis="center" gap={30}>
+              <Flex.Item>
+                <Button type="highlight" as={Link} {...{ to: "/design/introduction" }}>
+                  Start Designing
+                </Button>
+              </Flex.Item>
+              <Flex.Item>
+                <Button type="highlight" as={Link} {...{ to: "/code/introduction" }}>
+                  Start Coding
+                </Button>
+              </Flex.Item>
+            </Flex>
+          </Spacing>
         </div>
       </header>
 
-      <Spacing marginTop={30}>
-        <Text as="h3" type="3-bold">
-          Always stay informed
-        </Text>
-        <Text>Join our mailing list and get informed about Porsche UI.</Text>
-        <Flex>
-          <Flex.Item flex="equal">
+      <Spacing className={prefix("mail-teaser")} marginTop={60} wrap>
+        <Flex gap={24}>
+          <Flex.Item>
+            <Text as="h3" type="3-bold">
+              Always stay informed
+            </Text>
+            <Text>Join our mailing list and get informed about Porsche UI.</Text>
+          </Flex.Item>
+          <Flex.Item>
             <Button as="a" {...{ href: "http://eepurl.com/ghVSjH", target: "_blank" }}>
               Subscribe to mailing list
             </Button>
@@ -53,26 +60,6 @@ export const Home: React.FunctionComponent = () => {
 
       <section className={prefix("home-content")}>
         <Markdown path={require("./home.md")} />
-        <Spacing marginTop={30}>
-          <Text as="h3" type="3-bold">
-            Our Principles for success
-          </Text>
-        </Spacing>
-        <Spacing marginTop={30}>
-          <Text>
-            We foster trust and responsibility rather than policing; Sticking to a continuous evolvement strategy with
-            open collaboration and contribution.
-          </Text>
-        </Spacing>
-        <Spacing marginTop={18}>
-          <ul>
-            <li>Use the contents as ingredients for building creative designs - upon and combining them</li>
-            <li>Strive for a deep alignment between design and code through a close collaboration and communication</li>
-            <li>See continuous updating as operation task and avoid growing debts</li>
-            <li>Join our communication channels and community rituals to receive and share information</li>
-            <li>Participate in the evolvement with your contribution and feedback</li>
-          </ul>
-        </Spacing>
       </section>
       <Spacing marginTop={30}>
         <Text as="h3" type="3-bold">

@@ -13,3 +13,13 @@ Our centrally built and continuously maintained design system with standardised 
 
 **Laverage knowledge and clarity.**  
 Everyone having access to the system and using the same language, it is much easier to collaborate and share knowledge with a clear understanding. Onboardings for new members are much easier and faster.
+
+## Our Principles for success
+
+We foster trust and responsibility rather than policing; Sticking to a continuous evolvement strategy with open collaboration and contribution.
+
+* Use the contents as ingredients for building creative designs - upon and combining them
+* Strive for a deep alignment between design and code through a close collaboration and communication
+* See continuous updating as operation task and avoid growing debts
+* Join our communication channels and community rituals to receive and share information
+* Participate in the evolvement with your contribution and feedback
