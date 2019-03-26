@@ -27,7 +27,7 @@
     "start": "concurrently -n \"workshop\" -c \"cyan\" \"yarn --cwd ./packages/workshop build\" && concurrently -k -n \"workshop,storefront\" -c \"cyan,magenta\" \"yarn --cwd ./packages/workshop watch:es\" \"yarn --cwd ./packages/storefront start\"",
     "build": "concurrently -n \"workshop\" -c \"cyan\" \"yarn --cwd ./packages/workshop build\" && concurrently -n \"storefront\" -c \"magenta\" \"yarn --cwd ./packages/storefront build\"",
     "lint": "concurrently -n \"storefront,workshop\" -c \"magenta,cyan\" \"yarn --cwd ./packages/storefront lint\" \"yarn --cwd ./packages/workshop lint\"",
-    "vrt": "concurrently -k -s \"first\" -n \"app,vrt\" -c \"gray\" \"yarn start\" \"wait-on -t 120000 http-get://localhost:3000 && ts-node --project 'vrt/tsconfig.json' node_modules/.bin/jasmine --config='vrt/jasmine.config.json'\"",
+    "vrt": "concurrently -k -s \"first\" -n \"app,vrt\" -c \"gray\" \"yarn start\" \"wait-on -t 300000 http-get://localhost:3000 && ts-node --project 'vrt/tsconfig.json' node_modules/.bin/jasmine --config='vrt/jasmine.config.json'\"",
     "clean": "concurrently -n \"repository,storefront,workshop\" -c \"gray,magenta,cyan\" \"rm -rf './node_modules'\" \"yarn --cwd ./packages/storefront clean\" \"yarn --cwd ./packages/workshop clean\""
   },
   "dependencies": {},
