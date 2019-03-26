@@ -17,5 +17,8 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "references": [{ "path": "./packages/workshop" }]
+  "references": [
+    { "path": "./packages/storefront" },
+    { "path": "./packages/workshop" }
+  ]
 }
