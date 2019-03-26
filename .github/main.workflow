@@ -1,6 +1,6 @@
 workflow "Porsche UI Kit" {
   on = "push"
-  resolves = ["Build", "GitHub Action for Slack"]
+  resolves = ["Deploy", "GitHub Action for Slack"]
 }
 
 action "Branch 1.x" {
@@ -33,8 +33,14 @@ action "Build" {
   runs = ["run-build"]
 }
 
-action "GitHub Action for Slack" {
+action "Deploy" {
   needs = ["Build"]
+  uses = "./images/node/"
+  runs = ["run-deploy"]
+}
+
+action "GitHub Action for Slack" {
+  needs = ["Deploy"]
   uses = "Ilshidur/action-slack@e820f544affdbb77c1dee6d3f752f7f2daf4a0b3"
   args = "test github actions: A new commit has been pushed and build was successful <3"
   secrets = ["SLACK_WEBHOOK"]
