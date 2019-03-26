@@ -1,14 +1,14 @@
 {
   "name": "@porscheui/porsche-ui-kit",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "scope": "@porscheui",
-  "description": "Porsche UI Kit component library",
+  "private": true,
+  "description": "Porsche UI Kit design system",
   "main": "build/commonjs/index.js",
   "module": "build/es/index.js",
   "jsnext:main": "build/es/index.js",
   "typings": "build/typings/index",
-  "license": "SEE LICENSE IN https://github.com/porscheui/porsche-ui-kit/wiki/License",
-  "sideEffects": false,
+  "license": "SEE LICENSE IN https://ui.porsche.com",
   "files": [
     "build",
     "src/**/*.scss",
@@ -23,7 +23,6 @@
     "ui",
     "components",
     "design-system",
-    "pattern-lab",
     "react"
   ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -34,47 +33,49 @@
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
   "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-kit/issues"
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "homepage": "https://ui.porsche.com",
   "scripts": {
-    "start": "yarn run build",
-    "prebuild": "rimraf ./.tmp && rimraf ./build && rimraf ./css",
-    "build": "yarn run build:es && yarn run build:commonjs && yarn run build:sass && yarn run build:css",
-    "build:es": "tsc --project ./ --outDir ./build/es --declaration true --declarationDir ./build/typings",
-    "watch:es": "tsc --project ./ --outDir ./build/es --declaration true --declarationDir ./build/typings --watch",
-    "build:commonjs": "tsc --project ./ --outDir ./build/commonjs --module commonjs",
-    "build:sass": "node-sass-chokidar --source-map true ./src --output .tmp/css --importer=./../../node_modules/node-sass-tilde-importer",
-    "build:css": "postcss --use autoprefixer --map --dir ./css --base .tmp/css \".tmp/css/**/*.css\"",
-    "lint:ts:fix": "yarn run lint:ts --fix",
-    "publish:artifactory": "yarn run test && yarn run build && yarn publish"
+    "prebuild": "rm -rf './.tmp' './build' './css'",
+    "build": "concurrently -c \"white\" -n \"build:es,build:commonjs,build:css\" \"yarn build:es\" \"yarn build:commonjs\" \"yarn build:css\"",
+    "postbuild": "rm -rf './.tmp'",
+    "build:es": "tsc --project './' --outDir './build/es' --declaration true --declarationDir './build/typings'",
+    "watch:es": "tsc --project './' --outDir './build/es' --declaration true --declarationDir './build/typings' --watch",
+    "build:commonjs": "tsc --project './' --outDir './build/commonjs' --module commonjs",
+    "build:css": "node-sass-chokidar --source-map true './src' --output './.tmp/css' --importer=../../node_modules/node-sass-tilde-importer && postcss --use autoprefixer --map --dir './css' --base './.tmp/css' './.tmp/css/**/*.css'",
+    "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
+    "lint:scss": "stylelint './src/**/*.scss'",
+    "lint:ts": "tslint -p './tsconfig.json' -t codeFrame",
+    "clean": "rm -rf './node_modules' './.tmp' './build' './css'"
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-inlinesvg": "^0.8.4",
-    "tslib": "^1.9.3"
+    "react-inlinesvg": "^0.8.4"
   },
   "devDependencies": {
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
     "@types/react-inlinesvg": "^0.8.0",
     "autoprefixer": "^9.5.0",
-    "chokidar": "^2.1.2",
-    "cpx": "^1.5.0",
+    "concurrently": "^4.1.0",
     "node-sass-chokidar": "^1.3.4",
     "node-sass-tilde-importer": "^1.0.2",
     "postcss": "^7.0.14",
     "postcss-cli": "^6.1.2",
-    "rimraf": "^2.6.3",
+    "stylelint": "^9.10.1",
+    "stylelint-config-prettier": "^5.0.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.4",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^3.6.0",
     "typescript": "~3.3.3"
   },
-  "peerDependencies": {
-    "react": ">=0.14.0 <= 16",
-    "react-dom": ">=0.14.0 <= 16"
-  },
   "publishConfig": {
-    "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/yarn/yarn-local/"
+    "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   }
 }

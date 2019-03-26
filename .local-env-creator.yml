@@ -1,7 +1,0 @@
-minVersion: 0.0.3
-settings:
-  ARTIFACTORY_TOKEN:
-    label: Artifactory token
-    description: |
-      Please provide the auth token for the "porscheui/api/npm/npm/" artifactory registry.
-      You can find it in your local user .npmrc file after you've logged into the registry.
