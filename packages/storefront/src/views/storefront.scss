@@ -1,4 +1,4 @@
-@import "styles/variable";
+@import "../styles/variable";
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
 .#{$sg-prefix}app {
@@ -44,7 +44,6 @@
       display: block;
       padding: $p-spacing-30;
       max-width: 1620px;
-      // min-width: 1000px;
       margin-left: 300px;
       transition: margin-left 400ms ease-out;
 
