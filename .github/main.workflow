@@ -21,14 +21,14 @@ action "Lint" {
   runs = ["run-lint"]
 }
 
-action "VRT" {
-  needs = ["Install"]
-  uses = "./images/node/"
-  runs = ["run-vrt"]
-}
+#action "VRT" {
+#  needs = ["Install"]
+#  uses = "./images/node/"
+#  runs = ["run-vrt"]
+#}
 
 action "Build" {
-  needs = ["Lint", "VRT"]
+  needs = ["Lint"]
   uses = "./images/node/"
   runs = ["run-build"]
 }
