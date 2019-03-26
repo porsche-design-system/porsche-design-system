@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { prefix } from "../../prefix"
+import { prefix } from "../../lib/prefix"
 import "./header.scss"
 import { Logo } from "@porsche/ui-kit-react"
 import { Text, Spacing } from "@porscheui/porsche-ui-kit"

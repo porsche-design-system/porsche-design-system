@@ -1,5 +1,5 @@
 import React from "react"
-import { prefix } from "../../prefix"
+import { prefix } from "../../lib/prefix"
 import "./sidebar.scss"
 import { Stories } from "../../stories"
 import { Redirect, NavLink } from "react-router-dom"

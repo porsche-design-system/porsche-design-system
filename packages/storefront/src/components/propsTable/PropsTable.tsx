@@ -1,5 +1,5 @@
 import React from "react"
-import { prefix } from "../../prefix"
+import { prefix } from "../../lib/prefix"
 import "./propsTable.scss"
 
 export interface PropsTableProps {
