@@ -3,13 +3,13 @@
 set -o errexit
 set -o pipefail
 
-echo "GITHUB_REF"
-echo GITHUB_REF
-echo "\n"
+echo "> GITHUB_REF"
+echo ${GITHUB_REF}
+echo ">"
 
-echo "GITHUB_REPOSITORY"
-echo GITHUB_REPOSITORY
-echo "\n"
+echo "> GITHUB_REPOSITORY"
+echo ${GITHUB_REPOSITORY}
+echo ">"
 
 
 
