@@ -26,7 +26,7 @@ export const Home: React.FunctionComponent = () => {
             United around a global design community with shared tools, methods and components.
           </Text>
           <Spacing marginTop={30}>
-            <Flex alignMainAxis="center" gap={30}>
+            <Flex justifyContent="center" gap={30}>
               <Flex.Item>
                 <Button type="highlight" as={Link} {...{ to: "/design/introduction" }}>
                   Start Designing
