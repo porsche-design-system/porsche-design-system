@@ -6,7 +6,7 @@ import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface FlexItemProps extends ClassNameProp, ComponentProp {
   /** Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property. */
-  alignCrossAxis?: BreakpointCustomizable<"start" | "center" | "end" | "baseline" | "stretch" | "auto">
+  alignSelf?: BreakpointCustomizable<"start" | "center" | "end" | "baseline" | "stretch" | "auto">
 
   /** The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this. */
   width?: BreakpointCustomizable<
@@ -27,13 +27,13 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
 }
 
 const _FlexItem: React.StatelessComponent<FlexItemProps> = (props) => {
-  const { as, className, children, alignCrossAxis, width, offset, shrink, grow, flex, ...rest } = props
+  const { as, className, children, alignSelf, width, offset, shrink, grow, flex, ...rest } = props
 
   const ElementType: any = getElementType(as, "div")
 
   const classes = cx(
     prefix("flex__child"),
-    mapBreakpointPropToClasses("flex__child--cross-axis", alignCrossAxis),
+    mapBreakpointPropToClasses("flex__child--align-self", alignSelf),
     mapBreakpointPropToClasses("flex__child--width", width),
     mapBreakpointPropToClasses("flex__child--offset", offset),
     mapBreakpointPropToClasses("flex__child--shrink", shrink),

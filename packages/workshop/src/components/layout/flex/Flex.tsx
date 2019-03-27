@@ -25,14 +25,16 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
   /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. */
   direction?: BreakpointCustomizable<"column-reverse" | "column" | "row-reverse" | "row">
 
-  /** Defines how the flex items are aligned along the main axis. Corresponds to the "justifyContent" css property. */
-  alignMainAxis?: BreakpointCustomizable<"start" | "center" | "end" | "space-around" | "space-between" | "space-evenly">
+  /** Defines how the flex items are aligned along the main axis. */
+  justifyContent?: BreakpointCustomizable<
+    "start" | "center" | "end" | "space-around" | "space-between" | "space-evenly"
+  >
 
-  /** Defines how the flex items are aligned along the cross axis. Corresponds to the "alignItems" css property. */
-  alignCrossAxis?: BreakpointCustomizable<"start" | "center" | "end" | "baseline" | "stretch">
+  /** Defines how the flex items are aligned along the cross axis. */
+  alignItems?: BreakpointCustomizable<"start" | "center" | "end" | "baseline" | "stretch">
 
   /**
-   * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "alignMainAxis" aligns individual items along the main axis.
+   * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
    * Corresponds to the "alignContent" css property.
    */
   alignContent?: BreakpointCustomizable<"start" | "center" | "end" | "space-around" | "space-between" | "stretch">
@@ -53,8 +55,8 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
     inline,
     wrap,
     direction,
-    alignMainAxis,
-    alignCrossAxis,
+    justifyContent,
+    alignItems,
     alignContent,
     gap,
     ...rest
@@ -66,8 +68,8 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
     mapBreakpointPropToClasses("flex", inline, "--inline", ""),
     mapBreakpointPropToClasses("flex--wrap", wrap, "", "-no"),
     mapBreakpointPropToClasses("flex--direction", direction),
-    mapBreakpointPropToClasses("flex--main-axis", alignMainAxis),
-    mapBreakpointPropToClasses("flex--cross-axis", alignCrossAxis),
+    mapBreakpointPropToClasses("flex--justify-content", justifyContent),
+    mapBreakpointPropToClasses("flex--align-items", alignItems),
     mapBreakpointPropToClasses("flex--align-content", alignContent),
     { [prefix(`m-nl--${gap}`)]: gap },
     { [prefix(`m-nr--${gap}`)]: gap },

@@ -446,11 +446,11 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
 
 ---
 
-### Flex align main axis
+### Flex justify content
 
 This defines the alignment along the main axis. It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size.
 
-#### Align main axis - start (default)
+#### Justify content - start (default)
 
 <Example noTheme>
   {(theme) => {
@@ -463,7 +463,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
     }
     return (
       <React.Fragment>
-        <Flex alignMainAxis="start">
+        <Flex justifyContent="start">
           <Flex.Item>
             <Text align="center" style={itemStyle("dodgerblue")}>
               1
@@ -485,7 +485,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Align main axis - center
+#### Justify content - center
 
 <Example noTheme>
   {(theme) => {
@@ -498,7 +498,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
     }
     return (
       <React.Fragment>
-        <Flex alignMainAxis="center">
+        <Flex justifyContent="center">
           <Flex.Item>
             <Text align="center" style={itemStyle("dodgerblue")}>
               1
@@ -520,7 +520,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Align main axis - end
+#### Justify content - end
 
 <Example noTheme>
   {(theme) => {
@@ -533,7 +533,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
     }
     return (
       <React.Fragment>
-        <Flex alignMainAxis="end">
+        <Flex justifyContent="end">
           <Flex.Item>
             <Text align="center" style={itemStyle("dodgerblue")}>
               1
@@ -555,7 +555,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Align main axis - space between
+#### Justify content - space between
 
 <Example noTheme>
   {(theme) => {
@@ -568,7 +568,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
     }
     return (
       <React.Fragment>
-        <Flex alignMainAxis="space-between">
+        <Flex justifyContent="space-between">
           <Flex.Item>
             <Text align="center" style={itemStyle("dodgerblue")}>
               1
@@ -590,7 +590,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Align main axis - space around
+#### Justify content - space around
 
 <Example noTheme>
   {(theme) => {
@@ -603,7 +603,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
     }
     return (
       <React.Fragment>
-        <Flex alignMainAxis="space-around">
+        <Flex justifyContent="space-around">
           <Flex.Item>
             <Text align="center" style={itemStyle("dodgerblue")}>
               1
@@ -625,7 +625,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Align main axis - space evenly
+#### Justify content - space evenly
 
 <Example noTheme>
   {(theme) => {
@@ -638,7 +638,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
     }
     return (
       <React.Fragment>
-        <Flex alignMainAxis="space-evenly">
+        <Flex justifyContent="space-evenly">
           <Flex.Item>
             <Text align="center" style={itemStyle("dodgerblue")}>
               1
@@ -660,7 +660,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Align main axis - responsive
+#### Justify content - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -673,7 +673,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
     }
     return (
       <React.Fragment>
-        <Flex alignMainAxis={{ base: "start", l: "end" }}>
+        <Flex justifyContent={{ base: "start", l: "end" }}>
           <Flex.Item>
             <Text align="center" style={itemStyle("dodgerblue")}>
               1
@@ -697,11 +697,11 @@ This defines the alignment along the main axis. It helps distribute extra free s
 
 ---
 
-### Flex align cross axis
+### Flex align items
 
 This defines the default behaviour for how flex items are laid out along the cross axis on the current line. Think of it as the main axis version for the cross axis (perpendicular to the main axis).
 
-#### Align cross axis - start (default)
+#### Align items - start (default)
 
 <Example noTheme>
   {(theme) => {
@@ -715,7 +715,7 @@ This defines the default behaviour for how flex items are laid out along the cro
     }
     return (
       <React.Fragment>
-        <Flex alignCrossAxis="start">
+        <Flex alignItems="start">
           <Flex.Item>
             <Text align="center" style={itemStyle("20px", "dodgerblue")}>
               1
@@ -737,7 +737,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align cross axis - center
+#### Align items - center
 
 <Example noTheme>
   {(theme) => {
@@ -751,7 +751,7 @@ This defines the default behaviour for how flex items are laid out along the cro
     }
     return (
       <React.Fragment>
-        <Flex alignCrossAxis="center">
+        <Flex alignItems="center">
           <Flex.Item>
             <Text align="center" style={itemStyle("20px", "dodgerblue")}>
               1
@@ -773,7 +773,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align cross axis - end
+#### Align items - end
 
 <Example noTheme>
   {(theme) => {
@@ -787,7 +787,7 @@ This defines the default behaviour for how flex items are laid out along the cro
     }
     return (
       <React.Fragment>
-        <Flex alignCrossAxis="end">
+        <Flex alignItems="end">
           <Flex.Item>
             <Text align="center" style={itemStyle("20px", "dodgerblue")}>
               1
@@ -809,7 +809,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align cross axis - stretch
+#### Align items - stretch
 
 <Example noTheme>
   {(theme) => {
@@ -823,7 +823,7 @@ This defines the default behaviour for how flex items are laid out along the cro
     }
     return (
       <React.Fragment>
-        <Flex alignCrossAxis="stretch">
+        <Flex alignItems="stretch">
           <Flex.Item>
             <Text align="center" style={itemStyle("50px", "dodgerblue")}>
               1
@@ -845,7 +845,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align cross axis - baseline
+#### Align items - baseline
 
 <Example noTheme>
   {(theme) => {
@@ -859,7 +859,7 @@ This defines the default behaviour for how flex items are laid out along the cro
     }
     return (
       <React.Fragment>
-        <Flex alignCrossAxis="baseline">
+        <Flex alignItems="baseline">
           <Flex.Item>
             <Text
               align="center"
@@ -890,7 +890,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align cross axis - responsive
+#### Align items - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -904,7 +904,7 @@ This defines the default behaviour for how flex items are laid out along the cro
     }
     return (
       <React.Fragment>
-        <Flex alignCrossAxis={{ base: "start", l: "end" }}>
+        <Flex alignItems={{ base: "start", l: "end" }}>
           <Flex.Item>
             <Text align="center" style={itemStyle("20px", "dodgerblue")}>
               1
@@ -1468,11 +1468,11 @@ Items can have different offsets that work similar like column widths.
 
 ---
 
-### Flex child align cross axis
+### Flex child align self
 
-You can override the cross axis alignment for individual flex items. Note that float, clear and vertical-align have no effect on a flex item.
+You can override the align items of the flex parent for individual flex items. Note that float, clear and vertical-align have no effect on a flex item.
 
-#### Child align cross axis - auto (default)
+#### Child align self - auto (default)
 
 <Example noTheme>
   {(theme) => {
@@ -1498,7 +1498,7 @@ You can override the cross axis alignment for individual flex items. Note that f
               2
             </Text>
           </Flex.Item>
-          <Flex.Item alignCrossAxis="auto">
+          <Flex.Item alignSelf="auto">
             <Text align="center" style={itemStyle("50px", "deeppink")}>
               3
             </Text>
@@ -1514,7 +1514,7 @@ You can override the cross axis alignment for individual flex items. Note that f
   }}
 </Example>
 
-#### Child align cross axis - stretch
+#### Child align self - stretch
 
 <Example noTheme>
   {(theme) => {
@@ -1540,7 +1540,7 @@ You can override the cross axis alignment for individual flex items. Note that f
               2
             </Text>
           </Flex.Item>
-          <Flex.Item alignCrossAxis="stretch">
+          <Flex.Item alignSelf="stretch">
             <Text align="center" style={itemStyle("100%", "deeppink")}>
               3
             </Text>
@@ -1556,7 +1556,7 @@ You can override the cross axis alignment for individual flex items. Note that f
   }}
 </Example>
 
-#### Child align cross axis - start
+#### Child align self - start
 
 <Example noTheme>
   {(theme) => {
@@ -1582,7 +1582,7 @@ You can override the cross axis alignment for individual flex items. Note that f
               2
             </Text>
           </Flex.Item>
-          <Flex.Item alignCrossAxis="start">
+          <Flex.Item alignSelf="start">
             <Text align="center" style={itemStyle("50px", "deeppink")}>
               3
             </Text>
@@ -1598,7 +1598,7 @@ You can override the cross axis alignment for individual flex items. Note that f
   }}
 </Example>
 
-#### Child align cross axis - end
+#### Child align self - end
 
 <Example noTheme>
   {(theme) => {
@@ -1624,7 +1624,7 @@ You can override the cross axis alignment for individual flex items. Note that f
               2
             </Text>
           </Flex.Item>
-          <Flex.Item alignCrossAxis="end">
+          <Flex.Item alignSelf="end">
             <Text align="center" style={itemStyle("50px", "deeppink")}>
               3
             </Text>
@@ -1640,7 +1640,7 @@ You can override the cross axis alignment for individual flex items. Note that f
   }}
 </Example>
 
-#### Child align cross axis - center
+#### Child align self - center
 
 <Example noTheme>
   {(theme) => {
@@ -1666,7 +1666,7 @@ You can override the cross axis alignment for individual flex items. Note that f
               2
             </Text>
           </Flex.Item>
-          <Flex.Item alignCrossAxis="center">
+          <Flex.Item alignSelf="center">
             <Text align="center" style={itemStyle("50px", "deeppink")}>
               3
             </Text>
@@ -1682,7 +1682,7 @@ You can override the cross axis alignment for individual flex items. Note that f
   }}
 </Example>
 
-#### Child align cross axis - baseline
+#### Child align self - baseline
 
 <Example noTheme>
   {(theme) => {
@@ -1698,7 +1698,7 @@ You can override the cross axis alignment for individual flex items. Note that f
     return (
       <React.Fragment>
         <Flex style={containerStyle}>
-          <Flex.Item alignCrossAxis="baseline">
+          <Flex.Item alignSelf="baseline">
             <Text
               align="center"
               style={{
@@ -1717,7 +1717,7 @@ You can override the cross axis alignment for individual flex items. Note that f
               2
             </Text>
           </Flex.Item>
-          <Flex.Item alignCrossAxis="baseline">
+          <Flex.Item alignSelf="baseline">
             <Text align="center" style={itemStyle("50px", "deeppink")}>
               3
             </Text>
@@ -1733,7 +1733,7 @@ You can override the cross axis alignment for individual flex items. Note that f
   }}
 </Example>
 
-#### Child align cross axis - responsive
+#### Child align self - responsive
 
 <Example noTheme>
   {(theme) => {
@@ -1759,7 +1759,7 @@ You can override the cross axis alignment for individual flex items. Note that f
               2
             </Text>
           </Flex.Item>
-          <Flex.Item alignCrossAxis={{ base: "start", l: "end" }}>
+          <Flex.Item alignSelf={{ base: "start", l: "end" }}>
             <Text align="center" style={itemStyle("50px", "deeppink")}>
               3
             </Text>
