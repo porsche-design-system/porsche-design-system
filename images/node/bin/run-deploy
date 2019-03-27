@@ -18,7 +18,7 @@ trap cleanup EXIT
 
 # Setting up GitHub credentials
 mkdir -p "${HOME}/.ssh"
-#ssh-keyscan -t rsa github.com > "${HOME}/.ssh/known_hosts"
+ssh-keyscan -t rsa github.com > "${HOME}/.ssh/known_hosts"
 echo "${GIT_DEPLOY_KEY}" > "${HOME}/.ssh/id_rsa"
 chmod 600 "${HOME}/.ssh/id_rsa"
 cat "${HOME}/.ssh/id_rsa"
