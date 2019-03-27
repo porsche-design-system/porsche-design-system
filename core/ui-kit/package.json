@@ -85,9 +85,9 @@
     "@porsche/plugin-node-sass-dependency-collector": "^1.0.1",
     "@porsche/visual-regression-tester": "^1.0.0",
     "@types/es6-shim": "^0.31.37",
-    "@types/jasmine": "^3.3.5",
-    "@types/puppeteer": "^1.12.2",
-    "autoprefixer": "^9.4.10",
+    "@types/jasmine": "^3.3.12",
+    "@types/puppeteer": "^1.12.3",
+    "autoprefixer": "^9.5.0",
     "better-npm-run": "^0.1.1",
     "browser-sync": "^2.26.3",
     "del": "^4.0.0",
@@ -120,7 +120,7 @@
     "styleguidekit-mustache-default": "^3.1.0",
     "symlink-or-copy": "^1.2.0",
     "ts-node": "^8.0.3",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.4000"
   },
   "publishConfig": {
     "@porsche:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
