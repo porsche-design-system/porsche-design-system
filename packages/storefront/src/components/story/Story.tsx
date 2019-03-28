@@ -1,11 +1,11 @@
 import React, { Suspense, lazy, useState } from "react"
 import { RouteComponentProps, Redirect } from "react-router"
-import { prefix } from "../../lib/prefix"
 import { Stories, Story as StoryType } from "../../stories"
 import { PropsTable } from "../propsTable/PropsTable"
 import jsdoc from "../../jsdoc.json"
 import { Tab } from "@porsche/ui-kit-react"
 import { Spacing } from "@porscheui/porsche-ui-kit"
+import style from "../markdown/markdown.module.scss"
 
 export interface StoryParams {
   featureState?: string
@@ -76,7 +76,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
   }
 
   return (
-    <main className={prefix("story")}>
+    <React.Fragment>
       <Spacing paddingBottom={60}>
         <Tab panes={panes} alignment="left" />
       </Spacing>
@@ -84,7 +84,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
         if (item.key === "examples" && item.active) {
           return (
             <Suspense key={item.key} fallback={null}>
-              <div className={prefix("markdown")}>
+              <div className={style.markdown}>
                 <Code />
               </div>
             </Suspense>
@@ -92,7 +92,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
         } else if (item.key === "design" && item.active) {
           return (
             <Suspense key={item.key} fallback={null}>
-              <div className={prefix("markdown")}>
+              <div className={style.markdown}>
                 <Design />
               </div>
             </Suspense>
@@ -111,7 +111,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
           return null
         }
       })}
-    </main>
+    </React.Fragment>
   )
 }
 

@@ -1,0 +1,54 @@
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+.example {
+  code {
+    padding: initial;
+    background-color: initial;
+    border-radius: initial;
+  }
+}
+.codeblock {
+  font-size: 16px;
+  resize: vertical;
+
+  pre {
+    max-height: 200px;
+    padding: $p-spacing-30 !important;
+    overflow: auto !important;
+  }
+
+  .hljs-tag {
+    line-height: 1.5;
+  }
+}
+
+.render {
+  padding: $p-spacing-30;
+  overflow-x: auto;
+}
+
+.render.light {
+  background-color: $p-color-grey-1;
+}
+
+.render.dark {
+  background-color: $p-color-grey-10;
+}
+
+.toggle {
+  padding: 0 $p-spacing-6;
+  position: relative;
+  height: 30px;
+  background: none;
+  border: 1px solid $p-color-grey-4;
+  cursor: pointer;
+  color: $p-color-black;
+  @include -text-size-small(600);
+  &:focus {
+    outline: 0;
+  }
+}
+
+.toggle.open {
+  background-color: $p-color-white;
+}

@@ -1,0 +1,12 @@
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+.logo {
+  display: block;
+  width: 100px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.item {
+  display: block;
+  width: 100%;
+}

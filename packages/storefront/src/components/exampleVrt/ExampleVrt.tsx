@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import cx from "classnames"
-import { prefix } from "../../lib/prefix"
-import "./exampleVrt.scss"
+import styles from "./exampleVrt.module.scss"
 
 export interface ExampleVrtProps {
   theme: "default" | "inverted"
@@ -18,11 +17,7 @@ function renderNode(children: React.ReactNode, theme: string) {
 export const ExampleVrt: React.FunctionComponent<ExampleVrtProps> = (props) => {
   const { theme, ...rest } = props
 
-  const renderClasses = cx(
-    prefix("example-vrt"),
-    { [prefix("example-vrt--light")]: theme === "default" },
-    { [prefix("example-vrt--dark")]: theme === "inverted" }
-  )
+  const renderClasses = cx(styles.vrt, { [styles.light]: theme === "default" }, { [styles.dark]: theme === "inverted" })
 
   return (
     <React.Fragment>

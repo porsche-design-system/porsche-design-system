@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { prefix } from "../../lib/prefix"
 import ReactMarkdown from "react-markdown"
+import style from "./markdown.module.scss"
 
 export interface MarkdownProps {
   path: string
@@ -15,7 +15,7 @@ export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
 
   return (
     markdown && (
-      <div className={prefix("markdown")}>
+      <div className={style.markdown}>
         <div>
           <ReactMarkdown source={markdown} />
         </div>

@@ -1,0 +1,32 @@
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+.props {
+  overflow-x: auto;
+}
+
+.props + .props {
+  margin-top: $p-spacing-60;
+}
+
+.table {
+  min-width: 900px;
+}
+
+.name {
+  width: 15%;
+  min-width: 100px;
+}
+
+.default {
+  width: 15%;
+  min-width: 100px;
+}
+
+.type {
+  width: 25%;
+  min-width: 200px;
+}
+
+.desc {
+  white-space: pre-wrap;
+}

@@ -1,9 +1,7 @@
-@import "./variable";
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 @import "~@porscheui/porsche-ui-kit/src/components/basic/text/text";
 
-.#{$sg-prefix}markdown > div > {
-
+.markdown > div > {
   :first-child {
     margin-top: 0 !important;
   }
@@ -13,30 +11,29 @@
   }
 
   @at-root #{&},
-  & h1,
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6,
-  & p,
-  & blockquote,
-  & ul,
-  & ol,
-  & table,
-  & hr,
-  & b,
-  & strong,
-  & i,
-  & em,
-  & s,
-  & strike,
-  & del,
-  & a,
-  & img,
-  & code,
-  & pre {
-
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6,
+    & p,
+    & blockquote,
+    & ul,
+    & ol,
+    & table,
+    & hr,
+    & b,
+    & strong,
+    & i,
+    & em,
+    & s,
+    & strike,
+    & del,
+    & a,
+    & img,
+    & code,
+    & pre {
     // Typography
     h1 {
       @include -text-size-2($p-font-weight-bold);
@@ -180,7 +177,7 @@
     a {
       text-decoration: none;
       color: $p-color-red-1;
-      transition: color .3s;
+      transition: color 0.3s;
 
       &:hover {
         text-decoration: underline;

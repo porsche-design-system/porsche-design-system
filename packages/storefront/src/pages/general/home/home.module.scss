@@ -1,7 +1,6 @@
-@import "../../../styles/variable";
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
-.#{$sg-prefix}home-teaser {
+.teaser {
   position: relative;
   display: block;
   margin: #{-$p-spacing-30} #{-$p-spacing-30} 0;
@@ -10,7 +9,7 @@
     margin: #{-$p-spacing-60} #{-$p-spacing-60} 0;
   }
 
-  .#{$sg-prefix}img-wrap {
+  .img-wrap {
     position: relative;
     overflow: hidden;
     max-height: 240px;
@@ -28,7 +27,7 @@
     }
   }
 
-  .#{$sg-prefix}img {
+  .img {
     position: relative;
     max-width: 100%;
 
@@ -40,7 +39,7 @@
     }
   }
 
-  .#{$sg-prefix}text {
+  .text {
     color: $p-color-black;
     padding: 0 $p-spacing-30;
 
@@ -55,7 +54,7 @@
     }
   }
 
-  .#{$sg-prefix}headline {
+  .headline {
     position: absolute;
     left: 0;
     right: 0;
@@ -69,28 +68,30 @@
     }
   }
 
-  .#{$sg-prefix}headline-large {
+  .headline-large {
     display: block;
     line-height: 1;
     font-size: rem(48px);
+
     @include breakpoint("l") {
       font-size: rem(72px);
     }
+
     @include breakpoint("xl") {
       font-size: rem(99px);
     }
   }
 
-  .#{$sg-prefix}subline {
+  .subline {
     margin-top: $p-spacing-18;
   }
 }
 
-.#{$sg-prefix}mail-teaser {
+.mail-teaser {
   padding: $p-spacing-24;
   background-color: $p-color-grey-1;
 }
 
-.#{$sg-prefix}home-content {
+.content {
   padding-top: $p-spacing-30;
 }

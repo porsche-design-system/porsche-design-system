@@ -4,8 +4,7 @@ import cx from "classnames"
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import { Sidebar } from "../components/sidebar/Sidebar"
 import { Story } from "../components/story/Story"
-import { prefix } from "../lib/prefix"
-import "./storefront.scss"
+import styles from "./storefront.module.scss"
 import { Home as GeneralHome } from "../pages/general/home/Home"
 import { Updates as GeneralUpdates } from "../pages/general/updates/Updates"
 import { Roadmap as GeneralRoadmap } from "../pages/general/roadmap/Roadmap"
@@ -39,16 +38,12 @@ export const Storefront: React.FunctionComponent = () => {
     window.innerWidth < 1320 ? setHideSidebar(hideSidebar === false) : setHideSidebar(hideSidebar === true)
   }
 
-  const appToggleSidebarClasses = cx(prefix("toggle-sidebar"), {
-    [prefix("toggle-sidebar--close")]: hideSidebar
+  const appSidebarClasses = cx(styles["area-sidebar"], {
+    [styles.close]: hideSidebar
   })
 
-  const appSidebarClasses = cx(prefix("area-sidebar"), {
-    [prefix("area-sidebar--close")]: hideSidebar
-  })
-
-  const appContentClasses = cx(prefix("area-content"), {
-    [prefix("area-content--full")]: hideSidebar
+  const appContentClasses = cx(styles["area-content"], {
+    [styles.fullscreen]: hideSidebar
   })
 
   useEffect(() => {
@@ -68,43 +63,41 @@ export const Storefront: React.FunctionComponent = () => {
 
   return (
     <Router>
-      <div className={prefix("app")}>
-        <button className={appToggleSidebarClasses} onClick={handleHideSidebarClicked}>
-          {hideSidebar ? "+ Show" : "- Hide"}
-        </button>
-        <div className={appSidebarClasses}>
-          <Sidebar featureState={featureShowComponents} />
-          <Footer />
-        </div>
-        <main className={appContentClasses}>
-          <Switch>
-            <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
-            <Route path="/general/home" component={GeneralHome} />
-            <Route path="/general/updates" component={GeneralUpdates} />
-            <Route path="/general/roadmap" component={GeneralRoadmap} />
-            <Route path="/general/versioning" component={GeneralVersioning} />
-            <Route path="/general/support" component={GeneralSupport} />
-            <Route path="/general/faq" component={GeneralFAQ} />
-            <Route path="/general/license" component={GeneralLicense} />
-            <Route path="/guidelines/accessibility" component={GuidelinesAccessibility} />
-            <Route path="/design/introduction" component={DesignIntroduction} />
-            <Route path="/design/sketch-plugins" component={DesignSketchPlugins} />
-            <Route path="/design/library-template" component={DesignLibraryTemplate} />
-            <Route path="/design/abstract" component={DesignAbstract} />
-            <Route path="/design/contribution" component={DesignContribution} />
-            <Route path="/code/introduction" component={CodeIntroduction} />
-            <Route path="/code/definition-of-done" component={CodeDefinitionOfDone} />
-            <Route path="/code/ci-cd" component={CodeCICD} />
-            <Route path="/code/browser-compatibility" component={CodeBrowserCompatibility} />
-            <Route path="/code/contribution" component={CodeContribution} />
-            <Route path="/demo/markdown" component={Markdown} />
-            <Route
-              path="/:category/:story"
-              render={(props) => <Story featureState={featureShowComponents} {...props} />}
-            />
-          </Switch>
-        </main>
+      <button className={styles["sidebar-toggle"]} onClick={handleHideSidebarClicked}>
+        {hideSidebar ? "+ Show" : "- Hide"}
+      </button>
+      <div className={appSidebarClasses}>
+        <Sidebar featureState={featureShowComponents} />
+        <Footer />
       </div>
+      <main className={appContentClasses}>
+        <Switch>
+          <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
+          <Route path="/general/home" component={GeneralHome} />
+          <Route path="/general/updates" component={GeneralUpdates} />
+          <Route path="/general/roadmap" component={GeneralRoadmap} />
+          <Route path="/general/versioning" component={GeneralVersioning} />
+          <Route path="/general/support" component={GeneralSupport} />
+          <Route path="/general/faq" component={GeneralFAQ} />
+          <Route path="/general/license" component={GeneralLicense} />
+          <Route path="/guidelines/accessibility" component={GuidelinesAccessibility} />
+          <Route path="/design/introduction" component={DesignIntroduction} />
+          <Route path="/design/sketch-plugins" component={DesignSketchPlugins} />
+          <Route path="/design/library-template" component={DesignLibraryTemplate} />
+          <Route path="/design/abstract" component={DesignAbstract} />
+          <Route path="/design/contribution" component={DesignContribution} />
+          <Route path="/code/introduction" component={CodeIntroduction} />
+          <Route path="/code/definition-of-done" component={CodeDefinitionOfDone} />
+          <Route path="/code/ci-cd" component={CodeCICD} />
+          <Route path="/code/browser-compatibility" component={CodeBrowserCompatibility} />
+          <Route path="/code/contribution" component={CodeContribution} />
+          <Route path="/demo/markdown" component={Markdown} />
+          <Route
+            path="/:category/:story"
+            render={(props) => <Story featureState={featureShowComponents} {...props} />}
+          />
+        </Switch>
+      </main>
     </Router>
   )
 }

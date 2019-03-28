@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import cx from "classnames"
-import { prefix } from "../../lib/prefix"
 import { renderToStaticMarkup } from "react-dom/server"
 import { Light as Editor } from "react-syntax-highlighter"
 import languageXml from "react-syntax-highlighter/dist/languages/hljs/xml"
@@ -12,7 +11,7 @@ import editorTheme from "react-syntax-highlighter/dist/styles/hljs/solarized-dar
 
 Editor.registerLanguage("xml", languageXml)
 
-import "./example.scss"
+import styles from "./example.module.scss"
 
 export interface ExampleProps {
   noHTML?: boolean
@@ -26,12 +25,10 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   const [showSCSS, setShowSCSS] = useState(false)
 
   const renderClasses = cx(
-    prefix("render"),
-    { [prefix("render--light")]: theme === "default" },
-    { [prefix("render--dark")]: theme === "inverted" }
+    styles.render,
+    { [styles.light]: theme === "default" },
+    { [styles.dark]: theme === "inverted" }
   )
-
-  const toggleButtonClasses = prefix("toggle-button")
 
   const handleShowClicked = (name: string) => {
     if (name === "html") {
@@ -59,16 +56,16 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   return (
     <React.Fragment>
       <Spacing marginTop={12}>
-        <div className={prefix("example")}>
+        <div className={styles.example}>
           {props.noTheme !== true && <Tab panes={panes} alignment="left" mini divider={false} />}
           <div className={renderClasses}>{renderNode(props.children, theme)}</div>
           {(!props.noHTML || !props.noSCSS) && (
-            <div className={prefix("info")}>
+            <React.Fragment>
               <Flex justifyContent="end">
                 {!props.noHTML && (
                   <button
-                    className={cx(toggleButtonClasses, {
-                      [prefix("toggle-button--open")]: showHTML
+                    className={cx(styles.toggle, {
+                      [styles.open]: showHTML
                     })}
                     onClick={() => handleShowClicked("html")}
                   >
@@ -77,8 +74,8 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
                 )}
                 {!props.noSCSS && (
                   <button
-                    className={cx(toggleButtonClasses, {
-                      [prefix("toggle-button--open")]: showSCSS
+                    className={cx(styles.toggle, {
+                      [styles.open]: showSCSS
                     })}
                     onClick={() => handleShowClicked("scss")}
                   >
@@ -87,20 +84,20 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
                 )}
               </Flex>
               {showHTML && (
-                <div className={prefix("codeblock")}>
+                <div className={styles.codeblock}>
                   <Editor language="xml" style={editorTheme}>
                     {renderHTML(props.children, theme)}
                   </Editor>
                 </div>
               )}
               {showSCSS && (
-                <div className={prefix("codeblock")}>
+                <div className={styles.codeblock}>
                   <Editor language="scss" style={editorTheme}>
                     # SCSS paths go here
                   </Editor>
                 </div>
               )}
-            </div>
+            </React.Fragment>
           )}
         </div>
       </Spacing>
