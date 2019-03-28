@@ -1,13 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { prefix } from "../../lib/prefix"
-import "./footer.scss"
+import style from "./footer.module.scss"
 import { Divider } from "@porsche/ui-kit-react"
 import { Text } from "@porscheui/porsche-ui-kit"
 
 export const Footer: React.FunctionComponent = () => {
   return (
-    <footer className={prefix("footer")}>
+    <footer className={style.footer}>
       <Divider spacing="small" />
       <Text type="small-regular" align="center">
         © 2019 Dr. Ing. h.c. F. Porsche AG.

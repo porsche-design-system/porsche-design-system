@@ -1,16 +1,15 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { prefix } from "../../lib/prefix"
-import "./header.scss"
+import style from "./header.module.scss"
 import { Logo } from "@porsche/ui-kit-react"
 import { Text, Spacing } from "@porscheui/porsche-ui-kit"
 import packageJson from "@porscheui/porsche-ui-kit/package.json"
 
 export const Header: React.FunctionComponent = () => {
   return (
-    <header className={prefix("header")}>
-      <Link className={prefix("logo")} to={"/general/home"}>
-        <Logo as="span" className={prefix("logo-item")} />
+    <header>
+      <Link className={style.logo} to={"/general/home"}>
+        <Logo as="span" className={style.item} />
       </Link>
       <Spacing marginTop={18}>
         <Text type="3-bold" align="center" as="h1">

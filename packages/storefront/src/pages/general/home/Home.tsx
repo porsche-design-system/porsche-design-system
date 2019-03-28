@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { prefix } from "../../../lib/prefix"
-import "./home.scss"
+import styles from "./home.module.scss"
 import Teaser from "./assets/img/teaser.jpg"
 import { Button } from "@porsche/ui-kit-react"
 import { Flex, Spacing, Text } from "@porscheui/porsche-ui-kit"
@@ -11,16 +10,16 @@ import Releases from "./releases.json"
 export const Home: React.FunctionComponent = () => {
   return (
     <React.Fragment>
-      <header className={prefix("home-teaser")}>
-        <div className={prefix("img-wrap")}>
-          <img src={Teaser} alt="Porsche UI Kit - teaser" className={prefix("img")} />
+      <header className={styles.teaser}>
+        <div className={styles["img-wrap"]}>
+          <img src={Teaser} alt="Porsche UI Kit - teaser" className={styles.img} />
         </div>
-        <div className={prefix("text")}>
-          <Text className={prefix("headline")} as="h1" type="1-bold" align="center">
+        <div className={styles.text}>
+          <Text className={styles.headline} as="h1" type="1-bold" align="center">
             Welcome to the
-            <span className={prefix("headline-large")}>Porsche UI Kit</span>
+            <span className={styles["headline-large"]}>Porsche UI Kit</span>
           </Text>
-          <Text className={prefix("subline")} as="p" align="center">
+          <Text className={styles.subline} as="p" align="center">
             A Porsche initiative to empower teams and partners to create great digital Porsche experiences, that feel
             like being designed by one. <br />
             United around a global design community with shared tools, methods and components.
@@ -42,7 +41,7 @@ export const Home: React.FunctionComponent = () => {
         </div>
       </header>
 
-      <Spacing className={prefix("mail-teaser")} marginTop={60} wrap>
+      <Spacing className={styles["mail-teaser"]} marginTop={60} wrap>
         <Flex gap={24}>
           <Flex.Item>
             <Text as="h3" type="3-bold">
@@ -58,7 +57,7 @@ export const Home: React.FunctionComponent = () => {
         </Flex>
       </Spacing>
 
-      <section className={prefix("home-content")}>
+      <section className={styles.content}>
         <Markdown path={require("./home.md")} />
       </section>
       <Spacing marginTop={30}>

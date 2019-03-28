@@ -1,6 +1,6 @@
 import React from "react"
-import { prefix } from "../../lib/prefix"
-import "./propsTable.scss"
+import style from "./propsTable.module.scss"
+import styleMd from "../markdown/markdown.module.scss"
 
 export interface PropsTableProps {
   jsdoc: any
@@ -15,18 +15,18 @@ export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
   const { jsdoc } = props
 
   return (
-    <div className={prefix("props")}>
-      <div className={prefix("markdown")}>
+    <div className={style.props}>
+      <div className={styleMd.markdown}>
         <div>
           <h1>{props.title}</h1>
           <p>{jsdoc.description}</p>
           <table>
-            <thead className={prefix("table")}>
+            <thead className={style.table}>
               <tr>
-                <th className={prefix("cell-name")}>Name</th>
-                <th className={prefix("cell-default")}>Default</th>
-                <th className={prefix("cell-type")}>Type</th>
-                <th className={prefix("cell-desc")}>Description</th>
+                <th className={style.name}>Name</th>
+                <th className={style.default}>Default</th>
+                <th className={style.type}>Type</th>
+                <th className={style.desc}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -35,14 +35,12 @@ export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
                   const prop = jsdoc.props[key]
                   return (
                     <tr key={key}>
-                      <td className={prefix("cell-name")}>
+                      <td className={style.name}>
                         <code>{prop.name}</code>
                       </td>
-                      <td className={prefix("cell-default")}>
-                        {prop.defaultValue && <code>{prop.defaultValue.value}</code>}
-                      </td>
-                      <td className={prefix("cell-type")}>{prop.type && prop.type.name}</td>
-                      <td className={prefix("cell-desc")}>{prop.description}</td>
+                      <td className={style.default}>{prop.defaultValue && <code>{prop.defaultValue.value}</code>}</td>
+                      <td className={style.type}>{prop.type && prop.type.name}</td>
+                      <td className={style.desc}>{prop.description}</td>
                     </tr>
                   )
                 })}
