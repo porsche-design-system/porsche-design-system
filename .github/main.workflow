@@ -34,9 +34,10 @@ action "Build" {
 }
 
 action "Deploy" {
-  needs = ["Build"]
+  needs = ["Branch 1.x"]
   uses = "./images/node/"
   runs = ["run-deploy"]
+  secrets = ["GIT_DEPLOY_KEY"]
 }
 
 action "GitHub Action for Slack" {

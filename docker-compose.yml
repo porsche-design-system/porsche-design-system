@@ -10,6 +10,7 @@ services:
     environment:
       - HOME=/home/ui-kit
       - ARTIFACTORY_TOKEN
+      - GIT_DEPLOY_KEY
     volumes:
       - ./:/opt/porsche-ui-kit-app
       - home:/home/ui-kit:cached

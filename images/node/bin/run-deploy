@@ -3,13 +3,71 @@
 set -o errexit
 set -o pipefail
 
-echo "> GITHUB_REF"
-echo ${GITHUB_REF}
-echo ">"
+if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
+  echo 'Please provide the GIT_DEPLOY_KEY environment variable.'
+  exit 1
+fi
 
-echo "> GITHUB_REPOSITORY"
-echo ${GITHUB_REPOSITORY}
-echo ">"
+# Cleaning up credentials
+function cleanup {
+  local exitCode=$?
+  rm "${HOME}/.ssh/id_rsa"
+  exit ${exitCode}
+}
+trap cleanup EXIT
+
+# Setting up GitHub credentials
+mkdir -p "${HOME}/.ssh"
+ssh-keyscan -t rsa github.com > "${HOME}/.ssh/known_hosts"
+echo "${GIT_DEPLOY_KEY}" > "${HOME}/.ssh/id_rsa"
+chmod 600 "${HOME}/.ssh/id_rsa"
+cat "${HOME}/.ssh/id_rsa"
+
+git config --global user.name "stephanschroeter"
+git config --global user.email "stephan.schroeter@mhp.com"
+
+git clone --single-branch -b gh-pages git@github.com:porscheui/porsche-ui-kit.git ./gh-pages
+
+pushd "./gh-pages"
+  ls -al
+popd
+
+
+# Publish to GitHub Pages
+#GITHUB_REPOSITORY="porscheui/porsche-ui-kit"
+#GITHUB_ACTOR="stephanschroeter"
+#
+#GIT_TARGET_BRANCH="gh-pages"
+#GIT_REPOSITORY_URL="git@github.com:${GITHUB_REPOSITORY}.git"
+
+#git config --global user.name "${GITHUB_ACTOR}"
+#git config --global user.email "stephan.schroeter@mhp.com"
+#
+#git clone --single-branch -b "${GIT_TARGET_BRANCH}" "${GIT_REPOSITORY_URL}" "./${GIT_TARGET_BRANCH}"
+
+
+
+#echo '=================== Build site ==================='
+##
+##
+##
+#
+#echo '=================== Publish to GitHub Pages ==================='
+#
+#
+#echo "> GITHUB_REF"
+#echo ${GITHUB_REF}
+#echo ">"
+#
+#echo "> GITHUB_REPOSITORY"
+#echo ${GITHUB_REPOSITORY}
+#echo ">"
+
+#remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
+#remote_branch="gh-pages"
+
+#git config user.name "${GITHUB_ACTOR}" && \
+#git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 
 
@@ -26,8 +84,7 @@ echo ">"
 #LATEST_V0X_UI_KIT_CORE_VERSION="$(git tag --sort=-version:refname --list 'v0.*/core' | head -n 1 | cut -d "/" -f1 | cut -c 2-)"
 #CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo ${CIRCLE_TAG} | cut -d "/" -f1 | cut -c 2-)"
 #
-#git config --global user.email "${GH_EMAIL}"
-#git config --global user.name "${GH_NAME}"
+
 #git clone --single-branch -b "${TARGET_BRANCH}" "${CIRCLE_REPOSITORY_URL}" "./${TARGET_BRANCH}"
 #
 #pushd "./${TARGET_BRANCH}"
