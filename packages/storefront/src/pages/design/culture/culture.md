@@ -1,17 +1,23 @@
 # Design Culture
 ## Introduction
-We foster an open and connected design culture for all digital Porsche products by using the right resources and standardised tools and workflows together. Therefore we establish the tool Abstract being part of the design workflow of every team and designer within. By making the whole design process fully transparent and structured, Abstract allows us to design more efficient and bring the different participated roles closer. Abstract brings an intelligent file management with an automated version control to work on you own, within the team or the whole Porsche Design Community together.  
+We foster an open and connected design culture for all digital Porsche products by using the right resources, standardised tools and workflows together. Abstract allows us to make the design process fully transparent and structured with an intelligent file management and automated version control. To work on your own, within the team or the whole Porsche Design Community together. Bringing the different roles and teams closer and enable a more efficient design workflow.
 
 [Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Videos from Abstract](https://vimeo.com/goabstract).
 
 ## Getting Started
-To use Abstract and access the Sketch files the most recent version of the Abstract [Browser App](https://app.goabstract.com/) or the [Desktop App](https://app.goabstract.com/) must be installed. You can request access by sending an email to [porsche-ui-kit@porsche.de](mailto:porsche-ui-kit@porsche.de) including your firstname, lastname, corporate email address and the project you are working for, i.e. Porsche Finder
+To use Abstract and access the Sketch files the most recent version of the Abstract [Browser App](https://app.goabstract.com/) or the [Desktop App](https://app.goabstract.com/) must be installed. Porsche owns and manages the organization Porsche UI and its members. To join the organization you have to request access by sending an email to [porsche-ui-kit@porsche.de](mailto:porsche-ui-kit@porsche.de) including your firstname, lastname, corporate email address and the project you are working for, i.e. Porsche Finder
 
 ### Project and File Structure
-Porsche owns and manages the organization Porsche UI and its members. The files and workflow documentation of a specific team are organized within Projects that are grouped within the sections General, Apps, Web and Vehicle. **Team projects** are visible for all members by standard, whereas Guest have to be invited to specific Projects. For secret work it is recommended to create **Private Projects** which are only accessible to members who have been specifically invited.
+The Porsche UI Organization is structured by context within the sections General, Apps, Web and Vehicle.
+All files and the workflow documentation lives in team specific Projects. **Team projects** are visible for all members by standard, whereas Guest have to be invited. Confidential work is currently placed in **Private Projects** which are only accessible to members who have been specifically invited.
 
-The files within a Project are recommended to be split by features and start with a number ordered according to an ideal flow (e.g. 1. Account Setup, 2. Organization, etc).  
-Library files are named after their topic (e.g. Activity Stream, Thumbnails, etc)
+The files within a Project are recommended to be split and named by features, starting with a number ordered according to an ideal flow.
+
+1. Account Setup
+2. Home Section
+3. Logout
+
+Library files are named after their topic, e.g. Activity Stream, Thumbnails, Icons, etc.
 
 ### Roles
 **Who is allowed to get access?** All designers of digital Porsche products  as well as developers, business partners and other stakeholder can be invited for accessing or viewing project files using the following rules and roles.
