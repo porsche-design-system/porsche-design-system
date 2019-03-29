@@ -15,7 +15,7 @@ import { FAQ as GeneralFAQ } from "../pages/general/faq/FAQ"
 import { Accessibility as GuidelinesAccessibility } from "../pages/guidelines/accessibility/Accessibility"
 import { Introduction as DesignIntroduction } from "../pages/design/introduction/Introduction"
 import { Contribution as DesignContribution } from "../pages/design/contribution/Contribution"
-import { Abstract as DesignAbstract } from "../pages/design/abstract/Abstract"
+import { Culture as DesignCulture } from "../pages/design/culture/culture"
 import { SketchPlugins as DesignSketchPlugins } from "../pages/design/sketch-plugins/SketchPlugins"
 import { Introduction as CodeIntroduction } from "../pages/code/introduction/Introduction"
 import { DefinitionOfDone as CodeDefinitionOfDone } from "../pages/code/definition-of-done/DefinitionOfDone"
@@ -82,7 +82,7 @@ export const Storefront: React.FunctionComponent = () => {
           <Route path="/guidelines/accessibility" component={GuidelinesAccessibility} />
           <Route path="/design/introduction" component={DesignIntroduction} />
           <Route path="/design/sketch-plugins" component={DesignSketchPlugins} />
-          <Route path="/design/abstract" component={DesignAbstract} />
+          <Route path="/design/culture" component={DesignCulture} />
           <Route path="/design/contribution" component={DesignContribution} />
           <Route path="/code/introduction" component={CodeIntroduction} />
           <Route path="/code/definition-of-done" component={CodeDefinitionOfDone} />

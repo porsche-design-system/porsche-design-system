@@ -101,7 +101,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
               <SidebarLink to={{ pathname: "/design/introduction", search: props.featureState }} title="Introduction" />
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/design/abstract", search: props.featureState }} title="Abstract" />
+              <SidebarLink to={{ pathname: "/design/culture", search: props.featureState }} title="Design Culture" />
             </li>
             <li className={style["nav-item"]}>
               <SidebarLink
