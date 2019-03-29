@@ -1,20 +1,12 @@
 # Start Coding
 
-The Porsche UI Kit for developers is open both for just consuming released npm packages or contributing changes on GitHub with Pull Request approval strategy.
+The Porsche UI Kit provides a collection of pre-built React components to developers for building clean and qualitative front-ends that innately come with the latest design definitions. Applications that use another framework or none can include the CSS styles and use the compiled HTML.
 
-## Contributing
-To contribute code to the Porsche UI Kit you have to be invited to the Porsche UI GitHub Repository. Please get in contact with the Porsche UI Kit Team via porsche-ui-kit@porsche.de
+All releases of the Porsche UI Kit are available as versioned NPM packages. To use specific contents you have to integrate the NPM package as dependency in your application.
 
-## Consuming
-All Porsche UI Kit releases are available as versioned NPM packages, containing SASS files. To use specific contents you have to integrate the NPM package as dependency in your application.
+## Authenticate for the Porsche UI Kit
+The instructions below requires you to have at most recent stable version of [Node JS & NPM](https://nodejs.org/) installed.
 
-Please be aware of different versions of the Porsche UI Kit npm package and align with your design counterpart on the used Porsche UI Kit version ([more about Versioning](https://github.com/porscheui/porsche-ui-kit/wiki/Versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog](https://github.com/myporsche/pouikit-porsche-ui-kit/blob/master/core/ui-kit/CHANGELOG.md). 
-
-Documentation, recommendations and samples of all provided patterns in the npm release of Porsche UI Kit are visualised in the [Porsche UI Kit - Docs](https://myporsche.github.io/pouikit-porsche-ui-kit/master/). You can also find the latest design sheets available as [Invision Prototype](https://porsche.invisionapp.com/share/8FPCCMFX2TZ).
-
-Following instructions requires you to have at least [Node JS & NPM](https://nodejs.org/) in the latest stable version installed on your machine.
-
-### Create authentification token for "Porsche UI NPM Registry"
 1. Request access rights by sending an email to [porsche-ui-kit@porsche.de](mailto:porsche-ui-kit@porsche.de) including your firstname, lastname, corporate email address and the project you are working for, i.e. Porsche Finder
 2. After receiving the invitation email please login and change your password
 3. Generate an API key under edit profile section and save the profile
@@ -24,8 +16,11 @@ npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/
 ```
 5. After request please enter username, password (API key) and email. It will than add an auth key for a specific registry to your local _~/.npmrc_
 
-### Create a sample project and make use of "Porsche UI Kit"  
+## Install and use the Porsche UI Kit
+Please be aware of different versions of the Porsche UI Kit npm package and align with your design counterpart on the used Porsche UI Kit version ([more about Versioning](https://github.com/porscheui/porsche-ui-kit/wiki/Versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog](https://github.com/myporsche/pouikit-porsche-ui-kit/blob/master/core/ui-kit/CHANGELOG.md). 
+
 Following example includes an extremely simple build function as well as a sample browser support list. Both is intended as example and may differ in your application because you might want to use Webpack, Gulp or Grunt etc. to build your application.
+
 1. Create a new folder on your machine locally
 2. Open terminal and switch to the previously created folder
 3. Execute `npm init` in your terminal, it will ask you to enter name, version, description, etc. — simply press enter to all asked questions. A _package.json_ file will be created within your folder. 
