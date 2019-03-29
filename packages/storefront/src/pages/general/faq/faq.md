@@ -1,3 +1,5 @@
+# FAQ
+
 To answer the most frequently asked questions, Porsche UI is constantly adding FAQs to the following list. Please read through before using the support and communication channels for questions.
 
 ### What is the Porsche UI Kit?
@@ -13,10 +15,10 @@ The Porsche UI Kit is a design system approach with different levels of organiza
 We want to enable a continuous exchange within the community. Therefore the Porsche UI team is offering different use case related communication channels and rituals to contact or submit support requests. You can find all of them in the Support Section.
 
 ### How can I access the Porsche UI Kit files?
-#### Developer
+**Developer**  
 Following the tier levels of development, the Source Code of the Porsche UI Kit "Core Fundamentals" are stored and developed within a private GitHub Repository and distributed over a private NPM Registry. Both managed by the Porsche UI Team. For directly contributing Pull Requests in the private Repository, the required permissions can be assigned to users after first creating an relevant issue within the public contribution Repository. Access to the private NPM registry can be requested through our online subscription form. 
 
-#### Designer
+**Designer**  
 The Porsche UI Kit Design Library Sketch Files are developed and maintained within a private Abstract Project. Access can be requested also through our online subscription form.   
 
 ### What is the update strategy for the Porsche UI Kit?
