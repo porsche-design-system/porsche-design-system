@@ -101,19 +101,13 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
               <SidebarLink to={{ pathname: "/design/introduction", search: props.featureState }} title="Introduction" />
             </li>
             <li className={style["nav-item"]}>
+              <SidebarLink to={{ pathname: "/design/abstract", search: props.featureState }} title="Abstract" />
+            </li>
+            <li className={style["nav-item"]}>
               <SidebarLink
                 to={{ pathname: "/design/sketch-plugins", search: props.featureState }}
                 title="Sketch Plugins"
               />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink
-                to={{ pathname: "/design/library-template", search: props.featureState }}
-                title="Library Template"
-              />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/design/abstract", search: props.featureState }} title="Abstract" />
             </li>
             <li className={style["nav-item"]}>
               <SidebarLink to={{ pathname: "/design/contribution", search: props.featureState }} title="Contribution" />
