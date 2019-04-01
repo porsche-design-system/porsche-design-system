@@ -53,7 +53,10 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
               <SidebarLink to={{ pathname: "/general/home", search: props.featureState }} title="Home" />
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/updates", search: props.featureState }} title="Updates" />
+              <SidebarLink
+                to={{ pathname: `${process.env.PUBLIC_URL}/general/updates`, search: props.featureState }}
+                title="Updates"
+              />
               <ul>
                 <li className={style["nav-item"]}>
                   <SidebarLink to={{ pathname: "/general/roadmap", search: props.featureState }} title="Roadmap" />
