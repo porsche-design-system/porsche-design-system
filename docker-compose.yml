@@ -10,23 +10,34 @@ services:
     environment:
       - HOME=/home/ui-kit
       - ARTIFACTORY_TOKEN
-      - GIT_DEPLOY_KEY
     volumes:
-      - ./:/opt/porsche-ui-kit-app
-      - home:/home/ui-kit:cached
-      - root-node_modules:/opt/porsche-ui-kit-app/node_modules:cached
-      - storefront-node_modules:/opt/porsche-ui-kit-app/packages/storefront/node_modules:cached
-      - workshop-node_modules:/opt/porsche-ui-kit-app/packages/workshop/node_modules:cached
+      - ./:/opt/porsche-ui-kit-app:cached
+      - home:/home/ui-kit
+      - root-node-modules:/opt/porsche-ui-kit-app/node_modules
+      - storefront-node-modules:/opt/porsche-ui-kit-app/packages/storefront/node_modules
+      - workshop-node-modules:/opt/porsche-ui-kit-app/packages/workshop/node_modules
+  ui-kit-deploy:
+    build: ./images/node
+    working_dir: /opt/porsche-ui-kit-gh-pages
+    environment:
+      - GIT_DEPLOY_KEY
+      - GITHUB_REPOSITORY
+      - GITHUB_ACTOR
+      - GITHUB_REF
+    volumes:
+      - ./:/opt/porsche-ui-kit-app:cached
+      - /opt/porsche-ui-kit-gh-pages
   change-volume-owner:
     image: node:10.15.3-alpine@sha256:b85a3b0ef76f5543b3f467e8a25694e72594d2c2bfcf140fa584d4f40ace4130
     volumes:
       - home:/opt/porsche-ui-kit-volumes/home
-      - root-node_modules:/opt/porsche-ui-kit-volumes/root-node_modules
-      - storefront-node_modules:/opt/porsche-ui-kit-volumes/storefront-node_modules
-      - workshop-node_modules:/opt/porsche-ui-kit-volumes/workshop-node_modules
-    command: sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-ui-kit-volumes/*"
+      - root-node-modules:/opt/porsche-ui-kit-volumes/root-node_modules
+      - storefront-node-modules:/opt/porsche-ui-kit-volumes/storefront-node_modules
+      - workshop-node-modules:/opt/porsche-ui-kit-volumes/workshop-node_modules
+    command: |
+      sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-ui-kit-volumes/*"
 volumes:
   home:
-  root-node_modules:
-  storefront-node_modules:
-  workshop-node_modules:
+  root-node-modules:
+  storefront-node-modules:
+  workshop-node-modules:
