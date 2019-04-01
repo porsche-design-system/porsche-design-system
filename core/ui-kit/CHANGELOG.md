@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 * Removed title tag on minified version of svg icons (#3)
+* Fixed svgo path optimization of minified svg icons (#7)
 
 ## [0.18.3] - 2019-03-12
 ### Bugfix
