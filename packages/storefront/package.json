@@ -24,7 +24,7 @@
     "Anna Krohmer <anna.krohmer@udg.de>",
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
-  "homepage": ".",
+  "homepage": "https://ui.porsche.com/v1",
   "scripts": {
     "start": "yarn build:docgen && react-scripts start",
     "build": "yarn build:docgen && react-scripts build",
