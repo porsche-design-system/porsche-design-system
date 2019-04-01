@@ -28,9 +28,9 @@ if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
   exit 1
 fi
 
-PORSCHE_UI_KIT_MAJOR_VERSION="v1"
-PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_REF} | cat)"
-PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_REF} | cat)"
+PUIK_VERSION="v1"
+PUIK_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_REF} | cat)"
+PUIK_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_REF} | cat)"
 
 cleanup_credentials() {
   echo "Cleaning up credentials"
@@ -56,16 +56,16 @@ checkout_gh_pages() {
 }
 
 cleanup_previous_deployment() {
-  rm -rf "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+  rm -rf "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
 }
 
 copy_porsche-ui-kit-storefront() {
-  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
 }
 
 copy_sketch_libraries_create_rss_feed() {
-  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
   cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -73,9 +73,9 @@ copy_sketch_libraries_create_rss_feed() {
     <title>Porsche UI</title>
     <description>A Porsche UI Sketch library.</description>
     <item>
-      <title>${1} (${PORSCHE_UI_KIT_MAJOR_VERSION}.${PUBLISH_ID})</title>
-      <pubDate>${PUBLISH_DATE}</pubDate>
-      <enclosure url="https://ui.porsche.com/${PORSCHE_UI_KIT_MAJOR_VERSION}/${2}" sparkle:version="${PORSCHE_UI_KIT_MAJOR_VERSION:1}.${PUBLISH_ID}" type="application/octet-stream"/>
+      <title>${1} (${PUIK_VERSION}.${PUIK_PUBLISH_ID})</title>
+      <pubDate>${PUIK_PUBLISH_DATE}</pubDate>
+      <enclosure url="https://ui.porsche.com/${PUIK_VERSION}/${2}" sparkle:version="${PUIK_VERSION:1}.${PUIK_PUBLISH_ID}" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
@@ -85,7 +85,7 @@ _EOF_
 deploy_to_gh_pages() {
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
-    git commit -m "Automated deployment of Porsche UI Kit ${PORSCHE_UI_KIT_MAJOR_VERSION} (Docs, Sketch Libraries + RSS Feed)" --allow-empty
+    git commit -m "Automated deployment of Porsche UI Kit ${PUIK_VERSION} (Docs, Sketch Libraries + RSS Feed)" --allow-empty
     git push origin gh-pages --force-with-lease
   popd
 }
