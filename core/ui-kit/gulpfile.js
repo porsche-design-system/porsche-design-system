@@ -35,6 +35,9 @@ gulp.task('svgmin', function() {
           removeViewBox: false
         },
         {
+          convertPathData: {"makeArcs":false}
+        },
+        {
           addCustomDimension: {
             type: 'perItem',
             description: 'Adds 100% width + height attributes to SVG',
