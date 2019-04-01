@@ -61,7 +61,7 @@ export const Storefront: React.FunctionComponent = () => {
   }, [])
 
   return (
-    <Router basename={"/v1"}>
+    <Router basename={process.env.PUBLIC_URL}>
       <button className={styles["sidebar-toggle"]} onClick={handleHideSidebarClicked}>
         {hideSidebar ? "+ Show" : "- Hide"}
       </button>
@@ -73,7 +73,7 @@ export const Storefront: React.FunctionComponent = () => {
         <Switch>
           <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
           <Route path="/general/home" component={GeneralHome} />
-          <Route path={`${process.env.PUBLIC_URL}/general/updates`} component={GeneralUpdates} />
+          <Route path="/general/updates" component={GeneralUpdates} />
           <Route path="/general/roadmap" component={GeneralRoadmap} />
           <Route path="/general/versioning" component={GeneralVersioning} />
           <Route path="/general/support" component={GeneralSupport} />
