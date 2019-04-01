@@ -1,0 +1,21 @@
+<label class="checkbox {{ styleModifier }}">
+  <input class="checkbox__field {{#if ng-checkbox_error }} ng-invalid {{/if}}"
+         type="checkbox"
+         name="{{checkbox_name}}"
+         value="{{checkbox_value}}"
+         {{#if checkbox_checked }} checked="checked" {{/if}}
+         {{#if checkbox_disabled }} disabled="disabled" {{/if}}>
+
+  <span class="checkbox__icon icon-font icon-font--check {{#if checkbox_inverted }} checkbox__icon--inverted {{/if}} {{#if checkbox_error }} checkbox__icon--error {{/if}}"></span>
+  {{#if checkbox_label }}
+    <span class="checkbox__label {{#if checkbox_inverted }} checkbox__label--inverted {{/if}} {{#if checkbox_error }} checkbox__label--error {{/if}}">
+      {{ checkbox_label }}
+      {{#if checkbox_labelIcon}}
+        <span class="checkbox__label-icon icon-font icon-font--{{checkbox_labelIcon}}"></span>
+      {{/if}}
+      {{#if checkbox_labelLink}}
+        <a class="checkbox__label-link {{#if checkbox_inverted }} checkbox__label-link--inverted {{/if}} {{#if checkbox_error }} checkbox__label-link--error {{/if}}" href="javascript:;">with a link</a>
+      {{/if}}
+    </span>
+  {{/if}}
+</label>

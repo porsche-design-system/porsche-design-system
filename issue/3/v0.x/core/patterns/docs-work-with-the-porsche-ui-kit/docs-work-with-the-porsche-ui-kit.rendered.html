@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
+    <!-- never cache patterns -->
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+
+<link rel="stylesheet" href="../../styleguide/css/styleguide.min.css?1554103547985" media="all">
+<link rel="stylesheet" href="../../styleguide/css/prism-typeahead.min.css?1554103547985" media="all" />
+
+
+    <script>
+      if (window.location.search.indexOf('disableCSSAnimations') > -1) {
+        var style = document.createElement('style');
+        style.textContent =
+          '*, *::before, *::after { ' +
+            '-moz-animation: none !important; ' +
+            '-ms-animation: none !important; ' +
+            '-webkit-animation: none !important; ' +
+            'animation: none !important; ' +
+            '-moz-transition: none !important; ' +
+            '-ms-transition: none !important; ' +
+            '-webkit-transition: none !important; ' +
+            'transition: none !important; ' +
+          '}';
+        document.head.appendChild(style);
+      }
+    </script>
+
+    <link rel="stylesheet" href="../../css/porsche-ui-kit-core.styleguide-scaffolding.css?1554103547985" media="all"/>
+    <link rel="stylesheet" href="../../css/porsche-stylesheets.css?1554103547985" media="all"/>
+
+  </head>
+  <body class="sg-wrapper-default">
+
+<div class="sg-markdown">
+<h1 id="work-with-the-porsche-ui-kit">Work with the Porsche UI Kit</h1>
+<h3 id="general-explanations">General Explanations</h3>
+<p>First decide on your working mode within your project:</p>
+<p>A: Only integrate the Porsche UI Kit in your application and use them as basis and extend individually</p>
+<ul>
+<li>Try not to change existing elements but build upon them. So that you will be able to update the contents with fixes or new releases</li>
+<li>Regulary check for new releases/changes and implement them to avoid growing debts</li>
+<li>Join the #porsche-ui-kit slack channel to get informed and share your feedback</li>
+<li>Get in touch with us to let us know you and kick-off introduce the Porsche UI Kit:<ul>
+<li>Bertram, Marcel (VMK3) (Business)</li>
+<li>Schroeter, Stephan (FIV4_EXTERN) (Tech)</li>
+<li>Schaeffler, Anna (VMK_EXTERN) (Design)</li>
+</ul>
+</li>
+</ul>
+<p>B: Both integrate the Porsche UI Kit in your application and participate in jointly develop it</p>
+<ul>
+<li>Same as A but also</li>
+<li>Follow the defined development standards and methologies to ensure a overall coding quality</li>
+<li>Make your work transparent and public available for others and share your work, knowledge and feedback<ol>
+<li>Participate in the regular Porsche UI Kit Sync</li>
+<li>Publish your work public and share it</li>
+</ol>
+</li>
+</ul>
+<h3 id="where-to-find-the-porsche-ui-kit">Where to find the Porsche UI Kit</h3>
+<p>Confluence Space [On-Prem]: <a target="_blank" href="https://atlassianp01.web.porsche.biz/confluence/display/PSS">https://atlassianp01.web.porsche.biz/confluence/display/PSS</a> (VPN + X- oder P- User required)<br>Jira Board [On-Prem]: <a target="_blank" href="https://atlassianp01.web.porsche.biz/jira/secure/RapidBoard.jspa?rapidView=12267">https://atlassianp01.web.porsche.biz/jira/secure/RapidBoard.jspa?rapidView=12267</a> (VPN + X- oder P- User required)</p>
+<h5 id="porsche-ui-kit-core">Porsche UI Kit Core</h5>
+<p>Pattern Lab [On-Prem] (Pattern Library): <a target="_blank" href="https://pcc-portal-e-ct.emea.porsche.biz/static/porsche-ui-kit/core/master/">https://pcc-portal-e-ct.emea.porsche.biz/static/porsche-ui-kit/core/master/</a> (VPN required)<br>GitHub [Cloud] (SCM): <a target="_blank" href="https://github.com/myporsche/pouikit-porsche-ui-kit">https://github.com/myporsche/pouikit-porsche-ui-kit</a> (One Login User + GitHub User required)<br>jFrog Artifactory [Cloud] (NPM Registry): <a target="_blank" href="https://porscheui.jfrog.io">https://porscheui.jfrog.io</a> (One Login User + Artifactory User required)</p>
+<p>InVision Enterprise [Cloud] (Component Sheets): <a target="_blank" href="https://porsche.invisionapp.com/d/main#/projects/prototypes/15200048">https://porsche.invisionapp.com/d/main#/projects/prototypes/15200048</a> (Invision User required)<br>InVision DSM [Cloud] (Sketch Library): <a target="_blank" href="https://porsche.invisionapp.com/dsm/porsche-ag/porsche-ui-kit">https://porsche.invisionapp.com/dsm/porsche-ag/porsche-ui-kit</a> (Invision User required)</p>
+<h5 id="porsche-ui-kit-react">Porsche UI Kit React</h5>
+<p>Semantic UI React [Cloud] (Component Library): <a target="_blank" href="https://s3.eu-central-1.amazonaws.com/finder-bamboo-artifacts/react/packages/%40porsche/ui-kit-react-docs/dist/index.html#/introduction">https://s3.eu-central-1.amazonaws.com/finder-bamboo-artifacts/react/packages/%40porsche/ui-kit-react-docs/dist/index.html#/introduction</a><br>GitHub [Cloud] (SCM): <a target="_blank" href="https://github.com/myporsche/pouikit-porsche-ui-kit">https://github.com/myporsche/pouikit-porsche-ui-kit</a> (One Login User + GitHub User required)<br>jFrog Artifactory [Cloud] (NPM Registry): <a target="_blank" href="https://porscheui.jfrog.io">https://porscheui.jfrog.io</a> (One Login User + Artifactory User required)</p>
+<p><strong>Versioning (Starting from Version 1.0)</strong><br><a target="_blank" href="https://semver.org/">Semantic Versioning</a></p>
+<ul>
+<li><strong>Major Changes</strong></li>
+<li><strong>Minor Changes</strong></li>
+<li><strong>Patches</strong></li>
+</ul>
+
+</div>    <!--DO NOT REMOVE-->
+    <script type="text/json" id="sg-pattern-data-footer" class="sg-pattern-data">
+  {"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"","patternBreadcrumb":{"patternType":"docs"},"patternExtension":"hbs","patternName":"Work With The Porsche Ui Kit","patternPartial":"docs-work-with-the-porsche-ui-kit","patternState":"","patternEngineName":"handlebars","extraOutput":{}}
+</script>
+
+<script>
+  /*!
+   * scriptLoader - v0.1
+   *
+   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com
+   * Licensed under the MIT license
+   *
+   */
+  
+  var scriptLoader = {
+    
+    run: function(js,cb,target) {
+      var s  = document.getElementById(target+'-'+cb);
+      for (var i = 0; i < js.length; i++) {
+        var src = (typeof js[i] != 'string') ? js[i].src : js[i];
+        var c   = document.createElement('script');
+        c.src   = '../../'+src+'?'+cb;
+        if (typeof js[i] != 'string') {
+          if (js[i].dep !== undefined) {
+            c.onload = function(dep,cb,target) {
+              return function() {
+                scriptLoader.run(dep,cb,target);
+              }
+            }(js[i].dep,cb,target);
+          }
+        }
+        s.parentNode.insertBefore(c,s);
+      }
+    }
+    
+  }
+</script>
+
+<script id="pl-js-polyfill-insert-1554103547985">
+  (function() {
+    if (self != top) {
+      var cb = '1554103547985';
+      var js = [];
+      if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {
+        js.push('styleguide/bower_components/classList.min.js');
+      }
+      scriptLoader.run(js,cb,'pl-js-polyfill-insert');
+    }
+  })();
+</script>
+
+<script id="pl-js-insert-1554103547985">
+  (function() {
+    if (self != top) {
+      var cb = '1554103547985';
+      var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];
+      scriptLoader.run(js,cb,'pl-js-insert');
+    }
+  })();
+</script>
+
+    <script src="../../js/porsche-ui-kit-core/polyfill.placeholder-shown.es5.min.js"></script>
+    <script src="../../js/porsche-ui-kit-docs/svg4everybody.min.js"></script>
+    <script>svg4everybody();</script>
+
+  </body>
+</html>

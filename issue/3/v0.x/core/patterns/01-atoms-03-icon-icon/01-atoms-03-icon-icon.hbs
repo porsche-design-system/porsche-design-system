@@ -1,0 +1,25 @@
+{{#if icon_wrapped}}
+<div class="icon
+    {{#if icon_x-small}}icon--x-small{{/if}}
+    {{#if icon_small}}icon--small{{/if}}
+    {{#if icon_medium}}icon--medium{{/if}}
+    {{#if icon_large}}icon--large{{/if}}
+    {{#if icon_x-large}}icon--x-large{{/if}}
+    {{ styleModifier }}">
+  <svg width="100%" height="100%" role="img" focusable="false" {{#if icon_title}}aria-label="{{icon_title}}" {{/if}}
+    {{#if icon_aria-hidden}}aria-hidden="true" {{/if}}>
+    <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-{{icon_code}}" />
+  </svg>
+</div>
+{{else}}
+<svg class="icon
+  {{#if icon_x-small}}icon--x-small{{/if}}
+  {{#if icon_small}}icon--small{{/if}}
+  {{#if icon_medium}}icon--medium{{/if}}
+  {{#if icon_large}}icon--large{{/if}}
+  {{#if icon_x-large}}icon--x-large{{/if}}
+  {{ styleModifier }}" role="img" focusable="false" {{#if icon_title}}aria-label="{{icon_title}}" {{/if}}
+  {{#if icon_aria-hidden}}aria-hidden="true" {{/if}}>
+  <use xlink:href="../../images/porsche-ui-kit-docs/svg-sprite.svg#icon-{{icon_code}}" />
+</svg>
+{{/if}}
