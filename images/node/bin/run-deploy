@@ -27,7 +27,7 @@ if [[ -z "${GITHUB_REF}" ]]; then
   exit 1
 fi
 
-if [[ -z "$(ls -A /opt/porsche-ui-kit-app/packages/storefront/build)" ]]; then
+if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
   echo 'Please provide the build artifact.'
   exit 1
 fi
@@ -52,19 +52,19 @@ chmod 600 "/root/.ssh/id_rsa"
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "./"
-rm -rf "./${PORSCHE_UI_KIT_MAJOR_VERSION}"
-mkdir -p "./${PORSCHE_UI_KIT_MAJOR_VERSION}"
-cp -r "/opt/porsche-ui-kit-app/packages/storefront/build/." "./${PORSCHE_UI_KIT_MAJOR_VERSION}"
-cp "/opt/porsche-ui-kit-app/sketch/porsche-ui-kit-app.sketch" "./${PORSCHE_UI_KIT_MAJOR_VERSION}"
-cp "/opt/porsche-ui-kit-app/sketch/porsche-ui-kit-basic.sketch" "./${PORSCHE_UI_KIT_MAJOR_VERSION}"
-cp "/opt/porsche-ui-kit-app/sketch/porsche-ui-kit-web.prep.sketch" "./${PORSCHE_UI_KIT_MAJOR_VERSION}"
-cp "/opt/porsche-ui-kit-app/sketch/porsche-ui-kit-web.sketch" "./${PORSCHE_UI_KIT_MAJOR_VERSION}"
+git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
+rm -rf "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+mkdir -p "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+cp "./sketch/porsche-ui-kit-app.sketch" "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+cp "./sketch/porsche-ui-kit-basic.sketch" "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+cp "./sketch/porsche-ui-kit-web.prep.sketch" "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
+cp "./sketch/porsche-ui-kit-web.sketch" "/opt/porsche-ui-kit-gh-pages/${PORSCHE_UI_KIT_MAJOR_VERSION}"
 
 LATEST_V0X_UI_KIT_CORE_VERSION=${PORSCHE_UI_KIT_MAJOR_VERSION}
 PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_REF} | cat)"
 
-cat << _EOF_ > "./porsche-ui-kit-app.xml"
+cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/porsche-ui-kit-app.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
@@ -79,7 +79,7 @@ cat << _EOF_ > "./porsche-ui-kit-app.xml"
 </rss>
 _EOF_
 
-cat << _EOF_ > "./porsche-ui-kit-basic.xml"
+cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/porsche-ui-kit-basic.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
@@ -94,7 +94,7 @@ cat << _EOF_ > "./porsche-ui-kit-basic.xml"
 </rss>
 _EOF_
 
-cat << _EOF_ > "./porsche-ui-kit-web.prep.sketch.xml"
+cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/porsche-ui-kit-web.prep.sketch.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
@@ -109,7 +109,7 @@ cat << _EOF_ > "./porsche-ui-kit-web.prep.sketch.xml"
 </rss>
 _EOF_
 
-cat << _EOF_ > "./porsche-ui-kit-web.sketch.xml"
+cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/porsche-ui-kit-web.sketch.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
@@ -124,6 +124,8 @@ cat << _EOF_ > "./porsche-ui-kit-web.sketch.xml"
 </rss>
 _EOF_
 
-git add -A
-git commit -m "Automated deployment of Porsche UI Kit ${PORSCHE_UI_KIT_MAJOR_VERSION} (Docs, Sketch Libraries + RSS Feed)" --allow-empty
-git push origin gh-pages --force-with-lease
+pushd "/opt/porsche-ui-kit-gh-pages"
+  git add -A
+  git commit -m "Automated deployment of Porsche UI Kit ${PORSCHE_UI_KIT_MAJOR_VERSION} (Docs, Sketch Libraries + RSS Feed)" --allow-empty
+  git push origin gh-pages --force-with-lease
+popd

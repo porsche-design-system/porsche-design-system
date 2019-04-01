@@ -18,7 +18,7 @@ services:
       - workshop-node-modules:/opt/porsche-ui-kit-app/packages/workshop/node_modules
   ui-kit-deploy:
     build: ./images/node
-    working_dir: /opt/porsche-ui-kit-gh-pages
+    working_dir: /opt/porsche-ui-kit-app
     environment:
       - GIT_DEPLOY_KEY
       - GITHUB_REPOSITORY
