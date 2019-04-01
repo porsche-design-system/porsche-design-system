@@ -19,9 +19,9 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
   const categoryName = props.match.params.category
   const storyName = props.match.params.story
 
-  if (!props.featureState) {
-    return <Redirect to="/general/home" />
-  }
+  // if (!props.featureState) {
+  //   return <Redirect to="/general/home" />
+  // }
 
   const category =
     (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))]
