@@ -27,7 +27,7 @@ import { Footer } from "../components/footer/Footer"
 
 export const Storefront: React.FunctionComponent = () => {
   const [hideSidebar, setHideSidebar] = useState(false)
-  const [featureShowComponents, setFeatureShowComponents] = useState("?featureComponents")
+  const [featureShowComponents, setFeatureShowComponents] = useState("")
 
   const handleHideSidebarClicked = () => {
     setHideSidebar(!hideSidebar)
