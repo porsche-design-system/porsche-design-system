@@ -24,10 +24,10 @@
     "Anna Krohmer <anna.krohmer@udg.de>",
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
-  "homepage": "https://ui.porsche.com",
+  "homepage": "http://localhost",
   "scripts": {
     "start": "yarn build:docgen && react-scripts start",
-    "build": "yarn copy:assets && build:docgen && react-scripts build",
+    "build": "yarn build:docgen && react-scripts build",
     "build:docgen": "node './docgen/docgen.js'",
     "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
     "lint:scss": "stylelint './src/**/*.scss'",
