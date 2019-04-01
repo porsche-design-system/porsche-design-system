@@ -30,6 +30,7 @@ fi
 
 PORSCHE_UI_KIT_MAJOR_VERSION="v1"
 PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_REF} | cat)"
+PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_REF} | cat)"
 
 cleanup_credentials() {
   echo "Cleaning up credentials"
@@ -72,9 +73,9 @@ copy_sketch_libraries_create_rss_feed() {
     <title>Porsche UI</title>
     <description>A Porsche UI Sketch library.</description>
     <item>
-      <title>${1} (${PORSCHE_UI_KIT_MAJOR_VERSION})</title>
+      <title>${1} (${PORSCHE_UI_KIT_MAJOR_VERSION}.${PUBLISH_ID})</title>
       <pubDate>${PUBLISH_DATE}</pubDate>
-      <enclosure url="https://ui.porsche.com/${PORSCHE_UI_KIT_MAJOR_VERSION}/${2}" sparkle:version="${PORSCHE_UI_KIT_MAJOR_VERSION}" type="application/octet-stream"/>
+      <enclosure url="https://ui.porsche.com/${PORSCHE_UI_KIT_MAJOR_VERSION}/${2}" sparkle:version="${PORSCHE_UI_KIT_MAJOR_VERSION:1}.${PUBLISH_ID}" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
