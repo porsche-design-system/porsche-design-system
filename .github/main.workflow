@@ -34,7 +34,7 @@ action "Build" {
 }
 
 action "Deploy" {
-  needs = ["Branch 1.x"]
+  needs = ["Build"]
   uses = "./images/node/"
   runs = ["run-deploy"]
   secrets = ["GIT_DEPLOY_KEY"]
