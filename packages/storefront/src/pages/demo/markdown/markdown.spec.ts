@@ -14,6 +14,6 @@ describe('Pages Markdown', () => {
   it('should have no visual regression', async () => {
     expect(await visualRegressionTester.test('pages-markdown', async () => {
       await visualRegressionTester.goTo('/demo/markdown?featureComponents');
-    })).toBeFalsy();
+    }, ['[class^="sidebar_sidebar"]', '[class^="footer_footer"]'])).toBeFalsy();
   });
 });
