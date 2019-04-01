@@ -28,6 +28,7 @@ action "VRT" {
 }
 
 action "Build" {
+  needs = ["Install"]
   uses = "./images/node/"
   runs = ["run-build"]
 }
