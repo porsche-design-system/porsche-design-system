@@ -61,7 +61,7 @@ export const Storefront: React.FunctionComponent = () => {
   }, [])
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <button className={styles["sidebar-toggle"]} onClick={handleHideSidebarClicked}>
         {hideSidebar ? "+ Show" : "- Hide"}
       </button>
