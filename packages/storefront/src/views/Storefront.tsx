@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { throttle } from "throttle-debounce"
 import cx from "classnames"
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
+import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import { Sidebar } from "../components/sidebar/Sidebar"
 import { Story } from "../components/story/Story"
 import styles from "./storefront.module.scss"
@@ -46,7 +46,7 @@ export const Storefront: React.FunctionComponent = () => {
   })
 
   useEffect(() => {
-    window.location.search.indexOf("featureComponents") > -1
+    window.location.hash.indexOf("featureComponents") > -1
       ? setFeatureShowComponents("?featureComponents")
       : setFeatureShowComponents("")
 
@@ -61,7 +61,7 @@ export const Storefront: React.FunctionComponent = () => {
   }, [])
 
   return (
-    <Router basename={"v1"}>
+    <Router>
       <button className={styles["sidebar-toggle"]} onClick={handleHideSidebarClicked}>
         {hideSidebar ? "+ Show" : "- Hide"}
       </button>
