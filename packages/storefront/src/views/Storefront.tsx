@@ -73,7 +73,7 @@ export const Storefront: React.FunctionComponent = () => {
         <Switch>
           <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
           <Route path="/general/home" component={GeneralHome} />
-          <Route path="/general/updates" component={GeneralUpdates} />
+          <Route path={`${process.env.PUBLIC_URL}/general/updates`} component={GeneralUpdates} />
           <Route path="/general/roadmap" component={GeneralRoadmap} />
           <Route path="/general/versioning" component={GeneralVersioning} />
           <Route path="/general/support" component={GeneralSupport} />
