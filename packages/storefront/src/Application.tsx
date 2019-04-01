@@ -5,7 +5,7 @@ import { Vrt } from "./views/Vrt"
 
 export const Application: React.FunctionComponent = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/vrt/:category/:story" component={Vrt} />
         <Route path="/" component={Storefront} />
