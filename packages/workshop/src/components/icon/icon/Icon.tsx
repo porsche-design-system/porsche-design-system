@@ -58,7 +58,9 @@ const _Icon: React.StatelessComponent<IconProps> = (props) => {
 
   const classes = cx(prefix("icon"), prefix(`icon--${size}`), className)
 
-  return <SVG className={classes} src={`${path}${name}`} wrapper={React.createFactory("i")} {...rest} />
+  return (
+    <SVG cacheGetRequests className={classes} src={`${path}${name}`} wrapper={React.createFactory("i")} {...rest} />
+  )
 }
 
 _Icon.defaultProps = defaultProps

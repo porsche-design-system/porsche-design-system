@@ -18,6 +18,8 @@ import { Contribution as DesignContribution } from "../pages/design/contribution
 import { Culture as DesignCulture } from "../pages/design/culture/culture"
 import { SketchPlugins as DesignSketchPlugins } from "../pages/design/sketch-plugins/SketchPlugins"
 import { Introduction as CodeIntroduction } from "../pages/code/introduction/Introduction"
+import { Installation as CodeInstallation } from "../pages/code/installation/Installation"
+import { Installation0x as CodeInstallation0x } from "../pages/code/installation/Installation-0.x"
 import { DefinitionOfDone as CodeDefinitionOfDone } from "../pages/code/definition-of-done/DefinitionOfDone"
 import { CICD as CodeCICD } from "../pages/code/ci-cd/CICD"
 import { BrowserCompatibility as CodeBrowserCompatibility } from "../pages/code/browser-compatibility/BrowserCompatibility"
@@ -85,6 +87,8 @@ export const Storefront: React.FunctionComponent = () => {
           <Route path="/design/culture" component={DesignCulture} />
           <Route path="/design/contribution" component={DesignContribution} />
           <Route path="/code/introduction" component={CodeIntroduction} />
+          <Route path="/code/installation" component={CodeInstallation} />
+          <Route path="/code/installation-0x" component={CodeInstallation0x} />
           <Route path="/code/definition-of-done" component={CodeDefinitionOfDone} />
           <Route path="/code/ci-cd" component={CodeCICD} />
           <Route path="/code/browser-compatibility" component={CodeBrowserCompatibility} />

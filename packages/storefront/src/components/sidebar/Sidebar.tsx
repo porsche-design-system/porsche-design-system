@@ -124,6 +124,18 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
             </li>
             <li className={style["nav-item"]}>
               <SidebarLink
+                to={{ pathname: "/code/installation", search: props.featureState }}
+                title="Installation latest"
+              />
+            </li>
+            <li className={style["nav-item"]}>
+              <SidebarLink
+                to={{ pathname: "/code/installation-0x", search: props.featureState }}
+                title="Installation 0.x (deprecated)"
+              />
+            </li>
+            <li className={style["nav-item"]}>
+              <SidebarLink
                 to={{ pathname: "/code/definition-of-done", search: props.featureState }}
                 title="Definition Of Done"
               />
