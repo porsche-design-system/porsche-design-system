@@ -29,10 +29,13 @@ gulp.task('svgmin', function() {
     .pipe(svgmin({
       plugins: [
         {
-          removeTitle: false
+          removeTitle: true
         },
         {
           removeViewBox: false
+        },
+        {
+          convertPathData: {"makeArcs":false}
         },
         {
           addCustomDimension: {
