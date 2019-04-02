@@ -7,7 +7,7 @@ import { Text, Icon } from "@porscheui/porsche-ui-kit"
 import { Header } from "../header/Header"
 
 export interface SidebarProps {
-  featureState?: string
+  featureV1?: string
 }
 export interface SidebarLinkProps {
   to: string | object
@@ -50,32 +50,29 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
         <nav>
           <ul>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/home", search: props.featureState }} title="Home" />
+              <SidebarLink to={{ pathname: "/general/home", search: props.featureV1 }} title="Home" />
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/updates", search: props.featureState }} title="Updates" />
+              <SidebarLink to={{ pathname: "/general/updates", search: props.featureV1 }} title="Updates" />
               <ul>
                 <li className={style["nav-item"]}>
-                  <SidebarLink to={{ pathname: "/general/roadmap", search: props.featureState }} title="Roadmap" />
+                  <SidebarLink to={{ pathname: "/general/roadmap", search: props.featureV1 }} title="Roadmap" />
                 </li>
                 <li className={style["nav-item"]}>
-                  <SidebarLink
-                    to={{ pathname: "/general/versioning", search: props.featureState }}
-                    title="Versioning"
-                  />
+                  <SidebarLink to={{ pathname: "/general/versioning", search: props.featureV1 }} title="Versioning" />
                 </li>
               </ul>
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/support", search: props.featureState }} title="Support" />
+              <SidebarLink to={{ pathname: "/general/support", search: props.featureV1 }} title="Support" />
               <ul>
                 <li className={style["nav-item"]}>
-                  <SidebarLink to={{ pathname: "/general/faq", search: props.featureState }} title="FAQ" />
+                  <SidebarLink to={{ pathname: "/general/faq", search: props.featureV1 }} title="FAQ" />
                 </li>
               </ul>
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/license", search: props.featureState }} title="License" />
+              <SidebarLink to={{ pathname: "/general/license", search: props.featureV1 }} title="License" />
             </li>
           </ul>
         </nav>
@@ -86,7 +83,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
           <ul>
             <li className={style["nav-item"]}>
               <SidebarLink
-                to={{ pathname: "/guidelines/accessibility", search: props.featureState }}
+                to={{ pathname: "/guidelines/accessibility", search: props.featureV1 }}
                 title="Accessibility"
               />
             </li>
@@ -98,19 +95,19 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
         <nav>
           <ul>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/design/introduction", search: props.featureState }} title="Introduction" />
+              <SidebarLink to={{ pathname: "/design/introduction", search: props.featureV1 }} title="Introduction" />
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/design/culture", search: props.featureState }} title="Design Culture" />
+              <SidebarLink to={{ pathname: "/design/culture", search: props.featureV1 }} title="Design Culture" />
             </li>
             <li className={style["nav-item"]}>
               <SidebarLink
-                to={{ pathname: "/design/sketch-plugins", search: props.featureState }}
+                to={{ pathname: "/design/sketch-plugins", search: props.featureV1 }}
                 title="Sketch Plugins"
               />
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/design/contribution", search: props.featureState }} title="Contribution" />
+              <SidebarLink to={{ pathname: "/design/contribution", search: props.featureV1 }} title="Contribution" />
             </li>
           </ul>
         </nav>
@@ -120,42 +117,42 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
         <nav>
           <ul>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/code/introduction", search: props.featureState }} title="Introduction" />
+              <SidebarLink to={{ pathname: "/code/introduction", search: props.featureV1 }} title="Introduction" />
             </li>
             <li className={style["nav-item"]}>
               <SidebarLink
-                to={{ pathname: "/code/installation", search: props.featureState }}
+                to={{ pathname: "/code/installation", search: props.featureV1 }}
                 title="Installation latest"
               />
             </li>
             <li className={style["nav-item"]}>
               <SidebarLink
-                to={{ pathname: "/code/installation-0x", search: props.featureState }}
+                to={{ pathname: "/code/installation-0x", search: props.featureV1 }}
                 title="Installation 0.x (deprecated)"
               />
             </li>
             <li className={style["nav-item"]}>
               <SidebarLink
-                to={{ pathname: "/code/definition-of-done", search: props.featureState }}
+                to={{ pathname: "/code/definition-of-done", search: props.featureV1 }}
                 title="Definition Of Done"
               />
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/code/ci-cd", search: props.featureState }} title="CI/CD" />
+              <SidebarLink to={{ pathname: "/code/ci-cd", search: props.featureV1 }} title="CI/CD" />
             </li>
             <li className={style["nav-item"]}>
               <SidebarLink
-                to={{ pathname: "/code/browser-compatibility", search: props.featureState }}
+                to={{ pathname: "/code/browser-compatibility", search: props.featureV1 }}
                 title="Browser Compatibility"
               />
             </li>
             <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/code/contribution", search: props.featureState }} title="Contribution" />
+              <SidebarLink to={{ pathname: "/code/contribution", search: props.featureV1 }} title="Contribution" />
             </li>
           </ul>
         </nav>
       </div>
-      {props.featureState && (
+      {props.featureV1 && (
         <React.Fragment>
           <Divider spacing="small" />
           <Text type="4-bold" as="h2">
@@ -176,7 +173,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
                           <SidebarLink
                             to={{
                               pathname: `/${category.toLowerCase()}/${story.toLowerCase()}`,
-                              search: `${props.featureState}`
+                              search: `${props.featureV1}`
                             }}
                             title={story}
                           />

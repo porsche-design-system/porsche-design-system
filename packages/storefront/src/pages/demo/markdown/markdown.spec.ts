@@ -16,7 +16,7 @@ describe("Pages Markdown", () => {
       await visualRegressionTester.test(
         "pages-markdown",
         async () => {
-          await visualRegressionTester.goTo("/#/demo/markdown?featureComponents")
+          await visualRegressionTester.goTo("/#/demo/markdown")
         },
         ['[class^="sidebar_sidebar"]', '[class^="footer_footer"]']
       )
