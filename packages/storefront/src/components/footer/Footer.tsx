@@ -11,8 +11,8 @@ export const Footer: React.FunctionComponent = () => {
       <Text type="small-regular" align="center">
         © 2019 Dr. Ing. h.c. F. Porsche AG.
         <br />
-        <Link to="https://www.porsche.com/international/legal-notice/">Legal notice</Link> /{" "}
-        <Link to="https://www.porsche.com/international/legal-notice/">Imprint</Link> /{" "}
+        <a href="https://www.porsche.com/international/legal-notice/">Legal notice</a> /{" "}
+        <a href="https://www.porsche.com/international/legal-notice/">Imprint</a> /{" "}
         <Link to="/general/license">License</Link>.
       </Text>
     </footer>
