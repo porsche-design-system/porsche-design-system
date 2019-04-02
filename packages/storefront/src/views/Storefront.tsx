@@ -29,7 +29,7 @@ import { Footer } from "../components/footer/Footer"
 
 export const Storefront: React.FunctionComponent = () => {
   const [hideSidebar, setHideSidebar] = useState(false)
-  const [featureShowComponents, setFeatureShowComponents] = useState("")
+  const [featureShowV1, setFeatureShowV1] = useState("")
 
   const handleHideSidebarClicked = () => {
     setHideSidebar(!hideSidebar)
@@ -48,9 +48,7 @@ export const Storefront: React.FunctionComponent = () => {
   })
 
   useEffect(() => {
-    window.location.hash.indexOf("featureComponents") > -1
-      ? setFeatureShowComponents("?featureComponents")
-      : setFeatureShowComponents("")
+    window.location.hash.indexOf("featureV1") > -1 ? setFeatureShowV1("?featureV1") : setFeatureShowV1("")
 
     updateIsMobile()
 
@@ -68,12 +66,12 @@ export const Storefront: React.FunctionComponent = () => {
         {hideSidebar ? "+ Show" : "- Hide"}
       </button>
       <div className={appSidebarClasses}>
-        <Sidebar featureState={featureShowComponents} />
+        <Sidebar featureV1={featureShowV1} />
         <Footer />
       </div>
       <main className={appContentClasses}>
         <Switch>
-          <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
+          <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowV1} />} />
           <Route path="/general/home" component={GeneralHome} />
           <Route path="/general/updates" component={GeneralUpdates} />
           <Route path="/general/roadmap" component={GeneralRoadmap} />
@@ -94,10 +92,7 @@ export const Storefront: React.FunctionComponent = () => {
           <Route path="/code/browser-compatibility" component={CodeBrowserCompatibility} />
           <Route path="/code/contribution" component={CodeContribution} />
           <Route path="/demo/markdown" component={Markdown} />
-          <Route
-            path="/:category/:story"
-            render={(props) => <Story featureState={featureShowComponents} {...props} />}
-          />
+          <Route path="/:category/:story" render={(props) => <Story featureV1={featureShowV1} {...props} />} />
         </Switch>
       </main>
     </Router>
