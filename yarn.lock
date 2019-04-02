@@ -1486,10 +1486,15 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha1-PcoOPzOyAPx9ETnAzZbBJoyt/Z0=
 
-"@types/node@*", "@types/node@11.11.6":
+"@types/node@*":
   version "11.11.6"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-11.11.6.tgz#df929d1bb2eee5afdda598a41930fe50b43eaa6a"
   integrity sha1-35KdG7Lu5a/dpZikGTD+ULQ+qmo=
+
+"@types/node@11.13.0":
+  version "11.13.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-11.13.0.tgz#b0df8d6ef9b5001b2be3a94d909ce3c29a80f9e1"
+  integrity sha1-sN+Nbvm1ABsr46lNkJzjwpqA+eE=
 
 "@types/prop-types@*":
   version "15.7.0"
@@ -1536,6 +1541,14 @@
   version "16.8.8"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.8.8.tgz#4b60a469fd2469f7aa6eaa0f8cfbc51f6d76e662"
   integrity sha1-S2Ckaf0kafeqbqoPjPvFH2125mI=
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@^16.8.10":
+  version "16.8.10"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.8.10.tgz#1ccb6fde17f71a62ef055382ec68bdc379d4d8d9"
+  integrity sha1-HMtv3hf3GmLvBVOC7Gi9w3nU2Nk=
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
