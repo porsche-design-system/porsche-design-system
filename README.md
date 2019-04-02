@@ -49,15 +49,15 @@ _It's a job exclusively for the CI/CD pipeline, that's why it won't be executabl
 * Switch to __project root directory__
 * Run `./docker.sh run-deploy`
 
-## Dependency Updates
+## Dependency updates
 Every week, we update our npm packages:
 
 * Switch to __project root directory__
-* Run `./docker.sh run-upgrade-interactive` 
+* Run `./docker.sh run-upgrade`  
 This should output the dependencies you might want to update. Select the npm dependencies to be updated and press
 _Enter_. Afterwards execute automated tests to make sure application still works.
 * Run `./docker.sh run-lint`
-* Run `./docker.sh run-vrt`
+* Run `./docker.sh run-vrt`  
 As final check start application locally and have a look at it.
 * Run `./docker.sh run-app`
 
@@ -67,7 +67,7 @@ As final check start application locally and have a look at it.
 __Getting started__ section to be able to authenticate during npm dependency update process.
 
 
-## Build Status
+## Build status
 
 [GitHub Actions](https://github.com/porscheui/porsche-ui-kit/actions)
 
