@@ -1,0 +1,11 @@
+{
+  "name": "pattern-lab/plugin-node-clipboard",
+  "templates": [],
+  "stylesheets": [],
+  "javascripts": [
+    "patternlab-components/pattern-lab/plugin-node-clipboard/js/clipboard.min.js",
+    "patternlab-components/pattern-lab/plugin-node-clipboard/js/plugin-node-clipboard.js"
+  ],
+  "onready": "PluginClipboard.init()",
+  "callback": ""
+}
