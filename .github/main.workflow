@@ -6,7 +6,7 @@ workflow "Porsche UI Kit" {
 action "Filter" {
   uses = "./images/node/"
   runs = ["run-filter"]
-  env = {GIT_FILTER = "refs\/heads\/(v1|issue\/[0-9]+)$"}
+  env = {GIT_FILTER = "refs/heads/(v1|issue/[0-9]+)$"}
 }
 
 action "Install" {
