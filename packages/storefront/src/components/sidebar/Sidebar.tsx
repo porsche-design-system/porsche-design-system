@@ -5,6 +5,7 @@ import { Redirect, NavLink } from "react-router-dom"
 import { Divider } from "@porsche/ui-kit-react"
 import { Text, Icon } from "@porscheui/porsche-ui-kit"
 import { Header } from "../header/Header"
+import SidebarLinks from "./sidebar.json"
 
 export interface SidebarProps {
   featureV1?: string
@@ -45,113 +46,53 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
     <div className={style.sidebar}>
       <Header />
       <Divider spacing="small" />
-      <div className={style.category}>
-        <Text type="copy-bold">General</Text>
-        <nav>
-          <ul>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/home", search: props.featureV1 }} title="Home" />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/updates", search: props.featureV1 }} title="Updates" />
-              <ul>
-                <li className={style["nav-item"]}>
-                  <SidebarLink to={{ pathname: "/general/roadmap", search: props.featureV1 }} title="Roadmap" />
-                </li>
-                <li className={style["nav-item"]}>
-                  <SidebarLink to={{ pathname: "/general/versioning", search: props.featureV1 }} title="Versioning" />
-                </li>
-              </ul>
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/support", search: props.featureV1 }} title="Support" />
-              <ul>
-                <li className={style["nav-item"]}>
-                  <SidebarLink to={{ pathname: "/general/faq", search: props.featureV1 }} title="FAQ" />
-                </li>
-              </ul>
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/general/license", search: props.featureV1 }} title="License" />
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div className={style.category}>
-        <Text type="copy-bold">Guidelines</Text>
-        <nav>
-          <ul>
-            <li className={style["nav-item"]}>
-              <SidebarLink
-                to={{ pathname: "/guidelines/accessibility", search: props.featureV1 }}
-                title="Accessibility"
-              />
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div className={style.category}>
-        <Text type="copy-bold">Designing</Text>
-        <nav>
-          <ul>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/design/introduction", search: props.featureV1 }} title="Introduction" />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/design/culture", search: props.featureV1 }} title="Design Culture" />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink
-                to={{ pathname: "/design/sketch-plugins", search: props.featureV1 }}
-                title="Sketch Plugins"
-              />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/design/contribution", search: props.featureV1 }} title="Contribution" />
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div className={style.category}>
-        <Text type="copy-bold">Code</Text>
-        <nav>
-          <ul>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/code/introduction", search: props.featureV1 }} title="Introduction" />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink
-                to={{ pathname: "/code/installation", search: props.featureV1 }}
-                title="Installation latest"
-              />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink
-                to={{ pathname: "/code/installation-0x", search: props.featureV1 }}
-                title="Installation 0.x (deprecated)"
-              />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink
-                to={{ pathname: "/code/definition-of-done", search: props.featureV1 }}
-                title="Definition Of Done"
-              />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/code/ci-cd", search: props.featureV1 }} title="CI/CD" />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink
-                to={{ pathname: "/code/browser-compatibility", search: props.featureV1 }}
-                title="Browser Compatibility"
-              />
-            </li>
-            <li className={style["nav-item"]}>
-              <SidebarLink to={{ pathname: "/code/contribution", search: props.featureV1 }} title="Contribution" />
-            </li>
-          </ul>
-        </nav>
-      </div>
+
+      {SidebarLinks &&
+        SidebarLinks.categories.map((item: any) => {
+          return (
+            <div key={item.category} className={style.category}>
+              <Text type="copy-bold">{item.category}</Text>
+              <nav>
+                <ul>
+                  {item.links &&
+                    item.links.map((itemLink: any) => {
+                      return (
+                        <React.Fragment key={itemLink.title}>
+                          {!itemLink.featureV1 || (itemLink.featureV1 && props.featureV1) ? (
+                            <li className={style["nav-item"]}>
+                              <SidebarLink
+                                to={{ pathname: itemLink.path, search: props.featureV1 }}
+                                title={itemLink.title}
+                              />
+                              {itemLink.sublinks && (
+                                <ul>
+                                  {itemLink.sublinks.map((itemSubLink: any) => {
+                                    return (
+                                      <React.Fragment key={itemSubLink.title}>
+                                        {!itemSubLink.featureV1 || (itemSubLink.featureV1 && props.featureV1) ? (
+                                          <li className={style["nav-item"]}>
+                                            <SidebarLink
+                                              to={{ pathname: itemSubLink.path, search: props.featureV1 }}
+                                              title={itemSubLink.title}
+                                            />
+                                          </li>
+                                        ) : null}
+                                      </React.Fragment>
+                                    )
+                                  })}
+                                </ul>
+                              )}
+                            </li>
+                          ) : null}
+                        </React.Fragment>
+                      )
+                    })}
+                </ul>
+              </nav>
+            </div>
+          )
+        })}
+
       {props.featureV1 && (
         <React.Fragment>
           <Divider spacing="small" />
