@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if [[ -z "${GITHUB_SHA}" ]]; then
+  echo 'Please provide the $GITHUB_SHA environment variable.'
+  exit 1
+fi
+
+if [[ -z "${SLACK_WEBHOOK_URL}" ]]; then
+  echo 'Please provide the $SLACK_WEBHOOK_URL environment variable.'
+  exit 1
+fi
+
+PUIK_VERSION="v1"
+PUIK_COMMIT_MESSAGE="$(git log -1 --format=%s "${GITHUB_SHA}" | cat)"
+PUIK_SLACK_MESSAGE="Checkout https://ui.porsche.com/${PUIK_VERSION} :heart_eyes_cat:\n${PUIK_COMMIT_MESSAGE}"
+PUIK_CURL_STATUS="$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-type: application/json" --data "{\"text\":\"${PUIK_SLACK_MESSAGE}\"}" ${SLACK_WEBHOOK_URL})"
+
+if [[ "${PUIK_CURL_STATUS}" != 200 ]]; then
+  echo "Slack notification could not be sent (HTTP error code: ${PUIK_CURL_STATUS})."
+  exit 1
+fi
