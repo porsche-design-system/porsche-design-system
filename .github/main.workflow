@@ -5,7 +5,7 @@ workflow "Porsche UI Kit" {
 
 action "Filter" {
   uses = "actions/bin/filter@master"
-  args = "branch 1.x"
+  args = "branch ^issue\/[0-9]+$"
 }
 
 action "Install" {
