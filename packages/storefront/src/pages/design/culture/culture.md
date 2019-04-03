@@ -11,13 +11,9 @@ To use Abstract and access the Sketch files the most recent version of the Abstr
 The Porsche UI Organization is structured by context within the sections General, Apps, Web and Vehicle.
 All files and the workflow documentation lives in team specific Projects. **Team projects** are visible for all members by standard, whereas Guest have to be invited. Confidential work is currently placed in **Private Projects** which are only accessible to members who have been specifically invited.
 
-The files within a Project are recommended to be split and named by features, starting with a number ordered according to an ideal flow.
+The files within a Project are recommended to be split and named by features, starting with a number ordered according to an ideal flow. Library files are named after their topic, e.g. Activity Stream, Thumbnails, Icons, etc.
 
-1. Account Setup
-2. Home Section
-3. Logout
-
-Library files are named after their topic, e.g. Activity Stream, Thumbnails, Icons, etc.
+![/assets/storefront/design/abstract-filestructure.png](/assets/storefront/design/abstract-filestructure.png)
 
 ### Roles
 **Who is allowed to get access?** All designers of digital Porsche products  as well as developers, business partners and other stakeholder can be invited for accessing or viewing project files using the following rules and roles.
@@ -44,13 +40,13 @@ Changes within files should be done locally using the Abstract Desktop App. Afte
 ### Start working on a change
 To remove the dependency on frequent updates of the Master we use branches and subsequent child branches for every change on the files. You may choose to open a child branch from a parent branch if you’d like to pick up where someone else left off in their branch.
 
-1. Create a single branch either from the Master or from a existing Branch by clicking "New branch..." on the top right
-2. Name the branch in the format of `<issue-number>/<title>` e.g. `123/pagination`.
-We replace `<issue-number>` with the GitHub Project issue number and `<title>` by a one or two word descriptor of the main item being worked on for reference.
-3. After creating a branch you can open existing sketch files in the Tab "Files" by selecting them and click on the "Edit in Sketch" on the top right. Or you create/import new sketch Files by clicking on "Add File" > "Create/Import Sketch File..."
+1. Create a branch either from the Master or from a existing Branch by clicking "New branch..." on the top right or by opening a sketch file.
+2. Name the branch descriptive including the main item being worked on and use the effort type or the issue number if possible, i.e. `exploration / pagination accessibilty recoloring` or `142 / pagination restructuring`.
+3. Give the branch a description that explains your intent with your branch. Onlookers will thank you.
+3. After creating a branch you can open existing sketch files in the Tab "Files" by selecting them and click on the "Edit in Sketch" on the top right. Or you create/import new sketch Files by clicking on "Add File" → "Create/Import Sketch File..."
 4. Make changes to the sketch file(s) and sync major milestones to Abstract by clicking on "Commit changes" at the bottom of the application and add a descriptive summary of the change actions, e.g. `Added new CI colors`.  
 
-**When do I commit?** A lot.
+**How and when do I commit?** Commit a lot and describe what you did. To the best of your ability, adding detail of what you accomplished in each commit is useful for you and for your coworkers.
 - Every time you get to a good stopping place and might go down a new path.
 - Every time you update a bunch of symbols.
 - Before you do something controversial or experimental that you may need to roll back.
@@ -58,20 +54,18 @@ We replace `<issue-number>` with the GitHub Project issue number and `<title>` b
 
 
 ### Review and Merge changes
-After committing some changes within a branch you must have at least one design review from another team member before merging the branch into the master.
+When you think you’re done with your branch, you should always add stakeholders or coworkers as reviewers to get feedback for your work, before you merge it to master.
 
 1. Select your branch that you would like to be reviewed
 2. Click "Request Review" in the top right and type the team members you would like to review your changes
 
-Once you received an approval for you design review you can start the merging process.
+Updating from Master every few weeks is effective at keeping your branch up-to-date without having a huge workload at when you’re finally ready to merge. Once you’ve gotten approved in your review, you’re ready to merge.
 
 1. Select the branch that you would like to merge into the master or a child branch you would like to merge into the parent branch.
 2. Click "Merge branch" in the top right and document a short change log but descriptive into the notes.
 3. Click the button "Merge and archive".
 4. When your version of Master is out-of-date with the current version of Master (often a result of being offline) you get a diverged copy. Be sure to resolve this immediately.
 5. Inform the team about the merging.
-
-Updating from Master every few weeks is effective at keeping your branch up-to-date without having a huge workload at when you’re finally ready to merge.
 
 ### Engineering and Stakeholder "Handoff"
 Collections are super useful in order to focus attention of your fellow designers and stakeholders on the screens you’re making changes to. You can order them according to the story you’re trying to tell and give additional context within them.
