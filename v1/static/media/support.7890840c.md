@@ -1,4 +1,4 @@
-# Support and Communication
+# Support
 To drive a continuous exchange within the community of users, contributors and the Porsche UI team, specific use case related communication channels and rituals are provided.
 
 ## Website

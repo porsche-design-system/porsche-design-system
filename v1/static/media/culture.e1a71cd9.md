@@ -1,4 +1,5 @@
-# Design Culture
+# Culture
+
 ## Introduction
 We foster an open and connected design culture for all digital Porsche products by using the right resources, standardised tools and workflows together. Abstract allows us to make the design process fully transparent and structured with an intelligent file management and automated version control. To work on your own, within the team or the whole Porsche Design Community together. Bringing the different roles and teams closer and enable a more efficient design workflow.
 

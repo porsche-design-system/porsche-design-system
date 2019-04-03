@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "./static/js/0.3c97a4de.chunk.js"
   },
   {
-    "revision": "77a079c88eeb110aa81c",
+    "revision": "9e6da9eba6a6ebfe532a",
     "url": "./static/css/main.f983b815.chunk.css"
   },
   {
-    "revision": "77a079c88eeb110aa81c",
-    "url": "./static/js/main.51d590e1.chunk.js"
+    "revision": "9e6da9eba6a6ebfe532a",
+    "url": "./static/js/main.0690c653.chunk.js"
   },
   {
     "revision": "e974a1ae74d008d3d019",
@@ -96,20 +96,20 @@ self.__precacheManifest = [
     "url": "./static/media/home.ce752fd7.md"
   },
   {
-    "revision": "c75b66d9c6b79166d042552dec1acc40",
-    "url": "./static/media/updates.c75b66d9.md"
+    "revision": "7a67cd3accce26ae0eb9d34053459bbb",
+    "url": "./static/media/updates.7a67cd3a.md"
   },
   {
-    "revision": "28c61cf079fcdb9187cc4a743c32346d",
-    "url": "./static/media/roadmap.28c61cf0.md"
+    "revision": "02ab9ba88c8424743171403eb9bd0444",
+    "url": "./static/media/roadmap.02ab9ba8.md"
   },
   {
-    "revision": "3c7395d63f71cdf9a95d5de5ca3c3d28",
-    "url": "./static/media/versioning.3c7395d6.md"
+    "revision": "6b216667799a372030e5469c108d26d2",
+    "url": "./static/media/versioning.6b216667.md"
   },
   {
-    "revision": "998ce94a1ca74fbdcbaab1fb6bb5d908",
-    "url": "./static/media/support.998ce94a.md"
+    "revision": "7890840c6b1c3c189725a6382ef2d189",
+    "url": "./static/media/support.7890840c.md"
   },
   {
     "revision": "0dae52f4f63aaeba28e162d80742abe7",
@@ -120,59 +120,59 @@ self.__precacheManifest = [
     "url": "./static/media/faq.9a4e03b9.md"
   },
   {
-    "revision": "1cd881907de95512152e3370af5841a5",
-    "url": "./static/media/accessibility.1cd88190.md"
+    "revision": "f8ae214eb317ea2577618820baa61ce6",
+    "url": "./static/media/accessibility.f8ae214e.md"
   },
   {
-    "revision": "370917915308b6fe97e6973d1a6aa78c",
-    "url": "./static/media/introduction.37091791.md"
+    "revision": "d984c10e08c7cab7b31cbc4cd7ca0755",
+    "url": "./static/media/introduction.d984c10e.md"
   },
   {
-    "revision": "e56c5cac7287fb1a3ba8cf5e0dabf11d",
-    "url": "./static/media/contribution.e56c5cac.md"
+    "revision": "564a47a4fa78d801e6eb41eb7d4f8eae",
+    "url": "./static/media/contribution.564a47a4.md"
   },
   {
-    "revision": "aeb0f7f6bbfc177f24c8c6d016a60ddb",
-    "url": "./static/media/culture.aeb0f7f6.md"
+    "revision": "e1a71cd998e39e9043c20f9ebf65997e",
+    "url": "./static/media/culture.e1a71cd9.md"
   },
   {
-    "revision": "1f7f2cdc35c27db7834cca32c0939440",
-    "url": "./static/media/sketch-plugins.1f7f2cdc.md"
+    "revision": "ad1080237c1863acac77d432931a2db7",
+    "url": "./static/media/sketch-plugins.ad108023.md"
   },
   {
-    "revision": "7591dbb7be6a76e792011c5f75be4abc",
-    "url": "./static/media/introduction.7591dbb7.md"
+    "revision": "88cff6f84654c07dd474e21e15b9aa40",
+    "url": "./static/media/introduction.88cff6f8.md"
   },
   {
-    "revision": "3741654a8f6dfab4d8cb3f80409f730f",
-    "url": "./static/media/installation.3741654a.md"
+    "revision": "2094978d357ec0e5564a5e7158e71537",
+    "url": "./static/media/installation.2094978d.md"
   },
   {
-    "revision": "804dda75e2e5c11c42e33e2ef0bc4a98",
-    "url": "./static/media/installation-0.x.804dda75.md"
+    "revision": "7e1b5fdacef423bf621f214da0432bd1",
+    "url": "./static/media/installation-0.x.7e1b5fda.md"
   },
   {
     "revision": "c1b3cf52d95e265496ac1ffa21f2ebdf",
     "url": "./static/media/definition-of-done.c1b3cf52.md"
   },
   {
-    "revision": "b2dcd3a8833d5010b56a9c5f271a9abe",
-    "url": "./static/media/ci-cd.b2dcd3a8.md"
+    "revision": "61e9b9a5072a8996e1091b4bd1650fb1",
+    "url": "./static/media/ci-cd.61e9b9a5.md"
   },
   {
-    "revision": "b26d46235e997c32b5438a80587986a0",
-    "url": "./static/media/browser-compatibility.b26d4623.md"
+    "revision": "7d897bc37ee919edca642dab9b46b908",
+    "url": "./static/media/browser-compatibility.7d897bc3.md"
   },
   {
-    "revision": "08f0c752ce97ba6f7c0724776769bd1a",
-    "url": "./static/media/contribution.08f0c752.md"
+    "revision": "1a4b527ad28c28881e1608426d6f8274",
+    "url": "./static/media/contribution.1a4b527a.md"
   },
   {
     "revision": "ed704bed1985c039173d2aeaab1c1931",
     "url": "./static/media/markdown.ed704bed.md"
   },
   {
-    "revision": "2ad929497e6c5bae3abbec18a5b87f2b",
+    "revision": "33492433973dc50336d2071229176b1d",
     "url": "./index.html"
   }
 ];
