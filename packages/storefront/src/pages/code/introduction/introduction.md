@@ -1,4 +1,6 @@
-# Introduction - start coding
+# Introduction
+
+## Start coding
 
 Porsche UI Kit provides a collection of pre-built (React) components to developers for building clean and qualitative front-ends that innately come with the latest design definitions. Applications that use another frontend framework or none can include the (S)CSS styles and use the compiled HTML.
 
