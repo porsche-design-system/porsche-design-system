@@ -5,7 +5,7 @@ import Teaser from "./assets/img/teaser.jpg"
 import { Button } from "@porsche/ui-kit-react"
 import { Flex, Spacing, Text } from "@porscheui/porsche-ui-kit"
 import { Markdown } from "../../../components/markdown/Markdown"
-import Releases from "./releases.json"
+import Releases from "../../../releases.json"
 
 export const Home: React.FunctionComponent = () => {
   return (

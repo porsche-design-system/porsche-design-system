@@ -8,7 +8,7 @@ import { Spacing } from "@porscheui/porsche-ui-kit"
 import style from "../markdown/markdown.module.scss"
 
 export interface StoryParams {
-  featureState?: string
+  featureV1?: string
 }
 export interface StoryUrlParams {
   category: string
@@ -19,9 +19,9 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
   const categoryName = props.match.params.category
   const storyName = props.match.params.story
 
-  if (!props.featureState) {
-    return <Redirect to="/general/home" />
-  }
+  // if (!props.featureV1) {
+  //   return <Redirect to="/general/home" />
+  // }
 
   const category =
     (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))]

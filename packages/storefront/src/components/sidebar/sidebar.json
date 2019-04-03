@@ -1,0 +1,105 @@
+{
+  "categories": [
+    {
+      "category": "General",
+      "links": [
+        {
+          "title": "Home",
+          "path": "/general/home"
+        },
+        {
+          "title": "Updates",
+          "path": "/general/updates",
+          "sublinks": [
+            {
+              "title": "Roadmap",
+              "path": "/general/roadmap"
+            },
+            {
+              "title": "Versioning",
+              "path": "/general/versioning"
+            }
+          ]
+        },
+        {
+          "title": "Support",
+          "path": "/general/support",
+          "sublinks": [
+            {
+              "title": "FAQ",
+              "path": "/general/faq"
+            }
+          ]
+        },
+        {
+          "title": "License",
+          "path": "/general/license"
+        }
+      ]
+    },
+    {
+      "category": "Guidelines",
+      "links": [
+        {
+          "title": "Accessibility",
+          "path": "/guidelines/accessibility"
+        }
+      ]
+    },
+    {
+      "category": "Designing",
+      "links": [
+        {
+          "title": "Introduction",
+          "path": "/design/introduction"
+        },
+        {
+          "title": "Design Culture",
+          "path": "/design/culture"
+        },
+        {
+          "title": "Sketch Plugins",
+          "path": "/design/sketch-plugins"
+        },
+        {
+          "title": "Contribution",
+          "path": "/design/contribution"
+        }
+      ]
+    },
+    {
+      "category": "Code",
+      "links": [
+        {
+          "title": "Introduction",
+          "path": "/code/introduction"
+        },
+        {
+          "title": "Installation",
+          "path": "/code/installation",
+          "featureV1": true
+        },
+        {
+          "title": "Installation 0.x (deprecated)",
+          "path": "/code/installation-0x"
+        },
+        {
+          "title": "Definition of Done",
+          "path": "/code/definition-of-done"
+        },
+        {
+          "title": "CI/CD",
+          "path": "/code/ci-cd"
+        },
+        {
+          "title": "Browser compatibility",
+          "path": "/code/browser-compatibility"
+        },
+        {
+          "title": "Contribution",
+          "path": "/code/contribution"
+        }
+      ]
+    }
+  ]
+}

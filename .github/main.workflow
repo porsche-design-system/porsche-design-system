@@ -1,15 +1,15 @@
 workflow "Porsche UI Kit" {
   on = "push"
-  resolves = ["Deploy", "GitHub Action for Slack"]
+  resolves = ["Deploy", "Slack"]
 }
 
-action "Branch 1.x" {
+action "Filter" {
   uses = "actions/bin/filter@master"
   args = "branch 1.x"
 }
 
 action "Install" {
-  needs = ["Branch 1.x"]
+  needs = ["Filter"]
   uses = "./images/node/"
   runs = ["run-install"]
   secrets = ["ARTIFACTORY_TOKEN"]
@@ -34,18 +34,15 @@ action "Build" {
 }
 
 action "Deploy" {
-  needs = ["Branch 1.x"]
+  needs = ["Build"]
   uses = "./images/node/"
   runs = ["run-deploy"]
   secrets = ["GIT_DEPLOY_KEY"]
 }
 
-action "GitHub Action for Slack" {
+action "Slack" {
   needs = ["Deploy"]
-  uses = "Ilshidur/action-slack@e820f544affdbb77c1dee6d3f752f7f2daf4a0b3"
-  args = "test github actions: A new commit has been pushed and build was successful <3"
-  secrets = ["SLACK_WEBHOOK"]
-  env = {
-    SLACK_OVERRIDE_MESSAGE = "true"
-  }
+  uses = "./images/node/"
+  runs = ["run-slack"]
+  secrets = ["SLACK_WEBHOOK_URL"]
 }

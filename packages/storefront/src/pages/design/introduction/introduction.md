@@ -1,4 +1,6 @@
-# Start Designing
+# Introduction
+
+## Start Designing
 The Porsche UI Kit enables designers to instantly create beautiful designs by using the prebuild Sketch Library resources, styles and templates.
 
 ## Get the Porsche UI Kit

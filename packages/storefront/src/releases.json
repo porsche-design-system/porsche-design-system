@@ -1,0 +1,29 @@
+{
+  "releases": {
+    "v0Core": [
+      {
+        "version": "0.18.3",
+        "state": "stable",
+        "changes": "@See CHANGELOG.md",
+        "link": "https://ui.porsche.com/v0.18.3/core/"
+      }
+    ],
+    "v0React": [
+      {
+        "version": "0.10.0",
+        "state": "stable",
+        "changes": "@See CHANGELOG.md",
+        "link": "https://ui.porsche.com/v0.10.0/react/"
+      }
+    ],
+    "v1": [
+      {
+        "version": "1.0.0-beta",
+        "state": "not released",
+        "changes": "@See CHANGELOG.md",
+        "link": "https://ui.porsche.com/v1/",
+        "published": "2019-01-05T17:00:00+00:00"
+      }
+    ]
+  }
+}
