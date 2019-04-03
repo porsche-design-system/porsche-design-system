@@ -75,7 +75,7 @@
           "path": "/code/introduction"
         },
         {
-          "title": "Installation latest",
+          "title": "Installation",
           "path": "/code/installation",
           "featureV1": true
         },
@@ -92,7 +92,7 @@
           "path": "/code/ci-cd"
         },
         {
-          "title": "Browser Compatibility",
+          "title": "Browser compatibility",
           "path": "/code/browser-compatibility"
         },
         {

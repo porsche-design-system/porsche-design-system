@@ -1,4 +1,4 @@
-# Installation - latest Porsche UI Kit release
+# Installation
 
 ## Authenticate for the Porsche UI Kit
 The instructions below requires you to have at most recent stable version of [Node JS & NPM](https://nodejs.org/) installed.
