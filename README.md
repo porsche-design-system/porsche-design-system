@@ -45,9 +45,14 @@ Give every designer and developer working at the digital Porsche ecosystem a qua
 * Run `./docker.sh run-build`
 
 ### Deploy
-_It's a job exclusively for the CI/CD pipeline, that's why it won't be executable locally._
+_It's a job exclusively for the CI/CD pipeline, that's why it should not be executed locally._
 * Switch to __project root directory__
 * Run `./docker.sh run-deploy`
+
+### Slack
+_It's a job exclusively for the CI/CD pipeline, that's why it should not be executed locally._
+* Switch to __project root directory__
+* Run `./docker.sh run-slack`
 
 ## Dependency updates
 Every week, we update our npm packages:
