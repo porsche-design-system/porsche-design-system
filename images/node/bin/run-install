@@ -26,6 +26,7 @@ echo ${GITHUB_EVENT_NAME}
 
 echo "************** \$GITHUB_EVENT_PATH **************"
 echo ${GITHUB_EVENT_PATH}
+cat ${GITHUB_EVENT_PATH}
 
 echo "************** \$GITHUB_WORKSPACE **************"
 echo ${GITHUB_WORKSPACE}
