@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { throttle } from "throttle-debounce"
 import cx from "classnames"
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
+import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import { Sidebar } from "../components/sidebar/Sidebar"
 import { Story } from "../components/story/Story"
 import styles from "./storefront.module.scss"
@@ -18,6 +18,8 @@ import { Contribution as DesignContribution } from "../pages/design/contribution
 import { Culture as DesignCulture } from "../pages/design/culture/culture"
 import { SketchPlugins as DesignSketchPlugins } from "../pages/design/sketch-plugins/SketchPlugins"
 import { Introduction as CodeIntroduction } from "../pages/code/introduction/Introduction"
+import { Installation as CodeInstallation } from "../pages/code/installation/Installation"
+import { Installation0x as CodeInstallation0x } from "../pages/code/installation/Installation-0.x"
 import { DefinitionOfDone as CodeDefinitionOfDone } from "../pages/code/definition-of-done/DefinitionOfDone"
 import { CICD as CodeCICD } from "../pages/code/ci-cd/CICD"
 import { BrowserCompatibility as CodeBrowserCompatibility } from "../pages/code/browser-compatibility/BrowserCompatibility"
@@ -27,7 +29,7 @@ import { Footer } from "../components/footer/Footer"
 
 export const Storefront: React.FunctionComponent = () => {
   const [hideSidebar, setHideSidebar] = useState(false)
-  const [featureShowComponents, setFeatureShowComponents] = useState("?featureComponents")
+  const [featureShowV1, setFeatureShowV1] = useState("")
 
   const handleHideSidebarClicked = () => {
     setHideSidebar(!hideSidebar)
@@ -46,9 +48,7 @@ export const Storefront: React.FunctionComponent = () => {
   })
 
   useEffect(() => {
-    window.location.search.indexOf("featureComponents") > -1
-      ? setFeatureShowComponents("?featureComponents")
-      : setFeatureShowComponents("")
+    window.location.hash.indexOf("featureV1") > -1 ? setFeatureShowV1("?featureV1") : setFeatureShowV1("")
 
     updateIsMobile()
 
@@ -66,12 +66,12 @@ export const Storefront: React.FunctionComponent = () => {
         {hideSidebar ? "+ Show" : "- Hide"}
       </button>
       <div className={appSidebarClasses}>
-        <Sidebar featureState={featureShowComponents} />
+        <Sidebar featureV1={featureShowV1} />
         <Footer />
       </div>
       <main className={appContentClasses}>
         <Switch>
-          <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowComponents} />} />
+          <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowV1} />} />
           <Route path="/general/home" component={GeneralHome} />
           <Route path="/general/updates" component={GeneralUpdates} />
           <Route path="/general/roadmap" component={GeneralRoadmap} />
@@ -85,15 +85,14 @@ export const Storefront: React.FunctionComponent = () => {
           <Route path="/design/culture" component={DesignCulture} />
           <Route path="/design/contribution" component={DesignContribution} />
           <Route path="/code/introduction" component={CodeIntroduction} />
+          <Route path="/code/installation" component={CodeInstallation} />
+          <Route path="/code/installation-0x" component={CodeInstallation0x} />
           <Route path="/code/definition-of-done" component={CodeDefinitionOfDone} />
           <Route path="/code/ci-cd" component={CodeCICD} />
           <Route path="/code/browser-compatibility" component={CodeBrowserCompatibility} />
           <Route path="/code/contribution" component={CodeContribution} />
           <Route path="/demo/markdown" component={Markdown} />
-          <Route
-            path="/:category/:story"
-            render={(props) => <Story featureState={featureShowComponents} {...props} />}
-          />
+          <Route path="/:category/:story" render={(props) => <Story featureV1={featureShowV1} {...props} />} />
         </Switch>
       </main>
     </Router>

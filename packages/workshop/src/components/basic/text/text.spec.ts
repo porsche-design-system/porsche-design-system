@@ -14,7 +14,7 @@ describe("Component Text", () => {
   it("should have no visual regression", async () => {
     expect(
       await visualRegressionTester.test("component-text", async () => {
-        await visualRegressionTester.goTo("/vrt/base/text")
+        await visualRegressionTester.goTo("/#/vrt/base/text")
       })
     ).toBeFalsy()
   })

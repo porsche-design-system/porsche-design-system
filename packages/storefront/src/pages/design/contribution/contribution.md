@@ -1,5 +1,6 @@
+# Contributing
+
 ## Component sheet  
-  
 All library components are to be placed on a uniform "component sheet" layout (Sketch artboard). You can find it here to download: https://github.com/porscheui/porsche-ui-kit/wiki/Library-Template  
   
 ## Standards  

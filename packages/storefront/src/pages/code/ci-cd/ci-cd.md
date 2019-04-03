@@ -1,5 +1,5 @@
-# CI/CD Pipeline
-Porsche UI Kit is using CircleCI as CI/CD build tool for v0.x/core and v0.x/react deployments. As of version v1.x GitHub Actions will be used.
+# CI/CD
+Porsche UI Kit is using CircleCI as CI/CD build tool for v0.x/core and v0.x/react deployments. As of version v1.x GitHub Actions is used.
 
 ## Issue Management
 For every change within the Porsche UI Kit a new branch has to be created, named corresponding to the related issue as `issue/${GITHUB_ISSUE_NUMBER}/v0.x/${core | react}`, e.g. `issue/12/v0.x/core` or `issue/12/v0.x/react` depending if it’s a version **0.x** Core or React change.

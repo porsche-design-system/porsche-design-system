@@ -4,116 +4,100 @@ set -o errexit
 set -o pipefail
 
 if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
-  echo 'Please provide the GIT_DEPLOY_KEY environment variable.'
+  echo 'Please provide the $GIT_DEPLOY_KEY environment variable.'
   exit 1
 fi
 
-# Cleaning up credentials
-function cleanup {
-  local exitCode=$?
-  rm "${HOME}/.ssh/id_rsa"
-  exit ${exitCode}
+if [[ -z "${GITHUB_REPOSITORY}" ]]; then
+  echo 'Please provide the $GITHUB_REPOSITORY environment variable.'
+  exit 1
+fi
+
+if [[ -z "${GITHUB_ACTOR}" ]]; then
+  echo 'Please provide the $GITHUB_ACTOR environment variable.'
+  exit 1
+fi
+
+if [[ -z "${GITHUB_REF}" ]]; then
+  echo 'Please provide the $GITHUB_REF environment variable.'
+  exit 1
+fi
+
+if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
+  echo 'Please provide the build artifact.'
+  exit 1
+fi
+
+PUIK_VERSION="v1"
+PUIK_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_REF} | cat)"
+PUIK_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_REF} | cat)"
+
+cleanup_credentials() {
+  echo "Cleaning up credentials"
+  local exit_code=$?
+  rm "/root/.ssh/id_rsa"
+  exit ${exit_code}
 }
-trap cleanup EXIT
 
-# Setting up GitHub credentials
-mkdir -p "${HOME}/.ssh"
-ssh-keyscan -t rsa github.com > "${HOME}/.ssh/known_hosts"
-echo "${GIT_DEPLOY_KEY}" > "${HOME}/.ssh/id_rsa"
-chmod 600 "${HOME}/.ssh/id_rsa"
-cat "${HOME}/.ssh/id_rsa"
+setup_credentials() {
+  mkdir -p "/root/.ssh"
+  ssh-keyscan -t rsa github.com > "/root/.ssh/known_hosts"
+  printf -- "${GIT_DEPLOY_KEY}\n" > "/root/.ssh/id_rsa"
+  chmod 600 "/root/.ssh/id_rsa"
+}
 
-git config --global user.name "stephanschroeter"
-git config --global user.email "stephan.schroeter@mhp.com"
+setup_github() {
+  git config --global user.name "${GITHUB_ACTOR}"
+  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+}
 
-git clone --single-branch -b gh-pages git@github.com:porscheui/porsche-ui-kit.git ./gh-pages
+checkout_gh_pages() {
+  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
+}
 
-pushd "./gh-pages"
-  ls -al
-popd
+cleanup_previous_deployment() {
+  rm -rf "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
+}
 
+copy_porsche-ui-kit-storefront() {
+  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
+}
 
-# Publish to GitHub Pages
-#GITHUB_REPOSITORY="porscheui/porsche-ui-kit"
-#GITHUB_ACTOR="stephanschroeter"
-#
-#GIT_TARGET_BRANCH="gh-pages"
-#GIT_REPOSITORY_URL="git@github.com:${GITHUB_REPOSITORY}.git"
+copy_sketch_libraries_create_rss_feed() {
+  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
+  cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Porsche UI</title>
+    <description>A Porsche UI Sketch library.</description>
+    <item>
+      <title>${1} (${PUIK_VERSION}.${PUIK_PUBLISH_ID})</title>
+      <pubDate>${PUIK_PUBLISH_DATE}</pubDate>
+      <enclosure url="https://ui.porsche.com/${PUIK_VERSION}/${2}" sparkle:version="${PUIK_VERSION:1}.${PUIK_PUBLISH_ID}" type="application/octet-stream"/>
+    </item>
+  </channel>
+</rss>
+_EOF_
+}
 
-#git config --global user.name "${GITHUB_ACTOR}"
-#git config --global user.email "stephan.schroeter@mhp.com"
-#
-#git clone --single-branch -b "${GIT_TARGET_BRANCH}" "${GIT_REPOSITORY_URL}" "./${GIT_TARGET_BRANCH}"
+deploy_to_gh_pages() {
+  pushd "/opt/porsche-ui-kit-gh-pages"
+    git add -A
+    git commit -m "Automated deployment of Porsche UI Kit ${PUIK_VERSION} (Docs, Sketch Libraries + RSS Feed)" --allow-empty
+    git push origin gh-pages --force-with-lease
+  popd
+}
 
-
-
-#echo '=================== Build site ==================='
-##
-##
-##
-#
-#echo '=================== Publish to GitHub Pages ==================='
-#
-#
-#echo "> GITHUB_REF"
-#echo ${GITHUB_REF}
-#echo ">"
-#
-#echo "> GITHUB_REPOSITORY"
-#echo ${GITHUB_REPOSITORY}
-#echo ">"
-
-#remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
-#remote_branch="gh-pages"
-
-#git config user.name "${GITHUB_ACTOR}" && \
-#git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
-
-
-#TARGET_BRANCH="gh-pages"
-#GH_EMAIL="stephan.schroeter@mhp.com"
-#GH_NAME="stephanschroeter"
-#
-#CIRCLE_TAG=GITHUB_REF
-#CIRCLE_REPOSITORY_URL=GITHUB_REPOSITORY
-#
-#PUBLISH_DATE="$(git log -1 --format=%aD ${CIRCLE_TAG} | cat)"
-#SORTED_V0X_CORE_VERSION_TAGS="$(git tag --sort=-version:refname --list 'v0.*/core')"
-#SORTED_V0X_REACT_VERSION_TAGS="$(git tag --sort=-version:refname --list 'v0.*/react')"
-#LATEST_V0X_UI_KIT_CORE_VERSION="$(git tag --sort=-version:refname --list 'v0.*/core' | head -n 1 | cut -d "/" -f1 | cut -c 2-)"
-#CURRENT_V0X_UI_KIT_CORE_VERSION="$(echo ${CIRCLE_TAG} | cut -d "/" -f1 | cut -c 2-)"
-#
-
-#git clone --single-branch -b "${TARGET_BRANCH}" "${CIRCLE_REPOSITORY_URL}" "./${TARGET_BRANCH}"
-#
-#pushd "./${TARGET_BRANCH}"
-#  rm -rf "./v${CURRENT_V0X_UI_KIT_CORE_VERSION}/core"
-#  rm -rf "./v${CURRENT_V0X_UI_KIT_CORE_VERSION}/sketch"
-#popd
-#
-#mkdir -p "./${TARGET_BRANCH}/v${CURRENT_V0X_UI_KIT_CORE_VERSION}/core" && cp -r "./patternlab/public/." "./${TARGET_BRANCH}/v${CURRENT_V0X_UI_KIT_CORE_VERSION}/core"
-#mkdir -p "./${TARGET_BRANCH}/v${CURRENT_V0X_UI_KIT_CORE_VERSION}/sketch" && cp "./../../sketch/porsche-ui-kit.sketch" "./${TARGET_BRANCH}/v${CURRENT_V0X_UI_KIT_CORE_VERSION}/sketch/porsche-ui-kit.sketch"
-#
-#pushd "./${TARGET_BRANCH}"
-#  cat << _EOF_ > "./porsche-ui-kit.sketch.xml"
-#<?xml version="1.0" encoding="utf-8"?>
-#<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
-#  <channel>
-#    <title>Porsche UI</title>
-#    <description>A Porsche UI Sketch library.</description>
-#    <item>
-#      <title>Porsche UI Kit (v${LATEST_V0X_UI_KIT_CORE_VERSION})</title>
-#      <pubDate>${PUBLISH_DATE}</pubDate>
-#      <enclosure url="https://ui.porsche.com/v${LATEST_V0X_UI_KIT_CORE_VERSION}/sketch/porsche-ui-kit.sketch" sparkle:version="${LATEST_V0X_UI_KIT_CORE_VERSION}" type="application/octet-stream"/>
-#    </item>
-#  </channel>
-#</rss>
-#_EOF_
-#popd
-#
-#pushd "./${TARGET_BRANCH}"
-#  git add -A
-#  git commit -m "Automated deployment of Porsche UI Kit (${CURRENT_V0X_UI_KIT_CORE_VERSION}) and Porsche UI Kit Sketch Library (${CURRENT_V0X_UI_KIT_CORE_VERSION}) + Sketch RSS Feed to GitHub Pages: ${GITHUB_SHA}" --allow-empty
-#  git push origin "${TARGET_BRANCH}" --force-with-lease
-#popd
+trap cleanup_credentials EXIT
+setup_credentials
+setup_github
+checkout_gh_pages
+cleanup_previous_deployment
+copy_porsche-ui-kit-storefront
+copy_sketch_libraries_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
+copy_sketch_libraries_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
+copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
+copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
+deploy_to_gh_pages

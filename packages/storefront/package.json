@@ -24,7 +24,7 @@
     "Anna Krohmer <anna.krohmer@udg.de>",
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
-  "homepage": "http://localhost",
+  "homepage": ".",
   "scripts": {
     "start": "yarn build:docgen && react-scripts start",
     "build": "yarn build:docgen && react-scripts build",
@@ -39,16 +39,16 @@
     "@porscheui/porsche-ui-kit": "1.0.0-beta.0",
     "classnames": "^2.2.6",
     "mdx.macro": "^0.2.8",
-    "react": "^16.8.4",
+    "react": "^16.8.6",
     "react-app-polyfill": "^0.2.2",
-    "react-dom": "^16.8.4",
+    "react-dom": "^16.8.6",
     "react-markdown": "^4.0.6",
     "react-router-dom": "^5.0.0",
     "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
-    "@types/node": "11.11.6",
-    "@types/react": "^16.8.8",
+    "@types/node": "11.13.0",
+    "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^4.3.1",
     "@types/throttle-debounce": "^1.1.1",
@@ -62,10 +62,10 @@
     "stylelint-config-prettier": "^5.0.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.5.4",
-    "tslint": "^5.14.0",
+    "tslint": "^5.15.0",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-react": "^3.6.0",
-    "typescript": "~3.3.3",
+    "tslint-react": "^4.0.0",
+    "typescript": "~3.4.1",
     "webpack": "^4.29.6"
   }
 }

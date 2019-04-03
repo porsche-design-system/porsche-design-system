@@ -34,6 +34,7 @@
     & img,
     & code,
     & pre {
+
     // Typography
     h1 {
       @include -text-size-2($p-font-weight-bold);
