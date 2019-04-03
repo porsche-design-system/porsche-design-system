@@ -3,6 +3,42 @@
 set -o errexit
 set -o pipefail
 
+echo "************** BEGIN \$EVENT_PAYLOAD **************"
+echo ${EVENT_PAYLOAD}
+
+echo "************** \$HOME **************"
+echo ${HOME}
+
+echo "************** \$GITHUB_WORKFLOW **************"
+echo ${GITHUB_WORKFLOW}
+
+echo "************** \$GITHUB_ACTION **************"
+echo ${GITHUB_ACTION}
+
+echo "************** \$GITHUB_ACTOR **************"
+echo ${GITHUB_ACTOR}
+
+echo "************** \$GITHUB_REPOSITORY **************"
+echo ${GITHUB_REPOSITORY}
+
+echo "************** \$GITHUB_EVENT_NAME **************"
+echo ${GITHUB_EVENT_NAME}
+
+echo "************** \$GITHUB_EVENT_PATH **************"
+echo ${GITHUB_EVENT_PATH}
+
+echo "************** \$GITHUB_WORKSPACE **************"
+echo ${GITHUB_WORKSPACE}
+
+echo "************** \$GITHUB_SHA **************"
+echo ${GITHUB_SHA}
+
+echo "************** \$GITHUB_REF **************"
+echo ${GITHUB_REF}
+
+echo "************** \$GITHUB_TOKEN **************"
+echo ${GITHUB_TOKEN}
+
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
