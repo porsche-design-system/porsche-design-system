@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if [[ -z "${GITHUB_REF}" ]]; then
+  echo 'Please provide the $GITHUB_REF environment variable.'
+  exit 1
+fi
+
+if [[ -z "${GIT_FILTER}" ]]; then
+  echo 'Please provide the $GIT_FILTER environment variable.'
+  exit 1
+fi
+
+if [[ "${GITHUB_REF}" =~ ${GIT_FILTER} ]]; then
+  echo "${GITHUB_REF} matches ${GIT_FILTER}"
+  exit 0
+else
+  echo "${GITHUB_REF} does not match ${GIT_FILTER}"
+  exit 78
+fi
