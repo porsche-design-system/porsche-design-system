@@ -13,7 +13,7 @@ npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/
 5. After request please enter username, password (API key) and email. It will than add an auth key for a specific registry to your local _~/.npmrc_
 
 ## Install and use the Porsche UI Kit
-Please be aware of different versions of the Porsche UI Kit npm package and align with your design counterpart on the used Porsche UI Kit version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog](https://github.com/porscheui/porsche-ui-kit/tree/1.x/packages/workshop/Changelog.md). 
+Please be aware of different versions of the Porsche UI Kit npm package and align with your design counterpart on the used Porsche UI Kit version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog](https://github.com/porscheui/porsche-ui-kit/blob/v1/packages/workshop/CHANGELOG.md). 
 
 ### Installation and using React components
 We recommend using official [Create React App](https://facebook.github.io/create-react-app/) as starter for your React project

@@ -1,14 +1,14 @@
-# Installation 0.x (deprecated!)
+# Installation v0 (deprecated!)
 
-## 0.x Core and 0.x React 
+## v0 Core and v0 React 
 Prior to the current version of Porsche UI Kit there are older versions available which are not longer maintained but provided for projects which still integrates them.  
 We highly recommend updating to the latest version as soon as possible to get the latest components and designs.
 
 ### Authenticate for the Porsche UI Kit
 @See [Authenticate for the Porsche UI Kit](#/code/installation)
 
-### Install and use the Porsche UI Kit Core 0.x
-Please be aware of different versions of the Porsche UI Kit Core npm package and align with your design counterpart on the used Porsche UI Kit Core version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog 0.x Core](https://github.com/porscheui/porsche-ui-kit/tree/0.x/core/ui-kit/CHANGELOG.md). 
+### Install and use the Porsche UI Kit Core v0
+Please be aware of different versions of the Porsche UI Kit Core npm package and align with your design counterpart on the used Porsche UI Kit Core version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog v0 Core](https://github.com/porscheui/porsche-ui-kit/tree/0.x/core/ui-kit/CHANGELOG.md). 
 
 Following example includes an extremely simple build function as well as a sample browser support list. Both is intended as example and may differ in your application because you might want to use Webpack, Gulp or Grunt etc. to build your application.
 
@@ -131,8 +131,8 @@ npm run build && open dist/index.html
 ```
 
 
-### Install and use the Porsche UI Kit React 0.x
-Please be aware of different versions of the Porsche UI Kit React npm package and align with your design counterpart on the used Porsche UI Kit React React version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog 0.x React](https://github.com/porscheui/porsche-ui-kit/tree/0.x/react/packages/%40porsche/ui-kit-react/CHANGELOG.md). 
+### Install and use the Porsche UI Kit React v0
+Please be aware of different versions of the Porsche UI Kit React npm package and align with your design counterpart on the used Porsche UI Kit React React version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog v0 React](https://github.com/porscheui/porsche-ui-kit/tree/0.x/react/packages/%40porsche/ui-kit-react/CHANGELOG.md). 
 
 1. Create your React App (we recommend using **Create React App**)
 2. Import necessary styles to your _index.scss_ file.

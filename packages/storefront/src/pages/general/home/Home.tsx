@@ -67,7 +67,7 @@ export const Home: React.FunctionComponent = () => {
         <Flex>
           <Flex.Item flex="equal">
             <Text as="h4" type="copy-bold">
-              Version 1.x
+              Version v1
             </Text>
             {Releases &&
               Releases.releases.v1.map((item) => {
@@ -80,7 +80,7 @@ export const Home: React.FunctionComponent = () => {
           </Flex.Item>
           <Flex.Item flex="equal">
             <Text as="h4" type="copy-bold">
-              Version 0.x Core (deprecated)
+              Version v0 Core (deprecated)
             </Text>
             {Releases &&
               Releases.releases.v0Core.map((item) => {
@@ -93,7 +93,7 @@ export const Home: React.FunctionComponent = () => {
           </Flex.Item>
           <Flex.Item flex="equal">
             <Text as="h4" type="copy-bold">
-              Version 0.x React (deprecated)
+              Version v0 React (deprecated)
             </Text>
             {Releases &&
               Releases.releases.v0React.map((item) => {

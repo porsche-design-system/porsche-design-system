@@ -3,4 +3,5 @@ jobs:
   build:
     branches:
       ignore:
-        - 1.x
+        - v1
+        - /^issue\/[0-9]+$/
