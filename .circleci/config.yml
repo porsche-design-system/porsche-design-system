@@ -3,5 +3,5 @@ jobs:
   build:
     branches:
       ignore:
-        - v1
+        - /^v1$/
         - /^issue\/[0-9]+$/
