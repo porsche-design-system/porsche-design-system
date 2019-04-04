@@ -1,44 +1,15 @@
-# Installation
+# Installation v0 (deprecated!)
 
-## Authenticate for the Porsche UI Kit
-The instructions below requires you to have at most recent stable version of [Node JS & NPM](https://nodejs.org/) installed.
+## v0 Core and v0 React 
+Prior to the current version of Porsche UI Kit there are older versions available which are not longer maintained but provided for projects which still integrates them.  
+We highly recommend updating to the latest version as soon as possible to get the latest components and designs.
 
-1. Request access rights by sending an email to [porsche-ui-kit@porsche.de](mailto:porsche-ui-kit@porsche.de) including your firstname, lastname, corporate email address and the project you are working for, i.e. Porsche Finder
-2. After receiving the invitation email please login and change your password
-3. Generate an API key under edit profile section and save the profile
-4. Create **.npmrc** file on your machine locally (if there is no) and execute following command in terminal: 
-```
-npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/
-```
-5. After request please enter username, password (API key) and email. It will than add an auth key for a specific registry to your local _~/.npmrc_
+### Authenticate for the Porsche UI Kit
+@See [Authenticate for the Porsche UI Kit](#/code/installation)
 
-## Install and use the Porsche UI Kit
-Please be aware of different versions of the Porsche UI Kit npm package and align with your design counterpart on the used Porsche UI Kit version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog](https://github.com/porscheui/porsche-ui-kit/tree/1.x/packages/workshop/Changelog.md). 
+### Install and use the Porsche UI Kit Core v0
+Please be aware of different versions of the Porsche UI Kit Core npm package and align with your design counterpart on the used Porsche UI Kit Core version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog v0 Core](https://github.com/porscheui/porsche-ui-kit/tree/0.x/core/ui-kit/CHANGELOG.md). 
 
-### Installation and using React components
-We recommend using official [Create React App](https://facebook.github.io/create-react-app/) as starter for your React project
-
-1. Create your React App
-2. Import styles to your _index.scss_ file  
-
-**Base and all component styles**
-```
-@import "~@porscheui/porsche-ui-kit/src/index";
-```
-**Base and specific component styles**
-```
-// base imports
-@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
-@import "~@porscheui/porsche-ui-kit/src/styles/common/index";
-
-// component imports
-@import "~@porscheui/porsche-ui-kit/src/components/layout/grid/grid";
-@import "~@porscheui/porsche-ui-kit/src/components/action/button/button";
-...
-```
-3. Import and use React components as usual
-
-### Installation and using HTML/(S)CSS components
 Following example includes an extremely simple build function as well as a sample browser support list. Both is intended as example and may differ in your application because you might want to use Webpack, Gulp or Grunt etc. to build your application.
 
 1. Create a new folder on your machine locally
@@ -49,7 +20,7 @@ Following example includes an extremely simple build function as well as a sampl
 always-auth = true
 registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
 ```
-5. Execute `npm install @porscheui/porsche-ui-kit --save` within your terminal. It will install the latest version of Porsche UI Kit within a automatically created folder _node_modules_
+5. Execute `npm install @porsche/ui-kit-core --save` within your terminal. It will install the latest version of Porsche UI Kit within a automatically created folder _node_modules_
 6. Install multiple dev-dependencies necessary for compiling the provided SCSS files of _@porsche/ui-kit-core_ by executing `npm install node-sass node-sass-tilde-importer postcss-cli autoprefixer fs-extra --save-dev`
 7. Create a folder called _src_
 8. Add _index.html_ to _src_-folder with following content. It makes use of some Porsche UI Kit patterns and includes _style.css_ which we'll create in a later step in this documentation.
@@ -86,22 +57,12 @@ registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
 </body>
 </html>
 ```
-9. Add _styles.scss_ to _src_-folder with following content. Necessary styles are imported from _@porscheui/porsche-ui-kit_ package.  
-
-**Base and all component styles**
+9. Add _styles.scss_ to _src_-folder with following content. Necessary styles are imported from _@porsche/ui-kit-core_ package.
 ```
-@import "~@porscheui/porsche-ui-kit/src/index";
-```
-**Base and specific component styles**
-```
-// base imports
-@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
-@import "~@porscheui/porsche-ui-kit/src/styles/common/index";
-
-// component imports
-@import "~@porscheui/porsche-ui-kit/src/components/layout/grid/grid";
-@import "~@porscheui/porsche-ui-kit/src/components/action/button/button";
-...
+@import '~@porsche/ui-kit-core/src/common/index.scss';
+@import '~@porsche/ui-kit-core/src/base/index.scss';
+@import '~@porsche/ui-kit-core/src/deprecated/index.scss';
+@import '~@porsche/ui-kit-core/src/modules/pagination/pagination.scss';
 ```
 10. Add _postcss.config.js_ to project root folder with following content. We need to compile SCSS to CSS and want to make use of [autoprefixer](https://github.com/postcss/autoprefixer) which is based on [postcss](https://github.com/postcss/postcss).
 ```
@@ -113,11 +74,14 @@ module.exports = {
 ```
 11. Add _.browserslistrc_ to project root folder with following content. Browsers we should support will be automatically considered by [autoprefixer](https://github.com/postcss/autoprefixer).
 ```
-last 2 version
->1%
-not dead
-not ie < 11
-not op_mini all
+Last 2 versions
+Android >= 7
+Chrome >= 48
+Edge >= 15
+Firefox >= 60
+IE >= 11
+Safari >= 10
+iOS >= 10
 ```
 12. Add _build.js_ to project root folder with following content. SCSS styles will get compiled to CSS and necessary _Porsche Next_ font family and icon set are copied to _dist_-folder.
 ```
@@ -137,7 +101,15 @@ sass.render(
   });
 
 const items = [
-  { source: 'src/index.html', target: 'dist/index.html' }
+  { source: 'src/index.html', target: 'dist/index.html' },
+  { source: 'node_modules/@porsche/ui-kit-core/src/base/font/porsche-next-latin/', target: 'dist/porsche-next-latin/' },
+  { source: 'node_modules/@porsche/ui-kit-core/src/base/font/porsche-next-cyril/', target: 'dist/porsche-next-cyril/' },
+  { source: 'node_modules/@porsche/ui-kit-core/src/base/font/porsche-next-greek/', target: 'dist/porsche-next-greek/' },
+  { source: 'node_modules/@porsche/ui-kit-core/src/base/font/porsche-next-pashto/', target: 'dist/porsche-next-pashto/' },
+  { source: 'node_modules/@porsche/ui-kit-core/src/base/font/porsche-next-persian/', target: 'dist/porsche-next-persian/' },
+  { source: 'node_modules/@porsche/ui-kit-core/src/base/font/porsche-next-urdu/', target: 'dist/porsche-next-urdu/' },
+  { source: 'node_modules/@porsche/ui-kit-core/src/base/font/porsche-next-arabic/', target: 'dist/porsche-next-arabic/' },
+  { source: 'node_modules/@porsche/ui-kit-core/src/deprecated/icon-font/pag-iconfont/', target: 'dist/pag-iconfont/' }
 ];
 
 for (const item of items) {
@@ -157,3 +129,16 @@ for (const item of items) {
 ```
 npm run build && open dist/index.html
 ```
+
+
+### Install and use the Porsche UI Kit React v0
+Please be aware of different versions of the Porsche UI Kit React npm package and align with your design counterpart on the used Porsche UI Kit React React version ([more about Versioning](#/general/versioning)). In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the [Changelog v0 React](https://github.com/porscheui/porsche-ui-kit/tree/0.x/react/packages/%40porsche/ui-kit-react/CHANGELOG.md). 
+
+1. Create your React App (we recommend using **Create React App**)
+2. Import necessary styles to your _index.scss_ file.
+```
+@import "~@porsche/ui-kit-react/src/variables";
+@import "~@porsche/ui-kit-react/src/common";
+@import "~@porsche/ui-kit-react/src/index";
+```
+3. Import and use React components as usual

@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "./static/js/0.3c97a4de.chunk.js"
   },
   {
-    "revision": "9bccfa75a71ae15fab40",
-    "url": "./static/css/main.f983b815.chunk.css"
+    "revision": "45bb140730d01a8c1290",
+    "url": "./static/css/main.9ffd76b4.chunk.css"
   },
   {
-    "revision": "9bccfa75a71ae15fab40",
-    "url": "./static/js/main.ffb56019.chunk.js"
+    "revision": "45bb140730d01a8c1290",
+    "url": "./static/js/main.92dd1c13.chunk.js"
   },
   {
     "revision": "e974a1ae74d008d3d019",
@@ -140,24 +140,24 @@ self.__precacheManifest = [
     "url": "./static/media/sketch-plugins.ad108023.md"
   },
   {
-    "revision": "88cff6f84654c07dd474e21e15b9aa40",
-    "url": "./static/media/introduction.88cff6f8.md"
+    "revision": "f069c24601cd252c826b1d30dfbb2ebf",
+    "url": "./static/media/introduction.f069c246.md"
   },
   {
-    "revision": "2094978d357ec0e5564a5e7158e71537",
-    "url": "./static/media/installation.2094978d.md"
+    "revision": "159fde81b496ba8fbfe649478c7db4cd",
+    "url": "./static/media/installation.159fde81.md"
   },
   {
-    "revision": "7e1b5fdacef423bf621f214da0432bd1",
-    "url": "./static/media/installation-0.x.7e1b5fda.md"
+    "revision": "16678db58f8fb8d55e5e267e825c2291",
+    "url": "./static/media/installation-v0.16678db5.md"
   },
   {
     "revision": "c1b3cf52d95e265496ac1ffa21f2ebdf",
     "url": "./static/media/definition-of-done.c1b3cf52.md"
   },
   {
-    "revision": "61e9b9a5072a8996e1091b4bd1650fb1",
-    "url": "./static/media/ci-cd.61e9b9a5.md"
+    "revision": "2b9656ab31ed452ad2f3e9cf138c9e68",
+    "url": "./static/media/ci-cd.2b9656ab.md"
   },
   {
     "revision": "7d897bc37ee919edca642dab9b46b908",
@@ -172,7 +172,7 @@ self.__precacheManifest = [
     "url": "./static/media/markdown.ed704bed.md"
   },
   {
-    "revision": "98b1280b55e2dd90b177eaa211257685",
+    "revision": "9c7d50b37023a4ddcb6aa603e572f354",
     "url": "./index.html"
   }
 ];
