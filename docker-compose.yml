@@ -11,7 +11,9 @@ services:
       - HOME=/home/ui-kit
       - ARTIFACTORY_TOKEN
       - SLACK_WEBHOOK_URL
+      - GIT_FILTER
       - GITHUB_SHA
+      - GITHUB_REF
     volumes:
       - ./:/opt/porsche-ui-kit-app:cached
       - home:/home/ui-kit
@@ -26,6 +28,7 @@ services:
       - GITHUB_REPOSITORY
       - GITHUB_ACTOR
       - GITHUB_REF
+      - GITHUB_SHA
     volumes:
       - ./:/opt/porsche-ui-kit-app:cached
       - /opt/porsche-ui-kit-gh-pages
