@@ -62,14 +62,15 @@ checkout_gh_pages() {
 
 cleanup_previous_deployment() {
   rm -rf "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
 
 copy_porsche-ui-kit-storefront() {
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
 
 copy_sketch_libraries_create_rss_feed() {
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
 <?xml version="1.0" encoding="utf-8"?>
@@ -87,12 +88,37 @@ copy_sketch_libraries_create_rss_feed() {
 _EOF_
 }
 
+add_deployment_sha() {
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}/version"
+  touch "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}/version/${GITHUB_SHA}"
+}
+
 deploy_to_gh_pages() {
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
     git commit -m "Automated deployment of Porsche UI Kit (${P_ABBR_REF}): ${GITHUB_SHA}" --allow-empty
     git push origin gh-pages --force-with-lease
   popd
+}
+
+check_deployment_status() {
+  local n=1
+  local max=2
+  local delay=10
+  while true
+  do
+    echo "Check deployment status. Attempt ${n}/${max}."
+    P_CURL_STATUS="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
+    if [[ "${P_CURL_STATUS}" -eq 200 ]]; then
+      break
+    elif [[ "${n}" -lt "${max}" ]]; then
+      ((n++))
+    else
+      echo "Deployment could not be verified after ${n} attempts."
+      exit 1
+    fi
+    sleep "${delay}"
+  done
 }
 
 trap cleanup_credentials EXIT
@@ -107,4 +133,6 @@ if [[ "${P_ABBR_REF}" =~ ^v[0-9]+$ ]]; then
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
 fi
+add_deployment_sha
 deploy_to_gh_pages
+check_deployment_status
