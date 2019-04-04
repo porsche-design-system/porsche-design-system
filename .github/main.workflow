@@ -4,8 +4,9 @@ workflow "Porsche UI Kit" {
 }
 
 action "Filter" {
-  uses = "actions/bin/filter@master"
-  args = "branch 1.x"
+  uses = "./images/node/"
+  runs = ["run-filter"]
+  env = {GIT_FILTER = "^refs/heads/(v[0-9]+|issue/[0-9]+)$"}
 }
 
 action "Install" {
