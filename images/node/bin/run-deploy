@@ -4,32 +4,32 @@ set -o errexit
 set -o pipefail
 
 if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
-  echo 'Please provide the $GIT_DEPLOY_KEY environment variable.'
+  echo "Please provide the \$GIT_DEPLOY_KEY environment variable."
   exit 1
 fi
 
 if [[ -z "${GITHUB_REPOSITORY}" ]]; then
-  echo 'Please provide the $GITHUB_REPOSITORY environment variable.'
+  echo "Please provide the \$GITHUB_REPOSITORY environment variable."
   exit 1
 fi
 
 if [[ -z "${GITHUB_ACTOR}" ]]; then
-  echo 'Please provide the $GITHUB_ACTOR environment variable.'
+  echo "Please provide the \$GITHUB_ACTOR environment variable."
   exit 1
 fi
 
 if [[ -z "${GITHUB_REF}" ]]; then
-  echo 'Please provide the $GITHUB_REF environment variable.'
+  echo "Please provide the \$GITHUB_REF environment variable."
   exit 1
 fi
 
 if [[ -z "${GITHUB_SHA}" ]]; then
-  echo 'Please provide the $GITHUB_SHA environment variable.'
+  echo "Please provide the \$GITHUB_SHA environment variable."
   exit 1
 fi
 
 if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
-  echo 'Please provide the build artifact.'
+  echo "Please provide the build artifact."
   exit 1
 fi
 
@@ -90,7 +90,7 @@ _EOF_
 deploy_to_gh_pages() {
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
-    git commit -m "Automated deployment of Porsche UI Kit (${P_ABBR_REF})" --allow-empty
+    git commit -m "Automated deployment of Porsche UI Kit (${P_ABBR_REF}): ${GITHUB_SHA}" --allow-empty
     git push origin gh-pages --force-with-lease
   popd
 }

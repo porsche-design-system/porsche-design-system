@@ -4,17 +4,17 @@ set -o errexit
 set -o pipefail
 
 if [[ -z "${GITHUB_SHA}" ]]; then
-  echo 'Please provide the $GITHUB_SHA environment variable.'
+  echo "Please provide the \$GITHUB_SHA environment variable."
   exit 1
 fi
 
 if [[ -z "${GITHUB_REF}" ]]; then
-  echo 'Please provide the $GITHUB_REF environment variable.'
+  echo "Please provide the \$GITHUB_REF environment variable."
   exit 1
 fi
 
 if [[ -z "${SLACK_WEBHOOK_URL}" ]]; then
-  echo 'Please provide the $SLACK_WEBHOOK_URL environment variable.'
+  echo "Please provide the \$SLACK_WEBHOOK_URL environment variable."
   exit 1
 fi
 
