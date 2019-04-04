@@ -4,33 +4,38 @@ set -o errexit
 set -o pipefail
 
 if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
-  echo 'Please provide the $GIT_DEPLOY_KEY environment variable.'
+  echo "Please provide the \$GIT_DEPLOY_KEY environment variable."
   exit 1
 fi
 
 if [[ -z "${GITHUB_REPOSITORY}" ]]; then
-  echo 'Please provide the $GITHUB_REPOSITORY environment variable.'
+  echo "Please provide the \$GITHUB_REPOSITORY environment variable."
   exit 1
 fi
 
 if [[ -z "${GITHUB_ACTOR}" ]]; then
-  echo 'Please provide the $GITHUB_ACTOR environment variable.'
+  echo "Please provide the \$GITHUB_ACTOR environment variable."
   exit 1
 fi
 
 if [[ -z "${GITHUB_REF}" ]]; then
-  echo 'Please provide the $GITHUB_REF environment variable.'
+  echo "Please provide the \$GITHUB_REF environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_SHA}" ]]; then
+  echo "Please provide the \$GITHUB_SHA environment variable."
   exit 1
 fi
 
 if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
-  echo 'Please provide the build artifact.'
+  echo "Please provide the build artifact."
   exit 1
 fi
 
-PUIK_VERSION="v1"
-PUIK_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_REF} | cat)"
-PUIK_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_REF} | cat)"
+P_ABBR_REF="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
+P_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
+P_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
 
 cleanup_credentials() {
   echo "Cleaning up credentials"
@@ -56,16 +61,16 @@ checkout_gh_pages() {
 }
 
 cleanup_previous_deployment() {
-  rm -rf "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
+  rm -rf "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
 
 copy_porsche-ui-kit-storefront() {
-  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
+  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
 
 copy_sketch_libraries_create_rss_feed() {
-  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${PUIK_VERSION}"
+  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -73,9 +78,9 @@ copy_sketch_libraries_create_rss_feed() {
     <title>Porsche UI</title>
     <description>A Porsche UI Sketch library.</description>
     <item>
-      <title>${1} (${PUIK_VERSION}.${PUIK_PUBLISH_ID})</title>
-      <pubDate>${PUIK_PUBLISH_DATE}</pubDate>
-      <enclosure url="https://ui.porsche.com/${PUIK_VERSION}/${2}" sparkle:version="${PUIK_VERSION:1}.${PUIK_PUBLISH_ID}" type="application/octet-stream"/>
+      <title>${1} (${P_ABBR_REF}.${P_PUBLISH_ID})</title>
+      <pubDate>${P_PUBLISH_DATE}</pubDate>
+      <enclosure url="https://ui.porsche.com/${P_ABBR_REF}/${2}" sparkle:version="${P_ABBR_REF:1}.${P_PUBLISH_ID}" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
@@ -85,7 +90,7 @@ _EOF_
 deploy_to_gh_pages() {
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
-    git commit -m "Automated deployment of Porsche UI Kit ${PUIK_VERSION} (Docs, Sketch Libraries + RSS Feed)" --allow-empty
+    git commit -m "Automated deployment of Porsche UI Kit (${P_ABBR_REF}): ${GITHUB_SHA}" --allow-empty
     git push origin gh-pages --force-with-lease
   popd
 }
@@ -96,8 +101,10 @@ setup_github
 checkout_gh_pages
 cleanup_previous_deployment
 copy_porsche-ui-kit-storefront
-copy_sketch_libraries_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
-copy_sketch_libraries_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
-copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
-copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
+if [[ "${P_ABBR_REF}" =~ ^v[0-9]+$ ]]; then
+  copy_sketch_libraries_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
+  copy_sketch_libraries_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
+  copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
+  copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
+fi
 deploy_to_gh_pages

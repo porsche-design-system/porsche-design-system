@@ -30,6 +30,7 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - [ ] Approve UI definition
 - [ ] Create/update Sketch library symbol in Abstract and share collection link
 - [ ] Create UI/UX guidelines as .mdx
+- [ ] Create story in Prep board with instructions to delete the component in Prep library
 - [ ] Create/update related code CSS / JS
 - [ ] Create samples of all possible states and variants
 - [ ] Create Code/Implementation guidelines as .mdx for corresponding component code
