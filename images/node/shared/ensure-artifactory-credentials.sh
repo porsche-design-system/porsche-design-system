@@ -5,18 +5,22 @@
 set -o errexit
 set -o pipefail
 
-function cleanup {
-  local exitCode=$?
-  printf "\nCleaning up credentials...\n"
-  rm "${HOME}/.npmrc"
-  exit ${exitCode}
-}
-trap cleanup EXIT
-
 if [[ -z "${ARTIFACTORY_TOKEN}" ]]; then
-  (>&2 printf "Please provide the ARTIFACTORY_TOKEN environment variable.\n")
+  echo "Please provide the \$ARTIFACTORY_TOKEN environment variable."
   exit 1
 fi
 
-printf "\nSetting up NPM credentials...\n"
-echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${ARTIFACTORY_TOKEN}" > "${HOME}/.npmrc"
+cleanup_credentials() {
+  local exit_code=$?
+  echo "Cleaning up credentials"
+  rm "${HOME}/.npmrc"
+  exit ${exit_code}
+}
+
+setup_credentials() {
+  echo "Setting up npm credentials"
+  echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${ARTIFACTORY_TOKEN}" > "${HOME}/.npmrc"
+}
+
+trap cleanup_credentials EXIT
+setup_credentials
