@@ -9,9 +9,7 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
   alignSelf?: BreakpointCustomizable<"start" | "center" | "end" | "baseline" | "stretch" | "auto">
 
   /** The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this. */
-  width?: BreakpointCustomizable<
-    "auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full"
-  >
+  width?: BreakpointCustomizable<"auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full">
 
   /** The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this. */
   offset?: BreakpointCustomizable<"none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters">

@@ -40,6 +40,7 @@ export const Stories: Stories = {
     Spacing: {
       examples: importMDX("../../workshop/src/components/layout/spacing/spacing.code.mdx"),
       design: importMDX("../../workshop/src/components/layout/spacing/spacing.design.mdx"),
+      vrt: importMDX("../../workshop/src/components/layout/spacing/spacing.vrt.mdx"),
       props: ["Spacing"]
     }
   }
