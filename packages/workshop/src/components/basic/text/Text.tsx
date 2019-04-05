@@ -4,20 +4,9 @@ import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface TextProps extends ClassNameProp, ComponentProp {
-  /** The text alignment of the component. */
-  align?: "left" | "center" | "right"
-
-  /**
-   * Adds an ellipsis to a single line of text if it overflows.
-   */
-  ellipsis?: boolean
-
-  /** Sets the text as display: inline. */
-  inline?: boolean
-
   /**
    * The style of the text.
-   * @default copy
+   * @default copy-regular
    */
   type?:
     | "1-regular"
@@ -37,11 +26,35 @@ export interface TextProps extends ClassNameProp, ComponentProp {
     | "small-regular"
     | "small-bold"
 
+  /** The text alignment of the component. */
+  align?: "left" | "center" | "right"
+
+  /**
+   * Basic text color variations
+   * @default black
+   */
+  color?: "black" | "white" | "red" | "blue"
+
+  /**
+   * Adds an ellipsis to a single line of text if it overflows.
+   */
+  ellipsis?: boolean
+
+  /**
+   * Sets the text as display: inline.
+   */
+  inline?: boolean
+
   /**
    * Wraps the text, even when it has to break a word.
    * @default true
    */
   wrap?: boolean
+
+  /**
+   * Inverts the color for use on darker backgrounds.
+   */
+  inverted?: boolean
 }
 
 const defaultProps: Partial<TextProps> = {
@@ -50,16 +63,18 @@ const defaultProps: Partial<TextProps> = {
 }
 
 const _Text: React.StatelessComponent<TextProps> = (props) => {
-  const { as, className, children, ellipsis, align, inline, type, wrap, ...rest } = props
+  const { as, className, children, ellipsis, align, inline, type, color, wrap, inverted, ...rest } = props
 
   const ElementType: any = getElementType(as, "p")
 
   const classes = cx(
-    { [prefix(`text-size-${type}`)]: type },
+    { [prefix(`text--${type}`)]: type },
     { [prefix(`text--align-${align}`)]: align },
+    { [prefix(`text--color-${color}`)]: color },
     { [prefix("text--inline")]: inline },
     { [prefix("text--ellipsis")]: ellipsis },
     { [prefix("text--wrap")]: wrap },
+    { [prefix("text--theme-inverted")]: inverted },
     className
   )
 

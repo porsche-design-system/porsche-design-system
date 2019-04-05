@@ -57,7 +57,7 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
           <div className={renderClasses}>{renderNode(props.children, theme)}</div>
           {(!props.noHTML || !props.noSCSS) && (
             <React.Fragment>
-              <Flex justifyContent="end">
+              <Flex className={styles["toggle-container"]} justifyContent="end">
                 {!props.noHTML && (
                   <button
                     className={cx(styles.toggle, {
