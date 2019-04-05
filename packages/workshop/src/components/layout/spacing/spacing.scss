@@ -1,7 +1,7 @@
 @import "../../../styles/utility/index";
 
 /**
- * static spacings vars
+ * static spacings vars for iterating SASS function
  */
 $p-spacings: (
   "0": $p-spacing-0,
@@ -66,152 +66,9 @@ $p-spacing-g-l: $p-spacing-72;
 $p-spacing-g-xl: $p-spacing-80;
 
 /*
- * static spacing
- */
-@mixin p-spacing-0($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-0;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-0;
-    }
-  }
-}
-
-@mixin p-spacing-4($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-4;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-4;
-    }
-  }
-}
-
-@mixin p-spacing-8($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-8;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-8;
-    }
-  }
-}
-
-@mixin p-spacing-12($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-12;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-12;
-    }
-  }
-}
-
-@mixin p-spacing-16($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-16;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-16;
-    }
-  }
-}
-
-@mixin p-spacing-20($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-20;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-20;
-    }
-  }
-}
-
-@mixin p-spacing-24($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-24;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-24;
-    }
-  }
-}
-
-@mixin p-spacing-32($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-32;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-32;
-    }
-  }
-}
-
-@mixin p-spacing-40($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-40;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-40;
-    }
-  }
-}
-
-@mixin p-spacing-48($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-48;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-48;
-    }
-  }
-}
-
-@mixin p-spacing-56($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-56;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-56;
-    }
-  }
-}
-
-@mixin p-spacing-64($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-64;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-64;
-    }
-  }
-}
-
-@mixin p-spacing-72($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-72;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-72;
-    }
-  }
-}
-
-@mixin p-spacing-80($direction: "top", $type: "margin", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-80;
-  } @else {
-    #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-80;
-    }
-  }
-}
-
-/*
  * responsive spacing
  */
-@mixin p-spacing-a($direction: "top", $type: "margin", $sign: "+") {
+@mixin p-spacing-a($type: "margin", $direction: "top", $sign: "+") {
   @if $direction == "" {
     #{$type}: #{$sign}$p-spacing-a;
   } @else {
@@ -261,7 +118,7 @@ $p-spacing-g-xl: $p-spacing-80;
   }
 }
 
-@mixin p-spacing-b($direction: "top", $type: "margin", $sign: "+") {
+@mixin p-spacing-b($type: "margin", $direction: "top", $sign: "+") {
   @if $direction == "" {
     #{$type}: #{$sign}$p-spacing-b;
   } @else {
@@ -311,7 +168,7 @@ $p-spacing-g-xl: $p-spacing-80;
   }
 }
 
-@mixin p-spacing-c($direction: "top", $type: "margin", $sign: "+") {
+@mixin p-spacing-c($type: "margin", $direction: "top", $sign: "+") {
   @if $direction == "" {
     #{$type}: #{$sign}$p-spacing-c;
   } @else {
@@ -361,7 +218,7 @@ $p-spacing-g-xl: $p-spacing-80;
   }
 }
 
-@mixin p-spacing-d($direction: "top", $type: "margin", $sign: "+") {
+@mixin p-spacing-d($type: "margin", $direction: "top", $sign: "+") {
   @if $direction == "" {
     #{$type}: #{$sign}$p-spacing-d;
   } @else {
@@ -411,7 +268,7 @@ $p-spacing-g-xl: $p-spacing-80;
   }
 }
 
-@mixin p-spacing-e($direction: "top", $type: "margin", $sign: "+") {
+@mixin p-spacing-e($type: "margin", $direction: "top", $sign: "+") {
   @if $direction == "" {
     #{$type}: #{$sign}$p-spacing-e;
   } @else {
@@ -461,7 +318,7 @@ $p-spacing-g-xl: $p-spacing-80;
   }
 }
 
-@mixin p-spacing-f($direction: "top", $type: "margin", $sign: "+") {
+@mixin p-spacing-f($type: "margin", $direction: "top", $sign: "+") {
   @if $direction == "" {
     #{$type}: #{$sign}$p-spacing-f;
   } @else {
@@ -511,7 +368,7 @@ $p-spacing-g-xl: $p-spacing-80;
   }
 }
 
-@mixin p-spacing-g($direction: "top", $type: "margin", $sign: "+") {
+@mixin p-spacing-g($type: "margin", $direction: "top", $sign: "+") {
   @if $direction == "" {
     #{$type}: #{$sign}$p-spacing-g;
   } @else {
@@ -561,7 +418,7 @@ $p-spacing-g-xl: $p-spacing-80;
   }
 }
 
-@mixin p-spacing-zero($direction: "top", $type: "margin") {
+@mixin p-spacing-zero($type: "margin", $direction: "top") {
   @if $direction == "" {
     #{$type}: 0;
   } @else {
@@ -601,143 +458,143 @@ $p-spacing-g-xl: $p-spacing-80;
    * responsive margin spacings
    */
   &t--a {
-    @include p-spacing-a("top", "margin", "");
+    @include p-spacing-a("margin", "top", "");
   }
 
   &r--a {
-    @include p-spacing-a("right", "margin", "");
+    @include p-spacing-a("margin", "right", "");
   }
 
   &b--a {
-    @include p-spacing-a("bottom", "margin", "");
+    @include p-spacing-a("margin", "bottom", "");
   }
 
   &l--a {
-    @include p-spacing-a("left", "margin", "");
+    @include p-spacing-a("margin", "left", "");
   }
 
   &--a {
-    @include p-spacing-a("", "margin", "");
+    @include p-spacing-a("margin", "", "");
   }
 
   &t--b {
-    @include p-spacing-b("top", "margin", "");
+    @include p-spacing-b("margin", "top", "");
   }
 
   &r--b {
-    @include p-spacing-b("right", "margin", "");
+    @include p-spacing-b("margin", "right", "");
   }
 
   &b--b {
-    @include p-spacing-b("bottom", "margin", "");
+    @include p-spacing-b("margin", "bottom", "");
   }
 
   &l--b {
-    @include p-spacing-b("left", "margin", "");
+    @include p-spacing-b("margin", "left", "");
   }
 
   &--b {
-    @include p-spacing-b("", "margin", "");
+    @include p-spacing-b("margin", "", "");
   }
 
   &t--c {
-    @include p-spacing-c("top", "margin", "");
+    @include p-spacing-c("margin", "top", "");
   }
 
   &r--c {
-    @include p-spacing-c("right", "margin", "");
+    @include p-spacing-c("margin", "right", "");
   }
 
   &b--c {
-    @include p-spacing-c("bottom", "margin", "");
+    @include p-spacing-c("margin", "bottom", "");
   }
 
   &l--c {
-    @include p-spacing-c("left", "margin", "");
+    @include p-spacing-c("margin", "left", "");
   }
 
   &--c {
-    @include p-spacing-c("", "margin", "");
+    @include p-spacing-c("margin", "", "");
   }
 
   &t--d {
-    @include p-spacing-d("top", "margin", "");
+    @include p-spacing-d("margin", "top", "");
   }
 
   &r--d {
-    @include p-spacing-d("right", "margin", "");
+    @include p-spacing-d("margin", "right", "");
   }
 
   &b--d {
-    @include p-spacing-d("bottom", "margin", "");
+    @include p-spacing-d("margin", "bottom", "");
   }
 
   &l--d {
-    @include p-spacing-d("left", "margin", "");
+    @include p-spacing-d("margin", "left", "");
   }
 
   &--d {
-    @include p-spacing-d("", "margin", "");
+    @include p-spacing-d("margin", "", "");
   }
 
   &t--e {
-    @include p-spacing-e("top", "margin", "");
+    @include p-spacing-e("margin", "top", "");
   }
 
   &r--e {
-    @include p-spacing-e("right", "margin", "");
+    @include p-spacing-e("margin", "right", "");
   }
 
   &b--e {
-    @include p-spacing-e("bottom", "margin", "");
+    @include p-spacing-e("margin", "bottom", "");
   }
 
   &l--e {
-    @include p-spacing-e("left", "margin", "");
+    @include p-spacing-e("margin", "left", "");
   }
 
   &--e {
-    @include p-spacing-e("", "margin", "");
+    @include p-spacing-e("margin", "", "");
   }
 
   &t--f {
-    @include p-spacing-f("top", "margin", "");
+    @include p-spacing-f("margin", "top", "");
   }
 
   &r--f {
-    @include p-spacing-f("right", "margin", "");
+    @include p-spacing-f("margin", "right", "");
   }
 
   &b--f {
-    @include p-spacing-f("bottom", "margin", "");
+    @include p-spacing-f("margin", "bottom", "");
   }
 
   &l--f {
-    @include p-spacing-f("left", "margin", "");
+    @include p-spacing-f("margin", "left", "");
   }
 
   &--f {
-    @include p-spacing-f("", "margin", "");
+    @include p-spacing-f("margin", "", "");
   }
 
   &t--g {
-    @include p-spacing-g("top", "margin", "");
+    @include p-spacing-g("margin", "top", "");
   }
 
   &r--g {
-    @include p-spacing-g("right", "margin", "");
+    @include p-spacing-g("margin", "right", "");
   }
 
   &b--g {
-    @include p-spacing-g("bottom", "margin", "");
+    @include p-spacing-g("margin", "bottom", "");
   }
 
   &l--g {
-    @include p-spacing-g("left", "margin", "");
+    @include p-spacing-g("margin", "left", "");
   }
 
   &--g {
-    @include p-spacing-g("", "margin", "");
+    @include p-spacing-g("margin", "", "");
   }
 
   &--auto {
@@ -795,143 +652,143 @@ $p-spacing-g-xl: $p-spacing-80;
    * negative responsive margin spacings
    */
   &t--a {
-    @include p-spacing-a("top", "margin", "-");
+    @include p-spacing-a("margin", "top", "-");
   }
 
   &r--a {
-    @include p-spacing-a("right", "margin", "-");
+    @include p-spacing-a("margin", "right", "-");
   }
 
   &b--a {
-    @include p-spacing-a("bottom", "margin", "-");
+    @include p-spacing-a("margin", "bottom", "-");
   }
 
   &l--a {
-    @include p-spacing-a("left", "margin", "-");
+    @include p-spacing-a("margin", "left", "-");
   }
 
   &--a {
-    @include p-spacing-a("", "margin", "-");
+    @include p-spacing-a("margin", "", "-");
   }
 
   &t--b {
-    @include p-spacing-b("top", "margin", "-");
+    @include p-spacing-b("margin", "top", "-");
   }
 
   &r--b {
-    @include p-spacing-b("right", "margin", "-");
+    @include p-spacing-b("margin", "right", "-");
   }
 
   &b--b {
-    @include p-spacing-b("bottom", "margin", "-");
+    @include p-spacing-b("margin", "bottom", "-");
   }
 
   &l--b {
-    @include p-spacing-b("left", "margin", "-");
+    @include p-spacing-b("margin", "left", "-");
   }
 
   &--b {
-    @include p-spacing-b("", "margin", "-");
+    @include p-spacing-b("margin", "", "-");
   }
 
   &t--c {
-    @include p-spacing-c("top", "margin", "-");
+    @include p-spacing-c("margin", "top", "-");
   }
 
   &r--c {
-    @include p-spacing-c("right", "margin", "-");
+    @include p-spacing-c("margin", "right", "-");
   }
 
   &b--c {
-    @include p-spacing-c("bottom", "margin", "-");
+    @include p-spacing-c("margin", "bottom", "-");
   }
 
   &l--c {
-    @include p-spacing-c("left", "margin", "-");
+    @include p-spacing-c("margin", "left", "-");
   }
 
   &--c {
-    @include p-spacing-c("", "margin", "-");
+    @include p-spacing-c("margin", "", "-");
   }
 
   &t--d {
-    @include p-spacing-d("top", "margin", "-");
+    @include p-spacing-d("margin", "top", "-");
   }
 
   &r--d {
-    @include p-spacing-d("right", "margin", "-");
+    @include p-spacing-d("margin", "right", "-");
   }
 
   &b--d {
-    @include p-spacing-d("bottom", "margin", "-");
+    @include p-spacing-d("margin", "bottom", "-");
   }
 
   &l--d {
-    @include p-spacing-d("left", "margin", "-");
+    @include p-spacing-d("margin", "left", "-");
   }
 
   &--d {
-    @include p-spacing-d("", "margin", "-");
+    @include p-spacing-d("margin", "", "-");
   }
 
   &t--e {
-    @include p-spacing-e("top", "margin", "-");
+    @include p-spacing-e("margin", "top", "-");
   }
 
   &r--e {
-    @include p-spacing-e("right", "margin", "-");
+    @include p-spacing-e("margin", "right", "-");
   }
 
   &b--e {
-    @include p-spacing-e("bottom", "margin", "-");
+    @include p-spacing-e("margin", "bottom", "-");
   }
 
   &l--e {
-    @include p-spacing-e("left", "margin", "-");
+    @include p-spacing-e("margin", "left", "-");
   }
 
   &--e {
-    @include p-spacing-e("", "margin", "-");
+    @include p-spacing-e("margin", "", "-");
   }
 
   &t--f {
-    @include p-spacing-f("top", "margin", "-");
+    @include p-spacing-f("margin", "top", "-");
   }
 
   &r--f {
-    @include p-spacing-f("right", "margin", "-");
+    @include p-spacing-f("margin", "right", "-");
   }
 
   &b--f {
-    @include p-spacing-f("bottom", "margin", "-");
+    @include p-spacing-f("margin", "bottom", "-");
   }
 
   &l--f {
-    @include p-spacing-f("left", "margin", "-");
+    @include p-spacing-f("margin", "left", "-");
   }
 
   &--f {
-    @include p-spacing-f("", "margin", "-");
+    @include p-spacing-f("margin", "", "-");
   }
 
   &t--g {
-    @include p-spacing-g("top", "margin", "-");
+    @include p-spacing-g("margin", "top", "-");
   }
 
   &r--g {
-    @include p-spacing-g("right", "margin", "-");
+    @include p-spacing-g("margin", "right", "-");
   }
 
   &b--g {
-    @include p-spacing-g("bottom", "margin", "-");
+    @include p-spacing-g("margin", "bottom", "-");
   }
 
   &l--g {
-    @include p-spacing-g("left", "margin", "-");
+    @include p-spacing-g("margin", "left", "-");
   }
 
   &--g {
-    @include p-spacing-g("", "margin", "-");
+    @include p-spacing-g("margin", "", "-");
   }
 }
 
@@ -965,142 +822,142 @@ $p-spacing-g-xl: $p-spacing-80;
    * responsive padding spacings
    */
   &t--a {
-    @include p-spacing-a("top", "padding", "");
+    @include p-spacing-a("padding", "top", "");
   }
 
   &r--a {
-    @include p-spacing-a("right", "padding", "");
+    @include p-spacing-a("padding", "right", "");
   }
 
   &b--a {
-    @include p-spacing-a("bottom", "padding", "");
+    @include p-spacing-a("padding", "bottom", "");
   }
 
   &l--a {
-    @include p-spacing-a("left", "padding", "");
+    @include p-spacing-a("padding", "left", "");
   }
 
   &--a {
-    @include p-spacing-a("", "padding", "");
+    @include p-spacing-a("padding", "", "");
   }
 
   &t--b {
-    @include p-spacing-b("top", "padding", "");
+    @include p-spacing-b("padding", "top", "");
   }
 
   &r--b {
-    @include p-spacing-b("right", "padding", "");
+    @include p-spacing-b("padding", "right", "");
   }
 
   &b--b {
-    @include p-spacing-b("bottom", "padding", "");
+    @include p-spacing-b("padding", "bottom", "");
   }
 
   &l--b {
-    @include p-spacing-b("left", "padding", "");
+    @include p-spacing-b("padding", "left", "");
   }
 
   &--b {
-    @include p-spacing-b("", "padding", "");
+    @include p-spacing-b("padding", "", "");
   }
 
   &t--c {
-    @include p-spacing-c("top", "padding", "");
+    @include p-spacing-c("padding", "top", "");
   }
 
   &r--c {
-    @include p-spacing-c("right", "padding", "");
+    @include p-spacing-c("padding", "right", "");
   }
 
   &b--c {
-    @include p-spacing-c("bottom", "padding", "");
+    @include p-spacing-c("padding", "bottom", "");
   }
 
   &l--c {
-    @include p-spacing-c("left", "padding", "");
+    @include p-spacing-c("padding", "left", "");
   }
 
   &--c {
-    @include p-spacing-c("", "padding", "");
+    @include p-spacing-c("padding", "", "");
   }
 
   &t--d {
-    @include p-spacing-d("top", "padding", "");
+    @include p-spacing-d("padding", "top", "");
   }
 
   &r--d {
-    @include p-spacing-d("right", "padding", "");
+    @include p-spacing-d("padding", "right", "");
   }
 
   &b--d {
-    @include p-spacing-d("bottom", "padding", "");
+    @include p-spacing-d("padding", "bottom", "");
   }
 
   &l--d {
-    @include p-spacing-d("left", "padding", "");
+    @include p-spacing-d("padding", "left", "");
   }
 
   &--d {
-    @include p-spacing-d("", "padding", "");
+    @include p-spacing-d("padding", "", "");
   }
 
   &t--e {
-    @include p-spacing-e("top", "padding", "");
+    @include p-spacing-e("padding", "top", "");
   }
 
   &r--e {
-    @include p-spacing-e("right", "padding", "");
+    @include p-spacing-e("padding", "right", "");
   }
 
   &b--e {
-    @include p-spacing-e("bottom", "padding", "");
+    @include p-spacing-e("padding", "bottom", "");
   }
 
   &l--e {
-    @include p-spacing-e("left", "padding", "");
+    @include p-spacing-e("padding", "left", "");
   }
 
   &--e {
-    @include p-spacing-e("", "padding", "");
+    @include p-spacing-e("padding", "", "");
   }
 
   &t--f {
-    @include p-spacing-f("top", "padding", "");
+    @include p-spacing-f("padding", "top", "");
   }
 
   &r--f {
-    @include p-spacing-f("right", "padding", "");
+    @include p-spacing-f("padding", "right", "");
   }
 
   &b--f {
-    @include p-spacing-f("bottom", "padding", "");
+    @include p-spacing-f("padding", "bottom", "");
   }
 
   &l--f {
-    @include p-spacing-f("left", "padding", "");
+    @include p-spacing-f("padding", "left", "");
   }
 
   &--f {
-    @include p-spacing-f("", "padding", "");
+    @include p-spacing-f("padding", "", "");
   }
 
   &t--g {
-    @include p-spacing-g("top", "padding", "");
+    @include p-spacing-g("padding", "top", "");
   }
 
   &r--g {
-    @include p-spacing-g("right", "padding", "");
+    @include p-spacing-g("padding", "right", "");
   }
 
   &b--g {
-    @include p-spacing-g("bottom", "padding", "");
+    @include p-spacing-g("padding", "bottom", "");
   }
 
   &l--g {
-    @include p-spacing-g("left", "padding", "");
+    @include p-spacing-g("padding", "left", "");
   }
 
   &--g {
-    @include p-spacing-g("", "padding", "");
+    @include p-spacing-g("padding", "", "");
   }
 }
