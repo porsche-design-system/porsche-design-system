@@ -24,11 +24,7 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   const [showHTML, setShowHTML] = useState(false)
   const [showSCSS, setShowSCSS] = useState(false)
 
-  const renderClasses = cx(
-    styles.render,
-    { [styles.light]: theme === "default" },
-    { [styles.dark]: theme === "inverted" }
-  )
+  const renderClasses = cx(styles.render, { [styles.light]: theme === "default" }, { [styles.dark]: theme === "inverted" })
 
   const handleShowClicked = (name: string) => {
     if (name === "html") {
@@ -93,7 +89,7 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
               {showSCSS && (
                 <div className={styles.codeblock}>
                   <Editor language="scss" style={editorTheme}>
-                    # SCSS paths go here
+                    # SCSS paths coming soon...
                   </Editor>
                 </div>
               )}

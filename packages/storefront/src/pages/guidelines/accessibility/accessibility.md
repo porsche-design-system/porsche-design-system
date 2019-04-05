@@ -67,21 +67,23 @@ Touch support (DESIGN)
 Design and develop user interfaces which do support a wide range of possible browser input devices (e.g. mouse, finger, pen, etc.). For example, Make clickable areas big enough and place them not to close to each other to prevent the "fat finger syndrome" on touch devices.
 
 ## Tools to check web accessibility
-* Chrome Extensions:
-Lighthouse
-Tota11y
-AXE
+* Chrome Extensions:  
+[Accessibility insights](https://chrome.google.com/webstore/detail/accessibility-insights-fo/pbjjkligggfmakdaogkfomddhfmpjeni)
+[Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=de)
+[Tota11y](https://chrome.google.com/webstore/detail/tota11y-plugin-from-khan/oedofneiplgibimfkccchnimiadcmhpe)
+[AXE](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd)
 
-* Color Contrast Analyzer: 
-WAVE evaluation tool
+* Firefox Extensions:  
+[WAVE evaluation tool or AXE](https://addons.mozilla.org/en-US/firefox/addon/wave-accessibility-tool/)
+[WCAG contrast checker](https://addons.mozilla.org/de/firefox/addon/wcag-contrast-checker/)
 
-* Firefox Extensions: WAVE evaluation tool or AXE
-
-* Color Contrast Analyzer*
+* Color Contrast Analyzer:
+[WebAIM](https://webaim.org/resources/contrastchecker/)
 Accessibility Inspector inside the Firefox Developer Tools (available from Firefox version >= 61)
 
 **Further information**  
 https://a11yproject.com/  
 http://a11y-style-guide.com/style-guide/  
+https://accessibilityinsights.io/en/
 https://developers.google.com/web/fundamentals/accessibility/  
 https://www.w3.org/TR/WCAG21/
