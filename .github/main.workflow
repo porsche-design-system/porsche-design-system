@@ -6,7 +6,9 @@ workflow "Porsche UI Kit" {
 action "Filter" {
   uses = "./images/node/"
   runs = ["run-filter"]
-  env = {GIT_FILTER = "^refs/heads/(v[0-9]+|issue/[0-9]+)$"}
+  env = {
+    GIT_FILTER = "^refs/heads/(v[0-9]+|issue/[0-9]+)$"
+  }
 }
 
 action "Install" {
@@ -39,6 +41,10 @@ action "Deploy" {
   uses = "./images/node/"
   runs = ["run-deploy"]
   secrets = ["GIT_DEPLOY_KEY"]
+  env = {
+    GIT_RELEASE_FILTER = "^v[0-9]+$"
+    GIT_ISSUE_FILTER = "^issue/[0-9]+$"
+  }
 }
 
 action "Slack" {
