@@ -6,6 +6,16 @@ set -o pipefail
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
 
+if [[ -z "${GIT_RELEASE_FILTER}" ]]; then
+  echo "Please provide the \$GIT_RELEASE_FILTER environment variable."
+  exit 1
+fi
+
+if [[ -z "${GIT_ISSUE_FILTER}" ]]; then
+  echo "Please provide the \$GIT_ISSUE_FILTER environment variable."
+  exit 1
+fi
+
 if [[ -z "${GITHUB_REPOSITORY}" ]]; then
   echo "Please provide the \$GITHUB_REPOSITORY environment variable."
   exit 1
@@ -91,18 +101,18 @@ verify_deployment() {
   local delay=10
   while true
   do
-    echo "Check deployment status. Attempt ${n}/${max}."
+    echo "Check deployment status. Attempt ${n}/${max}, $(date)"
     local http_code="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
     if [[ "${http_code}" -eq 200 ]]; then
       echo "All right, deployment was verified."
       break
-    elif [[ "${n}" -lt "${max}" ]]; then
+    elif [[ ${n} -lt ${max} ]]; then
       ((n++))
     else
-      echo "Deployment could not be verified after ${n} attempts."
+      echo "Deployment could not be verified after ${n} attempts, $(date)"
       exit 1
     fi
-    sleep "${delay}"
+    sleep ${delay}
   done
 }
 
