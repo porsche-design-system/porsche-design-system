@@ -34,6 +34,10 @@
     & img,
     & code,
     & pre {
+    *:not([class^="example_example"]):not(pre):not(hr):not(table) {
+      max-width: 800px;
+    }
+
     // Typography
     h1 {
       @include -text-size-2($p-font-weight-bold);
@@ -188,6 +192,7 @@
     // Media
     img {
       max-width: 100%;
+      width: 100%;
       vertical-align: top;
     }
   }

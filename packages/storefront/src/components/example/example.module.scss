@@ -28,11 +28,17 @@
 }
 
 .render.light {
+  border: 1px solid $p-color-grey-3;
   background-color: $p-color-white;
 }
 
 .render.dark {
+  border: 1px solid $p-color-grey-10;
   background-color: $p-color-grey-10;
+}
+
+.toggle-container {
+  margin-top: -1px;
 }
 
 .toggle {
