@@ -96,13 +96,13 @@ verify_deployment() {
     if [[ "${http_code}" -eq 200 ]]; then
       echo "All right, deployment was verified."
       break
-    elif [[ "${n}" -lt "${max}" ]]; then
+    elif [[ ${n} -lt ${max} ]]; then
       ((n++))
     else
       echo "Deployment could not be verified after ${n} attempts."
       exit 1
     fi
-    sleep "${delay}"
+    sleep ${delay}
   done
 }
 
