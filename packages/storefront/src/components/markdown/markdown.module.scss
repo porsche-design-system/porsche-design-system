@@ -34,16 +34,15 @@
     & img,
     & code,
     & pre {
-
     // Typography
     h1 {
       @include -text-size-2($p-font-weight-bold);
-      margin-top: $p-spacing-60;
+      margin-top: $p-spacing-64;
     }
 
     h2 {
       @include -text-size-3($p-font-weight-bold);
-      margin-top: $p-spacing-30;
+      margin-top: $p-spacing-32;
     }
 
     h3 {
@@ -53,25 +52,25 @@
 
     h4 {
       @include -text-size-4($p-font-weight-bold);
-      margin-top: $p-spacing-18;
+      margin-top: $p-spacing-20;
     }
 
     h5,
     h6 {
       @include -text-size-copy($p-font-weight-bold);
-      margin-top: $p-spacing-18;
+      margin-top: $p-spacing-20;
     }
 
     p {
       @include -text-size-copy;
-      margin-top: $p-spacing-18;
+      margin-top: $p-spacing-20;
     }
 
     // Horizontal Rules
     hr {
       margin: {
-        top: $p-spacing-42;
-        bottom: $p-spacing-42;
+        top: $p-spacing-40;
+        bottom: $p-spacing-40;
       }
       border: 0;
       height: 1px;
@@ -97,7 +96,7 @@
 
     // Blockquote
     blockquote {
-      padding-left: $p-spacing-18;
+      padding-left: $p-spacing-20;
       border-left: rem(5px) solid $p-color-grey-3;
     }
 
@@ -105,8 +104,8 @@
     ul,
     ol {
       @include -text-size-copy;
-      margin-top: $p-spacing-18;
-      padding-left: $p-spacing-36;
+      margin-top: $p-spacing-20;
+      padding-left: $p-spacing-32;
 
       ul,
       ol {
@@ -122,27 +121,27 @@
     }
 
     :not(pre) > code {
-      padding: $p-spacing-3 $p-spacing-6;
+      padding: 0.125rem $p-spacing-8;
       background-color: mix($p-color-red-1, $p-color-white, 10%);
       border-radius: 3px;
       color: $p-color-red-1;
     }
 
     pre {
-      margin-top: $p-spacing-6;
+      margin-top: $p-spacing-8;
       display: block;
-      padding: $p-spacing-12 $p-spacing-18;
+      padding: $p-spacing-12 $p-spacing-20;
       word-break: break-all;
       word-wrap: break-word;
       background-color: $p-color-grey-1;
-      border: 1px solid $p-color-grey-3;
-      border-radius: 3px;
       color: $p-color-grey-8;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     // Tables
     table {
-      margin-top: $p-spacing-18;
+      margin-top: $p-spacing-20;
       width: 100%;
       text-align: left;
       border-collapse: collapse;
@@ -170,7 +169,7 @@
 
       th ~ th,
       td ~ td {
-        padding-left: $p-spacing-24;
+        padding-left: $p-spacing-20;
       }
     }
 

@@ -3,10 +3,10 @@
 .teaser {
   position: relative;
   display: block;
-  margin: #{-$p-spacing-30} #{-$p-spacing-30} 0;
+  margin: #{-$p-spacing-32} #{-$p-spacing-32} 0;
 
   @include breakpoint("s") {
-    margin: #{-$p-spacing-60} #{-$p-spacing-60} 0;
+    margin: #{-$p-spacing-64} #{-$p-spacing-64} 0;
   }
 
   .img-wrap {
@@ -41,14 +41,14 @@
 
   .text {
     color: $p-color-black;
-    padding: 0 $p-spacing-30;
+    padding: 0 $p-spacing-32;
 
     @include breakpoint("s") {
       position: absolute;
       left: 0;
       right: 0;
       top: 50%;
-      padding: 0 $p-spacing-60;
+      padding: 0 $p-spacing-64;
       transform: translateY(-50%);
       color: $p-color-white;
     }
@@ -58,13 +58,13 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: $p-spacing-60;
-    padding: 0 $p-spacing-30;
+    top: $p-spacing-64;
+    padding: 0 $p-spacing-32;
     color: $p-color-white;
 
     @include breakpoint("s") {
       position: static;
-      padding: 0 $p-spacing-60;
+      padding: 0 $p-spacing-64;
     }
   }
 
@@ -83,7 +83,7 @@
   }
 
   .subline {
-    margin-top: $p-spacing-18;
+    margin-top: $p-spacing-20;
   }
 }
 
@@ -93,5 +93,5 @@
 }
 
 .content {
-  padding-top: $p-spacing-30;
+  padding-top: $p-spacing-24;
 }

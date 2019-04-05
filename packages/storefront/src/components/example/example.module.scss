@@ -9,11 +9,11 @@
 }
 .codeblock {
   font-size: 16px;
-  resize: vertical;
 
   pre {
-    max-height: 200px;
-    padding: $p-spacing-30 !important;
+    height: 200px;
+    resize: vertical;
+    padding: $p-spacing-32 !important;
     overflow: auto !important;
   }
 
@@ -23,7 +23,7 @@
 }
 
 .render {
-  padding: $p-spacing-30;
+  padding: $p-spacing-32;
   overflow-x: auto;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .toggle {
-  padding: 0 $p-spacing-6;
+  padding: 0 $p-spacing-8;
   position: relative;
   height: 30px;
   background: none;
