@@ -101,7 +101,7 @@ verify_deployment() {
   local delay=10
   while true
   do
-    echo "Check deployment status. Attempt ${n}/${max}."
+    echo "Check deployment status. Attempt ${n}/${max}, $(date)"
     local http_code="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
     if [[ "${http_code}" -eq 200 ]]; then
       echo "All right, deployment was verified."
@@ -109,7 +109,7 @@ verify_deployment() {
     elif [[ ${n} -lt ${max} ]]; then
       ((n++))
     else
-      echo "Deployment could not be verified after ${n} attempts."
+      echo "Deployment could not be verified after ${n} attempts, $(date)"
       exit 1
     fi
     sleep ${delay}
