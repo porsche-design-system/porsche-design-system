@@ -46,24 +46,29 @@ P_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
 P_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
 
 setup_github() {
+  echo "setup_github $(date)"
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 }
 
 checkout_gh_pages() {
+  echo "checkout_gh_pages $(date)"
   git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
 }
 
 cleanup_previous_deployment() {
+  echo "cleanup_previous_deployment $(date)"
   rm -rf "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
 
-copy_porsche-ui-kit-storefront() {
+copy_porsche_ui_kit_storefront() {
+  echo "copy_porsche_ui_kit_storefront $(date)"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
 
 copy_sketch_libraries_create_rss_feed() {
+  echo "copy_sketch_libraries_create_rss_feed $(date)"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
@@ -83,11 +88,13 @@ _EOF_
 }
 
 add_deployment_sha() {
+  echo "add_deployment_sha $(date)"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}/version"
   touch "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}/version/${GITHUB_SHA}"
 }
 
 deploy_to_gh_pages() {
+  echo "deploy_to_gh_pages $(date)"
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
     git commit -m "Automated deployment of Porsche UI Kit (${P_ABBR_REF}): ${GITHUB_SHA}" --allow-empty
@@ -96,9 +103,10 @@ deploy_to_gh_pages() {
 }
 
 verify_deployment() {
+  echo "verify_deployment $(date)"
   local n=1
-  local max=30
-  local delay=10
+  local max=10
+  local delay=60
   while true
   do
     echo "Check deployment status. Attempt ${n}/${max}, $(date)"
@@ -121,7 +129,7 @@ verify_deployment() {
 setup_github
 checkout_gh_pages
 cleanup_previous_deployment
-copy_porsche-ui-kit-storefront
+copy_porsche_ui_kit_storefront
 if [[ "${P_ABBR_REF}" =~ ${GIT_RELEASE_FILTER} ]]; then
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
