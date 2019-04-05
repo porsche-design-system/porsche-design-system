@@ -87,7 +87,7 @@ deploy_to_gh_pages() {
 
 verify_deployment() {
   local n=1
-  local max=2
+  local max=3
   local delay=1
   while true
   do
