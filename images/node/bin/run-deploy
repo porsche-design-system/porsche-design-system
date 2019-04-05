@@ -87,8 +87,8 @@ deploy_to_gh_pages() {
 
 verify_deployment() {
   local n=1
-  local max=10
-  local delay=60
+  local max=12
+  local delay=10
   while true
   do
     echo "Check deployment status. Attempt ${n}/${max}."
