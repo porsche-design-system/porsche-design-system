@@ -3,10 +3,8 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
-  echo "Please provide the \$GIT_DEPLOY_KEY environment variable."
-  exit 1
-fi
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
 
 if [[ -z "${GITHUB_REPOSITORY}" ]]; then
   echo "Please provide the \$GITHUB_REPOSITORY environment variable."
@@ -36,20 +34,6 @@ fi
 P_ABBR_REF="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
 P_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
 P_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
-
-cleanup_credentials() {
-  echo "Cleaning up credentials"
-  local exit_code=$?
-  rm "/root/.ssh/id_rsa"
-  exit ${exit_code}
-}
-
-setup_credentials() {
-  mkdir -p "/root/.ssh"
-  ssh-keyscan -t rsa github.com > "/root/.ssh/known_hosts"
-  printf -- "${GIT_DEPLOY_KEY}\n" > "/root/.ssh/id_rsa"
-  chmod 600 "/root/.ssh/id_rsa"
-}
 
 setup_github() {
   git config --global user.name "${GITHUB_ACTOR}"
@@ -101,15 +85,16 @@ deploy_to_gh_pages() {
   popd
 }
 
-check_deployment_status() {
+verify_deployment() {
   local n=1
   local max=2
-  local delay=10
+  local delay=1
   while true
   do
     echo "Check deployment status. Attempt ${n}/${max}."
-    P_CURL_STATUS="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
-    if [[ "${P_CURL_STATUS}" -eq 200 ]]; then
+    local http_code="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
+    if [[ "${http_code}" -eq 200 ]]; then
+      echo "All right, deployment was verified."
       break
     elif [[ "${n}" -lt "${max}" ]]; then
       ((n++))
@@ -121,13 +106,11 @@ check_deployment_status() {
   done
 }
 
-trap cleanup_credentials EXIT
-setup_credentials
 setup_github
 checkout_gh_pages
 cleanup_previous_deployment
 copy_porsche-ui-kit-storefront
-if [[ "${P_ABBR_REF}" =~ ^v[0-9]+$ ]]; then
+if [[ "${P_ABBR_REF}" =~ ${GIT_RELEASE_FILTER} ]]; then
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
@@ -135,4 +118,4 @@ if [[ "${P_ABBR_REF}" =~ ^v[0-9]+$ ]]; then
 fi
 add_deployment_sha
 deploy_to_gh_pages
-check_deployment_status
+verify_deployment
