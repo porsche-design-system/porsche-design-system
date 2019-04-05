@@ -104,6 +104,7 @@ verify_deployment() {
     echo "Check deployment status. Attempt ${n}/${max}, $(date)"
     echo "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}"
     local http_code="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
+    echo "http code: ${http_code}"
     if [[ "${http_code}" -eq 200 ]]; then
       echo "All right, deployment was verified."
       break
