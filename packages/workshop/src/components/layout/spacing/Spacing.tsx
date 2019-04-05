@@ -10,211 +10,17 @@ export interface SpacingProps extends ClassNameProp, ComponentProp {
    */
   wrap?: boolean
 
-  margin?:
-    | "auto"
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
-  marginBottom?:
-    | "auto"
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
-  marginLeft?:
-    | "auto"
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
-  marginRight?:
-    | "auto"
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
-  marginTop?:
-    | "auto"
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
+  margin?: "auto" | 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  marginBottom?: "auto" | 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  marginLeft?: "auto" | 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  marginRight?: "auto" | 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  marginTop?: "auto" | 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
 
   padding?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  paddingBottom?:
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
-  paddingLeft?:
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
-  paddingRight?:
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
-  paddingTop?:
-    | 0
-    | 4
-    | 8
-    | 12
-    | 16
-    | 20
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f"
-    | "g"
+  paddingBottom?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  paddingLeft?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  paddingRight?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  paddingTop?: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
 }
 
 const _Spacing: React.StatelessComponent<SpacingProps> = (props) => {
@@ -241,14 +47,14 @@ const _Spacing: React.StatelessComponent<SpacingProps> = (props) => {
   const classes = cx(
     { [prefix(`m--${margin}`)]: margin },
     { [prefix(`mt--${marginTop}`)]: marginTop },
-    { [prefix(`ml--${marginLeft}`)]: marginLeft },
-    { [prefix(`mb--${marginBottom}`)]: marginBottom },
     { [prefix(`mr--${marginRight}`)]: marginRight },
+    { [prefix(`mb--${marginBottom}`)]: marginBottom },
+    { [prefix(`ml--${marginLeft}`)]: marginLeft },
     { [prefix(`p--${padding}`)]: padding },
     { [prefix(`pt--${paddingTop}`)]: paddingTop },
-    { [prefix(`pl--${paddingLeft}`)]: paddingLeft },
-    { [prefix(`pb--${paddingBottom}`)]: paddingBottom },
     { [prefix(`pr--${paddingRight}`)]: paddingRight },
+    { [prefix(`pb--${paddingBottom}`)]: paddingBottom },
+    { [prefix(`pl--${paddingLeft}`)]: paddingLeft },
     className
   )
 
