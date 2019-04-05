@@ -597,10 +597,6 @@ $p-spacing-g-xl: $p-spacing-80;
     @include p-spacing-g("margin", "", "");
   }
 
-  &--auto {
-    margin: auto;
-  }
-
   &t--auto {
     margin-top: auto;
   }
