@@ -38,6 +38,10 @@ action "Deploy" {
   needs = ["Build"]
   uses = "./images/node/"
   runs = ["run-deploy"]
+  env = {
+    GIT_RELEASE_FILTER = ^v[0-9]+$
+    GIT_ISSUE_FILTER = ^issue/[0-9]+$
+  }
   secrets = ["GIT_DEPLOY_KEY"]
 }
 
