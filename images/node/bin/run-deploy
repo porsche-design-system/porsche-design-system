@@ -95,12 +95,12 @@ deploy_to_gh_pages() {
 verify_deployment() {
   echo "verify_deployment $(date)"
   local n=1
-  local max=10
+  local max=20
   local delay=60
   while true
   do
     echo "Check deployment status. Attempt ${n}/${max}. $(date)"
-    local http_code="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
+    local http_code="$(curl -H 'Cache-Control: no-cache' -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
     echo "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}"
     echo "http code: ${http_code}"
     if [[ "${http_code}" -eq "200" ]]; then
