@@ -95,7 +95,7 @@ deploy_to_gh_pages() {
 verify_deployment() {
   echo "verify_deployment $(date)"
   local n=1
-  local max=20
+  local max=240
   local delay=60
   while true
   do
