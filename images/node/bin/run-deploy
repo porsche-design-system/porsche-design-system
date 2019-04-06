@@ -88,7 +88,7 @@ deploy_to_gh_pages() {
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
     git commit -m "Automated deployment of Porsche UI Kit (${P_ABBR_REF}): ${GITHUB_SHA}" --allow-empty
-    #git push origin gh-pages --force-with-lease
+    git push origin gh-pages --force-with-lease
   popd
 }
 
@@ -102,7 +102,7 @@ verify_deployment() {
     echo "Check deployment status. Attempt ${n}/${max}. $(date)"
     local http_code="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
     echo "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}"
-    if [[ "${http_code}" -eq 200 ]]; then
+    if [[ "${http_code}" -eq "200" ]]; then
       echo "All right, deployment was verified. $(date)"
       break
     elif [[ ${n} -lt ${max} ]]; then
