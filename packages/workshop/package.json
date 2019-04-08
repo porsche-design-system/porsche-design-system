@@ -49,6 +49,9 @@
     "lint:ts": "tslint -p './tsconfig.json' -t codeFrame",
     "clean": "rm -rf './node_modules' './.tmp' './build' './css'"
   },
+  "resolutions": {
+    "@types/react": "^16.8.13"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
