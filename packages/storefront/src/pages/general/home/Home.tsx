@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import styles from "./home.module.scss"
-import Teaser from "./assets/img/teaser.jpg"
 import { Button } from "@porsche/ui-kit-react"
 import { Flex, Spacing, Text } from "@porscheui/porsche-ui-kit"
 import { Markdown } from "../../../components/markdown/Markdown"
@@ -10,10 +9,11 @@ import Releases from "../../../releases.json"
 export const Home: React.FunctionComponent = () => {
   return (
     <React.Fragment>
+      <header className={styles.video}>
+        <video src={require("./assets/porsche-ui-kit.mp4")} autoPlay muted>
+        </video>
+      </header>
       <header className={styles.teaser}>
-        <div className={styles["img-wrap"]}>
-          <img src={Teaser} alt="Porsche UI Kit - teaser" className={styles.img} />
-        </div>
         <div className={styles.text}>
           <Text className={styles.headline} as="h1" type="1-bold" align="center">
             Welcome to the
