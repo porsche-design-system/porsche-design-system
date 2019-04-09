@@ -10,8 +10,7 @@ export const Home: React.FunctionComponent = () => {
   return (
     <React.Fragment>
       <header className={styles.video}>
-        <video src={require("./assets/porsche-ui-kit.mp4")} autoPlay muted>
-        </video>
+        <video src={require("./assets/porsche-ui-kit.mp4")} autoPlay muted />
       </header>
       <header className={styles.teaser}>
         <div className={styles.text}>
