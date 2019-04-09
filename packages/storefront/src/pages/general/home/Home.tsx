@@ -9,7 +9,7 @@ import Releases from "../../../releases.json"
 export const Home: React.FunctionComponent = () => {
   return (
     <React.Fragment>
-      <header className={styles.video}>
+      <header className={styles["video-teaser"]}>
         <video src={require("./assets/porsche-ui-kit.mp4")} autoPlay muted />
       </header>
       <header className={styles.teaser}>
