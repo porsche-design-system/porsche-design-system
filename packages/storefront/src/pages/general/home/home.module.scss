@@ -1,12 +1,34 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
-.video-teaser {
+.teaser {
+  &:first-child {
+    margin-top: -$p-spacing-32;
+
+    @include breakpoint("s") {
+      margin-top: -$p-spacing-64;
+    }
+  }
+
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
+  }
+
+  @include breakpoint("s") {
+    margin: {
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
+    }
+  }
+}
+
+.cover {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 30vw;
   overflow: hidden;
-  background: $p-color-grey-1;
-  margin-top: -4rem;
+  background: $p-color-grey-3;
+  border-bottom: 1px solid $p-color-grey-3;
 
   video {
     width: calc(100% + 4px);
@@ -18,90 +40,38 @@
   }
 }
 
-.teaser {
-  position: relative;
-  display: block;
-
-  .img-wrap {
-    position: relative;
-    overflow: hidden;
-    max-height: 240px;
+.newsletter {
+  &:last-child {
+    margin-bottom: -$p-spacing-32;
 
     @include breakpoint("s") {
-      min-height: 340px;
-    }
-
-    @include breakpoint("m") {
-      min-height: 400px;
-    }
-
-    @include breakpoint("xl") {
-      min-height: 500px;
+      margin-bottom: -$p-spacing-64;
     }
   }
 
-  .img {
-    position: relative;
-    max-width: 100%;
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
+  }
+  padding: $p-spacing-32;
+  background: $p-color-grey-1;
 
-    @include breakpoint("s") {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
+  @include breakpoint("s") {
+    margin: {
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
     }
+    padding: $p-spacing-64;
   }
 
-  .text {
-    margin-top: 60px;
-    color: $p-color-black;
-    padding: 0 $p-spacing-32;
+  a {
+    border-bottom: 1px solid $p-color-red-1;
+    text-decoration: none;
+    color: $p-color-red-1;
+    transition: color 0.3s;
 
-    @include breakpoint("s") {
-      position: relative;
-      left: 0;
-      right: 0;
-      padding: 0 $p-spacing-64;
+    &:hover {
+      color: $p-color-red-2;
     }
   }
-
-  .headline {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: $p-spacing-64;
-    padding: 0 $p-spacing-32;
-
-    @include breakpoint("s") {
-      position: static;
-      padding: 0 $p-spacing-64;
-    }
-  }
-
-  .headline-large {
-    display: block;
-    line-height: 1;
-    font-size: rem(48px);
-
-    @include breakpoint("l") {
-      font-size: rem(72px);
-    }
-
-    @include breakpoint("xl") {
-      font-size: rem(99px);
-    }
-  }
-
-  .subline {
-    margin-top: $p-spacing-20;
-  }
-}
-
-.mail-teaser {
-  padding: $p-spacing-24;
-  background-color: $p-color-grey-1;
-}
-
-.content {
-  padding-top: $p-spacing-24;
 }
