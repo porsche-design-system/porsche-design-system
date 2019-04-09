@@ -5,7 +5,7 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
 
 ## Introduction
 
-The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas. Breakpoint specific behaviour (width, offset, etc.) can easily be set by adding breakpoint specific classnames. Also decent nestings are supported.
+The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not ment to function as a toolkit for layouting content blocks or components. Therefore the [Flex](#/layout/flex) component is the right choice.
 
 ### Grid standard
 
@@ -433,12 +433,8 @@ The grid system is fluid/responsive by itself by using percentages for every val
   }}
 </Example>
 
-#### Following values can be set by using breakpoints classes
-
-Size: `grid__child--size-(size)-(breakpoint)`
-
-Offset: `grid__child--offset-(offset)-(breakpoint)`
-
-Direction: `grid--direction-column-(breakpoint)` `grid--direction-column-reverse-(breakpoint)` `grid--direction-row-(breakpoint)` `grid--direction-row-reverse-(breakpoint)`
-
-Gaps: `grid--gap-normal-(breakpoint)` `grid--gap-zero-(breakpoint)`
+**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-grid--direction-{direction}-{bp}` => direction of columns
+* `{p}-grid--gap-{gap}-{bp}` => use of gaps between columns
+* `{p}-grid__child--size-{size}-{bp}` => size based on amount of columns
+* `{p}-grid__child--size-{offset}-{bp}` => offset based on amount of columns
