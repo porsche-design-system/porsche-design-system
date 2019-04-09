@@ -1,13 +1,26 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
+.video {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: $p-color-grey-1;
+  margin-top: -4rem;
+
+  video {
+    width: calc(100% + 4px);
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .teaser {
   position: relative;
   display: block;
-  margin: #{-$p-spacing-32} #{-$p-spacing-32} 0;
-
-  @include breakpoint("s") {
-    margin: #{-$p-spacing-64} #{-$p-spacing-64} 0;
-  }
 
   .img-wrap {
     position: relative;
@@ -40,17 +53,15 @@
   }
 
   .text {
+    margin-top: 60px;
     color: $p-color-black;
     padding: 0 $p-spacing-32;
 
     @include breakpoint("s") {
-      position: absolute;
+      position: relative;
       left: 0;
       right: 0;
-      top: 50%;
       padding: 0 $p-spacing-64;
-      transform: translateY(-50%);
-      color: $p-color-white;
     }
   }
 
@@ -60,7 +71,6 @@
     right: 0;
     top: $p-spacing-64;
     padding: 0 $p-spacing-32;
-    color: $p-color-white;
 
     @include breakpoint("s") {
       position: static;
