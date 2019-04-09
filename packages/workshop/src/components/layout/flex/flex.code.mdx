@@ -5,9 +5,11 @@ import { Flex, Text } from "@porscheui/porsche-ui-kit"
 
 ## Introduction
 
-The Porsche UI Kit flex layout system is based on native css flex behaviours and can be controlled by changing class names on the parent/child flex item.
+The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by changing class names/properties on the flex container and flex item. It can be used to quickly layout standard, css-prefixed content blocks or components. It does not replace [Grid](#/layout/grid) component which should be used to define basic page structures.
 
-### Flex - standard
+### Standard (default)
+Initialize standard flexbox container to define flex context.
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
 <Example noTheme>
   {(theme) => {
@@ -49,9 +51,8 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
   }}
 </Example>
 
----
-
-### Flex - inline
+### Inline
+Flex inline displays flex containers in a row.
 
 <Example noTheme>
   {(theme) => {
@@ -71,14 +72,14 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text align="center" style={itemStyle("lightskyblue")}>
               2
             </Text>
           </Flex.Item>
         </Flex>
         <Flex inline>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text align="center" style={itemStyle("deepskyblue")}>
               1
             </Text>
           </Flex.Item>
@@ -93,9 +94,8 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
   }}
 </Example>
 
----
-
-### Flex - responsive
+### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -108,7 +108,7 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
     }
     return (
       <React.Fragment>
-        <Flex wrap={false} inline={{ base: false, l: true }}>
+        <Flex inline={{ base: false, l: true }}>
           <Flex.Item>
             <Text align="center" style={itemStyle("deepskyblue")}>
               1
@@ -137,13 +137,20 @@ The Porsche UI Kit flex layout system is based on native css flex behaviours and
   }}
 </Example>
 
+**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex` #(default) => containers are underneath each other
+* `{p}-flex--inline` => containers are stuck side by side
+* `{p}-flex--inline-{bp}` => example of breakpoint specific behaviour
+
 ---
 
 ### Flex direction
 
-In some cases it might be necessary to define or change direction of the columns. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
+Define or change direction of the flex items to rows or columns and set order.
 
-#### Direction - row (default)
+#### Row (default)
+
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
 <Example noTheme>
   {(theme) => {
@@ -178,7 +185,7 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
-#### Direction - row reverse
+#### Row reverse
 
 <Example noTheme>
   {(theme) => {
@@ -213,7 +220,7 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
-#### Direction - column
+#### Column
 
 <Example noTheme>
   {(theme) => {
@@ -248,7 +255,7 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
-#### Direction - column reverse
+#### Column reverse
 
 <Example noTheme>
   {(theme) => {
@@ -283,7 +290,8 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
-#### Direction - responsive
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -318,13 +326,22 @@ In some cases it might be necessary to define or change direction of the columns
   }}
 </Example>
 
+**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex--direction-row` #(default) => items are stuck side by side
+* `{p}-flex--direction-row-reverse` => items are stuck side by side in reverse order
+* `{p}-flex--direction-column` => items are stuck underneath each other
+* `{p}-flex--direction-column-reverse` => items are stuck underneath each other in reverse order
+* `{p}-flex--direction-column-{bp}` => example of breakpoint specific behaviour
+
 ---
 
-### Flex wrapping
+### Flex wrap
 
-The flex-wrap property is a sub-property of the flexible box layout module. It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in (the cross axis is the axis perpendicular to the main axis. Its direction depends on the main axis direction).
+The flex wrap property is used to force flex items to stay in line independently of the flex container width, or to flow in multiple lines forced by the flex container width.
 
-#### Wrap - no (default)
+#### Nowrap (default)
+
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
 <Example noTheme>
   {(theme) => {
@@ -354,7 +371,7 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
   }}
 </Example>
 
-#### Wrap - wrap
+#### Wrap
 
 <Example noTheme>
   {(theme) => {
@@ -384,7 +401,7 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
   }}
 </Example>
 
-#### Wrap - reverse
+#### Reverse
 
 <Example noTheme>
   {(theme) => {
@@ -414,7 +431,8 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
   }}
 </Example>
 
-#### Wrap - responsive
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -444,13 +462,21 @@ The flex-wrap property is a sub-property of the flexible box layout module. It d
   }}
 </Example>
 
+**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex--nowrap` #(default) => items are in line on the main axis
+* `{p}-flex--wrap` => items can be wrapped to new lines
+* `{p}-flex--wrap-reverse` => items can be wrapped and reversed
+* `{p}-flex--wrap-no-{bp}` => example of breakpoint specific behaviour
+
 ---
 
 ### Flex justify content
 
-This defines the alignment along the main axis. It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size.
+This property defines the horizontal alignment of the flex items on the main axis.
 
-#### Justify content - start (default)
+#### Start (default)
+
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
 <Example noTheme>
   {(theme) => {
@@ -463,7 +489,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
     }
     return (
       <React.Fragment>
-        <Flex justifyContent="start">
+        <Flex>
           <Flex.Item>
             <Text align="center" style={itemStyle("dodgerblue")}>
               1
@@ -485,42 +511,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Justify content - center
-
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
-    return (
-      <React.Fragment>
-        <Flex justifyContent="center">
-          <Flex.Item>
-            <Text align="center" style={itemStyle("dodgerblue")}>
-              1
-            </Text>
-          </Flex.Item>
-          <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
-              2
-            </Text>
-          </Flex.Item>
-          <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
-              3
-            </Text>
-          </Flex.Item>
-        </Flex>
-      </React.Fragment>
-    )
-  }}
-</Example>
-
-#### Justify content - end
+#### End
 
 <Example noTheme>
   {(theme) => {
@@ -555,7 +546,42 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Justify content - space between
+#### Center
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex justifyContent="center">
+          <Flex.Item>
+            <Text align="center" style={itemStyle("dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Space between
 
 <Example noTheme>
   {(theme) => {
@@ -590,7 +616,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Justify content - space around
+#### Space around
 
 <Example noTheme>
   {(theme) => {
@@ -625,7 +651,7 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Justify content - space evenly
+#### Space evenly
 
 <Example noTheme>
   {(theme) => {
@@ -660,7 +686,8 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
-#### Justify content - responsive
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -695,13 +722,60 @@ This defines the alignment along the main axis. It helps distribute extra free s
   }}
 </Example>
 
+**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex--justify-content-start` #(default) => items are aligned towards the start line
+* `{p}-flex--justify-content-end` => items are aligned towards the end line
+* `{p}-flex--justify-content-center` => items are aligned in the middle
+* `{p}-flex--justify-content-space-between` => items are aligned evenly on the main axis
+* `{p}-flex--justify-content-space-around` => items are aligned evenly on the main axis with equal space around
+* `{p}-flex--justify-content-space-evenly` => items are aligned evenly on the main axis with even space around
+* `{p}-flex--justify-content-end-{bp}` => example of breakpoint specific behaviour
+
 ---
 
 ### Flex align items
 
-This defines the default behaviour for how flex items are laid out along the cross axis on the current line. Think of it as the main axis version for the cross axis (perpendicular to the main axis).
+This property defines the horizontal alignment of the flex items on the main axis.
 
-#### Align items - start (default)
+#### Stretch (default)
+
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+
+<Example noTheme>
+  {(theme) => {
+    const itemStyle = (height, color) => {
+      return {
+        backgroundColor: color,
+        height,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("100%", "deepskyblue")}>
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("100%", "lightskyblue")}>
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Start
 
 <Example noTheme>
   {(theme) => {
@@ -737,43 +811,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align items - center
-
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        height,
-        color: "white",
-        width: "200px"
-      }
-    }
-    return (
-      <React.Fragment>
-        <Flex alignItems="center">
-          <Flex.Item>
-            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
-              1
-            </Text>
-          </Flex.Item>
-          <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
-              2
-            </Text>
-          </Flex.Item>
-          <Flex.Item>
-            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
-              3
-            </Text>
-          </Flex.Item>
-        </Flex>
-      </React.Fragment>
-    )
-  }}
-</Example>
-
-#### Align items - end
+#### End
 
 <Example noTheme>
   {(theme) => {
@@ -809,7 +847,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align items - stretch
+#### Center
 
 <Example noTheme>
   {(theme) => {
@@ -823,19 +861,19 @@ This defines the default behaviour for how flex items are laid out along the cro
     }
     return (
       <React.Fragment>
-        <Flex alignItems="stretch">
+        <Flex alignItems="center">
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("100%", "deepskyblue")}>
+            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("100%", "lightskyblue")}>
+            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
               3
             </Text>
           </Flex.Item>
@@ -845,7 +883,7 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align items - baseline
+#### Baseline
 
 <Example noTheme>
   {(theme) => {
@@ -890,7 +928,8 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
-#### Align items - responsive
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -926,13 +965,54 @@ This defines the default behaviour for how flex items are laid out along the cro
   }}
 </Example>
 
+**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex--align-items-stretch` #(default) => items are stretched towards the cross axis
+* `{p}-flex--align-items-start` => items are aligned towards start of cross axis
+* `{p}-flex--align-items-end` => items are aligned towards end of cross axis
+* `{p}-flex--align-items-center` => items are aligned in the center of cross axis
+* `{p}-flex--align-items-baseline` => items are aligned such as their baseline (text-) alignment
+* `{p}-flex--align-items-end-{bp}` => example of breakpoint specific behaviour
+
 ---
 
 ### Flex align content
 
-This aligns a flex containers lines within it when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis. Note: this property has no effect when there is only one line of flex items.
+This aligns flex items vertical on the cross axis of the flex container.
 
-#### Align content - start (default)
+#### Stretch (default)
+
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        width: "200px",
+        height: "100%"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex wrap style={containerStyle}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Start
 
 <Example noTheme>
   {(theme) => {
@@ -962,37 +1042,7 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### Align content - center
-
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
-    return (
-      <React.Fragment>
-        <Flex wrap alignContent="center" style={containerStyle}>
-          {Array.apply(0, Array(9)).map(function(x, i) {
-            return (
-              <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
-                  {i + 1}
-                </Text>
-              </Flex.Item>
-            )
-          })}
-        </Flex>
-      </React.Fragment>
-    )
-  }}
-</Example>
-
-#### Align content - end
+#### End
 
 <Example noTheme>
   {(theme) => {
@@ -1022,7 +1072,7 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### Align content - space around
+#### Center
 
 <Example noTheme>
   {(theme) => {
@@ -1036,7 +1086,7 @@ This aligns a flex containers lines within it when there is extra space in the c
     }
     return (
       <React.Fragment>
-        <Flex wrap alignContent="space-around" style={containerStyle}>
+        <Flex wrap alignContent="center" style={containerStyle}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
@@ -1052,7 +1102,7 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### Align content - space between
+#### Space between
 
 <Example noTheme>
   {(theme) => {
@@ -1082,7 +1132,38 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
-#### Align content - responsive
+#### Space around
+
+<Example noTheme>
+  {(theme) => {
+    const containerStyle = { height: "120px" }
+    const itemStyle = (color) => {
+      return {
+        backgroundColor: color,
+        color: "white",
+        width: "200px"
+      }
+    }
+    return (
+      <React.Fragment>
+        <Flex wrap alignContent="space-around" style={containerStyle}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text align="center" style={itemStyle("deepskyblue")}>
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -1112,11 +1193,28 @@ This aligns a flex containers lines within it when there is extra space in the c
   }}
 </Example>
 
+**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex--align-content-stretch` #(default) => items are stretched to take the remaining space
+* `{p}-flex--align-content-start` => items are aligned towards start of cross axis
+* `{p}-flex--align-content-end` => items are aligned towards end of cross axis
+* `{p}-flex--align-content-center` => items are aligned in the center of cross axis
+* `{p}-flex--align-content-space-between` => items are aligned evenly of cross axis
+* `{p}-flex--align-content-space-around` => items are aligned evenly with same space around to cross axis
+* `{p}-flex--align-content-end-{bp}` => example of breakpoint specific behaviour
+
 ---
 
 ### Flex child spacing
 
-Use `gap` to apply equal horizontal spacing to all children of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component.
+Use `gap` to apply equal horizontal spacing to all children of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component. All values of standard spacing component can be used.
+
+**Static**
+
+`"auto" | 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
+
+**Responsive**
+
+`"a" | "b" | "c" | "d" | "e" | "f" | "g"`
 
 <Example noTheme>
   {(theme) => {
@@ -1151,15 +1249,21 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
   }}
 </Example>
 
+**Possible class names on the flex parent container (where {p} is the prefix):**
+* `{p}-m-nl--12` => negative margin left on the parent container to equalize chidren paddings
+* `{p}-m-nr--12` => negative margin left on the parent container to equalize chidren paddings
+* `{p}-pl--12` => padding left value of children
+* `{p}-pr--12` => padding right value of children
+
 ---
 
-## Modifier for the flex children
+## Modifier for flex items (children)
 
-### Flex child width
+### Flex item width
 
-The widths of flex children is defined by its contents by default. But it is also possible to define equal widths or even specific widths.
+The widths of flex items is normally defined through its contents by default. But it is also possible to define equal widths or even specific predefined widths.
 
-#### Child width - auto (default)
+#### Auto (default)
 
 <Example noTheme>
   {(theme) => {
@@ -1199,7 +1303,7 @@ The widths of flex children is defined by its contents by default. But it is als
   }}
 </Example>
 
-#### Child width - equal
+#### Equal
 
 <Example noTheme>
   {(theme) => {
@@ -1239,7 +1343,7 @@ The widths of flex children is defined by its contents by default. But it is als
   }}
 </Example>
 
-#### Child width - specific
+#### Specific
 
 <Example noTheme>
   {(theme) => {
@@ -1340,7 +1444,8 @@ The widths of flex children is defined by its contents by default. But it is als
   }}
 </Example>
 
-#### Child width - responsive
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -1380,13 +1485,24 @@ The widths of flex children is defined by its contents by default. But it is als
   }}
 </Example>
 
+**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex__child--auto` #(default) => the width is given by the item content
+* `{p}-flex__child--equal` => items are stretched equally divided by their number
+* `{p}-flex__child--width-one-quarter` => items are stretched to one quarter of the remaining space
+* `{p}-flex__child--width-one-third` => items are stretched to one third of the remaining space
+* `{p}-flex__child--width-half` => items are stretched to half of the remaining space
+* `{p}-flex__child--width-two-thirds` => items are stretched to two thirds of the remaining space
+* `{p}-flex__child--width-three-quarters` => items are stretched to three quarters of the remaining space
+* `{p}-flex__child--width-full` => items are stretched to full width of the remaining space
+* `{p}-flex__child--width-one-quarter-{bp}` => example of breakpoint specific behaviour
+
 ---
 
-### Flex child offset
+### Flex item offset
 
 Items can have different offsets that work similar like column widths.
 
-#### Child offset - widths
+#### Widths
 
 <Example noTheme>
   {(theme) => {
@@ -1440,7 +1556,8 @@ Items can have different offsets that work similar like column widths.
   }}
 </Example>
 
-#### Child offset - responsive
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -1466,13 +1583,23 @@ Items can have different offsets that work similar like column widths.
   }}
 </Example>
 
+**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex__child--offset-one-quarter` => offset left of one quarter of the remaining space
+* `{p}-flex__child--offset-one-third` => offset left of one third of the remaining space
+* `{p}-flex__child--offset-half` => offset left of half of the remaining space
+* `{p}-flex__child--offset-two-thirds` => offset left of two thirds of the remaining space
+* `{p}-flex__child--offset-three-quarter` => offset left of three quarters of the remaining space
+* `{p}-flex__child--offset-one-third-{bp}` => example of breakpoint specific behaviour
+
 ---
 
-### Flex child align self
+### Flex item align self
 
-You can override the align items of the flex parent for individual flex items. Note that float, clear and vertical-align have no effect on a flex item.
+You can override the align items properties of the flex container for individual flex items.
 
-#### Child align self - auto (default)
+#### Auto (default)
+
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
 <Example noTheme>
   {(theme) => {
@@ -1489,22 +1616,22 @@ You can override the align items of the flex parent for individual flex items. N
       <React.Fragment>
         <Flex style={containerStyle}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+            <Text align="center" style={itemStyle("100%", "dodgerblue")}>
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+            <Text align="center" style={itemStyle("100%", "deepskyblue")}>
               2
             </Text>
           </Flex.Item>
-          <Flex.Item alignSelf="auto">
-            <Text align="center" style={itemStyle("50px", "deeppink")}>
+          <Flex.Item>
+            <Text align="center" style={itemStyle("100%", "deeppink")}>
               3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+            <Text align="center" style={itemStyle("100%", "deepskyblue")}>
               4
             </Text>
           </Flex.Item>
@@ -1514,7 +1641,7 @@ You can override the align items of the flex parent for individual flex items. N
   }}
 </Example>
 
-#### Child align self - stretch
+#### Stretch
 
 <Example noTheme>
   {(theme) => {
@@ -1529,7 +1656,7 @@ You can override the align items of the flex parent for individual flex items. N
     }
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
+        <Flex alignItems="start" style={containerStyle}>
           <Flex.Item>
             <Text align="center" style={itemStyle("50px", "dodgerblue")}>
               1
@@ -1556,7 +1683,7 @@ You can override the align items of the flex parent for individual flex items. N
   }}
 </Example>
 
-#### Child align self - start
+#### Start
 
 <Example noTheme>
   {(theme) => {
@@ -1598,7 +1725,7 @@ You can override the align items of the flex parent for individual flex items. N
   }}
 </Example>
 
-#### Child align self - end
+#### End
 
 <Example noTheme>
   {(theme) => {
@@ -1640,7 +1767,7 @@ You can override the align items of the flex parent for individual flex items. N
   }}
 </Example>
 
-#### Child align self - center
+#### Center
 
 <Example noTheme>
   {(theme) => {
@@ -1682,7 +1809,7 @@ You can override the align items of the flex parent for individual flex items. N
   }}
 </Example>
 
-#### Child align self - baseline
+#### Baseline
 
 <Example noTheme>
   {(theme) => {
@@ -1733,7 +1860,8 @@ You can override the align items of the flex parent for individual flex items. N
   }}
 </Example>
 
-#### Child align self - responsive
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Example noTheme>
   {(theme) => {
@@ -1775,13 +1903,26 @@ You can override the align items of the flex parent for individual flex items. N
   }}
 </Example>
 
+**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex__child--align-self-auto` #(default) => uses align-items value of flex container
+* `{p}-flex__child--align-self-stretch` => item is stretched on the cross axis
+* `{p}-flex__child--align-self-start` => item is at the start line of the cross axis
+* `{p}-flex__child--align-self-end` => item is at the end line of the cross axis
+* `{p}-flex__child--align-self-center` => item is centered on the cross axis
+* `{p}-flex__child--align-self-baseline` => item is centered on the (text-) baseline of cross axis
+* `{p}-flex__child--align-self-end-{bp}` => example of breakpoint specific behaviour
+
 ---
 
-### Flex child grow/shrink
+### Flex item grow
 
-Flexbox default behaviour on how the childrens widths are rendered (shrinked, stretched) can be overwritten with the following class names. Grow: Handles how to grow an item based on the space that is left to fulfill the parents width. Shrink: Handles how to shrink an item based on the space that exceeds the parents width to fulfill it.
+Flexbox default behaviour on how the childrens widths are rendered (stretched) can be overwritten with the following class names.
 
-#### Child grow - 0 (default)
+It handles how to grow an item based on the space that is left to fulfill the parents width.
+
+#### Grow - 0 (default)
+
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
 <Example noTheme>
   {(theme) => {
@@ -1811,7 +1952,7 @@ Flexbox default behaviour on how the childrens widths are rendered (shrinked, st
   }}
 </Example>
 
-#### Child grow - 1
+#### Grow - 1
 
 <Example noTheme>
   {(theme) => {
@@ -1841,7 +1982,22 @@ Flexbox default behaviour on how the childrens widths are rendered (shrinked, st
   }}
 </Example>
 
-#### Child shrink - 1 (default)
+**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex__child--grow-0` #(default) => items grows in conjunction of its contents
+* `{p}-flex__child--grow-1` => item takes remaining space
+* `{p}-flex__child--grow-1-{bp}` => example of breakpoint specific behaviour
+
+---
+
+### Flex item shrink
+
+Flexbox default behaviour on how the childrens widths are rendered (shrinked) can be overwritten with the following class names.
+
+It handles how to shrink an item based on the space that exceeds the parents width to fulfill it.
+
+#### Shrink - 1 (default)
+
+If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
 <Example noTheme>
   {(theme) => {
@@ -1871,7 +2027,7 @@ Flexbox default behaviour on how the childrens widths are rendered (shrinked, st
   }}
 </Example>
 
-#### Child shrink - 0
+#### Shrink - 0
 
 <Example noTheme>
   {(theme) => {
@@ -1901,13 +2057,18 @@ Flexbox default behaviour on how the childrens widths are rendered (shrinked, st
   }}
 </Example>
 
+**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex__child--shrink-1` #(default) => items shrinks in conjunction of its contents
+* `{p}-flex__child--shrink-0` => item does not shrink at all
+* `{p}-flex__child--shrink-1-{bp}` => example of breakpoint specific behaviour
+
 ---
 
-### Flex child shorthand
+### Flex item shorthand
 
 Setting shorthand properties for flex grow, shrink and base:
 
-#### Child shorthand - initial (grow:0, shrink:1 and base:auto)
+#### Initial (grow:0, shrink:1 and base:auto)
 
 <Example noTheme>
   {(theme) => {
@@ -1942,7 +2103,7 @@ Setting shorthand properties for flex grow, shrink and base:
   }}
 </Example>
 
-#### Child shorthand - auto (grow:1, shrink:1 and base:auto)
+#### Auto (grow:1, shrink:1 and base:auto)
 
 <Example noTheme>
   {(theme) => {
@@ -1977,7 +2138,7 @@ Setting shorthand properties for flex grow, shrink and base:
   }}
 </Example>
 
-#### Child shorthand - equal (grow:1, shrink:1 and base:0)
+#### Equal (grow:1, shrink:1 and base:0)
 
 <Example noTheme>
   {(theme) => {
@@ -2012,7 +2173,7 @@ Setting shorthand properties for flex grow, shrink and base:
   }}
 </Example>
 
-#### Child shorthand - none (grow:0, shrink:0 and base:auto)
+#### None (grow:0, shrink:0 and base:auto)
 
 <Example noTheme>
   {(theme) => {
@@ -2046,3 +2207,10 @@ Setting shorthand properties for flex grow, shrink and base:
     )
   }}
 </Example>
+
+**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex__child--initial` => items shrinks to its minimum size to fit the container
+* `{p}-flex__child--auto` => item stretches/shrinks regarding to its content and its container
+* `{p}-flex__child--equal` => item stretches equally to fit the container container
+* `{p}-flex__child--none` => item doesn't shrink or grow regarding to its container
+* `{p}-flex__child--equal-{bp}` => example of breakpoint specific behaviour
