@@ -40,6 +40,22 @@
   }
 }
 
+.intro {
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
+  }
+  padding: $p-spacing-32;
+
+  @include breakpoint("s") {
+    margin: {
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
+    }
+    padding: $p-spacing-64;
+  }
+}
+
 .newsletter {
   &:last-child {
     margin-bottom: -$p-spacing-32;

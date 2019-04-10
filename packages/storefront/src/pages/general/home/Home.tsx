@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from "react-router-dom"
 import styles from "./home.module.scss"
 import {Button} from "@porsche/ui-kit-react"
-import {Flex, Spacing, Text} from "@porscheui/porsche-ui-kit"
+import {Flex, Spacing, Text, Grid} from "@porscheui/porsche-ui-kit"
 
 export const Home: React.FunctionComponent = () => {
   return (
@@ -14,48 +14,50 @@ export const Home: React.FunctionComponent = () => {
         </div>
       </header>
 
-      <Spacing marginTop={64}>
-        <Flex gap={32}>
-          <Flex.Item width="one-third">
+      <article className={styles.intro}>
+        <Grid>
+          <Grid.Child size={{base: 12, m: 3}}>
             <Text as="h1" type="2-bold">Porsche UI Kit</Text>
             <Text as="h2" type="4-regular">Design System</Text>
-          </Flex.Item>
-          <Flex.Item width="two-thirds">
-            <Text type="2-regular">The Porsche UI Kit provides the fundamental elements to build aesthetic, quialitative
-              and intuitive designs. Ready to use as designed Sketch Libraries, coded React Components or simple CSS
-              with compiled HTML. Everything built and tested following the Porsche Quality Standards and Corporate
-              Design.</Text>
-            <Spacing marginTop={32}>
-              <Flex gap={12}>
+          </Grid.Child>
+          <Grid.Child size={{base: 12, m: 8}} offset={{base: 0, l: 1}} className="p-mt--24 p-mt--0-m">
+            <Text type="2-regular">The Porsche UI Kit provides the fundamental elements to easily build aesthetic,
+              qualitative and intuitive designs. Ready to use as designed Sketch libraries, coded React components or HTML
+              with CSS styles. Everything built and tested following the Porsche quality standards and corporate
+              design.</Text>
+            <Spacing marginTop={16}>
+              <Flex gap={16} wrap={true}>
                 <Flex.Item>
-                  <Button type="highlight" as={Link} {...{to: "/design/introduction"}}>Start Designing</Button>
+                  <Spacing marginTop={16}>
+                    <Button type="highlight" as={Link} {...{to: "/design/introduction"}}>Start designing</Button>
+                  </Spacing>
                 </Flex.Item>
                 <Flex.Item>
-                  <Button type="highlight" as={Link} {...{to: "/code/introduction"}}>Start Coding</Button>
+                  <Spacing marginTop={16}>
+                    <Button type="highlight" as={Link} {...{to: "/code/introduction"}}>Start coding</Button>
+                  </Spacing>
                 </Flex.Item>
               </Flex>
             </Spacing>
-          </Flex.Item>
-        </Flex>
-      </Spacing>
+          </Grid.Child>
+        </Grid>
+      </article>
 
-      <Spacing marginTop={80}>
-        <article className={styles.newsletter}>
-          <Flex gap={32}>
-            <Flex.Item width="one-third">
-              <Text as="h1" type="2-bold">Always stay informed</Text>
-            </Flex.Item>
-            <Flex.Item width="two-thirds">
-              <Text type="2-regular">Join our mailing list and get informed about Porsche UI.</Text>
-              <Spacing marginTop={8}>
-                <Text>
-                  <a href="http://eepurl.com/ghVSjH" target="_blank">Subscribe to mailing list</a>
-                </Text>
-              </Spacing>
-            </Flex.Item>
-          </Flex>
-        </article>
-      </Spacing>
+      <article className={styles.newsletter}>
+        <Grid>
+          <Grid.Child size={{base: 12, m: 3}}>
+            <Text as="h1" type="2-bold">Always stay informed</Text>
+          </Grid.Child>
+          <Grid.Child size={{base: 12, m: 8}} offset={{base: 0, l: 1}} className="p-mt--24 p-mt--0-m">
+            <Text type="2-regular">Join our mailing list and get informed about Porsche UI.</Text>
+            <Spacing marginTop={8}>
+              <Text>
+                <a href="http://eepurl.com/ghVSjH" target="_blank">Subscribe to mailing list</a>
+              </Text>
+            </Spacing>
+          </Grid.Child>
+        </Grid>
+      </article>
 
     </React.Fragment>
   )
