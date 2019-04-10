@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "./static/js/0.81989862.chunk.js"
   },
   {
-    "revision": "61f19cbec17a95946a9d",
-    "url": "./static/css/main.22c20925.chunk.css"
+    "revision": "deb997c88d898f197f9b",
+    "url": "./static/css/main.a6c47107.chunk.css"
   },
   {
-    "revision": "61f19cbec17a95946a9d",
-    "url": "./static/js/main.ad315eba.chunk.js"
+    "revision": "deb997c88d898f197f9b",
+    "url": "./static/js/main.b0a91024.chunk.js"
   },
   {
     "revision": "10e81321b5a32fe68837",
@@ -112,6 +112,10 @@ self.__precacheManifest = [
     "url": "./static/media/versioning.6b216667.md"
   },
   {
+    "revision": "4dce480a7f3b97cfc47ef0b9fe059ce4",
+    "url": "./static/media/communication.4dce480a.md"
+  },
+  {
     "revision": "7890840c6b1c3c189725a6382ef2d189",
     "url": "./static/media/support.7890840c.md"
   },
@@ -120,8 +124,8 @@ self.__precacheManifest = [
     "url": "./static/media/license.0dae52f4.md"
   },
   {
-    "revision": "9a4e03b9ffbac94bff7ed80245fffdfe",
-    "url": "./static/media/faq.9a4e03b9.md"
+    "revision": "5e92f5aba82ab7faf9aac51f17e7195c",
+    "url": "./static/media/faq.5e92f5ab.md"
   },
   {
     "revision": "f73c79a89f0580a50c7b08e9773ad65d",
@@ -144,39 +148,35 @@ self.__precacheManifest = [
     "url": "./static/media/sketch-plugins.ad108023.md"
   },
   {
-    "revision": "f069c24601cd252c826b1d30dfbb2ebf",
-    "url": "./static/media/introduction.f069c246.md"
+    "revision": "fa5e579d57bbbaff3a4ee3c86f2b5dec",
+    "url": "./static/media/introduction.fa5e579d.md"
   },
   {
-    "revision": "159fde81b496ba8fbfe649478c7db4cd",
-    "url": "./static/media/installation.159fde81.md"
+    "revision": "0749c43fca8895acd5cf873975830bde",
+    "url": "./static/media/installation.0749c43f.md"
   },
   {
-    "revision": "16678db58f8fb8d55e5e267e825c2291",
-    "url": "./static/media/installation-v0.16678db5.md"
-  },
-  {
-    "revision": "c1b3cf52d95e265496ac1ffa21f2ebdf",
-    "url": "./static/media/definition-of-done.c1b3cf52.md"
+    "revision": "afbe1f046c521d9b6bafe6eef97c7cf0",
+    "url": "./static/media/definition-of-done.afbe1f04.md"
   },
   {
     "revision": "2b9656ab31ed452ad2f3e9cf138c9e68",
     "url": "./static/media/ci-cd.2b9656ab.md"
   },
   {
-    "revision": "7d897bc37ee919edca642dab9b46b908",
-    "url": "./static/media/browser-compatibility.7d897bc3.md"
+    "revision": "ada34570407187cb301485445c946398",
+    "url": "./static/media/browser-compatibility.ada34570.md"
   },
   {
-    "revision": "1a4b527ad28c28881e1608426d6f8274",
-    "url": "./static/media/contribution.1a4b527a.md"
+    "revision": "eb417e82e78c985c54b12185d96a97d4",
+    "url": "./static/media/contribution.eb417e82.md"
   },
   {
     "revision": "ed704bed1985c039173d2aeaab1c1931",
     "url": "./static/media/markdown.ed704bed.md"
   },
   {
-    "revision": "68aea1df67ed69a2f5e3b6dd62d08dc2",
+    "revision": "fb73793f78c0b7eaca69dfa34fcc117d",
     "url": "./index.html"
   }
 ];
