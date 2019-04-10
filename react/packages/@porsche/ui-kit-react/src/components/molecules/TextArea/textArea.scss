@@ -47,6 +47,10 @@
             border-color: $text-area-field-text-color-error;
             padding: $text-area-field-padding;
         }
+
+        &--resizable {
+            resize: vertical;
+        }
     }
 
     &__label {
