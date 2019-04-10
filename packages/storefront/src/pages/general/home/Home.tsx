@@ -16,12 +16,12 @@ export const Home: React.FunctionComponent = () => {
 
       <article className={styles.intro}>
         <Grid>
-          <Grid.Child size={{base: 12, m: 3}}>
+          <Grid.Child size={{base: 12, m: 4}}>
             <Text as="h1" type="2-bold">Porsche UI Kit</Text>
             <Text as="h2" type="4-regular">Design System</Text>
           </Grid.Child>
-          <Grid.Child size={{base: 12, m: 8}} offset={{base: 0, l: 1}} className="p-mt--24 p-mt--0-m">
-            <Text type="2-regular">The Porsche UI Kit provides the fundamental elements to easily build aesthetic,
+          <Grid.Child size={{base: 12, m: 8}} className="p-mt--24 p-mt--0-m">
+            <Text type="3-regular">The Porsche UI Kit provides the fundamental elements to easily build aesthetic,
               qualitative and intuitive designs. Ready to use as designed Sketch libraries, coded React components or HTML
               with CSS styles. Everything built and tested following the Porsche quality standards and corporate
               design.</Text>
@@ -46,10 +46,10 @@ export const Home: React.FunctionComponent = () => {
       <article className={styles.newsletter}>
         <Grid>
           <Grid.Child size={{base: 12, m: 3}}>
-            <Text as="h1" type="2-bold">Always stay informed</Text>
+            <Text as="h2" type="2-bold">Always stay informed</Text>
           </Grid.Child>
-          <Grid.Child size={{base: 12, m: 8}} offset={{base: 0, l: 1}} className="p-mt--24 p-mt--0-m">
-            <Text type="2-regular">Join our mailing list and get informed about Porsche UI.</Text>
+          <Grid.Child size={{base: 12, m: 8}} offset={{base: 0, m: 1}} className="p-mt--24 p-mt--0-m">
+            <Text type="3-regular">Join our mailing list and get informed about Porsche UI.</Text>
             <Spacing marginTop={8}>
               <Text>
                 <a href="http://eepurl.com/ghVSjH" target="_blank">Subscribe to mailing list</a>
