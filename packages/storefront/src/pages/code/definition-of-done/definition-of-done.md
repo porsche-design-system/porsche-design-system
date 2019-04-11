@@ -1,5 +1,7 @@
 # Definition of Done
 
+Whenever working on a component, these are subject to strict guidelines to meet the high quality standard.
+
 ## General
 - Create UI decision proposal based on research and testing
 - Definition of hierarchy structure and naming of all related states and variants in design and code
@@ -16,10 +18,10 @@
 - Test code visual and functional for all supported browsers in viewports: 320px, 480px, 760px, 1000px, 1300px, 1760px, 1920px
 
 ## Developer
-- does your pattern work (oder: looks fine/good) in *every* supported browser (Browser-Support can be found  inside the `.browserlistrc` file)
+- Does your pattern work (or: looks fine/good) in *every* supported browser (Browser-Support can be found  inside the `.browserlistrc` file in project root)
 
 ## Reviewer
-- does the pattern work (oder: looks fine/good) in *one* of the supported browsers (Browser-Support can be found inside the `.browserlistrc` file)
+- Does the pattern work (or: looks fine/good) in *one* of the supported browsers (Browser-Support can be found inside the `.browserlistrc` file in project root)
 
 ## Designer
-- check the look of the PR  
+- Check the look of the GitHub Pull Request
