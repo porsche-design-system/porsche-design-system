@@ -1,97 +1,92 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
 .teaser {
-  position: relative;
-  display: block;
-  margin: #{-$p-spacing-32} #{-$p-spacing-32} 0;
+  &:first-child {
+    margin-top: -$p-spacing-32;
+
+    @include breakpoint("s") {
+      margin-top: -$p-spacing-64;
+    }
+  }
+
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
+  }
 
   @include breakpoint("s") {
-    margin: #{-$p-spacing-64} #{-$p-spacing-64} 0;
-  }
-
-  .img-wrap {
-    position: relative;
-    overflow: hidden;
-    max-height: 240px;
-
-    @include breakpoint("s") {
-      min-height: 340px;
-    }
-
-    @include breakpoint("m") {
-      min-height: 400px;
-    }
-
-    @include breakpoint("xl") {
-      min-height: 500px;
+    margin: {
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
     }
   }
+}
 
-  .img {
-    position: relative;
-    max-width: 100%;
+.cover {
+  position: relative;
+  padding-top: 34%;
+  overflow: hidden;
+  background: $p-color-grey-3;
+  border-bottom: 1px solid $p-color-grey-3;
 
-    @include breakpoint("s") {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
-  }
-
-  .text {
-    color: $p-color-black;
-    padding: 0 $p-spacing-32;
-
-    @include breakpoint("s") {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      padding: 0 $p-spacing-64;
-      transform: translateY(-50%);
-      color: $p-color-white;
-    }
-  }
-
-  .headline {
+  video {
+    width: calc(100% + 4px);
+    height: auto;
     position: absolute;
-    left: 0;
-    right: 0;
-    top: $p-spacing-64;
-    padding: 0 $p-spacing-32;
-    color: $p-color-white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.intro {
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
+  }
+  padding: $p-spacing-32;
+
+  @include breakpoint("s") {
+    margin: {
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
+    }
+    padding: $p-spacing-64;
+  }
+}
+
+.newsletter {
+  &:last-child {
+    margin-bottom: -$p-spacing-32;
 
     @include breakpoint("s") {
-      position: static;
-      padding: 0 $p-spacing-64;
+      margin-bottom: -$p-spacing-64;
     }
   }
 
-  .headline-large {
-    display: block;
-    line-height: 1;
-    font-size: rem(48px);
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
+  }
+  padding: $p-spacing-32;
+  background: $p-color-grey-1;
 
-    @include breakpoint("l") {
-      font-size: rem(72px);
+  @include breakpoint("s") {
+    margin: {
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
     }
-
-    @include breakpoint("xl") {
-      font-size: rem(99px);
-    }
+    padding: $p-spacing-64;
   }
 
-  .subline {
-    margin-top: $p-spacing-20;
+  a {
+    border-bottom: 1px solid $p-color-red-1;
+    text-decoration: none;
+    color: $p-color-red-1;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $p-color-red-2;
+    }
   }
-}
-
-.mail-teaser {
-  padding: $p-spacing-24;
-  background-color: $p-color-grey-1;
-}
-
-.content {
-  padding-top: $p-spacing-24;
 }

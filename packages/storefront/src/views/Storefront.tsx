@@ -9,6 +9,7 @@ import { Home as GeneralHome } from "../pages/general/home/Home"
 import { Updates as GeneralUpdates } from "../pages/general/updates/Updates"
 import { Roadmap as GeneralRoadmap } from "../pages/general/roadmap/Roadmap"
 import { Versioning as GeneralVersioning } from "../pages/general/versioning/Versioning"
+import { Communication as GeneralCommunication } from "../pages/general/communication/Communication"
 import { Support as GeneralSupport } from "../pages/general/support/Support"
 import { License as GeneralLicense } from "../pages/general/license/License"
 import { FAQ as GeneralFAQ } from "../pages/general/faq/FAQ"
@@ -19,7 +20,6 @@ import { Culture as DesignCulture } from "../pages/design/culture/culture"
 import { SketchPlugins as DesignSketchPlugins } from "../pages/design/sketch-plugins/SketchPlugins"
 import { Introduction as CodeIntroduction } from "../pages/code/introduction/Introduction"
 import { Installation as CodeInstallation } from "../pages/code/installation/Installation"
-import { InstallationV0 as CodeInstallationV0 } from "../pages/code/installation/Installation-v0"
 import { DefinitionOfDone as CodeDefinitionOfDone } from "../pages/code/definition-of-done/DefinitionOfDone"
 import { CICD as CodeCICD } from "../pages/code/ci-cd/CICD"
 import { BrowserCompatibility as CodeBrowserCompatibility } from "../pages/code/browser-compatibility/BrowserCompatibility"
@@ -76,6 +76,7 @@ export const Storefront: React.FunctionComponent = () => {
           <Route path="/general/updates" component={GeneralUpdates} />
           <Route path="/general/roadmap" component={GeneralRoadmap} />
           <Route path="/general/versioning" component={GeneralVersioning} />
+          <Route path="/general/communication" component={GeneralCommunication} />
           <Route path="/general/support" component={GeneralSupport} />
           <Route path="/general/faq" component={GeneralFAQ} />
           <Route path="/general/license" component={GeneralLicense} />
@@ -86,7 +87,6 @@ export const Storefront: React.FunctionComponent = () => {
           <Route path="/design/contribution" component={DesignContribution} />
           <Route path="/code/introduction" component={CodeIntroduction} />
           <Route path="/code/installation" component={CodeInstallation} />
-          <Route path="/code/installation-v0" component={CodeInstallationV0} />
           <Route path="/code/definition-of-done" component={CodeDefinitionOfDone} />
           <Route path="/code/ci-cd" component={CodeCICD} />
           <Route path="/code/browser-compatibility" component={CodeBrowserCompatibility} />
