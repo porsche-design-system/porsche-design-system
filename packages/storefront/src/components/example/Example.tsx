@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import cx from "classnames"
+import { ClassNameProp } from "../../lib/props"
 import { renderToStaticMarkup } from "react-dom/server"
 import { Light as Editor } from "react-syntax-highlighter"
 import languageXml from "react-syntax-highlighter/dist/languages/hljs/xml"
@@ -12,19 +13,25 @@ import editorTheme from "react-syntax-highlighter/dist/styles/hljs/solarized-dar
 Editor.registerLanguage("xml", languageXml)
 
 import styles from "./example.module.scss"
+import "./example.global.scss"
 
-export interface ExampleProps {
+export interface ExampleProps extends ClassNameProp {
   noHTML?: boolean
   noTheme?: boolean
   noSCSS?: boolean
 }
 
+const defaultProps: Partial<ExampleProps> = {
+  noTheme: true
+}
+
 export const Example: React.FunctionComponent<ExampleProps> = (props) => {
+  const { className } = props
   const [theme, setTheme] = useState("default")
   const [showHTML, setShowHTML] = useState(false)
   const [showSCSS, setShowSCSS] = useState(false)
 
-  const renderClasses = cx(styles.render, { [styles.light]: theme === "default" }, { [styles.dark]: theme === "inverted" })
+  const renderClasses = cx(styles.render, { [styles.light]: theme === "default" }, { [styles.dark]: theme === "inverted" }, "sg-example-global", className)
 
   const handleShowClicked = (name: string) => {
     if (name === "html") {
@@ -52,7 +59,7 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   return (
     <React.Fragment>
       <Spacing marginTop={12}>
-        <div className={styles.example}>
+        <div className={styles.container}>
           {props.noTheme !== true && <Tab panes={panes} alignment="left" mini divider={false} />}
           <div className={renderClasses}>{renderNode(props.children, theme)}</div>
           {(!props.noHTML || !props.noSCSS) && (
@@ -100,6 +107,8 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
     </React.Fragment>
   )
 }
+
+Example.defaultProps = defaultProps
 
 function renderNode(children: React.ReactNode, theme: string) {
   return typeof children === "function" ? children(theme) : children
