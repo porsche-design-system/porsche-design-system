@@ -6,14 +6,12 @@ import { Sidebar } from "../components/sidebar/Sidebar"
 import { Story } from "../components/story/Story"
 import styles from "./storefront.module.scss"
 import { Home as GeneralHome } from "../pages/general/home/Home"
-import { Updates as GeneralUpdates } from "../pages/general/updates/Updates"
 import { Roadmap as GeneralRoadmap } from "../pages/general/roadmap/Roadmap"
 import { Versioning as GeneralVersioning } from "../pages/general/versioning/Versioning"
 import { Support as GeneralSupport } from "../pages/general/support/Support"
 import { License as GeneralLicense } from "../pages/general/license/License"
 import { FAQ as GeneralFAQ } from "../pages/general/faq/FAQ"
 import { Accessibility as GuidelinesAccessibility } from "../pages/guidelines/accessibility/Accessibility"
-import { Introduction as DesignIntroduction } from "../pages/design/introduction/Introduction"
 import { Contribution as DesignContribution } from "../pages/design/contribution/Contribution"
 import { Culture as DesignCulture } from "../pages/design/culture/culture"
 import { SketchPlugins as DesignSketchPlugins } from "../pages/design/sketch-plugins/SketchPlugins"
@@ -26,6 +24,8 @@ import { BrowserCompatibility as CodeBrowserCompatibility } from "../pages/code/
 import { Contribution as CodeContribution } from "../pages/code/contribution/Contribution"
 import { Markdown } from "../pages/demo/markdown/Markdown"
 import { Footer } from "../components/footer/Footer"
+import { About as GettingStartedAbout } from "../pages/getting-started/about/About"
+import { StartDesigning as GettingStartedStartDesigning } from "../pages/getting-started/start-designing/StartDesigning"
 
 export const Storefront: React.FunctionComponent = () => {
   const [hideSidebar, setHideSidebar] = useState(false)
@@ -73,14 +73,14 @@ export const Storefront: React.FunctionComponent = () => {
         <Switch>
           <Route exact path="/" component={() => <Redirect to={"/general/home" + featureShowV1} />} />
           <Route path="/general/home" component={GeneralHome} />
-          <Route path="/general/updates" component={GeneralUpdates} />
+          <Route path="/getting-started/about" component={GettingStartedAbout} />
+          <Route path="/getting-started/start-designing" component={GettingStartedStartDesigning} />
           <Route path="/general/roadmap" component={GeneralRoadmap} />
           <Route path="/general/versioning" component={GeneralVersioning} />
           <Route path="/general/support" component={GeneralSupport} />
           <Route path="/general/faq" component={GeneralFAQ} />
           <Route path="/general/license" component={GeneralLicense} />
           <Route path="/guidelines/accessibility" component={GuidelinesAccessibility} />
-          <Route path="/design/introduction" component={DesignIntroduction} />
           <Route path="/design/sketch-plugins" component={DesignSketchPlugins} />
           <Route path="/design/culture" component={DesignCulture} />
           <Route path="/design/contribution" component={DesignContribution} />

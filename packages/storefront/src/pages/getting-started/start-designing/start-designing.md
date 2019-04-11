@@ -1,7 +1,21 @@
-# Introduction
+# 🚦 STATUS: TO BE REFINED (WORK IN PROGRESS)
 
-## Start Designing
-The Porsche UI Kit enables designers to instantly create beautiful designs by using the prebuild Sketch Library resources, styles and templates.
+# Start Designing
+
+The Porsche UI Kit enables designers to create outstanding digital Porsche 
+
+
+enables designers to create beautiful designs by using the prebuild Sketch Library resources, styles and templates.
+
+## Sketch Library
+
+You can find 
+
+
+
+-------
+
+
 
 ## Get the Porsche UI Kit
 To design with the Porsche UI Kit you must install the most recent version of [Sketch](https://www.sketch.com/updates/) and the [Anima Plugin](https://www.animaapp.com/), to also enjoy the built-in responsive and layouting features.  
