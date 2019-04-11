@@ -20,12 +20,11 @@ export const Home: React.FunctionComponent = () => {
             <span className={styles["headline-large"]}>Porsche UI Kit</span>
           </Text>
           <Text className={styles.subline} as="p" align="center">
-            A Porsche initiative to empower teams and partners to create great digital Porsche experiences, that feel
-            like being designed by one. <br />
+            A Porsche initiative to empower teams and partners to create great digital Porsche experiences, that feel like being designed by one. <br />
             United around a global design community with shared tools, methods and components.
           </Text>
-          <Spacing marginTop={30}>
-            <Flex justifyContent="center" gap={30}>
+          <Spacing marginTop={32}>
+            <Flex justifyContent="center" gap={12}>
               <Flex.Item>
                 <Button type="highlight" as={Link} {...{ to: "/design/introduction" }}>
                   Start Designing
@@ -41,7 +40,7 @@ export const Home: React.FunctionComponent = () => {
         </div>
       </header>
 
-      <Spacing className={styles["mail-teaser"]} marginTop={60} wrap>
+      <Spacing className={styles["mail-teaser"]} marginTop={64} wrap>
         <Flex gap={24}>
           <Flex.Item>
             <Text as="h3" type="3-bold">
@@ -60,49 +59,58 @@ export const Home: React.FunctionComponent = () => {
       <section className={styles.content}>
         <Markdown path={require("./home.md")} />
       </section>
-      <Spacing marginTop={30}>
+      <Spacing marginTop={32}>
         <Text as="h3" type="3-bold">
           Release History
         </Text>
         <Flex>
           <Flex.Item flex="equal">
             <Text as="h4" type="copy-bold">
-              Version 1.x
+              Version v1
             </Text>
-            {Releases &&
-              Releases.releases.v1.map((item) => {
-                return (
-                  <li key={item.version}>
-                    <a href={item.link}>{item.version}</a>
-                  </li>
-                )
-              })}
+            {Releases && (
+              <ul>
+                {Releases.releases.v1.map((item) => {
+                  return (
+                    <li key={item.version}>
+                      <a href={item.link}>{item.version}</a>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
           </Flex.Item>
           <Flex.Item flex="equal">
             <Text as="h4" type="copy-bold">
-              Version 0.x Core (deprecated)
+              Version v0 Core (deprecated)
             </Text>
-            {Releases &&
-              Releases.releases.v0Core.map((item) => {
-                return (
-                  <li key={item.version}>
-                    <a href={item.link}>{item.version}</a>
-                  </li>
-                )
-              })}
+            {Releases && (
+              <ul>
+                {Releases.releases.v0Core.map((item) => {
+                  return (
+                    <li key={item.version}>
+                      <a href={item.link}>{item.version}</a>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
           </Flex.Item>
           <Flex.Item flex="equal">
             <Text as="h4" type="copy-bold">
-              Version 0.x React (deprecated)
+              Version v0 React (deprecated)
             </Text>
-            {Releases &&
-              Releases.releases.v0React.map((item) => {
-                return (
-                  <li key={item.version}>
-                    <a href={item.link}>{item.version}</a>
-                  </li>
-                )
-              })}
+            {Releases && (
+              <ul>
+                {Releases.releases.v0React.map((item) => {
+                  return (
+                    <li key={item.version}>
+                      <a href={item.link}>{item.version}</a>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
           </Flex.Item>
         </Flex>
       </Spacing>

@@ -3,8 +3,16 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
-  echo "Please provide the \$GIT_DEPLOY_KEY environment variable."
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
+
+if [[ -z "${GIT_RELEASE_FILTER}" ]]; then
+  echo "Please provide the \$GIT_RELEASE_FILTER environment variable."
+  exit 1
+fi
+
+if [[ -z "${GIT_ISSUE_FILTER}" ]]; then
+  echo "Please provide the \$GIT_ISSUE_FILTER environment variable."
   exit 1
 fi
 
@@ -37,39 +45,31 @@ P_ABBR_REF="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
 P_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
 P_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
 
-cleanup_credentials() {
-  echo "Cleaning up credentials"
-  local exit_code=$?
-  rm "/root/.ssh/id_rsa"
-  exit ${exit_code}
-}
-
-setup_credentials() {
-  mkdir -p "/root/.ssh"
-  ssh-keyscan -t rsa github.com > "/root/.ssh/known_hosts"
-  printf -- "${GIT_DEPLOY_KEY}\n" > "/root/.ssh/id_rsa"
-  chmod 600 "/root/.ssh/id_rsa"
-}
-
 setup_github() {
+  echo "setup_github $(date)"
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 }
 
 checkout_gh_pages() {
+  echo "checkout_gh_pages $(date)"
   git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
 }
 
 cleanup_previous_deployment() {
+  echo "cleanup_previous_deployment $(date)"
   rm -rf "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
 
-copy_porsche-ui-kit-storefront() {
+copy_porsche_ui_kit_storefront() {
+  echo "copy_porsche_ui_kit_storefront $(date)"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
 
 copy_sketch_libraries_create_rss_feed() {
+  echo "copy_sketch_libraries_create_rss_feed $(date)"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
 <?xml version="1.0" encoding="utf-8"?>
@@ -87,7 +87,14 @@ copy_sketch_libraries_create_rss_feed() {
 _EOF_
 }
 
+add_deployment_sha() {
+  echo "add_deployment_sha $(date)"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}/version"
+  touch "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}/version/${GITHUB_SHA}"
+}
+
 deploy_to_gh_pages() {
+  echo "deploy_to_gh_pages $(date)"
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
     git commit -m "Automated deployment of Porsche UI Kit (${P_ABBR_REF}): ${GITHUB_SHA}" --allow-empty
@@ -95,16 +102,40 @@ deploy_to_gh_pages() {
   popd
 }
 
-trap cleanup_credentials EXIT
-setup_credentials
+verify_deployment() {
+  echo "verify_deployment $(date)"
+  local n=1
+  local max=10
+  local delay=60
+  while true
+  do
+    echo "Check deployment status. Attempt ${n}/${max}, $(date)"
+    echo "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}"
+    local http_code="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
+    echo "http code: ${http_code}"
+    if [[ "${http_code}" -eq 200 ]]; then
+      echo "All right, deployment was verified."
+      break
+    elif [[ ${n} -lt ${max} ]]; then
+      ((n++))
+    else
+      echo "Deployment could not be verified after ${n} attempts, $(date)"
+      exit 1
+    fi
+    sleep ${delay}
+  done
+}
+
 setup_github
 checkout_gh_pages
 cleanup_previous_deployment
-copy_porsche-ui-kit-storefront
-if [[ "${P_ABBR_REF}" =~ ^v[0-9]+$ ]]; then
+copy_porsche_ui_kit_storefront
+if [[ "${P_ABBR_REF}" =~ ${GIT_RELEASE_FILTER} ]]; then
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
 fi
+add_deployment_sha
 deploy_to_gh_pages
+verify_deployment

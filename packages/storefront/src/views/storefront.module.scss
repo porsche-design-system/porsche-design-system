@@ -10,6 +10,8 @@
   height: 100%;
   z-index: 1;
   overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   border-right: 1px solid $p-color-grey-3;
   transition: transform 400ms ease-out, opacity 400ms ease-out;
   will-change: transform, opacity;
@@ -22,13 +24,13 @@
 
 .area-content {
   display: block;
-  padding: $p-spacing-30;
+  padding: $p-spacing-32;
   max-width: 1620px;
   margin-left: 300px;
   transition: margin-left 400ms ease-out;
 
   @include breakpoint("s") {
-    padding: $p-spacing-60;
+    padding: $p-spacing-64;
   }
 }
 
@@ -42,7 +44,7 @@
   left: 0;
   bottom: 0;
   z-index: 10;
-  padding: 0 $p-spacing-6;
+  padding: 0 $p-spacing-8;
   height: 30px;
   background: $p-color-white;
   border: 1px solid $p-color-grey-4;

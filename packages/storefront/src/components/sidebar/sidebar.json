@@ -97,8 +97,8 @@
           "featureV1": true
         },
         {
-          "title": "Installation 0.x (deprecated)",
-          "path": "/code/installation-0x"
+          "title": "Installation v0 (deprecated)",
+          "path": "/code/installation-v0"
         },
         {
           "title": "Definition of Done",

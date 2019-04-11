@@ -29,6 +29,8 @@ services:
       - GITHUB_ACTOR
       - GITHUB_REF
       - GITHUB_SHA
+      - GIT_RELEASE_FILTER
+      - GIT_ISSUE_FILTER
     volumes:
       - ./:/opt/porsche-ui-kit-app:cached
       - /opt/porsche-ui-kit-gh-pages

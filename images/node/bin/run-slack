@@ -21,9 +21,9 @@ fi
 P_ABBR_REF="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
 P_SLACK_TEXT="Checkout https://ui.porsche.com/${P_ABBR_REF} :heart_eyes_cat:"
 P_SLACK_ATTACHMENT="$(git log -1 --format=%s "${GITHUB_SHA}" | cat)"
-P_CURL_STATUS="$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-type: application/json" --data "{\"text\": \"${P_SLACK_TEXT}\", \"attachments\": [{\"text\": \"${P_SLACK_ATTACHMENT}\"}]}" ${SLACK_WEBHOOK_URL})"
+P_CURL_STATUS="$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-type: application/json" --data "{\"text\": \"${P_SLACK_TEXT}\", \"attachments\": [{\"text\": \"${P_SLACK_ATTACHMENT}\"}]}" "${SLACK_WEBHOOK_URL}")"
 
-if [[ "${P_CURL_STATUS}" != 200 ]]; then
+if [[ "${P_CURL_STATUS}" -ne 200 ]]; then
   echo "Slack notification could not be sent (HTTP error code: ${P_CURL_STATUS})."
   exit 1
 fi

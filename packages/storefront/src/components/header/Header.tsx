@@ -11,7 +11,7 @@ export const Header: React.FunctionComponent = () => {
       <Link className={style.logo} to={"/general/home"}>
         <Logo as="span" className={style.item} />
       </Link>
-      <Spacing marginTop={18}>
+      <Spacing marginTop={16}>
         <Text type="3-bold" align="center" as="h1">
           Porsche UI Kit
         </Text>

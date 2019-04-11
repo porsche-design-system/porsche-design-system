@@ -18,7 +18,7 @@ Give every designer and developer working at the digital Porsche ecosystem a qua
 ### Getting started
 1. Clone [`porsche-ui-kit` repository](https://github.com/porscheui/porsche-ui-kit)
 1. Switch to __project root directory__
-1. Checkout branch __1.x__ by executing `git checkout 1.x`
+1. Checkout branch __v1__ by executing `git checkout v1`
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
 1. Enter username, password (Artifactory API Key __not__ Artifactory password!) and e-mail address when asked in terminal
 1. Execute `cat ~/.npmrc`, find following line `//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=` and copy generated _npm registry token_ to clipboard

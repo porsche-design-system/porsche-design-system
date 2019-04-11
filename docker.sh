@@ -12,6 +12,8 @@ export COMPOSE_PROJECT_NAME="porsche-ui-kit"
 SERVICE=ui-kit
 if [[ "run-deploy" == "${1}" ]]; then
   SERVICE=ui-kit-deploy
+elif [[ "run-cleanup" == "${1}" ]]; then
+  SERVICE=ui-kit-deploy
 fi
 
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" build
