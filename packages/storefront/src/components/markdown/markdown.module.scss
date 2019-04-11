@@ -34,7 +34,7 @@
     & img,
     & code,
     & pre {
-    *:not([class^="example_example"]):not(pre):not(hr):not(table) {
+    *:not([class*="example_container"]):not(pre):not(hr):not(table) {
       max-width: 800px;
     }
 

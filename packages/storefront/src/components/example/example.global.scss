@@ -1,0 +1,101 @@
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+/**
+ * Define styles for component representation
+ */
+
+// variables
+$sg-color-blue-1: lightskyblue;
+$sg-color-blue-2: deepskyblue;
+$sg-color-blue-3: dodgerblue;
+$sg-color-blue-4: royalblue;
+$sg-color-highlight: deeppink;
+
+// flex component styles
+.sg-example-flex {
+  &--fixed-height {
+    .p-flex {
+      height: 180px;
+    }
+  }
+
+  .sg-example-item {
+    padding: $p-spacing-4 $p-spacing-80;
+    text-align: center;
+    color: $p-color-white;
+  }
+
+  .p-flex + .p-flex {
+    margin-top: $p-spacing-8;
+  }
+
+  // special styling to visualize align items behaviour
+  [class*="p-flex--align-items-"] {
+    .p-flex__child:not(.p-flex__child--align-self-stretch) {
+      &:nth-child(1n) {
+        height: 40px;
+      }
+      &:nth-child(2n) {
+        height: 80px;
+      }
+      &:nth-child(3n) {
+        height: 54px;
+      }
+    }
+  }
+
+  // special styling to visualize baseline
+  .p-flex--align-items-baseline {
+    .p-flex__child {
+      margin-top: $p-spacing-24;
+    }
+  }
+
+  .p-flex__child {
+    &:nth-child(1n) {
+      background-color: $sg-color-blue-1;
+    }
+    &:nth-child(2n) {
+      background-color: $sg-color-blue-2;
+    }
+    &:nth-child(3n) {
+      background-color: $sg-color-blue-3;
+    }
+    &:nth-child(4n) {
+      background-color: $sg-color-blue-4;
+    }
+
+    // special styling to visualize baseline
+    &--align-self-baseline {
+      margin-top: $p-spacing-24;
+    }
+  }
+
+  // reset padding to visualize width property
+  [class*="p-flex__child--width"] {
+    .sg-example-item {
+      padding-left: $p-spacing-8;
+      padding-right: $p-spacing-8;
+    }
+  }
+
+  //  special case for visualizing gap styling
+  &--gap {
+    .p-flex__child {
+      background-color: transparent !important;
+
+      &:nth-child(1n) p {
+        background-color: $sg-color-blue-1;
+      }
+      &:nth-child(2n) p {
+        background-color: $sg-color-blue-2;
+      }
+      &:nth-child(3n) p {
+        background-color: $sg-color-blue-3;
+      }
+      &:nth-child(4n) p {
+        background-color: $sg-color-blue-4;
+      }
+    }
+  }
+}

@@ -11,42 +11,35 @@ The Porsche UI Kit flex layout system is based on standard css flexbox browser b
 Initialize standard flexbox container to define flex context.
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
-      <React.Fragment>
+      <div className="sg-example-block">
         <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
         </Flex>
-      </React.Fragment>
+      </div>
     )
   }}
 </Example>
@@ -54,37 +47,30 @@ If using default property, no extra class/prop declaration is needed due to stan
 ### Inline
 Flex inline displays flex containers in a row.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex inline>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
         </Flex>
         <Flex inline>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
@@ -97,37 +83,30 @@ Flex inline displays flex containers in a row.
 ### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex inline={{ base: false, l: true }}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
         </Flex>
         <Flex inline={{ base: false, l: true }}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
@@ -152,30 +131,23 @@ Define or change direction of the flex items to rows or columns and set order.
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -187,30 +159,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Row reverse
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex direction="row-reverse">
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -222,30 +187,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Column
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex direction="column">
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -257,30 +215,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Column reverse
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex direction="column-reverse">
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -293,30 +244,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex direction={{ base: "column", l: "row" }}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -343,23 +287,15 @@ The flex wrap property is used to force flex items to stay in line independently
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px",
-        textAlign: "center"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -373,23 +309,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Wrap
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px",
-        textAlign: "center"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex wrap={true}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -403,23 +331,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Reverse
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px",
-        textAlign: "center"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex wrap="reverse">
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -434,23 +354,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px",
-        textAlign: "center"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex wrap={{ base: true, l: false }}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -472,36 +384,29 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex justify content
 
-This property defines the horizontal alignment of the flex items on the main axis.
+This property defines the horizontal alignment of the flex items on the main axis in conjunction to their siblings.
 
 #### Start (default)
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -513,30 +418,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### End
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex justifyContent="end">
           <Flex.Item>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -548,30 +446,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Center
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex justifyContent="center">
           <Flex.Item>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -583,30 +474,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space between
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex justifyContent="space-between">
           <Flex.Item>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -618,30 +502,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space around
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex justifyContent="space-around">
           <Flex.Item>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -653,30 +530,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space evenly
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex justifyContent="space-evenly">
           <Flex.Item>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -689,30 +559,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex justifyContent={{ base: "start", l: "end" }}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -735,37 +598,29 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex align items
 
-This property defines the horizontal alignment of the flex items on the main axis.
+This property defines the vertical alignment of the flex items on the cross axis in conjunction to their siblings.
 
 #### Stretch (default)
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        height,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("100%", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("100%", "lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -777,31 +632,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Start
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        height,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
         <Flex alignItems="start">
           <Flex.Item>
-            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -813,31 +660,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### End
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        height,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
         <Flex alignItems="end">
           <Flex.Item>
-            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -849,31 +688,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Center
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        height,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
         <Flex alignItems="center">
           <Flex.Item>
-            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -885,40 +716,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Baseline
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        height,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
         <Flex alignItems="baseline">
           <Flex.Item>
-            <Text
-              align="center"
-              style={{
-                height: "20px",
-                width: "200px",
-                color: "white",
-                backgroundColor: "dodgerblue",
-                marginTop: "20px"
-              }}
-            >
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -931,31 +745,23 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        height,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
         <Flex alignItems={{ base: "start", l: "end" }}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("20px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("30px", "lightskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -983,24 +789,15 @@ This aligns flex items vertical on the cross axis of the flex container.
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px",
-        height: "100%"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex wrap style={containerStyle}>
+        <Flex wrap>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -1014,23 +811,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Start
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex wrap alignContent="start" style={containerStyle}>
+        <Flex wrap alignContent="start">
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -1044,23 +833,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### End
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex wrap alignContent="end" style={containerStyle}>
+        <Flex wrap alignContent="end">
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -1074,23 +855,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Center
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex wrap alignContent="center" style={containerStyle}>
+        <Flex wrap alignContent="center">
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -1104,23 +877,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space between
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex wrap alignContent="space-between" style={containerStyle}>
+        <Flex wrap alignContent="space-between">
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -1134,23 +899,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space around
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex wrap alignContent="space-around" style={containerStyle}>
+        <Flex wrap alignContent="space-around">
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -1165,23 +922,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex wrap alignContent={{ base: "start", l: "end" }} style={containerStyle}>
+        <Flex wrap alignContent={{ base: "start", l: "end" }}>
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text align="center" style={itemStyle("deepskyblue")}>
+                <Text className="sg-example-item">
                   {i + 1}
                 </Text>
               </Flex.Item>
@@ -1210,36 +959,29 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
 
 **Static**
 
-`"auto" | 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
+`"auto" | 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
 **Responsive**
 
 `"a" | "b" | "c" | "d" | "e" | "f" | "g"`
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--gap">
+  {() => {
     return (
       <React.Fragment>
         <Flex gap={12}>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
@@ -1265,36 +1007,29 @@ The widths of flex items is normally defined through its contents by default. Bu
 
 #### Auto (default)
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        padding: "12px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
-              An element
+            <Text className="sg-example-item">
+              1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
-              An element with a little more text
+            <Text className="sg-example-item">
+              2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("lightskyblue")}>
-              An element
+            <Text className="sg-example-item">
+              3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("deepskyblue")}>
-              An element with more content
+            <Text className="sg-example-item">
+              4
             </Text>
           </Flex.Item>
         </Flex>
@@ -1305,36 +1040,29 @@ The widths of flex items is normally defined through its contents by default. Bu
 
 #### Equal
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        padding: "12px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item flex="equal">
-            <Text align="center" style={itemStyle("lightskyblue")}>
-              An element
+            <Text className="sg-example-item">
+              1
             </Text>
           </Flex.Item>
           <Flex.Item flex="equal">
-            <Text align="center" style={itemStyle("deepskyblue")}>
-              An element with a little more text
+            <Text className="sg-example-item">
+              2
             </Text>
           </Flex.Item>
           <Flex.Item flex="equal">
-            <Text align="center" style={itemStyle("lightskyblue")}>
-              An element
+            <Text className="sg-example-item">
+              3
             </Text>
           </Flex.Item>
           <Flex.Item flex="equal">
-            <Text align="center" style={itemStyle("deepskyblue")}>
-              An element with more content
+            <Text className="sg-example-item">
+              4
             </Text>
           </Flex.Item>
         </Flex>
@@ -1345,96 +1073,88 @@ The widths of flex items is normally defined through its contents by default. Bu
 
 #### Specific
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { marginTop: "8px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        padding: "12px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item width="one-quarter">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               one-quarter
             </Text>
           </Flex.Item>
           <Flex.Item width="one-quarter">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               one-quarter
             </Text>
           </Flex.Item>
           <Flex.Item width="one-quarter">
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               one-quarter
             </Text>
           </Flex.Item>
           <Flex.Item width="one-quarter">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               one-quarter
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item width="one-third">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               one-third
             </Text>
           </Flex.Item>
           <Flex.Item width="one-third">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               one-third
             </Text>
           </Flex.Item>
           <Flex.Item width="one-third">
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               one-third
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item width="half">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               half
             </Text>
           </Flex.Item>
           <Flex.Item width="half">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               half
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item width="two-thirds">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               two-thirds
             </Text>
           </Flex.Item>
           <Flex.Item width="one-third">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               one-third
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item width="three-quarters">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               three-quarters
             </Text>
           </Flex.Item>
           <Flex.Item width="one-quarter">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               one-quarter
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item width="full">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               full
             </Text>
           </Flex.Item>
@@ -1447,36 +1167,29 @@ The widths of flex items is normally defined through its contents by default. Bu
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        padding: "12px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex wrap>
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
-            <Text align="center" style={itemStyle("lightskyblue")}>
-              An element
+            <Text className="sg-example-item">
+              1
             </Text>
           </Flex.Item>
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
-              An element with a little more text
+            <Text className="sg-example-item">
+              2
             </Text>
           </Flex.Item>
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
-            <Text align="center" style={itemStyle("lightskyblue")}>
-              An element
+            <Text className="sg-example-item">
+              3
             </Text>
           </Flex.Item>
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
-              An element with more content
+            <Text className="sg-example-item">
+              4
             </Text>
           </Flex.Item>
         </Flex>
@@ -1504,49 +1217,41 @@ Items can have different offsets that work similar like column widths.
 
 #### Widths
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { marginTop: "8px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        padding: "12px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item offset={"one-quarter"} width={"three-quarters"}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               Offset: quarter
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item offset={"one-third"} width={"two-thirds"}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               Offset: third
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item offset={"half"} width={"half"}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               Offset: half
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item offset={"two-thirds"} width={"one-third"}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               Offset: 2 thirds
             </Text>
           </Flex.Item>
         </Flex>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item offset={"three-quarters"} width={"one-quarter"}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               Offset: 3 quarters
             </Text>
           </Flex.Item>
@@ -1559,22 +1264,14 @@ Items can have different offsets that work similar like column widths.
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { marginTop: "8px" }
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        padding: "12px"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item offset={{ base: "none", l: "one-third" }}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
-              An element with responsive offset
+            <Text className="sg-example-item">
+              Responsive offset
             </Text>
           </Flex.Item>
         </Flex>
@@ -1601,37 +1298,28 @@ You can override the align items properties of the flex container for individual
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        height,
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("100%", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("100%", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("100%", "deeppink")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("100%", "deepskyblue")}>
+            <Text className="sg-example-item">
               4
             </Text>
           </Flex.Item>
@@ -1643,37 +1331,28 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Stretch
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        height,
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex alignItems="start" style={containerStyle}>
+        <Flex alignItems="start">
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item alignSelf="stretch">
-            <Text align="center" style={itemStyle("100%", "deeppink")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+            <Text className="sg-example-item">
               4
             </Text>
           </Flex.Item>
@@ -1685,37 +1364,28 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Start
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        height,
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item alignSelf="start">
-            <Text align="center" style={itemStyle("50px", "deeppink")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+            <Text className="sg-example-item">
               4
             </Text>
           </Flex.Item>
@@ -1727,37 +1397,28 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### End
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        height,
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item alignSelf="end">
-            <Text align="center" style={itemStyle("50px", "deeppink")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+            <Text className="sg-example-item">
               4
             </Text>
           </Flex.Item>
@@ -1769,37 +1430,28 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Center
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        height,
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item alignSelf="center">
-            <Text align="center" style={itemStyle("50px", "deeppink")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+            <Text className="sg-example-item">
               4
             </Text>
           </Flex.Item>
@@ -1811,46 +1463,28 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Baseline
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        height,
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item alignSelf="baseline">
-            <Text
-              align="center"
-              style={{
-                height: "50px",
-                width: "200px",
-                color: "white",
-                backgroundColor: "dodgerblue",
-                marginTop: "20px"
-              }}
-            >
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item alignSelf="baseline">
-            <Text align="center" style={itemStyle("50px", "deeppink")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+            <Text className="sg-example-item">
               4
             </Text>
           </Flex.Item>
@@ -1863,37 +1497,28 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example noTheme>
-  {(theme) => {
-    const containerStyle = { height: "120px" }
-    const itemStyle = (height, color) => {
-      return {
-        backgroundColor: color,
-        color: "white",
-        height,
-        width: "200px"
-      }
-    }
+<Example className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
     return (
       <React.Fragment>
-        <Flex style={containerStyle}>
+        <Flex>
           <Flex.Item>
-            <Text align="center" style={itemStyle("50px", "dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("80px", "deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
           <Flex.Item alignSelf={{ base: "start", l: "end" }}>
-            <Text align="center" style={itemStyle("50px", "deeppink")}>
+            <Text className="sg-example-item">
               3
             </Text>
           </Flex.Item>
           <Flex.Item>
-            <Text align="center" style={itemStyle("70px", "deepskyblue")}>
+            <Text className="sg-example-item">
               4
             </Text>
           </Flex.Item>
@@ -1924,25 +1549,18 @@ It handles how to grow an item based on the space that is left to fulfill the pa
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
-          <Flex.Item style={{ width: "100px" }}>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+          <Flex.Item>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
-          <Flex.Item style={{ width: "100px" }}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+          <Flex.Item>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
@@ -1954,25 +1572,18 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Grow - 1
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
-          <Flex.Item style={{ width: "100px" }}>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+          <Flex.Item>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
-          <Flex.Item grow={1} style={{ width: "100px" }}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+          <Flex.Item grow={1}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
@@ -1999,25 +1610,18 @@ It handles how to shrink an item based on the space that exceeds the parents wid
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item style={{ width: "80%" }}>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item style={{ width: "80%" }}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
@@ -2029,25 +1633,18 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Shrink - 0
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item shrink={0} style={{ width: "80%" }}>
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1
             </Text>
           </Flex.Item>
           <Flex.Item style={{ width: "80%" }}>
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2
             </Text>
           </Flex.Item>
@@ -2070,30 +1667,23 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### Initial (grow:0, shrink:1 and base:auto)
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item flex="initial">
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1 - short content
             </Text>
           </Flex.Item>
           <Flex.Item flex="initial">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
             </Text>
           </Flex.Item>
           <Flex.Item flex="initial">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3 - short content
             </Text>
           </Flex.Item>
@@ -2105,30 +1695,23 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### Auto (grow:1, shrink:1 and base:auto)
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item flex="auto">
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1 - short content
             </Text>
           </Flex.Item>
           <Flex.Item flex="auto">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
             </Text>
           </Flex.Item>
           <Flex.Item flex="auto">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3 - short content
             </Text>
           </Flex.Item>
@@ -2140,30 +1723,23 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### Equal (grow:1, shrink:1 and base:0)
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item flex="equal">
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1 - short content
             </Text>
           </Flex.Item>
           <Flex.Item flex="equal">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
             </Text>
           </Flex.Item>
           <Flex.Item flex="equal">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3 - short content
             </Text>
           </Flex.Item>
@@ -2175,30 +1751,23 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### None (grow:0, shrink:0 and base:auto)
 
-<Example noTheme>
-  {(theme) => {
-    const itemStyle = (color) => {
-      return {
-        backgroundColor: color,
-        padding: "12px",
-        color: "white"
-      }
-    }
+<Example className="sg-example-flex">
+  {() => {
     return (
       <React.Fragment>
         <Flex>
           <Flex.Item flex="none">
-            <Text align="center" style={itemStyle("dodgerblue")}>
+            <Text className="sg-example-item">
               1 - short content
             </Text>
           </Flex.Item>
           <Flex.Item flex="none">
-            <Text align="center" style={itemStyle("deepskyblue")}>
+            <Text className="sg-example-item">
               2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
             </Text>
           </Flex.Item>
           <Flex.Item flex="none">
-            <Text align="center" style={itemStyle("lightskyblue")}>
+            <Text className="sg-example-item">
               3 - short content
             </Text>
           </Flex.Item>
