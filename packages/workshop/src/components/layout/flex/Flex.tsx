@@ -26,9 +26,7 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
   direction?: BreakpointCustomizable<"column-reverse" | "column" | "row-reverse" | "row">
 
   /** Defines how the flex items are aligned along the main axis. */
-  justifyContent?: BreakpointCustomizable<
-    "start" | "center" | "end" | "space-around" | "space-between" | "space-evenly"
-  >
+  justifyContent?: BreakpointCustomizable<"start" | "center" | "end" | "space-around" | "space-between" | "space-evenly">
 
   /** Defines how the flex items are aligned along the cross axis. */
   alignItems?: BreakpointCustomizable<"start" | "center" | "end" | "baseline" | "stretch">
@@ -40,7 +38,7 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
   alignContent?: BreakpointCustomizable<"start" | "center" | "end" | "space-around" | "space-between" | "stretch">
 
   /** Defines the gap between contained children. The value "grid" sets responsive grid spacings that should be used together with Flex.Item. */
-  gap?: 3 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54 | 60 | "a" | "b" | "c" | "d" | "e" | "f"
+  gap?: 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
 }
 
 const defaultProps: Partial<FlexProps> = {
@@ -48,19 +46,7 @@ const defaultProps: Partial<FlexProps> = {
 }
 
 const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
-  const {
-    as,
-    className,
-    children,
-    inline,
-    wrap,
-    direction,
-    justifyContent,
-    alignItems,
-    alignContent,
-    gap,
-    ...rest
-  } = props
+  const { as, className, children, inline, wrap, direction, justifyContent, alignItems, alignContent, gap, ...rest } = props
 
   const ElementType: any = getElementType(as, "div")
 

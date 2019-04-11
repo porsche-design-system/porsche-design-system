@@ -23,8 +23,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
   //   return <Redirect to="/general/home" />
   // }
 
-  const category =
-    (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))]
+  const category = (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))]
 
   if (!category) {
     return <Redirect to="/general/home" />
@@ -77,7 +76,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
 
   return (
     <React.Fragment>
-      <Spacing paddingBottom={60}>
+      <Spacing paddingBottom={64}>
         <Tab panes={panes} alignment="left" />
       </Spacing>
       {panes.map((item) => {
@@ -99,13 +98,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
           )
         } else if (item.key === "props" && item.active) {
           return story.props.map((component, index) => {
-            return (
-              <PropsTable
-                key={component}
-                jsdoc={(jsdoc as any)[component]}
-                title={(jsdoc as any)[component].displayName}
-              />
-            )
+            return <PropsTable key={component} jsdoc={(jsdoc as any)[component]} title={(jsdoc as any)[component].displayName} />
           })
         } else {
           return null

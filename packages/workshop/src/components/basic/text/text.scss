@@ -1,6 +1,9 @@
 @import "../../../styles/utility/index";
 
 .#{$p-global-class-prefix}text {
+  $bem-block: &;
+  color: inherit;
+
   &--inline {
     display: inline;
   }
@@ -31,75 +34,100 @@
     white-space: nowrap;
   }
 
-  &-size-1-thin {
+  &--1-thin {
     @include -text-size-1($weight: 200);
   }
 
-  &-size-1-regular {
+  &--1-regular {
     @include -text-size-1($weight: 400);
   }
 
-  &-size-1-bold {
+  &--1-bold {
     @include -text-size-1($weight: 600);
   }
 
-  &-size-2-thin {
+  &--2-thin {
     @include -text-size-2($weight: 200);
   }
 
-  &-size-2-regular {
+  &--2-regular {
     @include -text-size-2($weight: 400);
   }
 
-  &-size-2-bold {
+  &--2-bold {
     @include -text-size-2($weight: 600);
   }
 
-  &-size-3-thin {
+  &--3-thin {
     @include -text-size-3($weight: 200);
   }
 
-  &-size-3-regular {
+  &--3-regular {
     @include -text-size-3($weight: 400);
   }
 
-  &-size-3-bold {
+  &--3-bold {
     @include -text-size-3($weight: 600);
   }
 
-  &-size-4-thin {
+  &--4-thin {
     @include -text-size-4($weight: 200);
   }
 
-  &-size-4-regular {
+  &--4-regular {
     @include -text-size-4($weight: 400);
   }
 
-  &-size-4-bold {
+  &--4-bold {
     @include -text-size-4($weight: 600);
   }
 
-  &-size-copy-thin {
+  &--copy-thin {
     @include -text-size-copy($weight: 200);
   }
 
-  &-size-copy-regular {
+  &--copy-regular {
     @include -text-size-copy($weight: 400);
   }
 
-  &-size-copy-bold {
+  &--copy-bold {
     @include -text-size-copy($weight: 600);
   }
 
-  &-size-small-thin {
+  &--small-thin {
     @include -text-size-small($weight: 200);
   }
 
-  &-size-small-regular {
+  &--small-regular {
     @include -text-size-small($weight: 400);
   }
 
-  &-size-small-bold {
+  &--small-bold {
     @include -text-size-small($weight: 600);
+  }
+
+  &--color {
+    &-white {
+      color: $p-color-white;
+    }
+
+    &-black {
+      color: $p-color-black;
+      &#{$bem-block}--theme-inverted {
+        color: $p-color-white;
+      }
+    }
+
+    &-red {
+      color: $p-color-red-1;
+    }
+
+    &-blue {
+      color: $p-color-blue-1;
+    }
+  }
+
+  &--theme-inverted {
+    color: $p-color-white;
   }
 }
