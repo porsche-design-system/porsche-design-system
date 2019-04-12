@@ -13,75 +13,64 @@ If this component has only one child, those classes are added directly to the ch
 
 ### Static spacings
 
-<Example>
+<Example className="sg-example-spacing">
   {() => {
-    const boxStyles = { backgroundColor: "deepskyblue" }
     return (
       <React.Fragment>
-        <Flex gap={12}>
+        <Flex gap={8}>
           <Flex.Item>
             <Spacing paddingTop={4} paddingRight={4}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={8} paddingRight={8}>
-              <div style={boxStyles} />
-            </Spacing>
-          </Flex.Item>
-          <Flex.Item>
-            <Spacing paddingTop={12} paddingRight={12}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={16} paddingRight={16}>
-              <div style={boxStyles} />
-            </Spacing>
-          </Flex.Item>
-          <Flex.Item>
-            <Spacing paddingTop={20} paddingRight={20}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={24} paddingRight={24}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={32} paddingRight={32}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={40} paddingRight={40}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={48} paddingRight={48}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={56} paddingRight={56}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={64} paddingRight={64}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={72} paddingRight={72}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop={80} paddingRight={80}>
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
         </Flex>
@@ -95,16 +84,14 @@ Static spacings can be used as `padding` or `margin` as a property of the `<Spac
 
 **Given values are:**
 
-`"auto" | 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
+`"auto" | 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
 **Inside SCSS you can use the following variables:**
 
 * `$p-spacing-0`
 * `$p-spacing-4`
 * `$p-spacing-8`
-* `$p-spacing-12`
 * `$p-spacing-16`
-* `$p-spacing-20`
 * `$p-spacing-24`
 * `$p-spacing-32`
 * `$p-spacing-40`
@@ -117,7 +104,7 @@ Static spacings can be used as `padding` or `margin` as a property of the `<Spac
 **Example**:
 ```
 .lorem-ipsum {
-  margin-top: $p-spacing-20;
+  margin-top: $p-spacing-24;
 }
 ```
 
@@ -125,45 +112,44 @@ Static spacings can be used as `padding` or `margin` as a property of the `<Spac
 
 ### Responsive spacings
 
-<Example>
+<Example className="sg-example-spacing">
   {() => {
-    const boxStyles = { backgroundColor: "deepskyblue" }
     return (
       <React.Fragment>
-        <Flex gap={12}>
+        <Flex gap={8}>
           <Flex.Item>
             <Spacing paddingTop="a" paddingRight="a">
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop="b" paddingRight="b">
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop="c" paddingRight="c">
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop="d" paddingRight="d">
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop="e" paddingRight="e">
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop="f" paddingRight="f">
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
           <Flex.Item>
             <Spacing paddingTop="g" paddingRight="g">
-              <div style={boxStyles} />
+              <div className="sg-example-item" />
             </Spacing>
           </Flex.Item>
         </Flex>
