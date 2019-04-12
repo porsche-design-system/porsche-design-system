@@ -1,119 +1,64 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom"
 import styles from "./home.module.scss"
-import Teaser from "./assets/img/teaser.jpg"
-import { Button } from "@porsche/ui-kit-react"
-import { Flex, Spacing, Text } from "@porscheui/porsche-ui-kit"
-import { Markdown } from "../../../components/markdown/Markdown"
-import Releases from "../../../releases.json"
+import {Button} from "@porsche/ui-kit-react"
+import {Flex, Spacing, Text, Grid} from "@porscheui/porsche-ui-kit"
 
 export const Home: React.FunctionComponent = () => {
   return (
     <React.Fragment>
+
       <header className={styles.teaser}>
-        <div className={styles["img-wrap"]}>
-          <img src={Teaser} alt="Porsche UI Kit - teaser" className={styles.img} />
-        </div>
-        <div className={styles.text}>
-          <Text className={styles.headline} as="h1" type="1-bold" align="center">
-            Welcome to the
-            <span className={styles["headline-large"]}>Porsche UI Kit</span>
-          </Text>
-          <Text className={styles.subline} as="p" align="center">
-            A Porsche initiative to empower teams and partners to create great digital Porsche experiences, that feel like being designed by one. <br />
-            United around a global design community with shared tools, methods and components.
-          </Text>
-          <Spacing marginTop={32}>
-            <Flex justifyContent="center" gap={12}>
-              <Flex.Item>
-                <Button type="highlight" as={Link} {...{ to: "/design/introduction" }}>
-                  Start Designing
-                </Button>
-              </Flex.Item>
-              <Flex.Item>
-                <Button type="highlight" as={Link} {...{ to: "/code/introduction" }}>
-                  Start Coding
-                </Button>
-              </Flex.Item>
-            </Flex>
-          </Spacing>
+        <div className={styles.cover}>
+          <video src={require("./assets/porsche-ui-kit.mp4")} autoPlay muted/>
         </div>
       </header>
 
-      <Spacing className={styles["mail-teaser"]} marginTop={64} wrap>
-        <Flex gap={24}>
-          <Flex.Item>
-            <Text as="h3" type="3-bold">
-              Always stay informed
-            </Text>
-            <Text>Join our mailing list and get informed about Porsche UI.</Text>
-          </Flex.Item>
-          <Flex.Item>
-            <Button as="a" {...{ href: "http://eepurl.com/ghVSjH", target: "_blank" }}>
-              Subscribe to mailing list
-            </Button>
-          </Flex.Item>
-        </Flex>
-      </Spacing>
+      <article className={styles.intro}>
+        <Grid>
+          <Grid.Child size={{base: 12, m: 4}}>
+            <Text as="h1" type="2-bold">Porsche UI Kit</Text>
+            <Text as="h2" type="4-regular">Design System</Text>
+          </Grid.Child>
+          <Grid.Child size={{base: 12, m: 8}} className="p-mt--24 p-mt--0-m">
+            <Text type="3-regular">The Porsche UI Kit provides the fundamental elements to easily build aesthetic,
+              qualitative and intuitive designs. Ready to use as designed Sketch libraries, coded React components or HTML
+              with CSS styles. Everything built and tested following the Porsche quality standards and corporate
+              design.</Text>
+            <Spacing marginTop={16}>
+              <Flex gap={16} wrap={true}>
+                <Flex.Item>
+                  <Spacing marginTop={16}>
+                    <Button type="highlight" as={Link} {...{to: "/design/introduction"}}>Start designing</Button>
+                  </Spacing>
+                </Flex.Item>
+                <Flex.Item>
+                  <Spacing marginTop={16}>
+                    <Button type="highlight" as={Link} {...{to: "/code/introduction"}}>Start coding</Button>
+                  </Spacing>
+                </Flex.Item>
+              </Flex>
+            </Spacing>
+          </Grid.Child>
+        </Grid>
+      </article>
 
-      <section className={styles.content}>
-        <Markdown path={require("./home.md")} />
-      </section>
-      <Spacing marginTop={32}>
-        <Text as="h3" type="3-bold">
-          Release History
-        </Text>
-        <Flex>
-          <Flex.Item flex="equal">
-            <Text as="h4" type="copy-bold">
-              Version v1
-            </Text>
-            {Releases && (
-              <ul>
-                {Releases.releases.v1.map((item) => {
-                  return (
-                    <li key={item.version}>
-                      <a href={item.link}>{item.version}</a>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-          </Flex.Item>
-          <Flex.Item flex="equal">
-            <Text as="h4" type="copy-bold">
-              Version v0 Core (deprecated)
-            </Text>
-            {Releases && (
-              <ul>
-                {Releases.releases.v0Core.map((item) => {
-                  return (
-                    <li key={item.version}>
-                      <a href={item.link}>{item.version}</a>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-          </Flex.Item>
-          <Flex.Item flex="equal">
-            <Text as="h4" type="copy-bold">
-              Version v0 React (deprecated)
-            </Text>
-            {Releases && (
-              <ul>
-                {Releases.releases.v0React.map((item) => {
-                  return (
-                    <li key={item.version}>
-                      <a href={item.link}>{item.version}</a>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-          </Flex.Item>
-        </Flex>
-      </Spacing>
+      <article className={styles.newsletter}>
+        <Grid>
+          <Grid.Child size={{base: 12, m: 3}}>
+            <Text as="h2" type="2-bold">Always stay informed</Text>
+          </Grid.Child>
+          <Grid.Child size={{base: 12, m: 8}} offset={{base: 0, m: 1}} className="p-mt--24 p-mt--0-m">
+            <Text type="3-regular">Join our mailing list and get informed about Porsche UI.</Text>
+            <Spacing marginTop={8}>
+              <Text>
+                <a href="http://eepurl.com/ghVSjH" target="_blank">Subscribe to mailing list</a>
+              </Text>
+            </Spacing>
+          </Grid.Child>
+        </Grid>
+      </article>
+
     </React.Fragment>
   )
 }
