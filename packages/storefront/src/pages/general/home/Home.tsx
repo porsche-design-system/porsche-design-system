@@ -19,6 +19,9 @@ export const Home: React.FunctionComponent = () => {
           <Grid.Child size={{base: 12, m: 4}}>
             <Text as="h1" type="2-bold">Porsche UI Kit</Text>
             <Text as="h2" type="4-regular">Design System</Text>
+            <Text>
+            <Link to="/getting-started/about">About</Link>
+            </Text>
           </Grid.Child>
           <Grid.Child size={{base: 12, m: 8}} className="p-mt--24 p-mt--0-m">
             <Text type="3-regular">The Porsche UI Kit provides the fundamental elements to easily build aesthetic,

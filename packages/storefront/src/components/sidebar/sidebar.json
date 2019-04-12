@@ -9,110 +9,56 @@
         },
         {
           "title": "Start Designing",
-          "path": "/getting-started/start-designing"
-        },
-        {
-          "title": "Start Coding",
-          "path": "/getting-started/start-coding"
-        },
-        {
-          "title": "Communication",
-          "path": "/general/communication"
-        },
-        {
-          "title": "Support",
-          "path": "/general/support",
+          "path": "/getting-started/start-designing",
           "sublinks": [
             {
-              "title": "FAQ",
-              "path": "/general/faq"
+              "title": "Design Workflow",
+              "path": "/getting-started/design-workflow"
             }
           ]
         },
         {
-          "title": "License",
-          "path": "/general/license"
+          "title": "Start Coding",
+          "path": "/getting-started/start-coding"
         }
       ]
-    },   
+    },
+     
     {
       "category": "News",
       "links": [
         {
           "title": "Updates",
-          "path": "/news/versioning"
+          "path": "/news/updates",
+          "sublinks": [
+            {
+              "title": "Versioning",
+              "path": "/news/versioning"
+            }
+          ]
         },
         {
           "title": "Roadmap",
           "path": "/news/roadmap"
-        },
-        {
-          "title": "Newsletter",
-          "path": "/news/newsletter"
         }
       ]
     },
     {
-      "category": "Basics",
+      "category": "Help",
       "links": [
         {
-          "title": "Accessibility",
-          "path": "/basics/accessibility"
+          "title": "Support",
+          "path": "/help/support"
         },
         {
-          "title": "Layout",
-          "path": "/basics/layout"
-        },
-        {
-          "title": "Color",
-          "path": "/basics/color"
-        },
-        {
-          "title": "Typography",
-          "path": "/basics/typography"
-        },
-        {
-          "title": "Iconography",
-          "path": "/basics/iconography"
-        },
-        {
-          "title": "Marque",
-          "path": "/basics/marque"
-        },
-        {
-          "title": "Imagery",
-          "path": "/basics/imagery"
-        },
-        {
-          "title": "Motion",
-          "path": "/basics/motion"
-        },
-        {
-          "title": "User Onboarding",
-          "path": "/basics/user-onboarding"
-        }
-      ]
-    },
-    {
-      "category": "Designing",
-      "links": [
-        {
-          "title": "Design Principles",
-          "path": "/design/principles"
-        },
-        {
-          "title": "Workflow",
-          "path": "/design/workflow"
+          "title": "FAQ",
+          "path": "/help/faq"
         }
       ]
     },
     {
       "category": "Coding",
       "links": [
-        {
-          "title": "Installation",
-          "path": "/code/installation"
-        },
         {
           "title": "Browser compatibility",
           "path": "/code/browser-compatibility"
@@ -130,114 +76,6 @@
               "path": "/code/definition-of-done"
             }
           ]
-        }
-      ]
-    },
-    {
-      "category": "Components",
-      "links": [
-        {
-          "title": "Action",
-          "path": "/general/support",
-          "sublinks": [
-            {
-              "title": "Button Regular",
-              "path": "/components/blubb"
-            },
-            {
-              "title": "Button Square",
-              "path": "/components/blubb"
-            },
-            {
-              "title": "Button Circle",
-              "path": "/components/blubb"
-            }
-          ]        
-        },
-        {
-          "title": "Form Elements",
-          "path": "/general/support",
-          "sublinks": [
-            {
-              "title": "Text Input",
-              "path": "/components/blubb"
-            },
-            {
-              "title": "Search Input",
-              "path": "/components/blubb"
-            },
-            {
-              "title": "Checkbox",
-              "path": "/components/blubb"
-            }
-          ]        
-        }
-      ]
-    },
-    {
-      "category": "Patterns",
-      "links": [
-        {
-          "title": "Empty States",
-          "path": "/patterns/empty-states"
-        },
-        {
-          "title": "Forms",
-          "path": "/patterns/forms"
-        }
-      ]
-    },
-    {
-      "category": "Resources",
-      "links": [
-        {
-          "title": "Design Assets",
-          "path": "/resources/design-assets",
-          "sublinks": [
-            {
-              "title": "Typefaces",
-              "path": "resources/design-assets/typefaces"
-            },
-            {
-              "title": "Sketch Library",
-              "path": "resources/design-assets/sketch-library"
-            },
-            {
-              "title": "Recommended Plugins",
-              "path": "resources/design-assets/plugins"
-            },
-            {
-              "title": "Color Palette",
-              "path": "resources/design-assets/color-palette"
-            }
-          ]
-        },
-        {
-          "title": "Design Templates",
-          "path": "/resources/design-assets",
-          "sublinks": [
-            {
-              "title": "Layout Template",
-              "path": "resources/design-assets/layout-template"
-            },
-            {
-              "title": "Library Template",
-              "path": "resources/design-assets/library-template"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "category": "Help",
-      "links": [
-        {
-          "title": "Support",
-          "path": "/general/support"
-        },
-        {
-          "title": "FAQ",
-          "path": "/general/faq"
         }
       ]
     }

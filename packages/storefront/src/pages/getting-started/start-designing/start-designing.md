@@ -1,11 +1,6 @@
-# 🚦 STATUS: TO BE REFINED (WORK IN PROGRESS)
-
 # Start Designing
 
-The Porsche UI Kit enables designers to create outstanding digital Porsche 
-
-
-enables designers to create beautiful designs by using the prebuild Sketch Library resources, styles and templates.
+The Porsche UI Kit enables designers to create outstanding digital designs by using the prebuild Sketch Library resources, styles and layout templates.
 
 ## Sketch Library
 

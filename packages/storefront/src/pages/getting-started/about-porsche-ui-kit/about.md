@@ -1,6 +1,8 @@
+# About the Porsche UI Kit
+The Porsche UI Kit unites digital design at Porscha around a shared design system - including standardised tools, processes and resources for designing outstanding digital products. Therefore the Porsche UI Kit provides a prebuilt collection of reusable styles and components with corresponding documentation. It consists of a basic design library and an extended library for web components.
 
 ## Benefits for Business, Design and Development
-The Porsche UI Kit provides the fundamental elements to build aesthetic, quialitative and intuitive designs. Ready to use as designed Sketch Libraries, coded React Components or simple CSS with compiled HTML. Everything built and tested following the Porsche Quality Standards and Corporate Design.
+The Porsche UI Kit empowers product teams globally to efficiently build consistent, brand-appropriate and qualitative designs for Porsche. Everything innately with highest quality in accessibility, compatibility and performance. By centrally creating and maintaining the essential design elements, the consuming teams can increase their implementation speed and focus the efforts on building aesthetic and valuable products. 
 
 **Ship faster and focus on value.**  
 Stop wasting time on repetitive work and creation of what's already existing. Using the components and working methods enable faster releases and quick iterations. And focusing on valuable results and solving important problems.

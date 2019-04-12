@@ -1,12 +1,10 @@
-# Culture
+# Design Workflow
+We foster an transparent and effective design workflow within all digital Porsche products by sharing standardised tools and workflows. The tool **Abstract** enables a transparency and structure offering an intelligent file management and automated version control. Bringing different roles and teams closer and enabling a design collaboration without the risk of losing data.
 
-## Introduction
-We foster an open and connected design culture for all digital Porsche products by using the right resources, standardised tools and workflows together. Abstract allows us to make the design process fully transparent and structured with an intelligent file management and automated version control. To work on your own, within the team or the whole Porsche Design Community together. Bringing the different roles and teams closer and enable a more efficient design workflow.
-
+## General understanding and access to Abstract
 [Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Videos from Abstract](https://vimeo.com/goabstract).
 
-## Getting Started
-To use Abstract and access the Sketch files the most recent version of the Abstract [Browser App](https://app.goabstract.com/) or the [Desktop App](https://app.goabstract.com/) must be installed. Porsche owns and manages the organization Porsche UI and its members. To join the organization you have to request access by sending an email to [porsche-ui-kit@porsche.de](mailto:porsche-ui-kit@porsche.de) including your firstname, lastname, corporate email address and the project you are working for, i.e. Porsche Finder
+Porsche owns and manages the private organization Porsche UI. To join the organization as designer please first [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD). To access the Sketch files the most recent version of the Abstract [Browser App](https://app.goabstract.com/) or the [Desktop App](https://app.goabstract.com/) must be installed. 
 
 ### Project and File Structure
 The Porsche UI Organization is structured by context within the sections General, Apps, Web and Vehicle.
@@ -16,7 +14,7 @@ The files within a Project are recommended to be split and named by features, st
 
 ![/assets/storefront/design/abstract-filestructure.png](/assets/storefront/design/abstract-filestructure.png)
 
-### Roles
+### User roles and rights
 **Who is allowed to get access?** All designers of digital Porsche products  as well as developers, business partners and other stakeholder can be invited for accessing or viewing project files using the following rules and roles.
 
 In general the Porsche UI organization has Contributor or Viewer seats. 
