@@ -12,6 +12,7 @@ export interface TextAreaProps extends ClassNameProp, ComponentProp {
     error?: boolean
     icon?: IconProps["name"]
     maxLength?: number
+    resizable?: boolean
 
     /**
      * Sets the html5 name of the input field.
@@ -49,6 +50,7 @@ const _TextArea: React.StatelessComponent<TextAreaProps> = (props) => {
         error,
         icon,
         maxLength,
+        resizable,
         name,
         onChange,
         placeholder,
@@ -63,7 +65,8 @@ const _TextArea: React.StatelessComponent<TextAreaProps> = (props) => {
         prefix("text-area__field"),
         { [prefix("text-area__field--has-value")]: !basic && value && value.length > 0 },
         { [prefix("text-area__field--error")]: !!error },
-        { [prefix("text-area__field--no-label")]: basic }
+        { [prefix("text-area__field--no-label")]: basic },
+        { [prefix("text-area__field--resizable")]: resizable }
     )
 
     const renderMaxLength = (max: number) => {
