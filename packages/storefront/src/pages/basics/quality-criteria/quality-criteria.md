@@ -1,4 +1,4 @@
-# Definition of Done
+# Quality Criteria
 
 Whenever working on a component, these are subject to strict guidelines to meet the high quality standard.
 

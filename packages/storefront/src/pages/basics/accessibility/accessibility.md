@@ -1,4 +1,4 @@
-# Accessibility
+# Accessibility Criteria
 
 ## What is web accessibility?
 Broadly speaking, when we say a site is accessible, we mean that the site's content is available, and its functionality can be operated, by literally anyone (this includes also non human visitors of your site, e.g. search engine robots!).
