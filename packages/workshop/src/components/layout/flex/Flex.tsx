@@ -57,8 +57,8 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
     mapBreakpointPropToClasses("flex--justify-content", justifyContent),
     mapBreakpointPropToClasses("flex--align-items", alignItems),
     mapBreakpointPropToClasses("flex--align-content", alignContent),
-    { [prefix(`m-nl--${gap}`)]: gap },
-    { [prefix(`m-nr--${gap}`)]: gap },
+    { [prefix(`spacing-m-nl--${gap}`)]: gap },
+    { [prefix(`spacing-m-nr--${gap}`)]: gap },
     className
   )
 
@@ -73,7 +73,7 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
       const { className: childClassName, ...childRest } = child.props
 
       return React.cloneElement(child, {
-        className: cx(childClassName, { [prefix(`pl--${gap}`)]: gap }, { [prefix(`pr--${gap}`)]: gap }),
+        className: cx(childClassName, { [prefix(`spacing-pl--${gap}`)]: gap }, { [prefix(`spacing-pr--${gap}`)]: gap }),
         ...childRest
       })
     })

@@ -419,7 +419,7 @@ $p-spacing-g-xl: $p-spacing-80;
 /*
  * margin spacings
  */
-.#{$p-global-class-prefix}m {
+.#{$p-global-class-prefix}spacing-m {
   @each $name, $spacing in $p-spacings {
     &--#{$name} {
       margin: $spacing;
@@ -779,7 +779,7 @@ $p-spacing-g-xl: $p-spacing-80;
 /*
  * negative margin spacings
  */
-.#{$p-global-class-prefix}m-n {
+.#{$p-global-class-prefix}spacing-m-n {
   @each $name, $spacing in $p-spacings {
     &--#{$name} {
       margin: -$spacing;
@@ -1119,7 +1119,7 @@ $p-spacing-g-xl: $p-spacing-80;
 /*
  * padding spacings
  */
-.#{$p-global-class-prefix}p {
+.#{$p-global-class-prefix}spacing-p {
   @each $name, $spacing in $p-spacings {
     &--#{$name} {
       padding: $spacing;

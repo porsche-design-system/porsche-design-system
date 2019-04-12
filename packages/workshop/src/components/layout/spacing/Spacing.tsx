@@ -45,16 +45,16 @@ const _Spacing: React.StatelessComponent<SpacingProps> = (props) => {
   const ElementType: any = getElementType(as, "div")
 
   const classes = cx(
-    { [prefix(`m--${margin}`)]: margin },
-    { [prefix(`mt--${marginTop}`)]: marginTop },
-    { [prefix(`mr--${marginRight}`)]: marginRight },
-    { [prefix(`mb--${marginBottom}`)]: marginBottom },
-    { [prefix(`ml--${marginLeft}`)]: marginLeft },
-    { [prefix(`p--${padding}`)]: padding },
-    { [prefix(`pt--${paddingTop}`)]: paddingTop },
-    { [prefix(`pr--${paddingRight}`)]: paddingRight },
-    { [prefix(`pb--${paddingBottom}`)]: paddingBottom },
-    { [prefix(`pl--${paddingLeft}`)]: paddingLeft },
+    { [prefix(`spacing-m--${margin}`)]: margin },
+    { [prefix(`spacing-mt--${marginTop}`)]: marginTop },
+    { [prefix(`spacing-mr--${marginRight}`)]: marginRight },
+    { [prefix(`spacing-mb--${marginBottom}`)]: marginBottom },
+    { [prefix(`spacing-ml--${marginLeft}`)]: marginLeft },
+    { [prefix(`spacing-p--${padding}`)]: padding },
+    { [prefix(`spacing-pt--${paddingTop}`)]: paddingTop },
+    { [prefix(`spacing-pr--${paddingRight}`)]: paddingRight },
+    { [prefix(`spacing-pb--${paddingBottom}`)]: paddingBottom },
+    { [prefix(`spacing-pl--${paddingLeft}`)]: paddingLeft },
     className
   )
 
