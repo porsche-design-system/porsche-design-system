@@ -26,7 +26,7 @@ export const Home: React.FunctionComponent = () => {
             </Spacing>
           </Grid.Child>
           <Grid.Child size={{base: 12, m: 8}} className="p-mt--24 p-mt--0-m">
-            <Text type="3-regular">The Porsche UI Kit provides the fundamentals for easily building aesthetic and
+            <Text type="3-regular">The Porsche UI Kit provides the design fundamentals for easily creating aesthetic and
               qualitative products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS elements. 
               Everything built and tested following the Porsche quality standards and corporate design principles.</Text>
             <Spacing marginTop={16}>
