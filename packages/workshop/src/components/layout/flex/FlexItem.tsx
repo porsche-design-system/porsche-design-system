@@ -6,7 +6,7 @@ import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface FlexItemProps extends ClassNameProp, ComponentProp {
   /** Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property. */
-  alignSelf?: BreakpointCustomizable<"start" | "center" | "end" | "baseline" | "stretch" | "auto">
+  alignSelf?: BreakpointCustomizable<"auto" | "start" | "end" | "center" | "baseline" | "stretch">
 
   /** The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this. */
   width?: BreakpointCustomizable<"auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full">

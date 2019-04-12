@@ -3,9 +3,7 @@ import { Text } from "@porscheui/porsche-ui-kit"
 
 # Text
 
-
-
-<Example>
+<Example noTheme={false}>
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
@@ -13,6 +11,6 @@ import { Text } from "@porscheui/porsche-ui-kit"
         <Text type="1-bold" as="h1" inverted={setTheme}>Headline 1</Text>
       </React.Fragment>
     )
-}}
+  }}
 
 </Example>

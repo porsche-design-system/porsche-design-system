@@ -34,7 +34,7 @@
     & img,
     & code,
     & pre {
-    *:not([class^="example_example"]):not(pre):not(hr):not(table) {
+    *:not([class*="example_container"]):not(pre):not(hr):not(table) {
       max-width: 800px;
     }
 
@@ -56,18 +56,18 @@
 
     h4 {
       @include -text-size-4($p-font-weight-bold);
-      margin-top: $p-spacing-20;
+      margin-top: $p-spacing-24;
     }
 
     h5,
     h6 {
       @include -text-size-copy($p-font-weight-bold);
-      margin-top: $p-spacing-20;
+      margin-top: $p-spacing-24;
     }
 
     p {
       @include -text-size-copy;
-      margin-top: $p-spacing-20;
+      margin-top: $p-spacing-24;
     }
 
     // Horizontal Rules
@@ -100,7 +100,7 @@
 
     // Blockquote
     blockquote {
-      padding-left: $p-spacing-20;
+      padding-left: $p-spacing-24;
       border-left: rem(5px) solid $p-color-grey-3;
     }
 
@@ -108,7 +108,7 @@
     ul,
     ol {
       @include -text-size-copy;
-      margin-top: $p-spacing-20;
+      margin-top: $p-spacing-24;
       padding-left: $p-spacing-32;
 
       ul,
@@ -134,7 +134,7 @@
     pre {
       margin-top: $p-spacing-8;
       display: block;
-      padding: $p-spacing-12 $p-spacing-20;
+      padding: $p-spacing-8 $p-spacing-24;
       word-break: break-all;
       word-wrap: break-word;
       background-color: $p-color-grey-1;
@@ -145,7 +145,7 @@
 
     // Tables
     table {
-      margin-top: $p-spacing-20;
+      margin-top: $p-spacing-24;
       width: 100%;
       text-align: left;
       border-collapse: collapse;
@@ -159,13 +159,13 @@
       }
 
       th {
-        padding-bottom: $p-spacing-12;
+        padding-bottom: $p-spacing-8;
       }
 
       td {
         padding: {
-          top: $p-spacing-12;
-          bottom: $p-spacing-12;
+          top: $p-spacing-8;
+          bottom: $p-spacing-8;
         }
         border-bottom: 1px solid $p-color-grey-1;
         vertical-align: top;
@@ -173,7 +173,7 @@
 
       th ~ th,
       td ~ td {
-        padding-left: $p-spacing-20;
+        padding-left: $p-spacing-24;
       }
     }
 
