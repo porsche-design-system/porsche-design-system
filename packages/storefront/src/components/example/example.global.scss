@@ -104,5 +104,6 @@ $sg-color-highlight: deeppink;
 .sg-example-spacing {
   .sg-example-item {
     background-color: $sg-color-blue-1;
+    width: fit-content;
   }
 }
