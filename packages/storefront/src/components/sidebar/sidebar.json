@@ -57,25 +57,19 @@
       ]
     },
     {
-      "category": "Coding",
+      "category": "Basics",
       "links": [
         {
           "title": "Browser compatibility",
-          "path": "/code/browser-compatibility"
+          "path": "/basics/browser-compatibility"
         },
         {
-          "title": "Contribution",
-          "path": "/code/contribution",
-          "sublinks": [
-            {
-              "title": "CI/CD",
-              "path": "/code/ci-cd"
-            },
-            {
-              "title": "Definition of Done",
-              "path": "/code/definition-of-done"
-            }
-          ]
+          "title": "Quality criteria",
+          "path": "/basics/quality-criteria"
+        },
+        {
+          "title": "Accessibility criteria",
+          "path": "/basics/accessibility"
         }
       ]
     }
