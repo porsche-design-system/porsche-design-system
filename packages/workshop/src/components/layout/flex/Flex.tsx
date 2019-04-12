@@ -26,19 +26,19 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
   direction?: BreakpointCustomizable<"column-reverse" | "column" | "row-reverse" | "row">
 
   /** Defines how the flex items are aligned along the main axis. */
-  justifyContent?: BreakpointCustomizable<"start" | "center" | "end" | "space-around" | "space-between" | "space-evenly">
+  justifyContent?: BreakpointCustomizable<"start" | "end" | "center" | "space-between" | "space-around" | "space-evenly">
 
   /** Defines how the flex items are aligned along the cross axis. */
-  alignItems?: BreakpointCustomizable<"start" | "center" | "end" | "baseline" | "stretch">
+  alignItems?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline">
 
   /**
    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
    * Corresponds to the "alignContent" css property.
    */
-  alignContent?: BreakpointCustomizable<"start" | "center" | "end" | "space-around" | "space-between" | "stretch">
+  alignContent?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "space-between" | "space-around">
 
-  /** Defines the gap between contained children. The value "grid" sets responsive grid spacings that should be used together with Flex.Item. */
-  gap?: 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  /** Defines the gap between contained children. */
+  gap?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
 }
 
 const defaultProps: Partial<FlexProps> = {
@@ -57,8 +57,8 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
     mapBreakpointPropToClasses("flex--justify-content", justifyContent),
     mapBreakpointPropToClasses("flex--align-items", alignItems),
     mapBreakpointPropToClasses("flex--align-content", alignContent),
-    { [prefix(`m-nl--${gap}`)]: gap },
-    { [prefix(`m-nr--${gap}`)]: gap },
+    { [prefix(`spacing-m-nl--${gap}`)]: gap },
+    { [prefix(`spacing-m-nr--${gap}`)]: gap },
     className
   )
 
@@ -73,7 +73,7 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
       const { className: childClassName, ...childRest } = child.props
 
       return React.cloneElement(child, {
-        className: cx(childClassName, { [prefix(`pl--${gap}`)]: gap }, { [prefix(`pr--${gap}`)]: gap }),
+        className: cx(childClassName, { [prefix(`spacing-pl--${gap}`)]: gap }, { [prefix(`spacing-pr--${gap}`)]: gap }),
         ...childRest
       })
     })

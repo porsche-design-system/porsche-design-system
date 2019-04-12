@@ -1,17 +1,7 @@
-import { Example } from "../../../src/components/example/Example"
+import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
 import { Flex, Text } from "@porscheui/porsche-ui-kit"
 
-# Flex
-
-## Introduction
-
-The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by changing class names/properties on the flex container and flex item. It can be used to quickly layout standard, css-prefixed content blocks or components. It does not replace [Grid](#/layout/grid) component which should be used to define basic page structures.
-
-### Standard (default)
-Initialize standard flexbox container to define flex context.
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <div className="sg-example-block">
@@ -42,12 +32,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </div>
     )
   }}
-</Example>
+</ExampleVrt>
 
-### Inline
-Flex inline displays flex containers in a row.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -78,12 +65,9 @@ Flex inline displays flex containers in a row.
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -114,24 +98,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex` #(default) => containers are underneath each other
-* `{p}-flex--inline` => containers are stuck side by side
-* `{p}-flex--inline-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex direction
-
-Define or change direction of the flex items to rows or columns and set order.
-
-#### Row (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -155,11 +124,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Row reverse
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -183,11 +150,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Column
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -211,11 +176,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Column reverse
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -239,12 +202,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -268,26 +228,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex--direction-row` #(default) => items are stuck side by side
-* `{p}-flex--direction-row-reverse` => items are stuck side by side in reverse order
-* `{p}-flex--direction-column` => items are stuck underneath each other
-* `{p}-flex--direction-column-reverse` => items are stuck underneath each other in reverse order
-* `{p}-flex--direction-column-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex wrap
-
-The flex wrap property is used to force flex items to stay in line independently of the flex container width, or to flow in multiple lines forced by the flex container width.
-
-#### Nowrap (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -305,11 +248,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Wrap
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -327,11 +268,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Reverse
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -349,12 +288,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -372,25 +308,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex--nowrap` #(default) => items are in line on the main axis
-* `{p}-flex--wrap` => items can be wrapped to new lines
-* `{p}-flex--wrap-reverse` => items can be wrapped and reversed
-* `{p}-flex--wrap-no-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex justify content
-
-This property defines the horizontal alignment of the flex items on the main axis in conjunction to their siblings.
-
-#### Start (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -414,11 +334,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### End
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -442,11 +360,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Center
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -470,11 +386,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Space between
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -498,11 +412,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Space around
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -526,11 +438,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Space evenly
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -554,12 +464,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -583,28 +490,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex--justify-content-start` #(default) => items are aligned towards the start line
-* `{p}-flex--justify-content-end` => items are aligned towards the end line
-* `{p}-flex--justify-content-center` => items are aligned in the middle
-* `{p}-flex--justify-content-space-between` => items are aligned evenly on the main axis
-* `{p}-flex--justify-content-space-around` => items are aligned evenly on the main axis with equal space around
-* `{p}-flex--justify-content-space-evenly` => items are aligned evenly on the main axis with even space around
-* `{p}-flex--justify-content-end-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex align items
-
-This property defines the vertical alignment of the flex items on the cross axis in conjunction to their siblings.
-
-#### Stretch (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -628,11 +516,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Start
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -656,11 +542,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### End
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -684,11 +568,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Center
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -712,11 +594,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Baseline
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -740,12 +620,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -769,27 +646,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex--align-items-stretch` #(default) => items are stretched towards the cross axis
-* `{p}-flex--align-items-start` => items are aligned towards start of cross axis
-* `{p}-flex--align-items-end` => items are aligned towards end of cross axis
-* `{p}-flex--align-items-center` => items are aligned in the center of cross axis
-* `{p}-flex--align-items-baseline` => items are aligned such as their baseline (text-) alignment
-* `{p}-flex--align-items-end-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex align content
-
-This aligns flex items vertical on the cross axis of the flex container.
-
-#### Stretch (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -807,11 +666,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Start
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -829,11 +686,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### End
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -851,11 +706,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Center
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -873,11 +726,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Space between
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -895,11 +746,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Space around
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -917,12 +766,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -940,32 +786,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex--align-content-stretch` #(default) => items are stretched to take the remaining space
-* `{p}-flex--align-content-start` => items are aligned towards start of cross axis
-* `{p}-flex--align-content-end` => items are aligned towards end of cross axis
-* `{p}-flex--align-content-center` => items are aligned in the center of cross axis
-* `{p}-flex--align-content-space-between` => items are aligned evenly of cross axis
-* `{p}-flex--align-content-space-around` => items are aligned evenly with same space around to cross axis
-* `{p}-flex--align-content-end-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex child spacing
-
-Use `gap` to apply equal horizontal spacing to all children of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component. All values of standard spacing component can be used.
-
-**Static**
-
-`"auto" | 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
-
-**Responsive**
-
-`"a" | "b" | "c" | "d" | "e" | "f" | "g"`
-
-<Example className="sg-example-flex sg-example-flex--gap">
+<ExampleVrt className="sg-example-flex sg-example-flex--gap">
   {() => {
     return (
       <React.Fragment>
@@ -989,25 +812,9 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex parent container (where {p} is the prefix):**
-* `{p}-m-nl--12` => negative margin left on the parent container to equalize chidren paddings
-* `{p}-m-nr--12` => negative margin left on the parent container to equalize chidren paddings
-* `{p}-pl--12` => padding left value of children
-* `{p}-pr--12` => padding right value of children
-
----
-
-## Modifier for flex items (children)
-
-### Flex item width
-
-The widths of flex items is normally defined through its contents by default. But it is also possible to define equal widths or even specific predefined widths.
-
-#### Auto (default)
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1036,11 +843,9 @@ The widths of flex items is normally defined through its contents by default. Bu
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Equal
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1069,11 +874,9 @@ The widths of flex items is normally defined through its contents by default. Bu
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Specific
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1162,12 +965,9 @@ The widths of flex items is normally defined through its contents by default. Bu
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1196,28 +996,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--auto` #(default) => the width is given by the item content
-* `{p}-flex__child--equal` => items are stretched equally divided by their number
-* `{p}-flex__child--width-one-quarter` => items are stretched to one quarter of the remaining space
-* `{p}-flex__child--width-one-third` => items are stretched to one third of the remaining space
-* `{p}-flex__child--width-half` => items are stretched to half of the remaining space
-* `{p}-flex__child--width-two-thirds` => items are stretched to two thirds of the remaining space
-* `{p}-flex__child--width-three-quarters` => items are stretched to three quarters of the remaining space
-* `{p}-flex__child--width-full` => items are stretched to full width of the remaining space
-* `{p}-flex__child--width-one-quarter-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex item offset
-
-Items can have different offsets that work similar like column widths.
-
-#### Widths
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1259,12 +1040,9 @@ Items can have different offsets that work similar like column widths.
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1278,27 +1056,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--offset-one-quarter` => offset left of one quarter of the remaining space
-* `{p}-flex__child--offset-one-third` => offset left of one third of the remaining space
-* `{p}-flex__child--offset-half` => offset left of half of the remaining space
-* `{p}-flex__child--offset-two-thirds` => offset left of two thirds of the remaining space
-* `{p}-flex__child--offset-three-quarter` => offset left of three quarters of the remaining space
-* `{p}-flex__child--offset-one-third-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex item align self
-
-You can override the align items properties of the flex container for individual flex items.
-
-#### Auto (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -1327,11 +1087,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Stretch
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -1360,11 +1118,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Start
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -1393,11 +1149,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### End
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -1426,11 +1180,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Center
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -1459,11 +1211,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Baseline
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -1492,12 +1242,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
-
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
   {() => {
     return (
       <React.Fragment>
@@ -1526,30 +1273,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--align-self-auto` #(default) => uses align-items value of flex container
-* `{p}-flex__child--align-self-stretch` => item is stretched on the cross axis
-* `{p}-flex__child--align-self-start` => item is at the start line of the cross axis
-* `{p}-flex__child--align-self-end` => item is at the end line of the cross axis
-* `{p}-flex__child--align-self-center` => item is centered on the cross axis
-* `{p}-flex__child--align-self-baseline` => item is centered on the (text-) baseline of cross axis
-* `{p}-flex__child--align-self-end-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex item grow
-
-Flexbox default behaviour on how the childrens widths are rendered (stretched) can be overwritten with the following class names.
-
-It handles how to grow an item based on the space that is left to fulfill the parents width.
-
-#### Grow - 0 (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1568,11 +1294,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Grow - 1
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1591,26 +1315,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--grow-0` #(default) => items grows in conjunction of its contents
-* `{p}-flex__child--grow-1` => item takes remaining space
-* `{p}-flex__child--grow-1-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex item shrink
-
-Flexbox default behaviour on how the childrens widths are rendered (shrinked) can be overwritten with the following class names.
-
-It handles how to shrink an item based on the space that exceeds the parents width to fulfill it.
-
-#### Shrink - 1 (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1629,11 +1336,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Shrink - 0
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1652,22 +1357,9 @@ If using default property, no extra class/prop declaration is needed due to stan
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--shrink-1` #(default) => items shrinks in conjunction of its contents
-* `{p}-flex__child--shrink-0` => item does not shrink at all
-* `{p}-flex__child--shrink-1-{bp}` => example of breakpoint specific behaviour
-
----
-
-### Flex item shorthand
-
-Setting shorthand properties for flex grow, shrink and base:
-
-#### Initial (grow:0, shrink:1 and base:auto)
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1691,11 +1383,9 @@ Setting shorthand properties for flex grow, shrink and base:
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Auto (grow:1, shrink:1 and base:auto)
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1719,11 +1409,9 @@ Setting shorthand properties for flex grow, shrink and base:
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### Equal (grow:1, shrink:1 and base:0)
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1747,11 +1435,9 @@ Setting shorthand properties for flex grow, shrink and base:
       </React.Fragment>
     )
   }}
-</Example>
+</ExampleVrt>
 
-#### None (grow:0, shrink:0 and base:auto)
-
-<Example className="sg-example-flex">
+<ExampleVrt className="sg-example-flex">
   {() => {
     return (
       <React.Fragment>
@@ -1775,11 +1461,4 @@ Setting shorthand properties for flex grow, shrink and base:
       </React.Fragment>
     )
   }}
-</Example>
-
-**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--initial` => items shrinks to its minimum size to fit the container
-* `{p}-flex__child--auto` => item stretches/shrinks regarding to its content and its container
-* `{p}-flex__child--equal` => item stretches equally to fit the container container
-* `{p}-flex__child--none` => item doesn't shrink or grow regarding to its container
-* `{p}-flex__child--equal-{bp}` => example of breakpoint specific behaviour
+</ExampleVrt>
