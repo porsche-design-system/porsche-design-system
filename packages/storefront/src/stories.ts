@@ -30,6 +30,7 @@ export const Stories: Stories = {
   Layout: {
     Flex: {
       examples: importMDX("../../workshop/src/components/layout/flex/flex.code.mdx"),
+      vrt: importMDX("../../workshop/src/components/layout/flex/flex.vrt.mdx"),
       props: ["Flex", "FlexItem"]
     },
     Grid: {

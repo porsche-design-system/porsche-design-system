@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import cx from "classnames"
 import { ClassNameProp } from "../../lib/props"
 import styles from "./exampleVrt.module.scss"
