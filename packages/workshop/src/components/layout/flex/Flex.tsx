@@ -38,7 +38,7 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
   alignContent?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "space-between" | "space-around">
 
   /** Defines the gap between contained children. */
-  gap?: 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  gap?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
 }
 
 const defaultProps: Partial<FlexProps> = {

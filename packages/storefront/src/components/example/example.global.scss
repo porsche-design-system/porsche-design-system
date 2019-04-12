@@ -11,7 +11,7 @@ $sg-color-blue-3: dodgerblue;
 $sg-color-blue-4: royalblue;
 $sg-color-highlight: deeppink;
 
-// flex component styles
+/* ----------  flex component styles ---------- */
 .sg-example-flex {
   &--fixed-height {
     .p-flex {
@@ -97,5 +97,12 @@ $sg-color-highlight: deeppink;
         background-color: $sg-color-blue-4;
       }
     }
+  }
+}
+
+/* ----------  spacing component styles ---------- */
+.sg-example-spacing {
+  .sg-example-item {
+    background-color: $sg-color-blue-1;
   }
 }

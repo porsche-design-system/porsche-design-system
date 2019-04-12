@@ -1,0 +1,20 @@
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+/**
+ * Define styles for component representation
+ */
+
+// variables
+$sg-color-blue-1: lightskyblue;
+$sg-color-blue-2: deepskyblue;
+$sg-color-blue-3: dodgerblue;
+$sg-color-blue-4: royalblue;
+$sg-color-highlight: deeppink;
+
+/* ----------  spacing component styles ---------- */
+.sg-example-vrt-spacing {
+  .sg-example-vrt-item {
+    background-color: $sg-color-blue-1;
+    width: fit-content;
+  }
+}
