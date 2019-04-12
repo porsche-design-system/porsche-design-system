@@ -19,9 +19,11 @@ export const Home: React.FunctionComponent = () => {
           <Grid.Child size={{base: 12, m: 4}}>
             <Text as="h1" type="2-bold">Porsche UI Kit</Text>
             <Text as="h2" type="4-regular">Design System</Text>
-            <Text>
-            <Link to="/getting-started/about">About</Link>
-            </Text>
+            <Spacing marginTop={8}>
+              <Text>
+                <Link to="/getting-started/about">Learn more about it</Link>
+              </Text>
+            </Spacing>
           </Grid.Child>
           <Grid.Child size={{base: 12, m: 8}} className="p-mt--24 p-mt--0-m">
             <Text type="3-regular">The Porsche UI Kit provides the fundamental elements to easily build aesthetic,
@@ -32,12 +34,12 @@ export const Home: React.FunctionComponent = () => {
               <Flex gap={16} wrap={true}>
                 <Flex.Item>
                   <Spacing marginTop={16}>
-                    <Button type="highlight" as={Link} {...{to: "/design/introduction"}}>Start designing</Button>
+                    <Button type="highlight" as={Link} {...{to: "/getting-started/start-designing"}}>Start designing</Button>
                   </Spacing>
                 </Flex.Item>
                 <Flex.Item>
                   <Spacing marginTop={16}>
-                    <Button type="highlight" as={Link} {...{to: "/code/introduction"}}>Start coding</Button>
+                    <Button type="highlight" as={Link} {...{to: "/getting-started/start-coding"}}>Start coding</Button>
                   </Spacing>
                 </Flex.Item>
               </Flex>
