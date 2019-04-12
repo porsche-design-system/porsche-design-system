@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import cx from "classnames"
 import { ClassNameProp } from "../../lib/props"
 import styles from "./exampleVrt.module.scss"
-import "./exampleVrt.global.scss"
+import "./example.global.scss"
 
 export interface ExampleVrtProps extends ClassNameProp {
   theme: "default" | "inverted"
