@@ -2,12 +2,6 @@
 
 To answer the most frequently asked questions, Porsche UI is constantly adding FAQs to the following list. Please read through before using the support and communication channels for questions.
 
-### What is the Porsche UI Kit?
-The Porsche UI Kit is a systems approach of creating a common Porsche Design System and Language - including contents, processes and people. Within this system the Porsche UI Kit provides a prebuilt collection of reusable styles and components with corresponding documentation for building digital products or projects at Porsche. It consists of a basic design library and an extended library for web components, both provided as React Components Library, as HTML and (S)CSS styles and as Sketch Library. All the relating documentation and guidelines for developer, designer, tester and other stakeholders are available on the Porsche UI Kit Website - ui.porsche.com
-
-### Why a global Porsche Design System?
-We want to enable different teams globally to build consistent, brand-appropriate and qualitative designs for Porsche. And by focusing efforts to a central designated team being responsible for creating and maintaining the essential design elements, we can increase the development speed and focus of the teams to create aesthetic and valuable products. Everything innately on a very high quality level of up-to-date accessibility, compatibility and performance.
-
 ### Who is developing the Porsche UI Kit?
 The Porsche UI Kit is a design system approach with different levels of organization and content. On the 1st tier "Core Level" the most essential contents with the highest quality requirements are developed and maintained centrally by a designated team from Porsche AG in Germany - The Porsche UI Team. Within the 2nd tier on "Group Level", the different adopting teams are developing and sharing individual contents on their own responsibility. Following an open community approach everyone is encouraged to contribute to the Porsche UI Kit Core contents and give feedback to the Porsche UI Team at any time.
 
