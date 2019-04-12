@@ -19,7 +19,7 @@ import { BrowserCompatibility as BasicsBrowserCompatibility } from "../pages/bas
 import { QualityCriteria as BasicsQualityCriteria } from "../pages/basics/quality-criteria/QualityCriteria"
 import { Accessibility as BasicsAccessibility } from "../pages/basics/accessibility/Accessibility"
 import { License as GeneralLicense } from "../pages/general/license/License"
-import { SketchPlugins as DesignSketchPlugins } from "../pages/design/sketch-plugins/SketchPlugins"
+import { SketchPlugins as DesignSketchPlugins } from "../pages/getting-started/sketch-plugins/SketchPlugins"
 import { Markdown } from "../pages/demo/markdown/Markdown"
 import { Footer } from "../components/footer/Footer"
 
@@ -73,6 +73,7 @@ export const Storefront: React.FunctionComponent = () => {
           <Route path="/getting-started/start-designing" component={StartDesigning} />
           <Route path="/getting-started/start-coding" component={StartCoding} />
           <Route path="/getting-started/design-workflow" component={DesignWorkflow} />
+          <Route path="/getting-started/sketch-plugins" component={DesignSketchPlugins} />
           <Route path="/help/support" component={GeneralSupport} />
           <Route path="/help/faq" component={GeneralFAQ} />
           <Route path="/news/updates" component={GeneralUpdates} />
@@ -82,7 +83,6 @@ export const Storefront: React.FunctionComponent = () => {
           <Route path="/basics/quality-criteria" component={BasicsQualityCriteria} />
           <Route path="/basics/browser-compatibility" component={BasicsBrowserCompatibility} />
           <Route path="/basics/accessibility" component={BasicsAccessibility} />
-          <Route path="/design/sketch-plugins" component={DesignSketchPlugins} />
           <Route path="/demo/markdown" component={Markdown} />
           <Route path="/:category/:story" render={(props) => <Story featureV1={featureShowV1} {...props} />} />
         </Switch>
