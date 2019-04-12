@@ -62,7 +62,6 @@ cleanup_previous_deployment() {
 }
 
 copy_porsche_ui_kit_storefront() {
-  echo "copy_porsche_ui_kit_storefront $(date)"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
   cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
 }
@@ -105,21 +104,21 @@ deploy_to_gh_pages() {
 verify_deployment() {
   echo "verify_deployment $(date)"
   local n=1
-  local max=10
+  local max=15
   local delay=60
   while true
   do
-    echo "Check deployment status. Attempt ${n}/${max}, $(date)"
+    echo "Check deployment status. Attempt ${n}/${max}."
+    local http_code="$(curl -H 'Cache-Control: no-cache' -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
     echo "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}"
-    local http_code="$(curl -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
     echo "http code: ${http_code}"
-    if [[ "${http_code}" -eq 200 ]]; then
+    if [[ "${http_code}" -eq "200" ]]; then
       echo "All right, deployment was verified."
       break
     elif [[ ${n} -lt ${max} ]]; then
       ((n++))
     else
-      echo "Deployment could not be verified after ${n} attempts, $(date)"
+      echo "Deployment could not be verified after ${n} attempts."
       exit 1
     fi
     sleep ${delay}
@@ -138,4 +137,4 @@ if [[ "${P_ABBR_REF}" =~ ${GIT_RELEASE_FILTER} ]]; then
 fi
 add_deployment_sha
 deploy_to_gh_pages
-verify_deployment
+#verify_deployment

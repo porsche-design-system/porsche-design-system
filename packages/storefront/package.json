@@ -34,6 +34,9 @@
     "lint:ts": "tslint -p './tsconfig.json' -t codeFrame",
     "clean": "rm -rf './node_modules' './build'"
   },
+  "resolutions": {
+    "@types/react": "^16.8.13"
+  },
   "dependencies": {
     "@porsche/ui-kit-react": "^0.10.0",
     "@porscheui/porsche-ui-kit": "1.0.0-beta.0",
@@ -48,7 +51,7 @@
   },
   "devDependencies": {
     "@types/node": "11.13.0",
-    "@types/react": "^16.8.10",
+    "@types/react": "^16.8.13",
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^4.3.1",
     "@types/throttle-debounce": "^1.1.1",
@@ -65,7 +68,7 @@
     "tslint": "^5.15.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.0.0",
-    "typescript": "~3.4.1",
+    "typescript": "~3.4.2",
     "webpack": "^4.29.6"
   }
 }

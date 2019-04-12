@@ -14,6 +14,24 @@
         {
           "title": "Start Coding",
           "path": "/getting-started/start-coding"
+        },
+        {
+          "title": "Communication",
+          "path": "/general/communication"
+        },
+        {
+          "title": "Support",
+          "path": "/general/support",
+          "sublinks": [
+            {
+              "title": "FAQ",
+              "path": "/general/faq"
+            }
+          ]
+        },
+        {
+          "title": "License",
+          "path": "/general/license"
         }
       ]
     },   
@@ -93,20 +111,7 @@
       "links": [
         {
           "title": "Installation",
-          "path": "/code/installation",
-          "featureV1": true
-        },
-        {
-          "title": "Installation v0 (deprecated)",
-          "path": "/code/installation-v0"
-        },
-        {
-          "title": "Definition of Done",
-          "path": "/code/definition-of-done"
-        },
-        {
-          "title": "CI/CD",
-          "path": "/code/ci-cd"
+          "path": "/code/installation"
         },
         {
           "title": "Browser compatibility",
@@ -114,7 +119,17 @@
         },
         {
           "title": "Contribution",
-          "path": "/code/contribution"
+          "path": "/code/contribution",
+          "sublinks": [
+            {
+              "title": "CI/CD",
+              "path": "/code/ci-cd"
+            },
+            {
+              "title": "Definition of Done",
+              "path": "/code/definition-of-done"
+            }
+          ]
         }
       ]
     },

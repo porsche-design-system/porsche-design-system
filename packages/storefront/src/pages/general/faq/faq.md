@@ -25,7 +25,14 @@ The Porsche UI Kit Design Library Sketch Files are developed and maintained with
 Changes in code or design are released using the SemanticVersioning as Major, Minor or Patch, documented in the corresponding changelog. The Porsche UI Kit release combines both design and code to ensure identical content at any time. Future tasks and changes in the Porsche UI Kit are published as Roadmap for the next quarter. The Roadmap is not a delivery commitment and may be changed based on upcoming user needs, feedback and surrounding requirements.
 
 ### What happens with contents that move to Deprecated?
-tbd
+Contents that were marked as deprecated in `v0` releases of Porsche UI Kit won't be deleted and can still be used but without any warranty that those patterns still fit latest design definitions or browser compatibility. If possible it's recommended to replace those patterns with new ones of `v1` release or copy the ones you still need over into your application and maintain it by yourself.
+
+### How to handle older versions of Porsche UI Kit?
+If you are still running on older versions of Porsche UI Kit (e.g. `@porsche/ui-kit-core`–`v0` or `@porsche/ui-kit-react`–`v0`) we highly recommend to update to the latest Porsche UI Kit release when possible. If you have to stuck on `v0` components because they do not exist in the new version, you can include both libraries in parallel.
+
+If using both libraries in parallel, be aware to only use one component of the same type, e.g. do not use `button` component of `v0` and `v1` in parallel which could cause design inconsistencies and performance issues.
+
+While Porsche UI Kit `v0` is still maintained by providing bugfixes and patches for a certain timeframe, new features or components won't be added anymore and will exclusively be available in `v1`.
 
 ### How do I report bugs and how are they handled?
 Once you find a reproducible bug you can either open an issue in the public contribution GitHub Repository or directly submit a fix as Pull Request within the private Porsche UI Kit Repository. We will address and respond to new bug reports as soon as possible, usually within some days. Fixing bugs is depending to the current issue planing intended to happen within one sprint. The best way for urgent bugs is to fix it locally within your project and submit the fix or create a PR afterwards.

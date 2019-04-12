@@ -29,7 +29,7 @@
     "lint": "concurrently -n \"storefront,workshop\" -c \"magenta,cyan\" \"yarn --cwd ./packages/storefront lint\" \"yarn --cwd ./packages/workshop lint\"",
     "vrt": "concurrently -k -s \"first\" -n \"app,vrt\" -c \"gray\" \"yarn start\" \"wait-on -t 300000 http-get://localhost:3000 && ts-node --project 'vrt/tsconfig.json' node_modules/.bin/jasmine --config='vrt/jasmine.config.json'\"",
     "clean": "concurrently -n \"repository,storefront,workshop\" -c \"gray,magenta,cyan\" \"rm -rf './node_modules'\" \"yarn --cwd ./packages/storefront clean\" \"yarn --cwd ./packages/workshop clean\"",
-    "copy": "yarn --cwd ./packages/workshop copyfiles --up 2 --verbose --error './src/components/**/assets/*.*' '../storefront/public/assets/workshop/'"
+    "copy": "yarn --cwd ./packages/workshop copyfiles --up 2 --verbose --error './src/components/**/assets/*.{jpg,jpeg,png,svg,gif}' '../storefront/public/assets/workshop/'"
   },
   "dependencies": {},
   "devDependencies": {
@@ -37,10 +37,10 @@
     "@types/jasmine": "^3.3.12",
     "concurrently": "^4.1.0",
     "copyfiles": "^2.1.0",
-    "jasmine": "^3.3.1",
+    "jasmine": "^3.4.0",
     "puppeteer": "^1.14.0",
     "ts-node": "^8.0.3",
-    "typescript": "^3.4.1",
+    "typescript": "^3.4.2",
     "wait-on": "^3.2.0"
   },
   "workspaces": [
