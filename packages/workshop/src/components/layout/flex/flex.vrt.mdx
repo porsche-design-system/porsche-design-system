@@ -1,0 +1,1464 @@
+import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
+import { Flex, Text } from "@porscheui/porsche-ui-kit"
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <div className="sg-example-block">
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </div>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex inline>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex inline>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex inline={{ base: false, l: true }}>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex inline={{ base: false, l: true }}>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex direction="row-reverse">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex direction="column">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex direction="column-reverse">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex direction={{ base: "column", l: "row" }}>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap={true}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap="reverse">
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap={{ base: true, l: false }}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex justifyContent="end">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex justifyContent="center">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex justifyContent="space-between">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex justifyContent="space-around">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex justifyContent="space-evenly">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex justifyContent={{ base: "start", l: "end" }}>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex alignItems="start">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex alignItems="end">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex alignItems="center">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex alignItems="baseline">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex alignItems={{ base: "start", l: "end" }}>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap alignContent="start">
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap alignContent="end">
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap alignContent="center">
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap alignContent="space-between">
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap alignContent="space-around">
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap alignContent={{ base: "start", l: "end" }}>
+          {Array.apply(0, Array(9)).map(function(x, i) {
+            return (
+              <Flex.Item key={i}>
+                <Text className="sg-example-item">
+                  {i + 1}
+                </Text>
+              </Flex.Item>
+            )
+          })}
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--gap">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex gap={12}>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="equal">
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item width="one-quarter">
+            <Text className="sg-example-item">
+              one-quarter
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-quarter">
+            <Text className="sg-example-item">
+              one-quarter
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-quarter">
+            <Text className="sg-example-item">
+              one-quarter
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-quarter">
+            <Text className="sg-example-item">
+              one-quarter
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item width="one-third">
+            <Text className="sg-example-item">
+              one-third
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-third">
+            <Text className="sg-example-item">
+              one-third
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-third">
+            <Text className="sg-example-item">
+              one-third
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item width="half">
+            <Text className="sg-example-item">
+              half
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="half">
+            <Text className="sg-example-item">
+              half
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item width="two-thirds">
+            <Text className="sg-example-item">
+              two-thirds
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-third">
+            <Text className="sg-example-item">
+              one-third
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item width="three-quarters">
+            <Text className="sg-example-item">
+              three-quarters
+            </Text>
+          </Flex.Item>
+          <Flex.Item width="one-quarter">
+            <Text className="sg-example-item">
+              one-quarter
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item width="full">
+            <Text className="sg-example-item">
+              full
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex wrap>
+          <Flex.Item width={{ base: "half", l: "one-quarter" }}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item width={{ base: "half", l: "one-quarter" }}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item width={{ base: "half", l: "one-quarter" }}>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item width={{ base: "half", l: "one-quarter" }}>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item offset={"one-quarter"} width={"three-quarters"}>
+            <Text className="sg-example-item">
+              Offset: quarter
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item offset={"one-third"} width={"two-thirds"}>
+            <Text className="sg-example-item">
+              Offset: third
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item offset={"half"} width={"half"}>
+            <Text className="sg-example-item">
+              Offset: half
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item offset={"two-thirds"} width={"one-third"}>
+            <Text className="sg-example-item">
+              Offset: 2 thirds
+            </Text>
+          </Flex.Item>
+        </Flex>
+        <Flex>
+          <Flex.Item offset={"three-quarters"} width={"one-quarter"}>
+            <Text className="sg-example-item">
+              Offset: 3 quarters
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item offset={{ base: "none", l: "one-third" }}>
+            <Text className="sg-example-item">
+              Responsive offset
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex alignItems="start">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignSelf="stretch">
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignSelf="start">
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignSelf="end">
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignSelf="center">
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item alignSelf="baseline">
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignSelf="baseline">
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--fixed-height">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item alignSelf={{ base: "start", l: "end" }}>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              4
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item grow={1}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item style={{ width: "80%" }}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item style={{ width: "80%" }}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item shrink={0} style={{ width: "80%" }}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item style={{ width: "80%" }}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="initial">
+            <Text className="sg-example-item">
+              1 - short content
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="initial">
+            <Text className="sg-example-item">
+              2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="initial">
+            <Text className="sg-example-item">
+              3 - short content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="auto">
+            <Text className="sg-example-item">
+              1 - short content
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="auto">
+            <Text className="sg-example-item">
+              2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="auto">
+            <Text className="sg-example-item">
+              3 - short content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="equal">
+            <Text className="sg-example-item">
+              1 - short content
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text className="sg-example-item">
+              2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="equal">
+            <Text className="sg-example-item">
+              3 - short content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex>
+          <Flex.Item flex="none">
+            <Text className="sg-example-item">
+              1 - short content
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="none">
+            <Text className="sg-example-item">
+              2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+            </Text>
+          </Flex.Item>
+          <Flex.Item flex="none">
+            <Text className="sg-example-item">
+              3 - short content
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
