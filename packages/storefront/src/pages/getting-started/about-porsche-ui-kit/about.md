@@ -1,7 +1,7 @@
 # About the Porsche UI Kit
-The Porsche UI Kit unites digital Porsche products around a shared design system. Enabling teams in efficiently creating outstanding digital products. Consistent, brand-appropriate and qualitative. Having everyone speaking the same language and using the same resources and tools. With a prebuilt collection of reusable styles and components with corresponding documentation.
+The Porsche UI Kit unites digital Porsche products around a shared design system. That enables everyone to speak the same language and use the same prebuilt resources and tools. Enabling the product teams to efficiently create outstanding digital products. Consistent, qualitative and brand-appropriate.
 
-## Benefits for Business, Design and Development
+## Benefits convincing business, design and development
 
 **Ship faster and focus on value.**  
 Stop wasting time on repetitive work and creation of what's already existing. Using the components and working methods enable faster releases and quick iterations. And focusing on valuable results and solving important problems.
@@ -15,12 +15,11 @@ Our centrally built and continuously maintained design system with standardised 
 **Laverage knowledge and clarity.**  
 Everyone having access to the system and using the same language, it is much easier to collaborate and share knowledge with a clear understanding. Onboardings for new members are much easier and faster.
 
-## Our Principles for success
+## Principles of success for the Porsche UI Kit
+The Porsche UI Kit fosters trust and responsibility rather than policing; Sticking to a continuous evolvement strategy with open collaboration and contribution. To take full advantage of the benefits, we recommend to align with our following principles:
 
-We foster trust and responsibility rather than policing; Sticking to a continuous evolvement strategy with open collaboration and contribution.
-
-* Use the contents as ingredients for building creative designs - upon and combining them
-* Strive for a deep alignment between design and code through a close collaboration and communication
-* See continuous updating as operation task and avoid growing debts
-* Join our communication channels and community rituals to receive and share information
-* Participate in the evolvement with your contribution and feedback
+* **Use contents as fundament** without modification for building individual designs upon
+* **Collaborate and talk** between design and development, just as we do
+* **Continuous update** to avoid growing debts
+* **Actively join our community** through our channels and rituals
+* **Participate in the evolvement** by contributing and giving feedback
