@@ -1,5 +1,5 @@
 # About the Porsche UI Kit
-The Porsche UI Kit unites digital Porsche products around a shared design system. That enables everyone to speak the same language and use the same prebuilt resources and tools. Enabling the product teams to efficiently create outstanding digital products. Consistent, qualitative and brand-appropriate.
+The Porsche UI Kit unites digital Porsche products around a shared design system. Enabling everyone to speak the same language, work with the same tools and use prebuilt resources. To efficiently create outstanding digital products; Consistent, qualitative and brand-appropriate.
 
 ## Benefits convincing business, design and development
 
@@ -16,10 +16,10 @@ Our centrally built and continuously maintained design system with standardised 
 Everyone having access to the system and using the same language, it is much easier to collaborate and share knowledge with a clear understanding. Onboardings for new members are much easier and faster.
 
 ## Principles of success for the Porsche UI Kit
-The Porsche UI Kit fosters trust and responsibility rather than policing; Sticking to a continuous evolvement strategy with open collaboration and contribution. To take full advantage of the benefits, we recommend to align with our following principles:
+The Porsche UI Kit fosters the believe of trust rather than policing by empowering self-responsibile teamwork. To take full advantage of the benefits we follow the principles of:
 
-* **Use contents as fundament** without modification for building individual designs upon
-* **Collaborate and talk** between design and development, just as we do
-* **Continuous update** to avoid growing debts
-* **Actively join our community** through our channels and rituals
+* **Use the contents as fundament** without modification for building individual designs upon
+* **Collaborate** between design and development, just as we do
+* **Update continiously** to avoid growing debts
+* **Join the community** through our channels and rituals
 * **Participate in the evolvement** by contributing and giving feedback
