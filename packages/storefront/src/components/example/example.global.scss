@@ -123,16 +123,12 @@ $sg-color-highlight: deeppink;
   }
 
   &--negative {
-    display: block;
-
     > div {
       padding: $p-spacing-40;
     }
   }
 
   &--negative-responsive {
-    display: block;
-
     .sg-example-item {
       width: 2 * $p-spacing-d;
       height: 2 * $p-spacing-d;
