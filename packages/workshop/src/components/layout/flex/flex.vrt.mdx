@@ -792,7 +792,33 @@ import { Flex, Text } from "@porscheui/porsche-ui-kit"
   {() => {
     return (
       <React.Fragment>
-        <Flex gap={12}>
+        <Flex gap={16}>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-flex sg-example-flex--gap">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex gap="c">
           <Flex.Item>
             <Text className="sg-example-item">
               1

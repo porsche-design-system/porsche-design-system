@@ -957,19 +957,13 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 Use `gap` to apply equal horizontal spacing to all children of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component. All values of standard spacing component can be used.
 
-**Static**
-
-`"auto" | 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
-
-**Responsive**
-
-`"a" | "b" | "c" | "d" | "e" | "f" | "g"`
+#### Static
 
 <Example className="sg-example-flex sg-example-flex--gap">
   {() => {
     return (
       <React.Fragment>
-        <Flex gap={12}>
+        <Flex gap={16}>
           <Flex.Item>
             <Text className="sg-example-item">
               1
@@ -991,11 +985,46 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
   }}
 </Example>
 
+**Possible spacing values are:**
+`4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
+
+#### Responsive
+
+<Example className="sg-example-flex sg-example-flex--gap">
+  {() => {
+    return (
+      <React.Fragment>
+        <Flex gap="c">
+          <Flex.Item>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Flex.Item>
+          <Flex.Item>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Flex.Item>
+        </Flex>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+**Possible spacing values are:**
+
+`"a" | "b" | "c" | "d" | "e" | "f" | "g"`
+
 **Possible class names on the flex parent container (where {p} is the prefix):**
-* `{p}-m-nl--12` => negative margin left on the parent container to equalize chidren paddings
-* `{p}-m-nr--12` => negative margin left on the parent container to equalize chidren paddings
-* `{p}-pl--12` => padding left value of children
-* `{p}-pr--12` => padding right value of children
+* `{p}-spacing-m-nl--16` => negative margin left on the parent container to equalize chidren paddings
+* `{p}-spacing-m-nr--16` => negative margin left on the parent container to equalize chidren paddings
+* `{p}-spacing-pl--16` => padding left value of children
+* `{p}-spacing-pr--16` => padding right value of children
 
 ---
 
