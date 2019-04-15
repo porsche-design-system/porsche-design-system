@@ -41,10 +41,6 @@ action "Deploy" {
   uses = "./images/node/"
   runs = ["run-deploy"]
   secrets = ["GIT_DEPLOY_KEY"]
-  env = {
-    GIT_RELEASE_FILTER = "^v[0-9]+$"
-    GIT_ISSUE_FILTER = "^issue/[0-9]+$"
-  }
 }
 
 action "Slack" {
