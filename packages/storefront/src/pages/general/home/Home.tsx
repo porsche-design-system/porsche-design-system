@@ -19,22 +19,26 @@ export const Home: React.FunctionComponent = () => {
           <Grid.Child size={{base: 12, m: 4}}>
             <Text as="h1" type="2-bold">Porsche UI Kit</Text>
             <Text as="h2" type="4-regular">Design System</Text>
+            <Spacing marginTop={8}>
+              <Text>
+                <Link to="/getting-started/about">Learn more about it</Link>
+              </Text>
+            </Spacing>
           </Grid.Child>
           <Grid.Child size={{base: 12, m: 8}} className="p-mt--24 p-mt--0-m">
-            <Text type="3-regular">The Porsche UI Kit provides the fundamental elements to easily build aesthetic,
-              qualitative and intuitive designs. Ready to use as designed Sketch libraries, coded React components or HTML
-              with CSS styles. Everything built and tested following the Porsche quality standards and corporate
-              design.</Text>
+            <Text type="3-regular">The Porsche UI Kit provides the design fundamentals for easily creating aesthetic and
+              qualitative products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS elements. 
+              Everything built and tested following the Porsche quality standards and corporate design principles.</Text>
             <Spacing marginTop={16}>
               <Flex gap={16} wrap={true}>
                 <Flex.Item>
                   <Spacing marginTop={16}>
-                    <Button type="highlight" as={Link} {...{to: "/design/introduction"}}>Start designing</Button>
+                    <Button type="highlight" as={Link} {...{to: "/getting-started/start-designing"}}>Start designing</Button>
                   </Spacing>
                 </Flex.Item>
                 <Flex.Item>
                   <Spacing marginTop={16}>
-                    <Button type="highlight" as={Link} {...{to: "/code/introduction"}}>Start coding</Button>
+                    <Button type="highlight" as={Link} {...{to: "/getting-started/start-coding"}}>Start coding</Button>
                   </Spacing>
                 </Flex.Item>
               </Flex>
@@ -49,7 +53,7 @@ export const Home: React.FunctionComponent = () => {
             <Text as="h2" type="2-bold">Always stay informed</Text>
           </Grid.Child>
           <Grid.Child size={{base: 12, m: 8}} offset={{base: 0, m: 1}} className="p-mt--24 p-mt--0-m">
-            <Text type="3-regular">Join our mailing list and get informed about Porsche UI.</Text>
+            <Text type="3-regular">Join our mailing list and get informed about relevant updates and topics.</Text>
             <Spacing marginTop={8}>
               <Text>
                 <a href="http://eepurl.com/ghVSjH" target="_blank">Subscribe to mailing list</a>

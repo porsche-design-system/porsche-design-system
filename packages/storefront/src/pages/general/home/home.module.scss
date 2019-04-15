@@ -53,6 +53,16 @@
     }
     padding: $p-spacing-64;
   }
+  p a {
+    border-bottom: 1px solid $p-color-red-1;
+    text-decoration: none;
+    color: $p-color-red-1;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $p-color-red-2;
+    }
+  }
 }
 
 .newsletter {
