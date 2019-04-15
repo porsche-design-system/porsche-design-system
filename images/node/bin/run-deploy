@@ -6,16 +6,6 @@ set -o pipefail
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
 
-if [[ -z "${GIT_RELEASE_FILTER}" ]]; then
-  echo "Please provide the \$GIT_RELEASE_FILTER environment variable."
-  exit 1
-fi
-
-if [[ -z "${GIT_ISSUE_FILTER}" ]]; then
-  echo "Please provide the \$GIT_ISSUE_FILTER environment variable."
-  exit 1
-fi
-
 if [[ -z "${GITHUB_REPOSITORY}" ]]; then
   echo "Please provide the \$GITHUB_REPOSITORY environment variable."
   exit 1
@@ -41,8 +31,10 @@ if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
   exit 1
 fi
 
-P_ABBR_REF="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
-P_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
+P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
+P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
+P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
+P_LATEST_STABLE_SKETCH_VERSION="${P_LATEST_STABLE_BRANCH:1}.$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
 P_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
 
 setup_github() {
@@ -58,18 +50,18 @@ checkout_gh_pages() {
 
 cleanup_previous_deployment() {
   echo "cleanup_previous_deployment $(date)"
-  rm -rf "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
+  rm -rf "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
 }
 
 copy_porsche_ui_kit_storefront() {
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
-  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
+  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
 }
 
 copy_sketch_libraries_create_rss_feed() {
   echo "copy_sketch_libraries_create_rss_feed $(date)"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
-  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
+  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
   cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -77,9 +69,9 @@ copy_sketch_libraries_create_rss_feed() {
     <title>Porsche UI</title>
     <description>A Porsche UI Sketch library.</description>
     <item>
-      <title>${1} (${P_ABBR_REF}.${P_PUBLISH_ID})</title>
-      <pubDate>${P_PUBLISH_DATE}</pubDate>
-      <enclosure url="https://ui.porsche.com/${P_ABBR_REF}/${2}" sparkle:version="${P_ABBR_REF:1}.${P_PUBLISH_ID}" type="application/octet-stream"/>
+      <title>${1} (${P_WORKING_BRANCH}.${P_PUBLISH_ID})</title>
+      <pubDate>${P_LATEST_STABLE_SKETCH_PUBLISH_DATE}</pubDate>
+      <enclosure url="https://ui.porsche.com/${P_WORKING_BRANCH}/${2}" sparkle:version="${P_WORKING_BRANCH:1}.${P_PUBLISH_ID}" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
@@ -88,15 +80,15 @@ _EOF_
 
 add_deployment_sha() {
   echo "add_deployment_sha $(date)"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}/version"
-  touch "/opt/porsche-ui-kit-gh-pages/${P_ABBR_REF}/version/${GITHUB_SHA}"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version"
+  touch "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version/${GITHUB_SHA}"
 }
 
 deploy_to_gh_pages() {
   echo "deploy_to_gh_pages $(date)"
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
-    git commit -m "Automated deployment of Porsche UI Kit (${P_ABBR_REF}): ${GITHUB_SHA}" --allow-empty
+    git commit -m "Automated deployment of Porsche UI Kit (${P_WORKING_BRANCH}): ${GITHUB_SHA}" --allow-empty
     git push origin gh-pages --force-with-lease
   popd
 }
@@ -109,8 +101,8 @@ verify_deployment() {
   while true
   do
     echo "Check deployment status. Attempt ${n}/${max}."
-    local http_code="$(curl -H 'Cache-Control: no-cache' -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}")"
-    echo "https://ui.porsche.com/${P_ABBR_REF}/version/${GITHUB_SHA}"
+    local http_code="$(curl -H 'Cache-Control: no-cache' -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_WORKING_BRANCH}/version/${GITHUB_SHA}")"
+    echo "https://ui.porsche.com/${P_WORKING_BRANCH}/version/${GITHUB_SHA}"
     echo "http code: ${http_code}"
     if [[ "${http_code}" -eq "200" ]]; then
       echo "All right, deployment was verified."
@@ -129,7 +121,7 @@ setup_github
 checkout_gh_pages
 cleanup_previous_deployment
 copy_porsche_ui_kit_storefront
-if [[ "${P_ABBR_REF}" =~ ${GIT_RELEASE_FILTER} ]]; then
+if [[ "${P_WORKING_BRANCH}" =~ ${GIT_RELEASE_FILTER} ]]; then
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
   copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
