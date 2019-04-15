@@ -3,6 +3,10 @@
 set -o errexit
 set -o pipefail
 
+echo "************** START"
+echo "$(git remote show origin)"
+echo "************** END"
+
 if [[ -z "${GITHUB_REF}" ]]; then
   echo "Please provide the \$GITHUB_REF environment variable."
   exit 1
