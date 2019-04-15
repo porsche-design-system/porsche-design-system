@@ -12,13 +12,13 @@ fi
 
 cleanup_credentials() {
   local exit_code=$?
-  echo "Cleaning up credentials"
+  echo "task: [$(date)] \"cleanup_credentials\""
   rm "${HOME}/.npmrc"
   exit ${exit_code}
 }
 
 setup_credentials() {
-  echo "Setting up npm credentials"
+  echo "task: [$(date)] \"setup_credentials\""
   echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${ARTIFACTORY_TOKEN}" > "${HOME}/.npmrc"
 }
 

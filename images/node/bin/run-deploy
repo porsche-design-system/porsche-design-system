@@ -31,37 +31,56 @@ if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
   exit 1
 fi
 
-P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
-P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
-P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
-P_LATEST_STABLE_SKETCH_VERSION="${P_LATEST_STABLE_BRANCH:1}.$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
-P_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
-
 setup_github() {
-  echo "setup_github $(date)"
+  echo "task: [$(date)] \"setup_github\""
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+  git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
 }
 
 checkout_gh_pages() {
-  echo "checkout_gh_pages $(date)"
+  echo "task: [$(date)] \"checkout_gh_pages\""
   git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
 }
 
-cleanup_previous_deployment() {
-  echo "cleanup_previous_deployment $(date)"
+prepare_deployment() {
+  echo "task: [$(date)] \"prepare_deployment\""
   rm -rf "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
 }
 
-copy_porsche_ui_kit_storefront() {
+copy_porsche_ui_kit() {
+  echo "task: [$(date)] \"copy_porsche_ui_kit\""
   mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
   cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
 }
 
-copy_sketch_libraries_create_rss_feed() {
-  echo "copy_sketch_libraries_create_rss_feed $(date)"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
-  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
+add_version_sha() {
+  echo "task: [$(date)] \"add_version_sha\""
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version"
+  touch "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version/${GITHUB_SHA}"
+}
+
+prepare_latest_stable_deployment() {
+  echo "task: [$(date)] \"prepare_latest_stable_deployment\""
+  rm -rf "/opt/porsche-ui-kit-gh-pages/latest"
+}
+
+copy_latest_stable_porsche_ui_kit() {
+  echo "task: [$(date)] \"copy_latest_stable_porsche_ui_kit\""
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
+  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/latest"
+}
+
+add_latest_stable_version_sha() {
+  echo "task: [$(date)] \"add_latest_stable_version_sha\""
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest/version"
+  touch "/opt/porsche-ui-kit-gh-pages/latest/version/${GITHUB_SHA}"
+}
+
+copy_latest_stable_sketch_library_and_create_rss_feed() {
+  echo "task: [$(date)] \"copy_latest_stable_sketch_library_and_create_rss_feed\""
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
+  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/latest"
   cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -69,23 +88,17 @@ copy_sketch_libraries_create_rss_feed() {
     <title>Porsche UI</title>
     <description>A Porsche UI Sketch library.</description>
     <item>
-      <title>${1} (${P_WORKING_BRANCH}.${P_PUBLISH_ID})</title>
+      <title>${1} (v${P_LATEST_STABLE_SKETCH_VERSION})</title>
       <pubDate>${P_LATEST_STABLE_SKETCH_PUBLISH_DATE}</pubDate>
-      <enclosure url="https://ui.porsche.com/${P_WORKING_BRANCH}/${2}" sparkle:version="${P_WORKING_BRANCH:1}.${P_PUBLISH_ID}" type="application/octet-stream"/>
+      <enclosure url="https://ui.porsche.com/latest/${2}" sparkle:version="${P_LATEST_STABLE_SKETCH_VERSION}" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
 _EOF_
 }
 
-add_deployment_sha() {
-  echo "add_deployment_sha $(date)"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version"
-  touch "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version/${GITHUB_SHA}"
-}
-
 deploy_to_gh_pages() {
-  echo "deploy_to_gh_pages $(date)"
+  echo "task: [$(date)] \"deploy_to_gh_pages\""
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
     git commit -m "Automated deployment of Porsche UI Kit (${P_WORKING_BRANCH}): ${GITHUB_SHA}" --allow-empty
@@ -94,15 +107,15 @@ deploy_to_gh_pages() {
 }
 
 verify_deployment() {
-  echo "verify_deployment $(date)"
+  echo "task: [$(date)] \"verify_deployment\""
   local n=1
   local max=15
   local delay=60
   while true
   do
     echo "Check deployment status. Attempt ${n}/${max}."
-    local http_code="$(curl -H 'Cache-Control: no-cache' -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${P_WORKING_BRANCH}/version/${GITHUB_SHA}")"
-    echo "https://ui.porsche.com/${P_WORKING_BRANCH}/version/${GITHUB_SHA}"
+    local http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${1}/version/${GITHUB_SHA}")"
+    echo "https://ui.porsche.com/${1}/version/${GITHUB_SHA}"
     echo "http code: ${http_code}"
     if [[ "${http_code}" -eq "200" ]]; then
       echo "All right, deployment was verified."
@@ -117,16 +130,35 @@ verify_deployment() {
   done
 }
 
+isWorkingBranchLatestStableBranch() {
+  if [[ "${P_WORKING_BRANCH}" -eq "${P_LATEST_STABLE_BRANCH}" ]]; then
+    return 1
+  fi
+  return 0
+}
+
 setup_github
+
+P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
+P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
+P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
+P_LATEST_STABLE_SKETCH_VERSION="${P_LATEST_STABLE_BRANCH:1}.$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
+
 checkout_gh_pages
-cleanup_previous_deployment
-copy_porsche_ui_kit_storefront
-if [[ "${P_WORKING_BRANCH}" =~ ${GIT_RELEASE_FILTER} ]]; then
-  copy_sketch_libraries_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
-  copy_sketch_libraries_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
-  copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
-  copy_sketch_libraries_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
+prepare_deployment
+copy_porsche_ui_kit
+add_version_sha
+if [[ isWorkingBranchLatestStableBranch ]]; then
+  prepare_latest_stable_deployment
+  copy_latest_stable_porsche_ui_kit
+  add_latest_stable_version_sha
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
 fi
-add_deployment_sha
 deploy_to_gh_pages
-#verify_deployment
+#verify_deployment "${P_WORKING_BRANCH}"
+#if [[ isWorkingBranchLatestStableBranch ]]; then
+#  verify_deployment "latest"
+#fi
