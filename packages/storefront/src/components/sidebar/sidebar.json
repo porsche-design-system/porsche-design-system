@@ -1,104 +1,79 @@
 {
   "categories": [
     {
-      "category": "General",
+      "category": "Getting started",
       "links": [
         {
-          "title": "Home",
-          "path": "/general/home"
+          "title": "About Porsche UI Kit",
+          "path": "/getting-started/about"
         },
+        {
+          "title": "Start Designing",
+          "path": "/getting-started/start-designing",
+          "sublinks": [
+            {
+              "title": "Design Workflow",
+              "path": "/getting-started/design-workflow"
+            },
+            {
+              "title": "Sketch Plugins",
+              "path": "/getting-started/sketch-plugins"
+            }
+          ]
+        },
+        {
+          "title": "Start Coding",
+          "path": "/getting-started/start-coding"
+        }
+      ]
+    },
+     
+    {
+      "category": "News",
+      "links": [
         {
           "title": "Updates",
-          "path": "/general/updates",
+          "path": "/news/updates",
           "sublinks": [
-            {
-              "title": "Roadmap",
-              "path": "/general/roadmap"
-            },
             {
               "title": "Versioning",
-              "path": "/general/versioning"
+              "path": "/news/versioning"
             }
           ]
         },
         {
-          "title": "Communication",
-          "path": "/general/communication"
-        },
+          "title": "Roadmap",
+          "path": "/news/roadmap"
+        }
+      ]
+    },
+    {
+      "category": "Help",
+      "links": [
         {
           "title": "Support",
-          "path": "/general/support",
-          "sublinks": [
-            {
-              "title": "FAQ",
-              "path": "/general/faq"
-            }
-          ]
+          "path": "/help/support"
         },
         {
-          "title": "License",
-          "path": "/general/license"
+          "title": "FAQ",
+          "path": "/help/faq"
         }
       ]
     },
     {
-      "category": "Guidelines",
+      "category": "Basics",
       "links": [
-        {
-          "title": "Accessibility",
-          "path": "/guidelines/accessibility"
-        }
-      ]
-    },
-    {
-      "category": "Designing",
-      "links": [
-        {
-          "title": "Introduction",
-          "path": "/design/introduction"
-        },
-        {
-          "title": "Design Culture",
-          "path": "/design/culture"
-        },
-        {
-          "title": "Sketch Plugins",
-          "path": "/design/sketch-plugins"
-        },
-        {
-          "title": "Contribution",
-          "path": "/design/contribution"
-        }
-      ]
-    },
-    {
-      "category": "Code",
-      "links": [
-        {
-          "title": "Introduction",
-          "path": "/code/introduction"
-        },
-        {
-          "title": "Installation",
-          "path": "/code/installation"
-        },
         {
           "title": "Browser compatibility",
-          "path": "/code/browser-compatibility"
+          "path": "/basics/browser-compatibility"
         },
         {
-          "title": "Contribution",
-          "path": "/code/contribution",
-          "sublinks": [
-            {
-              "title": "CI/CD",
-              "path": "/code/ci-cd"
-            },
-            {
-              "title": "Definition of Done",
-              "path": "/code/definition-of-done"
-            }
-          ]
+          "title": "Quality criteria",
+          "path": "/basics/quality-criteria"
+        },
+        {
+          "title": "Accessibility criteria",
+          "path": "/basics/accessibility"
         }
       ]
     }
