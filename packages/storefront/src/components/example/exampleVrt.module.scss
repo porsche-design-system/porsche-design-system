@@ -1,5 +1,21 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
 
+.vrt {
+  display: block !important;
+}
+
+.vrt + .vrt {
+  margin-top: 80px;
+
+  &::before {
+    content: "";
+    display: block;
+    position: relative;
+    height: 1px;
+    background-color: $p-color-grey-2;
+    top: -40px;
+  }
+}
 .vrt.light {
   background-color: $p-color-white;
 }
