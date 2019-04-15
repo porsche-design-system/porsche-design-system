@@ -31,15 +31,11 @@ if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
   exit 1
 fi
 
-P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
-P_LATEST_STABLE_BRANCH="v1"
-P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
-P_LATEST_STABLE_SKETCH_VERSION="${P_LATEST_STABLE_BRANCH:1}.$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
-
 setup_github() {
   echo "task: [$(date)] \"setup_github\""
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+  git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
 }
 
 checkout_gh_pages() {
@@ -142,6 +138,12 @@ isWorkingBranchLatestStableBranch() {
 }
 
 setup_github
+
+P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
+P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
+P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
+P_LATEST_STABLE_SKETCH_VERSION="${P_LATEST_STABLE_BRANCH:1}.$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
+
 checkout_gh_pages
 prepare_deployment
 copy_porsche_ui_kit

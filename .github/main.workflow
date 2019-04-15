@@ -9,7 +9,6 @@ action "Filter" {
   env = {
     GIT_FILTER = "^refs/heads/(v[0-9]+|issue/[0-9]+)$"
   }
-  secrets = ["GIT_DEPLOY_KEY"]
 }
 
 action "Install" {
