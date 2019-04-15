@@ -4,16 +4,16 @@ import { Spacing, Flex } from "@porscheui/porsche-ui-kit"
 # Spacing
 
 ## Introduction
-A component to add margins and paddings to elements.
+A component to add margins (positive and negative) and paddings to elements.
 
 ### React specific hints
 If this component has only one child, those classes are added directly to the child using the className prop to avoid unnecessary wrapper divs. This only works if the child component supports className (which it totally should anyway) and if the number of children isn't dynamic and doesn't change. If this is not the case, set the "wrap" property to manually create a wrapper div.
 
 ---
 
-### Static spacings
+### Static spacings visualized
 
-<Example className="sg-example-spacing">
+<Example className="sg-example-spacing-visual">
   {() => {
     return (
       <React.Fragment>
@@ -79,16 +79,272 @@ If this component has only one child, those classes are added directly to the ch
   }}
 </Example>
 
+### Static margin spacings
+
+#### All directions
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing margin={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Top
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginTop={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Right
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginRight={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Bottom
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginBottom={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Left
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginLeft={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Static negative margin spacings
+
+#### All directions
+
+<Example className="sg-example-spacing sg-example-spacing--negative">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegative={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Top
+
+<Example className="sg-example-spacing sg-example-spacing--negative">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegativeTop={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Right
+
+<Example className="sg-example-spacing sg-example-spacing--negative">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegativeRight={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Bottom
+
+<Example className="sg-example-spacing sg-example-spacing--negative">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegativeBottom={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Left
+
+<Example className="sg-example-spacing sg-example-spacing--negative">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegativeLeft={40}>
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Static padding spacings
+
+#### All directions
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing padding={40} wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Top
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing paddingTop={40} wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Right
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing paddingRight={40} wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Bottom
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing paddingBottom={40} wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Left
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing paddingLeft={40} wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
 #### Usage
 Static spacings can be used as `padding` or `margin` as a property of the `<Spacing>` component and to define any (S)CSS property with a variable.
 
 **Given values are:**
 
-`"auto" | 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
+`4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
+
+**Possible class names (where {p} is the prefix and {v} the value):**
+* `{p}-spacing-m--{v}` => margin (all 4 directions)
+* `{p}-spacing-mt--{v}` => margin-top
+* `{p}-spacing-mr--{v}` => margin-right
+* `{p}-spacing-mb--{v}` => margin-bottom
+* `{p}-spacing-ml--{v}` => margin-left
+* `{p}-spacing-m-n--{v}` => negative margin (all 4 directions)
+* `{p}-spacing-m-nt--{v}` => negative margin-top
+* `{p}-spacing-m-nr--{v}` => negative margin-right
+* `{p}-spacing-m-nb--{v}` => negative margin-bottom
+* `{p}-spacing-m-nl--{v}` => negative margin-left
+* `{p}-spacing-p--{v}` => padding (all 4 directions)
+* `{p}-spacing-pt--{v}` => padding-top
+* `{p}-spacing-pr--{v}` => padding-right
+* `{p}-spacing-pb--{v}` => padding-bottom
+* `{p}-spacing-pl--{v}` => padding-left
 
 **Inside SCSS you can use the following variables:**
 
-* `$p-spacing-0`
 * `$p-spacing-4`
 * `$p-spacing-8`
 * `$p-spacing-16`
@@ -110,9 +366,9 @@ Static spacings can be used as `padding` or `margin` as a property of the `<Spac
 
 ---
 
-### Responsive spacings
+### Responsive spacings visualized
 
-<Example className="sg-example-spacing">
+<Example className="sg-example-spacing-visual">
   {() => {
     return (
       <React.Fragment>
@@ -158,12 +414,269 @@ Static spacings can be used as `padding` or `margin` as a property of the `<Spac
   }}
 </Example>
 
+### Responsive margin spacings
+
+#### All directions
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing margin="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Top
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginTop="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Right
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginRight="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Bottom
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginBottom="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Left
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginLeft="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Responsive negative margin spacings
+
+#### All directions
+
+<Example className="sg-example-spacing sg-example-spacing--negative-responsive">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegative="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Top
+
+<Example className="sg-example-spacing sg-example-spacing--negative-responsive">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegativeTop="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Right
+
+<Example className="sg-example-spacing sg-example-spacing--negative-responsive">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegativeRight="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Bottom
+
+<Example className="sg-example-spacing sg-example-spacing--negative-responsive">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegativeBottom="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Left
+
+<Example className="sg-example-spacing sg-example-spacing--negative-responsive">
+  {() => {
+    return (
+      <React.Fragment>
+        <div>
+          <Spacing marginNegativeLeft="d">
+            <div className="sg-example-item" />
+          </Spacing>
+        </div>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Responsive padding spacings
+
+#### All directions
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing padding="d" wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Top
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing paddingTop="d" wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Right
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing paddingRight="d" wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Bottom
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing paddingBottom="d" wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Left
+
+<Example className="sg-example-spacing">
+  {() => {
+    return (
+      <React.Fragment>
+        <Spacing paddingLeft="d" wrap>
+          <div className="sg-example-item" />
+        </Spacing>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
 #### Usage
-Responsive spacings can be used to achieve different spacings on different viewport sizes, e.g. to equalize overall whitespace between elements.
+Responsive spacings can be used to achieve different spacings on predefined major viewport sizes, e.g. to equalize overall whitespace between elements.
 
 **Given values are:**
 
 `"a" | "b" | "c" | "d" | "e" | "f" | "g"`
+
+**Possible class names (where {p} is the prefix and {v} the value):**
+* `{p}-spacing-m--{v}` => margin (all 4 directions)
+* `{p}-spacing-mt--{v}` => margin-top
+* `{p}-spacing-mr--{v}` => margin-right
+* `{p}-spacing-mb--{v}` => margin-bottom
+* `{p}-spacing-ml--{v}` => margin-left
+* `{p}-spacing-m-n--{v}` => negative margin (all 4 directions)
+* `{p}-spacing-m-nt--{v}` => negative margin-top
+* `{p}-spacing-m-nr--{v}` => negative margin-right
+* `{p}-spacing-m-nb--{v}` => negative margin-bottom
+* `{p}-spacing-m-nl--{v}` => negative margin-left
+* `{p}-spacing-p--{v}` => padding (all 4 directions)
+* `{p}-spacing-pt--{v}` => padding-top
+* `{p}-spacing-pr--{v}` => padding-right
+* `{p}-spacing-pb--{v}` => padding-bottom
+* `{p}-spacing-pl--{v}` => padding-left
 
 **Inside SCSS you can use the following mixins:**
 
@@ -173,6 +686,7 @@ Responsive spacings can be used to achieve different spacings on different viewp
 * `@include p-spacing-d("type", "direction", "sign")`
 * `@include p-spacing-e("type", "direction", "sign")`
 * `@include p-spacing-f("type", "direction", "sign")`
+* `@include p-spacing-g("type", "direction", "sign")`
 
 **Example**:
 ```

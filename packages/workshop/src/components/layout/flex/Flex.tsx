@@ -2,6 +2,7 @@ import * as React from "react"
 import cx from "classnames"
 
 import { getElementType, prefix, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib"
+import { Spacing } from "../spacing/Spacing"
 import { FlexItem } from "./FlexItem"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
@@ -57,8 +58,6 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
     mapBreakpointPropToClasses("flex--justify-content", justifyContent),
     mapBreakpointPropToClasses("flex--align-items", alignItems),
     mapBreakpointPropToClasses("flex--align-content", alignContent),
-    { [prefix(`spacing-m-nl--${gap}`)]: gap },
-    { [prefix(`spacing-m-nr--${gap}`)]: gap },
     className
   )
 
@@ -72,16 +71,30 @@ const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
 
       const { className: childClassName, ...childRest } = child.props
 
-      return React.cloneElement(child, {
-        className: cx(childClassName, { [prefix(`spacing-pl--${gap}`)]: gap }, { [prefix(`spacing-pr--${gap}`)]: gap }),
-        ...childRest
-      })
+      return (
+        <Spacing paddingLeft={gap} paddingRight={gap}>
+          {React.cloneElement(child, {
+            className: cx(childClassName),
+            ...childRest
+          })}
+        </Spacing>
+      )
     })
   }
   return (
-    <ElementType className={classes} {...rest}>
-      {augmentedChildren}
-    </ElementType>
+    <React.Fragment>
+      {gap ? (
+        <Spacing marginNegativeLeft={gap} marginNegativeRight={gap}>
+          <ElementType className={classes} {...rest}>
+            {augmentedChildren}
+          </ElementType>
+        </Spacing>
+      ) : (
+        <ElementType className={classes} {...rest}>
+          {augmentedChildren}
+        </ElementType>
+      )}
+    </React.Fragment>
   )
 }
 

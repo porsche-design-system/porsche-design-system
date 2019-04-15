@@ -101,9 +101,61 @@ $sg-color-highlight: deeppink;
 }
 
 /* ----------  spacing component styles ---------- */
-.sg-example-spacing {
+.sg-example-spacing-visual {
   .sg-example-item {
     background-color: $sg-color-blue-1;
     width: fit-content;
+  }
+}
+
+.sg-example-spacing {
+  display: flex;
+
+  > div {
+    display: inline-flex;
+    background-color: $sg-color-blue-1;
+  }
+
+  .sg-example-item {
+    background-color: $sg-color-blue-2;
+    width: $p-spacing-80;
+    height: $p-spacing-80;
+  }
+
+  &--negative {
+    display: block;
+
+    > div {
+      padding: $p-spacing-40;
+    }
+  }
+
+  &--negative-responsive {
+    display: block;
+
+    .sg-example-item {
+      width: 2 * $p-spacing-d;
+      height: 2 * $p-spacing-d;
+      @include breakpoint("s") {
+        width: 2 * $p-spacing-d-s;
+        height: 2 * $p-spacing-d-s;
+      }
+      @include breakpoint("m") {
+        width: 2 * $p-spacing-d-m;
+        height: 2 * $p-spacing-d-m;
+      }
+      @include breakpoint("l") {
+        width: 2 * $p-spacing-d-l;
+        height: 2 * $p-spacing-d-l;
+      }
+      @include breakpoint("xl") {
+        width: 2 * $p-spacing-d-xl;
+        height: 2 * $p-spacing-d-xl;
+      }
+    }
+
+    > div {
+      @include p-spacing-d("padding", "", "");
+    }
   }
 }
