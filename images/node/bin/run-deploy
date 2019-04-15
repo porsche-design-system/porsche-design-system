@@ -32,7 +32,6 @@ if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
 fi
 
 P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
-P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
 P_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
 P_PUBLISH_ID="$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
 
