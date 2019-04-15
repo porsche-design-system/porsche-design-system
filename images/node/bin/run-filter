@@ -11,6 +11,8 @@ source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
+git remote set-url origin git@github.com:porscheui/porsche-ui-kit.git
+
 echo "$(git remote show origin)"
 
 echo "************** END"
