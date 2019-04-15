@@ -34,7 +34,7 @@
     & img,
     & code,
     & pre {
-    *:not([class*="example_container"]):not(pre):not(hr):not(table) {
+    *:not([class*="example_container"]):not(pre):not(hr):not(table):not(img) {
       max-width: 800px;
     }
 
@@ -192,7 +192,6 @@
     // Media
     img {
       max-width: 100%;
-      width: 100%;
       vertical-align: top;
     }
   }
