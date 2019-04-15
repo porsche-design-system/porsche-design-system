@@ -3,11 +3,16 @@
 set -o errexit
 set -o pipefail
 
+echo "************** START"
+
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
+
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-echo "************** START"
 echo "$(git remote show origin)"
+
 echo "************** END"
 
 if [[ -z "${GITHUB_REF}" ]]; then
