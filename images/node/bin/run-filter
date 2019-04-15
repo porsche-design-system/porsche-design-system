@@ -3,20 +3,6 @@
 set -o errexit
 set -o pipefail
 
-echo "************** START"
-
-SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
-source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
-
-git config --global user.name "${GITHUB_ACTOR}"
-git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
-git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
-
-echo "$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
-
-echo "************** END"
-
 if [[ -z "${GITHUB_REF}" ]]; then
   echo "Please provide the \$GITHUB_REF environment variable."
   exit 1
