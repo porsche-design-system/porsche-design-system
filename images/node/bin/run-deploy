@@ -59,7 +59,7 @@ copy_porsche_ui_kit() {
 }
 
 add_version_sha() {
-  echo "task: [$(date)] \"add_deployment_sha\""
+  echo "task: [$(date)] \"add_version_sha\""
   mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version"
   touch "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version/${GITHUB_SHA}"
 }
@@ -76,7 +76,7 @@ copy_latest_stable_porsche_ui_kit() {
 }
 
 add_latest_stable_version_sha() {
-  echo "task: [$(date)] \"add_deployment_sha\""
+  echo "task: [$(date)] \"add_latest_stable_version_sha\""
   mkdir -p "/opt/porsche-ui-kit-gh-pages/latest/version"
   touch "/opt/porsche-ui-kit-gh-pages/latest/version/${GITHUB_SHA}"
 }
