@@ -12,15 +12,13 @@ fi
 
 cleanup_credentials() {
   local exit_code=$?
-  echo "cleanup_credentials $(date)"
-  echo "Cleaning up credentials"
+  echo "task: [$(date)] \"cleanup_credentials\""
   rm "/root/.ssh/id_rsa"
   exit ${exit_code}
 }
 
 setup_credentials() {
-  echo "setup_credentials $(date)"
-  echo "Setting up Git deploy key credentials"
+  echo "task: [$(date)] \"setup_credentials\""
   mkdir -p "/root/.ssh"
   ssh-keyscan -t rsa github.com > "/root/.ssh/known_hosts"
   printf -- "${GIT_DEPLOY_KEY}\n" > "/root/.ssh/id_rsa"
