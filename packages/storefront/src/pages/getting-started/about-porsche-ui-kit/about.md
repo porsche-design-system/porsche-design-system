@@ -1,7 +1,7 @@
 # About the Porsche UI Kit
 The Porsche UI Kit unites digital Porsche products around a shared design system. Enabling everyone to speak the same language, work with the same tools and use prebuilt resources. To efficiently create outstanding digital products; Consistent, qualitative and brand-appropriate.
 
-## Benefits convincing business, design and development
+## Benefits for business, design and development
 
 **Ship faster and focus on value.**  
 Stop wasting time on repetitive work and creation of what's already existing. Using the components and working methods enable faster releases and quick iterations. And focusing on valuable results and solving important problems.
