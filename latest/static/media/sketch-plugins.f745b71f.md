@@ -1,6 +1,4 @@
 # Sketch Plugins
-Sketch offers the possibility to increase its functionality - and, due to that, the design efficiency and joy of use - with a variety of plugins. Within the Porsche UI Kit, we strive to minimize the number of external resources we depend on. Nevertheless, it cannot be denied that there are a few sketch plugins that push the design efficiency to another level - therefore, we consider (very!) few of them as 'must haves' and others only as ’nice to use'.  
-  
 Below you can find a curated list of recommended plugins that are super useful and nice for layouting, but not obligatory for using the Porsche UI Kit.
   
 ## Sketch Runner  

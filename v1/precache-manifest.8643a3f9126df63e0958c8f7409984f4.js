@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "./static/js/0.ad82e8f0.chunk.js"
   },
   {
-    "revision": "73184e1da3a522627370",
+    "revision": "b0e48f3d8ca969a84758",
     "url": "./static/css/main.b8394dc3.chunk.css"
   },
   {
-    "revision": "73184e1da3a522627370",
-    "url": "./static/js/main.bd9c5886.chunk.js"
+    "revision": "b0e48f3d8ca969a84758",
+    "url": "./static/js/main.378a9845.chunk.js"
   },
   {
     "revision": "c53a2dcfaf4ed4b72ddd",
@@ -116,16 +116,16 @@ self.__precacheManifest = [
     "url": "./static/media/porsche-ui-kit.d29d9376.mp4"
   },
   {
-    "revision": "7b4b51bd4b94918767736266e45ac40d",
-    "url": "./static/media/about.7b4b51bd.md"
+    "revision": "2aa4e4ed6f103f099b43e693c8e7fd5a",
+    "url": "./static/media/about.2aa4e4ed.md"
   },
   {
-    "revision": "a8fa3abe9394da73a410298fe639af34",
-    "url": "./static/media/start-designing.a8fa3abe.md"
+    "revision": "e075e41d23a59d3e6ddf6fd631d1582e",
+    "url": "./static/media/start-designing.e075e41d.md"
   },
   {
-    "revision": "c46c08f8c813749625dcfeeef98dcf55",
-    "url": "./static/media/design-workflow.c46c08f8.md"
+    "revision": "828e9e3eb28b54ed096eb075df8c1b32",
+    "url": "./static/media/design-workflow.828e9e3e.md"
   },
   {
     "revision": "deb05a5f887c6952f0b31e58b6abff23",
@@ -168,15 +168,15 @@ self.__precacheManifest = [
     "url": "./static/media/license.0dae52f4.md"
   },
   {
-    "revision": "ad1080237c1863acac77d432931a2db7",
-    "url": "./static/media/sketch-plugins.ad108023.md"
+    "revision": "f745b71f39e6cf54f7244406e49185e5",
+    "url": "./static/media/sketch-plugins.f745b71f.md"
   },
   {
     "revision": "ed704bed1985c039173d2aeaab1c1931",
     "url": "./static/media/markdown.ed704bed.md"
   },
   {
-    "revision": "1934cbce4718ee3320ea271c09066e3c",
+    "revision": "cae72be081492c37fc84353e0fa6a810",
     "url": "./index.html"
   }
 ];
