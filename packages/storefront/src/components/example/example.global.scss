@@ -100,6 +100,26 @@ $sg-color-highlight: deeppink;
   }
 }
 
+/* ----------  flex component styles ---------- */
+.sg-example-grid {
+  .sg-example-item-outer {
+    text-align: center;
+    color: $p-color-white;
+    background-color: $sg-color-blue-2;
+  }
+  .sg-example-item {
+    width: 100%;
+    padding: $p-spacing-4;
+    text-align: center;
+    color: $p-color-white;
+    background-color: $sg-color-blue-1;
+  }
+
+  .p-grid + .p-grid {
+    margin-top: $p-spacing-8;
+  }
+}
+
 /* ----------  spacing component styles ---------- */
 .sg-example-spacing-visual {
   .sg-example-item {
