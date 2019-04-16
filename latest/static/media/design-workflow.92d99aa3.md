@@ -1,6 +1,6 @@
 # Design Workflow with Abstract
 
-## General information upfront
+## General information 
 We foster an open and clear design workflow over all digital Porsche products with shared tools and workflows. Using the tool Abstract enables an automated file management and version control - without the risk of losing data. The general accessibility of all files also brings the different roles and teams closer and enables a fast design collaboration.
 
 [Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Videos from Abstract](https://vimeo.com/goabstract).
