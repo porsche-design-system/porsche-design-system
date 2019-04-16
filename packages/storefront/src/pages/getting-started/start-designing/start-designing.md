@@ -1,20 +1,32 @@
 # Start Designing
 
-The Porsche UI Kit enables designers to create outstanding digital designs by using the prebuild libraries, styles and layout templates - fast and qualitative. To improve the output efficiency and reduce maintenance cost we decided on using the tools Sketch and  ([Abstract](https://www.goabstract.com/how-it-works/)).
+The Porsche UI Kit enables designers to create outstanding digital designs by using the prebuild libraries, styles and templates - fast and qualitative. 
 
-## Getting started
-1. Please first [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation. 
-2. Install the most recent version of [Sketch](https://www.sketch.com/updates/) including the [Anima Plugin](https://www.animaapp.com/) 
-3. Install the latest [Abstract Desktop App](https://app.goabstract.com/)
+## Sketch Library
+The components of the Porsche UI Kit are provided in two Sketch libraries that can be easily linked with Sketch by clicking on the following RSS library links. Once linked, Sketch will automatically check for updates. 
+Please be aware of the library version in use (Sketch: Preferences → Libraries) and align with your developer counterpart on the used version.
 
-## Include the Sketch Libraries
+### Basic Library
+The basic library contains the fundamental elements that can be used both individually and within the components, such as typography, colors or spacings.  
+[Download Porsche UI Kit Basic](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-basic.sketch.xml)  
 
-The Porsche UI Kit is split into a two libraries that are required to be linked.  
-A basic library for the overall fundamental layer and text styles and colors. And a web library, which includes the web applications related resources and component symbols.
+### Web Library
+The web library provides components that are to be used within web applications, like buttons, form elements and many more.  
+[Download Porsche UI Kit Web](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-web.sketch.xml)
 
-[Link Porsche UI Kit Basic](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-basic.sketch.xml)  
-[Link Porsche UI Kit Web](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-web.sketch.xml)
+## Sketch Plugins
+Some of the components provide a smooth layout behaviour (such as automatic resizing on content input). To get the most out of it, please install the Sketch plugin [Anima](https://www.animaapp.com/).  
+A curated list of more plugins that are recommended (yet not obligatory) for a smooth Sketch workflow can be found [here](#/getting-started/sketch-plugins).
 
-You will find the linked library and its version number in Preferences → Libraries. For the future Sketch will automatically check for updates of the Library. Please be aware of the versioning and align with your developer counterpart on the used version.
+## Typeface
 
-[Proceed with the Design Workflow](#/getting-started/design-workflow).
+You can download the Porsche font files in the Porsche Brand Guide:  
+[Download Porsche typeface](https://brandguide.porsche.com/elements/manual/view/id/885)
+For UI design use within Sketch, we recomment using the "Typefaces for digital users, Web Developer Kit". 
+
+## Design Workflow
+To improve the output efficiency and reduce maintenance cost we decided on using the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/how-it-works/). 
+
+So, before starting designing with the Sketch library, make sure to [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation and to install the latest [Abstract Desktop App](https://app.goabstract.com/)
+
+[Read more about the design workflow with Abstract](#/getting-started/design-workflow).
