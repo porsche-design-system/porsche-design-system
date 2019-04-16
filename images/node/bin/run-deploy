@@ -31,15 +31,12 @@ if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
   exit 1
 fi
 
-setup_github() {
-  echo "task: [$(date)] \"setup_github\""
+setup() {
+  echo "task: [$(date)] \"setup\""
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
   git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
-}
 
-setup_variables() {
-  echo "task: [$(date)] \"setup_variables\""
   P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
   P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
   P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
@@ -149,8 +146,7 @@ isWorkingBranchLatestStableBranch() {
   return 0
 }
 
-setup_github
-setup_variables
+setup
 checkout_gh_pages
 prepare_deployment
 copy_porsche_ui_kit
