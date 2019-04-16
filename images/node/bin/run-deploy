@@ -102,6 +102,22 @@ copy_latest_stable_sketch_library_and_create_rss_feed() {
 _EOF_
 }
 
+add_redirect_page() {
+  cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/index.html"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="refresh" content="0; url=https://ui.porsche.com/latest">
+  <title>Porsche UI Kit</title>
+</head>
+<body>
+</body>
+</html>
+_EOF_
+}
+
 deploy_to_gh_pages() {
   echo "task: [$(date)] \"deploy_to_gh_pages\""
   pushd "/opt/porsche-ui-kit-gh-pages"
