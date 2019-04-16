@@ -1,6 +1,6 @@
 # Design Workflow with Abstract
 
-## General information upfront
+## General information 
 We foster an open and clear design workflow over all digital Porsche products with shared tools and workflows. Using the tool Abstract enables an automated file management and version control - without the risk of losing data. The general accessibility of all files also brings the different roles and teams closer and enables a fast design collaboration.
 
 [Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Videos from Abstract](https://vimeo.com/goabstract).
@@ -10,7 +10,7 @@ The Porsche UI prganisation is structured by context within different sections. 
 
 For a better discoverability files and libraries within a project are recommended to be split and named by their features and named hyphenated and with lower cases. All libraries created within the Porsche UI organisation should be named in the format of `porsche-ui-kit-[projectname].sketch`.
 
-![/assets/storefront/design/abstract-filestructure.png](/assets/storefront/design/abstract-filestructure.png)
+![Abstract file structure](assets/storefront/design/abstract-filestructure.png)
 
 ### User roles and rights
 User roles define weather a user can just view or actually work with on the stored files. Contributor seats for designers have to be paid and therefore [requested here](http://eepurl.com/gnOIXD).
@@ -39,7 +39,7 @@ e.g. `pagination accessibilty recoloring | mb | #44`. For more context you can a
 4. **Save changes in Sketch and sync them** regulary as commit to Abstract by clicking on "Commit changes" at the bottom. 
 5. **Describe the committed changes** to make them visible for others, e.g. `Changed text color from to red`. Commit a lot and describe what you did. Adding detail of what you accomplished in each commit is useful for you and for your coworkers.
 
-![/assets/storefront/design/abstract-branches.png](/assets/storefront/design/abstract-branches.png)
+![Abstract branches](assets/storefront/design/abstract-branches.png)
 
 ### 2. Review and Merge changes
 When you think you’re done with your branch, you should always add stakeholders or coworkers as reviewers to get feedback for your work, before you merge it to master.
