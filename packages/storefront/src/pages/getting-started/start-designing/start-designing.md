@@ -18,4 +18,3 @@ A basic library for the overall fundamental layer and text styles and colors. An
 You will find the linked library and its version number in Preferences → Libraries. For the future Sketch will automatically check for updates of the Library. Please be aware of the versioning and align with your developer counterpart on the used version.
 
 [Proceed with the Design Workflow](#/getting-started/design-workflow).
-
