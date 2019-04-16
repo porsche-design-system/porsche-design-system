@@ -16,7 +16,7 @@ const testOptions: VisualRegressionTestOptions = {
   baseUrl: 'http://localhost:3000'
 };
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 afterAll(async () => {
   if (browser) {
