@@ -1,6 +1,6 @@
 # Start Designing
 
-The Porsche UI Kit enables designers to create outstanding digital designs by using the prebuild libraries, styles and layout templates - fast and qualitative. To improve the output efficiency and reduce maintenance cost we decided on using the tools Sketch and Abstract ([Read more about Abstract](https://www.goabstract.com/how-it-works/)).
+The Porsche UI Kit enables designers to create outstanding digital designs by using the prebuild libraries, styles and layout templates - fast and qualitative. To improve the output efficiency and reduce maintenance cost we decided on using the tools Sketch and  ([Abstract](https://www.goabstract.com/how-it-works/)).
 
 ## Getting started
 1. Please first [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation. 
