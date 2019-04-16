@@ -172,6 +172,7 @@ if [[ isWorkingBranchLatestStableBranch ]]; then
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
 fi
+add_redirect_page
 deploy_to_gh_pages
 #verify_deployment "${P_WORKING_BRANCH}"
 #if [[ isWorkingBranchLatestStableBranch ]]; then
