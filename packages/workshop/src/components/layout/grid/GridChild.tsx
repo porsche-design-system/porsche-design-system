@@ -14,7 +14,10 @@ export interface GridChildProps extends ClassNameProp, ComponentProp {
   offset?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>
 }
 
-const _GridChild: React.StatelessComponent<GridChildProps> = (props) => {
+/**
+ * A child of a grid container.
+ */
+export const GridChild: React.FunctionComponent<GridChildProps> = (props) => {
   const { as, className, children, offset, size, ...rest } = props
 
   const ElementType: any = getElementType(as, "div")
@@ -32,8 +35,3 @@ const _GridChild: React.StatelessComponent<GridChildProps> = (props) => {
     </ElementType>
   )
 }
-
-/**
- * A child of a grid container.
- */
-export const GridChild = _GridChild as React.StatelessComponent<GridChildProps>
