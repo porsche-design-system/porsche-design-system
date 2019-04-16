@@ -31,8 +31,8 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            git config --global user.email "${GH_EMAIL}"
-            git config --global user.name "${GH_NAME}"
+            git config --global user.name "${CIRCLE_USERNAME}"
+            git config --global user.email "${CIRCLE_USERNAME}@users.noreply.github.com"
             git clone --single-branch -b "${TARGET_BRANCH}" "${CIRCLE_REPOSITORY_URL}" "./${TARGET_BRANCH}"
             pushd "./${TARGET_BRANCH}"
               rm -rf "./${CIRCLE_BRANCH}"
@@ -78,8 +78,8 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            git config --global user.email "${GH_EMAIL}"
-            git config --global user.name "${GH_NAME}"
+            git config --global user.name "${CIRCLE_USERNAME}"
+            git config --global user.email "${CIRCLE_USERNAME}@users.noreply.github.com"
             git clone --single-branch -b "${TARGET_BRANCH}" "${CIRCLE_REPOSITORY_URL}" "./${TARGET_BRANCH}"
             pushd "./${TARGET_BRANCH}"
               rm -rf "./${CIRCLE_BRANCH}"
@@ -132,8 +132,8 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            git config --global user.email "${GH_EMAIL}"
-            git config --global user.name "${GH_NAME}"
+            git config --global user.name "${CIRCLE_USERNAME}"
+            git config --global user.email "${CIRCLE_USERNAME}@users.noreply.github.com"
             git clone --single-branch -b "${TARGET_BRANCH}" "${CIRCLE_REPOSITORY_URL}" "./${TARGET_BRANCH}"
             pushd "./${TARGET_BRANCH}"
               rm -rf "./v0"
