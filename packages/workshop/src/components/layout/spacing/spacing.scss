@@ -45,172 +45,32 @@ $p-spacings: (
   }
 
   &--0 {
-    margin: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        margin: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        margin: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        margin: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        margin: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        margin: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin: 0;
     }
   }
 
   &t--0 {
-    margin-top: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        margin-top: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        margin-top: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        margin-top: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        margin-top: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        margin-top: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin-top: 0;
     }
   }
 
   &r--0 {
-    margin-right: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        margin-right: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        margin-right: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        margin-right: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        margin-right: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        margin-right: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin-right: 0;
     }
   }
 
   &b--0 {
-    margin-bottom: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        margin-bottom: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        margin-bottom: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        margin-bottom: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        margin-bottom: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        margin-bottom: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin-bottom: 0;
     }
   }
 
   &l--0 {
-    margin-left: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        margin-left: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        margin-left: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        margin-left: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        margin-left: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        margin-left: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin-left: 0;
     }
   }
 
@@ -405,172 +265,32 @@ $p-spacings: (
   }
 
   &--0 {
-    padding: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        padding: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        padding: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        padding: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        padding: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        padding: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin: 0;
     }
   }
 
   &t--0 {
-    padding-top: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        padding-top: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        padding-top: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        padding-top: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        padding-top: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        padding-top: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin-top: 0;
     }
   }
 
   &r--0 {
-    padding-right: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        padding-right: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        padding-right: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        padding-right: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        padding-right: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        padding-right: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin-right: 0;
     }
   }
 
   &b--0 {
-    padding-bottom: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        padding-bottom: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        padding-bottom: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        padding-bottom: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        padding-bottom: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        padding-bottom: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin-bottom: 0;
     }
   }
 
   &l--0 {
-    padding-left: 0;
-
-    @include breakpoint("xs") {
-      &-xs {
-        padding-left: 0;
-      }
-    }
-
-    @include breakpoint("s") {
-      &-s {
-        padding-left: 0;
-      }
-    }
-
-    @include breakpoint("m") {
-      &-m {
-        padding-left: 0;
-      }
-    }
-
-    @include breakpoint("l") {
-      &-l {
-        padding-left: 0;
-      }
-    }
-
-    @include breakpoint("xl") {
-      &-xl {
-        padding-left: 0;
-      }
+    @include generate-major-breakpoints() {
+      margin-top: 0;
     }
   }
 
@@ -741,6 +461,36 @@ $p-spacings: (
 
     &l--#{$name} {
       padding-left: $spacing;
+    }
+
+    &--0 {
+      @include generate-major-breakpoints() {
+        padding: 0;
+      }
+    }
+
+    &t--0 {
+      @include generate-major-breakpoints() {
+        padding-top: 0;
+      }
+    }
+
+    &r--0 {
+      @include generate-major-breakpoints() {
+        padding-right: 0;
+      }
+    }
+
+    &b--0 {
+      @include generate-major-breakpoints() {
+        padding-bottom: 0;
+      }
+    }
+
+    &l--0 {
+      @include generate-major-breakpoints() {
+        padding-top: 0;
+      }
     }
   }
 
