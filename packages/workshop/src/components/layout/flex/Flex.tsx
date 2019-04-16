@@ -6,7 +6,7 @@ import { Spacing } from "../spacing/Spacing"
 import { FlexItem } from "./FlexItem"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface Flex extends React.StatelessComponent<FlexProps> {
+export interface Flex extends React.FunctionComponent<FlexProps> {
   Item: typeof FlexItem
 }
 
@@ -27,7 +27,9 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
   direction?: BreakpointCustomizable<"column-reverse" | "column" | "row-reverse" | "row">
 
   /** Defines how the flex items are aligned along the main axis. */
-  justifyContent?: BreakpointCustomizable<"start" | "end" | "center" | "space-between" | "space-around" | "space-evenly">
+  justifyContent?: BreakpointCustomizable<
+    "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly"
+  >
 
   /** Defines how the flex items are aligned along the cross axis. */
   alignItems?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline">
@@ -46,8 +48,20 @@ const defaultProps: Partial<FlexProps> = {
   inline: false
 }
 
-const _Flex: React.StatelessComponent<FlexProps> & Partial<Flex> = (props) => {
-  const { as, className, children, inline, wrap, direction, justifyContent, alignItems, alignContent, gap, ...rest } = props
+const _Flex: React.FunctionComponent<FlexProps> & Partial<Flex> = (props) => {
+  const {
+    as,
+    className,
+    children,
+    inline,
+    wrap,
+    direction,
+    justifyContent,
+    alignItems,
+    alignContent,
+    gap,
+    ...rest
+  } = props
 
   const ElementType: any = getElementType(as, "div")
 
@@ -105,6 +119,5 @@ _Flex.Item = FlexItem
 /**
  * A flex container component used to create flex box layouts.
  * @see Spacing
- * @see Grid
  */
 export const Flex = _Flex as Flex
