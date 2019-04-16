@@ -40,7 +40,7 @@ setup() {
   P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
   P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
   P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
-  P_LATEST_STABLE_SKETCH_VERSION="${P_LATEST_STABLE_BRANCH:1}.$(git log -1 --format=%at ${GITHUB_SHA} | cat)"
+  P_LATEST_STABLE_SKETCH_VERSION="1.0.0"
 }
 
 checkout_gh_pages() {
@@ -104,10 +104,6 @@ _EOF_
 
 deploy_to_gh_pages() {
   echo "task: [$(date)] \"deploy_to_gh_pages\""
-  echo "P_WORKING_BRANCH ${P_WORKING_BRANCH}"
-  echo "P_LATEST_STABLE_BRANCH ${P_LATEST_STABLE_BRANCH}"
-  echo "P_LATEST_STABLE_SKETCH_PUBLISH_DATE ${P_LATEST_STABLE_SKETCH_PUBLISH_DATE}"
-  echo "P_LATEST_STABLE_SKETCH_VERSION ${P_LATEST_STABLE_SKETCH_VERSION}"
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
     git commit -m "Automated deployment of Porsche UI Kit (${P_WORKING_BRANCH}): ${GITHUB_SHA}" --allow-empty
