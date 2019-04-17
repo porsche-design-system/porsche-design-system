@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
+
+if [[ -z "${GITHUB_REPOSITORY}" ]]; then
+  echo "Please provide the \$GITHUB_REPOSITORY environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_ACTOR}" ]]; then
+  echo "Please provide the \$GITHUB_ACTOR environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_REF}" ]]; then
+  echo "Please provide the \$GITHUB_REF environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_SHA}" ]]; then
+  echo "Please provide the \$GITHUB_SHA environment variable."
+  exit 1
+fi
+
+if [[ -z "$(ls -A ./core/ui-kit/patternlab/public)" ]]; then
+  echo "Please provide the UI Kit Core build artifact."
+  exit 1
+fi
+
+if [[ -z "$(ls -A ./react/packages/@porsche/ui-kit-react-docs/dist)" ]]; then
+  echo "Please provide the UI Kit React build artifact."
+  exit 1
+fi
+
+setup() {
+  echo "task: [$(date)] \"setup\""
+  git config --global user.name "${GITHUB_ACTOR}"
+  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+  git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
+
+  P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
+  P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
+}
+
+checkout_gh_pages() {
+  echo "task: [$(date)] \"checkout_gh_pages\""
+  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
+}
+
+prepare_deployment() {
+  echo "task: [$(date)] \"prepare_deployment\""
+  rm -rf "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
+}
+
+copy_porsche_ui_kit() {
+  echo "task: [$(date)] \"copy_porsche_ui_kit\""
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
+  cp -r "./core/ui-kit/patternlab/public/." "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/core"
+  cp -r "./react/packages/@porsche/ui-kit-react-docs/dist/." "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/react"
+}
+
+deploy_to_gh_pages() {
+  echo "task: [$(date)] \"deploy_to_gh_pages\""
+  pushd "/opt/porsche-ui-kit-gh-pages"
+    git add -A
+    git commit -m "Automated deployment of Porsche UI Kit (${P_WORKING_BRANCH}): ${GITHUB_SHA}" --allow-empty
+    git push origin gh-pages --force-with-lease
+  popd
+}
+
+setup
+checkout_gh_pages
+prepare_deployment
+copy_porsche_ui_kit
+deploy_to_gh_pages

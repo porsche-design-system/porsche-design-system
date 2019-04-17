@@ -1,0 +1,56 @@
+version: "3.5"
+
+services:
+  ui-kit:
+    build: ./images/node
+    working_dir: /opt/porsche-ui-kit-app
+    user: "${RUN_UID}:${RUN_GID}"
+    ports:
+      - "3000:3000"
+    environment:
+      - HOME=/home/ui-kit
+      - ARTIFACTORY_TOKEN
+      - GIT_FILTER
+      - GITHUB_SHA
+      - GITHUB_REF
+    volumes:
+      - ./:/opt/porsche-ui-kit-app:cached
+      - home:/home/ui-kit
+      - ui-kit-core-node-modules:/opt/porsche-ui-kit-app/core/ui-kit/node_modules
+      - ui-kit-react-root-node-modules:/opt/porsche-ui-kit-app/react/node_modules
+      - ui-kit-react-eslint-config-node-modules:/opt/porsche-ui-kit-app/react/packages/@porsche/eslint-config/node_modules
+      - ui-kit-react-ui-kit-react-node-modules:/opt/porsche-ui-kit-app/react/packages/@porsche/ui-kit-react/node_modules
+      - ui-kit-react-ui-kit-react-docs-node-modules:/opt/porsche-ui-kit-app/react/packages/@porsche/ui-kit-react-docs/node_modules
+      - ui-kit-react-ui-kit-react-starter-node-modules:/opt/porsche-ui-kit-app/react/packages/@porsche/ui-kit-react-starter/node_modules
+  ui-kit-deploy:
+    build: ./images/node
+    working_dir: /opt/porsche-ui-kit-app
+    environment:
+      - GIT_DEPLOY_KEY
+      - GITHUB_REPOSITORY
+      - GITHUB_ACTOR
+      - GITHUB_REF
+      - GITHUB_SHA
+    volumes:
+      - ./:/opt/porsche-ui-kit-app:cached
+      - /opt/porsche-ui-kit-gh-pages
+  change-volume-owner:
+    image: node:10.15.3-alpine@sha256:b85a3b0ef76f5543b3f467e8a25694e72594d2c2bfcf140fa584d4f40ace4130
+    volumes:
+      - home:/opt/porsche-ui-kit-volumes/home
+      - ui-kit-core-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-core-node-modules
+      - ui-kit-react-root-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-react-root-node-modules
+      - ui-kit-react-eslint-config-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-react-eslint-config-node-modules
+      - ui-kit-react-ui-kit-react-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-react-ui-kit-react-node-modules
+      - ui-kit-react-ui-kit-react-docs-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-react-ui-kit-react-docs-node-modules
+      - ui-kit-react-ui-kit-react-starter-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-react-ui-kit-react-starter-node-modules
+    command: |
+      sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-ui-kit-volumes/*"
+volumes:
+  home:
+  ui-kit-core-node-modules:
+  ui-kit-react-root-node-modules:
+  ui-kit-react-eslint-config-node-modules:
+  ui-kit-react-ui-kit-react-node-modules:
+  ui-kit-react-ui-kit-react-docs-node-modules:
+  ui-kit-react-ui-kit-react-starter-node-modules:
