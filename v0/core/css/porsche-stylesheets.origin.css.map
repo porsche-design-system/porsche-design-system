@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "porsche-stylesheets.origin.css",
-	"sourceRoot": "file:////home/circleci/repo/core/ui-kit/dist/",
+	"sourceRoot": "file:////github/workspace/core/ui-kit/dist/",
 	"sources": [
 		"../src/index.scss",
 		"../src/setup/index.scss",
