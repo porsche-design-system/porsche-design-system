@@ -2,12 +2,16 @@
 
 .sidebar {
   position: relative;
-  padding: $p-spacing-40 $p-spacing-32 150px;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+.container {
+  padding: $p-spacing-40 $p-spacing-32 150px;
+}
+
 .category {
   margin-top: $p-spacing-24;
 }
