@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if [[ -z "${GITHUB_SHA}" ]]; then
+  echo "Please provide the \$GITHUB_SHA environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_REF}" ]]; then
+  echo "Please provide the \$GITHUB_REF environment variable."
+  exit 1
+fi
+
+if [[ -z "${SLACK_WEBHOOK_URL}" ]]; then
+  echo "Please provide the \$SLACK_WEBHOOK_URL environment variable."
+  exit 1
+fi
+
+P_ABBR_REF="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
+P_SLACK_TEXT="Checkout https://ui.porsche.com/${P_ABBR_REF}/core & https://ui.porsche.com/${P_ABBR_REF}/react :heart_eyes_cat:"
+P_SLACK_ATTACHMENT="$(git log -1 --format=%s "${GITHUB_SHA}" | cat)"
+P_CURL_STATUS="$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-type: application/json" --data "{\"text\": \"${P_SLACK_TEXT}\", \"attachments\": [{\"text\": \"${P_SLACK_ATTACHMENT}\"}]}" "${SLACK_WEBHOOK_URL}")"
+
+if [[ "${P_CURL_STATUS}" -ne "200" ]]; then
+  echo "Slack notification could not be sent (HTTP error code: ${P_CURL_STATUS})."
+  exit 1
+fi
