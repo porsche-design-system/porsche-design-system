@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 
 export RUN_UID="$(id -u)"
 export RUN_GID="$(id -g)"
-export COMPOSE_PROJECT_NAME="porsche-ui-kit"
+export COMPOSE_PROJECT_NAME="porsche-ui-kit-v1"
 
 SERVICE=ui-kit
 if [[ "run-deploy" == "${1}" ]]; then
