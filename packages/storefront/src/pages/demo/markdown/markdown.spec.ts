@@ -18,7 +18,7 @@ describe("Pages Markdown", () => {
         async () => {
           await visualRegressionTester.goTo("/#/demo/markdown")
         },
-        ['[class^="sidebar_sidebar"]', '[class^="footer_footer"]']
+        ['[class^="storefront_area_sidebar"]', '[class^="sidebar_sidebar"]']
       )
     ).toBeFalsy()
   })

@@ -5,6 +5,7 @@ import { Redirect, NavLink } from "react-router-dom"
 import { Divider } from "@porsche/ui-kit-react"
 import { Text, Icon } from "@porscheui/porsche-ui-kit"
 import { Header } from "../header/Header"
+import { Footer } from "../footer/Footer"
 import SidebarLinks from "./sidebar.json"
 
 export interface SidebarProps {
@@ -128,6 +129,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
           })}
         </React.Fragment>
       )}
+      <Footer />
     </div>
   )
 }
