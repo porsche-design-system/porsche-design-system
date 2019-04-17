@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+* Add font-display: fallback to prevent flash of invisible text and therefore enhance perceived performance by showing the fallback font 
 
 ## [0.18.4] - 2019-04-02
 ### Bugfix
