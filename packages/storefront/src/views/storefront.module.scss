@@ -7,11 +7,8 @@
   bottom: 0;
   background-color: $p-color-white;
   width: 300px;
-  height: 100%;
+  height: 100vh;
   z-index: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   border-right: 1px solid $p-color-grey-3;
   transition: transform 400ms ease-out, opacity 400ms ease-out;
   will-change: transform, opacity;
@@ -26,10 +23,14 @@
   display: block;
   padding: $p-spacing-32;
   max-width: 1620px;
-  margin-left: 300px;
   transition: margin-left 400ms ease-out;
 
   @include breakpoint("s") {
+    padding: $p-spacing-64;
+  }
+
+  @include breakpoint("m") {
+    margin-left: 300px;
     padding: $p-spacing-64;
   }
 }

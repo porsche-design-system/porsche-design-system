@@ -6,10 +6,10 @@ import { Sidebar } from "../components/sidebar/Sidebar"
 import { Story } from "../components/story/Story"
 import styles from "./storefront.module.scss"
 import { Home as GeneralHome } from "../pages/general/home/Home"
-import { About as About } from "../pages/getting-started/about-porsche-ui-kit/About"
-import { StartDesigning as StartDesigning } from "../pages/getting-started/start-designing/StartDesigning"
-import { DesignWorkflow as DesignWorkflow } from "../pages/getting-started/design-workflow/DesignWorkflow"
-import { StartCoding as StartCoding } from "../pages/getting-started/start-coding/StartCoding"
+import { About } from "../pages/getting-started/about-porsche-ui-kit/About"
+import { StartDesigning } from "../pages/getting-started/start-designing/StartDesigning"
+import { DesignWorkflow } from "../pages/getting-started/design-workflow/DesignWorkflow"
+import { StartCoding } from "../pages/getting-started/start-coding/StartCoding"
 import { Support as GeneralSupport } from "../pages/help/support/Support"
 import { FAQ as GeneralFAQ } from "../pages/help/faq/FAQ"
 import { Updates as GeneralUpdates } from "../pages/news/updates/Updates"
@@ -21,7 +21,6 @@ import { Accessibility as BasicsAccessibility } from "../pages/basics/accessibil
 import { License as GeneralLicense } from "../pages/general/license/License"
 import { SketchPlugins as DesignSketchPlugins } from "../pages/getting-started/sketch-plugins/SketchPlugins"
 import { Markdown } from "../pages/demo/markdown/Markdown"
-import { Footer } from "../components/footer/Footer"
 
 export const Storefront: React.FunctionComponent = () => {
   const [hideSidebar, setHideSidebar] = useState(false)
@@ -32,7 +31,7 @@ export const Storefront: React.FunctionComponent = () => {
   }
 
   const updateIsMobile = () => {
-    window.innerWidth < 1320 ? setHideSidebar(hideSidebar === false) : setHideSidebar(hideSidebar === true)
+    window.innerWidth < 1000 ? setHideSidebar(hideSidebar === false) : setHideSidebar(hideSidebar === true)
   }
 
   const appSidebarClasses = cx(styles["area-sidebar"], {
@@ -63,7 +62,6 @@ export const Storefront: React.FunctionComponent = () => {
       </button>
       <div className={appSidebarClasses}>
         <Sidebar featureV1={featureShowV1} />
-        <Footer />
       </div>
       <main className={appContentClasses}>
         <Switch>
