@@ -6,7 +6,7 @@
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-thin;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.woff2') format('woff2'), // Super Modern Browsers
@@ -20,7 +20,7 @@
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.woff2') format('woff2'), // Super Modern Browsers
@@ -34,7 +34,7 @@
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.woff2') format('woff2'), // Super Modern Browsers
@@ -49,7 +49,7 @@
   font-family: 'Porsche Next Cyrilic';
   font-style: normal;
   font-weight: $font-weight-thin;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.woff2') format('woff2'), // Super Modern Browsers
@@ -63,7 +63,7 @@
   font-family: 'Porsche Next Cyrilic';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.woff2') format('woff2'), // Super Modern Browsers
@@ -77,7 +77,7 @@
   font-family: 'Porsche Next Cyrilic';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.woff2') format('woff2'), // Super Modern Browsers
@@ -92,7 +92,7 @@
   font-family: 'Porsche Next Greek';
   font-style: normal;
   font-weight: $font-weight-thin;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.woff2') format('woff2'), // Super Modern Browsers
@@ -106,7 +106,7 @@
   font-family: 'Porsche Next Greek';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.woff2') format('woff2'), // Super Modern Browsers
@@ -120,7 +120,7 @@
   font-family: 'Porsche Next Greek';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.woff2') format('woff2'), // Super Modern Browsers
@@ -135,7 +135,7 @@
   font-family: 'Porsche Next Arabic';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-arabic/PorscheNextWAr-Regular.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-arabic/PorscheNextWAr-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-arabic/PorscheNextWAr-Regular.woff2') format('woff2'), // Super Modern Browsers
@@ -149,7 +149,7 @@
   font-family: 'Porsche Next Arabic';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-arabic/PorscheNextWAr-Bold.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-arabic/PorscheNextWAr-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-arabic/PorscheNextWAr-Bold.woff2') format('woff2'), // Super Modern Browsers
@@ -164,7 +164,7 @@
   font-family: 'Porsche Next Persian';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-persian/PorscheNextWPe-Regular.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-persian/PorscheNextWPe-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-persian/PorscheNextWPe-Regular.woff2') format('woff2'), // Super Modern Browsers
@@ -178,7 +178,7 @@
   font-family: 'Porsche Next Persian';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-persian/PorscheNextWPe-Bold.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-persian/PorscheNextWPe-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-persian/PorscheNextWPe-Bold.woff2') format('woff2'), // Super Modern Browsers
@@ -193,7 +193,7 @@
   font-family: 'Porsche Next Pashto';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-pashto/PorscheNextWPa-Regular.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-pashto/PorscheNextWPa-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-pashto/PorscheNextWPa-Regular.woff2') format('woff2'), // Super Modern Browsers
@@ -207,7 +207,7 @@
   font-family: 'Porsche Next Pashto';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-pashto/PorscheNextWPa-Bold.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-pashto/PorscheNextWPa-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-pashto/PorscheNextWPa-Bold.woff2') format('woff2'), // Super Modern Browsers
@@ -222,7 +222,7 @@
   font-family: 'Porsche Next Urdu';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-urdu/PorscheNextWUr-Regular.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-urdu/PorscheNextWUr-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-urdu/PorscheNextWUr-Regular.woff2') format('woff2'), // Super Modern Browsers
@@ -236,7 +236,7 @@
   font-family: 'Porsche Next Urdu';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: swap;
+  font-display: fallback;
   src: url('#{$font-resource-base-path}/porsche-next-urdu/PorscheNextWUr-Bold.eot'); // IE9 Compat Modes
   src: url('#{$font-resource-base-path}/porsche-next-urdu/PorscheNextWUr-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
   url('#{$font-resource-base-path}/porsche-next-urdu/PorscheNextWUr-Bold.woff2') format('woff2'), // Super Modern Browsers
