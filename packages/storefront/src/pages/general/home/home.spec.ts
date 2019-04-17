@@ -2,7 +2,7 @@ import "jasmine"
 import { VisualRegressionTester } from "@porscheui/visual-regression-tester"
 import { getVisualRegressionTester } from "../../../../../../vrt/helpers/setup"
 
-describe("Pages Markdown", () => {
+describe("Home", () => {
   let visualRegressionTester: VisualRegressionTester
 
   beforeAll(async () => {
@@ -12,11 +12,11 @@ describe("Pages Markdown", () => {
   it("should have no visual regression", async () => {
     expect(
       await visualRegressionTester.test(
-        "pages-markdown",
+        "pages-home",
         async () => {
-          await visualRegressionTester.goTo("/#/demo/markdown")
+          await visualRegressionTester.goTo("/#/general/home")
         },
-        ['[class^="sidebar_sidebar"]', '[class^="footer_footer"]']
+        ['[class^="home_cover"]']
       )
     ).toBeFalsy()
   })
