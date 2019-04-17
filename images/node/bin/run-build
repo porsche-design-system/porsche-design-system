@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+pushd "./core/ui-kit"
+  npm run release
+popd
+pushd "./react/packages/@porsche/ui-kit-react"
+  yarn build
+popd
+pushd "./react/packages/@porsche/ui-kit-react-docs"
+  yarn build
+popd
