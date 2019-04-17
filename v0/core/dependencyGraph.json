@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1555482037584,
+  "timestamp": 1555491410709,
   "graph": {
     "options": {
       "directed": true,
@@ -3658,6 +3658,12 @@
       },
       {
         "v": "docs/introduction.hbs",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "docs/start-coding.hbs",
         "value": {
           "compileState": "clean"
         }
