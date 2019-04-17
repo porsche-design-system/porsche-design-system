@@ -1,6 +1,6 @@
 workflow "Porsche UI Kit" {
   on = "push"
-  resolves = ["Deploy"]
+  resolves = ["Deploy", "Slack"]
 }
 
 action "Filter" {
@@ -29,4 +29,11 @@ action "Deploy" {
   uses = "./images/node/"
   runs = ["run-deploy"]
   secrets = ["GIT_DEPLOY_KEY"]
+}
+
+action "Slack" {
+  needs = ["Deploy"]
+  uses = "./images/node/"
+  runs = ["run-slack"]
+  secrets = ["SLACK_WEBHOOK_URL"]
 }
