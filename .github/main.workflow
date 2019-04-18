@@ -24,16 +24,16 @@ action "Lint" {
   runs = ["run-lint"]
 }
 
-action "VRT" {
-  needs = ["Install"]
-  uses = "./images/node/"
-  runs = ["run-vrt"]
-}
-
 action "E2E" {
   needs = ["Install"]
   uses = "./images/node/"
   runs = ["run-e2e"]
+}
+
+action "VRT" {
+  needs = ["Install"]
+  uses = "./images/node/"
+  runs = ["run-vrt"]
 }
 
 action "Build" {
