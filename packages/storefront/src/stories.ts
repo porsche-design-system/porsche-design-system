@@ -36,6 +36,7 @@ export const Stories: Stories = {
     Grid: {
       examples: importMDX("../../workshop/src/components/layout/grid/grid.code.mdx"),
       design: importMDX("../../workshop/src/components/layout/grid/grid.design.mdx"),
+      vrt: importMDX("../../workshop/src/components/layout/grid/grid.vrt.mdx"),
       props: ["Grid", "GridChild"]
     },
     Spacing: {

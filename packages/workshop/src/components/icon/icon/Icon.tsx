@@ -48,8 +48,10 @@ const defaultProps: Partial<IconProps> = {
   path: "https://ui.porsche.com/cdn/0.0.1/icon/"
 }
 
-// export class Icon extends React.PureComponent<IconProps> {
-const _Icon: React.StatelessComponent<IconProps> = (props) => {
+/**
+ * Use this component any time you want to display svg icons.
+ */
+export const Icon: React.FunctionComponent<IconProps> = (props) => {
   const { className, path, name, size, color, ...rest } = props
 
   if (!name) {
@@ -63,9 +65,4 @@ const _Icon: React.StatelessComponent<IconProps> = (props) => {
   )
 }
 
-_Icon.defaultProps = defaultProps
-
-/**
- * Use this component any time you want to display svg icons.
- */
-export const Icon = _Icon as React.StatelessComponent<IconProps>
+Icon.defaultProps = defaultProps

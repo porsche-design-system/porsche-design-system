@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.8.13",
-    "@types/react-dom": "^16.8.2",
+    "@types/react-dom": "^16.8.4",
     "@types/react-inlinesvg": "^0.8.0",
     "autoprefixer": "^9.5.1",
     "concurrently": "^4.1.0",
@@ -69,14 +69,14 @@
     "node-sass-tilde-importer": "^1.0.2",
     "postcss": "^7.0.14",
     "postcss-cli": "^6.1.2",
-    "stylelint": "^9.10.1",
+    "stylelint": "^10.0.1",
     "stylelint-config-prettier": "^5.0.0",
-    "stylelint-config-standard": "^18.2.0",
+    "stylelint-config-standard": "^18.3.0",
     "stylelint-scss": "^3.5.4",
-    "tslint": "^5.15.0",
+    "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.0.0",
-    "typescript": "~3.4.2"
+    "typescript": "~3.4.3"
   },
   "publishConfig": {
     "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"

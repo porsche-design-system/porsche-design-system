@@ -3,6 +3,7 @@ import cx from "classnames"
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
+// prettier-ignore
 export interface SpacingProps extends ClassNameProp, ComponentProp {
   /**
    * Set this to true if you always want to create a wrapper, even for single childs.
@@ -29,7 +30,13 @@ export interface SpacingProps extends ClassNameProp, ComponentProp {
   paddingTop?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
 }
 
-const _Spacing: React.StatelessComponent<SpacingProps> = (props) => {
+/**
+ * A component to add margins and paddings to components.
+ * If this component has only one child, those classes are added directly to the child using the className prop to avoid unnecessary wrapper divs.
+ * This only works if the child component supports className (which it totally should anyway) and if the number of children isn't dynamic and doesn't change.
+ * If this is not the case, set the "wrap" property to manually create a wrapper div.
+ */
+export const Spacing: React.FunctionComponent<SpacingProps> = (props) => {
   const {
     as,
     className,
@@ -105,11 +112,3 @@ const _Spacing: React.StatelessComponent<SpacingProps> = (props) => {
     )
   }
 }
-
-/**
- * A component to add margins and paddings to components.
- * If this component has only one child, those classes are added directly to the child using the className prop to avoid unnecessary wrapper divs.
- * This only works if the child component supports className (which it totally should anyway) and if the number of children isn't dynamic and doesn't change.
- * If this is not the case, set the "wrap" property to manually create a wrapper div.
- */
-export const Spacing = _Spacing as React.StatelessComponent<SpacingProps>
