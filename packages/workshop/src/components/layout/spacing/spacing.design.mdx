@@ -1,5 +1,134 @@
-# Spacing
+# Layout: Spacings
 
-## Recommendation of use
+Spacing is the vertical and horizontal distance between components of a layout,
+defining the relationship of the UI elements to create both visual consistency and
+functionality.
 
-Lorem ipsum....
+Using the same defined spacing system across all digital products delivers a
+consistent user experience across all pages.
+
+For UI layouts, spacing should be used in combination with the [responsive Grid]().
+
+## 8 px Spacing System 
+
+The layout uses an 8 px square grid system across all screens (mobile, tablet
+and desktop) to define dimensions, padding and merging of block and inline
+elements.  The grid unit is designed to work well with the base type size of
+16px and other component sizes.
+
+Margin and padding are applied consistently based on multiples of 8px. Boxed UI
+elements are sized either by adapting to the fixed value or to the fluid column
+widths, along with the defined aspect rules.
+
+As an exception, typography works with a baseline unit of 4px, half of the
+layout unit, for larger flexibility in obtaining the desired effect, while still
+ensuring a consistent overall rhythm.
+
+
+## Spacing methods UI Kit uses two spacing methods, one for static spacing
+between UI elements and another for responsive spacing.  The two systems are
+built on the same definitions to complement the overall consistency but serve
+different roles.
+
+Additional increments can be added if needed for a specific project as long as
+the 8px spacing rule is followed.
+
+### Static spacing Is the spacing scale which should be used for most UI
+elements, which do not need to change across different screen sizes. It is used
+to create appropriate spatial relationships within and around components.
+
+**Token**			     **px**			**rem**		**example** --- Spacing-4		|	4px 		|	0.25	|
+--- Spacing-8		|	8px 		|	0.5		| --- Spacing-16		|	16px	|	1		| --- Spacing-24		|
+24px	|	1.5		| --- Spacing-32		|	32px	|	2		| --- Spacing-40		|	40px	|	2.5		| ---
+Spacing-48		|	48px	|	3		| --- Spacing-56		|	56px	|	3.5		| --- Spacing-64		|	64px
+|	4		| --- Spacing-72		|	72px	|	4.5		| --- Spacing-80		|	80px	|	5		|		
+
+
+### Flexible spacing Flexible spacing changes the distance in accordance with
+the screen size on which it is displayed, to fit special spacing needs. The
+value of responsive spacing changes at defined breakpoint widths.
+
+| Token | 320 - 759 | 760 - 999 | 1000 - 1299 | 1300 - 1759 | 1760 - +   | |
+———— | —— | —— | —— | —— | —— | | spacing-a | 4px  | 8px  | 12px | 16px | 20px |
+| spacing-b | 8px  | 16px | 24px | 32px | 40px | | spacing-c | 16px | 24px |
+32px | 40px | 48px | | spacing-d | 24px | 32px | 40px | 48px | 56px | |
+spacing-e | 32px | 40px | 48px | 56px | 64px | | spacing-f | 40px | 48px | 56px
+| 64px | 72px | | spacing-g | 48px | 56px | 64px | 72px | 80px |
+
+## Working with space Spacing is a powerful design element, an integral part of
+every layout, which can create relationships, hierarchy, and rhythm between
+components.
+
+### Relationships The space between components can determine if the elements
+seem to have a meaningful connection. Closely placed elements relate to each
+other. If more space is added between components, the relationship weakens.
+
+Using a consistent spacing pattern across elements can also create a rapidly
+sensible relationship.
+
+### Hierarchy By leaving different spaces between elements or sections of
+information will influence the reader to perceive them like having a different
+relevance. Elements that have more space around tend to be perceived as being
+further up in the hierarchy.
+
+Creating hierarchy on the page guides the viewer where to look and helps
+separate and organize elements in the design and guide users attention to
+certain elements.
+
+### White space Is the empty space (also referred to as negative space) in a
+design. Although called whitespace, the blank space can be filled with any color
+as long as it’s free of elements like text, graphics or images, creating a
+well-spaced and clear product. White space helps deliver a good experience by
+giving elements space to breathe and letting the reader’s eye relax.
+
+### Rhythm Repetition of bundles of elements, where similar information are
+placed in the same relative space within the group, delivers a pattern and
+creates an expectation for the viewer while scanning the feed. Breaking a rhythm
+will make the element seem more hierarchical.
+
+## Usage in Sketch ### Define the grid The Porsche UI Kit works with 8px
+increments, but it allows 4px values in a few cases, where larger flexibility is
+needed. We recommend setting up the workspace with a 4px grid system.
+
+### Snap to grid Most design apps have the option to snap elements to the grid.
+Using this feature will help position elements faster in the layout.
+
+### Nudge In design, nudging is called the small and large jumps that elements
+make while moving them with the keyboard arrows. Adjusting the large nudge to 8
+will help you to stay in the grid system. ::In Sketch, this can be done using an
+app called Nudg.it.::
+
+### ::Frame your icons:: ::In order to keep icons in a similar visual weight,
+their sizes often differ. Adding a container around them helps handle the
+variations as elements with defined parameters.::
+
+## Design tools versus web browser When considering the differences between
+design tools and web browsers, it’s important to keep in mind that the
+developers work with spacing tokens that have fixed values, following the 8px
+spacing system. ::The designs should be created in a manner that developers
+should be able to read the distances between elements correctly.::
+
+### Borders While in design tools the border doesn’t count toward the shape
+size, browsers consider borders as solid space around elements. ::This
+difference can lead to confusion between engineers and designers.::
+
+### Lines Lines can be created either through using a narrow rectangle or a path
+with a stroke. ::For better readability of the space between elements, we
+recommend using paths with stroke.::
+
+### Textboxes Developers measure the spacing of typography from the bounding box
+of the text element. When working with typography, the bounding box should be
+placed within the grid parameters, even if the baseline of the typography is not
+on the grid line. ::MEMO: Texte am besten immer mit Textwerkzeug, nicht als Box
+anlegen::
+
+### Images Images are the exception from the above rule because they can be
+displayed in many different aspect ratios and can follow various rules for
+handling responsiveness across screen sizes and breakpoints.
+
+The upper part of the images should be placed on the grid system, even if the
+bottom part doesn’t fit. The element underneath should then be placed on the
+grid line again, creating a larger space between the elements. ::Im Zweifel den
+Abstand in der Implementierung wählen, der näher dran ist::
+
+#puik/descriptions
