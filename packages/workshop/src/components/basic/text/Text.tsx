@@ -62,7 +62,10 @@ const defaultProps: Partial<TextProps> = {
   wrap: true
 }
 
-const _Text: React.StatelessComponent<TextProps> = (props) => {
+/**
+ * Use this component any time you want to display plain text anywhere.
+ */
+export const Text: React.FunctionComponent<TextProps> = (props) => {
   const { as, className, children, ellipsis, align, inline, type, color, wrap, inverted, ...rest } = props
 
   const ElementType: any = getElementType(as, "p")
@@ -85,9 +88,4 @@ const _Text: React.StatelessComponent<TextProps> = (props) => {
   )
 }
 
-_Text.defaultProps = defaultProps
-
-/**
- * Use this component any time you want to display plain text anywhere.
- */
-export const Text = _Text as React.StatelessComponent<TextProps>
+Text.defaultProps = defaultProps

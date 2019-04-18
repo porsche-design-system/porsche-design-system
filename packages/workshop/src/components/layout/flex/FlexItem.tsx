@@ -9,7 +9,9 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
   alignSelf?: BreakpointCustomizable<"auto" | "start" | "end" | "center" | "baseline" | "stretch">
 
   /** The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this. */
-  width?: BreakpointCustomizable<"auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full">
+  width?: BreakpointCustomizable<
+    "auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full"
+  >
 
   /** The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this. */
   offset?: BreakpointCustomizable<"none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters">
@@ -24,7 +26,10 @@ export interface FlexItemProps extends ClassNameProp, ComponentProp {
   flex?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal">
 }
 
-const _FlexItem: React.StatelessComponent<FlexItemProps> = (props) => {
+/**
+ * A child of a flex container.
+ */
+export const FlexItem: React.FunctionComponent<FlexItemProps> = (props) => {
   const { as, className, children, alignSelf, width, offset, shrink, grow, flex, ...rest } = props
 
   const ElementType: any = getElementType(as, "div")
@@ -46,8 +51,3 @@ const _FlexItem: React.StatelessComponent<FlexItemProps> = (props) => {
     </ElementType>
   )
 }
-
-/**
- * A child of a flex container.
- */
-export const FlexItem = _FlexItem as React.StatelessComponent<FlexItemProps>

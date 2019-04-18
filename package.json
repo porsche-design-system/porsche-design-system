@@ -39,8 +39,8 @@
     "copyfiles": "^2.1.0",
     "jasmine": "^3.4.0",
     "puppeteer": "^1.14.0",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.4.2",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.3",
     "wait-on": "^3.2.0"
   },
   "workspaces": [

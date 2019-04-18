@@ -5,7 +5,7 @@ import { getElementType, prefix, BreakpointCustomizable, mapBreakpointPropToClas
 import { GridChild } from "./GridChild"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface Grid extends React.StatelessComponent<GridProps> {
+export interface Grid extends React.FunctionComponent<GridProps> {
   Child: typeof GridChild
 }
 
@@ -17,7 +17,7 @@ export interface GridProps extends ClassNameProp, ComponentProp {
   gap?: BreakpointCustomizable<"normal" | "zero">
 }
 
-const _Grid: React.StatelessComponent<GridProps> & Partial<Grid> = (props) => {
+const _Grid: React.FunctionComponent<GridProps> & Partial<Grid> = (props) => {
   const { as, className, children, direction, gap, ...rest } = props
 
   const ElementType: any = getElementType(as, "div")
@@ -40,7 +40,5 @@ _Grid.Child = GridChild
 
 /**
  * A grid container component used to create layouts based on official grid definitions.
- * @see Spacing
- * @see Flex
  */
 export const Grid = _Grid as Grid

@@ -1,0 +1,247 @@
+import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
+import { Grid, Text } from "@porscheui/porsche-ui-kit"
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <Grid>
+          <Grid.Child size={12}>
+            <Text className="sg-example-item">
+                12
+              </Text>
+          </Grid.Child>
+        </Grid>
+        {Array.apply(0, Array(11)).map(function(x, i) {
+          return (
+            <Grid key={i}>
+              <Grid.Child size={i + 1}>
+                <Text className="sg-example-item">{i+1}</Text>
+              </Grid.Child>
+              <Grid.Child size={11 - i}>
+                <Text className="sg-example-item">{11-i}</Text>
+              </Grid.Child>
+            </Grid>
+          )
+        })}
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        {Array.apply(0, Array(11)).map(function(x, i) {
+          return (
+            <Grid key={i}>
+              <Grid.Child offset={i + 1} size={11 - i}>
+                <Text className="sg-example-item">{i+1}</Text>
+              </Grid.Child>
+            </Grid>
+          )
+        })}
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <Grid direction="row">
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Grid.Child>
+        </Grid>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <Grid direction="row-reverse">
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Grid.Child>
+        </Grid>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <Grid direction="column">
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Grid.Child>
+        </Grid>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <Grid direction="column-reverse">
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Grid.Child>
+        </Grid>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <Grid gap="normal">
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Grid.Child>
+        </Grid>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <Grid gap="zero">
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              1
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              2
+            </Text>
+          </Grid.Child>
+          <Grid.Child size={4}>
+            <Text className="sg-example-item">
+              3
+            </Text>
+          </Grid.Child>
+        </Grid>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <Grid>
+          <Grid.Child size={6}>
+            <div className="sg-example-item-outer">
+              <Grid>
+                <Grid.Child size={6}>
+                  <Text className="sg-example-item">
+                    1
+                  </Text>
+                </Grid.Child>
+                <Grid.Child size={6}>
+                  <Text className="sg-example-item">
+                    2
+                  </Text>
+                </Grid.Child>
+              </Grid>
+            </div>
+          </Grid.Child>
+          <Grid.Child size={6}>
+            <div className="sg-example-item-outer">
+              <Grid>
+                <Grid.Child size={4}>
+                  <Text className="sg-example-item">
+                    1
+                  </Text>
+                </Grid.Child>
+                <Grid.Child size={8}>
+                  <Text className="sg-example-item">
+                    2
+                  </Text>
+                </Grid.Child>
+              </Grid>
+            </div>
+          </Grid.Child>
+        </Grid>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
