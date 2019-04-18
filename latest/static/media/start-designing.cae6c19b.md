@@ -21,8 +21,8 @@ A curated list of more plugins that are recommended (yet not obligatory) for a s
 ## Typeface
 
 You can download the Porsche font files in the Porsche Brand Guide:  
-[Download Porsche typeface](https://brandguide.porsche.com/elements/manual/view/id/885)
-For UI design use within Sketch, we recomment using the "Typefaces for digital users, Web Developer Kit". 
+[Download Porsche typeface](https://brandguide.porsche.com/elements/manual/view/id/885)  
+For UI design use within Sketch, we recommend using the "Typefaces for digital users, Web Developer Kit". 
 
 ## Design Workflow
 To improve the output efficiency and reduce maintenance cost we decided on using the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/how-it-works/). 
