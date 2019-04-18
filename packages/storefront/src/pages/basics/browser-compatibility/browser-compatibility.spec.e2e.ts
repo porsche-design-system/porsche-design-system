@@ -9,6 +9,10 @@ describe("Browser compatibility", () => {
     page = await getPage(`/#/basics/browser-compatibility`)
   })
 
+  afterEach(async () => {
+    await page.close()
+  })
+
   it("should show page title", async () => {
     const elements = await page.$$('h1')
     const text = await page.evaluate(e => e.textContent, elements[1])

@@ -9,6 +9,10 @@ describe("FAQ", () => {
     page = await getPage(`/#/help/faq`)
   })
 
+  afterEach(async () => {
+    await page.close()
+  })
+
   it("should show page title", async () => {
     const elements = await page.$$('h1')
     const text = await page.evaluate(e => e.textContent, elements[1])
