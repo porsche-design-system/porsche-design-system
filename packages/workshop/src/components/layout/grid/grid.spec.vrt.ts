@@ -1,5 +1,3 @@
-/* tslint:disable */
-
 import "jasmine"
 import { VisualRegressionTester } from "@porscheui/visual-regression-tester"
 import { getVisualRegressionTester } from "../../../../../../vrt/helpers/setup"
