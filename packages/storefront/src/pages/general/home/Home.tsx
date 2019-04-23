@@ -9,7 +9,9 @@ export const Home: React.FunctionComponent = () => {
     <React.Fragment>
       <header className={styles.teaser}>
         <div className={styles.cover}>
-          <video src={require("./assets/porsche-ui-kit.mp4")} autoPlay muted/>
+          <video src={require("./assets/porsche-ui-kit.mp4")}
+                 poster={require("./assets/porsche-ui-kit.jpg")}
+                 autoPlay muted/>
         </div>
       </header>
 
@@ -39,7 +41,9 @@ export const Home: React.FunctionComponent = () => {
               </Text>
               <Spacing marginTop={8}>
                 <Text>
-                  While Porsche UI Kit v1 is coming soon as npm package with code examples and design documentation have a look at v0 documentation of <a href={"https://ui.porsche.com/v0/core/"}>Porsche UI Kit – Core v0</a> and <a href={"https://ui.porsche.com/v0/react/"}>Porsche UI Kit – React v0</a> in the meantime.
+                  While Porsche UI Kit v1 is coming soon as npm package with code examples and design documentation have
+                  a look at v0 documentation of <a href={"https://ui.porsche.com/v0/core/"}>Porsche UI Kit – Core
+                  v0</a> and <a href={"https://ui.porsche.com/v0/react/"}>Porsche UI Kit – React v0</a> in the meantime.
                 </Text>
               </Spacing>
               <Spacing marginTop={16}>
