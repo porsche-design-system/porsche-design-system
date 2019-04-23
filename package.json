@@ -34,7 +34,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@porscheui/visual-regression-tester": "^1.1.0",
+    "@porscheui/visual-regression-tester": "^1.1.1",
     "@types/jasmine": "^3.3.12",
     "@types/puppeteer": "^1.12.3",
     "concurrently": "^4.1.0",

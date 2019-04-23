@@ -11,7 +11,8 @@ const testOptions: VisualRegressionTestOptions = {
   fixturesDir: 'vrt/fixtures',
   resultsDir: 'vrt/results',
   tolerance: 0,
-  baseUrl: 'http://localhost:3000'
+  baseUrl: 'http://localhost:3000',
+  timeout: 90000
 }
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000
@@ -25,7 +26,7 @@ afterAll(async () => {
 export async function getVisualRegressionTester(): Promise<VisualRegressionTester> {
   if (!visualRegressionTester) {
     browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     })
     visualRegressionTester = new VisualRegressionTester(browser, testOptions)
   }
