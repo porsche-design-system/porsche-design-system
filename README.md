@@ -34,6 +34,12 @@
 * Switch to __project root directory__
 * Run `./docker.sh run-vrt`
 
+#### What to do when tests are failing
+* Switch to your results directury in `/vrt/results`. Here you can find the belonging `diff` and `regression` images.
+* Check if you would like to accept the changes
+  * **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results` folder and delete the images in the `/vrt/results` directory afterwards manually.
+  * **If no**: Recheck your code and run the tests again, when you think you fixed it.
+
 ### Build
 * Switch to __project root directory__
 * Run `./docker.sh run-build`
