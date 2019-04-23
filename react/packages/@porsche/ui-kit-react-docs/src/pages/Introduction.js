@@ -59,25 +59,56 @@ const Introduction = () => {
                 </Text>
             </Flex>
 
-            <Spacing marginTop={36} marginBottom={36} paddingRight={24} paddingLeft={24}>
-                <Text as="h2" type="3-bold">
-                    Augmentation
+            <Spacing marginTop={60} marginBottom={36} paddingRight={24} paddingLeft={24}>
+                <Text as="h2" type="2-bold">
+                    Getting started
                 </Text>
-                <Spacing marginTop={6} marginBottom={18}>
-                    <Divider />
+                <Spacing marginTop={18}>
+                    <Text>
+                        Please be aware of different versions of the Porsche UI Kit React npm package and align with
+                        your design counterpart on the used Porsche UI Kit React React version. In general we recommend
+                        updating the npm dependencies on a regular basis. All changes are documented in the{" "}
+                        <a href="https://github.com/porscheui/porsche-ui-kit/tree/v0/react/packages/%40porsche/ui-kit-react/CHANGELOG.md">
+                            Changelog v0 React
+                        </a>
+                        .
+                    </Text>
                 </Spacing>
-                <p>
-                    Control the rendered HTML tag, or render one component <code>as</code> another component. Extra
-                    props are passed to the component you are rendering <code>as</code>.
-                </p>
 
-                <p>
-                    Augmentation is powerful. You can compose component features and props without adding extra nested
-                    components. This is essential for working with <code>MenuLinks</code> and <code>react-router</code>.
-                </p>
+                <Spacing marginTop={36}>
+                    <Text as="h3" type="3-bold">
+                        Install and use Porsche UI Kit React
+                    </Text>
+                </Spacing>
 
-                <Comparison jsx={HeaderAugmentationJSX} html={HeaderAugmentationHTML} />
-                <Comparison jsx={MenuItemLinkAugmentationJSX} html={MenuItemLinkAugmentationHTML} />
+                <Spacing marginTop={18}>
+                    <Text>
+                        1. Create your React App (we recommend using <b>Create React App</b>)<br />
+                        2. Import necessary styles to your _index.scss_ file.
+                    </Text>
+                </Spacing>
+
+                <Spacing marginTop={36}>
+                    <code>
+                        @import "~@porsche/ui-kit-react/src/variables";
+                        <br />
+                        @import "~@porsche/ui-kit-react/src/common";
+                        <br />
+                        @import "~@porsche/ui-kit-react/src/index";
+                    </code>
+                </Spacing>
+
+                <Spacing marginTop={36}>
+                    <Text>
+                        3. Reference UI Kit package in your package.json{" "}
+                        <code>"@porsche/ui-kit-react": "^{reactpkg.version}"</code>
+                        <br />
+                        4. Set repository path in your .npmrc file:{" "}
+                        <code>@porsche:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/</code>
+                        <br />
+                        5. Import and use React components as usual
+                    </Text>
+                </Spacing>
             </Spacing>
         </article>
     )
