@@ -28,18 +28,27 @@ action "E2E" {
   needs = ["Install"]
   uses = "./images/node/"
   runs = ["run-e2e"]
+  env = {
+    SKIP_PREFLIGHT_CHECK = "true"
+  }
 }
 
 action "VRT" {
   needs = ["Install"]
   uses = "./images/node/"
   runs = ["run-vrt"]
+  env = {
+    SKIP_PREFLIGHT_CHECK = "true"
+  }
 }
 
 action "Build" {
   needs = ["Lint", "E2E", "VRT"]
   uses = "./images/node/"
   runs = ["run-build"]
+  env = {
+    SKIP_PREFLIGHT_CHECK = "true"
+  }
 }
 
 action "Deploy" {

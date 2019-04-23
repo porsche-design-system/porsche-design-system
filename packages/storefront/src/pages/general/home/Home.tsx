@@ -82,7 +82,7 @@ export const Home: React.FunctionComponent = () => {
             <Text type="3-regular">Join our mailing list and get informed about relevant updates and topics.</Text>
             <Spacing marginTop={8}>
               <Text>
-                <a href="http://eepurl.com/ghVSjH" target="_blank">
+                <a href="http://eepurl.com/ghVSjH" target="_blank" rel="noopener noreferrer">
                   Subscribe to mailing list
                 </a>
               </Text>

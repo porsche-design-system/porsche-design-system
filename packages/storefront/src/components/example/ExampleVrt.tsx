@@ -17,7 +17,7 @@ function renderNode(children: React.ReactNode, theme: string) {
 }
 
 export const ExampleVrt: React.FunctionComponent<ExampleVrtProps> = (props) => {
-  const { className, theme, ...rest } = props
+  const { className, theme } = props
 
   const renderClasses = cx(styles.vrt, { [styles.light]: theme === "default" }, { [styles.dark]: theme === "inverted" }, className)
 
