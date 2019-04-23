@@ -1,11 +1,11 @@
 {
   "spec_dir": ".",
   "spec_files": [
-    "packages/storefront/src/**/*.spec.vrt.ts",
-    "packages/workshop/src/**/*.spec.vrt.ts"
+    "packages/storefront/src/**/*.spec.e2e.ts",
+    "packages/workshop/src/**/*.spec.e2e.ts"
   ],
   "helpers": [
-    "vrt/helpers/**/*.ts"
+    "e2e/helpers/**/*.ts"
   ],
   "stopSpecOnExpectationFailure": false,
   "random": false
