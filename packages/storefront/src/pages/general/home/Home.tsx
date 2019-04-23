@@ -38,7 +38,7 @@ export const Home: React.FunctionComponent = () => {
             <Grid.Child size={{ base: 12, m: 8 }}>
               <Text type="3-regular">
                 The Porsche UI Kit provides the design fundamentals for easily creating aesthetic and qualitative
-                products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS elements.
+                digital products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS elements.
                 Everything built and tested following the Porsche quality standards and corporate design principles.
               </Text>
               <Spacing marginTop={8}>
