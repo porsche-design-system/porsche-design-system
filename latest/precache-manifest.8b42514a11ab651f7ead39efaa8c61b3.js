@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "./static/js/0.75c42966.chunk.js"
   },
   {
-    "revision": "12a2a90449829468572c",
+    "revision": "0cc89047864f964827c2",
     "url": "./static/css/main.7cd96244.chunk.css"
   },
   {
-    "revision": "12a2a90449829468572c",
-    "url": "./static/js/main.ccc96b36.chunk.js"
+    "revision": "0cc89047864f964827c2",
+    "url": "./static/js/main.7b71f536.chunk.js"
   },
   {
     "revision": "11aafa839544658c99a5",
@@ -136,8 +136,8 @@ self.__precacheManifest = [
     "url": "./static/media/start-designing.cae6c19b.md"
   },
   {
-    "revision": "92d99aa31392ddaa4d0d3ff7f45dd8bf",
-    "url": "./static/media/design-workflow.92d99aa3.md"
+    "revision": "196faa75c97f947e791b83c8aa862b06",
+    "url": "./static/media/design-workflow.196faa75.md"
   },
   {
     "revision": "deb05a5f887c6952f0b31e58b6abff23",
@@ -188,7 +188,7 @@ self.__precacheManifest = [
     "url": "./static/media/markdown.ed704bed.md"
   },
   {
-    "revision": "77a43d078f0424d310fb642a94223eaf",
+    "revision": "530d4b779dfe57a4cda0c6be9f8b714c",
     "url": "./index.html"
   }
 ];
