@@ -1,10 +1,8 @@
-/* tslint:disable */
-
 import "jasmine"
 import { VisualRegressionTester } from "@porscheui/visual-regression-tester"
 import { getVisualRegressionTester } from "../../../../../../vrt/helpers/setup"
 
-describe("Component Flex", () => {
+describe("Component Text", () => {
   let visualRegressionTester: VisualRegressionTester
 
   beforeAll(async () => {
@@ -13,8 +11,8 @@ describe("Component Flex", () => {
 
   it("should have no visual regression", async () => {
     expect(
-      await visualRegressionTester.test("component-flex", async () => {
-        await visualRegressionTester.goTo("/#/vrt/layout/flex")
+      await visualRegressionTester.test("component-spacing", async () => {
+        await visualRegressionTester.goTo("/#/vrt/layout/spacing")
       })
     ).toBeFalsy()
   })

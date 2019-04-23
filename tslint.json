@@ -10,7 +10,12 @@
     "max-line-length": false,
     "member-access": false,
     "no-default-export": false,
-    "no-duplicate-imports": true,
+    "no-duplicate-imports": [
+      true,
+      {
+        "allow-namespace-imports": true
+      }
+    ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "semicolon": [true, "never"],
