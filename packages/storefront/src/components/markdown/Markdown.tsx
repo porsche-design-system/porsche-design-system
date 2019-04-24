@@ -1,54 +1,54 @@
-import React, { useEffect, useState } from "react"
-import ReactMarkdown from "react-markdown"
-import style from "./markdown.module.scss"
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import style from "./markdown.module.scss";
 
 export interface MarkdownProps {
-  path: string
+  path: string;
 }
 
 export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
-  const [markdown, setMarkdown] = useState(null)
+  const [markdown, setMarkdown] = useState(null);
   useEffect(() => {
-    getMarkdownText(props.path, setMarkdown)
-  }, [])
+    getMarkdownText(props.path, setMarkdown);
+  }, [props.path]);
 
-  const protocols = ['http', 'https', 'mailto', 'tel', 'sketch']
+  const protocols = ['http', 'https', 'mailto', 'tel', 'sketch'];
   const uriTransformer = (uri: string) => {
-    const url = (uri || '').trim()
-    const first = url.charAt(0)
+    const url = (uri || '').trim();
+    const first = url.charAt(0);
 
     if (first === '#' || first === '/') {
-      return url
+      return url;
     }
 
-    const colon = url.indexOf(':')
+    const colon = url.indexOf(':');
     if (colon === -1) {
-      return url
+      return url;
     }
 
-    const length = protocols.length
-    let index = -1
+    const length = protocols.length;
+    let index = -1;
 
     while (++index < length) {
-      const protocol = protocols[index]
+      const protocol = protocols[index];
 
       if (colon === protocol.length && url.slice(0, protocol.length).toLowerCase() === protocol) {
-        return url
+        return url;
       }
     }
 
-    index = url.indexOf('?')
+    index = url.indexOf('?');
     if (index !== -1 && colon > index) {
-      return url
+      return url;
     }
 
-    index = url.indexOf('#')
+    index = url.indexOf('#');
     if (index !== -1 && colon > index) {
-      return url
+      return url;
     }
 
-    return '#'
-  }
+    return '#';
+  };
 
   return (
     markdown && (
@@ -58,12 +58,12 @@ export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
         </div>
       </div>
     )
-  )
-}
+  );
+};
 
 async function getMarkdownText(path: string, setter: any) {
-  const response = await fetch(path)
-  const result = await response.text()
+  const response = await fetch(path);
+  const result = await response.text();
 
-  setter(result)
+  setter(result);
 }

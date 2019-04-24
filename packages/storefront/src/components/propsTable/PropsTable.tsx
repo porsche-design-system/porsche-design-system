@@ -1,18 +1,18 @@
-import React from "react"
-import style from "./propsTable.module.scss"
-import styleMd from "../markdown/markdown.module.scss"
+import React from "react";
+import style from "./propsTable.module.scss";
+import styleMd from "../markdown/markdown.module.scss";
 
 export interface PropsTableProps {
-  jsdoc: any
-  title?: string
+  jsdoc: any;
+  title?: string;
 }
 
 export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
   if (!props || !props.jsdoc) {
-    return null
+    return null;
   }
 
-  const { jsdoc } = props
+  const { jsdoc } = props;
 
   return (
     <div className={style.props}>
@@ -32,7 +32,7 @@ export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
             <tbody>
               {jsdoc.props &&
                 Object.keys(jsdoc.props).map((key: any) => {
-                  const prop = jsdoc.props[key]
+                  const prop = jsdoc.props[key];
                   return (
                     <tr key={key}>
                       <td className={style.name}>
@@ -42,12 +42,12 @@ export const PropsTable: React.FunctionComponent<PropsTableProps> = (props) => {
                       <td className={style.type}>{prop.type && prop.type.name}</td>
                       <td className={style.desc}>{prop.description}</td>
                     </tr>
-                  )
+                  );
                 })}
             </tbody>
           </table>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

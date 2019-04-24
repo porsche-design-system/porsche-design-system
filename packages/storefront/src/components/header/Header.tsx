@@ -1,9 +1,9 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import style from "./header.module.scss"
-import { Logo } from "@porsche/ui-kit-react"
-import { Text, Spacing } from "@porscheui/porsche-ui-kit"
-import packageJson from "@porscheui/porsche-ui-kit/package.json"
+import React from "react";
+import { Link } from "react-router-dom";
+import style from "./header.module.scss";
+import { Logo } from "@porsche/ui-kit-react";
+import { Text, Spacing } from "@porscheui/porsche-ui-kit";
+import packageJson from "@porscheui/porsche-ui-kit/package.json";
 
 export const Header: React.FunctionComponent = () => {
   return (
@@ -20,5 +20,5 @@ export const Header: React.FunctionComponent = () => {
         </Text>
       </Spacing>
     </header>
-  )
-}
+  );
+};

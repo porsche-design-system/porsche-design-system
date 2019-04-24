@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import styles from "./home.module.scss"
-import { Button } from "@porsche/ui-kit-react"
-import { Flex, Spacing, Text, Grid } from "@porscheui/porsche-ui-kit"
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./home.module.scss";
+import { Button } from "@porsche/ui-kit-react";
+import { Flex, Spacing, Text, Grid } from "@porscheui/porsche-ui-kit";
 
 export const Home: React.FunctionComponent = () => {
   return (
@@ -91,5 +91,5 @@ export const Home: React.FunctionComponent = () => {
         </Grid>
       </article>
     </React.Fragment>
-  )
-}
+  );
+};
