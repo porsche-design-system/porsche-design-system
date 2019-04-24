@@ -1658,7 +1658,7 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.8.13", "@types/react@^16.8.14":
+"@types/react@*", "@types/react@^16.8.14":
   version "16.8.14"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.8.14.tgz#b561bfabeb8f60d12e6d4766367e7a9ae927aa18"
   integrity sha1-tWG/q+uPYNEubUdmNn56muknqhg=
