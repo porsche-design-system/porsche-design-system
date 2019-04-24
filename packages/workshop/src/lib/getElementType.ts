@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 /**
  * Returns a createElement() type based on the props of the Component.
@@ -16,18 +16,18 @@ export const getElementType = (
     // user defined "as" element type
 
     if (as) {
-        return as
+        return as;
     }
 
     // ----------------------------------------
     // computed default element type
 
     if (defaultValue) {
-        return defaultValue
+        return defaultValue;
     }
 
     // ----------------------------------------
     // If no props.as and no getDefault, use 'div'
 
-    return "div"
-}
+    return "div";
+};

@@ -1,7 +1,7 @@
-import * as React from "react"
-import cx from "classnames"
-import { getElementType, prefix } from "../../../lib"
-import { ClassNameProp, ComponentProp } from "../../../lib/props"
+import * as React from "react";
+import cx from "classnames";
+import { getElementType, prefix } from "../../../lib";
+import { ClassNameProp, ComponentProp } from "../../../lib/props";
 
 // prettier-ignore
 export interface SpacingProps extends ClassNameProp, ComponentProp {
@@ -9,25 +9,25 @@ export interface SpacingProps extends ClassNameProp, ComponentProp {
    * Set this to true if you always want to create a wrapper, even for single childs.
    * This is useful if the child element does not support className, or for dynamic children.
    */
-  wrap?: boolean
+  wrap?: boolean;
 
-  margin?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  marginBottom?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  marginLeft?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  marginRight?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  marginTop?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  margin?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  marginBottom?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  marginLeft?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  marginRight?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  marginTop?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
 
-  marginNegative?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  marginNegativeBottom?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  marginNegativeLeft?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  marginNegativeRight?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  marginNegativeTop?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  marginNegative?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  marginNegativeBottom?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  marginNegativeLeft?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  marginNegativeRight?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  marginNegativeTop?: "auto" | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
 
-  padding?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  paddingBottom?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  paddingLeft?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  paddingRight?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
-  paddingTop?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
+  padding?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  paddingBottom?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  paddingLeft?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  paddingRight?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  paddingTop?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
 }
 
 /**
@@ -58,9 +58,9 @@ export const Spacing: React.FunctionComponent<SpacingProps> = (props) => {
     paddingRight,
     paddingTop,
     ...rest
-  } = props
+  } = props;
 
-  const ElementType: any = getElementType(as, "div")
+  const ElementType: any = getElementType(as, "div");
 
   const classes = cx(
     { [prefix(`spacing-m--${margin}`)]: margin },
@@ -79,13 +79,13 @@ export const Spacing: React.FunctionComponent<SpacingProps> = (props) => {
     { [prefix(`spacing-pb--${paddingBottom}`)]: paddingBottom },
     { [prefix(`spacing-pl--${paddingLeft}`)]: paddingLeft },
     className
-  )
+  );
 
   if (React.Children.count(children) === 1 && !wrap) {
     // One child => append spacing classes and unhandled props to child
     return React.Children.map(children, (child: any) => {
       if (!child) {
-        return child
+        return child;
       }
 
       if (!child.type) {
@@ -93,22 +93,22 @@ export const Spacing: React.FunctionComponent<SpacingProps> = (props) => {
           <ElementType className={classes} {...rest}>
             {children}
           </ElementType>
-        )
+        );
       }
 
-      const { className: childrenClassName, ...childRest } = child.props
+      const { className: childrenClassName, ...childRest } = child.props;
 
       return React.cloneElement(child, {
         className: cx(childrenClassName, classes),
         ...childRest
-      })
-    })[0]
+      });
+    })[0];
   } else {
     // Multiple childs => render wrapper element with spacing classes and unhandled props
     return (
       <ElementType className={classes} {...rest}>
         {children}
       </ElementType>
-    )
+    );
   }
-}
+};

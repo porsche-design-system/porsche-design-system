@@ -1,6 +1,6 @@
-import React from "react"
-import {Markdown} from "../../../components/markdown/Markdown"
+import React from "react";
+import {Markdown} from "../../../components/markdown/Markdown";
 
 export const FAQ: React.FunctionComponent = () => {
-  return <Markdown path={require('./faq.md')}/>
-}
+  return <Markdown path={require('./faq.md')}/>;
+};

@@ -102,6 +102,12 @@ copy_latest_stable_sketch_library_and_create_rss_feed() {
 _EOF_
 }
 
+copy_latest_stable_sketch_library_template() {
+  echo "task: [$(date)] \"copy_latest_stable_sketch_library_template\""
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
+  cp "./sketch/${1}" "/opt/porsche-ui-kit-gh-pages/latest"
+}
+
 deploy_to_gh_pages() {
   echo "task: [$(date)] \"deploy_to_gh_pages\""
   pushd "/opt/porsche-ui-kit-gh-pages"
@@ -151,6 +157,7 @@ if [[ isWorkingBranchLatestStableBranch ]]; then
   prepare_latest_stable_deployment
   copy_latest_stable_porsche_ui_kit
   add_latest_stable_version_sha
+  copy_latest_stable_sketch_library_template "porsche-ui-kit-layout-template.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
