@@ -19,7 +19,7 @@ export async function getPage(url: string): Promise<Page> {
     })
   }
   const page = await browser.newPage()
-  await page.setDefaultNavigationTimeout(300000)
+  await page.setDefaultNavigationTimeout(90000)
   await page.goto(`http://localhost:3000${url}`, {waitUntil: 'networkidle0'})
 
   return page

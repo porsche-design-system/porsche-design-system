@@ -16,6 +16,8 @@ export interface StoryUrlParams {
 }
 
 export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> & StoryParams> = (props) => {
+  const [selectedTab, setSelectedTab] = useState("examples")
+
   const categoryName = props.match.params.category
   const storyName = props.match.params.story
 
@@ -38,8 +40,6 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
   const Code = lazy(() => story.examples)
   const Design = story.design && lazy(() => story.design)
   const Props = story.props
-
-  const [selectedTab, setSelectedTab] = useState("examples")
 
   const handleTabClick = (tab: string) => {
     setSelectedTab(tab)
