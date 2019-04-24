@@ -1367,10 +1367,10 @@
     react-transition-group "^2.5.1"
     tslib "^1.9.3"
 
-"@porscheui/visual-regression-tester@^1.1.0":
-  version "1.1.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porscheui/visual-regression-tester/-/@porscheui/visual-regression-tester-1.1.0.tgz#991148a42b2ab3c1401feb4cd150ac8c6277006e"
-  integrity sha1-mRFIpCsqs8FAH+tM0VCsjGJ3AG4=
+"@porscheui/visual-regression-tester@^1.1.1":
+  version "1.1.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porscheui/visual-regression-tester/-/@porscheui/visual-regression-tester-1.1.1.tgz#9f9dcfd7a7d01664ea872dbd8804fdfe2216a73f"
+  integrity sha1-n53P16fQFmTqhy29iAT9/iIWpz8=
   dependencies:
     del "^3.0.0"
     jimp "^0.6.0"

@@ -6,7 +6,7 @@ set -o errexit
 set -o pipefail
 
 if [[ -z "${ARTIFACTORY_TOKEN}" ]]; then
-  echo "Please provide the \$ARTIFACTORY_TOKEN environment variable."
+  echo "Please provide the \$ARTIFACTORY_TOKEN environment variable. Have a look at README for more information."
   exit 1
 fi
 
