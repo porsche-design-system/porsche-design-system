@@ -1,7 +1,7 @@
-import React from "react"
-import { HashRouter as Router, Route, Switch } from "react-router-dom"
-import { Storefront } from "./views/Storefront"
-import { Vrt } from "./views/Vrt"
+import React from "react";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { Storefront } from "./views/Storefront";
+import { Vrt } from "./views/Vrt";
 
 export const Application: React.FunctionComponent = () => {
   return (
@@ -11,5 +11,5 @@ export const Application: React.FunctionComponent = () => {
         <Route path="/" component={Storefront} />
       </Switch>
     </Router>
-  )
-}
+  );
+};

@@ -1,2 +1,2 @@
-export * from "./ClassNameProp"
-export * from "./ComponentProp"
+export * from "./ClassNameProp";
+export * from "./ComponentProp";

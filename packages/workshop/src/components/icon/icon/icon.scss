@@ -9,8 +9,8 @@
   transition: fill $p-animation-hover-duration $p-animation-hover-bezier;
 
   &--x-small {
-    width: rem(18px);
-    height: rem(18px);
+    width: rem(16px);
+    height: rem(16px);
   }
 
   &--small {
@@ -19,17 +19,17 @@
   }
 
   &--medium {
-    width: rem(30px);
-    height: rem(30px);
+    width: rem(32px);
+    height: rem(32px);
   }
 
   &--large {
-    width: rem(42px);
-    height: rem(42px);
+    width: rem(40px);
+    height: rem(40px);
   }
 
   &--x-large {
-    width: rem(60px);
-    height: rem(60px);
+    width: rem(80px);
+    height: rem(80px);
   }
 }
