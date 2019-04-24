@@ -6,12 +6,12 @@ import SVG from "react-inlinesvg"
 
 export interface IconProps extends ClassNameProp, ComponentProp {
   /**
-   * The icon reference name that should be used.
+   * The icon reference name. It is equal to the icon filename.
    */
   name: string
 
   /**
-   * The path to the folder where icon components are located
+   * The path to the folder where icon components are located. By default it set to Porsche UI CDN.
    */
   path?: string
 
@@ -20,6 +20,12 @@ export interface IconProps extends ClassNameProp, ComponentProp {
    * @default regular
    */
   size?: "x-small" | "small" | "medium" | "large" | "x-large"
+
+  /**
+   * The html tag of the icon wrapper.
+   * @default <i>
+   */
+  tag?: any
 
   /**
    * The style of the color.
@@ -44,15 +50,16 @@ export interface IconProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<IconProps> = {
-  color: "black",
-  path: "https://ui.porsche.com/cdn/0.0.1/icon/"
+  path: "https://ui.porsche.com/cdn/0.0.1/icon/",
+  tag: "i",
+  color: "red-1"
 }
 
 /**
  * Use this component any time you want to display svg icons.
  */
 export const Icon: React.FunctionComponent<IconProps> = (props) => {
-  const { className, path, name, size, color, ...rest } = props
+  const { className, path, name, size, tag, color, ...rest } = props
 
   if (!name) {
     return null
@@ -61,7 +68,7 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
   const classes = cx(prefix("icon"), prefix(`icon--${size}`), className)
 
   return (
-    <SVG cacheGetRequests className={classes} src={`${path}${name}`} wrapper={React.createFactory("i")} {...rest} />
+    <SVG cacheGetRequests className={classes} src={`${path}${name}`} wrapper={React.createFactory(tag)} {...rest} />
   )
 }
 
