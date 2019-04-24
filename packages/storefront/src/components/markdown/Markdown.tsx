@@ -10,7 +10,7 @@ export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
   const [markdown, setMarkdown] = useState(null)
   useEffect(() => {
     getMarkdownText(props.path, setMarkdown)
-  }, [])
+  }, [props.path])
 
   const protocols = ['http', 'https', 'mailto', 'tel', 'sketch']
   const uriTransformer = (uri: string) => {
