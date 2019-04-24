@@ -1,15 +1,15 @@
-import { importMDX } from "mdx.macro"
+import { importMDX } from "mdx.macro";
 
 export interface Story {
-  examples: any
-  design?: any
-  vrt?: any
-  props: string[]
+  examples: any;
+  design?: any;
+  vrt?: any;
+  props: string[];
 }
 export interface Stories {
   [category: string]: {
     [story: string]: Story
-  }
+  };
 }
 export const Stories: Stories = {
   Base: {
@@ -46,4 +46,4 @@ export const Stories: Stories = {
       props: ["Spacing"]
     }
   }
-}
+};
