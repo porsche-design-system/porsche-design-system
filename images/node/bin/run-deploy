@@ -41,6 +41,10 @@ setup() {
   P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
   P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
   P_LATEST_STABLE_SKETCH_VERSION="1.0.0"
+
+  echo "GITHUB_REF: ${GITHUB_REF}"
+  echo "P_WORKING_BRANCH: ${P_WORKING_BRANCH}"
+  echo "P_LATEST_STABLE_BRANCH: ${P_LATEST_STABLE_BRANCH}"
 }
 
 checkout_gh_pages() {
