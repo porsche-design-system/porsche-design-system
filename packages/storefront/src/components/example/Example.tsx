@@ -6,14 +6,11 @@ import { Light as Editor } from "react-syntax-highlighter"
 import languageXml from "react-syntax-highlighter/dist/languages/hljs/xml"
 import { Tab } from "@porsche/ui-kit-react"
 import { Spacing, Flex } from "@porscheui/porsche-ui-kit"
-
-// More themes at https://highlightjs.org/static/demo/
+import styles from "./example.module.scss"
+import "./example.global.scss"
 import editorTheme from "react-syntax-highlighter/dist/styles/hljs/solarized-dark"
 
 Editor.registerLanguage("xml", languageXml)
-
-import styles from "./example.module.scss"
-import "./example.global.scss"
 
 export interface ExampleProps extends ClassNameProp {
   noHTML?: boolean
@@ -131,7 +128,7 @@ function formatXml(xml: string): string {
       if (pad !== 0) {
         pad -= 1
       }
-    } else if (node.match(/^<\w[^>]*[^\/]>.*$/)) {
+    } else if (node.match(/^<\w[^>]*[^/]>.*$/)) {
       indent = 1
     } else {
       indent = 0

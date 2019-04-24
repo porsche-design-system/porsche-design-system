@@ -47,7 +47,7 @@ export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
       return url
     }
 
-    return 'javascript:void(0)'
+    return '#'
   }
 
   return (

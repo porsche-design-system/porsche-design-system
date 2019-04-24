@@ -1,19 +1,19 @@
 # Design Workflow with Abstract
 
 ## General information 
-We foster an open and clear design workflow over all digital Porsche products with shared tools and workflows. Using the tool Abstract enables an automated file management and version control - without the risk of losing data. The general accessibility of all files also brings the different roles and teams closer and enables a fast design collaboration.
+We foster an open and clear design workflow over all digital Porsche products with shared tools and workflows. The tool Abstract enables an automated file management and version control - without the risk of losing data. The general accessibility of all files also brings the different roles and teams closer and enables a fast design collaboration.
 
 [Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Videos from Abstract](https://vimeo.com/goabstract).
 
 ### Project and file structure
-The Porsche UI prganisation is structured by context within different sections. Product specific files are stored in different team projects. Team projects are visible for all organisation members by standard. Confidential work is stored in perivate projects, which are only accessible for members on invitation.
+The Porsche UI organisation is structured by context within different sections. Product specific files are stored in different projects. In general all projects are visible for all organisation members. Confidential work is stored in private projects, which are only accessible for members on invitation.
 
 For a better discoverability files and libraries within a project are recommended to be split and named by their features and named hyphenated and with lower cases. All libraries created within the Porsche UI organisation should be named in the format of `porsche-ui-kit-[projectname].sketch`.
 
 ![Abstract file structure](assets/storefront/design/abstract-filestructure.png)
 
 ### User roles and rights
-User roles define weather a user can just view or actually work with on the stored files. Contributor seats for designers have to be paid and therefore [requested here](http://eepurl.com/gnOIXD).
+User roles define weather a user can just view or actually work on the stored files. Contributor seats for designers have to be paid and therefore [requested here](http://eepurl.com/gnOIXD).
 - **Contributors usually designers** have access to all features including creating, editing and updating files.
 - **Viewers usually stakeholders and developers** are only able to view and comment on shared files.
 
