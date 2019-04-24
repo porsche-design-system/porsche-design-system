@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import style from "./footer.module.scss"
-import { Divider } from "@porsche/ui-kit-react"
-import { Text } from "@porscheui/porsche-ui-kit"
+import React from "react";
+import { Link } from "react-router-dom";
+import style from "./footer.module.scss";
+import { Divider } from "@porsche/ui-kit-react";
+import { Text } from "@porscheui/porsche-ui-kit";
 
 export const Footer: React.FunctionComponent = () => {
   return (
@@ -16,5 +16,5 @@ export const Footer: React.FunctionComponent = () => {
         <Link to="/general/license">License</Link>.
       </Text>
     </footer>
-  )
-}
+  );
+};
