@@ -1,54 +1,31 @@
-# Layout: Spacings
+# Spacing
 
-Spacing is the vertical and horizontal distance between components of a layout,
-defining the relationship of the UI elements to create both visual consistency and
-functionality.
+We use defined spacings to seperate components elements within a layout. Using the same defined spacing system provides a
+consistent and familiar user experience across all pages. For layouts the spacing should be used in combination with the [responsive grid](#/layout/grid).
 
-Using the same defined spacing system across all digital products provides a
-consistent user experience across all pages.
-
-For UI layouts, spacing should be used in combination with the [responsive grid](#/layout/grid).
-
-## 8 px spacing system 
-
-We use an 8 px square grid system across all viewports to define dimensions,
+## 8 px spacing system - the Porsche formula
+We use a 8 px square grid system across all viewports to define dimensions,
 padding and margin of block and inline elements. The grid unit of 8 px refers to
 the general base size of 16 px (= 1 em), that is also applied in typography and
 other component sizes.
-
-## The Porsche spacing formula
 
 ![The Porsche spacing formula](assets/workshop/layout/spacing/assets/spacings-formula.png)
 
 
 ## Applying the 8 px system
 
-### Margins and paddings
-
-Margins and padding are applied consistently based on multiples of 8 px. Boxed
+- **Margins and paddings** are applied based on multiples of 8 px. Boxed
 UI elements are sized either by adapting to the fixed value or to the [fluid
 column widths](Link).
+- **Typography as an exception** works with a baseline unit of 4 px for larger flexibility while ensuring the overall consistent rhythm.
 
-### Typography
+## Static and flexible spacings
 
-As an exception, typography works with a baseline unit of 4 px, half of the
-layout unit, for larger flexibility in obtaining the desired effect, while still
-ensuring a consistent overall rhythm.
-
-
-## Spacing methods 
-
-The Porsche UI Kit uses two spacing methods, one for static spacing between UI elements and
-another for flexible spacing.  The two systems are built on the same definitions
-to complement the overall consistency but serve different roles.
-
-Additional increments can be added if needed for a specific project as long as
-the 8 px spacing rule is followed.
+The Porsche UI Kit provides both static and flexible spacing. The two systems are built on the same definitions
+to complement the overall consistency but serve different roles. Additional increments can be added for specific needs as long as the 8 px spacing system is followed.
 
 ### Fixed spacing 
-
-Fixed spacing values are to be used for vertical or horizontal spacings that do
-not need to change across different screen sizes.
+Spacings that do not need to change across different screen sizes.
 
 | Token      	| px    	| rem  	| example 	|
 |------------	|-------	|------	|---------	|
@@ -65,10 +42,7 @@ not need to change across different screen sizes.
 | spacing-80 	| 80 px 	| 5    	|         	|
 
 ### Flexible spacing 
-
-Flexible spacing changes the distance in accordance with the screen size on
-which it is displayed, to fit special spacing needs. The value of flexible
-spacing changes at defined breakpoint widths.
+Spacings that changes in accordance with the screen size at defined breakpoint widths.
 
 | Token | 320 - 759 px | 760 - 999 px | 1000 - 1299 px | 1300 - 1759 px | 1760  px or larger  |
 | -------- | --- | --- | --- | --- | --- |
@@ -80,8 +54,7 @@ spacing changes at defined breakpoint widths.
 | spacing-f | 40 px | 48 px | 56 px | 64 px | 72 px |
 | spacing-g | 48 px | 56 px | 64 px | 72 px | 80 px |
 
-## Working with space 
-
+## Properly using spacing
 Spacing is a powerful design element, an integral part of every layout, which
 can create relationships, hierarchy, and rhythm between components.
 

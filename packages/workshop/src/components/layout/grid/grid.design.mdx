@@ -1,31 +1,15 @@
-# Responsive Grid
+# Grid
 
+The grid provides a visual system to create responsive layout with a homogeneous, balanced content placement across all Porsche web experiences and screen sizes.
+It consists of the following elements:
 
-The grid is a fixed component in the digital Porsche layout. It provides a visual system consisting of a defined number of columns. It allows a responsive layout and, therefore, a homogeneous, balanced content placement across all Porsche web experiences and screen sizes.
+- **The grid gutter** separates the columns horizontally by in-between-spacings. The gutter is defined with fixed pixel sizes and breakpoints to balance size ratios between elements on the respective screen size. 
+- **The grid margins** define the outer spacings between the content area and the left and right screen sides. Grid margins are defined using percentages, going from 7% to 10% for screen widths larger than 1760 px. 
+- **The grid colums** offers 12 columns for flexible adaption of the content to any screen size. It's width is based on percentages (resulting from total screen width minus gutter and margin width).
 
-
-Grid architecture
-The Porsche UI grid comprises 3 main components, that are responsible for scaling and resizing content: Grid columns, gutters and margins. 
-
-### Grid columns
-
-The Porsche UI grid uses 12 columns, offering a high layout flexibility by being dividable by 2, 3, 4 or 6.  
-To enable a flexible adaption of content to any screen size, its width is based on percentages (resulting from total screen width minus gutter and margin width).
-
-**Layouting on mobile**  
-Although technically a 12-column-grid is used for all viewports, we foster using a 6-column-grid for layouting on screen widths lower than 759 px, in order to use the grid efficiently and to avoid too much small-scaling or even „cluttering“ on small screens.
-
-**Content area**  
-When speaking of „content area“, we always refer to the width of columns - including gutter, excluding margins.
-
-### Grid gutter
-In order to separate content horizontally, the grid columns come with a defined in-between-spacing: the grid gutter. To balance size ratios between elements on the respective screen size in the best possible way, the grid gutter is defined with a fixed pixel size and changes at different breakpoints.
-
-### Grid margins
-The grid margins define the space between content and the left and right edges of the screen. Grid margins are defined using percentages, going from 7% to 10% for screen widths larger than 1760 px. 
+**For layouting on mobile** with screen widths lower than 759px, we foster using a 6-column-grid to avoid a too small-scaling or even „cluttering“.
 
 ### Overview
-
 |   | px range | Columns | Gutter | Margin |
 | -------- | -------- | -------- | -------- | -------- |
 | **Mobile** | 320-759 px | 12 columns (Design only: 6 columns) |  16 px | 7% |
@@ -34,10 +18,9 @@ The grid margins define the space between content and the left and right edges o
 | **Desktop** | 1300-1759 px  |  12 columns | 36 px | 7% | 
 |  | 1760 px or larger |  12 columns | 36 px | 10% | 
 
-
-## Breakpoints
-Breakpoints are defined points at which the content is being adapted in order to provide an optimised layout on all screen sizes.
-Within the layouts for Porsche web experiences we use the following main breakpoints, derived from statistical data on browser size usage: 
+## Grid Breakpoints
+Breakpoints are the defined steps at which the content is adapted to fit the different screen sizes.
+For Porsche we use the following main breakpoints representing the latest screen size analytics data: 
 
 - 760 px
 - 1000 px 
