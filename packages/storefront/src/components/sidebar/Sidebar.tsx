@@ -1,19 +1,19 @@
-import React from "react"
-import style from "./sidebar.module.scss"
-import { Stories } from "../../stories"
-import { Redirect, NavLink } from "react-router-dom"
-import { Divider } from "@porsche/ui-kit-react"
-import { Text, Icon } from "@porscheui/porsche-ui-kit"
-import { Header } from "../header/Header"
-import { Footer } from "../footer/Footer"
-import SidebarLinks from "./sidebar.json"
+import React from "react";
+import style from "./sidebar.module.scss";
+import { Stories } from "../../stories";
+import { Redirect, NavLink } from "react-router-dom";
+import { Divider } from "@porsche/ui-kit-react";
+import { Text, Icon } from "@porscheui/porsche-ui-kit";
+import { Header } from "../header/Header";
+import { Footer } from "../footer/Footer";
+import SidebarLinks from "./sidebar.json";
 
 export interface SidebarProps {
-  featureV1?: string
+  featureV1?: string;
 }
 export interface SidebarLinkProps {
-  to: string | object
-  title: string
+  to: string | object;
+  title: string;
 }
 
 export const SidebarLink: React.FunctionComponent<SidebarLinkProps> = (props) => {
@@ -22,11 +22,11 @@ export const SidebarLink: React.FunctionComponent<SidebarLinkProps> = (props) =>
       <Icon className={style["nav-icon"]} name="icon_arrow-right-hair.min.svg" />
       <Text as="span">{props.title}</Text>
     </NavLink>
-  )
-}
+  );
+};
 
 export interface SidebarCategory {
-  title: string
+  title: string;
 }
 
 export const SidebarCategory: React.FunctionComponent<SidebarCategory> = (props) => {
@@ -37,11 +37,11 @@ export const SidebarCategory: React.FunctionComponent<SidebarCategory> = (props)
       </Text>
       {props.children}
     </div>
-  )
-}
+  );
+};
 
 export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
-  const categories = Object.keys(Stories)
+  const categories = Object.keys(Stories);
 
   return (
     <div className={style.sidebar}>
@@ -80,19 +80,19 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
                                             </li>
                                           ) : null}
                                         </React.Fragment>
-                                      )
+                                      );
                                     })}
                                   </ul>
                                 )}
                               </li>
                             ) : null}
                           </React.Fragment>
-                        )
+                        );
                       })}
                   </ul>
                 </nav>
               </div>
-            )
+            );
           })}
 
         {props.featureV1 && (
@@ -102,9 +102,9 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
               Components
             </Text>
             {categories.map((category) => {
-              const stories = Object.keys((Stories as any)[category])
+              const stories = Object.keys((Stories as any)[category]);
               if (!stories) {
-                return <Redirect to="/general/home" />
+                return <Redirect to="/general/home" />;
               }
               return (
                 <SidebarCategory key={category} title={category}>
@@ -121,17 +121,17 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
                               title={story}
                             />
                           </li>
-                        )
+                        );
                       })}
                     </ul>
                   </nav>
                 </SidebarCategory>
-              )
+              );
             })}
           </React.Fragment>
         )}
         <Footer />
       </div>
     </div>
-  )
-}
+  );
+};

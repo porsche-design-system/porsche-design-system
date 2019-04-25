@@ -18,7 +18,7 @@
     ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "semicolon": [true, "never"],
+    "semicolon": [true, "always"],
     "indent": [true, "spaces", 2],
     "trailing-comma": [
       true,

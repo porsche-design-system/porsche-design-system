@@ -1,51 +1,51 @@
-import React, { Suspense, lazy, useState } from "react"
-import { RouteComponentProps, Redirect } from "react-router"
-import { Stories, Story as StoryType } from "../../stories"
-import { PropsTable } from "../propsTable/PropsTable"
-import jsdoc from "../../jsdoc.json"
-import { Tab } from "@porsche/ui-kit-react"
-import { Spacing } from "@porscheui/porsche-ui-kit"
-import style from "../markdown/markdown.module.scss"
+import React, { Suspense, lazy, useState } from "react";
+import { RouteComponentProps, Redirect } from "react-router";
+import { Stories, Story as StoryType } from "../../stories";
+import { PropsTable } from "../propsTable/PropsTable";
+import jsdoc from "../../jsdoc.json";
+import { Tab } from "@porsche/ui-kit-react";
+import { Spacing } from "@porscheui/porsche-ui-kit";
+import style from "../markdown/markdown.module.scss";
 
 export interface StoryParams {
-  featureV1?: string
+  featureV1?: string;
 }
 export interface StoryUrlParams {
-  category: string
-  story: string
+  category: string;
+  story: string;
 }
 
 export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> & StoryParams> = (props) => {
-  const categoryName = props.match.params.category
-  const storyName = props.match.params.story
+  const [selectedTab, setSelectedTab] = useState("examples");
+
+  const categoryName = props.match.params.category;
+  const storyName = props.match.params.story;
 
   // if (!props.featureV1) {
   //   return <Redirect to="/general/home" />
   // }
 
-  const category = (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))]
+  const category = (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))];
 
   if (!category) {
-    return <Redirect to="/general/home" />
+    return <Redirect to="/general/home" />;
   }
 
-  const story: StoryType = category[decodeParam(storyName)] || category[toTitleCase(decodeParam(storyName))]
+  const story: StoryType = category[decodeParam(storyName)] || category[toTitleCase(decodeParam(storyName))];
 
   if (!story) {
-    return <Redirect to="/general/home" />
+    return <Redirect to="/general/home" />;
   }
 
-  const Code = lazy(() => story.examples)
-  const Design = story.design && lazy(() => story.design)
-  const Props = story.props
-
-  const [selectedTab, setSelectedTab] = useState("examples")
+  const Code = lazy(() => story.examples);
+  const Design = story.design && lazy(() => story.design);
+  const Props = story.props;
 
   const handleTabClick = (tab: string) => {
-    setSelectedTab(tab)
-  }
+    setSelectedTab(tab);
+  };
 
-  const panes = []
+  const panes = [];
 
   if (Code) {
     panes.push({
@@ -53,7 +53,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
       key: "examples",
       active: selectedTab === "examples",
       onClick: () => handleTabClick("examples")
-    })
+    });
   }
 
   if (Design) {
@@ -62,7 +62,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
       key: "design",
       active: selectedTab === "design",
       onClick: () => handleTabClick("design")
-    })
+    });
   }
 
   if (Props) {
@@ -71,7 +71,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
       key: "props",
       active: selectedTab === "props",
       onClick: () => handleTabClick("props")
-    })
+    });
   }
 
   return (
@@ -87,7 +87,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
                 <Code />
               </div>
             </Suspense>
-          )
+          );
         } else if (item.key === "design" && item.active) {
           return (
             <Suspense key={item.key} fallback={null}>
@@ -95,21 +95,21 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
                 <Design />
               </div>
             </Suspense>
-          )
+          );
         } else if (item.key === "props" && item.active) {
           return story.props.map((component, index) => {
-            return <PropsTable key={component} jsdoc={(jsdoc as any)[component]} title={(jsdoc as any)[component].displayName} />
-          })
+            return <PropsTable key={component} jsdoc={(jsdoc as any)[component]} title={(jsdoc as any)[component].displayName} />;
+          });
         } else {
-          return null
+          return null;
         }
       })}
     </React.Fragment>
-  )
-}
+  );
+};
 
 function decodeParam(param: string) {
-  return param.replace("-", " ")
+  return param.replace("-", " ");
 }
 
 function toTitleCase(text: string) {
@@ -117,5 +117,5 @@ function toTitleCase(text: string) {
     .toLowerCase()
     .split(" ")
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-    .join(" ")
+    .join(" ");
 }
