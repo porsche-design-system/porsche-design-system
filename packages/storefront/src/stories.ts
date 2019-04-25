@@ -20,6 +20,13 @@ export const Stories: Stories = {
       props: ["Text"]
     }
   },
+  Feedback: {
+    Loader: {
+      examples: importMDX("../../workshop/src/components/feedback/loader/loader.code.mdx"),
+      design: importMDX("../../workshop/src/components/feedback/loader/loader.design.mdx"),
+      props: ["Loader"]
+    }
+  },
   Icon: {
     Icon: {
       examples: importMDX("../../workshop/src/components/icon/icon/icon.code.mdx"),
