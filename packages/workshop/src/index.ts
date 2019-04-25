@@ -1,8 +1,11 @@
 // icon components
-export { Icon } from "./components/icon/icon/Icon";
+export { Icon, IconProps } from "./components/icon/icon/Icon";
 
 // basic components
 export { Text } from "./components/basic/text/Text";
+
+// feedback components
+export { Loader } from "./components/feedback/loader/Loader";
 
 // layout components
 export { Spacing } from "./components/layout/spacing/Spacing";
