@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import styles from "./home.module.scss"
-import { Button } from "@porsche/ui-kit-react"
-import { Flex, Spacing, Text, Grid } from "@porscheui/porsche-ui-kit"
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./home.module.scss";
+import { Button } from "@porsche/ui-kit-react";
+import { Flex, Spacing, Text, Grid } from "@porscheui/porsche-ui-kit";
 
 export const Home: React.FunctionComponent = () => {
   return (
@@ -82,7 +82,7 @@ export const Home: React.FunctionComponent = () => {
             <Text type="3-regular">Join our mailing list and get informed about relevant updates and topics.</Text>
             <Spacing marginTop={8}>
               <Text>
-                <a href="http://eepurl.com/ghVSjH" target="_blank">
+                <a href="http://eepurl.com/ghVSjH" target="_blank" rel="noopener noreferrer">
                   Subscribe to mailing list
                 </a>
               </Text>
@@ -91,5 +91,5 @@ export const Home: React.FunctionComponent = () => {
         </Grid>
       </article>
     </React.Fragment>
-  )
-}
+  );
+};
