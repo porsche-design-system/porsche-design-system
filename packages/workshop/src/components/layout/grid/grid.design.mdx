@@ -23,7 +23,7 @@ screen widths larger than 1760 px.
 
 ### Overview 
 
-|   | px range | Columns | Gutter | Margin |
+|   | Viewport range | Columns | Gutter | Margin |
 | -------- | -------- | -------- | -------- | -------- |
 | **Mobile** | 320-759 px | 12 columns (Design only: 6 columns) |  16 px | 7% |
 | **Tablet** | 760-1023 px | 12 columns |  24 px | 7% |
@@ -54,7 +54,7 @@ specific component, you are free to add more. If you do so, please make sure
 that all additional breakpoints must have a minimum difference of 100 px to the
 existing main breakpoints (in order to avoid „breakpoint overload“).
 
-Optimizing for defined viewport sizes Due to statistical usage of specific
+Optimizing for defined viewport sizes due to statistical usage of specific
 devices, all Porsche web layouts should be optimized for the following viewport
 sizes: 
 
@@ -69,44 +69,49 @@ the optimized device sizes due to a higher fault tolerance.
 
 ### Layout template 
 To make layouting from scratch as easy as possible, the
-optimized viewport sizes are provided as artboard templates for Sketch. They
-come with final layout settings that can be turned visible via: View → Canvas →
+optimized viewport sizes are provided as [Sketch artboard templates](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch). They
+come with final layout settings (including the responsive grid) that can be turned visible via: View → Canvas →
 Show Layout.
 
-[Download Sketch template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch)
-
-### Viewport range In order to provide consistency throughout all Porsche web
-experiences, all layouts should be optimized for a viewport range from **320
-px** to a maximum of **1920 px**. For viewport sizes from 1920 px onwards, a
+### Viewport range 
+In order to provide consistency throughout all Porsche web
+experiences, all layouts should be optimized for a viewport range from **320 px** to a maximum of **1920 px**. For viewport sizes from 1920 px onwards, a
 growing white space outside the left and right edge should be used.
 
 ![Porsche UI grid architecture](assets/workshop/layout/grid/assets/grid-maxwidth.png)
 
 ## Tips for responsive layouting
 
-### Use the grid purposefully. All content elements that should behave
+### Use the grid purposefully.
+All content elements that should behave
 responsively should be placed horizontally within the grid, always starting in a
 column. The spacing between content elements is therefore defined by the grid
 gutter. In most cases, this should refer to modules or content boxes, whereas
 smaller spaces on a more or less „micro-level“ (both vertical and horizontal)
-should be defined by using the [Spacing]() component.
+should be defined by using the [Spacing](#/layout/spacing) component.
 
-### Know the possibilities. But use them wisely. When it comes to designing a
+![Porsche UI grid alignment](assets/workshop/layout/grid/assets/grid-alignment.png)
+
+### Know the possibilities. But use them wisely.
+When it comes to designing a
 component or module responsively, there are several screws that can be turned to
 adapt to different screen sizes, such as changing…
 
 - … the component’s grid column width and, therefore, it’s wrapping behaviour.
 Example: A 3-column-text on desktop, each column using 4 grid columns, can be
-stacked on mobile, using 12 grid columns. - … text sizes – commonly using
-smaller text on mobile, larger text on bigger screens. - … the general layout of
-the component by using different patterns on mobile and desktop. Example:
-Turning a multi-column teaser module on desktop into an accordion on mobile.
+stacked on mobile, using 12 grid columns. 
+- … text sizes – commonly using smaller text on mobile, larger text on bigger screens. 
+- … the general layout of the component by using different patterns on mobile and desktop. 
+Example: Turning a multi-column teaser module on desktop into an accordion on mobile.
 
 In designing for responsive layout, always aim to find the solution that works
 best for the specific case, keeping the user and the specific context of use in
 mind.
 
-### Don’t be afraid to think out of the box. It is possible to place elements
+![Porsche UI grid behaviour](assets/workshop/layout/grid/assets/grid-behaviour.png)
+
+### Don’t be afraid to think out of the box. 
+It is possible to place elements
 end-to-end, spanning from left to the right edge of the screen. For example a
 full-width-image that generates a more emotional and concise side entry. Though
 this should be a well-thought exception.
@@ -116,3 +121,4 @@ create a stronger visual coherence. The outer edges (left and right) of the
 images group should always be placed within the grid, whereas the edges
 inbetween the single images can be placed exactly in the middle of the gutter.
 
+![End-to-end placement](assets/workshop/layout/grid/assets/grid-endtoend.png)
