@@ -20,6 +20,12 @@ export const Stories: Stories = {
       props: ["Text"]
     }
   },
+  Action: {
+    Button: {
+      examples: importMDX("../../workshop/src/components/action/button-regular/button-regular.code.mdx"),
+      props: ["ButtonRegular"]
+    }
+  },
   Feedback: {
     Loader: {
       examples: importMDX("../../workshop/src/components/feedback/loader/loader.code.mdx"),
