@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1835f4f9e6160d519e59f54facfd6829",
+    "revision": "be5361fccfc7ac59d17d49d791746b6a",
     "url": "./index.html"
   },
   {
@@ -40,7 +40,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/css/6.cec49bd1.chunk.css"
   },
   {
-    "revision": "86c959df7d67a5f0577b",
+    "revision": "0df85a936027f0f42d7a",
     "url": "./static/css/main.8b03be5a.chunk.css"
   },
   {
@@ -48,8 +48,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/0.32d0f4fd.chunk.js"
   },
   {
-    "revision": "0f1cbc1e138beac3f160",
-    "url": "./static/js/10.f8837fbe.chunk.js"
+    "revision": "34b219094b8c9a8c93eb",
+    "url": "./static/js/10.17412eb0.chunk.js"
   },
   {
     "revision": "d111dd97868387bd2ed6",
@@ -108,20 +108,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/7.6d332dc1.chunk.js"
   },
   {
-    "revision": "0b29b5fb1c91d18b1297",
-    "url": "./static/js/8.b39e7590.chunk.js"
+    "revision": "5fd7a856165e7dcc5ed6",
+    "url": "./static/js/8.ae34b2f1.chunk.js"
   },
   {
     "revision": "022b08be35b0c22dfa43",
     "url": "./static/js/9.4ab8b8f5.chunk.js"
   },
   {
-    "revision": "86c959df7d67a5f0577b",
-    "url": "./static/js/main.1c961715.chunk.js"
+    "revision": "0df85a936027f0f42d7a",
+    "url": "./static/js/main.353b5d77.chunk.js"
   },
   {
-    "revision": "edd28c0d56a298ca209b",
-    "url": "./static/js/runtime~main.4e573ee7.js"
+    "revision": "add503ff9b84b236a9c9",
+    "url": "./static/js/runtime~main.80d741b1.js"
   },
   {
     "revision": "2aa4e4ed6f103f099b43e693c8e7fd5a",
@@ -176,8 +176,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/media/start-coding.deb05a5f.md"
   },
   {
-    "revision": "dad529c8b1c205c06489cbf1e9a9b544",
-    "url": "./static/media/start-designing.dad529c8.md"
+    "revision": "cae6c19bdb1eefd47bf3cfd559a148da",
+    "url": "./static/media/start-designing.cae6c19b.md"
   },
   {
     "revision": "5f755ba041a97bee606c2b4d2c84c184",
