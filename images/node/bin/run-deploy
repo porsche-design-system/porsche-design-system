@@ -128,7 +128,7 @@ verify_deployment() {
     local http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${1}/version/${GITHUB_SHA}")"
     echo "https://ui.porsche.com/${1}/version/${GITHUB_SHA}"
     echo "http code: ${http_code}"
-    if [[ "${http_code}" -eq "200" ]]; then
+    if [[ "${http_code}" == "200" ]]; then
       echo "All right, deployment was verified."
       break
     elif [[ ${n} -lt ${max} ]]; then
@@ -142,10 +142,10 @@ verify_deployment() {
 }
 
 isWorkingBranchLatestStableBranch() {
-  if [[ "${P_WORKING_BRANCH}" -eq "${P_LATEST_STABLE_BRANCH}" ]]; then
-    return 1
+  if [[ "${P_WORKING_BRANCH}" == "${P_LATEST_STABLE_BRANCH}" ]]; then
+    return 0
   fi
-  return 0
+  return 1
 }
 
 setup
@@ -153,7 +153,7 @@ checkout_gh_pages
 prepare_deployment
 copy_porsche_ui_kit
 add_version_sha
-if [[ isWorkingBranchLatestStableBranch ]]; then
+if isWorkingBranchLatestStableBranch; then
   prepare_latest_stable_deployment
   copy_latest_stable_porsche_ui_kit
   add_latest_stable_version_sha
@@ -165,6 +165,6 @@ if [[ isWorkingBranchLatestStableBranch ]]; then
 fi
 deploy_to_gh_pages
 #verify_deployment "${P_WORKING_BRANCH}"
-#if [[ isWorkingBranchLatestStableBranch ]]; then
+#if isWorkingBranchLatestStableBranch; then
 #  verify_deployment "latest"
 #fi
