@@ -1,11 +1,18 @@
 // icon components
-export { Icon } from "./components/icon/icon/Icon";
+export { Icon, IconProps } from "./components/icon/icon/Icon";
 
 // basic components
-export { Text } from "./components/basic/text/Text";
+export { Text, TextProps } from "./components/basic/text/Text";
+
+// action components
+export { ButtonRegular, ButtonRegularProps } from "./components/action/button-regular/ButtonRegular";
+export { ButtonGroup, ButtonGroupProps } from "./components/action/button-group/ButtonGroup";
+
+// feedback components
+export { Loader, LoaderProps } from "./components/feedback/loader/Loader";
 
 // layout components
-export { Spacing } from "./components/layout/spacing/Spacing";
+export { Spacing, SpacingProps } from "./components/layout/spacing/Spacing";
 export { Flex, FlexProps } from "./components/layout/flex/Flex";
 export { FlexItem, FlexItemProps } from "./components/layout/flex/FlexItem";
 export { Grid, GridProps } from "./components/layout/grid/Grid";

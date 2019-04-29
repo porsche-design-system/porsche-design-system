@@ -10,6 +10,13 @@
 // basic component styles
 @import "components/basic/text/text";
 
+// action component styles
+@import "components/action/button-regular/button-regular";
+@import "components/action/button-group/button-group";
+
+// feedback component styles
+@import "components/feedback/loader/loader";
+
 // layout component styles
 @import "components/layout/spacing/spacing";
 @import "components/layout/flex/flex";

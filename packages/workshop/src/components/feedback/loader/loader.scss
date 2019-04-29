@@ -1,0 +1,114 @@
+@import "../../../styles/utility/index";
+
+.#{$p-global-class-prefix}loader {
+  $bem-block: &;
+  display: block;
+  width: 50px;
+  height: 50px;
+  stroke-width: 2px;
+  animation: rotate 2s linear infinite; // basic IE11 fallback
+
+  &__image {
+    display: block;
+    position: relative;
+    fill: none;
+    stroke-width: inherit;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &__fg {
+    transform-origin: center center;
+    animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
+    stroke: $p-color-grey-9;
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+  }
+
+  &__bg {
+    stroke: $p-color-grey-9;
+    opacity: 0.4;
+  }
+
+  &--theme-inverted {
+    #{$bem-block}__fg {
+      stroke: $p-color-white;
+    }
+
+    #{$bem-block}__bg {
+      stroke: $p-color-white;
+    }
+  }
+
+  // the exact sizes must be refactored when final SVG icons are in place!
+  &--x-small {
+    width: rem(16px);
+    height: rem(16px);
+    stroke-width: 5px;
+  }
+
+  &--small {
+    width: rem(24px);
+    height: rem(24px);
+    stroke-width: 4px;
+  }
+
+  &--medium {
+    width: rem(40px);
+    height: rem(40px);
+    stroke-width: 3px;
+  }
+
+  &--large {
+    width: rem(56px);
+    height: rem(56px);
+
+    @include breakpoint("l") {
+      width: rem(64px);
+      height: rem(64px);
+    }
+  }
+
+  &--x-large {
+    width: rem(40px);
+    height: rem(40px);
+
+    @include breakpoint("m") {
+      width: rem(56px);
+      height: rem(56px);
+    }
+
+    @include breakpoint("l") {
+      width: rem(64px);
+      height: rem(64px);
+    }
+
+    @include breakpoint("xl") {
+      width: rem(80px);
+      height: rem(80px);
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 1000;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 160, 1000;
+    stroke-dashoffset: -40;
+  }
+
+  100% {
+    stroke-dasharray: 0, 1000;
+    stroke-dashoffset: -124.33;
+  }
+}
