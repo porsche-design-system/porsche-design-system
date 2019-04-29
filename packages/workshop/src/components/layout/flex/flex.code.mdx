@@ -329,7 +329,7 @@ If using default property, no extra class/prop declaration is needed due to stan
   }}
 </Example>
 
-#### Reverse
+#### Wrap reverse
 
 <Example className="sg-example-flex">
   {() => {
@@ -384,7 +384,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex justify content
 
-This property defines the horizontal alignment of the flex items on the main axis in conjunction to their siblings.
+This property defines the alignment of flex items on the main axis in conjunction to their siblings.
 
 #### Start (default)
 
@@ -598,7 +598,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex align items
 
-This property defines the vertical alignment of the flex items on the cross axis in conjunction to their siblings.
+This property defines the alignment of flex items on the cross axis in conjunction to their siblings.
 
 #### Stretch (default)
 
@@ -783,7 +783,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex align content
 
-This aligns flex items vertical on the cross axis of the flex container.
+This aligns flex items on the cross axis of the flex container when there is extra space available. 
+This property has only effect when there is more than one line of flex items.
 
 #### Stretch (default)
 
@@ -985,7 +986,7 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
   }}
 </Example>
 
-**Possible spacing values are:**
+**Possible spacing values are:**  
 `4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
 #### Responsive
@@ -1032,73 +1033,8 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
 
 ### Flex item width
 
-The widths of flex items is normally defined through its contents by default. But it is also possible to define equal widths or even specific predefined widths.
-
-#### Auto (default)
-
-<Example className="sg-example-flex">
-  {() => {
-    return (
-      <React.Fragment>
-        <Flex>
-          <Flex.Item>
-            <Text className="sg-example-item">
-              1
-            </Text>
-          </Flex.Item>
-          <Flex.Item>
-            <Text className="sg-example-item">
-              2
-            </Text>
-          </Flex.Item>
-          <Flex.Item>
-            <Text className="sg-example-item">
-              3
-            </Text>
-          </Flex.Item>
-          <Flex.Item>
-            <Text className="sg-example-item">
-              4
-            </Text>
-          </Flex.Item>
-        </Flex>
-      </React.Fragment>
-    )
-  }}
-</Example>
-
-#### Equal
-
-<Example className="sg-example-flex">
-  {() => {
-    return (
-      <React.Fragment>
-        <Flex>
-          <Flex.Item flex="equal">
-            <Text className="sg-example-item">
-              1
-            </Text>
-          </Flex.Item>
-          <Flex.Item flex="equal">
-            <Text className="sg-example-item">
-              2
-            </Text>
-          </Flex.Item>
-          <Flex.Item flex="equal">
-            <Text className="sg-example-item">
-              3
-            </Text>
-          </Flex.Item>
-          <Flex.Item flex="equal">
-            <Text className="sg-example-item">
-              4
-            </Text>
-          </Flex.Item>
-        </Flex>
-      </React.Fragment>
-    )
-  }}
-</Example>
+The widths of flex items is normally defined through its contents by default. 
+But it is also possible to define specific predefined widths.
 
 #### Specific
 
@@ -1227,9 +1163,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   }}
 </Example>
 
-**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--auto` #(default) => the width is given by the item content
-* `{p}-flex__child--equal` => items are stretched equally divided by their number
+**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**  
+* `{p}-flex__child--width-auto` => items stretches regarding to its content
 * `{p}-flex__child--width-one-quarter` => items are stretched to one quarter of the remaining space
 * `{p}-flex__child--width-one-third` => items are stretched to one third of the remaining space
 * `{p}-flex__child--width-half` => items are stretched to half of the remaining space
@@ -1310,6 +1245,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 </Example>
 
 **Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex__child--offset-none` => offset left of zero
 * `{p}-flex__child--offset-one-quarter` => offset left of one quarter of the remaining space
 * `{p}-flex__child--offset-one-third` => offset left of one third of the remaining space
 * `{p}-flex__child--offset-half` => offset left of half of the remaining space

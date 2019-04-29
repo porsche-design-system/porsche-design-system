@@ -14,9 +14,7 @@ export { Loader, LoaderProps } from "./components/feedback/loader/Loader";
 // layout components
 export { Spacing, SpacingProps } from "./components/layout/spacing/Spacing";
 export { Flex, FlexProps } from "./components/layout/flex/Flex";
-export { FlexItem, FlexItemProps } from "./components/layout/flex/FlexItem";
 export { Grid, GridProps } from "./components/layout/grid/Grid";
-export { GridChild, GridChildProps } from "./components/layout/grid/GridChild";
 
 // Utilities
 export { prefix } from "./lib/prefix";
