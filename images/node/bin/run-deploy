@@ -120,11 +120,11 @@ deploy_to_gh_pages() {
 verify_deployment() {
   echo "task: [$(date)] \"verify_deployment\""
   local n=1
-  local max=15
+  local max=20
   local delay=60
   while true
   do
-    echo "Check deployment status. Attempt ${n}/${max}."
+    echo "Check deployment status. Attempt ${n}/${max}. [$(date)]"
     local http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${1}/version/${GITHUB_SHA}")"
     echo "https://ui.porsche.com/${1}/version/${GITHUB_SHA}"
     echo "http code: ${http_code}"
@@ -164,7 +164,7 @@ if isWorkingBranchLatestStableBranch; then
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
 fi
 deploy_to_gh_pages
-#verify_deployment "${P_WORKING_BRANCH}"
+verify_deployment "${P_WORKING_BRANCH}"
 #if isWorkingBranchLatestStableBranch; then
 #  verify_deployment "latest"
 #fi
