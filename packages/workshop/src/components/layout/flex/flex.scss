@@ -29,8 +29,8 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   align-items: #{$align};
 }
 
-@mixin p-flex-align-content($align-content) {
-  align-content: #{$align-content};
+@mixin p-flex-align-content($align) {
+  align-content: #{$align};
 }
 
 /**
@@ -68,10 +68,6 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   flex: none;
 }
 
-@mixin p-flex-child-order($order) {
-  order: #{$order};
-}
-
 @mixin p-flex-child-width($i) {
   width: #{nth($p-flex-child-width, $i + 1)};
 }
@@ -81,7 +77,6 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 }
 
 .#{$p-global-class-prefix}flex {
-  $bem-block: &;
   @include p-flex;
   &--inline {
     @include p-flex-inline;

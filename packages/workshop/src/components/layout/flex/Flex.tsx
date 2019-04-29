@@ -1,9 +1,7 @@
 import * as React from "react";
 import cx from "classnames";
-
-import { getElementType, prefix, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib";
-import { Spacing } from "../spacing/Spacing";
-import { FlexItem } from "./FlexItem";
+import { getElementType, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib";
+import { FlexItem, Spacing } from "../../../";
 import { ClassNameProp, ComponentProp } from "../../../lib/props";
 
 export interface Flex extends React.FunctionComponent<FlexProps> {
