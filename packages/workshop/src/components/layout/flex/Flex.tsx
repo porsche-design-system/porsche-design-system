@@ -1,8 +1,7 @@
 import * as React from "react";
 import cx from "classnames";
-
-import { getElementType, prefix, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib";
-import { Spacing } from "../spacing/Spacing";
+import { getElementType, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib";
+import { Spacing } from "../../../";
 import { FlexItem } from "./FlexItem";
 import { ClassNameProp, ComponentProp } from "../../../lib/props";
 

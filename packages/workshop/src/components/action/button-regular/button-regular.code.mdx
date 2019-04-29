@@ -1,0 +1,33 @@
+import { Example } from "../../../src/components/example/Example"
+import { ButtonRegular } from "@porscheui/porsche-ui-kit"
+
+# Button Regular
+
+## Introduction
+TBD
+
+### Button regular standard
+
+<Example noTheme={false}>
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <ButtonRegular inverted={setTheme}>Click Here!</ButtonRegular>
+      </React.Fragment>
+    )
+}}
+</Example>
+
+### Button regular loader
+
+<Example noTheme={false}>
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <ButtonRegular loading inverted={setTheme}>Click Here!</ButtonRegular>
+      </React.Fragment>
+    )
+}}
+</Example>
