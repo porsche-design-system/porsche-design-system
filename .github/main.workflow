@@ -25,7 +25,7 @@ action "Lint" {
 }
 
 action "E2E" {
-  needs = ["Install"]
+  needs = ["VRT", "Lint"]
   uses = "./images/node/"
   runs = ["run-e2e"]
   env = {
@@ -43,7 +43,7 @@ action "VRT" {
 }
 
 action "Build" {
-  needs = ["Lint", "E2E", "VRT"]
+  needs = ["E2E"]
   uses = "./images/node/"
   runs = ["run-build"]
   env = {

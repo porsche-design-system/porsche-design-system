@@ -1,0 +1,87 @@
+@import "../../../styles/utility/index";
+
+@mixin button-group($direction) {
+  @if $direction == vertical {
+    margin-left: 0;
+    margin-right: 0;
+  } @else {
+    margin-left: -$p-spacing-8;
+    margin-right: -$p-spacing-8;
+  }
+
+  // sass-lint:disable no-combinators
+  > .#{$p-global-class-prefix}button-regular,
+  > .#{$p-global-class-prefix}button-icon {
+    @if $direction == vertical {
+      margin: $p-spacing-16 0 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    } @else {
+      margin: 0 $p-spacing-8;
+    }
+  }
+}
+
+.#{$p-global-class-prefix}button-group {
+  @include button-group(horizontal);
+
+  &--horizontal {
+    @include button-group(horizontal);
+  }
+
+  &--vertical {
+    @include button-group(vertical);
+  }
+
+  @include breakpoint("xs") {
+    &--horizontal-xs {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-xs {
+      @include button-group(vertical);
+    }
+  }
+
+  @include breakpoint("s") {
+    &--horizontal-s {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-s {
+      @include button-group(vertical);
+    }
+  }
+
+  @include breakpoint("m") {
+    &--horizontal-m {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-m {
+      @include button-group(vertical);
+    }
+  }
+
+  @include breakpoint("l") {
+    &--horizontal-l {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-l {
+      @include button-group(vertical);
+    }
+  }
+
+  @include breakpoint("xl") {
+    &--horizontal-xl {
+      @include button-group(horizontal);
+    }
+
+    &--vertical-xl {
+      @include button-group(vertical);
+    }
+  }
+}

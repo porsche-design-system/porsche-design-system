@@ -1,6 +1,6 @@
 // UI Kit React v0
 /* TODO: Delete icon font implementation if CDN links are distributet and implemented in v0! */
-$icon-resource-base-path: "https://ui.porsche.com/cdn/0.0.1/icon/pag-iconfont-react";
+$icon-resource-base-path: "https://video.porsche.com/0.0.1/icon/pag-iconfont-react";
 @font-face {
   font-family: "pag-iconfont";
   src: url("#{$icon-resource-base-path}/pag-iconfont.eot?iaj4st");
@@ -13,9 +13,7 @@ $icon-resource-base-path: "https://ui.porsche.com/cdn/0.0.1/icon/pag-iconfont-re
 }
 @import "~@porsche/ui-kit-react/src/components/layout/Flex/flex";
 @import "~@porsche/ui-kit-react/src/components/atoms/Divider/divider";
-@import "~@porsche/ui-kit-react/src/components/atoms/Icon/icon";
 @import "~@porsche/ui-kit-react/src/components/atoms/Logo/logo";
-@import "~@porsche/ui-kit-react/src/components/molecules/Button/button";
 @import "~@porsche/ui-kit-react/src/components/molecules/Tab/tab";
 
 // UI Kit v1 complete
