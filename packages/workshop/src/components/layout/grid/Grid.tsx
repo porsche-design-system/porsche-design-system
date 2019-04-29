@@ -1,6 +1,5 @@
 import * as React from "react";
 import cx from "classnames";
-
 import { getElementType, prefix, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib";
 import { GridChild } from "./GridChild";
 import { ClassNameProp, ComponentProp } from "../../../lib/props";
