@@ -21,7 +21,7 @@ export const Stories: Stories = {
     }
   },
   Action: {
-    ButtonRegular: {
+    Buttonregular: {
       examples: importMDX("../../workshop/src/components/action/button-regular/button-regular.code.mdx"),
       props: ["ButtonRegular"]
     }
