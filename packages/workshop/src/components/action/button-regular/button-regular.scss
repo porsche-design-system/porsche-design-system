@@ -1,0 +1,364 @@
+@import "../../../styles/utility/index";
+
+.#{$p-global-class-prefix}button-regular {
+  $bem-block: &;
+  display: inline-flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: left;
+  @include -text-size-copy;
+  padding: 12px 17px; // 17px width because of 1 px border which leads to 18px
+  max-width: 100%; // fix for IE11, forces using multi line label
+  border-radius: 0; // fix for Chrome and Safari
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: $p-color-grey-9;
+  border: 1px solid $p-color-grey-9;
+  color: $p-color-white;
+  transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
+    border-color $p-animation-hover-duration $p-animation-hover-bezier,
+    color $p-animation-hover-duration $p-animation-hover-bezier; // must be globally defined
+
+  &::-moz-focus-inner {
+    // sass-lint:disable-line no-vendor-prefixes
+    border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  }
+
+  &--theme-inverted {
+    color: $p-color-black;
+    background-color: $p-color-white;
+    border-color: $p-color-white;
+  }
+
+  &:enabled,
+  &:not([disabled]) {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $p-color-grey-10;
+      border-color: $p-color-grey-10;
+      text-decoration: none;
+
+      &#{$bem-block}--theme-inverted {
+        background-color: $p-color-grey-2;
+        border-color: $p-color-grey-2;
+      }
+    }
+  }
+
+  &:disabled,
+  &[disabled],
+  &[aria-disabled="true"] {
+    cursor: default;
+    pointer-events: none;
+    background-color: mix($p-color-grey-9, $p-color-white, 50%);
+    border-color: mix($p-color-grey-9, $p-color-white, 50%);
+
+    #{$bem-block}__icon {
+      opacity: 0.55;
+    }
+
+    #{$bem-block}__label {
+      opacity: 0.55;
+    }
+
+    #{$bem-block}__icon-loader {
+      opacity: 1;
+    }
+
+    &#{$bem-block}--theme-inverted {
+      color: $p-color-black;
+      background-color: mix($p-color-white, $p-color-grey-10, 50%);
+      border-color: mix($p-color-white, $p-color-grey-10, 50%);
+
+      #{$bem-block}__icon {
+        opacity: 0.35;
+      }
+
+      #{$bem-block}__label {
+        opacity: 0.35;
+      }
+
+      #{$bem-block}__icon-loader {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--ghost {
+    color: $p-color-black;
+    background-color: transparent;
+    border-color: $p-color-grey-9;
+
+    &#{$bem-block}--theme-inverted {
+      color: $p-color-white;
+      border-color: $p-color-white;
+    }
+
+    &:enabled,
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        color: $p-color-white;
+        background-color: $p-color-grey-9;
+        border-color: $p-color-grey-9;
+
+        &#{$bem-block}--theme-inverted {
+          color: $p-color-black;
+          background-color: $p-color-white;
+          border-color: $p-color-white;
+        }
+      }
+    }
+
+    &:disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      color: mix($p-color-grey-9, $p-color-white, 40%);
+      background-color: transparent;
+      border-color: mix($p-color-grey-9, $p-color-white, 40%);
+
+      #{$bem-block}__icon {
+        opacity: 1;
+      }
+
+      #{$bem-block}__label {
+        opacity: 1;
+      }
+
+      &#{$bem-block}--theme-inverted {
+        color: mix($p-color-white, $p-color-grey-10, 30%);
+        background-color: transparent;
+        border-color: mix($p-color-white, $p-color-grey-10, 30%);
+
+        #{$bem-block}__icon {
+          opacity: 1;
+        }
+
+        #{$bem-block}__label {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &--highlight {
+    color: $p-color-white;
+    background-color: $p-color-red-1;
+    border-color: $p-color-red-1;
+
+    &:enabled,
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $p-color-red-2;
+        border-color: $p-color-red-2;
+        text-decoration: none;
+
+        &#{$bem-block}--theme-inverted {
+          // sass-lint:disable-line nesting-depth
+          background-color: $p-color-red-2;
+          border-color: $p-color-red-2;
+        }
+      }
+    }
+
+    &:disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      background-color: mix($p-color-red-1, $p-color-white, 50%);
+      border-color: mix($p-color-red-1, $p-color-white, 50%);
+
+      #{$bem-block}__icon {
+        opacity: 0.6;
+      }
+
+      #{$bem-block}__label {
+        opacity: 0.6;
+      }
+
+      #{$bem-block}__icon-loader {
+        opacity: 1;
+      }
+
+      &#{$bem-block}--theme-inverted {
+        color: $p-color-white;
+        background-color: mix($p-color-red-1, $p-color-grey-10, 35%);
+        border-color: mix($p-color-red-1, $p-color-grey-10, 35%);
+
+        #{$bem-block}__icon {
+          opacity: 0.35;
+        }
+
+        #{$bem-block}__label {
+          opacity: 0.35;
+        }
+
+        #{$bem-block}__icon-loader {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &--sales {
+    color: $p-color-white;
+    background-color: $p-color-blue-1;
+    border-color: $p-color-blue-1;
+
+    &:enabled,
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $p-color-blue-2;
+        border-color: $p-color-blue-2;
+        text-decoration: none;
+
+        &#{$bem-block}--theme-inverted {
+          // sass-lint:disable-line nesting-depth
+          background-color: $p-color-blue-2;
+          border-color: $p-color-blue-2;
+        }
+      }
+    }
+
+    &:disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      background-color: mix($p-color-blue-1, $p-color-white, 50%);
+      border-color: mix($p-color-blue-1, $p-color-white, 50%);
+
+      #{$bem-block}__icon {
+        opacity: 0.6;
+      }
+
+      #{$bem-block}__label {
+        opacity: 0.6;
+      }
+
+      #{$bem-block}__icon-loader {
+        opacity: 1;
+      }
+
+      &#{$bem-block}--theme-inverted {
+        color: $p-color-white;
+        background-color: mix($p-color-blue-1, $p-color-grey-10, 30%);
+        border-color: mix($p-color-blue-1, $p-color-grey-10, 30%);
+
+        #{$bem-block}__icon {
+          opacity: 0.35;
+        }
+
+        #{$bem-block}__label {
+          opacity: 0.35;
+        }
+
+        #{$bem-block}__icon-loader {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &--sales-ghost {
+    color: $p-color-blue-1;
+    background-color: transparent;
+    border-color: $p-color-blue-1;
+
+    &#{$bem-block}--theme-inverted {
+      color: $p-color-blue-3;
+      background-color: transparent;
+      border-color: $p-color-blue-3;
+    }
+
+    &:enabled,
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        color: $p-color-white;
+        background-color: $p-color-blue-1;
+        border-color: $p-color-blue-1;
+
+        &#{$bem-block}--theme-inverted {
+          color: $p-color-white;
+          background-color: lighten($p-color-blue-1, 10);
+          border-color: lighten($p-color-blue-1, 10);
+        }
+      }
+    }
+
+    &:disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      color: mix($p-color-blue-1, $p-color-white, 40%);
+      background-color: transparent;
+      border-color: mix($p-color-blue-1, $p-color-white, 40%);
+
+      #{$bem-block}__icon {
+        opacity: 1;
+      }
+
+      #{$bem-block}__label {
+        opacity: 1;
+      }
+
+      &#{$bem-block}--theme-inverted {
+        color: mix($p-color-blue-3, $p-color-grey-10, 40%);
+        background-color: transparent;
+        border-color: mix($p-color-blue-3, $p-color-grey-10, 40%);
+
+        #{$bem-block}__icon {
+          opacity: 1;
+        }
+
+        #{$bem-block}__label {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &--small {
+    padding: rem(2px) rem(11px);
+
+    #{$bem-block}__label {
+      padding-left: rem(24px);
+    }
+  }
+
+  &__icon,
+  &__icon-loader {
+    position: absolute;
+    margin-top: 0.1875em; // this must be adapted if final SVG icons are integrated!
+  }
+
+  &__label {
+    padding-left: rem(24px);
+    display: block;
+    width: 100%;
+  }
+
+  &--loading {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &--stretch {
+    width: 100%;
+  }
+
+  // fix for Firefox, so that top alignment of button content works when two button are next to each other
+  @-moz-document url-prefix() {
+    // sass-lint:disable-line no-vendor-prefixes
+    &__label {
+      height: 100%;
+    }
+  }
+}
