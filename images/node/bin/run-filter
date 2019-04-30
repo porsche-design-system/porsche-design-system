@@ -3,6 +3,34 @@
 set -o errexit
 set -o pipefail
 
+verify_deployment() {
+  echo "task: [$(date)] \"verify_deployment\""
+  local n=1
+  local max=3
+  local delay=60
+  while true
+  do
+    echo "Check deployment status. Attempt ${n}/${max}. [$(date)]"
+    local http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/test")"
+    echo "###### BEGIN ########"
+    echo "https://ui.porsche.com/test"
+    echo "http code: ${http_code}"
+    echo "###### END ########"
+    if [[ "${http_code}" == "200" ]]; then
+      echo "All right, deployment was verified."
+      break
+    elif [[ ${n} -lt ${max} ]]; then
+      ((n++))
+    else
+      echo "Deployment could not be verified after ${n} attempts."
+      exit 1
+    fi
+    sleep ${delay}
+  done
+}
+
+verify_deployment
+
 if [[ -z "${GITHUB_REF}" ]]; then
   echo "Please provide the \$GITHUB_REF environment variable."
   exit 1
