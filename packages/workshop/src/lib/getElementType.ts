@@ -9,25 +9,25 @@ import * as React from "react";
  * @returns {string} A ReactElement type
  */
 export const getElementType = (
-    as?: string | React.ComponentClass,
-    defaultValue?: string | React.ComponentClass
-): string | React.ComponentClass => {
-    // ----------------------------------------
-    // user defined "as" element type
+  as?: string | React.ComponentClass<any, any>,
+  defaultValue?: string | React.ComponentClass<any, any>
+) => {
+  // ----------------------------------------
+  // user defined "as" element type
 
-    if (as) {
-        return as;
-    }
+  if (as) {
+    return as;
+  }
 
-    // ----------------------------------------
-    // computed default element type
+  // ----------------------------------------
+  // computed default element type
 
-    if (defaultValue) {
-        return defaultValue;
-    }
+  if (defaultValue) {
+    return defaultValue;
+  }
 
-    // ----------------------------------------
-    // If no props.as and no getDefault, use 'div'
+  // ----------------------------------------
+  // If no props.as and no getDefault, use 'div'
 
-    return "div";
+  return "div";
 };
