@@ -124,6 +124,14 @@ $sg-color-highlight: deeppink;
 
 /* ----------  spacing component styles ---------- */
 .sg-example-spacing-visual {
+  .sg-example-row {
+    display: flex;
+    margin-left: -$p-spacing-8;
+    margin-right: -$p-spacing-8;
+  }
+  .sg-example-block {
+    padding: 0 $p-spacing-8;
+  }
   .sg-example-item {
     background-color: $sg-color-blue-1;
     width: fit-content;
