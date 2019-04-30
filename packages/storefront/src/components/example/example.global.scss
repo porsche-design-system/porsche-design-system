@@ -21,17 +21,20 @@ $sg-color-highlight: deeppink;
 
   .sg-example-item {
     padding: $p-spacing-4 $p-spacing-80;
-    text-align: center;
+
+    // font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+    @include -text-size-copy();
     color: $p-color-white;
+    text-align: center;
   }
 
-  .p-flex + .p-flex {
+  .p-flex:not(.p-flex--inline) + .p-flex:not(.p-flex--inline) {
     margin-top: $p-spacing-8;
   }
 
   // special styling to visualize align items behaviour
   [class*="p-flex--align-items-"] {
-    .p-flex__child:not(.p-flex__child--align-self-stretch) {
+    .p-flex__item:not(.p-flex__item--align-self-stretch) {
       &:nth-child(1n) {
         height: 40px;
       }
@@ -46,12 +49,12 @@ $sg-color-highlight: deeppink;
 
   // special styling to visualize baseline
   .p-flex--align-items-baseline {
-    .p-flex__child {
+    .p-flex__item {
       margin-top: $p-spacing-24;
     }
   }
 
-  .p-flex__child {
+  .p-flex__item {
     &:nth-child(1n) {
       background-color: $sg-color-blue-1;
     }
@@ -72,7 +75,7 @@ $sg-color-highlight: deeppink;
   }
 
   // reset padding to visualize width property
-  [class*="p-flex__child--width"] {
+  [class*="p-flex__item--width"] {
     .sg-example-item {
       padding-left: $p-spacing-8;
       padding-right: $p-spacing-8;
@@ -81,7 +84,7 @@ $sg-color-highlight: deeppink;
 
   //  special case for visualizing gap styling
   &--gap {
-    .p-flex__child {
+    .p-flex__item {
       background-color: transparent !important;
 
       &:nth-child(1n) p {

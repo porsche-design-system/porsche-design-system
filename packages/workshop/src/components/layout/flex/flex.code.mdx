@@ -1,5 +1,5 @@
 import { Example } from "../../../src/components/example/Example"
-import { Flex, Text } from "@porscheui/porsche-ui-kit"
+import { Flex } from "@porscheui/porsche-ui-kit"
 
 # Flex
 
@@ -7,7 +7,7 @@ import { Flex, Text } from "@porscheui/porsche-ui-kit"
 
 The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by changing class names/properties on the flex container and flex item. It can be used to quickly layout standard, css-prefixed content blocks or components. It does not replace [Grid](#/layout/grid) component which should be used to define basic page structures.
 
-### Standard (default)
+### Flex (default)
 Initialize standard flexbox container to define flex context.
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
@@ -17,26 +17,26 @@ If using default property, no extra class/prop declaration is needed due to stan
       <div className="sg-example-block">
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </div>
@@ -51,28 +51,28 @@ Flex inline displays flex containers in a row.
   {() => {
     return (
       <React.Fragment>
-        <Flex inline>
+        <Flex flow="inline">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
-        <Flex inline>
+        <Flex flow="inline">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -87,28 +87,28 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   {() => {
     return (
       <React.Fragment>
-        <Flex inline={{ base: false, l: true }}>
+        <Flex flow={{ base: "block", l: "inline" }}>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
-        <Flex inline={{ base: false, l: true }}>
+        <Flex flow={{ base: "block", l: "inline" }}>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -119,7 +119,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 **Possible class names on the flex parent container (where {p} is the prefix and {bp} the breakpoint value):**
 * `{p}-flex` #(default) => containers are underneath each other
 * `{p}-flex--inline` => containers are stuck side by side
+* `{p}-flex--block` => containers are underneath each other
 * `{p}-flex--inline-{bp}` => example of breakpoint specific behaviour
+* `{p}-flex--block-{bp}` => example of breakpoint specific behaviour
 
 ---
 
@@ -137,19 +139,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -165,19 +167,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex direction="row-reverse">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -193,19 +195,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex direction="column">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -221,19 +223,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex direction="column-reverse">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -250,19 +252,19 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       <React.Fragment>
         <Flex direction={{ base: "column", l: "row" }}>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -295,9 +297,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -317,9 +319,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -339,9 +341,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -362,9 +364,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -396,19 +398,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -424,19 +426,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex justifyContent="end">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -452,19 +454,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex justifyContent="center">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -480,19 +482,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex justifyContent="space-between">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -508,19 +510,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex justifyContent="space-around">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -536,19 +538,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex justifyContent="space-evenly">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -565,19 +567,19 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       <React.Fragment>
         <Flex justifyContent={{ base: "start", l: "end" }}>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -610,19 +612,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -638,19 +640,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex alignItems="start">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -666,19 +668,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex alignItems="end">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -694,19 +696,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex alignItems="center">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -722,19 +724,19 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex alignItems="baseline">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -751,19 +753,19 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       <React.Fragment>
         <Flex alignItems={{ base: "start", l: "end" }}>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -783,7 +785,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex align content
 
-This aligns flex items on the cross axis of the flex container when there is extra space available. 
+This aligns flex items on the cross axis of the flex container when there is extra space available.
 This property has only effect when there is more than one line of flex items.
 
 #### Stretch (default)
@@ -798,9 +800,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -820,9 +822,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -842,9 +844,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -864,9 +866,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -886,9 +888,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -908,9 +910,9 @@ If using default property, no extra class/prop declaration is needed due to stan
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -931,9 +933,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
           {Array.apply(0, Array(9)).map(function(x, i) {
             return (
               <Flex.Item key={i}>
-                <Text className="sg-example-item">
+                <p className="sg-example-item">
                   {i + 1}
-                </Text>
+                </p>
               </Flex.Item>
             )
           })}
@@ -954,9 +956,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex child spacing
+### Flex item spacing
 
-Use `gap` to apply equal horizontal spacing to all children of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component. All values of standard spacing component can be used.
+Use `gap` to apply equal horizontal spacing to all flex items of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component. All values of standard spacing component can be used.
 
 #### Static
 
@@ -966,19 +968,19 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
       <React.Fragment>
         <Flex gap={16}>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -986,7 +988,7 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
   }}
 </Example>
 
-**Possible spacing values are:**  
+**Possible spacing values are:**
 `4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
 #### Responsive
@@ -997,19 +999,19 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
       <React.Fragment>
         <Flex gap="c">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1024,8 +1026,8 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
 **Possible class names on the flex parent container (where {p} is the prefix):**
 * `{p}-spacing-m-nl--16` => negative margin left on the parent container to equalize chidren paddings
 * `{p}-spacing-m-nr--16` => negative margin left on the parent container to equalize chidren paddings
-* `{p}-spacing-pl--16` => padding left value of children
-* `{p}-spacing-pr--16` => padding right value of children
+* `{p}-spacing-pl--16` => padding left value of flex items
+* `{p}-spacing-pr--16` => padding right value of flex items
 
 ---
 
@@ -1033,7 +1035,7 @@ Use `gap` to apply equal horizontal spacing to all children of the container. Yo
 
 ### Flex item width
 
-The widths of flex items is normally defined through its contents by default. 
+The widths of flex items is normally defined through its contents by default.
 But it is also possible to define specific predefined widths.
 
 #### Specific
@@ -1044,84 +1046,84 @@ But it is also possible to define specific predefined widths.
       <React.Fragment>
         <Flex>
           <Flex.Item width="one-quarter">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-quarter
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width="one-quarter">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-quarter
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width="one-quarter">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-quarter
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width="one-quarter">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-quarter
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item width="one-third">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-third
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width="one-third">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-third
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width="one-third">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-third
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item width="half">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               half
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width="half">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               half
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item width="two-thirds">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               two-thirds
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width="one-third">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-third
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item width="three-quarters">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               three-quarters
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width="one-quarter">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               one-quarter
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item width="full">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               full
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1138,24 +1140,24 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       <React.Fragment>
         <Flex wrap>
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item width={{ base: "half", l: "one-quarter" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               4
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1163,15 +1165,15 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   }}
 </Example>
 
-**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**  
-* `{p}-flex__child--width-auto` => items stretches regarding to its content
-* `{p}-flex__child--width-one-quarter` => items are stretched to one quarter of the remaining space
-* `{p}-flex__child--width-one-third` => items are stretched to one third of the remaining space
-* `{p}-flex__child--width-half` => items are stretched to half of the remaining space
-* `{p}-flex__child--width-two-thirds` => items are stretched to two thirds of the remaining space
-* `{p}-flex__child--width-three-quarters` => items are stretched to three quarters of the remaining space
-* `{p}-flex__child--width-full` => items are stretched to full width of the remaining space
-* `{p}-flex__child--width-one-quarter-{bp}` => example of breakpoint specific behaviour
+**Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-flex__item--width-auto` => items stretches regarding to its content
+* `{p}-flex__item--width-one-quarter` => items are stretched to one quarter of the remaining space
+* `{p}-flex__item--width-one-third` => items are stretched to one third of the remaining space
+* `{p}-flex__item--width-half` => items are stretched to half of the remaining space
+* `{p}-flex__item--width-two-thirds` => items are stretched to two thirds of the remaining space
+* `{p}-flex__item--width-three-quarters` => items are stretched to three quarters of the remaining space
+* `{p}-flex__item--width-full` => items are stretched to full width of the remaining space
+* `{p}-flex__item--width-one-quarter-{bp}` => example of breakpoint specific behaviour
 
 ---
 
@@ -1187,37 +1189,37 @@ Items can have different offsets that work similar like column widths.
       <React.Fragment>
         <Flex>
           <Flex.Item offset={"one-quarter"} width={"three-quarters"}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               Offset: quarter
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item offset={"one-third"} width={"two-thirds"}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               Offset: third
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item offset={"half"} width={"half"}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               Offset: half
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item offset={"two-thirds"} width={"one-third"}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               Offset: 2 thirds
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
         <Flex>
           <Flex.Item offset={"three-quarters"} width={"one-quarter"}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               Offset: 3 quarters
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1234,9 +1236,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       <React.Fragment>
         <Flex>
           <Flex.Item offset={{ base: "none", l: "one-third" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               Responsive offset
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1245,13 +1247,13 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 </Example>
 
 **Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--offset-none` => offset left of zero
-* `{p}-flex__child--offset-one-quarter` => offset left of one quarter of the remaining space
-* `{p}-flex__child--offset-one-third` => offset left of one third of the remaining space
-* `{p}-flex__child--offset-half` => offset left of half of the remaining space
-* `{p}-flex__child--offset-two-thirds` => offset left of two thirds of the remaining space
-* `{p}-flex__child--offset-three-quarter` => offset left of three quarters of the remaining space
-* `{p}-flex__child--offset-one-third-{bp}` => example of breakpoint specific behaviour
+* `{p}-flex__item--offset-none` => offset left of zero
+* `{p}-flex__item--offset-one-quarter` => offset left of one quarter of the remaining space
+* `{p}-flex__item--offset-one-third` => offset left of one third of the remaining space
+* `{p}-flex__item--offset-half` => offset left of half of the remaining space
+* `{p}-flex__item--offset-two-thirds` => offset left of two thirds of the remaining space
+* `{p}-flex__item--offset-three-quarter` => offset left of three quarters of the remaining space
+* `{p}-flex__item--offset-one-third-{bp}` => example of breakpoint specific behaviour
 
 ---
 
@@ -1269,24 +1271,24 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               4
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1302,24 +1304,24 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex alignItems="start">
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item alignSelf="stretch">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               4
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1335,24 +1337,24 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item alignSelf="start">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               4
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1368,24 +1370,24 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item alignSelf="end">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               4
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1401,24 +1403,24 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item alignSelf="center">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               4
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1434,24 +1436,24 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item alignSelf="baseline">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item alignSelf="baseline">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               4
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1468,24 +1470,24 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item alignSelf={{ base: "start", l: "end" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               4
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1494,19 +1496,19 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 </Example>
 
 **Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--align-self-auto` #(default) => uses align-items value of flex container
-* `{p}-flex__child--align-self-stretch` => item is stretched on the cross axis
-* `{p}-flex__child--align-self-start` => item is at the start line of the cross axis
-* `{p}-flex__child--align-self-end` => item is at the end line of the cross axis
-* `{p}-flex__child--align-self-center` => item is centered on the cross axis
-* `{p}-flex__child--align-self-baseline` => item is centered on the (text-) baseline of cross axis
-* `{p}-flex__child--align-self-end-{bp}` => example of breakpoint specific behaviour
+* `{p}-flex__item--align-self-auto` #(default) => uses align-items value of flex container
+* `{p}-flex__item--align-self-stretch` => item is stretched on the cross axis
+* `{p}-flex__item--align-self-start` => item is at the start line of the cross axis
+* `{p}-flex__item--align-self-end` => item is at the end line of the cross axis
+* `{p}-flex__item--align-self-center` => item is centered on the cross axis
+* `{p}-flex__item--align-self-baseline` => item is centered on the (text-) baseline of cross axis
+* `{p}-flex__item--align-self-end-{bp}` => example of breakpoint specific behaviour
 
 ---
 
 ### Flex item grow
 
-Flexbox default behaviour on how the childrens widths are rendered (stretched) can be overwritten with the following class names.
+Flexbox default behaviour on how the item widths are rendered (stretched) can be overwritten with the following class names.
 
 It handles how to grow an item based on the space that is left to fulfill the parents width.
 
@@ -1520,14 +1522,14 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1543,14 +1545,14 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item grow={1}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1559,15 +1561,15 @@ If using default property, no extra class/prop declaration is needed due to stan
 </Example>
 
 **Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--grow-0` #(default) => items grows in conjunction of its contents
-* `{p}-flex__child--grow-1` => item takes remaining space
-* `{p}-flex__child--grow-1-{bp}` => example of breakpoint specific behaviour
+* `{p}-flex__item--grow-0` #(default) => items grows in conjunction of its contents
+* `{p}-flex__item--grow-1` => item takes remaining space
+* `{p}-flex__item--grow-1-{bp}` => example of breakpoint specific behaviour
 
 ---
 
 ### Flex item shrink
 
-Flexbox default behaviour on how the childrens widths are rendered (shrinked) can be overwritten with the following class names.
+Flexbox default behaviour on how the item widths are rendered (shrinked) can be overwritten with the following class names.
 
 It handles how to shrink an item based on the space that exceeds the parents width to fulfill it.
 
@@ -1581,14 +1583,14 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item style={{ width: "80%" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item style={{ width: "80%" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1604,14 +1606,14 @@ If using default property, no extra class/prop declaration is needed due to stan
       <React.Fragment>
         <Flex>
           <Flex.Item shrink={0} style={{ width: "80%" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item style={{ width: "80%" }}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1620,9 +1622,9 @@ If using default property, no extra class/prop declaration is needed due to stan
 </Example>
 
 **Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--shrink-1` #(default) => items shrinks in conjunction of its contents
-* `{p}-flex__child--shrink-0` => item does not shrink at all
-* `{p}-flex__child--shrink-1-{bp}` => example of breakpoint specific behaviour
+* `{p}-flex__item--shrink-1` #(default) => items shrinks in conjunction of its contents
+* `{p}-flex__item--shrink-0` => item does not shrink at all
+* `{p}-flex__item--shrink-1-{bp}` => example of breakpoint specific behaviour
 
 ---
 
@@ -1638,19 +1640,19 @@ Setting shorthand properties for flex grow, shrink and base:
       <React.Fragment>
         <Flex>
           <Flex.Item flex="initial">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1 - short content
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item flex="initial">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item flex="initial">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3 - short content
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1666,19 +1668,19 @@ Setting shorthand properties for flex grow, shrink and base:
       <React.Fragment>
         <Flex>
           <Flex.Item flex="auto">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1 - short content
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item flex="auto">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item flex="auto">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3 - short content
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1694,19 +1696,19 @@ Setting shorthand properties for flex grow, shrink and base:
       <React.Fragment>
         <Flex>
           <Flex.Item flex="equal">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1 - short content
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item flex="equal">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item flex="equal">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3 - short content
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1722,19 +1724,19 @@ Setting shorthand properties for flex grow, shrink and base:
       <React.Fragment>
         <Flex>
           <Flex.Item flex="none">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1 - short content
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item flex="none">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-            </Text>
+            </p>
           </Flex.Item>
           <Flex.Item flex="none">
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3 - short content
-            </Text>
+            </p>
           </Flex.Item>
         </Flex>
       </React.Fragment>
@@ -1743,8 +1745,8 @@ Setting shorthand properties for flex grow, shrink and base:
 </Example>
 
 **Possible class names on the flex items (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-flex__child--initial` => items shrinks to its minimum size to fit the container
-* `{p}-flex__child--auto` => item stretches/shrinks regarding to its content and its container
-* `{p}-flex__child--equal` => item stretches equally to fit the container container
-* `{p}-flex__child--none` => item doesn't shrink or grow regarding to its container
-* `{p}-flex__child--equal-{bp}` => example of breakpoint specific behaviour
+* `{p}-flex__item--initial` => items shrinks to its minimum size to fit the container
+* `{p}-flex__item--auto` => item stretches/shrinks regarding to its content and its container
+* `{p}-flex__item--equal` => item stretches equally to fit the container container
+* `{p}-flex__item--none` => item doesn't shrink or grow regarding to its container
+* `{p}-flex__item--equal-{bp}` => example of breakpoint specific behaviour
