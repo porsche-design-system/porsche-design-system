@@ -1,5 +1,5 @@
 import { Example } from "../../../src/components/example/Example"
-import { Grid, Text } from "@porscheui/porsche-ui-kit"
+import { Grid } from "@porscheui/porsche-ui-kit"
 
 # Grid
 
@@ -17,19 +17,19 @@ For standard grid implementation, it is recommended to use this pattern. The cla
       <React.Fragment>
         <Grid>
           <Grid.Child size={12}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
                 12
-              </Text>
+              </p>
           </Grid.Child>
         </Grid>
         {Array.apply(0, Array(11)).map(function(x, i) {
           return (
             <Grid key={i}>
               <Grid.Child size={i + 1}>
-                <Text className="sg-example-item">{i+1}</Text>
+                <p className="sg-example-item">{i+1}</p>
               </Grid.Child>
               <Grid.Child size={11 - i}>
-                <Text className="sg-example-item">{11-i}</Text>
+                <p className="sg-example-item">{11-i}</p>
               </Grid.Child>
             </Grid>
           )
@@ -53,7 +53,7 @@ In some cases it can be neccessary to indent columns. The grid gives basic inden
           return (
             <Grid key={i}>
               <Grid.Child offset={i + 1} size={11 - i}>
-                <Text className="sg-example-item">{i+1}</Text>
+                <p className="sg-example-item">{i+1}</p>
               </Grid.Child>
             </Grid>
           )
@@ -77,19 +77,19 @@ In some cases it might be neccessary to define or change direction of the column
       <React.Fragment>
         <Grid direction="row">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -105,19 +105,19 @@ In some cases it might be neccessary to define or change direction of the column
       <React.Fragment>
         <Grid direction="row-reverse">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -133,19 +133,19 @@ In some cases it might be neccessary to define or change direction of the column
       <React.Fragment>
         <Grid direction="column">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -161,19 +161,19 @@ In some cases it might be neccessary to define or change direction of the column
       <React.Fragment>
         <Grid direction="column-reverse">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -195,19 +195,19 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
       <React.Fragment>
         <Grid gap="normal">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -223,19 +223,19 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
       <React.Fragment>
         <Grid gap="zero">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -258,14 +258,14 @@ Basic nesting of grids is supported. "Basic" because of percentage value of widt
             <div className="sg-example-item-outer">
               <Grid>
                 <Grid.Child size={6}>
-                  <Text className="sg-example-item">
+                  <p className="sg-example-item">
                     1
-                  </Text>
+                  </p>
                 </Grid.Child>
                 <Grid.Child size={6}>
-                  <Text className="sg-example-item">
+                  <p className="sg-example-item">
                     2
-                  </Text>
+                  </p>
                 </Grid.Child>
               </Grid>
             </div>
@@ -274,14 +274,14 @@ Basic nesting of grids is supported. "Basic" because of percentage value of widt
             <div className="sg-example-item-outer">
               <Grid>
                 <Grid.Child size={4}>
-                  <Text className="sg-example-item">
+                  <p className="sg-example-item">
                     1
-                  </Text>
+                  </p>
                 </Grid.Child>
                 <Grid.Child size={8}>
-                  <Text className="sg-example-item">
+                  <p className="sg-example-item">
                     2
-                  </Text>
+                  </p>
                 </Grid.Child>
               </Grid>
             </div>
@@ -324,11 +324,11 @@ The grid system is fluid/responsive by itself by using percentages for every val
         <Grid gap={{ base: "normal", s: "zero", m: "normal" }}>
           <Grid.Child className="pui-flex" size={{ base: 12, m: 4, l: 3 }} offset={{ base: 0, m: 2, l: 0 }}>
             <div className="pui-flex__child pui-flex__child--auto" className="sg-example-item">
-              <Text type="4-thin">Column 1</Text>
-              <Text>
+              <p type="4-thin">Column 1</p>
+              <p>
                 xxs -- size: 12 <br />s -- gap: zero <br />m -- gap: normal, size: 4, offset: 2<br />l -- size: 3,
                 offset: 0
-              </Text>
+              </p>
             </div>
           </Grid.Child>
           <Grid.Child
@@ -342,11 +342,11 @@ The grid system is fluid/responsive by itself by using percentages for every val
             offset={{ base: 0, s: 3, m: 0 }}
           >
             <div className="pui-flex__child pui-flex__child--auto" className="sg-example-item">
-              <Text type="4-thin">Column 2</Text>
-              <Text>
+              <p type="4-thin">Column 2</p>
+              <p>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6, offset: 3<br />m -- gap: normal, size: 4, offset: 0<br />l
                 -- size: 3
-              </Text>
+              </p>
             </div>
           </Grid.Child>
           <Grid.Child
@@ -358,11 +358,11 @@ The grid system is fluid/responsive by itself by using percentages for every val
             }}
           >
             <div className="pui-flex__child pui-flex__child--auto" className="sg-example-item">
-              <Text type="4-thin">Column 3</Text>
-              <Text>
+              <p type="4-thin">Column 3</p>
+              <p>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6<br />m -- gap: normal
                 <br />l -- size: 3
-              </Text>
+              </p>
             </div>
           </Grid.Child>
           <Grid.Child
@@ -374,11 +374,11 @@ The grid system is fluid/responsive by itself by using percentages for every val
             }}
           >
             <div className="pui-flex__child pui-flex__child--auto" className="sg-example-item">
-              <Text type="4-thin">Column 4</Text>
-              <Text>
+              <p type="4-thin">Column 4</p>
+              <p>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6<br />m -- gap: normal
                 <br />l -- size: 3
-              </Text>
+              </p>
             </div>
           </Grid.Child>
         </Grid>
