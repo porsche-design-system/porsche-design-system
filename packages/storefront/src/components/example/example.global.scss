@@ -21,8 +21,6 @@ $sg-color-highlight: deeppink;
 
   .sg-example-item {
     padding: $p-spacing-4 $p-spacing-80;
-
-    // font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
     @include -text-size-copy();
     color: $p-color-white;
     text-align: center;
@@ -103,7 +101,7 @@ $sg-color-highlight: deeppink;
   }
 }
 
-/* ----------  flex component styles ---------- */
+/* ----------  grid component styles ---------- */
 .sg-example-grid {
   .sg-example-item-outer {
     text-align: center;
@@ -113,9 +111,10 @@ $sg-color-highlight: deeppink;
   .sg-example-item {
     width: 100%;
     padding: $p-spacing-4;
-    text-align: center;
-    color: $p-color-white;
     background-color: $sg-color-blue-1;
+    @include -text-size-copy();
+    color: $p-color-white;
+    text-align: center;
   }
 
   .p-grid + .p-grid {

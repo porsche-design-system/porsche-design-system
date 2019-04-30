@@ -1,5 +1,5 @@
 import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
-import { Grid, Text } from "@porscheui/porsche-ui-kit"
+import { Grid } from "@porscheui/porsche-ui-kit"
 
 <ExampleVrt className="sg-example-grid">
   {() => {
@@ -7,19 +7,19 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
       <React.Fragment>
         <Grid>
           <Grid.Child size={12}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
                 12
-              </Text>
+              </p>
           </Grid.Child>
         </Grid>
         {Array.apply(0, Array(11)).map(function(x, i) {
           return (
             <Grid key={i}>
               <Grid.Child size={i + 1}>
-                <Text className="sg-example-item">{i+1}</Text>
+                <p className="sg-example-item">{i+1}</p>
               </Grid.Child>
               <Grid.Child size={11 - i}>
-                <Text className="sg-example-item">{11-i}</Text>
+                <p className="sg-example-item">{11-i}</p>
               </Grid.Child>
             </Grid>
           )
@@ -37,7 +37,7 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
           return (
             <Grid key={i}>
               <Grid.Child offset={i + 1} size={11 - i}>
-                <Text className="sg-example-item">{i+1}</Text>
+                <p className="sg-example-item">{i+1}</p>
               </Grid.Child>
             </Grid>
           )
@@ -53,19 +53,19 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
       <React.Fragment>
         <Grid direction="row">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -79,19 +79,19 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
       <React.Fragment>
         <Grid direction="row-reverse">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -105,19 +105,19 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
       <React.Fragment>
         <Grid direction="column">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -131,19 +131,19 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
       <React.Fragment>
         <Grid direction="column-reverse">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -157,19 +157,19 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
       <React.Fragment>
         <Grid gap="normal">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -183,19 +183,19 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
       <React.Fragment>
         <Grid gap="zero">
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               1
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               2
-            </Text>
+            </p>
           </Grid.Child>
           <Grid.Child size={4}>
-            <Text className="sg-example-item">
+            <p className="sg-example-item">
               3
-            </Text>
+            </p>
           </Grid.Child>
         </Grid>
       </React.Fragment>
@@ -212,14 +212,14 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
             <div className="sg-example-item-outer">
               <Grid>
                 <Grid.Child size={6}>
-                  <Text className="sg-example-item">
+                  <p className="sg-example-item">
                     1
-                  </Text>
+                  </p>
                 </Grid.Child>
                 <Grid.Child size={6}>
-                  <Text className="sg-example-item">
+                  <p className="sg-example-item">
                     2
-                  </Text>
+                  </p>
                 </Grid.Child>
               </Grid>
             </div>
@@ -228,14 +228,14 @@ import { Grid, Text } from "@porscheui/porsche-ui-kit"
             <div className="sg-example-item-outer">
               <Grid>
                 <Grid.Child size={4}>
-                  <Text className="sg-example-item">
+                  <p className="sg-example-item">
                     1
-                  </Text>
+                  </p>
                 </Grid.Child>
                 <Grid.Child size={8}>
-                  <Text className="sg-example-item">
+                  <p className="sg-example-item">
                     2
-                  </Text>
+                  </p>
                 </Grid.Child>
               </Grid>
             </div>
