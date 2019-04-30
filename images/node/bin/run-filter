@@ -3,6 +3,16 @@
 set -o errexit
 set -o pipefail
 
+
+echo "###### BEGIN ########"
+echo "task: [$(date)] \"verify_deployment\""
+http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/test")"
+echo "https://ui.porsche.com/test"
+echo "http code: ${http_code}"
+echo "$(curl --verbose -4 "https://ui.porsche.com/test")"
+echo "###### END ########"
+
+
 if [[ -z "${GITHUB_REF}" ]]; then
   echo "Please provide the \$GITHUB_REF environment variable."
   exit 1
