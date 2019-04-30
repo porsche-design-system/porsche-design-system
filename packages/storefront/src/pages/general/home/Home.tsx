@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./home.module.scss";
-import { Button } from "@porsche/ui-kit-react";
-import { Flex, Spacing, Text, Grid } from "@porscheui/porsche-ui-kit";
+import { Flex, Spacing, Text, Grid, ButtonRegular } from "@porscheui/porsche-ui-kit";
 
 export const Home: React.FunctionComponent = () => {
   return (
@@ -38,8 +37,9 @@ export const Home: React.FunctionComponent = () => {
             <Grid.Child size={{ base: 12, m: 8 }}>
               <Text type="3-regular">
                 The Porsche UI Kit provides the design fundamentals for easily creating aesthetic and qualitative
-                digital products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS elements.
-                Everything built and tested following the Porsche quality standards and corporate design principles.
+                digital products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS
+                elements. Everything built and tested following the Porsche quality standards and corporate design
+                principles.
               </Text>
               <Spacing marginTop={8}>
                 <Text>
@@ -52,16 +52,16 @@ export const Home: React.FunctionComponent = () => {
                 <Flex gap={16} wrap={true}>
                   <Flex.Item>
                     <Spacing marginTop={16}>
-                      <Button type="highlight" as={Link} {...{ to: "/getting-started/start-designing" }}>
+                      <ButtonRegular type="highlight" as={Link} {...{ to: "/getting-started/start-designing" }}>
                         Start designing
-                      </Button>
+                      </ButtonRegular>
                     </Spacing>
                   </Flex.Item>
                   <Flex.Item>
                     <Spacing marginTop={16}>
-                      <Button type="highlight" as={Link} {...{ to: "/getting-started/start-coding" }}>
+                      <ButtonRegular type="highlight" as={Link} {...{ to: "/getting-started/start-coding" }}>
                         Start coding
-                      </Button>
+                      </ButtonRegular>
                     </Spacing>
                   </Flex.Item>
                 </Flex>
