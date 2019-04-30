@@ -8,11 +8,11 @@ verify_deployment() {
   local n=1
   local max=3
   local delay=60
+  local http_code=2912
   while true
   do
-    echo "Check deployment status. Attempt ${n}/${max}. [$(date)]"
-    local http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/test")"
     echo "###### BEGIN ########"
+    echo "Check deployment status. Attempt ${n}/${max}. [$(date)]"
     echo "https://ui.porsche.com/test"
     echo "http code: ${http_code}"
     echo "###### END ########"
@@ -26,6 +26,7 @@ verify_deployment() {
       exit 1
     fi
     sleep ${delay}
+    http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/test")"
   done
 }
 
