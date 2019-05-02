@@ -1,6 +1,6 @@
 @import "../../../styles/utility/index";
 
-$p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
+$p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
 /**
  * properties for flex container
@@ -36,54 +36,59 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 /**
  * properties for flex child items
  */
-@mixin p-flex-child-align-self($align) {
+@mixin p-flex-item-align-self($align) {
   align-self: #{$align};
 }
 
-@mixin p-flex-child-grow($grow) {
+@mixin p-flex-item-grow($grow) {
   flex-grow: #{$grow};
 }
 
-@mixin p-flex-child-shrink($shrink) {
+@mixin p-flex-item-shrink($shrink) {
   flex-shrink: #{$shrink};
 }
 
-@mixin p-flex-child-basis($basis) {
+@mixin p-flex-item-basis($basis) {
   flex-basis: #{$basis};
 }
 
-@mixin p-flex-child-initial {
+@mixin p-flex-item-initial {
   flex: initial;
 }
 
-@mixin p-flex-child-auto {
+@mixin p-flex-item-auto {
   flex: auto;
 }
 
-@mixin p-flex-child-equal {
+@mixin p-flex-item-equal {
   flex: 1 1 0;
 }
 
-@mixin p-flex-child-none {
+@mixin p-flex-item-none {
   flex: none;
 }
 
-@mixin p-flex-child-width($i) {
-  width: #{nth($p-flex-child-width, $i + 1)};
+@mixin p-flex-item-width($i) {
+  width: #{nth($p-flex-item-width, $i + 1)};
 }
 
-@mixin p-flex-child-offset($i) {
-  margin-left: #{nth($p-flex-child-width, $i)};
+@mixin p-flex-item-offset($i) {
+  margin-left: #{nth($p-flex-item-width, $i)};
 }
 
 .#{$p-global-class-prefix}flex {
   @include p-flex;
+
+  &--block {
+    @include p-flex;
+  }
+
   &--inline {
     @include p-flex-inline;
   }
 
   @include breakpoint("xs") {
-    &-xs {
+    &--block-xs {
       @include p-flex;
     }
     &--inline-xs {
@@ -92,7 +97,7 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   }
 
   @include breakpoint("s") {
-    &-s {
+    &--block-s {
       @include p-flex;
     }
     &--inline-s {
@@ -101,7 +106,7 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   }
 
   @include breakpoint("m") {
-    &-m {
+    &--block-m {
       @include p-flex;
     }
     &--inline-m {
@@ -110,7 +115,7 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   }
 
   @include breakpoint("l") {
-    &-l {
+    &--block-l {
       @include p-flex;
     }
     &--inline-l {
@@ -119,7 +124,7 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   }
 
   @include breakpoint("xl") {
-    &-xl {
+    &--block-xl {
       @include p-flex;
     }
     &--inline-xl {
@@ -652,367 +657,367 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
   }
 
   /**
-   * properties for flex children items
+   * properties for flex items
    */
-  &__child {
+  &__item {
     &--grow {
       &-0 {
-        @include p-flex-child-grow(0);
+        @include p-flex-item-grow(0);
       }
       &-1 {
-        @include p-flex-child-grow(1);
+        @include p-flex-item-grow(1);
       }
     }
 
     &--shrink {
       &-0 {
-        @include p-flex-child-shrink(0);
+        @include p-flex-item-shrink(0);
       }
       &-1 {
-        @include p-flex-child-shrink(1);
+        @include p-flex-item-shrink(1);
       }
     }
 
     &--initial {
-      @include p-flex-child-initial;
+      @include p-flex-item-initial;
     }
 
     &--auto {
-      @include p-flex-child-auto;
+      @include p-flex-item-auto;
     }
 
     &--equal {
-      @include p-flex-child-equal;
+      @include p-flex-item-equal;
     }
 
     &--none {
-      @include p-flex-child-none;
+      @include p-flex-item-none;
     }
 
     @include breakpoint("xs") {
       &--grow {
         &-0-xs {
-          @include p-flex-child-grow(0);
+          @include p-flex-item-grow(0);
         }
         &-1-xs {
-          @include p-flex-child-grow(1);
+          @include p-flex-item-grow(1);
         }
       }
 
       &--shrink {
         &-0-xs {
-          @include p-flex-child-shrink(0);
+          @include p-flex-item-shrink(0);
         }
         &-1-xs {
-          @include p-flex-child-shrink(1);
+          @include p-flex-item-shrink(1);
         }
       }
 
       &--initial-xs {
-        @include p-flex-child-initial;
+        @include p-flex-item-initial;
       }
 
       &--auto-xs {
-        @include p-flex-child-auto;
+        @include p-flex-item-auto;
       }
 
       &--equal-xs {
-        @include p-flex-child-equal;
+        @include p-flex-item-equal;
       }
 
       &--none-xs {
-        @include p-flex-child-none;
+        @include p-flex-item-none;
       }
     }
 
     @include breakpoint("s") {
       &--grow {
         &-0-s {
-          @include p-flex-child-grow(0);
+          @include p-flex-item-grow(0);
         }
         &-1-s {
-          @include p-flex-child-grow(1);
+          @include p-flex-item-grow(1);
         }
       }
 
       &--shrink {
         &-0-s {
-          @include p-flex-child-shrink(0);
+          @include p-flex-item-shrink(0);
         }
         &-1-s {
-          @include p-flex-child-shrink(1);
+          @include p-flex-item-shrink(1);
         }
       }
 
       &--initial-s {
-        @include p-flex-child-initial;
+        @include p-flex-item-initial;
       }
 
       &--auto-s {
-        @include p-flex-child-auto;
+        @include p-flex-item-auto;
       }
 
       &--equal-s {
-        @include p-flex-child-equal;
+        @include p-flex-item-equal;
       }
 
       &--none-s {
-        @include p-flex-child-none;
+        @include p-flex-item-none;
       }
     }
 
     @include breakpoint("m") {
       &--grow {
         &-0-m {
-          @include p-flex-child-grow(0);
+          @include p-flex-item-grow(0);
         }
         &-1-m {
-          @include p-flex-child-grow(1);
+          @include p-flex-item-grow(1);
         }
       }
 
       &--shrink {
         &-0-m {
-          @include p-flex-child-shrink(0);
+          @include p-flex-item-shrink(0);
         }
         &-1-m {
-          @include p-flex-child-shrink(1);
+          @include p-flex-item-shrink(1);
         }
       }
 
       &--initial-m {
-        @include p-flex-child-initial;
+        @include p-flex-item-initial;
       }
 
       &--auto-m {
-        @include p-flex-child-auto;
+        @include p-flex-item-auto;
       }
 
       &--equal-m {
-        @include p-flex-child-equal;
+        @include p-flex-item-equal;
       }
 
       &--none-m {
-        @include p-flex-child-none;
+        @include p-flex-item-none;
       }
     }
 
     @include breakpoint("l") {
       &--grow {
         &-0-l {
-          @include p-flex-child-grow(0);
+          @include p-flex-item-grow(0);
         }
         &-1-l {
-          @include p-flex-child-grow(1);
+          @include p-flex-item-grow(1);
         }
       }
 
       &--shrink {
         &-0-l {
-          @include p-flex-child-shrink(0);
+          @include p-flex-item-shrink(0);
         }
         &-1-l {
-          @include p-flex-child-shrink(1);
+          @include p-flex-item-shrink(1);
         }
       }
 
       &--initial-l {
-        @include p-flex-child-initial;
+        @include p-flex-item-initial;
       }
 
       &--auto-l {
-        @include p-flex-child-auto;
+        @include p-flex-item-auto;
       }
 
       &--equal-l {
-        @include p-flex-child-equal;
+        @include p-flex-item-equal;
       }
 
       &--none-l {
-        @include p-flex-child-none;
+        @include p-flex-item-none;
       }
     }
 
     @include breakpoint("xl") {
       &--grow {
         &-0-xl {
-          @include p-flex-child-grow(0);
+          @include p-flex-item-grow(0);
         }
         &-1-xl {
-          @include p-flex-child-grow(1);
+          @include p-flex-item-grow(1);
         }
       }
 
       &--shrink {
         &-0-xl {
-          @include p-flex-child-shrink(0);
+          @include p-flex-item-shrink(0);
         }
         &-1-xl {
-          @include p-flex-child-shrink(1);
+          @include p-flex-item-shrink(1);
         }
       }
 
       &--initial-xl {
-        @include p-flex-child-initial;
+        @include p-flex-item-initial;
       }
 
       &--auto-xl {
-        @include p-flex-child-auto;
+        @include p-flex-item-auto;
       }
 
       &--equal-xl {
-        @include p-flex-child-equal;
+        @include p-flex-item-equal;
       }
 
       &--none-xl {
-        @include p-flex-child-none;
+        @include p-flex-item-none;
       }
     }
 
     &--align-self {
       &-auto {
-        @include p-flex-child-align-self(auto);
+        @include p-flex-item-align-self(auto);
       }
       &-start {
-        @include p-flex-child-align-self(flex-start);
+        @include p-flex-item-align-self(flex-start);
       }
       &-end {
-        @include p-flex-child-align-self(flex-end);
+        @include p-flex-item-align-self(flex-end);
       }
       &-center {
-        @include p-flex-child-align-self(center);
+        @include p-flex-item-align-self(center);
       }
       &-stretch {
-        @include p-flex-child-align-self(stretch);
+        @include p-flex-item-align-self(stretch);
       }
       &-baseline {
-        @include p-flex-child-align-self(baseline);
+        @include p-flex-item-align-self(baseline);
       }
 
       @include breakpoint("xs") {
         &-auto-xs {
-          @include p-flex-child-align-self(auto);
+          @include p-flex-item-align-self(auto);
         }
         &-start-xs {
-          @include p-flex-child-align-self(flex-start);
+          @include p-flex-item-align-self(flex-start);
         }
         &-end-xs {
-          @include p-flex-child-align-self(flex-end);
+          @include p-flex-item-align-self(flex-end);
         }
         &-center-xs {
-          @include p-flex-child-align-self(center);
+          @include p-flex-item-align-self(center);
         }
         &-stretch-xs {
-          @include p-flex-child-align-self(stretch);
+          @include p-flex-item-align-self(stretch);
         }
         &-baseline-xs {
-          @include p-flex-child-align-self(baseline);
+          @include p-flex-item-align-self(baseline);
         }
       }
 
       @include breakpoint("s") {
         &-auto-s {
-          @include p-flex-child-align-self(auto);
+          @include p-flex-item-align-self(auto);
         }
         &-start-s {
-          @include p-flex-child-align-self(flex-start);
+          @include p-flex-item-align-self(flex-start);
         }
         &-end-s {
-          @include p-flex-child-align-self(flex-end);
+          @include p-flex-item-align-self(flex-end);
         }
         &-center-s {
-          @include p-flex-child-align-self(center);
+          @include p-flex-item-align-self(center);
         }
         &-stretch-s {
-          @include p-flex-child-align-self(stretch);
+          @include p-flex-item-align-self(stretch);
         }
         &-baseline-s {
-          @include p-flex-child-align-self(baseline);
+          @include p-flex-item-align-self(baseline);
         }
       }
 
       @include breakpoint("m") {
         &-auto-m {
-          @include p-flex-child-align-self(auto);
+          @include p-flex-item-align-self(auto);
         }
         &-start-m {
-          @include p-flex-child-align-self(flex-start);
+          @include p-flex-item-align-self(flex-start);
         }
         &-end-m {
-          @include p-flex-child-align-self(flex-end);
+          @include p-flex-item-align-self(flex-end);
         }
         &-center-m {
-          @include p-flex-child-align-self(center);
+          @include p-flex-item-align-self(center);
         }
         &-stretch-m {
-          @include p-flex-child-align-self(stretch);
+          @include p-flex-item-align-self(stretch);
         }
         &-baseline-m {
-          @include p-flex-child-align-self(baseline);
+          @include p-flex-item-align-self(baseline);
         }
       }
 
       @include breakpoint("l") {
         &-auto-l {
-          @include p-flex-child-align-self(auto);
+          @include p-flex-item-align-self(auto);
         }
         &-start-l {
-          @include p-flex-child-align-self(flex-start);
+          @include p-flex-item-align-self(flex-start);
         }
         &-end-l {
-          @include p-flex-child-align-self(flex-end);
+          @include p-flex-item-align-self(flex-end);
         }
         &-center-l {
-          @include p-flex-child-align-self(center);
+          @include p-flex-item-align-self(center);
         }
         &-stretch-l {
-          @include p-flex-child-align-self(stretch);
+          @include p-flex-item-align-self(stretch);
         }
         &-baseline-l {
-          @include p-flex-child-align-self(baseline);
+          @include p-flex-item-align-self(baseline);
         }
       }
 
       @include breakpoint("xl") {
         &-auto-xl {
-          @include p-flex-child-align-self(auto);
+          @include p-flex-item-align-self(auto);
         }
         &-start-xl {
-          @include p-flex-child-align-self(flex-start);
+          @include p-flex-item-align-self(flex-start);
         }
         &-end-xl {
-          @include p-flex-child-align-self(flex-end);
+          @include p-flex-item-align-self(flex-end);
         }
         &-center-xl {
-          @include p-flex-child-align-self(center);
+          @include p-flex-item-align-self(center);
         }
         &-stretch-xl {
-          @include p-flex-child-align-self(stretch);
+          @include p-flex-item-align-self(stretch);
         }
         &-baseline-xl {
-          @include p-flex-child-align-self(baseline);
+          @include p-flex-item-align-self(baseline);
         }
       }
     }
 
     &--width {
       &-one-quarter {
-        @include p-flex-child-width(1);
+        @include p-flex-item-width(1);
       }
       &-one-third {
-        @include p-flex-child-width(2);
+        @include p-flex-item-width(2);
       }
       &-half {
-        @include p-flex-child-width(3);
+        @include p-flex-item-width(3);
       }
       &-two-thirds {
-        @include p-flex-child-width(4);
+        @include p-flex-item-width(4);
       }
       &-three-quarters {
-        @include p-flex-child-width(5);
+        @include p-flex-item-width(5);
       }
       &-full {
-        @include p-flex-child-width(6);
+        @include p-flex-item-width(6);
       }
       &-auto {
         width: auto;
@@ -1020,22 +1025,22 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
       @include breakpoint("xs") {
         &-one-quarter-xs {
-          @include p-flex-child-width(1);
+          @include p-flex-item-width(1);
         }
         &-one-third-xs {
-          @include p-flex-child-width(2);
+          @include p-flex-item-width(2);
         }
         &-half-xs {
-          @include p-flex-child-width(3);
+          @include p-flex-item-width(3);
         }
         &-two-thirds-xs {
-          @include p-flex-child-width(4);
+          @include p-flex-item-width(4);
         }
         &-three-quarters-xs {
-          @include p-flex-child-width(5);
+          @include p-flex-item-width(5);
         }
         &-full-xs {
-          @include p-flex-child-width(6);
+          @include p-flex-item-width(6);
         }
         &-auto-xs {
           width: auto;
@@ -1044,22 +1049,22 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
       @include breakpoint("s") {
         &-one-quarter-s {
-          @include p-flex-child-width(1);
+          @include p-flex-item-width(1);
         }
         &-one-third-s {
-          @include p-flex-child-width(2);
+          @include p-flex-item-width(2);
         }
         &-half-s {
-          @include p-flex-child-width(3);
+          @include p-flex-item-width(3);
         }
         &-two-thirds-s {
-          @include p-flex-child-width(4);
+          @include p-flex-item-width(4);
         }
         &-three-quarters-s {
-          @include p-flex-child-width(5);
+          @include p-flex-item-width(5);
         }
         &-full-s {
-          @include p-flex-child-width(6);
+          @include p-flex-item-width(6);
         }
         &-auto-s {
           width: auto;
@@ -1068,22 +1073,22 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
       @include breakpoint("m") {
         &-one-quarter-m {
-          @include p-flex-child-width(1);
+          @include p-flex-item-width(1);
         }
         &-one-third-m {
-          @include p-flex-child-width(2);
+          @include p-flex-item-width(2);
         }
         &-half-m {
-          @include p-flex-child-width(3);
+          @include p-flex-item-width(3);
         }
         &-two-thirds-m {
-          @include p-flex-child-width(4);
+          @include p-flex-item-width(4);
         }
         &-three-quarters-m {
-          @include p-flex-child-width(5);
+          @include p-flex-item-width(5);
         }
         &-full-m {
-          @include p-flex-child-width(6);
+          @include p-flex-item-width(6);
         }
         &-auto-m {
           width: auto;
@@ -1092,22 +1097,22 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
       @include breakpoint("l") {
         &-one-quarter-l {
-          @include p-flex-child-width(1);
+          @include p-flex-item-width(1);
         }
         &-one-third-l {
-          @include p-flex-child-width(2);
+          @include p-flex-item-width(2);
         }
         &-half-l {
-          @include p-flex-child-width(3);
+          @include p-flex-item-width(3);
         }
         &-two-thirds-l {
-          @include p-flex-child-width(4);
+          @include p-flex-item-width(4);
         }
         &-three-quarters-l {
-          @include p-flex-child-width(5);
+          @include p-flex-item-width(5);
         }
         &-full-l {
-          @include p-flex-child-width(6);
+          @include p-flex-item-width(6);
         }
         &-auto-l {
           width: auto;
@@ -1116,22 +1121,22 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
       @include breakpoint("xl") {
         &-one-quarter-xl {
-          @include p-flex-child-width(1);
+          @include p-flex-item-width(1);
         }
         &-one-third-xl {
-          @include p-flex-child-width(2);
+          @include p-flex-item-width(2);
         }
         &-half-xl {
-          @include p-flex-child-width(3);
+          @include p-flex-item-width(3);
         }
         &-two-thirds-xl {
-          @include p-flex-child-width(4);
+          @include p-flex-item-width(4);
         }
         &-three-quarters-xl {
-          @include p-flex-child-width(5);
+          @include p-flex-item-width(5);
         }
         &-full-xl {
-          @include p-flex-child-width(6);
+          @include p-flex-item-width(6);
         }
         &-auto-xl {
           width: auto;
@@ -1141,126 +1146,126 @@ $p-flex-child-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
     &--offset {
       &-none {
-        @include p-flex-child-offset(1);
+        @include p-flex-item-offset(1);
       }
       &-one-quarter {
-        @include p-flex-child-offset(2);
+        @include p-flex-item-offset(2);
       }
       &-one-third {
-        @include p-flex-child-offset(3);
+        @include p-flex-item-offset(3);
       }
       &-half {
-        @include p-flex-child-offset(4);
+        @include p-flex-item-offset(4);
       }
       &-two-thirds {
-        @include p-flex-child-offset(5);
+        @include p-flex-item-offset(5);
       }
       &-three-quarters {
-        @include p-flex-child-offset(6);
+        @include p-flex-item-offset(6);
       }
 
       @include breakpoint("xs") {
         &-none-xs {
-          @include p-flex-child-offset(1);
+          @include p-flex-item-offset(1);
         }
         &-one-quarter-xs {
-          @include p-flex-child-offset(2);
+          @include p-flex-item-offset(2);
         }
         &-one-third-xs {
-          @include p-flex-child-offset(3);
+          @include p-flex-item-offset(3);
         }
         &-half-xs {
-          @include p-flex-child-offset(4);
+          @include p-flex-item-offset(4);
         }
         &-two-thirds-xs {
-          @include p-flex-child-offset(5);
+          @include p-flex-item-offset(5);
         }
         &-three-quarters-xs {
-          @include p-flex-child-offset(6);
+          @include p-flex-item-offset(6);
         }
       }
 
       @include breakpoint("s") {
         &-none-s {
-          @include p-flex-child-offset(1);
+          @include p-flex-item-offset(1);
         }
         &-one-quarter-s {
-          @include p-flex-child-offset(2);
+          @include p-flex-item-offset(2);
         }
         &-one-third-s {
-          @include p-flex-child-offset(3);
+          @include p-flex-item-offset(3);
         }
         &-half-s {
-          @include p-flex-child-offset(4);
+          @include p-flex-item-offset(4);
         }
         &-two-thirds-s {
-          @include p-flex-child-offset(5);
+          @include p-flex-item-offset(5);
         }
         &-three-quarters-s {
-          @include p-flex-child-offset(6);
+          @include p-flex-item-offset(6);
         }
       }
 
       @include breakpoint("m") {
         &-none-m {
-          @include p-flex-child-offset(1);
+          @include p-flex-item-offset(1);
         }
         &-one-quarter-m {
-          @include p-flex-child-offset(2);
+          @include p-flex-item-offset(2);
         }
         &-one-third-m {
-          @include p-flex-child-offset(3);
+          @include p-flex-item-offset(3);
         }
         &-half-m {
-          @include p-flex-child-offset(4);
+          @include p-flex-item-offset(4);
         }
         &-two-thirds-m {
-          @include p-flex-child-offset(5);
+          @include p-flex-item-offset(5);
         }
         &-three-quarters-m {
-          @include p-flex-child-offset(6);
+          @include p-flex-item-offset(6);
         }
       }
 
       @include breakpoint("l") {
         &-none-l {
-          @include p-flex-child-offset(1);
+          @include p-flex-item-offset(1);
         }
         &-one-quarter-l {
-          @include p-flex-child-offset(2);
+          @include p-flex-item-offset(2);
         }
         &-one-third-l {
-          @include p-flex-child-offset(3);
+          @include p-flex-item-offset(3);
         }
         &-half-l {
-          @include p-flex-child-offset(4);
+          @include p-flex-item-offset(4);
         }
         &-two-thirds-l {
-          @include p-flex-child-offset(5);
+          @include p-flex-item-offset(5);
         }
         &-three-quarters-l {
-          @include p-flex-child-offset(6);
+          @include p-flex-item-offset(6);
         }
       }
 
       @include breakpoint("xl") {
         &-none-xl {
-          @include p-flex-child-offset(1);
+          @include p-flex-item-offset(1);
         }
         &-one-quarter-xl {
-          @include p-flex-child-offset(2);
+          @include p-flex-item-offset(2);
         }
         &-one-third-xl {
-          @include p-flex-child-offset(3);
+          @include p-flex-item-offset(3);
         }
         &-half-xl {
-          @include p-flex-child-offset(4);
+          @include p-flex-item-offset(4);
         }
         &-two-thirds-xl {
-          @include p-flex-child-offset(5);
+          @include p-flex-item-offset(5);
         }
         &-three-quarters-xl {
-          @include p-flex-child-offset(6);
+          @include p-flex-item-offset(6);
         }
       }
     }

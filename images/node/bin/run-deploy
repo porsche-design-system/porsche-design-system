@@ -62,7 +62,7 @@ copy_porsche_ui_kit() {
 add_version_sha() {
   echo "task: [$(date)] \"add_version_sha\""
   mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version"
-  touch "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version/${GITHUB_SHA}"
+  echo "${GITHUB_SHA}" > "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version.md"
 }
 
 prepare_latest_stable_deployment() {
@@ -122,14 +122,14 @@ verify_deployment() {
   local n=1
   local max=20
   local delay=60
+  local http_code=9999
   while true
   do
     echo "Check deployment status. Attempt ${n}/${max}. [$(date)]"
-    local http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${1}/version/${GITHUB_SHA}")"
     echo "###### BEGIN ########"
-    echo "https://ui.porsche.com/${1}/version/${GITHUB_SHA}"
+    echo "https://ui.porsche.com/${1}/version.md"
     echo "http code: ${http_code}"
-    echo "$(curl --verbose -4 "https://ui.porsche.com/${1}/version/${GITHUB_SHA}")"
+    #echo "$(curl --verbose -4 "https://ui.porsche.com/${1}/version/${GITHUB_SHA}")"
     echo "###### END ########"
     if [[ "${http_code}" == "200" ]]; then
       echo "All right, deployment was verified."
@@ -141,6 +141,7 @@ verify_deployment() {
       exit 1
     fi
     sleep ${delay}
+    http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${1}/version.md")"
   done
 }
 
