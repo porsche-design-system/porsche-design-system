@@ -1,6 +1,6 @@
 import * as React from "react";
 import cx from "classnames";
-import { getElementType, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib";
+import { getElementType, prefix, BreakpointCustomizable, mapBreakpointPropToClasses } from "../../../lib";
 import { Spacing } from "../../../";
 import { FlexItem } from "./FlexItem";
 import { ClassNameProp, ComponentProp } from "../../../lib/props";
@@ -11,26 +11,30 @@ export interface Flex extends React.FunctionComponent<FlexProps> {
 
 export interface FlexProps extends ClassNameProp, ComponentProp {
   /**
-   * Defines the flex container display as inline rather than block.
-   * @default false
+   * Defines the flex containers content flow if 2 or more containers are siblings of each other.
    */
-  inline?: BreakpointCustomizable<boolean>;
+  flow?: BreakpointCustomizable<"block" | "inline">;
 
   /**
    * If set, overflowing elements will wrap to a new line.
-   * @default true
    */
   wrap?: BreakpointCustomizable<"reverse" | boolean>;
 
-  /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. */
+  /**
+   * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
+   */
   direction?: BreakpointCustomizable<"column-reverse" | "column" | "row-reverse" | "row">;
 
-  /** Defines how the flex items are aligned along the main axis. */
+  /**
+   * Defines how the flex items are aligned along the main axis.
+   */
   justifyContent?: BreakpointCustomizable<
     "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly"
   >;
 
-  /** Defines how the flex items are aligned along the cross axis. */
+  /**
+   * Defines how the flex items are aligned along the cross axis.
+   */
   alignItems?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline">;
 
   /**
@@ -39,20 +43,18 @@ export interface FlexProps extends ClassNameProp, ComponentProp {
    */
   alignContent?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "space-between" | "space-around">;
 
-  /** Defines the gap between contained children. */
+  /**
+   * Defines the gap between contained children.
+   */
   gap?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
 }
-
-const defaultProps: Partial<FlexProps> = {
-  inline: false
-};
 
 const _Flex: React.FunctionComponent<FlexProps> & Partial<Flex> = (props) => {
   const {
     as,
     className,
     children,
-    inline,
+    flow,
     wrap,
     direction,
     justifyContent,
@@ -65,7 +67,8 @@ const _Flex: React.FunctionComponent<FlexProps> & Partial<Flex> = (props) => {
   const ElementType: any = getElementType(as, "div");
 
   const classes = cx(
-    mapBreakpointPropToClasses("flex", inline, "--inline", ""),
+    prefix("flex"),
+    mapBreakpointPropToClasses("flex-", flow),
     mapBreakpointPropToClasses("flex--wrap", wrap, "", "-no"),
     mapBreakpointPropToClasses("flex--direction", direction),
     mapBreakpointPropToClasses("flex--justify-content", justifyContent),
@@ -111,7 +114,7 @@ const _Flex: React.FunctionComponent<FlexProps> & Partial<Flex> = (props) => {
   );
 };
 
-_Flex.defaultProps = defaultProps;
+// _Flex.defaultProps = defaultProps;
 
 _Flex.Item = FlexItem;
 
