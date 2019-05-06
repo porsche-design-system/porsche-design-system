@@ -39,19 +39,17 @@ export interface ButtonRegularProps extends ClassNameProp, ComponentProp {
 
   /**
    * The display type of the button.
-   * @default default
    */
-  type?: "default" | "ghost" | "highlight" | "sales" | "sales-ghost";
+  type?: "ghost" | "highlight" | "sales" | "sales-ghost";
 
   /**
    * Specifies the HTML Type of the button. If undefined, nothing is set.
    * @default button
    */
-  role?: "button" | "submit" | "reset";
+  role?: "button" | "submit" | "reset" | undefined;
 }
 
 const defaultProps: Partial<ButtonRegularProps> = {
-  type: "default",
   icon: "icon_arrow-right-hair.min.svg",
   role: "button"
 };
@@ -125,8 +123,13 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
   };
 
   return (
-    <ElementType type={role} onClick={handleClick} className={buttonClasses} disabled={disabled || loading} {...rest}>
-      {/* Icon cannot be undefined because of default props */}
+    <ElementType
+      {...ElementType === "button" && { type: role }}
+      {...(ElementType === "button" ? { disabled: disabled || loading } : { "aria-disabled": disabled || loading })}
+      onClick={handleClick}
+      className={buttonClasses}
+      {...rest}
+    >
       {loading ? (
         <Loader size="x-small" className={loaderClasses} inverted={loaderNotInverted()} />
       ) : (
