@@ -61,7 +61,7 @@ copy_porsche_ui_kit() {
 
 add_version_sha() {
   echo "task: [$(date)] \"add_version_sha\""
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
   echo "${GITHUB_SHA}" > "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version.md"
 }
 
@@ -78,12 +78,12 @@ copy_latest_stable_porsche_ui_kit() {
 
 add_latest_stable_version_sha() {
   echo "task: [$(date)] \"add_latest_stable_version_sha\""
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest/version"
-  touch "/opt/porsche-ui-kit-gh-pages/latest/version/${GITHUB_SHA}"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
+  echo "${GITHUB_SHA}" > "/opt/porsche-ui-kit-gh-pages/latest/version.md"
 }
 
 copy_latest_stable_sketch_library_and_create_rss_feed() {
-  echo "task: [$(date)] \"copy_latest_stable_sketch_library_and_create_rss_feed\""
+  echo "task: [$(date)] \"copy_latest_stable_sketch_library_and_create_rss_feed\" (${1}, ${2})"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
   cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/latest"
   cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
@@ -103,7 +103,7 @@ _EOF_
 }
 
 copy_latest_stable_sketch_library_template() {
-  echo "task: [$(date)] \"copy_latest_stable_sketch_library_template\""
+  echo "task: [$(date)] \"copy_latest_stable_sketch_library_template\" (${1})"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
   cp "./sketch/${1}" "/opt/porsche-ui-kit-gh-pages/latest"
 }
@@ -118,18 +118,15 @@ deploy_to_gh_pages() {
 }
 
 verify_deployment() {
-  echo "task: [$(date)] \"verify_deployment\""
+  echo "task: [$(date)] \"verify_deployment\" (${1})"
   local n=1
   local max=20
   local delay=60
   local http_response=""
   while true
   do
-    echo "Check deployment status. Attempt ${n}/${max}. [$(date)]"
-    echo "###### BEGIN ########"
-    echo "https://ui.porsche.com/${1}/version.md"
-    echo "http response: ${http_response}"
-    echo "###### END ########"
+    http_response="$(curl -s -H "Cache-Control: no-cache" "https://ui.porsche.com/${1}/version.md")"
+    echo "Check deployment status. Attempt ${n}/${max} (${http_response}). [$(date)]"
     if [[ "${http_response}" == "${GITHUB_SHA}" ]]; then
       echo "All right, deployment was verified."
       break
@@ -140,7 +137,6 @@ verify_deployment() {
       exit 1
     fi
     sleep ${delay}
-    http_response="$(curl -s -H "Cache-Control: no-cache" "https://ui.porsche.com/${1}/version.md")"
   done
 }
 
@@ -168,6 +164,6 @@ if isWorkingBranchLatestStableBranch; then
 fi
 deploy_to_gh_pages
 verify_deployment "${P_WORKING_BRANCH}"
-#if isWorkingBranchLatestStableBranch; then
-#  verify_deployment "latest"
-#fi
+if isWorkingBranchLatestStableBranch; then
+  verify_deployment "latest"
+fi
