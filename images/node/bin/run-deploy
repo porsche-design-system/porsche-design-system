@@ -49,37 +49,20 @@ checkout_gh_pages() {
 }
 
 prepare_deployment() {
-  echo "task: [$(date)] \"prepare_deployment\""
-  rm -rf "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
+  echo "task: [$(date)] \"prepare_deployment\" (${1})"
+  rm -rf "/opt/porsche-ui-kit-gh-pages/${1}"
 }
 
 copy_porsche_ui_kit() {
-  echo "task: [$(date)] \"copy_porsche_ui_kit\""
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
-  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
+  echo "task: [$(date)] \"copy_porsche_ui_kit\" (${1})"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${1}"
+  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${1}"
 }
 
-add_version_sha() {
-  echo "task: [$(date)] \"add_version_sha\""
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}"
-  echo "${GITHUB_SHA}" > "/opt/porsche-ui-kit-gh-pages/${P_WORKING_BRANCH}/version.md"
-}
-
-prepare_latest_stable_deployment() {
-  echo "task: [$(date)] \"prepare_latest_stable_deployment\""
-  rm -rf "/opt/porsche-ui-kit-gh-pages/latest"
-}
-
-copy_latest_stable_porsche_ui_kit() {
-  echo "task: [$(date)] \"copy_latest_stable_porsche_ui_kit\""
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
-  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/latest"
-}
-
-add_latest_stable_version_sha() {
-  echo "task: [$(date)] \"add_latest_stable_version_sha\""
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
-  echo "${GITHUB_SHA}" > "/opt/porsche-ui-kit-gh-pages/latest/version.md"
+add_deployment_version() {
+  echo "task: [$(date)] \"add_deployment_version\" (${1})"
+  mkdir -p "/opt/porsche-ui-kit-gh-pages/${1}"
+  echo "${GITHUB_SHA}" > "/opt/porsche-ui-kit-gh-pages/${1}/version.md"
 }
 
 copy_latest_stable_sketch_library_and_create_rss_feed() {
@@ -102,8 +85,8 @@ copy_latest_stable_sketch_library_and_create_rss_feed() {
 _EOF_
 }
 
-copy_latest_stable_sketch_library_template() {
-  echo "task: [$(date)] \"copy_latest_stable_sketch_library_template\" (${1})"
+copy_latest_stable_sketch_template() {
+  echo "task: [$(date)] \"copy_latest_stable_sketch_template\" (${1})"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
   cp "./sketch/${1}" "/opt/porsche-ui-kit-gh-pages/latest"
 }
@@ -126,14 +109,14 @@ verify_deployment() {
   while true
   do
     http_response="$(curl -s -H "Cache-Control: no-cache" "https://ui.porsche.com/${1}/version.md")"
-    echo "Check deployment status. Attempt ${n}/${max} (${http_response}). [$(date)]"
+    echo "Check deployment status (${1}). Attempt ${n}/${max} (${http_response}). [$(date)]"
     if [[ "${http_response}" == "${GITHUB_SHA}" ]]; then
-      echo "All right, deployment was verified."
+      echo "All right, deployment was verified (${1})."
       break
     elif [[ ${n} -lt ${max} ]]; then
       ((n++))
     else
-      echo "Deployment could not be verified after ${n} attempts."
+      echo "Deployment could not be verified after ${n} attempts (${1})."
       exit 1
     fi
     sleep ${delay}
@@ -149,14 +132,14 @@ isWorkingBranchLatestStableBranch() {
 
 setup
 checkout_gh_pages
-prepare_deployment
-copy_porsche_ui_kit
-add_version_sha
+prepare_deployment "${P_WORKING_BRANCH}"
+copy_porsche_ui_kit "${P_WORKING_BRANCH}"
+add_deployment_version "${P_WORKING_BRANCH}"
 if isWorkingBranchLatestStableBranch; then
-  prepare_latest_stable_deployment
-  copy_latest_stable_porsche_ui_kit
-  add_latest_stable_version_sha
-  copy_latest_stable_sketch_library_template "porsche-ui-kit-layout-template.sketch"
+  prepare_deployment "latest"
+  copy_porsche_ui_kit "latest"
+  add_deployment_version "latest"
+  copy_latest_stable_sketch_template "porsche-ui-kit-layout-template.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
