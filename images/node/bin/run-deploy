@@ -129,7 +129,7 @@ verify_deployment() {
     echo "###### BEGIN ########"
     echo "https://ui.porsche.com/${1}/version.md"
     echo "http code: ${http_code}"
-    #echo "$(curl --verbose -4 "https://ui.porsche.com/${1}/version/${GITHUB_SHA}")"
+    echo "$(curl --verbose -4 "https://ui.porsche.com/${1}/version.md")"
     echo "###### END ########"
     if [[ "${http_code}" == "200" ]]; then
       echo "All right, deployment was verified."
