@@ -122,16 +122,15 @@ verify_deployment() {
   local n=1
   local max=20
   local delay=60
-  local http_code=9999
+  local http_response=""
   while true
   do
     echo "Check deployment status. Attempt ${n}/${max}. [$(date)]"
     echo "###### BEGIN ########"
     echo "https://ui.porsche.com/${1}/version.md"
-    echo "http code: ${http_code}"
-    echo "$(curl --verbose -4 "https://ui.porsche.com/${1}/version.md")"
+    echo "http response: ${http_response}"
     echo "###### END ########"
-    if [[ "${http_code}" == "200" ]]; then
+    if [[ "${http_response}" == "${GITHUB_SHA}" ]]; then
       echo "All right, deployment was verified."
       break
     elif [[ ${n} -lt ${max} ]]; then
@@ -141,7 +140,7 @@ verify_deployment() {
       exit 1
     fi
     sleep ${delay}
-    http_code="$(curl -H "Cache-Control: no-cache" -s -o /dev/null -w "%{http_code}" "https://ui.porsche.com/${1}/version.md")"
+    http_response="$(curl -s -H "Cache-Control: no-cache" "https://ui.porsche.com/${1}/version.md")"
   done
 }
 
