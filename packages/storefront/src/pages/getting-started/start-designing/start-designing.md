@@ -11,8 +11,7 @@ The basic library contains the fundamental elements that can be used both indivi
 [Download Porsche UI Kit Basic](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-basic.sketch.xml)  
 
 ### Web and App Library
-The web library provides components that are to be used within web applications, like buttons, form elements and many more.
-The App Library is containing specific components for native apps.
+The web library provides components that are to be used within web applications, like buttons, form elements and many more.  
 [Download Porsche UI Kit Web](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-web.sketch.xml)  
 
 ### App Library
