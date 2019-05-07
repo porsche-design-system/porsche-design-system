@@ -1,6 +1,33 @@
 $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
 // linear scaling //
+@mixin -text-size-large-title($weight: 400) {
+  font-family: $p-font-primary;
+  font-weight: $weight;
+  font-size: rem(36px);
+  line-height: 1.333;
+
+  @include breakpoint("s", "m") {
+    font-size: rem(48px);
+    line-height: 1.25;
+  }
+
+  @include breakpoint("m", "l") {
+    font-size: rem(60px);
+    line-height: 1.2;
+  }
+
+  @include breakpoint("l", "xl") {
+    font-size: rem(72px);
+    line-height: 1.25;
+  }
+
+  @include breakpoint("xl") {
+    font-size: rem(84px);
+    line-height: 1.243;
+  }
+}
+
 @mixin -text-size-1($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
@@ -105,6 +132,33 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
   @include breakpoint("xl") {
     font-size: rem(36px);
+    line-height: 1.333;
+  }
+}
+
+@mixin -text-size-5($weight: 400) {
+  font-family: $p-font-primary;
+  font-weight: $weight;
+  font-size: rem(16px);
+  line-height: 1.5;
+
+  @include breakpoint("s", "m") {
+    font-size: rem(18px);
+    line-height: 1.333;
+  }
+
+  @include breakpoint("m", "l") {
+    font-size: rem(20px);
+    line-height: 1.4;
+  }
+
+  @include breakpoint("l", "xl") {
+    font-size: rem(22px);
+    line-height: 1.45;
+  }
+
+  @include breakpoint("xl") {
+    font-size: rem(24px);
     line-height: 1.333;
   }
 }
