@@ -21,7 +21,7 @@ export const Home: React.FunctionComponent = () => {
       <article className={styles.intro}>
         <Grid>
           <Grid.Child size={{ base: 12, m: 4 }}>
-            <Text as="h1" type="2-bold">
+            <Text as="h1" type="3-bold">
               Porsche UI Kit
             </Text>
             <Text as="h2" type="4-regular">
@@ -35,13 +35,13 @@ export const Home: React.FunctionComponent = () => {
           </Grid.Child>
           <Spacing marginTop={24} className="p-spacing-mt--0-m">
             <Grid.Child size={{ base: 12, m: 8 }}>
-              <Text type="3-regular">
+              <Text type="4-regular">
                 The Porsche UI Kit provides the design fundamentals for easily creating aesthetic and qualitative
                 digital products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS
                 elements. Everything built and tested following the Porsche quality standards and corporate design
                 principles.
               </Text>
-              <Spacing marginTop={8}>
+              <Spacing marginTop={16}>
                 <Text>
                   While Porsche UI Kit v1 is coming soon as npm package with code examples and design documentation have
                   a look at v0 documentation of <a href={"https://ui.porsche.com/v0/core/"}>Porsche UI Kit – Core v0</a>{" "}
@@ -74,13 +74,13 @@ export const Home: React.FunctionComponent = () => {
       <article className={styles.newsletter}>
         <Grid>
           <Grid.Child size={{ base: 12, m: 3 }}>
-            <Text as="h2" type="2-bold">
+            <Text as="h2" type="3-bold">
               Always stay informed
             </Text>
           </Grid.Child>
           <Grid.Child size={{ base: 12, m: 8 }} offset={{ base: 0, m: 1 }} className="p-mt--24 p-mt--0-m">
-            <Text type="3-regular">Join our mailing list and get informed about relevant updates and topics.</Text>
-            <Spacing marginTop={8}>
+            <Text type="4-regular">Join our mailing list and get informed about relevant updates and topics.</Text>
+            <Spacing marginTop={16}>
               <Text>
                 <a href="http://eepurl.com/ghVSjH" target="_blank" rel="noopener noreferrer">
                   Subscribe to mailing list
