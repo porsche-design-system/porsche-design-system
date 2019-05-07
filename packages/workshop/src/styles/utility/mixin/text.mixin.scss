@@ -1,83 +1,83 @@
 $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
-// EXPONENTIAL LINEAR //
+// linear scaling //
 @mixin -text-size-1($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
-  font-size: rem(29px);
-  line-height: 1.4;
+  font-size: rem(32px);
+  line-height: 1.25;
 
   @include breakpoint("s", "m") {
-    font-size: rem(37px);
-    line-height: 1.35;
+    font-size: rem(42px);
+    line-height: 1.333;
   }
 
   @include breakpoint("m", "l") {
-    font-size: rem(42px);
-    line-height: 1.35;
+    font-size: rem(52px);
+    line-height: 1.23;
   }
 
   @include breakpoint("l", "xl") {
-    font-size: rem(49px);
-    line-height: 1.3;
+    font-size: rem(62px);
+    line-height: 1.225;
   }
 
   @include breakpoint("xl") {
-    font-size: rem(60px);
-    line-height: 1.3;
+    font-size: rem(72px);
+    line-height: 1.25;
   }
 }
 
 @mixin -text-size-2($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
-  font-size: rem(25px);
-  line-height: 1.4;
+  font-size: rem(28px);
+  line-height: 1.285;
 
   @include breakpoint("s", "m") {
-    font-size: rem(29px);
-    line-height: 1.35;
+    font-size: rem(36px);
+    line-height: 1.333;
   }
 
   @include breakpoint("m", "l") {
-    font-size: rem(32px);
-    line-height: 1.35;
+    font-size: rem(44px);
+    line-height: 1.181;
   }
 
   @include breakpoint("l", "xl") {
-    font-size: rem(36px);
-    line-height: 1.35;
+    font-size: rem(52px);
+    line-height: 1.22;
   }
 
   @include breakpoint("xl") {
-    font-size: rem(43px);
-    line-height: 1.35;
+    font-size: rem(60px);
+    line-height: 1.2;
   }
 }
 
 @mixin -text-size-3($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
-  font-size: rem(21px);
+  font-size: rem(24px);
   line-height: 1.4;
 
   @include breakpoint("s", "m") {
-    font-size: rem(24px);
+    font-size: rem(30px);
     line-height: 1.4;
   }
 
   @include breakpoint("m", "l") {
-    font-size: rem(25px);
+    font-size: rem(36px);
     line-height: 1.4;
   }
 
   @include breakpoint("l", "xl") {
-    font-size: rem(28px);
+    font-size: rem(42px);
     line-height: 1.35;
   }
 
   @include breakpoint("xl") {
-    font-size: rem(31px);
+    font-size: rem(48px);
     line-height: 1.35;
   }
 }
@@ -85,27 +85,27 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 @mixin -text-size-4($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
-  font-size: rem(18px);
-  line-height: 150%;
+  font-size: rem(20px);
+  line-height: 1.4;
 
   @include breakpoint("s", "m") {
-    font-size: rem(19px);
-    line-height: 150%;
+    font-size: rem(24px);
+    line-height: 1.333;
   }
 
   @include breakpoint("m", "l") {
-    font-size: rem(20px);
-    line-height: 1.4;
+    font-size: rem(28px);
+    line-height: 1.285;
   }
 
   @include breakpoint("l", "xl") {
-    font-size: rem(21px);
-    line-height: 1.4;
+    font-size: rem(32px);
+    line-height: 1.25;
   }
 
   @include breakpoint("xl") {
-    font-size: rem(22px);
-    line-height: 1.4;
+    font-size: rem(36px);
+    line-height: 1.333;
   }
 }
 
@@ -113,12 +113,12 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(16px);
-  line-height: 150%;
+  line-height: 1.5;
 }
 
 @mixin -text-size-small($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
-  font-size: rem(14px);
-  line-height: 150%;
+  font-size: rem(12px);
+  line-height: 1.666;
 }
