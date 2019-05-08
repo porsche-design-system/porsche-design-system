@@ -9,6 +9,9 @@ export interface TextProps extends ClassNameProp, ComponentProp {
    * @default copy-regular
    */
   type?:
+    | "large-title-regular"
+    | "large-title-thin"
+    | "large-title-bold"
     | "1-regular"
     | "1-thin"
     | "1-bold"
@@ -47,7 +50,6 @@ export interface TextProps extends ClassNameProp, ComponentProp {
 
   /**
    * Wraps the text, even when it has to break a word.
-   * @default true
    */
   wrap?: boolean;
 
@@ -59,7 +61,7 @@ export interface TextProps extends ClassNameProp, ComponentProp {
 
 const defaultProps: Partial<TextProps> = {
   type: "copy-regular",
-  wrap: true
+  color: "black"
 };
 
 /**
