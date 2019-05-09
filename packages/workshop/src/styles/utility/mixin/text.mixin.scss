@@ -1,33 +1,5 @@
 $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
-// linear scaling //
-@mixin p-text-size-large-title($weight: 400) {
-  font-family: $p-font-primary;
-  font-weight: $weight;
-  font-size: rem(36px);
-  line-height: 1.333;
-
-  @include breakpoint("s", "m") {
-    font-size: rem(48px);
-    line-height: 1.25;
-  }
-
-  @include breakpoint("m", "l") {
-    font-size: rem(60px);
-    line-height: 1.2;
-  }
-
-  @include breakpoint("l", "xl") {
-    font-size: rem(72px);
-    line-height: 1.25;
-  }
-
-  @include breakpoint("xl") {
-    font-size: rem(84px);
-    line-height: 1.243;
-  }
-}
-
 @mixin p-text-size-1($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
