@@ -7,7 +7,7 @@
   align-items: flex-start;
   flex-direction: column;
   text-align: left;
-  @include -text-size-copy;
+  @include p-text-size-copy;
   padding: 12px 17px; // 17px width because of 1 px border which leads to 18px
   max-width: 100%; // fix for IE11, forces using multi line label
   border-radius: 0; // fix for Chrome and Safari
