@@ -33,4 +33,4 @@ To improve the output efficiency and reduce maintenance cost we decided on using
 
 So, before starting designing with the Sketch library, make sure to [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation and to install the latest [Abstract Desktop App](https://app.goabstract.com/)
 
-[Read more about the design workflow with Abstract](#/getting-started/design-workflow).
+[Read more about the design workflow with Abstract](#/getting-started/design-workflow)
