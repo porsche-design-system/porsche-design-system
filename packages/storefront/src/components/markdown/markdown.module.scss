@@ -41,22 +41,22 @@
     // Typography
     h1 {
       @include p-text-size-2($p-font-weight-bold);
-      margin-top: $p-spacing-64;
+      margin-top: $p-spacing-72;
     }
 
     h2 {
       @include p-text-size-3($p-font-weight-bold);
-      margin-top: $p-spacing-32;
+      margin-top: $p-spacing-40;
     }
 
     h3 {
       @include p-text-size-4($p-font-weight-bold);
-      margin-top: $p-spacing-24;
+      margin-top: $p-spacing-32;
     }
 
     h4 {
-      @include p-text-size-4($p-font-weight-bold);
-      margin-top: $p-spacing-24;
+      @include p-text-size-5($p-font-weight-bold);
+      margin-top: $p-spacing-32;
     }
 
     h5,
