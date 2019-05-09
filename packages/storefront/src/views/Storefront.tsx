@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { throttle } from "throttle-debounce";
 import cx from "classnames";
 import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
@@ -30,9 +30,16 @@ export const Storefront: React.FunctionComponent = () => {
     setHideSidebar(!hideSidebar);
   };
 
-  const updateIsMobile = () => {
-    window.innerWidth < 1000 ? setHideSidebar(hideSidebar === false) : setHideSidebar(hideSidebar === true);
-  };
+  const updateIsMobile = useCallback(() => {
+    window.innerWidth < 1000 ? setHideSidebar(true) : setHideSidebar(false);
+  }, []);
+
+  const onResize = useCallback(
+    throttle(500, () => {
+      updateIsMobile();
+    }),
+    [updateIsMobile]
+  );
 
   const appSidebarClasses = cx(styles["area-sidebar"], {
     [styles.close]: hideSidebar
@@ -47,13 +54,12 @@ export const Storefront: React.FunctionComponent = () => {
 
     updateIsMobile();
 
-    window.addEventListener(
-      "resize",
-      throttle(500, () => {
-        updateIsMobile();
-      })
-    );
-  }, []);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
+  }, [updateIsMobile, onResize]);
 
   return (
     <Router>
