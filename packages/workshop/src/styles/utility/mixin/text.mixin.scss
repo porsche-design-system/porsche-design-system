@@ -1,7 +1,7 @@
 $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
 // linear scaling //
-@mixin -text-size-large-title($weight: 400) {
+@mixin p-text-size-large-title($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(36px);
@@ -28,7 +28,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin -text-size-1($weight: 400) {
+@mixin p-text-size-1($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(32px);
@@ -55,7 +55,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin -text-size-2($weight: 400) {
+@mixin p-text-size-2($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(28px);
@@ -82,7 +82,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin -text-size-3($weight: 400) {
+@mixin p-text-size-3($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(24px);
@@ -109,7 +109,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin -text-size-4($weight: 400) {
+@mixin p-text-size-4($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(20px);
@@ -136,7 +136,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin -text-size-5($weight: 400) {
+@mixin p-text-size-5($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(16px);
@@ -163,14 +163,14 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin -text-size-copy($weight: 400) {
+@mixin p-text-size-copy($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(16px);
   line-height: 1.5;
 }
 
-@mixin -text-size-small($weight: 400) {
+@mixin p-text-size-small($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(12px);
