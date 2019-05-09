@@ -26,11 +26,11 @@ the recommended [Sketch Plugins](#/getting-started/sketch-plugins) installed, so
 
 You can download the Porsche font files in the Porsche Brand Guide:  
 [Download Porsche typeface](https://brandguide.porsche.com/elements/manual/view/id/885)  
-For UI design use within Sketch, we recommend using the "Typefaces for digital users, Web Developer Kit". 
+For UI design in Sketch, we recommend using the "Typeface for print applications, apps and moving images (OTF)", which is also used within the Porsche UI Kit components.
 
 ## Design Workflow
 To improve the output efficiency and reduce maintenance cost we decided on using the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/how-it-works/). 
 
 So, before starting designing with the Sketch library, make sure to [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation and to install the latest [Abstract Desktop App](https://app.goabstract.com/)
 
-[Read more about the design workflow with Abstract](#/getting-started/design-workflow).
+[Read more about the design workflow with Abstract](#/getting-started/design-workflow)
