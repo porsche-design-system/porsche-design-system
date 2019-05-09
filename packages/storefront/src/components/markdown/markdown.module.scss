@@ -40,17 +40,17 @@
 
     // Typography
     h1 {
-      @include p-text-size-2($p-font-weight-bold);
+      @include p-text-size-3($p-font-weight-bold);
       margin-top: $p-spacing-72;
     }
 
     h2 {
-      @include p-text-size-3($p-font-weight-bold);
+      @include p-text-size-4($p-font-weight-bold);
       margin-top: $p-spacing-40;
     }
 
     h3 {
-      @include p-text-size-4($p-font-weight-bold);
+      @include p-text-size-5($p-font-weight-bold);
       margin-top: $p-spacing-32;
     }
 

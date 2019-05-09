@@ -98,7 +98,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
         {props.featureV1 && (
           <React.Fragment>
             <Divider spacing="small" />
-            <Text type="4-bold" as="h2">
+            <Text type="5-bold" as="h2">
               Components
             </Text>
             {categories.map((category) => {

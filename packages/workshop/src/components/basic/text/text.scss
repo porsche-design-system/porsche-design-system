@@ -79,11 +79,11 @@
   }
 
   &--5-regular {
-    @include p-text-size-4($weight: 400);
+    @include p-text-size-5($weight: 400);
   }
 
   &--5-bold {
-    @include p-text-size-4($weight: 600);
+    @include p-text-size-5($weight: 600);
   }
 
   &--copy-regular {
