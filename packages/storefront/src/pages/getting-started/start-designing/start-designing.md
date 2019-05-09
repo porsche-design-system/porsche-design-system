@@ -24,8 +24,8 @@ To get a smooth and easy "designing from scratch" experience, you are welcome to
 
 
 ## Sketch Plugins
-Some of the components provide a smooth layout behaviour (such as automatic resizing on content input). To get the most out of it, please install the Sketch plugin [Anima](https://www.animaapp.com/).  
-A curated list of more plugins that are recommended (yet not obligatory) for a smooth Sketch workflow can be found [here](#/getting-started/sketch-plugins).
+To get the most out of the Porsche UI Kit Sketch libraries, please make sure to have 
+the recommended [Sketch Plugins](#/getting-started/sketch-plugins) installed, some of which are only "nice to have", yet super useful. 
 
 ## Typeface
 
@@ -38,4 +38,4 @@ To improve the output efficiency and reduce maintenance cost we decided on using
 
 So, before starting designing with the Sketch library, make sure to [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation and to install the latest [Abstract Desktop App](https://app.goabstract.com/)
 
-[Read more about the design workflow with Abstract](#/getting-started/design-workflow).
+[Read more about the design workflow with Abstract](#/getting-started/design-workflow)
