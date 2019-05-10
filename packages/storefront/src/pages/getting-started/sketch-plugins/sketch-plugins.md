@@ -10,7 +10,7 @@ Some of the components provide a smooth layout behaviour (such as automatic resi
 Below you can find a curated list of recommended plugins that are super useful and nice for layouting, but not mandatory for using the Porsche UI Kit.
   
 ### Sketch Runner  
-Runner helps you to get around Sketch quicker by giving you an intuitive interface to supercharge your daily workflow. Instead of searching through your menu you can start running commands directly from your keyboard and use it, for example, to **super quickly search and place Porsche UI Kit library components**.  
+Runner helps you to get around Sketch quicker by giving you an intuitive interface to supercharge your daily workflow. Instead of searching through your menu you can start running commands directly from your keyboard and use it, for example, to super quickly search and place Porsche UI Kit library components.  
 [More information & download](https://sketchrunner.com/)  
 
 ### Automate Sketch  
