@@ -39,6 +39,9 @@ export interface InputProps extends ClassNameProp, ComponentProp {
      */
     onChange?: (value: string, event: React.FormEvent<HTMLInputElement>, data: InputProps) => void
 
+    /** pattern to restrict input */
+    pattern?: string
+
     /** The placeholder of the input. */
     placeholder?: string
 
@@ -71,6 +74,7 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
         icon,
         name,
         onChange,
+        pattern,
         placeholder,
         type,
         unit,
@@ -117,6 +121,7 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
                     spellCheck={false}
                     type={type}
                     value={value}
+                    pattern={pattern}
                 />
                 {!basic && <span className={floatingPlaceholderClasses}>{placeholder}</span>}
                 {icon && (
