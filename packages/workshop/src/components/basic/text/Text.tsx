@@ -9,6 +9,9 @@ export interface TextProps extends ClassNameProp, ComponentProp {
    * @default copy-regular
    */
   type?:
+    | "large-title-regular"
+    | "large-title-thin"
+    | "large-title-bold"
     | "1-regular"
     | "1-thin"
     | "1-bold"

@@ -12,7 +12,7 @@ export const Header: React.FunctionComponent = () => {
         <Logo as="span" className={style.item} />
       </Link>
       <Spacing marginTop={16}>
-        <Text type="4-bold" align="center" as="h1">
+        <Text type="3-bold" align="center" as="h1">
           Porsche UI Kit
         </Text>
         <Text type="small-regular" align="center" as="p">

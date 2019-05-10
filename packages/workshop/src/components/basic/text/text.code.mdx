@@ -5,6 +5,20 @@ import { Text } from "@porscheui/porsche-ui-kit"
 
 ## Text sizes and styles
 
+### Size large-title - bold / regular
+
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="large-title-bold" as="h1" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="large-title-regular" as="h1" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
 ### Size 1 - bold / regular
 
 <Example noTheme={false} className="sg-example-text">
