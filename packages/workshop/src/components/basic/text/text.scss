@@ -34,6 +34,18 @@
     white-space: nowrap;
   }
 
+  &--large-title-thin {
+    @include p-text-size-large-title($weight: 200);
+  }
+
+  &--large-title-regular {
+    @include p-text-size-large-title($weight: 400);
+  }
+
+  &--large-title-bold {
+    @include p-text-size-large-title($weight: 600);
+  }
+
   &--1-thin {
     @include p-text-size-1($weight: 200);
   }

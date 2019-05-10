@@ -1,6 +1,7 @@
 $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
-@mixin p-text-size-1($weight: 400) {
+// values taken from excel sheet 2019-05-09_porsche-ui-kit-typography-mapping
+@mixin p-text-size-large-title($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(32px);
@@ -8,26 +9,26 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
   @include breakpoint("s", "m") {
     font-size: rem(42px);
-    line-height: 1.333;
+    line-height: 1.238;
   }
 
   @include breakpoint("m", "l") {
     font-size: rem(52px);
-    line-height: 1.23;
+    line-height: 1.153;
   }
 
   @include breakpoint("l", "xl") {
     font-size: rem(62px);
-    line-height: 1.225;
+    line-height: 1.161;
   }
 
   @include breakpoint("xl") {
     font-size: rem(72px);
-    line-height: 1.25;
+    line-height: 1.166;
   }
 }
 
-@mixin p-text-size-2($weight: 400) {
+@mixin p-text-size-1($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(28px);
@@ -35,7 +36,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
   @include breakpoint("s", "m") {
     font-size: rem(36px);
-    line-height: 1.333;
+    line-height: 1.222;
   }
 
   @include breakpoint("m", "l") {
@@ -45,43 +46,43 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
   @include breakpoint("l", "xl") {
     font-size: rem(52px);
-    line-height: 1.22;
+    line-height: 1.153;
   }
 
   @include breakpoint("xl") {
     font-size: rem(60px);
-    line-height: 1.2;
+    line-height: 1.133;
   }
 }
 
-@mixin p-text-size-3($weight: 400) {
+@mixin p-text-size-2($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(24px);
-  line-height: 1.4;
+  line-height: 1.333;
 
   @include breakpoint("s", "m") {
     font-size: rem(30px);
-    line-height: 1.4;
+    line-height: 1.333;
   }
 
   @include breakpoint("m", "l") {
     font-size: rem(36px);
-    line-height: 1.4;
+    line-height: 1.222;
   }
 
   @include breakpoint("l", "xl") {
     font-size: rem(42px);
-    line-height: 1.35;
+    line-height: 1.238;
   }
 
   @include breakpoint("xl") {
     font-size: rem(48px);
-    line-height: 1.35;
+    line-height: 1.166;
   }
 }
 
-@mixin p-text-size-4($weight: 400) {
+@mixin p-text-size-3($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(20px);
@@ -104,11 +105,11 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
   @include breakpoint("xl") {
     font-size: rem(36px);
-    line-height: 1.333;
+    line-height: 1.222;
   }
 }
 
-@mixin p-text-size-5($weight: 400) {
+@mixin p-text-size-4($weight: 400) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: rem(16px);
@@ -126,13 +127,20 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
   @include breakpoint("l", "xl") {
     font-size: rem(22px);
-    line-height: 1.45;
+    line-height: 1.454;
   }
 
   @include breakpoint("xl") {
     font-size: rem(24px);
     line-height: 1.333;
   }
+}
+
+@mixin p-text-size-5($weight: 400) {
+  font-family: $p-font-primary;
+  font-weight: $weight;
+  font-size: rem(16px);
+  line-height: 1.5;
 }
 
 @mixin p-text-size-copy($weight: 400) {

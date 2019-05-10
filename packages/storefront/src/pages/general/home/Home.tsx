@@ -24,7 +24,7 @@ export const Home: React.FunctionComponent = () => {
             <Text as="h1" type="3-bold">
               Porsche UI Kit
             </Text>
-            <Text as="h2" type="5-regular">
+            <Text as="h2" type="4-regular">
               Design System
             </Text>
             <Spacing marginTop={8}>
