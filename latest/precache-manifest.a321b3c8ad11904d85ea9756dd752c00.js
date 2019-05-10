@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "00254013149f4fcdd0395afbc539620e",
+    "revision": "3a9d9eb4cb23cb6cb6b8f8b33c7efb29",
     "url": "./index.html"
   },
   {
@@ -48,7 +48,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/css/6.378a91f8.chunk.css"
   },
   {
-    "revision": "59d0da87d4202436e425",
+    "revision": "227ee8c7a804bb359987",
     "url": "./static/css/main.a37623c7.chunk.css"
   },
   {
@@ -140,8 +140,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/9.c4db59eb.chunk.js"
   },
   {
-    "revision": "59d0da87d4202436e425",
-    "url": "./static/js/main.e6e0fe96.chunk.js"
+    "revision": "227ee8c7a804bb359987",
+    "url": "./static/js/main.d143523b.chunk.js"
   },
   {
     "revision": "8649362d42ef049d5d2e",
@@ -192,16 +192,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/media/roadmap.157ec366.md"
   },
   {
-    "revision": "0a499bd501079283da58bb1eb8fda64e",
-    "url": "./static/media/sketch-plugins.0a499bd5.md"
+    "revision": "4cf49d184c44e38a39d3294db566e443",
+    "url": "./static/media/sketch-plugins.4cf49d18.md"
   },
   {
     "revision": "deb05a5f887c6952f0b31e58b6abff23",
     "url": "./static/media/start-coding.deb05a5f.md"
   },
   {
-    "revision": "18ec05ca743a103a263756990427797a",
-    "url": "./static/media/start-designing.18ec05ca.md"
+    "revision": "581e1d10fdd0423008d5ccd3f58d5544",
+    "url": "./static/media/start-designing.581e1d10.md"
   },
   {
     "revision": "5f755ba041a97bee606c2b4d2c84c184",
