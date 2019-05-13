@@ -123,3 +123,18 @@ Buttons can also be rendered as link elements if used as a navigation item.
     )
 }}
 </Example>
+
+
+### Button regular basic TEST with new compiled icon
+If using basic type, no extra class/prop declaration is needed.
+
+<Example noTheme={false}>
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <ButtonRegular iconPath="https://video.porsche.com/0.0.2/icon/" icon="icon_arrow-left-new.min.svg" inverted={setTheme}>Click Here!</ButtonRegular>
+      </React.Fragment>
+    )
+}}
+</Example>
