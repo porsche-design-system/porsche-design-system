@@ -185,3 +185,65 @@ $sg-color-highlight: deeppink;
     }
   }
 }
+
+/* ----------  grid component styles ---------- */
+.sg-design-color-badge {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  height: 60px;
+}
+.sg-design-color-porsche-red {
+  background-color: $p-color-porsche-red;
+}
+.sg-design-color-porsche-dark-red {
+  background-color: $p-color-porsche-dark-red;
+}
+.sg-design-color-porsche-light {
+  background-color: $p-color-porsche-light;
+}
+.sg-design-color-surface-light {
+  background-color: $p-color-surface-light;
+}
+.sg-design-color-surface-dark {
+  background-color: $p-color-surface-dark;
+}
+.sg-design-color-porsche-dark {
+  background-color: $p-color-porsche-dark;
+}
+.sg-design-color-porsche-black {
+  background-color: $p-color-porsche-black;
+}
+.sg-design-color-neutral-grey-1 {
+  background-color: $p-color-neutral-grey-1;
+}
+.sg-design-color-neutral-grey-2 {
+  background-color: $p-color-neutral-grey-2;
+}
+.sg-design-color-neutral-grey-3 {
+  background-color: $p-color-neutral-grey-3;
+}
+.sg-design-color-neutral-grey-4 {
+  background-color: $p-color-neutral-grey-4;
+}
+.sg-design-color-neutral-grey-5 {
+  background-color: $p-color-neutral-grey-5;
+}
+.sg-design-color-neutral-grey-6 {
+  background-color: $p-color-neutral-grey-6;
+}
+.sg-design-color-neutral-grey-7 {
+  background-color: $p-color-neutral-grey-7;
+}
+.sg-design-color-neutral-grey-8 {
+  background-color: $p-color-neutral-grey-8;
+}
+.sg-design-color-status-red {
+  background-color: $p-color-status-red;
+}
+.sg-design-color-status-green {
+  background-color: $p-color-status-green;
+}
+.sg-design-color-status-yellow {
+  background-color: $p-color-status-yellow;
+}
