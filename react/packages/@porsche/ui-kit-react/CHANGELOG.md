@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.12.0] - 2019-05-13
+
+-   Added pattern option to input component
+
 ## [0.11.0] - 2019-04-12
 
 -   Added resizable option to textarea component
