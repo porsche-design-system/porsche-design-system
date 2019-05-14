@@ -2,10 +2,12 @@
 $p-color-porsche-red: #d5001c;
 $p-color-porsche-dark-red: #960014;
 $p-color-porsche-light: #fff;
-$p-color-surface-light: #f2f2f2;
-$p-color-surface-dark: #1a2023;
 $p-color-porsche-dark: #0e1418;
 $p-color-porsche-black: #000;
+
+// surface colors
+$p-color-surface-light: #f2f2f2;
+$p-color-surface-dark: #1a2023;
 
 // neutral colors
 $p-color-neutral-grey-1: #e3e4e5;
@@ -27,7 +29,7 @@ $p-color-status-yellow: #e2b236;
  */
 // ci colors
 $p-color-white: #fff; // --> $p-color-porsche-light
-$p-color-grey-1: #eff0f1; // --> ???
+$p-color-grey-1: #eff0f1; // --> $p-color-neutral-grey-1
 $p-color-grey-2: #e3e4e4; // --> $p-color-neutral-grey-1
 $p-color-grey-3: #c8cacb; // --> $p-color-neutral-grey-2
 $p-color-grey-4: #afb1b2; // --> $p-color-neutral-grey-3
@@ -45,4 +47,4 @@ $p-color-red-1: #d5001c; // --> $p-color-porsche-red
 $p-color-red-2: #960014; // --> $p-color-porsche-dark-red
 
 // status colors
-$p-color-status-orange: #e6950a; // --> ???
+$p-color-status-orange: #e6950a; // --> $p-color-status-yellow
