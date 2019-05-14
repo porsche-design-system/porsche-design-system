@@ -96,7 +96,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
               </div>
             </Suspense>
           );
-        } else if (item.key === "props" && item.active) {
+        } else if (item.key === "props" && story.props && item.active) {
           return story.props.map((component, index) => {
             return (
               <PropsTable

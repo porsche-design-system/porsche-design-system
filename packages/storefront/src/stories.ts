@@ -4,7 +4,7 @@ export interface Story {
   examples: any;
   design?: any;
   vrt?: any;
-  props: string[];
+  props?: string[];
 }
 export interface Stories {
   [category: string]: {
@@ -15,8 +15,7 @@ export const Stories: Stories = {
   Base: {
     Color: {
       examples: importMDX("../../workshop/src/components/basic/color/color.code.mdx"),
-      design: importMDX("../../workshop/src/components/basic/color/color.design.mdx"),
-      props: ["Color"]
+      design: importMDX("../../workshop/src/components/basic/color/color.design.mdx")
     },
     Text: {
       examples: importMDX("../../workshop/src/components/basic/text/text.code.mdx"),
