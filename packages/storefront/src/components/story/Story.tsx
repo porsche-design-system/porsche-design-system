@@ -16,14 +16,10 @@ export interface StoryUrlParams {
 }
 
 export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> & StoryParams> = (props) => {
-  const [selectedTab, setSelectedTab] = useState("examples");
+  const [selectedTab, setSelectedTab] = useState("design");
 
   const categoryName = props.match.params.category;
   const storyName = props.match.params.story;
-
-  // if (!props.featureV1) {
-  //   return <Redirect to="/general/home" />
-  // }
 
   const category =
     (Stories as any)[decodeParam(categoryName)] || (Stories as any)[toTitleCase(decodeParam(categoryName))];
@@ -37,42 +33,34 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
     return <Redirect to="/general/home" />;
   }
 
-  const Code = lazy(() => story.examples);
-  const Design = story.design && lazy(() => story.design);
+  const Code = lazy(() => story.code);
+  const Design = lazy(() => story.design);
   const Props = story.props;
 
   const handleTabClick = (tab: string) => {
     setSelectedTab(tab);
   };
 
-  const panes = [];
-
-  if (Code) {
-    panes.push({
-      menuItem: "Examples",
-      key: "examples",
-      active: selectedTab === "examples",
-      onClick: () => handleTabClick("examples")
-    });
-  }
-
-  if (Design) {
-    panes.push({
+  const panes = [
+    {
       menuItem: "Design",
       key: "design",
       active: selectedTab === "design",
       onClick: () => handleTabClick("design")
-    });
-  }
-
-  if (Props) {
-    panes.push({
+    },
+    {
+      menuItem: "Code",
+      key: "code",
+      active: selectedTab === "code",
+      onClick: () => handleTabClick("code")
+    },
+    {
       menuItem: "Props",
       key: "props",
       active: selectedTab === "props",
       onClick: () => handleTabClick("props")
-    });
-  }
+    }
+  ];
 
   return (
     <React.Fragment>
@@ -80,7 +68,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
         <Tab panes={panes} alignment="left" />
       </Spacing>
       {panes.map((item) => {
-        if (item.key === "examples" && item.active) {
+        if (item.key === "code" && item.active) {
           return (
             <Suspense key={item.key} fallback={null}>
               <div className={style.markdown}>
@@ -97,7 +85,7 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
             </Suspense>
           );
         } else if (item.key === "props" && item.active) {
-          return story.props.map((component, index) => {
+          return Props.map((component) => {
             return (
               <PropsTable
                 key={component}
