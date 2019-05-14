@@ -40,17 +40,17 @@
   display: block;
   padding: $p-spacing-4 $p-spacing-8 $p-spacing-4 $p-spacing-16;
   text-decoration: none;
-  color: $p-color-grey-10;
+  color: $p-color-porsche-black;
 
   &:hover,
   &:focus,
   &:active {
-    color: $p-color-red-1;
+    color: $p-color-porsche-red;
   }
 }
 
 .nav-link.current {
-  color: $p-color-red-1;
+  color: $p-color-porsche-red;
 }
 
 .nav-icon {

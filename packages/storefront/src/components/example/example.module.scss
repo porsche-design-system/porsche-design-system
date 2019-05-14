@@ -28,13 +28,13 @@
 }
 
 .render.light {
-  border: 1px solid $p-color-grey-3;
-  background-color: $p-color-white;
+  border: 1px solid $p-color-neutral-grey-2;
+  background-color: $p-color-porsche-light;
 }
 
 .render.dark {
-  border: 1px solid $p-color-grey-10;
-  background-color: $p-color-grey-10;
+  border: 1px solid $p-color-surface-dark;
+  background-color: $p-color-surface-dark;
 }
 
 .toggle-container {
@@ -46,9 +46,9 @@
   position: relative;
   height: 30px;
   background: none;
-  border: 1px solid $p-color-grey-4;
+  border: 1px solid $p-color-neutral-grey-3;
   cursor: pointer;
-  color: $p-color-black;
+  color: $p-color-porsche-black;
   @include -text-size-small(600);
   &:focus {
     outline: 0;
@@ -56,5 +56,5 @@
 }
 
 .toggle.open {
-  background-color: $p-color-white;
+  background-color: $p-color-porsche-light;
 }

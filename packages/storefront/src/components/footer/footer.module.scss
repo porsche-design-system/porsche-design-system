@@ -2,7 +2,7 @@
 
 .footer {
   padding: $p-spacing-32 0;
-  color: $p-color-grey-5;
+  color: $p-color-neutral-grey-4;
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0) 0%,
@@ -21,11 +21,11 @@
   }
 
   a {
-    color: $p-color-grey-5;
+    color: $p-color-neutral-grey-4;
     text-decoration: underline;
     &:hover,
     &:focus {
-      color: $p-color-red-1;
+      color: $p-color-porsche-red;
     }
   }
 }
