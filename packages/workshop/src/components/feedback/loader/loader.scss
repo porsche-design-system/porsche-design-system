@@ -19,24 +19,24 @@
   &__fg {
     transform-origin: center center;
     animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
-    stroke: $p-color-grey-9;
+    stroke: $p-color-neutral-grey-8;
     stroke-dasharray: 100, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
   }
 
   &__bg {
-    stroke: $p-color-grey-9;
+    stroke: $p-color-neutral-grey-8;
     opacity: 0.4;
   }
 
   &--theme-inverted {
     #{$bem-block}__fg {
-      stroke: $p-color-white;
+      stroke: $p-color-porsche-light;
     }
 
     #{$bem-block}__bg {
-      stroke: $p-color-white;
+      stroke: $p-color-porsche-light;
     }
   }
 

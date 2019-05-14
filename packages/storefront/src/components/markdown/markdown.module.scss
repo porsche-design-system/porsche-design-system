@@ -78,7 +78,7 @@
       }
       border: 0;
       height: 1px;
-      background-color: $p-color-grey-2;
+      background-color: $p-color-neutral-grey-1;
     }
 
     // Emphasis
@@ -101,7 +101,7 @@
     // Blockquote
     blockquote {
       padding-left: $p-spacing-24;
-      border-left: rem(5px) solid $p-color-grey-3;
+      border-left: rem(5px) solid $p-color-neutral-grey-2;
     }
 
     // Lists
@@ -126,9 +126,9 @@
 
     :not(pre) > code {
       padding: 0.125rem $p-spacing-8;
-      background-color: mix($p-color-red-1, $p-color-white, 10%);
+      background-color: mix($p-color-porsche-red, $p-color-porsche-light, 10%);
       border-radius: 3px;
-      color: $p-color-red-1;
+      color: $p-color-porsche-red;
     }
 
     pre {
@@ -137,8 +137,8 @@
       padding: $p-spacing-8 $p-spacing-24;
       word-break: break-all;
       word-wrap: break-word;
-      background-color: $p-color-grey-1;
-      color: $p-color-grey-8;
+      background-color: $p-color-neutral-grey-1;
+      color: $p-color-neutral-grey-7;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
@@ -167,7 +167,7 @@
           top: $p-spacing-8;
           bottom: $p-spacing-8;
         }
-        border-bottom: 1px solid $p-color-grey-1;
+        border-bottom: 1px solid $p-color-neutral-grey-1;
         vertical-align: top;
       }
 
@@ -180,12 +180,12 @@
     // Links
     a {
       text-decoration: none;
-      color: $p-color-red-1;
+      color: $p-color-porsche-red;
       transition: color 0.3s;
 
       &:hover {
         text-decoration: underline;
-        color: $p-color-red-2;
+        color: $p-color-porsche-dark-red;
       }
     }
 
