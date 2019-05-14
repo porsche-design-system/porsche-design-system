@@ -7,7 +7,62 @@ Following our mission we align all our doings with our three main objectives:
 
 The roadmap for the Porsche UI Kit is based on the planned tasks and changes for one quarter. Therefore is not a delivery commitment and may be changed based on upcoming user needs, feedback and surrounding requirements.
 
-## Q1 2019
+## Q2 2019
+### CDN Asset Management / April
+- Setup Porsche UI Kit CDN
+- Host and Manage Assets Icons, Porsche Crest and Fonts
+- Host compiled CSS (all / component-specific)
+
+### Develop the basic contents / April-May
+- Color Styles
+- Layout (Flex, Grid) and Spacings
+- Typography Styles
+- Icon Component (colsolidate current Icon Set)
+
+### Web Component Preparation / May
+- Spike StencilJS
+- Decision and foundations preparation
+
+### Design definitions / May
+- Forms and Form elements research
+- Form decision testing
+
+### Development of Components for 1.0 first beta release / May
+- Button Regular
+- Button Square
+- Button Circle
+- Pagination  
+- Text Link
+- Text Lists
+
+### Documentation / Jun
+- Onboarding and Documentation testing with Design/Code
+- Wording Guideline / Template for Documentation
+
+### Release Management 1.0 Beta / Jun
+- Define NPM Package structure
+- Team Planning, i.e. initiative preparation
+- Offer and perform Team onboardings 
+
+## Q3 2019
+
+### Development of Components for 1.0 second beta release / May-Jun
+- Porsche Marque
+- Typography
+- Loader
+- Checkbox
+- Radiobutton
+- Input Fields
+- Text Area
+- Simple Select
+- Toggle Button
+
+### Release New Icon Set
+- Icon Component refactoring
+  
+---
+
+## Achievements
 ### Setup infrastructure and toolchain for 1.0 release
 - Setup Open Design Tools and Processes (Abstract)
 - Provide versioned Design Libraries Basic and Web
@@ -23,50 +78,3 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 - Setup communication channels (Email, Slack) and ressources
 ### Design definitions
 - Typography research and testing
-
-## Q2 2019
-### CDN Asset Management / April
-- Setup Porsche UI Kit CDN
-- Host and Manage Assets Icons, Porsche Crest and Fonts
-- Host compiled CSS (all / component-specific)
-### Develop the basic contents / April-May
-- Typography
-- Colors
-- Layout (Flex, Grid) and Spacings
-- Icon Component (Colsolidate current Icon Set)
-- Porsche Crest
-
-### Design definitions / May
-- Forms and Form elements research
-- Form decision testing
-
-### Development of Components for 1.0 first beta release / May
-- Button Regular
-- Button Square
-- Button Circle
-- Pagination  
-
-### Development of Components for 1.0 second beta release / May-Jun
-- Text Link
-- Text Lists
-- Loader
-- Checkbox
-- Radiobutton
-- Input Fields
-- Text Area
-- Simple Select
-- Toggle Button
-
-### Documentation / Jun
-- Onboarding and Documentation testing with Design/Code
-- Wording Guideline / Template for Documentation
-
-### Release Management 1.0 / Jun
-- Define NPM Package structure
-- Team Planning, i.e. initiative preparation
-- Offer and perform Team onboardings 
-
-
-## Q3 2019
-### Release New Icon Set
-- Icons inkl. Components
