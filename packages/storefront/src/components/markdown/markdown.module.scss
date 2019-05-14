@@ -46,12 +46,12 @@
 
     h2 {
       @include -text-size-3($p-font-weight-bold);
-      margin-top: $p-spacing-32;
+      margin-top: $p-spacing-64;
     }
 
     h3 {
       @include -text-size-4($p-font-weight-bold);
-      margin-top: $p-spacing-24;
+      margin-top: $p-spacing-48;
     }
 
     h4 {
@@ -73,12 +73,12 @@
     // Horizontal Rules
     hr {
       margin: {
-        top: $p-spacing-40;
-        bottom: $p-spacing-40;
+        top: $p-spacing-56;
+        bottom: $p-spacing-16;
       }
       border: 0;
       height: 1px;
-      background-color: $p-color-neutral-grey-1;
+      background-color: $p-color-neutral-grey-2;
     }
 
     // Emphasis
@@ -110,6 +110,7 @@
       @include -text-size-copy;
       margin-top: $p-spacing-24;
       padding-left: $p-spacing-32;
+      list-style-type: square;
 
       ul,
       ol {
@@ -146,12 +147,12 @@
     // Tables
     table {
       margin-top: $p-spacing-24;
-      width: 100%;
+      width: 80%;
       text-align: left;
       border-collapse: collapse;
-
+      
       thead {
-        @include -text-size-4($p-font-weight-bold);
+        @include -text-size-copy($p-font-weight-bold);
       }
 
       tbody {
@@ -160,6 +161,7 @@
 
       th {
         padding-bottom: $p-spacing-8;
+        border-bottom: 1px solid $p-color-neutral-grey-1;
       }
 
       td {
@@ -169,6 +171,7 @@
         }
         border-bottom: 1px solid $p-color-neutral-grey-1;
         vertical-align: top;
+        width: 10%; 
       }
 
       th ~ th,
@@ -179,13 +182,13 @@
 
     // Links
     a {
-      text-decoration: none;
-      color: $p-color-porsche-red;
+      text-decoration: underline;
+      color: $p-color-porsche-black;
       transition: color 0.3s;
 
       &:hover {
-        text-decoration: underline;
-        color: $p-color-porsche-dark-red;
+        text-decoration: none;
+        color: $p-color-porsche-red;
       }
     }
 
