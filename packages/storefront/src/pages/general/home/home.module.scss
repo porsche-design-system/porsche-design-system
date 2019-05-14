@@ -82,7 +82,7 @@
     right: -$p-spacing-32;
   }
   padding: $p-spacing-32;
-  background: $p-color-neutral-grey-1;
+  background: $p-color-surface-light;
 
   @include breakpoint("s") {
     margin: {
