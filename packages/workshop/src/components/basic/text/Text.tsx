@@ -33,7 +33,7 @@ export interface TextProps extends ClassNameProp, ComponentProp {
    * Basic text color variations
    * @default black
    */
-  color?: "black" | "white" | "red" | "blue";
+  color?: "black" | "white" | "red";
 
   /**
    * Adds an ellipsis to a single line of text if it overflows.
