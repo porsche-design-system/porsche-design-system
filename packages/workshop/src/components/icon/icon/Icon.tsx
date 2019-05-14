@@ -26,40 +26,18 @@ export interface IconProps extends ClassNameProp, ComponentProp {
    * @default <i>
    */
   tag?: any;
-
-  /**
-   * The style of the color.
-   * @default black
-   */
-  color?:
-    | "black"
-    | "grey-darker"
-    | "grey-dark"
-    | "grey"
-    | "grey-light"
-    | "grey-lighter"
-    | "white"
-    | "red-1"
-    | "red-2"
-    | "blue-1"
-    | "blue-2"
-    | "status-green"
-    | "status-yellow"
-    | "status-orange"
-    | "status-red";
 }
 
 const defaultProps: Partial<IconProps> = {
-  path: "https://video.porsche.com/0.0.1/icon/",
-  tag: "i",
-  color: "red-1"
+  path: "https://video.porsche.com/0.0.3/icon/",
+  tag: "i"
 };
 
 /**
  * Use this component any time you want to display svg icons.
  */
 export const Icon: React.FunctionComponent<IconProps> = (props) => {
-  const { className, path, name, size, tag, color, ...rest } = props;
+  const { className, path, name, size, tag, ...rest } = props;
 
   if (!name) {
     return null;
