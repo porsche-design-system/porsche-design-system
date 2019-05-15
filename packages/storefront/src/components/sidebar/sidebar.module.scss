@@ -38,7 +38,7 @@
 .nav-link {
   position: relative;
   display: block;
-  padding: $p-spacing-4 $p-spacing-8 $p-spacing-4 $p-spacing-16;
+  padding: $p-spacing-4 $p-spacing-8 $p-spacing-4 $p-spacing-24;
   text-decoration: none;
   color: $p-color-grey-10;
 
@@ -56,5 +56,4 @@
 .nav-icon {
   position: absolute;
   left: 0;
-  top: 7px;
 }
