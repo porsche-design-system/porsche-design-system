@@ -53,14 +53,17 @@ export const Story: React.FunctionComponent<RouteComponentProps<StoryUrlParams> 
       key: "code",
       active: selectedTab === "code",
       onClick: () => handleTabClick("code")
-    },
-    {
+    }
+  ];
+
+  if (Props) {
+    panes.push({
       menuItem: "Props",
       key: "props",
       active: selectedTab === "props",
       onClick: () => handleTabClick("props")
-    }
-  ];
+    });
+  }
 
   return (
     <React.Fragment>

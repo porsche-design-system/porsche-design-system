@@ -46,11 +46,17 @@
   &:focus,
   &:active {
     color: $p-color-porsche-red;
+    span {
+      color: $p-color-porsche-red;
+    }
   }
 }
 
 .nav-link.current {
   color: $p-color-porsche-red;
+  span {
+    color: $p-color-porsche-red;
+  }
 }
 
 .nav-icon {
