@@ -40,33 +40,33 @@
 
     // Typography
     h1 {
-      @include -text-size-2($p-font-weight-bold);
-      margin-top: $p-spacing-64;
+      @include p-text-size-2($p-font-weight-bold);
+      margin-top: $p-spacing-72;
     }
 
     h2 {
-      @include -text-size-3($p-font-weight-bold);
-      margin-top: $p-spacing-32;
+      @include p-text-size-3($p-font-weight-bold);
+      margin-top: $p-spacing-40;
     }
 
     h3 {
-      @include -text-size-4($p-font-weight-bold);
-      margin-top: $p-spacing-24;
+      @include p-text-size-4($p-font-weight-bold);
+      margin-top: $p-spacing-32;
     }
 
     h4 {
-      @include -text-size-4($p-font-weight-bold);
-      margin-top: $p-spacing-24;
+      @include p-text-size-5($p-font-weight-bold);
+      margin-top: $p-spacing-32;
     }
 
     h5,
     h6 {
-      @include -text-size-copy($p-font-weight-bold);
+      @include p-text-size-copy($p-font-weight-bold);
       margin-top: $p-spacing-24;
     }
 
     p {
-      @include -text-size-copy;
+      @include p-text-size-copy;
       margin-top: $p-spacing-24;
     }
 
@@ -107,7 +107,7 @@
     // Lists
     ul,
     ol {
-      @include -text-size-copy;
+      @include p-text-size-copy;
       margin-top: $p-spacing-24;
       padding-left: $p-spacing-32;
 
@@ -120,7 +120,7 @@
     // Code
     code,
     pre {
-      @include -text-size-small;
+      @include p-text-size-small;
       font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     }
 
@@ -151,11 +151,11 @@
       border-collapse: collapse;
 
       thead {
-        @include -text-size-4($p-font-weight-bold);
+        @include p-text-size-4($p-font-weight-bold);
       }
 
       tbody {
-        @include -text-size-copy($p-font-weight-regular);
+        @include p-text-size-copy($p-font-weight-regular);
       }
 
       th {

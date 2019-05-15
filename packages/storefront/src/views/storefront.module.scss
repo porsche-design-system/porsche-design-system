@@ -50,7 +50,7 @@
   border: 1px solid $p-color-grey-4;
   cursor: pointer;
   color: $p-color-black;
-  @include -text-size-small(600);
+  @include p-text-size-small(600);
   &:focus {
     outline: 0;
   }
