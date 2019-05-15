@@ -15,9 +15,9 @@
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  background-color: $p-color-grey-9;
-  border: 1px solid $p-color-grey-9;
-  color: $p-color-white;
+  background-color: $p-color-neutral-grey-8;
+  border: 1px solid $p-color-neutral-grey-8;
+  color: $p-color-porsche-light;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     border-color $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier; // must be globally defined
@@ -28,9 +28,9 @@
   }
 
   &--theme-inverted {
-    color: $p-color-black;
-    background-color: $p-color-white;
-    border-color: $p-color-white;
+    color: $p-color-porsche-black;
+    background-color: $p-color-porsche-light;
+    border-color: $p-color-porsche-light;
   }
 
   &:enabled,
@@ -38,13 +38,13 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: $p-color-grey-10;
-      border-color: $p-color-grey-10;
+      background-color: $p-color-neutral-grey-7;
+      border-color: $p-color-neutral-grey-7;
       text-decoration: none;
 
       &#{$bem-block}--theme-inverted {
-        background-color: $p-color-grey-2;
-        border-color: $p-color-grey-2;
+        background-color: $p-color-neutral-grey-1;
+        border-color: $p-color-neutral-grey-1;
       }
     }
   }
@@ -54,48 +54,25 @@
   &[aria-disabled="true"] {
     cursor: default;
     pointer-events: none;
-    background-color: mix($p-color-grey-9, $p-color-white, 50%);
-    border-color: mix($p-color-grey-9, $p-color-white, 50%);
-
-    #{$bem-block}__icon {
-      opacity: 0.55;
-    }
-
-    #{$bem-block}__label {
-      opacity: 0.55;
-    }
-
-    #{$bem-block}__icon-loader {
-      opacity: 1;
-    }
+    color: $p-color-neutral-grey-5;
+    background-color: $p-color-neutral-grey-2;
+    border-color: $p-color-neutral-grey-2;
 
     &#{$bem-block}--theme-inverted {
-      color: $p-color-black;
-      background-color: mix($p-color-white, $p-color-grey-10, 50%);
-      border-color: mix($p-color-white, $p-color-grey-10, 50%);
-
-      #{$bem-block}__icon {
-        opacity: 0.35;
-      }
-
-      #{$bem-block}__label {
-        opacity: 0.35;
-      }
-
-      #{$bem-block}__icon-loader {
-        opacity: 1;
-      }
+      color: $p-color-neutral-grey-4;
+      background-color: $p-color-neutral-grey-7;
+      border-color: $p-color-neutral-grey-7;
     }
   }
 
   &--ghost {
-    color: $p-color-black;
+    color: $p-color-porsche-black;
     background-color: transparent;
-    border-color: $p-color-grey-9;
+    border-color: $p-color-neutral-grey-8;
 
     &#{$bem-block}--theme-inverted {
-      color: $p-color-white;
-      border-color: $p-color-white;
+      color: $p-color-porsche-light;
+      border-color: $p-color-porsche-light;
     }
 
     &:enabled,
@@ -103,14 +80,14 @@
       &:hover,
       &:focus,
       &:active {
-        color: $p-color-white;
-        background-color: $p-color-grey-9;
-        border-color: $p-color-grey-9;
+        color: $p-color-porsche-light;
+        background-color: $p-color-neutral-grey-8;
+        border-color: $p-color-neutral-grey-8;
 
         &#{$bem-block}--theme-inverted {
-          color: $p-color-black;
-          background-color: $p-color-white;
-          border-color: $p-color-white;
+          color: $p-color-porsche-black;
+          background-color: $p-color-porsche-light;
+          border-color: $p-color-porsche-light;
         }
       }
     }
@@ -118,52 +95,36 @@
     &:disabled,
     &[disabled],
     &[aria-disabled="true"] {
-      color: mix($p-color-grey-9, $p-color-white, 40%);
+      color: $p-color-neutral-grey-5;
       background-color: transparent;
-      border-color: mix($p-color-grey-9, $p-color-white, 40%);
-
-      #{$bem-block}__icon {
-        opacity: 1;
-      }
-
-      #{$bem-block}__label {
-        opacity: 1;
-      }
+      border-color: $p-color-neutral-grey-2;
 
       &#{$bem-block}--theme-inverted {
-        color: mix($p-color-white, $p-color-grey-10, 30%);
+        color: $p-color-neutral-grey-4;
         background-color: transparent;
-        border-color: mix($p-color-white, $p-color-grey-10, 30%);
-
-        #{$bem-block}__icon {
-          opacity: 1;
-        }
-
-        #{$bem-block}__label {
-          opacity: 1;
-        }
+        border-color: $p-color-neutral-grey-7;
       }
     }
   }
 
   &--highlight {
-    color: $p-color-white;
-    background-color: $p-color-red-1;
-    border-color: $p-color-red-1;
+    color: $p-color-porsche-light;
+    background-color: $p-color-porsche-red;
+    border-color: $p-color-porsche-red;
 
     &:enabled,
     &:not([disabled]) {
       &:hover,
       &:focus,
       &:active {
-        background-color: $p-color-red-2;
-        border-color: $p-color-red-2;
+        background-color: $p-color-porsche-dark-red;
+        border-color: $p-color-porsche-dark-red;
         text-decoration: none;
 
         &#{$bem-block}--theme-inverted {
           // sass-lint:disable-line nesting-depth
-          background-color: $p-color-red-2;
-          border-color: $p-color-red-2;
+          background-color: $p-color-porsche-dark-red;
+          border-color: $p-color-porsche-dark-red;
         }
       }
     }
@@ -171,156 +132,14 @@
     &:disabled,
     &[disabled],
     &[aria-disabled="true"] {
-      background-color: mix($p-color-red-1, $p-color-white, 50%);
-      border-color: mix($p-color-red-1, $p-color-white, 50%);
-
-      #{$bem-block}__icon {
-        opacity: 0.6;
-      }
-
-      #{$bem-block}__label {
-        opacity: 0.6;
-      }
-
-      #{$bem-block}__icon-loader {
-        opacity: 1;
-      }
+      color: $p-color-neutral-grey-5;
+      background-color: $p-color-neutral-grey-2;
+      border-color: $p-color-neutral-grey-2;
 
       &#{$bem-block}--theme-inverted {
-        color: $p-color-white;
-        background-color: mix($p-color-red-1, $p-color-grey-10, 35%);
-        border-color: mix($p-color-red-1, $p-color-grey-10, 35%);
-
-        #{$bem-block}__icon {
-          opacity: 0.35;
-        }
-
-        #{$bem-block}__label {
-          opacity: 0.35;
-        }
-
-        #{$bem-block}__icon-loader {
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  &--sales {
-    color: $p-color-white;
-    background-color: $p-color-blue-1;
-    border-color: $p-color-blue-1;
-
-    &:enabled,
-    &:not([disabled]) {
-      &:hover,
-      &:focus,
-      &:active {
-        background-color: $p-color-blue-2;
-        border-color: $p-color-blue-2;
-        text-decoration: none;
-
-        &#{$bem-block}--theme-inverted {
-          // sass-lint:disable-line nesting-depth
-          background-color: $p-color-blue-2;
-          border-color: $p-color-blue-2;
-        }
-      }
-    }
-
-    &:disabled,
-    &[disabled],
-    &[aria-disabled="true"] {
-      background-color: mix($p-color-blue-1, $p-color-white, 50%);
-      border-color: mix($p-color-blue-1, $p-color-white, 50%);
-
-      #{$bem-block}__icon {
-        opacity: 0.6;
-      }
-
-      #{$bem-block}__label {
-        opacity: 0.6;
-      }
-
-      #{$bem-block}__icon-loader {
-        opacity: 1;
-      }
-
-      &#{$bem-block}--theme-inverted {
-        color: $p-color-white;
-        background-color: mix($p-color-blue-1, $p-color-grey-10, 30%);
-        border-color: mix($p-color-blue-1, $p-color-grey-10, 30%);
-
-        #{$bem-block}__icon {
-          opacity: 0.35;
-        }
-
-        #{$bem-block}__label {
-          opacity: 0.35;
-        }
-
-        #{$bem-block}__icon-loader {
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  &--sales-ghost {
-    color: $p-color-blue-1;
-    background-color: transparent;
-    border-color: $p-color-blue-1;
-
-    &#{$bem-block}--theme-inverted {
-      color: $p-color-blue-3;
-      background-color: transparent;
-      border-color: $p-color-blue-3;
-    }
-
-    &:enabled,
-    &:not([disabled]) {
-      &:hover,
-      &:focus,
-      &:active {
-        color: $p-color-white;
-        background-color: $p-color-blue-1;
-        border-color: $p-color-blue-1;
-
-        &#{$bem-block}--theme-inverted {
-          color: $p-color-white;
-          background-color: lighten($p-color-blue-1, 10);
-          border-color: lighten($p-color-blue-1, 10);
-        }
-      }
-    }
-
-    &:disabled,
-    &[disabled],
-    &[aria-disabled="true"] {
-      color: mix($p-color-blue-1, $p-color-white, 40%);
-      background-color: transparent;
-      border-color: mix($p-color-blue-1, $p-color-white, 40%);
-
-      #{$bem-block}__icon {
-        opacity: 1;
-      }
-
-      #{$bem-block}__label {
-        opacity: 1;
-      }
-
-      &#{$bem-block}--theme-inverted {
-        color: mix($p-color-blue-3, $p-color-grey-10, 40%);
-        background-color: transparent;
-        border-color: mix($p-color-blue-3, $p-color-grey-10, 40%);
-
-        #{$bem-block}__icon {
-          opacity: 1;
-        }
-
-        #{$bem-block}__label {
-          opacity: 1;
-        }
+        color: $p-color-neutral-grey-4;
+        background-color: $p-color-neutral-grey-7;
+        border-color: $p-color-neutral-grey-7;
       }
     }
   }

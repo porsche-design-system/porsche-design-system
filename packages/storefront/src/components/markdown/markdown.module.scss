@@ -46,12 +46,12 @@
 
     h2 {
       @include p-text-size-3($p-font-weight-bold);
-      margin-top: $p-spacing-40;
+      margin-top: $p-spacing-64;
     }
 
     h3 {
       @include p-text-size-4($p-font-weight-bold);
-      margin-top: $p-spacing-32;
+      margin-top: $p-spacing-48;
     }
 
     h4 {
@@ -73,12 +73,12 @@
     // Horizontal Rules
     hr {
       margin: {
-        top: $p-spacing-40;
-        bottom: $p-spacing-40;
+        top: $p-spacing-56;
+        bottom: $p-spacing-16;
       }
       border: 0;
       height: 1px;
-      background-color: $p-color-grey-2;
+      background-color: $p-color-neutral-grey-2;
     }
 
     // Emphasis
@@ -101,7 +101,7 @@
     // Blockquote
     blockquote {
       padding-left: $p-spacing-24;
-      border-left: rem(5px) solid $p-color-grey-3;
+      border-left: rem(5px) solid $p-color-neutral-grey-2;
     }
 
     // Lists
@@ -110,6 +110,7 @@
       @include p-text-size-copy;
       margin-top: $p-spacing-24;
       padding-left: $p-spacing-32;
+      list-style-type: square;
 
       ul,
       ol {
@@ -126,9 +127,9 @@
 
     :not(pre) > code {
       padding: 0.125rem $p-spacing-8;
-      background-color: mix($p-color-red-1, $p-color-white, 10%);
+      background-color: mix($p-color-porsche-red, $p-color-porsche-light, 10%);
       border-radius: 3px;
-      color: $p-color-red-1;
+      color: $p-color-porsche-red;
     }
 
     pre {
@@ -137,8 +138,8 @@
       padding: $p-spacing-8 $p-spacing-24;
       word-break: break-all;
       word-wrap: break-word;
-      background-color: $p-color-grey-1;
-      color: $p-color-grey-8;
+      background-color: $p-color-surface-light;
+      color: $p-color-neutral-grey-7;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
@@ -146,12 +147,12 @@
     // Tables
     table {
       margin-top: $p-spacing-24;
-      width: 100%;
+      width: 80%;
       text-align: left;
       border-collapse: collapse;
 
       thead {
-        @include p-text-size-4($p-font-weight-bold);
+        @include p-text-size-copy($p-font-weight-bold);
       }
 
       tbody {
@@ -160,6 +161,7 @@
 
       th {
         padding-bottom: $p-spacing-8;
+        border-bottom: 1px solid $p-color-neutral-grey-1;
       }
 
       td {
@@ -167,8 +169,9 @@
           top: $p-spacing-8;
           bottom: $p-spacing-8;
         }
-        border-bottom: 1px solid $p-color-grey-1;
+        border-bottom: 1px solid $p-color-neutral-grey-1;
         vertical-align: top;
+        width: 10%;
       }
 
       th ~ th,
@@ -179,13 +182,13 @@
 
     // Links
     a {
-      text-decoration: none;
-      color: $p-color-red-1;
+      text-decoration: underline;
+      color: $p-color-porsche-black;
       transition: color 0.3s;
 
       &:hover {
-        text-decoration: underline;
-        color: $p-color-red-2;
+        text-decoration: none;
+        color: $p-color-porsche-red;
       }
     }
 

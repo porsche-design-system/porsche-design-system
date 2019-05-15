@@ -5,10 +5,10 @@
   top: 0;
   left: 0;
   bottom: 0;
-  background-color: $p-color-white;
+  background-color: $p-color-porsche-light;
   width: 300px;
   z-index: 1;
-  border-right: 1px solid $p-color-grey-3;
+  border-right: 1px solid $p-color-neutral-grey-2;
   transition: transform 400ms ease-out, opacity 400ms ease-out;
   will-change: transform, opacity;
 }
@@ -46,11 +46,12 @@
   z-index: 10;
   padding: 0 $p-spacing-8;
   height: 30px;
-  background: $p-color-white;
-  border: 1px solid $p-color-grey-4;
+  background: $p-color-porsche-light;
+  border: 1px solid $p-color-neutral-grey-3;
   cursor: pointer;
-  color: $p-color-black;
   @include p-text-size-small(600);
+  color: $p-color-porsche-black;
+
   &:focus {
     outline: 0;
   }

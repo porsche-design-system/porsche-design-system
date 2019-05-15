@@ -22,7 +22,7 @@ The App Library is containing specific components for native apps.
 [Download Porsche UI Kit App](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-app.sketch.xml)
 
 ## Sketch template
-To get a smooth and easy "designing from scratch" experience, you are welcome to use the following Sketch layout template. It contains artboards in all relevant screen sizes and is enriched with the right layout and grid presets (that can be turned visible via: View → Canvas → Show Layout.).  
+To get a smooth and easy "designing from scratch" experience, you are welcome to use the following Sketch layout template. It contains artboards in all relevant screen sizes and is enriched with the right layout and grid presets (that can be turned visible via: View → Canvas → Show Layout.). 
 [Download Sketch Layout Template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch)
 
 ## Typeface
@@ -31,7 +31,7 @@ You can download the Porsche font files in the Porsche Brand Guide:
 [Download Porsche typeface](https://brandguide.porsche.com/elements/manual/view/id/885)  
 For UI design in Sketch, we recommend using the "Typeface for print applications, apps and moving images (OTF)", which is also used within the Porsche UI Kit components.
 
-## Design Workflow
+## Design workflow
 To improve the output efficiency and reduce maintenance cost we decided on using the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/how-it-works/). 
 
 So, before starting designing with the Sketch library, make sure to [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation and to install the latest [Abstract Desktop App](https://app.goabstract.com/)  

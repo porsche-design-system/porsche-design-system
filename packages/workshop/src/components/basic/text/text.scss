@@ -116,26 +116,22 @@
 
   &--color {
     &-white {
-      color: $p-color-white;
+      color: $p-color-porsche-light;
     }
 
     &-black {
-      color: $p-color-black;
+      color: $p-color-porsche-black;
       &#{$bem-block}--theme-inverted {
-        color: $p-color-white;
+        color: $p-color-porsche-light;
       }
     }
 
     &-red {
-      color: $p-color-red-1;
-    }
-
-    &-blue {
-      color: $p-color-blue-1;
+      color: $p-color-porsche-red;
     }
   }
 
   &--theme-inverted {
-    color: $p-color-white;
+    color: $p-color-porsche-light;
   }
 }
