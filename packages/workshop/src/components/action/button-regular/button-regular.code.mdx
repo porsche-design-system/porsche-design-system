@@ -7,10 +7,13 @@ import { ButtonRegular } from "@porscheui/porsche-ui-kit"
 ## Introduction
 All button types can be generated out of the basic button by implementing additional modifier classes or React proprties.
 
-### Button regular basic (default)
+### Buttons as button elements
+Buttons used as `<button>` elements to trigger actions.
+
+### Regular basic (default)
 If using basic type, no extra class/prop declaration is needed.
 
-<Example noTheme={false}>
+<Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
@@ -22,54 +25,105 @@ If using basic type, no extra class/prop declaration is needed.
 }}
 </Example>
 
-### Button regular ghost
+### Regular ghost
 
-<Example noTheme={false}>
+<Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
         <ButtonRegular type="ghost" inverted={setTheme}>Click Here!</ButtonRegular>
+        <ButtonRegular type="ghost" inverted={setTheme} disabled>Click Here!</ButtonRegular>
       </React.Fragment>
     )
 }}
 </Example>
 
-### Button regular sales
+### Regular highlight
 
-<Example noTheme={false}>
-  {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
-    return (
-      <React.Fragment>
-        <ButtonRegular type="sales" inverted={setTheme}>Click Here!</ButtonRegular>
-      </React.Fragment>
-    )
-}}
-</Example>
-
-### Button regular sales-ghost
-
-<Example noTheme={false}>
-  {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
-    return (
-      <React.Fragment>
-        <ButtonRegular type="sales-ghost" inverted={setTheme}>Click Here!</ButtonRegular>
-      </React.Fragment>
-    )
-}}
-</Example>
-
-### Button regular highlight
-
-<Example noTheme={false}>
+<Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
         <ButtonRegular type="highlight" inverted={setTheme}>Click Here!</ButtonRegular>
+        <ButtonRegular type="highlight" inverted={setTheme} disabled>Click Here!</ButtonRegular>
       </React.Fragment>
+    )
+}}
+</Example>
+
+### Regular loader state
+If a button has a loading state, it must also be set in a disabled state to prevent click behaviour caused by the user.
+To show the loader icon, the default svg icon must be replaced with the loader component
+
+<Example noTheme={false} className="sg-example-button-regular">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <ButtonRegular loading inverted={setTheme}>Loading...</ButtonRegular>
+        <ButtonRegular type="ghost" loading inverted={setTheme}>Loading...</ButtonRegular>
+        <ButtonRegular type="highlight" loading inverted={setTheme}>Loading...</ButtonRegular>
+      </React.Fragment>
+    )
+}}
+</Example>
+
+---
+
+### Button as link element
+Buttons used as link elements (`<a>`), e.g. as a navigation item.
+
+#### Regular basic (default)
+<Example noTheme={false} className="sg-example-button-regular">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <Router>
+        <ButtonRegular as={Link} {...{ to: "/lorem/ipsum" }} inverted={setTheme}>Click Here!</ButtonRegular>
+        <ButtonRegular as={Link} {...{ to: "#" }} disabled inverted={setTheme}>Click Here!</ButtonRegular>
+      </Router>
+    )
+}}
+</Example>
+
+#### Regular ghost
+<Example noTheme={false} className="sg-example-button-regular">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <Router>
+        <ButtonRegular as={Link} {...{ to: "/lorem/ipsum" }} type="ghost" inverted={setTheme}>Click Here!</ButtonRegular>
+        <ButtonRegular as={Link} {...{ to: "#" }} type="ghost" disabled inverted={setTheme}>Click Here!</ButtonRegular>
+      </Router>
+    )
+}}
+</Example>
+
+#### Regular highlight
+<Example noTheme={false} className="sg-example-button-regular">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <Router>
+        <ButtonRegular as={Link} {...{ to: "/lorem/ipsum" }} type="highlight" inverted={setTheme}>Click Here!</ButtonRegular>
+        <ButtonRegular as={Link} {...{ to: "#" }} type="ghost" disabled inverted={setTheme}>Click Here!</ButtonRegular>
+      </Router>
+    )
+}}
+</Example>
+
+#### Regular loader state
+<Example noTheme={false} className="sg-example-button-regular">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <Router>
+        <ButtonRegular as={Link} {...{ to: "/lorem/ipsum" }} type="highlight" loading inverted={setTheme}>Loading...</ButtonRegular>
+        <ButtonRegular as={Link} {...{ to: "#" }} type="ghost" loading inverted={setTheme}>Loading...</ButtonRegular>
+        <ButtonRegular as={Link} {...{ to: "" }} loading inverted={setTheme}>Loading...</ButtonRegular>
+      </Router>
     )
 }}
 </Example>
@@ -79,47 +133,13 @@ If using basic type, no extra class/prop declaration is needed.
 ### Button regular with specific icon
 If another icon needs to be implemented, just replace the default icon with your new icon.
 
-<Example noTheme={false}>
+<Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
         <ButtonRegular icon="icon_phone.min.svg" inverted={setTheme}>Click Here!</ButtonRegular>
       </React.Fragment>
-    )
-}}
-</Example>
-
----
-
-### Button regular loader state
-If a button has a loading state, it must also be set in a disabled state to prevent click behaviour caused by the user.
-To show the loader icon, the default svg icon must be replaced with the loader component
-
-<Example noTheme={false}>
-  {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
-    return (
-      <React.Fragment>
-        <ButtonRegular loading inverted={setTheme}>Click Here!</ButtonRegular>
-      </React.Fragment>
-    )
-}}
-</Example>
-
----
-
-### Button as link
-Buttons can also be rendered as link elements if used as a navigation item.
-
-<Example noTheme={false}>
-  {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
-    return (
-      <Router>
-        <ButtonRegular as={Link} {...{ to: "/lorem/ipsum" }} inverted={setTheme}>Click Here!</ButtonRegular>
-        <ButtonRegular as={Link} {...{ to: "" }} loading inverted={setTheme}>Click Here!</ButtonRegular>
-      </Router>
     )
 }}
 </Example>

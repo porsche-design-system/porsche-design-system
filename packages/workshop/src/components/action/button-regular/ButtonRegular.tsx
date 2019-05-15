@@ -45,7 +45,7 @@ export interface ButtonRegularProps extends ClassNameProp, ComponentProp {
   /**
    * The display type of the button.
    */
-  type?: "ghost" | "highlight" | "sales" | "sales-ghost";
+  type?: "ghost" | "highlight";
 
   /**
    * Specifies the HTML Type of the button. If undefined, nothing is set.
@@ -92,8 +92,6 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
     prefix("button-regular"),
     { [prefix("button-regular--ghost")]: type === "ghost" },
     { [prefix("button-regular--highlight")]: type === "highlight" },
-    { [prefix("button-regular--sales")]: type === "sales" },
-    { [prefix("button-regular--sales-ghost")]: type === "sales-ghost" },
     { [prefix("button-regular--stretch")]: stretch },
     { [prefix("button-regular--theme-inverted")]: inverted },
     { [prefix("button-regular--loading")]: loading },
@@ -119,13 +117,10 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
   };
 
   const loaderNotInverted = () => {
-    return ruleTypeGhost() || ruleTypeSalesGhost() ? false : true;
+    return ruleTypeGhost() ? false : true;
   };
   const ruleTypeGhost = () => {
     return type === "ghost" && !inverted ? true : false;
-  };
-  const ruleTypeSalesGhost = () => {
-    return type === "sales-ghost" && !inverted ? true : false;
   };
 
   return (
