@@ -22,3 +22,12 @@
 .vrt.dark {
   background-color: $p-color-grey-10;
 }
+
+.sg-example-loader {
+  .p-loader {
+    animation: none;
+    &__fg {
+      animation: none;
+    }
+  }
+}

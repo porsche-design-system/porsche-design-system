@@ -31,6 +31,7 @@ export const Stories: Stories = {
     Loader: {
       design: importMDX("../../workshop/src/components/feedback/loader/loader.design.mdx"),
       code: importMDX("../../workshop/src/components/feedback/loader/loader.code.mdx"),
+      vrt: importMDX("../../workshop/src/components/feedback/loader/loader.vrt.mdx"),
       props: ["Loader"]
     }
   },

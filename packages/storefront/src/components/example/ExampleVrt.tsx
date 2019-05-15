@@ -3,6 +3,7 @@ import cx from "classnames";
 import { ClassNameProp } from "../../lib/props";
 import styles from "./exampleVrt.module.scss";
 import "./example.global.scss";
+import "./exampleVrt.global.scss";
 
 export interface ExampleVrtProps extends ClassNameProp {
   theme: "default" | "inverted";
@@ -19,7 +20,12 @@ function renderNode(children: React.ReactNode, theme: string) {
 export const ExampleVrt: React.FunctionComponent<ExampleVrtProps> = (props) => {
   const { className, theme } = props;
 
-  const renderClasses = cx(styles.vrt, { [styles.light]: theme === "default" }, { [styles.dark]: theme === "inverted" }, className);
+  const renderClasses = cx(
+    styles.vrt,
+    { [styles.light]: theme === "default" },
+    { [styles.dark]: theme === "inverted" },
+    className
+  );
 
   return (
     <React.Fragment>
