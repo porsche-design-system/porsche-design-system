@@ -21,6 +21,11 @@ export interface ButtonRegularProps extends ClassNameProp, ComponentProp {
    */
   icon?: IconProps["name"];
 
+  /**
+   * The icon path of the button icon if has to be different from the default path.
+   */
+  iconPath?: IconProps["path"];
+
   /** Disable the button and show a loading indicator. No onClick will be triggered. */
   loading?: boolean;
 
@@ -67,6 +72,7 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
     disabled,
     inverted,
     icon,
+    iconPath,
     loading,
     onClick,
     stretch,
@@ -133,7 +139,7 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
       {loading ? (
         <Loader size="x-small" className={loaderClasses} inverted={loaderNotInverted()} />
       ) : (
-        <Icon size="x-small" name={icon as IconProps["name"]} className={iconClasses} />
+        <Icon path={iconPath as IconProps["path"]} name={icon as IconProps["name"]} className={iconClasses} />
       )}
       <span className={labelClasses}>{children}</span>
     </ElementType>

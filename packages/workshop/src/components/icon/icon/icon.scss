@@ -3,32 +3,22 @@
 .#{$p-global-class-prefix}icon {
   display: inline-flex;
   flex-shrink: 0;
-  width: 1em;
-  height: 1em;
+  width: rem(24px);
+  height: rem(24px);
   fill: currentColor;
   transition: fill $p-animation-hover-duration $p-animation-hover-bezier;
 
-  &--x-small {
-    width: rem(18px); // must be adapted if new icons are available
-    height: rem(18px);
-  }
-
   &--small {
-    width: rem(24px);
-    height: rem(24px);
-  }
-
-  &--medium {
     width: rem(32px);
     height: rem(32px);
   }
 
-  &--large {
-    width: rem(40px);
-    height: rem(40px);
+  &--medium {
+    width: rem(48px);
+    height: rem(48px);
   }
 
-  &--x-large {
+  &--large {
     width: rem(80px);
     height: rem(80px);
   }
