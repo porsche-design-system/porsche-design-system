@@ -34,76 +34,84 @@
     white-space: nowrap;
   }
 
+  &--large-title-thin {
+    @include p-text-size-large-title($weight: 200);
+  }
+
+  &--large-title-regular {
+    @include p-text-size-large-title($weight: 400);
+  }
+
+  &--large-title-bold {
+    @include p-text-size-large-title($weight: 600);
+  }
+
   &--1-thin {
-    @include -text-size-1($weight: 200);
+    @include p-text-size-1($weight: 200);
   }
 
   &--1-regular {
-    @include -text-size-1($weight: 400);
+    @include p-text-size-1($weight: 400);
   }
 
   &--1-bold {
-    @include -text-size-1($weight: 600);
+    @include p-text-size-1($weight: 600);
   }
 
   &--2-thin {
-    @include -text-size-2($weight: 200);
+    @include p-text-size-2($weight: 200);
   }
 
   &--2-regular {
-    @include -text-size-2($weight: 400);
+    @include p-text-size-2($weight: 400);
   }
 
   &--2-bold {
-    @include -text-size-2($weight: 600);
+    @include p-text-size-2($weight: 600);
   }
 
   &--3-thin {
-    @include -text-size-3($weight: 200);
+    @include p-text-size-3($weight: 200);
   }
 
   &--3-regular {
-    @include -text-size-3($weight: 400);
+    @include p-text-size-3($weight: 400);
   }
 
   &--3-bold {
-    @include -text-size-3($weight: 600);
-  }
-
-  &--4-thin {
-    @include -text-size-4($weight: 200);
+    @include p-text-size-3($weight: 600);
   }
 
   &--4-regular {
-    @include -text-size-4($weight: 400);
+    @include p-text-size-4($weight: 400);
   }
 
   &--4-bold {
-    @include -text-size-4($weight: 600);
+    @include p-text-size-4($weight: 600);
   }
 
-  &--copy-thin {
-    @include -text-size-copy($weight: 200);
+  &--5-regular {
+    @include p-text-size-5($weight: 400);
+  }
+
+  &--5-bold {
+    @include p-text-size-5($weight: 600);
   }
 
   &--copy-regular {
-    @include -text-size-copy($weight: 400);
+    @include p-text-size-copy($weight: 400);
   }
 
   &--copy-bold {
-    @include -text-size-copy($weight: 600);
-  }
-
-  &--small-thin {
-    @include -text-size-small($weight: 200);
+    @include p-text-size-copy($weight: 600);
   }
 
   &--small-regular {
-    @include -text-size-small($weight: 400);
+    @include p-text-size-small($weight: 400);
   }
 
   &--small-bold {
-    @include -text-size-small($weight: 600);
+    @include p-text-size-small($weight: 600);
   }
 
   &--color {
