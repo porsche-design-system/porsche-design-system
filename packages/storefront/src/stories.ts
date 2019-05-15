@@ -38,6 +38,7 @@ export const Stories: Stories = {
     Icon: {
       examples: importMDX("../../workshop/src/components/icon/icon/icon.code.mdx"),
       design: importMDX("../../workshop/src/components/icon/icon/icon.design.mdx"),
+      vrt: importMDX("../../workshop/src/components/icon/icon/icon.vrt.mdx"),
       props: ["Icon"]
     }
   },
