@@ -336,6 +336,9 @@
   &__icon,
   &__icon-loader {
     position: absolute;
+  }
+
+  &__icon-loader {
     margin-top: 0.1875em; // this must be adapted if final SVG icons are integrated!
   }
 

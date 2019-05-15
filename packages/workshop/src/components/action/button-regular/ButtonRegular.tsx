@@ -22,8 +22,7 @@ export interface ButtonRegularProps extends ClassNameProp, ComponentProp {
   icon?: IconProps["name"];
 
   /**
-   * The icon path of the button icon.
-   * @default https://video.porsche.com/0.0.1/icon/
+   * The icon path of the button icon if has to be different from the default path.
    */
   iconPath?: IconProps["path"];
 
@@ -140,12 +139,7 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
       {loading ? (
         <Loader size="x-small" className={loaderClasses} inverted={loaderNotInverted()} />
       ) : (
-        <Icon
-          size="x-small"
-          path={iconPath as IconProps["path"]}
-          name={icon as IconProps["name"]}
-          className={iconClasses}
-        />
+        <Icon path={iconPath as IconProps["path"]} name={icon as IconProps["name"]} className={iconClasses} />
       )}
       <span className={labelClasses}>{children}</span>
     </ElementType>
