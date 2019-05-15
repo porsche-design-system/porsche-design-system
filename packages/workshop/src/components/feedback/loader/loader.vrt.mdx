@@ -1,0 +1,73 @@
+import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
+import { Loader } from "@porscheui/porsche-ui-kit"
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <Loader />
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt theme="inverted" className="sg-example-loader">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Loader inverted={setTheme} />
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <Loader size="x-small" />
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <Loader size="small" />
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <Loader size="medium" />
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <Loader size="large" />
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <Loader size="x-large" />
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>

@@ -1,0 +1,10 @@
+@import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
+
+.sg-example-loader {
+  .p-loader {
+    animation: none;
+    &__fg {
+      animation: none;
+    }
+  }
+}
