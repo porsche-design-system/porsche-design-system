@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>icon/arrow-left</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="9 18 13.56 12.0004063 9 6 10.44 6 15 12.0004063 10.44 18"></polygon>
+    </defs>
+    <g id="icon/arrow-left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="24x24" fill-rule="nonzero" x="0" y="0" width="16" height="16"></rect>
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="🌈-Icon-color" fill="#000000" fill-rule="nonzero" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) " xlink:href="#path-1"></use>
+    </g>
+</svg>
