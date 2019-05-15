@@ -14,23 +14,43 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually. If
   {(theme) => {
     return (
       <React.Fragment>
-        <Icon name="icon_360_Grad.min.svg" />
+        <Icon name="icon_car-next.min.svg" />
       </React.Fragment>
     )
 }}
 </Example>
 
-### Icon sizes
+### Predefined icon sizes
+The default icon size has a box of 24x24px (1.5rem) which corresponds to the default copytext line-height. If larger sizes are needed, choose from one of the predefined sizes.
 
+#### Medium
 <Example noTheme>
   {(theme) => {
     return (
       <React.Fragment>
-        <Icon name="icon_360_Grad.min.svg" size="x-small" />
-        <Icon name="icon_360_Grad.min.svg" size="small" />
-        <Icon name="icon_360_Grad.min.svg" size="medium" />
-        <Icon name="icon_360_Grad.min.svg" size="large" />
-        <Icon name="icon_360_Grad.min.svg" size="x-large" />
+        <Icon name="icon_car-next.min.svg" size="small" />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+#### Large
+<Example noTheme>
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <Icon name="icon_car-next.min.svg" size="medium" />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+#### X-large
+<Example noTheme>
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <Icon name="icon_car-next.min.svg" size="large" />
       </React.Fragment>
     )
 }}
@@ -42,7 +62,7 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually. If
 To render icons with an icon sprite it has to be generated and implemented by the projects/products itself regarding to their technical und visual needs.
 
 
-### Building the icon sprite
+### Building the icon sprite (from UI Kit Icon Platform)
 TBD!!!
 <!-- The icon sprite must be build throughout a set of individual SVG icons.
 The whole set of icons can be found here:
