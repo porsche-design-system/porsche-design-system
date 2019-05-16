@@ -48,7 +48,7 @@
   background: none;
   border: 1px solid $p-color-neutral-grey-3;
   cursor: pointer;
-  @include p-text-size-small(600);
+  @include p-text-small;
   color: $p-color-porsche-black;
   &:focus {
     outline: 0;

@@ -8,7 +8,7 @@ export const Footer: React.FunctionComponent = () => {
   return (
     <footer className={style.footer}>
       <Divider spacing="small" />
-      <Text type="small-regular" align="center">
+      <Text type="small" align="center">
         © 2019 Dr. Ing. h.c. F. Porsche AG.
         <br />
         <a href="https://www.porsche.com/international/legal-notice/">Legal notice</a> /{" "}

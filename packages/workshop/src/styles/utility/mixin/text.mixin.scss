@@ -1,9 +1,11 @@
 $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
 // values taken from excel sheet 2019-05-09_porsche-ui-kit-typography-mapping
-@mixin p-text-size-large-title($weight: 400) {
+
+// headlines
+@mixin p-text-large-title {
   font-family: $p-font-primary;
-  font-weight: $weight;
+  font-weight: 600;
   font-size: rem(32px);
   line-height: 1.25;
 
@@ -28,9 +30,9 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-size-1($weight: 400) {
+@mixin p-text-headline-1 {
   font-family: $p-font-primary;
-  font-weight: $weight;
+  font-weight: 600;
   font-size: rem(28px);
   line-height: 1.285;
 
@@ -55,9 +57,9 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-size-2($weight: 400) {
+@mixin p-text-headline-2 {
   font-family: $p-font-primary;
-  font-weight: $weight;
+  font-weight: 600;
   font-size: rem(24px);
   line-height: 1.333;
 
@@ -82,9 +84,9 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-size-3($weight: 400) {
+@mixin p-text-headline-3 {
   font-family: $p-font-primary;
-  font-weight: $weight;
+  font-weight: 600;
   font-size: rem(20px);
   line-height: 1.4;
 
@@ -109,9 +111,9 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-size-4($weight: 400) {
+@mixin p-text-headline-4 {
   font-family: $p-font-primary;
-  font-weight: $weight;
+  font-weight: 600;
   font-size: rem(16px);
   line-height: 1.5;
 
@@ -136,23 +138,32 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-size-5($weight: 400) {
+@mixin p-text-headline-5 {
   font-family: $p-font-primary;
-  font-weight: $weight;
+  font-weight: 600;
   font-size: rem(16px);
   line-height: 1.5;
 }
 
-@mixin p-text-size-copy($weight: 400) {
+// copytext
+@mixin p-text-copy {
   font-family: $p-font-primary;
-  font-weight: $weight;
+  font-weight: 400;
   font-size: rem(16px);
   line-height: 1.5;
 }
 
-@mixin p-text-size-small($weight: 400) {
+@mixin p-text-small {
   font-family: $p-font-primary;
-  font-weight: $weight;
+  font-weight: 400;
   font-size: rem(12px);
   line-height: 1.666;
+}
+
+// generic text
+@mixin p-text-generic($weight: 400, $size: $p-text-size-16) {
+  font-family: $p-font-primary;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 1.5;
 }
