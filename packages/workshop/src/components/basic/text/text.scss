@@ -34,84 +34,209 @@
     white-space: nowrap;
   }
 
-  &--large-title-thin {
-    @include p-text-size-large-title($weight: 200);
+  // headlines
+  &--large-title {
+    @include p-text-large-title;
   }
 
-  &--large-title-regular {
-    @include p-text-size-large-title($weight: 400);
+  &--headline-1 {
+    @include p-text-headline-1;
   }
 
-  &--large-title-bold {
-    @include p-text-size-large-title($weight: 600);
+  &--headline-2 {
+    @include p-text-headline-2;
   }
 
-  &--1-thin {
-    @include p-text-size-1($weight: 200);
+  &--headline-3 {
+    @include p-text-headline-3;
   }
 
-  &--1-regular {
-    @include p-text-size-1($weight: 400);
+  &--headline-4 {
+    @include p-text-headline-4;
   }
 
-  &--1-bold {
-    @include p-text-size-1($weight: 600);
+  &--headline-5 {
+    @include p-text-headline-5;
   }
 
-  &--2-thin {
-    @include p-text-size-2($weight: 200);
+  // copy
+  &--copy {
+    @include p-text-copy;
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--2-regular {
-    @include p-text-size-2($weight: 400);
+  &--small {
+    @include p-text-small;
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--2-bold {
-    @include p-text-size-2($weight: 600);
+  // generic text
+  &--12 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-12);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--3-thin {
-    @include p-text-size-3($weight: 200);
+  &--16 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-16);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--3-regular {
-    @include p-text-size-3($weight: 400);
+  &--20 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-20);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--3-bold {
-    @include p-text-size-3($weight: 600);
+  &--24 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-24);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--4-regular {
-    @include p-text-size-4($weight: 400);
+  &--28 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-28);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--4-bold {
-    @include p-text-size-4($weight: 600);
+  &--30 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-30);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--5-regular {
-    @include p-text-size-5($weight: 400);
+  &--32 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-32);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--5-bold {
-    @include p-text-size-5($weight: 600);
+  &--36 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-36);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--copy-regular {
-    @include p-text-size-copy($weight: 400);
+  &--42 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-42);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--copy-bold {
-    @include p-text-size-copy($weight: 600);
+  &--44 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-44);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--small-regular {
-    @include p-text-size-small($weight: 400);
+  &--48 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-48);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
-  &--small-bold {
-    @include p-text-size-small($weight: 600);
+  &--52 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-52);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
+  }
+
+  &--60 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-60);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
+
+    &-thin {
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-60);
+    }
+  }
+
+  &--62 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-62);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
+
+    &-thin {
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-60);
+    }
+  }
+
+  &--72 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-72);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
+
+    &-thin {
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-60);
+    }
+  }
+
+  &--84 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-84);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
+
+    &-thin {
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-60);
+    }
   }
 
   &--color {

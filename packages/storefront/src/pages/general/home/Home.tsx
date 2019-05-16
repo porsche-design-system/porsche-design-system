@@ -21,10 +21,10 @@ export const Home: React.FunctionComponent = () => {
       <article className={styles.intro}>
         <Grid>
           <Grid.Child size={{ base: 12, m: 4 }}>
-            <Text as="h1" type="3-bold">
+            <Text as="h1" type="headline-3">
               Porsche UI Kit
             </Text>
-            <Text as="h2" type="4-regular">
+            <Text as="h2" type="24">
               Design System
             </Text>
             <Spacing marginTop={8}>
@@ -35,7 +35,7 @@ export const Home: React.FunctionComponent = () => {
           </Grid.Child>
           <Spacing marginTop={24} className="p-spacing-mt--0-m">
             <Grid.Child size={{ base: 12, m: 8 }}>
-              <Text type="4-regular">
+              <Text type="24">
                 The Porsche UI Kit provides the design fundamentals for easily creating aesthetic and qualitative
                 digital products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS
                 elements. Everything built and tested following the Porsche quality standards and corporate design
@@ -74,12 +74,12 @@ export const Home: React.FunctionComponent = () => {
       <article className={styles.newsletter}>
         <Grid>
           <Grid.Child size={{ base: 12, m: 3 }}>
-            <Text as="h2" type="3-bold">
+            <Text as="h2" type="headline-3">
               Always stay informed
             </Text>
           </Grid.Child>
           <Grid.Child size={{ base: 12, m: 8 }} offset={{ base: 0, m: 1 }} className="p-mt--24 p-mt--0-m">
-            <Text type="4-regular">Join our mailing list and get informed about relevant updates and topics.</Text>
+            <Text type="24">Join our mailing list and get informed about relevant updates and topics.</Text>
             <Spacing marginTop={16}>
               <Text>
                 <a href="http://eepurl.com/ghVSjH" target="_blank" rel="noopener noreferrer">

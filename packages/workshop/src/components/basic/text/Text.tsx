@@ -6,29 +6,37 @@ import { ClassNameProp, ComponentProp } from "../../../lib/props";
 export interface TextProps extends ClassNameProp, ComponentProp {
   /**
    * The style of the text.
-   * @default copy-regular
+   * @default copy
    */
   type?:
-    | "large-title-regular"
-    | "large-title-thin"
-    | "large-title-bold"
-    | "1-regular"
-    | "1-thin"
-    | "1-bold"
-    | "2-regular"
-    | "2-thin"
-    | "2-bold"
-    | "3-regular"
-    | "3-thin"
-    | "3-bold"
-    | "4-regular"
-    | "4-bold"
-    | "5-regular"
-    | "5-bold"
-    | "copy-regular"
-    | "copy-bold"
-    | "small-regular"
-    | "small-bold";
+    | "large-title"
+    | "headline-1"
+    | "headline-2"
+    | "headline-3"
+    | "headline-4"
+    | "headline-5"
+    | "copy"
+    | "small"
+    | "12"
+    | "16"
+    | "20"
+    | "24"
+    | "28"
+    | "30"
+    | "32"
+    | "36"
+    | "42"
+    | "44"
+    | "48"
+    | "52"
+    | "60"
+    | "60-thin"
+    | "62"
+    | "62-thin"
+    | "72"
+    | "72-thin"
+    | "84"
+    | "84-thin";
 
   /** The text alignment of the component. */
   align?: "left" | "center" | "right";
@@ -61,7 +69,7 @@ export interface TextProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<TextProps> = {
-  type: "copy-regular",
+  type: "copy",
   color: "black"
 };
 
