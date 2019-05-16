@@ -11,7 +11,6 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 ### CDN Asset Management / April
 - Setup Porsche UI Kit CDN
 - Host and Manage Assets Icons, Porsche Crest and Fonts
-- Host compiled CSS (all / component-specific)
 
 ### Develop the basic contents / April-May
 - Color Styles
