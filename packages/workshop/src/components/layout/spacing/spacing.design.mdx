@@ -51,53 +51,47 @@ Spacings that change in accordance with the screen size at defined breakpoint wi
 ![The Porsche spacing formula](assets/workshop/layout/spacing/assets/spacings-example-02.png)
 Example: Mixed use of fixed, flexible and custom spacings.
 
-## Working with space
-Spacing is a powerful design element and an integral part of every layout, which
-can create relationships, hierarchy and rhythm between components.
+## Working with space Spacing is a powerful design element, an integral part of
+every layout, which can create relationships, hierarchy, and rhythm between
+components.
 
 ### Relationships
 
-The space between components can determine if the elements seem to have a
-meaningful connection. The closer elements are placed to each other, the
-stronger their relationship gets. This is also valid for repetitive spacing
-patterns: The use of the same space between several elements makes them appear
-equivalent. This fact should be used for example to group contents that are
-informatively related. 
+The space between components can determine if the elements
+seem to have a meaningful connection. Closely placed elements relate to each
+other. If more space is added between components, the relationship weakens. Using a consistent spacing pattern across elements can also create a quickly
+intelligible relationship.
 
 ### Hierarchy
 
-Different spaces between elements or info sections help to create different
-relevances and, therefore, a meaningful hierarchy within the site. Elements that
-have more space around tend to be perceived as being more important and
-hierarchically higher.
-
-Creating hierarchy on the page supports user guidance and helps separating and
-organizing elements.
+Leaving different spaces between elements or sections of
+information will influence the reader to perceive them as having a different
+relevance. Elements that have more space around them tend to be perceived as being
+further up in the hierarchy. Creating hierarchy on the page guides viewers' eyes and helps
+separate and organise elements in the design and guide users' attention to
+certain elements.
 
 ### White space (also: negative space)
 
-Within Porsche web applications, we use white space generously (but
-well-considered) to emphasise the brand’s exclusiveness and high quality. In
-addition, white space supports a good UX, as long as it is used carefully. For
-example, space between elements can be used to create content sections and,
-therefore, to set the focus on specific elements. Try to avoid crowded pages and
-let both the content breathe and the user’s eye relax by using deliberate white
-spacing.
+The empty space (also referred to as negative space) in a
+design. Although called white space, the blank space can be filled with any colour
+as long as it’s free of elements like text, graphics or images, creating a
+well-spaced and clear product. White space helps deliver a good experience by
+giving elements space to breathe and letting the reader’s eye relax.
 
 ## Usage in Sketch
 
 ### Define the grid
-The Porsche UI Kit basically works with 8 px increments, but in few cases 4 px
-values are allowed, for example when it comes to the line-height-rhythm of
-typography or, simply, when spacing-4 is needed between elements. Therefore, we
-recommend setting up the Sketch workspace with a 4 px grid system. You can
+Define the grid The Porsche UI Kit works with 8px
+increments, but it allows 4px values in a few cases, where greater flexibility is
+needed. We recommend setting up the workspace with a 4px grid system. You can
 change the Sketch grid settings via: View → Canvas → Grid Settings → Grid Block
 Size: 4 px. Or, when setting up a totally new UI design file, feel free to use
 the [Porsche UI Kit layout template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch) with predefined settings.
 
 ### Snap to grid
-Most design apps have the option to snap elements to the grid. Using this
-feature will help position elements faster in the layout.
+Most design apps have the option to snap elements to the grid.
+Using this feature will help position elements faster in the layout.
 
 ### Nudging
 To make the UI design workflow as smooth as possible, it is helpful to adjust
@@ -126,7 +120,6 @@ spacing class (e.g. 8 px on mobile might as well be spacing-8 or spacing-b).
 ![Abstract inspect view of spacing](assets/workshop/layout/spacing/assets/spacings-inspect.png)
 
 ### Borders
-
 While in Sketch the border doesn't add to the shape size, browsers
 consider borders as solid space around elements by default. We recommend to
 ignore this fact while designing and to always set the focus on giving the developer
@@ -136,18 +129,16 @@ slightly higher elements in implementation due to the additional border.
 ![Handling borders in Sketch](assets/workshop/layout/spacing/assets/spacings-borders.png)
 
 ### Lines
-
-Lines (such as dividers or separators) can be created in multiple ways. We
-recommend creating lines with the native „line“ tool in Sketch (L), as using
-narrow rectangles (R) leads to wrong spacings in the developer’s inspect mode.
+Lines can be created using either a narrow rectangle or a path
+with a stroke. ::For better readability of the space between elements, we
+recommend using paths with a stroke.::
 
 ### Text boxes
-
-In development, the vertical size of a text line or paragraph results from its
-surrounding bounding box, that includes not only the text size, but also
-line-height measures. So, when working with typography, we should always place
-the text box within the grid parameters, even if the baseline of the typography
-is not on the grid line. 
+Developers measure the spacing of typography from the bounding box
+of the text element. When working with typography, the bounding box should be
+placed within the grid parameters, even if the baseline of the typography is not
+on the grid line. ::MEMO: It's best to always create texts using the text tool, not as a
+box::
 
 ![Text box placement](assets/workshop/layout/spacing/assets/spacings-bounding-box.png)
 
