@@ -12,10 +12,10 @@ export const Header: React.FunctionComponent = () => {
         <Logo as="span" className={style.item} />
       </Link>
       <Spacing marginTop={16}>
-        <Text type="3-bold" align="center" as="h1">
+        <Text type="headline-4" align="center" as="h1">
           Porsche UI Kit
         </Text>
-        <Text type="small-regular" align="center" as="p">
+        <Text type="small" align="center" as="p">
           Current Release: v{packageJson.version}
         </Text>
       </Spacing>

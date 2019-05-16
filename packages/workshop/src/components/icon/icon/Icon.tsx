@@ -28,7 +28,7 @@ export interface IconProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<IconProps> = {
-  path: "http://video.porsche.com/0.0.3/icon/",
+  path: "https://ui.porsche.com/cdn/0.0.3/icon/",
   tag: "i"
 };
 
