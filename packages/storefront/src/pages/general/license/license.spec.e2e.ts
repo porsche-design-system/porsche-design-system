@@ -18,6 +18,6 @@ describe("License", () => {
     const text = await page.evaluate(e => e.textContent, elements[1]);
 
     expect(elements.length).toBe(2);
-    expect(text).toBe('License');
+    expect(text).toBe('Licence');
   });
 });
