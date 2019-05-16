@@ -32,7 +32,7 @@ export interface SidebarCategory {
 export const SidebarCategory: React.FunctionComponent<SidebarCategory> = (props) => {
   return (
     <div className={style.category}>
-      <Text type="copy-bold" as="h3" className={style.title}>
+      <Text type="headline-5" as="h3" className={style.title}>
         {props.title}
       </Text>
       {props.children}
@@ -53,7 +53,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
           SidebarLinks.categories.map((item: any) => {
             return (
               <div key={item.category} className={style.category}>
-                <Text type="copy-bold">{item.category}</Text>
+                <Text type="headline-5">{item.category}</Text>
                 <nav>
                   <ul>
                     {item.links &&
@@ -98,7 +98,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
         {props.featureV1 && (
           <React.Fragment>
             <Divider spacing="small" />
-            <Text type="4-bold" as="h2">
+            <Text type="headline-4" as="h2">
               Components
             </Text>
             {categories.map((category) => {

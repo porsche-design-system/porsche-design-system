@@ -21,7 +21,7 @@ $sg-color-highlight: deeppink;
 
   .sg-example-item {
     padding: $p-spacing-4 $p-spacing-80;
-    @include p-text-size-copy();
+    @include p-text-copy;
     color: $p-color-porsche-light;
     text-align: center;
   }
@@ -112,7 +112,7 @@ $sg-color-highlight: deeppink;
     width: 100%;
     padding: $p-spacing-4;
     background-color: $sg-color-blue-1;
-    @include p-text-size-copy();
+    @include p-text-copy;
     color: $p-color-porsche-light;
     text-align: center;
   }

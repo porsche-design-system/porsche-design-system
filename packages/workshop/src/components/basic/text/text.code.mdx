@@ -3,115 +3,407 @@ import { Text } from "@porscheui/porsche-ui-kit"
 
 # Text
 
-## Text sizes and styles
+## Introduction
+Text component can be categorized into 2 different use cases:
+1. Predefined headlines with automated responsive sizing to fit into all major breakpoints
+2. Generic text sizes which are fixed and do not respond to different viewports
 
-### Size large-title - bold / regular
+All text stylings can be set by prop/classname (see examples below). If you can't add a text class to an element, there are also SASS mixins for predefined text and SASS variables for generic text.
+
+### Predefined SASS mixins
+```
+// headlines
+@include p-text-large-title
+@include p-text-headline-1
+@include p-text-headline-2
+@include p-text-headline-3
+@include p-text-headline-4
+@include p-text-headline-5
+
+// copytext
+@include p-text-copy
+@include p-text-small
+```
+
+### Generic SASS variables
+```
+// generic text sizes
+$p-text-size-12: rem(12px);
+$p-text-size-16: rem(16px);
+$p-text-size-20: rem(20px);
+$p-text-size-24: rem(24px);
+$p-text-size-28: rem(28px);
+$p-text-size-30: rem(30px);
+$p-text-size-32: rem(32px);
+$p-text-size-36: rem(36px);
+$p-text-size-42: rem(42px);
+$p-text-size-44: rem(44px);
+$p-text-size-48: rem(48px);
+$p-text-size-52: rem(52px);
+$p-text-size-60: rem(60px);
+$p-text-size-62: rem(62px);
+$p-text-size-72: rem(72px);
+$p-text-size-84: rem(84px);
+
+// font weights
+$p-font-weight-thin: 200;
+$p-font-weight-regular: 400;
+$p-font-weight-bold: 600;
+```
+
+## Headlines
+
+### Large-title
 
 <Example noTheme={false} className="sg-example-text">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <Text type="large-title-bold" as="h1" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
-        <Text type="large-title-regular" as="h1" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="large-title" as="h1" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
       </React.Fragment>
     )
   }}
 </Example>
 
-### Size 1 - bold / regular
+### Headline 1
 
 <Example noTheme={false} className="sg-example-text">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <Text type="1-bold" as="h1" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
-        <Text type="1-regular" as="h1" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="headline-1" as="h1" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
       </React.Fragment>
     )
   }}
 </Example>
 
-### Size 2 - bold / regular
+### Headline 2
 
 <Example noTheme={false} className="sg-example-text">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <Text type="2-bold" as="h2" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
-        <Text type="2-regular" as="h2" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="headline-2" as="h2" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
       </React.Fragment>
     )
   }}
 </Example>
 
-### Size 3 - bold / regular
+### Headline 3
 
 <Example noTheme={false} className="sg-example-text">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <Text type="3-bold" as="h3" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
-        <Text type="3-regular" as="h3" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="headline 3" as="h3" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
       </React.Fragment>
     )
   }}
 </Example>
 
-### Size 4 - bold / regular
+### Headline 4
 
 <Example noTheme={false} className="sg-example-text">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <Text type="4-bold" as="h4" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
-        <Text type="4-regular" as="h4" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="headline-4" as="h4" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
       </React.Fragment>
     )
   }}
 </Example>
 
-### Size 5 - bold / regular
+### Headline 5
 
 <Example noTheme={false} className="sg-example-text">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <Text type="5-bold" as="h5" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
-        <Text type="5-regular" as="h5" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="headline-5" as="h5" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
       </React.Fragment>
     )
   }}
 </Example>
 
-### Size copy - bold / regular
+---
+
+## Copy text
+
+### Copy
 
 <Example noTheme={false} className="sg-example-text">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <Text type="copy-bold" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
-        <Text type="copy-regular" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="copy" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
       </React.Fragment>
     )
   }}
 </Example>
 
-### Size small - bold / regular
+### Small
 
 <Example noTheme={false} className="sg-example-text">
   {(theme) => {
     const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <Text type="small-bold" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
-        <Text type="small-regular" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet</Text>
+        <Text type="small" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+## Generic text
+
+### Size 12
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="12" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 16
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="16" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 20
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="20" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 24
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="24" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 28
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="28" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 30
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="30" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 32
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="32" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 36
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="36" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 42
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="42" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 44
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="44" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 48
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="48" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 52
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="52" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 60
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="60" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 62
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="62" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 72
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="72" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 84
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="84" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+## Generic text in thin variant
+
+### Size 60 thin
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="60-thin" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 62 thin
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="62-thin" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 72 thin
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="72-thin" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Size 84 thin
+<Example noTheme={false} className="sg-example-text">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="84-thin" as="p" inverted={setTheme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
       </React.Fragment>
     )
   }}
