@@ -209,7 +209,7 @@
     }
 
     &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-60);
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-62);
     }
   }
 
@@ -222,7 +222,7 @@
     }
 
     &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-60);
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-72);
     }
   }
 
@@ -235,7 +235,7 @@
     }
 
     &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-60);
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-84);
     }
   }
 
