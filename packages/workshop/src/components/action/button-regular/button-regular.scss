@@ -36,7 +36,6 @@
   &:enabled,
   &:not([disabled]) {
     &:hover,
-    &:focus,
     &:active {
       background-color: $p-color-neutral-grey-7;
       border-color: $p-color-neutral-grey-7;
@@ -45,6 +44,13 @@
       &#{$bem-block}--theme-inverted {
         background-color: $p-color-neutral-grey-1;
         border-color: $p-color-neutral-grey-1;
+      }
+    }
+    &:focus:not([aria-disabled="true"]) {
+      outline: 2px solid $p-color-state-focus;
+      outline-offset: -2px;
+      &#{$bem-block}--theme-inverted {
+        outline: 2px solid $p-color-state-focus;
       }
     }
   }
@@ -78,7 +84,6 @@
     &:enabled,
     &:not([disabled]) {
       &:hover,
-      &:focus,
       &:active {
         color: $p-color-porsche-light;
         background-color: $p-color-neutral-grey-8;
@@ -88,6 +93,12 @@
           color: $p-color-porsche-black;
           background-color: $p-color-porsche-light;
           border-color: $p-color-porsche-light;
+        }
+      }
+      &:focus:not([aria-disabled="true"]) {
+        outline-color: $p-color-state-focus;
+        &#{$bem-block}--theme-inverted {
+          outline-color: $p-color-state-focus;
         }
       }
     }
@@ -115,7 +126,6 @@
     &:enabled,
     &:not([disabled]) {
       &:hover,
-      &:focus,
       &:active {
         background-color: $p-color-porsche-dark-red;
         border-color: $p-color-porsche-dark-red;
@@ -125,6 +135,12 @@
           // sass-lint:disable-line nesting-depth
           background-color: $p-color-porsche-dark-red;
           border-color: $p-color-porsche-dark-red;
+        }
+      }
+      &:focus:not([aria-disabled="true"]) {
+        outline-color: $p-color-state-focus;
+        &#{$bem-block}--theme-inverted {
+          outline-color: $p-color-state-focus;
         }
       }
     }
