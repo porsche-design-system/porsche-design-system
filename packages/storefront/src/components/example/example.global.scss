@@ -246,6 +246,10 @@ $sg-color-highlight: deeppink;
 .sg-design-color-status-yellow {
   background-color: $p-color-status-yellow;
 }
+.sg-design-color-focus {
+  background-color: $p-color-porsche-light;
+  border: 2px solid $p-color-state-focus;
+}
 
 /* ----------  button component styles ---------- */
 .sg-example-button-regular {
