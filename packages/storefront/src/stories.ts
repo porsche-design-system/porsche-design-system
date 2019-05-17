@@ -16,11 +16,19 @@ export const Stories: Stories = {
     Color: {
       design: importMDX("../../workshop/src/components/basic/color/color.design.mdx"),
       code: importMDX("../../workshop/src/components/basic/color/color.code.mdx")
+    }
+  },
+  Typography: {
+    Headline: {
+      design: importMDX("../../workshop/src/components/typography/headline/headline.design.mdx"),
+      code: importMDX("../../workshop/src/components/typography/headline/headline.code.mdx"),
+      vrt: importMDX("../../workshop/src/components/typography/headline/headline.vrt.mdx"),
+      props: ["Headline"]
     },
     Text: {
-      design: importMDX("../../workshop/src/components/basic/text/text.design.mdx"),
-      code: importMDX("../../workshop/src/components/basic/text/text.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/basic/text/text.vrt.mdx"),
+      design: importMDX("../../workshop/src/components/typography/text/text.design.mdx"),
+      code: importMDX("../../workshop/src/components/typography/text/text.code.mdx"),
+      vrt: importMDX("../../workshop/src/components/typography/text/text.vrt.mdx"),
       props: ["Text"]
     }
   },

@@ -9,12 +9,6 @@ export interface TextProps extends ClassNameProp, ComponentProp {
    * @default copy
    */
   type?:
-    | "large-title"
-    | "headline-1"
-    | "headline-2"
-    | "headline-3"
-    | "headline-4"
-    | "headline-5"
     | "copy"
     | "small"
     | "12"
@@ -45,7 +39,7 @@ export interface TextProps extends ClassNameProp, ComponentProp {
    * Basic text color variations
    * @default black
    */
-  color?: "black" | "white" | "red";
+  color?: "black" | "white";
 
   /**
    * Adds an ellipsis to a single line of text if it overflows.
