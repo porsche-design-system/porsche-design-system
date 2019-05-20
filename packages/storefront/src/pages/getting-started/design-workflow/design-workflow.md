@@ -27,7 +27,7 @@ Both roles can be granted different rights.
 3. Click on "..." on the right of a member to manage their role or remove them from the project
 4. Select "Invite People" to add new team members or invite guests
 
-## Design Workflow
+## Design workflow
 Changes within files are made using the Abstract desktop app and Sketch. Within a project, the master represents all approved work as the latest version of the files. Tasks that are currently under development are nested in different branches and child branches. To release a finalised task, the branch must be merged into the master.
 
 ### 1. Start working on a change
@@ -41,7 +41,7 @@ e.g. `pagination accessibility recolouring | mb | #44`. For more context, you ca
 
 ![Abstract branches](assets/storefront/design/abstract-branches.png)
 
-### 2. Review and Merge changes
+### 2. Review and merge changes
 When you think you’re done with your branch, you should always add stakeholders or coworkers as reviewers to get feedback on your work before you merge it to master.
 
 1. Select your branch that you would like to be reviewed
@@ -55,5 +55,5 @@ Updating from the master every few weeks is effective at keeping your branch up 
 4. When your version of Master is out-of-date with the current version of Master (often a result of being offline) you get a diverged copy. Be sure to resolve this immediately.
 5. Inform the team about the merging.
 
-### 3. Engineering and Stakeholder "Handoff"
+### 3. Engineering and Stakeholder "handoff"
 Collections are very useful in focusing the attention of your fellow designers and stakeholders on the screens you’re modifying. You can arrange them according to the story you’re trying to tell and give additional context within them.
