@@ -2,8 +2,8 @@
 export { Icon, IconProps } from "./components/icon/icon/Icon";
 
 // typography components
-export { Headline, HeadlineProps } from "./components/typography/headline/Headline";
-export { Text, TextProps } from "./components/typography/text/Text";
+export { Headline, HeadlineProps } from "./components/basic/typography/headline/Headline";
+export { Text, TextProps } from "./components/basic/typography/text/Text";
 
 // action components
 export { ButtonRegular, ButtonRegularProps } from "./components/action/button-regular/ButtonRegular";

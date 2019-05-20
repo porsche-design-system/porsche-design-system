@@ -1,7 +1,7 @@
 import * as React from "react";
 import cx from "classnames";
-import { getElementType, prefix } from "../../../lib";
-import { ClassNameProp, ComponentProp } from "../../../lib/props";
+import { getElementType, prefix } from "../../../../lib";
+import { ClassNameProp, ComponentProp } from "../../../../lib/props";
 
 export interface TextProps extends ClassNameProp, ComponentProp {
   /**
