@@ -3160,7 +3160,7 @@ textarea {
     height: 24px;
     flex: 0 0 24px;
     box-sizing: border-box;
-    border: 1px solid #c8cacb;
+    border: 1px solid #959899;
     align-self: flex-start; }
     .pui-checkbox__icon--default {
       color: #626669; }
@@ -3221,34 +3221,34 @@ textarea {
     color: #fff;
     background-color: transparent; }
   .pui-checkbox__field:disabled:checked {
-    border-color: transparent; }
+    border-color: #c8cacb; }
     .pui-checkbox__field:disabled:checked--inverted::before {
       background-color: transparent; }
     .pui-checkbox__field:disabled:checked ~ .pui-checkbox__label {
       cursor: default;
-      color: #000; }
+      color: #c8cacb; }
       .pui-checkbox__field:disabled:checked ~ .pui-checkbox__label--inverted {
         color: #fff; }
     .pui-checkbox__field:disabled:checked ~ .pui-checkbox__icon {
       cursor: default;
       background-color: transparent;
-      border-color: transparent;
-      color: #000; }
+      border-color: #c8cacb;
+      color: #c8cacb; }
       .pui-checkbox__field:disabled:checked ~ .pui-checkbox__icon--blue {
-        border-color: transparent;
-        color: #196a99;
+        border-color: #c8cacb;
+        color: #c8cacb;
         background-color: transparent; }
       .pui-checkbox__field:disabled:checked ~ .pui-checkbox__icon--red {
-        border-color: transparent;
-        color: #d5001c;
+        border-color: #c8cacb;
+        color: #c8cacb;
         background-color: transparent; }
       .pui-checkbox__field:disabled:checked ~ .pui-checkbox__icon--inverted {
         border-color: transparent;
         color: #fff; }
         .pui-checkbox__field:disabled:checked ~ .pui-checkbox__icon--inverted--blue {
-          color: #196a99; }
+          color: #c8cacb; }
         .pui-checkbox__field:disabled:checked ~ .pui-checkbox__icon--inverted--red {
-          color: #d5001c; }
+          color: #c8cacb; }
   .pui-checkbox__field:disabled:not(:checked) ~ .pui-checkbox__icon {
     cursor: default;
     border-color: #c8cacb;
@@ -4789,7 +4789,7 @@ textarea {
       width: 24px;
       height: 24px;
       content: "";
-      border: 2px solid #c8cacb;
+      border: 2px solid #959899;
       border-radius: 50%; }
     .pui-radio__label--single-line {
       text-overflow: ellipsis;
