@@ -12,7 +12,7 @@ export interface Stories {
   };
 }
 export const Stories: Stories = {
-  Base: {
+  Basic: {
     Color: {
       design: importMDX("../../workshop/src/components/basic/color/color.design.mdx"),
       code: importMDX("../../workshop/src/components/basic/color/color.code.mdx")
