@@ -16,20 +16,12 @@ export const Stories: Stories = {
     Color: {
       design: importMDX("../../workshop/src/components/basic/color/color.design.mdx"),
       code: importMDX("../../workshop/src/components/basic/color/color.code.mdx")
-    }
-  },
-  Typography: {
-    Headline: {
-      design: importMDX("../../workshop/src/components/typography/headline/headline.design.mdx"),
-      code: importMDX("../../workshop/src/components/typography/headline/headline.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/typography/headline/headline.vrt.mdx"),
-      props: ["Headline"]
     },
-    Text: {
-      design: importMDX("../../workshop/src/components/typography/text/text.design.mdx"),
-      code: importMDX("../../workshop/src/components/typography/text/text.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/typography/text/text.vrt.mdx"),
-      props: ["Text"]
+    Typography: {
+      design: importMDX("../../workshop/src/components/basic/typography/typography.design.mdx"),
+      code: importMDX("../../workshop/src/components/basic/typography/typography.code.mdx"),
+      vrt: importMDX("../../workshop/src/components/basic/typography/typography.vrt.mdx"),
+      props: ["Headline, Text"]
     }
   },
   Action: {
