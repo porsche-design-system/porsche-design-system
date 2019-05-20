@@ -21,7 +21,7 @@ export const Stories: Stories = {
       design: importMDX("../../workshop/src/components/basic/typography/typography.design.mdx"),
       code: importMDX("../../workshop/src/components/basic/typography/typography.code.mdx"),
       vrt: importMDX("../../workshop/src/components/basic/typography/typography.vrt.mdx"),
-      props: ["Headline, Text"]
+      props: ["Headline", "Text"]
     }
   },
   Action: {
