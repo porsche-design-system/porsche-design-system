@@ -4,7 +4,7 @@ $spacing: $basic-spacing !default;
 
 $checkbox-icon-width: 24px;
 
-$checkbox-icon-border-color: $grey-light !default;
+$checkbox-icon-border-color: $grey !default;
 $checkbox-label-text-color: $black !default;
 $checkbox-icon-color: $grey-dark !default;
 
@@ -26,9 +26,9 @@ $checkbox-icon-background-color-checked-disabled: $grey-light !default;
 $checkbox-label-text-color-disabled: $grey-light !default;
 
 // checkbox disabled and checked
-$checkbox-icon-border-color-disabled-checked: transparent !default;
-$checkbox-icon-color-disabled-checked: $black !default;
-$checkbox-label-text-color-disabled-checked: $black !default;
+$checkbox-icon-border-color-disabled-checked: $grey-light !default;
+$checkbox-icon-color-disabled-checked: $grey-light !default;
+$checkbox-label-text-color-disabled-checked: $grey-light !default;
 
 /* ******  checkbox inverted  ***** */
 $checkbox-icon-border-color-inverted: $white !default;
@@ -54,10 +54,10 @@ $checkbox-error-message-margin-top: $spacing !default;
 $checkbox-text-color-error: $color-palette-red-1 !default;
 
 // checkbox blue checked and disabled
-$checkbox-icon-color-blue-disabled: $color-palette-blue-1 !default;
+$checkbox-icon-color-blue-disabled: $grey-light !default;
 
 // checkbox red checked and disabled
-$checkbox-icon-color-red-disabled: $color-palette-red-1 !default;
+$checkbox-icon-color-red-disabled: $grey-light !default;
 
 // checkbox blue checked and disabled
 $checkbox-icon-border-color-blue: $color-palette-blue-1 !default;
