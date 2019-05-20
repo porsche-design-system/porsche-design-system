@@ -12,7 +12,7 @@ describe("Component Typography", () => {
   it("should have no visual regression", async () => {
     expect(
       await visualRegressionTester.test("component-typography", async () => {
-        await visualRegressionTester.goTo("/#/vrt/basic/typography/typography");
+        await visualRegressionTester.goTo("/#/vrt/basic/typography");
       })
     ).toBeFalsy();
   });
