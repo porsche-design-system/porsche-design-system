@@ -7,7 +7,7 @@ action "Filter" {
   uses = "./images/node/"
   runs = ["run-filter"]
   env = {
-    GIT_FILTER = "^refs/heads/(v[0-9]+|issue/[0-9]/v[0-9]/react+|issue/[0-9]/v[0-9]/core+)$"
+    GIT_FILTER = "^refs/heads/(v[0-9]+|issue/[0-9]+)$"
   }
 }
 
