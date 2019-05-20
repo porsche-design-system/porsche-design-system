@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.12.1] - 2019-05-20
+
+-   Changed design of checkboxes in disabled/checked state and default outline color
+
 ## [0.12.0] - 2019-05-13
 
 -   Added pattern option to input component
