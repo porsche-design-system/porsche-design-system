@@ -17,8 +17,9 @@ export interface IconProps extends ClassNameProp, ComponentProp {
 
   /**
    * Larger sizes than default 24x24px of the icon.
+   * @default small
    */
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large" | "auto";
 
   /**
    * The html tag of the icon wrapper.
@@ -29,6 +30,7 @@ export interface IconProps extends ClassNameProp, ComponentProp {
 
 const defaultProps: Partial<IconProps> = {
   path: "https://ui.porsche.com/cdn/0.0.3/icon/",
+  size: "small",
   tag: "i"
 };
 
