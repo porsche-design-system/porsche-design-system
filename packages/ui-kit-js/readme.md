@@ -6,7 +6,7 @@ The Porsche UI Kit provides the design fundamentals for easily creating aestheti
 
 # Integrate with Vanilla JS
 
-Assuming you have access to Porsche UI Artifactory and have following npm package `@porscheui/porsche-ui-kit` which provides native Web Components (Custom Elements) installed within your project.
+Assuming you have access to Porsche UI Artifactory and have following npm package `@porscheui/ui-kit-js` which provides native Web Components (Custom Elements) installed within your project.
 
 Within your application it's necessary to include once a common Porsche UI Kit Stylesheet (which includes mainly font-face definitions) and a small web component loader script. Afterwards web components are available within your project and get lazy loaded whenever those are used.
 
@@ -16,8 +16,8 @@ Example integration, by creating and index.html with following content that is s
 <html lang="en">
 <head>
   <title>Porsche UI Kit</title>
-  <link rel="stylesheet" href="./node_modules/@porscheui/porsche-ui-kit/dist/porsche-ui-kit/porsche-ui-kit.css">
-  <script src="./node_modules/@porscheui/porsche-ui-kit/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="./node_modules/@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script src="./node_modules/@porscheui/ui-kit-js/dist/porsche-ui-kit.js"></script>
 </head>
 <body>
   <p-button-regular label="Some label"></p-button-regular>
@@ -31,7 +31,7 @@ Example integration, by creating and index.html with following content that is s
 
 # Integrate with React
 
-Assuming you have access to Porsche UI Artifactory and have following npm package `@porscheui/porsche-ui-kit` which provides native Web Components (Custom Elements) installed within your project.
+Assuming you have access to Porsche UI Artifactory and have following npm package `@porscheui/ui-kit-js` which provides native Web Components (Custom Elements) installed within your project.
 
 With an application built using the `create-react-app script` the easiest way to include the component library is to import a common CSS 
 file `porsche-ui-kit.css` and call `defineCustomElements(window)` from the `index.js` file.
@@ -41,11 +41,11 @@ file `porsche-ui-kit.css` and call `defineCustomElements(window)` from the `inde
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import '../node_modules/@porscheui/porsche-ui-kit/dist/porsche-ui-kit/porsche-ui-kit.css';
+import '../node_modules/@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { defineCustomElements } from '@porscheui/porsche-ui-kit/dist/loader';
+import { defineCustomElements } from '@porscheui/ui-kit-js/loader';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 serviceWorker.unregister();
@@ -89,7 +89,7 @@ export default App;
 
 # Integrate with Angular
 
-Assuming you have access to Porsche UI Artifactory and have following npm package `@porscheui/porsche-ui-kit` which provides native Web Components (Custom Elements) installed within your project.
+Assuming you have access to Porsche UI Artifactory and have following npm package `@porscheui/ui-kit-js` which provides native Web Components (Custom Elements) installed within your project.
 
 With an application built using Angular CLI, we need following steps to integrate Porsche UI Kit Web Components:
 
@@ -122,7 +122,7 @@ export class AppModule {}
 ```
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { defineCustomElements } from '@porscheui/porsche-ui-kit/dist/loader';
+import { defineCustomElements } from '@porscheui/ui-kit-js/loader';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
@@ -138,7 +138,7 @@ defineCustomElements(window);
 ### Import some common CSS
 It's necessary to load a CSS file provided by Porsche UI Kit to ensure e.g. font-face are loaded correctly within your `styles.scss`:
 ```
-@import '../node_modules/@porscheui/porsche-ui-kit/dist/porsche-ui-kit/porsche-ui-kit.css';
+@import '../node_modules/@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css';
 ```
 
 ### Accessing components using ViewChild and ViewChildren
