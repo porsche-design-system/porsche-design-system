@@ -1,0 +1,38 @@
+$p-font-face-thin: 200;
+$p-font-face-regular: 400;
+$p-font-face-bold: 600;
+$p-font-face-source: "https://ui.porsche.com/cdn/0.0.3/font" !default;
+
+// latin charset
+@font-face {
+  font-family: "Porsche Next";
+  font-style: normal;
+  font-weight: $p-font-face-thin;
+  src: url("#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Thin.woff2") format("woff2"),
+    url("#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Thin.woff") format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Porsche Next";
+  font-style: normal;
+  font-weight: $p-font-face-regular;
+  src: url("#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Regular.woff2") format("woff2"),
+    url("#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Regular.woff") format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Porsche Next";
+  font-style: normal;
+  font-weight: $p-font-face-bold;
+  src: url("#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Bold.woff2") format("woff2"),
+    url("#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Bold.woff") format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: fallback;
+}
