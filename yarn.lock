@@ -1455,10 +1455,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.18.2.tgz#6b811e65071527fd8bc4e54ad7b80fd18bfdcef1"
   integrity sha1-a4EeZQcVJ/2LxOVK17gP0Yv9zvE=
 
-"@porsche/ui-kit-react@^0.12.0":
-  version "0.12.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-react/-/@porsche/ui-kit-react-0.12.0.tgz#06722b86e751cc9ce67317c288bab813f5de897e"
-  integrity sha1-BnIrhudRzJzmcxfCiLq4E/XeiX4=
+"@porsche/ui-kit-react@^0.12.1":
+  version "0.12.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-react/-/@porsche/ui-kit-react-0.12.1.tgz#eef1296036a694eeb3905f340b590a3b9b2f9fe2"
+  integrity sha1-7vEpYDamlO6zkF80C1kKO5svn+I=
   dependencies:
     "@porsche/ui-kit-core" "0.18.2"
     classnames "^2.2.6"
@@ -1673,10 +1673,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-11.13.5.tgz#266564afa8a6a09dc778dfacc703ed3f09c80516"
   integrity sha1-JmVkr6imoJ3HeN+sxwPtPwnIBRY=
 
-"@types/node@12.0.0":
-  version "12.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-12.0.0.tgz#d11813b9c0ff8aaca29f04cbc12817f4c7d656e5"
-  integrity sha1-0RgTucD/iqyinwTLwSgX9MfWVuU=
+"@types/node@12.0.2":
+  version "12.0.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
+  integrity sha1-NFKiTt+f6hOLSPrUoKAopoPaHkA=
 
 "@types/prop-types@*":
   version "15.7.1"
@@ -1726,10 +1726,10 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.8.17":
-  version "16.8.17"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.8.17.tgz#f287b76a5badb93bc9aa3f54521a3eb53d6c2374"
-  integrity sha1-8oe3alutuTvJqj9UUho+tT1sI3Q=
+"@types/react@*", "@types/react@^16.8.13", "@types/react@^16.8.18":
+  version "16.8.18"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.8.18.tgz#fe66fb748b0b6ca9709d38b87b2d1356d960a511"
+  integrity sha1-/mb7dIsLbKlwnTi4ey0TVtlgpRE=
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -9901,10 +9901,10 @@ puppeteer@^1.11.0:
     rimraf "^2.6.1"
     ws "^6.1.0"
 
-puppeteer@^1.15.0:
-  version "1.15.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/puppeteer/-/puppeteer-1.15.0.tgz#1680fac13e51f609143149a5b7fa99eec392b34f"
-  integrity sha1-FoD6wT5R9gkUMUmlt/qZ7sOSs08=
+puppeteer@^1.16.0:
+  version "1.16.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/puppeteer/-/puppeteer-1.16.0.tgz#4b763d9ff4e69a4bb7a031c3393534214d54f27e"
+  integrity sha1-S3Y9n/Tmmku3oDHDOTU0IU1U8n4=
   dependencies:
     debug "^4.1.0"
     extract-zip "^1.6.6"
@@ -10199,10 +10199,10 @@ react-scripts@3.0.1:
   optionalDependencies:
     fsevents "2.0.6"
 
-react-syntax-highlighter@^10.1.3:
-  version "10.2.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-syntax-highlighter/-/react-syntax-highlighter-10.2.1.tgz#a30bf8e131c29e714a8e781ecadbace329da1530"
-  integrity sha1-owv44THCnnFKjngeytus4ynaFTA=
+react-syntax-highlighter@^10.3.0:
+  version "10.3.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-syntax-highlighter/-/react-syntax-highlighter-10.3.0.tgz#ffd9b80cf1b3dd6080af1683a0f054f5d8616960"
+  integrity sha1-/9m4DPGz3WCArxaDoPBU9dhhaWA=
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "~9.13.0"
@@ -11542,10 +11542,10 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
-stylelint-config-prettier@^5.0.0:
-  version "5.1.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-config-prettier/-/stylelint-config-prettier-5.1.0.tgz#bbc21d4b0dc01c8d19c181c2cca68fb8dadb515b"
-  integrity sha1-u8IdSw3AHI0ZwYHCzKaPuNrbUVs=
+stylelint-config-prettier@^5.2.0:
+  version "5.2.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-config-prettier/-/stylelint-config-prettier-5.2.0.tgz#b73d56a380662abd434ed745ca84db15e1a5aac6"
+  integrity sha1-tz1Wo4BmKr1DTtdFyoTbFeGlqsY=
 
 stylelint-config-recommended@^2.2.0:
   version "2.2.0"
@@ -12673,10 +12673,10 @@ webpack@4.29.6:
     watchpack "^1.5.0"
     webpack-sources "^1.3.0"
 
-webpack@^4.31.0:
-  version "4.31.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/webpack/-/webpack-4.31.0.tgz#ae201d45f0571336e42d1c2b5c8ab56c4d3b0c63"
-  integrity sha1-riAdRfBXEzbkLRwrXIq1bE07DGM=
+webpack@^4.32.1:
+  version "4.32.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/webpack/-/webpack-4.32.1.tgz#afe0cc7dd2b196e5a58f8d1d385311cfbb5d68c0"
+  integrity sha1-r+DMfdKxluWlj40dOFMRz7tdaMA=
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
