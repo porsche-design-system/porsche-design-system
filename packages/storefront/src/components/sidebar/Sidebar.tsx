@@ -3,7 +3,7 @@ import style from "./sidebar.module.scss";
 import { Stories } from "../../stories";
 import { Redirect, NavLink } from "react-router-dom";
 import { Divider } from "@porsche/ui-kit-react";
-import { Headline, Text, Icon } from "@porscheui/porsche-ui-kit";
+import { Headline, Text, Icon } from "@porscheui/ui-kit-react";
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
 import SidebarLinks from "./sidebar.json";
