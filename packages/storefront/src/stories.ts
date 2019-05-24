@@ -12,16 +12,16 @@ export interface Stories {
   };
 }
 export const Stories: Stories = {
-  Base: {
+  Basic: {
     Color: {
       design: importMDX("../../workshop/src/components/basic/color/color.design.mdx"),
       code: importMDX("../../workshop/src/components/basic/color/color.code.mdx")
     },
-    Text: {
-      design: importMDX("../../workshop/src/components/basic/text/text.design.mdx"),
-      code: importMDX("../../workshop/src/components/basic/text/text.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/basic/text/text.vrt.mdx"),
-      props: ["Text"]
+    Typography: {
+      design: importMDX("../../workshop/src/components/basic/typography/typography.design.mdx"),
+      code: importMDX("../../workshop/src/components/basic/typography/typography.code.mdx"),
+      vrt: importMDX("../../workshop/src/components/basic/typography/typography.vrt.mdx"),
+      props: ["Headline", "Text"]
     }
   },
   Action: {

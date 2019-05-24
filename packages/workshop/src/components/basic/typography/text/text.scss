@@ -1,4 +1,4 @@
-@import "../../../styles/utility/index";
+@import "../../../../styles/utility/index";
 
 .#{$p-global-class-prefix}text {
   $bem-block: &;
@@ -32,31 +32,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  // headlines
-  &--large-title {
-    @include p-text-large-title;
-  }
-
-  &--headline-1 {
-    @include p-text-headline-1;
-  }
-
-  &--headline-2 {
-    @include p-text-headline-2;
-  }
-
-  &--headline-3 {
-    @include p-text-headline-3;
-  }
-
-  &--headline-4 {
-    @include p-text-headline-4;
-  }
-
-  &--headline-5 {
-    @include p-text-headline-5;
   }
 
   // copy
@@ -249,10 +224,6 @@
       &#{$bem-block}--theme-inverted {
         color: $p-color-porsche-light;
       }
-    }
-
-    &-red {
-      color: $p-color-porsche-red;
     }
   }
 

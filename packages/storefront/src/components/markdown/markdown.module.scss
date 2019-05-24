@@ -1,5 +1,4 @@
 @import "~@porscheui/porsche-ui-kit/src/styles/utility/index";
-@import "~@porscheui/porsche-ui-kit/src/components/basic/text/text";
 
 .markdown > div > {
   :first-child {
@@ -40,28 +39,28 @@
 
     // Typography
     h1 {
-      @include p-text-headline-2;
+      @include p-headline-2;
       margin-top: $p-spacing-72;
     }
 
     h2 {
-      @include p-text-headline-3;
+      @include p-headline-3;
       margin-top: $p-spacing-64;
     }
 
     h3 {
-      @include p-text-headline-4;
+      @include p-headline-4;
       margin-top: $p-spacing-48;
     }
 
     h4 {
-      @include p-text-headline-5;
+      @include p-headline-5;
       margin-top: $p-spacing-32;
     }
 
     h5,
     h6 {
-      @include p-text-headline-5;
+      @include p-headline-5;
       margin-top: $p-spacing-24;
     }
 

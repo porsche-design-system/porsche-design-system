@@ -40,7 +40,7 @@
     "concurrently": "^4.1.0",
     "copyfiles": "^2.1.0",
     "jasmine": "^3.4.0",
-    "puppeteer": "^1.15.0",
+    "puppeteer": "^1.16.0",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5",
     "wait-on": "^3.2.0"

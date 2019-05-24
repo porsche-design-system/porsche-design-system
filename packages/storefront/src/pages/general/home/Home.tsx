@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./home.module.scss";
-import { Flex, Spacing, Text, Grid, ButtonRegular } from "@porscheui/porsche-ui-kit";
+import { Flex, Spacing, Headline, Text, Grid, ButtonRegular } from "@porscheui/porsche-ui-kit";
 
 export const Home: React.FunctionComponent = () => {
   return (
@@ -21,12 +21,10 @@ export const Home: React.FunctionComponent = () => {
       <article className={styles.intro}>
         <Grid>
           <Grid.Child size={{ base: 12, m: 4 }}>
-            <Text as="h1" type="headline-3">
+            <Headline level="1" type="headline-3">
               Porsche UI Kit
-            </Text>
-            <Text as="h2" type="24">
-              Design System
-            </Text>
+            </Headline>
+            <Text type="24">Design System</Text>
             <Spacing marginTop={8}>
               <Text>
                 <Link to="/getting-started/about">Learn more about it</Link>
@@ -74,9 +72,9 @@ export const Home: React.FunctionComponent = () => {
       <article className={styles.newsletter}>
         <Grid>
           <Grid.Child size={{ base: 12, m: 3 }}>
-            <Text as="h2" type="headline-3">
+            <Headline level="2" type="headline-3">
               Always stay informed
-            </Text>
+            </Headline>
           </Grid.Child>
           <Grid.Child size={{ base: 12, m: 8 }} offset={{ base: 0, m: 1 }} className="p-mt--24 p-mt--0-m">
             <Text type="24">Join our mailing list and get informed about relevant updates and topics.</Text>

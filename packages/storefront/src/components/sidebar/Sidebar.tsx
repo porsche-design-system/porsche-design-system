@@ -3,7 +3,7 @@ import style from "./sidebar.module.scss";
 import { Stories } from "../../stories";
 import { Redirect, NavLink } from "react-router-dom";
 import { Divider } from "@porsche/ui-kit-react";
-import { Text, Icon } from "@porscheui/porsche-ui-kit";
+import { Headline, Text, Icon } from "@porscheui/porsche-ui-kit";
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
 import SidebarLinks from "./sidebar.json";
@@ -32,9 +32,9 @@ export interface SidebarCategory {
 export const SidebarCategory: React.FunctionComponent<SidebarCategory> = (props) => {
   return (
     <div className={style.category}>
-      <Text type="headline-5" as="h3" className={style.title}>
+      <Headline type="headline-5" level="3" className={style.title}>
         {props.title}
-      </Text>
+      </Headline>
       {props.children}
     </div>
   );
@@ -53,7 +53,9 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
           SidebarLinks.categories.map((item: any) => {
             return (
               <div key={item.category} className={style.category}>
-                <Text type="headline-5">{item.category}</Text>
+                <Headline type="headline-5" level="4">
+                  {item.category}
+                </Headline>
                 <nav>
                   <ul>
                     {item.links &&
@@ -98,9 +100,9 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
         {props.featureV1 && (
           <React.Fragment>
             <Divider spacing="small" />
-            <Text type="headline-4" as="h2">
+            <Headline type="headline-4" level="2">
               Components
-            </Text>
+            </Headline>
             {categories.map((category) => {
               const stories = Object.keys((Stories as any)[category]);
               if (!stories) {

@@ -1,0 +1,52 @@
+import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
+import { Text, Headline } from "@porscheui/porsche-ui-kit"
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <Headline type="large-title" level="1">
+          Large Title
+        </Headline>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="inverted">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Headline type="large-title" level="1" inverted={setTheme}>
+          Large Title
+        </Headline>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <Text type="copy">
+          Copy text with <strong>strong text</strong> and <b>bold text</b>
+        </Text>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="inverted">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <Text type="small" inverted={setTheme}>
+          Small text with <strong>strong text</strong> and <b>bold text</b>
+        </Text>
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>

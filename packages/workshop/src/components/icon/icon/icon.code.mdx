@@ -8,8 +8,7 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually. If
 
 ## Icons used as a React component
 
-### Icon standard
-
+### Small (default)
 <Example noTheme>
   {(theme) => {
     return (
@@ -20,21 +19,7 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually. If
 }}
 </Example>
 
-### Predefined icon sizes
-The default icon size has a box of 24x24px (1.5rem) which corresponds to the default copytext line-height. If larger sizes are needed, choose from one of the predefined sizes.
-
-#### Medium
-<Example noTheme>
-  {(theme) => {
-    return (
-      <React.Fragment>
-        <Icon name="icon_car-next.min.svg" size="small" />
-      </React.Fragment>
-    )
-}}
-</Example>
-
-#### Large
+### Medium
 <Example noTheme>
   {(theme) => {
     return (
@@ -45,12 +30,23 @@ The default icon size has a box of 24x24px (1.5rem) which corresponds to the def
 }}
 </Example>
 
-#### X-large
+### large
 <Example noTheme>
   {(theme) => {
     return (
       <React.Fragment>
         <Icon name="icon_car-next.min.svg" size="large" />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+### Auto
+<Example noTheme>
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <Icon name="icon_car-next.min.svg" size="auto" />
       </React.Fragment>
     )
 }}
