@@ -1,0 +1,25 @@
+@import "../../../styles/utility/index";
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: rem(24px);
+  height: rem(24px);
+  fill: currentColor;
+  transition: fill $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &--small {
+    width: rem(32px);
+    height: rem(32px);
+  }
+
+  &--medium {
+    width: rem(48px);
+    height: rem(48px);
+  }
+
+  &--large {
+    width: rem(80px);
+    height: rem(80px);
+  }
+}

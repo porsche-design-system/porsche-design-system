@@ -1,0 +1,57 @@
+@import "./../function/rem.function";
+
+// static spacings
+$p-spacing-4: rem(4px);
+$p-spacing-8: rem(8px);
+$p-spacing-16: rem(16px);
+$p-spacing-24: rem(24px);
+$p-spacing-32: rem(32px);
+$p-spacing-40: rem(40px);
+$p-spacing-48: rem(48px);
+$p-spacing-56: rem(56px);
+$p-spacing-64: rem(64px);
+$p-spacing-72: rem(72px);
+$p-spacing-80: rem(80px);
+
+// responsive spacings
+$p-spacing-a: $p-spacing-4;
+$p-spacing-a-s: $p-spacing-8;
+$p-spacing-a-m: rem(12px);
+$p-spacing-a-l: $p-spacing-16;
+$p-spacing-a-xl: rem(20px);
+
+$p-spacing-b: $p-spacing-8;
+$p-spacing-b-s: $p-spacing-16;
+$p-spacing-b-m: $p-spacing-24;
+$p-spacing-b-l: $p-spacing-32;
+$p-spacing-b-xl: $p-spacing-40;
+
+$p-spacing-c: $p-spacing-16;
+$p-spacing-c-s: $p-spacing-24;
+$p-spacing-c-m: $p-spacing-32;
+$p-spacing-c-l: $p-spacing-40;
+$p-spacing-c-xl: $p-spacing-48;
+
+$p-spacing-d: $p-spacing-24;
+$p-spacing-d-s: $p-spacing-32;
+$p-spacing-d-m: $p-spacing-40;
+$p-spacing-d-l: $p-spacing-48;
+$p-spacing-d-xl: $p-spacing-56;
+
+$p-spacing-e: $p-spacing-32;
+$p-spacing-e-s: $p-spacing-40;
+$p-spacing-e-m: $p-spacing-48;
+$p-spacing-e-l: $p-spacing-56;
+$p-spacing-e-xl: $p-spacing-64;
+
+$p-spacing-f: $p-spacing-40;
+$p-spacing-f-s: $p-spacing-48;
+$p-spacing-f-m: $p-spacing-56;
+$p-spacing-f-l: $p-spacing-64;
+$p-spacing-f-xl: $p-spacing-72;
+
+$p-spacing-g: $p-spacing-48;
+$p-spacing-g-s: $p-spacing-56;
+$p-spacing-g-m: $p-spacing-64;
+$p-spacing-g-l: $p-spacing-72;
+$p-spacing-g-xl: $p-spacing-80;

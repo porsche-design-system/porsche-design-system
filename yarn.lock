@@ -1566,6 +1566,25 @@
     jimp "^0.6.0"
     puppeteer "^1.11.0"
 
+"@stencil/core@^1.0.0-beta.5":
+  version "1.0.0-beta.5"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.0.0-beta.5.tgz#88bc17ec931e7d707b423e1ea4bb614bb1b537a0"
+  integrity sha1-iLwX7JMefXB7Qj4epLthS7G1N6A=
+  dependencies:
+    typescript "3.4.5"
+
+"@stencil/postcss@^0.1.0":
+  version "0.1.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/postcss/-/postcss-0.1.0.tgz#1ba0436e75cfaa0e73746a72e91739ad5d6f8579"
+  integrity sha1-G6BDbnXPqg5zdGpy6Rc5rV1vhXk=
+  dependencies:
+    postcss "6.0.20"
+
+"@stencil/sass@^0.2.3":
+  version "0.2.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/sass/-/sass-0.2.3.tgz#836d819d4c3e1182e551de12a7aac77099d9aea2"
+  integrity sha1-g22BnUw+EYLlUd4Sp6rHcJnZrqI=
+
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.2.0.tgz#dadcb6218503532d6884b210e7f3c502caaa44b1"
@@ -1671,6 +1690,14 @@
     "@svgr/plugin-svgo" "^4.0.3"
     loader-utils "^1.1.0"
 
+"@types/autoprefixer@^9.5.0":
+  version "9.5.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/autoprefixer/-/autoprefixer-9.5.0.tgz#aaf489be1bda03650717ef9cb01b8fc4d5eb1ad4"
+  integrity sha1-qvSJvhvaA2UHF++csBuPxNXrGtQ=
+  dependencies:
+    "@types/browserslist" "*"
+    postcss "7.x.x"
+
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -1703,6 +1730,16 @@
   integrity sha1-Mo3RqPxM/jyEWL6Ud7IZ6hWP17I=
   dependencies:
     "@babel/types" "^7.3.0"
+
+"@types/browserslist@*":
+  version "4.4.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/browserslist/-/browserslist-4.4.0.tgz#e2a5f7f8c7e97afb39f50812a77e5230d3ca2353"
+  integrity sha1-4qX3+Mfpevs59QgSp35SMNPKI1M=
+
+"@types/classnames@^2.2.7":
+  version "2.2.7"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/classnames/-/classnames-2.2.7.tgz#fb68cc9be8487e6ea5b13700e759bfbab7e0fefd"
+  integrity sha1-+2jMm+hIfm6lsTcA51m/urfg/v0=
 
 "@types/events@*":
   version "3.0.0"
@@ -1743,10 +1780,17 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/jasmine@^3.3.12":
-  version "3.3.12"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jasmine/-/jasmine-3.3.12.tgz#bf282cb540e9ad7a0a04b742082c073b655eab39"
-  integrity sha1-vygstUDprXoKBLdCCCwHO2Veqzk=
+"@types/jest-diff@*":
+  version "20.0.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
+  integrity sha1-NcwVucTzChjvIYUuJV/bAvbVm4k=
+
+"@types/jest@^24.0.13":
+  version "24.0.13"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jest/-/jest-24.0.13.tgz#10f50b64cb05fb02411fbba49e9042a3a11da3f9"
+  integrity sha1-EPULZMsF+wJBH7uknpBCo6Edo/k=
+  dependencies:
+    "@types/jest-diff" "*"
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -3077,7 +3121,7 @@ ccount@^1.0.0, ccount@^1.0.3:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/ccount/-/ccount-1.0.4.tgz#9cf2de494ca84060a2a8d2854edd6dfb0445f386"
   integrity sha1-nPLeSUyoQGCiqNKFTt1t+wRF84Y=
 
-chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
+chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha1-zUJUFnelQzPPVBpJEIwUMrRMlCQ=
@@ -6550,7 +6594,7 @@ jest-changed-files@^24.8.0:
     execa "^1.0.0"
     throat "^4.0.0"
 
-jest-cli@^24.7.1:
+jest-cli@^24.7.1, jest-cli@^24.8.0:
   version "24.8.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/jest-cli/-/jest-cli-24.8.0.tgz#b075ac914492ed114fa338ade7362a301693e989"
   integrity sha1-sHWskUSS7RFPozit5zYqMBaT6Yk=
@@ -6924,6 +6968,14 @@ jest@24.7.1:
   dependencies:
     import-local "^2.0.0"
     jest-cli "^24.7.1"
+
+jest@^24.8.0:
+  version "24.8.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/jest/-/jest-24.8.0.tgz#d5dff1984d0d1002196e9b7f12f75af1b2809081"
+  integrity sha1-1d/xmE0NEAIZbpt/Evda8bKAkIE=
+  dependencies:
+    import-local "^2.0.0"
+    jest-cli "^24.8.0"
 
 jimp@^0.6.0:
   version "0.6.4"
@@ -7548,23 +7600,23 @@ mdast-add-list-metadata@1.0.1:
     unist-util-visit-parents "1.1.2"
 
 mdast-squeeze-paragraphs@^3.0.0:
-  version "3.0.4"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/mdast-squeeze-paragraphs/-/mdast-squeeze-paragraphs-3.0.4.tgz#e27affcc8cc854842ff504ebb8f380e3c8e131f8"
-  integrity sha1-4nr/zIzIVIQv9QTruPOA48jhMfg=
+  version "3.0.5"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/mdast-squeeze-paragraphs/-/mdast-squeeze-paragraphs-3.0.5.tgz#f428b6b944f8faef454db9b58f170c4183cb2e61"
+  integrity sha1-9Ci2uUT4+u9FTbm1jxcMQYPLLmE=
   dependencies:
     unist-util-remove "^1.0.0"
 
 mdast-util-compact@^1.0.0:
-  version "1.0.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/mdast-util-compact/-/mdast-util-compact-1.0.2.tgz#c12ebe16fffc84573d3e19767726de226e95f649"
-  integrity sha1-wS6+Fv/8hFc9Phl2dybeIm6V9kk=
+  version "1.0.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/mdast-util-compact/-/mdast-util-compact-1.0.3.tgz#98a25cc8a7865761a41477b3a87d1dcef0b1e79d"
+  integrity sha1-mKJcyKeGV2GkFHezqH0dzvCx550=
   dependencies:
     unist-util-visit "^1.1.0"
 
 mdast-util-definitions@^1.2.0:
-  version "1.2.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/mdast-util-definitions/-/mdast-util-definitions-1.2.3.tgz#49f936b09207c45b438db19551652934312f04f0"
-  integrity sha1-Sfk2sJIHxFtDjbGVUWUpNDEvBPA=
+  version "1.2.4"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/mdast-util-definitions/-/mdast-util-definitions-1.2.4.tgz#2b54ad4eecaff9d9fcb6bf6f9f6b68b232d77ca7"
+  integrity sha1-K1StTuyv+dn8tr9vn2tosjLXfKc=
   dependencies:
     unist-util-visit "^1.0.0"
 
@@ -9591,7 +9643,16 @@ postcss-values-parser@^2.0.0, postcss-values-parser@^2.0.1:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.2, postcss@^7.0.5, postcss@^7.0.6, postcss@^7.0.7:
+postcss@6.0.20:
+  version "6.0.20"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/postcss/-/postcss-6.0.20.tgz#686107e743a12d5530cb68438c590d5b2bf72c3c"
+  integrity sha1-aGEH50OhLVUwy2hDjFkNWyv3LDw=
+  dependencies:
+    chalk "^2.3.2"
+    source-map "^0.6.1"
+    supports-color "^5.3.0"
+
+postcss@7.x.x, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.2, postcss@^7.0.5, postcss@^7.0.6, postcss@^7.0.7:
   version "7.0.16"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/postcss/-/postcss-7.0.16.tgz#48f64f1b4b558cb8b52c88987724359acb010da2"
   integrity sha1-SPZPG0tVjLi1LIiYdyQ1mssBDaI=
@@ -9788,7 +9849,7 @@ punycode@^1.2.4, punycode@^1.4.1:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha1-wNWmOycYgArY4esPpSachN1BhF4=
 
-puppeteer@^1.11.0, puppeteer@^1.16.0:
+puppeteer@^1.11.0, puppeteer@^1.14.0, puppeteer@^1.16.0:
   version "1.17.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/puppeteer/-/puppeteer-1.17.0.tgz#371957d227a2f450fa74b78e78a2dadb2be7f14f"
   integrity sha1-NxlX0iei9FD6dLeOeKLa2yvn8U8=
@@ -12010,7 +12071,7 @@ typedarray@^0.0.6:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.4.5, typescript@~3.4.5:
+typescript@3.4.5, typescript@^3.4.5, typescript@~3.4.5:
   version "3.4.5"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
   integrity sha1-LSYY0Qu1ZlcrjXqtUYDYQlfXCpk=
