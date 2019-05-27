@@ -3,8 +3,8 @@
 .#{$p-global-class-prefix}loader {
   $bem-block: &;
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   stroke-width: 2px;
   animation: rotate 2s linear infinite; // basic IE11 fallback
 
@@ -40,7 +40,6 @@
     }
   }
 
-  // the exact sizes must be refactored when final SVG icons are in place!
   &--x-small {
     width: rem(16px);
     height: rem(16px);
@@ -48,45 +47,45 @@
   }
 
   &--small {
-    width: rem(24px);
-    height: rem(24px);
-    stroke-width: 4px;
-  }
-
-  &--medium {
-    width: rem(40px);
-    height: rem(40px);
+    width: rem(48px);
+    height: rem(48px);
     stroke-width: 3px;
   }
 
-  &--large {
-    width: rem(56px);
-    height: rem(56px);
+  &--medium {
+    width: rem(48px);
+    height: rem(48px);
+    stroke-width: 3px;
 
-    @include breakpoint("l") {
-      width: rem(64px);
-      height: rem(64px);
+    @include breakpoint("m") {
+      width: rem(72px);
+      height: rem(72px);
+      stroke-width: 2px;
     }
   }
 
-  &--x-large {
-    width: rem(40px);
-    height: rem(40px);
+  &--large {
+    width: rem(48px);
+    height: rem(48px);
+    stroke-width: 3px;
 
     @include breakpoint("m") {
-      width: rem(56px);
-      height: rem(56px);
+      width: rem(72px);
+      height: rem(72px);
+      stroke-width: 2px;
     }
 
     @include breakpoint("l") {
-      width: rem(64px);
-      height: rem(64px);
+      width: rem(104px);
+      height: rem(104px);
+      stroke-width: 2px;
     }
+  }
 
-    @include breakpoint("xl") {
-      width: rem(80px);
-      height: rem(80px);
-    }
+  &--auto {
+    width: 100%;
+    height: auto;
+    stroke-width: 3px;
   }
 }
 

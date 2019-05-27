@@ -93,16 +93,6 @@ export namespace Components {
     */
     'size'?: "small" | "medium" | "large";
   }
-  interface PLoader {
-    /**
-    * Inverts the color for use on darker backgrounds.
-    */
-    'inverted'?: boolean;
-    /**
-    * A loader can have different sizes
-    */
-    'size'?: "x-small" | "small" | "medium" | "large" | "x-large";
-  }
 }
 
 declare namespace LocalJSX {
@@ -194,21 +184,10 @@ declare namespace LocalJSX {
     */
     'size'?: "small" | "medium" | "large";
   }
-  interface PLoader extends JSXBase.HTMLAttributes {
-    /**
-    * Inverts the color for use on darker backgrounds.
-    */
-    'inverted'?: boolean;
-    /**
-    * A loader can have different sizes
-    */
-    'size'?: "x-small" | "small" | "medium" | "large" | "x-large";
-  }
 
   interface IntrinsicElements {
     'p-button-regular': PButtonRegular;
     'p-icon': PIcon;
-    'p-loader': PLoader;
   }
 }
 
@@ -238,16 +217,9 @@ declare global {
     new (): HTMLPIconElement;
   };
 
-  interface HTMLPLoaderElement extends Components.PLoader, HTMLStencilElement {}
-  var HTMLPLoaderElement: {
-    prototype: HTMLPLoaderElement;
-    new (): HTMLPLoaderElement;
-  };
-
   interface HTMLElementTagNameMap {
     'p-button-regular': HTMLPButtonRegularElement;
     'p-icon': HTMLPIconElement;
-    'p-loader': HTMLPLoaderElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}
