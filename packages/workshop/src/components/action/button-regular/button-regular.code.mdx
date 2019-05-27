@@ -143,3 +143,22 @@ If another icon needs to be implemented, just replace the default icon with your
     )
 }}
 </Example>
+
+---
+
+### Button edge cases
+Visualization of edge cases
+
+<Example noTheme={false} className="sg-example-button-regular">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    const wrapperStyle = {"width": "200px"}
+    return (
+      <React.Fragment>
+        <div style={wrapperStyle}>
+          <ButtonRegular icon="icon_phone.min.svg" inverted={setTheme}>Very long text lorem ipsum dolor sit amet consecutor lorem ipsum</ButtonRegular>
+        </div>
+      </React.Fragment>
+    )
+}}
+</Example>
