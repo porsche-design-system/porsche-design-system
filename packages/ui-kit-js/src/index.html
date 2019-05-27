@@ -12,9 +12,43 @@
 </head>
 <body>
 
-  <p-button-regular label="Some label"></p-button-regular>
+  <form action="http://localhost:3333/?foo=bar" method="get">
+    <input type="text" name="juicy" value="bannana"/>
+    <p-button-regular variant="highlight" type="submit">Some label</p-button-regular>
+  </form>
+
+  <div>
+    <p-button-regular href="#foo" disabled="true">Some label</p-button-regular>
+  </div>
+
+  <p-button-regular>Some label</p-button-regular>
+  <p-button-regular variant="ghost">Some label</p-button-regular>
+  <p-button-regular loading="true">Some label</p-button-regular>
+  <p-button-regular loading="true" variant="ghost">Some label</p-button-regular>
+
+  <div style="background: black;">
+    <p-button-regular inverted="true">Some label</p-button-regular>
+    <p-button-regular variant="ghost" inverted="true">Some label</p-button-regular>
+    <p-button-regular loading="true" inverted="true">Some label</p-button-regular>
+    <p-button-regular loading="true" variant="ghost" inverted="true">Some label</p-button-regular>
+  </div>
+
+
   <p-loader></p-loader>
   <p-icon icon="icon_search.min.svg" size="large"></p-icon>
+
+  <script>
+    const btn = document.querySelector('p-button-regular');
+    btn.addEventListener('pClick', (e) => {
+      console.log('btn was clicked', e);
+    });
+    btn.addEventListener('pFocus', (e) => {
+      console.log('btn was focused', e);
+    });
+    btn.addEventListener('pBlur', (e) => {
+      console.log('btn was blurred', e);
+    });
+  </script>
 
 </body>
 </html>
