@@ -11,45 +11,41 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface PButtonRegular {
     /**
-    * Some optional disabled state
+    * Disables the button. No events will be triggered while disabled state is active.
     */
     'disabled'?: boolean;
     /**
-    * The icon of the button.
+    * When providing an url then the component will be rendered as <a> instead of <button> tag.
+    */
+    'href'?: string;
+    /**
+    * The icon shown next to the label.
     */
     'icon'?: string;
     /**
-    * Button on dark background
+    * Overrides the default icon resource path.
+    */
+    'iconPath'?: string;
+    /**
+    * Adapts the button color when used on dark background.
     */
     'inverted'?: boolean;
     /**
-    * Label
-    */
-    'label': string;
-    /**
-    * Disables the button and shows a loading indicator. No onClicked event will be triggered.
+    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
     'loading'?: boolean;
     /**
-    * React test property
-    */
-    'ref'?: any;
-    /**
-    * Specifies the HTML Type of the button. If undefined, nothing is set.
-    */
-    'role'?: "button" | "submit" | "reset" | undefined;
-    /**
-    * A button can be displayed with a smaller size
+    * Displays the button smaller.
     */
     'small'?: boolean;
     /**
-    * HTML tag
+    * Specifies the type of the button when no href prop is defined.
     */
-    'tag'?: "button" | "a" | string;
+    'type'?: "button" | "submit" | "reset";
     /**
-    * The display type of the button.
+    * The style variant of the button.
     */
-    'type'?: "highlight" | "ghost";
+    'variant'?: "highlight" | "ghost" | "default";
   }
   interface PIcon {
     /**
@@ -93,54 +89,68 @@ export namespace Components {
     */
     'size'?: "small" | "medium" | "large";
   }
+  interface PLoader {
+    /**
+    * Inverts the color for use on darker backgrounds.
+    */
+    'inverted'?: boolean;
+    /**
+    * A loader can have different sizes
+    */
+    'size'?: "x-small" | "small" | "medium" | "large" | "x-large";
+  }
 }
 
 declare namespace LocalJSX {
   interface PButtonRegular extends JSXBase.HTMLAttributes {
     /**
-    * Some optional disabled state
+    * Disables the button. No events will be triggered while disabled state is active.
     */
     'disabled'?: boolean;
     /**
-    * The icon of the button.
+    * When providing an url then the component will be rendered as <a> instead of <button> tag.
+    */
+    'href'?: string;
+    /**
+    * The icon shown next to the label.
     */
     'icon'?: string;
     /**
-    * Button on dark background
+    * Overrides the default icon resource path.
+    */
+    'iconPath'?: string;
+    /**
+    * Adapts the button color when used on dark background.
     */
     'inverted'?: boolean;
     /**
-    * Label
-    */
-    'label'?: string;
-    /**
-    * Disables the button and shows a loading indicator. No onClicked event will be triggered.
+    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
     'loading'?: boolean;
     /**
-    * Called after a user's click.
+    * Emitted when the button loses focus.
     */
-    'onOnClicked'?: (event: CustomEvent<any>) => void;
+    'onPBlur'?: (event: CustomEvent<void>) => void;
     /**
-    * React test property
+    * Emitted when the button is clicked.
     */
-    'ref'?: any;
+    'onPClick'?: (event: CustomEvent<void>) => void;
     /**
-    * Specifies the HTML Type of the button. If undefined, nothing is set.
+    * Emitted when the button has focus.
     */
-    'role'?: "button" | "submit" | "reset" | undefined;
+    'onPFocus'?: (event: CustomEvent<void>) => void;
     /**
-    * A button can be displayed with a smaller size
+    * Displays the button smaller.
     */
     'small'?: boolean;
     /**
-    * HTML tag
+    * Specifies the type of the button when no href prop is defined.
     */
-    'tag'?: "button" | "a" | string;
+    'type'?: "button" | "submit" | "reset";
     /**
-    * The display type of the button.
+    * The style variant of the button.
     */
-    'type'?: "highlight" | "ghost";
+    'variant'?: "highlight" | "ghost" | "default";
   }
   interface PIcon extends JSXBase.HTMLAttributes {
     /**
@@ -184,10 +194,21 @@ declare namespace LocalJSX {
     */
     'size'?: "small" | "medium" | "large";
   }
+  interface PLoader extends JSXBase.HTMLAttributes {
+    /**
+    * Inverts the color for use on darker backgrounds.
+    */
+    'inverted'?: boolean;
+    /**
+    * A loader can have different sizes
+    */
+    'size'?: "x-small" | "small" | "medium" | "large" | "x-large";
+  }
 
   interface IntrinsicElements {
     'p-button-regular': PButtonRegular;
     'p-icon': PIcon;
+    'p-loader': PLoader;
   }
 }
 
@@ -217,9 +238,16 @@ declare global {
     new (): HTMLPIconElement;
   };
 
+  interface HTMLPLoaderElement extends Components.PLoader, HTMLStencilElement {}
+  var HTMLPLoaderElement: {
+    prototype: HTMLPLoaderElement;
+    new (): HTMLPLoaderElement;
+  };
+
   interface HTMLElementTagNameMap {
     'p-button-regular': HTMLPButtonRegularElement;
     'p-icon': HTMLPIconElement;
+    'p-loader': HTMLPLoaderElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}
