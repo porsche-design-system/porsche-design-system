@@ -4,24 +4,9 @@ import { Loader } from "@porscheui/ui-kit-react"
 # Loader
 
 ## Introduction
-Basic animated loader to visualize loading states, e.g. page loading, form validation, etc.
+Basic animated loader to visualize loading states, e.g. page loading, form validation, etc. The Loader component sizes are predefined.
 
-### Loader standard
-
-<Example noTheme={false}>
-  {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
-    return (
-      <React.Fragment>
-        <Loader inverted={setTheme} />
-      </React.Fragment>
-    )
-}}
-</Example>
-
-### Loader sizes
-
-#### X-small
+### X-small
 
 <Example noTheme={false}>
   {(theme) => {
@@ -34,7 +19,7 @@ Basic animated loader to visualize loading states, e.g. page loading, form valid
 }}
 </Example>
 
-#### Small
+### Small
 
 <Example noTheme={false}>
   {(theme) => {
@@ -47,7 +32,7 @@ Basic animated loader to visualize loading states, e.g. page loading, form valid
 }}
 </Example>
 
-#### Medium
+### Medium
 
 <Example noTheme={false}>
   {(theme) => {
@@ -60,7 +45,7 @@ Basic animated loader to visualize loading states, e.g. page loading, form valid
 }}
 </Example>
 
-#### Large
+### Large
 
 <Example noTheme={false}>
   {(theme) => {
@@ -73,15 +58,3 @@ Basic animated loader to visualize loading states, e.g. page loading, form valid
 }}
 </Example>
 
-#### X-large
-
-<Example noTheme={false}>
-  {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
-    return (
-      <React.Fragment>
-        <Loader size="x-large" inverted={setTheme} />
-      </React.Fragment>
-    )
-}}
-</Example>
