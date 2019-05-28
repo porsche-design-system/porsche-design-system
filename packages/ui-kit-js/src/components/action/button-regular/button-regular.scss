@@ -1,6 +1,6 @@
 @import "../../../styles/utility/index";
 
-.button-regular {
+.#{$p-global-class-prefix}button-regular {
   $bem-block: &;
   display: inline-flex;
   position: relative;
@@ -8,8 +8,9 @@
   flex-direction: column;
   text-align: left;
   @include p-text-copy;
-  padding: 12px 17px; // 17px width because of 1 px border which leads to 18px
+  padding: 11px 15px; // 15px width because of 1 px border which leads to 16px
   max-width: 100%; // fix for IE11, forces using multi line label
+  box-sizing: border-box;
   border-radius: 0; // fix for Chrome and Safari
   appearance: none;
   outline: none;
@@ -169,11 +170,11 @@
   }
 
   &__icon,
-  &__icon-loader {
+  &__loader {
     position: absolute;
   }
 
-  &__icon-loader {
+  &__loader {
     margin-top: 0.1875em; // this must be adapted if final SVG icons are integrated!
   }
 
@@ -181,15 +182,12 @@
     padding-left: rem(24px);
     display: block;
     width: 100%;
+    box-sizing: border-box;
   }
 
   &--loading {
     cursor: default;
     pointer-events: none;
-  }
-
-  &--stretch {
-    width: 100%;
   }
 
   // fix for Firefox, so that top alignment of button content works when two button are next to each other
