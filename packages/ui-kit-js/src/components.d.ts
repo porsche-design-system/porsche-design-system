@@ -97,7 +97,7 @@ export namespace Components {
     /**
     * Predefined loader sizes.
     */
-    'size'?: "x-small" | "small" | "medium" | "large" | "x-large";
+    'size'?: "x-small" | "small" | "medium" | "large";
   }
 }
 
@@ -202,7 +202,7 @@ declare namespace LocalJSX {
     /**
     * Predefined loader sizes.
     */
-    'size'?: "x-small" | "small" | "medium" | "large" | "x-large";
+    'size'?: "x-small" | "small" | "medium" | "large";
   }
 
   interface IntrinsicElements {

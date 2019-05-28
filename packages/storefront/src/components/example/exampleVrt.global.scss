@@ -1,10 +1,6 @@
 @import "~@porscheui/ui-kit-react/src/styles/utility/index";
 
-.sg-example-loader {
-  .p-loader {
-    animation: none;
-    &__fg {
-      animation: none;
-    }
-  }
+// disable animation durations globally to perform vrt
+.sg-vrt * {
+  --p-animation-duration: 0;
 }

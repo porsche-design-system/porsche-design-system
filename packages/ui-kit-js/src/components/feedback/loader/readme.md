@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                           | Type                                                       | Default   |
-| ---------- | ---------- | ----------------------------------------------------- | ---------------------------------------------------------- | --------- |
-| `inverted` | `inverted` | Adapts the loader color when used on dark background. | `boolean`                                                  | `false`   |
-| `size`     | `size`     | Predefined loader sizes.                              | `"large" \| "medium" \| "small" \| "x-large" \| "x-small"` | `"small"` |
+| Property   | Attribute  | Description                                           | Type                                          | Default   |
+| ---------- | ---------- | ----------------------------------------------------- | --------------------------------------------- | --------- |
+| `inverted` | `inverted` | Adapts the loader color when used on dark background. | `boolean`                                     | `false`   |
+| `size`     | `size`     | Predefined loader sizes.                              | `"large" \| "medium" \| "small" \| "x-small"` | `"small"` |
 
 
 ## Dependencies
