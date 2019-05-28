@@ -30,6 +30,7 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 - Button Regular
 - Button Square
 - Button Circle
+- Loader
 - Pagination  
 - Text Link
 - Text Lists
@@ -45,10 +46,9 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 
 ## Q3 2019
 
-### Development of Components for 1.0 second beta release / May-Jun
+### Development of Components for 1.0 second beta release
 - Porsche Marque
 - Typography
-- Loader
 - Checkbox
 - Radiobutton
 - Input Fields
