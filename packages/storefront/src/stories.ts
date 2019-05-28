@@ -32,10 +32,9 @@ export const Stories: Stories = {
   },
   Feedback: {
     Loader: {
-      design: importMDX("../../workshop/src/components/feedback/loader/loader.design.mdx"),
-      code: importMDX("../../workshop/src/components/feedback/loader/loader.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/feedback/loader/loader.vrt.mdx"),
-      props: ["Loader"]
+      design: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.design.mdx"),
+      code: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.vrt.mdx")
     }
   },
   Icon: {
