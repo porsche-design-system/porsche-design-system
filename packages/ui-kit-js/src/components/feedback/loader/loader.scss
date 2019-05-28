@@ -1,24 +1,27 @@
 @import "../../../styles/utility/index";
 
+:host {
+  --p-animation-duration: 2s;
+}
+
 .#{$p-global-class-prefix}loader {
   $bem-block: &;
   display: block;
-  width: 48px;
-  height: 48px;
+  width: rem(48px);
+  height: rem(48px);
   stroke-width: 2px;
-  animation: rotate 2s linear infinite; // basic IE11 fallback
+  animation: rotate var(--p-animation-duration) linear infinite; // basic IE11 fallback
 
   &__image {
     display: block;
     position: relative;
     fill: none;
-    stroke-width: inherit;
     transform: translate3d(0, 0, 0);
   }
 
   &__fg {
     transform-origin: center center;
-    animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
+    animation: rotate var(--p-animation-duration) linear infinite, dash var(--p-animation-duration) ease-in-out infinite;
     stroke: $p-color-neutral-grey-8;
     stroke-dasharray: 100, 200;
     stroke-dashoffset: 0;
@@ -49,13 +52,13 @@
   &--small {
     width: rem(48px);
     height: rem(48px);
-    stroke-width: 3px;
+    stroke-width: 2px;
   }
 
   &--medium {
     width: rem(48px);
     height: rem(48px);
-    stroke-width: 3px;
+    stroke-width: 2px;
 
     @include breakpoint("m") {
       width: rem(72px);
@@ -67,7 +70,7 @@
   &--large {
     width: rem(48px);
     height: rem(48px);
-    stroke-width: 3px;
+    stroke-width: 2px;
 
     @include breakpoint("m") {
       width: rem(72px);

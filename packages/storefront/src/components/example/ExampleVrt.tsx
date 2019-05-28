@@ -21,6 +21,7 @@ export const ExampleVrt: React.FunctionComponent<ExampleVrtProps> = (props) => {
   const { className, theme } = props;
 
   const renderClasses = cx(
+    "sg-vrt",
     styles.vrt,
     { [styles.light]: theme === "default" },
     { [styles.dark]: theme === "inverted" },
