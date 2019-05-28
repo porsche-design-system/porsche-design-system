@@ -19,6 +19,7 @@
   },
   "references": [
     { "path": "./packages/storefront" },
-    { "path": "./packages/workshop" }
+    { "path": "./packages/workshop" },
+    { "path": "./packages/ui-kit-js" }
   ]
 }
