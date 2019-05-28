@@ -7,36 +7,39 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                              | Type                              | Default                           |
-| ---------- | ---------- | ---------------------------------------------------------------------------------------- | --------------------------------- | --------------------------------- |
-| `disabled` | `disabled` | Some optional disabled state                                                             | `boolean`                         | `false`                           |
-| `icon`     | `icon`     | The icon of the button.                                                                  | `string`                          | `"icon_arrow-right-hair.min.svg"` |
-| `inverted` | `inverted` | Button on dark background                                                                | `boolean`                         | `false`                           |
-| `label`    | `label`    | Label                                                                                    | `string`                          | `''`                              |
-| `loading`  | `loading`  | Disables the button and shows a loading indicator. No onClicked event will be triggered. | `boolean`                         | `false`                           |
-| `ref`      | `ref`      | React test property                                                                      | `any`                             | `''`                              |
-| `role`     | `role`     | Specifies the HTML Type of the button. If undefined, nothing is set.                     | `"button" \| "reset" \| "submit"` | `undefined`                       |
-| `small`    | `small`    | A button can be displayed with a smaller size                                            | `boolean`                         | `false`                           |
-| `tag`      | `tag`      | HTML tag                                                                                 | `string`                          | `"button"`                        |
-| `type`     | `type`     | The display type of the button.                                                          | `"ghost" \| "highlight"`          | `undefined`                       |
+| Property   | Attribute   | Description                                                                                                   | Type                                  | Default                           |
+| ---------- | ----------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------- | --------------------------------- |
+| `disabled` | `disabled`  | Disables the button. No events will be triggered while disabled state is active.                              | `boolean`                             | `false`                           |
+| `href`     | `href`      | When providing an url then the component will be rendered as <a> instead of <button> tag.                     | `string`                              | `undefined`                       |
+| `icon`     | `icon`      | The icon shown next to the label.                                                                             | `string`                              | `"icon_arrow-right-hair.min.svg"` |
+| `iconPath` | `icon-path` | Overrides the default icon resource path.                                                                     | `string`                              | `undefined`                       |
+| `inverted` | `inverted`  | Adapts the button color when used on dark background.                                                         | `boolean`                             | `false`                           |
+| `loading`  | `loading`   | Disables the button and shows a loading indicator. No events will be triggered while loading state is active. | `boolean`                             | `false`                           |
+| `small`    | `small`     | Displays the button smaller.                                                                                  | `boolean`                             | `false`                           |
+| `type`     | `type`      | Specifies the type of the button when no href prop is defined.                                                | `"button" \| "reset" \| "submit"`     | `"button"`                        |
+| `variant`  | `variant`   | The style variant of the button.                                                                              | `"default" \| "ghost" \| "highlight"` | `"default"`                       |
 
 
 ## Events
 
-| Event       | Description                  | Type               |
-| ----------- | ---------------------------- | ------------------ |
-| `onClicked` | Called after a user's click. | `CustomEvent<any>` |
+| Event    | Description                          | Type                |
+| -------- | ------------------------------------ | ------------------- |
+| `pBlur`  | Emitted when the button loses focus. | `CustomEvent<void>` |
+| `pClick` | Emitted when the button is clicked.  | `CustomEvent<void>` |
+| `pFocus` | Emitted when the button has focus.   | `CustomEvent<void>` |
 
 
 ## Dependencies
 
 ### Depends on
 
+- [p-loader](../../feedback/loader)
 - [p-icon](../../base/icon)
 
 ### Graph
 ```mermaid
 graph TD;
+  p-button-regular --> p-loader
   p-button-regular --> p-icon
   style p-button-regular fill:#f9f,stroke:#333,stroke-width:4px
 ```

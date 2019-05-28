@@ -15,7 +15,6 @@ Editor.registerLanguage("xml", languageXml);
 export interface ExampleProps extends ClassNameProp {
   noHTML?: boolean;
   noTheme?: boolean;
-  noSCSS?: boolean;
 }
 
 const defaultProps: Partial<ExampleProps> = {
@@ -26,17 +25,12 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   const { className } = props;
   const [theme, setTheme] = useState("default");
   const [showHTML, setShowHTML] = useState(false);
-  const [showSCSS, setShowSCSS] = useState(false);
 
   const renderClasses = cx(styles.render, { [styles.light]: theme === "default" }, { [styles.dark]: theme === "inverted" }, "sg-example-global", className);
 
   const handleShowClicked = (name: string) => {
     if (name === "html") {
       setShowHTML(!showHTML);
-      setShowSCSS(showSCSS === true ? false : false);
-    } else if (name === "scss") {
-      setShowSCSS(!showSCSS);
-      setShowHTML(showHTML === true ? false : false);
     }
   };
 
@@ -59,7 +53,7 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
         <div className={styles.container}>
           {props.noTheme !== true && <Tab panes={panes} alignment="left" mini divider={false} />}
           <div className={renderClasses}>{renderNode(props.children, theme)}</div>
-          {(!props.noHTML || !props.noSCSS) && (
+          {(!props.noHTML) && (
             <React.Fragment>
               <Flex className={styles["toggle-container"]} justifyContent="end">
                 {!props.noHTML && (
@@ -69,17 +63,7 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
                     })}
                     onClick={() => handleShowClicked("html")}
                   >
-                    {showHTML ? "- HTML" : "+ HTML"}
-                  </button>
-                )}
-                {!props.noSCSS && (
-                  <button
-                    className={cx(styles.toggle, {
-                      [styles.open]: showSCSS
-                    })}
-                    onClick={() => handleShowClicked("scss")}
-                  >
-                    {showSCSS ? "- SCSS" : "+ SCSS"}
+                    {showHTML ? "- JavaScript" : "+ JavaScript"}
                   </button>
                 )}
               </Flex>
@@ -87,13 +71,6 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
                 <div className={styles.codeblock}>
                   <Editor language="xml" style={editorTheme}>
                     {renderHTML(props.children, theme)}
-                  </Editor>
-                </div>
-              )}
-              {showSCSS && (
-                <div className={styles.codeblock}>
-                  <Editor language="scss" style={editorTheme}>
-                    # SCSS paths coming soon...
                   </Editor>
                 </div>
               )}

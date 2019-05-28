@@ -1,5 +1,7 @@
-import {JSX, Component, Prop, h, Event, EventEmitter} from "@stencil/core";
+import {JSX, Component, Prop, h, Event, EventEmitter, Element} from "@stencil/core";
 import cx from "classnames";
+import {prefix} from "../../../utils/prefix";
+import {hasShadowDom} from "../../../utils/hasShadowDom";
 
 @Component({
   tag: "p-button-regular",
@@ -8,86 +10,111 @@ import cx from "classnames";
 })
 export class ButtonRegular {
 
-  /** Label */
-  @Prop() label: string = '';
+  @Element() element!: HTMLElement;
 
-  /** Some optional disabled state */
+  /** Specifies the type of the button when no href prop is defined. */
+  @Prop() type?: "button" | "submit" | "reset" = "button";
+
+  /** When providing an url then the component will be rendered as <a> instead of <button> tag. */
+  @Prop() href?: string = undefined;
+
+  /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() disabled?: boolean = false;
 
-  /** Button on dark background */
-  @Prop() inverted?: boolean = false;
-
-  /** A button can be displayed with a smaller size */
-  @Prop() small?: boolean = false;
-
-  /** Disables the button and shows a loading indicator. No onClicked event will be triggered. */
+  /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() loading?: boolean = false;
 
-  /** HTML tag */
-  @Prop() tag?: "button" | "a" | string = "button";
+  /** The style variant of the button. */
+  @Prop() variant?: "highlight" | "ghost" | "default" = "default";
 
-  /** The display type of the button. */
-  @Prop() type?: "highlight" | "ghost";
-
-   /** Specifies the HTML Type of the button. If undefined, nothing is set. */
-  @Prop() role?: "button" | "submit" | "reset" | undefined = undefined;
-
-  /** The icon of the button. */
+  /** The icon shown next to the label. */
   @Prop() icon?: string = "icon_arrow-right-hair.min.svg";
 
-  /** React test property */
-  @Prop() ref?: any = '';
+  /** Overrides the default icon resource path. */
+  @Prop() iconPath?: string = undefined;
 
-  /** Called after a user's click. */
-  @Event() onClicked: EventEmitter;
+  /** Displays the button smaller. */
+  @Prop() small?: boolean = false;
 
-  private clickHandler(): void {
-    this.onClicked.emit();
+  /** Adapts the button color when used on dark background. */
+  @Prop() inverted?: boolean = false;
+
+  /** Emitted when the button is clicked. */
+  @Event() pClick!: EventEmitter<void>;
+
+  /** Emitted when the button has focus. */
+  @Event() pFocus!: EventEmitter<void>;
+
+  /** Emitted when the button loses focus. */
+  @Event() pBlur!: EventEmitter<void>;
+
+  private onClick(event): void {
+    this.pClick.emit(event);
+
+    if (!this.href && this.type === 'submit' && hasShadowDom(this.element)) {
+
+      // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
+      const form = this.element.closest('form');
+      if (form) {
+        event.preventDefault();
+
+        const fakeButton = document.createElement('button');
+        fakeButton.type = this.type;
+        fakeButton.style.display = 'none';
+        form.appendChild(fakeButton);
+        fakeButton.click();
+        fakeButton.remove();
+      }
+    }
   }
 
-  private loaderNotInverted(): boolean {
-    return !this.ruleTypeGhost();
-  };
-  private ruleTypeGhost() {
-    return this.type === "ghost" && !this.inverted;
-  };
+  private onFocus(event): void {
+    this.pFocus.emit(event);
+  }
+
+  private onBlur(event): void {
+    this.pBlur.emit(event);
+  }
+
+  private useInvertedLoader(): boolean {
+    return this.variant !== "ghost" || this.inverted;
+  }
 
   render(): JSX.Element {
 
-    const buttonClasses = cx(
-      "button-regular",
-      {["button-regular--highlight"]: this.type === "highlight"},
-      {["button-regular--ghost"]: this.type === "ghost"},
-      {["button-regular--loading"]: this.loading},
-      {["button-regular--small"]: this.small},
-      {["button-regular--theme-inverted"]: this.inverted }
-    );
-    const iconClasses = cx("button-regular__icon");
-    const loaderClasses = cx("button-regular__icon-loader");
-    const labelClasses = cx("button-regular__label");
+    const TagType = this.href === undefined ? "button" : "a";
 
-    if (this.tag === "button") {
-      return (
-        <button onClick={() => this.clickHandler()} type={this.role} class={buttonClasses} disabled={this.disabled || this.loading}>
-          {this.loading ? (
-            <p-loader size="x-small" class={loaderClasses} inverted={this.loaderNotInverted()} />
-          ) : (
-            <p-icon class={iconClasses} icon={this.icon} />
-          )}
-          <span class={labelClasses}>{this.label}</span>
-        </button>
-      )
-    } else if (this.tag === "a") {
-      return (
-        <a onClick={() => this.clickHandler()} href="#" class={buttonClasses} aria-disabled={this.disabled || this.loading}>
-          {this.loading ? (
-            <p-loader size="x-small" class={loaderClasses} inverted={this.loaderNotInverted()} />
-          ) : (
-            <p-icon class={iconClasses} icon={this.icon} />
-          )}
-          <span class={labelClasses}>{this.label}</span>
-        </a>
-      )
-    }
+    const buttonClasses = cx(
+      prefix("button-regular"),
+      {[prefix("button-regular--highlight")]: this.variant === "highlight"},
+      {[prefix("button-regular--ghost")]: this.variant === "ghost"},
+      {[prefix("button-regular--loading")]: this.loading},
+      {[prefix("button-regular--small")]: this.small},
+      {[prefix("button-regular--theme-inverted")]: this.inverted}
+    );
+    const iconClasses = prefix("button-regular__icon");
+    const loaderClasses = prefix("button-regular__loader");
+    const labelClasses = prefix("button-regular__label");
+
+    return (
+      <TagType
+        class={buttonClasses}
+        {...(TagType === 'button')
+          ? {type: this.type, disabled: this.disabled || this.loading}
+          : {href: this.href, "aria-disabled": String(this.disabled || this.loading)}}
+        onClick={(e) => this.onClick(e)}
+        onFocus={(e) => this.onFocus(e)}
+        onBlur={(e) => this.onBlur(e)}
+      >
+        {this.loading ? (
+          <p-loader class={loaderClasses} size="x-small" inverted={this.useInvertedLoader()}/>
+        ) : (
+          <p-icon class={iconClasses} {...this.iconPath ? {path: this.iconPath} : null} icon={this.icon}/>
+        )}
+        <span class={labelClasses}>
+          <slot />
+        </span>
+      </TagType>
+    );
   }
 }
