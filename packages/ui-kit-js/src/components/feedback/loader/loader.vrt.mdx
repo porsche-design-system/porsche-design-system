@@ -1,0 +1,62 @@
+import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-loader></p-loader>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt theme="inverted" className="sg-example-loader">
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <p-loader inverted={setTheme}></p-loader>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-loader size="x-small"></p-loader>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-loader size="small"></p-loader>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-loader size="medium"></p-loader>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt className="sg-example-loader">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-loader size="large"></p-loader>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>

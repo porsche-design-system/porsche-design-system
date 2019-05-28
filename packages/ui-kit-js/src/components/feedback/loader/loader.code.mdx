@@ -1,0 +1,59 @@
+import { Example } from "../../../src/components/example/Example"
+
+# Loader
+
+## Introduction
+Basic animated loader to visualize loading states, e.g. page loading, form validation, etc. The Loader component sizes are predefined.
+
+### X-small
+
+<Example noTheme={false}>
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <p-loader size="x-small" inverted={setTheme}></p-loader>
+      </React.Fragment>
+    )
+}}
+</Example>
+
+### Small
+
+<Example noTheme={false}>
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <p-loader size="small" inverted={setTheme}></p-loader>
+      </React.Fragment>
+    )
+}}
+</Example>
+
+### Medium
+
+<Example noTheme={false}>
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <p-loader size="medium" inverted={setTheme}></p-loader>
+      </React.Fragment>
+    )
+}}
+</Example>
+
+### Large
+
+<Example noTheme={false}>
+  {(theme) => {
+    const setTheme = theme === "inverted" ? true : false
+    return (
+      <React.Fragment>
+        <p-loader size="large" inverted={setTheme}></p-loader>
+      </React.Fragment>
+    )
+}}
+</Example>
+

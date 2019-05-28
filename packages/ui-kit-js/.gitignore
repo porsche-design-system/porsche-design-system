@@ -1,6 +1,6 @@
-dist/
-www/
-loader/
+/dist/
+/www/
+/loader/
 
 *~
 *.sw[mnpcod]
