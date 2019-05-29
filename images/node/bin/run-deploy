@@ -85,8 +85,8 @@ copy_latest_stable_sketch_library_and_create_rss_feed() {
 _EOF_
 }
 
-copy_latest_stable_sketch_template() {
-  echo "task: [$(date)] \"copy_latest_stable_sketch_template\" (${1})"
+copy_latest_stable_sketch_file() {
+  echo "task: [$(date)] \"copy_latest_stable_sketch_file\" (${1})"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
   cp "./sketch/${1}" "/opt/porsche-ui-kit-gh-pages/latest"
 }
@@ -139,7 +139,8 @@ if isWorkingBranchLatestStableBranch; then
   prepare_deployment "latest"
   copy_porsche_ui_kit "latest"
   add_deployment_version "latest"
-  copy_latest_stable_sketch_template "porsche-ui-kit-layout-template.sketch"
+  copy_latest_stable_sketch_file "porsche-ui-kit-layout-template.sketch"
+  copy_latest_stable_sketch_file "porsche-ui-kit-colors.sketchpalette"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
