@@ -13,7 +13,7 @@ describe("Component Button Regular", () => {
     expect(
       await visualRegressionTester.test("component-button-regular", async () => {
         await visualRegressionTester.goTo("/#/vrt/action/button-regular");
-      })
+      }, ["p-button-regular[loading='true']"])
     ).toBeFalsy();
   });
 });

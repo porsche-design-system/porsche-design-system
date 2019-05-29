@@ -117,7 +117,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
                           <li className={style["nav-item"]} key={story}>
                             <SidebarLink
                               to={{
-                                pathname: `/${category.toLowerCase()}/${story.toLowerCase()}`,
+                                pathname: `/${category.toLowerCase().replace(" ", "-")}/${story.toLowerCase().replace(" ", "-")}`,
                                 search: `${props.featureV1}`
                               }}
                               title={story}
