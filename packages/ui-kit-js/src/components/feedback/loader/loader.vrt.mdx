@@ -10,12 +10,11 @@ import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
 }}
 </ExampleVrt>
 
-<ExampleVrt theme="inverted" className="sg-example-loader">
+<ExampleVrt theme="dark" className="sg-example-loader">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-loader inverted={setTheme}></p-loader>
+        <p-loader theme={theme}></p-loader>
       </React.Fragment>
     )
 }}
