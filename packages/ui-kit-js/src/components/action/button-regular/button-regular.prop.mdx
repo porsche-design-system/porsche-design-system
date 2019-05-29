@@ -33,17 +33,6 @@
 
 ### Depends on
 
-- [p-loader](../../feedback/loader)
-- [p-icon](../../icon/icon)
+- [p-loader](#/feedback/loader)
+- [p-icon](#/icon/icon)
 
-### Graph
-```mermaid
-graph TD;
-  p-button-regular --> p-loader
-  p-button-regular --> p-icon
-  style p-button-regular fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

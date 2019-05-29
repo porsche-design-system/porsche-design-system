@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 function getFilesInDirectory(dir, suffix, files=[]) {
   if (fs.existsSync(dir)) {
@@ -27,7 +28,12 @@ function removeGraph(data) {
 for (const file of getFilesInDirectory('./src/components/', 'readme.md')) {
   fs.readFile(file, 'utf8', (err, data) => {
     if (err) throw err;
-    fs.writeFile(file, removeGraph(updateDependencyPaths(data)), 'utf8', (err) => {
+    //fs.writeFile(file, removeGraph(data), 'utf8', (err) => {
+    //  if (err) throw err;
+    //});
+    const dir = path.dirname(file);
+    const basename = dir.split('/')[dir.split('/').length-1];
+    fs.writeFile(`${dir}/${basename}.prop.mdx`, removeGraph(updateDependencyPaths(data)), 'utf8', (err) => {
       if (err) throw err;
     });
   });
