@@ -79,7 +79,7 @@ export namespace Components {
     /**
     * The mode determines which platform styles to use. Possible values are: `"ios"` or `"md"`.
     */
-    'mode'?: 'ios' | 'md';
+    'mode'?: "ios" | "md";
     /**
     * Specifies the exact http(s) `path` to an SVG file to use.
     */
@@ -184,7 +184,7 @@ declare namespace LocalJSX {
     /**
     * The mode determines which platform styles to use. Possible values are: `"ios"` or `"md"`.
     */
-    'mode'?: 'ios' | 'md';
+    'mode'?: "ios" | "md";
     /**
     * Specifies the exact http(s) `path` to an SVG file to use.
     */
