@@ -21,16 +21,18 @@ export const Stories: Stories = {
     Typography: {
       design: importMDX("../../ui-kit-js/src/components/basic/typography/typography.design.mdx"),
       code: importMDX("../../ui-kit-js/src/components/basic/typography/typography.code.mdx"),
-      vrt: importMDX("../../ui-kit-js/src/components/basic/typography/typography.vrt.mdx")
+      vrt: importMDX("../../ui-kit-js/src/components/basic/typography/typography.vrt.mdx"),
+      docs: [
+        importMDX("../../ui-kit-js/src/components/basic/typography/headline/readme.md"),
+        importMDX("../../ui-kit-js/src/components/basic/typography/text/readme.md")
+      ]
     }
   },
   Action: {
     Buttonregular: {
       design: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.design.mdx"),
       code: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.code.mdx"),
-      docs: [
-        importMDX("../../ui-kit-js/src/components/action/button-regular/readme.md")
-      ]
+      docs: [importMDX("../../ui-kit-js/src/components/action/button-regular/readme.md")]
     }
   },
   Feedback: {
@@ -38,9 +40,7 @@ export const Stories: Stories = {
       design: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.design.mdx"),
       code: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.code.mdx"),
       vrt: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.vrt.mdx"),
-      docs: [
-        importMDX("../../ui-kit-js/src/components/feedback/loader/readme.md")
-      ]
+      docs: [importMDX("../../ui-kit-js/src/components/feedback/loader/readme.md")]
     }
   },
   Icon: {
@@ -48,9 +48,7 @@ export const Stories: Stories = {
       design: importMDX("../../ui-kit-js/src/components/icon/icon/icon.design.mdx"),
       code: importMDX("../../ui-kit-js/src/components/icon/icon/icon.code.mdx"),
       vrt: importMDX("../../ui-kit-js/src/components/icon/icon/icon.vrt.mdx"),
-      docs: [
-        importMDX("../../ui-kit-js/src/components/icon/icon/readme.md")
-      ]
+      docs: [importMDX("../../ui-kit-js/src/components/icon/icon/readme.md")]
     }
   },
   Layout: {
