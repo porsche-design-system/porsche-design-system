@@ -14,7 +14,7 @@ export class ButtonRegular {
   /** Specifies the type of the button when no href prop is defined. */
   @Prop() type?: "button" | "submit" | "reset" = "button";
 
-  /** When providing an url then the component will be rendered as <a> instead of <button> tag. */
+  /** When providing an url then the component will be rendered as `<a>` instead of `<button>` tag. */
   @Prop() href?: string = undefined;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
