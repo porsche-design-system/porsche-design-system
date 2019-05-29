@@ -14,11 +14,11 @@ export interface Stories {
 export const Stories: Stories = {
   Basic: {
     Color: {
-      design: importMDX("../../workshop/src/components/basic/color/color.design.mdx"),
+      design: importMDX("../../ui-kit-js/src/components/basic/color/color.design.mdx"),
       code: importMDX("../../workshop/src/components/basic/color/color.code.mdx")
     },
     Typography: {
-      design: importMDX("../../workshop/src/components/basic/typography/typography.design.mdx"),
+      design: importMDX("../../ui-kit-js/src/components/basic/typography/typography.design.mdx"),
       code: importMDX("../../workshop/src/components/basic/typography/typography.code.mdx"),
       vrt: importMDX("../../workshop/src/components/basic/typography/typography.vrt.mdx"),
       props: ["Headline", "Text"]
@@ -39,7 +39,7 @@ export const Stories: Stories = {
   },
   Icon: {
     Icon: {
-      design: importMDX("../../workshop/src/components/icon/icon/icon.design.mdx"),
+      design: importMDX("../../ui-kit-js/src/components/icon/icon/icon.design.mdx"),
       code: importMDX("../../workshop/src/components/icon/icon/icon.code.mdx"),
       vrt: importMDX("../../workshop/src/components/icon/icon/icon.vrt.mdx"),
       props: ["Icon"]

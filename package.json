@@ -24,20 +24,18 @@
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
   "scripts": {
-    "start": "concurrently -n \"workshop,ui-kit-js,app\" -c \"cyan,yellow,gray\" \"yarn --cwd ./packages/workshop build\" \"yarn --cwd ./packages/ui-kit-js build\" \"yarn copy\" && concurrently -k -n \"workshop,storefront\" -c \"cyan,magenta\" \"yarn --cwd ./packages/workshop watch:es\" \"yarn --cwd ./packages/storefront start\"",
-    "build": "concurrently -n \"workshop,app\" -c \"cyan,gray\" \"yarn --cwd ./packages/workshop build\" \"yarn copy\" && concurrently -n \"ui-kit-js\" -c \"cyan\" \"yarn --cwd ./packages/ui-kit-js build\" && concurrently -n \"storefront\" -c \"magenta\" \"yarn --cwd ./packages/storefront build\"",
+    "start": "concurrently -n \"workshop,ui-kit-js\" -c \"cyan,yellow\" \"yarn --cwd ./packages/workshop build\" \"yarn --cwd ./packages/ui-kit-js build\" && concurrently -k -n \"workshop,storefront\" -c \"cyan,magenta\" \"yarn --cwd ./packages/workshop watch:es\" \"yarn --cwd ./packages/storefront start\"",
+    "build": "concurrently -n \"workshop\" -c \"cyan\" \"yarn --cwd ./packages/workshop build\" && concurrently -n \"ui-kit-js\" -c \"cyan\" \"yarn --cwd ./packages/ui-kit-js build\" && concurrently -n \"storefront\" -c \"magenta\" \"yarn --cwd ./packages/storefront build\"",
     "lint": "concurrently -n \"storefront,workshop\" -c \"magenta,cyan\" \"yarn --cwd ./packages/storefront lint\" \"yarn --cwd ./packages/workshop lint\"",
     "vrt": "concurrently -k -s \"first\" -n \"app,vrt\" -c \"gray\" \"yarn start\" \"wait-on -t 300000 http-get://localhost:3000 && ts-node --project 'vrt/tsconfig.json' node_modules/.bin/jasmine --config='vrt/jasmine.config.json'\"",
     "e2e": "concurrently -k -s \"first\" -n \"app,e2e\" -c \"gray\" \"yarn start\" \"wait-on -t 300000 http-get://localhost:3000 && ts-node --project 'e2e/tsconfig.json' node_modules/.bin/jasmine --config='e2e/jasmine.config.json'\"",
-    "clean": "concurrently -n \"repository,storefront,workshop\" -c \"gray,magenta,cyan\" \"rm -rf './node_modules'\" \"yarn --cwd ./packages/storefront clean\" \"yarn --cwd ./packages/workshop clean\"",
-    "copy": "yarn --cwd ./packages/workshop copyfiles --up 2 --verbose --error './src/components/**/assets/*.{jpg,jpeg,png,svg,gif}' '../storefront/public/assets/workshop/'"
+    "clean": "concurrently -n \"repository,storefront,workshop\" -c \"gray,magenta,cyan\" \"rm -rf './node_modules'\" \"yarn --cwd ./packages/storefront clean\" \"yarn --cwd ./packages/workshop clean\""
   },
   "dependencies": {},
   "devDependencies": {
     "@porscheui/visual-regression-tester": "^1.1.1",
     "@types/puppeteer": "^1.12.4",
     "concurrently": "^4.1.0",
-    "copyfiles": "^2.1.0",
     "jasmine": "^3.4.0",
     "puppeteer": "^1.16.0",
     "ts-node": "^8.1.0",
