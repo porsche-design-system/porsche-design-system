@@ -3,6 +3,9 @@
 .icon {
   display: inline-flex;
   flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   width: rem(24px);
   height: rem(24px);
   fill: currentColor;

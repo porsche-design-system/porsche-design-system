@@ -8,6 +8,7 @@
   flex-direction: column;
   text-align: left;
   @include p-text-copy;
+  margin: 0;
   padding: 11px 15px; // 15px width because of 1 px border which leads to 16px
   max-width: 100%; // fix for IE11, forces using multi line label
   box-sizing: border-box;
