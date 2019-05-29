@@ -32,6 +32,7 @@ export const Stories: Stories = {
     Buttonregular: {
       design: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.design.mdx"),
       code: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.vrt.mdx"),
       docs: [importMDX("../../ui-kit-js/src/components/action/button-regular/readme.md")]
     }
   },
