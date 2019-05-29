@@ -15,7 +15,7 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * When providing an url then the component will be rendered as <a> instead of <button> tag.
+    * When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.
     */
     'href'?: string;
     /**
@@ -108,7 +108,7 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
-    * When providing an url then the component will be rendered as <a> instead of <button> tag.
+    * When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.
     */
     'href'?: string;
     /**

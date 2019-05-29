@@ -10,7 +10,7 @@
 | Property   | Attribute   | Description                                                                                                   | Type                                  | Default                           |
 | ---------- | ----------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------- | --------------------------------- |
 | `disabled` | `disabled`  | Disables the button. No events will be triggered while disabled state is active.                              | `boolean`                             | `false`                           |
-| `href`     | `href`      | When providing an url then the component will be rendered as <a> instead of <button> tag.                     | `string`                              | `undefined`                       |
+| `href`     | `href`      | When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.                 | `string`                              | `undefined`                       |
 | `icon`     | `icon`      | The icon shown next to the label.                                                                             | `string`                              | `"icon_arrow-right-hair.min.svg"` |
 | `iconPath` | `icon-path` | Overrides the default icon resource path.                                                                     | `string`                              | `undefined`                       |
 | `loading`  | `loading`   | Disables the button and shows a loading indicator. No events will be triggered while loading state is active. | `boolean`                             | `false`                           |

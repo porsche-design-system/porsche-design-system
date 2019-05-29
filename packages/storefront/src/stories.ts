@@ -3,6 +3,7 @@ import { importMDX } from "mdx.macro";
 export interface Story {
   design: any;
   code: any;
+  docs?: any[];
   props?: string[];
   vrt?: any;
 }
@@ -27,21 +28,30 @@ export const Stories: Stories = {
   Action: {
     Buttonregular: {
       design: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.design.mdx"),
-      code: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.code.mdx")
+      code: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.code.mdx"),
+      docs: [
+        importMDX("../../ui-kit-js/src/components/action/button-regular/readme.md")
+      ]
     }
   },
   Feedback: {
     Loader: {
       design: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.design.mdx"),
       code: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.code.mdx"),
-      vrt: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.vrt.mdx")
+      vrt: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.vrt.mdx"),
+      docs: [
+        importMDX("../../ui-kit-js/src/components/feedback/loader/readme.md")
+      ]
     }
   },
   Icon: {
     Icon: {
       design: importMDX("../../ui-kit-js/src/components/icon/icon/icon.design.mdx"),
       code: importMDX("../../ui-kit-js/src/components/icon/icon/icon.code.mdx"),
-      vrt: importMDX("../../ui-kit-js/src/components/icon/icon/icon.vrt.mdx")
+      vrt: importMDX("../../ui-kit-js/src/components/icon/icon/icon.vrt.mdx"),
+      docs: [
+        importMDX("../../ui-kit-js/src/components/icon/icon/readme.md")
+      ]
     }
   },
   Layout: {
