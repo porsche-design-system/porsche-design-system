@@ -19,9 +19,8 @@ export const Stories: Stories = {
     },
     Typography: {
       design: importMDX("../../ui-kit-js/src/components/basic/typography/typography.design.mdx"),
-      code: importMDX("../../workshop/src/components/basic/typography/typography.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/basic/typography/typography.vrt.mdx"),
-      props: ["Headline", "Text"]
+      code: importMDX("../../ui-kit-js/src/components/basic/typography/typography.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/basic/typography/typography.vrt.mdx")
     }
   },
   Action: {
