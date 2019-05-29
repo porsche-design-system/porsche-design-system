@@ -3,7 +3,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 // values taken from excel sheet 2019-05-09_porsche-ui-kit-typography-mapping
 
 // headlines
-@mixin p-text-large-title {
+@mixin p-large-title {
   font-family: $p-font-primary;
   font-weight: 600;
   font-size: rem(32px);
@@ -30,7 +30,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-headline-1 {
+@mixin p-headline-1 {
   font-family: $p-font-primary;
   font-weight: 600;
   font-size: rem(28px);
@@ -57,7 +57,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-headline-2 {
+@mixin p-headline-2 {
   font-family: $p-font-primary;
   font-weight: 600;
   font-size: rem(24px);
@@ -84,7 +84,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-headline-3 {
+@mixin p-headline-3 {
   font-family: $p-font-primary;
   font-weight: 600;
   font-size: rem(20px);
@@ -111,7 +111,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-headline-4 {
+@mixin p-headline-4 {
   font-family: $p-font-primary;
   font-weight: 600;
   font-size: rem(16px);
@@ -138,7 +138,7 @@ $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   }
 }
 
-@mixin p-text-headline-5 {
+@mixin p-headline-5 {
   font-family: $p-font-primary;
   font-weight: 600;
   font-size: rem(16px);

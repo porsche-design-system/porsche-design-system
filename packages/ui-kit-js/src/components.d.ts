@@ -47,6 +47,40 @@ export namespace Components {
     */
     'variant'?: "highlight" | "ghost" | "default";
   }
+  interface PHeadline {
+    /**
+    * The text alignment of the component.
+    */
+    'align'?: "left" | "center" | "right";
+    /**
+    * Basic text color variations.
+    */
+    'color'?: "black" | "light";
+    /**
+    * Adds an ellipsis to a single line of text if it overflows.
+    */
+    'ellipsis'?: boolean;
+    /**
+    * Sets the text as display: inline.
+    */
+    'inline'?: boolean;
+    /**
+    * Headline level/hierarchy.
+    */
+    'level'?: "1" | "2" | "3" | "4" | "5" | "6";
+    /**
+    * Adapts the loader color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * The style of the text.
+    */
+    'type'?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
+    /**
+    * Wraps the text, even when it has to break a word.
+    */
+    'wrap'?: boolean;
+  }
   interface PIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -98,6 +132,61 @@ export namespace Components {
     * Adapts the loader color when used on dark background.
     */
     'theme'?: "light" | "dark";
+  }
+  interface PText {
+    /**
+    * The text alignment of the component.
+    */
+    'align'?: "left" | "center" | "right";
+    /**
+    * Basic text color variations.
+    */
+    'color'?: "black" | "light";
+    /**
+    * Adds an ellipsis to a single line of text if it overflows.
+    */
+    'ellipsis'?: boolean;
+    /**
+    * Sets the text as display: inline.
+    */
+    'inline'?: boolean;
+    /**
+    * Set a custom HTML tag depending of the usage of the text component.
+    */
+    'tag'?: string;
+    /**
+    * Adapts the loader color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * The style of the text.
+    */
+    'type'?: "copy"
+    | "small"
+    | "12"
+    | "16"
+    | "20"
+    | "24"
+    | "28"
+    | "30"
+    | "32"
+    | "36"
+    | "42"
+    | "44"
+    | "48"
+    | "52"
+    | "60"
+    | "60-thin"
+    | "62"
+    | "62-thin"
+    | "72"
+    | "72-thin"
+    | "84"
+    | "84-thin";
+    /**
+    * Wraps the text, even when it has to break a word.
+    */
+    'wrap'?: boolean;
   }
 }
 
@@ -152,6 +241,40 @@ declare namespace LocalJSX {
     */
     'variant'?: "highlight" | "ghost" | "default";
   }
+  interface PHeadline extends JSXBase.HTMLAttributes {
+    /**
+    * The text alignment of the component.
+    */
+    'align'?: "left" | "center" | "right";
+    /**
+    * Basic text color variations.
+    */
+    'color'?: "black" | "light";
+    /**
+    * Adds an ellipsis to a single line of text if it overflows.
+    */
+    'ellipsis'?: boolean;
+    /**
+    * Sets the text as display: inline.
+    */
+    'inline'?: boolean;
+    /**
+    * Headline level/hierarchy.
+    */
+    'level'?: "1" | "2" | "3" | "4" | "5" | "6";
+    /**
+    * Adapts the loader color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * The style of the text.
+    */
+    'type'?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
+    /**
+    * Wraps the text, even when it has to break a word.
+    */
+    'wrap'?: boolean;
+  }
   interface PIcon extends JSXBase.HTMLAttributes {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -204,11 +327,68 @@ declare namespace LocalJSX {
     */
     'theme'?: "light" | "dark";
   }
+  interface PText extends JSXBase.HTMLAttributes {
+    /**
+    * The text alignment of the component.
+    */
+    'align'?: "left" | "center" | "right";
+    /**
+    * Basic text color variations.
+    */
+    'color'?: "black" | "light";
+    /**
+    * Adds an ellipsis to a single line of text if it overflows.
+    */
+    'ellipsis'?: boolean;
+    /**
+    * Sets the text as display: inline.
+    */
+    'inline'?: boolean;
+    /**
+    * Set a custom HTML tag depending of the usage of the text component.
+    */
+    'tag'?: string;
+    /**
+    * Adapts the loader color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * The style of the text.
+    */
+    'type'?: "copy"
+    | "small"
+    | "12"
+    | "16"
+    | "20"
+    | "24"
+    | "28"
+    | "30"
+    | "32"
+    | "36"
+    | "42"
+    | "44"
+    | "48"
+    | "52"
+    | "60"
+    | "60-thin"
+    | "62"
+    | "62-thin"
+    | "72"
+    | "72-thin"
+    | "84"
+    | "84-thin";
+    /**
+    * Wraps the text, even when it has to break a word.
+    */
+    'wrap'?: boolean;
+  }
 
   interface IntrinsicElements {
     'p-button-regular': PButtonRegular;
+    'p-headline': PHeadline;
     'p-icon': PIcon;
     'p-loader': PLoader;
+    'p-text': PText;
   }
 }
 
@@ -232,6 +412,12 @@ declare global {
     new (): HTMLPButtonRegularElement;
   };
 
+  interface HTMLPHeadlineElement extends Components.PHeadline, HTMLStencilElement {}
+  var HTMLPHeadlineElement: {
+    prototype: HTMLPHeadlineElement;
+    new (): HTMLPHeadlineElement;
+  };
+
   interface HTMLPIconElement extends Components.PIcon, HTMLStencilElement {}
   var HTMLPIconElement: {
     prototype: HTMLPIconElement;
@@ -244,10 +430,18 @@ declare global {
     new (): HTMLPLoaderElement;
   };
 
+  interface HTMLPTextElement extends Components.PText, HTMLStencilElement {}
+  var HTMLPTextElement: {
+    prototype: HTMLPTextElement;
+    new (): HTMLPTextElement;
+  };
+
   interface HTMLElementTagNameMap {
     'p-button-regular': HTMLPButtonRegularElement;
+    'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
     'p-loader': HTMLPLoaderElement;
+    'p-text': HTMLPTextElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}

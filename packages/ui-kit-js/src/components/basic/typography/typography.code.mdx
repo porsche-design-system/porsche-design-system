@@ -1,5 +1,4 @@
 import { Example } from "../../../src/components/example/Example"
-import { Text, Headline } from "@porscheui/ui-kit-react"
 
 # Typography
 
@@ -13,7 +12,6 @@ Text component can be categorized into 2 different use cases:
 
 ### Predefined SASS mixins
 ```
-// headlines
 @include p-text-large-title
 @include p-text-headline-1
 @include p-text-headline-2
@@ -28,7 +26,7 @@ Text component can be categorized into 2 different use cases:
   {(theme) => {
     return (
       <React.Fragment>
-        <Headline type="large-title" level="1" theme={theme}>Lorem ipsum dolor sit amet</Headline>
+        <p-headline type="large-title" level="1" theme={theme}>Lorem ipsum dolor sit amet</p-headline>
       </React.Fragment>
     )
   }}
@@ -40,7 +38,7 @@ Text component can be categorized into 2 different use cases:
   {(theme) => {
     return (
       <React.Fragment>
-        <Headline type="headline-1" level="1" theme={theme}>Lorem ipsum dolor sit amet</Headline>
+        <p-headline type="headline-1" level="1" theme={theme}>Lorem ipsum dolor sit amet</p-headline>
       </React.Fragment>
     )
   }}
@@ -52,7 +50,7 @@ Text component can be categorized into 2 different use cases:
   {(theme) => {
     return (
       <React.Fragment>
-        <Headline type="headline-2" level="2" theme={theme}>Lorem ipsum dolor sit amet</Headline>
+        <p-headline type="headline-2" level="2" theme={theme}>Lorem ipsum dolor sit amet</p-headline>
       </React.Fragment>
     )
   }}
@@ -64,7 +62,7 @@ Text component can be categorized into 2 different use cases:
   {(theme) => {
     return (
       <React.Fragment>
-        <Headline type="headline 3" level="3" theme={theme}>Lorem ipsum dolor sit amet</Headline>
+        <p-headline type="headline-3" level="3" theme={theme}>Lorem ipsum dolor sit amet</p-headline>
       </React.Fragment>
     )
   }}
@@ -76,7 +74,7 @@ Text component can be categorized into 2 different use cases:
   {(theme) => {
     return (
       <React.Fragment>
-        <Headline type="headline-4" level="4" theme={theme}>Lorem ipsum dolor sit amet</Headline>
+        <p-headline type="headline-4" level="4" theme={theme}>Lorem ipsum dolor sit amet</p-headline>
       </React.Fragment>
     )
   }}
@@ -88,7 +86,7 @@ Text component can be categorized into 2 different use cases:
   {(theme) => {
     return (
       <React.Fragment>
-        <Headline type="headline-5" level="5" theme={theme}>Lorem ipsum dolor sit amet</Headline>
+        <p-headline type="headline-5" level="5" theme={theme}>Lorem ipsum dolor sit amet</p-headline>
       </React.Fragment>
     )
   }}
@@ -100,7 +98,7 @@ Text component can be categorized into 2 different use cases:
   {(theme) => {
     return (
       <React.Fragment>
-        <Headline type="headline-6" level="6" theme={theme}>Lorem ipsum dolor sit amet</Headline>
+        <p-headline type="headline-6" level="6" theme={theme}>Lorem ipsum dolor sit amet</p-headline>
       </React.Fragment>
     )
   }}
@@ -152,7 +150,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="copy" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="copy" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -164,7 +162,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="small" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="small" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -179,7 +177,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="12" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="12" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -190,7 +188,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="16" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="16" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -201,7 +199,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="20" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="20" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -212,7 +210,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="24" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="24" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -223,7 +221,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="28" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="28" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -234,7 +232,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="30" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="30" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -245,7 +243,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="32" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="32" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -256,7 +254,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="36" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="36" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -267,7 +265,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="42" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="42" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -278,7 +276,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="44" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="44" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -289,7 +287,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="48" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="48" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -300,7 +298,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="52" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="52" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -311,7 +309,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="60" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="60" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -322,7 +320,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="62" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="62" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -333,7 +331,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="72" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="72" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -344,7 +342,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="84" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></Text>
+        <p-text type="84" theme={theme}>Lorem ipsum dolor sit amet <strong>strong text</strong> et <b>bold text</b></p-text>
       </React.Fragment>
     )
   }}
@@ -359,7 +357,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="60-thin" theme={theme}>Lorem ipsum dolor sit amet</Text>
+        <p-text type="60-thin" theme={theme}>Lorem ipsum dolor sit amet</p-text>
       </React.Fragment>
     )
   }}
@@ -370,7 +368,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="62-thin" theme={theme}>Lorem ipsum dolor sit amet</Text>
+        <p-text type="62-thin" theme={theme}>Lorem ipsum dolor sit amet</p-text>
       </React.Fragment>
     )
   }}
@@ -381,7 +379,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="72-thin" theme={theme}>Lorem ipsum dolor sit amet</Text>
+        <p-text type="72-thin" theme={theme}>Lorem ipsum dolor sit amet</p-text>
       </React.Fragment>
     )
   }}
@@ -392,7 +390,7 @@ $p-font-weight-bold: 600;
   {(theme) => {
     return (
       <React.Fragment>
-        <Text type="84-thin" theme={theme}>Lorem ipsum dolor sit amet</Text>
+        <p-text type="84-thin" theme={theme}>Lorem ipsum dolor sit amet</p-text>
       </React.Fragment>
     )
   }}
