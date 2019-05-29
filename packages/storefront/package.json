@@ -26,21 +26,22 @@
   ],
   "homepage": ".",
   "scripts": {
-    "start": "yarn build:docgen && react-scripts start",
-    "build": "yarn build:docgen && react-scripts build",
+    "start": "yarn build:docgen & yarn copy &&  react-scripts start",
+    "build": "yarn build:docgen & yarn copy && react-scripts build",
     "build:docgen": "node './docgen/docgen.js'",
     "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
     "lint:scss": "stylelint './src/**/*.scss'",
     "lint:ts": "tslint -p './tsconfig.json' -t codeFrame",
-    "clean": "rm -rf './node_modules' './build'"
+    "clean": "rm -rf './node_modules' './build'",
+    "copy": "yarn copyfiles --up 4 --verbose --error './../{ui-kit-js,workshop}/src/components/**/assets/*.{jpg,jpeg,png,svg,gif}' './public/assets/workshop/'"
   },
   "resolutions": {
     "@types/react": "^16.8.13"
   },
   "dependencies": {
     "@porsche/ui-kit-react": "^0.12.1",
-    "@porscheui/ui-kit-react": "1.0.0-beta.0",
     "@porscheui/ui-kit-js": "1.0.0-alpha.1",
+    "@porscheui/ui-kit-react": "1.0.0-beta.0",
     "classnames": "^2.2.6",
     "mdx.macro": "^0.2.8",
     "react": "^16.8.6",
@@ -57,6 +58,7 @@
     "@types/react-router-dom": "^4.3.3",
     "@types/throttle-debounce": "^1.1.1",
     "concurrently": "^4.1.0",
+    "copyfiles": "^2.1.0",
     "glob": "^7.1.4",
     "node-sass": "^4.12.0",
     "react-docgen-typescript": "^1.12.4",

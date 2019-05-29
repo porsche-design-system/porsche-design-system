@@ -34,7 +34,7 @@
 ### Depends on
 
 - [p-loader](../../feedback/loader)
-- [p-icon](../../base/icon)
+- [p-icon](../../icon/icon)
 
 ### Graph
 ```mermaid
