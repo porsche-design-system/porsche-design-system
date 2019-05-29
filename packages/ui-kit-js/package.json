@@ -43,7 +43,10 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "clean": "rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www"
+    "clean": "rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www",
+    "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
+    "lint:scss": "stylelint './src/**/*.scss'",
+    "lint:ts": "tslint -p './tsconfig.json' -t codeFrame"
   },
   "devDependencies": {
     "@stencil/core": "^1.0.0-beta.5",

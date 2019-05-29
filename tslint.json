@@ -35,6 +35,8 @@
     "no-var-requires": false,
     "prefer-conditional-expression": false,
     "member-ordering": false,
-    "only-arrow-functions": false
+    "only-arrow-functions": false,
+    "no-console": [true, "log"],
+    "prefer-for-of": false
   }
 }
