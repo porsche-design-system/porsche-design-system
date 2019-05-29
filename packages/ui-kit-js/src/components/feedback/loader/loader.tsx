@@ -12,13 +12,13 @@ export class Loader {
   @Prop() size?: "x-small" | "small" | "medium" | "large" = "small";
 
   /** Adapts the loader color when used on dark background. */
-  @Prop() inverted?: boolean = false;
+  @Prop() theme?: "light" | "dark" = "light";
 
   render(): JSX.Element {
     const loaderClasses = cx(
       prefix("loader"),
       { [prefix(`loader--${this.size}`)]: this.size },
-      { [prefix("loader--theme-inverted")]: this.inverted }
+      { [prefix("loader--theme-dark")]: this.theme === "dark" }
     );
     const imageClasses = prefix("loader__image");
     const bgClasses = prefix("loader__bg");

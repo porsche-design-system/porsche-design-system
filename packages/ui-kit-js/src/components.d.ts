@@ -27,10 +27,6 @@ export namespace Components {
     */
     'iconPath'?: string;
     /**
-    * Adapts the button color when used on dark background.
-    */
-    'inverted'?: boolean;
-    /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
     'loading'?: boolean;
@@ -38,6 +34,10 @@ export namespace Components {
     * Displays the button smaller.
     */
     'small'?: boolean;
+    /**
+    * Adapts the button color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
     /**
     * Specifies the type of the button when no href prop is defined.
     */
@@ -91,13 +91,13 @@ export namespace Components {
   }
   interface PLoader {
     /**
-    * Adapts the loader color when used on dark background.
-    */
-    'inverted'?: boolean;
-    /**
     * Predefined loader sizes.
     */
     'size'?: "x-small" | "small" | "medium" | "large";
+    /**
+    * Adapts the loader color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
   }
 }
 
@@ -120,10 +120,6 @@ declare namespace LocalJSX {
     */
     'iconPath'?: string;
     /**
-    * Adapts the button color when used on dark background.
-    */
-    'inverted'?: boolean;
-    /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
     'loading'?: boolean;
@@ -143,6 +139,10 @@ declare namespace LocalJSX {
     * Displays the button smaller.
     */
     'small'?: boolean;
+    /**
+    * Adapts the button color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
     /**
     * Specifies the type of the button when no href prop is defined.
     */
@@ -196,13 +196,13 @@ declare namespace LocalJSX {
   }
   interface PLoader extends JSXBase.HTMLAttributes {
     /**
-    * Adapts the loader color when used on dark background.
-    */
-    'inverted'?: boolean;
-    /**
     * Predefined loader sizes.
     */
     'size'?: "x-small" | "small" | "medium" | "large";
+    /**
+    * Adapts the loader color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
   }
 
   interface IntrinsicElements {

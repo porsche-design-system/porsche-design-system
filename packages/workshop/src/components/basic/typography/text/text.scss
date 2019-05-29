@@ -221,13 +221,13 @@
 
     &-black {
       color: $p-color-porsche-black;
-      &#{$bem-block}--theme-inverted {
+      &#{$bem-block}--theme-dark {
         color: $p-color-porsche-light;
       }
     }
   }
 
-  &--theme-inverted {
+  &--theme-dark {
     color: $p-color-porsche-light;
   }
 }

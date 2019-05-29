@@ -7,7 +7,7 @@ export interface LoaderProps extends ClassNameProp, ComponentProp {
   /**
    * Inverts the color for use on darker backgrounds.
    */
-  inverted?: boolean;
+  theme?: "light" | "dark";
 
   /**
    * A loader can have different sizes
@@ -20,14 +20,14 @@ export interface LoaderProps extends ClassNameProp, ComponentProp {
  * @see Button
  */
 export const Loader: React.FunctionComponent<LoaderProps> = (props) => {
-  const { as, className, children, inverted, size, ...rest } = props;
+  const { as, className, children, theme, size, ...rest } = props;
 
   const ElementType: any = getElementType(as, "span");
 
   const classes = cx(
     prefix("loader"),
     { [prefix(`loader--${size}`)]: size },
-    { [prefix("loader--theme-inverted")]: inverted },
+    { [prefix("loader--theme-dark")]: theme === "dark" },
     className
   );
 

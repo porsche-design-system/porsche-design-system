@@ -20,15 +20,15 @@
   border: 1px solid $p-color-neutral-grey-8;
   color: $p-color-porsche-light;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier; // must be globally defined
+    border-color $p-animation-hover-duration $p-animation-hover-bezier,
+    color $p-animation-hover-duration $p-animation-hover-bezier; // must be globally defined
 
   &::-moz-focus-inner {
     // sass-lint:disable-line no-vendor-prefixes
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
-  &--theme-inverted {
+  &--theme-dark {
     color: $p-color-porsche-black;
     background-color: $p-color-porsche-light;
     border-color: $p-color-porsche-light;
@@ -42,7 +42,7 @@
       border-color: $p-color-neutral-grey-7;
       text-decoration: none;
 
-      &#{$bem-block}--theme-inverted {
+      &#{$bem-block}--theme-dark {
         background-color: $p-color-neutral-grey-1;
         border-color: $p-color-neutral-grey-1;
       }
@@ -50,7 +50,7 @@
     &:focus:not([aria-disabled="true"]) {
       outline: 2px solid $p-color-state-focus;
       outline-offset: -2px;
-      &#{$bem-block}--theme-inverted {
+      &#{$bem-block}--theme-dark {
         outline: 2px solid $p-color-state-focus;
       }
     }
@@ -65,7 +65,7 @@
     background-color: $p-color-neutral-grey-2;
     border-color: $p-color-neutral-grey-2;
 
-    &#{$bem-block}--theme-inverted {
+    &#{$bem-block}--theme-dark {
       color: $p-color-neutral-grey-4;
       background-color: $p-color-neutral-grey-7;
       border-color: $p-color-neutral-grey-7;
@@ -77,7 +77,7 @@
     background-color: transparent;
     border-color: $p-color-neutral-grey-8;
 
-    &#{$bem-block}--theme-inverted {
+    &#{$bem-block}--theme-dark {
       color: $p-color-porsche-light;
       border-color: $p-color-porsche-light;
     }
@@ -90,7 +90,7 @@
         background-color: $p-color-neutral-grey-8;
         border-color: $p-color-neutral-grey-8;
 
-        &#{$bem-block}--theme-inverted {
+        &#{$bem-block}--theme-dark {
           color: $p-color-porsche-black;
           background-color: $p-color-porsche-light;
           border-color: $p-color-porsche-light;
@@ -98,7 +98,7 @@
       }
       &:focus:not([aria-disabled="true"]) {
         outline-color: $p-color-state-focus;
-        &#{$bem-block}--theme-inverted {
+        &#{$bem-block}--theme-dark {
           outline-color: $p-color-state-focus;
         }
       }
@@ -111,7 +111,7 @@
       background-color: transparent;
       border-color: $p-color-neutral-grey-2;
 
-      &#{$bem-block}--theme-inverted {
+      &#{$bem-block}--theme-dark {
         color: $p-color-neutral-grey-4;
         background-color: transparent;
         border-color: $p-color-neutral-grey-7;
@@ -132,7 +132,7 @@
         border-color: $p-color-porsche-dark-red;
         text-decoration: none;
 
-        &#{$bem-block}--theme-inverted {
+        &#{$bem-block}--theme-dark {
           // sass-lint:disable-line nesting-depth
           background-color: $p-color-porsche-dark-red;
           border-color: $p-color-porsche-dark-red;
@@ -140,7 +140,7 @@
       }
       &:focus:not([aria-disabled="true"]) {
         outline-color: $p-color-state-focus;
-        &#{$bem-block}--theme-inverted {
+        &#{$bem-block}--theme-dark {
           outline-color: $p-color-state-focus;
         }
       }
@@ -153,7 +153,7 @@
       background-color: $p-color-neutral-grey-2;
       border-color: $p-color-neutral-grey-2;
 
-      &#{$bem-block}--theme-inverted {
+      &#{$bem-block}--theme-dark {
         color: $p-color-neutral-grey-4;
         background-color: $p-color-neutral-grey-7;
         border-color: $p-color-neutral-grey-7;

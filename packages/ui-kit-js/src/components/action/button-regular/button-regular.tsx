@@ -1,7 +1,7 @@
-import {JSX, Component, Prop, h, Event, EventEmitter, Element} from "@stencil/core";
+import { JSX, Component, Prop, h, Event, EventEmitter, Element } from "@stencil/core";
 import cx from "classnames";
-import {prefix} from "../../../utils/prefix";
-import {hasShadowDom} from "../../../utils/hasShadowDom";
+import { prefix } from "../../../utils/prefix";
+import { hasShadowDom } from "../../../utils/hasShadowDom";
 
 @Component({
   tag: "p-button-regular",
@@ -9,7 +9,6 @@ import {hasShadowDom} from "../../../utils/hasShadowDom";
   shadow: true
 })
 export class ButtonRegular {
-
   @Element() element!: HTMLElement;
 
   /** Specifies the type of the button when no href prop is defined. */
@@ -37,7 +36,7 @@ export class ButtonRegular {
   @Prop() small?: boolean = false;
 
   /** Adapts the button color when used on dark background. */
-  @Prop() inverted?: boolean = false;
+  @Prop() theme?: "light" | "dark" = "light";
 
   /** Emitted when the button is clicked. */
   @Event() pClick!: EventEmitter<void>;
@@ -51,16 +50,15 @@ export class ButtonRegular {
   private onClick(event): void {
     this.pClick.emit(event);
 
-    if (!this.href && this.type === 'submit' && hasShadowDom(this.element)) {
-
+    if (!this.href && this.type === "submit" && hasShadowDom(this.element)) {
       // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
-      const form = this.element.closest('form');
+      const form = this.element.closest("form");
       if (form) {
         event.preventDefault();
 
-        const fakeButton = document.createElement('button');
+        const fakeButton = document.createElement("button");
         fakeButton.type = this.type;
-        fakeButton.style.display = 'none';
+        fakeButton.style.display = "none";
         form.appendChild(fakeButton);
         fakeButton.click();
         fakeButton.remove();
@@ -76,21 +74,20 @@ export class ButtonRegular {
     this.pBlur.emit(event);
   }
 
-  private useInvertedLoader(): boolean {
-    return this.variant !== "ghost" || this.inverted;
+  private useInvertedLoader(): "light" | "dark" {
+    return this.variant !== "ghost" || this.theme === "dark" ? "dark" : "light";
   }
 
   render(): JSX.Element {
-
     const TagType = this.href === undefined ? "button" : "a";
 
     const buttonClasses = cx(
       prefix("button-regular"),
-      {[prefix("button-regular--highlight")]: this.variant === "highlight"},
-      {[prefix("button-regular--ghost")]: this.variant === "ghost"},
-      {[prefix("button-regular--loading")]: this.loading},
-      {[prefix("button-regular--small")]: this.small},
-      {[prefix("button-regular--theme-inverted")]: this.inverted}
+      { [prefix("button-regular--highlight")]: this.variant === "highlight" },
+      { [prefix("button-regular--ghost")]: this.variant === "ghost" },
+      { [prefix("button-regular--loading")]: this.loading },
+      { [prefix("button-regular--small")]: this.small },
+      { [prefix("button-regular--theme-dark")]: this.theme === "dark" }
     );
     const iconClasses = prefix("button-regular__icon");
     const loaderClasses = prefix("button-regular__loader");
@@ -99,17 +96,17 @@ export class ButtonRegular {
     return (
       <TagType
         class={buttonClasses}
-        {...(TagType === 'button')
-          ? {type: this.type, disabled: this.disabled || this.loading}
-          : {href: this.href, "aria-disabled": String(this.disabled || this.loading)}}
+        {...(TagType === "button"
+          ? { type: this.type, disabled: this.disabled || this.loading }
+          : { href: this.href, "aria-disabled": String(this.disabled || this.loading) })}
         onClick={(e) => this.onClick(e)}
         onFocus={(e) => this.onFocus(e)}
         onBlur={(e) => this.onBlur(e)}
       >
         {this.loading ? (
-          <p-loader class={loaderClasses} size="x-small" inverted={this.useInvertedLoader()}/>
+          <p-loader class={loaderClasses} size="x-small" theme={this.useInvertedLoader()} />
         ) : (
-          <p-icon class={iconClasses} {...this.iconPath ? {path: this.iconPath} : null} icon={this.icon}/>
+          <p-icon class={iconClasses} {...(this.iconPath ? { path: this.iconPath } : null)} icon={this.icon} />
         )}
         <span class={labelClasses}>
           <slot />

@@ -40,7 +40,7 @@ export interface HeadlineProps extends ClassNameProp, ComponentProp {
   /**
    * Inverts the color for use on darker backgrounds.
    */
-  inverted?: boolean;
+  theme?: "light" | "dark";
 }
 
 const defaultProps: Partial<HeadlineProps> = {
@@ -51,7 +51,7 @@ const defaultProps: Partial<HeadlineProps> = {
  * Use this component any time you want to display plain text anywhere.
  */
 export const Headline: React.FunctionComponent<HeadlineProps> = (props) => {
-  const { as, className, children, ellipsis, align, color, inline, type, level, wrap, inverted, ...rest } = props;
+  const { as, className, children, ellipsis, align, color, inline, type, level, wrap, theme, ...rest } = props;
 
   const ElementType: any = getElementType("h" + level || as, "h2");
 
@@ -62,7 +62,7 @@ export const Headline: React.FunctionComponent<HeadlineProps> = (props) => {
     { [prefix("headline--inline")]: inline },
     { [prefix("headline--ellipsis")]: ellipsis },
     { [prefix("headline--wrap")]: wrap },
-    { [prefix("headline--theme-inverted")]: inverted },
+    { [prefix("headline--theme-dark")]: theme === "dark" },
     className
   );
 
