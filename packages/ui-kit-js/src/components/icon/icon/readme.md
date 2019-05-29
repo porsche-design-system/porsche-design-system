@@ -26,4 +26,3 @@
 ### Used by
 
  - [p-button-regular](../../action/button-regular)
-
