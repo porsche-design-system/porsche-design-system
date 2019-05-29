@@ -23,10 +23,16 @@ const defaultProps: Partial<ExampleProps> = {
 
 export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   const { className } = props;
-  const [theme, setTheme] = useState("default");
+  const [theme, setTheme] = useState("light");
   const [showHTML, setShowHTML] = useState(false);
 
-  const renderClasses = cx(styles.render, { [styles.light]: theme === "default" }, { [styles.dark]: theme === "inverted" }, "sg-example-global", className);
+  const renderClasses = cx(
+    styles.render,
+    { [styles.light]: theme === "light" },
+    { [styles.dark]: theme === "dark" },
+    "sg-example-global",
+    className
+  );
 
   const handleShowClicked = (name: string) => {
     if (name === "html") {
@@ -35,16 +41,16 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
   };
 
   const handleThemeClicked = (name: string) => {
-    if (name === "default") {
-      setTheme("default");
-    } else if (name === "inverted") {
-      setTheme("inverted");
+    if (name === "light") {
+      setTheme("light");
+    } else if (name === "dark") {
+      setTheme("dark");
     }
   };
 
   const panes = [
-    { menuItem: "Light", key: "Tab1", active: theme === "default", onClick: () => handleThemeClicked("default") },
-    { menuItem: "Inverted", key: "Tab2", active: theme === "inverted", onClick: () => handleThemeClicked("inverted") }
+    { menuItem: "Light theme", key: "Tab1", active: theme === "light", onClick: () => handleThemeClicked("light") },
+    { menuItem: "Dark theme", key: "Tab2", active: theme === "dark", onClick: () => handleThemeClicked("dark") }
   ];
 
   return (
@@ -53,7 +59,7 @@ export const Example: React.FunctionComponent<ExampleProps> = (props) => {
         <div className={styles.container}>
           {props.noTheme !== true && <Tab panes={panes} alignment="left" mini divider={false} />}
           <div className={renderClasses}>{renderNode(props.children, theme)}</div>
-          {(!props.noHTML) && (
+          {!props.noHTML && (
             <React.Fragment>
               <Flex className={styles["toggle-container"]} justifyContent="end">
                 {!props.noHTML && (

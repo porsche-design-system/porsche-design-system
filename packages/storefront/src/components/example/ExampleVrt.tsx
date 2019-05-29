@@ -6,11 +6,11 @@ import "./example.global.scss";
 import "./exampleVrt.global.scss";
 
 export interface ExampleVrtProps extends ClassNameProp {
-  theme: "default" | "inverted";
+  theme: "light" | "dark";
 }
 
 const defaultProps: Partial<ExampleVrtProps> = {
-  theme: "default"
+  theme: "light"
 };
 
 function renderNode(children: React.ReactNode, theme: string) {
@@ -23,8 +23,8 @@ export const ExampleVrt: React.FunctionComponent<ExampleVrtProps> = (props) => {
   const renderClasses = cx(
     "sg-vrt",
     styles.vrt,
-    { [styles.light]: theme === "default" },
-    { [styles.dark]: theme === "inverted" },
+    { [styles.light]: theme === "light" },
+    { [styles.dark]: theme === "dark" },
     className
   );
 

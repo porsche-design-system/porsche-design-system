@@ -13,11 +13,10 @@ If using basic type, no extra class/prop declaration is needed.
 
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular inverted={setTheme}>Click Here!</p-button-regular>
-        <p-button-regular inverted={setTheme} disabled="true">Click Here!</p-button-regular>
+        <p-button-regular theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular theme={theme} disabled="true">Click Here!</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -27,11 +26,10 @@ If using basic type, no extra class/prop declaration is needed.
 
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular variant="ghost" inverted={setTheme}>Click Here!</p-button-regular>
-        <p-button-regular variant="ghost" inverted={setTheme} disabled="true">Click Here!</p-button-regular>
+        <p-button-regular variant="ghost" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular variant="ghost" theme={theme} disabled="true">Click Here!</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -41,11 +39,10 @@ If using basic type, no extra class/prop declaration is needed.
 
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular variant="highlight" inverted={setTheme}>Click Here!</p-button-regular>
-        <p-button-regular variant="highlight" inverted={setTheme} disabled="true">Click Here!</p-button-regular>
+        <p-button-regular variant="highlight" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular variant="highlight" theme={theme} disabled="true">Click Here!</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -57,12 +54,11 @@ To show the loader icon, the default svg icon must be replaced with the loader c
 
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular loading="true" inverted={setTheme}>Loading...</p-button-regular>
-        <p-button-regular variant="ghost" loading="true" inverted={setTheme}>Loading...</p-button-regular>
-        <p-button-regular variant="highlight" loading="true" inverted={setTheme}>Loading...</p-button-regular>
+        <p-button-regular loading="true" theme={theme}>Loading...</p-button-regular>
+        <p-button-regular variant="ghost" loading="true" theme={theme}>Loading...</p-button-regular>
+        <p-button-regular variant="highlight" loading="true" theme={theme}>Loading...</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -76,11 +72,10 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 #### Regular basic (default)
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular href="/lorem/ipsum" inverted={setTheme}>Click Here!</p-button-regular>
-        <p-button-regular href="#" disabled="true" inverted={setTheme}>Click Here!</p-button-regular>
+        <p-button-regular href="/lorem/ipsum" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular href="#" disabled="true" theme={theme}>Click Here!</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -89,11 +84,10 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 #### Regular ghost
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular href="/lorem/ipsum" variant="ghost" inverted={setTheme}>Click Here!</p-button-regular>
-        <p-button-regular href="#" variant="ghost" disabled inverted={setTheme}>Click Here!</p-button-regular>
+        <p-button-regular href="/lorem/ipsum" variant="ghost" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular href="#" variant="ghost" disabled theme={theme}>Click Here!</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -102,11 +96,10 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 #### Regular highlight
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular href="/lorem/ipsum" variant="highlight" inverted={setTheme}>Click Here!</p-button-regular>
-        <p-button-regular href="#" variant="highlight" disabled inverted={setTheme}>Click Here!</p-button-regular>
+        <p-button-regular href="/lorem/ipsum" variant="highlight" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular href="#" variant="highlight" disabled theme={theme}>Click Here!</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -115,12 +108,11 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 #### Regular loader state
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular href="/lorem/ipsum" variant="highlight" loading="true" inverted={setTheme}>Loading...</p-button-regular>
-        <p-button-regular href="#" variant="ghost" loading="true" inverted={setTheme}>Loading...</p-button-regular>
-        <p-button-regular href="#" loading="true" inverted={setTheme}>Loading...</p-button-regular>
+        <p-button-regular href="/lorem/ipsum" variant="highlight" loading="true" theme={theme}>Loading...</p-button-regular>
+        <p-button-regular href="#" variant="ghost" loading="true" theme={theme}>Loading...</p-button-regular>
+        <p-button-regular href="#" loading="true" theme={theme}>Loading...</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -133,10 +125,9 @@ If another icon needs to be implemented, just replace the default icon with your
 
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     return (
       <React.Fragment>
-        <p-button-regular icon="icon_phone.min.svg" inverted={setTheme}>Click Here!</p-button-regular>
+        <p-button-regular icon="icon_phone.min.svg" theme={theme}>Click Here!</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -149,12 +140,11 @@ Visualization of edge cases
 
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
-    const setTheme = theme === "inverted" ? true : false
     const wrapperStyle = {"width": "200px"}
     return (
       <React.Fragment>
         <div style={wrapperStyle}>
-          <p-button-regular icon="icon_phone.min.svg" inverted={setTheme}>Very long text lorem ipsum dolor sit amet consecutor lorem ipsum</p-button-regular>
+          <p-button-regular icon="icon_phone.min.svg" theme={theme}>Very long text lorem ipsum dolor sit amet consecutor lorem ipsum</p-button-regular>
         </div>
       </React.Fragment>
     )

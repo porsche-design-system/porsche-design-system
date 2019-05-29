@@ -13,7 +13,7 @@ export interface ButtonRegularProps extends ClassNameProp, ComponentProp {
   disabled?: boolean;
 
   /** Button on dark background */
-  inverted?: boolean;
+  theme?: "light" | "dark";
 
   /**
    * The icon of the button.
@@ -70,7 +70,7 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
     className,
     children,
     disabled,
-    inverted,
+    theme,
     icon,
     iconPath,
     loading,
@@ -93,7 +93,7 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
     { [prefix("button-regular--ghost")]: type === "ghost" },
     { [prefix("button-regular--highlight")]: type === "highlight" },
     { [prefix("button-regular--stretch")]: stretch },
-    { [prefix("button-regular--theme-inverted")]: inverted },
+    { [prefix("button-regular--theme-dark")]: theme === "dark" },
     { [prefix("button-regular--loading")]: loading },
     { [prefix("button-regular--small")]: small },
     className
@@ -117,10 +117,10 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
   };
 
   const loaderNotInverted = () => {
-    return ruleTypeGhost() ? false : true;
+    return ruleTypeGhost() ? "light" : "dark";
   };
   const ruleTypeGhost = () => {
-    return type === "ghost" && !inverted ? true : false;
+    return type === "ghost" && theme === "light" ? true : false;
   };
 
   return (
@@ -132,7 +132,7 @@ export const ButtonRegular: React.FunctionComponent<ButtonRegularProps> & Partia
       {...rest}
     >
       {loading ? (
-        <Loader size="x-small" className={loaderClasses} inverted={loaderNotInverted()} />
+        <Loader size="x-small" className={loaderClasses} theme={loaderNotInverted()} />
       ) : (
         <Icon path={iconPath as IconProps["path"]} name={icon as IconProps["name"]} className={iconClasses} />
       )}

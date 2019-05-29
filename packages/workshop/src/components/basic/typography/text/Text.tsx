@@ -59,7 +59,7 @@ export interface TextProps extends ClassNameProp, ComponentProp {
   /**
    * Inverts the color for use on darker backgrounds.
    */
-  inverted?: boolean;
+  theme?: "light" | "dark";
 }
 
 const defaultProps: Partial<TextProps> = {
@@ -71,7 +71,7 @@ const defaultProps: Partial<TextProps> = {
  * Use this component any time you want to display plain text anywhere.
  */
 export const Text: React.FunctionComponent<TextProps> = (props) => {
-  const { as, className, children, ellipsis, align, inline, type, color, wrap, inverted, ...rest } = props;
+  const { as, className, children, ellipsis, align, inline, type, color, wrap, theme, ...rest } = props;
 
   const ElementType: any = getElementType(as, "p");
 
@@ -82,7 +82,7 @@ export const Text: React.FunctionComponent<TextProps> = (props) => {
     { [prefix("text--inline")]: inline },
     { [prefix("text--ellipsis")]: ellipsis },
     { [prefix("text--wrap")]: wrap },
-    { [prefix("text--theme-inverted")]: inverted },
+    { [prefix("text--theme-dark")]: theme === "dark" },
     className
   );
 

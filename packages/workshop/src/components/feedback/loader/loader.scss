@@ -30,7 +30,7 @@
     opacity: 0.4;
   }
 
-  &--theme-inverted {
+  &--theme-dark {
     #{$bem-block}__fg {
       stroke: $p-color-porsche-light;
     }
