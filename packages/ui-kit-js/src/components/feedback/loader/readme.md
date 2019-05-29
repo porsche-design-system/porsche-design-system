@@ -19,13 +19,3 @@
 
  - [p-button-regular](../../action/button-regular)
 
-### Graph
-```mermaid
-graph TD;
-  p-button-regular --> p-loader
-  style p-loader fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
