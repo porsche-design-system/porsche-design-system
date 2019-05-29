@@ -1,4 +1,4 @@
-# ion-icon
+# p-icon
 
 
 
