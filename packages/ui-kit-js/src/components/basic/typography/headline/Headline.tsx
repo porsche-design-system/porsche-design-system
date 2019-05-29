@@ -36,6 +36,7 @@ export class Headline {
     const TagType: any = "h" + this.level;
 
     const headlineClasses = cx(
+      prefix("headline"),
       { [prefix(`headline--${this.type}`)]: this.type },
       { [prefix(`headline--align-${this.align}`)]: this.align },
       { [prefix(`headline--color-${this.color}`)]: this.color },

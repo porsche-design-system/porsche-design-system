@@ -58,6 +58,7 @@ export class Text {
     const TagType: any = this.tag;
 
     const textClasses = cx(
+      prefix("text"),
       { [prefix(`text--${this.type}`)]: this.type },
       { [prefix(`text--align-${this.align}`)]: this.align },
       { [prefix(`text--color-${this.color}`)]: this.color },

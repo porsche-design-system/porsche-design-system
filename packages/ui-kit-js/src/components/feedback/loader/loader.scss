@@ -6,6 +6,9 @@
 
 .#{$p-global-class-prefix}loader {
   $bem-block: &;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   display: block;
   width: rem(48px);
   height: rem(48px);
