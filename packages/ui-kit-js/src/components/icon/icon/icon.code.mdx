@@ -1,5 +1,4 @@
 import { Example } from "../../../src/components/example/Example"
-import { Icon } from "@porscheui/ui-kit-react"
 
 # Icon
 
@@ -13,7 +12,7 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually. If
   {(theme) => {
     return (
       <React.Fragment>
-        <Icon name="icon_car-next.min.svg" />
+        <p-icon icon="icon_car-next.min.svg"></p-icon>
       </React.Fragment>
     )
 }}
@@ -24,7 +23,7 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually. If
   {(theme) => {
     return (
       <React.Fragment>
-        <Icon name="icon_car-next.min.svg" size="medium" />
+        <p-icon icon="icon_car-next.min.svg" size="medium"></p-icon>
       </React.Fragment>
     )
 }}
@@ -35,18 +34,7 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually. If
   {(theme) => {
     return (
       <React.Fragment>
-        <Icon name="icon_car-next.min.svg" size="large" />
-      </React.Fragment>
-    )
-}}
-</Example>
-
-### Auto
-<Example noTheme>
-  {(theme) => {
-    return (
-      <React.Fragment>
-        <Icon name="icon_car-next.min.svg" size="auto" />
+        <p-icon icon="icon_car-next.min.svg" size="large"></p-icon>
       </React.Fragment>
     )
 }}

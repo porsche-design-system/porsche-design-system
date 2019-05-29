@@ -40,9 +40,8 @@ export const Stories: Stories = {
   Icon: {
     Icon: {
       design: importMDX("../../ui-kit-js/src/components/icon/icon/icon.design.mdx"),
-      code: importMDX("../../workshop/src/components/icon/icon/icon.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/icon/icon/icon.vrt.mdx"),
-      props: ["Icon"]
+      code: importMDX("../../ui-kit-js/src/components/icon/icon/icon.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/icon/icon/icon.vrt.mdx")
     }
   },
   Layout: {
