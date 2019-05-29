@@ -17,8 +17,3 @@
 | `theme`    | `theme`    | Adapts the loader color when used on dark background.      | `"dark" \| "light"`                                                                             | `"light"`      |
 | `type`     | `type`     | The style of the text.                                     | `"headline-1" \| "headline-2" \| "headline-3" \| "headline-4" \| "headline-5" \| "large-title"` | `"headline-1"` |
 | `wrap`     | `wrap`     | Wraps the text, even when it has to break a word.          | `boolean`                                                                                       | `false`        |
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
