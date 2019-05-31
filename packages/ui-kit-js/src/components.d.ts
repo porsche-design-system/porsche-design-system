@@ -153,7 +153,18 @@ export namespace Components {
     /**
     * Set a custom HTML tag depending of the usage of the text component.
     */
-    'tag'?: string;
+    'tag'?: | "p"
+    | "span"
+    | "div"
+    | "address"
+    | "blockquote"
+    | "figcaption"
+    | "a"
+    | "cite"
+    | "time"
+    | "sup"
+    | "sub"
+    | "legend";
     /**
     * Adapts the loader color when used on dark background.
     */
@@ -161,7 +172,7 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'type'?: "copy"
+    'type'?: | "copy"
     | "small"
     | "12"
     | "16"
@@ -190,8 +201,49 @@ export namespace Components {
   }
 }
 
+declare global {
+
+
+  interface HTMLPButtonRegularElement extends Components.PButtonRegular, HTMLStencilElement {}
+  var HTMLPButtonRegularElement: {
+    prototype: HTMLPButtonRegularElement;
+    new (): HTMLPButtonRegularElement;
+  };
+
+  interface HTMLPHeadlineElement extends Components.PHeadline, HTMLStencilElement {}
+  var HTMLPHeadlineElement: {
+    prototype: HTMLPHeadlineElement;
+    new (): HTMLPHeadlineElement;
+  };
+
+  interface HTMLPIconElement extends Components.PIcon, HTMLStencilElement {}
+  var HTMLPIconElement: {
+    prototype: HTMLPIconElement;
+    new (): HTMLPIconElement;
+  };
+
+  interface HTMLPLoaderElement extends Components.PLoader, HTMLStencilElement {}
+  var HTMLPLoaderElement: {
+    prototype: HTMLPLoaderElement;
+    new (): HTMLPLoaderElement;
+  };
+
+  interface HTMLPTextElement extends Components.PText, HTMLStencilElement {}
+  var HTMLPTextElement: {
+    prototype: HTMLPTextElement;
+    new (): HTMLPTextElement;
+  };
+  interface HTMLElementTagNameMap {
+    'p-button-regular': HTMLPButtonRegularElement;
+    'p-headline': HTMLPHeadlineElement;
+    'p-icon': HTMLPIconElement;
+    'p-loader': HTMLPLoaderElement;
+    'p-text': HTMLPTextElement;
+  }
+}
+
 declare namespace LocalJSX {
-  interface PButtonRegular extends JSXBase.HTMLAttributes {
+  interface PButtonRegular extends JSXBase.HTMLAttributes<HTMLPButtonRegularElement> {
     /**
     * Disables the button. No events will be triggered while disabled state is active.
     */
@@ -241,7 +293,7 @@ declare namespace LocalJSX {
     */
     'variant'?: "highlight" | "ghost" | "default";
   }
-  interface PHeadline extends JSXBase.HTMLAttributes {
+  interface PHeadline extends JSXBase.HTMLAttributes<HTMLPHeadlineElement> {
     /**
     * The text alignment of the component.
     */
@@ -275,7 +327,7 @@ declare namespace LocalJSX {
     */
     'wrap'?: boolean;
   }
-  interface PIcon extends JSXBase.HTMLAttributes {
+  interface PIcon extends JSXBase.HTMLAttributes<HTMLPIconElement> {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
     */
@@ -317,7 +369,7 @@ declare namespace LocalJSX {
     */
     'size'?: "small" | "medium" | "large";
   }
-  interface PLoader extends JSXBase.HTMLAttributes {
+  interface PLoader extends JSXBase.HTMLAttributes<HTMLPLoaderElement> {
     /**
     * Predefined loader sizes.
     */
@@ -327,7 +379,7 @@ declare namespace LocalJSX {
     */
     'theme'?: "light" | "dark";
   }
-  interface PText extends JSXBase.HTMLAttributes {
+  interface PText extends JSXBase.HTMLAttributes<HTMLPTextElement> {
     /**
     * The text alignment of the component.
     */
@@ -347,7 +399,18 @@ declare namespace LocalJSX {
     /**
     * Set a custom HTML tag depending of the usage of the text component.
     */
-    'tag'?: string;
+    'tag'?: | "p"
+    | "span"
+    | "div"
+    | "address"
+    | "blockquote"
+    | "figcaption"
+    | "a"
+    | "cite"
+    | "time"
+    | "sup"
+    | "sub"
+    | "legend";
     /**
     * Adapts the loader color when used on dark background.
     */
@@ -355,7 +418,7 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'type'?: "copy"
+    'type'?: | "copy"
     | "small"
     | "12"
     | "16"
@@ -401,49 +464,4 @@ declare module "@stencil/core" {
   }
 }
 
-
-declare global {
-
-
-
-  interface HTMLPButtonRegularElement extends Components.PButtonRegular, HTMLStencilElement {}
-  var HTMLPButtonRegularElement: {
-    prototype: HTMLPButtonRegularElement;
-    new (): HTMLPButtonRegularElement;
-  };
-
-  interface HTMLPHeadlineElement extends Components.PHeadline, HTMLStencilElement {}
-  var HTMLPHeadlineElement: {
-    prototype: HTMLPHeadlineElement;
-    new (): HTMLPHeadlineElement;
-  };
-
-  interface HTMLPIconElement extends Components.PIcon, HTMLStencilElement {}
-  var HTMLPIconElement: {
-    prototype: HTMLPIconElement;
-    new (): HTMLPIconElement;
-  };
-
-  interface HTMLPLoaderElement extends Components.PLoader, HTMLStencilElement {}
-  var HTMLPLoaderElement: {
-    prototype: HTMLPLoaderElement;
-    new (): HTMLPLoaderElement;
-  };
-
-  interface HTMLPTextElement extends Components.PText, HTMLStencilElement {}
-  var HTMLPTextElement: {
-    prototype: HTMLPTextElement;
-    new (): HTMLPTextElement;
-  };
-
-  interface HTMLElementTagNameMap {
-    'p-button-regular': HTMLPButtonRegularElement;
-    'p-headline': HTMLPHeadlineElement;
-    'p-icon': HTMLPIconElement;
-    'p-loader': HTMLPLoaderElement;
-    'p-text': HTMLPTextElement;
-  }
-
-  interface ElementTagNameMap extends HTMLElementTagNameMap {}
-}
 

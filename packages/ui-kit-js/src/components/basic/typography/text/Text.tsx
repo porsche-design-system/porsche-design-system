@@ -34,7 +34,19 @@ export class Text {
     | "84-thin" = "copy";
 
   /** Set a custom HTML tag depending of the usage of the text component. */
-  @Prop() tag?: string = "p";
+  @Prop() tag?:
+    | "p"
+    | "span"
+    | "div"
+    | "address"
+    | "blockquote"
+    | "figcaption"
+    | "a"
+    | "cite"
+    | "time"
+    | "sup"
+    | "sub"
+    | "legend" = "p";
 
   /** The text alignment of the component. */
   @Prop() align?: "left" | "center" | "right" = "left";
