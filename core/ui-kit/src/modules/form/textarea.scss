@@ -27,7 +27,14 @@
     color: $textarea-field-text-color;
 
     &--error {
-      border: $textarea-field-border-width solid $textarea-field-border-color-error;
+      border: $textarea-field-border-width-error solid $textarea-field-border-color-error;
+    }
+
+    &--error + #{$bem-block}__label { // sass-lint:disable-line no-combinators
+      left: 2px;
+      top: 2px;
+      padding-left: calc($textarea-label-inner-spacing-horizontal - 1px);
+      padding-top: calc($textarea-label-inner-spacing-top - 1px);
     }
 
     &::placeholder {
