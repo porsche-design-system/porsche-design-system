@@ -1566,12 +1566,12 @@
     jimp "^0.6.0"
     puppeteer "^1.11.0"
 
-"@stencil/core@1.0.0-beta.7":
-  version "1.0.0-beta.7"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.0.0-beta.7.tgz#d00cbbc50a38bd92081649230b9dc2c6606c9aa7"
-  integrity sha1-0Ay7xQo4vZIIFkkjC53CxmBsmqc=
+"@stencil/core@1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.0.0-beta.8.tgz#34dca840498340a62c7571dae8cf6edbcb4ee48a"
+  integrity sha1-NNyoQEmDQKYsdXHa6M9u28tO5Io=
   dependencies:
-    typescript "3.4.5"
+    typescript "3.5.1"
 
 "@stencil/postcss@^0.1.0":
   version "0.1.0"
@@ -12081,7 +12081,12 @@ typedarray@^0.0.6:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.4.5, typescript@^3.4.5, typescript@~3.4.5:
+typescript@3.5.1:
+  version "3.5.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.5.1.tgz#ba72a6a600b2158139c5dd8850f700e231464202"
+  integrity sha1-unKmpgCyFYE5xd2IUPcA4jFGQgI=
+
+typescript@^3.4.5, typescript@~3.4.5:
   version "3.4.5"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
   integrity sha1-LSYY0Qu1ZlcrjXqtUYDYQlfXCpk=
