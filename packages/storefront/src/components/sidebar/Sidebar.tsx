@@ -12,7 +12,7 @@ export interface SidebarProps {
   featureV1?: string;
 }
 export interface SidebarLinkProps {
-  to: string | object;
+  to: string | any;
   title: string;
 }
 
