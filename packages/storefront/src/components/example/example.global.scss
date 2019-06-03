@@ -11,6 +11,94 @@ $sg-color-blue-3: dodgerblue;
 $sg-color-blue-4: royalblue;
 $sg-color-highlight: deeppink;
 
+/* ----------  color component styles ---------- */
+.sg-example-color {
+  .sg-example-item {
+    height: 50px;
+    margin-top: 8px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .sg-color-porsche-red {
+    background-color: $p-color-porsche-red;
+  }
+
+  .sg-color-porsche-dark-red {
+    background-color: $p-color-porsche-dark-red;
+  }
+
+  .sg-color-porsche-light {
+    background-color: $p-color-porsche-light;
+  }
+
+  .sg-color-porsche-dark {
+    background-color: $p-color-porsche-dark;
+  }
+
+  .sg-color-porsche-black {
+    background-color: $p-color-porsche-black;
+  }
+
+  .sg-color-surface-light {
+    background-color: $p-color-surface-light;
+  }
+
+  .sg-color-surface-dark {
+    background-color: $p-color-surface-dark;
+  }
+
+  .sg-color-neutral-grey-1 {
+    background-color: $p-color-neutral-grey-1;
+  }
+
+  .sg-color-neutral-grey-2 {
+    background-color: $p-color-neutral-grey-2;
+  }
+
+  .sg-color-neutral-grey-3 {
+    background-color: $p-color-neutral-grey-3;
+  }
+
+  .sg-color-neutral-grey-4 {
+    background-color: $p-color-neutral-grey-4;
+  }
+
+  .sg-color-neutral-grey-5 {
+    background-color: $p-color-neutral-grey-5;
+  }
+
+  .sg-color-neutral-grey-6 {
+    background-color: $p-color-neutral-grey-6;
+  }
+
+  .sg-color-neutral-grey-7 {
+    background-color: $p-color-neutral-grey-7;
+  }
+
+  .sg-color-neutral-grey-8 {
+    background-color: $p-color-neutral-grey-8;
+  }
+
+  .sg-color-status-red {
+    background-color: $p-color-status-red;
+  }
+
+  .sg-color-status-green {
+    background-color: $p-color-status-green;
+  }
+
+  .sg-color-status-yellow {
+    background-color: $p-color-status-yellow;
+  }
+
+  .sg-color-state-focus {
+    background-color: $p-color-state-focus;
+  }
+}
+
 /* ----------  flex component styles ---------- */
 .sg-example-flex {
   &--fixed-height {
