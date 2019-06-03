@@ -1,5 +1,4 @@
 import { Example } from "../../../src/components/example/Example"
-import { Grid } from "@porscheui/ui-kit-react"
 
 # Grid
 
@@ -15,23 +14,23 @@ For standard grid implementation, it is recommended to use this pattern. The cla
   {() => {
     return (
       <React.Fragment>
-        <Grid>
-          <Grid.Child size={12}>
+        <p-grid>
+          <p-grid-child size={12}>
             <p className="sg-example-item">
-                12
-              </p>
-          </Grid.Child>
-        </Grid>
+              12
+            </p>
+          </p-grid-child>
+        </p-grid>
         {Array.apply(0, Array(11)).map(function(x, i) {
           return (
-            <Grid key={i}>
-              <Grid.Child size={i + 1}>
+            <p-grid key={i}>
+              <p-grid-child size={i + 1}>
                 <p className="sg-example-item">{i+1}</p>
-              </Grid.Child>
-              <Grid.Child size={11 - i}>
+              </p-grid-child>
+              <p-grid-child size={11 - i}>
                 <p className="sg-example-item">{11-i}</p>
-              </Grid.Child>
-            </Grid>
+              </p-grid-child>
+            </p-grid>
           )
         })}
       </React.Fragment>
@@ -51,11 +50,11 @@ In some cases it can be neccessary to indent columns. The grid gives basic inden
       <React.Fragment>
         {Array.apply(0, Array(11)).map(function(x, i) {
           return (
-            <Grid key={i}>
-              <Grid.Child offset={i + 1} size={11 - i}>
+            <p-grid key={i}>
+              <p-grid-child offset={i + 1} size={11 - i}>
                 <p className="sg-example-item">{i+1}</p>
-              </Grid.Child>
-            </Grid>
+              </p-grid-child>
+            </p-grid>
           )
         })}
       </React.Fragment>
@@ -75,23 +74,23 @@ In some cases it might be neccessary to define or change direction of the column
   {() => {
     return (
       <React.Fragment>
-        <Grid direction="row">
-          <Grid.Child size={4}>
+        <p-grid direction="row">
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               1
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               2
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               3
             </p>
-          </Grid.Child>
-        </Grid>
+          </p-grid-child>
+        </p-grid>
       </React.Fragment>
     )
   }}
@@ -103,23 +102,23 @@ In some cases it might be neccessary to define or change direction of the column
   {() => {
     return (
       <React.Fragment>
-        <Grid direction="row-reverse">
-          <Grid.Child size={4}>
+        <p-grid direction="row-reverse">
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               1
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               2
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               3
             </p>
-          </Grid.Child>
-        </Grid>
+          </p-grid-child>
+        </p-grid>
       </React.Fragment>
     )
   }}
@@ -131,23 +130,23 @@ In some cases it might be neccessary to define or change direction of the column
   {() => {
     return (
       <React.Fragment>
-        <Grid direction="column">
-          <Grid.Child size={4}>
+        <p-grid direction="column">
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               1
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               2
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               3
             </p>
-          </Grid.Child>
-        </Grid>
+          </p-grid-child>
+        </p-grid>
       </React.Fragment>
     )
   }}
@@ -159,23 +158,23 @@ In some cases it might be neccessary to define or change direction of the column
   {() => {
     return (
       <React.Fragment>
-        <Grid direction="column-reverse">
-          <Grid.Child size={4}>
+        <p-grid direction="column-reverse">
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               1
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               2
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               3
             </p>
-          </Grid.Child>
-        </Grid>
+          </p-grid-child>
+        </p-grid>
       </React.Fragment>
     )
   }}
@@ -193,23 +192,23 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
   {() => {
     return (
       <React.Fragment>
-        <Grid gap="normal">
-          <Grid.Child size={4}>
+        <p-grid gap="normal">
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               1
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               2
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               3
             </p>
-          </Grid.Child>
-        </Grid>
+          </p-grid-child>
+        </p-grid>
       </React.Fragment>
     )
   }}
@@ -221,23 +220,23 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
   {() => {
     return (
       <React.Fragment>
-        <Grid gap="zero">
-          <Grid.Child size={4}>
+        <p-grid gap="zero">
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               1
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               2
             </p>
-          </Grid.Child>
-          <Grid.Child size={4}>
+          </p-grid-child>
+          <p-grid-child size={4}>
             <p className="sg-example-item">
               3
             </p>
-          </Grid.Child>
-        </Grid>
+          </p-grid-child>
+        </p-grid>
       </React.Fragment>
     )
   }}
@@ -253,40 +252,40 @@ Basic nesting of grids is supported. "Basic" because of percentage value of widt
   {() => {
     return (
       <React.Fragment>
-        <Grid>
-          <Grid.Child size={6}>
+        <p-grid>
+          <p-grid-child size={6}>
             <div className="sg-example-item-outer">
-              <Grid>
-                <Grid.Child size={6}>
+              <p-grid>
+                <p-grid-child size={6}>
                   <p className="sg-example-item">
                     1
                   </p>
-                </Grid.Child>
-                <Grid.Child size={6}>
+                </p-grid-child>
+                <p-grid-child size={6}>
                   <p className="sg-example-item">
                     2
                   </p>
-                </Grid.Child>
-              </Grid>
+                </p-grid-child>
+              </p-grid>
             </div>
-          </Grid.Child>
-          <Grid.Child size={6}>
+          </p-grid-child>
+          <p-grid-child size={6}>
             <div className="sg-example-item-outer">
-              <Grid>
-                <Grid.Child size={4}>
+              <p-grid>
+                <p-grid-child size={4}>
                   <p className="sg-example-item">
                     1
                   </p>
-                </Grid.Child>
-                <Grid.Child size={8}>
+                </p-grid-child>
+                <p-grid-child size={8}>
                   <p className="sg-example-item">
                     2
                   </p>
-                </Grid.Child>
-              </Grid>
+                </p-grid-child>
+              </p-grid>
             </div>
-          </Grid.Child>
-        </Grid>
+          </p-grid-child>
+        </p-grid>
       </React.Fragment>
     )
   }}
@@ -321,67 +320,67 @@ The grid system is fluid/responsive by itself by using percentages for every val
   {() => {
     return (
       <React.Fragment>
-        <Grid gap={{ base: "normal", s: "zero", m: "normal" }}>
-          <Grid.Child className="pui-flex" size={{ base: 12, m: 4, l: 3 }} offset={{ base: 0, m: 2, l: 0 }}>
-            <div className="pui-flex__child pui-flex__child--auto" className="sg-example-item">
+        <p-grid gap-responsive='{"base": "normal", "s": "zero", "m": "normal"}'>
+          <p-grid-child className="p-flex" size-responsive='{"base": 12, "m": 4, "l": 3}' offset-responsive='{"base": 0, "m": 2, "l": 0}'>
+            <div className="p-flex__child p-flex__child--auto" className="sg-example-item">
               <p type="4-thin">Column 1</p>
               <p>
                 xxs -- size: 12 <br />s -- gap: zero <br />m -- gap: normal, size: 4, offset: 2<br />l -- size: 3,
                 offset: 0
               </p>
             </div>
-          </Grid.Child>
-          <Grid.Child
-            className="pui-flex"
-            size={{
-              base: 12,
-              s: 6,
-              m: 4,
-              l: 3
-            }}
-            offset={{ base: 0, s: 3, m: 0 }}
+          </p-grid-child>
+          <p-grid-child
+            className="p-flex"
+            size-responsive='{
+              "base": 12,
+              "s": 6,
+              "m": 4,
+              "l": 3
+            }'
+            offset-responsive='{"base": 0, "s": 3, "m": 0}'
           >
-            <div className="pui-flex__child pui-flex__child--auto" className="sg-example-item">
+            <div className="p-flex__child p-flex__child--auto" className="sg-example-item">
               <p type="4-thin">Column 2</p>
               <p>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6, offset: 3<br />m -- gap: normal, size: 4, offset: 0<br />l
                 -- size: 3
               </p>
             </div>
-          </Grid.Child>
-          <Grid.Child
-            className="pui-flex"
-            size={{
-              base: 12,
-              s: 6,
-              l: 3
-            }}
+          </p-grid-child>
+          <p-grid-child
+            className="p-flex"
+            size-responsive='{
+              "base": 12,
+              "s": 6,
+              "l": 3
+            }'
           >
-            <div className="pui-flex__child pui-flex__child--auto" className="sg-example-item">
+            <div className="p-flex__child p-flex__child--auto" className="sg-example-item">
               <p type="4-thin">Column 3</p>
               <p>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6<br />m -- gap: normal
                 <br />l -- size: 3
               </p>
             </div>
-          </Grid.Child>
-          <Grid.Child
-            className="pui-flex"
-            size={{
-              base: 12,
-              s: 6,
-              l: 3
-            }}
+          </p-grid-child>
+          <p-grid-child
+            className="p-flex"
+            size-responsive='{
+              "base": 12,
+              "s": 6,
+              "l": 3
+            }'
           >
-            <div className="pui-flex__child pui-flex__child--auto" className="sg-example-item">
+            <div className="p-flex__child p-flex__child--auto" className="sg-example-item">
               <p type="4-thin">Column 4</p>
               <p>
                 xxs -- size: 12 <br />s -- gap: zero, size: 6<br />m -- gap: normal
                 <br />l -- size: 3
               </p>
             </div>
-          </Grid.Child>
-        </Grid>
+          </p-grid-child>
+        </p-grid>
       </React.Fragment>
     )
   }}
