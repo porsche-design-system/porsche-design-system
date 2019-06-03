@@ -7,25 +7,30 @@ import { BreakpointCustomizable, mapBreakpointPropToClasses, prefix } from "../.
   styleUrl: "grid-child.scss"
 })
 export class GridChild {
-  /** The size of the column. Can be between 1 and 12. */
-  @Prop() size: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 = 1;
+  /** The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this. */
+  @Prop() size?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | any> = 1;
 
-  /** The size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this. */
-  @Prop() sizeResponsive?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | any> = undefined;
-
-  /** The offset of the column. Can be between 0 and 11. */
-  @Prop() offset?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 = 0;
-
-  /** The offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this. */
-  @Prop() offsetResponsive?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | any> = undefined;
+  /** The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this. */
+  @Prop() offset?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | any> = 0;
 
   render(): JSX.Element {
+    const isJsonString = (str: string) => {
+      try {
+        JSON.parse(str);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    };
+
+    const parseProp = (prop: string) => {
+      return prop && isJsonString(prop) === true ? JSON.parse(prop) : prop;
+    };
+
     const gridChildClasses = cx(
       prefix("grid-child"),
-      mapBreakpointPropToClasses("grid-child--size", this.size),
-      mapBreakpointPropToClasses("grid-child--size", this.sizeResponsive && JSON.parse(this.sizeResponsive)),
-      mapBreakpointPropToClasses("grid-child--offset", this.offset),
-      mapBreakpointPropToClasses("grid-child--offset", this.offsetResponsive && JSON.parse(this.offsetResponsive))
+      mapBreakpointPropToClasses("grid-child--size", parseProp(this.size)),
+      mapBreakpointPropToClasses("grid-child--offset", parseProp(this.offset))
     );
 
     return <Host class={gridChildClasses} />;

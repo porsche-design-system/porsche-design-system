@@ -51,42 +51,12 @@ export namespace Components {
     'variant'?: "highlight" | "ghost" | "default";
   }
   interface PGrid {
-    /**
-    * Defines the direction of the main and cross axis. The default "row" (default) defines the main axis as horizontal left to right.
-    */
-    'direction'?: "row" | "row-reverse" | "column" | "column-reverse";
-    /**
-    * Defines the direction of the main and cross axis for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
-    */
-    'directionResponsive'?: BreakpointCustomizable<
-    "row" | "row-reverse" | "column" | "column-reverse" | any
-    >;
-    /**
-    * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with Grid.Child.
-    */
-    'gap'?: "normal" | "zero";
-    /**
-    * The gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
-    */
-    'gapResponsive'?: BreakpointCustomizable<"normal" | "zero" | any>;
+    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse" | any>;
+    'gap'?: BreakpointCustomizable<"normal" | "zero" | any>;
   }
   interface PGridChild {
-    /**
-    * The offset of the column. Can be between 0 and 11.
-    */
-    'offset'?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
-    /**
-    * The offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
-    */
-    'offsetResponsive'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | any>;
-    /**
-    * The size of the column. Can be between 1 and 12.
-    */
-    'size': 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-    /**
-    * The size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
-    */
-    'sizeResponsive'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | any>;
+    'offset'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | any>;
+    'size'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | any>;
   }
   interface PHeadline {
     /**
@@ -349,42 +319,12 @@ declare namespace LocalJSX {
     'variant'?: "highlight" | "ghost" | "default";
   }
   interface PGrid extends JSXBase.HTMLAttributes<HTMLPGridElement> {
-    /**
-    * Defines the direction of the main and cross axis. The default "row" (default) defines the main axis as horizontal left to right.
-    */
-    'direction'?: "row" | "row-reverse" | "column" | "column-reverse";
-    /**
-    * Defines the direction of the main and cross axis for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
-    */
-    'directionResponsive'?: BreakpointCustomizable<
-    "row" | "row-reverse" | "column" | "column-reverse" | any
-    >;
-    /**
-    * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with Grid.Child.
-    */
-    'gap'?: "normal" | "zero";
-    /**
-    * The gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
-    */
-    'gapResponsive'?: BreakpointCustomizable<"normal" | "zero" | any>;
+    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse" | any>;
+    'gap'?: BreakpointCustomizable<"normal" | "zero" | any>;
   }
   interface PGridChild extends JSXBase.HTMLAttributes<HTMLPGridChildElement> {
-    /**
-    * The offset of the column. Can be between 0 and 11.
-    */
-    'offset'?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
-    /**
-    * The offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
-    */
-    'offsetResponsive'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | any>;
-    /**
-    * The size of the column. Can be between 1 and 12.
-    */
-    'size'?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-    /**
-    * The size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
-    */
-    'sizeResponsive'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | any>;
+    'offset'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | any>;
+    'size'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | any>;
   }
   interface PHeadline extends JSXBase.HTMLAttributes<HTMLPHeadlineElement> {
     /**
