@@ -7,7 +7,7 @@ export interface MarkdownProps {
 }
 
 export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
-  const [markdown, setMarkdown] = useState(null);
+  const [markdown, setMarkdown] = useState(undefined);
   useEffect(() => {
     getMarkdownText(props.path, setMarkdown);
   }, [props.path]);
@@ -51,7 +51,7 @@ export const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
   };
 
   return (
-    markdown && (
+    markdown === undefined ? null : (
       <div className={style.markdown}>
         <div>
           <ReactMarkdown source={markdown} transformLinkUri={uriTransformer} />

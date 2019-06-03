@@ -1566,10 +1566,10 @@
     jimp "^0.6.0"
     puppeteer "^1.11.0"
 
-"@stencil/core@1.0.0-beta.8":
-  version "1.0.0-beta.8"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.0.0-beta.8.tgz#34dca840498340a62c7571dae8cf6edbcb4ee48a"
-  integrity sha1-NNyoQEmDQKYsdXHa6M9u28tO5Io=
+"@stencil/core@1.0.0":
+  version "1.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.0.0.tgz#60216d288b118daa88151a4a94154b549f83be3f"
+  integrity sha1-YCFtKIsRjaqIFRpKlBVLVJ+Dvj8=
   dependencies:
     typescript "3.5.1"
 
@@ -1736,10 +1736,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/browserslist/-/browserslist-4.4.0.tgz#e2a5f7f8c7e97afb39f50812a77e5230d3ca2353"
   integrity sha1-4qX3+Mfpevs59QgSp35SMNPKI1M=
 
-"@types/classnames@^2.2.7":
-  version "2.2.7"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/classnames/-/classnames-2.2.7.tgz#fb68cc9be8487e6ea5b13700e759bfbab7e0fefd"
-  integrity sha1-+2jMm+hIfm6lsTcA51m/urfg/v0=
+"@types/classnames@^2.2.8":
+  version "2.2.8"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/classnames/-/classnames-2.2.8.tgz#17139e1e1104203572caa4368f6796f6225b70b4"
+  integrity sha1-FxOeHhEEIDVyyqQ2j2eW9iJbcLQ=
 
 "@types/events@*":
   version "3.0.0"
@@ -1802,10 +1802,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
   integrity sha1-NFKiTt+f6hOLSPrUoKAopoPaHkA=
 
-"@types/node@12.0.3":
-  version "12.0.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-12.0.3.tgz#5d8d24e0033fc6393efadc85cb59c1f638095c9a"
-  integrity sha1-XY0k4AM/xjk++tyFy1nB9jgJXJo=
+"@types/node@12.0.4":
+  version "12.0.4"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/node/-/node-12.0.4.tgz#46832183115c904410c275e34cf9403992999c32"
+  integrity sha1-RoMhgxFckEQQwnXjTPlAOZKZnDI=
 
 "@types/prop-types@*":
   version "15.7.1"
@@ -11534,10 +11534,10 @@ stylelint-config-standard@^18.3.0:
   dependencies:
     stylelint-config-recommended "^2.2.0"
 
-stylelint-scss@^3.6.1:
-  version "3.6.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.6.1.tgz#eef14df2b6314cbd20d240b72d5b97c40751fef5"
-  integrity sha1-7vFN8rYxTL0g0kC3LVuXxAdR/vU=
+stylelint-scss@^3.8.0:
+  version "3.8.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.8.0.tgz#fc372306c2105b461d0c162199e65f0c09fada2a"
+  integrity sha1-/DcjBsIQW0YdDBYhmeZfDAn62io=
   dependencies:
     lodash "^4.17.11"
     postcss-media-query-parser "^0.2.3"
@@ -12011,10 +12011,10 @@ tslint-react@^4.0.0:
   dependencies:
     tsutils "^3.9.1"
 
-tslint@^5.16.0:
-  version "5.16.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/tslint/-/tslint-5.16.0.tgz#ae61f9c5a98d295b9a4f4553b1b1e831c1984d67"
-  integrity sha1-rmH5xamNKVuaT0VTsbHoMcGYTWc=
+tslint@^5.17.0:
+  version "5.17.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/tslint/-/tslint-5.17.0.tgz#f9f0ce2011d8e90debaa6e9b4975f24cd16852b8"
+  integrity sha1-+fDOIBHY6Q3rqm6bSXXyTNFoUrg=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     builtin-modules "^1.1.1"
@@ -12022,7 +12022,7 @@ tslint@^5.16.0:
     commander "^2.12.1"
     diff "^3.2.0"
     glob "^7.1.1"
-    js-yaml "^3.13.0"
+    js-yaml "^3.13.1"
     minimatch "^3.0.4"
     mkdirp "^0.5.1"
     resolve "^1.3.2"
@@ -12081,15 +12081,10 @@ typedarray@^0.0.6:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.5.1:
+typescript@3.5.1, typescript@^3.5.1, typescript@~3.5.1:
   version "3.5.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.5.1.tgz#ba72a6a600b2158139c5dd8850f700e231464202"
   integrity sha1-unKmpgCyFYE5xd2IUPcA4jFGQgI=
-
-typescript@^3.4.5, typescript@~3.4.5:
-  version "3.4.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
-  integrity sha1-LSYY0Qu1ZlcrjXqtUYDYQlfXCpk=
 
 ua-parser-js@^0.7.18:
   version "0.7.19"
