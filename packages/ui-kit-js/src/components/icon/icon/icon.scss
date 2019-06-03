@@ -1,6 +1,10 @@
 @import "../../../styles/utility/index";
 
-.icon {
+:host {
+  display: block;
+}
+
+.#{$p-global-class-prefix}icon {
   display: inline-flex;
   flex-shrink: 0;
   margin: 0;
@@ -12,17 +16,17 @@
   transition: fill $p-animation-hover-duration $p-animation-hover-bezier;
 
   &--small {
-    width: rem(32px);
-    height: rem(32px);
+    width: rem(24px);
+    height: rem(24px);
   }
 
   &--medium {
-    width: rem(48px);
-    height: rem(48px);
+    width: rem(36px);
+    height: rem(36px);
   }
 
   &--large {
-    width: rem(80px);
-    height: rem(80px);
+    width: rem(48px);
+    height: rem(48px);
   }
 }
