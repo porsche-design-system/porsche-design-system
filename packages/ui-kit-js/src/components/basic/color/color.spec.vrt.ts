@@ -9,7 +9,7 @@ describe("Component Color", () => {
     visualRegressionTester = await getVisualRegressionTester();
   });
 
-  fit("should have no visual regression", async () => {
+  it("should have no visual regression", async () => {
     expect(
       await visualRegressionTester.test("component-color", async () => {
         await visualRegressionTester.goTo("/#/vrt/basic/color");
