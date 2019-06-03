@@ -38,6 +38,18 @@
 
     <p-text tag="span">Lorem ipsum</p-text>
 
+    <p-grid direction-responsive='{"base": "column", "m": "row"}'>
+      <p-grid-child size="4">
+        1
+      </p-grid-child>
+      <p-grid-child size="4">
+        2
+      </p-grid-child>
+      <p-grid-child size="4">
+        3
+      </p-grid-child>
+    </p-grid>
+
     <script>
       const btn = document.querySelector("p-button-regular")
       btn.addEventListener("pClick", (e) => {
