@@ -1,70 +1,71 @@
 {
-  "name": "@porscheui/ui-kit-js",
-  "version": "1.0.0-alpha.1",
-  "description": "Porsche UI Kit – A Porsche web component library.",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "files": [
-    "dist/",
-    "loader/"
-  ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "contributors": [
-    "Stephan Schröter <stephan.schroeter@mhp.com>",
-    "Marcel Bertram <marcel.bertram@porsche.de>",
-    "Anna Krohmer <anna.krohmer@udg.de>",
-    "Oliver Hook <oliver.hook@mhp.com>",
-    "Olivia Pala <olivia.pala@udg.de>"
-  ],
-  "keywords": [
-    "porsche",
-    "ui",
-    "web-components",
-    "design-system"
-  ],
-  "homepage": "https://ui.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
-  "publishConfig": {
-    "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
-  },
-  "scripts": {
-    "build": "stencil build --docs && node doc.js",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "clean": "rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www",
-    "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
-    "lint:scss": "stylelint './src/**/*.scss'",
-    "lint:ts": "tslint -p './tsconfig.json' -t codeFrame"
-  },
-  "devDependencies": {
-    "@stencil/core": "^1.0.0",
-    "@stencil/postcss": "^0.1.0",
-    "@stencil/sass": "^0.2.3",
-    "@types/autoprefixer": "^9.5.0",
-    "@types/classnames": "^2.2.8",
-    "@types/jest": "^24.0.13",
-    "@types/puppeteer": "^1.12.4",
-    "autoprefixer": "^9.5.1",
-    "classnames": "^2.2.6",
-    "concurrently": "^4.1.0",
-    "jest": "^24.8.0",
-    "jest-cli": "^24.8.0",
-    "puppeteer": "^1.14.0",
-    "stylelint": "^10.0.1",
-    "tslint": "^5.17.0",
-    "typescript": "~3.5.1"
-  },
-  "license": "SEE LICENSE IN https://ui.porsche.com"
+    "name": "@porscheui/ui-kit-js",
+    "version": "1.0.0-alpha.1",
+    "scope": "@porscheui",
+    "description": "Porsche UI Kit – A Porsche web component library.",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "es2015": "dist/esm/index.mjs",
+    "es2017": "dist/esm/index.mjs",
+    "types": "src/components.d.ts",
+    "collection": "dist/collection/collection-manifest.json",
+    "collection:main": "dist/collection/index.js",
+    "files": [
+        "dist/",
+        "loader/"
+    ],
+    "author": "Dr. Ing. h.c. F. Porsche AG",
+    "contributors": [
+        "Stephan Schröter <stephan.schroeter@mhp.com>",
+        "Marcel Bertram <marcel.bertram@porsche.de>",
+        "Anna Krohmer <anna.krohmer@udg.de>",
+        "Oliver Hook <oliver.hook@mhp.com>",
+        "Olivia Pala <olivia.pala@udg.de>"
+    ],
+    "keywords": [
+        "porsche",
+        "ui",
+        "web-components",
+        "design-system"
+    ],
+    "homepage": "https://ui.porsche.com",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
+    },
+    "bugs": {
+        "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+    },
+    "publishConfig": {
+        "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+    },
+    "scripts": {
+        "build": "stencil build --docs && node doc.js",
+        "start": "stencil build --dev --watch --serve",
+        "test": "stencil test --spec --e2e",
+        "test.watch": "stencil test --spec --e2e --watchAll",
+        "clean": "rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www",
+        "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
+        "lint:scss": "stylelint './src/**/*.scss'",
+        "lint:ts": "tslint -p './tsconfig.json' -t codeFrame"
+    },
+    "devDependencies": {
+        "@stencil/core": "^1.0.0",
+        "@stencil/postcss": "^0.1.0",
+        "@stencil/sass": "^0.2.3",
+        "@types/autoprefixer": "^9.5.0",
+        "@types/classnames": "^2.2.8",
+        "@types/jest": "23.3.14",
+        "@types/puppeteer": "^1.12.4",
+        "autoprefixer": "^9.5.1",
+        "classnames": "^2.2.6",
+        "concurrently": "^4.1.0",
+        "jest": "^23.6.0",
+        "jest-cli": "^23.6.0",
+        "puppeteer": "^1.14.0",
+        "stylelint": "^10.0.1",
+        "tslint": "^5.17.0",
+        "typescript": "~3.5.1"
+    },
+    "license": "SEE LICENSE IN https://ui.porsche.com"
 }

@@ -26,7 +26,7 @@
   ],
   "homepage": ".",
   "scripts": {
-    "start": "yarn build:docgen & yarn copy &&  react-scripts start",
+    "start": "yarn build:docgen & yarn copy && react-scripts start",
     "build": "yarn build:docgen & yarn copy && react-scripts build",
     "build:docgen": "node './docgen/docgen.js'",
     "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
