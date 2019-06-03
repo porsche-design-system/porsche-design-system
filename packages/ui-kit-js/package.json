@@ -58,11 +58,13 @@
     "@types/puppeteer": "^1.12.4",
     "autoprefixer": "^9.5.1",
     "classnames": "^2.2.6",
+    "concurrently": "^4.1.0",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
     "puppeteer": "^1.14.0",
     "stylelint": "^10.0.1",
-    "tslint": "^5.17.0"
+    "tslint": "^5.17.0",
+    "typescript": "~3.5.1"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"
 }
