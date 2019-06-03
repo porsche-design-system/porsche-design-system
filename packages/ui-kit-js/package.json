@@ -1,12 +1,13 @@
 {
   "name": "@porscheui/ui-kit-js",
   "version": "1.0.0-alpha.1",
+  "scope": "@porscheui",
   "description": "Porsche UI Kit – A Porsche web component library.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "src/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "files": [
@@ -54,13 +55,16 @@
     "@stencil/sass": "^0.2.3",
     "@types/autoprefixer": "^9.5.0",
     "@types/classnames": "^2.2.8",
-    "@types/jest": "^24.0.13",
+    "@types/jest": "23.3.14",
     "@types/puppeteer": "^1.12.4",
     "autoprefixer": "^9.5.1",
     "classnames": "^2.2.6",
-    "jest": "^24.8.0",
-    "jest-cli": "^24.8.0",
-    "puppeteer": "^1.14.0"
+    "concurrently": "^4.1.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "puppeteer": "^1.14.0",
+    "stylelint": "^10.0.1",
+    "tslint": "^5.17.0"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"
 }
