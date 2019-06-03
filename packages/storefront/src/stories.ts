@@ -16,7 +16,8 @@ export const Stories: Stories = {
   Basic: {
     Color: {
       design: importMDX("../../ui-kit-js/src/components/basic/color/color.design.mdx"),
-      code: importMDX("../../ui-kit-js/src/components/basic/color/color.code.mdx")
+      code: importMDX("../../ui-kit-js/src/components/basic/color/color.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/basic/color/color.vrt.mdx")
     },
     Typography: {
       design: importMDX("../../ui-kit-js/src/components/basic/typography/typography.design.mdx"),
