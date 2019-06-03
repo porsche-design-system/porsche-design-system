@@ -60,7 +60,9 @@
     "classnames": "^2.2.6",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
-    "puppeteer": "^1.14.0"
+    "puppeteer": "^1.14.0",
+    "stylelint": "^10.0.1",
+    "tslint": "^5.17.0"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"
 }
