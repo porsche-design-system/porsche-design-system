@@ -53,6 +53,7 @@ export namespace Components {
   interface PCheckbox {
     'checked'?: boolean;
     'disabled'?: boolean;
+    'error'?: boolean;
     'label'?: string;
     'name'?: string;
     'value'?: string;
@@ -145,6 +146,14 @@ export namespace Components {
     */
     'theme'?: "light" | "dark";
   }
+  interface PRadio {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'error'?: boolean;
+    'label'?: string;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PText {
     /**
     * The text alignment of the component.
@@ -231,10 +240,6 @@ export namespace Components {
     * Sets the input name
     */
     'name': string;
-    /**
-    * Adapts the loader color when used on dark background.
-    */
-    'theme'?: "light" | "dark";
     'value': string;
   }
 }
@@ -284,6 +289,12 @@ declare global {
     new (): HTMLPLoaderElement;
   };
 
+  interface HTMLPRadioElement extends Components.PRadio, HTMLStencilElement {}
+  var HTMLPRadioElement: {
+    prototype: HTMLPRadioElement;
+    new (): HTMLPRadioElement;
+  };
+
   interface HTMLPTextElement extends Components.PText, HTMLStencilElement {}
   var HTMLPTextElement: {
     prototype: HTMLPTextElement;
@@ -303,6 +314,7 @@ declare global {
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
     'p-loader': HTMLPLoaderElement;
+    'p-radio': HTMLPRadioElement;
     'p-text': HTMLPTextElement;
     'p-toggle': HTMLPToggleElement;
   }
@@ -362,6 +374,7 @@ declare namespace LocalJSX {
   interface PCheckbox extends JSXBase.HTMLAttributes<HTMLPCheckboxElement> {
     'checked'?: boolean;
     'disabled'?: boolean;
+    'error'?: boolean;
     'label'?: string;
     'name'?: string;
     'value'?: string;
@@ -454,6 +467,14 @@ declare namespace LocalJSX {
     */
     'theme'?: "light" | "dark";
   }
+  interface PRadio extends JSXBase.HTMLAttributes<HTMLPRadioElement> {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'error'?: boolean;
+    'label'?: string;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PText extends JSXBase.HTMLAttributes<HTMLPTextElement> {
     /**
     * The text alignment of the component.
@@ -540,10 +561,6 @@ declare namespace LocalJSX {
     * Sets the input name
     */
     'name'?: string;
-    /**
-    * Adapts the loader color when used on dark background.
-    */
-    'theme'?: "light" | "dark";
     'value'?: string;
   }
 
@@ -555,6 +572,7 @@ declare namespace LocalJSX {
     'p-headline': PHeadline;
     'p-icon': PIcon;
     'p-loader': PLoader;
+    'p-radio': PRadio;
     'p-text': PText;
     'p-toggle': PToggle;
   }

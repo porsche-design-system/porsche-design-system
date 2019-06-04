@@ -1,5 +1,9 @@
 @import "../../../styles/utility/index";
 
+:host {
+  display: inline-flex;
+}
+
 .#{$p-global-class-prefix}toggle {
   $bem-block: &;
   position: relative;
@@ -10,10 +14,6 @@
   // toggle is hovered
   &:hover #{$bem-block}__slider {
     background-color: $p-color-neutral-grey-2;
-
-    &--inverted {
-      background-color: $p-color-neutral-grey-6;
-    }
 
     & #{$bem-block}__icon {
       color: $p-color-porsche-light;
@@ -50,10 +50,6 @@
 
       & #{$bem-block}__icon {
         color: $p-color-neutral-grey-2;
-
-        &--inverted {
-          color: $p-color-porsche-light;
-        }
       }
     }
   }
@@ -87,44 +83,19 @@
       transform: translate(0, 0);
       box-sizing: border-box;
     }
-
-    &--inverted {
-      border-color: $p-color-neutral-grey-6;
-
-      &::after {
-        border-color: $p-color-neutral-grey-6;
-      }
-    }
   }
 
   &__icon {
-    // @include icon-base;
-    // @include -align-center;
     transition: $p-animation-hover-duration;
     display: inline-block;
-
-    // width: $toggle-slider-icon-width;
-    // font-size: $toggle-slider-icon-size;
-    // color: $toggle-slider-icon-color;
-
-    &--inverted {
-      // color: $toggle-slider-icon-inverted-color;
-    }
+    color: $p-color-neutral-grey-2;
 
     &--inactive {
       order: 2;
-
-      &::before {
-        // @include icon-minus-before;
-      }
     }
 
     &--active {
       order: 1;
-
-      &::before {
-        // @include icon-check-before;
-      }
     }
   }
 }

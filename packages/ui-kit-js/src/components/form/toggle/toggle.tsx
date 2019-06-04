@@ -7,7 +7,7 @@ import {prefix} from "../../../utils";
   styleUrl: "toggle.scss",
   shadow: true
 })
-export class Loader {
+export class Toggle {
 
   /** Sets the input name */
   @Prop() name: string = "foo";
@@ -20,16 +20,12 @@ export class Loader {
   /** Shows the toggle button checked or unchecked */
   @Prop() checked?: boolean = false;
 
-  /** Adapts the loader color when used on dark background. */
-  @Prop() theme?: "light" | "dark" = "light";
-
   render(): JSX.Element {
     const toggleClasses = cx(prefix("toggle"));
     const checkboxClasses = cx(prefix("toggle__checkbox"));
-    const sliderClasses = cx(
-      prefix("toggle__slider"),
-      { [prefix("toggle__slider--inverted")]: this.theme === "dark" }
-    );
+    const sliderClasses = cx(prefix("toggle__slider"));
+    const iconInactiveClasses = cx(prefix("toggle__icon"), prefix("toggle__icon--inactive"));
+    const iconActiveClasses = cx(prefix("toggle__icon"), prefix("toggle__icon--active"));
 
     return (
       <label class={toggleClasses}>
@@ -40,8 +36,8 @@ export class Loader {
                disabled={this.disabled}
                checked={this.checked}/>
         <span class={sliderClasses}>
-          <p-icon icon="icon_check.min.svg"/>
-          <p-icon icon="icon_minus.min.svg"/>
+          <p-icon class={iconInactiveClasses} icon="icon_minus.min.svg"/>
+          <p-icon class={iconActiveClasses} icon="icon_check.min.svg"/>
         </span>
       </label>
     );

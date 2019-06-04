@@ -7,13 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                             | Type                | Default   |
-| ---------- | ---------- | --------------------------------------------------------------------------------------- | ------------------- | --------- |
-| `checked`  | `checked`  | Shows the toggle button checked or unchecked                                            | `boolean`           | `false`   |
-| `disabled` | `disabled` | Disables the toggle button. No events will be triggered while disabled state is active. | `boolean`           | `false`   |
-| `name`     | `name`     | Sets the input name                                                                     | `string`            | `"foo"`   |
-| `theme`    | `theme`    | Adapts the loader color when used on dark background.                                   | `"dark" \| "light"` | `"light"` |
-| `value`    | `value`    |                                                                                         | `string`            | `"bar"`   |
+| Property   | Attribute  | Description                                                                             | Type      | Default |
+| ---------- | ---------- | --------------------------------------------------------------------------------------- | --------- | ------- |
+| `checked`  | `checked`  | Shows the toggle button checked or unchecked                                            | `boolean` | `false` |
+| `disabled` | `disabled` | Disables the toggle button. No events will be triggered while disabled state is active. | `boolean` | `false` |
+| `name`     | `name`     | Sets the input name                                                                     | `string`  | `"foo"` |
+| `value`    | `value`    |                                                                                         | `string`  | `"bar"` |
 
 
 ## Dependencies
