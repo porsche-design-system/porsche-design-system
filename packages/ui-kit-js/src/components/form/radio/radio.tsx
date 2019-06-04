@@ -3,11 +3,11 @@ import cx from "classnames";
 import {prefix} from "../../../utils";
 
 @Component({
-  tag: "p-checkbox",
-  styleUrl: "checkbox.scss",
+  tag: "p-radio",
+  styleUrl: "radio.scss",
   shadow: true
 })
-export class Checkbox {
+export class Radio {
 
   @Prop() name?: string = "";
 
@@ -22,22 +22,23 @@ export class Checkbox {
   @Prop() error?: boolean = false;
 
   render(): JSX.Element {
-    const checkboxClasses = cx(prefix("checkbox"));
-    const fieldClasses = cx(prefix("checkbox__field"));
-    const iconClasses = cx(prefix("checkbox__icon"));
-    const labelClasses = cx(prefix("checkbox__label"));
+    const radioClasses = cx(prefix("radio"));
+    const fieldClasses = cx(prefix("radio__field"));
+    const iconClasses = cx(
+      prefix("radio__icon"),
+      { [prefix("radio__icon--error")]: this.error }
+    );
+    const labelClasses = cx(prefix("radio__label"));
 
     return (
-      <label class={checkboxClasses}>
+      <label class={radioClasses}>
         <input class={fieldClasses}
-               type="checkbox"
+               type="radio"
                name={this.name}
                value={this.value}
                disabled={this.disabled}
                checked={this.checked}/>
-        <span class={iconClasses}>
-          <p-icon icon="icon_check.min.svg"/>
-        </span>
+        <span class={iconClasses}/>
         <p-text class={labelClasses}>
           <slot/>
         </p-text>
