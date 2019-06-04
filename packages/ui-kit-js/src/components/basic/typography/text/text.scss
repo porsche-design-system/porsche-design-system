@@ -217,15 +217,60 @@
   }
 
   &--color {
-    &-white {
+    &-porsche-light {
       color: $p-color-porsche-light;
     }
 
-    &-black {
+    &-porsche-black {
       color: $p-color-porsche-black;
-      &#{$bem-block}--theme-dark {
-        color: $p-color-porsche-light;
-      }
+    }
+
+    &-porsche-red {
+      color: $p-color-porsche-red;
+    }
+
+    &-neutral-grey-1 {
+      color: $p-color-neutral-grey-1;
+    }
+
+    &-neutral-grey-2 {
+      color: $p-color-neutral-grey-2;
+    }
+
+    &-neutral-grey-3 {
+      color: $p-color-neutral-grey-3;
+    }
+
+    &-neutral-grey-4 {
+      color: $p-color-neutral-grey-4;
+    }
+
+    &-neutral-grey-5 {
+      color: $p-color-neutral-grey-5;
+    }
+
+    &-neutral-grey-6 {
+      color: $p-color-neutral-grey-6;
+    }
+
+    &-neutral-grey-7 {
+      color: $p-color-neutral-grey-7;
+    }
+
+    &-neutral-grey-8 {
+      color: $p-color-neutral-grey-8;
+    }
+
+    &-status-red {
+      color: $p-color-status-red;
+    }
+
+    &-status-green {
+      color: $p-color-status-green;
+    }
+
+    &-status-yellow {
+      color: $p-color-status-yellow;
     }
   }
 

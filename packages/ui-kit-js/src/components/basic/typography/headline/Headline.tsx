@@ -9,16 +9,20 @@ import { prefix } from "../../../../utils/prefix";
 })
 export class Headline {
   /** The style of the text. */
-  @Prop() type?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5" = "headline-1";
+  @Prop() type?:
+    | "large-title"
+    | "headline-1"
+    | "headline-2"
+    | "headline-3"
+    | "headline-4"
+    | "headline-5"
+    | "headline-6" = "headline-1";
 
   /** Headline level/hierarchy. */
   @Prop() level?: "1" | "2" | "3" | "4" | "5" | "6" = "1";
 
   /** The text alignment of the component. */
   @Prop() align?: "left" | "center" | "right" = "left";
-
-  /** Basic text color variations. */
-  @Prop() color?: "black" | "light" = "black";
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() ellipsis?: boolean = false;
@@ -39,7 +43,6 @@ export class Headline {
       prefix("headline"),
       { [prefix(`headline--${this.type}`)]: this.type },
       { [prefix(`headline--align-${this.align}`)]: this.align },
-      { [prefix(`headline--color-${this.color}`)]: this.color },
       { [prefix("headline--inline")]: this.inline },
       { [prefix("headline--ellipsis")]: this.ellipsis },
       { [prefix("headline--wrap")]: this.wrap },
