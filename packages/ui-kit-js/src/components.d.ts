@@ -92,7 +92,7 @@ export namespace Components {
     */
     'level'?: "1" | "2" | "3" | "4" | "5" | "6";
     /**
-    * Adapts the loader color when used on dark background.
+    * Adapts the text color when used on dark background.
     */
     'theme'?: "light" | "dark";
     /**
@@ -352,7 +352,7 @@ declare namespace LocalJSX {
     */
     'level'?: "1" | "2" | "3" | "4" | "5" | "6";
     /**
-    * Adapts the loader color when used on dark background.
+    * Adapts the text color when used on dark background.
     */
     'theme'?: "light" | "dark";
     /**
