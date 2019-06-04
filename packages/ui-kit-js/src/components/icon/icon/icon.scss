@@ -1,7 +1,7 @@
 @import "../../../styles/utility/index";
 
 :host {
-  display: block;
+  display: inline-flex;
 }
 
 .#{$p-global-class-prefix}icon {
