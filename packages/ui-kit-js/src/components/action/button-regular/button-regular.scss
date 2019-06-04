@@ -13,7 +13,7 @@
   text-align: left;
   @include p-text-copy;
   margin: 0;
-  padding: 11px 15px; // 15px width because of 1 px border which leads to 16px
+  padding: 11px 15px 11px 11px;
   max-width: 100%; // fix for IE11, forces using multi line label
   box-sizing: border-box;
   border-radius: 0; // fix for Chrome and Safari
@@ -167,11 +167,7 @@
   }
 
   &--small {
-    padding: rem(2px) rem(11px);
-
-    #{$bem-block}__label {
-      padding-left: rem(24px);
-    }
+    padding: 2px 11px 2px 7px;
   }
 
   &__icon,
@@ -184,7 +180,7 @@
   }
 
   &__label {
-    padding-left: rem(24px);
+    padding-left: 28px;
     display: block;
     width: 100%;
     box-sizing: border-box;

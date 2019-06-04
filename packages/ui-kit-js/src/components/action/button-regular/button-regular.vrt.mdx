@@ -149,3 +149,40 @@ import { Text, Headline } from "@porscheui/ui-kit-react"
     )
   }}
 </ExampleVrt>
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <p-button-regular small="true">Click Here!</p-button-regular>
+        <p-button-regular small="true" variant="ghost">Click Here!</p-button-regular>
+        <p-button-regular small="true" variant="highlight">Click Here!</p-button-regular>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <p-button-regular small="true" loading="true">Click Here!</p-button-regular>
+        <p-button-regular small="true" loading="true" variant="ghost">Click Here!</p-button-regular>
+        <p-button-regular small="true" loading="true" variant="highlight">Click Here!</p-button-regular>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
+
+<ExampleVrt>
+  {() => {
+    const wrapperStyle = {"width": "200px"}
+    return (
+      <React.Fragment>
+        <div style={wrapperStyle}>
+          <p-button-regular icon="icon_phone.min.svg">Very long text lorem ipsum dolor sit amet consecutor lorem ipsum</p-button-regular>
+        </div>
+      </React.Fragment>
+    )
+}}
+</ExampleVrt>
