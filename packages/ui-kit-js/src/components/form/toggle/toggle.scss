@@ -2,7 +2,6 @@
 
 .#{$p-global-class-prefix}toggle {
   $bem-block: &;
-
   position: relative;
   width: rem(48px);
   height: rem(24px);
@@ -75,7 +74,7 @@
 
     &::after {
       transition: $p-animation-hover-duration;
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       width: rem(24px);
@@ -99,23 +98,24 @@
   }
 
   &__icon {
-    //@include icon-base;
-    //@include -align-center;
+    // @include icon-base;
+    // @include -align-center;
     transition: $p-animation-hover-duration;
     display: inline-block;
-    //width: $toggle-slider-icon-width;
-    //font-size: $toggle-slider-icon-size;
-    //color: $toggle-slider-icon-color;
+
+    // width: $toggle-slider-icon-width;
+    // font-size: $toggle-slider-icon-size;
+    // color: $toggle-slider-icon-color;
 
     &--inverted {
-      //color: $toggle-slider-icon-inverted-color;
+      // color: $toggle-slider-icon-inverted-color;
     }
 
     &--inactive {
       order: 2;
 
       &::before {
-        //@include icon-minus-before;
+        // @include icon-minus-before;
       }
     }
 
@@ -123,7 +123,7 @@
       order: 1;
 
       &::before {
-        //@include icon-check-before;
+        // @include icon-check-before;
       }
     }
   }
