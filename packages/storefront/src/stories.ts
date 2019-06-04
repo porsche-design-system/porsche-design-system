@@ -1,8 +1,8 @@
 import { importMDX } from "mdx.macro";
 
 export interface Story {
-  design: any;
-  code: any;
+  design?: any;
+  code?: any;
   docs?: any[];
   props?: string[];
   vrt?: any;
@@ -55,7 +55,6 @@ export const Stories: Stories = {
   },
   Layout: {
     Flex: {
-      design: importMDX("../../workshop/src/components/layout/flex/flex.design.mdx"),
       code: importMDX("../../workshop/src/components/layout/flex/flex.code.mdx"),
       vrt: importMDX("../../workshop/src/components/layout/flex/flex.vrt.mdx"),
       props: ["Flex", "FlexItem"]
