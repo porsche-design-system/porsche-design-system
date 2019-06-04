@@ -4,7 +4,7 @@
   $bem-block: &;
   padding: 0;
   margin: 0;
-  color: inherit;
+  color: $p-color-porsche-black;
 
   &--inline {
     display: inline-block;
@@ -63,19 +63,6 @@
 
   &--headline-6 {
     @include p-headline-5;
-  }
-
-  &--color {
-    &-light {
-      color: $p-color-porsche-light;
-    }
-
-    &-black {
-      color: $p-color-porsche-black;
-      &#{$bem-block}--theme-dark {
-        color: $p-color-porsche-light;
-      }
-    }
   }
 
   &--theme-dark {

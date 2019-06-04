@@ -76,10 +76,6 @@ export namespace Components {
     */
     'align'?: "left" | "center" | "right";
     /**
-    * Basic text color variations.
-    */
-    'color'?: "black" | "light";
-    /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
@@ -98,7 +94,13 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'type'?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
+    'type'?: | "large-title"
+    | "headline-1"
+    | "headline-2"
+    | "headline-3"
+    | "headline-4"
+    | "headline-5"
+    | "headline-6";
     /**
     * Wraps the text, even when it has to break a word.
     */
@@ -144,7 +146,17 @@ export namespace Components {
     /**
     * Basic text color variations.
     */
-    'color'?: "black" | "light";
+    'color'?: | "porsche-black"
+    | "porsche-light"
+    | "porsche-red"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8";
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -168,10 +180,6 @@ export namespace Components {
     | "sup"
     | "sub"
     | "legend";
-    /**
-    * Adapts the loader color when used on dark background.
-    */
-    'theme'?: "light" | "dark";
     /**
     * The style of the text.
     */
@@ -362,10 +370,6 @@ declare namespace LocalJSX {
     */
     'align'?: "left" | "center" | "right";
     /**
-    * Basic text color variations.
-    */
-    'color'?: "black" | "light";
-    /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
@@ -384,7 +388,13 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'type'?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
+    'type'?: | "large-title"
+    | "headline-1"
+    | "headline-2"
+    | "headline-3"
+    | "headline-4"
+    | "headline-5"
+    | "headline-6";
     /**
     * Wraps the text, even when it has to break a word.
     */
@@ -430,7 +440,17 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations.
     */
-    'color'?: "black" | "light";
+    'color'?: | "porsche-black"
+    | "porsche-light"
+    | "porsche-red"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8";
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -454,10 +474,6 @@ declare namespace LocalJSX {
     | "sup"
     | "sub"
     | "legend";
-    /**
-    * Adapts the loader color when used on dark background.
-    */
-    'theme'?: "light" | "dark";
     /**
     * The style of the text.
     */
