@@ -37,6 +37,13 @@ export const Stories: Stories = {
       docs: [importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.prop.mdx")]
     }
   },
+  Form: {
+    Toggle: {
+      design: importMDX("../../ui-kit-js/src/components/form/toggle/toggle.design.mdx"),
+      code: importMDX("../../ui-kit-js/src/components/form/toggle/toggle.code.mdx"),
+      docs: [importMDX("../../ui-kit-js/src/components/form/toggle/toggle.prop.mdx")]
+    }
+  },
   Feedback: {
     Loader: {
       design: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.design.mdx"),
