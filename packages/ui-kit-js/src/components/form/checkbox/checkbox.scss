@@ -1,0 +1,230 @@
+@import "../../../styles/utility/index";
+
+.#{$p-global-class-prefix}checkbox {
+  $bem-block: &;
+
+  position: relative;
+  display: inline-flex;
+  min-width: rem(26px);
+  min-height: rem(26px);
+  max-width: 100%;
+  cursor: pointer;
+  vertical-align: top; // get rid of space underneath because of inline-block
+
+  &__field {
+    display: none;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: rem(26px);
+    height: rem(26px);
+    box-sizing: border-box;
+    border: rem(2px) solid $p-color-neutral-grey-6;
+    cursor: pointer;
+
+    &--inverted {
+      border-color: $p-color-porsche-light;
+    }
+
+    &--error {
+      border-color: $p-color-status-red;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      visibility: hidden;
+      color: $p-color-neutral-grey-6;
+    }
+
+    &::after { // safe clickable area
+      position: absolute;
+      content: '';
+      top: - rem(9px);
+      right: - rem(9px);
+      bottom: - rem(9px);
+      left: - rem(9px);
+    }
+  }
+
+  &__label {
+    //@include -text-size-copy;
+    //display: block;
+    padding: rem(1px) 0 0 rem(38px);
+    //color: $checkbox-label-text-color;
+    //min-height: $checkbox-label-min-height;
+    //cursor: pointer;
+
+    &--inverted {
+      //color: $checkbox-label-text-color-inverted;
+    }
+
+    &--error {
+      //color: $checkbox-label-text-color-error;
+    }
+  }
+
+  &__label-icon {
+    //font-size: $checkbox-label-icon-font-size;
+    //line-height: inherit;
+    //vertical-align: top;
+
+    &::before {
+      //vertical-align: top;
+    }
+  }
+
+  //&__label-link {
+  //  color: $checkbox-label-link-text-color;
+//
+  //  &:active,
+  //  &:focus,
+  //  &:hover {
+  //    color: $checkbox-label-link-text-color-hover;
+  //    text-decoration: none;
+  //  }
+//
+  //  &--inverted {
+  //    color: $checkbox-label-link-text-color-inverted;
+//
+  //    &:active,
+  //    &:focus,
+  //    &:hover {
+  //      color: $checkbox-label-link-text-color-inverted-hover;
+  //    }
+  //  }
+//
+  //  &--error {
+  //    color: $checkbox-label-link-text-color-error;
+//
+  //    &:active,
+  //    &:focus,
+  //    &:hover {
+  //      color: $checkbox-label-link-text-color-error-hover;
+  //    }
+  //  }
+  //}
+
+  // checkbox is hovered, not checked and not disabled
+  &:hover &__field:not(:checked):not(:disabled) {
+    & ~ #{$bem-block}__icon {
+      border-color: $p-color-neutral-grey-4;
+
+      &--inverted {
+        border-color: $p-color-neutral-grey-4;
+      }
+
+      &--error {
+        border-color: $p-color-status-red;
+      }
+    }
+  }
+
+  // checkbox is checked
+  &__field:checked {
+    & ~ #{$bem-block}__icon {
+
+      &::before {
+        visibility: visible;
+        color: $p-color-neutral-grey-6;
+      }
+
+      &--inverted::before {
+        color: $p-color-porsche-light;
+      }
+
+      &--error::before {
+        color: $p-color-status-red;
+      }
+    }
+  }
+
+  // checkbox is hovered, checked and not disabled
+  &:hover &__field:checked:not(:disabled) {
+    & ~ #{$bem-block}__icon {
+      background-color: $p-color-neutral-grey-6;
+
+      &--inverted {
+        background-color: $p-color-porsche-light;
+      }
+
+      &::before {
+        background-color: $p-color-neutral-grey-6;
+        color: $p-color-porsche-light;
+      }
+
+      &--inverted::before {
+        background-color: transparent;
+        color: $p-color-porsche-black;
+      }
+
+      &--error {
+        background-color: $p-color-status-red;
+      }
+
+      &--error::before {
+        background-color: transparent;
+        color: $p-color-porsche-light;
+      }
+    }
+  }
+
+  // checkbox is disabled, unchecked or checked
+  &__field:disabled:checked,
+  &__field:disabled:not(:checked) {
+    & ~ #{$bem-block}__icon {
+      cursor: default;
+      border-color: $p-color-neutral-grey-4;
+      background: transparent;
+
+      &--inverted {
+        border-color: $p-color-neutral-grey-4;
+        background: transparent;
+      }
+
+      &::before {
+        color: $p-color-neutral-grey-4;
+      }
+
+      &--inverted::before {
+        background-color: transparent;
+        color: $p-color-neutral-grey-4;
+      }
+    }
+
+    & ~ #{$bem-block}__label {
+      cursor: default;
+      color: $p-color-neutral-grey-4;
+
+      &--inverted {
+        color: $p-color-neutral-grey-4;
+      }
+
+      #{$bem-block}__label-link {
+        cursor: pointer;
+        color: $p-color-neutral-grey-4;
+
+        &--inverted {
+          color: $p-color-neutral-grey-4;
+        }
+
+        &:active,
+        &:focus,
+        &:hover {
+          color: $p-color-porsche-red;
+        }
+
+        &--inverted:active,
+        &--inverted:focus,
+        &--inverted:hover {
+          color: $p-color-porsche-red;
+        }
+      }
+    }
+  }
+}
