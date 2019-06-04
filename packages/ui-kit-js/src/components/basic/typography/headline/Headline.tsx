@@ -23,13 +23,13 @@ export class Headline {
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() ellipsis?: boolean = false;
 
-  /** Sets the text as display: inline. */
-  @Prop() inline?: boolean = false;
-
   /** Wraps the text, even when it has to break a word. */
   @Prop() wrap?: boolean = false;
 
-  /** Adapts the loader color when used on dark background. */
+  /** Sets the text as display: inline. */
+  @Prop() inline?: boolean = false;
+
+  /** Adapts the text color when used on dark background. */
   @Prop() theme?: "light" | "dark" = "light";
 
   render(): JSX.Element {
