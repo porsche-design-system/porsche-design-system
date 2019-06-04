@@ -38,6 +38,11 @@ export const Stories: Stories = {
     }
   },
   Form: {
+    Checkbox: {
+      design: importMDX("../../ui-kit-js/src/components/form/checkbox/checkbox.design.mdx"),
+      code: importMDX("../../ui-kit-js/src/components/form/checkbox/checkbox.code.mdx"),
+      docs: [importMDX("../../ui-kit-js/src/components/form/checkbox/checkbox.prop.mdx")]
+    },
     Toggle: {
       design: importMDX("../../ui-kit-js/src/components/form/toggle/toggle.design.mdx"),
       code: importMDX("../../ui-kit-js/src/components/form/toggle/toggle.code.mdx"),

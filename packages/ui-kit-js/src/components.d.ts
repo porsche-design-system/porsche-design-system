@@ -50,6 +50,13 @@ export namespace Components {
     */
     'variant'?: "highlight" | "ghost" | "default";
   }
+  interface PCheckbox {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'label'?: string;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PGrid {
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
@@ -171,6 +178,7 @@ export namespace Components {
     'tag'?: | "p"
     | "span"
     | "div"
+    | "label"
     | "address"
     | "blockquote"
     | "figcaption"
@@ -240,6 +248,12 @@ declare global {
     new (): HTMLPButtonRegularElement;
   };
 
+  interface HTMLPCheckboxElement extends Components.PCheckbox, HTMLStencilElement {}
+  var HTMLPCheckboxElement: {
+    prototype: HTMLPCheckboxElement;
+    new (): HTMLPCheckboxElement;
+  };
+
   interface HTMLPGridElement extends Components.PGrid, HTMLStencilElement {}
   var HTMLPGridElement: {
     prototype: HTMLPGridElement;
@@ -283,6 +297,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'p-button-regular': HTMLPButtonRegularElement;
+    'p-checkbox': HTMLPCheckboxElement;
     'p-grid': HTMLPGridElement;
     'p-grid-child': HTMLPGridChildElement;
     'p-headline': HTMLPHeadlineElement;
@@ -343,6 +358,13 @@ declare namespace LocalJSX {
     * The style variant of the button.
     */
     'variant'?: "highlight" | "ghost" | "default";
+  }
+  interface PCheckbox extends JSXBase.HTMLAttributes<HTMLPCheckboxElement> {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'label'?: string;
+    'name'?: string;
+    'value'?: string;
   }
   interface PGrid extends JSXBase.HTMLAttributes<HTMLPGridElement> {
     /**
@@ -465,6 +487,7 @@ declare namespace LocalJSX {
     'tag'?: | "p"
     | "span"
     | "div"
+    | "label"
     | "address"
     | "blockquote"
     | "figcaption"
@@ -526,6 +549,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'p-button-regular': PButtonRegular;
+    'p-checkbox': PCheckbox;
     'p-grid': PGrid;
     'p-grid-child': PGridChild;
     'p-headline': PHeadline;

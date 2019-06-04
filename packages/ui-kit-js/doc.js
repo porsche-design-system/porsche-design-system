@@ -18,7 +18,7 @@ function getFilesInDirectory(dir, suffix, files=[]) {
 }
 
 function updateDependencyPaths(data) {
-  return data.replace(/\(\.\.\/\.\.\/(.*?)\)/g, '(#/$1)');
+  return data.replace(/\([.\/]*(.*?)\)/g, '(#/$1)');
 }
 
 function removeGraph(data) {
