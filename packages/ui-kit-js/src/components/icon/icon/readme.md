@@ -21,4 +21,5 @@
 ### Used by
 
  - [p-button-regular](../../action/button-regular)
+ - [p-checkbox](../../form/checkbox)
  - [p-toggle](../../form/toggle)

@@ -1,0 +1,43 @@
+import {JSX, Component, Prop, h} from "@stencil/core";
+import cx from "classnames";
+import {prefix} from "../../../utils";
+
+@Component({
+  tag: "p-checkbox",
+  styleUrl: "checkbox.scss",
+  shadow: true
+})
+export class Loader {
+
+  @Prop() name?: string = "";
+
+  @Prop() value?: string = "bar";
+
+  @Prop() label?: string = "bar";
+
+  @Prop() disabled?: boolean = false;
+
+  @Prop() checked?: boolean = false;
+
+  render(): JSX.Element {
+    const checkboxClasses = cx(prefix("checkbox"));
+    const fieldClasses = cx(prefix("checkbox__field"));
+    const iconClasses = cx(prefix("checkbox__icon"));
+    const labelClasses = cx(prefix("checkbox__label"));
+
+    return (
+      <label class={checkboxClasses}>
+        <input class={fieldClasses}
+               type="checkbox"
+               name={this.name}
+               value={this.value}
+               disabled={this.disabled}
+               checked={this.checked}/>
+        <p-icon class={iconClasses} icon="icon_check.min.svg"/>
+        <p-text class={labelClasses}>
+          <slot/>
+        </p-text>
+      </label>
+    );
+  }
+}
