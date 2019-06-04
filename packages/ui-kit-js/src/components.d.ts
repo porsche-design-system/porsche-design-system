@@ -202,6 +202,25 @@ export namespace Components {
     */
     'wrap'?: boolean;
   }
+  interface PToggle {
+    /**
+    * Shows the toggle button checked or unchecked
+    */
+    'checked'?: boolean;
+    /**
+    * Disables the toggle button. No events will be triggered while disabled state is active.
+    */
+    'disabled'?: boolean;
+    /**
+    * Sets the input name
+    */
+    'name': string;
+    /**
+    * Adapts the loader color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    'value': string;
+  }
 }
 
 declare global {
@@ -248,6 +267,12 @@ declare global {
     prototype: HTMLPTextElement;
     new (): HTMLPTextElement;
   };
+
+  interface HTMLPToggleElement extends Components.PToggle, HTMLStencilElement {}
+  var HTMLPToggleElement: {
+    prototype: HTMLPToggleElement;
+    new (): HTMLPToggleElement;
+  };
   interface HTMLElementTagNameMap {
     'p-button-regular': HTMLPButtonRegularElement;
     'p-grid': HTMLPGridElement;
@@ -256,6 +281,7 @@ declare global {
     'p-icon': HTMLPIconElement;
     'p-loader': HTMLPLoaderElement;
     'p-text': HTMLPTextElement;
+    'p-toggle': HTMLPToggleElement;
   }
 }
 
@@ -462,6 +488,25 @@ declare namespace LocalJSX {
     */
     'wrap'?: boolean;
   }
+  interface PToggle extends JSXBase.HTMLAttributes<HTMLPToggleElement> {
+    /**
+    * Shows the toggle button checked or unchecked
+    */
+    'checked'?: boolean;
+    /**
+    * Disables the toggle button. No events will be triggered while disabled state is active.
+    */
+    'disabled'?: boolean;
+    /**
+    * Sets the input name
+    */
+    'name'?: string;
+    /**
+    * Adapts the loader color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    'value'?: string;
+  }
 
   interface IntrinsicElements {
     'p-button-regular': PButtonRegular;
@@ -471,6 +516,7 @@ declare namespace LocalJSX {
     'p-icon': PIcon;
     'p-loader': PLoader;
     'p-text': PText;
+    'p-toggle': PToggle;
   }
 }
 
