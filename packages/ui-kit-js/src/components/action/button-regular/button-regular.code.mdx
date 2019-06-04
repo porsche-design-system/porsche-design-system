@@ -105,7 +105,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 }}
 </Example>
 
-#### Regular loader state
+#### Regular loading state
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
     return (
@@ -133,11 +133,42 @@ If another icon needs to be implemented, just replace the default icon with your
 }}
 </Example>
 
+### Button regular small
+All button types can be rendered in a smaller variant.
+
+#### Variants
+<Example noTheme={false} className="sg-example-button-regular">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-regular small="true" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular small="true" variant="ghost" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular small="true" variant="highlight" theme={theme}>Click Here!</p-button-regular>
+      </React.Fragment>
+    )
+}}
+</Example>
+
+#### Loading state
+
+<Example noTheme={false} className="sg-example-button-regular">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-regular small="true" loading="true" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular small="true" loading="true" variant="ghost" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular small="true" loading="true" variant="highlight" theme={theme}>Click Here!</p-button-regular>
+      </React.Fragment>
+    )
+}}
+</Example>
+
 ---
 
 ### Button edge cases
 Visualization of edge cases
 
+#### Long text
 <Example noTheme={false} className="sg-example-button-regular">
   {(theme) => {
     const wrapperStyle = {"width": "200px"}

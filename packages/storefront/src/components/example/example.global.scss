@@ -341,7 +341,11 @@ $sg-color-highlight: deeppink;
 
 /* ----------  button component styles ---------- */
 .sg-example-button-regular {
-  p-button-regular ~ p-button-regular {
-    margin-left: $p-spacing-16;
+  p-button-regular {
+    margin-right: $p-spacing-16;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
