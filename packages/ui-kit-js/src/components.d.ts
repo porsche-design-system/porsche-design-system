@@ -248,6 +248,13 @@ export namespace Components {
     */
     'wrap'?: boolean;
   }
+  interface PTextarea {
+    'disabled'?: boolean;
+    'error'?: boolean;
+    'label'?: string;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PToggle {
     /**
     * Shows the toggle button checked or unchecked
@@ -328,6 +335,12 @@ declare global {
     new (): HTMLPTextElement;
   };
 
+  interface HTMLPTextareaElement extends Components.PTextarea, HTMLStencilElement {}
+  var HTMLPTextareaElement: {
+    prototype: HTMLPTextareaElement;
+    new (): HTMLPTextareaElement;
+  };
+
   interface HTMLPToggleElement extends Components.PToggle, HTMLStencilElement {}
   var HTMLPToggleElement: {
     prototype: HTMLPToggleElement;
@@ -344,6 +357,7 @@ declare global {
     'p-loader': HTMLPLoaderElement;
     'p-radio': HTMLPRadioElement;
     'p-text': HTMLPTextElement;
+    'p-textarea': HTMLPTextareaElement;
     'p-toggle': HTMLPToggleElement;
   }
 }
@@ -597,6 +611,13 @@ declare namespace LocalJSX {
     */
     'wrap'?: boolean;
   }
+  interface PTextarea extends JSXBase.HTMLAttributes<HTMLPTextareaElement> {
+    'disabled'?: boolean;
+    'error'?: boolean;
+    'label'?: string;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PToggle extends JSXBase.HTMLAttributes<HTMLPToggleElement> {
     /**
     * Shows the toggle button checked or unchecked
@@ -624,6 +645,7 @@ declare namespace LocalJSX {
     'p-loader': PLoader;
     'p-radio': PRadio;
     'p-text': PText;
+    'p-textarea': PTextarea;
     'p-toggle': PToggle;
   }
 }

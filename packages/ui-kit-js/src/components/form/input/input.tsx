@@ -43,7 +43,7 @@ export class Input {
                value={this.value}
                placeholder={this.label}
                disabled={this.disabled}/>
-        <p-text class={labelClasses} type="12">{this.label}</p-text>
+        <p-text class={labelClasses} type="12" color="inherit">{this.label}</p-text>
       </label>
     );
   }
