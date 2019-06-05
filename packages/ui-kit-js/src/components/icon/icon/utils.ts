@@ -34,18 +34,8 @@ export function getName(name: string | undefined) {
   return name;
 }
 
-export function getSrc(src: string | undefined) {
-  if (typeof src === "string") {
-    src = src.trim();
-    if (isSrc(src)) {
-      return src;
-    }
-  }
-  return null;
-}
-
-export function isSrc(str: string) {
-  return str.length > 0 && /(\/|\.)/.test(str);
+export function isUrl(str: string) {
+  return str.length > 0 && /(\.)/.test(str);
 }
 
 export function isValid(elm: HTMLElement) {

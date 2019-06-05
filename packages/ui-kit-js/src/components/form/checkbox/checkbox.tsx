@@ -1,6 +1,6 @@
-import {JSX, Component, Prop, h} from "@stencil/core";
+import { JSX, Component, Prop, h } from "@stencil/core";
 import cx from "classnames";
-import {prefix} from "../../../utils";
+import { prefix } from "../../../utils";
 
 @Component({
   tag: "p-checkbox",
@@ -8,7 +8,6 @@ import {prefix} from "../../../utils";
   shadow: true
 })
 export class Checkbox {
-
   @Prop() name?: string = "";
 
   @Prop() value?: string = "bar";
@@ -29,17 +28,19 @@ export class Checkbox {
 
     return (
       <label class={checkboxClasses}>
-        <input class={fieldClasses}
-               type="checkbox"
-               name={this.name}
-               value={this.value}
-               disabled={this.disabled}
-               checked={this.checked}/>
+        <input
+          class={fieldClasses}
+          type="checkbox"
+          name={this.name}
+          value={this.value}
+          disabled={this.disabled}
+          checked={this.checked}
+        />
         <span class={iconClasses}>
-          <p-icon icon="icon_check.min.svg"/>
+          <p-icon source="icon_check" />
         </span>
         <p-text class={labelClasses}>
-          <slot/>
+          <slot />
         </p-text>
       </label>
     );

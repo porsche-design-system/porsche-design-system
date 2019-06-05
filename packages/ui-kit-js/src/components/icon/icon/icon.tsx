@@ -1,11 +1,10 @@
-import { JSX, Component, Element, Prop, State, Watch, h } from "@stencil/core";
-import { getName, getSrc, isSrc, isValid } from "./utils";
+import { JSX, Component, Host, Element, Prop, State, Watch, h } from "@stencil/core";
+import { getName, isUrl, isValid } from "./utils";
 import cx from "classnames";
 import { prefix } from "../../../utils/prefix";
 
 @Component({
   tag: "p-icon",
-  // assetsDir: "svg",
   styleUrl: "icon.scss",
   shadow: true
 })
@@ -22,19 +21,14 @@ export class Icon {
   @Prop({ context: "window" }) win: any;
 
   /**
+   * Specifies which icon to use.
+   */
+  @Prop() source: string;
+
+  /**
    * Specifies the label to use for accessibility. Defaults to the icon name.
    */
   @Prop({ mutable: true, reflectToAttr: true }) ariaLabel?: string;
-
-  /**
-   * Specifies the exact http(s) `path` to an SVG file to use.
-   */
-  @Prop() path?: string = "https://ui.porsche.com/cdn/0.0.3/icon/";
-
-  /**
-   * Specifies which icon file to use.
-   */
-  @Prop() icon?: string;
 
   /** Basic text color variations. */
   @Prop() color?:
@@ -100,12 +94,10 @@ export class Icon {
     }
   }
 
-  // @Watch('name')
-  @Watch("path")
-  @Watch("icon")
+  @Watch("source")
   loadIcon() {
     if (!this.isServer && this.isVisible) {
-      const url = this.getUrl();
+      const url = this.getSource();
       if (url) {
         getSvgContent(this.doc, url, "p-icon-svg").then((svgContent) => (this.svgContent = svgContent));
       } else {
@@ -114,7 +106,7 @@ export class Icon {
     }
 
     if (!this.ariaLabel) {
-      const name = getName(this.getName());
+      const name = getName(this.getSource());
       // user did not provide a label
       // come up with the label based on the icon name
       if (name) {
@@ -123,26 +115,15 @@ export class Icon {
     }
   }
 
-  getName() {
-    if (this.icon && !isSrc(this.icon)) {
-      return this.icon;
+  getSource() {
+    const cdnUrl: string = "https://ui.porsche.com/cdn/0.0.3/icon/";
+    const suffix: string = ".min.svg";
+
+    if (this.source && !isUrl(this.source)) {
+      return cdnUrl + this.source + suffix;
+    } else {
+      return this.source;
     }
-    return undefined;
-  }
-
-  getUrl() {
-    const url = getSrc(this.path + this.icon);
-    if (url) {
-      return url;
-    }
-
-    return null;
-  }
-
-  hostData() {
-    return {
-      role: "img"
-    };
   }
 
   render(): JSX.Element {
@@ -156,13 +137,21 @@ export class Icon {
       // we've already loaded up this svg at one point
       // and the svg content we've loaded and assigned checks out
       // render this svg!!
-      return <i class={iconClasses} innerHTML={this.svgContent} />;
+      return (
+        <Host role="img">
+          <i class={iconClasses} innerHTML={this.svgContent} />
+        </Host>
+      );
     }
 
     // actively requesting the svg
     // or it's an SSR render
     // so let's just render an empty div for now
-    return <i class={iconClasses} />;
+    return (
+      <Host role="img">
+        <i class={iconClasses} />
+      </Host>
+    );
   }
 }
 
