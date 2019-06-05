@@ -135,21 +135,17 @@ export namespace Components {
     | "neutral-grey-8"
     | "inherit";
     /**
-    * Specifies which icon file to use.
-    */
-    'icon'?: string;
-    /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
     'lazy'?: boolean;
     /**
-    * Specifies the exact http(s) `path` to an SVG file to use.
-    */
-    'path'?: string;
-    /**
     * The size of the icon.
     */
     'size'?: "small" | "medium" | "large";
+    /**
+    * Specifies which icon to use.
+    */
+    'source': string;
   }
   interface PLoader {
     /**
@@ -472,21 +468,17 @@ declare namespace LocalJSX {
     | "neutral-grey-8"
     | "inherit";
     /**
-    * Specifies which icon file to use.
-    */
-    'icon'?: string;
-    /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
     'lazy'?: boolean;
     /**
-    * Specifies the exact http(s) `path` to an SVG file to use.
-    */
-    'path'?: string;
-    /**
     * The size of the icon.
     */
     'size'?: "small" | "medium" | "large";
+    /**
+    * Specifies which icon to use.
+    */
+    'source'?: string;
   }
   interface PLoader extends JSXBase.HTMLAttributes<HTMLPLoaderElement> {
     /**

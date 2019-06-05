@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h } from "@stencil/core";
 import cx from "classnames";
-import {prefix} from "../../../utils";
+import { prefix } from "../../../utils";
 
 @Component({
   tag: "p-toggle",
@@ -8,7 +8,6 @@ import {prefix} from "../../../utils";
   shadow: true
 })
 export class Toggle {
-
   /** Sets the input name */
   @Prop() name: string = "foo";
 
@@ -29,15 +28,17 @@ export class Toggle {
 
     return (
       <label class={toggleClasses}>
-        <input class={checkboxClasses}
-               name={this.name}
-               value={this.value}
-               type="checkbox"
-               disabled={this.disabled}
-               checked={this.checked}/>
+        <input
+          class={checkboxClasses}
+          name={this.name}
+          value={this.value}
+          type="checkbox"
+          disabled={this.disabled}
+          checked={this.checked}
+        />
         <span class={sliderClasses}>
-          <p-icon class={iconInactiveClasses} icon="icon_minus.min.svg"/>
-          <p-icon class={iconActiveClasses} icon="icon_check.min.svg"/>
+          <p-icon class={iconInactiveClasses} source="icon_minus" />
+          <p-icon class={iconActiveClasses} source="icon_check" />
         </span>
       </label>
     );
