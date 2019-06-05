@@ -64,7 +64,8 @@ export class Text {
     | "neutral-grey-5"
     | "neutral-grey-6"
     | "neutral-grey-7"
-    | "neutral-grey-8" = "porsche-black";
+    | "neutral-grey-8"
+    | "inherit" = "porsche-black";
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() ellipsis?: boolean = false;

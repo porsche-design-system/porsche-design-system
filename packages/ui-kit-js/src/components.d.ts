@@ -172,7 +172,8 @@ export namespace Components {
     | "neutral-grey-5"
     | "neutral-grey-6"
     | "neutral-grey-7"
-    | "neutral-grey-8";
+    | "neutral-grey-8"
+    | "inherit";
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -493,7 +494,8 @@ declare namespace LocalJSX {
     | "neutral-grey-5"
     | "neutral-grey-6"
     | "neutral-grey-7"
-    | "neutral-grey-8";
+    | "neutral-grey-8"
+    | "inherit";
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
