@@ -21,7 +21,7 @@ Example integration, by creating and index.html with following content that is s
 </head>
 <body>
   <p-button-regular label="Some label"></p-button-regular>
-  <p-icon src="icon_search" size="large" lazy={false}></p-icon>
+  <p-icon source="icon_search" size="large" lazy={false}></p-icon>
   <p-loader></p-loader>
 </body>
 </html>
@@ -76,7 +76,7 @@ const App: React.FC = () => {
   return (
     <div>
       <p-button-regular ref={myButton} label={label} />
-      <p-icon src="icon_search.min.svg" size="large" lazy={false} />
+      <p-icon source="icon_search" size="large" lazy={false} />
       <p-loader />
     </div>
   );
@@ -172,7 +172,7 @@ export class AppComponent {
 ```
 <div>
   <p-button-regular #myButton label="{{this.label}}"></p-button-regular>
-  <p-icon src="icon_search.min.svg" size="large" lazy={false}></p-icon>
+  <p-icon source="icon_search" size="large" lazy={false}></p-icon>
   <p-loader></p-loader>
 </div>
 

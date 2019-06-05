@@ -35,7 +35,7 @@ export class Input {
     return (
       <label class={inputClasses}>
         {
-          this.icon && <p-icon class={iconClasses} icon={this.icon}/>
+          this.icon && <p-icon class={iconClasses} source={this.icon}/>
         }
         <input class={fieldClasses}
                type={this.type}
