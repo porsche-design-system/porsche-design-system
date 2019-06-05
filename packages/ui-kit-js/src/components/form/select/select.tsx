@@ -27,7 +27,7 @@ export class Select {
           <option>{this.value} 2</option>
           <option>{this.value} 3</option>
         </select>
-        <p-icon class={iconClasses} source="icon_double-arrow-down-thin"/>
+        <p-icon class={iconClasses} source="double-arrow-down-thin"/>
       </label>
     );
   }

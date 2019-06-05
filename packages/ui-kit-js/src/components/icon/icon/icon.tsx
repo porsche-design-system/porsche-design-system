@@ -116,11 +116,8 @@ export class Icon {
   }
 
   getSource() {
-    const cdnUrl: string = "https://ui.porsche.com/cdn/0.0.3/icon/";
-    const suffix: string = ".min.svg";
-
     if (this.source && !isUrl(this.source)) {
-      return cdnUrl + this.source + suffix;
+      return `https://ui.porsche.com/cdn/0.0.3/icon/icon_${this.source}.min.svg`;
     } else {
       return this.source;
     }

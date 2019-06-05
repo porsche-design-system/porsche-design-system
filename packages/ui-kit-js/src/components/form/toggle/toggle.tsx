@@ -37,8 +37,8 @@ export class Toggle {
           checked={this.checked}
         />
         <span class={sliderClasses}>
-          <p-icon class={iconInactiveClasses} source="icon_minus" />
-          <p-icon class={iconActiveClasses} source="icon_check" />
+          <p-icon class={iconInactiveClasses} source="minus" />
+          <p-icon class={iconActiveClasses} source="check" />
         </span>
       </label>
     );
