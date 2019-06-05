@@ -2,11 +2,11 @@
 
 :host {
   display: inline-flex;
+  vertical-align: top;
 }
 
 .#{$p-global-class-prefix}radio {
   $bem-block: &;
-
   position: relative;
   display: inline-flex;
   min-width: rem(26px);
@@ -66,27 +66,6 @@
       color: $p-color-status-red;
     }
   }
-
-  //&__label-link {
-  //  color: $radio-label-link-text-color;
-//
-  //  &:active,
-  //  &:focus,
-  //  &:hover {
-  //    color: $radio-label-link-text-color-hover;
-  //    text-decoration: none;
-  //  }
-//
-  //  &--error {
-  //    color: $radio-label-link-text-color-error;
-//
-  //    &:active,
-  //    &:focus,
-  //    &:hover {
-  //      color: $radio-label-link-text-color-error-hover;
-  //    }
-  //  }
-  //}
 
   // radio is hovered, not checked and not disabled
   &:hover &__field:not(:checked):not(:disabled) {

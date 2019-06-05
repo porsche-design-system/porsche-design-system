@@ -6,7 +6,8 @@
 
 .#{$p-global-class-prefix}button-regular {
   $bem-block: &;
-  display: inline-flex;
+  display: flex;
+  width: 100%;
   position: relative;
   align-items: flex-start;
   flex-direction: column;

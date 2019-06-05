@@ -2,11 +2,11 @@
 
 :host {
   display: inline-flex;
+  vertical-align: top;
 }
 
 .#{$p-global-class-prefix}checkbox {
   $bem-block: &;
-
   position: relative;
   display: inline-flex;
   min-width: rem(26px);
@@ -53,48 +53,14 @@
   }
 
   &__label {
-    //@include -text-size-copy;
-    //display: block;
+    display: block;
     padding: rem(1px) 0 0 rem(38px);
-    //color: $checkbox-label-text-color;
-    //min-height: $checkbox-label-min-height;
-    //cursor: pointer;
+    color: $p-color-porsche-black;
 
     &--error {
-      //color: $checkbox-label-text-color-error;
+      color: $p-color-status-red;
     }
   }
-
-  &__label-icon {
-    //font-size: $checkbox-label-icon-font-size;
-    //line-height: inherit;
-    //vertical-align: top;
-
-    & p-icon {
-      //vertical-align: top;
-    }
-  }
-
-  //&__label-link {
-  //  color: $checkbox-label-link-text-color;
-//
-  //  &:active,
-  //  &:focus,
-  //  &:hover {
-  //    color: $checkbox-label-link-text-color-hover;
-  //    text-decoration: none;
-  //  }
-//
-  //  &--error {
-  //    color: $checkbox-label-link-text-color-error;
-//
-  //    &:active,
-  //    &:focus,
-  //    &:hover {
-  //      color: $checkbox-label-link-text-color-error-hover;
-  //    }
-  //  }
-  //}
 
   // checkbox is hovered, not checked and not disabled
   &:hover &__field:not(:checked):not(:disabled) {
