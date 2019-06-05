@@ -147,6 +147,15 @@ export namespace Components {
     */
     'source': string;
   }
+  interface PInput {
+    'disabled'?: boolean;
+    'error'?: boolean;
+    'icon'?: string;
+    'label'?: string;
+    'name'?: string;
+    'type'?: "text" | "number";
+    'value'?: string;
+  }
   interface PLoader {
     /**
     * Predefined loader sizes.
@@ -295,6 +304,12 @@ declare global {
     new (): HTMLPIconElement;
   };
 
+  interface HTMLPInputElement extends Components.PInput, HTMLStencilElement {}
+  var HTMLPInputElement: {
+    prototype: HTMLPInputElement;
+    new (): HTMLPInputElement;
+  };
+
   interface HTMLPLoaderElement extends Components.PLoader, HTMLStencilElement {}
   var HTMLPLoaderElement: {
     prototype: HTMLPLoaderElement;
@@ -325,6 +340,7 @@ declare global {
     'p-grid-child': HTMLPGridChildElement;
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
+    'p-input': HTMLPInputElement;
     'p-loader': HTMLPLoaderElement;
     'p-radio': HTMLPRadioElement;
     'p-text': HTMLPTextElement;
@@ -480,6 +496,15 @@ declare namespace LocalJSX {
     */
     'source'?: string;
   }
+  interface PInput extends JSXBase.HTMLAttributes<HTMLPInputElement> {
+    'disabled'?: boolean;
+    'error'?: boolean;
+    'icon'?: string;
+    'label'?: string;
+    'name'?: string;
+    'type'?: "text" | "number";
+    'value'?: string;
+  }
   interface PLoader extends JSXBase.HTMLAttributes<HTMLPLoaderElement> {
     /**
     * Predefined loader sizes.
@@ -595,6 +620,7 @@ declare namespace LocalJSX {
     'p-grid-child': PGridChild;
     'p-headline': PHeadline;
     'p-icon': PIcon;
+    'p-input': PInput;
     'p-loader': PLoader;
     'p-radio': PRadio;
     'p-text': PText;

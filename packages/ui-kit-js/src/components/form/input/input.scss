@@ -1,0 +1,140 @@
+@import "../../../styles/utility/index";
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.#{$p-global-class-prefix}input {
+  $bem-block: &;
+  position: relative;
+  display: block;
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: rem(19px);
+    transform: translate(0, -50%);
+    color: $p-color-neutral-grey-6;
+    cursor: pointer;
+
+    &:hover {
+      color: $p-color-porsche-red;
+    }
+
+    & ~ #{$bem-block}__field {
+      padding-right: rem(56px);
+    }
+
+    & ~ #{$bem-block}__field--error {
+      padding: {
+        right: rem(55px);
+      }
+    }
+
+    & ~ #{$bem-block}__label {
+      right: rem(55px);
+    }
+  }
+
+  &__field {
+    width: 100%;
+    height: rem(50px);
+    display: block;
+    padding: rem(17px) rem(18px);
+    outline: none;
+    appearance: none;
+    box-sizing: border-box;
+    border: 1px solid $p-color-neutral-grey-2;
+    background: $p-color-porsche-light;
+    font-family: $p-font-primary;
+    font-size: rem(16px);
+    line-height: normal;
+    font-weight: normal;
+    color: $p-color-porsche-black;
+
+    &::placeholder {
+      color: $p-color-porsche-black;
+    }
+
+    &::-ms-clear {
+      width: 0;
+      height: 0;
+    }
+
+    // input type number - disabling the arrow icons
+    &[type='number'] {
+      appearance: none;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+      }
+    }
+
+    &:focus {
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding: {
+        top: rem(20px);
+        bottom: rem(8px);
+      }
+
+      & + #{$bem-block}__label {
+        top: rem(15px);
+        opacity: 1;
+      }
+    }
+
+    &:disabled {
+      color: $p-color-neutral-grey-7;
+
+      &::placeholder {
+        color: $p-color-neutral-grey-7;
+      }
+    }
+
+    &--error {
+      color: $p-color-porsche-red;
+      border-color: $p-color-porsche-red;
+      border-width: 2px;
+      padding: {
+        top: rem(16px);
+        right: rem(17px);
+        bottom: rem(16px);
+        left: rem(17px);
+      }
+
+      &:focus,
+      &:not(:placeholder-shown) {
+        padding: {
+          top: rem(19px);
+          bottom: rem(7px);
+        }
+      }
+    }
+  }
+
+  &__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: top .4s ease, opacity .4s ease;
+    position: absolute;
+    top: 50%;
+    left: rem(19px);
+    right: rem(19px);
+    display: inline-block;
+    opacity: 0;
+    transform: translate(0, -50%);
+    font-size: rem(12px);
+    line-height: 1.25;
+    font-weight: normal;
+    color: $p-color-neutral-grey-4;
+  }
+}
