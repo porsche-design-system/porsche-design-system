@@ -7,60 +7,41 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually.
 
 ## Icons
 
-### Small (default)
-<Example noTheme>
-  {(theme) => {
-    return (
-      <React.Fragment>
-        <p-icon icon="icon_car-next.min.svg"></p-icon>
-      </React.Fragment>
-    )
-}}
+### Sizes
+
+#### Small (default)
+<Example>
+  <React.Fragment>
+    <p-icon icon="icon_car-next.min.svg"></p-icon>
+  </React.Fragment>
 </Example>
 
-### Medium
-<Example noTheme>
-  {(theme) => {
-    return (
-      <React.Fragment>
-        <p-icon icon="icon_car-next.min.svg" size="medium"></p-icon>
-      </React.Fragment>
-    )
-}}
+#### Medium
+<Example>
+  <React.Fragment>
+    <p-icon icon="icon_car-next.min.svg" size="medium"></p-icon>
+  </React.Fragment>
 </Example>
 
-### large
-<Example noTheme>
-  {(theme) => {
-    return (
-      <React.Fragment>
-        <p-icon icon="icon_car-next.min.svg" size="large"></p-icon>
-      </React.Fragment>
-    )
-}}
+#### large
+<Example>
+  <React.Fragment>
+    <p-icon icon="icon_car-next.min.svg" size="large"></p-icon>
+  </React.Fragment>
 </Example>
 
 ---
 
-### Icon inside an icon wrapper
-Sometimes there may be technical reasons (e.g. js components) which cause in adding an additional wrapper element around the icon. In this case, moving the icon classes to the wrapper element is possible:
-```
-<div class="p-icon">
-  <svg role="img" title="arrow down">
-    <use xlink:href="/path-to-icon-sprite/svg-sprite.svg#icon-arrow-down"/>
-  </svg>
-</div>
-```
+### Color Variants
+The default icon color inherits from its parent(s). But also predefined colors can be set. @see properties for possible color variants.
 
-### Colors
-All icons are rendered in black by default. Changing the icon to a different color can be done by adding individual color definitions inside the CSS code:
-```
-.some-color-class {
-  color: $p-color-porsche-red;
-}
+<Example>
+  <React.Fragment>
+    <p-icon icon="icon_car-next.min.svg" size="large" color="porsche-red"></p-icon>
+  </React.Fragment>
+</Example>
 
-<p-icon class="some-color-class" />
-```
+---
 
 ### Accessibility
 With using SVG icons, there are options to give more accessibility to users using screen readers. Here are some good practices:
