@@ -27,7 +27,7 @@ export class ButtonRegular {
   @Prop() variant?: "highlight" | "ghost" | "default" = "default";
 
   /** The icon shown next to the label. */
-  @Prop() icon?: string = "icon_arrow-right-hair";
+  @Prop() icon?: string = "arrow-right-hair";
 
   /** Overrides the default icon resource path. */
   @Prop() iconPath?: string = undefined;

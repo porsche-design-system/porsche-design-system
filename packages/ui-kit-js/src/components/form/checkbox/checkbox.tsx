@@ -37,7 +37,7 @@ export class Checkbox {
           checked={this.checked}
         />
         <span class={iconClasses}>
-          <p-icon source="icon_check" />
+          <p-icon source="check" />
         </span>
         <p-text class={labelClasses}>
           <slot />
