@@ -174,6 +174,11 @@ export namespace Components {
     'name'?: string;
     'value'?: string;
   }
+  interface PSelect {
+    'label'?: string;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PText {
     /**
     * The text alignment of the component.
@@ -329,6 +334,12 @@ declare global {
     new (): HTMLPRadioElement;
   };
 
+  interface HTMLPSelectElement extends Components.PSelect, HTMLStencilElement {}
+  var HTMLPSelectElement: {
+    prototype: HTMLPSelectElement;
+    new (): HTMLPSelectElement;
+  };
+
   interface HTMLPTextElement extends Components.PText, HTMLStencilElement {}
   var HTMLPTextElement: {
     prototype: HTMLPTextElement;
@@ -356,6 +367,7 @@ declare global {
     'p-input': HTMLPInputElement;
     'p-loader': HTMLPLoaderElement;
     'p-radio': HTMLPRadioElement;
+    'p-select': HTMLPSelectElement;
     'p-text': HTMLPTextElement;
     'p-textarea': HTMLPTextareaElement;
     'p-toggle': HTMLPToggleElement;
@@ -537,6 +549,11 @@ declare namespace LocalJSX {
     'name'?: string;
     'value'?: string;
   }
+  interface PSelect extends JSXBase.HTMLAttributes<HTMLPSelectElement> {
+    'label'?: string;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PText extends JSXBase.HTMLAttributes<HTMLPTextElement> {
     /**
     * The text alignment of the component.
@@ -644,6 +661,7 @@ declare namespace LocalJSX {
     'p-input': PInput;
     'p-loader': PLoader;
     'p-radio': PRadio;
+    'p-select': PSelect;
     'p-text': PText;
     'p-textarea': PTextarea;
     'p-toggle': PToggle;

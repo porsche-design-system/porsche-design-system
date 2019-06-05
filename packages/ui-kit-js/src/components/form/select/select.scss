@@ -1,0 +1,42 @@
+@import "../../../styles/utility/index";
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.#{$p-global-class-prefix}select {
+  position: relative;
+  display: block;
+
+  &__field {
+    width: 100%;
+    min-width: rem(200px);
+    height: rem(60px);
+    display: block;
+    padding: rem(6px) rem(18px);
+    outline: none;
+    appearance: none;
+    box-sizing: border-box;
+    border: 1px solid $p-color-neutral-grey-3;
+    background: $p-color-neutral-grey-3;
+    cursor: pointer;
+    font-family: $p-font-primary;
+    font-weight: normal;
+    font-size: rem(14px);
+    line-height: normal;
+    color: $p-color-porsche-black;
+    transition: $p-animation-hover-duration background-color;
+
+    &:hover {
+      background: $p-color-neutral-grey-4;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: rem(19px);
+    transform: translate(0, -50%);
+  }
+}
