@@ -12,7 +12,6 @@
   box-sizing: border-box;
   width: rem(24px);
   height: rem(24px);
-  fill: currentColor;
   transition: fill $p-animation-hover-duration $p-animation-hover-bezier;
 
   &--small {
@@ -28,5 +27,67 @@
   &--large {
     width: rem(48px);
     height: rem(48px);
+  }
+
+  &--color {
+    &-inherit {
+      fill: currentColor;
+    }
+
+    &-porsche-light {
+      fill: $p-color-porsche-light;
+    }
+
+    &-porsche-black {
+      fill: $p-color-porsche-black;
+    }
+
+    &-porsche-red {
+      fill: $p-color-porsche-red;
+    }
+
+    &-neutral-grey-1 {
+      fill: $p-color-neutral-grey-1;
+    }
+
+    &-neutral-grey-2 {
+      fill: $p-color-neutral-grey-2;
+    }
+
+    &-neutral-grey-3 {
+      fill: $p-color-neutral-grey-3;
+    }
+
+    &-neutral-grey-4 {
+      fill: $p-color-neutral-grey-4;
+    }
+
+    &-neutral-grey-5 {
+      fill: $p-color-neutral-grey-5;
+    }
+
+    &-neutral-grey-6 {
+      fill: $p-color-neutral-grey-6;
+    }
+
+    &-neutral-grey-7 {
+      fill: $p-color-neutral-grey-7;
+    }
+
+    &-neutral-grey-8 {
+      fill: $p-color-neutral-grey-8;
+    }
+
+    &-status-red {
+      fill: $p-color-status-red;
+    }
+
+    &-status-green {
+      fill: $p-color-status-green;
+    }
+
+    &-status-yellow {
+      fill: $p-color-status-yellow;
+    }
   }
 }

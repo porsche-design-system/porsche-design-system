@@ -36,6 +36,21 @@ export class Icon {
    */
   @Prop() icon?: string;
 
+  /** Basic text color variations. */
+  @Prop() color?:
+    | "porsche-black"
+    | "porsche-light"
+    | "porsche-red"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8"
+    | "inherit" = "inherit";
+
   /**
    * The size of the icon.
    */
@@ -131,7 +146,11 @@ export class Icon {
   }
 
   render(): JSX.Element {
-    const iconClasses = cx(prefix("icon"), this.size ? prefix(`icon--${this.size}`) : "");
+    const iconClasses = cx(
+      prefix("icon"),
+      { [prefix(`icon--color-${this.color}`)]: this.color },
+      this.size ? prefix(`icon--${this.size}`) : ""
+    );
 
     if (!this.isServer && this.svgContent) {
       // we've already loaded up this svg at one point

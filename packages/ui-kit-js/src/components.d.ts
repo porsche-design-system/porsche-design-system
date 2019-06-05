@@ -120,6 +120,21 @@ export namespace Components {
     */
     'ariaLabel'?: string;
     /**
+    * Basic text color variations.
+    */
+    'color'?: | "porsche-black"
+    | "porsche-light"
+    | "porsche-red"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8"
+    | "inherit";
+    /**
     * Specifies which icon file to use.
     */
     'icon'?: string;
@@ -441,6 +456,21 @@ declare namespace LocalJSX {
     * Specifies the label to use for accessibility. Defaults to the icon name.
     */
     'ariaLabel'?: string;
+    /**
+    * Basic text color variations.
+    */
+    'color'?: | "porsche-black"
+    | "porsche-light"
+    | "porsche-red"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8"
+    | "inherit";
     /**
     * Specifies which icon file to use.
     */
