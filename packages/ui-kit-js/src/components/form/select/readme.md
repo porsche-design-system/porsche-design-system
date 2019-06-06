@@ -1,0 +1,21 @@
+# p-select
+
+
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property | Attribute | Description | Type     | Default |
+| -------- | --------- | ----------- | -------- | ------- |
+| `label`  | `label`   |             | `string` | `"bar"` |
+| `name`   | `name`    |             | `string` | `""`    |
+| `value`  | `value`   |             | `string` | `"bar"` |
+
+
+## Dependencies
+
+### Depends on
+
+- [p-icon](../../icon/icon)
