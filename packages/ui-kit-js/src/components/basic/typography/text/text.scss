@@ -106,6 +106,15 @@
     }
   }
 
+  &--18 {
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-18);
+
+    > strong,
+    > b {
+      font-weight: $p-font-weight-bold;
+    }
+  }
+
   &--20 {
     @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-20);
 
