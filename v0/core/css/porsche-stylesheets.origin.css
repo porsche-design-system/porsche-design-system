@@ -5639,7 +5639,12 @@ table {
     html[lang='ur'] .textarea__field, html[lang='ur-PK'] .textarea__field {
       font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
     .textarea__field--error {
-      border: 1px solid #d5001c; }
+      border: 2px solid #d5001c; }
+    .textarea__field--error + .textarea__label {
+      left: 2px;
+      top: 2px;
+      padding-left: calc($textarea-label-inner-spacing-horizontal - 1px);
+      padding-top: calc($textarea-label-inner-spacing-top - 1px); }
     .textarea__field::placeholder {
       color: #fff; }
     .textarea__field:disabled::placeholder {
