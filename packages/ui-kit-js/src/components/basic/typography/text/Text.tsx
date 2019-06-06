@@ -9,6 +9,7 @@ export interface TextProps {
     | "small"
     | "12"
     | "16"
+    | "18"
     | "20"
     | "24"
     | "28"
