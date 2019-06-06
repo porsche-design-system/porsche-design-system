@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.18.6] - 2019-06-6
+
+* Changed border-style of error state of textarea component
+
 ## [0.18.5] - 2019-04-17
 * Add font-display: fallback to prevent flash of invisible text and therefore enhance perceived performance by showing the fallback font 
 
