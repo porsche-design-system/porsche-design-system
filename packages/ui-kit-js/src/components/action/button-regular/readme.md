@@ -35,3 +35,4 @@
 
 - [p-loader](../../feedback/loader)
 - [p-icon](../../icon/icon)
+- [p-text](../../basic/typography/text)

@@ -12,7 +12,6 @@
   align-items: flex-start;
   flex-direction: column;
   text-align: left;
-  @include p-text-copy;
   margin: 0;
   padding: 11px 15px 11px 11px;
   max-width: 100%; // fix for IE11, forces using multi line label
