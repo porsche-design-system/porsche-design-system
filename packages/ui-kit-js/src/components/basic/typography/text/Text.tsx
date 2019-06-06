@@ -2,14 +2,8 @@ import { JSX, Component, Prop, h } from "@stencil/core";
 import cx from "classnames";
 import { prefix } from "../../../../utils/prefix";
 
-@Component({
-  tag: "p-text",
-  styleUrl: "text.scss",
-  shadow: true
-})
-export class Text {
-  /** The style of the text. */
-  @Prop() type?:
+export interface TextProps {
+  type?:
     | "copy"
     | "small"
     | "12"
@@ -31,7 +25,17 @@ export class Text {
     | "72"
     | "72-thin"
     | "84"
-    | "84-thin" = "copy";
+    | "84-thin";
+}
+
+@Component({
+  tag: "p-text",
+  styleUrl: "text.scss",
+  shadow: true
+})
+export class Text {
+  /** The style of the text. */
+  @Prop() type?: TextProps["type"] = "copy";
 
   /** Set a custom HTML tag depending of the usage of the text component. */
   @Prop() tag?:

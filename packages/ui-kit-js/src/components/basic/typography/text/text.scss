@@ -1,35 +1,17 @@
 @import "../../../../styles/utility/index";
 
-// generic text sizes
-$p-text-size-12: rem(12px);
-$p-text-size-16: rem(16px);
-$p-text-size-20: rem(20px);
-$p-text-size-24: rem(24px);
-$p-text-size-28: rem(28px);
-$p-text-size-30: rem(30px);
-$p-text-size-32: rem(32px);
-$p-text-size-36: rem(36px);
-$p-text-size-42: rem(42px);
-$p-text-size-44: rem(44px);
-$p-text-size-48: rem(48px);
-$p-text-size-52: rem(52px);
-$p-text-size-60: rem(60px);
-$p-text-size-62: rem(62px);
-$p-text-size-72: rem(72px);
-$p-text-size-84: rem(84px);
-
 // copytext
 @mixin p-text-copy {
   font-family: $p-font-primary;
   font-weight: 400;
-  font-size: rem(16px);
+  font-size: $p-text-size-16;
   line-height: 1.5;
 }
 
 @mixin p-text-small {
   font-family: $p-font-primary;
   font-weight: 400;
-  font-size: rem(12px);
+  font-size: $p-text-size-12;
   line-height: 1.666;
 }
 
@@ -45,6 +27,16 @@ $p-text-size-84: rem(84px);
   $bem-block: &;
   padding: 0;
   margin: 0;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      color: $p-color-porsche-dark-red;
+      text-decoration: none;
+    }
+  }
 
   &--inline {
     display: inline-block;
