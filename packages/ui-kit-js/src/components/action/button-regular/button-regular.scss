@@ -12,7 +12,6 @@
   align-items: flex-start;
   flex-direction: column;
   text-align: left;
-  @include p-text-copy;
   margin: 0;
   padding: 11px 15px 11px 11px;
   max-width: 100%; // fix for IE11, forces using multi line label
@@ -30,7 +29,6 @@
     color $p-animation-hover-duration $p-animation-hover-bezier; // must be globally defined
 
   &::-moz-focus-inner {
-    // sass-lint:disable-line no-vendor-prefixes
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
@@ -139,7 +137,6 @@
         text-decoration: none;
 
         &#{$bem-block}--theme-dark {
-          // sass-lint:disable-line nesting-depth
           background-color: $p-color-porsche-dark-red;
           border-color: $p-color-porsche-dark-red;
         }
@@ -194,7 +191,6 @@
 
   // fix for Firefox, so that top alignment of button content works when two button are next to each other
   @-moz-document url-prefix() {
-    // sass-lint:disable-line no-vendor-prefixes
     &__label {
       height: 100%;
     }

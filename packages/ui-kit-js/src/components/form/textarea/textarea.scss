@@ -1,0 +1,62 @@
+@import "../../../styles/utility/index";
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.#{$p-global-class-prefix}textarea {
+  $bem-block: &;
+  position: relative;
+  display: block;
+
+  &__field {
+    width: 100%;
+    box-sizing: border-box;
+    height: rem(100px);
+    padding: rem(29px) rem(18px) rem(2px);
+    outline: none;
+    appearance: none;
+    resize: none;
+    border: 1px solid $p-color-neutral-grey-2;
+    background: $p-color-porsche-light;
+    font-family: $p-font-primary;
+    font-size: rem(16px);
+    line-height: 1.5;
+    color: $p-color-porsche-black;
+
+    &--error {
+      padding: rem(28px) rem(17px) rem(1px);
+      border: 2px solid $p-color-status-red;
+    }
+
+    &::placeholder {
+      color: $p-color-porsche-light;
+    }
+
+    &:disabled {
+      &::placeholder {
+        user-select: none;
+      }
+    }
+
+    &:focus + #{$bem-block}__label {
+      color: $p-color-neutral-grey-4;
+    }
+
+    &:not(:placeholder-shown) + #{$bem-block}__label {
+      color: $p-color-neutral-grey-4;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    background: $p-color-porsche-light;
+    top: 2px;
+    left: 2px;
+    right: rem(18px);
+    padding-top: rem(9px);
+    padding-left: rem(18px);
+    padding-right: rem(18px);
+  }
+}

@@ -88,7 +88,6 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
   /**
    * properties to define grid gaps
    */
-  // sass-lint:disable no-combinators
   > #{$bem-block}-child {
     @include p-grid-child-gap-normal;
   }
