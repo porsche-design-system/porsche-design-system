@@ -46,11 +46,9 @@ For Chinese and Japanese language, the following system fonts are to be used, st
 
 The Porsche type scale is a dedicated sizing system based on a specific formula.
 
-12 16 20 24 28 30 32 36 42 44 48 52 60 62 72 84 
+12 16 18 20 24 28 30 32 36 42 44 48 52 60 62 72 84 
 
-❌
-*@DEV:  Die jeweilige Zahl sollten wir dann in der entsprechenden Größe abbilden.*
-❌
+❌ **@DEV: Die jeweilige Zahl bitte in der entsprechenden Größe abbilden.** ❌
 
 
 ### Line height
@@ -77,7 +75,7 @@ Likewise, Bold perfectly embodies the brand's claim to modernism, power and stre
 | Headline-3       | 20 px (1,25 rem)      | 24 px (1,5 rem)    | 28 px (1,75 rem)     | 32 px (2 rem)        | 36 px (2,25 rem)          | 
 | Headline-4       | 16 px (1 rem)         | 18 px (1,125 rem)  | 20 px (1,25 rem)     | 22 px (1,375 rem)    | 24 px (1,5 rem)           | 
 
-❌ ABBILDUNG FOLGT: BEISPIEL FÜR HEADLINE ❌
+![Headline example](assets/workshop/basic/typography/assets/typography-headlines.png)
 
 #### Applying headline styles
 
@@ -87,12 +85,17 @@ Also, please note that the headline class namings don't necessarily refer to the
 
 #### Headline-subline-combinations
 
-A first-level headline can be supplemented by a corresponding subline. Make sure to stick to the following rules when using sublines:
+A first-level headline can be supplemented by a corresponding subline. Sublines must be set in Regular using an "Additional sizes" class with minimum 16 px size.
 
-- Sublines must be set in Regular, using a "Additional sizes" class.
-- The subline size must be at least two sizing steps smaller than the corresponding headline.
+| Headline size    | Subline size                                      |
+|------------------|-------------------------------------------------  |
+| 16-18 px         | 16 px                                             |
+| 20-42 px         | Min. 2 sizes smaller (see Porsche type scale)     |
+| 44 px or larger  | Min. 4 sizes smaller (see Porsche type scale)     |
 
-❌ ABBILDUNG FOLGT: BEISPIEL HEADLINE-SUBLINE-KOMBI ❌
+Examples:
+
+![Headline-subline combinations](assets/workshop/basic/typography/assets/typography-headline-subline.png)
 
 
 ### Copytext styles
@@ -107,14 +110,15 @@ Both Copytext and Copytext Small keep their respective text size throughout all 
 | Copytext Small  | 12 px           | active, default, disabled, highlight, linked | 
 
 
-❌ ABBILDUNG FOLGT: STATES IN LIGHT & DARK THEME ❌ 
+![Copytext states](assets/workshop/basic/typography/assets/typography-copytext-states.png)
+ 
 
 ### Additional sizes 
 
 Whenever you have the need to display larger text that isn't explicitly a page or section headline – let's say, for example, large numbers in vehicle data or quotes – you can stick to the additional sizes provided in the Porsche UI Kit, starting from 20 px and following the Porsche type scale.
 Depending on the information level of the respective text you can either chose between Regular or Thin text.
 
-❌ ABBILDUNG FOLGT: BEISPIEL ADDITIONAL SIZES ❌
+![Additional text sizes](assets/workshop/basic/typography/assets/typography-additional-sizes.png)
 
 ---
 
@@ -165,12 +169,23 @@ to read the full content.
 
 ### Paragraph spacing
 
-The vertical spacing between two copy text paragraphs should be at least 24 px, which equals the space of one line of text in-between.
+The vertical spacing between copy text paragraphs should be at least 24 px, which equals the space of one line of text in-between.
 
-❌ ABBILDUNG FOLGT: PARAGRAPH SPACING – BOUNDING BOX TO BOUNDING BOX ❌
+![Copytext paragraph spacing](assets/workshop/basic/typography/assets/typography-paragraph-spacing.png)
 
 
-### Modifications
+### Upper case
+The usage of upper case text is possible, but should be handled with care, as upper case text is always a matter of readability.
+Upper case text should only be used for:
+
+- Exceptional, one-of-a-kind design cases like standing-out parts of a (graphical) composition or in sole design elements like a tag cloud.
+- Special components for which readability is generally not critical (such as short tags).
+- Proper names such as GTS or BOSE.
+
+![Example for uppercase text](assets/workshop/basic/typography/assets/typography-uppercase.png)
+
+
+### Additional modifications
 
 Please avoid to transform the Porsche Next manually (e.g. within Sketch or via CSS), as this would have a big and undesirable
 impact on the origin character of the company typeface. This includes:
@@ -179,10 +194,9 @@ impact on the origin character of the company typeface. This includes:
 - No use of (drop) shadows on text.
 - No formal change of letters (for example distortion).
 - No use of outline borders on text.
-- No use of small capitals.
 - No use of opacity for text colors.
 
-❌  ABBILDUNG FOLGT: DON'Ts ❌
+![Example for uppercase text](assets/workshop/basic/typography/assets/typography-donts.png)
 
 
 ## Typography principles
@@ -211,23 +225,17 @@ of good (micro) typography, such as using the right kind of apostrophes in the r
 ---
 
 ## Accessibility
-In order to make content accessible for a wide range of people and, by doing so, to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](https://ui.porsche.com/latest/#/basics/accessibility). when designing Porsche web applications.
+As we stick to the common [WCAG 2.1 Standard](https://ui.porsche.com/latest/#/basics/accessibility)
+you should always ensure a sufficient contrast ratio when designing with text. 
+The combination of text and background color should pass the WCAG AA standard 
+and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
+for larger text sizes. 
 
-- When designing with text, always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA standard and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 for larger text sizes. 
+![Porsche color accessibility examples](assets/workshop/basic/color/assets/color-accessibility-01.png)
 
-❌  ABBILDUNG FOLGT: CONTRAST RATIOS (sh. Color Doku) ❌
-
-- When communicating element states with text (for example a password validation information in forms), keep an eye on not rely on color only to convey information, especially in critical cases, e.g. when displaying safety-relevant vehicle data. Use additional text stylings like different font weights (sticking to the general Porsche rules for text styling as described above) to make it easy for visually impaired people to recognise status information even if they can’t see the color.
-
-❌ *@MARCEL: Würde diesen Part nochmal mit der Color Doku abgleichen und dort evtl. teilweise rausnehmen bzw. referenzieren, um Redundanzen zu vermeiden.* ❌
-
----
-
-## Helpful tools and resources
-- Sketch Palette
-- Font Download Brand Guide: https://brandguide.porsche.com/elements/manual/view/id/885
-
-
-
-
-#puik/design doku#
+Also, you should not rely on color only to convey information. 
+When communicating element states with text (for example a password validation 
+information in forms) make sure to always use additional text stylings 
+(e.g. bold text) to make it easy for visually impaired people to recognise
+status information even if they can’t see the color – this is of even higher
+importance the more critical the information is.
