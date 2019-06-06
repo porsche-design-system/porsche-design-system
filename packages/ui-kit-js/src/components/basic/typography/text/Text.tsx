@@ -1,19 +1,15 @@
 import { JSX, Component, Prop, h } from "@stencil/core";
 import cx from "classnames";
 import { prefix } from "../../../../utils/prefix";
+import { Colors } from "../../../../interface/interface";
 
-@Component({
-  tag: "p-text",
-  styleUrl: "text.scss",
-  shadow: true
-})
-export class Text {
-  /** The style of the text. */
-  @Prop() type?:
+export interface TextProps {
+  type?:
     | "copy"
     | "small"
     | "12"
     | "16"
+    | "18"
     | "20"
     | "24"
     | "28"
@@ -31,7 +27,17 @@ export class Text {
     | "72"
     | "72-thin"
     | "84"
-    | "84-thin" = "copy";
+    | "84-thin";
+}
+
+@Component({
+  tag: "p-text",
+  styleUrl: "text.scss",
+  shadow: true
+})
+export class Text {
+  /** The style of the text. */
+  @Prop() type?: TextProps["type"] = "copy";
 
   /** Set a custom HTML tag depending of the usage of the text component. */
   @Prop() tag?:
@@ -53,19 +59,7 @@ export class Text {
   @Prop() align?: "left" | "center" | "right" = "left";
 
   /** Basic text color variations. */
-  @Prop() color?:
-    | "porsche-black"
-    | "porsche-light"
-    | "porsche-red"
-    | "neutral-grey-1"
-    | "neutral-grey-2"
-    | "neutral-grey-3"
-    | "neutral-grey-4"
-    | "neutral-grey-5"
-    | "neutral-grey-6"
-    | "neutral-grey-7"
-    | "neutral-grey-8"
-    | "inherit" = "porsche-black";
+  @Prop() color?: Colors["text"] = "porsche-black";
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() ellipsis?: boolean = false;

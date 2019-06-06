@@ -29,9 +29,6 @@ export class ButtonRegular {
   /** The icon shown next to the label. */
   @Prop() icon?: string = "arrow-right-hair";
 
-  /** Overrides the default icon resource path. */
-  @Prop() iconPath?: string = undefined;
-
   /** Displays the button smaller. */
   @Prop() small?: boolean = false;
 
@@ -106,7 +103,7 @@ export class ButtonRegular {
         {this.loading ? (
           <p-loader class={loaderClasses} size="x-small" theme={this.useInvertedLoader()} />
         ) : (
-          <p-icon class={iconClasses} {...(this.iconPath ? { path: this.iconPath } : null)} source={this.icon} />
+          <p-icon class={iconClasses} source={this.icon} />
         )}
         <p-text tag="span" color="inherit" class={labelClasses}>
           <slot />
