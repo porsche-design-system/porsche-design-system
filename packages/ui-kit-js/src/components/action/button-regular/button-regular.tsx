@@ -108,9 +108,9 @@ export class ButtonRegular {
         ) : (
           <p-icon class={iconClasses} {...(this.iconPath ? { path: this.iconPath } : null)} source={this.icon} />
         )}
-        <span class={labelClasses}>
+        <p-text tag="span" color="inherit" class={labelClasses}>
           <slot />
-        </span>
+        </p-text>
       </TagType>
     );
   }
