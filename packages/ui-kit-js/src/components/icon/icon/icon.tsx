@@ -48,7 +48,7 @@ export class Icon {
   /**
    * The size of the icon.
    */
-  @Prop() size?: "small" | "medium" | "large" = "small";
+  @Prop() size?: "small" | "medium" | "large" | "inherit" = "small";
 
   /**
    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
@@ -127,7 +127,7 @@ export class Icon {
     const iconClasses = cx(
       prefix("icon"),
       { [prefix(`icon--color-${this.color}`)]: this.color },
-      this.size ? prefix(`icon--${this.size}`) : ""
+      { [prefix(`icon--${this.size}`)]: this.size }
     );
 
     if (!this.isServer && this.svgContent) {
