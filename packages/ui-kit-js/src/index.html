@@ -1,79 +1,81 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
 
-  <link rel="stylesheet" href="/build/porsche-ui-kit.css" />
-  <script type="module" src="/build/porsche-ui-kit.esm.js"></script>
-  <script nomodule src="/build/porsche-ui-kit.js"></script>
+    <link rel="stylesheet" href="/build/porsche-ui-kit.css" />
+    <script type="module" src="/build/porsche-ui-kit.esm.js"></script>
+    <script nomodule src="/build/porsche-ui-kit.js"></script>
+  </head>
+  <body>
+    <form action="http://localhost:3333/?foo=bar" method="get">
+      <input type="text" name="juicy" value="bannana" />
+      <p-select></p-select>
+      <p-textarea></p-textarea>
+      <p-textarea error="true"></p-textarea>
+      <p-input></p-input>
+      <p-input icon="search"></p-input>
+      <p-input error="true"></p-input>
+      <p-input error="true" icon="search"></p-input>
+      <p-toggle></p-toggle>
+      <p-checkbox>Hello dude's</p-checkbox>
+      <p-radio>Hello dude's</p-radio>
+      <p-button-regular variant="highlight" type="submit">Some label</p-button-regular>
+    </form>
 
-</head>
-<body>
+    <div>
+      <p-button-regular href="#foo" disabled="true">Some label</p-button-regular>
+    </div>
 
-  <form action="http://localhost:3333/?foo=bar" method="get">
-    <input type="text" name="juicy" value="bannana" />
-    <p-select></p-select>
-    <p-textarea></p-textarea>
-    <p-textarea error="true"></p-textarea>
-    <p-input></p-input>
-    <p-input icon="search"></p-input>
-    <p-input error="true"></p-input>
-    <p-input error="true" icon="search"></p-input>
-    <p-toggle></p-toggle>
-    <p-checkbox>Hello dude's</p-checkbox>
-    <p-radio>Hello dude's</p-radio>
-    <p-button-regular variant="highlight" type="submit">Some label</p-button-regular>
-  </form>
+    <p-button-regular>Some label</p-button-regular>
+    <p-button-regular variant="ghost">Some label</p-button-regular>
+    <p-button-regular loading="true">Some label</p-button-regular>
+    <p-button-regular loading="true" variant="ghost">Some label</p-button-regular>
 
-  <div>
-    <p-button-regular href="#foo" disabled="true">Some label</p-button-regular>
-  </div>
+    <div style="background: black;">
+      <p-button-regular theme="dark">Some label</p-button-regular>
+      <p-button-regular variant="ghost" theme="dark">Some label</p-button-regular>
+      <p-button-regular loading="true" theme="dark">Some label</p-button-regular>
+      <p-button-regular loading="true" variant="ghost" theme="dark">Some label</p-button-regular>
+    </div>
 
-  <p-button-regular>Some label</p-button-regular>
-  <p-button-regular variant="ghost">Some label</p-button-regular>
-  <p-button-regular loading="true">Some label</p-button-regular>
-  <p-button-regular loading="true" variant="ghost">Some label</p-button-regular>
+    <p-loader></p-loader>
+    <p-icon source="search" size="large"></p-icon>
 
-  <div style="background: black;">
-    <p-button-regular theme="dark">Some label</p-button-regular>
-    <p-button-regular variant="ghost" theme="dark">Some label</p-button-regular>
-    <p-button-regular loading="true" theme="dark">Some label</p-button-regular>
-    <p-button-regular loading="true" variant="ghost" theme="dark">Some label</p-button-regular>
-  </div>
+    <p-headline>Lorem ipsum</p-headline>
 
-  <p-loader></p-loader>
-  <p-icon source="search" size="large"></p-icon>
+    <p-text tag="span">Lorem ipsum</p-text>
 
-  <p-headline>Lorem ipsum</p-headline>
+    <p-grid direction-responsive='{"base": "column", "m": "row"}'>
+      <p-grid-child size="4">
+        1
+      </p-grid-child>
+      <p-grid-child size="4">
+        2
+      </p-grid-child>
+      <p-grid-child size="4">
+        3
+      </p-grid-child>
+    </p-grid>
 
-  <p-text tag="span">Lorem ipsum</p-text>
+    <p-text-link href="https://ui.porsche.com" type="28">Lorem ipsum dolor</p-text-link>
+    <div style="padding: 4px; background: black">
+      <p-text-link href="https://ui.porsche.com" type="28" theme="dark">Lorem ipsum dolor</p-text-link>
+    </div>
 
-  <p-grid direction-responsive='{"base": "column", "m": "row"}'>
-    <p-grid-child size="4">
-      1
-    </p-grid-child>
-    <p-grid-child size="4">
-      2
-    </p-grid-child>
-    <p-grid-child size="4">
-      3
-    </p-grid-child>
-  </p-grid>
-
-  <script>
-    const btn = document.querySelector("p-button-regular")
-    btn.addEventListener("pClick", (e) => {
-      console.log("btn was clicked", e)
-    })
-    btn.addEventListener("pFocus", (e) => {
-      console.log("btn was focused", e)
-    })
-    btn.addEventListener("pBlur", (e) => {
-      console.log("btn was blurred", e)
-    })
-  </script>
-
-</body>
+    <script>
+      const btn = document.querySelector("p-button-regular")
+      btn.addEventListener("pClick", (e) => {
+        console.log("btn was clicked", e)
+      })
+      btn.addEventListener("pFocus", (e) => {
+        console.log("btn was focused", e)
+      })
+      btn.addEventListener("pBlur", (e) => {
+        console.log("btn was blurred", e)
+      })
+    </script>
+  </body>
 </html>

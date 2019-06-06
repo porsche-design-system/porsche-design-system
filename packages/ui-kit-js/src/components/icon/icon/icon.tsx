@@ -2,6 +2,7 @@ import { JSX, Component, Host, Element, Prop, State, Watch, h } from "@stencil/c
 import { getName, isUrl, isValid } from "./utils";
 import cx from "classnames";
 import { prefix } from "../../../utils/prefix";
+import { Colors } from "../../../interface/interface";
 
 @Component({
   tag: "p-icon",
@@ -30,25 +31,13 @@ export class Icon {
    */
   @Prop({ mutable: true, reflectToAttr: true }) ariaLabel?: string;
 
-  /** Basic text color variations. */
-  @Prop() color?:
-    | "porsche-black"
-    | "porsche-light"
-    | "porsche-red"
-    | "neutral-grey-1"
-    | "neutral-grey-2"
-    | "neutral-grey-3"
-    | "neutral-grey-4"
-    | "neutral-grey-5"
-    | "neutral-grey-6"
-    | "neutral-grey-7"
-    | "neutral-grey-8"
-    | "inherit" = "inherit";
+  /** Basic color variations. */
+  @Prop() color?: Colors["text"] = "inherit";
 
   /**
    * The size of the icon.
    */
-  @Prop() size?: "small" | "medium" | "large" = "small";
+  @Prop() size?: "small" | "medium" | "large" | "inherit" = "small";
 
   /**
    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
@@ -127,7 +116,7 @@ export class Icon {
     const iconClasses = cx(
       prefix("icon"),
       { [prefix(`icon--color-${this.color}`)]: this.color },
-      this.size ? prefix(`icon--${this.size}`) : ""
+      { [prefix(`icon--${this.size}`)]: this.size }
     );
 
     if (!this.isServer && this.svgContent) {
