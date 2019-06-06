@@ -22,9 +22,13 @@ The web library provides components that are to be used within web applications,
 The App Library is containing specific components for native apps.  
 [Download Porsche UI Kit App](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-app.sketch.xml)
 
-## Sketch template
-To get a smooth and easy "designing from scratch" experience, you are welcome to use the following Sketch layout template. It contains artboards in all relevant screen sizes and is enriched with the right layout and grid presets (that can be turned visible via: View → Canvas → Show Layout.). 
+## Sketch layout template
+To get a smooth and easy "designing from scratch" experience, you are welcome to use the following Sketch layout template. It contains artboards in all relevant screen sizes and is enriched with the right layout and grid presets (that can be turned visible via: View → Canvas → Show Layout).  
 [Download Sketch Layout Template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch)
+
+## Sketch color palette
+Enrich your Porsche UI design experience by using the Porsche color palette in your Sketch color picker. The easiest way to import the palette to Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).  
+[Download Porsche color palette](https://ui.porsche.com/latest/porsche-ui-kit-colors.sketchpalette)
 
 ## Typeface
 
