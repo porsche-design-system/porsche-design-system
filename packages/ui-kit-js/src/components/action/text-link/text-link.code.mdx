@@ -1,0 +1,76 @@
+import { Example } from "../../../src/components/example/Example"
+
+# Text Link
+
+## Introduction
+The Text-link component is used to show a linkable icon/textlink combination. It should only be used for linking between pages.
+
+### Basic example
+
+<Example noTheme={false} className="sg-example-text-link">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-text-link href="https://ui.porsche.com" theme={theme}>Lorem ipsum dolor</p-text-link>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Sizes regular
+All sizes of generic Text component are available.
+
+<Example noTheme={false} className="sg-example-text-link">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-text-link href="https://ui.porsche.com" type="12" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="16" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="20" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="18" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="24" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="28" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="30" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="32" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="36" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="42" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="44" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="48" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="52" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="60" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="62" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="72" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="84" theme={theme}>Lorem ipsum dolor</p-text-link>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Sizes thin
+All sizes of generic Text component are available.
+
+<Example noTheme={false} className="sg-example-text-link">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-text-link href="https://ui.porsche.com" type="60-thin" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="62-thin" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="72-thin" theme={theme}>Lorem ipsum dolor</p-text-link>
+        <p-text-link href="https://ui.porsche.com" type="84-thin" theme={theme}>Lorem ipsum dolor</p-text-link>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+### Specific icon
+If another icon needs to be implemented, just replace the default icon with your new icon.
+
+<Example noTheme={false} className="sg-example-text-link">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-text-link href="https://ui.porsche.com" type="20" icon="arrow-left-hair" theme={theme}>Lorem ipsum dolor</p-text-link>
+      </React.Fragment>
+    )
+  }}
+</Example>

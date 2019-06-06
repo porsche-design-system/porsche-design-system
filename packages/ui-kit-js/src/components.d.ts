@@ -9,6 +9,13 @@ import { HTMLStencilElement, JSXBase } from './stencil.core';
 import {
   BreakpointCustomizable,
 } from './utils';
+import {
+  Colors,
+  TextProps as TextProps1,
+} from './interface';
+import {
+  TextProps,
+} from './components/basic/typography/text/text';
 
 
 export namespace Components {
@@ -25,10 +32,6 @@ export namespace Components {
     * The icon shown next to the label.
     */
     'icon'?: string;
-    /**
-    * Overrides the default icon resource path.
-    */
-    'iconPath'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -120,20 +123,9 @@ export namespace Components {
     */
     'ariaLabel'?: string;
     /**
-    * Basic text color variations.
+    * Basic color variations.
     */
-    'color'?: | "porsche-black"
-    | "porsche-light"
-    | "porsche-red"
-    | "neutral-grey-1"
-    | "neutral-grey-2"
-    | "neutral-grey-3"
-    | "neutral-grey-4"
-    | "neutral-grey-5"
-    | "neutral-grey-6"
-    | "neutral-grey-7"
-    | "neutral-grey-8"
-    | "inherit";
+    'color'?: Colors["text"];
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -141,7 +133,7 @@ export namespace Components {
     /**
     * The size of the icon.
     */
-    'size'?: "small" | "medium" | "large";
+    'size'?: "small" | "medium" | "large" | "inherit";
     /**
     * Specifies which icon to use.
     */
@@ -187,18 +179,7 @@ export namespace Components {
     /**
     * Basic text color variations.
     */
-    'color'?: | "porsche-black"
-    | "porsche-light"
-    | "porsche-red"
-    | "neutral-grey-1"
-    | "neutral-grey-2"
-    | "neutral-grey-3"
-    | "neutral-grey-4"
-    | "neutral-grey-5"
-    | "neutral-grey-6"
-    | "neutral-grey-7"
-    | "neutral-grey-8"
-    | "inherit";
+    'color'?: Colors["text"];
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -226,32 +207,37 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'type'?: | "copy"
-    | "small"
-    | "12"
-    | "16"
-    | "20"
-    | "24"
-    | "28"
-    | "30"
-    | "32"
-    | "36"
-    | "42"
-    | "44"
-    | "48"
-    | "52"
-    | "60"
-    | "60-thin"
-    | "62"
-    | "62-thin"
-    | "72"
-    | "72-thin"
-    | "84"
-    | "84-thin";
+    'type'?: TextProps["type"];
     /**
     * Wraps the text, even when it has to break a word.
     */
     'wrap'?: boolean;
+  }
+  interface PTextLink {
+    /**
+    * Special download attribute to open native Browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: boolean;
+    /**
+    * Target url to where the component should link to.
+    */
+    'href': string;
+    /**
+    * The icon shown next to the label.
+    */
+    'icon'?: string;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: "self" | "blank" | "parent" | "top";
+    /**
+    * Adapts the color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * The style of the text.
+    */
+    'type'?: TextProps["type"];
   }
   interface PTextarea {
     'disabled'?: boolean;
@@ -346,6 +332,12 @@ declare global {
     new (): HTMLPTextElement;
   };
 
+  interface HTMLPTextLinkElement extends Components.PTextLink, HTMLStencilElement {}
+  var HTMLPTextLinkElement: {
+    prototype: HTMLPTextLinkElement;
+    new (): HTMLPTextLinkElement;
+  };
+
   interface HTMLPTextareaElement extends Components.PTextarea, HTMLStencilElement {}
   var HTMLPTextareaElement: {
     prototype: HTMLPTextareaElement;
@@ -369,6 +361,7 @@ declare global {
     'p-radio': HTMLPRadioElement;
     'p-select': HTMLPSelectElement;
     'p-text': HTMLPTextElement;
+    'p-text-link': HTMLPTextLinkElement;
     'p-textarea': HTMLPTextareaElement;
     'p-toggle': HTMLPToggleElement;
   }
@@ -388,10 +381,6 @@ declare namespace LocalJSX {
     * The icon shown next to the label.
     */
     'icon'?: string;
-    /**
-    * Overrides the default icon resource path.
-    */
-    'iconPath'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -495,20 +484,9 @@ declare namespace LocalJSX {
     */
     'ariaLabel'?: string;
     /**
-    * Basic text color variations.
+    * Basic color variations.
     */
-    'color'?: | "porsche-black"
-    | "porsche-light"
-    | "porsche-red"
-    | "neutral-grey-1"
-    | "neutral-grey-2"
-    | "neutral-grey-3"
-    | "neutral-grey-4"
-    | "neutral-grey-5"
-    | "neutral-grey-6"
-    | "neutral-grey-7"
-    | "neutral-grey-8"
-    | "inherit";
+    'color'?: Colors["text"];
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -516,7 +494,7 @@ declare namespace LocalJSX {
     /**
     * The size of the icon.
     */
-    'size'?: "small" | "medium" | "large";
+    'size'?: "small" | "medium" | "large" | "inherit";
     /**
     * Specifies which icon to use.
     */
@@ -562,18 +540,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations.
     */
-    'color'?: | "porsche-black"
-    | "porsche-light"
-    | "porsche-red"
-    | "neutral-grey-1"
-    | "neutral-grey-2"
-    | "neutral-grey-3"
-    | "neutral-grey-4"
-    | "neutral-grey-5"
-    | "neutral-grey-6"
-    | "neutral-grey-7"
-    | "neutral-grey-8"
-    | "inherit";
+    'color'?: Colors["text"];
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -601,32 +568,41 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'type'?: | "copy"
-    | "small"
-    | "12"
-    | "16"
-    | "20"
-    | "24"
-    | "28"
-    | "30"
-    | "32"
-    | "36"
-    | "42"
-    | "44"
-    | "48"
-    | "52"
-    | "60"
-    | "60-thin"
-    | "62"
-    | "62-thin"
-    | "72"
-    | "72-thin"
-    | "84"
-    | "84-thin";
+    'type'?: TextProps["type"];
     /**
     * Wraps the text, even when it has to break a word.
     */
     'wrap'?: boolean;
+  }
+  interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
+    /**
+    * Special download attribute to open native Browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: boolean;
+    /**
+    * Target url to where the component should link to.
+    */
+    'href'?: string;
+    /**
+    * The icon shown next to the label.
+    */
+    'icon'?: string;
+    /**
+    * Emitted when the link is clicked.
+    */
+    'onPClick'?: (event: CustomEvent<void>) => void;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: "self" | "blank" | "parent" | "top";
+    /**
+    * Adapts the color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * The style of the text.
+    */
+    'type'?: TextProps["type"];
   }
   interface PTextarea extends JSXBase.HTMLAttributes<HTMLPTextareaElement> {
     'disabled'?: boolean;
@@ -663,6 +639,7 @@ declare namespace LocalJSX {
     'p-radio': PRadio;
     'p-select': PSelect;
     'p-text': PText;
+    'p-text-link': PTextLink;
     'p-textarea': PTextarea;
     'p-toggle': PToggle;
   }
