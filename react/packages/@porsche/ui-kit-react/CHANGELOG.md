@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.12.2] - 2019-06-6
+
+-   Bugfix disabled state in Radio Group component
+
 ## [0.12.1] - 2019-05-20
 
 -   Changed design of checkboxes in disabled/checked state and default outline color
