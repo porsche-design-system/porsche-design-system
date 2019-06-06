@@ -1,5 +1,46 @@
 @import "../../../../styles/utility/index";
 
+// generic text sizes
+$p-text-size-12: rem(12px);
+$p-text-size-16: rem(16px);
+$p-text-size-20: rem(20px);
+$p-text-size-24: rem(24px);
+$p-text-size-28: rem(28px);
+$p-text-size-30: rem(30px);
+$p-text-size-32: rem(32px);
+$p-text-size-36: rem(36px);
+$p-text-size-42: rem(42px);
+$p-text-size-44: rem(44px);
+$p-text-size-48: rem(48px);
+$p-text-size-52: rem(52px);
+$p-text-size-60: rem(60px);
+$p-text-size-62: rem(62px);
+$p-text-size-72: rem(72px);
+$p-text-size-84: rem(84px);
+
+// copytext
+@mixin p-text-copy {
+  font-family: $p-font-primary;
+  font-weight: 400;
+  font-size: rem(16px);
+  line-height: 1.5;
+}
+
+@mixin p-text-small {
+  font-family: $p-font-primary;
+  font-weight: 400;
+  font-size: rem(12px);
+  line-height: 1.666;
+}
+
+// generic text
+@mixin p-text-generic($weight: 400, $size: $p-text-size-16) {
+  font-family: $p-font-primary;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 1.5;
+}
+
 .#{$p-global-class-prefix}text {
   $bem-block: &;
   padding: 0;
