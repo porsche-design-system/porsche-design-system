@@ -12,7 +12,7 @@
   box-sizing: border-box;
   width: rem(24px);
   height: rem(24px);
-  transition: fill $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
   &--small {
     width: rem(24px);
@@ -27,6 +27,11 @@
   &--large {
     width: rem(48px);
     height: rem(48px);
+  }
+
+  &--inherit {
+    width: inherit;
+    height: inherit;
   }
 
   &--color {
