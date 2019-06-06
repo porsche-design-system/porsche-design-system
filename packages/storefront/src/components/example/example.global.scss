@@ -349,3 +349,10 @@ $sg-color-highlight: deeppink;
     }
   }
 }
+
+/* ----------  text-link component styles ---------- */
+.sg-example-text-link {
+  p-text-link {
+    display: flex;
+  }
+}

@@ -1,0 +1,147 @@
+@import "../../../styles/utility/index";
+
+:host {
+  display: inline-flex;
+}
+
+.#{$p-global-class-prefix}text-link {
+  $bem-block: &;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  color: $p-color-porsche-black;
+
+  &#{$bem-block}--theme-dark {
+    color: $p-color-porsche-light;
+  }
+
+  &:hover {
+    color: $p-color-porsche-dark-red;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-red;
+    }
+  }
+
+  &:focus {
+    outline: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background-color: $p-color-state-focus;
+    }
+  }
+
+  & p-text {
+    box-sizing: border-box;
+    padding-left: $p-spacing-4;
+  }
+
+  &__icon {
+    &--copy {
+      width: $p-text-size-16 * 1.5;
+      height: $p-text-size-16 * 1.5;
+    }
+
+    &--small {
+      width: $p-text-size-12 * 1.666;
+      height: $p-text-size-12 * 1.666;
+    }
+
+    &--12 {
+      width: $p-text-size-12 * 1.5;
+      height: $p-text-size-12 * 1.5;
+    }
+
+    &--16 {
+      width: $p-text-size-16 * 1.5;
+      height: $p-text-size-16 * 1.5;
+    }
+
+    &--18 {
+      width: $p-text-size-18 * 1.5;
+      height: $p-text-size-18 * 1.5;
+    }
+
+    &--20 {
+      width: $p-text-size-20 * 1.5;
+      height: $p-text-size-20 * 1.5;
+    }
+
+    &--24 {
+      width: $p-text-size-24 * 1.5;
+      height: $p-text-size-24 * 1.5;
+    }
+
+    &--28 {
+      width: $p-text-size-28 * 1.5;
+      height: $p-text-size-28 * 1.5;
+    }
+
+    &--30 {
+      width: $p-text-size-30 * 1.5;
+      height: $p-text-size-30 * 1.5;
+    }
+
+    &--32 {
+      width: $p-text-size-32 * 1.5;
+      height: $p-text-size-32 * 1.5;
+    }
+
+    &--36 {
+      width: $p-text-size-36 * 1.5;
+      height: $p-text-size-36 * 1.5;
+    }
+
+    &--42 {
+      width: $p-text-size-42 * 1.5;
+      height: $p-text-size-42 * 1.5;
+    }
+
+    &--44 {
+      width: $p-text-size-44 * 1.5;
+      height: $p-text-size-44 * 1.5;
+    }
+
+    &--48 {
+      width: $p-text-size-48 * 1.5;
+      height: $p-text-size-48 * 1.5;
+    }
+
+    &--52 {
+      width: $p-text-size-52 * 1.5;
+      height: $p-text-size-52 * 1.5;
+    }
+
+    &--60,
+    &--60-thin {
+      width: $p-text-size-60 * 1.5;
+      height: $p-text-size-60 * 1.5;
+    }
+
+    &--62,
+    &--62-thin {
+      width: $p-text-size-62 * 1.5;
+      height: $p-text-size-62 * 1.5;
+    }
+
+    &--72,
+    &--72-thin {
+      width: $p-text-size-72 * 1.5;
+      height: $p-text-size-72 * 1.5;
+    }
+
+    &--84,
+    &--84-thin {
+      width: $p-text-size-84 * 1.5;
+      height: $p-text-size-84 * 1.5;
+    }
+  }
+}

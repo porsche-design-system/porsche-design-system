@@ -35,6 +35,12 @@ export const Stories: Stories = {
       code: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.code.mdx"),
       vrt: importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.vrt.mdx"),
       docs: [importMDX("../../ui-kit-js/src/components/action/button-regular/button-regular.prop.mdx")]
+    },
+    "Text Link": {
+      design: importMDX("../../ui-kit-js/src/components/action/text-link/text-link.design.mdx"),
+      code: importMDX("../../ui-kit-js/src/components/action/text-link/text-link.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/action/text-link/text-link.vrt.mdx"),
+      docs: [importMDX("../../ui-kit-js/src/components/action/text-link/text-link.prop.mdx")]
     }
   },
   Form: {
