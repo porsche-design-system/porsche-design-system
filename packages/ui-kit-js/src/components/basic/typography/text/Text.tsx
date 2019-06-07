@@ -3,8 +3,14 @@ import cx from "classnames";
 import { prefix } from "../../../../utils/prefix";
 import { Colors } from "../../../../index";
 
-export interface TextProps {
-  type?:
+@Component({
+  tag: "p-text",
+  styleUrl: "text.scss",
+  shadow: true
+})
+export class Text {
+  /** The style of the text. */
+  @Prop() type?:
     | "copy"
     | "small"
     | "12"
@@ -27,17 +33,7 @@ export interface TextProps {
     | "72"
     | "72-thin"
     | "84"
-    | "84-thin";
-}
-
-@Component({
-  tag: "p-text",
-  styleUrl: "text.scss",
-  shadow: true
-})
-export class Text {
-  /** The style of the text. */
-  @Prop() type?: TextProps["type"] = "copy";
+    | "84-thin" = "copy";
 
   /** Set a custom HTML tag depending of the usage of the text component. */
   @Prop() tag?:

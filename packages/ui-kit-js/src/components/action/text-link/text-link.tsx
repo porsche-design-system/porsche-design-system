@@ -1,7 +1,7 @@
 import { JSX, Component, Event, EventEmitter, Prop, h } from "@stencil/core";
 import cx from "classnames";
 import { prefix } from "../../../utils/prefix";
-import { TextProps } from "../../../index";
+import { Components } from "../../../index";
 
 @Component({
   tag: "p-text-link",
@@ -19,7 +19,7 @@ export class TextLink {
   @Prop({ reflect: true }) download?: boolean = false;
 
   /** The style of the text. */
-  @Prop() type?: TextProps["type"] = "copy";
+  @Prop() type?: Components.PText["type"] = "copy";
 
   /** The icon shown next to the label. */
   @Prop() icon?: string = "arrow-right-hair";
