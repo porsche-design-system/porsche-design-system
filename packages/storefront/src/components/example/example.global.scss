@@ -340,14 +340,20 @@ $sg-color-highlight: deeppink;
 }
 
 /* ----------  button component styles ---------- */
-.sg-example-button-regular,
-.sg-example-button-icon {
-  p-button-regular,
-  p-button-icon {
-    margin-right: $p-spacing-16;
+.sg-example {
+  &::before {
+    content: '';
+    display: block;
+    margin-top: - $p-spacing-16;
+  }
 
-    &:last-child {
-      margin-right: 0;
+  p-button-regular,
+  p-button-icon,
+  p-checkbox {
+    margin-top: $p-spacing-16;
+
+    &:not(:last-child) {
+      margin-right: $p-spacing-16;
     }
   }
 }

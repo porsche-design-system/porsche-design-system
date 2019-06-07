@@ -8,11 +8,9 @@ import { prefix } from "../../../utils";
   shadow: true
 })
 export class Checkbox {
-  @Prop() name?: string = "";
+  @Prop() name?: string = "foo";
 
   @Prop() value?: string = "bar";
-
-  @Prop() label?: string = "bar";
 
   @Prop() disabled?: boolean = false;
 
@@ -23,8 +21,14 @@ export class Checkbox {
   render(): JSX.Element {
     const checkboxClasses = cx(prefix("checkbox"));
     const fieldClasses = cx(prefix("checkbox__field"));
-    const iconClasses = cx(prefix("checkbox__icon"));
-    const labelClasses = cx(prefix("checkbox__label"));
+    const iconClasses = cx(
+      prefix("checkbox__icon"),
+      { [prefix("checkbox__icon--error")]: this.error }
+    );
+    const labelClasses = cx(
+      prefix("checkbox__label"),
+      { [prefix("checkbox__label--error")]: this.error }
+    );
 
     return (
       <label class={checkboxClasses}>
@@ -39,7 +43,7 @@ export class Checkbox {
         <span class={iconClasses}>
           <p-icon source="check" />
         </span>
-        <p-text class={labelClasses} tag="span">
+        <p-text class={labelClasses} tag="span" color="inherit">
           <slot />
         </p-text>
       </label>
