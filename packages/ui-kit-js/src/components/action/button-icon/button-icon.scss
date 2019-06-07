@@ -124,6 +124,54 @@
     }
   }
 
+  &--transparent {
+    color: $p-color-porsche-black;
+    background-color: transparent;
+    border-color: transparent;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-light;
+    }
+
+    &:enabled,
+    &:not([disabled]) {
+      &:hover,
+      &:active {
+        color: $p-color-porsche-dark-red;
+        background-color: transparent;
+        border-color: transparent;
+
+        &#{$bem-block}--theme-dark {
+          color: $p-color-porsche-red;
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+
+      &:focus:not([aria-disabled="true"]) {
+        border-color: $p-color-state-focus;
+
+        &#{$bem-block}--theme-dark {
+          border-color: $p-color-state-focus;
+        }
+      }
+    }
+
+    &:disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      color: $p-color-neutral-grey-5;
+      background-color: transparent;
+      border-color: transparent;
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-neutral-grey-4;
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+  }
+
   &__icon,
   &__loader {
     position: absolute;

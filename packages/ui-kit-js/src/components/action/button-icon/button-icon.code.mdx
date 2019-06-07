@@ -35,7 +35,20 @@ If using basic type, no extra class/prop declaration is needed.
 }}
 </Example>
 
-### Regular loader state
+### Transparent
+
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon variant="transparent" theme={theme} />
+        <p-button-icon variant="transparent" theme={theme} disabled="true" />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+### Loading state
 If a button has a loading state, it must also be set in a disabled state to prevent click behaviour caused by the user.
 To show the loader icon, the default svg icon must be replaced with the loader component
 
@@ -45,6 +58,7 @@ To show the loader icon, the default svg icon must be replaced with the loader c
       <React.Fragment>
         <p-button-icon loading="true" theme={theme} />
         <p-button-icon variant="ghost" loading="true" theme={theme} />
+        <p-button-icon variant="transparent" loading="true" theme={theme} />
       </React.Fragment>
     )
 }}
@@ -79,6 +93,18 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 }}
 </Example>
 
+#### Transparent
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" variant="transparent" theme={theme} />
+        <p-button-icon href="#" variant="transparent" disabled theme={theme} />
+      </React.Fragment>
+    )
+}}
+</Example>
+
 #### Loading state
 <Example noTheme={false} className="sg-example-button-icon">
   {(theme) => {
@@ -86,6 +112,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
       <React.Fragment>
         <p-button-icon href="#" loading="true" theme={theme} />
         <p-button-icon href="#" variant="ghost" loading="true" theme={theme} />
+        <p-button-icon href="#" variant="transparent" loading="true" theme={theme} />
       </React.Fragment>
     )
 }}

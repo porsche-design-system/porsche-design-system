@@ -49,6 +49,30 @@ import { Text, Headline } from "@porscheui/ui-kit-react"
   }}
 </ExampleVrt>
 
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <p-button-icon variant="transparent" />
+        <p-button-icon variant="transparent" disabled="true" />
+        <p-button-icon variant="transparent" loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="dark">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon variant="transparent" theme={theme} />
+        <p-button-icon variant="transparent" theme={theme} disabled="true" />
+        <p-button-icon variant="transparent" theme={theme} loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
 
 
 
@@ -97,6 +121,30 @@ import { Text, Headline } from "@porscheui/ui-kit-react"
         <p-button-icon href="/lorem/ipsum" variant="ghost" theme={theme} />
         <p-button-icon href="/lorem/ipsum" variant="ghost" theme={theme} disabled="true" />
         <p-button-icon href="/lorem/ipsum" variant="ghost" theme={theme} loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" variant="transparent" />
+        <p-button-icon href="/lorem/ipsum" variant="transparent" disabled="true" />
+        <p-button-icon href="/lorem/ipsum" variant="transparent" loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="dark">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" variant="transparent" theme={theme} />
+        <p-button-icon href="/lorem/ipsum" variant="transparent" theme={theme} disabled="true" />
+        <p-button-icon href="/lorem/ipsum" variant="transparent" theme={theme} loading="true" />
       </React.Fragment>
     )
   }}

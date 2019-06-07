@@ -42,7 +42,7 @@ export namespace Components {
     /**
     * The style variant of the button.
     */
-    'variant'?: "ghost" | "default";
+    'variant'?: "ghost" | "transparent" | "default";
   }
   interface PButtonRegular {
     /**
@@ -502,7 +502,7 @@ declare namespace LocalJSX {
     /**
     * The style variant of the button.
     */
-    'variant'?: "ghost" | "default";
+    'variant'?: "ghost" | "transparent" | "default";
   }
   interface PButtonRegular extends JSXBase.HTMLAttributes<HTMLPButtonRegularElement> {
     /**

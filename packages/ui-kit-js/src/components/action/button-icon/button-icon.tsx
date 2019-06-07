@@ -24,7 +24,7 @@ export class ButtonIcon {
   @Prop() loading?: boolean = false;
 
   /** The style variant of the button. */
-  @Prop() variant?: "ghost" | "default" = "default";
+  @Prop() variant?: "ghost" | "transparent" | "default" = "default";
 
   /** The icon shown. */
   @Prop() icon?: string = "plus";
@@ -69,7 +69,7 @@ export class ButtonIcon {
   }
 
   private useInvertedLoader(): "light" | "dark" {
-    return this.variant !== "ghost" || this.theme === "dark" ? "dark" : "light";
+    return (this.variant !== "ghost" && this.variant !== "transparent") || this.theme === "dark" ? "dark" : "light";
   }
 
   render(): JSX.Element {
@@ -78,6 +78,7 @@ export class ButtonIcon {
     const buttonClasses = cx(
       prefix("button-regular"),
       { [prefix("button-regular--ghost")]: this.variant === "ghost" },
+      { [prefix("button-regular--transparent")]: this.variant === "transparent" },
       { [prefix("button-regular--loading")]: this.loading },
       { [prefix("button-regular--theme-dark")]: this.theme === "dark" }
     );
