@@ -1,5 +1,4 @@
 export { Components } from "./components";
-export { TextProps } from "./components/basic/typography/text/text";
 
 // global interfaces
 export interface Colors {

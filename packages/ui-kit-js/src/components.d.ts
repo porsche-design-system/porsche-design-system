@@ -11,11 +11,8 @@ import {
 } from './utils';
 import {
   Colors,
-  TextProps as TextProps1,
+  Components,
 } from './index';
-import {
-  TextProps,
-} from './components/basic/typography/text/text';
 
 export namespace Components {
   interface PButtonRegular {
@@ -206,7 +203,29 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'type'?: TextProps["type"];
+    'type'?: | "copy"
+    | "small"
+    | "12"
+    | "16"
+    | "18"
+    | "20"
+    | "24"
+    | "28"
+    | "30"
+    | "32"
+    | "36"
+    | "42"
+    | "44"
+    | "48"
+    | "52"
+    | "60"
+    | "60-thin"
+    | "62"
+    | "62-thin"
+    | "72"
+    | "72-thin"
+    | "84"
+    | "84-thin";
     /**
     * Wraps the text, even when it has to break a word.
     */
@@ -236,7 +255,7 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'type'?: TextProps["type"];
+    'type'?: Components.PText["type"];
   }
   interface PTextarea {
     'disabled'?: boolean;
@@ -567,7 +586,29 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'type'?: TextProps["type"];
+    'type'?: | "copy"
+    | "small"
+    | "12"
+    | "16"
+    | "18"
+    | "20"
+    | "24"
+    | "28"
+    | "30"
+    | "32"
+    | "36"
+    | "42"
+    | "44"
+    | "48"
+    | "52"
+    | "60"
+    | "60-thin"
+    | "62"
+    | "62-thin"
+    | "72"
+    | "72-thin"
+    | "84"
+    | "84-thin";
     /**
     * Wraps the text, even when it has to break a word.
     */
@@ -601,7 +642,7 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'type'?: TextProps["type"];
+    'type'?: Components.PText["type"];
   }
   interface PTextarea extends JSXBase.HTMLAttributes<HTMLPTextareaElement> {
     'disabled'?: boolean;
