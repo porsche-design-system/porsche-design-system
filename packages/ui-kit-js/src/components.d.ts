@@ -10,7 +10,6 @@ import {
   BreakpointCustomizable,
 } from './utils';
 import {
-  Colors,
   Components,
 } from './index';
 
@@ -56,6 +55,39 @@ export namespace Components {
     'label'?: string;
     'name'?: string;
     'value'?: string;
+  }
+  interface PColor {
+    'colors'?: | "porsche-black"
+    | "porsche-light"
+    | "porsche-dark"
+    | "porsche-red"
+    | "porsche-dark-red"
+    | "surface-light"
+    | "surface-dark"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8"
+    | "status-red"
+    | "status-green"
+    | "status-yellow"
+    | "state-focus";
+    'text'?: | "porsche-black"
+    | "porsche-light"
+    | "porsche-red"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8"
+    | "inherit";
   }
   interface PGrid {
     /**
@@ -121,7 +153,7 @@ export namespace Components {
     /**
     * Basic color variations.
     */
-    'color'?: Colors["text"];
+    'color'?: Components.PColor["text"];
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -175,7 +207,7 @@ export namespace Components {
     /**
     * Basic text color variations.
     */
-    'color'?: Colors["text"];
+    'color'?: Components.PColor["text"];
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -296,6 +328,12 @@ declare global {
     new (): HTMLPCheckboxElement;
   };
 
+  interface HTMLPColorElement extends Components.PColor, HTMLStencilElement {}
+  var HTMLPColorElement: {
+    prototype: HTMLPColorElement;
+    new (): HTMLPColorElement;
+  };
+
   interface HTMLPGridElement extends Components.PGrid, HTMLStencilElement {}
   var HTMLPGridElement: {
     prototype: HTMLPGridElement;
@@ -370,6 +408,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'p-button-regular': HTMLPButtonRegularElement;
     'p-checkbox': HTMLPCheckboxElement;
+    'p-color': HTMLPColorElement;
     'p-grid': HTMLPGridElement;
     'p-grid-child': HTMLPGridChildElement;
     'p-headline': HTMLPHeadlineElement;
@@ -440,6 +479,39 @@ declare namespace LocalJSX {
     'name'?: string;
     'value'?: string;
   }
+  interface PColor extends JSXBase.HTMLAttributes<HTMLPColorElement> {
+    'colors'?: | "porsche-black"
+    | "porsche-light"
+    | "porsche-dark"
+    | "porsche-red"
+    | "porsche-dark-red"
+    | "surface-light"
+    | "surface-dark"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8"
+    | "status-red"
+    | "status-green"
+    | "status-yellow"
+    | "state-focus";
+    'text'?: | "porsche-black"
+    | "porsche-light"
+    | "porsche-red"
+    | "neutral-grey-1"
+    | "neutral-grey-2"
+    | "neutral-grey-3"
+    | "neutral-grey-4"
+    | "neutral-grey-5"
+    | "neutral-grey-6"
+    | "neutral-grey-7"
+    | "neutral-grey-8"
+    | "inherit";
+  }
   interface PGrid extends JSXBase.HTMLAttributes<HTMLPGridElement> {
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
@@ -504,7 +576,7 @@ declare namespace LocalJSX {
     /**
     * Basic color variations.
     */
-    'color'?: Colors["text"];
+    'color'?: Components.PColor["text"];
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -558,7 +630,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations.
     */
-    'color'?: Colors["text"];
+    'color'?: Components.PColor["text"];
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -670,6 +742,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'p-button-regular': PButtonRegular;
     'p-checkbox': PCheckbox;
+    'p-color': PColor;
     'p-grid': PGrid;
     'p-grid-child': PGridChild;
     'p-headline': PHeadline;

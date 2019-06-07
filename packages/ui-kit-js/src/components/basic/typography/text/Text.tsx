@@ -1,8 +1,34 @@
 import { JSX, Component, Prop, h } from "@stencil/core";
 import cx from "classnames";
 import { prefix } from "../../../../utils/prefix";
-import { Colors } from "../../../../index";
+import { Components } from "../../../../index";
 
+export interface TextProps {
+  type?:
+    | "copy"
+    | "small"
+    | "12"
+    | "16"
+    | "18"
+    | "20"
+    | "24"
+    | "28"
+    | "30"
+    | "32"
+    | "36"
+    | "42"
+    | "44"
+    | "48"
+    | "52"
+    | "60"
+    | "60-thin"
+    | "62"
+    | "62-thin"
+    | "72"
+    | "72-thin"
+    | "84"
+    | "84-thin";
+}
 @Component({
   tag: "p-text",
   styleUrl: "text.scss",
@@ -55,7 +81,7 @@ export class Text {
   @Prop() align?: "left" | "center" | "right" = "left";
 
   /** Basic text color variations. */
-  @Prop() color?: Colors["text"] = "porsche-black";
+  @Prop() color?: Components.PColor["text"] = "porsche-black";
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() ellipsis?: boolean = false;
