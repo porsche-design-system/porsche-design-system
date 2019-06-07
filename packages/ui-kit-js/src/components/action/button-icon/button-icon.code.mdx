@@ -1,0 +1,107 @@
+import { Example } from "../../../src/components/example/Example"
+
+# Button Icon
+
+## Introduction
+All button types can be generated out of the basic button by referencing properties.
+
+### Buttons as button elements
+Buttons used as `<button>` elements to trigger actions.
+
+### Basic (default)
+If using basic type, no extra class/prop declaration is needed.
+
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon theme={theme} />
+        <p-button-icon theme={theme} disabled="true" />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+### Ghost
+
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon variant="ghost" theme={theme} />
+        <p-button-icon variant="ghost" theme={theme} disabled="true" />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+### Regular loader state
+If a button has a loading state, it must also be set in a disabled state to prevent click behaviour caused by the user.
+To show the loader icon, the default svg icon must be replaced with the loader component
+
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon loading="true" theme={theme} />
+        <p-button-icon variant="ghost" loading="true" theme={theme} />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+---
+
+### Button as link element
+Buttons used as link elements (`<a>`), e.g. as a navigation item.
+
+#### Basic (default)
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" theme={theme} />
+        <p-button-icon href="#" disabled="true" theme={theme} />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+#### Ghost
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" variant="ghost" theme={theme} />
+        <p-button-icon href="#" variant="ghost" disabled theme={theme} />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+#### Loading state
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="#" loading="true" theme={theme} />
+        <p-button-icon href="#" variant="ghost" loading="true" theme={theme} />
+      </React.Fragment>
+    )
+}}
+</Example>
+
+---
+
+### Button with specific icon
+If another icon needs to be implemented, just replace the default icon with your new icon.
+
+<Example noTheme={false} className="sg-example-button-icon">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon icon="phone" theme={theme} />
+      </React.Fragment>
+    )
+}}
+</Example>
