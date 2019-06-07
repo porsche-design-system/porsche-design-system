@@ -4,9 +4,9 @@
     <title>Porsche UI</title>
     <description>A Porsche UI Sketch library.</description>
     <item>
-      <title>Porsche UI Kit Basic (v1.0.0)</title>
-      <pubDate>Fri, 7 Jun 2019 10:25:05 +0200</pubDate>
-      <enclosure url="https://ui.porsche.com/latest/porsche-ui-kit-basic.sketch" sparkle:version="1.0.0" type="application/octet-stream"/>
+      <title>Porsche UI Kit Basic (v0.0.1)</title>
+      <pubDate>Fri, 7 Jun 2019 10:51:46 +0200</pubDate>
+      <enclosure url="https://ui.porsche.com/latest/porsche-ui-kit-basic.sketch" sparkle:version="0.0.1" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
