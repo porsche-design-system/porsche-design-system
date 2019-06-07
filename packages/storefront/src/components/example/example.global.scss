@@ -349,7 +349,8 @@ $sg-color-highlight: deeppink;
 
   p-button-regular,
   p-button-icon,
-  p-checkbox {
+  p-checkbox,
+  p-radio {
     margin-top: $p-spacing-16;
 
     &:not(:last-child) {

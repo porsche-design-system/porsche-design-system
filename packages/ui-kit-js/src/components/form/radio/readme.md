@@ -12,8 +12,7 @@
 | `checked`  | `checked`  |             | `boolean` | `false` |
 | `disabled` | `disabled` |             | `boolean` | `false` |
 | `error`    | `error`    |             | `boolean` | `false` |
-| `label`    | `label`    |             | `string`  | `"bar"` |
-| `name`     | `name`     |             | `string`  | `""`    |
+| `name`     | `name`     |             | `string`  | `"foo"` |
 | `value`    | `value`    |             | `string`  | `"bar"` |
 
 

@@ -118,27 +118,16 @@
   &__field:disabled:not(:checked) {
     & ~ #{$bem-block}__icon {
       cursor: default;
-      border-color: $p-color-neutral-grey-5;
+      border-color: $p-color-neutral-grey-4;
 
       &::before {
-        background-color: $p-color-neutral-grey-5;
+        background-color: $p-color-neutral-grey-4;
       }
     }
 
     & ~ #{$bem-block}__label {
       cursor: default;
-      color: $p-color-neutral-grey-5;
-
-      #{$bem-block}__label-link {
-        cursor: pointer;
-        color: $p-color-neutral-grey-5;
-
-        &:active,
-        &:focus,
-        &:hover {
-          color: $p-color-porsche-red;
-        }
-      }
+      color: $p-color-neutral-grey-4;
     }
   }
 }

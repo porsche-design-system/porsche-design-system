@@ -124,17 +124,6 @@
     & ~ #{$bem-block}__label {
       cursor: default;
       color: $p-color-neutral-grey-4;
-
-      #{$bem-block}__label-link {
-        cursor: pointer;
-        color: $p-color-neutral-grey-4;
-
-        &:active,
-        &:focus,
-        &:hover {
-          color: $p-color-porsche-red;
-        }
-      }
     }
   }
 }

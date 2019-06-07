@@ -219,7 +219,6 @@ export namespace Components {
     'checked'?: boolean;
     'disabled'?: boolean;
     'error'?: boolean;
-    'label'?: string;
     'name'?: string;
     'value'?: string;
   }
@@ -690,7 +689,6 @@ declare namespace LocalJSX {
     'checked'?: boolean;
     'disabled'?: boolean;
     'error'?: boolean;
-    'label'?: string;
     'name'?: string;
     'value'?: string;
   }
