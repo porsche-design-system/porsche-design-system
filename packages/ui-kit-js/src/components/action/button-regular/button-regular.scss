@@ -26,6 +26,7 @@
   color: $p-color-porsche-light;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     border-color $p-animation-hover-duration $p-animation-hover-bezier,
+    box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier; // must be globally defined
 
   &::-moz-focus-inner {
@@ -51,11 +52,13 @@
         border-color: $p-color-neutral-grey-1;
       }
     }
+
     &:focus:not([aria-disabled="true"]) {
-      outline: 2px solid $p-color-state-focus;
-      outline-offset: -2px;
+      box-shadow: inset 0 0 0 1px $p-color-state-focus;
+      border-color: $p-color-state-focus;
+
       &#{$bem-block}--theme-dark {
-        outline: 2px solid $p-color-state-focus;
+        border-color: $p-color-state-focus;
       }
     }
   }
@@ -100,10 +103,12 @@
           border-color: $p-color-porsche-light;
         }
       }
+
       &:focus:not([aria-disabled="true"]) {
-        outline-color: $p-color-state-focus;
+        border-color: $p-color-state-focus;
+
         &#{$bem-block}--theme-dark {
-          outline-color: $p-color-state-focus;
+          border-color: $p-color-state-focus;
         }
       }
     }
@@ -141,10 +146,12 @@
           border-color: $p-color-porsche-dark-red;
         }
       }
+
       &:focus:not([aria-disabled="true"]) {
-        outline-color: $p-color-state-focus;
+        border-color: $p-color-state-focus;
+
         &#{$bem-block}--theme-dark {
-          outline-color: $p-color-state-focus;
+          border-color: $p-color-state-focus;
         }
       }
     }
