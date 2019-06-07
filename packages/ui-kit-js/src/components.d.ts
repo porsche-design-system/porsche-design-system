@@ -14,6 +14,36 @@ import {
 } from './index';
 
 export namespace Components {
+  interface PButtonIcon {
+    /**
+    * Disables the button. No events will be triggered while disabled state is active.
+    */
+    'disabled'?: boolean;
+    /**
+    * When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.
+    */
+    'href'?: string;
+    /**
+    * The icon shown.
+    */
+    'icon'?: string;
+    /**
+    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+    */
+    'loading'?: boolean;
+    /**
+    * Adapts the button color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * Specifies the type of the button when no href prop is defined.
+    */
+    'type'?: "button" | "submit" | "reset";
+    /**
+    * The style variant of the button.
+    */
+    'variant'?: "ghost" | "default";
+  }
   interface PButtonRegular {
     /**
     * Disables the button. No events will be triggered while disabled state is active.
@@ -316,6 +346,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLPButtonIconElement extends Components.PButtonIcon, HTMLStencilElement {}
+  var HTMLPButtonIconElement: {
+    prototype: HTMLPButtonIconElement;
+    new (): HTMLPButtonIconElement;
+  };
+
   interface HTMLPButtonRegularElement extends Components.PButtonRegular, HTMLStencilElement {}
   var HTMLPButtonRegularElement: {
     prototype: HTMLPButtonRegularElement;
@@ -406,6 +442,7 @@ declare global {
     new (): HTMLPToggleElement;
   };
   interface HTMLElementTagNameMap {
+    'p-button-icon': HTMLPButtonIconElement;
     'p-button-regular': HTMLPButtonRegularElement;
     'p-checkbox': HTMLPCheckboxElement;
     'p-color': HTMLPColorElement;
@@ -425,6 +462,48 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface PButtonIcon extends JSXBase.HTMLAttributes<HTMLPButtonIconElement> {
+    /**
+    * Disables the button. No events will be triggered while disabled state is active.
+    */
+    'disabled'?: boolean;
+    /**
+    * When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.
+    */
+    'href'?: string;
+    /**
+    * The icon shown.
+    */
+    'icon'?: string;
+    /**
+    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+    */
+    'loading'?: boolean;
+    /**
+    * Emitted when the button loses focus.
+    */
+    'onPBlur'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the button is clicked.
+    */
+    'onPClick'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the button has focus.
+    */
+    'onPFocus'?: (event: CustomEvent<void>) => void;
+    /**
+    * Adapts the button color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * Specifies the type of the button when no href prop is defined.
+    */
+    'type'?: "button" | "submit" | "reset";
+    /**
+    * The style variant of the button.
+    */
+    'variant'?: "ghost" | "default";
+  }
   interface PButtonRegular extends JSXBase.HTMLAttributes<HTMLPButtonRegularElement> {
     /**
     * Disables the button. No events will be triggered while disabled state is active.
@@ -740,6 +819,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'p-button-icon': PButtonIcon;
     'p-button-regular': PButtonRegular;
     'p-checkbox': PCheckbox;
     'p-color': PColor;

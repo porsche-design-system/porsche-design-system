@@ -340,8 +340,10 @@ $sg-color-highlight: deeppink;
 }
 
 /* ----------  button component styles ---------- */
-.sg-example-button-regular {
-  p-button-regular {
+.sg-example-button-regular,
+.sg-example-button-icon {
+  p-button-regular,
+  p-button-icon {
     margin-right: $p-spacing-16;
 
     &:last-child {

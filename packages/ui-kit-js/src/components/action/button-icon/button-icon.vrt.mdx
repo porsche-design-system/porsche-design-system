@@ -1,0 +1,103 @@
+import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
+import { Text, Headline } from "@porscheui/ui-kit-react"
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <p-button-icon />
+        <p-button-icon disabled="true" />
+        <p-button-icon loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="dark">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon theme={theme} />
+        <p-button-icon theme={theme} disabled="true" />
+        <p-button-icon theme={theme} loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <p-button-icon variant="ghost" />
+        <p-button-icon variant="ghost" disabled="true" />
+        <p-button-icon variant="ghost" loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="dark">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon variant="ghost" theme={theme} />
+        <p-button-icon variant="ghost" theme={theme} disabled="true" />
+        <p-button-icon variant="ghost" theme={theme} loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+
+
+
+
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" />
+        <p-button-icon href="/lorem/ipsum" disabled="true" />
+        <p-button-icon href="/lorem/ipsum" loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="dark">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" theme={theme} />
+        <p-button-icon href="/lorem/ipsum" theme={theme} disabled="true" />
+        <p-button-icon href="/lorem/ipsum" theme={theme} loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt>
+  {() => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" variant="ghost" />
+        <p-button-icon href="/lorem/ipsum" variant="ghost" disabled="true" />
+        <p-button-icon href="/lorem/ipsum" variant="ghost" loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
+
+<ExampleVrt theme="dark">
+  {(theme) => {
+    return (
+      <React.Fragment>
+        <p-button-icon href="/lorem/ipsum" variant="ghost" theme={theme} />
+        <p-button-icon href="/lorem/ipsum" variant="ghost" theme={theme} disabled="true" />
+        <p-button-icon href="/lorem/ipsum" variant="ghost" theme={theme} loading="true" />
+      </React.Fragment>
+    )
+  }}
+</ExampleVrt>
