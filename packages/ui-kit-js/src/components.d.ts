@@ -17,7 +17,6 @@ import {
   TextProps,
 } from './components/basic/typography/text/text';
 
-
 export namespace Components {
   interface PButtonRegular {
     /**
