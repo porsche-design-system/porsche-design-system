@@ -8,11 +8,9 @@ import { prefix } from "../../../utils";
   shadow: true
 })
 export class Radio {
-  @Prop() name?: string = "";
+  @Prop() name?: string = "foo";
 
   @Prop() value?: string = "bar";
-
-  @Prop() label?: string = "bar";
 
   @Prop() disabled?: boolean = false;
 
@@ -23,8 +21,14 @@ export class Radio {
   render(): JSX.Element {
     const radioClasses = cx(prefix("radio"));
     const fieldClasses = cx(prefix("radio__field"));
-    const iconClasses = cx(prefix("radio__icon"), { [prefix("radio__icon--error")]: this.error });
-    const labelClasses = cx(prefix("radio__label"));
+    const iconClasses = cx(
+      prefix("radio__icon"),
+      { [prefix("radio__icon--error")]: this.error }
+    );
+    const labelClasses = cx(
+      prefix("radio__label"),
+      { [prefix("radio__label--error")]: this.error }
+    );
 
     return (
       <label class={radioClasses}>
@@ -37,7 +41,7 @@ export class Radio {
           checked={this.checked}
         />
         <span class={iconClasses} />
-        <p-text class={labelClasses} tag="span">
+        <p-text class={labelClasses} tag="span" color="inherit">
           <slot />
         </p-text>
       </label>
