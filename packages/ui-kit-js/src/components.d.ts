@@ -12,7 +12,7 @@ import {
 import {
   Colors,
   TextProps as TextProps1,
-} from './interface';
+} from './index';
 import {
   TextProps,
 } from './components/basic/typography/text/text';

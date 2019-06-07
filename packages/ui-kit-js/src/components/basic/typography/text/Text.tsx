@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h } from "@stencil/core";
 import cx from "classnames";
 import { prefix } from "../../../../utils/prefix";
-import { Colors } from "../../../../interface";
+import { Colors } from "../../../../index";
 
 export interface TextProps {
   type?:
