@@ -1,7 +1,7 @@
 import { JSX, Component, Event, EventEmitter, Prop, h } from "@stencil/core";
 import cx from "classnames";
 import { prefix } from "../../../utils/prefix";
-import { TextProps } from "../../../interface/interface";
+import { TextProps } from "../../../interface";
 
 @Component({
   tag: "p-text-link",
