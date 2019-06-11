@@ -75,10 +75,10 @@ export const Stories: Stories = {
       code: importMDX("../../ui-kit-js/src/components/form/radio/radio.code.mdx"),
       docs: [importMDX("../../ui-kit-js/src/components/form/radio/radio.prop.mdx")]
     },
-    Toggle: {
-      design: importMDX("../../ui-kit-js/src/components/form/toggle/toggle.design.mdx"),
-      code: importMDX("../../ui-kit-js/src/components/form/toggle/toggle.code.mdx"),
-      docs: [importMDX("../../ui-kit-js/src/components/form/toggle/toggle.prop.mdx")]
+    Switch: {
+      design: importMDX("../../ui-kit-js/src/components/form/switch/switch.design.mdx"),
+      code: importMDX("../../ui-kit-js/src/components/form/switch/switch.code.mdx"),
+      docs: [importMDX("../../ui-kit-js/src/components/form/switch/switch.prop.mdx")]
     }
   },
   Feedback: {

@@ -25,5 +25,5 @@
  - [p-checkbox](../../form/checkbox)
  - [p-input](../../form/input)
  - [p-select](../../form/select)
+ - [p-switch](../../form/switch)
  - [p-text-link](../../action/text-link)
- - [p-toggle](../../form/toggle)
