@@ -23,20 +23,26 @@
   line-height: 1.5;
 }
 
-::slotted(a) {
-  color: inherit;
-  text-decoration: underline;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-}
+:host {
+  ::slotted(a) {
+    color: inherit;
+    text-decoration: underline;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  }
 
-::slotted(a:hover) {
-  color: $p-color-porsche-dark-red;
-  text-decoration: none;
-}
+  ::slotted(a:hover) {
+    color: $p-color-porsche-dark-red;
+    text-decoration: none;
+  }
 
-::slotted(a:focus) {
-  color: $p-color-state-focus;
-  text-decoration: underline;
+  ::slotted(a:focus) {
+    color: $p-color-state-focus;
+    text-decoration: underline;
+  }
+
+  ::slotted(b, strong) {
+    font-weight: $p-font-weight-bold;
+  }
 }
 
 .#{$p-global-class-prefix}text {
