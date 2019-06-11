@@ -50,9 +50,9 @@
         "lint:ts": "tslint -p './tsconfig.json' -t codeFrame"
     },
     "devDependencies": {
-        "@stencil/core": "^1.0.1",
-        "@stencil/postcss": "^0.1.0",
-        "@stencil/sass": "^0.2.3",
+        "@stencil/core": "^1.0.2",
+        "@stencil/postcss": "^1.0.1",
+        "@stencil/sass": "^1.0.0",
         "@types/autoprefixer": "^9.5.0",
         "@types/classnames": "^2.2.8",
         "@types/jest": "24.0.13",
@@ -63,7 +63,7 @@
         "jest": "^24.8.0",
         "jest-cli": "^24.8.0",
         "puppeteer": "^1.14.0",
-        "stylelint": "^10.0.1",
+        "stylelint": "^10.1.0",
         "tslint": "^5.17.0",
         "typescript": "~3.5.1"
     },
