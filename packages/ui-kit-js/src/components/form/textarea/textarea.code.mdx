@@ -4,8 +4,63 @@ import { Example } from "../../../src/components/example/Example"
 
 ## Introduction
 
-<Example noTheme={true}>
+### Without value
+
+<Example noTheme={true} className="sg-example">
   <React.Fragment>
-    <p-textarea></p-textarea>
+    <p-textarea name="some-name" label="Some label"></p-textarea>
+  </React.Fragment>
+</Example>
+
+### With value
+
+<Example noTheme={true} className="sg-example">
+  <React.Fragment>
+    <p-textarea name="some-name" value="Some value" label="Some label"></p-textarea>
+  </React.Fragment>
+</Example>
+
+---
+
+### States
+
+#### Disabled
+
+<Example noTheme={true} className="sg-example">
+  <React.Fragment>
+    <p-textarea name="some-name" label="Some label" disabled="true"></p-textarea>
+    <p-textarea name="some-name" value="Some value" label="Some label" disabled="true"></p-textarea>
+  </React.Fragment>
+</Example>
+
+#### Error
+
+<Example noTheme={true} className="sg-example">
+  <React.Fragment>
+    <p-textarea name="some-name" label="Some label" error="true"></p-textarea>
+    <p-textarea name="some-name" value="Some value" label="Some label" error="true"></p-textarea>
+  </React.Fragment>
+</Example>
+
+#### Disabled + Error
+
+<Example noTheme={true} className="sg-example">
+  <React.Fragment>
+    <p-textarea name="some-name" label="Some label" disabled="true" error="true"></p-textarea>
+    <p-textarea name="some-name" value="Some value" label="Some label" disabled="true" error="true"></p-textarea>
+  </React.Fragment>
+</Example>
+
+---
+
+### Edge Cases
+
+Visualization of edge cases
+
+#### Long text
+
+<Example noTheme={true} className="sg-example">
+  <React.Fragment>
+    <p-textarea name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."></p-textarea>
   </React.Fragment>
 </Example>
