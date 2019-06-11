@@ -5,7 +5,7 @@
  */
 
 
-import { HTMLStencilElement, JSXBase } from './stencil.core';
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   BreakpointCustomizable,
 } from './utils';
