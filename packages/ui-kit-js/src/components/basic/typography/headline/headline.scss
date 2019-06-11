@@ -143,6 +143,11 @@
   line-height: 1.5;
 }
 
+::slotted(a) {
+  color: inherit;
+  text-decoration: none;
+}
+
 .#{$p-global-class-prefix}headline {
   $bem-block: &;
   padding: 0;

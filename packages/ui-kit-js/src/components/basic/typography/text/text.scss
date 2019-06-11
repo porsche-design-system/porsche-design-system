@@ -23,20 +23,26 @@
   line-height: 1.5;
 }
 
+::slotted(a) {
+  color: inherit;
+  text-decoration: underline;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+}
+
+::slotted(a:hover) {
+  color: $p-color-porsche-dark-red;
+  text-decoration: none;
+}
+
+::slotted(a:focus) {
+  color: $p-color-state-focus;
+  text-decoration: underline;
+}
+
 .#{$p-global-class-prefix}text {
   $bem-block: &;
   padding: 0;
   margin: 0;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-  a {
-    text-decoration: underline;
-
-    &:hover {
-      color: $p-color-porsche-dark-red;
-      text-decoration: none;
-    }
-  }
 
   &--inline {
     display: inline-block;
