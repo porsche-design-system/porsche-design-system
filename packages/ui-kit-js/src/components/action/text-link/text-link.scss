@@ -14,6 +14,7 @@
   display: inline-flex;
   align-items: flex-start;
   color: $p-color-porsche-black;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
   &#{$bem-block}--theme-dark {
     color: $p-color-porsche-light;

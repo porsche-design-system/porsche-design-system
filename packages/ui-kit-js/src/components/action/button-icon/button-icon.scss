@@ -23,8 +23,7 @@
   color: $p-color-porsche-light;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     border-color $p-animation-hover-duration $p-animation-hover-bezier,
-    box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
-    color $p-animation-hover-duration $p-animation-hover-bezier; // must be globally defined
+    box-shadow $p-animation-hover-duration $p-animation-hover-bezier;
 
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
