@@ -11,9 +11,9 @@
 | ---------- | ---------- | ----------- | --------- | ------- |
 | `disabled` | `disabled` |             | `boolean` | `false` |
 | `error`    | `error`    |             | `boolean` | `false` |
-| `label`    | `label`    |             | `string`  | `"bar"` |
+| `label`    | `label`    |             | `string`  | `""`    |
 | `name`     | `name`     |             | `string`  | `""`    |
-| `value`    | `value`    |             | `string`  | `"foo"` |
+| `value`    | `value`    |             | `string`  | `""`    |
 
 
 ## Dependencies
