@@ -11,6 +11,26 @@ $sg-color-blue-3: dodgerblue;
 $sg-color-blue-4: royalblue;
 $sg-color-highlight: deeppink;
 
+.sg-example {
+  &::before {
+    content: '';
+    display: block;
+    margin-top: - $p-spacing-16;
+  }
+
+  p-button-regular,
+  p-button-icon,
+  p-checkbox,
+  p-radio,
+  p-input {
+    margin-top: $p-spacing-16;
+
+    &:not(:last-child) {
+      margin-right: $p-spacing-16;
+    }
+  }
+}
+
 /* ----------  color component styles ---------- */
 .sg-example-color {
   .sg-example-item {
@@ -337,26 +357,6 @@ $sg-color-highlight: deeppink;
 .sg-design-color-focus {
   background-color: $p-color-porsche-light;
   border: 2px solid $p-color-state-focus;
-}
-
-/* ----------  button component styles ---------- */
-.sg-example {
-  &::before {
-    content: '';
-    display: block;
-    margin-top: - $p-spacing-16;
-  }
-
-  p-button-regular,
-  p-button-icon,
-  p-checkbox,
-  p-radio {
-    margin-top: $p-spacing-16;
-
-    &:not(:last-child) {
-      margin-right: $p-spacing-16;
-    }
-  }
 }
 
 /* ----------  text-link component styles ---------- */
