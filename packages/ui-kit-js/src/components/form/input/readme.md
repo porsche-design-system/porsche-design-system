@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                 | Default  |
-| ---------- | ---------- | ----------- | -------------------- | -------- |
-| `disabled` | `disabled` |             | `boolean`            | `false`  |
-| `error`    | `error`    |             | `boolean`            | `false`  |
-| `icon`     | `icon`     |             | `string`             | `""`     |
-| `label`    | `label`    |             | `string`             | `"bar"`  |
-| `name`     | `name`     |             | `string`             | `""`     |
-| `type`     | `type`     |             | `"number" \| "text"` | `"text"` |
-| `value`    | `value`    |             | `string`             | `"bar"`  |
+| Property   | Attribute  | Description | Type                                                   | Default  |
+| ---------- | ---------- | ----------- | ------------------------------------------------------ | -------- |
+| `disabled` | `disabled` |             | `boolean`                                              | `false`  |
+| `error`    | `error`    |             | `boolean`                                              | `false`  |
+| `icon`     | `icon`     |             | `string`                                               | `""`     |
+| `label`    | `label`    |             | `string`                                               | `""`     |
+| `name`     | `name`     |             | `string`                                               | `""`     |
+| `type`     | `type`     |             | `"date" \| "number" \| "password" \| "text" \| "time"` | `"text"` |
+| `value`    | `value`    |             | `string`                                               | `""`     |
 
 
 ## Dependencies

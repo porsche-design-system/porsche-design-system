@@ -202,7 +202,7 @@ export namespace Components {
     'icon'?: string;
     'label'?: string;
     'name'?: string;
-    'type'?: "text" | "number";
+    'type'?: "text" | "password" | "date" | "time" | "number";
     'value'?: string;
   }
   interface PLoader {
@@ -672,7 +672,7 @@ declare namespace LocalJSX {
     'icon'?: string;
     'label'?: string;
     'name'?: string;
-    'type'?: "text" | "number";
+    'type'?: "text" | "password" | "date" | "time" | "number";
     'value'?: string;
   }
   interface PLoader extends JSXBase.HTMLAttributes<HTMLPLoaderElement> {

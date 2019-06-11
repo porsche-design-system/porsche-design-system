@@ -10,11 +10,11 @@ import { prefix } from "../../../utils";
 export class Input {
   @Prop() name?: string = "";
 
-  @Prop() value?: string = "bar";
+  @Prop() value?: string = "";
 
-  @Prop() label?: string = "bar";
+  @Prop() label?: string = "";
 
-  @Prop() type?: "text" | "number" = "text";
+  @Prop() type?: "text" | "password" | "date" | "time" | "number" | string = "text";
 
   @Prop() icon?: string = "";
 
