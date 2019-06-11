@@ -64,7 +64,7 @@
     "react-docgen-typescript": "^1.12.4",
     "react-scripts": "3.0.1",
     "react-syntax-highlighter": "^10.3.0",
-    "stylelint": "^10.0.1",
+    "stylelint": "^10.1.0",
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-scss": "^3.8.0",
