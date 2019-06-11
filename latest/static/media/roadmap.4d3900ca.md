@@ -26,14 +26,14 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 - Forms and Form elements research
 - Form decision testing
 
-### Development of Components for 1.0 first beta release / May
+### Development of Components for 1.0 first alpha release / June
 - Button Regular
-- Button Square
-- Button Circle
+- Button Icon
 - Loader
 - Pagination  
 - Text Link
 - Text Lists
+- Various form element components for testing purpose
 
 ### Documentation / Jun
 - Onboarding and Documentation testing with Design/Code
@@ -46,7 +46,7 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 
 ## Q3 2019
 
-### Development of Components for 1.0 second beta release
+### Development of Components for 1.0 release
 - Porsche Marque
 - Typography
 - Checkbox
