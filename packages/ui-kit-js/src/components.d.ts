@@ -227,6 +227,12 @@ export namespace Components {
     'name'?: string;
     'value'?: string;
   }
+  interface PSwitch {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PText {
     /**
     * The text alignment of the component.
@@ -324,21 +330,6 @@ export namespace Components {
     'name'?: string;
     'value'?: string;
   }
-  interface PToggle {
-    /**
-    * Shows the toggle button checked or unchecked
-    */
-    'checked'?: boolean;
-    /**
-    * Disables the toggle button. No events will be triggered while disabled state is active.
-    */
-    'disabled'?: boolean;
-    /**
-    * Sets the input name
-    */
-    'name': string;
-    'value': string;
-  }
 }
 
 declare global {
@@ -416,6 +407,12 @@ declare global {
     new (): HTMLPSelectElement;
   };
 
+  interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {}
+  var HTMLPSwitchElement: {
+    prototype: HTMLPSwitchElement;
+    new (): HTMLPSwitchElement;
+  };
+
   interface HTMLPTextElement extends Components.PText, HTMLStencilElement {}
   var HTMLPTextElement: {
     prototype: HTMLPTextElement;
@@ -433,12 +430,6 @@ declare global {
     prototype: HTMLPTextareaElement;
     new (): HTMLPTextareaElement;
   };
-
-  interface HTMLPToggleElement extends Components.PToggle, HTMLStencilElement {}
-  var HTMLPToggleElement: {
-    prototype: HTMLPToggleElement;
-    new (): HTMLPToggleElement;
-  };
   interface HTMLElementTagNameMap {
     'p-button-icon': HTMLPButtonIconElement;
     'p-button-regular': HTMLPButtonRegularElement;
@@ -452,10 +443,10 @@ declare global {
     'p-loader': HTMLPLoaderElement;
     'p-radio': HTMLPRadioElement;
     'p-select': HTMLPSelectElement;
+    'p-switch': HTMLPSwitchElement;
     'p-text': HTMLPTextElement;
     'p-text-link': HTMLPTextLinkElement;
     'p-textarea': HTMLPTextareaElement;
-    'p-toggle': HTMLPToggleElement;
   }
 }
 
@@ -697,6 +688,12 @@ declare namespace LocalJSX {
     'name'?: string;
     'value'?: string;
   }
+  interface PSwitch extends JSXBase.HTMLAttributes<HTMLPSwitchElement> {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'name'?: string;
+    'value'?: string;
+  }
   interface PText extends JSXBase.HTMLAttributes<HTMLPTextElement> {
     /**
     * The text alignment of the component.
@@ -798,21 +795,6 @@ declare namespace LocalJSX {
     'name'?: string;
     'value'?: string;
   }
-  interface PToggle extends JSXBase.HTMLAttributes<HTMLPToggleElement> {
-    /**
-    * Shows the toggle button checked or unchecked
-    */
-    'checked'?: boolean;
-    /**
-    * Disables the toggle button. No events will be triggered while disabled state is active.
-    */
-    'disabled'?: boolean;
-    /**
-    * Sets the input name
-    */
-    'name'?: string;
-    'value'?: string;
-  }
 
   interface IntrinsicElements {
     'p-button-icon': PButtonIcon;
@@ -827,10 +809,10 @@ declare namespace LocalJSX {
     'p-loader': PLoader;
     'p-radio': PRadio;
     'p-select': PSelect;
+    'p-switch': PSwitch;
     'p-text': PText;
     'p-text-link': PTextLink;
     'p-textarea': PTextarea;
-    'p-toggle': PToggle;
   }
 }
 

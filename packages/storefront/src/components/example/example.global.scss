@@ -23,7 +23,9 @@ $sg-color-highlight: deeppink;
   p-checkbox,
   p-radio,
   p-input,
-  p-textarea {
+  p-textarea,
+  p-select,
+  p-switch {
     margin-top: $p-spacing-16;
 
     &:not(:last-child) {
