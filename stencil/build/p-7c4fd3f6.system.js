@@ -1,0 +1,1 @@
+System.register(["./p-9521ffe5.system.js"],function(e,t){"use strict";var s,n;return{setters:[function(e){s=e.a;n=e.b}],execute:function(){s().then(function(e){return n([["p-gfnskb3u.system",[[1,"my-component",{first:[1],middle:[1],last:[1]}]]]],{resourcesUrl:e})})}}});
