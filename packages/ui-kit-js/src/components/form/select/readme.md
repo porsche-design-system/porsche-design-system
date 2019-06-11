@@ -9,9 +9,9 @@
 
 | Property | Attribute | Description | Type     | Default |
 | -------- | --------- | ----------- | -------- | ------- |
-| `label`  | `label`   |             | `string` | `"bar"` |
+| `label`  | `label`   |             | `string` | `""`    |
 | `name`   | `name`    |             | `string` | `""`    |
-| `value`  | `value`   |             | `string` | `"bar"` |
+| `value`  | `value`   |             | `string` | `""`    |
 
 
 ## Dependencies
