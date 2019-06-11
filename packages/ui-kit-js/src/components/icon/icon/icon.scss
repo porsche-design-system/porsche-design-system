@@ -13,7 +13,6 @@
   box-sizing: border-box;
   width: rem(24px);
   height: rem(24px);
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
   &--small {
     width: rem(24px);
