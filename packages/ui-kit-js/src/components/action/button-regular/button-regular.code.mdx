@@ -9,14 +9,14 @@ All button types can be generated out of the basic button by implementing additi
 Buttons used as `<button>` elements to trigger actions.
 
 ### Regular basic (default)
-If using basic type, no extra class/prop declaration is needed.
 
 <Example noTheme={false} className="sg-example">
   {(theme) => {
     return (
       <React.Fragment>
         <p-button-regular theme={theme}>Click Here!</p-button-regular>
-        <p-button-regular theme={theme} disabled="true">Click Here!</p-button-regular>
+        <p-button-regular theme={theme} disabled="true">Disabled</p-button-regular>
+        <p-button-regular loading="true" theme={theme}>Loading...</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -29,7 +29,8 @@ If using basic type, no extra class/prop declaration is needed.
     return (
       <React.Fragment>
         <p-button-regular variant="ghost" theme={theme}>Click Here!</p-button-regular>
-        <p-button-regular variant="ghost" theme={theme} disabled="true">Click Here!</p-button-regular>
+        <p-button-regular variant="ghost" theme={theme} disabled="true">Disabled</p-button-regular>
+        <p-button-regular variant="ghost" loading="true" theme={theme}>Loading...</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -42,22 +43,7 @@ If using basic type, no extra class/prop declaration is needed.
     return (
       <React.Fragment>
         <p-button-regular variant="highlight" theme={theme}>Click Here!</p-button-regular>
-        <p-button-regular variant="highlight" theme={theme} disabled="true">Click Here!</p-button-regular>
-      </React.Fragment>
-    )
-}}
-</Example>
-
-### Regular loader state
-If a button has a loading state, it must also be set in a disabled state to prevent click behaviour caused by the user.
-To show the loader icon, the default svg icon must be replaced with the loader component
-
-<Example noTheme={false} className="sg-example">
-  {(theme) => {
-    return (
-      <React.Fragment>
-        <p-button-regular loading="true" theme={theme}>Loading...</p-button-regular>
-        <p-button-regular variant="ghost" loading="true" theme={theme}>Loading...</p-button-regular>
+        <p-button-regular variant="highlight" theme={theme} disabled="true">Disabled</p-button-regular>
         <p-button-regular variant="highlight" loading="true" theme={theme}>Loading...</p-button-regular>
       </React.Fragment>
     )
@@ -75,7 +61,8 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
     return (
       <React.Fragment>
         <p-button-regular href="/lorem/ipsum" theme={theme}>Click Here!</p-button-regular>
-        <p-button-regular href="#" disabled="true" theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular href="#" disabled="true" theme={theme}>Disabled</p-button-regular>
+        <p-button-regular href="/lorem/ipsum" variant="highlight" loading="true" theme={theme}>Loading...</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -87,7 +74,8 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
     return (
       <React.Fragment>
         <p-button-regular href="/lorem/ipsum" variant="ghost" theme={theme}>Click Here!</p-button-regular>
-        <p-button-regular href="#" variant="ghost" disabled theme={theme}>Click Here!</p-button-regular>
+        <p-button-regular href="#" variant="ghost" disabled theme={theme}>Disabled</p-button-regular>
+        <p-button-regular href="#" variant="ghost" loading="true" theme={theme}>Loading...</p-button-regular>
       </React.Fragment>
     )
 }}
@@ -99,19 +87,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
     return (
       <React.Fragment>
         <p-button-regular href="/lorem/ipsum" variant="highlight" theme={theme}>Click Here!</p-button-regular>
-        <p-button-regular href="#" variant="highlight" disabled theme={theme}>Click Here!</p-button-regular>
-      </React.Fragment>
-    )
-}}
-</Example>
-
-#### Regular loading state
-<Example noTheme={false} className="sg-example">
-  {(theme) => {
-    return (
-      <React.Fragment>
-        <p-button-regular href="/lorem/ipsum" variant="highlight" loading="true" theme={theme}>Loading...</p-button-regular>
-        <p-button-regular href="#" variant="ghost" loading="true" theme={theme}>Loading...</p-button-regular>
+        <p-button-regular href="#" variant="highlight" disabled theme={theme}>Disabled</p-button-regular>
         <p-button-regular href="#" loading="true" theme={theme}>Loading...</p-button-regular>
       </React.Fragment>
     )
@@ -120,23 +96,9 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 
 ---
 
-### Button regular with specific icon
-If another icon needs to be implemented, just replace the default icon with your new icon.
-
-<Example noTheme={false} className="sg-example">
-  {(theme) => {
-    return (
-      <React.Fragment>
-        <p-button-regular icon="phone" theme={theme}>Click Here!</p-button-regular>
-      </React.Fragment>
-    )
-}}
-</Example>
-
 ### Button regular small
-All button types can be rendered in a smaller variant.
+All button types can be rendered in a smaller variant. All properties of the regular button can be set.
 
-#### Variants
 <Example noTheme={false} className="sg-example">
   {(theme) => {
     return (
@@ -149,35 +111,32 @@ All button types can be rendered in a smaller variant.
 }}
 </Example>
 
-#### Loading state
+---
+
+### Button regular with specific icon
+If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property.
+If you need to link to another icon hosted somewhere else, just set the whole icon path to thge `icon` prop.
 
 <Example noTheme={false} className="sg-example">
   {(theme) => {
     return (
-      <React.Fragment>
-        <p-button-regular small="true" loading="true" theme={theme}>Click Here!</p-button-regular>
-        <p-button-regular small="true" loading="true" variant="ghost" theme={theme}>Click Here!</p-button-regular>
-        <p-button-regular small="true" loading="true" variant="highlight" theme={theme}>Click Here!</p-button-regular>
-      </React.Fragment>
+      <p-button-regular icon="phone" theme={theme}>Click Here!</p-button-regular>
     )
 }}
 </Example>
 
 ---
 
-### Button edge cases
-Visualization of edge cases
+### Edge cases
 
 #### Long text
 <Example noTheme={false} className="sg-example">
   {(theme) => {
     const wrapperStyle = {"max-width": "320px"}
     return (
-      <React.Fragment>
-        <div style={wrapperStyle}>
-          <p-button-regular icon="phone" theme={theme}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p-button-regular>
-        </div>
-      </React.Fragment>
+      <div style={wrapperStyle}>
+        <p-button-regular icon="phone" theme={theme}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p-button-regular>
+      </div>
     )
 }}
 </Example>
