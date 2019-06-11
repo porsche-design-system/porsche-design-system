@@ -50,6 +50,10 @@
   }
 
   &__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
     position: absolute;
     background: $p-color-porsche-light;
     top: 2px;

@@ -10,9 +10,9 @@ import { prefix } from "../../../utils";
 export class Textarea {
   @Prop() name?: string = "";
 
-  @Prop() value?: string = "foo";
+  @Prop() value?: string = "";
 
-  @Prop() label?: string = "bar";
+  @Prop() label?: string = "";
 
   @Prop() disabled?: boolean = false;
 

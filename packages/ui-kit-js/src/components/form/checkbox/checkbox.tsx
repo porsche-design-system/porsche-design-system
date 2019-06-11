@@ -8,9 +8,9 @@ import { prefix } from "../../../utils";
   shadow: true
 })
 export class Checkbox {
-  @Prop() name?: string = "foo";
+  @Prop() name?: string = "";
 
-  @Prop() value?: string = "bar";
+  @Prop() value?: string = "";
 
   @Prop() disabled?: boolean = false;
 

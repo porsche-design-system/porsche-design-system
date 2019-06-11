@@ -10,9 +10,9 @@ import { prefix } from "../../../utils";
 export class Select {
   @Prop() name?: string = "";
 
-  @Prop() value?: string = "bar";
+  @Prop() value?: string = "";
 
-  @Prop() label?: string = "bar";
+  @Prop() label?: string = "";
 
   render(): JSX.Element {
     const selectClasses = cx(prefix("select"));
