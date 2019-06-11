@@ -5,14 +5,14 @@
   vertical-align: top;
 }
 
-.#{$p-global-class-prefix}toggle {
+.#{$p-global-class-prefix}switch {
   $bem-block: &;
   position: relative;
   width: rem(48px);
   height: rem(24px);
   display: inline-block;
 
-  // toggle is hovered
+  // switch is hovered
   &:hover #{$bem-block}__slider {
     background-color: $p-color-neutral-grey-2;
 
@@ -24,7 +24,7 @@
   &__checkbox {
     display: none;
 
-    // toggle is active
+    // switch is active
     &:checked ~ #{$bem-block}__slider {
       border-color: $p-color-status-green;
       background-color: $p-color-status-green;
@@ -39,13 +39,13 @@
       }
     }
 
-    // toggle is disabled
+    // switch is disabled
     &:disabled ~ #{$bem-block}__slider {
       cursor: default;
       pointer-events: none;
     }
 
-    // toggle is disabled and not active
+    // switch is disabled and not active
     &:disabled:not(:checked) ~ #{$bem-block}__slider {
       background-color: transparent;
 
