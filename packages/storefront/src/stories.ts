@@ -99,9 +99,12 @@ export const Stories: Stories = {
   },
   Layout: {
     Flex: {
-      code: importMDX("../../workshop/src/components/layout/flex/flex.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/layout/flex/flex.vrt.mdx"),
-      props: ["Flex", "FlexItem"]
+      code: importMDX("../../ui-kit-js/src/components/layout/flex/flex.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/layout/flex/flex.vrt.mdx"),
+      docs: [
+        importMDX("../../ui-kit-js/src/components/layout/flex/flex/flex.prop.mdx"),
+        importMDX("../../ui-kit-js/src/components/layout/flex/flex-item/flex-item.prop.mdx")
+      ]
     },
     Grid: {
       design: importMDX("../../ui-kit-js/src/components/layout/grid/grid.design.mdx"),

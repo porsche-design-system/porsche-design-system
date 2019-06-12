@@ -118,6 +118,66 @@ export namespace Components {
     | "neutral-grey-8"
     | "inherit";
   }
+  interface PFlex {
+    /**
+    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. Corresponds to the "alignContent" css property.
+    */
+    'alignContent'?: BreakpointCustomizable<
+    "stretch" | "start" | "end" | "center" | "space-between" | "space-around" | any
+    >;
+    /**
+    * Defines how the flex items are aligned along the cross axis.
+    */
+    'alignItems'?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline" | any>;
+    /**
+    * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
+    */
+    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse" | any>;
+    /**
+    * Defines the flex containers content flow if 2 or more containers are siblings of each other.
+    */
+    'flow'?: BreakpointCustomizable<"block" | "inline" | any>;
+    /**
+    * Defines how the flex items are aligned along the main axis.
+    */
+    'justifyContent'?: BreakpointCustomizable<
+    "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | any
+    >;
+    /**
+    * If set, overflowing elements will wrap to a new line.
+    */
+    'wrap'?: BreakpointCustomizable<"nowrap" | "wrap" | "reverse" | any>;
+  }
+  interface PFlexItem {
+    /**
+    * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
+    */
+    'alignSelf'?: BreakpointCustomizable<"auto" | "start" | "end" | "center" | "baseline" | "stretch" | any>;
+    /**
+    * The shorthand property for the combined definition of "shrink", "grow" and "basis"
+    */
+    'flex'?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal" | any>;
+    /**
+    * The ability to allow/disallow the flex child to grow.
+    */
+    'grow'?: BreakpointCustomizable<0 | 1 | any>;
+    /**
+    * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
+    */
+    'offset'?: BreakpointCustomizable<
+    "none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | any
+    >;
+    /**
+    * The ability to allow/disallow the flex child to shrink.
+    */
+    'shrink'?: BreakpointCustomizable<1 | 0 | any>;
+    /**
+    * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
+    */
+    'width'?: BreakpointCustomizable<
+    "auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full" | any
+    >;
+  }
   interface PGrid {
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
@@ -359,6 +419,18 @@ declare global {
     new (): HTMLPColorElement;
   };
 
+  interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {}
+  var HTMLPFlexElement: {
+    prototype: HTMLPFlexElement;
+    new (): HTMLPFlexElement;
+  };
+
+  interface HTMLPFlexItemElement extends Components.PFlexItem, HTMLStencilElement {}
+  var HTMLPFlexItemElement: {
+    prototype: HTMLPFlexItemElement;
+    new (): HTMLPFlexItemElement;
+  };
+
   interface HTMLPGridElement extends Components.PGrid, HTMLStencilElement {}
   var HTMLPGridElement: {
     prototype: HTMLPGridElement;
@@ -435,6 +507,8 @@ declare global {
     'p-button-regular': HTMLPButtonRegularElement;
     'p-checkbox': HTMLPCheckboxElement;
     'p-color': HTMLPColorElement;
+    'p-flex': HTMLPFlexElement;
+    'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
     'p-grid-child': HTMLPGridChildElement;
     'p-headline': HTMLPHeadlineElement;
@@ -578,6 +652,66 @@ declare namespace LocalJSX {
     | "neutral-grey-7"
     | "neutral-grey-8"
     | "inherit";
+  }
+  interface PFlex extends JSXBase.HTMLAttributes<HTMLPFlexElement> {
+    /**
+    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. Corresponds to the "alignContent" css property.
+    */
+    'alignContent'?: BreakpointCustomizable<
+    "stretch" | "start" | "end" | "center" | "space-between" | "space-around" | any
+    >;
+    /**
+    * Defines how the flex items are aligned along the cross axis.
+    */
+    'alignItems'?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline" | any>;
+    /**
+    * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
+    */
+    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse" | any>;
+    /**
+    * Defines the flex containers content flow if 2 or more containers are siblings of each other.
+    */
+    'flow'?: BreakpointCustomizable<"block" | "inline" | any>;
+    /**
+    * Defines how the flex items are aligned along the main axis.
+    */
+    'justifyContent'?: BreakpointCustomizable<
+    "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | any
+    >;
+    /**
+    * If set, overflowing elements will wrap to a new line.
+    */
+    'wrap'?: BreakpointCustomizable<"nowrap" | "wrap" | "reverse" | any>;
+  }
+  interface PFlexItem extends JSXBase.HTMLAttributes<HTMLPFlexItemElement> {
+    /**
+    * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
+    */
+    'alignSelf'?: BreakpointCustomizable<"auto" | "start" | "end" | "center" | "baseline" | "stretch" | any>;
+    /**
+    * The shorthand property for the combined definition of "shrink", "grow" and "basis"
+    */
+    'flex'?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal" | any>;
+    /**
+    * The ability to allow/disallow the flex child to grow.
+    */
+    'grow'?: BreakpointCustomizable<0 | 1 | any>;
+    /**
+    * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
+    */
+    'offset'?: BreakpointCustomizable<
+    "none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | any
+    >;
+    /**
+    * The ability to allow/disallow the flex child to shrink.
+    */
+    'shrink'?: BreakpointCustomizable<1 | 0 | any>;
+    /**
+    * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
+    */
+    'width'?: BreakpointCustomizable<
+    "auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full" | any
+    >;
   }
   interface PGrid extends JSXBase.HTMLAttributes<HTMLPGridElement> {
     /**
@@ -801,6 +935,8 @@ declare namespace LocalJSX {
     'p-button-regular': PButtonRegular;
     'p-checkbox': PCheckbox;
     'p-color': PColor;
+    'p-flex': PFlex;
+    'p-flex-item': PFlexItem;
     'p-grid': PGrid;
     'p-grid-child': PGridChild;
     'p-headline': PHeadline;
