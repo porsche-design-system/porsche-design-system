@@ -31,10 +31,7 @@ Enrich your Porsche UI design experience by using the Porsche color palette in y
 [Download Porsche color palette](https://ui.porsche.com/latest/porsche-ui-kit-colors.sketchpalette)
 
 ## Typeface
-
-You can download the Porsche font files in the Porsche Brand Guide:  
-[Download Porsche typeface](https://brandguide.porsche.com/elements/manual/view/id/885)  
-For UI design use within Sketch, we recommend using the "Typefaces for digital users, Web Developer Kit". 
+You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
 
 ## Design Workflow
 To improve output efficiency and reduce maintenance costs, we decided to use the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/how-it-works/). 
