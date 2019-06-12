@@ -13,12 +13,8 @@ module.exports = {
         {
           test: /\.(md)(\?.*)?$/,
           use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'markdown/[name].[hash:8].[ext]'
-              }
-            }
+            'vue-loader',
+            'vmark-loader'
           ]
         }
       ]
