@@ -1,6 +1,7 @@
 <template>
   <div class="playground">
-    <slot/>
+    <template>Hello</template>
+    <slot :theme="this.theme"/>
   </div>
 </template>
 
@@ -9,6 +10,13 @@
 
   @Component
   export default class Playground extends Vue {
+    public theme = 'highlight';
+
+    private mounted(): void {
+      setTimeout(() => {
+        this.theme = 'ghost';
+      }, 1000);
+    }
   }
 </script>
 

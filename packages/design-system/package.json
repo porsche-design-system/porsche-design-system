@@ -31,6 +31,8 @@
     "sass-loader": "^7.1.0",
     "ts-jest": "^23.0.0",
     "typescript": "^3.4.3",
+    "vmark": "^1.1.0",
+    "vmark-loader": "^1.0.0",
     "vue-template-compiler": "^2.6.10"
   }
 }
