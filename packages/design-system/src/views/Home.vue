@@ -15,7 +15,7 @@
   import Playground from '@/components/Playground.vue';
 
   export default {
-    name: 'app',
+    name: 'home',
     components: {
       Playground,
       BrowserCompatibility,
