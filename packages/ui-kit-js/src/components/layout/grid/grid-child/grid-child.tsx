@@ -30,7 +30,7 @@ export class GridChild {
     const gridChildClasses = cx(
       prefix("grid-child"),
       mapBreakpointPropToClasses("grid-child--size", parseProp(this.size)),
-      mapBreakpointPropToClasses("grid-child--offset", parseProp(this.offset))
+      this.offset !== 0 && mapBreakpointPropToClasses("grid-child--offset", parseProp(this.offset))
     );
 
     return <Host class={gridChildClasses} />;
