@@ -1,11 +1,3 @@
-import Playground from '@/components/Playground.vue';
-
-# Accessibility Criteria
-
-<Playground v-slot="slotProps">
-  <p-button-regular v-bind:variant="slotProps.theme">Hello World</p-button-regular>
-</Playground>
-
 # Accessibility Criteria
 
 ## What is web accessibility?

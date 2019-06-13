@@ -2,7 +2,7 @@
 
 <Playground>
   <template v-slot="slotProps">
-    <p-button-regular v-bind:variant="slotProps.theme">Hello World</p-button-regular>
+    <p-button-regular :variant="slotProps.theme">Hello World</p-button-regular>
   </template>
 </Playground>
 
