@@ -29,16 +29,8 @@
   }
 
   &:focus {
-    outline: none;
-
-    &::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      height: 2px;
-      width: 100%;
-      background-color: $p-color-state-focus;
-    }
+    outline: 1px solid $p-color-state-focus;
+    outline-offset: 4px;
   }
 
   & p-text {
