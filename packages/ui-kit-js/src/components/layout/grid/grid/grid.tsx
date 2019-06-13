@@ -29,8 +29,8 @@ export class Grid {
 
     const gridClasses = cx(
       prefix("grid"),
-      mapBreakpointPropToClasses("grid--direction", parseProp(this.direction)),
-      mapBreakpointPropToClasses("grid--gap", parseProp(this.gap))
+      this.direction !== "row" && mapBreakpointPropToClasses("grid--direction", parseProp(this.direction)),
+      this.gap !== "normal" && mapBreakpointPropToClasses("grid--gap", parseProp(this.gap))
     );
 
     return <Host class={gridClasses} />;
