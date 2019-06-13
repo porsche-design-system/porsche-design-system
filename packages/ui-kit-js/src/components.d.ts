@@ -138,6 +138,10 @@ export namespace Components {
     */
     'flow'?: BreakpointCustomizable<"block" | "inline" | any>;
     /**
+    * Defines the gap between contained children.
+    */
+    'gap'?: 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+    /**
     * Defines how the flex items are aligned along the main axis.
     */
     'justifyContent'?: BreakpointCustomizable<
@@ -672,6 +676,10 @@ declare namespace LocalJSX {
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
     'flow'?: BreakpointCustomizable<"block" | "inline" | any>;
+    /**
+    * Defines the gap between contained children.
+    */
+    'gap'?: 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
     /**
     * Defines how the flex items are aligned along the main axis.
     */

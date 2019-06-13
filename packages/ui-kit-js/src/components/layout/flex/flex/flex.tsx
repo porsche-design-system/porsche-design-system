@@ -1,4 +1,4 @@
-import { JSX, Component, Host, Prop, h } from "@stencil/core";
+import { JSX, Element, Component, Host, Prop, h } from "@stencil/core";
 import cx from "classnames";
 import { BreakpointCustomizable, mapBreakpointPropToClasses, prefix } from "../../../../utils";
 
@@ -7,6 +7,7 @@ import { BreakpointCustomizable, mapBreakpointPropToClasses, prefix } from "../.
   styleUrl: "flex.scss"
 })
 export class Flex {
+  @Element() host: HTMLDivElement;
   /**
    * Defines the flex containers content flow if 2 or more containers are siblings of each other.
    */
@@ -42,6 +43,11 @@ export class Flex {
     "stretch" | "start" | "end" | "center" | "space-between" | "space-around" | any
   > = "stretch";
 
+  /**
+   * Defines the gap between contained children.
+   */
+  @Prop() gap?: 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g" = 0;
+
   render(): JSX.Element {
     const isJsonString = (str: string) => {
       try {
@@ -64,9 +70,22 @@ export class Flex {
       this.justifyContent !== "start" &&
         mapBreakpointPropToClasses("flex--justify-content", parseProp(this.justifyContent)),
       this.alignItems !== "stretch" && mapBreakpointPropToClasses("flex--align-items", parseProp(this.alignItems)),
-      this.alignContent !== "stretch" && mapBreakpointPropToClasses("flex--align-content", parseProp(this.alignContent))
+      this.alignContent !== "stretch" &&
+        mapBreakpointPropToClasses("flex--align-content", parseProp(this.alignContent)),
+      this.gap !== 0 && prefix(`spacing-m-nl--${this.gap}`),
+      this.gap !== 0 && prefix(`spacing-m-nr--${this.gap}`)
     );
 
-    return <Host class={flexClasses} />;
+    const spacingFlexItemLeftClass = this.gap !== 0 && prefix(`spacing-pl--${this.gap}`);
+    const spacingFlexItemRightClass = this.gap !== 0 && prefix(`spacing-pr--${this.gap}`);
+
+    return (
+      <Host class={flexClasses}>
+        {this.gap !== 0 &&
+          Array.from(this.host.children).map((child) =>
+            child.classList.add(spacingFlexItemLeftClass, spacingFlexItemRightClass)
+          )}
+      </Host>
+    );
   }
 }

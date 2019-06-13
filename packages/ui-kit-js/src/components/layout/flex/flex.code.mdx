@@ -721,6 +721,57 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Modifier for flex items (children)
 
+### Flex item spacing
+
+Use `gap` to apply equal horizontal spacing to all flex items of the container. You have to take care of vertical spacing yourself. This should not be an alternative to the global grid system/component. All values of standard spacing component can be used.
+
+#### Static
+
+<Example className="sg-example-flex sg-example-flex--gap">
+  <p-flex gap="16">
+    <p-flex-item>
+      <p className="sg-example-item">
+        1
+      </p>
+    </p-flex-item>
+    <p-flex-item>
+      <p className="sg-example-item">
+        2
+      </p>
+    </p-flex-item>
+    <p-flex-item>
+      <p className="sg-example-item">
+        3
+      </p>
+    </p-flex-item>
+  </p-flex>
+</Example>
+
+#### Responsive
+Responsive spacing have specific predefined values for each breakpoint which make them grow/shrink depending on the viewport width.
+
+<Example className="sg-example-flex sg-example-flex--gap">
+  <p-flex gap="b">
+    <p-flex-item>
+      <p className="sg-example-item">
+        1
+      </p>
+    </p-flex-item>
+    <p-flex-item>
+      <p className="sg-example-item">
+        2
+      </p>
+    </p-flex-item>
+    <p-flex-item>
+      <p className="sg-example-item">
+        3
+      </p>
+    </p-flex-item>
+  </p-flex>
+</Example>
+
+---
+
 ### Flex item width
 
 The widths of flex items is normally defined through its contents by default.

@@ -33,8 +33,6 @@
 
 .#{$p-global-class-prefix}flex {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 
   @include p-flex;
 
