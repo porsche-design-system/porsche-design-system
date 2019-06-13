@@ -1,23 +1,54 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/getting-started/about">About</router-link>
-      <router-link to="/components/basic/color">Color</router-link>
-    </div>
+    <aside>
+      <Header/>
+      <Sidebar/>
+      <Footer/>
+    </aside>
+    <main>
+
+    </main>
     <router-view/>
   </div>
 </template>
 
+<script lang="ts">
+  import {Component, Vue} from 'vue-property-decorator';
+  import Header from '@/components/Header.vue';
+  import Sidebar from '@/components/Sidebar.vue';
+  import Footer from '@/components/Footer.vue';
+
+  @Component({
+    components: {
+      Header,
+      Sidebar,
+      Footer,
+    },
+  })
+  export default class App extends Vue {}
+</script>
+
 <style lang="scss">
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 300px;
+    height: 100vh;
+    z-index: 1;
+    border-right: 1px solid #ccc;
+    transition: transform 400ms ease-out, opacity 400ms ease-out;
+    will-change: transform, opacity;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
-}
+
+  main {
+    display: block;
+    padding: 32px;
+    max-width: 1620px;
+    transition: margin-left 400ms ease-out;
+  }
 </style>
