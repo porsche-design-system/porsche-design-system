@@ -1,6 +1,5 @@
 <template>
   <div class="playground">
-    <template>Hello</template>
     <slot :theme="this.theme"/>
   </div>
 </template>
