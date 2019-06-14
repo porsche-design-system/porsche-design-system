@@ -21,14 +21,8 @@ export class Checkbox {
   render(): JSX.Element {
     const checkboxClasses = cx(prefix("checkbox"));
     const fieldClasses = cx(prefix("checkbox__field"));
-    const iconClasses = cx(
-      prefix("checkbox__icon"),
-      { [prefix("checkbox__icon--error")]: this.error }
-    );
-    const labelClasses = cx(
-      prefix("checkbox__label"),
-      { [prefix("checkbox__label--error")]: this.error }
-    );
+    const iconClasses = cx(prefix("checkbox__icon"), this.error && prefix("checkbox__icon--error"));
+    const labelClasses = cx(prefix("checkbox__label"), this.error && prefix("checkbox__label--error"));
 
     return (
       <label class={checkboxClasses}>

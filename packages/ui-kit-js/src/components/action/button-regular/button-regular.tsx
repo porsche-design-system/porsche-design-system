@@ -80,11 +80,10 @@ export class ButtonRegular {
 
     const buttonClasses = cx(
       prefix("button-regular"),
-      { [prefix("button-regular--highlight")]: this.variant === "highlight" },
-      { [prefix("button-regular--ghost")]: this.variant === "ghost" },
-      { [prefix("button-regular--loading")]: this.loading },
-      { [prefix("button-regular--small")]: this.small },
-      { [prefix("button-regular--theme-dark")]: this.theme === "dark" }
+      this.variant !== "default" && prefix(`button-regular--${this.variant}`),
+      this.loading && prefix("button-regular--loading"),
+      this.small && prefix("button-regular--small"),
+      this.theme === "dark" && prefix("button-regular--theme-dark")
     );
     const iconClasses = prefix("button-regular__icon");
     const loaderClasses = prefix("button-regular__loader");

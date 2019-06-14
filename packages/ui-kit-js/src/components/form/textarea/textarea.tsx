@@ -20,7 +20,7 @@ export class Textarea {
 
   render(): JSX.Element {
     const textareaClasses = cx(prefix("textarea"));
-    const fieldClasses = cx(prefix("textarea__field"), { [prefix("textarea__field--error")]: this.error });
+    const fieldClasses = cx(prefix("textarea__field"), this.error && prefix("textarea__field--error"));
     const labelClasses = cx(prefix("textarea__label"));
 
     return (
