@@ -11,7 +11,7 @@
       </li>
     </ul>
     <ul>
-      <li v-for="(categories, category) in components">
+      <li v-for="(categories, category) in stories">
         <h2>{{ category }}</h2>
         <ul>
           <li v-for="(story, component) in categories">
@@ -25,18 +25,13 @@
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
-  import {Pages, Components} from '@/design-system.config';
+  import {pages, stories} from '@/design-system.config';
 
   @Component
   export default class Sidebar extends Vue {
 
-    public pages: Pages = {};
-    public components: Components = {};
-
-    public async mounted() {
-      this.pages = (await import('@/design-system.config')).pages;
-      this.components = (await import('@/design-system.config')).components;
-    }
+    public pages = pages;
+    public stories = stories;
 
     public encodeUrl(param: string): string {
       return param.toLowerCase().replace(' ', '-');

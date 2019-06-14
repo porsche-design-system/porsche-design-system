@@ -1,0 +1,48 @@
+# Color
+
+## Usage
+Following pre defined `scss` variables can be used for styling. Namings of variables correspond to design naming conventions lsee design specs).
+
+### Brand colors
+```
+$p-color-porsche-red
+$p-color-porsche-dark-red
+$p-color-porsche-light
+$p-color-porsche-dark
+$p-color-porsche-black
+```
+
+### Surface colors
+```
+$p-color-surface-light
+$p-color-surface-dark
+```
+
+### Neutral colors
+```
+$p-color-neutral-grey-1
+$p-color-neutral-grey-2
+$p-color-neutral-grey-3
+$p-color-neutral-grey-4
+$p-color-neutral-grey-5
+$p-color-neutral-grey-6
+$p-color-neutral-grey-7
+$p-color-neutral-grey-8
+```
+
+### Status colors
+```
+$p-color-status-red
+$p-color-status-green
+$p-color-status-yellow
+```
+
+<script>
+  import Playground from '@/components/Playground.vue';
+
+  export default {
+    components: {
+      Playground
+    }
+  }
+</script>
