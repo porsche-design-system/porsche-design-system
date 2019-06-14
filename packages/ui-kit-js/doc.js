@@ -44,5 +44,8 @@ for (const file of getFilesInDirectory('./src/components/', 'readme.md')) {
     fs.writeFile(`${dir}/${basename}.prop.mdx`, removeWhitespace(removeGenerator(removeGraph(updateDependencyPaths(data)))), 'utf8', (err) => {
       if (err) throw err;
     });
+    fs.writeFile(`${dir}/${basename}.props.md`, removeWhitespace(removeGenerator(removeGraph(updateDependencyPaths(data)))), 'utf8', (err) => {
+      if (err) throw err;
+    });
   });
 }

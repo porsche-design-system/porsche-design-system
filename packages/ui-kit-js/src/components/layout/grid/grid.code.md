@@ -1,0 +1,403 @@
+import { Example } from "../../../src/components/example/Example"
+
+# Grid
+
+## Introduction
+
+The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not ment to function as a toolkit for layouting content blocks or components. Therefore the [Flex](#/layout/flex) component is the right choice.
+
+### Grid standard
+
+For standard grid implementation, it is recommended to use this pattern. The class `grid` on the parent and `grid__child` on the children are mandatory. With `grid__child--size-(1-12)` it is possible to define column widths.
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid>
+          <p-grid-child size={12}>
+            <p className="sg-example-item">
+              12
+            </p>
+          </p-grid-child>
+        </p-grid>
+        {Array.apply(0, Array(11)).map(function(x, i) {
+          return (
+            <p-grid key={i}>
+              <p-grid-child size={i + 1}>
+                <p className="sg-example-item">{i+1}</p>
+              </p-grid-child>
+              <p-grid-child size={11 - i}>
+                <p className="sg-example-item">{11-i}</p>
+              </p-grid-child>
+            </p-grid>
+          )
+        })}
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Grid offset
+
+In some cases it can be neccessary to indent columns. The grid gives basic indentions based on grid sizings. The child column has an offset of 1 column on the left and due to its length of 10 columns an offset of 1 column to the right. With `grid__child--offset-(0-11)` it is possible to define offsets.
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        {Array.apply(0, Array(11)).map(function(x, i) {
+          return (
+            <p-grid key={i}>
+              <p-grid-child offset={i + 1} size={11 - i}>
+                <p className="sg-example-item">{i+1}</p>
+              </p-grid-child>
+            </p-grid>
+          )
+        })}
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Grid direction
+
+In some cases it might be neccessary to define or change direction of the columns/rows. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
+
+#### Row (default)
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid direction="row">
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              1
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              2
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              3
+            </p>
+          </p-grid-child>
+        </p-grid>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Row reverse
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid direction="row-reverse">
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              1
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              2
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              3
+            </p>
+          </p-grid-child>
+        </p-grid>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Column
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid direction="column">
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              1
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              2
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              3
+            </p>
+          </p-grid-child>
+        </p-grid>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Column reverse
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid direction="column-reverse">
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              1
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              2
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              3
+            </p>
+          </p-grid-child>
+        </p-grid>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Grid gap
+
+In some cases it might be useful to adapt the gap of the grid. Default is `normal`. But `zero` is also possible to place elements besides each other without spacings.
+
+#### Normal (default)
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid gap="normal">
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              1
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              2
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              3
+            </p>
+          </p-grid-child>
+        </p-grid>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Zero
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid gap="zero">
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              1
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              2
+            </p>
+          </p-grid-child>
+          <p-grid-child size={4}>
+            <p className="sg-example-item">
+              3
+            </p>
+          </p-grid-child>
+        </p-grid>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+---
+
+### Grid nesting
+
+Basic nesting of grids is supported. "Basic" because of percentage value of width and gaps which couldn't be calculated for each column width. Here are some examples of "dos" and "don'ts":
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid>
+          <p-grid-child size={6}>
+            <div className="sg-example-item-outer">
+              <p-grid>
+                <p-grid-child size={6}>
+                  <p className="sg-example-item">
+                    1
+                  </p>
+                </p-grid-child>
+                <p-grid-child size={6}>
+                  <p className="sg-example-item">
+                    2
+                  </p>
+                </p-grid-child>
+              </p-grid>
+            </div>
+          </p-grid-child>
+          <p-grid-child size={6}>
+            <div className="sg-example-item-outer">
+              <p-grid>
+                <p-grid-child size={4}>
+                  <p className="sg-example-item">
+                    1
+                  </p>
+                </p-grid-child>
+                <p-grid-child size={8}>
+                  <p className="sg-example-item">
+                    2
+                  </p>
+                </p-grid-child>
+              </p-grid>
+            </div>
+          </p-grid-child>
+        </p-grid>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+#### Possible nesting by keeping columns in "the grid"
+
+Only columns with the following widths could be nested:
+
+* total width of 8
+* total width of 6
+* total width of 4
+
+#### Forbidden nesting
+
+Nesting inside columns with the following widths should be prevented, because all children widths won't be in "the grid" anymore:
+
+* total width of 11
+* total width of 10
+* total width of 9
+* total width of 7
+* total width of 5
+* total width of 3
+
+---
+
+### Grid responsive
+
+The grid system is fluid/responsive by itself by using percentages for every value (widths, gaps, offsets). But it can also provide breakpoint specific values to fit the needs of certain viewports:
+
+<Example className="sg-example-grid">
+  {() => {
+    return (
+      <React.Fragment>
+        <p-grid gap='{"base": "normal", "s": "zero", "m": "normal"}'>
+          <p-grid-child className="p-flex" size='{"base": 12, "m": 4, "l": 3}' offset='{"base": 0, "m": 2, "l": 0}'>
+            <div className="p-flex__child p-flex__child--auto" className="sg-example-item">
+              <p type="4-thin">Column 1</p>
+              <p>
+                xxs -- size: 12 <br />s -- gap: zero <br />m -- gap: normal, size: 4, offset: 2<br />l -- size: 3,
+                offset: 0
+              </p>
+            </div>
+          </p-grid-child>
+          <p-grid-child
+            className="p-flex"
+            size='{
+              "base": 12,
+              "s": 6,
+              "m": 4,
+              "l": 3
+            }'
+            offset='{"base": 0, "s": 3, "m": 0}'
+          >
+            <div className="p-flex__child p-flex__child--auto" className="sg-example-item">
+              <p type="4-thin">Column 2</p>
+              <p>
+                xxs -- size: 12 <br />s -- gap: zero, size: 6, offset: 3<br />m -- gap: normal, size: 4, offset: 0<br />l
+                -- size: 3
+              </p>
+            </div>
+          </p-grid-child>
+          <p-grid-child
+            className="p-flex"
+            size='{
+              "base": 12,
+              "s": 6,
+              "l": 3
+            }'
+          >
+            <div className="p-flex__child p-flex__child--auto" className="sg-example-item">
+              <p type="4-thin">Column 3</p>
+              <p>
+                xxs -- size: 12 <br />s -- gap: zero, size: 6<br />m -- gap: normal
+                <br />l -- size: 3
+              </p>
+            </div>
+          </p-grid-child>
+          <p-grid-child
+            className="p-flex"
+            size='{
+              "base": 12,
+              "s": 6,
+              "l": 3
+            }'
+          >
+            <div className="p-flex__child p-flex__child--auto" className="sg-example-item">
+              <p type="4-thin">Column 4</p>
+              <p>
+                xxs -- size: 12 <br />s -- gap: zero, size: 6<br />m -- gap: normal
+                <br />l -- size: 3
+              </p>
+            </div>
+          </p-grid-child>
+        </p-grid>
+      </React.Fragment>
+    )
+  }}
+</Example>
+
+**Possible class names on the grid parent container (where {p} is the prefix and {bp} the breakpoint value):**
+* `{p}-grid--direction-{direction}-{bp}` => direction of columns
+* `{p}-grid--gap-{gap}-{bp}` => use of gaps between columns
+* `{p}-grid__child--size-{size}-{bp}` => size based on amount of columns
+* `{p}-grid__child--size-{offset}-{bp}` => offset based on amount of columns
+
+<script>
+  import Playground from '@/components/Playground.vue';
+
+  export default {
+    components: {
+      Playground
+    }
+  }
+</script>
