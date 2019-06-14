@@ -6,9 +6,8 @@
       <Footer/>
     </aside>
     <main>
-
+      <router-view/>
     </main>
-    <router-view/>
   </div>
 </template>
 
@@ -46,6 +45,7 @@
   }
 
   main {
+    margin-left: 320px;
     display: block;
     padding: 32px;
     max-width: 1620px;

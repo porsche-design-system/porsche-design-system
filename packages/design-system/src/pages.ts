@@ -6,23 +6,23 @@ export interface Pages {
 
 export const pages: Pages = {
   'Getting Started': {
-    'About': '@/pages/getting-started/about.md',
-    'Design Workflow': '@/pages/getting-started/design-workflow.md',
-    'Sketch Plugins': '@/pages/getting-started/sketch-plugins.md',
-    'Start Coding': '@/pages/getting-started/start-coding.md',
+    'About': '@/pages/about.md',
+    'Design Workflow': '@/pages/design-workflow.md',
+    'Sketch Plugins': '@/pages/sketch-plugins.md',
+    'Start Coding': '@/pages/start-coding.md',
   },
   'News': {
-    Updates: '@/pages/news/updates.md',
-    Versioning: '@/pages/news/versioning.md',
-    Roadmap: '@/pages/news/roadmap.md',
+    Updates: '@/pages/updates.md',
+    Versioning: '@/pages/versioning.md',
+    Roadmap: '@/pages/roadmap.md',
   },
   'Help': {
-    Support: '@/pages/help/support.md',
-    FAQ: '@/pages/help/faq.md',
+    Support: '@/pages/support.md',
+    FAQ: '@/pages/faq.md',
   },
   'Basics': {
-    'Browser Compatibility': '@/pages/basics/browser-compatibility.md',
-    'Quality Criteria': '@/pages/basics/quality-criteria.md',
-    'Accessibility Criteria': '@/pages/basics/accessibility.md',
+    'Browser Compatibility': '@/pages/browser-compatibility.md',
+    'Quality Criteria': '@/pages/quality-criteria.md',
+    'Accessibility Criteria': '@/pages/accessibility.md',
   },
 };
