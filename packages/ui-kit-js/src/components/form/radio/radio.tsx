@@ -21,14 +21,8 @@ export class Radio {
   render(): JSX.Element {
     const radioClasses = cx(prefix("radio"));
     const fieldClasses = cx(prefix("radio__field"));
-    const iconClasses = cx(
-      prefix("radio__icon"),
-      { [prefix("radio__icon--error")]: this.error }
-    );
-    const labelClasses = cx(
-      prefix("radio__label"),
-      { [prefix("radio__label--error")]: this.error }
-    );
+    const iconClasses = cx(prefix("radio__icon"), this.error && prefix("radio__icon--error"));
+    const labelClasses = cx(prefix("radio__label"), this.error && prefix("radio__label--error"));
 
     return (
       <label class={radioClasses}>

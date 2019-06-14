@@ -17,8 +17,8 @@ export class Loader {
   render(): JSX.Element {
     const loaderClasses = cx(
       prefix("loader"),
-      { [prefix(`loader--${this.size}`)]: this.size },
-      { [prefix("loader--theme-dark")]: this.theme === "dark" }
+      this.size && prefix(`loader--${this.size}`),
+      this.theme === "dark" && prefix("loader--theme-dark")
     );
     const imageClasses = prefix("loader__image");
     const bgClasses = prefix("loader__bg");

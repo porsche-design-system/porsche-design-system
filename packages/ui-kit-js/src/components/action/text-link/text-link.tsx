@@ -35,8 +35,8 @@ export class TextLink {
   }
 
   render(): JSX.Element {
-    const textLinkClasses = cx(prefix("text-link"), { [prefix("text-link--theme-dark")]: this.theme === "dark" });
-    const iconClasses = cx({ [prefix(`text-link__icon--${this.type}`)]: this.type });
+    const textLinkClasses = cx(prefix("text-link"), this.theme === "dark" && prefix("text-link--theme-dark"));
+    const iconClasses = cx(this.type && prefix(`text-link__icon--${this.type}`));
 
     return (
       <a
