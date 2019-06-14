@@ -4,3 +4,10 @@
 .sg-vrt * {
   --p-animation-duration__loader: 0;
 }
+
+/* ----------  spacing component styles ---------- */
+.sg-vrt.sg-example-spacing-visual {
+  .sg-example-block {
+    padding: 0;
+  }
+}

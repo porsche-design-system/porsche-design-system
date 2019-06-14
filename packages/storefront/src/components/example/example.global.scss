@@ -13,9 +13,9 @@ $sg-color-highlight: deeppink;
 
 .sg-example {
   &::before {
-    content: '';
+    content: "";
     display: block;
-    margin-top: - $p-spacing-16;
+    margin-top: -$p-spacing-16;
   }
 
   p-button-regular,
@@ -242,10 +242,10 @@ $sg-color-highlight: deeppink;
   }
   .sg-example-block {
     padding: 0 $p-spacing-8;
-  }
-  .sg-example-item {
-    background-color: $sg-color-blue-1;
-    width: fit-content;
+    > div {
+      background-color: $sg-color-blue-1;
+      width: fit-content;
+    }
   }
 }
 
@@ -255,6 +255,11 @@ $sg-color-highlight: deeppink;
   > div {
     display: inline-flex;
     background-color: $sg-color-blue-1;
+    > div {
+      background-color: $sg-color-blue-2;
+      width: $p-spacing-80;
+      height: $p-spacing-80;
+    }
   }
 
   .sg-example-item {
@@ -270,29 +275,28 @@ $sg-color-highlight: deeppink;
   }
 
   &--negative-responsive {
-    .sg-example-item {
-      width: 2 * $p-spacing-d;
-      height: 2 * $p-spacing-d;
-      @include breakpoint("s") {
-        width: 2 * $p-spacing-d-s;
-        height: 2 * $p-spacing-d-s;
-      }
-      @include breakpoint("m") {
-        width: 2 * $p-spacing-d-m;
-        height: 2 * $p-spacing-d-m;
-      }
-      @include breakpoint("l") {
-        width: 2 * $p-spacing-d-l;
-        height: 2 * $p-spacing-d-l;
-      }
-      @include breakpoint("xl") {
-        width: 2 * $p-spacing-d-xl;
-        height: 2 * $p-spacing-d-xl;
-      }
-    }
-
     > div {
       @include p-spacing-d("padding", "", "");
+      > div {
+        width: 2 * $p-spacing-d;
+        height: 2 * $p-spacing-d;
+        @include breakpoint("s") {
+          width: 2 * $p-spacing-d-s;
+          height: 2 * $p-spacing-d-s;
+        }
+        @include breakpoint("m") {
+          width: 2 * $p-spacing-d-m;
+          height: 2 * $p-spacing-d-m;
+        }
+        @include breakpoint("l") {
+          width: 2 * $p-spacing-d-l;
+          height: 2 * $p-spacing-d-l;
+        }
+        @include breakpoint("xl") {
+          width: 2 * $p-spacing-d-xl;
+          height: 2 * $p-spacing-d-xl;
+        }
+      }
     }
   }
 }

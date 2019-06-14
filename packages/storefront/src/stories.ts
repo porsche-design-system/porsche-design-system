@@ -116,10 +116,9 @@ export const Stories: Stories = {
       ]
     },
     Spacing: {
-      design: importMDX("../../workshop/src/components/layout/spacing/spacing.design.mdx"),
-      code: importMDX("../../workshop/src/components/layout/spacing/spacing.code.mdx"),
-      vrt: importMDX("../../workshop/src/components/layout/spacing/spacing.vrt.mdx"),
-      props: ["Spacing"]
+      design: importMDX("../../ui-kit-js/src/components/layout/spacing/spacing.design.mdx"),
+      code: importMDX("../../ui-kit-js/src/components/layout/spacing/spacing.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/layout/spacing/spacing.vrt.mdx")
     }
   }
 };
