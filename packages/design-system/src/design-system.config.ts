@@ -4,9 +4,7 @@ interface DesignSystemConfig {
 }
 
 interface Pages {
-  [category: string]: {
-    [page: string]: string;
-  };
+  [category: string]: string[];
 }
 
 interface Stories {
@@ -22,26 +20,10 @@ interface Stories {
 
 export const config: DesignSystemConfig = {
   pages: {
-    'Getting Started': {
-      'About': 'pages/about.md',
-      'Design Workflow': 'pages/design-workflow.md',
-      'Sketch Plugins': 'pages/sketch-plugins.md',
-      'Start Coding': 'pages/start-coding.md',
-    },
-    'News': {
-      Updates: 'pages/updates.md',
-      Versioning: 'pages/versioning.md',
-      Roadmap: 'pages/roadmap.md',
-    },
-    'Help': {
-      Support: 'pages/support.md',
-      FAQ: 'pages/faq.md',
-    },
-    'Basics': {
-      'Browser Compatibility': 'pages/browser-compatibility.md',
-      'Quality Criteria': 'pages/quality-criteria.md',
-      'Accessibility Criteria': 'pages/accessibility.md',
-    },
+    'Getting Started': ['About', 'Design Workflow', 'Sketch Plugins', 'Start Coding'],
+    'News': ['Updates', 'Versioning', 'Roadmap'],
+    'Help': ['Support', 'FAQ'],
+    'Basics': ['Browser Compatibility', 'Quality Criteria', 'Accessibility Criteria'],
   },
   stories: {
     Basic: {
