@@ -1,7 +1,7 @@
 <template>
   <header>
     <router-link to="/">
-      <Logo/>
+      <Marque/>
     </router-link>
     <h1>Porsche UI Kit</h1>
     <p>Current Release: v1.0.0-alpha.1</p>
@@ -10,11 +10,11 @@
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
-  import Logo from '@/components/Logo.vue';
+  import Marque from '@/components/Marque.vue';
 
   @Component({
     components: {
-      Logo,
+      Marque,
     },
   })
   export default class Header extends Vue {}
