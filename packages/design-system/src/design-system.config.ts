@@ -149,6 +149,10 @@ export const config: DesignSystemConfig = {
           () => import(`@/../../ui-kit-js/src/components/layout/grid/grid-child/${empty}grid-child.props.md`),
         ],
       },
+      Spacing: {
+        design: () => import(`@/../../ui-kit-js/src/components/layout/spacing/${empty}spacing.design.md`),
+        code: () => import(`@/../../ui-kit-js/src/components/layout/spacing/${empty}spacing.code.md`),
+      },
     },
   },
 };
