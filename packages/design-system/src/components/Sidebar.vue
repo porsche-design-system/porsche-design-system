@@ -1,20 +1,20 @@
 <template>
   <nav>
     <ul>
-      <li v-for="(pages, category) in config.pages">
+      <li v-for="(pages, category, index) in config.pages" :key="index">
         <h2>{{ category }}</h2>
         <ul>
-          <li v-for="(v, page) in pages">
+          <li v-for="(v, page, index) in pages" :key="index">
             <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">{{ page }}</router-link>
           </li>
         </ul>
       </li>
     </ul>
     <ul>
-      <li v-for="(stories, category) in config.stories">
+      <li v-for="(stories, category, index) in config.stories" :key="index">
         <h2>{{ category }}</h2>
         <ul>
-          <li v-for="(v, story) in stories">
+          <li v-for="(v, story, index) in stories" :key="index">
             <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">{{ story }}</router-link>
           </li>
         </ul>
