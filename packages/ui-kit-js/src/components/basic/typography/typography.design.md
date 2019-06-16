@@ -22,7 +22,7 @@ The shape of Porsche Next follows the typical Porsche lines and unites the exclu
 Formally, the impression of the Porsche Next is largely determined by the visual character of the "squircle", a combination of square and circle
 which is reflected in the curves and circular shapes of the typeface.
 
-![Porsche Next Squircles](assets/workshop/basic/typography/assets/typography-squircle.png)
+![Porsche Next Squircles](./assets/typography-squircle.png)
 
 ### Language versions
 
@@ -88,7 +88,7 @@ Likewise, Bold perfectly embodies the brand's claim to modernism, power and stre
 | Headline-3       | 20 px (1,25 rem)      | 24 px (1,5 rem)    | 28 px (1,75 rem)     | 32 px (2 rem)        | 36 px (2,25 rem)          | 
 | Headline-4       | 16 px (1 rem)         | 18 px (1,125 rem)  | 20 px (1,25 rem)     | 22 px (1,375 rem)    | 24 px (1,5 rem)           | 
 
-![Headline example](assets/workshop/basic/typography/assets/typography-headlines.png)
+![Headline example](./assets/typography-headlines.png)
 
 #### Applying headline styles
 
@@ -108,7 +108,7 @@ A first-level headline can be supplemented by a corresponding subline. Sublines 
 
 Examples:
 
-![Headline-subline combinations](assets/workshop/basic/typography/assets/typography-headline-subline.png)
+![Headline-subline combinations](./assets/typography-headline-subline.png)
 
 
 ### Copytext styles
@@ -123,7 +123,7 @@ Both Copytext and Copytext Small keep their respective text size throughout all 
 | Copytext Small  | 12 px           | active, default, disabled, highlight, linked | 
 
 
-![Copytext states](assets/workshop/basic/typography/assets/typography-copytext-states.png)
+![Copytext states](./assets/typography-copytext-states.png)
  
 
 ### Additional sizes 
@@ -131,7 +131,7 @@ Both Copytext and Copytext Small keep their respective text size throughout all 
 Whenever you have the need to display larger text that isn't explicitly a page or section headline – let's say, for example, large numbers in vehicle data or quotes – you can stick to the additional sizes provided in the Porsche UI Kit, starting from 20 px and following the Porsche type scale.
 Depending on the information level of the respective text you can either chose between Regular or Thin text.
 
-![Additional text sizes](assets/workshop/basic/typography/assets/typography-additional-sizes.png)
+![Additional text sizes](./assets/typography-additional-sizes.png)
 
 ---
 
@@ -150,7 +150,7 @@ For digital applications, we recommend only to use Bold, Regular and Thin:
 - **Porsche Next Regular** for copytext, stand-alone text or sublines (in combination with first-level headlines).
 - **Porsche Next Thin** for stand-alone text larger than 20 px.
 
-![Font Weights](assets/workshop/basic/typography/assets/typography-font-weights.png)
+![Font Weights](./assets/typography-font-weights.png)
 
 ### Text alignment
 
@@ -183,7 +183,7 @@ to read the full content.
 
 The vertical spacing between copy text paragraphs should be at least 24 px, which equals the space of one line of text in-between.
 
-![Copytext paragraph spacing](assets/workshop/basic/typography/assets/typography-paragraph-spacing.png)
+![Copytext paragraph spacing](./assets/typography-paragraph-spacing.png)
 
 
 ### Upper case
@@ -194,7 +194,7 @@ Upper case text should only be used for:
 - Special components for which readability is generally not critical (such as short tags).
 - Proper names such as GTS or BOSE.
 
-![Example for uppercase text](assets/workshop/basic/typography/assets/typography-uppercase.png)
+![Example for uppercase text](./assets/typography-uppercase.png)
 
 
 ### Additional modifications
@@ -208,7 +208,7 @@ impact on the origin character of the company typeface. This includes:
 - No use of outline borders on text.
 - No use of opacity for text colors.
 
-![Example for uppercase text](assets/workshop/basic/typography/assets/typography-donts.png)
+![Example for uppercase text](./assets/typography-donts.png)
 
 
 ## Typography principles
@@ -242,8 +242,6 @@ you should always ensure a sufficient contrast ratio when designing with text.
 The combination of text and background color should pass the WCAG AA standard 
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
 for larger text sizes. 
-
-![Porsche color accessibility examples](assets/workshop/basic/color/assets/color-accessibility-01.png)
 
 Also, you should not rely on color only to convey information. 
 When communicating element states with text (for example a password validation 

@@ -15,7 +15,7 @@ ratios between elements on the respective screen size.
 sides. Grid margins are defined using percentages, going from 7% to 10% for
 screen widths larger than 1760 px. 
 
-![Porsche UI grid architecture](assets/workshop/layout/grid/assets/grid-components.png)
+![Porsche UI grid architecture](./assets/grid-components.png)
 
 ### Overview 
 
@@ -27,7 +27,7 @@ screen widths larger than 1760 px.
 | **Desktop** | 1300-1759 px  |  12 columns | 36 px | 7% | 
 |  | 1760 px or larger |  12 columns | 36 px | 10% | 
 
-![Porsche UI grid architecture](assets/workshop/layout/grid/assets/grid-viewports.png)
+![Porsche UI grid architecture](./assets/grid-viewports.png)
 
 ## Grid Breakpoints 
 Breakpoints are defined points at which the content is adapted to ensure an optimised layout on all screen sizes.
@@ -64,7 +64,7 @@ Show Layout.
 ### Viewport range
 To provide consistency throughout all Porsche web experiences, all layouts should be optimised for a viewport range from **320 px** to a maximum of **1920 px**. For viewport sizes from 1920 px onwards, a growing white space outside the left and right edge should be used.
 
-![Porsche UI grid architecture](assets/workshop/layout/grid/assets/grid-maxwidth.png)
+![Porsche UI grid architecture](./assets/grid-maxwidth.png)
 
 ## Tips for responsive layouting
 
@@ -72,7 +72,7 @@ To provide consistency throughout all Porsche web experiences, all layouts shoul
 All content elements that should behave responsively should be placed horizontally within the grid, always starting in a column. The spacing between content elements is therefore defined by the grid gutter. 
 In most cases, this should refer to modules or content boxes, while smaller spaces on a more or less "micro-level" (both vertical and horizontal) should be defined by using the [Spacing]() component.
 
-![Porsche UI grid alignment](assets/workshop/layout/grid/assets/grid-alignment.png)
+![Porsche UI grid alignment](./assets/grid-alignment.png)
 ### Know the possibilities. But use them wisely.
 When it comes to designing a component or module responsively, there are several screws that can be turned to adapt to different screen sizes, such as changing…
 
@@ -82,11 +82,11 @@ When it comes to designing a component or module responsively, there are several
 
 In designing for responsive layout, always aim to find the solution that works best for the specific case, keeping the user and the specific context of use in mind.
 
-![Porsche UI grid behaviour](assets/workshop/layout/grid/assets/grid-behaviour.png)
+![Porsche UI grid behaviour](./assets/grid-behaviour.png)
 
 ### Don’t be afraid to think outside of the box.
 It is possible to place elements end to end, spanning from left to the right edge of the screen. For example, a full-width image that generates a more emotional and concise side entry. However, this should be a well-contemplated exception.
 
 Also, for image groups, it is possible to break out of the grid in order to create a stronger visual coherence. The outer edges (left and right) of the image group should always be placed within the grid, whereas the edges between the single images can be placed exactly in the middle of the gutter.
 
-![End-to-end placement](assets/workshop/layout/grid/assets/grid-endtoend.png)
+![End-to-end placement](./assets/grid-endtoend.png)
