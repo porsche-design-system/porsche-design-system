@@ -22,4 +22,7 @@ export default new Router({
       component: () => import('./views/Component.vue'),
     },
   ],
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
 });
