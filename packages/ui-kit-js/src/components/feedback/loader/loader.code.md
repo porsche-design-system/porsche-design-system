@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Loader
 
 ## Introduction
@@ -36,13 +34,3 @@ Basic animated loader to visualize loading states, e.g. page loading, form valid
     <p-loader size="large" :theme="slotProps.theme" />
   </template>
 </Playground>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>

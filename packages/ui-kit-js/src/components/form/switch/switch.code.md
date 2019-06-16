@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Switch
 
 ## Introduction
@@ -32,13 +30,3 @@ import { Example } from "../../../src/components/example/Example"
     <p-switch name="some-name" value="some-value" checked="true" disabled="true"></p-switch>
   </template>
 </Playground>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>

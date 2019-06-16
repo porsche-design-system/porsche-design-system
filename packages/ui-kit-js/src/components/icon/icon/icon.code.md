@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Icon
 
 ## Introduction
@@ -40,16 +38,6 @@ The default icon color inherits from its parent(s). But also predefined colors c
     <p-icon source="car-next" size="large" color="porsche-red" />
   </template>
 </Playground>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>
 
 ---
 

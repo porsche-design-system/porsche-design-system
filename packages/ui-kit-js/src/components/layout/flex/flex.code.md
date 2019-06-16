@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Flex
 
 ## Introduction
@@ -10,7 +8,7 @@ The Porsche UI Kit flex layout system is based on standard css flexbox browser b
 Initialize standard flexbox container to define flex context.
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <div className="sg-example-block">
     <p-flex>
       <p-flex-item>
@@ -37,12 +35,12 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p-flex-item>
     </p-flex>
   </div>
-</Example>
+</Playground>
 
 ### Inline
 Flex inline displays flex containers in a row.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex flow="inline">
     <p-flex-item>
       <p className="sg-example-item">
@@ -67,12 +65,12 @@ Flex inline displays flex containers in a row.
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex flow='{ "base": "block", "l": "inline" }'>
     <p-flex-item>
       <p className="sg-example-item">
@@ -97,7 +95,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -109,7 +107,7 @@ Define or change direction of the flex items to rows or columns and set order.
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -127,11 +125,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Row reverse
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex direction="row-reverse">
     <p-flex-item>
       <p className="sg-example-item">
@@ -149,11 +147,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Column
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex direction="column">
     <p-flex-item>
       <p className="sg-example-item">
@@ -171,11 +169,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Column reverse
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex direction="column-reverse">
     <p-flex-item>
       <p className="sg-example-item">
@@ -193,12 +191,12 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex direction='{ "base": "column", "l": "row" }'>
     <p-flex-item>
       <p className="sg-example-item">
@@ -216,7 +214,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -228,7 +226,7 @@ The flex wrap property is used to force flex items to stay in line independently
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -240,11 +238,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### Wrap
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex wrap="wrap">
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -256,11 +254,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### Wrap reverse
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex wrap="reverse">
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -272,12 +270,12 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex wrap='{ "base": "wrap", "l": "nowrap" }'>
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -289,7 +287,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -301,7 +299,7 @@ This property defines the alignment of flex items on the main axis in conjunctio
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -319,11 +317,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### End
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex justify-content="end">
     <p-flex-item>
       <p className="sg-example-item">
@@ -341,11 +339,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Center
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex justify-content="center">
     <p-flex-item>
       <p className="sg-example-item">
@@ -363,11 +361,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Space between
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex justify-content="space-between">
     <p-flex-item>
       <p className="sg-example-item">
@@ -385,11 +383,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Space around
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex justify-content="space-around">
     <p-flex-item>
       <p className="sg-example-item">
@@ -407,11 +405,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Space evenly
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex justify-content="space-evenly">
     <p-flex-item>
       <p className="sg-example-item">
@@ -429,12 +427,12 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex justify-content='{ "base": "start", "l": "end" }'>
     <p-flex-item>
       <p className="sg-example-item">
@@ -452,7 +450,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -464,7 +462,7 @@ This property defines the alignment of flex items on the cross axis in conjuncti
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -482,11 +480,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Start
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex align-items="start">
     <p-flex-item>
       <p className="sg-example-item">
@@ -504,11 +502,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### End
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex align-items="end">
     <p-flex-item>
       <p className="sg-example-item">
@@ -526,11 +524,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Center
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex align-items="center">
     <p-flex-item>
       <p className="sg-example-item">
@@ -548,11 +546,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Baseline
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex align-items="baseline">
     <p-flex-item>
       <p className="sg-example-item">
@@ -570,12 +568,12 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex align-items='{ "base": "start", "l": "end" }'>
     <p-flex-item>
       <p className="sg-example-item">
@@ -593,7 +591,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -606,7 +604,7 @@ This property has only effect when there is more than one line of flex items.
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex wrap="wrap">
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -618,11 +616,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### Start
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex wrap="wrap" align-content="start">
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -634,11 +632,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### End
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex wrap="wrap" align-content="end">
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -650,11 +648,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### Center
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex wrap="wrap" align-content="center">
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -666,11 +664,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### Space between
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex wrap="wrap" align-content="space-between">
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -682,11 +680,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### Space around
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex wrap="wrap" align-content="space-around">
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -698,12 +696,12 @@ If using default property, no extra class/prop declaration is needed due to stan
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex wrap="wrap" align-content='{ "base": "start", "l": "end" }'>
     {Array.apply(0, Array(9)).map(function(x, i) {
       return (
@@ -715,7 +713,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       )
     })}
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -727,7 +725,7 @@ Use `gap` to apply equal horizontal spacing to all flex items of the container. 
 
 #### Static
 
-<Example className="sg-example-flex sg-example-flex--gap">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--gap">
   <p-flex gap="16">
     <p-flex-item>
       <p className="sg-example-item">
@@ -745,12 +743,12 @@ Use `gap` to apply equal horizontal spacing to all flex items of the container. 
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 Responsive spacing have specific predefined values for each breakpoint which make them grow/shrink depending on the viewport width.
 
-<Example className="sg-example-flex sg-example-flex--gap">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--gap">
   <p-flex gap="b">
     <p-flex-item>
       <p className="sg-example-item">
@@ -768,7 +766,7 @@ Responsive spacing have specific predefined values for each breakpoint which mak
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -779,7 +777,7 @@ But it is also possible to define specific predefined widths.
 
 #### Specific
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item width="one-quarter">
       <p className="sg-example-item">
@@ -862,12 +860,12 @@ But it is also possible to define specific predefined widths.
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex wrap>
     <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
       <p className="sg-example-item">
@@ -890,7 +888,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -900,7 +898,7 @@ Items can have different offsets that work similar like column widths.
 
 #### Widths
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item offset={"one-quarter"} width={"three-quarters"}>
       <p className="sg-example-item">
@@ -936,12 +934,12 @@ Items can have different offsets that work similar like column widths.
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item offset='{ "base": "none", "l": "one-third" }'>
       <p className="sg-example-item">
@@ -949,7 +947,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -961,7 +959,7 @@ You can override the align items properties of the flex container for individual
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -984,11 +982,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Stretch
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex align-items="start">
     <p-flex-item>
       <p className="sg-example-item">
@@ -1011,11 +1009,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Start
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -1038,11 +1036,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### End
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -1065,11 +1063,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Center
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -1092,11 +1090,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Baseline
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex>
     <p-flex-item align-self="baseline">
       <p className="sg-example-item">
@@ -1119,12 +1117,12 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Example className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -1147,7 +1145,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -1161,7 +1159,7 @@ It handles how to grow an item based on the space that is left to fulfill the pa
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -1174,11 +1172,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Grow - 1
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item>
       <p className="sg-example-item">
@@ -1191,7 +1189,7 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -1205,7 +1203,7 @@ It handles how to shrink an item based on the space that exceeds the parents wid
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item style={{ width: "80%" }}>
       <p className="sg-example-item">
@@ -1218,11 +1216,11 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Shrink - 0
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item shrink="0" style={{ width: "80%" }}>
       <p className="sg-example-item">
@@ -1235,7 +1233,7 @@ If using default property, no extra class/prop declaration is needed due to stan
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 ---
 
@@ -1245,7 +1243,7 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### Initial (grow:0, shrink:1 and base:auto)
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item flex="initial">
       <p className="sg-example-item">
@@ -1263,11 +1261,11 @@ Setting shorthand properties for flex grow, shrink and base:
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Auto (grow:1, shrink:1 and base:auto)
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item flex="auto">
       <p className="sg-example-item">
@@ -1285,11 +1283,11 @@ Setting shorthand properties for flex grow, shrink and base:
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### Equal (grow:1, shrink:1 and base:0)
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item flex="equal">
       <p className="sg-example-item">
@@ -1307,11 +1305,11 @@ Setting shorthand properties for flex grow, shrink and base:
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
+</Playground>
 
 #### None (grow:0, shrink:0 and base:auto)
 
-<Example className="sg-example-flex">
+<Playground :themeable="false" className="sg-example-flex">
   <p-flex>
     <p-flex-item flex="none">
       <p className="sg-example-item">
@@ -1329,14 +1327,4 @@ Setting shorthand properties for flex grow, shrink and base:
       </p>
     </p-flex-item>
   </p-flex>
-</Example>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>
+</Playground>

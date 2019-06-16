@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Spacing
 
 ## Introduction
@@ -387,13 +385,3 @@ Responsive spacings can be used to achieve different spacings on predefined majo
 * `p-spacing-pr--{v}` => padding-right
 * `p-spacing-pb--{v}` => padding-bottom
 * `p-spacing-pl--{v}` => padding-left
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>
