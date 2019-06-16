@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {pages} from '@/design-system.config';
+  import {config} from '@/design-system.config';
   import {decodeUrl} from '@/services/utils';
 
   @Component
@@ -41,14 +41,14 @@
       const category = decodeUrl(this.$route.params.category);
       const page = decodeUrl(this.$route.params.page);
 
-      return !!(pages[category] && pages[category][page]);
+      return !!(config.pages[category] && config.pages[category][page]);
     }
 
     private get pagePath(): string {
       const category = decodeUrl(this.$route.params.category);
       const page = decodeUrl(this.$route.params.page);
 
-      return pages[category][page];
+      return config.pages[category][page];
     }
   }
 </script>

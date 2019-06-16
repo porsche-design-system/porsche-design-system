@@ -34,22 +34,19 @@
       ColorDesign: () => import(`@/../../ui-kit-js/src/components/basic/color/color.design.md`),
       ColorCode: () => import(`@/../../ui-kit-js/src/components/basic/color/color.code.md`),
       ColorProps: () => import(`@/../../ui-kit-js/src/components/basic/color/color.props.md`),
-      TypographyDesign: () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`),
+      TypographyDesign:
+        () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`),
       TypographyCode: () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.code.md`),
       TypographyProps1: () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.props.md`),
       TypographyProps2: () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.props.md`),
-      ButtonRegularDesign: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.design.md`),
+      ButtonRegularDesign:
+        () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.design.md`),
       ButtonRegularCode: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.code.md`),
-      ButtonRegularProps: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.props.md`),
+      ButtonRegularProps:
+        () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.props.md`),
     },
   })
   export default class Page extends Vue {
-
-    stories = {};
-
-    async created() {
-      this.stories = (await import('@/design-system.config')).stories;
-    }
 
     get isDesign() {
       return true;
