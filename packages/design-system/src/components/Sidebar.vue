@@ -1,21 +1,21 @@
 <template>
   <nav>
     <ul>
-      <li v-for="(categories, category) in pages">
+      <li v-for="(pages, category) in config.pages">
         <h2>{{ category }}</h2>
         <ul>
-          <li v-for="(story, page) in categories">
+          <li v-for="(file, page) in pages">
             <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">{{ page }}</router-link>
           </li>
         </ul>
       </li>
     </ul>
     <ul>
-      <li v-for="(categories, category) in stories">
+      <li v-for="(stories, category) in config.stories">
         <h2>{{ category }}</h2>
         <ul>
-          <li v-for="(story, component) in categories">
-            <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(component)}`">{{ component }}</router-link>
+          <li v-for="(tabs, story) in stories">
+            <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">{{ story }}</router-link>
           </li>
         </ul>
       </li>
@@ -25,14 +25,13 @@
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
-  import {pages, stories} from '@/design-system.config';
+  import {config} from '@/design-system.config';
   import {encodeUrl} from '@/services/utils.ts';
 
   @Component
   export default class Sidebar extends Vue {
 
-    public pages = pages;
-    public stories = stories;
+    public config = config;
     public encodeUrl = encodeUrl;
   }
 </script>
