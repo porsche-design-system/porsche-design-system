@@ -6,7 +6,7 @@ We use defined spacings to seperate components elements within a layout. Using t
 We use a 8 px square grid system across all viewports to define dimensions, padding and margin of block and inline elements. The grid unit of 8 px refers to
 the general base size of 16 px (= 1 em), that is also applied in typography and other component sizes.
 
-![The Porsche spacing formula](assets/workshop/layout/spacing/assets/spacings-formula.png)
+![The Porsche spacing formula](./assets/spacings-formula.png)
 
 
 ## Applying the 8 px system
@@ -23,17 +23,17 @@ Spacings that do not need to change across different screen sizes.
 
 |       	|     	| PX  	| REM 	|
 |------------	|-------	|------	|---------	|
-| ![spacing 4](assets/workshop/layout/spacing/assets/spacing-4.png) | **spacing-4**  	| 4 px  	| 0.25 	|  
-| ![spacing 8](assets/workshop/layout/spacing/assets/spacing-8.png) | **spacing-8**  	| 8 px  	| 0.5  	| 
-| ![spacing 16](assets/workshop/layout/spacing/assets/spacing-16.png) | **spacing-16** 	| 16 px 	| 1    	| 
-| ![spacing 24](assets/workshop/layout/spacing/assets/spacing-24.png) |**spacing-24** 	| 24 px 	| 1.5  	| 
-| ![spacing 32](assets/workshop/layout/spacing/assets/spacing-32.png) |**spacing-32** 	| 32 px 	| 2    	| 
-| ![spacing 40](assets/workshop/layout/spacing/assets/spacing-40.png) |**spacing-40** 	| 40 px 	| 2.5  	| 
-| ![spacing 48](assets/workshop/layout/spacing/assets/spacing-48.png) |**spacing-48** 	| 48 px 	| 3    	| 
-| ![spacing 56](assets/workshop/layout/spacing/assets/spacing-56.png) |**spacing-56** 	| 56 px 	| 3.5  	| 
-| ![spacing 64](assets/workshop/layout/spacing/assets/spacing-64.png) |**spacing-64** 	| 64 px 	| 4    	| 
-| ![spacing 72](assets/workshop/layout/spacing/assets/spacing-72.png) |**spacing-72** 	| 72 px 	| 4.5  	| 
-| ![spacing 80](assets/workshop/layout/spacing/assets/spacing-80.png) |**spacing-80** 	| 80 px 	| 5    	| 
+| ![spacing 4](./assets/spacing-4.png) | **spacing-4**  	| 4 px  	| 0.25 	|  
+| ![spacing 8](./assets/spacing-8.png) | **spacing-8**  	| 8 px  	| 0.5  	| 
+| ![spacing 16](./assets/spacing-16.png) | **spacing-16** 	| 16 px 	| 1    	| 
+| ![spacing 24](./assets/spacing-24.png) |**spacing-24** 	| 24 px 	| 1.5  	| 
+| ![spacing 32](./assets/spacing-32.png) |**spacing-32** 	| 32 px 	| 2    	| 
+| ![spacing 40](./assets/spacing-40.png) |**spacing-40** 	| 40 px 	| 2.5  	| 
+| ![spacing 48](./assets/spacing-48.png) |**spacing-48** 	| 48 px 	| 3    	| 
+| ![spacing 56](./assets/spacing-56.png) |**spacing-56** 	| 56 px 	| 3.5  	| 
+| ![spacing 64](./assets/spacing-64.png) |**spacing-64** 	| 64 px 	| 4    	| 
+| ![spacing 72](./assets/spacing-72.png) |**spacing-72** 	| 72 px 	| 4.5  	| 
+| ![spacing 80](./assets/spacing-80.png) |**spacing-80** 	| 80 px 	| 5    	| 
 
 ### Flexible spacing 
 Spacings that change in accordance with the screen size at defined breakpoint widths.
@@ -48,7 +48,7 @@ Spacings that change in accordance with the screen size at defined breakpoint wi
 | **spacing-f** | 40 px | 48 px | 56 px | 64 px | 72 px |
 | **spacing-g** | 48 px | 56 px | 64 px | 72 px | 80 px |
 
-![The Porsche spacing formula](assets/workshop/layout/spacing/assets/spacings-example-02.png)
+![The Porsche spacing formula](./assets/spacings-example-02.png)
 Example: Mixed use of fixed, flexible and custom spacings.
 
 ## Working with space 
@@ -117,7 +117,7 @@ optimal results. Last but not least a one-on-one is indispensable when it comes
 to spacings, as the developer might not know when to use a fixed or flexible
 spacing class (e.g. 8 px on mobile might as well be spacing-8 or spacing-b).
 
-![Abstract inspect view of spacing](assets/workshop/layout/spacing/assets/spacings-inspect.png)
+![Abstract inspect view of spacing](./assets/spacings-inspect.png)
 
 ### Borders
 While in Sketch the border doesn't add to the shape size, browsers
@@ -126,7 +126,7 @@ ignore this fact while designing and to always set the focus on giving the devel
 the right spacing sizes between or inside elements, even if this results in
 slightly higher elements in implementation due to the additional border.
 
-![Handling borders in Sketch](assets/workshop/layout/spacing/assets/spacings-borders.png)
+![Handling borders in Sketch](./assets/spacings-borders.png)
 
 ### Lines
 Lines can be created using either a narrow rectangle or a path
@@ -140,7 +140,7 @@ placed within the grid parameters, even if the baseline of the typography is not
 on the grid line. ::MEMO: It's best to always create texts using the text tool, not as a
 box::
 
-![Text box placement](assets/workshop/layout/spacing/assets/spacings-bounding-box.png)
+![Text box placement](./assets/spacings-bounding-box.png)
 
 ### How to handle uneven image heights
 It is no rocket science setting the correct 8 px spacing values when the element
@@ -157,4 +157,4 @@ with the value closest to it. For example, the following design case might lead
 to an implemented spacing value of 16 px, as this the spacing variable the most
 close to 18 px.
 
-![Image placement](assets/workshop/layout/spacing/assets/spacing-images.png)
+![Image placement](./assets/spacing-images.png)
