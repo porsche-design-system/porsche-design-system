@@ -4,7 +4,7 @@
       <li v-for="(pages, category) in config.pages">
         <h2>{{ category }}</h2>
         <ul>
-          <li v-for="(file, page) in pages">
+          <li v-for="(page) in pages">
             <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">{{ page }}</router-link>
           </li>
         </ul>
