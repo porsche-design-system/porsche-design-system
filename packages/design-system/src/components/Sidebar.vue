@@ -4,7 +4,7 @@
       <li v-for="(pages, category) in config.pages">
         <h2>{{ category }}</h2>
         <ul>
-          <li v-for="(page) in pages">
+          <li v-for="(v, page) in pages">
             <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">{{ page }}</router-link>
           </li>
         </ul>
@@ -14,7 +14,7 @@
       <li v-for="(stories, category) in config.stories">
         <h2>{{ category }}</h2>
         <ul>
-          <li v-for="(tabs, story) in stories">
+          <li v-for="(v, story) in stories">
             <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">{{ story }}</router-link>
           </li>
         </ul>

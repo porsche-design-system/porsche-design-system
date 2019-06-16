@@ -4,7 +4,9 @@ interface DesignSystemConfig {
 }
 
 interface Pages {
-  [category: string]: string[];
+  [category: string]: {
+    [page: string]: any | any[];
+  };
 }
 
 interface Stories {
@@ -22,10 +24,27 @@ const empty = '';
 
 export const config: DesignSystemConfig = {
   pages: {
-    'Getting Started': ['About', 'Design Workflow', 'Sketch Plugins', 'Start Coding'],
-    'News': ['Updates', 'Versioning', 'Roadmap'],
-    'Help': ['Support', 'FAQ'],
-    'Basics': ['Browser Compatibility', 'Quality Criteria', 'Accessibility Criteria'],
+    'Getting Started': {
+      'About': () => import(`@/pages/${empty}about.md`),
+      'Start Designing': () => import(`@/pages/${empty}start-designing.md`),
+      'Design Workflow': () => import(`@/pages/${empty}design-workflow.md`),
+      'Sketch Plugins': () => import(`@/pages/${empty}sketch-plugins.md`),
+      'Start Coding': () => import(`@/pages/${empty}start-coding.md`),
+    },
+    'News': {
+      Updates: () => import(`@/pages/${empty}updates.md`),
+      Versioning: () => import(`@/pages/${empty}versioning.md`),
+      Roadmap: () => import(`@/pages/${empty}roadmap.md`),
+    },
+    'Help': {
+      Support: () => import(`@/pages/${empty}support.md`),
+      Faq: () => import(`@/pages/${empty}faq.md`),
+    },
+    'Basics': {
+      'Browser Compatibility': () => import(`@/pages/${empty}browser-compatibility.md`),
+      'Quality Criteria': () => import(`@/pages/${empty}quality-criteria.md`),
+      'Accessibility Criteria': () => import(`@/pages/${empty}accessibility.md`),
+    },
   },
   stories: {
     Basic: {

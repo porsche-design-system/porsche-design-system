@@ -21,6 +21,11 @@ export default new Router({
       name: 'story',
       component: () => import('./views/Story.vue'),
     },
+    {
+      path: '*',
+      name: 'not-found',
+      component: () => import('./views/NotFound.vue'),
+    },
   ],
   scrollBehavior() {
     return { x: 0, y: 0 };
