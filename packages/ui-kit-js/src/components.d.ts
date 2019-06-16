@@ -123,84 +123,108 @@ export namespace Components {
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. Corresponds to the "alignContent" css property.
     */
     'alignContent'?: BreakpointCustomizable<
-    "stretch" | "start" | "end" | "center" | "space-between" | "space-around" | any
-    >;
+    "stretch" | "start" | "end" | "center" | "space-between" | "space-around"
+    > &
+    string;
     /**
     * Defines how the flex items are aligned along the cross axis.
     */
-    'alignItems'?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline" | any>;
+    'alignItems'?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline"> & string;
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
     */
-    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse" | any>;
+    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse"> & string;
     /**
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
-    'flow'?: BreakpointCustomizable<"block" | "inline" | any>;
+    'flow'?: BreakpointCustomizable<"block" | "inline"> & string;
     /**
     * Defines the gap between contained children.
     */
-    'gap'?: 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+    'gap'?: | "0"
+    | "4"
+    | "8"
+    | "16"
+    | "24"
+    | "32"
+    | "40"
+    | "48"
+    | "56"
+    | "64"
+    | "72"
+    | "80"
+    | "a"
+    | "b"
+    | "c"
+    | "d"
+    | "e"
+    | "f"
+    | "g";
     /**
     * Defines how the flex items are aligned along the main axis.
     */
     'justifyContent'?: BreakpointCustomizable<
-    "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | any
-    >;
+    "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly"
+    > &
+    string;
     /**
     * If set, overflowing elements will wrap to a new line.
     */
-    'wrap'?: BreakpointCustomizable<"nowrap" | "wrap" | "reverse" | any>;
+    'wrap'?: BreakpointCustomizable<"nowrap" | "wrap" | "reverse"> & string;
   }
   interface PFlexItem {
     /**
     * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
     */
-    'alignSelf'?: BreakpointCustomizable<"auto" | "start" | "end" | "center" | "baseline" | "stretch" | any>;
+    'alignSelf'?: BreakpointCustomizable<"auto" | "start" | "end" | "center" | "baseline" | "stretch"> & string;
     /**
     * The shorthand property for the combined definition of "shrink", "grow" and "basis"
     */
-    'flex'?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal" | any>;
+    'flex'?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal"> & string;
     /**
     * The ability to allow/disallow the flex child to grow.
     */
-    'grow'?: BreakpointCustomizable<0 | 1 | any>;
+    'grow'?: BreakpointCustomizable<"0" | "1"> & string;
     /**
     * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
     */
     'offset'?: BreakpointCustomizable<
-    "none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | any
-    >;
+    "none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters"
+    > &
+    string;
     /**
     * The ability to allow/disallow the flex child to shrink.
     */
-    'shrink'?: BreakpointCustomizable<1 | 0 | any>;
+    'shrink'?: BreakpointCustomizable<"1" | "0"> & string;
     /**
     * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
     */
     'width'?: BreakpointCustomizable<
-    "auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full" | any
-    >;
+    "auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full"
+    > &
+    string;
   }
   interface PGrid {
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
     */
-    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse" | any>;
+    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse"> & string;
     /**
     * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with Grid.Child. Also defines the gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
     */
-    'gap'?: BreakpointCustomizable<"normal" | "zero" | any>;
+    'gap'?: BreakpointCustomizable<"normal" | "zero"> & string;
   }
   interface PGridChild {
     /**
     * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
     */
-    'offset'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | any>;
+    'offset'?: BreakpointCustomizable<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11"> &
+    string;
     /**
     * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
     */
-    'size'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | any>;
+    'size'?: BreakpointCustomizable<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12"> &
+    string;
   }
   interface PHeadline {
     /**
@@ -662,84 +686,108 @@ declare namespace LocalJSX {
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. Corresponds to the "alignContent" css property.
     */
     'alignContent'?: BreakpointCustomizable<
-    "stretch" | "start" | "end" | "center" | "space-between" | "space-around" | any
-    >;
+    "stretch" | "start" | "end" | "center" | "space-between" | "space-around"
+    > &
+    string;
     /**
     * Defines how the flex items are aligned along the cross axis.
     */
-    'alignItems'?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline" | any>;
+    'alignItems'?: BreakpointCustomizable<"stretch" | "start" | "end" | "center" | "baseline"> & string;
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
     */
-    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse" | any>;
+    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse"> & string;
     /**
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
-    'flow'?: BreakpointCustomizable<"block" | "inline" | any>;
+    'flow'?: BreakpointCustomizable<"block" | "inline"> & string;
     /**
     * Defines the gap between contained children.
     */
-    'gap'?: 0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g";
+    'gap'?: | "0"
+    | "4"
+    | "8"
+    | "16"
+    | "24"
+    | "32"
+    | "40"
+    | "48"
+    | "56"
+    | "64"
+    | "72"
+    | "80"
+    | "a"
+    | "b"
+    | "c"
+    | "d"
+    | "e"
+    | "f"
+    | "g";
     /**
     * Defines how the flex items are aligned along the main axis.
     */
     'justifyContent'?: BreakpointCustomizable<
-    "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | any
-    >;
+    "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly"
+    > &
+    string;
     /**
     * If set, overflowing elements will wrap to a new line.
     */
-    'wrap'?: BreakpointCustomizable<"nowrap" | "wrap" | "reverse" | any>;
+    'wrap'?: BreakpointCustomizable<"nowrap" | "wrap" | "reverse"> & string;
   }
   interface PFlexItem extends JSXBase.HTMLAttributes<HTMLPFlexItemElement> {
     /**
     * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
     */
-    'alignSelf'?: BreakpointCustomizable<"auto" | "start" | "end" | "center" | "baseline" | "stretch" | any>;
+    'alignSelf'?: BreakpointCustomizable<"auto" | "start" | "end" | "center" | "baseline" | "stretch"> & string;
     /**
     * The shorthand property for the combined definition of "shrink", "grow" and "basis"
     */
-    'flex'?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal" | any>;
+    'flex'?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal"> & string;
     /**
     * The ability to allow/disallow the flex child to grow.
     */
-    'grow'?: BreakpointCustomizable<0 | 1 | any>;
+    'grow'?: BreakpointCustomizable<"0" | "1"> & string;
     /**
     * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
     */
     'offset'?: BreakpointCustomizable<
-    "none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | any
-    >;
+    "none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters"
+    > &
+    string;
     /**
     * The ability to allow/disallow the flex child to shrink.
     */
-    'shrink'?: BreakpointCustomizable<1 | 0 | any>;
+    'shrink'?: BreakpointCustomizable<"1" | "0"> & string;
     /**
     * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
     */
     'width'?: BreakpointCustomizable<
-    "auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full" | any
-    >;
+    "auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full"
+    > &
+    string;
   }
   interface PGrid extends JSXBase.HTMLAttributes<HTMLPGridElement> {
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
     */
-    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse" | any>;
+    'direction'?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse"> & string;
     /**
     * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with Grid.Child. Also defines the gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
     */
-    'gap'?: BreakpointCustomizable<"normal" | "zero" | any>;
+    'gap'?: BreakpointCustomizable<"normal" | "zero"> & string;
   }
   interface PGridChild extends JSXBase.HTMLAttributes<HTMLPGridChildElement> {
     /**
     * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
     */
-    'offset'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | any>;
+    'offset'?: BreakpointCustomizable<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11"> &
+    string;
     /**
     * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
     */
-    'size'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | any>;
+    'size'?: BreakpointCustomizable<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12"> &
+    string;
   }
   interface PHeadline extends JSXBase.HTMLAttributes<HTMLPHeadlineElement> {
     /**

@@ -76,14 +76,13 @@ export class ButtonIcon {
     const TagType = this.href === undefined ? "button" : "a";
 
     const buttonClasses = cx(
-      prefix("button-regular"),
-      { [prefix("button-regular--ghost")]: this.variant === "ghost" },
-      { [prefix("button-regular--transparent")]: this.variant === "transparent" },
-      { [prefix("button-regular--loading")]: this.loading },
-      { [prefix("button-regular--theme-dark")]: this.theme === "dark" }
+      prefix("button-icon"),
+      this.variant !== "default" && prefix(`button-icon--${this.variant}`),
+      this.loading && prefix("button-icon--loading"),
+      this.theme === "dark" && prefix("button-icon--theme-dark")
     );
-    const iconClasses = prefix("button-regular__icon");
-    const loaderClasses = prefix("button-regular__loader");
+    const iconClasses = prefix("button-icon__icon");
+    const loaderClasses = prefix("button-icon__loader");
 
     return (
       <TagType
