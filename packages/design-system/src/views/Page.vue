@@ -30,7 +30,7 @@
     }
 
     private async loadPage(): Promise<void> {
-      this.page = (await import(`@/${this.pagePath}`)).default;
+      this.page = (await import(`@/pages/${this.$route.params.page}.md`)).default;
     }
 
     private async navigateToHome(): Promise<void> {
@@ -41,14 +41,7 @@
       const category = decodeUrl(this.$route.params.category);
       const page = decodeUrl(this.$route.params.page);
 
-      return !!(config.pages[category] && config.pages[category][page]);
-    }
-
-    private get pagePath(): string {
-      const category = decodeUrl(this.$route.params.category);
-      const page = decodeUrl(this.$route.params.page);
-
-      return config.pages[category][page];
+      return config.pages[category] && config.pages[category].includes(page);
     }
   }
 </script>
