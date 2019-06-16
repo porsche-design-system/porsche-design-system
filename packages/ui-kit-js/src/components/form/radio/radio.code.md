@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Radio
 
 ## Introduction
@@ -109,18 +107,8 @@ Visualization of edge cases
 
 <Playground :themeable="false">
   <template v-slot="slotProps">
-    <div style={{"max-width": "320px"}}>
+    <div style="max-width: 320px;">
       <p-radio name="some-name" value="some-value">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p-radio>
     </div>
   </template>
 </Playground>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>

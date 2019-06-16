@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Textarea
 
 ## Introduction
@@ -64,13 +62,3 @@ Visualization of edge cases
     <p-textarea name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."></p-textarea>
   </template>
 </Playground>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>

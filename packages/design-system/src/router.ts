@@ -17,9 +17,9 @@ export default new Router({
       component: () => import('./views/Page.vue'),
     },
     {
-      path: '/components/:category/:component',
-      name: 'component',
-      component: () => import('./views/Component.vue'),
+      path: '/components/:category/:story',
+      name: 'story',
+      component: () => import('./views/Story.vue'),
     },
   ],
   scrollBehavior() {

@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Text Link
 
 ## Introduction
@@ -36,13 +34,3 @@ If you need to link to another icon hosted somewhere else, just set the whole ic
     <p-text-link href="https://ui.porsche.com" type="20" icon="arrow-left-hair" :theme="slotProps.theme">Lorem ipsum dolor</p-text-link>
   </template>
 </Playground>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>

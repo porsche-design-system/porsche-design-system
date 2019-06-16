@@ -36,13 +36,3 @@ $p-color-status-red
 $p-color-status-green
 $p-color-status-yellow
 ```
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>

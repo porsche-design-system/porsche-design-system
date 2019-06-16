@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Typography
 
 ## Introduction
@@ -221,13 +219,3 @@ The default text color is Porsche black. But also predefined or inherited colors
 <Playground :themeable="false">
   <p-text type="20">Lorem ipsum dolor sit amet <a href="#">linked text</a> et <b>bold text</b></p-text>
 </Playground>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>

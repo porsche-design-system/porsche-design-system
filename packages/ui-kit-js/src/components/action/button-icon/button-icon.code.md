@@ -1,5 +1,3 @@
-import { Example } from "../../../src/components/example/Example"
-
 # Button Icon
 
 ## Introduction
@@ -81,13 +79,3 @@ If you need to link to another icon hosted somewhere else, just set the whole ic
     <p-button-icon icon="phone" :theme="slotProps.theme" />
   </template>
 </Playground>
-
-<script>
-  import Playground from '@/components/Playground.vue';
-
-  export default {
-    components: {
-      Playground
-    }
-  }
-</script>
