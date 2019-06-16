@@ -26,16 +26,14 @@
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
   import {pages, stories} from '@/design-system.config';
+  import {encodeUrl} from '@/services/utils.ts';
 
   @Component
   export default class Sidebar extends Vue {
 
     public pages = pages;
     public stories = stories;
-
-    public encodeUrl(param: string): string {
-      return param.toLowerCase().replace(' ', '-');
-    }
+    public encodeUrl = encodeUrl;
   }
 </script>
 
