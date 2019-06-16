@@ -21,14 +21,14 @@
 
     @Watch('$route')
     private async onRouteChange(): Promise<void> {
-      await this.updateComponent();
+      await this.updateComponents();
     }
 
     private async mounted(): Promise<void> {
-      await this.updateComponent();
+      await this.updateComponents();
     }
 
-    private async updateComponent(): Promise<void> {
+    private async updateComponents(): Promise<void> {
       if (this.isStoryExistent()) {
         await this.loadStory();
       } else {
@@ -56,8 +56,8 @@
       this.components = [];
 
       if (typeof config.stories[category][story][tab] === 'object') {
-        for (const part of config.stories[category][story][tab]) {
-          this.components.push((await part()).default);
+        for (const component of config.stories[category][story][tab]) {
+          this.components.push((await component()).default);
         }
       } else {
         this.components.push((await config.stories[category][story][tab]()).default);
@@ -68,13 +68,23 @@
       const category = decodeUrl(this.$route.params.category);
       const story = decodeUrl(this.$route.params.story);
 
-      if (!config.stories[category] || !config.stories[category][story]) {
-        this.$router.replace('/');
-      } else if (config.stories[category][story].design) {
+      if (
+        config.stories[category] &&
+        config.stories[category][story] &&
+        config.stories[category][story].design
+      ) {
         this.$router.replace('#design');
-      } else if (config.stories[category][story].code) {
+      } else if (
+        config.stories[category] &&
+        config.stories[category][story] &&
+        config.stories[category][story].code
+      ) {
         this.$router.replace('#code');
-      } else if (config.stories[category][story].props) {
+      } else if (
+        config.stories[category] &&
+        config.stories[category][story] &&
+        config.stories[category][story].props
+      ) {
         this.$router.replace('#props');
       } else {
         this.$router.replace('/');

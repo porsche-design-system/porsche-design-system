@@ -1,5 +1,7 @@
 <template>
-  <component v-if="page" :is="page"></component>
+  <div>
+    <component :is="component" v-for="(component, index) in components" :key="index"></component>
+  </div>
 </template>
 
 <script lang="ts">
@@ -10,38 +12,49 @@
   @Component
   export default class Page extends Vue {
 
-    private page = null;
+    private components: any[] = [];
 
     @Watch('$route')
     private async onRouteChange(): Promise<void> {
-      await this.updateComponent();
+      await this.updateComponents();
     }
 
-    private async created(): Promise<void> {
-      await this.updateComponent();
+    private async mounted(): Promise<void> {
+      await this.updateComponents();
     }
 
-    private async updateComponent(): Promise<void> {
-      if (this.isRouteValid) {
+    private async updateComponents(): Promise<void> {
+      if (this.isPageExistent()) {
         await this.loadPage();
       } else {
-        await this.navigateToHome();
+        await this.redirect();
       }
     }
 
-    private async loadPage(): Promise<void> {
-      this.page = (await import(`@/pages/${this.$route.params.page}.md`)).default;
-    }
-
-    private async navigateToHome(): Promise<void> {
-      this.$router.replace('/');
-    }
-
-    private get isRouteValid(): boolean {
+    private isPageExistent(): boolean {
       const category = decodeUrl(this.$route.params.category);
       const page = decodeUrl(this.$route.params.page);
 
-      return config.pages[category] && config.pages[category].includes(page);
+      return config.pages[category] && config.pages[category][page];
+    }
+
+    private async loadPage(): Promise<void> {
+      const category = decodeUrl(this.$route.params.category);
+      const page = decodeUrl(this.$route.params.page);
+
+      this.components = [];
+
+      if (typeof config.pages[category][page] === 'object') {
+        for (const component of config.pages[category][page]) {
+          this.components.push((await component()).default);
+        }
+      } else {
+        this.components.push((await config.pages[category][page]()).default);
+      }
+    }
+
+    private async redirect(): Promise<void> {
+      this.$router.replace('/');
     }
   }
 </script>
