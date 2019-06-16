@@ -24,7 +24,7 @@ export class Input {
 
   render(): JSX.Element {
     const inputClasses = cx(prefix("input"));
-    const fieldClasses = cx(prefix("input__field"), { [prefix("input__field--error")]: this.error });
+    const fieldClasses = cx(prefix("input__field"), this.error && prefix("input__field--error"));
     const iconClasses = cx(prefix("input__icon"));
     const labelClasses = cx(prefix("input__label"));
 

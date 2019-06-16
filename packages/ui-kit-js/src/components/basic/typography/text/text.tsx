@@ -71,12 +71,12 @@ export class Text {
 
     const textClasses = cx(
       prefix("text"),
-      { [prefix(`text--${this.type}`)]: this.type },
-      { [prefix(`text--align-${this.align}`)]: this.align },
-      { [prefix(`text--color-${this.color}`)]: this.color },
-      { [prefix("text--inline")]: this.inline },
-      { [prefix("text--ellipsis")]: this.ellipsis },
-      { [prefix("text--wrap")]: this.wrap }
+      this.type && prefix(`text--${this.type}`),
+      this.align !== "left" && prefix(`text--align-${this.align}`),
+      this.color && prefix(`text--color-${this.color}`),
+      this.inline && prefix("text--inline"),
+      this.ellipsis && prefix("text--ellipsis"),
+      this.wrap && prefix("text--wrap")
     );
 
     return (

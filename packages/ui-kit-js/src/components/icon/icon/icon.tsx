@@ -115,8 +115,8 @@ export class Icon {
   render(): JSX.Element {
     const iconClasses = cx(
       prefix("icon"),
-      { [prefix(`icon--color-${this.color}`)]: this.color },
-      { [prefix(`icon--${this.size}`)]: this.size }
+      this.color !== "inherit" && prefix(`icon--color-${this.color}`),
+      this.size && prefix(`icon--${this.size}`)
     );
 
     if (!this.isServer && this.svgContent) {

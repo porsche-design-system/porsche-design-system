@@ -41,12 +41,12 @@ export class Headline {
 
     const headlineClasses = cx(
       prefix("headline"),
-      { [prefix(`headline--${this.type}`)]: this.type },
-      { [prefix(`headline--align-${this.align}`)]: this.align },
-      { [prefix("headline--inline")]: this.inline },
-      { [prefix("headline--ellipsis")]: this.ellipsis },
-      { [prefix("headline--wrap")]: this.wrap },
-      { [prefix("headline--theme-dark")]: this.theme === "dark" }
+      this.type && prefix(`headline--${this.type}`),
+      this.align !== "left" && prefix(`headline--align-${this.align}`),
+      this.inline && prefix("headline--inline"),
+      this.ellipsis && prefix("headline--ellipsis"),
+      this.wrap && prefix("headline--wrap"),
+      this.theme === "dark" && prefix("headline--theme-dark")
     );
 
     return (
