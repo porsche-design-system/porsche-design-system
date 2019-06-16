@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import { defineCustomElements } from '@porscheui/ui-kit-js/loader';
 import Playground from '@/components/Playground.vue';
+import '@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css';
 
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = [/p-\w*/];

@@ -27,7 +27,7 @@
   export default class App extends Vue {}
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   aside {
     position: fixed;
     top: 0;
