@@ -15,7 +15,7 @@
   import {Component, Vue, Watch} from 'vue-property-decorator';
   import {config} from '@/design-system.config';
   import {decodeUrl} from '@/services/utils';
-  import Markdown from "@/components/Markdown.vue";
+  import Markdown from '@/components/Markdown.vue';
 
   @Component({
     components: {
