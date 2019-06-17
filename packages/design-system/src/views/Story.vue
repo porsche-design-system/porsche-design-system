@@ -5,7 +5,9 @@
       <router-link class="tab" v-if="isStoryExistent('code')" to="#code">Code</router-link>
       <router-link class="tab" v-if="isStoryExistent('props')" to="#props">Props</router-link>
     </nav>
-    <component :is="component" v-for="(component, index) in components" :key="index"></component>
+    <Markdown>
+      <component :is="component" v-for="(component, index) in components" :key="index"></component>
+    </Markdown>
   </div>
 </template>
 
@@ -13,8 +15,13 @@
   import {Component, Vue, Watch} from 'vue-property-decorator';
   import {config} from '@/design-system.config';
   import {decodeUrl} from '@/services/utils';
+  import Markdown from "@/components/Markdown.vue";
 
-  @Component
+  @Component({
+    components: {
+      Markdown,
+    },
+  })
   export default class Story extends Vue {
 
     private components: any[] = [];
