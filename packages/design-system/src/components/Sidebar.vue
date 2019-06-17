@@ -55,9 +55,13 @@
   }
 
   .list {
-    margin-top: $p-spacing-24;
     width: 100%;
     display: inline-block;
+    margin-top: $p-spacing-24;
+
+    &:last-child {
+      margin-bottom: $p-spacing-24;
+    }
 
     > li:not(:first-child) {
       margin-top: $p-spacing-24;
