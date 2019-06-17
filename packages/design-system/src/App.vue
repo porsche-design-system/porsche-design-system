@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <aside>
+    <aside class="sidebar">
       <Header/>
       <Divider spacing="small"/>
       <Sidebar/>
       <Divider spacing="small"/>
       <Footer/>
     </aside>
-    <main>
+    <main class="content">
       <router-view/>
     </main>
   </div>
@@ -40,7 +40,9 @@
 </style>
 
 <style scoped lang="scss">
-  aside {
+  @import "~@porscheui/ui-kit-js/src/styles/utility/index";
+
+  .sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -57,11 +59,20 @@
     padding: 2.5rem 2rem 150px;
   }
 
-  main {
+  .content {
     margin-left: 320px;
-    display: block;
-    padding: 32px;
     max-width: 1620px;
     transition: margin-left 400ms ease-out;
+    display: block;
+    padding: $p-spacing-32;
+
+    @include breakpoint("s") {
+      padding: $p-spacing-64;
+    }
+
+    @include breakpoint("m") {
+      margin-left: 300px;
+      padding: $p-spacing-64;
+    }
   }
 </style>
