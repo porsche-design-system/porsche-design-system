@@ -1,12 +1,12 @@
 <template>
-  <footer>
-    <p>
+  <footer class="footer">
+    <p-text type="small">
       © 2019 Dr. Ing. h.c. F. Porsche AG.
-      <br />
-      <a href="https://www.porsche.com/international/legal-notice/">Legal notice</a>
-      <a href="https://www.porsche.com/international/legal-notice/">Imprint</a>
-      <router-link to="/general/license">License</router-link>.
-    </p>
+      <br>
+      <a href="https://www.porsche.com/international/legal-notice/">Legal notice</a> /
+      <a href="https://www.porsche.com/international/legal-notice/">Imprint</a> /
+      <router-link to="/license">License</router-link>
+    </p-text>
   </footer>
 </template>
 
@@ -18,4 +18,7 @@
 </script>
 
 <style scoped lang="scss">
+  .footer {
+    text-align: center;
+  }
 </style>

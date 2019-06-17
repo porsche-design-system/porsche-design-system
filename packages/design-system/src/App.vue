@@ -4,6 +4,7 @@
       <Header/>
       <Divider spacing="small"/>
       <Sidebar/>
+      <Divider spacing="small"/>
       <Footer/>
     </aside>
     <main>
