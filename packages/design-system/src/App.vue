@@ -2,6 +2,7 @@
   <div id="app">
     <aside>
       <Header/>
+      <Divider/>
       <Sidebar/>
       <Footer/>
     </aside>
@@ -16,12 +17,14 @@
   import Header from '@/components/Header.vue';
   import Sidebar from '@/components/Sidebar.vue';
   import Footer from '@/components/Footer.vue';
+  import Divider from '@/components/Divider.vue';
 
   @Component({
     components: {
       Header,
       Sidebar,
       Footer,
+      Divider,
     },
   })
   export default class App extends Vue {}
