@@ -1,21 +1,27 @@
 <template>
   <nav>
-    <ul>
+    <ul class="list">
       <li v-for="(pages, category, index) in config.pages" :key="index">
-        <h2>{{ category }}</h2>
+        <p-headline type="headline-5" level="3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
-            <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">{{ page }}</router-link>
+            <router-link class="link" :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">
+              <p-text-link tag="span">{{ page }}</p-text-link>
+            </router-link>
           </li>
         </ul>
       </li>
     </ul>
-    <ul>
+    <divider spacing="small"/>
+    <p-headline type="headline-4" level="2">Components</p-headline>
+    <ul class="list">
       <li v-for="(stories, category, index) in config.stories" :key="index">
-        <h2>{{ category }}</h2>
+        <p-headline type="headline-5" level="3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, story, index) in stories" :key="index">
-            <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">{{ story }}</router-link>
+            <router-link class="link" :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">
+              <p-text-link tag="span">{{ story }}</p-text-link>
+            </router-link>
           </li>
         </ul>
       </li>
@@ -26,9 +32,14 @@
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
   import {config} from '@/design-system.config';
-  import {encodeUrl} from '@/services/utils.ts';
+  import {encodeUrl} from '@/services/utils';
+  import Divider from '@/components/Divider.vue';
 
-  @Component
+  @Component({
+    components: {
+      Divider,
+    },
+  })
   export default class Sidebar extends Vue {
 
     public config = config;
@@ -37,12 +48,36 @@
 </script>
 
 <style scoped lang="scss">
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  @import "~@porscheui/ui-kit-js/src/styles/utility/index";
 
-    &.router-link-active {
-      color: #42b983;
+  ul, li {
+    list-style: none;
+  }
+
+  .list {
+    margin-top: $p-spacing-24;
+    width: 100%;
+    display: inline-block;
+
+    > li:not(:first-child) {
+      margin-top: $p-spacing-24;
+    }
+  }
+
+  .link {
+    padding: $p-spacing-4 0;
+    text-decoration: none;
+    color: $p-color-porsche-black;
+    display: block;
+
+    &.router-link-active,
+    &:hover {
+      color: $p-color-porsche-red;
+    }
+
+    &:focus {
+      outline: 1px solid $p-color-state-focus;
+      outline-offset: 4px;
     }
   }
 </style>

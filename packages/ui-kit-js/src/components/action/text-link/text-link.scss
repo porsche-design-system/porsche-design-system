@@ -13,7 +13,7 @@
   position: relative;
   display: inline-flex;
   align-items: flex-start;
-  color: $p-color-porsche-black;
+  color: inherit;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
   &#{$bem-block}--theme-dark {
