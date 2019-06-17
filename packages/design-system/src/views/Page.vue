@@ -1,15 +1,20 @@
 <template>
-  <div>
+  <Markdown>
     <component :is="component" v-for="(component, index) in components" :key="index"></component>
-  </div>
+  </Markdown>
 </template>
 
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator';
   import {config} from '@/design-system.config';
   import {decodeUrl} from '@/services/utils';
+  import Markdown from '@/components/Markdown.vue';
 
-  @Component
+  @Component({
+    components: {
+      Markdown,
+    },
+  })
   export default class Page extends Vue {
 
     private components: any[] = [];
