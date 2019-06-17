@@ -1,5 +1,10 @@
 @import "../../../styles/utility/index";
 
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
 .#{$p-global-class-prefix}loader {
   $bem-block: &;
   margin: 0;

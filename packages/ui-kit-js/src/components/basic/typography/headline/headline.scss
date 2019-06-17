@@ -144,6 +144,8 @@
 }
 
 :host {
+  display: block;
+
   ::slotted(a) {
     color: inherit;
     text-decoration: none;

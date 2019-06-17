@@ -2,6 +2,7 @@
 
 :host {
   display: inline-flex;
+  vertical-align: top;
 }
 
 .#{$p-global-class-prefix}button-icon {
