@@ -24,11 +24,18 @@
 </script>
 
 <style scoped lang="scss">
+  @import "~@porscheui/ui-kit-js/src/styles/utility/index";
+
   .header {
     text-align: center;
   }
 
   .link {
     display: inline-block;
+
+    &:focus {
+      outline: 1px solid $p-color-state-focus;
+      outline-offset: 4px;
+    }
   }
 </style>

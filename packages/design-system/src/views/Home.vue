@@ -128,7 +128,7 @@
     p a {
       text-decoration: none;
       color: $p-color-porsche-red;
-      transition: color 0.3s;
+      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
         color: $p-color-porsche-dark-red;
@@ -168,7 +168,7 @@
       border-bottom: 1px solid $p-color-porsche-red;
       text-decoration: none;
       color: $p-color-porsche-red;
-      transition: color 0.3s;
+      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
         color: $p-color-porsche-dark-red;
