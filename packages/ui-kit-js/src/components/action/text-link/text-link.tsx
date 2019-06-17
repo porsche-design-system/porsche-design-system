@@ -27,6 +27,11 @@ export class TextLink {
   /** Adapts the color when used on dark background. */
   @Prop() theme?: "light" | "dark" = "light";
 
+  /** Set a custom HTML tag depending of the usage of the component. */
+  @Prop() tag?:
+    | "span"
+    | "a" = "a";
+
   /** Emitted when the link is clicked. */
   @Event() pClick!: EventEmitter<void>;
 
@@ -35,22 +40,24 @@ export class TextLink {
   }
 
   render(): JSX.Element {
+    const TagType: any = this.tag;
+
     const textLinkClasses = cx(prefix("text-link"), this.theme === "dark" && prefix("text-link--theme-dark"));
     const iconClasses = cx(this.type && prefix(`text-link__icon--${this.type}`));
 
     return (
-      <a
+      <TagType
+        {...(TagType === "a"
+          ? { href: this.href, target: `_${this.target}`, download: this.download }
+          : null)}
         onClick={(e) => this.onClick(e)}
-        href={this.href}
-        target={"_" + this.target}
-        download={this.download}
         class={textLinkClasses}
       >
         <p-icon source={this.icon} size="inherit" color="inherit" class={iconClasses} />
         <p-text type={this.type} color="inherit" tag="span">
           <slot />
         </p-text>
-      </a>
+      </TagType>
     );
   }
 }

@@ -53,6 +53,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 2.5rem 2rem 150px;
   }
 
   main {

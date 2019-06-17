@@ -399,6 +399,11 @@ export namespace Components {
     */
     'icon'?: string;
     /**
+    * Set a custom HTML tag depending of the usage of the component.
+    */
+    'tag'?: | "span"
+    | "a";
+    /**
     * Target attribute where the link should be opened.
     */
     'target'?: "self" | "blank" | "parent" | "top";
@@ -965,6 +970,11 @@ declare namespace LocalJSX {
     * Emitted when the link is clicked.
     */
     'onPClick'?: (event: CustomEvent<void>) => void;
+    /**
+    * Set a custom HTML tag depending of the usage of the component.
+    */
+    'tag'?: | "span"
+    | "a";
     /**
     * Target attribute where the link should be opened.
     */
