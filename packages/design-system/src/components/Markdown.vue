@@ -225,6 +225,11 @@
           max-width: 100%;
           vertical-align: top;
         }
+
+        // Special
+        .playground {
+          margin-top: $p-spacing-16;
+        }
       }
     }
   }
