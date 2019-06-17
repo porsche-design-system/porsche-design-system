@@ -55,7 +55,7 @@
       & img,
       & code,
       & pre {
-        :not(.playground):not(pre):not(hr):not(table):not(img) {
+        :not(div):not(pre):not(hr):not(table):not(img) {
           max-width: 800px;
         }
 
