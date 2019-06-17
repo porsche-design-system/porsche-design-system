@@ -2,7 +2,7 @@
   <div id="app">
     <aside>
       <Header/>
-      <Divider/>
+      <Divider spacing="small"/>
       <Sidebar/>
       <Footer/>
     </aside>
