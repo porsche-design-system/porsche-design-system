@@ -4,6 +4,13 @@
   </div>
 </template>
 
+<script lang="ts">
+  import {Component, Vue} from 'vue-property-decorator';
+
+  @Component
+  export default class Markdown extends Vue {}
+</script>
+
 <style scoped lang="scss">
   @import "~@porscheui/ui-kit-js/src/styles/utility/index";
   @import "~@porscheui/ui-kit-js/src/components/basic/typography/headline/headline.scss";
