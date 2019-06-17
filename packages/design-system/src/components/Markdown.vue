@@ -9,7 +9,10 @@
   @import "~@porscheui/ui-kit-js/src/components/basic/typography/headline/headline.scss";
   @import "~@porscheui/ui-kit-js/src/components/basic/typography/text/text.scss";
 
-  .markdown ::v-deep > div {
+  /* More information about ::v-deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
+   * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
+   */
+  .markdown ::v-deep > .vmark {
 
     &:first-child > {
       :first-child {
@@ -23,6 +26,10 @@
       }
     }
 
+    /* Child selectors for h1, h2, h3, etc. and in all possible nested combinations of themselves are necessary to be sure no style
+     * is getting applied to our <playground> component or anything that is rendered within a <div> inside this component. Imagine
+     * the usage of an <a> tag inside <h1> or <ul>/<li> where the style should be applied but not for `playground > a` or `div > a`.
+     */
     & > {
       @at-root #{&},
       & h1,
