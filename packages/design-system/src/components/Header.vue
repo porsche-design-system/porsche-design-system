@@ -1,10 +1,10 @@
 <template>
-  <header>
-    <router-link to="/">
+  <header class="header">
+    <router-link class="link" to="/">
       <Marque/>
     </router-link>
-    <h1>Porsche UI Kit</h1>
-    <p>Current Release: v1.0.0-alpha.1</p>
+    <p-headline class="p-spacing-mt--16" type="headline-4" level="1">Porsche UI Kit</p-headline>
+    <p-text type="small">Current Release: v1.0.0-alpha.1</p-text>
   </header>
 </template>
 
@@ -21,7 +21,11 @@
 </script>
 
 <style scoped lang="scss">
-  img {
-    width: 100px;
+  .header {
+    text-align: center;
+  }
+
+  .link {
+    display: inline-block;
   }
 </style>
