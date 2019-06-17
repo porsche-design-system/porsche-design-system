@@ -212,7 +212,7 @@
         a {
           text-decoration: underline;
           color: $p-color-porsche-black;
-          transition: color 0.3s;
+          transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
           &:hover {
             text-decoration: none;

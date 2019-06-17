@@ -1,9 +1,15 @@
 <template>
   <div>
-    <nav>
-      <router-link class="tab" v-if="isStoryExistent('design')" to="#design">Design</router-link>
-      <router-link class="tab" v-if="isStoryExistent('code')" to="#code">Code</router-link>
-      <router-link class="tab" v-if="isStoryExistent('props')" to="#props">Props</router-link>
+    <nav class="tabs">
+      <p-text class="tab" type="24" v-if="isStoryExistent('design')">
+        <router-link class="link" to="#design">Design</router-link>
+      </p-text>
+      <p-text class="tab" type="24" v-if="isStoryExistent('code')">
+        <router-link class="link" to="#code">Code</router-link>
+      </p-text>
+      <p-text class="tab" type="24" v-if="isStoryExistent('props')">
+        <router-link class="link" to="#props">Props</router-link>
+      </p-text>
     </nav>
     <Markdown>
       <component :is="component" v-for="(component, index) in components" :key="index"></component>
@@ -101,14 +107,41 @@
 </script>
 
 <style scoped lang="scss">
-  a.tab {
+  @import "~@porscheui/ui-kit-js/src/styles/utility/index";
+
+  .tabs {
+    display: flex;
+    margin-bottom: $p-spacing-64;
+    border-bottom: 1px solid $p-color-neutral-grey-2;
+  }
+
+  .tab {
+    &:not(:last-child) {
+      margin-right: $p-spacing-40;
+    }
+  }
+
+  .link {
+    display: block;
+    padding-bottom: $p-spacing-8;
     text-decoration: none;
-    color: black;
-    padding: 10px;
-    border-bottom: 3px solid #ccc;
+    border-bottom: 3px solid transparent;
+    font-weight: 200;
+    color: $p-color-neutral-grey-6;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &:hover {
+      color: $p-color-porsche-red;
+    }
+
+    &:focus {
+      outline: 1px solid $p-color-state-focus;
+      outline-offset: 4px;
+    }
 
     &.router-link-exact-active {
-      border-bottom-color: red;
+      color: $p-color-porsche-black;
+      border-bottom-color: $p-color-porsche-red;
     }
   }
 </style>
