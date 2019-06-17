@@ -46,32 +46,21 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #fff;
     width: 300px;
     height: 100vh;
-    z-index: 1;
-    border-right: 1px solid #ccc;
-    transition: transform 400ms ease-out, opacity 400ms ease-out;
-    will-change: transform, opacity;
+    padding: $p-spacing-40 $p-spacing-32;
+    border-right: 1px solid $p-color-neutral-grey-2;
+    background: $p-color-porsche-light;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 2.5rem 2rem 150px;
   }
 
   .content {
-    margin-left: 320px;
-    max-width: 1620px;
-    transition: margin-left 400ms ease-out;
-    display: block;
+    margin-left: 300px;
     padding: $p-spacing-32;
 
     @include breakpoint("s") {
-      padding: $p-spacing-64;
-    }
-
-    @include breakpoint("m") {
-      margin-left: 300px;
       padding: $p-spacing-64;
     }
   }
