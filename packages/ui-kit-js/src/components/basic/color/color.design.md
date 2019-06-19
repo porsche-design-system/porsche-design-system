@@ -61,7 +61,7 @@ The color proportion scales for each theme might be a little helper in doing so.
 | <div class="sg-design-color-badge sg-design-color-porsche-dark-red"></div>  	| **Porsche Dark Red**    	| #960014 	| 150/0/20       	| Hover state for text/icons in Porsche Red |
 | <div class="sg-design-color-badge sg-design-color-neutral-grey-4"></div>    	| **Grey 4**              	| #96989A 	| 150/152/154    	| Disabled state or decorative text/icons   |
 
-#### Additional elements
+#### Further elements
 For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
 
 |                                                                         	|                    	| HEX     	| RGB           	| Usage            |
@@ -98,7 +98,7 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 | <div class="sg-design-color-badge sg-design-color-porsche-red"></div>  	  | **Porsche Red**        	| #D5001C 	| 213/0/28        | Hover state                             |
 | <div class="sg-design-color-badge sg-design-color-neutral-grey-5"></div>  | **Grey 5**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
 
-#### Additional elements
+#### Further elements
 For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
 
 |                                                                         	|                    	| HEX     	| RGB              	| Usage            |
