@@ -1,8 +1,8 @@
 # Roadmap 
 
 Following our mission we align all our doings with our three main objectives:  
-1. Developer and Designer can complete their design tasks more efficient 
-2. Establish the Porsche UI Kit for all digital Porsche products to improve the overall UI quality and consistency
+1. Developer and Designer can complete their design tasks more efficient  
+2. Establish the Porsche UI Kit for all digital Porsche products to improve the overall UI quality and consistency  
 3. Developer, Designer and Decision-Maker trust in the Porsche UI Kit
 
 The roadmap for the Porsche UI Kit is based on the planned tasks and changes for one quarter. Therefore is not a delivery commitment and may be changed based on upcoming user needs, feedback and surrounding requirements.
