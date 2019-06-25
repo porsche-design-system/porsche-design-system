@@ -30,9 +30,6 @@ export class Headline {
   /** Wraps the text, even when it has to break a word. */
   @Prop() wrap?: boolean = false;
 
-  /** Sets the text as display: inline. */
-  @Prop() inline?: boolean = false;
-
   /** Adapts the text color when used on dark background. */
   @Prop() theme?: "light" | "dark" = "light";
 
@@ -43,7 +40,6 @@ export class Headline {
       prefix("headline"),
       this.type && prefix(`headline--${this.type}`),
       this.align !== "left" && prefix(`headline--align-${this.align}`),
-      this.inline && prefix("headline--inline"),
       this.ellipsis && prefix("headline--ellipsis"),
       this.wrap && prefix("headline--wrap"),
       this.theme === "dark" && prefix("headline--theme-dark")

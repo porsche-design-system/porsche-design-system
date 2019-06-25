@@ -236,10 +236,6 @@ export namespace Components {
     */
     'ellipsis'?: boolean;
     /**
-    * Sets the text as display: inline.
-    */
-    'inline'?: boolean;
-    /**
     * Headline level/hierarchy.
     */
     'level'?: "1" | "2" | "3" | "4" | "5" | "6";
@@ -803,10 +799,6 @@ declare namespace LocalJSX {
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
-    /**
-    * Sets the text as display: inline.
-    */
-    'inline'?: boolean;
     /**
     * Headline level/hierarchy.
     */
