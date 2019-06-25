@@ -12,6 +12,9 @@ import {
 import {
   Components,
 } from './index';
+import {
+  PaginationItemType,
+} from './components/navigation/pagination/pagination-helper';
 
 export namespace Components {
   interface PButtonIcon {
@@ -299,6 +302,29 @@ export namespace Components {
     */
     'theme'?: "light" | "dark";
   }
+  interface PPagination {
+    /**
+    * Index of the currently active page.
+    */
+    'activePage'?: number;
+    /**
+    * The total count of items per page.
+    */
+    'itemsPerPage': number;
+    /**
+    * The number of pages between ellipsis. 0 = mobile | 1 = desktop
+    */
+    'pageRange'?: 0 | 1;
+    /**
+    * Adapts the color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * The total count of items.
+    */
+    'totalItemsCount': number;
+    'type': PaginationItemType;
+  }
   interface PRadio {
     'checked'?: boolean;
     'disabled'?: boolean;
@@ -496,6 +522,12 @@ declare global {
     new (): HTMLPLoaderElement;
   };
 
+  interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {}
+  var HTMLPPaginationElement: {
+    prototype: HTMLPPaginationElement;
+    new (): HTMLPPaginationElement;
+  };
+
   interface HTMLPRadioElement extends Components.PRadio, HTMLStencilElement {}
   var HTMLPRadioElement: {
     prototype: HTMLPRadioElement;
@@ -544,6 +576,7 @@ declare global {
     'p-icon': HTMLPIconElement;
     'p-input': HTMLPInputElement;
     'p-loader': HTMLPLoaderElement;
+    'p-pagination': HTMLPPaginationElement;
     'p-radio': HTMLPRadioElement;
     'p-select': HTMLPSelectElement;
     'p-switch': HTMLPSwitchElement;
@@ -863,6 +896,32 @@ declare namespace LocalJSX {
     */
     'theme'?: "light" | "dark";
   }
+  interface PPagination extends JSXBase.HTMLAttributes<HTMLPPaginationElement> {
+    /**
+    * Index of the currently active page.
+    */
+    'activePage'?: number;
+    /**
+    * The total count of items per page.
+    */
+    'itemsPerPage'?: number;
+    /**
+    * Emitted when the link is clicked.
+    */
+    'onPClick'?: (event: CustomEvent<void>) => void;
+    /**
+    * The number of pages between ellipsis. 0 = mobile | 1 = desktop
+    */
+    'pageRange'?: 0 | 1;
+    /**
+    * Adapts the color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
+    /**
+    * The total count of items.
+    */
+    'totalItemsCount'?: number;
+  }
   interface PRadio extends JSXBase.HTMLAttributes<HTMLPRadioElement> {
     'checked'?: boolean;
     'disabled'?: boolean;
@@ -1001,6 +1060,7 @@ declare namespace LocalJSX {
     'p-icon': PIcon;
     'p-input': PInput;
     'p-loader': PLoader;
+    'p-pagination': PPagination;
     'p-radio': PRadio;
     'p-select': PSelect;
     'p-switch': PSwitch;

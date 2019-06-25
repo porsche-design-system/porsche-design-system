@@ -73,6 +73,8 @@
 
     <p-text type="28">Lorem ipsum <a href="#">Linktext</a> dolor sit amet.</p-text>
 
+    <p-pagination total-items-count="500" items-per-page="25" active-page="3"></p-pagination>
+
     <script>
       const btn = document.querySelector("p-button-regular")
       btn.addEventListener("pClick", (e) => {
@@ -83,6 +85,14 @@
       })
       btn.addEventListener("pBlur", (e) => {
         console.log("btn was blurred", e)
+      })
+
+      const pagination = document.querySelector("p-pagination")
+      pagination.addEventListener("pClick", (e) => {
+        console.log("pagination was clicked", e)
+        // let currPage = this.attr("active-page");
+
+        // el.activePage =
       })
     </script>
   </body>
