@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h } from "@stencil/core";
+import { JSX, Component, Host, Prop, h } from "@stencil/core";
 import cx from "classnames";
 import { prefix } from "../../../../utils/prefix";
 import { Components } from "../../../../index";
@@ -79,10 +79,14 @@ export class Text {
       this.wrap && prefix("text--wrap")
     );
 
+    const hostClasses = cx(this.inline && prefix("text--inline"));
+
     return (
-      <TagType class={textClasses}>
-        <slot />
-      </TagType>
+      <Host class={hostClasses}>
+        <TagType class={textClasses}>
+          <slot />
+        </TagType>
+      </Host>
     );
   }
 }
