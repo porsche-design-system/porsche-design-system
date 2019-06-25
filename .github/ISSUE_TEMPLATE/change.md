@@ -14,7 +14,8 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - List topics that are not part of this issue to be worked on.
 
 **Notes**  
-- Abstract Collection Link:
+- Abstract Link DARK:
+- Abstract Link LIGHT:
 - Design Docu Ticket: #
 - Share any further information that is relevant for processing
 
