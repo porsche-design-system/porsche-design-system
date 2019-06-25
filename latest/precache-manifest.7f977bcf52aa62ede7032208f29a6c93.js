@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c53e4e6ced049096fa8c24befe12c534",
+    "revision": "00df07ad6b5755869b190ff874a53be3",
     "url": "./index.html"
   },
   {
@@ -104,7 +104,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/css/9.4fef0adb.chunk.css"
   },
   {
-    "revision": "250a9386884a718b6859",
+    "revision": "3800de442f3caa5520b7",
     "url": "./static/css/main.178f5422.chunk.css"
   },
   {
@@ -156,16 +156,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/20.efc8f264.chunk.js"
   },
   {
-    "revision": "b629ec02bcb11dbf5472",
-    "url": "./static/js/21.cc8ed498.chunk.js"
+    "revision": "99f4adcadf07167332b0",
+    "url": "./static/js/21.dc7b474b.chunk.js"
   },
   {
     "revision": "3cb21ea75f217e471925",
     "url": "./static/js/22.08338501.chunk.js"
   },
   {
-    "revision": "ece162ac6149090473c5",
-    "url": "./static/js/23.f64ac06e.chunk.js"
+    "revision": "f32eac5662fb70bb52f5",
+    "url": "./static/js/23.ac5f23a1.chunk.js"
   },
   {
     "revision": "fd3d12c8718c9a9a6d1e",
@@ -396,12 +396,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/9.05874de2.chunk.js"
   },
   {
-    "revision": "250a9386884a718b6859",
-    "url": "./static/js/main.0adbac67.chunk.js"
+    "revision": "3800de442f3caa5520b7",
+    "url": "./static/js/main.0a57a8b3.chunk.js"
   },
   {
-    "revision": "8e1c15a98f01789fe724",
-    "url": "./static/js/runtime~main.ce1c3c16.js"
+    "revision": "31a3bf769114f711a415",
+    "url": "./static/js/runtime~main.c2c7bb3c.js"
   },
   {
     "revision": "6e4bcab485415b0eacf6b16080195d07",
@@ -444,8 +444,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/media/quality-criteria.948385d2.md"
   },
   {
-    "revision": "eb8a46df93c45e4d3be8ac559603382e",
-    "url": "./static/media/roadmap.eb8a46df.md"
+    "revision": "219c7c84d76ea5453354a87619f14973",
+    "url": "./static/media/roadmap.219c7c84.md"
   },
   {
     "revision": "043e47ec512ff0ad560eb35e5225a092",
