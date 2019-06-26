@@ -173,14 +173,14 @@
   }
 
   &__icon,
-  &__loader {
+  &__spinner {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
 
-  &__loader {
+  &__spinner {
     // margin-top: 0.1875em; // this must be adapted if final SVG icons are integrated!
   }
 

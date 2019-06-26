@@ -177,11 +177,11 @@
   }
 
   &__icon,
-  &__loader {
+  &__spinner {
     position: absolute;
   }
 
-  &__loader {
+  &__spinner {
     margin-top: 0.1875em; // this must be adapted if final SVG icons are integrated!
   }
 

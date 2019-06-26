@@ -82,11 +82,11 @@ export const Stories: Stories = {
     }
   },
   Feedback: {
-    Loader: {
-      design: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.design.mdx"),
-      code: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.code.mdx"),
-      vrt: importMDX("../../ui-kit-js/src/components/feedback/loader/loader.vrt.mdx"),
-      docs: [importMDX("../../ui-kit-js/src/components/feedback/loader/loader.prop.mdx")]
+    Spinner: {
+      design: importMDX("../../ui-kit-js/src/components/feedback/spinner/spinner.design.mdx"),
+      code: importMDX("../../ui-kit-js/src/components/feedback/spinner/spinner.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/feedback/spinner/spinner.vrt.mdx"),
+      docs: [importMDX("../../ui-kit-js/src/components/feedback/spinner/spinner.prop.mdx")]
     }
   },
   Icon: {

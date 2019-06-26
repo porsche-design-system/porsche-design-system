@@ -2,7 +2,7 @@ import "jasmine";
 import { VisualRegressionTester } from "@porscheui/visual-regression-tester";
 import { getVisualRegressionTester } from "../../../../../../vrt/helpers/setup";
 
-describe("Component Loader", () => {
+describe("Component Spinner", () => {
   let visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
@@ -11,8 +11,8 @@ describe("Component Loader", () => {
 
   it("should have no visual regression", async () => {
     expect(
-      await visualRegressionTester.test("component-loader", async () => {
-        await visualRegressionTester.goTo("/#/vrt/feedback/loader");
+      await visualRegressionTester.test("component-spinner", async () => {
+        await visualRegressionTester.goTo("/#/vrt/feedback/spinner");
       })
     ).toBeFalsy();
   });
