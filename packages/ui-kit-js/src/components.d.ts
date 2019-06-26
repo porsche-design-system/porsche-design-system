@@ -908,7 +908,7 @@ declare namespace LocalJSX {
     /**
     * Emitted when the link is clicked.
     */
-    'onPClick'?: (event: CustomEvent<void>) => void;
+    'onPClick'?: (event: CustomEvent<any>) => void;
     /**
     * The number of pages between ellipsis. 0 = mobile | 1 = desktop
     */

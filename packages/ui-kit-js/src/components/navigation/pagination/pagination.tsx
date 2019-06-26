@@ -16,6 +16,9 @@ import {
   shadow: true
 })
 export class Pagination {
+  /** @internal Type of the pagination item. */
+  @Prop() type: PaginationItemType;
+
   /** The total count of items. */
   @Prop() totalItemsCount: number;
 
@@ -31,15 +34,12 @@ export class Pagination {
   /** Adapts the color when used on dark background. */
   @Prop() theme?: "light" | "dark" = "light";
 
-  /** @internal Type of the pagination item. */
-  @Prop() type: PaginationItemType;
-
   /** Emitted when the link is clicked. */
-  @Event() pClick!: EventEmitter<void>;
+  @Event() pClick!: EventEmitter;
 
-  private onClick(event): void {
+  private onClick(event, page: number) {
     event.preventDefault();
-    this.pClick.emit(event);
+    this.pClick.emit({ event, page });
   }
 
   render(): JSX.Element {
@@ -80,7 +80,7 @@ export class Pagination {
                 if (!this.onClick) {
                   return;
                 }
-                this.onClick(e);
+                this.onClick(e, pageModel.value);
               }}
               aria-label="Previous"
             >
@@ -113,7 +113,7 @@ export class Pagination {
                   if (!this.onClick || pageModel.isActive) {
                     return;
                   }
-                  this.onClick(e);
+                  this.onClick(e, pageModel.value);
                 }}
                 aria-label={`Goto page ${pageModel.value}`}
               >
@@ -141,7 +141,7 @@ export class Pagination {
                 if (!this.onClick) {
                   return;
                 }
-                this.onClick(e);
+                this.onClick(e, pageModel.value);
               }}
               aria-label="Next"
             >

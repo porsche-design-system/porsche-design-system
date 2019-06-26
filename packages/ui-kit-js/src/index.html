@@ -88,11 +88,9 @@
       })
 
       const pagination = document.querySelector("p-pagination")
-      pagination.addEventListener("pClick", (e) => {
+      pagination.addEventListener("pClick", (e, page) => {
         console.log("pagination was clicked", e)
-        // let currPage = this.attr("active-page");
-
-        // el.activePage =
+        pagination.setAttribute("active-page", e.detail.page)
       })
     </script>
   </body>
