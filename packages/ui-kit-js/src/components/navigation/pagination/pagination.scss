@@ -57,14 +57,14 @@
     text-decoration: none;
     cursor: pointer;
 
-    #{$bem-block}--theme-inverted & {
+    #{$bem-block}--theme-dark & {
       color: $p-color-porsche-light;
     }
 
     &:hover {
       color: $p-color-porsche-red;
 
-      #{$bem-block}--theme-inverted & {
+      #{$bem-block}--theme-dark & {
         color: $p-color-porsche-red;
       }
     }
@@ -75,7 +75,7 @@
       &:hover {
         color: $p-color-porsche-black;
 
-        #{$bem-block}--theme-inverted & {
+        #{$bem-block}--theme-dark & {
           color: $p-color-porsche-light;
         }
       }
@@ -98,7 +98,7 @@
       &:hover {
         color: $p-color-porsche-black;
 
-        #{$bem-block}--theme-inverted & {
+        #{$bem-block}--theme-dark & {
           color: $p-color-porsche-light;
         }
       }
@@ -115,14 +115,14 @@
     text-decoration: none;
     cursor: pointer;
 
-    #{$bem-block}--theme-inverted & {
+    #{$bem-block}--theme-dark & {
       color: $p-color-porsche-light;
     }
 
     &:hover {
       color: $p-color-porsche-red;
 
-      #{$bem-block}--theme-inverted & {
+      #{$bem-block}--theme-dark & {
         color: $p-color-porsche-red;
       }
     }
@@ -131,14 +131,14 @@
       color: $p-color-neutral-grey-4;
       cursor: default;
 
-      #{$bem-block}--theme-inverted & {
+      #{$bem-block}--theme-dark & {
         color: $p-color-neutral-grey-6;
       }
 
       &:hover {
         color: $p-color-neutral-grey-4;
 
-        #{$bem-block}--theme-inverted & {
+        #{$bem-block}--theme-dark & {
           color: $p-color-neutral-grey-6;
         }
       }

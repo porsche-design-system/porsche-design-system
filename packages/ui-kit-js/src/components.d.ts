@@ -308,7 +308,7 @@ export namespace Components {
     */
     'activePage'?: number;
     /**
-    * The total count of items per page.
+    * The total count of items which should be shown per page.
     */
     'itemsPerPage': number;
     /**
@@ -902,7 +902,7 @@ declare namespace LocalJSX {
     */
     'activePage'?: number;
     /**
-    * The total count of items per page.
+    * The total count of items which should be shown per page.
     */
     'itemsPerPage'?: number;
     /**

@@ -120,5 +120,13 @@ export const Stories: Stories = {
       code: importMDX("../../ui-kit-js/src/components/layout/spacing/spacing.code.mdx"),
       vrt: importMDX("../../ui-kit-js/src/components/layout/spacing/spacing.vrt.mdx")
     }
+  },
+  Navigation: {
+    Pagination: {
+      design: importMDX("../../ui-kit-js/src/components/navigation/pagination/pagination.design.mdx"),
+      code: importMDX("../../ui-kit-js/src/components/navigation/pagination/pagination.code.mdx"),
+      vrt: importMDX("../../ui-kit-js/src/components/navigation/pagination/pagination.vrt.mdx"),
+      docs: [importMDX("../../ui-kit-js/src/components/navigation/pagination/pagination.prop.mdx")]
+    }
   }
 };
