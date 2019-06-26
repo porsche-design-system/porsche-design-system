@@ -2,7 +2,7 @@
 name: Component
 about: Changes or adding of components resulting in a major, minor or patch release
 title: ''
-labels: ''
+labels: 'component'
 assignees: ''
 
 ---
@@ -14,7 +14,9 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - List topics that are not part of this issue to be worked on.
 
 **Notes**  
-- Abstract Collection Link:
+- Abstract Link LIGHT:
+- Abstract Link DARK:
+- Design Docu Ticket: #
 - Share any further information that is relevant for processing
 
 **Props** (if relevant)  
@@ -25,12 +27,15 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - Cases/Templates: e.g. row
 
 **Subtasks**  
+// DESIGN
 - [ ] Create UI decision proposal based on research and testing
-- [ ] Definition of hierarchy structure and naming of all related states and variants in design and code
+- [ ] Define naming and hierarchy structure and naming of all related states and variants
 - [ ] Approve UI definition
-- [ ] Create/update sketch library symbol in abstract and share collection link
-- [ ] Create UI/UX guidelines
+- [ ] Create Branch and update sketch library in Abstract and create/share collection link
+- [ ] Merge Sketch library to Master in Abstract for export 
 - [ ] Remove from prep library (optional)
+
+// DEV
 - [ ] Create/update related code CSS / JS
 - [ ] Create samples of all possible states and variants
 - [ ] Create Code/Implementation guidelines 
@@ -38,3 +43,9 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - [ ] Create Unit test (Optional)
 - [ ] Test code visual and functional for optimized viewports (only one browser): 320px, 375px, 480px, 768px, 1024px, 1366px, 1920px
 - [ ] Test code visual and functional for all supported browsers in viewports: 320px, 480px, 760px, 1000px, 1300px, 1760px, 1920px
+
+// QA
+- [ ] 3rd party design sketch review
+- [ ] 3rd party code review
+- [ ] 3rd party code docu review
+- [ ] code docu review by design 
