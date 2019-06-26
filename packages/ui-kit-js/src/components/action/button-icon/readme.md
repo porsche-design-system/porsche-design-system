@@ -31,5 +31,5 @@
 
 ### Depends on
 
-- [p-loader](../../feedback/loader)
+- [p-spinner](../../feedback/spinner)
 - [p-icon](../../icon/icon)

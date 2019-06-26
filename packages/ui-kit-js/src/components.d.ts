@@ -292,16 +292,6 @@ export namespace Components {
     'type'?: "text" | "password" | "date" | "time" | "number" | string;
     'value'?: string;
   }
-  interface PLoader {
-    /**
-    * Predefined loader sizes.
-    */
-    'size'?: "x-small" | "small" | "medium" | "large";
-    /**
-    * Adapts the loader color when used on dark background.
-    */
-    'theme'?: "light" | "dark";
-  }
   interface PPagination {
     /**
     * Index of the currently active page.
@@ -336,6 +326,16 @@ export namespace Components {
     'label'?: string;
     'name'?: string;
     'value'?: string;
+  }
+  interface PSpinner {
+    /**
+    * Predefined spinner sizes.
+    */
+    'size'?: "x-small" | "small" | "medium" | "large";
+    /**
+    * Adapts the spinner color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
   }
   interface PSwitch {
     'checked'?: boolean;
@@ -516,12 +516,6 @@ declare global {
     new (): HTMLPInputElement;
   };
 
-  interface HTMLPLoaderElement extends Components.PLoader, HTMLStencilElement {}
-  var HTMLPLoaderElement: {
-    prototype: HTMLPLoaderElement;
-    new (): HTMLPLoaderElement;
-  };
-
   interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {}
   var HTMLPPaginationElement: {
     prototype: HTMLPPaginationElement;
@@ -538,6 +532,12 @@ declare global {
   var HTMLPSelectElement: {
     prototype: HTMLPSelectElement;
     new (): HTMLPSelectElement;
+  };
+
+  interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {}
+  var HTMLPSpinnerElement: {
+    prototype: HTMLPSpinnerElement;
+    new (): HTMLPSpinnerElement;
   };
 
   interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {}
@@ -575,10 +575,10 @@ declare global {
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
     'p-input': HTMLPInputElement;
-    'p-loader': HTMLPLoaderElement;
     'p-pagination': HTMLPPaginationElement;
     'p-radio': HTMLPRadioElement;
     'p-select': HTMLPSelectElement;
+    'p-spinner': HTMLPSpinnerElement;
     'p-switch': HTMLPSwitchElement;
     'p-text': HTMLPTextElement;
     'p-text-link': HTMLPTextLinkElement;
@@ -886,16 +886,6 @@ declare namespace LocalJSX {
     'type'?: "text" | "password" | "date" | "time" | "number" | string;
     'value'?: string;
   }
-  interface PLoader extends JSXBase.HTMLAttributes<HTMLPLoaderElement> {
-    /**
-    * Predefined loader sizes.
-    */
-    'size'?: "x-small" | "small" | "medium" | "large";
-    /**
-    * Adapts the loader color when used on dark background.
-    */
-    'theme'?: "light" | "dark";
-  }
   interface PPagination extends JSXBase.HTMLAttributes<HTMLPPaginationElement> {
     /**
     * Index of the currently active page.
@@ -933,6 +923,16 @@ declare namespace LocalJSX {
     'label'?: string;
     'name'?: string;
     'value'?: string;
+  }
+  interface PSpinner extends JSXBase.HTMLAttributes<HTMLPSpinnerElement> {
+    /**
+    * Predefined spinner sizes.
+    */
+    'size'?: "x-small" | "small" | "medium" | "large";
+    /**
+    * Adapts the spinner color when used on dark background.
+    */
+    'theme'?: "light" | "dark";
   }
   interface PSwitch extends JSXBase.HTMLAttributes<HTMLPSwitchElement> {
     'checked'?: boolean;
@@ -1059,10 +1059,10 @@ declare namespace LocalJSX {
     'p-headline': PHeadline;
     'p-icon': PIcon;
     'p-input': PInput;
-    'p-loader': PLoader;
     'p-pagination': PPagination;
     'p-radio': PRadio;
     'p-select': PSelect;
+    'p-spinner': PSpinner;
     'p-switch': PSwitch;
     'p-text': PText;
     'p-text-link': PTextLink;

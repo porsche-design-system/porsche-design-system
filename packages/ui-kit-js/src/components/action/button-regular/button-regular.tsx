@@ -86,7 +86,7 @@ export class ButtonRegular {
       this.theme === "dark" && prefix("button-regular--theme-dark")
     );
     const iconClasses = prefix("button-regular__icon");
-    const loaderClasses = prefix("button-regular__loader");
+    const spinnerClasses = prefix("button-regular__spinner");
     const labelClasses = prefix("button-regular__label");
 
     return (
@@ -100,7 +100,7 @@ export class ButtonRegular {
         onBlur={(e) => this.onBlur(e)}
       >
         {this.loading ? (
-          <p-loader class={loaderClasses} size="x-small" theme={this.useInvertedLoader()} />
+          <p-spinner class={spinnerClasses} size="x-small" theme={this.useInvertedLoader()} />
         ) : (
           <p-icon class={iconClasses} source={this.icon} />
         )}

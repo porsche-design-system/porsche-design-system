@@ -82,7 +82,7 @@ export class ButtonIcon {
       this.theme === "dark" && prefix("button-icon--theme-dark")
     );
     const iconClasses = prefix("button-icon__icon");
-    const loaderClasses = prefix("button-icon__loader");
+    const spinnerClasses = prefix("button-icon__spinner");
 
     return (
       <TagType
@@ -95,7 +95,7 @@ export class ButtonIcon {
         onBlur={(e) => this.onBlur(e)}
       >
         {this.loading ? (
-          <p-loader class={loaderClasses} size="x-small" theme={this.useInvertedLoader()} />
+          <p-spinner class={spinnerClasses} size="x-small" theme={this.useInvertedLoader()} />
         ) : (
           <p-icon class={iconClasses} size="medium" source={this.icon} />
         )}
