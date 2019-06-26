@@ -22,7 +22,7 @@ export class Pagination {
   /** The total count of items. */
   @Prop() totalItemsCount: number;
 
-  /** The total count of items per page.  */
+  /** The total count of items which should be shown per page.  */
   @Prop() itemsPerPage: number;
 
   /** Index of the currently active page. */

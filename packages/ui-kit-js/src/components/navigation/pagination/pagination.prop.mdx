@@ -27,4 +27,4 @@
 
 ### Depends on
 
-- [p-icon](../../icon/icon)
+- [p-icon](#/icon/icon)

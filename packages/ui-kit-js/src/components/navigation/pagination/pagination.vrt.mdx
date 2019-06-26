@@ -1,0 +1,13 @@
+import { ExampleVrt } from "../../../src/components/example/ExampleVrt"
+
+<ExampleVrt>
+    <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+</ExampleVrt>
+
+<ExampleVrt theme="dark">
+  {(theme) => {
+    return (
+      <p-pagination total-items-count="500" items-per-page="25" active-page="1" theme={theme}></p-pagination>
+    )
+  }}
+</ExampleVrt>
