@@ -25,6 +25,9 @@ export interface InputProps extends ClassNameProp, ComponentProp {
     /** Displays an icon on the right of the input. */
     icon?: IconProps["name"] | JSX.Element
 
+    /** Max length of input value */
+    maxlength?: number
+
     /**
      * Sets the html5 name of the input field.
      * The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
@@ -72,6 +75,7 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
         autofocus,
         error,
         icon,
+        maxlength,
         name,
         onChange,
         pattern,
@@ -114,6 +118,7 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
                     className={inputClasses}
                     disabled={disabled}
                     autoFocus={autofocus}
+                    maxLength={maxlength}
                     name={name}
                     onChange={handleChange}
                     placeholder={placeholder}
