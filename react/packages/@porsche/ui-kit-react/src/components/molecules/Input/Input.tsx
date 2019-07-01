@@ -4,7 +4,11 @@ import { Icon, IconProps } from "../../../index"
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-export interface InputProps extends ClassNameProp, ComponentProp {
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+type DetailedHTMLProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type HTMLInputProps = Omit<DetailedHTMLProps, "className" | "onChange" | "value">
+
+export interface InputProps extends ClassNameProp, ComponentProp, HTMLInputProps {
     /**
      * Basic determines if the placeholder disappears when a value is set or entered,
      * or if it floats above the content.
@@ -13,26 +17,11 @@ export interface InputProps extends ClassNameProp, ComponentProp {
      */
     basic?: boolean
 
-    /** An input can appear disabled and be unable to change states. */
-    disabled?: boolean
-
-    /** An input can have autofocus. */
-    autofocus?: boolean
-
     /** An input can display an error. */
     error?: boolean
 
     /** Displays an icon on the right of the input. */
     icon?: IconProps["name"] | JSX.Element
-
-    /** Max length of input value */
-    maxlength?: number
-
-    /**
-     * Sets the html5 name of the input field.
-     * The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
-     */
-    name?: string
 
     /**
      * Called when the user attempts to change the input value.
@@ -41,18 +30,6 @@ export interface InputProps extends ClassNameProp, ComponentProp {
      * @param {InputProps} data All props of the component.
      */
     onChange?: (value: string, event: React.FormEvent<HTMLInputElement>, data: InputProps) => void
-
-    /** pattern to restrict input */
-    pattern?: string
-
-    /** The placeholder of the input. */
-    placeholder?: string
-
-    /**
-     * The html input type.
-     * @default text
-     */
-    type?: "text" | "password" | "number"
 
     /** Displays a unit on the right of the input. */
     unit?: string
@@ -70,18 +47,14 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
         as,
         className,
         children,
-        basic,
         disabled,
-        autofocus,
+        basic,
         error,
         icon,
-        maxlength,
-        name,
         onChange,
-        pattern,
         placeholder,
-        type,
         unit,
+        type,
         value,
         ...rest
     } = props
@@ -112,21 +85,18 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
     })
 
     return (
-        <ElementType className={className} {...rest}>
+        <ElementType className={className}>
             <label className={prefix("input")}>
                 <input
                     className={inputClasses}
                     disabled={disabled}
-                    autoFocus={autofocus}
-                    maxLength={maxlength}
-                    name={name}
                     onChange={handleChange}
                     placeholder={placeholder}
                     required={true}
                     spellCheck={false}
                     type={type}
                     value={value}
-                    pattern={pattern}
+                    {...rest}
                 />
                 {!basic && <span className={floatingPlaceholderClasses}>{placeholder}</span>}
                 {icon && (
