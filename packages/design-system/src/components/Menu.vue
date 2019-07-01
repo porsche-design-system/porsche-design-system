@@ -33,6 +33,40 @@
     height: rem(40px);
     padding: $p-spacing-8;
     cursor: pointer;
+
+    &:hover {
+      .stripe {
+        background: $p-color-porsche-dark-red;
+
+        &::before {
+          background: $p-color-porsche-dark-red;
+        }
+
+        &::after {
+          background: $p-color-porsche-dark-red;
+        }
+      }
+    }
+
+    &.is-active {
+      .stripe {
+        transition-delay: .12s;
+        transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+        transform: rotate(45deg);
+
+        &::before {
+          top: 0;
+          transition: top 75ms ease, opacity 75ms ease .12s;
+          opacity: 0;
+        }
+
+        &::after {
+          bottom: 0;
+          transition: bottom 75ms ease, transform 75ms cubic-bezier(.215, .61, .355, 1) .12s;
+          transform: rotate(-90deg);
+        }
+      }
+    }
   }
 
   .stripe {
@@ -41,7 +75,7 @@
     width: rem(24px);
     height: 2px;
     display: block;
-    background: $p-color-porsche-black;
+    background: $p-color-porsche-red;
     transition-property: transform;
     transition-timing-function: cubic-bezier(.55, .055, .675, .19);
     transition-duration: 75ms;
@@ -56,7 +90,7 @@
       transition-timing-function: ease;
       transition-duration: .15s;
       transition-property: transform;
-      background: $p-color-porsche-black;
+      background: $p-color-porsche-red;
       transition: top 75ms ease .12s, opacity 75ms ease;
     }
 
@@ -70,28 +104,8 @@
       transition-timing-function: ease;
       transition-duration: .15s;
       transition-property: transform;
-      background: $p-color-porsche-black;
+      background: $p-color-porsche-red;
       transition: bottom 75ms ease .12s, transform 75ms cubic-bezier(.55, .055, .675, .19);
-    }
-  }
-
-  .is-active {
-    .stripe {
-      transition-delay: .12s;
-      transition-timing-function: cubic-bezier(.215, .61, .355, 1);
-      transform: rotate(45deg);
-
-      &::before {
-        top: 0;
-        transition: top 75ms ease, opacity 75ms ease .12s;
-        opacity: 0;
-      }
-
-      &::after {
-        bottom: 0;
-        transition: bottom 75ms ease, transform 75ms cubic-bezier(.215, .61, .355, 1) .12s;
-        transform: rotate(-90deg);
-      }
     }
   }
 </style>
