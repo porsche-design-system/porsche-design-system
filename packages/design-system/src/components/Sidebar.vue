@@ -12,7 +12,7 @@
         </ul>
       </li>
     </ul>
-    <divider spacing="small"/>
+    <Divider spacing="small"/>
     <p-headline type="headline-4" level="2">Components</p-headline>
     <ul class="list">
       <li v-for="(stories, category, index) in config.stories" :key="index">
