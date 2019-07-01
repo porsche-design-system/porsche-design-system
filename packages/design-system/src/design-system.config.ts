@@ -116,11 +116,11 @@ export const config: DesignSystemConfig = {
       },
     },
     Feedback: {
-      Loader: {
-        design: () => import(`@/../../ui-kit-js/src/components/feedback/loader/${empty}loader.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/feedback/loader/${empty}loader.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/feedback/loader/${empty}loader.vrt.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/feedback/loader/${empty}loader.props.md`),
+      Spinner: {
+        design: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.design.md`),
+        code: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.code.md`),
+        vrt: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.vrt.md`),
+        props: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.props.md`),
       },
     },
     Icon: {
