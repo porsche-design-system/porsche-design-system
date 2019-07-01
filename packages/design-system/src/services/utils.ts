@@ -11,6 +11,6 @@ export const decodeUrl = (param: string): string => {
     .join(' ');
 };
 
-export const featureToggle = (feature: string): boolean => {
+export const featureToggle = (feature: 'Q2/2019 Components'): boolean => {
   return localStorage[`Feature: ${feature}`] === 'true';
 };
