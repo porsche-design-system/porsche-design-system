@@ -82,10 +82,10 @@ export class Pagination {
           );
 
           return (prevItem = (
-            <li class={paginationItemClasses}>
+            <li {...pageModel} class={paginationItemClasses}>
               <a
                 class={paginationPrevClasses}
-                href="#"
+                href={!pageModel.isActive && "#"}
                 onClick={(e) => {
                   if (!this.onClick) {
                     return;
@@ -140,7 +140,7 @@ export class Pagination {
           );
 
           return (nextItem = (
-            <li class={paginationItemClasses}>
+            <li {...pageModel} class={paginationItemClasses}>
               <a
                 class={paginationNextClasses}
                 href={!pageModel.isActive && "#"}
