@@ -306,6 +306,22 @@ export namespace Components {
     */
     'itemsPerPage': number;
     /**
+    * Aria label what the pagination is used for.
+    */
+    'label'?: string;
+    /**
+    * Aria label for next page icon.
+    */
+    'labelNext'?: string;
+    /**
+    * Aria label for page navigation.
+    */
+    'labelPage'?: string;
+    /**
+    * Aria label for previous page icon.
+    */
+    'labelPrev'?: string;
+    /**
     * The number of pages between ellipsis. 0 = mobile | 1 = desktop
     */
     'pageRange'?: 0 | 1;
@@ -903,6 +919,22 @@ declare namespace LocalJSX {
     * The total count of items which should be shown per page.
     */
     'itemsPerPage'?: number;
+    /**
+    * Aria label what the pagination is used for.
+    */
+    'label'?: string;
+    /**
+    * Aria label for next page icon.
+    */
+    'labelNext'?: string;
+    /**
+    * Aria label for page navigation.
+    */
+    'labelPage'?: string;
+    /**
+    * Aria label for previous page icon.
+    */
+    'labelPrev'?: string;
     /**
     * Emitted when the link is clicked.
     */

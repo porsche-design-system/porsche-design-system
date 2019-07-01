@@ -7,13 +7,6 @@
   margin: 0;
   padding: 0;
 
-  // @include flex-main-axis(center);
-  counter-reset: maxNumberOfLinks 5;
-
-  @include breakpoint("s") {
-    counter-reset: maxNumberOfLinks 7;
-  }
-
   &__items {
     display: flex;
     margin: 0;
@@ -144,16 +137,4 @@
       }
     }
   }
-
-  // &__prev {
-  //   &::before {
-  //     @include icon-arrow-left-hair-before;
-  //   }
-  // }
-
-  // &__next {
-  //   &::before {
-  //     @include icon-arrow-right-hair-before;
-  //   }
-  // }
 }

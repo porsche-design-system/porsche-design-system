@@ -31,6 +31,18 @@ export class Pagination {
   /** The number of pages between ellipsis. 0 = mobile | 1 = desktop */
   @Prop() pageRange?: 0 | 1 = 1;
 
+  /** Aria label what the pagination is used for. */
+  @Prop() label?: string = "Pagination";
+
+  /** Aria label for previous page icon. */
+  @Prop() labelPrev?: string = "Previous page";
+
+  /** Aria label for page navigation. */
+  @Prop() labelPage?: string = "Page";
+
+  /** Aria label for next page icon. */
+  @Prop() labelNext?: string = "Next page";
+
   /** Adapts the color when used on dark background. */
   @Prop() theme?: "light" | "dark" = "light";
 
@@ -60,36 +72,35 @@ export class Pagination {
       let prevItem: JSX.Element[];
       let nextItem: JSX.Element[];
 
+      const paginationItemClasses = cx(prefix("pagination__item"));
+
       paginationModel.forEach((pageModel: PaginationModelItem) => {
         if (pageModel.type === itemTypes.PREVIOUS_PAGE_LINK) {
           const paginationPrevClasses = cx(
             prefix("pagination__prev"),
             pageModel.isActive && prefix("pagination__prev--disabled")
           );
-          // disable item, since we are on the first page
-          if (pageModel.isActive) {
-            return (prevItem = <span {...pageModel} class={paginationPrevClasses} aria-label="Previous disabled" />);
-          }
 
           return (prevItem = (
-            <a
-              {...pageModel}
-              class={paginationPrevClasses}
-              href="#"
-              onClick={(e) => {
-                if (!this.onClick) {
-                  return;
-                }
-                this.onClick(e, pageModel.value);
-              }}
-              aria-label="Previous"
-            >
-              <p-icon source="arrow-left-hair" />
-            </a>
+            <li class={paginationItemClasses}>
+              <a
+                class={paginationPrevClasses}
+                href="#"
+                onClick={(e) => {
+                  if (!this.onClick) {
+                    return;
+                  }
+                  this.onClick(e, pageModel.value);
+                }}
+                aria-disabled={pageModel.isActive && "true"}
+                aria-label={this.labelPrev}
+              >
+                <p-icon source="arrow-left-hair" />
+              </a>
+            </li>
           ));
         }
         if (pageModel.type === itemTypes.ELLIPSIS) {
-          const paginationItemClasses = cx(prefix("pagination__item"));
           const paginationGoToClasses = cx(prefix("pagination__goto"), prefix("pagination__goto--ellipsis"));
           pageItems.push(
             <li {...pageModel} class={paginationItemClasses}>
@@ -99,7 +110,6 @@ export class Pagination {
         }
         if (pageModel.type === itemTypes.PAGE) {
           const TagType = pageModel.isActive ? "span" : "a";
-          const paginationItemClasses = cx(prefix("pagination__item"));
           const paginationGoToClasses = cx(
             prefix("pagination__goto"),
             pageModel.isActive && prefix("pagination__goto--current")
@@ -115,7 +125,8 @@ export class Pagination {
                   }
                   this.onClick(e, pageModel.value);
                 }}
-                aria-label={`Goto page ${pageModel.value}`}
+                aria-label={`${this.labelPage} ${pageModel.value}`}
+                aria-current={pageModel.isActive && "page"}
               >
                 {pageModel.value}
               </TagType>
@@ -127,26 +138,24 @@ export class Pagination {
             prefix("pagination__next"),
             pageModel.isActive && prefix("pagination__next--disabled")
           );
-          // disable item, since we are on the first page
-          if (pageModel.isActive) {
-            return (nextItem = <span {...pageModel} class={paginationNextClasses} aria-label="Previous disabled" />);
-          }
 
           return (nextItem = (
-            <a
-              {...pageModel}
-              class={paginationNextClasses}
-              href="#"
-              onClick={(e) => {
-                if (!this.onClick) {
-                  return;
-                }
-                this.onClick(e, pageModel.value);
-              }}
-              aria-label="Next"
-            >
-              <p-icon source="arrow-right-hair" />
-            </a>
+            <li class={paginationItemClasses}>
+              <a
+                class={paginationNextClasses}
+                href={!pageModel.isActive && "#"}
+                onClick={(e) => {
+                  if (!this.onClick) {
+                    return;
+                  }
+                  this.onClick(e, pageModel.value);
+                }}
+                aria-disabled={pageModel.isActive && "true"}
+                aria-label={this.labelNext}
+              >
+                <p-icon source="arrow-right-hair" />
+              </a>
+            </li>
           ));
         }
       });
@@ -160,10 +169,12 @@ export class Pagination {
 
     const paginationItems = createPaginationItems();
     return (
-      <nav class={paginationClasses} role="navigation">
-        {paginationItems.prevItem}
-        <ul class={paginationItemsClasses}>{paginationItems.pageItems}</ul>
-        {paginationItems.nextItem}
+      <nav class={paginationClasses} role="navigation" aria-label={this.label}>
+        <ul class={paginationItemsClasses}>
+          {paginationItems.prevItem}
+          {paginationItems.pageItems}
+          {paginationItems.nextItem}
+        </ul>
       </nav>
     );
   }
