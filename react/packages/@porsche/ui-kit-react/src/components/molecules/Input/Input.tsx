@@ -4,11 +4,7 @@ import { Icon, IconProps } from "../../../index"
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-type DetailedHTMLProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-type HTMLInputProps = Omit<DetailedHTMLProps, "className" | "onChange" | "value">
-
-export interface InputProps extends ClassNameProp, ComponentProp, HTMLInputProps {
+export interface InputProps extends ClassNameProp, ComponentProp {
     /**
      * Basic determines if the placeholder disappears when a value is set or entered,
      * or if it floats above the content.
@@ -17,11 +13,23 @@ export interface InputProps extends ClassNameProp, ComponentProp, HTMLInputProps
      */
     basic?: boolean
 
+    /** An input can appear disabled and be unable to change states. */
+    disabled?: boolean
+
+    /** An input can have autofocus. */
+    autofocus?: boolean
+
     /** An input can display an error. */
     error?: boolean
 
     /** Displays an icon on the right of the input. */
     icon?: IconProps["name"] | JSX.Element
+
+    /**
+     * Sets the html5 name of the input field.
+     * The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
+     */
+    name?: string
 
     /**
      * Called when the user attempts to change the input value.
@@ -30,6 +38,15 @@ export interface InputProps extends ClassNameProp, ComponentProp, HTMLInputProps
      * @param {InputProps} data All props of the component.
      */
     onChange?: (value: string, event: React.FormEvent<HTMLInputElement>, data: InputProps) => void
+
+    /** The placeholder of the input. */
+    placeholder?: string
+
+    /**
+     * The html input type.
+     * @default text
+     */
+    type?: "text" | "password" | "number"
 
     /** Displays a unit on the right of the input. */
     unit?: string
@@ -47,14 +64,16 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
         as,
         className,
         children,
-        disabled,
         basic,
+        disabled,
+        autofocus,
         error,
         icon,
+        name,
         onChange,
         placeholder,
-        unit,
         type,
+        unit,
         value,
         ...rest
     } = props
@@ -90,6 +109,8 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
                 <input
                     className={inputClasses}
                     disabled={disabled}
+                    autoFocus={autofocus}
+                    name={name}
                     onChange={handleChange}
                     placeholder={placeholder}
                     required={true}
