@@ -5,6 +5,9 @@ import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface InputProps extends ClassNameProp, ComponentProp {
+    /** Custom dom attributes for the input element only. */
+    inputProps?: { [key: string]: any }
+
     /**
      * Basic determines if the placeholder disappears when a value is set or entered,
      * or if it floats above the content.
@@ -69,6 +72,7 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
         autofocus,
         error,
         icon,
+        inputProps,
         name,
         onChange,
         placeholder,
@@ -104,7 +108,7 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
     })
 
     return (
-        <ElementType className={className}>
+        <ElementType className={className} {...rest}>
             <label className={prefix("input")}>
                 <input
                     className={inputClasses}
@@ -117,7 +121,7 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
                     spellCheck={false}
                     type={type}
                     value={value}
-                    {...rest}
+                    {...inputProps}
                 />
                 {!basic && <span className={floatingPlaceholderClasses}>{placeholder}</span>}
                 {icon && (
