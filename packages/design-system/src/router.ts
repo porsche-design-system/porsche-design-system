@@ -22,6 +22,11 @@ export default new Router({
       component: () => import('./views/Story.vue'),
     },
     {
+      path: '/license',
+      name: 'license',
+      component: () => import('./views/License.vue'),
+    },
+    {
       path: '*',
       name: 'not-found',
       component: () => import('./views/NotFound.vue'),
