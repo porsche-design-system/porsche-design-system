@@ -36,7 +36,7 @@
   "devDependencies": {
     "@porscheui/visual-regression-tester": "^1.1.1",
     "@types/puppeteer": "^1.12.4",
-    "concurrently": "^4.1.0",
+    "concurrently": "^4.1.1",
     "jasmine": "^3.4.0",
     "puppeteer": "^1.16.0",
     "ts-node": "^8.2.0",
