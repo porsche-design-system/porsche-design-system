@@ -31,6 +31,10 @@ export namespace Components {
     */
     'icon'?: string;
     /**
+    * A visually hidden label text to improve accessibility which describes the function behind the button.
+    */
+    'label'?: string;
+    /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
     'loading'?: boolean;
@@ -600,6 +604,10 @@ declare namespace LocalJSX {
     * The icon shown.
     */
     'icon'?: string;
+    /**
+    * A visually hidden label text to improve accessibility which describes the function behind the button.
+    */
+    'label'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */

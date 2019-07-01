@@ -14,9 +14,9 @@ Buttons used as `<button>` elements to trigger actions.
   {(theme) => {
     return (
       <React.Fragment>
-        <p-button-icon theme={theme} />
-        <p-button-icon theme={theme} disabled="true" />
-        <p-button-icon loading="true" theme={theme} />
+        <p-button-icon label="open section" theme={theme} />
+        <p-button-icon label="open section" theme={theme} disabled="true" />
+        <p-button-icon label="loading" loading="true" theme={theme} />
       </React.Fragment>
     )
 }}
@@ -28,9 +28,9 @@ Buttons used as `<button>` elements to trigger actions.
   {(theme) => {
     return (
       <React.Fragment>
-        <p-button-icon variant="ghost" theme={theme} />
-        <p-button-icon variant="ghost" theme={theme} disabled="true" />
-        <p-button-icon variant="ghost" loading="true" theme={theme} />
+        <p-button-icon label="open section" variant="ghost" theme={theme} />
+        <p-button-icon label="open section" variant="ghost" theme={theme} disabled="true" />
+        <p-button-icon label="loading" variant="ghost" loading="true" theme={theme} />
       </React.Fragment>
     )
 }}
@@ -42,9 +42,9 @@ Buttons used as `<button>` elements to trigger actions.
   {(theme) => {
     return (
       <React.Fragment>
-        <p-button-icon variant="transparent" theme={theme} />
-        <p-button-icon variant="transparent" theme={theme} disabled="true" />
-        <p-button-icon variant="transparent" loading="true" theme={theme} />
+        <p-button-icon label="open section" variant="transparent" theme={theme} />
+        <p-button-icon label="open section" variant="transparent" theme={theme} disabled="true" />
+        <p-button-icon label="loading" variant="transparent" loading="true" theme={theme} />
       </React.Fragment>
     )
 }}
@@ -103,7 +103,7 @@ If you need to link to another icon hosted somewhere else, just set the whole ic
 <Example noTheme={false} className="sg-example">
   {(theme) => {
     return (
-      <p-button-icon icon="phone" theme={theme} />
+      <p-button-icon label="phone call" icon="phone" theme={theme} />
     )
 }}
 </Example>

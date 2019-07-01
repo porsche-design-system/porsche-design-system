@@ -17,6 +17,9 @@ export class ButtonIcon {
   /** When providing an url then the component will be rendered as `<a>` instead of `<button>` tag. */
   @Prop() href?: string = undefined;
 
+  /** A visually hidden label text to improve accessibility which describes the function behind the button. */
+  @Prop() label?: string = undefined;
+
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() disabled?: boolean = false;
 
@@ -88,7 +91,7 @@ export class ButtonIcon {
       <TagType
         class={buttonClasses}
         {...(TagType === "button"
-          ? { type: this.type, disabled: this.disabled || this.loading }
+          ? { type: this.type, disabled: this.disabled || this.loading, "aria-label": this.label }
           : { href: this.href, "aria-disabled": String(this.disabled || this.loading) })}
         onClick={(e) => this.onClick(e)}
         onFocus={(e) => this.onFocus(e)}
