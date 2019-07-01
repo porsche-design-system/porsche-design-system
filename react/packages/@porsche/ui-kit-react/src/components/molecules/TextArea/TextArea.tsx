@@ -6,6 +6,9 @@ import { ClassNameProp, ComponentProp } from "../../../lib/props"
 import { Icon, IconProps } from "../../../index"
 
 export interface TextAreaProps extends ClassNameProp, ComponentProp {
+    /** Custom dom attributes for the textarea element only. */
+    textareaProps?: { [key: string]: any }
+
     basic?: boolean
     disabled?: boolean
     autofocus?: boolean
@@ -55,6 +58,7 @@ const _TextArea: React.StatelessComponent<TextAreaProps> = (props) => {
         onChange,
         placeholder,
         rows,
+        textareaProps,
         value,
         ...rest
     } = props
@@ -107,6 +111,7 @@ const _TextArea: React.StatelessComponent<TextAreaProps> = (props) => {
                     required={true}
                     spellCheck={false}
                     value={value}
+                    {...textareaProps}
                 />
                 {!basic && <span className={prefix("text-area__label")}>{placeholder}</span>}
                 {icon && <Icon name={icon} className={prefix("text-area__icon")} />}
