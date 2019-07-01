@@ -12,9 +12,9 @@
         </ul>
       </li>
     </ul>
-    <divider spacing="small"/>
-    <p-headline type="headline-4" level="2">Components</p-headline>
-    <ul class="list">
+    <Divider spacing="small" v-if="featureToggle('Q2/2019 Components')" />
+    <p-headline type="headline-4" level="2" v-if="featureToggle('Q2/2019 Components')">Components</p-headline>
+    <ul class="list" v-if="featureToggle('Q2/2019 Components')">
       <li v-for="(stories, category, index) in config.stories" :key="index">
         <p-headline type="headline-5" level="3">{{ category }}</p-headline>
         <ul>
@@ -34,6 +34,7 @@
   import {config} from '@/design-system.config';
   import {encodeUrl} from '@/services/utils';
   import Divider from '@/components/Divider.vue';
+  import {featureToggle} from '@/services/utils';
 
   @Component({
     components: {
@@ -44,6 +45,7 @@
 
     public config = config;
     public encodeUrl = encodeUrl;
+    public featureToggle = featureToggle;
   }
 </script>
 
