@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+
+## [0.12.3] - 2019-07-02
+
+-   Add inputProps to Input Component props to pass attributes to native input element
+-   Add textareaProps to Textarea Component props to pass attributes to native textarea element
+-   Add inputProps to Radio Component props to pass attributes to native input element
+
 ## [0.12.2] - 2019-06-6
 
 -   Bugfix disabled state in Radio Group component
