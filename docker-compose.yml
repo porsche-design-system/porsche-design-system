@@ -10,7 +10,8 @@ services:
       - "3333:3333"
     environment:
       - HOME=/home/ui-kit
-      - ARTIFACTORY_TOKEN
+      - PORSCHE_NPM_REGISTRY_TOKEN
+      - IONIC_NPM_REGISTRY_TOKEN
       - SLACK_WEBHOOK_URL
       - GIT_FILTER
       - GITHUB_SHA
