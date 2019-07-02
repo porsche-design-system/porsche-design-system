@@ -5,8 +5,8 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${ARTIFACTORY_TOKEN}" ]]; then
-  echo "Please provide the \$ARTIFACTORY_TOKEN environment variable."
+if [[ -z "${PORSCHE_NPM_REGISTRY_TOKEN}" ]]; then
+  echo "Please provide the \$PORSCHE_NPM_REGISTRY_TOKEN environment variable."
   exit 1
 fi
 
@@ -19,7 +19,7 @@ cleanup_credentials() {
 
 setup_credentials() {
   echo "Setting up npm credentials"
-  echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${ARTIFACTORY_TOKEN}" > "${HOME}/.npmrc"
+  echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" > "${HOME}/.npmrc"
 }
 
 trap cleanup_credentials EXIT
