@@ -10,6 +10,9 @@ export interface Radio extends React.StatelessComponent<RadioProps> {
 }
 
 export interface RadioProps extends ClassNameProp, ComponentProp {
+    /** Custom dom attributes for the input element only. */
+    inputProps?: { [key: string]: any }
+
     /** If you don't use RadioGroup, you can use this property to group Radio buttons manually. */
     name?: string
 
@@ -64,6 +67,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
         className,
         disabled,
         error,
+        inputProps,
         labelAs,
         name,
         onChange,
@@ -125,6 +129,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
                 onChange={handleChange}
                 value={value}
                 id={id}
+                {...inputProps}
             />
             <LabelElementType htmlFor={id} className={labelClasses}>
                 {children && React.Children.count(children) > 0 && <span>{children}</span>}
