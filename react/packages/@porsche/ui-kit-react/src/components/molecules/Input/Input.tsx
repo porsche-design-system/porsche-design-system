@@ -5,6 +5,9 @@ import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 
 export interface InputProps extends ClassNameProp, ComponentProp {
+    /** Custom dom attributes for the input element only. */
+    inputProps?: { [key: string]: any }
+
     /**
      * Basic determines if the placeholder disappears when a value is set or entered,
      * or if it floats above the content.
@@ -39,9 +42,6 @@ export interface InputProps extends ClassNameProp, ComponentProp {
      */
     onChange?: (value: string, event: React.FormEvent<HTMLInputElement>, data: InputProps) => void
 
-    /** pattern to restrict input */
-    pattern?: string
-
     /** The placeholder of the input. */
     placeholder?: string
 
@@ -72,9 +72,9 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
         autofocus,
         error,
         icon,
+        inputProps,
         name,
         onChange,
-        pattern,
         placeholder,
         type,
         unit,
@@ -121,7 +121,7 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
                     spellCheck={false}
                     type={type}
                     value={value}
-                    pattern={pattern}
+                    {...inputProps}
                 />
                 {!basic && <span className={floatingPlaceholderClasses}>{placeholder}</span>}
                 {icon && (
