@@ -1217,6 +1217,16 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
+"@ionic-enterprise/angular-output-plugin@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.ionicframework.com/@ionic-enterprise%2fangular-output-plugin/-/angular-output-plugin-0.0.5.tgz#ca5d2c26a21aa778151be4ca9df69cbcfa43f0d1"
+  integrity sha512-op4u6sgy2PCc1xkuzvEMZthURsFSxZJSJlHqAVCYAL5hYbAKMAfT8Lxtj6B/NUyQSOqxiUJ2F5il1dN0QQVmgg==
+
+"@ionic-enterprise/react-output-plugin@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-output-plugin/-/react-output-plugin-0.0.5.tgz#579c31bae4b6bc962516360a704cfcecbf397de7"
+  integrity sha512-98lz1OtVPBLPL82K7r8cZgzoq6c1B4GgVX+KifkejiGA2g8njRPwUOCz7tnentpZ0VlwbgO2SeSfTe6b/dsd5w==
+
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@jest/console/-/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"
@@ -5020,6 +5030,11 @@ cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
+
+cypress-shadow-dom@^0.1.1:
+  version "0.1.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/cypress-shadow-dom/-/cypress-shadow-dom-0.1.1.tgz#851b1bd590463571f1c16ebc3219fa2c58586506"
+  integrity sha1-hRsb1ZBGNXHxwW68Mhn6LFhYZQY=
 
 cypress@^3.2.0:
   version "3.3.1"
