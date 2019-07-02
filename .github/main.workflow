@@ -15,7 +15,7 @@ action "Install" {
   needs = ["Filter"]
   uses = "./images/node/"
   runs = ["run-install"]
-  secrets = ["ARTIFACTORY_TOKEN"]
+  secrets = ["PORSCHE_NPM_REGISTRY_TOKEN"]
 }
 
 action "Build" {
