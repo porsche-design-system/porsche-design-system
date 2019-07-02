@@ -1,0 +1,44 @@
+@import "../../../../styles/utility/index";
+
+.#{$p-global-class-prefix}text-list__item {
+  position: relative;
+  display: block;
+  padding-left: 1em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: calc(1.5em / 2 - 0.125em);
+    width: 0.25em;
+    height: 0.25em;
+    background-color: currentColor;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .#{$p-global-class-prefix}text-list__item::before {
+    height: 1px;
+  }
+}
+
+.#{$p-global-class-prefix}text-list--ordered {
+  counter-reset: section;
+
+  .#{$p-global-class-prefix}text-list__item {
+    padding-left: 1.5rem;
+
+    .#{$p-global-class-prefix}text-list__item {
+      padding-left: 2rem;
+    }
+  }
+
+  .#{$p-global-class-prefix}text-list__item::before {
+    counter-increment: section;
+    content: counters(section, ".") ".";
+    min-width: 1em;
+    height: auto;
+    background-color: transparent;
+    top: 0;
+  }
+}

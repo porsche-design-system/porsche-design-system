@@ -458,6 +458,17 @@ export namespace Components {
     */
     'type'?: Components.PText["type"];
   }
+  interface PTextList {
+    /**
+    * The type of the list.
+    */
+    'listType'?: "unordered" | "ordered";
+    /**
+    * The style of the text.
+    */
+    'textType'?: Components.PText["type"];
+  }
+  interface PTextListItem {}
   interface PTextarea {
     'disabled'?: boolean;
     'error'?: boolean;
@@ -578,6 +589,18 @@ declare global {
     new (): HTMLPTextLinkElement;
   };
 
+  interface HTMLPTextListElement extends Components.PTextList, HTMLStencilElement {}
+  var HTMLPTextListElement: {
+    prototype: HTMLPTextListElement;
+    new (): HTMLPTextListElement;
+  };
+
+  interface HTMLPTextListItemElement extends Components.PTextListItem, HTMLStencilElement {}
+  var HTMLPTextListItemElement: {
+    prototype: HTMLPTextListItemElement;
+    new (): HTMLPTextListItemElement;
+  };
+
   interface HTMLPTextareaElement extends Components.PTextarea, HTMLStencilElement {}
   var HTMLPTextareaElement: {
     prototype: HTMLPTextareaElement;
@@ -602,6 +625,8 @@ declare global {
     'p-switch': HTMLPSwitchElement;
     'p-text': HTMLPTextElement;
     'p-text-link': HTMLPTextLinkElement;
+    'p-text-list': HTMLPTextListElement;
+    'p-text-list-item': HTMLPTextListItemElement;
     'p-textarea': HTMLPTextareaElement;
   }
 }
@@ -1079,6 +1104,17 @@ declare namespace LocalJSX {
     */
     'type'?: Components.PText["type"];
   }
+  interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
+    /**
+    * The type of the list.
+    */
+    'listType'?: "unordered" | "ordered";
+    /**
+    * The style of the text.
+    */
+    'textType'?: Components.PText["type"];
+  }
+  interface PTextListItem extends JSXBase.HTMLAttributes<HTMLPTextListItemElement> {}
   interface PTextarea extends JSXBase.HTMLAttributes<HTMLPTextareaElement> {
     'disabled'?: boolean;
     'error'?: boolean;
@@ -1106,6 +1142,8 @@ declare namespace LocalJSX {
     'p-switch': PSwitch;
     'p-text': PText;
     'p-text-link': PTextLink;
+    'p-text-list': PTextList;
+    'p-text-list-item': PTextListItem;
     'p-textarea': PTextarea;
   }
 }
