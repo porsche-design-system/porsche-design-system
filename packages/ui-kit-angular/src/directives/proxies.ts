@@ -239,6 +239,27 @@ export class PTextLink {
 }
 proxyInputs(PTextLink, ['download', 'href', 'icon', 'tag', 'target', 'theme', 'type']);
 
+export declare interface PTextList extends Components.PTextList {}
+@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['listType', 'textType'] })
+export class PTextList {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(PTextList, ['listType', 'textType']);
+
+export declare interface PTextListItem extends Components.PTextListItem {}
+@Component({ selector: 'p-text-list-item', changeDetection: 0, template: '<ng-content></ng-content>' })
+export class PTextListItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface PTextarea extends Components.PTextarea {}
 @Component({ selector: 'p-textarea', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'error', 'label', 'name', 'value'] })
 export class PTextarea {

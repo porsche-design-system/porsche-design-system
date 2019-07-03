@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./header.module.scss";
 import { Logo } from "@porsche/ui-kit-react";
-import { Headline, Text, Spacing } from "@porscheui/ui-kit-react";
-import packageJson from "@porscheui/ui-kit-react/package.json";
+import { Headline, Text, Spacing } from "@porscheui/ui-kit-react-deprecated";
+import packageJson from "@porscheui/ui-kit-react-deprecated/package.json";
 
 export const Header: React.FunctionComponent = () => {
   return (

@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { Light as Editor } from "react-syntax-highlighter";
 import languageXml from "react-syntax-highlighter/dist/esm/languages/hljs/xml";
 import { Tab } from "@porsche/ui-kit-react";
-import { Spacing, Flex } from "@porscheui/ui-kit-react";
+import { Spacing, Flex } from "@porscheui/ui-kit-react-deprecated";
 import styles from "./example.module.scss";
 import "./example.global.scss";
 import editorTheme from "react-syntax-highlighter/dist/esm/styles/hljs/solarized-dark";

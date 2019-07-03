@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./home.module.scss";
-import { Flex, Spacing, Headline, Text, Grid, ButtonRegular } from "@porscheui/ui-kit-react";
+import { Flex, Spacing, Headline, Text, Grid, ButtonRegular } from "@porscheui/ui-kit-react-deprecated";
 
 export const Home: React.FunctionComponent = () => {
   return (
