@@ -1994,14 +1994,6 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
 
-"@types/react-dom@16.0.9":
-  version "16.0.9"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react-dom/-/react-dom-16.0.9.tgz#73ceb7abe6703822eab6600e65c5c52efd07fb91"
-  integrity sha1-c863q+ZwOCLqtmAOZcXFLv0H+5E=
-  dependencies:
-    "@types/node" "*"
-    "@types/react" "*"
-
 "@types/react-dom@^16.8.4":
   version "16.8.4"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react-dom/-/react-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
@@ -2037,14 +2029,6 @@
   version "16.8.22"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.8.22.tgz#7f18bf5ea0c1cad73c46b6b1c804a3ce0eec6d54"
   integrity sha1-fxi/XqDBytc8RraxyASjzg7sbVQ=
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^2.2.0"
-
-"@types/react@16.7.6":
-  version "16.7.6"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.7.6.tgz#80e4bab0d0731ad3ae51f320c4b08bdca5f03040"
-  integrity sha1-gOS6sNBzGtOuUfMgxLCL3KXwMEA=
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -12986,7 +12970,7 @@ react-docgen-typescript@^1.12.5:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-docgen-typescript/-/react-docgen-typescript-1.12.5.tgz#922cdbd9b6f3804695c94bff377c1b40a2e04f0c"
   integrity sha1-kizb2bbzgEaVyUv/N3wbQKLgTww=
 
-react-dom@^16.7.0, react-dom@^16.8.6:
+react-dom@^16.8.6:
   version "16.8.6"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
   integrity sha1-cdYwP2MeiwCX9WFl72CPBR/24Q8=
@@ -13161,7 +13145,7 @@ react-transition-group@^2.5.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.7.0, react@^16.8.6:
+react@^16.8.6:
   version "16.8.6"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha1-rWw6lhT9Ok6e9REX9U2IjaAfK74=
@@ -15473,7 +15457,7 @@ typedarray@^0.0.6:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.5.2, typescript@^3.3.4000, typescript@^3.4.3, typescript@^3.5.2, typescript@~3.5.2:
+typescript@3.5.2, typescript@^3.4.3, typescript@^3.5.2, typescript@~3.5.2:
   version "3.5.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.5.2.tgz#a09e1dc69bc9551cadf17dba10ee42cf55e5d56c"
   integrity sha1-oJ4dxpvJVRyt8X26EO5Cz1Xl1Ww=
