@@ -7,41 +7,39 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 ### Spacings visualized
 
-<Playground :themeable="false" className="sg-example-spacing-visual">
-  <div className="sg-example-row">
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--4 p-spacing-pr--4" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--8 p-spacing-pr--8" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--16 p-spacing-pr--16" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--24 p-spacing-pr--24" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--32 p-spacing-pr--32" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--40 p-spacing-pr--40" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--48 p-spacing-pr--48" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--56 p-spacing-pr--56" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--64 p-spacing-pr--64" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--72 p-spacing-pr--72" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--80 p-spacing-pr--80" />
-    </div>
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pt--4 p-spacing-pr--4" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--8 p-spacing-pr--8" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--16 p-spacing-pr--16" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--24 p-spacing-pr--24" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--32 p-spacing-pr--32" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--40 p-spacing-pr--40" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--48 p-spacing-pr--48" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--56 p-spacing-pr--56" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--64 p-spacing-pr--64" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--72 p-spacing-pr--72" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--80 p-spacing-pr--80" />
   </div>
 </Playground>
 
@@ -49,41 +47,41 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### All directions
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-m--40" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-m--40" />
   </div>
 </Playground>
 
 #### Top
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-mt--40" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-mt--40" />
   </div>
 </Playground>
 
 #### Right
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-mr--40" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-mr--40" />
   </div>
 </Playground>
 
 #### Bottom
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-mb--40" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-mb--40" />
   </div>
 </Playground>
 
 #### Left
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-ml--40" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-ml--40" />
   </div>
 </Playground>
 
@@ -93,41 +91,41 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### All directions
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative">
-  <div>
-    <div className="p-spacing-m-n--40" />
+<Playground :themeable="false">
+  <div class="example-spacing negative">
+    <div class="p-spacing-m-n--40" />
   </div>
 </Playground>
 
 #### Top
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative">
-  <div>
-    <div className="p-spacing-m-nt--40" />
+<Playground :themeable="false">
+  <div class="example-spacing negative">
+    <div class="p-spacing-m-nt--40" />
   </div>
 </Playground>
 
 #### Right
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative">
-  <div>
-    <div className="p-spacing-m-nr--40" />
+<Playground :themeable="false">
+  <div class="example-spacing negative">
+    <div class="p-spacing-m-nr--40" />
   </div>
 </Playground>
 
 #### Bottom
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative">
-  <div>
-    <div className="p-spacing-m-nb--40" />
+<Playground :themeable="false">
+  <div class="example-spacing negative">
+    <div class="p-spacing-m-nb--40" />
   </div>
 </Playground>
 
 #### Left
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative">
-  <div>
-    <div className="p-spacing-m-nl--40" />
+<Playground :themeable="false">
+  <div class="example-spacing negative">
+    <div class="p-spacing-m-nl--40" />
   </div>
 </Playground>
 
@@ -137,41 +135,41 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### All directions
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-p--40">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-p--40"/>
   </div>
 </Playground>
 
 #### Top
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-pt--40">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pt--40"/>
   </div>
 </Playground>
 
 #### Right
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-pr--40">
-    <div className="sg-example-item" />
-  </div>
+<Playground :themeable="false">
+<div class="example-spacing">
+  <div class="p-spacing-pr--40"/>
+</div>
 </Playground>
 
 #### Bottom
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-pb--40">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pb--40"/>
   </div>
 </Playground>
 
 #### Left
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-pl--40">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pl--40"/>
   </div>
 </Playground>
 
@@ -206,29 +204,27 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 ### Spacings visualized
 
-<Playground :themeable="false" className="sg-example-spacing-visual">
-  <div className="sg-example-row">
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--a p-spacing-pr--a" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--b p-spacing-pr--b" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--c p-spacing-pr--c" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--d p-spacing-pr--d" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--e p-spacing-pr--e" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--f p-spacing-pr--f" />
-    </div>
-    <div className="sg-example-block">
-      <div className="p-spacing-pt--g p-spacing-pr--g" />
-    </div>
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pt--a p-spacing-pr--a" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--b p-spacing-pr--b" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--c p-spacing-pr--c" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--d p-spacing-pr--d" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--e p-spacing-pr--e" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--f p-spacing-pr--f" />
+  </div>
+  <div class="example-spacing">
+    <div class="p-spacing-pt--g p-spacing-pr--g" />
   </div>
 </Playground>
 
@@ -236,41 +232,41 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### All directions
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-m--d" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-m--d" />
   </div>
 </Playground>
 
 #### Top
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-mt--d" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-mt--d" />
   </div>
 </Playground>
 
 #### Right
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-mr--d" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-mr--d" />
   </div>
 </Playground>
 
 #### Bottom
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-mb--d" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-mb--d" />
   </div>
 </Playground>
 
 #### Left
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div>
-    <div className="p-spacing-ml--d" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-ml--d" />
   </div>
 </Playground>
 
@@ -280,41 +276,41 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### All directions
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative-responsive">
-  <div>
-    <div className="p-spacing-m-n--d" />
+<Playground :themeable="false">
+  <div class="example-spacing negative-responsive">
+    <div class="p-spacing-m-n--d" />
   </div>
 </Playground>
 
 #### Top
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative-responsive">
-  <div>
-    <div className="p-spacing-m-nt--d" />
+<Playground :themeable="false">
+  <div class="example-spacing negative-responsive">
+    <div class="p-spacing-m-nt--d" />
   </div>
 </Playground>
 
 #### Right
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative-responsive">
-  <div>
-    <div className="p-spacing-m-nr--d" />
+<Playground :themeable="false">
+  <div class="example-spacing negative-responsive">
+    <div class="p-spacing-m-nr--d" />
   </div>
 </Playground>
 
 #### Bottom
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative-responsive">
-  <div>
-    <div className="p-spacing-m-nb--d" />
+<Playground :themeable="false">
+  <div class="example-spacing negative-responsive">
+    <div class="p-spacing-m-nb--d" />
   </div>
 </Playground>
 
 #### Left
 
-<Playground :themeable="false" className="sg-example-spacing sg-example-spacing--negative-responsive">
-  <div>
-    <div className="p-spacing-m-nl--d" />
+<Playground :themeable="false">
+  <div class="example-spacing negative-responsive">
+    <div class="p-spacing-m-nl--d" />
   </div>
 </Playground>
 
@@ -324,41 +320,41 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### All directions
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-p--d">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-p--d"/>
   </div>
 </Playground>
 
 #### Top
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-pt--d">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pt--d"/>
   </div>
 </Playground>
 
 #### Right
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-pr--d">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pr--d"/>
   </div>
 </Playground>
 
 #### Bottom
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-pb--d">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pb--d"/>
   </div>
 </Playground>
 
 #### Left
 
-<Playground :themeable="false" className="sg-example-spacing">
-  <div className="p-spacing-pl--d">
-    <div className="sg-example-item" />
+<Playground :themeable="false">
+  <div class="example-spacing">
+    <div class="p-spacing-pl--d"/>
   </div>
 </Playground>
 

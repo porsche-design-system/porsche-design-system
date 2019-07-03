@@ -7,8 +7,8 @@
     </p-text>
     <p-text class="tab" type="20" v-if="themeable">
       <span class="link"
-              :class="{'is-active': (theme === 'dark')}"
-              @click="switchTheme('dark')">Dark
+            :class="{'is-active': (theme === 'dark')}"
+            @click="switchTheme('dark')">Dark
       </span>
     </p-text>
     <div
@@ -100,12 +100,15 @@
         &:nth-child(1n) {
           background-color: $color-blue-1;
         }
+
         &:nth-child(2n) {
           background-color: $color-blue-2;
         }
+
         &:nth-child(3n) {
           background-color: $color-blue-3;
         }
+
         &:nth-child(4n) {
           background-color: $color-blue-4;
         }
@@ -122,9 +125,11 @@
           &:nth-child(1n) {
             height: 40px;
           }
+
           &:nth-child(2n) {
             height: 80px;
           }
+
           &:nth-child(3n) {
             height: 54px;
           }
@@ -176,7 +181,56 @@
       }
     }
 
-    // Spacing - web component code example visualization
+    // Spacing - code example visualization
+    > .example-spacing {
+      display: inline-block;
+      vertical-align: top;
+      background-color: $color-blue-1;
+
+      &.negative {
+        padding: $p-spacing-40;
+      }
+
+      &.negative-responsive {
+        @include p-spacing-d("padding", "", "");
+
+        > [class*="p-spacing-"] {
+          width: 2 * $p-spacing-d;
+          height: 2 * $p-spacing-d;
+
+          @include breakpoint("s") {
+            width: 2 * $p-spacing-d-s;
+            height: 2 * $p-spacing-d-s;
+          }
+          @include breakpoint("m") {
+            width: 2 * $p-spacing-d-m;
+            height: 2 * $p-spacing-d-m;
+          }
+          @include breakpoint("l") {
+            width: 2 * $p-spacing-d-l;
+            height: 2 * $p-spacing-d-l;
+          }
+          @include breakpoint("xl") {
+            width: 2 * $p-spacing-d-xl;
+            height: 2 * $p-spacing-d-xl;
+          }
+        }
+      }
+
+      > [class*="p-spacing-"] {
+        position: relative;
+        width: $p-spacing-80;
+        height: $p-spacing-80;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-color: $color-blue-2;
+        }
+      }
+    }
   }
 
   .tab {
