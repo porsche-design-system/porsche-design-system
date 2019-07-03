@@ -154,5 +154,12 @@ export const config: DesignSystemConfig = {
         code: () => import(`@/../../ui-kit-js/src/components/layout/spacing/${empty}spacing.code.md`),
       },
     },
+    Navigation: {
+      Pagination: {
+        design: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/${empty}pagination.design.md`),
+        code: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/${empty}pagination.code.md`),
+        props: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/${empty}pagination.props.md`),
+      },
+    },
   },
 };
