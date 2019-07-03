@@ -3,12 +3,12 @@
     <p-text class="tab" type="20" v-if="themeable">
       <span class="link"
             :class="{'is-active': (theme === 'light')}"
-            @click="switchTheme('light')">Light</span>
+            @click="switchTheme('light')">Light theme</span>
     </p-text>
     <p-text class="tab" type="20" v-if="themeable">
       <span class="link"
             :class="{'is-active': (theme === 'dark')}"
-            @click="switchTheme('dark')">Dark
+            @click="switchTheme('dark')">Dark theme
       </span>
     </p-text>
     <div
