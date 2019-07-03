@@ -26,7 +26,7 @@ if [[ -z "${GITHUB_SHA}" ]]; then
   exit 1
 fi
 
-if [[ -z "$(ls -A ./packages/storefront/build)" ]]; then
+if [[ -z "$(ls -A ./packages/design-system/dist)" ]]; then
   echo "Please provide the build artifact."
   exit 1
 fi
@@ -56,7 +56,7 @@ prepare_deployment() {
 copy_porsche_ui_kit() {
   echo "task: [$(date)] \"copy_porsche_ui_kit\" (${1})"
   mkdir -p "/opt/porsche-ui-kit-gh-pages/${1}"
-  cp -r "./packages/storefront/build/." "/opt/porsche-ui-kit-gh-pages/${1}"
+  cp -r "./packages/design-system/dist/." "/opt/porsche-ui-kit-gh-pages/${1}"
 }
 
 add_deployment_version() {

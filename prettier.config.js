@@ -4,4 +4,4 @@ module.exports = {
   proseWrap: "never",
   printWidth: 120,
   arrowParens: "always"
-}
+};

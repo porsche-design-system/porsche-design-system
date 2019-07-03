@@ -1,8 +1,9 @@
 {
   "name": "@porscheui/design-system",
-  "scope": "@porscheui",
   "version": "1.0.0",
+  "scope": "@porscheui",
   "private": true,
+  "description": "Porsche UI Design System",
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
