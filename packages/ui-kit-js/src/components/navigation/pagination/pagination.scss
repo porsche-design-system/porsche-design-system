@@ -1,5 +1,9 @@
 @import "../../../styles/utility/index";
 
+:host {
+  display: block;
+}
+
 .#{$p-global-class-prefix}pagination {
   $bem-block: &;
   display: flex;
