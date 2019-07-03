@@ -6,8 +6,8 @@ services:
     working_dir: /opt/porsche-ui-kit-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
-      - "3000:3000"
-      - "3333:3333"
+      - "8080:8080"
+      - "3334:3334"
     environment:
       - HOME=/home/ui-kit
       - PORSCHE_NPM_REGISTRY_TOKEN
@@ -16,13 +16,15 @@ services:
       - GIT_FILTER
       - GITHUB_SHA
       - GITHUB_REF
-      - SKIP_PREFLIGHT_CHECK
     volumes:
       - ./:/opt/porsche-ui-kit-app:cached
       - home:/home/ui-kit
-      - root-node-modules:/opt/porsche-ui-kit-app/node_modules
-      - storefront-node-modules:/opt/porsche-ui-kit-app/packages/storefront/node_modules
-      - workshop-node-modules:/opt/porsche-ui-kit-app/packages/workshop/node_modules
+      - monorepo-node-modules:/opt/porsche-ui-kit-app/node_modules
+      - design-system-node-modules:/opt/porsche-ui-kit-app/packages/design-system/node_modules
+      - ui-kit-js-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-js/node_modules
+      - ui-kit-angular-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-angular/node_modules
+      - ui-kit-react-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-react/node_modules
+      - ui-kit-vue-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-vue/node_modules
   ui-kit-deploy:
     build: ./images/node
     working_dir: /opt/porsche-ui-kit-app
@@ -39,13 +41,19 @@ services:
     image: node:10.15.3-alpine@sha256:b85a3b0ef76f5543b3f467e8a25694e72594d2c2bfcf140fa584d4f40ace4130
     volumes:
       - home:/opt/porsche-ui-kit-volumes/home
-      - root-node-modules:/opt/porsche-ui-kit-volumes/root-node_modules
-      - storefront-node-modules:/opt/porsche-ui-kit-volumes/storefront-node_modules
-      - workshop-node-modules:/opt/porsche-ui-kit-volumes/workshop-node_modules
+      - monorepo-node-modules:/opt/porsche-ui-kit-volumes/root-node_modules
+      - design-system-node-modules:/opt/porsche-ui-kit-volumes/design-system-node_modules
+      - ui-kit-js-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-js-node_modules
+      - ui-kit-angular-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-angular-node_modules
+      - ui-kit-react-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-react-node_modules
+      - ui-kit-vue-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-vue-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-ui-kit-volumes/*"
 volumes:
   home:
-  root-node-modules:
-  storefront-node-modules:
-  workshop-node-modules:
+  monorepo-node-modules:
+  design-system-node-modules:
+  ui-kit-js-node-modules:
+  ui-kit-angular-node-modules:
+  ui-kit-react-node-modules:
+  ui-kit-vue-node-modules:

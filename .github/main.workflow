@@ -24,31 +24,28 @@ action "Lint" {
   runs = ["run-lint"]
 }
 
-action "E2E" {
-  needs = ["VRT", "Lint"]
+action "Test Unit" {
+  needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-e2e"]
-  env = {
-    SKIP_PREFLIGHT_CHECK = "true"
-  }
+  runs = ["run-unit"]
 }
 
-action "VRT" {
+action "Test E2E" {
+  needs = ["Install"]
+  uses = "./images/node/"
+  runs = ["run-e2e"]
+}
+
+action "Test VRT" {
   needs = ["Install"]
   uses = "./images/node/"
   runs = ["run-vrt"]
-  env = {
-    SKIP_PREFLIGHT_CHECK = "true"
-  }
 }
 
 action "Build" {
-  needs = ["E2E"]
+  needs = ["Lint", "Test Unit", "Test E2E", "Test VRT"]
   uses = "./images/node/"
   runs = ["run-build"]
-  env = {
-    SKIP_PREFLIGHT_CHECK = "true"
-  }
 }
 
 action "Deploy" {
