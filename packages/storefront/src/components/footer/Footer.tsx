@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./footer.module.scss";
 import { Divider } from "@porsche/ui-kit-react";
-import { Text } from "@porscheui/ui-kit-react";
+import { Text } from "@porscheui/ui-kit-react-deprecated";
 
 export const Footer: React.FunctionComponent = () => {
   return (

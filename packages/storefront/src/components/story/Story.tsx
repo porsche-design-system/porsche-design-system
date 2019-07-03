@@ -4,7 +4,7 @@ import { Stories, Story as StoryType } from "../../stories";
 import { PropsTable } from "../propsTable/PropsTable";
 import jsdoc from "../../jsdoc.json";
 import { Tab } from "@porsche/ui-kit-react";
-import { Spacing } from "@porscheui/ui-kit-react";
+import { Spacing } from "@porscheui/ui-kit-react-deprecated";
 import style from "../markdown/markdown.module.scss";
 
 export interface StoryParams {

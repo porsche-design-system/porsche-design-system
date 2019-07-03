@@ -41,7 +41,7 @@
   "dependencies": {
     "@porsche/ui-kit-react": "^0.12.2",
     "@porscheui/ui-kit-js": "1.0.0-alpha.1",
-    "@porscheui/ui-kit-react": "1.0.0-beta.0",
+    "@porscheui/ui-kit-react-deprecated": "1.0.0-beta.0",
     "classnames": "^2.2.6",
     "mdx.macro": "^0.2.8",
     "react": "^16.8.6",
