@@ -14,7 +14,7 @@ For sending notifications and personal account credentials we maintain a Porsche
 Bug reports or feature requests can be forwarded to the Porsche UI team by creating issues in the [public Porsche UI community GitHub repository](https://github.com/porscheui/porsche-ui-contribution). If you want to contribute solutions or built fixes, your can create pull request in the [private Porsche UI Kit repository](https://github.com/porscheui/porsche-ui-kit) after you have been granted access.
 
 ## Exchange and consultation at the office hour
-Join our bi-weekly Porsche UI community appointment (onsite and remote, via [Slack channel #p-porsche-ui-kit](https://porsche.slack.com/messages/CDNR2AEH2)) for:
+Join our bi-weekly Porsche UI community appointment (on-site and remote, via [Slack channel #p-porsche-ui-kit](https://porsche.slack.com/messages/CDNR2AEH2)) for:
 * Information about the status quo and outlook of the Porsche UI Kit
 * Get support and consultation
-* Share and discuss your oppinion and requests with the community
+* Share and discuss your opinion and requests with the community
