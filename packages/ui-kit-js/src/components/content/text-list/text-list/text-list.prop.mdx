@@ -17,4 +17,4 @@
 
 ### Depends on
 
-- [p-text](../../../basic/typography/text)
+- [p-text](#/basic/typography/text)
