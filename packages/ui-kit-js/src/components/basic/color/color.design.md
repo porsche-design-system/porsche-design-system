@@ -1,7 +1,5 @@
 # Color
 
-![Porsche Light Theme colors](./assets/color-theme-light.png)
-
 Together with other basic elements like typography, iconography or imagery, the
 right use of color gives every UI the specific Porsche feeling and is
 therefore one of the most important tools to create a consistent visual
@@ -61,7 +59,7 @@ The color proportion scales for each theme might be a little helper in doing so.
 | <ColorBadge color="porsche-dark-red"/>  	                                    | **Porsche Dark Red**    	| #960014 	| 150/0/20       	| Hover state for text/icons in Porsche Red |
 | <ColorBadge color="neutral-grey-4"/>    	                                    | **Grey 4**              	| #96989A 	| 150/152/154    	| Disabled state or decorative text/icons   |
 
-#### Further elements
+#### Additional elements
 For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
 
 |                                                                         	|                       	| HEX     	| RGB           	| Usage            |
@@ -98,7 +96,7 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 | <ColorBadge color="porsche-red"/>  	                                      | **Porsche Red**        	| #D5001C 	| 213/0/28        | Hover state                             |
 | <ColorBadge color="neutral-grey-5"/>                                      | **Grey 5**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
 
-#### Further elements
+#### Additional elements
 For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
 
 |                                                                         	|                       	| HEX     	| RGB              	| Usage            |

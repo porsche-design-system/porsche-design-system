@@ -317,7 +317,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground :themeable="false">
-  <p-flex :justify-content="'{\'base\': \'start\', \'l\': \'end\'}'">
+  <p-flex justify-content='{ "base": "start", "l": "end" }'>
     <p-flex-item>
       <ExampleText>1</ExampleText>
     </p-flex-item>

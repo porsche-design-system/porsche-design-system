@@ -243,6 +243,8 @@ The combination of text and background color should pass the WCAG AA standard
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
 for larger text sizes. 
 
+![Porsche color accessibility examples](./../color/assets/color-accessibility-01.png)
+
 Also, you should not rely on color only to convey information. 
 When communicating element states with text (for example a password validation 
 information in forms) make sure to always use additional text stylings 
