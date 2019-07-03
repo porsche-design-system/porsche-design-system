@@ -13,8 +13,6 @@
 
 <style scoped lang="scss">
   @import "~@porscheui/ui-kit-js/src/styles/utility/index";
-  @import "~@porscheui/ui-kit-js/src/components/basic/typography/headline/headline.scss";
-  @import "~@porscheui/ui-kit-js/src/components/basic/typography/text/text.scss";
 
   /* More information about ::v-deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
    * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
