@@ -17,5 +17,5 @@
 
 ### Used by
 
- - [p-button-icon](#/action/button-icon)
- - [p-button-regular](#/action/button-regular)
+ - [p-button-icon](/#/components/action/button-icon)
+ - [p-button-regular](/#/components/action/button-regular)

@@ -32,6 +32,6 @@
 
 ### Depends on
 
-- [p-spinner](#/feedback/spinner)
-- [p-icon](#/icon/icon)
-- [p-text](#/basic/typography/text)
+- [p-spinner](/#/components/feedback/spinner)
+- [p-icon](/#/components/icon/icon)
+- [p-text](/#/components/basic/typography/text)
