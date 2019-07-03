@@ -22,10 +22,10 @@
 
 ### Used by
 
- - [p-button-regular](#/action/button-regular)
- - [p-checkbox](#/form/checkbox)
- - [p-input](#/form/input)
- - [p-radio](#/form/radio)
- - [p-text-link](#/action/text-link)
- - [p-text-list](#/content/text-list/text-list)
- - [p-textarea](#/form/textarea)
+ - [p-button-regular](/#/components/action/button-regular)
+ - [p-checkbox](/#/components/form/checkbox)
+ - [p-input](/#/components/form/input)
+ - [p-radio](/#/components/form/radio)
+ - [p-text-link](/#/components/action/text-link)
+ - [p-text-list](/#/components/content/text-list/text-list)
+ - [p-textarea](/#/components/form/textarea)

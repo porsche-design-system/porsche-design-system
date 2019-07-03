@@ -20,4 +20,4 @@
 
 ### Depends on
 
-- [p-text](#/basic/typography/text)
+- [p-text](/#/components/basic/typography/text)

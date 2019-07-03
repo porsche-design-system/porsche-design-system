@@ -18,7 +18,7 @@ function getFilesInDirectory(dir, suffix, files=[]) {
 }
 
 function updateDependencyPaths(data) {
-  return data.replace(/\([.\/]*(.*?)\)/g, '(#/$1)');
+  return data.replace(/\([.\/]*(.*?)\)/g, '(/#/components/$1)');
 }
 
 function removeGraph(data) {
@@ -41,9 +41,6 @@ for (const file of getFilesInDirectory('./src/components/', 'readme.md')) {
     });
     const dir = path.dirname(file);
     const basename = dir.split('/')[dir.split('/').length-1];
-    fs.writeFile(`${dir}/${basename}.prop.mdx`, removeWhitespace(removeGenerator(removeGraph(updateDependencyPaths(data)))), 'utf8', (err) => {
-      if (err) throw err;
-    });
     fs.writeFile(`${dir}/${basename}.props.md`, removeWhitespace(removeGenerator(removeGraph(updateDependencyPaths(data)))), 'utf8', (err) => {
       if (err) throw err;
     });
