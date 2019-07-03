@@ -41,14 +41,16 @@
         "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
     },
     "scripts": {
-        "build": "stencil build --docs && node doc.js",
         "start": "stencil build --watch --serve",
-        "test": "stencil test --spec --e2e",
-        "test.watch": "stencil test --spec --e2e --watchAll",
-        "clean": "rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www",
-        "lint": "concurrently -c \"white\" -n \"lint:scss,lint:ts\" \"yarn lint:scss\" \"yarn lint:ts\"",
+        "build": "stencil build --docs && node doc.js",
+        "lint": "yarn lint:scss & yarn lint:ts",
         "lint:scss": "stylelint './src/**/*.scss'",
-        "lint:ts": "tslint -p './tsconfig.json' -t codeFrame"
+        "lint:ts": "tslint -p './tsconfig.json' -t codeFrame",
+        "test": "yarn test:unit && yarn test:e2e",
+        "test:unit": "echo 'stencil test --spec coming soon'",
+        "test:e2e": "echo 'stencil test --e2e coming soon'",
+        "test:vrt": "echo ui-kit-js:test:vrt coming soon",
+        "clean": "rm -rf ./node_modules & rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www"
     },
     "devDependencies": {
         "@ionic-enterprise/angular-output-plugin": "^0.0.5",
@@ -62,10 +64,9 @@
         "@types/puppeteer": "^1.12.4",
         "autoprefixer": "^9.6.0",
         "classnames": "^2.2.6",
-        "concurrently": "^4.1.1",
         "jest": "^24.8.0",
         "jest-cli": "^24.8.0",
-        "puppeteer": "^1.18.1",
+        "puppeteer": "1.17.0",
         "stylelint": "^10.1.0",
         "tslint": "^5.18.0",
         "typescript": "~3.5.2"
