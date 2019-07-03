@@ -2,67 +2,49 @@
 
 ## Introduction
 
-The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by changing class names/properties on the flex container and flex item. It can be used to quickly layout standard, css-prefixed content blocks or components. It does not replace [Grid](#/layout/grid) component which should be used to define basic page structures.
+The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by changing class names/properties on the flex container and flex item. It can be used to quickly layout standard, css-prefixed content blocks or components. It does not replace [Grid](/#/components/layout/grid) component which should be used to define basic page structures.
 
 ### Flex (default)
 Initialize standard flexbox container to define flex context.
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex">
-  <div className="sg-example-block">
-    <p-flex>
-      <p-flex-item>
-        <p className="sg-example-item">
-          1
-        </p>
-      </p-flex-item>
-      <p-flex-item>
-        <p className="sg-example-item">
-          2
-        </p>
-      </p-flex-item>
-    </p-flex>
-    <p-flex>
-      <p-flex-item>
-        <p className="sg-example-item">
-          1
-        </p>
-      </p-flex-item>
-      <p-flex-item>
-        <p className="sg-example-item">
-          2
-        </p>
-      </p-flex-item>
-    </p-flex>
-  </div>
+<Playground :themeable="false">
+  <p-flex>
+    <p-flex-item>
+      <ExampleText>1</ExampleText>
+    </p-flex-item>
+    <p-flex-item>
+      <ExampleText>2</ExampleText>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item>
+      <ExampleText>1</ExampleText>
+    </p-flex-item>
+    <p-flex-item>
+      <ExampleText>2</ExampleText>
+    </p-flex-item>
+  </p-flex>
 </Playground>
 
 ### Inline
 Flex inline displays flex containers in a row.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex flow="inline">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex flow="inline">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -70,29 +52,21 @@ Flex inline displays flex containers in a row.
 ### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex flow='{ "base": "block", "l": "inline" }'>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex flow='{ "base": "block", "l": "inline" }'>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -107,88 +81,64 @@ Define or change direction of the flex items to rows or columns and set order.
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Row reverse
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex direction="row-reverse">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Column
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex direction="column">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Column reverse
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex direction="column-reverse">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -196,22 +146,16 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex direction='{ "base": "column", "l": "row" }'>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -226,66 +170,42 @@ The flex wrap property is used to force flex items to stay in line independently
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Wrap
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex wrap="wrap">
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Wrap reverse
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex wrap="reverse">
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex">
-  <p-flex wrap='{ "base": "wrap", "l": "nowrap" }'>
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+<Playground :themeable="false">
+  <p-flex wrap="'{ "base": "wrap", "l": "nowrap" }'">
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
@@ -299,132 +219,96 @@ This property defines the alignment of flex items on the main axis in conjunctio
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### End
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex justify-content="end">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Center
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex justify-content="center">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Space between
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex justify-content="space-between">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Space around
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex justify-content="space-around">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Space evenly
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex justify-content="space-evenly">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -432,22 +316,16 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex">
-  <p-flex justify-content='{ "base": "start", "l": "end" }'>
+<Playground :themeable="false">
+  <p-flex :justify-content="'{\'base\': \'start\', \'l\': \'end\'}'">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -462,110 +340,80 @@ This property defines the alignment of flex items on the cross axis in conjuncti
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Start
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex align-items="start">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### End
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex align-items="end">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Center
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex align-items="center">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Baseline
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex align-items="baseline">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -573,22 +421,16 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex align-items='{ "base": "start", "l": "end" }'>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -604,114 +446,72 @@ This property has only effect when there is more than one line of flex items.
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex wrap="wrap">
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Start
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex wrap="wrap" align-content="start">
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### End
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex wrap="wrap" align-content="end">
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Center
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex wrap="wrap" align-content="center">
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Space between
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex wrap="wrap" align-content="space-between">
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Space around
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex wrap="wrap" align-content="space-around">
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex wrap="wrap" align-content='{ "base": "start", "l": "end" }'>
-    {Array.apply(0, Array(9)).map(function(x, i) {
-      return (
-        <p-flex-item key={i}>
-          <p className="sg-example-item">
-            {i + 1}
-          </p>
-        </p-flex-item>
-      )
-    })}
+    <p-flex-item v-for="n, index in 9" :key="index">
+      <ExampleText>{{ n }}</ExampleText>
+    </p-flex-item>
   </p-flex>
 </Playground>
 
@@ -725,22 +525,16 @@ Use `gap` to apply equal horizontal spacing to all flex items of the container. 
 
 #### Static
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--gap">
+<Playground :themeable="false" className="sg-example-flex--gap">
   <p-flex gap="16">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -748,22 +542,16 @@ Use `gap` to apply equal horizontal spacing to all flex items of the container. 
 #### Responsive
 Responsive spacing have specific predefined values for each breakpoint which make them grow/shrink depending on the viewport width.
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--gap">
+<Playground :themeable="false" className="sg-example-flex--gap">
   <p-flex gap="b">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -777,87 +565,59 @@ But it is also possible to define specific predefined widths.
 
 #### Specific
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item width="one-quarter">
-      <p className="sg-example-item">
-        one-quarter
-      </p>
+      <ExampleText>one-quarter</ExampleText>
     </p-flex-item>
     <p-flex-item width="one-quarter">
-      <p className="sg-example-item">
-        one-quarter
-      </p>
+      <ExampleText>one-quarter</ExampleText>
     </p-flex-item>
     <p-flex-item width="one-quarter">
-      <p className="sg-example-item">
-        one-quarter
-      </p>
+      <ExampleText>one-quarter</ExampleText>
     </p-flex-item>
     <p-flex-item width="one-quarter">
-      <p className="sg-example-item">
-        one-quarter
-      </p>
+      <ExampleText>one-quarter</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item width="one-third">
-      <p className="sg-example-item">
-        one-third
-      </p>
+      <ExampleText>one-third</ExampleText>
     </p-flex-item>
     <p-flex-item width="one-third">
-      <p className="sg-example-item">
-        one-third
-      </p>
+      <ExampleText>one-third</ExampleText>
     </p-flex-item>
     <p-flex-item width="one-third">
-      <p className="sg-example-item">
-        one-third
-      </p>
+      <ExampleText>one-third</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item width="half">
-      <p className="sg-example-item">
-        half
-      </p>
+      <ExampleText>half</ExampleText>
     </p-flex-item>
     <p-flex-item width="half">
-      <p className="sg-example-item">
-        half
-      </p>
+      <ExampleText>half</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item width="two-thirds">
-      <p className="sg-example-item">
-        two-thirds
-      </p>
+      <ExampleText>two-third</ExampleText>
     </p-flex-item>
     <p-flex-item width="one-third">
-      <p className="sg-example-item">
-        one-third
-      </p>
+      <ExampleText>one-third</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item width="three-quarters">
-      <p className="sg-example-item">
-        three-quarters
-      </p>
+      <ExampleText>three-quarters</ExampleText>
     </p-flex-item>
     <p-flex-item width="one-quarter">
-      <p className="sg-example-item">
-        one-quarter
-      </p>
+      <ExampleText>one-quarters</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item width="full">
-      <p className="sg-example-item">
-        full
-      </p>
+      <ExampleText>full</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -865,27 +625,19 @@ But it is also possible to define specific predefined widths.
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex wrap>
     <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
     <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
-      <p className="sg-example-item">
-        4
-      </p>
+      <ExampleText>4</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -898,40 +650,30 @@ Items can have different offsets that work similar like column widths.
 
 #### Widths
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item offset={"one-quarter"} width={"three-quarters"}>
-      <p className="sg-example-item">
-        Offset: quarter
-      </p>
+      <ExampleText>Offset: quarter</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item offset={"one-third"} width={"two-thirds"}>
-      <p className="sg-example-item">
-        Offset: third
-      </p>
+      <ExampleText>Offset: third</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item offset={"half"} width={"half"}>
-      <p className="sg-example-item">
-        Offset: half
-      </p>
+      <ExampleText>Offset: half</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item offset={"two-thirds"} width={"one-third"}>
-      <p className="sg-example-item">
-        Offset: 2 thirds
-      </p>
+      <ExampleText>Offset: 2 thirds</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
     <p-flex-item offset={"three-quarters"} width={"one-quarter"}>
-      <p className="sg-example-item">
-        Offset: 3 quarters
-      </p>
+      <ExampleText>Offset: 3 quarters</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -939,12 +681,10 @@ Items can have different offsets that work similar like column widths.
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item offset='{ "base": "none", "l": "one-third" }'>
-      <p className="sg-example-item">
-        Responsive offset
-      </p>
+      <ExampleText>Responsive offset</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -959,162 +699,114 @@ You can override the align items properties of the flex container for individual
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        4
-      </p>
+      <ExampleText>4</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Stretch
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex align-items="start">
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item align-self="stretch">
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        4
-      </p>
+      <ExampleText>4</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Start
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item align-self="start">
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        4
-      </p>
+      <ExampleText>4</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### End
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item align-self="end">
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        4
-      </p>
+      <ExampleText>4</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Center
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item align-self="center">
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        4
-      </p>
+      <ExampleText>4</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Baseline
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex>
     <p-flex-item align-self="baseline">
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item align-self="baseline">
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        4
-      </p>
+      <ExampleText>4</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -1122,27 +814,19 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" className="sg-example-flex sg-example-flex--fixed-height">
+<Playground :themeable="false" childrenHeight="fixed">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
     <p-flex-item align-self='{ "base": "start", "l": "end" }'>
-      <p className="sg-example-item">
-        3
-      </p>
+      <ExampleText>3</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        4
-      </p>
+      <ExampleText>4</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -1159,34 +843,26 @@ It handles how to grow an item based on the space that is left to fulfill the pa
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Grow - 1
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item grow="1">
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -1203,34 +879,26 @@ It handles how to shrink an item based on the space that exceeds the parents wid
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item style={{ width: "80%" }}>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item style={{ width: "80%" }}>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Shrink - 0
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item shrink="0" style={{ width: "80%" }}>
-      <p className="sg-example-item">
-        1
-      </p>
+      <ExampleText>1</ExampleText>
     </p-flex-item>
     <p-flex-item style={{ width: "80%" }}>
-      <p className="sg-example-item">
-        2
-      </p>
+      <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
@@ -1243,88 +911,64 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### Initial (grow:0, shrink:1 and base:auto)
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item flex="initial">
-      <p className="sg-example-item">
-        1 - short content
-      </p>
+      <ExampleText>1 - short content</ExampleText>
     </p-flex-item>
     <p-flex-item flex="initial">
-      <p className="sg-example-item">
-        2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-      </p>
+      <ExampleText>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</ExampleText>
     </p-flex-item>
     <p-flex-item flex="initial">
-      <p className="sg-example-item">
-        3 - short content
-      </p>
+      <ExampleText>3 - short content</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Auto (grow:1, shrink:1 and base:auto)
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item flex="auto">
-      <p className="sg-example-item">
-        1 - short content
-      </p>
+      <ExampleText>1 - short content</ExampleText>
     </p-flex-item>
     <p-flex-item flex="auto">
-      <p className="sg-example-item">
-        2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-      </p>
+      <ExampleText>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</ExampleText>
     </p-flex-item>
     <p-flex-item flex="auto">
-      <p className="sg-example-item">
-        3 - short content
-      </p>
+      <ExampleText>3 - short content</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### Equal (grow:1, shrink:1 and base:0)
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item flex="equal">
-      <p className="sg-example-item">
-        1 - short content
-      </p>
+      <ExampleText>1 - short content</ExampleText>
     </p-flex-item>
     <p-flex-item flex="equal">
-      <p className="sg-example-item">
-        2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-      </p>
+      <ExampleText>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</ExampleText>
     </p-flex-item>
     <p-flex-item flex="equal">
-      <p className="sg-example-item">
-        3 - short content
-      </p>
+      <ExampleText>3 - short content</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
 
 #### None (grow:0, shrink:0 and base:auto)
 
-<Playground :themeable="false" className="sg-example-flex">
+<Playground :themeable="false">
   <p-flex>
     <p-flex-item flex="none">
-      <p className="sg-example-item">
-        1 - short content
-      </p>
+      <ExampleText>1 - short content</ExampleText>
     </p-flex-item>
     <p-flex-item flex="none">
-      <p className="sg-example-item">
-        2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-      </p>
+      <ExampleText>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</ExampleText>
     </p-flex-item>
     <p-flex-item flex="none">
-      <p className="sg-example-item">
-        3 - short content
-      </p>
+      <ExampleText>3 - short content</ExampleText>
     </p-flex-item>
   </p-flex>
 </Playground>
