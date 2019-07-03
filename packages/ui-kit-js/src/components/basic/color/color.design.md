@@ -47,28 +47,28 @@ The color proportion scales for each theme might be a little helper in doing so.
 
 #### Background colors
 
-|                                                                         	|                      	| HEX     	| RGB           	| Usage            |
+|                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
 |-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
-| <div class="sg-design-color-badge sg-design-color-porsche-light"></div> 	| **Porsche Light**        	| #FFFFFF 	| 255/255/255   	| Page background  |
-| <div class="sg-design-color-badge sg-design-color-surface-light"></div> 	| **Surface Light**        	| #F2F2F2 	| 242/242/242     | Additional backgrounds, for example for tiles or contrasting content areas |
+| <ColorBadge color="porsche-light"/>  	                                    | **Porsche Light**        	| #FFFFFF 	| 255/255/255   	| Page background  |
+| <ColorBadge color="surface-light"/> 	                                    | **Surface Light**        	| #F2F2F2 	| 242/242/242     | Additional backgrounds, for example for tiles or contrasting content areas |
 
 #### Text / icon color
 
-|                                                                              	|                      	| HEX     	| RGB           	| Usage                                     |
+|                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
-| <div class="sg-design-color-badge sg-design-color-porsche-black"></div>     	| **Porsche Black**        	| #000000 	| 0/0/0          	| Default text/icon color                   |
-| <div class="sg-design-color-badge sg-design-color-porsche-red"></div> 	    | **Porsche Red**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
-| <div class="sg-design-color-badge sg-design-color-porsche-dark-red"></div>  	| **Porsche Dark Red**    	| #960014 	| 150/0/20       	| Hover state for text/icons in Porsche Red |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-4"></div>    	| **Grey 4**              	| #96989A 	| 150/152/154    	| Disabled state or decorative text/icons   |
+| <ColorBadge color="porsche-black"/>    	                                      | **Porsche Black**        	| #000000 	| 0/0/0          	| Default text/icon color                   |
+| <ColorBadge color="porsche-red"/> 	                                          | **Porsche Red**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
+| <ColorBadge color="porsche-dark-red"/>  	                                    | **Porsche Dark Red**    	| #960014 	| 150/0/20       	| Hover state for text/icons in Porsche Red |
+| <ColorBadge color="neutral-grey-4"/>    	                                    | **Grey 4**              	| #96989A 	| 150/152/154    	| Disabled state or decorative text/icons   |
 
 #### Further elements
 For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
 
-|                                                                         	|                    	| HEX     	| RGB           	| Usage            |
+|                                                                         	|                       	| HEX     	| RGB           	| Usage            |
 |--------------------------------------------------------------------------	|-------------------------|----------	|----------------	|----------------- |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-6"></div> 	| **Grey 6**             	| #626669 	| 98/102/105    	| div. elements    |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-7"></div>  | **Grey 7**             	| #4A4E51 	| 74/78/81      	| div. elements    |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-8"></div>  | **Grey 8**             	| #323639 	| 50/54/57       	| div. elements    |
+| <ColorBadge color="neutral-grey-6"/> 	                                    | **Grey 6**             	| #626669 	| 98/102/105    	| div. elements    |
+| <ColorBadge color="neutral-grey-7"/>                                      | **Grey 7**             	| #4A4E51 	| 74/78/81      	| div. elements    |
+| <ColorBadge color="neutral-grey-8"/>                                      | **Grey 8**             	| #323639 	| 50/54/57       	| div. elements    |
 
 
 
@@ -85,27 +85,27 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 
 #### Background colors
 
-|                                                                       	|                      	| HEX     	| RGB           	| Usage            |
+|                                                                       	|                      	    | HEX     	| RGB           	| Usage            |
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
-| <div class="sg-design-color-badge sg-design-color-porsche-dark"></div> 	| **Porsche Dark**        	| #0E1418 	| 14/20/24      	| Page background  |
-| <div class="sg-design-color-badge sg-design-color-surface-dark"></div>  | **Surface Dark**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
+| <ColorBadge color="porsche-dark"/> 	                                    | **Porsche Dark**        	| #0E1418 	| 14/20/24      	| Page background  |
+| <ColorBadge color="surface-dark"/>                                      | **Surface Dark**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
 
 #### Text / icon color
 
-|                                                                         	|                    	| HEX     	| RGB           	| Usage                                   |
+|                                                                         	|                    	    | HEX     	| RGB           	| Usage                                   |
 |-------------------------------------------------------------------------	|-------------------------|----------	|----------------	|---------------------------------------- |
-| <div class="sg-design-color-badge sg-design-color-porsche-light"></div>  	| **Porsche Light**      	| #FFFFFF 	| 255/255/255    	| Default text/icon color                 |
-| <div class="sg-design-color-badge sg-design-color-porsche-red"></div>  	  | **Porsche Red**        	| #D5001C 	| 213/0/28        | Hover state                             |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-5"></div>  | **Grey 5**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
+| <ColorBadge color="porsche-light"/>  	                                    | **Porsche Light**      	| #FFFFFF 	| 255/255/255    	| Default text/icon color                 |
+| <ColorBadge color="porsche-red"/>  	                                      | **Porsche Red**        	| #D5001C 	| 213/0/28        | Hover state                             |
+| <ColorBadge color="neutral-grey-5"/>                                      | **Grey 5**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
 
 #### Further elements
 For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
 
-|                                                                         	|                    	| HEX     	| RGB              	| Usage            |
+|                                                                         	|                       	| HEX     	| RGB              	| Usage            |
 |-------------------------------------------------------------------------	|-------------------------|----------	|-----------------	|----------------- |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-1"></div> 	| **Grey 1**             	| #E3E4E5 	| 227/228/229     	| div. elements    |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-2"></div> 	| **Grey 2**             	| #C9CACB 	| 201/202/203      	| div. elements    |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-3"></div> 	| **Grey 3**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
+| <ColorBadge color="neutral-grey-1"/> 	                                    | **Grey 1**             	| #E3E4E5 	| 227/228/229     	| div. elements    |
+| <ColorBadge color="neutral-grey-2"/> 	                                    | **Grey 2**             	| #C9CACB 	| 201/202/203      	| div. elements    |
+| <ColorBadge color="neutral-grey-3"/> 	                                    | **Grey 3**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
 
 #### Color proportions
 
@@ -123,36 +123,36 @@ The Porsche brand colors are the core of the Porsche UI color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 
-|                	                                                                |                   | HEX     	| RGB         	|
+|                	                                                                |                       | HEX     	| RGB         	|
 |---------------------------------------------------------------------------------|---------------------  |---------	|-------------	|
-| <div class="sg-design-color-badge sg-design-color-porsche-red"></div> 	        | **Porsche Red**      	| #D5001C 	| 213/0/28    	|
-| <div class="sg-design-color-badge sg-design-color-porsche-dark-red"></div> 	    | **Porsche Dark Red**	| #960014 	| 150/0/20    	|
-| <div class="sg-design-color-badge sg-design-color-porsche-light"></div>    	    | **Porsche Light**    	| #FFFFFF 	| 255/255/255 	|
-| <div class="sg-design-color-badge sg-design-color-porsche-dark"></div> 	        | **Porsche Dark**     	| #0E1418 	| 14/20/24    	|
-| <div class="sg-design-color-badge sg-design-color-porsche-black"></div> 	      | **Porsche Black**    	| #000000 	| 0/0/0       	|
+| <ColorBadge color="porsche-red"/> 	                                            | **Porsche Red**      	| #D5001C 	| 213/0/28    	|
+| <ColorBadge color="porsche-dark-red"/> 	                                        | **Porsche Dark Red**	| #960014 	| 150/0/20    	|
+| <ColorBadge color="porsche-light"/>    	                                        | **Porsche Light**    	| #FFFFFF 	| 255/255/255 	|
+| <ColorBadge color="porsche-dark"/> 	                                            | **Porsche Dark**     	| #0E1418 	| 14/20/24    	|
+| <ColorBadge color="porsche-black"/> 	                                          | **Porsche Black**    	| #000000 	| 0/0/0       	|
 
 ### Surface colors
 The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
 
-|                	                                                                |                   | HEX     	| RGB         	|
+|                	                                                                |                       | HEX     	| RGB         	|
 |---------------------------------------------------------------------------------|---------------------  |---------	|-------------	|
-| <div class="sg-design-color-badge sg-design-color-surface-light"></div>         | **Surface Light**    	| #F2F2F2 	| 242/242/242 	|
-| <div class="sg-design-color-badge sg-design-color-surface-dark"></div>        	| **Surface Dark**     	| #1A2023 	| 26/32/35    	|
+| <ColorBadge color="surface-light"/>                                             | **Surface Light**    	| #F2F2F2 	| 242/242/242 	|
+| <ColorBadge color="surface-dark"/>        	                                    | **Surface Dark**     	| #1A2023 	| 26/32/35    	|
 
 ### Neutral colors
 The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
 The set consists of 8 grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                          	|                	| HEX     	| RGB         	|
+|                                                                          	|                	    | HEX     	| RGB         	|
 |---------------------------------------------------------------------------|-------------------  |---------	|-------------	|
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-1"></div> 	| **Grey 1**        	| #E3E4E5 	| 227/228/229  	|
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-2"></div> 	| **Grey 2**        	| #C9CACB 	| 201/202/203  	|
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-3"></div> 	| **Grey 3**        	| #B0B1B2 	| 176/177/178  	|
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-4"></div> 	| **Grey 4**        	| #96989A 	| 150/152/154  	|
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-5"></div> 	| **Grey 5**        	| #7C7F81 	| 124/127/129  	|
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-6"></div> 	| **Grey 6**        	| #626669 	| 98/102/105  	|
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-7"></div> 	| **Grey 7**        	| #4A4E51 	| 74/78/81  	  |
-| <div class="sg-design-color-badge sg-design-color-neutral-grey-8"></div> 	| **Grey 8**        	| #323639 	| 50/54/57  	  |
+| <ColorBadge color="neutral-grey-1"/> 	                                    | **Grey 1**        	| #E3E4E5 	| 227/228/229  	|
+| <ColorBadge color="neutral-grey-2"/> 	                                    | **Grey 2**        	| #C9CACB 	| 201/202/203  	|
+| <ColorBadge color="neutral-grey-3"/> 	                                    | **Grey 3**        	| #B0B1B2 	| 176/177/178  	|
+| <ColorBadge color="neutral-grey-4"/> 	                                    | **Grey 4**        	| #96989A 	| 150/152/154  	|
+| <ColorBadge color="neutral-grey-5"/> 	                                    | **Grey 5**        	| #7C7F81 	| 124/127/129  	|
+| <ColorBadge color="neutral-grey-6"/> 	                                    | **Grey 6**        	| #626669 	| 98/102/105  	|
+| <ColorBadge color="neutral-grey-7"/> 	                                    | **Grey 7**        	| #4A4E51 	| 74/78/81  	  |
+| <ColorBadge color="neutral-grey-8"/> 	                                    | **Grey 8**        	| #323639 	| 50/54/57  	  |
 
 
 ### Status colors
@@ -164,9 +164,9 @@ When using status colors …
 
 |                                                                         	|                         	| HEX     	| RGB         	|
 |-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <div class="sg-design-color-badge sg-design-color-status-red"></div> 	    | **Status Red**          	| #E00000 	| 224/0/0   	  |
-| <div class="sg-design-color-badge sg-design-color-status-green"></div> 	  | **Status Green**        	| #13D246 	| 19/210/70  	  |
-| <div class="sg-design-color-badge sg-design-color-status-yellow"></div> 	| **Status Yellow**        	| #E2B236 	| 226/178/54  	|
+| <ColorBadge color="status-red"/> 	                                        | **Status Red**          	| #E00000 	| 224/0/0   	  |
+| <ColorBadge color="status-green"/> 	                                      | **Status Green**        	| #13D246 	| 19/210/70  	  |
+| <ColorBadge color="status-yellow"/> 	                                    | **Status Yellow**        	| #E2B236 	| 226/178/54  	|
 
 
 ### Focus color
@@ -175,7 +175,7 @@ Depending on the component it can be implemented in different ways, for example 
 
 |                                                                         	|                      	| HEX     	| RGB         	|
 |-------------------------------------------------------------------------	|-----------------------|---------	|-------------	|
-| <div class="sg-design-color-badge sg-design-color-focus"></div>	          | **Focus**           	| #00D5B9 	| 0/213/185  	  |
+| <ColorBadge color="state-focus"/>                             	          | **Focus**           	| #00D5B9 	| 0/213/185  	  |
 
 
 --- 
