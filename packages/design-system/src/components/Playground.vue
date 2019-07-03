@@ -44,11 +44,11 @@
 <style scoped lang="scss">
   @import "~@porscheui/ui-kit-js/src/styles/utility/index";
 
-  $sg-color-blue-1: lightskyblue;
-  $sg-color-blue-2: deepskyblue;
-  $sg-color-blue-3: dodgerblue;
-  $sg-color-blue-4: royalblue;
-  $sg-color-highlight: deeppink;
+  $color-blue-1: lightskyblue;
+  $color-blue-2: deepskyblue;
+  $color-blue-3: dodgerblue;
+  $color-blue-4: royalblue;
+  $color-highlight: deeppink;
 
   .example {
     padding: $p-spacing-32;
@@ -98,16 +98,16 @@
       // styling to colorize flex items
       p-flex-item {
         &:nth-child(1n) {
-          background-color: $sg-color-blue-1;
+          background-color: $color-blue-1;
         }
         &:nth-child(2n) {
-          background-color: $sg-color-blue-2;
+          background-color: $color-blue-2;
         }
         &:nth-child(3n) {
-          background-color: $sg-color-blue-3;
+          background-color: $color-blue-3;
         }
         &:nth-child(4n) {
-          background-color: $sg-color-blue-4;
+          background-color: $color-blue-4;
         }
 
         // styling to visualize baseline
@@ -137,19 +137,19 @@
           background-color: transparent !important;
 
           &:nth-child(1n) p {
-            background-color: $sg-color-blue-1;
+            background-color: $color-blue-1;
           }
 
           &:nth-child(2n) p {
-            background-color: $sg-color-blue-2;
+            background-color: $color-blue-2;
           }
 
           &:nth-child(3n) p {
-            background-color: $sg-color-blue-3;
+            background-color: $color-blue-3;
           }
 
           &:nth-child(4n) p {
-            background-color: $sg-color-blue-4;
+            background-color: $color-blue-4;
           }
         }
       }
@@ -163,6 +163,18 @@
     }
 
     // Grid - web component code example visualization
+    p-grid {
+      + .p-grid {
+        margin-top: $p-spacing-8;
+      }
+
+      p-grid-child {
+        > p {
+          padding: $p-spacing-4;
+          background: $color-blue-1;
+        }
+      }
+    }
 
     // Spacing - web component code example visualization
   }

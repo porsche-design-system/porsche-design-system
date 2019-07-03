@@ -525,7 +525,7 @@ Use `gap` to apply equal horizontal spacing to all flex items of the container. 
 
 #### Static
 
-<Playground :themeable="false" className="sg-example-flex--gap">
+<Playground :themeable="false">
   <p-flex gap="16">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -542,7 +542,7 @@ Use `gap` to apply equal horizontal spacing to all flex items of the container. 
 #### Responsive
 Responsive spacing have specific predefined values for each breakpoint which make them grow/shrink depending on the viewport width.
 
-<Playground :themeable="false" className="sg-example-flex--gap">
+<Playground :themeable="false">
   <p-flex gap="b">
     <p-flex-item>
       <ExampleText>1</ExampleText>
