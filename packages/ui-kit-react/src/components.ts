@@ -25,4 +25,6 @@ export const PSpinner = createReactComponent<JSX.PSpinner, HTMLPSpinnerElement>(
 export const PSwitch = createReactComponent<JSX.PSwitch, HTMLPSwitchElement>('p-switch');
 export const PText = createReactComponent<JSX.PText, HTMLPTextElement>('p-text');
 export const PTextLink = createReactComponent<JSX.PTextLink, HTMLPTextLinkElement>('p-text-link');
+export const PTextList = createReactComponent<JSX.PTextList, HTMLPTextListElement>('p-text-list');
+export const PTextListItem = createReactComponent<JSX.PTextListItem, HTMLPTextListItemElement>('p-text-list-item');
 export const PTextarea = createReactComponent<JSX.PTextarea, HTMLPTextareaElement>('p-textarea');
