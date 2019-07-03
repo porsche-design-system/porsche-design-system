@@ -1,13 +1,17 @@
 {
-  "name": "design-system",
-  "version": "0.1.0",
+  "name": "@porscheui/design-system",
+  "scope": "@porscheui",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
+    "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "test:vrt": "echo design-system:test:vrt coming soon",
+    "clean": "rm -rf ./node_modules & rm -rf ./dist"
   },
   "dependencies": {
     "core-js": "^3.1.3",

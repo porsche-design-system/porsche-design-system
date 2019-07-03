@@ -24,19 +24,31 @@
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
   "scripts": {
-    "start": "concurrently -n \"workshop,ui-kit-js\" -c \"cyan,yellow\" \"yarn --cwd ./packages/workshop build\" \"yarn --cwd ./packages/ui-kit-js build\" && concurrently -k -n \"workshop,storefront\" -c \"cyan,magenta\" \"yarn --cwd ./packages/workshop watch:es\" \"yarn --cwd ./packages/storefront start\"",
-    "start:dev": "yarn --cwd ./packages/ui-kit-js start --prod",
-    "build": "concurrently -n \"workshop\" -c \"cyan\" \"yarn --cwd ./packages/workshop build\" && concurrently -n \"ui-kit-js\" -c \"cyan\" \"yarn --cwd ./packages/ui-kit-js build\" && concurrently -n \"storefront\" -c \"magenta\" \"yarn --cwd ./packages/storefront build\"",
-    "lint": "concurrently -n \"storefront,workshop,ui-kit-js\" -c \"magenta,cyan, yellow\" \"yarn --cwd ./packages/storefront lint\" \"yarn --cwd ./packages/workshop lint\" \"yarn --cwd ./packages/ui-kit-js lint\"",
-    "vrt": "concurrently -k -s \"first\" -n \"app,vrt\" -c \"gray\" \"yarn start\" \"wait-on -t 300000 http-get://localhost:3000 && ts-node --project 'vrt/tsconfig.json' node_modules/.bin/jasmine --config='vrt/jasmine.config.json'\"",
-    "e2e": "concurrently -k -s \"first\" -n \"app,e2e\" -c \"gray\" \"yarn start\" \"wait-on -t 300000 http-get://localhost:3000 && ts-node --project 'e2e/tsconfig.json' node_modules/.bin/jasmine --config='e2e/jasmine.config.json'\"",
-    "clean": "concurrently -n \"repository,storefront,workshop\" -c \"gray,magenta,cyan\" \"rm -rf './node_modules'\" \"yarn --cwd ./packages/storefront clean\" \"yarn --cwd ./packages/workshop clean\""
+    "start": "yarn --cwd ./packages/ui-kit-js build && (yarn --cwd ./packages/ui-kit-js start & yarn --cwd ./packages/design-system start)",
+    "build": "yarn --cwd ./packages/ui-kit-js build && yarn --cwd ./packages/design-system build",
+    "lint": "yarn lint:ui-kit-js & yarn lint:design-system",
+    "lint:ui-kit-js": "yarn --cwd ./packages/ui-kit-js lint",
+    "lint:design-system": "yarn --cwd ./packages/design-system lint",
+
+    "test": "yarn build && yarn test:unit && yarn test:e2e && yarn test:vrt",
+    "test:unit": "yarn test:unit:ui-kit-js & yarn test:unit:design-system",
+    "test:unit:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:unit",
+    "test:unit:design-system": "yarn --cwd ./packages/design-system test:unit",
+    "test:e2e": "yarn test:e2e:ui-kit-js & yarn test:e2e:design-system",
+    "test:e2e:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:e2e",
+    "test:e2e:design-system": "yarn --cwd ./packages/design-system test:e2e --headless",
+    "test:vrt": "yarn test:vrt:ui-kit-js & yarn test:vrt:design-system",
+    "test:vrt:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:vrt",
+    "test:vrt:design-system": "yarn --cwd ./packages/design-system test:vrt",
+
+    "clean": "rm -rf ./node_modules & yarn --cwd ./packages/ui-kit-js clean & yarn --cwd ./packages/design-system clean",
+
+    "vrt": "concurrently -k -s \"first\" -n \"app,vrt\" -c \"gray\" \"yarn start\" \"wait-on -t 300000 http-get://localhost:3000 && ts-node --project 'vrt/tsconfig.json' node_modules/.bin/jasmine --config='vrt/jasmine.config.json'\""
   },
   "dependencies": {},
   "devDependencies": {
     "@porscheui/visual-regression-tester": "^1.1.1",
     "@types/puppeteer": "^1.12.4",
-    "concurrently": "^4.1.1",
     "jasmine": "^3.4.0",
     "puppeteer": "^1.18.1",
     "ts-node": "^8.3.0",
