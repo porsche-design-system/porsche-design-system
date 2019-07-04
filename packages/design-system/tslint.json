@@ -2,7 +2,7 @@
   "defaultSeverity": "warning",
   "extends": ["tslint:latest", "tslint-config-prettier"],
   "linterOptions": {
-    "exclude": ["node_modules/**"]
+    "exclude": ["node_modules/**", "*.json", "**/*.json"]
   },
   "rules": {
     "quotemark": [true, "single"],

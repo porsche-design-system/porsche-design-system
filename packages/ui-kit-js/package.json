@@ -66,7 +66,7 @@
     "classnames": "^2.2.6",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
-    "puppeteer": "1.17.0",
+    "puppeteer": "1.18.1",
     "stylelint": "^10.1.0",
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
