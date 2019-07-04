@@ -18,32 +18,56 @@ action "Install" {
   secrets = ["PORSCHE_NPM_REGISTRY_TOKEN", "IONIC_NPM_REGISTRY_TOKEN"]
 }
 
-action "Lint" {
+action "Lint: UI Kit JS" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-lint"]
+  runs = ["run-lint --ui-kit-js"]
 }
 
-action "Test Unit" {
+action "Test Unit: UI Kit JS" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-unit"]
+  runs = ["run-test-unit --ui-kit-js"]
 }
 
-action "Test E2E" {
+action "Test E2E: UI Kit JS" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-e2e"]
+  runs = ["run-test-e2e --ui-kit-js"]
 }
 
-action "Test VRT" {
+action "Test VRT: UI Kit JS" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-vrt"]
+  runs = ["run-test-vrt --ui-kit-js"]
+}
+
+action "Lint: Design System" {
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
+  uses = "./images/node/"
+  runs = ["run-lint --design-system"]
+}
+
+action "Test Unit: Design System" {
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
+  uses = "./images/node/"
+  runs = ["run-test-unit --design-system"]
+}
+
+action "Test E2E: Design System" {
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
+  uses = "./images/node/"
+  runs = ["run-test-e2e --design-system"]
+}
+
+action "Test VRT: Design System" {
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
+  uses = "./images/node/"
+  runs = ["run-test-vrt --design-system"]
 }
 
 action "Build" {
-  needs = ["Lint", "Test Unit", "Test E2E", "Test VRT"]
+  needs = ["Lint: Design System", "Test Unit: Design System", "Test E2E: Design System", "Test VRT: Design System"]
   uses = "./images/node/"
   runs = ["run-build"]
 }
