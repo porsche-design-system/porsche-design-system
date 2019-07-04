@@ -34,10 +34,10 @@
           </p-text>
           <p-flex class="p-spacing-mt--16" gap="16" wrap="wrap">
             <p-flex-item>
-              <p-button-regular class="p-spacing-mt--16" variant="highlight" href="/#/getting-started/start-designing">Start designing</p-button-regular>
+              <p-button-regular class="p-spacing-mt--16" variant="highlight" href="#/getting-started/start-designing">Start designing</p-button-regular>
             </p-flex-item>
             <p-flex-item>
-              <p-button-regular class="p-spacing-mt--16" variant="highlight" href="/#/getting-started/start-coding">Start coding</p-button-regular>
+              <p-button-regular class="p-spacing-mt--16" variant="highlight" href="#/getting-started/start-coding">Start coding</p-button-regular>
             </p-flex-item>
           </p-flex>
         </p-grid-child>
