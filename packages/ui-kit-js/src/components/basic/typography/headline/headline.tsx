@@ -1,48 +1,48 @@
-import { JSX, Component, Prop, h } from "@stencil/core";
-import cx from "classnames";
-import { prefix } from "../../../../utils/prefix";
+import { JSX, Component, Prop, h } from '@stencil/core';
+import cx from 'classnames';
+import { prefix } from '../../../../utils/prefix';
 
 @Component({
-  tag: "p-headline",
-  styleUrl: "headline.scss",
+  tag: 'p-headline',
+  styleUrl: 'headline.scss',
   shadow: true
 })
 export class Headline {
   /** The style of the text. */
-  @Prop() type?:
-    | "large-title"
-    | "headline-1"
-    | "headline-2"
-    | "headline-3"
-    | "headline-4"
-    | "headline-5"
-    | "headline-6" = "headline-1";
+  @Prop() public type?:
+    | 'large-title'
+    | 'headline-1'
+    | 'headline-2'
+    | 'headline-3'
+    | 'headline-4'
+    | 'headline-5'
+    | 'headline-6' = 'headline-1';
 
   /** Headline level/hierarchy. */
-  @Prop() level?: "1" | "2" | "3" | "4" | "5" | "6" = "1";
+  @Prop() public level?: '1' | '2' | '3' | '4' | '5' | '6' = '1';
 
   /** The text alignment of the component. */
-  @Prop() align?: "left" | "center" | "right" = "left";
+  @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
-  @Prop() ellipsis?: boolean = false;
+  @Prop() public ellipsis?: boolean = false;
 
   /** Wraps the text, even when it has to break a word. */
-  @Prop() wrap?: boolean = false;
+  @Prop() public wrap?: boolean = false;
 
   /** Adapts the text color when used on dark background. */
-  @Prop() theme?: "light" | "dark" = "light";
+  @Prop() public theme?: 'light' | 'dark' = 'light';
 
-  render(): JSX.Element {
-    const TagType: any = "h" + this.level;
+  public render(): JSX.Element {
+    const TagType: any = 'h' + this.level;
 
     const headlineClasses = cx(
-      prefix("headline"),
+      prefix('headline'),
       this.type && prefix(`headline--${this.type}`),
-      this.align !== "left" && prefix(`headline--align-${this.align}`),
-      this.ellipsis && prefix("headline--ellipsis"),
-      this.wrap && prefix("headline--wrap"),
-      this.theme === "dark" && prefix("headline--theme-dark")
+      this.align !== 'left' && prefix(`headline--align-${this.align}`),
+      this.ellipsis && prefix('headline--ellipsis'),
+      this.wrap && prefix('headline--wrap'),
+      this.theme === 'dark' && prefix('headline--theme-dark')
     );
 
     return (

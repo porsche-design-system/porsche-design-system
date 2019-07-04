@@ -21,13 +21,13 @@ export function getName(name: string | undefined) {
     name = name.toLowerCase();
   }
 
-  if (typeof name !== "string" || name.trim() === "") {
+  if (typeof name !== 'string' || name.trim() === '') {
     return null;
   }
 
   // only allow alpha characters and dash
-  const invalidChars = name.replace(/[a-z]|-|\d/gi, "");
-  if (invalidChars !== "") {
+  const invalidChars = name.replace(/[a-z]|-|\d/gi, '');
+  if (invalidChars !== '') {
     return null;
   }
 
@@ -40,13 +40,13 @@ export function isUrl(str: string) {
 
 export function isValid(elm: HTMLElement) {
   if (elm.nodeType === 1) {
-    if (elm.nodeName.toLowerCase() === "script") {
+    if (elm.nodeName.toLowerCase() === 'script') {
       return false;
     }
 
     for (let i = 0; i < elm.attributes.length; i++) {
       const val = elm.attributes[i].value;
-      if (typeof val === "string" && val.toLowerCase().indexOf("on") === 0) {
+      if (typeof val === 'string' && val.toLowerCase().indexOf('on') === 0) {
         return false;
       }
     }

@@ -1,6 +1,6 @@
-import { JSX, Component, Event, EventEmitter, Prop, h } from "@stencil/core";
-import cx from "classnames";
-import { prefix } from "../../../utils/prefix";
+import { JSX, Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import cx from 'classnames';
+import { prefix } from '../../../utils/prefix';
 import {
   getTotalPages,
   getCurrentActivePage,
@@ -8,55 +8,50 @@ import {
   PaginationModelItem,
   itemTypes,
   PaginationItemType
-} from "./pagination-helper";
+} from './pagination-helper';
 
 @Component({
-  tag: "p-pagination",
-  styleUrl: "pagination.scss",
+  tag: 'p-pagination',
+  styleUrl: 'pagination.scss',
   shadow: true
 })
 export class Pagination {
   /** @internal Type of the pagination item. */
-  @Prop() type: PaginationItemType;
+  @Prop() public type: PaginationItemType;
 
   /** The total count of items. */
-  @Prop() totalItemsCount: number;
+  @Prop() public totalItemsCount: number;
 
   /** The total count of items which should be shown per page.  */
-  @Prop() itemsPerPage: number;
+  @Prop() public itemsPerPage: number;
 
   /** Index of the currently active page. */
-  @Prop() activePage?: number = 1;
+  @Prop() public activePage?: number = 1;
 
   /** The number of pages between ellipsis. 0 = mobile | 1 = desktop */
-  @Prop() pageRange?: 0 | 1 = 1;
+  @Prop() public pageRange?: 0 | 1 = 1;
 
   /** Aria label what the pagination is used for. */
-  @Prop() label?: string = "Pagination";
+  @Prop() public label?: string = 'Pagination';
 
   /** Aria label for previous page icon. */
-  @Prop() labelPrev?: string = "Previous page";
+  @Prop() public labelPrev?: string = 'Previous page';
 
   /** Aria label for page navigation. */
-  @Prop() labelPage?: string = "Page";
+  @Prop() public labelPage?: string = 'Page';
 
   /** Aria label for next page icon. */
-  @Prop() labelNext?: string = "Next page";
+  @Prop() public labelNext?: string = 'Next page';
 
   /** Adapts the color when used on dark background. */
-  @Prop() theme?: "light" | "dark" = "light";
+  @Prop() public theme?: 'light' | 'dark' = 'light';
 
   /** Emitted when the link is clicked. */
-  @Event() pClick!: EventEmitter;
+  @Event() public pClick!: EventEmitter;
 
-  private onClick(event, page: number) {
-    event.preventDefault();
-    this.pClick.emit({ event, page });
-  }
-
-  render(): JSX.Element {
-    const paginationClasses = cx(prefix("pagination"), this.theme === "dark" && prefix("pagination--theme-dark"));
-    const paginationItemsClasses = cx(prefix("pagination__items"));
+  public render(): JSX.Element {
+    const paginationClasses = cx(prefix('pagination'), this.theme === 'dark' && prefix('pagination--theme-dark'));
+    const paginationItemsClasses = cx(prefix('pagination__items'));
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     const activePage = getCurrentActivePage(this.activePage, pageTotal);
     const pageRange = this.pageRange;
@@ -72,36 +67,36 @@ export class Pagination {
       let prevItem: JSX.Element[];
       let nextItem: JSX.Element[];
 
-      const paginationItemClasses = cx(prefix("pagination__item"));
+      const paginationItemClasses = cx(prefix('pagination__item'));
 
       paginationModel.forEach((pageModel: PaginationModelItem) => {
         if (pageModel.type === itemTypes.PREVIOUS_PAGE_LINK) {
           const paginationPrevClasses = cx(
-            prefix("pagination__prev"),
-            pageModel.isActive && prefix("pagination__prev--disabled")
+            prefix('pagination__prev'),
+            pageModel.isActive && prefix('pagination__prev--disabled')
           );
 
           return (prevItem = (
             <li {...pageModel} class={paginationItemClasses}>
               <a
                 class={paginationPrevClasses}
-                href={!pageModel.isActive && "#"}
+                href={!pageModel.isActive && '#'}
                 onClick={(e) => {
                   if (!this.onClick) {
                     return;
                   }
                   this.onClick(e, pageModel.value);
                 }}
-                aria-disabled={pageModel.isActive && "true"}
+                aria-disabled={pageModel.isActive && 'true'}
                 aria-label={this.labelPrev}
               >
-                <p-icon source="arrow-left-hair" />
+                <p-icon source='arrow-left-hair' />
               </a>
             </li>
           ));
         }
         if (pageModel.type === itemTypes.ELLIPSIS) {
-          const paginationGoToClasses = cx(prefix("pagination__goto"), prefix("pagination__goto--ellipsis"));
+          const paginationGoToClasses = cx(prefix('pagination__goto'), prefix('pagination__goto--ellipsis'));
           pageItems.push(
             <li {...pageModel} class={paginationItemClasses}>
               <span class={paginationGoToClasses} />
@@ -109,16 +104,16 @@ export class Pagination {
           );
         }
         if (pageModel.type === itemTypes.PAGE) {
-          const TagType = pageModel.isActive ? "span" : "a";
+          const TagType = pageModel.isActive ? 'span' : 'a';
           const paginationGoToClasses = cx(
-            prefix("pagination__goto"),
-            pageModel.isActive && prefix("pagination__goto--current")
+            prefix('pagination__goto'),
+            pageModel.isActive && prefix('pagination__goto--current')
           );
           pageItems.push(
             <li {...pageModel} class={paginationItemClasses}>
               <TagType
                 class={paginationGoToClasses}
-                href="#"
+                href='#'
                 onClick={(e) => {
                   if (!this.onClick || pageModel.isActive) {
                     return;
@@ -126,7 +121,7 @@ export class Pagination {
                   this.onClick(e, pageModel.value);
                 }}
                 aria-label={`${this.labelPage} ${pageModel.value}`}
-                aria-current={pageModel.isActive && "page"}
+                aria-current={pageModel.isActive && 'page'}
               >
                 {pageModel.value}
               </TagType>
@@ -135,25 +130,25 @@ export class Pagination {
         }
         if (pageModel.type === itemTypes.NEXT_PAGE_LINK) {
           const paginationNextClasses = cx(
-            prefix("pagination__next"),
-            pageModel.isActive && prefix("pagination__next--disabled")
+            prefix('pagination__next'),
+            pageModel.isActive && prefix('pagination__next--disabled')
           );
 
           return (nextItem = (
             <li {...pageModel} class={paginationItemClasses}>
               <a
                 class={paginationNextClasses}
-                href={!pageModel.isActive && "#"}
+                href={!pageModel.isActive && '#'}
                 onClick={(e) => {
                   if (!this.onClick) {
                     return;
                   }
                   this.onClick(e, pageModel.value);
                 }}
-                aria-disabled={pageModel.isActive && "true"}
+                aria-disabled={pageModel.isActive && 'true'}
                 aria-label={this.labelNext}
               >
-                <p-icon source="arrow-right-hair" />
+                <p-icon source='arrow-right-hair' />
               </a>
             </li>
           ));
@@ -169,7 +164,7 @@ export class Pagination {
 
     const paginationItems = createPaginationItems();
     return (
-      <nav class={paginationClasses} role="navigation" aria-label={this.label}>
+      <nav class={paginationClasses} role='navigation' aria-label={this.label}>
         <ul class={paginationItemsClasses}>
           {paginationItems.prevItem}
           {paginationItems.pageItems}
@@ -177,5 +172,10 @@ export class Pagination {
         </ul>
       </nav>
     );
+  }
+
+  private onClick(event, page: number) {
+    event.preventDefault();
+    this.pClick.emit({ event, page });
   }
 }

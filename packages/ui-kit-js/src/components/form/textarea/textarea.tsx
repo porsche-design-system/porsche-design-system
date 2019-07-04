@@ -1,34 +1,34 @@
-import { JSX, Component, Prop, h } from "@stencil/core";
-import cx from "classnames";
-import { prefix } from "../../../utils";
+import { JSX, Component, Prop, h } from '@stencil/core';
+import cx from 'classnames';
+import { prefix } from '../../../utils';
 
 @Component({
-  tag: "p-textarea",
-  styleUrl: "textarea.scss",
+  tag: 'p-textarea',
+  styleUrl: 'textarea.scss',
   shadow: true
 })
 export class Textarea {
-  @Prop() name?: string = "";
+  @Prop() public name?: string = '';
 
-  @Prop() value?: string = "";
+  @Prop() public value?: string = '';
 
-  @Prop() label?: string = "";
+  @Prop() public label?: string = '';
 
-  @Prop() disabled?: boolean = false;
+  @Prop() public disabled?: boolean = false;
 
-  @Prop() error?: boolean = false;
+  @Prop() public error?: boolean = false;
 
-  render(): JSX.Element {
-    const textareaClasses = cx(prefix("textarea"));
-    const fieldClasses = cx(prefix("textarea__field"), this.error && prefix("textarea__field--error"));
-    const labelClasses = cx(prefix("textarea__label"));
+  public render(): JSX.Element {
+    const textareaClasses = cx(prefix('textarea'));
+    const fieldClasses = cx(prefix('textarea__field'), this.error && prefix('textarea__field--error'));
+    const labelClasses = cx(prefix('textarea__label'));
 
     return (
       <label class={textareaClasses}>
         <textarea class={fieldClasses} name={this.name} placeholder={this.label} disabled={this.disabled}>
           {this.value}
         </textarea>
-        <p-text class={labelClasses} type="12" color="inherit" tag="span">
+        <p-text class={labelClasses} type='12' color='inherit' tag='span'>
           {this.label}
         </p-text>
       </label>
