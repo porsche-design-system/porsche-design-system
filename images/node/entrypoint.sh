@@ -3,4 +3,4 @@
 set -o errexit
 set -o pipefail
 
-exec "$@"
+exec "${@}"

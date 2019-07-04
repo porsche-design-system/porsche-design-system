@@ -4,7 +4,7 @@ set -o errexit
 set -o pipefail
 
 if [[ "--ui-kit-js" == "${1}" ]] || [[ "--design-system" == "${1}" ]]; then
-  yarn lint:${1:2}
+  yarn test:e2e:${1:2}
 else
-  yarn lint
+  yarn test:e2e
 fi

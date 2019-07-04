@@ -29,14 +29,22 @@
 
 ### Linting
 * Switch to __project root directory__
-* Run `./docker.sh run-lint`
+* Run `./docker.sh run-lint`, `./docker.sh run-lint --ui-kit-js` or `./docker.sh run-lint --design-system`
+
+### Unit Tests
+* Switch to __project root directory__
+* Run `./docker.sh run-test-unit`, `./docker.sh run-test-unit --ui-kit-js` or `./docker.sh run-test-unit --design-system`
+
+### E2E Tests
+* Switch to __project root directory__
+* Run `./docker.sh run-test-e2e`, `./docker.sh run-test-e2e --ui-kit-js` or `./docker.sh run-test-e2e --design-system`
 
 ### Visual Regression Tests
 * Switch to __project root directory__
-* Run `./docker.sh run-vrt`
+* Run `./docker.sh run-test-vrt`, `./docker.sh run-test-vrt --ui-kit-js` or `./docker.sh run-test-vrt --design-system`
 
 #### What to do when tests are failing
-* Switch to your results directury in `/vrt/results`. Here you can find the belonging `diff` and `regression` images.
+* Switch to your results directory in `/vrt/results`. Here you can find the belonging `diff` and `regression` images.
 * Check if you would like to accept the changes
   * **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results` folder and delete the images in the `/vrt/results` directory afterwards manually.
   * **If no**: Recheck your code and run the tests again, when you think you fixed it.
@@ -62,8 +70,10 @@ Every week, we update our npm packages:
 * Run `./docker.sh run-upgrade`  
 This should output the dependencies you might want to update. Select the npm dependencies to be updated and press
 _Enter_. Afterwards execute automated tests to make sure application still works.
-* Run `./docker.sh run-lint`
-* Run `./docker.sh run-vrt`  
+* Run `./docker.sh run-lint`  
+* Run `./docker.sh run-test-unit`  
+* Run `./docker.sh run-test-e2e`  
+* Run `./docker.sh run-test-vrt`  
 As final check start application locally and have a look at it.
 * Run `./docker.sh run-app`
 
