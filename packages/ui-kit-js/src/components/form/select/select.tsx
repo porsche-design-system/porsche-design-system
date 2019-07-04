@@ -1,23 +1,23 @@
-import { JSX, Component, Prop, h } from "@stencil/core";
-import cx from "classnames";
-import { prefix } from "../../../utils";
+import { JSX, Component, Prop, h } from '@stencil/core';
+import cx from 'classnames';
+import { prefix } from '../../../utils';
 
 @Component({
-  tag: "p-select",
-  styleUrl: "select.scss",
+  tag: 'p-select',
+  styleUrl: 'select.scss',
   shadow: true
 })
 export class Select {
-  @Prop() name?: string = "";
+  @Prop() public name?: string = '';
 
-  @Prop() value?: string = "";
+  @Prop() public value?: string = '';
 
-  @Prop() label?: string = "";
+  @Prop() public label?: string = '';
 
-  render(): JSX.Element {
-    const selectClasses = cx(prefix("select"));
-    const fieldClasses = cx(prefix("select__field"));
-    const iconClasses = cx(prefix("select__icon"));
+  public render(): JSX.Element {
+    const selectClasses = cx(prefix('select'));
+    const fieldClasses = cx(prefix('select__field'));
+    const iconClasses = cx(prefix('select__icon'));
 
     return (
       <label class={selectClasses}>
@@ -27,7 +27,7 @@ export class Select {
           <option>{this.value} 2</option>
           <option>{this.value} 3</option>
         </select>
-        <p-icon class={iconClasses} source="double-arrow-down-thin"/>
+        <p-icon class={iconClasses} source='double-arrow-down-thin'/>
       </label>
     );
   }

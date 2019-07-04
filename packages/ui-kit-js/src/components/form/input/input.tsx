@@ -1,32 +1,32 @@
-import { JSX, Component, Prop, h } from "@stencil/core";
-import cx from "classnames";
-import { prefix } from "../../../utils";
+import { JSX, Component, Prop, h } from '@stencil/core';
+import cx from 'classnames';
+import { prefix } from '../../../utils';
 
 @Component({
-  tag: "p-input",
-  styleUrl: "input.scss",
+  tag: 'p-input',
+  styleUrl: 'input.scss',
   shadow: true
 })
 export class Input {
-  @Prop() name?: string = "";
+  @Prop() public name?: string = '';
 
-  @Prop() value?: string = "";
+  @Prop() public value?: string = '';
 
-  @Prop() label?: string = "";
+  @Prop() public label?: string = '';
 
-  @Prop() type?: "text" | "password" | "date" | "time" | "number" | string = "text";
+  @Prop() public type?: 'text' | 'password' | 'date' | 'time' | 'number' | string = 'text';
 
-  @Prop() icon?: string = "";
+  @Prop() public icon?: string = '';
 
-  @Prop() disabled?: boolean = false;
+  @Prop() public disabled?: boolean = false;
 
-  @Prop() error?: boolean = false;
+  @Prop() public error?: boolean = false;
 
-  render(): JSX.Element {
-    const inputClasses = cx(prefix("input"));
-    const fieldClasses = cx(prefix("input__field"), this.error && prefix("input__field--error"));
-    const iconClasses = cx(prefix("input__icon"));
-    const labelClasses = cx(prefix("input__label"));
+  public render(): JSX.Element {
+    const inputClasses = cx(prefix('input'));
+    const fieldClasses = cx(prefix('input__field'), this.error && prefix('input__field--error'));
+    const iconClasses = cx(prefix('input__icon'));
+    const labelClasses = cx(prefix('input__label'));
 
     return (
       <label class={inputClasses}>
@@ -39,7 +39,7 @@ export class Input {
           placeholder={this.label}
           disabled={this.disabled}
         />
-        <p-text class={labelClasses} type="12" color="inherit" tag="span">
+        <p-text class={labelClasses} type='12' color='inherit' tag='span'>
           {this.label}
         </p-text>
       </label>

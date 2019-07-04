@@ -1,4 +1,4 @@
-import { prefix } from "./prefix";
+import { prefix } from './prefix';
 
 export type BreakpointCustomizable<T> = T | BreakpointValues<T>;
 
@@ -23,20 +23,20 @@ export function mapBreakpointPropToClasses(
 
   let classes: any = {};
 
-  if (typeof prop === "number" || typeof prop === "string") {
+  if (typeof prop === 'number' || typeof prop === 'string') {
     classes[prefix(`${className}-${prop}`)] = prop !== undefined && prop !== null;
-  } else if (typeof prop === "boolean") {
+  } else if (typeof prop === 'boolean') {
     classes[prefix(`${className}${modTrue}`)] = prop === true;
     classes[prefix(`${className}${modFalse}`)] = prop === false;
   } else {
     Object.keys(prop).forEach((key) => {
       const value: any = (prop as any)[key];
 
-      if (key === "base") {
+      if (key === 'base') {
         classes = {
           ...classes,
           ...{
-            [prefix(`${className}-${value}`)]: typeof value !== "boolean" && value !== undefined && value !== null
+            [prefix(`${className}-${value}`)]: typeof value !== 'boolean' && value !== undefined && value !== null
           },
           ...{ [prefix(`${className}${modTrue}`)]: value === true },
           ...{ [prefix(`${className}${modFalse}`)]: value === false }
@@ -46,7 +46,7 @@ export function mapBreakpointPropToClasses(
           ...classes,
           ...{
             [prefix(`${className}-${value}-${key}`)]:
-              typeof value !== "boolean" && value !== undefined && value !== null
+              typeof value !== 'boolean' && value !== undefined && value !== null
           },
           ...{ [prefix(`${className}${modTrue}-${key}`)]: value === true },
           ...{ [prefix(`${className}${modFalse}-${key}`)]: value === false }
