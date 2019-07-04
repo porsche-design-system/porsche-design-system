@@ -11,11 +11,11 @@
 | ---------- | ---------- | ----------- | --------- | -------- |
 | `disabled` | `disabled` |             | `boolean` | `false`  |
 | `error`    | `error`    |             | `boolean` | `false`  |
-| `icon`     | `icon`     |             | `string`  | `""`     |
-| `label`    | `label`    |             | `string`  | `""`     |
-| `name`     | `name`     |             | `string`  | `""`     |
-| `type`     | `type`     |             | `string`  | `"text"` |
-| `value`    | `value`    |             | `string`  | `""`     |
+| `icon`     | `icon`     |             | `string`  | `''`     |
+| `label`    | `label`    |             | `string`  | `''`     |
+| `name`     | `name`     |             | `string`  | `''`     |
+| `type`     | `type`     |             | `string`  | `'text'` |
+| `value`    | `value`    |             | `string`  | `''`     |
 
 
 ## Dependencies
