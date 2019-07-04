@@ -1,2 +1,2 @@
-export * from "./breakpointCustomizable";
-export * from "./prefix";
+export * from './breakpointCustomizable';
+export * from './prefix';

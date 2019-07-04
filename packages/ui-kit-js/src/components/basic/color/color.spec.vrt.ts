@@ -1,18 +1,18 @@
-import "jasmine";
-import { VisualRegressionTester } from "@porscheui/visual-regression-tester";
-import { getVisualRegressionTester } from "../../../../../../vrt/helpers/setup";
+import 'jasmine';
+import { VisualRegressionTester } from '@porscheui/visual-regression-tester';
+import { getVisualRegressionTester } from '../../../../../../vrt/helpers/setup';
 
-describe("Component Color", () => {
+describe('Component Color', () => {
   let visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
     visualRegressionTester = await getVisualRegressionTester();
   });
 
-  it("should have no visual regression", async () => {
+  it('should have no visual regression', async () => {
     expect(
-      await visualRegressionTester.test("component-color", async () => {
-        await visualRegressionTester.goTo("/#/vrt/basic/color");
+      await visualRegressionTester.test('component-color', async () => {
+        await visualRegressionTester.goTo('/#/vrt/basic/color');
       })
     ).toBeFalsy();
   });

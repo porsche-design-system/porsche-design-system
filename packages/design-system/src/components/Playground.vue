@@ -28,25 +28,25 @@
 </template>
 
 <script lang="ts">
-type Theme = "light" | "dark"
+type Theme = 'light' | 'dark';
 
-import { Component, Prop, Vue } from "vue-property-decorator"
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Playground extends Vue {
-  @Prop({ default: true }) public themeable!: boolean
-  @Prop({ default: "auto" }) public childrenHeight!: "auto" | "fixed"
+  @Prop({ default: true }) public themeable!: boolean;
+  @Prop({ default: 'auto' }) public childrenHeight!: 'auto' | 'fixed';
 
-  public theme: Theme = "light"
+  public theme: Theme = 'light';
 
   public switchTheme(theme: Theme): void {
-    this.theme = theme
+    this.theme = theme;
   }
 }
 </script>
 
 <style scoped lang="scss">
-@import "~@porscheui/ui-kit-js/src/styles/utility/index";
+@import '~@porscheui/ui-kit-js/src/styles/utility/index';
 
 $color-blue-1: lightskyblue;
 $color-blue-2: deepskyblue;
@@ -79,7 +79,7 @@ $color-highlight: deeppink;
 
   // Common
   &::before {
-    content: "";
+    content: '';
     display: block;
     margin-top: -$p-spacing-16;
   }
@@ -95,7 +95,7 @@ $color-highlight: deeppink;
   // Flex - web component code example visualization
   p-flex {
     // spacing between flex blocks
-    + p-flex:not([flow="inline"]) {
+    + p-flex:not([flow='inline']) {
       margin-top: $p-spacing-8;
     }
 
@@ -118,14 +118,14 @@ $color-highlight: deeppink;
       }
 
       // styling to visualize baseline
-      &[align-self="baseline"] {
+      &[align-self='baseline'] {
         margin-top: $p-spacing-24;
       }
     }
 
     // styling to visualize align items behaviour
     &[align-items] {
-      p-flex-item:not([align-self="stretch"]) {
+      p-flex-item:not([align-self='stretch']) {
         &:nth-child(1n) {
           height: 40px;
         }
@@ -164,7 +164,7 @@ $color-highlight: deeppink;
     }
 
     // styling to visualize baseline
-    &[align-items="baseline"] {
+    &[align-items='baseline'] {
       p-flex-item {
         margin-top: $p-spacing-24;
       }
@@ -203,38 +203,38 @@ $color-highlight: deeppink;
     }
 
     &.negative-responsive {
-      @include p-spacing-d("padding", "", "");
+      @include p-spacing-d('padding', '', '');
 
-      > [class*="p-spacing-"] {
+      > [class*='p-spacing-'] {
         width: 2 * $p-spacing-d;
         height: 2 * $p-spacing-d;
 
-        @include breakpoint("s") {
+        @include breakpoint('s') {
           width: 2 * $p-spacing-d-s;
           height: 2 * $p-spacing-d-s;
         }
-        @include breakpoint("m") {
+        @include breakpoint('m') {
           width: 2 * $p-spacing-d-m;
           height: 2 * $p-spacing-d-m;
         }
-        @include breakpoint("l") {
+        @include breakpoint('l') {
           width: 2 * $p-spacing-d-l;
           height: 2 * $p-spacing-d-l;
         }
-        @include breakpoint("xl") {
+        @include breakpoint('xl') {
           width: 2 * $p-spacing-d-xl;
           height: 2 * $p-spacing-d-xl;
         }
       }
     }
 
-    > [class*="p-spacing-"] {
+    > [class*='p-spacing-'] {
       position: relative;
       width: $p-spacing-80;
       height: $p-spacing-80;
 
       &::before {
-        content: "";
+        content: '';
         display: block;
         width: 100%;
         height: 100%;

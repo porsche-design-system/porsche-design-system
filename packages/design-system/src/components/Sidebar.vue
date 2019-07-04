@@ -19,7 +19,10 @@
         <p-headline type="headline-5" level="3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, story, index) in stories" :key="index">
-            <router-link class="link" :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">
+            <router-link
+              class="link"
+              :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`"
+            >
               <p-text-link tag="span">{{ story }}</p-text-link>
             </router-link>
           </li>
@@ -30,60 +33,59 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
-  import {config} from '@/design-system.config';
-  import {encodeUrl} from '@/services/utils';
-  import Divider from '@/components/Divider.vue';
-  import {featureToggle} from '@/services/utils';
+import { Component, Vue } from 'vue-property-decorator';
+import { config } from '@/design-system.config';
+import { encodeUrl, featureToggle } from '@/services/utils';
+import Divider from '@/components/Divider.vue';
 
-  @Component({
-    components: {
-      Divider,
-    },
-  })
-  export default class Sidebar extends Vue {
-
-    public config = config;
-    public encodeUrl = encodeUrl;
-    public featureToggle = featureToggle;
+@Component({
+  components: {
+    Divider
   }
+})
+export default class Sidebar extends Vue {
+  public config = config;
+  public encodeUrl = encodeUrl;
+  public featureToggle = featureToggle;
+}
 </script>
 
 <style scoped lang="scss">
-  @import "~@porscheui/ui-kit-js/src/styles/utility/index";
+@import '~@porscheui/ui-kit-js/src/styles/utility/index';
 
-  ul, li {
-    list-style: none;
+ul,
+li {
+  list-style: none;
+}
+
+.list {
+  width: 100%;
+  display: inline-block;
+  margin-top: $p-spacing-24;
+
+  &:last-child {
+    margin-bottom: $p-spacing-24;
   }
 
-  .list {
-    width: 100%;
-    display: inline-block;
+  > li:not(:first-child) {
     margin-top: $p-spacing-24;
+  }
+}
 
-    &:last-child {
-      margin-bottom: $p-spacing-24;
-    }
+.link {
+  padding: $p-spacing-4 0;
+  text-decoration: none;
+  color: $p-color-porsche-black;
+  display: block;
 
-    > li:not(:first-child) {
-      margin-top: $p-spacing-24;
-    }
+  &.router-link-active,
+  &:hover {
+    color: $p-color-porsche-red;
   }
 
-  .link {
-    padding: $p-spacing-4 0;
-    text-decoration: none;
-    color: $p-color-porsche-black;
-    display: block;
-
-    &.router-link-active,
-    &:hover {
-      color: $p-color-porsche-red;
-    }
-
-    &:focus {
-      outline: 1px solid $p-color-state-focus;
-      outline-offset: 4px;
-    }
+  &:focus {
+    outline: 1px solid $p-color-state-focus;
+    outline-offset: 4px;
   }
+}
 </style>

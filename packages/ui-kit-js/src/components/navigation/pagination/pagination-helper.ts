@@ -9,10 +9,10 @@
  *
  */
 
-export type PageItemType = "PAGE";
-export type EllipsisItemType = "ELLIPSIS";
-export type PreviousPageLinkItemType = "PREVIOUS_PAGE_LINK";
-export type NextPageLinkItemType = "NEXT_PAGE_LINK";
+export type PageItemType = 'PAGE';
+export type EllipsisItemType = 'ELLIPSIS';
+export type PreviousPageLinkItemType = 'PREVIOUS_PAGE_LINK';
+export type NextPageLinkItemType = 'NEXT_PAGE_LINK';
 export type PaginationItemType = PageItemType | EllipsisItemType | PreviousPageLinkItemType | NextPageLinkItemType;
 
 export interface ItemTypes {
@@ -44,10 +44,10 @@ export interface PaginationModelItem {
 }
 
 export const itemTypes: ItemTypes = {
-  PAGE: "PAGE",
-  ELLIPSIS: "ELLIPSIS",
-  PREVIOUS_PAGE_LINK: "PREVIOUS_PAGE_LINK",
-  NEXT_PAGE_LINK: "NEXT_PAGE_LINK"
+  PAGE: 'PAGE',
+  ELLIPSIS: 'ELLIPSIS',
+  PREVIOUS_PAGE_LINK: 'PREVIOUS_PAGE_LINK',
+  NEXT_PAGE_LINK: 'NEXT_PAGE_LINK'
 };
 
 const itemKeys: ItemKeys = {
