@@ -881,10 +881,10 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 <Playground :themeable="false">
   <p-flex>
-    <p-flex-item style={{ width: "80%" }}>
+    <p-flex-item style="width: 80%">
       <ExampleText>1</ExampleText>
     </p-flex-item>
-    <p-flex-item style={{ width: "80%" }}>
+    <p-flex-item style="width: 80%">
       <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
@@ -894,10 +894,10 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 <Playground :themeable="false">
   <p-flex>
-    <p-flex-item shrink="0" style={{ width: "80%" }}>
+    <p-flex-item shrink="0" style="width: 80%">
       <ExampleText>1</ExampleText>
     </p-flex-item>
-    <p-flex-item style={{ width: "80%" }}>
+    <p-flex-item style="width: 80%">
       <ExampleText>2</ExampleText>
     </p-flex-item>
   </p-flex>
