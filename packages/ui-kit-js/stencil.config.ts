@@ -9,7 +9,6 @@ export const config: Config = {
   namespace: 'porsche-ui-kit',
   outputTargets: [
     { type: 'dist', esmLoaderPath: '../loader' },
-    { type: 'docs-readme' },
     { type: 'www', serviceWorker: null },
     reactOutputTarget({
       componentCorePackage: "@porscheui/ui-kit-js",

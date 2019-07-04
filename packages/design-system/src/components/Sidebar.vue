@@ -13,7 +13,7 @@
       </li>
     </ul>
     <Divider spacing="small" v-if="featureToggle('Q2/2019 Components')" />
-    <p-headline type="headline-4" level="2" v-if="featureToggle('Q2/2019 Components')">Components</p-headline>
+    <p-headline type="headline-4" level="2">Components</p-headline>
     <ul class="list" v-if="featureToggle('Q2/2019 Components')">
       <li v-for="(stories, category, index) in config.stories" :key="index">
         <p-headline type="headline-5" level="3">{{ category }}</p-headline>

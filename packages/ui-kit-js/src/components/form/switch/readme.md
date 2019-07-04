@@ -11,8 +11,8 @@
 | ---------- | ---------- | ----------- | --------- | ------- |
 | `checked`  | `checked`  |             | `boolean` | `false` |
 | `disabled` | `disabled` |             | `boolean` | `false` |
-| `name`     | `name`     |             | `string`  | `""`    |
-| `value`    | `value`    |             | `string`  | `""`    |
+| `name`     | `name`     |             | `string`  | `''`    |
+| `value`    | `value`    |             | `string`  | `''`    |
 
 
 ## Dependencies
