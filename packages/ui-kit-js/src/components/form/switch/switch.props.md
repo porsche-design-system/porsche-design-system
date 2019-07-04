@@ -19,4 +19,4 @@
 
 ### Depends on
 
-- [p-icon](/#/components/icon/icon)
+- [p-icon](#/components/icon/icon)
