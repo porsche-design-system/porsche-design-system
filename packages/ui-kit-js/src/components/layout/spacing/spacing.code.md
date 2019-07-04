@@ -8,37 +8,37 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 ### Spacings visualized
 
 <Playground :themeable="false">
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--4 p-spacing-pr--4" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--8 p-spacing-pr--8" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--16 p-spacing-pr--16" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--24 p-spacing-pr--24" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--32 p-spacing-pr--32" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--40 p-spacing-pr--40" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--48 p-spacing-pr--48" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--56 p-spacing-pr--56" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--64 p-spacing-pr--64" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--72 p-spacing-pr--72" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--80 p-spacing-pr--80" />
   </div>
 </Playground>
@@ -205,25 +205,25 @@ Responsive spacings adapt their spacing value automatically with predefined size
 ### Spacings visualized
 
 <Playground :themeable="false">
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--a p-spacing-pr--a" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--b p-spacing-pr--b" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--c p-spacing-pr--c" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--d p-spacing-pr--d" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--e p-spacing-pr--e" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--f p-spacing-pr--f" />
   </div>
-  <div class="example-spacing">
+  <div class="example-spacing-visual">
     <div class="p-spacing-pt--g p-spacing-pr--g" />
   </div>
 </Playground>
