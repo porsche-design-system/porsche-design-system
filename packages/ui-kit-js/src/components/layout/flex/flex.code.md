@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by changing class names/properties on the flex container and flex item. It can be used to quickly layout standard, css-prefixed content blocks or components. It does not replace [Grid](/#/components/layout/grid) component which should be used to define basic page structures.
+The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by changing class names/properties on the flex container and flex item. It can be used to quickly layout standard, css-prefixed content blocks or components. It does not replace [Grid](#/components/layout/grid) component which should be used to define basic page structures.
 
 ### Flex (default)
 Initialize standard flexbox container to define flex context.
