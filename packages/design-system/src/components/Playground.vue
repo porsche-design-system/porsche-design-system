@@ -28,19 +28,19 @@
 </template>
 
 <script lang="ts">
-type Theme = "light" | "dark"
+type Theme = 'light' | 'dark';
 
-import { Component, Prop, Vue } from "vue-property-decorator"
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Playground extends Vue {
-  @Prop({ default: true }) public themeable!: boolean
-  @Prop({ default: "auto" }) public childrenHeight!: "auto" | "fixed"
+  @Prop({ default: true }) public themeable!: boolean;
+  @Prop({ default: 'auto' }) public childrenHeight!: 'auto' | 'fixed';
 
-  public theme: Theme = "light"
+  public theme: Theme = 'light';
 
   public switchTheme(theme: Theme): void {
-    this.theme = theme
+    this.theme = theme;
   }
 }
 </script>
