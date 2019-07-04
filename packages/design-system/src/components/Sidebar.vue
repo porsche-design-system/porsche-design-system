@@ -12,17 +12,22 @@
         </ul>
       </li>
     </ul>
-    <Divider spacing="small" v-if="featureToggle('Q2/2019 Components')" />
+    <Divider spacing="small"/>
     <p-headline type="headline-4" level="2">Components</p-headline>
-    <ul class="list" v-if="featureToggle('Q2/2019 Components')">
-      <li v-for="(stories, category, index) in config.stories" :key="index">
+    <ul class="list">
+      <li
+        v-for="(stories, category, index) in config.stories"
+        :key="index"
+        v-if="featureToggle('Q2/2019 Components') || ['Basic', 'Layout'].includes(category)"
+      >
         <p-headline type="headline-5" level="3">{{ category }}</p-headline>
         <ul>
-          <li v-for="(v, story, index) in stories" :key="index">
-            <router-link
-              class="link"
-              :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`"
-            >
+          <li
+            v-for="(v, story, index) in stories"
+            :key="index"
+            v-if="featureToggle('Q2/2019 Components') || ['Color', 'Typography', 'Grid', 'Spacing'].includes(story)"
+          >
+            <router-link class="link" :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">
               <p-text-link tag="span">{{ story }}</p-text-link>
             </router-link>
           </li>
@@ -33,59 +38,59 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { config } from '@/design-system.config';
-import { encodeUrl, featureToggle } from '@/services/utils';
-import Divider from '@/components/Divider.vue';
+  import {Component, Vue} from 'vue-property-decorator';
+  import {config} from '@/design-system.config';
+  import {encodeUrl, featureToggle} from '@/services/utils';
+  import Divider from '@/components/Divider.vue';
 
-@Component({
-  components: {
-    Divider
+  @Component({
+    components: {
+      Divider
+    }
+  })
+  export default class Sidebar extends Vue {
+    public config = config;
+    public encodeUrl = encodeUrl;
+    public featureToggle = featureToggle;
   }
-})
-export default class Sidebar extends Vue {
-  public config = config;
-  public encodeUrl = encodeUrl;
-  public featureToggle = featureToggle;
-}
 </script>
 
 <style scoped lang="scss">
-@import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  @import '~@porscheui/ui-kit-js/src/styles/utility/index';
 
-ul,
-li {
-  list-style: none;
-}
-
-.list {
-  width: 100%;
-  display: inline-block;
-  margin-top: $p-spacing-24;
-
-  &:last-child {
-    margin-bottom: $p-spacing-24;
+  ul,
+  li {
+    list-style: none;
   }
 
-  > li:not(:first-child) {
+  .list {
+    width: 100%;
+    display: inline-block;
     margin-top: $p-spacing-24;
-  }
-}
 
-.link {
-  padding: $p-spacing-4 0;
-  text-decoration: none;
-  color: $p-color-porsche-black;
-  display: block;
+    &:last-child {
+      margin-bottom: $p-spacing-24;
+    }
 
-  &.router-link-active,
-  &:hover {
-    color: $p-color-porsche-red;
+    > li:not(:first-child) {
+      margin-top: $p-spacing-24;
+    }
   }
 
-  &:focus {
-    outline: 1px solid $p-color-state-focus;
-    outline-offset: 4px;
+  .link {
+    padding: $p-spacing-4 0;
+    text-decoration: none;
+    color: $p-color-porsche-black;
+    display: block;
+
+    &.router-link-active,
+    &:hover {
+      color: $p-color-porsche-red;
+    }
+
+    &:focus {
+      outline: 1px solid $p-color-state-focus;
+      outline-offset: 4px;
+    }
   }
-}
 </style>
