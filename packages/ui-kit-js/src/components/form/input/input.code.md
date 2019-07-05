@@ -4,7 +4,7 @@
 
 ### Without value
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <p-input name="some-name" label="Some label"></p-input>
   </template>
@@ -12,7 +12,7 @@
 
 ### With value
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <p-input name="some-name" value="Some value" label="Some label"></p-input>
   </template>
@@ -24,7 +24,7 @@
 
 #### Disabled
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-input name="some-name" label="Some label" disabled="true"></p-input>
     <p-input name="some-name" value="Some value" label="Some label" disabled="true"></p-input>
@@ -33,7 +33,7 @@
 
 #### Error
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-input name="some-name" label="Some label" error="true"></p-input>
     <p-input name="some-name" value="Some value" label="Some label" error="true"></p-input>
@@ -42,7 +42,7 @@
 
 #### Disabled + Error
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-input name="some-name" label="Some label" disabled="true" error="true"></p-input>
     <p-input name="some-name" value="Some value" label="Some label" disabled="true" error="true"></p-input>
@@ -55,7 +55,7 @@
 
 #### Text & Clear Button
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-input name="some-name" label="Some label" icon="close"></p-input>
     <p-input name="some-name" value="Some value" label="Some label" icon="close"></p-input>
@@ -67,7 +67,7 @@
 
 #### Password
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-input type="password" name="some-name" label="Some label" icon="eye"></p-input>
     <p-input type="password" name="some-name" value="Some value" label="Some label" icon="eye"></p-input>
@@ -79,7 +79,7 @@
 
 #### Date
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-input type="date" name="some-name" label="Some label" icon="registration"></p-input>
     <p-input type="date" name="some-name" value="Some value" label="Some label" icon="registration"></p-input>
@@ -91,7 +91,7 @@
 
 #### Time
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-input type="time" name="some-name" label="Some label" icon="timer-pcm"></p-input>
     <p-input type="time" name="some-name" value="Some value" label="Some label" icon="timer-pcm"></p-input>
@@ -103,7 +103,7 @@
 
 #### Number
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-input type="number" name="some-name" label="Some label"></p-input>
     <p-input type="number" name="some-name" value="123" label="Some label"></p-input>
@@ -121,7 +121,7 @@ Visualization of edge cases
 
 #### Long text
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <p-input name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."></p-input>
   </template>

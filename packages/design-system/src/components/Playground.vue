@@ -19,7 +19,10 @@
       :class="{
         'light': (themeable === false || theme === 'light'),
         'dark': (themeable && theme === 'dark'),
-        'children-height-fixed': (childrenHeight === 'fixed')
+        'children-height-fixed': (childElementLayout.height === 'fixed'),
+        'spacing-inline': (childElementLayout.spacing == 'inline'),
+        'spacing-block': (childElementLayout.spacing == 'block'),
+        'spacing-block-small': (childElementLayout.spacing == 'block-small')
       }"
     >
       <slot :theme="theme" />
@@ -32,10 +35,15 @@ type Theme = 'light' | 'dark';
 
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
+interface ChildElementLayout {
+  height: 'auto' | 'fixed';
+  spacing: 'none' | 'inline' | 'block' | 'block-small';
+}
+
 @Component
 export default class Playground extends Vue {
-  @Prop({ default: true }) public themeable!: boolean;
-  @Prop({ default: 'auto' }) public childrenHeight!: 'auto' | 'fixed';
+  @Prop({ default: false }) public themeable!: boolean;
+  @Prop({ default: { height: 'auto', spacing: 'none' } }) public childElementLayout!: ChildElementLayout;
 
   public theme: Theme = 'light';
 
@@ -57,7 +65,6 @@ $color-highlight: deeppink;
 .example {
   padding: $p-spacing-32;
   overflow-x: auto;
-  white-space: nowrap;
   border: 1px solid transparent;
 
   // Mode
@@ -77,28 +84,49 @@ $color-highlight: deeppink;
     }
   }
 
-  // Common
-  &::before {
-    content: '';
-    display: block;
-    margin-top: -$p-spacing-16;
+  &.spacing-inline {
+    &::before {
+      content: '';
+      display: block;
+      margin-top: -$p-spacing-16;
+    }
+
+    > * {
+      margin-top: $p-spacing-16;
+
+      &:not(:last-child) {
+        margin-right: $p-spacing-16;
+      }
+    }
   }
 
-  > * {
-    margin-top: $p-spacing-16;
+  &.spacing-block {
+    &::before {
+      content: '';
+      display: block;
+      margin-top: -$p-spacing-16;
+    }
 
-    &:not(:last-child):not(.p-grid) {
-      margin-right: $p-spacing-16;
+    > * {
+      display: block;
+      margin-top: $p-spacing-16;
+    }
+  }
+
+  &.spacing-block-small {
+    &::before {
+      content: '';
+      display: block;
+      margin-top: -$p-spacing-8;
+    }
+
+    > * {
+      margin-top: $p-spacing-8;
     }
   }
 
   // Flex - web component code example visualization
   p-flex {
-    // spacing between flex blocks
-    + p-flex:not([flow='inline']) {
-      margin-top: $p-spacing-8;
-    }
-
     // styling to colorize flex items
     p-flex-item {
       &:nth-child(1n) {
@@ -173,10 +201,6 @@ $color-highlight: deeppink;
 
   // Grid - web component code example visualization
   p-grid {
-    + .p-grid {
-      margin-top: $p-spacing-8;
-    }
-
     p-grid-child {
       > p {
         padding: $p-spacing-4;

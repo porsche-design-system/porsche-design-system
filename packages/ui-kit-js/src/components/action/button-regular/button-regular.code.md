@@ -8,7 +8,7 @@ Buttons used as `<button>` elements to trigger actions.
 
 ### Regular basic (default)
 
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-button-regular :theme="slotProps.theme">Click Here!</p-button-regular>
     <p-button-regular :theme="slotProps.theme" disabled="true">Disabled</p-button-regular>
@@ -18,7 +18,7 @@ Buttons used as `<button>` elements to trigger actions.
 
 ### Regular ghost
 
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-button-regular variant="ghost" :theme="slotProps.theme">Click Here!</p-button-regular>
     <p-button-regular variant="ghost" :theme="slotProps.theme" disabled="true">Disabled</p-button-regular>
@@ -28,7 +28,7 @@ Buttons used as `<button>` elements to trigger actions.
 
 ### Regular highlight
 
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-button-regular variant="highlight" :theme="slotProps.theme">Click Here!</p-button-regular>
     <p-button-regular variant="highlight" :theme="slotProps.theme" disabled="true">Disabled</p-button-regular>
@@ -43,7 +43,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 
 #### Regular basic (default)
 
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-button-regular href="/lorem/ipsum" :theme="slotProps.theme">Click Here!</p-button-regular>
     <p-button-regular href="#" disabled="true" :theme="slotProps.theme">Disabled</p-button-regular>
@@ -52,7 +52,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 </Playground>
 
 #### Regular ghost
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-button-regular href="/lorem/ipsum" variant="ghost" :theme="slotProps.theme">Click Here!</p-button-regular>
     <p-button-regular href="#" variant="ghost" disabled :theme="slotProps.theme">Disabled</p-button-regular>
@@ -61,7 +61,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 </Playground>
 
 #### Regular highlight
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-button-regular href="/lorem/ipsum" variant="highlight" :theme="slotProps.theme">Click Here!</p-button-regular>
     <p-button-regular href="#" variant="highlight" disabled :theme="slotProps.theme">Disabled</p-button-regular>
@@ -74,7 +74,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 ### Button regular small
 All button types can be rendered in a smaller variant. All properties of the regular button can be set.
 
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-button-regular small="true" :theme="slotProps.theme">Click Here!</p-button-regular>
     <p-button-regular small="true" variant="ghost" :theme="slotProps.theme">Click Here!</p-button-regular>
@@ -88,7 +88,7 @@ All button types can be rendered in a smaller variant. All properties of the reg
 If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property.
 If you need to link to another icon hosted somewhere else, just set the whole icon path to thge `icon` prop.
 
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-button-regular icon="phone" :theme="slotProps.theme">Click Here!</p-button-regular>
   </template>
@@ -99,7 +99,7 @@ If you need to link to another icon hosted somewhere else, just set the whole ic
 ### Edge cases
 
 #### Long text
-<Playground>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <div style="max-width: 320px">
       <p-button-regular icon="phone" :theme="slotProps.theme">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p-button-regular>

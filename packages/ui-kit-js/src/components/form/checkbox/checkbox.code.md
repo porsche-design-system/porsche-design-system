@@ -4,7 +4,7 @@
 
 ### Unchecked
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <p-checkbox name="some-name" value="some-value">Some label</p-checkbox>
   </template>
@@ -12,7 +12,7 @@
 
 ### Checked
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <p-checkbox name="some-name" value="some-value" checked="true">Some label</p-checkbox>
   </template>
@@ -24,7 +24,7 @@
 
 #### Disabled
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-checkbox name="some-name" value="some-value" disabled="true">Unchecked</p-checkbox>
     <p-checkbox name="some-name" value="some-value" disabled="true" checked="true">Checked</p-checkbox>
@@ -33,7 +33,7 @@
 
 #### Error
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-checkbox name="some-name" value="some-value" error="true">Unchecked</p-checkbox>
     <p-checkbox name="some-name" value="some-value" error="true" checked="true">Checked</p-checkbox>
@@ -42,7 +42,7 @@
 
 #### Disabled + Error
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-checkbox name="some-name" value="some-value" disabled="true" error="true">Unchecked</p-checkbox>
     <p-checkbox name="some-name" value="some-value" disabled="true" error="true" checked="true">Checked</p-checkbox>
@@ -55,7 +55,7 @@
 
 #### With icon
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-checkbox name="some-name" value="some-value">
       Unchecked <p-icon source="porsche-driving-experience"></p-icon> with an icon
@@ -77,7 +77,7 @@
 
 #### With link
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-checkbox name="some-name" value="some-value">
       Unchecked <a href="#" target="_blank">with a link</a>
@@ -105,7 +105,7 @@ Visualization of edge cases
 
 #### Long text
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <div style="max-width: 320px;">
       <p-checkbox name="some-name" value="some-value">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p-checkbox>

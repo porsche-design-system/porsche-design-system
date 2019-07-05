@@ -4,7 +4,7 @@
 The pagination is the component of choice primarily to navigate through listed content (e.g. search results, archives etc.).
 
 ## Basic usage
-<Playground>
+<Playground :themeable="true">
   <template v-slot="slotProps">
     <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
   </template>
@@ -14,7 +14,7 @@ The pagination is the component of choice primarily to navigate through listed c
 To correctly display the pagination in different viewport sizes, the maximum amount of page links displayed is meant to be reduced for lower resolutions.
 Currently the maximum number is either `7` (desktop/tablet) or `5` (mobile). To adapt the maximum number of page links for smaller screens, the `page-range` property must be changed from `1` (desktop default) to `0` (mobile).
 
-<Playground>
+<Playground :themeable="true">
   <template v-slot="slotProps">
     <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="0"></p-pagination>
   </template>

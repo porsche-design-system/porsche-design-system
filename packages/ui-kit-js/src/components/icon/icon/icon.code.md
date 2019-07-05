@@ -8,17 +8,17 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually.
 ### Sizes
 
 #### Small (default)
-<Playground :themeable="false">
+<Playground>
   <p-icon source="car-next" />
 </Playground>
 
 #### Medium
-<Playground :themeable="false">
+<Playground>
   <p-icon source="car-next" size="medium" />
 </Playground>
 
 #### large
-<Playground :themeable="false">
+<Playground>
   <p-icon source="car-next" size="large" />
 </Playground>
 
@@ -27,7 +27,7 @@ Porsche UI Kit is using a SVG icon system to present an icon object visually.
 ### Color Variants
 The default icon color inherits from its parent(s). But also predefined colors can be set. @see properties for possible color variants.
 
-<Playground :themeable="false">
+<Playground>
   <p-icon source="car-next" size="large" color="porsche-red" />
 </Playground>
 

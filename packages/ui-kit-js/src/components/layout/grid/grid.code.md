@@ -8,7 +8,7 @@ The Porsche UI Kit grid system is based upon a standard 12 column responsive gri
 
 For standard grid implementation, it is recommended to use this pattern. The class `grid` on the parent and `grid__child` on the children are mandatory. With `grid__child--size-(1-12)` it is possible to define column widths.
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'block-small'}">
   <p-grid>
     <p-grid-child size="12">
       <ExampleText>12</ExampleText>
@@ -30,7 +30,7 @@ For standard grid implementation, it is recommended to use this pattern. The cla
 
 In some cases it can be neccessary to indent columns. The grid gives basic indentions based on grid sizings. The child column has an offset of 1 column on the left and due to its length of 10 columns an offset of 1 column to the right. With `grid__child--offset-(0-11)` it is possible to define offsets.
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'block-small'}">
   <p-grid v-for="n, index in 11" :key="index">
     <p-grid-child :offset="n" :size="12 - n">
       <ExampleText>{{ n }}</ExampleText>
@@ -46,7 +46,7 @@ In some cases it might be neccessary to define or change direction of the column
 
 #### Row (default)
 
-<Playground :themeable="false">
+<Playground>
   <p-grid direction="row">
     <p-grid-child size="4">
       <ExampleText>1</ExampleText>
@@ -62,7 +62,7 @@ In some cases it might be neccessary to define or change direction of the column
 
 #### Row reverse
 
-<Playground :themeable="false">
+<Playground>
   <p-grid direction="row-reverse">
     <p-grid-child size="4">
       <ExampleText>1</ExampleText>
@@ -78,7 +78,7 @@ In some cases it might be neccessary to define or change direction of the column
 
 #### Column
 
-<Playground :themeable="false">
+<Playground>
   <p-grid direction="column">
     <p-grid-child size="4">
       <ExampleText>1</ExampleText>
@@ -94,7 +94,7 @@ In some cases it might be neccessary to define or change direction of the column
 
 #### Column reverse
 
-<Playground :themeable="false">
+<Playground>
   <p-grid direction="column-reverse">
     <p-grid-child size="4">
       <ExampleText>1</ExampleText>
@@ -116,7 +116,7 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
 
 #### Normal (default)
 
-<Playground :themeable="false">
+<Playground>
   <p-grid gap="normal">
     <p-grid-child size="4">
       <ExampleText>1</ExampleText>
@@ -132,7 +132,7 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
 
 #### Zero
 
-<Playground :themeable="false">
+<Playground>
   <p-grid gap="zero">
     <p-grid-child size="4">
       <ExampleText>1</ExampleText>
@@ -152,7 +152,7 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
 
 Basic nesting of grids is supported. "Basic" because of percentage value of width and gaps which couldn't be calculated for each column width. Here are some examples of "dos" and "don'ts":
 
-<Playground :themeable="false">
+<Playground>
   <p-grid>
     <p-grid-child size="6">
       <p-grid>
@@ -202,7 +202,7 @@ Nesting inside columns with the following widths should be prevented, because al
 
 The grid system is fluid/responsive by itself by using percentages for every value (widths, gaps, offsets). But it can also provide breakpoint specific values to fit the needs of certain viewports:
 
-<Playground :themeable="false">
+<Playground>
   <p-grid gap='{"base": "normal", "s": "zero", "m": "normal"}'>
     <p-grid-child size='{"base": 12, "m": 4, "l": 3}' offset='{"base": 0, "m": 2, "l": 0}'>
       <ExampleText>
