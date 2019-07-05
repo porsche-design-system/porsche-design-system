@@ -71,7 +71,8 @@ the clickability of the surrounding elements.
 If a spinner is triggered by an interaction with a component, it is recommended to disable
 the component while the spinner is visible.
 
-❌ EXAMPLE: LOADING BUTTON
+![Button functionality blocked while loading](./assets/spinner-blocking-component.png)
+Example: Loading button.
 
 ### Screen blocking
 Using a loading spinner for parts of a screen or within dedicated components usually means
@@ -83,8 +84,7 @@ the loader on top:
 * Light Theme: Blocking layer in Porsche Light, 90% opacity
 * Dark Theme: Blocking layer in Porsche Dark, 90% opacity
 
-
-❌ EXAMPLES BLOCKING LAYER
+![Page blocked while loading](./assets/spinner-blocking-page.png)
 
 ---
 
