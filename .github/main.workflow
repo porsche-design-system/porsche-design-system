@@ -21,49 +21,49 @@ action "Install" {
 action "Lint: UI Kit JS" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-lint --ui-kit-js"]
+  runs = ["run-lint", "--ui-kit-js"]
 }
 
 action "Test Unit: UI Kit JS" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-test-unit --ui-kit-js"]
+  runs = ["run-test-unit", "--ui-kit-js"]
 }
 
 action "Test E2E: UI Kit JS" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-test-e2e --ui-kit-js"]
+  runs = ["run-test-e2e", "--ui-kit-js"]
 }
 
 action "Test VRT: UI Kit JS" {
   needs = ["Install"]
   uses = "./images/node/"
-  runs = ["run-test-vrt --ui-kit-js"]
+  runs = ["run-test-vrt", "--ui-kit-js"]
 }
 
 action "Lint: Design System" {
   needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./images/node/"
-  runs = ["run-lint --design-system"]
+  runs = ["run-lint", "--design-system"]
 }
 
 action "Test Unit: Design System" {
   needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./images/node/"
-  runs = ["run-test-unit --design-system"]
+  runs = ["run-test-unit", "--design-system"]
 }
 
 action "Test E2E: Design System" {
   needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./images/node/"
-  runs = ["run-test-e2e --design-system"]
+  runs = ["run-test-e2e", "--design-system"]
 }
 
 action "Test VRT: Design System" {
   needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./images/node/"
-  runs = ["run-test-vrt --design-system"]
+  runs = ["run-test-vrt", "--design-system"]
 }
 
 action "Build" {

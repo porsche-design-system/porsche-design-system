@@ -4,10 +4,10 @@
       <p-text class="tab" type="28" v-if="isStoryExistent('design')">
         <router-link class="link" to="#design">Design</router-link>
       </p-text>
-      <p-text class="tab" type="28" v-if="isStoryExistent('code')">
+      <p-text class="tab" type="28" v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')">
         <router-link class="link" to="#code">Code</router-link>
       </p-text>
-      <p-text class="tab" type="28" v-if="isStoryExistent('props')">
+      <p-text class="tab" type="28" v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')">
         <router-link class="link" to="#props">Props</router-link>
       </p-text>
     </nav>
@@ -20,7 +20,7 @@
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator';
   import {config} from '@/design-system.config';
-  import {decodeUrl} from '@/services/utils';
+  import {decodeUrl, featureToggle} from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
 
   @Component({
@@ -30,6 +30,7 @@
   })
   export default class Story extends Vue {
 
+    public featureToggle = featureToggle;
     private components: any[] = [];
 
     @Watch('$route')
