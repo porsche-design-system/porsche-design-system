@@ -4,7 +4,7 @@
 
 ### Without value
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <p-textarea name="some-name" label="Some label"></p-textarea>
   </template>
@@ -12,7 +12,7 @@
 
 ### With value
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <p-textarea name="some-name" value="Some value" label="Some label"></p-textarea>
   </template>
@@ -24,7 +24,7 @@
 
 #### Disabled
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-textarea name="some-name" label="Some label" disabled="true"></p-textarea>
     <p-textarea name="some-name" value="Some value" label="Some label" disabled="true"></p-textarea>
@@ -33,7 +33,7 @@
 
 #### Error
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-textarea name="some-name" label="Some label" error="true"></p-textarea>
     <p-textarea name="some-name" value="Some value" label="Some label" error="true"></p-textarea>
@@ -42,7 +42,7 @@
 
 #### Disabled + Error
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <template v-slot="slotProps">
     <p-textarea name="some-name" label="Some label" disabled="true" error="true"></p-textarea>
     <p-textarea name="some-name" value="Some value" label="Some label" disabled="true" error="true"></p-textarea>
@@ -57,7 +57,7 @@ Visualization of edge cases
 
 #### Long text
 
-<Playground :themeable="false">
+<Playground>
   <template v-slot="slotProps">
     <p-textarea name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."></p-textarea>
   </template>

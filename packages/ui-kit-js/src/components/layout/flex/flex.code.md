@@ -8,7 +8,7 @@ The Porsche UI Kit flex layout system is based on standard css flexbox browser b
 Initialize standard flexbox container to define flex context.
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -30,7 +30,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 ### Inline
 Flex inline displays flex containers in a row.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex flow="inline">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -52,7 +52,7 @@ Flex inline displays flex containers in a row.
 ### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex flow='{ "base": "block", "l": "inline" }'>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -81,7 +81,7 @@ Define or change direction of the flex items to rows or columns and set order.
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -97,7 +97,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Row reverse
 
-<Playground :themeable="false">
+<Playground>
   <p-flex direction="row-reverse">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -113,7 +113,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Column
 
-<Playground :themeable="false">
+<Playground>
   <p-flex direction="column">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -129,7 +129,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Column reverse
 
-<Playground :themeable="false">
+<Playground>
   <p-flex direction="column-reverse">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -146,7 +146,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex direction='{ "base": "column", "l": "row" }'>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -170,7 +170,7 @@ The flex wrap property is used to force flex items to stay in line independently
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -180,7 +180,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Wrap
 
-<Playground :themeable="false">
+<Playground>
   <p-flex wrap="wrap">
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -190,7 +190,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Wrap reverse
 
-<Playground :themeable="false">
+<Playground>
   <p-flex wrap="reverse">
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -201,8 +201,8 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false">
-  <p-flex wrap="'{ "base": "wrap", "l": "nowrap" }'">
+<Playground>
+  <p-flex wrap='{ "base": "wrap", "l": "nowrap" }'>
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
     </p-flex-item>
@@ -219,7 +219,7 @@ This property defines the alignment of flex items on the main axis in conjunctio
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -235,7 +235,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### End
 
-<Playground :themeable="false">
+<Playground>
   <p-flex justify-content="end">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -251,7 +251,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Center
 
-<Playground :themeable="false">
+<Playground>
   <p-flex justify-content="center">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -267,7 +267,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space between
 
-<Playground :themeable="false">
+<Playground>
   <p-flex justify-content="space-between">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -283,7 +283,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space around
 
-<Playground :themeable="false">
+<Playground>
   <p-flex justify-content="space-around">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -299,7 +299,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space evenly
 
-<Playground :themeable="false">
+<Playground>
   <p-flex justify-content="space-evenly">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -316,7 +316,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex justify-content='{ "base": "start", "l": "end" }'>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -340,7 +340,7 @@ This property defines the alignment of flex items on the cross axis in conjuncti
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -356,7 +356,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Start
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items="start">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -372,7 +372,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### End
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items="end">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -388,7 +388,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Center
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items="center">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -404,7 +404,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Baseline
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items="baseline">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -421,7 +421,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items='{ "base": "start", "l": "end" }'>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -446,7 +446,7 @@ This property has only effect when there is more than one line of flex items.
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap">
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -456,7 +456,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Start
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="start">
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -466,7 +466,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### End
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="end">
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -476,7 +476,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Center
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="center">
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -486,7 +486,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space between
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="space-between">
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -496,7 +496,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Space around
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="space-around">
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -507,7 +507,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content='{ "base": "start", "l": "end" }'>
     <p-flex-item v-for="n, index in 9" :key="index">
       <ExampleText>{{ n }}</ExampleText>
@@ -525,7 +525,7 @@ Use `gap` to apply equal horizontal spacing to all flex items of the container. 
 
 #### Static
 
-<Playground :themeable="false">
+<Playground>
   <p-flex gap="16">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -542,7 +542,7 @@ Use `gap` to apply equal horizontal spacing to all flex items of the container. 
 #### Responsive
 Responsive spacing have specific predefined values for each breakpoint which make them grow/shrink depending on the viewport width.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex gap="b">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -565,7 +565,7 @@ But it is also possible to define specific predefined widths.
 
 #### Specific
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'block-small'}">
   <p-flex>
     <p-flex-item width="one-quarter">
       <ExampleText>one-quarter</ExampleText>
@@ -625,8 +625,8 @@ But it is also possible to define specific predefined widths.
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false">
-  <p-flex wrap>
+<Playground>
+  <p-flex wrap="wrap">
     <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
       <ExampleText>1</ExampleText>
     </p-flex-item>
@@ -650,29 +650,29 @@ Items can have different offsets that work similar like column widths.
 
 #### Widths
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'block-small'}">
   <p-flex>
-    <p-flex-item offset={"one-quarter"} width={"three-quarters"}>
+    <p-flex-item offset="one-quarter" width="three-quarters">
       <ExampleText>Offset: quarter</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
-    <p-flex-item offset={"one-third"} width={"two-thirds"}>
+    <p-flex-item offset="one-third" width="two-thirds">
       <ExampleText>Offset: third</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
-    <p-flex-item offset={"half"} width={"half"}>
+    <p-flex-item offset="half" width="half">
       <ExampleText>Offset: half</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
-    <p-flex-item offset={"two-thirds"} width={"one-third"}>
+    <p-flex-item offset="two-thirds" width="one-third">
       <ExampleText>Offset: 2 thirds</ExampleText>
     </p-flex-item>
   </p-flex>
   <p-flex>
-    <p-flex-item offset={"three-quarters"} width={"one-quarter"}>
+    <p-flex-item offset="three-quarters" width="one-quarter">
       <ExampleText>Offset: 3 quarters</ExampleText>
     </p-flex-item>
   </p-flex>
@@ -681,7 +681,7 @@ Items can have different offsets that work similar like column widths.
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item offset='{ "base": "none", "l": "one-third" }'>
       <ExampleText>Responsive offset</ExampleText>
@@ -699,7 +699,7 @@ You can override the align items properties of the flex container for individual
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -718,7 +718,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Stretch
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items="start">
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -737,7 +737,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Start
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -756,7 +756,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### End
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -775,7 +775,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Center
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -794,7 +794,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Baseline
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
     <p-flex-item align-self="baseline">
       <ExampleText>1</ExampleText>
@@ -814,7 +814,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="false" childrenHeight="fixed">
+<Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -843,7 +843,7 @@ It handles how to grow an item based on the space that is left to fulfill the pa
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -856,7 +856,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Grow - 1
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item>
       <ExampleText>1</ExampleText>
@@ -879,7 +879,7 @@ It handles how to shrink an item based on the space that exceeds the parents wid
 
 If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item style="width: 80%">
       <ExampleText>1</ExampleText>
@@ -892,7 +892,7 @@ If using default property, no extra class/prop declaration is needed due to stan
 
 #### Shrink - 0
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item shrink="0" style="width: 80%">
       <ExampleText>1</ExampleText>
@@ -911,7 +911,7 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### Initial (grow:0, shrink:1 and base:auto)
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item flex="initial">
       <ExampleText>1 - short content</ExampleText>
@@ -927,7 +927,7 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### Auto (grow:1, shrink:1 and base:auto)
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item flex="auto">
       <ExampleText>1 - short content</ExampleText>
@@ -943,7 +943,7 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### Equal (grow:1, shrink:1 and base:0)
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item flex="equal">
       <ExampleText>1 - short content</ExampleText>
@@ -959,7 +959,7 @@ Setting shorthand properties for flex grow, shrink and base:
 
 #### None (grow:0, shrink:0 and base:auto)
 
-<Playground :themeable="false">
+<Playground>
   <p-flex>
     <p-flex-item flex="none">
       <ExampleText>1 - short content</ExampleText>

@@ -7,7 +7,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 ### Spacings visualized
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <div class="example-spacing-visual">
     <div class="p-spacing-pt--4 p-spacing-pr--4" />
   </div>
@@ -47,7 +47,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### All directions
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-m--40" />
   </div>
@@ -55,7 +55,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Top
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-mt--40" />
   </div>
@@ -63,7 +63,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Right
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-mr--40" />
   </div>
@@ -71,7 +71,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Bottom
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-mb--40" />
   </div>
@@ -79,7 +79,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Left
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-ml--40" />
   </div>
@@ -91,7 +91,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### All directions
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative">
     <div class="p-spacing-m-n--40" />
   </div>
@@ -99,7 +99,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Top
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative">
     <div class="p-spacing-m-nt--40" />
   </div>
@@ -107,7 +107,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Right
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative">
     <div class="p-spacing-m-nr--40" />
   </div>
@@ -115,7 +115,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Bottom
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative">
     <div class="p-spacing-m-nb--40" />
   </div>
@@ -123,7 +123,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Left
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative">
     <div class="p-spacing-m-nl--40" />
   </div>
@@ -135,7 +135,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### All directions
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-p--40"/>
   </div>
@@ -143,7 +143,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Top
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-pt--40"/>
   </div>
@@ -151,7 +151,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Right
 
-<Playground :themeable="false">
+<Playground>
 <div class="example-spacing">
   <div class="p-spacing-pr--40"/>
 </div>
@@ -159,7 +159,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Bottom
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-pb--40"/>
   </div>
@@ -167,7 +167,7 @@ Global CSS utility classes to add margins (positive and negative) and paddings t
 
 #### Left
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-pl--40"/>
   </div>
@@ -204,7 +204,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 ### Spacings visualized
 
-<Playground :themeable="false">
+<Playground :childElementLayout="{spacing: 'inline'}">
   <div class="example-spacing-visual">
     <div class="p-spacing-pt--a p-spacing-pr--a" />
   </div>
@@ -232,7 +232,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### All directions
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-m--d" />
   </div>
@@ -240,7 +240,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Top
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-mt--d" />
   </div>
@@ -248,7 +248,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Right
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-mr--d" />
   </div>
@@ -256,7 +256,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Bottom
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-mb--d" />
   </div>
@@ -264,7 +264,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Left
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-ml--d" />
   </div>
@@ -276,7 +276,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### All directions
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative-responsive">
     <div class="p-spacing-m-n--d" />
   </div>
@@ -284,7 +284,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Top
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative-responsive">
     <div class="p-spacing-m-nt--d" />
   </div>
@@ -292,7 +292,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Right
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative-responsive">
     <div class="p-spacing-m-nr--d" />
   </div>
@@ -300,7 +300,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Bottom
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative-responsive">
     <div class="p-spacing-m-nb--d" />
   </div>
@@ -308,7 +308,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Left
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing negative-responsive">
     <div class="p-spacing-m-nl--d" />
   </div>
@@ -320,7 +320,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### All directions
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-p--d"/>
   </div>
@@ -328,7 +328,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Top
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-pt--d"/>
   </div>
@@ -336,7 +336,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Right
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-pr--d"/>
   </div>
@@ -344,7 +344,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Bottom
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-pb--d"/>
   </div>
@@ -352,7 +352,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 
 #### Left
 
-<Playground :themeable="false">
+<Playground>
   <div class="example-spacing">
     <div class="p-spacing-pl--d"/>
   </div>

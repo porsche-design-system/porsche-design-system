@@ -5,7 +5,7 @@ Basic animated spinner to visualize loading states, e.g. page loading, form vali
 
 ### X-small
 
-<Playground>
+<Playground :themeable="true">
   <template v-slot="slotProps">
     <p-spinner size="x-small" :theme="slotProps.theme" />
   </template>
@@ -13,7 +13,7 @@ Basic animated spinner to visualize loading states, e.g. page loading, form vali
 
 ### Small
 
-<Playground>
+<Playground :themeable="true">
   <template v-slot="slotProps">
     <p-spinner size="small" :theme="slotProps.theme" />
   </template>
@@ -21,7 +21,7 @@ Basic animated spinner to visualize loading states, e.g. page loading, form vali
 
 ### Medium
 
-<Playground>
+<Playground :themeable="true">
   <template v-slot="slotProps">
     <p-spinner size="medium" :theme="slotProps.theme" />
   </template>
@@ -29,7 +29,7 @@ Basic animated spinner to visualize loading states, e.g. page loading, form vali
 
 ### Large
 
-<Playground>
+<Playground :themeable="true">
   <template v-slot="slotProps">
     <p-spinner size="large" :theme="slotProps.theme" />
   </template>
