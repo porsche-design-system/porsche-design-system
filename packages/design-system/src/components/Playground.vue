@@ -43,7 +43,7 @@ interface ChildElementLayout {
 @Component
 export default class Playground extends Vue {
   @Prop({ default: false }) public themeable!: boolean;
-  @Prop({ default: { height: 'auto', spacing: 'none' } }) public childElementLayout!: ChildElementLayout;
+  @Prop({ default: () => ({ height: 'auto', spacing: 'none' }) }) public childElementLayout!: ChildElementLayout;
 
   public theme: Theme = 'light';
 
