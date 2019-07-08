@@ -1,16 +1,39 @@
 {
   "name": "@porscheui/ui-kit-react",
-  "sideEffects": false,
   "version": "1.0.0-alpha.1",
+  "scope": "@porscheui",
   "description": "Porsche UI Kit – A Porsche React component library.",
+  "sideEffects": false,
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN https://ui.porsche.com",
+  "contributors": [
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Anna Krohmer <anna.krohmer@udg.de>",
+    "Oliver Hook <oliver.hook@mhp.com>",
+    "Olivia Pala <olivia.pala@udg.de>"
+  ],
+  "keywords": [
+    "porsche",
+    "ui",
+    "react-components",
+    "design-system"
+  ],
+  "homepage": "https://ui.porsche.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
   },
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+  },
+  "publishConfig": {
+    "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+  },
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "yarn clean && yarn compile",
     "clean": "rm -rf dist",
-    "compile": "npm run tsc",
+    "compile": "yarn tsc",
     "tsc": "tsc -p ."
   },
   "main": "./dist/index.js",
