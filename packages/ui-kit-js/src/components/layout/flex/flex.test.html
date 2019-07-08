@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-button-regular</title>
+  <link rel="stylesheet" href="../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <style type="text/css">
+    .playground {
+      padding: 1rem;
+      overflow: auto;
+    }
+
+    .playground ~ .playground {
+      border-top: 1px solid #f1f1f1;
+    }
+
+    .light {
+      background: #fff;
+    }
+
+    .dark {
+      background: #1a2023;
+    }
+
+    p-flex[align-items],
+    p-flex[align-content] {
+      height: 180px;
+    }
+
+    p-flex-item p {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 4px 80px;
+      box-sizing: border-box;
+      text-align: center;
+      color: #fff;
+    }
+
+    p-flex-item:nth-child(1n) p {
+      background-color: lightskyblue;
+    }
+
+    p-flex-item:nth-child(2n) p {
+      background-color: deepskyblue;
+    }
+
+    p-flex-item:nth-child(3n) p {
+      background-color: dodgerblue;
+    }
+
+    p-flex-item:nth-child(4n) p {
+      background-color: royalblue;
+    }
+  </style>
+</head>
+<body>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex flow="inline">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex flow="inline">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex flow='{ "base": "block", "l": "inline" }'>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex flow='{ "base": "block", "l": "inline" }'>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex direction="row-reverse">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex direction="column">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex direction="column-reverse">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex direction='{ "base": "column", "l": "row" }'>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="reverse">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap='{ "base": "wrap", "l": "nowrap" }'>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex justify-content="end">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex justify-content="center">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex justify-content="space-between">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex justify-content="space-around">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex justify-content="space-evenly">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex justify-content='{ "base": "start", "l": "end" }'>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items="start">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items="end">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items="center">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items="baseline">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items='{ "base": "start", "l": "end" }'>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap" align-content>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap" align-content="start">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap" align-content="end">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap" align-content="center">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap" align-content="space-between">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap" align-content="space-around">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap" align-content='{ "base": "start", "l": "end" }'>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>5</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>6</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>7</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>8</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>9</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex gap="16">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex gap="b">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item width="one-quarter">
+      <p>one-quarter</p>
+    </p-flex-item>
+    <p-flex-item width="one-quarter">
+      <p>one-quarter</p>
+    </p-flex-item>
+    <p-flex-item width="one-quarter">
+      <p>one-quarter</p>
+    </p-flex-item>
+    <p-flex-item width="one-quarter">
+      <p>one-quarter</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item width="one-third">
+      <p>one-third</p>
+    </p-flex-item>
+    <p-flex-item width="one-third">
+      <p>one-third</p>
+    </p-flex-item>
+    <p-flex-item width="one-third">
+      <p>one-third</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item width="half">
+      <p>half</p>
+    </p-flex-item>
+    <p-flex-item width="half">
+      <p>half</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item width="two-thirds">
+      <p>two-thirds</p>
+    </p-flex-item>
+    <p-flex-item width="one-third">
+      <p>one-third</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item width="three-quarters">
+      <p>three-quarters</p>
+    </p-flex-item>
+    <p-flex-item width="one-quarter">
+      <p>one-quarter</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item width="full">
+      <p>full</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex wrap="wrap">
+    <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
+      <p>4</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item offset="one-quarter" width="three-quarters">
+      <p>Offset: quarter</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item offset="one-third" width="two-thirds">
+      <p>Offset: third</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item offset="half" width="half">
+      <p>Offset: half</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item offset="two-thirds" width="one-third">
+      <p>Offset: 2 thirds</p>
+    </p-flex-item>
+  </p-flex>
+  <p-flex>
+    <p-flex-item offset="three-quarters" width="one-quarter">
+      <p>Offset: 3 quarters</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item offset='{ "base": "none", "l": "one-third" }'>
+      <p>Responsive offset</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items="start">
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item align-self="stretch">
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item align-self="start">
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item align-self="end">
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item align-self="center">
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item align-self="baseline">
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex align-items>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+    <p-flex-item align-self='{ "base": "start", "l": "end" }'>
+      <p>3</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>4</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item>
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item>
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item grow="1">
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item style="width: 80%;">
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item style="width: 80%;">
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item shrink="0" style="width: 80%;">
+      <p>1</p>
+    </p-flex-item>
+    <p-flex-item style="width: 80%;">
+      <p>2</p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item flex="initial">
+      <p>
+        1 - short content
+      </p>
+    </p-flex-item>
+    <p-flex-item flex="initial">
+      <p>
+        2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+      </p>
+    </p-flex-item>
+    <p-flex-item flex="initial">
+      <p>
+        3 - short content
+      </p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item flex="auto">
+      <p>
+        1 - short content
+      </p>
+    </p-flex-item>
+    <p-flex-item flex="auto">
+      <p>
+        2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+      </p>
+    </p-flex-item>
+    <p-flex-item flex="auto">
+      <p>
+        3 - short content
+      </p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item flex="equal">
+      <p>
+        1 - short content
+      </p>
+    </p-flex-item>
+    <p-flex-item flex="equal">
+      <p>
+        2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+      </p>
+    </p-flex-item>
+    <p-flex-item flex="equal">
+      <p>
+        3 - short content
+      </p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+<div class="playground light">
+  <p-flex>
+    <p-flex-item flex="none">
+      <p>
+        1 - short content
+      </p>
+    </p-flex-item>
+    <p-flex-item flex="none">
+      <p>
+        2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
+      </p>
+    </p-flex-item>
+    <p-flex-item flex="none">
+      <p>
+        3 - short content
+      </p>
+    </p-flex-item>
+  </p-flex>
+</div>
+
+</body>
+</html>
