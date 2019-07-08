@@ -1,20 +1,22 @@
-// copytext
+@import "../variable/index";
+
+// copy text
 @mixin p-text-copy {
   font-family: $p-font-primary;
   font-weight: 400;
-  font-size: $p-text-size-16;
+  font-size: $p-font-size-16;
   line-height: 1.5;
 }
 
 @mixin p-text-small {
   font-family: $p-font-primary;
   font-weight: 400;
-  font-size: $p-text-size-12;
+  font-size: $p-font-size-12;
   line-height: 1.666;
 }
 
 // generic text
-@mixin p-text-generic($weight: 400, $size: $p-text-size-16) {
+@mixin p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-16) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: $size;
