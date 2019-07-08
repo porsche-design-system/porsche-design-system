@@ -1198,10 +1198,10 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@stencil/core@^1.1.3":
-  version "1.1.4"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.1.4.tgz#123ac47b15df86f2edb7aa8faa663e2ca0ef2f80"
-  integrity sha1-EjrEexXfhvLtt6qPqmY+LKDvL4A=
+"@stencil/core@^1.1.5":
+  version "1.1.5"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.1.5.tgz#ae1823c3eeeb0a201049c8b0d77342a38d2e4c67"
+  integrity sha1-rhgjw+7rCiAQSciw13NCo40uTGc=
   dependencies:
     typescript "3.5.2"
 
@@ -1442,10 +1442,10 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-app@^3.9.0":
-  version "3.9.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/babel-preset-app/-/babel-preset-app-3.9.0.tgz#2dc32a40baf41ea4af8170dad177e2d2d109e899"
-  integrity sha1-LcMqQLr0HqSvgXDa0Xfi0tEJ6Jk=
+"@vue/babel-preset-app@^3.9.2":
+  version "3.9.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/babel-preset-app/-/babel-preset-app-3.9.2.tgz#b72a9b06abbe3f8f272783be13951271277be338"
+  integrity sha1-tyqbBqu+P48nJ4O+E5UScSd74zg=
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
@@ -1513,13 +1513,13 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/cli-overlay/-/cli-overlay-3.9.0.tgz#11f513d1fa11b0135fb8ba8b88d228df0dc542e0"
   integrity sha1-EfUT0foRsBNfuLqLiNIo3w3FQuA=
 
-"@vue/cli-plugin-babel@^3.8.0":
-  version "3.9.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/cli-plugin-babel/-/cli-plugin-babel-3.9.0.tgz#f73da1593463eaa3fea850604ed7846bf1a6761d"
-  integrity sha1-9z2hWTRj6qP+qFBgTteEa/Gmdh0=
+"@vue/cli-plugin-babel@^3.9.2":
+  version "3.9.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/cli-plugin-babel/-/cli-plugin-babel-3.9.2.tgz#8ff962a383aaeafd2b280998428a57ea23e9539c"
+  integrity sha1-j/lio4Oq6v0rKAmYQopX6iPpU5w=
   dependencies:
     "@babel/core" "^7.0.0"
-    "@vue/babel-preset-app" "^3.9.0"
+    "@vue/babel-preset-app" "^3.9.2"
     "@vue/cli-shared-utils" "^3.9.0"
     babel-loader "^8.0.5"
     webpack ">=4 < 4.29"
@@ -1561,10 +1561,10 @@
     jest-watch-typeahead "0.2.1"
     vue-jest "^3.0.4"
 
-"@vue/cli-service@^3.8.3":
-  version "3.9.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/cli-service/-/cli-service-3.9.0.tgz#e62b4489d90ba7bd5f4efc8edf1cde3676440578"
-  integrity sha1-5itEidkLp71fTvyO3xzeNnZEBXg=
+"@vue/cli-service@^3.9.2":
+  version "3.9.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/cli-service/-/cli-service-3.9.2.tgz#59c95500f1f20ab1cd1905c28f6c3b17c04d6de8"
+  integrity sha1-WclVAPHyCrHNGQXCj2w7F8BNbeg=
   dependencies:
     "@intervolga/optimize-cssnano-plugin" "^1.0.5"
     "@soda/friendly-errors-webpack-plugin" "^1.7.1"
@@ -2196,7 +2196,7 @@ atob@^2.1.1:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
 
-autoprefixer@^9.5.1, autoprefixer@^9.6.0:
+autoprefixer@^9.5.1:
   version "9.6.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/autoprefixer/-/autoprefixer-9.6.0.tgz#0111c6bde2ad20c6f17995a33fad7cf6854b4c87"
   integrity sha1-ARHGveKtIMbxeZWjP6189oVLTIc=
@@ -2208,6 +2208,19 @@ autoprefixer@^9.5.1, autoprefixer@^9.6.0:
     num2fraction "^1.2.2"
     postcss "^7.0.16"
     postcss-value-parser "^3.3.1"
+
+autoprefixer@^9.6.1:
+  version "9.6.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/autoprefixer/-/autoprefixer-9.6.1.tgz#51967a02d2d2300bb01866c1611ec8348d355a47"
+  integrity sha1-UZZ6AtLSMAuwGGbBYR7INI01Wkc=
+  dependencies:
+    browserslist "^4.6.3"
+    caniuse-lite "^1.0.30000980"
+    chalk "^2.4.2"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^7.0.17"
+    postcss-value-parser "^4.0.0"
 
 aws-sign2@~0.7.0:
   version "0.7.0"
@@ -2720,7 +2733,7 @@ browserify-zlib@^0.2.0:
   dependencies:
     pako "~1.0.5"
 
-browserslist@^4.0.0, browserslist@^4.3.4, browserslist@^4.5.4, browserslist@^4.6.1:
+browserslist@^4.0.0, browserslist@^4.3.4, browserslist@^4.5.4, browserslist@^4.6.1, browserslist@^4.6.3:
   version "4.6.3"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/browserslist/-/browserslist-4.6.3.tgz#0530cbc6ab0c1f3fc8c819c72377ba55cf647f05"
   integrity sha1-BTDLxqsMHz/IyBnHI3e6Vc9kfwU=
@@ -2965,6 +2978,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000971, caniuse-lite@^1.0.30000975:
   version "1.0.30000979"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30000979.tgz#92f16d00186a6cf20d6c5711bb6e042a3d667029"
   integrity sha1-kvFtABhqbPINbFcRu24EKj1mcCk=
+
+caniuse-lite@^1.0.30000980:
+  version "1.0.30000981"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30000981.tgz#5b6828803362363e5a1deba2eb550185cf6cec8f"
+  integrity sha1-W2gogDNiNj5aHeui61UBhc9s7I8=
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -9822,7 +9840,7 @@ postcss-value-parser@^4.0.0:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/postcss-value-parser/-/postcss-value-parser-4.0.0.tgz#99a983d365f7b2ad8d0f9b8c3094926eab4b936d"
   integrity sha1-mamD02X3sq2ND5uMMJSSbqtLk20=
 
-postcss@7.x.x, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.2, postcss@^7.0.5, postcss@^7.0.7, postcss@~7.0.17:
+postcss@7.x.x, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.5, postcss@^7.0.7, postcss@~7.0.17:
   version "7.0.17"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/postcss/-/postcss-7.0.17.tgz#4da1bdff5322d4a0acaab4d87f3e782436bad31f"
   integrity sha1-TaG9/1Mi1KCsqrTYfz54JDa60x8=
