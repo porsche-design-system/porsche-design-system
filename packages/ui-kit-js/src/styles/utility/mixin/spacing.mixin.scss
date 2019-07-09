@@ -1,354 +1,497 @@
-@import "../variable/index";
-@import "./breakpoint.mixin";
+@import '../variable/index';
+@import './breakpoint.mixin';
 
 /*
 * responsive spacing
 */
-@mixin p-spacing-a($type: "margin", $direction: "top", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-a;
+@mixin p-spacing-a($type: 'margin', $direction: 'top', $sign: '+') {
+  $spacing-value: $p-spacing-a;
+  @if #{$sign} == '-' {
+    $spacing-value: -$p-spacing-a;
+  }
+
+  @if ($direction) == '' or null {
+    #{$type}: $spacing-value;
   } @else {
     #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-a;
+      #{$direction}: $spacing-value;
     }
   }
 
-  @include breakpoint("s") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-a-s;
+  @include breakpoint('s') {
+    $spacing-value: $p-spacing-a-s;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-a-s;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-a-s;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("m") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-a-m;
+  @include breakpoint('m') {
+    $spacing-value: $p-spacing-a-m;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-a-m;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-a-m;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("l") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-a-l;
+  @include breakpoint('l') {
+    $spacing-value: $p-spacing-a-l;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-a-l;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-a-l;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("xl") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-a-xl;
+  @include breakpoint('xl') {
+    $spacing-value: $p-spacing-a-xl;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-a-xl;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-a-xl;
+        #{$direction}: $spacing-value;
       }
     }
   }
 }
 
-@mixin p-spacing-b($type: "margin", $direction: "top", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-b;
+@mixin p-spacing-b($type: 'margin', $direction: 'top', $sign: '+') {
+  $spacing-value: $p-spacing-b;
+  @if #{$sign} == '-' {
+    $spacing-value: -$p-spacing-b;
+  }
+
+  @if ($direction) {
+    #{$type}: $spacing-value;
   } @else {
     #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-b;
+      #{$direction}: $spacing-value;
     }
   }
 
-  @include breakpoint("s") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-b-s;
+  @include breakpoint('s') {
+    $spacing-value: $p-spacing-b-s;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-b-s;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-b-s;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("m") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-b-m;
+  @include breakpoint('m') {
+    $spacing-value: $p-spacing-b-m;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-b-m;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-b-m;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("l") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-b-l;
+  @include breakpoint('l') {
+    $spacing-value: $p-spacing-b-l;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-b-l;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-b-l;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("xl") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-b-xl;
+  @include breakpoint('xl') {
+    $spacing-value: $p-spacing-b-xl;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-b-xl;
+    }
+    @if ($direction) {
+      #{$type}: -$spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-b-xl;
+        #{$direction}: -$spacing-value;
       }
     }
   }
 }
 
-@mixin p-spacing-c($type: "margin", $direction: "top", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-c;
+@mixin p-spacing-c($type: 'margin', $direction: 'top', $sign: '+') {
+  $spacing-value: $p-spacing-c;
+  @if #{$sign} == '-' {
+    $spacing-value: -$p-spacing-c;
+  }
+  @if ($direction) {
+    #{$type}: $spacing-value;
   } @else {
     #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-c;
+      #{$direction}: $spacing-value;
     }
   }
 
-  @include breakpoint("s") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-c-s;
+  @include breakpoint('s') {
+    $spacing-value: $p-spacing-c-s;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-c-s;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-c-s;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("m") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-c-m;
+  @include breakpoint('m') {
+    $spacing-value: $p-spacing-c-m;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-c-m;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-c-m;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("l") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-c-l;
+  @include breakpoint('l') {
+    $spacing-value: $p-spacing-c-l;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-c-l;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-c-l;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("xl") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-c-xl;
+  @include breakpoint('xl') {
+    $spacing-value: $p-spacing-c-xl;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-c-xl;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-c-xl;
+        #{$direction}: $spacing-value;
       }
     }
   }
 }
 
-@mixin p-spacing-d($type: "margin", $direction: "top", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-d;
+@mixin p-spacing-d($type: 'margin', $direction: 'top', $sign: '+') {
+  $spacing-value: $p-spacing-d;
+  @if #{$sign} == '-' {
+    $spacing-value: -$p-spacing-d;
+  }
+
+  @if ($direction) {
+    #{$type}: $spacing-value;
   } @else {
     #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-d;
+      #{$direction}: $spacing-value;
     }
   }
 
-  @include breakpoint("s") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-d-s;
+  @include breakpoint('s') {
+    $spacing-value: $p-spacing-d-s;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-d-s;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-d-s;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("m") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-d-m;
+  @include breakpoint('m') {
+    $spacing-value: $p-spacing-d-m;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-d-m;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-d-m;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("l") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-d-l;
+  @include breakpoint('l') {
+    $spacing-value: $p-spacing-d-l;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-d-l;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-d-l;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("xl") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-d-xl;
+  @include breakpoint('xl') {
+    $spacing-value: $p-spacing-d-xl;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-d-xl;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-d-xl;
+        #{$direction}: $spacing-value;
       }
     }
   }
 }
 
-@mixin p-spacing-e($type: "margin", $direction: "top", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-e;
+@mixin p-spacing-e($type: 'margin', $direction: 'top', $sign: '+') {
+  $spacing-value: $p-spacing-e;
+  @if #{$sign} == '-' {
+    $spacing-value: -$p-spacing-e;
+  }
+  @if ($direction) {
+    #{$type}: $spacing-value;
   } @else {
     #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-e;
+      #{$direction}: $spacing-value;
     }
   }
 
-  @include breakpoint("s") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-e-s;
+  @include breakpoint('s') {
+    $spacing-value: $p-spacing-e-s;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-e-s;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-e-s;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("m") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-e-m;
+  @include breakpoint('m') {
+    $spacing-value: $p-spacing-e-m;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-e-m;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-e-m;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("l") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-e-l;
+  @include breakpoint('l') {
+    $spacing-value: $p-spacing-e-l;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-e-l;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-e-l;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("xl") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-e-xl;
+  @include breakpoint('xl') {
+    $spacing-value: $p-spacing-e-xl;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-e-xl;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-e-xl;
+        #{$direction}: $spacing-value;
       }
     }
   }
 }
 
-@mixin p-spacing-f($type: "margin", $direction: "top", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-f;
+@mixin p-spacing-f($type: 'margin', $direction: 'top', $sign: '+') {
+  $spacing-value: $p-spacing-f;
+  @if #{$sign} == '-' {
+    $spacing-value: -$p-spacing-f;
+  }
+  @if ($direction) {
+    #{$type}: $spacing-value;
   } @else {
     #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-f;
+      #{$direction}: $spacing-value;
     }
   }
 
-  @include breakpoint("s") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-f-s;
+  @include breakpoint('s') {
+    $spacing-value: $p-spacing-f-s;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-f-s;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-f-s;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("m") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-f-m;
+  @include breakpoint('m') {
+    $spacing-value: $p-spacing-f-m;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-f-m;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-f-m;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("l") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-f-l;
+  @include breakpoint('l') {
+    $spacing-value: $p-spacing-f-l;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-f-l;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-f-l;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("xl") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-f-xl;
+  @include breakpoint('xl') {
+    $spacing-value: $p-spacing-f-xl;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-f-xl;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-f-xl;
+        #{$direction}: $spacing-value;
       }
     }
   }
 }
 
-@mixin p-spacing-g($type: "margin", $direction: "top", $sign: "+") {
-  @if $direction == "" {
-    #{$type}: #{$sign}$p-spacing-g;
+@mixin p-spacing-g($type: 'margin', $direction: 'top', $sign: '+') {
+  $spacing-value: $p-spacing-g;
+  @if #{$sign} == '-' {
+    $spacing-value: -$p-spacing-g;
+  }
+  @if ($direction) {
+    #{$type}: $spacing-value;
   } @else {
     #{$type}: {
-      #{$direction}: #{$sign}$p-spacing-g;
+      #{$direction}: $spacing-value;
     }
   }
 
-  @include breakpoint("s") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-g-s;
+  @include breakpoint('s') {
+    $spacing-value: $p-spacing-g-s;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-g-s;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-g-s;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("m") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-g-m;
+  @include breakpoint('m') {
+    $spacing-value: $p-spacing-g-m;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-g-m;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-g-m;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("l") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-g-l;
+  @include breakpoint('l') {
+    $spacing-value: $p-spacing-g-l;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-g-l;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-g-l;
+        #{$direction}: $spacing-value;
       }
     }
   }
 
-  @include breakpoint("xl") {
-    @if $direction == "" {
-      #{$type}: #{$sign}$p-spacing-g-xl;
+  @include breakpoint('xl') {
+    $spacing-value: $p-spacing-g-xl;
+    @if #{$sign} == '-' {
+      $spacing-value: -$p-spacing-g-xl;
+    }
+    @if ($direction) {
+      #{$type}: $spacing-value;
     } @else {
       #{$type}: {
-        #{$direction}: #{$sign}$p-spacing-g-xl;
+        #{$direction}: $spacing-value;
       }
     }
   }
