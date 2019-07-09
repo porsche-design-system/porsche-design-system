@@ -50,7 +50,7 @@
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "echo 'stencil test --spec coming soon'",
     "test:e2e": "echo 'stencil test --e2e coming soon'",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 30000 http-get://localhost:61422 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61422 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf ./node_modules & rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www"
   },
   "devDependencies": {
