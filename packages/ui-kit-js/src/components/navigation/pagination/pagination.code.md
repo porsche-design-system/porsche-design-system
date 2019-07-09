@@ -45,9 +45,9 @@ Test pagination behaviour by changing values for total amount of items, items to
 
 <Playground :themeable="true">
   <template v-slot="slotProps">
-    <p-input class="p-spacing-mr--16 p-spacing-mb--24" label="Total items count" type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"></p-input>
-    <p-input class="p-spacing-mr--16 p-spacing-mb--24" label="Items per page" type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"></p-input>
-    <p-input class="p-spacing-mb--24" label="Active page" type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"></p-input>
+    <p-input class="p-spacing-mr-16 p-spacing-mb-24" label="Total items count" type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"></p-input>
+    <p-input class="p-spacing-mr-16 p-spacing-mb-24" label="Items per page" type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"></p-input>
+    <p-input class="p-spacing-mb-24" label="Active page" type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"></p-input>
     <p-pagination :theme="slotProps.theme" :total-items-count="totalItemsCount" :items-per-page="itemsPerPage" :active-page="activePage"></p-pagination>
   </template>
 </Playground>

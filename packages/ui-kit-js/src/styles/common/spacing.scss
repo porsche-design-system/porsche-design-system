@@ -1,21 +1,21 @@
-@import "../utility/index";
+@import '../utility/index';
 
 /**
  * static spacings vars for iterating SASS function
  */
 $p-spacings: (
-  "0": 0,
-  "4": $p-spacing-4,
-  "8": $p-spacing-8,
-  "16": $p-spacing-16,
-  "24": $p-spacing-24,
-  "32": $p-spacing-32,
-  "40": $p-spacing-40,
-  "48": $p-spacing-48,
-  "56": $p-spacing-56,
-  "64": $p-spacing-64,
-  "72": $p-spacing-72,
-  "80": $p-spacing-80
+  '0': 0,
+  '4': $p-spacing-4,
+  '8': $p-spacing-8,
+  '16': $p-spacing-16,
+  '24': $p-spacing-24,
+  '32': $p-spacing-32,
+  '40': $p-spacing-40,
+  '48': $p-spacing-48,
+  '56': $p-spacing-56,
+  '64': $p-spacing-64,
+  '72': $p-spacing-72,
+  '80': $p-spacing-80
 );
 
 /*
@@ -23,52 +23,52 @@ $p-spacings: (
  */
 .#{$p-global-class-prefix}spacing-m {
   @each $name, $spacing in $p-spacings {
-    &--#{$name} {
+    &-#{$name} {
       margin: $spacing;
     }
 
-    &t--#{$name} {
+    &t-#{$name} {
       margin-top: $spacing;
     }
 
-    &r--#{$name} {
+    &r-#{$name} {
       margin-right: $spacing;
     }
 
-    &b--#{$name} {
+    &b-#{$name} {
       margin-bottom: $spacing;
     }
 
-    &l--#{$name} {
+    &l-#{$name} {
       margin-left: $spacing;
     }
   }
 
-  &--0 {
+  &-0 {
     @include generate-major-breakpoints() {
       margin: 0;
     }
   }
 
-  &t--0 {
+  &t-0 {
     @include generate-major-breakpoints() {
       margin-top: 0;
     }
   }
 
-  &r--0 {
+  &r-0 {
     @include generate-major-breakpoints() {
       margin-right: 0;
     }
   }
 
-  &b--0 {
+  &b-0 {
     @include generate-major-breakpoints() {
       margin-bottom: 0;
     }
   }
 
-  &l--0 {
+  &l-0 {
     @include generate-major-breakpoints() {
       margin-left: 0;
     }
@@ -77,163 +77,163 @@ $p-spacings: (
   /*
    * responsive margin spacings
    */
-  &t--a {
-    @include p-spacing-a("margin", "top", "");
+  &t-a {
+    @include p-spacing-a('margin', 'top', '');
   }
 
-  &r--a {
-    @include p-spacing-a("margin", "right", "");
+  &r-a {
+    @include p-spacing-a('margin', 'right', '');
   }
 
-  &b--a {
-    @include p-spacing-a("margin", "bottom", "");
+  &b-a {
+    @include p-spacing-a('margin', 'bottom', '');
   }
 
-  &l--a {
-    @include p-spacing-a("margin", "left", "");
+  &l-a {
+    @include p-spacing-a('margin', 'left', '');
   }
 
-  &--a {
-    @include p-spacing-a("margin", "", "");
+  &-a {
+    @include p-spacing-a('margin', '', '');
   }
 
-  &t--b {
-    @include p-spacing-b("margin", "top", "");
+  &t-b {
+    @include p-spacing-b('margin', 'top', '');
   }
 
-  &r--b {
-    @include p-spacing-b("margin", "right", "");
+  &r-b {
+    @include p-spacing-b('margin', 'right', '');
   }
 
-  &b--b {
-    @include p-spacing-b("margin", "bottom", "");
+  &b-b {
+    @include p-spacing-b('margin', 'bottom', '');
   }
 
-  &l--b {
-    @include p-spacing-b("margin", "left", "");
+  &l-b {
+    @include p-spacing-b('margin', 'left', '');
   }
 
-  &--b {
-    @include p-spacing-b("margin", "", "");
+  &-b {
+    @include p-spacing-b('margin', '', '');
   }
 
-  &t--c {
-    @include p-spacing-c("margin", "top", "");
+  &t-c {
+    @include p-spacing-c('margin', 'top', '');
   }
 
-  &r--c {
-    @include p-spacing-c("margin", "right", "");
+  &r-c {
+    @include p-spacing-c('margin', 'right', '');
   }
 
-  &b--c {
-    @include p-spacing-c("margin", "bottom", "");
+  &b-c {
+    @include p-spacing-c('margin', 'bottom', '');
   }
 
-  &l--c {
-    @include p-spacing-c("margin", "left", "");
+  &l-c {
+    @include p-spacing-c('margin', 'left', '');
   }
 
-  &--c {
-    @include p-spacing-c("margin", "", "");
+  &-c {
+    @include p-spacing-c('margin', '', '');
   }
 
-  &t--d {
-    @include p-spacing-d("margin", "top", "");
+  &t-d {
+    @include p-spacing-d('margin', 'top', '');
   }
 
-  &r--d {
-    @include p-spacing-d("margin", "right", "");
+  &r-d {
+    @include p-spacing-d('margin', 'right', '');
   }
 
-  &b--d {
-    @include p-spacing-d("margin", "bottom", "");
+  &b-d {
+    @include p-spacing-d('margin', 'bottom', '');
   }
 
-  &l--d {
-    @include p-spacing-d("margin", "left", "");
+  &l-d {
+    @include p-spacing-d('margin', 'left', '');
   }
 
-  &--d {
-    @include p-spacing-d("margin", "", "");
+  &-d {
+    @include p-spacing-d('margin', '', '');
   }
 
-  &t--e {
-    @include p-spacing-e("margin", "top", "");
+  &t-e {
+    @include p-spacing-e('margin', 'top', '');
   }
 
-  &r--e {
-    @include p-spacing-e("margin", "right", "");
+  &r-e {
+    @include p-spacing-e('margin', 'right', '');
   }
 
-  &b--e {
-    @include p-spacing-e("margin", "bottom", "");
+  &b-e {
+    @include p-spacing-e('margin', 'bottom', '');
   }
 
-  &l--e {
-    @include p-spacing-e("margin", "left", "");
+  &l-e {
+    @include p-spacing-e('margin', 'left', '');
   }
 
-  &--e {
-    @include p-spacing-e("margin", "", "");
+  &-e {
+    @include p-spacing-e('margin', '', '');
   }
 
-  &t--f {
-    @include p-spacing-f("margin", "top", "");
+  &t-f {
+    @include p-spacing-f('margin', 'top', '');
   }
 
-  &r--f {
-    @include p-spacing-f("margin", "right", "");
+  &r-f {
+    @include p-spacing-f('margin', 'right', '');
   }
 
-  &b--f {
-    @include p-spacing-f("margin", "bottom", "");
+  &b-f {
+    @include p-spacing-f('margin', 'bottom', '');
   }
 
-  &l--f {
-    @include p-spacing-f("margin", "left", "");
+  &l-f {
+    @include p-spacing-f('margin', 'left', '');
   }
 
-  &--f {
-    @include p-spacing-f("margin", "", "");
+  &-f {
+    @include p-spacing-f('margin', '', '');
   }
 
-  &t--g {
-    @include p-spacing-g("margin", "top", "");
+  &t-g {
+    @include p-spacing-g('margin', 'top', '');
   }
 
-  &r--g {
-    @include p-spacing-g("margin", "right", "");
+  &r-g {
+    @include p-spacing-g('margin', 'right', '');
   }
 
-  &b--g {
-    @include p-spacing-g("margin", "bottom", "");
+  &b-g {
+    @include p-spacing-g('margin', 'bottom', '');
   }
 
-  &l--g {
-    @include p-spacing-g("margin", "left", "");
+  &l-g {
+    @include p-spacing-g('margin', 'left', '');
   }
 
-  &--g {
-    @include p-spacing-g("margin", "", "");
+  &-g {
+    @include p-spacing-g('margin', '', '');
   }
 
-  &t--auto {
+  &t-auto {
     margin-top: auto;
   }
 
-  &l--auto {
+  &l-auto {
     margin-left: auto;
   }
 
-  &b--auto {
+  &b-auto {
     margin-bottom: auto;
   }
 
-  &r--auto {
+  &r-auto {
     margin-right: auto;
   }
 
-  &--auto {
+  &-auto {
     margin: auto;
   }
 }
@@ -243,52 +243,52 @@ $p-spacings: (
  */
 .#{$p-global-class-prefix}spacing-m-n {
   @each $name, $spacing in $p-spacings {
-    &--#{$name} {
+    &-#{$name} {
       margin: -$spacing;
     }
 
-    &t--#{$name} {
+    &t-#{$name} {
       margin-top: -$spacing;
     }
 
-    &r--#{$name} {
+    &r-#{$name} {
       margin-right: -$spacing;
     }
 
-    &b--#{$name} {
+    &b-#{$name} {
       margin-bottom: -$spacing;
     }
 
-    &l--#{$name} {
+    &l-#{$name} {
       margin-left: -$spacing;
     }
   }
 
-  &--0 {
+  &-0 {
     @include generate-major-breakpoints() {
       margin: 0;
     }
   }
 
-  &t--0 {
+  &t-0 {
     @include generate-major-breakpoints() {
       margin-top: 0;
     }
   }
 
-  &r--0 {
+  &r-0 {
     @include generate-major-breakpoints() {
       margin-right: 0;
     }
   }
 
-  &b--0 {
+  &b-0 {
     @include generate-major-breakpoints() {
       margin-bottom: 0;
     }
   }
 
-  &l--0 {
+  &l-0 {
     @include generate-major-breakpoints() {
       margin-top: 0;
     }
@@ -297,144 +297,144 @@ $p-spacings: (
   /*
    * negative responsive margin spacings
    */
-  &t--a {
-    @include p-spacing-a("margin", "top", "-");
+  &t-a {
+    @include p-spacing-a('margin', 'top', '-');
   }
 
-  &r--a {
-    @include p-spacing-a("margin", "right", "-");
+  &r-a {
+    @include p-spacing-a('margin', 'right', '-');
   }
 
-  &b--a {
-    @include p-spacing-a("margin", "bottom", "-");
+  &b-a {
+    @include p-spacing-a('margin', 'bottom', '-');
   }
 
-  &l--a {
-    @include p-spacing-a("margin", "left", "-");
+  &l-a {
+    @include p-spacing-a('margin', 'left', '-');
   }
 
-  &--a {
-    @include p-spacing-a("margin", "", "-");
+  &-a {
+    @include p-spacing-a('margin', '', '-');
   }
 
-  &t--b {
-    @include p-spacing-b("margin", "top", "-");
+  &t-b {
+    @include p-spacing-b('margin', 'top', '-');
   }
 
-  &r--b {
-    @include p-spacing-b("margin", "right", "-");
+  &r-b {
+    @include p-spacing-b('margin', 'right', '-');
   }
 
-  &b--b {
-    @include p-spacing-b("margin", "bottom", "-");
+  &b-b {
+    @include p-spacing-b('margin', 'bottom', '-');
   }
 
-  &l--b {
-    @include p-spacing-b("margin", "left", "-");
+  &l-b {
+    @include p-spacing-b('margin', 'left', '-');
   }
 
-  &--b {
-    @include p-spacing-b("margin", "", "-");
+  &-b {
+    @include p-spacing-b('margin', '', '-');
   }
 
-  &t--c {
-    @include p-spacing-c("margin", "top", "-");
+  &t-c {
+    @include p-spacing-c('margin', 'top', '-');
   }
 
-  &r--c {
-    @include p-spacing-c("margin", "right", "-");
+  &r-c {
+    @include p-spacing-c('margin', 'right', '-');
   }
 
-  &b--c {
-    @include p-spacing-c("margin", "bottom", "-");
+  &b-c {
+    @include p-spacing-c('margin', 'bottom', '-');
   }
 
-  &l--c {
-    @include p-spacing-c("margin", "left", "-");
+  &l-c {
+    @include p-spacing-c('margin', 'left', '-');
   }
 
-  &--c {
-    @include p-spacing-c("margin", "", "-");
+  &-c {
+    @include p-spacing-c('margin', '', '-');
   }
 
-  &t--d {
-    @include p-spacing-d("margin", "top", "-");
+  &t-d {
+    @include p-spacing-d('margin', 'top', '-');
   }
 
-  &r--d {
-    @include p-spacing-d("margin", "right", "-");
+  &r-d {
+    @include p-spacing-d('margin', 'right', '-');
   }
 
-  &b--d {
-    @include p-spacing-d("margin", "bottom", "-");
+  &b-d {
+    @include p-spacing-d('margin', 'bottom', '-');
   }
 
-  &l--d {
-    @include p-spacing-d("margin", "left", "-");
+  &l-d {
+    @include p-spacing-d('margin', 'left', '-');
   }
 
-  &--d {
-    @include p-spacing-d("margin", "", "-");
+  &-d {
+    @include p-spacing-d('margin', '', '-');
   }
 
-  &t--e {
-    @include p-spacing-e("margin", "top", "-");
+  &t-e {
+    @include p-spacing-e('margin', 'top', '-');
   }
 
-  &r--e {
-    @include p-spacing-e("margin", "right", "-");
+  &r-e {
+    @include p-spacing-e('margin', 'right', '-');
   }
 
-  &b--e {
-    @include p-spacing-e("margin", "bottom", "-");
+  &b-e {
+    @include p-spacing-e('margin', 'bottom', '-');
   }
 
-  &l--e {
-    @include p-spacing-e("margin", "left", "-");
+  &l-e {
+    @include p-spacing-e('margin', 'left', '-');
   }
 
-  &--e {
-    @include p-spacing-e("margin", "", "-");
+  &-e {
+    @include p-spacing-e('margin', '', '-');
   }
 
-  &t--f {
-    @include p-spacing-f("margin", "top", "-");
+  &t-f {
+    @include p-spacing-f('margin', 'top', '-');
   }
 
-  &r--f {
-    @include p-spacing-f("margin", "right", "-");
+  &r-f {
+    @include p-spacing-f('margin', 'right', '-');
   }
 
-  &b--f {
-    @include p-spacing-f("margin", "bottom", "-");
+  &b-f {
+    @include p-spacing-f('margin', 'bottom', '-');
   }
 
-  &l--f {
-    @include p-spacing-f("margin", "left", "-");
+  &l-f {
+    @include p-spacing-f('margin', 'left', '-');
   }
 
-  &--f {
-    @include p-spacing-f("margin", "", "-");
+  &-f {
+    @include p-spacing-f('margin', '', '-');
   }
 
-  &t--g {
-    @include p-spacing-g("margin", "top", "-");
+  &t-g {
+    @include p-spacing-g('margin', 'top', '-');
   }
 
-  &r--g {
-    @include p-spacing-g("margin", "right", "-");
+  &r-g {
+    @include p-spacing-g('margin', 'right', '-');
   }
 
-  &b--g {
-    @include p-spacing-g("margin", "bottom", "-");
+  &b-g {
+    @include p-spacing-g('margin', 'bottom', '-');
   }
 
-  &l--g {
-    @include p-spacing-g("margin", "left", "-");
+  &l-g {
+    @include p-spacing-g('margin', 'left', '-');
   }
 
-  &--g {
-    @include p-spacing-g("margin", "", "-");
+  &-g {
+    @include p-spacing-g('margin', '', '-');
   }
 }
 
@@ -443,51 +443,51 @@ $p-spacings: (
  */
 .#{$p-global-class-prefix}spacing-p {
   @each $name, $spacing in $p-spacings {
-    &--#{$name} {
+    &-#{$name} {
       padding: $spacing;
     }
 
-    &t--#{$name} {
+    &t-#{$name} {
       padding-top: $spacing;
     }
 
-    &r--#{$name} {
+    &r-#{$name} {
       padding-right: $spacing;
     }
 
-    &b--#{$name} {
+    &b-#{$name} {
       padding-bottom: $spacing;
     }
 
-    &l--#{$name} {
+    &l-#{$name} {
       padding-left: $spacing;
     }
 
-    &--0 {
+    &-0 {
       @include generate-major-breakpoints() {
         padding: 0;
       }
     }
 
-    &t--0 {
+    &t-0 {
       @include generate-major-breakpoints() {
         padding-top: 0;
       }
     }
 
-    &r--0 {
+    &r-0 {
       @include generate-major-breakpoints() {
         padding-right: 0;
       }
     }
 
-    &b--0 {
+    &b-0 {
       @include generate-major-breakpoints() {
         padding-bottom: 0;
       }
     }
 
-    &l--0 {
+    &l-0 {
       @include generate-major-breakpoints() {
         padding-top: 0;
       }
@@ -497,143 +497,142 @@ $p-spacings: (
   /*
    * responsive padding spacings
    */
-  &t--a {
-    @include p-spacing-a("padding", "top", "");
+  &t-a {
+    @include p-spacing-a('padding', 'top', '');
   }
 
-  &r--a {
-    @include p-spacing-a("padding", "right", "");
+  &r-a {
+    @include p-spacing-a('padding', 'right', '');
   }
 
-  &b--a {
-    @include p-spacing-a("padding", "bottom", "");
+  &b-a {
+    @include p-spacing-a('padding', 'bottom', '');
   }
 
-  &l--a {
-    @include p-spacing-a("padding", "left", "");
+  &l-a {
+    @include p-spacing-a('padding', 'left', '');
   }
 
-  &--a {
-    @include p-spacing-a("padding", "", "");
+  &-a {
+    @include p-spacing-a('padding', '', '');
   }
 
-  &t--b {
-    @include p-spacing-b("padding", "top", "");
+  &t-b {
+    @include p-spacing-b('padding', 'top', '');
   }
 
-  &r--b {
-    @include p-spacing-b("padding", "right", "");
+  &r-b {
+    @include p-spacing-b('padding', 'right', '');
   }
 
-  &b--b {
-    @include p-spacing-b("padding", "bottom", "");
+  &b-b {
+    @include p-spacing-b('padding', 'bottom', '');
   }
 
-  &l--b {
-    @include p-spacing-b("padding", "left", "");
+  &l-b {
+    @include p-spacing-b('padding', 'left', '');
   }
 
-  &--b {
-    @include p-spacing-b("padding", "", "");
+  &-b {
+    @include p-spacing-b('padding', '', '');
   }
 
-  &t--c {
-    @include p-spacing-c("padding", "top", "");
+  &t-c {
+    @include p-spacing-c('padding', 'top', '');
   }
 
-  &r--c {
-    @include p-spacing-c("padding", "right", "");
+  &r-c {
+    @include p-spacing-c('padding', 'right', '');
   }
 
-  &b--c {
-    @include p-spacing-c("padding", "bottom", "");
+  &b-c {
+    @include p-spacing-c('padding', 'bottom', '');
   }
 
-  &l--c {
-    @include p-spacing-c("padding", "left", "");
+  &l-c {
+    @include p-spacing-c('padding', 'left', '');
   }
 
-  &--c {
-    @include p-spacing-c("padding", "", "");
+  &-c {
+    @include p-spacing-c('padding', '', '');
   }
 
-  &t--d {
-    @include p-spacing-d("padding", "top", "");
+  &t-d {
+    @include p-spacing-d('padding', 'top', '');
+  }
+  &r-d {
+    @include p-spacing-d('padding', 'right', '');
   }
 
-  &r--d {
-    @include p-spacing-d("padding", "right", "");
+  &b-d {
+    @include p-spacing-d('padding', 'bottom', '');
   }
 
-  &b--d {
-    @include p-spacing-d("padding", "bottom", "");
+  &l-d {
+    @include p-spacing-d('padding', 'left', '');
   }
 
-  &l--d {
-    @include p-spacing-d("padding", "left", "");
+  &-d {
+    @include p-spacing-d('padding', '', '');
   }
 
-  &--d {
-    @include p-spacing-d("padding", "", "");
+  &t-e {
+    @include p-spacing-e('padding', 'top', '');
   }
 
-  &t--e {
-    @include p-spacing-e("padding", "top", "");
+  &r-e {
+    @include p-spacing-e('padding', 'right', '');
   }
 
-  &r--e {
-    @include p-spacing-e("padding", "right", "");
+  &b-e {
+    @include p-spacing-e('padding', 'bottom', '');
   }
 
-  &b--e {
-    @include p-spacing-e("padding", "bottom", "");
+  &l-e {
+    @include p-spacing-e('padding', 'left', '');
   }
 
-  &l--e {
-    @include p-spacing-e("padding", "left", "");
+  &-e {
+    @include p-spacing-e('padding', '', '');
   }
 
-  &--e {
-    @include p-spacing-e("padding", "", "");
+  &t-f {
+    @include p-spacing-f('padding', 'top', '');
   }
 
-  &t--f {
-    @include p-spacing-f("padding", "top", "");
+  &r-f {
+    @include p-spacing-f('padding', 'right', '');
   }
 
-  &r--f {
-    @include p-spacing-f("padding", "right", "");
+  &b-f {
+    @include p-spacing-f('padding', 'bottom', '');
   }
 
-  &b--f {
-    @include p-spacing-f("padding", "bottom", "");
+  &l-f {
+    @include p-spacing-f('padding', 'left', '');
   }
 
-  &l--f {
-    @include p-spacing-f("padding", "left", "");
+  &-f {
+    @include p-spacing-f('padding', '', '');
   }
 
-  &--f {
-    @include p-spacing-f("padding", "", "");
+  &t-g {
+    @include p-spacing-g('padding', 'top', '');
   }
 
-  &t--g {
-    @include p-spacing-g("padding", "top", "");
+  &r-g {
+    @include p-spacing-g('padding', 'right', '');
   }
 
-  &r--g {
-    @include p-spacing-g("padding", "right", "");
+  &b-g {
+    @include p-spacing-g('padding', 'bottom', '');
   }
 
-  &b--g {
-    @include p-spacing-g("padding", "bottom", "");
+  &l-g {
+    @include p-spacing-g('padding', 'left', '');
   }
 
-  &l--g {
-    @include p-spacing-g("padding", "left", "");
-  }
-
-  &--g {
-    @include p-spacing-g("padding", "", "");
+  &-g {
+    @include p-spacing-g('padding', '', '');
   }
 }
