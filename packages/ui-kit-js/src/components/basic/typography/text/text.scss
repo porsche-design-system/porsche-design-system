@@ -80,7 +80,7 @@
 
   // generic text
   &--12 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-12);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-12);
 
     > strong,
     > b {
@@ -89,7 +89,7 @@
   }
 
   &--16 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-16);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-16);
 
     > strong,
     > b {
@@ -98,7 +98,7 @@
   }
 
   &--18 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-18);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-18);
 
     > strong,
     > b {
@@ -107,7 +107,7 @@
   }
 
   &--20 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-20);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-20);
 
     > strong,
     > b {
@@ -116,7 +116,7 @@
   }
 
   &--24 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-24);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-24);
 
     > strong,
     > b {
@@ -125,7 +125,7 @@
   }
 
   &--28 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-28);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-28);
 
     > strong,
     > b {
@@ -134,7 +134,7 @@
   }
 
   &--30 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-30);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-30);
 
     > strong,
     > b {
@@ -143,7 +143,7 @@
   }
 
   &--32 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-32);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-32);
 
     > strong,
     > b {
@@ -152,7 +152,7 @@
   }
 
   &--36 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-36);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-36);
 
     > strong,
     > b {
@@ -161,7 +161,7 @@
   }
 
   &--42 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-42);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-42);
 
     > strong,
     > b {
@@ -170,7 +170,7 @@
   }
 
   &--44 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-44);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-44);
 
     > strong,
     > b {
@@ -179,7 +179,7 @@
   }
 
   &--48 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-48);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-48);
 
     > strong,
     > b {
@@ -188,7 +188,7 @@
   }
 
   &--52 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-52);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-52);
 
     > strong,
     > b {
@@ -197,7 +197,7 @@
   }
 
   &--60 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-60);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-60);
 
     > strong,
     > b {
@@ -205,12 +205,12 @@
     }
 
     &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-60);
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-60);
     }
   }
 
   &--62 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-62);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-62);
 
     > strong,
     > b {
@@ -218,12 +218,12 @@
     }
 
     &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-62);
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-62);
     }
   }
 
   &--72 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-72);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-72);
 
     > strong,
     > b {
@@ -231,12 +231,12 @@
     }
 
     &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-72);
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-72);
     }
   }
 
   &--84 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-text-size-84);
+    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-84);
 
     > strong,
     > b {
@@ -244,7 +244,7 @@
     }
 
     &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-text-size-84);
+      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-84);
     }
   }
 
