@@ -228,7 +228,7 @@ Static spacings can be used as `padding` or `margin` by a CSS utility class on t
 
 `0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
-**Possible class names (where {v} is the spacing value):**
+**Possible class names for margin spacings (where {v} is the spacing value):**
 * `p-spacing-m-{v}` => margin (all 4 directions)
 * `p-spacing-mt-{v}` => margin-top
 * `p-spacing-mr-{v}` => margin-right
@@ -239,6 +239,12 @@ Static spacings can be used as `padding` or `margin` by a CSS utility class on t
 * `p-spacing-m-nr-{v}` => negative margin-right
 * `p-spacing-m-nb-{v}` => negative margin-bottom
 * `p-spacing-m-nl-{v}` => negative margin-left
+* `p-spacing-mt-auto` => margin-top "auto"
+* `p-spacing-mr-auto` => margin-right "auto"
+* `p-spacing-mb-auto` => margin-bottom "auto"
+* `p-spacing-ml-auto` => margin-left "auto"
+
+**Possible class names for padding spacings (where {v} is the spacing value):**
 * `p-spacing-p-{v}` => padding (all 4 directions)
 * `p-spacing-pt-{v}` => padding-top
 * `p-spacing-pr-{v}` => padding-right

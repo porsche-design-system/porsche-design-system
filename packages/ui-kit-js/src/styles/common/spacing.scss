@@ -44,6 +44,26 @@ $p-spacings: (
     }
   }
 
+  &-auto {
+    margin: auto;
+  }
+
+  &t-auto {
+    margin-top: auto;
+  }
+
+  &l-auto {
+    margin-left: auto;
+  }
+
+  &b-auto {
+    margin-bottom: auto;
+  }
+
+  &r-auto {
+    margin-right: auto;
+  }
+
   &-0-min {
     @include generate-min-major-breakpoints() {
       margin: 0;
@@ -245,26 +265,6 @@ $p-spacings: (
 
   &-g {
     @include p-spacing-g('margin');
-  }
-
-  &t-auto {
-    margin-top: auto;
-  }
-
-  &l-auto {
-    margin-left: auto;
-  }
-
-  &b-auto {
-    margin-bottom: auto;
-  }
-
-  &r-auto {
-    margin-right: auto;
-  }
-
-  &-auto {
-    margin: auto;
   }
 }
 
