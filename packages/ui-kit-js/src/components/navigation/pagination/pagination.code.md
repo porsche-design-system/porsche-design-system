@@ -39,3 +39,29 @@ Currently the maximum number is either `7` (desktop/tablet) or `5` (mobile). To 
 ```
 {} := current page
 ```
+
+## Playground
+Test pagination behaviour by changing values for total amount of items, items to display per page and number of currently active page.
+
+<Playground :themeable="true">
+  <template v-slot="slotProps">
+    <p-input class="p-spacing-mr--16 p-spacing-mb--24" label="Total items count" type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"></p-input>
+    <p-input class="p-spacing-mr--16 p-spacing-mb--24" label="Items per page" type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"></p-input>
+    <p-input class="p-spacing-mb--24" label="Active page" type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"></p-input>
+    <p-pagination :theme="slotProps.theme" :total-items-count="totalItemsCount" :items-per-page="itemsPerPage" :active-page="activePage"></p-pagination>
+  </template>
+</Playground>
+
+<script lang="ts">
+  import { Component, Prop, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class FooBar extends Vue {
+    @Prop({ default: 500 }) public value: number;
+    
+    public totalItemsCount:number = 500;
+    public itemsPerPage:number = 25;
+    public activePage:number = 1;
+    
+  }
+</script>
