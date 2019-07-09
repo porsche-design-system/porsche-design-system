@@ -932,6 +932,7 @@ declare namespace LocalJSX {
     'icon'?: string;
     'label'?: string;
     'name'?: string;
+    'onPInput'?: (event: CustomEvent<KeyboardEvent>) => void;
     'type'?: 'text' | 'password' | 'date' | 'time' | 'number' | string;
     'value'?: string;
   }
