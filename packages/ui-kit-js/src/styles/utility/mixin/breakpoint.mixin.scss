@@ -1,11 +1,11 @@
 $p-breakpoints: (
-  "xxs": 0,
-  "xs": 480px,
-  "s": 760px,
-  "m": 1000px,
-  "l": 1300px,
-  "xl": 1760px,
-  "xxl": 1920px
+  'xxs': 0,
+  'xs': 480px,
+  's': 760px,
+  'm': 1000px,
+  'l': 1300px,
+  'xl': 1760px,
+  'xxl': 1920px
 );
 
 @mixin breakpoint($min-breakpoint: null, $max-breakpoint: null) {
@@ -44,12 +44,25 @@ $p-breakpoints: (
 }
 
 // generate major breakpoint styles
-@mixin generate-major-breakpoints() {
+@mixin generate-min-major-breakpoints() {
   @each $name, $breakpoint in $p-breakpoints {
-    @if ($name == "xxs") {
+    @if ($name == 'xxs') {
       @content;
     } @else {
       @include breakpoint($breakpoint) {
+        &-#{$name} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+// generate max major breakpoint styles
+@mixin generate-max-major-breakpoints() {
+  @each $name, $breakpoint in $p-breakpoints {
+    @if ($name != 'xxs') {
+      @include breakpoint('xxs', $name) {
         &-#{$name} {
           @content;
         }
