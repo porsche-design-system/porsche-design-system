@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   ui-kit:
-    build: ./images/node
+    build: ./docker/node
     working_dir: /opt/porsche-ui-kit-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -26,7 +26,7 @@ services:
       - ui-kit-react-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-react/node_modules
       - ui-kit-vue-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-vue/node_modules
   ui-kit-deploy:
-    build: ./images/node
+    build: ./docker/node
     working_dir: /opt/porsche-ui-kit-app
     environment:
       - GIT_DEPLOY_KEY
