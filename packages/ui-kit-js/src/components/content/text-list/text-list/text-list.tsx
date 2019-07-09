@@ -8,18 +8,21 @@ import { Components } from '../../../../index';
   styleUrl: 'text-list.scss'
 })
 export class TextList {
-  /** The type of the list. */
+  /** The type of the text list. */
   @Prop() public listType?: 'unordered' | 'ordered' = 'unordered';
 
-  /** The style of the text. */
+  /** The style of the text list. */
   @Prop() public textType?: Components.PText['type'] = 'copy';
+
+  /** Basic text list color variations. */
+  @Prop() public color?: Components.PColor['text'] = 'porsche-black';
 
   public render(): JSX.Element {
     const textListClasses = cx(prefix('text-list'), this.listType === 'ordered' && prefix('text-list--ordered'));
 
     return (
       <Host class={textListClasses}>
-        <p-text role='list' tag='div' type={this.textType}>
+        <p-text role='list' tag='div' type={this.textType} color={this.color}>
           <slot />
         </p-text>
       </Host>

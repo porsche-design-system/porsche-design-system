@@ -242,7 +242,7 @@ export class PTextLink {
 proxyInputs(PTextLink, ['download', 'href', 'icon', 'tag', 'target', 'theme', 'type']);
 
 export declare interface PTextList extends Components.PTextList {}
-@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['listType', 'textType'] })
+@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType', 'textType'] })
 export class PTextList {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -250,7 +250,7 @@ export class PTextList {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PTextList, ['listType', 'textType']);
+proxyInputs(PTextList, ['color', 'listType', 'textType']);
 
 export declare interface PTextListItem extends Components.PTextListItem {}
 @Component({ selector: 'p-text-list-item', changeDetection: 0, template: '<ng-content></ng-content>' })
