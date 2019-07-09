@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-grid</title>
+  <link rel="stylesheet" href="../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
+  <style type="text/css">
+    p-grid ~ p-grid {
+      margin-top: 4px;
+    }
+
+    p-grid-child p {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 4px 0;
+      box-sizing: border-box;
+      text-align: center;
+      color: white;
+      background-color: lightskyblue;
+    }
+  </style>
+</head>
+<body>
+
+<div class="playground" title="should set column width correctly">
+  <p-grid>
+    <p-grid-child size="12">
+      <p>12</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="1">
+      <p>1</p>
+    </p-grid-child>
+    <p-grid-child size="11">
+      <p>11</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="2">
+      <p>2</p>
+    </p-grid-child>
+    <p-grid-child size="10">
+      <p>10</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="3">
+      <p>3</p>
+    </p-grid-child>
+    <p-grid-child size="9">
+      <p>9</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="4">
+      <p>4</p>
+    </p-grid-child>
+    <p-grid-child size="8">
+      <p>8</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="5">
+      <p>5</p>
+    </p-grid-child>
+    <p-grid-child size="7">
+      <p>7</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="6">
+      <p>6</p>
+    </p-grid-child>
+    <p-grid-child size="6">
+      <p>6</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="7">
+      <p>7</p>
+    </p-grid-child>
+    <p-grid-child size="5">
+      <p>5</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="8">
+      <p>8</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>4</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="9">
+      <p>9</p>
+    </p-grid-child>
+    <p-grid-child size="3">
+      <p>3</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="10">
+      <p>10</p>
+    </p-grid-child>
+    <p-grid-child size="2">
+      <p>2</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child size="11">
+      <p>11</p>
+    </p-grid-child>
+    <p-grid-child size="1">
+      <p>1</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should apply offset property in combination with column width correctly">
+  <p-grid>
+    <p-grid-child offset="1" size="11">
+      <p>1</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="2" size="10">
+      <p>2</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="3" size="9">
+      <p>3</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="4" size="8">
+      <p>4</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="5" size="7">
+      <p>5</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="6" size="6">
+      <p>6</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="7" size="5">
+      <p>7</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="8" size="4">
+      <p>8</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="9" size="3">
+      <p>9</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="10" size="2">
+      <p>10</p>
+    </p-grid-child>
+  </p-grid>
+  <p-grid>
+    <p-grid-child offset="11" size="1">
+      <p>11</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should show columns next to each other">
+  <p-grid direction="row">
+    <p-grid-child size="4">
+      <p>1</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>2</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>3</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should show columns next to each other but in reverse order">
+  <p-grid direction="row-reverse">
+    <p-grid-child size="4">
+      <p>1</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>2</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>3</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should show columns under each other">
+  <p-grid direction="column">
+    <p-grid-child size="4">
+      <p>1</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>2</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>3</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should show columns under each other but in reverse order">
+  <p-grid direction="column-reverse">
+    <p-grid-child size="4">
+      <p>1</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>2</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>3</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should show a gap between columns">
+  <p-grid gap="normal">
+    <p-grid-child size="4">
+      <p>1</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>2</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>3</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should not show a gap between columns">
+  <p-grid gap="zero">
+    <p-grid-child size="4">
+      <p>1</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>2</p>
+    </p-grid-child>
+    <p-grid-child size="4">
+      <p>3</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should render nested grid elements correctly">
+  <p-grid>
+    <p-grid-child size="6">
+      <p-grid>
+        <p-grid-child size="6">
+          <p>1</p>
+        </p-grid-child>
+        <p-grid-child size="6">
+          <p>2</p>
+        </p-grid-child>
+      </p-grid>
+    </p-grid-child>
+    <p-grid-child size="6">
+      <p-grid>
+        <p-grid-child size="4">
+          <p>1</p>
+        </p-grid-child>
+        <p-grid-child size="8">
+          <p>2</p>
+        </p-grid-child>
+      </p-grid>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+<div class="playground" title="should apply properties based on their responsive configuration">
+  <p-grid gap='{"base": "normal", "s": "zero", "m": "normal"}'>
+    <p-grid-child size='{"base": 12, "m": 4, "l": 3}' offset='{"base": 0, "m": 2, "l": 0}'>
+      <p>1</p>
+    </p-grid-child>
+    <p-grid-child size='{"base": 12, "s": 6, "m": 4, "l": 3}' offset='{"base": 0, "s": 3, "m": 0}'>
+      <p>2</p>
+    </p-grid-child>
+    <p-grid-child size='{"base": 12, "s": 6, "l": 3}'>
+      <p>3</p>
+    </p-grid-child>
+    <p-grid-child size='{"base": 12, "s": 6, "l": 3}'>
+      <p>4</p>
+    </p-grid-child>
+  </p-grid>
+</div>
+
+</body>
+</html>

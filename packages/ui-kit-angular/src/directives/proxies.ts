@@ -150,10 +150,12 @@ proxyInputs(PIcon, ['ariaLabel', 'color', 'lazy', 'size', 'source']);
 export declare interface PInput extends Components.PInput {}
 @Component({ selector: 'p-input', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'error', 'icon', 'label', 'name', 'type', 'value'] })
 export class PInput {
+  pInput!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['pInput']);
   }
 }
 proxyInputs(PInput, ['disabled', 'error', 'icon', 'label', 'name', 'type', 'value']);
@@ -240,7 +242,7 @@ export class PTextLink {
 proxyInputs(PTextLink, ['download', 'href', 'icon', 'tag', 'target', 'theme', 'type']);
 
 export declare interface PTextList extends Components.PTextList {}
-@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['listType', 'textType'] })
+@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType', 'textType'] })
 export class PTextList {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -248,7 +250,7 @@ export class PTextList {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PTextList, ['listType', 'textType']);
+proxyInputs(PTextList, ['color', 'listType', 'textType']);
 
 export declare interface PTextListItem extends Components.PTextListItem {}
 @Component({ selector: 'p-text-list-item', changeDetection: 0, template: '<ng-content></ng-content>' })
