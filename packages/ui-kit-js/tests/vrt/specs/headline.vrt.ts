@@ -1,6 +1,6 @@
 import 'jasmine';
 import { VisualRegressionTester } from '@porscheui/visual-regression-tester';
-import { getVisualRegressionTester } from '../../../../../tests/vrt/helpers/setup';
+import { getVisualRegressionTester } from '../helpers/setup';
 
 describe('Headline', () => {
   let visualRegressionTester: VisualRegressionTester;

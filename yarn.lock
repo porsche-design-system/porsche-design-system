@@ -9624,7 +9624,7 @@ punycode@^1.2.4, punycode@^1.4.1:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha1-wNWmOycYgArY4esPpSachN1BhF4=
 
-puppeteer@1.18.1, puppeteer@^1.11.0, puppeteer@^1.18.1:
+puppeteer@1.18.1, puppeteer@^1.11.0:
   version "1.18.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/puppeteer/-/puppeteer-1.18.1.tgz#4a66f3bdab01115ededf70443ec904c99917a815"
   integrity sha1-SmbzvasBEV7e33BEPskEyZkXqBU=
@@ -11561,7 +11561,7 @@ typedarray@^0.0.6:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.5.2, typescript@^3.4.3, typescript@^3.5.2, typescript@~3.5.2:
+typescript@3.5.2, typescript@^3.4.3, typescript@~3.5.2:
   version "3.5.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.5.2.tgz#a09e1dc69bc9551cadf17dba10ee42cf55e5d56c"
   integrity sha1-oJ4dxpvJVRyt8X26EO5Cz1Xl1Ww=

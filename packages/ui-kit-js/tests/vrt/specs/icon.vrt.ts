@@ -1,8 +1,8 @@
 import 'jasmine';
 import { VisualRegressionTester } from '@porscheui/visual-regression-tester';
-import { getVisualRegressionTester } from '../../../../tests/vrt/helpers/setup';
+import { getVisualRegressionTester } from '../helpers/setup';
 
-describe('Pagination', () => {
+describe('Icon', () => {
   let visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
@@ -11,8 +11,8 @@ describe('Pagination', () => {
 
   it('should have no visual regression', async () => {
     expect(
-      await visualRegressionTester.test('pagination', async () => {
-        await visualRegressionTester.goTo('/src/components/navigation/pagination/pagination.test.html');
+      await visualRegressionTester.test('icon', async () => {
+        await visualRegressionTester.goTo('/src/components/icon/icon/icon.test.html');
       })
     ).toBeFalsy();
   });
