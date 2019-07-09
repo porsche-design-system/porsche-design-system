@@ -42,7 +42,7 @@
   },
   "scripts": {
     "start": "stencil build --watch --serve",
-    "start:vrt-server": "http-server -p 61422",
+    "start:vrt-server": "yarn build && http-server -p 61422",
     "build": "stencil build --docs && node doc.js",
     "lint": "yarn lint:scss & yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",

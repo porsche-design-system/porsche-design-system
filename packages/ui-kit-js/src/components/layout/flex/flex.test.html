@@ -3,28 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>p-button-regular</title>
+  <title>p-flex</title>
   <link rel="stylesheet" href="../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
   <script type="module" src="../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
   <script nomodule src="../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
   <style type="text/css">
-    .playground {
-      padding: 1rem;
-      overflow: auto;
-    }
-
-    .playground ~ .playground {
-      border-top: 1px solid #f1f1f1;
-    }
-
-    .light {
-      background: #fff;
-    }
-
-    .dark {
-      background: #1a2023;
-    }
-
     p-flex[align-items],
     p-flex[align-content] {
       height: 180px;
@@ -34,14 +18,14 @@
       width: 100%;
       height: 100%;
       margin: 0;
-      padding: 4px 80px;
+      padding: 4px 2vw;
       box-sizing: border-box;
       text-align: center;
       color: #fff;
     }
 
     p-flex-item:nth-child(1n) p {
-      background-color: lightskyblue;
+      background-color:skyblue;
     }
 
     p-flex-item:nth-child(2n) p {
@@ -59,7 +43,7 @@
 </head>
 <body>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item>
       <p>1</p>
@@ -78,7 +62,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex flow="inline">
     <p-flex-item>
       <p>1</p>
@@ -97,7 +81,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex flow='{ "base": "block", "l": "inline" }'>
     <p-flex-item>
       <p>1</p>
@@ -116,11 +100,11 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
 
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item>
       <p>1</p>
@@ -134,7 +118,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex direction="row-reverse">
     <p-flex-item>
       <p>1</p>
@@ -148,7 +132,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex direction="column">
     <p-flex-item>
       <p>1</p>
@@ -162,7 +146,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex direction="column-reverse">
     <p-flex-item>
       <p>1</p>
@@ -176,7 +160,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex direction='{ "base": "column", "l": "row" }'>
     <p-flex-item>
       <p>1</p>
@@ -190,7 +174,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item>
       <p>1</p>
@@ -222,7 +206,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap">
     <p-flex-item>
       <p>1</p>
@@ -254,7 +238,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="reverse">
     <p-flex-item>
       <p>1</p>
@@ -286,7 +270,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap='{ "base": "wrap", "l": "nowrap" }'>
     <p-flex-item>
       <p>1</p>
@@ -318,7 +302,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item>
       <p>1</p>
@@ -332,7 +316,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex justify-content="end">
     <p-flex-item>
       <p>1</p>
@@ -346,7 +330,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex justify-content="center">
     <p-flex-item>
       <p>1</p>
@@ -360,7 +344,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex justify-content="space-between">
     <p-flex-item>
       <p>1</p>
@@ -374,7 +358,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex justify-content="space-around">
     <p-flex-item>
       <p>1</p>
@@ -388,7 +372,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex justify-content="space-evenly">
     <p-flex-item>
       <p>1</p>
@@ -402,7 +386,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex justify-content='{ "base": "start", "l": "end" }'>
     <p-flex-item>
       <p>1</p>
@@ -416,7 +400,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items>
     <p-flex-item>
       <p>1</p>
@@ -430,7 +414,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items="start">
     <p-flex-item>
       <p>1</p>
@@ -444,7 +428,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items="end">
     <p-flex-item>
       <p>1</p>
@@ -458,7 +442,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items="center">
     <p-flex-item>
       <p>1</p>
@@ -472,7 +456,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items="baseline">
     <p-flex-item>
       <p>1</p>
@@ -486,7 +470,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items='{ "base": "start", "l": "end" }'>
     <p-flex-item>
       <p>1</p>
@@ -500,7 +484,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap" align-content>
     <p-flex-item>
       <p>1</p>
@@ -532,7 +516,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap" align-content="start">
     <p-flex-item>
       <p>1</p>
@@ -564,7 +548,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap" align-content="end">
     <p-flex-item>
       <p>1</p>
@@ -596,7 +580,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap" align-content="center">
     <p-flex-item>
       <p>1</p>
@@ -628,7 +612,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap" align-content="space-between">
     <p-flex-item>
       <p>1</p>
@@ -660,7 +644,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap" align-content="space-around">
     <p-flex-item>
       <p>1</p>
@@ -692,7 +676,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap" align-content='{ "base": "start", "l": "end" }'>
     <p-flex-item>
       <p>1</p>
@@ -724,7 +708,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex gap="16">
     <p-flex-item>
       <p>1</p>
@@ -738,7 +722,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex gap="b">
     <p-flex-item>
       <p>1</p>
@@ -752,7 +736,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item width="one-quarter">
       <p>one-quarter</p>
@@ -809,7 +793,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex wrap="wrap">
     <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>
       <p>1</p>
@@ -826,7 +810,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item offset="one-quarter" width="three-quarters">
       <p>Offset: quarter</p>
@@ -854,7 +838,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item offset='{ "base": "none", "l": "one-third" }'>
       <p>Responsive offset</p>
@@ -862,7 +846,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items>
     <p-flex-item>
       <p>1</p>
@@ -879,7 +863,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items="start">
     <p-flex-item>
       <p>1</p>
@@ -896,7 +880,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items>
     <p-flex-item>
       <p>1</p>
@@ -913,7 +897,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items>
     <p-flex-item>
       <p>1</p>
@@ -930,7 +914,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items>
     <p-flex-item>
       <p>1</p>
@@ -947,7 +931,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items>
     <p-flex-item>
       <p>1</p>
@@ -964,7 +948,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex align-items>
     <p-flex-item>
       <p>1</p>
@@ -981,7 +965,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item>
       <p>1</p>
@@ -992,7 +976,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item>
       <p>1</p>
@@ -1003,7 +987,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item style="width: 80%;">
       <p>1</p>
@@ -1014,7 +998,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item shrink="0" style="width: 80%;">
       <p>1</p>
@@ -1025,7 +1009,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item flex="initial">
       <p>
@@ -1045,7 +1029,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item flex="auto">
       <p>
@@ -1065,7 +1049,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item flex="equal">
       <p>
@@ -1085,7 +1069,7 @@
   </p-flex>
 </div>
 
-<div class="playground light">
+<div class="playground">
   <p-flex>
     <p-flex-item flex="none">
       <p>

@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h } from '@stencil/core';
+import { JSX, Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 
@@ -10,7 +10,7 @@ import { prefix } from '../../../utils';
 export class Input {
   @Prop() public name?: string = '';
 
-  @Prop() public value?: string = '';
+  @Prop({ mutable: true }) public value?: string = '';
 
   @Prop() public label?: string = '';
 
@@ -21,6 +21,8 @@ export class Input {
   @Prop() public disabled?: boolean = false;
 
   @Prop() public error?: boolean = false;
+
+  @Event() public pInput!: EventEmitter<KeyboardEvent>;
 
   public render(): JSX.Element {
     const inputClasses = cx(prefix('input'));
@@ -38,11 +40,20 @@ export class Input {
           value={this.value}
           placeholder={this.label}
           disabled={this.disabled}
+          onInput={this.onInput}
         />
         <p-text class={labelClasses} type='12' color='inherit' tag='span'>
           {this.label}
         </p-text>
       </label>
     );
+  }
+
+  private onInput = (ev: Event) => {
+    const input = ev.target as HTMLInputElement | null;
+    if (input) {
+      this.value = input.value || '';
+    }
+    this.pInput.emit(ev as KeyboardEvent);
   }
 }

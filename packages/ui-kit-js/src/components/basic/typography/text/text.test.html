@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-text</title>
+  <link rel="stylesheet" href="../../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="../../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="../../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="../../../../../tests/vrt/helpers/styles.css">
+</head>
+<body>
+
+<div class="playground" title="should show most common predefined sizes but slotted font weights">
+  <p-text type="copy">
+    Copy text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="small">
+    Small text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+</div>
+
+<div class="playground" title="should show additional predefined sizes but slotted font weights">
+  <p-text type="12">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="16">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="18">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="20">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="24">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="28">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="30">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="32">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="36">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="42">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="44">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="48">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="52">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="60">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="62">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="72">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+  <p-text type="84">
+    Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
+  </p-text>
+</div>
+
+<div class="playground" title="should show special thin size variation">
+  <p-text type="60-thin">
+    Lorem ipsum dolor sit amet
+  </p-text>
+  <p-text type="62-thin">
+    Lorem ipsum dolor sit amet
+  </p-text>
+  <p-text type="72-thin">
+    Lorem ipsum dolor sit amet
+  </p-text>
+  <p-text type="84-thin">
+    Lorem ipsum dolor sit amet
+  </p-text>
+</div>
+
+<div class="playground" title="should show text with different alignments">
+  <p-text type="copy" align="left">
+    Copy text left
+  </p-text>
+  <p-text type="copy" align="center">
+    Copy text center
+  </p-text>
+  <p-text type="copy" align="right">
+    Copy text right
+  </p-text>
+</div>
+
+<div class="playground" title="should cut off too long text">
+  <p-text type="copy" ellipsis="true">
+    Copy text ellipsis - Lorem ipsum dolor sit amet consecutor lorem ipsum dolor sit amet consecutor lorem ipsum dolor
+    sit amet consecutor lorem ipsum dolor sit amet consecutor
+  </p-text>
+</div>
+
+<div class="playground" title="should wrap text which is too long and without spaces">
+  <p-text type="copy" wrap="true">
+    Copy text wrap -
+    dolorsitametconsecutoloremipsumdolorsitametconsecutoloremipsumdolorsitametconsecutoloremipsumdolorsitametconsecutoloremipsum
+  </p-text>
+</div>
+
+<div class="playground" title="should show text inline">
+  <p-text type="copy" inline="true">
+    Copy text inline
+  </p-text>
+  <p-text type="copy" inline="true">
+    Copy text inline
+  </p-text>
+</div>
+
+<div class="playground" title="should show text in different colors">
+  <div style="background: black;">
+    <p-text type="copy" color="porsche-light">
+      Copy text porsche
+    </p-text>
+  </div>
+  <p-text type="copy" color="porsche-black">
+    Copy text porsche black
+  </p-text>
+  <p-text type="copy" color="porsche-red">
+    Copy text porsche red
+  </p-text>
+  <p-text type="copy" color="neutral-grey-1">
+    Copy text neutral grey-1
+  </p-text>
+  <p-text type="copy" color="neutral-grey-2">
+    Copy text neutral grey-2
+  </p-text>
+  <p-text type="copy" color="neutral-grey-3">
+    Copy text neutral grey-3
+  </p-text>
+  <p-text type="copy" color="neutral-grey-4">
+    Copy text neutral grey-4
+  </p-text>
+  <p-text type="copy" color="neutral-grey-5">
+    Copy text neutral grey-5
+  </p-text>
+  <p-text type="copy" color="neutral-grey-6">
+    Copy text neutral grey-6
+  </p-text>
+  <p-text type="copy" color="neutral-grey-7">
+    Copy text neutral grey-7
+  </p-text>
+  <p-text type="copy" color="neutral-grey-8">
+    Copy text neutral grey-8
+  </p-text>
+  <p-text type="copy" color="status-red">
+    Copy text status red
+  </p-text>
+  <p-text type="copy" color="status-green">
+    Copy text status green
+  </p-text>
+  <p-text type="copy" color="status-yellow">
+    Copy text status yellow
+  </p-text>
+  <p-text style="color: deeppink" type="copy" color="inherit">
+    Copy text status inherit
+  </p-text>
+</div>
+
+<div class="playground" title="should show text with slotted and styled link">
+  <p-text type="20">Lorem ipsum dolor sit amet <a href="#">linked text</a> consecutor.</p-text>
+</div>
+
+</body>
+</html>

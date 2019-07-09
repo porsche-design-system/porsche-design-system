@@ -18,6 +18,13 @@
 | `value`    | `value`    |             | `string`  | `''`     |
 
 
+## Events
+
+| Event    | Description | Type                         |
+| -------- | ----------- | ---------------------------- |
+| `pInput` |             | `CustomEvent<KeyboardEvent>` |
+
+
 ## Dependencies
 
 ### Depends on

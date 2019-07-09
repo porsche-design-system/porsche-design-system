@@ -20,9 +20,9 @@
         'light': (themeable === false || theme === 'light'),
         'dark': (themeable && theme === 'dark'),
         'children-height-fixed': (childElementLayout.height === 'fixed'),
-        'spacing-inline': (childElementLayout.spacing == 'inline'),
-        'spacing-block': (childElementLayout.spacing == 'block'),
-        'spacing-block-small': (childElementLayout.spacing == 'block-small')
+        'spacing-inline': (childElementLayout.spacing === 'inline'),
+        'spacing-block': (childElementLayout.spacing === 'block'),
+        'spacing-block-small': (childElementLayout.spacing === 'block-small')
       }"
     >
       <slot :theme="theme" />

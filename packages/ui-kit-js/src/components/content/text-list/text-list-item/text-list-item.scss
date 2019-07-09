@@ -1,4 +1,4 @@
-@import "../../../../styles/utility/index";
+@import '../../../../styles/utility/index';
 
 .#{$p-global-class-prefix}text-list__item {
   position: relative;
@@ -6,7 +6,7 @@
   padding-left: 1em;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: calc(1.5em / 2 - 0.125em);
@@ -19,6 +19,7 @@
 
   .#{$p-global-class-prefix}text-list__item::before {
     height: 1px;
+    top: calc(1.5em / 2);
   }
 }
 
@@ -26,16 +27,16 @@
   counter-reset: section;
 
   .#{$p-global-class-prefix}text-list__item {
-    padding-left: 1.5rem;
+    padding-left: 1.2em;
 
     .#{$p-global-class-prefix}text-list__item {
-      padding-left: 2rem;
+      padding-left: 2em;
     }
   }
 
   .#{$p-global-class-prefix}text-list__item::before {
     counter-increment: section;
-    content: counters(section, ".") ".";
+    content: counters(section, '.') '.';
     min-width: 1em;
     height: auto;
     background-color: transparent;

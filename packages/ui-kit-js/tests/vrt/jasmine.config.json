@@ -1,7 +1,7 @@
 {
   "spec_dir": ".",
   "spec_files": [
-    "src/**/*.spec.vrt-new.ts"
+    "src/**/*.vrt.ts"
   ],
   "helpers": ["tests/vrt/helpers/**/*.ts"],
   "stopSpecOnExpectationFailure": false,

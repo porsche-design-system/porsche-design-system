@@ -460,11 +460,15 @@ export namespace Components {
   }
   interface PTextList {
     /**
-    * The type of the list.
+    * Basic text list color variations.
+    */
+    'color'?: Components.PColor['text'];
+    /**
+    * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
     /**
-    * The style of the text.
+    * The style of the text list.
     */
     'textType'?: Components.PText['type'];
   }
@@ -932,6 +936,7 @@ declare namespace LocalJSX {
     'icon'?: string;
     'label'?: string;
     'name'?: string;
+    'onPInput'?: (event: CustomEvent<KeyboardEvent>) => void;
     'type'?: 'text' | 'password' | 'date' | 'time' | 'number' | string;
     'value'?: string;
   }
@@ -1106,11 +1111,15 @@ declare namespace LocalJSX {
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
-    * The type of the list.
+    * Basic text list color variations.
+    */
+    'color'?: Components.PColor['text'];
+    /**
+    * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
     /**
-    * The style of the text.
+    * The style of the text list.
     */
     'textType'?: Components.PText['type'];
   }
