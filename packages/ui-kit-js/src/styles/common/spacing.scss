@@ -44,32 +44,62 @@ $p-spacings: (
     }
   }
 
-  &-0 {
-    @include generate-major-breakpoints() {
+  &-0-min {
+    @include generate-min-major-breakpoints() {
       margin: 0;
     }
   }
 
-  &t-0 {
-    @include generate-major-breakpoints() {
+  &t-0-min {
+    @include generate-min-major-breakpoints() {
       margin-top: 0;
     }
   }
 
-  &r-0 {
-    @include generate-major-breakpoints() {
+  &r-0-min {
+    @include generate-min-major-breakpoints() {
       margin-right: 0;
     }
   }
 
-  &b-0 {
-    @include generate-major-breakpoints() {
+  &b-0-min {
+    @include generate-min-major-breakpoints() {
       margin-bottom: 0;
     }
   }
 
-  &l-0 {
-    @include generate-major-breakpoints() {
+  &l-0-min {
+    @include generate-min-major-breakpoints() {
+      margin-left: 0;
+    }
+  }
+
+  &-0-max {
+    @include generate-max-major-breakpoints() {
+      margin: 0;
+    }
+  }
+
+  &t-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-top: 0;
+    }
+  }
+
+  &r-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-right: 0;
+    }
+  }
+
+  &b-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-bottom: 0;
+    }
+  }
+
+  &l-0-max {
+    @include generate-max-major-breakpoints() {
       margin-left: 0;
     }
   }
@@ -78,143 +108,143 @@ $p-spacings: (
    * responsive margin spacings
    */
   &t-a {
-    @include p-spacing-a('margin', 'top', '');
+    @include p-spacing-a('margin', 'top');
   }
 
   &r-a {
-    @include p-spacing-a('margin', 'right', '');
+    @include p-spacing-a('margin', 'right');
   }
 
   &b-a {
-    @include p-spacing-a('margin', 'bottom', '');
+    @include p-spacing-a('margin', 'bottom');
   }
 
   &l-a {
-    @include p-spacing-a('margin', 'left', '');
+    @include p-spacing-a('margin', 'left');
   }
 
   &-a {
-    @include p-spacing-a('margin', '', '');
+    @include p-spacing-a('margin');
   }
 
   &t-b {
-    @include p-spacing-b('margin', 'top', '');
+    @include p-spacing-b('margin', 'top');
   }
 
   &r-b {
-    @include p-spacing-b('margin', 'right', '');
+    @include p-spacing-b('margin', 'right');
   }
 
   &b-b {
-    @include p-spacing-b('margin', 'bottom', '');
+    @include p-spacing-b('margin', 'bottom');
   }
 
   &l-b {
-    @include p-spacing-b('margin', 'left', '');
+    @include p-spacing-b('margin', 'left');
   }
 
   &-b {
-    @include p-spacing-b('margin', '', '');
+    @include p-spacing-b('margin');
   }
 
   &t-c {
-    @include p-spacing-c('margin', 'top', '');
+    @include p-spacing-c('margin', 'top');
   }
 
   &r-c {
-    @include p-spacing-c('margin', 'right', '');
+    @include p-spacing-c('margin', 'right');
   }
 
   &b-c {
-    @include p-spacing-c('margin', 'bottom', '');
+    @include p-spacing-c('margin', 'bottom');
   }
 
   &l-c {
-    @include p-spacing-c('margin', 'left', '');
+    @include p-spacing-c('margin', 'left');
   }
 
   &-c {
-    @include p-spacing-c('margin', '', '');
+    @include p-spacing-c('margin');
   }
 
   &t-d {
-    @include p-spacing-d('margin', 'top', '');
+    @include p-spacing-d('margin', 'top');
   }
 
   &r-d {
-    @include p-spacing-d('margin', 'right', '');
+    @include p-spacing-d('margin', 'right');
   }
 
   &b-d {
-    @include p-spacing-d('margin', 'bottom', '');
+    @include p-spacing-d('margin', 'bottom');
   }
 
   &l-d {
-    @include p-spacing-d('margin', 'left', '');
+    @include p-spacing-d('margin', 'left');
   }
 
   &-d {
-    @include p-spacing-d('margin', '', '');
+    @include p-spacing-d('margin');
   }
 
   &t-e {
-    @include p-spacing-e('margin', 'top', '');
+    @include p-spacing-e('margin', 'top');
   }
 
   &r-e {
-    @include p-spacing-e('margin', 'right', '');
+    @include p-spacing-e('margin', 'right');
   }
 
   &b-e {
-    @include p-spacing-e('margin', 'bottom', '');
+    @include p-spacing-e('margin', 'bottom');
   }
 
   &l-e {
-    @include p-spacing-e('margin', 'left', '');
+    @include p-spacing-e('margin', 'left');
   }
 
   &-e {
-    @include p-spacing-e('margin', '', '');
+    @include p-spacing-e('margin');
   }
 
   &t-f {
-    @include p-spacing-f('margin', 'top', '');
+    @include p-spacing-f('margin', 'top');
   }
 
   &r-f {
-    @include p-spacing-f('margin', 'right', '');
+    @include p-spacing-f('margin', 'right');
   }
 
   &b-f {
-    @include p-spacing-f('margin', 'bottom', '');
+    @include p-spacing-f('margin', 'bottom');
   }
 
   &l-f {
-    @include p-spacing-f('margin', 'left', '');
+    @include p-spacing-f('margin', 'left');
   }
 
   &-f {
-    @include p-spacing-f('margin', '', '');
+    @include p-spacing-f('margin');
   }
 
   &t-g {
-    @include p-spacing-g('margin', 'top', '');
+    @include p-spacing-g('margin', 'top');
   }
 
   &r-g {
-    @include p-spacing-g('margin', 'right', '');
+    @include p-spacing-g('margin', 'right');
   }
 
   &b-g {
-    @include p-spacing-g('margin', 'bottom', '');
+    @include p-spacing-g('margin', 'bottom');
   }
 
   &l-g {
-    @include p-spacing-g('margin', 'left', '');
+    @include p-spacing-g('margin', 'left');
   }
 
   &-g {
-    @include p-spacing-g('margin', '', '');
+    @include p-spacing-g('margin');
   }
 
   &t-auto {
@@ -264,33 +294,63 @@ $p-spacings: (
     }
   }
 
-  &-0 {
-    @include generate-major-breakpoints() {
+  &-0-min {
+    @include generate-min-major-breakpoints() {
       margin: 0;
     }
   }
 
-  &t-0 {
-    @include generate-major-breakpoints() {
+  &t-0-min {
+    @include generate-min-major-breakpoints() {
       margin-top: 0;
     }
   }
 
-  &r-0 {
-    @include generate-major-breakpoints() {
+  &r-0-min {
+    @include generate-min-major-breakpoints() {
       margin-right: 0;
     }
   }
 
-  &b-0 {
-    @include generate-major-breakpoints() {
+  &b-0-min {
+    @include generate-min-major-breakpoints() {
       margin-bottom: 0;
     }
   }
 
-  &l-0 {
-    @include generate-major-breakpoints() {
+  &l-0-min {
+    @include generate-min-major-breakpoints() {
+      margin-left: 0;
+    }
+  }
+
+  &-0-max {
+    @include generate-max-major-breakpoints() {
+      margin: 0;
+    }
+  }
+
+  &t-0-max {
+    @include generate-max-major-breakpoints() {
       margin-top: 0;
+    }
+  }
+
+  &r-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-right: 0;
+    }
+  }
+
+  &b-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-bottom: 0;
+    }
+  }
+
+  &l-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-left: 0;
     }
   }
 
@@ -463,33 +523,63 @@ $p-spacings: (
       padding-left: $spacing;
     }
 
-    &-0 {
-      @include generate-major-breakpoints() {
+    &-0-min {
+      @include generate-min-major-breakpoints() {
         padding: 0;
       }
     }
 
-    &t-0 {
-      @include generate-major-breakpoints() {
+    &t-0-min {
+      @include generate-min-major-breakpoints() {
         padding-top: 0;
       }
     }
 
-    &r-0 {
-      @include generate-major-breakpoints() {
+    &r-0-min {
+      @include generate-min-major-breakpoints() {
         padding-right: 0;
       }
     }
 
-    &b-0 {
-      @include generate-major-breakpoints() {
+    &b-0-min {
+      @include generate-min-major-breakpoints() {
         padding-bottom: 0;
       }
     }
 
-    &l-0 {
-      @include generate-major-breakpoints() {
+    &l-0-min {
+      @include generate-min-major-breakpoints() {
+        padding-left: 0;
+      }
+    }
+
+    &-0-max {
+      @include generate-max-major-breakpoints() {
+        padding: 0;
+      }
+    }
+
+    &t-0-max {
+      @include generate-max-major-breakpoints() {
         padding-top: 0;
+      }
+    }
+
+    &r-0-max {
+      @include generate-max-major-breakpoints() {
+        padding-right: 0;
+      }
+    }
+
+    &b-0-max {
+      @include generate-max-major-breakpoints() {
+        padding-bottom: 0;
+      }
+    }
+
+    &l-0-max {
+      @include generate-max-major-breakpoints() {
+        padding-left: 0;
       }
     }
   }
@@ -498,141 +588,141 @@ $p-spacings: (
    * responsive padding spacings
    */
   &t-a {
-    @include p-spacing-a('padding', 'top', '');
+    @include p-spacing-a('padding', 'top');
   }
 
   &r-a {
-    @include p-spacing-a('padding', 'right', '');
+    @include p-spacing-a('padding', 'right');
   }
 
   &b-a {
-    @include p-spacing-a('padding', 'bottom', '');
+    @include p-spacing-a('padding', 'bottom');
   }
 
   &l-a {
-    @include p-spacing-a('padding', 'left', '');
+    @include p-spacing-a('padding', 'left');
   }
 
   &-a {
-    @include p-spacing-a('padding', '', '');
+    @include p-spacing-a('padding');
   }
 
   &t-b {
-    @include p-spacing-b('padding', 'top', '');
+    @include p-spacing-b('padding', 'top');
   }
 
   &r-b {
-    @include p-spacing-b('padding', 'right', '');
+    @include p-spacing-b('padding', 'right');
   }
 
   &b-b {
-    @include p-spacing-b('padding', 'bottom', '');
+    @include p-spacing-b('padding', 'bottom');
   }
 
   &l-b {
-    @include p-spacing-b('padding', 'left', '');
+    @include p-spacing-b('padding', 'left');
   }
 
   &-b {
-    @include p-spacing-b('padding', '', '');
+    @include p-spacing-b('padding');
   }
 
   &t-c {
-    @include p-spacing-c('padding', 'top', '');
+    @include p-spacing-c('padding', 'top');
   }
 
   &r-c {
-    @include p-spacing-c('padding', 'right', '');
+    @include p-spacing-c('padding', 'right');
   }
 
   &b-c {
-    @include p-spacing-c('padding', 'bottom', '');
+    @include p-spacing-c('padding', 'bottom');
   }
 
   &l-c {
-    @include p-spacing-c('padding', 'left', '');
+    @include p-spacing-c('padding', 'left');
   }
 
   &-c {
-    @include p-spacing-c('padding', '', '');
+    @include p-spacing-c('padding');
   }
 
   &t-d {
-    @include p-spacing-d('padding', 'top', '');
+    @include p-spacing-d('padding', 'top');
   }
   &r-d {
-    @include p-spacing-d('padding', 'right', '');
+    @include p-spacing-d('padding', 'right');
   }
 
   &b-d {
-    @include p-spacing-d('padding', 'bottom', '');
+    @include p-spacing-d('padding', 'bottom');
   }
 
   &l-d {
-    @include p-spacing-d('padding', 'left', '');
+    @include p-spacing-d('padding', 'left');
   }
 
   &-d {
-    @include p-spacing-d('padding', '', '');
+    @include p-spacing-d('padding');
   }
 
   &t-e {
-    @include p-spacing-e('padding', 'top', '');
+    @include p-spacing-e('padding', 'top');
   }
 
   &r-e {
-    @include p-spacing-e('padding', 'right', '');
+    @include p-spacing-e('padding', 'right');
   }
 
   &b-e {
-    @include p-spacing-e('padding', 'bottom', '');
+    @include p-spacing-e('padding', 'bottom');
   }
 
   &l-e {
-    @include p-spacing-e('padding', 'left', '');
+    @include p-spacing-e('padding', 'left');
   }
 
   &-e {
-    @include p-spacing-e('padding', '', '');
+    @include p-spacing-e('padding');
   }
 
   &t-f {
-    @include p-spacing-f('padding', 'top', '');
+    @include p-spacing-f('padding', 'top');
   }
 
   &r-f {
-    @include p-spacing-f('padding', 'right', '');
+    @include p-spacing-f('padding', 'right');
   }
 
   &b-f {
-    @include p-spacing-f('padding', 'bottom', '');
+    @include p-spacing-f('padding', 'bottom');
   }
 
   &l-f {
-    @include p-spacing-f('padding', 'left', '');
+    @include p-spacing-f('padding', 'left');
   }
 
   &-f {
-    @include p-spacing-f('padding', '', '');
+    @include p-spacing-f('padding');
   }
 
   &t-g {
-    @include p-spacing-g('padding', 'top', '');
+    @include p-spacing-g('padding', 'top');
   }
 
   &r-g {
-    @include p-spacing-g('padding', 'right', '');
+    @include p-spacing-g('padding', 'right');
   }
 
   &b-g {
-    @include p-spacing-g('padding', 'bottom', '');
+    @include p-spacing-g('padding', 'bottom');
   }
 
   &l-g {
-    @include p-spacing-g('padding', 'left', '');
+    @include p-spacing-g('padding', 'left');
   }
 
   &-g {
-    @include p-spacing-g('padding', '', '');
+    @include p-spacing-g('padding');
   }
 }
