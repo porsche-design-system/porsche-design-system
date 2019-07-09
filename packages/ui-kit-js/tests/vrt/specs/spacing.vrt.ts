@@ -1,8 +1,8 @@
 import 'jasmine';
 import { VisualRegressionTester } from '@porscheui/visual-regression-tester';
-import { getVisualRegressionTester } from '../../../../tests/vrt/helpers/setup';
+import { getVisualRegressionTester } from '../helpers/setup';
 
-describe('Icon', () => {
+describe('Spacing', () => {
   let visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
@@ -11,8 +11,8 @@ describe('Icon', () => {
 
   it('should have no visual regression', async () => {
     expect(
-      await visualRegressionTester.test('icon', async () => {
-        await visualRegressionTester.goTo('/src/components/icon/icon/icon.test.html');
+      await visualRegressionTester.test('spacing', async () => {
+        await visualRegressionTester.goTo('/src/components/layout/spacing/spacing.test.html');
       })
     ).toBeFalsy();
   });

@@ -1,8 +1,8 @@
 import 'jasmine';
 import { VisualRegressionTester } from '@porscheui/visual-regression-tester';
-import { getVisualRegressionTester } from '../../../../tests/vrt/helpers/setup';
+import { getVisualRegressionTester } from '../helpers/setup';
 
-describe('Button Regular', () => {
+describe('Spinner', () => {
   let visualRegressionTester: VisualRegressionTester;
 
   beforeAll(async () => {
@@ -11,8 +11,8 @@ describe('Button Regular', () => {
 
   it('should have no visual regression', async () => {
     expect(
-      await visualRegressionTester.test('button-regular', async () => {
-        await visualRegressionTester.goTo('/src/components/action/button-regular/button-regular.test.html');
+      await visualRegressionTester.test('spinner', async () => {
+        await visualRegressionTester.goTo('/src/components/feedback/spinner/spinner.test.html');
       })
     ).toBeFalsy();
   });

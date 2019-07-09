@@ -14,3 +14,9 @@
 .dark {
   background: #1a2023;
 }
+
+p-spinner,
+p-button-regular,
+p-button-icon {
+  --p-animation-duration__spinner: 0s;
+}
