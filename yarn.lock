@@ -1186,10 +1186,10 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@stencil/core@^1.1.5":
-  version "1.1.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.1.5.tgz#ae1823c3eeeb0a201049c8b0d77342a38d2e4c67"
-  integrity sha1-rhgjw+7rCiAQSciw13NCo40uTGc=
+"@stencil/core@^1.1.6":
+  version "1.1.6"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.1.6.tgz#8923c3e46d49f0898d1097afb65defa74662ddfb"
+  integrity sha1-iSPD5G1J8ImNEJevtl3vp0Zi3fs=
   dependencies:
     typescript "3.5.2"
 
@@ -11020,10 +11020,10 @@ stylelint-config-standard@^18.3.0:
   dependencies:
     stylelint-config-recommended "^2.2.0"
 
-stylelint-scss@^3.9.0:
-  version "3.9.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.9.0.tgz#45e5e42c28c180ec410ac95ab70fb0b49688cbb6"
-  integrity sha1-ReXkLCjBgOxBCslatw+wtJaIy7Y=
+stylelint-scss@^3.9.1:
+  version "3.9.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.9.1.tgz#c34a41f2587cce85e0769b025377ece44db13724"
+  integrity sha1-w0pB8lh8zoXgdpsCU3fs5E2xNyQ=
   dependencies:
     lodash "^4.17.11"
     postcss-media-query-parser "^0.2.3"
@@ -11561,10 +11561,15 @@ typedarray@^0.0.6:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.5.2, typescript@^3.4.3, typescript@~3.5.2:
+typescript@3.5.2:
   version "3.5.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.5.2.tgz#a09e1dc69bc9551cadf17dba10ee42cf55e5d56c"
   integrity sha1-oJ4dxpvJVRyt8X26EO5Cz1Xl1Ww=
+
+typescript@^3.5.3, typescript@~3.5.3:
+  version "3.5.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
+  integrity sha1-yDD2V/k/HqhGgZ6SkJL1/lmD6Xc=
 
 uglify-js@3.4.x:
   version "3.4.10"

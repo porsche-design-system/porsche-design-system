@@ -51,7 +51,7 @@
     "jest-dom": "^3.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "typescript": "~3.5.2"
+    "typescript": "~3.5.3"
   },
   "dependencies": {
     "@porscheui/ui-kit-js": "^1.0.0-alpha.1"
