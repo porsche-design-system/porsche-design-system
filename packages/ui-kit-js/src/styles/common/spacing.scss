@@ -374,7 +374,7 @@ $p-spacings: (
   }
 
   &-a {
-    @include p-spacing-a('margin', '', '-');
+    @include p-spacing-a('margin', null, '-');
   }
 
   &t-b {
@@ -394,7 +394,7 @@ $p-spacings: (
   }
 
   &-b {
-    @include p-spacing-b('margin', '', '-');
+    @include p-spacing-b('margin', null, '-');
   }
 
   &t-c {
@@ -414,7 +414,7 @@ $p-spacings: (
   }
 
   &-c {
-    @include p-spacing-c('margin', '', '-');
+    @include p-spacing-c('margin', null, '-');
   }
 
   &t-d {
@@ -434,7 +434,7 @@ $p-spacings: (
   }
 
   &-d {
-    @include p-spacing-d('margin', '', '-');
+    @include p-spacing-d('margin', null, '-');
   }
 
   &t-e {
@@ -454,7 +454,7 @@ $p-spacings: (
   }
 
   &-e {
-    @include p-spacing-e('margin', '', '-');
+    @include p-spacing-e('margin', null, '-');
   }
 
   &t-f {
@@ -474,7 +474,7 @@ $p-spacings: (
   }
 
   &-f {
-    @include p-spacing-f('margin', '', '-');
+    @include p-spacing-f('margin', null, '-');
   }
 
   &t-g {
@@ -494,7 +494,7 @@ $p-spacings: (
   }
 
   &-g {
-    @include p-spacing-g('margin', '', '-');
+    @include p-spacing-g('margin', null, '-');
   }
 }
 

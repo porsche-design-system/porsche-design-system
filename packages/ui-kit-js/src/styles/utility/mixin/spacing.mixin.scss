@@ -4,18 +4,18 @@
 /*
 * responsive spacing
 */
-@mixin p-spacing-a($type: 'margin', $direction: 'top', $sign: '+') {
+@mixin p-spacing-a($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-a;
   @if #{$sign} == '-' {
     $spacing-value: -$p-spacing-a;
   }
 
-  @if ($direction) == '' or null {
-    #{$type}: $spacing-value;
-  } @else {
+  @if $direction and $direction != '' {
     #{$type}: {
       #{$direction}: $spacing-value;
     }
+  } @else {
+    #{$type}: $spacing-value;
   }
 
   @include breakpoint('s') {
@@ -23,12 +23,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-a-s;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -37,12 +37,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-a-m;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -51,12 +51,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-a-l;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -65,28 +65,28 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-a-xl;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 }
 
-@mixin p-spacing-b($type: 'margin', $direction: 'top', $sign: '+') {
+@mixin p-spacing-b($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-b;
   @if #{$sign} == '-' {
     $spacing-value: -$p-spacing-b;
   }
 
-  @if ($direction) {
-    #{$type}: $spacing-value;
-  } @else {
+  @if $direction and $direction != '' {
     #{$type}: {
       #{$direction}: $spacing-value;
     }
+  } @else {
+    #{$type}: $spacing-value;
   }
 
   @include breakpoint('s') {
@@ -94,12 +94,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-b-s;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -108,12 +108,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-b-m;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -122,12 +122,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-b-l;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -136,27 +136,28 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-b-xl;
     }
-    @if ($direction) {
-      #{$type}: -$spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
-        #{$direction}: -$spacing-value;
+        #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 }
 
-@mixin p-spacing-c($type: 'margin', $direction: 'top', $sign: '+') {
+@mixin p-spacing-c($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-c;
   @if #{$sign} == '-' {
     $spacing-value: -$p-spacing-c;
   }
-  @if ($direction) {
-    #{$type}: $spacing-value;
-  } @else {
+
+  @if $direction and $direction != '' {
     #{$type}: {
       #{$direction}: $spacing-value;
     }
+  } @else {
+    #{$type}: $spacing-value;
   }
 
   @include breakpoint('s') {
@@ -164,12 +165,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-c-s;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -178,12 +179,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-c-m;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -192,12 +193,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-c-l;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -206,28 +207,28 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-c-xl;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 }
 
-@mixin p-spacing-d($type: 'margin', $direction: 'top', $sign: '+') {
+@mixin p-spacing-d($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-d;
   @if #{$sign} == '-' {
     $spacing-value: -$p-spacing-d;
   }
 
-  @if ($direction) {
-    #{$type}: $spacing-value;
-  } @else {
+  @if $direction and $direction != '' {
     #{$type}: {
       #{$direction}: $spacing-value;
     }
+  } @else {
+    #{$type}: $spacing-value;
   }
 
   @include breakpoint('s') {
@@ -235,12 +236,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-d-s;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -249,12 +250,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-d-m;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -263,12 +264,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-d-l;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -277,27 +278,28 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-d-xl;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 }
 
-@mixin p-spacing-e($type: 'margin', $direction: 'top', $sign: '+') {
+@mixin p-spacing-e($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-e;
   @if #{$sign} == '-' {
     $spacing-value: -$p-spacing-e;
   }
-  @if ($direction) {
-    #{$type}: $spacing-value;
-  } @else {
+
+  @if $direction and $direction != '' {
     #{$type}: {
       #{$direction}: $spacing-value;
     }
+  } @else {
+    #{$type}: $spacing-value;
   }
 
   @include breakpoint('s') {
@@ -305,12 +307,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-e-s;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -319,12 +321,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-e-m;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -333,12 +335,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-e-l;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -347,27 +349,28 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-e-xl;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 }
 
-@mixin p-spacing-f($type: 'margin', $direction: 'top', $sign: '+') {
+@mixin p-spacing-f($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-f;
   @if #{$sign} == '-' {
     $spacing-value: -$p-spacing-f;
   }
-  @if ($direction) {
-    #{$type}: $spacing-value;
-  } @else {
+
+  @if $direction and $direction != '' {
     #{$type}: {
       #{$direction}: $spacing-value;
     }
+  } @else {
+    #{$type}: $spacing-value;
   }
 
   @include breakpoint('s') {
@@ -375,12 +378,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-f-s;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -389,12 +392,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-f-m;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -403,12 +406,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-f-l;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -417,27 +420,28 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-f-xl;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 }
 
-@mixin p-spacing-g($type: 'margin', $direction: 'top', $sign: '+') {
+@mixin p-spacing-g($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-g;
   @if #{$sign} == '-' {
     $spacing-value: -$p-spacing-g;
   }
-  @if ($direction) {
-    #{$type}: $spacing-value;
-  } @else {
+
+  @if $direction and $direction != '' {
     #{$type}: {
       #{$direction}: $spacing-value;
     }
+  } @else {
+    #{$type}: $spacing-value;
   }
 
   @include breakpoint('s') {
@@ -445,12 +449,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-g-s;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -459,12 +463,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-g-m;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -473,12 +477,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-g-l;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 
@@ -487,12 +491,12 @@
     @if #{$sign} == '-' {
       $spacing-value: -$p-spacing-g-xl;
     }
-    @if ($direction) {
-      #{$type}: $spacing-value;
-    } @else {
+    @if $direction and $direction != '' {
       #{$type}: {
         #{$direction}: $spacing-value;
       }
+    } @else {
+      #{$type}: $spacing-value;
     }
   }
 }

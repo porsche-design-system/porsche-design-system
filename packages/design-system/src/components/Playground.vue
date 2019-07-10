@@ -227,7 +227,7 @@ $color-highlight: deeppink;
     }
 
     &.negative-responsive {
-      @include p-spacing-d('padding', '', '');
+      @include p-spacing-d('padding');
 
       > [class*='p-spacing-'] {
         width: 2 * $p-spacing-d;
