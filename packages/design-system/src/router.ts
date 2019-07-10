@@ -22,9 +22,9 @@ export default new Router({
       component: () => import('./views/Story.vue'),
     },
     {
-      path: '/license',
-      name: 'license',
-      component: () => import('./views/License.vue'),
+      path: '/:page',
+      name: 'custom',
+      component: () => import('./views/Custom.vue'),
     },
     {
       path: '*',
