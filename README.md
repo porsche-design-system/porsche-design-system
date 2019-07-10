@@ -92,9 +92,8 @@ __Getting started__ section to be able to authenticate during npm dependency upd
 
 This tool automatically creates a catalog of ui components. For its magic to work, new components have to follow a few rules:
 
-1. **File location:** A component is developed as a self containing element under `packages/workshop/src/components`.
-1. **Export:** The component needs to be exported in `packages/workshop/src/index.ts`.
-1. **Component description:** A component should have a `COMPONENTNAME.code.mdx` and a `COMPONENTNAME.design.mdx` file which describes its general purpose, design/development specifications and examples.
+1. **File location:** A component is developed as a self containing element under `packages/ui-kit-js/src/components`.
+1. **Component description:** A component should have a `COMPONENTNAME.code.md` and a `COMPONENTNAME.design.md` file which describes its general purpose, design/development specifications and examples.
 1. **Props:** The component has to describe its props using typescript types and documentation.
 
 
@@ -104,7 +103,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __project root directory__
 1. Run `git pull`
 1. Run `./docker.sh run-build`
-1. Switch to __packages/workshop directory__
+1. Switch to __packages/ui-kit-js directory__
 1. Either execute `yarn version patch` for a patch release or `yarn version minor` for a minor release
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Create a commit with following message structure `Release v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
