@@ -11,7 +11,7 @@
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:vrt": "echo design-system:test:vrt coming soon",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf ./node_modules & rm -rf ./dist"
   },
   "dependencies": {
@@ -23,7 +23,9 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@porscheui/visual-regression-tester": "^1.1.1",
     "@types/jest": "^24.0.14",
+    "@types/puppeteer": "^1.12.4",
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-e2e-cypress": "^3.8.0",
     "@vue/cli-plugin-typescript": "^3.8.0",
@@ -31,10 +33,14 @@
     "@vue/cli-service": "^3.9.2",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
+    "concurrently": "^4.1.1",
     "cypress-shadow-dom": "^0.1.1",
+    "jasmine": "^3.4.0",
+    "puppeteer": "^1.18.1",
     "sass": "^1.22.3",
     "sass-loader": "^7.1.0",
     "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3",

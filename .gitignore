@@ -23,6 +23,3 @@ Thumbs.db
 node_modules
 .pnp
 .pnp.js
-
-# visual regression tests
-/vrt/results
