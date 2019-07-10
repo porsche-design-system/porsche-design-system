@@ -1,4 +1,4 @@
-# Design System
+# UI Kit JS
 
 ## Project setup
 ```
@@ -39,6 +39,3 @@ yarn test:e2e
 ```
 yarn test:vrt
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
