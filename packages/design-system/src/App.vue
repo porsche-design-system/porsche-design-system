@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <aside class="sidebar" :class="{ 'is-visible': isVisible() }">
+    <aside class="sidebar" :class="{ 'is-visible': isMenuActive }">
       <Header />
       <Divider spacing="small" />
       <Sidebar />
       <Divider spacing="small" />
       <Footer />
     </aside>
-    <main class="content" :class="{ 'is-hidden': isHidden() }">
+    <main class="content" :class="{ 'is-hidden': isMenuActive }">
       <router-view />
     </main>
     <Menu class="menu" @toggle="onToggleMenu"></Menu>
@@ -36,14 +36,6 @@ export default class App extends Vue {
 
   public onToggleMenu(isActive: boolean): void {
     this.isMenuActive = isActive;
-  }
-
-  public isHidden(): boolean {
-    return this.isMenuActive;
-  }
-
-  public isVisible(): boolean {
-    return this.isMenuActive;
   }
 }
 </script>
@@ -81,10 +73,12 @@ main {
   -webkit-overflow-scrolling: touch;
 
   @include breakpoint('xxs', 's') {
-    transition: transform 0.3s;
+    opacity: 0;
+    transition: transform .3s, opacity .3s;
     transform: translate3d(rem(-140px), 0, 0);
 
     &.is-visible {
+      opacity: 1;
       transform: translate3d(0, 0, 0);
     }
   }
