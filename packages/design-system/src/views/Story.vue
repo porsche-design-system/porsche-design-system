@@ -19,7 +19,7 @@
 
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config} from '@/design-system.config';
+  import {config} from '@/../design-system.config';
   import {decodeUrl, featureToggle} from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
 
