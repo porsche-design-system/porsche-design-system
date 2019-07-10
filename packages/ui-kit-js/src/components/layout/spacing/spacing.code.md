@@ -442,7 +442,7 @@ Responsive spacings can be used to achieve different spacings on predefined majo
 * `p-spacing-pl-{v}` => padding-left
 
 **Possible mixin for usage inside SCSS (where {v} is the spacing value):**
-* `@include p-spacing-{v}({type}, {direction}, {sign})`
+* `@include p-spacing-{v}({type}, {direction:optional}, {sign:optional})`
 
 **Examples of responsive spacing mixin (with positive and negative value):**
 The responsive spacing mixin needs up to 3 parameters passed for defining type, direction and sign.
