@@ -44,7 +44,7 @@
 * Run `./docker.sh run-test-vrt`, `./docker.sh run-test-vrt --ui-kit-js` or `./docker.sh run-test-vrt --design-system`
 
 #### What to do when tests are failing
-* Switch to your results directory in `/vrt/results`. Here you can find the belonging `diff` and `regression` images.
+* Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/results`. Here you can find the belonging `diff` and `regression` images.
 * Check if you would like to accept the changes
   * **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results` folder and delete the images in the `/vrt/results` directory afterwards manually.
   * **If no**: Recheck your code and run the tests again, when you think you fixed it.
