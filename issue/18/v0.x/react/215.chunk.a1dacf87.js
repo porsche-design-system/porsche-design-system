@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[215],{987:
-/*!******************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconTelegram.js ***!
-  \******************************************************************************/
-/*! exports provided: SvgIconTelegram */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,c){"use strict";c.r(t),c.d(t,"SvgIconTelegram",function(){return r});var n=c(/*! tslib */10),a=c(/*! react */0),r=function(e){return a.createElement("svg",n.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M13.044 24.8c-.713 0-.588-.269-.838-.944l-2.094-6.881 16.1-9.55z"}),a.createElement("path",{d:"M13.044 24.8c.55 0 .794-.25 1.1-.55l2.925-2.844-3.65-2.2z"}),a.createElement("path",{d:"M13.419 19.2l8.85 6.537c1.012.556 1.738.269 1.988-.938l3.6-16.975c.369-1.481-.563-2.15-1.531-1.713l-21.15 8.162c-1.444.581-1.438 1.387-.263 1.744l5.425 1.694L22.9 9.786c.594-.363 1.137-.169.694.231z"}))}}}]);

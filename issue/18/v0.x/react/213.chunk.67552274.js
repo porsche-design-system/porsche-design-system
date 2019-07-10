@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[213],{985:
-/*!****************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconTablet.js ***!
-  \****************************************************************************/
-/*! exports provided: SvgIconTablet */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconTablet",function(){return r});var a=n(/*! tslib */10),c=n(/*! react */0),r=function(e){return c.createElement("svg",a.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),c.createElement("path",{d:"M23.84 3.531H8.094a2.069 2.069 0 0 0-2.066 2.066v20.806c0 1.139.927 2.066 2.066 2.066H23.84a2.069 2.069 0 0 0 2.066-2.066V5.597a2.069 2.069 0 0 0-2.066-2.066zM8.554 4.969h14.878c.598 0 1.085.486 1.085 1.084v17.978H7.47V6.053c0-.598.487-1.084 1.085-1.084zm14.877 22.062H8.553a1.086 1.086 0 0 1-1.085-1.084v-.976h17.047v.976c0 .598-.487 1.084-1.085 1.084z"}),c.createElement("path",{d:"M16.625 26a.625.625 0 1 1-1.25 0 .625.625 0 0 1 1.25 0z"}))}}}]);

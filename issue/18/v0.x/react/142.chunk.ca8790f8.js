@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[142],{914:
-/*!********************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconMicrophone.js ***!
-  \********************************************************************************/
-/*! exports provided: SvgIconMicrophone */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,n,t){"use strict";t.r(n),t.d(n,"SvgIconMicrophone",function(){return h});var v=t(/*! tslib */10),a=t(/*! react */0),h=function(e){return a.createElement("svg",v.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M16.062 21.851a3.868 3.868 0 0 0 3.868-3.868v-9.15a3.868 3.868 0 0 0-7.736 0v9.15a3.868 3.868 0 0 0 3.868 3.868z"}),a.createElement("path",{d:"M22.092 13.341h-1.147v4.748a4.882 4.882 0 1 1-9.764 0v-4.748H9.154v1.521h.774v3.175a6.082 6.082 0 0 0 4.935 5.971v2.006h-.507v1.147h3.415v-1.147h-.507v-2.025a6.084 6.084 0 0 0 4.829-5.952v-3.175h.88v-1.521h-.88z"}))}}}]);

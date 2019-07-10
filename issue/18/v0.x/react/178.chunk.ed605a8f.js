@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[178],{950:
-/*!****************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconRenren.js ***!
-  \****************************************************************************/
-/*! exports provided: SvgIconRenren */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(t,e,n){"use strict";n.r(e),n.d(e,"SvgIconRenren",function(){return c});var q=n(/*! tslib */10),r=n(/*! react */0),c=function(t){return r.createElement("svg",q.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},t),r.createElement("path",{d:"M.5 15.938q0 3.188 2.063 5.688 2.375-1.125 3.813-3.5t1.438-5.313v-5.5q-3.125.5-5.219 2.938T.501 15.939zm4.563 7.687q1.938 1.063 4.188 1.063t4.25-1.063q-3.438-2.125-4.25-5.5-.75 3.375-4.188 5.5zm5.687-10.812q0 2.875 1.438 5.25t3.813 3.563q-2.125-2.5-2.125-5.688t2.125-5.688q-2.125-2.438-5.25-2.938v5.5zM16 21.625q2.313-1.188 3.781-3.531t1.469-5.281v-5.5q-3.188.5-5.25 2.938 2.125 2.563 2.125 5.688T16 21.627zm2.5 2q2 1.063 4.25 1.063t4.188-1.063q-3.438-2.125-4.188-5.5-.813 3.375-4.25 5.5zm5.688-10.812q0 2.875 1.438 5.25t3.813 3.563q2.063-2.5 2.063-5.688 0-3.25-2.094-5.688t-5.219-2.938v5.5z"}))}}}]);

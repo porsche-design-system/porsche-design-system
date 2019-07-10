@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[238],{1010:
-/*!*****************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconWeight2.js ***!
-  \*****************************************************************************/
-/*! exports provided: SvgIconWeight2 */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,c,n){"use strict";n.r(c),n.d(c,"SvgIconWeight2",function(){return s});var t=n(/*! tslib */10),a=n(/*! react */0),s=function(e){return a.createElement("svg",t.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M22.531 12.594a.627.627 0 0 0-.5-.612v-.013s-2.083-.49-2.625-1c-.306-.288-.813-.844-.813-2s1.375-1.813 1.375-1.813l-.05-.013c.389-.263.612-.568.612-.894 0-.984-2.029-1.781-4.531-1.781s-4.531.798-4.531 1.781c0 .326.224.631.612.894l-.05.013s1.375.656 1.375 1.813-.506 1.712-.813 2c-.542.51-2.625 1-2.625 1v.013a.627.627 0 0 0-.5.612v12.5c0 .054.008.106.021.156a.229.229 0 0 0-.021.094c0 .656 2.924 1.188 6.531 1.188s6.531-.532 6.531-1.188a.24.24 0 0 0-.02-.094.618.618 0 0 0 .02-.156v-12.5z"}))}}}]);

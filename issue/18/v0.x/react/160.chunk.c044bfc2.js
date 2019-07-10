@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[160],{932:
-/*!***************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconPhone.js ***!
-  \***************************************************************************/
-/*! exports provided: SvgIconPhone */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconPhone",function(){return i});var o=n(/*! tslib */10),c=n(/*! react */0),i=function(e){return c.createElement("svg",o.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),c.createElement("path",{d:"M4.625 8.625l.813 2.438q1.375 2.5 3.469 4.969t4.063 4.281 3.719 3.219 2.844 2.156l1.094.75 2 .938q.875.25 1.688-.031t1.281-.875.844-1.281.531-1.125.156-.5l.375-1.5-6.688-2.375q-.125.75-.188.875-.063.25-.125.281t-.125-.031q-.063 0-.063-.063-3.313-1-5.25-3l-1-.938Q11.5 13.75 11.313 11.5q0-.188.125-.188l1.063-.5-3.438-6.313-.625.313q-.188 0-.5.063t-1.094.313-1.313.625-.844 1.125-.063 1.688z"}))}}}]);

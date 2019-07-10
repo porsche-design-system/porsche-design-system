@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[79],{851:
-/*!**************************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconEarlyMorningNext.js ***!
-  \**************************************************************************************/
-/*! exports provided: SvgIconEarlyMorningNext */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,a,n){"use strict";n.r(a),n.d(a,"SvgIconEarlyMorningNext",function(){return r});var c=n(/*! tslib */10),t=n(/*! react */0),r=function(e){return t.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),t.createElement("path",{d:"M24.837 13.769a.697.697 0 0 0-.981 0l-1.962 1.963a.697.697 0 0 0 .988.981l1.962-1.963a.705.705 0 0 0-.006-.981zM16 14.275a.697.697 0 0 0 .694-.694v-2.775c0-.381-.313-.694-.694-.694s-.694.313-.694.694v2.775c0 .381.313.694.694.694zM10.113 16.712a.697.697 0 0 0 0-.981L8.15 13.768c-.269-.269-.713-.269-.981 0s-.269.713 0 .981l1.962 1.963a.691.691 0 0 0 .982 0zM20.313 17.206c-1.212-.994-2.744-1.544-4.319-1.544s-3.106.55-4.319 1.544a6.853 6.853 0 0 0-2.35 3.856.681.681 0 0 0 .531.813.681.681 0 0 0 .813-.531c.525-2.494 2.763-4.306 5.319-4.306s4.794 1.813 5.319 4.306a.688.688 0 0 0 .675.544c.05 0 .094-.006.144-.012a.693.693 0 0 0 .531-.813 6.779 6.779 0 0 0-2.344-3.856z"}))}}}]);

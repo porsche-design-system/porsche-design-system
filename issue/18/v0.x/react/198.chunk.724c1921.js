@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[198],{970:
-/*!***************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconSound.js ***!
-  \***************************************************************************/
-/*! exports provided: SvgIconSound */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(t,e,n){"use strict";n.r(e),n.d(e,"SvgIconSound",function(){return i});var o=n(/*! tslib */10),c=n(/*! react */0),i=function(t){return c.createElement("svg",o.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},t),c.createElement("path",{d:"M3.5 20.5v-9H8v9H3.5zm6 0v-9l6.5-5v19zm9.5 0q0-.5.375-.813 1.5-1.563 1.5-3.719t-1.5-3.656Q19 11.937 19 11.437t.344-.844.844-.344.875.375q2.25 2.188 2.25 5.344t-2.25 5.406q-.375.313-.875.313t-.844-.344-.344-.844zm4.313 2.25q0-.5.313-.813 2.5-2.5 2.5-5.969t-2.5-5.969q-.313-.313-.313-.813t.344-.844.844-.344.813.313q3.188 3.188 3.188 7.656t-3.188 7.656q-.313.375-.813.375t-.844-.375-.344-.875z"}))}}}]);

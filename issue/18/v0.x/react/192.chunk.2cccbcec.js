@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[192],{964:
-/*!***************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconShare.js ***!
-  \***************************************************************************/
-/*! exports provided: SvgIconShare */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconShare",function(){return i});var r=n(/*! tslib */10),c=n(/*! react */0),i=function(e){return c.createElement("svg",r.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),c.createElement("path",{d:"M5.5 17.031q0 2.281 1.625 3.906T11 22.562q2 0 3.5-1.313l2.813 2.375Q17 24.249 17 24.999q0 1.438 1.031 2.469t2.469 1.031 2.469-1.031T24 24.999t-1.031-2.469-2.469-1.031q-1.063 0-1.938.563l-2.75-2.313q.688-1.25.688-2.688 0-1.875-1.125-3.375l3.625-4q.688.313 1.5.313 1.438 0 2.469-1.031T24 6.499 22.969 4.03 20.5 2.999 18.031 4.03 17 6.499q0 1 .5 1.813l-3.625 4.063q-1.313-.813-2.875-.813-2.25 0-3.875 1.594T5.5 17.031z"}))}}}]);

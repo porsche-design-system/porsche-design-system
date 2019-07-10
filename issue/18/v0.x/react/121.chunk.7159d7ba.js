@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[121],{893:
-/*!**************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconLeaf.js ***!
-  \**************************************************************************/
-/*! exports provided: SvgIconLeaf */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconLeaf",function(){return r});var c=n(/*! tslib */10),a=n(/*! react */0),r=function(e){return a.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M15.456 8.369c-4.469 1.188-8.375 3.75-8.375 8.375 0 1.675.481 3.069 1.069 4.1l.825-.825c-.481-.938-.769-1.875-.769-3.275 0-.944.194-1.819.569-2.606.356-.738.881-1.419 1.563-2.031 1.269-1.131 3.144-2.05 5.406-2.65 2.175-.581 7.025-2.069 9.775-2.925-.85 2.938-2.369 8.219-2.788 9.95-.538 2.231-1.438 4.094-2.606 5.387a6.363 6.363 0 0 1-4.844 2.125c-1.05-.012-2.131-.262-3.444-.962l-.956.744a8.355 8.355 0 0 0 4.556 1.35c4.625 0 7.287-3.881 8.375-8.375.6-2.4 3.375-11.919 3.375-11.919s-8.662 2.719-11.731 3.537z"}),a.createElement("path",{d:"M4.818 26.384l10.973-10.973.796.795L5.614 27.179l-.795-.796z"}))}}}]);

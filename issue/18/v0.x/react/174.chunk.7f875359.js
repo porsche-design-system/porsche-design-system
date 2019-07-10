@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[174],{946:
-/*!**********************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconQuestionMark.js ***!
-  \**********************************************************************************/
-/*! exports provided: SvgIconQuestionMark */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,n,t){"use strict";t.r(n),t.d(n,"SvgIconQuestionMark",function(){return i});var c=t(/*! tslib */10),a=t(/*! react */0),i=function(e){return a.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M20.445 7.5q-2.088-1.506-5.242-1.506-2.401 0-4.047 1.059-2.611 1.658-2.778 5.629h4.034q0-1.156.675-2.229t2.291-1.072q1.641 0 2.262.87c.387.529.62 1.193.62 1.911v.02c0 .613-.308 1.174-.679 1.687-.227.317-.493.588-.797.811s-2.197 1.41-3.159 2.537c-.557.654-.607 1.633-.656 3.037-.004.1.034.306.384.306h3.138c.313 0 .375-.231.381-.332.022-.511.079-.773.173-1.067.177-.558.655-1.044 1.194-1.462l1.11-.761c1-.781 1.802-1.421 2.155-1.924.602-.828 1.026-1.845 1.026-3.051q0-2.956-2.086-4.459zM13.592 22.379h2.928a.58.58 0 0 1 .581.581v2.928a.58.58 0 0 1-.581.581h-2.928a.58.58 0 0 1-.581-.581V22.96a.58.58 0 0 1 .581-.581z"}))}}}]);

@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{776:
-/*!*****************************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconAdvisorNotAvailable.js ***!
-  \*****************************************************************************************/
-/*! exports provided: SvgIconAdvisorNotAvailable */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,t,n){"use strict";n.r(t),n.d(t,"SvgIconAdvisorNotAvailable",function(){return i});var c=n(/*! tslib */10),a=n(/*! react */0),i=function(e){return a.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M26.5 25.488c0-3.144-6.044-6.606-7.781-6.881-.538-.087-.55-1.569-.55-1.569s.988-1.6 1.806-3.681c.819-2.088 1.894-9.619-3.962-9.619s-4.444 8.387-4.088 9.619c.356 1.225 1.931 3.681 1.931 3.681s-.012 1.488-.55 1.569c-1.744.281-7.806 3.738-7.806 6.881 0 0 1.688.75 10.563.75s10.438-.75 10.438-.75z"}),a.createElement("path",{d:"M7.919 25.45L29.482 3.881V1.919l-26.194 26.2v1.962l3.794-3.8.444-.438z"}))}}}]);

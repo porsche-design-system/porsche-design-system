@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38934327-7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-38934327-7');
+    </script>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
+    <!-- never cache patterns -->
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+
+<link rel="stylesheet" href="../../styleguide/css/styleguide.min.css?1562766827526" media="all">
+<link rel="stylesheet" href="../../styleguide/css/prism-typeahead.min.css?1562766827526" media="all" />
+
+
+    <script>
+      if (window.location.search.indexOf('disableCSSAnimations') > -1) {
+        var style = document.createElement('style');
+        style.textContent =
+          '*, *::before, *::after { ' +
+            '-moz-animation: none !important; ' +
+            '-ms-animation: none !important; ' +
+            '-webkit-animation: none !important; ' +
+            'animation: none !important; ' +
+            '-moz-transition: none !important; ' +
+            '-ms-transition: none !important; ' +
+            '-webkit-transition: none !important; ' +
+            'transition: none !important; ' +
+          '}';
+        document.head.appendChild(style);
+      }
+    </script>
+
+
+    <link rel="stylesheet" href="../../css/porsche-ui-kit-core.styleguide-scaffolding.css?1562766827526" media="all"/>
+    <link rel="stylesheet" href="../../css/porsche-stylesheets.css?1562766827526" media="all"/>
+
+  </head>
+  <body class="sg-wrapper-default">
+
+<div class="sg-markdown">
+<h1 id="installation">Installation</h1>
+<h2 id="authenticate-for-the-porsche-ui-kit">Authenticate for the Porsche UI Kit</h2>
+<p>The instructions below requires you to have at most recent stable version of <a target="_blank" href="https://nodejs.org/">Node JS &amp; NPM</a> installed.</p>
+<ol>
+<li>Request access rights by sending an email to <a href="mailto:porsche-ui-kit@porsche.de">porsche-ui-kit@porsche.de</a> including your firstname, lastname, corporate email address and the project you are working for, i.e. Porsche Finder</li>
+<li>After receiving the invitation email please login and change your password</li>
+<li>Generate an API key under edit profile section and save the profile</li>
+<li>Create <strong>.npmrc</strong> file on your machine locally (if there is no) and execute following command in terminal: </li>
+</ol>
+<pre><code>npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/</code></pre><ol start="5">
+<li>After request please enter username, password (API key) and email. It will than add an auth key for a specific registry to your local <em>~/.npmrc</em></li>
+</ol>
+<h2 id="install-and-use-the-porsche-ui-kit">Install and use the Porsche UI Kit</h2>
+<p>Please be aware of different versions of the Porsche UI Kit npm package and align with your design counterpart on the used Porsche UI Kit version. In general we recommend updating the npm dependencies on a regular basis. All changes are documented in the Changelog. </p>
+<h3 id="installation-and-using-htmlscss-components">Installation and using HTML/(S)CSS components</h3>
+<p>Following example includes an extremely simple build function as well as a sample browser support list. Both is intended as example and may differ in your application because you might want to use Webpack, Gulp or Grunt etc. to build your application.</p>
+<ul>
+<li>Create a new folder on your machine locally</li>
+<li>Open terminal and switch to the previously created folder</li>
+<li>Execute <code>npm init</code> in your terminal, it will ask you to enter name, version, description, etc. — simply press enter to all asked questions. A <em>package.json</em> file will be created within your folder. </li>
+<li>Add <em>.npmrc</em> next to your <em>package.json</em> and add following content. Then, whenever you try to install a dependency by npm within the project folder it will try to get the dependency of the defined registry.<pre><code>always-auth = true
+registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/</code></pre></li>
+<li>Execute <code>npm install @porsche/ui-kit-core --save</code> within your terminal. It will install the latest version of Porsche UI Kit within a automatically created folder <em>node_modules</em></li>
+<li>Install multiple dev-dependencies necessary for compiling the provided SCSS files of <em>@porsche/ui-kit-core</em> by executing <code>npm install node-sass node-sass-tilde-importer postcss-cli autoprefixer fs-extra --save-dev</code></li>
+<li>Create a folder called <em>src</em></li>
+<li>Add <em>index.html</em> to <em>src</em>-folder with following content. It makes use of some Porsche UI Kit patterns and includes <em>style.css</em> which we&#39;ll create in a later step in this documentation.<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Hello Porsche UI Kit&lt;/title&gt;
+&lt;link href=&quot;styles.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;nav class=&quot;pagination&quot; aria-label=&quot;Pagination&quot;&gt;
+&lt;span class=&quot;pagination__prev pagination__prev--disabled&quot;&gt;&lt;/span&gt;
+&lt;ul class=&quot;pagination__items&quot;&gt;
+  &lt;li class=&quot;pagination__item&quot;&gt;
+    &lt;span class=&quot;pagination__goto pagination__goto--current&quot; aria-label=&quot;Current page, page 1&quot; aria-current=&quot;page&quot;&gt;1&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;pagination__item&quot;&gt;
+    &lt;a class=&quot;pagination__goto&quot; href=&quot;#&quot; aria-label=&quot;Go to page 2&quot;&gt;2&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;pagination__item&quot;&gt;
+    &lt;a class=&quot;pagination__goto&quot; href=&quot;#&quot; aria-label=&quot;Go to page 3&quot;&gt;3&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;pagination__item&quot;&gt;
+    &lt;a class=&quot;pagination__goto&quot; href=&quot;#&quot; aria-label=&quot;Go to page 4&quot;&gt;4&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;pagination__item&quot;&gt;
+    &lt;a class=&quot;pagination__goto&quot; href=&quot;#&quot; aria-label=&quot;Go to page 5&quot;&gt;5&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;a class=&quot;pagination__next&quot; href=&quot;#&quot; aria-label=&quot;Next&quot;&gt;&lt;/a&gt;
+&lt;/nav&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></li>
+</ul>
+<ol start="9">
+<li>Add <em>styles.scss</em> to <em>src</em>-folder with following content. Necessary styles are imported from <em>@porsche/ui-kit-core</em> package.  </li>
+</ol>
+<p><strong>Base and specific component styles</strong></p>
+<pre><code>// base imports
+@import &quot;~@porsche/ui-kit-core/src/styles/utility/index&quot;;
+@import &quot;~@porsche/ui-kit-core/src/styles/common/index&quot;;
+
+// component imports
+@import &quot;~@porsche/ui-kit-core/src/components/layout/grid/grid&quot;;
+@import &quot;~@porsche/ui-kit-core/src/components/action/button/button&quot;;
+...</code></pre><ol start="10">
+<li>Add <em>postcss.config.js</em> to project root folder with following content. We need to compile SCSS to CSS and want to make use of <a target="_blank" href="https://github.com/postcss/autoprefixer">autoprefixer</a> which is based on <a target="_blank" href="https://github.com/postcss/postcss">postcss</a>.<pre><code>module.exports = {
+plugins: {
+autoprefixer: {}
+}
+}</code></pre></li>
+<li>Add <em>.browserslistrc</em> to project root folder with following content. Browsers we should support will be automatically considered by <a target="_blank" href="https://github.com/postcss/autoprefixer">autoprefixer</a>.<pre><code>last 2 version
+&gt;1%
+not dead
+not ie &lt; 11
+not op_mini all</code></pre></li>
+<li>Add <em>build.js</em> to project root folder with following content. SCSS styles will get compiled to CSS and necessary <em>Porsche Next</em> font family and icon set are copied to <em>dist</em>-folder.<pre><code>const fs = require(&#39;fs-extra&#39;);
+const sass = require(&#39;node-sass&#39;);
+const tildeImporter = require(&#39;node-sass-tilde-importer&#39;);
+if (!fs.existsSync(&#39;dist&#39;)) fs.mkdirSync(&#39;dist&#39;);
+sass.render(
+{ file: &#39;src/styles.scss&#39;, importer: tildeImporter },
+(error, result) =&gt; {
+if (error) throw error;
+fs.writeFileSync(&#39;dist/styles.css&#39;, result.css);
+});
+const items = [
+{ source: &#39;src/index.html&#39;, target: &#39;dist/index.html&#39; }
+];
+for (const item of items) {
+fs.copy(item.source, item.target, (error) =&gt; {
+if (error) throw error;
+});
+}</code></pre></li>
+<li>Open <em>package.json</em> file and add following content within section <em>scripts</em>. Defining executable scripts within terminal. <pre><code>&quot;scripts&quot;: {
+&quot;build&quot;: &quot;node build.js &amp;&amp; npm run postcss&quot;,
+&quot;postcss&quot;: &quot;postcss dist/styles.css --output dist/styles.css --config postcss.config.js&quot;
+}</code></pre></li>
+<li>Open terminal, switch to project root directory and execute following command. It will compile your sample application, save it to <em>dist</em>-folder and open it in your browser.<pre><code>npm run build &amp;&amp; open dist/index.html</code></pre></li>
+</ol>
+
+</div>    <!--DO NOT REMOVE-->
+    <script type="text/json" id="sg-pattern-data-footer" class="sg-pattern-data">
+  {"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"","patternBreadcrumb":{"patternType":"docs"},"patternExtension":"hbs","patternName":"Start Coding","patternPartial":"docs-start-coding","patternState":"","patternEngineName":"handlebars","extraOutput":{}}
+</script>
+
+<script>
+  /*!
+   * scriptLoader - v0.1
+   *
+   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com
+   * Licensed under the MIT license
+   *
+   */
+  
+  var scriptLoader = {
+    
+    run: function(js,cb,target) {
+      var s  = document.getElementById(target+'-'+cb);
+      for (var i = 0; i < js.length; i++) {
+        var src = (typeof js[i] != 'string') ? js[i].src : js[i];
+        var c   = document.createElement('script');
+        c.src   = '../../'+src+'?'+cb;
+        if (typeof js[i] != 'string') {
+          if (js[i].dep !== undefined) {
+            c.onload = function(dep,cb,target) {
+              return function() {
+                scriptLoader.run(dep,cb,target);
+              }
+            }(js[i].dep,cb,target);
+          }
+        }
+        s.parentNode.insertBefore(c,s);
+      }
+    }
+    
+  }
+</script>
+
+<script id="pl-js-polyfill-insert-1562766827526">
+  (function() {
+    if (self != top) {
+      var cb = '1562766827526';
+      var js = [];
+      if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {
+        js.push('styleguide/bower_components/classList.min.js');
+      }
+      scriptLoader.run(js,cb,'pl-js-polyfill-insert');
+    }
+  })();
+</script>
+
+<script id="pl-js-insert-1562766827526">
+  (function() {
+    if (self != top) {
+      var cb = '1562766827526';
+      var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];
+      scriptLoader.run(js,cb,'pl-js-insert');
+    }
+  })();
+</script>
+
+    <script src="../../js/porsche-ui-kit-core/polyfill.placeholder-shown.es5.min.js"></script>
+    <script src="../../js/porsche-ui-kit-docs/svg4everybody.min.js"></script>
+    <script>svg4everybody();</script>
+
+  </body>
+</html>

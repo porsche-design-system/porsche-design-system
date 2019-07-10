@@ -1,7 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[28],{800:
-/*!****************************************************************************!*\
-  !*** ../ui-kit-react/dist/es/components/atoms/IconSvg/icons/IconBasket.js ***!
-  \****************************************************************************/
-/*! exports provided: SvgIconBasket */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ../ui-kit-react/dist/es/components/atoms/IconSvg lazy ^.*$ namespace object (referenced with context element) */function(e,n,t){"use strict";t.r(n),t.d(n,"SvgIconBasket",function(){return h});var c=t(/*! tslib */10),a=t(/*! react */0),h=function(e){return a.createElement("svg",c.a({width:"1em",height:"1em",viewBox:"0 0 32 32"},e),a.createElement("path",{d:"M11.664 22.683c-1.227 0-2.221.964-2.221 2.143s.994 2.143 2.221 2.143 2.232-.964 2.232-2.143-1.004-2.143-2.232-2.143zM11.854 19.201l.034-.129 1.004-1.746h8.337c.818 0 1.533-.439 1.923-1.094l3.666-6.389H11.031L8.618 5.468H4.969v2.563h2.232l4.018 7.785-1.438 2.527c-.179.3-.25.75-.25 1.125 0 1.179.906 2.063 2.133 2.063h13.393v-2.063H12.134h-.001a.279.279 0 0 1-.278-.267zM22.824 22.683c-1.227 0-2.221.964-2.221 2.143s.993 2.142 2.221 2.142 2.232-.964 2.232-2.142-1.004-2.142-2.232-2.142z"}))}}}]);
