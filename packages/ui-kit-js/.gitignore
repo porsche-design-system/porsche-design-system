@@ -2,6 +2,8 @@
 /www/
 /loader/
 
+/tests/vrt/results
+
 *~
 *.sw[mnpcod]
 *.log
@@ -23,5 +25,3 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
-
-/tests/vrt/results

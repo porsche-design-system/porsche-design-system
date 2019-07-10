@@ -93,12 +93,12 @@ export class Flex {
       this.alignItems !== 'stretch' && mapBreakpointPropToClasses('flex--align-items', parseProp(this.alignItems)),
       this.alignContent !== 'stretch' &&
         mapBreakpointPropToClasses('flex--align-content', parseProp(this.alignContent)),
-      this.gap !== '0' && prefix(`spacing-m-nl--${this.gap}`),
-      this.gap !== '0' && prefix(`spacing-m-nr--${this.gap}`)
+      this.gap !== '0' && prefix(`spacing-m-nl-${this.gap}`),
+      this.gap !== '0' && prefix(`spacing-m-nr-${this.gap}`)
     );
 
-    const spacingFlexItemLeftClass = this.gap !== '0' && prefix(`spacing-pl--${this.gap}`);
-    const spacingFlexItemRightClass = this.gap !== '0' && prefix(`spacing-pr--${this.gap}`);
+    const spacingFlexItemLeftClass = this.gap !== '0' && prefix(`spacing-pl-${this.gap}`);
+    const spacingFlexItemRightClass = this.gap !== '0' && prefix(`spacing-pr-${this.gap}`);
 
     return (
       <Host class={flexClasses}>
