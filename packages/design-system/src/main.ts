@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import store from './store';
 import { defineCustomElements, applyPolyfills } from '@porscheui/ui-kit-js/loader';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
@@ -25,6 +24,5 @@ Vue.use({
 
 new Vue({
   router,
-  store,
   render: (h) => h(App),
 }).$mount('#app');
