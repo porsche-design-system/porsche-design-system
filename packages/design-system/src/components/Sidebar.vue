@@ -39,7 +39,7 @@
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
-  import {config} from '@/design-system.config';
+  import {config} from '@/../design-system.config';
   import {encodeUrl, featureToggle} from '@/services/utils';
   import Divider from '@/components/Divider.vue';
 
