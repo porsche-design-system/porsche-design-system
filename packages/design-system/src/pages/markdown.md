@@ -121,13 +121,12 @@ Autoconverted link https://ui.porsche.com/
 
 ## Images
 
-![Porsche 992 Carrera S](https://files1.porsche.com/filestore/image/multimedia/none/rd-2019-homepage-banner-ww-992s-kw02/normal/e98ad6dd-1007-11e9-ae19-0019999cd470;sL;twebp/porsche-normal.webp)
+![Porsche 992 Carrera S](../assets/porsche-992-carrera-s.webp)
 
-![Porsche 718 GTS](https://files1.porsche.com/filestore/image/multimedia/none/jdp-2016-modelseries-718-gts-intro-01/normal/0af6a390-af2d-11e7-b591-0019999cd470;sL;twebp/porsche-normal.webp "The Porsche 718 GTS")
+![Porsche 718 GTS](../assets/porsche-718-gts.webp "The Porsche 718 GTS")
 
 Like links, Images also have a footnote style syntax with a reference later in the document defining the URL location.
 
 ![Alt text][id]
 
-[id]: https://files1.porsche.com/filestore/image/multimedia/none/jdp-2016-modelseries-911-gt2-rs-intro-01/normal/097b0fad-a8f5-11e7-b591-0019999cd470;sL;twebp/porsche-normal.webp "911 GT2 RS"
-
+[id]: ../assets/porsche-911-gt2-rs.webp "911 GT2 RS"
