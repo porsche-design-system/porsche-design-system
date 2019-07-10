@@ -11984,11 +11984,6 @@ vue@^2.6.10:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha1-pysaQqTYKnIepDjRtr9V5mGVxjc=
 
-vuex@^3.0.1:
-  version "3.1.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/vuex/-/vuex-3.1.1.tgz#0c264bfe30cdbccf96ab9db3177d211828a5910e"
-  integrity sha1-DCZL/jDNvM+Wq52zF30hGCilkQ4=
-
 w3c-hr-time@^1.0.1:
   version "1.0.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/w3c-hr-time/-/w3c-hr-time-1.0.1.tgz#82ac2bff63d950ea9e3189a58a65625fedf19045"
