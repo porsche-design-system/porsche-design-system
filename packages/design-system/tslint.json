@@ -1,6 +1,6 @@
 {
   "defaultSeverity": "warning",
-  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
   "linterOptions": {
     "exclude": ["node_modules/**", "*.json", "**/*.json"]
   },
@@ -15,6 +15,6 @@
     "no-implicit-dependencies": false,
     "no-console": [true, "log"],
     "prefer-for-of": false,
-    "no-submodule-imports": false
+    "no-duplicate-imports": [true, {"allow-namespace-imports": true}]
   }
 }
