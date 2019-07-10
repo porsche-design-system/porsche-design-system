@@ -57,7 +57,7 @@
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
     "@ionic-enterprise/react-output-plugin": "^0.0.5",
     "@porscheui/visual-regression-tester": "^1.1.1",
-    "@stencil/core": "^1.1.5",
+    "@stencil/core": "^1.1.6",
     "@stencil/postcss": "^1.0.1",
     "@stencil/sass": "^1.0.1",
     "@types/autoprefixer": "^9.5.0",
@@ -75,11 +75,11 @@
     "stylelint": "^10.1.0",
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
-    "stylelint-scss": "^3.9.0",
+    "stylelint-scss": "^3.9.1",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "~3.5.2",
+    "typescript": "~3.5.3",
     "wait-on": "^3.2.0"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"
