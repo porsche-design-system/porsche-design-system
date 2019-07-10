@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-spacing</title>
+  <link rel="stylesheet" href="../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
+  <style type="text/css">
+    [class*="p-spacing"] {
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      background: lightskyblue;
+    }
+
+    [class*="p-spacing"]::before {
+       content: '';
+       display: block;
+       width: 100%;
+       height: 100%;
+       background-color: deepskyblue;
+     }
+  </style>
+</head>
+<body>
+
+<div class="playground" title="should show all available static paddings">
+  <div class="p-spacing-pt-4 p-spacing-pr-4"></div>
+  <div class="p-spacing-pt-8 p-spacing-pr-8"></div>
+  <div class="p-spacing-pt-16 p-spacing-pr-16"></div>
+  <div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+  <div class="p-spacing-pt-32 p-spacing-pr-32"></div>
+  <div class="p-spacing-pt-40 p-spacing-pr-40"></div>
+  <div class="p-spacing-pt-48 p-spacing-pr-48"></div>
+  <div class="p-spacing-pt-56 p-spacing-pr-56"></div>
+  <div class="p-spacing-pt-64 p-spacing-pr-64"></div>
+  <div class="p-spacing-pt-72 p-spacing-pr-72"></div>
+  <div class="p-spacing-pt-80 p-spacing-pr-80"></div>
+</div>
+
+<div class="playground" title="should show static margin styles with different directions">
+  <div class="p-spacing-m-40"></div>
+  <div class="p-spacing-mt-40"></div>
+  <div class="p-spacing-mr-40"></div>
+  <div class="p-spacing-mb-40"></div>
+  <div class="p-spacing-ml-40"></div>
+</div>
+
+<div class="playground" title="should show static negative margin styles with different directions">
+  <div class="p-spacing-m-n-40"></div>
+  <div class="p-spacing-m-nt-40"></div>
+  <div class="p-spacing-m-nr-40"></div>
+  <div class="p-spacing-m-nb-40"></div>
+  <div class="p-spacing-m-nl-40"></div>
+</div>
+
+<div class="playground" title="should show static padding styles with different directions">
+  <div class="p-spacing-p-40"></div>
+  <div class="p-spacing-pt-40"></div>
+  <div class="p-spacing-pr-40"></div>
+  <div class="p-spacing-pb-40"></div>
+  <div class="p-spacing-pl-40"></div>
+</div>
+
+<div class="playground" title="should show all available responsive paddings">
+  <div class="p-spacing-pt-a p-spacing-pr-a"></div>
+  <div class="p-spacing-pt-b p-spacing-pr-b"></div>
+  <div class="p-spacing-pt-c p-spacing-pr-c"></div>
+  <div class="p-spacing-pt-d p-spacing-pr-d"></div>
+  <div class="p-spacing-pt-e p-spacing-pr-e"></div>
+  <div class="p-spacing-pt-f p-spacing-pr-f"></div>
+  <div class="p-spacing-pt-g p-spacing-pr-g"></div>
+</div>
+
+<div class="playground" title="should show responsive margin styles with different directions">
+  <div class="p-spacing-m-d"></div>
+  <div class="p-spacing-mt-d"></div>
+  <div class="p-spacing-mb-d"></div>
+  <div class="p-spacing-mr-d"></div>
+  <div class="p-spacing-ml-d"></div>
+</div>
+
+<div class="playground" title="should show responsive negative margin styles with different directions">
+  <div class="p-spacing-m-n-d"></div>
+  <div class="p-spacing-m-nt-d"></div>
+  <div class="p-spacing-m-nr-d"></div>
+  <div class="p-spacing-m-nb-d"></div>
+  <div class="p-spacing-m-nl-d"></div>
+</div>
+
+<div class="playground" title="should show responsive padding styles with different directions">
+  <div class="p-spacing-p-d"></div>
+  <div class="p-spacing-pt-d"></div>
+  <div class="p-spacing-pr-d"></div>
+  <div class="p-spacing-pb-d"></div>
+  <div class="p-spacing-pl-d"></div>
+</div>
+
+</body>
+</html>

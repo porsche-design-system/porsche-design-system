@@ -42,6 +42,7 @@
   },
   "scripts": {
     "start": "stencil build --watch --serve",
+    "start:vrt-server": "yarn build && http-server -p 61422",
     "build": "stencil build --docs && node doc.js",
     "lint": "yarn lint:scss & yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",
@@ -49,12 +50,13 @@
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "echo 'stencil test --spec coming soon'",
     "test:e2e": "echo 'stencil test --e2e coming soon'",
-    "test:vrt": "echo ui-kit-js:test:vrt coming soon",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61422 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf ./node_modules & rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www"
   },
   "devDependencies": {
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
     "@ionic-enterprise/react-output-plugin": "^0.0.5",
+    "@porscheui/visual-regression-tester": "^1.1.1",
     "@stencil/core": "^1.1.5",
     "@stencil/postcss": "^1.0.1",
     "@stencil/sass": "^1.0.1",
@@ -64,6 +66,9 @@
     "@types/puppeteer": "^1.12.4",
     "autoprefixer": "^9.6.1",
     "classnames": "^2.2.6",
+    "concurrently": "^4.1.1",
+    "http-server": "^0.11.1",
+    "jasmine": "^3.4.0",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
     "puppeteer": "1.18.1",
@@ -71,9 +76,11 @@
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-scss": "^3.9.0",
+    "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "~3.5.2"
+    "typescript": "~3.5.2",
+    "wait-on": "^3.2.0"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"
 }

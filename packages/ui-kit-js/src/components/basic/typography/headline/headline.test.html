@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-headline</title>
+  <link rel="stylesheet" href="../../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="../../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="../../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="../../../../../tests/vrt/helpers/styles.css">
+</head>
+<body>
+
+<div class="playground light" title="should show headline with large title on light surface">
+  <p-headline type="large-title" level="1">Large Title</p-headline>
+</div>
+
+<div class="playground dark" title="should show headline with large title on dark surface">
+  <p-headline type="large-title" level="1" theme="dark">Large Title</p-headline>
+</div>
+
+<div class="playground light" title="should show headlines with different types">
+  <p-headline type="headline-1" level="1">Headline 1</p-headline>
+  <p-headline type="headline-2" level="2">Headline 2</p-headline>
+  <p-headline type="headline-3" level="3">Headline 3</p-headline>
+  <p-headline type="headline-4" level="4">Headline 4</p-headline>
+  <p-headline type="headline-5" level="5">Headline 5</p-headline>
+  <p-headline type="headline-6" level="6">Headline 6</p-headline>
+</div>
+
+<div class="playground light" title="should show headlines with different alignments">
+  <p-headline type="headline-1" level="1" align="left">Headline left</p-headline>
+  <p-headline type="headline-1" level="1" align="center">Headline center</p-headline>
+  <p-headline type="headline-1" level="1" align="right">Headline right</p-headline>
+</div>
+
+<div class="playground light" title="should cut off too long text">
+  <p-headline type="headline-1" level="1" ellipsis="true">
+    Headline ellipsis - Lorem ipsum dolor sit amet consecutor lorem ipsum dolor sit amet consecutor lorem ipsum dolor sit amet consecutor lorem ipsum dolor sit amet consecutor
+  </p-headline>
+</div>
+
+<div class="playground light" title="should wrap text which is too long and without spaces">
+  <p-headline type="headline-1" level="1" wrap="true">
+    Headline wrap - Lorem ipsum dolorsitametconsecutoloremipsumdolorsitametconsecutoloremipsum
+  </p-headline>
+</div>
+
+</body>
+</html>
