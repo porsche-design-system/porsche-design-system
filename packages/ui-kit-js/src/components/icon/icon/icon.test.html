@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-icon</title>
+  <link rel="stylesheet" href="../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
+</head>
+<body>
+
+<div class="playground" title="should show a car as icon">
+  <p-icon source="car-next"></p-icon>
+</div>
+
+<div class="playground" title="should render icon with small size">
+  <p-icon source="car-next" size="small"></p-icon>
+</div>
+
+<div class="playground" title="should render icon with medium size">
+  <p-icon source="car-next" size="medium"></p-icon>
+</div>
+
+<div class="playground" title="should render icon with large size">
+  <p-icon source="car-next" size="large"></p-icon>
+</div>
+
+<div class="playground" title="should render icon with predefined colors">
+  <p-icon source="car-next" size="large" color="porsche-light" style="background: black;"></p-icon>
+  <p-icon source="car-next" size="large" color="porsche-black"></p-icon>
+  <p-icon source="car-next" size="large" color="porsche-red"></p-icon>
+  <p-icon source="car-next" size="large" color="neutral-grey-1"></p-icon>
+  <p-icon source="car-next" size="large" color="neutral-grey-2"></p-icon>
+  <p-icon source="car-next" size="large" color="neutral-grey-3"></p-icon>
+  <p-icon source="car-next" size="large" color="neutral-grey-4"></p-icon>
+  <p-icon source="car-next" size="large" color="neutral-grey-5"></p-icon>
+  <p-icon source="car-next" size="large" color="neutral-grey-6"></p-icon>
+  <p-icon source="car-next" size="large" color="neutral-grey-7"></p-icon>
+  <p-icon source="car-next" size="large" color="neutral-grey-8"></p-icon>
+</div>
+
+<div class="playground" title="should render different icons with inherited color">
+  <p-icon style="color: deeppink;" source="afternoon" size="large" color="inherit"></p-icon>
+  <p-icon style="color: deepskyblue;" source="all-day-next" size="large" color="inherit"></p-icon>
+  <p-icon style="color: cyan;" source="early-morning-next" size="large" color="inherit"></p-icon>
+</div>
+
+</body>
+</html>

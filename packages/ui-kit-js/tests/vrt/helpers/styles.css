@@ -1,0 +1,22 @@
+.playground {
+  padding: 1rem;
+  overflow: auto;
+}
+
+.playground ~ .playground {
+  border-top: 1px solid #f1f1f1;
+}
+
+.light {
+  background: #fff;
+}
+
+.dark {
+  background: #1a2023;
+}
+
+p-spinner,
+p-button-regular,
+p-button-icon {
+  --p-animation-duration__spinner: 0s;
+}
