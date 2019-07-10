@@ -73,6 +73,7 @@ main {
   -webkit-overflow-scrolling: touch;
 
   @include breakpoint('xxs', 's') {
+    padding-bottom: $p-spacing-80;
     opacity: 0;
     transition: transform .3s, opacity .3s;
     transform: translate3d(rem(-140px), 0, 0);
