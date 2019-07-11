@@ -64,66 +64,6 @@ $p-spacings: (
     margin-right: auto;
   }
 
-  &-0-min {
-    @include generate-min-major-breakpoints() {
-      margin: 0;
-    }
-  }
-
-  &t-0-min {
-    @include generate-min-major-breakpoints() {
-      margin-top: 0;
-    }
-  }
-
-  &r-0-min {
-    @include generate-min-major-breakpoints() {
-      margin-right: 0;
-    }
-  }
-
-  &b-0-min {
-    @include generate-min-major-breakpoints() {
-      margin-bottom: 0;
-    }
-  }
-
-  &l-0-min {
-    @include generate-min-major-breakpoints() {
-      margin-left: 0;
-    }
-  }
-
-  &-0-max {
-    @include generate-max-major-breakpoints() {
-      margin: 0;
-    }
-  }
-
-  &t-0-max {
-    @include generate-max-major-breakpoints() {
-      margin-top: 0;
-    }
-  }
-
-  &r-0-max {
-    @include generate-max-major-breakpoints() {
-      margin-right: 0;
-    }
-  }
-
-  &b-0-max {
-    @include generate-max-major-breakpoints() {
-      margin-bottom: 0;
-    }
-  }
-
-  &l-0-max {
-    @include generate-max-major-breakpoints() {
-      margin-left: 0;
-    }
-  }
-
   /*
    * responsive margin spacings
    */
@@ -294,66 +234,6 @@ $p-spacings: (
     }
   }
 
-  &-0-min {
-    @include generate-min-major-breakpoints() {
-      margin: 0;
-    }
-  }
-
-  &t-0-min {
-    @include generate-min-major-breakpoints() {
-      margin-top: 0;
-    }
-  }
-
-  &r-0-min {
-    @include generate-min-major-breakpoints() {
-      margin-right: 0;
-    }
-  }
-
-  &b-0-min {
-    @include generate-min-major-breakpoints() {
-      margin-bottom: 0;
-    }
-  }
-
-  &l-0-min {
-    @include generate-min-major-breakpoints() {
-      margin-left: 0;
-    }
-  }
-
-  &-0-max {
-    @include generate-max-major-breakpoints() {
-      margin: 0;
-    }
-  }
-
-  &t-0-max {
-    @include generate-max-major-breakpoints() {
-      margin-top: 0;
-    }
-  }
-
-  &r-0-max {
-    @include generate-max-major-breakpoints() {
-      margin-right: 0;
-    }
-  }
-
-  &b-0-max {
-    @include generate-max-major-breakpoints() {
-      margin-bottom: 0;
-    }
-  }
-
-  &l-0-max {
-    @include generate-max-major-breakpoints() {
-      margin-left: 0;
-    }
-  }
-
   /*
    * negative responsive margin spacings
    */
@@ -499,6 +379,72 @@ $p-spacings: (
 }
 
 /*
+ * reset margin spacings to zero
+ */
+/* stylelint-disable no-duplicate-selectors */
+.#{$p-global-class-prefix}spacing-m {
+  &-0-min {
+    @include generate-min-major-breakpoints() {
+      margin: 0;
+    }
+  }
+
+  &t-0-min {
+    @include generate-min-major-breakpoints() {
+      margin-top: 0;
+    }
+  }
+
+  &r-0-min {
+    @include generate-min-major-breakpoints() {
+      margin-right: 0;
+    }
+  }
+
+  &b-0-min {
+    @include generate-min-major-breakpoints() {
+      margin-bottom: 0;
+    }
+  }
+
+  &l-0-min {
+    @include generate-min-major-breakpoints() {
+      margin-left: 0;
+    }
+  }
+
+  &-0-max {
+    @include generate-max-major-breakpoints() {
+      margin: 0;
+    }
+  }
+
+  &t-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-top: 0;
+    }
+  }
+
+  &r-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-right: 0;
+    }
+  }
+
+  &b-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-bottom: 0;
+    }
+  }
+
+  &l-0-max {
+    @include generate-max-major-breakpoints() {
+      margin-left: 0;
+    }
+  }
+}
+
+/*
  * padding spacings
  */
 .#{$p-global-class-prefix}spacing-p {
@@ -521,66 +467,6 @@ $p-spacings: (
 
     &l-#{$name} {
       padding-left: $spacing;
-    }
-
-    &-0-min {
-      @include generate-min-major-breakpoints() {
-        padding: 0;
-      }
-    }
-
-    &t-0-min {
-      @include generate-min-major-breakpoints() {
-        padding-top: 0;
-      }
-    }
-
-    &r-0-min {
-      @include generate-min-major-breakpoints() {
-        padding-right: 0;
-      }
-    }
-
-    &b-0-min {
-      @include generate-min-major-breakpoints() {
-        padding-bottom: 0;
-      }
-    }
-
-    &l-0-min {
-      @include generate-min-major-breakpoints() {
-        padding-left: 0;
-      }
-    }
-
-    &-0-max {
-      @include generate-max-major-breakpoints() {
-        padding: 0;
-      }
-    }
-
-    &t-0-max {
-      @include generate-max-major-breakpoints() {
-        padding-top: 0;
-      }
-    }
-
-    &r-0-max {
-      @include generate-max-major-breakpoints() {
-        padding-right: 0;
-      }
-    }
-
-    &b-0-max {
-      @include generate-max-major-breakpoints() {
-        padding-bottom: 0;
-      }
-    }
-
-    &l-0-max {
-      @include generate-max-major-breakpoints() {
-        padding-left: 0;
-      }
     }
   }
 
@@ -724,5 +610,68 @@ $p-spacings: (
 
   &-g {
     @include p-spacing-g('padding');
+  }
+
+  /*
+   * reset to zero value on specific breakpoint
+   */
+  &-0-min {
+    @include generate-min-major-breakpoints() {
+      padding: 0;
+    }
+  }
+
+  &t-0-min {
+    @include generate-min-major-breakpoints() {
+      padding-top: 0;
+    }
+  }
+
+  &r-0-min {
+    @include generate-min-major-breakpoints() {
+      padding-right: 0;
+    }
+  }
+
+  &b-0-min {
+    @include generate-min-major-breakpoints() {
+      padding-bottom: 0;
+    }
+  }
+
+  &l-0-min {
+    @include generate-min-major-breakpoints() {
+      padding-left: 0;
+    }
+  }
+
+  &-0-max {
+    @include generate-max-major-breakpoints() {
+      padding: 0;
+    }
+  }
+
+  &t-0-max {
+    @include generate-max-major-breakpoints() {
+      padding-top: 0;
+    }
+  }
+
+  &r-0-max {
+    @include generate-max-major-breakpoints() {
+      padding-right: 0;
+    }
+  }
+
+  &b-0-max {
+    @include generate-max-major-breakpoints() {
+      padding-bottom: 0;
+    }
+  }
+
+  &l-0-max {
+    @include generate-max-major-breakpoints() {
+      padding-left: 0;
+    }
   }
 }

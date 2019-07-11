@@ -173,52 +173,6 @@ Global CSS utility classes, variables and mixins (for responsive spacings) to ad
   </div>
 </Playground>
 
----
-
-### Static zero spacings defined by breakpoints
-In some cases spacings need to be set to zero to delete unwanted spacings for a specific breakpoint (e.g. by changing major layout from desktop to mobile).
-To achive highest flexibility, breakpoint behaviour can set `from` a breakpoint value and also `to` a breakpoint value. This means that zero spacings can be defined from breakpoint `xxs` to the value given in the class name and also from the value in the class name to breakpoint `xxl` (@see `min` and `max` identifiers in the class name).
-
-**Example**:  
-`p-spacing-m-0-max-s` => zero value (of margin) is set until breakpoint `s` is reached, the the other value takes care of your spacing on wider viewports.  
-`p-spacing-m-0-min-s` => zero value (of margin) is set after breakpoint `s` is reached, the the other value takes care of your spacing on smaller viewports.
-
-### Static zero margin spacings defined by breakpoints
-
-#### Reset margin-top until breakpoint "s"
-
-<Playground>
-  <div class="example-spacing">
-    <div class="p-spacing-mt-0-max-s p-spacing-mt-40" />
-  </div>
-</Playground>
-
-#### Reset margin-top from breakpoint "s"
-
-<Playground>
-  <div class="example-spacing">
-    <div class="p-spacing-mt-0-min-s p-spacing-mt-40" />
-  </div>
-</Playground>
-
-### Static zero padding spacings defined by breakpoints
-
-#### Reset padding-top until breakpoint "s"
-
-<Playground>
-  <div class="example-spacing">
-    <div class="p-spacing-pt-0-max-s p-spacing-pt-40" />
-  </div>
-</Playground>
-
-#### Reset padding-top from breakpoint "s"
-
-<Playground>
-  <div class="example-spacing">
-    <div class="p-spacing-pt-0-min-s p-spacing-pt-40" />
-  </div>
-</Playground>
-
 --- 
 
 ### Usage
@@ -450,3 +404,83 @@ The responsive spacing mixin needs up to 3 parameters passed for defining type, 
 * `@include p-spacing-a('padding')` => positive spacing "a" with padding in all directions
 * `@include p-spacing-b('margin', 'top')` => positive spacing "b" with margin-top direction
 * `@include p-spacing-b('margin', 'top', '-')` => negative spacing "b" with margin-top direction
+
+--- 
+
+## Responsive zero spacings defined by breakpoints
+In some cases spacings need to be set to zero to delete unwanted spacings for a specific breakpoint (e.g. by changing major layout from desktop to mobile).
+To achive highest flexibility, breakpoint behaviour can set **from** a `min` breakpoint value and also **to** a `max` breakpoint value. This means that zero spacings can be defined from breakpoint `xxs` to the max value given in the class name and also from the min value in the class name to breakpoint `xxl` (@see `min` and `max` identifiers in the class name).
+
+**Example**:  
+`p-spacing-m-0-max-s` => zero value (of margin) is set until breakpoint `s` is reached, the the other value takes care of your spacing on wider viewports.  
+`p-spacing-m-0-min-s` => zero value (of margin) is set after breakpoint `s` is reached, the the other value takes care of your spacing on smaller viewports.
+
+### Zero margin spacings defined by breakpoints for static spacings
+
+#### Reset margin-top until breakpoint "s"
+
+<Playground>
+  <div class="example-spacing">
+    <div class="p-spacing-mt-0-max-s p-spacing-mt-40" />
+  </div>
+</Playground>
+
+#### Reset margin-top from breakpoint "s"
+
+<Playground>
+  <div class="example-spacing">
+    <div class="p-spacing-mt-0-min-s p-spacing-mt-40" />
+  </div>
+</Playground>
+
+### Zero padding spacings defined by breakpoints for static spacings
+
+#### Reset padding-top to max breakpoint "s"
+
+<Playground>
+  <div class="example-spacing">
+    <div class="p-spacing-pt-0-max-s p-spacing-pt-40" />
+  </div>
+</Playground>
+
+#### Reset padding-top from min breakpoint "s"
+
+<Playground>
+  <div class="example-spacing">
+    <div class="p-spacing-pt-0-min-s p-spacing-pt-40" />
+  </div>
+</Playground>
+
+### Zero padding spacings defined by breakpoints for responsive spacings
+
+#### Reset margin-top to max breakpoint "s"
+
+<Playground>
+  <div class="example-spacing">
+    <div class="p-spacing-mt-0-max-s p-spacing-mt-d" />
+  </div>
+</Playground>
+
+#### Reset margin-top from min breakpoint "s"
+
+<Playground>
+  <div class="example-spacing">
+    <div class="p-spacing-mt-0-min-s p-spacing-mt-d" />
+  </div>
+</Playground>
+
+#### Reset padding-top to max breakpoint "s"
+
+<Playground>
+  <div class="example-spacing">
+    <div class="p-spacing-pt-0-max-s p-spacing-pt-d" />
+  </div>
+</Playground>
+
+#### Reset padding-top from min breakpoint "s"
+
+<Playground>
+  <div class="example-spacing">
+    <div class="p-spacing-pt-0-min-s p-spacing-pt-d" />
+  </div>
+</Playground>
