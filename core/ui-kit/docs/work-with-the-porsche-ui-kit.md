@@ -6,9 +6,11 @@ Please visit [the start designing section](https://ui.porsche.com/latest/#/getti
 ## For Developer 
 We evolved the Porsche UI Kit from the HTML/CSS pattern library ([Porsche UI Kit V0 Core](https://ui.porsche.com/v0/core/)) to an extended react component library ([Porsche UI Kit V0 React](https://ui.porsche.com/v0/react/)). This libraries are not maintained anymore just updated with relevant bugfixes.
 
-The new [Porsche UI Kit V1](https://ui.porsche.com/) is built upon web components and can be used within applications built in vanillaJS or with frameworks like react, vue or angular.
+The V0 ressources are available as versioned NPM packages. To get access [follow the instructions here](https://ui.porsche.com/v0/core/?p=docs-start-coding)
 
-All ressources are available as versioned NPM packages. To get access [follow the instructions here](https://ui.porsche.com/v0/core/?p=docs-start-coding)
+The new [Porsche UI Kit V1](https://ui.porsche.com/) is built upon web components and can be used within applications built in vanillaJS or with frameworks like react, vue or angular. The V1 releases are not yet published, but you can follow the [poadmap planning](https://ui.porsche.com/latest/#/news/roadmap) or signup for the [release notes](http://eepurl.com/ghVSjH)
+
+
 
 ## General Explanations
 
