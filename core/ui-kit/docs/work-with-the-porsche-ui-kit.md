@@ -1,6 +1,16 @@
 # Work with the Porsche UI Kit  
 
-### General Explanations
+## For Designer
+Please visit [the start designing section](https://ui.porsche.com/latest/#/getting-started/start-designing)
+
+## For Developer 
+We evolved the Porsche UI Kit from the HTML/CSS pattern library ([Porsche UI Kit V0 Core](https://ui.porsche.com/v0/core/)) to an extended react component library ([Porsche UI Kit V0 React](https://ui.porsche.com/v0/react/)). This libraries are not maintained anymore just updated with relevant bugfixes.
+
+The new [Porsche UI Kit V1](https://ui.porsche.com/) is built upon web components and can be used within applications built in vanillaJS or with frameworks like react, vue or angular.
+
+All ressources are available as versioned NPM packages. To get access [follow the instructions here](https://ui.porsche.com/v0/core/?p=docs-start-coding)
+
+## General Explanations
 
 First decide on your working mode within your project:
 
@@ -20,27 +30,3 @@ B: Both integrate the Porsche UI Kit in your application and participate in join
 * Make your work transparent and public available for others and share your work, knowledge and feedback
   1. Participate in the regular Porsche UI Kit Sync
   2. Publish your work public and share it
-
-### Where to find the Porsche UI Kit
-Confluence Space [On-Prem]: https://atlassianp01.web.porsche.biz/confluence/display/PSS (VPN + X- oder P- User required)
-Jira Board [On-Prem]: https://atlassianp01.web.porsche.biz/jira/secure/RapidBoard.jspa?rapidView=12267 (VPN + X- oder P- User required)
-
-##### Porsche UI Kit Core
-Pattern Lab [On-Prem] (Pattern Library): https://pcc-portal-e-ct.emea.porsche.biz/static/porsche-ui-kit/core/master/ (VPN required)
-GitHub [Cloud] (SCM): https://github.com/myporsche/pouikit-porsche-ui-kit (One Login User + GitHub User required)
-jFrog Artifactory [Cloud] (NPM Registry): https://porscheui.jfrog.io (One Login User + Artifactory User required)
-
-InVision Enterprise [Cloud] (Component Sheets): https://porsche.invisionapp.com/d/main#/projects/prototypes/15200048 (Invision User required)
-InVision DSM [Cloud] (Sketch Library): https://porsche.invisionapp.com/dsm/porsche-ag/porsche-ui-kit (Invision User required)
-
-##### Porsche UI Kit React
-Semantic UI React [Cloud] (Component Library): https://s3.eu-central-1.amazonaws.com/finder-bamboo-artifacts/react/packages/%40porsche/ui-kit-react-docs/dist/index.html#/introduction
-GitHub [Cloud] (SCM): https://github.com/myporsche/pouikit-porsche-ui-kit (One Login User + GitHub User required)
-jFrog Artifactory [Cloud] (NPM Registry): https://porscheui.jfrog.io (One Login User + Artifactory User required)
-
-__Versioning (Starting from Version 1.0)__
-[Semantic Versioning](https://semver.org/)
-
-* __Major Changes__
-* __Minor Changes__
-* __Patches__
