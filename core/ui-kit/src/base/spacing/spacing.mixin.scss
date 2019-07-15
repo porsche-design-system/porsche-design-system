@@ -2,182 +2,302 @@
 @import '../../mixins/breakpoint.scss';
 
 @mixin -spacing-0($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-0;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-0;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-0;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-3($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-3;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-3;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-3;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-6($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-6;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-6;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-6;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-12($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-12;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-12;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-12;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-18($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-18;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-18;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-18;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-24($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-24;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-24;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-24;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-30($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-30;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-30;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-30;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-36($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-36;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-36;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-36;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-42($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-42;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-42;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-42;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-48($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-48;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-48;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-48;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-54($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-54;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-54;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-54;
+    #{$direction}: $spacing-value;
   }
 }
 
 @mixin -spacing-60($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-60;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-60;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-60;
+    #{$direction}: $spacing-value;
   }
 }
 
 // TODO: Following spacing mixins might be moved into a project scope
 @mixin -spacing-a($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-a;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-a;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-a;
+    #{$direction}: $spacing-value;
   }
 
   @include breakpoint('s', 'l') {
+    $spacing-value: $spacing-a-s;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-a-s;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-a-s;
+      #{$direction}: $spacing-value;
     }
   }
 
   @include breakpoint('l') {
+    $spacing-value: $spacing-a-l;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-a-l;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-a-l;
+      #{$direction}: $spacing-value;
     }
   }
 }
 
 @mixin -spacing-b($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-b;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-b;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-b;
+    #{$direction}: $spacing-value;
   }
 
   @include breakpoint('s', 'l') {
+    $spacing-value: $spacing-b-s;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-b-s;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-b-s;
+      #{$direction}: $spacing-value;
     }
   }
 
   @include breakpoint('l') {
+    $spacing-value: $spacing-b-l;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-b-l;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-b-l;
+      #{$direction}: $spacing-value;
     }
   }
 }
 
 @mixin -spacing-c($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-c;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-c;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-c;
+    #{$direction}: $spacing-value;
   }
 
   @include breakpoint('s', 'l') {
+    $spacing-value: $spacing-c-s;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-c-s;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-c-s;
+      #{$direction}: $spacing-value;
     }
   }
 
   @include breakpoint('l') {
+    $spacing-value: $spacing-c-l;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-c-l;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-c-l;
+      #{$direction}: $spacing-value;
     }
   }
 }
 
 @mixin -spacing-d($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-d;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-d;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-d;
+    #{$direction}: $spacing-value;
   }
 
   @include breakpoint('s', 'l') {
+    $spacing-value: $spacing-d-s;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-d-s;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-d-s;
+      #{$direction}: $spacing-value;
     }
   }
 
   @include breakpoint('l') {
+    $spacing-value: $spacing-d-l;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-d-l;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-d-l;
+      #{$direction}: $spacing-value;
     }
   }
 }
 
 @mixin -spacing-e($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-e;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-e;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-e;
+    #{$direction}: $spacing-value;
   }
 
   @include breakpoint('s', 'l') {
+    $spacing-value: $spacing-e-s;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-e-s;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-e-s;
+      #{$direction}: $spacing-value;
     }
   }
 
   @include breakpoint('l') {
+    $spacing-value: $spacing-e-l;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-e-l;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-e-l;
+      #{$direction}: $spacing-value;
     }
   }
 }
 
 @mixin -spacing-f($direction: 'top', $type: 'margin', $sign: '+') {
+  $spacing-value: $spacing-f;
+  @if $sign == '-' {
+    $spacing-value: -$spacing-f;
+  }
   #{$type}: {
-    #{$direction}: #{$sign}$spacing-f;
+    #{$direction}: $spacing-value;
   }
 
   @include breakpoint('s', 'l') {
+    $spacing-value: $spacing-f-s;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-f-s;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-f-s;
+      #{$direction}: $spacing-value;
     }
   }
 
   @include breakpoint('l') {
+    $spacing-value: $spacing-f-l;
+    @if $sign == '-' {
+      $spacing-value: -$spacing-f-l;
+    }
     #{$type}: {
-      #{$direction}: #{$sign}$spacing-f-l;
+      #{$direction}: $spacing-value;
     }
   }
 }
