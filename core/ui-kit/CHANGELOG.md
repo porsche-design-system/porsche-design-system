@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.18.7] - 2019-07-15
+
+* Fixed bug at spacing mixing if used with DartSass compiler [#18](https://github.com/porscheui/porsche-ui-contribution/issues/18)
+* Update Readme
+* Update some critical npm dependencies
+
 ## [0.18.6] - 2019-06-6
 
 * Changed border-style of error state of textarea component
