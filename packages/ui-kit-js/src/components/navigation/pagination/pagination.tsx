@@ -1,6 +1,7 @@
-import { JSX, Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { JSX, Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../utils/prefix';
+import { debounce } from 'throttle-debounce';
+import { prefix, matchBreakpoint } from '../../../utils';
 import {
   getTotalPages,
   getCurrentActivePage,
@@ -29,7 +30,7 @@ export class Pagination {
   @Prop() public activePage?: number = 1;
 
   /** The number of pages between ellipsis. 0 = mobile | 1 = desktop */
-  @Prop() public pageRange?: 0 | 1 = 1;
+  @Prop() public pageRange?: 0 | 1 | 'auto' = 'auto';
 
   /** Aria label what the pagination is used for. */
   @Prop() public label?: string = 'Pagination';
@@ -46,15 +47,31 @@ export class Pagination {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
+  /** changes pageRange if prop is set as 'auto' */
+  @State() public pageRangeAuto?: 0 | 1;
+
   /** Emitted when the link is clicked. */
   @Event() public pClick!: EventEmitter;
 
   public render(): JSX.Element {
+    if (this.pageRange === 'auto') {
+      const updatePageRange = () => {
+        matchBreakpoint('s') ? (this.pageRangeAuto = 1) : (this.pageRangeAuto = 0);
+      };
+      updatePageRange();
+      window.addEventListener(
+        'resize',
+        debounce(300, () => {
+          updatePageRange();
+        })
+      );
+    }
+
+    const pageRange: number = this.pageRange !== 'auto' ? this.pageRange : this.pageRangeAuto;
     const paginationClasses = cx(prefix('pagination'), this.theme === 'dark' && prefix('pagination--theme-dark'));
     const paginationItemsClasses = cx(prefix('pagination__items'));
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     const activePage = getCurrentActivePage(this.activePage, pageTotal);
-    const pageRange = this.pageRange;
 
     // generate pagination items
     const createPaginationItems = () => {

@@ -324,7 +324,7 @@ export namespace Components {
     /**
     * The number of pages between ellipsis. 0 = mobile | 1 = desktop
     */
-    'pageRange'?: 0 | 1;
+    'pageRange'?: 0 | 1 | 'auto';
     /**
     * Adapts the color when used on dark background.
     */
@@ -972,7 +972,7 @@ declare namespace LocalJSX {
     /**
     * The number of pages between ellipsis. 0 = mobile | 1 = desktop
     */
-    'pageRange'?: 0 | 1;
+    'pageRange'?: 0 | 1 | 'auto';
     /**
     * Adapts the color when used on dark background.
     */

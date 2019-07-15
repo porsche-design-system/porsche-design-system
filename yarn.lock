@@ -1374,6 +1374,11 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/strip-json-comments/-/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
   integrity sha1-mqMMBNshKpoGSdaub9UKzMQHSKE=
 
+"@types/throttle-debounce@^1.1.1":
+  version "1.1.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/throttle-debounce/-/throttle-debounce-1.1.1.tgz#4a78636c36a4534b76d85ee244fce238d435f22a"
+  integrity sha1-SnhjbDakU0t22F7iRPziONQ18io=
+
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.3"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
@@ -11261,6 +11266,11 @@ throat@^4.0.0:
   version "4.1.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
+
+throttle-debounce@^2.1.0:
+  version "2.1.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/throttle-debounce/-/throttle-debounce-2.1.0.tgz#257e648f0a56bd9e54fe0f132c4ab8611df4e1d5"
+  integrity sha1-JX5kjwpWvZ5U/g8TLEq4YR304dU=
 
 throttleit@^0.0.2:
   version "0.0.2"

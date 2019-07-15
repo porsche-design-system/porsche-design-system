@@ -15,7 +15,7 @@
 | `labelNext`       | `label-next`        | Aria label for next page icon.                                  | `string`            | `'Next page'`     |
 | `labelPage`       | `label-page`        | Aria label for page navigation.                                 | `string`            | `'Page'`          |
 | `labelPrev`       | `label-prev`        | Aria label for previous page icon.                              | `string`            | `'Previous page'` |
-| `pageRange`       | `page-range`        | The number of pages between ellipsis. 0 = mobile \| 1 = desktop | `0 \| 1`            | `1`               |
+| `pageRange`       | `page-range`        | The number of pages between ellipsis. 0 = mobile \| 1 = desktop | `"auto" \| 0 \| 1`  | `1`               |
 | `theme`           | `theme`             | Adapts the color when used on dark background.                  | `"dark" \| "light"` | `'light'`         |
 | `totalItemsCount` | `total-items-count` | The total count of items.                                       | `number`            | `undefined`       |
 
