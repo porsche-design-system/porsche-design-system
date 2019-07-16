@@ -1,14 +1,13 @@
 import { JSX, Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import cx from 'classnames';
-import { debounce } from 'throttle-debounce';
+import { throttle } from 'throttle-debounce';
 import { prefix, matchBreakpoint } from '../../../utils';
 import {
   getTotalPages,
   getCurrentActivePage,
   createPaginationModel,
   PaginationModelItem,
-  itemTypes,
-  PaginationItemType
+  itemTypes
 } from './pagination-helper';
 
 @Component({
@@ -17,9 +16,6 @@ import {
   shadow: true
 })
 export class Pagination {
-  /** @internal Type of the pagination item. */
-  @Prop() public type: PaginationItemType;
-
   /** The total count of items. */
   @Prop() public totalItemsCount: number;
 
@@ -29,8 +25,8 @@ export class Pagination {
   /** Index of the currently active page. */
   @Prop() public activePage?: number = 1;
 
-  /** The number of pages between ellipsis. 0 = mobile | 1 = desktop */
-  @Prop() public pageRange?: 0 | 1 | 'auto' = 'auto';
+  /** The number of pages between ellipsis. 'small' = mobile | 'large' = desktop | 'auto' = breakpoint specific */
+  @Prop() public pageRange?: 'small' | 'large' | 'auto' = 'auto';
 
   /** Aria label what the pagination is used for. */
   @Prop() public label?: string = 'Pagination';
@@ -47,11 +43,11 @@ export class Pagination {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
-  /** changes pageRange if prop is set as 'auto' */
-  @State() public pageRangeAuto?: 0 | 1;
-
   /** Emitted when the link is clicked. */
   @Event() public pClick!: EventEmitter;
+
+  /** changes pageRange if prop is set as 'auto' */
+  @State() private pageRangeAuto?: 0 | 1;
 
   public render(): JSX.Element {
     if (this.pageRange === 'auto') {
@@ -61,13 +57,13 @@ export class Pagination {
       updatePageRange();
       window.addEventListener(
         'resize',
-        debounce(300, () => {
+        throttle(500, () => {
           updatePageRange();
         })
       );
     }
 
-    const pageRange: number = this.pageRange !== 'auto' ? this.pageRange : this.pageRangeAuto;
+    const pageRange: number = this.pageRange !== 'auto' ? (this.pageRange === 'large' ? 1 : 0) : this.pageRangeAuto;
     const paginationClasses = cx(prefix('pagination'), this.theme === 'dark' && prefix('pagination--theme-dark'));
     const paginationItemsClasses = cx(prefix('pagination__items'));
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
