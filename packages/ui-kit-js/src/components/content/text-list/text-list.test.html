@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>p-pagination</title>
+    <link rel="stylesheet" href="../../../../dist/porsche-ui-kit/porsche-ui-kit.css" />
+    <script type="module" src="../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+    <script nomodule src="../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+    <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css" />
+  </head>
+  <body>
+    <div class="playground light" title="should show default unordered text list">
+      <p-text-list>
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>
+          Lorem ipsum
+          <p-text-list>
+            <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+            <p-text-list-item>Lorem ipsum</p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      </p-text-list>
+    </div>
+
+    <div class="playground light" title="should show unordered text list with color porsche red">
+      <p-text-list color="porsche-red">
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>
+          Lorem ipsum
+          <p-text-list color="porsche-red">
+            <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+            <p-text-list-item>Lorem ipsum</p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      </p-text-list>
+    </div>
+
+    <div class="playground light" title="should show unordered text list with text size of 48">
+      <p-text-list text-type="48">
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>
+          Lorem ipsum
+          <p-text-list text-type="48">
+            <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+            <p-text-list-item>Lorem ipsum</p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      </p-text-list>
+    </div>
+
+    <div class="playground light" title="should show default ordered text list">
+      <p-text-list list-type="ordered">
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>
+          Lorem ipsum
+          <p-text-list list-type="ordered">
+            <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+            <p-text-list-item>Lorem ipsum</p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      </p-text-list>
+    </div>
+
+    <div class="playground light" title="should show ordered text list with color porsche red">
+      <p-text-list list-type="ordered" color="porsche-red">
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>
+          Lorem ipsum
+          <p-text-list list-type="ordered" color="porsche-red">
+            <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+            <p-text-list-item>Lorem ipsum</p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      </p-text-list>
+    </div>
+
+    <div class="playground light" title="should show ordered text list with text size of 48">
+      <p-text-list list-type="ordered" text-type="48">
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>
+          Lorem ipsum
+          <p-text-list list-type="ordered" text-type="48">
+            <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+            <p-text-list-item>Lorem ipsum</p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+        <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      </p-text-list>
+    </div>
+  </body>
+</html>
