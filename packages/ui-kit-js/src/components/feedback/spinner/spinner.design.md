@@ -29,13 +29,13 @@ indicate progress after clicking "save".
 
 ### Spinner sizes
 Depending on your need you can choose betwenn different spinner sizes and versions
-for Light Theme and Dark Theme.
+for Light Theme and Dark Theme. The Spinner `medium` and `large` adjust their size automatically based on the responsive breakpoint.
 
 
 | Type                      | Example                            | Recommendation                                                          |
 |---------------------------|------------------------------------|-------------------------------------------------------------------------|
-| Spinner X-Small           | ❌ @DEV: BITTE SPINNER EINFÜGEN    | Only for in-component loaders, such as in buttons or input fields.      |
-| Spinner Small - Large     | ❌ @DEV: BITTE 3 SPINNER EINFÜGEN  | For module or page loading, optionally accompanied by a text label.     |
+| Spinner X-Small           |   <p-spinner size="x-small"></p-spinner>    | Only for in-component loaders, such as in buttons or input fields.      |
+| Spinner Small - Large     |   <p-spinner size="small"></p-spinner><p-spinner size="medium"></p-spinner><p-spinner size="large"></p-spinner>  | For module or page loading, optionally accompanied by a text label.     |
 
 ### Additional text label
 It can be helpful to include text to improve clarity. Keep it simple by only explaining
