@@ -25,14 +25,14 @@ To adapt the maximum number of page links for smaller screens for individual bre
 ### Page range: desktop
 <Playground :themeable="true">
   <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="1"></p-pagination>
+    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="large"></p-pagination>
   </template>
 </Playground>
 
 ### Page range: mobile
 <Playground :themeable="true">
   <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="0"></p-pagination>
+    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="small"></p-pagination>
   </template>
 </Playground>
 
