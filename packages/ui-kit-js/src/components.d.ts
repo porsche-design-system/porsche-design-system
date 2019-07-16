@@ -12,9 +12,6 @@ import {
 import {
   Components,
 } from './index';
-import {
-  PaginationItemType,
-} from './components/navigation/pagination/pagination-helper';
 
 export namespace Components {
   interface PButtonIcon {
@@ -322,9 +319,9 @@ export namespace Components {
     */
     'labelPrev'?: string;
     /**
-    * The number of pages between ellipsis. 0 = mobile | 1 = desktop
+    * The number of pages between ellipsis. 'small' = mobile | 'large' = desktop | 'auto' = breakpoint specific
     */
-    'pageRange'?: 0 | 1;
+    'pageRange'?: 'small' | 'large' | 'auto';
     /**
     * Adapts the color when used on dark background.
     */
@@ -333,7 +330,6 @@ export namespace Components {
     * The total count of items.
     */
     'totalItemsCount': number;
-    'type': PaginationItemType;
   }
   interface PRadio {
     'checked'?: boolean;
@@ -970,9 +966,9 @@ declare namespace LocalJSX {
     */
     'onPClick'?: (event: CustomEvent<any>) => void;
     /**
-    * The number of pages between ellipsis. 0 = mobile | 1 = desktop
+    * The number of pages between ellipsis. 'small' = mobile | 'large' = desktop | 'auto' = breakpoint specific
     */
-    'pageRange'?: 0 | 1;
+    'pageRange'?: 'small' | 'large' | 'auto';
     /**
     * Adapts the color when used on dark background.
     */

@@ -85,7 +85,7 @@ export class Icon {
 
   public getSource() {
     if (this.source && !isUrl(this.source)) {
-      return `https://ui.porsche.com/cdn/0.0.3/icon/icon_${this.source}.min.svg`;
+      return `https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/icon_${this.source}.min.svg`;
     } else {
       return this.source;
     }
