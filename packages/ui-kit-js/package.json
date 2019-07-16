@@ -1,6 +1,6 @@
 {
   "name": "@porscheui/ui-kit-js",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "scope": "@porscheui",
   "description": "Porsche UI Web Components",
   "main": "dist/index.js",
