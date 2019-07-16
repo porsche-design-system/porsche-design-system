@@ -391,6 +391,9 @@ export namespace Components {
     | 'time'
     | 'sup'
     | 'sub'
+    | 'ul'
+    | 'ol'
+    | 'li'
     | 'legend';
     /**
     * The style of the text.
@@ -1038,6 +1041,9 @@ declare namespace LocalJSX {
     | 'time'
     | 'sup'
     | 'sub'
+    | 'ul'
+    | 'ol'
+    | 'li'
     | 'legend';
     /**
     * The style of the text.

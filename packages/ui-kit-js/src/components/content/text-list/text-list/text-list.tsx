@@ -22,7 +22,7 @@ export class TextList {
 
     return (
       <Host class={textListClasses}>
-        <p-text role='list' tag='div' type={this.textType} color={this.color}>
+        <p-text tag={this.listType === 'unordered' ? 'ul' : 'ol'} type={this.textType} color={this.color}>
           <slot />
         </p-text>
       </Host>

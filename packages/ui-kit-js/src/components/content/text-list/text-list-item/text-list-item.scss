@@ -2,7 +2,7 @@
 
 .#{$p-global-class-prefix}text-list__item {
   position: relative;
-  display: block;
+  display: list-item;
   padding-left: 1em;
 
   &::before {

@@ -49,6 +49,9 @@ export class Text {
     | 'time'
     | 'sup'
     | 'sub'
+    | 'ul'
+    | 'ol'
+    | 'li'
     | 'legend' = 'p';
 
   /** The text alignment of the component. */
@@ -76,7 +79,8 @@ export class Text {
       this.color && prefix(`text--color-${this.color}`),
       this.inline && prefix('text--inline'),
       this.ellipsis && prefix('text--ellipsis'),
-      this.wrap && prefix('text--wrap')
+      this.wrap && prefix('text--wrap'),
+      (this.tag === 'ul' || 'ol' || 'li') && prefix('text--list')
     );
 
     const hostClasses = cx(this.inline && prefix('text--inline'));

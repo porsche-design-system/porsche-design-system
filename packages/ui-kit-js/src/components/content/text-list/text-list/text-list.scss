@@ -1,8 +1,7 @@
-@import "../../../../styles/utility/index";
+@import '../../../../styles/utility/index';
 
 .#{$p-global-class-prefix}text-list {
   display: block;
-  $bem-block: &;
   padding: 0;
   margin: 0;
   list-style-type: none;
