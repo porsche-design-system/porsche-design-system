@@ -12,8 +12,7 @@
   "collection:main": "dist/collection/index.js",
   "files": [
     "dist/",
-    "loader/",
-    "src/styles/"
+    "loader/"
   ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
