@@ -1,9 +1,9 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
-import autoprefixer from "autoprefixer";
 import { reactOutputTarget } from '@ionic-enterprise/react-output-plugin';
-import { angularOutputTarget, ValueAccessorConfig } from '@ionic-enterprise/angular-output-plugin';
+import { angularOutputTarget } from '@ionic-enterprise/angular-output-plugin';
+import autoprefixer = require('autoprefixer');
 
 export const config: Config = {
   namespace: 'porsche-ui-kit',
@@ -11,11 +11,11 @@ export const config: Config = {
     { type: 'dist', esmLoaderPath: '../loader' },
     { type: 'www', serviceWorker: null },
     reactOutputTarget({
-      componentCorePackage: "@porscheui/ui-kit-js",
+      componentCorePackage: '@porscheui/ui-kit-js',
       proxiesFile: '../ui-kit-react/src/components.ts'
     }),
     angularOutputTarget({
-      componentCorePackage: "@porscheui/ui-kit-js",
+      componentCorePackage: '@porscheui/ui-kit-js',
       directivesProxyFile: '../ui-kit-angular/src/directives/proxies.ts'
     })
   ],
