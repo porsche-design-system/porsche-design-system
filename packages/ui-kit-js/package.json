@@ -53,6 +53,9 @@
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61422 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf ./node_modules & rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www"
   },
+  "dependencies": {
+    "throttle-debounce": "^2.1.0"
+  },
   "devDependencies": {
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
     "@ionic-enterprise/react-output-plugin": "^0.0.5",
@@ -77,12 +80,11 @@
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-scss": "^3.9.1",
-    "throttle-debounce": "^2.1.0",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.5.3",
-    "wait-on": "^3.2.0"
+    "wait-on": "^3.3.0"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"
 }
