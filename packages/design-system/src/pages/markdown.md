@@ -121,12 +121,12 @@ Autoconverted link https://ui.porsche.com/
 
 ## Images
 
-![Porsche 992 Carrera S](../assets/porsche-992-carrera-s.webp)
+![Porsche 992 Carrera S](../assets/porsche-992-carrera-s.jpg)
 
-![Porsche 718 GTS](../assets/porsche-718-gts.webp "The Porsche 718 GTS")
+![Porsche 718 GTS](../assets/porsche-718-gts.jpg "The Porsche 718 GTS")
 
 Like links, Images also have a footnote style syntax with a reference later in the document defining the URL location.
 
 ![Alt text][id]
 
-[id]: ../assets/porsche-911-gt2-rs.webp "911 GT2 RS"
+[id]: ../assets/porsche-911-gt2-rs.jpg "911 GT2 RS"
