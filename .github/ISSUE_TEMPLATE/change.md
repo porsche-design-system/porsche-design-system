@@ -31,16 +31,16 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - [ ] Create UI decision proposal based on research and testing
 - [ ] Define naming and hierarchy structure and naming of all related states and variants
 - [ ] Approve UI definition
-- [ ] Create Branch and update sketch library in Abstract and create/share collection link
-- [ ] Merge Sketch library to Master in Abstract for export 
-- [ ] Remove from prep library (optional)
+- [ ] Create branch in Abstract according to issue number, update sketch library and add collection link issue
+- [ ] Remove elements from prep library (optional)
 
 // DEV
+- [ ] Setup of hierarchy structure and naming of all related states and variants
 - [ ] Create/update related code CSS / JS
 - [ ] Create samples of all possible states and variants
-- [ ] Create Code/Implementation guidelines 
+- [ ] Create code docs (implementation guidelines)
 - [ ] Create VRT
-- [ ] Create Unit test (Optional)
+- [ ] Create unit test (optional)
 - [ ] Test code visual and functional for optimized viewports (only one browser): 320px, 375px, 480px, 768px, 1024px, 1366px, 1920px
 - [ ] Test code visual and functional for all supported browsers in viewports: 320px, 480px, 760px, 1000px, 1300px, 1760px, 1920px
 
@@ -48,4 +48,5 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - [ ] 3rd party design sketch review
 - [ ] 3rd party code review
 - [ ] 3rd party code docu review
-- [ ] code docu review by design 
+- [ ] Code docu review by design 
+- [ ] Merge corresponding Abstract branch to master and export sketch lib file for deployment
