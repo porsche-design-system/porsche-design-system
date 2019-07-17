@@ -2,7 +2,7 @@
 name: Component
 about: Changes or adding of components resulting in a major, minor or patch release
 title: ''
-labels: 'component'
+labels: 'component, to be refined'
 assignees: ''
 
 ---
