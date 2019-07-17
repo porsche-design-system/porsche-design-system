@@ -174,7 +174,6 @@
         table {
           margin-top: $p-spacing-24;
           width: 80%;
-          text-align: left;
           border-collapse: collapse;
 
           thead {
@@ -186,11 +185,13 @@
           }
 
           th {
+            text-align: left;
             padding-bottom: $p-spacing-8;
             border-bottom: 1px solid $p-color-neutral-grey-1;
           }
 
           td {
+            text-align: left;
             padding: {
               top: $p-spacing-8;
               bottom: $p-spacing-8;
