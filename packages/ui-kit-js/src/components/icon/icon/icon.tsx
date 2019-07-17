@@ -1,5 +1,5 @@
 import { JSX, Component, Host, Element, Prop, State, Watch, h } from '@stencil/core';
-import { getName, isUrl, isValid } from './utils';
+import { getName, isUrl, isValid } from './icon-helper';
 import cx from 'classnames';
 import { prefix } from '../../../utils/prefix';
 import { Components } from '../../../index';
@@ -10,7 +10,6 @@ import { Components } from '../../../index';
   shadow: true
 })
 export class Icon {
-
   @Element() public el!: HTMLElement;
 
   @Prop({ context: 'isServer' }) public isServer!: boolean;
