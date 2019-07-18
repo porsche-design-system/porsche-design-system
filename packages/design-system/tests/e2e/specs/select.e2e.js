@@ -1,5 +1,4 @@
 describe('Select', () => {
-
   beforeEach(() => {
     window.localStorage.setItem('Feature: Q2/2019 Components', 'true');
   });
@@ -19,7 +18,6 @@ describe('Select', () => {
   });
 
   describe('Tabs', () => {
-
     beforeEach(() => {
       cy.visit('/#/components/form/select');
     });
@@ -27,9 +25,15 @@ describe('Select', () => {
     it('Should show tab navigation with first tab activated', () => {
       cy.get('#app main .tabs a').should(($a) => {
         expect($a, '3 items').to.have.length(3);
-        expect($a.eq(0), 'first item').to.contain('Design').to.have.class('router-link-active');
-        expect($a.eq(1), 'second item').to.contain('Code').not.to.have.class('router-link-active');
-        expect($a.eq(2), 'second item').to.contain('Props').not.to.have.class('router-link-active');
+        expect($a.eq(0), 'first item')
+          .to.contain('Design')
+          .to.have.class('router-link-active');
+        expect($a.eq(1), 'second item')
+          .to.contain('Code')
+          .not.to.have.class('router-link-active');
+        expect($a.eq(2), 'second item')
+          .to.contain('Props')
+          .not.to.have.class('router-link-active');
       });
     });
 
@@ -39,8 +43,7 @@ describe('Select', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main p')
-        .should('contain', 'TBD');
+      cy.get('#app main p').should('contain', 'TBD');
     });
 
     it('Should show code documentation', () => {
@@ -49,8 +52,7 @@ describe('Select', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1')
-        .should('contain', 'Select');
+      cy.get('#app main h1').should('contain', 'Select');
     });
 
     it('Should show props documentation', () => {
@@ -59,8 +61,7 @@ describe('Select', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1')
-        .should('contain', 'p-select');
+      cy.get('#app main h1').should('contain', 'Select');
     });
   });
 });
