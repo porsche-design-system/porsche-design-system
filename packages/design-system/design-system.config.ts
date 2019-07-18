@@ -88,7 +88,7 @@ export const config: DesignSystemConfig = {
         design: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.code.md`),
         vrt: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.vrt.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.props.md`)
+        props: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list/${empty}text-list.props.md`)
       }
     },
     Form: {
