@@ -1,4 +1,4 @@
-@import "../../../styles/utility/index";
+@import '../../../styles/utility/index';
 
 :host {
   display: block;
@@ -29,15 +29,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier,
+      box-shadow $p-animation-hover-duration $p-animation-hover-bezier;
     position: relative;
     width: rem(40px);
     height: rem(40px);
     box-sizing: border-box;
 
     &:focus {
-      outline: 2px solid $p-color-state-focus;
-      outline-offset: -2px;
+      // outline: 1px solid $p-color-state-focus;
+      // outline-offset: -1px;
+      outline: none;
+      box-shadow: inset 0 0 0 1px $p-color-state-focus;
     }
 
     &:active {
@@ -47,7 +50,7 @@
   }
 
   &__goto {
-    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+    font-family: 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
     font-size: rem(16px);
     line-height: rem(24px);
     color: $p-color-porsche-black;
@@ -78,7 +81,7 @@
       }
 
       &::after {
-        content: "";
+        content: '';
         background-color: $p-color-porsche-red;
         display: block;
         position: absolute;
@@ -101,7 +104,7 @@
       }
 
       &::after {
-        content: "…";
+        content: '…';
       }
     }
   }
