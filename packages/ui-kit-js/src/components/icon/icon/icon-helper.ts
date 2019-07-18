@@ -1,28 +1,13 @@
-let CACHED_MAP: Map<string, string>;
-
-export function getIconMap(): Map<string, string> {
-  if (!CACHED_MAP) {
-    const win = window as any;
-    win.Ionicons = win.Ionicons || {};
-    CACHED_MAP = win.Ionicons.map = win.Ionicons.map || new Map();
-  }
-  return CACHED_MAP;
-}
-
-export function addIcons(icons: { [name: string]: string }) {
-  const map = getIconMap();
-  Object.keys(icons).forEach((name) => {
-    map.set(name, icons[name]);
-  });
-}
-
 export function getName(name: string | undefined) {
-  if (name) {
-    name = name.toLowerCase();
-  }
-
   if (typeof name !== 'string' || name.trim() === '') {
     return null;
+  }
+
+  if (name) {
+    name = name
+      .toLowerCase()
+      .substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.'))
+      .replace(/\.|\_/g, '-');
   }
 
   // only allow alpha characters and dash
@@ -30,7 +15,6 @@ export function getName(name: string | undefined) {
   if (invalidChars !== '') {
     return null;
   }
-
   return name;
 }
 

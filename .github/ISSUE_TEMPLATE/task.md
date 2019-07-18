@@ -2,7 +2,7 @@
 name: Task
 about: General tasks that wont result in a change
 title: ''
-labels: 'task'
+labels: 'task, to be refined'
 assignees: ''
 
 ---
