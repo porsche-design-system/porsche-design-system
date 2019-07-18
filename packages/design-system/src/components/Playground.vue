@@ -25,279 +25,304 @@
         'spacing-block-small': (childElementLayout.spacing === 'block-small')
       }"
     >
-      <slot :theme="theme" />
+      <slot :theme="theme"/>
     </div>
+    <CodeBlock :markup="markup"/>
   </div>
 </template>
 
 <script lang="ts">
-type Theme = 'light' | 'dark';
+  import {Component, Prop, Vue} from 'vue-property-decorator';
+  import CodeBlock from '@/components/CodeBlock.vue';
 
-import { Component, Prop, Vue } from 'vue-property-decorator';
+  type Theme = 'light' | 'dark';
 
-interface ChildElementLayout {
-  height: 'auto' | 'fixed';
-  spacing: 'none' | 'inline' | 'block' | 'block-small';
-}
-
-@Component
-export default class Playground extends Vue {
-  @Prop({ default: false }) public themeable!: boolean;
-  @Prop({ default: () => ({ height: 'auto', spacing: 'none' }) }) public childElementLayout!: ChildElementLayout;
-
-  public theme: Theme = 'light';
-
-  public switchTheme(theme: Theme): void {
-    this.theme = theme;
+  interface ChildElementLayout {
+    height: 'auto' | 'fixed';
+    spacing: 'none' | 'inline' | 'block' | 'block-small';
   }
-}
+
+  @Component({
+    components: {
+      CodeBlock
+    }
+  })
+  export default class Playground extends Vue {
+    @Prop({default: false}) public themeable!: boolean;
+    @Prop({default: () => ({height: 'auto', spacing: 'none'})}) public childElementLayout!: ChildElementLayout;
+
+    public theme: Theme = 'light';
+    public markup: string = '';
+
+    public switchTheme(theme: Theme): void {
+      this.theme = theme;
+    }
+
+    public mounted() {
+      this.markup = this.getMarkup();
+    }
+
+    public updated() {
+      this.markup = this.getMarkup();
+    }
+
+    private getMarkup(): string {
+      const el = this.$el.querySelector('.example');
+      if (el) {
+        return el.innerHTML;
+      }
+      return '';
+    }
+  }
 </script>
 
 <style scoped lang="scss">
-@import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  @import '~@porscheui/ui-kit-js/src/styles/utility/index';
 
-$color-blue-1: lightskyblue;
-$color-blue-2: deepskyblue;
-$color-blue-3: dodgerblue;
-$color-blue-4: royalblue;
-$color-highlight: deeppink;
+  $color-blue-1: lightskyblue;
+  $color-blue-2: deepskyblue;
+  $color-blue-3: dodgerblue;
+  $color-blue-4: royalblue;
+  $color-highlight: deeppink;
 
-.example {
-  padding: $p-spacing-32;
-  overflow-x: auto;
-  border: 1px solid transparent;
+  .example {
+    padding: $p-spacing-32;
+    overflow-x: auto;
+    border: 1px solid transparent;
 
-  // Mode
-  &.light {
-    border-color: $p-color-neutral-grey-2;
-    background-color: $p-color-porsche-light;
-  }
-
-  &.dark {
-    border-color: $p-color-surface-dark;
-    background-color: $p-color-surface-dark;
-  }
-
-  &.children-height-fixed {
-    > * {
-      height: rem(180px);
-    }
-  }
-
-  &.spacing-inline {
-    &::before {
-      content: '';
-      display: block;
-      margin-top: -$p-spacing-16;
+    // Mode
+    &.light {
+      border-color: $p-color-neutral-grey-2;
+      background-color: $p-color-porsche-light;
     }
 
-    > * {
-      margin-top: $p-spacing-16;
-
-      &:not(:last-child) {
-        margin-right: $p-spacing-16;
-      }
-    }
-  }
-
-  &.spacing-block {
-    &::before {
-      content: '';
-      display: block;
-      margin-top: -$p-spacing-16;
+    &.dark {
+      border-color: $p-color-surface-dark;
+      background-color: $p-color-surface-dark;
     }
 
-    > * {
-      display: block;
-      margin-top: $p-spacing-16;
-    }
-  }
-
-  &.spacing-block-small {
-    &::before {
-      content: '';
-      display: block;
-      margin-top: -$p-spacing-8;
-    }
-
-    > * {
-      margin-top: $p-spacing-8;
-    }
-  }
-
-  // Flex - web component code example visualization
-  p-flex {
-    // styling to colorize flex items
-    p-flex-item {
-      &:nth-child(1n) {
-        background-color: $color-blue-1;
-      }
-
-      &:nth-child(2n) {
-        background-color: $color-blue-2;
-      }
-
-      &:nth-child(3n) {
-        background-color: $color-blue-3;
-      }
-
-      &:nth-child(4n) {
-        background-color: $color-blue-4;
-      }
-
-      // styling to visualize baseline
-      &[align-self='baseline'] {
-        margin-top: $p-spacing-24;
+    &.children-height-fixed {
+      > * {
+        height: rem(180px);
       }
     }
 
-    // styling to visualize align items behaviour
-    &[align-items] {
-      p-flex-item:not([align-self='stretch']) {
-        &:nth-child(1n) {
-          height: 40px;
-        }
-
-        &:nth-child(2n) {
-          height: 80px;
-        }
-
-        &:nth-child(3n) {
-          height: 54px;
-        }
-      }
-    }
-
-    // special case for visualizing gap styling
-    &[gap] {
-      p-flex-item {
-        background-color: transparent !important;
-
-        &:nth-child(1n) p {
-          background-color: $color-blue-1;
-        }
-
-        &:nth-child(2n) p {
-          background-color: $color-blue-2;
-        }
-
-        &:nth-child(3n) p {
-          background-color: $color-blue-3;
-        }
-
-        &:nth-child(4n) p {
-          background-color: $color-blue-4;
-        }
-      }
-    }
-
-    // styling to visualize baseline
-    &[align-items='baseline'] {
-      p-flex-item {
-        margin-top: $p-spacing-24;
-      }
-    }
-  }
-
-  // Grid - web component code example visualization
-  p-grid {
-    p-grid-child {
-      > p {
-        padding: $p-spacing-4;
-        background: $color-blue-1;
-      }
-    }
-  }
-
-  // Spacing - code example visualization
-  > .example-spacing-visual {
-    display: inline-flex;
-    > div {
-      background-color: $color-blue-1;
-      width: fit-content;
-    }
-  }
-  > .example-spacing {
-    display: inline-block;
-    vertical-align: top;
-    background-color: $color-blue-1;
-
-    &.negative {
-      padding: $p-spacing-40;
-    }
-
-    &.negative-responsive {
-      @include p-spacing-d('padding');
-
-      > [class*='p-spacing-'] {
-        width: 2 * $p-spacing-d;
-        height: 2 * $p-spacing-d;
-
-        @include breakpoint('s') {
-          width: 2 * $p-spacing-d-s;
-          height: 2 * $p-spacing-d-s;
-        }
-        @include breakpoint('m') {
-          width: 2 * $p-spacing-d-m;
-          height: 2 * $p-spacing-d-m;
-        }
-        @include breakpoint('l') {
-          width: 2 * $p-spacing-d-l;
-          height: 2 * $p-spacing-d-l;
-        }
-        @include breakpoint('xl') {
-          width: 2 * $p-spacing-d-xl;
-          height: 2 * $p-spacing-d-xl;
-        }
-      }
-    }
-
-    > [class*='p-spacing-'] {
-      position: relative;
-      width: $p-spacing-80;
-      height: $p-spacing-80;
-
+    &.spacing-inline {
       &::before {
         content: '';
         display: block;
-        width: 100%;
-        height: 100%;
-        background-color: $color-blue-2;
+        margin-top: -$p-spacing-16;
+      }
+
+      > * {
+        margin-top: $p-spacing-16;
+
+        &:not(:last-child) {
+          margin-right: $p-spacing-16;
+        }
+      }
+    }
+
+    &.spacing-block {
+      &::before {
+        content: '';
+        display: block;
+        margin-top: -$p-spacing-16;
+      }
+
+      > * {
+        display: block;
+        margin-top: $p-spacing-16;
+      }
+    }
+
+    &.spacing-block-small {
+      &::before {
+        content: '';
+        display: block;
+        margin-top: -$p-spacing-8;
+      }
+
+      > * {
+        margin-top: $p-spacing-8;
+      }
+    }
+
+    // Flex - web component code example visualization
+    p-flex {
+      // styling to colorize flex items
+      p-flex-item {
+        &:nth-child(1n) {
+          background-color: $color-blue-1;
+        }
+
+        &:nth-child(2n) {
+          background-color: $color-blue-2;
+        }
+
+        &:nth-child(3n) {
+          background-color: $color-blue-3;
+        }
+
+        &:nth-child(4n) {
+          background-color: $color-blue-4;
+        }
+
+        // styling to visualize baseline
+        &[align-self='baseline'] {
+          margin-top: $p-spacing-24;
+        }
+      }
+
+      // styling to visualize align items behaviour
+      &[align-items] {
+        p-flex-item:not([align-self='stretch']) {
+          &:nth-child(1n) {
+            height: 40px;
+          }
+
+          &:nth-child(2n) {
+            height: 80px;
+          }
+
+          &:nth-child(3n) {
+            height: 54px;
+          }
+        }
+      }
+
+      // special case for visualizing gap styling
+      &[gap] {
+        p-flex-item {
+          background-color: transparent !important;
+
+          &:nth-child(1n) p {
+            background-color: $color-blue-1;
+          }
+
+          &:nth-child(2n) p {
+            background-color: $color-blue-2;
+          }
+
+          &:nth-child(3n) p {
+            background-color: $color-blue-3;
+          }
+
+          &:nth-child(4n) p {
+            background-color: $color-blue-4;
+          }
+        }
+      }
+
+      // styling to visualize baseline
+      &[align-items='baseline'] {
+        p-flex-item {
+          margin-top: $p-spacing-24;
+        }
+      }
+    }
+
+    // Grid - web component code example visualization
+    p-grid {
+      p-grid-child {
+        > p {
+          padding: $p-spacing-4;
+          background: $color-blue-1;
+        }
+      }
+    }
+
+    // Spacing - code example visualization
+    > .example-spacing-visual {
+      display: inline-flex;
+
+      > div {
+        background-color: $color-blue-1;
+        width: fit-content;
+      }
+    }
+
+    > .example-spacing {
+      display: inline-block;
+      vertical-align: top;
+      background-color: $color-blue-1;
+
+      &.negative {
+        padding: $p-spacing-40;
+      }
+
+      &.negative-responsive {
+        @include p-spacing-d('padding');
+
+        > [class*='p-spacing-'] {
+          width: 2 * $p-spacing-d;
+          height: 2 * $p-spacing-d;
+
+          @include breakpoint('s') {
+            width: 2 * $p-spacing-d-s;
+            height: 2 * $p-spacing-d-s;
+          }
+          @include breakpoint('m') {
+            width: 2 * $p-spacing-d-m;
+            height: 2 * $p-spacing-d-m;
+          }
+          @include breakpoint('l') {
+            width: 2 * $p-spacing-d-l;
+            height: 2 * $p-spacing-d-l;
+          }
+          @include breakpoint('xl') {
+            width: 2 * $p-spacing-d-xl;
+            height: 2 * $p-spacing-d-xl;
+          }
+        }
+      }
+
+      > [class*='p-spacing-'] {
+        position: relative;
+        width: $p-spacing-80;
+        height: $p-spacing-80;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-color: $color-blue-2;
+        }
       }
     }
   }
-}
 
-.tab {
-  display: inline-block;
+  .tab {
+    display: inline-block;
 
-  &:not(:last-child) {
-    margin-right: $p-spacing-24;
-  }
-}
-
-.link {
-  display: block;
-  padding-bottom: $p-spacing-4;
-  text-decoration: none;
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-  font-weight: 200;
-  color: $p-color-neutral-grey-6;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-  &:hover {
-    color: $p-color-porsche-red;
+    &:not(:last-child) {
+      margin-right: $p-spacing-24;
+    }
   }
 
-  &:focus {
-    outline: 1px solid $p-color-state-focus;
-    outline-offset: 4px;
-  }
+  .link {
+    display: block;
+    padding-bottom: $p-spacing-4;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 200;
+    color: $p-color-neutral-grey-6;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-  &.is-active {
-    color: $p-color-porsche-black;
-    border-bottom-color: $p-color-porsche-red;
+    &:hover {
+      color: $p-color-porsche-red;
+    }
+
+    &:focus {
+      outline: 1px solid $p-color-state-focus;
+      outline-offset: 4px;
+    }
+
+    &.is-active {
+      color: $p-color-porsche-black;
+      border-bottom-color: $p-color-porsche-red;
+    }
   }
-}
 </style>
