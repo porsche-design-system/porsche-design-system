@@ -442,8 +442,7 @@ export namespace Components {
     /**
     * Set a custom HTML tag depending of the usage of the component.
     */
-    'tag'?: | 'span'
-    | 'a';
+    'tag'?: 'span' | 'a';
     /**
     * Target attribute where the link should be opened.
     */
@@ -1096,8 +1095,7 @@ declare namespace LocalJSX {
     /**
     * Set a custom HTML tag depending of the usage of the component.
     */
-    'tag'?: | 'span'
-    | 'a';
+    'tag'?: 'span' | 'a';
     /**
     * Target attribute where the link should be opened.
     */

@@ -28,9 +28,7 @@ export class TextLink {
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
   /** Set a custom HTML tag depending of the usage of the component. */
-  @Prop() public tag?:
-    | 'span'
-    | 'a' = 'a';
+  @Prop() public tag?: 'span' | 'a' = 'a';
 
   /** Emitted when the link is clicked. */
   @Event() public pClick!: EventEmitter<void>;
@@ -39,13 +37,11 @@ export class TextLink {
     const TagType: any = this.tag;
 
     const textLinkClasses = cx(prefix('text-link'), this.theme === 'dark' && prefix('text-link--theme-dark'));
-    const iconClasses = cx(this.type && prefix(`text-link__icon--${this.type}`));
+    const iconClasses = cx(prefix('text-link__icon'), this.type && prefix(`text-link__icon--${this.type}`));
 
     return (
       <TagType
-        {...(TagType === 'a'
-          ? { href: this.href, target: `_${this.target}`, download: this.download }
-          : null)}
+        {...(TagType === 'a' ? { href: this.href, target: `_${this.target}`, download: this.download } : null)}
         onClick={(e) => this.onClick(e)}
         class={textLinkClasses}
       >

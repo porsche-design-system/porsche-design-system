@@ -1,4 +1,4 @@
-@import "../../../styles/utility/index";
+@import '../../../styles/utility/index';
 
 :host {
   display: inline-flex;
@@ -39,6 +39,8 @@
   }
 
   &__icon {
+    flex-shrink: 0;
+
     &--copy {
       width: $p-font-size-16 * 1.5;
       height: $p-font-size-16 * 1.5;
