@@ -1,4 +1,4 @@
-@import "../../../styles/utility/index";
+@import '../../../styles/utility/index';
 
 :host {
   display: inline-flex;
@@ -14,7 +14,8 @@
   width: rem(48px);
   height: rem(48px);
   stroke-width: 2px;
-  animation: rotate var(--p-animation-duration__spinner) linear infinite; // basic IE11 fallback
+  animation: rotate 1s linear infinite; // IE11 fallback
+  animation-duration: var(--p-animation-duration__spinner);
 
   &__image {
     display: block;
@@ -65,7 +66,7 @@
     height: rem(48px);
     stroke-width: 2px;
 
-    @include breakpoint("m") {
+    @include breakpoint('m') {
       width: rem(72px);
       height: rem(72px);
       stroke-width: 2px;
@@ -77,13 +78,13 @@
     height: rem(48px);
     stroke-width: 2px;
 
-    @include breakpoint("m") {
+    @include breakpoint('m') {
       width: rem(72px);
       height: rem(72px);
       stroke-width: 2px;
     }
 
-    @include breakpoint("l") {
+    @include breakpoint('l') {
       width: rem(104px);
       height: rem(104px);
       stroke-width: 2px;
