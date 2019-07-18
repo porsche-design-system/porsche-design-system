@@ -37,7 +37,7 @@ The default icon color inherits from its parent(s). But also predefined colors c
 The whole Porsche icon set is hosted on the Porsche UI Kit CDN. If there is a need to show a custom icon which doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be sure that the custom icon serves the specific needs like size and viewbox which are described in the [design documentation](#/components/icon/icon#design).
 
 <Playground>
-  <p-icon source="./assets/icon-custom-kaixin.svg" size="large" aria-label="Icon for social media platform Kaixin" />
+  <p-icon :source="require(`@/assets/icon-custom-kaixin.svg`)" size="large" aria-label="Icon for social media platform Kaixin" />
 </Playground>
 
 ---
@@ -49,4 +49,3 @@ With using SVG icons, there are options to give more accessibility to users usin
 ```
 <p-icon aria-label="descriptive text, e.g: close the layer" />
 ```
-
