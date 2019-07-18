@@ -1,7 +1,9 @@
 # Icon
 
 ## Introduction
-Porsche UI Kit is using a SVG icon system to present an icon object visually. Each icon is hosted on the Porsche UI Kit CDN to be served and cached as fast as possible. For more information and a complete overview of all available Porsche icons, head over to Porsche Icons (comin soon).
+Porsche UI Kit is using a SVG icon system to present an icon object visually. Each icon is hosted on the Porsche UI Kit CDN to be served and cached as fast as possible. To reference an icon just use the `source` property with the icon name **without** prefix `icon_` and the file extension `.svg`.
+
+For more information and a complete overview of all available Porsche icons, head over to Porsche Icons (comin soon).
 
 ## Icons
 
@@ -38,6 +40,15 @@ The whole Porsche icon set is hosted on the Porsche UI Kit CDN. If there is a ne
 
 <Playground>
   <p-icon :source="require(`@/assets/icon-custom-kaixin.svg`)" size="large" aria-label="Icon for social media platform Kaixin" />
+</Playground>
+
+---
+
+### Lazy loaded icon
+Icons can be lazy loaded which means, that they are only loaded (fetched) if they get visible in the viewport.
+
+<Playground>
+  <p-icon source="info" size="large" lazy="true" />
 </Playground>
 
 ---

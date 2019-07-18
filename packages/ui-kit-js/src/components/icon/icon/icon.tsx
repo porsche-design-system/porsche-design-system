@@ -39,6 +39,7 @@ export class Icon {
    * Default, `false`.
    */
   @Prop() public lazy?: boolean = false;
+
   private io?: IntersectionObserver;
 
   @State() private svgContent?: string;
