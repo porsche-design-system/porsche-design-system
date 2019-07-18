@@ -1186,10 +1186,10 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@stencil/core@^1.1.6":
-  version "1.1.6"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.1.6.tgz#8923c3e46d49f0898d1097afb65defa74662ddfb"
-  integrity sha1-iSPD5G1J8ImNEJevtl3vp0Zi3fs=
+"@stencil/core@^1.1.7":
+  version "1.1.7"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.1.7.tgz#17d4b4c8a86797a9cea5be0830729d4cfb22e20b"
+  integrity sha1-F9S0yKhnl6nOpb4IMHKdTPsi4gs=
   dependencies:
     typescript "3.5.2"
 
@@ -1557,10 +1557,10 @@
     jest-watch-typeahead "0.2.1"
     vue-jest "^3.0.4"
 
-"@vue/cli-service@^3.9.2":
-  version "3.9.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/cli-service/-/cli-service-3.9.2.tgz#59c95500f1f20ab1cd1905c28f6c3b17c04d6de8"
-  integrity sha1-WclVAPHyCrHNGQXCj2w7F8BNbeg=
+"@vue/cli-service@^3.9.3":
+  version "3.9.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@vue/cli-service/-/cli-service-3.9.3.tgz#4bd5786465afb8b608c5c7fc9661390e747ea756"
+  integrity sha1-S9V4ZGWvuLYIxcf8lmE5DnR+p1Y=
   dependencies:
     "@intervolga/optimize-cssnano-plugin" "^1.0.5"
     "@soda/friendly-errors-webpack-plugin" "^1.7.1"
@@ -1595,7 +1595,7 @@
     hash-sum "^1.0.2"
     html-webpack-plugin "^3.2.0"
     launch-editor-middleware "^2.2.1"
-    lodash.defaultsdeep "^4.6.0"
+    lodash.defaultsdeep "^4.6.1"
     lodash.mapvalues "^4.6.0"
     lodash.transform "^4.6.0"
     mini-css-extract-plugin "^0.6.0"
@@ -7178,7 +7178,18 @@ jpeg-js@^0.3.4:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/jpeg-js/-/jpeg-js-0.3.5.tgz#6fbd6cd0e49627c5a0341796c9e50c70a2aa3673"
   integrity sha1-b71s0OSWJ8WgNBeWyeUMcKKqNnM=
 
-js-beautify@^1.10.0, js-beautify@^1.6.12, js-beautify@^1.6.14:
+js-beautify@^1.10.1:
+  version "1.10.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/js-beautify/-/js-beautify-1.10.1.tgz#bdfe738ddbcaa12e4fced5af2d7cfad59f60ac0a"
+  integrity sha1-vf5zjdvKoS5PztWvLXz61Z9grAo=
+  dependencies:
+    config-chain "^1.1.12"
+    editorconfig "^0.15.3"
+    glob "^7.1.3"
+    mkdirp "~0.5.1"
+    nopt "~4.0.1"
+
+js-beautify@^1.6.12, js-beautify@^1.6.14:
   version "1.10.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/js-beautify/-/js-beautify-1.10.0.tgz#9753a13c858d96828658cd18ae3ca0e5783ea672"
   integrity sha1-l1OhPIWNloKGWM0Yrjyg5Xg+pnI=
@@ -7569,10 +7580,10 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
-lodash.defaultsdeep@^4.6.0:
-  version "4.6.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.0.tgz#bec1024f85b1bd96cbea405b23c14ad6443a6f81"
-  integrity sha1-vsECT4WxvZbL6kBbI8FK1kQ6b4E=
+lodash.defaultsdeep@^4.6.1:
+  version "4.6.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
+  integrity sha1-US6b1yHSctlOPTpjZT+hdRZ0HKY=
 
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
@@ -10345,10 +10356,10 @@ sass-loader@^7.1.0:
     pify "^3.0.0"
     semver "^5.5.0"
 
-sass@^1.22.5:
-  version "1.22.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/sass/-/sass-1.22.5.tgz#0436ba64eaad4c9eb523480c141becc330ddd90b"
-  integrity sha1-BDa6ZOqtTJ61I0gMFBvswzDd2Qs=
+sass@^1.22.6:
+  version "1.22.6"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/sass/-/sass-1.22.6.tgz#1192aeb55b954576c67eafd560bd17f417903ce9"
+  integrity sha1-EZKutVuVRXbGfq/VYL0X9BeQPOk=
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
@@ -11042,10 +11053,10 @@ stylelint-config-standard@^18.3.0:
   dependencies:
     stylelint-config-recommended "^2.2.0"
 
-stylelint-scss@^3.9.1:
-  version "3.9.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.9.1.tgz#c34a41f2587cce85e0769b025377ece44db13724"
-  integrity sha1-w0pB8lh8zoXgdpsCU3fs5E2xNyQ=
+stylelint-scss@^3.9.2:
+  version "3.9.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.9.2.tgz#5435174a57696ee52eae40146778a4e62f7ed3a3"
+  integrity sha1-VDUXSldpbuUurkAUZ3ik5i9+06M=
   dependencies:
     lodash "^4.17.11"
     postcss-media-query-parser "^0.2.3"
