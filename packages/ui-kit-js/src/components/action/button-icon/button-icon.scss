@@ -1,4 +1,4 @@
-@import "../../../styles/utility/index";
+@import '../../../styles/utility/index';
 
 :host {
   display: inline-flex;
@@ -49,7 +49,7 @@
         border-color: $p-color-neutral-grey-1;
       }
     }
-    &:focus:not([aria-disabled="true"]) {
+    &:focus:not([aria-disabled='true']) {
       box-shadow: inset 0 0 0 1px $p-color-state-focus;
       border-color: $p-color-state-focus;
 
@@ -61,7 +61,7 @@
 
   &:disabled,
   &[disabled],
-  &[aria-disabled="true"] {
+  &[aria-disabled='true'] {
     cursor: default;
     pointer-events: none;
     color: $p-color-neutral-grey-5;
@@ -100,7 +100,7 @@
         }
       }
 
-      &:focus:not([aria-disabled="true"]) {
+      &:focus:not([aria-disabled='true']) {
         border-color: $p-color-state-focus;
 
         &#{$bem-block}--theme-dark {
@@ -111,7 +111,7 @@
 
     &:disabled,
     &[disabled],
-    &[aria-disabled="true"] {
+    &[aria-disabled='true'] {
       color: $p-color-neutral-grey-5;
       background-color: transparent;
       border-color: $p-color-neutral-grey-2;
@@ -148,7 +148,7 @@
         }
       }
 
-      &:focus:not([aria-disabled="true"]) {
+      &:focus:not([aria-disabled='true']) {
         border-color: $p-color-state-focus;
 
         &#{$bem-block}--theme-dark {
@@ -159,7 +159,7 @@
 
     &:disabled,
     &[disabled],
-    &[aria-disabled="true"] {
+    &[aria-disabled='true'] {
       color: $p-color-neutral-grey-5;
       background-color: transparent;
       border-color: transparent;
@@ -174,14 +174,11 @@
 
   &__icon,
   &__spinner {
+    display: block;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-  }
-
-  &__spinner {
-    // margin-top: 0.1875em; // this must be adapted if final SVG icons are integrated!
   }
 
   &--loading {
