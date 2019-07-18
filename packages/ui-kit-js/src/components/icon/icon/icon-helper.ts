@@ -6,8 +6,7 @@ export function getName(name: string | undefined) {
   if (name) {
     name = name
       .toLowerCase()
-      .substring(0, name.lastIndexOf('.'))
-      .substring(name.lastIndexOf('/') + 1)
+      .substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.'))
       .replace(/\.|\_/g, '-');
   }
 
@@ -16,7 +15,6 @@ export function getName(name: string | undefined) {
   if (invalidChars !== '') {
     return null;
   }
-
   return name;
 }
 
