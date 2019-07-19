@@ -32,6 +32,7 @@ Describe clearly the scope of the change. If possible use the format of a user s
 - [ ] Define naming and hierarchy structure and naming of all related states and variants
 - [ ] Approve UI definition
 - [ ] Create branch in Abstract according to issue number, update sketch library and add collection link issue
+- [ ] Create must-have design docu including (optionally create and upload assets)
 - [ ] Remove elements from prep library (optional)
 
 // DEV
@@ -46,6 +47,7 @@ Describe clearly the scope of the change. If possible use the format of a user s
 
 // QA
 - [ ] 3rd party design sketch review
+- [ ] 3rd party design docu review
 - [ ] 3rd party code review
 - [ ] 3rd party code docu review
 - [ ] Code docu review by design 
