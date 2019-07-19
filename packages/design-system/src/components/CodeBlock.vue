@@ -1,6 +1,6 @@
 <template>
   <div class="code-block" :class="{'light': (theme === 'light'), 'dark': (theme === 'dark')}">
-    <ul>
+    <ul class="tabs">
       <li :class="{'is-active': isVanillaJS}" @click="updateFramework('vanilla-js')">Vanilla JS</li>
       <li :class="{'is-active': isAngular}" @click="updateFramework('angular')">Angular</li>
       <li :class="{'is-active': isReact}" @click="updateFramework('react')">React</li>
@@ -88,7 +88,7 @@
       border-color: $p-color-neutral-grey-2;
       background: $p-color-porsche-light;
 
-      ul {
+      ul.tabs {
         color: $p-color-porsche-black;
       }
 
@@ -177,7 +177,7 @@
       border-color: $p-color-surface-dark;
       background: $p-color-surface-dark;
 
-      ul {
+      ul.tabs {
         color: $p-color-porsche-light;
       }
 
@@ -270,13 +270,14 @@
     }
   }
 
-  ul {
+  ul.tabs {
     @include p-text-copy;
     list-style: none;
     display: flex;
 
     li {
       cursor: pointer;
+      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
         color: $p-color-porsche-red;
