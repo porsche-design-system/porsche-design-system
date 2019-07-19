@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <aside class="sidebar" :class="{ 'is-visible': isMenuActive }">
-      <Header />
+      <Header :area="area" />
       <Divider spacing="small" />
-      <Sidebar />
+      <Sidebar :area="area" />
       <Divider spacing="small" />
-      <Footer />
+      <Footer :area="area" />
     </aside>
     <main class="content" :class="{ 'is-hidden': isMenuActive }">
       <router-view />
@@ -15,12 +15,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import Header from '@/components/Header.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer.vue';
 import Divider from '@/components/Divider.vue';
 import Menu from '@/components/Menu.vue';
+import { decodeUrl } from '@/services/utils';
 
 @Component({
   components: {
@@ -33,9 +34,25 @@ import Menu from '@/components/Menu.vue';
 })
 export default class App extends Vue {
   public isMenuActive: boolean = false;
+  public area: string = 'web';
 
   public onToggleMenu(isActive: boolean): void {
     this.isMenuActive = isActive;
+  }
+
+  @Watch('$route')
+  private async onRouteChange(): Promise<void> {
+    await this.isAreaExistent();
+  }
+
+  private async mounted(): Promise<void> {
+    await this.isAreaExistent();
+  }
+
+  private isAreaExistent() {
+    this.area = this.$route.params.area
+      ? decodeUrl(this.$route.params.area).toLowerCase()
+      : this.$route.path.split('/')[1];
   }
 }
 </script>
@@ -75,7 +92,7 @@ main {
   @include breakpoint('xxs', 's') {
     padding-bottom: $p-spacing-80;
     opacity: 0;
-    transition: transform .3s, opacity .3s;
+    transition: transform 0.3s, opacity 0.3s;
     transform: translate3d(rem(-140px), 0, 0);
 
     &.is-visible {

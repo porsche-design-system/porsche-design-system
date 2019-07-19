@@ -8,31 +8,41 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'redirect',
+      redirect: '/web'
     },
     {
-      path: '/:category/:page',
+      path: '/web',
+      name: 'home-web',
+      component: Home
+    },
+    {
+      path: '/app',
+      name: 'home-app',
+      component: () => import('./views/HomeApp.vue')
+    },
+    {
+      path: '/:area/:category/:page',
       name: 'page',
-      component: () => import('./views/Page.vue'),
+      component: () => import('./views/Page.vue')
     },
     {
-      path: '/components/:category/:story',
+      path: '/:area/components/:category/:story',
       name: 'story',
-      component: () => import('./views/Story.vue'),
+      component: () => import('./views/Story.vue')
     },
     {
-      path: '/:page',
+      path: '/:area/:page',
       name: 'custom',
-      component: () => import('./views/Custom.vue'),
+      component: () => import('./views/Custom.vue')
     },
     {
       path: '*',
       name: 'not-found',
-      component: () => import('./views/NotFound.vue'),
-    },
+      component: () => import('./views/NotFound.vue')
+    }
   ],
   scrollBehavior() {
     return { x: 0, y: 0 };
-  },
+  }
 });

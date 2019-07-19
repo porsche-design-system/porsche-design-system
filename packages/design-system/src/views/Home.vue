@@ -17,7 +17,7 @@
           <p-headline type="headline-3" level="1">Porsche UI Kit</p-headline>
           <p-text type="24">Design System</p-text>
           <p-text class="p-spacing-mt-8">
-            <router-link to="/getting-started/about">Learn more about it</router-link>
+            <router-link to="/web/getting-started/about">Learn more about it</router-link>
           </p-text>
         </p-grid-child>
         <p-grid-child class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
@@ -34,10 +34,10 @@
           </p-text>
           <p-flex class="p-spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
-              <p-button-regular class="p-spacing-mt-16" variant="highlight" href="#/getting-started/start-designing">Start designing</p-button-regular>
+              <p-button-regular class="p-spacing-mt-16" variant="highlight" href="#/web/getting-started/start-designing">Start designing</p-button-regular>
             </p-flex-item>
             <p-flex-item>
-              <p-button-regular class="p-spacing-mt-16" variant="highlight" href="#/getting-started/start-coding">Start coding</p-button-regular>
+              <p-button-regular class="p-spacing-mt-16" variant="highlight" href="#/web/getting-started/start-coding">Start coding</p-button-regular>
             </p-flex-item>
           </p-flex>
         </p-grid-child>

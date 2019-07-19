@@ -5,61 +5,61 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config} from '@/../design-system.config';
-  import {decodeUrl} from '@/services/utils';
-  import Markdown from '@/components/Markdown.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import { config } from '@/../design-system.config';
+import { decodeUrl } from '@/services/utils';
+import Markdown from '@/components/Markdown.vue';
 
-  @Component({
-    components: {
-      Markdown,
-    },
-  })
-  export default class Page extends Vue {
+@Component({
+  components: {
+    Markdown
+  }
+})
+export default class Page extends Vue {
+  private components: any[] = [];
 
-    private components: any[] = [];
+  @Watch('$route')
+  private async onRouteChange(): Promise<void> {
+    await this.updateComponents();
+  }
 
-    @Watch('$route')
-    private async onRouteChange(): Promise<void> {
-      await this.updateComponents();
-    }
+  private async mounted(): Promise<void> {
+    await this.updateComponents();
+  }
 
-    private async mounted(): Promise<void> {
-      await this.updateComponents();
-    }
-
-    private async updateComponents(): Promise<void> {
-      if (this.isPageExistent()) {
-        await this.loadPage();
-      } else {
-        await this.redirect();
-      }
-    }
-
-    private isPageExistent(): boolean {
-      const category = decodeUrl(this.$route.params.category);
-      const page = decodeUrl(this.$route.params.page);
-
-      return config.pages[category] && config.pages[category][page];
-    }
-
-    private async loadPage(): Promise<void> {
-      const category = decodeUrl(this.$route.params.category);
-      const page = decodeUrl(this.$route.params.page);
-
-      this.components = [];
-
-      if (typeof config.pages[category][page] === 'object') {
-        for (const component of config.pages[category][page]) {
-          this.components.push((await component()).default);
-        }
-      } else {
-        this.components.push((await config.pages[category][page]()).default);
-      }
-    }
-
-    private async redirect(): Promise<void> {
-      this.$router.replace('/');
+  private async updateComponents(): Promise<void> {
+    if (this.isPageExistent()) {
+      await this.loadPage();
+    } else {
+      await this.redirect();
     }
   }
+
+  private isPageExistent(): boolean {
+    const area = decodeUrl(this.$route.params.area).toLowerCase();
+    const category = decodeUrl(this.$route.params.category);
+    const page = decodeUrl(this.$route.params.page);
+    return config.pages[area] && config.pages[area][category] && config.pages[area][category][page];
+  }
+
+  private async loadPage(): Promise<void> {
+    const area = decodeUrl(this.$route.params.area).toLowerCase();
+    const category = decodeUrl(this.$route.params.category);
+    const page = decodeUrl(this.$route.params.page);
+
+    this.components = [];
+
+    if (typeof config.pages[area][category][page] === 'object') {
+      for (const component of config.pages[area][category][page]) {
+        this.components.push((await component()).default);
+      }
+    } else {
+      this.components.push((await config.pages[area][category][page]()).default);
+    }
+  }
+
+  private async redirect(): Promise<void> {
+    this.$router.replace('/');
+  }
+}
 </script>
