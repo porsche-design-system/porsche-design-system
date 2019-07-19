@@ -4,7 +4,7 @@ describe('Input', () => {
   });
 
   it('Should navigate through main navigation', () => {
-    cy.visit('/');
+    cy.visit('/web');
 
     cy.get('#app aside nav a')
       .contains('Input')
@@ -19,7 +19,7 @@ describe('Input', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/components/form/input');
+      cy.visit('/#/web/components/form/input');
     });
 
     it('Should show tab navigation with first tab activated', () => {

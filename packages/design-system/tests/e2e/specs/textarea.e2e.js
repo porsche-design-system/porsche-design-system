@@ -4,7 +4,7 @@ describe('Textarea', () => {
   });
 
   it('Should navigate through main navigation', () => {
-    cy.visit('/');
+    cy.visit('/web');
 
     cy.get('#app aside nav a')
       .contains('Textarea')
@@ -19,7 +19,7 @@ describe('Textarea', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/components/form/textarea');
+      cy.visit('/#/web/components/form/textarea');
     });
 
     it('Should show tab navigation with first tab activated', () => {

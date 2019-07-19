@@ -4,7 +4,7 @@ describe('Switch', () => {
   });
 
   it('Should navigate through main navigation', () => {
-    cy.visit('/');
+    cy.visit('/web');
 
     cy.get('#app aside nav a')
       .contains('Switch')
@@ -19,7 +19,7 @@ describe('Switch', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/components/form/switch');
+      cy.visit('/#/web/components/form/switch');
     });
 
     it('Should show tab navigation with first tab activated', () => {

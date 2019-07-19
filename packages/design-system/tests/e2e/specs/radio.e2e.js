@@ -4,7 +4,7 @@ describe('Radio', () => {
   });
 
   it('Should navigate through main navigation', () => {
-    cy.visit('/');
+    cy.visit('/web');
 
     cy.get('#app aside nav a')
       .contains('Radio')
@@ -19,7 +19,7 @@ describe('Radio', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/components/form/radio');
+      cy.visit('/#/web/components/form/radio');
     });
 
     it('Should show tab navigation with first tab activated', () => {
