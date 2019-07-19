@@ -13,7 +13,7 @@
   import {Component, Prop, Vue} from 'vue-property-decorator';
   import Prism from 'prismjs';
   import {html} from 'js-beautify';
-  import {camelCase} from 'lodash';
+  import {camelCase, upperFirst} from 'lodash';
 
   type Framework = 'vanilla-js' | 'angular' | 'react';
   type Theme = 'light' | 'dark';
@@ -62,15 +62,33 @@
     private convertToAngular(markup: string): string {
       return (
         markup
-          // transform all attributes to camel case
-          .replace(/(\S+)=["'](\S+)["']/g, (m, $1, $2) => {
+        // transform all attributes to camel case
+          .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
             return camelCase($1) + '="' + $2 + '"';
           })
       );
     }
 
     private convertToReact(markup: string): string {
-      return markup;
+      return (
+        markup
+        // transform all attributes to camel case
+          .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
+            return camelCase($1) + '="' + $2 + '"';
+          })
+          // transform class attribute to JSX compatible one
+          .replace(/class=["'](.*?)["']/g, (m, $1) => {
+            return 'className="' + $1 + '"';
+          })
+          // transform custom element opening tags to pascal case
+          .replace(/<(p-[\w-]+)(.*?)>/g, (m, $1, $2) => {
+            return '<' + upperFirst(camelCase($1)) + '' + $2 + '>';
+          })
+          // transform custom element closing tags to pascal case
+          .replace(/<\/(p-[\w-]+)>/g, (m, $1) => {
+            return '</' + upperFirst(camelCase($1)) + '>';
+          })
+      );
     }
 
     private removeAttr(markup: string): string {
@@ -78,8 +96,13 @@
         markup
           // remove all attributes added by Vue JS
           .replace(/data-v-[a-zA-Z0-9]+=""/g, '')
-          // remove all class attributes added by Stencil JS
-          .replace(/class="hydrated"/g, '')
+          // remove all class values added by Stencil JS
+          .replace(/class=["'](.*?)hydrated(.*?)["']/g, (m, $1, $2) => {
+            if (/\S/.test($1) || /\S/.test($2)) {
+              return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
+            }
+            return '';
+          })
       );
     }
 
@@ -130,10 +153,6 @@
             color: #999;
           }
 
-          .namespace {
-            opacity: .7;
-          }
-
           .token.property,
           .token.tag,
           .token.boolean,
@@ -154,7 +173,6 @@
           .token.operator,
           .token.entity,
           .token.url,
-          .language-css .token.string,
           .toke.variable,
           .token.inserted {
             color: yellowgreen;
@@ -169,19 +187,6 @@
           .token.regex,
           .token.important {
             color: orange;
-          }
-
-          .token.important,
-          .token.bold {
-            font-weight: bold;
-          }
-
-          .token.italic {
-            font-style: italic;
-          }
-
-          .token.entity {
-            cursor: help;
           }
 
           .token.deleted {
@@ -213,75 +218,49 @@
           .token.prolog,
           .token.doctype,
           .token.cdata {
-            color: slategray;
+            color: #4a5f78;
           }
 
           .token.punctuation {
-            color: #f8f8f2;
+            color: #4a5f78;
           }
 
-          .namespace {
-            opacity: .7;
+          .token.tag,
+          .token.operator,
+          .token.number {
+            color: #0aa370;
           }
 
           .token.property,
-          .token.tag,
-          .token.constant,
-          .token.symbol,
-          .token.deleted {
-            color: #f92672;
+          .token.function {
+            color: #57718e;
+          }
+
+          .token.tag-id,
+          .token.selector,
+          .token.atrule-id {
+            color: #ebf4ff;
+          }
+
+          .token.attr-name {
+            color: #7eb6f6;
           }
 
           .token.boolean,
-          .token.number {
-            color: #ae81ff;
-          }
-
-          .token.selector,
-          .token.attr-name,
           .token.string,
-          .token.char,
-          .token.builtin,
-          .token.inserted {
-            color: #a6e22e;
-          }
-
-          .token.operator,
           .token.entity,
           .token.url,
-          .language-css .token.string,
-          .style .token.string,
-          .token.variable {
-            color: #f8f8f2;
-          }
-
-          .token.atrule,
           .token.attr-value,
-          .token.function,
-          .token.class-name {
-            color: #e6db74;
-          }
-
-          .token.keyword {
-            color: #66d9ef;
-          }
-
+          .token.keyword,
+          .token.control,
+          .token.directive,
+          .token.unit,
+          .token.statement,
           .token.regex,
-          .token.important {
-            color: #fd971f;
-          }
-
-          .token.important,
-          .token.bold {
-            font-weight: bold;
-          }
-
-          .token.italic {
-            font-style: italic;
-          }
-
-          .token.entity {
-            cursor: help;
+          .token.atrule,
+          .token.placeholder,
+          .token.variable {
+            color: #47ebb4;
           }
         }
       }
@@ -328,9 +307,29 @@
   }
 
   pre {
-    border-top: 1px solid transparent;
+    max-height: 20rem;
+    overflow: auto;
     margin-top: $p-spacing-16;
     padding-top: $p-spacing-16;
-    overflow: auto;
+    border-top: 1px solid transparent;
+
+    code ::v-deep {
+      .namespace {
+        opacity: .7;
+      }
+
+      .token.important,
+      .token.bold {
+        font-weight: bold;
+      }
+
+      .token.italic {
+        font-style: italic;
+      }
+
+      .token.entity {
+        cursor: help;
+      }
+    }
   }
 </style>
