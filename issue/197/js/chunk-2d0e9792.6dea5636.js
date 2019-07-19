@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0e9792"],{"8e4c":function(e,t,n){"use strict";n.r(t);var c=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},r=[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"vmark"},[n("h1",[e._v("About the Porsche UI Kit APP")]),n("p",[e._v("App contentz goes here...")])])}],s=n("2be6"),u={},a=Object(s["a"])(u,c,r,!1,null,null,null);t["default"]=a.exports}}]);
+//# sourceMappingURL=chunk-2d0e9792.6dea5636.js.map
