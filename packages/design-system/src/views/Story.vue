@@ -4,10 +4,18 @@
       <p-text class="tab" type="28" v-if="isStoryExistent('design')">
         <router-link class="link" to="#design">Design</router-link>
       </p-text>
-      <p-text class="tab" type="28" v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')">
+      <p-text
+        class="tab"
+        type="28"
+        v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')"
+      >
         <router-link class="link" to="#code">Code</router-link>
       </p-text>
-      <p-text class="tab" type="28" v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')">
+      <p-text
+        class="tab"
+        type="28"
+        v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')"
+      >
         <router-link class="link" to="#props">Props</router-link>
       </p-text>
     </nav>
@@ -18,131 +26,137 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config} from '@/../design-system.config';
-  import {decodeUrl, featureToggle} from '@/services/utils';
-  import Markdown from '@/components/Markdown.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import { config } from '@/../design-system.config';
+import { decodeUrl, featureToggle } from '@/services/utils';
+import Markdown from '@/components/Markdown.vue';
 
-  @Component({
-    components: {
-      Markdown,
-    },
-  })
-  export default class Story extends Vue {
+@Component({
+  components: {
+    Markdown
+  }
+})
+export default class Story extends Vue {
+  public featureToggle = featureToggle;
+  private components: any[] = [];
 
-    public featureToggle = featureToggle;
-    private components: any[] = [];
+  @Watch('$route')
+  private async onRouteChange(): Promise<void> {
+    await this.updateComponents();
+  }
 
-    @Watch('$route')
-    private async onRouteChange(): Promise<void> {
-      await this.updateComponents();
-    }
+  private async mounted(): Promise<void> {
+    await this.updateComponents();
+  }
 
-    private async mounted(): Promise<void> {
-      await this.updateComponents();
-    }
-
-    private async updateComponents(): Promise<void> {
-      if (this.isStoryExistent()) {
-        await this.loadStory();
-      } else {
-        await this.redirect();
-      }
-    }
-
-    private isStoryExistent(tab: string = this.$route.hash.substring(1)): boolean {
-      const category = decodeUrl(this.$route.params.category);
-      const story = decodeUrl(this.$route.params.story);
-
-      return (
-        (tab === 'design' || tab === 'code' || tab === 'props') &&
-        config.stories[category] &&
-        config.stories[category][story] &&
-        config.stories[category][story][tab]
-      );
-    }
-
-    private async loadStory(): Promise<void> {
-      const category = decodeUrl(this.$route.params.category);
-      const story = decodeUrl(this.$route.params.story);
-      const tab = this.$route.hash.substring(1) as 'design' | 'code' | 'props';
-
-      this.components = [];
-
-      if (typeof config.stories[category][story][tab] === 'object') {
-        for (const component of config.stories[category][story][tab]) {
-          this.components.push((await component()).default);
-        }
-      } else {
-        this.components.push((await config.stories[category][story][tab]()).default);
-      }
-    }
-
-    private async redirect(): Promise<void> {
-      const category = decodeUrl(this.$route.params.category);
-      const story = decodeUrl(this.$route.params.story);
-
-      if (
-        config.stories[category] &&
-        config.stories[category][story] &&
-        config.stories[category][story].design
-      ) {
-        this.$router.replace('#design');
-      } else if (
-        config.stories[category] &&
-        config.stories[category][story] &&
-        config.stories[category][story].code
-      ) {
-        this.$router.replace('#code');
-      } else if (
-        config.stories[category] &&
-        config.stories[category][story] &&
-        config.stories[category][story].props
-      ) {
-        this.$router.replace('#props');
-      } else {
-        this.$router.replace('/');
-      }
+  private async updateComponents(): Promise<void> {
+    if (this.isStoryExistent()) {
+      await this.loadStory();
+    } else {
+      await this.redirect();
     }
   }
+
+  private isStoryExistent(tab: string = this.$route.hash.substring(1)): boolean {
+    const area = decodeUrl(this.$route.params.area).toLowerCase();
+    const category = decodeUrl(this.$route.params.category);
+    const story = decodeUrl(this.$route.params.story);
+
+    return (
+      (tab === 'design' || tab === 'code' || tab === 'props') &&
+      config.stories[area] &&
+      config.stories[area][category] &&
+      config.stories[area][category][story] &&
+      config.stories[area][category][story][tab]
+    );
+  }
+
+  private async loadStory(): Promise<void> {
+    const area = decodeUrl(this.$route.params.area).toLowerCase();
+    const category = decodeUrl(this.$route.params.category);
+    const story = decodeUrl(this.$route.params.story);
+    const tab = this.$route.hash.substring(1) as 'design' | 'code' | 'props';
+
+    this.components = [];
+
+    if (typeof config.stories[area][category][story][tab] === 'object') {
+      for (const component of config.stories[area][category][story][tab]) {
+        this.components.push((await component()).default);
+      }
+    } else {
+      this.components.push((await config.stories[area][category][story][tab]()).default);
+    }
+  }
+
+  private async redirect(): Promise<void> {
+    const area = decodeUrl(this.$route.params.area).toLowerCase();
+    const category = decodeUrl(this.$route.params.category);
+    const story = decodeUrl(this.$route.params.story);
+
+    if (
+      config.stories[area] &&
+      config.stories[area][category] &&
+      config.stories[area][category][story] &&
+      config.stories[area][category][story].design
+    ) {
+      this.$router.replace('#design');
+    } else if (
+      config.stories[area] &&
+      config.stories[area][category] &&
+      config.stories[area][category][story] &&
+      config.stories[area][category][story].code
+    ) {
+      this.$router.replace('#code');
+    } else if (
+      config.stories[area] &&
+      config.stories[area][category] &&
+      config.stories[area][category][story] &&
+      config.stories[area][category][story].props
+    ) {
+      this.$router.replace('#props');
+    } else {
+      this.$router.replace('/web');
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
-  @import "~@porscheui/ui-kit-js/src/styles/utility/index";
+@import '~@porscheui/ui-kit-js/src/styles/utility/index';
 
-  .tabs {
-    display: flex;
-    margin-bottom: $p-spacing-64;
-    border-bottom: 1px solid $p-color-neutral-grey-2;
+.tabs {
+  display: flex;
+  margin-bottom: $p-spacing-64;
+  border-bottom: 1px solid $p-color-neutral-grey-2;
+}
+
+.tab {
+  &:not(:last-child) {
+    margin-right: $p-spacing-40;
+  }
+}
+
+.link {
+  display: block;
+  padding-bottom: $p-spacing-8;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 200;
+  color: $p-color-neutral-grey-6;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &:hover {
+    color: $p-color-porsche-red;
   }
 
-  .tab {
-    &:not(:last-child) {
-      margin-right: $p-spacing-40;
-    }
+  &:focus {
+    outline: 1px solid $p-color-state-focus;
+    outline-offset: 4px;
   }
 
-  .link {
-    display: block;
-    padding-bottom: $p-spacing-8;
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-    font-weight: 200;
-    color: $p-color-neutral-grey-6;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &:hover {
-      color: $p-color-porsche-red;
-    }
-
-    &:focus {
-      outline: 1px solid $p-color-state-focus;
-      outline-offset: 4px;
-    }
-
-    &.router-link-exact-active {
-      color: $p-color-porsche-black;
-      border-bottom-color: $p-color-porsche-red;
-    }
+  &.router-link-exact-active {
+    color: $p-color-porsche-black;
+    border-bottom-color: $p-color-porsche-red;
   }
+}
 </style>

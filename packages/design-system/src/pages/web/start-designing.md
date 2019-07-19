@@ -40,4 +40,4 @@ Before starting to design with the Sketch library, make sure to [request a Porsc
 
 ---   
    
-[Read more about the design workflow with Abstract](#/getting-started/design-workflow).
+[Read more about the design workflow with Abstract](#/web/getting-started/design-workflow).

@@ -2,23 +2,27 @@
   <footer class="footer">
     <p-text type="small">
       © 2019 Dr. Ing. h.c. F. Porsche AG.
-      <br>
+      <br />
       <a href="https://www.porsche.com/international/legal-notice/">Legal notice</a> /
       <a href="https://www.porsche.com/international/legal-notice/">Imprint</a> /
-      <router-link to="/license">License</router-link>
+      <router-link :to="`/${encodeUrl(area)}/license`">License</router-link>
     </p-text>
   </footer>
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import { encodeUrl } from '@/services/utils';
 
-  @Component
-  export default class Footer extends Vue {}
+@Component
+export default class Footer extends Vue {
+  @Prop({ default: '' }) public area?: string;
+  public encodeUrl = encodeUrl;
+}
 </script>
 
 <style scoped lang="scss">
-  .footer {
-    text-align: center;
-  }
+.footer {
+  text-align: center;
+}
 </style>

@@ -5,45 +5,44 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator';
-  import Markdown from '@/components/Markdown.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import Markdown from '@/components/Markdown.vue';
 
-  @Component({
-    components: {
-      Markdown,
-    },
-  })
-  export default class Custom extends Vue {
+@Component({
+  components: {
+    Markdown
+  }
+})
+export default class Custom extends Vue {
+  private component: any = null;
 
-    private component: any = null;
+  @Watch('$route')
+  private async onRouteChange(): Promise<void> {
+    await this.updateComponent();
+  }
 
-    @Watch('$route')
-    private async onRouteChange(): Promise<void> {
-      await this.updateComponent();
-    }
+  private async mounted(): Promise<void> {
+    await this.updateComponent();
+  }
 
-    private async mounted(): Promise<void> {
-      await this.updateComponent();
-    }
-
-    private async updateComponent(): Promise<void> {
-      if (this.isPageExistent()) {
-        await this.loadPage();
-      } else {
-        await this.redirect();
-      }
-    }
-
-    private isPageExistent(): boolean {
-      return ['markdown', 'license'].includes(this.$route.params.page);
-    }
-
-    private async loadPage(): Promise<void> {
-      this.component = (await (() => import(`@/pages/${this.$route.params.page}.md`))()).default;
-    }
-
-    private async redirect(): Promise<void> {
-      this.$router.replace('/');
+  private async updateComponent(): Promise<void> {
+    if (this.isPageExistent()) {
+      await this.loadPage();
+    } else {
+      await this.redirect();
     }
   }
+
+  private isPageExistent(): boolean {
+    return ['markdown', 'license'].includes(this.$route.params.page);
+  }
+
+  private async loadPage(): Promise<void> {
+    this.component = (await (() => import(`@/pages/web/${this.$route.params.page}.md`))()).default;
+  }
+
+  private async redirect(): Promise<void> {
+    this.$router.replace('/');
+  }
+}
 </script>
