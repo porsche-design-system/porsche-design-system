@@ -1,11 +1,10 @@
 describe('Grid', () => {
-
   beforeEach(() => {
     window.localStorage.setItem('Feature: Q2/2019 Components', 'true');
   });
 
   it('Should navigate through main navigation', () => {
-    cy.visit('/');
+    cy.visit('/web');
 
     cy.get('#app aside nav a')
       .contains('Grid')
@@ -19,17 +18,22 @@ describe('Grid', () => {
   });
 
   describe('Tabs', () => {
-
     beforeEach(() => {
-      cy.visit('/#/components/layout/grid');
+      cy.visit('/#/web/components/layout/grid');
     });
 
     it('Should show tab navigation with first tab activated', () => {
       cy.get('#app main .tabs a').should(($a) => {
         expect($a, '3 items').to.have.length(3);
-        expect($a.eq(0), 'second item').to.contain('Design').to.have.class('router-link-active');
-        expect($a.eq(1), 'second item').to.contain('Code').not.to.have.class('router-link-active');
-        expect($a.eq(2), 'second item').to.contain('Props').not.to.have.class('router-link-active');
+        expect($a.eq(0), 'second item')
+          .to.contain('Design')
+          .to.have.class('router-link-active');
+        expect($a.eq(1), 'second item')
+          .to.contain('Code')
+          .not.to.have.class('router-link-active');
+        expect($a.eq(2), 'second item')
+          .to.contain('Props')
+          .not.to.have.class('router-link-active');
       });
     });
 
@@ -39,8 +43,7 @@ describe('Grid', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1')
-        .should('contain', 'Grid');
+      cy.get('#app main h1').should('contain', 'Grid');
     });
 
     it('Should show code documentation', () => {
@@ -49,8 +52,7 @@ describe('Grid', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1')
-        .should('contain', 'Grid');
+      cy.get('#app main h1').should('contain', 'Grid');
     });
 
     it('Should show props documentation', () => {
@@ -59,8 +61,7 @@ describe('Grid', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1')
-        .should('contain', 'Grid');
+      cy.get('#app main h1').should('contain', 'Grid');
     });
   });
 });

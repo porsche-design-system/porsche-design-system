@@ -1,6 +1,6 @@
 describe('Home', () => {
   it('Should show page title', () => {
-    cy.visit('/');
+    cy.visit('/web');
 
     cy.get('#app header img.marque')
       .click()
