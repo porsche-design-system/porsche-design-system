@@ -7,17 +7,16 @@ assignees: ''
 
 ---
 
-**Scope**  
-Describe clearly the scope of the change. If possible use the format of a user story.
+**Scope**
+[Describe clearly the scope of the change. If possible use the format of a user story]
 
 **Out of Scope**  
-- List topics that are not part of this issue to be worked on.
+[List topics that are not part of this issue to be worked on]
 
 **Notes**  
 - Abstract Link LIGHT:
 - Abstract Link DARK:
-- Design Docu Ticket: #
-- Share any further information that is relevant for processing
+- [Share any further information that is relevant for processing]
 
 **Props** (if relevant)  
 - Name: e.g. Button Square
