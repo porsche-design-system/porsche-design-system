@@ -12,7 +12,7 @@ describe('Home', () => {
   it('should have no visual regression', async () => {
     expect(
       await visualRegressionTester.test('home', async () => {
-        await visualRegressionTester.goTo('/');
+        await visualRegressionTester.goTo('/web');
       })
     ).toBeFalsy();
   });

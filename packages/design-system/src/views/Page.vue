@@ -59,7 +59,8 @@ export default class Page extends Vue {
   }
 
   private async redirect(): Promise<void> {
-    this.$router.replace('/');
+    const area = decodeUrl(this.$route.params.area).toLowerCase();
+    this.$router.replace(`'/'${area}`);
   }
 }
 </script>
