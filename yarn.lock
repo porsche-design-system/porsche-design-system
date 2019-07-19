@@ -1312,6 +1312,11 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/js-beautify/-/js-beautify-1.8.1.tgz#c210b3206bece04dc240b1deeec185f7b5b03534"
   integrity sha1-whCzIGvs4E3CQLHe7sGF97WwNTQ=
 
+"@types/lodash@^4.14.136":
+  version "4.14.136"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/lodash/-/lodash-4.14.136.tgz#413e85089046b865d960c9ff1d400e04c31ab60f"
+  integrity sha1-QT6FCJBGuGXZYMn/HUAOBMMatg8=
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -7629,6 +7634,11 @@ lodash@4.17.11, lodash@4.x, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.3, lo
   version "4.17.11"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha1-s56mIp72B+zYniyN8SU2iRysm40=
+
+lodash@^4.17.15:
+  version "4.17.15"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha1-tEf2ZwoEVbv+7dETku/zMOoJdUg=
 
 log-symbols@2.2.0, log-symbols@^2.2.0:
   version "2.2.0"

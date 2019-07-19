@@ -13,6 +13,7 @@
   import {Component, Prop, Vue} from 'vue-property-decorator';
   import Prism from 'prismjs';
   import {html} from 'js-beautify';
+  import {camelCase} from 'lodash';
 
   type Framework = 'vanilla-js' | 'angular' | 'react';
   type Theme = 'light' | 'dark';
@@ -50,18 +51,34 @@
         case 'vanilla-js':
           return markup;
         case 'angular':
-          return this.framework;
+          return this.convertToAngular(markup);
         case 'react':
-          return this.framework;
+          return this.convertToReact(markup);
         default:
           return markup;
       }
     }
 
+    private convertToAngular(markup: string): string {
+      return (
+        markup
+          // transform all attributes to camel case
+          .replace(/(\S+)=["'](\S+)["']/g, (m, $1, $2) => {
+            return camelCase($1) + '="' + $2 + '"';
+          })
+      );
+    }
+
+    private convertToReact(markup: string): string {
+      return markup;
+    }
+
     private removeAttr(markup: string): string {
       return (
         markup
+          // remove all attributes added by Vue JS
           .replace(/data-v-[a-zA-Z0-9]+=""/g, '')
+          // remove all class attributes added by Stencil JS
           .replace(/class="hydrated"/g, '')
       );
     }
@@ -158,6 +175,7 @@
           .token.bold {
             font-weight: bold;
           }
+
           .token.italic {
             font-style: italic;
           }
