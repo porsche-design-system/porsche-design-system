@@ -50,9 +50,7 @@ export default class App extends Vue {
   }
 
   private isAreaExistent() {
-    this.area = this.$route.params.area
-      ? decodeUrl(this.$route.params.area).toLowerCase()
-      : this.$route.path.split('/')[1];
+    this.area = this.$route.params.area ? decodeUrl(this.$route.params.area).toLowerCase() : this.$route.meta.area;
   }
 }
 </script>
