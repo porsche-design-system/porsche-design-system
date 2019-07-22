@@ -15,7 +15,7 @@
 
     <article class="intro">
       <p-grid>
-        <p-grid-child size="{'base': 12, 'm': 4}">
+        <p-grid-child size='{"base": 12, "m": 4}'>
           <p-headline type="headline-3" level="1">Porsche UI Kit App</p-headline>
           <p-text type="24">Design System</p-text>
           <p-text class="p-spacing-mt-8">

@@ -14,11 +14,13 @@ export default new Router({
     {
       path: '/web',
       name: 'home-web',
+      meta: { area: 'web' },
       component: HomeWeb
     },
     {
       path: '/app',
       name: 'home-app',
+      meta: { area: 'app' },
       component: () => import('./views/HomeApp.vue')
     },
     {

@@ -15,14 +15,14 @@
 
     <article class="intro">
       <p-grid>
-        <p-grid-child size="{"base": 12, "m": 4}">
+        <p-grid-child size='{"base": 12, "m": 4}'>
           <p-headline type="headline-3" level="1">Porsche UI Kit</p-headline>
           <p-text type="24">Design System</p-text>
           <p-text class="p-spacing-mt-8">
             <router-link to="/web/getting-started/about">Learn more about it</router-link>
           </p-text>
         </p-grid-child>
-        <p-grid-child class="p-spacing-mt-24 p-spacing-mt-0-min-m" size="{"base": 12, "m": 8}">
+        <p-grid-child class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text type="24">
             The Porsche UI Kit provides the design fundamentals for easily creating aesthetic and qualitative
             digital products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS
@@ -58,10 +58,10 @@
 
     <article class="newsletter">
       <p-grid>
-        <p-grid-child size="{"base": 12, "m": 3}">
+        <p-grid-child size='{"base": 12, "m": 3}'>
           <p-headline type="headline-3" level="2">Always stay informed</p-headline>
         </p-grid-child>
-        <p-grid-child size="{"base": 12, "m": 8}" offset="{"base": 0, "m": 1}">
+        <p-grid-child size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
           <p-text
             type="24"
           >Join our mailing list and get informed about relevant updates and topics.</p-text>
