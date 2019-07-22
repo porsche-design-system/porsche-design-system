@@ -99,7 +99,7 @@
       return (
         markup
         // remove all attributes added by Vue JS
-          .replace(/data-v-[a-zA-Z0-9]+=""/g, '')
+          .replace(/data-v-[a-zA-Z0-9]+(=["']{1}["']{1})?/g, '')
           // remove all class values added by Stencil JS
           .replace(/class=["'](.*?)hydrated(.*?)["']/g, (m, $1, $2) => {
             if (/\S/.test($1) || /\S/.test($2)) {
