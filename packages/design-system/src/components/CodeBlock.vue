@@ -72,9 +72,13 @@
     private convertToReact(markup: string): string {
       return (
         markup
-        // transform all attributes to camel case
+          // transform all attributes to camel case
           .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
             return camelCase($1) + '="' + $2 + '"';
+          })
+          // remove quotes from object values
+          .replace(/=['"]{(.*?)}['"]/g, (m, $1) => {
+            return '={' + $1 + '}';
           })
           // transform class attribute to JSX compatible one
           .replace(/class=["'](.*?)["']/g, (m, $1) => {
@@ -94,7 +98,7 @@
     private removeAttr(markup: string): string {
       return (
         markup
-          // remove all attributes added by Vue JS
+        // remove all attributes added by Vue JS
           .replace(/data-v-[a-zA-Z0-9]+=""/g, '')
           // remove all class values added by Stencil JS
           .replace(/class=["'](.*?)hydrated(.*?)["']/g, (m, $1, $2) => {
