@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import HomeWeb from './views/HomeWeb.vue';
 
 Vue.use(Router);
 
@@ -14,7 +14,7 @@ export default new Router({
     {
       path: '/web',
       name: 'home-web',
-      component: Home
+      component: HomeWeb
     },
     {
       path: '/app',
