@@ -1,9 +1,15 @@
 <template>
   <div class="code-block" :class="{'light': (theme === 'light'), 'dark': (theme === 'dark')}">
     <ul class="tabs">
-      <li :class="{'is-active': isVanillaJS}" @click="updateFramework('vanilla-js')">Vanilla JS</li>
-      <li :class="{'is-active': isAngular}" @click="updateFramework('angular')">Angular</li>
-      <li :class="{'is-active': isReact}" @click="updateFramework('react')">React</li>
+      <li>
+        <button type="button" :class="{'is-active': isVanillaJS}" @click="updateFramework('vanilla-js')">Vanilla JS</button>
+      </li>
+      <li>
+        <button type="button" :class="{'is-active': isAngular}" @click="updateFramework('angular')">Angular</button>
+      </li>
+      <li>
+        <button type="button" :class="{'is-active': isReact}" @click="updateFramework('react')">React</button>
+      </li>
     </ul>
     <pre><code v-html="formattedMarkup"></code></pre>
   </div>
@@ -277,20 +283,31 @@
     display: flex;
 
     li {
+      &:not(:last-child) {
+        margin-right: $p-spacing-16;
+      }
+    }
+
+    button {
       cursor: pointer;
+      border: none;
+      font: inherit;
+      color: inherit;
+      background-color: transparent;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
         color: $p-color-porsche-red;
       }
 
+      &:focus {
+        outline: 1px solid $p-color-state-focus;
+        outline-offset: 4px;
+      }
+
       &.is-active {
         cursor: default;
         color: $p-color-porsche-red;
-      }
-
-      &:not(:last-child) {
-        margin-right: $p-spacing-16;
       }
     }
   }
