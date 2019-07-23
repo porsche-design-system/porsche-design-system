@@ -59,7 +59,7 @@
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
     "@ionic-enterprise/react-output-plugin": "^0.0.5",
     "@porscheui/visual-regression-tester": "^1.1.1",
-    "@stencil/core": "^1.1.7",
+    "@stencil/core": "^1.1.9",
     "@stencil/postcss": "^1.0.1",
     "@stencil/sass": "^1.0.1",
     "@types/autoprefixer": "^9.5.0",
