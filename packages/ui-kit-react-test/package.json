@@ -1,0 +1,45 @@
+{
+  "name": "@porscheui/ui-kit-react-test",
+  "version": "1.0.0-alpha.2",
+  "scope": "@porscheui",
+  "private": true,
+  "description": "Porsche UI Kit – A Porsche React component library.",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN https://ui.porsche.com",
+  "contributors": [
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Oliver Hook <oliver.hook@mhp.com>"
+  ],
+  "keywords": [
+    "porsche",
+    "ui",
+    "react-components",
+    "design-system"
+  ],
+  "homepage": "https://ui.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+  },
+  "dependencies": {
+    "@porscheui/ui-kit-react": "^1.0.0-alpha.2",
+    "@types/jest": "24.0.15",
+    "@types/node": "12.6.8",
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
+    "typescript": "3.5.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+}
