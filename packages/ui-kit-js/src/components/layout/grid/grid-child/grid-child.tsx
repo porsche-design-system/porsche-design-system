@@ -8,12 +8,10 @@ import { BreakpointCustomizable, mapBreakpointPropToClasses, prefix } from '../.
 })
 export class GridChild {
   /** The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this. */
-  @Prop() public size?: BreakpointCustomizable<'1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12'> &
-    string = '1';
+  @Prop() public size?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12> | string = 1;
 
   /** The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this. */
-  @Prop() public offset?: BreakpointCustomizable<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11'> &
-    string = '0';
+  @Prop() public offset?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11> | string = 0;
 
   public render(): JSX.Element {
     const isJsonString = (str: string) => {
@@ -25,14 +23,15 @@ export class GridChild {
       }
     };
 
-    const parseProp = (prop: string) => {
+    const parseProp = (prop: any) => {
       return prop && isJsonString(prop) === true ? JSON.parse(prop) : prop;
     };
+
 
     const gridChildClasses = cx(
       prefix('grid-child'),
       mapBreakpointPropToClasses('grid-child--size', parseProp(this.size)),
-      this.offset !== '0' && mapBreakpointPropToClasses('grid-child--offset', parseProp(this.offset))
+      this.offset !== 0 && mapBreakpointPropToClasses('grid-child--offset', parseProp(this.offset))
     );
 
     return <Host class={gridChildClasses} />;
