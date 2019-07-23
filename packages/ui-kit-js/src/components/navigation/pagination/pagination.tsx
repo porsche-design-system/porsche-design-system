@@ -95,7 +95,7 @@ export class Pagination {
                 class={paginationPrevClasses}
                 href={!pageModel.isActive && '#'}
                 onClick={(e) => {
-                  if (!this.onClick) {
+                  if (!this.onClick || pageModel.isActive) {
                     return;
                   }
                   this.onClick(e, pageModel.value);
@@ -153,7 +153,7 @@ export class Pagination {
                 class={paginationNextClasses}
                 href={!pageModel.isActive && '#'}
                 onClick={(e) => {
-                  if (!this.onClick) {
+                  if (!this.onClick || pageModel.isActive) {
                     return;
                   }
                   this.onClick(e, pageModel.value);
