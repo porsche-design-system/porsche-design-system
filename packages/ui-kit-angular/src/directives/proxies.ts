@@ -126,7 +126,7 @@ export class PGridChild {
 proxyInputs(PGridChild, ['offset', 'size']);
 
 export declare interface PHeadline extends Components.PHeadline {}
-@Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'ellipsis', 'level', 'theme', 'type', 'wrap'] })
+@Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'type', 'wrap'] })
 export class PHeadline {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -134,7 +134,7 @@ export class PHeadline {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PHeadline, ['align', 'ellipsis', 'level', 'theme', 'type', 'wrap']);
+proxyInputs(PHeadline, ['align', 'color', 'ellipsis', 'tag', 'type', 'wrap']);
 
 export declare interface PIcon extends Components.PIcon {}
 @Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['ariaLabel', 'color', 'lazy', 'size', 'source'] })

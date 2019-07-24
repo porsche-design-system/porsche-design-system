@@ -14,7 +14,7 @@
     <article class="intro">
       <p-grid>
         <p-grid-child size='{"base": 12, "m": 4}'>
-          <p-headline type="headline-3" level="1">Porsche UI Kit</p-headline>
+          <p-headline type="headline-3" tag="h1">Porsche UI Kit</p-headline>
           <p-text type="24">Design System</p-text>
           <p-text class="p-spacing-mt-8">
             <router-link to="/getting-started/about">Learn more about it</router-link>
@@ -47,7 +47,7 @@
     <article class="newsletter">
       <p-grid>
         <p-grid-child size='{"base": 12, "m": 3}'>
-          <p-headline type="headline-3" level="2">Always stay informed</p-headline>
+          <p-headline type="headline-3" tag="h2">Always stay informed</p-headline>
         </p-grid-child>
         <p-grid-child size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
           <p-text type="24">Join our mailing list and get informed about relevant updates and topics.</p-text>

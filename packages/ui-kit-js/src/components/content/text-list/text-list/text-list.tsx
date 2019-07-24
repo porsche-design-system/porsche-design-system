@@ -15,7 +15,7 @@ export class TextList {
   @Prop() public textType?: Components.PText['type'] = 'copy';
 
   /** Basic text list color variations. */
-  @Prop() public color?: Components.PColor['text'] = 'porsche-black';
+  @Prop() public color?: 'inherit' | 'porsche-black' | 'porsche-light' = 'porsche-black';
 
   public render(): JSX.Element {
     const textListClasses = cx(prefix('text-list'), this.listType === 'ordered' && prefix('text-list--ordered'));
