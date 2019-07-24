@@ -236,17 +236,17 @@ export namespace Components {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
+    * Basic text color variations.
+    */
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Headline level/hierarchy.
+    * Set a custom HTML tag depending of the usage of the text component.
     */
-    'level'?: '1' | '2' | '3' | '4' | '5' | '6';
-    /**
-    * Adapts the text color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
+    'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
     * The style of the text.
     */
@@ -367,7 +367,7 @@ export namespace Components {
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -460,7 +460,7 @@ export namespace Components {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * The type of the text list.
     */
@@ -880,17 +880,17 @@ declare namespace LocalJSX {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
+    * Basic text color variations.
+    */
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Headline level/hierarchy.
+    * Set a custom HTML tag depending of the usage of the text component.
     */
-    'level'?: '1' | '2' | '3' | '4' | '5' | '6';
-    /**
-    * Adapts the text color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
+    'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
     * The style of the text.
     */
@@ -1016,7 +1016,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -1113,7 +1113,7 @@ declare namespace LocalJSX {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * The type of the text list.
     */

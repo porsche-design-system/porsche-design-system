@@ -1,7 +1,6 @@
 import { JSX, Component, Host, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../../utils/prefix';
-import { Components } from '../../../../index';
 
 @Component({
   tag: 'p-text',
@@ -9,6 +8,26 @@ import { Components } from '../../../../index';
   shadow: true
 })
 export class Text {
+
+  /** Set a custom HTML tag depending of the usage of the text component. */
+  @Prop() public tag?:
+    | 'p'
+    | 'span'
+    | 'div'
+    | 'label'
+    | 'address'
+    | 'blockquote'
+    | 'figcaption'
+    | 'a'
+    | 'cite'
+    | 'time'
+    | 'sup'
+    | 'sub'
+    | 'ul'
+    | 'ol'
+    | 'li'
+    | 'legend' = 'p';
+
   /** The style of the text. */
   @Prop() public type?:
     | 'copy'
@@ -35,30 +54,11 @@ export class Text {
     | '84'
     | '84-thin' = 'copy';
 
-  /** Set a custom HTML tag depending of the usage of the text component. */
-  @Prop() public tag?:
-    | 'p'
-    | 'span'
-    | 'div'
-    | 'label'
-    | 'address'
-    | 'blockquote'
-    | 'figcaption'
-    | 'a'
-    | 'cite'
-    | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
-    | 'legend' = 'p';
-
   /** The text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
   /** Basic text color variations. */
-  @Prop() public color?: Components.PColor['text'] = 'porsche-black';
+  @Prop() public color?: 'inherit' | 'porsche-black' | 'porsche-light' = 'porsche-black';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
@@ -70,7 +70,7 @@ export class Text {
   @Prop() public inline?: boolean = false;
 
   public render(): JSX.Element {
-    const TagType: any = this.tag;
+    const TagType = this.tag;
 
     const textClasses = cx(
       prefix('text'),

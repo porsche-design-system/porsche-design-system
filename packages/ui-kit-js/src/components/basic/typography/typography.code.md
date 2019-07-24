@@ -8,60 +8,37 @@ Text component can be categorized into 2 different use cases:
 
 ## Headlines
 
-### Large-title
+### Type variants
+There are multiple predefined styling variants available and additionally the correct semantic tag (h1-h6) can be set.
 
-<Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-headline type="large-title" level="1" :theme="slotProps.theme">Lorem ipsum dolor sit amet</p-headline>
-  </template>
+<Playground>
+  <p-headline type="large-title" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
+  <p-headline type="headline-1" tag="h1">Lorem ipsum dolor sit amet</p-headline>
+  <p-headline type="headline-2" tag="h2">Lorem ipsum dolor sit amet</p-headline>
+  <p-headline type="headline-3" tag="h3">Lorem ipsum dolor sit amet</p-headline>
+  <p-headline type="headline-4" tag="h4">Lorem ipsum dolor sit amet</p-headline>
+  <p-headline type="headline-5" tag="h5">Lorem ipsum dolor sit amet</p-headline>
+  <p-headline type="headline-6" tag="h6">Lorem ipsum dolor sit amet</p-headline>
 </Playground>
 
-### Headline 1
+---
 
-<Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-headline type="headline-1" level="1" :theme="slotProps.theme">Lorem ipsum dolor sit amet</p-headline>
-  </template>
+### Color variants
+The default headline color is Porsche black. But also predefined or inherited colors can be set. @see properties for possible color variants.
+
+<Playground>
+  <p-headline color="porsche-black">Porsche Black</p-headline>
+  <p-headline color="porsche-light" style="background: black;">Porsche Light</p-headline>
+  <p-headline color="inherit" style="color: deeppink;">Inherited custom color</p-headline>
 </Playground>
 
-### Headline 2
+---
 
-<Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-headline type="headline-2" level="2" :theme="slotProps.theme">Lorem ipsum dolor sit amet</p-headline>
-  </template>
-</Playground>
+### Ellipsis mode
+This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the end are used to visual it.
 
-### Headline 3
-
-<Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-headline type="headline-3" level="3" :theme="slotProps.theme">Lorem ipsum dolor sit amet</p-headline>
-  </template>
-</Playground>
-
-### Headline 4
-
-<Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-headline type="headline-4" level="4" :theme="slotProps.theme">Lorem ipsum dolor sit amet</p-headline>
-  </template>
-</Playground>
-
-### Headline 5
-
-<Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-headline type="headline-5" level="5" :theme="slotProps.theme">Lorem ipsum dolor sit amet</p-headline>
-  </template>
-</Playground>
-
-### Headline 6
-
-<Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-headline type="headline-6" level="6" :theme="slotProps.theme">Lorem ipsum dolor sit amet</p-headline>
-  </template>
+<Playground>
+  <p-headline ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-headline>
 </Playground>
 
 ---
