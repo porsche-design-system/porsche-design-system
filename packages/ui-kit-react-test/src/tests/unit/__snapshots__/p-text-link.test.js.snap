@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Link component should render correctly 1`] = `
+<p-text-link>
+  Text Link
+</p-text-link>
+`;
