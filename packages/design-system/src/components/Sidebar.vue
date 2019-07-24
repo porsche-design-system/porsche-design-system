@@ -81,7 +81,7 @@
     padding: $p-spacing-4 0;
     text-decoration: none;
     color: $p-color-porsche-black;
-    display: block;
+    display: inline-block;
 
     &.router-link-active,
     &:hover {
