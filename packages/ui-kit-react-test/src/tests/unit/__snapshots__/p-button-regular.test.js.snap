@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Regular component should render correctly in variant: default 1`] = `
+<p-button-regular>
+  Button Regular
+</p-button-regular>
+`;
+
+exports[`Button Regular component should render correctly in variant: highlight 1`] = `
+<p-button-regular
+  variant="highlight"
+>
+  Button Regular
+</p-button-regular>
+`;

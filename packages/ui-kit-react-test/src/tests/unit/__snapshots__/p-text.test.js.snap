@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text component should render correctly 1`] = `
+<p-text>
+  Text
+</p-text>
+`;
+
+exports[`Text component should render correctly in type small 1`] = `
+<small
+  type="small"
+>
+  Text
+</small>
+`;
