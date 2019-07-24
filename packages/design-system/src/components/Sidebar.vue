@@ -2,7 +2,7 @@
   <nav>
     <ul class="list">
       <li v-for="(pages, category, index) in config.pages" :key="index">
-        <p-headline type="headline-5" tag="h3">{{ category }}</p-headline>
+        <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
             <router-link class="link" :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">
@@ -13,14 +13,14 @@
       </li>
     </ul>
     <Divider spacing="small"/>
-    <p-headline type="headline-4" tag="h2">Components</p-headline>
+    <p-headline variant="headline-4" tag="h2">Components</p-headline>
     <ul class="list">
       <li
         v-for="(stories, category, index) in config.stories"
         :key="index"
         v-if="featureToggle('Q2/2019 Components') || ['Basic', 'Layout'].includes(category)"
       >
-        <p-headline type="headline-5" tag="h3">{{ category }}</p-headline>
+        <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li
             v-for="(v, story, index) in stories"

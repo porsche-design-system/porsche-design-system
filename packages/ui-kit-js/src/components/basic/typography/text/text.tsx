@@ -1,6 +1,6 @@
-import { JSX, Component, Host, Prop, h } from '@stencil/core';
+import {JSX, Component, Prop, h} from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../../utils/prefix';
+import {prefix} from '../../../../utils/prefix';
 
 @Component({
   tag: 'p-text',
@@ -9,7 +9,7 @@ import { prefix } from '../../../../utils/prefix';
 })
 export class Text {
 
-  /** Set a custom HTML tag depending of the usage of the text component. */
+  /** Sets a custom HTML tag depending of the usage of the text component. */
   @Prop() public tag?:
     | 'p'
     | 'span'
@@ -28,8 +28,8 @@ export class Text {
     | 'li'
     | 'legend' = 'p';
 
-  /** The style of the text. */
-  @Prop() public type?:
+  /** Style of the text. */
+  @Prop() public variant?:
     | 'copy'
     | 'small'
     | '12'
@@ -54,7 +54,7 @@ export class Text {
     | '84'
     | '84-thin' = 'copy';
 
-  /** The text alignment of the component. */
+  /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
   /** Basic text color variations. */
@@ -63,34 +63,21 @@ export class Text {
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
 
-  /** Wraps the text, even when it has to break a word. */
-  @Prop() public wrap?: boolean = false;
-
-  /** Sets the text as display: inline. */
-  @Prop() public inline?: boolean = false;
-
   public render(): JSX.Element {
     const TagType = this.tag;
 
     const textClasses = cx(
       prefix('text'),
-      this.type && prefix(`text--${this.type}`),
-      this.align !== 'left' && prefix(`text--align-${this.align}`),
-      this.color && prefix(`text--color-${this.color}`),
-      this.inline && prefix('text--inline'),
-      this.ellipsis && prefix('text--ellipsis'),
-      this.wrap && prefix('text--wrap'),
-      (this.tag === 'ul' || 'ol' || 'li') && prefix('text--list')
+      prefix(`text--variant-${this.variant}`),
+      prefix(`text--align-${this.align}`),
+      prefix(`text--color-${this.color}`),
+      this.ellipsis && prefix('text--ellipsis')
     );
 
-    const hostClasses = cx(this.inline && prefix('text--inline'));
-
     return (
-      <Host class={hostClasses}>
-        <TagType class={textClasses}>
-          <slot />
-        </TagType>
-      </Host>
+      <TagType class={textClasses}>
+        <slot/>
+      </TagType>
     );
   }
 }

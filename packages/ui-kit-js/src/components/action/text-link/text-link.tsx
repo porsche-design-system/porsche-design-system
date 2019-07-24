@@ -19,7 +19,7 @@ export class TextLink {
   @Prop({ reflect: true }) public download?: boolean = false;
 
   /** The style of the text. */
-  @Prop() public type?: Components.PText['type'] = 'copy';
+  @Prop() public type?: Components.PText['variant'] = 'copy';
 
   /** The icon shown next to the label. */
   @Prop() public icon?: string = 'arrow-right-hair';
@@ -46,7 +46,7 @@ export class TextLink {
         class={textLinkClasses}
       >
         <p-icon source={this.icon} size='inherit' color='inherit' class={iconClasses} />
-        <p-text type={this.type} color='inherit' tag='span'>
+        <p-text variant={this.type} color='inherit' tag='span'>
           <slot />
         </p-text>
       </TagType>

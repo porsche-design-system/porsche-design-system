@@ -10,12 +10,10 @@
 }
 
 .#{$p-global-class-prefix}headline {
-  $bem-block: &;
   padding: 0;
   margin: 0;
-  color: $p-color-porsche-black;
 
-  &--type {
+  &--variant {
     &-large-title {
       @include p-large-title;
     }
@@ -71,11 +69,6 @@
     &-porsche-black {
       color: $p-color-porsche-black;
     }
-  }
-
-  &--wrap {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
   }
 
   &--ellipsis {

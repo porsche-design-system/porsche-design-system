@@ -12,6 +12,9 @@ import {
 import {
   Components,
 } from './index';
+import {
+  Components as Components1,
+} from './components';
 
 export namespace Components {
   interface PButtonIcon {
@@ -232,7 +235,7 @@ export namespace Components {
   }
   interface PHeadline {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
     /**
@@ -244,23 +247,19 @@ export namespace Components {
     */
     'ellipsis'?: boolean;
     /**
-    * Set a custom HTML tag depending of the usage of the text component.
+    * Sets a custom HTML tag depending of the usage of the headline component.
     */
     'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
-    * The style of the text.
+    * Style of the text.
     */
-    'type'?: | 'large-title'
+    'variant'?: | 'large-title'
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
     | 'headline-4'
     | 'headline-5'
     | 'headline-6';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PIcon {
     /**
@@ -361,7 +360,7 @@ export namespace Components {
   }
   interface PText {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
     /**
@@ -373,11 +372,7 @@ export namespace Components {
     */
     'ellipsis'?: boolean;
     /**
-    * Sets the text as display: inline.
-    */
-    'inline'?: boolean;
-    /**
-    * Set a custom HTML tag depending of the usage of the text component.
+    * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
@@ -396,9 +391,9 @@ export namespace Components {
     | 'li'
     | 'legend';
     /**
-    * The style of the text.
+    * Style of the text.
     */
-    'type'?: | 'copy'
+    'variant'?: | 'copy'
     | 'small'
     | '12'
     | '16'
@@ -421,10 +416,6 @@ export namespace Components {
     | '72-thin'
     | '84'
     | '84-thin';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PTextLink {
     /**
@@ -454,21 +445,17 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'type'?: Components.PText['type'];
+    'type'?: Components.PText['variant'];
   }
   interface PTextList {
     /**
     * Basic text list color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: Components.PText['color'];
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
-    /**
-    * The style of the text list.
-    */
-    'textType'?: Components.PText['type'];
   }
   interface PTextListItem {}
   interface PTextarea {
@@ -876,7 +863,7 @@ declare namespace LocalJSX {
   }
   interface PHeadline extends JSXBase.HTMLAttributes<HTMLPHeadlineElement> {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
     /**
@@ -888,23 +875,19 @@ declare namespace LocalJSX {
     */
     'ellipsis'?: boolean;
     /**
-    * Set a custom HTML tag depending of the usage of the text component.
+    * Sets a custom HTML tag depending of the usage of the headline component.
     */
     'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
-    * The style of the text.
+    * Style of the text.
     */
-    'type'?: | 'large-title'
+    'variant'?: | 'large-title'
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
     | 'headline-4'
     | 'headline-5'
     | 'headline-6';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PIcon extends JSXBase.HTMLAttributes<HTMLPIconElement> {
     /**
@@ -1010,7 +993,7 @@ declare namespace LocalJSX {
   }
   interface PText extends JSXBase.HTMLAttributes<HTMLPTextElement> {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
     /**
@@ -1022,11 +1005,7 @@ declare namespace LocalJSX {
     */
     'ellipsis'?: boolean;
     /**
-    * Sets the text as display: inline.
-    */
-    'inline'?: boolean;
-    /**
-    * Set a custom HTML tag depending of the usage of the text component.
+    * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
@@ -1045,9 +1024,9 @@ declare namespace LocalJSX {
     | 'li'
     | 'legend';
     /**
-    * The style of the text.
+    * Style of the text.
     */
-    'type'?: | 'copy'
+    'variant'?: | 'copy'
     | 'small'
     | '12'
     | '16'
@@ -1070,10 +1049,6 @@ declare namespace LocalJSX {
     | '72-thin'
     | '84'
     | '84-thin';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**
@@ -1107,21 +1082,17 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'type'?: Components.PText['type'];
+    'type'?: Components.PText['variant'];
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
     * Basic text list color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: Components.PText['color'];
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
-    /**
-    * The style of the text list.
-    */
-    'textType'?: Components.PText['type'];
   }
   interface PTextListItem extends JSXBase.HTMLAttributes<HTMLPTextListItemElement> {}
   interface PTextarea extends JSXBase.HTMLAttributes<HTMLPTextareaElement> {
