@@ -25,7 +25,12 @@
         'spacing-block-small': (childElementLayout.spacing === 'block-small')
       }"
     >
-      <slot :theme="theme"/>
+      <div class="configurator" v-if="isSlotConfiguratorSet()">
+        <slot name="configurator"/>
+      </div>
+      <div class="code">
+        <slot :theme="theme"/>
+      </div>
     </div>
     <CodeBlock :markup="markup" :theme="theme"/>
   </div>
@@ -66,8 +71,12 @@
       this.markup = this.getMarkup();
     }
 
+    public isSlotConfiguratorSet(): boolean {
+      return this.$slots.configurator !== undefined;
+    }
+
     private getMarkup(): string {
-      const el = this.$el.querySelector('.example');
+      const el = this.$el.querySelector('.code');
       if (el) {
         return el.innerHTML;
       }
@@ -84,6 +93,10 @@
   $color-blue-3: dodgerblue;
   $color-blue-4: royalblue;
   $color-highlight: deeppink;
+
+  .configurator ~ .code {
+    margin-top: $p-spacing-32;
+  }
 
   .example {
     padding: $p-spacing-32;

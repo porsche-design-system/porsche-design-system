@@ -70,7 +70,33 @@ There are multiple predefined styling variants available. Additionally the corre
 In some cases, e.g. for highlighting or graphical reasons it might be necessary to use additional styling variants.
 
 <Playground>
-  <p-text variant="84">The quick brown fox jumps over the lazy dog</p-text>
+  <template #configurator>
+    <select @change="variant = $event.target.value">
+      <option disabled>Select a style variant</option>
+      <option>12</option>
+      <option>16</option>
+      <option>18</option>
+      <option>20</option>
+      <option>24</option>
+      <option>28</option>
+      <option>30</option>
+      <option>32</option>
+      <option>36</option>
+      <option>42</option>
+      <option>44</option>
+      <option>48</option>
+      <option>52</option>
+      <option>60</option>
+      <option>62</option>
+      <option>72</option>
+      <option>84</option>
+      <option selected>60-thin</option>
+      <option>62-thin</option>
+      <option>72-thin</option>
+      <option>84-thin</option>
+    </select>
+  </template>
+  <p-text :variant="variant">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 ---
@@ -110,3 +136,13 @@ This will force any text to never wrap into a new line and in case it's to long 
 <Playground>
   <p-text>Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>
 </Playground>
+
+
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundTypography extends Vue {
+    public variant: string = '60-thin';
+  }
+</script>
