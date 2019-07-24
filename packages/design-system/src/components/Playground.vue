@@ -1,13 +1,13 @@
 <template>
   <div class="playground">
-    <p-text class="tab" type="20" v-if="themeable">
+    <p-text class="tab" variant="20" v-if="themeable">
       <span
         class="link"
         :class="{'is-active': (theme === 'light')}"
         @click="switchTheme('light')"
       >Light theme</span>
     </p-text>
-    <p-text class="tab" type="20" v-if="themeable">
+    <p-text class="tab" variant="20" v-if="themeable">
       <span
         class="link"
         :class="{'is-active': (theme === 'dark')}"

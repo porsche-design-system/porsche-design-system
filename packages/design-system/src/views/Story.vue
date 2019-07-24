@@ -1,13 +1,13 @@
 <template>
   <div>
     <nav class="tabs">
-      <p-text class="tab" type="28" v-if="isStoryExistent('design')">
+      <p-text class="tab" variant="28" v-if="isStoryExistent('design')">
         <router-link class="link" to="#design">Design</router-link>
       </p-text>
-      <p-text class="tab" type="28" v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')">
+      <p-text class="tab" variant="28" v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')">
         <router-link class="link" to="#code">Code</router-link>
       </p-text>
-      <p-text class="tab" type="28" v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')">
+      <p-text class="tab" variant="28" v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')">
         <router-link class="link" to="#props">Props</router-link>
       </p-text>
     </nav>

@@ -11,135 +11,111 @@
 </head>
 <body>
 
-<div class="playground" title="should show most common predefined sizes but slotted font weights">
-  <p-text type="copy">
+<div class="playground" title="should show most common predefined style variants but slotted font weights">
+  <p-text variant="copy">
     Copy text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="small">
+  <p-text variant="small">
     Small text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
 </div>
 
-<div class="playground" title="should show additional predefined sizes but slotted font weights">
-  <p-text type="12">
+<div class="playground" title="should show additional predefined style variants but slotted font weights">
+  <p-text variant="12">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="16">
+  <p-text variant="16">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="18">
+  <p-text variant="18">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="20">
+  <p-text variant="20">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="24">
+  <p-text variant="24">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="28">
+  <p-text variant="28">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="30">
+  <p-text variant="30">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="32">
+  <p-text variant="32">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="36">
+  <p-text variant="36">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="42">
+  <p-text variant="42">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="44">
+  <p-text variant="44">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="48">
+  <p-text variant="48">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="52">
+  <p-text variant="52">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="60">
+  <p-text variant="60">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="62">
+  <p-text variant="62">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="72">
+  <p-text variant="72">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
-  <p-text type="84">
+  <p-text variant="84">
     Lorem ipsum text with <strong>strong text</strong> and <b>bold text</b>
   </p-text>
 </div>
 
-<div class="playground" title="should show special thin size variation">
-  <p-text type="60-thin">
+<div class="playground" title="should show special thin style variation">
+  <p-text variant="60-thin">
     Lorem ipsum dolor sit amet
   </p-text>
-  <p-text type="62-thin">
+  <p-text variant="62-thin">
     Lorem ipsum dolor sit amet
   </p-text>
-  <p-text type="72-thin">
+  <p-text variant="72-thin">
     Lorem ipsum dolor sit amet
   </p-text>
-  <p-text type="84-thin">
+  <p-text variant="84-thin">
     Lorem ipsum dolor sit amet
   </p-text>
+</div>
+
+<div class="playground light" title="should show text with different color variants">
+  <p-text color="porsche-black">Porsche Black</p-text>
+  <p-text color="porsche-light" style="background: black; display: block;">Porsche Light</p-text>
+  <p-text color="inherit" style="color: deeppink;">Inherited custom color</p-text>
 </div>
 
 <div class="playground" title="should show text with different alignments">
-  <p-text type="copy" align="left">
-    Copy text left
+  <p-text variant="copy" align="left">
+    Left
   </p-text>
-  <p-text type="copy" align="center">
-    Copy text center
+  <p-text variant="copy" align="center">
+    Center
   </p-text>
-  <p-text type="copy" align="right">
-    Copy text right
+  <p-text variant="copy" align="right">
+    Right
   </p-text>
 </div>
 
 <div class="playground" title="should cut off too long text">
-  <p-text type="copy" ellipsis="true">
-    Copy text ellipsis - Lorem ipsum dolor sit amet consecutor lorem ipsum dolor sit amet consecutor lorem ipsum dolor
-    sit amet consecutor lorem ipsum dolor sit amet consecutor
-  </p-text>
-</div>
-
-<div class="playground" title="should wrap text which is too long and without spaces">
-  <p-text type="copy" wrap="true">
-    Copy text wrap -
-    dolorsitametconsecutoloremipsumdolorsitametconsecutoloremipsumdolorsitametconsecutoloremipsumdolorsitametconsecutoloremipsum
-  </p-text>
-</div>
-
-<div class="playground" title="should show text inline">
-  <p-text type="copy" inline="true">
-    Copy text inline
-  </p-text>
-  <p-text type="copy" inline="true">
-    Copy text inline
-  </p-text>
-</div>
-
-<div class="playground" title="should show text in different colors">
-  <div style="background: black;">
-    <p-text type="copy" color="porsche-light">
-      Copy text porsche
-    </p-text>
-  </div>
-  <p-text type="copy" color="porsche-black">
-    Copy text porsche black
-  </p-text>
-  <p-text style="color: deeppink" type="copy" color="inherit">
-    Copy text status inherit
+  <p-text variant="copy" ellipsis="true">
+    Text ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
   </p-text>
 </div>
 
 <div class="playground" title="should show text with slotted and styled link">
-  <p-text type="20">Lorem ipsum dolor sit amet <a href="#">linked text</a> consecutor.</p-text>
+  <p-text variant="20">Lorem ipsum dolor sit amet <a href="#">linked text</a> consecutor.</p-text>
 </div>
 
 </body>

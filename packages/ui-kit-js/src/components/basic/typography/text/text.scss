@@ -25,16 +25,198 @@
 }
 
 .#{$p-global-class-prefix}text {
-  $bem-block: &;
   padding: 0;
   margin: 0;
+  list-style-type: none;
 
-  &--list {
-    list-style-type: none;
-  }
+  &--variant {
+    &-copy {
+      @include p-text-copy;
 
-  &--inline {
-    display: inline-block;
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-small {
+      @include p-text-small;
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    // generic text
+    &-12 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-12);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-16 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-16);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-18 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-18);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-20 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-20);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-24 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-24);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-28 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-28);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-30 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-30);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-32 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-32);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-36 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-36);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-42 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-42);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-44 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-44);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-48 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-48);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-52 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-52);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+    }
+
+    &-60 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-60);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+
+      &-thin {
+        @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-60);
+      }
+    }
+
+    &-62 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-62);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+
+      &-thin {
+        @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-62);
+      }
+    }
+
+    &-72 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-72);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+
+      &-thin {
+        @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-72);
+      }
+    }
+
+    &-84 {
+      @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-84);
+
+      > strong,
+      > b {
+        font-weight: $p-font-weight-bold;
+      }
+
+      &-thin {
+        @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-84);
+      }
+    }
   }
 
   &--align {
@@ -51,207 +233,6 @@
     }
   }
 
-  &--wrap {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  }
-
-  &--ellipsis {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  // copy
-  &--copy {
-    @include p-text-copy;
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--small {
-    @include p-text-small;
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  // generic text
-  &--12 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-12);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--16 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-16);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--18 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-18);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--20 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-20);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--24 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-24);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--28 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-28);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--30 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-30);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--32 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-32);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--36 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-36);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--42 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-42);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--44 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-44);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--48 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-48);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--52 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-52);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-  }
-
-  &--60 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-60);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-
-    &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-60);
-    }
-  }
-
-  &--62 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-62);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-
-    &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-62);
-    }
-  }
-
-  &--72 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-72);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-
-    &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-72);
-    }
-  }
-
-  &--84 {
-    @include p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-84);
-
-    > strong,
-    > b {
-      font-weight: $p-font-weight-bold;
-    }
-
-    &-thin {
-      @include p-text-generic($weight: $p-font-weight-thin, $size: $p-font-size-84);
-    }
-  }
-
   &--color {
     &-inherit {
       color: inherit;
@@ -264,5 +245,12 @@
     &-porsche-black {
       color: $p-color-porsche-black;
     }
+  }
+
+  &--ellipsis {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
