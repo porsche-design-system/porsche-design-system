@@ -10,7 +10,6 @@ describe("Button Icon component", () => {
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-
   });
 
   it('should render correctly in variant: ghost', () => {
