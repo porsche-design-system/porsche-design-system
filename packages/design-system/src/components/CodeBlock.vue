@@ -45,7 +45,7 @@ export default class CodeBlock extends Vue {
   }
 
   get formattedMarkup(): string {
-    return this.highlight(this.beautify(this.convert(this.removeAttr(this.markup), this.framework)));
+    return this.highlight(this.beautify(this.convert(this.removeAttr(this.removeEmptyComments(this.markup)), this.framework)));
   }
 
   public updateFramework(framework: Framework): void {
@@ -99,6 +99,10 @@ export default class CodeBlock extends Vue {
           return '</' + upperFirst(camelCase($1)) + '>';
         })
     );
+  }
+
+  private removeEmptyComments(markup: string): string {
+    return markup.replace(/<!---->/g, '');
   }
 
   private removeAttr(markup: string): string {
