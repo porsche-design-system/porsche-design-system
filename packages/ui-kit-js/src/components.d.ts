@@ -419,17 +419,25 @@ export namespace Components {
   }
   interface PTextLink {
     /**
-    * Special download attribute to open native Browser download dialog if target url points to a downloadable file.
+    * Basic text color variations.
+    */
+    'color'?: Components.PText['color'];
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
     'download'?: boolean;
     /**
     * Target url to where the component should link to.
     */
-    'href': string;
+    'href'?: string;
     /**
     * The icon shown next to the label.
     */
     'icon'?: string;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
     /**
     * Set a custom HTML tag depending of the usage of the component.
     */
@@ -439,13 +447,9 @@ export namespace Components {
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
-    * Adapts the color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
-    /**
     * The style of the text.
     */
-    'type'?: Components.PText['variant'];
+    'variant'?: Components.PText['variant'];
   }
   interface PTextList {
     /**
@@ -1052,7 +1056,11 @@ declare namespace LocalJSX {
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**
-    * Special download attribute to open native Browser download dialog if target url points to a downloadable file.
+    * Basic text color variations.
+    */
+    'color'?: Components.PText['color'];
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
     'download'?: boolean;
     /**
@@ -1068,6 +1076,10 @@ declare namespace LocalJSX {
     */
     'onPClick'?: (event: CustomEvent<void>) => void;
     /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
     * Set a custom HTML tag depending of the usage of the component.
     */
     'tag'?: 'span' | 'a';
@@ -1076,13 +1088,9 @@ declare namespace LocalJSX {
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
-    * Adapts the color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
-    /**
     * The style of the text.
     */
-    'type'?: Components.PText['variant'];
+    'variant'?: Components.PText['variant'];
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
