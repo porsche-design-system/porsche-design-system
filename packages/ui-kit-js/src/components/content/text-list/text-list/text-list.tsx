@@ -1,6 +1,6 @@
-import { JSX, Component, Prop, Host, h } from '@stencil/core';
+import {JSX, Component, Prop, h, Host} from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../../utils/prefix';
+import {prefix} from '../../../../utils/prefix';
 import {Components} from '../../../../components';
 
 @Component({
@@ -15,13 +15,24 @@ export class TextList {
   @Prop() public color?: Components.PText['color'] = 'porsche-black';
 
   public render(): JSX.Element {
-    const textListClasses = cx(prefix('text-list'), this.listType === 'ordered' && prefix('text-list--ordered'));
+
+    const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
+
+    const hostClasses = cx(
+      prefix('text-list')
+    );
+
+    const textListClasses = cx(
+      prefix('text-list'),
+      prefix(`text-list--color-${this.color}`),
+      this.listType === 'ordered' && prefix('text-list--ordered')
+    );
 
     return (
-      <Host class={textListClasses}>
-        <p-text tag={this.listType === 'unordered' ? 'ul' : 'ol'} variant='copy' color={this.color}>
-          <slot />
-        </p-text>
+      <Host class={hostClasses}>
+        <TagType class={textListClasses}>
+          <slot/>
+        </TagType>
       </Host>
     );
   }

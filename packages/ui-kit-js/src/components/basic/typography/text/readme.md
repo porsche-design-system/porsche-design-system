@@ -25,5 +25,4 @@
  - [p-input](../../../form/input)
  - [p-radio](../../../form/radio)
  - [p-text-link](../../../action/text-link)
- - [p-text-list](../../../content/text-list/text-list)
  - [p-textarea](../../../form/textarea)

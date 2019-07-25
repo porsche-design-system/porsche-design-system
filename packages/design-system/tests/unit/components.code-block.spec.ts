@@ -78,6 +78,23 @@ describe('CodeBlock.vue', () => {
     expect(wrapper.find('.code-block').classes()).toContain('dark');
   });
 
+  it('should remove empty comments', () => {
+    const wrapper = shallowMount(CodeBlock, {
+      propsData: {
+        markup:
+`<p-some-tag some-attribute="some value" class="some-class">
+  <!----><span>some text</span><!-- some comment -->
+</p-some-tag>`
+      }
+    });
+
+    expect(wrapper.find('code').text()).toBe(
+`<p-some-tag some-attribute="some value" class="some-class">
+  <span>some text</span><!-- some comment -->
+</p-some-tag>`
+    );
+  });
+
   it('should beautify code block', () => {
     const wrapper = shallowMount(CodeBlock, {
       propsData: {
