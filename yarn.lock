@@ -1186,10 +1186,10 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@stencil/core@^1.1.9":
-  version "1.1.9"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.1.9.tgz#a2035b6180c315f7ef52841494c171aa076fa280"
-  integrity sha1-ogNbYYDDFffvUoQUlMFxqgdvooA=
+"@stencil/core@^1.2.0":
+  version "1.2.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.2.0.tgz#598a5ba8999e3c3504e4f73901077c7e63bfdd39"
+  integrity sha1-WYpbqJmePDUE5Pc5AQd8fmO/3Tk=
   dependencies:
     typescript "3.5.3"
 
