@@ -1734,12 +1734,12 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@stencil/core@^1.1.7":
-  version "1.1.7"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.1.7.tgz#17d4b4c8a86797a9cea5be0830729d4cfb22e20b"
-  integrity sha1-F9S0yKhnl6nOpb4IMHKdTPsi4gs=
+"@stencil/core@^1.2.0":
+  version "1.2.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.2.0.tgz#598a5ba8999e3c3504e4f73901077c7e63bfdd39"
+  integrity sha1-WYpbqJmePDUE5Pc5AQd8fmO/3Tk=
   dependencies:
-    typescript "3.5.2"
+    typescript "3.5.3"
 
 "@stencil/postcss@^1.0.1":
   version "1.0.1"
@@ -14309,11 +14309,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typescript@3.5.2:
-  version "3.5.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/typescript/-/typescript-3.5.2.tgz#a09e1dc69bc9551cadf17dba10ee42cf55e5d56c"
-  integrity sha1-oJ4dxpvJVRyt8X26EO5Cz1Xl1Ww=
 
 typescript@3.5.3, typescript@^3.5.3, typescript@~3.5.3:
   version "3.5.3"
