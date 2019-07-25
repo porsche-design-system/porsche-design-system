@@ -115,13 +115,13 @@
       background-color: $p-color-surface-dark;
     }
 
-    &.children-height-fixed {
+    &.children-height-fixed .code {
       > * {
         height: rem(180px);
       }
     }
 
-    &.spacing-inline {
+    &.spacing-inline .code {
       &::before {
         content: '';
         display: block;
@@ -137,7 +137,7 @@
       }
     }
 
-    &.spacing-block {
+    &.spacing-block .code {
       &::before {
         content: '';
         display: block;
@@ -150,7 +150,7 @@
       }
     }
 
-    &.spacing-block-small {
+    &.spacing-block-small .code {
       &::before {
         content: '';
         display: block;
@@ -162,146 +162,149 @@
       }
     }
 
-    // Flex - web component code example visualization
-    p-flex {
-      // styling to colorize flex items
-      p-flex-item {
-        &:nth-child(1n) {
-          background-color: $color-blue-1;
-        }
+    .code {
 
-        &:nth-child(2n) {
-          background-color: $color-blue-2;
-        }
-
-        &:nth-child(3n) {
-          background-color: $color-blue-3;
-        }
-
-        &:nth-child(4n) {
-          background-color: $color-blue-4;
-        }
-
-        // styling to visualize baseline
-        &[align-self='baseline'] {
-          margin-top: $p-spacing-24;
-        }
-      }
-
-      // styling to visualize align items behaviour
-      &[align-items] {
-        p-flex-item:not([align-self='stretch']) {
-          &:nth-child(1n) {
-            height: 40px;
-          }
-
-          &:nth-child(2n) {
-            height: 80px;
-          }
-
-          &:nth-child(3n) {
-            height: 54px;
-          }
-        }
-      }
-
-      // special case for visualizing gap styling
-      &[gap] {
+      // Flex - web component code example visualization
+      p-flex {
+        // styling to colorize flex items
         p-flex-item {
-          background-color: transparent !important;
-
-          &:nth-child(1n) p {
+          &:nth-child(1n) {
             background-color: $color-blue-1;
           }
 
-          &:nth-child(2n) p {
+          &:nth-child(2n) {
             background-color: $color-blue-2;
           }
 
-          &:nth-child(3n) p {
+          &:nth-child(3n) {
             background-color: $color-blue-3;
           }
 
-          &:nth-child(4n) p {
+          &:nth-child(4n) {
             background-color: $color-blue-4;
           }
+
+          // styling to visualize baseline
+          &[align-self='baseline'] {
+            margin-top: $p-spacing-24;
+          }
+        }
+
+        // styling to visualize align items behaviour
+        &[align-items] {
+          p-flex-item:not([align-self='stretch']) {
+            &:nth-child(1n) {
+              height: 40px;
+            }
+
+            &:nth-child(2n) {
+              height: 80px;
+            }
+
+            &:nth-child(3n) {
+              height: 54px;
+            }
+          }
+        }
+
+        // special case for visualizing gap styling
+        &[gap] {
+          p-flex-item {
+            background-color: transparent !important;
+
+            &:nth-child(1n) p {
+              background-color: $color-blue-1;
+            }
+
+            &:nth-child(2n) p {
+              background-color: $color-blue-2;
+            }
+
+            &:nth-child(3n) p {
+              background-color: $color-blue-3;
+            }
+
+            &:nth-child(4n) p {
+              background-color: $color-blue-4;
+            }
+          }
+        }
+
+        // styling to visualize baseline
+        &[align-items='baseline'] {
+          p-flex-item {
+            margin-top: $p-spacing-24;
+          }
         }
       }
 
-      // styling to visualize baseline
-      &[align-items='baseline'] {
-        p-flex-item {
-          margin-top: $p-spacing-24;
+      // Grid - web component code example visualization
+      p-grid {
+        p-grid-child {
+          > p {
+            padding: $p-spacing-4;
+            background: $color-blue-1;
+          }
         }
       }
-    }
 
-    // Grid - web component code example visualization
-    p-grid {
-      p-grid-child {
-        > p {
-          padding: $p-spacing-4;
-          background: $color-blue-1;
+      // Spacing - code example visualization
+      > .example-spacing-visual {
+        display: inline-flex;
+
+        > div {
+          background-color: $color-blue-1;
+          width: fit-content;
         }
       }
-    }
 
-    // Spacing - code example visualization
-    > .example-spacing-visual {
-      display: inline-flex;
-
-      > div {
+      > .example-spacing {
+        display: inline-block;
+        vertical-align: top;
         background-color: $color-blue-1;
-        width: fit-content;
-      }
-    }
 
-    > .example-spacing {
-      display: inline-block;
-      vertical-align: top;
-      background-color: $color-blue-1;
+        &.negative {
+          padding: $p-spacing-40;
+        }
 
-      &.negative {
-        padding: $p-spacing-40;
-      }
+        &.negative-responsive {
+          @include p-spacing-d('padding');
 
-      &.negative-responsive {
-        @include p-spacing-d('padding');
+          > [class*='p-spacing-'] {
+            width: 2 * $p-spacing-d;
+            height: 2 * $p-spacing-d;
+
+            @include breakpoint('s') {
+              width: 2 * $p-spacing-d-s;
+              height: 2 * $p-spacing-d-s;
+            }
+            @include breakpoint('m') {
+              width: 2 * $p-spacing-d-m;
+              height: 2 * $p-spacing-d-m;
+            }
+            @include breakpoint('l') {
+              width: 2 * $p-spacing-d-l;
+              height: 2 * $p-spacing-d-l;
+            }
+            @include breakpoint('xl') {
+              width: 2 * $p-spacing-d-xl;
+              height: 2 * $p-spacing-d-xl;
+            }
+          }
+        }
 
         > [class*='p-spacing-'] {
-          width: 2 * $p-spacing-d;
-          height: 2 * $p-spacing-d;
+          position: relative;
+          width: $p-spacing-80;
+          height: $p-spacing-80;
 
-          @include breakpoint('s') {
-            width: 2 * $p-spacing-d-s;
-            height: 2 * $p-spacing-d-s;
+          &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: $color-blue-2;
           }
-          @include breakpoint('m') {
-            width: 2 * $p-spacing-d-m;
-            height: 2 * $p-spacing-d-m;
-          }
-          @include breakpoint('l') {
-            width: 2 * $p-spacing-d-l;
-            height: 2 * $p-spacing-d-l;
-          }
-          @include breakpoint('xl') {
-            width: 2 * $p-spacing-d-xl;
-            height: 2 * $p-spacing-d-xl;
-          }
-        }
-      }
-
-      > [class*='p-spacing-'] {
-        position: relative;
-        width: $p-spacing-80;
-        height: $p-spacing-80;
-
-        &::before {
-          content: '';
-          display: block;
-          width: 100%;
-          height: 100%;
-          background-color: $color-blue-2;
         }
       }
     }
