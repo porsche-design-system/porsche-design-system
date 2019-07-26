@@ -12,8 +12,8 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    expect(wrapper.find('.tabs li:nth-child(1) button').text()).toBe('Vanilla JS');
-    expect(wrapper.find('.tabs li:nth-child(1) button').classes()).toContain('is-active');
+    expect(wrapper.find('.tabs .tab:nth-child(1) button').text()).toBe('Vanilla JS');
+    expect(wrapper.find('.tabs .tab:nth-child(1) button').classes()).toContain('is-active');
     expect(wrapper.find('code').text()).toBe(
 `<p-some-tag some-attribute="some value">
   <span>some text</span>
@@ -31,12 +31,12 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    expect(wrapper.find('.tabs li:nth-child(2) button').text()).toBe('Angular');
-    expect(wrapper.find('.tabs li:nth-child(2) button').classes()).not.toContain('is-active');
+    expect(wrapper.find('.tabs .tab:nth-child(2) button').text()).toBe('Angular');
+    expect(wrapper.find('.tabs .tab:nth-child(2) button').classes()).not.toContain('is-active');
 
-    wrapper.find('.tabs li:nth-child(2) button').trigger('click');
+    wrapper.find('.tabs .tab:nth-child(2) button').trigger('click');
 
-    expect(wrapper.find('.tabs li:nth-child(2) button').classes()).toContain('is-active');
+    expect(wrapper.find('.tabs .tab:nth-child(2) button').classes()).toContain('is-active');
     expect(wrapper.find('code').text()).toBe(
 `<p-some-tag someAttribute="some value">
   <span>some text</span>
@@ -54,12 +54,12 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    expect(wrapper.find('.tabs li:nth-child(3) button').text()).toBe('React');
-    expect(wrapper.find('.tabs li:nth-child(3) button').classes()).not.toContain('is-active');
+    expect(wrapper.find('.tabs .tab:nth-child(3) button').text()).toBe('React');
+    expect(wrapper.find('.tabs .tab:nth-child(3) button').classes()).not.toContain('is-active');
 
-    wrapper.find('.tabs li:nth-child(3) button').trigger('click');
+    wrapper.find('.tabs .tab:nth-child(3) button').trigger('click');
 
-    expect(wrapper.find('.tabs li:nth-child(3) button').classes()).toContain('is-active');
+    expect(wrapper.find('.tabs .tab:nth-child(3) button').classes()).toContain('is-active');
     expect(wrapper.find('code').text()).toBe(
 `<PSomeTag someAttribute="some value">
   <span>some text</span>
@@ -169,7 +169,7 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    wrapper.find('.tabs li:nth-child(2) button').trigger('click');
+    wrapper.find('.tabs .tab:nth-child(2) button').trigger('click');
 
     expect(wrapper.find('code').text()).toBe(
 `<p-some-tag someAttribute="some value" attribute="some value" class="some-class">
@@ -188,7 +188,7 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    wrapper.find('.tabs li:nth-child(3) button').trigger('click');
+    wrapper.find('.tabs .tab:nth-child(3) button').trigger('click');
 
     expect(wrapper.find('code').text()).toBe(
 `<PSomeTag bar={ "bar" : "foo" } someAttribute="some value" attribute="some value" className="some-class">
