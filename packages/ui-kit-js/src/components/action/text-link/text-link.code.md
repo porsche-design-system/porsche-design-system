@@ -50,8 +50,8 @@ The `<p-text-link>` component is used to show a linkable icon/textlink combinati
 ### Color
 
 <Playground :childElementLayout="{spacing: 'inline'}">
-  <p-text-link href="https://ui.porsche.com" color="porsche-black">Color Porsche Black</p-text-link>
-  <p-text-link href="https://ui.porsche.com" color="porsche-light" style="background: black;">Color Porsche Light</p-text-link>
+  <p-text-link href="https://ui.porsche.com" color="porsche-black">Porsche Black</p-text-link>
+  <p-text-link href="https://ui.porsche.com" color="porsche-light" style="background: black;">Porsche Light</p-text-link>
   <p-text-link href="https://ui.porsche.com" color="inherit" style="color: deeppink;">Inherited custom color</p-text-link>
 </Playground>
 
