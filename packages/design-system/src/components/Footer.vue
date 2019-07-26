@@ -16,9 +16,3 @@
   @Component
   export default class Footer extends Vue {}
 </script>
-
-<style scoped lang="scss">
-  .footer {
-    text-align: center;
-  }
-</style>

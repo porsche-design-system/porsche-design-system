@@ -4,6 +4,7 @@
   display: block;
 
   ::slotted(a) {
+    outline: none;
     color: inherit;
     text-decoration: underline;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;

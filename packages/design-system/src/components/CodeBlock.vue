@@ -1,16 +1,34 @@
 <template>
   <div class="code-block" :class="{'light': (theme === 'light'), 'dark': (theme === 'dark')}">
-    <ul class="tabs">
-      <li>
-        <button type="button" :class="{'is-active': isVanillaJS}" @click="updateFramework('vanilla-js')">Vanilla JS</button>
-      </li>
-      <li>
-        <button type="button" :class="{'is-active': isAngular}" @click="updateFramework('angular')">Angular</button>
-      </li>
-      <li>
-        <button type="button" :class="{'is-active': isReact}" @click="updateFramework('react')">React</button>
-      </li>
-    </ul>
+    <div class="tabs" role="tablist">
+      <p-text class="tab" tag="div" color="inherit">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="isVanillaJS ? 'true' : 'false'"
+          :class="{'is-active': isVanillaJS}"
+          @click="updateFramework('vanilla-js')"
+        >Vanilla JS</button>
+      </p-text>
+      <p-text class="tab" tag="div" color="inherit">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="isAngular ? 'true' : 'false'"
+          :class="{'is-active': isAngular}"
+          @click="updateFramework('angular')"
+        >Angular</button>
+      </p-text>
+      <p-text class="tab" tag="div" color="inherit">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="isReact ? 'true' : 'false'"
+          :class="{'is-active': isReact}"
+          @click="updateFramework('react')"
+        >React</button>
+      </p-text>
+    </div>
     <pre><code v-html="formattedMarkup"></code></pre>
   </div>
 </template>
@@ -142,7 +160,7 @@ export default class CodeBlock extends Vue {
       border-color: $p-color-neutral-grey-2;
       background: $p-color-porsche-light;
 
-      ul.tabs {
+      .tabs {
         color: $p-color-porsche-black;
       }
 
@@ -214,7 +232,7 @@ export default class CodeBlock extends Vue {
       border-color: $p-color-surface-dark;
       background: $p-color-surface-dark;
 
-      ul.tabs {
+      .tabs {
         color: $p-color-porsche-light;
       }
 
@@ -281,37 +299,36 @@ export default class CodeBlock extends Vue {
     }
   }
 
-  ul.tabs {
-    @include p-text-copy;
-    list-style: none;
+  .tabs {
     display: flex;
 
-    li {
+    .tab {
       &:not(:last-child) {
         margin-right: $p-spacing-16;
       }
-    }
 
-    button {
-      cursor: pointer;
-      border: none;
-      font: inherit;
-      color: inherit;
-      background-color: transparent;
-      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+      button {
+        display: block;
+        cursor: pointer;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-      &:hover {
-        color: $p-color-porsche-red;
-      }
+        &:hover {
+          color: $p-color-porsche-red;
+        }
 
-      &:focus {
-        outline: 1px solid $p-color-state-focus;
-        outline-offset: 4px;
-      }
+        &:focus {
+          outline: 1px solid $p-color-state-focus;
+          outline-offset: 4px;
+        }
 
-      &.is-active {
-        cursor: default;
-        color: $p-color-porsche-red;
+        &.is-active {
+          cursor: default;
+          color: $p-color-porsche-red;
+        }
       }
     }
   }

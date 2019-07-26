@@ -1,19 +1,27 @@
 <template>
   <div class="playground">
-    <p-text class="tab" variant="20" v-if="themeable">
-      <span
-        class="link"
-        :class="{'is-active': (theme === 'light')}"
-        @click="switchTheme('light')"
-      >Light theme</span>
-    </p-text>
-    <p-text class="tab" variant="20" v-if="themeable">
-      <span
-        class="link"
-        :class="{'is-active': (theme === 'dark')}"
-        @click="switchTheme('dark')"
-      >Dark theme</span>
-    </p-text>
+    <div class="tabs" role="tablist">
+      <p-text class="tab" variant="20" tag="div" v-if="themeable">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="(theme === 'light') ? 'true' : 'false'"
+          :class="{'is-active': (theme === 'light')}"
+          @click="switchTheme('light')"
+        >Light theme
+        </button>
+      </p-text>
+      <p-text class="tab" variant="20" tag="div" v-if="themeable">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="(theme === 'dark') ? 'true' : 'false'"
+          :class="{'is-active': (theme === 'dark')}"
+          @click="switchTheme('dark')"
+        >Dark theme
+        </button>
+      </p-text>
+    </div>
     <div
       class="example"
       :class="{
@@ -310,36 +318,40 @@
     }
   }
 
-  .tab {
-    display: inline-block;
+  .tabs {
+    display: flex;
 
-    &:not(:last-child) {
-      margin-right: $p-spacing-24;
-    }
-  }
+    .tab {
+      &:not(:last-child) {
+        margin-right: $p-spacing-24;
+      }
 
-  .link {
-    display: block;
-    padding-bottom: $p-spacing-4;
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-    cursor: pointer;
-    font-weight: 200;
-    color: $p-color-neutral-grey-6;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+      button {
+        display: block;
+        cursor: pointer;
+        border: none;
+        font: inherit;
+        color: $p-color-neutral-grey-6;
+        background-color: transparent;
+        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+        padding-bottom: $p-spacing-4;
+        border-bottom: 3px solid transparent;
 
-    &:hover {
-      color: $p-color-porsche-red;
-    }
+        &:hover {
+          color: $p-color-porsche-red;
+        }
 
-    &:focus {
-      outline: 1px solid $p-color-state-focus;
-      outline-offset: 4px;
-    }
+        &:focus {
+          outline: 1px solid $p-color-state-focus;
+          outline-offset: 4px;
+        }
 
-    &.is-active {
-      color: $p-color-porsche-black;
-      border-bottom-color: $p-color-porsche-red;
+        &.is-active {
+          cursor: default;
+          color: $p-color-porsche-black;
+          border-bottom-color: $p-color-porsche-red;
+        }
+      }
     }
   }
 </style>
