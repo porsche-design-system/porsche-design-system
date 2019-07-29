@@ -344,6 +344,10 @@ export namespace Components {
   }
   interface PSpinner {
     /**
+    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    */
+    'allyLabel'?: string;
+    /**
     * Predefined spinner sizes.
     */
     'size'?: 'x-small' | 'small' | 'medium' | 'large';
@@ -990,6 +994,10 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface PSpinner extends JSXBase.HTMLAttributes<HTMLPSpinnerElement> {
+    /**
+    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    */
+    'allyLabel'?: string;
     /**
     * Predefined spinner sizes.
     */

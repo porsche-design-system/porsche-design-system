@@ -14,10 +14,13 @@ export class Loader {
   /** Adapts the spinner color when used on dark background. */
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
+  /** A visually hidden aria-label text to improve accessibility which describes the function behind the loader. */
+  @Prop() public allyLabel?: string = undefined;
+
   public render(): JSX.Element {
     const spinnerClasses = cx(
       prefix('spinner'),
-      this.size && prefix(`spinner--${this.size}`),
+      prefix(`spinner--${this.size}`),
       this.theme === 'dark' && prefix('spinner--theme-dark')
     );
     const imageClasses = prefix('spinner__image');
@@ -25,7 +28,7 @@ export class Loader {
     const fgClasses = prefix('spinner__fg');
 
     return (
-      <span class={spinnerClasses} aria-busy='true'>
+      <span class={spinnerClasses} aria-busy='true' aria-live='polite' aria-label={this.allyLabel}>
         <svg class={imageClasses} viewBox='0 0 50 50' role='img'>
           <circle class={bgClasses} cx='50%' cy='50%' r='20' />
           <circle class={fgClasses} cx='50%' cy='50%' r='20' />

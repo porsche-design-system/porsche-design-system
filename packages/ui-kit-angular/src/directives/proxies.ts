@@ -196,7 +196,7 @@ export class PSelect {
 proxyInputs(PSelect, ['label', 'name', 'value']);
 
 export declare interface PSpinner extends Components.PSpinner {}
-@Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['size', 'theme'] })
+@Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'size', 'theme'] })
 export class PSpinner {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -204,7 +204,7 @@ export class PSpinner {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PSpinner, ['size', 'theme']);
+proxyInputs(PSpinner, ['allyLabel', 'size', 'theme']);
 
 export declare interface PSwitch extends Components.PSwitch {}
 @Component({ selector: 'p-switch', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['checked', 'disabled', 'name', 'value'] })
