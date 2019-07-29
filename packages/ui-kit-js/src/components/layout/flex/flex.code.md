@@ -2,11 +2,10 @@
 
 ## Introduction
 
-The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by changing class names/properties on the flex container and flex item. It can be used to quickly layout standard, css-prefixed content blocks or components. It does not replace [Grid](#/components/layout/grid) component which should be used to define basic page structures.
+The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by properties on the flex container and flex item. It can be used to quickly layout standard content blocks or components. It does not replace [Grid](#/components/layout/grid) component which should be used to define basic page structures.
 
-### Flex (default)
+### Flex
 Initialize standard flexbox container to define flex context.
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
 
 <Playground>
   <p-flex>
@@ -77,9 +76,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 Define or change direction of the flex items to rows or columns and set order.
 
-#### Row (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+#### Row
 
 <Playground>
   <p-flex>
@@ -166,9 +163,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 The flex wrap property is used to force flex items to stay in line independently of the flex container width, or to flow in multiple lines forced by the flex container width.
 
-#### Nowrap (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+#### Nowrap
 
 <Playground>
   <p-flex>
@@ -215,9 +210,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 This property defines the alignment of flex items on the main axis in conjunction to their siblings.
 
-#### Start (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+#### Start
 
 <Playground>
   <p-flex>
@@ -336,9 +329,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 This property defines the alignment of flex items on the cross axis in conjunction to their siblings.
 
-#### Stretch (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+#### Stretch
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
@@ -442,9 +433,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 This aligns flex items on the cross axis of the flex container when there is extra space available.
 This property has only effect when there is more than one line of flex items.
 
-#### Stretch (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+#### Stretch
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap">
@@ -695,9 +684,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 You can override the align items properties of the flex container for individual flex items.
 
-#### Auto (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+#### Auto
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex>
@@ -839,9 +826,7 @@ Flexbox default behaviour on how the item widths are rendered (stretched) can be
 
 It handles how to grow an item based on the space that is left to fulfill the parents width.
 
-#### Grow - 0 (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+#### Grow - 0
 
 <Playground>
   <p-flex>
@@ -875,9 +860,7 @@ Flexbox default behaviour on how the item widths are rendered (shrinked) can be 
 
 It handles how to shrink an item based on the space that exceeds the parents width to fulfill it.
 
-#### Shrink - 1 (default)
-
-If using default property, no extra class/prop declaration is needed due to standard browser behaviour.
+#### Shrink - 1
 
 <Playground>
   <p-flex>
@@ -972,3 +955,90 @@ Setting shorthand properties for flex grow, shrink and base:
     </p-flex-item>
   </p-flex>
 </Playground>
+
+<style scoped lang="scss">
+  @import '~@porscheui/ui-kit-js/src/styles/utility/index';
+    
+  $color-blue-1: lightskyblue;
+  $color-blue-2: deepskyblue;
+  $color-blue-3: dodgerblue;
+  $color-blue-4: royalblue;
+  $color-highlight: deeppink;
+  
+  p-flex {
+    // styling to colorize flex items
+    p-flex-item {
+      &:nth-child(1n) {
+        background-color: $color-blue-1;
+      }
+  
+      &:nth-child(2n) {
+        background-color: $color-blue-2;
+      }
+  
+      &:nth-child(3n) {
+        background-color: $color-blue-3;
+      }
+  
+      &:nth-child(4n) {
+        background-color: $color-blue-4;
+      }
+  
+      &[align-self] {
+        background-color: $color-highlight;
+      }
+      
+      // styling to visualize baseline
+      &[align-self='baseline'] {
+        margin-top: $p-spacing-24;
+      }
+    }
+  
+    // styling to visualize align items behaviour
+    &[align-items] {
+      p-flex-item:not([align-self='stretch']) {
+        &:nth-child(1n) {
+          height: 40px;
+        }
+  
+        &:nth-child(2n) {
+          height: 80px;
+        }
+  
+        &:nth-child(3n) {
+          height: 54px;
+        }
+      }
+    }
+  
+    // special case for visualizing gap styling
+    &[gap] {
+      p-flex-item {
+        background-color: transparent !important;
+  
+        &:nth-child(1n) p {
+          background-color: $color-blue-1;
+        }
+  
+        &:nth-child(2n) p {
+          background-color: $color-blue-2;
+        }
+  
+        &:nth-child(3n) p {
+          background-color: $color-blue-3;
+        }
+  
+        &:nth-child(4n) p {
+          background-color: $color-blue-4;
+        }
+      }
+    }
+  
+    // styling to visualize baseline
+    &[align-items='baseline'] {
+      p-flex-item {
+        margin-top: $p-spacing-24;
+      }
+    }
+  }
+</style>
