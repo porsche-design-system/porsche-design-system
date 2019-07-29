@@ -33,7 +33,7 @@
 
 ### Unit Tests
 * Switch to __project root directory__
-* Run `./docker.sh run-test-unit`, `./docker.sh run-test-unit --ui-kit-js` or `./docker.sh run-test-unit --design-system`
+* Run `./docker.sh run-test-unit`, `./docker.sh run-test-unit --ui-kit-js`, `./docker.sh run-test-unit --design-system` or `./docker.sh run-test-unit --ui-kit-react-test`
 
 ### E2E Tests
 * Switch to __project root directory__
