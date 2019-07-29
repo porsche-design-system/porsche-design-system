@@ -34,7 +34,7 @@
       }"
     >
       <div class="configurator" v-if="isSlotConfiguratorSet()">
-        <slot name="configurator"/>
+        <slot name="configurator" :theme="theme"/>
       </div>
       <div class="code">
         <slot :theme="theme"/>
@@ -80,7 +80,7 @@
     }
 
     public isSlotConfiguratorSet(): boolean {
-      return this.$slots.configurator !== undefined;
+      return this.$scopedSlots.configurator !== undefined;
     }
 
     private getMarkup(): string {
