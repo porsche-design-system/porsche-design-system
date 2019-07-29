@@ -6,10 +6,10 @@ exports[`Text component should render correctly 1`] = `
 </p-text>
 `;
 
-exports[`Text component should render correctly in type small 1`] = `
-<small
-  type="small"
+exports[`Text component should render correctly in variant small 1`] = `
+<p-text
+  variant="small"
 >
   Text
-</small>
+</p-text>
 `;

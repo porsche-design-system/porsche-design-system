@@ -6,10 +6,10 @@ exports[`Headline component should render correctly 1`] = `
 </p-headline>
 `;
 
-exports[`Headline component should render correctly in type headline-2 1`] = `
-<headline-2
-  type="headline-2"
+exports[`Headline component should render correctly in variant headline-2 1`] = `
+<p-headline
+  variant="headline-2"
 >
   Headline
-</headline-2>
+</p-headline>
 `;
