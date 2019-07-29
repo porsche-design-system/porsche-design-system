@@ -1,7 +1,7 @@
 <template>
   <div class="playground">
     <div class="tabs" role="tablist">
-      <p-text class="tab" variant="20" tag="div" v-if="themeable">
+      <p-text class="tab" variant="20-thin" tag="div" v-if="themeable">
         <button
           type="button"
           role="tab"
@@ -11,7 +11,7 @@
         >Light theme
         </button>
       </p-text>
-      <p-text class="tab" variant="20" tag="div" v-if="themeable">
+      <p-text class="tab" variant="20-thin" tag="div" v-if="themeable">
         <button
           type="button"
           role="tab"
