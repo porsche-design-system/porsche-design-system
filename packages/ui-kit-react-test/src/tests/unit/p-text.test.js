@@ -13,9 +13,9 @@ describe("Text component", () => {
 
   });
 
-  it('should render correctly in type small', () => {
+  it('should render correctly in variant small', () => {
     const component = renderer.create(
-      <PText type="small">Text</PText>
+      <PText variant="small">Text</PText>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
