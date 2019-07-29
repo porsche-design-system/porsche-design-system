@@ -127,7 +127,7 @@ export namespace Components {
   }
   interface PFlex {
     /**
-    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. Corresponds to the "alignContent" css property.
+    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
     */
     'alignContent'?: BreakpointCustomizable<
     'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around'
@@ -767,7 +767,7 @@ declare namespace LocalJSX {
   }
   interface PFlex extends JSXBase.HTMLAttributes<HTMLPFlexElement> {
     /**
-    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. Corresponds to the "alignContent" css property.
+    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
     */
     'alignContent'?: BreakpointCustomizable<
     'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around'
