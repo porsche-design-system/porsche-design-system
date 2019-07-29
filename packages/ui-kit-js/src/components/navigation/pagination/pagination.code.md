@@ -42,12 +42,21 @@ To adapt the maximum number of page links for smaller screens for individual bre
 Test pagination behaviour by changing values for total amount of items, items to display per page and number of currently active page.
 
 <Playground :themeable="true">
-  <template #configurator>
-    <p-input class="p-spacing-mr-16" label="Total items count" type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"></p-input>
-    <p-input class="p-spacing-mr-16" label="Items per page" type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"></p-input>
-    <p-input ref="activePage" label="Active page" type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"></p-input>
+  <template v-slot:configurator="{theme}">
+    <label class="p-spacing-mr-16" style="display:inline-block">
+      <p-text tag="span" variant="small" :color="(theme === 'dark') ? 'porsche-light' : 'porsche-black'">Total items count</p-text>
+      <input type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"/>
+    </label>
+    <label class="p-spacing-mr-16" style="display:inline-block">
+      <p-text tag="span" variant="small" :color="(theme === 'dark') ? 'porsche-light' : 'porsche-black'">Items per page</p-text>
+      <input type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"/>
+    </label>
+    <label style="display:inline-block">
+      <p-text tag="span" variant="small" :color="(theme === 'dark') ? 'porsche-light' : 'porsche-black'">Active page</p-text>
+      <input ref="activePage" type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"/>
+    </label>
   </template>
-  <template v-slot="slotProps">
+  <template v-slot:default="slotProps">
     <p-pagination ref="paginationPlayground" :theme="slotProps.theme" :total-items-count="totalItemsCount" :items-per-page="itemsPerPage" :active-page="activePage"></p-pagination>
   </template>
 </Playground>
