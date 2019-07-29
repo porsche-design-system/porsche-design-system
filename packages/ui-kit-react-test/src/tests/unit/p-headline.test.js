@@ -13,9 +13,9 @@ describe("Headline component", () => {
 
   });
 
-  it('should render correctly in type headline-2', () => {
+  it('should render correctly in variant headline-2', () => {
     const component = renderer.create(
-      <PHeadline type="headline-2">Headline</PHeadline>
+      <PHeadline variant="headline-2">Headline</PHeadline>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
