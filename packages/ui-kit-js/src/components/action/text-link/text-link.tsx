@@ -10,22 +10,25 @@ import { Components } from '../../../index';
 })
 export class TextLink {
   /** Target url to where the component should link to. */
-  @Prop({ reflect: true }) public href: string = '#';
+  @Prop() public href?: string = '#';
 
   /** Target attribute where the link should be opened. */
-  @Prop({ reflect: true }) public target?: 'self' | 'blank' | 'parent' | 'top' = 'self';
+  @Prop() public target?: 'self' | 'blank' | 'parent' | 'top' = 'self';
 
-  /** Special download attribute to open native Browser download dialog if target url points to a downloadable file. */
-  @Prop({ reflect: true }) public download?: boolean = false;
+  /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
+  @Prop() public download?: boolean = false;
+
+  /** Specifies the relationship of the target object to the link object. */
+  @Prop() public rel?: string = '';
 
   /** The style of the text. */
-  @Prop() public type?: Components.PText['type'] = 'copy';
+  @Prop() public variant?: Components.PText['variant'] = 'copy';
 
   /** The icon shown next to the label. */
   @Prop() public icon?: string = 'arrow-right-hair';
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: 'light' | 'dark' = 'light';
+  /** Basic text color variations. */
+  @Prop() public color?: Components.PText['color'] = 'porsche-black';
 
   /** Set a custom HTML tag depending of the usage of the component. */
   @Prop() public tag?: 'span' | 'a' = 'a';
@@ -36,17 +39,28 @@ export class TextLink {
   public render(): JSX.Element {
     const TagType: any = this.tag;
 
-    const textLinkClasses = cx(prefix('text-link'), this.theme === 'dark' && prefix('text-link--theme-dark'));
-    const iconClasses = cx(prefix('text-link__icon'), this.type && prefix(`text-link__icon--${this.type}`));
+    const textLinkClasses = cx(
+      prefix('text-link'),
+      prefix(`text-link--color-${this.color}`)
+    );
+
+    const iconClasses = cx(
+      prefix('text-link__icon'),
+      prefix(`text-link__icon--${this.variant}`)
+    );
+
+    const textClasses = cx(
+      prefix('text-link__text')
+    );
 
     return (
       <TagType
-        {...(TagType === 'a' ? { href: this.href, target: `_${this.target}`, download: this.download } : null)}
+        {...(TagType === 'a' ? { href: this.href, target: `_${this.target}`, download: this.download, rel: this.rel } : null)}
         onClick={(e) => this.onClick(e)}
         class={textLinkClasses}
       >
-        <p-icon source={this.icon} size='inherit' color='inherit' class={iconClasses} />
-        <p-text type={this.type} color='inherit' tag='span'>
+        <p-icon class={iconClasses} source={this.icon} color='inherit' size='inherit' />
+        <p-text class={textClasses} tag='span' color='inherit' variant={this.variant}>
           <slot />
         </p-text>
       </TagType>

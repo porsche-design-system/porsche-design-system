@@ -1,119 +1,151 @@
 <template>
   <div class="code-block" :class="{'light': (theme === 'light'), 'dark': (theme === 'dark')}">
-    <ul class="tabs">
-      <li :class="{'is-active': isVanillaJS}" @click="updateFramework('vanilla-js')">Vanilla JS</li>
-      <li :class="{'is-active': isAngular}" @click="updateFramework('angular')">Angular</li>
-      <li :class="{'is-active': isReact}" @click="updateFramework('react')">React</li>
-    </ul>
+    <div class="tabs" role="tablist">
+      <p-text class="tab" tag="div" color="inherit">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="isVanillaJS ? 'true' : 'false'"
+          :class="{'is-active': isVanillaJS}"
+          @click="updateFramework('vanilla-js')"
+        >Vanilla JS</button>
+      </p-text>
+      <p-text class="tab" tag="div" color="inherit">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="isAngular ? 'true' : 'false'"
+          :class="{'is-active': isAngular}"
+          @click="updateFramework('angular')"
+        >Angular</button>
+      </p-text>
+      <p-text class="tab" tag="div" color="inherit">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="isReact ? 'true' : 'false'"
+          :class="{'is-active': isReact}"
+          @click="updateFramework('react')"
+        >React</button>
+      </p-text>
+    </div>
     <pre><code v-html="formattedMarkup"></code></pre>
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
-  import Prism from 'prismjs';
-  import {html} from 'js-beautify';
-  import {camelCase, upperFirst} from 'lodash';
+import {Component, Prop, Vue} from 'vue-property-decorator';
+import Prism from 'prismjs';
+import {html} from 'js-beautify';
+import {camelCase, upperFirst} from 'lodash';
 
-  type Framework = 'vanilla-js' | 'angular' | 'react';
-  type Theme = 'light' | 'dark';
+type Framework = 'vanilla-js' | 'angular' | 'react';
+type Theme = 'light' | 'dark';
 
-  @Component
-  export default class CodeBlock extends Vue {
+@Component
+export default class CodeBlock extends Vue {
 
-    @Prop({default: ''}) public markup!: string;
-    @Prop({default: 'light'}) public theme!: Theme;
+  @Prop({default: ''}) public markup!: string;
+  @Prop({default: 'light'}) public theme!: Theme;
 
-    private framework: Framework = 'vanilla-js';
+  private framework: Framework = 'vanilla-js';
 
-    public get isVanillaJS(): boolean {
-      return this.framework === 'vanilla-js';
-    }
+  get isVanillaJS(): boolean {
+    return this.framework === 'vanilla-js';
+  }
 
-    public get isAngular(): boolean {
-      return this.framework === 'angular';
-    }
+  get isAngular(): boolean {
+    return this.framework === 'angular';
+  }
 
-    public get isReact(): boolean {
-      return this.framework === 'react';
-    }
+  get isReact(): boolean {
+    return this.framework === 'react';
+  }
 
-    public get formattedMarkup(): string {
-      return this.highlight(this.beautify(this.convert(this.removeAttr(this.markup), this.framework)));
-    }
+  get formattedMarkup(): string {
+    return this.highlight(this.beautify(this.convert(this.removeAttr(this.removeEmptyComments(this.markup)), this.framework)));
+  }
 
-    public updateFramework(framework: Framework): void {
-      this.framework = framework;
-    }
+  public updateFramework(framework: Framework): void {
+    this.framework = framework;
+  }
 
-    private convert(markup: string, framework: Framework): string {
-      switch (framework) {
-        case 'vanilla-js':
-          return markup;
-        case 'angular':
-          return this.convertToAngular(markup);
-        case 'react':
-          return this.convertToReact(markup);
-        default:
-          return markup;
-      }
-    }
-
-    private convertToAngular(markup: string): string {
-      return (
-        markup
-        // transform all attributes to camel case
-          .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
-            return camelCase($1) + '="' + $2 + '"';
-          })
-      );
-    }
-
-    private convertToReact(markup: string): string {
-      return (
-        markup
-        // transform all attributes to camel case
-          .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
-            return camelCase($1) + '="' + $2 + '"';
-          })
-          // transform class attribute to JSX compatible one
-          .replace(/class=["'](.*?)["']/g, (m, $1) => {
-            return 'className="' + $1 + '"';
-          })
-          // transform custom element opening tags to pascal case
-          .replace(/<(p-[\w-]+)(.*?)>/g, (m, $1, $2) => {
-            return '<' + upperFirst(camelCase($1)) + '' + $2 + '>';
-          })
-          // transform custom element closing tags to pascal case
-          .replace(/<\/(p-[\w-]+)>/g, (m, $1) => {
-            return '</' + upperFirst(camelCase($1)) + '>';
-          })
-      );
-    }
-
-    private removeAttr(markup: string): string {
-      return (
-        markup
-          // remove all attributes added by Vue JS
-          .replace(/data-v-[a-zA-Z0-9]+=""/g, '')
-          // remove all class values added by Stencil JS
-          .replace(/class=["'](.*?)hydrated(.*?)["']/g, (m, $1, $2) => {
-            if (/\S/.test($1) || /\S/.test($2)) {
-              return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
-            }
-            return '';
-          })
-      );
-    }
-
-    private beautify(markup: string): string {
-      return html(markup, {indent_size: 2});
-    }
-
-    private highlight(markup: string): string {
-      return Prism.highlight(markup, Prism.languages.markup, 'markup');
+  private convert(markup: string, framework: Framework): string {
+    switch (framework) {
+      case 'vanilla-js':
+        return markup;
+      case 'angular':
+        return this.convertToAngular(markup);
+      case 'react':
+        return this.convertToReact(markup);
+      default:
+        return markup;
     }
   }
+
+  private convertToAngular(markup: string): string {
+    return (
+      markup
+      // transform all attributes to camel case
+        .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
+          return camelCase($1) + '="' + $2 + '"';
+        })
+    );
+  }
+
+  private convertToReact(markup: string): string {
+    return (
+      markup
+        // transform all attributes to camel case
+        .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
+          return camelCase($1) + '="' + $2 + '"';
+        })
+        // remove quotes from object values
+        .replace(/=['"]{(.*?)}['"]/g, (m, $1) => {
+          return '={' + $1 + '}';
+        })
+        // transform class attribute to JSX compatible one
+        .replace(/class=["'](.*?)["']/g, (m, $1) => {
+          return 'className="' + $1 + '"';
+        })
+        // transform custom element opening tags to pascal case
+        .replace(/<(p-[\w-]+)(.*?)>/g, (m, $1, $2) => {
+          return '<' + upperFirst(camelCase($1)) + '' + $2 + '>';
+        })
+        // transform custom element closing tags to pascal case
+        .replace(/<\/(p-[\w-]+)>/g, (m, $1) => {
+          return '</' + upperFirst(camelCase($1)) + '>';
+        })
+    );
+  }
+
+  private removeEmptyComments(markup: string): string {
+    return markup.replace(/<!---->/g, '');
+  }
+
+  private removeAttr(markup: string): string {
+    return (
+      markup
+      // remove all attributes added by Vue JS
+        .replace(/data-v-[a-zA-Z0-9]+(=["']{1}["']{1})?/g, '')
+        // remove all class values added by Stencil JS
+        .replace(/class=["'](.*?)hydrated(.*?)["']/g, (m, $1, $2) => {
+          if (/\S/.test($1) || /\S/.test($2)) {
+            return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
+          }
+          return '';
+        })
+    );
+  }
+
+  private beautify(markup: string): string {
+    return html(markup, {indent_size: 2});
+  }
+
+  private highlight(markup: string): string {
+    return Prism.highlight(markup, Prism.languages.markup, 'markup');
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -128,7 +160,7 @@
       border-color: $p-color-neutral-grey-2;
       background: $p-color-porsche-light;
 
-      ul.tabs {
+      .tabs {
         color: $p-color-porsche-black;
       }
 
@@ -200,7 +232,7 @@
       border-color: $p-color-surface-dark;
       background: $p-color-surface-dark;
 
-      ul.tabs {
+      .tabs {
         color: $p-color-porsche-light;
       }
 
@@ -267,26 +299,36 @@
     }
   }
 
-  ul.tabs {
-    @include p-text-copy;
-    list-style: none;
+  .tabs {
     display: flex;
 
-    li {
-      cursor: pointer;
-      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-      &:hover {
-        color: $p-color-porsche-red;
-      }
-
-      &.is-active {
-        cursor: default;
-        color: $p-color-porsche-red;
-      }
-
+    .tab {
       &:not(:last-child) {
         margin-right: $p-spacing-16;
+      }
+
+      button {
+        display: block;
+        cursor: pointer;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+        &:hover {
+          color: $p-color-porsche-red;
+        }
+
+        &:focus {
+          outline: 1px solid $p-color-state-focus;
+          outline-offset: 4px;
+        }
+
+        &.is-active {
+          cursor: default;
+          color: $p-color-porsche-red;
+        }
       }
     }
   }

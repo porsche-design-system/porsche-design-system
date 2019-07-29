@@ -2,25 +2,25 @@
   <nav>
     <ul class="list">
       <li v-for="(pages, category, index) in config.pages" :key="index">
-        <p-headline type="headline-5" level="3">{{ category }}</p-headline>
+        <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
             <router-link class="link" :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">
-              <p-text-link tag="span">{{ page }}</p-text-link>
+              <p-text-link tag="span" color="inherit">{{ page }}</p-text-link>
             </router-link>
           </li>
         </ul>
       </li>
     </ul>
     <Divider spacing="small"/>
-    <p-headline type="headline-4" level="2">Components</p-headline>
+    <p-headline variant="headline-4" tag="h2">Components</p-headline>
     <ul class="list">
       <li
         v-for="(stories, category, index) in config.stories"
         :key="index"
         v-if="featureToggle('Q2/2019 Components') || ['Basic', 'Layout'].includes(category)"
       >
-        <p-headline type="headline-5" level="3">{{ category }}</p-headline>
+        <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li
             v-for="(v, story, index) in stories"
@@ -28,7 +28,7 @@
             v-if="featureToggle('Q2/2019 Components') || ['Color', 'Typography', 'Grid', 'Spacing'].includes(story)"
           >
             <router-link class="link" :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">
-              <p-text-link tag="span">{{ story }}</p-text-link>
+              <p-text-link tag="span" color="inherit">{{ story }}</p-text-link>
             </router-link>
           </li>
         </ul>
@@ -81,7 +81,7 @@
     padding: $p-spacing-4 0;
     text-decoration: none;
     color: $p-color-porsche-black;
-    display: block;
+    display: inline-block;
 
     &.router-link-active,
     &:hover {

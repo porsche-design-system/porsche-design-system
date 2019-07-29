@@ -3,8 +3,8 @@
     <router-link class="link" to="/">
       <Marque/>
     </router-link>
-    <p-headline class="p-spacing-mt--16" type="headline-4" level="1">Porsche UI Kit</p-headline>
-    <p-text type="small">Current Release: v{{version}}</p-text>
+    <p-headline class="p-spacing-mt--16" variant="headline-4" tag="h1" align="center">Porsche UI Kit</p-headline>
+    <p-text variant="small" align="center">Current Release: v{{version}}</p-text>
   </header>
 </template>
 
