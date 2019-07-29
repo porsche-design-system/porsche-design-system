@@ -32,8 +32,6 @@
 }
 
 .#{$p-global-class-prefix}flex {
-  box-sizing: border-box;
-
   @include p-flex;
 
   &--block {
