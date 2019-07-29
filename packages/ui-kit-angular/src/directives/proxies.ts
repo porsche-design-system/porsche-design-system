@@ -126,7 +126,7 @@ export class PGridChild {
 proxyInputs(PGridChild, ['offset', 'size']);
 
 export declare interface PHeadline extends Components.PHeadline {}
-@Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'ellipsis', 'level', 'theme', 'type', 'wrap'] })
+@Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
 export class PHeadline {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -134,7 +134,7 @@ export class PHeadline {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PHeadline, ['align', 'ellipsis', 'level', 'theme', 'type', 'wrap']);
+proxyInputs(PHeadline, ['align', 'color', 'ellipsis', 'tag', 'variant']);
 
 export declare interface PIcon extends Components.PIcon {}
 @Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['ariaLabel', 'color', 'lazy', 'size', 'source'] })
@@ -196,7 +196,7 @@ export class PSelect {
 proxyInputs(PSelect, ['label', 'name', 'value']);
 
 export declare interface PSpinner extends Components.PSpinner {}
-@Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['size', 'theme'] })
+@Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'size', 'theme'] })
 export class PSpinner {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -204,7 +204,7 @@ export class PSpinner {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PSpinner, ['size', 'theme']);
+proxyInputs(PSpinner, ['allyLabel', 'size', 'theme']);
 
 export declare interface PSwitch extends Components.PSwitch {}
 @Component({ selector: 'p-switch', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['checked', 'disabled', 'name', 'value'] })
@@ -218,7 +218,7 @@ export class PSwitch {
 proxyInputs(PSwitch, ['checked', 'disabled', 'name', 'value']);
 
 export declare interface PText extends Components.PText {}
-@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'inline', 'tag', 'type', 'wrap'] })
+@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
 export class PText {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -226,10 +226,10 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PText, ['align', 'color', 'ellipsis', 'inline', 'tag', 'type', 'wrap']);
+proxyInputs(PText, ['align', 'color', 'ellipsis', 'tag', 'variant']);
 
 export declare interface PTextLink extends Components.PTextLink {}
-@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['download', 'href', 'icon', 'tag', 'target', 'theme', 'type'] })
+@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'rel', 'tag', 'target', 'variant'] })
 export class PTextLink {
   pClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -239,10 +239,10 @@ export class PTextLink {
     proxyOutputs(this, this.el, ['pClick']);
   }
 }
-proxyInputs(PTextLink, ['download', 'href', 'icon', 'tag', 'target', 'theme', 'type']);
+proxyInputs(PTextLink, ['color', 'download', 'href', 'icon', 'rel', 'tag', 'target', 'variant']);
 
 export declare interface PTextList extends Components.PTextList {}
-@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType', 'textType'] })
+@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType'] })
 export class PTextList {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -250,7 +250,7 @@ export class PTextList {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PTextList, ['color', 'listType', 'textType']);
+proxyInputs(PTextList, ['color', 'listType']);
 
 export declare interface PTextListItem extends Components.PTextListItem {}
 @Component({ selector: 'p-text-list-item', changeDetection: 0, template: '<ng-content></ng-content>' })

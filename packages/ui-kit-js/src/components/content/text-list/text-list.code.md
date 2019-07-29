@@ -5,112 +5,63 @@ Text lists are used to display listed data in form of an unordered or ordered li
 
 ## Lists
 
-### Unordered list (default)
+### Unordered list
 
 <Playground>
-  <template v-slot="slotProps">
-    <p-text-list>
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-      <p-text-list-item>
-        Lorem ipsum
-        <p-text-list>
-          <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-          <p-text-list-item>Lorem ipsum</p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-    </p-text-list>
-  </template>
+  <p-text-list>
+    <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+    <p-text-list-item>
+      Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
+      <p-text-list>
+        <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>Lorem ipsum</p-text-list-item>
+      </p-text-list>
+    </p-text-list-item>
+    <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+  </p-text-list>
 </Playground>
-
-### Unordered list with different color
-
-<Playground>
-  <template v-slot="slotProps">
-    <p-text-list color="porsche-red">
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-      <p-text-list-item>
-        Lorem ipsum
-        <p-text-list color="porsche-red">
-          <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-          <p-text-list-item>Lorem ipsum</p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-    </p-text-list>
-  </template>
-</Playground>
-
-### Unordered list with bigger text size
-
-<Playground>
-  <template v-slot="slotProps">
-    <p-text-list text-type="48">
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-      <p-text-list-item>
-        Lorem ipsum
-        <p-text-list text-type="48">
-          <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-          <p-text-list-item>Lorem ipsum</p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-    </p-text-list>
-  </template>
-</Playground>
-
----
 
 ### Ordered list 
 
 <Playground>
-  <template v-slot="slotProps">
-    <p-text-list list-type="ordered">
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-      <p-text-list-item>
-        Lorem ipsum
-        <p-text-list list-type="ordered">
-          <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-          <p-text-list-item>Lorem ipsum</p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-    </p-text-list>
-  </template>
+  <p-text-list list-type="ordered">
+    <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+    <p-text-list-item>
+      Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
+      <p-text-list list-type="ordered">
+        <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>Lorem ipsum</p-text-list-item>
+      </p-text-list>
+    </p-text-list-item>
+    <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+  </p-text-list>
 </Playground>
 
-### Ordered list with different color
+---
+
+### List with different colors
 
 <Playground>
-  <template v-slot="slotProps">
-    <p-text-list list-type="ordered" color="porsche-red">
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-      <p-text-list-item>
-        Lorem ipsum
-        <p-text-list list-type="ordered" color="porsche-red">
-          <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-          <p-text-list-item>Lorem ipsum</p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-    </p-text-list>
-  </template>
-</Playground>
-
-### Ordered list with bigger text size
-
-<Playground>
-  <template v-slot="slotProps">
-    <p-text-list list-type="ordered" text-type="48">
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-      <p-text-list-item>
-        Lorem ipsum
-        <p-text-list list-type="ordered" text-type="48">
-          <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-          <p-text-list-item>Lorem ipsum</p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-    </p-text-list>
-  </template>
+  <p-text-list color="porsche-light" style="background: black;">
+    <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+    <p-text-list-item>
+      Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
+      <p-text-list>
+        <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>Lorem ipsum</p-text-list-item>
+      </p-text-list>
+    </p-text-list-item>
+    <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+  </p-text-list>
+  <p-text-list color="inherit" style="color: deeppink;">
+    <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+    <p-text-list-item>
+      Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
+      <p-text-list>
+        <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+        <p-text-list-item>Lorem ipsum</p-text-list-item>
+      </p-text-list>
+    </p-text-list-item>
+    <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+  </p-text-list>
 </Playground>

@@ -8,8 +8,12 @@ import { prefix } from '../../../../utils/prefix';
   shadow: true
 })
 export class Headline {
-  /** The style of the text. */
-  @Prop() public type?:
+
+  /** Sets a custom HTML tag depending of the usage of the headline component. */
+  @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = 'h1';
+
+  /** Style of the text. */
+  @Prop() public variant?:
     | 'large-title'
     | 'headline-1'
     | 'headline-2'
@@ -18,36 +22,29 @@ export class Headline {
     | 'headline-5'
     | 'headline-6' = 'headline-1';
 
-  /** Headline level/hierarchy. */
-  @Prop() public level?: '1' | '2' | '3' | '4' | '5' | '6' = '1';
-
-  /** The text alignment of the component. */
+  /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
+
+  /** Basic text color variations. */
+  @Prop() public color?: 'inherit' | 'porsche-black' | 'porsche-light' = 'porsche-black';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
 
-  /** Wraps the text, even when it has to break a word. */
-  @Prop() public wrap?: boolean = false;
-
-  /** Adapts the text color when used on dark background. */
-  @Prop() public theme?: 'light' | 'dark' = 'light';
-
   public render(): JSX.Element {
-    const TagType: any = 'h' + this.level;
+    const TagType = this.tag;
 
     const headlineClasses = cx(
       prefix('headline'),
-      this.type && prefix(`headline--${this.type}`),
-      this.align !== 'left' && prefix(`headline--align-${this.align}`),
-      this.ellipsis && prefix('headline--ellipsis'),
-      this.wrap && prefix('headline--wrap'),
-      this.theme === 'dark' && prefix('headline--theme-dark')
+      prefix(`headline--variant-${this.variant}`),
+      prefix(`headline--align-${this.align}`),
+      prefix(`headline--color-${this.color}`),
+      this.ellipsis && prefix('headline--ellipsis')
     );
 
     return (
       <TagType class={headlineClasses}>
-        <slot />
+        <slot/>
       </TagType>
     );
   }

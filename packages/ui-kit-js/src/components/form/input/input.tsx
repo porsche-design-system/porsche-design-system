@@ -42,7 +42,7 @@ export class Input {
           disabled={this.disabled}
           onInput={this.onInput}
         />
-        <p-text class={labelClasses} type='12' color='inherit' tag='span'>
+        <p-text class={labelClasses} variant='12' color='inherit' tag='span'>
           {this.label}
         </p-text>
       </label>

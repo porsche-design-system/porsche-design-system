@@ -209,6 +209,7 @@
 
         // Links
         a {
+          outline: none;
           text-decoration: underline;
           color: $p-color-porsche-black;
           transition: color $p-animation-hover-duration $p-animation-hover-bezier;
@@ -216,6 +217,12 @@
           &:hover {
             text-decoration: none;
             color: $p-color-porsche-red;
+
+          }
+
+          &:focus {
+            text-decoration: underline;
+            color: $p-color-state-focus;
           }
         }
 

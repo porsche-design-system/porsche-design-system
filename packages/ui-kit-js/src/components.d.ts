@@ -12,6 +12,9 @@ import {
 import {
   Components,
 } from './index';
+import {
+  Components as Components1,
+} from './components';
 
 export namespace Components {
   interface PButtonIcon {
@@ -226,35 +229,31 @@ export namespace Components {
   }
   interface PHeadline {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
+    /**
+    * Basic text color variations.
+    */
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Headline level/hierarchy.
+    * Sets a custom HTML tag depending of the usage of the headline component.
     */
-    'level'?: '1' | '2' | '3' | '4' | '5' | '6';
+    'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
-    * Adapts the text color when used on dark background.
+    * Style of the text.
     */
-    'theme'?: 'light' | 'dark';
-    /**
-    * The style of the text.
-    */
-    'type'?: | 'large-title'
+    'variant'?: | 'large-title'
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
     | 'headline-4'
     | 'headline-5'
     | 'headline-6';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PIcon {
     /**
@@ -339,6 +338,10 @@ export namespace Components {
   }
   interface PSpinner {
     /**
+    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    */
+    'allyLabel'?: string;
+    /**
     * Predefined spinner sizes.
     */
     'size'?: 'x-small' | 'small' | 'medium' | 'large';
@@ -355,23 +358,19 @@ export namespace Components {
   }
   interface PText {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Sets the text as display: inline.
-    */
-    'inline'?: boolean;
-    /**
-    * Set a custom HTML tag depending of the usage of the text component.
+    * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
@@ -390,23 +389,33 @@ export namespace Components {
     | 'li'
     | 'legend';
     /**
-    * The style of the text.
+    * Style of the text.
     */
-    'type'?: | 'copy'
+    'variant'?: | 'copy'
     | 'small'
     | '12'
     | '16'
     | '18'
     | '20'
+    | '20-thin'
     | '24'
+    | '24-thin'
     | '28'
+    | '28-thin'
     | '30'
+    | '30-thin'
     | '32'
+    | '32-thin'
     | '36'
+    | '36-thin'
     | '42'
+    | '42-thin'
     | '44'
+    | '44-thin'
     | '48'
+    | '48-thin'
     | '52'
+    | '52-thin'
     | '60'
     | '60-thin'
     | '62'
@@ -415,24 +424,28 @@ export namespace Components {
     | '72-thin'
     | '84'
     | '84-thin';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PTextLink {
     /**
-    * Special download attribute to open native Browser download dialog if target url points to a downloadable file.
+    * Basic text color variations.
+    */
+    'color'?: Components.PText['color'];
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
     'download'?: boolean;
     /**
     * Target url to where the component should link to.
     */
-    'href': string;
+    'href'?: string;
     /**
     * The icon shown next to the label.
     */
     'icon'?: string;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
     /**
     * Set a custom HTML tag depending of the usage of the component.
     */
@@ -442,27 +455,19 @@ export namespace Components {
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
-    * Adapts the color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
-    /**
     * The style of the text.
     */
-    'type'?: Components.PText['type'];
+    'variant'?: Components.PText['variant'];
   }
   interface PTextList {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: Components.PText['color'];
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
-    /**
-    * The style of the text list.
-    */
-    'textType'?: Components.PText['type'];
   }
   interface PTextListItem {}
   interface PTextarea {
@@ -864,35 +869,31 @@ declare namespace LocalJSX {
   }
   interface PHeadline extends JSXBase.HTMLAttributes<HTMLPHeadlineElement> {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
+    /**
+    * Basic text color variations.
+    */
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Headline level/hierarchy.
+    * Sets a custom HTML tag depending of the usage of the headline component.
     */
-    'level'?: '1' | '2' | '3' | '4' | '5' | '6';
+    'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
-    * Adapts the text color when used on dark background.
+    * Style of the text.
     */
-    'theme'?: 'light' | 'dark';
-    /**
-    * The style of the text.
-    */
-    'type'?: | 'large-title'
+    'variant'?: | 'large-title'
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
     | 'headline-4'
     | 'headline-5'
     | 'headline-6';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PIcon extends JSXBase.HTMLAttributes<HTMLPIconElement> {
     /**
@@ -982,6 +983,10 @@ declare namespace LocalJSX {
   }
   interface PSpinner extends JSXBase.HTMLAttributes<HTMLPSpinnerElement> {
     /**
+    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    */
+    'allyLabel'?: string;
+    /**
     * Predefined spinner sizes.
     */
     'size'?: 'x-small' | 'small' | 'medium' | 'large';
@@ -998,23 +1003,19 @@ declare namespace LocalJSX {
   }
   interface PText extends JSXBase.HTMLAttributes<HTMLPTextElement> {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Sets the text as display: inline.
-    */
-    'inline'?: boolean;
-    /**
-    * Set a custom HTML tag depending of the usage of the text component.
+    * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
@@ -1033,23 +1034,33 @@ declare namespace LocalJSX {
     | 'li'
     | 'legend';
     /**
-    * The style of the text.
+    * Style of the text.
     */
-    'type'?: | 'copy'
+    'variant'?: | 'copy'
     | 'small'
     | '12'
     | '16'
     | '18'
     | '20'
+    | '20-thin'
     | '24'
+    | '24-thin'
     | '28'
+    | '28-thin'
     | '30'
+    | '30-thin'
     | '32'
+    | '32-thin'
     | '36'
+    | '36-thin'
     | '42'
+    | '42-thin'
     | '44'
+    | '44-thin'
     | '48'
+    | '48-thin'
     | '52'
+    | '52-thin'
     | '60'
     | '60-thin'
     | '62'
@@ -1058,14 +1069,14 @@ declare namespace LocalJSX {
     | '72-thin'
     | '84'
     | '84-thin';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**
-    * Special download attribute to open native Browser download dialog if target url points to a downloadable file.
+    * Basic text color variations.
+    */
+    'color'?: Components.PText['color'];
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
     'download'?: boolean;
     /**
@@ -1081,6 +1092,10 @@ declare namespace LocalJSX {
     */
     'onPClick'?: (event: CustomEvent<void>) => void;
     /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
     * Set a custom HTML tag depending of the usage of the component.
     */
     'tag'?: 'span' | 'a';
@@ -1089,27 +1104,19 @@ declare namespace LocalJSX {
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
-    * Adapts the color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
-    /**
     * The style of the text.
     */
-    'type'?: Components.PText['type'];
+    'variant'?: Components.PText['variant'];
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: Components.PText['color'];
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
-    /**
-    * The style of the text list.
-    */
-    'textType'?: Components.PText['type'];
   }
   interface PTextListItem extends JSXBase.HTMLAttributes<HTMLPTextListItemElement> {}
   interface PTextarea extends JSXBase.HTMLAttributes<HTMLPTextareaElement> {

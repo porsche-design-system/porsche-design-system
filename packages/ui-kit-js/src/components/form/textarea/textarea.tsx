@@ -28,7 +28,7 @@ export class Textarea {
         <textarea class={fieldClasses} name={this.name} placeholder={this.label} disabled={this.disabled}>
           {this.value}
         </textarea>
-        <p-text class={labelClasses} type='12' color='inherit' tag='span'>
+        <p-text class={labelClasses} variant='12' color='inherit' tag='span'>
           {this.label}
         </p-text>
       </label>

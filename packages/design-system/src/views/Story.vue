@@ -1,14 +1,14 @@
 <template>
   <div>
     <nav class="tabs">
-      <p-text class="tab" type="28" v-if="isStoryExistent('design')">
-        <router-link class="link" to="#design">Design</router-link>
+      <p-text class="tab" variant="28-thin" tag="div" v-if="isStoryExistent('design')">
+        <router-link to="#design">Design</router-link>
       </p-text>
-      <p-text class="tab" type="28" v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')">
-        <router-link class="link" to="#code">Code</router-link>
+      <p-text class="tab" variant="28-thin" tag="div" v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')">
+        <router-link to="#code">Code</router-link>
       </p-text>
-      <p-text class="tab" type="28" v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')">
-        <router-link class="link" to="#props">Props</router-link>
+      <p-text class="tab" variant="28-thin" tag="div" v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')">
+        <router-link to="#props">Props</router-link>
       </p-text>
     </nav>
     <Markdown>
@@ -114,35 +114,35 @@
     display: flex;
     margin-bottom: $p-spacing-64;
     border-bottom: 1px solid $p-color-neutral-grey-2;
-  }
 
-  .tab {
-    &:not(:last-child) {
-      margin-right: $p-spacing-40;
-    }
-  }
+    .tab {
+      &:not(:last-child) {
+        margin-right: $p-spacing-40;
+      }
 
-  .link {
-    display: block;
-    padding-bottom: $p-spacing-8;
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-    font-weight: 200;
-    color: $p-color-neutral-grey-6;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+      a {
+        display: block;
+        padding-bottom: $p-spacing-8;
+        border-bottom: 3px solid transparent;
+        text-decoration: none;
+        color: $p-color-neutral-grey-6;
+        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &:hover {
-      color: $p-color-porsche-red;
-    }
+        &:hover {
+          color: $p-color-porsche-red;
+        }
 
-    &:focus {
-      outline: 1px solid $p-color-state-focus;
-      outline-offset: 4px;
-    }
+        &:focus {
+          outline: 1px solid $p-color-state-focus;
+          outline-offset: 4px;
+        }
 
-    &.router-link-exact-active {
-      color: $p-color-porsche-black;
-      border-bottom-color: $p-color-porsche-red;
+        &.router-link-exact-active {
+          cursor: default;
+          color: $p-color-porsche-black;
+          border-bottom-color: $p-color-porsche-red;
+        }
+      }
     }
   }
 </style>

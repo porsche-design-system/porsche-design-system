@@ -17,6 +17,26 @@
     line-height: inherit;
   }
 
+  a {
+    color: inherit;
+    text-decoration: underline;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+   &:hover {
+      color: $p-color-porsche-red;
+      text-decoration: none;
+    }
+
+    &:focus {
+      color: $p-color-state-focus;
+      text-decoration: underline;
+    }
+  }
+
+  b, strong {
+    font-weight: $p-font-weight-bold;
+  }
+
   .#{$p-global-class-prefix}text-list__item::before {
     height: 1px;
     top: calc(1.5em / 2);
@@ -29,17 +49,17 @@
   .#{$p-global-class-prefix}text-list__item {
     padding-left: 1.2em;
 
+    &::before {
+      counter-increment: section;
+      content: counters(section, '.') '.';
+      min-width: 1em;
+      height: auto;
+      background-color: transparent;
+      top: 0;
+    }
+
     .#{$p-global-class-prefix}text-list__item {
       padding-left: 2em;
     }
-  }
-
-  .#{$p-global-class-prefix}text-list__item::before {
-    counter-increment: section;
-    content: counters(section, '.') '.';
-    min-width: 1em;
-    height: auto;
-    background-color: transparent;
-    top: 0;
   }
 }
