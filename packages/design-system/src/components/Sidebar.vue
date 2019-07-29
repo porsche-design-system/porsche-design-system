@@ -6,7 +6,7 @@
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
             <router-link class="link" :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">
-              <p-text-link tag="span">{{ page }}</p-text-link>
+              <p-text-link tag="span" color="inherit">{{ page }}</p-text-link>
             </router-link>
           </li>
         </ul>
@@ -28,7 +28,7 @@
             v-if="featureToggle('Q2/2019 Components') || ['Color', 'Typography', 'Grid', 'Spacing'].includes(story)"
           >
             <router-link class="link" :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">
-              <p-text-link tag="span">{{ story }}</p-text-link>
+              <p-text-link tag="span" color="inherit">{{ story }}</p-text-link>
             </router-link>
           </li>
         </ul>
