@@ -9,13 +9,15 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 
 ## Q3 2019
 ## Finish all Q2 leftovers
-## Finalize all relevant components for 1.0 alpha release
+## 1.0 Alpha release
 * Auto generation of angular and react components
-* Input Field & Text Area
-* Select
-* Check & Radio Box
-* Community workshop "Forms" in DEV and UX Guild
-* Marque
+* Finalize marque component
+* Refactor packages for Alpha 1.0 release including documentation
+* Alpha 1.0 release
+* Rollout workshop DEV
+## Prepare Form Components
+* Community workshop "Forms" in UX Guild
+* General form audit and guideline including input field, text area, radio and checkbox
 ## Establish automated testing for a stable 1.0 release
 * Audit of existing tests and definition of testing strategy (what & how)
 * Establish unit & E2E Tests for workshop
@@ -24,7 +26,6 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 ## Launch Porsche Icon Collection
 * Release icon collection 1.0 alpha
 * Integration into Porsche UI Kit icon component and infrastructure
-* Release icon guideline and define creation workflow
 ## Extension of Porsche UI Kit to iOS (Strategy)
 * Analyse target iOS workflow & tools to define common Porsche UI Kit strategy
 * Align and finalize UI Kit Kit basics with iOS
