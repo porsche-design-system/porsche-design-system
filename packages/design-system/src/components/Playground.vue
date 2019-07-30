@@ -1,7 +1,7 @@
 <template>
   <div class="playground">
-    <div class="tabs" role="tablist">
-      <p-text class="tab" variant="20-thin" tag="div" v-if="themeable">
+    <div class="tabs" role="tablist" v-if="themeable">
+      <p-text class="tab" variant="20-thin" tag="div">
         <button
           type="button"
           role="tab"
@@ -11,7 +11,7 @@
         >Light theme
         </button>
       </p-text>
-      <p-text class="tab" variant="20-thin" tag="div" v-if="themeable">
+      <p-text class="tab" variant="20-thin" tag="div">
         <button
           type="button"
           role="tab"
@@ -25,15 +25,15 @@
     <div
       class="example"
       :class="{
-        'light': (themeable === false || theme === 'light'),
+        'light': (themeable && theme === 'light' || themeable === false),
         'dark': (themeable && theme === 'dark'),
-        'children-height-fixed': (childElementLayout.height === 'fixed'),
+        'height-fixed': (childElementLayout.height === 'fixed'),
         'spacing-inline': (childElementLayout.spacing === 'inline'),
         'spacing-block': (childElementLayout.spacing === 'block'),
         'spacing-block-small': (childElementLayout.spacing === 'block-small')
       }"
     >
-      <div class="configurator" v-if="isSlotConfiguratorSet()">
+      <div class="configurator" v-if="isSlotSet('configurator')">
         <slot name="configurator" :theme="theme"/>
       </div>
       <div class="code">
@@ -79,8 +79,8 @@
       this.markup = this.getMarkup();
     }
 
-    public isSlotConfiguratorSet(): boolean {
-      return this.$scopedSlots.configurator !== undefined;
+    public isSlotSet(name: string): boolean {
+      return this.$scopedSlots[name] !== undefined;
     }
 
     private getMarkup(): string {
@@ -96,14 +96,41 @@
 <style scoped lang="scss">
   @import '~@porscheui/ui-kit-js/src/styles/utility/index';
 
-  $color-blue-1: lightskyblue;
-  $color-blue-2: deepskyblue;
-  $color-blue-3: dodgerblue;
-  $color-blue-4: royalblue;
-  $color-highlight: deeppink;
+  .tabs {
+    display: flex;
 
-  .configurator ~ .code {
-    margin-top: $p-spacing-32;
+    .tab {
+      &:not(:last-child) {
+        margin-right: $p-spacing-24;
+      }
+
+      button {
+        display: block;
+        cursor: pointer;
+        border: none;
+        font: inherit;
+        color: $p-color-neutral-grey-6;
+        background-color: transparent;
+        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+        padding-bottom: $p-spacing-4;
+        border-bottom: 3px solid transparent;
+
+        &:hover {
+          color: $p-color-porsche-red;
+        }
+
+        &:focus {
+          outline: 1px solid $p-color-state-focus;
+          outline-offset: 4px;
+        }
+
+        &.is-active {
+          cursor: default;
+          color: $p-color-porsche-black;
+          border-bottom-color: $p-color-porsche-red;
+        }
+      }
+    }
   }
 
   .example {
@@ -112,7 +139,7 @@
     border: 1px solid transparent;
     border-bottom: 0;
 
-    // Mode
+    // Theme
     &.light {
       border-color: $p-color-neutral-grey-2;
       background-color: $p-color-porsche-light;
@@ -123,12 +150,14 @@
       background-color: $p-color-surface-dark;
     }
 
-    &.children-height-fixed .code {
+    // Child Layout "height"
+    &.height-fixed .code {
       > * {
         height: rem(180px);
       }
     }
 
+    // Child layout "spacing"
     &.spacing-inline .code {
       &::before {
         content: '';
@@ -170,113 +199,8 @@
       }
     }
 
-    .code {
-      // Grid - web component code example visualization
-      p-grid {
-        p-grid-child {
-          > p {
-            padding: $p-spacing-4;
-            background: $color-blue-1;
-          }
-        }
-      }
-
-      // Spacing - code example visualization
-      > .example-spacing-visual {
-        display: inline-flex;
-
-        > div {
-          background-color: $color-blue-1;
-          width: fit-content;
-        }
-      }
-
-      > .example-spacing {
-        display: inline-block;
-        vertical-align: top;
-        background-color: $color-blue-1;
-
-        &.negative {
-          padding: $p-spacing-40;
-        }
-
-        &.negative-responsive {
-          @include p-spacing-d('padding');
-
-          > [class*='p-spacing-'] {
-            width: 2 * $p-spacing-d;
-            height: 2 * $p-spacing-d;
-
-            @include breakpoint('s') {
-              width: 2 * $p-spacing-d-s;
-              height: 2 * $p-spacing-d-s;
-            }
-            @include breakpoint('m') {
-              width: 2 * $p-spacing-d-m;
-              height: 2 * $p-spacing-d-m;
-            }
-            @include breakpoint('l') {
-              width: 2 * $p-spacing-d-l;
-              height: 2 * $p-spacing-d-l;
-            }
-            @include breakpoint('xl') {
-              width: 2 * $p-spacing-d-xl;
-              height: 2 * $p-spacing-d-xl;
-            }
-          }
-        }
-
-        > [class*='p-spacing-'] {
-          position: relative;
-          width: $p-spacing-80;
-          height: $p-spacing-80;
-
-          &::before {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 100%;
-            background-color: $color-blue-2;
-          }
-        }
-      }
-    }
-  }
-
-  .tabs {
-    display: flex;
-
-    .tab {
-      &:not(:last-child) {
-        margin-right: $p-spacing-24;
-      }
-
-      button {
-        display: block;
-        cursor: pointer;
-        border: none;
-        font: inherit;
-        color: $p-color-neutral-grey-6;
-        background-color: transparent;
-        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-        padding-bottom: $p-spacing-4;
-        border-bottom: 3px solid transparent;
-
-        &:hover {
-          color: $p-color-porsche-red;
-        }
-
-        &:focus {
-          outline: 1px solid $p-color-state-focus;
-          outline-offset: 4px;
-        }
-
-        &.is-active {
-          cursor: default;
-          color: $p-color-porsche-black;
-          border-bottom-color: $p-color-porsche-red;
-        }
-      }
+    .configurator ~ .code {
+      margin-top: $p-spacing-32;
     }
   }
 </style>
