@@ -152,14 +152,8 @@ export default class CodeBlock extends Vue {
   @import '~@porscheui/ui-kit-js/src/styles/utility/index';
 
   .code-block {
-    padding: $p-spacing-32;
-    border: 1px solid transparent;
-    border-top: 0;
 
     &.light {
-      border-color: $p-color-neutral-grey-2;
-      background: $p-color-porsche-light;
-
       .tabs {
         color: $p-color-porsche-black;
       }
@@ -229,9 +223,6 @@ export default class CodeBlock extends Vue {
     }
 
     &.dark {
-      border-color: $p-color-surface-dark;
-      background: $p-color-surface-dark;
-
       .tabs {
         color: $p-color-porsche-light;
       }
