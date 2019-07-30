@@ -203,7 +203,7 @@
     }
 
     .code ~ .code-block {
-      margin-top: $p-spacing-32;
+      margin-top: $p-spacing-40;
     }
   }
 </style>
