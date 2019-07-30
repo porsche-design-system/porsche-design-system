@@ -248,3 +248,16 @@ The grid system is fluid/responsive by itself by using percentages for every val
 * `{p}-grid--gap-{gap}-{bp}` => use of gaps between columns
 * `{p}-grid__child--size-{size}-{bp}` => size based on amount of columns
 * `{p}-grid__child--size-{offset}-{bp}` => offset based on amount of columns
+
+<style scoped lang="scss">
+  @import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  
+  p-grid {
+    p-grid-child {
+      > p {
+        padding: $p-spacing-4;
+        background: lightskyblue;
+      }
+    }
+  }
+</style>

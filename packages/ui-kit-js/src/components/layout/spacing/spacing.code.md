@@ -484,3 +484,71 @@ To achive highest flexibility, breakpoint behaviour can set **from** a `min` bre
     <div class="p-spacing-pt-0-min-s p-spacing-pt-d" />
   </div>
 </Playground>
+
+<style scoped lang="scss">
+  @import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  
+  $color-blue-1: lightskyblue;
+  $color-blue-2: deepskyblue;
+  $color-blue-3: dodgerblue;
+  $color-blue-4: royalblue;
+  
+  .example-spacing-visual {
+    display: inline-flex;
+
+    > div {
+      background-color: $color-blue-1;
+      width: fit-content;
+    }
+  }
+
+  .example-spacing {
+    display: inline-block;
+    vertical-align: top;
+    background-color: $color-blue-1;
+
+    &.negative {
+      padding: $p-spacing-40;
+    }
+
+    &.negative-responsive {
+      @include p-spacing-d('padding');
+
+      > [class*='p-spacing-'] {
+        width: 2 * $p-spacing-d;
+        height: 2 * $p-spacing-d;
+
+        @include breakpoint('s') {
+          width: 2 * $p-spacing-d-s;
+          height: 2 * $p-spacing-d-s;
+        }
+        @include breakpoint('m') {
+          width: 2 * $p-spacing-d-m;
+          height: 2 * $p-spacing-d-m;
+        }
+        @include breakpoint('l') {
+          width: 2 * $p-spacing-d-l;
+          height: 2 * $p-spacing-d-l;
+        }
+        @include breakpoint('xl') {
+          width: 2 * $p-spacing-d-xl;
+          height: 2 * $p-spacing-d-xl;
+        }
+      }
+    }
+
+    [class*='p-spacing-'] {
+      position: relative;
+      width: $p-spacing-80;
+      height: $p-spacing-80;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: $color-blue-2;
+      }
+    }
+  }
+</style>
