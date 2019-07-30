@@ -1,33 +1,46 @@
 <template>
   <div class="playground">
-    <p-text class="tab" type="20" v-if="themeable">
-      <span
-        class="link"
-        :class="{'is-active': (theme === 'light')}"
-        @click="switchTheme('light')"
-      >Light theme</span>
-    </p-text>
-    <p-text class="tab" type="20" v-if="themeable">
-      <span
-        class="link"
-        :class="{'is-active': (theme === 'dark')}"
-        @click="switchTheme('dark')"
-      >Dark theme</span>
-    </p-text>
+    <div class="tabs" role="tablist" v-if="themeable">
+      <p-text class="tab" variant="20-thin" tag="div">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="(theme === 'light') ? 'true' : 'false'"
+          :class="{'is-active': (theme === 'light')}"
+          @click="switchTheme('light')"
+        >Light theme
+        </button>
+      </p-text>
+      <p-text class="tab" variant="20-thin" tag="div">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="(theme === 'dark') ? 'true' : 'false'"
+          :class="{'is-active': (theme === 'dark')}"
+          @click="switchTheme('dark')"
+        >Dark theme
+        </button>
+      </p-text>
+    </div>
     <div
       class="example"
       :class="{
-        'light': (themeable === false || theme === 'light'),
+        'light': (themeable && theme === 'light' || themeable === false),
         'dark': (themeable && theme === 'dark'),
-        'children-height-fixed': (childElementLayout.height === 'fixed'),
+        'height-fixed': (childElementLayout.height === 'fixed'),
         'spacing-inline': (childElementLayout.spacing === 'inline'),
         'spacing-block': (childElementLayout.spacing === 'block'),
         'spacing-block-small': (childElementLayout.spacing === 'block-small')
       }"
     >
-      <slot :theme="theme"/>
+      <div class="configurator" v-if="isSlotSet('configurator')">
+        <slot name="configurator" :theme="theme"/>
+      </div>
+      <div class="code">
+        <slot :theme="theme"/>
+      </div>
+      <CodeBlock :markup="markup" :theme="theme"/>
     </div>
-    <CodeBlock :markup="markup" :theme="theme"/>
   </div>
 </template>
 
@@ -66,8 +79,12 @@
       this.markup = this.getMarkup();
     }
 
+    public isSlotSet(name: string): boolean {
+      return this.$scopedSlots[name] !== undefined;
+    }
+
     private getMarkup(): string {
-      const el = this.$el.querySelector('.example');
+      const el = this.$el.querySelector('.code');
       if (el) {
         return el.innerHTML;
       }
@@ -79,19 +96,49 @@
 <style scoped lang="scss">
   @import '~@porscheui/ui-kit-js/src/styles/utility/index';
 
-  $color-blue-1: lightskyblue;
-  $color-blue-2: deepskyblue;
-  $color-blue-3: dodgerblue;
-  $color-blue-4: royalblue;
-  $color-highlight: deeppink;
+  .tabs {
+    display: flex;
+
+    .tab {
+      &:not(:last-child) {
+        margin-right: $p-spacing-24;
+      }
+
+      button {
+        display: block;
+        cursor: pointer;
+        border: none;
+        font: inherit;
+        color: $p-color-neutral-grey-6;
+        background-color: transparent;
+        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+        padding-bottom: $p-spacing-4;
+        border-bottom: 3px solid transparent;
+
+        &:hover {
+          color: $p-color-porsche-red;
+        }
+
+        &:focus {
+          outline: 1px solid $p-color-state-focus;
+          outline-offset: 4px;
+        }
+
+        &.is-active {
+          cursor: default;
+          color: $p-color-porsche-black;
+          border-bottom-color: $p-color-porsche-red;
+        }
+      }
+    }
+  }
 
   .example {
     padding: $p-spacing-32;
     overflow-x: auto;
     border: 1px solid transparent;
-    border-bottom: 0;
 
-    // Mode
+    // Theme
     &.light {
       border-color: $p-color-neutral-grey-2;
       background-color: $p-color-porsche-light;
@@ -102,13 +149,15 @@
       background-color: $p-color-surface-dark;
     }
 
-    &.children-height-fixed {
+    // Child Layout "height"
+    &.height-fixed .code {
       > * {
         height: rem(180px);
       }
     }
 
-    &.spacing-inline {
+    // Child layout "spacing"
+    &.spacing-inline .code {
       &::before {
         content: '';
         display: block;
@@ -124,7 +173,7 @@
       }
     }
 
-    &.spacing-block {
+    &.spacing-block .code {
       &::before {
         content: '';
         display: block;
@@ -137,7 +186,7 @@
       }
     }
 
-    &.spacing-block-small {
+    &.spacing-block-small .code {
       &::before {
         content: '';
         display: block;
@@ -149,181 +198,12 @@
       }
     }
 
-    // Flex - web component code example visualization
-    p-flex {
-      // styling to colorize flex items
-      p-flex-item {
-        &:nth-child(1n) {
-          background-color: $color-blue-1;
-        }
-
-        &:nth-child(2n) {
-          background-color: $color-blue-2;
-        }
-
-        &:nth-child(3n) {
-          background-color: $color-blue-3;
-        }
-
-        &:nth-child(4n) {
-          background-color: $color-blue-4;
-        }
-
-        // styling to visualize baseline
-        &[align-self='baseline'] {
-          margin-top: $p-spacing-24;
-        }
-      }
-
-      // styling to visualize align items behaviour
-      &[align-items] {
-        p-flex-item:not([align-self='stretch']) {
-          &:nth-child(1n) {
-            height: 40px;
-          }
-
-          &:nth-child(2n) {
-            height: 80px;
-          }
-
-          &:nth-child(3n) {
-            height: 54px;
-          }
-        }
-      }
-
-      // special case for visualizing gap styling
-      &[gap] {
-        p-flex-item {
-          background-color: transparent !important;
-
-          &:nth-child(1n) p {
-            background-color: $color-blue-1;
-          }
-
-          &:nth-child(2n) p {
-            background-color: $color-blue-2;
-          }
-
-          &:nth-child(3n) p {
-            background-color: $color-blue-3;
-          }
-
-          &:nth-child(4n) p {
-            background-color: $color-blue-4;
-          }
-        }
-      }
-
-      // styling to visualize baseline
-      &[align-items='baseline'] {
-        p-flex-item {
-          margin-top: $p-spacing-24;
-        }
-      }
+    .configurator ~ .code {
+      margin-top: $p-spacing-32;
     }
 
-    // Grid - web component code example visualization
-    p-grid {
-      p-grid-child {
-        > p {
-          padding: $p-spacing-4;
-          background: $color-blue-1;
-        }
-      }
-    }
-
-    // Spacing - code example visualization
-    > .example-spacing-visual {
-      display: inline-flex;
-
-      > div {
-        background-color: $color-blue-1;
-        width: fit-content;
-      }
-    }
-
-    > .example-spacing {
-      display: inline-block;
-      vertical-align: top;
-      background-color: $color-blue-1;
-
-      &.negative {
-        padding: $p-spacing-40;
-      }
-
-      &.negative-responsive {
-        @include p-spacing-d('padding');
-
-        > [class*='p-spacing-'] {
-          width: 2 * $p-spacing-d;
-          height: 2 * $p-spacing-d;
-
-          @include breakpoint('s') {
-            width: 2 * $p-spacing-d-s;
-            height: 2 * $p-spacing-d-s;
-          }
-          @include breakpoint('m') {
-            width: 2 * $p-spacing-d-m;
-            height: 2 * $p-spacing-d-m;
-          }
-          @include breakpoint('l') {
-            width: 2 * $p-spacing-d-l;
-            height: 2 * $p-spacing-d-l;
-          }
-          @include breakpoint('xl') {
-            width: 2 * $p-spacing-d-xl;
-            height: 2 * $p-spacing-d-xl;
-          }
-        }
-      }
-
-      > [class*='p-spacing-'] {
-        position: relative;
-        width: $p-spacing-80;
-        height: $p-spacing-80;
-
-        &::before {
-          content: '';
-          display: block;
-          width: 100%;
-          height: 100%;
-          background-color: $color-blue-2;
-        }
-      }
-    }
-  }
-
-  .tab {
-    display: inline-block;
-
-    &:not(:last-child) {
-      margin-right: $p-spacing-24;
-    }
-  }
-
-  .link {
-    display: block;
-    padding-bottom: $p-spacing-4;
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-    cursor: pointer;
-    font-weight: 200;
-    color: $p-color-neutral-grey-6;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &:hover {
-      color: $p-color-porsche-red;
-    }
-
-    &:focus {
-      outline: 1px solid $p-color-state-focus;
-      outline-offset: 4px;
-    }
-
-    &.is-active {
-      color: $p-color-porsche-black;
-      border-bottom-color: $p-color-porsche-red;
+    .code ~ .code-block {
+      margin-top: $p-spacing-40;
     }
   }
 </style>

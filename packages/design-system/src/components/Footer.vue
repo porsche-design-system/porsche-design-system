@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <p-text type="small">
+    <p-text variant="small" align="center">
       © 2019 Dr. Ing. h.c. F. Porsche AG.
       <br />
       <a href="https://www.porsche.com/international/legal-notice/">Legal notice</a> /
@@ -20,9 +20,3 @@ export default class Footer extends Vue {
   public encodeUrl = encodeUrl;
 }
 </script>
-
-<style scoped lang="scss">
-.footer {
-  text-align: center;
-}
-</style>

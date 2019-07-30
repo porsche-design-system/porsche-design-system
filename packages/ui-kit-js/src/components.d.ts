@@ -12,6 +12,9 @@ import {
 import {
   Components,
 } from './index';
+import {
+  Components as Components1,
+} from './components';
 
 export namespace Components {
   interface PButtonIcon {
@@ -124,39 +127,38 @@ export namespace Components {
   }
   interface PFlex {
     /**
-    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. Corresponds to the "alignContent" css property.
+    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
     */
     'alignContent'?: BreakpointCustomizable<
     'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around'
-    > &
-    string;
+    >;
     /**
     * Defines how the flex items are aligned along the cross axis.
     */
-    'alignItems'?: BreakpointCustomizable<'stretch' | 'start' | 'end' | 'center' | 'baseline'> & string;
+    'alignItems'?: BreakpointCustomizable<'stretch' | 'start' | 'end' | 'center' | 'baseline'>;
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
     */
-    'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> & string;
+    'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
     /**
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
-    'flow'?: BreakpointCustomizable<'block' | 'inline'> & string;
+    'flow'?: BreakpointCustomizable<'block' | 'inline'>;
     /**
     * Defines the gap between contained children.
     */
-    'gap'?: | '0'
-    | '4'
-    | '8'
-    | '16'
-    | '24'
-    | '32'
-    | '40'
-    | '48'
-    | '56'
-    | '64'
-    | '72'
-    | '80'
+    'gap'?: | 0
+    | 4
+    | 8
+    | 16
+    | 24
+    | 32
+    | 40
+    | 48
+    | 56
+    | 64
+    | 72
+    | 80
     | 'a'
     | 'b'
     | 'c'
@@ -169,98 +171,89 @@ export namespace Components {
     */
     'justifyContent'?: BreakpointCustomizable<
     'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-    > &
-    string;
+    >;
     /**
     * If set, overflowing elements will wrap to a new line.
     */
-    'wrap'?: BreakpointCustomizable<'nowrap' | 'wrap' | 'reverse'> & string;
+    'wrap'?: BreakpointCustomizable<'nowrap' | 'wrap' | 'reverse'>;
   }
   interface PFlexItem {
     /**
     * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
     */
-    'alignSelf'?: BreakpointCustomizable<'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'> & string;
+    'alignSelf'?: BreakpointCustomizable<'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'>;
     /**
     * The shorthand property for the combined definition of "shrink", "grow" and "basis"
     */
-    'flex'?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'> & string;
+    'flex'?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'>;
     /**
     * The ability to allow/disallow the flex child to grow.
     */
-    'grow'?: BreakpointCustomizable<'0' | '1'> & string;
+    'grow'?: BreakpointCustomizable<0 | 1>;
     /**
     * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
     */
     'offset'?: BreakpointCustomizable<
     'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'
-    > &
-    string;
+    >;
     /**
     * The ability to allow/disallow the flex child to shrink.
     */
-    'shrink'?: BreakpointCustomizable<'1' | '0'> & string;
+    'shrink'?: BreakpointCustomizable<1 | 0>;
     /**
     * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
     */
     'width'?: BreakpointCustomizable<
     'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
-    > &
-    string;
+    >;
   }
   interface PGrid {
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
     */
-    'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> & string;
+    'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
     /**
     * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with Grid.Child. Also defines the gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
     */
-    'gap'?: BreakpointCustomizable<'normal' | 'zero'> & string;
+    'gap'?: BreakpointCustomizable<'normal' | 'zero'>;
   }
   interface PGridChild {
     /**
     * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
     */
-    'offset'?: BreakpointCustomizable<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11'> &
-    string;
+    'offset'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11> | string;
     /**
     * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
     */
-    'size'?: BreakpointCustomizable<'1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12'> &
-    string;
+    'size'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12> | string;
   }
   interface PHeadline {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
+    /**
+    * Basic text color variations.
+    */
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Headline level/hierarchy.
+    * Sets a custom HTML tag depending of the usage of the headline component.
     */
-    'level'?: '1' | '2' | '3' | '4' | '5' | '6';
+    'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
-    * Adapts the text color when used on dark background.
+    * Style of the text.
     */
-    'theme'?: 'light' | 'dark';
-    /**
-    * The style of the text.
-    */
-    'type'?: | 'large-title'
+    'variant'?: | 'large-title'
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
     | 'headline-4'
     | 'headline-5'
     | 'headline-6';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PIcon {
     /**
@@ -345,6 +338,10 @@ export namespace Components {
   }
   interface PSpinner {
     /**
+    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    */
+    'allyLabel'?: string;
+    /**
     * Predefined spinner sizes.
     */
     'size'?: 'x-small' | 'small' | 'medium' | 'large';
@@ -361,23 +358,19 @@ export namespace Components {
   }
   interface PText {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Sets the text as display: inline.
-    */
-    'inline'?: boolean;
-    /**
-    * Set a custom HTML tag depending of the usage of the text component.
+    * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
@@ -396,23 +389,33 @@ export namespace Components {
     | 'li'
     | 'legend';
     /**
-    * The style of the text.
+    * Style of the text.
     */
-    'type'?: | 'copy'
+    'variant'?: | 'copy'
     | 'small'
     | '12'
     | '16'
     | '18'
     | '20'
+    | '20-thin'
     | '24'
+    | '24-thin'
     | '28'
+    | '28-thin'
     | '30'
+    | '30-thin'
     | '32'
+    | '32-thin'
     | '36'
+    | '36-thin'
     | '42'
+    | '42-thin'
     | '44'
+    | '44-thin'
     | '48'
+    | '48-thin'
     | '52'
+    | '52-thin'
     | '60'
     | '60-thin'
     | '62'
@@ -421,24 +424,28 @@ export namespace Components {
     | '72-thin'
     | '84'
     | '84-thin';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PTextLink {
     /**
-    * Special download attribute to open native Browser download dialog if target url points to a downloadable file.
+    * Basic text color variations.
+    */
+    'color'?: Components.PText['color'];
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
     'download'?: boolean;
     /**
     * Target url to where the component should link to.
     */
-    'href': string;
+    'href'?: string;
     /**
     * The icon shown next to the label.
     */
     'icon'?: string;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
     /**
     * Set a custom HTML tag depending of the usage of the component.
     */
@@ -448,27 +455,19 @@ export namespace Components {
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
-    * Adapts the color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
-    /**
     * The style of the text.
     */
-    'type'?: Components.PText['type'];
+    'variant'?: Components.PText['variant'];
   }
   interface PTextList {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: Components.PText['color'];
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
-    /**
-    * The style of the text list.
-    */
-    'textType'?: Components.PText['type'];
   }
   interface PTextListItem {}
   interface PTextarea {
@@ -768,39 +767,38 @@ declare namespace LocalJSX {
   }
   interface PFlex extends JSXBase.HTMLAttributes<HTMLPFlexElement> {
     /**
-    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. Corresponds to the "alignContent" css property.
+    * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
     */
     'alignContent'?: BreakpointCustomizable<
     'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around'
-    > &
-    string;
+    >;
     /**
     * Defines how the flex items are aligned along the cross axis.
     */
-    'alignItems'?: BreakpointCustomizable<'stretch' | 'start' | 'end' | 'center' | 'baseline'> & string;
+    'alignItems'?: BreakpointCustomizable<'stretch' | 'start' | 'end' | 'center' | 'baseline'>;
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
     */
-    'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> & string;
+    'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
     /**
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
-    'flow'?: BreakpointCustomizable<'block' | 'inline'> & string;
+    'flow'?: BreakpointCustomizable<'block' | 'inline'>;
     /**
     * Defines the gap between contained children.
     */
-    'gap'?: | '0'
-    | '4'
-    | '8'
-    | '16'
-    | '24'
-    | '32'
-    | '40'
-    | '48'
-    | '56'
-    | '64'
-    | '72'
-    | '80'
+    'gap'?: | 0
+    | 4
+    | 8
+    | 16
+    | 24
+    | 32
+    | 40
+    | 48
+    | 56
+    | 64
+    | 72
+    | 80
     | 'a'
     | 'b'
     | 'c'
@@ -813,98 +811,89 @@ declare namespace LocalJSX {
     */
     'justifyContent'?: BreakpointCustomizable<
     'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-    > &
-    string;
+    >;
     /**
     * If set, overflowing elements will wrap to a new line.
     */
-    'wrap'?: BreakpointCustomizable<'nowrap' | 'wrap' | 'reverse'> & string;
+    'wrap'?: BreakpointCustomizable<'nowrap' | 'wrap' | 'reverse'>;
   }
   interface PFlexItem extends JSXBase.HTMLAttributes<HTMLPFlexItemElement> {
     /**
     * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
     */
-    'alignSelf'?: BreakpointCustomizable<'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'> & string;
+    'alignSelf'?: BreakpointCustomizable<'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'>;
     /**
     * The shorthand property for the combined definition of "shrink", "grow" and "basis"
     */
-    'flex'?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'> & string;
+    'flex'?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'>;
     /**
     * The ability to allow/disallow the flex child to grow.
     */
-    'grow'?: BreakpointCustomizable<'0' | '1'> & string;
+    'grow'?: BreakpointCustomizable<0 | 1>;
     /**
     * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
     */
     'offset'?: BreakpointCustomizable<
     'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'
-    > &
-    string;
+    >;
     /**
     * The ability to allow/disallow the flex child to shrink.
     */
-    'shrink'?: BreakpointCustomizable<'1' | '0'> & string;
+    'shrink'?: BreakpointCustomizable<1 | 0>;
     /**
     * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
     */
     'width'?: BreakpointCustomizable<
     'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
-    > &
-    string;
+    >;
   }
   interface PGrid extends JSXBase.HTMLAttributes<HTMLPGridElement> {
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
     */
-    'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> & string;
+    'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
     /**
     * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with Grid.Child. Also defines the gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
     */
-    'gap'?: BreakpointCustomizable<'normal' | 'zero'> & string;
+    'gap'?: BreakpointCustomizable<'normal' | 'zero'>;
   }
   interface PGridChild extends JSXBase.HTMLAttributes<HTMLPGridChildElement> {
     /**
     * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
     */
-    'offset'?: BreakpointCustomizable<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11'> &
-    string;
+    'offset'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11> | string;
     /**
     * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
     */
-    'size'?: BreakpointCustomizable<'1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12'> &
-    string;
+    'size'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12> | string;
   }
   interface PHeadline extends JSXBase.HTMLAttributes<HTMLPHeadlineElement> {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
+    /**
+    * Basic text color variations.
+    */
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Headline level/hierarchy.
+    * Sets a custom HTML tag depending of the usage of the headline component.
     */
-    'level'?: '1' | '2' | '3' | '4' | '5' | '6';
+    'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
-    * Adapts the text color when used on dark background.
+    * Style of the text.
     */
-    'theme'?: 'light' | 'dark';
-    /**
-    * The style of the text.
-    */
-    'type'?: | 'large-title'
+    'variant'?: | 'large-title'
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
     | 'headline-4'
     | 'headline-5'
     | 'headline-6';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PIcon extends JSXBase.HTMLAttributes<HTMLPIconElement> {
     /**
@@ -994,6 +983,10 @@ declare namespace LocalJSX {
   }
   interface PSpinner extends JSXBase.HTMLAttributes<HTMLPSpinnerElement> {
     /**
+    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    */
+    'allyLabel'?: string;
+    /**
     * Predefined spinner sizes.
     */
     'size'?: 'x-small' | 'small' | 'medium' | 'large';
@@ -1010,23 +1003,19 @@ declare namespace LocalJSX {
   }
   interface PText extends JSXBase.HTMLAttributes<HTMLPTextElement> {
     /**
-    * The text alignment of the component.
+    * Text alignment of the component.
     */
     'align'?: 'left' | 'center' | 'right';
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
     'ellipsis'?: boolean;
     /**
-    * Sets the text as display: inline.
-    */
-    'inline'?: boolean;
-    /**
-    * Set a custom HTML tag depending of the usage of the text component.
+    * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
@@ -1045,23 +1034,33 @@ declare namespace LocalJSX {
     | 'li'
     | 'legend';
     /**
-    * The style of the text.
+    * Style of the text.
     */
-    'type'?: | 'copy'
+    'variant'?: | 'copy'
     | 'small'
     | '12'
     | '16'
     | '18'
     | '20'
+    | '20-thin'
     | '24'
+    | '24-thin'
     | '28'
+    | '28-thin'
     | '30'
+    | '30-thin'
     | '32'
+    | '32-thin'
     | '36'
+    | '36-thin'
     | '42'
+    | '42-thin'
     | '44'
+    | '44-thin'
     | '48'
+    | '48-thin'
     | '52'
+    | '52-thin'
     | '60'
     | '60-thin'
     | '62'
@@ -1070,14 +1069,14 @@ declare namespace LocalJSX {
     | '72-thin'
     | '84'
     | '84-thin';
-    /**
-    * Wraps the text, even when it has to break a word.
-    */
-    'wrap'?: boolean;
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**
-    * Special download attribute to open native Browser download dialog if target url points to a downloadable file.
+    * Basic text color variations.
+    */
+    'color'?: Components.PText['color'];
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
     'download'?: boolean;
     /**
@@ -1093,6 +1092,10 @@ declare namespace LocalJSX {
     */
     'onPClick'?: (event: CustomEvent<void>) => void;
     /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
     * Set a custom HTML tag depending of the usage of the component.
     */
     'tag'?: 'span' | 'a';
@@ -1101,27 +1104,19 @@ declare namespace LocalJSX {
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
-    * Adapts the color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
-    /**
     * The style of the text.
     */
-    'type'?: Components.PText['type'];
+    'variant'?: Components.PText['variant'];
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: Components.PText['color'];
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
-    /**
-    * The style of the text list.
-    */
-    'textType'?: Components.PText['type'];
   }
   interface PTextListItem extends JSXBase.HTMLAttributes<HTMLPTextListItemElement> {}
   interface PTextarea extends JSXBase.HTMLAttributes<HTMLPTextareaElement> {

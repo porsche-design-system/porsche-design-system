@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Headline component should render correctly 1`] = `
+<p-headline>
+  Headline
+</p-headline>
+`;
+
+exports[`Headline component should render correctly in variant headline-2 1`] = `
+<p-headline
+  variant="headline-2"
+>
+  Headline
+</p-headline>
+`;

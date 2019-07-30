@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid component should render correctly 1`] = `
+<p-grid>
+  <p-grid-child>
+    Lorem ipsum
+  </p-grid-child>
+</p-grid>
+`;
+
+exports[`Grid component should render correctly in size equals 6 1`] = `
+<p-grid>
+  <p-grid-child
+    size="6"
+  >
+    Lorem ipsum
+  </p-grid-child>
+</p-grid>
+`;

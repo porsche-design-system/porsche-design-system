@@ -22,7 +22,6 @@ The Porsche UI Kit provides a spinner that can be used either stand-alone
 (for example as page loaders) or within components, such as in buttons to
 indicate progress after clicking "save".
 
-
 ---
 
 ## Style variations
@@ -47,9 +46,6 @@ A loading animation should always be a user-friendly helper, not a threat.
 * For larger spinner sizes, you can use any additional size, depending on your needs and the available space.
 * Text must always be placed beneath or on the right side of the loader, keeping a minimum spacing of 16 px between spinner and text.
 
-❌ BEISPIELABBILDUNGEN
-
-
 ---
 
 ## Layout
@@ -57,8 +53,6 @@ Whenever used as an independent item within a page or module, the spinner should
 be placed vertically and horizontally centered within the referring area.
 Within a dedicated component, the placement of the spinner is determined by the
 respective element it replaces or accompanies.
-
-❌ BEISPIELE
 
 ---
 
@@ -102,16 +96,14 @@ Using too much spinners at a time or within a page or application in general
 can also create user frustration. This should be avoided by carefully considering
 where a loader makes sense and which loader type is best suited.
 
-
 ---
 
 ## Related components
 * [Button Regular](#/components/action/button-regular)
-* [Button Icon](#/components/actions/button-icon)
+* [Button Icon](#/components/action/button-icon)
 
 ---
 
 ## Accessibility
 
-* The aria-label "loading" should be used to indicate the loading state.
-* Tabindex should be used to ensure that the loading spinner is found with the keyboard.
+* The ally-label property should be used to indicate the loading state.
