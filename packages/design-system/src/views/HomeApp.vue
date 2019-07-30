@@ -16,8 +16,8 @@
     <article class="intro">
       <p-grid>
         <p-grid-child size='{"base": 12, "m": 4}'>
-          <p-headline type="headline-3" level="1">Porsche UI Kit App</p-headline>
-          <p-text type="24">Design System</p-text>
+          <p-headline variant="headline-3" tag="h1">Porsche UI Kit App</p-headline>
+          <p-text variant="24">Design System</p-text>
           <p-text class="p-spacing-mt-8">
             <router-link to="/app/getting-started/about">Learn more about it</router-link>
           </p-text>

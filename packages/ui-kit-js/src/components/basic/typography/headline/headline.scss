@@ -10,10 +10,38 @@
 }
 
 .#{$p-global-class-prefix}headline {
-  $bem-block: &;
   padding: 0;
   margin: 0;
-  color: $p-color-porsche-black;
+
+  &--variant {
+    &-large-title {
+      @include p-large-title;
+    }
+
+    &-headline-1 {
+      @include p-headline-1;
+    }
+
+    &-headline-2 {
+      @include p-headline-2;
+    }
+
+    &-headline-3 {
+      @include p-headline-3;
+    }
+
+    &-headline-4 {
+      @include p-headline-4;
+    }
+
+    &-headline-5 {
+      @include p-headline-5;
+    }
+
+    &-headline-6 {
+      @include p-headline-5;
+    }
+  }
 
   &--align {
     &-left {
@@ -29,9 +57,18 @@
     }
   }
 
-  &--wrap {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+  &--color {
+    &-inherit {
+      color: inherit;
+    }
+
+    &-porsche-light {
+      color: $p-color-porsche-light;
+    }
+
+    &-porsche-black {
+      color: $p-color-porsche-black;
+    }
   }
 
   &--ellipsis {
@@ -39,38 +76,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  // headlines
-  &--large-title {
-    @include p-large-title;
-  }
-
-  &--headline-1 {
-    @include p-headline-1;
-  }
-
-  &--headline-2 {
-    @include p-headline-2;
-  }
-
-  &--headline-3 {
-    @include p-headline-3;
-  }
-
-  &--headline-4 {
-    @include p-headline-4;
-  }
-
-  &--headline-5 {
-    @include p-headline-5;
-  }
-
-  &--headline-6 {
-    @include p-headline-5;
-  }
-
-  &--theme-dark {
-    color: $p-color-porsche-light;
   }
 }

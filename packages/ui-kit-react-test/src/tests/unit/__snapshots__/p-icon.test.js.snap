@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon component should render correctly 1`] = `<p-icon />`;
+
+exports[`Icon component should render correctly in size large 1`] = `
+<p-icon
+  size="large"
+/>
+`;

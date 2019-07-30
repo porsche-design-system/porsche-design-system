@@ -5,8 +5,8 @@ The pagination is the component of choice primarily to navigate through listed c
 
 ## Basic usage
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+  <template v-slot="{theme}">
+    <p-pagination :theme="theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
   </template>
 </Playground>
 
@@ -17,22 +17,22 @@ To adapt the maximum number of page links for smaller screens for individual bre
 
 ### Page range: auto (default)
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+  <template v-slot="{theme}">
+    <p-pagination :theme="theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
   </template>
 </Playground>
 
 ### Page range: large (desktop)
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="large"></p-pagination>
+  <template v-slot="{theme}">
+    <p-pagination :theme="theme" total-items-count="500" items-per-page="25" active-page="1" page-range="large"></p-pagination>
   </template>
 </Playground>
 
 ### Page range: small (mobile)
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="small"></p-pagination>
+  <template v-slot="{theme}">
+    <p-pagination :theme="theme" total-items-count="500" items-per-page="25" active-page="1" page-range="small"></p-pagination>
   </template>
 </Playground>
 
@@ -42,21 +42,30 @@ To adapt the maximum number of page links for smaller screens for individual bre
 Test pagination behaviour by changing values for total amount of items, items to display per page and number of currently active page.
 
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-input class="p-spacing-mr-16 p-spacing-mb-24" label="Total items count" type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"></p-input>
-    <p-input class="p-spacing-mr-16 p-spacing-mb-24" label="Items per page" type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"></p-input>
-    <p-input ref="activePage" class="p-spacing-mb-24" label="Active page" type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"></p-input>
-    <p-pagination ref="paginationPlayground" :theme="slotProps.theme" :total-items-count="totalItemsCount" :items-per-page="itemsPerPage" :active-page="activePage"></p-pagination>
+  <template v-slot:configurator="{theme}">
+    <label class="p-spacing-mr-16" style="display:inline-block">
+      <p-text tag="span" variant="small" :color="(theme === 'dark') ? 'porsche-light' : 'porsche-black'">Total items count</p-text>
+      <input type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"/>
+    </label>
+    <label class="p-spacing-mr-16" style="display:inline-block">
+      <p-text tag="span" variant="small" :color="(theme === 'dark') ? 'porsche-light' : 'porsche-black'">Items per page</p-text>
+      <input type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"/>
+    </label>
+    <label style="display:inline-block">
+      <p-text tag="span" variant="small" :color="(theme === 'dark') ? 'porsche-light' : 'porsche-black'">Active page</p-text>
+      <input ref="activePage" type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"/>
+    </label>
+  </template>
+  <template v-slot:default="{theme}">
+    <p-pagination ref="paginationPlayground" :theme="theme" :total-items-count="totalItemsCount" :items-per-page="itemsPerPage" :active-page="activePage"></p-pagination>
   </template>
 </Playground>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import { Component, Vue } from 'vue-property-decorator';
   
   @Component
-  export default class PaginationPlayground extends Vue {
-    @Prop({ default: 500 }) public value: number;
-    
+  export default class PlaygroundPagination extends Vue {
     public totalItemsCount:number = 500;
     public itemsPerPage:number = 25;
     public activePage:number = 1;
@@ -64,11 +73,7 @@ Test pagination behaviour by changing values for total amount of items, items to
     mounted(){
       this.$refs.paginationPlayground.addEventListener('pClick', (e, page) => {
         this.activePage = e.detail.page;
-        console.log(e);
       });
     }
-    
-    
-    
   }
 </script>

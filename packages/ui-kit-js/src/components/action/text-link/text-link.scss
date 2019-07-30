@@ -6,26 +6,16 @@
 }
 
 .#{$p-global-class-prefix}text-link {
-  $bem-block: &;
   padding: 0;
   margin: 0;
   text-decoration: none;
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: flex-start;
-  color: inherit;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-  &#{$bem-block}--theme-dark {
-    color: $p-color-porsche-light;
-  }
 
   &:hover {
     color: $p-color-porsche-red;
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-porsche-red;
-    }
   }
 
   &:focus {
@@ -33,9 +23,18 @@
     outline-offset: 4px;
   }
 
-  & p-text {
-    box-sizing: border-box;
-    padding-left: $p-spacing-4;
+  &--color {
+    &-inherit {
+      color: inherit;
+    }
+
+    &-porsche-light {
+      color: $p-color-porsche-light;
+    }
+
+    &-porsche-black {
+      color: $p-color-porsche-black;
+    }
   }
 
   &__icon {
@@ -47,8 +46,8 @@
     }
 
     &--small {
-      width: $p-font-size-12 * 1.666;
-      height: $p-font-size-12 * 1.666;
+      width: $p-font-size-12 * 1.5;
+      height: $p-font-size-12 * 1.5;
     }
 
     &--12 {
@@ -66,52 +65,62 @@
       height: $p-font-size-18 * 1.5;
     }
 
-    &--20 {
+    &--20,
+    &--20-thin {
       width: $p-font-size-20 * 1.5;
       height: $p-font-size-20 * 1.5;
     }
 
-    &--24 {
+    &--24,
+    &--24-thin {
       width: $p-font-size-24 * 1.5;
       height: $p-font-size-24 * 1.5;
     }
 
-    &--28 {
+    &--28,
+    &--28-thin {
       width: $p-font-size-28 * 1.5;
       height: $p-font-size-28 * 1.5;
     }
 
-    &--30 {
+    &--30,
+    &--30-thin {
       width: $p-font-size-30 * 1.5;
       height: $p-font-size-30 * 1.5;
     }
 
-    &--32 {
+    &--32,
+    &--32-thin {
       width: $p-font-size-32 * 1.5;
       height: $p-font-size-32 * 1.5;
     }
 
-    &--36 {
+    &--36,
+    &--36-thin {
       width: $p-font-size-36 * 1.5;
       height: $p-font-size-36 * 1.5;
     }
 
-    &--42 {
+    &--42,
+    &--42-thin {
       width: $p-font-size-42 * 1.5;
       height: $p-font-size-42 * 1.5;
     }
 
-    &--44 {
+    &--44,
+    &--44-thin {
       width: $p-font-size-44 * 1.5;
       height: $p-font-size-44 * 1.5;
     }
 
-    &--48 {
+    &--48,
+    &--48-thin {
       width: $p-font-size-48 * 1.5;
       height: $p-font-size-48 * 1.5;
     }
 
-    &--52 {
+    &--52,
+    &--52-thin {
       width: $p-font-size-52 * 1.5;
       height: $p-font-size-52 * 1.5;
     }
@@ -139,5 +148,9 @@
       width: $p-font-size-84 * 1.5;
       height: $p-font-size-84 * 1.5;
     }
+  }
+
+  &__text {
+    margin-left: $p-spacing-4;
   }
 }
