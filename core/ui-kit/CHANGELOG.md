@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.19.0] - 2019-07-30
+
+* Changed path of webfonts to deliver webfont files globally from Edgecast CDN
+
 ## [0.18.7] - 2019-07-15
 
 * Fixed bug at spacing mixing if used with DartSass compiler [#18](https://github.com/porscheui/porsche-ui-contribution/issues/18)
