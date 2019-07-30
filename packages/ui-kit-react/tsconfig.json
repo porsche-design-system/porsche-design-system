@@ -24,7 +24,7 @@
       "src/**/*.tsx"
     ],
     "exclude": [
-      ["node_modules"]
+      "**/__tests__/**"
     ],
     "compileOnSave": false,
     "buildOnSave": false
