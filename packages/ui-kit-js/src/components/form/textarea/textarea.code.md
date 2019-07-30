@@ -5,17 +5,13 @@
 ### Without value
 
 <Playground>
-  <template v-slot="slotProps">
-    <p-textarea name="some-name" label="Some label"></p-textarea>
-  </template>
+  <p-textarea name="some-name" label="Some label"></p-textarea>
 </Playground>
 
 ### With value
 
 <Playground>
-  <template v-slot="slotProps">
-    <p-textarea name="some-name" value="Some value" label="Some label"></p-textarea>
-  </template>
+  <p-textarea name="some-name" value="Some value" label="Some label"></p-textarea>
 </Playground>
 
 ---
@@ -25,28 +21,22 @@
 #### Disabled
 
 <Playground :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-textarea name="some-name" label="Some label" disabled="true"></p-textarea>
-    <p-textarea name="some-name" value="Some value" label="Some label" disabled="true"></p-textarea>
-  </template>
+  <p-textarea name="some-name" label="Some label" disabled="true"></p-textarea>
+  <p-textarea name="some-name" value="Some value" label="Some label" disabled="true"></p-textarea>
 </Playground>
 
 #### Error
 
 <Playground :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-textarea name="some-name" label="Some label" error="true"></p-textarea>
-    <p-textarea name="some-name" value="Some value" label="Some label" error="true"></p-textarea>
-  </template>
+  <p-textarea name="some-name" label="Some label" error="true"></p-textarea>
+  <p-textarea name="some-name" value="Some value" label="Some label" error="true"></p-textarea>
 </Playground>
 
 #### Disabled + Error
 
 <Playground :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-textarea name="some-name" label="Some label" disabled="true" error="true"></p-textarea>
-    <p-textarea name="some-name" value="Some value" label="Some label" disabled="true" error="true"></p-textarea>
-  </template>
+  <p-textarea name="some-name" label="Some label" disabled="true" error="true"></p-textarea>
+  <p-textarea name="some-name" value="Some value" label="Some label" disabled="true" error="true"></p-textarea>
 </Playground>
 
 ---
@@ -58,7 +48,5 @@ Visualization of edge cases
 #### Long text
 
 <Playground>
-  <template v-slot="slotProps">
-    <p-textarea name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."></p-textarea>
-  </template>
+  <p-textarea name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."></p-textarea>
 </Playground>
