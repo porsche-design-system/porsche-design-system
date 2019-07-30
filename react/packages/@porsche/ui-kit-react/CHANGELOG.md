@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.13.0] - 2019-07-30
+
+-   Update to latest UI Kit Core version to support webfont files loaded from Edgecast CDN
 
 ## [0.12.3] - 2019-07-02
 
