@@ -9,30 +9,30 @@ Buttons used as `<button>` elements to trigger actions.
 ### Basic (default)
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-button-icon :theme="slotProps.theme" />
-    <p-button-icon :theme="slotProps.theme" disabled="true" />
-    <p-button-icon loading="true" :theme="slotProps.theme" />
+  <template v-slot={theme}>
+    <p-button-icon :theme="theme" />
+    <p-button-icon :theme="theme" disabled="true" />
+    <p-button-icon loading="true" :theme="theme" />
   </template>
 </Playground>
 
 ### Ghost
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-button-icon variant="ghost" :theme="slotProps.theme" />
-    <p-button-icon variant="ghost" :theme="slotProps.theme" disabled="true" />
-    <p-button-icon variant="ghost" loading="true" :theme="slotProps.theme" />
+  <template v-slot={theme}>
+    <p-button-icon variant="ghost" :theme="theme" />
+    <p-button-icon variant="ghost" :theme="theme" disabled="true" />
+    <p-button-icon variant="ghost" loading="true" :theme="theme" />
   </template>
 </Playground>
 
 ### Transparent
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-button-icon variant="transparent" :theme="slotProps.theme" />
-    <p-button-icon variant="transparent" :theme="slotProps.theme" disabled="true" />
-    <p-button-icon variant="transparent" loading="true" :theme="slotProps.theme" />
+  <template v-slot={theme}>
+    <p-button-icon variant="transparent" :theme="theme" />
+    <p-button-icon variant="transparent" :theme="theme" disabled="true" />
+    <p-button-icon variant="transparent" loading="true" :theme="theme" />
   </template>
 </Playground>
 
@@ -43,28 +43,28 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 
 #### Basic (default)
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-button-icon href="/lorem/ipsum" :theme="slotProps.theme" />
-    <p-button-icon href="#" disabled="true" :theme="slotProps.theme" />
-    <p-button-icon href="#" loading="true" :theme="slotProps.theme" />
+  <template v-slot={theme}>
+    <p-button-icon href="/lorem/ipsum" :theme="theme" />
+    <p-button-icon href="#" disabled="true" :theme="theme" />
+    <p-button-icon href="#" loading="true" :theme="theme" />
   </template>
 </Playground>
 
 #### Ghost
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-button-icon href="/lorem/ipsum" variant="ghost" :theme="slotProps.theme" />
-    <p-button-icon href="#" variant="ghost" disabled :theme="slotProps.theme" />
-    <p-button-icon href="#" variant="ghost" loading="true" :theme="slotProps.theme" />
+  <template v-slot={theme}>
+    <p-button-icon href="/lorem/ipsum" variant="ghost" :theme="theme" />
+    <p-button-icon href="#" variant="ghost" disabled :theme="theme" />
+    <p-button-icon href="#" variant="ghost" loading="true" :theme="theme" />
   </template>
 </Playground>
 
 #### Transparent
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-button-icon href="/lorem/ipsum" variant="transparent" :theme="slotProps.theme" />
-    <p-button-icon href="#" variant="transparent" disabled :theme="slotProps.theme" />
-    <p-button-icon href="#" variant="transparent" loading="true" :theme="slotProps.theme" />
+  <template v-slot={theme}>
+    <p-button-icon href="/lorem/ipsum" variant="transparent" :theme="theme" />
+    <p-button-icon href="#" variant="transparent" disabled :theme="theme" />
+    <p-button-icon href="#" variant="transparent" loading="true" :theme="theme" />
   </template>
 </Playground>
 
@@ -75,7 +75,7 @@ If another icon needs to be implemented, just replace the default icon with your
 If you need to link to another icon hosted somewhere else, just set the whole icon path to thge `icon` prop.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-button-icon icon="phone" :theme="slotProps.theme" />
+  <template v-slot={theme}>
+    <p-button-icon icon="phone" :theme="theme" />
   </template>
 </Playground>

@@ -5,17 +5,13 @@
 ### Unchecked
 
 <Playground>
-  <template v-slot="slotProps">
-    <p-switch name="some-name" value="some-value"></p-switch>
-  </template>
+  <p-switch name="some-name" value="some-value"></p-switch>
 </Playground>
 
 ### Checked
 
 <Playground>
-  <template v-slot="slotProps">
-    <p-switch name="some-name" value="some-value" checked="true"></p-switch>
-  </template>
+  <p-switch name="some-name" value="some-value" checked="true"></p-switch>
 </Playground>
 
 ---
@@ -25,8 +21,6 @@
 #### Disabled
 
 <Playground :childElementLayout="{spacing: 'inline'}">
-  <template v-slot="slotProps">
-    <p-switch name="some-name" value="some-value" disabled="true"></p-switch>
-    <p-switch name="some-name" value="some-value" checked="true" disabled="true"></p-switch>
-  </template>
+  <p-switch name="some-name" value="some-value" disabled="true"></p-switch>
+  <p-switch name="some-name" value="some-value" checked="true" disabled="true"></p-switch>
 </Playground>

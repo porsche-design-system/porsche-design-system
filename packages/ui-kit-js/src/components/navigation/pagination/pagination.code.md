@@ -5,8 +5,8 @@ The pagination is the component of choice primarily to navigate through listed c
 
 ## Basic usage
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+  <template v-slot="{theme}">
+    <p-pagination :theme="theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
   </template>
 </Playground>
 
@@ -17,22 +17,22 @@ To adapt the maximum number of page links for smaller screens for individual bre
 
 ### Page range: auto (default)
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+  <template v-slot="{theme}">
+    <p-pagination :theme="theme" total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
   </template>
 </Playground>
 
 ### Page range: large (desktop)
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="large"></p-pagination>
+  <template v-slot="{theme}">
+    <p-pagination :theme="theme" total-items-count="500" items-per-page="25" active-page="1" page-range="large"></p-pagination>
   </template>
 </Playground>
 
 ### Page range: small (mobile)
 <Playground :themeable="true">
-  <template v-slot="slotProps">
-    <p-pagination :theme="slotProps.theme" total-items-count="500" items-per-page="25" active-page="1" page-range="small"></p-pagination>
+  <template v-slot="{theme}">
+    <p-pagination :theme="theme" total-items-count="500" items-per-page="25" active-page="1" page-range="small"></p-pagination>
   </template>
 </Playground>
 
@@ -56,8 +56,8 @@ Test pagination behaviour by changing values for total amount of items, items to
       <input ref="activePage" type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"/>
     </label>
   </template>
-  <template v-slot:default="slotProps">
-    <p-pagination ref="paginationPlayground" :theme="slotProps.theme" :total-items-count="totalItemsCount" :items-per-page="itemsPerPage" :active-page="activePage"></p-pagination>
+  <template v-slot:default="{theme}">
+    <p-pagination ref="paginationPlayground" :theme="theme" :total-items-count="totalItemsCount" :items-per-page="itemsPerPage" :active-page="activePage"></p-pagination>
   </template>
 </Playground>
 
