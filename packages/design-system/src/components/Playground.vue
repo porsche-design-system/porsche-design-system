@@ -39,8 +39,8 @@
       <div class="code">
         <slot :theme="theme"/>
       </div>
+      <CodeBlock :markup="markup" :theme="theme"/>
     </div>
-    <CodeBlock :markup="markup" :theme="theme"/>
   </div>
 </template>
 
@@ -137,7 +137,6 @@
     padding: $p-spacing-32;
     overflow-x: auto;
     border: 1px solid transparent;
-    border-bottom: 0;
 
     // Theme
     &.light {
@@ -200,6 +199,10 @@
     }
 
     .configurator ~ .code {
+      margin-top: $p-spacing-32;
+    }
+
+    .code ~ .code-block {
       margin-top: $p-spacing-32;
     }
   }
