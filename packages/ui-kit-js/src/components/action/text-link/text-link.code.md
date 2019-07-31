@@ -123,7 +123,7 @@ a {
 </script>
 
 <style scoped lang="scss">
-  @import '../../../../../../../packages/ui-kit-scss-utils/index';
+  @import '~@porscheui/ui-kit-scss-utils/index';
 
   a {
     text-decoration: none;
