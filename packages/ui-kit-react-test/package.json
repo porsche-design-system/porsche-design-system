@@ -39,7 +39,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test:unit": "react-scripts test --watchAll=false --bail"
+    "test": "react-scripts test --watchAll=false --bail"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
