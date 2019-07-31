@@ -91,38 +91,6 @@ export const config: DesignSystemConfig = {
         props: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list/${empty}text-list.props.md`)
       }
     },
-    Form: {
-      Input: {
-        design: () => import(`@/../../ui-kit-js/src/components/form/input/${empty}input.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/form/input/${empty}input.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/form/input/${empty}input.props.md`)
-      },
-      Textarea: {
-        design: () => import(`@/../../ui-kit-js/src/components/form/textarea/${empty}textarea.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/form/textarea/${empty}textarea.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/form/textarea/${empty}textarea.props.md`)
-      },
-      Select: {
-        design: () => import(`@/../../ui-kit-js/src/components/form/select/${empty}select.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/form/select/${empty}select.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/form/select/${empty}select.props.md`)
-      },
-      Checkbox: {
-        design: () => import(`@/../../ui-kit-js/src/components/form/checkbox/${empty}checkbox.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/form/checkbox/${empty}checkbox.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/form/checkbox/${empty}checkbox.props.md`)
-      },
-      Radio: {
-        design: () => import(`@/../../ui-kit-js/src/components/form/radio/${empty}radio.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/form/radio/${empty}radio.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/form/radio/${empty}radio.props.md`)
-      },
-      Switch: {
-        design: () => import(`@/../../ui-kit-js/src/components/form/switch/${empty}switch.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/form/switch/${empty}switch.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/form/switch/${empty}switch.props.md`)
-      }
-    },
     Feedback: {
       Spinner: {
         design: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.design.md`),
