@@ -12,7 +12,6 @@ describe("Flex component", () => {
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-
   });
 
   it('should render correctly with gap of 16', () => {
@@ -23,7 +22,16 @@ describe("Flex component", () => {
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
 
+  it('should render correctly with responsive direction={{ base: "column", l: "row" }}', () => {
+    const component = renderer.create(
+      <PFlex direction={{ base: "column", l: "row" }}>
+        <PFlexItem>Lorem ipsum</PFlexItem>
+      </PFlex>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
 
