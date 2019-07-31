@@ -25,5 +25,5 @@ export const config: Config = {
       plugins: [autoprefixer()]
     })
   ],
-  globalStyle: 'src/styles/common/index.scss'
+  globalStyle: 'src/styles/index.scss'
 };

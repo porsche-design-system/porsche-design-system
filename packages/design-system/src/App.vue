@@ -52,7 +52,7 @@ main {
 </style>
 
 <style scoped lang="scss">
-@import '~@porscheui/ui-kit-js/src/styles/utility/index';
+@import '~@porscheui/ui-kit-scss-utils/index';
 
 #app {
   overflow-x: hidden;
