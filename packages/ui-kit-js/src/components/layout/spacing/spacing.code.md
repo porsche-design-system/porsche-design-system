@@ -1,7 +1,7 @@
 # Spacing
 
 ## Introduction
-Global CSS utility classes, variables and mixins (for responsive spacings) to add margins (positive and negative) and paddings to elements.
+Global CSS utility classes to add margins (positive and negative) and paddings to elements.
 
 ## Static spacings
 
@@ -176,7 +176,7 @@ Global CSS utility classes, variables and mixins (for responsive spacings) to ad
 --- 
 
 ### Usage
-Static spacings can be used as `padding` or `margin` by a CSS utility class on the element itself or as variable inside SCSS.
+Static spacings can be used as `padding` or `margin` by a CSS utility class on the element itself.
 
 **Given values are:**
 
@@ -204,9 +204,6 @@ Static spacings can be used as `padding` or `margin` by a CSS utility class on t
 * `p-spacing-pr-{v}` => padding-right
 * `p-spacing-pb-{v}` => padding-bottom
 * `p-spacing-pl-{v}` => padding-left
-
-**Possible variable for usage inside SCSS (where {v} is the spacing value):**
-* `$p-spacing-{v};`
 
 ---
 
@@ -372,7 +369,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 --- 
 
 ### Usage
-Responsive spacings can be used to achieve different spacings on predefined major viewport sizes, e.g. to equalize overall whitespace between elements. They can be used as a CSS utility class on the element itself or as a mixin directly in SCSS.
+Responsive spacings can be used to achieve different spacings on predefined major viewport sizes, e.g. to equalize overall whitespace between elements. They can be used as a CSS utility class on the element itself.
 
 **Given values are:**
 
@@ -394,16 +391,6 @@ Responsive spacings can be used to achieve different spacings on predefined majo
 * `p-spacing-pr-{v}` => padding-right
 * `p-spacing-pb-{v}` => padding-bottom
 * `p-spacing-pl-{v}` => padding-left
-
-**Possible mixin for usage inside SCSS (where {v} is the spacing value):**
-* `@include p-spacing-{v}({type}, {direction:optional}, {sign:optional})`
-
-**Examples of responsive spacing mixin (with positive and negative value):**
-The responsive spacing mixin needs up to 3 parameters passed for defining type, direction and sign.
-
-* `@include p-spacing-a('padding')` => positive spacing "a" with padding in all directions
-* `@include p-spacing-b('margin', 'top')` => positive spacing "b" with margin-top direction
-* `@include p-spacing-b('margin', 'top', '-')` => negative spacing "b" with margin-top direction
 
 --- 
 
