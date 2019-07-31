@@ -25,6 +25,7 @@ services:
       - ui-kit-js-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-js/node_modules
       - ui-kit-angular-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-angular/node_modules
       - ui-kit-react-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-react/node_modules
+      - ui-kit-react-test-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-react-test/node_modules
       - ui-kit-vue-node-modules:/opt/porsche-ui-kit-app/packages/ui-kit-vue/node_modules
   ui-kit-deploy:
     build: ./docker/node
@@ -47,6 +48,7 @@ services:
       - ui-kit-js-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-js-node_modules
       - ui-kit-angular-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-angular-node_modules
       - ui-kit-react-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-react-node_modules
+      - ui-kit-react-test-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-react-test-node_modules
       - ui-kit-vue-node-modules:/opt/porsche-ui-kit-volumes/ui-kit-vue-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-ui-kit-volumes/*"
@@ -57,4 +59,5 @@ volumes:
   ui-kit-js-node-modules:
   ui-kit-angular-node-modules:
   ui-kit-react-node-modules:
+  ui-kit-react-test-node-modules:
   ui-kit-vue-node-modules:
