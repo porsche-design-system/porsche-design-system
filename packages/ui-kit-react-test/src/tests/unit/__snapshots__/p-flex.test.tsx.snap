@@ -17,3 +17,18 @@ exports[`Flex component should render correctly with gap of 16 1`] = `
   </p-flex-item>
 </p-flex>
 `;
+
+exports[`Flex component should render correctly with responsive direction={{ base: "column", l: "row" }} 1`] = `
+<p-flex
+  direction={
+    Object {
+      "base": "column",
+      "l": "row",
+    }
+  }
+>
+  <p-flex-item>
+    Lorem ipsum
+  </p-flex-item>
+</p-flex>
+`;
