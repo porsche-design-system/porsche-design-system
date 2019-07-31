@@ -1,9 +1,6 @@
-@import '../variable/index';
-@import './breakpoint.mixin';
+@import '../variables/index';
+@import './breakpoint';
 
-/*
-* responsive spacing
-*/
 @mixin p-spacing-a($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-a;
   @if #{$sign} == '-' {

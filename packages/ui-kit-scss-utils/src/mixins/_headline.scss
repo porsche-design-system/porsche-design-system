@@ -1,7 +1,6 @@
-@import "../variable/index";
-@import "./breakpoint.mixin";
+@import "../variables/index";
+@import "./breakpoint";
 
-// headlines
 @mixin p-large-title {
   font-family: $p-font-primary;
   font-weight: 600;

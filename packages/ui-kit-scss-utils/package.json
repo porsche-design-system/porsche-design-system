@@ -5,7 +5,7 @@
   "description": "Porsche UI SCSS utilities",
   "files": [
     "src/",
-    "index.scss"
+    "_index.scss"
   ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
