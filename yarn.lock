@@ -1994,6 +1994,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-test-renderer@^16.8.3":
+  version "16.8.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react-test-renderer/-/react-test-renderer-16.8.3.tgz#b6ca14d5fe4c742fd6d68ef42d45e3b5c6dd470a"
+  integrity sha1-tsoU1f5MdC/W1o70LUXjtcbdRwo=
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@16.8.23", "@types/react@^16.8.20":
   version "16.8.23"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react/-/react-16.8.23.tgz#ec6be3ceed6353a20948169b6cb4c97b65b97ad2"
