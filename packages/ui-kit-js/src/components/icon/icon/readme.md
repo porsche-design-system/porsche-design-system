@@ -22,9 +22,5 @@
 
  - [p-button-icon](../../action/button-icon)
  - [p-button-regular](../../action/button-regular)
- - [p-checkbox](../../form/checkbox)
- - [p-input](../../form/input)
  - [p-pagination](../../navigation/pagination)
- - [p-select](../../form/select)
- - [p-switch](../../form/switch)
  - [p-text-link](../../action/text-link)

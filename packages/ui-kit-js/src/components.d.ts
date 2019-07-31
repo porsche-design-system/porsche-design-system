@@ -85,13 +85,6 @@ export namespace Components {
     */
     'variant'?: 'highlight' | 'ghost' | 'default';
   }
-  interface PCheckbox {
-    'checked'?: boolean;
-    'disabled'?: boolean;
-    'error'?: boolean;
-    'name'?: string;
-    'value'?: string;
-  }
   interface PColor {
     'colors'?: | 'porsche-black'
     | 'porsche-light'
@@ -277,15 +270,6 @@ export namespace Components {
     */
     'source': string;
   }
-  interface PInput {
-    'disabled'?: boolean;
-    'error'?: boolean;
-    'icon'?: string;
-    'label'?: string;
-    'name'?: string;
-    'type'?: 'text' | 'password' | 'date' | 'time' | 'number' | string;
-    'value'?: string;
-  }
   interface PPagination {
     /**
     * Index of the currently active page.
@@ -324,18 +308,6 @@ export namespace Components {
     */
     'totalItemsCount': number;
   }
-  interface PRadio {
-    'checked'?: boolean;
-    'disabled'?: boolean;
-    'error'?: boolean;
-    'name'?: string;
-    'value'?: string;
-  }
-  interface PSelect {
-    'label'?: string;
-    'name'?: string;
-    'value'?: string;
-  }
   interface PSpinner {
     /**
     * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
@@ -349,12 +321,6 @@ export namespace Components {
     * Adapts the spinner color when used on dark background.
     */
     'theme'?: 'light' | 'dark';
-  }
-  interface PSwitch {
-    'checked'?: boolean;
-    'disabled'?: boolean;
-    'name'?: string;
-    'value'?: string;
   }
   interface PText {
     /**
@@ -470,13 +436,6 @@ export namespace Components {
     'listType'?: 'unordered' | 'ordered';
   }
   interface PTextListItem {}
-  interface PTextarea {
-    'disabled'?: boolean;
-    'error'?: boolean;
-    'label'?: string;
-    'name'?: string;
-    'value'?: string;
-  }
 }
 
 declare global {
@@ -492,12 +451,6 @@ declare global {
   var HTMLPButtonRegularElement: {
     prototype: HTMLPButtonRegularElement;
     new (): HTMLPButtonRegularElement;
-  };
-
-  interface HTMLPCheckboxElement extends Components.PCheckbox, HTMLStencilElement {}
-  var HTMLPCheckboxElement: {
-    prototype: HTMLPCheckboxElement;
-    new (): HTMLPCheckboxElement;
   };
 
   interface HTMLPColorElement extends Components.PColor, HTMLStencilElement {}
@@ -542,40 +495,16 @@ declare global {
     new (): HTMLPIconElement;
   };
 
-  interface HTMLPInputElement extends Components.PInput, HTMLStencilElement {}
-  var HTMLPInputElement: {
-    prototype: HTMLPInputElement;
-    new (): HTMLPInputElement;
-  };
-
   interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {}
   var HTMLPPaginationElement: {
     prototype: HTMLPPaginationElement;
     new (): HTMLPPaginationElement;
   };
 
-  interface HTMLPRadioElement extends Components.PRadio, HTMLStencilElement {}
-  var HTMLPRadioElement: {
-    prototype: HTMLPRadioElement;
-    new (): HTMLPRadioElement;
-  };
-
-  interface HTMLPSelectElement extends Components.PSelect, HTMLStencilElement {}
-  var HTMLPSelectElement: {
-    prototype: HTMLPSelectElement;
-    new (): HTMLPSelectElement;
-  };
-
   interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {}
   var HTMLPSpinnerElement: {
     prototype: HTMLPSpinnerElement;
     new (): HTMLPSpinnerElement;
-  };
-
-  interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {}
-  var HTMLPSwitchElement: {
-    prototype: HTMLPSwitchElement;
-    new (): HTMLPSwitchElement;
   };
 
   interface HTMLPTextElement extends Components.PText, HTMLStencilElement {}
@@ -601,16 +530,9 @@ declare global {
     prototype: HTMLPTextListItemElement;
     new (): HTMLPTextListItemElement;
   };
-
-  interface HTMLPTextareaElement extends Components.PTextarea, HTMLStencilElement {}
-  var HTMLPTextareaElement: {
-    prototype: HTMLPTextareaElement;
-    new (): HTMLPTextareaElement;
-  };
   interface HTMLElementTagNameMap {
     'p-button-icon': HTMLPButtonIconElement;
     'p-button-regular': HTMLPButtonRegularElement;
-    'p-checkbox': HTMLPCheckboxElement;
     'p-color': HTMLPColorElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
@@ -618,17 +540,12 @@ declare global {
     'p-grid-child': HTMLPGridChildElement;
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
-    'p-input': HTMLPInputElement;
     'p-pagination': HTMLPPaginationElement;
-    'p-radio': HTMLPRadioElement;
-    'p-select': HTMLPSelectElement;
     'p-spinner': HTMLPSpinnerElement;
-    'p-switch': HTMLPSwitchElement;
     'p-text': HTMLPTextElement;
     'p-text-link': HTMLPTextLinkElement;
     'p-text-list': HTMLPTextListElement;
     'p-text-list-item': HTMLPTextListItemElement;
-    'p-textarea': HTMLPTextareaElement;
   }
 }
 
@@ -724,13 +641,6 @@ declare namespace LocalJSX {
     * The style variant of the button.
     */
     'variant'?: 'highlight' | 'ghost' | 'default';
-  }
-  interface PCheckbox extends JSXBase.HTMLAttributes<HTMLPCheckboxElement> {
-    'checked'?: boolean;
-    'disabled'?: boolean;
-    'error'?: boolean;
-    'name'?: string;
-    'value'?: string;
   }
   interface PColor extends JSXBase.HTMLAttributes<HTMLPColorElement> {
     'colors'?: | 'porsche-black'
@@ -917,16 +827,6 @@ declare namespace LocalJSX {
     */
     'source'?: string;
   }
-  interface PInput extends JSXBase.HTMLAttributes<HTMLPInputElement> {
-    'disabled'?: boolean;
-    'error'?: boolean;
-    'icon'?: string;
-    'label'?: string;
-    'name'?: string;
-    'onPInput'?: (event: CustomEvent<KeyboardEvent>) => void;
-    'type'?: 'text' | 'password' | 'date' | 'time' | 'number' | string;
-    'value'?: string;
-  }
   interface PPagination extends JSXBase.HTMLAttributes<HTMLPPaginationElement> {
     /**
     * Index of the currently active page.
@@ -969,18 +869,6 @@ declare namespace LocalJSX {
     */
     'totalItemsCount'?: number;
   }
-  interface PRadio extends JSXBase.HTMLAttributes<HTMLPRadioElement> {
-    'checked'?: boolean;
-    'disabled'?: boolean;
-    'error'?: boolean;
-    'name'?: string;
-    'value'?: string;
-  }
-  interface PSelect extends JSXBase.HTMLAttributes<HTMLPSelectElement> {
-    'label'?: string;
-    'name'?: string;
-    'value'?: string;
-  }
   interface PSpinner extends JSXBase.HTMLAttributes<HTMLPSpinnerElement> {
     /**
     * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
@@ -994,12 +882,6 @@ declare namespace LocalJSX {
     * Adapts the spinner color when used on dark background.
     */
     'theme'?: 'light' | 'dark';
-  }
-  interface PSwitch extends JSXBase.HTMLAttributes<HTMLPSwitchElement> {
-    'checked'?: boolean;
-    'disabled'?: boolean;
-    'name'?: string;
-    'value'?: string;
   }
   interface PText extends JSXBase.HTMLAttributes<HTMLPTextElement> {
     /**
@@ -1119,18 +1001,10 @@ declare namespace LocalJSX {
     'listType'?: 'unordered' | 'ordered';
   }
   interface PTextListItem extends JSXBase.HTMLAttributes<HTMLPTextListItemElement> {}
-  interface PTextarea extends JSXBase.HTMLAttributes<HTMLPTextareaElement> {
-    'disabled'?: boolean;
-    'error'?: boolean;
-    'label'?: string;
-    'name'?: string;
-    'value'?: string;
-  }
 
   interface IntrinsicElements {
     'p-button-icon': PButtonIcon;
     'p-button-regular': PButtonRegular;
-    'p-checkbox': PCheckbox;
     'p-color': PColor;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
@@ -1138,17 +1012,12 @@ declare namespace LocalJSX {
     'p-grid-child': PGridChild;
     'p-headline': PHeadline;
     'p-icon': PIcon;
-    'p-input': PInput;
     'p-pagination': PPagination;
-    'p-radio': PRadio;
-    'p-select': PSelect;
     'p-spinner': PSpinner;
-    'p-switch': PSwitch;
     'p-text': PText;
     'p-text-link': PTextLink;
     'p-text-list': PTextList;
     'p-text-list-item': PTextListItem;
-    'p-textarea': PTextarea;
   }
 }
 

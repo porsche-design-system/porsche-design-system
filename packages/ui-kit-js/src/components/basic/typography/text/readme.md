@@ -21,8 +21,4 @@
 ### Used by
 
  - [p-button-regular](../../../action/button-regular)
- - [p-checkbox](../../../form/checkbox)
- - [p-input](../../../form/input)
- - [p-radio](../../../form/radio)
  - [p-text-link](../../../action/text-link)
- - [p-textarea](../../../form/textarea)
