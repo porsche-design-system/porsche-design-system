@@ -1,5 +1,5 @@
-@import "../variable/global";
-@import "strip-units.function";
+@import "../variables/global";
+@import "strip-units";
 
 @function rem($pxval) {
   @if not unitless($pxval) {

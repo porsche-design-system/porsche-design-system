@@ -1,6 +1,5 @@
-@import "./../function/rem.function";
+@import "./../functions/rem";
 
-// static spacings
 $p-spacing-4: rem(4px);
 $p-spacing-8: rem(8px);
 $p-spacing-16: rem(16px);
@@ -13,7 +12,6 @@ $p-spacing-64: rem(64px);
 $p-spacing-72: rem(72px);
 $p-spacing-80: rem(80px);
 
-// responsive spacings
 $p-spacing-a: $p-spacing-4;
 $p-spacing-a-s: $p-spacing-8;
 $p-spacing-a-m: rem(12px);

@@ -43,7 +43,6 @@ $p-breakpoints: (
   }
 }
 
-// generate major breakpoint styles
 @mixin generate-min-major-breakpoints() {
   @each $name, $breakpoint in $p-breakpoints {
     @if ($name == 'xxs') {
@@ -58,7 +57,6 @@ $p-breakpoints: (
   }
 }
 
-// generate max major breakpoint styles
 @mixin generate-max-major-breakpoints() {
   @each $name, $breakpoint in $p-breakpoints {
     @if ($name != 'xxs') {
