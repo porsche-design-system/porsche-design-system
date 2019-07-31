@@ -59,17 +59,6 @@ export class PButtonRegular {
 }
 proxyInputs(PButtonRegular, ['disabled', 'href', 'icon', 'loading', 'small', 'theme', 'type', 'variant']);
 
-export declare interface PCheckbox extends Components.PCheckbox {}
-@Component({ selector: 'p-checkbox', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['checked', 'disabled', 'error', 'name', 'value'] })
-export class PCheckbox {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-proxyInputs(PCheckbox, ['checked', 'disabled', 'error', 'name', 'value']);
-
 export declare interface PColor extends Components.PColor {}
 @Component({ selector: 'p-color', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['colors', 'text'] })
 export class PColor {
@@ -147,19 +136,6 @@ export class PIcon {
 }
 proxyInputs(PIcon, ['ariaLabel', 'color', 'lazy', 'size', 'source']);
 
-export declare interface PInput extends Components.PInput {}
-@Component({ selector: 'p-input', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'error', 'icon', 'label', 'name', 'type', 'value'] })
-export class PInput {
-  pInput!: EventEmitter<CustomEvent>;
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pInput']);
-  }
-}
-proxyInputs(PInput, ['disabled', 'error', 'icon', 'label', 'name', 'type', 'value']);
-
 export declare interface PPagination extends Components.PPagination {}
 @Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'] })
 export class PPagination {
@@ -173,28 +149,6 @@ export class PPagination {
 }
 proxyInputs(PPagination, ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount']);
 
-export declare interface PRadio extends Components.PRadio {}
-@Component({ selector: 'p-radio', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['checked', 'disabled', 'error', 'name', 'value'] })
-export class PRadio {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-proxyInputs(PRadio, ['checked', 'disabled', 'error', 'name', 'value']);
-
-export declare interface PSelect extends Components.PSelect {}
-@Component({ selector: 'p-select', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['label', 'name', 'value'] })
-export class PSelect {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-proxyInputs(PSelect, ['label', 'name', 'value']);
-
 export declare interface PSpinner extends Components.PSpinner {}
 @Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'size', 'theme'] })
 export class PSpinner {
@@ -205,17 +159,6 @@ export class PSpinner {
   }
 }
 proxyInputs(PSpinner, ['allyLabel', 'size', 'theme']);
-
-export declare interface PSwitch extends Components.PSwitch {}
-@Component({ selector: 'p-switch', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['checked', 'disabled', 'name', 'value'] })
-export class PSwitch {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-proxyInputs(PSwitch, ['checked', 'disabled', 'name', 'value']);
 
 export declare interface PText extends Components.PText {}
 @Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
@@ -261,14 +204,3 @@ export class PTextListItem {
     this.el = r.nativeElement;
   }
 }
-
-export declare interface PTextarea extends Components.PTextarea {}
-@Component({ selector: 'p-textarea', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'error', 'label', 'name', 'value'] })
-export class PTextarea {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-proxyInputs(PTextarea, ['disabled', 'error', 'label', 'name', 'value']);
