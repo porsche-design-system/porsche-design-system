@@ -42,29 +42,3 @@ $p-breakpoints: (
     }
   }
 }
-
-@mixin generate-min-major-breakpoints() {
-  @each $name, $breakpoint in $p-breakpoints {
-    @if ($name == 'xxs') {
-      @content;
-    } @else {
-      @include breakpoint($breakpoint) {
-        &-#{$name} {
-          @content;
-        }
-      }
-    }
-  }
-}
-
-@mixin generate-max-major-breakpoints() {
-  @each $name, $breakpoint in $p-breakpoints {
-    @if ($name != 'xxs') {
-      @include breakpoint('xxs', $name) {
-        &-#{$name} {
-          @content;
-        }
-      }
-    }
-  }
-}

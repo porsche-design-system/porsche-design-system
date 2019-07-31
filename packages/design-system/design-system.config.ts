@@ -44,7 +44,13 @@ export const config: DesignSystemConfig = {
       'Browser Compatibility': () => import(`@/pages/${empty}browser-compatibility.md`),
       'Quality Criteria': () => import(`@/pages/${empty}quality-criteria.md`),
       'Accessibility Criteria': () => import(`@/pages/${empty}accessibility.md`)
-    }
+    },
+    'Scss Utils': {
+      Introduction: () => import(`@/pages/${empty}introduction.md`),
+      Variables: () => import(`@/pages/${empty}variables.md`),
+      Mixins: () => import(`@/pages/${empty}mixins.md`),
+      Functions: () => import(`@/pages/${empty}functions.md`),
+    },
   },
   stories: {
     Basic: {
