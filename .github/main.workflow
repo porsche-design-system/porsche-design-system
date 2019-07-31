@@ -73,7 +73,7 @@ action "Test Snapshot: UI Kit React Test" {
 }
 
 action "Build" {
-  needs = ["Lint: Design System", "Test Unit: Design System", "Test E2E: Design System", "Test VRT: Design System"]
+  needs = ["Lint: Design System", "Test Unit: Design System", "Test E2E: Design System", "Test VRT: Design System", "Test Snapshot: UI Kit React Test"]
   uses = "./docker/node/"
   runs = ["run-build"]
 }
