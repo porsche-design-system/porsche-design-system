@@ -49,7 +49,8 @@
 ---
 
 ## Spacing
-Also checkout pre-compiled [CSS margin/padding spacing classes](#/components/layout/spacing#code).
+
+**Note:** Also checkout pre-compiled [CSS margin/padding spacing classes](#/components/layout/spacing#code).
 
 Given values are:  
 `0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
