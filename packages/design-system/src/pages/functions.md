@@ -1,8 +1,8 @@
 # Functions
 
 ## px to rem converter
-Converts a pixel value into a root em (rem) value. The base font-size for rem calculation is
-set to 16px by default.
+Converts a pixel value into a root em (rem) value. The base font size for rem calculation is
+set to 16 px by default.
 
 #### Example
 ```

@@ -1,6 +1,6 @@
 # Mixins
 
-## Breakpoint / Media Query
+## Breakpoint / Media query
 Predefined breakpoints can be easily used like in following examples.  
 
 Available breakpoints:  
@@ -60,7 +60,7 @@ div {
 
 ## Spacing
 
-**Note:** Also checkout pre-compiled [CSS margin/padding spacing classes](#/components/layout/spacing#code).
+**Note:** Make sure to also check out the pre-compiled [CSS margin/padding spacing classes](#/components/layout/spacing#code).
 
 Given values are:  
 `a | b | c | d | e | f | g`
