@@ -212,7 +212,7 @@ const App: React.FC = () => {
               <PSpacing marginTop={24}>
                 <PHeadline variant="headline-4">Margin top deferred to children</PHeadline>
               </PSpacing>
-              <PSpacing marginTop={24}>
+              <PSpacing marginTop={24} wrap>
                 <PHeadline variant="headline-4">Margin top wrapped with div</PHeadline>
               </PSpacing>
             </PFlexItem>
