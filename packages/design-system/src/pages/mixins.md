@@ -60,7 +60,7 @@ div {
 
 ## Spacing
 
-Also checkout pre-compiled [CSS margin/padding spacing classes](#/components/layout/spacing#code).
+**Note:** Also checkout pre-compiled [CSS margin/padding spacing classes](#/components/layout/spacing#code).
 
 Given values are:  
 `a | b | c | d | e | f | g`
@@ -116,7 +116,7 @@ div {
 
 ## Typography
 
-For font-styling it's recommended to use [`<p-headline>`](#/components/basic/typography#code)/[`<p-text>`](#/components/basic/typography#code) component.
+**Note:** For font-styling it's recommended to use [`<p-headline>`](#/components/basic/typography#code)/[`<p-text>`](#/components/basic/typography#code) component.
 
 ### Headline
 
