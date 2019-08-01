@@ -80,7 +80,7 @@ export class ButtonRegular {
     );
   }
 
-  private onClick(event): void {
+  private onClick(event: any): void {
     this.pClick.emit(event);
 
     if (!this.href && this.type === 'submit' && hasShadowDom(this.element)) {
@@ -99,11 +99,11 @@ export class ButtonRegular {
     }
   }
 
-  private onFocus(event): void {
+  private onFocus(event: any): void {
     this.pFocus.emit(event);
   }
 
-  private onBlur(event): void {
+  private onBlur(event: any): void {
     this.pBlur.emit(event);
   }
 
