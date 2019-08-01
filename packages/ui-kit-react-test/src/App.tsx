@@ -1,5 +1,5 @@
 import React from 'react';
-import { PGrid, PGridChild, PFlex, PFlexItem, PHeadline, PText, PButtonRegular, PButtonIcon, PTextLink, PTextList, PTextListItem, PSpinner, PIcon, PPagination } from '@porscheui/ui-kit-react';
+import { PGrid, PGridChild, PFlex, PSpacing, PFlexItem, PHeadline, PText, PButtonRegular, PButtonIcon, PTextLink, PTextList, PTextListItem, PSpinner, PIcon, PPagination } from '@porscheui/ui-kit-react';
 import '@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css';
 import './App.css';
 
@@ -192,6 +192,29 @@ const App: React.FC = () => {
           <PFlex gap={16}>
             <PFlexItem>
               <PPagination itemsPerPage={20} totalItemsCount={500} onPClick={(e) => console.log(e)} />
+            </PFlexItem>
+          </PFlex>
+        </PGridChild>
+      </PGrid>
+      <hr className="p-spacing-mt-32 p-spacing-mb-0" />
+      <PGrid class="p-spacing-mt-32">
+        <PGridChild size="11" offset="1">
+          <PHeadline variant="headline-2">Custom Components</PHeadline>
+        </PGridChild>
+      </PGrid>
+      <PGrid class="p-spacing-mt-32">
+        <PGridChild size="3" offset="1">
+          <PHeadline variant="headline-4">Spacing</PHeadline>
+        </PGridChild>
+        <PGridChild size="8">
+          <PFlex gap={16}>
+            <PFlexItem>
+              <PSpacing marginTop={24}>
+                <PHeadline variant="headline-4">Margin top deferred to children</PHeadline>
+              </PSpacing>
+              <PSpacing marginTop={24}>
+                <PHeadline variant="headline-4">Margin top wrapped with div</PHeadline>
+              </PSpacing>
             </PFlexItem>
           </PFlex>
         </PGridChild>
