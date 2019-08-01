@@ -4,6 +4,10 @@ import { eventManager } from "./eventManager"
 import { ToastProps } from "./Toast"
 
 export interface ToastOptions {
+    /**
+     * The time in milliseconds after which the toast disappears automatically.
+     * Set it to 0 if the toast should stay visible until the user clicks it.
+     */
     timeout?: number
 }
 
@@ -60,7 +64,7 @@ export class ToastManager extends React.PureComponent {
             toasts: [...this.state.toasts, toast]
         })
 
-        if (opts.timeout !== undefined) {
+        if (opts.timeout !== undefined && opts.timeout > 0) {
             setTimeout(() => this.handleToastDelete(toast.id), opts.timeout)
         }
     }
