@@ -1,9 +1,48 @@
-@import '../variable/index';
-@import './breakpoint.mixin';
+@import '../variables/index';
+@import './breakpoint';
 
-/*
-* responsive spacing
-*/
+$p-spacing-a: $p-spacing-4;
+$p-spacing-a-s: $p-spacing-8;
+$p-spacing-a-m: rem(12px);
+$p-spacing-a-l: $p-spacing-16;
+$p-spacing-a-xl: rem(20px);
+
+$p-spacing-b: $p-spacing-8;
+$p-spacing-b-s: $p-spacing-16;
+$p-spacing-b-m: $p-spacing-24;
+$p-spacing-b-l: $p-spacing-32;
+$p-spacing-b-xl: $p-spacing-40;
+
+$p-spacing-c: $p-spacing-16;
+$p-spacing-c-s: $p-spacing-24;
+$p-spacing-c-m: $p-spacing-32;
+$p-spacing-c-l: $p-spacing-40;
+$p-spacing-c-xl: $p-spacing-48;
+
+$p-spacing-d: $p-spacing-24;
+$p-spacing-d-s: $p-spacing-32;
+$p-spacing-d-m: $p-spacing-40;
+$p-spacing-d-l: $p-spacing-48;
+$p-spacing-d-xl: $p-spacing-56;
+
+$p-spacing-e: $p-spacing-32;
+$p-spacing-e-s: $p-spacing-40;
+$p-spacing-e-m: $p-spacing-48;
+$p-spacing-e-l: $p-spacing-56;
+$p-spacing-e-xl: $p-spacing-64;
+
+$p-spacing-f: $p-spacing-40;
+$p-spacing-f-s: $p-spacing-48;
+$p-spacing-f-m: $p-spacing-56;
+$p-spacing-f-l: $p-spacing-64;
+$p-spacing-f-xl: $p-spacing-72;
+
+$p-spacing-g: $p-spacing-48;
+$p-spacing-g-s: $p-spacing-56;
+$p-spacing-g-m: $p-spacing-64;
+$p-spacing-g-l: $p-spacing-72;
+$p-spacing-g-xl: $p-spacing-80;
+
 @mixin p-spacing-a($type: 'margin', $direction: null, $sign: null) {
   $spacing-value: $p-spacing-a;
   @if #{$sign} == '-' {
