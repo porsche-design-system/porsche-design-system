@@ -83,7 +83,7 @@ All button types can be rendered in a smaller variant. All properties of the reg
 
 ## Button regular with specific icon
 If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property.
-If you need to link to another icon hosted somewhere else, just set the whole icon path to thge `icon` prop.
+If you need to link to another icon hosted somewhere else, just set the whole icon path to the `icon` prop.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
