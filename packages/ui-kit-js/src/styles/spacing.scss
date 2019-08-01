@@ -1,4 +1,4 @@
-@import '../utility/index';
+@import '../../../../packages/ui-kit-scss-utils/index';
 
 /**
  * static spacings vars for iterating SASS function
@@ -17,6 +17,32 @@ $p-spacings: (
   '72': $p-spacing-72,
   '80': $p-spacing-80
 );
+
+@mixin generate-min-major-breakpoints() {
+  @each $name, $breakpoint in $p-breakpoints {
+    @if ($name == 'xxs') {
+      @content;
+    } @else {
+      @include breakpoint($breakpoint) {
+        &-#{$name} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-max-major-breakpoints() {
+  @each $name, $breakpoint in $p-breakpoints {
+    @if ($name != 'xxs') {
+      @include breakpoint('xxs', $name) {
+        &-#{$name} {
+          @content;
+        }
+      }
+    }
+  }
+}
 
 /*
  * margin spacings

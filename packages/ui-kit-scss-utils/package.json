@@ -1,0 +1,37 @@
+{
+  "name": "@porscheui/ui-kit-scss-utils",
+  "version": "1.0.0-alpha.1",
+  "scope": "@porscheui",
+  "description": "Porsche UI SCSS utilities",
+  "files": [
+    "src/",
+    "_index.scss"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Oliver Hook <oliver.hook@mhp.com>"
+  ],
+  "keywords": [
+    "porsche",
+    "ui",
+    "scss",
+    "utils",
+    "utilities"
+  ],
+  "homepage": "https://ui.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+  },
+  "publishConfig": {
+    "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+  },
+  "scripts": {
+    "clean": "rm -rf ./node_modules"
+  },
+  "license": "SEE LICENSE IN https://ui.porsche.com"
+}

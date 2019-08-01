@@ -1,14 +1,11 @@
-@import "./../function/rem.function";
+@import "./../functions/rem";
 
-// font families
 $p-font-primary: "Porsche Next", "Arial Narrow", Arial, sans-serif;
 
-// font weights
 $p-font-weight-thin: 200;
 $p-font-weight-regular: 400;
 $p-font-weight-bold: 600;
 
-// font sizes
 $p-font-size-12: rem(12px);
 $p-font-size-16: rem(16px);
 $p-font-size-18: rem(18px);

@@ -1,6 +1,5 @@
-@import "../variable/index";
+@import "../variables/index";
 
-// copy text
 @mixin p-text-copy {
   font-family: $p-font-primary;
   font-weight: $p-font-weight-regular;
@@ -15,7 +14,6 @@
   line-height: 1.5;
 }
 
-// generic text
 @mixin p-text-generic($weight: $p-font-weight-regular, $size: $p-font-size-16) {
   font-family: $p-font-primary;
   font-weight: $weight;
