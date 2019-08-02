@@ -5,7 +5,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class NotFound extends Vue {
-  private async created(): Promise<void> {
+  private created(): void {
     this.$router.replace('/');
   }
 }

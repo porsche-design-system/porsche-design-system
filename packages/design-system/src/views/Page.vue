@@ -21,15 +21,15 @@ export default class Page extends Vue {
   public components: any[] = [];
 
   private get area(): string {
-    return (this.$route.params.area || '').toLowerCase();
+    return this.$route.params.area.toLowerCase();
   }
 
   private get category(): string {
-    return decodeUrl((this.$route.params.category || ''));
+    return decodeUrl(this.$route.params.category);
   }
 
   private get page(): string {
-    return decodeUrl((this.$route.params.page || ''));
+    return decodeUrl(this.$route.params.page);
   }
 
   private get config(): Pages {
@@ -62,11 +62,11 @@ export default class Page extends Vue {
         this.components.push((await page()).default);
       }
     } catch (e) {
-      await this.redirect();
+      this.redirect();
     }
   }
 
-  private async redirect(): Promise<void> {
+  private redirect(): void {
     this.$router.replace({name: '404'});
   }
 }
