@@ -38,8 +38,9 @@ export default new Router({
       component: () => import('./views/Custom.vue')
     },
     {
-      path: '*',
-      name: 'not-found',
+      path: '/404',
+      alias: '*',
+      name: '404',
       component: () => import('./views/NotFound.vue')
     }
   ],
