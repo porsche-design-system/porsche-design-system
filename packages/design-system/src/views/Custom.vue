@@ -16,6 +16,14 @@ import Markdown from '@/components/Markdown.vue';
 export default class Custom extends Vue {
   private component: any = null;
 
+  get area(): string {
+    return this.$route.params.area.toLowerCase();
+  }
+
+  get page(): string {
+    return this.$route.params.page.toLowerCase();
+  }
+
   @Watch('$route')
   private async onRouteChange(): Promise<void> {
     await this.updateComponent();
@@ -26,23 +34,11 @@ export default class Custom extends Vue {
   }
 
   private async updateComponent(): Promise<void> {
-    if (this.isPageExistent()) {
-      await this.loadPage();
-    } else {
-      await this.redirect();
+    try {
+      this.component = (await (() => import(`@/pages/${this.area}/${this.page}.md`))()).default
+    } catch (e) {
+      this.$router.replace('/');
     }
-  }
-
-  private isPageExistent(): boolean {
-    return ['markdown', 'license'].includes(this.$route.params.page);
-  }
-
-  private async loadPage(): Promise<void> {
-    this.component = (await (() => import(`@/pages/web/${this.$route.params.page}.md`))()).default;
-  }
-
-  private async redirect(): Promise<void> {
-    this.$router.replace('/');
   }
 }
 </script>
