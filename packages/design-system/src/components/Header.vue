@@ -14,7 +14,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import Marque from '@/components/Marque.vue';
-import { encodeUrl } from '@/services/utils';
+import {decodeUrl, encodeUrl} from '@/services/utils';
 // import {version} from '@porscheui/ui-kit-js/package.json';
 
 @Component({
@@ -23,11 +23,24 @@ import { encodeUrl } from '@/services/utils';
   }
 })
 export default class Header extends Vue {
-  @Prop({ default: '' }) public area?: string;
   public encodeUrl = encodeUrl;
 
   get version() {
-    return this.area === 'web' ? '1.0.0-alpha.2' : '1.0.0-alpha.1';
+    return this.area === 'web' ? '1.0.0-alpha.3' : '1.0.0-alpha.1';
+  }
+
+  get area(): string {
+    let area = '';
+    if (this.$route.meta.area) {
+      area = decodeUrl(this.$route.meta.area).toLowerCase();
+    } else if (this.$route.params.area) {
+      area = decodeUrl(this.$route.params.area).toLowerCase();
+    }
+
+    if (['web', 'app'].includes(area)) {
+      return area;
+    }
+    return 'web';
   }
 }
 </script>

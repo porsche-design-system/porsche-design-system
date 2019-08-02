@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul class="list">
-      <li v-for="(pages, category, index) in config.pages[area]" :key="index">
+      <li v-for="(pages, category, index) in config.pages" :key="index">
         <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
@@ -15,11 +15,11 @@
         </ul>
       </li>
     </ul>
-    <Divider v-if="area === 'web'" spacing="small" />
-    <p-headline v-if="area === 'web'" variant="headline-4" tag="h2">Components</p-headline>
-    <ul class="list" v-if="area === 'web'">
+    <Divider v-if="isAreaWeb()" spacing="small" />
+    <p-headline v-if="isAreaWeb()" variant="headline-4" tag="h2">Components</p-headline>
+    <ul class="list" v-if="isAreaWeb()">
       <li
-        v-for="(stories, category, index) in config.stories[area]"
+        v-for="(stories, category, index) in config.stories"
         :key="index"
         v-if="featureToggle('Q2/2019 Components') || ['Basic', 'Layout'].includes(category)"
       >
@@ -45,8 +45,9 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { config } from '@/../design-system.config';
-import { encodeUrl, featureToggle } from '@/services/utils';
+import {config as webConfig, DesignSystemWebConfig} from '@/../design-system.web.config';
+import {config as appConfig, DesignSystemAppConfig} from '@/../design-system.app.config';
+import {decodeUrl, encodeUrl, featureToggle} from '@/services/utils';
 import Divider from '@/components/Divider.vue';
 
 @Component({
@@ -55,10 +56,30 @@ import Divider from '@/components/Divider.vue';
   }
 })
 export default class Sidebar extends Vue {
-  @Prop({ default: 'web' }) public area?: string;
-  public config = config;
   public encodeUrl = encodeUrl;
   public featureToggle = featureToggle;
+
+  get area(): string {
+    let area = '';
+    if (this.$route.meta.area) {
+      area = decodeUrl(this.$route.meta.area).toLowerCase();
+    } else if (this.$route.params.area) {
+      area = decodeUrl(this.$route.params.area).toLowerCase();
+    }
+
+    if (['web', 'app'].includes(area)) {
+      return area;
+    }
+    return 'web';
+  }
+
+  get config(): DesignSystemWebConfig | DesignSystemAppConfig {
+    return this.area === 'app' ? appConfig : webConfig;
+  }
+
+  isAreaWeb(): boolean {
+    return this.area === 'web';
+  }
 }
 </script>
 
