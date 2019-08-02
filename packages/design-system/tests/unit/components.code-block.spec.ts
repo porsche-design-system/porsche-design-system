@@ -129,6 +129,23 @@ describe('CodeBlock.vue', () => {
     );
   });
 
+  it('should remove default web components attributes from code block', () => {
+    const wrapper = shallowMount(CodeBlock, {
+      propsData: {
+        markup:
+`<p-some-tag theme="light" some-attribute="some value" class="some-class"></p-some-tag>
+<p-some-tag theme="light"></p-some-tag>
+<p-some-tag theme="dark"></p-some-tag>`
+      }
+    });
+
+    expect(wrapper.find('code').text()).toBe(
+`<p-some-tag some-attribute="some value" class="some-class"></p-some-tag>
+<p-some-tag></p-some-tag>
+<p-some-tag theme="dark"></p-some-tag>`
+    );
+  });
+
   it('should remove Stencil JS css classes from code block', () => {
     const wrapper = shallowMount(CodeBlock, {
       propsData: {

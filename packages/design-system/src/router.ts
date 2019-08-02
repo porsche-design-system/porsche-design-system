@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HomeWeb from './views/HomeWeb.vue';
 
 Vue.use(Router);
 
@@ -8,14 +7,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'redirect',
+      name: 'home',
       redirect: '/web'
     },
     {
       path: '/web',
       name: 'home-web',
       meta: { area: 'web' },
-      component: HomeWeb
+      component: () => import('./views/HomeWeb.vue')
     },
     {
       path: '/app',
@@ -29,7 +28,7 @@ export default new Router({
       component: () => import('./views/Page.vue')
     },
     {
-      path: '/:area/components/:category/:story',
+      path: '/web/components/:category/:story',
       name: 'story',
       component: () => import('./views/Story.vue')
     },
