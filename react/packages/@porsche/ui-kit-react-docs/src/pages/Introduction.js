@@ -83,31 +83,44 @@ const Introduction = () => {
 
                 <Spacing marginTop={18}>
                     <Text>
-                        1. Create your React App (we recommend using <b>Create React App</b>)<br />
-                        2. Import necessary styles to your _index.scss_ file.
+                        1. Create your React App (we recommend using <b>Create React App</b> with node-sass package)
+                        <br />
+                        2. Reference UI Kit package in your package.json{" "}
+                        <code>"@porsche/ui-kit-react": "^{reactpkg.version}"</code>
+                        <br />
+                        3. Set repository path in your .npmrc file:{" "}
+                        <code>@porsche:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/</code>
+                        <br />
+                        4. Import necessary styles to your _index.scss_ file.
+                        <br />
+                        5. Import and use React components as usual
                     </Text>
                 </Spacing>
-
+                <Spacing marginTop={12}>
+                    <Text>
+                        <b>Hint:</b> There might be some issues with scss compiler in latest versions of
+                        create-react-app. If you have error message like this:
+                        <br />
+                        <br />
+                        <code>Module not found: Can't resolve './pag-iconfont/pag-iconfont.eot?iaj4st'</code>
+                        <br />
+                        <br />
+                        <b>
+                            You can solve it by overwriting the path variable to the icon-font files by setting it
+                            before your imports:
+                        </b>
+                    </Text>
+                </Spacing>
                 <Spacing marginTop={36}>
                     <code>
+                        $icon-resource-base-path: "~@porsche/ui-kit-react/src/base/icon/pag-iconfont";
+                        <br />
                         @import "~@porsche/ui-kit-react/src/variables";
                         <br />
                         @import "~@porsche/ui-kit-react/src/common";
                         <br />
                         @import "~@porsche/ui-kit-react/src/index";
                     </code>
-                </Spacing>
-
-                <Spacing marginTop={36}>
-                    <Text>
-                        3. Reference UI Kit package in your package.json{" "}
-                        <code>"@porsche/ui-kit-react": "^{reactpkg.version}"</code>
-                        <br />
-                        4. Set repository path in your .npmrc file:{" "}
-                        <code>@porsche:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/</code>
-                        <br />
-                        5. Import and use React components as usual
-                    </Text>
                 </Spacing>
             </Spacing>
         </article>
