@@ -1,22 +1,16 @@
 export const encodeUrl = (param: string): string => {
-  if (param) {
-    return param.toLowerCase().replace(/\s+/g, '-');
-  }
-
-  return '';
+  return (param || '')
+    .toLowerCase()
+    .replace(/\s+/g, '-');
 };
 
 export const decodeUrl = (param: string): string => {
-  if (param) {
-    return param
-      .toLowerCase()
-      .replace(/-+/g, ' ')
-      .split(' ')
-      .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-      .join(' ');
-  }
-
-  return '';
+  return (param || '')
+    .toLowerCase()
+    .replace(/-+/g, ' ')
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
 };
 
 export type Feature = 'Q2/2019 Components';
