@@ -1,11 +1,7 @@
+import {Pages} from '@/interface';
+
 export interface DesignSystemAppConfig {
   pages: Pages;
-}
-
-interface Pages {
-  [category: string]: {
-    [page: string]: any | any[];
-  };
 }
 
 const empty = '';

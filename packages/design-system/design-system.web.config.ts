@@ -1,23 +1,8 @@
+import {Pages, Stories} from '@/interface';
+
 export interface DesignSystemWebConfig {
   pages: Pages;
   stories: Stories;
-}
-
-interface Pages {
-  [category: string]: {
-    [page: string]: any | any[];
-  };
-}
-
-interface Stories {
-  [category: string]: {
-    [story: string]: {
-      design?: any | any[];
-      code?: any | any[];
-      props?: any | any[];
-      vrt?: any | any[];
-    };
-  };
 }
 
 const empty = '';
