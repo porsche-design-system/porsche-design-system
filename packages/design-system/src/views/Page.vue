@@ -33,7 +33,11 @@ export default class Page extends Vue {
   }
 
   private get config(): Pages {
-    return this.area === 'app' ? appConfig.pages : webConfig.pages;
+    switch (this.area) {
+      case 'app': return appConfig.pages;
+      case 'web': return webConfig.pages;
+      default: return webConfig.pages;
+    }
   }
 
   @Watch('$route')
@@ -51,8 +55,8 @@ export default class Page extends Vue {
     try {
       const page = this.config[this.category][this.page];
       if (typeof page === 'object') {
-        for (const component of page) {
-          this.components.push((await component()).default);
+        for (const file of page) {
+          this.components.push((await file()).default);
         }
       } else {
         this.components.push((await page()).default);
