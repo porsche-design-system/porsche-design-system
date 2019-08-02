@@ -17,11 +17,11 @@ export default class Custom extends Vue {
   public component: any = null;
 
   private get area(): string {
-    return (this.$route.params.area || '').toLowerCase();
+    return this.$route.params.area.toLowerCase();
   }
 
   private get page(): string {
-    return (this.$route.params.page || '').toLowerCase();
+    return this.$route.params.page.toLowerCase();
   }
 
   @Watch('$route')
@@ -37,11 +37,11 @@ export default class Custom extends Vue {
     try {
       this.component = (await (() => import(`@/pages/${this.area}/${this.page}.md`))()).default;
     } catch (e) {
-      await this.redirect();
+      this.redirect();
     }
   }
 
-  private async redirect(): Promise<void> {
+  private redirect(): void {
     this.$router.replace({name: '404'});
   }
 }
