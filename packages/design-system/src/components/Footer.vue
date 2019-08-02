@@ -12,11 +12,24 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { encodeUrl } from '@/services/utils';
+import {decodeUrl, encodeUrl} from '@/services/utils';
 
 @Component
 export default class Footer extends Vue {
-  @Prop({ default: '' }) public area?: string;
   public encodeUrl = encodeUrl;
+
+  get area(): string {
+    let area = '';
+    if (this.$route.meta.area) {
+      area = decodeUrl(this.$route.meta.area).toLowerCase();
+    } else if (this.$route.params.area) {
+      area = decodeUrl(this.$route.params.area).toLowerCase();
+    }
+
+    if (['web', 'app'].includes(area)) {
+      return area;
+    }
+    return 'web';
+  }
 }
 </script>

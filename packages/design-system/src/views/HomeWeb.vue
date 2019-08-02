@@ -42,14 +42,16 @@
                 class="p-spacing-mt-16"
                 variant="highlight"
                 href="#/web/getting-started/start-designing"
-              >Start designing</p-button-regular>
+              >Start designing
+              </p-button-regular>
             </p-flex-item>
             <p-flex-item>
               <p-button-regular
                 class="p-spacing-mt-16"
                 variant="highlight"
                 href="#/web/getting-started/start-coding"
-              >Start coding</p-button-regular>
+              >Start coding
+              </p-button-regular>
             </p-flex-item>
           </p-flex>
         </p-grid-child>
@@ -64,7 +66,8 @@
         <p-grid-child size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
           <p-text
             variant="24"
-          >Join our mailing list and get informed about relevant updates and topics.</p-text>
+          >Join our mailing list and get informed about relevant updates and topics.
+          </p-text>
           <p-text class="p-spacing-mt-16">
             <a
               href="http://eepurl.com/ghVSjH"
@@ -79,116 +82,118 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+  import {Component, Vue} from 'vue-property-decorator';
 
-@Component
-export default class HomeWeb extends Vue {}
+  @Component
+  export default class HomeWeb extends Vue {
+  }
 </script>
 
 <style scoped lang="scss">
-@import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  @import '~@porscheui/ui-kit-scss-utils/index';
 
-.teaser {
-  &:first-child {
-    margin-top: -$p-spacing-32;
+  .teaser {
+    &:first-child {
+      margin-top: -$p-spacing-32;
+
+      @include breakpoint('s') {
+        margin-top: -$p-spacing-64;
+      }
+    }
+
+    margin: {
+      left: -$p-spacing-32;
+      right: -$p-spacing-32;
+    }
 
     @include breakpoint('s') {
-      margin-top: -$p-spacing-64;
+      margin: {
+        left: -$p-spacing-64;
+        right: -$p-spacing-64;
+      }
     }
   }
 
-  margin: {
-    left: -$p-spacing-32;
-    right: -$p-spacing-32;
+  .cover {
+    position: relative;
+    padding-top: 34%;
+    overflow: hidden;
+    background: $p-color-neutral-grey-2;
+    border-bottom: 1px solid $p-color-neutral-grey-2;
   }
 
-  @include breakpoint('s') {
+  .video {
+    width: calc(100% + 4px);
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .intro {
     margin: {
-      left: -$p-spacing-64;
-      right: -$p-spacing-64;
+      left: -$p-spacing-32;
+      right: -$p-spacing-32;
     }
-  }
-}
-
-.cover {
-  position: relative;
-  padding-top: 34%;
-  overflow: hidden;
-  background: $p-color-neutral-grey-2;
-  border-bottom: 1px solid $p-color-neutral-grey-2;
-}
-
-.video {
-  width: calc(100% + 4px);
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.intro {
-  margin: {
-    left: -$p-spacing-32;
-    right: -$p-spacing-32;
-  }
-  padding: $p-spacing-32;
-
-  @include breakpoint('s') {
-    margin: {
-      left: -$p-spacing-64;
-      right: -$p-spacing-64;
-    }
-    padding: $p-spacing-64;
-  }
-  p a {
-    text-decoration: none;
-    color: $p-color-porsche-red;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &:hover {
-      color: $p-color-porsche-dark-red;
-    }
-  }
-
-  h2 + p a {
-    border-bottom: 1px solid $p-color-porsche-red;
-  }
-}
-
-.newsletter {
-  &:last-child {
-    margin-bottom: -$p-spacing-32;
+    padding: $p-spacing-32;
 
     @include breakpoint('s') {
-      margin-bottom: -$p-spacing-64;
+      margin: {
+        left: -$p-spacing-64;
+        right: -$p-spacing-64;
+      }
+      padding: $p-spacing-64;
+    }
+
+    p a {
+      text-decoration: none;
+      color: $p-color-porsche-red;
+      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+      &:hover {
+        color: $p-color-porsche-dark-red;
+      }
+    }
+
+    h2 + p a {
+      border-bottom: 1px solid $p-color-porsche-red;
     }
   }
 
-  margin: {
-    left: -$p-spacing-32;
-    right: -$p-spacing-32;
-  }
-  padding: $p-spacing-32;
-  background: $p-color-surface-light;
+  .newsletter {
+    &:last-child {
+      margin-bottom: -$p-spacing-32;
 
-  @include breakpoint('s') {
+      @include breakpoint('s') {
+        margin-bottom: -$p-spacing-64;
+      }
+    }
+
     margin: {
-      left: -$p-spacing-64;
-      right: -$p-spacing-64;
+      left: -$p-spacing-32;
+      right: -$p-spacing-32;
     }
-    padding: $p-spacing-64;
-  }
+    padding: $p-spacing-32;
+    background: $p-color-surface-light;
 
-  a {
-    border-bottom: 1px solid $p-color-porsche-red;
-    text-decoration: none;
-    color: $p-color-porsche-red;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    @include breakpoint('s') {
+      margin: {
+        left: -$p-spacing-64;
+        right: -$p-spacing-64;
+      }
+      padding: $p-spacing-64;
+    }
 
-    &:hover {
-      color: $p-color-porsche-dark-red;
+    a {
+      border-bottom: 1px solid $p-color-porsche-red;
+      text-decoration: none;
+      color: $p-color-porsche-red;
+      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+      &:hover {
+        color: $p-color-porsche-dark-red;
+      }
     }
   }
-}
 </style>
