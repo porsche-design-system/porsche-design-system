@@ -63,7 +63,7 @@ export default class CodeBlock extends Vue {
   }
 
   get formattedMarkup(): string {
-    return this.highlight(this.beautify(this.convert(this.removeAttr(this.removeEmptyComments(this.markup)), this.framework)));
+    return this.highlight(this.beautify(this.convert(this.cleanup(this.markup), this.framework)));
   }
 
   public updateFramework(framework: Framework): void {
@@ -81,6 +81,25 @@ export default class CodeBlock extends Vue {
       default:
         return markup;
     }
+  }
+
+  private cleanup(markup: string): string {
+    return (
+      markup
+        // remove default web component attributes
+        .replace(/theme="light"/g, '')
+        // remove empty comments
+        .replace(/<!---->/g, '')
+        // remove all attributes added by Vue JS
+        .replace(/data-v-[a-zA-Z0-9]+(=["']{1}["']{1})?/g, '')
+        // remove all class values added by Stencil JS
+        .replace(/class=["'](.*?)hydrated(.*?)["']/g, (m, $1, $2) => {
+          if (/\S/.test($1) || /\S/.test($2)) {
+            return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
+          }
+          return '';
+        })
+    );
   }
 
   private convertToAngular(markup: string): string {
@@ -119,25 +138,6 @@ export default class CodeBlock extends Vue {
     );
   }
 
-  private removeEmptyComments(markup: string): string {
-    return markup.replace(/<!---->/g, '');
-  }
-
-  private removeAttr(markup: string): string {
-    return (
-      markup
-      // remove all attributes added by Vue JS
-        .replace(/data-v-[a-zA-Z0-9]+(=["']{1}["']{1})?/g, '')
-        // remove all class values added by Stencil JS
-        .replace(/class=["'](.*?)hydrated(.*?)["']/g, (m, $1, $2) => {
-          if (/\S/.test($1) || /\S/.test($2)) {
-            return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
-          }
-          return '';
-        })
-    );
-  }
-
   private beautify(markup: string): string {
     return html(markup, {indent_size: 2});
   }
@@ -149,7 +149,7 @@ export default class CodeBlock extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  @import '~@porscheui/ui-kit-scss-utils/index';
 
   .code-block {
 

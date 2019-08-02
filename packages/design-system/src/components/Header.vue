@@ -3,7 +3,7 @@
     <router-link class="link" :to="`/${encodeUrl(area)}`">
       <Marque />
     </router-link>
-    <p-headline class="p-spacing-mt--16" variant="headline-4" tag="h1" align="center">
+    <p-headline class="p-spacing-mt-16" variant="headline-4" tag="h1" align="center">
       Porsche UI Kit
       <span v-show="area === 'app'">App</span>
     </p-headline>
@@ -33,18 +33,18 @@ export default class Header extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  @import "~@porscheui/ui-kit-scss-utils/index";
 
-.header {
-  text-align: center;
-}
-
-.link {
-  display: inline-block;
-
-  &:focus {
-    outline: 1px solid $p-color-state-focus;
-    outline-offset: 4px;
+  .header {
+    text-align: center;
   }
-}
+
+  .link {
+    display: inline-block;
+
+    &:focus {
+      outline: 1px solid $p-color-state-focus;
+      outline-offset: 4px;
+    }
+  }
 </style>

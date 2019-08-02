@@ -1,12 +1,9 @@
 # Button Regular
 
-## Introduction
-All button types can be generated out of the basic button by implementing additional modifier classes or React proprties.
-
-### Buttons as button elements
+## Buttons as button elements
 Buttons used as `<button>` elements to trigger actions.
 
-### Regular basic (default)
+### Basic
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -16,7 +13,7 @@ Buttons used as `<button>` elements to trigger actions.
   </template>
 </Playground>
 
-### Regular ghost
+### Ghost
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -26,7 +23,7 @@ Buttons used as `<button>` elements to trigger actions.
   </template>
 </Playground>
 
-### Regular highlight
+### Highlight
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -38,10 +35,10 @@ Buttons used as `<button>` elements to trigger actions.
 
 ---
 
-### Button as link element
-Buttons used as link elements (`<a>`), e.g. as a navigation item.
+## Button as link element
+Buttons used as link element `<a>`, e.g. as a navigation item.
 
-#### Regular basic (default)
+### Basic
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -51,7 +48,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
   </template>
 </Playground>
 
-#### Regular ghost
+### Ghost
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-regular href="/lorem/ipsum" variant="ghost" :theme="theme">Click Here!</p-button-regular>
@@ -60,7 +57,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
   </template>
 </Playground>
 
-#### Regular highlight
+### Highlight
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-regular href="/lorem/ipsum" variant="highlight" :theme="theme">Click Here!</p-button-regular>
@@ -71,7 +68,7 @@ Buttons used as link elements (`<a>`), e.g. as a navigation item.
 
 ---
 
-### Button regular small
+## Button regular small
 All button types can be rendered in a smaller variant. All properties of the regular button can be set.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
@@ -84,21 +81,22 @@ All button types can be rendered in a smaller variant. All properties of the reg
 
 ---
 
-### Button regular with specific icon
+## Button regular with specific icon
 If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property.
-If you need to link to another icon hosted somewhere else, just set the whole icon path to thge `icon` prop.
+If you need to link to another icon hosted somewhere else, just set the whole icon path to the `icon` prop.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-regular icon="phone" :theme="theme">Click Here!</p-button-regular>
+    <p-button-regular :icon="require(`@/assets/icon-custom-kaixin.svg`)" :theme="theme">Click Here!</p-button-regular>
   </template>
 </Playground>
 
 ---
 
-### Edge cases
+## Edge cases
 
-#### Long text
+### Long text
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <div style="max-width: 320px">

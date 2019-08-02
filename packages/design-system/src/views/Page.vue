@@ -6,7 +6,8 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { config } from '@/../design-system.config';
+import {config as webConfig, DesignSystemWebConfig} from '@/../design-system.web.config';
+import {config as appConfig, DesignSystemAppConfig} from '@/../design-system.app.config';
 import { decodeUrl } from '@/services/utils';
 import Markdown from '@/components/Markdown.vue';
 
@@ -35,32 +36,36 @@ export default class Page extends Vue {
     }
   }
 
-  private isPageExistent(): boolean {
+  private get config(): DesignSystemWebConfig | DesignSystemAppConfig {
     const area = decodeUrl(this.$route.params.area).toLowerCase();
+    return area === 'app' ? appConfig : webConfig;
+  }
+
+  private isPageExistent(): boolean {
     const category = decodeUrl(this.$route.params.category);
     const page = decodeUrl(this.$route.params.page);
-    return config.pages[area] && config.pages[area][category] && config.pages[area][category][page];
+
+    return this.config.pages && this.config.pages[category] && this.config.pages[category][page];
   }
 
   private async loadPage(): Promise<void> {
-    const area = decodeUrl(this.$route.params.area).toLowerCase();
     const category = decodeUrl(this.$route.params.category);
     const page = decodeUrl(this.$route.params.page);
 
     this.components = [];
 
-    if (typeof config.pages[area][category][page] === 'object') {
-      for (const component of config.pages[area][category][page]) {
+    if (typeof this.config.pages[category][page] === 'object') {
+      for (const component of this.config.pages[category][page]) {
         this.components.push((await component()).default);
       }
     } else {
-      this.components.push((await config.pages[area][category][page]()).default);
+      this.components.push((await this.config.pages[category][page]()).default);
     }
   }
 
   private async redirect(): Promise<void> {
     const area = decodeUrl(this.$route.params.area).toLowerCase();
-    this.$router.replace(`'/'${area}`);
+    this.$router.replace(`/${area}`);
   }
 }
 </script>

@@ -94,7 +94,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  @import '~@porscheui/ui-kit-scss-utils/index';
 
   .tabs {
     display: flex;

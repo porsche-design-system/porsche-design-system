@@ -1,4 +1,4 @@
-@import "../../../styles/utility/index";
+@import "../../../../../../packages/ui-kit-scss-utils/index";
 
 :host {
   display: inline-flex;
@@ -17,7 +17,7 @@
   padding: 11px 15px 11px 11px;
   max-width: 100%; // fix for IE11, forces using multi line label
   box-sizing: border-box;
-  border-radius: 0; // fix for Chrome and Safari
+  border-radius: 0;
   appearance: none;
   outline: none;
   cursor: pointer;
@@ -173,7 +173,7 @@
   }
 
   &--small {
-    padding: 2px 11px 2px 7px;
+    padding: rem(2px) rem(11px) rem(2px) rem(7px);
   }
 
   &__icon,
@@ -182,11 +182,11 @@
   }
 
   &__spinner {
-    margin-top: 0.1875em; // this must be adapted if final SVG icons are integrated!
+    margin-top: rem(4px);
   }
 
   &__label {
-    padding-left: 28px;
+    padding-left: rem(28px);
     display: block;
     width: 100%;
     box-sizing: border-box;

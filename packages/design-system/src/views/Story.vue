@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { config } from '@/../design-system.config';
+import { config } from '@/../design-system.web.config';
 import { decodeUrl, featureToggle } from '@/services/utils';
 import Markdown from '@/components/Markdown.vue';
 
@@ -60,60 +60,57 @@ export default class Story extends Vue {
   }
 
   private isStoryExistent(tab: string = this.$route.hash.substring(1)): boolean {
-    const area = decodeUrl(this.$route.params.area).toLowerCase();
     const category = decodeUrl(this.$route.params.category);
     const story = decodeUrl(this.$route.params.story);
 
     return (
       (tab === 'design' || tab === 'code' || tab === 'props') &&
-      config.stories[area] &&
-      config.stories[area][category] &&
-      config.stories[area][category][story] &&
-      config.stories[area][category][story][tab]
+      config.stories &&
+      config.stories[category] &&
+      config.stories[category][story] &&
+      config.stories[category][story][tab]
     );
   }
 
   private async loadStory(): Promise<void> {
-    const area = decodeUrl(this.$route.params.area).toLowerCase();
     const category = decodeUrl(this.$route.params.category);
     const story = decodeUrl(this.$route.params.story);
     const tab = this.$route.hash.substring(1) as 'design' | 'code' | 'props';
 
     this.components = [];
 
-    if (typeof config.stories[area][category][story][tab] === 'object') {
-      for (const component of config.stories[area][category][story][tab]) {
+    if (typeof config.stories[category][story][tab] === 'object') {
+      for (const component of config.stories[category][story][tab]) {
         this.components.push((await component()).default);
       }
     } else {
-      this.components.push((await config.stories[area][category][story][tab]()).default);
+      this.components.push((await config.stories[category][story][tab]()).default);
     }
   }
 
   private async redirect(): Promise<void> {
-    const area = decodeUrl(this.$route.params.area).toLowerCase();
     const category = decodeUrl(this.$route.params.category);
     const story = decodeUrl(this.$route.params.story);
 
     if (
-      config.stories[area] &&
-      config.stories[area][category] &&
-      config.stories[area][category][story] &&
-      config.stories[area][category][story].design
+      config.stories &&
+      config.stories[category] &&
+      config.stories[category][story] &&
+      config.stories[category][story].design
     ) {
       this.$router.replace('#design');
     } else if (
-      config.stories[area] &&
-      config.stories[area][category] &&
-      config.stories[area][category][story] &&
-      config.stories[area][category][story].code
+      config.stories &&
+      config.stories[category] &&
+      config.stories[category][story] &&
+      config.stories[category][story].code
     ) {
       this.$router.replace('#code');
     } else if (
-      config.stories[area] &&
-      config.stories[area][category] &&
-      config.stories[area][category][story] &&
-      config.stories[area][category][story].props
+      config.stories &&
+      config.stories[category] &&
+      config.stories[category][story] &&
+      config.stories[category][story].props
     ) {
       this.$router.replace('#props');
     } else {
@@ -124,7 +121,7 @@ export default class Story extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-js/src/styles/utility/index';
+  @import "~@porscheui/ui-kit-scss-utils/index";
 
   .tabs {
     display: flex;
