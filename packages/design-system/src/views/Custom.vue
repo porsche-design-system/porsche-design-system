@@ -17,11 +17,11 @@ export default class Custom extends Vue {
   public component: any = null;
 
   private get area(): string {
-    return this.$route.params.area.toLowerCase();
+    return (this.$route.params.area || '').toLowerCase();
   }
 
   private get page(): string {
-    return this.$route.params.page.toLowerCase();
+    return (this.$route.params.page || '').toLowerCase();
   }
 
   @Watch('$route')
@@ -42,7 +42,7 @@ export default class Custom extends Vue {
   }
 
   private async redirect(): Promise<void> {
-    this.$router.replace({name: 'not-found'});
+    this.$router.replace({name: '404'});
   }
 }
 </script>
