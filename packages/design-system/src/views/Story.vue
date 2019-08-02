@@ -114,7 +114,7 @@ export default class Story extends Vue {
     ) {
       this.$router.replace('#props');
     } else {
-      this.$router.replace('/web');
+      this.$router.replace({name: 'not-found'});
     }
   }
 }

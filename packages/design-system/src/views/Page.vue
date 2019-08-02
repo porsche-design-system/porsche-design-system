@@ -67,7 +67,7 @@ export default class Page extends Vue {
   }
 
   private async redirect(): Promise<void> {
-    this.$router.replace('/');
+    this.$router.replace({name: 'not-found'});
   }
 }
 </script>
