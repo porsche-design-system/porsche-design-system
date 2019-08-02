@@ -77,7 +77,7 @@ export default class Sidebar extends Vue {
     return this.area === 'app' ? appConfig : webConfig;
   }
 
-  isAreaWeb(): boolean {
+  public isAreaWeb(): boolean {
     return this.area === 'web';
   }
 }
