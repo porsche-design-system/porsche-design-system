@@ -14,31 +14,35 @@ import Markdown from '@/components/Markdown.vue';
   }
 })
 export default class Custom extends Vue {
-  private component: any = null;
+  public component: any = null;
 
-  get area(): string {
+  private get area(): string {
     return this.$route.params.area.toLowerCase();
   }
 
-  get page(): string {
+  private get page(): string {
     return this.$route.params.page.toLowerCase();
   }
 
   @Watch('$route')
   private async onRouteChange(): Promise<void> {
-    await this.updateComponent();
+    await this.loadComponent();
   }
 
   private async mounted(): Promise<void> {
-    await this.updateComponent();
+    await this.loadComponent();
   }
 
-  private async updateComponent(): Promise<void> {
+  private async loadComponent(): Promise<void> {
     try {
-      this.component = (await (() => import(`@/pages/${this.area}/${this.page}.md`))()).default
+      this.component = (await (() => import(`@/pages/${this.area}/${this.page}.md`))()).default;
     } catch (e) {
-      this.$router.replace('/');
+      await this.redirect();
     }
+  }
+
+  private async redirect(): Promise<void> {
+    this.$router.replace('/');
   }
 }
 </script>
