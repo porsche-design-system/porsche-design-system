@@ -23,6 +23,12 @@ export default new Router({
       component: () => import('./views/HomeApp.vue')
     },
     {
+      path: '/:area/404',
+      alias: '*',
+      name: '404',
+      component: () => import('./views/NotFound.vue')
+    },
+    {
       path: '/:area/:page',
       name: 'custom',
       component: () => import('./views/Custom.vue')
@@ -35,13 +41,8 @@ export default new Router({
     {
       path: '/web/components/:category/:story',
       name: 'story',
+      meta: { area: 'web' },
       component: () => import('./views/Story.vue')
-    },
-    {
-      path: '/404',
-      alias: '*',
-      name: '404',
-      component: () => import('./views/NotFound.vue')
     }
   ],
   scrollBehavior() {

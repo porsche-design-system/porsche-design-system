@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <aside class="sidebar" :class="{ 'is-visible': isMenuActive }">
-      <Header :area="area" />
-      <Divider spacing="small" />
-      <Sidebar :area="area" />
-      <Divider spacing="small" />
-      <Footer :area="area" />
+      <Header/>
+      <Divider spacing="small"/>
+      <Sidebar/>
+      <Divider spacing="small"/>
+      <Footer/>
     </aside>
     <main class="content" :class="{ 'is-hidden': isMenuActive }">
       <router-view/>
@@ -21,7 +21,6 @@ import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer.vue';
 import Divider from '@/components/Divider.vue';
 import Menu from '@/components/Menu.vue';
-import { decodeUrl } from '@/services/utils';
 
 @Component({
   components: {
@@ -34,7 +33,6 @@ import { decodeUrl } from '@/services/utils';
 })
 export default class App extends Vue {
   public isMenuActive: boolean = false;
-  public area: string = 'web';
 
   public onToggleMenu(isActive: boolean): void {
     this.isMenuActive = isActive;
