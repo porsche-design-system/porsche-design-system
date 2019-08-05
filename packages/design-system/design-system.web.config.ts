@@ -41,13 +41,11 @@ export const config: DesignSystemWebConfig = {
     Basic: {
       Color: {
         design: () => import(`@/../../ui-kit-js/src/components/basic/color/${empty}color.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/basic/color/${empty}color.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/basic/color/${empty}color.vrt.md`)
+        code: () => import(`@/../../ui-kit-js/src/components/basic/color/${empty}color.code.md`)
       },
       Typography: {
         design: () => import(`@/../../ui-kit-js/src/components/basic/typography/${empty}typography.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/basic/typography/${empty}typography.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/basic/typography/${empty}typography.vrt.md`),
         props: [
           () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/${empty}headline.props.md`),
           () => import(`@/../../ui-kit-js/src/components/basic/typography/text/${empty}text.props.md`)
@@ -58,19 +56,16 @@ export const config: DesignSystemWebConfig = {
       'Button Regular': {
         design: () => import(`@/../../ui-kit-js/src/components/action/button-regular/${empty}button-regular.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/action/button-regular/${empty}button-regular.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/action/button-regular/${empty}button-regular.vrt.md`),
         props: () => import(`@/../../ui-kit-js/src/components/action/button-regular/${empty}button-regular.props.md`)
       },
       'Button Icon': {
         design: () => import(`@/../../ui-kit-js/src/components/action/button-icon/${empty}button-icon.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/action/button-icon/${empty}button-icon.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/action/button-icon/${empty}button-icon.vrt.md`),
         props: () => import(`@/../../ui-kit-js/src/components/action/button-icon/${empty}button-icon.props.md`)
       },
       'Text Link': {
         design: () => import(`@/../../ui-kit-js/src/components/action/text-link/${empty}text-link.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/action/text-link/${empty}text-link.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/action/text-link/${empty}text-link.vrt.md`),
         props: () => import(`@/../../ui-kit-js/src/components/action/text-link/${empty}text-link.props.md`)
       }
     },
@@ -78,7 +73,6 @@ export const config: DesignSystemWebConfig = {
       'Text List': {
         design: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.vrt.md`),
         props: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list/${empty}text-list.props.md`)
       }
     },
@@ -86,7 +80,6 @@ export const config: DesignSystemWebConfig = {
       Spinner: {
         design: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.vrt.md`),
         props: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.props.md`)
       }
     },
@@ -94,14 +87,12 @@ export const config: DesignSystemWebConfig = {
       Icon: {
         design: () => import(`@/../../ui-kit-js/src/components/icon/icon/${empty}icon.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/icon/icon/${empty}icon.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/icon/icon/${empty}icon.vrt.md`),
         props: () => import(`@/../../ui-kit-js/src/components/icon/icon/${empty}icon.props.md`)
       }
     },
     Layout: {
       Flex: {
         code: () => import(`@/../../ui-kit-js/src/components/layout/flex/${empty}flex.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/layout/flex/${empty}flex.vrt.md`),
         props: [
           () => import(`@/../../ui-kit-js/src/components/layout/flex/flex/${empty}flex.props.md`),
           () => import(`@/../../ui-kit-js/src/components/layout/flex/flex-item/${empty}flex-item.props.md`)
@@ -110,7 +101,6 @@ export const config: DesignSystemWebConfig = {
       Grid: {
         design: () => import(`@/../../ui-kit-js/src/components/layout/grid/${empty}grid.design.md`),
         code: () => import(`@/../../ui-kit-js/src/components/layout/grid/${empty}grid.code.md`),
-        vrt: () => import(`@/../../ui-kit-js/src/components/layout/grid/${empty}grid.vrt.md`),
         props: [
           () => import(`@/../../ui-kit-js/src/components/layout/grid/grid/${empty}grid.props.md`),
           () => import(`@/../../ui-kit-js/src/components/layout/grid/grid-child/${empty}grid-child.props.md`)
