@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ul class="list">
+    <ul v-if="config.pages" class="list">
       <li v-for="(pages, category, index) in config.pages" :key="index">
         <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
@@ -15,9 +15,9 @@
         </ul>
       </li>
     </ul>
-    <Divider v-if="isAreaWeb()" spacing="small" />
-    <p-headline v-if="isAreaWeb()" variant="headline-4" tag="h2">Components</p-headline>
-    <ul class="list" v-if="isAreaWeb()">
+    <Divider v-if="config.stories" spacing="small" />
+    <p-headline v-if="config.stories" variant="headline-4" tag="h2">Components</p-headline>
+    <ul v-if="config.stories" class="list">
       <li
         v-for="(stories, category, index) in config.stories"
         :key="index"
@@ -60,7 +60,7 @@ export default class Sidebar extends Vue {
   public featureToggle = featureToggle;
 
   get area(): string {
-    return (this.$route.meta.area || this.$route.params.area || '').toLowerCase();
+    return this.$route.meta.area;
   }
 
   get config(): DesignSystemWebConfig | DesignSystemAppConfig {
@@ -69,10 +69,6 @@ export default class Sidebar extends Vue {
       case 'web': return webConfig;
       default: return webConfig;
     }
-  }
-
-  public isAreaWeb(): boolean {
-    return this.area === 'web';
   }
 }
 </script>

@@ -21,7 +21,7 @@ export default class Page extends Vue {
   public components: any[] = [];
 
   private get area(): string {
-    return this.$route.params.area.toLowerCase();
+    return this.$route.meta.area;
   }
 
   private get category(): string {
@@ -68,7 +68,7 @@ export default class Page extends Vue {
   }
 
   private redirect(): void {
-    this.$router.replace({name: '404'});
+    this.$router.replace({name: `404-${this.area}`});
   }
 }
 </script>

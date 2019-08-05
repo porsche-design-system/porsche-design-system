@@ -17,7 +17,7 @@ export default class Custom extends Vue {
   public component: any = null;
 
   private get area(): string {
-    return this.$route.params.area.toLowerCase();
+    return this.$route.meta.area;
   }
 
   private get page(): string {
@@ -35,14 +35,14 @@ export default class Custom extends Vue {
 
   private async loadComponent(): Promise<void> {
     try {
-      this.component = (await (() => import(`@/pages/${this.area}/${this.page}.md`))()).default;
+      this.component = (await (() => import(`@/pages/${this.page}.md`))()).default;
     } catch (e) {
       this.redirect();
     }
   }
 
   private redirect(): void {
-    this.$router.replace({name: '404'});
+    this.$router.replace({name: `404-${this.area}`});
   }
 }
 </script>

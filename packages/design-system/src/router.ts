@@ -5,17 +5,13 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
+    // Home
     {
       path: '/',
       name: 'home',
       redirect: '/web'
     },
-    {
-      path: '/web',
-      name: 'home-web',
-      meta: { area: 'web' },
-      component: () => import('./views/HomeWeb.vue')
-    },
+    // App
     {
       path: '/app',
       name: 'home-app',
@@ -23,29 +19,66 @@ export default new Router({
       component: () => import('./views/HomeApp.vue')
     },
     {
-      path: '/:area/404',
-      name: '404',
+      path: '/app/404',
+      name: '404-app',
+      meta: { area: 'app' },
       component: () => import('./views/NotFound.vue')
     },
     {
-      path: '/:area/:page',
-      name: 'custom',
+      path: '/app/:page',
+      name: 'custom-app',
+      meta: { area: 'app' },
       component: () => import('./views/Custom.vue')
     },
     {
-      path: '/:area/:category/:page',
-      name: 'page',
+      path: '/app/:category/:page',
+      name: 'page-app',
+      meta: { area: 'app' },
+      component: () => import('./views/Page.vue')
+    },
+    {
+      path: '/app/*',
+      redirect: { name: '404-app' }
+    },
+    // Web
+    {
+      path: '/web',
+      name: 'home-web',
+      meta: { area: 'web' },
+      component: () => import('./views/HomeWeb.vue')
+    },
+    {
+      path: '/web/404',
+      name: '404-web',
+      meta: { area: 'web' },
+      component: () => import('./views/NotFound.vue')
+    },
+    {
+      path: '/web/:page',
+      name: 'custom-web',
+      meta: { area: 'web' },
+      component: () => import('./views/Custom.vue')
+    },
+    {
+      path: '/web/:category/:page',
+      name: 'page-web',
+      meta: { area: 'web' },
       component: () => import('./views/Page.vue')
     },
     {
       path: '/web/components/:category/:story',
-      name: 'story',
+      name: 'story-web',
       meta: { area: 'web' },
       component: () => import('./views/Story.vue')
     },
     {
+      path: '/web/*',
+      redirect: { name: '404-web' }
+    },
+    // Default
+    {
       path: '*',
-      redirect: '/web/404'
+      redirect: { name: 'home' }
     }
   ],
   scrollBehavior() {
