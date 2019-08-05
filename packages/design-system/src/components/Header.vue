@@ -5,7 +5,7 @@
     </router-link>
     <p-headline class="p-spacing-mt-16" variant="headline-4" tag="h1" align="center">
       Porsche UI Kit
-      <span v-if="isAreaApp()">App</span>
+      <span>({{area}})</span>
     </p-headline>
     <p-text variant="small" align="center">Current Release: v{{version}}</p-text>
   </header>
@@ -23,15 +23,11 @@ import Marque from '@/components/Marque.vue';
 })
 export default class Header extends Vue {
   get version() {
-    return this.area === 'web' ? '1.0.0-alpha.3' : '1.0.0-alpha.1';
+    return this.area === 'app' ? '1.0.0-alpha.1' : '1.0.0-alpha.3';
   }
 
   get area(): string {
-    return (this.$route.meta.area || this.$route.params.area || '').toLowerCase();
-  }
-
-  public isAreaApp(): boolean {
-    return this.area === 'app';
+    return this.$route.meta.area;
   }
 }
 </script>

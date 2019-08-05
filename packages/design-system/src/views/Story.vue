@@ -34,7 +34,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { config } from '@/../design-system.web.config';
+import { config as webConfig } from '@/../design-system.web.config';
 import { decodeUrl, featureToggle } from '@/services/utils';
 import Markdown from '@/components/Markdown.vue';
 import { Stories } from '@/interface';
@@ -49,6 +49,10 @@ export default class Story extends Vue {
   
   private components: any[] = [];
 
+  private get area(): string {
+    return this.$route.meta.area;
+  }
+
   private get category(): string {
     return decodeUrl(this.$route.params.category);
   }
@@ -62,7 +66,7 @@ export default class Story extends Vue {
   }
 
   private get config(): Stories {
-    return config.stories;
+    return webConfig.stories;
   }
 
   public isStoryExistent(tab: 'design' | 'code' | 'props'): boolean {
@@ -109,7 +113,7 @@ export default class Story extends Vue {
     } else if (this.isStoryExistent('props')) {
       this.$router.replace('#props');
     } else {
-      this.$router.replace({name: '404'});
+      this.$router.replace({name: `404-${this.area}`});
     }
   }
 }

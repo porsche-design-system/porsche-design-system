@@ -3,8 +3,8 @@
     <aside class="sidebar" :class="{ 'is-visible': isMenuActive }">
       <Header/>
       <Divider spacing="small"/>
-      <Sidebar/>
-      <Divider spacing="small"/>
+      <Sidebar v-if="isAreaValid()"/>
+      <Divider spacing="small" v-if="isAreaValid()"/>
       <Footer/>
     </aside>
     <main class="content" :class="{ 'is-hidden': isMenuActive }">
@@ -34,8 +34,16 @@ import Menu from '@/components/Menu.vue';
 export default class App extends Vue {
   public isMenuActive: boolean = false;
 
+  get area(): string {
+    return (this.$route.meta.area || this.$route.params.area || '').toLowerCase();
+  }
+
   public onToggleMenu(isActive: boolean): void {
     this.isMenuActive = isActive;
+  }
+
+  public isAreaValid(): boolean {
+    return ['app', 'web'].includes(this.area);
   }
 }
 </script>
