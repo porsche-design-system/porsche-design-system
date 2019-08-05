@@ -10,7 +10,6 @@ export interface Stories {
       design?: any | any[];
       code?: any | any[];
       props?: any | any[];
-      vrt?: any | any[];
     };
   };
 }
