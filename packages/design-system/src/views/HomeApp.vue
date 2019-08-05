@@ -115,40 +115,4 @@
       border-bottom: 1px solid $p-color-porsche-red;
     }
   }
-
-  .newsletter {
-    &:last-child {
-      margin-bottom: -$p-spacing-32;
-
-      @include breakpoint('s') {
-        margin-bottom: -$p-spacing-64;
-      }
-    }
-
-    margin: {
-      left: -$p-spacing-32;
-      right: -$p-spacing-32;
-    }
-    padding: $p-spacing-32;
-    background: $p-color-surface-light;
-
-    @include breakpoint('s') {
-      margin: {
-        left: -$p-spacing-64;
-        right: -$p-spacing-64;
-      }
-      padding: $p-spacing-64;
-    }
-
-    a {
-      border-bottom: 1px solid $p-color-porsche-red;
-      text-decoration: none;
-      color: $p-color-porsche-red;
-      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-      &:hover {
-        color: $p-color-porsche-dark-red;
-      }
-    }
-  }
 </style>
