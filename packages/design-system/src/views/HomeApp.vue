@@ -4,8 +4,8 @@
       <div class="cover">
         <video
           class="video"
-          src="../assets/porsche-ui-kit.mp4"
-          poster="../assets/porsche-ui-kit.jpg"
+          src="../assets/app/porsche-ui-kit.mp4"
+          poster="../assets/app/porsche-ui-kit.jpg"
           autoplay
           muted
           playsinline

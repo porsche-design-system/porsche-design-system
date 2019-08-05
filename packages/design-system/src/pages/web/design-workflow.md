@@ -10,7 +10,7 @@ The Porsche UI organisation is structured by context within different sections. 
 
 For better discoverability, files and libraries within a project are recommended to be split and named by their features in lower case with hyphenation. All libraries created within the Porsche UI organisation should be named with the format `porsche-ui-kit-[projectname].sketch`.
 
-![Abstract file structure](../../assets/abstract-filestructure.png)
+![Abstract file structure](../../assets/web/abstract-filestructure.png)
 
 ### User roles and rights
 User roles define whether a user can just view or actually work on the stored files. Contributor seats for designers have to be paid and therefore [requested here](http://eepurl.com/gnOIXD).
@@ -39,7 +39,7 @@ e.g. `pagination accessibility recolouring | mb | #44`. For more context, you ca
 4. **Save changes in Sketch and sync them** regularly as commits to Abstract by clicking on "Commit changes" at the bottom. 
 5. **Describe the committed changes** to make them visible for others, e.g. `Changed text colour from to red`. Commit often and describe what you did. Adding detail of what you accomplished in each commit is useful for you and for your coworkers.
 
-![Abstract branches](../../assets/abstract-branches.png)
+![Abstract branches](../../assets/web/abstract-branches.png)
 
 ### 2. Review and merge changes
 When you think you’re done with your branch, you should always add stakeholders or coworkers as reviewers to get feedback on your work before you merge it to master.
