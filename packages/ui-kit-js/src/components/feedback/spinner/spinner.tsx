@@ -29,9 +29,9 @@ export class Loader {
 
     return (
       <span class={spinnerClasses} aria-busy='true' aria-live='polite' aria-label={this.allyLabel}>
-        <svg class={imageClasses} viewBox='0 0 50 50' role='img'>
-          <circle class={bgClasses} cx='50%' cy='50%' r='20' />
-          <circle class={fgClasses} cx='50%' cy='50%' r='20' />
+        <svg class={imageClasses} viewBox='0 0 48 48' role='img'>
+          <circle class={bgClasses} cx='50%' cy='50%' r='21' />
+          <circle class={fgClasses} cx='50%' cy='50%' r='21' />
         </svg>
       </span>
     );
