@@ -1,7 +1,7 @@
 # Text Link
 
 ## Introduction
-The `<p-text-link>` component is used to show a linkable icon/textlink combination. It should only be used for linking between pages.
+The `<p-text-link>` component is used to show a linkable icon/textlink combination. 
 
 ### Basic example
 
