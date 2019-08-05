@@ -23,6 +23,11 @@ export default new Router({
       component: () => import('./views/HomeApp.vue')
     },
     {
+      path: '/:area/:page',
+      name: 'custom',
+      component: () => import('./views/Custom.vue')
+    },
+    {
       path: '/:area/:category/:page',
       name: 'page',
       component: () => import('./views/Page.vue')
@@ -31,11 +36,6 @@ export default new Router({
       path: '/web/components/:category/:story',
       name: 'story',
       component: () => import('./views/Story.vue')
-    },
-    {
-      path: '/:area/:page',
-      name: 'custom',
-      component: () => import('./views/Custom.vue')
     },
     {
       path: '/404',

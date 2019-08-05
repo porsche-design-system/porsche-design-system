@@ -54,6 +54,7 @@ export default class Page extends Vue {
 
     try {
       const page = this.config[this.category][this.page];
+      
       if (typeof page === 'object') {
         for (const file of page) {
           this.components.push((await file()).default);
