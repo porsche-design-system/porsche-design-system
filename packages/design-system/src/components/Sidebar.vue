@@ -7,7 +7,7 @@
           <li v-for="(v, page, index) in pages" :key="index">
             <router-link
               class="link"
-              :to="`/${encodeUrl(area)}/${encodeUrl(category)}/${encodeUrl(page)}`"
+              :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`"
             >
               <p-text-link tag="span" color="inherit">{{ page }}</p-text-link>
             </router-link>
@@ -47,7 +47,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import {config as webConfig, DesignSystemWebConfig} from '@/../design-system.web.config';
 import {config as appConfig, DesignSystemAppConfig} from '@/../design-system.app.config';
-import {decodeUrl, encodeUrl, featureToggle} from '@/services/utils';
+import {encodeUrl, featureToggle} from '@/services/utils';
 import Divider from '@/components/Divider.vue';
 
 @Component({
@@ -60,21 +60,15 @@ export default class Sidebar extends Vue {
   public featureToggle = featureToggle;
 
   get area(): string {
-    let area = '';
-    if (this.$route.meta.area) {
-      area = decodeUrl(this.$route.meta.area).toLowerCase();
-    } else if (this.$route.params.area) {
-      area = decodeUrl(this.$route.params.area).toLowerCase();
-    }
-
-    if (['web', 'app'].includes(area)) {
-      return area;
-    }
-    return 'web';
+    return (this.$route.meta.area || this.$route.params.area || '').toLowerCase();
   }
 
   get config(): DesignSystemWebConfig | DesignSystemAppConfig {
-    return this.area === 'app' ? appConfig : webConfig;
+    switch (this.area) {
+      case 'app': return appConfig;
+      case 'web': return webConfig;
+      default: return webConfig;
+    }
   }
 
   public isAreaWeb(): boolean {

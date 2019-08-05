@@ -1,20 +1,19 @@
 <template>
   <header class="header">
-    <router-link class="link" :to="`/${encodeUrl(area)}`">
+    <router-link class="link" :to="`/${area}`">
       <Marque />
     </router-link>
     <p-headline class="p-spacing-mt-16" variant="headline-4" tag="h1" align="center">
       Porsche UI Kit
-      <span v-show="area === 'app'">App</span>
+      <span v-if="isAreaApp()">App</span>
     </p-headline>
     <p-text variant="small" align="center">Current Release: v{{version}}</p-text>
   </header>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import Marque from '@/components/Marque.vue';
-import {decodeUrl, encodeUrl} from '@/services/utils';
 // import {version} from '@porscheui/ui-kit-js/package.json';
 
 @Component({
@@ -23,24 +22,16 @@ import {decodeUrl, encodeUrl} from '@/services/utils';
   }
 })
 export default class Header extends Vue {
-  public encodeUrl = encodeUrl;
-
   get version() {
     return this.area === 'web' ? '1.0.0-alpha.3' : '1.0.0-alpha.1';
   }
 
   get area(): string {
-    let area = '';
-    if (this.$route.meta.area) {
-      area = decodeUrl(this.$route.meta.area).toLowerCase();
-    } else if (this.$route.params.area) {
-      area = decodeUrl(this.$route.params.area).toLowerCase();
-    }
+    return (this.$route.meta.area || this.$route.params.area || '').toLowerCase();
+  }
 
-    if (['web', 'app'].includes(area)) {
-      return area;
-    }
-    return 'web';
+  public isAreaApp(): boolean {
+    return this.area === 'app';
   }
 }
 </script>
