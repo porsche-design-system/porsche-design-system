@@ -4,8 +4,7 @@
       <Marque />
     </router-link>
     <p-headline class="p-spacing-mt-16" variant="headline-4" tag="h1" align="center">
-      Porsche UI Kit
-      <span>({{area}})</span>
+      Porsche UI Kit ({{area}})
     </p-headline>
     <p-text variant="small" align="center">Current Release: v{{version}}</p-text>
   </header>
