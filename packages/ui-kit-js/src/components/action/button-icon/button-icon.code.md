@@ -74,6 +74,6 @@ If you need to link to another icon hosted somewhere else, just set the whole ic
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-icon icon="phone" :theme="theme" />
-    <p-button-icon :icon="require(`@/assets/icon-custom-kaixin.svg`)" :theme="theme" />
+    <p-button-icon :icon="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme" />
   </template>
 </Playground>

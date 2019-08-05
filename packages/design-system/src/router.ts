@@ -24,7 +24,6 @@ export default new Router({
     },
     {
       path: '/:area/404',
-      alias: '*',
       name: '404',
       component: () => import('./views/NotFound.vue')
     },
@@ -43,6 +42,10 @@ export default new Router({
       name: 'story',
       meta: { area: 'web' },
       component: () => import('./views/Story.vue')
+    },
+    {
+      path: '*',
+      redirect: '/web/404'
     }
   ],
   scrollBehavior() {
