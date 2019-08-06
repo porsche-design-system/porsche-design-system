@@ -60,7 +60,7 @@ The Porsche type scale is a dedicated sizing system based on a specific formula.
 <p-text variant="60" tag="span" class="p-spacing-mr-16" style="display: inline-block;">60</p-text>
 <p-text variant="62" tag="span" class="p-spacing-mr-16" style="display: inline-block;">62</p-text>
 <p-text variant="72" tag="span" class="p-spacing-mr-16" style="display: inline-block;">72</p-text>
-<p-text variant="84" tag="span">84</p-text>
+<p-text variant="84" tag="span" style="display: inline-block;">84</p-text>
 
 ### Line height
 

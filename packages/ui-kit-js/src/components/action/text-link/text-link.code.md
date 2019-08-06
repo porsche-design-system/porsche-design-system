@@ -19,8 +19,6 @@ The `<p-text-link>` component is used to show a linkable icon/text link combinat
       <option disabled>Select a style variant</option>
       <option>copy</option>
       <option>small</option>
-      <option>12</option>
-      <option>16</option>
       <option>18</option>
       <option>20</option>
       <option>20-thin</option>
