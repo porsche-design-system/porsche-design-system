@@ -85,8 +85,7 @@
   import {Component, Vue} from 'vue-property-decorator';
 
   @Component
-  export default class HomeWeb extends Vue {
-  }
+  export default class HomeWeb extends Vue {}
 </script>
 
 <style scoped lang="scss">

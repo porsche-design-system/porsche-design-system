@@ -13,3 +13,5 @@ export interface Stories {
     };
   };
 }
+
+export type Tabs = 'design' | 'code' | 'props';
