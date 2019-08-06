@@ -32,8 +32,6 @@ export class Text {
   @Prop() public variant?:
     | 'copy'
     | 'small'
-    | '12'
-    | '16'
     | '18'
     | '20'
     | '20-thin'

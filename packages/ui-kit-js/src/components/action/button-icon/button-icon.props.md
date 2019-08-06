@@ -32,5 +32,5 @@
 
 ### Depends on
 
-- [p-spinner](#/components/feedback/spinner)
-- [p-icon](#/components/icon/icon)
+- [p-spinner](/#/web/components/feedback/spinner)
+- [p-icon](/#/web/components/icon/icon)

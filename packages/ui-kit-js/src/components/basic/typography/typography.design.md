@@ -44,8 +44,8 @@ For Chinese and Japanese language, the following system fonts are to be used, st
 
 The Porsche type scale is a dedicated sizing system based on a specific formula.
 
-<p-text variant="12" tag="span" class="p-spacing-mr-16" style="display: inline-block;">12</p-text>
-<p-text variant="16" tag="span" class="p-spacing-mr-16" style="display: inline-block;">16</p-text>
+<p-text variant="small" tag="span" class="p-spacing-mr-16" style="display: inline-block;">12</p-text>
+<p-text variant="copy" tag="span" class="p-spacing-mr-16" style="display: inline-block;">16</p-text>
 <p-text variant="18" tag="span" class="p-spacing-mr-16" style="display: inline-block;">18</p-text>
 <p-text variant="20" tag="span" class="p-spacing-mr-16" style="display: inline-block;">20</p-text>
 <p-text variant="24" tag="span" class="p-spacing-mr-16" style="display: inline-block;">24</p-text>
@@ -64,7 +64,7 @@ The Porsche type scale is a dedicated sizing system based on a specific formula.
 
 ### Line height
 
-For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](#/layout/spacing)  in order to follow a harmonious overall vertical rhythm.
+For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](/#/web/layout/spacing)  in order to follow a harmonious overall vertical rhythm.
 
 ---
 
@@ -137,7 +137,7 @@ Depending on the information level of the respective text you can either chose b
 
 ### Text color
 
-The color to be used for Porsche Next depends on the [Porsche Color Theme](#/basic/color) in use. In order to support both simplicity and and legibility (sufficient contrast) default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche Color Themes also provide different text state colors, such as Porsche Red for active states or Grey for disabled text.
+The color to be used for Porsche Next depends on the [Porsche Color Theme](/#/web/basic/color) in use. In order to support both simplicity and and legibility (sufficient contrast) default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche Color Themes also provide different text state colors, such as Porsche Red for active states or Grey for disabled text.
 
 ### Font weights
 
@@ -235,7 +235,7 @@ of good (micro) typography, such as using the right kind of apostrophes in the r
 ---
 
 ## Accessibility
-As we stick to the common [WCAG 2.1 Standard](#/basics/accessibility)
+As we stick to the common [WCAG 2.1 Standard](/#/web/basics/accessibility)
 you should always ensure a sufficient contrast ratio when designing with text. 
 The combination of text and background color should pass the WCAG AA standard 
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
