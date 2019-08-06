@@ -28,7 +28,7 @@ Enrich your Porsche UI design experience by using the Porsche color palette in y
 
 ## Sketch Plugins
 Some of the components offer smooth layout behaviour (such as automatic resizing on content input). To get the most out of it, please install the Sketch plugin [Anima](https://www.animaapp.com/).  
-A curated list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](#/getting-started/sketch-plugins).
+A curated list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](/#/web/getting-started/sketch-plugins).
 
 ## Typeface
 You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
@@ -40,4 +40,4 @@ Before starting to design with the Sketch library, make sure to [request a Porsc
 
 ---   
    
-[Read more about the design workflow with Abstract](#/web/getting-started/design-workflow).
+[Read more about the design workflow with Abstract](/#/web/getting-started/design-workflow).
