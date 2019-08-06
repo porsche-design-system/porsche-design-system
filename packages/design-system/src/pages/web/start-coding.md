@@ -1,6 +1,6 @@
 # Start Coding
 
-Porsche UI Kit provides developers with a collection of pre-built web components for building clean and high-quality front-ends that innately come with the latest design definitions. It also contains predefined [SCSS functions, mixins and variables](#/scss-utils/introduction) to build individual components upon.
+Porsche UI Kit provides developers with a collection of pre-built web components for building clean and high-quality front-ends that innately come with the latest design definitions. It also contains predefined [SCSS functions, mixins and variables](/#/web/scss-utils/introduction) to build individual components upon.
 
 All releases of the Porsche UI Kit are available as a versioned npm package `@porscheui/ui-kit` in the private npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io)). To use specific contents, you have to integrate the NPM package as a dependency in your application.
 
