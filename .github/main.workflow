@@ -42,38 +42,38 @@ action "Test VRT: UI Kit JS" {
   runs = ["run-test-vrt", "--ui-kit-js"]
 }
 
-action "Test Snapshot: UI Kit React" {
-  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
-  uses = "./docker/node/"
-  runs = ["run-test-snapshot", "--ui-kit-react-test"]
-}
-
 action "Lint: Design System" {
-  needs = ["Test Snapshot: UI Kit React"]
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./docker/node/"
   runs = ["run-lint", "--design-system"]
 }
 
 action "Test Unit: Design System" {
-  needs = ["Test Snapshot: UI Kit React"]
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./docker/node/"
   runs = ["run-test-unit", "--design-system"]
 }
 
 action "Test E2E: Design System" {
-  needs = ["Test Snapshot: UI Kit React"]
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./docker/node/"
   runs = ["run-test-e2e", "--design-system"]
 }
 
 action "Test VRT: Design System" {
-  needs = ["Test Snapshot: UI Kit React"]
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./docker/node/"
   runs = ["run-test-vrt", "--design-system"]
 }
 
+action "Test Snapshot: UI Kit React Test" {
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
+  uses = "./docker/node/"
+  runs = ["run-test-snapshot", "--ui-kit-react-test"]
+}
+
 action "Build" {
-  needs = ["Lint: Design System", "Test Unit: Design System", "Test E2E: Design System", "Test VRT: Design System"s]
+  needs = ["Lint: Design System", "Test Unit: Design System", "Test E2E: Design System", "Test VRT: Design System", "Test Snapshot: UI Kit React Test"]
   uses = "./docker/node/"
   runs = ["run-build"]
 }
