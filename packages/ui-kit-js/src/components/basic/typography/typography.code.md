@@ -73,8 +73,6 @@ In some cases, e.g. for highlighting or graphical reasons it might be necessary 
   <template #configurator>
     <select @change="variant = $event.target.value">
       <option disabled>Select a style variant</option>
-      <option>12</option>
-      <option>16</option>
       <option>18</option>
       <option>20</option>
       <option>20-thin</option>

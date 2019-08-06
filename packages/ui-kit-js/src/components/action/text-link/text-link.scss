@@ -41,23 +41,13 @@
     flex-shrink: 0;
 
     &--copy {
-      width: $p-font-size-16 * 1.5;
-      height: $p-font-size-16 * 1.5;
+      width: $p-font-size-copy * 1.5;
+      height: $p-font-size-copy * 1.5;
     }
 
     &--small {
-      width: $p-font-size-12 * 1.5;
-      height: $p-font-size-12 * 1.5;
-    }
-
-    &--12 {
-      width: $p-font-size-12 * 1.5;
-      height: $p-font-size-12 * 1.5;
-    }
-
-    &--16 {
-      width: $p-font-size-16 * 1.5;
-      height: $p-font-size-16 * 1.5;
+      width: $p-font-size-small * 1.5;
+      height: $p-font-size-small * 1.5;
     }
 
     &--18 {

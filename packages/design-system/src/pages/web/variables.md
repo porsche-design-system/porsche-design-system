@@ -84,7 +84,7 @@ $p-font-weight-{v};
 
 ### Size
 Given values are:  
-`12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
+`small | copy | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
 
 Possible variable for usage with SCSS (where {v} is the font size value):
 ```
