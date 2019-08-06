@@ -66,8 +66,14 @@ action "Test VRT: Design System" {
   runs = ["run-test-vrt", "--design-system"]
 }
 
+action "Test Snapshot: UI Kit React Test" {
+  needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
+  uses = "./docker/node/"
+  runs = ["run-test-snapshot", "--ui-kit-react-test"]
+}
+
 action "Build" {
-  needs = ["Lint: Design System", "Test Unit: Design System", "Test E2E: Design System", "Test VRT: Design System"]
+  needs = ["Lint: Design System", "Test Unit: Design System", "Test E2E: Design System", "Test VRT: Design System", "Test Snapshot: UI Kit React Test"]
   uses = "./docker/node/"
   runs = ["run-build"]
 }

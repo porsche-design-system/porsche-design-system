@@ -5,61 +5,70 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config} from '@/../design-system.config';
-  import {decodeUrl} from '@/services/utils';
-  import Markdown from '@/components/Markdown.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import {config as webConfig} from '@/../design-system.web.config';
+import {config as appConfig} from '@/../design-system.app.config';
+import { decodeUrl } from '@/services/utils';
+import Markdown from '@/components/Markdown.vue';
+import {Pages} from '@/interface';
 
-  @Component({
-    components: {
-      Markdown,
-    },
-  })
-  export default class Page extends Vue {
+@Component({
+  components: {
+    Markdown
+  }
+})
+export default class Page extends Vue {
+  public components: any[] = [];
 
-    private components: any[] = [];
+  private get area(): string {
+    return this.$route.meta.area;
+  }
 
-    @Watch('$route')
-    private async onRouteChange(): Promise<void> {
-      await this.updateComponents();
-    }
+  private get category(): string {
+    return decodeUrl(this.$route.params.category);
+  }
 
-    private async mounted(): Promise<void> {
-      await this.updateComponents();
-    }
+  private get page(): string {
+    return decodeUrl(this.$route.params.page);
+  }
 
-    private async updateComponents(): Promise<void> {
-      if (this.isPageExistent()) {
-        await this.loadPage();
-      } else {
-        await this.redirect();
-      }
-    }
-
-    private isPageExistent(): boolean {
-      const category = decodeUrl(this.$route.params.category);
-      const page = decodeUrl(this.$route.params.page);
-
-      return config.pages[category] && config.pages[category][page];
-    }
-
-    private async loadPage(): Promise<void> {
-      const category = decodeUrl(this.$route.params.category);
-      const page = decodeUrl(this.$route.params.page);
-
-      this.components = [];
-
-      if (typeof config.pages[category][page] === 'object') {
-        for (const component of config.pages[category][page]) {
-          this.components.push((await component()).default);
-        }
-      } else {
-        this.components.push((await config.pages[category][page]()).default);
-      }
-    }
-
-    private async redirect(): Promise<void> {
-      this.$router.replace('/');
+  private get config(): Pages {
+    switch (this.area) {
+      case 'app': return appConfig.pages;
+      case 'web': return webConfig.pages;
+      default: return webConfig.pages;
     }
   }
+
+  @Watch('$route')
+  private async onRouteChange(): Promise<void> {
+    await this.loadComponents();
+  }
+
+  private async mounted(): Promise<void> {
+    await this.loadComponents();
+  }
+
+  private async loadComponents(): Promise<void> {
+    this.components = [];
+
+    try {
+      const page = this.config[this.category][this.page];
+      
+      if (typeof page === 'object') {
+        for (const file of page) {
+          this.components.push((await file()).default);
+        }
+      } else {
+        this.components.push((await page()).default);
+      }
+    } catch (e) {
+      this.redirect();
+    }
+  }
+
+  private redirect(): void {
+    this.$router.replace({name: `404-${this.area}`});
+  }
+}
 </script>

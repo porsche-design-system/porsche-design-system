@@ -4,6 +4,7 @@ import CodeBlock from '@/components/CodeBlock.vue';
 describe('CodeBlock.vue', () => {
   it('should render Vanilla JS code block by default', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag some-attribute="some value">
@@ -23,6 +24,7 @@ describe('CodeBlock.vue', () => {
 
   it('should render Angular code block after selecting it', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag some-attribute="some value">
@@ -46,6 +48,7 @@ describe('CodeBlock.vue', () => {
 
   it('should render React code block after selecting it', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag some-attribute="some value">
@@ -67,7 +70,9 @@ describe('CodeBlock.vue', () => {
   });
 
   it('should theme code block', () => {
-    const wrapper = shallowMount(CodeBlock);
+    const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text']
+    });
 
     expect(wrapper.find('.code-block').classes()).not.toContain('dark');
     expect(wrapper.find('.code-block').classes()).toContain('light');
@@ -80,6 +85,7 @@ describe('CodeBlock.vue', () => {
 
   it('should remove empty comments', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag some-attribute="some value" class="some-class">
@@ -97,6 +103,7 @@ describe('CodeBlock.vue', () => {
 
   it('should beautify code block', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag     some-attribute="some value"    class="some-class"   >
@@ -114,6 +121,7 @@ describe('CodeBlock.vue', () => {
 
   it('should remove Vue JS specific attributes from code block', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag data-v-c6a10ac0="" data-v-8dbc1b2a='' data-v-7ba5bd90 some-attribute="some value" class="some-class">
@@ -131,6 +139,7 @@ describe('CodeBlock.vue', () => {
 
   it('should remove default web components attributes from code block', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag theme="light" some-attribute="some value" class="some-class"></p-some-tag>
@@ -148,6 +157,7 @@ describe('CodeBlock.vue', () => {
 
   it('should remove Stencil JS css classes from code block', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag some-attribute="some value" class="hydrated">
@@ -178,6 +188,7 @@ describe('CodeBlock.vue', () => {
 
   it('should convert code block to Angular syntax', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag some-attribute="some value" attribute='some value' class="some-class">
@@ -197,6 +208,7 @@ describe('CodeBlock.vue', () => {
 
   it('should convert code block to React syntax', () => {
     const wrapper = shallowMount(CodeBlock, {
+      stubs: ['p-text'],
       propsData: {
         markup:
 `<p-some-tag bar='{ "bar" : "foo" }' some-attribute="some value" attribute='some value' class="some-class">

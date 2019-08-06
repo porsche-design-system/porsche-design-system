@@ -11,9 +11,13 @@ describe('Markdown', () => {
 
   it('should have no visual regression', async () => {
     expect(
-      await visualRegressionTester.test('markdown', async () => {
-        await visualRegressionTester.goTo('/#/markdown');
-      }, ['#app > .sidebar > nav'])
+      await visualRegressionTester.test(
+        'markdown',
+        async () => {
+          await visualRegressionTester.goTo('/#/web/markdown');
+        },
+        ['#app > .sidebar > nav']
+      )
     ).toBeFalsy();
   });
 });

@@ -10,8 +10,8 @@ import '@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css';
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = [/p-\w*/];
 
-applyPolyfills().then(() => {
-  defineCustomElements(window);
+applyPolyfills().then(async () => {
+  await defineCustomElements(window);
 });
 
 Vue.use({

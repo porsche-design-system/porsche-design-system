@@ -1,13 +1,28 @@
 <template>
   <div>
     <nav class="tabs">
-      <p-text class="tab" variant="28-thin" tag="div" v-if="isStoryExistent('design')">
+      <p-text
+        class="tab"
+        variant="28-thin"
+        tag="div"
+        v-if="isStoryExistent('design')"
+      >
         <router-link to="#design">Design</router-link>
       </p-text>
-      <p-text class="tab" variant="28-thin" tag="div" v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')">
+      <p-text
+        class="tab"
+        variant="28-thin"
+        tag="div"
+        v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')"
+      >
         <router-link to="#code">Code</router-link>
       </p-text>
-      <p-text class="tab" variant="28-thin" tag="div" v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')">
+      <p-text
+        class="tab"
+        variant="28-thin"
+        tag="div"
+        v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')"
+      >
         <router-link to="#props">Props</router-link>
       </p-text>
     </nav>
@@ -18,93 +33,89 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config} from '@/../design-system.config';
-  import {decodeUrl, featureToggle} from '@/services/utils';
-  import Markdown from '@/components/Markdown.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import { config as webConfig } from '@/../design-system.web.config';
+import { decodeUrl, featureToggle } from '@/services/utils';
+import Markdown from '@/components/Markdown.vue';
+import { Stories, Tabs } from '@/interface';
 
-  @Component({
-    components: {
-      Markdown,
-    },
-  })
-  export default class Story extends Vue {
+@Component({
+  components: {
+    Markdown
+  }
+})
+export default class Story extends Vue {
+  public featureToggle = featureToggle;
+  public components: any[] = [];
 
-    public featureToggle = featureToggle;
-    private components: any[] = [];
+  private get area(): string {
+    return this.$route.meta.area;
+  }
 
-    @Watch('$route')
-    private async onRouteChange(): Promise<void> {
-      await this.updateComponents();
-    }
+  private get category(): string {
+    return decodeUrl(this.$route.params.category);
+  }
 
-    private async mounted(): Promise<void> {
-      await this.updateComponents();
-    }
+  private get story(): string {
+    return decodeUrl(this.$route.params.story);
+  }
 
-    private async updateComponents(): Promise<void> {
-      if (this.isStoryExistent()) {
-        await this.loadStory();
-      } else {
-        await this.redirect();
-      }
-    }
+  private get tab(): string {
+    return this.$route.hash.substring(1).toLowerCase();
+  }
 
-    private isStoryExistent(tab: string = this.$route.hash.substring(1)): boolean {
-      const category = decodeUrl(this.$route.params.category);
-      const story = decodeUrl(this.$route.params.story);
+  private get config(): Stories {
+    return webConfig.stories;
+  }
 
-      return (
-        (tab === 'design' || tab === 'code' || tab === 'props') &&
-        config.stories[category] &&
-        config.stories[category][story] &&
-        config.stories[category][story][tab]
-      );
-    }
+  public isStoryExistent(tab: Tabs): boolean {
+    return (
+      this.config &&
+      this.config[this.category] &&
+      this.config[this.category][this.story] &&
+      this.config[this.category][this.story][tab]
+    );
+  }
 
-    private async loadStory(): Promise<void> {
-      const category = decodeUrl(this.$route.params.category);
-      const story = decodeUrl(this.$route.params.story);
-      const tab = this.$route.hash.substring(1) as 'design' | 'code' | 'props';
+  @Watch('$route')
+  private async onRouteChange(): Promise<void> {
+    await this.loadComponents();
+  }
 
-      this.components = [];
+  private async mounted(): Promise<void> {
+    await this.loadComponents();
+  }
 
-      if (typeof config.stories[category][story][tab] === 'object') {
-        for (const component of config.stories[category][story][tab]) {
-          this.components.push((await component()).default);
+  private async loadComponents(): Promise<void> {
+    this.components = [];
+
+    try {
+      const story = this.config[this.category][this.story][this.tab as Tabs];
+
+      if (typeof story === 'object') {
+        for (const file of story) {
+          this.components.push((await file()).default);
         }
       } else {
-        this.components.push((await config.stories[category][story][tab]()).default);
+        this.components.push((await story()).default);
       }
-    }
-
-    private async redirect(): Promise<void> {
-      const category = decodeUrl(this.$route.params.category);
-      const story = decodeUrl(this.$route.params.story);
-
-      if (
-        config.stories[category] &&
-        config.stories[category][story] &&
-        config.stories[category][story].design
-      ) {
-        this.$router.replace('#design');
-      } else if (
-        config.stories[category] &&
-        config.stories[category][story] &&
-        config.stories[category][story].code
-      ) {
-        this.$router.replace('#code');
-      } else if (
-        config.stories[category] &&
-        config.stories[category][story] &&
-        config.stories[category][story].props
-      ) {
-        this.$router.replace('#props');
-      } else {
-        this.$router.replace('/');
-      }
+    } catch (e) {
+      this.redirect();
     }
   }
+
+  private async redirect(): Promise<void> {
+    if (this.isStoryExistent('design')) {
+      this.$router.replace('#design');
+    } else if (this.isStoryExistent('code')) {
+      this.$router.replace('#code');
+    } else if (this.isStoryExistent('props')) {
+      this.$router.replace('#props');
+    } else {
+      this.$router.replace({name: `404-${this.area}`});
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
