@@ -18,9 +18,9 @@
     border: 0;
     height: 1px;
     background: $p-color-neutral-grey-2;
-  }
 
-  .spacing-small {
-    margin: 1.125rem 0;
+    &.spacing-small {
+      margin: $p-spacing-24 0;
+    }
   }
 </style>

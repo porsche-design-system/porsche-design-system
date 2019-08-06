@@ -1,3 +1,4 @@
+// @ts-ignore
 import {Pages} from '@/interface';
 
 export interface DesignSystemAppConfig {

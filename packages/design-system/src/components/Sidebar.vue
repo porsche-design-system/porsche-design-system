@@ -5,10 +5,7 @@
         <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
-            <router-link
-              class="link"
-              :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`"
-            >
+            <router-link class="link" :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`">
               <p-text-link tag="span" color="inherit">{{ page }}</p-text-link>
             </router-link>
           </li>
@@ -30,10 +27,7 @@
             :key="index"
             v-if="featureToggle('Q2/2019 Components') || ['Color', 'Typography', 'Grid', 'Spacing'].includes(story)"
           >
-            <router-link
-              class="link"
-              :to="`/web/components/${encodeUrl(category)}/${encodeUrl(story)}`"
-            >
+            <router-link class="link" :to="`/web/components/${encodeUrl(category)}/${encodeUrl(story)}`">
               <p-text-link tag="span" color="inherit">{{ story }}</p-text-link>
             </router-link>
           </li>

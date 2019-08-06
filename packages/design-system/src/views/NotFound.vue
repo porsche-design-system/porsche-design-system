@@ -1,8 +1,9 @@
 <template>
   <Markdown>
     <div class="vmark">
-      <h1>404</h1>
-      <p>This page does not exist.</p>
+      <h1>404 - Page not found</h1>
+      <p>
+        The page you are looking for can not be found. It has either been replaced, deleted or does no longer exist. You can therefore return to the last page or use the navigation to continue.</p>
     </div>
   </Markdown>
 </template>

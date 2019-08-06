@@ -1,10 +1,10 @@
 <template>
   <div>
     <nav class="tabs">
-      <p-text 
-        class="tab" 
-        variant="28-thin" 
-        tag="div" 
+      <p-text
+        class="tab"
+        variant="28-thin"
+        tag="div"
         v-if="isStoryExistent('design')"
       >
         <router-link to="#design">Design</router-link>
@@ -37,7 +37,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 import { config as webConfig } from '@/../design-system.web.config';
 import { decodeUrl, featureToggle } from '@/services/utils';
 import Markdown from '@/components/Markdown.vue';
-import { Stories } from '@/interface';
+import { Stories, Tabs } from '@/interface';
 
 @Component({
   components: {
@@ -46,8 +46,7 @@ import { Stories } from '@/interface';
 })
 export default class Story extends Vue {
   public featureToggle = featureToggle;
-  
-  private components: any[] = [];
+  public components: any[] = [];
 
   private get area(): string {
     return this.$route.meta.area;
@@ -61,15 +60,15 @@ export default class Story extends Vue {
     return decodeUrl(this.$route.params.story);
   }
 
-  private get tab(): 'design' | 'code' | 'props' {
-    return this.$route.hash.substring(1).toLowerCase() as 'design' | 'code' | 'props';
+  private get tab(): string {
+    return this.$route.hash.substring(1).toLowerCase();
   }
 
   private get config(): Stories {
     return webConfig.stories;
   }
 
-  public isStoryExistent(tab: 'design' | 'code' | 'props'): boolean {
+  public isStoryExistent(tab: Tabs): boolean {
     return (
       this.config &&
       this.config[this.category] &&
@@ -89,9 +88,9 @@ export default class Story extends Vue {
 
   private async loadComponents(): Promise<void> {
     this.components = [];
-    
+
     try {
-      const story = this.config[this.category][this.story][this.tab];
+      const story = this.config[this.category][this.story][this.tab as Tabs];
 
       if (typeof story === 'object') {
         for (const file of story) {
