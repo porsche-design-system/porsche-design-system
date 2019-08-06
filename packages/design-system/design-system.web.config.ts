@@ -6,117 +6,168 @@ export interface DesignSystemWebConfig {
   stories: Stories;
 }
 
-const empty = '';
-
 export const config: DesignSystemWebConfig = {
   pages: {
     'Getting Started': {
-      About: () => import(`@/pages/web/${empty}about.md`),
-      'Start Designing': () => import(`@/pages/web/${empty}start-designing.md`),
-      'Design Workflow': () => import(`@/pages/web/${empty}design-workflow.md`),
-      'Sketch Plugins': () => import(`@/pages/web/${empty}sketch-plugins.md`),
-      'Start Coding': () => import(`@/pages/web/${empty}start-coding.md`)
+      // @ts-ignore
+      About: () => import(`@/pages/web/about.md`),
+      // @ts-ignore
+      'Start Designing': () => import(`@/pages/web/start-designing.md`),
+      // @ts-ignore
+      'Design Workflow': () => import(`@/pages/web/design-workflow.md`),
+      // @ts-ignore
+      'Sketch Plugins': () => import(`@/pages/web/sketch-plugins.md`),
+      // @ts-ignore
+      'Start Coding': () => import(`@/pages/web/start-coding.md`)
     },
     News: {
-      Updates: () => import(`@/pages/web/${empty}updates.md`),
-      Versioning: () => import(`@/pages/web/${empty}versioning.md`),
-      Roadmap: () => import(`@/pages/web/${empty}roadmap.md`)
+      // @ts-ignore
+      Updates: () => import(`@/pages/web/updates.md`),
+      // @ts-ignore
+      Versioning: () => import(`@/pages/web/versioning.md`),
+      // @ts-ignore
+      Roadmap: () => import(`@/pages/web/roadmap.md`)
     },
     Help: {
-      Support: () => import(`@/pages/web/${empty}support.md`),
-      Faq: () => import(`@/pages/web/${empty}faq.md`)
+      // @ts-ignore
+      Support: () => import(`@/pages/web/support.md`),
+      // @ts-ignore
+      Faq: () => import(`@/pages/web/faq.md`)
     },
     Basics: {
-      'Browser Compatibility': () => import(`@/pages/web/${empty}browser-compatibility.md`),
-      'Quality Criteria': () => import(`@/pages/web/${empty}quality-criteria.md`),
-      'Accessibility Criteria': () => import(`@/pages/web/${empty}accessibility.md`)
+      // @ts-ignore
+      'Browser Compatibility': () => import(`@/pages/web/browser-compatibility.md`),
+      // @ts-ignore
+      'Quality Criteria': () => import(`@/pages/web/quality-criteria.md`),
+      // @ts-ignore
+      'Accessibility Criteria': () => import(`@/pages/web/accessibility.md`)
     },
     'Scss Utils': {
-      Introduction: () => import(`@/pages/web/${empty}introduction.md`),
-      Variables: () => import(`@/pages/web/${empty}variables.md`),
-      Mixins: () => import(`@/pages/web/${empty}mixins.md`),
-      Functions: () => import(`@/pages/web/${empty}functions.md`),
+      // @ts-ignore
+      Introduction: () => import(`@/pages/web/introduction.md`),
+      // @ts-ignore
+      Variables: () => import(`@/pages/web/variables.md`),
+      // @ts-ignore
+      Mixins: () => import(`@/pages/web/mixins.md`),
+      // @ts-ignore
+      Functions: () => import(`@/pages/web/functions.md`),
     },
   },
   stories: {
     Basic: {
       Color: {
-        design: () => import(`@/../../ui-kit-js/src/components/basic/color/${empty}color.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/basic/color/${empty}color.code.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/basic/color/color.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/basic/color/color.code.md`)
       },
       Typography: {
-        design: () => import(`@/../../ui-kit-js/src/components/basic/typography/${empty}typography.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/basic/typography/${empty}typography.code.md`),
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.code.md`),
         props: [
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/${empty}headline.props.md`),
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/${empty}text.props.md`)
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.props.md`),
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.props.md`)
         ]
       }
     },
     Action: {
       'Button Regular': {
-        design: () => import(`@/../../ui-kit-js/src/components/action/button-regular/${empty}button-regular.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/action/button-regular/${empty}button-regular.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/action/button-regular/${empty}button-regular.props.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.code.md`),
+        // @ts-ignore
+        props: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.props.md`)
       },
       'Button Icon': {
-        design: () => import(`@/../../ui-kit-js/src/components/action/button-icon/${empty}button-icon.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/action/button-icon/${empty}button-icon.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/action/button-icon/${empty}button-icon.props.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.code.md`),
+        // @ts-ignore
+        props: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.props.md`)
       },
       'Text Link': {
-        design: () => import(`@/../../ui-kit-js/src/components/action/text-link/${empty}text-link.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/action/text-link/${empty}text-link.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/action/text-link/${empty}text-link.props.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.code.md`),
+        // @ts-ignore
+        props: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.props.md`)
       }
     },
     Content: {
       'Text List': {
-        design: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/content/text-list/${empty}text-list.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list/${empty}text-list.props.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list.code.md`),
+        // @ts-ignore
+        props: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list/text-list.props.md`)
       }
     },
     Feedback: {
       Spinner: {
-        design: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/${empty}spinner.props.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.code.md`),
+        // @ts-ignore
+        props: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.props.md`)
       }
     },
     Icon: {
       Icon: {
-        design: () => import(`@/../../ui-kit-js/src/components/icon/icon/${empty}icon.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/icon/icon/${empty}icon.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/icon/icon/${empty}icon.props.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.code.md`),
+        // @ts-ignore
+        props: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.props.md`)
       }
     },
     Layout: {
       Flex: {
-        code: () => import(`@/../../ui-kit-js/src/components/layout/flex/${empty}flex.code.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/layout/flex/flex.code.md`),
         props: [
-          () => import(`@/../../ui-kit-js/src/components/layout/flex/flex/${empty}flex.props.md`),
-          () => import(`@/../../ui-kit-js/src/components/layout/flex/flex-item/${empty}flex-item.props.md`)
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/layout/flex/flex/flex.props.md`),
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/layout/flex/flex-item/flex-item.props.md`)
         ]
       },
       Grid: {
-        design: () => import(`@/../../ui-kit-js/src/components/layout/grid/${empty}grid.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/layout/grid/${empty}grid.code.md`),
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.code.md`),
         props: [
-          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid/${empty}grid.props.md`),
-          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid-child/${empty}grid-child.props.md`)
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid/grid.props.md`),
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid-child/grid-child.props.md`)
         ]
       },
       Spacing: {
-        design: () => import(`@/../../ui-kit-js/src/components/layout/spacing/${empty}spacing.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/layout/spacing/${empty}spacing.code.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.code.md`)
       }
     },
     Navigation: {
       Pagination: {
-        design: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/${empty}pagination.design.md`),
-        code: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/${empty}pagination.code.md`),
-        props: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/${empty}pagination.props.md`)
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`),
+        // @ts-ignore
+        props: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`)
       }
     }
   }
