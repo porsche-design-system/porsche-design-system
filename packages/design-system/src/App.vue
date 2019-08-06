@@ -15,40 +15,40 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
-  import Header from '@/components/Header.vue';
-  import Sidebar from '@/components/Sidebar.vue';
-  import Footer from '@/components/Footer.vue';
-  import Divider from '@/components/Divider.vue';
-  import Menu from '@/components/Menu.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import Header from '@/components/Header.vue';
+import Sidebar from '@/components/Sidebar.vue';
+import Footer from '@/components/Footer.vue';
+import Divider from '@/components/Divider.vue';
+import Menu from '@/components/Menu.vue';
 
-  @Component({
-    components: {
-      Header,
-      Sidebar,
-      Footer,
-      Divider,
-      Menu
-    }
-  })
-  export default class App extends Vue {
-    public isMenuActive: boolean = false;
-
-    public onToggleMenu(isActive: boolean): void {
-      this.isMenuActive = isActive;
-    }
+@Component({
+  components: {
+    Header,
+    Sidebar,
+    Footer,
+    Divider,
+    Menu
   }
+})
+export default class App extends Vue {
+  public isMenuActive: boolean = false;
+
+  public onToggleMenu(isActive: boolean): void {
+    this.isMenuActive = isActive;
+  }
+}
 </script>
 
 <style lang="scss">
-  main {
-    display: block;
-  }
-
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  main {
+    display: block;
   }
 </style>
 

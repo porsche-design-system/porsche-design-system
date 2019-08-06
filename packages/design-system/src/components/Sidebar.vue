@@ -1,20 +1,20 @@
 <template>
   <nav>
-    <ul class="list">
+    <ul v-if="config.pages" class="list">
       <li v-for="(pages, category, index) in config.pages" :key="index">
         <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
-            <router-link class="link" :to="`/${encodeUrl(category)}/${encodeUrl(page)}`">
+            <router-link class="link" :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`">
               <p-text-link tag="span" color="inherit">{{ page }}</p-text-link>
             </router-link>
           </li>
         </ul>
       </li>
     </ul>
-    <Divider spacing="small"/>
-    <p-headline variant="headline-4" tag="h2">Components</p-headline>
-    <ul class="list">
+    <Divider v-if="config.stories" spacing="small" />
+    <p-headline v-if="config.stories" variant="headline-4" tag="h2">Components</p-headline>
+    <ul v-if="config.stories" class="list">
       <li
         v-for="(stories, category, index) in config.stories"
         :key="index"
@@ -27,7 +27,7 @@
             :key="index"
             v-if="featureToggle('Q2/2019 Components') || ['Color', 'Typography', 'Grid', 'Spacing'].includes(story)"
           >
-            <router-link class="link" :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`">
+            <router-link class="link" :to="`/web/components/${encodeUrl(category)}/${encodeUrl(story)}`">
               <p-text-link tag="span" color="inherit">{{ story }}</p-text-link>
             </router-link>
           </li>
@@ -38,21 +38,33 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
-  import {config} from '@/../design-system.config';
-  import {encodeUrl, featureToggle} from '@/services/utils';
-  import Divider from '@/components/Divider.vue';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import {config as webConfig, DesignSystemWebConfig} from '@/../design-system.web.config';
+import {config as appConfig, DesignSystemAppConfig} from '@/../design-system.app.config';
+import {encodeUrl, featureToggle} from '@/services/utils';
+import Divider from '@/components/Divider.vue';
 
-  @Component({
-    components: {
-      Divider
-    }
-  })
-  export default class Sidebar extends Vue {
-    public config = config;
-    public encodeUrl = encodeUrl;
-    public featureToggle = featureToggle;
+@Component({
+  components: {
+    Divider
   }
+})
+export default class Sidebar extends Vue {
+  public encodeUrl = encodeUrl;
+  public featureToggle = featureToggle;
+
+  get area(): string {
+    return this.$route.meta.area;
+  }
+
+  get config(): DesignSystemWebConfig | DesignSystemAppConfig {
+    switch (this.area) {
+      case 'app': return appConfig;
+      case 'web': return webConfig;
+      default: return webConfig;
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -83,14 +95,14 @@
     color: $p-color-porsche-black;
     display: inline-block;
 
-    &.router-link-active,
-    &:hover {
-      color: $p-color-porsche-red;
-    }
-
-    &:focus {
-      outline: 1px solid $p-color-state-focus;
-      outline-offset: 4px;
-    }
+  &.router-link-active,
+  &:hover {
+    color: $p-color-porsche-red;
   }
+
+  &:focus {
+    outline: 1px solid $p-color-state-focus;
+    outline-offset: 4px;
+  }
+}
 </style>

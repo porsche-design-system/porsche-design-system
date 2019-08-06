@@ -5,45 +5,44 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator';
-  import Markdown from '@/components/Markdown.vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import Markdown from '@/components/Markdown.vue';
 
-  @Component({
-    components: {
-      Markdown,
-    },
-  })
-  export default class Custom extends Vue {
+@Component({
+  components: {
+    Markdown
+  }
+})
+export default class Custom extends Vue {
+  public component: any = null;
 
-    private component: any = null;
+  private get area(): string {
+    return this.$route.meta.area;
+  }
 
-    @Watch('$route')
-    private async onRouteChange(): Promise<void> {
-      await this.updateComponent();
-    }
+  private get page(): string {
+    return this.$route.params.page.toLowerCase();
+  }
 
-    private async mounted(): Promise<void> {
-      await this.updateComponent();
-    }
+  @Watch('$route')
+  private async onRouteChange(): Promise<void> {
+    await this.loadComponent();
+  }
 
-    private async updateComponent(): Promise<void> {
-      if (this.isPageExistent()) {
-        await this.loadPage();
-      } else {
-        await this.redirect();
-      }
-    }
+  private async mounted(): Promise<void> {
+    await this.loadComponent();
+  }
 
-    private isPageExistent(): boolean {
-      return ['markdown', 'license'].includes(this.$route.params.page);
-    }
-
-    private async loadPage(): Promise<void> {
-      this.component = (await (() => import(`@/pages/${this.$route.params.page}.md`))()).default;
-    }
-
-    private async redirect(): Promise<void> {
-      this.$router.replace('/');
+  private async loadComponent(): Promise<void> {
+    try {
+      this.component = (await (() => import(`@/pages/${this.page}.md`))()).default;
+    } catch (e) {
+      this.redirect();
     }
   }
+
+  private redirect(): void {
+    this.$router.replace({name: `404-${this.area}`});
+  }
+}
 </script>

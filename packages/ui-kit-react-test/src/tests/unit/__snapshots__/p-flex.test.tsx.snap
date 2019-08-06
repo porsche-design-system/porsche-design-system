@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flex component should render correctly 1`] = `
+<p-flex>
+  <p-flex-item>
+    Lorem ipsum
+  </p-flex-item>
+</p-flex>
+`;
+
+exports[`Flex component should render correctly with gap of 16 1`] = `
+<p-flex
+  gap={16}
+>
+  <p-flex-item>
+    Lorem ipsum
+  </p-flex-item>
+</p-flex>
+`;
+
+exports[`Flex component should render correctly with responsive direction={{ base: "column", l: "row" }} 1`] = `
+<p-flex
+  direction={
+    Object {
+      "base": "column",
+      "l": "row",
+    }
+  }
+>
+  <p-flex-item>
+    Lorem ipsum
+  </p-flex-item>
+</p-flex>
+`;

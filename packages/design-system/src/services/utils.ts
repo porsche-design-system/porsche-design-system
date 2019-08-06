@@ -1,9 +1,11 @@
 export const encodeUrl = (param: string): string => {
-  return param.toLowerCase().replace(/\s+/g, '-');
+  return (param || '')
+    .toLowerCase()
+    .replace(/\s+/g, '-');
 };
 
 export const decodeUrl = (param: string): string => {
-  return param
+  return (param || '')
     .toLowerCase()
     .replace(/-+/g, ' ')
     .split(' ')
