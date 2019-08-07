@@ -4,7 +4,7 @@ describe('Color', () => {
   });
 
   it('Should navigate through main navigation', () => {
-    cy.visit('/web');
+    cy.visit('/#/web');
 
     cy.get('#app aside nav a')
       .contains('Color')

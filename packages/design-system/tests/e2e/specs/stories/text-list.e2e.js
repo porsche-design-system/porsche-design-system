@@ -1,4 +1,4 @@
-describe('Pagination', () => {
+describe('Text List', () => {
   beforeEach(() => {
     window.localStorage.setItem('Feature: Q2/2019 Components', 'true');
   });
@@ -7,19 +7,19 @@ describe('Pagination', () => {
     cy.visit('/#/web');
 
     cy.get('#app aside nav a')
-      .contains('Pagination')
+      .contains('Text List')
       .click()
       .parents('a')
       .should('have.class', 'router-link-active');
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'Pagination');
+      .and('contain', 'Text List');
   });
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/web/components/navigation/pagination');
+      cy.visit('/#/web/components/action/text-link');
     });
 
     it('Should show tab navigation with first tab activated', () => {
@@ -43,7 +43,7 @@ describe('Pagination', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Pagination');
+      cy.get('#app main h1').should('contain', 'Text List');
     });
 
     it('Should show code documentation', () => {
@@ -52,7 +52,7 @@ describe('Pagination', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Pagination');
+      cy.get('#app main h1').should('contain', 'Text List');
     });
 
     it('Should show props documentation', () => {
@@ -61,7 +61,7 @@ describe('Pagination', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Pagination');
+      cy.get('#app main h1').should('contain', 'Text List');
     });
   });
 });
