@@ -17,7 +17,7 @@
       <p-grid>
         <p-grid-child size='{"base": 12, "m": 4}'>
           <p-headline variant="headline-3" tag="h1">Porsche UI Kit</p-headline>
-          <p-text variant="24">Design System</p-text>
+          <p-text variant="24">Web Design System</p-text>
           <p-text class="p-spacing-mt-8">
             <router-link to="/web/getting-started/about">Learn more about it</router-link>
           </p-text>
