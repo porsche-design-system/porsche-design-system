@@ -1,4 +1,4 @@
-# Text list
+# Text List
 
 ## Introduction
 Text lists are used to display listed data in form of an unordered or ordered list. A list depends on 2 parts (like any native HTML list): A list wrapper which defines the type of the list (unordered or ordered) and the list items. Nesting is also provided and follows the same nesting rules like native HTML lists.

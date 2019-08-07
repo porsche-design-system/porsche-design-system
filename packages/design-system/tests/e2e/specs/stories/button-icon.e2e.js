@@ -4,7 +4,7 @@ describe('Button Icon', () => {
   });
 
   it('Should navigate through main navigation', () => {
-    cy.visit('/web');
+    cy.visit('/#/web');
 
     cy.get('#app aside nav a')
       .contains('Button Icon')
@@ -31,7 +31,7 @@ describe('Button Icon', () => {
         expect($a.eq(1), 'second item')
           .to.contain('Code')
           .not.to.have.class('router-link-active');
-        expect($a.eq(2), 'second item')
+        expect($a.eq(2), 'third item')
           .to.contain('Props')
           .not.to.have.class('router-link-active');
       });

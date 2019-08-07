@@ -1,6 +1,6 @@
 describe('Accessibility Criteria', () => {
   it('Should navigate through main navigation and show page title', () => {
-    cy.visit('/web');
+    cy.visit('/#/web');
 
     cy.get('#app aside nav a')
       .contains('Accessibility Criteria')
