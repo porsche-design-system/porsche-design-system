@@ -53,8 +53,9 @@ export default class Page extends Vue {
     this.components = [];
 
     try {
+      await this.$store.dispatch('toggleLoadingAsync', true);
       const page = this.config[this.category][this.page];
-      
+
       if (typeof page === 'object') {
         for (const file of page) {
           this.components.push((await file()).default);
@@ -62,6 +63,7 @@ export default class Page extends Vue {
       } else {
         this.components.push((await page()).default);
       }
+      await this.$store.dispatch('toggleLoadingAsync', false);
     } catch (e) {
       this.redirect();
     }

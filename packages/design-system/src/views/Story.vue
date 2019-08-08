@@ -90,6 +90,7 @@ export default class Story extends Vue {
     this.components = [];
 
     try {
+      await this.$store.dispatch('toggleLoadingAsync', true);
       const story = this.config[this.category][this.story][this.tab as Tabs];
 
       if (typeof story === 'object') {
@@ -99,6 +100,7 @@ export default class Story extends Vue {
       } else {
         this.components.push((await story()).default);
       }
+      await this.$store.dispatch('toggleLoadingAsync', false);
     } catch (e) {
       this.redirect();
     }
