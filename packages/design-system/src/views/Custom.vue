@@ -35,7 +35,9 @@ export default class Custom extends Vue {
 
   private async loadComponent(): Promise<void> {
     try {
+      await this.$store.dispatch('toggleLoadingAsync', true);
       this.component = (await (() => import(`@/pages/${this.page}.md`))()).default;
+      await this.$store.dispatch('toggleLoadingAsync', false);
     } catch (e) {
       this.redirect();
     }

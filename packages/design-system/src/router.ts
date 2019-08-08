@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import $store from '@/store';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     // Home
     {
@@ -85,3 +86,14 @@ export default new Router({
     return { x: 0, y: 0 };
   }
 });
+
+router.beforeEach(async (to, from, next) => {
+  await $store.dispatch('toggleLoadingAsync', true);
+  next();
+});
+
+router.afterEach(async () => {
+  await $store.dispatch('toggleLoadingAsync', false);
+});
+
+export default router;

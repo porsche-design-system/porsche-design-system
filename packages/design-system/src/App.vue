@@ -8,14 +8,15 @@
       <Footer/>
     </aside>
     <main class="content" :class="{ 'is-hidden': isMenuActive }">
-      <router-view/>
+      <router-view class="router-view" :class="{ 'is-loading': isLoading }"/>
+      <p-spinner class="spinner" size="medium" ally-label="Loading page"></p-spinner>
     </main>
     <Menu class="menu" @toggle="onToggleMenu"></Menu>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer.vue';
@@ -33,6 +34,10 @@ import Menu from '@/components/Menu.vue';
 })
 export default class App extends Vue {
   public isMenuActive: boolean = false;
+
+  public get isLoading(): boolean {
+    return this.$store.getters.loading;
+  }
 
   public onToggleMenu(isActive: boolean): void {
     this.isMenuActive = isActive;
@@ -89,7 +94,6 @@ export default class App extends Vue {
   .content {
     position: relative;
     min-height: 100vh;
-    padding: $p-spacing-32;
     background: $p-color-porsche-light;
     z-index: 20;
 
@@ -120,9 +124,35 @@ export default class App extends Vue {
     }
 
     @include breakpoint('s') {
-      padding: $p-spacing-64;
       margin-left: rem(280px);
     }
+  }
+
+  .router-view {
+    position: relative;
+    min-height: 100vh;
+    padding: $p-spacing-32;
+    z-index: 2;
+    background: $p-color-porsche-light;
+    opacity: 1;
+    transition: opacity $p-animation-hover-duration $p-animation-hover-bezier;
+
+    @include breakpoint('s') {
+      padding: $p-spacing-64;
+    }
+
+    &.is-loading {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
   }
 
   .menu {
