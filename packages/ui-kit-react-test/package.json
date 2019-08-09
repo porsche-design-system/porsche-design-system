@@ -1,9 +1,9 @@
 {
   "name": "@porscheui/ui-kit-react-test",
-  "version": "1.0.0-alpha.2",
+  "version": "0.0.0",
   "scope": "@porscheui",
   "private": true,
-  "description": "Porsche UI Kit – A Porsche React component library.",
+  "description": "Integration test setup for Porsche UI Kit React components",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN https://ui.porsche.com",
   "contributors": [
@@ -26,27 +26,28 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "dependencies": {
-    "@porscheui/ui-kit-react": "^1.0.0-alpha.2",
+    "@porscheui/ui-kit-react": "1.0.0-alpha.3",
     "@types/jest": "24.0.17",
-    "@types/node": "12.7.0",
-    "@types/react": "16.8.24",
+    "@types/node": "12.7.1",
+    "@types/react": "16.9.0",
     "@types/react-dom": "16.8.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-scripts": "3.0.1",
     "typescript": "3.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false --bail"
+    "test": "react-scripts test --watchAll=false --bail",
+    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/react-test-renderer": "^16.8.3",
+    "@types/react-test-renderer": "^16.9.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.9.0"
   }
 }

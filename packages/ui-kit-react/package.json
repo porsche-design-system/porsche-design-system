@@ -1,6 +1,6 @@
 {
   "name": "@porscheui/ui-kit-react",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "scope": "@porscheui",
   "description": "Porsche UI Kit – A Porsche React component library.",
   "sideEffects": false,
@@ -30,9 +30,9 @@
   },
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "clean": "rm -rf dist",
     "compile": "yarn tsc",
-    "tsc": "tsc -p ."
+    "tsc": "tsc -p .",
+    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & rm -rf ./dist"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -42,17 +42,17 @@
   ],
   "devDependencies": {
     "@types/jest": "^24.0.17",
-    "@types/node": "^12.7.0",
-    "@types/react": "^16.8.24",
+    "@types/node": "^12.7.1",
+    "@types/react": "^16.9.0",
     "@types/react-dom": "^16.8.5",
     "jest": "^24.8.0",
     "jest-dom": "^4.0.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "typescript": "~3.5.3"
   },
   "dependencies": {
-    "@porscheui/ui-kit-js": "^1.0.0-alpha.2"
+    "@porscheui/ui-kit-js": "1.0.0-alpha.3"
   },
   "peerDependencies": {
     "react": "^16.7.0",
