@@ -29,7 +29,7 @@
     "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "build": "yarn clean && yarn compile",
+    "build": "rm -rf ./dist && yarn compile",
     "compile": "yarn tsc",
     "tsc": "tsc -p .",
     "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & rm -rf ./dist"

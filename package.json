@@ -16,8 +16,12 @@
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
   "scripts": {
-    "start": "yarn --cwd ./packages/ui-kit-js build && (yarn --cwd ./packages/ui-kit-js start & yarn --cwd ./packages/design-system start)",
-    "build": "yarn --cwd ./packages/ui-kit-js build && yarn --cwd ./packages/design-system build",
+    "start": "yarn build:ui-kit-js && (yarn --cwd ./packages/ui-kit-js start & yarn --cwd ./packages/design-system start)",
+    "build": "concurrently -n \"ui-kit-js\" \"yarn build:ui-kit-js\" && concurrently --kill-others-on-fail -n \"ui-kit-angular,design-system\" \"yarn build:ui-kit-angular\" \"yarn build:design-system\"",
+    "build:ui-kit-js": "yarn --cwd ./packages/ui-kit-js build",
+    "build:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular build",
+    "build:ui-kit-react": "yarn --cwd ./packages/ui-kit-react build",
+    "build:design-system": "yarn --cwd ./packages/design-system build",
     "lint": "concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn lint:ui-kit-js\" \"yarn lint:design-system\"",
     "lint:ui-kit-js": "yarn --cwd ./packages/ui-kit-js lint",
     "lint:design-system": "yarn --cwd ./packages/design-system lint",
@@ -27,10 +31,10 @@
     "test:unit:design-system": "yarn --cwd ./packages/design-system test:unit",
     "test:e2e": "concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn test:e2e:ui-kit-js\" \"yarn test:e2e:design-system\"",
     "test:e2e:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:e2e",
-    "test:e2e:design-system": "yarn --cwd ./packages/ui-kit-js build && yarn --cwd ./packages/design-system test:e2e --headless",
+    "test:e2e:design-system": "yarn build:ui-kit-js && yarn --cwd ./packages/design-system test:e2e --headless",
     "test:vrt": "concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn test:vrt:ui-kit-js\" \"yarn test:vrt:design-system\"",
     "test:vrt:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:vrt",
-    "test:vrt:design-system": "yarn --cwd ./packages/ui-kit-js build && yarn --cwd ./packages/design-system test:vrt",
+    "test:vrt:design-system": "yarn build:ui-kit-js && yarn --cwd ./packages/design-system test:vrt",
     "test:snapshot": "yarn test:snapshot:ui-kit-react-test",
     "test:snapshot:ui-kit-react-test": "yarn --cwd ./packages/ui-kit-react-test test",
     "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & yarn --cwd ./packages/ui-kit-js clean & yarn --cwd ./packages/ui-kit-scss-utils clean & yarn --cwd ./packages/design-system clean & yarn --cwd ./packages/ui-kit-angular clean & yarn --cwd ./packages/ui-kit-react clean & yarn --cwd ./packages/ui-kit-react-test clean"
