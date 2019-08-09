@@ -1,7 +1,7 @@
 # Button Icon
 
 ## Buttons as button elements
-Buttons used as `<button>` elements to trigger actions.
+Button Icon used as `<button>` element to trigger actions.
 
 ### Basic
 
@@ -23,7 +23,7 @@ Buttons used as `<button>` elements to trigger actions.
   </template>
 </Playground>
 
-### Transparent
+### Transparent (Icon)
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -36,7 +36,7 @@ Buttons used as `<button>` elements to trigger actions.
 ---
 
 ## Button as link element
-Buttons used as link elements `<a>`, e.g. as a navigation item.
+Button Icon used as link element `<a>`, e.g. as a navigation item.
 
 ### Basic
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
@@ -56,7 +56,7 @@ Buttons used as link elements `<a>`, e.g. as a navigation item.
   </template>
 </Playground>
 
-### Transparent
+### Transparent (Icon)
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-icon href="/lorem/ipsum" variant="transparent" :theme="theme" />
@@ -67,9 +67,8 @@ Buttons used as link elements `<a>`, e.g. as a navigation item.
 
 ---
 
-## Button with specific icon
-If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property.
-If you need to link to another icon hosted somewhere else, just set the whole icon path to the `icon` prop.
+## Button Icon with specific icon
+If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `icon` prop.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>

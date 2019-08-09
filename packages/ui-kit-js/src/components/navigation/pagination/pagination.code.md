@@ -1,8 +1,5 @@
 # Pagination
 
-## Introduction
-The pagination is the component of choice primarily to navigate through listed content (e.g. search results, archives etc.).
-
 ## Basic usage
 <Playground :themeable="true">
   <template v-slot="{theme}">
@@ -10,8 +7,8 @@ The pagination is the component of choice primarily to navigate through listed c
   </template>
 </Playground>
 
-## Differences in mobile and Tablet/Desktop viewports
-To correctly display the pagination in different viewport sizes, the maximum amount of page links displayed is meant to be reduced for lower resolutions.
+## Differences in mobile and tablet/desktop viewports
+To correctly display the Pagination in different viewport sizes, the maximum amount of page links displayed is meant to be reduced for lower resolutions.
 Currently the maximum number is either `7` (desktop/tablet) or `5` (mobile). The components handles viewport sizing internally by default.
 To adapt the maximum number of page links for smaller screens for individual breakpoints, the `page-range` property can be changed to `1` (desktop default) or `0` (mobile).
 
@@ -39,7 +36,7 @@ To adapt the maximum number of page links for smaller screens for individual bre
 --- 
 
 ## Playground
-Test pagination behaviour by changing values for total amount of items, items to display per page and number of currently active page.
+Test Pagination behaviour by changing values for total amount of items, items to display per page and number of currently active page.
 
 <Playground :themeable="true">
   <template v-slot:configurator="{theme}">

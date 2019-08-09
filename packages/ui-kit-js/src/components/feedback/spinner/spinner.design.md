@@ -98,12 +98,14 @@ where a loader makes sense and which loader type is best suited.
 
 ---
 
+## Accessibility
+
+* The ally-label property should be used to indicate the loading state.
+
+---
+
 ## Related components
 * [Button Regular](/#/web/components/action/button-regular)
 * [Button Icon](/#/web/components/action/button-icon)
 
----
 
-## Accessibility
-
-* The ally-label property should be used to indicate the loading state.
