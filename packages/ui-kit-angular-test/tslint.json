@@ -1,5 +1,8 @@
 {
   "extends": "tslint:recommended",
+  "linterOptions": {
+    "exclude": ["node_modules/**", "*.json", "**/*.json", "**/*.spec.ts", "**/*.spec.tsx"]
+  },
   "rulesDirectory": [
     "codelyzer"
   ],

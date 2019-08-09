@@ -1,21 +1,13 @@
 {
-  "name": "@porscheui/monorepo",
-  "version": "1.0.0",
-  "scope": "@porscheui",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "Porsche UI Monorepo",
-  "license": "SEE LICENSE IN https://ui.porsche.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
   },
-  "keywords": [
-    "porsche",
-    "ui",
-    "components",
-    "design-system",
-    "react"
-  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Stephan Schröter <stephan.schroeter@mhp.com>",
@@ -41,9 +33,6 @@
     "test:vrt:design-system": "yarn --cwd ./packages/ui-kit-js build && yarn --cwd ./packages/design-system test:vrt",
     "test:snapshot": "yarn test:snapshot:ui-kit-react-test",
     "test:snapshot:ui-kit-react-test": "yarn --cwd ./packages/ui-kit-react-test test",
-    "clean": "rm -rf ./node_modules & yarn --cwd ./packages/ui-kit-js clean & yarn --cwd ./packages/design-system clean"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & yarn --cwd ./packages/ui-kit-js clean & yarn --cwd ./packages/ui-kit-scss-utils clean & yarn --cwd ./packages/design-system clean & yarn --cwd ./packages/ui-kit-angular clean & yarn --cwd ./packages/ui-kit-angular-test clean & yarn --cwd ./packages/ui-kit-react clean & yarn --cwd ./packages/ui-kit-react-test clean"
+  }
 }
