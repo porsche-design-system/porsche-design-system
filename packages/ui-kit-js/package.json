@@ -60,7 +60,7 @@
     "@ionic-enterprise/react-output-plugin": "^0.0.5",
     "@porscheui/ui-kit-scss-utils": "^1.0.0-alpha.1",
     "@porscheui/visual-regression-tester": "^1.1.1",
-    "@stencil/core": "^1.2.4",
+    "@stencil/core": "1.2.3",
     "@stencil/postcss": "^1.0.1",
     "@stencil/sass": "^1.0.1",
     "@types/autoprefixer": "^9.5.0",
