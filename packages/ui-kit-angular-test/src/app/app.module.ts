@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import {ComponentLibraryModule} from "@porscheui/ui-kit-angular";
+import {AppComponent} from './app.component';
+import {ComponentLibraryModule} from '@porscheui/ui-kit-angular';
 
 @NgModule({
   declarations: [
@@ -15,4 +15,5 @@ import {ComponentLibraryModule} from "@porscheui/ui-kit-angular";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
