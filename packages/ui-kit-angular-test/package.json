@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & rm -rf ./dist & rm -rf ./tmp & rm -rf ./out-tsc & rm -rf ./bazel-out"
   },
   "private": true,
   "dependencies": {
