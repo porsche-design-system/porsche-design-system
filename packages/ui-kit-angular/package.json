@@ -2,7 +2,7 @@
   "name": "@porscheui/ui-kit-angular",
   "version": "1.0.0-alpha.3",
   "scope": "@porscheui",
-  "description": "Porsche UI Kit – A Porsche React component library.",
+  "description": "Porsche UI Kit – A Porsche Angular component library.",
   "license": "SEE LICENSE IN https://ui.porsche.com",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
