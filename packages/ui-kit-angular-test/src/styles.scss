@@ -1,2 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
+@import '~@porscheui/ui-kit-scss-utils/index';
+
+
+body {
+  padding: $p-spacing-32;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: $p-color-neutral-grey-2;
+  margin: $p-spacing-24 0;
+}
+
+p-grid > p-grid-child[size="2"]:first-child > p-headline[tag="h4"] {
+  margin-top: $p-spacing-16;
+}
+
+.playground {
+  padding: $p-spacing-16;
+
+  &.light {
+    background: $p-color-porsche-light;
+  }
+
+  &.dark {
+    background: $p-color-surface-dark;
+  }
+
+  &.spacing-inline {
+    &::before {
+      content: '';
+      display: block;
+      margin-top: -$p-spacing-16;
+    }
+
+    > * {
+      margin-top: $p-spacing-16;
+
+      &:not(:last-child) {
+        margin-right: $p-spacing-16;
+      }
+    }
+  }
+
+  &.spacing-block {
+    &::before {
+      content: '';
+      display: block;
+      margin-top: -$p-spacing-16;
+    }
+
+    > * {
+      margin-top: $p-spacing-16;
+    }
+  }
+
+  p-grid-child[size],
+  p-grid-child[offset] {
+    &::before {
+      @include p-text-copy;
+      background: silver;
+      padding: $p-spacing-4;
+      display: block;
+      text-align: center;
+      color: $p-color-porsche-light;
+    }
+  }
+
+  p-grid-child[size]::before {
+    content: attr(size);
+    background: lightskyblue;
+  }
+
+  p-grid-child[offset]::before {
+    content: attr(offset);
+    background: lightblue;
+  }
+
+  [class*="p-spacing"] {
+    display: inline-flex;
+    background: lightskyblue;
+  }
+}
