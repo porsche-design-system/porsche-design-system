@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "jest",
+    "test": "echo 'angular snapshot test is coming soon'",
     "test:watch": "jest --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
