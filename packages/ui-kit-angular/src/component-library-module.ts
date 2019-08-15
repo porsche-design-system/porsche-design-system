@@ -18,9 +18,7 @@ import {
   PTextListItem
 } from './directives/proxies';
 
-(async () => {
-  await defineCustomElements(window);
-})();
+defineCustomElements(window);
 
 const DECLARATIONS = [
   PButtonIcon,
