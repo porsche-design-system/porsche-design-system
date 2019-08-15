@@ -5,78 +5,83 @@ jobs:
     name: Filter
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Filter
-      uses: ./docker/node/
-      env:
-        GIT_FILTER: ^refs/heads/(v[0-9]+|issue/[0-9]+)$
-      with:
-        entrypoint: run-filter
-    - name: Install
-      uses: ./docker/node/
-      env:
-        IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
-        PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-      with:
-        entrypoint: run-install
-    - name: 'Test VRT: UI Kit JS'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-test-vrt
-        args: --ui-kit-js
-    - name: 'Test E2E: UI Kit JS'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-test-e2e
-        args: --ui-kit-js
-    - name: 'Test Unit: UI Kit JS'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-test-unit
-        args: --ui-kit-js
-    - name: 'Lint: UI Kit JS'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-lint
-        args: --ui-kit-js
-    - name: 'Test Snapshot: UI Kit React'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-test-snapshot
-        args: --ui-kit-react
-    - name: 'Test VRT: Design System'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-test-vrt
-        args: --design-system
-    - name: 'Test E2E: Design System'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-test-e2e
-        args: --design-system
-    - name: 'Test Unit: Design System'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-test-unit
-        args: --design-system
-    - name: 'Lint: Design System'
-      uses: ./docker/node/
-      with:
-        entrypoint: run-lint
-        args: --design-system
-    - name: Build
-      uses: ./docker/node/
-      with:
-        entrypoint: run-build
-    - name: Slack
-      uses: ./docker/node/
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with:
-        entrypoint: run-slack
-    - name: Deploy
-      uses: ./docker/node/
-      env:
-        GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
-      with:
-        entrypoint: run-deploy
+      - uses: actions/checkout@master
+      - name: Filter
+        uses: ./docker/node/
+        env:
+          GIT_FILTER: ^refs/heads/(v[0-9]+|issue/[0-9]+)$
+        with:
+          entrypoint: run-filter
+      - name: Install
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: Build
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'Lint: UI Kit JS'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-lint
+          args: --ui-kit-js
+      - name: 'Test Unit: UI Kit JS'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-unit
+          args: --ui-kit-js
+      - name: 'Test E2E: UI Kit JS'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-e2e
+          args: --ui-kit-js
+      - name: 'Test VRT: UI Kit JS'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --ui-kit-js
+      - name: 'Test Snapshot: UI Kit Angular'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-snapshot
+          args: --ui-kit-angular
+      - name: 'Test Snapshot: UI Kit React'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-snapshot
+          args: --ui-kit-react
+      - name: 'Lint: Design System'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-lint
+          args: --design-system
+      - name: 'Test Unit: Design System'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-unit
+          args: --design-system
+      - name: 'Test E2E: Design System'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-e2e
+          args: --design-system
+      - name: 'Test VRT: Design System'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --design-system
+      - name: Deploy
+        uses: ./docker/node/
+        env:
+          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+        with:
+          entrypoint: run-deploy
+      - name: Slack
+        uses: ./docker/node/
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          entrypoint: run-slack
