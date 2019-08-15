@@ -46,7 +46,7 @@ action "Test VRT: UI Kit JS" {
 action "Test Snapshot: UI Kit React" {
   needs = ["Lint: UI Kit JS", "Test Unit: UI Kit JS", "Test E2E: UI Kit JS", "Test VRT: UI Kit JS"]
   uses = "./docker/node/"
-  runs = ["run-test-snapshot", "--ui-kit-react-test"]
+  runs = ["run-test-snapshot", "--ui-kit-react"]
 }
 
 action "Lint: Design System" {

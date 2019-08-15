@@ -23,6 +23,10 @@
 
 *Note: `./docker.sh run-install` should be executed after every pull.*
 
+### Build
+* Switch to __project root directory__
+* Run `./docker.sh run-build`, `./docker.sh run-build --ui-kit-js`, `./docker.sh run-build --ui-kit-angular`, `./docker.sh run-build --ui-kit-react` or , `./docker.sh run-build --design-system`
+
 ### Run application
 * Switch to __project root directory__
 * Run `./docker.sh run-app`
@@ -33,11 +37,15 @@
 
 ### Unit Tests
 * Switch to __project root directory__
-* Run `./docker.sh run-test-unit`, `./docker.sh run-test-unit --ui-kit-js`, `./docker.sh run-test-unit --design-system` or `./docker.sh run-test-unit --ui-kit-react-test`
+* Run `./docker.sh run-test-unit`, `./docker.sh run-test-unit --ui-kit-js` or `./docker.sh run-test-unit --design-system`
 
 ### E2E Tests
 * Switch to __project root directory__
 * Run `./docker.sh run-test-e2e`, `./docker.sh run-test-e2e --ui-kit-js` or `./docker.sh run-test-e2e --design-system`
+
+### Snapshot Tests
+* Switch to __project root directory__
+* Run `./docker.sh run-test-snapshot`, `./docker.sh run-test-snapshot --ui-kit-angular` or `./docker.sh run-test-snapshot --ui-kit-react`
 
 ### Visual Regression Tests
 * Switch to __project root directory__
@@ -48,10 +56,6 @@
 * Check if you would like to accept the changes
   * **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results` folder and delete the images in the `/vrt/results` directory afterwards manually.
   * **If no**: Recheck your code and run the tests again, when you think you fixed it.
-
-### Build
-* Switch to __project root directory__
-* Run `./docker.sh run-build`
 
 ### Deploy
 _It's a job exclusively for the CI/CD pipeline, that's why it should not be executed locally._
@@ -70,9 +74,11 @@ Every week, we update our npm packages:
 * Run `./docker.sh run-upgrade`  
 This should output the dependencies you might want to update. Select the npm dependencies to be updated and press
 _Enter_. Afterwards execute automated tests to make sure application still works.
+* Run `./docker.sh run-build`  
 * Run `./docker.sh run-lint`  
 * Run `./docker.sh run-test-unit`  
 * Run `./docker.sh run-test-e2e`  
+* Run `./docker.sh run-test-snapshot`  
 * Run `./docker.sh run-test-vrt`  
 As final check start application locally and have a look at it.
 * Run `./docker.sh run-app`
