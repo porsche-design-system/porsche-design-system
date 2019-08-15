@@ -3,10 +3,6 @@
 set -o errexit
 set -o pipefail
 
-P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
-
-echo "P_LATEST_STABLE_BRANCH: ${P_LATEST_STABLE_BRANCH}";
-
 if [[ -z "${GITHUB_REF}" ]]; then
   echo "Please provide the \$GITHUB_REF environment variable."
   exit 1

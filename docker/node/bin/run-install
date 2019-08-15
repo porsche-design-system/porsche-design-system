@@ -3,6 +3,14 @@
 set -o errexit
 set -o pipefail
 
+git config --global user.name "${GITHUB_ACTOR}"
+git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
+
+P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
+
+echo "P_LATEST_STABLE_BRANCH: ${P_LATEST_STABLE_BRANCH}";
+
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
