@@ -25,6 +25,12 @@
   "bugs": {
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false --bail",
+    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log"
+  },
   "dependencies": {
     "@porscheui/ui-kit-react": "1.0.0-alpha.3",
     "@types/jest": "^24.0.17",
@@ -36,18 +42,14 @@
     "react-scripts": "^3.1.1",
     "typescript": "~3.5.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false --bail",
-    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log"
-  },
   "devDependencies": {
+    "@porscheui/ui-kit-scss-utils": "^1.0.0-alpha.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/react-test-renderer": "^16.9.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "node-sass": "^4.12.0",
     "react-test-renderer": "^16.9.0"
   }
 }
