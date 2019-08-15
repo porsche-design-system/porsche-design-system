@@ -13,6 +13,10 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
+      - name: Build
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
       - name: 'Test VRT: UI Kit JS'
         uses: ./docker/node/
         with:
@@ -58,19 +62,15 @@ jobs:
         with:
           entrypoint: run-lint
           args: --design-system
-      - name: Build
-        uses: ./docker/node/
-        with:
-          entrypoint: run-build
-      - name: Slack
-        uses: ./docker/node/
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        with:
-          entrypoint: run-slack
       - name: Deploy
         uses: ./docker/node/
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
           entrypoint: run-deploy
+      - name: Slack
+        uses: ./docker/node/
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          entrypoint: run-slack
