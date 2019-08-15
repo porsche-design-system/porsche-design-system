@@ -39,8 +39,10 @@ assignees: ''
 - [ ] Create/update related code CSS / JS
 - [ ] Create samples of all possible states and variants
 - [ ] Create code docs (implementation guidelines)
-- [ ] Create VRT
+- [ ] Include compiled angular and react component in test page
+- [ ] Create VRT tests
 - [ ] Create unit test (optional)
+- [ ] Create E2E test (optional)
 - [ ] Test code visual and functional for optimized viewports (only one browser): 320px, 375px, 480px, 768px, 1024px, 1366px, 1920px
 - [ ] Test code visual and functional for all supported browsers in viewports: 320px, 480px, 760px, 1000px, 1300px, 1760px, 1920px
 
@@ -50,4 +52,5 @@ assignees: ''
 - [ ] 3rd party code review
 - [ ] 3rd party code docu review
 - [ ] Code docu review by design 
-- [ ] Merge corresponding Abstract branch to master and export sketch lib file for deployment
+- [ ] Merge corresponding Abstract branch to master
+- [ ] Export sketch lib file from Abstract into GitHub
