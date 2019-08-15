@@ -5,21 +5,21 @@ The Porsche UI Kit enables designers to create outstanding digital designs by us
 ## 1. Before the first design
 To improve output efficiency and reduce maintenance costs, we decided to set the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/) as standard at Porsche. 
 
-Please first [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation, and to install the latest [Abstract Desktop App](https://app.goabstract.com/). 
+Please first [request a Porsche UI Abstract Seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation and install the latest [Abstract Desktop App](https://app.goabstract.com/). 
 
 You can find a [detailed guideline how to use Absctract here](#/web/getting-started/design-workflow).
 
 ## 2. Getting started
-To get a smooth and easy onboaring experience, you are welcome to have a look into other digital Porsche project within our [Porsche Abstract Organisation](https://app.abstract.com/organizations/bc37bb03-3469-4b15-99a2-60dbec187bce/projects). 
+To get a smooth and easy onboaring experience, you are welcome either to have a look into other digital Porsche projects within our [Porsche Abstract Organisation](https://app.abstract.com/organizations/bc37bb03-3469-4b15-99a2-60dbec187bce/projects). 
 
 Or you use our prebuilt Sketch Layout Templates, that contain artboards in all relevant screen sizes enriched by the right layout and grid presets. (Can be turned visible via: View → Canvas → Show Layout).  
 [Download Sketch Layout Template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch)
 
-### Install Anima Plugin
-Some of the components offer smooth layout behaviour (such as automatic resizing on content input). To get the most out of it, please install the Sketch plugin [Anima](https://www.animaapp.com/).   
-
 ## 3. Using the Sketch Library
 The components of the Porsche UI Kit are provided in two Sketch libraries that can be easily linked with Sketch by clicking on the following RSS library links. Once linked, Sketch will automatically check for updates. 
+
+### Install Anima Plugin
+Some of the components offer smooth layout behaviour such as automatic resizing and positioning. To use it you have to install the Sketch plugin [Anima](https://www.animaapp.com/). (Ensure to turn on the setting: Plugins → Anima Toolkit → Enable Padding and Stacks for Nested Symbols).   
 
 ### Basic Library and Porsche Typeface
 The basic library contains the design fundamentals, such as typography, colours and icons.  
