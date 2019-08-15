@@ -23,19 +23,19 @@ In order to provide an optimal user guidance within a page, different hierarchy 
 
 ## 1. Highlight
 
-❌  @DEV: Bitte beispielhaft Highlight button (Light Theme) einfügen.
+<p-button-regular variant="highlight">Click Here!</p-button-regular>
 
 Button with color fill in Porsche Red. This type is only to be used for one or two high-priority actions within the page, in order to give the user the best guidance possible.  
 
 ## 2. Basic
 
-❌  @DEV: Bitte beispielhaft Basic button (Light Theme) einfügen.
+<p-button-regular>Click Here!</p-button-regular>
 
 Default button with monochrome color fill. To be used for all other stand-alone buttons that aren't high priority.
 
 ## 3. Ghost
 
-❌  @DEV: Bitte beispielhaft Ghost button (Light Theme) einfügen.
+<p-button-regular variant="ghost">Click Here!</p-button-regular>
 
 An "outline only" button version. In hierarchy the ghost button is always subordinated to the filled view. Thus, it can be used in two different cases:
 
@@ -48,13 +48,13 @@ An "outline only" button version. In hierarchy the ghost button is always subord
 
 All button types are available in the following states:
 
-| STATE | DESCRIPTION | EXAMPLE |
+| STATE | DESCRIPTION |
 |----|----|----|
-| default | Default button state. | [example] |
-| active / hover | In active or hover state, the background color changes slightly and gets either a bit lighter or darker. | [example] |
-| disabled | Whenever the button function is not available, it is indicated by a greyed-out button color. | [example] |
-| loading | To indicate the loading process when clicking on the text link, the icon is replaced by a small loading spinner. | [example] |
-| focus | In focus state, the button is bordered by a 2 px line in focus color. | [example] |
+| default | Default button state. |
+| active / hover | In active or hover state, the background color changes slightly and gets either a bit lighter or darker. |
+| disabled | Whenever the button function is not available, it is indicated by a greyed-out button color. |
+| loading | Indicates the loading process when clicking on the text link, the icon is replaced by a small loading spinner. |
+| focus | In focus state, the button is bordered by a 2 px line in focus color. |
 
 ---
 
@@ -63,9 +63,9 @@ All button types are available in the following states:
 The Button Regular is available for both Porsche Light and Dark Theme. It always contains the following sub-components:
 
 - **Icon**
-The icon can be replaced by any icon available in the Porsche web icon set. Per default, an arrow right is set that should serve in most of all cases. It should only be changed if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. A good example might be to use a shopping icon or a plus icon for a Button "Add to cart".
+The icon can be replaced by any icon available in the Porsche web icon set. By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. A good example might be to use a shopping icon or a plus icon for a Button "Add to cart".
 - **Text label**
-The text label is always set in copytext size. The length of the text label determines the size of the button. It can get multi-lined, whilst the content (both text and icon) are always positioned top left aligned within the button.
+The text label is always set in copytext size. The length of the text label determines the size of the button. Multiline text is possible, while the content (both text and icon) are always positioned top left aligned within the button.
 It is recommended to keep the text label short and descriptive.
 
 ---
@@ -74,7 +74,7 @@ It is recommended to keep the text label short and descriptive.
 
 ## Button position
 
-Per default, the Button Regular is to be positioned left-aligned within a module or a screen. Depending on the content and the user guidance, the position can be changed individually, e.g. it can also be placed right-aligned or also at the end of a text (e.g. error notifications)
+By default the Button Regular is to be positioned left-aligned within a module or a screen. Depending on content and user guidance, the position can be changed individually, e.g. placed right-aligned or at the end of a text (e.g. error notifications)
 
 ---
 
@@ -90,4 +90,4 @@ Even if there is no technical limit to the button width, you should always make 
 
 ## Disabled state
 
-All types of Button Regular and Small are provided in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
+All types of Button Regular and Small are available as disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
