@@ -5,10 +5,7 @@ jobs:
     name: Filter
     runs-on: ubuntu-latest
     steps:
-      - name: Clone
-        uses: ./docker/node/
-        with:
-          entrypoint: run-clone
+      - uses: actions/checkout@master
       - name: Install
         uses: ./docker/node/
         env:

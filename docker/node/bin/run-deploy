@@ -36,14 +36,15 @@ setup() {
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
+  P_WORKING_BRANCH="${GITHUB_REF:11}"
+  P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
+  P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
+  P_LATEST_STABLE_SKETCH_VERSION="0.0.5"
+}
 
-  pushd "/opt/porsche-ui-kit-gh-pages"
-    P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
-    P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
-    P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
-    P_LATEST_STABLE_SKETCH_VERSION="0.0.5"
-  popd
+checkout_gh_pages() {
+  echo "task: [$(date)] \"checkout_gh_pages\""
+  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
 }
 
 prepare_deployment() {
@@ -129,6 +130,7 @@ isWorkingBranchLatestStableBranch() {
 }
 
 setup
+checkout_gh_pages
 prepare_deployment "${P_WORKING_BRANCH}"
 copy_porsche_ui_kit "${P_WORKING_BRANCH}"
 add_deployment_version "${P_WORKING_BRANCH}"
