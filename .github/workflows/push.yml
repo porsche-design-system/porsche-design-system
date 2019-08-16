@@ -1,4 +1,8 @@
 on: push
+push:
+  branches:
+    - v*
+    - issue/*
 name: Porsche UI Kit
 jobs:
   filter:
