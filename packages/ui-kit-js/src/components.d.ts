@@ -10,6 +10,9 @@ import {
   BreakpointCustomizable,
 } from './utils';
 import {
+  Color,
+} from './components/basic/color/color';
+import {
   Components,
 } from './index';
 import {
@@ -84,39 +87,6 @@ export namespace Components {
     * The style variant of the button.
     */
     'variant'?: 'highlight' | 'ghost' | 'default';
-  }
-  interface PColor {
-    'colors'?: | 'porsche-black'
-    | 'porsche-light'
-    | 'porsche-dark'
-    | 'porsche-red'
-    | 'porsche-dark-red'
-    | 'surface-light'
-    | 'surface-dark'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'status-red'
-    | 'status-green'
-    | 'status-yellow'
-    | 'state-focus';
-    'text'?: | 'porsche-black'
-    | 'porsche-light'
-    | 'porsche-red'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'inherit';
   }
   interface PFlex {
     /**
@@ -256,7 +226,7 @@ export namespace Components {
     /**
     * Basic color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: Color | 'inherit';
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -451,12 +421,6 @@ declare global {
     new (): HTMLPButtonRegularElement;
   };
 
-  interface HTMLPColorElement extends Components.PColor, HTMLStencilElement {}
-  var HTMLPColorElement: {
-    prototype: HTMLPColorElement;
-    new (): HTMLPColorElement;
-  };
-
   interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {}
   var HTMLPFlexElement: {
     prototype: HTMLPFlexElement;
@@ -531,7 +495,6 @@ declare global {
   interface HTMLElementTagNameMap {
     'p-button-icon': HTMLPButtonIconElement;
     'p-button-regular': HTMLPButtonRegularElement;
-    'p-color': HTMLPColorElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
@@ -639,39 +602,6 @@ declare namespace LocalJSX {
     * The style variant of the button.
     */
     'variant'?: 'highlight' | 'ghost' | 'default';
-  }
-  interface PColor extends JSXBase.HTMLAttributes<HTMLPColorElement> {
-    'colors'?: | 'porsche-black'
-    | 'porsche-light'
-    | 'porsche-dark'
-    | 'porsche-red'
-    | 'porsche-dark-red'
-    | 'surface-light'
-    | 'surface-dark'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'status-red'
-    | 'status-green'
-    | 'status-yellow'
-    | 'state-focus';
-    'text'?: | 'porsche-black'
-    | 'porsche-light'
-    | 'porsche-red'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'inherit';
   }
   interface PFlex extends JSXBase.HTMLAttributes<HTMLPFlexElement> {
     /**
@@ -811,7 +741,7 @@ declare namespace LocalJSX {
     /**
     * Basic color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: Color | 'inherit';
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -1001,7 +931,6 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'p-button-icon': PButtonIcon;
     'p-button-regular': PButtonRegular;
-    'p-color': PColor;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
     'p-grid': PGrid;

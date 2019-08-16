@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {defineCustomElements} from '@porscheui/ui-kit-js/loader';
+import {defineCustomElements, applyPolyfills} from '@porscheui/ui-kit-js/loader';
 
 import {
   PButtonIcon,
@@ -16,9 +16,12 @@ import {
   PTextLink,
   PTextList,
   PTextListItem
-} from './directives/proxies';
+} from './ui-kit-wrapper.component';
 
-defineCustomElements(window);
+(async () => {
+  await applyPolyfills();
+  await defineCustomElements(window);
+})();
 
 const DECLARATIONS = [
   PButtonIcon,

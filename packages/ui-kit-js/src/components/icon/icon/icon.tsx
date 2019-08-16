@@ -2,7 +2,7 @@ import { JSX, Component, Host, Element, Prop, State, Watch, h } from '@stencil/c
 import { getName, isUrl, isValid } from './icon-helper';
 import cx from 'classnames';
 import { prefix } from '../../../utils/prefix';
-import { Components } from '../../../index';
+import {Color} from "../../basic/color/color";
 
 @Component({
   tag: 'p-icon',
@@ -27,7 +27,7 @@ export class Icon {
   @Prop({ mutable: true, reflectToAttr: true }) public ariaLabel?: string;
 
   /** Basic color variations. */
-  @Prop() public color?: Components.PColor['text'] = 'inherit';
+  @Prop() public color?: Color | 'inherit' = 'inherit';
 
   /**
    * The size of the icon.

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ui-kit-angular-test": {
+    "ui-kit-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ui-kit-angular-test",
+            "outputPath": "dist/ui-kit-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,21 +67,60 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ui-kit-angular-test:build"
+            "browserTarget": "ui-kit-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ui-kit-angular-test:build:production"
+              "browserTarget": "ui-kit-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ui-kit-angular-test:build"
+            "browserTarget": "ui-kit-angular:build"
           }
         }
       }
-    }},
-  "defaultProject": "ui-kit-angular-test"
+    },
+    "ui-kit-wrapper": {
+      "projectType": "library",
+      "root": "projects/ui-kit-wrapper",
+      "sourceRoot": "projects/ui-kit-wrapper/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ui-kit-wrapper/tsconfig.lib.json",
+            "project": "projects/ui-kit-wrapper/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ui-kit-wrapper/src/test.ts",
+            "tsConfig": "projects/ui-kit-wrapper/tsconfig.spec.json",
+            "karmaConfig": "projects/ui-kit-wrapper/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ui-kit-wrapper/tsconfig.lib.json",
+              "projects/ui-kit-wrapper/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ui-kit-angular",
+  "cli": {
+    "packageManager": "yarn"
+  }
 }

@@ -9,7 +9,6 @@ import { defineCustomElements } from '@porscheui/ui-kit-js/loader';
 defineCustomElements(window);
 export const PButtonIcon = createReactComponent<JSX.PButtonIcon, HTMLPButtonIconElement>('p-button-icon');
 export const PButtonRegular = createReactComponent<JSX.PButtonRegular, HTMLPButtonRegularElement>('p-button-regular');
-export const PColor = createReactComponent<JSX.PColor, HTMLPColorElement>('p-color');
 export const PFlex = createReactComponent<JSX.PFlex, HTMLPFlexElement>('p-flex');
 export const PFlexItem = createReactComponent<JSX.PFlexItem, HTMLPFlexItemElement>('p-flex-item');
 export const PGrid = createReactComponent<JSX.PGrid, HTMLPGridElement>('p-grid');
