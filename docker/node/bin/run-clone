@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
+
+if [[ -z "${GITHUB_REPOSITORY}" ]]; then
+  echo "Please provide the \$GITHUB_REPOSITORY environment variable."
+  exit 1
+fi
+
+git clone "git@github.com:${GITHUB_REPOSITORY}.git" "./"
