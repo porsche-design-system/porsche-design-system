@@ -16,7 +16,7 @@ export const config: Config = {
     }),
     angularOutputTarget({
       componentCorePackage: '@porscheui/ui-kit-js',
-      directivesProxyFile: '../ui-kit-angular/src/directives/proxies.ts'
+      directivesProxyFile: '../ui-kit-angular/projects/ui-kit-wrapper/src/lib/ui-kit-wrapper.component.ts'
     })
   ],
   plugins: [

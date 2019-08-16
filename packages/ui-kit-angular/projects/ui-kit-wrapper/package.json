@@ -1,0 +1,11 @@
+{
+  "name": "@porscheui/ui-kit-angular",
+  "version": "1.0.0-alpha.1",
+  "dependencies": {
+    "@porscheui/ui-kit-js": "1.0.0-alpha.3"
+  },
+  "peerDependencies": {
+    "@angular/common": "^8.2.0",
+    "@angular/core": "^8.2.0"
+  }
+}

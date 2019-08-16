@@ -59,17 +59,6 @@ export class PButtonRegular {
 }
 proxyInputs(PButtonRegular, ['disabled', 'href', 'icon', 'loading', 'small', 'theme', 'type', 'variant']);
 
-export declare interface PColor extends Components.PColor {}
-@Component({ selector: 'p-color', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['colors', 'text'] })
-export class PColor {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-proxyInputs(PColor, ['colors', 'text']);
-
 export declare interface PFlex extends Components.PFlex {}
 @Component({ selector: 'p-flex', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'flow', 'gap', 'justifyContent', 'wrap'] })
 export class PFlex {
