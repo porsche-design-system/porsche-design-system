@@ -4,9 +4,14 @@ import { createReactComponent } from './createComponent';
 
 import { JSX } from '@porscheui/ui-kit-js';
 
-import { defineCustomElements } from '@porscheui/ui-kit-js/loader';
+import { applyPolyfills, defineCustomElements } from '@porscheui/ui-kit-js/loader';
 
-defineCustomElements(window);
+
+(async () => {
+  await applyPolyfills();
+  await defineCustomElements(window);
+})();
+  
 export const PButtonIcon = createReactComponent<JSX.PButtonIcon, HTMLPButtonIconElement>('p-button-icon');
 export const PButtonRegular = createReactComponent<JSX.PButtonRegular, HTMLPButtonRegularElement>('p-button-regular');
 export const PFlex = createReactComponent<JSX.PFlex, HTMLPFlexElement>('p-flex');
