@@ -34,10 +34,10 @@
     "test:e2e:design-system": "yarn build:ui-kit-js && yarn --cwd ./packages/design-system test:e2e --headless",
     "test:snapshot": "concurrently --kill-others-on-fail -n \"ui-kit-angular,ui-kit-react\" \"yarn test:snapshot:ui-kit-angular\" \"yarn test:snapshot:ui-kit-react\"",
     "test:snapshot:ui-kit-angular": "echo 'test:snapshot:ui-kit-angular not yet available'",
-    "test:snapshot:ui-kit-react": "yarn --cwd ./packages/ui-kit-react-test test",
+    "test:snapshot:ui-kit-react": "yarn --cwd ./packages/ui-kit-react test",
     "test:vrt": "concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn test:vrt:ui-kit-js\" \"yarn test:vrt:design-system\"",
     "test:vrt:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:vrt",
     "test:vrt:design-system": "yarn build:ui-kit-js && yarn --cwd ./packages/design-system test:vrt",
-    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & yarn --cwd ./packages/ui-kit-js clean & yarn --cwd ./packages/ui-kit-scss-utils clean & yarn --cwd ./packages/design-system clean & yarn --cwd ./packages/ui-kit-angular clean & yarn --cwd ./packages/ui-kit-react clean & yarn --cwd ./packages/ui-kit-react-test clean"
+    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & yarn --cwd ./packages/ui-kit-js clean & yarn --cwd ./packages/ui-kit-scss-utils clean & yarn --cwd ./packages/design-system clean & yarn --cwd ./packages/ui-kit-angular clean & yarn --cwd ./packages/ui-kit-react clean"
   }
 }

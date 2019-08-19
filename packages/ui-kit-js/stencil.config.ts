@@ -12,7 +12,7 @@ export const config: Config = {
     { type: 'www', serviceWorker: null },
     reactOutputTarget({
       componentCorePackage: '@porscheui/ui-kit-js',
-      proxiesFile: '../ui-kit-react/src/components.ts'
+      proxiesFile: '../ui-kit-react/projects/ui-kit-wrapper/src/lib/components.ts'
     }),
     angularOutputTarget({
       componentCorePackage: '@porscheui/ui-kit-js',

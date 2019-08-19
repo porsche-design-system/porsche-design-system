@@ -1,8 +1,8 @@
 import * as React from "react"
 import cx from "classnames"
 
-import {prefix, getElementType} from "../../lib"
-import {ClassNameProp, ComponentProp} from "../../lib/props"
+import {prefix, getElementType} from "../../utils"
+import {ClassNameProp, ComponentProp} from "../../utils/props"
 
 export interface PSpacingProps extends ClassNameProp, ComponentProp {
   /**
@@ -90,10 +90,10 @@ const _PSpacing: React.StatelessComponent<PSpacingProps> = (props) => {
         )
       }
 
-      const {class: childrenClassName, ...childRest} = child.props;
+      const {className: childrenClassName, ...childRest} = child.props;
 
       return React.cloneElement(child, {
-        class: cx(childrenClassName, classes),
+        className: cx(childrenClassName, classes),
         ...childRest
       })
     })[0]
