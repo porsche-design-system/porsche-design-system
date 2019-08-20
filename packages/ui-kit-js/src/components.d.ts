@@ -240,6 +240,12 @@ export namespace Components {
     */
     'source': string;
   }
+  interface PMarque {
+    /**
+    * Show/hide trademark sign.
+    */
+    'trademark'?: boolean;
+  }
   interface PPagination {
     /**
     * Index of the currently active page.
@@ -457,6 +463,12 @@ declare global {
     new (): HTMLPIconElement;
   };
 
+  interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {}
+  var HTMLPMarqueElement: {
+    prototype: HTMLPMarqueElement;
+    new (): HTMLPMarqueElement;
+  };
+
   interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {}
   var HTMLPPaginationElement: {
     prototype: HTMLPPaginationElement;
@@ -501,6 +513,7 @@ declare global {
     'p-grid-child': HTMLPGridChildElement;
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
+    'p-marque': HTMLPMarqueElement;
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
@@ -755,6 +768,12 @@ declare namespace LocalJSX {
     */
     'source'?: string;
   }
+  interface PMarque extends JSXBase.HTMLAttributes<HTMLPMarqueElement> {
+    /**
+    * Show/hide trademark sign.
+    */
+    'trademark'?: boolean;
+  }
   interface PPagination extends JSXBase.HTMLAttributes<HTMLPPaginationElement> {
     /**
     * Index of the currently active page.
@@ -937,6 +956,7 @@ declare namespace LocalJSX {
     'p-grid-child': PGridChild;
     'p-headline': PHeadline;
     'p-icon': PIcon;
+    'p-marque': PMarque;
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;

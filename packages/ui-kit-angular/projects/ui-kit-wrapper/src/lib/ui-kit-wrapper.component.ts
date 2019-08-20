@@ -125,6 +125,17 @@ export class PIcon {
 }
 proxyInputs(PIcon, ['ariaLabel', 'color', 'lazy', 'size', 'source']);
 
+export declare interface PMarque extends Components.PMarque {}
+@Component({ selector: 'p-marque', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['trademark'] })
+export class PMarque {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(PMarque, ['trademark']);
+
 export declare interface PPagination extends Components.PPagination {}
 @Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'] })
 export class PPagination {
