@@ -181,7 +181,6 @@
       }
 
       > * {
-        display: block;
         margin-top: $p-spacing-16;
       }
     }
