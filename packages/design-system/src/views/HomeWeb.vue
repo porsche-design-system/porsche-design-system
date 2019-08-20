@@ -41,7 +41,7 @@
               <p-button-regular
                 class="p-spacing-mt-16"
                 variant="highlight"
-                href="/#/web/getting-started/start-designing"
+                href="#/web/getting-started/start-designing"
               >Start designing
               </p-button-regular>
             </p-flex-item>
@@ -49,7 +49,7 @@
               <p-button-regular
                 class="p-spacing-mt-16"
                 variant="highlight"
-                href="/#/web/getting-started/start-coding"
+                href="#/web/getting-started/start-coding"
               >Start coding
               </p-button-regular>
             </p-flex-item>
