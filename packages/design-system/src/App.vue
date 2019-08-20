@@ -16,7 +16,7 @@
         <p-spinner class="spinner" :class="{ 'is-loading': isLoading }" size="medium"
                    ally-label="Loading page"></p-spinner>
       </main>
-      <Menu class="menu" @toggle="onToggleMenu"></Menu>
+      <Menu class="menu"></Menu>
     </div>
   </div>
 </template>
@@ -41,14 +41,12 @@
     }
   })
   export default class App extends Vue {
-    public isMenuActive: boolean = false;
-
     public get isLoading(): boolean {
-      return this.$store.getters.loading;
+      return this.$store.getters.isLoading;
     }
 
-    public onToggleMenu(isActive: boolean): void {
-      this.isMenuActive = isActive;
+    public get isMenuActive(): boolean {
+      return this.$store.getters.isMenuActive;
     }
   }
 </script>
