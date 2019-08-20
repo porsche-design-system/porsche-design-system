@@ -8,6 +8,18 @@ import {Component} from '@angular/core';
       <hr>
       <p-grid>
         <p-grid-child size="2">
+          <p-headline variant="headline-4" tag="h4">&lt;p-marque&gt;</p-headline>
+        </p-grid-child>
+        <p-grid-child size="10">
+          <div class="playground light spacing-block">
+            <p-marque></p-marque>
+            <p-marque trademark="false"></p-marque>
+          </div>
+          <hr>
+        </p-grid-child>
+      </p-grid>
+      <p-grid>
+        <p-grid-child size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-headline&gt;</p-headline>
         </p-grid-child>
         <p-grid-child size="10">

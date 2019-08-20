@@ -5,6 +5,7 @@ import {
   PFlex,
   PSpacing,
   PFlexItem,
+  PMarque,
   PHeadline,
   PText,
   PButtonRegular,
@@ -22,6 +23,18 @@ const App: React.FC = () => {
     <div id="app">
       <PHeadline variant="headline-2" tag="h2">Basic</PHeadline>
       <hr/>
+      <PGrid>
+        <PGridChild size="2">
+          <PHeadline variant="headline-4" tag="h4">&lt;p-marque&gt;</PHeadline>
+        </PGridChild>
+        <PGridChild size="10">
+          <div className="playground light spacing-block">
+            <PMarque />
+            <PMarque trademark={false} />
+          </div>
+          <hr/>
+        </PGridChild>
+      </PGrid>
       <PGrid>
         <PGridChild size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-headline&gt;</PHeadline>
