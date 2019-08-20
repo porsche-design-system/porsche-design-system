@@ -5,22 +5,29 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    loading: false,
-    lastTimeout: undefined
+    isLoading: false,
+    lastTimeout: undefined,
+    isMenuActive: false
   },
   mutations: {
-    toggleLoading(state, payload) {
-      state.loading = payload;
+    setIsLoading(state, payload) {
+      state.isLoading = payload;
     },
     setLastTimeout(state, payload) {
       state.lastTimeout = payload;
+    },
+    setIsMenuActive(state, payload) {
+      state.isMenuActive = payload;
+    },
+    toggleIsMenuActive(state) {
+      state.isMenuActive = !state.isMenuActive;
     }
   },
   actions: {
     toggleLoadingAsync({commit, state}, payload) {
       const delay = 200;
       const timeout = setTimeout(() => {
-        commit('toggleLoading', payload);
+        commit('setIsLoading', payload);
         commit('setLastTimeout', undefined);
       }, delay);
       clearTimeout(state.lastTimeout);
@@ -28,8 +35,11 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    loading(state) {
-      return state.loading;
+    isLoading(state) {
+      return state.isLoading;
+    },
+    isMenuActive(state) {
+      return state.isMenuActive;
     }
   }
 });
