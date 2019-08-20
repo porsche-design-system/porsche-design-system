@@ -2,7 +2,7 @@ describe('Home', () => {
   it('Should show page title', () => {
     cy.visit('/#/web');
 
-    cy.get('#app header img.marque')
+    cy.get('#app header p-marque')
       .click()
       .parents('a')
       .should('have.class', 'router-link-active');
