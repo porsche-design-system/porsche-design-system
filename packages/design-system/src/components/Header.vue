@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <router-link class="link" :to="`/${area}`">
-      <Marque/>
+      <p-marque/>
     </router-link>
     <p-headline class="p-spacing-mt-16" variant="headline-4" tag="h1" align="center">
       Porsche UI Kit
@@ -12,14 +12,9 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import Marque from '@/components/Marque.vue';
 // import {version} from '@porscheui/ui-kit-js/package.json';
 
-@Component({
-  components: {
-    Marque
-  }
-})
+@Component
 export default class Header extends Vue {
   get subtitle() {
     switch (this.area) {
