@@ -254,9 +254,15 @@ The grid system is fluid/responsive by itself by using percentages for every val
   
   p-grid {
     p-grid-child {
-      > p {
+      > .example-text {
         padding: $p-spacing-4;
         background: lightskyblue;
+      }
+    }
+    [class*="p-grid-child--offset"] {
+      > .example-text {
+          color: lightskyblue;
+          text-indent: calc(-100% - 50px);
       }
     }
   }
