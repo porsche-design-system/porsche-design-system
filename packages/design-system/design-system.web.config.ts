@@ -72,6 +72,14 @@ export const config: DesignSystemWebConfig = {
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.props.md`)
         ]
+      },
+      Marque: {
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.design.md`),
+        // @ts-ignore
+        code: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.code.md`),
+        // @ts-ignore
+        props: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.props.md`)
       }
     },
     Action: {

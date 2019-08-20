@@ -1,3 +1,3 @@
-# Porsche Marque
+# Marque
 
 ## Recommendation of use
