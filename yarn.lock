@@ -1758,9 +1758,9 @@
     defer-to-connect "^1.0.1"
 
 "@types/autoprefixer@^9.5.0":
-  version "9.6.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/autoprefixer/-/autoprefixer-9.6.0.tgz#d6ef2e078c8fa9adc7959fd2ce34da8e8948a860"
-  integrity sha1-1u8uB4yPqa3HlZ/SzjTajolIqGA=
+  version "9.6.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/autoprefixer/-/autoprefixer-9.6.1.tgz#8bfaf43d18f5cd59a269b7a2364e690cadcdf210"
+  integrity sha1-i/r0PRj1zVmiabeiNk5pDK3N8hA=
   dependencies:
     "@types/browserslist" "*"
     postcss "7.x.x"
@@ -1857,10 +1857,17 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
   integrity sha1-NcwVucTzChjvIYUuJV/bAvbVm4k=
 
-"@types/jest@24.0.17", "@types/jest@^24.0.17":
+"@types/jest@24.0.17":
   version "24.0.17"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jest/-/jest-24.0.17.tgz#b66ea026efb746eb5db1356ee28518aaff7af416"
   integrity sha1-tm6gJu+3RutdsTVu4oUYqv969BY=
+  dependencies:
+    "@types/jest-diff" "*"
+
+"@types/jest@^24.0.17":
+  version "24.0.18"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jest/-/jest-24.0.18.tgz#9c7858d450c59e2164a8a9df0905fc5091944498"
+  integrity sha1-nHhY1FDFniFkqKnfCQX8UJGURJg=
   dependencies:
     "@types/jest-diff" "*"
 
@@ -3847,9 +3854,9 @@ cacache@^11.3.2, cacache@^11.3.3:
     y18n "^4.0.0"
 
 cacache@^12.0.0, cacache@^12.0.2:
-  version "12.0.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/cacache/-/cacache-12.0.2.tgz#8db03205e36089a3df6954c66ce92541441ac46c"
-  integrity sha1-jbAyBeNgiaPfaVTGbOklQUQaxGw=
+  version "12.0.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/cacache/-/cacache-12.0.3.tgz#be99abba4e1bf5df461cd5a2c1071fc432573390"
+  integrity sha1-vpmruk4b9d9GHNWiwQcfxDJXM5A=
   dependencies:
     bluebird "^3.5.5"
     chownr "^1.1.1"
@@ -7282,9 +7289,9 @@ hex-color-regex@^1.1.0:
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
 highlight.js@^9.6.0:
-  version "9.15.9"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/highlight.js/-/highlight.js-9.15.9.tgz#865257da1dbb4a58c4552d46c4b3854f77f0e6d5"
-  integrity sha1-hlJX2h27SljEVS1GxLOFT3fw5tU=
+  version "9.15.10"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/highlight.js/-/highlight.js-9.15.10.tgz#7b18ed75c90348c045eef9ed08ca1319a2219ad2"
+  integrity sha1-exjtdckDSMBF7vntCMoTGaIhmtI=
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -11659,9 +11666,9 @@ pnp-webpack-plugin@1.5.0:
     ts-pnp "^1.1.2"
 
 portfinder@^1.0.13, portfinder@^1.0.20, portfinder@^1.0.21, portfinder@^1.0.9:
-  version "1.0.22"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/portfinder/-/portfinder-1.0.22.tgz#abd10a488b5696e98ee25c60731f8ae0b76f8ddd"
-  integrity sha1-q9EKSItWlumO4lxgcx+K4Ldvjd0=
+  version "1.0.23"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/portfinder/-/portfinder-1.0.23.tgz#894db4bcc5daf02b6614517ce89cd21a38226b82"
+  integrity sha1-iU20vMXa8CtmFFF86JzSGjgia4I=
   dependencies:
     async "^1.5.2"
     debug "^2.2.0"
@@ -14989,9 +14996,9 @@ terser-webpack-plugin@1.4.1, terser-webpack-plugin@^1.1.0, terser-webpack-plugin
     worker-farm "^1.7.0"
 
 terser@^4.0.0, terser@^4.1.2:
-  version "4.1.4"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/terser/-/terser-4.1.4.tgz#4478b6a08bb096a61e793fea1a4434408bab936c"
-  integrity sha1-RHi2oIuwlqYeeT/qGkQ0QIurk2w=
+  version "4.2.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/terser/-/terser-4.2.0.tgz#4b1b5f4424b426a7a47e80d6aae45e0d7979aef0"
+  integrity sha1-SxtfRCS0JqekfoDWquReDXl5rvA=
   dependencies:
     commander "^2.20.0"
     source-map "~0.6.1"
