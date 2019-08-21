@@ -1,5 +1,5 @@
 import React from 'react';
-import { PFlex, PFlexItem }  from '@porscheui/ui-kit-react';
+import { PFlex, PFlexItem }  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 

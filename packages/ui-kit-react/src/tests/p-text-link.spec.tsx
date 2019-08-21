@@ -1,5 +1,5 @@
 import React from 'react';
-import { PTextLink }  from '@porscheui/ui-kit-react';
+import { PTextLink }  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 

@@ -34,7 +34,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import "~@porscheui/ui-kit-scss-utils/index";
+  @import "~@porsche-ui/ui-kit-scss-utils/index";
 
   .color-badge {
     width: rem(160px);

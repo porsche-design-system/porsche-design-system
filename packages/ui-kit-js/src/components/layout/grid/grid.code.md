@@ -250,7 +250,7 @@ The grid system is fluid/responsive by itself by using percentages for every val
 * `{p}-grid__child--size-{offset}-{bp}` => offset based on amount of columns
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-scss-utils/index';
+  @import '~@porsche-ui/ui-kit-scss-utils/index';
   
   p-grid {
     p-grid-child {

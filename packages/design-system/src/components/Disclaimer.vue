@@ -16,7 +16,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import "~@porscheui/ui-kit-scss-utils/index";
+  @import "~@porsche-ui/ui-kit-scss-utils/index";
 
   .disclaimer {
     padding: $p-spacing-8 $p-spacing-32;

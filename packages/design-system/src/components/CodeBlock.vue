@@ -149,7 +149,7 @@ export default class CodeBlock extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-scss-utils/index';
+  @import '~@porsche-ui/ui-kit-scss-utils/index';
 
   .code-block {
 

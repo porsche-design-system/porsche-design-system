@@ -1,7 +1,7 @@
 {
-  "name": "@porscheui/design-system",
+  "name": "@porsche-ui/design-system",
   "version": "1.0.0",
-  "scope": "@porscheui",
+  "scope": "@porsche-ui",
   "private": true,
   "description": "Porsche UI Design System",
   "scripts": {
@@ -15,7 +15,7 @@
     "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & rm -rf ./dist"
   },
   "dependencies": {
-    "@porscheui/ui-kit-js": "^1.0.0-alpha.1",
+    "@porsche-ui/ui-kit-js": "^1.0.0-alpha.1",
     "core-js": "^3.2.1",
     "js-beautify": "^1.10.2",
     "lodash": "^4.17.15",
@@ -27,8 +27,8 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
-    "@porscheui/ui-kit-scss-utils": "^1.0.0-alpha.1",
-    "@porscheui/visual-regression-tester": "^2.0.0",
+    "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",
+    "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@types/jest": "^24.0.17",
     "@types/js-beautify": "^1.8.1",
     "@types/lodash": "^4.14.136",

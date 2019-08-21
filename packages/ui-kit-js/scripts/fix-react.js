@@ -20,9 +20,9 @@ fs.readFile(target, 'utf8', (err, data) => {
   await defineCustomElements(window);
 })();
   `;
-  const fixedImports = `import { applyPolyfills, defineCustomElements } from '@porscheui/ui-kit-js/loader';`;
+  const fixedImports = `import { applyPolyfills, defineCustomElements } from '@porsche-ui/ui-kit-js/loader';`;
   const result = data.replace(/^defineCustomElements\(window\);$/gm, fixedDefineCustomElements)
-    .replace(/^import { defineCustomElements } from '@porscheui\/ui-kit-js\/loader';$/gm, fixedImports);
+    .replace(/^import { defineCustomElements } from '@porsche-ui\/ui-kit-js\/loader';$/gm, fixedImports);
 
   fs.writeFile(target, result, 'utf8', (err) => {
     if (err) return console.log(err);
