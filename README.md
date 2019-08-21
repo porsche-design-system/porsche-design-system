@@ -134,11 +134,13 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-test-unit --ui-kit-js`
 1. Run `./docker.sh run-test-e2e --ui-kit-js`
 1. Run `./docker.sh run-test-vrt --ui-kit-js`
-1. Run `./docker.sh run-test-snapshot --ui-kit-react`
 1. Run `./docker.sh run-test-snapshot --ui-kit-angular`
+1. Run `./docker.sh run-test-snapshot --ui-kit-react`
 1. Run `./docker.sh run-start --ui-kit-js` and validate with BrowserStack that IE11/Edge polyfill works
 1. Run `./docker.sh run-start --ui-kit-angular` and validate with BrowserStack that IE11/Edge polyfill works
 1. Run `./docker.sh run-start --ui-kit-react` and validate with BrowserStack that IE11/Edge polyfill works
+
+**Make sure `applyPolyfills();` and `defineCustomElements(window);` is called correctly in `packages/ui-kit-react/projects/ui-kit-wrapper/src/lib/components.ts`**
 
 ### Commit
 1. Create a commit with following message structure `Release v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
