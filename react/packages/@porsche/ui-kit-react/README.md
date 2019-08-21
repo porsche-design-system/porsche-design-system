@@ -36,7 +36,7 @@ Different components can be cross-referenced using the `@see` annotation inside 
 1. After merge requirements of a pull request are fulfilled, it can be merged to master branch (don't forget to delete the branch afterwards)
 1. Goto ui-kit-react project in terminal and pull latest commits with `git pull`
 1. Open `CHANGELOG.md` and update release notes with proper date and version
-1. Update version of ui-kit-react dependency in `ui-kit-react-docs/package.json` and `ui-kit-react-starter/package.json`
+1. Update version of ui-kit-react dependency in `ui-kit-react-docs/package.json`
 1. Run project with `yarn start` to be sure everything works as expected
 1. Create a commit with following message structure `Release react:v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Run `yarn run publish:artifactory` which will deploy the artifact to the Artifactory repository an creates a git tag.
