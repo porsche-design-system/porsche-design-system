@@ -1,5 +1,5 @@
 import React from 'react';
-import { PButtonIcon }  from '@porscheui/ui-kit-react';
+import { PButtonIcon }  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 

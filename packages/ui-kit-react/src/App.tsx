@@ -16,7 +16,7 @@ import {
   PSpinner,
   PIcon,
   PPagination
-} from '@porscheui/ui-kit-react';
+} from '@porsche-ui/ui-kit-react';
 
 const App: React.FC = () => {
   return (

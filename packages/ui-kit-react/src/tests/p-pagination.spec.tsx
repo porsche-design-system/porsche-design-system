@@ -1,5 +1,5 @@
 import React from 'react';
-import { PPagination}  from '@porscheui/ui-kit-react';
+import { PPagination}  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 
