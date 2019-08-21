@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@porscheui/ui-kit-scss-utils": "^1.0.0-alpha.1",
-    "@porscheui/visual-regression-tester": "^1.1.1",
+    "@porscheui/visual-regression-tester": "^2.0.0",
     "@types/jest": "^24.0.17",
     "@types/js-beautify": "^1.8.1",
     "@types/lodash": "^4.14.136",

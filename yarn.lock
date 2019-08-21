@@ -1583,10 +1583,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha1-K1o6s/kYzKSKjHVMCBaOPwPrphs=
 
-"@porscheui/visual-regression-tester@^1.1.1":
-  version "1.1.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porscheui/visual-regression-tester/-/@porscheui/visual-regression-tester-1.1.1.tgz#9f9dcfd7a7d01664ea872dbd8804fdfe2216a73f"
-  integrity sha1-n53P16fQFmTqhy29iAT9/iIWpz8=
+"@porscheui/visual-regression-tester@^2.0.0":
+  version "2.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porscheui/visual-regression-tester/-/@porscheui/visual-regression-tester-2.0.0.tgz#9ad7e2917647a7d06798517ebb267614db46e05b"
+  integrity sha1-mtfikXZHp9BnmFF+uyZ2FNtG4Fs=
   dependencies:
     del "^3.0.0"
     jimp "^0.6.0"
