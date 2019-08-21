@@ -19,10 +19,10 @@
       "dom"
     ],
     "paths": {
-      "@porscheui/ui-kit-angular": [
+      "@porsche-ui/ui-kit-angular": [
         "dist/ui-kit-wrapper"
       ],
-      "@porscheui/ui-kit-angular/*": [
+      "@porsche-ui/ui-kit-angular/*": [
         "dist/ui-kit-wrapper/*"
       ]
     }

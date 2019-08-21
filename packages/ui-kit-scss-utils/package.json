@@ -1,7 +1,7 @@
 {
-  "name": "@porscheui/ui-kit-scss-utils",
+  "name": "@porsche-ui/ui-kit-scss-utils",
   "version": "1.0.0-alpha.1",
-  "scope": "@porscheui",
+  "scope": "@porsche-ui",
   "description": "Porsche UI SCSS utilities",
   "files": [
     "src/",
@@ -28,7 +28,7 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "publishConfig": {
-    "@porscheui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+    "@porsche-ui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
     "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log"

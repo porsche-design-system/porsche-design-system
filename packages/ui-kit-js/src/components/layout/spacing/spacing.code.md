@@ -472,7 +472,7 @@ To achieve highest flexibility, breakpoint behaviour can set **from** a `min` br
 </Playground>
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-scss-utils/index';
+  @import '~@porsche-ui/ui-kit-scss-utils/index';
   
   $color-blue-1: lightskyblue;
   $color-blue-2: deepskyblue;
