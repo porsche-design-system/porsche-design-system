@@ -1,7 +1,5 @@
 # Spinner
 
-## General information
-
 It's important for a good UX to give the user feedback about what's happening.
 Especially when it comes to unavoidable moments when the user has to wait,
 for example due to technical processing of information or requests, you should
