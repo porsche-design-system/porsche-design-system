@@ -15,7 +15,7 @@ For better discoverability, files and libraries within a project are recommended
 ### User roles and rights
 User roles define whether a user can just view or actually work on the stored files. Contributor seats for designers have to be paid and therefore [requested here](http://eepurl.com/gnOIXD).
 - **Contributors, usually designers,** have access to all features including creating, editing and updating files.
-- **Viewers, usually stakeholders and developers,** are only able to view and comment on shared files.
+- **Viewers, usually stakeholders and developers** are only able to view and comment on shared files.
 
 Both roles can be granted different rights. 
 - **Members** of the organisation have access to all public projects and can be invited individually to private projects.
@@ -55,5 +55,5 @@ Updating from the master every few weeks is effective at keeping your branch up 
 4. When your version of Master is out-of-date with the current version of Master (often a result of being offline) you get a diverged copy. Be sure to resolve this immediately.
 5. Inform the team about the merging.
 
-### 3. Engineering and Stakeholder "handoff"
+### 3. Engineering and stakeholder "handoff"
 Collections are very useful in focusing the attention of your fellow designers and stakeholders on the screens you’re modifying. You can arrange them according to the story you’re trying to tell and give additional context within them.
