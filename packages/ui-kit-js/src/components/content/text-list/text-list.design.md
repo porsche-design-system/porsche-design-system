@@ -1,7 +1,5 @@
 # Text List
 
-# General information
-
 A text list groups and organizes related content vertically in two levels of indentation. Either to show content with equal value as unordered list, or with . Generally, lists are supposed to be used for short pieces of information with up to two levels of indentation. For more complex data sets, consider the use of a data table.
 
 ---
