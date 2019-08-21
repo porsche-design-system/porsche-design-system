@@ -103,7 +103,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. **Props:** The component has to describe its props using typescript types and documentation.
 
 
-## Release management
+## Release management - Porsche UI Kit (JS/Angular/React)
 
 ### Preparation
 1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
@@ -143,17 +143,41 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 **Make sure `applyPolyfills();` and `defineCustomElements(window);` is called correctly in `packages/ui-kit-react/projects/ui-kit-wrapper/src/lib/components.ts`**
 
 ### Commit
-1. Create a commit with following message structure `Release v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure `Release Porsche UI Kit (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Create a Git tag `git tag v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}`
 1. Push local commit with tag to release branch `git push && git push --tags`
 
 ### Publish
 1. Switch to __packages/ui-kit-js directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit JS artifact to the Artifactory repository.
-1. Switch to __packages/ui-kit-angular directory__
+1. Switch to __packages/ui-kit-angular/dist/ui-kit-wrapper directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit Angular artifact to the Artifactory repository.
 1. Switch to __packages/ui-kit-react directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit React artifact to the Artifactory repository.
+
+### Communicate
+1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace
+
+
+## Release management - Porsche UI Kit (SCSS Utils)
+
+### Preparation
+1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
+1. Switch to __project root directory__
+1. Run `git pull`
+
+### UI Kit SCSS Utils
+1. Switch to __packages/ui-kit-scss-utils directory__
+1. Either execute `yarn version patch` for a patch release or `yarn version minor` for a minor release
+1. Open `CHANGELOG.md` and update release notes with proper date and version
+
+### Commit
+1. Create a commit with following message structure `Release Porsche UI Kit SCSS Utils v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push local commit with tag to release branch `git push`
+
+### Publish
+1. Switch to __packages/ui-kit-scss-utils directory__
+1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit SCSS Utils artifact to the Artifactory repository.
 
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace
