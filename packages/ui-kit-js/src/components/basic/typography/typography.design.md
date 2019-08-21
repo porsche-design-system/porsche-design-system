@@ -235,7 +235,7 @@ of good (micro) typography, such as using the right kind of apostrophes in the r
 ---
 
 ## Accessibility
-As we stick to the common [WCAG 2.1 Standard](#/web/basics/accessibility)
+As we stick to the common [WCAG 2.1 Standard](#/web/basics/accessibility-criteria)
 you should always ensure a sufficient contrast ratio when designing with text. 
 The combination of text and background color should pass the WCAG AA standard 
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
