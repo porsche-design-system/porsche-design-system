@@ -103,7 +103,7 @@ where a loader makes sense and which loader type is best suited.
 ---
 
 ## Related components
-* [Button Regular](/#/web/components/action/button-regular)
-* [Button Icon](/#/web/components/action/button-icon)
+* [Button Regular](#/web/components/action/button-regular)
+* [Button Icon](#/web/components/action/button-icon)
 
 

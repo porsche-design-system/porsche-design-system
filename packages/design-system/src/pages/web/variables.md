@@ -50,7 +50,7 @@
 
 ## Spacing
 
-**Note:** Make sure to also checkout the pre-compiled [CSS margin/padding spacing classes](/#/web/components/layout/spacing#code).
+**Note:** Make sure to also checkout the pre-compiled [CSS margin/padding spacing classes](#/web/components/layout/spacing#code).
 
 Given values are:  
 `0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
@@ -63,7 +63,7 @@ $p-spacing-{v};
 ---
 
 ## Font
-For font styling it's recommended to use the [`<p-headline>`](/#/web/components/basic/typography#code)/[`<p-text>`](/#/web/components/basic/typography#code) component or [text/headline scss mixins](/#/web/scss-utils/mixins).
+For font styling it's recommended to use the [`<p-headline>`](#/web/components/basic/typography#code)/[`<p-text>`](#/web/components/basic/typography#code) component or [text/headline scss mixins](#/web/scss-utils/mixins).
 
 ### Family
 Contains Porsche Next and predefined fallback fonts.

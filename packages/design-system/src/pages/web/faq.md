@@ -1,12 +1,12 @@
 # FAQ
 
-To answer the most frequently asked questions, Porsche UI is constantly adding FAQs to the following list. Please read through before using the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](/#/web/help/support)**
+To answer the most frequently asked questions, Porsche UI is constantly adding FAQs to the following list. Please read through before using the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](#/web/help/support)**
 
 ## Who develops the Porsche UI Kit?
 The Porsche UI Kit is a design system approach with different levels of organisation and content. At the 1st tier "Core Level", the most essential contents with the highest quality requirements are developed and maintained centrally by a designated team from Porsche AG in Germany - The Porsche UI Team. Within the 2nd tier at "Group Level", the different adopting teams are developing and sharing individual contents on their own responsibility. In an open community approach, everyone is encouraged to contribute to the Porsche UI Kit Core contents and give feedback to the Porsche UI Team at any time.
 
 ## How can I get in contact with the Porsche UI team?
-We want to enable continuous communication within the community. Therefore, the Porsche UI team offers different use-case-related communication channels and methods to contact support or submit support requests. You can find all of them [in the support section](/#/web/help/support).
+We want to enable continuous communication within the community. Therefore, the Porsche UI team offers different use-case-related communication channels and methods to contact support or submit support requests. You can find all of them [in the support section](#/web/help/support).
 
 ## How can I access the Porsche UI Kit files?
 **Developer**  
@@ -16,7 +16,7 @@ Following the tiered development levels, the cource code of the Porsche UI Kit "
 The Porsche UI Kit Design Library Sketch files are developed and maintained within a private Abstract project. Access can be also requested using our online subscription form.   
 
 ## What is the release strategy and how are the issues priorized?
-All versioned releases of the Porsche UI Kit combine both design and code. Always built as qualitative and scalable solution to ensure an overarching consistency while maintain the flexibility of different implementation possibilities. All issues and changes in the Porsche UI Kit are based on the overall business goals and the actual needs of the teams. Transparently published as [quarterly roadmap](/#/web/news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs, feedback and associated requirements.
+All versioned releases of the Porsche UI Kit combine both design and code. Always built as qualitative and scalable solution to ensure an overarching consistency while maintain the flexibility of different implementation possibilities. All issues and changes in the Porsche UI Kit are based on the overall business goals and the actual needs of the teams. Transparently published as [quarterly roadmap](#/web/news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs, feedback and associated requirements.
 
 ## What happens with contents marked as Deprecated?
 Contents marked as deprecated in `v0` releases of Porsche UI Kit won't be deleted and can still be used, but without any guarantee that those patterns still fulfil the latest design definitions or browser compatibility. If possible, we recommend replacing those patterns with new ones from release `v1` or copying the ones you still need over into your application and maintaining them yourself.
