@@ -4,44 +4,44 @@ Porsche UI Kit provides developers with a collection of presentational web compo
 
 ## Installation
 
-All releases of the Porsche UI Kit are available as a versioned npm package called `@porscheui/ui-kit-js`, `@porscheui/ui-kit-react` and `@porscheui/ui-kit-angular` in the private npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io)). Please [request a Porsche UI npm registry account](http://eepurl.com/gnOIXD).  
+All releases of the Porsche UI Kit are available as a versioned npm package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-react` and `@porsche-ui/ui-kit-angular` in the private npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io)). Please [request a Porsche UI npm registry account](http://eepurl.com/gnOIXD).  
 
 After receiving account credentials, you can install the appropriate npm package:
 
 #### Web components:
 ``` 
 // install with npm:
-npm install @porscheui/ui-kit-js
+npm install @porsche-ui/ui-kit-js
 
 // install with yarn:
-yarn add @porscheui/ui-kit-js
+yarn add @porsche-ui/ui-kit-js
 ```
 
 #### React:
 ``` 
 // install with npm:
-npm install @porscheui/ui-kit-react
+npm install @porsche-ui/ui-kit-react
 
 // install with yarn:
-yarn add @porscheui/ui-kit-react
+yarn add @porsche-ui/ui-kit-react
 ```
 
 #### Angular:
 ``` 
 // install with npm:
-npm install @porscheui/ui-kit-angular
+npm install @porsche-ui/ui-kit-angular
 
 // install with yarn:
-yarn add @porscheui/ui-kit-angular
+yarn add @porsche-ui/ui-kit-angular
 ```
 
 #### SCSS utils (optional):
 ``` 
 // install with npm:
-npm install @porscheui/ui-kit-scss-utils --save-dev
+npm install @porsche-ui/ui-kit-scss-utils --save-dev
 
 // install with yarn:
-yarn add @porscheui/ui-kit-scss-utils --dev
+yarn add @porsche-ui/ui-kit-scss-utils --dev
 ``` 
 
 ## Usage
@@ -57,9 +57,9 @@ If using native web components in a static website (with no specific framework d
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>p-button-icon</title>
-    <link rel="stylesheet" href="PATH/TO/PACKAGE/@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css">
-    <script type="module" src="PATH/TO/PACKAGE/@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
-    <script nomodule src="PATH/TO/PACKAGE/@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+    <link rel="stylesheet" href="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css">
+    <script type="module" src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+    <script nomodule src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
   </head>
   <body>
     <p-headline variant="headline-1">Lorem ipsum</p-headline>
@@ -92,7 +92,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 #### App file
 ``` 
 import React from 'react';
-import { PHeadline } from '@porscheui/ui-kit-react';
+import { PHeadline } from '@porsche-ui/ui-kit-react';
 
 const App: React.FC = () => {
   return (
@@ -109,8 +109,8 @@ export default App;
 In your `index.scss` import mandatory Porsche UI Kit stylesheet and optional SCSS utilities:
 
 ``` 
-@import "~@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
-@import '~@porscheui/ui-kit-scss-utils/index';
+@import "~@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
+@import '~@porsche-ui/ui-kit-scss-utils/index';
 ``` 
 
 --- 
@@ -126,7 +126,7 @@ The following setup is a standard Angular setup with SCSS support:
 ``` 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ComponentLibraryModule } from '@porscheui/ui-kit-angular';
+import { ComponentLibraryModule } from '@porsche-ui/ui-kit-angular';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -164,8 +164,8 @@ export class AppComponent {}
 In your `styles.scss` import mandatory Porsche UI Kit stylesheet and optional SCSS utilities:
 
 ``` 
-@import "~@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
-@import '~@porscheui/ui-kit-scss-utils/index';
+@import "~@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
+@import '~@porsche-ui/ui-kit-scss-utils/index';
 ``` 
 
 --- 
