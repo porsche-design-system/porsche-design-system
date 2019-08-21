@@ -14,7 +14,7 @@
     "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & rm -rf ./dist"
   },
   "dependencies": {
-    "@porscheui/ui-kit-js": "1.0.0-alpha.3"
+    "@porscheui/ui-kit-js": "1.0.0-alpha.1"
   },
   "devDependencies": {
     "@porscheui/ui-kit-scss-utils": "^1.0.0-alpha.1",
