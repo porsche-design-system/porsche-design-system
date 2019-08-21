@@ -16,7 +16,11 @@
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
   "scripts": {
-    "start": "yarn build:ui-kit-js && (yarn --cwd ./packages/ui-kit-js start & yarn --cwd ./packages/design-system start)",
+    "start": "yarn build:ui-kit-js && (yarn start:ui-kit-js & yarn start:design-system)",
+    "start:ui-kit-js": "yarn --cwd ./packages/ui-kit-js start",
+    "start:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular start",
+    "start:ui-kit-react": "yarn --cwd ./packages/ui-kit-react start",
+    "start:design-system": "yarn --cwd ./packages/design-system start",
     "build": "concurrently -n \"ui-kit-js\" \"yarn build:ui-kit-js\" && concurrently --kill-others-on-fail -n \"ui-kit-angular,ui-kit-react,design-system\" \"yarn build:ui-kit-angular\" \"yarn build:ui-kit-react\" \"yarn build:design-system\"",
     "build:ui-kit-js": "yarn --cwd ./packages/ui-kit-js build",
     "build:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular build",

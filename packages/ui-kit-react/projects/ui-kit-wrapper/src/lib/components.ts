@@ -2,16 +2,16 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './createComponent';
 
-import { JSX } from '@porscheui/ui-kit-js';
+import { JSX } from '@porsche-ui/ui-kit-js';
 
-import { applyPolyfills, defineCustomElements } from '@porscheui/ui-kit-js/loader';
+import { applyPolyfills, defineCustomElements } from '@porsche-ui/ui-kit-js/loader';
 
 
 (async () => {
   await applyPolyfills();
   await defineCustomElements(window);
 })();
-  
+
 export const PButtonIcon = createReactComponent<JSX.PButtonIcon, HTMLPButtonIconElement>('p-button-icon');
 export const PButtonRegular = createReactComponent<JSX.PButtonRegular, HTMLPButtonRegularElement>('p-button-regular');
 export const PFlex = createReactComponent<JSX.PFlex, HTMLPFlexElement>('p-flex');

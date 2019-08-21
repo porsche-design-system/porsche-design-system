@@ -121,7 +121,7 @@ a {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-scss-utils/index';
+  @import '~@porsche-ui/ui-kit-scss-utils/index';
 
   a {
     text-decoration: none;

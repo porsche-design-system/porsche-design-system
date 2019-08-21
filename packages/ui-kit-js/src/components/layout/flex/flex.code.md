@@ -955,7 +955,7 @@ Setting shorthand properties for flex grow, shrink and base:
 </Playground>
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-scss-utils/index';
+  @import '~@porsche-ui/ui-kit-scss-utils/index';
     
   $color-blue-1: lightskyblue;
   $color-blue-2: deepskyblue;
