@@ -1,10 +1,9 @@
 # Typography
 
-## Introduction
-Text component can be categorized into two different use cases:
+The text component can be categorized into two different use cases:
 
-1. Predefined headlines with automated responsive sizing to fit into all major breakpoints
-2. Generic text sizes which are fixed and do not respond to different viewports
+1. Predefined headlines with automated responsive sizing to fit into all major breakpoints.
+2. Generic text sizes which are fixed and do not respond to different viewports.
 
 ## Headlines
 
@@ -24,7 +23,7 @@ There are multiple predefined styling variants available. Additionally the corre
 ---
 
 ### Color variants
-The default headline color is Porsche black. But also predefined or inherited colors can be set.
+The default headline color is Porsche Black. But also predefined or inherited colors can be set.
 
 <Playground>
   <p-headline color="porsche-black">Porsche Black</p-headline>
@@ -45,7 +44,7 @@ The default headline color is Porsche black. But also predefined or inherited co
 ---
 
 ### Ellipsis mode
-This will force any text to never wrap into a new line and in case it's too long for a single line then dots (…) at the end are used to visual it.
+This will force any text to never wrap into a new line and in case it's too long for a single line then dots (…) at the end are used to visualize it.
 
 <Playground>
   <p-headline ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-headline>
@@ -67,7 +66,7 @@ There are multiple predefined styling variants available. Additionally the corre
 
 ## Generic text
 
-In some cases, e.g. for highlighting or graphical reasons it might be necessary to use additional styling variants.
+In some cases, e.g. for highlighting or graphical reasons, it might be necessary to use additional styling variants.
 
 <Playground>
   <template #configurator>
@@ -110,7 +109,7 @@ In some cases, e.g. for highlighting or graphical reasons it might be necessary 
 ---
 
 ### Color variants
-The default text color is Porsche black. But also predefined or inherited colors can be set.
+The default text color is Porsche Black. But also predefined or inherited colors can be set.
 
 <Playground>
   <p-text color="porsche-black">Porsche Black</p-text>
@@ -131,7 +130,7 @@ The default text color is Porsche black. But also predefined or inherited colors
 ---
 
 ### Ellipsis mode
-This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the end are used to visual it.
+This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the end are used to visualize it.
 
 <Playground>
   <p-text ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>

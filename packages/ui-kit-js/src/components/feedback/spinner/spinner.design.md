@@ -29,7 +29,7 @@ Depending on your need you can choose betwenn different spinner sizes and versio
 for Light Theme and Dark Theme. The Spinner `medium` and `large` adjust their size automatically based on the responsive breakpoint.
 
 
-| Type                      | Example                            | Recommendation                                                          |
+| TYPE                      | EXAMPLE                            | RECOMMENDATION                                                          |
 |---------------------------|------------------------------------|-------------------------------------------------------------------------|
 | Spinner X-Small           |   <p-spinner size="x-small"></p-spinner>    | Only for in-component loaders, such as in buttons or input fields.      |
 | Spinner Small - Large     |   <p-spinner size="small"></p-spinner><p-spinner size="medium"></p-spinner><p-spinner size="large"></p-spinner>  | For module or page loading, optionally accompanied by a text label.     |

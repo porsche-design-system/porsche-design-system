@@ -1,6 +1,5 @@
 # Spinner
 
-## Introduction
 Basic animated spinner to visualize loading states, e.g. page loading, form validation, etc. The Spinner component sizes are predefined.
 
 ### X-small
