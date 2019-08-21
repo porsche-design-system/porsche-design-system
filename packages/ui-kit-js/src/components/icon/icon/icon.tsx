@@ -2,7 +2,7 @@ import { JSX, Component, Host, Element, Prop, State, Watch, h } from '@stencil/c
 import { getName, isUrl, isValid } from './icon-helper';
 import cx from 'classnames';
 import { prefix } from '../../../utils/prefix';
-import {Color} from "../../basic/color/color";
+import {Color} from '../../basic/color/color';
 
 @Component({
   tag: 'p-icon',

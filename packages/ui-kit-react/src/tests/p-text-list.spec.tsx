@@ -1,5 +1,5 @@
 import React from 'react';
-import { PTextList, PTextListItem }  from '@porscheui/ui-kit-react';
+import { PTextList, PTextListItem }  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PIcon }  from '@porscheui/ui-kit-react';
+import { PIcon }  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 

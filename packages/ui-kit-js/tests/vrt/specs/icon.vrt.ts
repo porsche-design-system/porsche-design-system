@@ -1,5 +1,5 @@
 import 'jasmine';
-import { VisualRegressionTester } from '@porscheui/visual-regression-tester';
+import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
 describe('Icon', () => {

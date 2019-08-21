@@ -1,5 +1,5 @@
 import React from 'react';
-import { PSpinner}  from '@porscheui/ui-kit-react';
+import { PSpinner}  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 

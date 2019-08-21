@@ -1,5 +1,5 @@
 import React from 'react';
-import { PHeadline }  from '@porscheui/ui-kit-react';
+import { PHeadline }  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 

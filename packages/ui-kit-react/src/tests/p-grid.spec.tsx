@@ -1,5 +1,5 @@
 import React from 'react';
-import { PGrid, PGridChild }  from '@porscheui/ui-kit-react';
+import { PGrid, PGridChild }  from '@porsche-ui/ui-kit-react';
 import renderer from 'react-test-renderer';
 
 

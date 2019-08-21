@@ -11,11 +11,11 @@ export const config: Config = {
     { type: 'dist', esmLoaderPath: '../loader' },
     { type: 'www', serviceWorker: null },
     reactOutputTarget({
-      componentCorePackage: '@porscheui/ui-kit-js',
+      componentCorePackage: '@porsche-ui/ui-kit-js',
       proxiesFile: '../ui-kit-react/projects/ui-kit-wrapper/src/lib/components.ts'
     }),
     angularOutputTarget({
-      componentCorePackage: '@porscheui/ui-kit-js',
+      componentCorePackage: '@porsche-ui/ui-kit-js',
       directivesProxyFile: '../ui-kit-angular/projects/ui-kit-wrapper/src/lib/ui-kit-wrapper.component.ts'
     })
   ],
