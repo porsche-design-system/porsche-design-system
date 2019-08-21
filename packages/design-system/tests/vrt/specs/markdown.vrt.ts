@@ -16,7 +16,7 @@ describe('Markdown', () => {
         async () => {
           await visualRegressionTester.goTo('/#/web/markdown');
         },
-        ['#app > .sidebar > nav']
+        '#app > .content > .main > .router-view'
       )
     ).toBeFalsy();
   });

@@ -12,7 +12,8 @@ const testOptions: VisualRegressionTestOptions = {
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
   baseUrl: 'http://localhost:8080',
-  timeout: 90000
+  timeout: 90000,
+  mode: 'square-auto'
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
