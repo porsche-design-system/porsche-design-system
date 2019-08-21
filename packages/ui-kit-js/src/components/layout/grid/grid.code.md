@@ -1,8 +1,6 @@
 # Grid
 
-## Introduction
-
-The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not ment to function as a toolkit for layouting content blocks or components. Therefore the [Flex](/#/web/layout/flex) component is the right choice.
+The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. Therefore the [Flex](/#/web/layout/flex) component is the right choice.
 
 ### Grid standard
 
@@ -28,7 +26,7 @@ For standard grid implementation, it is recommended to use this pattern. The cla
 
 ### Grid offset
 
-In some cases it can be neccessary to indent columns. The grid gives basic indentions based on grid sizings. The child column has an offset of 1 column on the left and due to its length of 10 columns an offset of 1 column to the right. With `grid__child--offset-(0-11)` it is possible to define offsets.
+In some cases it can be necessary to indent columns. The grid gives basic indentions based on grid sizings. The child column has an offset of 1 column on the left and due to its length of 10 columns an offset of 1 column to the right. With `grid__child--offset-(0-11)` it is possible to define offsets.
 
 <Playground :childElementLayout="{spacing: 'block-small'}">
   <p-grid v-for="n, index in 11" :key="index">
@@ -42,7 +40,7 @@ In some cases it can be neccessary to indent columns. The grid gives basic inden
 
 ### Grid direction
 
-In some cases it might be neccessary to define or change direction of the columns/rows. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. Changing optical order can be achieved by setting `reverse`.
+In some cases it might be necessary to define or change direction of the columns/rows. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be achieved by setting `reverse`.
 
 #### Row (default)
 
@@ -112,7 +110,7 @@ In some cases it might be neccessary to define or change direction of the column
 
 ### Grid gap
 
-In some cases it might be useful to adapt the gap of the grid. Default is `normal`. But `zero` is also possible to place elements besides each other without spacings.
+In some cases it might be useful to adapt the gap of the grid. Default is `normal`. But `zero` is also possible to place elements beside each other without spacings.
 
 #### Normal (default)
 
@@ -150,7 +148,7 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
 
 ### Grid nesting
 
-Basic nesting of grids is supported. "Basic" because of percentage value of width and gaps which couldn't be calculated for each column width. Here are some examples of "dos" and "don'ts":
+Basic nesting of grids is supported. "Basic" because of percentage value of width and gaps which couldn't be calculated for each column width. Here are some examples of "do's" and "don'ts":
 
 <Playground>
   <p-grid>
