@@ -24,17 +24,15 @@
         </p-grid-child>
         <p-grid-child class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text variant="24">
-            The Porsche UI Kit provides the design fundamentals for easily creating aesthetic and qualitative
-            digital products. Ready to use as reusable Sketch libraries, coded React components or HTML and CSS
-            elements. Everything built and tested following the Porsche quality standards and corporate design
+            The Porsche UI Kit Web provides the design fundamentals and elements for efficiently creating aesthetic and qualitative
+            web applications. Including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything built and tested following the Porsche quality standards and corporate design
             principles.
           </p-text>
           <p-text class="p-spacing-mt-16">
-            While Porsche UI Kit v1 is coming soon as npm package with code examples and design documentation have
-            a look at v0 documentation of
+            Go to
             <a href="https://ui.porsche.com/v0/core/">Porsche UI Kit – Core v0</a>
-            and
-            <a href="https://ui.porsche.com/v0/react/">Porsche UI Kit – React v0</a> in the meantime.
+            or
+            <a href="https://ui.porsche.com/v0/react/">Porsche UI Kit – React v0</a>
           </p-text>
           <p-flex class="p-spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
@@ -42,7 +40,7 @@
                 class="p-spacing-mt-16"
                 variant="highlight"
                 href="#/web/getting-started/start-designing"
-              >Start designing
+              >Start Designing
               </p-button-regular>
             </p-flex-item>
             <p-flex-item>
@@ -50,7 +48,7 @@
                 class="p-spacing-mt-16"
                 variant="highlight"
                 href="#/web/getting-started/start-coding"
-              >Start coding
+              >Start Coding
               </p-button-regular>
             </p-flex-item>
           </p-flex>
