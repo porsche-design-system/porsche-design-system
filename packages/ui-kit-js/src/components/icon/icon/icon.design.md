@@ -1,3 +1,42 @@
 # Icon
 
-## Recommendation of use
+Along with the other Porsche basic elements - such as colors, typography and the Porsche Marque - icons are core components of the Porsche UI design. The clear graphic symbols allow for quick orientation and are internationally recognized.
+
+---
+
+# Look & feel
+
+The clean style of the Porsche icon set matches the Porsche brand aesthetically and creates a consistent look and feel across all products and platforms. Each icon is reduced to its minimal form, reflecting essential characteristics. By following the typical Porsche lines and uniting the exclusive, high-classy and very sportive brand image, the Porsche icons provide  a high recognizability and readability, even in very small sizes. 
+
+---
+
+# Base area & grid
+
+All icons are placed on a transparent 24 x 24 pixel base area, including a dedicated safe zone. 
+
+The icons themselves are built upon a base grid structure and guidelines for sizing the different icon shapes. These scale guidelines ensure that each icon has the same visual weight so they all feel the same size, regardless of their overall shape. 
+
+---
+
+# States
+
+All icons are available in the following states:
+
+| STATE | DESCRIPTION | EXAMPLE |
+|----|----|----|
+| **default** | Default icon state. | <p-icon source="basket" color="porsche-black"></p-icon> |
+| **active / hover** | In clickable icons, the color changes to Porsche Red in both active and hover state. | <p-icon source="basket" color="porsche-red"></p-icon> |
+| **disabled** | Whenever an interactive icon is not clickable it is displayed by a greyed-out icon color. | <p-icon source="basket" color="neutral-grey-5"></p-icon> |
+| **focus** | In focus state, a clickable icon is bordered by a 2 pixel line in focus color. |  |
+
+---
+
+# Best Practices
+
+## Color usage
+
+The icons come with standard colors within the Porsche UI Kit you should stick to. However, when deciding to override the default icon colors for special reasons, it is recommended to use the color(s) uniformly throughout your application in order to provide consistency.
+
+## Context
+
+Icons can stand alone for themselves as visual symbols or in combination with text. Either way, always keep in mind that a semantic element can have different meanings depending on the context it is put into, such as within different labels.
