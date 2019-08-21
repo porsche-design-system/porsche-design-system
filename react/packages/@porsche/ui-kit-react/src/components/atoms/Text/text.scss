@@ -1,6 +1,4 @@
 @import "../../../common";
-@import "~@porsche/ui-kit-core/src/base/text-size/text-size";
-@import "~@porsche/ui-kit-core/src/base/text-color/text-color";
 @import "./text-size.mixin";
 
 .#{$global-class-prefix}text {
@@ -33,6 +31,8 @@
     }
 }
 
+@import "~@porsche/ui-kit-core/src/base/text-color/text-color";
+
 .-#{$global-class-prefix}text-color {
     // Grey helpers
     &-grey-darker {
@@ -56,50 +56,100 @@
     }
 }
 
+.-#{$global-class-prefix}font-primary {
+    font-family: $p-font-primary;
+}
+
 .-#{$global-class-prefix}text-size {
     &-1 {
+        &-thin {
+            @include -text-size-1-thin;
+        }
+
         &-bold {
             @include -text-size-1-bold;
+        }
+
+        &-regular {
+            @include -text-size-1-regular;
         }
     }
 
     &-2 {
+        &-thin {
+            @include -text-size-2-thin;
+        }
+
         &-bold {
             @include -text-size-2-bold;
+        }
+
+        &-regular {
+            @include -text-size-2-regular;
         }
     }
 
     &-3 {
+        &-thin {
+            @include -text-size-3-thin;
+        }
+
         &-bold {
             @include -text-size-3-bold;
+        }
+
+        &-regular {
+            @include -text-size-3-regular;
         }
     }
 
     &-4 {
+        &-thin {
+            @include -text-size-4-thin;
+        }
+
         &-bold {
             @include -text-size-4-bold;
+        }
+
+        &-regular {
+            @include -text-size-4-regular;
         }
     }
 
     &-5 {
+        &-thin {
+            @include -text-size-5-thin;
+        }
+
         &-bold {
             @include -text-size-5-bold;
+        }
+
+        &-regular {
+            @include -text-size-5-regular;
         }
     }
 
     &-copy {
+        @include -text-size-copy;
+
         &-bold {
             @include -text-size-copy-bold;
         }
     }
 
     &-small {
+        @include -text-size-small;
+
         &-bold {
             @include -text-size-small-bold;
         }
     }
 
     &-micro {
+        @include -text-size-micro;
+
         &-bold {
             @include -text-size-micro-bold;
         }

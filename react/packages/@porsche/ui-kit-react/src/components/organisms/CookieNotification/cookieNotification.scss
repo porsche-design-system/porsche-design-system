@@ -38,9 +38,11 @@
             @include -spacing-a("top", "padding");
             @include -spacing-a("bottom", "padding");
             color: $white;
+            fill: $white;
 
             &:hover {
                 color: $grey;
+                fill: $grey;
             }
         }
     }

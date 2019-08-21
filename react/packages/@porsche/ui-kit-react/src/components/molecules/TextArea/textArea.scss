@@ -54,7 +54,7 @@
     }
 
     &__label {
-        @include -font-primary();
+        font-family: $p-font-primary;
         @include -overflow-ellipsis();
         @include -text-size-small;
 

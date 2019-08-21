@@ -1,235 +1,12 @@
 import * as React from "react"
-import cx from "classnames"
-
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
-
-const iconNames: IconProps["name"][] = [
-    "111_points_check",
-    "4WD",
-    "accident_free",
-    "arrow_both_ways_hair",
-    "arrow_down_hair",
-    "arrow_left_hair_first",
-    "arrow_left_hair",
-    "arrow_open_full_down",
-    "arrow_open_full_up",
-    "arrow_right_hair_last",
-    "arrow_right_hair",
-    "arrow_up_hair",
-    "arrow_up",
-    "bin",
-    "box",
-    "calendar",
-    "cancel",
-    "check",
-    "circle_check",
-    "circle_crossed_small",
-    "circle",
-    "clock_time",
-    "closed_eye",
-    "compare",
-    "copy",
-    "corporate_sales",
-    "customer_view",
-    "delete_entry",
-    "document",
-    "edit_outline",
-    "edit",
-    "electricity",
-    "export",
-    "eye",
-    "facebook",
-    "filter",
-    "fuel_outline",
-    "fuel",
-    "full_service_history",
-    "google",
-    "grid_view",
-    "help",
-    "information_outline",
-    "information",
-    "instagram",
-    "linkedin",
-    "list",
-    "loader",
-    "magnify_glass",
-    "maintenance",
-    "map_pin",
-    "menu_dots_vertical",
-    "menu_dots",
-    "message_outline_request",
-    "message_outline",
-    "message",
-    "minus",
-    "mute",
-    "navigation",
-    "option_close",
-    "option_open",
-    "option_sort",
-    "option_view_1",
-    "organizer",
-    "overrevs_checked",
-    "overview",
-    "painting_checked",
-    "pause",
-    "person_add",
-    "person_outline",
-    "person",
-    "phone_receiver",
-    "picture_import",
-    "picture",
-    "pinterest",
-    "play_circle",
-    "play",
-    "plus",
-    "porsche_assistance",
-    "porsche_genuine_parts",
-    "print",
-    "profile_depth_3_mm",
-    "purchased",
-    "radio-button",
-    "readout",
-    "recondition_costs",
-    "rental_car",
-    "reset",
-    "restart",
-    "saved",
-    "share",
-    "smoking_forbidden",
-    "smoking",
-    "snapchat",
-    "star_outline",
-    "star",
-    "stock_view",
-    "sub_menu",
-    "timer",
-    "transmission",
-    "twitter",
-    "update_save",
-    "vehicle_reconditioned",
-    "warning_circle",
-    "warning_filled",
-    "wechat",
-    "whatsapp",
-    "youtube"
-]
-
-export interface Icon extends React.StatelessComponent<IconProps> {
-    names: IconProps["name"][]
-}
+import cx from "classnames"
+import { icons as defaultIcons } from "./icons"
 
 export interface IconProps extends ClassNameProp, ComponentProp {
     /** The icon that should be used. */
-    name:
-        | "111_points_check"
-        | "4WD"
-        | "accident_free"
-        | "arrow_both_ways_hair"
-        | "arrow_down_hair"
-        | "arrow_left_hair_first"
-        | "arrow_left_hair"
-        | "arrow_open_full_down"
-        | "arrow_open_full_up"
-        | "arrow_right_hair_last"
-        | "arrow_right_hair"
-        | "arrow_up_hair"
-        | "arrow_up"
-        | "bin"
-        | "box"
-        | "calendar"
-        | "cancel"
-        | "check"
-        | "circle_check"
-        | "circle_crossed_small"
-        | "circle"
-        | "clock_time"
-        | "closed_eye"
-        | "compare"
-        | "copy"
-        | "corporate_sales"
-        | "customer_view"
-        | "delete_entry"
-        | "document"
-        | "edit_outline"
-        | "edit"
-        | "electricity"
-        | "export"
-        | "eye"
-        | "facebook"
-        | "filter"
-        | "fuel_outline"
-        | "fuel"
-        | "full_service_history"
-        | "google"
-        | "grid_view"
-        | "help"
-        | "information_outline"
-        | "information"
-        | "instagram"
-        | "linkedin"
-        | "list"
-        | "loader"
-        | "magnify_glass"
-        | "maintenance"
-        | "map_pin"
-        | "menu_dots_vertical"
-        | "menu_dots"
-        | "message_outline_request"
-        | "message_outline"
-        | "message"
-        | "minus"
-        | "mute"
-        | "navigation"
-        | "option_close"
-        | "option_open"
-        | "option_sort"
-        | "option_view_1"
-        | "organizer"
-        | "overrevs_checked"
-        | "overview"
-        | "painting_checked"
-        | "pause"
-        | "person_add"
-        | "person_outline"
-        | "person"
-        | "phone_receiver"
-        | "picture_import"
-        | "picture"
-        | "pinterest"
-        | "play_circle"
-        | "play"
-        | "plus"
-        | "porsche_assistance"
-        | "porsche_genuine_parts"
-        | "print"
-        | "profile_depth_3_mm"
-        | "purchased"
-        | "radio-button"
-        | "readout"
-        | "recondition_costs"
-        | "rental_car"
-        | "reset"
-        | "restart"
-        | "saved"
-        | "share"
-        | "smoking_forbidden"
-        | "smoking"
-        | "snapchat"
-        | "star_outline"
-        | "star"
-        | "stock_view"
-        | "sub_menu"
-        | "timer"
-        | "transmission"
-        | "twitter"
-        | "update_save"
-        | "vehicle_reconditioned"
-        | "warning_circle"
-        | "warning_filled"
-        | "wechat"
-        | "whatsapp"
-        | "youtube"
+    name: string
 
     /**
      * The size of the icon.
@@ -259,6 +36,33 @@ export interface IconProps extends ClassNameProp, ComponentProp {
         | "status-red"
 
     /**
+     * The icon color when the user hovers over it. Since SVG won't support inherited text colors, you need to set this explicitly.
+     */
+    hoverColor?:
+        | "black"
+        | "grey-darker"
+        | "grey-dark"
+        | "grey"
+        | "grey-light"
+        | "grey-lighter"
+        | "white"
+        | "red-1"
+        | "red-2"
+        | "blue-1"
+        | "blue-2"
+        | "status-green"
+        | "status-yellow"
+        | "status-orange"
+        | "status-red"
+
+    /**
+     * Called after a user's click.
+     * @param {React.MouseEvent<HTMLButtonElement>} event React's original event.
+     * @param {ButtonIconProps} data All props of the component.
+     */
+    onClick?: (event: React.MouseEvent<HTMLElement>, data: IconProps) => void
+
+    /**
      * Puts a circle around the icon
      */
     circled?: boolean
@@ -267,38 +71,84 @@ export interface IconProps extends ClassNameProp, ComponentProp {
      * Adds a native HTML tooltip to the icon
      */
     title?: string
+
+    /** Disables the button. No onClick will be triggered. */
+    disabled?: boolean
+}
+
+export interface Icon extends React.FunctionComponent<IconProps> {
+    /**
+     * Names of the available default icons and additionally registered icons.
+     */
+    names: string[]
+
+    /**
+     * Registers an additional set of icons. Use this to include project specific icons.
+     * You can only register one set of icons per runtime, and previously registered icons will be overriden by this method.
+     * If you register an icon under the same name as a default icon, the registered icon is preferred.
+     * Make sure registering is done before any rendering of the React application is happening, or the icons won't be available.
+     */
+    registerIcons: (icons: Record<string, (props: React.SVGProps<any>) => JSX.Element>) => void
 }
 
 const defaultProps: Partial<IconProps> = {
     size: "regular"
 }
 
-const _Icon: React.StatelessComponent<IconProps> & Partial<Icon> = (props) => {
-    const { as, className, children, name, color, circled, size, ...rest } = props
+const _Icon: React.FunctionComponent<IconProps> & Partial<Icon> = (props) => {
+    const { name, className, color, hoverColor, disabled, onClick, ...iconRest } = props
+
+    const actualColor = onClick && !props.color ? "grey" : props.color
+    const actualHoverColor = onClick && !props.hoverColor ? "black" : props.hoverColor
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (!onClick) {
+            return
+        }
+
+        if (disabled) {
+            e.preventDefault()
+            return
+        }
+
+        onClick(e, props)
+    }
+
+    const { as, children, size, circled, ...rest } = iconRest
 
     const ElementType = getElementType(as, "i")
+    const SVGIcon = (registeredIcons as any)[name] || (defaultIcons as any)[name]
 
-    const classNames = cx(
+    if (!SVGIcon) {
+        return null
+    }
+
+    const classes = cx(
         prefix("icon"),
-        prefix(`icon--${name}`),
         prefix(`icon--${size}`),
-        { [`-${prefix(`text-color-${color}`)}`]: color },
         { [prefix("icon--circled")]: circled },
+        { [prefix(`icon--${actualColor}`)]: actualColor !== undefined },
+        { [prefix(`icon--${actualHoverColor}--hover`)]: !disabled && actualHoverColor !== undefined },
+        { [prefix(`icon--link`)]: !!onClick && !disabled },
         className
     )
 
     return (
-        <ElementType className={classNames} {...rest}>
-            {children}
+        <ElementType {...rest} onClick={handleClick} className={classes}>
+            <SVGIcon />
         </ElementType>
     )
 }
 
+let registeredIcons = {}
+
+function registerIcons(icons: Record<string, (props: React.SVGProps<any>) => JSX.Element>) {
+    registeredIcons = icons
+    _Icon.names = [...Object.keys(defaultIcons), ...Object.keys(registeredIcons)]
+}
+
+_Icon.registerIcons = registerIcons
+_Icon.names = Object.keys(defaultIcons)
 _Icon.defaultProps = defaultProps
 
-_Icon.names = iconNames
-
-/**
- * Display an Icon from the Porsche icon font at various sizes.
- */
 export const Icon = _Icon as Icon

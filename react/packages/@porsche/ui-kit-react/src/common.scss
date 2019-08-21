@@ -1,3 +1,8 @@
 // @important: Only variable definitions and mixins go in here
 @import "./variables";
-@import "./base/base.mixin";
+@import "~@porsche/ui-kit-core/src/mixins/px-rem-converter";
+@import "~@porsche/ui-kit-core/src/mixins/breakpoint";
+@import "~@porsche/ui-kit-core/src/base/text-color/text-color.mixin";
+@import "~@porsche/ui-kit-core/src/base/overflow/overflow.mixin";
+@import "~@porsche/ui-kit-core/src/base/spacing/spacing.mixin";
+@import "./components/atoms/Text/text-size.mixin.scss";

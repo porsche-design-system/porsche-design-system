@@ -20,6 +20,7 @@ $animation-hover-bezier: ease;
     background-color: $color-palette-grey-9;
     border: 1px solid $color-palette-grey-9;
     color: $color-palette-white;
+    fill: $color-palette-white;
     transition: background-color $animation-hover-duration $animation-hover-bezier,
         border-color $animation-hover-duration $animation-hover-bezier,
         color $animation-hover-duration $animation-hover-bezier; // must be globally defined
@@ -31,6 +32,7 @@ $animation-hover-bezier: ease;
 
     &--theme-inverted {
         color: $color-palette-black;
+        fill: $color-palette-black;
         background-color: $color-palette-white;
         border-color: $color-palette-white;
     }
@@ -63,6 +65,7 @@ $animation-hover-bezier: ease;
 
         &#{$bem-block}--theme-inverted {
             color: $color-palette-black;
+            fill: $color-palette-black;
             background-color: mix($color-palette-white, $color-palette-grey-10, 50%);
             border-color: mix($color-palette-white, $color-palette-grey-10, 50%);
 
@@ -78,11 +81,13 @@ $animation-hover-bezier: ease;
 
     &--ghost {
         color: $color-palette-black;
+        fill: $color-palette-black;
         background-color: transparent;
         border-color: $color-palette-grey-9;
 
         &#{$bem-block}--theme-inverted {
             color: $color-palette-white;
+            fill: $color-palette-white;
             border-color: $color-palette-white;
         }
 
@@ -91,11 +96,13 @@ $animation-hover-bezier: ease;
             &:focus,
             &:active {
                 color: $color-palette-white;
+                fill: $color-palette-white;
                 background-color: $color-palette-grey-9;
                 border-color: $color-palette-grey-9;
 
                 &#{$bem-block}--theme-inverted {
                     color: $color-palette-black;
+                    fill: $color-palette-black;
                     background-color: $color-palette-white;
                     border-color: $color-palette-white;
                 }
@@ -105,6 +112,7 @@ $animation-hover-bezier: ease;
         &[disabled],
         &[aria-disabled="true"] {
             color: mix($color-palette-grey-9, $color-palette-white, 40%);
+            fill: mix($color-palette-grey-9, $color-palette-white, 40%);
             background-color: transparent;
             border-color: mix($color-palette-grey-9, $color-palette-white, 40%);
 
@@ -114,6 +122,7 @@ $animation-hover-bezier: ease;
 
             &#{$bem-block}--theme-inverted {
                 color: mix($color-palette-white, $color-palette-grey-10, 30%);
+                fill: mix($color-palette-white, $color-palette-grey-10, 30%);
                 background-color: transparent;
                 border-color: mix($color-palette-white, $color-palette-grey-10, 30%);
 

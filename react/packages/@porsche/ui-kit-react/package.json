@@ -11,7 +11,6 @@
     "files": [
         "dist",
         "src/**/*.scss",
-        "src/base/icon/pag-iconfont/*",
         "css"
     ],
     "repository": {
@@ -56,15 +55,16 @@
         "build:commonjs": "tsc --project ./ --outDir ./dist/commonjs --module commonjs",
         "watch:commonjs": "yarn run build:commonjs --watch",
         "build:sass": "node-sass --source-map true ./src --output .tmp/css --importer=../../../node_modules/node-sass-tilde-importer",
-        "postbuild:sass": "cpx \"../../../node_modules/@porsche/ui-kit-core/src/base/font/**/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/ && cpx \"./src/base/icon/pag-iconfont/*.{svg,eot,otf,ttf,woff,woff2}\" ./css/pag-iconfont",
         "watch:sass": "yarn run build:sass && yarn run build:sass --watch",
-        "build:css": "postcss --use autoprefixer --map --config postcss.config.json --output ./css/index.css .tmp/css/index.css",
+        "build:css": "postcss --use autoprefixer --map --config postcss.config.json --dir ./css --base .tmp/css '.tmp/css/**/*.css'",
+        "postbuild:css": "rimraf ./css/common.css && rimraf ./css/common.css.map && rimraf ./css/variables.css && rimraf ./css/variables.css.map",
         "watch:css": "yarn run build:css && yarn run build:css --watch",
         "lint:ts": "tslint --project '.' --format codeFrame",
         "lint:ts:fix": "yarn run lint:ts --fix",
         "lint:sass": "stylelint '**/*.scss'",
         "lint:sass:fix": "yarn run lint:sass --fix",
         "test": "jest && jest --clearCache",
+        "render:svg": "cd ./src/components/atoms/Icon/ && svgr --icon --replace-attr-values '#000000=currentColor' --replace-attr-values '#000=currentColor' --replace-attr-values '#ffffff=none' --replace-attr-values '#fff=none' --ext tsx --template ./template/typescriptTemplate.js -d icons svg && node ./generate.js",
         "publish:artifactory": "yarn run test && yarn run build && yarn publish"
     },
     "dependencies": {
@@ -83,8 +83,8 @@
         "@types/react-modal": "^3.6.0",
         "@types/react-responsive": "^3.0.2",
         "@types/react-transition-group": "^2.0.14",
+        "@svgr/cli": "^4.3.2",
         "autoprefixer": "^9.4.3",
-        "cpx": "^1.5.0",
         "cross-env": "^5.2.0",
         "enzyme": "^3.8.0",
         "enzyme-adapter-react-16": "^1.7.1",

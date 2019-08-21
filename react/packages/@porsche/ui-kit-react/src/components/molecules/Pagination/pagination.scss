@@ -1,18 +1,216 @@
-@import "~@porsche/ui-kit-core/src/modules/pagination/pagination.scss";
+@import "../../../common";
+@import "~@porsche/ui-kit-core/src/base/layout/flex.mixin.scss";
+@import "~@porsche/ui-kit-core/src/mixins/animation.scss";
+@import "~@porsche/ui-kit-core/src/base/layout/flex.mixin.scss";
+@import "~@porsche/ui-kit-core/src/base/spacing/spacing.mixin.scss";
+@import "~@porsche/ui-kit-core/src/base/position/position.mixin.scss";
+@import "~@porsche/ui-kit-core/src/base/background/background.mixin.scss";
+
+$pagination-dots-dot-border-radius: 100% !default;
+$pagination-dots-dot-margin: 0 $spacing-6 !default;
+
+$pagination-dots-dot-size-primary: rem(10px) !default;
+$pagination-dots-dot-size-secondary: rem(8px) !default;
+$pagination-dots-dot-size-tertiary: rem(6px) !default;
+
+$pagination-dots-dot-safe-clickable-area-position: rem(6px) !default;
 
 .#{$global-class-prefix}pagination {
-    /** Overwrite because of finder specific icon set
-     * TODO: import standard icon set from ui kit core
-     */
-    &__prev {
-        &::before {
-            content: "\e95c";
+    $bem-block: &;
+    @include flex;
+    @include flex-main-axis(center);
+    counter-reset: maxNumberOfLinks 5;
+
+    @include breakpoint("s") {
+        counter-reset: maxNumberOfLinks 7;
+    }
+
+    &__items {
+        @include flex;
+    }
+
+    &__goto,
+    &__prev,
+    &__next {
+        @include flex;
+        @include flex-main-axis(center);
+        @include flex-cross-axis(center);
+        @include transition(color);
+        position: relative;
+        width: rem(40px);
+        height: rem(40px);
+
+        &:focus {
+            outline: 2px solid $color-palette-grey-5;
+            outline-offset: -2px;
+        }
+
+        &:active {
+            outline: none;
+            color: $color-palette-red-1;
         }
     }
 
+    &__goto {
+        @include -text-size-copy;
+        @include -text-color-black;
+        text-decoration: none;
+        cursor: pointer;
+
+        #{$bem-block}--theme-inverted & {
+            @include -text-color-white;
+        }
+
+        &:hover {
+            @include -text-color-red-1;
+
+            #{$bem-block}--theme-inverted & {
+                @include -text-color-red-1;
+            }
+        }
+
+        &--current {
+            cursor: default;
+
+            &:hover {
+                @include -text-color-black;
+
+                #{$bem-block}--theme-inverted & {
+                    @include -text-color-white;
+                }
+            }
+
+            &::after {
+                @include -background-red-1;
+                content: "";
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: rem(6px);
+                right: rem(6px);
+                height: rem(4px);
+            }
+        }
+
+        &--ellipsis {
+            cursor: default;
+
+            &:hover {
+                @include -text-color-black;
+
+                #{$bem-block}--theme-inverted & {
+                    @include -text-color-white;
+                }
+            }
+
+            &::after {
+                content: "…";
+            }
+        }
+    }
+
+    &__prev,
     &__next {
-        &::before {
-            content: "\e95d";
+        @include -text-color-black;
+        font-size: rem(18px);
+        text-decoration: none;
+        cursor: pointer;
+
+        #{$bem-block}--theme-inverted & {
+            @include -text-color-white;
+        }
+
+        &:hover {
+            @include -text-color-red-1;
+
+            #{$bem-block}--theme-inverted & {
+                @include -text-color-red-1;
+            }
+        }
+
+        &--disabled {
+            @include -text-color-grey-5;
+            cursor: default;
+
+            #{$bem-block}--theme-inverted & {
+                @include -text-color-grey-7;
+            }
+
+            &:hover {
+                @include -text-color-grey-5;
+
+                #{$bem-block}--theme-inverted & {
+                    @include -text-color-grey-7;
+                }
+            }
+        }
+    }
+}
+
+.#{$global-class-prefix}pagination-dots {
+    &--hidden-s {
+        @include breakpoint("s") {
+            display: none;
+        }
+    }
+
+    &__list {
+        @include flex;
+        @include flex-main-axis(center);
+        @include flex-cross-axis(center);
+    }
+
+    &__dot {
+        @include -background-grey-2;
+
+        display: block;
+        position: relative;
+        width: $pagination-dots-dot-size-primary;
+        height: $pagination-dots-dot-size-primary;
+        margin: $pagination-dots-dot-margin;
+
+        border-style: none;
+        cursor: pointer;
+
+        border-radius: $pagination-dots-dot-border-radius;
+
+        &--size-secondary {
+            width: $pagination-dots-dot-size-secondary;
+            height: $pagination-dots-dot-size-secondary;
+        }
+
+        &--size-tertiary {
+            width: $pagination-dots-dot-size-tertiary;
+            height: $pagination-dots-dot-size-tertiary;
+        }
+
+        &--type-grey {
+            @include -background-grey-8;
+        }
+
+        &--type-black {
+            @include -background-grey-9;
+        }
+
+        &--type-image {
+            @include -background-grey-4;
+        }
+
+        &:hover,
+        &:focus,
+        &:active,
+        &--active {
+            @include -background-red-1;
+        }
+
+        &::after {
+            // safe clickable area
+            position: absolute;
+            content: "";
+            top: -$pagination-dots-dot-safe-clickable-area-position;
+            right: -$pagination-dots-dot-safe-clickable-area-position;
+            bottom: -$pagination-dots-dot-safe-clickable-area-position;
+            left: -$pagination-dots-dot-safe-clickable-area-position;
         }
     }
 }

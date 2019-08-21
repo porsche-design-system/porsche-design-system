@@ -43,3 +43,57 @@ Different components can be cross-referenced using the `@see` annotation inside 
 1. Create a Git tag `git tag v0.{MINOR_NUMBER}.{PATCH_NUMBER}/react`
 1. Push local commit with tag to `0.x` branch `git push --tags`
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace
+
+## Generating React Components from SVGs
+
+### Using svgr
+
+If you have many project specific icons, you probably don't want to create their component counterparts by hand. We automatically generate Typescript React components from svg files using [https://github.com/smooth-code/svgr](svgr) by following a couple rules:
+
+Note: The paths need to be converted to contourlines right before export (eg. Illustrator)
+
+1.  Every black (#000 or #000000) fill will be replaced with "currentColor" so that we can change the color of the icon using the css color attribute
+
+2.  Every white (#fff or #ffffff) fill will be replaced with "none". Use this to create masks.
+
+3.  Every other color will be kept statically and won't change no matter what css class is set. This is almost certainly never a use case, so don't use any other color than black or white.
+
+4.  The width and size of the svg is replaced with "1em" so that we can change the size of the icon using the css font-size attribute.
+
+We use the following template for svgr:
+
+```
+function typescriptTemplate({ template }, opts, { imports, componentName, props, jsx, exports }) {
+    const typescriptTpl = template.smart({ plugins: ["typescript"] })
+    return typescriptTpl.ast`
+      import * as React from 'react';
+      const ${componentName} = (props: React.SVGProps<SVGSVGElement>) => ${jsx};
+      export default ${componentName};
+    `
+}
+module.exports = typescriptTemplate
+```
+
+And we run svgr with the following command:
+
+```
+svgr --icon --replace-attr-values '#000000=currentColor' --replace-attr-values '#000=currentColor' --replace-attr-values '#ffffff=none' --replace-attr-values '#fff=none' --ext tsx --template <template-path> -d <source-directory> <target-directory>
+```
+
+### By Hand
+
+If you create the components by hand, they should have a shape similar to this:
+
+```
+import * as React from "react"
+
+const SvgIcon = (props: React.SVGProps<SVGElement>) => (
+    <svg viewBox="0 0 48 48" width="1em" height="1em" {...props}>
+        ...
+    </svg>
+)
+
+export default SvgIcon
+```
+
+The viewbox can be sized however you like, but width and height need to be 1em.

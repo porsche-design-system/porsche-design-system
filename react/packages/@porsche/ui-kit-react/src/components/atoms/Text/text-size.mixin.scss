@@ -1,9 +1,48 @@
-@import "~@porsche/ui-kit-core/src/base/text-size/text-size.mixin";
-@import "~@porsche/ui-kit-core/src/base/font/font.mixin.scss";
+@import "~@porsche/ui-kit-core/src/mixins/breakpoint";
 
-@mixin -text-size-1-bold {
-    @include -font-primary;
-    font-weight: $font-weight-bold;
+$text-size-1-font-size: rem(28px) !default;
+$text-size-1-font-size-m: rem(40px) !default;
+$text-size-1-font-size-xl: rem(60px) !default;
+$text-size-1-line-height: rem(36px) !default;
+$text-size-1-line-height-m: rem(52px) !default;
+$text-size-1-line-height-xl: rem(72px) !default;
+
+$text-size-2-font-size: rem(26px) !default;
+$text-size-2-font-size-m: rem(32px) !default;
+$text-size-2-font-size-xl: rem(36px) !default;
+$text-size-2-line-height: rem(34px) !default;
+$text-size-2-line-height-m: rem(40px) !default;
+$text-size-2-line-height-xl: rem(44px) !default;
+
+$text-size-3-font-size: rem(24px) !default;
+$text-size-3-font-size-m: rem(26px) !default;
+$text-size-3-font-size-xl: rem(28px) !default;
+$text-size-3-line-height: rem(30px) !default;
+$text-size-3-line-height-m: rem(32px) !default;
+$text-size-3-line-height-xl: rem(36px) !default;
+
+$text-size-4-font-size: rem(20px) !default;
+$text-size-4-font-size-m: rem(22px) !default;
+$text-size-4-font-size-xl: rem(24px) !default;
+$text-size-4-line-height: rem(28px) !default;
+$text-size-4-line-height-m: rem(30px) !default;
+$text-size-4-line-height-xl: rem(30px) !default;
+
+$text-size-5-font-size: rem(20px) !default;
+$text-size-5-line-height: rem(28px) !default;
+
+$text-size-copy-font-size: rem(16px) !default;
+$text-size-copy-line-height: rem(24px) !default;
+
+$text-size-small-font-size: rem(14px) !default;
+$text-size-small-line-height: rem(20px) !default;
+
+$text-size-micro-font-size: rem(12px) !default;
+$text-size-micro-line-height: rem(18px) !default;
+
+@mixin -text-size-1-regular {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-regular;
     font-size: $text-size-1-font-size;
     line-height: $text-size-1-line-height;
 
@@ -18,9 +57,19 @@
     }
 }
 
-@mixin -text-size-2-bold {
-    @include -font-primary;
-    font-weight: $font-weight-bold;
+@mixin -text-size-1-thin {
+    @include -text-size-1-regular;
+    font-weight: $p-font-weight-thin;
+}
+
+@mixin -text-size-1-bold {
+    @include -text-size-1-regular;
+    font-weight: $p-font-weight-bold;
+}
+
+@mixin -text-size-2-regular {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-regular;
     font-size: $text-size-2-font-size;
     line-height: $text-size-2-line-height;
 
@@ -35,9 +84,19 @@
     }
 }
 
-@mixin -text-size-3-bold {
-    @include -font-primary;
-    font-weight: $font-weight-bold;
+@mixin -text-size-2-thin {
+    @include -text-size-2-regular;
+    font-weight: $p-font-weight-thin;
+}
+
+@mixin -text-size-2-bold {
+    @include -text-size-2-regular;
+    font-weight: $p-font-weight-bold;
+}
+
+@mixin -text-size-3-regular {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-regular;
     font-size: $text-size-3-font-size;
     line-height: $text-size-3-line-height;
 
@@ -52,9 +111,19 @@
     }
 }
 
-@mixin -text-size-4-bold {
-    @include -font-primary;
-    font-weight: $font-weight-bold;
+@mixin -text-size-3-thin {
+    @include -text-size-3-regular;
+    font-weight: $p-font-weight-thin;
+}
+
+@mixin -text-size-3-bold {
+    @include -text-size-3-regular;
+    font-weight: $p-font-weight-bold;
+}
+
+@mixin -text-size-4-regular {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-regular;
     font-size: $text-size-4-font-size;
     line-height: $text-size-4-line-height;
 
@@ -69,30 +138,71 @@
     }
 }
 
-@mixin -text-size-5-bold {
-    @include -font-primary;
-    font-weight: $font-weight-bold;
+@mixin -text-size-4-thin {
+    @include -text-size-4-regular;
+    font-weight: $p-font-weight-thin;
+}
+
+@mixin -text-size-4-bold {
+    @include -text-size-4-regular;
+    font-weight: $p-font-weight-bold;
+}
+
+@mixin -text-size-5-regular {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-regular;
     font-size: $text-size-5-font-size;
     line-height: $text-size-5-line-height;
 }
 
-@mixin -text-size-copy-bold {
-    @include -font-primary;
-    font-weight: $font-weight-bold;
+@mixin -text-size-5-thin {
+    @include -text-size-5-regular;
+    font-weight: $p-font-weight-thin;
+}
+
+@mixin -text-size-5-bold {
+    @include -text-size-5-regular;
+    font-weight: $p-font-weight-bold;
+}
+
+@mixin -text-size-copy {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-regular;
     font-size: $text-size-copy-font-size;
     line-height: $text-size-copy-line-height;
 }
 
-@mixin -text-size-small-bold {
-    @include -font-primary;
-    font-weight: $font-weight-bold;
+@mixin -text-size-copy-bold {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-bold;
+    font-size: $text-size-copy-font-size;
+    line-height: $text-size-copy-line-height;
+}
+
+@mixin -text-size-small {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-regular;
     font-size: $text-size-small-font-size;
     line-height: $text-size-small-line-height;
 }
 
+@mixin -text-size-small-bold {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-bold;
+    font-size: $text-size-small-font-size;
+    line-height: $text-size-small-line-height;
+}
+
+@mixin -text-size-micro {
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-regular;
+    font-size: $text-size-micro-font-size;
+    line-height: $text-size-micro-line-height;
+}
+
 @mixin -text-size-micro-bold {
-    @include -font-primary;
-    font-weight: $font-weight-bold;
+    font-family: $p-font-primary;
+    font-weight: $p-font-weight-bold;
     font-size: $text-size-micro-font-size;
     line-height: $text-size-micro-line-height;
 }

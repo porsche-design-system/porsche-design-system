@@ -3,6 +3,7 @@ import cx from "classnames"
 
 import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
+import { Icon } from "../../atoms/Icon/Icon"
 
 export interface LinkProps extends ClassNameProp, ComponentProp {
     /**
@@ -41,19 +42,13 @@ const _Link: React.StatelessComponent<LinkProps> = (props) => {
 
     const linkClasses = cx(prefix(withIcon ? "link-icon-text" : "link-text"), className)
 
-    const iconClasses = cx(
-        prefix("icon"),
-        prefix("icon--arrow_right_hair"), // We explicitly don't use ui-kit-core as it would lead to an inconsistent state
-        prefix("link-icon-text__icon")
-    )
-
     const labelClasses = cx(prefix(withIcon ? "link-icon-text__label" : "link-text__label"), {
         [prefix("link-icon-text__label--black")]: withIcon
     })
 
     return (
         <ElementType className={linkClasses} onClick={onClick} {...rest}>
-            {withIcon && <span className={iconClasses} />}
+            {withIcon && <Icon name="arrow_right_hair" className={prefix("link-icon-text__icon")} />}
             <span className={labelClasses}>{children}</span>
         </ElementType>
     )

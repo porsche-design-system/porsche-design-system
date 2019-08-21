@@ -19,6 +19,7 @@
     }
 
     &__label {
+        user-select: none;
         padding-right: 0.75rem;
         padding-left: 2.1875rem;
         color: $radio-label-text-color;

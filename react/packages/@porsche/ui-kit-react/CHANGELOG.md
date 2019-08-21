@@ -6,6 +6,31 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Changed
+
+-   BREAKING CHANGE: Reset styles are now _not_ included by default in `index.css` or `index.scss`. Include `reset.css` separately to restore the styles as they were in the previous version. This allows a more finegrained control over how styles are included in a project.
+
+    Migration path:
+
+    -   Add `import "@porsche/ui-kit-react/css/reset.css"`
+
+-   BREAKING CHANGE: The font scss mixins are removed. Replace the `-font-primary` mixin with `font-family: $p-font-primary;`.
+
+-   BREAKING CHANGE: Icons are now in SVG format and not provided via a font. If you used icons directly in css (which is highly unlikely) you need to replace all css occurences with the `<Icon>` component. If your icons are not taking on the correct color or hover color, make sure to use both `color` and `fill` in your css to correctly color the svgs, or (even better) use the `color` and `hoverColor` props of the component.
+
+-   All font faces are now loaded from porscheui CDN and have modernized @font-face definitions for improved performance. As such, no fonts are bundled with this package, and no fonts need to be bundled into your deployable for this UI Kit to work correctly. This finally enables browser font caching across different Porsche applications.
+
+### Added
+
+-   In addition to the `index.css` containing styles for all components, each component now has its own stylesheet as well. This way, you can only import the css you need. You should always include `import "@porsche/ui-kit-react/css/font-face.css"` for the Porsche font to work though.
+
+-   The `<Icon>` component now has a `registerIcons` method to register project specific react components to render svg icons. You can create them by hand, but take a look at the README first to see how we create them programmatically using `svgr`.
+
+### Fixed
+
+-   Fixed an issue where `<ToastManager>` would ignore a timeout value of 0 and use the default timeout of 5000ms. Now 0 and negative timeout values display the toast until the user closes it manually.
+-   Fixed an issue where `<Spacing>` would not pass all its props to the child element.
+
 ## [0.13.0] - 2019-07-30
 
 -   Update to latest UI Kit Core version to support webfont files loaded from Edgecast CDN

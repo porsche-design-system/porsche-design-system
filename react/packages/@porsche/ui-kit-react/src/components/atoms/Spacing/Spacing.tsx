@@ -78,6 +78,7 @@ const _Spacing: React.StatelessComponent<SpacingProps> = (props) => {
 
             return React.cloneElement(child, {
                 className: cx(childrenClassName, classes),
+                ...rest,
                 ...childRest
             })
         })[0]

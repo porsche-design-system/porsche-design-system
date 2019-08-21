@@ -14,10 +14,14 @@ const IconSetExampleList = () => {
     return (
         <Flex alignMainAxis="center">
             {Icon.names.sort().map((type) => {
+                // Skip additionally registered icon from previous example
+                if (type === "test") {
+                    return null
+                }
                 return (
                     <div key={type} style={containerStyle}>
                         <Flex alignMainAxis="center" alignCrossAxis="center" style={contentStyle}>
-                            <Icon name={type} size="huge" />
+                            <Icon name={type} size="huge" hoverColor="red-1" />
                         </Flex>
                         <p style={labelStyle}>{type}</p>
                     </div>

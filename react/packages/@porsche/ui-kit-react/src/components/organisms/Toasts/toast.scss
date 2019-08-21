@@ -86,6 +86,14 @@ $toast-transition-duration: 400ms;
         border: none;
         cursor: pointer;
 
+        color: $color-palette-white;
+        fill: $color-palette-white;
+
+        &:hover {
+            color: $grey;
+            fill: $grey;
+        }
+
         &__icon {
             display: block;
         }

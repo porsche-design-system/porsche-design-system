@@ -38,6 +38,7 @@
     .#{$global-class-prefix}Select-value,
     .#{$global-class-prefix}Select-icon {
         color: $color-palette-red-1;
+        fill: $color-palette-red-1;
     }
 }
 
@@ -45,11 +46,13 @@
     outline: none;
 }
 
-.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-open > .#{$global-class-prefix}Select-control {
+.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-open
+    > .#{$global-class-prefix}Select-control {
     cursor: text;
 }
 
-.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-focused:not(.#{$global-class-prefix}select-is-open) > .#{$global-class-prefix}Select-control {
+.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-focused:not(.#{$global-class-prefix}select-is-open)
+    > .#{$global-class-prefix}Select-control {
     cursor: text;
 }
 
@@ -113,7 +116,8 @@
     opacity: 0;
 }
 
-.#{$global-class-prefix}Select-control:not(.#{$global-class-prefix}select-is-searchable) > .#{$global-class-prefix}Select-input {
+.#{$global-class-prefix}Select-control:not(.#{$global-class-prefix}select-is-searchable)
+    > .#{$global-class-prefix}Select-input {
     outline: none;
 }
 
@@ -184,7 +188,8 @@
 // }
 
 // PICK ONE: Hide select values when select is open
-.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-open .#{$global-class-prefix}Select-value {
+.#{$global-class-prefix}select-is-searchable.#{$global-class-prefix}select-is-open
+    .#{$global-class-prefix}Select-value {
     display: none;
 }
 
@@ -290,6 +295,7 @@
     .#{$global-class-prefix}Select-label,
     .#{$global-class-prefix}Select-value {
         color: $grey-light;
+        fill: $grey-light;
     }
 }
 
@@ -322,7 +328,7 @@
 }
 
 .#{$global-class-prefix}Select-label {
-    @include -font-primary();
+    font-family: $p-font-primary;
     @include -overflow-ellipsis();
     @include -text-size-small;
 

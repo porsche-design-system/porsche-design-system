@@ -37,28 +37,29 @@
         border: 1px solid $checkbox-icon-border-color;
         align-self: flex-start;
 
+        & svg {
+            margin-left: 2px;
+            margin-top: 2px;
+            visibility: hidden;
+        }
+
         &--default {
             color: $checkbox-icon-color;
+            fill: $checkbox-icon-color;
         }
 
         &--blue {
             color: $checkbox-icon-color-blue;
+            fill: $checkbox-icon-color-blue;
         }
 
         &--red {
             color: $checkbox-icon-color-red;
+            fill: $checkbox-icon-color-red;
         }
 
         &--inverted {
             border-color: $checkbox-icon-border-color-inverted;
-        }
-
-        &::before {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            visibility: hidden;
         }
 
         &::after {
@@ -80,6 +81,7 @@
     }
 
     &__label {
+        user-select: none;
         display: block;
         margin: 0 $spacing-18 0 $spacing-18;
         color: $checkbox-label-text-color;
@@ -110,12 +112,13 @@
     // checkbox is checked
     &__field:checked {
         & ~ #{$bem-block}__icon {
-            &::before {
+            & svg {
                 visibility: visible;
             }
 
             &--default {
                 color: $checkbox-icon-color-checked;
+                fill: $checkbox-icon-color-checked;
                 background-color: $checkbox-icon-inner-background-color-checked;
                 border-color: $checkbox-icon-border-color-checked;
             }
@@ -123,18 +126,21 @@
             &--blue {
                 border-color: $checkbox-icon-border-color-blue;
                 color: $checkbox-icon-color-blue;
+                fill: $checkbox-icon-color-blue;
                 background-color: $checkbox-icon-inner-background-color-blue;
             }
 
             &--red {
                 border-color: $checkbox-icon-border-color-red;
                 color: $checkbox-icon-color-red;
+                fill: $checkbox-icon-color-red;
                 background-color: $checkbox-icon-inner-background-color-red;
             }
 
             &--inverted {
                 border-color: $checkbox-icon-border-color-inverted;
                 color: $checkbox-icon-color-checked-inverted;
+                fill: $checkbox-icon-color-checked-inverted;
                 background-color: transparent;
             }
         }
@@ -162,29 +168,35 @@
             background-color: transparent;
             border-color: $checkbox-icon-border-color-disabled-checked;
             color: $checkbox-icon-color-disabled-checked;
+            fill: $checkbox-icon-color-disabled-checked;
 
             &--blue {
                 border-color: $checkbox-icon-border-color-disabled-checked;
                 color: $checkbox-icon-color-blue-disabled;
+                fill: $checkbox-icon-color-blue-disabled;
                 background-color: transparent;
             }
 
             &--red {
                 border-color: $checkbox-icon-border-color-disabled-checked;
                 color: $checkbox-icon-color-red-disabled;
+                fill: $checkbox-icon-color-red-disabled;
                 background-color: transparent;
             }
 
             &--inverted {
                 border-color: $checkbox-icon-border-color-disabled-checked-inverted;
                 color: $checkbox-icon-color-disabled-checked-inverted;
+                fill: $checkbox-icon-color-disabled-checked-inverted;
 
                 &--blue {
                     color: $checkbox-icon-color-blue-disabled;
+                    fill: $checkbox-icon-color-blue-disabled;
                 }
 
                 &--red {
                     color: $checkbox-icon-color-red-disabled;
+                    fill: $checkbox-icon-color-red-disabled;
                 }
             }
         }
@@ -196,11 +208,13 @@
             cursor: default;
             border-color: $checkbox-icon-border-color-disabled;
             color: $checkbox-icon-color-checked-disabled;
+            fill: $checkbox-icon-color-checked-disabled;
 
             &--inverted {
                 border-color: $checkbox-icon-border-color-disabled-inverted;
                 background-color: transparent !important;
                 color: $checkbox-icon-color-checked-disabled-inverted;
+                fill: $checkbox-icon-color-checked-disabled-inverted;
             }
 
             &--inverted::before {

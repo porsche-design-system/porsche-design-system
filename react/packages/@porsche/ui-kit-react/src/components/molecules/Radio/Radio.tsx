@@ -85,7 +85,7 @@ const _Radio: React.StatelessComponent<RadioProps> & Partial<Radio> = (props) =>
         [prefix("radio--error")]: error
     })
 
-    const labelClasses = cx(prefix("noselect"), prefix("radio__label"), {
+    const labelClasses = cx(prefix("radio__label"), {
         [prefix("radio__label--single-line")]: singleLine
     })
 

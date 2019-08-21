@@ -3,6 +3,7 @@ import cx from "classnames"
 
 import { prefix, getElementType } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
+import { Icon } from "../../atoms/Icon/Icon"
 
 export interface CheckboxProps extends ClassNameProp, ComponentProp {
     /** Custom dom attributes for the checkbox element only. */
@@ -83,8 +84,6 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> = (props) => {
 
     const iconClasses = cx(
         prefix("checkbox__icon"),
-        prefix("icon"),
-        prefix("icon--check"),
         { [prefix("checkbox__icon--default")]: type === "default" },
         { [prefix("checkbox__icon--red")]: type === "red" },
         { [prefix("checkbox__icon--blue")]: type === "blue" },
@@ -92,7 +91,6 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> = (props) => {
     )
 
     const labelClasses = cx(
-        prefix("noselect"),
         prefix("checkbox__label"),
         { [prefix("checkbox__label--error")]: error },
         { [prefix("checkbox__label--inverted")]: type === "inverted" },
@@ -138,7 +136,7 @@ const _Checkbox: React.StatelessComponent<CheckboxProps> = (props) => {
                     readOnly={readOnly}
                     onChange={handleChange}
                 />
-                <span className={iconClasses} {...checkboxProps} />
+                <Icon name="check" as="span" className={iconClasses} {...checkboxProps} />
                 {children && React.Children.count(children) > 0 && <span className={labelClasses}>{children}</span>}
             </ElementLabelType>
         </ElementType>

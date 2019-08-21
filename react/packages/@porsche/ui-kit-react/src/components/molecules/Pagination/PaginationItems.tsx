@@ -1,12 +1,12 @@
 import * as React from "react"
 import cx from "classnames"
 
-import { getElementType, prefix } from "../../../lib"
-import { ClassNameProp, ComponentProp } from "../../../lib/props"
+import { prefix } from "../../../lib"
 
 import { PaginationItemType } from "./PaginationHelper"
+import { Icon } from "../../atoms/Icon/Icon"
 
-export interface PaginationItemProps extends ClassNameProp, ComponentProp {
+export interface PaginationItemProps {
     /** The unique identifier. */
     key: number
     /** Number of page that user should navigate to when item is activated. */
@@ -23,8 +23,7 @@ export interface PaginationItemProps extends ClassNameProp, ComponentProp {
  * Previous Page Item
  */
 export const PrevItem: React.StatelessComponent<PaginationItemProps> = (props) => {
-    const { as, value, isActive, onClick } = props
-    const ElementType = getElementType(as, "a")
+    const { value, isActive, onClick } = props
     const classesPaginationItem = cx(prefix("pagination__prev"), {
         [prefix("pagination__prev--disabled")]: isActive
     })
@@ -35,9 +34,10 @@ export const PrevItem: React.StatelessComponent<PaginationItemProps> = (props) =
     }
 
     return (
-        <ElementType
+        <Icon
+            as="a"
+            name="arrow_left_hair"
             className={classesPaginationItem}
-            href="#"
             onClick={(event: React.MouseEvent<HTMLElement>) => {
                 event.preventDefault()
                 if (!onClick) {
@@ -46,6 +46,7 @@ export const PrevItem: React.StatelessComponent<PaginationItemProps> = (props) =
                 onClick(event, value)
             }}
             aria-label="Previous"
+            {...{ href: "#" }}
         />
     )
 }
@@ -54,8 +55,7 @@ export const PrevItem: React.StatelessComponent<PaginationItemProps> = (props) =
  * Next Page Item
  */
 export const NextItem: React.StatelessComponent<PaginationItemProps> = (props) => {
-    const { as, value, isActive, onClick } = props
-    const ElementType = getElementType(as, "a")
+    const { value, isActive, onClick } = props
     const classesPaginationItem = cx(prefix("pagination__next"), {
         [prefix("pagination__next--disabled")]: isActive
     })
@@ -66,9 +66,9 @@ export const NextItem: React.StatelessComponent<PaginationItemProps> = (props) =
     }
 
     return (
-        <ElementType
+        <Icon
+            name="arrow_right_hair"
             className={classesPaginationItem}
-            href="#"
             onClick={(event: React.MouseEvent<HTMLElement>) => {
                 event.preventDefault()
                 if (!onClick || isActive) {
@@ -77,6 +77,7 @@ export const NextItem: React.StatelessComponent<PaginationItemProps> = (props) =
                 onClick(event, value)
             }}
             aria-label="Next"
+            {...{ href: "#" }}
         />
     )
 }
@@ -85,8 +86,8 @@ export const NextItem: React.StatelessComponent<PaginationItemProps> = (props) =
  * Page Item
  */
 export const PageItem: React.StatelessComponent<PaginationItemProps> = (props) => {
-    const { as, value, onClick, isActive } = props
-    const ElementType = getElementType(as, isActive ? "span" : "a")
+    const { value, onClick, isActive } = props
+    const ElementType = isActive ? "span" : "a"
     const classesPaginationItem = cx(prefix("pagination__goto"), {
         [prefix("pagination__goto--current")]: isActive
     })
@@ -115,12 +116,9 @@ export const PageItem: React.StatelessComponent<PaginationItemProps> = (props) =
  * Ellipsis Item
  */
 export const EllipsisItem: React.StatelessComponent<PaginationItemProps> = (props) => {
-    const { as } = props
-    const ElementType = getElementType(as, "span")
-
     return (
         <li className={cx(prefix("pagination__item"))}>
-            <ElementType className={cx(prefix("pagination__goto"), prefix("pagination__goto--ellipsis"))} />
+            <span className={cx(prefix("pagination__goto"), prefix("pagination__goto--ellipsis"))} />
         </li>
     )
 }

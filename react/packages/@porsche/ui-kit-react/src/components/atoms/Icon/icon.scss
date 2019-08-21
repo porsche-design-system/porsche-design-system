@@ -1,8 +1,27 @@
 @import "../../../common";
-@import "../../../base/icon/icon";
+
+@mixin fillAndHoverColor($name, $color) {
+    &--#{$name} {
+        fill: $color;
+        color: $color;
+
+        &--hover {
+            &:hover {
+                fill: $color;
+                color: $color;
+            }
+        }
+    }
+}
 
 .#{$global-class-prefix}icon {
     $bem-block: &;
+
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 0;
+    speak: none;
+    backface-visibility: hidden;
 
     &--small {
         font-size: 14px;
@@ -53,4 +72,39 @@
             border: 2px solid;
         }
     }
+
+    &--link {
+        cursor: pointer;
+    }
+
+    // Colors
+    @include fillAndHoverColor("black", $text-color-black);
+
+    @include fillAndHoverColor("white", $text-color-white);
+
+    @include fillAndHoverColor("grey-darker", $text-color-grey-1);
+
+    @include fillAndHoverColor("grey-dark", $text-color-grey-3);
+
+    @include fillAndHoverColor("grey", $text-color-grey-5);
+
+    @include fillAndHoverColor("grey-light", $text-color-grey-7);
+
+    @include fillAndHoverColor("grey-lighter", $text-color-grey-9);
+
+    @include fillAndHoverColor("red-1", $text-color-red-1);
+
+    @include fillAndHoverColor("red-2", $text-color-red-2);
+
+    @include fillAndHoverColor("blue-1", $text-color-blue-1);
+
+    @include fillAndHoverColor("blue-2", $text-color-blue-2);
+
+    @include fillAndHoverColor("status-green", $text-color-status-green);
+
+    @include fillAndHoverColor("status-yellow", $text-color-status-yellow);
+
+    @include fillAndHoverColor("status-orange", $text-color-status-orange);
+
+    @include fillAndHoverColor("status-red", $text-color-status-red);
 }

@@ -13,28 +13,28 @@
     }
 
     &__title {
-        @include -font-primary;
+        font-family: $p-font-primary;
 
-        font-size: 5.625rem;      // 90px
-        line-height: 6.75rem;    // 108px
-        font-weight: $font-weight-thin;
+        font-size: 5.625rem; // 90px
+        line-height: 6.75rem; // 108px
+        font-weight: $p-font-weight-thin;
 
         @include breakpoint("s", "m") {
-            font-size: 6.75rem;     // 108px
-            line-height: 8.125rem;   // 130px
-            font-weight: $font-weight-thin;
+            font-size: 6.75rem; // 108px
+            line-height: 8.125rem; // 130px
+            font-weight: $p-font-weight-thin;
         }
 
         @include breakpoint("m", "l") {
-            font-size: 7.875rem;     // 126px
-            line-height: 9.375rem;   // 150px
-            font-weight: $font-weight-thin;
+            font-size: 7.875rem; // 126px
+            line-height: 9.375rem; // 150px
+            font-weight: $p-font-weight-thin;
         }
 
         @include breakpoint("l") {
-            font-size: 9rem;         // 144px
-            line-height: 10.75rem;  // 172px
-            font-weight: $font-weight-thin;
+            font-size: 9rem; // 144px
+            line-height: 10.75rem; // 172px
+            font-weight: $p-font-weight-thin;
         }
     }
 }

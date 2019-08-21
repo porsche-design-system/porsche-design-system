@@ -71,7 +71,7 @@
     }
 
     &__label {
-        @include -font-primary();
+        font-family: $p-font-primary;
         @include -overflow-ellipsis();
         @include -text-size-small;
 
@@ -103,11 +103,12 @@
         top: 50%;
         right: $input-field-padding-horizontal;
         transform: translate(0, -50%);
-        font-size: $input-icon-size;
         color: $input-icon-color;
+        fill: $input-icon-color;
 
         &--error {
             color: $input-field-text-color-error;
+            fill: $input-field-text-color-error;
         }
 
         & ~ #{$bem-block}__field {
@@ -136,6 +137,7 @@
 
         & + #{$bem-block}__icon {
             color: $input-field-text-color-disabled;
+            fill: $input-field-text-color-disabled;
         }
     }
 

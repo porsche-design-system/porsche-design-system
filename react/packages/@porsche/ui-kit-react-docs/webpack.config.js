@@ -9,6 +9,7 @@ const configuration = {
     bail: true,
     entry: [
         "@babel/polyfill",
+        "@porsche/ui-kit-react/css/reset.css",
         "@porsche/ui-kit-react/css/index.css",
         "@porsche/ui-kit-react",
         "./src/app/index.css",
