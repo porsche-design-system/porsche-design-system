@@ -1,8 +1,6 @@
 # Flex
 
-## Introduction
-
-The Porsche UI Kit flex layout system is based on standard css flexbox browser behaviour and can be controlled by properties on the flex container and flex item. It can be used to quickly layout standard content blocks or components. It does not replace [Grid](/#/web/components/layout/grid) component which should be used to define basic page structures.
+The Porsche UI Kit flex layout system is based on standard CSS flexbox browser behaviour and can be controlled by properties on the flex container and flex item. It can be used to quickly layout standard content blocks or components. It does not replace [Grid](/#/web/components/layout/grid) component which should be used to define basic page structures.
 
 ### Flex
 Initialize standard flexbox container to define flex context.
@@ -48,7 +46,7 @@ Flex inline displays flex containers in a row.
   </p-flex>
 </Playground>
 
-### Responsive
+### Responsiveness
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
@@ -140,7 +138,7 @@ Define or change direction of the flex items to rows or columns and set order.
   </p-flex>
 </Playground>
 
-#### Responsive
+#### Responsiveness
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>

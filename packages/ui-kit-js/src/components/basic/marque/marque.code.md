@@ -1,17 +1,16 @@
 # Marque
 
-## Introduction
-Porsche Marque component for visualizing main Porsche logo.
+Porsche Marque component for visualizing the main Porsche logo.
 
 ## Variants
 
-### Marque with trademark sign
+### Marque with registered trademark (®)
 
 <Playground>
   <p-marque />
 </Playground>
 
-### Marque without trademark sign
+### Marque without registered trademark (®)
 <Playground>
   <p-marque trademark="false" />
 </Playground>

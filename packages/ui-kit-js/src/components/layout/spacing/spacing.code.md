@@ -1,6 +1,5 @@
 # Spacing
 
-## Introduction
 Global CSS utility classes to add margins (positive and negative) and paddings to elements.
 
 ## Static spacings
@@ -369,7 +368,7 @@ Responsive spacings adapt their spacing value automatically with predefined size
 --- 
 
 ### Usage
-Responsive spacings can be used to achieve different spacings on predefined major viewport sizes, e.g. to equalize overall whitespace between elements. They can be used as a CSS utility class on the element itself.
+Responsive spacings can be used to achieve different spacings on predefined major viewport sizes, e.g. to equalize overall white space between elements. They can be used as a CSS utility class on the element itself.
 
 **Given values are:**
 
@@ -396,7 +395,7 @@ Responsive spacings can be used to achieve different spacings on predefined majo
 
 ## Responsive zero spacings defined by breakpoints
 In some cases spacings need to be set to zero to delete unwanted spacings for a specific breakpoint (e.g. by changing major layout from desktop to mobile).
-To achive highest flexibility, breakpoint behaviour can set **from** a `min` breakpoint value and also **to** a `max` breakpoint value. This means that zero spacings can be defined from breakpoint `xxs` to the max value given in the class name and also from the min value in the class name to breakpoint `xxl` (@see `min` and `max` identifiers in the class name).
+To achieve highest flexibility, breakpoint behaviour can set **from** a `min` breakpoint value and also **to** a `max` breakpoint value. This means that zero spacings can be defined from breakpoint `xxs` to the max value given in the class name and also from the min value in the class name to breakpoint `xxl` (@see `min` and `max` identifiers in the class name).
 
 **Example**:  
 `p-spacing-m-0-max-s` => zero value (of margin) is set until breakpoint `s` is reached, the the other value takes care of your spacing on wider viewports.  
