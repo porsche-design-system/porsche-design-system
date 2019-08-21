@@ -1,7 +1,7 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.13.0",
+    "version": "0.14.0",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
@@ -76,6 +76,7 @@
         "tslib": "^1.9.3"
     },
     "devDependencies": {
+        "@svgr/cli": "^4.3.2",
         "@types/enzyme": "^3.1.15",
         "@types/jest": "^23.3.12",
         "@types/react": "^16.7.17",
@@ -83,7 +84,6 @@
         "@types/react-modal": "^3.6.0",
         "@types/react-responsive": "^3.0.2",
         "@types/react-transition-group": "^2.0.14",
-        "@svgr/cli": "^4.3.2",
         "autoprefixer": "^9.4.3",
         "cross-env": "^5.2.0",
         "enzyme": "^3.8.0",
