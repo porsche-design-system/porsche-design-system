@@ -12,10 +12,6 @@ const Variations = () => {
             <ComponentExample title="Icon Sizes" examplePath="atoms/Icon/Variations/VariationsExampleSize">
                 An icon can vary in size.
             </ComponentExample>
-
-            <ComponentExample title="Circled Icons" examplePath="atoms/Icon/Variations/VariationsExampleCircled">
-                An icon can have a surrounding circle.
-            </ComponentExample>
         </ExampleSection>
     )
 }

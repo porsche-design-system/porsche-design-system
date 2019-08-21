@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 -   BREAKING CHANGE: Icons are now in SVG format and not provided via a font. If you used icons directly in css (which is highly unlikely) you need to replace all css occurences with the `<Icon>` component. If your icons are not taking on the correct color or hover color, make sure to use both `color` and `fill` in your css to correctly color the svgs, or (even better) use the `color` and `hoverColor` props of the component.
 
+-   BREAKING CHANGE: Icons don't have a `circled` prop anymore.
+
 -   All font faces are now loaded from porscheui CDN and have modernized @font-face definitions for improved performance. As such, no fonts are bundled with this package, and no fonts need to be bundled into your deployable for this UI Kit to work correctly. This finally enables browser font caching across different Porsche applications.
 
 ### Added

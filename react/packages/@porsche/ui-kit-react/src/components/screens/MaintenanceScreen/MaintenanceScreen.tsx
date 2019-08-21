@@ -26,7 +26,7 @@ const _MaintenanceScreen: React.StatelessComponent<MaintenanceScreenProps> = (pr
                 <ContentWrapper>
                     <div className={prefix("maintenance-screen__content")}>
                         <Flex alignMainAxis="center">
-                            <Icon circled color="red-1" name="maintenance" size="huge" />
+                            <Icon color="red-1" name="maintenance" size="huge" />
                         </Flex>
                         <Spacing marginTop={"e"}>
                             <Text as="h1" type="1-thin" color="grey-darker" align="center">

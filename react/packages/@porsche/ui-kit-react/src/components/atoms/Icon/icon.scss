@@ -19,7 +19,6 @@
 
     display: inline-block;
     vertical-align: middle;
-    line-height: 0;
     speak: none;
     backface-visibility: hidden;
 
@@ -41,36 +40,6 @@
 
     &--huge {
         font-size: 42px;
-    }
-
-    &--circled {
-        border-color: inherit;
-        border-radius: 50%;
-
-        &#{$bem-block}--small {
-            padding: 3px;
-            border: 1px solid;
-        }
-
-        &#{$bem-block}--regular {
-            padding: 5px;
-            border: 1px solid;
-        }
-
-        &#{$bem-block}--medium {
-            padding: 7px;
-            border: 1px solid;
-        }
-
-        &#{$bem-block}--large {
-            padding: 11px;
-            border: 2px solid;
-        }
-
-        &#{$bem-block}--huge {
-            padding: 17px;
-            border: 2px solid;
-        }
     }
 
     &--link {
