@@ -1,6 +1,6 @@
 # Spacing
 
-We use defined spacings to seperate components elements within a layout. Using the same defined spacing system provides a consistent and familiar user experience across all pages. For layouts the spacing should be used in combination with the [responsive grid](/#/web/components/layout/grid).
+We use defined spacings to seperate components elements within a layout. Using the same defined spacing system provides a consistent and familiar user experience across all pages. For layouts the spacing should be used in combination with the [responsive grid](#/web/components/layout/grid).
 
 ## 8 px spacing system - the Porsche formula
 We use a 8 px square grid system across all viewports to define dimensions, padding and margin of block and inline elements. The grid unit of 8 px refers to
@@ -11,7 +11,7 @@ the general base size of 16 px (= 1 em), that is also applied in typography and 
 
 ## Applying the 8 px system
 
-- **Margins and paddings** are applied based on multiples of 8 px. Boxed UI elements are sized either by adapting to the fixed value or to the [fluid column widths](/#/web/components/layout/grid).
+- **Margins and paddings** are applied based on multiples of 8 px. Boxed UI elements are sized either by adapting to the fixed value or to the [fluid column widths](#/web/components/layout/grid).
 - **Typography as an exception** works with a baseline unit of 4 px for larger flexibility while ensuring the overall consistent rhythm.
 
 ## Fixed and flexible spacings

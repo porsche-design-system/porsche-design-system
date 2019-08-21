@@ -47,4 +47,4 @@ Enrich your Porsche UI design experience by using the Porsche color palette in y
 [Download Porsche color palette](https://ui.porsche.com/latest/porsche-ui-kit-colors.sketchpalette)
 
 ## Other helpful Sketch Plugins
-A curated list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](/#/web/getting-started/sketch-plugins).
+A curated list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](#/web/getting-started/sketch-plugins).

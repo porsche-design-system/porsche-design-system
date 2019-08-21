@@ -64,7 +64,7 @@ The Porsche type scale is a dedicated sizing system based on a specific formula.
 
 ### Line height
 
-For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](/#/web/layout/spacing)  in order to follow a harmonious overall vertical rhythm.
+For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](#/web/layout/spacing)  in order to follow a harmonious overall vertical rhythm.
 
 ---
 
@@ -137,7 +137,7 @@ Depending on the information level of the respective text you can either chose b
 
 ### Text color
 
-The color to be used for Porsche Next depends on the [Porsche Color Theme](/#/web/basic/color) in use. In order to support both simplicity and and legibility (sufficient contrast) default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche Color Themes also provide different text state colors, such as Porsche Red for active states or Grey for disabled text.
+The color to be used for Porsche Next depends on the [Porsche Color Theme](#/web/basic/color) in use. In order to support both simplicity and and legibility (sufficient contrast) default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche Color Themes also provide different text state colors, such as Porsche Red for active states or Grey for disabled text.
 
 ### Font weights
 
@@ -235,7 +235,7 @@ of good (micro) typography, such as using the right kind of apostrophes in the r
 ---
 
 ## Accessibility
-As we stick to the common [WCAG 2.1 Standard](/#/web/basics/accessibility)
+As we stick to the common [WCAG 2.1 Standard](#/web/basics/accessibility)
 you should always ensure a sufficient contrast ratio when designing with text. 
 The combination of text and background color should pass the WCAG AA standard 
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 

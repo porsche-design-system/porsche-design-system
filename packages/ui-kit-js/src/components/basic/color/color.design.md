@@ -207,7 +207,7 @@ Sticking to the [Porsche Brand Code](https://brandguide.porsche.com/elements/man
 
 ## Accessibility
 
-In order to make content accessible for a wide range of people and, by doing so, to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](/#/web/basics/accessibility).
+In order to make content accessible for a wide range of people and, by doing so, to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](#/web/basics/accessibility).
 when designing Porsche web applications.
 
 - Always ensure a sufficient contrast ratio. The combination of text and
