@@ -12,9 +12,9 @@ describe('Spinner', () => {
       .parents('a')
       .should('have.class', 'router-link-active');
 
-    cy.get('#app main h2:first')
+    cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'General information');
+      .and('contain', 'Spinner');
   });
 
   describe('Tabs', () => {
@@ -43,7 +43,7 @@ describe('Spinner', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h2:first').should('contain', 'General information');
+      cy.get('#app main h1').should('contain', 'Spinner');
     });
 
     it('Should show code documentation', () => {
@@ -61,7 +61,7 @@ describe('Spinner', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Loader');
+      cy.get('#app main h1').should('contain', 'Spinner');
     });
   });
 });
