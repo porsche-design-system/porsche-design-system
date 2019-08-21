@@ -1628,10 +1628,10 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@stencil/core@1.2.5":
-  version "1.2.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.2.5.tgz#30d0182f923e073222b74640bbbd6c4a2c0d6138"
-  integrity sha1-MNAYL5I+BzIit0ZAu71sSiwNYTg=
+"@stencil/core@1.3.0":
+  version "1.3.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@stencil/core/-/core-1.3.0.tgz#8f4808c64a19e2cb6a70db02df1ffa9420dccb68"
+  integrity sha1-j0gIxkoZ4stqcNsC3x/6lCDcy2g=
   dependencies:
     typescript "3.5.3"
 
@@ -1857,14 +1857,7 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
   integrity sha1-NcwVucTzChjvIYUuJV/bAvbVm4k=
 
-"@types/jest@24.0.17":
-  version "24.0.17"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jest/-/jest-24.0.17.tgz#b66ea026efb746eb5db1356ee28518aaff7af416"
-  integrity sha1-tm6gJu+3RutdsTVu4oUYqv969BY=
-  dependencies:
-    "@types/jest-diff" "*"
-
-"@types/jest@^24.0.17":
+"@types/jest@24.0.18", "@types/jest@^24.0.17":
   version "24.0.18"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/jest/-/jest-24.0.18.tgz#9c7858d450c59e2164a8a9df0905fc5091944498"
   integrity sha1-nHhY1FDFniFkqKnfCQX8UJGURJg=
@@ -1928,10 +1921,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
 
-"@types/react-dom@16.8.5":
-  version "16.8.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react-dom/-/react-dom-16.8.5.tgz#3e3f4d99199391a7fb40aa3a155c8dd99b899cbd"
-  integrity sha1-Pj9NmRmTkaf7QKo6FVyN2ZuJnL0=
+"@types/react-dom@16.9.0":
+  version "16.9.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@types/react-dom/-/react-dom-16.9.0.tgz#ba6ddb00bf5de700b0eb91daa452081ffccbfdea"
+  integrity sha1-um3bAL9d5wCw65HapFIIH/zL/eo=
   dependencies:
     "@types/react" "*"
 
@@ -9245,7 +9238,7 @@ js-tokens@^3.0.2:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.7.0:
+js-yaml@^3.13.1, js-yaml@^3.7.0:
   version "3.13.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   integrity sha1-r/FRswv9+o5J4F2iLnQV6d+jeEc=
@@ -12428,7 +12421,7 @@ postcss-value-parser@^3.0.0, postcss-value-parser@^3.2.3, postcss-value-parser@^
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
   integrity sha1-n/giVH4okyE88cMO+lGsX9G6goE=
 
-postcss-value-parser@^4.0.0:
+postcss-value-parser@^4.0.0, postcss-value-parser@^4.0.2:
   version "4.0.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/postcss-value-parser/-/postcss-value-parser-4.0.2.tgz#482282c09a42706d1fc9a069b73f44ec08391dc9"
   integrity sha1-SCKCwJpCcG0fyaBptz9E7Ag5Hck=
@@ -13812,7 +13805,7 @@ sass-loader@7.1.0:
     pify "^3.0.0"
     semver "^5.5.0"
 
-sass-loader@7.2.0, sass-loader@^7.2.0:
+sass-loader@7.2.0:
   version "7.2.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/sass-loader/-/sass-loader-7.2.0.tgz#e34115239309d15b2527cb62b5dfefb62a96ff7f"
   integrity sha1-40EVI5MJ0VslJ8titd/vtiqW/38=
@@ -13822,6 +13815,17 @@ sass-loader@7.2.0, sass-loader@^7.2.0:
     neo-async "^2.5.0"
     pify "^4.0.1"
     semver "^5.5.0"
+
+sass-loader@^7.3.1:
+  version "7.3.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/sass-loader/-/sass-loader-7.3.1.tgz#a5bf68a04bcea1c13ff842d747150f7ab7d0d23f"
+  integrity sha1-pb9ooEvOocE/+ELXRxUPerfQ0j8=
+  dependencies:
+    clone-deep "^4.0.1"
+    loader-utils "^1.0.1"
+    neo-async "^2.5.0"
+    pify "^4.0.1"
+    semver "^6.3.0"
 
 sass@1.22.7:
   version "1.22.7"
@@ -14750,16 +14754,16 @@ stylelint-config-standard@^18.3.0:
   dependencies:
     stylelint-config-recommended "^2.2.0"
 
-stylelint-scss@^3.9.3:
-  version "3.9.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.9.3.tgz#4fa300eeb2feced9b00ca6fbe5fa664bca146a06"
-  integrity sha1-T6MA7rL+ztmwDKb75fpmS8oUagY=
+stylelint-scss@^3.9.4:
+  version "3.9.4"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/stylelint-scss/-/stylelint-scss-3.9.4.tgz#c32274575c2e41101105e7606bbd96325b558b23"
+  integrity sha1-wyJ0V1wuQRARBedga72WMltViyM=
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.15"
     postcss-media-query-parser "^0.2.3"
     postcss-resolve-nested-selector "^0.1.1"
     postcss-selector-parser "^6.0.2"
-    postcss-value-parser "^4.0.0"
+    postcss-value-parser "^4.0.2"
 
 stylelint@^10.1.0:
   version "10.1.0"
@@ -15349,7 +15353,7 @@ tslint-config-prettier@^1.18.0:
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/tslint-config-prettier/-/tslint-config-prettier-1.18.0.tgz#75f140bde947d35d8f0d238e0ebf809d64592c37"
   integrity sha1-dfFAvelH012PDSOODr+AnWRZLDc=
 
-tslint@^5.15.0, tslint@^5.18.0:
+tslint@^5.15.0:
   version "5.18.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/tslint/-/tslint-5.18.0.tgz#f61a6ddcf372344ac5e41708095bbf043a147ac6"
   integrity sha1-9hpt3PNyNErF5BcICVu/BDoUesY=
@@ -15368,18 +15372,18 @@ tslint@^5.15.0, tslint@^5.18.0:
     tslib "^1.8.0"
     tsutils "^2.29.0"
 
-tslint@~5.15.0:
-  version "5.15.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/tslint/-/tslint-5.15.0.tgz#6ffb180986d63afa1e531feb2a134dbf961e27d3"
-  integrity sha1-b/sYCYbWOvoeUx/rKhNNv5YeJ9M=
+tslint@^5.19.0, tslint@~5.19.0:
+  version "5.19.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/tslint/-/tslint-5.19.0.tgz#a2cbd4a7699386da823f6b499b8394d6c47bb968"
+  integrity sha1-osvUp2mThtqCP2tJm4OU1sR7uWg=
   dependencies:
-    babel-code-frame "^6.22.0"
+    "@babel/code-frame" "^7.0.0"
     builtin-modules "^1.1.1"
     chalk "^2.3.0"
     commander "^2.12.1"
     diff "^3.2.0"
     glob "^7.1.1"
-    js-yaml "^3.13.0"
+    js-yaml "^3.13.1"
     minimatch "^3.0.4"
     mkdirp "^0.5.1"
     resolve "^1.3.2"
