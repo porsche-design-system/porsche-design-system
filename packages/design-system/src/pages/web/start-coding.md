@@ -73,7 +73,7 @@ If using native web components in a static website (with no specific framework d
 
 The React wrapper of web components can be used like every other React component (even with Typescript support). 
 
-After adding the React components package to your project, import component(s) and CSS.
+After adding the React components package to your project, import component(s) and (S)CSS.
 The following setup is a standard React Scripts (Create React App) setup with SCSS support:
 
 #### Index file
@@ -106,7 +106,7 @@ export default App;
 ``` 
 
 #### Load CSS and SCSS utils
-In your `index.scss` import mandatory Porsche UI Kit styles and optional SCSS utilities:
+In your `index.scss` import mandatory Porsche UI Kit stylesheet and optional SCSS utilities:
 
 ``` 
 @import "~@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
@@ -119,7 +119,7 @@ In your `index.scss` import mandatory Porsche UI Kit styles and optional SCSS ut
 
 The Angular wrapper of web components can be used like every other Angular component (even with Typescript support). 
 
-After adding the Angular components package to your project, set declarations and import CSS. 
+After adding the Angular components package to your project, set declarations and import (S)CSS. 
 The following setup is a standard Angular setup with SCSS support:
 
 #### App module
@@ -161,7 +161,7 @@ export class AppComponent {}
 ``` 
 
 #### Load CSS and SCSS utils
-In your `styles.scss` import mandatory Porsche UI Kit styles and optional SCSS utilities:
+In your `styles.scss` import mandatory Porsche UI Kit stylesheet and optional SCSS utilities:
 
 ``` 
 @import "~@porscheui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
@@ -178,7 +178,7 @@ SCSS utils can be used for easier SCSS/SASS development. See [SCSS utils section
 
 ### Web components used with non supported framework
 
-AToW we only provide wrappers for React and Angular. But this doesn't mean, that web components can't be used with other Frameworks like Vue or Ember. Just follow these guidelines to make web components work in other frameworks:
+AToW we only provide wrappers for React and Angular. But this doesn't mean, that web components can't be used with other frameworks like Vue or Ember. Just follow these guidelines to make web components work in other frameworks:
 
 - [Guidelines for Vue](https://stenciljs.com/docs/vue)
 - [Guidelines for Ember](https://stenciljs.com/docs/ember)
