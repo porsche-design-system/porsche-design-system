@@ -13,7 +13,7 @@
         class="tab"
         variant="28-thin"
         tag="div"
-        v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')"
+        v-if="isStoryExistent('code')"
       >
         <router-link to="#code">Code</router-link>
       </p-text>
@@ -21,7 +21,7 @@
         class="tab"
         variant="28-thin"
         tag="div"
-        v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')"
+        v-if="isStoryExistent('props')"
       >
         <router-link to="#props">Props</router-link>
       </p-text>
@@ -35,7 +35,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { config as webConfig } from '@/../design-system.web.config';
-import { decodeUrl, featureToggle } from '@/services/utils';
+import { decodeUrl } from '@/services/utils';
 import Markdown from '@/components/Markdown.vue';
 import { Stories, Tabs } from '@/interface';
 
@@ -45,7 +45,6 @@ import { Stories, Tabs } from '@/interface';
   }
 })
 export default class Story extends Vue {
-  public featureToggle = featureToggle;
   public components: any[] = [];
 
   private get area(): string {

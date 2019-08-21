@@ -15,18 +15,10 @@
     <Divider v-if="config.stories" spacing="small" />
     <p-headline v-if="config.stories" variant="headline-4" tag="h2">Components</p-headline>
     <ul v-if="config.stories" class="list">
-      <li
-        v-for="(stories, category, index) in config.stories"
-        :key="index"
-        v-if="featureToggle('Q2/2019 Components') || ['Basic', 'Layout'].includes(category)"
-      >
+      <li v-for="(stories, category, index) in config.stories" :key="index">
         <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
-          <li
-            v-for="(v, story, index) in stories"
-            :key="index"
-            v-if="featureToggle('Q2/2019 Components') || ['Color', 'Typography', 'Grid', 'Spacing'].includes(story)"
-          >
+          <li v-for="(v, story, index) in stories" :key="index">
             <router-link class="link" :to="`/web/components/${encodeUrl(category)}/${encodeUrl(story)}`">
               <p-text-link tag="span" color="inherit">{{ story }}</p-text-link>
             </router-link>
@@ -41,7 +33,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import {config as webConfig, DesignSystemWebConfig} from '@/../design-system.web.config';
 import {config as appConfig, DesignSystemAppConfig} from '@/../design-system.app.config';
-import {encodeUrl, featureToggle} from '@/services/utils';
+import {encodeUrl} from '@/services/utils';
 import Divider from '@/components/Divider.vue';
 
 @Component({
@@ -51,7 +43,6 @@ import Divider from '@/components/Divider.vue';
 })
 export default class Sidebar extends Vue {
   public encodeUrl = encodeUrl;
-  public featureToggle = featureToggle;
 
   get area(): string {
     return this.$route.meta.area;

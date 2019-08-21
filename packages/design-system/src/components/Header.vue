@@ -21,7 +21,7 @@ export default class Header extends Vue {
       case 'app':
         return `App Design System (v1)`;
       case 'web':
-        return `Web Design System (v1.0.0-alpha.3)`;
+        return `Web Design System (v1)`;
       default:
         return '';
     }
