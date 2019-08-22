@@ -2,11 +2,18 @@
 
 Porsche UI Kit provides developers with a collection of presentational web components and corresponding wrappers for React and Angular to build clean and high-quality front-ends that innately come with the latest design definitions.
 
+## Requirements
+* [Node.js](https://nodejs.org)
+* NPM
+
 ## Installation
 
-All releases of the Porsche UI Kit are available as a versioned npm package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-react` and `@porsche-ui/ui-kit-angular` in the private npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io)). Please [request a Porsche UI npm registry account](http://eepurl.com/gnOIXD).  
+All releases of the Porsche UI Kit are available as a versioned npm package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-react` and `@porsche-ui/ui-kit-angular` in the private npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io)). 
 
-After receiving account credentials, you can install the appropriate npm package:
+1. [request a Porsche UI npm registry account](http://eepurl.com/gnOIXD)
+1. Follow the instructions sent by e-mail
+1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
+1. Enter username, password (Artifactory API Key __not__ Artifactory password!) and e-mail address when asked in terminal
 
 #### Web components:
 ``` 
