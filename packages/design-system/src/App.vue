@@ -110,6 +110,7 @@
 
       .main {
         position: absolute;
+        z-index: 1;
         top: 0;
         right: 0;
         bottom: 0;
@@ -175,6 +176,7 @@
 
       .menu {
         position: absolute;
+        z-index: 2;
         top: 0;
         right: 0;
         display: none;
