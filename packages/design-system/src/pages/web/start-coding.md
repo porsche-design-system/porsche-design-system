@@ -14,6 +14,11 @@ All releases of the Porsche UI Kit are available as a versioned npm package call
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
 1. Enter username, password (Artifactory API Key __not__ Artifactory password!) and e-mail address when asked in terminal
+1. Add local `.npmrc` at the root of your project and add following lines of code:
+``` 
+always-auth = true
+registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
+``` 
 
 #### Web components:
 ``` 
