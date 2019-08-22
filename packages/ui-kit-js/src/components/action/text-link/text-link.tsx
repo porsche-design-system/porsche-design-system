@@ -16,7 +16,7 @@ export class TextLink {
   @Prop() public target?: 'self' | 'blank' | 'parent' | 'top' = 'self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
-  @Prop() public download?: boolean = false;
+  @Prop() public download?: string = '';
 
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string = '';

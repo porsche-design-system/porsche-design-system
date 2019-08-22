@@ -373,7 +373,7 @@ export namespace Components {
     /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
-    'download'?: boolean;
+    'download'?: string;
     /**
     * Target url to where the component should link to.
     */
@@ -905,7 +905,7 @@ declare namespace LocalJSX {
     /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
-    'download'?: boolean;
+    'download'?: string;
     /**
     * Target url to where the component should link to.
     */
