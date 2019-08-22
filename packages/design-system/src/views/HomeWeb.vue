@@ -28,11 +28,9 @@
             web applications. Including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything built and tested following the Porsche quality standards and corporate design
             principles.
           </p-text>
-          <p-text class="p-spacing-mt-16">
-            Go to
-            <a href="https://ui.porsche.com/v0/core/">Porsche UI Kit – Core v0</a>
-            or
-            <a href="https://ui.porsche.com/v0/react/">Porsche UI Kit – React v0</a>
+          <p-text class="p-spacing-mt-32">
+            We are happy to announce our first alpha version 1.0.0-alpha.x release of Porsche UI Kit (JS/Angular/React). Please take some time to check it out!
+            We appreciate any feedback, feature requests or any suggestions on our public <a href="https://github.com/porscheui/porsche-ui-contribution/issues">Contribution Board</a>.
           </p-text>
           <p-flex class="p-spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
@@ -52,6 +50,17 @@
               </p-button-regular>
             </p-flex-item>
           </p-flex>
+          <p-text class="p-spacing-mt-32">
+            Legacy Porsche UI Kit versions are still available:
+          </p-text>
+          <p-text-list>
+            <p-text-list-item>
+              <a href="https://ui.porsche.com/v0/core/">Porsche UI Kit – Core v0</a>
+            </p-text-list-item>
+            <p-text-list-item>
+              <a href="https://ui.porsche.com/v0/react/">Porsche UI Kit – React v0</a>
+            </p-text-list-item>
+          </p-text-list>
         </p-grid-child>
       </p-grid>
     </article>
