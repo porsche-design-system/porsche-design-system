@@ -90,14 +90,14 @@ If using web components in a static website, the following page setup is recomme
 
 The Angular wrapper of web components can be used like every other Angular library. 
 
-After adding `@porsche-ui/ui-kit-angular` package to your project, import the `ComponentLibraryModule` to your root module and the needed global (S)CSS. 
+After adding `@porsche-ui/ui-kit-angular` package to your project, import the `PorscheUIKitModule` to your root module and the needed global (S)CSS. 
 The following setup is a standard Angular CLI project with SCSS support:
 
 #### App module
 ``` 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ComponentLibraryModule } from '@porsche-ui/ui-kit-angular';
+import { PorscheUIKitModule } from '@porsche-ui/ui-kit-angular';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -106,7 +106,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    ComponentLibraryModule
+    PorscheUIKitModule
   ],
   providers: [],
   bootstrap: [AppComponent]

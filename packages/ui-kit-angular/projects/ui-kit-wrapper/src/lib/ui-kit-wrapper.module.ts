@@ -48,5 +48,5 @@ const DECLARATIONS = [
   imports: [],
   providers: []
 })
-export class ComponentLibraryModule {
+export class PorscheUIKitModule {
 }

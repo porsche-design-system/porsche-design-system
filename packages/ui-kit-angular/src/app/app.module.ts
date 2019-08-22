@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ComponentLibraryModule } from '@porsche-ui/ui-kit-angular';
+import { PorscheUIKitModule } from '@porsche-ui/ui-kit-angular';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    ComponentLibraryModule
+    PorscheUIKitModule
   ],
   providers: [],
   bootstrap: [AppComponent]
