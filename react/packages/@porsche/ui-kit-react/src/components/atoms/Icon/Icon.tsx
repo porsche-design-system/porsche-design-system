@@ -63,6 +63,11 @@ export interface IconProps extends ClassNameProp, ComponentProp {
     onClick?: (event: React.MouseEvent<HTMLElement>, data: IconProps) => void
 
     /**
+     * Puts a circle around the icon
+     */
+    circled?: boolean
+
+    /**
      * Adds a native HTML tooltip to the icon
      */
     title?: string
@@ -93,9 +98,6 @@ const defaultProps: Partial<IconProps> = {
 const _Icon: React.FunctionComponent<IconProps> & Partial<Icon> = (props) => {
     const { name, className, color, hoverColor, disabled, onClick, ...iconRest } = props
 
-    const actualColor = onClick && !props.color ? "grey" : props.color
-    const actualHoverColor = onClick && !props.hoverColor ? "black" : props.hoverColor
-
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!onClick) {
             return
@@ -109,7 +111,7 @@ const _Icon: React.FunctionComponent<IconProps> & Partial<Icon> = (props) => {
         onClick(e, props)
     }
 
-    const { as, children, size, ...rest } = iconRest
+    const { as, children, size, circled, ...rest } = iconRest
 
     const ElementType = getElementType(as, "i")
     const SVGIcon = (registeredIcons as any)[name] || (defaultIcons as any)[name]
@@ -121,8 +123,9 @@ const _Icon: React.FunctionComponent<IconProps> & Partial<Icon> = (props) => {
     const classes = cx(
         prefix("icon"),
         prefix(`icon--${size}`),
-        { [prefix(`icon--${actualColor}`)]: actualColor !== undefined },
-        { [prefix(`icon--${actualHoverColor}--hover`)]: !disabled && actualHoverColor !== undefined },
+        { [prefix(`icon--${color}`)]: color !== undefined },
+        { [prefix(`icon--${hoverColor}--hover`)]: !disabled && hoverColor !== undefined },
+        { [prefix("icon--circled")]: circled },
         { [prefix(`icon--link`)]: !!onClick && !disabled },
         className
     )

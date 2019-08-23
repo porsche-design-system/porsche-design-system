@@ -25,8 +25,6 @@ describe("Link component", () => {
         const link = createComponent(props)
         // Assert
         expect(link.find(`.${prefix("link-icon-text")}`).length).toBe(1)
-        expect(link.find(`.${prefix("icon")}`).length).toBe(1)
-        expect(link.find(`.${prefix("icon--arrow_right_hair")}`).length).toBe(1)
         expect(link.find(`.${prefix("link-icon-text__icon")}`).length).toBe(1)
         expect(link.find(`.${prefix("link-icon-text__label")}`).length).toBe(1)
         expect(link.find(`.${prefix("link-icon-text__label--black")}`).length).toBe(1)
