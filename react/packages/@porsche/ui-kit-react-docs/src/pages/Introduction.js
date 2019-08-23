@@ -96,32 +96,6 @@ const Introduction = () => {
                         5. Import and use React components as usual
                     </Text>
                 </Spacing>
-                <Spacing marginTop={12}>
-                    <Text>
-                        <b>Hint:</b> There might be some issues with scss compiler in latest versions of
-                        create-react-app. If you have error message like this:
-                        <br />
-                        <br />
-                        <code>Module not found: Can't resolve './pag-iconfont/pag-iconfont.eot?iaj4st'</code>
-                        <br />
-                        <br />
-                        <b>
-                            You can solve it by overwriting the path variable to the icon-font files by setting it
-                            before your imports:
-                        </b>
-                    </Text>
-                </Spacing>
-                <Spacing marginTop={36}>
-                    <code>
-                        $icon-resource-base-path: "~@porsche/ui-kit-react/src/base/icon/pag-iconfont";
-                        <br />
-                        @import "~@porsche/ui-kit-react/src/variables";
-                        <br />
-                        @import "~@porsche/ui-kit-react/src/common";
-                        <br />
-                        @import "~@porsche/ui-kit-react/src/index";
-                    </code>
-                </Spacing>
             </Spacing>
         </article>
     )
