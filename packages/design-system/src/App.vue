@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="topbar">
+    <div v-if="area === 'web'" class="topbar">
       <Disclaimer/>
     </div>
     <div class="content">
@@ -43,6 +43,10 @@
   export default class App extends Vue {
     public get isLoading(): boolean {
       return this.$store.getters.isLoading;
+    }
+
+    get area(): string {
+        return this.$route.meta.area;
     }
 
     public get isMenuActive(): boolean {
