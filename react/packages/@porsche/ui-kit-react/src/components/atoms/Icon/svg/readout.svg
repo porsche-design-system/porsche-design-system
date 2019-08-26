@@ -1,18 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="update_x5F_save" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;}
-</style>
-<g>
-	<rect class="st0" width="48" height="48"/>
-	<g>
-		<path d="M5,31V19h10L25,9v32L15,31H5z M32.9,15.1l-2.8,2.8c1.8,1.8,2.9,4.3,2.9,7.1s-1.1,5.3-2.9,7.1l2.8,2.8
-			c2.5-2.5,4.1-6,4.1-9.9S35.4,17.6,32.9,15.1z M35.7,12.3C39,15.5,41,20,41,25s-2,9.5-5.3,12.7l2.8,2.8c4-4,6.5-9.5,6.5-15.5
-			s-2.5-11.6-6.5-15.5L35.7,12.3z"/>
-		<rect class="st0" width="48" height="48"/>
-	</g>
-</g>
-<rect y="0" class="st0" width="48" height="48"/>
+<svg viewBox="0 0 48 48" width="1em" height="1em">
+    <path d="M5 31V19h10L25 9v32L15 31H5zm27.9-15.9l-2.8 2.8c1.8 1.8 2.9 4.3 2.9 7.1s-1.1 5.3-2.9 7.1l2.8 2.8c2.5-2.5 4.1-6 4.1-9.9s-1.6-7.4-4.1-9.9zm2.8-2.8C39 15.5 41 20 41 25s-2 9.5-5.3 12.7l2.8 2.8c4-4 6.5-9.5 6.5-15.5s-2.5-11.6-6.5-15.5l-2.8 2.8z" />
 </svg>

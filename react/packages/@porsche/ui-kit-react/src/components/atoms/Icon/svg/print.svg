@@ -1,31 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
-<style type="text/css">
-	.st0{clip-path:url(#SVGID_2_);}
-	.st1{clip-path:url(#SVGID_4_);}
-	.st2{fill:none;}
-</style>
-<g>
-	<g>
-		<defs>
-			<rect id="SVGID_1_" width="48" height="48"/>
-		</defs>
-		<clipPath id="SVGID_2_">
-			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-		</clipPath>
-		<path class="st0" d="M14.3,10.5h20.2v3H14.3V10.5z"/>
-	</g>
-	<g>
-		<defs>
-			<rect id="SVGID_3_" width="48" height="48"/>
-		</defs>
-		<clipPath id="SVGID_4_">
-			<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
-		</clipPath>
-		<path class="st1" d="M6.8,15.7V30h7.4v7.5h20.3V30h6.7V15.7H6.8z M32.2,35.2H16.6v-9.6h15.6V35.2z M38.2,21.8h-3v-3h3V21.8z"/>
-	</g>
-</g>
-<rect y="0" class="st2" width="48" height="48"/>
+<svg viewBox="0 0 48 48" width="1em" height="1em">
+    <defs>
+        <path id="print_svg__a" d="M0 0h48v48H0z" />
+    </defs>
+    <clipPath id="print_svg__b">
+        <use xlinkHref="#print_svg__a" overflow="visible" />
+    </clipPath>
+    <path d="M14.3 10.5h20.2v3H14.3v-3z" clipPath="url(#print_svg__b)" />
+    <g>
+        <defs>
+            <path id="print_svg__c" d="M0 0h48v48H0z" />
+        </defs>
+        <clipPath id="print_svg__d">
+            <use xlinkHref="#print_svg__c" overflow="visible" />
+        </clipPath>
+        <path
+            d="M6.8 15.7V30h7.4v7.5h20.3V30h6.7V15.7H6.8zm25.4 19.5H16.6v-9.6h15.6v9.6zm6-13.4h-3v-3h3v3z"
+            clipPath="url(#print_svg__d)"
+        />
+    </g>
 </svg>

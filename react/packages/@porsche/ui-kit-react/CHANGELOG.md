@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 -   BREAKING CHANGE: The font scss mixins are removed. Replace the `-font-primary` mixin with `font-family: $p-font-primary;`.
 
--   BREAKING CHANGE: Icons are now in inline SVG format and not provided via a font. If you used icons directly in css (which is highly unlikely) you need to replace all css occurences with the `<Icon>` component. If your icons are not taking on the correct color or hover color, make sure to use both `color` and `fill` in your css to correctly color the svgs, or (even better) use the `color` and `hoverColor` props of the component.
+-   BREAKING CHANGE: Icons are now in inline SVG format and not provided via a font. If you used icons directly in css you need to replace all css occurences with the `<Icon>` component or custom css icons. If your icons are not taking on the correct color or hover color, make sure to use both `color` and `fill` in your css to correctly color the svgs, or (even better) use the `color` and `hoverColor` props of the component.
 
 -   All font faces are now loaded from porscheui CDN and have modernized @font-face definitions for improved performance. As such, no fonts are bundled with this package, and no fonts need to be bundled into your deployable for this UI Kit to work correctly. This finally enables browser font caching across different Porsche applications.
 
@@ -24,7 +24,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 -   In addition to the `index.css` containing styles for all components, each component now has its own stylesheet as well. This way, you can only import the css you need. You should always include `import "@porsche/ui-kit-react/css/font-face.css"` for the Porsche font to work though.
 
--   The `<Icon>` component now has a `registerIcons` method to register project specific react components to render svg icons. You can create them by hand, but take a look at the README first to see how we create them programmatically using `svgr`.
+-   The `<Icon>` component can now load custom svg icons via the name prop. Just provide a url or import the svg file in your component and let webpack do its thing.
 
 ### Fixed
 

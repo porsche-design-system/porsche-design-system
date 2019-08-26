@@ -1,13 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="export" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;}
-</style>
-<g>
-	<path d="M42,42H6v-8H2v8c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4v-8h-4V42z"/>
-	<polygon points="8,18 13.7,18 22,9.7 22,36 26,36 26,9.7 34.3,18 40,18 24,2 	"/>
-</g>
-<rect class="st0" width="48" height="48"/>
+<svg viewBox="0 0 48 48" width="1em" height="1em">
+    <path d="M42 42H6v-8H2v8c0 2.2 1.8 4 4 4h36c2.2 0 4-1.8 4-4v-8h-4v8z" />
+    <path d="M8 18h5.7L22 9.7V36h4V9.7l8.3 8.3H40L24 2z" />
 </svg>

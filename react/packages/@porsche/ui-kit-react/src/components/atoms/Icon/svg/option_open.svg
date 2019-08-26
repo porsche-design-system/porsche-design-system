@@ -1,10 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="option_x5F_open" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;}
-</style>
-<path d="M20,12h24v4H20V12z M20,26h24v-4H20V26z M20,36h24v-4H20V36z M10,18l6-6H4L10,18z"/>
-<rect y="0" class="st0" width="48" height="48"/>
+<svg viewBox="0 0 48 48" width="1em" height="1em">
+    <path d="M20 12h24v4H20v-4zm0 14h24v-4H20v4zm0 10h24v-4H20v4zM10 18l6-6H4l6 6z" />
 </svg>

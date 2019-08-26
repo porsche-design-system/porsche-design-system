@@ -3,9 +3,10 @@ import { getElementType, prefix } from "../../../lib"
 import { ClassNameProp, ComponentProp } from "../../../lib/props"
 import cx from "classnames"
 import { icons as defaultIcons } from "./icons"
+import SVGLoader from "react-inlinesvg"
 
 export interface IconProps extends ClassNameProp, ComponentProp {
-    /** The icon that should be used. */
+    /** The icon name that should be used, or a path to a custom svg file. */
     name: string
 
     /**
@@ -81,14 +82,6 @@ export interface Icon extends React.FunctionComponent<IconProps> {
      * Names of the available default icons and additionally registered icons.
      */
     names: string[]
-
-    /**
-     * Registers an additional set of icons. Use this to include project specific icons.
-     * You can only register one set of icons per runtime, and previously registered icons will be overriden by this method.
-     * If you register an icon under the same name as a default icon, the registered icon is preferred.
-     * Make sure registering is done before any rendering of the React application is happening, or the icons won't be available.
-     */
-    registerIcons: (icons: Record<string, (props: React.SVGProps<any>) => JSX.Element>) => void
 }
 
 const defaultProps: Partial<IconProps> = {
@@ -114,9 +107,9 @@ const _Icon: React.FunctionComponent<IconProps> & Partial<Icon> = (props) => {
     const { as, children, size, circled, ...rest } = iconRest
 
     const ElementType = getElementType(as, "i")
-    const SVGIcon = (registeredIcons as any)[name] || (defaultIcons as any)[name]
+    const src = (defaultIcons as any)[name] || name
 
-    if (!SVGIcon) {
+    if (!src) {
         return null
     }
 
@@ -132,19 +125,11 @@ const _Icon: React.FunctionComponent<IconProps> & Partial<Icon> = (props) => {
 
     return (
         <ElementType {...rest} onClick={handleClick} className={classes}>
-            <SVGIcon />
+            <SVGLoader src={src} />
         </ElementType>
     )
 }
 
-let registeredIcons = {}
-
-function registerIcons(icons: Record<string, (props: React.SVGProps<any>) => JSX.Element>) {
-    registeredIcons = icons
-    _Icon.names = [...Object.keys(defaultIcons), ...Object.keys(registeredIcons)]
-}
-
-_Icon.registerIcons = registerIcons
 _Icon.names = Object.keys(defaultIcons)
 _Icon.defaultProps = defaultProps
 
