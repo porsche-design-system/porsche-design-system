@@ -5,14 +5,13 @@ import {Browser} from 'puppeteer';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
-let visualRegressionOverviewTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
-  viewports: [320, 480, 760, 1000, 1300, 1760],
-  fixturesDir: 'tests/vrt/fixtures',
+  viewports: [1920],
+  fixturesDir: '../ui-kit-js/tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
-  baseUrl: 'http://localhost:61422',
+  baseUrl: 'http://localhost:4200',
   timeout: 90000
 };
 
@@ -36,15 +35,4 @@ export async function getVisualRegressionTester(): Promise<VisualRegressionTeste
   }
 
   return visualRegressionTester;
-}
-
-export async function getVisualRegressionOverviewTester(): Promise<VisualRegressionTester> {
-  if (!visualRegressionOverviewTester) {
-    visualRegressionOverviewTester = new VisualRegressionTester(browser, {
-      ...testOptions,
-      viewports: [1920]
-    });
-  }
-
-  return visualRegressionOverviewTester;
 }
