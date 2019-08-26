@@ -125,7 +125,8 @@ const _Icon: React.FunctionComponent<IconProps> & Partial<Icon> = (props) => {
 
     return (
         <ElementType {...rest} onClick={handleClick} className={classes}>
-            <SVGLoader src={src} />
+            {/* Skip svg loading in environments without fetch (like jest) */}
+            {window.fetch && <SVGLoader src={src} />}
         </ElementType>
     )
 }

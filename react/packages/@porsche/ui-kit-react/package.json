@@ -1,7 +1,7 @@
 {
     "name": "@porsche/ui-kit-react",
     "scope": "@porsche",
-    "version": "0.14.1",
+    "version": "0.14.2",
     "description": "The Porsche UI Kit Implementation for React.",
     "main": "dist/commonjs/index.js",
     "module": "dist/es/index.js",
@@ -40,7 +40,8 @@
             "js"
         ],
         "moduleNameMapper": {
-            "^.*\\.scss$": "<rootDir>/src/test-helper/SCSSStub.js"
+            "^.*\\.scss$": "<rootDir>/src/test-helper/FileStub.js",
+            "^.*\\.svg$": "<rootDir>/src/test-helper/FileStub.js"
         },
         "testResultsProcessor": "jest-bamboo-formatter"
     },
