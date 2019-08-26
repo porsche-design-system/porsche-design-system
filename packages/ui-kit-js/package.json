@@ -43,7 +43,7 @@
     "start": "stencil build --watch --serve",
     "start:vrt-server": "yarn build && http-server -p 61422",
     "build": "stencil build --docs && node ./scripts/doc.js && node ./scripts/fix-react.js",
-    "lint": "yarn lint:scss & yarn lint:ts",
+    "lint": "yarn lint:scss && yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",
     "lint:ts": "tslint -p './tsconfig.json' -t codeFrame",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
