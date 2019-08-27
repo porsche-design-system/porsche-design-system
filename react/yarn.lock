@@ -863,18 +863,6 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-core/-/@porsche/ui-kit-core-0.19.0.tgz#16277d87e96f2c8bca909608499307d87c530411"
   integrity sha1-Fid9h+lvLIvKkJYISZMH2HxTBBE=
 
-"@porsche/ui-kit-react@^0.13.0":
-  version "0.13.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche/ui-kit-react/-/@porsche/ui-kit-react-0.13.0.tgz#e438a1a002fb713ce2661d381cbf04649f83f677"
-  integrity sha1-5DihoAL7cTziZh04HL8EZJ+D9nc=
-  dependencies:
-    "@porsche/ui-kit-core" "0.19.0"
-    classnames "^2.2.6"
-    react-modal "^3.7.1"
-    react-responsive "^6.0.1"
-    react-transition-group "^2.5.1"
-    tslib "^1.9.3"
-
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
