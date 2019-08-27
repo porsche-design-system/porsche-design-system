@@ -1,4 +1,8 @@
-on: push
+on:
+  push:
+    branches:
+      - v*
+      - issue/*
 name: Porsche UI Kit
 jobs:
   filter:
@@ -6,12 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Filter
-      uses: ./images/node/
-      env:
-        GIT_FILTER: ^refs/heads/(v[0-9]+|issue/[0-9]+)$
-      with:
-        entrypoint: run-filter
     - name: Install
       uses: ./images/node/
       env:

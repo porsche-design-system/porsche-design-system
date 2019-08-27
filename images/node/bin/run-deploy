@@ -41,7 +41,7 @@ setup() {
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-  P_WORKING_BRANCH="$(git rev-parse --abbrev-ref ${GITHUB_REF})"
+  P_WORKING_BRANCH="${GITHUB_REF:11}"
 }
 
 checkout_gh_pages() {
