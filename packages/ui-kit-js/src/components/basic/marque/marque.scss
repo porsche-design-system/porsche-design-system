@@ -1,4 +1,4 @@
-@import "../../../../../../packages/ui-kit-scss-utils/index";
+@import '../../../../../../packages/ui-kit-scss-utils/index';
 
 :host {
   display: inline-flex;
@@ -21,7 +21,6 @@
     top: 0;
     display: block;
     width: 100%;
-    max-height: auto;
+    height: auto;
   }
-
 }

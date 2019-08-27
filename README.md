@@ -82,7 +82,7 @@ _Enter_. Afterwards execute automated tests to make sure application still works
 * Run `./docker.sh run-test-snapshot`  
 * Run `./docker.sh run-test-vrt`  
 As final check start application locally and have a look at it.
-* Run `./docker.sh run-app`
+* Run `./docker.sh run-start`
 
 ### Hints for updating
 * Make sure you pulled the latest version before starting

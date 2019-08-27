@@ -1,4 +1,14 @@
 # Updates 
 
-## Version 1.0
-Not released yet
+## [1.0.0-alpha.2] (2019-08-22)
+
+### Bugfix
+* Fix false prop type for text-link download attribute
+
+### Change
+* Update Angular module name
+
+## [1.0.0-alpha.1] (2019-08-21)
+
+### Features
+* Initial release

@@ -1,6 +1,6 @@
 {
   "name": "@porsche-ui/ui-kit-react",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -15,7 +15,7 @@
     "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-ui/ui-kit-js": "1.0.0-alpha.1"
+    "@porsche-ui/ui-kit-js": "1.0.0-alpha.2"
   },
   "devDependencies": {
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",

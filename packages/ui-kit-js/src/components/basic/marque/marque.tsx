@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../utils/prefix';
+import { prefix } from '../../../utils';
 
 @Component({
   tag: 'p-marque',
@@ -22,7 +22,6 @@ export class Marque {
     const path = 'https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/';
 
     const sourceTrademark = this.trademark === true ? '_trademark' : '';
-
 
     return (
       <picture class={marqueClasses}>
