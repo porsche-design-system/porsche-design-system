@@ -22,12 +22,6 @@ jobs:
       uses: ./images/node/
       with:
         entrypoint: run-build
-    - name: Slack
-      uses: ./images/node/
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with:
-        entrypoint: run-slack
     - name: Deploy
       uses: ./images/node/
       env:
