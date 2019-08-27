@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {defineCustomElements, applyPolyfills} from '@porsche-ui/ui-kit-js/loader';
+import {defineCustomElements} from '@porsche-ui/ui-kit-js/loader';
 
 import {
   PButtonIcon,
@@ -20,7 +20,6 @@ import {
 } from './ui-kit-wrapper.component';
 
 (async () => {
-  await applyPolyfills();
   await defineCustomElements(window);
 })();
 

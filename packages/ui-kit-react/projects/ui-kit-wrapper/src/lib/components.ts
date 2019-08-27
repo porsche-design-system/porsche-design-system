@@ -4,11 +4,10 @@ import { createReactComponent } from './createComponent';
 
 import { JSX } from '@porsche-ui/ui-kit-js';
 
-import { applyPolyfills, defineCustomElements } from '@porsche-ui/ui-kit-js/loader';
+import { defineCustomElements } from '@porsche-ui/ui-kit-js/loader';
 
 
 (async () => {
-  await applyPolyfills();
   await defineCustomElements(window);
 })();
   
