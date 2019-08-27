@@ -8,7 +8,7 @@ A Button enables the user to execute an action, change the state of an applicati
 
 # Available sizes
 
-The Button comes in 2 different sizes:
+The Button is provided in 2 different sizes:
 
 - **Button Regular**
 Default button size with 50 px height. The button length adapts to the length of the text label.
