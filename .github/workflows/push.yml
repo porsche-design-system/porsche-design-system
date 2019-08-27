@@ -3,76 +3,146 @@ on:
     branches:
       - v*
       - issue/*
-name: Porsche UI Kit
+name: 'Porsche UI Kit'
 jobs:
-  filter:
-    name: Filter
+  ui-kit-js:
+    name: 'Porsche UI Kit JS'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Install
+      - name: 'Install'
         uses: ./docker/node/
         env:
           IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: Build
+      - name: 'Build'
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'Test VRT: UI Kit JS'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --ui-kit-js
-      - name: 'Test E2E: UI Kit JS'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-e2e
-          args: --ui-kit-js
-      - name: 'Test Unit: UI Kit JS'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-unit
-          args: --ui-kit-js
-      - name: 'Lint: UI Kit JS'
+      - name: 'Lint'
         uses: ./docker/node/
         with:
           entrypoint: run-lint
           args: --ui-kit-js
-      - name: 'Test Snapshot: UI Kit React'
+      - name: 'Unit Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-unit
+          args: --ui-kit-js
+      - name: 'E2E Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-e2e
+          args: --ui-kit-js
+      - name: 'VRT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --ui-kit-js
+  ui-kit-angular:
+    name: 'Porsche UI Kit Angular'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'Snapshot Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-snapshot
+          args: --ui-kit-angular
+  ui-kit-react:
+    name: 'Porsche UI Kit React'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'Snapshot Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-snapshot
           args: --ui-kit-react
-      - name: 'Test VRT: Design System'
+  design-system:
+    name: 'Porsche Design System'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
         uses: ./docker/node/
         with:
-          entrypoint: run-test-vrt
-          args: --design-system
-      - name: 'Test E2E: Design System'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-e2e
-          args: --design-system
-      - name: 'Test Unit: Design System'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-unit
-          args: --design-system
-      - name: 'Lint: Design System'
+          entrypoint: run-build
+      - name: 'Lint'
         uses: ./docker/node/
         with:
           entrypoint: run-lint
           args: --design-system
-      - name: Deploy
+      - name: 'Unit Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-unit
+          args: --design-system
+      - name: 'E2E Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-e2e
+          args: --design-system
+      - name: 'VRT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --design-system
+  deployment:
+    name: 'Deployment'
+    needs: [ui-kit-js, ui-kit-angular, ui-kit-react, design-system]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'Deploy'
         uses: ./docker/node/
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
           entrypoint: run-deploy
-      - name: Slack
+      - name: 'Slack'
         uses: ./docker/node/
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

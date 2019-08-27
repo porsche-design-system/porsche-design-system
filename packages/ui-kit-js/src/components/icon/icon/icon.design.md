@@ -20,14 +20,9 @@ The icons themselves are built upon a base grid structure and guidelines for siz
 
 # States
 
-All icons are available in the following states:
+The icon component is by default only supposed to be displayed in monochrome colors (Dark Theme: Porsche Light, Light Theme: Porsche Black).
 
-| STATE | DESCRIPTION | EXAMPLE |
-|----|----|----|
-| **default** | Default icon state. | <p-icon source="basket" color="porsche-black"></p-icon> |
-| **active / hover** | In clickable icons, the color changes to Porsche Red in both active and hover state. | <p-icon source="basket" color="porsche-red"></p-icon> |
-| **disabled** | Whenever an interactive icon is not clickable it is displayed by a greyed-out icon color. | <p-icon source="basket" color="neutral-grey-5"></p-icon> |
-| **focus** | In focus state, a clickable icon is bordered by a 2 pixel line in focus color. |  |
+For interactive icons you should use the [Button Icon](#/web/action/button-icon) that comes with a dedicated click/touch area and with different states (active, disabled etc.).
 
 ---
 
