@@ -12,17 +12,14 @@ fs.readFile(target, 'utf8', (err, data) => {
   }
 
   /**
-   * TODO: remove temporary bugfix for ie11 compatibility
+   * TODO: remove temporary bugfix promise resolve
    */
   const fixedDefineCustomElements = `
 (async () => {
-  await applyPolyfills();
   await defineCustomElements(window);
 })();
   `;
-  const fixedImports = `import { applyPolyfills, defineCustomElements } from '@porsche-ui/ui-kit-js/loader';`;
-  const result = data.replace(/^defineCustomElements\(window\);$/gm, fixedDefineCustomElements)
-    .replace(/^import { defineCustomElements } from '@porsche-ui\/ui-kit-js\/loader';$/gm, fixedImports);
+  const result = data.replace(/^defineCustomElements\(window\);$/gm, fixedDefineCustomElements);
 
   fs.writeFile(target, result, 'utf8', (err) => {
     if (err) return console.log(err);
