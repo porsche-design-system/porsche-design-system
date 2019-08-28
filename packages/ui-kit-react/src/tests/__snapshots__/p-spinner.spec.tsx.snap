@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Spinner component should render correctly 1`] = `<p-spinner />`;
-
-exports[`Spinner component should render correctly in size large 1`] = `
-<p-spinner
-  size="large"
-/>
-`;

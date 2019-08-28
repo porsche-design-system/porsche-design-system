@@ -3,7 +3,13 @@
 set -o errexit
 set -o pipefail
 
-if [[ "--ui-kit-js" == "${1}" ]] || [[ "--ui-kit-angular" == "${1}" ]] || [[ "--ui-kit-react" == "${1}" ]] || [[ "--design-system" == "${1}" ]]; then
+if
+  [[ "--ui-kit-js" == "${1}" ]] ||
+  [[ "--ui-kit-angular" == "${1}" ]] ||
+  [[ "--ui-kit-react" == "${1}" ]] ||
+  [[ "--design-system" == "${1}" ]] ||
+  [[ "--utils" == "${1}" ]]
+then
   yarn build:${1:2}
 else
   yarn build

@@ -57,10 +57,10 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'Snapshot Test'
+      - name: 'VRT Test'
         uses: ./docker/node/
         with:
-          entrypoint: run-test-snapshot
+          entrypoint: run-test-vrt
           args: --ui-kit-angular
   ui-kit-react:
     name: 'Porsche UI Kit React'
@@ -78,10 +78,10 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'Snapshot Test'
+      - name: 'VRT Test'
         uses: ./docker/node/
         with:
-          entrypoint: run-test-snapshot
+          entrypoint: run-test-vrt
           args: --ui-kit-react
   design-system:
     name: 'Porsche Design System'
