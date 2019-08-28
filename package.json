@@ -50,6 +50,6 @@
     "test:vrt:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular test:vrt",
     "test:vrt:ui-kit-react": "yarn --cwd ./packages/ui-kit-react test:vrt",
     "test:vrt:design-system": "yarn --cwd ./packages/design-system test:vrt",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./packages/ui-kit-js clean && yarn --cwd ./packages/ui-kit-scss-utils clean && yarn --cwd ./packages/design-system clean && yarn --cwd ./packages/ui-kit-angular clean && yarn --cwd ./packages/ui-kit-react clean"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./packages/ui-kit-js clean && yarn --cwd ./packages/ui-kit-scss-utils clean && yarn --cwd ./packages/design-system clean && yarn --cwd ./packages/ui-kit-angular clean && yarn --cwd ./packages/ui-kit-react clean && yarn --cwd ./packages/utils clean"
   }
 }
