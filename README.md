@@ -26,11 +26,11 @@
 
 ### Build
 * Switch to __project root directory__
-* Run `./docker.sh run-build`, `./docker.sh run-build --ui-kit-js`, `./docker.sh run-build --ui-kit-angular`, `./docker.sh run-build --ui-kit-react` or , `./docker.sh run-build --design-system`
+* Run `./docker.sh run-build`, `./docker.sh run-build --ui-kit-js`, `./docker.sh run-build --ui-kit-angular`, `./docker.sh run-build --ui-kit-react`, `./docker.sh run-build --design-system` or `./docker.sh run-build --utils`
 
 ### Start
 * Switch to __project root directory__
-* Run `./docker.sh run-start`, `./docker.sh run-start --ui-kit-js`, `./docker.sh run-start --ui-kit-angular`, `./docker.sh run-start --ui-kit-react` or , `./docker.sh run-start --design-system`
+* Run `./docker.sh run-start`, `./docker.sh run-start --ui-kit-js`, `./docker.sh run-start --ui-kit-angular`, `./docker.sh run-start --ui-kit-react` or `./docker.sh run-start --design-system`
 
 ### Linting
 * Switch to __project root directory__
@@ -44,13 +44,9 @@
 * Switch to __project root directory__
 * Run `./docker.sh run-test-e2e`, `./docker.sh run-test-e2e --ui-kit-js` or `./docker.sh run-test-e2e --design-system`
 
-### Snapshot Tests
-* Switch to __project root directory__
-* Run `./docker.sh run-test-snapshot`, `./docker.sh run-test-snapshot --ui-kit-angular` or `./docker.sh run-test-snapshot --ui-kit-react`
-
 ### Visual Regression Tests
 * Switch to __project root directory__
-* Run `./docker.sh run-test-vrt`, `./docker.sh run-test-vrt --ui-kit-js` or `./docker.sh run-test-vrt --design-system`
+* Run `./docker.sh run-test-vrt`, `./docker.sh run-test-vrt --ui-kit-js`, `./docker.sh run-test-vrt --ui-kit-angular`, `./docker.sh run-test-vrt --ui-kit-react` or `./docker.sh run-test-vrt --design-system`
 
 #### What to do when tests are failing
 * Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/results`. Here you can find the belonging `diff` and `regression` images.
@@ -79,7 +75,6 @@ _Enter_. Afterwards execute automated tests to make sure application still works
 * Run `./docker.sh run-lint`  
 * Run `./docker.sh run-test-unit`  
 * Run `./docker.sh run-test-e2e`  
-* Run `./docker.sh run-test-snapshot`  
 * Run `./docker.sh run-test-vrt`  
 As final check start application locally and have a look at it.
 * Run `./docker.sh run-start`
@@ -135,8 +130,8 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-test-unit --ui-kit-js`
 1. Run `./docker.sh run-test-e2e --ui-kit-js`
 1. Run `./docker.sh run-test-vrt --ui-kit-js`
-1. Run `./docker.sh run-test-snapshot --ui-kit-angular`
-1. Run `./docker.sh run-test-snapshot --ui-kit-react`
+1. Run `./docker.sh run-test-vrt --ui-kit-angular`
+1. Run `./docker.sh run-test-vrt --ui-kit-react`
 1. Run `./docker.sh run-start --ui-kit-js` and validate with BrowserStack that IE11/Edge polyfill works
 1. Run `./docker.sh run-start --ui-kit-angular` and validate with BrowserStack that IE11/Edge polyfill works
 1. Run `./docker.sh run-start --ui-kit-react` and validate with BrowserStack that IE11/Edge polyfill works

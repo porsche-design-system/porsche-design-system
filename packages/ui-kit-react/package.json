@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf dist && tsc -p projects/ui-kit-wrapper/tsconfig.json",
-    "test": "react-scripts test --watchAll=false --bail && yarn test:vrt",
+    "build": "rm -rf 'dist' && mkdir 'dist' && tsc -p 'projects/ui-kit-wrapper/tsconfig.json'",
+    "test": "yarn test:vrt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 180000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
+    "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
     "@porsche-ui/ui-kit-js": "1.0.0-alpha.2"

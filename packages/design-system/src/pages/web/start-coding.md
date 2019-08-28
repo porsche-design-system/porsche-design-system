@@ -153,6 +153,7 @@ import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css';
 import './index.scss';
 import App from './App';
 
@@ -174,14 +175,7 @@ const App: React.FC = () => {
 }
 
 export default App;
-``` 
-
-#### Load CSS
-In your `index.scss` import Porsche UI Kit stylesheet.
-
-``` 
-@import "~@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
-``` 
+```
 
 --- 
 
