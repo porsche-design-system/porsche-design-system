@@ -8,8 +8,7 @@
     "build": "ng build ui-kit-wrapper",
     "test": "yarn test:vrt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:4200 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "lint": "ng lint",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out"
+    "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist' && rm -rf 'tmp' && rm -rf 'out-tsc' && rm -rf 'bazel-out'"
   },
   "dependencies": {
     "@angular/animations": "~8.2.0",

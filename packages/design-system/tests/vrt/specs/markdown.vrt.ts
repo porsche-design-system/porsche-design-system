@@ -3,18 +3,18 @@ import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
 describe('Markdown', () => {
-  let visualRegressionTester: VisualRegressionTester;
+  let vrt: VisualRegressionTester;
 
   beforeAll(async () => {
-    visualRegressionTester = await getVisualRegressionTester();
+    vrt = await getVisualRegressionTester();
   });
 
   it('should have no visual regression', async () => {
     expect(
-      await visualRegressionTester.test(
+      await vrt.test(
         'markdown',
         async () => {
-          await visualRegressionTester.goTo('/#/web/markdown');
+          await vrt.goTo('/#/web/markdown');
         },
         '#app > .content > .main > .router-view'
       )
