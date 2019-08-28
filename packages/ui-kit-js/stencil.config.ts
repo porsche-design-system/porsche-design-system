@@ -14,8 +14,8 @@ export const config: Config = {
       serviceWorker: null,
       copy: [
         {
-          src: require.resolve('@porsche-ui/utils/dist/component-overview.css'),
-          dest: 'component-overview.css'
+          src: require.resolve('@porsche-ui/utils/dist/components-overview.css'),
+          dest: 'components-overview.css'
         }
       ]
     },

@@ -4,10 +4,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "yarn build:clean && yarn build:component-overview-styles",
-    "build:clean": "rm -rf ./dist && mkdir ./dist",
-    "build:component-overview-styles": "node component-overview-styles/build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf ./dist && mkdir ./dist && yarn node ./scripts/build.js",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "devDependencies": {
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",
