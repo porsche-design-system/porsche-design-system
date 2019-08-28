@@ -5,6 +5,7 @@ import {Browser} from 'puppeteer';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
+let visualRegressionOverviewTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
@@ -17,6 +18,12 @@ const testOptions: VisualRegressionTestOptions = {
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
+beforeAll(async () => {
+  browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+  });
+});
+
 afterAll(async () => {
   if (browser) {
     await browser.close();
@@ -25,11 +32,19 @@ afterAll(async () => {
 
 export async function getVisualRegressionTester(): Promise<VisualRegressionTester> {
   if (!visualRegressionTester) {
-    browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-    });
     visualRegressionTester = new VisualRegressionTester(browser, testOptions);
   }
 
   return visualRegressionTester;
+}
+
+export async function getVisualRegressionOverviewTester(): Promise<VisualRegressionTester> {
+  if (!visualRegressionOverviewTester) {
+    visualRegressionOverviewTester = new VisualRegressionTester(browser, {
+      ...testOptions,
+      viewports: [1920]
+    });
+  }
+
+  return visualRegressionOverviewTester;
 }

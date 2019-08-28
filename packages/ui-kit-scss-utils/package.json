@@ -31,7 +31,7 @@
     "@porsche-ui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"
 }

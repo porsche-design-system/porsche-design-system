@@ -41,7 +41,7 @@
   },
   "scripts": {
     "start": "stencil build --watch --serve",
-    "start:vrt-server": "yarn build && http-server -p 61422",
+    "start:vrt-server": "yarn build && http-server -p 61422 -P http://localhost:61422/www",
     "build": "stencil build --docs && node ./scripts/doc.js && node ./scripts/fix-react.js",
     "lint": "yarn lint:scss && yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",
@@ -50,7 +50,7 @@
     "test:unit": "echo 'stencil test --spec coming soon'",
     "test:e2e": "echo 'stencil test --e2e coming soon'",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61422 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "clean": "rm -rf ./node_modules & rm -rf ./yarn-error.log & rm -rf ./.stencil & rm -rf ./dist & rm -rf ./loader & rm -rf ./www"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "dependencies": {
     "throttle-debounce": "^2.1.0"
@@ -59,6 +59,7 @@
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
     "@ionic-enterprise/react-output-plugin": "^0.0.5",
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",
+    "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@stencil/core": "1.3.2",
     "@stencil/postcss": "^1.0.1",

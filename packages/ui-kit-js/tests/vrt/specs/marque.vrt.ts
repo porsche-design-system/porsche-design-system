@@ -3,16 +3,16 @@ import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
 describe('Marque', () => {
-  let visualRegressionTester: VisualRegressionTester;
+  let vrt: VisualRegressionTester;
 
   beforeAll(async () => {
-    visualRegressionTester = await getVisualRegressionTester();
+    vrt = await getVisualRegressionTester();
   });
 
   it('should have no visual regression', async () => {
     expect(
-      await visualRegressionTester.test('marque', async () => {
-        await visualRegressionTester.goTo('/src/components/basic/marque/marque.test.html');
+      await vrt.test('marque', async () => {
+        await vrt.goTo('/src/components/basic/marque/marque.test.html');
       })
     ).toBeFalsy();
   });
