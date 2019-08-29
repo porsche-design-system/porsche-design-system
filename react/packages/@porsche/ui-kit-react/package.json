@@ -60,7 +60,6 @@
         "build:css": "postcss --use autoprefixer --map --config postcss.config.json --dir ./css --base .tmp/css '.tmp/css/**/*.css'",
         "watch:css": "yarn run build:css && yarn run build:css --watch",
         "postbuild:css": "rimraf ./css/common.css && rimraf ./css/common.css.map && rimraf ./css/variables.css && rimraf ./css/variables.css.map",
-        "postbuild": "cpx \"./src/components/atoms/Icon/svg/*.svg\" ./dist/es/components/atoms/Icon/svg && cpx \"./src/components/atoms/Icon/svg/*.svg\" ./dist/commonjs/components/atoms/Icon/svg",
         "lint:ts": "tslint --project '.' --format codeFrame",
         "lint:ts:fix": "yarn run lint:ts --fix",
         "lint:sass": "stylelint '**/*.scss'",
