@@ -1,0 +1,17 @@
+{
+  "name": "@porsche-ui/ui-kit-react",
+  "version": "1.0.0-alpha.2",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN https://ui.porsche.com",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@porsche-ui/ui-kit-js": "1.0.0-alpha.2"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}

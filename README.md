@@ -148,7 +148,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit JS artifact to the Artifactory repository.
 1. Switch to __packages/ui-kit-angular/dist/ui-kit-wrapper directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit Angular artifact to the Artifactory repository.
-1. Switch to __packages/ui-kit-react directory__
+1. Switch to __packages/ui-kit-react/projects/ui-kit-wrapper directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit React artifact to the Artifactory repository.
 
 ### Communicate
