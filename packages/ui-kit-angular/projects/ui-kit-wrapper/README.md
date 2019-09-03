@@ -1,24 +1,63 @@
-# UiKitWrapper
+# Porsche UI Kit Angular
+Angular wrappers for Porsche UI Kit web components package.  
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 
-## Code scaffolding
+## Installation
+``` 
+// install with npm:
+npm install @porsche-ui/ui-kit-angular
 
-Run `ng generate component component-name --project ui-kit-wrapper` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ui-kit-wrapper`.
-> Note: Don't forget to add `--project ui-kit-wrapper` or else it will be added to the default project in your `angular.json` file. 
+// install with yarn:
+yarn add @porsche-ui/ui-kit-angular
+```
 
-## Build
+## Usage
+The Angular wrapper of web components can be used like every other Angular library. 
 
-Run `ng build ui-kit-wrapper` to build the project. The build artifacts will be stored in the `dist/` directory.
+After adding `@porsche-ui/ui-kit-angular` package to your project, import the `PorscheUIKitModule` to your root module and the needed global (S)CSS. 
+The following setup is a standard Angular CLI project with SCSS support:
 
-## Publishing
+#### App module
+``` 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { PorscheUIKitModule } from '@porsche-ui/ui-kit-angular';
+import { AppComponent } from './app.component';
 
-After building your library with `ng build ui-kit-wrapper`, go to the dist folder `cd dist/ui-kit-wrapper` and run `npm publish`.
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    PorscheUIKitModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
-## Running unit tests
+``` 
 
-Run `ng test ui-kit-wrapper` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### App component
+``` 
+import {Component} from '@angular/core';
 
-## Further help
+@Component({
+  selector: 'app-root',
+  template: `
+    <div id="app">
+      <p-headline variant="headline-1">Headline</p-headline>
+    </div>
+  `,
+  styles: []
+})
+export class AppComponent {}
+``` 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### Load CSS
+In your `styles.scss` import Porsche UI Kit stylesheet.
+
+``` 
+@import "~@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
+``` 
