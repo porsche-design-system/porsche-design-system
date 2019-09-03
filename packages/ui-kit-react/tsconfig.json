@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./projects/ui-kit-wrapper/dist",
     "target": "es5",
     "lib": [
       "dom",
@@ -17,9 +19,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
-  },
-  "include": [
-    "src"
-  ]
+    "jsx": "react",
+    "paths": {
+      "@porsche-ui/ui-kit-react": [
+        "dist"
+      ],
+      "@porsche-ui/ui-kit-react/*": [
+        "dist/*"
+      ]
+    }
+  }
 }
