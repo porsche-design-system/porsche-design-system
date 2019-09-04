@@ -8,7 +8,8 @@
     "dist"
   ],
   "dependencies": {
-    "@porsche-ui/ui-kit-js": "1.0.0-alpha.2"
+    "@porsche-ui/ui-kit-js": "1.0.0-alpha.2",
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "react": "^16.9.0",
