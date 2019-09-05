@@ -1154,10 +1154,10 @@
   resolved "https://registry.ionicframework.com/@ionic-enterprise%2fangular-output-plugin/-/angular-output-plugin-0.0.5.tgz#ca5d2c26a21aa778151be4ca9df69cbcfa43f0d1"
   integrity sha512-op4u6sgy2PCc1xkuzvEMZthURsFSxZJSJlHqAVCYAL5hYbAKMAfT8Lxtj6B/NUyQSOqxiUJ2F5il1dN0QQVmgg==
 
-"@ionic-enterprise/react-output-plugin@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-output-plugin/-/react-output-plugin-0.0.5.tgz#579c31bae4b6bc962516360a704cfcecbf397de7"
-  integrity sha512-98lz1OtVPBLPL82K7r8cZgzoq6c1B4GgVX+KifkejiGA2g8njRPwUOCz7tnentpZ0VlwbgO2SeSfTe6b/dsd5w==
+"@ionic-enterprise/react-output-plugin@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-output-plugin/-/react-output-plugin-0.0.7.tgz#659fd154a7f7c914e082355ca5dca93f0a0a46aa"
+  integrity sha512-mMS7mFGxmIEiNI4yLPHjCkQVQfbGK4HhfNws2pY+4HRm5y8j5pIazgUsW14tKlO468nJVziZYDdo6Vi1oYlJ/w==
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
@@ -15281,6 +15281,11 @@ typescript@3.5.3, typescript@~3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
+
+typescript@~3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.2.tgz#105b0f1934119dde543ac8eb71af3a91009efe54"
+  integrity sha512-lmQ4L+J6mnu3xweP8+rOrUwzmN+MRAj7TgtJtDaXE5PMyX2kCrklhg3rvOsOIfNeAWMQWO2F1GPc1kMD2vLAfw==
 
 uglify-js@3.4.x:
   version "3.4.10"

@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
-    "@ionic-enterprise/react-output-plugin": "^0.0.5",
+    "@ionic-enterprise/react-output-plugin": "^0.0.7",
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
@@ -84,7 +84,7 @@
     "ts-node": "^8.3.0",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "~3.5.3",
+    "typescript": "~3.6.2",
     "wait-on": "^3.3.0"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"

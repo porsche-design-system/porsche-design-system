@@ -14,5 +14,8 @@
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@ionic-enterprise/react-component-lib": "^0.0.1"
   }
 }
