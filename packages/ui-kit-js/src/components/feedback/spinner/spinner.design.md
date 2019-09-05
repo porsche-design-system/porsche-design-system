@@ -11,7 +11,7 @@ you should bridge it with a good user feedback in order not to leave the user
 uncertain about what's happening, to avoid a high bounce rate and to obtain a positive
 impression of your website or application.
 
-### Spinner
+## Spinner
 A looped indicator (spinner) is used to inform the user about an ongoing operation
 where the loading progress cannot be determined. Usually, spinners are recommended
 to be used for delays of 2-10 seconds.
@@ -63,9 +63,6 @@ the clickability of the surrounding elements.
 If a spinner is triggered by an interaction with a component, it is recommended to disable
 the component while the spinner is visible.
 
-![Button functionality blocked while loading](./assets/spinner-blocking-component.png)
-Example: Loading button.
-
 ### Screen blocking
 Using a loading spinner for parts of a screen or within dedicated components usually means
 that the user is able to cancel the operation, for example by clicking somewhere else.
@@ -76,7 +73,6 @@ the loader on top:
 * Light Theme: Blocking layer in Porsche Light, 90% opacity
 * Dark Theme: Blocking layer in Porsche Dark, 90% opacity
 
-![Page blocked while loading](./assets/spinner-blocking-page.png)
 
 ---
 
@@ -105,5 +101,10 @@ where a loader makes sense and which loader type is best suited.
 ## Related components
 * [Button Regular](#/web/components/action/button-regular)
 * [Button Icon](#/web/components/action/button-icon)
+
+---
+
+## Best Practices
+![Example for Spinner](./assets/spinner-blocking.png)
 
 
