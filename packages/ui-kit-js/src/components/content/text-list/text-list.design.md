@@ -4,7 +4,7 @@ A text list groups and organizes related content vertically in two hierarchical 
 
 ---
 
-# Available variants
+## Available variants
 
 The Test List comes in 2 different variants:
 
@@ -12,8 +12,6 @@ The Test List comes in 2 different variants:
 - **Ordered List** with an implicated sequence.
 
 ---
-
-# Best practices
 
 ## Order
 Arrange list items in a logical way, from  highest to lowest level. Split the content up into smaller and more specific categories and group them. 
@@ -23,3 +21,8 @@ It is recommended to stick to a homogeneous writing structure and style within o
 
 ## Capitalization
 Use sentence-style capitalization for each list item: capitalize only the first letter of the item.
+
+---
+
+## Best Practices
+![Example for Text List](./assets/text-list.png)

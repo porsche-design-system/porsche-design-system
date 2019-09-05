@@ -1,18 +1,16 @@
 # Text Link
 
-# General information
-
 A text link is a clickable icon-text-combination used to navigate the user to another page or to trigger an event. Compared to buttons a text link is a rather subtle call-to-action with lower hierarchy.
 
 ---
 
-# Available sizes
+## Available sizes
 
 Per default, the text link component is set in **copytext size**. If a higher hierarchy level is needed, the text link can be set in any text size available in the typography's "additional sizes" set (either in thin or regular font-weight, always left-aligned). The size of the icon changes accordingly. Always make sure to use thin font-weight only for sizes 20 px or larger due to a better legibility.  
 
 ---
 
-# States
+## States
 
 | STATE | DESCRIPTION |
 |----|----|----|
@@ -24,7 +22,7 @@ Per default, the text link component is set in **copytext size**. If a higher hi
 
 ---
 
-# Content
+## Content
 
 The Text Link component includes the following sub-components:
 
@@ -34,8 +32,6 @@ The icon within the Text Link component can be replaced by any icon available in
 The text label within the Text Link component should be short and descriptive.
 
 ---
-
-# Best Practices
 
 ## Text links on images
 
@@ -49,3 +45,8 @@ A text link in 20 px or larger can be accompanied by an additional copytext with
 ## Text link groups
 
 Multiple text links can be combined to one text link group that must be stacked left-aligned in order to guarantee scanability and legibility. It is recommended to not group more than 6 text links in a row.
+
+---
+
+## Best Practices
+![Example for Text Link](./assets/text-link.png)
