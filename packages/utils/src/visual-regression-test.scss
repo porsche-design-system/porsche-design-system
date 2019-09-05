@@ -11,7 +11,7 @@ hr {
   margin: $p-spacing-24 0;
 }
 
-p-grid > p-grid-child[size="2"]:first-child > p-headline[tag="h4"] {
+p-grid > p-grid-child[size='2']:first-child > p-headline[tag='h4'] {
   margin-top: $p-spacing-16;
 }
 
@@ -85,7 +85,7 @@ p-grid > p-grid-child[size="2"]:first-child > p-headline[tag="h4"] {
     content: 'o: ' attr(offset);
   }
 
-  [class*="p-spacing"] {
+  [class*='p-spacing'] {
     display: inline-flex;
     background: lightskyblue;
   }
