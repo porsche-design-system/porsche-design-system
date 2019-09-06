@@ -92,5 +92,7 @@ All types of Button Regular and Small are available as disabled state. However, 
 
 ## Best Practices
 ![Example for position Button Regular](./assets/button-regular-ghost-vs.-filled.png)
+(1) Button Regular with monochrome color fill. Usage is not a high priority. (2) The Ghost Button is (in combination with the highlight) subordinated to the filled view. (3) Stand-alone Ghost Button.
 
 ![Example for position Button Regular](./assets/button-regular-position.png)
+(1) and (2) Example of the default left-aligned position of the Button Regular.

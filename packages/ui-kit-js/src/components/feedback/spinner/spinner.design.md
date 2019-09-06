@@ -106,5 +106,6 @@ where a loader makes sense and which loader type is best suited.
 
 ## Best Practices
 ![Example for Spinner](./assets/spinner-blocking.png)
+(1) Screen blocking. (2) Component blocking. (3) Initial blocking.
 
 

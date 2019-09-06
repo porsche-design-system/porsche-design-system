@@ -58,9 +58,8 @@ The current page position is always marked by a red underline. By default, the c
 
 If there are at least 8 pages, an ellipsis ("...") is shown for a dedicated range of pages that are located inbetween the visible pagination numbers. The ellipsis is not clickable.
 
-If there are at least 8 pages, an non-clickable ellipsis ("...") is displayed for the allocated range of pages located inbetween the visible page items.
-
 ---
 
 ## Best Practices
 ![Example for Spinner](./assets/pagination-position.png)
+(1) Mobil: Content with 5 pages. (2) Desktop: Content with 5 pages. (3) Desktop: Example of usage an non-clickable ellipsis ("..."). (4) Example of usage an non-clickable ellipsis ("..."). Maximum Pagination size (5 items) on mobile.

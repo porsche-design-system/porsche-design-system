@@ -20,6 +20,12 @@ Default Button Icon with monochrome color fill.
 
 An "outline only" Button Icon version. It is always to be used stand-alone and never in combination with a filled Button Icon or other button types. In the hierarchy the ghost button is always subordinated to color filled button actions within the same page.
 
+### 3. Icon
+
+<p-button-icon variant="transparent"></p-button-icon>
+
+Icon only without background.
+
 ---
 
 ## Button states
@@ -56,6 +62,7 @@ All types of Button Icon are provided in disabled state. Whenever possible, disa
 
 ## Best Practices
 ![Example for position Button Icon](./assets/button-icon-position.png)
+(1) Usage of two Button icon only. (2) Example of usage Button Icon. In this case the user is fully aware of the button function.
 
 
 ### Don'ts
