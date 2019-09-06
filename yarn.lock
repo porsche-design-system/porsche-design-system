@@ -1154,6 +1154,11 @@
   resolved "https://registry.ionicframework.com/@ionic-enterprise%2fangular-output-plugin/-/angular-output-plugin-0.0.5.tgz#ca5d2c26a21aa778151be4ca9df69cbcfa43f0d1"
   integrity sha512-op4u6sgy2PCc1xkuzvEMZthURsFSxZJSJlHqAVCYAL5hYbAKMAfT8Lxtj6B/NUyQSOqxiUJ2F5il1dN0QQVmgg==
 
+"@ionic-enterprise/react-component-lib@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-component-lib/-/react-component-lib-0.0.1.tgz#efbccd4e223a80bf4e327778c69ef7853ccc5153"
+  integrity sha512-e7Kjr9MM+dV1iqw2nN+JMwcZuzlWwfNj01gsG0D0ZBrnwaahQ2ElbepcAQCI92xg2bfnvYo/FFYOeG89FCD4nA==
+
 "@ionic-enterprise/react-output-plugin@^0.0.7":
   version "0.0.7"
   resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-output-plugin/-/react-output-plugin-0.0.7.tgz#659fd154a7f7c914e082355ca5dca93f0a0a46aa"
@@ -1590,13 +1595,6 @@
   dependencies:
     "@porsche-ui/ui-kit-js" "1.0.0-alpha.2"
     tslib "^1.9.0"
-
-"@porsche-ui/ui-kit-react@^1.0.0-alpha.2":
-  version "1.0.0-alpha.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-react/-/@porsche-ui/ui-kit-react-1.0.0-alpha.2.tgz#99fed7949c5ff63f2fd714b7008fe268d875e3fb"
-  integrity sha1-mf7XlJxf9j8v1xS3AI/iaNh14/s=
-  dependencies:
-    "@porsche-ui/ui-kit-js" "1.0.0-alpha.2"
 
 "@porsche-ui/visual-regression-tester@^1.0.0":
   version "1.0.0"
