@@ -26,3 +26,4 @@ Use sentence-style capitalization for each list item: capitalize only the first 
 
 ## Best Practices
 ![Example for Text List](./assets/text-list.png)
+(1) Unordered List. (2) Ordered List.

@@ -50,3 +50,4 @@ Multiple text links can be combined to one text link group that must be stacked 
 
 ## Best Practices
 ![Example for Text Link](./assets/text-link.png)
+(1) Text link place on image. (2) Text links in the form of different icon-text-combination. (3) Text link groups.
