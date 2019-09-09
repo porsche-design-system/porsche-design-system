@@ -504,19 +504,19 @@ To achieve highest flexibility, breakpoint behaviour can set **from** a `min` br
         width: 2 * $p-spacing-d;
         height: 2 * $p-spacing-d;
 
-        @include breakpoint('s') {
+        @include p-breakpoint('s') {
           width: 2 * $p-spacing-d-s;
           height: 2 * $p-spacing-d-s;
         }
-        @include breakpoint('m') {
+        @include p-breakpoint('m') {
           width: 2 * $p-spacing-d-m;
           height: 2 * $p-spacing-d-m;
         }
-        @include breakpoint('l') {
+        @include p-breakpoint('l') {
           width: 2 * $p-spacing-d-l;
           height: 2 * $p-spacing-d-l;
         }
-        @include breakpoint('xl') {
+        @include p-breakpoint('xl') {
           width: 2 * $p-spacing-d-xl;
           height: 2 * $p-spacing-d-xl;
         }

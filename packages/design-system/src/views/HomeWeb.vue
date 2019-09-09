@@ -102,7 +102,7 @@
     &:first-child {
       margin-top: -$p-spacing-32;
 
-      @include breakpoint('s') {
+      @include p-breakpoint('s') {
         margin-top: -$p-spacing-64;
       }
     }
@@ -112,7 +112,7 @@
       right: -$p-spacing-32;
     }
 
-    @include breakpoint('s') {
+    @include p-breakpoint('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
@@ -144,7 +144,7 @@
     }
     padding: $p-spacing-32;
 
-    @include breakpoint('s') {
+    @include p-breakpoint('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
@@ -171,7 +171,7 @@
     &:last-child {
       margin-bottom: -$p-spacing-32;
 
-      @include breakpoint('s') {
+      @include p-breakpoint('s') {
         margin-bottom: -$p-spacing-64;
       }
     }
@@ -183,7 +183,7 @@
     padding: $p-spacing-32;
     background: $p-color-surface-light;
 
-    @include breakpoint('s') {
+    @include p-breakpoint('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;

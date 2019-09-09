@@ -86,7 +86,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       @include p-flex-item-none;
     }
 
-    @include breakpoint("xs") {
+    @include p-breakpoint("xs") {
       &--grow {
         &-0-xs {
           @include p-flex-item-grow(0);
@@ -122,7 +122,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       }
     }
 
-    @include breakpoint("s") {
+    @include p-breakpoint("s") {
       &--grow {
         &-0-s {
           @include p-flex-item-grow(0);
@@ -158,7 +158,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       }
     }
 
-    @include breakpoint("m") {
+    @include p-breakpoint("m") {
       &--grow {
         &-0-m {
           @include p-flex-item-grow(0);
@@ -194,7 +194,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       }
     }
 
-    @include breakpoint("l") {
+    @include p-breakpoint("l") {
       &--grow {
         &-0-l {
           @include p-flex-item-grow(0);
@@ -230,7 +230,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       }
     }
 
-    @include breakpoint("xl") {
+    @include p-breakpoint("xl") {
       &--grow {
         &-0-xl {
           @include p-flex-item-grow(0);
@@ -286,7 +286,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         @include p-flex-item-align-self(baseline);
       }
 
-      @include breakpoint("xs") {
+      @include p-breakpoint("xs") {
         &-auto-xs {
           @include p-flex-item-align-self(auto);
         }
@@ -307,7 +307,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("s") {
+      @include p-breakpoint("s") {
         &-auto-s {
           @include p-flex-item-align-self(auto);
         }
@@ -328,7 +328,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("m") {
+      @include p-breakpoint("m") {
         &-auto-m {
           @include p-flex-item-align-self(auto);
         }
@@ -349,7 +349,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("l") {
+      @include p-breakpoint("l") {
         &-auto-l {
           @include p-flex-item-align-self(auto);
         }
@@ -370,7 +370,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("xl") {
+      @include p-breakpoint("xl") {
         &-auto-xl {
           @include p-flex-item-align-self(auto);
         }
@@ -415,7 +415,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         width: auto;
       }
 
-      @include breakpoint("xs") {
+      @include p-breakpoint("xs") {
         &-one-quarter-xs {
           @include p-flex-item-width(1);
         }
@@ -439,7 +439,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("s") {
+      @include p-breakpoint("s") {
         &-one-quarter-s {
           @include p-flex-item-width(1);
         }
@@ -463,7 +463,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("m") {
+      @include p-breakpoint("m") {
         &-one-quarter-m {
           @include p-flex-item-width(1);
         }
@@ -487,7 +487,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("l") {
+      @include p-breakpoint("l") {
         &-one-quarter-l {
           @include p-flex-item-width(1);
         }
@@ -511,7 +511,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("xl") {
+      @include p-breakpoint("xl") {
         &-one-quarter-xl {
           @include p-flex-item-width(1);
         }
@@ -556,7 +556,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         @include p-flex-item-offset(6);
       }
 
-      @include breakpoint("xs") {
+      @include p-breakpoint("xs") {
         &-none-xs {
           @include p-flex-item-offset(1);
         }
@@ -577,7 +577,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("s") {
+      @include p-breakpoint("s") {
         &-none-s {
           @include p-flex-item-offset(1);
         }
@@ -598,7 +598,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("m") {
+      @include p-breakpoint("m") {
         &-none-m {
           @include p-flex-item-offset(1);
         }
@@ -619,7 +619,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("l") {
+      @include p-breakpoint("l") {
         &-none-l {
           @include p-flex-item-offset(1);
         }
@@ -640,7 +640,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include breakpoint("xl") {
+      @include p-breakpoint("xl") {
         &-none-xl {
           @include p-flex-item-offset(1);
         }

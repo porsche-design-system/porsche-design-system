@@ -98,14 +98,14 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include breakpoint('xxs', 's') {
+        @include p-breakpoint('xxs', 's') {
           opacity: 0;
           transform: translate3d(rem(-140px), 0, 0);
           transition: transform .3s, opacity .3s;
         }
 
         &.is-menu-active {
-          @include breakpoint('xxs', 's') {
+          @include p-breakpoint('xxs', 's') {
             opacity: 1;
             transform: translate3d(0, 0, 0);
           }
@@ -124,17 +124,17 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include breakpoint('xxs', 's') {
+        @include p-breakpoint('xxs', 's') {
           transform: translate3d(0, 0, 0);
           transition: transform 0.3s;
         }
 
-        @include breakpoint('s') {
+        @include p-breakpoint('s') {
           left: rem(280px);
         }
 
         &.is-menu-active {
-          @include breakpoint('xxs', 's') {
+          @include p-breakpoint('xxs', 's') {
             transform: translate3d(rem(280px), 0, 0);
           }
         }
@@ -147,12 +147,12 @@
           opacity: 1;
           transition: opacity .3s;
 
-          @include breakpoint('s') {
+          @include p-breakpoint('s') {
             padding: $p-spacing-64;
           }
 
           &.is-menu-active {
-            @include breakpoint('xxs', 's') {
+            @include p-breakpoint('xxs', 's') {
               opacity: 0.05;
               pointer-events: none;
             }
@@ -185,7 +185,7 @@
         right: 0;
         display: none;
 
-        @include breakpoint('xxs', 's') {
+        @include p-breakpoint('xxs', 's') {
           display: block;
         }
       }

@@ -50,7 +50,7 @@
     &:first-child {
       margin-top: -$p-spacing-32;
 
-      @include breakpoint('s') {
+      @include p-breakpoint('s') {
         margin-top: -$p-spacing-64;
       }
     }
@@ -60,7 +60,7 @@
       right: -$p-spacing-32;
     }
 
-    @include breakpoint('s') {
+    @include p-breakpoint('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
@@ -92,7 +92,7 @@
     }
     padding: $p-spacing-32;
 
-    @include breakpoint('s') {
+    @include p-breakpoint('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
