@@ -26,14 +26,14 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
     right: -$p-grid-child-spacing-horizontal;
   }
 
-  @include breakpoint("s") {
+  @include p-breakpoint("s") {
     margin: {
       left: -$p-grid-child-spacing-horizontal-s;
       right: -$p-grid-child-spacing-horizontal-s;
     }
   }
 
-  @include breakpoint("m") {
+  @include p-breakpoint("m") {
     margin: {
       left: -$p-grid-child-spacing-horizontal-m;
       right: -$p-grid-child-spacing-horizontal-m;
@@ -57,14 +57,14 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
     right: $p-grid-child-spacing-horizontal;
   }
 
-  @include breakpoint("s") {
+  @include p-breakpoint("s") {
     padding: {
       left: $p-grid-child-spacing-horizontal-s;
       right: $p-grid-child-spacing-horizontal-s;
     }
   }
 
-  @include breakpoint("m") {
+  @include p-breakpoint("m") {
     padding: {
       left: $p-grid-child-spacing-horizontal-m;
       right: $p-grid-child-spacing-horizontal-m;
@@ -109,7 +109,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("xs") {
+    @include p-breakpoint("xs") {
       &-normal-xs {
         @include p-grid-gap-normal;
 
@@ -127,7 +127,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("s") {
+    @include p-breakpoint("s") {
       &-normal-s {
         @include p-grid-gap-normal;
 
@@ -145,7 +145,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("m") {
+    @include p-breakpoint("m") {
       &-normal-m {
         @include p-grid-gap-normal;
 
@@ -163,7 +163,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("l") {
+    @include p-breakpoint("l") {
       &-normal-l {
         @include p-grid-gap-normal;
 
@@ -181,7 +181,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("xl") {
+    @include p-breakpoint("xl") {
       &-normal-xl {
         @include p-grid-gap-normal;
 
@@ -217,7 +217,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       flex-direction: row-reverse;
     }
 
-    @include breakpoint("xs") {
+    @include p-breakpoint("xs") {
       &-column-xs {
         flex-direction: column;
       }
@@ -232,7 +232,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("s") {
+    @include p-breakpoint("s") {
       &-column-s {
         flex-direction: column;
       }
@@ -247,7 +247,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("m") {
+    @include p-breakpoint("m") {
       &-column-m {
         flex-direction: column;
       }
@@ -262,7 +262,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("l") {
+    @include p-breakpoint("l") {
       &-column-l {
         flex-direction: column;
       }
@@ -277,7 +277,7 @@ $p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
       }
     }
 
-    @include breakpoint("xl") {
+    @include p-breakpoint("xl") {
       &-column-xl {
         flex-direction: column;
       }

@@ -11,7 +11,7 @@
   width: 102px;
   padding-top: 60.784%;
 
-  @include breakpoint('m') {
+  @include p-breakpoint('m') {
     width: 123px;
   }
 
