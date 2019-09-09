@@ -1,6 +1,6 @@
 {
   "name": "@porsche-ui/ui-kit-js",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "scope": "@porsche-ui",
   "description": "Porsche UI Web Components",
   "main": "dist/index.js",
@@ -58,7 +58,7 @@
   "devDependencies": {
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
     "@ionic-enterprise/react-output-plugin": "^0.0.7",
-    "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",
+    "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@stencil/core": "1.3.2",
