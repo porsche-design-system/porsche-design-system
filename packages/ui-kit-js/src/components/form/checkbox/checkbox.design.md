@@ -10,7 +10,8 @@ The Checkbox component is available for both Porsche Light and Dark Theme.
 
 There are two available variants for Checkboxes:
 
-**1. unchecked**
+**1. unchecked**  
+
 **2. checked** 
 
 ---
@@ -35,9 +36,9 @@ Checkboxes are available in the following states:
 
 ---
 
-# Content
+## Content
 
-## Labels
+### Labels
 
 - Label every Checkbox
 - Use sentence-style capitalization
@@ -48,7 +49,7 @@ Checkboxes are available in the following states:
 
 ---
 
-# Usage Pattern
+## Usage Pattern
 
 Checkboxes have several usage patterns:
 
@@ -59,9 +60,9 @@ Checkboxes have several usage patterns:
 
 ---
 
-# Best Practices
+## Best Practices
 
-## Do's
+### Do's
 
 - **Group related Checkboxes.** Combine related options and separate unrelated options into groups of 10 or fewer, using multiple groups if necessary.
 - **List Checkboxes in a logical order**, such as grouping highly related options together or placing most common options first, or following some other natural progression.
@@ -69,14 +70,14 @@ Checkboxes have several usage patterns:
 - **Label every Checkbox**, with a short and informative label text.
 - **Use a Checkbox only to change and/or select settings.**
 
-## Don´ts
+### Don'ts
 
 - **Reconsider using group boxes** to organize groups of Checkboxes. This often results in unnecessary screen clutter.
 - **Alphabetical ordering** isn't recommended because it is language dependent, and therefore not localizable.
 
 ---
 
-# Usability & Interaction
+## Usability & Interaction
 
 ### Clickability
 
@@ -88,8 +89,12 @@ All Checkboxes are provided in disabled state. However, disabled states should b
 
 ---
 
-# Related components 
+## Related components 
 
-## Radio Buttons
+### Radio Buttons
 
 **Radio Buttons** are used when there is a list of two or more options that are **mutually exclusive** and the user must select exactly one choice. In other words, clicking a non-selected Radio Button will deselect whatever other button was previously selected in the list.
+
+---
+
+<p-text variant="small">placeholder footnote</p-text>
