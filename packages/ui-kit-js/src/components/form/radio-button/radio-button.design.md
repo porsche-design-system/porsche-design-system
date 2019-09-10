@@ -1,9 +1,7 @@
 # Radio Button
-## General Informations
 
 A Radio Button is a graphical control element that allows the user to choose only one of a predefined set of mutually exclusive options.
-
-Radio Buttons are activated by default.
+Radio Buttons are activated by default. The Radio Button component is available for both Porsche Light and Dark Theme.
 
 ---
 
@@ -12,7 +10,6 @@ Radio Buttons are activated by default.
 There are two available variants for Radio Buttons:
 
 **1. unselected**
-
 **2. selected** 
 
 ---
@@ -39,8 +36,14 @@ Radio Buttons are available in the following states:
 
 ## Content
 
-The Radio Button is available for both Porsche Light and Dark Theme. 
+# Labels
 
+- Use sentence-style capitalization
+- Write the label so that it describes the selected state of the Radio Button.
+- For a group of Radio Buttons, use parallel phrasing and try to keep the length about the same for all labels.
+- Describe just the option with the label.
+- Keep labels brief so it's easy to refer to them in messages and documentation.
+ 
 ---
 
 # Usage Pattern
@@ -58,7 +61,7 @@ The singular property of a Radio Button makes it distinct from a Checkbox.
 - **List Radio Buttons in a logical order**, such as grouping highly related options together or placing most common options first, or following some other natural progression. 
 - **Align Radio Buttons vertically**, not horizontally. Horizontal alignment is harder to read.
 
-## Dont's
+## Don'ts
 - **A list of Radio Buttons has to be consistent.** Don´t use subheadings that break the list up.
 - **Reconsider using Radio Button groups.** Organizing groups of Radio Buttons often results in unnecessary screen clutter.
 - **Alphabetical ordering** isn't recommended because it is language dependent, and therefore not localizable.
@@ -74,16 +77,6 @@ The whole Radio Button area is clickable. The clickability is indicated by a spe
 ### Disabled State
 
 All Radio Buttons are provided in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. 
-
----
-
-# Labels
-
-- Use sentence-style capitalization
-- Write the label so that it describes the selected state of the Radio Button.
-- For a group of Radio Buttons, use parallel phrasing and try to keep the length about the same for all labels.
-- Describe just the option with the label.
-- Keep labels brief so it's easy to refer to them in messages and documentation.
 
 ---
 
