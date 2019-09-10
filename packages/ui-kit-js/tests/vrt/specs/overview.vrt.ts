@@ -22,10 +22,6 @@ describe('Components Overview', () => {
   });
 
   it('should have no visual regression in IE11', async () => {
-    expect(
-      await vrtBs.test('/index.html', async () => {
-        await vrt.getPage().addStyleTag({content: ':root { --p-animation-duration__spinner: 0s; }'});
-      })
-    ).toBeFalsy();
+    expect(await vrtBs.test('/index.html', 'overview')).toBeFalsy();
   });
 });

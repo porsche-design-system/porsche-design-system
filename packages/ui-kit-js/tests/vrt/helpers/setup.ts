@@ -1,3 +1,4 @@
+require('dotenv').config();
 import 'jasmine';
 import {VisualRegressionTester, VisualRegressionTestOptions} from '@porsche-ui/visual-regression-tester';
 import { VisualRegressionTesterBs, VisualRegressionTestBsOptions } from '@porsche-ui/visual-regression-tester-bs';
@@ -19,8 +20,8 @@ const testOptions: VisualRegressionTestOptions = {
 };
 
 const optionsBs: VisualRegressionTestBsOptions = {
-  username: 'oliverhook1',
-  accessKey: 'auteTfP2qWeEfMCehBg2',
+  username: process.env.BROWSERSTACK_USER_NAME,
+  accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
   browserList: [
     {"os": "Windows", "os_version": "10", "browser_version": "11.0", "browser": "ie"}
   ],
