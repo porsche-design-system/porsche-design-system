@@ -1868,13 +1868,14 @@
   dependencies:
     "@porsche-ui/ui-kit-js" "1.0.0-alpha.3"
 
-"@porsche-ui/visual-regression-tester-bs@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/visual-regression-tester-bs/-/@porsche-ui/visual-regression-tester-bs-1.0.0-alpha.1.tgz#d0482d717c7158a15bdb39b6db3bed9eac7ec6dd"
-  integrity sha1-0EgtcXxxWKFb2zm22zvtnqx+xt0=
+"@porsche-ui/visual-regression-tester-bs@^1.0.0-alpha.2":
+  version "1.0.0-alpha.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/visual-regression-tester-bs/-/@porsche-ui/visual-regression-tester-bs-1.0.0-alpha.2.tgz#97a0437c0b7c694f5eb8f5f11fb4a941e51444ee"
+  integrity sha1-l6BDfAt8aU9euPXxH7SpQeUURO4=
   dependencies:
     browserstack-local "^1.4.2"
     del "^5.1.0"
+    dotenv "^8.1.0"
     isomorphic-fetch "^2.2.1"
     jimp "^0.8.0"
 
@@ -5775,6 +5776,11 @@ dotenv@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
   integrity sha512-M3NhsLbV1i6HuGzBUH8vXrtxOk+tWmzWKDMbAVSUp3Zsjm7ywFeuwrUXhmhQyRK1q5B5GGy7hcXPbj3bnfZg2g==
+
+dotenv@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.1.0.tgz#d811e178652bfb8a1e593c6dd704ec7e90d85ea2"
+  integrity sha512-GUE3gqcDCaMltj2++g6bRQ5rBJWtkWTmqmD0fo1RnnMuUqHNCt2oTPeDnS9n6fKYvlhn7AeBkb38lymBtWBQdA==
 
 duplexer3@^0.1.4:
   version "0.1.4"

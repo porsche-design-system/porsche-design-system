@@ -1,5 +1,8 @@
 @import '~@porsche-ui/ui-kit-scss-utils/index';
 
+// disable animations globally because of Browserstack VRT testing
+:root { --p-animation-duration__spinner: 0s; }
+
 #app {
   padding: $p-spacing-32;
 }
