@@ -116,5 +116,33 @@
     &.state-focus {
       background: $p-color-state-focus;
     }
+
+    &.external-facebook {
+      background: $p-color-external-facebook;
+    }
+
+    &.external-google {
+      background: $p-color-external-google;
+    }
+
+    &.external-instagram {
+      background: $p-color-external-instagram;
+    }
+
+    &.external-linkedin {
+      background: $p-color-external-linkedin;
+    }
+
+    &.external-twitter {
+      background: $p-color-external-twitter;
+    }
+
+    &.external-wechat {
+      background: $p-color-external-wechat;
+    }
+
+    &.external-youtube {
+      background: $p-color-external-youtube;
+    }
   }
 </style>
