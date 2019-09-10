@@ -128,6 +128,12 @@ export const config: DesignSystemWebConfig = {
         props: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.props.md`)
       }
     },
+    Form: {
+      Checkbox: {
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/form/checkbox/checkbox.design.md`)
+      }
+    },
     Icon: {
       Icon: {
         // @ts-ignore
