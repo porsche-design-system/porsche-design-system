@@ -1,7 +1,7 @@
 # Versioning
 
 ## General information
-For updating and releasing new versions of code or design changes, the [SemanticVersioning](http://semver.org/)  format is used:  
+For updating and releasing new versions of code or design changes, the [SemanticVersioning](http://semver.org/) format is used:  
 
 MAJOR.MINOR.PATCH e.g. 1.0.1
 * **Major** (X.y.z) contain breaking changes (defined below).
