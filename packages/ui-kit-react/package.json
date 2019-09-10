@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf 'projects/ui-kit-wrapper/dist' && mkdir 'projects/ui-kit-wrapper/dist' && tsc -p 'projects/ui-kit-wrapper/tsconfig.lib.json'",
+    "build": "cd projects/ui-kit-wrapper && yarn build",
     "test": "yarn test:vrt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 180000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
