@@ -1,5 +1,5 @@
 # Radio Button
-## General Informations (Definition)
+## General Informations
 
 A Radio Button is a graphical control element that allows the user to choose only one of a predefined set of mutually exclusive options.
 
@@ -89,9 +89,6 @@ All Radio Buttons are provided in disabled state. However, disabled states shoul
 
 # Related components 
 
-## Checkboxes / Radio Buttons
+## Checkboxes
 
 **Checkboxes** are used when there are lists of options and the user may **select any number** of choices, including zero, one, or several. In other words, each Checkbox is independent of all other Checkboxes in the list, so checking one box doesn't uncheck the others.
-**Radio Buttons** are used when there is a list of two or more options that are **mutually exclusive** and the user must select exactly one choice. In other words, clicking a non-selected Radio Button will deselect whatever other button was previously selected in the list.
-
-## Checkboxes / Radio Buttons

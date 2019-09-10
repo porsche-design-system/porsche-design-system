@@ -129,7 +129,7 @@ export const config: DesignSystemWebConfig = {
       }
     },
     Form: {
-      Radio Button: {
+      'Radio Button': {
         // @ts-ignore
         design: () => import(`@/../../ui-kit-js/src/components/form/radio-button/radio-button.design.md`)
       }
