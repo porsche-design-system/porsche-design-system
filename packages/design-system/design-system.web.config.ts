@@ -128,6 +128,12 @@ export const config: DesignSystemWebConfig = {
         props: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.props.md`)
       }
     },
+    Form: {
+      Radio Button: {
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/form/radio-button/radio-button.design.md`)
+      }
+    },
     Icon: {
       Icon: {
         // @ts-ignore
