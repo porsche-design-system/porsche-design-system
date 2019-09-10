@@ -1,12 +1,15 @@
+// internal brand colors
 $p-color-porsche-red: #d5001c;
 $p-color-porsche-dark-red: #960014;
 $p-color-porsche-light: #fff;
 $p-color-porsche-dark: #0e1418;
 $p-color-porsche-black: #000;
 
+// surface colors
 $p-color-surface-light: #f2f2f2;
 $p-color-surface-dark: #1a2023;
 
+// neutral grey colors
 $p-color-neutral-grey-1: #e3e4e5;
 $p-color-neutral-grey-2: #c9cacb;
 $p-color-neutral-grey-3: #b0b1b2;
@@ -16,8 +19,31 @@ $p-color-neutral-grey-6: #626669;
 $p-color-neutral-grey-7: #4a4e51;
 $p-color-neutral-grey-8: #323639;
 
+// color grey mappings used on dark backgrounds
+$p-color-grey-light-on-dark: $p-color-neutral-grey-3;
+$p-color-grey-lighter-on-dark: $p-color-neutral-grey-2;
+$p-color-grey-lightest-on-dark: $p-color-neutral-grey-1;
+$p-color-grey-disabled-on-dark: $p-color-neutral-grey-5;
+
+// color grey mappings used on light backgrounds
+$p-color-grey-dark-on-light: $p-color-neutral-grey-6;
+$p-color-grey-darker-on-light: $p-color-neutral-grey-7;
+$p-color-grey-darkest-on-light: $p-color-neutral-grey-8;
+$p-color-grey-disabled-on-light: $p-color-neutral-grey-4;
+
+// status colors
 $p-color-status-red: #e00000;
 $p-color-status-green: #13d246;
 $p-color-status-yellow: #e2b236;
 
+// state colors
 $p-color-state-focus: #00d5b9;
+
+// external brand colors
+$p-color-external-facebook: #1877f2;
+$p-color-external-google: #4285f4;
+$p-color-external-instagram: #e1306c;
+$p-color-external-linkedin: #0077b5;
+$p-color-external-twitter: #1da1f2;
+$p-color-external-wechat: #1aad19;
+$p-color-external-youtube: #ff0000;
