@@ -1,9 +1,8 @@
 # Checkbox
-## General Informations
 
-Checkboxes are used for a list of options that allow the user to make choices. The choice of one option, no option or several options. Each checkbox has a label and is independent of all other checkboxes in the list. Checking one box doesn't uncheck the others.
+Checkboxes are used for a list of options that allow the user to make choices. The choice of one option, no option or several options. Each checkbox has a label and is independent of all other checkboxes in the list. Checking one box doesn't uncheck the others. By default checkboxes are not selected.
 
-By default checkboxes are not selected.
+The Checkbox component is available for both Porsche Light and Dark Theme. 
 
 ---
 
@@ -12,7 +11,6 @@ By default checkboxes are not selected.
 There are two available variants for Checkboxes:
 
 **1. unchecked**
-
 **2. checked** 
 
 ---
@@ -37,9 +35,16 @@ Checkboxes are available in the following states:
 
 ---
 
-## Content
+# Content
 
-The Checkbox is available for both Porsche Light and Dark Theme. 
+## Labels
+
+- Label every Checkbox
+- Use sentence-style capitalization
+- Write the label so that it describes the selected state of the Checkbox.
+- For a group of Checkboxes, use parallel phrasing and try to keep the length about the same for all labels.
+- Describe just the option with the label. 
+- Keep labels brief so it's easy to refer to them in messages and documentation.
 
 ---
 
@@ -64,7 +69,7 @@ Checkboxes have several usage patterns:
 - **Label every Checkbox**, with a short and informative label text.
 - **Use a Checkbox only to change and/or select settings.**
 
-## Dont's
+## Don´ts
 
 - **Reconsider using group boxes** to organize groups of Checkboxes. This often results in unnecessary screen clutter.
 - **Alphabetical ordering** isn't recommended because it is language dependent, and therefore not localizable.
@@ -83,21 +88,8 @@ All Checkboxes are provided in disabled state. However, disabled states should b
 
 ---
 
-# Labels
-
-- Label every Checkbox
-- Use sentence-style capitalization
-- Write the label so that it describes the selected state of the Checkbox.
-- For a group of Checkboxes, use parallel phrasing and try to keep the length about the same for all labels.
-- Describe just the option with the label. 
-- Keep labels brief so it's easy to refer to them in messages and documentation.
-
----
-
 # Related components 
 
 ## Radio Buttons
 
 **Radio Buttons** are used when there is a list of two or more options that are **mutually exclusive** and the user must select exactly one choice. In other words, clicking a non-selected Radio Button will deselect whatever other button was previously selected in the list.
-
-
