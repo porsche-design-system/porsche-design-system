@@ -1,7 +1,9 @@
 # Radio Button
 
 A Radio Button is a graphical control element that allows the user to choose only one of a predefined set of mutually exclusive options.
-Radio Buttons are activated by default. The Radio Button component is available for both Porsche Light and Dark Theme.
+Radio Buttons are activated by default. 
+
+The Radio Button component is available for both Porsche Light and Dark Theme.
 
 ---
 
@@ -9,7 +11,8 @@ Radio Buttons are activated by default. The Radio Button component is available 
 
 There are two available variants for Radio Buttons:
 
-**1. unselected**
+**1. unselected**  
+
 **2. selected** 
 
 ---
@@ -36,7 +39,7 @@ Radio Buttons are available in the following states:
 
 ## Content
 
-# Labels
+### Labels
 
 - Use sentence-style capitalization
 - Write the label so that it describes the selected state of the Radio Button.
@@ -46,7 +49,7 @@ Radio Buttons are available in the following states:
  
 ---
 
-# Usage Pattern
+## Usage Pattern
 
 The singular property of a Radio Button makes it distinct from a Checkbox.
 
@@ -54,21 +57,21 @@ The singular property of a Radio Button makes it distinct from a Checkbox.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## Do's
+### Do's
 
 - **List Radio Buttons in a logical order**, such as grouping highly related options together or placing most common options first, or following some other natural progression. 
 - **Align Radio Buttons vertically**, not horizontally. Horizontal alignment is harder to read.
 
-## Don'ts
+### Don'ts
 - **A list of Radio Buttons has to be consistent.** Don´t use subheadings that break the list up.
 - **Reconsider using Radio Button groups.** Organizing groups of Radio Buttons often results in unnecessary screen clutter.
 - **Alphabetical ordering** isn't recommended because it is language dependent, and therefore not localizable.
 
 ---
 
-# Usability & Interaction
+## Usability & Interaction
 
 ### Clickability
 
@@ -80,8 +83,12 @@ All Radio Buttons are provided in disabled state. However, disabled states shoul
 
 ---
 
-# Related components 
+## Related components 
 
-## Checkboxes
+### Checkboxes
 
 **Checkboxes** are used when there are lists of options and the user may **select any number** of choices, including zero, one, or several. In other words, each Checkbox is independent of all other Checkboxes in the list, so checking one box doesn't uncheck the others.
+
+---
+
+<p-text variant="small">placeholder footnote</p-text>
