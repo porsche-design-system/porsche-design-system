@@ -6,7 +6,9 @@ export default {
 
   external: ['@porsche-ui/ui-kit-js', '@porsche-ui/ui-kit-js/loader', 'react', 'react-dom', 'classnames'],
 
-  plugins: [resolve()],
+  plugins: [
+    resolve()
+  ],
 
   output: [
     {
