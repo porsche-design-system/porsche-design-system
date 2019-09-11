@@ -1,8 +1,7 @@
 import * as React from "react"
 import cx from "classnames"
 
-import {prefix, getElementType} from "../../utils"
-import {ClassNameProp, ComponentProp} from "../../utils/props"
+import {prefix, getElementType, ClassNameProp, ComponentProp} from "../../utils"
 
 export interface PSpacingProps extends ClassNameProp, ComponentProp {
   /**
@@ -30,7 +29,7 @@ export interface PSpacingProps extends ClassNameProp, ComponentProp {
   paddingTop?: 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | "a" | "b" | "c" | "d" | "e" | "f" | "g"
 }
 
-const _PSpacing: React.StatelessComponent<PSpacingProps> = (props) => {
+export const PSpacing: React.FunctionComponent<PSpacingProps> = (props) => {
   const {
     as,
     className,
@@ -106,5 +105,3 @@ const _PSpacing: React.StatelessComponent<PSpacingProps> = (props) => {
     )
   }
 };
-
-export const PSpacing = _PSpacing as React.StatelessComponent<PSpacingProps>;
