@@ -17,6 +17,9 @@ export class ButtonRegular {
   /** When providing an url then the component will be rendered as `<a>` instead of `<button>` tag. */
   @Prop() public href?: string = undefined;
 
+  /** Target attribute where the link should be opened. */
+  @Prop() public target?: 'self' | 'blank' | 'parent' | 'top' = 'self';
+
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
@@ -63,7 +66,7 @@ export class ButtonRegular {
         class={buttonClasses}
         {...(TagType === 'button'
           ? { type: this.type, disabled: this.disabled || this.loading }
-          : { href: this.href, 'aria-disabled': String(this.disabled || this.loading) })}
+          : { href: this.href, target: `_${this.target}`, 'aria-disabled': String(this.disabled || this.loading) })}
         onClick={(e) => this.onClick(e)}
         onFocus={(e) => this.onFocus(e)}
         onBlur={(e) => this.onBlur(e)}
