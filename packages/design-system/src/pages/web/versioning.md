@@ -11,12 +11,12 @@ MAJOR.MINOR.PATCH e.g. 1.0.1
 Teams should avoid mixing different versions of code and design library. Both parties should drive updating in collaboration with the related counterpart.
 
 ## Release rules
-* **Once a versioned package has been released, the contents of that version must not be modified. Any modifications must be released as a new version.** 
-* **We align design and code versioning in major and minor**
-* **Version changes are part of every pull request following the SamVer rules**
-* **We only allow one breaking change per major release.**
-* **Every version change must be documented clearly in the change log.** 
-* **In design, the version must be contained in the library file name.**
+* Once a versioned package has been released, the contents of that version must not be modified. Any modifications must be released as a new version. 
+* We align design and code versioning in major and minor
+* Version changes are part of every pull request following the SamVer rules
+* We only allow one breaking change per major release.
+* Every version change must be documented clearly in the change log. 
+* In design, the version must be contained in the library file name.
 
 ## Versioning examples
 Some examples for SemVer within the Porsche UI Kit:
