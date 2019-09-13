@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
+    "outDir": "../../dist/ui-kit-wrapper",
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,

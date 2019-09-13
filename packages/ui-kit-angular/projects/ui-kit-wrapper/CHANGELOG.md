@@ -2,6 +2,10 @@
 
 ## NOT RELEASED YET
 
+## [1.0.0-alpha.3] (2019-09-09)
+
+### Silent Change
+* added prefix to breakpoint mixin in UI Kit JS.
 
 ## [1.0.0-alpha.2] (2019-08-22)
 

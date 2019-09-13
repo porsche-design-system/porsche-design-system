@@ -66,7 +66,7 @@
     height: rem(48px);
     stroke-width: 2px;
 
-    @include breakpoint('m') {
+    @include p-breakpoint('m') {
       width: rem(72px);
       height: rem(72px);
       stroke-width: 2px;
@@ -78,13 +78,13 @@
     height: rem(48px);
     stroke-width: 2px;
 
-    @include breakpoint('m') {
+    @include p-breakpoint('m') {
       width: rem(72px);
       height: rem(72px);
       stroke-width: 2px;
     }
 
-    @include breakpoint('l') {
+    @include p-breakpoint('l') {
       width: rem(104px);
       height: rem(104px);
       stroke-width: 2px;

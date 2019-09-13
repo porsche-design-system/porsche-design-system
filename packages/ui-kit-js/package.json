@@ -1,6 +1,6 @@
 {
   "name": "@porsche-ui/ui-kit-js",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "scope": "@porsche-ui",
   "description": "Porsche UI Web Components",
   "main": "dist/index.js",
@@ -42,7 +42,7 @@
   "scripts": {
     "start": "stencil build --watch --serve",
     "start:vrt-server": "yarn build && http-server -p 61422 -P http://localhost:61422/www",
-    "build": "stencil build --docs && node ./scripts/doc.js && node ./scripts/fix-react.js",
+    "build": "stencil build --docs && node ./scripts/doc.js",
     "lint": "yarn lint:scss && yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",
     "lint:ts": "tslint -p './tsconfig.json' -t codeFrame",
@@ -57,11 +57,11 @@
   },
   "devDependencies": {
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
-    "@ionic-enterprise/react-output-plugin": "^0.0.5",
-    "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",
+    "@ionic-enterprise/react-output-plugin": "^0.0.7",
+    "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
-    "@stencil/core": "1.3.2",
+    "@stencil/core": "1.4.0",
     "@stencil/postcss": "^1.0.1",
     "@stencil/sass": "^1.0.1",
     "@types/autoprefixer": "^9.5.0",
@@ -80,11 +80,11 @@
     "stylelint": "^10.1.0",
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
-    "stylelint-scss": "^3.10.0",
+    "stylelint-scss": "^3.10.1",
     "ts-node": "^8.3.0",
-    "tslint": "^5.19.0",
+    "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "~3.5.3",
+    "typescript": "~3.6.3",
     "wait-on": "^3.3.0"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"

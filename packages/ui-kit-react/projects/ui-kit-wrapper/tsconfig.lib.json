@@ -1,13 +1,14 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "outDir": "./dist",
     "target": "es2015",
     "allowJs": false,
     "noEmit": false,
     "isolatedModules": false,
     "sourceMap": true,
     "declaration": true,
-    "outDir": "../../dist"
+    "declarationDir": "./dist"
   },
   "include": [
     "src"
