@@ -27,7 +27,7 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
-    "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",
+    "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@types/jest": "^24.0.17",
     "@types/js-beautify": "^1.8.1",
@@ -45,9 +45,9 @@
     "cypress-shadow-dom": "^1.0.0",
     "jasmine": "^3.4.0",
     "puppeteer": "^1.19.0",
-    "sass": "^1.22.9",
+    "sass": "^1.22.12",
     "sass-loader": "^8.0.0",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^24.1.0",
     "ts-node": "^8.3.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",

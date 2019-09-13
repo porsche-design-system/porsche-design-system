@@ -84,7 +84,7 @@
     "ts-node": "^8.3.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "~3.6.2",
+    "typescript": "~3.6.3",
     "wait-on": "^3.3.0"
   },
   "license": "SEE LICENSE IN https://ui.porsche.com"
