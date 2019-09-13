@@ -36,7 +36,7 @@ All text fields types are available in the following states:
 |----|----|----|
 | default | XY | 
 | disabled | XY |
-| hover | XY |
+| hover | XY | 
 | error | XY | Real time validation helps to streamline the process and keep data clean when the user is filling out forms. 
 | success | XY | Real time validation helps to streamline the process and keep data clean when the user is filling out forms. 
 | active/focus | XY |
