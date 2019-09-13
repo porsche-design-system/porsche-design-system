@@ -42,6 +42,10 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
+    /**
     * Adapts the button color when used on dark background.
     */
     'theme'?: 'light' | 'dark';
@@ -75,6 +79,10 @@ export namespace Components {
     * Displays the button smaller.
     */
     'small'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
     * Adapts the button color when used on dark background.
     */
@@ -558,6 +566,10 @@ declare namespace LocalJSX {
     */
     'onPFocus'?: (event: CustomEvent<void>) => void;
     /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
+    /**
     * Adapts the button color when used on dark background.
     */
     'theme'?: 'light' | 'dark';
@@ -603,6 +615,10 @@ declare namespace LocalJSX {
     * Displays the button smaller.
     */
     'small'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
     * Adapts the button color when used on dark background.
     */

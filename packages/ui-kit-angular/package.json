@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build ui-kit-wrapper",
+    "build": "ng build ui-kit-wrapper && cp -r ./projects/ui-kit-wrapper/CHANGELOG.md ./dist/ui-kit-wrapper",
     "test": "yarn test:vrt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:4200 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist' && rm -rf 'tmp' && rm -rf 'out-tsc' && rm -rf 'bazel-out'"
@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "@porsche-ui/ui-kit-angular": "^1.0.0-alpha.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -39,7 +40,7 @@
     "ng-packagr": "^5.3.0",
     "ts-node": "^8.3.0",
     "tsickle": "^0.36.0",
-    "tslint": "~5.19.0",
+    "tslint": "~5.20.0",
     "typescript": "~3.5.3"
   }
 }

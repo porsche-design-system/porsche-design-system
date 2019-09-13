@@ -7,22 +7,22 @@
   font-size: rem(32px);
   line-height: 1.25;
 
-  @include breakpoint("s", "m") {
+  @include p-breakpoint("s", "m") {
     font-size: rem(42px);
     line-height: 1.238;
   }
 
-  @include breakpoint("m", "l") {
+  @include p-breakpoint("m", "l") {
     font-size: rem(52px);
     line-height: 1.153;
   }
 
-  @include breakpoint("l", "xl") {
+  @include p-breakpoint("l", "xl") {
     font-size: rem(62px);
     line-height: 1.161;
   }
 
-  @include breakpoint("xl") {
+  @include p-breakpoint("xl") {
     font-size: rem(72px);
     line-height: 1.166;
   }
@@ -34,22 +34,22 @@
   font-size: rem(28px);
   line-height: 1.285;
 
-  @include breakpoint("s", "m") {
+  @include p-breakpoint("s", "m") {
     font-size: rem(36px);
     line-height: 1.222;
   }
 
-  @include breakpoint("m", "l") {
+  @include p-breakpoint("m", "l") {
     font-size: rem(44px);
     line-height: 1.181;
   }
 
-  @include breakpoint("l", "xl") {
+  @include p-breakpoint("l", "xl") {
     font-size: rem(52px);
     line-height: 1.153;
   }
 
-  @include breakpoint("xl") {
+  @include p-breakpoint("xl") {
     font-size: rem(60px);
     line-height: 1.133;
   }
@@ -61,22 +61,22 @@
   font-size: rem(24px);
   line-height: 1.333;
 
-  @include breakpoint("s", "m") {
+  @include p-breakpoint("s", "m") {
     font-size: rem(30px);
     line-height: 1.333;
   }
 
-  @include breakpoint("m", "l") {
+  @include p-breakpoint("m", "l") {
     font-size: rem(36px);
     line-height: 1.222;
   }
 
-  @include breakpoint("l", "xl") {
+  @include p-breakpoint("l", "xl") {
     font-size: rem(42px);
     line-height: 1.238;
   }
 
-  @include breakpoint("xl") {
+  @include p-breakpoint("xl") {
     font-size: rem(48px);
     line-height: 1.166;
   }
@@ -88,22 +88,22 @@
   font-size: rem(20px);
   line-height: 1.4;
 
-  @include breakpoint("s", "m") {
+  @include p-breakpoint("s", "m") {
     font-size: rem(24px);
     line-height: 1.333;
   }
 
-  @include breakpoint("m", "l") {
+  @include p-breakpoint("m", "l") {
     font-size: rem(28px);
     line-height: 1.285;
   }
 
-  @include breakpoint("l", "xl") {
+  @include p-breakpoint("l", "xl") {
     font-size: rem(32px);
     line-height: 1.25;
   }
 
-  @include breakpoint("xl") {
+  @include p-breakpoint("xl") {
     font-size: rem(36px);
     line-height: 1.222;
   }
@@ -115,22 +115,22 @@
   font-size: rem(16px);
   line-height: 1.5;
 
-  @include breakpoint("s", "m") {
+  @include p-breakpoint("s", "m") {
     font-size: rem(18px);
     line-height: 1.333;
   }
 
-  @include breakpoint("m", "l") {
+  @include p-breakpoint("m", "l") {
     font-size: rem(20px);
     line-height: 1.4;
   }
 
-  @include breakpoint("l", "xl") {
+  @include p-breakpoint("l", "xl") {
     font-size: rem(22px);
     line-height: 1.454;
   }
 
-  @include breakpoint("xl") {
+  @include p-breakpoint("xl") {
     font-size: rem(24px);
     line-height: 1.333;
   }

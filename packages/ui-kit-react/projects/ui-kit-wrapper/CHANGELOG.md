@@ -1,13 +1,15 @@
-# Porsche UI Kit JS
+# Porsche UI Kit React
 
 ## NOT RELEASED YET
-* Add target attribute to `button-regular` and `button-icon` component
 
 ## [1.0.0-alpha.3] (2019-09-09)
 
 ### Change
-* Update of react output plugin. 
-* Refactor use of breakpoint mixin to support latest `ui-kit-scss-utils` package.
+* add new dev dependency after update of react output plugin. 
+* bugfix: you can use now responsive objects in `PGrid` and `PFlex` and `PSpacing` components.
+
+### Silent Change
+* added prefix to breakpoint mixin in UI Kit JS.
 
 ## [1.0.0-alpha.2] (2019-08-22)
 

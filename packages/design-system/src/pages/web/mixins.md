@@ -11,7 +11,7 @@ Available breakpoints:
 div {
   color: inherit;
   
-  @include breakpoint('s') {
+  @include p-breakpoint('s') {
     color: deeppink;
   }
 }
@@ -37,7 +37,7 @@ div {
 div {
   color: inherit;
   
-  @include breakpoint('s', 'm') {
+  @include p-breakpoint('s', 'm') {
     color: deeppink;
   }
 }

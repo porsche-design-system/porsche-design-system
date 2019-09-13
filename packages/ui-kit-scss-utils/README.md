@@ -35,7 +35,7 @@ Sample usage might look like following example.
 #app {
   color: $p-color-porsche-black;
   
-  @include breakpoint('s') {
+  @include p-breakpoint('s') {
     color: $p-color-porsche-red;
   }
 }

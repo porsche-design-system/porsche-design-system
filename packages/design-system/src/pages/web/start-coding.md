@@ -15,7 +15,8 @@ Those packages can be consumed by one of the following private npm registries:
 
 If you don't have an account to one of the previously mentioned npm registries, you can easily register for Porsche UI npm registry like following:
 
-1. [Request a Porsche UI npm registry account](http://eepurl.com/gnOIXD)
+<p-button-regular target="blank" href="http://eepurl.com/gnOIXD">Request a Porsche UI npm registry account</p-button-regular>
+
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
 1. Enter username, password (Artifactory API Key __not__ Artifactory password!) and e-mail address when asked in terminal (this will add credentials to your global user `~/.npmrc`)
