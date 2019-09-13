@@ -23,7 +23,7 @@
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
     "react-test-renderer": "^16.9.0",
-    "typescript": "3.5.3"
+    "typescript": "3.6.3"
   },
   "eslintConfig": {
     "extends": "react-app"
