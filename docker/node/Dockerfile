@@ -1,4 +1,4 @@
-FROM node:11.12.0-stretch@sha256:53caf7b35b949f365fdec7b599e495f125d6e3a54104caf05594a82e01343146
+FROM node:12.10.0-stretch@sha256:c953b001ea2acf18a6ef99a90fc50630e70a7c0a6b49d774a7aee1f9c937b645
 
 ENV PATH="/opt/porsche-ui-kit/bin:${PATH}"
 
