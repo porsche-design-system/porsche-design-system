@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@ionic-enterprise/react-component-lib": "^0.0.1",
-    "rollup": "^1.21.2",
+    "rollup": "^1.21.3",
     "rollup-plugin-node-resolve": "^5.2.0"
   }
 }
