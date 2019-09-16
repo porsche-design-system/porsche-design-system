@@ -79,7 +79,7 @@ export const icons = {
     play_circle: "https://cdn.ui.porsche.com/porsche-ui-kit/icon/v0/ui-kit-react/play_cirle.svg",
     plus: "https://cdn.ui.porsche.com/porsche-ui-kit/icon/v0/ui-kit-react/plus.svg",
     porsche_assistance: "https://cdn.ui.porsche.com/porsche-ui-kit/icon/v0/ui-kit-react/porsche_assistance.svg",
-    porsche_genuine_parts: "https://cdn.ui.porsche.com/porsche-ui-kit/icon/v0/ui-kit-react/v.svg",
+    porsche_genuine_parts: "https://cdn.ui.porsche.com/porsche-ui-kit/icon/v0/ui-kit-react/porsche_genuine_parts.svg",
     print: "https://cdn.ui.porsche.com/porsche-ui-kit/icon/v0/ui-kit-react/print.svg",
     profile_depth_3_mm: "https://cdn.ui.porsche.com/porsche-ui-kit/icon/v0/ui-kit-react/profile_depth_3_mm.svg",
     purchased: "https://cdn.ui.porsche.com/porsche-ui-kit/icon/v0/ui-kit-react/purchased.svg",

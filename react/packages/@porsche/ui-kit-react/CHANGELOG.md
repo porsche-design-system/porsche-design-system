@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.14.3] - 2019-09-16
+
 ### Changed
 
 -   BREAKING CHANGE: Reset styles are now _not_ included by default in `index.css` or `index.scss`. Include `reset.css` separately to restore the styles as they were in the previous version. This allows a more finegrained control over how styles are included in a project.
