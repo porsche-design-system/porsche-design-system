@@ -21,35 +21,17 @@
 
 ### Neutral colors
 
-|                                               |                      	         |
-|-----------------------------------------------|--------------------------------|
-| <ColorBadge color="neutral-grey-1"/>  	    | `$p-color-neutral-grey-1`      |
-| <ColorBadge color="neutral-grey-2"/>  	    | `$p-color-neutral-grey-2`      |
-| <ColorBadge color="neutral-grey-3"/>  	    | `$p-color-neutral-grey-3`      |
-| <ColorBadge color="neutral-grey-4"/>  	    | `$p-color-neutral-grey-4`      |
-| <ColorBadge color="neutral-grey-5"/>  	    | `$p-color-neutral-grey-5`      |
-| <ColorBadge color="neutral-grey-6"/>  	    | `$p-color-neutral-grey-6`      |
-| <ColorBadge color="neutral-grey-7"/>  	    | `$p-color-neutral-grey-7`      |
-| <ColorBadge color="neutral-grey-8"/>  	    | `$p-color-neutral-grey-8`      |
+|                                               |                      	                                        |
+|-----------------------------------------------|---------------------------------------------------------------|
+| <ColorBadge color="neutral-grey-1"/>  	    | `$p-color-neutral-grey-1` / `$p-color-grey-lightest`          |
+| <ColorBadge color="neutral-grey-2"/>  	    | `$p-color-neutral-grey-2` / `$p-color-grey-lighter`           |
+| <ColorBadge color="neutral-grey-3"/>  	    | `$p-color-neutral-grey-3` / `$p-color-grey-light`             |
+| <ColorBadge color="neutral-grey-4"/>  	    | `$p-color-neutral-grey-4` / `$p-color-grey-disabled-on-light` |
+| <ColorBadge color="neutral-grey-5"/>  	    | `$p-color-neutral-grey-5` / `$p-color-grey-disabled-on-dark`  |
+| <ColorBadge color="neutral-grey-6"/>  	    | `$p-color-neutral-grey-6` / `$p-color-grey-dark`              |
+| <ColorBadge color="neutral-grey-7"/>  	    | `$p-color-neutral-grey-7` / `$p-color-grey-darker`            |
+| <ColorBadge color="neutral-grey-8"/>  	    | `$p-color-neutral-grey-8` / `$p-color-grey-darkest`           |
 
-### Neutral colors for dark backgrounds (mapped)
-
-|                                               |                      	           |
-|-----------------------------------------------|----------------------------------|
-| <ColorBadge color="neutral-grey-3"/>  	    | `$p-color-grey-light-on-dark`    |
-| <ColorBadge color="neutral-grey-2"/>  	    | `$p-color-grey-lighter-on-dark`  |
-| <ColorBadge color="neutral-grey-1"/>  	    | `$p-color-grey-lightest-on-dark` |
-| <ColorBadge color="neutral-grey-5"/>  	    | `$p-color-grey-disabled-on-dark` |
-
-
-### Neutral colors for light backgrounds (mapped)
-
-|                                               |                      	           |
-|-----------------------------------------------|----------------------------------|
-| <ColorBadge color="neutral-grey-6"/>  	    | `$p-color-grey-dark-on-light`    |
-| <ColorBadge color="neutral-grey-7"/>  	    | `$p-color-grey-darker-on-light`  |
-| <ColorBadge color="neutral-grey-8"/>  	    | `$p-color-grey-darkest-on-light` |
-| <ColorBadge color="neutral-grey-4"/>  	    | `$p-color-grey-disabled-on-light`|
 
 ### Status colors
 
