@@ -162,8 +162,6 @@ jobs:
         env:
           IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-install
       - name: 'Build'
