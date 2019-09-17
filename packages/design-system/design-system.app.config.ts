@@ -1,8 +1,9 @@
 // @ts-ignore
-import {Pages} from '@/interface';
+import {Pages, StoriesApp} from '@/interface';
 
 export interface DesignSystemAppConfig {
   pages: Pages;
+  stories: StoriesApp;
 }
 
 export const config: DesignSystemAppConfig = {
@@ -28,4 +29,10 @@ export const config: DesignSystemAppConfig = {
       Faq: () => import(`@/pages/app/faq.md`)
     }
   },
+  stories: {
+    Basic: {
+      // @ts-ignore
+      Color: () => import(`@/stories/app/color.md`)
+    }
+  }
 };
