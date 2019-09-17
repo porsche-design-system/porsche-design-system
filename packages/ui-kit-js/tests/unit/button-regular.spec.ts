@@ -2,6 +2,11 @@ import { newSpecPage } from '@stencil/core/testing';
 import { ButtonRegular } from '../../src/components/action/button-regular/button-regular';
 
 describe('Component <p-button-regular>', () => {
+
+  it('builds', () => {
+    expect(new ButtonRegular()).toBeTruthy();
+  });
+
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
@@ -22,19 +27,32 @@ describe('Component <p-button-regular>', () => {
     expect(page.root.shadowRoot.querySelector('a')).toBeTruthy();
   });
 
-  // it('should emit on click', async() => {
-  //   const page = await newSpecPage({
-  //     components: [ButtonRegular],
-  //     html: `<p-button-regular>Button regular</p-button-regular>`,
-  //   });
-  //   const button = page.root.querySelector('button');
-  //   const buttonSpy = jest.fn();
-  //   page.win.addEventListener('onClick', buttonSpy);
-  //   await button.click();
-  //   await page.waitForChanges();
-  //   expect(buttonSpy).toHaveBeenCalled();
-  //   // [0][0] - first argument of the first call
-  //   expect(buttonSpy.mock.calls[0][0].detail).toEqual(Event);
-  // });
+  it('has a disabled prop', async () => {
+    const page = await newSpecPage({
+      components: [ButtonRegular],
+      html: `<div></div>`
+    });
+
+    const component = page.doc.createElement('p-button-regular');
+
+    (component as any).disabled = true;
+    page.root.appendChild(component);
+    await page.waitForChanges();
+
+    expect(page.rootInstance.disabled).toBe(true);
+  });
+
+  it('should emit on click', async() => {
+    const page = await newSpecPage({
+      components: [ButtonRegular],
+      html: `<p-button-regular>Button regular</p-button-regular>`,
+    });
+    const button = page.root.shadowRoot.querySelector('button');
+    const buttonSpy = jest.fn();
+    page.win.addEventListener('pClick', buttonSpy);
+    await button.click();
+    await page.waitForChanges();
+    expect(buttonSpy).toHaveBeenCalled();
+  });
 });
 
