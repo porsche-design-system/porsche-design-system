@@ -23,7 +23,7 @@ const optionsBs: VisualRegressionTestBsOptions = {
   username: process.env.BROWSERSTACK_USER_NAME,
   accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
   browserList: [
-    {"os": "Windows", "os_version": "10", "browser_version": "11.0", "browser": "ie"}
+    {'os': 'Windows', 'os_version': '10', 'browser_version': '11.0', 'browser': 'ie'}
   ],
   local: true,
   orientation: 'portrait',
@@ -33,7 +33,7 @@ const optionsBs: VisualRegressionTestBsOptions = {
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
   baseUrl: 'http://localhost:61422/',
-  timeout: 5
+  timeout: 10
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
