@@ -18,14 +18,14 @@ fi
 cleanup_credentials() {
   local exit_code=$?
   echo "task: [$(date)] \"cleanup_credentials\""
-  rm "${HOME}/.env"
+  rm "${HOME}/packages/ui-kit-js/.env"
   exit ${exit_code}
 }
 
 setup_credentials() {
   echo "task: [$(date)] \"setup_credentials\""
-  echo "BROWSERSTACK_USER_NAME=${BROWSERSTACK_USER_NAME}" > "${HOME}/.env"
-  echo "BROWSERSTACK_ACCESS_KEY=${BROWSERSTACK_ACCESS_KEY}" > "${HOME}/.env"
+  echo "BROWSERSTACK_USER_NAME=${BROWSERSTACK_USER_NAME}" > "${HOME}/packages/ui-kit-js/.env"
+  echo "BROWSERSTACK_ACCESS_KEY=${BROWSERSTACK_ACCESS_KEY}" > "${HOME}/packages/ui-kit-js/.env"
 }
 
 trap cleanup_credentials EXIT
