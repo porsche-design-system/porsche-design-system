@@ -43,6 +43,11 @@ jobs:
         with:
           entrypoint: run-test-vrt
           args: --ui-kit-js
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-cbt
+          args: --ui-kit-js
   ui-kit-angular:
     name: 'Porsche UI Kit Angular'
     runs-on: ubuntu-latest
@@ -64,6 +69,11 @@ jobs:
         with:
           entrypoint: run-test-vrt
           args: --ui-kit-angular
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-cbt
+          args: --ui-kit-angular
   ui-kit-react:
     name: 'Porsche UI Kit React'
     runs-on: ubuntu-latest
@@ -84,6 +94,11 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
+          args: --ui-kit-react
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-cbt
           args: --ui-kit-react
   design-system:
     name: 'Porsche Design System'
@@ -120,6 +135,11 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
+          args: --design-system
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-cbt
           args: --design-system
   deployment:
     name: 'Deployment'

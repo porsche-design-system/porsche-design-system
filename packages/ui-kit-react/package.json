@@ -5,8 +5,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "cd projects/ui-kit-wrapper && yarn build",
-    "test": "yarn test:vrt",
+    "test": "yarn test:vrt && yarn test:cbt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 180000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "test:cbt": "echo 'cross browser testing coming soon...'",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
