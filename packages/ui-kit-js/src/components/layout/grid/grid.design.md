@@ -19,13 +19,13 @@ screen widths larger than 1760 px.
 
 ### Overview 
 
-|   | Viewport range | Columns | Gutter | Margin |
+| Viewport name | Viewport range | Columns | Gutter | Margin |
 | -------- | -------- | -------- | -------- | -------- |
-| **Mobile** | 320-759 px | 12 columns (Design only: 6 columns) |  16 px | 7% |
-| **Tablet** | 760-1023 px | 12 columns |  24 px | 7% |
-|  | 1024-1299 px | 12 columns | 36 px| 7% |
-| **Desktop** | 1300-1759 px  |  12 columns | 36 px | 7% | 
-|  | 1760 px or larger |  12 columns | 36 px | 10% | 
+| **XS** | 320-759 px | 12 columns (Design only: 6 columns) |  16 px | 7% |
+| **S** | 760-999 px | 12 columns |  24 px | 7% |
+| **M** | 1000-1299 px | 12 columns | 36 px| 7% |
+| **L** | 1300-1759 px  |  12 columns | 36 px | 7% | 
+| **XL** | 1760 px or larger |  12 columns | 36 px | 10% | 
 
 ![Porsche UI grid architecture](./assets/grid-viewports.png)
 
