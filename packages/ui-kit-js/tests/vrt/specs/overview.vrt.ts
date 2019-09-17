@@ -1,15 +1,12 @@
 import 'jasmine';
 import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
-import { VisualRegressionTesterBs } from '@porsche-ui/visual-regression-tester-bs';
-import { getVisualRegressionOverviewTester, getVisualRegressionTesterBs } from '../helpers/setup';
+import { getVisualRegressionOverviewTester } from '../helpers/setup';
 
 describe('Components Overview', () => {
   let vrt: VisualRegressionTester;
-  let vrtBs: VisualRegressionTesterBs;
 
   beforeAll(async () => {
     vrt = await getVisualRegressionOverviewTester();
-    vrtBs = await getVisualRegressionTesterBs();
   });
 
   it('should have no visual regression', async () => {
@@ -21,7 +18,4 @@ describe('Components Overview', () => {
     ).toBeFalsy();
   });
 
-  it('should have no visual regression in IE11', async () => {
-    expect(await vrtBs.test('/index.html', 'overview')).toBeFalsy();
-  });
 });

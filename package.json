@@ -48,6 +48,11 @@
     "test:vrt:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular test:vrt",
     "test:vrt:ui-kit-react": "yarn --cwd ./packages/ui-kit-react test:vrt",
     "test:vrt:design-system": "yarn --cwd ./packages/design-system test:vrt",
+    "test:cbt": "concurrently --kill-others-on-fail -n \"ui-kit-js,ui-kit-angular,ui-kit-react,design-system\" \"yarn test:cbt:ui-kit-js\" \"yarn test:cbt:ui-kit-angular\" \"yarn test:cbt:ui-kit-react\" \"yarn test:cbt:design-system\"",
+    "test:cbt:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:cbt",
+    "test:cbt:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular test:cbt",
+    "test:cbt:ui-kit-react": "yarn --cwd ./packages/ui-kit-react test:cbt",
+    "test:cbt:design-system": "yarn --cwd ./packages/design-system test:cbt",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./packages/ui-kit-js clean && yarn --cwd ./packages/ui-kit-scss-utils clean && yarn --cwd ./packages/design-system clean && yarn --cwd ./packages/ui-kit-angular clean && yarn --cwd ./packages/ui-kit-react clean && yarn --cwd ./packages/utils clean"
   }
 }
