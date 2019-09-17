@@ -118,6 +118,12 @@ export const config: DesignSystemWebConfig = {
         props: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list/text-list.props.md`)
       }
     },
+    Forms: {
+      'Text Field': {
+        // @ts-ignore
+        design: () => import(`@/../../ui-kit-js/src/components/form/text-field/text-field.design.md`)
+      }
+    },
     Feedback: {
       Spinner: {
         // @ts-ignore
