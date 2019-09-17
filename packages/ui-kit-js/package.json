@@ -61,7 +61,7 @@
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
-    "@porsche-ui/visual-regression-tester-bs": "^1.0.0-alpha.3",
+    "@porsche-ui/visual-regression-tester-bs": "^1.0.0-alpha.4",
     "@stencil/core": "1.4.0",
     "@stencil/postcss": "^1.0.1",
     "@stencil/sass": "^1.0.1",
