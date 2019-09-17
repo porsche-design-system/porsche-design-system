@@ -15,8 +15,6 @@ jobs:
         env:
           IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-install
       - name: 'Build'
@@ -45,6 +43,9 @@ jobs:
           args: --ui-kit-js
       - name: 'CBT Test'
         uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-js
@@ -71,6 +72,9 @@ jobs:
           args: --ui-kit-angular
       - name: 'CBT Test'
         uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-angular
@@ -97,6 +101,9 @@ jobs:
           args: --ui-kit-react
       - name: 'CBT Test'
         uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-react
@@ -138,6 +145,9 @@ jobs:
           args: --design-system
       - name: 'CBT Test'
         uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-test-cbt
           args: --design-system
