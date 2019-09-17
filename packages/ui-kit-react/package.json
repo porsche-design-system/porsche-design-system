@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf 'projects/ui-kit-wrapper/dist' && mkdir 'projects/ui-kit-wrapper/dist' && tsc -p 'projects/ui-kit-wrapper/tsconfig.lib.json'",
+    "build": "cd projects/ui-kit-wrapper && yarn build",
     "test": "yarn test:vrt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 180000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@types/jest": "24.0.18",
-    "@types/node": "12.7.2",
+    "@types/node": "12.7.5",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "jasmine": "^3.4.0",
@@ -23,11 +23,7 @@
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
     "react-test-renderer": "^16.9.0",
-    "typescript": "3.5.3"
-  },
-  "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "typescript": "3.6.3"
   },
   "eslintConfig": {
     "extends": "react-app"
