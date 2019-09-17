@@ -38,6 +38,12 @@ const router = new Router({
       component: () => import('./views/Page.vue')
     },
     {
+      path: '/app/components/:category/:story',
+      name: 'story-app',
+      meta: { area: 'app' },
+      component: () => import('./views/StoryApp.vue')
+    },
+    {
       path: '/app/*',
       redirect: { name: '404-app' }
     },
@@ -70,7 +76,7 @@ const router = new Router({
       path: '/web/components/:category/:story',
       name: 'story-web',
       meta: { area: 'web' },
-      component: () => import('./views/Story.vue')
+      component: () => import('./views/StoryWeb.vue')
     },
     {
       path: '/web/*',

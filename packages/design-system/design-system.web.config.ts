@@ -1,9 +1,9 @@
 // @ts-ignore
-import {Pages, Stories} from '@/interface';
+import {Pages, StoriesWeb} from '@/interface';
 
 export interface DesignSystemWebConfig {
   pages: Pages;
-  stories: Stories;
+  stories: StoriesWeb;
 }
 
 export const config: DesignSystemWebConfig = {
