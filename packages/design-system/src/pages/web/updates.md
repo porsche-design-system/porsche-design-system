@@ -2,18 +2,12 @@
 
 ## Design
 
+### [0.0.6] (2019-09-10)
 
-### [1.0.0-alpha.2] (2019-09-10)
-
-#### Changes
-* Renaming of layer style group “external brand colors”
+#### What's improved?
+* Renaming of layer style group "external brand colors"
 * Structural clean-up
 
-
-### [1.0.0-alpha.1] (2019-08-21)
-
-#### Features
-* Initial release
 
 --- 
 
