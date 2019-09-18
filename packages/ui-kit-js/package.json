@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@ionic-enterprise/angular-output-plugin": "^0.0.5",
-    "@ionic-enterprise/react-output-plugin": "^0.0.7",
+    "@ionic-enterprise/react-output-plugin": "^0.0.8",
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
