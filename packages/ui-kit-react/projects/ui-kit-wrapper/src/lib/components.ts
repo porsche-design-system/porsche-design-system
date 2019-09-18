@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* auto-generated react proxies */
-import { createReactComponent } from '@ionic-enterprise/react-component-lib';
+import { createReactComponent } from './react-component-lib';
 
 import { JSX } from '@porsche-ui/ui-kit-js';
 

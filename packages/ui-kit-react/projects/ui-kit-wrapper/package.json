@@ -11,8 +11,7 @@
     "./dist"
   ],
   "scripts": {
-    "build": "rm -rf './dist' && tsc -p './tsconfig.lib.json' && yarn rollup",
-    "rollup": "rollup -c"
+    "build": "rm -rf './dist' && tsc -p './tsconfig.lib.json'"
   },
   "dependencies": {
     "@porsche-ui/ui-kit-js": "1.0.0-alpha.3",
@@ -21,10 +20,5 @@
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
-  },
-  "devDependencies": {
-    "@ionic-enterprise/react-component-lib": "^0.0.1",
-    "rollup": "^1.21.3",
-    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }
