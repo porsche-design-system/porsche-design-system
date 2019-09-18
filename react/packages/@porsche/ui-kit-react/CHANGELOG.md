@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.14.5] - 2019-09-18
+
+-   Fixed <Icon> color mapping for grey colors. They were backwards, "grey-lighter" was the darkest grey and "grey-darker" was the lightest grey. This now behaves as expected.
+
 ## [0.14.3] - 2019-09-16
 
 ### Changed

@@ -82,15 +82,15 @@
 
     @include fillAndHoverColor("white", $text-color-white);
 
-    @include fillAndHoverColor("grey-darker", $text-color-grey-1);
+    @include fillAndHoverColor("grey-darker", $text-color-grey-9);
 
-    @include fillAndHoverColor("grey-dark", $text-color-grey-3);
+    @include fillAndHoverColor("grey-dark", $text-color-grey-7);
 
     @include fillAndHoverColor("grey", $text-color-grey-5);
 
-    @include fillAndHoverColor("grey-light", $text-color-grey-7);
+    @include fillAndHoverColor("grey-light", $text-color-grey-3);
 
-    @include fillAndHoverColor("grey-lighter", $text-color-grey-9);
+    @include fillAndHoverColor("grey-lighter", $text-color-grey-1);
 
     @include fillAndHoverColor("red-1", $text-color-red-1);
 
