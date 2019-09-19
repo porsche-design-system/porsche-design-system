@@ -119,6 +119,9 @@ function createRange(start: number, end: number): number[] {
 }
 
 export function createPaginationModel(options: PaginationModelOptions): PaginationModelItem[] {
+  // exception tests
+  if (options == null) { throw new Error('createPaginationModel(): options object should be a passed'); }
+
   const { pageTotal, activePage, pageRange } = options;
 
   const boundaryPagesRange = 1;
@@ -195,6 +198,13 @@ export const getCurrentActivePage = (activePage: number, totalPages: number) => 
 };
 
 export const getTotalPages = (totalItemsCount: number, itemsPerPage: number) => {
+  // exception tests
+  if (!totalItemsCount || !itemsPerPage) { throw new Error('getTotalPages(): totalItemsCount and itemsPerPage props must be provided'); }
+  if (isNaN(totalItemsCount)) { throw new Error('getTotalPages(): totalItemsCount should be a number'); }
+  if (isNaN(itemsPerPage)) { throw new Error('getTotalPages(): itemsPerPage should be a number'); }
+  if (totalItemsCount < 0) { throw new Error('getTotalPages(): totalItemsCount shouldn\'t be a negative number'); }
+  if (itemsPerPage < 0) { throw new Error('getTotalPages(): itemsPerPage shouldn\'t be a negative number'); }
+
   if (totalItemsCount < 1) {
     totalItemsCount = 1;
   }
