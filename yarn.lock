@@ -1154,10 +1154,10 @@
   resolved "https://registry.ionicframework.com/@ionic-enterprise%2fangular-output-plugin/-/angular-output-plugin-0.0.5.tgz#ca5d2c26a21aa778151be4ca9df69cbcfa43f0d1"
   integrity sha512-op4u6sgy2PCc1xkuzvEMZthURsFSxZJSJlHqAVCYAL5hYbAKMAfT8Lxtj6B/NUyQSOqxiUJ2F5il1dN0QQVmgg==
 
-"@ionic-enterprise/react-output-plugin@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-output-plugin/-/react-output-plugin-0.0.8.tgz#cd808a49228c9ac16a14f5114d4cc8a2b5a71d41"
-  integrity sha512-vfqQKcAxxhPkcBbI/CDlcuNOmd6UPN1Zjr7N1l5y4Nj0RQCm0z+33uRM+/l5rW/DOEpS7gEPUZNizlbcF8x3yA==
+"@ionic-enterprise/react-output-plugin@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-output-plugin/-/react-output-plugin-0.0.9.tgz#9e049d804e44ce4e567e9d79f86bbf0d51d96280"
+  integrity sha512-51ZxZ6+5MA38Kc/MhMsh4QmwxtHSYU5Y8JqzMwFn0smbgxt0tzSl1zsv2bQbdHYq6/Y/hbRtlOMOIzJUGg2YKg==
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
