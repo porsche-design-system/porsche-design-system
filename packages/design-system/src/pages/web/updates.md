@@ -2,11 +2,14 @@
 
 ## Design
 
-### [0.0.6] (2019-09-10)
+### [0.0.7] (2019-09-19)
 
 #### What's improved?
 * Renaming of layer style group "external brand colors"
 * Structural clean-up
+
+### [0.0.6] (2019-08-22)
+* Initial release
 
 
 --- 
