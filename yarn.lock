@@ -1590,6 +1590,13 @@
   dependencies:
     "@porsche-ui/ui-kit-js" "1.0.0-alpha.3"
 
+"@porsche-ui/ui-kit-js@1.0.0-alpha.3":
+  version "1.0.0-alpha.3"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-js/-/@porsche-ui/ui-kit-js-1.0.0-alpha.3.tgz#3494f1b79b859118d83c40aba578e57d1df21725"
+  integrity sha1-NJTxt5uFkRjYPECrpXjlfR3yFyU=
+  dependencies:
+    throttle-debounce "^2.1.0"
+
 "@porsche-ui/visual-regression-tester@^1.0.0":
   version "1.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/visual-regression-tester/-/@porsche-ui/visual-regression-tester-1.0.0.tgz#f74d3172ea60ca90715dacaf39876ea684dbed56"

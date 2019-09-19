@@ -1,10 +1,9 @@
 {
   "name": "@porsche-ui/ui-kit-react",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN https://ui.porsche.com",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
   "files": [
@@ -14,7 +13,7 @@
     "build": "rm -rf './dist' && tsc -p './tsconfig.lib.json'"
   },
   "dependencies": {
-    "@porsche-ui/ui-kit-js": "1.0.0-alpha.3",
+    "@porsche-ui/ui-kit-js": "1.0.0-alpha.4",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
