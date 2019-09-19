@@ -82,7 +82,7 @@ const createPreviousPageLink = (options: PaginationModelOptions): PaginationMode
     type: itemTypes.PREVIOUS_PAGE_LINK,
     key: itemKeys.PREVIOUS_PAGE_LINK,
     value: Math.max(1, activePage - 1),
-    isActive: activePage === 1
+    isActive: activePage > 1
   };
 };
 
@@ -93,7 +93,7 @@ const createNextPageLink = (options: PaginationModelOptions): PaginationModelIte
     type: itemTypes.NEXT_PAGE_LINK,
     key: itemKeys.NEXT_PAGE_LINK,
     value: Math.min(pageTotal, activePage + 1),
-    isActive: activePage === pageTotal
+    isActive: activePage < pageTotal
   };
 };
 
@@ -184,6 +184,9 @@ export function createPaginationModel(options: PaginationModelOptions): Paginati
 }
 
 export const getCurrentActivePage = (activePage: number, totalPages: number) => {
+  // exception tests
+  if (activePage === undefined || totalPages === undefined) { throw new Error('getCurrentActivePage(): activePage and totalPages props must be provided'); }
+
   // Obviously we can't be on a negative or 0 page.
   if (activePage < 1) {
     activePage = 1;
@@ -198,12 +201,8 @@ export const getCurrentActivePage = (activePage: number, totalPages: number) => 
 };
 
 export const getTotalPages = (totalItemsCount: number, itemsPerPage: number) => {
-  // exception tests
-  if (!totalItemsCount || !itemsPerPage) { throw new Error('getTotalPages(): totalItemsCount and itemsPerPage props must be provided'); }
-  if (isNaN(totalItemsCount)) { throw new Error('getTotalPages(): totalItemsCount should be a number'); }
-  if (isNaN(itemsPerPage)) { throw new Error('getTotalPages(): itemsPerPage should be a number'); }
-  if (totalItemsCount < 0) { throw new Error('getTotalPages(): totalItemsCount shouldn\'t be a negative number'); }
-  if (itemsPerPage < 0) { throw new Error('getTotalPages(): itemsPerPage shouldn\'t be a negative number'); }
+  // exception test
+  if (totalItemsCount === undefined || itemsPerPage === undefined) { throw new Error('getTotalPages(): totalItemsCount and itemsPerPage props must be provided'); }
 
   if (totalItemsCount < 1) {
     totalItemsCount = 1;
