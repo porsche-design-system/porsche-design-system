@@ -2,6 +2,12 @@
 
 ## NOT RELEASED YET
 
+## [1.0.0-alpha.5] (2019-09-20)
+
+### Bugfix
+* UI Kit Angular build
+
+
 ## [1.0.0-alpha.4] (2019-09-19)
 
 ### Change
