@@ -1,8 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Pagination } from '../../src/components/navigation/pagination/pagination';
 import * as PaginationHelper from '../../src/components/navigation/pagination/pagination-helper';
+import { formatPaginationModelToASCII } from './pagination-test-helper';
 
-// when passing parameters with incorrect data type cast functions to general Function to not have TypeScript errors
 const createPaginationModel = PaginationHelper.createPaginationModel as Function;
 const getTotalPages = PaginationHelper.getTotalPages as Function;
 const getCurrentActivePage = PaginationHelper.getCurrentActivePage as Function;
@@ -30,7 +30,7 @@ describe('Component <p-pagination>', () => {
     expect(disabledPrevLink).toHaveClass('p-pagination__prev--disabled');
   });
 
-  it('should change page items', async () => {
+  it('should emit event on click', async () => {
     const page = await newSpecPage({
       components: [Pagination],
       html: `<p-pagination total-items-count="50" items-per-page="10" active-page="1"></p-pagination>`,
@@ -56,6 +56,83 @@ describe('Pagination Functions:', () => {
     it('should throw an exception if options aren\'t passed', () => {
       expect(() => createPaginationModel())
         .toThrowError('createPaginationModel(): options object should be a passed');
+    });
+
+    describe('when there is 1 page', () => {
+      it('should return correct model for 1 of 1', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 1, pageTotal: 1, pageRange: 1})))
+          .toEqual(['1(<)', '*1', '1(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 1 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 1, pageTotal: 10, pageRange: 1})))
+          .toEqual(['1(<)', '*1', '2', '3', '4', '5', '6(...>)', '10', '*2(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 2 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 2, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*1(<)', '1', '*2', '3', '4', '5', '6(...>)', '10', '*3(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 3 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 3, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*2(<)', '1', '2', '*3', '4', '5', '6(...>)', '10', '*4(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 4 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 4, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*3(<)', '1', '2', '3', '*4', '5', '6(...>)', '10', '*5(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 5 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 5, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*4(<)', '1', '3(<...)', '4', '*5', '6', '7(...>)', '10', '*6(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 6 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 6, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*5(<)', '1', '4(<...)', '5', '*6', '7', '8(...>)', '10', '*7(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 7 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 7, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*6(<)', '1', '5(<...)', '6', '*7', '8', '9', '10', '*8(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 8 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 8, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*7(<)', '1', '5(<...)', '6', '7', '*8', '9', '10', '*9(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 9 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 9, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*8(<)', '1', '5(<...)', '6', '7', '8', '*9', '10', '*10(>)']);
+      });
+    });
+
+    describe('when there are 10 pages', () => {
+      it('should return correct model for 10 of 10', () => {
+        expect(formatPaginationModelToASCII(createPaginationModel({activePage: 10, pageTotal: 10, pageRange: 1})))
+          .toEqual(['*9(<)', '1', '5(<...)', '6', '7', '8', '9', '*10', '10(>)']);
+      });
     });
   });
 
@@ -118,15 +195,5 @@ describe('Pagination Functions:', () => {
         .toBe(10);
     });
   });
-
-
-  // describe('getPaginationModel', () => {
-  //   describe('when there is 1 page', () => {
-  //     it('should return correct model for 1 of 1', () => {
-  //       expect(createPaginationModel({ currentPage: 1, totalPages: 1 }))
-  //         .toEqualPagination(['*1(<<)', '*1(<)', '*1', '*1(>)', '*1(>>)']);
-  //     });
-  //   });
-  // });
 
 });
