@@ -120,6 +120,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Either execute `yarn version patch` for a patch release or `yarn version minor` for a minor release
 1. Update UI Kit JS dependency to corresponding version number (must always be pinned)
 1. Update `src/lib/ui-kit-wrapper.module.ts` if necessary
+1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Switch to __project root directory__
 1. Run `./docker.sh run-build --ui-kit-angular`
 
@@ -127,6 +128,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __packages/ui-kit-react/projects/ui-kit-wrapper directory__
 1. Either execute `yarn version patch` for a patch release or `yarn version minor` for a minor release
 1. Update UI Kit JS dependency to corresponding version number (must always be pinned)
+1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Switch to __project root directory__
 1. Run `./docker.sh run-build --ui-kit-react`
 
@@ -150,9 +152,9 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Publish
 1. Switch to __packages/ui-kit-js directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit JS artifact to the Artifactory repository.
-1. Switch to __packages/ui-kit-angular/dist/ui-kit-wrapper directory__
+1. Switch to __packages/ui-kit-angular/dist/ui-kit-wrapper directory__ (make sure to release package within **dist** folder)
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit Angular artifact to the Artifactory repository.
-1. Switch to __packages/ui-kit-react/projects/ui-kit-wrapper directory__
+1. Switch to __packages/ui-kit-react/projects/ui-kit-wrapper directory__ (make sure to release package within **projects** folder)
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the UI Kit React artifact to the Artifactory repository.
 
 ### Communicate
