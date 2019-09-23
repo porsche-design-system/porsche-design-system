@@ -2,9 +2,9 @@ require('dotenv').config();
 import 'jasmine';
 import { CrossBrowserTester, CrossBrowserTestOptions } from '@porsche-ui/cross-browser-tester';
 
-let visualRegressionTesterBs: CrossBrowserTester;
+let crossBrowserTester: CrossBrowserTester;
 
-const optionsBs: CrossBrowserTestOptions = {
+const options: CrossBrowserTestOptions = {
   username: process.env.BROWSERSTACK_USER_NAME,
   accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
   browserList: [
@@ -17,17 +17,16 @@ const optionsBs: CrossBrowserTestOptions = {
   fixturesDir: 'tests/cbt/fixtures',
   resultsDir: 'tests/cbt/results',
   tolerance: 0,
-  baseUrl: 'http://localhost:61422/',
+  baseUrl: 'http://localhost:61422',
   timeout: 10
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
-
 export async function getCrossBrowserTester(): Promise<CrossBrowserTester> {
-  if (!visualRegressionTesterBs) {
-    visualRegressionTesterBs = new CrossBrowserTester(optionsBs);
+  if (!crossBrowserTester) {
+    crossBrowserTester = new CrossBrowserTester(options);
   }
 
-  return visualRegressionTesterBs;
+  return crossBrowserTester;
 }

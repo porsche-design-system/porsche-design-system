@@ -21,6 +21,16 @@ hr {
 //  margin-top: $p-spacing-16;
 //}
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  body::before {
+    content: 'Internet Explorer 10+';
+    display: block;
+    padding: .25em .5em;
+    background: black;
+    color: white;
+  }
+}
+
 .playground {
   padding: $p-spacing-16;
 
