@@ -1,13 +1,13 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../utils/prefix';
+import { prefix } from '../../../utils';
 
 @Component({
   tag: 'p-spinner',
   styleUrl: 'spinner.scss',
   shadow: true
 })
-export class Loader {
+export class Spinner {
   /** Predefined spinner sizes. */
   @Prop() public size?: 'x-small' | 'small' | 'medium' | 'large' = 'small';
 
