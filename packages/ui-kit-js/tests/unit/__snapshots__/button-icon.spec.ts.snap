@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <p-button-icon> should render correctly in default mode with shadow dom 1`] = `
+<p-button-icon>
+  <mock:shadow-root>
+    <button class="p-button-icon" type="button">
+      <p-icon class="p-button-icon__icon" size="medium" source="plus"></p-icon>
+    </button>
+  </mock:shadow-root>
+</p-button-icon>
+`;

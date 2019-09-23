@@ -4,13 +4,19 @@ export interface Pages {
   };
 }
 
-export interface Stories {
+export interface StoriesWeb {
   [category: string]: {
     [story: string]: {
       design?: any | any[];
       code?: any | any[];
       props?: any | any[];
     };
+  };
+}
+
+export interface StoriesApp {
+  [category: string]: {
+    [story: string]: any | any[];
   };
 }
 

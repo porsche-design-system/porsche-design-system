@@ -2,22 +2,32 @@
 
 ## Design
 
+### [0.0.7] (2019-09-19)
 
-### [1.0.0-alpha.2] (2019-09-10)
-
-#### Changes
-* Renaming of layer style group “external brand colors”
+#### What's improved?
+* Renaming of layer style group "external brand colors"
 * Structural clean-up
 
 
-### [1.0.0-alpha.1] (2019-08-21)
-
-#### Features
+### [0.0.6] (2019-08-22)
 * Initial release
+
 
 --- 
 
 ## Code UI Kit
+
+### [1.0.0-alpha.5] (2019-09-20)
+
+#### Bugfix
+* UI Kit Angular build
+
+
+### [1.0.0-alpha.4] (2019-09-19)
+
+#### Change
+* bugfix: updated react-output-plugin to fix typescript issue
+* Add target attribute to `button-regular` and `button-icon` component
 
 
 ### [1.0.0-alpha.3] (2019-09-09)
