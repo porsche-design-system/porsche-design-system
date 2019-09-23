@@ -8,7 +8,7 @@
     "build": "ng build ui-kit-wrapper && cp -r ./projects/ui-kit-wrapper/CHANGELOG.md ./dist/ui-kit-wrapper",
     "test": "yarn test:vrt && yarn test:cbt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:4200 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "test:cbt": "echo 'cross browser testing coming soon...'",
+    "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:4200 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist' && rm -rf 'tmp' && rm -rf 'out-tsc' && rm -rf 'bazel-out'"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "@angular/cli": "~8.2.2",
     "@angular/compiler-cli": "~8.2.0",
     "@angular/language-service": "~8.2.0",
+    "@porsche-ui/cross-browser-tester": "^1.0.0",
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.1",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",

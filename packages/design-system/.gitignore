@@ -5,6 +5,7 @@ node_modules
 /tests/e2e/videos/
 /tests/e2e/screenshots/
 /tests/vrt/results
+/tests/cbt/results
 
 # local env files
 .env.local
