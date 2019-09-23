@@ -1,6 +1,6 @@
 import { JSX, Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../utils/prefix';
+import { prefix } from '../../../utils';
 import { Components } from '../../../index';
 
 @Component({
@@ -16,10 +16,10 @@ export class TextLink {
   @Prop() public target?: 'self' | 'blank' | 'parent' | 'top' = 'self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
-  @Prop() public download?: string = '';
+  @Prop() public download?: string = undefined;
 
   /** Specifies the relationship of the target object to the link object. */
-  @Prop() public rel?: string = '';
+  @Prop() public rel?: string = undefined;
 
   /** The style of the text. */
   @Prop() public variant?: Components.PText['variant'] = 'copy';
