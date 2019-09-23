@@ -1,6 +1,10 @@
 # Porsche UI Kit JS
 
 ## NOT RELEASED YET
+### Bugfix
+* Removed default rendering of download and rel attribute in `p-text-link` component
+
+
 
 ## [1.0.0-alpha.5] (2019-09-20)
 
