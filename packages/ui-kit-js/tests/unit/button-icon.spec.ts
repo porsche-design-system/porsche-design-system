@@ -33,7 +33,7 @@ describe('Component <p-button-icon>', () => {
       html: `<p-button-icon type="submit"></p-button-icon>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('[type="submit"]')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('type','submit');
   });
 
   it('should render with an aria label text', async () => {
@@ -42,7 +42,7 @@ describe('Component <p-button-icon>', () => {
       html: `<p-button-icon label="Text string"></p-button-icon>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('[aria-label="Text string"]')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('aria-label','Text string');
   });
 
   it('should not render with target of blank if in button mode', async () => {
@@ -60,7 +60,7 @@ describe('Component <p-button-icon>', () => {
       html: `<p-button-icon href="https://ui.porsche.com" target="blank"></p-button-icon>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('[target="_blank"]')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target','_blank');
   });
 
   it('has a disabled prop in button mode', async () => {
@@ -84,7 +84,7 @@ describe('Component <p-button-icon>', () => {
       html: `<p-button-icon href="https://ui.porsche.com" disabled></p-button-icon>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('[aria-disabled="true"]')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('aria-disabled','true');
   });
 
   it('should emit on click', async() => {
