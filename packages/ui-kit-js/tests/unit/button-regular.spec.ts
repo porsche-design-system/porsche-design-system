@@ -33,7 +33,7 @@ describe('Component <p-button-regular>', () => {
       html: `<p-button-regular type="submit">Button regular</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('[type="submit"]')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('type','submit');
   });
 
   it('should not render with target of blank if in button mode', async () => {
@@ -51,7 +51,7 @@ describe('Component <p-button-regular>', () => {
       html: `<p-button-regular href="https://ui.porsche.com" target="blank">Button regular</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('[target="_blank"]')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target','_blank');
   });
 
   it('has a disabled attribute in button mode', async () => {
@@ -75,7 +75,7 @@ describe('Component <p-button-regular>', () => {
       html: `<p-button-regular href="https://ui.porsche.com" disabled>Button regular</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('[aria-disabled="true"]')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('aria-disabled','true');
   });
 
   it('should emit on click', async() => {
