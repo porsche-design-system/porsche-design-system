@@ -3,6 +3,9 @@
 
 # Porsche UI Kit
 
+## Build status
+[![Actions Status](https://github.com/porscheui/porsche-ui-kit/workflows/Porsche%20UI%20Kit/badge.svg)](https://github.com/porscheui/porsche-ui-kit/actions)
+
 ## Setup
 
 ### Requirements
