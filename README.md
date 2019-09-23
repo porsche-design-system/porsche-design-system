@@ -53,7 +53,7 @@
 
 ### Cross Browser Tests
 * Switch to __project root directory__
-* Run `./docker.sh run-test-cbt`, `./docker.sh run-test-cbt --ui-kit-js`, `./docker.sh run-test-cbt --ui-kit-angular`, `./docker.sh run-test-cbt --ui-kit-react` or `./docker.sh run-test-cbt --design-system`
+* Run `./docker.sh run-test-cbt`, `./docker.sh run-test-cbt --ui-kit-js`, `./docker.sh run-test-cbt --ui-kit-angular` or `./docker.sh run-test-cbt --ui-kit-react`
 
 #### What to do when vrt or cbt tests are failing
 * Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/{vrt/cbt}/results`. Here you can find the belonging `diff` and `regression` images.
