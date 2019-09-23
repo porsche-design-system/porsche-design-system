@@ -1,7 +1,6 @@
 import { JSX, Component, Prop, h, Event, EventEmitter, Element } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../utils/prefix';
-import { hasShadowDom } from '../../../utils/hasShadowDom';
+import { prefix, hasShadowDom } from '../../../utils';
 
 @Component({
   tag: 'p-button-regular',
