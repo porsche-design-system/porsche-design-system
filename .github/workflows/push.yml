@@ -143,14 +143,6 @@ jobs:
         with:
           entrypoint: run-test-vrt
           args: --design-system
-      - name: 'CBT Test'
-        uses: ./docker/node/
-        env:
-          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-        with:
-          entrypoint: run-test-cbt
-          args: --design-system
   deployment:
     name: 'Deployment'
     needs: [ui-kit-js, ui-kit-angular, ui-kit-react, design-system]
