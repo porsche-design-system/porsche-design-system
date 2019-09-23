@@ -37,7 +37,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 import { config as webConfig } from '@/../design-system.web.config';
 import { decodeUrl } from '@/services/utils';
 import Markdown from '@/components/Markdown.vue';
-import { Stories, Tabs } from '@/interface';
+import { StoriesWeb, Tabs } from '@/interface';
 
 @Component({
   components: {
@@ -63,7 +63,7 @@ export default class Story extends Vue {
     return this.$route.hash.substring(1).toLowerCase();
   }
 
-  private get config(): Stories {
+  private get config(): StoriesWeb {
     return webConfig.stories;
   }
 
