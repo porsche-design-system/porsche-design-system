@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <p-text-list> should render correctly in default mode without shadow dom 1`] = `
+<p-text-list class="p-text-list">
+  <!---->
+  <ul class="p-text-list p-text-list--color-porsche-black">
+    <p-text-list-item class="p-text-list__item" role="listitem">
+      <!---->
+      Text List Item
+    </p-text-list-item>
+  </ul>
+</p-text-list>
+`;
