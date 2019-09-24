@@ -44,7 +44,7 @@ Slight adjustments ensure that the Porsche marque is optimally perceived as equa
 - Within static digital applications, the Porsche Marque is always used without shadow. For moving images a separate Crest with shadow is available.
 - The Porsche Marque may only be used on a white background.
 
-### Don'ts
+## Don'ts
 
 - The Marque may not be altered in relation to its two elements or their size. The Marque may never be used without the Porsche lettering, as the sender identification cannot be guaranteed.
 - The Porsche Marque may not be used against coloured or busy backgrounds (e.g. shading). As the Porsche Crest has a high level of graphical complexity, excessive visual turmoil may be created.
