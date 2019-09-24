@@ -46,8 +46,9 @@ A text link in 20 px or larger can be accompanied by an additional copytext with
 
 Multiple text links can be combined to one text link group that must be stacked left-aligned in order to guarantee scanability and legibility. It is recommended to not group more than 6 text links in a row.
 
----
-
-## Best Practices
-![Example for Text Link](./assets/text-link.png)
-(1) Text link place on image. (2) Text links in the form of different icon-text-combination. (3) Text link groups.
+<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+<p-headline variant="headline-3" tag="h3">Examples</p-headline>
+<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+<img src="./assets/text-link.png"/>
+<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+</div>

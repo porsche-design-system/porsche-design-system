@@ -8,8 +8,7 @@ never leave the user uncertain about what's happening.
 Always remember that the user's wait time begins with initiating an action,
 clicking on a button for example. Whenever this causes delays of more than 1 second,
 you should bridge it with a good user feedback in order not to leave the user
-uncertain about what's happening, to avoid a high bounce rate and to obtain a positive
-impression of your website or application.
+uncertain about what's happening, to avoid a high bounce rate and to obtain a positive impression of your website or application.
 
 ## Spinner
 A looped indicator (spinner) is used to inform the user about an ongoing operation
@@ -102,10 +101,10 @@ where a loader makes sense and which loader type is best suited.
 * [Button Regular](#/web/components/action/button-regular)
 * [Button Icon](#/web/components/action/button-icon)
 
----
-
-## Best Practices
-![Example for Spinner](./assets/spinner-blocking.png)
-(1) Screen blocking. (2) Component blocking. (3) Initial blocking.
-
+<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+<p-headline variant="headline-3" tag="h3">Examples</p-headline>
+<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+<img src="./assets/spinner-blocking.png" />
+<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+</div>
 

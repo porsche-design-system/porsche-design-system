@@ -58,12 +58,13 @@ The whole button area is clickable. The clickability is indicated by a specific 
 
 All types of Button Icon are provided in disabled state. Whenever possible, disabled states should be avoided. They tend to disrupt the user and break the user flow. Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002).
 
----
+<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+<p-headline variant="headline-3" tag="h3">Examples</p-headline>
+<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+<img src="./assets/button-icon-position.png"/>
+<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+</div>
 
-## Best Practices
-![Example for position Button Icon](./assets/button-icon-position.png)
-(1) Usage of two Button icon only. (2) Example of usage Button Icon. In this case the user is fully aware of the button function.
 
-
-### Don'ts
+## Don'ts
 ![Example for position Button Icon](./assets/button-icon-dont-01.png)

@@ -9,7 +9,12 @@ A text list groups and organizes related content vertically in two hierarchical 
 The Test List comes in 2 different variants:
 
 - **Unordered List** to show content with equal value.
+
+    ![Example for unordered list](./assets/text-list-unordered.png)
+
 - **Ordered List** with an implicated sequence.
+
+    ![Example for ordered list](./assets/text-list-ordered.png)
 
 ---
 
@@ -21,9 +26,3 @@ It is recommended to stick to a homogeneous writing structure and style within o
 
 ## Capitalization
 Use sentence-style capitalization for each list item: capitalize only the first letter of the item.
-
----
-
-## Best Practices
-![Example for Text List](./assets/text-list.png)
-(1) Unordered List. (2) Ordered List.

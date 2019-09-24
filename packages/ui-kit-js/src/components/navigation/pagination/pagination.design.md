@@ -8,12 +8,22 @@ The Pagination is used whenever a content (text, images, videos) is split into s
 
 The Pagination comes in 4 different sizes:
 
-| ITEMS   | PURPOSE |
-|----|----|----|
-| **1 item** | 1-page content, recommended only for temporarily views such as search results. |
-| **2 items** | 2-page content. |
-| **5 items** | For content with 5 pages or more. |
-| **7 items** | Maximum Pagination size for content with 7 pages or more. Recommended to be used for device widths equal or larger than 480 px. |
+- **1 item**
+    1-page content, recommended only for temporarily views such as search results.
+    
+    ![Example for displaying 1 page](./assets/pagination-mobile-1items.png) 
+- **2 items**
+    2-page content. 
+    
+    ![Example for displaying 2 pages](./assets/pagination-mobile-2items.png) 
+- **5 items**
+    For content with 5 pages or more.
+    
+    ![Example for displaying 5 pages](./assets/pagination-mobile-5items.png) 
+- **7 items**
+    Maximum Pagination size for content with 7 pages or more. Recommended to be used for device widths equal or larger than 480 px.
+    
+    ![Example for displaying 7 pages](./assets/pagination-desktop-7items.png) 
 
 ---
 
@@ -58,8 +68,7 @@ The current page position is always marked by a red underline. By default, the c
 
 If there are at least 8 pages, an ellipsis ("...") is shown for a dedicated range of pages that are located inbetween the visible pagination numbers. The ellipsis is not clickable.
 
+![Example for displaying 8 pages or more](./assets/pagination-desktop-plus8.png)
+
 ---
 
-## Best Practices
-![Example for Spinner](./assets/pagination-position.png)
-(1) Mobil: Content with 5 pages. (2) Desktop: Content with 5 pages. (3) Desktop: Example of usage an non-clickable ellipsis ("..."). (4) Example of usage an non-clickable ellipsis ("..."). Maximum Pagination size (5 items) on mobile.
