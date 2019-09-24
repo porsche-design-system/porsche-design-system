@@ -14,7 +14,7 @@
     "@porsche-ui/ui-kit-react": "^1.0.0-alpha.4"
   },
   "devDependencies": {
-    "@porsche-ui/cross-browser-tester": "^1.0.0",
+    "@porsche-ui/cross-browser-tester": "^1.0.1",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.5",

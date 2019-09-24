@@ -1856,10 +1856,10 @@
     "@nodelib/fs.scandir" "2.1.2"
     fastq "^1.6.0"
 
-"@porsche-ui/cross-browser-tester@^1.0.0":
-  version "1.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/cross-browser-tester/-/@porsche-ui/cross-browser-tester-1.0.0.tgz#94060c1b59fcc1e70598ff5566c721f645701964"
-  integrity sha1-lAYMG1n8wecFmP9VZsch9kVwGWQ=
+"@porsche-ui/cross-browser-tester@^1.0.1":
+  version "1.0.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/cross-browser-tester/-/@porsche-ui/cross-browser-tester-1.0.1.tgz#a0457657e82098fa5c82fce60bc478d72b48a4e1"
+  integrity sha1-oEV2V+ggmPpcgvzmC8R41ytIpOE=
   dependencies:
     browserstack-local "^1.4.2"
     del "^5.1.0"
