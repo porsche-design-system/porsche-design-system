@@ -7,7 +7,8 @@ export function getName(name: string | undefined) {
     name = name
       .toLowerCase()
       .substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.'))
-      .replace(/\.|\_/g, '-');
+      .replace(/\.[^/.]+$/, '')
+      .replace(/[._]/g, '-');
   }
 
   // only allow alpha characters and dash
@@ -18,28 +19,6 @@ export function getName(name: string | undefined) {
   return name;
 }
 
-export function isUrl(str: string) {
-  return str.length > 0 && /(\.)/.test(str);
-}
+export const isUrl = (str: string) => str.length > 0 && /(\/)/.test(str);
 
-export function isValid(elm: HTMLElement) {
-  if (elm.nodeType === 1) {
-    if (elm.nodeName.toLowerCase() === 'script') {
-      return false;
-    }
-
-    for (let i = 0; i < elm.attributes.length; i++) {
-      const val = elm.attributes[i].value;
-      if (typeof val === 'string' && val.toLowerCase().indexOf('on') === 0) {
-        return false;
-      }
-    }
-
-    for (let i = 0; i < elm.childNodes.length; i++) {
-      if (!isValid(elm.childNodes[i] as any)) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
+export const isStr = (val: any): val is string => typeof val === 'string';
