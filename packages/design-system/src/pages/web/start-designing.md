@@ -29,7 +29,7 @@ The web library provides components that are to be used within web applications,
 
 Please be aware of the used library version (Sketch: Preferences → Libraries) and coordinate with your developer counterpart to align on the same version.
 
-### Porsche Next font**
+### Porsche Next font
 In order to design Porsche web applications and to use the Porsche UI Kit libraries properly you have to download and install the [Porsche Next font](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
 
 ### Recommended add-on Anima Plugin
