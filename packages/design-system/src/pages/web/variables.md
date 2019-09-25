@@ -6,10 +6,10 @@
 
 |                                               |                      	         |
 |-----------------------------------------------|--------------------------------|
-| <ColorBadge color="porsche-red"/>  	          | `$p-color-porsche-red`         |
-| <ColorBadge color="porsche-dark-red"/> 	      | `$p-color-porsche-dark-red`    |
+| <ColorBadge color="porsche-red"/>  	        | `$p-color-porsche-red`         |
+| <ColorBadge color="porsche-dark-red"/> 	    | `$p-color-porsche-dark-red`    |
 | <ColorBadge color="porsche-light"/> 	        | `$p-color-porsche-light`       |
-| <ColorBadge color="porsche-dark"/> 	          | `$p-color-porsche-dark`        |
+| <ColorBadge color="porsche-dark"/> 	        | `$p-color-porsche-dark`        |
 | <ColorBadge color="porsche-black"/> 	        | `$p-color-porsche-black`       |
 
 ### Surface colors
@@ -17,34 +17,47 @@
 |                                               |                      	         |
 |-----------------------------------------------|--------------------------------|
 | <ColorBadge color="surface-light"/>  	        | `$p-color-surface-light`       |
-| <ColorBadge color="surface-dark"/> 	          | `$p-color-surface-dark`        |
+| <ColorBadge color="surface-dark"/> 	        | `$p-color-surface-dark`        |
 
 ### Neutral colors
 
-|                                               |                      	         |
-|-----------------------------------------------|--------------------------------|
-| <ColorBadge color="neutral-grey-1"/>  	      | `$p-color-neutral-grey-1`      |
-| <ColorBadge color="neutral-grey-2"/>  	      | `$p-color-neutral-grey-2`      |
-| <ColorBadge color="neutral-grey-3"/>  	      | `$p-color-neutral-grey-3`      |
-| <ColorBadge color="neutral-grey-4"/>  	      | `$p-color-neutral-grey-4`      |
-| <ColorBadge color="neutral-grey-5"/>  	      | `$p-color-neutral-grey-5`      |
-| <ColorBadge color="neutral-grey-6"/>  	      | `$p-color-neutral-grey-6`      |
-| <ColorBadge color="neutral-grey-7"/>  	      | `$p-color-neutral-grey-7`      |
-| <ColorBadge color="neutral-grey-8"/>  	      | `$p-color-neutral-grey-8`      |
+|                                               |                      	                                        |
+|-----------------------------------------------|---------------------------------------------------------------|
+| <ColorBadge color="neutral-grey-1"/>  	    | `$p-color-neutral-grey-1` / `$p-color-grey-lightest`          |
+| <ColorBadge color="neutral-grey-2"/>  	    | `$p-color-neutral-grey-2` / `$p-color-grey-lighter`           |
+| <ColorBadge color="neutral-grey-3"/>  	    | `$p-color-neutral-grey-3` / `$p-color-grey-light`             |
+| <ColorBadge color="neutral-grey-4"/>  	    | `$p-color-neutral-grey-4` / `$p-color-grey-disabled-on-light` |
+| <ColorBadge color="neutral-grey-5"/>  	    | `$p-color-neutral-grey-5` / `$p-color-grey-disabled-on-dark`  |
+| <ColorBadge color="neutral-grey-6"/>  	    | `$p-color-neutral-grey-6` / `$p-color-grey-dark`              |
+| <ColorBadge color="neutral-grey-7"/>  	    | `$p-color-neutral-grey-7` / `$p-color-grey-darker`            |
+| <ColorBadge color="neutral-grey-8"/>  	    | `$p-color-neutral-grey-8` / `$p-color-grey-darkest`           |
+
 
 ### Status colors
 
 |                                               |                      	         |
 |-----------------------------------------------|--------------------------------|
-| <ColorBadge color="status-red"/>  	          | `$p-color-status-red`          |
-| <ColorBadge color="status-green"/> 	          | `$p-color-status-green`        |
+| <ColorBadge color="status-red"/>  	        | `$p-color-status-red`          |
+| <ColorBadge color="status-green"/> 	        | `$p-color-status-green`        |
 | <ColorBadge color="status-yellow"/> 	        | `$p-color-status-yellow`       |
 
 ### State colors
 
 |                                               |                      	         |
 |-----------------------------------------------|--------------------------------|
-| <ColorBadge color="state-focus"/>  	          | `$p-color-state-focus`         |
+| <ColorBadge color="state-focus"/>  	        | `$p-color-state-focus`         |
+
+### External brand colors
+
+|                                               |                      	         |
+|-----------------------------------------------|--------------------------------|
+| <ColorBadge color="external-facebook"/>  	    | `$p-color-external-facebook`   |
+| <ColorBadge color="external-google"/>  	    | `$p-color-external-google`     |
+| <ColorBadge color="external-instagram"/>  	| `$p-color-external-instagram`  |
+| <ColorBadge color="external-linkedin"/>  	    | `$p-color-external-linkedin`    |
+| <ColorBadge color="external-twitter"/>  	    | `$p-color-external-twitter`    |
+| <ColorBadge color="external-wechat"/>  	    | `$p-color-external-wechat`     |
+| <ColorBadge color="external-youtube"/>  	    | `$p-color-external-youtube`    |
 
 ---
 
