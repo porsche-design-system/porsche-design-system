@@ -33,6 +33,10 @@ export const config: DesignSystemAppConfig = {
     Basic: {
       // @ts-ignore
       Color: () => import(`@/stories/app/color.md`)
-    }
+    },
+    Action: {
+      // @ts-ignore
+      Button: () => import(`@/stories/app/button.md`)
+    },
   }
 };
