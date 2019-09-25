@@ -1,7 +1,13 @@
 # Porsche UI Kit SCSS Utils
 
 ## Not released yet
+
+
+## [1.0.0-alpha.3] (2019-09-25)
+
+### Features
 * added custom color variables for grey color tones.
+
 
 ## [1.0.0-alpha.2] (2019-09-09)
 
