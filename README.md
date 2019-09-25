@@ -51,10 +51,14 @@
 * Switch to __project root directory__
 * Run `./docker.sh run-test-vrt`, `./docker.sh run-test-vrt --ui-kit-js`, `./docker.sh run-test-vrt --ui-kit-angular`, `./docker.sh run-test-vrt --ui-kit-react` or `./docker.sh run-test-vrt --design-system`
 
-#### What to do when tests are failing
-* Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/results`. Here you can find the belonging `diff` and `regression` images.
+### Cross Browser Tests
+* Switch to __project root directory__
+* Run `./docker.sh run-test-cbt`, `./docker.sh run-test-cbt --ui-kit-js`, `./docker.sh run-test-cbt --ui-kit-angular` or `./docker.sh run-test-cbt --ui-kit-react`
+
+#### What to do when vrt or cbt tests are failing
+* Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/{vrt/cbt}/results`. Here you can find the belonging `diff` and `regression` images.
 * Check if you would like to accept the changes
-  * **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results` folder and delete the images in the `/vrt/results` directory afterwards manually.
+  * **If yes**: Replace the reference shot in the `/{vrt/cbt}/fixtures` folder with the belonging one in the `/{vrt/cbt}/results` folder and delete the images in the `/{vrt/cbt}/results` directory afterwards manually.
   * **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
 ### Deploy
@@ -79,6 +83,7 @@ _Enter_. Afterwards execute automated tests to make sure application still works
 * Run `./docker.sh run-test-unit`  
 * Run `./docker.sh run-test-e2e`  
 * Run `./docker.sh run-test-vrt`  
+* Run `./docker.sh run-test-cbt`  
 As final check start application locally and have a look at it.
 * Run `./docker.sh run-start`
 
@@ -143,9 +148,9 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-test-vrt --ui-kit-js`
 1. Run `./docker.sh run-test-vrt --ui-kit-angular`
 1. Run `./docker.sh run-test-vrt --ui-kit-react`
-1. Run `./docker.sh run-start --ui-kit-js` and validate with BrowserStack that IE11/Edge polyfill works
-1. Run `./docker.sh run-start --ui-kit-angular` and validate with BrowserStack that IE11/Edge polyfill works
-1. Run `./docker.sh run-start --ui-kit-react` and validate with BrowserStack that IE11/Edge polyfill works
+1. Run `./docker.sh run-test-cbt --ui-kit-js`
+1. Run `./docker.sh run-test-cbt --ui-kit-angular`
+1. Run `./docker.sh run-test-cbt --ui-kit-react`
 
 ### Commit
 1. Create a commit with following message structure `Release Porsche UI Kit (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`

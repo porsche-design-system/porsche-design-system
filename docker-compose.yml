@@ -20,6 +20,8 @@ services:
       - GITHUB_SHA
       - GITHUB_REF
       - SKIP_PREFLIGHT_CHECK
+      - BROWSERSTACK_ACCESS_KEY
+      - BROWSERSTACK_USER_NAME
     volumes:
       - ./:/opt/porsche-ui-kit-app:cached
       - home:/home/ui-kit
