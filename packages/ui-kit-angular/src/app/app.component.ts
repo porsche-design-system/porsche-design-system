@@ -4,6 +4,12 @@ import {Component} from '@angular/core';
   selector: 'app-root',
   template: `
     <div id="app">
+      <p-text>
+        <b id="human-readable-browser-name"></b>
+        <br>
+        <span id="system-log"></span>
+      </p-text>
+      <hr>
       <p-headline variant="headline-2" tag="h2">Basic</p-headline>
       <hr>
       <p-grid>

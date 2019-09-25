@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if
+  [[ "--ui-kit-js" == "${1}" ]] ||
+  [[ "--ui-kit-angular" == "${1}" ]] ||
+  [[ "--ui-kit-react" == "${1}" ]]
+then
+  yarn test:cbt:${1:2}
+else
+  yarn test:cbt
+fi

@@ -5,14 +5,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "cd projects/ui-kit-wrapper && yarn build",
-    "test": "yarn test:vrt",
+    "test": "yarn test:vrt && yarn test:cbt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 180000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"BROWSER=none yarn start\" \"wait-on -t 180000 http-get://localhost:3000 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
     "@porsche-ui/ui-kit-react": "^1.0.0-alpha.4"
   },
   "devDependencies": {
+    "@porsche-ui/cross-browser-tester": "^1.0.1",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.5",

@@ -1,5 +1,15 @@
 @import '~@porsche-ui/ui-kit-scss-utils/index';
 
+// disable animations globally because of Browserstack VRT testing
+:root {
+  --p-animation-duration__spinner: 0s;
+}
+
+// disable animations for IE11
+p-spinner > .p-spinner {
+  animation-duration: 0s !important;
+}
+
 #app {
   padding: $p-spacing-32;
 }
@@ -17,6 +27,35 @@ hr {
 //p-grid > p-grid-child[size='2']:first-child > p-headline[tag='h4'] {
 //  margin-top: $p-spacing-16;
 //}
+
+#human-readable-browser-name::before {
+  content: 'Unknown browser';
+  @include p-headline-5;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  #human-readable-browser-name::before {
+    content: 'Internet Explorer 10+';
+  }
+}
+
+@supports (-ms-ime-align:auto) {
+  #human-readable-browser-name::before {
+    content: 'Edge';
+  }
+}
+
+@-moz-document url-prefix() {
+  #human-readable-browser-name::before {
+    content: 'Firefox';
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+  #human-readable-browser-name::before {
+    content: 'Chrome 29+';
+  }
+}
 
 .playground {
   padding: $p-spacing-16;
