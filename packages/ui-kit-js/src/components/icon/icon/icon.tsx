@@ -97,23 +97,12 @@ export class Icon {
       this.size && prefix(`icon--${this.size}`)
     );
 
-    if (Build.isBrowser  && this.svgContent) {
-      // we've already loaded up this svg at one point
-      // and the svg content we've loaded and assigned checks out
-      // render this svg!!
-      return (
-        <Host role='img'>
-          <i class={iconClasses} innerHTML={this.svgContent} />
-        </Host>
-      );
-    }
-
-    // actively requesting the svg
-    // or it's an SSR render
-    // so let's just render an empty div for now
     return (
-      <Host role='img'>
-        <i class={iconClasses} />
+      <Host role='img' >{(
+        (Build.isBrowser && this.svgContent)
+          ? <i class={iconClasses} innerHTML={this.svgContent}/>
+          : <i class={iconClasses}/>
+      )}
       </Host>
     );
   }
