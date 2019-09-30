@@ -3,7 +3,7 @@ import { Spinner } from '../../src/components/feedback/spinner/spinner';
 
 describe('Component <p-spinner>', () => {
 
-  it('builds', () => {
+  it('should build', () => {
     expect(new Spinner()).toBeTruthy();
   });
 
@@ -18,4 +18,11 @@ describe('Component <p-spinner>', () => {
     expect(page.root).toMatchSnapshot();
   });
 
+  it('should render custom aria-label attribute', async () => {
+    const page = await newSpecPage({
+      components: [Spinner],
+      html: `<p-spinner ally-label="some ally label"></p-spinner>`,
+    });
+    expect(page.root.shadowRoot.querySelector('.p-spinner')).toEqualAttribute('aria-label', 'some ally label');
+  });
 });

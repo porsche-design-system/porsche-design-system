@@ -3,7 +3,7 @@ import { TextLink } from '../../src/components/action/text-link/text-link';
 
 describe('Component <p-text-link>', () => {
 
-  it('builds', () => {
+  it('should build', () => {
     expect(new TextLink()).toBeTruthy();
   });
 
@@ -13,8 +13,8 @@ describe('Component <p-text-link>', () => {
       html: `<p-text-link href="https://ui.porsche.com">Text Link</p-text-link>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.querySelector('.p-text-link')).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector('.p-text-link')).toBeTruthy();
+    expect(page.root.querySelector('a.p-text-link')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('a.p-text-link')).toBeTruthy();
     expect(page.root).toMatchSnapshot();
   });
 
@@ -23,7 +23,6 @@ describe('Component <p-text-link>', () => {
       components: [TextLink],
       html: `<p-text-link href="https://ui.porsche.com">Text Link</p-text-link>`,
     });
-    expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('href','https://ui.porsche.com');
   });
 
@@ -32,7 +31,6 @@ describe('Component <p-text-link>', () => {
       components: [TextLink],
       html: `<p-text-link href="https://ui.porsche.com" target="blank">Text Link</p-text-link>`,
     });
-    expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target','_blank');
   });
 
@@ -41,7 +39,6 @@ describe('Component <p-text-link>', () => {
       components: [TextLink],
       html: `<p-text-link href="https://ui.porsche.com" download="picture">Text Link</p-text-link>`,
     });
-    expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('download','picture');
   });
 
@@ -50,9 +47,6 @@ describe('Component <p-text-link>', () => {
       components: [TextLink],
       html: `<p-text-link tag="span">Text Link</p-text-link>`,
     });
-    expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('span')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('span.p-text-link')).toBeTruthy();
   });
-
-
 });

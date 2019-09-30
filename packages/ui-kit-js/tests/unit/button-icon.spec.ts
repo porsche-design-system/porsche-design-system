@@ -3,7 +3,7 @@ import { ButtonIcon } from '../../src/components/action/button-icon/button-icon'
 
 describe('Component <p-button-icon>', () => {
 
-  it('builds', () => {
+  it('should build', () => {
     expect(new ButtonIcon()).toBeTruthy();
   });
 
@@ -63,7 +63,7 @@ describe('Component <p-button-icon>', () => {
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target','_blank');
   });
 
-  it('has a disabled prop in button mode', async () => {
+  it('should have a disabled prop in button mode', async () => {
     const page = await newSpecPage({
       components: [ButtonIcon],
       html: `<div></div>`
@@ -78,7 +78,7 @@ describe('Component <p-button-icon>', () => {
     expect(page.rootInstance.disabled).toBe(true);
   });
 
-  it('has an aria-disabled attribute in link mode', async () => {
+  it('should have an aria-disabled attribute in link mode', async () => {
     const page = await newSpecPage({
       components: [ButtonIcon],
       html: `<p-button-icon href="https://ui.porsche.com" disabled></p-button-icon>`,

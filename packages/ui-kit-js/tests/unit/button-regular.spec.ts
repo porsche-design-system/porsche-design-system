@@ -3,7 +3,7 @@ import { ButtonRegular } from '../../src/components/action/button-regular/button
 
 describe('Component <p-button-regular>', () => {
 
-  it('builds', () => {
+  it('should build', () => {
     expect(new ButtonRegular()).toBeTruthy();
   });
 
@@ -54,7 +54,7 @@ describe('Component <p-button-regular>', () => {
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target','_blank');
   });
 
-  it('has a disabled attribute in button mode', async () => {
+  it('should have a disabled attribute in button mode', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
       html: `<div></div>`
@@ -69,7 +69,7 @@ describe('Component <p-button-regular>', () => {
     expect(page.rootInstance.disabled).toBe(true);
   });
 
-  it('has an aria-disabled attribute in link mode', async () => {
+  it('should have an aria-disabled attribute in link mode', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
       html: `<p-button-regular href="https://ui.porsche.com" disabled>Button regular</p-button-regular>`,
@@ -91,4 +91,3 @@ describe('Component <p-button-regular>', () => {
     expect(buttonSpy).toHaveBeenCalled();
   });
 });
-
