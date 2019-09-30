@@ -5,7 +5,7 @@ import { isValid } from '../../src/components/icon/icon/icon-validation';
 
 describe('Component <p-icon>', () => {
 
-  it('builds', () => {
+  it('should build', () => {
     expect(new Icon()).toBeTruthy();
   });
 
@@ -24,11 +24,11 @@ describe('Component <p-icon>', () => {
   it('should render custom aria-label attribute', async () => {
     const page = await newSpecPage({
       components: [Icon],
-      html: `<p-icon source="arrow-right-hair" aria-label="Custom ARIA label"></p-icon>`,
+      html: `<p-icon aria-label="some ally label"></p-icon>`,
     });
+    expect(page.root).toEqualAttribute('aria-label', 'some ally label');
   });
 });
-
 
 describe('getName', () => {
   let i: Icon;
@@ -59,7 +59,6 @@ describe('getName', () => {
   });
 });
 
-
 describe('isUrl', () => {
   it('should return true if url is valid', () => {
     expect(isUrl('https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/some_icon.svg')).toBe(true);
@@ -72,9 +71,8 @@ describe('isUrl', () => {
   });
 });
 
-
 describe('isValid', () => {
-  it('invalid onload attr', () => {
+  it('should be invalid onload attr', () => {
     const el = {
       nodeType: 1,
       nodeName: 'svg',
@@ -84,7 +82,7 @@ describe('isValid', () => {
     expect(isValid(el)).toBe(false);
   });
 
-  it('invalid onclick attr', () => {
+  it('should be invalid onclick attr', () => {
     const el = {
       nodeType: 1,
       nodeName: 'svg',
@@ -94,31 +92,31 @@ describe('isValid', () => {
     expect(isValid(el)).toBe(false);
   });
 
-  it('invalid child SCRIPT elm', () => {
+  it('should be invalid child SCRIPT elm', () => {
     const el = { nodeType: 1, nodeName: 'svg', attributes: [], childNodes: [
         { nodeType: 1, nodeName: 'SCRIPT', attributes: [], childNodes: [] }
       ] } as any;
     expect(isValid(el)).toBe(false);
   });
 
-  it('invalid script elm', () => {
+  it('should be invalid script elm', () => {
     const el = { nodeType: 1, nodeName: 'script', attributes: [], childNodes: [] } as any;
     expect(isValid(el)).toBe(false);
   });
 
-  it('is valid circle elm', () => {
+  it('should be is valid circle elm', () => {
     const el = { nodeType: 1, nodeName: 'circle', attributes: [], childNodes: [] } as any;
     expect(isValid(el)).toBe(true);
   });
 
-  it('is valid SVG elm', () => {
+  it('should be is valid SVG elm', () => {
     const el = { nodeType: 1, nodeName: 'SVG', attributes: [], childNodes: [
         { nodeType: 1, nodeName: 'line', attributes: [], childNodes: [] }
       ] } as any;
     expect(isValid(el)).toBe(true);
   });
 
-  it('is valid text node', () => {
+  it('should be is valid text node', () => {
     const el = { nodeType: 3, nodeName: '#text' } as any;
     expect(isValid(el)).toBe(true);
   });

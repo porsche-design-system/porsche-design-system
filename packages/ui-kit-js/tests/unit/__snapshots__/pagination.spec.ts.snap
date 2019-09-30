@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <p-pagination> should render correctly in default mode with shadow dom 1`] = `
+<p-pagination active-page="1" items-per-page="10" total-items-count="50">
+  <mock:shadow-root>
+    <nav aria-label="Pagination" class="p-pagination" role="navigation">
+      <ul class="p-pagination__items">
+        <li class="p-pagination__item" type="PREVIOUS_PAGE_LINK" value="1">
+          <a aria-disabled="true" aria-label="Previous page" class="p-pagination__prev p-pagination__prev--disabled">
+            <p-icon source="arrow-left-hair"></p-icon>
+          </a>
+        </li>
+        <li class="p-pagination__item" isactive="" type="PAGE" value="1">
+          <span aria-current="page" aria-label="Page 1" class="p-pagination__goto p-pagination__goto--current" href="#">
+            1
+          </span>
+        </li>
+        <li class="p-pagination__item" type="PAGE" value="2">
+          <a aria-label="Page 2" class="p-pagination__goto" href="#">
+            2
+          </a>
+        </li>
+        <li class="p-pagination__item" type="PAGE" value="3">
+          <a aria-label="Page 3" class="p-pagination__goto" href="#">
+            3
+          </a>
+        </li>
+        <li class="p-pagination__item" type="PAGE" value="4">
+          <a aria-label="Page 4" class="p-pagination__goto" href="#">
+            4
+          </a>
+        </li>
+        <li class="p-pagination__item" type="PAGE" value="5">
+          <a aria-label="Page 5" class="p-pagination__goto" href="#">
+            5
+          </a>
+        </li>
+        <li class="p-pagination__item" isactive="" type="NEXT_PAGE_LINK" value="2">
+          <a aria-label="Next page" class="p-pagination__next" href="#">
+            <p-icon source="arrow-right-hair"></p-icon>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </mock:shadow-root>
+</p-pagination>
+`;

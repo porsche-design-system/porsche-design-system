@@ -8,8 +8,19 @@ const getTotalPages = PaginationHelper.getTotalPages as Function;
 const getCurrentActivePage = PaginationHelper.getCurrentActivePage as Function;
 
 describe('Component <p-pagination>', () => {
-  it('builds', () => {
+  it('should build', () => {
     expect(new Pagination()).toBeTruthy();
+  });
+
+  it('should render correctly in default mode with shadow dom', async () => {
+    const page = await newSpecPage({
+      components: [Pagination],
+      html: `<p-pagination total-items-count="50" items-per-page="10" active-page="1"></p-pagination>`,
+    });
+    expect(page.root.shadowRoot).toBeTruthy();
+    expect(page.root.querySelector('.p-pagination')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.p-pagination')).toBeTruthy();
+    expect(page.root).toMatchSnapshot();
   });
 
   it('should render 7 items in total with first item active and disabled prev link', async () => {
@@ -195,5 +206,4 @@ describe('Pagination Functions:', () => {
         .toBe(10);
     });
   });
-
 });

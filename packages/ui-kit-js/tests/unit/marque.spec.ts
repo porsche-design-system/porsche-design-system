@@ -3,7 +3,7 @@ import { Marque } from '../../src/components/basic/marque/marque';
 
 describe('Component <p-marque>', () => {
 
-  it('builds', () => {
+  it('should build', () => {
     expect(new Marque()).toBeTruthy();
   });
 

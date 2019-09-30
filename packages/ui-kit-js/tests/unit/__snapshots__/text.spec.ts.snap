@@ -7,6 +7,6 @@ exports[`Component <p-text> should render correctly in default mode with shadow 
       <slot></slot>
     </p>
   </mock:shadow-root>
-  Text
+  Some text
 </p-text>
 `;

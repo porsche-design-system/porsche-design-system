@@ -7,6 +7,6 @@ exports[`Component <p-headline> should render correctly in default mode with sha
       <slot></slot>
     </h1>
   </mock:shadow-root>
-  Headline
+  Some headline
 </p-headline>
 `;
