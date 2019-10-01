@@ -12,20 +12,34 @@
   <div id="root"></div>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
-      /* Why? To see which browser is used to create cross browser tests by BrowserStack Screenshot API */
-      var txt = 'Browser CodeName: ' + navigator.appCodeName + '<br>';
-      txt+= 'Browser Name: ' + navigator.appName + '<br>';
-      txt+= 'Browser Version: ' + navigator.appVersion + '<br>';
-      txt+= 'Platform: ' + navigator.platform + '<br>';
-      txt+= 'User-agent header: ' + navigator.userAgent;
-      document.getElementById('system-log').innerHTML=txt;
+      var html = document.querySelector('html');
+      function callOnHydrated(cb) {
+        setTimeout(function () {
+          if (html.classList.contains('hydrated')) {
+            return cb();
+          }
 
-      window.setTimeout(function() {
-        /* Why? To force a redraw after everything has loaded to ensure IE11 renders the same each time */
-        document.body.style.display = 'none';
-        document.body.style.display = 'block';
-      }, 2000);
+          return callOnHydrated(cb);
+        }, 1000);
+      }
+
+      callOnHydrated(function () {
+        /* Why? To see which browser is used to create cross browser tests by BrowserStack Screenshot API */
+        var txt = 'Browser CodeName: ' + navigator.appCodeName + '<br>';
+        txt+= 'Browser Name: ' + navigator.appName + '<br>';
+        txt+= 'Browser Version: ' + navigator.appVersion + '<br>';
+        txt+= 'Platform: ' + navigator.platform + '<br>';
+        txt+= 'User-agent header: ' + navigator.userAgent;
+        document.getElementById('system-log').innerHTML=txt;
+
+        window.setTimeout(function() {
+          /* Why? To force a redraw after everything has loaded to ensure IE11 renders the same each time */
+          document.body.style.display = 'none';
+          document.body.offsetHeight;
+          document.body.style.display = 'block';
+        }, 5000);
+      });
     });
-  </script>
+  </script>s
 </body>
 </html>
