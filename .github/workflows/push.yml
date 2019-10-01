@@ -36,11 +36,11 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --ui-kit-js
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --ui-kit-js
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-js
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
@@ -65,11 +65,11 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --ui-kit-angular
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-angular
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
@@ -94,11 +94,11 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --ui-kit-react
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-react
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
@@ -138,11 +138,11 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --design-system
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --design-system
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --design-system
   deployment:
     name: 'Deployment'
     needs: [ui-kit-js, ui-kit-angular, ui-kit-react, design-system]
