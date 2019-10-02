@@ -31,8 +31,9 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import {config as webConfig, DesignSystemWebConfig} from '@/../design-system.web.config';
-import {config as appConfig, DesignSystemAppConfig} from '@/../design-system.app.config';
+import {DesignSystemConfig} from '@/interface';
+import {config as webConfig} from '@/../design-system.web.config';
+import {config as appConfig} from '@/../design-system.app.config';
 import {encodeUrl} from '@/services/utils';
 import Divider from '@/components/Divider.vue';
 
@@ -48,7 +49,7 @@ export default class Sidebar extends Vue {
     return this.$route.meta.area;
   }
 
-  get config(): DesignSystemWebConfig | DesignSystemAppConfig {
+  get config(): DesignSystemConfig {
     switch (this.area) {
       case 'app': return appConfig;
       case 'web': return webConfig;

@@ -56,7 +56,7 @@ export default class Page extends Vue {
       await this.$store.dispatch('toggleLoadingAsync', true);
       const page = this.config[this.category][this.page];
 
-      if (typeof page === 'object') {
+      if (Array.isArray(page)) {
         for (const file of page) {
           this.components.push((await file()).default);
         }

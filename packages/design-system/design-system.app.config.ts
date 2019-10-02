@@ -1,12 +1,7 @@
 // @ts-ignore
-import {Pages, StoriesApp} from '@/interface';
+import {DesignSystemConfig} from '@/interface';
 
-export interface DesignSystemAppConfig {
-  pages: Pages;
-  stories: StoriesApp;
-}
-
-export const config: DesignSystemAppConfig = {
+export const config: DesignSystemConfig = {
   pages: {
     'Getting Started': {
       // @ts-ignore
@@ -27,16 +22,20 @@ export const config: DesignSystemAppConfig = {
       Support: () => import(`@/pages/app/support.md`),
       // @ts-ignore
       Faq: () => import(`@/pages/app/faq.md`)
-    }
+    },
   },
   stories: {
     Basic: {
-      // @ts-ignore
-      Color: () => import(`@/stories/app/color.md`)
+      Color: [
+        // @ts-ignore
+        () => import(`@/stories/app/color.md`)
+      ],
     },
     Action: {
-      // @ts-ignore
-      Button: () => import(`@/stories/app/button.md`)
+      Button: [
+        // @ts-ignore
+        () => import(`@/stories/app/button.md`)
+      ]
     },
   }
 };

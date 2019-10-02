@@ -41,7 +41,7 @@ const router = new Router({
       path: '/app/components/:category/:story',
       name: 'story-app',
       meta: { area: 'app' },
-      component: () => import('./views/StoryApp.vue')
+      component: () => import('./views/Story.vue')
     },
     {
       path: '/app/*',
@@ -76,7 +76,7 @@ const router = new Router({
       path: '/web/components/:category/:story',
       name: 'story-web',
       meta: { area: 'web' },
-      component: () => import('./views/StoryWeb.vue')
+      component: () => import('./views/Story.vue')
     },
     {
       path: '/web/*',
