@@ -1,29 +1,8 @@
 <template>
   <div>
     <nav class="tabs" v-if="isTabable()">
-      <p-text
-        class="tab"
-        variant="28-thin"
-        tag="div"
-        v-if="isTabDefined('design')"
-      >
-        <router-link to="#design">Design</router-link>
-      </p-text>
-      <p-text
-        class="tab"
-        variant="28-thin"
-        tag="div"
-        v-if="isTabDefined('code')"
-      >
-        <router-link to="#code">Code</router-link>
-      </p-text>
-      <p-text
-        class="tab"
-        variant="28-thin"
-        tag="div"
-        v-if="isTabDefined('props')"
-      >
-        <router-link to="#props">Props</router-link>
+      <p-text variant="28-thin" tag="div" class="tab" v-for="(tab, index) in tabs" :key="index">
+        <router-link :to="getTabLink(tab)">{{ tab }}</router-link>
       </p-text>
     </nav>
     <Markdown>
@@ -33,90 +12,96 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator';
-import { config as webConfig } from '@/../design-system.web.config';
-import { config as appConfig } from '@/../design-system.app.config';
-import { decodeUrl } from '@/services/utils';
-import Markdown from '@/components/Markdown.vue';
-import { Stories } from '@/interface';
+  import {Component, Vue, Watch} from 'vue-property-decorator';
+  import {config as webConfig} from '@/../design-system.web.config';
+  import {config as appConfig} from '@/../design-system.app.config';
+  import {decodeUrl, encodeUrl} from '@/services/utils';
+  import Markdown from '@/components/Markdown.vue';
+  import {Stories} from '@/interface';
 
-@Component({
-  components: {
-    Markdown
-  }
-})
-export default class Story extends Vue {
-  public components: any[] = [];
-
-  private get area(): string {
-    return this.$route.meta.area;
-  }
-
-  private get category(): string {
-    return decodeUrl(this.$route.params.category);
-  }
-
-  private get story(): string {
-    return decodeUrl(this.$route.params.story);
-  }
-
-  private get tab(): string {
-    return this.$route.hash.substring(1).toLowerCase();
-  }
-
-  private get config(): Stories {
-    switch (this.area) {
-      case 'app': return appConfig.stories;
-      case 'web': return webConfig.stories;
-      default: return webConfig.stories;
+  @Component({
+    components: {
+      Markdown
     }
-  }
+  })
+  export default class Story extends Vue {
+    public components: any[] = [];
 
-  public isTabable(): boolean {
-    const story = this.config && this.config[this.category] && this.config[this.category][this.story];
-    return !Array.isArray(story);
-  }
+    public get tabs(): string[] {
+      const story = this.config && this.config[this.category] && this.config[this.category][this.story];
 
-  public isTabDefined(tab: string): boolean {
-    const story = this.config && this.config[this.category] && this.config[this.category][this.story];
+      if (Array.isArray(story)) {
+        return [];
+      }
 
-    if (Array.isArray(story)) {
-      return false;
-    } else {
-      return !!(story[tab]);
+      return Object.keys(story);
     }
-  }
 
-  @Watch('$route')
-  private async onRouteChange(): Promise<void> {
-    await this.loadComponents();
-  }
+    private get area(): string {
+      return this.$route.meta.area;
+    }
 
-  private async mounted(): Promise<void> {
-    await this.loadComponents();
-  }
+    private get category(): string {
+      return decodeUrl(this.$route.params.category);
+    }
 
-  private getStoryImport(): (() => Promise<any>) | Array<(() => Promise<any>)> | undefined {
-    const foo = this.config[this.category][this.story];
-    if (Array.isArray(foo)) {
-      return foo;
-    } else {
-      const bar = foo[this.tab];
-      if (bar) {
-        return bar;
+    private get story(): string {
+      return decodeUrl(this.$route.params.story);
+    }
+
+    private get tab(): string {
+      return decodeUrl(this.$route.hash.substring(1));
+    }
+
+    private get config(): Stories {
+      switch (this.area) {
+        case 'app':
+          return appConfig.stories;
+        case 'web':
+          return webConfig.stories;
+        default:
+          return webConfig.stories;
       }
     }
-    return undefined;
-  }
 
-  private async loadComponents(): Promise<void> {
-    this.components = [];
-    await this.$store.dispatch('toggleLoadingAsync', true);
+    public isTabable(): boolean {
+      return !!(this.tabs);
+    }
 
-    try {
-      const story = this.getStoryImport();
+    public getTabLink(name: string): string {
+      return `#${encodeUrl(name)}`;
+    }
 
-      if (story) {
+    public getFirstTabName(): string {
+      return this.tabs[0];
+    }
+
+    @Watch('$route')
+    private async onRouteChange(): Promise<void> {
+      await this.loadComponents();
+    }
+
+    private async mounted(): Promise<void> {
+      await this.loadComponents();
+    }
+
+    private getStoryImport(): (() => Promise<any>) | Array<(() => Promise<any>)> {
+      const story = this.config && this.config[this.category] && this.config[this.category][this.story];
+
+      if (Array.isArray(story)) {
+        return story;
+      }
+
+      return story[this.tab];
+    }
+
+    private async loadComponents(): Promise<void> {
+      this.components = [];
+      await this.$store.dispatch('toggleLoadingAsync', true);
+
+      try {
+        const story = this.getStoryImport();
+
         if (Array.isArray(story)) {
           for (const file of story) {
             this.components.push((await file()).default);
@@ -125,26 +110,19 @@ export default class Story extends Vue {
           this.components.push((await story()).default);
         }
         await this.$store.dispatch('toggleLoadingAsync', false);
-      } else {
+      } catch (e) {
         this.redirect();
       }
-    } catch (e) {
-      this.redirect();
     }
-  }
 
-  private async redirect(): Promise<void> {
-    if (this.isTabDefined('design')) {
-      await this.$router.replace('#design');
-    } else if (this.isTabDefined('code')) {
-      await this.$router.replace('#code');
-    } else if (this.isTabDefined('props')) {
-      await this.$router.replace('#props');
-    } else {
-      await this.$router.replace({name: `404-${this.area}`});
+    private async redirect(): Promise<void> {
+      if (this.isTabable()) {
+        await this.$router.replace(this.getTabLink(this.getFirstTabName()));
+      } else {
+        await this.$router.replace({name: `404-${this.area}`});
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">
