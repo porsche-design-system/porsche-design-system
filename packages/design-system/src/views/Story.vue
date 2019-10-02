@@ -65,7 +65,7 @@
     }
 
     public isTabable(): boolean {
-      return !!(this.tabs);
+      return this.tabs.length > 0;
     }
 
     public getTabLink(name: string): string {
@@ -101,7 +101,6 @@
 
       try {
         const story = this.getStoryImport();
-
         if (Array.isArray(story)) {
           for (const file of story) {
             this.components.push((await file()).default);
@@ -109,10 +108,11 @@
         } else {
           this.components.push((await story()).default);
         }
-        await this.$store.dispatch('toggleLoadingAsync', false);
       } catch (e) {
         this.redirect();
       }
+
+      await this.$store.dispatch('toggleLoadingAsync', false);
     }
 
     private async redirect(): Promise<void> {
