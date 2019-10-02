@@ -52,16 +52,16 @@ export const config: DesignSystemConfig = {
     Basic: {
       Color: {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/basic/color/color.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/basic/color/color.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/basic/color/color.code.md`)
+        Code: () => import(`@/../../ui-kit-js/src/components/basic/color/color.code.md`)
       },
       Typography: {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.code.md`),
-        props: [
+        Code: () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.code.md`),
+        Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.props.md`),
           // @ts-ignore
@@ -70,74 +70,74 @@ export const config: DesignSystemConfig = {
       },
       Marque: {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.code.md`),
+        Code: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.code.md`),
         // @ts-ignore
-        props: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.props.md`)
+        Props: () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.props.md`)
       }
     },
     Action: {
       'Button Regular': {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.code.md`),
+        Code: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.code.md`),
         // @ts-ignore
-        props: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.props.md`)
+        Props: () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.props.md`)
       },
       'Button Icon': {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.code.md`),
+        Code: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.code.md`),
         // @ts-ignore
-        props: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.props.md`)
+        Props: () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.props.md`)
       },
       'Text Link': {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.code.md`),
+        Code: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.code.md`),
         // @ts-ignore
-        props: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.props.md`)
+        Props: () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.props.md`)
       }
     },
     Content: {
       'Text List': {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list.code.md`),
+        Code: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list.code.md`),
         // @ts-ignore
-        props: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list/text-list.props.md`)
+        Props: () => import(`@/../../ui-kit-js/src/components/content/text-list/text-list/text-list.props.md`)
       }
     },
     Feedback: {
       Spinner: {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.code.md`),
+        Code: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.code.md`),
         // @ts-ignore
-        props: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.props.md`)
+        Props: () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.props.md`)
       }
     },
     Icon: {
       Icon: {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.code.md`),
+        Code: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.code.md`),
         // @ts-ignore
-        props: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.props.md`)
+        Props: () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.props.md`)
       }
     },
     Layout: {
       Flex: {
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/layout/flex/flex.code.md`),
-        props: [
+        Code: () => import(`@/../../ui-kit-js/src/components/layout/flex/flex.code.md`),
+        Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/layout/flex/flex/flex.props.md`),
           // @ts-ignore
@@ -146,10 +146,10 @@ export const config: DesignSystemConfig = {
       },
       Grid: {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.code.md`),
-        props: [
+        Code: () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.code.md`),
+        Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/layout/grid/grid/grid.props.md`),
           // @ts-ignore
@@ -158,19 +158,19 @@ export const config: DesignSystemConfig = {
       },
       Spacing: {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.code.md`)
+        Code: () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.code.md`)
       }
     },
     Navigation: {
       Pagination: {
         // @ts-ignore
-        design: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`),
+        Design: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`),
         // @ts-ignore
-        code: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`),
+        Code: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`),
         // @ts-ignore
-        props: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`)
+        Props: () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`)
       }
     }
   }
