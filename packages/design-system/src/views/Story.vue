@@ -1,11 +1,11 @@
 <template>
   <div>
-    <nav class="tabs">
+    <nav class="tabs" v-if="isTabable()">
       <p-text
         class="tab"
         variant="28-thin"
         tag="div"
-        v-if="isStoryExistent('design')"
+        v-if="isTabDefined('design')"
       >
         <router-link to="#design">Design</router-link>
       </p-text>
@@ -13,7 +13,7 @@
         class="tab"
         variant="28-thin"
         tag="div"
-        v-if="isStoryExistent('code')"
+        v-if="isTabDefined('code')"
       >
         <router-link to="#code">Code</router-link>
       </p-text>
@@ -21,7 +21,7 @@
         class="tab"
         variant="28-thin"
         tag="div"
-        v-if="isStoryExistent('props')"
+        v-if="isTabDefined('props')"
       >
         <router-link to="#props">Props</router-link>
       </p-text>
@@ -35,9 +35,10 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { config as webConfig } from '@/../design-system.web.config';
+import { config as appConfig } from '@/../design-system.app.config';
 import { decodeUrl } from '@/services/utils';
 import Markdown from '@/components/Markdown.vue';
-import { StoriesWeb, Tabs } from '@/interface';
+import { Stories } from '@/interface';
 
 @Component({
   components: {
@@ -63,17 +64,27 @@ export default class Story extends Vue {
     return this.$route.hash.substring(1).toLowerCase();
   }
 
-  private get config(): StoriesWeb {
-    return webConfig.stories;
+  private get config(): Stories {
+    switch (this.area) {
+      case 'app': return appConfig.stories;
+      case 'web': return webConfig.stories;
+      default: return webConfig.stories;
+    }
   }
 
-  public isStoryExistent(tab: Tabs): boolean {
-    return (
-      this.config &&
-      this.config[this.category] &&
-      this.config[this.category][this.story] &&
-      this.config[this.category][this.story][tab]
-    );
+  public isTabable(): boolean {
+    const story = this.config && this.config[this.category] && this.config[this.category][this.story];
+    return !Array.isArray(story);
+  }
+
+  public isTabDefined(tab: string): boolean {
+    const story = this.config && this.config[this.category] && this.config[this.category][this.story];
+
+    if (Array.isArray(story)) {
+      return false;
+    } else {
+      return !!(story[tab]);
+    }
   }
 
   @Watch('$route')
@@ -85,35 +96,52 @@ export default class Story extends Vue {
     await this.loadComponents();
   }
 
+  private getStoryImport(): (() => Promise<any>) | Array<(() => Promise<any>)> | undefined {
+    const foo = this.config[this.category][this.story];
+    if (Array.isArray(foo)) {
+      return foo;
+    } else {
+      const bar = foo[this.tab];
+      if (bar) {
+        return bar;
+      }
+    }
+    return undefined;
+  }
+
   private async loadComponents(): Promise<void> {
     this.components = [];
+    await this.$store.dispatch('toggleLoadingAsync', true);
 
     try {
-      await this.$store.dispatch('toggleLoadingAsync', true);
-      const story = this.config[this.category][this.story][this.tab as Tabs];
+      const story = this.getStoryImport();
 
-      if (typeof story === 'object') {
-        for (const file of story) {
-          this.components.push((await file()).default);
+      if (story) {
+        if (Array.isArray(story)) {
+          for (const file of story) {
+            this.components.push((await file()).default);
+          }
+        } else {
+          this.components.push((await story()).default);
         }
+        await this.$store.dispatch('toggleLoadingAsync', false);
       } else {
-        this.components.push((await story()).default);
+        this.redirect();
       }
-      await this.$store.dispatch('toggleLoadingAsync', false);
     } catch (e) {
       this.redirect();
     }
   }
 
   private async redirect(): Promise<void> {
-    if (this.isStoryExistent('design')) {
-      this.$router.replace('#design');
-    } else if (this.isStoryExistent('code')) {
-      this.$router.replace('#code');
-    } else if (this.isStoryExistent('props')) {
-      this.$router.replace('#props');
+    if (this.isTabDefined('design')) {
+      await this.$router.replace('#design');
+    } else if (this.isTabDefined('code')) {
+      await this.$router.replace('#code');
+    } else if (this.isTabDefined('props')) {
+      await this.$router.replace('#props');
     } else {
-      this.$router.replace({name: `404-${this.area}`});
+      await this.$router.replace({name: `404-${this.area}`});
     }
   }
 }

@@ -1,23 +1,18 @@
+export interface DesignSystemConfig {
+  pages: Pages;
+  stories: Stories;
+}
+
 export interface Pages {
   [category: string]: {
-    [page: string]: any | any[];
+    [page: string]: (() => Promise<any>) | Array<(() => Promise<any>)>
   };
 }
 
-export interface StoriesWeb {
+export interface Stories {
   [category: string]: {
     [story: string]: {
-      design?: any | any[];
-      code?: any | any[];
-      props?: any | any[];
-    };
+      [tab: string]: (() => Promise<any>) | Array<(() => Promise<any>)>
+    } | Array<(() => Promise<any>)>
   };
 }
-
-export interface StoriesApp {
-  [category: string]: {
-    [story: string]: any | any[];
-  };
-}
-
-export type Tabs = 'design' | 'code' | 'props';

@@ -1,12 +1,7 @@
 // @ts-ignore
-import {Pages, StoriesWeb} from '@/interface';
+import {DesignSystemConfig} from '@/interface';
 
-export interface DesignSystemWebConfig {
-  pages: Pages;
-  stories: StoriesWeb;
-}
-
-export const config: DesignSystemWebConfig = {
+export const config: DesignSystemConfig = {
   pages: {
     'Getting Started': {
       // @ts-ignore
