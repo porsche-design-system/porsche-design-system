@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <p-icon> should render correctly in default mode with shadow dom 1`] = `
+<p-icon aria-label="icon arrow right hair" role="img" source="arrow-right-hair">
+  <mock:shadow-root>
+    <i class="p-icon p-icon--small"></i>
+  </mock:shadow-root>
+</p-icon>
+`;

@@ -36,10 +36,18 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --ui-kit-js
-      - name: 'VRT Test'
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-js
+      - name: 'CBT Test'
         uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
-          entrypoint: run-test-vrt
+          entrypoint: run-test-cbt
           args: --ui-kit-js
   ui-kit-angular:
     name: 'Porsche UI Kit Angular'
@@ -57,10 +65,18 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'VRT Test'
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-angular
+      - name: 'CBT Test'
         uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
-          entrypoint: run-test-vrt
+          entrypoint: run-test-cbt
           args: --ui-kit-angular
   ui-kit-react:
     name: 'Porsche UI Kit React'
@@ -78,10 +94,18 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'VRT Test'
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-react
+      - name: 'CBT Test'
         uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
-          entrypoint: run-test-vrt
+          entrypoint: run-test-cbt
           args: --ui-kit-react
   design-system:
     name: 'Porsche Design System'
@@ -114,11 +138,11 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --design-system
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --design-system
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --design-system
   deployment:
     name: 'Deployment'
     needs: [ui-kit-js, ui-kit-angular, ui-kit-react, design-system]

@@ -1,6 +1,6 @@
 import {JSX, Component, Prop, h, Host} from '@stencil/core';
 import cx from 'classnames';
-import {prefix} from '../../../../utils/prefix';
+import {prefix} from '../../../../utils';
 import {Components} from '../../../../components';
 
 @Component({

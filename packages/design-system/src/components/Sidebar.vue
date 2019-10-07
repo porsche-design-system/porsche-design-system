@@ -19,7 +19,7 @@
         <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, story, index) in stories" :key="index">
-            <router-link class="link" :to="`/web/components/${encodeUrl(category)}/${encodeUrl(story)}`">
+            <router-link class="link" :to="`/${area}/components/${encodeUrl(category)}/${encodeUrl(story)}`">
               <p-text-link tag="span" color="inherit">{{ story }}</p-text-link>
             </router-link>
           </li>

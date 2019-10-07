@@ -1,3 +1,4 @@
+require('dotenv').config();
 import 'jasmine';
 import {VisualRegressionTester, VisualRegressionTestOptions} from '@porsche-ui/visual-regression-tester';
 import * as puppeteer from 'puppeteer';

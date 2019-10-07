@@ -3,6 +3,7 @@
 /loader/
 
 /tests/vrt/results
+/tests/cbt/results
 
 *~
 *.sw[mnpcod]

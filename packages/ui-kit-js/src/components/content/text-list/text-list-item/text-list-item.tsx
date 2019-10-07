@@ -1,6 +1,6 @@
 import { JSX, Component, Host, h } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../../utils/prefix';
+import { prefix } from '../../../../utils';
 
 @Component({
   tag: 'p-text-list-item',

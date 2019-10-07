@@ -21,6 +21,12 @@ import {
 const App: React.FC = () => {
   return (
     <div id="app">
+      <PText>
+        <b id="human-readable-browser-name"></b>
+        <br/>
+        <span id="system-log"></span>
+      </PText>
+      <hr/>
       <PHeadline variant="headline-2" tag="h2">Basic</PHeadline>
       <hr/>
       <PGrid>
