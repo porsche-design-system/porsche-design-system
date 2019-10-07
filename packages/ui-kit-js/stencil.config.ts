@@ -16,6 +16,10 @@ export const config: Config = {
         {
           src: require.resolve('@porsche-ui/utils/dist/visual-regression-test.css'),
           dest: 'visual-regression-test.css'
+        },
+        {
+          src: './favicon.ico',
+          dest: 'favicon.ico'
         }
       ]
     },
