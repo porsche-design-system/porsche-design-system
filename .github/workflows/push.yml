@@ -49,11 +49,11 @@ jobs:
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-js
-      - name: 'Upload CBT results'
+      - name: 'CBT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: 'cbt-results-ui-kit-js'
+          name: ui-kit-js-cbt-regression
           path: ./packages/ui-kit-js/tests/cbt/results
   ui-kit-angular:
     name: 'Porsche UI Kit Angular'
@@ -84,11 +84,11 @@ jobs:
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-angular
-      - name: 'Upload CBT results'
+      - name: 'CBT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: 'cbt-results-ui-kit-angular'
+          name: ui-kit-angular-cbt-regression
           path: ./packages/ui-kit-angular/tests/cbt/results
   ui-kit-react:
     name: 'Porsche UI Kit React'
@@ -119,12 +119,12 @@ jobs:
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-react
-      - name: 'Upload CBT results'
+      - name: 'CBT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: 'cbt-results-ui-kit-angular'
-          path: ./packages/ui-kit-angular/tests/cbt/results
+          name: ui-kit-react-cbt-regression
+          path: ./packages/ui-kit-react/tests/cbt/results
   design-system:
     name: 'Porsche Design System'
     runs-on: ubuntu-latest
