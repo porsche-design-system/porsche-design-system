@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <p-text> should render correctly in default mode with shadow dom 1`] = `
+<p-text>
+  <mock:shadow-root>
+    <p class="p-text p-text--align-left p-text--color-porsche-black p-text--variant-copy">
+      <slot></slot>
+    </p>
+  </mock:shadow-root>
+  Some text
+</p-text>
+`;

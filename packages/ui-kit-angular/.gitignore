@@ -10,6 +10,10 @@
 # dependencies
 /node_modules
 
+# testing
+/tests/vrt/results
+/tests/cbt/results
+
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json

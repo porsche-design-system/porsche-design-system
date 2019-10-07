@@ -19,7 +19,7 @@ export class Marque {
       prefix('marque')
     );
 
-    const path = 'https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/';
+    const path = 'https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2';
 
     const sourceTrademark = this.trademark === true ? '_trademark' : '';
 
@@ -28,19 +28,19 @@ export class Marque {
         <source
           media='(min-width: 1000px)'
           srcSet={`
-            ${path}porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@1x.png 1x,
-            ${path}porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@2x.png 2x,
-            ${path}porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@3x.png 3x
+            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@1x.png 1x,
+            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@2x.png 2x,
+            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@3x.png 3x
           `}
         />
         <source
           srcSet={`
-            ${path}porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@1x.png 1x,
-            ${path}porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@2x.png 2x,
-            ${path}porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@3x.png 3x
+            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@1x.png 1x,
+            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@2x.png 2x,
+            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@3x.png 3x
           `}
         />
-        <img src={`${path}porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@2x.png`} alt='Porsche' />
+        <img src={`${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@2x.png`} alt='Porsche' />
       </picture>
     );
   }
