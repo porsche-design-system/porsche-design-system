@@ -18,7 +18,7 @@ const options: CrossBrowserTestOptions = {
   resultsDir: 'tests/cbt/results',
   tolerance: 0,
   baseUrl: 'http://localhost:3000',
-  timeout: 10
+  timeout: 20
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
