@@ -206,8 +206,6 @@ impact on the origin character of the company typeface. This includes:
 - No use of outline borders on text.
 - No use of opacity for text colors.
 
-![Example for uppercase text](./assets/typography-donts.png)
-
 
 ## Typography principles
 
@@ -241,7 +239,7 @@ The combination of text and background color should pass the WCAG AA standard
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
 for larger text sizes. 
 
-![Porsche color accessibility examples](./../color/assets/color-accessibility-01.png)
+
 
 Also, you should not rely on color only to convey information. 
 When communicating element states with text (for example a password validation 
@@ -249,3 +247,8 @@ information in forms) make sure to always use additional text stylings
 (e.g. bold text) to make it easy for visually impaired people to recognise
 status information even if they can’t see the color – this is of even higher
 importance the more critical the information is.
+
+---
+
+## Don'ts
+![Example for uppercase text](./assets/typography-donts.png)

@@ -4,13 +4,13 @@ The Marque gives the Porsche brand a distinctive profile, sets it apart from oth
 
 ---
 
-# Content
+## Content
 
 The two elements that make up the overall logo for the Porsche marque are the **word "Porsche" (logotype)** and the **Porsche Crest** as an image-based logo. The three-dimensional colored Porsche marque is used as a fixed unit, always including crest and logotype, across all media, and **may not be changed**. 
 
 ---
 
-# Porsche Marque with and without registered trademark (®)
+## Porsche Marque with and without registered trademark (®)
 
 There are two versions of the Porsche marque:
 
@@ -28,7 +28,7 @@ This version is to be used whenever the United States and/or Canada are not part
 
 ---
 
-# Available sizes
+## Available sizes
 
 | SIZE | USAGE |
 |------|--------|
@@ -39,14 +39,14 @@ Slight adjustments ensure that the Porsche marque is optimally perceived as equa
 
 ---
 
-# Best Practices
-
-## Do's
+## Best Practices
 
 - Within static digital applications, the Porsche Marque is always used without shadow. For moving images a separate Crest with shadow is available.
 - The Porsche Marque may only be used on a white background.
 
-## Dont's
+## Don'ts
 
 - The Marque may not be altered in relation to its two elements or their size. The Marque may never be used without the Porsche lettering, as the sender identification cannot be guaranteed.
 - The Porsche Marque may not be used against coloured or busy backgrounds (e.g. shading). As the Porsche Crest has a high level of graphical complexity, excessive visual turmoil may be created.
+
+![Example for Porsche Marque](./assets/porsche-marque-donts-01.png)
