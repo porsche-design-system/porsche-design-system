@@ -1,4 +1,4 @@
 # Color
 
 Lorem ipsum.
-![Color](../assets/color.png)
+![Color](../../assets/app/color.png)
