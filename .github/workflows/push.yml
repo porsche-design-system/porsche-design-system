@@ -49,6 +49,12 @@ jobs:
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-js
+      - name: 'Upload CBT results'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: 'cbt-results-ui-kit-js'
+          path: ./packages/ui-kit-js/tests/cbt/results
   ui-kit-angular:
     name: 'Porsche UI Kit Angular'
     runs-on: ubuntu-latest
@@ -78,6 +84,12 @@ jobs:
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-angular
+      - name: 'Upload CBT results'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: 'cbt-results-ui-kit-angular'
+          path: ./packages/ui-kit-angular/tests/cbt/results
   ui-kit-react:
     name: 'Porsche UI Kit React'
     runs-on: ubuntu-latest
@@ -107,6 +119,12 @@ jobs:
         with:
           entrypoint: run-test-cbt
           args: --ui-kit-react
+      - name: 'Upload CBT results'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: 'cbt-results-ui-kit-angular'
+          path: ./packages/ui-kit-angular/tests/cbt/results
   design-system:
     name: 'Porsche Design System'
     runs-on: ubuntu-latest
