@@ -50,17 +50,6 @@
               </p-button-regular>
             </p-flex-item>
           </p-flex>
-          <p-text class="p-spacing-mt-32">
-            Legacy Porsche UI Kit versions are still available:
-          </p-text>
-          <p-text-list>
-            <p-text-list-item>
-              <a href="https://ui.porsche.com/v0/core/">Porsche UI Kit – Core v0</a>
-            </p-text-list-item>
-            <p-text-list-item>
-              <a href="https://ui.porsche.com/v0/react/">Porsche UI Kit – React v0</a>
-            </p-text-list-item>
-          </p-text-list>
         </p-grid-child>
       </p-grid>
     </article>
