@@ -5,14 +5,14 @@ export interface DesignSystemConfig {
 
 export interface Pages {
   [category: string]: {
-    [page: string]: (() => Promise<any>) | Array<(() => Promise<any>)>
+    [page: string]: Array<(() => Promise<any>)>
   };
 }
 
 export interface Stories {
   [category: string]: {
     [story: string]: {
-      [tab: string]: (() => Promise<any>) | Array<(() => Promise<any>)>
+      [tab: string]: Array<(() => Promise<any>)>
     } | Array<(() => Promise<any>)>
   };
 }
