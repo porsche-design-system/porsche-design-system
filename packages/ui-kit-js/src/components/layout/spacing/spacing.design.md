@@ -126,7 +126,7 @@ ignore this fact while designing and to always set the focus on giving the devel
 the right spacing sizes between or inside elements, even if this results in
 slightly higher elements in implementation due to the additional border.
 
-![Handling borders in Sketch](./assets/spacings-borders.png)
+
 
 ### Lines
 Lines can be created using either a narrow rectangle or a path
