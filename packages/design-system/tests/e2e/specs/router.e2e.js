@@ -33,6 +33,11 @@ describe('Router', () => {
       cy.url().should('eq', Cypress.config().baseUrl + '/#/app/getting-started/about');
     });
 
+    it('Should route to story', () => {
+      cy.visit('/#/app/components/basic/color');
+      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/components/basic/color');
+    });
+
     it('Should redirect to 404', () => {
       cy.visit('/#/app/some-invalid-custom-view');
       cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
@@ -44,6 +49,15 @@ describe('Router', () => {
       cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
 
       cy.visit('/#/app/getting-started/some-invalid-page');
+      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
+
+      cy.visit('/#/app/components/some-invalid-category/some-invalid-story');
+      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
+
+      cy.visit('/#/app/components/some-invalid-category/typography');
+      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
+
+      cy.visit('/#/app/components/basic/some-invalid-story');
       cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
 
       cy.visit('/#/app/some/completely/invalid/url');

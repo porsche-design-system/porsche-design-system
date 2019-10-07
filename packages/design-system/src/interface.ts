@@ -1,18 +1,22 @@
+import {EsModuleComponent} from 'vue/types/options';
+
 export interface DesignSystemConfig {
   pages: Pages;
   stories: Stories;
 }
 
+export type ComponentListImport =  Array<() => Promise<EsModuleComponent>>;
+
 export interface Pages {
   [category: string]: {
-    [page: string]: Array<(() => Promise<any>)>
+    [page: string]: ComponentListImport
   };
 }
 
 export interface Stories {
   [category: string]: {
     [story: string]: {
-      [tab: string]: Array<(() => Promise<any>)>
-    } | Array<(() => Promise<any>)>
+      [tab: string]: ComponentListImport
+    } | ComponentListImport
   };
 }
