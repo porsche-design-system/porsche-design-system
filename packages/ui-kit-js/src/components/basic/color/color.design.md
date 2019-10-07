@@ -20,7 +20,7 @@ That's when the Porsche UI color themes come into play: **The first choice shoul
 used for exceptional cases, for example if an application is to stand out from the rest of visual communication for strategic reasons or if the context of use 
 is unsuitable for a bright shining display. All Porsche UI Kit components are optimized for Light and Dark Theme.
 
-#### Theme colors
+### Theme colors
 Each theme comes with a limited color set you should stick to for page backgrounds and text/icons. 
 When it comes to additional elements (such as tiles, dividers or other graphical elements), you have two options:
 
@@ -33,24 +33,24 @@ In order to define the colors to be used within in the screen you should always 
 - For large screen space make sure to only use the dedicated surface color for your theme (e.g. Surface Light). 
 - Use Porsche Red only for highlighting single elements.
 
-#### Mixing themes
+### Mixing themes
 Within certain limits it's allowed to mix the Porsche color themes. Let's say, for example, you could integrate a limited Dark Theme area in your Light Theme
 to visually distinguish the footer from the content. Always make sure that the vast majority of the screen consists of the initially chosen theme.
 The color proportion scales for each theme might be a little helper in doing so.
 
 ---
 
-### Porsche Light Theme 
+## Porsche Light Theme 
 ![Porsche Light Theme colors](./assets/color-theme-light.png)
 
-#### Background colors
+### Background colors
 
 |                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
 |-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
 | <ColorBadge color="porsche-light"/>  	                                    | **Porsche Light**        	| #FFFFFF 	| 255/255/255   	| Page background  |
 | <ColorBadge color="surface-light"/> 	                                    | **Surface Light**        	| #F2F2F2 	| 242/242/242     | Additional backgrounds, for example for tiles or contrasting content areas |
 
-#### Text / icon color
+### Text / icon color
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
@@ -59,7 +59,7 @@ The color proportion scales for each theme might be a little helper in doing so.
 | <ColorBadge color="porsche-dark-red"/>  	                                    | **Porsche Dark Red**    	| #960014 	| 150/0/20       	| Hover state for text/icons in Porsche Red |
 | <ColorBadge color="neutral-grey-4"/>    	                                    | **Grey 4**              	| #96989A 	| 150/152/154    	| Disabled state or decorative text/icons   |
 
-#### Additional elements
+### Additional elements
 For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
 
 |                                                                         	|                       	| HEX     	| RGB           	| Usage            |
@@ -70,7 +70,7 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 
 
 
-#### Color proportions
+### Color proportions
 
 ![Porsche Light Theme color proportions](./assets/color-theme-proportions-light.png)
 
@@ -81,14 +81,14 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 
 ![Porsche Dark Theme colors](./assets/color-theme-dark.png)
 
-#### Background colors
+### Background colors
 
 |                                                                       	|                      	    | HEX     	| RGB           	| Usage            |
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
 | <ColorBadge color="porsche-dark"/> 	                                    | **Porsche Dark**        	| #0E1418 	| 14/20/24      	| Page background  |
 | <ColorBadge color="surface-dark"/>                                      | **Surface Dark**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
 
-#### Text / icon color
+### Text / icon color
 
 |                                                                         	|                    	    | HEX     	| RGB           	| Usage                                   |
 |-------------------------------------------------------------------------	|-------------------------|----------	|----------------	|---------------------------------------- |
@@ -96,7 +96,7 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 | <ColorBadge color="porsche-red"/>  	                                      | **Porsche Red**        	| #D5001C 	| 213/0/28        | Hover state                             |
 | <ColorBadge color="neutral-grey-5"/>                                      | **Grey 5**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
 
-#### Additional elements
+### Additional elements
 For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
 
 |                                                                         	|                       	| HEX     	| RGB              	| Usage            |
@@ -105,7 +105,7 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 | <ColorBadge color="neutral-grey-2"/> 	                                    | **Grey 2**             	| #C9CACB 	| 201/202/203      	| div. elements    |
 | <ColorBadge color="neutral-grey-3"/> 	                                    | **Grey 3**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
 
-#### Color proportions
+### Color proportions
 
 ![Porsche Dark Theme color proportions](./assets/color-theme-proportions-dark.png)
 
@@ -214,11 +214,11 @@ when designing Porsche web applications.
 background color should pass the WCAG AA standard and have a contrast ratio of
 at least 4.5:1 for standard text size and 3:1 for larger text sizes.
 
-![Porsche color accessibility examples](./assets/color-accessibility-01.png)
+
 
 - Combinations of other colored elements must pass the WCAG AA standard of a minimum 3:1 ratio, unless it's only a decorative element.
 
-![Porsche color accessibility examples](./assets/color-accessibility-02.png)
+
 
 - Don’t rely on color only to convey information (for example when displaying
 status or error messages). This is of high importance especially in critical
@@ -226,17 +226,24 @@ cases, e.g. when displaying safety-relevant vehicle data.
 
 ---
 
-### Helpful tools and resources
+## Helpful tools and resources
 
-#### Sketch palette
+### Sketch palette
 Feel free to download the [Porsche color palette for Sketch](https://ui.porsche.com/latest/porsche-ui-kit-colors.sketchpalette) in order to use it as "Document Colors" or "Global Colors" in your color picker.
 The easiest way to import the palette to Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).
 
-#### Sketch plugins
+### Sketch plugins
 - [Stark](https://getstark.co)
 - [Color Contrast Analyser](https://github.com/getflourish/Sketch-Color-Contrast-Analyser)
 Both plugins help you to check the color contrast of two selected layers in Sketch, no matter if it's text or surface color.
 
-#### Web tools
+### Web tools
 - [Color Oracle](https://colororacle.org/) is a free color blindness simulator for both Windows and Mac, that gives you an impression on how your designs are perceived by visually impaired users.
 -  With [Tanaguru Contrast Finder](http://contrast-finder.tanaguru.com/) you can easily check color contrasts on your desired level of accessibility.
+
+---
+
+## Don'ts
+![Example for accessibility](./assets/color-accessibility-dont-01.png)
+
+![Example for accessibility](./assets/color-accessibility-dont-02.png)

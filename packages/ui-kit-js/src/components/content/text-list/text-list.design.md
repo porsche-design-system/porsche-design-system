@@ -4,16 +4,19 @@ A text list groups and organizes related content vertically in two hierarchical 
 
 ---
 
-# Available variants
+## Available variants
 
 The Test List comes in 2 different variants:
 
 - **Unordered List** to show content with equal value.
+
+    ![Example for unordered list](./assets/text-list-unordered.png)
+
 - **Ordered List** with an implicated sequence.
 
----
+    ![Example for ordered list](./assets/text-list-ordered.png)
 
-# Best practices
+---
 
 ## Order
 Arrange list items in a logical way, from  highest to lowest level. Split the content up into smaller and more specific categories and group them. 
