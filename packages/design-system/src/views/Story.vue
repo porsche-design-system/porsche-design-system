@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="tabs" v-if="isTabable()">
+    <nav class="tabs" v-if="hasTabs">
       <p-text variant="28-thin" tag="div" class="tab" v-for="(tab, index) in tabs" :key="index">
         <router-link :to="getTabLink(tab)">{{ tab }}</router-link>
       </p-text>
@@ -17,7 +17,8 @@
   import {config as appConfig} from '@/../design-system.app.config';
   import {decodeUrl, encodeUrl} from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
-  import {Stories} from '@/interface';
+  import {ComponentListImport, Stories} from '@/interface';
+  import {Component as ComponentType} from 'vue/types/options';
 
   @Component({
     components: {
@@ -25,12 +26,16 @@
     }
   })
   export default class Story extends Vue {
-    public components: any[] = [];
+    public components: ComponentType[] = [];
+
+    public get hasTabs(): boolean {
+      return this.tabs.length > 0;
+    }
 
     public get tabs(): string[] {
       const story = this.config && this.config[this.category] && this.config[this.category][this.story];
 
-      if (Array.isArray(story)) {
+      if (!story || Array.isArray(story)) {
         return [];
       }
 
@@ -64,8 +69,14 @@
       }
     }
 
-    public isTabable(): boolean {
-      return this.tabs.length > 0;
+    private get stories(): ComponentListImport {
+      const story = this.config && this.config[this.category] && this.config[this.category][this.story];
+
+      if (!story || Array.isArray(story)) {
+        return story;
+      }
+
+      return story[this.tab];
     }
 
     public getTabLink(name: string): string {
@@ -85,27 +96,12 @@
       await this.loadComponents();
     }
 
-    private getStoryImport(): (() => Promise<any>) | Array<(() => Promise<any>)> {
-      const story = this.config && this.config[this.category] && this.config[this.category][this.story];
-
-      if (Array.isArray(story)) {
-        return story;
-      }
-
-      return story[this.tab];
-    }
-
     private async loadComponents(): Promise<void> {
       this.components = [];
       await this.$store.dispatch('toggleLoadingAsync', true);
 
       try {
-        const story = this.getStoryImport();
-        if (Array.isArray(story)) {
-          for (const file of story) {
-            this.components.push((await file()).default);
-          }
-        } else {
+        for (const story of this.stories) {
           this.components.push((await story()).default);
         }
       } catch (e) {
@@ -116,7 +112,7 @@
     }
 
     private async redirect(): Promise<void> {
-      if (this.isTabable()) {
+      if (this.hasTabs) {
         await this.$router.replace(this.getTabLink(this.getFirstTabName()));
       } else {
         await this.$router.replace({name: `404-${this.area}`});
