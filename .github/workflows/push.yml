@@ -174,11 +174,17 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --design-system
-#      - name: 'VRT Test'
-#        uses: ./docker/node/
-#        with:
-#          entrypoint: run-test-vrt
-#          args: --design-system
+      - name: 'VRT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --design-system
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: design-system-vrt-regression
+          path: ./packages/design-system/tests/vrt/results
   deployment:
     name: 'Deployment'
     needs: [ui-kit-js, ui-kit-angular, ui-kit-react, design-system]
