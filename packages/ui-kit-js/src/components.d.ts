@@ -10,14 +10,12 @@ import {
   BreakpointCustomizable,
 } from './utils';
 import {
+  TextColor,
+  TextVariant,
+} from './types';
+import {
   Color,
 } from './components/basic/color/color';
-import {
-  Components,
-} from './index';
-import {
-  Components as Components1,
-} from './components';
 
 export namespace Components {
   interface PButtonIcon {
@@ -206,7 +204,7 @@ export namespace Components {
     /**
     * Basic text color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: TextColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -314,7 +312,7 @@ export namespace Components {
     /**
     * Basic text color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: TextColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -329,7 +327,6 @@ export namespace Components {
     | 'address'
     | 'blockquote'
     | 'figcaption'
-    | 'a'
     | 'cite'
     | 'time'
     | 'sup'
@@ -341,43 +338,13 @@ export namespace Components {
     /**
     * Style of the text.
     */
-    'variant'?: | 'copy'
-    | 'small'
-    | '18'
-    | '20'
-    | '20-thin'
-    | '24'
-    | '24-thin'
-    | '28'
-    | '28-thin'
-    | '30'
-    | '30-thin'
-    | '32'
-    | '32-thin'
-    | '36'
-    | '36-thin'
-    | '42'
-    | '42-thin'
-    | '44'
-    | '44-thin'
-    | '48'
-    | '48-thin'
-    | '52'
-    | '52-thin'
-    | '60'
-    | '60-thin'
-    | '62'
-    | '62-thin'
-    | '72'
-    | '72-thin'
-    | '84'
-    | '84-thin';
+    'variant'?: TextVariant;
   }
   interface PTextLink {
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PText['color'];
+    'color'?: TextColor;
     /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
@@ -405,13 +372,13 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'variant'?: Components.PText['variant'];
+    'variant'?: TextVariant;
   }
   interface PTextList {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PText['color'];
+    'color'?: TextColor;
     /**
     * The type of the text list.
     */
@@ -742,7 +709,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: TextColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -854,7 +821,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: TextColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -869,7 +836,6 @@ declare namespace LocalJSX {
     | 'address'
     | 'blockquote'
     | 'figcaption'
-    | 'a'
     | 'cite'
     | 'time'
     | 'sup'
@@ -881,43 +847,13 @@ declare namespace LocalJSX {
     /**
     * Style of the text.
     */
-    'variant'?: | 'copy'
-    | 'small'
-    | '18'
-    | '20'
-    | '20-thin'
-    | '24'
-    | '24-thin'
-    | '28'
-    | '28-thin'
-    | '30'
-    | '30-thin'
-    | '32'
-    | '32-thin'
-    | '36'
-    | '36-thin'
-    | '42'
-    | '42-thin'
-    | '44'
-    | '44-thin'
-    | '48'
-    | '48-thin'
-    | '52'
-    | '52-thin'
-    | '60'
-    | '60-thin'
-    | '62'
-    | '62-thin'
-    | '72'
-    | '72-thin'
-    | '84'
-    | '84-thin';
+    'variant'?: TextVariant;
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PText['color'];
+    'color'?: TextColor;
     /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
@@ -949,13 +885,13 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'variant'?: Components.PText['variant'];
+    'variant'?: TextVariant;
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PText['color'];
+    'color'?: TextColor;
     /**
     * The type of the text list.
     */

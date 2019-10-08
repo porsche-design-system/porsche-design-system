@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../../utils';
+import {TextColor} from '../../../../types';
 
 @Component({
   tag: 'p-headline',
@@ -26,7 +27,7 @@ export class Headline {
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
   /** Basic text color variations. */
-  @Prop() public color?: 'inherit' | 'porsche-black' | 'porsche-light' = 'porsche-black';
+  @Prop() public color?: TextColor = 'porsche-black';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
