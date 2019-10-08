@@ -13,7 +13,6 @@ describe('Button Icon', () => {
     expect(
       await vrt.test('button-icon', async () => {
         await vrt.goTo('/src/components/action/button-icon/button-icon.test.html');
-        await vrt.getPage().addStyleTag({content: ':root { --p-animation-duration__spinner: 0s; }'});
       })
     ).toBeFalsy();
   });
