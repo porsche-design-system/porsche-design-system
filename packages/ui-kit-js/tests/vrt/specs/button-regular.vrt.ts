@@ -13,7 +13,6 @@ describe('Button Regular', () => {
     expect(
       await vrt.test('button-regular', async () => {
         await vrt.goTo('/src/components/action/button-regular/button-regular.test.html');
-        await vrt.getPage().addStyleTag({content: ':root { --p-animation-duration__spinner: 0s; }'});
       })
     ).toBeFalsy();
   });

@@ -13,7 +13,6 @@ describe('Spinner', () => {
     expect(
       await vrt.test('spinner', async () => {
         await vrt.goTo('/src/components/feedback/spinner/spinner.test.html');
-        await vrt.getPage().addStyleTag({content: ':root { --p-animation-duration__spinner: 0s; }'});
       })
     ).toBeFalsy();
   });
