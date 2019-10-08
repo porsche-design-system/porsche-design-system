@@ -208,7 +208,7 @@
         }
 
         // Links
-        a {
+        a:not(.p-button-regular):not(.p-button-icon) {
           outline: none;
           text-decoration: underline;
           color: $p-color-porsche-black;
