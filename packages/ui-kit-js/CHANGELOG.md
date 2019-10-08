@@ -4,6 +4,9 @@
 ### Bugfix
 * Removed default rendering of download and rel attribute in `p-text-link` component
 
+### Change
+* Removed `a` from Text component `tag` property.
+* Extract global type definitions.
 
 
 ## [1.0.0-alpha.5] (2019-09-20)

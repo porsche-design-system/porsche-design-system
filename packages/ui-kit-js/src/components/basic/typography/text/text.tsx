@@ -1,6 +1,7 @@
 import {JSX, Component, Prop, h} from '@stencil/core';
 import cx from 'classnames';
-import {prefix} from '../../../../utils/prefix';
+import {prefix} from '../../../../utils';
+import {TextVariant, TextColor} from '../../../../types';
 
 @Component({
   tag: 'p-text',
@@ -18,7 +19,6 @@ export class Text {
     | 'address'
     | 'blockquote'
     | 'figcaption'
-    | 'a'
     | 'cite'
     | 'time'
     | 'sup'
@@ -29,44 +29,13 @@ export class Text {
     | 'legend' = 'p';
 
   /** Style of the text. */
-  @Prop() public variant?:
-    | 'copy'
-    | 'small'
-    | '18'
-    | '20'
-    | '20-thin'
-    | '24'
-    | '24-thin'
-    | '28'
-    | '28-thin'
-    | '30'
-    | '30-thin'
-    | '32'
-    | '32-thin'
-    | '36'
-    | '36-thin'
-    | '42'
-    | '42-thin'
-    | '44'
-    | '44-thin'
-    | '48'
-    | '48-thin'
-    | '52'
-    | '52-thin'
-    | '60'
-    | '60-thin'
-    | '62'
-    | '62-thin'
-    | '72'
-    | '72-thin'
-    | '84'
-    | '84-thin' = 'copy';
+  @Prop() public variant?: TextVariant = 'copy';
 
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
   /** Basic text color variations. */
-  @Prop() public color?: 'inherit' | 'porsche-black' | 'porsche-light' = 'porsche-black';
+  @Prop() public color?: TextColor = 'porsche-black';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
