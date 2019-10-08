@@ -64,7 +64,7 @@
             variant="24"
           >Join our mailing list and get informed about relevant updates and topics.
           </p-text>
-          <p-text class="p-spacing-mt-16">
+          <p-text variant="18" class="p-spacing-mt-16">
             <a
               href="http://eepurl.com/ghVSjH"
               target="_blank"
@@ -181,8 +181,6 @@
     }
 
     a {
-      border-bottom: 1px solid $p-color-porsche-red;
-      text-decoration: none;
       color: $p-color-porsche-red;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
