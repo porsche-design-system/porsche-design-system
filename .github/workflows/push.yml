@@ -36,17 +36,17 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --ui-kit-js
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --ui-kit-js
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@master
-        with:
-          name: ui-kit-js-vrt-regression
-          path: ./packages/ui-kit-js/tests/vrt/results
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-js
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: ui-kit-js-vrt-regression
+#          path: ./packages/ui-kit-js/tests/vrt/results
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
@@ -77,17 +77,17 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --ui-kit-angular
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@master
-        with:
-          name: ui-kit-angular-vrt-regression
-          path: ./packages/ui-kit-angular/tests/vrt/results
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-angular
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: ui-kit-angular-vrt-regression
+#          path: ./packages/ui-kit-angular/tests/vrt/results
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
@@ -118,17 +118,17 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --ui-kit-react
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@master
-        with:
-          name: ui-kit-react-vrt-regression
-          path: ./packages/ui-kit-react/tests/vrt/results
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --ui-kit-react
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: ui-kit-react-vrt-regression
+#          path: ./packages/ui-kit-react/tests/vrt/results
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
