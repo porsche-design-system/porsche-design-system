@@ -1,0 +1,216 @@
+on:
+  push:
+    branches:
+      - v*
+      - issue/*
+name: 'Porsche UI Kit'
+jobs:
+  ui-kit-js:
+    name: 'Porsche UI Kit JS'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'Lint'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-lint
+          args: --ui-kit-js
+      - name: 'Unit Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-unit
+          args: --ui-kit-js
+      - name: 'E2E Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-e2e
+          args: --ui-kit-js
+      - name: 'VRT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --ui-kit-js
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ui-kit-js-vrt-regression
+          path: ./packages/ui-kit-js/tests/vrt/results
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        with:
+          entrypoint: run-test-cbt
+          args: --ui-kit-js
+      - name: 'CBT Regression'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ui-kit-js-cbt-regression
+          path: ./packages/ui-kit-js/tests/cbt/results
+  ui-kit-angular:
+    name: 'Porsche UI Kit Angular'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'VRT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --ui-kit-angular
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ui-kit-angular-vrt-regression
+          path: ./packages/ui-kit-angular/tests/vrt/results
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        with:
+          entrypoint: run-test-cbt
+          args: --ui-kit-angular
+      - name: 'CBT Regression'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ui-kit-angular-cbt-regression
+          path: ./packages/ui-kit-angular/tests/cbt/results
+  ui-kit-react:
+    name: 'Porsche UI Kit React'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'VRT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --ui-kit-react
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ui-kit-react-vrt-regression
+          path: ./packages/ui-kit-react/tests/vrt/results
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        with:
+          entrypoint: run-test-cbt
+          args: --ui-kit-react
+      - name: 'CBT Regression'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ui-kit-react-cbt-regression
+          path: ./packages/ui-kit-react/tests/cbt/results
+  design-system:
+    name: 'Porsche Design System'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'Lint'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-lint
+          args: --design-system
+      - name: 'Unit Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-unit
+          args: --design-system
+      - name: 'E2E Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-e2e
+          args: --design-system
+      - name: 'VRT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --design-system
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: design-system-vrt-regression
+          path: ./packages/design-system/tests/vrt/results
+  deployment:
+    name: 'Deployment'
+    needs: [ui-kit-js, ui-kit-angular, ui-kit-react, design-system]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'Deploy'
+        uses: ./docker/node/
+        env:
+          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+        with:
+          entrypoint: run-deploy
+      - name: 'Slack'
+        uses: ./docker/node/
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          entrypoint: run-slack

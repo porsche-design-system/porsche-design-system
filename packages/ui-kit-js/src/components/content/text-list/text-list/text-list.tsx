@@ -1,7 +1,7 @@
 import {JSX, Component, Prop, h, Host} from '@stencil/core';
 import cx from 'classnames';
-import {prefix} from '../../../../utils/prefix';
-import {Components} from '../../../../components';
+import {prefix} from '../../../../utils';
+import {TextColor} from '../../../../types';
 
 @Component({
   tag: 'p-text-list',
@@ -12,7 +12,7 @@ export class TextList {
   @Prop() public listType?: 'unordered' | 'ordered' = 'unordered';
 
   /** Basic text list color variations. */
-  @Prop() public color?: Components.PText['color'] = 'porsche-black';
+  @Prop() public color?: TextColor = 'porsche-black';
 
   public render(): JSX.Element {
 

@@ -11,7 +11,7 @@ Available breakpoints:
 div {
   color: inherit;
   
-  @include breakpoint('s') {
+  @include p-breakpoint('s') {
     color: deeppink;
   }
 }
@@ -37,7 +37,7 @@ div {
 div {
   color: inherit;
   
-  @include breakpoint('s', 'm') {
+  @include p-breakpoint('s', 'm') {
     color: deeppink;
   }
 }
@@ -60,7 +60,7 @@ div {
 
 ## Spacing
 
-**Note:** Make sure to also check out the pre-compiled [CSS margin/padding spacing classes](/#/web/components/layout/spacing#code).
+**Note:** Make sure to also check out the pre-compiled [CSS margin/padding spacing classes](#/web/components/layout/spacing#code).
 
 Given values are:  
 `a | b | c | d | e | f | g`
@@ -116,7 +116,7 @@ div {
 
 ## Typography
 
-**Note:** For font-styling it's recommended to use [`<p-headline>`](/#/web/components/basic/typography#code)/[`<p-text>`](/#/web/components/basic/typography#code) component.
+**Note:** For font-styling it's recommended to use [`<p-headline>`](#/web/components/basic/typography#code)/[`<p-text>`](#/web/components/basic/typography#code) component.
 
 ### Headline
 

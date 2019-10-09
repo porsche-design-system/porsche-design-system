@@ -1,15 +1,55 @@
 // @ts-ignore
-import {Pages} from '@/interface';
+import {DesignSystemConfig} from '@/interface';
 
-export interface DesignSystemAppConfig {
-  pages: Pages;
-}
-
-export const config: DesignSystemAppConfig = {
+export const config: DesignSystemConfig = {
   pages: {
     'Getting Started': {
-      // @ts-ignore
-      About: () => import(`@/pages/app/about.md`),
+      About: [
+        // @ts-ignore
+        () => import(`@/pages/app/about.md`),
+      ],
+      'Start Designing': [
+        // @ts-ignore
+        () => import(`@/pages/app/start-designing.md`),
+      ],
+      'Design Workflow': [
+        // @ts-ignore
+        () => import(`@/pages/app/design-workflow.md`),
+      ],
+    },
+    News: {
+      Updates: [
+        // @ts-ignore
+        () => import(`@/pages/app/updates.md`),
+      ],
+      Roadmap: [
+        // @ts-ignore
+        () => import(`@/pages/app/roadmap.md`),
+      ],
+    },
+    Help: {
+      Support: [
+        // @ts-ignore
+        () => import(`@/pages/app/support.md`),
+      ],
+      Faq: [
+        // @ts-ignore
+        () => import(`@/pages/app/faq.md`),
+      ],
+    },
+  },
+  stories: {
+    Basic: {
+      Color: [
+        // @ts-ignore
+        () => import(`@/stories/app/color.md`),
+      ],
+    },
+    Action: {
+      Button: [
+        // @ts-ignore
+        () => import(`@/stories/app/button.md`),
+      ],
     },
   }
 };

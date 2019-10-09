@@ -9,14 +9,27 @@ export const config: Config = {
   namespace: 'porsche-ui-kit',
   outputTargets: [
     { type: 'dist', esmLoaderPath: '../loader' },
-    { type: 'www', serviceWorker: null },
+    {
+      type: 'www',
+      serviceWorker: null,
+      copy: [
+        {
+          src: require.resolve('@porsche-ui/utils/dist/visual-regression-test.css'),
+          dest: 'visual-regression-test.css'
+        },
+        {
+          src: './favicon.ico',
+          dest: 'favicon.ico'
+        }
+      ]
+    },
     reactOutputTarget({
-      componentCorePackage: '@porscheui/ui-kit-js',
-      proxiesFile: '../ui-kit-react/src/components.ts'
+      componentCorePackage: '@porsche-ui/ui-kit-js',
+      proxiesFile: '../ui-kit-react/projects/ui-kit-wrapper/src/lib/components.ts'
     }),
     angularOutputTarget({
-      componentCorePackage: '@porscheui/ui-kit-js',
-      directivesProxyFile: '../ui-kit-angular/src/directives/proxies.ts'
+      componentCorePackage: '@porsche-ui/ui-kit-js',
+      directivesProxyFile: '../ui-kit-angular/projects/ui-kit-wrapper/src/lib/ui-kit-wrapper.component.ts'
     })
   ],
   plugins: [

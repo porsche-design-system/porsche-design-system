@@ -1,7 +1,5 @@
 # Spinner
 
-## General information
-
 It's important for a good UX to give the user feedback about what's happening.
 Especially when it comes to unavoidable moments when the user has to wait,
 for example due to technical processing of information or requests, you should
@@ -10,10 +8,9 @@ never leave the user uncertain about what's happening.
 Always remember that the user's wait time begins with initiating an action,
 clicking on a button for example. Whenever this causes delays of more than 1 second,
 you should bridge it with a good user feedback in order not to leave the user
-uncertain about what's happening, to avoid a high bounce rate and to obtain a positive
-impression of your website or application.
+uncertain about what's happening, to avoid a high bounce rate and to obtain a positive impression of your website or application.
 
-### Spinner
+## Spinner
 A looped indicator (spinner) is used to inform the user about an ongoing operation
 where the loading progress cannot be determined. Usually, spinners are recommended
 to be used for delays of 2-10 seconds.
@@ -31,7 +28,7 @@ Depending on your need you can choose betwenn different spinner sizes and versio
 for Light Theme and Dark Theme. The Spinner `medium` and `large` adjust their size automatically based on the responsive breakpoint.
 
 
-| Type                      | Example                            | Recommendation                                                          |
+| TYPE                      | EXAMPLE                            | RECOMMENDATION                                                          |
 |---------------------------|------------------------------------|-------------------------------------------------------------------------|
 | Spinner X-Small           |   <p-spinner size="x-small"></p-spinner>    | Only for in-component loaders, such as in buttons or input fields.      |
 | Spinner Small - Large     |   <p-spinner size="small"></p-spinner><p-spinner size="medium"></p-spinner><p-spinner size="large"></p-spinner>  | For module or page loading, optionally accompanied by a text label.     |
@@ -65,9 +62,6 @@ the clickability of the surrounding elements.
 If a spinner is triggered by an interaction with a component, it is recommended to disable
 the component while the spinner is visible.
 
-![Button functionality blocked while loading](./assets/spinner-blocking-component.png)
-Example: Loading button.
-
 ### Screen blocking
 Using a loading spinner for parts of a screen or within dedicated components usually means
 that the user is able to cancel the operation, for example by clicking somewhere else.
@@ -78,7 +72,6 @@ the loader on top:
 * Light Theme: Blocking layer in Porsche Light, 90% opacity
 * Dark Theme: Blocking layer in Porsche Dark, 90% opacity
 
-![Page blocked while loading](./assets/spinner-blocking-page.png)
 
 ---
 
@@ -105,7 +98,13 @@ where a loader makes sense and which loader type is best suited.
 ---
 
 ## Related components
-* [Button Regular](/#/web/components/action/button-regular)
-* [Button Icon](/#/web/components/action/button-icon)
+* [Button Regular](#/web/components/action/button-regular)
+* [Button Icon](#/web/components/action/button-icon)
 
+<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+<p-headline variant="headline-3" tag="h3">Examples</p-headline>
+<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+<img src="./assets/spinner-blocking.png" />
+<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+</div>
 

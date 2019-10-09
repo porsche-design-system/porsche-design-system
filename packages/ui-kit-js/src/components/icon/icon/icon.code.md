@@ -1,32 +1,31 @@
 # Icon
 
-## Introduction
-Porsche UI Kit is using a SVG icon system to present an icon object visually. Each icon is hosted on the Porsche UI Kit CDN to be served and cached as fast as possible. To reference an icon just use the `source` property with the icon name **without** prefix `icon_` and the file extension `.svg`.
+The Porsche UI Kit is using a SVG icon system to visually present an icon object. Each icon is hosted on the Porsche UI Kit CDN to be served and cached as fast as possible. To reference an icon just use the `source` property with the icon name **without** prefix `icon_` and the file extension `.svg`.
 
-For more information and a complete overview of all available Porsche icons, head over to Porsche Icons (comin soon).
+For more information and a complete overview of all available Porsche icons, head over to Porsche Icons (coming soon).
 
 ## Icons
 
 ### Sizes
 
-#### Small - 24px/24px (default)
+#### Small - 24 x 24 px (default)
 <Playground>
   <p-icon source="car-next" />
 </Playground>
 
-#### Medium - 36px/36px
+#### Medium - 36 x 36 px
 <Playground>
   <p-icon source="car-next" size="medium" />
 </Playground>
 
-#### large - 48px/48px
+#### Large - 48 x 48 px
 <Playground>
   <p-icon source="car-next" size="large" />
 </Playground>
 
 ---
 
-### Color Variants
+### Color variants
 The default icon color inherits from its parent(s). But also predefined colors can be set. @see properties for possible color variants.
 
 <Playground>
@@ -36,7 +35,7 @@ The default icon color inherits from its parent(s). But also predefined colors c
 ---
 
 ### Custom icon
-The whole Porsche icon set is hosted on the Porsche UI Kit CDN. If there is a need to show a custom icon which doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be sure that the custom icon serves the specific needs like size and viewbox which are described in the [design documentation](/#/web/components/icon/icon#design).
+The whole Porsche icon set is hosted on the Porsche UI Kit CDN. If there is a need to show a custom icon which doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be sure that the custom icon serves the specific needs like size and viewbox which are described in the [design documentation](#/web/components/icon/icon#design).
 
 <Playground>
   <p-icon :source="require(`@/assets/web/icon-custom-kaixin.svg`)" size="large" aria-label="Icon for social media platform Kaixin" />
@@ -45,7 +44,7 @@ The whole Porsche icon set is hosted on the Porsche UI Kit CDN. If there is a ne
 ---
 
 ### Lazy loaded icon
-Icons can be lazy loaded which means, that they are only loaded (fetched) if they get visible in the viewport.
+Icons can be lazy loaded, which means that they are only loaded (fetched) if they get visible in the viewport.
 
 <Playground>
   <p-icon source="info" size="large" lazy="true" />

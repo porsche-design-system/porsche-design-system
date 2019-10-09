@@ -1,3 +1,8 @@
+/* disable animations globally */
+:root {
+  --p-animation-duration__spinner: 0s;
+}
+
 .playground {
   padding: 1rem;
   overflow: auto;
@@ -13,10 +18,4 @@
 
 .dark {
   background: #1a2023;
-}
-
-p-spinner,
-p-button-regular,
-p-button-icon {
-  --p-animation-duration__spinner: 0s;
 }

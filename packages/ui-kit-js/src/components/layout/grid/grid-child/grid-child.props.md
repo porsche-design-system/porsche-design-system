@@ -1,4 +1,4 @@
-# Grid (/#/web/components/child)
+# Grid (#/web/components/child)
 
 
 

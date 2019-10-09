@@ -17,10 +17,10 @@ import {
 })
 export class Pagination {
   /** The total count of items. */
-  @Prop() public totalItemsCount: number;
+  @Prop() public totalItemsCount: number = 1;
 
   /** The total count of items which should be shown per page.  */
-  @Prop() public itemsPerPage: number;
+  @Prop() public itemsPerPage: number = 1;
 
   /** Index of the currently active page. */
   @Prop() public activePage?: number = 1;
@@ -86,21 +86,21 @@ export class Pagination {
         if (pageModel.type === itemTypes.PREVIOUS_PAGE_LINK) {
           const paginationPrevClasses = cx(
             prefix('pagination__prev'),
-            pageModel.isActive && prefix('pagination__prev--disabled')
+            !pageModel.isActive && prefix('pagination__prev--disabled')
           );
 
           return (prevItem = (
             <li {...pageModel} class={paginationItemClasses}>
               <a
                 class={paginationPrevClasses}
-                href={!pageModel.isActive && '#'}
+                href={pageModel.isActive && '#'}
                 onClick={(e) => {
-                  if (!this.onClick || pageModel.isActive) {
+                  if (!this.onClick || !pageModel.isActive) {
                     return;
                   }
                   this.onClick(e, pageModel.value);
                 }}
-                aria-disabled={pageModel.isActive && 'true'}
+                aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.labelPrev}
               >
                 <p-icon source='arrow-left-hair' />
@@ -144,21 +144,21 @@ export class Pagination {
         if (pageModel.type === itemTypes.NEXT_PAGE_LINK) {
           const paginationNextClasses = cx(
             prefix('pagination__next'),
-            pageModel.isActive && prefix('pagination__next--disabled')
+            !pageModel.isActive && prefix('pagination__next--disabled')
           );
 
           return (nextItem = (
             <li {...pageModel} class={paginationItemClasses}>
               <a
                 class={paginationNextClasses}
-                href={!pageModel.isActive && '#'}
+                href={pageModel.isActive && '#'}
                 onClick={(e) => {
-                  if (!this.onClick || pageModel.isActive) {
+                  if (!this.onClick || !pageModel.isActive) {
                     return;
                   }
                   this.onClick(e, pageModel.value);
                 }}
-                aria-disabled={pageModel.isActive && 'true'}
+                aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.labelNext}
               >
                 <p-icon source='arrow-right-hair' />

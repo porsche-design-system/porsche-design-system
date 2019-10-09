@@ -94,7 +94,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porscheui/ui-kit-scss-utils/index';
+  @import '~@porsche-ui/ui-kit-scss-utils/index';
 
   .tabs {
     display: flex;
@@ -181,7 +181,6 @@
       }
 
       > * {
-        display: block;
         margin-top: $p-spacing-16;
       }
     }
