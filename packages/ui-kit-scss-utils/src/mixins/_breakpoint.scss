@@ -8,7 +8,7 @@ $p-breakpoints: (
   'xxl': 1920px
 );
 
-@mixin breakpoint($min-breakpoint: null, $max-breakpoint: null) {
+@mixin p-breakpoint($min-breakpoint: null, $max-breakpoint: null) {
   @if ($min-breakpoint and $max-breakpoint) {
     @if map-has-key($p-breakpoints, $min-breakpoint) and map-has-key($p-breakpoints, $max-breakpoint) {
       @media (min-width: #{map-get($p-breakpoints, $min-breakpoint)}) and (max-width: #{map-get($p-breakpoints, $max-breakpoint) - 1px}) {

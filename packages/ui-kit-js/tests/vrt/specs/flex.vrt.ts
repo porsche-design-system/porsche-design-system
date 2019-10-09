@@ -1,18 +1,18 @@
 import 'jasmine';
-import { VisualRegressionTester } from '@porscheui/visual-regression-tester';
+import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
 describe('Flex', () => {
-  let visualRegressionTester: VisualRegressionTester;
+  let vrt: VisualRegressionTester;
 
   beforeAll(async () => {
-    visualRegressionTester = await getVisualRegressionTester();
+    vrt = await getVisualRegressionTester();
   });
 
   it('should have no visual regression', async () => {
     expect(
-      await visualRegressionTester.test('flex', async () => {
-        await visualRegressionTester.goTo('/src/components/layout/flex/flex.test.html');
+      await vrt.test('flex', async () => {
+        await vrt.goTo('/src/components/layout/flex/flex.test.html');
       })
     ).toBeFalsy();
   });

@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <router-link class="link" :to="`/${area}`">
-      <Marque/>
+      <p-marque/>
     </router-link>
     <p-headline class="p-spacing-mt-16" variant="headline-4" tag="h1" align="center">
       Porsche UI Kit
@@ -12,21 +12,16 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import Marque from '@/components/Marque.vue';
-// import {version} from '@porscheui/ui-kit-js/package.json';
+// import {version} from '@porsche-ui/ui-kit-js/package.json';
 
-@Component({
-  components: {
-    Marque
-  }
-})
+@Component
 export default class Header extends Vue {
   get subtitle() {
     switch (this.area) {
       case 'app':
         return `App Design System (v1)`;
       case 'web':
-        return `Web Design System (v1.0.0-alpha.3)`;
+        return `Web Design System (v1)`;
       default:
         return '';
     }
@@ -39,7 +34,7 @@ export default class Header extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import "~@porscheui/ui-kit-scss-utils/index";
+  @import "~@porsche-ui/ui-kit-scss-utils/index";
 
   .header {
     text-align: center;

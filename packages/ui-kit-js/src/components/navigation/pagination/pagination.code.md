@@ -8,9 +8,8 @@
 </Playground>
 
 ## Differences in mobile and tablet/desktop viewports
-To correctly display the Pagination in different viewport sizes, the maximum amount of page links displayed is meant to be reduced for lower resolutions.
-Currently the maximum number is either `7` (desktop/tablet) or `5` (mobile). The components handles viewport sizing internally by default.
-To adapt the maximum number of page links for smaller screens for individual breakpoints, the `page-range` property can be changed to `1` (desktop default) or `0` (mobile).
+To adapt the Pagination to the viewport context, the amount of displayed page items varies between either `7` (desktop/tablet) or `5` (mobile). The components handles responsive viewport sizing by default.
+To override the page items amount for individual breakpoints, the `page-range` property can be set to `1` (desktop default) or `0` (mobile).
 
 ### Page range: auto (default)
 <Playground :themeable="true">
@@ -35,8 +34,8 @@ To adapt the maximum number of page links for smaller screens for individual bre
 
 --- 
 
-## Playground
-Test Pagination behaviour by changing values for total amount of items, items to display per page and number of currently active page.
+## Behaviour playground
+By changing values for total amount of items, items to display per page and number of currently active page, the behaviour of the Pagination component can be changed.
 
 <Playground :themeable="true">
   <template v-slot:configurator="{theme}">

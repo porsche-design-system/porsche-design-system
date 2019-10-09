@@ -23,7 +23,7 @@ $p-spacings: (
     @if ($name == 'xxs') {
       @content;
     } @else {
-      @include breakpoint($breakpoint) {
+      @include p-breakpoint($breakpoint) {
         &-#{$name} {
           @content;
         }
@@ -35,7 +35,7 @@ $p-spacings: (
 @mixin generate-max-major-breakpoints() {
   @each $name, $breakpoint in $p-breakpoints {
     @if ($name != 'xxs') {
-      @include breakpoint('xxs', $name) {
+      @include p-breakpoint('xxs', $name) {
         &-#{$name} {
           @content;
         }

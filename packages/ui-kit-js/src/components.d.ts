@@ -10,11 +10,9 @@ import {
   BreakpointCustomizable,
 } from './utils';
 import {
-  Components,
-} from './index';
-import {
-  Components as Components1,
-} from './components';
+  TextColor,
+  TextVariant,
+} from './types';
 
 export namespace Components {
   interface PButtonIcon {
@@ -38,6 +36,10 @@ export namespace Components {
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
     'loading'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
     * Adapts the button color when used on dark background.
     */
@@ -73,6 +75,10 @@ export namespace Components {
     */
     'small'?: boolean;
     /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
+    /**
     * Adapts the button color when used on dark background.
     */
     'theme'?: 'light' | 'dark';
@@ -84,39 +90,6 @@ export namespace Components {
     * The style variant of the button.
     */
     'variant'?: 'highlight' | 'ghost' | 'default';
-  }
-  interface PColor {
-    'colors'?: | 'porsche-black'
-    | 'porsche-light'
-    | 'porsche-dark'
-    | 'porsche-red'
-    | 'porsche-dark-red'
-    | 'surface-light'
-    | 'surface-dark'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'status-red'
-    | 'status-green'
-    | 'status-yellow'
-    | 'state-focus';
-    'text'?: | 'porsche-black'
-    | 'porsche-light'
-    | 'porsche-red'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'inherit';
   }
   interface PFlex {
     /**
@@ -228,7 +201,7 @@ export namespace Components {
     /**
     * Basic text color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: TextColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -256,7 +229,7 @@ export namespace Components {
     /**
     * Basic color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: TextColor;
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -269,6 +242,12 @@ export namespace Components {
     * Specifies which icon to use.
     */
     'source': string;
+  }
+  interface PMarque {
+    /**
+    * Show/hide trademark sign.
+    */
+    'trademark'?: boolean;
   }
   interface PPagination {
     /**
@@ -330,7 +309,7 @@ export namespace Components {
     /**
     * Basic text color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: TextColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -345,7 +324,6 @@ export namespace Components {
     | 'address'
     | 'blockquote'
     | 'figcaption'
-    | 'a'
     | 'cite'
     | 'time'
     | 'sup'
@@ -357,47 +335,17 @@ export namespace Components {
     /**
     * Style of the text.
     */
-    'variant'?: | 'copy'
-    | 'small'
-    | '18'
-    | '20'
-    | '20-thin'
-    | '24'
-    | '24-thin'
-    | '28'
-    | '28-thin'
-    | '30'
-    | '30-thin'
-    | '32'
-    | '32-thin'
-    | '36'
-    | '36-thin'
-    | '42'
-    | '42-thin'
-    | '44'
-    | '44-thin'
-    | '48'
-    | '48-thin'
-    | '52'
-    | '52-thin'
-    | '60'
-    | '60-thin'
-    | '62'
-    | '62-thin'
-    | '72'
-    | '72-thin'
-    | '84'
-    | '84-thin';
+    'variant'?: TextVariant;
   }
   interface PTextLink {
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PText['color'];
+    'color'?: TextColor;
     /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
-    'download'?: boolean;
+    'download'?: string;
     /**
     * Target url to where the component should link to.
     */
@@ -421,13 +369,13 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'variant'?: Components.PText['variant'];
+    'variant'?: TextVariant;
   }
   interface PTextList {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PText['color'];
+    'color'?: TextColor;
     /**
     * The type of the text list.
     */
@@ -449,12 +397,6 @@ declare global {
   var HTMLPButtonRegularElement: {
     prototype: HTMLPButtonRegularElement;
     new (): HTMLPButtonRegularElement;
-  };
-
-  interface HTMLPColorElement extends Components.PColor, HTMLStencilElement {}
-  var HTMLPColorElement: {
-    prototype: HTMLPColorElement;
-    new (): HTMLPColorElement;
   };
 
   interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {}
@@ -491,6 +433,12 @@ declare global {
   var HTMLPIconElement: {
     prototype: HTMLPIconElement;
     new (): HTMLPIconElement;
+  };
+
+  interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {}
+  var HTMLPMarqueElement: {
+    prototype: HTMLPMarqueElement;
+    new (): HTMLPMarqueElement;
   };
 
   interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {}
@@ -531,13 +479,13 @@ declare global {
   interface HTMLElementTagNameMap {
     'p-button-icon': HTMLPButtonIconElement;
     'p-button-regular': HTMLPButtonRegularElement;
-    'p-color': HTMLPColorElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
     'p-grid-child': HTMLPGridChildElement;
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
+    'p-marque': HTMLPMarqueElement;
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
@@ -581,6 +529,10 @@ declare namespace LocalJSX {
     * Emitted when the button has focus.
     */
     'onPFocus'?: (event: CustomEvent<void>) => void;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
     /**
     * Adapts the button color when used on dark background.
     */
@@ -628,6 +580,10 @@ declare namespace LocalJSX {
     */
     'small'?: boolean;
     /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
+    /**
     * Adapts the button color when used on dark background.
     */
     'theme'?: 'light' | 'dark';
@@ -639,39 +595,6 @@ declare namespace LocalJSX {
     * The style variant of the button.
     */
     'variant'?: 'highlight' | 'ghost' | 'default';
-  }
-  interface PColor extends JSXBase.HTMLAttributes<HTMLPColorElement> {
-    'colors'?: | 'porsche-black'
-    | 'porsche-light'
-    | 'porsche-dark'
-    | 'porsche-red'
-    | 'porsche-dark-red'
-    | 'surface-light'
-    | 'surface-dark'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'status-red'
-    | 'status-green'
-    | 'status-yellow'
-    | 'state-focus';
-    'text'?: | 'porsche-black'
-    | 'porsche-light'
-    | 'porsche-red'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'inherit';
   }
   interface PFlex extends JSXBase.HTMLAttributes<HTMLPFlexElement> {
     /**
@@ -783,7 +706,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: TextColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -811,7 +734,7 @@ declare namespace LocalJSX {
     /**
     * Basic color variations.
     */
-    'color'?: Components.PColor['text'];
+    'color'?: TextColor;
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -824,6 +747,12 @@ declare namespace LocalJSX {
     * Specifies which icon to use.
     */
     'source'?: string;
+  }
+  interface PMarque extends JSXBase.HTMLAttributes<HTMLPMarqueElement> {
+    /**
+    * Show/hide trademark sign.
+    */
+    'trademark'?: boolean;
   }
   interface PPagination extends JSXBase.HTMLAttributes<HTMLPPaginationElement> {
     /**
@@ -889,7 +818,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations.
     */
-    'color'?: 'inherit' | 'porsche-black' | 'porsche-light';
+    'color'?: TextColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -904,7 +833,6 @@ declare namespace LocalJSX {
     | 'address'
     | 'blockquote'
     | 'figcaption'
-    | 'a'
     | 'cite'
     | 'time'
     | 'sup'
@@ -916,47 +844,17 @@ declare namespace LocalJSX {
     /**
     * Style of the text.
     */
-    'variant'?: | 'copy'
-    | 'small'
-    | '18'
-    | '20'
-    | '20-thin'
-    | '24'
-    | '24-thin'
-    | '28'
-    | '28-thin'
-    | '30'
-    | '30-thin'
-    | '32'
-    | '32-thin'
-    | '36'
-    | '36-thin'
-    | '42'
-    | '42-thin'
-    | '44'
-    | '44-thin'
-    | '48'
-    | '48-thin'
-    | '52'
-    | '52-thin'
-    | '60'
-    | '60-thin'
-    | '62'
-    | '62-thin'
-    | '72'
-    | '72-thin'
-    | '84'
-    | '84-thin';
+    'variant'?: TextVariant;
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**
     * Basic text color variations.
     */
-    'color'?: Components.PText['color'];
+    'color'?: TextColor;
     /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
-    'download'?: boolean;
+    'download'?: string;
     /**
     * Target url to where the component should link to.
     */
@@ -984,13 +882,13 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'variant'?: Components.PText['variant'];
+    'variant'?: TextVariant;
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
     * Basic text list color variations.
     */
-    'color'?: Components.PText['color'];
+    'color'?: TextColor;
     /**
     * The type of the text list.
     */
@@ -1001,13 +899,13 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'p-button-icon': PButtonIcon;
     'p-button-regular': PButtonRegular;
-    'p-color': PColor;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
     'p-grid': PGrid;
     'p-grid-child': PGridChild;
     'p-headline': PHeadline;
     'p-icon': PIcon;
+    'p-marque': PMarque;
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;

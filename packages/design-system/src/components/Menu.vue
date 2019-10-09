@@ -9,24 +9,23 @@
 
   @Component
   export default class Menu extends Vue {
-
-    public isActive: boolean = false;
+    public get isActive(): boolean {
+      return this.$store.getters.isMenuActive;
+    }
 
     public toggleMenu() {
-      this.isActive = !this.isActive;
-      this.$emit('toggle', this.isActive);
+      this.$store.commit('toggleIsMenuActive');
     }
 
     @Watch('$route')
     private onRouteChange(): void {
-      this.isActive = false;
-      this.$emit('toggle', this.isActive);
+      this.$store.commit('setIsMenuActive', false);
     }
   }
 </script>
 
 <style scoped lang="scss">
-  @import "~@porscheui/ui-kit-scss-utils/index";
+  @import "~@porsche-ui/ui-kit-scss-utils/index";
 
   .menu {
     width: rem(40px);

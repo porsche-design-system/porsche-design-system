@@ -1,29 +1,8 @@
 <template>
   <div>
-    <nav class="tabs">
-      <p-text
-        class="tab"
-        variant="28-thin"
-        tag="div"
-        v-if="isStoryExistent('design')"
-      >
-        <router-link to="#design">Design</router-link>
-      </p-text>
-      <p-text
-        class="tab"
-        variant="28-thin"
-        tag="div"
-        v-if="isStoryExistent('code') && featureToggle('Q2/2019 Components')"
-      >
-        <router-link to="#code">Code</router-link>
-      </p-text>
-      <p-text
-        class="tab"
-        variant="28-thin"
-        tag="div"
-        v-if="isStoryExistent('props') && featureToggle('Q2/2019 Components')"
-      >
-        <router-link to="#props">Props</router-link>
+    <nav class="tabs" v-if="hasTabs">
+      <p-text variant="28-thin" tag="div" class="tab" v-for="(tab, index) in tabs" :key="index">
+        <router-link :to="getTabLink(tab)">{{ tab }}</router-link>
       </p-text>
     </nav>
     <Markdown>
@@ -33,95 +12,117 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator';
-import { config as webConfig } from '@/../design-system.web.config';
-import { decodeUrl, featureToggle } from '@/services/utils';
-import Markdown from '@/components/Markdown.vue';
-import { Stories, Tabs } from '@/interface';
+  import {Component, Vue, Watch} from 'vue-property-decorator';
+  import {config as webConfig} from '@/../design-system.web.config';
+  import {config as appConfig} from '@/../design-system.app.config';
+  import {decodeUrl, encodeUrl} from '@/services/utils';
+  import Markdown from '@/components/Markdown.vue';
+  import {ComponentListImport, Stories} from '@/interface';
+  import {Component as ComponentType} from 'vue/types/options';
 
-@Component({
-  components: {
-    Markdown
-  }
-})
-export default class Story extends Vue {
-  public featureToggle = featureToggle;
-  public components: any[] = [];
+  @Component({
+    components: {
+      Markdown
+    }
+  })
+  export default class Story extends Vue {
+    public components: ComponentType[] = [];
 
-  private get area(): string {
-    return this.$route.meta.area;
-  }
+    public get hasTabs(): boolean {
+      return this.tabs.length > 0;
+    }
 
-  private get category(): string {
-    return decodeUrl(this.$route.params.category);
-  }
+    public get tabs(): string[] {
+      const story = this.config && this.config[this.category] && this.config[this.category][this.story];
 
-  private get story(): string {
-    return decodeUrl(this.$route.params.story);
-  }
-
-  private get tab(): string {
-    return this.$route.hash.substring(1).toLowerCase();
-  }
-
-  private get config(): Stories {
-    return webConfig.stories;
-  }
-
-  public isStoryExistent(tab: Tabs): boolean {
-    return (
-      this.config &&
-      this.config[this.category] &&
-      this.config[this.category][this.story] &&
-      this.config[this.category][this.story][tab]
-    );
-  }
-
-  @Watch('$route')
-  private async onRouteChange(): Promise<void> {
-    await this.loadComponents();
-  }
-
-  private async mounted(): Promise<void> {
-    await this.loadComponents();
-  }
-
-  private async loadComponents(): Promise<void> {
-    this.components = [];
-
-    try {
-      await this.$store.dispatch('toggleLoadingAsync', true);
-      const story = this.config[this.category][this.story][this.tab as Tabs];
-
-      if (typeof story === 'object') {
-        for (const file of story) {
-          this.components.push((await file()).default);
-        }
-      } else {
-        this.components.push((await story()).default);
+      if (!story || Array.isArray(story)) {
+        return [];
       }
-      await this.$store.dispatch('toggleLoadingAsync', false);
-    } catch (e) {
-      this.redirect();
-    }
-  }
 
-  private async redirect(): Promise<void> {
-    if (this.isStoryExistent('design')) {
-      this.$router.replace('#design');
-    } else if (this.isStoryExistent('code')) {
-      this.$router.replace('#code');
-    } else if (this.isStoryExistent('props')) {
-      this.$router.replace('#props');
-    } else {
-      this.$router.replace({name: `404-${this.area}`});
+      return Object.keys(story);
+    }
+
+    private get area(): string {
+      return this.$route.meta.area;
+    }
+
+    private get category(): string {
+      return decodeUrl(this.$route.params.category);
+    }
+
+    private get story(): string {
+      return decodeUrl(this.$route.params.story);
+    }
+
+    private get tab(): string {
+      return decodeUrl(this.$route.hash.substring(1));
+    }
+
+    private get config(): Stories {
+      switch (this.area) {
+        case 'app':
+          return appConfig.stories;
+        case 'web':
+          return webConfig.stories;
+        default:
+          return webConfig.stories;
+      }
+    }
+
+    private get stories(): ComponentListImport {
+      const story = this.config && this.config[this.category] && this.config[this.category][this.story];
+
+      if (!story || Array.isArray(story)) {
+        return story;
+      }
+
+      return story[this.tab];
+    }
+
+    public getTabLink(name: string): string {
+      return `#${encodeUrl(name)}`;
+    }
+
+    public getFirstTabName(): string {
+      return this.tabs[0];
+    }
+
+    @Watch('$route')
+    private async onRouteChange(): Promise<void> {
+      await this.loadComponents();
+    }
+
+    private async mounted(): Promise<void> {
+      await this.loadComponents();
+    }
+
+    private async loadComponents(): Promise<void> {
+      this.components = [];
+      await this.$store.dispatch('toggleLoadingAsync', true);
+
+      try {
+        for (const story of this.stories) {
+          this.components.push((await story()).default);
+        }
+      } catch (e) {
+        this.redirect();
+      }
+
+      await this.$store.dispatch('toggleLoadingAsync', false);
+    }
+
+    private async redirect(): Promise<void> {
+      if (this.hasTabs) {
+        await this.$router.replace(this.getTabLink(this.getFirstTabName()));
+      } else {
+        await this.$router.replace({name: `404-${this.area}`});
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">
-  @import "~@porscheui/ui-kit-scss-utils/index";
+  @import "~@porsche-ui/ui-kit-scss-utils/index";
 
   .tabs {
     display: flex;

@@ -1,5 +1,5 @@
 import 'jasmine';
-import {VisualRegressionTester, VisualRegressionTestOptions} from '@porscheui/visual-regression-tester';
+import {VisualRegressionTester, VisualRegressionTestOptions} from '@porsche-ui/visual-regression-tester';
 import * as puppeteer from 'puppeteer';
 import {Browser} from 'puppeteer';
 
@@ -12,10 +12,17 @@ const testOptions: VisualRegressionTestOptions = {
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
   baseUrl: 'http://localhost:8080',
-  timeout: 90000
+  timeout: 90000,
+  mode: 'square-auto'
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
+
+beforeAll(async () => {
+  browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
+  });
+});
 
 afterAll(async () => {
   if (browser) {
@@ -25,9 +32,6 @@ afterAll(async () => {
 
 export async function getVisualRegressionTester(): Promise<VisualRegressionTester> {
   if (!visualRegressionTester) {
-    browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-    });
     visualRegressionTester = new VisualRegressionTester(browser, testOptions);
   }
 

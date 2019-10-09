@@ -1,8 +1,9 @@
-import { JSX, Component, Host, Element, Prop, State, Watch, h } from '@stencil/core';
-import { getName, isUrl, isValid } from './icon-helper';
+import { Build, Component, Host, Element, Prop, State, Watch, h } from '@stencil/core';
+import { getName, isUrl } from './icon-helper';
+import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
-import { prefix } from '../../../utils/prefix';
-import { Components } from '../../../index';
+import { prefix } from '../../../utils';
+import { TextColor } from '../../../types';
 
 @Component({
   tag: 'p-icon',
@@ -11,10 +12,6 @@ import { Components } from '../../../index';
 })
 export class Icon {
   @Element() public el!: HTMLElement;
-
-  @Prop({ context: 'isServer' }) public isServer!: boolean;
-  @Prop({ context: 'document' }) public doc!: Document;
-  @Prop({ context: 'window' }) public win: any;
 
   /**
    * Specifies which icon to use.
@@ -27,7 +24,7 @@ export class Icon {
   @Prop({ mutable: true, reflectToAttr: true }) public ariaLabel?: string;
 
   /** Basic color variations. */
-  @Prop() public color?: Components.PColor['text'] = 'inherit';
+  @Prop() public color?: TextColor = 'inherit';
 
   /**
    * The size of the icon.
@@ -45,7 +42,7 @@ export class Icon {
   @State() private svgContent?: string;
   @State() private isVisible = false;
 
-  public componentWillLoad() {
+  public connectedCallback() {
     // purposely do not return the promise here because loading
     // the svg file should not hold up loading the app
     // only load the svg if it's visible
@@ -55,7 +52,7 @@ export class Icon {
     });
   }
 
-  public componentDidUnload() {
+  public disconnectedCallback() {
     if (this.io) {
       this.io.disconnect();
       this.io = undefined;
@@ -64,12 +61,14 @@ export class Icon {
 
   @Watch('source')
   public loadIcon() {
-    if (!this.isServer && this.isVisible) {
+    if (Build.isBrowser && this.isVisible) {
       const url = this.getSource();
-      if (url) {
-        getSvgContent(this.doc, url, 'p-icon-svg').then((svgContent) => (this.svgContent = svgContent));
+      if (iconContent.has(url)) {
+        // sync if it's already loaded
+        this.svgContent = iconContent.get(url);
       } else {
-        console.error('icon was not resolved');
+        // async if it hasn't been loaded
+        getSvgContent(url).then(() => this.svgContent = iconContent.get(url));
       }
     }
 
@@ -78,7 +77,7 @@ export class Icon {
       // user did not provide a label
       // come up with the label based on the icon name
       if (name) {
-        this.ariaLabel = name.replace(/\-/g, ' ');
+        this.ariaLabel = name.replace(/-/g, ' ');
       }
     }
   }
@@ -98,41 +97,28 @@ export class Icon {
       this.size && prefix(`icon--${this.size}`)
     );
 
-    if (!this.isServer && this.svgContent) {
-      // we've already loaded up this svg at one point
-      // and the svg content we've loaded and assigned checks out
-      // render this svg!!
-      return (
-        <Host role='img'>
-          <i class={iconClasses} innerHTML={this.svgContent} />
-        </Host>
-      );
-    }
-
-    // actively requesting the svg
-    // or it's an SSR render
-    // so let's just render an empty div for now
     return (
-      <Host role='img'>
-        <i class={iconClasses} />
+      <Host role='img' >{(
+        (Build.isBrowser && this.svgContent)
+          ? <i class={iconClasses} innerHTML={this.svgContent}/>
+          : <i class={iconClasses}/>
+      )}
       </Host>
     );
   }
 
   private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void) {
-    if (this.lazy && this.win && this.win.IntersectionObserver) {
-      const io = (this.io = new this.win.IntersectionObserver(
-        (data: IntersectionObserverEntry[]) => {
-          if (data[0].isIntersecting) {
-            io.disconnect();
-            this.io = undefined;
-            cb();
-          }
-        },
-        { rootMargin }
-      ));
+    if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
+      const io = this.io = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
+        if (data[0].isIntersecting) {
+          io.disconnect();
+          this.io = undefined;
+          cb();
+        }
+      }, { rootMargin });
 
       io.observe(el);
+
     } else {
       // browser doesn't support IntersectionObserver
       // so just fallback to always show it
@@ -141,62 +127,5 @@ export class Icon {
   }
 }
 
-const requests = new Map<string, Promise<string>>();
 
-function getSvgContent(doc: Document, url: string, scopedId: string | undefined) {
-  // see if we already have a request for this url
-  let req = requests.get(url);
 
-  if (!req) {
-    // we don't already have a request
-    req = fetch(url, { cache: 'force-cache' })
-      .then((rsp) => {
-        if (isStatusValid(rsp.status)) {
-          return rsp.text();
-        }
-        return Promise.resolve(null);
-      })
-      .then((svgContent) => validateContent(doc, svgContent, scopedId));
-
-    // cache for the same requests
-    requests.set(url, req);
-  }
-
-  return req;
-}
-
-function isStatusValid(status: number) {
-  return status <= 299;
-}
-
-function validateContent(document: Document, svgContent: string | null, scopeId: string | undefined) {
-  if (svgContent) {
-    const frag = document.createDocumentFragment();
-    const div = document.createElement('div');
-    div.innerHTML = svgContent;
-    frag.appendChild(div);
-
-    // setup this way to ensure it works on our buddy IE
-    for (let i = div.childNodes.length - 1; i >= 0; i--) {
-      if (div.childNodes[i].nodeName.toLowerCase() !== 'svg') {
-        div.removeChild(div.childNodes[i]);
-      }
-    }
-
-    // must only have 1 root element
-    const svgElm = div.firstElementChild;
-    if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
-      if (scopeId) {
-        svgElm.setAttribute('class', scopeId);
-        svgElm.setAttribute('focusable', 'false');
-      }
-      // root element must be an svg
-      // lets double check we've got valid elements
-      // do not allow scripts
-      if (isValid(svgElm as any)) {
-        return div.innerHTML;
-      }
-    }
-  }
-  return '';
-}

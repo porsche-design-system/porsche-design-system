@@ -1,4 +1,4 @@
-# Loader
+# Spinner
 
 
 
@@ -18,5 +18,5 @@
 
 ### Used by
 
- - [p-button-icon](/#/web/components/action/button-icon)
- - [p-button-regular](/#/web/components/action/button-regular)
+ - [p-button-icon](#/web/components/action/button-icon)
+ - [p-button-regular](#/web/components/action/button-regular)

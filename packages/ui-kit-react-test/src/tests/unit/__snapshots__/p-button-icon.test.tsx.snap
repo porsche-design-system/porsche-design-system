@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Button Icon component should render correctly in variant: default 1`] = `<p-button-icon />`;
-
-exports[`Button Icon component should render correctly in variant: ghost 1`] = `
-<p-button-icon
-  variant="ghost"
-/>
-`;

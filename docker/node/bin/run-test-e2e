@@ -3,7 +3,10 @@
 set -o errexit
 set -o pipefail
 
-if [[ "--ui-kit-js" == "${1}" ]] || [[ "--design-system" == "${1}" ]]; then
+if
+  [[ "--ui-kit-js" == "${1}" ]] ||
+  [[ "--design-system" == "${1}" ]]
+then
   yarn test:e2e:${1:2}
 else
   yarn test:e2e
