@@ -21,7 +21,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 beforeAll(async () => {
   browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
   });
 });
 
