@@ -1,6 +1,6 @@
 import 'jasmine';
-import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
-import { getVisualRegressionTester } from '../helpers/setup';
+import {VisualRegressionTester} from '@porsche-ui/visual-regression-tester';
+import {getVisualRegressionTester} from '../helpers/setup';
 
 describe('Button Icon', () => {
   let vrt: VisualRegressionTester;

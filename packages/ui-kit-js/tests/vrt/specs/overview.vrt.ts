@@ -1,6 +1,6 @@
 import 'jasmine';
-import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
-import { getVisualRegressionOverviewTester } from '../helpers/setup';
+import {VisualRegressionTester} from '@porsche-ui/visual-regression-tester';
+import {getVisualRegressionOverviewTester} from '../helpers/setup';
 
 describe('Components Overview', () => {
   let vrt: VisualRegressionTester;
@@ -16,5 +16,4 @@ describe('Components Overview', () => {
       })
     ).toBeFalsy();
   });
-
 });
