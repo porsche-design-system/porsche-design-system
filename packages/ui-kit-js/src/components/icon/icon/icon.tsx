@@ -3,7 +3,7 @@ import { getName, isUrl } from './icon-helper';
 import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-import { Color } from '../../basic/color/color';
+import { TextColor } from '../../../types';
 
 @Component({
   tag: 'p-icon',
@@ -24,7 +24,7 @@ export class Icon {
   @Prop({ mutable: true, reflectToAttr: true }) public ariaLabel?: string;
 
   /** Basic color variations. */
-  @Prop() public color?: Color | 'inherit' = 'inherit';
+  @Prop() public color?: TextColor = 'inherit';
 
   /**
    * The size of the icon.

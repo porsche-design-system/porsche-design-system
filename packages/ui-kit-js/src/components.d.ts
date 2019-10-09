@@ -13,9 +13,6 @@ import {
   TextColor,
   TextVariant,
 } from './types';
-import {
-  Color,
-} from './components/basic/color/color';
 
 export namespace Components {
   interface PButtonIcon {
@@ -232,7 +229,7 @@ export namespace Components {
     /**
     * Basic color variations.
     */
-    'color'?: Color | 'inherit';
+    'color'?: TextColor;
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -737,7 +734,7 @@ declare namespace LocalJSX {
     /**
     * Basic color variations.
     */
-    'color'?: Color | 'inherit';
+    'color'?: TextColor;
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */

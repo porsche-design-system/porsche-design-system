@@ -304,7 +304,7 @@ import {Component} from '@angular/core';
             <p-icon source="car-next"></p-icon>
             <p-icon source="car-next" size="medium"></p-icon>
             <p-icon source="car-next" size="large"></p-icon>
-            <p-icon source="car-next" size="large" color="neutral-grey-2"></p-icon>
+            <p-icon source="car-next" size="large" color="porsche-red"></p-icon>
             <p-icon source="car-next" size="large" color="inherit" style="color: deeppink;"></p-icon>
             <p-icon source="kaixin" size="large"></p-icon>
           </div>

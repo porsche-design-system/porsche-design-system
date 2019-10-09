@@ -7,6 +7,7 @@
 ### Change
 * Removed `a` from Text component `tag` property.
 * Extract global type definitions.
+* Adapted color prop of Icon component to be equal with text color props.
 
 
 ## [1.0.0-alpha.5] (2019-09-20)
