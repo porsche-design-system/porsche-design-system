@@ -323,7 +323,7 @@ const App: React.FC = () => {
             <PIcon source="car-next"/>
             <PIcon source="car-next" size="medium"/>
             <PIcon source="car-next" size="large"/>
-            <PIcon source="car-next" size="large" color="neutral-grey-2"/>
+            <PIcon source="car-next" size="large" color="porsche-red"/>
             <PIcon source="car-next" size="large" color="inherit" style={{color: 'deeppink'}}/>
             <PIcon source="kaixin" size="large"/>
           </div>

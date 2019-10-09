@@ -1,4 +1,4 @@
-// basic variants
+// global text variants
 export type TextVariant =
   | 'copy'
   | 'small'
@@ -33,5 +33,5 @@ export type TextVariant =
   | '84-thin';
 
 // global text colors
-export type TextColor = 'inherit' | 'porsche-black' | 'porsche-light';
+export type TextColor = 'inherit' | 'porsche-black' | 'porsche-light' | 'porsche-red';
 
