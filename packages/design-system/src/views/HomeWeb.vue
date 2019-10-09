@@ -66,7 +66,7 @@
           </p-text>
           <p-text variant="18" class="p-spacing-mt-16">
             <a
-              href="http://eepurl.com/ghVSjH"
+              href="http://eepurl.com/gnOIXD"
               target="_blank"
               rel="noopener noreferrer"
             >Subscribe to mailing list</a>
