@@ -19,6 +19,9 @@ assignees: ''
 **Link to design draft (Abstract)**
 [Insert link to Abstract collection]
 
+**Preview Link (Storefront)**
+[Insert link: https://ui.porsche.com/issue/123]
+
 **Props** 
 - Name: e.g. Button Square
 - States: e.g. default, hover, focus, active, disabled, loading
