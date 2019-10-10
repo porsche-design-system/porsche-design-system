@@ -29,20 +29,20 @@ assignees: ''
 - Themings: e.g. Light Theme / Dark Theme
 - Cases/Templates: e.g. row
 
-**Subtasks**  
+Subtasks
+---
 
-// SETUP
+**SETUP**
 
 - [ ] Create branch in GitHub according to issue number („issue/123“)
 - [ ] Create branch in Abstract according to issue number 
 
+**DESIGN**
 
-// DESIGN
-
-**Preparation**
+**– Preparation**
 - [ ] Component research and documentation in [notion](https://www.notion.so/porscheui/Component-Research-e698a613cb554a618a1b01402f45df14)(based on [template](https://www.notion.so/porscheui/Template-component-name-06f8685182c34decbc1e3c5bb4e9b64e))
 
-**Component setup in Sketch according to [checklist](https://www.notion.so/porscheui/Sketch-Component-setup-210aa34e558641d69d1b2976e8f6a3ec)**
+**– Component setup in Sketch according to [checklist](https://www.notion.so/porscheui/Sketch-Component-setup-210aa34e558641d69d1b2976e8f6a3ec)**
 - [ ] Initial definitions (component states/variants)
 - [ ] Design setup (library template, namings) 
 - [ ] Create first component draft incl. states/variants and provide it in Abstract collection (insert link above)
@@ -53,16 +53,15 @@ assignees: ''
 - [ ] Sketch symbol QA (self-check of native symbols and instance functionality from a consumer’s perspective)
 - [ ] _Remove components from prep library (optional)_
 
-**Merge & export**
+**– Merge & export**
 - [ ] Merge Abstract branch to Master
 - [ ] Export Sketch library file from Abstract to GitHub branch according to [guideline](https://www.notion.so/porscheui/Sketch-Library-release-fa76c54eda524c9db99295e1c938c2cf), incl. changelog update and adjustment of library version number.
 
-**Design guideline**
+**– Design guideline**
 - [ ] Create must-have design guideline (based on [template](https://www.notion.so/porscheui/UI-UX-docu-Draft-29bd4e8ec2524b7d840ea0f87cc9a026))
 - [ ] Create, upload and integrate assets (if needed)
 
-
-// DEV
+**DEV**
 
 - [ ] Setup of hierarchy structure and naming of all related states and variants
 - [ ] Create/update related code CSS/JS
@@ -75,16 +74,16 @@ assignees: ''
 - [ ] Test code visual and functional for optimized viewports (only one browser): 320 px, 375 px, 480 px, 768 px, 1024 px, 1366 px, 1920 px
 - [ ] Test code visual and functional for all supported browsers in viewports: 320 px, 480 px, 760 px, 1000 px, 1300 px, 1760 px, 1920 px
 
-// QA
+**QA**
 
-– [ ] Open a pull request
+- [ ] Open a pull request
 - [ ] Design: 3rd party Sketch review
 - [ ] Design: 3rd party guideline review
 - [ ] Design: Code docu review 
 - [ ] Dev: 3rd party code review
 - [ ] Dev: 3rd party code docu review
 
-// RELEASE
+**RELEASE**
 
 - [ ] Merge GitHub branch to Master
 - [ ] Inform community about changes
