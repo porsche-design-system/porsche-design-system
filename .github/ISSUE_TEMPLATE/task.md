@@ -16,7 +16,9 @@ List topics that are not part of this task.
 **Notes**  
 Share any further information that is relevant for processing.
 
-**Subtasks**  
+Subtasks
+---
+
 Add all related subtasks to be completed in order to finish the issue.
 - [x] Finish my changes
 - [ ] Push my commits to GitHub
