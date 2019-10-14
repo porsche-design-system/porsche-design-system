@@ -2,6 +2,7 @@ import { JSX, Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import {TextVariant, TextColor} from '../../../types';
+import { IconName } from '../../icon/icon/icon-name';
 
 @Component({
   tag: 'p-text-link',
@@ -25,7 +26,10 @@ export class TextLink {
   @Prop() public variant?: TextVariant = 'copy';
 
   /** The icon shown next to the label. */
-  @Prop() public icon?: string = 'arrow-right-hair';
+  @Prop() public icon?: IconName = 'icon_arrow-right-hair';
+
+  /** A custom URL path to a custom icon. */
+  @Prop() public iconSource?: string = undefined;
 
   /** Basic text color variations. */
   @Prop() public color?: TextColor = 'porsche-black';
@@ -59,7 +63,7 @@ export class TextLink {
         onClick={(e) => this.onClick(e)}
         class={textLinkClasses}
       >
-        <p-icon class={iconClasses} source={this.icon} color='inherit' size='inherit' />
+        <p-icon class={iconClasses} name={this.icon} source={this.iconSource} color='inherit' size='inherit' />
         <p-text class={textClasses} tag='span' color='inherit' variant={this.variant}>
           <slot />
         </p-text>
