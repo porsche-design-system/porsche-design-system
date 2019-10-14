@@ -5,18 +5,14 @@ import { fromEvent } from 'rxjs';
 
 export function ProxyInputs(inputs: string[]) {
   const decorator = function <T extends {new(...args:any[])}>(constructor:T) {
-    return class extends constructor {
-      constructor(...args:any[]) {
-        super(...args);
-        const Prototype = constructor.prototype;
-        inputs.forEach((item) => {
-          Object.defineProperty(Prototype, item, {
-            get() { return this.el[item]; },
-            set(val: any) { this.el[item] = val; },
-          });
-        });
-      }
-    };
+    const Prototype = constructor.prototype;
+    inputs.forEach((item) => {
+      Object.defineProperty(Prototype, item, {
+        get() { return this.el[item]; },
+        set(val: any) { this.el[item] = val; },
+      });
+    });
+    return constructor;
   };
   return decorator;
 }
