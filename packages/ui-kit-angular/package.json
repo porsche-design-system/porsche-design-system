@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --prod",
     "build": "ng build ui-kit-wrapper && cp -r ./projects/ui-kit-wrapper/CHANGELOG.md ./dist/ui-kit-wrapper",
     "test": "yarn test:vrt && yarn test:cbt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:4200 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
