@@ -7,6 +7,9 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  IconName,
+} from './components/icon/icon/icon-name';
+import {
   BreakpointCustomizable,
 } from './utils';
 import {
@@ -27,7 +30,11 @@ export namespace Components {
     /**
     * The icon shown.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * A visually hidden label text to improve accessibility which describes the function behind the button.
     */
@@ -65,7 +72,11 @@ export namespace Components {
     /**
     * The icon shown next to the label.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -235,13 +246,17 @@ export namespace Components {
     */
     'lazy'?: boolean;
     /**
+    * Specifies which icon to use.
+    */
+    'name': IconName;
+    /**
     * The size of the icon.
     */
     'size'?: 'small' | 'medium' | 'large' | 'inherit';
     /**
-    * Specifies which icon to use.
+    * Specifies a whole icon path which can be used for custom icons.
     */
-    'source': string;
+    'source'?: string;
   }
   interface PMarque {
     /**
@@ -353,7 +368,11 @@ export namespace Components {
     /**
     * The icon shown next to the label.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * Specifies the relationship of the target object to the link object.
     */
@@ -508,7 +527,11 @@ declare namespace LocalJSX {
     /**
     * The icon shown.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * A visually hidden label text to improve accessibility which describes the function behind the button.
     */
@@ -558,7 +581,11 @@ declare namespace LocalJSX {
     /**
     * The icon shown next to the label.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -740,11 +767,15 @@ declare namespace LocalJSX {
     */
     'lazy'?: boolean;
     /**
+    * Specifies which icon to use.
+    */
+    'name'?: IconName;
+    /**
     * The size of the icon.
     */
     'size'?: 'small' | 'medium' | 'large' | 'inherit';
     /**
-    * Specifies which icon to use.
+    * Specifies a whole icon path which can be used for custom icons.
     */
     'source'?: string;
   }
@@ -862,7 +893,11 @@ declare namespace LocalJSX {
     /**
     * The icon shown next to the label.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * Emitted when the link is clicked.
     */

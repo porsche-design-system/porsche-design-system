@@ -1,9 +1,10 @@
 import { Build, Component, Host, Element, Prop, State, Watch, h } from '@stencil/core';
-import { getName, isUrl } from './icon-helper';
+import { getName } from './icon-helper';
 import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { TextColor } from '../../../types';
+import { IconName } from './icon-name';
 
 @Component({
   tag: 'p-icon',
@@ -16,7 +17,12 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public source: string;
+  @Prop() public name: IconName;
+
+  /**
+   * Specifies a whole icon path which can be used for custom icons.
+   */
+  @Prop() public source?: string = undefined;
 
   /**
    * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -60,6 +66,7 @@ export class Icon {
   }
 
   @Watch('source')
+  @Watch('name')
   public loadIcon() {
     if (Build.isBrowser && this.isVisible) {
       const url = this.getSource();
@@ -83,8 +90,11 @@ export class Icon {
   }
 
   public getSource() {
-    if (this.source && !isUrl(this.source)) {
-      return `https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/icon_${this.source}.min.svg`;
+    // if (this.source && !isUrl(this.source)) {
+    //   return `https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/icon_${this.source}.min.svg`;
+    // }
+    if (this.name) {
+      return `https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/${this.name}.min.svg`;
     } else {
       return this.source;
     }
