@@ -37,21 +37,19 @@ const DECLARATIONS = [
   PTextListItem
 ];
 
+export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {
+  (async () => {
+    await applyPolyfills();
+    await defineCustomElements(window);
+  })();
+  return constructor;
+}
+
+@ApplyPolyfillAndDefineCustomElements
 @NgModule({
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
   imports: [],
   providers: []
 })
-export class PorscheUIKitModule {
-  static customElementsDefined = false;
-  constructor() {
-    if(!PorscheUIKitModule.customElementsDefined) {
-      PorscheUIKitModule.customElementsDefined = true;
-      (async () => {
-        await applyPolyfills();
-        await defineCustomElements(window);
-      })();
-    }
-  }
-}
+export class PorscheUIKitModule {}
