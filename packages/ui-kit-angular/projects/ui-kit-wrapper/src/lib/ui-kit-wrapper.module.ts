@@ -19,8 +19,6 @@ import {
   PTextListItem
 } from './ui-kit-wrapper.component';
 
-applyPolyfills().then(() => { defineCustomElements(window); });
-
 const DECLARATIONS = [
   PButtonIcon,
   PButtonRegular,
@@ -46,4 +44,14 @@ const DECLARATIONS = [
   providers: []
 })
 export class PorscheUIKitModule {
+  static customElementsDefined = false;
+  constructor() {
+    if(!PorscheUIKitModule.customElementsDefined) {
+      PorscheUIKitModule.customElementsDefined = true;
+      (async () => {
+        await applyPolyfills();
+        await defineCustomElements(window);
+      })();
+    }
+  }
 }
