@@ -6,7 +6,10 @@ import { JSX } from '@porsche-ui/ui-kit-js';
 
 import { defineCustomElements, applyPolyfills } from '@porsche-ui/ui-kit-js/loader';
 
-applyPolyfills().then(() => { defineCustomElements(window); });
+(async () => {
+  await applyPolyfills();
+  await defineCustomElements(window);
+})();
 export const PButtonIcon = createReactComponent<JSX.PButtonIcon, HTMLPButtonIconElement>('p-button-icon');
 export const PButtonRegular = createReactComponent<JSX.PButtonRegular, HTMLPButtonRegularElement>('p-button-regular');
 export const PFlex = createReactComponent<JSX.PFlex, HTMLPFlexElement>('p-flex');
