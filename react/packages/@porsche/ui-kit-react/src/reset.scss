@@ -219,7 +219,6 @@ li {
 
 html,
 body {
-    font-family: $p-font-primary;
     @include -text-size-copy();
 }
 

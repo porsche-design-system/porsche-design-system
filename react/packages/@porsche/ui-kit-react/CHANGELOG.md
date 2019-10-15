@@ -6,11 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-## [0.14.5] - 2019-09-18
+## [0.14.7] - 2019-10-15
+
+-   Fixed missing SASS rem function in text-size mixin.
+
+
+## [0.14.5] / [0.14.6] - 2019-09-18
 
 -   Fixed <Icon> color mapping for grey colors. They were backwards, "grey-lighter" was the darkest grey and "grey-darker" was the lightest grey. This now behaves as expected.
 
-## [0.14.3] - 2019-09-16
+## [0.14.3] / [0.14.4] - 2019-09-16
 
 ### Changed
 
