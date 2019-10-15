@@ -30,28 +30,6 @@ export class Flex {
     'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around'
   > = 'stretch';
 
-  /** Defines the gap between contained children. */
-  @Prop() public gap?:
-    | 0
-    | 4
-    | 8
-    | 16
-    | 24
-    | 32
-    | 40
-    | 48
-    | 56
-    | 64
-    | 72
-    | 80
-    | 'a'
-    | 'b'
-    | 'c'
-    | 'd'
-    | 'e'
-    | 'f'
-    | 'g' = 0;
-
   public render(): JSX.Element {
     const isJsonString = (str: string) => {
       try {
@@ -75,21 +53,11 @@ export class Flex {
         mapBreakpointPropToClasses('flex--justify-content', parseProp(this.justifyContent)),
       this.alignItems !== 'stretch' && mapBreakpointPropToClasses('flex--align-items', parseProp(this.alignItems)),
       this.alignContent !== 'stretch' &&
-        mapBreakpointPropToClasses('flex--align-content', parseProp(this.alignContent)),
-      this.gap !== 0 && prefix(`spacing-m-nl-${this.gap}`),
-      this.gap !== 0 && prefix(`spacing-m-nr-${this.gap}`)
+        mapBreakpointPropToClasses('flex--align-content', parseProp(this.alignContent))
     );
 
-    const spacingFlexItemLeftClass = this.gap !== 0 && prefix(`spacing-pl-${this.gap}`);
-    const spacingFlexItemRightClass = this.gap !== 0 && prefix(`spacing-pr-${this.gap}`);
-
     return (
-      <Host class={flexClasses}>
-        {this.gap !== 0 &&
-          Array.from(this.host.children).map((child) =>
-            child.classList.add(spacingFlexItemLeftClass, spacingFlexItemRightClass)
-          )}
-      </Host>
+      <Host class={flexClasses} />
     );
   }
 }
