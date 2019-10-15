@@ -30,7 +30,7 @@ export class ButtonRegular {
   @Prop() public variant?: 'highlight' | 'ghost' | 'default' = 'default';
 
   /** The icon shown next to the label. */
-  @Prop() public icon?: IconName = 'icon_arrow-right-hair';
+  @Prop() public icon?: IconName = 'arrow-right-hair';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
@@ -77,7 +77,7 @@ export class ButtonRegular {
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
         ) : (
-          <p-icon class={iconClasses} name={this.icon} source={this.iconSource} />
+          <p-icon class={iconClasses} icon={this.icon} source={this.iconSource} />
         )}
         <p-text tag='span' color='inherit' class={labelClasses}>
           <slot />

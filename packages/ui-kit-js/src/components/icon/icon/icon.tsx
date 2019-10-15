@@ -17,12 +17,18 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public name: IconName;
+  @Prop() public icon: IconName;
 
   /**
    * Specifies a whole icon path which can be used for custom icons.
    */
   @Prop() public source?: string = undefined;
+
+  /**
+   * @internal
+   * Specifies which icon variant to use.
+   */
+  @Prop() public variant: 'outline' | 'filled' = 'outline';
 
   /**
    * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -90,13 +96,12 @@ export class Icon {
   }
 
   public getSource() {
-    // if (this.source && !isUrl(this.source)) {
-    //   return `https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/icon_${this.source}.min.svg`;
-    // }
-    if (this.name) {
-      return `https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/${this.name}.min.svg`;
-    } else {
+    if (this.icon && !this.source) {
+      return `https://cdn.ui.porsche.com/porsche-icons/icons/${this.variant}/${this.icon}.svg`;
+    } else if (this.source && !this.icon) {
       return this.source;
+    } else {
+      console.log('Please provide either icon or source property!');
     }
   }
 
