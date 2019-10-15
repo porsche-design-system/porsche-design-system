@@ -10,17 +10,17 @@ For more information and a complete overview of all available Porsche icons, hea
 
 #### Small - 24 x 24 px (default)
 <Playground>
-  <p-icon icon="icon_car-next" />
+  <p-icon icon="car-next" />
 </Playground>
 
 #### Medium - 36 x 36 px
 <Playground>
-  <p-icon icon="icon_car-next" size="medium" />
+  <p-icon icon="car-next" size="medium" />
 </Playground>
 
 #### Large - 48 x 48 px
 <Playground>
-  <p-icon icon="icon_car-next" size="large" />
+  <p-icon icon="car-next" size="large" />
 </Playground>
 
 ---
@@ -29,7 +29,7 @@ For more information and a complete overview of all available Porsche icons, hea
 The default icon color inherits from its parent(s). But also predefined colors can be set. @see properties for possible color variants.
 
 <Playground>
-  <p-icon icon="icon_car-next" size="large" color="porsche-red" />
+  <p-icon icon="car-next" size="large" color="porsche-red" />
 </Playground>
 
 ---
@@ -47,7 +47,7 @@ The whole Porsche icon set is hosted on the Porsche UI Kit CDN. If there is a ne
 Icons can be lazy loaded, which means that they are only loaded (fetched) if they get visible in the viewport.
 
 <Playground>
-  <p-icon icon="icon_info" size="large" lazy="true" />
+  <p-icon icon="info" size="large" lazy="true" />
 </Playground>
 
 ---
