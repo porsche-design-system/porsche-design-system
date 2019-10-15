@@ -33,7 +33,7 @@ export class ButtonIcon {
   @Prop() public variant?: 'ghost' | 'transparent' | 'default' = 'default';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'icon_plus';
+  @Prop() public icon?: IconName = 'plus';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
@@ -75,7 +75,7 @@ export class ButtonIcon {
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
         ) : (
-          <p-icon class={iconClasses} size='medium' name={this.icon} source={this.iconSource} />
+          <p-icon class={iconClasses} size='medium' icon={this.icon} source={this.iconSource} />
         )}
       </TagType>
     );

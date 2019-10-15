@@ -26,7 +26,7 @@ export class TextLink {
   @Prop() public variant?: TextVariant = 'copy';
 
   /** The icon shown next to the label. */
-  @Prop() public icon?: IconName = 'icon_arrow-right-hair';
+  @Prop() public icon?: IconName = 'arrow-right-hair';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
@@ -63,7 +63,7 @@ export class TextLink {
         onClick={(e) => this.onClick(e)}
         class={textLinkClasses}
       >
-        <p-icon class={iconClasses} name={this.icon} source={this.iconSource} color='inherit' size='inherit' />
+        <p-icon class={iconClasses} icon={this.icon} source={this.iconSource} color='inherit' size='inherit' />
         <p-text class={textClasses} tag='span' color='inherit' variant={this.variant}>
           <slot />
         </p-text>

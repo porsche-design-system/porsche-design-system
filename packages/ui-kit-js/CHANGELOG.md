@@ -1,6 +1,22 @@
 # Porsche UI Kit JS
 
 ## NOT RELEASED YET
+
+### Breaking change
+- Changed interface of `Icon` component: 
+    - `source` is now only for custom icon paths
+    - `icon` is added for official icon names (delivered from Porsche Icon Tool)
+    - Deleted `icon_` prefix of icon namings, e.g. `icon_arrow-right-hair` --> `arrow-right-hair` 
+    - Migration path: change any occurrence of `source` to `name` if not used with custom icons (custom URL)
+
+- Changed interface of `Button Regular`, `Button Icon` and `Text Link` component: 
+    - `iconSource` is added only for custom icon paths
+    - `icon` is now only for official icon names (delivered from Porsche Icon Tool)
+    - Deleted `icon_` prefix of icon namings, e.g. `icon_arrow-right-hair` --> `arrow-right-hair` 
+    - Migration path: change any occurrence of `source` to `iconSource` if used with custom icons (custom URL)
+
+
+
 ### Bugfix
 * Removed default rendering of download and rel attribute in `p-text-link` component
 

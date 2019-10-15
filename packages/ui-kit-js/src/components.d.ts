@@ -242,13 +242,13 @@ export namespace Components {
     */
     'color'?: TextColor;
     /**
+    * Specifies which icon to use.
+    */
+    'icon': IconName;
+    /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
     'lazy'?: boolean;
-    /**
-    * Specifies which icon to use.
-    */
-    'name': IconName;
     /**
     * The size of the icon.
     */
@@ -257,6 +257,7 @@ export namespace Components {
     * Specifies a whole icon path which can be used for custom icons.
     */
     'source'?: string;
+    'variant': 'outline' | 'filled';
   }
   interface PMarque {
     /**
@@ -763,13 +764,13 @@ declare namespace LocalJSX {
     */
     'color'?: TextColor;
     /**
+    * Specifies which icon to use.
+    */
+    'icon'?: IconName;
+    /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
     'lazy'?: boolean;
-    /**
-    * Specifies which icon to use.
-    */
-    'name'?: IconName;
     /**
     * The size of the icon.
     */
