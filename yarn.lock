@@ -2069,19 +2069,13 @@
     isomorphic-fetch "^2.2.1"
     jimp "0.8.0"
 
-"@porsche-ui/ui-kit-angular@^1.0.0-alpha.3":
-  version "1.0.0-alpha.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-angular/-/@porsche-ui/ui-kit-angular-1.0.0-alpha.3.tgz#7258ec81556317074348ed16dc5f6e2e0db5e21d"
-  integrity sha1-cljsgVVjFwdDSO0W3F9uLg214h0=
+"@porsche-ui/ui-kit-angular@^1.0.0-alpha.6":
+  version "1.0.0-alpha.6"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-angular/-/@porsche-ui/ui-kit-angular-1.0.0-alpha.6.tgz#41155161e7c880e61c9a7bb1bd0f24ac66656cd0"
+  integrity sha1-QRVRYefIgOYcmnuxvQ8krGZlbNA=
   dependencies:
-    "@porsche-ui/ui-kit-js" "1.0.0-alpha.3"
-
-"@porsche-ui/ui-kit-js@1.0.0-alpha.3":
-  version "1.0.0-alpha.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-js/-/@porsche-ui/ui-kit-js-1.0.0-alpha.3.tgz#3494f1b79b859118d83c40aba578e57d1df21725"
-  integrity sha1-NJTxt5uFkRjYPECrpXjlfR3yFyU=
-  dependencies:
-    throttle-debounce "^2.1.0"
+    "@porsche-ui/ui-kit-js" "1.0.0-alpha.6"
+    tslib "^1.9.0"
 
 "@porsche-ui/visual-regression-tester@^1.0.0":
   version "1.0.0"
