@@ -3,17 +3,18 @@
 ## NOT RELEASED YET
 
 ### Breaking change
+- Changed icon CDN path to Icon Tools CDN directory.
 - Changed interface of `Icon` component: 
-    - `source` is now only for custom icon paths
-    - `icon` is added for official icon names (delivered from Porsche Icon Tool)
+    - `source` property is now only for custom icon paths
+    - `icon` property is added for official icon names (delivered from Porsche Icon Tool)
     - Deleted `icon_` prefix of icon namings, e.g. `icon_arrow-right-hair` --> `arrow-right-hair` 
-    - Migration path: change any occurrence of `source` to `name` if not used with custom icons (custom URL)
+    - Migration path: change any occurrence of `source` to `icon` if not used with custom icons (custom URL)
 
 - Changed interface of `Button Regular`, `Button Icon` and `Text Link` component: 
-    - `iconSource` is added only for custom icon paths
-    - `icon` is now only for official icon names (delivered from Porsche Icon Tool)
+    - `iconSource` property is added only for custom icon paths
+    - `icon` property is now only for official icon names (delivered from Porsche Icon Tool)
     - Deleted `icon_` prefix of icon namings, e.g. `icon_arrow-right-hair` --> `arrow-right-hair` 
-    - Migration path: change any occurrence of `source` to `iconSource` if used with custom icons (custom URL)
+    - Migration path: change any occurrence of `source` to `iconSource` (or `icon-source) if used` with custom icons (custom URL)
 
 
 
