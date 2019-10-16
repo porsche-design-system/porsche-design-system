@@ -86,7 +86,7 @@ export class Icon {
     }
 
     if (!this.ariaLabel) {
-      const name = getName(this.getSource());
+      const name = this.source ? getName(this.getSource()) : this.icon;
       // user did not provide a label
       // come up with the label based on the icon name
       if (name) {
