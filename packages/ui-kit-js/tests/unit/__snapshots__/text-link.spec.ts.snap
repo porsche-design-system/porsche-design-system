@@ -4,7 +4,7 @@ exports[`Component <p-text-link> should render correctly in default mode with sh
 <p-text-link href="https://ui.porsche.com">
   <mock:shadow-root>
     <a class="p-text-link p-text-link--color-porsche-black" href="https://ui.porsche.com" target="_self">
-      <p-icon class="p-text-link__icon p-text-link__icon--copy" color="inherit" size="inherit" source="arrow-right-hair"></p-icon>
+      <p-icon class="p-text-link__icon p-text-link__icon--copy" color="inherit" icon="arrow-right-hair" size="inherit"></p-icon>
       <p-text class="p-text-link__text" color="inherit" tag="span" variant="copy">
         <slot></slot>
       </p-text>
