@@ -7,7 +7,7 @@ exports[`Component <p-pagination> should render correctly in default mode with s
       <ul class="p-pagination__items">
         <li class="p-pagination__item" type="PREVIOUS_PAGE_LINK" value="1">
           <a aria-disabled="true" aria-label="Previous page" class="p-pagination__prev p-pagination__prev--disabled">
-            <p-icon source="arrow-left-hair"></p-icon>
+            <p-icon icon="arrow-left-hair"></p-icon>
           </a>
         </li>
         <li class="p-pagination__item" isactive="" type="PAGE" value="1">
@@ -37,7 +37,7 @@ exports[`Component <p-pagination> should render correctly in default mode with s
         </li>
         <li class="p-pagination__item" isactive="" type="NEXT_PAGE_LINK" value="2">
           <a aria-label="Next page" class="p-pagination__next" href="#">
-            <p-icon source="arrow-right-hair"></p-icon>
+            <p-icon icon="arrow-right-hair"></p-icon>
           </a>
         </li>
       </ul>
