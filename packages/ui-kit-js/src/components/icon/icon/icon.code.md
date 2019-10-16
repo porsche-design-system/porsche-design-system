@@ -1,8 +1,8 @@
 # Icon
 
-The Porsche UI Kit is using a SVG icon system to visually present an icon object. Each icon is hosted on the Porsche UI Kit CDN to be served and cached as fast as possible. To reference an icon just use the `name` property with the icon name **without** the file extension `.svg`.
+The Porsche UI Kit is using a **SVG icon system** to visually present an icon object. Each icon is hosted on the Porsche UI Kit CDN to be served and cached as fast as possible. To reference an icon just use the `icon` property with the icon file name (**without** the file extension `.svg`).
 
-For more information and a complete overview of all available Porsche icons, head over to Porsche Icons (coming soon).
+For more information and a complete overview of all available Porsche icons, head over to Porsche Icons (https://icons.porsche.com).
 
 ## Icons
 
