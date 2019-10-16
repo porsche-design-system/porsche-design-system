@@ -257,7 +257,7 @@ export namespace Components {
     * Specifies a whole icon path which can be used for custom icons.
     */
     'source'?: string;
-    'variant': 'outline' | 'filled';
+    'variant'?: 'outline' | 'filled';
   }
   interface PMarque {
     /**
