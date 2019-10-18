@@ -17,6 +17,7 @@
     - Migration path: change any occurrence of `source` to `iconSource` (or `icon-source) if used` with custom icons (custom URL)
 
 
+## [1.0.0-alpha.6] (2019-10-14)
 
 ### Bugfix
 * Removed default rendering of download and rel attribute in `p-text-link` component

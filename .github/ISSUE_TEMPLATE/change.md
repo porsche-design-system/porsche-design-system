@@ -16,11 +16,10 @@ assignees: ''
 **Notes**  
 [Share any further information that is relevant for processing.]
 
-**Link to design draft (Abstract)**
-[Insert link to Abstract collection]
-
-**Preview Link (Storefront)**
-[Insert link: https://ui.porsche.com/issue/123]
+**Link to resources**
+- Abstract: [Insert link to Abstract collection]
+- Notion: [Insert link to component research in notion]
+- Preview Link: [Insert link: https://ui.porsche.com/issue/123]
 
 **Props** 
 - Name: e.g. Button Square
@@ -34,7 +33,7 @@ Subtasks
 
 **SETUP**
 
-- [ ] Create branch in GitHub according to issue number („issue/123“)
+- [ ] Create branch in GitHub according to issue number 
 - [ ] Create branch in Abstract according to issue number 
 
 **DESIGN**
