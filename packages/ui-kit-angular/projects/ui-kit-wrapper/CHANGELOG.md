@@ -2,6 +2,18 @@
 
 ## NOT RELEASED YET
 
+## [1.0.0-alpha.6] (2019-10-14)
+
+### Bugfix
+* Add `buildOptimizer` compatibility
+* Removed default rendering of download and rel attribute in `p-text-link` component
+
+### Change
+* Removed `a` from Text component `tag` property.
+* Extract global type definitions.
+* Adapted color prop of Icon component to be equal with text color props.
+
+
 ## [1.0.0-alpha.5] (2019-09-20)
 
 ### Bugfix

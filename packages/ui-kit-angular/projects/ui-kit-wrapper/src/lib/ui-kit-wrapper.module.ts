@@ -19,8 +19,6 @@ import {
   PTextListItem
 } from './ui-kit-wrapper.component';
 
-applyPolyfills().then(() => { defineCustomElements(window); });
-
 const DECLARATIONS = [
   PButtonIcon,
   PButtonRegular,
@@ -39,11 +37,19 @@ const DECLARATIONS = [
   PTextListItem
 ];
 
+export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {
+  (async () => {
+    await applyPolyfills();
+    await defineCustomElements(window);
+  })();
+  return constructor;
+}
+
+@ApplyPolyfillAndDefineCustomElements
 @NgModule({
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
   imports: [],
   providers: []
 })
-export class PorscheUIKitModule {
-}
+export class PorscheUIKitModule {}
