@@ -7,7 +7,7 @@ Following our mission we align all our doings with our three main objectives:
 
 The roadmap for the Porsche UI Kit is based on the planned tasks and changes for one quarter. Therefore is not a delivery commitment and may be changed based on upcoming user needs, feedback and surrounding requirements.
 
-## Q3 2019
+## Q4 2019
 ### Release 1.0 Stable
 * Stable Sketch library compatible with latest Sketch version and without Anima Plugin
 * Refactoring of component APIs (events, objects, inherits)
