@@ -8,27 +8,38 @@ Following our mission we align all our doings with our three main objectives:
 The roadmap for the Porsche UI Kit is based on the planned tasks and changes for one quarter. Therefore is not a delivery commitment and may be changed based on upcoming user needs, feedback and surrounding requirements.
 
 ## Q3 2019
-tbd
+### Release 1.0 Stable
+* Stable Sketch library compatible with latest Sketch version and without Anima Plugin
+* Refactoring of component APIs (events, objects, inherits)
+* Refinement text styles and spacings
+* Refinement of font handling including introduction of SemiBold font weight for headlines
+* Refinement of focus states
+* Ensuring stabilization and performance of packages and pipeline
+* Icon refinement for 1.0 stsble
+### Release essential form elements
+* Release components for text field, text area, checkbox, radio button, select
+### Prototype & Test Storefront redesign
+* Conduct user interviews and testings
   
 ---
 
 # Achievements
 
 ## Q3 2019
-## 1.0 Alpha release
+### 1.0 Alpha release
 * Auto generation of angular and react components
 * Finalize marque component
 * Refactor packages for Alpha 1.0 release including documentation
 * Alpha 1.0 release
-## Prepare form components
+### Prepare form components
 * Community workshop and general form audit
-## Establish automated testing for a stable 1.0 release
+### Establish automated testing for a stable 1.0 release
 * Enhance test covering of existing components
 * Enhance storefront tests
 * Establish automated cross browser testing (including IE11)
-## Launch Porsche Icon Collection
+### Launch Porsche Icon Collection
 * Release icon collection 1.0 alpha
-## Extension of Porsche UI Kit to iOS 
+### Extension of Porsche UI Kit to iOS 
 * Extend Porsche UI Kit infrastructure and split into Web and App
 
 ---
