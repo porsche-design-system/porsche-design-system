@@ -1,6 +1,7 @@
-import { JSX, Component, Prop, h, Event, EventEmitter, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, hasShadowDom } from '../../../utils';
+import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
 
 @Component({
   tag: 'p-button-icon',
@@ -9,6 +10,21 @@ import { prefix, hasShadowDom } from '../../../utils';
 })
 export class ButtonIcon {
   @Element() public element!: HTMLElement;
+
+  /**
+   * Check native tabindex to ensure that it doesn't get set on the host element
+   * @internal
+   */
+  @Prop({
+    mutable: true,
+    attribute: 'tabindex'
+  })
+  public nativeTabindex?: number = -1;
+
+  /** To change the tabindex position of the element */
+  @Prop({
+    mutable: true
+  }) public pTabindex?: -1 | 0 = 0;
 
   /** Specifies the type of the button when no href prop is defined. */
   @Prop() public type?: 'button' | 'submit' | 'reset' = 'button';
@@ -37,16 +53,12 @@ export class ButtonIcon {
   /** Adapts the button color when used on dark background. */
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
-  /** Emitted when the button is clicked. */
-  @Event() public pClick!: EventEmitter<void>;
-
-  /** Emitted when the button has focus. */
-  @Event() public pFocus!: EventEmitter<void>;
-
-  /** Emitted when the button loses focus. */
-  @Event() public pBlur!: EventEmitter<void>;
+  public componentDidLoad() {
+    improveFocusHandlingForCustomElement(this.element);
+  }
 
   public render(): JSX.Element {
+    preventNativeTabIndex(this);
     const TagType = this.href === undefined ? 'button' : 'a';
 
     const buttonClasses = cx(
@@ -65,8 +77,7 @@ export class ButtonIcon {
           ? { type: this.type, disabled: this.disabled || this.loading, 'aria-label': this.label }
           : { href: this.href, target: `_${this.target}`, 'aria-disabled': String(this.disabled || this.loading) })}
         onClick={(e) => this.onClick(e)}
-        onFocus={(e) => this.onFocus(e)}
-        onBlur={(e) => this.onBlur(e)}
+        tabindex={this.pTabindex}
       >
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
@@ -77,31 +88,26 @@ export class ButtonIcon {
     );
   }
 
-  private onClick(event: any): void {
-    this.pClick.emit(event);
-
+  private onClick(event: MouseEvent): void {
     if (!this.href && this.type === 'submit' && hasShadowDom(this.element)) {
       // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
       const form = this.element.closest('form');
       if (form) {
-        event.preventDefault();
-
-        const fakeButton = document.createElement('button');
-        fakeButton.type = this.type;
-        fakeButton.style.display = 'none';
-        form.appendChild(fakeButton);
-        fakeButton.click();
-        fakeButton.remove();
+        window.setTimeout(() => {
+          if(!event.defaultPrevented) {
+            const fakeButton = document.createElement('button');
+            fakeButton.type = this.type;
+            fakeButton.style.display = 'none';
+            form.appendChild(fakeButton);
+            fakeButton.addEventListener('click', (fakeButtonEvent) => {
+              fakeButtonEvent.stopPropagation();
+            });
+            fakeButton.click();
+            fakeButton.remove();
+          }
+        }, 1);
       }
     }
-  }
-
-  private onFocus(event: any): void {
-    this.pFocus.emit(event);
-  }
-
-  private onBlur(event: any): void {
-    this.pBlur.emit(event);
   }
 
   private useInvertedLoader(): 'light' | 'dark' {
