@@ -9,7 +9,7 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 
 ## Q4 2019
 ### Release 1.0 Stable
-* Stable Sketch library compatible with latest Sketch version and without Anima Plugin
+* Stable Sketch library compatible with Smart Layout and without Anima Plugin
 * Refactoring of component APIs (events, objects, inherits)
 * Refinement text styles and spacings
 * Refinement of font handling including introduction of SemiBold font weight for headlines
