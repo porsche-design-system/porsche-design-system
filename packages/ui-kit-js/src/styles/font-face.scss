@@ -102,60 +102,60 @@ $p-font-face-source: 'https://cdn.ui.porsche.com/porsche-ui-kit/font/v2-beta2' !
 }
 
 // Armenian
-@font-face {
-  font-family: 'Porsche Next';
-  font-style: normal;
-  font-weight: $p-font-weight-thin;
-  src: local('Sylfaen'), local('Segoe UI'), local('Free Sans'), local('Mshtakan'), local('Noto Serif Armenian');
-  unicode-range: U+0530-058F;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Porsche Next';
-  font-style: normal;
-  font-weight: $p-font-weight-regular;
-  src: local('Sylfaen'), local('Segoe UI'), local('Free Sans'), local('Mshtakan'), local('Noto Serif Armenian');
-  unicode-range: U+0530-058F;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Porsche Next';
-  font-style: normal;
-  font-weight: $p-font-weight-bold;
-  src: local('Sylfaen'), local('Segoe UI'), local('Free Sans'), local('Mshtakan'), local('Noto Serif Armenian');
-  unicode-range: U+0530-058F;
-  font-display: swap;
-}
+// @font-face {
+//  font-family: 'Porsche Next';
+//  font-style: normal;
+//  font-weight: $p-font-weight-thin;
+//  src: local('Sylfaen'), local('Segoe UI'), local('Free Sans'), local('Mshtakan'), local('Noto Serif Armenian');
+//  unicode-range: U+0530-058F;
+//  font-display: swap;
+// }
+//
+// @font-face {
+//  font-family: 'Porsche Next';
+//  font-style: normal;
+//  font-weight: $p-font-weight-regular;
+//  src: local('Sylfaen'), local('Segoe UI'), local('Free Sans'), local('Mshtakan'), local('Noto Serif Armenian');
+//  unicode-range: U+0530-058F;
+//  font-display: swap;
+// }
+//
+// @font-face {
+//  font-family: 'Porsche Next';
+//  font-style: normal;
+//  font-weight: $p-font-weight-bold;
+//  src: local('Sylfaen'), local('Segoe UI'), local('Free Sans'), local('Mshtakan'), local('Noto Serif Armenian');
+//  unicode-range: U+0530-058F;
+//  font-display: swap;
+// }
 
 // Hebrew
-@font-face {
-  font-family: 'Porsche Next';
-  font-style: normal;
-  font-weight: $p-font-weight-thin;
-  src: local('Arial Hebrew'), local('Heebo'), local('Droid Sans Hebrew'), local('DebianHebrew');
-  unicode-range: U+0590-05FF;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Porsche Next';
-  font-style: normal;
-  font-weight: $p-font-weight-regular;
-  src: local('Arial Hebrew'), local('Heebo'), local('Droid Sans Hebrew'), local('DebianHebrew');
-  unicode-range: U+0590-05FF;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Porsche Next';
-  font-style: normal;
-  font-weight: $p-font-weight-bold;
-  src: local('Arial Hebrew'), local('Heebo'), local('Droid Sans Hebrew'), local('DebianHebrew');
-  unicode-range: U+0590-05FF;
-  font-display: swap;
-}
+// @font-face {
+//  font-family: 'Porsche Next';
+//  font-style: normal;
+//  font-weight: $p-font-weight-thin;
+//  src: local('Arial Hebrew'), local('Heebo'), local('Droid Sans Hebrew'), local('DebianHebrew');
+//  unicode-range: U+0590-05FF;
+//  font-display: swap;
+// }
+//
+// @font-face {
+//  font-family: 'Porsche Next';
+//  font-style: normal;
+//  font-weight: $p-font-weight-regular;
+//  src: local('Arial Hebrew'), local('Heebo'), local('Droid Sans Hebrew'), local('DebianHebrew');
+//  unicode-range: U+0590-05FF;
+//  font-display: swap;
+// }
+//
+// @font-face {
+//  font-family: 'Porsche Next';
+//  font-style: normal;
+//  font-weight: $p-font-weight-bold;
+//  src: local('Arial Hebrew'), local('Heebo'), local('Droid Sans Hebrew'), local('DebianHebrew');
+//  unicode-range: U+0590-05FF;
+//  font-display: swap;
+// }
 
 /*
 // CJK (Chinese Japanese Korean)
