@@ -15,7 +15,7 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 * Refinement of font handling including introduction of SemiBold font weight for headlines
 * Refinement of focus states
 * Ensuring stabilization and performance of packages and pipeline
-* Icon refinement for 1.0 stsble
+* Icon refinement for 1.0 stable
 ### Release essential form elements
 * Release components for text field, text area, checkbox, radio button, select
 ### Prototype & Test Storefront redesign
