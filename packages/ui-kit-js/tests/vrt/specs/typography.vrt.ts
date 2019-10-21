@@ -2,7 +2,7 @@ import 'jasmine';
 import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
 import { getVisualRegressionOverviewTester } from '../helpers/setup';
 
-fdescribe('Typography', () => {
+describe('Typography', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(async () => {
