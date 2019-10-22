@@ -63,7 +63,8 @@ function getActiveElement(element: HTMLElement): HTMLElement {
   /**
    * fallback if there is no shadow root
    */
-  return document.activeElement as HTMLElement;
+  const rootNode = element.getRootNode() as Document;
+  return rootNode.activeElement as HTMLElement;
 }
 
 export function improveFocusHandlingForCustomElement(element: HTMLElement) {
