@@ -34,11 +34,11 @@ Flex inline displays flex containers in a row.
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-flex flow='{ "base": "block", "l": "inline" }' class="example-flex">
+  <p-flex flow="{ base: 'block', l: 'inline' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
-  <p-flex flow='{ "base": "block", "l": "inline" }' class="example-flex">
+  <p-flex flow="{ base: 'block', l: 'inline' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
@@ -94,7 +94,7 @@ Define or change direction of the flex items to rows or columns and set order.
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-flex direction='{ "base": "column", "l": "row" }' class="example-flex">
+  <p-flex direction="{ base: 'column', l: 'row' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item>3</p-flex-item>
@@ -135,7 +135,7 @@ The flex wrap property is used to force flex items to stay in line independently
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-flex wrap='{ "base": "wrap", "l": "nowrap" }' class="example-flex">
+  <p-flex wrap="{ base: 'wrap', l: 'nowrap' }" class="example-flex">
     <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
   </p-flex>
 </Playground>
@@ -210,7 +210,7 @@ This property defines the alignment of flex items on the main axis in conjunctio
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-flex justify-content='{ "base": "start", "l": "end" }' class="example-flex">
+  <p-flex justify-content="{ base: 'start', l: 'end' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item>3</p-flex-item>
@@ -277,7 +277,7 @@ This property defines the alignment of flex items on the cross axis in conjuncti
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items='{ "base": "start", "l": "end" }' class="example-flex">
+  <p-flex align-items="{ base: 'start', l: 'end' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item>3</p-flex-item>
@@ -343,7 +343,7 @@ This property has only effect when there is more than one line of flex items.
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content='{ "base": "start", "l": "end" }' class="example-flex">
+  <p-flex wrap="wrap" align-content="{ base: 'start', l: 'end' }" class="example-flex">
     <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
   </p-flex>
 </Playground>
@@ -393,10 +393,10 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground>
   <p-flex wrap="wrap" class="example-flex">
-    <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>1</p-flex-item>
-    <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>2</p-flex-item>
-    <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>3</p-flex-item>
-    <p-flex-item width='{ "base": "half", "l": "one-quarter" }'>4</p-flex-item>
+    <p-flex-item width="{ base: 'half', l: 'one-quarter' }">1</p-flex-item>
+    <p-flex-item width="{ base: 'half', l: 'one-quarter' }">2</p-flex-item>
+    <p-flex-item width="{ base: 'half', l: 'one-quarter' }">3</p-flex-item>
+    <p-flex-item width="{ base: 'half', l: 'one-quarter' }">4</p-flex-item>
   </p-flex>
 </Playground>
 
@@ -431,7 +431,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground>
   <p-flex class="example-flex">
-    <p-flex-item offset='{ "base": "none", "l": "one-third" }'>Responsive offset</p-flex-item>
+    <p-flex-item offset="{ base: 'none', l: 'one-third' }">Responsive offset</p-flex-item>
   </p-flex>
 </Playground>
 
@@ -514,7 +514,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   <p-flex class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self='{ "base": "start", "l": "end" }'>3</p-flex-item>
+    <p-flex-item align-self="{ base: 'start', l: 'end' }">3</p-flex-item>
     <p-flex-item>4</p-flex-item>
   </p-flex>
 </Playground>

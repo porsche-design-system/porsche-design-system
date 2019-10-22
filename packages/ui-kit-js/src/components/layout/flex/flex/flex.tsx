@@ -1,6 +1,10 @@
 import { JSX, Element, Component, Host, Prop, h } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToClasses, prefix } from '../../../../utils';
+import {
+  BreakpointCustomizable,
+  mapBreakpointPropToPrefixedClasses,
+  prefix
+} from '../../../../utils';
 
 @Component({
   tag: 'p-flex',
@@ -8,6 +12,7 @@ import { BreakpointCustomizable, mapBreakpointPropToClasses, prefix } from '../.
 })
 export class Flex {
   @Element() public host: HTMLDivElement;
+
   /** Defines the flex containers content flow if 2 or more containers are siblings of each other. */
   @Prop() public flow?: BreakpointCustomizable<'block' | 'inline'> = 'block';
 
@@ -31,29 +36,14 @@ export class Flex {
   > = 'stretch';
 
   public render(): JSX.Element {
-    const isJsonString = (str: string) => {
-      try {
-        JSON.parse(str);
-        return true;
-      } catch (error) {
-        return false;
-      }
-    };
-
-    const parseProp = (prop: any) => {
-      return prop && isJsonString(prop) === true ? JSON.parse(prop) : prop;
-    };
-
     const flexClasses = cx(
       prefix('flex'),
-      this.flow !== 'block' && mapBreakpointPropToClasses('flex-', parseProp(this.flow)),
-      this.wrap !== 'nowrap' && mapBreakpointPropToClasses('flex--wrap', parseProp(this.wrap)),
-      this.direction !== 'row' && mapBreakpointPropToClasses('flex--direction', parseProp(this.direction)),
-      this.justifyContent !== 'start' &&
-        mapBreakpointPropToClasses('flex--justify-content', parseProp(this.justifyContent)),
-      this.alignItems !== 'stretch' && mapBreakpointPropToClasses('flex--align-items', parseProp(this.alignItems)),
-      this.alignContent !== 'stretch' &&
-        mapBreakpointPropToClasses('flex--align-content', parseProp(this.alignContent))
+      this.flow !== 'block' && mapBreakpointPropToPrefixedClasses('flex-', this.flow),
+      this.wrap !== 'nowrap' && mapBreakpointPropToPrefixedClasses('flex--wrap', this.wrap),
+      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('flex--direction', this.direction),
+      this.justifyContent !== 'start' && mapBreakpointPropToPrefixedClasses('flex--justify-content', this.justifyContent),
+      this.alignItems !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-items', this.alignItems),
+      this.alignContent !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-content', this.alignContent)
     );
 
     return (
