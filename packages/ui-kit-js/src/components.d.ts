@@ -37,6 +37,14 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
+    * Check native tabindex to ensure that it doesn't get set on the host element
+    */
+    'nativeTabindex'?: number;
+    /**
+    * To change the tabindex position of the element
+    */
+    'pTabindex'?: -1 | 0;
+    /**
     * Target attribute where the link should be opened.
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
@@ -518,17 +526,9 @@ declare namespace LocalJSX {
     */
     'loading'?: boolean;
     /**
-    * Emitted when the button loses focus.
+    * To change the tabindex position of the element
     */
-    'onPBlur'?: (event: CustomEvent<void>) => void;
-    /**
-    * Emitted when the button is clicked.
-    */
-    'onPClick'?: (event: CustomEvent<void>) => void;
-    /**
-    * Emitted when the button has focus.
-    */
-    'onPFocus'?: (event: CustomEvent<void>) => void;
+    'pTabindex'?: -1 | 0;
     /**
     * Target attribute where the link should be opened.
     */
