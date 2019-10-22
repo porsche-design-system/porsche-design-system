@@ -36,6 +36,7 @@
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import Prism from 'prismjs';
+import 'prismjs/components/prism-jsx';
 import {html} from 'js-beautify';
 import {camelCase, upperFirst} from 'lodash';
 
@@ -109,7 +110,7 @@ export default class CodeBlock extends Vue {
         .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
           return `${camelCase($key)}="${$value}"`;
         })
-        // transform key to ng-object syntax when JSON5 string as value is provided
+        // transform key evaluate syntax when object is provided as value
         .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
           return `[${$key}]="{${$value}}"`;
         })
@@ -147,6 +148,10 @@ export default class CodeBlock extends Vue {
   }
 
   private highlight(markup: string): string {
+    if (this.isReact) {
+      return Prism.highlight(markup, Prism.languages.jsx, 'languages-jsx');
+    }
+
     return Prism.highlight(markup, Prism.languages.markup, 'markup');
   }
 }
