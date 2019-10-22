@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, hasShadowDom } from '../../../utils';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
@@ -76,7 +76,6 @@ export class ButtonIcon {
         {...(TagType === 'button'
           ? { type: this.type, disabled: this.disabled || this.loading, 'aria-label': this.label }
           : { href: this.href, target: `_${this.target}`, 'aria-disabled': String(this.disabled || this.loading) })}
-        onClick={(e) => this.onClick(e)}
         tabindex={this.pTabindex}
       >
         {this.loading ? (
@@ -88,11 +87,30 @@ export class ButtonIcon {
     );
   }
 
-  private onClick(event: MouseEvent): void {
+  /**
+   * IE11 workaround to fix the event target
+   * of click events (which normally shadow dom
+   * takes care of)
+   */
+  @Listen('click', { capture: true })
+  public fixEventTarget(event: MouseEvent): void {
+    if (event.target !== this.element) {
+      event.stopPropagation();
+      event.preventDefault();
+      this.element.click();
+    }
+  }
+
+  @Listen('click')
+  public onClick(event: MouseEvent): void {
     if (!this.href && this.type === 'submit' && hasShadowDom(this.element)) {
       // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
       const form = this.element.closest('form');
       if (form) {
+        /**
+         * we've to wait if someone calls preventDefault on the event
+         * then we shouldn't submit the form
+         */
         window.setTimeout(() => {
           if(!event.defaultPrevented) {
             const fakeButton = document.createElement('button');
