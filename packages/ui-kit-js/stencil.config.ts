@@ -40,5 +40,8 @@ export const config: Config = {
       plugins: [autoprefixer()]
     })
   ],
-  globalStyle: 'src/styles/index.scss'
+  globalStyle: 'src/styles/index.scss',
+  testing: {
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
+  }
 };
