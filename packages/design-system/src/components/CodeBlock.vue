@@ -91,9 +91,9 @@ export default class CodeBlock extends Vue {
         // remove empty comments
         .replace(/<!---->/g, '')
         // remove all attributes added by Vue JS
-        .replace(/data-v-[a-zA-Z0-9]+(=["']{1}["']{1})?/g, '')
+        .replace(/data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
         // remove all class values added by Stencil JS
-        .replace(/class=["'](.*?)hydrated(.*?)["']/g, (m, $1, $2) => {
+        .replace(/class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
           if (/\S/.test($1) || /\S/.test($2)) {
             return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
           }
@@ -105,9 +105,13 @@ export default class CodeBlock extends Vue {
   private convertToAngular(markup: string): string {
     return (
       markup
-      // transform all attributes to camel case
-        .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
-          return camelCase($1) + '="' + $2 + '"';
+        // transform all attributes to camel case
+        .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
+          return `${camelCase($key)}="${$value}"`;
+        })
+        // transform key to ng-object syntax when JSON5 string as value is provided
+        .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+          return `[${$key}]="{${$value}}"`;
         })
     );
   }
@@ -116,24 +120,24 @@ export default class CodeBlock extends Vue {
     return (
       markup
         // transform all attributes to camel case
-        .replace(/(\S+)=["'](.*?)["']/g, (m, $1, $2) => {
-          return camelCase($1) + '="' + $2 + '"';
+        .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
+          return `${camelCase($key)}="${$value}"`;
         })
-        // remove quotes from object values
-        .replace(/=['"]{(.*?)}['"]/g, (m, $1) => {
-          return '={' + $1 + '}';
+        // remove quotes from object values but add double brackets
+        .replace(/="{(.*?)}"/g, (m, $value) => {
+          return `={{${$value}}}`;
         })
         // transform class attribute to JSX compatible one
-        .replace(/class=["'](.*?)["']/g, (m, $1) => {
-          return 'className="' + $1 + '"';
+        .replace(/class="(.*?)"/g, (m, $value) => {
+          return `className="${$value}"`;
         })
         // transform custom element opening tags to pascal case
-        .replace(/<(p-[\w-]+)(.*?)>/g, (m, $1, $2) => {
-          return '<' + upperFirst(camelCase($1)) + '' + $2 + '>';
+        .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
+          return `<${upperFirst(camelCase($tag))}${$attributes}>`;
         })
         // transform custom element closing tags to pascal case
-        .replace(/<\/(p-[\w-]+)>/g, (m, $1) => {
-          return '</' + upperFirst(camelCase($1)) + '>';
+        .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
+          return `</${upperFirst(camelCase($tag))}>`;
         })
     );
   }
