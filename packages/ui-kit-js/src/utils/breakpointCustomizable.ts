@@ -1,7 +1,7 @@
 import JSON5 from 'json5';
 import { prefix } from './prefix';
 
-export type BreakpointCustomizable<T> = T | BreakpointValues<T>;
+export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 export interface BreakpointValues<T> {
   base: T;
   xs?: T;
