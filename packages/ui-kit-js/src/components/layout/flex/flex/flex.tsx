@@ -24,15 +24,15 @@ export class Flex {
 
   /** Defines how the flex items are aligned along the main axis. */
   @Prop() public justifyContent?: BreakpointCustomizable<
-    'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  > = 'start';
+    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+  > = 'flex-start';
 
   /** Defines how the flex items are aligned along the cross axis. */
-  @Prop() public alignItems?: BreakpointCustomizable<'stretch' | 'start' | 'end' | 'center' | 'baseline'> = 'stretch';
+  @Prop() public alignItems?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'> = 'stretch';
 
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
   @Prop() public alignContent?: BreakpointCustomizable<
-    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   > = 'stretch';
 
   public render(): JSX.Element {
@@ -41,7 +41,7 @@ export class Flex {
       this.display !== 'block' && mapBreakpointPropToPrefixedClasses('flex-', this.display),
       this.wrap !== 'nowrap' && mapBreakpointPropToPrefixedClasses('flex--wrap', this.wrap),
       this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('flex--direction', this.direction),
-      this.justifyContent !== 'start' && mapBreakpointPropToPrefixedClasses('flex--justify-content', this.justifyContent),
+      this.justifyContent !== 'flex-start' && mapBreakpointPropToPrefixedClasses('flex--justify-content', this.justifyContent),
       this.alignItems !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-items', this.alignItems),
       this.alignContent !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-content', this.alignContent)
     );

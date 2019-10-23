@@ -146,7 +146,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 This property defines the alignment of flex items on the main axis in conjunction to their siblings.
 
-#### Start
+#### Flex-Start
 
 <Playground>
   <p-flex class="example-flex">
@@ -156,10 +156,10 @@ This property defines the alignment of flex items on the main axis in conjunctio
   </p-flex>
 </Playground>
 
-#### End
+#### Flex-End
 
 <Playground>
-  <p-flex justify-content="end" class="example-flex">
+  <p-flex justify-content="flex-end" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item>3</p-flex-item>
@@ -210,7 +210,7 @@ This property defines the alignment of flex items on the main axis in conjunctio
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-flex justify-content="{ base: 'start', l: 'end' }" class="example-flex">
+  <p-flex justify-content="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item>3</p-flex-item>
@@ -233,20 +233,20 @@ This property defines the alignment of flex items on the cross axis in conjuncti
   </p-flex>
 </Playground>
 
-#### Start
+#### Flex-Start
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="start" class="example-flex">
+  <p-flex align-items="flex-start" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item>3</p-flex-item>
   </p-flex>
 </Playground>
 
-#### End
+#### Flex-End
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="end" class="example-flex">
+  <p-flex align-items="flex-end" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item>3</p-flex-item>
@@ -277,7 +277,7 @@ This property defines the alignment of flex items on the cross axis in conjuncti
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="{ base: 'start', l: 'end' }" class="example-flex">
+  <p-flex align-items="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item>3</p-flex-item>
@@ -299,18 +299,18 @@ This property has only effect when there is more than one line of flex items.
   </p-flex>
 </Playground>
 
-#### Start
+#### Flex-Start
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="start" class="example-flex">
+  <p-flex wrap="wrap" align-content="flex-start" class="example-flex">
     <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
   </p-flex>
 </Playground>
 
-#### End
+#### Flex-End
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="end" class="example-flex">
+  <p-flex wrap="wrap" align-content="flex-end" class="example-flex">
     <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
   </p-flex>
 </Playground>
@@ -351,7 +351,7 @@ This property has only effect when there is more than one line of flex items.
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="{ base: 'start', l: 'end' }" class="example-flex">
+  <p-flex wrap="wrap" align-content="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
     <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
   </p-flex>
 </Playground>
@@ -463,7 +463,7 @@ You can override the align items properties of the flex container for individual
 #### Stretch
 
 <Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="start" class="example-flex">
+  <p-flex align-items="flex-start" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
     <p-flex-item align-self="stretch">3</p-flex-item>
@@ -471,24 +471,24 @@ You can override the align items properties of the flex container for individual
   </p-flex>
 </Playground>
 
-#### Start
+#### Flex-Start
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="start">3</p-flex-item>
+    <p-flex-item align-self="flex-start">3</p-flex-item>
     <p-flex-item>4</p-flex-item>
   </p-flex>
 </Playground>
 
-#### End
+#### Flex-End
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="end">3</p-flex-item>
+    <p-flex-item align-self="flex-end">3</p-flex-item>
     <p-flex-item>4</p-flex-item>
   </p-flex>
 </Playground>
@@ -522,7 +522,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   <p-flex class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="{ base: 'start', l: 'end' }">3</p-flex-item>
+    <p-flex-item align-self="{ base: 'flex-start', l: 'flex-end' }">3</p-flex-item>
     <p-flex-item>4</p-flex-item>
   </p-flex>
 </Playground>
