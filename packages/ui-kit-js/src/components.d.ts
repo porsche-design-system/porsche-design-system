@@ -109,7 +109,7 @@ export namespace Components {
     /**
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
-    'display'?: BreakpointCustomizable<'block' | 'inline'>;
+    'inline'?: BreakpointCustomizable<boolean>;
     /**
     * Defines how the flex items are aligned along the main axis.
     */
@@ -592,7 +592,7 @@ declare namespace LocalJSX {
     /**
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
-    'display'?: BreakpointCustomizable<'block' | 'inline'>;
+    'inline'?: BreakpointCustomizable<boolean>;
     /**
     * Defines how the flex items are aligned along the main axis.
     */

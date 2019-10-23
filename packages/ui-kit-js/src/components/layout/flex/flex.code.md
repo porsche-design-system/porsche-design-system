@@ -20,11 +20,11 @@ Initialize standard flexbox container to define flex context.
 Flex inline displays flex containers in a row.
 
 <Playground>
-  <p-flex display="inline" class="example-flex">
+  <p-flex inline="true" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
-  <p-flex display="inline" class="example-flex">
+  <p-flex inline="true" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
@@ -34,11 +34,11 @@ Flex inline displays flex containers in a row.
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-flex display="{ base: 'block', l: 'inline' }" class="example-flex">
+  <p-flex inline="{ base: false, l: true }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
-  <p-flex display="{ base: 'block', l: 'inline' }" class="example-flex">
+  <p-flex inline="{ base: false, l: true }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
