@@ -1,8 +1,8 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
-import { reactOutputTarget } from '@ionic-enterprise/react-output-plugin';
-import { angularOutputTarget } from '@ionic-enterprise/angular-output-plugin';
+import { reactOutputTarget } from '@stencil/react-output-target';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 import autoprefixer = require('autoprefixer');
 
 export const config: Config = {
