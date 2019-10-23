@@ -98,7 +98,7 @@
     &-nowrap {
       @include p-flex-wrap(nowrap);
     }
-    &-reverse {
+    &-wrap-reverse {
       @include p-flex-wrap(wrap-reverse);
     }
 
@@ -109,7 +109,7 @@
       &-nowrap-xs {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-xs {
+      &-wrap-reverse-xs {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -121,7 +121,7 @@
       &-nowrap-s {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-s {
+      &-wrap-reverse-s {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -133,7 +133,7 @@
       &-nowrap-m {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-m {
+      &-wrap-reverse-m {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -145,7 +145,7 @@
       &-nowrap-l {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-l {
+      &-wrap-reverse-l {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -157,7 +157,7 @@
       &-nowrap-xl {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-xl {
+      &-wrap-reverse-xl {
         @include p-flex-wrap(wrap-reverse);
       }
     }

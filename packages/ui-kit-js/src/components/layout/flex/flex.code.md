@@ -20,11 +20,11 @@ Initialize standard flexbox container to define flex context.
 Flex inline displays flex containers in a row.
 
 <Playground>
-  <p-flex flow="inline" class="example-flex">
+  <p-flex display="inline" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
-  <p-flex flow="inline" class="example-flex">
+  <p-flex display="inline" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
@@ -34,11 +34,11 @@ Flex inline displays flex containers in a row.
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-flex flow="{ base: 'block', l: 'inline' }" class="example-flex">
+  <p-flex display="{ base: 'block', l: 'inline' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
-  <p-flex flow="{ base: 'block', l: 'inline' }" class="example-flex">
+  <p-flex display="{ base: 'block', l: 'inline' }" class="example-flex">
     <p-flex-item>1</p-flex-item>
     <p-flex-item>2</p-flex-item>
   </p-flex>
@@ -126,7 +126,7 @@ The flex wrap property is used to force flex items to stay in line independently
 #### Wrap reverse
 
 <Playground>
-  <p-flex wrap="reverse" class="example-flex">
+  <p-flex wrap="wrap-reverse" class="example-flex">
     <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
   </p-flex>
 </Playground>
