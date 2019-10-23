@@ -96,12 +96,12 @@ export namespace Components {
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
     */
     'alignContent'?: BreakpointCustomizable<
-    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
     >;
     /**
     * Defines how the flex items are aligned along the cross axis.
     */
-    'alignItems'?: BreakpointCustomizable<'stretch' | 'start' | 'end' | 'center' | 'baseline'>;
+    'alignItems'?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
     */
@@ -114,7 +114,7 @@ export namespace Components {
     * Defines how the flex items are aligned along the main axis.
     */
     'justifyContent'?: BreakpointCustomizable<
-    'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
     >;
     /**
     * If set, overflowing elements will wrap to a new line.
@@ -125,7 +125,7 @@ export namespace Components {
     /**
     * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
     */
-    'alignSelf'?: BreakpointCustomizable<'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'>;
+    'alignSelf'?: BreakpointCustomizable<'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'>;
     /**
     * The shorthand property for the combined definition of "shrink", "grow" and "basis"
     */
@@ -579,12 +579,12 @@ declare namespace LocalJSX {
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
     */
     'alignContent'?: BreakpointCustomizable<
-    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
     >;
     /**
     * Defines how the flex items are aligned along the cross axis.
     */
-    'alignItems'?: BreakpointCustomizable<'stretch' | 'start' | 'end' | 'center' | 'baseline'>;
+    'alignItems'?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
     /**
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
     */
@@ -597,7 +597,7 @@ declare namespace LocalJSX {
     * Defines how the flex items are aligned along the main axis.
     */
     'justifyContent'?: BreakpointCustomizable<
-    'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
     >;
     /**
     * If set, overflowing elements will wrap to a new line.
@@ -608,7 +608,7 @@ declare namespace LocalJSX {
     /**
     * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
     */
-    'alignSelf'?: BreakpointCustomizable<'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'>;
+    'alignSelf'?: BreakpointCustomizable<'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'>;
     /**
     * The shorthand property for the combined definition of "shrink", "grow" and "basis"
     */

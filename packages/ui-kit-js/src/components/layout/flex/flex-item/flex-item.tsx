@@ -24,7 +24,7 @@ export class FlexItem {
   > = 'none';
 
   /** Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property. */
-  @Prop() public alignSelf?: BreakpointCustomizable<'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'> =
+  @Prop() public alignSelf?: BreakpointCustomizable<'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'> =
     'auto';
 
   /** The ability to allow/disallow the flex child to grow. */
