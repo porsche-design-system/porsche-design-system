@@ -42,6 +42,6 @@ export const config: Config = {
   ],
   globalStyle: 'src/styles/index.scss',
   testing: {
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
   }
 };
