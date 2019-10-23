@@ -149,7 +149,7 @@ export default class CodeBlock extends Vue {
 
   private highlight(markup: string): string {
     if (this.isReact) {
-      return Prism.highlight(markup, Prism.languages.jsx, 'languages-jsx');
+      return Prism.highlight(markup, Prism.languages.jsx, 'language-jsx');
     }
 
     return Prism.highlight(markup, Prism.languages.markup, 'markup');
@@ -217,6 +217,10 @@ export default class CodeBlock extends Vue {
           .token.attr-value,
           .token.keyword {
             color: deeppink;
+          }
+
+          .token.script {
+            color: hotpink;
           }
 
           .token.regex,
