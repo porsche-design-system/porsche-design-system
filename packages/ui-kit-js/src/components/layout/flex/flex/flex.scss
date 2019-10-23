@@ -506,6 +506,9 @@
     &-space-around {
       @include p-flex-align-content(space-around);
     }
+    &-space-evenly {
+      @include p-flex-align-content(space-evenly);
+    }
 
     @include p-breakpoint("xs") {
       &-start-xs {
@@ -525,6 +528,9 @@
       }
       &-space-around-xs {
         @include p-flex-align-content(space-around);
+      }
+      &-space-evenly-xs {
+        @include p-flex-align-content(space-evenly);
       }
     }
 
@@ -547,6 +553,9 @@
       &-space-around-s {
         @include p-flex-align-content(space-around);
       }
+      &-space-evenly-s {
+        @include p-flex-align-content(space-evenly);
+      }
     }
 
     @include p-breakpoint("m") {
@@ -567,6 +576,9 @@
       }
       &-space-around-m {
         @include p-flex-align-content(space-around);
+      }
+      &-space-evenly-m {
+        @include p-flex-align-content(space-evenly);
       }
     }
 
@@ -589,6 +601,9 @@
       &-space-around-l {
         @include p-flex-align-content(space-around);
       }
+      &-space-evenly-l {
+        @include p-flex-align-content(space-evenly);
+      }
     }
 
     @include p-breakpoint("xl") {
@@ -609,6 +624,9 @@
       }
       &-space-around-xl {
         @include p-flex-align-content(space-around);
+      }
+      &-space-evenly-xl {
+        @include p-flex-align-content(space-evenly);
       }
     }
   }
