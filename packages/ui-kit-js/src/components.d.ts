@@ -109,7 +109,7 @@ export namespace Components {
     /**
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
-    'flow'?: BreakpointCustomizable<'block' | 'inline'>;
+    'display'?: BreakpointCustomizable<'block' | 'inline'>;
     /**
     * Defines how the flex items are aligned along the main axis.
     */
@@ -119,7 +119,7 @@ export namespace Components {
     /**
     * If set, overflowing elements will wrap to a new line.
     */
-    'wrap'?: BreakpointCustomizable<'nowrap' | 'wrap' | 'reverse'>;
+    'wrap'?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
   }
   interface PFlexItem {
     /**
@@ -592,7 +592,7 @@ declare namespace LocalJSX {
     /**
     * Defines the flex containers content flow if 2 or more containers are siblings of each other.
     */
-    'flow'?: BreakpointCustomizable<'block' | 'inline'>;
+    'display'?: BreakpointCustomizable<'block' | 'inline'>;
     /**
     * Defines how the flex items are aligned along the main axis.
     */
@@ -602,7 +602,7 @@ declare namespace LocalJSX {
     /**
     * If set, overflowing elements will wrap to a new line.
     */
-    'wrap'?: BreakpointCustomizable<'nowrap' | 'wrap' | 'reverse'>;
+    'wrap'?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
   }
   interface PFlexItem extends JSXBase.HTMLAttributes<HTMLPFlexItemElement> {
     /**

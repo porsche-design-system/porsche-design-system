@@ -65,8 +65,8 @@
   </p-flex>
 </div>
 
-<div class="playground" title="should show layout flow inline">
-  <p-flex flow="inline">
+<div class="playground" title="should display inline">
+  <p-flex display="inline">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -74,7 +74,7 @@
       <p>2</p>
     </p-flex-item>
   </p-flex>
-  <p-flex flow="inline">
+  <p-flex display="inline">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -84,8 +84,8 @@
   </p-flex>
 </div>
 
-<div class="playground" title="should adapt layout flow depending on viewport">
-  <p-flex flow="{ base: 'block', l: 'inline' }">
+<div class="playground" title="should adapt display mode depending on viewport">
+  <p-flex display="{ base: 'block', l: 'inline' }">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -93,7 +93,7 @@
       <p>2</p>
     </p-flex-item>
   </p-flex>
-  <p-flex flow="{ base: 'block', l: 'inline' }">
+  <p-flex display="{ base: 'block', l: 'inline' }">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -237,8 +237,8 @@
   </p-flex>
 </div>
 
-<div class="playground" title="should render flex items by wrap mode 'reverse'">
-  <p-flex wrap="reverse">
+<div class="playground" title="should render flex items by wrap mode 'wrap-reverse'">
+  <p-flex wrap="wrap-reverse">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -270,7 +270,7 @@
 </div>
 
 <div class="playground" title="should adapt wrap mode depending on viewport">
-  <p-flex wrap="{ base: 'nowrap', l: 'reverse' }">
+  <p-flex wrap="{ base: 'nowrap', l: 'wrap-reverse' }">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
