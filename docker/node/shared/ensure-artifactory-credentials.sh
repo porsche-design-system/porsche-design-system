@@ -10,11 +10,6 @@ if [[ -z "${PORSCHE_NPM_REGISTRY_TOKEN}" ]]; then
   exit 1
 fi
 
-if [[ -z "${IONIC_NPM_REGISTRY_TOKEN}" ]]; then
-  echo "Please provide the \$IONIC_NPM_REGISTRY_TOKEN environment variable. Have a look at README for more information."
-  exit 1
-fi
-
 cleanup_credentials() {
   local exit_code=$?
   echo "task: [$(date)] \"cleanup_credentials\""
@@ -25,7 +20,6 @@ cleanup_credentials() {
 setup_credentials() {
   echo "task: [$(date)] \"setup_credentials\""
   echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" > "${HOME}/.npmrc"
-  echo "//registry.ionicframework.com/:_authToken=${IONIC_NPM_REGISTRY_TOKEN}" >> "${HOME}/.npmrc"
 }
 
 trap cleanup_credentials EXIT
