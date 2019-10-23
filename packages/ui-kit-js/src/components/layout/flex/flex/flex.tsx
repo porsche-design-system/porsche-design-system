@@ -1,4 +1,4 @@
-import { JSX, Element, Component, Host, Prop, h } from '@stencil/core';
+import { JSX, Component, Host, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -11,10 +11,8 @@ import {
   styleUrl: 'flex.scss'
 })
 export class Flex {
-  @Element() public host: HTMLDivElement;
-
   /** Defines the flex containers content flow if 2 or more containers are siblings of each other. */
-  @Prop() public display?: BreakpointCustomizable<'block' | 'inline'> = 'block';
+  @Prop() public inline?: BreakpointCustomizable<boolean> = false;
 
   /** If set, overflowing elements will wrap to a new line. */
   @Prop() public wrap?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'> = 'nowrap';
@@ -38,7 +36,7 @@ export class Flex {
   public render(): JSX.Element {
     const flexClasses = cx(
       prefix('flex'),
-      this.display !== 'block' && mapBreakpointPropToPrefixedClasses('flex-', this.display),
+      this.inline !== false && mapBreakpointPropToPrefixedClasses('flex-', this.inline, ['inline', 'default']),
       this.wrap !== 'nowrap' && mapBreakpointPropToPrefixedClasses('flex--wrap', this.wrap),
       this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('flex--direction', this.direction),
       this.justifyContent !== 'flex-start' && mapBreakpointPropToPrefixedClasses('flex--justify-content', this.justifyContent),

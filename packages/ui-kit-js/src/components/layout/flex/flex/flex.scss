@@ -34,16 +34,15 @@
 .#{$p-global-class-prefix}flex {
   @include p-flex;
 
-  &--block {
+  &--default {
     @include p-flex;
   }
-
   &--inline {
     @include p-flex-inline;
   }
 
   @include p-breakpoint("xs") {
-    &--block-xs {
+    &--default-xs {
       @include p-flex;
     }
     &--inline-xs {
@@ -52,7 +51,7 @@
   }
 
   @include p-breakpoint("s") {
-    &--block-s {
+    &--default-s {
       @include p-flex;
     }
     &--inline-s {
@@ -61,7 +60,7 @@
   }
 
   @include p-breakpoint("m") {
-    &--block-m {
+    &--default-m {
       @include p-flex;
     }
     &--inline-m {
@@ -70,7 +69,7 @@
   }
 
   @include p-breakpoint("l") {
-    &--block-l {
+    &--default-l {
       @include p-flex;
     }
     &--inline-l {
@@ -79,7 +78,7 @@
   }
 
   @include p-breakpoint("xl") {
-    &--block-xl {
+    &--default-xl {
       @include p-flex;
     }
     &--inline-xl {

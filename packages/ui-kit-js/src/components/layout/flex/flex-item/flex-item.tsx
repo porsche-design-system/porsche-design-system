@@ -1,4 +1,4 @@
-import { JSX, Element, Component, Host, Prop, h } from '@stencil/core';
+import { JSX, Component, Host, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -11,8 +11,6 @@ import {
   styleUrl: 'flex-item.scss'
 })
 export class FlexItem {
-  @Element() public host: HTMLDivElement;
-
   /** The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this. */
   @Prop() public width?: BreakpointCustomizable<
     'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'

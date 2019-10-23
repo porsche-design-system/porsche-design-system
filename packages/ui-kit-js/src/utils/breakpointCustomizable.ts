@@ -1,23 +1,35 @@
 import JSON5 from 'json5';
-import { prefix } from './prefix';
+import {prefix} from './prefix';
 
-export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
-export interface BreakpointValues<T> {
-  base: T;
-  xs?: T;
-  s?: T;
-  m?: T;
-  l?: T;
-  xl?: T;
+enum Breakpoint {
+  base = 'base',
+  xs = 'xs',
+  s = 's',
+  m = 'm',
+  l = 'l',
+  xl = 'xl'
 }
-type BreakpointValue2 = string | number | boolean;
-type BreakpointValues2 = BreakpointValues<BreakpointValue2>;
 
-function parseBreakpointProp(prop: BreakpointValues2 | BreakpointValue2): BreakpointValues2 | BreakpointValue2 {
+type BreakpointValue = string | number | boolean;
+type JSON5String = string;
+type ClassSuffixes = [string, string];
+
+interface BreakpointValues<T> {
+  [Breakpoint.base]: T;
+  [Breakpoint.xs]?: T;
+  [Breakpoint.s]?: T;
+  [Breakpoint.m]?: T;
+  [Breakpoint.l]?: T;
+  [Breakpoint.xl]?: T;
+}
+
+export type BreakpointCustomizable<T> = T | BreakpointValues<T> | JSON5String;
+
+function parseJSON5(prop: BreakpointCustomizable<BreakpointValue>): BreakpointValues<BreakpointValue> | BreakpointValue {
   if (typeof prop === 'string') {
     try {
       // prop is JSON5 string, e.g. "{ base: 'block', l: 'inline' }"
-      return JSON5.parse(prop) as BreakpointValues2;
+      return JSON5.parse(prop) as BreakpointValues<BreakpointValue>;
     } catch (error) {
       // prop is string, e.g. "block" or "inline"
       return prop;
@@ -29,55 +41,62 @@ function parseBreakpointProp(prop: BreakpointValues2 | BreakpointValue2): Breakp
   return prop;
 }
 
-export const mapBreakpointPropToPrefixedClasses = (
-  className: string,
-  prop?: BreakpointCustomizable<string | number | boolean>,
-  modTrue?: string,
-  modFalse?: string
-): {[cssClass: string]: boolean} => {
+function getClassName(value: BreakpointValue, classSuffixes: ClassSuffixes): string {
+  if (typeof value === 'boolean') {
+    return value ? classSuffixes[0] : classSuffixes[1];
+  }
+  return value.toString();
+}
 
-  prop = parseBreakpointProp(prop as BreakpointValues2 | string);
+function getBreakpointSuffix(breakpoint: Breakpoint): string {
+  if (breakpoint !== 'base') {
+    return `-${breakpoint}`;
+  }
 
-  if (prop === undefined) {
+  return '';
+}
+
+function createClass(classPrefix: string, value: BreakpointValue, breakpoint: Breakpoint, classSuffixes: ClassSuffixes) {
+  if (value === undefined || value === null) {
     return {};
   }
 
-  let classes: any = {};
+  const className = getClassName(value, classSuffixes);
+  const breakpointSuffix = getBreakpointSuffix(breakpoint);
 
-  if (typeof prop === 'number' || typeof prop === 'string') {
-    classes[prefix(`${className}-${prop}`)] = true;
-  } else if (typeof prop === 'boolean') {
-    classes[prefix(`${className}${modTrue}`)] = prop === true;
-    classes[prefix(`${className}${modFalse}`)] = prop === false;
-  } else {
-    Object.keys(prop).forEach((key) => {
-      const value: any = (prop as any)[key];
+  return {
+    [prefix(`${classPrefix}-${className}${breakpointSuffix}`)]: true
+  };
+}
 
-      if (key === 'base') {
-        classes = {
-          ...classes,
-          ...{
-            [prefix(`${className}-${value}`)]: typeof value !== 'boolean' && value !== undefined && value !== null
-          },
-          ...{ [prefix(`${className}${modTrue}`)]: value === true },
-          ...{ [prefix(`${className}${modFalse}`)]: value === false }
-        };
-      } else {
-        classes = {
-          ...classes,
-          ...{
-            [prefix(`${className}-${value}-${key}`)]:
-            typeof value !== 'boolean' && value !== undefined && value !== null
-          },
-          ...{ [prefix(`${className}${modTrue}-${key}`)]: value === true },
-          ...{ [prefix(`${className}${modFalse}-${key}`)]: value === false }
-        };
-      }
-    });
+/**
+ *
+ * @param classPrefix
+ * @param prop
+ * @param classSuffixes
+ *  First value in array is used for true boolean values, second for false.
+ *  It's only used when prop is a boolean or prop is a object/JSON5 that contains a boolean.
+ */
+export const mapBreakpointPropToPrefixedClasses = (
+  classPrefix: string,
+  prop: BreakpointCustomizable<BreakpointValue>,
+  classSuffixes?: ClassSuffixes
+): { [className: string]: boolean } => {
+
+  const parsedProp = parseJSON5(prop);
+
+  if (typeof parsedProp === 'object') {
+    return Object.entries(parsedProp).reduce((classes, [breakpoint, value]) => {
+      return {
+        ...classes,
+        ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes)
+      };
+    }, {});
   }
 
-  return classes;
+  return createClass(classPrefix, parsedProp, Breakpoint.base, classSuffixes);
 };
+
 
 // TODO: can be deleted after its replaced everywhere with mapBreakpointPropToPrefixedClasses()
 export function mapBreakpointPropToClasses(
@@ -107,18 +126,18 @@ export function mapBreakpointPropToClasses(
           ...{
             [prefix(`${className}-${value}`)]: typeof value !== 'boolean' && value !== undefined && value !== null
           },
-          ...{ [prefix(`${className}${modTrue}`)]: value === true },
-          ...{ [prefix(`${className}${modFalse}`)]: value === false }
+          ...{[prefix(`${className}${modTrue}`)]: value === true},
+          ...{[prefix(`${className}${modFalse}`)]: value === false}
         };
       } else {
         classes = {
           ...classes,
           ...{
             [prefix(`${className}-${value}-${key}`)]:
-              typeof value !== 'boolean' && value !== undefined && value !== null
+            typeof value !== 'boolean' && value !== undefined && value !== null
           },
-          ...{ [prefix(`${className}${modTrue}-${key}`)]: value === true },
-          ...{ [prefix(`${className}${modFalse}-${key}`)]: value === false }
+          ...{[prefix(`${className}${modTrue}-${key}`)]: value === true},
+          ...{[prefix(`${className}${modFalse}-${key}`)]: value === false}
         };
       }
     });

@@ -65,8 +65,8 @@
   </p-flex>
 </div>
 
-<div class="playground" title="should display inline">
-  <p-flex display="inline">
+<div class="playground" title="should display inline-flex">
+  <p-flex inline="true">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -74,7 +74,7 @@
       <p>2</p>
     </p-flex-item>
   </p-flex>
-  <p-flex display="inline">
+  <p-flex inline="true">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -85,7 +85,7 @@
 </div>
 
 <div class="playground" title="should adapt display mode depending on viewport">
-  <p-flex display="{ base: 'block', l: 'inline' }">
+  <p-flex inline="{ base: false, l: true }">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -93,7 +93,7 @@
       <p>2</p>
     </p-flex-item>
   </p-flex>
-  <p-flex display="{ base: 'block', l: 'inline' }">
+  <p-flex inline="{ base: false, l: true }">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
