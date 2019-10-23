@@ -96,7 +96,7 @@ export namespace Components {
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
     */
     'alignContent'?: BreakpointCustomizable<
-    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around'
+    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
     >;
     /**
     * Defines how the flex items are aligned along the cross axis.
@@ -579,7 +579,7 @@ declare namespace LocalJSX {
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
     */
     'alignContent'?: BreakpointCustomizable<
-    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around'
+    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
     >;
     /**
     * Defines how the flex items are aligned along the cross axis.

@@ -32,7 +32,7 @@ export class Flex {
 
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
   @Prop() public alignContent?: BreakpointCustomizable<
-    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around'
+    'stretch' | 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   > = 'stretch';
 
   public render(): JSX.Element {

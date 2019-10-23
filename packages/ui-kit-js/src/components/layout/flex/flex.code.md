@@ -339,6 +339,14 @@ This property has only effect when there is more than one line of flex items.
   </p-flex>
 </Playground>
 
+#### Space evenly
+
+<Playground :childElementLayout="{height: 'fixed'}">
+  <p-flex wrap="wrap" align-content="space-evenly" class="example-flex">
+    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
+  </p-flex>
+</Playground>
+
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
