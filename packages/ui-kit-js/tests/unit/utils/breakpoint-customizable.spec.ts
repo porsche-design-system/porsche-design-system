@@ -1,4 +1,4 @@
-import { mapBreakpointPropToPrefixedClasses } from '../../../src/utils/breakpointCustomizable';
+import { mapBreakpointPropToPrefixedClasses } from '../../../src/utils';
 
 describe('breakpointCustomizable', () => {
 
@@ -66,7 +66,6 @@ describe('breakpointCustomizable', () => {
       'p-some-class-prefix-6-xl': true
     });
   });
-
 
   it('should create class by passing an "JSON5 string" prop', () => {
     const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', `{base: 'some-string', xs: true, m: false, xl: 123}`, ['a', 'b']); // => JSON5
