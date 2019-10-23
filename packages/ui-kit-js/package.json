@@ -57,14 +57,14 @@
     "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
-    "@ionic-enterprise/angular-output-plugin": "^0.0.5",
-    "@ionic-enterprise/react-output-plugin": "^0.0.9",
     "@porsche-ui/cross-browser-tester": "^1.0.1",
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
+    "@stencil/angular-output-target": "^0.0.1",
     "@stencil/core": "1.4.0",
     "@stencil/postcss": "^1.0.1",
+    "@stencil/react-output-target": "^0.0.1",
     "@stencil/sass": "^1.0.1",
     "@types/autoprefixer": "^9.5.0",
     "@types/classnames": "^2.2.8",
