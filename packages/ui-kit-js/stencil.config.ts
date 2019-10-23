@@ -4,6 +4,20 @@ import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@ionic-enterprise/react-output-plugin';
 import { angularOutputTarget } from '@ionic-enterprise/angular-output-plugin';
 import autoprefixer = require('autoprefixer');
+import path = require('path');
+
+/**
+ * TODO: Remove this workaround
+ * This is a temporary workaround to stop stencil from
+ * messing up our dependencies by running an `npm` command.
+ * Since we're heavily relying on yarn workspaces running
+ * `npm` is leading to conflicts.
+ * By adding a npm script to the PATH that does nothing
+ * we can ensure, that our dependencies stay untouched.
+ * https://github.com/porscheui/porsche-ui-kit/issues/318
+ */
+const fakeNpmPath = path.join(__dirname, 'scripts', 'fakenpm');
+process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
 
 export const config: Config = {
   namespace: 'porsche-ui-kit',
