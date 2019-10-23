@@ -553,6 +553,16 @@ It handles how to grow an item based on the space that is left to fulfill the pa
   </p-flex>
 </Playground>
 
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<Playground>
+  <p-flex class="example-flex">
+    <p-flex-item>1</p-flex-item>
+    <p-flex-item grow="{ base: 0, l: 1 }">2</p-flex-item>
+  </p-flex>
+</Playground>
+
 ---
 
 ### Flex item shrink
@@ -575,6 +585,16 @@ It handles how to shrink an item based on the space that exceeds the parents wid
 <Playground>
   <p-flex class="example-flex">
     <p-flex-item shrink="0" style="width: 80%">1</p-flex-item>
+    <p-flex-item style="width: 80%">2</p-flex-item>
+  </p-flex>
+</Playground>
+
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<Playground>
+  <p-flex class="example-flex">
+    <p-flex-item shrink="{ base: 0, l: 1 }" style="width: 80%">1</p-flex-item>
     <p-flex-item style="width: 80%">2</p-flex-item>
   </p-flex>
 </Playground>
@@ -622,6 +642,17 @@ Setting shorthand properties for flex grow, shrink and base:
     <p-flex-item flex="none">1 - short content</p-flex-item>
     <p-flex-item flex="none">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
     <p-flex-item flex="none">3 - short content</p-flex-item>
+  </p-flex>
+</Playground>
+
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<Playground>
+  <p-flex class="example-flex">
+    <p-flex-item flex="{base: 'initial', l: 'equal'}">1 - short content</p-flex-item>
+    <p-flex-item flex="{base: 'initial', l: 'equal'}">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
+    <p-flex-item flex="{base: 'initial', l: 'equal'}">3 - short content</p-flex-item>
   </p-flex>
 </Playground>
 
