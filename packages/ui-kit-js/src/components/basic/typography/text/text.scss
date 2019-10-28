@@ -45,6 +45,10 @@
     }
 
     // generic text
+    &-inherit {
+      @include p-text-generic($p-font-weight-regular, 'inherit');
+    }
+
     &-18 {
       @include p-text-generic($p-font-weight-regular, $p-font-size-18);
     }

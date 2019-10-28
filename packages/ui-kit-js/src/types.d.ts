@@ -2,6 +2,7 @@
 export type TextVariant =
   | 'copy'
   | 'small'
+  | 'inherit'
   | '18'
   | '20'
   | '20-thin'
