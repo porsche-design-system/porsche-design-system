@@ -8,6 +8,9 @@
 * Added `pTabindex` property to p-button-icon  (values of 0 or -1 are allowed)
 * It's now disallowed to use `tabindex` property on p-button-icon (will be ignored and warning is shown)
 
+### Bugfix
+* Fix submitting form behaviour of p-button-icon (it's now preventable by "preventDefault")
+
 ## [1.0.0-alpha.6] (2019-10-14)
 
 ### Bugfix
