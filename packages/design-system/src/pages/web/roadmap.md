@@ -7,35 +7,45 @@ Following our mission we align all our doings with our three main objectives:
 
 The roadmap for the Porsche UI Kit is based on the planned tasks and changes for one quarter. Therefore is not a delivery commitment and may be changed based on upcoming user needs, feedback and surrounding requirements.
 
-## Q3 2019
-## Finish all Q2 leftovers
-## 1.0 Alpha release
-* Auto generation of angular and react components
-* Finalize marque component
-* Refactor packages for Alpha 1.0 release including documentation
-* Alpha 1.0 release
-* Rollout workshop DEV
-## Prepare Form Components
-* Community workshop "Forms" in UX Guild
-* General form audit and guideline including input field, text area, radio and checkbox
-## Establish automated testing for a stable 1.0 release
-* Audit of existing tests and definition of testing strategy (what & how)
-* Establish unit & E2E Tests for workshop
-* Enhance storefront tests
-* Establish automated IE11 VRT testing
-## Launch Porsche Icon Collection
-* Release icon collection 1.0 alpha
-* Integration into Porsche UI Kit icon component and infrastructure
-## Extension of Porsche UI Kit to iOS (Strategy)
-* Analyse target iOS workflow & tools to define common Porsche UI Kit strategy
-* Align and finalize UI Kit Kit basics with iOS
+## Q4 2019
+### Release 1.0 Stable
+* Stable Sketch library without plugin-dependencies (replacement of Anima plugin with native Smart Layout functions)
+* Refactoring of component APIs (events, objects, inherits)
+* Refinement text styles and spacings
+* Refinement of font handling including introduction of SemiBold font weight for headlines
+* Refinement of focus states
+* Ensuring stabilization and performance of packages and pipeline
+* Icon refinement for 1.0 stable
+### Release essential form elements
+* Release of components for text field, text area, checkbox, radio button, select
+### Prototype & Test Storefront redesign
+* Conduct user interviews and testings
   
 ---
 
 # Achievements
 
+## Q3 2019
+### 1.0 Alpha release
+* Auto generation of angular and react components
+* Finalize marque component
+* Refactor packages for Alpha 1.0 release including documentation
+* Alpha 1.0 release
+### Prepare form components
+* Community workshop and general form audit
+### Establish automated testing for a stable 1.0 release
+* Enhance test covering of existing components
+* Enhance storefront tests
+* Establish automated cross browser testing (including IE11)
+### Launch Porsche Icon Collection
+* Release icon collection 1.0 alpha
+### Extension of Porsche UI Kit to iOS 
+* Extend Porsche UI Kit infrastructure and split into Web and App
+
+---
+
 ## Q2 2019
-### CDN Asset Management
+### CDN asset management
 - Setup Porsche UI Kit CDN
 - Host and Manage Assets Icons, Porsche Crest and Fonts
 
@@ -57,6 +67,8 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 - Button Icon
 - Spinner
 - Various form element components for testing purpose
+
+---
 
 ## Q1 2019
 ### Setup infrastructure and toolchain for 1.0 release
