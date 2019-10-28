@@ -9,10 +9,11 @@
   position: relative;
   display: block;
   width: 102px;
-  padding-top: 60.784%;
+  height: 62px;
 
   @include p-breakpoint('m') {
     width: 123px;
+    height: 75px;
   }
 
   > img {
