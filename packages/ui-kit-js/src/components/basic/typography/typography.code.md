@@ -101,9 +101,10 @@ In some cases, e.g. for highlighting or graphical reasons, it might be necessary
       <option>72-thin</option>
       <option>84</option>
       <option>84-thin</option>
+      <option>inherit</option>
     </select>
   </template>
-  <p-text :variant="variant">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text :variant="variant" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 ---
@@ -117,7 +118,7 @@ The default text color is Porsche Black. But also predefined or inherited colors
   <p-text color="inherit" style="color: deeppink;">Inherited custom color</p-text>
 </Playground>
 
----
+--- 
 
 ### Alignment variants
 
@@ -151,5 +152,9 @@ This will force any text to never wrap into a new line and in case it's to long 
   @Component
   export default class PlaygroundTypography extends Vue {
     public variant: string = '60-thin';
+    
+    public get isInherit() {
+      return this.variant === 'inherit' ? 'font-size: 48px' : undefined;
+    }
   }
 </script>
