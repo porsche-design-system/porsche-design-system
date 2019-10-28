@@ -2,6 +2,18 @@
 
 ## NOT RELEASED YET
 
+### Change
+* Add JSON5 support to flex component attributes
+* Add value `space-evenly` to attribute `stretch` of flex component
+* Remove `gap` attribute from flex component
+* Rename `flow` attribute to `inline` for flex component
+* Rename `alignItems` values from `start` to `flex-start` and `end` to `flex-end` of flex component
+* Rename `justifyContent` values from `start` to `flex-start` and `end` to `flex-end` of flex component
+* Rename `alignSelf` values from `start` to `flex-start` and `end` to `flex-end` of flex component
+* Rename `stretch` values from `start` to `flex-start` and `end` to `flex-end` of flex component
+* Rename `wrap` values from `reverse` to `wrap-reverse` of flex component
+
+
 ## [1.0.0-alpha.6] (2019-10-14)
 
 ### Bugfix
