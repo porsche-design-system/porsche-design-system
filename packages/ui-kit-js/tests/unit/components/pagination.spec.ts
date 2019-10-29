@@ -1,6 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { Pagination } from '../../src/components/navigation/pagination/pagination';
-import * as PaginationHelper from '../../src/components/navigation/pagination/pagination-helper';
+import { Pagination } from '../../../src/components/navigation/pagination/pagination';
+import * as PaginationHelper from '../../../src/components/navigation/pagination/pagination-helper';
 import { formatPaginationModelToASCII } from './pagination-test-helper';
 
 const createPaginationModel = PaginationHelper.createPaginationModel as Function;

@@ -191,7 +191,7 @@ describe('CodeBlock.vue', () => {
       stubs: ['p-text'],
       propsData: {
         markup:
-`<p-some-tag some-attribute="some value" attribute='some value' class="some-class">
+`<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }">
   <span>some text</span>
 </p-some-tag>`
       }
@@ -200,7 +200,7 @@ describe('CodeBlock.vue', () => {
     wrapper.find('.tabs .tab:nth-child(2) button').trigger('click');
 
     expect(wrapper.find('code').text()).toBe(
-`<p-some-tag someAttribute="some value" attribute="some value" class="some-class">
+`<p-some-tag someAttribute="some value" attribute="some value" class="some-class" [anotherAttribute]="{ bar: 'foo' }">
   <span>some text</span>
 </p-some-tag>`
     );
@@ -211,7 +211,7 @@ describe('CodeBlock.vue', () => {
       stubs: ['p-text'],
       propsData: {
         markup:
-`<p-some-tag bar='{ "bar" : "foo" }' some-attribute="some value" attribute='some value' class="some-class">
+`<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }">
   <span>some text</span>
 </p-some-tag>`
       }
@@ -220,7 +220,7 @@ describe('CodeBlock.vue', () => {
     wrapper.find('.tabs .tab:nth-child(3) button').trigger('click');
 
     expect(wrapper.find('code').text()).toBe(
-`<PSomeTag bar={ "bar" : "foo" } someAttribute="some value" attribute="some value" className="some-class">
+`<PSomeTag someAttribute="some value" attribute="some value" className="some-class" anotherAttribute={{ bar: 'foo' }}>
   <span>some text</span>
 </PSomeTag>`
     );
