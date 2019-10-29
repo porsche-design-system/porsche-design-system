@@ -14,6 +14,10 @@ type BreakpointValue = string | number | boolean;
 type JSON5String = string;
 type ClassSuffixes = [string, string];
 
+interface JSXClasses {
+  [className: string]: boolean;
+}
+
 interface BreakpointValues<T> {
   [Breakpoint.base]: T;
   [Breakpoint.xs]?: T;
@@ -56,7 +60,7 @@ function getBreakpointSuffix(breakpoint: Breakpoint): string {
   return '';
 }
 
-function createClass(classPrefix: string, value: BreakpointValue, breakpoint: Breakpoint, classSuffixes: ClassSuffixes) {
+function createClass(classPrefix: string, value: BreakpointValue, breakpoint: Breakpoint, classSuffixes: ClassSuffixes): JSXClasses {
   if (value === undefined || value === null) {
     return {};
   }
@@ -81,7 +85,7 @@ export const mapBreakpointPropToPrefixedClasses = (
   classPrefix: string,
   prop: BreakpointCustomizable<BreakpointValue>,
   classSuffixes?: ClassSuffixes
-): { [className: string]: boolean } => {
+): JSXClasses => {
 
   const parsedProp = parseJSON5(prop);
 
