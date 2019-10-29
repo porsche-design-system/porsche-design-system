@@ -9,9 +9,9 @@
   * Add value `space-evenly` to attribute `stretch`
   * Remove `gap` attribute
   * Rename `flow` attribute to `inline`
-  * Rename `alignItems` values from `start` to `flex-start` and `end` to `flex-end`
-  * Rename `justifyContent` values from `start` to `flex-start` and `end` to `flex-end`
-  * Rename `alignSelf` values from `start` to `flex-start` and `end` to `flex-end`
+  * Rename `align-items` values from `start` to `flex-start` and `end` to `flex-end`
+  * Rename `justify-content` values from `start` to `flex-start` and `end` to `flex-end`
+  * Rename `align-self` values from `start` to `flex-start` and `end` to `flex-end`
   * Rename `stretch` values from `start` to `flex-start` and `end` to `flex-end`
   * Rename `wrap` values from `reverse` to `wrap-reverse`
 
