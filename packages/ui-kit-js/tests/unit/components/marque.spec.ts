@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { Marque } from '../../src/components/basic/marque/marque';
+import { Marque } from '../../../src/components/basic/marque/marque';
 
 describe('Component <p-marque>', () => {
 

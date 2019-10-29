@@ -117,7 +117,7 @@ hr {
   }
 
   /**
-   * TODO: wait for Stencil statement regarding porps deletion
+   * TODO: wait for Stencil statement regarding props deletion
    * Since v0.0.7 od react components wrapper, all attributes are stripped off the compiled components.
    * Due to this fact (until it is fixed), the VRT fails because there are now contents for these attributes.
    * To fix the build the content generation is disabled and all VRT's are adapted until its clear if this is a bug or not.
