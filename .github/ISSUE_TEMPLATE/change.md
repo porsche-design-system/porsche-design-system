@@ -75,10 +75,10 @@ Subtasks
 
 **QA**
 
-- [ ] Open a pull request
+- [ ] _Open a pull request (optional)_
 - [ ] Design: 3rd party Sketch review
 - [ ] Design: 3rd party guideline review
-- [ ] Design: Code docu review 
+- [ ] Design: Code review (implementation / docu)
 - [ ] Dev: 3rd party code review
 - [ ] Dev: 3rd party code docu review
 

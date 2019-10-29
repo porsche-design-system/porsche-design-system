@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { Icon } from '../../src/components/icon/icon/icon';
-import { getName, isUrl } from '../../src/components/icon/icon/icon-helper';
-import { isValid } from '../../src/components/icon/icon/icon-validation';
+import { Icon } from '../../../src/components/icon/icon/icon';
+import { getName, isUrl } from '../../../src/components/icon/icon/icon-helper';
+import { isValid } from '../../../src/components/icon/icon/icon-validation';
 
 describe('Component <p-icon>', () => {
 
