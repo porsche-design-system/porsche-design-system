@@ -21,10 +21,8 @@ export class ButtonIcon {
   })
   public nativeTabindex?: number = -1;
 
-  /** To change the tabindex position of the element */
-  @Prop({
-    mutable: true
-  }) public pTabindex?: -1 | 0 = 0;
+  /** To remove the element from tab order */
+  @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button when no href prop is defined. */
   @Prop() public type?: 'button' | 'submit' | 'reset' = 'button';
@@ -76,7 +74,7 @@ export class ButtonIcon {
         {...(TagType === 'button'
           ? { type: this.type, disabled: this.disabled || this.loading, 'aria-label': this.label }
           : { href: this.href, target: `_${this.target}`, 'aria-disabled': String(this.disabled || this.loading) })}
-        tabindex={this.pTabindex}
+        tabindex={this.tabbable ? 0 : -1}
       >
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />

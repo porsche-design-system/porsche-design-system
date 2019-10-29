@@ -146,12 +146,12 @@ describe('button-icon', () => {
     expect(await buttonHasFocus()).toBe(false);
   });
 
-  it(`should be removed from tab index order for pTabindex -1`, async () => {
+  it(`should be removed from tab order for tabbable false`, async () => {
     const page = await newE2EPage();
     await page.setContent(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
-            <p-button-icon p-tabindex="-1"></p-button-icon>
+            <p-button-icon tabbable="false"></p-button-icon>
             <a href="#" id="after">after</a>
           </div>
     `);
@@ -192,7 +192,7 @@ describe('button-icon', () => {
 
     expect(consoleLogs.length).toBe(1);
     expect(consoleLogs[0].type).toBe('warning');
-    expect(consoleLogs[0].text).toBe('You can not set the tabindex on the host element of Porsche UI-Kit components. Please use `p-tabindex` instead.');
+    expect(consoleLogs[0].text).toBe('You can not set the tabindex on the host element of Porsche UI-Kit components. Please use `tabbable` instead.');
 
     const button = await page.find('p-button-icon');
     const before = await page.find('#before');
