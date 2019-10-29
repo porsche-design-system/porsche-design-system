@@ -127,6 +127,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __packages/ui-kit-angular/projects/ui-kit-wrapper directory__
 1. Execute `yarn version --no-git-tag-version` and enter new patch or minor version
 1. Update UI Kit JS dependency to corresponding version number (must always be pinned)
+1. Update version number of `@porsche-ui/ui-kit-angular` in the example project to corresponding version number
 1. Update `src/lib/ui-kit-wrapper.module.ts` if necessary
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Switch to __project root directory__
@@ -136,6 +137,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __packages/ui-kit-react/projects/ui-kit-wrapper directory__
 1. Execute `yarn version --no-git-tag-version` and enter new patch or minor version
 1. Update UI Kit JS dependency to corresponding version number (must always be pinned)
+1. Update version number of `@porsche-ui/ui-kit-react` in the example project to corresponding version number
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Switch to __project root directory__
 1. Run `./docker.sh run-build --ui-kit-react`

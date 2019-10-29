@@ -3,6 +3,7 @@ on:
     branches:
       - v*
       - issue/*
+      - housekeeping/*
 name: 'Porsche UI Kit'
 jobs:
   ui-kit-js:
