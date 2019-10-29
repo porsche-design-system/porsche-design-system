@@ -41,9 +41,9 @@ export namespace Components {
     */
     'nativeTabindex'?: number;
     /**
-    * To change the tabindex position of the element
+    * To remove the element from tab order
     */
-    'pTabindex'?: -1 | 0;
+    'tabbable'?: boolean;
     /**
     * Target attribute where the link should be opened.
     */
@@ -526,9 +526,9 @@ declare namespace LocalJSX {
     */
     'loading'?: boolean;
     /**
-    * To change the tabindex position of the element
+    * To remove the element from tab order
     */
-    'pTabindex'?: -1 | 0;
+    'tabbable'?: boolean;
     /**
     * Target attribute where the link should be opened.
     */
