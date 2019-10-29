@@ -2,7 +2,7 @@ import {
   PaginationModelItem,
   itemTypes,
   PaginationItemType
-} from '../../src/components/navigation/pagination/pagination-helper';
+} from '../../../src/components/navigation/pagination/pagination-helper';
 
 interface SymbolToTypeMap {
   [symbol: string]: PaginationItemType;

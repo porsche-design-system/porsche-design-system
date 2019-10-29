@@ -53,11 +53,9 @@
     "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61422 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
-  "dependencies": {
-    "throttle-debounce": "^2.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@porsche-ui/cross-browser-tester": "^1.0.1",
+    "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
@@ -69,6 +67,7 @@
     "@types/autoprefixer": "^9.5.0",
     "@types/classnames": "^2.2.8",
     "@types/jest": "24.0.18",
+    "@types/json5": "^0.0.30",
     "@types/puppeteer": "^1.20.1",
     "@types/throttle-debounce": "^2.1.0",
     "autoprefixer": "^9.6.4",
@@ -78,11 +77,13 @@
     "jasmine": "^3.5.0",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
+    "json5": "^2.1.1",
     "puppeteer": "1.20.0",
     "stylelint": "^11.0.0",
     "stylelint-config-prettier": "^6.0.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-scss": "^3.11.1",
+    "throttle-debounce": "^2.1.0",
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",

@@ -34,16 +34,15 @@
 .#{$p-global-class-prefix}flex {
   @include p-flex;
 
-  &--block {
+  &--default {
     @include p-flex;
   }
-
   &--inline {
     @include p-flex-inline;
   }
 
   @include p-breakpoint("xs") {
-    &--block-xs {
+    &--default-xs {
       @include p-flex;
     }
     &--inline-xs {
@@ -52,7 +51,7 @@
   }
 
   @include p-breakpoint("s") {
-    &--block-s {
+    &--default-s {
       @include p-flex;
     }
     &--inline-s {
@@ -61,7 +60,7 @@
   }
 
   @include p-breakpoint("m") {
-    &--block-m {
+    &--default-m {
       @include p-flex;
     }
     &--inline-m {
@@ -70,7 +69,7 @@
   }
 
   @include p-breakpoint("l") {
-    &--block-l {
+    &--default-l {
       @include p-flex;
     }
     &--inline-l {
@@ -79,7 +78,7 @@
   }
 
   @include p-breakpoint("xl") {
-    &--block-xl {
+    &--default-xl {
       @include p-flex;
     }
     &--inline-xl {
@@ -98,7 +97,7 @@
     &-nowrap {
       @include p-flex-wrap(nowrap);
     }
-    &-reverse {
+    &-wrap-reverse {
       @include p-flex-wrap(wrap-reverse);
     }
 
@@ -109,7 +108,7 @@
       &-nowrap-xs {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-xs {
+      &-wrap-reverse-xs {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -121,7 +120,7 @@
       &-nowrap-s {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-s {
+      &-wrap-reverse-s {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -133,7 +132,7 @@
       &-nowrap-m {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-m {
+      &-wrap-reverse-m {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -145,7 +144,7 @@
       &-nowrap-l {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-l {
+      &-wrap-reverse-l {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -157,7 +156,7 @@
       &-nowrap-xl {
         @include p-flex-wrap(nowrap);
       }
-      &-reverse-xl {
+      &-wrap-reverse-xl {
         @include p-flex-wrap(wrap-reverse);
       }
     }
@@ -254,10 +253,10 @@
   }
 
   &--justify-content {
-    &-start {
+    &-flex-start {
       @include p-flex-justify-content(flex-start);
     }
-    &-end {
+    &-flex-end {
       @include p-flex-justify-content(flex-end);
     }
     &-center {
@@ -274,10 +273,10 @@
     }
 
     @include p-breakpoint("xs") {
-      &-start-xs {
+      &-flex-start-xs {
         @include p-flex-justify-content(flex-start);
       }
-      &-end-xs {
+      &-flex-end-xs {
         @include p-flex-justify-content(flex-end);
       }
       &-center-xs {
@@ -295,10 +294,10 @@
     }
 
     @include p-breakpoint("s") {
-      &-start-s {
+      &-flex-start-s {
         @include p-flex-justify-content(flex-start);
       }
-      &-end-s {
+      &-flex-end-s {
         @include p-flex-justify-content(flex-end);
       }
       &-center-s {
@@ -316,10 +315,10 @@
     }
 
     @include p-breakpoint("m") {
-      &-start-m {
+      &-flex-start-m {
         @include p-flex-justify-content(flex-start);
       }
-      &-end-m {
+      &-flex-end-m {
         @include p-flex-justify-content(flex-end);
       }
       &-center-m {
@@ -337,10 +336,10 @@
     }
 
     @include p-breakpoint("l") {
-      &-start-l {
+      &-flex-start-l {
         @include p-flex-justify-content(flex-start);
       }
-      &-end-l {
+      &-flex-end-l {
         @include p-flex-justify-content(flex-end);
       }
       &-center-l {
@@ -358,10 +357,10 @@
     }
 
     @include p-breakpoint("xl") {
-      &-start-xl {
+      &-flex-start-xl {
         @include p-flex-justify-content(flex-start);
       }
-      &-end-xl {
+      &-flex-end-xl {
         @include p-flex-justify-content(flex-end);
       }
       &-center-xl {
@@ -380,10 +379,10 @@
   }
 
   &--align-items {
-    &-start {
+    &-flex-start {
       @include p-flex-align-items(flex-start);
     }
-    &-end {
+    &-flex-end {
       @include p-flex-align-items(flex-end);
     }
     &-center {
@@ -397,10 +396,10 @@
     }
 
     @include p-breakpoint("xs") {
-      &-start-xs {
+      &-flex-start-xs {
         @include p-flex-align-items(flex-start);
       }
-      &-end-xs {
+      &-flex-end-xs {
         @include p-flex-align-items(flex-end);
       }
       &-center-xs {
@@ -415,10 +414,10 @@
     }
 
     @include p-breakpoint("s") {
-      &-start-s {
+      &-flex-start-s {
         @include p-flex-align-items(flex-start);
       }
-      &-end-s {
+      &-flex-end-s {
         @include p-flex-align-items(flex-end);
       }
       &-center-s {
@@ -433,10 +432,10 @@
     }
 
     @include p-breakpoint("m") {
-      &-start-m {
+      &-flex-start-m {
         @include p-flex-align-items(flex-start);
       }
-      &-end-m {
+      &-flex-end-m {
         @include p-flex-align-items(flex-end);
       }
       &-center-m {
@@ -451,10 +450,10 @@
     }
 
     @include p-breakpoint("l") {
-      &-start-l {
+      &-flex-start-l {
         @include p-flex-align-items(flex-start);
       }
-      &-end-l {
+      &-flex-end-l {
         @include p-flex-align-items(flex-end);
       }
       &-center-l {
@@ -469,10 +468,10 @@
     }
 
     @include p-breakpoint("xl") {
-      &-start-xl {
+      &-flex-start-xl {
         @include p-flex-align-items(flex-start);
       }
-      &-end-xl {
+      &-flex-end-xl {
         @include p-flex-align-items(flex-end);
       }
       &-center-xl {
@@ -488,10 +487,10 @@
   }
 
   &--align-content {
-    &-start {
+    &-flex-start {
       @include p-flex-align-content(flex-start);
     }
-    &-end {
+    &-flex-end {
       @include p-flex-align-content(flex-end);
     }
     &-center {
@@ -506,12 +505,15 @@
     &-space-around {
       @include p-flex-align-content(space-around);
     }
+    &-space-evenly {
+      @include p-flex-align-content(space-evenly);
+    }
 
     @include p-breakpoint("xs") {
-      &-start-xs {
+      &-flex-start-xs {
         @include p-flex-align-content(flex-start);
       }
-      &-end-xs {
+      &-flex-end-xs {
         @include p-flex-align-content(flex-end);
       }
       &-center-xs {
@@ -526,13 +528,16 @@
       &-space-around-xs {
         @include p-flex-align-content(space-around);
       }
+      &-space-evenly-xs {
+        @include p-flex-align-content(space-evenly);
+      }
     }
 
     @include p-breakpoint("s") {
-      &-start-s {
+      &-flex-start-s {
         @include p-flex-align-content(flex-start);
       }
-      &-end-s {
+      &-flex-end-s {
         @include p-flex-align-content(flex-end);
       }
       &-center-s {
@@ -547,13 +552,16 @@
       &-space-around-s {
         @include p-flex-align-content(space-around);
       }
+      &-space-evenly-s {
+        @include p-flex-align-content(space-evenly);
+      }
     }
 
     @include p-breakpoint("m") {
-      &-start-m {
+      &-flex-start-m {
         @include p-flex-align-content(flex-start);
       }
-      &-end-m {
+      &-flex-end-m {
         @include p-flex-align-content(flex-end);
       }
       &-center-m {
@@ -568,13 +576,16 @@
       &-space-around-m {
         @include p-flex-align-content(space-around);
       }
+      &-space-evenly-m {
+        @include p-flex-align-content(space-evenly);
+      }
     }
 
     @include p-breakpoint("l") {
-      &-start-l {
+      &-flex-start-l {
         @include p-flex-align-content(flex-start);
       }
-      &-end-l {
+      &-flex-end-l {
         @include p-flex-align-content(flex-end);
       }
       &-center-l {
@@ -589,13 +600,16 @@
       &-space-around-l {
         @include p-flex-align-content(space-around);
       }
+      &-space-evenly-l {
+        @include p-flex-align-content(space-evenly);
+      }
     }
 
     @include p-breakpoint("xl") {
-      &-start-xl {
+      &-flex-start-xl {
         @include p-flex-align-content(flex-start);
       }
-      &-end-xl {
+      &-flex-end-xl {
         @include p-flex-align-content(flex-end);
       }
       &-center-xl {
@@ -609,6 +623,9 @@
       }
       &-space-around-xl {
         @include p-flex-align-content(space-around);
+      }
+      &-space-evenly-xl {
+        @include p-flex-align-content(space-evenly);
       }
     }
   }
