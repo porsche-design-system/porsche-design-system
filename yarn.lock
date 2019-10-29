@@ -1361,16 +1361,6 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
-"@ionic-enterprise/angular-output-plugin@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.ionicframework.com/@ionic-enterprise%2fangular-output-plugin/-/angular-output-plugin-0.0.5.tgz#ca5d2c26a21aa778151be4ca9df69cbcfa43f0d1"
-  integrity sha512-op4u6sgy2PCc1xkuzvEMZthURsFSxZJSJlHqAVCYAL5hYbAKMAfT8Lxtj6B/NUyQSOqxiUJ2F5il1dN0QQVmgg==
-
-"@ionic-enterprise/react-output-plugin@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-output-plugin/-/react-output-plugin-0.0.9.tgz#9e049d804e44ce4e567e9d79f86bbf0d51d96280"
-  integrity sha512-51ZxZ6+5MA38Kc/MhMsh4QmwxtHSYU5Y8JqzMwFn0smbgxt0tzSl1zsv2bQbdHYq6/Y/hbRtlOMOIzJUGg2YKg==
-
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -2068,10 +2058,10 @@
     "@nodelib/fs.scandir" "2.1.2"
     fastq "^1.6.0"
 
-"@porsche-ui/cross-browser-tester@^1.0.1":
-  version "1.0.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/cross-browser-tester/-/@porsche-ui/cross-browser-tester-1.0.1.tgz#a0457657e82098fa5c82fce60bc478d72b48a4e1"
-  integrity sha1-oEV2V+ggmPpcgvzmC8R41ytIpOE=
+"@porsche-ui/cross-browser-tester@^1.0.2":
+  version "1.0.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/cross-browser-tester/-/@porsche-ui/cross-browser-tester-1.0.2.tgz#d6013a3514407b470ee607914bf31d6bff0697d2"
+  integrity sha1-1gE6NRRAe0cO5geRS/Mda/8Gl9I=
   dependencies:
     browserstack-local "^1.4.2"
     del "^5.1.0"
@@ -2131,6 +2121,11 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
+"@stencil/angular-output-target@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.1.tgz#147e057d80a19dd7492413086d1868debeee1b63"
+  integrity sha512-kp0jZfwTq6TzV745G3IiTk0rVKgMRNWD+JU1Z23m2cCBbzaKkneZp+U8QjuEVI1Gp8UUWYI/f5fUoC+dcejEWQ==
+
 "@stencil/core@1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.4.0.tgz#309dbbb9470ed735b642397c12dd082c94e070fc"
@@ -2144,6 +2139,11 @@
   integrity sha512-+QOLwdiMSeE6XbvjOM8bfMIX6E6L4DFLmnp0wZqCj4O/PVkNfEQA6IXZgd6F+OIfZ1wBy/dxR4Jvtwfo+QXa2g==
   dependencies:
     postcss "~7.0.17"
+
+"@stencil/react-output-target@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.1.tgz#411f7befff114835e6592b1d2f43dfce467d90bd"
+  integrity sha512-LRGafNL3qkjMsqfVIG5K+KtmrndHv9CtxK2TpV13yDAYHtntAPeJvMx8McHOjCI4CtLoKIE3TFq3k30Y4hIovw==
 
 "@stencil/sass@^1.0.1":
   version "1.0.1"
@@ -2381,6 +2381,11 @@
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.3.tgz#bdfd69d61e464dcc81b25159c270d75a73c1a636"
   integrity sha512-Il2DtDVRGDcqjDtE+rF8iqg1CArehSK84HZJCT7AMITlyXRBpuPhqGLDQMowraqqu1coEaimg4ZOqggt6L6L+A==
+
+"@types/json5@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.30.tgz#44cb52f32a809734ca562e685c6473b5754a7818"
+  integrity sha512-sqm9g7mHlPY/43fcSNrCYfOeX9zkTTK+euO5E6+CVijSMm5tTjkVdwdqRkY3ljjIAf8679vps5jKUoJBCLsMDA==
 
 "@types/lodash@^4.14.141":
   version "4.14.141"
@@ -9880,6 +9885,13 @@ json5@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.1.tgz#779fb0018604fa854eacbf6252180d83543e3dbe"
   integrity sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==
+  dependencies:
+    minimist "^1.2.0"
+
+json5@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-2.1.1.tgz#81b6cb04e9ba496f1c7005d07b4368a2638f90b6"
+  integrity sha512-l+3HXD0GEI3huGq1njuqtzYK8OYJyXMkOLtQ53pjWh89tvWS2h6l+1zMkYWqlb57+SiQodKZyvMEFb2X+KrFhQ==
   dependencies:
     minimist "^1.2.0"
 
