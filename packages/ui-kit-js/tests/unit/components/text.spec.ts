@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { Text } from '../../src/components/basic/typography/text/text';
+import { Text } from '../../../src/components/basic/typography/text/text';
 
 describe('Component <p-text>', () => {
 

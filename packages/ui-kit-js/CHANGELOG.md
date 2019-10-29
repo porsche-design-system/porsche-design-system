@@ -2,6 +2,20 @@
 
 ## NOT RELEASED YET
 
+### Change
+
+* Flex component
+  * Add JSON5 support to attributes (`BreakpointValues`)
+  * Add value `space-evenly` to attribute `stretch`
+  * Remove `gap` attribute
+  * Rename `flow` attribute to `inline`
+  * Rename `align-items` values from `start` to `flex-start` and `end` to `flex-end`
+  * Rename `justify-content` values from `start` to `flex-start` and `end` to `flex-end`
+  * Rename `align-self` values from `start` to `flex-start` and `end` to `flex-end`
+  * Rename `stretch` values from `start` to `flex-start` and `end` to `flex-end`
+  * Rename `wrap` values from `reverse` to `wrap-reverse`
+
+
 ### Breaking change
 - Changed icon CDN path to Icon Tools CDN directory.
 - Changed interface of `Icon` component: 
