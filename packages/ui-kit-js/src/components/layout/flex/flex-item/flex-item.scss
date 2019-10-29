@@ -270,10 +270,10 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       &-auto {
         @include p-flex-item-align-self(auto);
       }
-      &-start {
+      &-flex-start {
         @include p-flex-item-align-self(flex-start);
       }
-      &-end {
+      &-flex-end {
         @include p-flex-item-align-self(flex-end);
       }
       &-center {
@@ -290,10 +290,10 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         &-auto-xs {
           @include p-flex-item-align-self(auto);
         }
-        &-start-xs {
+        &-flex-start-xs {
           @include p-flex-item-align-self(flex-start);
         }
-        &-end-xs {
+        &-flex-end-xs {
           @include p-flex-item-align-self(flex-end);
         }
         &-center-xs {
@@ -311,10 +311,10 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         &-auto-s {
           @include p-flex-item-align-self(auto);
         }
-        &-start-s {
+        &-flex-start-s {
           @include p-flex-item-align-self(flex-start);
         }
-        &-end-s {
+        &-flex-end-s {
           @include p-flex-item-align-self(flex-end);
         }
         &-center-s {
@@ -332,10 +332,10 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         &-auto-m {
           @include p-flex-item-align-self(auto);
         }
-        &-start-m {
+        &-flex-start-m {
           @include p-flex-item-align-self(flex-start);
         }
-        &-end-m {
+        &-flex-end-m {
           @include p-flex-item-align-self(flex-end);
         }
         &-center-m {
@@ -353,10 +353,10 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         &-auto-l {
           @include p-flex-item-align-self(auto);
         }
-        &-start-l {
+        &-flex-start-l {
           @include p-flex-item-align-self(flex-start);
         }
-        &-end-l {
+        &-flex-end-l {
           @include p-flex-item-align-self(flex-end);
         }
         &-center-l {
@@ -374,10 +374,10 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         &-auto-xl {
           @include p-flex-item-align-self(auto);
         }
-        &-start-xl {
+        &-flex-start-xl {
           @include p-flex-item-align-self(flex-start);
         }
-        &-end-xl {
+        &-flex-end-xl {
           @include p-flex-item-align-self(flex-end);
         }
         &-center-xl {

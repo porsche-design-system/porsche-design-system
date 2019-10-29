@@ -35,7 +35,7 @@
           <p-flex class="p-spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
               <p-button-regular
-                class="p-spacing-mt-16"
+                class="p-spacing-mt-16 p-spacing-mr-32"
                 variant="highlight"
                 href="#/web/getting-started/start-designing"
               >Start Designing

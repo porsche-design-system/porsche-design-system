@@ -3,6 +3,7 @@ on:
     branches:
       - v*
       - issue/*
+      - housekeeping/*
 name: 'Porsche UI Kit'
 jobs:
   ui-kit-js:
@@ -13,7 +14,6 @@ jobs:
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
@@ -69,7 +69,6 @@ jobs:
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
@@ -110,7 +109,6 @@ jobs:
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
@@ -151,7 +149,6 @@ jobs:
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
@@ -194,7 +191,6 @@ jobs:
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
