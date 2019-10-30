@@ -158,7 +158,7 @@ Nesting inside columns with the following widths should be prevented, because al
     
     &[offset] {
       color: lightskyblue;
-      text-indent: calc(-100% - 50px);
+      text-indent: calc(-100% - 48px);
     }
   }
 </style>
