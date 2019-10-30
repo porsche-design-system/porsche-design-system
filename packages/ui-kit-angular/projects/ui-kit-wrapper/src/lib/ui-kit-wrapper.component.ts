@@ -76,8 +76,8 @@ export class PFlexItem {
 }
 
 export declare interface PGrid extends Components.PGrid {}
-@ProxyInputs(['direction', 'gap'])
-@Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction', 'gap'] })
+@ProxyInputs(['direction'])
+@Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction'] })
 export class PGrid {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {

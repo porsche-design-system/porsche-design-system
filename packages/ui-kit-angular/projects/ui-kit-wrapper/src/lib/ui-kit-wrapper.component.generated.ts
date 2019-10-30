@@ -82,7 +82,7 @@ export class PFlexItem {
 proxyInputs(PFlexItem, ['alignSelf', 'flex', 'grow', 'offset', 'shrink', 'width']);
 
 export declare interface PGrid extends Components.PGrid {}
-@Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction', 'gap'] })
+@Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction'] })
 export class PGrid {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -90,7 +90,7 @@ export class PGrid {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PGrid, ['direction', 'gap']);
+proxyInputs(PGrid, ['direction']);
 
 export declare interface PGridChild extends Components.PGridChild {}
 @Component({ selector: 'p-grid-child', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
