@@ -2,7 +2,7 @@
 
 The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. Therefore the [Flex](#/web/components/layout/flex) component is the right choice.
 
-### Grid standard
+### Grid size
 
 Following example shows a standard grid implementation.  
 
