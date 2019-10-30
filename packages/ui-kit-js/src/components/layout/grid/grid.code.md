@@ -16,7 +16,7 @@ Following example shows a standard grid implementation.
   </p-grid>
 </Playground>
 
-### Responsiveness
+#### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
@@ -38,7 +38,7 @@ In some cases it can be necessary to indent columns. The grid gives basic indent
   </p-grid>
 </Playground>
 
-### Responsiveness
+#### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
@@ -93,7 +93,7 @@ In some cases it might be necessary to define or change direction of the columns
   </p-grid>
 </Playground>
 
-### Responsiveness
+#### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
