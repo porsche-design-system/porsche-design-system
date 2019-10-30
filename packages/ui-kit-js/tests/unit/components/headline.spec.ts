@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { Headline } from '../../src/components/basic/typography/headline/headline';
+import { Headline } from '../../../src/components/basic/typography/headline/headline';
 
 describe('Component <p-headline>', () => {
 

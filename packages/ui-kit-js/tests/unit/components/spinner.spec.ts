@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { Spinner } from '../../src/components/feedback/spinner/spinner';
+import { Spinner } from '../../../src/components/feedback/spinner/spinner';
 
 describe('Component <p-spinner>', () => {
 
