@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { TextLink } from '../../src/components/action/text-link/text-link';
+import { TextLink } from '../../../src/components/action/text-link/text-link';
 
 describe('Component <p-text-link>', () => {
 
