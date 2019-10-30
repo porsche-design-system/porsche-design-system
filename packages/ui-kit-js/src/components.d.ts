@@ -156,10 +156,6 @@ export namespace Components {
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
     */
     'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
-    /**
-    * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with `grid-child`. Also defines the gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
-    */
-    'gap'?: BreakpointCustomizable<'normal' | 'zero'>;
   }
   interface PGridChild {
     /**
@@ -639,10 +635,6 @@ declare namespace LocalJSX {
     * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
     */
     'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
-    /**
-    * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with `grid-child`. Also defines the gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
-    */
-    'gap'?: BreakpointCustomizable<'normal' | 'zero'>;
   }
   interface PGridChild extends JSXBase.HTMLAttributes<HTMLPGridChildElement> {
     /**

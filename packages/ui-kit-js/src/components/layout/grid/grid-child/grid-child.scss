@@ -1,7 +1,13 @@
 @import "../../../../../../../packages/ui-kit-scss-utils/index";
 
-$p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333333% 66.666667% 75% 83.333333%
-  91.666667% 100%;
+$p-grid-gutter: rem(16px);
+$p-grid-gutter-xs: rem(16px);
+$p-grid-gutter-s: rem(24px);
+$p-grid-gutter-m: rem(36px);
+$p-grid-gutter-l: rem(36px);
+$p-grid-gutter-xl: rem(36px);
+
+$p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333333% 66.666667% 75% 83.333333% 91.666667% 100%;
 
 @mixin p-grid-child-size($i) {
   width: #{nth($p-grid-child-width, $i)};
@@ -11,11 +17,26 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
   margin-left: #{nth($p-grid-child-width, $i)};
 }
 
-/**
-  * properties for grid children items (widths and offsets)
-  */
 .#{$p-global-class-prefix}grid-child {
   box-sizing: border-box;
+  padding: {
+    left: $p-grid-gutter / 2;
+    right: $p-grid-gutter / 2;
+  }
+
+  @include p-breakpoint("s") {
+    padding: {
+      left: $p-grid-gutter-s / 2;
+      right: $p-grid-gutter-s / 2;
+    }
+  }
+
+  @include p-breakpoint("m") {
+    padding: {
+      left: $p-grid-gutter-m / 2;
+      right: $p-grid-gutter-m / 2;
+    }
+  }
 
   &--size {
     @for $i from 1 through 12 {
