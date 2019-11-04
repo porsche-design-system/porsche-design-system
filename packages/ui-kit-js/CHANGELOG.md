@@ -4,6 +4,10 @@
 
 ### Change
 
+* Grid component
+  * Add JSON5 support to attributes (`BreakpointValues`)
+  * Rename component `grid-child` to `grid-item`
+  * Remove `gap` attribute
 * Flex component
   * Add JSON5 support to attributes (`BreakpointValues`)
   * Add value `space-evenly` to attribute `stretch`
