@@ -86,18 +86,5 @@ describe('Component <p-button-icon>', () => {
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('aria-disabled','true');
   });
-
-  it('should emit on click', async() => {
-    const page = await newSpecPage({
-      components: [ButtonIcon],
-      html: `<p-button-icon>Button regular</p-button-icon>`,
-    });
-    const button = page.root.shadowRoot.querySelector('button');
-    const buttonSpy = jest.fn();
-    page.win.addEventListener('pClick', buttonSpy);
-    await button.click();
-    await page.waitForChanges();
-    expect(buttonSpy).toHaveBeenCalled();
-  });
 });
 
