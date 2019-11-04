@@ -161,21 +161,17 @@ export namespace Components {
   }
   interface PGrid {
     /**
-    * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
+    * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
     */
     'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
-    /**
-    * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with Grid.Child. Also defines the gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
-    */
-    'gap'?: BreakpointCustomizable<'normal' | 'zero'>;
   }
-  interface PGridChild {
+  interface PGridItem {
     /**
-    * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
+    * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
     */
     'offset'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>;
     /**
-    * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
+    * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
     */
     'size'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>;
   }
@@ -403,10 +399,10 @@ declare global {
     new (): HTMLPGridElement;
   };
 
-  interface HTMLPGridChildElement extends Components.PGridChild, HTMLStencilElement {}
-  var HTMLPGridChildElement: {
-    prototype: HTMLPGridChildElement;
-    new (): HTMLPGridChildElement;
+  interface HTMLPGridItemElement extends Components.PGridItem, HTMLStencilElement {}
+  var HTMLPGridItemElement: {
+    prototype: HTMLPGridItemElement;
+    new (): HTMLPGridItemElement;
   };
 
   interface HTMLPHeadlineElement extends Components.PHeadline, HTMLStencilElement {}
@@ -468,7 +464,7 @@ declare global {
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
-    'p-grid-child': HTMLPGridChildElement;
+    'p-grid-item': HTMLPGridItemElement;
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
     'p-marque': HTMLPMarqueElement;
@@ -636,21 +632,17 @@ declare namespace LocalJSX {
   }
   interface PGrid extends JSXBase.HTMLAttributes<HTMLPGridElement> {
     /**
-    * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {"base": "column", "l": "row"}. You always need to provide a base value when doing this.
+    * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
     */
     'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
-    /**
-    * Defines the gap between contained children. The value "normal" (default) sets responsive grid spacings that should be used together with Grid.Child. Also defines the gap for specific breakpoints, like {"base": "zero", "l": "normal"}. You always need to provide a base value when doing this.
-    */
-    'gap'?: BreakpointCustomizable<'normal' | 'zero'>;
   }
-  interface PGridChild extends JSXBase.HTMLAttributes<HTMLPGridChildElement> {
+  interface PGridItem extends JSXBase.HTMLAttributes<HTMLPGridItemElement> {
     /**
-    * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
+    * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
     */
     'offset'?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>;
     /**
-    * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {"base": 6, "l": 3}. You always need to provide a base value when doing this.
+    * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
     */
     'size'?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>;
   }
@@ -858,7 +850,7 @@ declare namespace LocalJSX {
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
     'p-grid': PGrid;
-    'p-grid-child': PGridChild;
+    'p-grid-item': PGridItem;
     'p-headline': PHeadline;
     'p-icon': PIcon;
     'p-marque': PMarque;
