@@ -54,8 +54,8 @@ export class PButtonRegular {
 }
 
 export declare interface PFlex extends Components.PFlex {}
-@ProxyInputs(['alignContent', 'alignItems', 'direction', 'flow', 'gap', 'justifyContent', 'wrap'])
-@Component({ selector: 'p-flex', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'flow', 'gap', 'justifyContent', 'wrap'] })
+@ProxyInputs(['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'])
+@Component({ selector: 'p-flex', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'] })
 export class PFlex {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
