@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   PGrid,
-  PGridChild,
+  PGridIftem,
   PFlex,
   PSpacing,
   PFlexItem,
@@ -30,22 +30,22 @@ const App: React.FC = () => {
       <PHeadline variant="headline-2" tag="h2">Basic</PHeadline>
       <hr/>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-marque&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="10">
+        </PGridItem>
+        <PGridItem size="10">
           <div className="playground light spacing-block">
             <PMarque />
             <PMarque trademark={false} />
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-headline&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="10">
+        </PGridItem>
+        <PGridItem size="10">
           <div className="playground light spacing-block">
             <PHeadline variant="large-title" tag="h1">The quick brown fox jumps over the lazy dog</PHeadline>
             <PHeadline variant="headline-1" tag="h1">The quick brown fox jumps over the lazy dog</PHeadline>
@@ -56,13 +56,13 @@ const App: React.FC = () => {
             <PHeadline variant="headline-6" tag="h6">The quick brown fox jumps over the lazy dog</PHeadline>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-text&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="10">
+        </PGridItem>
+        <PGridItem size="10">
           <div className="playground light spacing-block">
             <PText variant="copy">The quick brown fox jumps over the lazy dog</PText>
             <PText variant="small">The quick brown fox jumps over the lazy dog</PText>
@@ -84,15 +84,15 @@ const App: React.FC = () => {
               text</strong></PText>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PHeadline variant="headline-2">Action</PHeadline>
       <hr/>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-button-regular&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground light spacing-inline">
             <PButtonRegular variant="highlight">Click Here!</PButtonRegular>
             <PButtonRegular variant="highlight" disabled={true}>Disabled</PButtonRegular>
@@ -117,8 +117,8 @@ const App: React.FC = () => {
             <PButtonRegular small={true} variant="highlight">Click Here!</PButtonRegular>
           </div>
           <hr/>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground dark spacing-inline">
             <PButtonRegular theme="dark" variant="highlight">Click Here!</PButtonRegular>
             <PButtonRegular theme="dark" variant="highlight" disabled={true}>Disabled</PButtonRegular>
@@ -143,13 +143,13 @@ const App: React.FC = () => {
             <PButtonRegular theme="dark" small={true} variant="highlight">Click Here!</PButtonRegular>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-button-icon&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground light spacing-inline">
             <PButtonIcon/>
             <PButtonIcon disabled={true}/>
@@ -169,8 +169,8 @@ const App: React.FC = () => {
             <PButtonIcon icon="phone"/>
           </div>
           <hr/>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground dark spacing-inline">
             <PButtonIcon theme="dark"/>
             <PButtonIcon theme="dark" disabled={true}/>
@@ -190,13 +190,13 @@ const App: React.FC = () => {
             <PButtonIcon theme="dark" icon="phone"/>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-text-link&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="10">
+        </PGridItem>
+        <PGridItem size="10">
           <div className="playground light spacing-inline">
             <PTextLink href="https://ui.porsche.com">Some link with default icon</PTextLink>
           </div>
@@ -213,18 +213,18 @@ const App: React.FC = () => {
             <PTextLink href="https://ui.porsche.com" icon="delete">Some link with a custom icon</PTextLink>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PHeadline variant="headline-2">Content</PHeadline>
       <hr/>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">
             &lt;p-text-list&gt;<br/>
             &lt;p-text-list-item&gt;
           </PHeadline>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground light spacing-block">
             <PTextList>
               <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
@@ -254,8 +254,8 @@ const App: React.FC = () => {
             </PTextList>
           </div>
           <hr/>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground dark spacing-block">
             <PTextList color="porsche-light">
               <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
@@ -285,15 +285,15 @@ const App: React.FC = () => {
             </PTextList>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PHeadline variant="headline-2">Feedback</PHeadline>
       <hr/>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-spinner&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground light spacing-inline">
             <PSpinner size="x-small" allyLabel="Loading"/>
             <PSpinner size="small" allyLabel="Loading"/>
@@ -301,8 +301,8 @@ const App: React.FC = () => {
             <PSpinner size="large" allyLabel="Loading"/>
           </div>
           <hr/>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground dark spacing-inline">
             <PSpinner theme="dark" size="x-small" allyLabel="Loading"/>
             <PSpinner theme="dark" size="small" allyLabel="Loading"/>
@@ -310,15 +310,15 @@ const App: React.FC = () => {
             <PSpinner theme="dark" size="large" allyLabel="Loading"/>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PHeadline variant="headline-2">Icon</PHeadline>
       <hr/>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-icon&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="10">
+        </PGridItem>
+        <PGridItem size="10">
           <div className="playground light spacing-inline">
             <PIcon source="car-next"/>
             <PIcon source="car-next" size="medium"/>
@@ -328,113 +328,113 @@ const App: React.FC = () => {
             <PIcon source="kaixin" size="large"/>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PHeadline variant="headline-2">Layout</PHeadline>
       <hr/>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">
             &lt;p-grid&gt;<br/>
-            &lt;p-grid-child&gt;
+            &lt;p-grid-item&gt;
           </PHeadline>
-        </PGridChild>
-        <PGridChild size="10">
+        </PGridItem>
+        <PGridItem size="10">
           <div className="playground light spacing-block">
             <PGrid>
-              <PGridChild size="12"/>
+              <PGridItem size="12"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="1"/>
-              <PGridChild size="11"/>
+              <PGridItem size="1"/>
+              <PGridItem size="11"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="2"/>
-              <PGridChild size="10"/>
+              <PGridItem size="2"/>
+              <PGridItem size="10"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="3"/>
-              <PGridChild size="9"/>
+              <PGridItem size="3"/>
+              <PGridItem size="9"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="4"/>
-              <PGridChild size="8"/>
+              <PGridItem size="4"/>
+              <PGridItem size="8"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="5"/>
-              <PGridChild size="7"/>
+              <PGridItem size="5"/>
+              <PGridItem size="7"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="6"/>
-              <PGridChild size="6"/>
+              <PGridItem size="6"/>
+              <PGridItem size="6"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="7"/>
-              <PGridChild size="5"/>
+              <PGridItem size="7"/>
+              <PGridItem size="5"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="8"/>
-              <PGridChild size="4"/>
+              <PGridItem size="8"/>
+              <PGridItem size="4"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="9"/>
-              <PGridChild size="3"/>
+              <PGridItem size="9"/>
+              <PGridItem size="3"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="10"/>
-              <PGridChild size="2"/>
+              <PGridItem size="10"/>
+              <PGridItem size="2"/>
             </PGrid>
             <PGrid>
-              <PGridChild size="11"/>
-              <PGridChild size="1"/>
+              <PGridItem size="11"/>
+              <PGridItem size="1"/>
             </PGrid>
           </div>
           <div className="playground light spacing-block">
             <PGrid>
-              <PGridChild offset="1" size="11"/>
+              <PGridItem offset="1" size="11"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="2" size="10"/>
+              <PGridItem offset="2" size="10"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="3" size="9"/>
+              <PGridItem offset="3" size="9"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="4" size="8"/>
+              <PGridItem offset="4" size="8"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="5" size="7"/>
+              <PGridItem offset="5" size="7"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="6" size="6"/>
+              <PGridItem offset="6" size="6"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="7" size="5"/>
+              <PGridItem offset="7" size="5"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="8" size="4"/>
+              <PGridItem offset="8" size="4"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="9" size="3"/>
+              <PGridItem offset="9" size="3"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="10" size="2"/>
+              <PGridItem offset="10" size="2"/>
             </PGrid>
             <PGrid>
-              <PGridChild offset="11" size="1"/>
+              <PGridItem offset="11" size="1"/>
             </PGrid>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">
             &lt;p-flex&gt;<br/>
             &lt;p-flex-item&gt;
           </PHeadline>
-        </PGridChild>
-        <PGridChild size="10">
+        </PGridItem>
+        <PGridItem size="10">
           <div className="playground light spacing-block">
             <PFlex>
               <PFlexItem width="one-quarter"/>
@@ -481,13 +481,13 @@ const App: React.FC = () => {
             </PFlex>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">Spacing</PHeadline>
-        </PGridChild>
-        <PGridChild size="10">
+        </PGridItem>
+        <PGridItem size="10">
           <div className="playground light spacing-inline">
             <PSpacing paddingTop={4} paddingLeft={4}>
               <div/>
@@ -524,26 +524,26 @@ const App: React.FC = () => {
             </PSpacing>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
       <PHeadline variant="headline-2">Navigation</PHeadline>
       <hr/>
       <PGrid>
-        <PGridChild size="2">
+        <PGridItem size="2">
           <PHeadline variant="headline-4" tag="h4">&lt;p-pagination&gt;</PHeadline>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground light spacing-block">
             <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1}/>
           </div>
           <hr/>
-        </PGridChild>
-        <PGridChild size="5">
+        </PGridItem>
+        <PGridItem size="5">
           <div className="playground dark spacing-block">
             <PPagination theme="dark" totalItemsCount={500} itemsPerPage={25} activePage={1}/>
           </div>
           <hr/>
-        </PGridChild>
+        </PGridItem>
       </PGrid>
     </div>
   );

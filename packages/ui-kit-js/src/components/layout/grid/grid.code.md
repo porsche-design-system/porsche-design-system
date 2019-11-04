@@ -8,11 +8,11 @@ Following example shows a standard grid implementation.
 
 <Playground :childElementLayout="{spacing: 'block-small'}">
   <p-grid class="example-grid">
-    <p-grid-child size="12">12</p-grid-child>
+    <p-grid-item size="12">12</p-grid-item>
   </p-grid>
   <p-grid v-for="n, index in 11" :key="index" class="example-grid">
-    <p-grid-child :size="n">{{ n }}</p-grid-child>
-    <p-grid-child :size="12 - n">{{ 12 - n }}</p-grid-child>
+    <p-grid-item :size="n">{{ n }}</p-grid-item>
+    <p-grid-item :size="12 - n">{{ 12 - n }}</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -21,8 +21,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground>
   <p-grid class="example-grid">
-    <p-grid-child size="{ base: 6, m: 2 }">A</p-grid-child>
-    <p-grid-child size="{ base: 6, m: 10 }">B</p-grid-child>
+    <p-grid-item size="{ base: 6, m: 2 }">A</p-grid-item>
+    <p-grid-item size="{ base: 6, m: 10 }">B</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -34,7 +34,7 @@ In some cases it can be necessary to indent columns. The grid gives basic indent
 
 <Playground :childElementLayout="{spacing: 'block-small'}">
   <p-grid v-for="n, index in 11" :key="index" class="example-grid">
-    <p-grid-child :offset="n" :size="12 - n">{{ n }}</p-grid-child>
+    <p-grid-item :offset="n" :size="12 - n">{{ n }}</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -43,7 +43,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground>
   <p-grid class="example-grid">
-    <p-grid-child offset="{ base: 6, m: 2 }" size="{ base: 6, m: 10 }">A</p-grid-child>
+    <p-grid-item offset="{ base: 6, m: 2 }" size="{ base: 6, m: 10 }">A</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -57,9 +57,9 @@ In some cases it might be necessary to define or change direction of the columns
 
 <Playground>
   <p-grid direction="row" class="example-grid">
-    <p-grid-child size="4">A</p-grid-child>
-    <p-grid-child size="4">B</p-grid-child>
-    <p-grid-child size="4">C</p-grid-child>
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -67,9 +67,9 @@ In some cases it might be necessary to define or change direction of the columns
 
 <Playground>
   <p-grid direction="row-reverse" class="example-grid">
-    <p-grid-child size="4">A</p-grid-child>
-    <p-grid-child size="4">B</p-grid-child>
-    <p-grid-child size="4">C</p-grid-child>
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -77,9 +77,9 @@ In some cases it might be necessary to define or change direction of the columns
 
 <Playground>
   <p-grid direction="column" class="example-grid">
-    <p-grid-child size="4">A</p-grid-child>
-    <p-grid-child size="4">B</p-grid-child>
-    <p-grid-child size="4">C</p-grid-child>
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -87,9 +87,9 @@ In some cases it might be necessary to define or change direction of the columns
 
 <Playground>
   <p-grid direction="column-reverse" class="example-grid">
-    <p-grid-child size="4">A</p-grid-child>
-    <p-grid-child size="4">B</p-grid-child>
-    <p-grid-child size="4">C</p-grid-child>
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -98,9 +98,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground>
   <p-grid direction="{ base: 'column', m: 'row' }" class="example-grid">
-    <p-grid-child size="{ base: 12, m: 4 }">A</p-grid-child>
-    <p-grid-child size="{ base: 12, m: 4 }">B</p-grid-child>
-    <p-grid-child size="{ base: 12, m: 4 }">C</p-grid-child>
+    <p-grid-item size="{ base: 12, m: 4 }">A</p-grid-item>
+    <p-grid-item size="{ base: 12, m: 4 }">B</p-grid-item>
+    <p-grid-item size="{ base: 12, m: 4 }">C</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -112,18 +112,18 @@ Basic nesting of grids is supported. "Basic" because of percentage value of widt
 
 <Playground>
   <p-grid>
-    <p-grid-child size="6">
+    <p-grid-item size="6">
       <p-grid class="example-grid">
-        <p-grid-child size="6">A</p-grid-child>
-        <p-grid-child size="6">B</p-grid-child>
+        <p-grid-item size="6">A</p-grid-item>
+        <p-grid-item size="6">B</p-grid-item>
       </p-grid>
-    </p-grid-child>
-    <p-grid-child size="6">
+    </p-grid-item>
+    <p-grid-item size="6">
       <p-grid class="example-grid">
-        <p-grid-child size="4">A</p-grid-child>
-        <p-grid-child size="8">B</p-grid-child>
+        <p-grid-item size="4">A</p-grid-item>
+        <p-grid-item size="8">B</p-grid-item>
       </p-grid>
-    </p-grid-child>
+    </p-grid-item>
   </p-grid>
 </Playground>
 
@@ -137,7 +137,7 @@ Only columns with the following widths could be nested:
 
 #### Forbidden nesting
 
-Nesting inside columns with the following widths should be prevented, because all children widths won't be in "the grid" anymore:
+Nesting inside columns with the following widths should be prevented, because all item widths won't be in "the grid" anymore:
 
 * total width of 11
 * total width of 10

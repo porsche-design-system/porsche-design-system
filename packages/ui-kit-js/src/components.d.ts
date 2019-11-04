@@ -157,7 +157,7 @@ export namespace Components {
     */
     'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
   }
-  interface PGridChild {
+  interface PGridItem {
     /**
     * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
     */
@@ -391,10 +391,10 @@ declare global {
     new (): HTMLPGridElement;
   };
 
-  interface HTMLPGridChildElement extends Components.PGridChild, HTMLStencilElement {}
-  var HTMLPGridChildElement: {
-    prototype: HTMLPGridChildElement;
-    new (): HTMLPGridChildElement;
+  interface HTMLPGridItemElement extends Components.PGridItem, HTMLStencilElement {}
+  var HTMLPGridItemElement: {
+    prototype: HTMLPGridItemElement;
+    new (): HTMLPGridItemElement;
   };
 
   interface HTMLPHeadlineElement extends Components.PHeadline, HTMLStencilElement {}
@@ -456,7 +456,7 @@ declare global {
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
-    'p-grid-child': HTMLPGridChildElement;
+    'p-grid-item': HTMLPGridItemElement;
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
     'p-marque': HTMLPMarqueElement;
@@ -636,7 +636,7 @@ declare namespace LocalJSX {
     */
     'direction'?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
   }
-  interface PGridChild extends JSXBase.HTMLAttributes<HTMLPGridChildElement> {
+  interface PGridItem extends JSXBase.HTMLAttributes<HTMLPGridItemElement> {
     /**
     * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
     */
@@ -850,7 +850,7 @@ declare namespace LocalJSX {
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
     'p-grid': PGrid;
-    'p-grid-child': PGridChild;
+    'p-grid-item': PGridItem;
     'p-headline': PHeadline;
     'p-icon': PIcon;
     'p-marque': PMarque;
