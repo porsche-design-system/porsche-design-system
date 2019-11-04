@@ -5,7 +5,7 @@
 ### Change
 
 * Flex component
-  ja * Add JSON5 support to attributes (`BreakpointValues`)
+  * Add JSON5 support to attributes (`BreakpointValues`)
   * Add value `space-evenly` to attribute `stretch`
   * Remove `gap` attribute
   * Rename `flow` attribute to `inline`
