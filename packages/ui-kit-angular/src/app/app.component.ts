@@ -13,22 +13,22 @@ import {Component} from '@angular/core';
       <p-headline variant="headline-2" tag="h2">Basic</p-headline>
       <hr>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-marque&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="10">
+        </p-grid-item>
+        <p-grid-item size="10">
           <div class="playground light spacing-block">
             <p-marque></p-marque>
             <p-marque trademark="false"></p-marque>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-headline&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="10">
+        </p-grid-item>
+        <p-grid-item size="10">
           <div class="playground light spacing-block">
             <p-headline variant="large-title" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
             <p-headline variant="headline-1" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
@@ -39,13 +39,13 @@ import {Component} from '@angular/core';
             <p-headline variant="headline-6" tag="h6">The quick brown fox jumps over the lazy dog</p-headline>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-text&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="10">
+        </p-grid-item>
+        <p-grid-item size="10">
           <div class="playground light spacing-block">
             <p-text variant="copy">The quick brown fox jumps over the lazy dog</p-text>
             <p-text variant="small">The quick brown fox jumps over the lazy dog</p-text>
@@ -67,15 +67,15 @@ import {Component} from '@angular/core';
               text</strong></p-text>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-headline variant="headline-2">Action</p-headline>
       <hr>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-button-regular&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground light spacing-inline">
             <p-button-regular variant="highlight">Click Here!</p-button-regular>
             <p-button-regular variant="highlight" disabled="true">Disabled</p-button-regular>
@@ -100,8 +100,8 @@ import {Component} from '@angular/core';
             <p-button-regular small="true" variant="highlight">Click Here!</p-button-regular>
           </div>
           <hr>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground dark spacing-inline">
             <p-button-regular theme="dark" variant="highlight">Click Here!</p-button-regular>
             <p-button-regular theme="dark" variant="highlight" disabled="true">Disabled</p-button-regular>
@@ -126,13 +126,13 @@ import {Component} from '@angular/core';
             <p-button-regular theme="dark" small="true" variant="highlight">Click Here!</p-button-regular>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-button-icon&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground light spacing-inline">
             <p-button-icon></p-button-icon>
             <p-button-icon disabled="true"></p-button-icon>
@@ -152,8 +152,8 @@ import {Component} from '@angular/core';
             <p-button-icon icon="phone"></p-button-icon>
           </div>
           <hr>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground dark spacing-inline">
             <p-button-icon theme="dark"></p-button-icon>
             <p-button-icon theme="dark" disabled="true"></p-button-icon>
@@ -173,13 +173,13 @@ import {Component} from '@angular/core';
             <p-button-icon theme="dark" icon="phone"></p-button-icon>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-text-link&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="10">
+        </p-grid-item>
+        <p-grid-item size="10">
           <div class="playground light spacing-inline">
             <p-text-link href="https://ui.porsche.com">Some link with default icon</p-text-link>
           </div>
@@ -194,18 +194,18 @@ import {Component} from '@angular/core';
             <p-text-link href="https://ui.porsche.com" icon="delete">Some link with a custom icon</p-text-link>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-headline variant="headline-2">Content</p-headline>
       <hr>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">
             &lt;p-text-list&gt;<br>
             &lt;p-text-list-item&gt;
           </p-headline>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground light spacing-block">
             <p-text-list>
               <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
@@ -235,8 +235,8 @@ import {Component} from '@angular/core';
             </p-text-list>
           </div>
           <hr>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground dark spacing-block">
             <p-text-list color="porsche-light">
               <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
@@ -266,15 +266,15 @@ import {Component} from '@angular/core';
             </p-text-list>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-headline variant="headline-2">Feedback</p-headline>
       <hr>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-spinner&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground light spacing-inline">
             <p-spinner size="x-small" allyLabel="Loading"></p-spinner>
             <p-spinner size="small" allyLabel="Loading"></p-spinner>
@@ -282,8 +282,8 @@ import {Component} from '@angular/core';
             <p-spinner size="large" allyLabel="Loading"></p-spinner>
           </div>
           <hr>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground dark spacing-inline">
             <p-spinner theme="dark" size="x-small" allyLabel="Loading"></p-spinner>
             <p-spinner theme="dark" size="small" allyLabel="Loading"></p-spinner>
@@ -291,15 +291,15 @@ import {Component} from '@angular/core';
             <p-spinner theme="dark" size="large" allyLabel="Loading"></p-spinner>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-headline variant="headline-2">Icon</p-headline>
       <hr>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-icon&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="10">
+        </p-grid-item>
+        <p-grid-item size="10">
           <div class="playground light spacing-inline">
             <p-icon source="car-next"></p-icon>
             <p-icon source="car-next" size="medium"></p-icon>
@@ -309,113 +309,113 @@ import {Component} from '@angular/core';
             <p-icon source="kaixin" size="large"></p-icon>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-headline variant="headline-2">Layout</p-headline>
       <hr>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">
             &lt;p-grid&gt;<br>
-            &lt;p-grid-child&gt;
+            &lt;p-grid-item&gt;
           </p-headline>
-        </p-grid-child>
-        <p-grid-child size="10">
+        </p-grid-item>
+        <p-grid-item size="10">
           <div class="playground light spacing-block">
             <p-grid>
-              <p-grid-child size="12"></p-grid-child>
+              <p-grid-item size="12"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="1"></p-grid-child>
-              <p-grid-child size="11"></p-grid-child>
+              <p-grid-item size="1"></p-grid-item>
+              <p-grid-item size="11"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="2"></p-grid-child>
-              <p-grid-child size="10"></p-grid-child>
+              <p-grid-item size="2"></p-grid-item>
+              <p-grid-item size="10"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="3"></p-grid-child>
-              <p-grid-child size="9"></p-grid-child>
+              <p-grid-item size="3"></p-grid-item>
+              <p-grid-item size="9"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="4"></p-grid-child>
-              <p-grid-child size="8"></p-grid-child>
+              <p-grid-item size="4"></p-grid-item>
+              <p-grid-item size="8"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="5"></p-grid-child>
-              <p-grid-child size="7"></p-grid-child>
+              <p-grid-item size="5"></p-grid-item>
+              <p-grid-item size="7"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="6"></p-grid-child>
-              <p-grid-child size="6"></p-grid-child>
+              <p-grid-item size="6"></p-grid-item>
+              <p-grid-item size="6"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="7"></p-grid-child>
-              <p-grid-child size="5"></p-grid-child>
+              <p-grid-item size="7"></p-grid-item>
+              <p-grid-item size="5"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="8"></p-grid-child>
-              <p-grid-child size="4"></p-grid-child>
+              <p-grid-item size="8"></p-grid-item>
+              <p-grid-item size="4"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="9"></p-grid-child>
-              <p-grid-child size="3"></p-grid-child>
+              <p-grid-item size="9"></p-grid-item>
+              <p-grid-item size="3"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="10"></p-grid-child>
-              <p-grid-child size="2"></p-grid-child>
+              <p-grid-item size="10"></p-grid-item>
+              <p-grid-item size="2"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child size="11"></p-grid-child>
-              <p-grid-child size="1"></p-grid-child>
+              <p-grid-item size="11"></p-grid-item>
+              <p-grid-item size="1"></p-grid-item>
             </p-grid>
           </div>
           <div class="playground light spacing-block">
             <p-grid>
-              <p-grid-child offset="1" size="11"></p-grid-child>
+              <p-grid-item offset="1" size="11"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="2" size="10"></p-grid-child>
+              <p-grid-item offset="2" size="10"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="3" size="9"></p-grid-child>
+              <p-grid-item offset="3" size="9"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="4" size="8"></p-grid-child>
+              <p-grid-item offset="4" size="8"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="5" size="7"></p-grid-child>
+              <p-grid-item offset="5" size="7"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="6" size="6"></p-grid-child>
+              <p-grid-item offset="6" size="6"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="7" size="5"></p-grid-child>
+              <p-grid-item offset="7" size="5"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="8" size="4"></p-grid-child>
+              <p-grid-item offset="8" size="4"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="9" size="3"></p-grid-child>
+              <p-grid-item offset="9" size="3"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="10" size="2"></p-grid-child>
+              <p-grid-item offset="10" size="2"></p-grid-item>
             </p-grid>
             <p-grid>
-              <p-grid-child offset="11" size="1"></p-grid-child>
+              <p-grid-item offset="11" size="1"></p-grid-item>
             </p-grid>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">
             &lt;p-flex&gt;<br>
             &lt;p-flex-item&gt;
           </p-headline>
-        </p-grid-child>
-        <p-grid-child size="10">
+        </p-grid-item>
+        <p-grid-item size="10">
           <div class="playground light spacing-block">
             <p-flex>
               <p-flex-item width="one-quarter"></p-flex-item>
@@ -462,13 +462,13 @@ import {Component} from '@angular/core';
             </p-flex>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">Spacing</p-headline>
-        </p-grid-child>
-        <p-grid-child size="10">
+        </p-grid-item>
+        <p-grid-item size="10">
           <div class="playground light spacing-inline">
             <div class="p-spacing-pt-4 p-spacing-pr-4"></div>
             <div class="p-spacing-pt-8 p-spacing-pr-8"></div>
@@ -483,26 +483,26 @@ import {Component} from '@angular/core';
             <div class="p-spacing-pt-80 p-spacing-pr-80"></div>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
       <p-headline variant="headline-2">Navigation</p-headline>
       <hr>
       <p-grid>
-        <p-grid-child size="2">
+        <p-grid-item size="2">
           <p-headline variant="headline-4" tag="h4">&lt;p-pagination&gt;</p-headline>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground light spacing-block">
             <p-pagination totalItemsCount="500" itemsPerPage="25" activePage="1"></p-pagination>
           </div>
           <hr>
-        </p-grid-child>
-        <p-grid-child size="5">
+        </p-grid-item>
+        <p-grid-item size="5">
           <div class="playground dark spacing-block">
             <p-pagination theme="dark" totalItemsCount="500" itemsPerPage="25" activePage="1"></p-pagination>
           </div>
           <hr>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
     </div>
   `,

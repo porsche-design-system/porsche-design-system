@@ -15,14 +15,14 @@
 
     <article class="intro">
       <p-grid>
-        <p-grid-child size='{"base": 12, "m": 4}'>
+        <p-grid-item size='{"base": 12, "m": 4}'>
           <p-headline variant="headline-3" tag="h1">Porsche UI Kit</p-headline>
           <p-text variant="24">App Design System</p-text>
           <p-text class="p-spacing-mt-8">
             <router-link to="/app/getting-started/about">Learn more about it</router-link>
           </p-text>
-        </p-grid-child>
-        <p-grid-child class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
+        </p-grid-item>
+        <p-grid-item class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text variant="24">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
@@ -30,7 +30,7 @@
             consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
             sed diam voluptua.
           </p-text>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
     </article>
   </div>

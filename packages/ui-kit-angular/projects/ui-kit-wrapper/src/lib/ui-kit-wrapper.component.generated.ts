@@ -92,16 +92,16 @@ export class PGrid {
 }
 proxyInputs(PGrid, ['direction']);
 
-export declare interface PGridChild extends Components.PGridChild {}
-@Component({ selector: 'p-grid-child', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
-export class PGridChild {
+export declare interface PGridItem extends Components.PGridItem {}
+@Component({ selector: 'p-grid-item', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
+export class PGridItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PGridChild, ['offset', 'size']);
+proxyInputs(PGridItem, ['offset', 'size']);
 
 export declare interface PHeadline extends Components.PHeadline {}
 @Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })

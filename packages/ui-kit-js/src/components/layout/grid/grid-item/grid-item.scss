@@ -7,17 +7,17 @@ $p-grid-gutter-m: rem(36px);
 $p-grid-gutter-l: rem(36px);
 $p-grid-gutter-xl: rem(36px);
 
-$p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333333% 66.666667% 75% 83.333333% 91.666667% 100%;
+$p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333333% 66.666667% 75% 83.333333% 91.666667% 100%;
 
-@mixin p-grid-child-size($i) {
-  width: #{nth($p-grid-child-width, $i)};
+@mixin p-grid-item-size($i) {
+  width: #{nth($p-grid-item-width, $i)};
 }
 
-@mixin p-grid-child-offset($i) {
-  margin-left: #{nth($p-grid-child-width, $i)};
+@mixin p-grid-item-offset($i) {
+  margin-left: #{nth($p-grid-item-width, $i)};
 }
 
-.#{$p-global-class-prefix}grid-child {
+.#{$p-global-class-prefix}grid-item {
   box-sizing: border-box;
   padding: {
     left: $p-grid-gutter / 2;
@@ -41,14 +41,14 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
   &--size {
     @for $i from 1 through 12 {
       &-#{$i} {
-        @include p-grid-child-size($i + 1);
+        @include p-grid-item-size($i + 1);
       }
     }
 
     @include p-breakpoint("xs") {
       @for $i from 1 through 12 {
         &-#{$i}-xs {
-          @include p-grid-child-size($i + 1);
+          @include p-grid-item-size($i + 1);
         }
       }
     }
@@ -56,7 +56,7 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
     @include p-breakpoint("s") {
       @for $i from 1 through 12 {
         &-#{$i}-s {
-          @include p-grid-child-size($i + 1);
+          @include p-grid-item-size($i + 1);
         }
       }
     }
@@ -64,7 +64,7 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
     @include p-breakpoint("m") {
       @for $i from 1 through 12 {
         &-#{$i}-m {
-          @include p-grid-child-size($i + 1);
+          @include p-grid-item-size($i + 1);
         }
       }
     }
@@ -72,7 +72,7 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
     @include p-breakpoint("l") {
       @for $i from 1 through 12 {
         &-#{$i}-l {
-          @include p-grid-child-size($i + 1);
+          @include p-grid-item-size($i + 1);
         }
       }
     }
@@ -80,7 +80,7 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
     @include p-breakpoint("xl") {
       @for $i from 1 through 12 {
         &-#{$i}-xl {
-          @include p-grid-child-size($i + 1);
+          @include p-grid-item-size($i + 1);
         }
       }
     }
@@ -89,14 +89,14 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
   &--offset {
     @for $i from 0 through 11 {
       &-#{$i} {
-        @include p-grid-child-offset($i + 1);
+        @include p-grid-item-offset($i + 1);
       }
     }
 
     @include p-breakpoint("xs") {
       @for $i from 0 through 11 {
         &-#{$i}-xs {
-          @include p-grid-child-offset($i + 1);
+          @include p-grid-item-offset($i + 1);
         }
       }
     }
@@ -104,7 +104,7 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
     @include p-breakpoint("s") {
       @for $i from 0 through 11 {
         &-#{$i}-s {
-          @include p-grid-child-offset($i + 1);
+          @include p-grid-item-offset($i + 1);
         }
       }
     }
@@ -112,7 +112,7 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
     @include p-breakpoint("m") {
       @for $i from 0 through 11 {
         &-#{$i}-m {
-          @include p-grid-child-offset($i + 1);
+          @include p-grid-item-offset($i + 1);
         }
       }
     }
@@ -120,7 +120,7 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
     @include p-breakpoint("l") {
       @for $i from 0 through 11 {
         &-#{$i}-l {
-          @include p-grid-child-offset($i + 1);
+          @include p-grid-item-offset($i + 1);
         }
       }
     }
@@ -128,7 +128,7 @@ $p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.33
     @include p-breakpoint("xl") {
       @for $i from 0 through 11 {
         &-#{$i}-xl {
-          @include p-grid-child-offset($i + 1);
+          @include p-grid-item-offset($i + 1);
         }
       }
     }
