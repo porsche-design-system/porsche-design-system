@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   PGrid,
-  PGridIftem,
+  PGridItem,
   PFlex,
   PSpacing,
   PFlexItem,
