@@ -94,7 +94,13 @@ export class ButtonIcon {
   public fixEventTarget(event: MouseEvent): void {
     if (event.target !== this.element) {
       event.stopPropagation();
-      event.preventDefault();
+      if (!this.href) {
+        /**
+         * we don't want to submit the form twice,
+         * but links should still work
+         */
+        event.preventDefault();
+      }
       this.element.click();
     }
   }
