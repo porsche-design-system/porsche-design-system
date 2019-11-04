@@ -17,7 +17,7 @@
 * Button Icon
   * Removed `pClick`, `pFocus`, `pBlur` events from p-button-icon
   * Made `click`, `focus`, `focusin`, `blur` and `focusout` events behave like expected (like native elements) for p-button-icon
-  * Added `pTabindex` property to p-button-icon  (values of 0 or -1 are allowed)
+  * Added `tabbable` property to p-button-icon
   * It's now disallowed to use `tabindex` property on p-button-icon (will be ignored and warning is shown)
 
 ### Bugfix
