@@ -30,19 +30,15 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 import { Components } from '@porsche-ui/ui-kit-js'
 
 export declare interface PButtonIcon extends Components.PButtonIcon {}
-@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'label', 'loading', 'target', 'theme', 'type', 'variant'] })
+@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
 export class PButtonIcon {
-  pClick!: EventEmitter<CustomEvent>;
-  pFocus!: EventEmitter<CustomEvent>;
-  pBlur!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick', 'pFocus', 'pBlur']);
   }
 }
-proxyInputs(PButtonIcon, ['disabled', 'href', 'icon', 'label', 'loading', 'target', 'theme', 'type', 'variant']);
+proxyInputs(PButtonIcon, ['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant']);
 
 export declare interface PButtonRegular extends Components.PButtonRegular {}
 @Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })
