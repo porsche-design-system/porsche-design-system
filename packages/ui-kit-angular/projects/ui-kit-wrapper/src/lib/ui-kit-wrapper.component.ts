@@ -24,17 +24,13 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 import { Components } from '@porsche-ui/ui-kit-js'
 
 export declare interface PButtonIcon extends Components.PButtonIcon {}
-@ProxyInputs(['disabled', 'href', 'icon', 'label', 'loading', 'target', 'theme', 'type', 'variant'])
-@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'label', 'loading', 'target', 'theme', 'type', 'variant'] })
+@ProxyInputs(['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'])
+@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
 export class PButtonIcon {
-  pClick!: EventEmitter<CustomEvent>;
-  pFocus!: EventEmitter<CustomEvent>;
-  pBlur!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick', 'pFocus', 'pBlur']);
   }
 }
 
@@ -76,8 +72,8 @@ export class PFlexItem {
 }
 
 export declare interface PGrid extends Components.PGrid {}
-@ProxyInputs(['direction', 'gap'])
-@Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction', 'gap'] })
+@ProxyInputs(['direction'])
+@Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction'] })
 export class PGrid {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -86,10 +82,10 @@ export class PGrid {
   }
 }
 
-export declare interface PGridChild extends Components.PGridChild {}
+export declare interface PGridItem extends Components.PGridItem {}
 @ProxyInputs(['offset', 'size'])
-@Component({ selector: 'p-grid-child', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
-export class PGridChild {
+@Component({ selector: 'p-grid-item', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
+export class PGridItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
