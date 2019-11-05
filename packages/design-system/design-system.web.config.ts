@@ -243,7 +243,7 @@ export const config: DesignSystemConfig = {
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/layout/grid/grid/grid.props.md`),
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid-child/grid-child.props.md`),
+          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid-item/grid-item.props.md`),
         ],
       },
       Spacing: {

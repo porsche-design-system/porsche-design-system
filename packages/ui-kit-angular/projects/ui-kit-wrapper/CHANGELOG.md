@@ -4,6 +4,10 @@
 
 ### Change
 
+* Grid component
+  * Add JSON5 support to attributes (`BreakpointValues`)
+  * Rename component `grid-child` to `grid-item`
+  * Remove `gap` attribute
 * Flex component
   * Add JSON5 support to attributes (`BreakpointValues`)
   * Add value `space-evenly` to attribute `stretch`
@@ -14,6 +18,15 @@
   * Rename `alignSelf` values from `start` to `flex-start` and `end` to `flex-end`
   * Rename `stretch` values from `start` to `flex-start` and `end` to `flex-end`
   * Rename `wrap` values from `reverse` to `wrap-reverse`
+* Button Icon
+  * Removed `pClick`, `pFocus`, `pBlur` events from p-button-icon
+  * Made `click`, `focus`, `focusin`, `blur` and `focusout` events behave like expected (like native elements) for p-button-icon
+  * Added `tabbable` property to p-button-icon
+  * It's now disallowed to use `tabindex` property on p-button-icon (will be ignored and warning is shown)
+
+### Bugfix
+* Button Icon
+  * Fix submitting form behaviour of p-button-icon (it's now preventable by "preventDefault")
 
 
 ## [1.0.0-alpha.6] (2019-10-14)
