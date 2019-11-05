@@ -76,3 +76,29 @@ If another icon needs to be implemented, just replace the default icon with your
     <p-button-icon :icon="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme" />
   </template>
 </Playground>
+
+## Bind events to the Button Icon
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the button.
+
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <p-button-icon
+        onclick="alert('Button Icon clicked')"
+        onfocus="console.log('focus')"
+        onfocusin="console.log('focusin')"
+        onblur="console.log('blur')"
+        onfocusout="console.log('focusout')"
+        :theme="theme"
+    />
+  </template>
+</Playground>
+
+## Remove Button Icon from tab order
+With setting the `tabbable` property to `false` you can remove the button from the tab order.
+
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <p-button-icon tabbable="true" :theme="theme" />
+    <p-button-icon tabbable="false" :theme="theme" />
+  </template>
+</Playground>
