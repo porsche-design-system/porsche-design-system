@@ -2,6 +2,8 @@
 
 ## NOT RELEASED YET
 
+## [1.0.0-alpha.7] (2019-11-05)
+
 ### Change
 
 * Grid component
