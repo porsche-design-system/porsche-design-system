@@ -15,14 +15,14 @@
 
     <article class="intro">
       <p-grid>
-        <p-grid-child size='{"base": 12, "m": 4}'>
+        <p-grid-item size='{"base": 12, "m": 4}'>
           <p-headline variant="headline-3" tag="h1">Porsche UI Kit</p-headline>
           <p-text variant="24">Web Design System</p-text>
           <p-text class="p-spacing-mt-8">
             <router-link to="/web/getting-started/about">Learn more about it</router-link>
           </p-text>
-        </p-grid-child>
-        <p-grid-child class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
+        </p-grid-item>
+        <p-grid-item class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text variant="24">
             The Porsche UI Kit Web provides the design fundamentals and elements for efficiently creating aesthetic and qualitative
             web applications. Including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything built and tested following the Porsche quality standards and corporate design
@@ -50,16 +50,16 @@
               </p-button-regular>
             </p-flex-item>
           </p-flex>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
     </article>
 
     <article class="newsletter">
       <p-grid>
-        <p-grid-child size='{"base": 12, "m": 3}'>
+        <p-grid-item size='{"base": 12, "m": 3}'>
           <p-headline variant="headline-3" tag="h2">Always stay informed</p-headline>
-        </p-grid-child>
-        <p-grid-child size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
+        </p-grid-item>
+        <p-grid-item size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
           <p-text
             variant="24"
           >Join our mailing list and get informed about relevant updates and topics.
@@ -71,7 +71,7 @@
               rel="noopener noreferrer"
             >Subscribe to mailing list</a>
           </p-text>
-        </p-grid-child>
+        </p-grid-item>
       </p-grid>
     </article>
   </div>

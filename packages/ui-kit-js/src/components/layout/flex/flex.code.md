@@ -30,7 +30,7 @@ Flex inline displays flex containers in a row.
   </p-flex>
 </Playground>
 
-### Responsiveness
+### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
@@ -90,7 +90,7 @@ Define or change direction of the flex items to rows or columns and set order.
   </p-flex>
 </Playground>
 
-#### Responsiveness
+#### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
@@ -668,7 +668,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   .example-flex {
     & > * {
       @include p-text-copy;
-      padding: $p-spacing-4 $p-spacing-80;
+      padding: 0 6vw;
       color: $p-color-porsche-light;
       text-align: center;
 

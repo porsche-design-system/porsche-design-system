@@ -7,212 +7,42 @@ $p-grid-gutter-m: rem(36px);
 $p-grid-gutter-l: rem(36px);
 $p-grid-gutter-xl: rem(36px);
 
-$p-grid-child-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333333% 66.666667% 75% 83.333333%
-  91.666667% 100%;
-
-$p-grid-child-spacing-horizontal: $p-grid-gutter / 2;
-$p-grid-child-spacing-horizontal-xs: $p-grid-gutter-xs / 2;
-$p-grid-child-spacing-horizontal-s: $p-grid-gutter-s / 2;
-$p-grid-child-spacing-horizontal-m: $p-grid-gutter-m / 2;
-$p-grid-child-spacing-horizontal-l: $p-grid-gutter-l / 2;
-$p-grid-child-spacing-horizontal-xl: $p-grid-gutter-xl / 2;
-
-/**
- * properties for grid parent items
- */
-@mixin p-grid-gap-normal {
-  margin: {
-    left: -$p-grid-child-spacing-horizontal;
-    right: -$p-grid-child-spacing-horizontal;
-  }
-
-  @include p-breakpoint("s") {
-    margin: {
-      left: -$p-grid-child-spacing-horizontal-s;
-      right: -$p-grid-child-spacing-horizontal-s;
-    }
-  }
-
-  @include p-breakpoint("m") {
-    margin: {
-      left: -$p-grid-child-spacing-horizontal-m;
-      right: -$p-grid-child-spacing-horizontal-m;
-    }
-  }
-}
-
-@mixin p-grid-gap-zero {
-  margin: {
-    left: 0;
-    right: 0;
-  }
-}
-
-/**
- * properties for grid child items
- */
-@mixin p-grid-child-gap-normal {
-  padding: {
-    left: $p-grid-child-spacing-horizontal;
-    right: $p-grid-child-spacing-horizontal;
-  }
-
-  @include p-breakpoint("s") {
-    padding: {
-      left: $p-grid-child-spacing-horizontal-s;
-      right: $p-grid-child-spacing-horizontal-s;
-    }
-  }
-
-  @include p-breakpoint("m") {
-    padding: {
-      left: $p-grid-child-spacing-horizontal-m;
-      right: $p-grid-child-spacing-horizontal-m;
-    }
-  }
-}
-
-@mixin p-grid-child-gap-zero {
-  padding: {
-    left: 0;
-    right: 0;
-  }
-}
-
 .#{$p-global-class-prefix}grid {
   $bem-block: &;
-  @include p-grid-gap-normal;
   display: flex;
   flex-wrap: wrap;
-
-  /**
-   * properties to define grid gaps
-   */
-  > #{$bem-block}-child {
-    @include p-grid-child-gap-normal;
+  margin: {
+    left: -$p-grid-gutter / 2;
+    right: -$p-grid-gutter / 2;
   }
 
-  &--gap {
-    &-normal {
-      @include p-grid-gap-normal;
-
-      > #{$bem-block}-child {
-        @include p-grid-child-gap-normal;
-      }
-    }
-
-    &-zero {
-      @include p-grid-gap-zero;
-
-      > #{$bem-block}-child {
-        @include p-grid-child-gap-zero;
-      }
-    }
-
-    @include p-breakpoint("xs") {
-      &-normal-xs {
-        @include p-grid-gap-normal;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-normal;
-        }
-      }
-
-      &-zero-xs {
-        @include p-grid-gap-zero;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-zero;
-        }
-      }
-    }
-
-    @include p-breakpoint("s") {
-      &-normal-s {
-        @include p-grid-gap-normal;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-normal;
-        }
-      }
-
-      &-zero-s {
-        @include p-grid-gap-zero;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-zero;
-        }
-      }
-    }
-
-    @include p-breakpoint("m") {
-      &-normal-m {
-        @include p-grid-gap-normal;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-normal;
-        }
-      }
-
-      &-zero-m {
-        @include p-grid-gap-zero;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-zero;
-        }
-      }
-    }
-
-    @include p-breakpoint("l") {
-      &-normal-l {
-        @include p-grid-gap-normal;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-normal;
-        }
-      }
-
-      &-zero-l {
-        @include p-grid-gap-zero;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-zero;
-        }
-      }
-    }
-
-    @include p-breakpoint("xl") {
-      &-normal-xl {
-        @include p-grid-gap-normal;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-normal;
-        }
-      }
-
-      &-zero-xl {
-        @include p-grid-gap-zero;
-
-        > #{$bem-block}-child {
-          @include p-grid-child-gap-zero;
-        }
-      }
+  @include p-breakpoint("s") {
+    margin: {
+      left: -$p-grid-gutter-s / 2;
+      right: -$p-grid-gutter-s / 2;
     }
   }
 
-  /**
-   * properties to define grid direction
-   */
+  @include p-breakpoint("m") {
+    margin: {
+      left: -$p-grid-gutter-m / 2;
+      right: -$p-grid-gutter-m / 2;
+    }
+  }
+
   &--direction {
     &-column {
       flex-direction: column;
     }
+
     &-column-reverse {
       flex-direction: column-reverse;
     }
+
     &-row {
       flex-direction: row;
     }
+
     &-row-reverse {
       flex-direction: row-reverse;
     }

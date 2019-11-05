@@ -1,24 +1,28 @@
 # Grid
 
-The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. Therefore the [Flex](#/web/layout/flex) component is the right choice.
+The Porsche UI Kit grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. Therefore the [Flex](#/web/components/layout/flex) component is the right choice.
 
-### Grid standard
+### Grid size
 
-For standard grid implementation, it is recommended to use this pattern. The class `grid` on the parent and `grid__child` on the children are mandatory. With `grid__child--size-(1-12)` it is possible to define column widths.
+Following example shows a standard grid implementation.  
 
 <Playground :childElementLayout="{spacing: 'block-small'}">
-  <p-grid>
-    <p-grid-child size="12">
-      <ExampleText>12</ExampleText>
-    </p-grid-child>
+  <p-grid class="example-grid">
+    <p-grid-item size="12">12</p-grid-item>
   </p-grid>
-  <p-grid v-for="n, index in 11" :key="index">
-    <p-grid-child :size="n">
-      <ExampleText>{{ n }}</ExampleText>
-    </p-grid-child>
-    <p-grid-child :size="12 - n">
-      <ExampleText>{{ 12 - n }}</ExampleText>
-    </p-grid-child>
+  <p-grid v-for="n, index in 11" :key="index" class="example-grid">
+    <p-grid-item :size="n">{{ n }}</p-grid-item>
+    <p-grid-item :size="12 - n">{{ 12 - n }}</p-grid-item>
+  </p-grid>
+</Playground>
+
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<Playground>
+  <p-grid class="example-grid">
+    <p-grid-item size="{ base: 6, m: 2 }">A</p-grid-item>
+    <p-grid-item size="{ base: 6, m: 10 }">B</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -26,13 +30,20 @@ For standard grid implementation, it is recommended to use this pattern. The cla
 
 ### Grid offset
 
-In some cases it can be necessary to indent columns. The grid gives basic indentions based on grid sizings. The child column has an offset of 1 column on the left and due to its length of 10 columns an offset of 1 column to the right. With `grid__child--offset-(0-11)` it is possible to define offsets.
+In some cases it can be necessary to indent columns. The grid gives basic indentions based on grid sizings.
 
 <Playground :childElementLayout="{spacing: 'block-small'}">
-  <p-grid v-for="n, index in 11" :key="index">
-    <p-grid-child :offset="n" :size="12 - n">
-      <ExampleText>{{ n }}</ExampleText>
-    </p-grid-child>
+  <p-grid v-for="n, index in 11" :key="index" class="example-grid">
+    <p-grid-item :offset="n" :size="12 - n">{{ n }}</p-grid-item>
+  </p-grid>
+</Playground>
+
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<Playground>
+  <p-grid class="example-grid">
+    <p-grid-item offset="{ base: 6, m: 2 }" size="{ base: 6, m: 10 }">A</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -45,102 +56,51 @@ In some cases it might be necessary to define or change direction of the columns
 #### Row (default)
 
 <Playground>
-  <p-grid direction="row">
-    <p-grid-child size="4">
-      <ExampleText>1</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>2</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>3</ExampleText>
-    </p-grid-child>
+  <p-grid direction="row" class="example-grid">
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
   </p-grid>
 </Playground>
 
 #### Row reverse
 
 <Playground>
-  <p-grid direction="row-reverse">
-    <p-grid-child size="4">
-      <ExampleText>1</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>2</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>3</ExampleText>
-    </p-grid-child>
+  <p-grid direction="row-reverse" class="example-grid">
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
   </p-grid>
 </Playground>
 
 #### Column
 
 <Playground>
-  <p-grid direction="column">
-    <p-grid-child size="4">
-      <ExampleText>1</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>2</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>3</ExampleText>
-    </p-grid-child>
+  <p-grid direction="column" class="example-grid">
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
   </p-grid>
 </Playground>
 
 #### Column reverse
 
 <Playground>
-  <p-grid direction="column-reverse">
-    <p-grid-child size="4">
-      <ExampleText>1</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>2</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>3</ExampleText>
-    </p-grid-child>
+  <p-grid direction="column-reverse" class="example-grid">
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
   </p-grid>
 </Playground>
 
----
-
-### Grid gap
-
-In some cases it might be useful to adapt the gap of the grid. Default is `normal`. But `zero` is also possible to place elements beside each other without spacings.
-
-#### Normal (default)
+#### Responsive
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-grid gap="normal">
-    <p-grid-child size="4">
-      <ExampleText>1</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>2</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>3</ExampleText>
-    </p-grid-child>
-  </p-grid>
-</Playground>
-
-#### Zero
-
-<Playground>
-  <p-grid gap="zero">
-    <p-grid-child size="4">
-      <ExampleText>1</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>2</ExampleText>
-    </p-grid-child>
-    <p-grid-child size="4">
-      <ExampleText>3</ExampleText>
-    </p-grid-child>
+  <p-grid direction="{ base: 'column', m: 'row' }" class="example-grid">
+    <p-grid-item size="{ base: 12, m: 4 }">A</p-grid-item>
+    <p-grid-item size="{ base: 12, m: 4 }">B</p-grid-item>
+    <p-grid-item size="{ base: 12, m: 4 }">C</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -148,30 +108,22 @@ In some cases it might be useful to adapt the gap of the grid. Default is `norma
 
 ### Grid nesting
 
-Basic nesting of grids is supported. "Basic" because of percentage value of width and gaps which couldn't be calculated for each column width. Here are some examples of "do's" and "don'ts":
+Basic nesting of grids is supported. "Basic" because of percentage value of width and gutter which couldn't be calculated for each column width. Here are some examples of "do's" and "don'ts":
 
 <Playground>
   <p-grid>
-    <p-grid-child size="6">
-      <p-grid>
-        <p-grid-child size="6">
-          <ExampleText>1</ExampleText>
-        </p-grid-child>
-        <p-grid-child size="6">
-          <ExampleText>2</ExampleText>
-        </p-grid-child>
+    <p-grid-item size="6">
+      <p-grid class="example-grid">
+        <p-grid-item size="6">A</p-grid-item>
+        <p-grid-item size="6">B</p-grid-item>
       </p-grid>
-    </p-grid-child>
-    <p-grid-child size="6">
-      <p-grid>
-        <p-grid-child size="4">
-          <ExampleText>1</ExampleText>
-        </p-grid-child>
-        <p-grid-child size="8">
-          <ExampleText>2</ExampleText>
-        </p-grid-child>
+    </p-grid-item>
+    <p-grid-item size="6">
+      <p-grid class="example-grid">
+        <p-grid-item size="4">A</p-grid-item>
+        <p-grid-item size="8">B</p-grid-item>
       </p-grid>
-    </p-grid-child>
+    </p-grid-item>
   </p-grid>
 </Playground>
 
@@ -185,7 +137,7 @@ Only columns with the following widths could be nested:
 
 #### Forbidden nesting
 
-Nesting inside columns with the following widths should be prevented, because all children widths won't be in "the grid" anymore:
+Nesting inside columns with the following widths should be prevented, because all item widths won't be in "the grid" anymore:
 
 * total width of 11
 * total width of 10
@@ -194,74 +146,19 @@ Nesting inside columns with the following widths should be prevented, because al
 * total width of 5
 * total width of 3
 
----
-
-### Grid responsive
-
-The grid system is fluid/responsive by itself by using percentages for every value (widths, gaps, offsets). But it can also provide breakpoint specific values to fit the needs of certain viewports:
-
-<Playground>
-  <p-grid gap='{"base": "normal", "s": "zero", "m": "normal"}'>
-    <p-grid-child size='{"base": 12, "m": 4, "l": 3}' offset='{"base": 0, "m": 2, "l": 0}'>
-      <ExampleText>
-        Column 1<br>
-        xxs -- size: 12<br>
-        s -- gap: zero<br>
-        m -- gap: normal, size: 4, offset: 2<br>
-        l -- size: 3, offset: 0
-      </ExampleText>
-    </p-grid-child>
-    <p-grid-child size='{"base": 12, "s": 6, "m": 4, "l": 3}' offset='{"base": 0, "s": 3, "m": 0}'>
-      <ExampleText>
-        Column 2<br>
-        xxs -- size: 12<br>
-        s -- gap: zero, size: 6, offset: 3<br>
-        m -- gap: normal, size: 4, offset: 0<br>
-        l -- size: 3
-      </ExampleText>
-    </p-grid-child>
-    <p-grid-child size='{"base": 12, "s": 6, "l": 3}'>
-      <ExampleText>
-        Column 3<br>
-        xxs -- size: 12<br>
-        s -- gap: zero, size: 6<br>
-        m -- gap: normal<br>
-        l -- size: 3
-      </ExampleText>
-    </p-grid-child>
-    <p-grid-child size='{"base": 12, "s": 6, "l": 3}'>
-      <ExampleText>
-        Column 4<br>
-        xxs -- size: 12<br>
-        s -- gap: zero, size: 6<br>
-        m -- gap: normal<br>
-        l -- size: 3
-      </ExampleText>
-    </p-grid-child>
-  </p-grid>
-</Playground>
-
-**Possible class names on the grid parent container (where {p} is the prefix and {bp} the breakpoint value):**
-* `{p}-grid--direction-{direction}-{bp}` => direction of columns
-* `{p}-grid--gap-{gap}-{bp}` => use of gaps between columns
-* `{p}-grid__child--size-{size}-{bp}` => size based on amount of columns
-* `{p}-grid__child--size-{offset}-{bp}` => offset based on amount of columns
-
 <style scoped lang="scss">
   @import '~@porsche-ui/ui-kit-scss-utils/index';
   
-  p-grid {
-    p-grid-child {
-      > .example-text {
-        padding: $p-spacing-4;
-        background: lightskyblue;
-      }
-    }
-    [class*="p-grid-child--offset"] {
-      > .example-text {
-          color: lightskyblue;
-          text-indent: calc(-100% - 50px);
-      }
+  .example-grid > * {
+    @include p-text-copy;
+    color: $p-color-porsche-light;
+    text-align: center;
+    background: lightskyblue;
+    background-clip: content-box;
+    
+    &[offset] {
+      color: lightskyblue;
+      text-indent: calc(-100% - 48px);
     }
   }
 </style>

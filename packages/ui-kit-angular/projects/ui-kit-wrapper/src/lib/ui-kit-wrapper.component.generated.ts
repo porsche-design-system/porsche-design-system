@@ -30,19 +30,15 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 import { Components } from '@porsche-ui/ui-kit-js'
 
 export declare interface PButtonIcon extends Components.PButtonIcon {}
-@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'target', 'theme', 'type', 'variant'] })
+@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
 export class PButtonIcon {
-  pClick!: EventEmitter<CustomEvent>;
-  pFocus!: EventEmitter<CustomEvent>;
-  pBlur!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick', 'pFocus', 'pBlur']);
   }
 }
-proxyInputs(PButtonIcon, ['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'target', 'theme', 'type', 'variant']);
+proxyInputs(PButtonIcon, ['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant']);
 
 export declare interface PButtonRegular extends Components.PButtonRegular {}
 @Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })
@@ -82,7 +78,7 @@ export class PFlexItem {
 proxyInputs(PFlexItem, ['alignSelf', 'flex', 'grow', 'offset', 'shrink', 'width']);
 
 export declare interface PGrid extends Components.PGrid {}
-@Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction', 'gap'] })
+@Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction'] })
 export class PGrid {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -90,18 +86,18 @@ export class PGrid {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PGrid, ['direction', 'gap']);
+proxyInputs(PGrid, ['direction']);
 
-export declare interface PGridChild extends Components.PGridChild {}
-@Component({ selector: 'p-grid-child', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
-export class PGridChild {
+export declare interface PGridItem extends Components.PGridItem {}
+@Component({ selector: 'p-grid-item', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
+export class PGridItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PGridChild, ['offset', 'size']);
+proxyInputs(PGridItem, ['offset', 'size']);
 
 export declare interface PHeadline extends Components.PHeadline {}
 @Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })

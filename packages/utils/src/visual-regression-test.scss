@@ -24,7 +24,7 @@ hr {
 /**
  * TODO: @see explanation below
  */
-//p-grid > p-grid-child[size='2']:first-child > p-headline[tag='h4'] {
+//p-grid > p-grid-item[size='2']:first-child > p-headline[tag='h4'] {
 //  margin-top: $p-spacing-16;
 //}
 
@@ -96,10 +96,10 @@ hr {
     }
   }
 
-  p-grid-child[size],
-  p-grid-child[class*="--size"],
-  p-grid-child[offset],
-  p-grid-child[class*="--offset"],
+  p-grid-item[size],
+  p-grid-item[class*="--size"],
+  p-grid-item[offset],
+  p-grid-item[class*="--offset"],
   p-flex-item[width],
   p-flex-item[class*="--width"],
   p-flex-item[offset],
@@ -122,13 +122,13 @@ hr {
    * Due to this fact (until it is fixed), the VRT fails because there are now contents for these attributes.
    * To fix the build the content generation is disabled and all VRT's are adapted until its clear if this is a bug or not.
    */
-  //p-grid-child[size]::before,
-  //p-grid-child[class*="--size"]::before{
+  //p-grid-item[size]::before,
+  //p-grid-item[class*="--size"]::before{
   //  content: 's: ' attr(size);
   //}
   //
-  //p-grid-child[offset]::before,
-  //p-grid-child[class*="--offset"]::before{
+  //p-grid-item[offset]::before,
+  //p-grid-item[class*="--offset"]::before{
   //  content: 'o: ' attr(offset);
   //}
   //
