@@ -1,9 +1,12 @@
 # Button Icon
 
-## Buttons as button elements
-Button Icon used as `<button>` element to trigger actions.
+Used as `<button>` element to trigger actions.
 
-### Basic
+### Variant
+
+Choose between predefined styling variants.
+
+#### Default
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -20,48 +23,6 @@ Button Icon used as `<button>` element to trigger actions.
     <p-button-icon variant="ghost" :theme="theme" />
     <p-button-icon variant="ghost" disabled="true" :theme="theme" />
     <p-button-icon variant="ghost" loading="true" :theme="theme" />
-  </template>
-</Playground>
-
-### Transparent (Icon)
-
-<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot={theme}>
-    <p-button-icon variant="transparent" :theme="theme" />
-    <p-button-icon variant="transparent" disabled="true" :theme="theme" />
-    <p-button-icon variant="transparent" loading="true" :theme="theme" />
-  </template>
-</Playground>
-
----
-
-## Button as link element
-Button Icon used as link element `<a>`, e.g. as a navigation item.
-
-### Basic
-<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot={theme}>
-    <p-button-icon href="/lorem/ipsum" :theme="theme" />
-    <p-button-icon href="#" disabled="true" :theme="theme" />
-    <p-button-icon href="#" loading="true" :theme="theme" />
-  </template>
-</Playground>
-
-### Ghost
-<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot={theme}>
-    <p-button-icon href="/lorem/ipsum" variant="ghost" :theme="theme" />
-    <p-button-icon href="#" variant="ghost" disabled="true" :theme="theme" />
-    <p-button-icon href="#" variant="ghost" loading="true" :theme="theme" />
-  </template>
-</Playground>
-
-### Transparent (Icon)
-<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot={theme}>
-    <p-button-icon href="/lorem/ipsum" variant="transparent" :theme="theme" />
-    <p-button-icon href="#" variant="transparent" disabled="true" :theme="theme" />
-    <p-button-icon href="#" variant="transparent" loading="true" :theme="theme" />
   </template>
 </Playground>
 

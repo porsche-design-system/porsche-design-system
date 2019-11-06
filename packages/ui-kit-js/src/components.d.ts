@@ -7,32 +7,28 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  BreakpointCustomizable,
-} from './utils';
-import {
   TextColor,
   TextVariant,
   Theme,
 } from './types';
+import {
+  BreakpointCustomizable,
+} from './utils';
 
 export namespace Components {
   interface PButtonIcon {
+    /**
+    * A visually hidden label text to improve accessibility which describes the function behind the button.
+    */
+    'allyLabel'?: string;
     /**
     * Disables the button. No events will be triggered while disabled state is active.
     */
     'disabled'?: boolean;
     /**
-    * When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.
-    */
-    'href'?: string;
-    /**
     * The icon shown.
     */
     'icon'?: string;
-    /**
-    * A visually hidden label text to improve accessibility which describes the function behind the button.
-    */
-    'label'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -46,13 +42,9 @@ export namespace Components {
     */
     'tabbable'?: boolean;
     /**
-    * Target attribute where the link should be opened.
-    */
-    'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
     * Adapts the button color when used on dark background.
     */
-    'theme'?: 'light' | 'dark';
+    'theme'?: Theme;
     /**
     * Specifies the type of the button when no href prop is defined.
     */
@@ -60,7 +52,7 @@ export namespace Components {
     /**
     * The style variant of the button.
     */
-    'variant'?: 'ghost' | 'transparent' | 'default';
+    'variant'?: 'ghost' | 'default';
   }
   interface PButtonRegular {
     /**
@@ -526,21 +518,17 @@ declare global {
 declare namespace LocalJSX {
   interface PButtonIcon extends JSXBase.HTMLAttributes<HTMLPButtonIconElement> {
     /**
+    * A visually hidden label text to improve accessibility which describes the function behind the button.
+    */
+    'allyLabel'?: string;
+    /**
     * Disables the button. No events will be triggered while disabled state is active.
     */
     'disabled'?: boolean;
     /**
-    * When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.
-    */
-    'href'?: string;
-    /**
     * The icon shown.
     */
     'icon'?: string;
-    /**
-    * A visually hidden label text to improve accessibility which describes the function behind the button.
-    */
-    'label'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -550,13 +538,9 @@ declare namespace LocalJSX {
     */
     'tabbable'?: boolean;
     /**
-    * Target attribute where the link should be opened.
-    */
-    'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
     * Adapts the button color when used on dark background.
     */
-    'theme'?: 'light' | 'dark';
+    'theme'?: Theme;
     /**
     * Specifies the type of the button when no href prop is defined.
     */
@@ -564,7 +548,7 @@ declare namespace LocalJSX {
     /**
     * The style variant of the button.
     */
-    'variant'?: 'ghost' | 'transparent' | 'default';
+    'variant'?: 'ghost' | 'default';
   }
   interface PButtonRegular extends JSXBase.HTMLAttributes<HTMLPButtonRegularElement> {
     /**

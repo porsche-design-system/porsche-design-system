@@ -56,7 +56,7 @@ export class LinkIcon {
     const linkClasses = cx(
       prefix('link-icon'),
       this.variant !== 'default' && prefix(`link-icon--${this.variant}`),
-      this.theme === 'dark' && prefix('link-icon--theme-dark')
+      this.theme !== 'light' && prefix('link-icon--theme-dark')
     );
     const iconClasses = prefix('link-icon__icon');
 
