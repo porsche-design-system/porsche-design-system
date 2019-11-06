@@ -1,0 +1,95 @@
+@import '../../../../../../packages/ui-kit-scss-utils/index';
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.#{$p-global-class-prefix}link-icon {
+  $bem-block: &;
+  display: inline-flex;
+  width: rem(48px);
+  height: rem(48px);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: $p-color-neutral-grey-8;
+  border: 1px solid $p-color-neutral-grey-8;
+  color: $p-color-porsche-light;
+  transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
+  border-color $p-animation-hover-duration $p-animation-hover-bezier,
+  box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+  color $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &--theme-dark {
+    color: $p-color-porsche-black;
+    background-color: $p-color-porsche-light;
+    border-color: $p-color-porsche-light;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $p-color-neutral-grey-7;
+    border-color: $p-color-neutral-grey-7;
+    text-decoration: none;
+
+    &#{$bem-block}--theme-dark {
+      background-color: $p-color-neutral-grey-1;
+      border-color: $p-color-neutral-grey-1;
+    }
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 1px $p-color-state-focus;
+    border-color: $p-color-state-focus;
+
+    &#{$bem-block}--theme-dark {
+      border-color: $p-color-state-focus;
+    }
+  }
+
+  &--ghost {
+    color: $p-color-porsche-black;
+    background-color: transparent;
+    border-color: $p-color-neutral-grey-8;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-light;
+      border-color: $p-color-porsche-light;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-porsche-light;
+      background-color: $p-color-neutral-grey-8;
+      border-color: $p-color-neutral-grey-8;
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-porsche-black;
+        background-color: $p-color-porsche-light;
+        border-color: $p-color-porsche-light;
+      }
+    }
+
+    &:focus {
+      border-color: $p-color-state-focus;
+
+      &#{$bem-block}--theme-dark {
+        border-color: $p-color-state-focus;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}

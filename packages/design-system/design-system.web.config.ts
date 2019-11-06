@@ -144,14 +144,20 @@ export const config: DesignSystemConfig = {
         Design: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.design.md`),
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.design.md`),
         ],
         Code: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.code.md`),
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.code.md`),
         ],
         Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.props.md`),
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.props.md`),
         ],
       },
       'Text Link': {
