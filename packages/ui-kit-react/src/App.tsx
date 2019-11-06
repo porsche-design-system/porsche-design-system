@@ -94,53 +94,53 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size="5">
           <div className="playground light spacing-inline">
-            <PButtonRegular variant="highlight">Click Here!</PButtonRegular>
-            <PButtonRegular variant="highlight" disabled={true}>Disabled</PButtonRegular>
-            <PButtonRegular variant="highlight" loading={true}>Loading...</PButtonRegular>
+            <PButtonRegular variant="highlight">Some label</PButtonRegular>
+            <PButtonRegular variant="highlight" disabled={true}>Some label</PButtonRegular>
+            <PButtonRegular variant="highlight" loading={true}>Some label</PButtonRegular>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonRegular>Click Here!</PButtonRegular>
-            <PButtonRegular disabled={true}>Disabled</PButtonRegular>
-            <PButtonRegular loading={true}>Loading...</PButtonRegular>
+            <PButtonRegular>Some label</PButtonRegular>
+            <PButtonRegular disabled={true}>Some label</PButtonRegular>
+            <PButtonRegular loading={true}>Some label</PButtonRegular>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonRegular variant="ghost">Click Here!</PButtonRegular>
-            <PButtonRegular variant="ghost" disabled={true}>Disabled</PButtonRegular>
-            <PButtonRegular variant="ghost" loading={true}>Loading...</PButtonRegular>
+            <PButtonRegular variant="ghost">Some label</PButtonRegular>
+            <PButtonRegular variant="ghost" disabled={true}>Some label</PButtonRegular>
+            <PButtonRegular variant="ghost" loading={true}>Some label</PButtonRegular>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonRegular icon="phone">Click Here!</PButtonRegular>
+            <PButtonRegular icon="phone">Some label</PButtonRegular>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonRegular small={true}>Click Here!</PButtonRegular>
-            <PButtonRegular small={true} variant="ghost">Click Here!</PButtonRegular>
-            <PButtonRegular small={true} variant="highlight">Click Here!</PButtonRegular>
+            <PButtonRegular small={true}>Some label</PButtonRegular>
+            <PButtonRegular small={true} variant="ghost">Some label</PButtonRegular>
+            <PButtonRegular small={true} variant="highlight">Some label</PButtonRegular>
           </div>
           <hr/>
         </PGridItem>
         <PGridItem size="5">
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark" variant="highlight">Click Here!</PButtonRegular>
-            <PButtonRegular theme="dark" variant="highlight" disabled={true}>Disabled</PButtonRegular>
-            <PButtonRegular theme="dark" variant="highlight" loading={true}>Loading...</PButtonRegular>
+            <PButtonRegular theme="dark" variant="highlight">Some label</PButtonRegular>
+            <PButtonRegular theme="dark" variant="highlight" disabled={true}>Some label</PButtonRegular>
+            <PButtonRegular theme="dark" variant="highlight" loading={true}>Some label</PButtonRegular>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark">Click Here!</PButtonRegular>
-            <PButtonRegular theme="dark" disabled={true}>Disabled</PButtonRegular>
-            <PButtonRegular theme="dark" loading={true}>Loading...</PButtonRegular>
+            <PButtonRegular theme="dark">Some label</PButtonRegular>
+            <PButtonRegular theme="dark" disabled={true}>Some label</PButtonRegular>
+            <PButtonRegular theme="dark" loading={true}>Some label</PButtonRegular>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark" variant="ghost">Click Here!</PButtonRegular>
-            <PButtonRegular theme="dark" variant="ghost" disabled={true}>Disabled</PButtonRegular>
-            <PButtonRegular theme="dark" variant="ghost" loading={true}>Loading...</PButtonRegular>
+            <PButtonRegular theme="dark" variant="ghost">Some label</PButtonRegular>
+            <PButtonRegular theme="dark" variant="ghost" disabled={true}>Some label</PButtonRegular>
+            <PButtonRegular theme="dark" variant="ghost" loading={true}>Some label</PButtonRegular>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark" icon="phone">Click Here!</PButtonRegular>
+            <PButtonRegular theme="dark" icon="phone">Some label</PButtonRegular>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark" small={true}>Click Here!</PButtonRegular>
-            <PButtonRegular theme="dark" small={true} variant="ghost">Click Here!</PButtonRegular>
-            <PButtonRegular theme="dark" small={true} variant="highlight">Click Here!</PButtonRegular>
+            <PButtonRegular theme="dark" small={true}>Some label</PButtonRegular>
+            <PButtonRegular theme="dark" small={true} variant="ghost">Some label</PButtonRegular>
+            <PButtonRegular theme="dark" small={true} variant="highlight">Some label</PButtonRegular>
           </div>
           <hr/>
         </PGridItem>
