@@ -4,7 +4,7 @@ Used as link element `<a>`, e.g. as a navigation item.
 
 ### Variant
 
-Choose between predefined styling variants. Additionally predefined attributes like target, download or rel can be set and behave like they would do natively on a HTML link element (have a look at props table to see all available attributes).
+Choose between predefined styling variants. Additionally predefined attributes like target, download or rel can be set and behave like they would do natively on an HTML link element (have a look at props table to see all available attributes).
 
 #### Default
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
