@@ -2,6 +2,10 @@
 
 ## Not released yet
 
+### Change
+* Refine text variables and add default/alias styles
+* Rename mixing `p-text-generic` to `p-text`
+
 
 ## [1.0.0-alpha.3] (2019-09-25)
 
