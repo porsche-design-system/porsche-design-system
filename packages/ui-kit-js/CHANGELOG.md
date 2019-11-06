@@ -8,6 +8,9 @@
   * Reduce amount of text variants in global interface
   * Remove `ul | ol | li | sup | sub` from `tag` property
   * Add `thin` property
+  
+* Text Link component
+  * Reduce amount of text variants (defined in global interface)
 
 
 ## [1.0.0-alpha.7] (2019-11-05)
