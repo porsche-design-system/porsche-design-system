@@ -17,37 +17,11 @@ The `<p-text-link>` component is used to show a linkable icon-text-combination.
   <template #configurator>
     <select @change="variant = $event.target.value">
       <option disabled>Select a style variant</option>
-      <option>copy</option>
       <option>small</option>
-      <option>18</option>
-      <option>20</option>
-      <option>20-thin</option>
-      <option>24</option>
-      <option>24-thin</option>
-      <option>28</option>
-      <option>28-thin</option>
-      <option>30</option>
-      <option>30-thin</option>
-      <option>32</option>
-      <option>32-thin</option>
-      <option>36</option>
-      <option>36-thin</option>
-      <option>42</option>
-      <option>42-thin</option>
-      <option>44</option>
-      <option>44-thin</option>
-      <option>48</option>
-      <option>48-thin</option>
-      <option>52</option>
-      <option>52-thin</option>
-      <option>60</option>
-      <option selected>60-thin</option>
-      <option>62</option>
-      <option>62-thin</option>
-      <option>72</option>
-      <option>72-thin</option>
-      <option>84</option>
-      <option>84-thin</option>
+      <option selected>copy</option>
+      <option>medium</option>
+      <option>large</option>
+      <option>x-large</option>
     </select>
   </template>
   <p-text-link href="https://ui.porsche.com" :variant="variant">Some link with default icon</p-text-link>
@@ -116,7 +90,7 @@ a {
   
   @Component
   export default class PlaygroundTextLink extends Vue {
-    public variant: string = '60-thin';
+    public variant: string = 'copy';
   }
 </script>
 
