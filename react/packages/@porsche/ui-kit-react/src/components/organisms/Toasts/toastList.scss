@@ -10,7 +10,7 @@
     position: fixed;
     overflow: hidden;
     align-items: flex-start;
-    z-index: 9999;
+    z-index: 10001;
 
     @include breakpoint("s") {
         bottom: $spacing-42;

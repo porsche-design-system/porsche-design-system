@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.14.8] - 2019-11-06
+
+-   Increase z-index of Toast component to be higher than Modal component.
+
 ## [0.14.7] - 2019-10-15
 
 -   Fixed missing SASS rem function in text-size mixin.
