@@ -36,134 +36,34 @@
   }
 
   &--variant {
-    &-copy {
-      @include p-text-copy;
-    }
-
     &-small {
       @include p-text-small;
     }
 
-    // generic text
+    &-copy {
+      @include p-text-copy;
+    }
+
+    &-medium {
+      @include p-text($p-font-weight-regular, $p-font-size-medium);
+    }
+
+    &-large {
+      @include p-text($p-font-weight-regular, $p-font-size-large);
+    }
+
+    &-x-large {
+      @include p-text($p-font-weight-regular, $p-font-size-x-large);
+    }
+
     &-inherit {
-      @include p-text-generic($p-font-weight-regular, 'inherit');
+      @include p-text($p-font-weight-regular, 'inherit');
     }
 
-    &-18 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-18);
-    }
+  }
 
-    &-20 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-20);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-20);
-      }
-    }
-
-    &-24 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-24);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-24);
-      }
-    }
-
-    &-28 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-28);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-28);
-      }
-    }
-
-    &-30 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-30);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-30);
-      }
-    }
-
-    &-32 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-32);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-32);
-      }
-    }
-
-    &-36 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-36);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-36);
-      }
-    }
-
-    &-42 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-42);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-42);
-      }
-    }
-
-    &-44 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-44);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-44);
-      }
-    }
-
-    &-48 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-48);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-48);
-      }
-    }
-
-    &-52 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-52);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-52);
-      }
-    }
-
-    &-60 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-60);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-60);
-      }
-    }
-
-    &-62 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-62);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-62);
-      }
-    }
-
-    &-72 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-72);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-72);
-      }
-    }
-
-    &-84 {
-      @include p-text-generic($p-font-weight-regular, $p-font-size-84);
-
-      &-thin {
-        @include p-text-generic($p-font-weight-thin, $p-font-size-84);
-      }
-    }
+  &--thin {
+    font-weight: $p-font-weight-thin;
   }
 
   &--align {

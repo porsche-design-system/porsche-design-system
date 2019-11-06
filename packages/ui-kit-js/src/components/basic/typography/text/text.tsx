@@ -21,15 +21,13 @@ export class Text {
     | 'figcaption'
     | 'cite'
     | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
     | 'legend' = 'p';
 
   /** Style of the text. */
   @Prop() public variant?: TextVariant = 'copy';
+
+  /** Thin weight of the text. */
+  @Prop() public thin?: boolean = false;
 
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
@@ -46,6 +44,7 @@ export class Text {
     const textClasses = cx(
       prefix('text'),
       prefix(`text--variant-${this.variant}`),
+      this.thin && prefix(`text--thin`),
       prefix(`text--align-${this.align}`),
       prefix(`text--color-${this.color}`),
       this.ellipsis && prefix('text--ellipsis')
