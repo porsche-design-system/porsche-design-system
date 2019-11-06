@@ -2,6 +2,7 @@ import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, hasShadowDom } from '../../../utils';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
+import {Theme} from '../../../types';
 
 @Component({
   tag: 'p-button-icon',
@@ -27,14 +28,8 @@ export class ButtonIcon {
   /** Specifies the type of the button when no href prop is defined. */
   @Prop() public type?: 'button' | 'submit' | 'reset' = 'button';
 
-  /** When providing an url then the component will be rendered as `<a>` instead of `<button>` tag. */
-  @Prop() public href?: string = undefined;
-
-  /** Target attribute where the link should be opened. */
-  @Prop() public target?: 'self' | 'blank' | 'parent' | 'top' = 'self';
-
   /** A visually hidden label text to improve accessibility which describes the function behind the button. */
-  @Prop() public label?: string = undefined;
+  @Prop() public allyLabel?: string = undefined;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
@@ -43,13 +38,13 @@ export class ButtonIcon {
   @Prop() public loading?: boolean = false;
 
   /** The style variant of the button. */
-  @Prop() public variant?: 'ghost' | 'transparent' | 'default' = 'default';
+  @Prop() public variant?: 'ghost' | 'default' = 'default';
 
   /** The icon shown. */
   @Prop() public icon?: string = 'plus';
 
   /** Adapts the button color when used on dark background. */
-  @Prop() public theme?: 'light' | 'dark' = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
@@ -57,23 +52,22 @@ export class ButtonIcon {
 
   public render(): JSX.Element {
     preventNativeTabIndex(this);
-    const TagType = this.href === undefined ? 'button' : 'a';
 
     const buttonClasses = cx(
       prefix('button-icon'),
       this.variant !== 'default' && prefix(`button-icon--${this.variant}`),
       this.loading && prefix('button-icon--loading'),
-      this.theme === 'dark' && prefix('button-icon--theme-dark')
+      this.theme !== 'light' && prefix('button-icon--theme-dark')
     );
     const iconClasses = prefix('button-icon__icon');
     const spinnerClasses = prefix('button-icon__spinner');
 
     return (
-      <TagType
+      <button
         class={buttonClasses}
-        {...(TagType === 'button'
-          ? { type: this.type, disabled: this.disabled || this.loading, 'aria-label': this.label }
-          : { href: this.href, target: `_${this.target}`, 'aria-disabled': String(this.disabled || this.loading) })}
+        type={this.type}
+        disabled={this.disabled || this.loading}
+        aria-label={this.allyLabel}
         tabindex={this.tabbable ? 0 : -1}
       >
         {this.loading ? (
@@ -81,7 +75,7 @@ export class ButtonIcon {
         ) : (
           <p-icon class={iconClasses} size='medium' source={this.icon} />
         )}
-      </TagType>
+      </button>
     );
   }
 
@@ -94,20 +88,14 @@ export class ButtonIcon {
   public fixEventTarget(event: MouseEvent): void {
     if (event.target !== this.element) {
       event.stopPropagation();
-      if (!this.href) {
-        /**
-         * we don't want to submit the form twice,
-         * but links should still work
-         */
-        event.preventDefault();
-      }
+      event.preventDefault();
       this.element.click();
     }
   }
 
   @Listen('click')
   public onClick(event: MouseEvent): void {
-    if (!this.href && this.type === 'submit' && hasShadowDom(this.element)) {
+    if (this.type === 'submit' && hasShadowDom(this.element)) {
       // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
       const form = this.element.closest('form');
       if (form) {
@@ -133,6 +121,6 @@ export class ButtonIcon {
   }
 
   private useInvertedLoader(): 'light' | 'dark' {
-    return (this.variant !== 'ghost' && this.variant !== 'transparent') || this.theme === 'dark' ? 'dark' : 'light';
+    return this.variant !== 'ghost' || this.theme === 'dark' ? 'dark' : 'light';
   }
 }
