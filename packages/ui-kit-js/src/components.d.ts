@@ -308,12 +308,11 @@ export namespace Components {
     | 'figcaption'
     | 'cite'
     | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
     | 'legend';
+    /**
+    * Thin weight of the text.
+    */
+    'thin'?: boolean;
     /**
     * Style of the text.
     */
@@ -783,12 +782,11 @@ declare namespace LocalJSX {
     | 'figcaption'
     | 'cite'
     | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
     | 'legend';
+    /**
+    * Thin weight of the text.
+    */
+    'thin'?: boolean;
     /**
     * Style of the text.
     */

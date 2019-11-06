@@ -52,59 +52,41 @@ This will force any text to never wrap into a new line and in case it's too long
 
 ---
 
-## Copy text
+## Text
 
-### Style variants
-There are multiple predefined styling variants available. Additionally the correct semantic tag can be set.
-
-<Playground>
-  <p-text variant="copy">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text variant="small">The quick brown fox jumps over the lazy dog</p-text>
-</Playground>
-
----
-
-## Generic text
-
-In some cases, e.g. for highlighting or graphical reasons, it might be necessary to use additional styling variants.
+Predefined text variants for body text.
 
 <Playground>
   <template #configurator>
     <select @change="variant = $event.target.value">
       <option disabled>Select a style variant</option>
-      <option>18</option>
-      <option>20</option>
-      <option>20-thin</option>
-      <option>24</option>
-      <option>24-thin</option>
-      <option>28</option>
-      <option>28-thin</option>
-      <option>30</option>
-      <option>30-thin</option>
-      <option>32</option>
-      <option>32-thin</option>
-      <option>36</option>
-      <option>36-thin</option>
-      <option>42</option>
-      <option>42-thin</option>
-      <option>44</option>
-      <option>44-thin</option>
-      <option>48</option>
-      <option>48-thin</option>
-      <option>52</option>
-      <option>52-thin</option>
-      <option>60</option>
-      <option selected>60-thin</option>
-      <option>62</option>
-      <option>62-thin</option>
-      <option>72</option>
-      <option>72-thin</option>
-      <option>84</option>
-      <option>84-thin</option>
+      <option>small</option>
+      <option selected>copy</option>
+      <option>medium</option>
+      <option>large</option>
+      <option>x-large</option>
       <option>inherit</option>
     </select>
   </template>
   <p-text :variant="variant" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
+</Playground>
+
+---
+
+### Thin weight
+The default text weight is regular. To supplement special design needs, it can also be set to a thin weight.
+
+<Playground>
+  <template #configurator>
+    <select @change="variant = $event.target.value">
+      <option disabled>Select a style variant</option>
+      <option selected>medium</option>
+      <option>large</option>
+      <option>x-large</option>
+      <option>inherit</option>
+    </select>
+  </template>
+  <p-text :variant="variant" thin="true" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 ---
@@ -151,7 +133,7 @@ This will force any text to never wrap into a new line and in case it's to long 
   
   @Component
   export default class PlaygroundTypography extends Vue {
-    public variant: string = '60-thin';
+    public variant: string = 'medium';
     
     public get isInherit() {
       return this.variant === 'inherit' ? 'font-size: 48px' : undefined;
