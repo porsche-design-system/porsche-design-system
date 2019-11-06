@@ -22,5 +22,6 @@
 
  - [p-button-icon](../../action/button-icon)
  - [p-button-regular](../../action/button-regular)
+ - [p-link-icon](../../action/link-icon)
  - [p-pagination](../../navigation/pagination)
  - [p-text-link](../../action/text-link)

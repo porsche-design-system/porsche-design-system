@@ -1,4 +1,7 @@
-// global text variants
+// common type definitions
+
+export type Theme = 'light' | 'dark';
+
 export type TextVariant =
   | 'copy'
   | 'small'
@@ -32,6 +35,5 @@ export type TextVariant =
   | '84'
   | '84-thin';
 
-// global text colors
 export type TextColor = 'inherit' | 'porsche-black' | 'porsche-light' | 'porsche-red';
 

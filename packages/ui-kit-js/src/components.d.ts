@@ -12,6 +12,7 @@ import {
 import {
   TextColor,
   TextVariant,
+  Theme,
 } from './types';
 
 export namespace Components {
@@ -225,6 +226,44 @@ export namespace Components {
     */
     'source': string;
   }
+  interface PLinkIcon {
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: string;
+    /**
+    * When providing an url then the component will be rendered as `<a>`.
+    */
+    'href'?: string;
+    /**
+    * The icon shown.
+    */
+    'icon'?: string;
+    /**
+    * Check native tabindex to ensure that it doesn't get set on the host element
+    */
+    'nativeTabindex'?: number;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
+    * To remove the element from tab order
+    */
+    'tabbable'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
+    /**
+    * Adapts the link color when used on dark background.
+    */
+    'theme'?: Theme;
+    /**
+    * The style variant of the link.
+    */
+    'variant'?: 'ghost' | 'default';
+  }
   interface PMarque {
     /**
     * Show/hide trademark sign.
@@ -417,6 +456,12 @@ declare global {
     new (): HTMLPIconElement;
   };
 
+  interface HTMLPLinkIconElement extends Components.PLinkIcon, HTMLStencilElement {}
+  var HTMLPLinkIconElement: {
+    prototype: HTMLPLinkIconElement;
+    new (): HTMLPLinkIconElement;
+  };
+
   interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {}
   var HTMLPMarqueElement: {
     prototype: HTMLPMarqueElement;
@@ -467,6 +512,7 @@ declare global {
     'p-grid-item': HTMLPGridItemElement;
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
+    'p-link-icon': HTMLPLinkIconElement;
     'p-marque': HTMLPMarqueElement;
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
@@ -696,6 +742,40 @@ declare namespace LocalJSX {
     */
     'source'?: string;
   }
+  interface PLinkIcon extends JSXBase.HTMLAttributes<HTMLPLinkIconElement> {
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: string;
+    /**
+    * When providing an url then the component will be rendered as `<a>`.
+    */
+    'href'?: string;
+    /**
+    * The icon shown.
+    */
+    'icon'?: string;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
+    * To remove the element from tab order
+    */
+    'tabbable'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: 'self' | 'blank' | 'parent' | 'top';
+    /**
+    * Adapts the link color when used on dark background.
+    */
+    'theme'?: Theme;
+    /**
+    * The style variant of the link.
+    */
+    'variant'?: 'ghost' | 'default';
+  }
   interface PMarque extends JSXBase.HTMLAttributes<HTMLPMarqueElement> {
     /**
     * Show/hide trademark sign.
@@ -853,6 +933,7 @@ declare namespace LocalJSX {
     'p-grid-item': PGridItem;
     'p-headline': PHeadline;
     'p-icon': PIcon;
+    'p-link-icon': PLinkIcon;
     'p-marque': PMarque;
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
