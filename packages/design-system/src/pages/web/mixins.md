@@ -179,7 +179,7 @@ h1 {
 Given values are:  
 `copy | small`
 
-Possible headline mixin for usage with SCSS (where {v} is the value):
+Possible body text mixin for usage with SCSS (where {v} is the value):
 ```
 @include p-text-{v};
 ```
