@@ -1,6 +1,10 @@
 import {JSX, Component, Prop, h} from '@stencil/core';
 import cx from 'classnames';
-import {prefix} from '../../../../utils';
+import {
+  BreakpointCustomizable,
+  mapBreakpointPropToPrefixedClasses,
+  prefix
+} from '../../../../utils';
 import {TextVariant, TextColor} from '../../../../types';
 
 @Component({
@@ -23,8 +27,8 @@ export class Text {
     | 'time'
     | 'legend' = 'p';
 
-  /** Style of the text. */
-  @Prop() public variant?: TextVariant = 'copy';
+  /** Style of the text. Also defines the style for specific breakpoints, like {base: "copy", l: "medium"}. You always need to provide a base value when doing this. */
+  @Prop() public variant?: BreakpointCustomizable<TextVariant> = 'copy';
 
   /** Thin weight of the text. */
   @Prop() public thin?: boolean = false;
@@ -43,7 +47,8 @@ export class Text {
 
     const textClasses = cx(
       prefix('text'),
-      prefix(`text--variant-${this.variant}`),
+      // prefix(`text--variant-${this.variant}`),
+      mapBreakpointPropToPrefixedClasses('text--variant', this.variant),
       this.thin && prefix(`text--thin`),
       prefix(`text--align-${this.align}`),
       prefix(`text--color-${this.color}`),
