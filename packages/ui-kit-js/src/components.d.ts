@@ -7,6 +7,8 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  ButtonType,
+  LinkTarget,
   TextColor,
   TextVariant,
   Theme,
@@ -38,7 +40,7 @@ export namespace Components {
     */
     'nativeTabindex'?: number;
     /**
-    * To remove the element from tab order
+    * To remove the element from tab order.
     */
     'tabbable'?: boolean;
     /**
@@ -46,9 +48,9 @@ export namespace Components {
     */
     'theme'?: Theme;
     /**
-    * Specifies the type of the button when no href prop is defined.
+    * Specifies the type of the button.
     */
-    'type'?: 'button' | 'submit' | 'reset';
+    'type'?: ButtonType;
     /**
     * The style variant of the button.
     */
@@ -220,6 +222,10 @@ export namespace Components {
   }
   interface PLinkIcon {
     /**
+    * A visually hidden label text to improve accessibility which describes the function behind the link.
+    */
+    'allyLabel'?: string;
+    /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
     'download'?: string;
@@ -246,7 +252,7 @@ export namespace Components {
     /**
     * Target attribute where the link should be opened.
     */
-    'target'?: 'self' | 'blank' | 'parent' | 'top';
+    'target'?: LinkTarget;
     /**
     * Adapts the link color when used on dark background.
     */
@@ -534,7 +540,7 @@ declare namespace LocalJSX {
     */
     'loading'?: boolean;
     /**
-    * To remove the element from tab order
+    * To remove the element from tab order.
     */
     'tabbable'?: boolean;
     /**
@@ -542,9 +548,9 @@ declare namespace LocalJSX {
     */
     'theme'?: Theme;
     /**
-    * Specifies the type of the button when no href prop is defined.
+    * Specifies the type of the button.
     */
-    'type'?: 'button' | 'submit' | 'reset';
+    'type'?: ButtonType;
     /**
     * The style variant of the button.
     */
@@ -728,6 +734,10 @@ declare namespace LocalJSX {
   }
   interface PLinkIcon extends JSXBase.HTMLAttributes<HTMLPLinkIconElement> {
     /**
+    * A visually hidden label text to improve accessibility which describes the function behind the link.
+    */
+    'allyLabel'?: string;
+    /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
     'download'?: string;
@@ -750,7 +760,7 @@ declare namespace LocalJSX {
     /**
     * Target attribute where the link should be opened.
     */
-    'target'?: 'self' | 'blank' | 'parent' | 'top';
+    'target'?: LinkTarget;
     /**
     * Adapts the link color when used on dark background.
     */

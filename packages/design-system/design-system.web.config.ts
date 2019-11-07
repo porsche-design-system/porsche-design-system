@@ -144,36 +144,16 @@ export const config: DesignSystemConfig = {
         Design: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.design.md`),
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.design.md`),
         ],
         Code: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.code.md`),
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.code.md`),
         ],
         Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.props.md`),
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.props.md`),
         ],
       },
-      'Text Link': {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.design.md`),
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.code.md`),
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.props.md`),
-        ],
-      }
     },
     Content: {
       'Text List': {
@@ -276,6 +256,34 @@ export const config: DesignSystemConfig = {
         Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`),
+        ],
+      },
+      'Link Icon': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.props.md`),
+        ],
+      },
+      'Text Link': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.props.md`),
         ],
       },
     },

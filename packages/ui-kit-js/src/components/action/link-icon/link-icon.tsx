@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
-import {Theme} from '../../../types';
+import {LinkTarget, Theme} from '../../../types';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
@@ -25,11 +25,14 @@ export class LinkIcon {
   /** To remove the element from tab order */
   @Prop() public tabbable?: boolean = true;
 
+  /** A visually hidden label text to improve accessibility which describes the function behind the link. */
+  @Prop() public allyLabel?: string = undefined;
+
   /** When providing an url then the component will be rendered as `<a>`. */
-  @Prop() public href?: string = '';
+  @Prop() public href?: string = undefined;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: 'self' | 'blank' | 'parent' | 'top' = 'self';
+  @Prop() public target?: LinkTarget = '_self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
   @Prop() public download?: string = undefined;
@@ -64,9 +67,10 @@ export class LinkIcon {
       <a
         class={linkClasses}
         href={this.href}
-        target={`_${this.target}`}
+        target={this.target}
         download={this.download}
         rel={this.rel}
+        aria-label={this.allyLabel}
         tabindex={this.tabbable ? 0 : -1}
       >
         <p-icon class={iconClasses} size='medium' source={this.icon} />

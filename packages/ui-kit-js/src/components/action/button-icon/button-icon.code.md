@@ -4,15 +4,15 @@ Used as `<button>` element to trigger actions.
 
 ### Variant
 
-Choose between predefined styling variants.
+Choose between predefined styling variants. Additionally predefined attributes like `type` can be set and behave like they would do natively on an HTML button element.
 
 #### Default
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-button-icon :theme="theme" />
-    <p-button-icon disabled="true" :theme="theme" />
-    <p-button-icon loading="true" :theme="theme" />
+    <p-button-icon ally-label="Some action description" :theme="theme" />
+    <p-button-icon disabled="true" ally-label="Some action description" :theme="theme" />
+    <p-button-icon loading="true" ally-label="Some action description" :theme="theme" />
   </template>
 </Playground>
 
@@ -20,9 +20,9 @@ Choose between predefined styling variants.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-button-icon variant="ghost" :theme="theme" />
-    <p-button-icon variant="ghost" disabled="true" :theme="theme" />
-    <p-button-icon variant="ghost" loading="true" :theme="theme" />
+    <p-button-icon variant="ghost" ally-label="Some action description" :theme="theme" />
+    <p-button-icon variant="ghost" disabled="true" ally-label="Some action description" :theme="theme" />
+    <p-button-icon variant="ghost" loading="true" ally-label="Some action description" :theme="theme" />
   </template>
 </Playground>
 
@@ -33,8 +33,8 @@ If another icon needs to be implemented, just replace the default icon with your
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-button-icon icon="phone" :theme="theme" />
-    <p-button-icon :icon="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme" />
+    <p-button-icon icon="phone" ally-label="Some action description" :theme="theme" />
+    <p-button-icon :icon="require(`@/assets/web/icon-custom-kaixin.svg`)" ally-label="Some action description" :theme="theme" />
   </template>
 </Playground>
 
@@ -44,11 +44,12 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-icon
-        onclick="alert('Button Icon clicked')"
+        onclick="alert('click')"
         onfocus="console.log('focus')"
         onfocusin="console.log('focusin')"
         onblur="console.log('blur')"
         onfocusout="console.log('focusout')"
+        ally-label="Some action description"
         :theme="theme"
     />
   </template>
@@ -59,7 +60,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-button-icon tabbable="true" :theme="theme" />
-    <p-button-icon tabbable="false" :theme="theme" />
+    <p-button-icon tabbable="true" ally-label="Some action description" :theme="theme" />
+    <p-button-icon tabbable="false" ally-label="Some action description" :theme="theme" />
   </template>
 </Playground>

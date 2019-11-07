@@ -2,7 +2,7 @@ import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, hasShadowDom } from '../../../utils';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
-import {Theme} from '../../../types';
+import {ButtonType, Theme} from '../../../types';
 
 @Component({
   tag: 'p-button-icon',
@@ -22,11 +22,11 @@ export class ButtonIcon {
   })
   public nativeTabindex?: number = -1;
 
-  /** To remove the element from tab order */
+  /** To remove the element from tab order. */
   @Prop() public tabbable?: boolean = true;
 
-  /** Specifies the type of the button when no href prop is defined. */
-  @Prop() public type?: 'button' | 'submit' | 'reset' = 'button';
+  /** Specifies the type of the button. */
+  @Prop() public type?: ButtonType = 'button';
 
   /** A visually hidden label text to improve accessibility which describes the function behind the button. */
   @Prop() public allyLabel?: string = undefined;

@@ -113,10 +113,10 @@
 
   &__icon,
   &__spinner {
-    display: block;
     position: absolute;
     left: 50%;
     top: 50%;
+    display: block;
     transform: translateX(-50%) translateY(-50%);
   }
 }
