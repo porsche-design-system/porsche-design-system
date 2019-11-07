@@ -314,9 +314,9 @@ export namespace Components {
     */
     'thin'?: boolean;
     /**
-    * Style of the text.
+    * Style of the text. Also defines the style for specific breakpoints, like {base: "copy", l: "medium"}. You always need to provide a base value when doing this.
     */
-    'variant'?: TextVariant;
+    'variant'?: BreakpointCustomizable<TextVariant>;
   }
   interface PTextLink {
     /**
@@ -788,9 +788,9 @@ declare namespace LocalJSX {
     */
     'thin'?: boolean;
     /**
-    * Style of the text.
+    * Style of the text. Also defines the style for specific breakpoints, like {base: "copy", l: "medium"}. You always need to provide a base value when doing this.
     */
-    'variant'?: TextVariant;
+    'variant'?: BreakpointCustomizable<TextVariant>;
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**

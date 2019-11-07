@@ -3,7 +3,7 @@
 The text component can be categorized into two different use cases:
 
 1. Predefined headlines with automated responsive sizing to fit into all major breakpoints.
-2. Generic text sizes which are fixed and do not respond to different viewports.
+2. Predefined body text sizes which are either fixed or can respond to different viewports.
 
 ## Headlines
 
@@ -54,7 +54,9 @@ This will force any text to never wrap into a new line and in case it's too long
 
 ## Text
 
-Predefined text variants for body text.
+### Style variants
+
+Predefined body text variants for body text. Default variant is `copy`.
 
 <Playground>
   <template #configurator>
@@ -71,14 +73,22 @@ Predefined text variants for body text.
   <p-text :variant="variant" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
+#### Responsive
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<Playground>
+  <p-text variant="{ base: 'copy', m: 'medium' }">The quick brown fox jumps over the lazy dog</p-text>
+</Playground>
+
 ---
 
 ### Thin weight
-The default text weight is regular. To supplement special design needs, it can also be set to a thin weight.
+The default text weight is regular. To supplement special design needs, it can also be set to a thin weight. Be aware of global design rules which recommend using thin weights only for larger font sizes (e.g. medium). 
 
 <Playground>
   <template #configurator>
-    <select @change="variant = $event.target.value">
+    <select @change="variantThin = $event.target.value">
       <option disabled>Select a style variant</option>
       <option selected>medium</option>
       <option>large</option>
@@ -86,7 +96,7 @@ The default text weight is regular. To supplement special design needs, it can a
       <option>inherit</option>
     </select>
   </template>
-  <p-text :variant="variant" thin="true" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text :variant="variantThin" thin="true" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 ---
@@ -133,10 +143,11 @@ This will force any text to never wrap into a new line and in case it's to long 
   
   @Component
   export default class PlaygroundTypography extends Vue {
-    public variant: string = 'medium';
+    public variant: string = 'copy';
+    public variantThin: string = 'medium';
     
     public get isInherit() {
-      return this.variant === 'inherit' ? 'font-size: 48px' : undefined;
+      return this.variant || this.variantThin === 'inherit' ? 'font-size: 48px' : undefined;
     }
   }
 </script>

@@ -39,25 +39,110 @@
     &-small {
       @include p-text-small;
     }
-
     &-copy {
       @include p-text-copy;
     }
-
     &-medium {
       @include p-text($p-font-weight-regular, $p-font-size-medium);
     }
-
     &-large {
       @include p-text($p-font-weight-regular, $p-font-size-large);
     }
-
     &-x-large {
       @include p-text($p-font-weight-regular, $p-font-size-x-large);
     }
-
     &-inherit {
       @include p-text($p-font-weight-regular, 'inherit');
+    }
+
+    @include p-breakpoint("xs") {
+      &-small-xs {
+        @include p-text-small;
+      }
+      &-copy-xs {
+        @include p-text-copy;
+      }
+      &-medium-xs {
+        @include p-text($p-font-weight-regular, $p-font-size-medium);
+      }
+      &-large-xs {
+        @include p-text($p-font-weight-regular, $p-font-size-large);
+      }
+      &-x-large-xs {
+        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &-small-s {
+        @include p-text-small;
+      }
+      &-copy-s {
+        @include p-text-copy;
+      }
+      &-medium-s {
+        @include p-text($p-font-weight-regular, $p-font-size-medium);
+      }
+      &-large-s {
+        @include p-text($p-font-weight-regular, $p-font-size-large);
+      }
+      &-x-large-s {
+        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &-small-m {
+        @include p-text-small;
+      }
+      &-copy-m {
+        @include p-text-copy;
+      }
+      &-medium-m {
+        @include p-text($p-font-weight-regular, $p-font-size-medium);
+      }
+      &-large-m {
+        @include p-text($p-font-weight-regular, $p-font-size-large);
+      }
+      &-x-large-m {
+        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &-small-l {
+        @include p-text-small;
+      }
+      &-copy-l {
+        @include p-text-copy;
+      }
+      &-medium-l {
+        @include p-text($p-font-weight-regular, $p-font-size-medium);
+      }
+      &-large-l {
+        @include p-text($p-font-weight-regular, $p-font-size-large);
+      }
+      &-x-large-l {
+        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &-small-xl {
+        @include p-text-small;
+      }
+      &-copy-xl {
+        @include p-text-copy;
+      }
+      &-medium-xl {
+        @include p-text($p-font-weight-regular, $p-font-size-medium);
+      }
+      &-large-xl {
+        @include p-text($p-font-weight-regular, $p-font-size-large);
+      }
+      &-x-large-xl {
+        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+      }
     }
 
   }
