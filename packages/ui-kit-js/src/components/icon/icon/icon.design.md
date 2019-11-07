@@ -9,7 +9,7 @@ Along with the other Porsche basic elements - such as colors, typography and the
 
 ## Look & feel
 
-The clean style of the Porsche icon set matches the Porsche brand aesthetically and creates a consistent look and feel across all products and platforms. Each icon is reduced to its minimal form, reflecting essential characteristics. By following the typical Porsche lines and uniting the exclusive, high-classy and very sportive brand image, the Porsche icons provide  a high recognizability and readability, even in very small sizes. 
+The clean style of the Porsche icon set matches the Porsche brand aesthetically and creates a consistent look and feel across all products and platforms. Each icon is reduced to its minimal form reflecting essential characteristics. By following the typical Porsche lines and uniting the exclusive, high-classy and very sportive brand image, the Porsche icons provide  a high recognizability and readability, even in very small sizes. 
 
 ---
 
