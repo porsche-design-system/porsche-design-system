@@ -14,42 +14,31 @@ the general base size of 16 px (= 1 em), that is also applied in typography and 
 - **Margins and paddings** are applied based on multiples of 8 px. Boxed UI elements are sized either by adapting to the fixed value or to the [fluid column widths](#/web/components/layout/grid).
 - **Typography as an exception** works with a baseline unit of 4 px for larger flexibility while ensuring the overall consistent rhythm.
 
-## Fixed and flexible spacings
+## System and layout spacings
 
-The Porsche UI Kit provides both fixed and flexible spacing. The two systems are built on the same definitions to complement the overall consistency but serve different roles. Additional increments can be added for specific needs as long as the 8 px spacing system is followed.
+The Porsche UI Kit spacing Scale shows the spacings from 4 px to 80 px. The two systems are based on the same definitions to complete the overall consistency.
 
-### Fixed spacing 
-Spacings that do not need to change across different screen sizes.
+### Spacing Scale 
+We recommend to use the <span style="color:#00D5B9">layout spacings</span> which are provide in code.
+Additional increments can be added for specific requirements as long as the 8 px spacing system is adhered to.
 
-|       	                                |                	| PX     	| REM 	|
-|----------------------------------------	|---------------	|-------	|------	|
-| ![spacing 4](./assets/spacing-4.png)    | **spacing-4**  	| 4 px  	| 0.25 	|  
-| ![spacing 8](./assets/spacing-8.png)    | **spacing-8**  	| 8 px  	| 0.5  	| 
-| ![spacing 16](./assets/spacing-16.png)  | **spacing-16** 	| 16 px 	| 1    	| 
-| ![spacing 24](./assets/spacing-24.png)  |**spacing-24** 	| 24 px 	| 1.5  	| 
-| ![spacing 32](./assets/spacing-32.png)  |**spacing-32** 	| 32 px 	| 2    	| 
-| ![spacing 40](./assets/spacing-40.png)  |**spacing-40** 	| 40 px 	| 2.5  	| 
-| ![spacing 48](./assets/spacing-48.png)  |**spacing-48** 	| 48 px 	| 3    	| 
-| ![spacing 56](./assets/spacing-56.png)  |**spacing-56** 	| 56 px 	| 3.5  	| 
-| ![spacing 64](./assets/spacing-64.png)  |**spacing-64** 	| 64 px 	| 4    	| 
-| ![spacing 72](./assets/spacing-72.png)  |**spacing-72** 	| 72 px 	| 4.5  	| 
-| ![spacing 80](./assets/spacing-80.png)  |**spacing-80** 	| 80 px 	| 5    	| 
+|       	                                |                	| PX     	| REM 	| LAYOUT SPACING |
+|----------------------------------------	|---------------	|-------	|------	|------	|
+| ![spacing 4](./assets/spacing-4.png)    | **spacing-4**  	| 4 px  	| 0.25 	| ✓ |
+| ![spacing 8](./assets/spacing-8.png)    | **spacing-8**  	| 8 px  	| 0.5 	| ✓ |
+| ![spacing 16](./assets/spacing-16.png)  | **spacing-16** 	| 16 px 	| 1  	| ✓ |
+| ![spacing 24](./assets/spacing-24.png)  |**spacing-24** 	| 24 px 	| 1.5 	| x |
+| ![spacing 32](./assets/spacing-32.png)  |**spacing-32** 	| 32 px 	| 2  	| ✓ |
+| ![spacing 40](./assets/spacing-40.png)  |**spacing-40** 	| 40 px 	| 2.5  	| x |
+| ![spacing 48](./assets/spacing-48.png)  |**spacing-48** 	| 48 px 	| 3  	| ✓ |
+| ![spacing 56](./assets/spacing-56.png)  |**spacing-56** 	| 56 px 	| 3.5 	| x |
+| ![spacing 64](./assets/spacing-64.png)  |**spacing-64** 	| 64 px 	| 4 	| x |
+| ![spacing 72](./assets/spacing-72.png)  |**spacing-72** 	| 72 px 	| 4.5 	| x |
+| ![spacing 80](./assets/spacing-80.png)  |**spacing-80** 	| 80 px 	| 5 	| ✓ |
 
-### Flexible spacing 
-Spacings that change in accordance with the screen size at defined breakpoint widths.
-
-|               | 320 - 759 px (XS)| 760 - 999 px (S) | 1000 - 1299 px (M) | 1300 - 1759 px (L) | 1760  px or larger (XL) |
-| ------------- | ---------------- | ---------------- | ------------------ | ------------------ | ----------------------- |
-| **spacing-a** | 4 px             | 8 px             | 12 px              | 16 px              | 20 px                   |
-| **spacing-b** | 8 px             | 16 px            | 24 px              | 32 px              | 40 px                   |
-| **spacing-c** | 16 px            | 24 px            | 32 px              | 40 px              | 48 px                   |
-| **spacing-d** | 24 px            | 32 px            | 40 px              | 48 px              | 56 px                   |
-| **spacing-e** | 32 px            | 40 px            | 48 px              | 56 px              | 64 px                   |
-| **spacing-f** | 40 px            | 48 px            | 56 px              | 64 px              | 72 px                   |
-| **spacing-g** | 48 px            | 56 px            | 64 px              | 72 px              | 80 px                   |
 
 ![The Porsche spacing formula](./assets/spacings-example-02.png)
-Example: Mixed use of fixed, flexible and custom spacings.
+Example: Mixed use of system, layout and custom spacings.
 
 ## Working with space 
 
