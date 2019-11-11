@@ -2,6 +2,9 @@
 
 ## NOT RELEASED YET
 
+### Change
+* Remove stencil collection and unused entry points from build artifact
+
 ## [1.0.0-alpha.7] (2019-11-05)
 
 ### Change
