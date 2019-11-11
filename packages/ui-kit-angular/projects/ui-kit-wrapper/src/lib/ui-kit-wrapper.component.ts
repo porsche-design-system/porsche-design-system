@@ -17,14 +17,24 @@ export function ProxyInputs(inputs: string[]) {
   return decorator;
 }
 
+function proxyMethods(Cmp: any, methods: string[]) {
+  const Prototype = Cmp.prototype;
+  methods.forEach(methodName => {
+    Prototype[methodName] = function() {
+      const args = arguments;
+      return this.el.componentOnReady().then((el: any) => el[methodName].apply(el, args));
+    };
+  });
+}
+
 function proxyOutputs(instance: any, el: any, events: string[]) {
   events.forEach(eventName => instance[eventName] = fromEvent(el, eventName));
 }
 
 import { Components } from '@porsche-ui/ui-kit-js'
-
 export declare interface PButtonIcon extends Components.PButtonIcon {}
 @ProxyInputs(['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'])
+
 @Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
 export class PButtonIcon {
   protected el: HTMLElement;
@@ -33,9 +43,9 @@ export class PButtonIcon {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PButtonRegular extends Components.PButtonRegular {}
 @ProxyInputs(['disabled', 'href', 'icon', 'loading', 'small', 'target', 'theme', 'type', 'variant'])
+
 @Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })
 export class PButtonRegular {
   pClick!: EventEmitter<CustomEvent>;
@@ -48,9 +58,9 @@ export class PButtonRegular {
     proxyOutputs(this, this.el, ['pClick', 'pFocus', 'pBlur']);
   }
 }
-
 export declare interface PFlex extends Components.PFlex {}
 @ProxyInputs(['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'])
+
 @Component({ selector: 'p-flex', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'] })
 export class PFlex {
   protected el: HTMLElement;
@@ -59,9 +69,9 @@ export class PFlex {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PFlexItem extends Components.PFlexItem {}
 @ProxyInputs(['alignSelf', 'flex', 'grow', 'offset', 'shrink', 'width'])
+
 @Component({ selector: 'p-flex-item', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignSelf', 'flex', 'grow', 'offset', 'shrink', 'width'] })
 export class PFlexItem {
   protected el: HTMLElement;
@@ -70,9 +80,9 @@ export class PFlexItem {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PGrid extends Components.PGrid {}
 @ProxyInputs(['direction'])
+
 @Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction'] })
 export class PGrid {
   protected el: HTMLElement;
@@ -81,9 +91,9 @@ export class PGrid {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PGridItem extends Components.PGridItem {}
 @ProxyInputs(['offset', 'size'])
+
 @Component({ selector: 'p-grid-item', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
 export class PGridItem {
   protected el: HTMLElement;
@@ -92,9 +102,9 @@ export class PGridItem {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PHeadline extends Components.PHeadline {}
 @ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'variant'])
+
 @Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
 export class PHeadline {
   protected el: HTMLElement;
@@ -103,9 +113,9 @@ export class PHeadline {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PIcon extends Components.PIcon {}
 @ProxyInputs(['ariaLabel', 'color', 'lazy', 'size', 'source'])
+
 @Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['ariaLabel', 'color', 'lazy', 'size', 'source'] })
 export class PIcon {
   protected el: HTMLElement;
@@ -114,9 +124,9 @@ export class PIcon {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PMarque extends Components.PMarque {}
 @ProxyInputs(['trademark'])
+
 @Component({ selector: 'p-marque', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['trademark'] })
 export class PMarque {
   protected el: HTMLElement;
@@ -125,9 +135,9 @@ export class PMarque {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PPagination extends Components.PPagination {}
 @ProxyInputs(['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'])
+
 @Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'] })
 export class PPagination {
   pClick!: EventEmitter<CustomEvent>;
@@ -138,9 +148,9 @@ export class PPagination {
     proxyOutputs(this, this.el, ['pClick']);
   }
 }
-
 export declare interface PSpinner extends Components.PSpinner {}
 @ProxyInputs(['allyLabel', 'size', 'theme'])
+
 @Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'size', 'theme'] })
 export class PSpinner {
   protected el: HTMLElement;
@@ -149,9 +159,9 @@ export class PSpinner {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PText extends Components.PText {}
 @ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'variant'])
+
 @Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
 export class PText {
   protected el: HTMLElement;
@@ -160,9 +170,9 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PTextLink extends Components.PTextLink {}
 @ProxyInputs(['color', 'download', 'href', 'icon', 'rel', 'tag', 'target', 'variant'])
+
 @Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'rel', 'tag', 'target', 'variant'] })
 export class PTextLink {
   pClick!: EventEmitter<CustomEvent>;
@@ -173,9 +183,9 @@ export class PTextLink {
     proxyOutputs(this, this.el, ['pClick']);
   }
 }
-
 export declare interface PTextList extends Components.PTextList {}
 @ProxyInputs(['color', 'listType'])
+
 @Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType'] })
 export class PTextList {
   protected el: HTMLElement;
@@ -184,8 +194,8 @@ export class PTextList {
     this.el = r.nativeElement;
   }
 }
-
 export declare interface PTextListItem extends Components.PTextListItem {}
+
 @Component({ selector: 'p-text-list-item', changeDetection: 0, template: '<ng-content></ng-content>' })
 export class PTextListItem {
   protected el: HTMLElement;

@@ -2121,10 +2121,9 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@stencil/angular-output-target@^0.0.1":
+"@stencil/angular-output-target@https://github.com/porscheui/stencil-ds-plugins/releases/download/0.0.1-fixed/angular-output-target-0.0.1-fixed.tar.gz":
   version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.1.tgz#147e057d80a19dd7492413086d1868debeee1b63"
-  integrity sha512-kp0jZfwTq6TzV745G3IiTk0rVKgMRNWD+JU1Z23m2cCBbzaKkneZp+U8QjuEVI1Gp8UUWYI/f5fUoC+dcejEWQ==
+  resolved "https://github.com/porscheui/stencil-ds-plugins/releases/download/0.0.1-fixed/angular-output-target-0.0.1-fixed.tar.gz#0d72eb0ab9064f1f545ee3fac496fb06fd7fc709"
 
 "@stencil/core@1.4.0":
   version "1.4.0"
