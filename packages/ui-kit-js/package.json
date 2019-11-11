@@ -3,15 +3,10 @@
   "version": "1.0.0-alpha.7",
   "scope": "@porsche-ui",
   "description": "Porsche UI Web Components",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
   "types": "dist/types/components.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
   "files": [
     "dist/",
+    "!dist/collection",
     "loader/"
   ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
