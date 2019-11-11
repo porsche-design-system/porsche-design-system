@@ -91,8 +91,6 @@ Even if there is no technical limit to the button width, you should always make 
 All types of Button Regular and Small are available as disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-<p-headline variant="headline-3" tag="h3">Examples</p-headline>
-<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
-<img src="./assets/button-regular-ghost-vs.-filled.png"/>
-<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+    <img src="./assets/button-regular-ghost-vs.-filled.png"/>
 </div>
