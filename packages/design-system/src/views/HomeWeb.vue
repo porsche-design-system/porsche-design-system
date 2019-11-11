@@ -18,24 +18,24 @@
         <p-grid-item size='{"base": 12, "m": 4}'>
           <p-headline variant="headline-3" tag="h1">Porsche UI Kit</p-headline>
           <p-text variant="24">Web Design System</p-text>
-          <p-text class="p-spacing-mt-8">
+          <p-text class="spacing-mt-8">
             <router-link to="/web/getting-started/about">Learn more about it</router-link>
           </p-text>
         </p-grid-item>
-        <p-grid-item class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
+        <p-grid-item class="spacing-mt-24 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text variant="24">
             The Porsche UI Kit Web provides the design fundamentals and elements for efficiently creating aesthetic and qualitative
             web applications. Including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything built and tested following the Porsche quality standards and corporate design
             principles.
           </p-text>
-          <p-text class="p-spacing-mt-32">
+          <p-text class="spacing-mt-32">
             We are happy to announce our first alpha version 1.0.0-alpha.x release of Porsche UI Kit (JS/Angular/React). Please take some time to check it out!
             We appreciate any feedback, feature requests or any suggestions on our public <a href="https://github.com/porscheui/porsche-ui-contribution/issues">Contribution Board</a>.
           </p-text>
-          <p-flex class="p-spacing-mt-16" gap="16" wrap="wrap">
+          <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
               <p-button-regular
-                class="p-spacing-mt-16 p-spacing-mr-32"
+                class="spacing-mt-16 spacing-mr-32"
                 variant="highlight"
                 href="#/web/getting-started/start-designing"
               >Start Designing
@@ -43,7 +43,7 @@
             </p-flex-item>
             <p-flex-item>
               <p-button-regular
-                class="p-spacing-mt-16"
+                class="spacing-mt-16"
                 variant="highlight"
                 href="#/web/getting-started/start-coding"
               >Start Coding
@@ -64,7 +64,7 @@
             variant="24"
           >Join our mailing list and get informed about relevant updates and topics.
           </p-text>
-          <p-text variant="18" class="p-spacing-mt-16">
+          <p-text variant="18" class="spacing-mt-16">
             <a
               href="http://eepurl.com/gnOIXD"
               target="_blank"
