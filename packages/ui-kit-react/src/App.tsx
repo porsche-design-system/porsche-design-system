@@ -3,7 +3,6 @@ import {
   PGrid,
   PGridItem,
   PFlex,
-  PSpacing,
   PFlexItem,
   PMarque,
   PHeadline,
