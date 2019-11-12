@@ -7,8 +7,17 @@
 
 .#{$p-global-class-prefix}marque {
   display: block;
+  width: 102px;
+  height: 62px;
+
+  @include p-breakpoint('m') {
+    width: 123px;
+    height: 75px;
+  }
 
   > img {
     display: block;
+    width: 100%;
+    height: auto;
   }
 }
