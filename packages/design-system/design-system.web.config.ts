@@ -261,29 +261,29 @@ export const config: DesignSystemConfig = {
       'Link Icon': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-icon/link-icon.design.md`),
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-icon/link-icon.code.md`),
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/link-icon/link-icon.props.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-icon/link-icon.props.md`),
         ],
       },
       'Text Link': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.design.md`),
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.code.md`),
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.props.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.props.md`),
         ],
       },
     },

@@ -22,6 +22,6 @@
 
  - [p-button-icon](#/web/components/action/button-icon)
  - [p-button-regular](#/web/components/action/button-regular)
- - [p-link-icon](#/web/components/action/link-icon)
+ - [p-link-icon](#/web/components/navigation/link-icon)
  - [p-pagination](#/web/components/navigation/pagination)
- - [p-text-link](#/web/components/action/text-link)
+ - [p-text-link](#/web/components/navigation/text-link)
