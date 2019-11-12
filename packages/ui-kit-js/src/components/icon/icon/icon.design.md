@@ -3,13 +3,13 @@
 Along with the other Porsche basic elements - such as colors, typography and the Porsche Marque - icons are core components of the Porsche UI design. The clear graphic symbols allow for quick orientation and are internationally recognized.
 
 ## Icon overview
-<a href="https://share.goabstract.com/f75d41fe-f0a8-4641-bd36-10e1669c926c?collectionLayerId=6d686738-cb08-4475-965c-256ef4e7e6f7&mode=design&present=true" target="_blank">![Porsche icon overview](./assets/porsche-icons-thumbnail.png)</a>
+<a href="https://share.goabstract.com/0bf02431-7ad4-4aba-905d-99030c495392" target="_blank">![Porsche icon overview](./assets/porsche-icons-thumbnail.png)</a>
 
 ---
 
 ## Look & feel
 
-The clean style of the Porsche icon set matches the Porsche brand aesthetically and creates a consistent look and feel across all products and platforms. Each icon is reduced to its minimal form, reflecting essential characteristics. By following the typical Porsche lines and uniting the exclusive, high-classy and very sportive brand image, the Porsche icons provide  a high recognizability and readability, even in very small sizes. 
+The clean style of the Porsche icon set matches the Porsche brand aesthetically and creates a consistent look and feel across all products and platforms. Each icon is reduced to its minimal form reflecting essential characteristics. By following the typical Porsche lines and uniting the exclusive, high-classy and very sportive brand image, the Porsche icons provide  a high recognizability and readability, even in very small sizes. 
 
 ---
 
