@@ -4,7 +4,7 @@ exports[`Component <p-button-icon> should render correctly in default mode with 
 <p-button-icon>
   <mock:shadow-root>
     <button class="p-button-icon" tabindex="0" type="button">
-      <p-icon class="p-button-icon__icon" icon="plus" size="medium"></p-icon>
+      <p-icon class="p-button-icon__icon" name="plus" size="medium"></p-icon>
     </button>
   </mock:shadow-root>
 </p-button-icon>

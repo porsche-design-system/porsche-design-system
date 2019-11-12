@@ -83,7 +83,7 @@ export class ButtonIcon {
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
         ) : (
-          <p-icon class={iconClasses} size='medium' icon={this.icon} source={this.iconSource} />
+          <p-icon class={iconClasses} size='medium' name={this.icon} source={this.iconSource} />
         )}
       </TagType>
     );

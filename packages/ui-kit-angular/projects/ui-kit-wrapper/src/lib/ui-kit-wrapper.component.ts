@@ -105,8 +105,8 @@ export class PHeadline {
 }
 
 export declare interface PIcon extends Components.PIcon {}
-@ProxyInputs(['ariaLabel', 'color', 'icon', 'lazy', 'size', 'source'])
-@Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['ariaLabel', 'color', 'icon', 'lazy', 'size', 'source'] })
+@ProxyInputs(['ariaLabel', 'color', 'name', 'lazy', 'size', 'source'])
+@Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['ariaLabel', 'color', 'name', 'lazy', 'size', 'source'] })
 export class PIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {

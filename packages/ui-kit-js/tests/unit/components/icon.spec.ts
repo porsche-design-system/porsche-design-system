@@ -12,7 +12,7 @@ describe('Component <p-icon>', () => {
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Icon],
-      html: `<p-icon icon="arrow-right-hair"></p-icon>`,
+      html: `<p-icon name="arrow-right-hair"></p-icon>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-icon')).toBeFalsy();
