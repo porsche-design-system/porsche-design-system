@@ -3,6 +3,10 @@
   "version": "1.0.0-alpha.7",
   "scope": "@porsche-ui",
   "description": "Porsche UI Web Components",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
   "types": "dist/types/components.d.ts",
   "files": [
     "dist/",
