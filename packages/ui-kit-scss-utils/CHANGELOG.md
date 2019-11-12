@@ -4,7 +4,7 @@
 
 ### Breaking change
 * Spacings
-  * Delete responsive spacings (`a` to `g`)
+  * Remove responsive spacings (`a` to `g`)
   * Add mapped variables for reduced spacing set
 
 
