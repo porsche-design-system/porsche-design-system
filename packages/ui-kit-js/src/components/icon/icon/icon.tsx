@@ -17,7 +17,7 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public icon: IconName;
+  @Prop() public name: IconName;
 
   /**
    * Specifies a whole icon path which can be used for custom icons.
@@ -86,7 +86,7 @@ export class Icon {
     }
 
     if (!this.ariaLabel) {
-      const name = this.source ? getName(this.getSource()) : this.icon;
+      const name = this.source ? getName(this.getSource()) : this.name;
       // user did not provide a label
       // come up with the label based on the icon name
       if (name) {
@@ -96,13 +96,12 @@ export class Icon {
   }
 
   public getSource() {
-    if (this.icon && !this.source) {
-      return `https://cdn.ui.porsche.com/porsche-icons/icons/${this.variant}/${this.icon}.svg`;
+    if (this.name && !this.source) {
+      return `https://cdn.ui.porsche.com/porsche-icons/icons/${this.variant}/${this.name}.svg`;
     } else if (this.source) {
       return this.source;
-    } else {
-      console.log('Please provide either an icon property or a source property!');
     }
+    console.warn('Please provide either an icon property or a source property!');
   }
 
   public render(): JSX.Element {
@@ -141,6 +140,3 @@ export class Icon {
     }
   }
 }
-
-
-

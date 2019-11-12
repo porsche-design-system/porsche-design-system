@@ -63,7 +63,7 @@ export class TextLink {
         onClick={(e) => this.onClick(e)}
         class={textLinkClasses}
       >
-        <p-icon class={iconClasses} icon={this.icon} source={this.iconSource} color='inherit' size='inherit' />
+        <p-icon class={iconClasses} name={this.icon} source={this.iconSource} color='inherit' size='inherit' />
         <p-text class={textClasses} tag='span' color='inherit' variant={this.variant}>
           <slot />
         </p-text>

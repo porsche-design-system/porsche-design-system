@@ -320,12 +320,12 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size="10">
           <div className="playground light spacing-inline">
-            <PIcon icon="car-next"/>
-            <PIcon icon="car-next" size="medium"/>
-            <PIcon icon="car-next" size="large"/>
-            <PIcon icon="car-next" size="large" color="porsche-red"/>
-            <PIcon icon="car-next" size="large" color="inherit" style={{color: 'deeppink'}}/>
-            <PIcon icon="kaixin" size="large"/>
+            <PIcon name="car-next"/>
+            <PIcon name="car-next" size="medium"/>
+            <PIcon name="car-next" size="large"/>
+            <PIcon name="car-next" size="large" color="porsche-red"/>
+            <PIcon name="car-next" size="large" color="inherit" style={{color: 'deeppink'}}/>
+            <PIcon name="kaixin" size="large"/>
           </div>
           <hr/>
         </PGridItem>
