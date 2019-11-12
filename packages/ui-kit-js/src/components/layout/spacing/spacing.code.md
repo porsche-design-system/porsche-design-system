@@ -32,11 +32,11 @@ To be more consistent, there is a reduced set of spacings which should be used a
 
 ### Overview of reduced layout spacings
 
-| SCSS variable                                   | PX        | REM   | VISUALIZATION                            |
-|-------------------------------------------------|-----------|-------|------------------------------------------|
-| <nobr>`$p-spacing-4 / $p-spacing-xs`</nobr>     | 4 px      | 0.25  | ![spacing xs](./assets/spacing-4.png)    |     
-| <nobr>`$p-spacing-8 / $p-spacing-s`</nobr>      | 8 px      | 0.5   | ![spacing s](./assets/spacing-8.png)     |    
-| <nobr>`$p-spacing-16 / $p-spacing-m`</nobr>     | 16 px     | 1     | ![spacing m](./assets/spacing-16.png)    |    
-| <nobr>`$p-spacing-32 / $p-spacing-l`</nobr>     | 32 px     | 2     | ![spacing l](./assets/spacing-32.png)    |    
-| <nobr>`$p-spacing-48 / $p-spacing-xl`</nobr>    | 48 px     | 3     | ![spacing xl](./assets/spacing-48.png)   |    
-| <nobr>`$p-spacing-80 / $p-spacing-xxl`</nobr>   | 80 px     | 5     | ![spacing xxl](./assets/spacing-80.png)  |    
+| SCSS variable                | PX        | REM   | VISUALIZATION                            |
+|------------------------------|-----------|-------|------------------------------------------|
+| `$p-layout-x-small`          | 4 px      | 0.25  | ![spacing xs](./assets/spacing-4.png)    |     
+| `$p-layout-small`            | 8 px      | 0.5   | ![spacing s](./assets/spacing-8.png)     |    
+| `$p-layout-medium`           | 16 px     | 1     | ![spacing m](./assets/spacing-16.png)    |    
+| `$p-layout-large`            | 32 px     | 2     | ![spacing l](./assets/spacing-32.png)    |    
+| `$p-layout-x-large`          | 48 px     | 3     | ![spacing xl](./assets/spacing-48.png)   |    
+| `$p-layout-xx-large`         | 80 px     | 5     | ![spacing xxl](./assets/spacing-80.png)  |    

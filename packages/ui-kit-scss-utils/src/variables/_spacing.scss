@@ -14,9 +14,9 @@ $p-spacing-72: rem(72px);
 $p-spacing-80: rem(80px);
 
 // reduced layout spacings
-$p-spacing-xs: $p-spacing-4;
-$p-spacing-s: $p-spacing-8;
-$p-spacing-m: $p-spacing-16;
-$p-spacing-l: $p-spacing-32;
-$p-spacing-xl: $p-spacing-48;
-$p-spacing-xxl: $p-spacing-80;
+$p-layout-x-small: $p-spacing-4;
+$p-layout-small: $p-spacing-8;
+$p-layout-medium: $p-spacing-16;
+$p-layout-large: $p-spacing-32;
+$p-layout-x-large: $p-spacing-48;
+$p-layout-xx-large: $p-spacing-80;
