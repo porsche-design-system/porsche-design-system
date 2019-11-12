@@ -22,7 +22,7 @@
             <router-link to="/web/getting-started/about">Learn more about it</router-link>
           </p-text>
         </p-grid-item>
-        <p-grid-item class="spacing-mt-24 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
+        <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text variant="24">
             The Porsche UI Kit Web provides the design fundamentals and elements for efficiently creating aesthetic and qualitative
             web applications. Including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything built and tested following the Porsche quality standards and corporate design

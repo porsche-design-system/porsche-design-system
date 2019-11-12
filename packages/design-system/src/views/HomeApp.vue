@@ -22,7 +22,7 @@
             <router-link to="/app/getting-started/about">Learn more about it</router-link>
           </p-text>
         </p-grid-item>
-        <p-grid-item class="spacing-mt-24 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
+        <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text variant="24">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
