@@ -9,7 +9,7 @@
 
 | Property    | Attribute    | Description                                                                                                    | Type                   | Default     |
 | ----------- | ------------ | -------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `allyLabel` | `ally-label` | A visually hidden label text to improve accessibility which describes the function behind the button.          | `string`               | `undefined` |
+| `allyLabel` | `ally-label` | A visually hidden label text to improve accessibility which describes the function behind the link.            | `string`               | `undefined` |
 | `download`  | `download`   | Special download attribute to open native browser download dialog if target url points to a downloadable file. | `string`               | `undefined` |
 | `href`      | `href`       | When providing an url then the component will be rendered as `<a>`.                                            | `string`               | `undefined` |
 | `icon`      | `icon`       | The icon shown.                                                                                                | `string`               | `'plus'`    |
@@ -24,4 +24,4 @@
 
 ### Depends on
 
-- [p-icon](#/web/components/icon/icon)
+- [p-icon](../../icon/icon)
