@@ -21,19 +21,19 @@ In order to provide an optimal user guidance within a page, different hierarchy 
 
 ### 1. Highlight
 
-<p-button-regular variant="highlight">Click Here!</p-button-regular>
+<p-button-regular variant="highlight">Some label</p-button-regular>
 
 Button with color fill in Porsche Red. This type is only to be used for one or two high-priority actions within the page, in order to give the user the best guidance possible.  
 
 ### 2. Basic
 
-<p-button-regular>Click Here!</p-button-regular>
+<p-button-regular>Some label</p-button-regular>
 
 Default button with monochrome color fill. To be used for all other stand-alone buttons that aren't high priority.
 
 ### 3. Ghost
 
-<p-button-regular variant="ghost">Click Here!</p-button-regular>
+<p-button-regular variant="ghost">Some label</p-button-regular>
 
 An "outline only" button version. In hierarchy the ghost button is always subordinated to the filled view. Thus, it can be used in two different cases:
 

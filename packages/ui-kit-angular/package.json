@@ -20,7 +20,7 @@
     "@angular/platform-browser": "~8.2.10",
     "@angular/platform-browser-dynamic": "~8.2.10",
     "@angular/router": "~8.2.10",
-    "@porsche-ui/ui-kit-angular": "^1.0.0-alpha.6",
+    "@porsche-ui/ui-kit-angular": "^1.0.0-alpha.7",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
