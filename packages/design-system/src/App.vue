@@ -69,23 +69,23 @@
   }
 
   .spacing-mt-8 {
-    margin-top: rem(8px);
+    margin-top: $p-spacing-8;
   }
 
   .spacing-mt-16 {
-    margin-top: rem(16px);
+    margin-top: $p-spacing-16;
   }
 
   .spacing-mt-24 {
-    margin-top: rem(24px);
+    margin-top: $p-spacing-24;
   }
 
   .spacing-mt-32 {
-    margin-top: rem(32px);
+    margin-top: $p-spacing-32;
   }
 
   .spacing-mr-32 {
-    margin-right: rem(32px);
+    margin-right: $p-spacing-32;
   }
 
   @include p-breakpoint('m') {
