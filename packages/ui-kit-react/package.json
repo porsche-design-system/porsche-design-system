@@ -11,7 +11,7 @@
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
-    "@porsche-ui/ui-kit-react": "^1.0.0-alpha.6"
+    "@porsche-ui/ui-kit-react": "^1.0.0-alpha.7"
   },
   "devDependencies": {
     "@porsche-ui/cross-browser-tester": "^1.0.2",
