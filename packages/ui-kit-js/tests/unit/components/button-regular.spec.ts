@@ -10,7 +10,7 @@ describe('Component <p-button-regular>', () => {
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
-      html: `<p-button-regular>Button regular</p-button-regular>`,
+      html: `<p-button-regular>Some label</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-button-regular')).toBeFalsy();
@@ -21,7 +21,7 @@ describe('Component <p-button-regular>', () => {
   it('should render correctly in link mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
-      html: `<p-button-regular href="https://ui.porsche.com">Button regular</p-button-regular>`,
+      html: `<p-button-regular href="https://ui.porsche.com">Some label</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('a')).toBeTruthy();
@@ -30,7 +30,7 @@ describe('Component <p-button-regular>', () => {
   it('should render with type of submit', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
-      html: `<p-button-regular type="submit">Button regular</p-button-regular>`,
+      html: `<p-button-regular type="submit">Some label</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('type','submit');
@@ -39,7 +39,7 @@ describe('Component <p-button-regular>', () => {
   it('should not render with target of blank if in button mode', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
-      html: `<p-button-regular target="blank">Button regular</p-button-regular>`,
+      html: `<p-button-regular target="blank">Some label</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('[target="_blank"]')).toBeFalsy();
@@ -48,7 +48,7 @@ describe('Component <p-button-regular>', () => {
   it('should render with target of blank if in link mode', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
-      html: `<p-button-regular href="https://ui.porsche.com" target="blank">Button regular</p-button-regular>`,
+      html: `<p-button-regular href="https://ui.porsche.com" target="blank">Some label</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target','_blank');
@@ -72,7 +72,7 @@ describe('Component <p-button-regular>', () => {
   it('should have an aria-disabled attribute in link mode', async () => {
     const page = await newSpecPage({
       components: [ButtonRegular],
-      html: `<p-button-regular href="https://ui.porsche.com" disabled>Button regular</p-button-regular>`,
+      html: `<p-button-regular href="https://ui.porsche.com" disabled>Some label</p-button-regular>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('aria-disabled','true');
@@ -81,7 +81,7 @@ describe('Component <p-button-regular>', () => {
   it('should emit on click', async() => {
     const page = await newSpecPage({
       components: [ButtonRegular],
-      html: `<p-button-regular>Button regular</p-button-regular>`,
+      html: `<p-button-regular>Some label</p-button-regular>`,
     });
     const button = page.root.shadowRoot.querySelector('button');
     const buttonSpy = jest.fn();

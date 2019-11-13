@@ -10,6 +10,6 @@ exports[`Component <p-button-regular> should render correctly in default mode wi
       </p-text>
     </button>
   </mock:shadow-root>
-  Button regular
+  Some label
 </p-button-regular>
 `;
