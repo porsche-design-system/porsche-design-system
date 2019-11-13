@@ -5,11 +5,11 @@ import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../
 import {ButtonType, Theme} from '../../../types';
 
 @Component({
-  tag: 'p-button-icon',
-  styleUrl: 'button-icon.scss',
+  tag: 'p-button',
+  styleUrl: 'button.scss',
   shadow: true
 })
-export class ButtonIcon {
+export class Button {
   @Element() public element!: HTMLElement;
 
   /**
@@ -38,7 +38,7 @@ export class ButtonIcon {
   @Prop() public loading?: boolean = false;
 
   /** The style variant of the button. */
-  @Prop() public variant?: 'ghost' | 'default' = 'default';
+  @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
 
   /** The icon shown. */
   @Prop() public icon?: string = 'plus';
@@ -54,13 +54,12 @@ export class ButtonIcon {
     preventNativeTabIndex(this);
 
     const buttonClasses = cx(
-      prefix('button-icon'),
-      this.variant !== 'default' && prefix(`button-icon--${this.variant}`),
-      this.loading && prefix('button-icon--loading'),
-      this.theme !== 'light' && prefix('button-icon--theme-dark')
+      prefix('button'),
+      this.variant !== 'secondary' && prefix(`button--${this.variant}`),
+      this.theme !== 'light' && prefix('button--theme-dark')
     );
-    const iconClasses = prefix('button-icon__icon');
-    const spinnerClasses = prefix('button-icon__spinner');
+    const iconClasses = prefix('button__icon');
+    const spinnerClasses = prefix('button__spinner');
 
     return (
       <button
@@ -120,7 +119,7 @@ export class ButtonIcon {
     }
   }
 
-  private useInvertedLoader(): 'light' | 'dark' {
-    return this.variant !== 'ghost' || this.theme === 'dark' ? 'dark' : 'light';
+  private useInvertedLoader(): Theme {
+    return this.variant !== 'tertiary' || this.theme === 'dark' ? 'dark' : 'light';
   }
 }

@@ -23,10 +23,10 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 
 import { Components } from '@porsche-ui/ui-kit-js'
 
-export declare interface PButtonIcon extends Components.PButtonIcon {}
+export declare interface PButton extends Components.PButton {}
 @ProxyInputs(['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'])
 @Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
-export class PButtonIcon {
+export class PButton {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();

@@ -18,5 +18,5 @@
 
 ### Used by
 
- - [p-button-icon](../../action/button-icon)
+ - [p-button](../../action/button)
  - [p-button-regular](../../action/button-regular)
