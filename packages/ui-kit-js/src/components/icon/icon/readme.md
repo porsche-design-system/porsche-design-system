@@ -20,7 +20,7 @@
 
 ### Used by
 
- - [p-button-icon](../../action/button-icon)
+ - [p-button](../../action/button)
  - [p-button-regular](../../action/button-regular)
  - [p-link-icon](../../navigation/link-icon)
  - [p-pagination](../../navigation/pagination)

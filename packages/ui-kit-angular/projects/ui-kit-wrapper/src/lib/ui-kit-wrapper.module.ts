@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {defineCustomElements, applyPolyfills} from '@porsche-ui/ui-kit-js/loader';
 
 import {
-  PButtonIcon,
+  PButton,
   PButtonRegular,
   PFlex,
   PFlexItem,
@@ -20,7 +20,7 @@ import {
 } from './ui-kit-wrapper.component';
 
 const DECLARATIONS = [
-  PButtonIcon,
+  PButton,
   PButtonRegular,
   PFlex,
   PFlexItem,

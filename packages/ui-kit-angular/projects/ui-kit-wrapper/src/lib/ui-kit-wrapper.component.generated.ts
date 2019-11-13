@@ -29,16 +29,16 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 
 import { Components } from '@porsche-ui/ui-kit-js'
 
-export declare interface PButtonIcon extends Components.PButtonIcon {}
-@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'disabled', 'icon', 'loading', 'tabbable', 'theme', 'type', 'variant'] })
-export class PButtonIcon {
+export declare interface PButton extends Components.PButton {}
+@Component({ selector: 'p-button', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'disabled', 'icon', 'loading', 'tabbable', 'theme', 'type', 'variant'] })
+export class PButton {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PButtonIcon, ['allyLabel', 'disabled', 'icon', 'loading', 'tabbable', 'theme', 'type', 'variant']);
+proxyInputs(PButton, ['allyLabel', 'disabled', 'icon', 'loading', 'tabbable', 'theme', 'type', 'variant']);
 
 export declare interface PButtonRegular extends Components.PButtonRegular {}
 @Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })

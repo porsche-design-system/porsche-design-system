@@ -18,7 +18,7 @@ import {
 } from './utils';
 
 export namespace Components {
-  interface PButtonIcon {
+  interface PButton {
     /**
     * A visually hidden label text to improve accessibility which describes the function behind the button.
     */
@@ -54,7 +54,7 @@ export namespace Components {
     /**
     * The style variant of the button.
     */
-    'variant'?: 'ghost' | 'default';
+    'variant'?: 'primary' | 'secondary' | 'tertiary';
   }
   interface PButtonRegular {
     /**
@@ -406,10 +406,10 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLPButtonIconElement extends Components.PButtonIcon, HTMLStencilElement {}
-  var HTMLPButtonIconElement: {
-    prototype: HTMLPButtonIconElement;
-    new (): HTMLPButtonIconElement;
+  interface HTMLPButtonElement extends Components.PButton, HTMLStencilElement {}
+  var HTMLPButtonElement: {
+    prototype: HTMLPButtonElement;
+    new (): HTMLPButtonElement;
   };
 
   interface HTMLPButtonRegularElement extends Components.PButtonRegular, HTMLStencilElement {}
@@ -502,7 +502,7 @@ declare global {
     new (): HTMLPTextListItemElement;
   };
   interface HTMLElementTagNameMap {
-    'p-button-icon': HTMLPButtonIconElement;
+    'p-button': HTMLPButtonElement;
     'p-button-regular': HTMLPButtonRegularElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
@@ -522,7 +522,7 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface PButtonIcon extends JSXBase.HTMLAttributes<HTMLPButtonIconElement> {
+  interface PButton extends JSXBase.HTMLAttributes<HTMLPButtonElement> {
     /**
     * A visually hidden label text to improve accessibility which describes the function behind the button.
     */
@@ -554,7 +554,7 @@ declare namespace LocalJSX {
     /**
     * The style variant of the button.
     */
-    'variant'?: 'ghost' | 'default';
+    'variant'?: 'primary' | 'secondary' | 'tertiary';
   }
   interface PButtonRegular extends JSXBase.HTMLAttributes<HTMLPButtonRegularElement> {
     /**
@@ -919,7 +919,7 @@ declare namespace LocalJSX {
   interface PTextListItem extends JSXBase.HTMLAttributes<HTMLPTextListItemElement> {}
 
   interface IntrinsicElements {
-    'p-button-icon': PButtonIcon;
+    'p-button': PButton;
     'p-button-regular': PButtonRegular;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;

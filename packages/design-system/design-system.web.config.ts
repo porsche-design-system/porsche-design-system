@@ -126,6 +126,20 @@ export const config: DesignSystemConfig = {
       }
     },
     Action: {
+      Button: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`),
+        ],
+      },
       'Button Regular': {
         Design: [
           // @ts-ignore
@@ -138,20 +152,6 @@ export const config: DesignSystemConfig = {
         Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.props.md`),
-        ],
-      },
-      'Button Icon': {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.design.md`),
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.code.md`),
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.props.md`),
         ],
       },
     },
