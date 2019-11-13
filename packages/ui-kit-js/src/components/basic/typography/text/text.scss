@@ -23,7 +23,13 @@
   ::slotted(b, strong) {
     font-weight: $p-font-weight-bold;
   }
+
+  ::slotted(span, cite, time) {
+    display: inline-block;
+    vertical-align: top;
+  }
 }
+
 
 .#{$p-global-class-prefix}text {
   padding: 0;
@@ -43,13 +49,16 @@
       @include p-text-copy;
     }
     &-medium {
-      @include p-text($p-font-weight-regular, $p-font-size-medium);
+      @include p-text($p-font-weight-regular, $p-text-medium);
     }
     &-large {
-      @include p-text($p-font-weight-regular, $p-font-size-large);
+      @include p-text($p-font-weight-regular, $p-text-large);
     }
     &-x-large {
-      @include p-text($p-font-weight-regular, $p-font-size-x-large);
+      @include p-text($p-font-weight-regular, $p-text-x-large);
+    }
+    &-xx-large {
+      @include p-text($p-font-weight-regular, $p-text-xx-large);
     }
     &-inherit {
       @include p-text($p-font-weight-regular, 'inherit');
@@ -63,13 +72,16 @@
         @include p-text-copy;
       }
       &-medium-xs {
-        @include p-text($p-font-weight-regular, $p-font-size-medium);
+        @include p-text($p-font-weight-regular, $p-text-medium);
       }
       &-large-xs {
-        @include p-text($p-font-weight-regular, $p-font-size-large);
+        @include p-text($p-font-weight-regular, $p-text-large);
       }
       &-x-large-xs {
-        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+        @include p-text($p-font-weight-regular, $p-text-x-large);
+      }
+      &-xx-large-xs {
+        @include p-text($p-font-weight-regular, $p-text-xx-large);
       }
     }
 
@@ -81,13 +93,16 @@
         @include p-text-copy;
       }
       &-medium-s {
-        @include p-text($p-font-weight-regular, $p-font-size-medium);
+        @include p-text($p-font-weight-regular, $p-text-medium);
       }
       &-large-s {
-        @include p-text($p-font-weight-regular, $p-font-size-large);
+        @include p-text($p-font-weight-regular, $p-text-large);
       }
       &-x-large-s {
-        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+        @include p-text($p-font-weight-regular, $p-text-x-large);
+      }
+      &-xx-large-s {
+        @include p-text($p-font-weight-regular, $p-text-xx-large);
       }
     }
 
@@ -99,13 +114,16 @@
         @include p-text-copy;
       }
       &-medium-m {
-        @include p-text($p-font-weight-regular, $p-font-size-medium);
+        @include p-text($p-font-weight-regular, $p-text-medium);
       }
       &-large-m {
-        @include p-text($p-font-weight-regular, $p-font-size-large);
+        @include p-text($p-font-weight-regular, $p-text-large);
       }
       &-x-large-m {
-        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+        @include p-text($p-font-weight-regular, $p-text-x-large);
+      }
+      &-xx-large-m {
+        @include p-text($p-font-weight-regular, $p-text-xx-large);
       }
     }
 
@@ -117,13 +135,16 @@
         @include p-text-copy;
       }
       &-medium-l {
-        @include p-text($p-font-weight-regular, $p-font-size-medium);
+        @include p-text($p-font-weight-regular, $p-text-medium);
       }
       &-large-l {
-        @include p-text($p-font-weight-regular, $p-font-size-large);
+        @include p-text($p-font-weight-regular, $p-text-large);
       }
       &-x-large-l {
-        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+        @include p-text($p-font-weight-regular, $p-text-x-large);
+      }
+      &-xx-large-l {
+        @include p-text($p-font-weight-regular, $p-text-xx-large);
       }
     }
 
@@ -135,13 +156,16 @@
         @include p-text-copy;
       }
       &-medium-xl {
-        @include p-text($p-font-weight-regular, $p-font-size-medium);
+        @include p-text($p-font-weight-regular, $p-text-medium);
       }
       &-large-xl {
-        @include p-text($p-font-weight-regular, $p-font-size-large);
+        @include p-text($p-font-weight-regular, $p-text-large);
       }
       &-x-large-xl {
-        @include p-text($p-font-weight-regular, $p-font-size-x-large);
+        @include p-text($p-font-weight-regular, $p-text-x-large);
+      }
+      &-xx-large-xl {
+        @include p-text($p-font-weight-regular, $p-text-xx-large);
       }
     }
 

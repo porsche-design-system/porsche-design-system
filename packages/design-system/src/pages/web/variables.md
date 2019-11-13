@@ -96,16 +96,28 @@ $p-font-weight-{v};
 ```
 
 ### Size
-Default values are:  
-`small | copy | medium | large | x-large`
 
-Custom values are:  
+#### Font scaling system
+Given values are:  
+
 `12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
 
 Possible variable for usage with SCSS (where {v} is the font size value):
 ```
 $p-font-size-{v};
 ```
+
+#### Default text sizes
+Given values are:  
+ 
+`small | copy | medium | large | x-large | xx-large`
+
+Possible variable for usage with SCSS (where {v} is the font size value):
+```
+$p-text-{v};
+```
+
+
 
 ---
 
