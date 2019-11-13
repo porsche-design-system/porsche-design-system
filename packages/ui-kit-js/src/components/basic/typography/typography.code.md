@@ -56,7 +56,7 @@ This will force any text to never wrap into a new line and in case it's too long
 
 ### Style variants
 
-Predefined body text variants for body text. Default variant is `copy`.
+Predefined default text variants for body text. Default variant is `copy`.
 
 <Playground>
   <template #configurator>
@@ -67,6 +67,7 @@ Predefined body text variants for body text. Default variant is `copy`.
       <option>medium</option>
       <option>large</option>
       <option>x-large</option>
+      <option>xx-large</option>
       <option>inherit</option>
     </select>
   </template>
@@ -93,6 +94,7 @@ The default text weight is regular. To supplement special design needs, it can a
       <option selected>medium</option>
       <option>large</option>
       <option>x-large</option>
+      <option>xx-large</option>
       <option>inherit</option>
     </select>
   </template>
@@ -106,7 +108,7 @@ The default text color is Porsche Black. But also predefined or inherited colors
 
 <Playground>
   <p-text color="porsche-black">Porsche Black</p-text>
-  <p-text color="porsche-light" style="background: black; display: block;">Porsche Light</p-text>
+  <p-text color="porsche-light" style="background: black;">Porsche Light</p-text>
   <p-text color="inherit" style="color: deeppink;">Inherited custom color</p-text>
 </Playground>
 

@@ -22,6 +22,7 @@ The `<p-text-link>` component is used to show a linkable icon-text-combination.
       <option>medium</option>
       <option>large</option>
       <option>x-large</option>
+      <option>xx-large</option>
     </select>
   </template>
   <p-text-link href="https://ui.porsche.com" :variant="variant">Some link with default icon</p-text-link>

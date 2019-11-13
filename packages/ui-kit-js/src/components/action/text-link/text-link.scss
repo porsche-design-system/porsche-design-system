@@ -41,28 +41,33 @@
     flex-shrink: 0;
 
     &--small {
-      width: $p-font-size-x-small * 1.5;
-      height: $p-font-size-x-small * 1.5;
+      width: $p-text-small * 1.5;
+      height: $p-text-small * 1.5;
     }
 
     &--copy {
-      width: $p-font-size-copy * 1.5;
-      height: $p-font-size-copy * 1.5;
+      width: $p-text-copy * 1.5;
+      height: $p-text-copy * 1.5;
     }
 
     &--medium {
-      width: $p-font-size-medium * 1.5;
-      height: $p-font-size-medium * 1.5;
+      width: $p-text-medium * 1.5;
+      height: $p-text-medium * 1.5;
     }
 
     &--large {
-      width: $p-font-size-large * 1.5;
-      height: $p-font-size-large * 1.5;
+      width: $p-text-large * 1.5;
+      height: $p-text-large * 1.5;
     }
 
     &--x-large {
-      width: $p-font-size-x-large * 1.5;
-      height: $p-font-size-x-large * 1.5;
+      width: $p-text-x-large * 1.5;
+      height: $p-text-x-large * 1.5;
+    }
+
+    &--xx-large {
+      width: $p-text-xx-large * 1.5;
+      height: $p-text-xx-large * 1.5;
     }
   }
 

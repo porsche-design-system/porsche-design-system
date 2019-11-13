@@ -6,7 +6,7 @@
 
 * Text component
   * Reduce amount of text variants in global interface
-  * Remove `ul | ol | li | sup | sub` from `tag` property
+  * Remove `ul | ol | li | sup | sub | label` from `tag` property
   * Add `thin` property
   
 * Text Link component

@@ -6,7 +6,7 @@ $p-font-weight-thin: 200;
 $p-font-weight-regular: 400;
 $p-font-weight-bold: 600;
 
-// basic sizes
+// basic font sizes
 $p-font-size-12: rem(12px);
 $p-font-size-16: rem(16px);
 $p-font-size-18: rem(18px);
@@ -25,12 +25,10 @@ $p-font-size-62: rem(62px);
 $p-font-size-72: rem(72px);
 $p-font-size-84: rem(84px);
 
-// defaults
-$p-font-size-x-small: $p-font-size-12;
-$p-font-size-small: $p-font-size-16;
-$p-font-size-medium: $p-font-size-24;
-$p-font-size-large: $p-font-size-42;
-$p-font-size-x-large: $p-font-size-72;
-
-// alias
-$p-font-size-copy: $p-font-size-small;
+// default text sizes
+$p-text-small: $p-font-size-12;
+$p-text-copy: $p-font-size-16;
+$p-text-medium: $p-font-size-24;
+$p-text-large: $p-font-size-36;
+$p-text-x-large: $p-font-size-52;
+$p-text-xx-large: $p-font-size-72;

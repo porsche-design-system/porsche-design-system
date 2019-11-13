@@ -19,7 +19,6 @@ export class Text {
     | 'p'
     | 'span'
     | 'div'
-    | 'label'
     | 'address'
     | 'blockquote'
     | 'figcaption'
