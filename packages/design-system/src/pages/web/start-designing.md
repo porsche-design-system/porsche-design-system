@@ -30,10 +30,7 @@ The web library provides components that are to be used within web applications,
 Please be aware of the used library version (Sketch: Preferences → Libraries) and coordinate with your developer counterpart to align on the same version.
 
 ### Porsche Next font
-In order to design Porsche web applications and to use the Porsche UI Kit libraries properly you have to download and install the [Porsche Next font](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
-
-### Recommended add-on Anima Plugin
-Some of the components offer smooth layout behaviour such as automatic resizing and positioning. Enjoy it by installing the Sketch plugin [Anima](https://animaapp.s3.amazonaws.com/sketchplugin/toolkit/AnimaToolkitPlugin.zip). (Ensure to turn on the setting: Plugins → Anima Toolkit → Enable Padding and Stacks for Nested Symbols.   
+In order to design Porsche web applications and to use the Porsche UI Kit libraries properly you have to download and install the [Porsche Next font](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip).  
 
 ## 5. Additional tools
 
