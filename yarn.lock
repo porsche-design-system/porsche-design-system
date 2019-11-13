@@ -2068,12 +2068,12 @@
     isomorphic-fetch "^2.2.1"
     jimp "0.8.0"
 
-"@porsche-ui/ui-kit-angular@^1.0.0-alpha.6":
-  version "1.0.0-alpha.6"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-angular/-/@porsche-ui/ui-kit-angular-1.0.0-alpha.6.tgz#41155161e7c880e61c9a7bb1bd0f24ac66656cd0"
-  integrity sha1-QRVRYefIgOYcmnuxvQ8krGZlbNA=
+"@porsche-ui/ui-kit-angular@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-angular/-/@porsche-ui/ui-kit-angular-1.0.0-alpha.7.tgz#f919799b8cd64612df1a751c8fd9a8a358d00d1d"
+  integrity sha1-+Rl5m4zWRhLfGnUcj9moo1jQDR0=
   dependencies:
-    "@porsche-ui/ui-kit-js" "1.0.0-alpha.6"
+    "@porsche-ui/ui-kit-js" "1.0.0-alpha.7"
     tslib "^1.9.0"
 
 "@porsche-ui/visual-regression-tester@^1.0.0":
