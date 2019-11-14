@@ -111,14 +111,14 @@ Examples:
 
 ### Copytext styles
 
-The Porsche copytext styles are typically to be used for long-form writing. Per default, you should stick to the **Copytext** class. 
-**Copytext Small** is only recommended for additional, low-informative text such as disclaimers or captions.
+The Porsche copytext styles are typically to be used for long-form writing. Per default, you should stick to the **Copytext Small** class. 
+**Copytext X-Small** is only recommended for additional, low-informative text such as disclaimers or captions.
 Both Copytext and Copytext Small keep their respective text size throughout all viewports.
 
 |                 | FONT SIZE       | AVAILABLE STATES                             | 
 |---------------- |---------------- |--------------------------------------------- |
-| Copytext        | 16 px           | active, default, disabled, highlight, linked | 
-| Copytext Small  | 12 px           | active, default, disabled, highlight, linked | 
+| Copytext Small       | 16 px           | active, default, disabled, highlight, linked | 
+| Copytext X-Small  | 12 px           | active, default, disabled, highlight, linked | 
 
 
 ![Copytext states](./assets/typography-copytext-states.png)
@@ -167,8 +167,8 @@ The longer a text line gets, the harder it is for the user to jump from the end 
 
 For UI applications it is recommended to use [no more than 80 characters or glyphs per line](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html). This might differ a bit depending on the respective line height and viewport size and results in different pixel widths depending on the Porsche type class in use:
 
-- Copytext Small (12 px): max. 400-450 px
-- Copytext (16 px): max. 500-550 px
+- Copytext X-Small (12 px): max. 400-450 px
+- Copytext Small (16 px): max. 500-550 px
 - Headlines and additional sizes (20-84 px): max. 700 up to max. 2700 px
 
 
