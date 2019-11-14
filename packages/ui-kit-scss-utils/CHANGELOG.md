@@ -3,8 +3,10 @@
 ## Not released yet
 
 ### Change
-* Refine text variables and add default/alias styles
+* Refine text variables and add default styles
 * Rename mixing `p-text-generic` to `p-text`
+* Change param order of `p-text` (text-size first, weight second)
+* Remove mixin `p-text-copy` and `p-text-small`
 
 
 ## [1.0.0-alpha.3] (2019-09-25)

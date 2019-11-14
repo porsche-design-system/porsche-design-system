@@ -92,7 +92,7 @@
         }
 
         p {
-          @include p-text-copy;
+          @include p-text;
           margin-top: $p-spacing-24;
         }
 
@@ -133,7 +133,7 @@
         // Lists
         ul,
         ol {
-          @include p-text-copy;
+          @include p-text;
           margin-top: $p-spacing-24;
           padding-left: $p-spacing-32;
           list-style-type: square;
@@ -147,7 +147,7 @@
         // Code
         code,
         pre {
-          @include p-text-small;
+          @include p-text($p-text-x-small);
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
         }
 
@@ -177,11 +177,11 @@
           border-collapse: collapse;
 
           thead {
-            @include p-text-copy;
+            @include p-text;
           }
 
           tbody {
-            @include p-text-copy;
+            @include p-text;
           }
 
           th {

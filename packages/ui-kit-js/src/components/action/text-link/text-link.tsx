@@ -22,7 +22,7 @@ export class TextLink {
   @Prop() public rel?: string = undefined;
 
   /** The style of the text. */
-  @Prop() public variant?: TextVariant = 'copy';
+  @Prop() public variant?: TextVariant = 'small';
 
   /** The icon shown next to the label. */
   @Prop() public icon?: string = 'arrow-right-hair';

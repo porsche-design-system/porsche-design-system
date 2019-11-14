@@ -1,17 +1,8 @@
 @import "../variables/index";
 
-@mixin p-text($weight: $p-font-weight-regular, $size: $p-text-copy) {
+@mixin p-text($size: $p-text-small, $weight: $p-font-weight-regular) {
   font-family: $p-font-primary;
   font-weight: $weight;
   font-size: $size;
   line-height: 1.5;
-}
-
-// alias
-@mixin p-text-copy {
-  @include p-text($p-font-weight-regular, $p-text-copy);
-}
-
-@mixin p-text-small {
-  @include p-text($p-font-weight-regular, $p-text-small);
 }

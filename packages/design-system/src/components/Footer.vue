@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <p-text variant="small" align="center">
+    <p-text variant="x-small" align="center">
       <span>© 2019 Dr. Ing. h.c. F. Porsche AG.</span>
       <br />
       <a href="https://www.porsche.com/international/legal-notice/">Legal notice</a>

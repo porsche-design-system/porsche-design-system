@@ -40,14 +40,14 @@
   &__icon {
     flex-shrink: 0;
 
+    &--x-small {
+      width: $p-text-x-small * 1.5;
+      height: $p-text-x-small * 1.5;
+    }
+
     &--small {
       width: $p-text-small * 1.5;
       height: $p-text-small * 1.5;
-    }
-
-    &--copy {
-      width: $p-text-copy * 1.5;
-      height: $p-text-copy * 1.5;
     }
 
     &--medium {
@@ -65,10 +65,6 @@
       height: $p-text-x-large * 1.5;
     }
 
-    &--xx-large {
-      width: $p-text-xx-large * 1.5;
-      height: $p-text-xx-large * 1.5;
-    }
   }
 
   &__text {
