@@ -114,6 +114,8 @@ div {
 }
 ```
 
+--- 
+
 ## Typography
 
 **Note:** For font-styling it's recommended to use [`<p-headline>`](#/web/components/basic/typography#code)/[`<p-text>`](#/web/components/basic/typography#code) component.
@@ -176,18 +178,24 @@ h1 {
 
 ### Text
 
-Given values are:  
-`copy | small`
+With the text mixin, it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
+Default is `$p-text-small` and `$p-font-weight-regular`.
 
-Possible body text mixin for usage with SCSS (where {v} is the value):
+Pre defined variant values are:  
+`$p-text-x-small | $p-text-small | $p-text-medium | $p-text-large | $p-text-x-large`
+
+Pre defined weight values are:  
+`$p-font-weight-thin | $p-font-weight-regular | $p-font-weight-bold`
+
+#### Example text mixin for usage with SCSS (where {size} is the value for text size and {weight} for text weight):
 ```
-@include p-text-{v};
+@include p-text({size}, {weight});
 ```
 
-#### Example
+#### Example with defaults
 ```
 p {
-  @include p-text-copy;
+  @include p-text;
 }
 ```
 
@@ -198,6 +206,22 @@ p {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
-  margin-top: 1.5rem;
+}
+```
+
+#### Example with specific parameters
+```
+p {
+  @include p-text($p-text-medium, $p-font-weight-thin);
+}
+```
+
+#### Result
+```
+p {
+  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-weight: 200;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 ```

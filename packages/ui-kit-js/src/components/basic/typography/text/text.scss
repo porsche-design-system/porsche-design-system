@@ -42,152 +42,142 @@
   }
 
   &--variant {
-    &-small {
-      @include p-text-small;
+    &-x-small {
+      @include p-text($p-text-x-small);
     }
-    &-copy {
-      @include p-text-copy;
+    &-small {
+      @include p-text;
     }
     &-medium {
-      @include p-text($p-font-weight-regular, $p-text-medium);
+      @include p-text($p-text-medium);
     }
     &-large {
-      @include p-text($p-font-weight-regular, $p-text-large);
+      @include p-text($p-text-large);
     }
     &-x-large {
-      @include p-text($p-font-weight-regular, $p-text-x-large);
-    }
-    &-xx-large {
-      @include p-text($p-font-weight-regular, $p-text-xx-large);
+      @include p-text($p-text-x-large);
     }
     &-inherit {
-      @include p-text($p-font-weight-regular, 'inherit');
+      @include p-text(inherit);
     }
 
     @include p-breakpoint("xs") {
-      &-small-xs {
-        @include p-text-small;
+      &-x-small-xs {
+        @include p-text($p-text-x-small);
       }
-      &-copy-xs {
-        @include p-text-copy;
+      &-small-xs {
+        @include p-text;
       }
       &-medium-xs {
-        @include p-text($p-font-weight-regular, $p-text-medium);
+        @include p-text($p-text-medium);
       }
       &-large-xs {
-        @include p-text($p-font-weight-regular, $p-text-large);
+        @include p-text($p-text-large);
       }
       &-x-large-xs {
-        @include p-text($p-font-weight-regular, $p-text-x-large);
-      }
-      &-xx-large-xs {
-        @include p-text($p-font-weight-regular, $p-text-xx-large);
+        @include p-text($p-text-x-large);
       }
       &-inherit-xs {
-        @include p-text($p-font-weight-regular, 'inherit');
+        @include p-text(inherit);
       }
     }
 
     @include p-breakpoint("s") {
-      &-small-s {
-        @include p-text-small;
+      &-x-small-s {
+        @include p-text($p-text-x-small);
       }
-      &-copy-s {
-        @include p-text-copy;
+      &-small-s {
+        @include p-text;
       }
       &-medium-s {
-        @include p-text($p-font-weight-regular, $p-text-medium);
+        @include p-text($p-text-medium);
       }
       &-large-s {
-        @include p-text($p-font-weight-regular, $p-text-large);
+        @include p-text($p-text-large);
       }
       &-x-large-s {
-        @include p-text($p-font-weight-regular, $p-text-x-large);
-      }
-      &-xx-large-s {
-        @include p-text($p-font-weight-regular, $p-text-xx-large);
+        @include p-text($p-text-x-large);
       }
       &-inherit-s {
-        @include p-text($p-font-weight-regular, 'inherit');
+        @include p-text(inherit);
       }
     }
 
     @include p-breakpoint("m") {
-      &-small-m {
-        @include p-text-small;
+      &-x-small-m {
+        @include p-text($p-text-x-small);
       }
-      &-copy-m {
-        @include p-text-copy;
+      &-small-m {
+        @include p-text;
       }
       &-medium-m {
-        @include p-text($p-font-weight-regular, $p-text-medium);
+        @include p-text($p-text-medium);
       }
       &-large-m {
-        @include p-text($p-font-weight-regular, $p-text-large);
+        @include p-text($p-text-large);
       }
       &-x-large-m {
-        @include p-text($p-font-weight-regular, $p-text-x-large);
-      }
-      &-xx-large-m {
-        @include p-text($p-font-weight-regular, $p-text-xx-large);
+        @include p-text($p-text-x-large);
       }
       &-inherit-m {
-        @include p-text($p-font-weight-regular, 'inherit');
+        @include p-text(inherit);
       }
     }
 
     @include p-breakpoint("l") {
-      &-small-l {
-        @include p-text-small;
+      &-x-small-l {
+        @include p-text($p-text-x-small);
       }
-      &-copy-l {
-        @include p-text-copy;
+      &-small-l {
+        @include p-text;
       }
       &-medium-l {
-        @include p-text($p-font-weight-regular, $p-text-medium);
+        @include p-text($p-text-medium);
       }
       &-large-l {
-        @include p-text($p-font-weight-regular, $p-text-large);
+        @include p-text($p-text-large);
       }
       &-x-large-l {
-        @include p-text($p-font-weight-regular, $p-text-x-large);
-      }
-      &-xx-large-l {
-        @include p-text($p-font-weight-regular, $p-text-xx-large);
+        @include p-text($p-text-x-large);
       }
       &-inherit-l {
-        @include p-text($p-font-weight-regular, 'inherit');
+        @include p-text(inherit);
       }
     }
 
     @include p-breakpoint("xl") {
-      &-small-xl {
-        @include p-text-small;
+      &-x-small-xl {
+        @include p-text($p-text-x-small);
       }
-      &-copy-xl {
-        @include p-text-copy;
+      &-small-xl {
+        @include p-text;
       }
       &-medium-xl {
-        @include p-text($p-font-weight-regular, $p-text-medium);
+        @include p-text($p-text-medium);
       }
       &-large-xl {
-        @include p-text($p-font-weight-regular, $p-text-large);
+        @include p-text($p-text-large);
       }
       &-x-large-xl {
-        @include p-text($p-font-weight-regular, $p-text-x-large);
-      }
-      &-xx-large-xl {
-        @include p-text($p-font-weight-regular, $p-text-xx-large);
+        @include p-text($p-text-x-large);
       }
       &-inherit-xl {
-        @include p-text($p-font-weight-regular, 'inherit');
+        @include p-text(inherit);
       }
     }
 
   }
 
-  &--thin {
-    font-weight: $p-font-weight-thin;
+  &--weight {
+    &-thin {
+      font-weight: $p-font-weight-thin;
+    }
+    &-regular {
+      font-weight: $p-font-weight-regular;
+    }
+    &-bold {
+      font-weight: $p-font-weight-bold;
+    }
   }
 
   &--align {

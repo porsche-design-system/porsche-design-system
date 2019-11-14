@@ -54,20 +54,29 @@ This will force any text to never wrap into a new line and in case it's too long
 
 ## Text
 
-### Style variants
+The text component is the most flexible way to display text strings on your page.  
+Rendering defaults to variant `small` and font weight `regular`.  
+The default semantic HTML element is `p`.
 
-Predefined default text variants for body text. Default variant is `copy`.
+<Playground>
+    <p-text>The quick brown fox jumps over the lazy dog</p-text>
+</Playground>
+
+--- 
+
+### Variants
+
+There are predefined default text variants for the text component which should cover most use cases. If a specific text size is needed, the variant can be set to `inherit` to specify the text size from outside.
 
 <Playground>
   <template #configurator>
     <select @change="variant = $event.target.value">
       <option disabled>Select a style variant</option>
+      <option>x-small</option>
       <option>small</option>
-      <option selected>copy</option>
-      <option>medium</option>
+      <option selected>medium</option>
       <option>large</option>
       <option>x-large</option>
-      <option>xx-large</option>
       <option>inherit</option>
     </select>
   </template>
@@ -79,26 +88,25 @@ Predefined default text variants for body text. Default variant is `copy`.
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-text variant="{ base: 'copy', m: 'medium' }">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text variant="{ base: 'small', l: 'medium' }">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
----
+--- 
 
-### Thin weight
-The default text weight is regular. To supplement special design needs, it can also be set to a thin weight. Be aware of global design rules which recommend using thin weights only for larger font sizes (e.g. medium). 
+### Weight
+
+There are predefined default text weights for body text. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground>
   <template #configurator>
-    <select @change="variantThin = $event.target.value">
-      <option disabled>Select a style variant</option>
-      <option selected>medium</option>
-      <option>large</option>
-      <option>x-large</option>
-      <option>xx-large</option>
-      <option>inherit</option>
+    <select @change="weight = $event.target.value">
+      <option disabled>Select a weight</option>
+      <option>regular</option>
+      <option selected>thin</option>
+      <option>bold</option>
     </select>
   </template>
-  <p-text :variant="variantThin" thin="true" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text variant="medium" :weight="weight">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 ---
@@ -133,7 +141,7 @@ This will force any text to never wrap into a new line and in case it's to long 
 
 ---
 
-### Text with a link and bold text
+### Text with a link and bold text as children
 
 <Playground>
   <p-text>Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>
@@ -145,11 +153,11 @@ This will force any text to never wrap into a new line and in case it's to long 
   
   @Component
   export default class PlaygroundTypography extends Vue {
-    public variant: string = 'copy';
-    public variantThin: string = 'medium';
+    public variant: string = 'medium';
+    public weight: string = 'thin';
     
     public get isInherit() {
-      return this.variant || this.variantThin === 'inherit' ? 'font-size: 48px' : undefined;
+      return this.variant === 'inherit' ? 'font-size: 48px' : undefined;
     }
   }
 </script>

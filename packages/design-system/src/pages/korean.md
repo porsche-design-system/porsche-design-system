@@ -24,6 +24,6 @@
 
 --- 
 
-<p-text variant="small">
+<p-text variant="x-small">
     Text taken from https://www.porsche.com/korea/ko/aboutporsche/pressreleases/pressreleases-korea/?pool=korea&id=2019-02-27-01&lang=ko
 </p-text>

@@ -64,8 +64,8 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size="10">
           <div className="playground light spacing-block">
-            <PText variant="copy">The quick brown fox jumps over the lazy dog</PText>
             <PText variant="small">The quick brown fox jumps over the lazy dog</PText>
+            <PText variant="x-small">The quick brown fox jumps over the lazy dog</PText>
           </div>
           <div className="playground light spacing-block">
             <PText color="porsche-black">Porsche Black</PText>

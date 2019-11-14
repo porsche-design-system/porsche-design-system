@@ -50,7 +50,7 @@
   }
 
   &__goto {
-    @include p-text-copy;
+    @include p-text;
     color: $p-color-porsche-black;
     text-decoration: none;
     cursor: pointer;

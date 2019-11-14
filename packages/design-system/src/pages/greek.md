@@ -39,6 +39,6 @@
 
 --- 
 
-<p-text variant="small">
+<p-text variant="x-small">
   Text taken from https://www.porsche.com/central-eastern-europe/en/_greece_/aboutporsche/importers/approved/
 </p-text>

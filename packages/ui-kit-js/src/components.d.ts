@@ -309,13 +309,13 @@ export namespace Components {
     | 'time'
     | 'legend';
     /**
-    * Thin weight of the text.
-    */
-    'thin'?: boolean;
-    /**
-    * Style of the text. Also defines the style for specific breakpoints, like {base: "copy", l: "medium"}. You always need to provide a base value when doing this.
+    * Style of the text. Also defines the style for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
     */
     'variant'?: BreakpointCustomizable<TextVariant>;
+    /**
+    * The weight of the text.
+    */
+    'weight'?: 'thin' | 'regular' | 'bold';
   }
   interface PTextLink {
     /**
@@ -782,13 +782,13 @@ declare namespace LocalJSX {
     | 'time'
     | 'legend';
     /**
-    * Thin weight of the text.
-    */
-    'thin'?: boolean;
-    /**
-    * Style of the text. Also defines the style for specific breakpoints, like {base: "copy", l: "medium"}. You always need to provide a base value when doing this.
+    * Style of the text. Also defines the style for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
     */
     'variant'?: BreakpointCustomizable<TextVariant>;
+    /**
+    * The weight of the text.
+    */
+    'weight'?: 'thin' | 'regular' | 'bold';
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**

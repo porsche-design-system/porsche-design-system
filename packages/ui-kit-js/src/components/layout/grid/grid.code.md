@@ -150,7 +150,7 @@ Nesting inside columns with the following widths should be prevented, because al
   @import '~@porsche-ui/ui-kit-scss-utils/index';
   
   .example-grid > * {
-    @include p-text-copy;
+    @include p-text;
     color: $p-color-porsche-light;
     text-align: center;
     background: lightskyblue;

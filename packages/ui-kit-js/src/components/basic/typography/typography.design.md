@@ -44,8 +44,8 @@ For Chinese and Japanese language, the following system fonts are to be used, st
 
 The Porsche type scale is a dedicated sizing system based on a specific formula.
 
-<p-text variant="small" tag="span" class="p-spacing-mr-16" style="display: inline-block;">12</p-text>
-<p-text variant="copy" tag="span" class="p-spacing-mr-16" style="display: inline-block;">16</p-text>
+<p-text variant="12" tag="span" class="p-spacing-mr-16" style="display: inline-block;">12</p-text>
+<p-text variant="16" tag="span" class="p-spacing-mr-16" style="display: inline-block;">16</p-text>
 <p-text variant="18" tag="span" class="p-spacing-mr-16" style="display: inline-block;">18</p-text>
 <p-text variant="20" tag="span" class="p-spacing-mr-16" style="display: inline-block;">20</p-text>
 <p-text variant="24" tag="span" class="p-spacing-mr-16" style="display: inline-block;">24</p-text>

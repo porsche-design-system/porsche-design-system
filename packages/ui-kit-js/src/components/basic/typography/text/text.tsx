@@ -26,11 +26,11 @@ export class Text {
     | 'time'
     | 'legend' = 'p';
 
-  /** Style of the text. Also defines the style for specific breakpoints, like {base: "copy", l: "medium"}. You always need to provide a base value when doing this. */
-  @Prop() public variant?: BreakpointCustomizable<TextVariant> = 'copy';
+  /** Style of the text. Also defines the style for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
+  @Prop() public variant?: BreakpointCustomizable<TextVariant> = 'small';
 
-  /** Thin weight of the text. */
-  @Prop() public thin?: boolean = false;
+  /** The weight of the text. */
+  @Prop() public weight?: 'thin' | 'regular' | 'bold' = 'regular';
 
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
@@ -48,7 +48,7 @@ export class Text {
       prefix('text'),
       // prefix(`text--variant-${this.variant}`),
       mapBreakpointPropToPrefixedClasses('text--variant', this.variant),
-      this.thin && prefix(`text--thin`),
+      prefix(`text--weight-${this.weight}`),
       prefix(`text--align-${this.align}`),
       prefix(`text--color-${this.color}`),
       this.ellipsis && prefix('text--ellipsis')
@@ -56,7 +56,7 @@ export class Text {
 
     return (
       <TagType class={textClasses}>
-        <slot/>
+        <slot />
       </TagType>
     );
   }
