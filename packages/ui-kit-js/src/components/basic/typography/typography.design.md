@@ -44,23 +44,23 @@ For Chinese and Japanese language, the following system fonts are to be used, st
 
 The Porsche type scale is a dedicated sizing system based on a specific formula.
 
-<p-text variant="12" tag="span" class="p-spacing-mr-16" style="display: inline-block;">12</p-text>
-<p-text variant="16" tag="span" class="p-spacing-mr-16" style="display: inline-block;">16</p-text>
-<p-text variant="18" tag="span" class="p-spacing-mr-16" style="display: inline-block;">18</p-text>
-<p-text variant="20" tag="span" class="p-spacing-mr-16" style="display: inline-block;">20</p-text>
-<p-text variant="24" tag="span" class="p-spacing-mr-16" style="display: inline-block;">24</p-text>
-<p-text variant="28" tag="span" class="p-spacing-mr-16" style="display: inline-block;">28</p-text>
-<p-text variant="30" tag="span" class="p-spacing-mr-16" style="display: inline-block;">30</p-text>
-<p-text variant="32" tag="span" class="p-spacing-mr-16" style="display: inline-block;">32</p-text>
-<p-text variant="36" tag="span" class="p-spacing-mr-16" style="display: inline-block;">36</p-text>
-<p-text variant="42" tag="span" class="p-spacing-mr-16" style="display: inline-block;">42</p-text>
-<p-text variant="44" tag="span" class="p-spacing-mr-16" style="display: inline-block;">44</p-text>
-<p-text variant="48" tag="span" class="p-spacing-mr-16" style="display: inline-block;">48</p-text>
-<p-text variant="52" tag="span" class="p-spacing-mr-16" style="display: inline-block;">52</p-text>
-<p-text variant="60" tag="span" class="p-spacing-mr-16" style="display: inline-block;">60</p-text>
-<p-text variant="62" tag="span" class="p-spacing-mr-16" style="display: inline-block;">62</p-text>
-<p-text variant="72" tag="span" class="p-spacing-mr-16" style="display: inline-block;">72</p-text>
-<p-text variant="84" tag="span" style="display: inline-block;">84</p-text>
+<p-text variant="x-small" tag="span" style="display: inline-block; margin-right: 16px">12</p-text>
+<p-text variant="small" tag="span" style="display: inline-block; margin-right: 16px">16</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 18px;">18</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 20px;">20</p-text>
+<p-text variant="medium" tag="span" style="display: inline-block; margin-right: 16px">24</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 28px;">28</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 30px;">30</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 32px;">32</p-text>
+<p-text variant="large" tag="span" style="display: inline-block; margin-right: 16px">36</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 42px;">42</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 44px;">44</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 48px;">48</p-text>
+<p-text variant="x-large" tag="span" style="display: inline-block; margin-right: 16px">52</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 60px;">60</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 62px;">62</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 72px;">72</p-text>
+<p-text variant="inherit" tag="span" style="display: inline-block; font-size: 84px;">84</p-text>
 
 ### Line height
 
