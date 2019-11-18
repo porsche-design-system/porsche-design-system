@@ -301,12 +301,12 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item size="10">
           <div class="playground light spacing-inline">
-            <p-icon source="car-next"></p-icon>
-            <p-icon source="car-next" size="medium"></p-icon>
-            <p-icon source="car-next" size="large"></p-icon>
-            <p-icon source="car-next" size="large" color="porsche-red"></p-icon>
-            <p-icon source="car-next" size="large" color="inherit" style="color: deeppink;"></p-icon>
-            <p-icon source="kaixin" size="large"></p-icon>
+            <p-icon name="car-next" aria-label="Car icon"></p-icon>
+            <p-icon name="car-next" size="medium" aria-label="Car icon"></p-icon>
+            <p-icon name="car-next" size="large" aria-label="Car icon"></p-icon>
+            <p-icon name="car-next" size="large" color="porsche-red" aria-label="Car icon"></p-icon>
+            <p-icon name="car-next" size="large" color="inherit" aria-label="Car icon" style="color: deeppink;"></p-icon>
+            <p-icon name="kaixin" size="large" aria-label="Kaixin icon"></p-icon>
           </div>
           <hr>
         </p-grid-item>
