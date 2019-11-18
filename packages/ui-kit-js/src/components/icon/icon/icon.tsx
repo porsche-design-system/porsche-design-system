@@ -95,13 +95,15 @@ export class Icon {
     }
   }
 
-  public getSource() {
+  public getSource(): string {
     if (this.name && !this.source) {
       return `https://cdn.ui.porsche.com/porsche-icons/icons/${this.variant}/${this.name}.svg`;
-    } else if (this.source) {
+    }
+    if (this.source) {
       return this.source;
     }
-    console.warn('Please provide either an icon property or a source property!');
+    console.warn('Please provide either an name property or a source property!');
+    return '';
   }
 
   public render(): JSX.Element {
