@@ -25,10 +25,27 @@
   * Made `click`, `focus`, `focusin`, `blur` and `focusout` events behave like expected (like native elements) for p-button-icon
   * Added `tabbable` property to p-button-icon
   * It's now disallowed to use `tabindex` property on p-button-icon (will be ignored and warning is shown)
+* Icon 
+  * Renamed `icon` prop to `name` 
 
 ### Bugfix
 * Button Icon
   * Fix submitting form behaviour of p-button-icon (it's now preventable by "preventDefault")
+
+### Breaking change
+- Changed icon CDN path to Icon Tools CDN directory.
+- Changed interface of `Icon` component: 
+    - `source` property is now only for custom icon paths
+    - `icon` property is added for official icon names (delivered from Porsche Icon Tool)
+    - Deleted `icon_` prefix of icon namings, e.g. `icon_arrow-right-hair` --> `arrow-right-hair` 
+    - Migration path: change any occurrence of `source` to `icon` if not used with custom icons (custom URL)
+
+- Changed interface of `Button Regular`, `Button Icon` and `Text Link` component: 
+    - `iconSource` property is added only for custom icon paths
+    - `icon` property is now only for official icon names (delivered from Porsche Icon Tool)
+    - Deleted `icon_` prefix of icon namings, e.g. `icon_arrow-right-hair` --> `arrow-right-hair` 
+    - Migration path: change any occurrence of `source` to `iconSource` (or `icon-source) if used` with custom icons (custom URL)
+
 
 ## [1.0.0-alpha.6] (2019-10-14)
 

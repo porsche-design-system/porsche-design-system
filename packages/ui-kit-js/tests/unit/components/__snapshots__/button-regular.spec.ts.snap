@@ -4,7 +4,7 @@ exports[`Component <p-button-regular> should render correctly in default mode wi
 <p-button-regular>
   <mock:shadow-root>
     <button class="p-button-regular" type="button">
-      <p-icon class="p-button-regular__icon" source="arrow-right-hair"></p-icon>
+      <p-icon class="p-button-regular__icon" name="arrow-right-hair"></p-icon>
       <p-text class="p-button-regular__label" color="inherit" tag="span">
         <slot></slot>
       </p-text>
@@ -13,4 +13,3 @@ exports[`Component <p-button-regular> should render correctly in default mode wi
   Some label
 </p-button-regular>
 `;
-
