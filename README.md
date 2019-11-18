@@ -200,11 +200,15 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ### Preparation
 1. Export related Sketch file from master, e.g. Web Library
-2. Rename exported file to correct naming format, e.g. porsche-ui-kit-web.sketch
-3. Create use existing issue branch or create a new branch (for Sketch Update only)
+1. Rename exported file to correct naming format, e.g. porsche-ui-kit-web.sketch
+1. Use existing issue branch or create a new branch (for Sketch Update only)
 
 ### Sketch Library
 1. Switch to __sketch directory__
-2. Replace existing file with new file
-3. Switch to __docker/node/bin directory__ and open `run-deploy`
-4. Increase version increment according to the update `P_LATEST_STABLE_SKETCH_VERSION="v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}"`
+1. Replace existing file with new file
+1. Switch to __docker/node/bin directory__ and open `run-deploy`
+1. Increase version increment according to the update `P_LATEST_STABLE_SKETCH_VERSION="v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}"`
+
+### Commit
+1. Create a commit
+1. Push local commit to issue branch `git push`
