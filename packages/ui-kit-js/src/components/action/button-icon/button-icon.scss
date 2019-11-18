@@ -7,7 +7,7 @@
 
 .#{$p-global-class-prefix}button-icon {
   $bem-block: &;
-  display: inline-flex;
+  display: block;
   width: rem(48px);
   height: rem(48px);
   position: relative;
