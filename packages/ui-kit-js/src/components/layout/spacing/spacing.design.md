@@ -1,44 +1,32 @@
 # Spacing
+We use defined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes the development easier. For fluid layouts the spacings should be used in combination with the [responsive grid](#/web/components/layout/grid).
 
-We use defined spacings to seperate components elements within a layout. Using the same defined spacing system provides a consistent and familiar user experience across all pages. For layouts the spacing should be used in combination with the [responsive grid](#/web/components/layout/grid).
-
-## 8 px spacing system - the Porsche formula
-We use a 8 px square grid system across all viewports to define dimensions, padding and margin of block and inline elements. The grid unit of 8 px refers to
-the general base size of 16 px (= 1 em), that is also applied in typography and other component sizes.
+### 8 px spacing system - the Porsche formula
+The Porsche spacing system is based on multiplies of eight. The unit of 8 px refers to the general base size of 16 px (= 1 em), that is also applied in typography and other component sizes.
 
 ![The Porsche spacing formula](./assets/spacings-formula.png)
 
-
-## Applying the 8 px system
-
-- **Margins and paddings** are applied based on multiples of 8 px. Boxed UI elements are sized either by adapting to the fixed value or to the [fluid column widths](#/web/components/layout/grid).
-- **Typography as an exception** works with a baseline unit of 4 px for larger flexibility while ensuring the overall consistent rhythm.
-
-## System and layout spacings
-
-The Porsche UI Kit spacing Scale shows the spacings from 4 px to 80 px. The two systems are based on the same definitions to complete the overall consistency.
-
-### Spacing Scale 
-We recommend to use the <span style="color:#00D5B9">layout spacings</span> which are provide in code.
-Additional increments can be added for specific requirements as long as the 8 px spacing system is adhered to.
+## Spacing system and layout spacings
+For layouting we recommend to use the <strong><span style="color:#00D5B9">layout spacings</span></strong>, that are available for developers as variables from x-small to xx-large.
+Additional increments of the spacing system can be used for specific requirements as long as the 8 px spacing system is adhered to.
 
 |       	                                |                	| PX     	| REM 	| LAYOUT SPACING |
 |----------------------------------------	|---------------	|-------	|------	|------	|
-| ![spacing 4](./assets/spacing-4.png)    | **spacing-4**  	| 4 px  	| 0.25 	| ✓ |
-| ![spacing 8](./assets/spacing-8.png)    | **spacing-8**  	| 8 px  	| 0.5 	| ✓ |
-| ![spacing 16](./assets/spacing-16.png)  | **spacing-16** 	| 16 px 	| 1  	| ✓ |
-| ![spacing 24](./assets/spacing-24.png)  |**spacing-24** 	| 24 px 	| 1.5 	| x |
-| ![spacing 32](./assets/spacing-32.png)  |**spacing-32** 	| 32 px 	| 2  	| ✓ |
-| ![spacing 40](./assets/spacing-40.png)  |**spacing-40** 	| 40 px 	| 2.5  	| x |
-| ![spacing 48](./assets/spacing-48.png)  |**spacing-48** 	| 48 px 	| 3  	| ✓ |
-| ![spacing 56](./assets/spacing-56.png)  |**spacing-56** 	| 56 px 	| 3.5 	| x |
-| ![spacing 64](./assets/spacing-64.png)  |**spacing-64** 	| 64 px 	| 4 	| x |
-| ![spacing 72](./assets/spacing-72.png)  |**spacing-72** 	| 72 px 	| 4.5 	| x |
-| ![spacing 80](./assets/spacing-80.png)  |**spacing-80** 	| 80 px 	| 5 	| ✓ |
+| ![spacing 4](./assets/spacing-4.png)    | **spacing-4**  	| 4 px  	| 0.25 	| x-small |
+| ![spacing 8](./assets/spacing-8.png)    | **spacing-8**  	| 8 px  	| 0.5 	| small |
+| ![spacing 16](./assets/spacing-16.png)  | **spacing-16** 	| 16 px 	| 1  	| medium |
+| ![spacing 24](./assets/spacing-24.png)  |**spacing-24** 	| 24 px 	| 1.5 	| - |
+| ![spacing 32](./assets/spacing-32.png)  |**spacing-32** 	| 32 px 	| 2  	| large |
+| ![spacing 40](./assets/spacing-40.png)  |**spacing-40** 	| 40 px 	| 2.5  	| - |
+| ![spacing 48](./assets/spacing-48.png)  |**spacing-48** 	| 48 px 	| 3  	| x-large |
+| ![spacing 56](./assets/spacing-56.png)  |**spacing-56** 	| 56 px 	| 3.5 	| - |
+| ![spacing 64](./assets/spacing-64.png)  |**spacing-64** 	| 64 px 	| 4 	| - |
+| ![spacing 72](./assets/spacing-72.png)  |**spacing-72** 	| 72 px 	| 4.5 	| - |
+| ![spacing 80](./assets/spacing-80.png)  |**spacing-80** 	| 80 px 	| 5 	| xx-large |
 
 
 ![The Porsche spacing formula](./assets/spacings-example-02.png)
-Example: Mixed use of system, layout and custom spacings.
+Example: Mixed use of the spacing system with layout and custom spacings.
 
 ## Working with space 
 
@@ -98,13 +86,11 @@ settings → Canvas.
 When it comes to design-to-dev-handover, we should always keep in mind that the handling of
 spacings is different: Whereas the designer sets the spacings manually in Sketch
 layouts, the developer implements them by using pre-defined spacing variables
-(e.g. spacing-8 or spacing-16). Therefore, we should always make sure that the
+(e.g. spacing-8 or spacing-16) or the layout variables (e.g. layout-small or layout-medium). Therefore, we should always make sure that the
 spacings in sketch are set as correctly as possible and that they the developer
 can easily read them in Abstract's inspect mode - of course, a personal
 conversation between designer and developer is always the best way to get
-optimal results. Last but not least a one-on-one is indispensable when it comes
-to spacings, as the developer might not know when to use a fixed or flexible
-spacing class (e.g. 8 px on mobile might as well be spacing-8 or spacing-b).
+optimal results.
 
 ![Abstract inspect view of spacing](./assets/spacings-inspect.png)
 
@@ -114,8 +100,6 @@ consider borders as solid space around elements by default. We recommend to
 ignore this fact while designing and to always set the focus on giving the developer
 the right spacing sizes between or inside elements, even if this results in
 slightly higher elements in implementation due to the additional border.
-
-
 
 ### Lines
 Lines can be created using either a narrow rectangle or a path
