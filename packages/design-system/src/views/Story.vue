@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="tabs" v-if="hasTabs">
-      <p-text variant="inherit" tag="div" thin="true" class="tab" v-for="(tab, index) in tabs" :key="index">
+      <p-text variant="inherit" tag="div" weight="thin" class="tab" v-for="(tab, index) in tabs" :key="index">
         <router-link :to="getTabLink(tab)">{{ tab }}</router-link>
       </p-text>
     </nav>
