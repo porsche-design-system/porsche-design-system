@@ -1,7 +1,7 @@
 <template>
   <div class="playground">
     <div class="tabs" role="tablist" v-if="themeable">
-      <p-text class="tab" variant="inherit" thin="true" tag="div">
+      <p-text class="tab" variant="inherit" weight="thin" tag="div">
         <button
           type="button"
           role="tab"
@@ -11,7 +11,7 @@
         >Light theme
         </button>
       </p-text>
-      <p-text class="tab" variant="inherit" thin="true" tag="div">
+      <p-text class="tab" variant="inherit" weight="thin" tag="div">
         <button
           type="button"
           role="tab"
