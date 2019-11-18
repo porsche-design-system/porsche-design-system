@@ -24,8 +24,8 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 import { Components } from '@porsche-ui/ui-kit-js'
 
 export declare interface PButtonIcon extends Components.PButtonIcon {}
-@ProxyInputs(['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'])
-@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
+@ProxyInputs(['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'])
+@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
 export class PButtonIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -35,8 +35,8 @@ export class PButtonIcon {
 }
 
 export declare interface PButtonRegular extends Components.PButtonRegular {}
-@ProxyInputs(['disabled', 'href', 'icon', 'loading', 'small', 'target', 'theme', 'type', 'variant'])
-@Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })
+@ProxyInputs(['disabled', 'href', 'icon', 'iconSource', 'loading', 'small', 'target', 'theme', 'type', 'variant'])
+@Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })
 export class PButtonRegular {
   pClick!: EventEmitter<CustomEvent>;
   pFocus!: EventEmitter<CustomEvent>;
@@ -105,8 +105,8 @@ export class PHeadline {
 }
 
 export declare interface PIcon extends Components.PIcon {}
-@ProxyInputs(['ariaLabel', 'color', 'lazy', 'size', 'source'])
-@Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['ariaLabel', 'color', 'lazy', 'size', 'source'] })
+@ProxyInputs(['color', 'name', 'lazy', 'size', 'source'])
+@Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'name', 'lazy', 'size', 'source'] })
 export class PIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -162,8 +162,8 @@ export class PText {
 }
 
 export declare interface PTextLink extends Components.PTextLink {}
-@ProxyInputs(['color', 'download', 'href', 'icon', 'rel', 'tag', 'target', 'variant'])
-@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'rel', 'tag', 'target', 'variant'] })
+@ProxyInputs(['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'tag', 'target', 'variant'])
+@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'tag', 'target', 'variant'] })
 export class PTextLink {
   pClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
