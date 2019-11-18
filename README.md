@@ -199,7 +199,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ## Release management - Porsche UI Kit (Sketch Libraries)
 
 ### Preparation
-1. Export related Sketch file from master, e.g. Web Library
+1. Export related Sketch file from master, e.g. Web Library (https://share.goabstract.com/e9baaa65-1d0b-472a-a134-a50f2c079d5e) or Basic Library (https://share.goabstract.com/401193dc-0054-45f1-b034-8e1a9a25590e)
 1. Rename exported file to correct naming format, e.g. porsche-ui-kit-web.sketch
 1. Use existing issue branch or create a new branch (for Sketch Update only)
 
