@@ -216,10 +216,6 @@ export namespace Components {
   }
   interface PIcon {
     /**
-    * Specifies the label to use for accessibility. Defaults to the icon name.
-    */
-    'ariaLabel'?: string;
-    /**
     * Basic color variations.
     */
     'color'?: TextColor;
@@ -230,7 +226,7 @@ export namespace Components {
     /**
     * Specifies which icon to use.
     */
-    'name': IconName;
+    'name'?: IconName;
     /**
     * The size of the icon.
     */
@@ -703,10 +699,6 @@ declare namespace LocalJSX {
     | 'headline-6';
   }
   interface PIcon extends JSXBase.HTMLAttributes<HTMLPIconElement> {
-    /**
-    * Specifies the label to use for accessibility. Defaults to the icon name.
-    */
-    'ariaLabel'?: string;
     /**
     * Basic color variations.
     */

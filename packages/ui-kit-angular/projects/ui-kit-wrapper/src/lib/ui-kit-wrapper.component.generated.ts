@@ -111,7 +111,7 @@ export class PHeadline {
 proxyInputs(PHeadline, ['align', 'color', 'ellipsis', 'tag', 'variant']);
 
 export declare interface PIcon extends Components.PIcon {}
-@Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['ariaLabel', 'color', 'lazy', 'name', 'size', 'source'] })
+@Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'lazy', 'name', 'size', 'source'] })
 export class PIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -119,7 +119,7 @@ export class PIcon {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PIcon, ['ariaLabel', 'color', 'lazy', 'name', 'size', 'source']);
+proxyInputs(PIcon, ['color', 'lazy', 'name', 'size', 'source']);
 
 export declare interface PMarque extends Components.PMarque {}
 @Component({ selector: 'p-marque', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['trademark'] })
