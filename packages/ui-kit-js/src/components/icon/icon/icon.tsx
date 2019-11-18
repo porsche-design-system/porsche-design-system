@@ -1,5 +1,4 @@
 import { Build, Component, Host, Element, Prop, State, Watch, h } from '@stencil/core';
-import { getName } from './icon-helper';
 import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
@@ -17,7 +16,7 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public name: IconName;
+  @Prop() public name?: IconName = 'arrow-right-hair';
 
   /**
    * Specifies a whole icon path which can be used for custom icons.
@@ -31,11 +30,8 @@ export class Icon {
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
   /**
-   * Specifies the label to use for accessibility. Defaults to the icon name.
+   * Basic color variations.
    */
-  @Prop({ mutable: true, reflectToAttr: true }) public ariaLabel?: string;
-
-  /** Basic color variations. */
   @Prop() public color?: TextColor = 'inherit';
 
   /**
@@ -84,15 +80,6 @@ export class Icon {
         getSvgContent(url).then(() => this.svgContent = iconContent.get(url));
       }
     }
-
-    if (!this.ariaLabel) {
-      const name = this.source ? getName(this.getSource()) : this.name;
-      // user did not provide a label
-      // come up with the label based on the icon name
-      if (name) {
-        this.ariaLabel = name.replace(/-/g, ' ');
-      }
-    }
   }
 
   public getSource(): string {
@@ -114,7 +101,7 @@ export class Icon {
     );
 
     return (
-      <Host role='img' >{(
+      <Host role='img'>{(
         (Build.isBrowser && this.svgContent)
           ? <i class={iconClasses} innerHTML={this.svgContent}/>
           : <i class={iconClasses}/>
