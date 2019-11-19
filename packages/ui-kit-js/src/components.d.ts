@@ -355,6 +355,10 @@ export namespace Components {
     */
     'rel'?: string;
     /**
+    * The style of the text.
+    */
+    'size'?: TextSize;
+    /**
     * Set a custom HTML tag depending of the usage of the component.
     */
     'tag'?: 'span' | 'a';
@@ -362,10 +366,6 @@ export namespace Components {
     * Target attribute where the link should be opened.
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
-    * The style of the text.
-    */
-    'variant'?: TextSize;
   }
   interface PTextList {
     /**
@@ -844,6 +844,10 @@ declare namespace LocalJSX {
     */
     'rel'?: string;
     /**
+    * The style of the text.
+    */
+    'size'?: TextSize;
+    /**
     * Set a custom HTML tag depending of the usage of the component.
     */
     'tag'?: 'span' | 'a';
@@ -851,10 +855,6 @@ declare namespace LocalJSX {
     * Target attribute where the link should be opened.
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
-    * The style of the text.
-    */
-    'variant'?: TextSize;
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
