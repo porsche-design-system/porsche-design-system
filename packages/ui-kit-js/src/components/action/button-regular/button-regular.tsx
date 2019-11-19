@@ -70,14 +70,14 @@ export class ButtonRegular {
         onFocus={(e) => this.onFocus(e)}
         onBlur={(e) => this.onBlur(e)}
       >
+        <p-text tag='span' color='inherit' class={labelClasses}>
+          <slot />
+        </p-text>
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
         ) : (
           <p-icon class={iconClasses} source={this.icon} />
         )}
-        <p-text tag='span' color='inherit' class={labelClasses}>
-          <slot />
-        </p-text>
       </TagType>
     );
   }

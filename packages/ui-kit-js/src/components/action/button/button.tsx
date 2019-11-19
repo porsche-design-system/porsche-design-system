@@ -46,8 +46,12 @@ export class Button {
   /** Adapts the button color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  @Prop() public isSlotDefined?: boolean = false;
+
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
+    console.log(this.element);
+    console.log('123', this.element.shadowRoot.querySelectorAll('slot'));
   }
 
   public render(): JSX.Element {
@@ -60,6 +64,7 @@ export class Button {
     );
     const iconClasses = prefix('button__icon');
     const spinnerClasses = prefix('button__spinner');
+    const labelClasses = prefix('button__label');
 
     return (
       <button
@@ -69,14 +74,20 @@ export class Button {
         aria-label={this.allyLabel}
         tabindex={this.tabbable ? 0 : -1}
       >
+        {this.isSlotDefined ? (
+          <p-text tag='span' color='inherit' class={labelClasses}>
+            <slot/>
+          </p-text>
+        ) : null}
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
         ) : (
-          <p-icon class={iconClasses} size='medium' source={this.icon} />
+          <p-icon class={iconClasses} size='inherit' source={this.icon} />
         )}
       </button>
     );
   }
+
 
   /**
    * IE11 workaround to fix the event target
