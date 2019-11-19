@@ -1,6 +1,6 @@
 **References**  
 - Closes #
-- [Documentation Preview](https://porscheui.github.io/porsche-ui-kit/issue/...)
+- Documentation Preview: https://ui.porsche.com/issue/.../
 
 **Scope**  
 Short description of the pull request scope
