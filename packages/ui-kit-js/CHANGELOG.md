@@ -2,6 +2,12 @@
 
 ## NOT RELEASED YET
 
+### Change
+
+* Spacing
+  * Remove global static spacing classes
+  * Remove responsive spacing classes (`a` to `g`)
+
 ## [1.0.0-alpha.7] (2019-11-05)
 
 ### Change
