@@ -1,7 +1,7 @@
 <template>
   <div class="playground">
     <div class="tabs" role="tablist" v-if="themeable">
-      <p-text class="tab" variant="inherit" weight="thin" tag="div">
+      <p-text class="tab" size="inherit" weight="thin" tag="div">
         <button
           type="button"
           role="tab"
@@ -11,7 +11,7 @@
         >Light theme
         </button>
       </p-text>
-      <p-text class="tab" variant="inherit" weight="thin" tag="div">
+      <p-text class="tab" size="inherit" weight="thin" tag="div">
         <button
           type="button"
           role="tab"
@@ -100,11 +100,11 @@
     display: flex;
 
     .tab {
+      font-size: $p-font-size-20;
+
       &:not(:last-child) {
         margin-right: $p-spacing-24;
       }
-
-      font-size: $p-font-size-20;
 
       button {
         display: block;

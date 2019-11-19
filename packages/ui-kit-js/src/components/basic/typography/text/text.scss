@@ -32,6 +32,7 @@
 
 
 .#{$p-global-class-prefix}text {
+  @include p-text;
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -41,131 +42,130 @@
     font-weight: $p-font-weight-bold;
   }
 
-  &--variant {
+  &--size {
     &-x-small {
-      @include p-text($p-text-x-small);
+      font-size: $p-text-size-x-small;
     }
     &-small {
-      @include p-text;
+      font-size: $p-text-size-small;
     }
     &-medium {
-      @include p-text($p-text-medium);
+      font-size: $p-text-size-medium;
     }
     &-large {
-      @include p-text($p-text-large);
+      font-size: $p-text-size-large;
     }
     &-x-large {
-      @include p-text($p-text-x-large);
+      font-size: $p-text-size-x-large;
     }
     &-inherit {
-      @include p-text(inherit);
+      font-size: inherit;
     }
 
     @include p-breakpoint("xs") {
       &-x-small-xs {
-        @include p-text($p-text-x-small);
+        font-size: $p-text-size-x-small;
       }
       &-small-xs {
-        @include p-text;
+        font-size: $p-text-size-small;
       }
       &-medium-xs {
-        @include p-text($p-text-medium);
+        font-size: $p-text-size-medium;
       }
       &-large-xs {
-        @include p-text($p-text-large);
+        font-size: $p-text-size-large;
       }
       &-x-large-xs {
-        @include p-text($p-text-x-large);
+        font-size: $p-text-size-x-large;
       }
       &-inherit-xs {
-        @include p-text(inherit);
+        font-size: inherit;
       }
     }
 
     @include p-breakpoint("s") {
       &-x-small-s {
-        @include p-text($p-text-x-small);
+        font-size: $p-text-size-x-small;
       }
       &-small-s {
-        @include p-text;
+        font-size: $p-text-size-small;
       }
       &-medium-s {
-        @include p-text($p-text-medium);
+        font-size: $p-text-size-medium;
       }
       &-large-s {
-        @include p-text($p-text-large);
+        font-size: $p-text-size-large;
       }
       &-x-large-s {
-        @include p-text($p-text-x-large);
+        font-size: $p-text-size-x-large;
       }
       &-inherit-s {
-        @include p-text(inherit);
+        font-size: inherit;
       }
     }
 
     @include p-breakpoint("m") {
       &-x-small-m {
-        @include p-text($p-text-x-small);
+        font-size: $p-text-size-x-small;
       }
       &-small-m {
-        @include p-text;
+        font-size: $p-text-size-small;
       }
       &-medium-m {
-        @include p-text($p-text-medium);
+        font-size: $p-text-size-medium;
       }
       &-large-m {
-        @include p-text($p-text-large);
+        font-size: $p-text-size-large;
       }
       &-x-large-m {
-        @include p-text($p-text-x-large);
+        font-size: $p-text-size-x-large;
       }
       &-inherit-m {
-        @include p-text(inherit);
+        font-size: inherit;
       }
     }
 
     @include p-breakpoint("l") {
       &-x-small-l {
-        @include p-text($p-text-x-small);
+        font-size: $p-text-size-x-small;
       }
       &-small-l {
-        @include p-text;
+        font-size: $p-text-size-small;
       }
       &-medium-l {
-        @include p-text($p-text-medium);
+        font-size: $p-text-size-medium;
       }
       &-large-l {
-        @include p-text($p-text-large);
+        font-size: $p-text-size-large;
       }
       &-x-large-l {
-        @include p-text($p-text-x-large);
+        font-size: $p-text-size-x-large;
       }
       &-inherit-l {
-        @include p-text(inherit);
+        font-size: inherit;
       }
     }
 
     @include p-breakpoint("xl") {
       &-x-small-xl {
-        @include p-text($p-text-x-small);
+        font-size: $p-text-size-x-small;
       }
       &-small-xl {
-        @include p-text;
+        font-size: $p-text-size-small;
       }
       &-medium-xl {
-        @include p-text($p-text-medium);
+        font-size: $p-text-size-medium;
       }
       &-large-xl {
-        @include p-text($p-text-large);
+        font-size: $p-text-size-large;
       }
       &-x-large-xl {
-        @include p-text($p-text-x-large);
+        font-size: $p-text-size-x-large;
       }
       &-inherit-xl {
-        @include p-text(inherit);
+        font-size: inherit;
       }
     }
-
   }
 
   &--weight {

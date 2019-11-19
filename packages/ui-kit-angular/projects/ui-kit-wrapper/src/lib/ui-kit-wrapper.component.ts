@@ -151,8 +151,8 @@ export class PSpinner {
 }
 
 export declare interface PText extends Components.PText {}
-@ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'thin', 'variant'])
-@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'thin', 'variant'] })
+@ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'variant', 'weight'])
+@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant', 'weight'] })
 export class PText {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {

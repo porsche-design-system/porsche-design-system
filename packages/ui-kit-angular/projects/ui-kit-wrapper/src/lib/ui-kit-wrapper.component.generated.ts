@@ -157,7 +157,7 @@ export class PSpinner {
 proxyInputs(PSpinner, ['allyLabel', 'size', 'theme']);
 
 export declare interface PText extends Components.PText {}
-@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant', 'weight'] })
+@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'size', 'tag', 'weight'] })
 export class PText {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -165,7 +165,7 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PText, ['align', 'color', 'ellipsis', 'tag', 'variant', 'weight']);
+proxyInputs(PText, ['align', 'color', 'ellipsis', 'size', 'tag', 'weight']);
 
 export declare interface PTextLink extends Components.PTextLink {}
 @Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'tag', 'target', 'variant'] })

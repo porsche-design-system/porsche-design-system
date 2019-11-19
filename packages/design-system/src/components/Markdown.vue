@@ -147,7 +147,7 @@
         // Code
         code,
         pre {
-          @include p-text($p-text-x-small);
+          @include p-text($p-text-size-x-small);
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
         }
 

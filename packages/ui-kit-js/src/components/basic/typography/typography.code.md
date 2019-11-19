@@ -64,14 +64,14 @@ The default semantic HTML element is `p`.
 
 --- 
 
-### Variants
+### Size
 
-There are predefined default text variants for the text component which should cover most use cases. If a specific text size is needed, the variant can be set to `inherit` to specify the text size from outside.
+There are predefined default text sizes for the text component which should cover most use cases. If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground>
   <template #configurator>
-    <select @change="variant = $event.target.value">
-      <option disabled>Select a style variant</option>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
       <option>x-small</option>
       <option>small</option>
       <option selected>medium</option>
@@ -80,7 +80,7 @@ There are predefined default text variants for the text component which should c
       <option>inherit</option>
     </select>
   </template>
-  <p-text :variant="variant" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text :size="size" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 #### Responsive
@@ -88,7 +88,7 @@ There are predefined default text variants for the text component which should c
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
-  <p-text variant="{ base: 'small', l: 'medium' }">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="{ base: 'small', l: 'medium' }">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 --- 
@@ -106,12 +106,12 @@ There are predefined default text weights for copy text. Be aware of using the `
       <option>bold</option>
     </select>
   </template>
-  <p-text variant="medium" :weight="weight">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="medium" :weight="weight">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 ---
 
-### Color variants
+### Color
 The default text color is Porsche Black. But also predefined or inherited colors can be set.
 
 <Playground>
@@ -122,7 +122,7 @@ The default text color is Porsche Black. But also predefined or inherited colors
 
 --- 
 
-### Alignment variants
+### Alignment
 
 <Playground>
   <p-text align="left">Left</p-text>
@@ -153,11 +153,11 @@ This will force any text to never wrap into a new line and in case it's to long 
   
   @Component
   export default class PlaygroundTypography extends Vue {
-    public variant: string = 'medium';
+    public size: string = 'medium';
     public weight: string = 'thin';
     
     public get isInherit() {
-      return this.variant === 'inherit' ? 'font-size: 48px' : undefined;
+      return this.size === 'inherit' ? 'font-size: 48px' : undefined;
     }
   }
 </script>

@@ -179,10 +179,13 @@ h1 {
 ### Text
 
 With the text mixin, it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
-Default is `$p-text-small` and `$p-font-weight-regular`.
+Default is `$p-text-size-small` and `$p-font-weight-regular`.
 
 Pre defined variant values are:  
-`$p-text-x-small | $p-text-small | $p-text-medium | $p-text-large | $p-text-x-large`
+`$p-text-size-x-small | $p-text-size-small | $p-text-size-medium | $p-text-size-large | $p-text-size-x-large`  
+
+Or more generic `$p-font-size-{v};` where `v` is:  
+`12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
 
 Pre defined weight values are:  
 `$p-font-weight-thin | $p-font-weight-regular | $p-font-weight-bold`
@@ -212,7 +215,7 @@ p {
 #### Example with specific parameters
 ```
 p {
-  @include p-text($p-text-medium, $p-font-weight-thin);
+  @include p-text($p-text-size-medium, $p-font-weight-thin);
 }
 ```
 

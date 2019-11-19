@@ -48,7 +48,7 @@ import {Component} from '@angular/core';
         <p-grid-item size="10">
           <div class="playground light spacing-block">
             <p-text>The quick brown fox jumps over the lazy dog</p-text>
-            <p-text variant="x-small">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text size="x-small">The quick brown fox jumps over the lazy dog</p-text>
           </div>
           <div class="playground light spacing-block">
             <p-text color="porsche-black">Porsche Black</p-text>

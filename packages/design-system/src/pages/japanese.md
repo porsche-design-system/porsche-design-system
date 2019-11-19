@@ -20,6 +20,6 @@
 
 --- 
 
-<p-text variant="x-small">
+<p-text size="x-small">
   Text taken from https://www.porsche.com/japan/jp/aboutporsche/principleporsche/
 </p-text>
