@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="tabs" v-if="hasTabs">
-      <p-text variant="inherit" tag="div" weight="thin" class="tab" v-for="(tab, index) in tabs" :key="index">
+      <p-text size="inherit" tag="div" weight="thin" class="tab" v-for="(tab, index) in tabs" :key="index">
         <router-link :to="getTabLink(tab)">{{ tab }}</router-link>
       </p-text>
     </nav>
@@ -130,11 +130,11 @@
     border-bottom: 1px solid $p-color-neutral-grey-2;
 
     .tab {
+      font-size: $p-font-size-28;
+
       &:not(:last-child) {
         margin-right: $p-spacing-40;
       }
-
-      font-size: $p-font-size-28;
 
       a {
         display: block;

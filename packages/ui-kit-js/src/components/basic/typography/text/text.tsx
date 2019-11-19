@@ -5,7 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../../utils';
-import {TextVariant, TextColor} from '../../../../types';
+import {TextSize, TextColor} from '../../../../types';
 
 @Component({
   tag: 'p-text',
@@ -26,8 +26,8 @@ export class Text {
     | 'time'
     | 'legend' = 'p';
 
-  /** Style of the text. Also defines the style for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
-  @Prop() public variant?: BreakpointCustomizable<TextVariant> = 'small';
+  /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
+  @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
   /** The weight of the text. */
   @Prop() public weight?: 'thin' | 'regular' | 'bold' = 'regular';
@@ -46,10 +46,9 @@ export class Text {
 
     const textClasses = cx(
       prefix('text'),
-      // prefix(`text--variant-${this.variant}`),
-      mapBreakpointPropToPrefixedClasses('text--variant', this.variant),
-      prefix(`text--weight-${this.weight}`),
-      prefix(`text--align-${this.align}`),
+      mapBreakpointPropToPrefixedClasses('text--size', this.size),
+      this.weight !== 'regular' && prefix(`text--weight-${this.weight}`),
+      this.align !== 'left' && prefix(`text--align-${this.align}`),
       prefix(`text--color-${this.color}`),
       this.ellipsis && prefix('text--ellipsis')
     );

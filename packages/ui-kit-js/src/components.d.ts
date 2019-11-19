@@ -14,7 +14,7 @@ import {
 } from './utils';
 import {
   TextColor,
-  TextVariant,
+  TextSize,
 } from './types';
 
 export namespace Components {
@@ -309,6 +309,10 @@ export namespace Components {
     */
     'ellipsis'?: boolean;
     /**
+    * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
     * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
@@ -320,10 +324,6 @@ export namespace Components {
     | 'cite'
     | 'time'
     | 'legend';
-    /**
-    * Style of the text. Also defines the style for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
-    */
-    'variant'?: BreakpointCustomizable<TextVariant>;
     /**
     * The weight of the text.
     */
@@ -365,7 +365,7 @@ export namespace Components {
     /**
     * The style of the text.
     */
-    'variant'?: TextVariant;
+    'variant'?: TextSize;
   }
   interface PTextList {
     /**
@@ -794,6 +794,10 @@ declare namespace LocalJSX {
     */
     'ellipsis'?: boolean;
     /**
+    * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
     * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
@@ -805,10 +809,6 @@ declare namespace LocalJSX {
     | 'cite'
     | 'time'
     | 'legend';
-    /**
-    * Style of the text. Also defines the style for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
-    */
-    'variant'?: BreakpointCustomizable<TextVariant>;
     /**
     * The weight of the text.
     */
@@ -854,7 +854,7 @@ declare namespace LocalJSX {
     /**
     * The style of the text.
     */
-    'variant'?: TextVariant;
+    'variant'?: TextSize;
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**

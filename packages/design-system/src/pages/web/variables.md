@@ -107,14 +107,14 @@ Possible variable for usage with SCSS (where {v} is the font size value):
 $p-font-size-{v};
 ```
 
-#### Default text sizes
+#### Predefined text sizes
 Given values are:  
  
 `x-small | small | medium | large | x-large`
 
 Possible variable for usage with SCSS (where {v} is the font size value):
 ```
-$p-text-{v};
+$p-text-size-{v};
 ```
 
 ---

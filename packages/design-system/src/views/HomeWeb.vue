@@ -17,13 +17,13 @@
       <p-grid>
         <p-grid-item size='{"base": 12, "m": 4}'>
           <p-headline variant="headline-3" tag="h1">Porsche UI Kit</p-headline>
-          <p-text variant="medium">Web Design System</p-text>
+          <p-text size="medium">Web Design System</p-text>
           <p-text class="p-spacing-mt-8">
             <router-link to="/web/getting-started/about">Learn more about it</router-link>
           </p-text>
         </p-grid-item>
         <p-grid-item class="p-spacing-mt-24 p-spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
-          <p-text variant="medium">
+          <p-text size="medium">
             The Porsche UI Kit Web provides the design fundamentals and elements for efficiently creating aesthetic and qualitative
             web applications. Including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything built and tested following the Porsche quality standards and corporate design
             principles.
@@ -61,7 +61,7 @@
         </p-grid-item>
         <p-grid-item size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
           <p-text
-            variant="medium"
+            size="medium"
           >Join our mailing list and get informed about relevant updates and topics.
           </p-text>
           <p-text class="p-spacing-mt-16">

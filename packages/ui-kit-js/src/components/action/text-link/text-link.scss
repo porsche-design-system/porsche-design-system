@@ -42,28 +42,28 @@
     flex-shrink: 0;
 
     &--x-small {
-      width: $p-text-x-small * 1.5;
-      height: $p-text-x-small * 1.5;
+      width: $p-text-size-x-small * 1.5;
+      height: $p-text-size-x-small * 1.5;
     }
 
     &--small {
-      width: $p-text-small * 1.5;
-      height: $p-text-small * 1.5;
+      width: $p-text-size-small * 1.5;
+      height: $p-text-size-small * 1.5;
     }
 
     &--medium {
-      width: $p-text-medium * 1.5;
-      height: $p-text-medium * 1.5;
+      width: $p-text-size-medium * 1.5;
+      height: $p-text-size-medium * 1.5;
     }
 
     &--large {
-      width: $p-text-large * 1.5;
-      height: $p-text-large * 1.5;
+      width: $p-text-size-large * 1.5;
+      height: $p-text-size-large * 1.5;
     }
 
     &--x-large {
-      width: $p-text-x-large * 1.5;
-      height: $p-text-x-large * 1.5;
+      width: $p-text-size-x-large * 1.5;
+      height: $p-text-size-x-large * 1.5;
     }
 
   }
