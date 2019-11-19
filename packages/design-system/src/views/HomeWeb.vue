@@ -64,7 +64,7 @@
             variant="medium"
           >Join our mailing list and get informed about relevant updates and topics.
           </p-text>
-          <p-text variant="small" class="p-spacing-mt-16">
+          <p-text class="p-spacing-mt-16">
             <a
               href="http://eepurl.com/gnOIXD"
               target="_blank"
