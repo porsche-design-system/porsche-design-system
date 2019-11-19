@@ -141,9 +141,4 @@ hr {
   //p-flex-item[class*="--offset"]::before{
   //  content: 'o: ' attr(offset);
   //}
-
-  [class*='p-spacing'] {
-    display: inline-flex;
-    background: lightskyblue;
-  }
 }
