@@ -464,27 +464,6 @@ import {Component} from '@angular/core';
           <hr>
         </p-grid-item>
       </p-grid>
-      <p-grid>
-        <p-grid-item size="2">
-          <p-headline variant="headline-4" tag="h4">Spacing</p-headline>
-        </p-grid-item>
-        <p-grid-item size="10">
-          <div class="playground light spacing-inline">
-            <div class="p-spacing-pt-4 p-spacing-pr-4"></div>
-            <div class="p-spacing-pt-8 p-spacing-pr-8"></div>
-            <div class="p-spacing-pt-16 p-spacing-pr-16"></div>
-            <div class="p-spacing-pt-24 p-spacing-pr-24"></div>
-            <div class="p-spacing-pt-32 p-spacing-pr-32"></div>
-            <div class="p-spacing-pt-40 p-spacing-pr-40"></div>
-            <div class="p-spacing-pt-48 p-spacing-pr-48"></div>
-            <div class="p-spacing-pt-56 p-spacing-pr-56"></div>
-            <div class="p-spacing-pt-64 p-spacing-pr-64"></div>
-            <div class="p-spacing-pt-72 p-spacing-pr-72"></div>
-            <div class="p-spacing-pt-80 p-spacing-pr-80"></div>
-          </div>
-          <hr>
-        </p-grid-item>
-      </p-grid>
       <p-headline variant="headline-2">Navigation</p-headline>
       <hr>
       <p-grid>
