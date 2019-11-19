@@ -22,60 +22,33 @@ The Porsche Next contains all typeface characters required for European, Greek a
 #### Chinese / Japanese
 For Chinese and Japanese language, the following system fonts are to be used, sticking to the default Porsche font scaling system:
 
-- Chinese: 黑体,SimHei,宋体,SimSun,sans-serif
-- Japanese: MS PGothic,sans-serif
+- Chinese: 黑体, SimHei, 宋体, SimSun
+- Japanese: MS PGothic
 
 ---
 
-## Porsche type scale
-
-All Porsche type styles are based on a flexible sizing system. This values should always be used for any sizing of text.
-
-<p-text variant="small" tag="span" class="p-spacing-mr-16" style="display: inline-block;">12</p-text>
-<p-text variant="copy" tag="span" class="p-spacing-mr-16" style="display: inline-block;">16</p-text>
-<p-text variant="18" tag="span" class="p-spacing-mr-16" style="display: inline-block;">18</p-text>
-<p-text variant="20" tag="span" class="p-spacing-mr-16" style="display: inline-block;">20</p-text>
-<p-text variant="24" tag="span" class="p-spacing-mr-16" style="display: inline-block;">24</p-text>
-<p-text variant="28" tag="span" class="p-spacing-mr-16" style="display: inline-block;">28</p-text>
-<p-text variant="30" tag="span" class="p-spacing-mr-16" style="display: inline-block;">30</p-text>
-<p-text variant="32" tag="span" class="p-spacing-mr-16" style="display: inline-block;">32</p-text>
-<p-text variant="36" tag="span" class="p-spacing-mr-16" style="display: inline-block;">36</p-text>
-<p-text variant="42" tag="span" class="p-spacing-mr-16" style="display: inline-block;">42</p-text>
-<p-text variant="44" tag="span" class="p-spacing-mr-16" style="display: inline-block;">44</p-text>
-<p-text variant="48" tag="span" class="p-spacing-mr-16" style="display: inline-block;">48</p-text>
-<p-text variant="52" tag="span" class="p-spacing-mr-16" style="display: inline-block;">52</p-text>
-<p-text variant="60" tag="span" class="p-spacing-mr-16" style="display: inline-block;">60</p-text>
-<p-text variant="62" tag="span" class="p-spacing-mr-16" style="display: inline-block;">62</p-text>
-<p-text variant="72" tag="span" class="p-spacing-mr-16" style="display: inline-block;">72</p-text>
-<p-text variant="84" tag="span" style="display: inline-block;">84</p-text>
-
-### Line height
-
-For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](#/web/layout/spacing)  in order to follow a harmonious overall vertical rhythm.
-
----
 
 ## Headline styles
 
-The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles only bold weight is used to provide a good readability and making it easy as possible to focus on the content sections of a page. The headline styles span from Large Title, that can be used optionally and only once per page, to Headlines 1 to 4 that can be used multiple times.
+The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles only bold weight is used to provide a good readability and making it easy as possible to focus on the content sections of a page. The headline styles span from Large Title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
 
 |                  | 320 - 759 px (XS)     | 760 - 999 px (S)   | 1000 - 1299 px (M)   | 1300 - 1759 px (L)   | 1760  px or larger (XL)   |
 |------------------|---------------------  |------------------	|-------------------   |-------------------   |------------------------   |
-| Large Title      | 32 px (2 rem)         | 42 px (2,625 rem)  | 52 px (3,25 rem)     | 62 px (3,875 rem)    | 72 px (4,5 rem)           | 
-| Headline-1       | 28 px (1,75 rem)      | 36 px (2,25 rem)   | 44 px (2,75 rem)     | 52 px (3,25 rem)     | 60 px (3,75 rem)          | 
-| Headline-2       | 24 px (1,5 rem)       | 30 px (1,875 rem)  | 36 px (2,25rem)      | 42 px (2,625 rem)    | 48 px (3 rem)             | 
-| Headline-3       | 20 px (1,25 rem)      | 24 px (1,5 rem)    | 28 px (1,75 rem)     | 32 px (2 rem)        | 36 px (2,25 rem)          | 
-| Headline-4       | 16 px (1 rem)         | 18 px (1,125 rem)  | 20 px (1,25 rem)     | 22 px (1,375 rem)    | 24 px (1,5 rem)           | 
+| Large Title      | 32 px         | 42 px   | 52 px     | 62 px    | 72 px           | 
+| Headline-1       | 28 px       | 36 px   | 44 px      | 52 px     | 60 px          | 
+| Headline-2       | 24 px       | 30 px  | 36 px    | 42 px   | 48 px             | 
+| Headline-3       | 20 px       | 24 px   | 28 px    | 32 px        | 36 px         | 
+| Headline-4       | 16 px         | 18 px   | 20 px     | 22 px    | 24 px          | 
 
 ![Headline example](./assets/typography-headlines.png)
 
 ### Applying headline styles
 
-Depending on your layout, you don't necessarily have to start with Headline 1. Also, it is possible to skip headline sizes whenever it serves the information structure.
+Depending on your layout, you don't necessarily have to start with headline 1. Also, it is possible to skip headline sizes whenever it serves the information structure.
 It is much more important to keep an eye on a homogeneous use of text sizes within one application.
-Also, please note that the headline class namings don't necessarily refer to the HTML font tags. For example the style Headline-1 can also technically be implemented as `<h2>`.
+Also, please note that the headline class namings don't necessarily refer to the HTML font tags. For example the style headline 1 can also technically be implemented as `<h2>`.
 
-### Headline-subline-combinations
+### Headline-subline combinations
 
 A first-level headline can be supplemented by a corresponding subline. Sublines must be set in Regular using an "Additional sizes" class with minimum 16 px size.
 
@@ -90,32 +63,59 @@ Examples:
 ![Headline-subline combinations](./assets/typography-headline-subline.png)
 
 
-## Text styles
+## Copy styles
 
-### Copy text
-The Porsche copy text styles are typically to be used for long-form writing. The default copy text size is 16 px, which is represented by the **text-small** style. The copy **text-x-small** is only recommended for additional, low-informative text such as disclaimers or captions. Copy text keeps the respective text size throughout all viewports.
+The Porsche copy text styles are typically to be used for long-form writing. The default copy text size is 16 px, which is represented by the **text small** style. The copy **text x-small** is only recommended for additional, low-informative text such as disclaimers or captions. Copy text keeps the respective text size throughout all viewports.
 
 | Copy text              | Font size      | Available states                           | 
 |------------------------- |---------------- |--------------------------------------------- |
-| text-small (default)     | 16 px           | active, default, disabled, highlight, linked | 
-| text-x-small  | 12 px    | active, default, disabled, highlight, linked | 
+| text small (default)     | 16 px           | active, default, disabled, highlight, linked | 
+| text x-small  | 12 px    | active, default, disabled, highlight, linked | 
 
 
 ![Copytext states](./assets/typography-copytext-states.png)
  
 
-### Additional sizes 
-Whenever you have the need to display larger text that isn't explicitly a page or section headline – let's say, for example, large numbers in vehicle data or quotes – you can stick to the additional sizes provided in the Porsche UI Kit. There are predefined default text sized, which should cover most use cases. Additional text sizes can be defined based on the Porsche type scale system.
+## Additional styles
+
+For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche UI Kit. There are <strong><span style="color: #00D5B9">predefined default text sizes</strong></span>, which should cover most use cases.
 
 | Additional text size                | Font size       |
 |------------------------- |---------------- |
-| text-medium     | 24 px           |
-| text-large  | 36 px    |
-| text-x-large  | 52 px    |
+| text medium     | 24 px           |
+| text large  | 36 px    |
+| text x-large  | 52 px    |
 
-Depending on the information level of the respective text you can either chose between Regular or Thin text.
+Depending on the information level of the respective text you can either chose between regular or thin weight. In both cases legibility should be ensured.
 
 ![Additional text sizes](./assets/typography-additional-sizes.png)
+
+
+### Porsche type scale
+Additional text sizes can be defined based on the Porsche type scale system. 
+
+<p-text variant="small" tag="span" class="p-spacing-mr-16" style="display: inline-block;">12</p-text>
+<p-text variant="copy" tag="span" class="p-spacing-mr-16" style="display: inline-block;">16</p-text>
+<p-text variant="18" tag="span" class="p-spacing-mr-16" style="display: inline-block;">18</p-text>
+<p-text variant="20" tag="span" class="p-spacing-mr-16" style="display: inline-block;">20</p-text>
+<p-text variant="24" tag="span" class="p-spacing-mr-16" style="display: inline-block;"><span style="color: #00D5B9">24</span></p-text>
+<p-text variant="28" tag="span" class="p-spacing-mr-16" style="display: inline-block;">28</p-text>
+<p-text variant="30" tag="span" class="p-spacing-mr-16" style="display: inline-block;">30</p-text>
+<p-text variant="32" tag="span" class="p-spacing-mr-16" style="display: inline-block;">32</p-text>
+<p-text variant="36" tag="span" class="p-spacing-mr-16" style="display: inline-block;"><span style="color: #00D5B9">36</span></p-text>
+<p-text variant="42" tag="span" class="p-spacing-mr-16" style="display: inline-block;">42</p-text>
+<p-text variant="44" tag="span" class="p-spacing-mr-16" style="display: inline-block;">44</p-text>
+<p-text variant="48" tag="span" class="p-spacing-mr-16" style="display: inline-block;">48</p-text>
+<p-text variant="52" tag="span" class="p-spacing-mr-16" style="display: inline-block;"><span style="color: #00D5B9">52</span></p-text>
+<p-text variant="60" tag="span" class="p-spacing-mr-16" style="display: inline-block;">60</p-text>
+<p-text variant="62" tag="span" class="p-spacing-mr-16" style="display: inline-block;">62</p-text>
+<p-text variant="72" tag="span" class="p-spacing-mr-16" style="display: inline-block;">72</p-text>
+<p-text variant="84" tag="span" style="display: inline-block;">84</p-text>
+
+### Line height
+
+For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](#/web/layout/spacing)  in order to follow a harmonious overall vertical rhythm.
+
 
 ---
 
@@ -181,18 +181,6 @@ Upper case text should only be used for:
 ![Example for uppercase text](./assets/typography-uppercase.png)
 
 
-### Additional modifications
-
-Please avoid to transform the Porsche Next manually (e.g. within Sketch or via CSS), as this would have a big and undesirable
-impact on the origin character of the company typeface. This includes:
-
-- No change of letter-spacing.
-- No use of (drop) shadows on text.
-- No formal change of letters (for example distortion).
-- No use of outline borders on text.
-- No use of opacity for text colors.
-
-
 ## Typography principles
 
 For Porsche web applications, good typography is…
@@ -237,4 +225,16 @@ importance the more critical the information is.
 ---
 
 ## Don'ts
+
+### Text modifications
+
+Please avoid to transform the Porsche Next manually (e.g. within Sketch or via CSS), as this would have a big and undesirable
+impact on the origin character of the company typeface. This includes:
+
+- No change of letter-spacing.
+- No use of (drop) shadows on text.
+- No formal change of letters (for example distortion).
+- No use of outline borders on text.
+- No use of opacity for text colors.
+  
 ![Example for uppercase text](./assets/typography-donts.png)
