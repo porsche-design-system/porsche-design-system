@@ -2,13 +2,13 @@
 We use defined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes the development easier. For fluid layouts the spacings should be used in combination with the [responsive grid](#/web/components/layout/grid).
 
 ### 8 px spacing system - the Porsche formula
-The Porsche spacing system is based on multiplies of eight. The unit of 8 px refers to the general base size of 16 px (= 1 em), that is also applied in typography and other component sizes.
+The Porsche spacing system is based on multiples of eight. The unit of 8 px refers to the general base size of 16 px (= 1 em), that is also applied in typography and other component sizes.
 
 ![The Porsche spacing formula](./assets/spacings-formula.png)
 
 ## Spacing system and layout spacings
-For layouting we recommend to use the <strong><span style="color:#00D5B9">layout spacings</span></strong>, that are available for developers as variables from x-small to xx-large.
-Additional increments of the spacing system can be used for specific requirements as long as the 8 px spacing system is adhered to.
+For layouting we recommend to use the <strong><span style="color:#00D5B9">layout spacings</span></strong> that are available for developers as variables from x-small to xx-large.
+Additional increments of the spacing system can be used for specific requirements as long as it is based on the 8 px spacing system.
 
 |       	                                |                	| PX     	| REM 	| LAYOUT SPACING |
 |----------------------------------------	|---------------	|-------	|------	|------	|
