@@ -13,6 +13,10 @@ Choose between predefined styling variants. Additionally predefined attributes l
     <p-button variant="primary" ally-label="Some action description" :theme="theme" />
     <p-button variant="primary" ally-label="Some action description" disabled="true" :theme="theme" />
     <p-button variant="primary" ally-label="Some action description" loading="true" :theme="theme" />
+    <br>
+    <p-button variant="primary" ally-label="Some action description" :theme="theme" is-slot-defined="true">Some label</p-button>
+    <p-button variant="primary" ally-label="Some action description" disabled="true" :theme="theme" is-slot-defined="true">Some label</p-button>
+    <p-button variant="primary" ally-label="Some action description" loading="true" :theme="theme" is-slot-defined="true">Some label</p-button>
   </template>
 </Playground>
 

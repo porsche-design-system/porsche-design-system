@@ -8,8 +8,9 @@
 .#{$p-global-class-prefix}button {
   $bem-block: &;
   display: inline-flex;
-  width: rem(48px);
-  height: rem(48px);
+  width: 100%;
+  min-width: rem(48px);
+  min-height: rem(48px);
   position: relative;
   margin: 0;
   padding: 0;
@@ -152,12 +153,46 @@
     }
   }
 
+  &__label {
+    padding: {
+      top: rem(11px);
+      right: rem(15px);
+      bottom: rem(11px);
+      left: rem(39px);
+    }
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__label ~ &__icon,
+  &__label ~ &__spinner {
+    left: rem(11px);
+    top: rem(11px);
+    width: rem(24px);
+    height: rem(24px);
+    transform: translateX(0) translateY(0);
+  }
+
+  &__label ~ &__spinner {
+    width: rem(16px);
+    height: rem(16px);
+    top: rem(15px);
+  }
+
   &__icon,
   &__spinner {
     position: absolute;
     left: 50%;
     top: 50%;
+    width: rem(36px);
+    height: rem(36px);
     display: block;
     transform: translateX(-50%) translateY(-50%);
+  }
+
+  &__spinner {
+    width: rem(16px);
+    height: rem(16px);
   }
 }

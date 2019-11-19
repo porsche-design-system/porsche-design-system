@@ -20,5 +20,6 @@
 
 ### Used by
 
+ - [p-button](#/web/components/action/button)
  - [p-button-regular](#/web/components/action/button-regular)
  - [p-text-link](#/web/components/navigation/text-link)

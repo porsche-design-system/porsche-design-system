@@ -33,6 +33,6 @@
 
 ### Depends on
 
+- [p-text](../../basic/typography/text)
 - [p-spinner](../../feedback/spinner)
 - [p-icon](../../icon/icon)
-- [p-text](../../basic/typography/text)
