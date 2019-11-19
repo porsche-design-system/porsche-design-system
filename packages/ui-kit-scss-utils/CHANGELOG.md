@@ -3,10 +3,15 @@
 ## Not released yet
 
 ### Change
-* Refine text variables and add default styles
-* Rename mixing `p-text-generic` to `p-text`
-* Change param order of `p-text` (text-size first, weight second)
-* Remove mixin `p-text-copy` and `p-text-small`
+* Text
+  * Refine text variables and add default styles
+  * Rename mixing `p-text-generic` to `p-text`
+  * Change param order of `p-text` (text-size first, weight second)
+  * Remove mixin `p-text-copy` and `p-text-small`
+
+* Spacings
+  * Remove responsive spacings (`a` to `g`)
+  * Add mapped variables for reduced spacing set
 
 
 ## [1.0.0-alpha.3] (2019-09-25)
