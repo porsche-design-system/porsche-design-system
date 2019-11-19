@@ -73,7 +73,7 @@ If another icon needs to be implemented, just replace the default icon with your
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-icon icon="phone" :theme="theme" />
-    <p-button-icon :icon="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme" />
+    <p-button-icon :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme" />
   </template>
 </Playground>
 
