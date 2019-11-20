@@ -157,7 +157,7 @@ export class PSpinner {
 proxyInputs(PSpinner, ['allyLabel', 'size', 'theme']);
 
 export declare interface PText extends Components.PText {}
-@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
+@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'size', 'tag', 'weight'] })
 export class PText {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -165,10 +165,10 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PText, ['align', 'color', 'ellipsis', 'tag', 'variant']);
+proxyInputs(PText, ['align', 'color', 'ellipsis', 'size', 'tag', 'weight']);
 
 export declare interface PTextLink extends Components.PTextLink {}
-@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'tag', 'target', 'variant'] })
+@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'] })
 export class PTextLink {
   pClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -178,7 +178,7 @@ export class PTextLink {
     proxyOutputs(this, this.el, ['pClick']);
   }
 }
-proxyInputs(PTextLink, ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'tag', 'target', 'variant']);
+proxyInputs(PTextLink, ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target']);
 
 export declare interface PTextList extends Components.PTextList {}
 @Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType'] })

@@ -2,6 +2,16 @@
 
 ## NOT RELEASED YET
 
+### Change
+
+* Text component
+  * Reduce amount of text variants in global interface
+  * Remove `ul | ol | li | sup | sub | label` from `tag` property
+  * Add `weight` property
+  
+* Text Link component
+  * Reduce amount of text variants (defined in global interface)
+
 ## [1.0.0-alpha.7] (2019-11-05)
 
 ### Change

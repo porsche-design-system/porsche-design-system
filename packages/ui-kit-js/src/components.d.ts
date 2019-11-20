@@ -14,7 +14,7 @@ import {
 } from './utils';
 import {
   TextColor,
-  TextVariant,
+  TextSize,
 } from './types';
 
 export namespace Components {
@@ -309,27 +309,25 @@ export namespace Components {
     */
     'ellipsis'?: boolean;
     /**
+    * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
     * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
     | 'div'
-    | 'label'
     | 'address'
     | 'blockquote'
     | 'figcaption'
     | 'cite'
     | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
     | 'legend';
     /**
-    * Style of the text.
+    * The weight of the text.
     */
-    'variant'?: TextVariant;
+    'weight'?: 'thin' | 'regular' | 'bold';
   }
   interface PTextLink {
     /**
@@ -357,6 +355,10 @@ export namespace Components {
     */
     'rel'?: string;
     /**
+    * The style of the text.
+    */
+    'size'?: TextSize;
+    /**
     * Set a custom HTML tag depending of the usage of the component.
     */
     'tag'?: 'span' | 'a';
@@ -364,10 +366,6 @@ export namespace Components {
     * Target attribute where the link should be opened.
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
-    * The style of the text.
-    */
-    'variant'?: TextVariant;
   }
   interface PTextList {
     /**
@@ -796,27 +794,25 @@ declare namespace LocalJSX {
     */
     'ellipsis'?: boolean;
     /**
+    * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
     * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
     | 'div'
-    | 'label'
     | 'address'
     | 'blockquote'
     | 'figcaption'
     | 'cite'
     | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
     | 'legend';
     /**
-    * Style of the text.
+    * The weight of the text.
     */
-    'variant'?: TextVariant;
+    'weight'?: 'thin' | 'regular' | 'bold';
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**
@@ -848,6 +844,10 @@ declare namespace LocalJSX {
     */
     'rel'?: string;
     /**
+    * The style of the text.
+    */
+    'size'?: TextSize;
+    /**
     * Set a custom HTML tag depending of the usage of the component.
     */
     'tag'?: 'span' | 'a';
@@ -855,10 +855,6 @@ declare namespace LocalJSX {
     * Target attribute where the link should be opened.
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
-    * The style of the text.
-    */
-    'variant'?: TextVariant;
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
