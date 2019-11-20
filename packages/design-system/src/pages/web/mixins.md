@@ -120,18 +120,27 @@ h1 {
 
 ### Text
 
-Given values are:  
-`copy | small`
+With the text mixin, it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
+Default is `$p-text-size-small` and `$p-font-weight-regular`.
 
-Possible headline mixin for usage with SCSS (where {v} is the value):
+Pre defined variant values are:  
+`$p-text-size-x-small | $p-text-size-small | $p-text-size-medium | $p-text-size-large | $p-text-size-x-large`  
+
+Or more generic `$p-font-size-{v};` where `v` is:  
+`12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
+
+Pre defined weight values are:  
+`$p-font-weight-thin | $p-font-weight-regular | $p-font-weight-bold`
+
+#### Example text mixin for usage with SCSS (where {size} is the value for text size and {weight} for text weight):
 ```
-@include p-text-{v};
+@include p-text({size}, {weight});
 ```
 
-#### Example
+#### Example with defaults
 ```
 p {
-  @include p-text-copy;
+  @include p-text;
 }
 ```
 
@@ -142,6 +151,22 @@ p {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
-  margin-top: 1.5rem;
+}
+```
+
+#### Example with specific parameters
+```
+p {
+  @include p-text($p-text-size-medium, $p-font-weight-thin);
+}
+```
+
+#### Result
+```
+p {
+  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-weight: 200;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 ```
