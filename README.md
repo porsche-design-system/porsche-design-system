@@ -194,3 +194,21 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace
+
+
+## Release management - Porsche UI Kit (Sketch Libraries)
+
+### Preparation
+1. Export related Sketch file from master, e.g. Web Library (https://share.goabstract.com/e9baaa65-1d0b-472a-a134-a50f2c079d5e) or Basic Library (https://share.goabstract.com/401193dc-0054-45f1-b034-8e1a9a25590e)
+1. Rename exported file to correct naming format, e.g. porsche-ui-kit-web.sketch
+1. Use existing issue branch or create a new branch (for Sketch Update only)
+
+### Sketch Library
+1. Switch to __sketch directory__
+1. Replace existing file with new file
+1. Switch to __docker/node/bin directory__ and open `run-deploy`
+1. Increase version increment according to the update `P_LATEST_STABLE_SKETCH_VERSION="v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}"`
+
+### Commit
+1. Create a commit
+1. Push local commit to issue branch `git push`
