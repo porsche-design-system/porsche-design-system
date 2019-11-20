@@ -2,6 +2,11 @@
 
 ## Not released yet
 
+### Breaking change
+* Spacings
+  * Remove responsive spacings (`a` to `g`)
+  * Add mapped variables for reduced spacing set
+
 
 ## [1.0.0-alpha.3] (2019-09-25)
 

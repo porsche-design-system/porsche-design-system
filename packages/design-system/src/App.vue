@@ -56,6 +56,8 @@
 </script>
 
 <style lang="scss">
+  @import '~@porsche-ui/ui-kit-scss-utils/index';
+
   * {
     margin: 0;
     padding: 0;
@@ -64,6 +66,28 @@
 
   main {
     display: block;
+  }
+
+  .spacing-mt-8 {
+    margin-top: $p-layout-small;
+  }
+
+  .spacing-mt-16 {
+    margin-top: $p-layout-medium;
+  }
+
+  .spacing-mt-32 {
+    margin-top: $p-layout-large;
+  }
+
+  .spacing-mr-32 {
+    margin-right: $p-layout-large;
+  }
+
+  @include p-breakpoint('m') {
+    .spacing-mt-0-min-m {
+      margin-top: 0;
+    }
   }
 </style>
 

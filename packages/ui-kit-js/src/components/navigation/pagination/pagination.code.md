@@ -39,11 +39,11 @@ By changing values for total amount of items, items to display per page and numb
 
 <Playground :themeable="true">
   <template v-slot:configurator="{theme}">
-    <label class="p-spacing-mr-16" style="display:inline-block">
+    <label style="display:inline-block; margin-right: 16px;">
       <p-text tag="span" variant="small" :color="(theme === 'dark') ? 'porsche-light' : 'porsche-black'">Total items count</p-text>
       <input type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"/>
     </label>
-    <label class="p-spacing-mr-16" style="display:inline-block">
+    <label style="display:inline-block; margin-right: 16px;">
       <p-text tag="span" variant="small" :color="(theme === 'dark') ? 'porsche-light' : 'porsche-black'">Items per page</p-text>
       <input type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"/>
     </label>
