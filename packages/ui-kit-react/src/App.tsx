@@ -3,7 +3,6 @@ import {
   PGrid,
   PGridItem,
   PFlex,
-  PSpacing,
   PFlexItem,
   PMarque,
   PHeadline,
@@ -320,12 +319,12 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size="10">
           <div className="playground light spacing-inline">
-            <PIcon source="car-next"/>
-            <PIcon source="car-next" size="medium"/>
-            <PIcon source="car-next" size="large"/>
-            <PIcon source="car-next" size="large" color="porsche-red"/>
-            <PIcon source="car-next" size="large" color="inherit" style={{color: 'deeppink'}}/>
-            <PIcon source="kaixin" size="large"/>
+            <PIcon name="car-next" aria-label="Car icon"/>
+            <PIcon name="car-next" size="medium" aria-label="Car icon"/>
+            <PIcon name="car-next" size="large" aria-label="Car icon"/>
+            <PIcon name="car-next" size="large" color="porsche-red" aria-label="Car icon"/>
+            <PIcon name="car-next" size="large" color="inherit" aria-label="Car icon" style={{color: 'deeppink'}}/>
+            <PIcon name="kaixin" size="large" aria-label="Kaixin icon"/>
           </div>
           <hr/>
         </PGridItem>
@@ -479,49 +478,6 @@ const App: React.FC = () => {
             <PFlex>
               <PFlexItem offset="three-quarters" width="one-quarter"/>
             </PFlex>
-          </div>
-          <hr/>
-        </PGridItem>
-      </PGrid>
-      <PGrid>
-        <PGridItem size="2">
-          <PHeadline variant="headline-4" tag="h4">Spacing</PHeadline>
-        </PGridItem>
-        <PGridItem size="10">
-          <div className="playground light spacing-inline">
-            <PSpacing paddingTop={4} paddingLeft={4}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={8} paddingLeft={8}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={16} paddingLeft={16}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={24} paddingLeft={24}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={32} paddingLeft={32}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={40} paddingLeft={40}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={48} paddingLeft={48}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={56} paddingLeft={56}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={64} paddingLeft={64}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={72} paddingLeft={72}>
-              <div/>
-            </PSpacing>
-            <PSpacing paddingTop={80} paddingLeft={80}>
-              <div/>
-            </PSpacing>
           </div>
           <hr/>
         </PGridItem>
