@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
+import { JSX, Component, Prop, State, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, hasShadowDom } from '../../../utils';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
@@ -46,12 +46,26 @@ export class Button {
   /** Adapts the button color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  @Prop() public isSlotDefined?: boolean = false;
+  /** Show or hide label */
+  @Prop() public hideLabel?: boolean = false;
+
+  @State() public isSlotDefined?: boolean;
+
+  private slots: NodeListOf<ChildNode>;
+
+  public componentWillLoad() {
+    this.slots  = this.element.childNodes;
+    this.slots.length !== 0 ? this.isSlotDefined = true : this.isSlotDefined = false;
+  }
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
     console.log(this.element);
     console.log('123', this.element.shadowRoot.querySelectorAll('slot'));
+  }
+
+  public componentWillUpdate() {
+    this.slots.length === 0 || this.hideLabel && this.slots.length !== 0 ? this.isSlotDefined = false : this.isSlotDefined = true;
   }
 
   public render(): JSX.Element {
@@ -133,4 +147,5 @@ export class Button {
   private useInvertedLoader(): Theme {
     return this.variant !== 'tertiary' || this.theme === 'dark' ? 'dark' : 'light';
   }
+
 }

@@ -1,22 +1,22 @@
-# Button Icon
+# Button
 
-Used as `<button>` element to trigger actions.
+The `button` component is essential to perform events for forms or interfaces. They can be used with or without a label (as button icon only).
 
-### Variant
+## Variants
 
-Choose between predefined styling variants. Additionally predefined attributes like `type` can be set and behave like they would do natively on an HTML button element.
+Choose between predefined styling variants.
 
-#### Primary
+### Primary
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
+    <p-button variant="primary" :theme="theme">Some label</p-button>
+    <p-button variant="primary" disabled="true" :theme="theme">Some label</p-button>
+    <p-button variant="primary" loading="true" :theme="theme">Some label</p-button>
+    <br>
     <p-button variant="primary" ally-label="Some action description" :theme="theme" />
     <p-button variant="primary" ally-label="Some action description" disabled="true" :theme="theme" />
     <p-button variant="primary" ally-label="Some action description" loading="true" :theme="theme" />
-    <br>
-    <p-button variant="primary" ally-label="Some action description" :theme="theme" is-slot-defined="true">Some label</p-button>
-    <p-button variant="primary" ally-label="Some action description" disabled="true" :theme="theme" is-slot-defined="true">Some label</p-button>
-    <p-button variant="primary" ally-label="Some action description" loading="true" :theme="theme" is-slot-defined="true">Some label</p-button>
   </template>
 </Playground>
 
@@ -24,6 +24,10 @@ Choose between predefined styling variants. Additionally predefined attributes l
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
+    <p-button :theme="theme">Some label</p-button>
+    <p-button disabled="true" :theme="theme">Some label</p-button>
+    <p-button loading="true" :theme="theme">Some label</p-button>
+    <br>
     <p-button ally-label="Some action description" :theme="theme" />
     <p-button ally-label="Some action description" disabled="true" :theme="theme" />
     <p-button ally-label="Some action description" loading="true" :theme="theme" />
@@ -34,6 +38,10 @@ Choose between predefined styling variants. Additionally predefined attributes l
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
+    <p-button variant="tertiary" :theme="theme">Some label</p-button>
+    <p-button variant="tertiary" disabled="true" :theme="theme">Some label</p-button>
+    <p-button variant="tertiary" loading="true" :theme="theme">Some label</p-button>
+    <br>
     <p-button variant="tertiary" ally-label="Some action description" :theme="theme" />
     <p-button variant="tertiary" ally-label="Some action description" disabled="true" :theme="theme" />
     <p-button variant="tertiary" ally-label="Some action description" loading="true" :theme="theme" />
