@@ -28,10 +28,13 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
+    * Show or hide label
+    */
+    'hideLabel'?: boolean;
+    /**
     * The icon shown.
     */
     'icon'?: string;
-    'isSlotDefined'?: boolean;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -533,10 +536,13 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
+    * Show or hide label
+    */
+    'hideLabel'?: boolean;
+    /**
     * The icon shown.
     */
     'icon'?: string;
-    'isSlotDefined'?: boolean;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
