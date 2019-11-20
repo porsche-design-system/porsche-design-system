@@ -1,7 +1,11 @@
 import {JSX, Component, Prop, h} from '@stencil/core';
 import cx from 'classnames';
-import {prefix} from '../../../../utils';
-import {TextVariant, TextColor} from '../../../../types';
+import {
+  BreakpointCustomizable,
+  mapBreakpointPropToPrefixedClasses,
+  prefix
+} from '../../../../utils';
+import {TextSize, TextColor} from '../../../../types';
 
 @Component({
   tag: 'p-text',
@@ -15,21 +19,18 @@ export class Text {
     | 'p'
     | 'span'
     | 'div'
-    | 'label'
     | 'address'
     | 'blockquote'
     | 'figcaption'
     | 'cite'
     | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
     | 'legend' = 'p';
 
-  /** Style of the text. */
-  @Prop() public variant?: TextVariant = 'copy';
+  /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
+  @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
+
+  /** The weight of the text. */
+  @Prop() public weight?: 'thin' | 'regular' | 'bold' = 'regular';
 
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
@@ -45,15 +46,16 @@ export class Text {
 
     const textClasses = cx(
       prefix('text'),
-      prefix(`text--variant-${this.variant}`),
-      prefix(`text--align-${this.align}`),
+      mapBreakpointPropToPrefixedClasses('text--size', this.size),
+      this.weight !== 'regular' && prefix(`text--weight-${this.weight}`),
+      this.align !== 'left' && prefix(`text--align-${this.align}`),
       prefix(`text--color-${this.color}`),
       this.ellipsis && prefix('text--ellipsis')
     );
 
     return (
       <TagType class={textClasses}>
-        <slot/>
+        <slot />
       </TagType>
     );
   }

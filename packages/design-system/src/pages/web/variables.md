@@ -104,12 +104,25 @@ $p-font-weight-{v};
 ```
 
 ### Size
+
+#### Font scaling system
 Given values are:  
-`small | copy | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
+
+`12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
 
 Possible variable for usage with SCSS (where {v} is the font size value):
 ```
 $p-font-size-{v};
+```
+
+#### Predefined text sizes
+Given values are:  
+ 
+`x-small | small | medium | large | x-large`
+
+Possible variable for usage with SCSS (where {v} is the font size value):
+```
+$p-text-size-{v};
 ```
 
 ---

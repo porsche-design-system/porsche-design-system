@@ -4,6 +4,14 @@
 
 ### Change
 
+* Text component
+  * Reduce amount of text variants in global interface
+  * Remove `ul | ol | li | sup | sub | label` from `tag` property
+  * Add `weight` property
+  
+* Text Link component
+  * Reduce amount of text variants (defined in global interface)
+
 * Spacing
   * Remove global static spacing classes
   * Remove responsive spacing classes (`a` to `g`)
