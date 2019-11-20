@@ -6,7 +6,7 @@
     <p-headline class="spacing-mt-16" variant="headline-4" tag="h1" align="center">
       Porsche UI Kit
     </p-headline>
-    <p-text variant="small" align="center">{{subtitle}}</p-text>
+    <p-text size="x-small" align="center">{{subtitle}}</p-text>
   </header>
 </template>
 

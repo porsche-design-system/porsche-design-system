@@ -1,9 +1,9 @@
 # Typography
 
-The text component can be categorized into two different use cases:
+Typography components are categorized into two different use cases:
 
-1. Predefined headlines with automated responsive sizing to fit into all major breakpoints.
-2. Generic text sizes which are fixed and do not respond to different viewports.
+1. **Headline component** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
+2. **Text component** for predefined copy text sizes which are either fixed or can respond to different viewports.
 
 ## Headlines
 
@@ -52,74 +52,77 @@ This will force any text to never wrap into a new line and in case it's too long
 
 ---
 
-## Copy text
+## Text
 
-### Style variants
-There are multiple predefined styling variants available. Additionally the correct semantic tag can be set.
+The text component is the most flexible way to display text strings on your page.  
+Rendering defaults to variant `small` and font weight `regular`.  
+The default semantic HTML element is `p`.
 
 <Playground>
-  <p-text variant="copy">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text variant="small">The quick brown fox jumps over the lazy dog</p-text>
+    <p-text>The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
----
+--- 
 
-## Generic text
+### Size
 
-In some cases, e.g. for highlighting or graphical reasons, it might be necessary to use additional styling variants.
+There are predefined default text sizes for the text component which should cover most use cases. If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground>
   <template #configurator>
-    <select @change="variant = $event.target.value">
-      <option disabled>Select a style variant</option>
-      <option>18</option>
-      <option>20</option>
-      <option>20-thin</option>
-      <option>24</option>
-      <option>24-thin</option>
-      <option>28</option>
-      <option>28-thin</option>
-      <option>30</option>
-      <option>30-thin</option>
-      <option>32</option>
-      <option>32-thin</option>
-      <option>36</option>
-      <option>36-thin</option>
-      <option>42</option>
-      <option>42-thin</option>
-      <option>44</option>
-      <option>44-thin</option>
-      <option>48</option>
-      <option>48-thin</option>
-      <option>52</option>
-      <option>52-thin</option>
-      <option>60</option>
-      <option selected>60-thin</option>
-      <option>62</option>
-      <option>62-thin</option>
-      <option>72</option>
-      <option>72-thin</option>
-      <option>84</option>
-      <option>84-thin</option>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
+      <option>x-small</option>
+      <option>small</option>
+      <option selected>medium</option>
+      <option>large</option>
+      <option>x-large</option>
+      <option>inherit</option>
     </select>
   </template>
-  <p-text :variant="variant">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text :size="size" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
+</Playground>
+
+#### Responsive
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<Playground>
+  <p-text size="{ base: 'small', l: 'medium' }">The quick brown fox jumps over the lazy dog</p-text>
+</Playground>
+
+--- 
+
+### Weight
+
+There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text sizes.
+
+<Playground>
+  <template #configurator>
+    <select @change="weight = $event.target.value">
+      <option disabled>Select a weight</option>
+      <option>regular</option>
+      <option selected>thin</option>
+      <option>bold</option>
+    </select>
+  </template>
+  <p-text size="medium" :weight="weight">The quick brown fox jumps over the lazy dog</p-text>
 </Playground>
 
 ---
 
-### Color variants
+### Color
 The default text color is Porsche Black. But also predefined or inherited colors can be set.
 
 <Playground>
   <p-text color="porsche-black">Porsche Black</p-text>
-  <p-text color="porsche-light" style="background: black; display: block;">Porsche Light</p-text>
+  <p-text color="porsche-light" style="background: black;">Porsche Light</p-text>
   <p-text color="inherit" style="color: deeppink;">Inherited custom color</p-text>
 </Playground>
 
----
+--- 
 
-### Alignment variants
+### Alignment
 
 <Playground>
   <p-text align="left">Left</p-text>
@@ -138,7 +141,7 @@ This will force any text to never wrap into a new line and in case it's to long 
 
 ---
 
-### Text with a link and bold text
+### Text with a link and bold text as children
 
 <Playground>
   <p-text>Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>
@@ -150,6 +153,11 @@ This will force any text to never wrap into a new line and in case it's to long 
   
   @Component
   export default class PlaygroundTypography extends Vue {
-    public variant: string = '60-thin';
+    public size: string = 'medium';
+    public weight: string = 'thin';
+    
+    public get isInherit() {
+      return this.size === 'inherit' ? 'font-size: 48px' : undefined;
+    }
   }
 </script>

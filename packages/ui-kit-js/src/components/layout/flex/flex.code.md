@@ -667,7 +667,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
   .example-flex {
     & > * {
-      @include p-text-copy;
+      @include p-text;
       padding: 0 6vw;
       color: $p-color-porsche-light;
       text-align: center;
