@@ -78,7 +78,7 @@ The Porsche copy text styles are typically to be used for long-form writing. The
 
 ## Additional styles
 
-For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche UI Kit. There are <strong><span style="color: #00D5B9">predefined default text sizes</strong></span>, which should cover most use cases.
+For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche UI Kit. There are <strong><span style="color: #00D5B9">predefined default text sizes</span></strong>, which should cover most use cases.
 
 | Additional text size                | Font size       |
 |------------------------- |---------------- |
