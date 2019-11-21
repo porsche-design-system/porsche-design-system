@@ -11,75 +11,83 @@
 </head>
 <body>
 
-<div class="playground light" title="should render button icon basic">
-  <p-button-icon></p-button-icon>
-  <p-button-icon disabled="true"></p-button-icon>
-  <p-button-icon loading="true"></p-button-icon>
+<div class="playground light" title="should render button primary with label">
+  <p-button variant="primary">Some label</p-button>
+  <p-button variant="primary" disabled="true">Some label</p-button>
+  <p-button variant="primary" loading="true">Some label</p-button>
 </div>
-<div class="playground dark" title="should render button icon basic with dark theme">
-  <p-button-icon theme="dark"></p-button-icon>
-  <p-button-icon theme="dark" disabled="true"></p-button-icon>
-  <p-button-icon theme="dark" loading="true"></p-button-icon>
-</div>
-
-<div class="playground light" title="should render button icon ghost">
-  <p-button-icon variant="ghost"></p-button-icon>
-  <p-button-icon variant="ghost" disabled="true"></p-button-icon>
-  <p-button-icon variant="ghost" loading="true"></p-button-icon>
-</div>
-<div class="playground dark" title="should render button icon ghost with dark theme">
-  <p-button-icon variant="ghost" theme="dark"></p-button-icon>
-  <p-button-icon variant="ghost" theme="dark" disabled="true"></p-button-icon>
-  <p-button-icon variant="ghost" theme="dark" loading="true"></p-button-icon>
+<div class="playground dark" title="should render button primary with label on dark theme">
+  <p-button variant="primary" theme="dark">Some label</p-button>
+  <p-button variant="primary" theme="dark" disabled="true">Some label</p-button>
+  <p-button variant="primary" theme="dark" loading="true">Some label</p-button>
 </div>
 
-<div class="playground light" title="should render button icon transparent">
-  <p-button-icon variant="transparent"></p-button-icon>
-  <p-button-icon variant="transparent" disabled="true"></p-button-icon>
-  <p-button-icon variant="transparent" loading="true"></p-button-icon>
+<div class="playground light" title="should render button primary without label">
+  <p-button variant="primary"></p-button>
+  <p-button variant="primary" disabled="true"></p-button>
+  <p-button variant="primary" loading="true"></p-button>
 </div>
-<div class="playground dark" title="should render button icon transparent with dark theme">
-  <p-button-icon variant="transparent" theme="dark"></p-button-icon>
-  <p-button-icon variant="transparent" theme="dark" disabled="true"></p-button-icon>
-  <p-button-icon variant="transparent" theme="dark" loading="true"></p-button-icon>
-</div>
-
-<div class="playground light" title="should render button icon basic as link">
-  <p-button-icon href="/lorem/ipsum"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" disabled="true"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" loading="true"></p-button-icon>
-</div>
-<div class="playground dark" title="should render button icon basic as link with dark theme">
-  <p-button-icon href="/lorem/ipsum" theme="dark"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" theme="dark" disabled="true"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" theme="dark" loading="true"></p-button-icon>
+<div class="playground dark" title="should render button primary without label on dark theme">
+  <p-button variant="primary" theme="dark"></p-button>
+  <p-button variant="primary" theme="dark" disabled="true"></p-button>
+  <p-button variant="primary" theme="dark" loading="true"></p-button>
 </div>
 
-<div class="playground light" title="should render button icon ghost as link">
-  <p-button-icon href="/lorem/ipsum" variant="ghost"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" variant="ghost" disabled="true"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" variant="ghost" loading="true"></p-button-icon>
+
+<div class="playground light" title="should render button secondary with label">
+  <p-button>Some label</p-button>
+  <p-button disabled="true">Some label</p-button>
+  <p-button loading="true">Some label</p-button>
 </div>
-<div class="playground dark" title="should render button icon ghost as link with dark theme">
-  <p-button-icon href="/lorem/ipsum" variant="ghost" theme="dark"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" variant="ghost" theme="dark" disabled="true"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" variant="ghost" theme="dark" loading="true"></p-button-icon>
+<div class="playground dark" title="should render button secondary with label on dark theme">
+  <p-button theme="dark">Some label</p-button>
+  <p-button theme="dark" disabled="true">Some label</p-button>
+  <p-button theme="dark" loading="true">Some label</p-button>
 </div>
 
-<div class="playground light" title="should render button icon transparent as link">
-  <p-button-icon href="/lorem/ipsum" variant="transparent"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" variant="transparent" disabled="true"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" variant="transparent" loading="true"></p-button-icon>
+<div class="playground light" title="should render button secondary without label">
+  <p-button></p-button>
+  <p-button disabled="true"></p-button>
+  <p-button loading="true"></p-button>
 </div>
-<div class="playground dark" title="should render button icon transparent as link with dark theme">
-  <p-button-icon href="/lorem/ipsum" variant="transparent" theme="dark"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" variant="transparent" theme="dark" disabled="true"></p-button-icon>
-  <p-button-icon href="/lorem/ipsum" variant="transparent" theme="dark" loading="true"></p-button-icon>
+<div class="playground dark" title="should render button secondary without label on dark theme">
+  <p-button theme="dark"></p-button>
+  <p-button theme="dark" disabled="true"></p-button>
+  <p-button theme="dark" loading="true"></p-button>
 </div>
 
-<div class="playground light">
-  <p-button-icon icon="phone"></p-button-icon>
-  <p-button-icon icon-source="./assets/icon-custom-kaixin.svg"></p-button-icon>
+
+<div class="playground light" title="should render button primary with label">
+  <p-button variant="tertiary">Some label</p-button>
+  <p-button variant="tertiary" disabled="true">Some label</p-button>
+  <p-button variant="tertiary" loading="true">Some label</p-button>
+</div>
+<div class="playground dark" title="should render button tertiary with label on dark theme">
+  <p-button variant="tertiary" theme="dark">Some label</p-button>
+  <p-button variant="tertiary" theme="dark" disabled="true">Some label</p-button>
+  <p-button variant="tertiary" theme="dark" loading="true">Some label</p-button>
+</div>
+
+<div class="playground light" title="should render button tertiary without label">
+  <p-button variant="tertiary"></p-button>
+  <p-button variant="tertiary" disabled="true"></p-button>
+  <p-button variant="tertiary" loading="true"></p-button>
+</div>
+<div class="playground dark" title="should render button tertiary without label on dark theme">
+  <p-button variant="tertiary" theme="dark"></p-button>
+  <p-button variant="tertiary" theme="dark" disabled="true"></p-button>
+  <p-button variant="tertiary" theme="dark" loading="true"></p-button>
+</div>
+
+<div class="playground light" title="should render button secondary with dynamic label">
+  <p-button hide-label="false">Some label</p-button>
+  <p-button hide-label="true">Some label</p-button>
+</div>
+
+
+<div class="playground light" title="should render button secondary with specific icon">
+  <p-button icon="phone"></p-button>
+  <p-button icon-source="./assets/icon-custom-kaixin.svg"></p-button>
 </div>
 
 </body>
