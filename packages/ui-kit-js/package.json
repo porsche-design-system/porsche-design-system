@@ -40,9 +40,10 @@
     "@porsche-ui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "start": "stencil build --watch --serve",
+    "start": "yarn build:iconNameTypings && stencil build --watch --serve",
     "start:vrt-server": "yarn build && http-server -p 61422 -P http://localhost:61422/www",
-    "build": "stencil build --docs && node ./scripts/doc.js",
+    "build": "yarn build:iconNameTypings && stencil build --docs && node ./scripts/doc.js",
+    "build:iconNameTypings": "node ./scripts/icon-name-generation.js",
     "lint": "yarn lint:scss && yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",
     "lint:ts": "tslint -p './tsconfig.json' -t codeFrame",
@@ -78,6 +79,7 @@
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
     "json5": "^2.1.1",
+    "node-fetch": "^2.6.0",
     "puppeteer": "1.20.0",
     "stylelint": "^11.0.0",
     "stylelint-config-prettier": "^6.0.0",

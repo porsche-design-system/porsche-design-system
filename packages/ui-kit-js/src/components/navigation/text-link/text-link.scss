@@ -11,6 +11,7 @@
   text-decoration: none;
   position: relative;
   display: flex;
+  width: 100%;
   align-items: flex-start;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
@@ -40,104 +41,31 @@
   &__icon {
     flex-shrink: 0;
 
-    &--copy {
-      width: $p-font-size-copy * 1.5;
-      height: $p-font-size-copy * 1.5;
+    &--x-small {
+      width: $p-text-size-x-small * 1.5;
+      height: $p-text-size-x-small * 1.5;
     }
 
     &--small {
-      width: $p-font-size-small * 1.5;
-      height: $p-font-size-small * 1.5;
+      width: $p-text-size-small * 1.5;
+      height: $p-text-size-small * 1.5;
     }
 
-    &--18 {
-      width: $p-font-size-18 * 1.5;
-      height: $p-font-size-18 * 1.5;
+    &--medium {
+      width: $p-text-size-medium * 1.5;
+      height: $p-text-size-medium * 1.5;
     }
 
-    &--20,
-    &--20-thin {
-      width: $p-font-size-20 * 1.5;
-      height: $p-font-size-20 * 1.5;
+    &--large {
+      width: $p-text-size-large * 1.5;
+      height: $p-text-size-large * 1.5;
     }
 
-    &--24,
-    &--24-thin {
-      width: $p-font-size-24 * 1.5;
-      height: $p-font-size-24 * 1.5;
+    &--x-large {
+      width: $p-text-size-x-large * 1.5;
+      height: $p-text-size-x-large * 1.5;
     }
 
-    &--28,
-    &--28-thin {
-      width: $p-font-size-28 * 1.5;
-      height: $p-font-size-28 * 1.5;
-    }
-
-    &--30,
-    &--30-thin {
-      width: $p-font-size-30 * 1.5;
-      height: $p-font-size-30 * 1.5;
-    }
-
-    &--32,
-    &--32-thin {
-      width: $p-font-size-32 * 1.5;
-      height: $p-font-size-32 * 1.5;
-    }
-
-    &--36,
-    &--36-thin {
-      width: $p-font-size-36 * 1.5;
-      height: $p-font-size-36 * 1.5;
-    }
-
-    &--42,
-    &--42-thin {
-      width: $p-font-size-42 * 1.5;
-      height: $p-font-size-42 * 1.5;
-    }
-
-    &--44,
-    &--44-thin {
-      width: $p-font-size-44 * 1.5;
-      height: $p-font-size-44 * 1.5;
-    }
-
-    &--48,
-    &--48-thin {
-      width: $p-font-size-48 * 1.5;
-      height: $p-font-size-48 * 1.5;
-    }
-
-    &--52,
-    &--52-thin {
-      width: $p-font-size-52 * 1.5;
-      height: $p-font-size-52 * 1.5;
-    }
-
-    &--60,
-    &--60-thin {
-      width: $p-font-size-60 * 1.5;
-      height: $p-font-size-60 * 1.5;
-    }
-
-    &--62,
-    &--62-thin {
-      width: $p-font-size-62 * 1.5;
-      height: $p-font-size-62 * 1.5;
-    }
-
-    &--72,
-    &--72-thin {
-      width: $p-font-size-72 * 1.5;
-      height: $p-font-size-72 * 1.5;
-    }
-
-    &--84,
-    &--84-thin {
-      width: $p-font-size-84 * 1.5;
-      height: $p-font-size-84 * 1.5;
-    }
   }
 
   &__text {

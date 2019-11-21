@@ -102,9 +102,7 @@ where a loader makes sense and which loader type is best suited.
 * [Button Icon](#/web/components/action/button-icon)
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-<p-headline variant="headline-3" tag="h3">Examples</p-headline>
-<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
-<img src="./assets/spinner-blocking.png" />
-<div class="p-spacing-pt-24 p-spacing-pr-24"></div>
+    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+    <img src="./assets/spinner-blocking.png" alt=""/>
 </div>
 

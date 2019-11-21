@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Event, EventEmitter, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, hasShadowDom } from '../../../utils';
+import { IconName } from '../../icon/icon/icon-name';
 
 @Component({
   tag: 'p-button-regular',
@@ -29,7 +30,10 @@ export class ButtonRegular {
   @Prop() public variant?: 'highlight' | 'ghost' | 'default' = 'default';
 
   /** The icon shown next to the label. */
-  @Prop() public icon?: string = 'arrow-right-hair';
+  @Prop() public icon?: IconName = 'arrow-right-hair';
+
+  /** A custom URL path to a custom icon. */
+  @Prop() public iconSource?: string = undefined;
 
   /** Displays the button smaller. */
   @Prop() public small?: boolean = false;
@@ -76,7 +80,7 @@ export class ButtonRegular {
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
         ) : (
-          <p-icon class={iconClasses} source={this.icon} />
+          <p-icon class={iconClasses} name={this.icon} source={this.iconSource} />
         )}
       </TagType>
     );

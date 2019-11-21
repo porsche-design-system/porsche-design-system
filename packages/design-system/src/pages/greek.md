@@ -1,16 +1,16 @@
-<p-headline class="p-spacing-mb-32">
+<p-headline>
   Porsche επικεφαλίδα
 </p-headline>
 
-<p-text class="p-spacing-mb-16">
+<p-text class="spacing-mt-32">
   Αυτή η ένδειξη συνοδεύει τα μεταχειρισμένα οχήματα Porsche που καλύπτουν τις υψηλές προδιαγραφές ποιότητας της μάρκας Porsche. Για να διευρύνετε τις επιλογές σας ανάμεσα σε ένα καινούργιο και ένα μεταχειρισμένο όχημα, έχετε μία πρόσθετη δυνατότητα: ένα μεταχειρισμένο αυτοκίνητο με τη σφραγίδα Porsche Approved.
 </p-text>
 
-<p-text class="p-spacing-mb-16">
+<p-text class="spacing-mt-16">
   Σε τι διαφέρει ένα αυτοκίνητο του προγράμματος μεταχειρισμένων Porsche Approved από ένα συμβατικό μεταχειρισμένο;
 </p-text>
  
-<p-text-list class="p-spacing-mb-16">
+<p-text-list class="spacing-mt-16">
 <p-text-list-item>
   Ελέγχουμε κάθε μεταχειρισμένο αυτοκίνητο Porsche σε 111 διαφορετικά σημεία
 </p-text-list-item>
@@ -25,20 +25,20 @@
 </p-text-list-item>
 </p-text-list>
   
-<p-text class="p-spacing-mb-16">
+<p-text class="spacing-mt-16">
   Περισσότερες από το 60% όλων των μοντέλων της Porsche που κατασκευάστηκαν ποτέ κυκλοφορούν ακόμη και σήμερα. Αυτό το ποσοστό-ρεκόρ από μόνο του σημαίνει πολλά για την αξιοπιστία και την αξία ενός αυτοκινήτου Porsche.
 </p-text>
 
-<p-text class="p-spacing-mb-16">
+<p-text class="spacing-mt-16">
   Η Porsche των ονείρων σας θα σας προσφέρει άφθονη οδηγική απόλαυση. Με την Εγγύηση Μεταχειρισμένου Οχήματος Porsche, θα χαίρεστε μια επιπλέον αίσθηση. Αυτή, της σιγουριάς και της ασφάλειας, αλλά και την βεβαιότητα ότι κάνατε τη σωστή επιλογή. Σε περίπτωση προβλήματος, η εκτεταμένη εγγύηση καλύπτει το 100% του κόστους υλικών και εργατικών. Οι πελάτες του Προγράμματος Μεταχειρισμένων Οχημάτων Porsche Approved δεν χρεώνονται επιπλέον.
 </p-text>
 
-<p-text>
+<p-text class="spacing-mt-16">
   Η σφραγίδα εγγύησης "Porsche Approved" εγγυάται πιστοποιημένη ποιότητα.
 </p-text>
 
 --- 
 
-<p-text variant="small">
+<p-text size="x-small">
   Text taken from https://www.porsche.com/central-eastern-europe/en/_greece_/aboutporsche/importers/approved/
 </p-text>
