@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-button-icon</title>
+  <link rel="stylesheet" href="../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
+</head>
+<body>
+
+<div class="playground light" title="should render link primary with label">
+  <p-link variant="primary">Some label</p-link>
+</div>
+<div class="playground dark" title="should render link primary with label on dark theme">
+  <p-link variant="primary" theme="dark">Some label</p-link>
+</div>
+
+<div class="playground light" title="should render link primary without label">
+  <p-link variant="primary"></p-link>
+</div>
+<div class="playground dark" title="should render link primary without label on dark theme">
+  <p-link variant="primary" theme="dark"></p-link>
+</div>
+
+
+<div class="playground light" title="should render link secondary with label">
+  <p-link>Some label</p-link>
+</div>
+<div class="playground dark" title="should render link secondary with label on dark theme">
+  <p-link theme="dark">Some label</p-link>
+</div>
+
+<div class="playground light" title="should render link secondary without label">
+  <p-link></p-link>
+</div>
+<div class="playground dark" title="should render link secondary without label on dark theme">
+  <p-link theme="dark"></p-link>
+</div>
+
+
+<div class="playground light" title="should render link primary with label">
+  <p-link variant="tertiary">Some label</p-link>
+</div>
+<div class="playground dark" title="should render link tertiary with label on dark theme">
+  <p-link variant="tertiary" theme="dark">Some label</p-link>
+</div>
+
+<div class="playground light" title="should render link tertiary without label">
+  <p-link variant="tertiary"></p-link>
+</div>
+<div class="playground dark" title="should render link tertiary without label on dark theme">
+  <p-link variant="tertiary" theme="dark"></p-link>
+</div>
+
+<div class="playground light" title="should render link secondary with dynamic label">
+  <p-link hide-label="false">Some label</p-link>
+  <p-link hide-label="true">Some label</p-link>
+</div>
+
+
+<div class="playground light" title="should render link secondary with specific icon">
+  <p-link icon="phone"></p-link>
+  <p-link icon-source="./assets/icon-custom-kaixin.svg"></p-link>
+</div>
+
+</body>
+</html>

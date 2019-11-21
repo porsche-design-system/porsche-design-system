@@ -1,0 +1,139 @@
+@import '../../../../../../packages/ui-kit-scss-utils/index';
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.#{$p-global-class-prefix}link {
+  $bem-block: &;
+  display: inline-flex;
+  width: 100%;
+  min-width: rem(48px);
+  min-height: rem(48px);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  outline: none $p-color-porsche-light;
+  text-decoration: none;
+  color: $p-color-porsche-light;
+  background-color: $p-color-neutral-grey-8;
+  border: 1px solid $p-color-neutral-grey-8;
+  transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
+    border-color $p-animation-hover-duration $p-animation-hover-bezier,
+    outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+    color $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &::-moz-focus-inner {
+    border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  }
+
+  &--theme-dark {
+    color: $p-color-porsche-black;
+    background-color: $p-color-porsche-light;
+    border-color: $p-color-porsche-light;
+    outline-color: $p-color-porsche-black;
+  }
+
+  &:hover,
+  &:active {
+    color: $p-color-porsche-light;
+    background-color: $p-color-neutral-grey-7;
+    border-color: $p-color-neutral-grey-7;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-black;
+      background-color: $p-color-neutral-grey-1;
+      border-color: $p-color-neutral-grey-1;
+    }
+  }
+
+  &:focus {
+    outline: 2px solid $p-color-state-focus;
+    outline-offset: 1px;
+  }
+
+  &--primary {
+    color: $p-color-porsche-light;
+    background-color: $p-color-porsche-red;
+    border-color: $p-color-porsche-red;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-light;
+      background-color: $p-color-porsche-red;
+      border-color: $p-color-porsche-red;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-porsche-light;
+      background-color: $p-color-porsche-dark-red;
+      border-color: $p-color-porsche-dark-red;
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-porsche-light;
+        background-color: $p-color-porsche-dark-red;
+        border-color: $p-color-porsche-dark-red;
+      }
+    }
+
+  }
+
+  &--tertiary {
+    color: $p-color-porsche-black;
+    background-color: transparent;
+    border-color: $p-color-neutral-grey-8;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-light;
+      background-color: transparent;
+      border-color: $p-color-porsche-light;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-porsche-light;
+      background-color: $p-color-neutral-grey-8;
+      border-color: $p-color-neutral-grey-8;
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-porsche-black;
+        background-color: $p-color-porsche-light;
+        border-color: $p-color-porsche-light;
+      }
+    }
+  }
+
+  &__label {
+    padding: {
+      top: rem(11px);
+      right: rem(15px);
+      bottom: rem(11px);
+      left: rem(39px);
+    }
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__label ~ &__icon {
+    left: rem(11px);
+    top: rem(11px);
+    width: rem(24px);
+    height: rem(24px);
+    transform: translateX(0) translateY(0);
+  }
+
+  &__icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: rem(36px);
+    height: rem(36px);
+    display: block;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+}
