@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.14.9] - 2019-11-06
+
+-   You can now configure the `required` and `spellCheck` property of `<TextArea>`.
+
 ## [0.14.8] - 2019-11-06
 
 -   Increase z-index of Toast component to be higher than Modal component.

@@ -325,6 +325,7 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+    @include -text-size-copy;
 }
 
 .#{$global-class-prefix}Select-label {
