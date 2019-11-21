@@ -121,16 +121,16 @@ export class PIcon {
 }
 proxyInputs(PIcon, ['color', 'lazy', 'name', 'size', 'source']);
 
-export declare interface PLinkIcon extends Components.PLinkIcon {}
-@Component({ selector: 'p-link-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'download', 'href', 'icon', 'rel', 'tabbable', 'target', 'theme', 'variant'] })
-export class PLinkIcon {
+export declare interface PLink extends Components.PLink {}
+@Component({ selector: 'p-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'hideLabel', 'href', 'icon', 'iconSource', 'tabbable', 'theme', 'variant'] })
+export class PLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PLinkIcon, ['allyLabel', 'download', 'href', 'icon', 'rel', 'tabbable', 'target', 'theme', 'variant']);
+proxyInputs(PLink, ['allyLabel', 'hideLabel', 'href', 'icon', 'iconSource', 'tabbable', 'theme', 'variant']);
 
 export declare interface PMarque extends Components.PMarque {}
 @Component({ selector: 'p-marque', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['trademark'] })

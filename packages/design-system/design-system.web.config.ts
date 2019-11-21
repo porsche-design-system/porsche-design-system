@@ -258,18 +258,18 @@ export const config: DesignSystemConfig = {
           () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`),
         ],
       },
-      'Link Icon': {
+      'Link': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/link-icon/link-icon.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.design.md`),
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/link-icon/link-icon.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.code.md`),
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/link-icon/link-icon.props.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.props.md`),
         ],
       },
       'Text Link': {
