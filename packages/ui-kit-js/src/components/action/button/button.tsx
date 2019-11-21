@@ -59,13 +59,14 @@ export class Button {
 
   public componentWillLoad() {
     this.slots  = this.element.childNodes;
-    this.slots.length !== 0 ? this.isSlotDefined = true : this.isSlotDefined = false;
+    // this.slots.length !== 0 ? this.isSlotDefined = true : this.isSlotDefined = false;
+    this.slots.length === 0 || this.hideLabel && this.slots.length !== 0 ? this.isSlotDefined = false : this.isSlotDefined = true;
   }
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
-    console.log(this.element);
-    console.log('123', this.element.shadowRoot.querySelectorAll('slot'));
+    // console.log(this.element);
+    // console.log('123', this.element.shadowRoot.querySelectorAll('slot'));
   }
 
   public componentWillUpdate() {

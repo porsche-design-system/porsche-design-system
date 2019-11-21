@@ -20,7 +20,7 @@ Choose between predefined styling variants.
   </template>
 </Playground>
 
-#### Secondary (default)
+### Secondary (default)
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -34,7 +34,7 @@ Choose between predefined styling variants.
   </template>
 </Playground>
 
-#### Tertiary
+### Tertiary
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -50,17 +50,37 @@ Choose between predefined styling variants.
 
 ---
 
-## Button Icon with specific icon
+## Button with dynamic labeling
+In some cases (e.g. on smaller viewports) it might be necessary to show/hide the label programmatically and render the button as icon only. This can be achieved by changing the `hide-label` property with a boolean.
+
+<Playground :themeable="true">
+    <template #configurator>
+      <select @change="toggleLabel = $event.target.value">
+        <option selected value="true">Hide label</option>
+        <option value="false">Show label</option>
+      </select>
+    </template>
+    <template v-slot={theme}>
+      <p-button :hide-label="toggleLabel" :theme="theme">Some label</p-button>
+    </template>
+</Playground>
+
+---
+
+## Button with specific icon
 If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `icon` prop.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
+    <p-button icon="phone" :theme="theme">Some label</p-button>
+    <p-button :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme">Some label</p-button>
+    <br>
     <p-button icon="phone" ally-label="Some action description" :theme="theme" />
-    <p-button :icon="require(`@/assets/web/icon-custom-kaixin.svg`)" ally-label="Some action description" :theme="theme" />
+    <p-button :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" ally-label="Some action description" :theme="theme" />
   </template>
 </Playground>
 
-## Bind events to the Button Icon
+## Bind events to the Button
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the button.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
@@ -77,7 +97,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   </template>
 </Playground>
 
-## Remove Button Icon from tab order
+## Remove Button from tab order
 With setting the `tabbable` property to `false` you can remove the button from the tab order.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
@@ -86,3 +106,14 @@ With setting the `tabbable` property to `false` you can remove the button from t
     <p-button tabbable="false" ally-label="Some action description" :theme="theme" />
   </template>
 </Playground>
+
+
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundTypography extends Vue {
+    public toggleLabel: boolean = true;
+    
+  }
+</script>
