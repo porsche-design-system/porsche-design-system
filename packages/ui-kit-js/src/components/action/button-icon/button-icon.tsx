@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, hasShadowDom } from '../../../utils';
+import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
 
 @Component({
@@ -46,7 +47,10 @@ export class ButtonIcon {
   @Prop() public variant?: 'ghost' | 'transparent' | 'default' = 'default';
 
   /** The icon shown. */
-  @Prop() public icon?: string = 'plus';
+  @Prop() public icon?: IconName = 'plus';
+
+  /** A custom URL path to a custom icon. */
+  @Prop() public iconSource?: string = undefined;
 
   /** Adapts the button color when used on dark background. */
   @Prop() public theme?: 'light' | 'dark' = 'light';
@@ -79,7 +83,7 @@ export class ButtonIcon {
         {this.loading ? (
           <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
         ) : (
-          <p-icon class={iconClasses} size='medium' source={this.icon} />
+          <p-icon class={iconClasses} size='medium' name={this.icon} source={this.iconSource} />
         )}
       </TagType>
     );

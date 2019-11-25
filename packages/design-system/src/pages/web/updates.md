@@ -1,6 +1,15 @@
 # Updates 
 
 ## Design
+### [0.0.9] (2019-11-14)
+
+#### What's improved?
+* Replacement of Anima plugin with native Smart Layout functions
+
+### [0.0.9] (2019-11-20)
+
+#### What's changed?
+* Reduced text styles in UI Kit Basic library
 
 ### [0.0.8] (2019-10-08)
 

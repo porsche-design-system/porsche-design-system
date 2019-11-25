@@ -7,11 +7,14 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  IconName,
+} from './components/icon/icon/icon-name';
+import {
   BreakpointCustomizable,
 } from './utils';
 import {
   TextColor,
-  TextVariant,
+  TextSize,
 } from './types';
 
 export namespace Components {
@@ -27,7 +30,11 @@ export namespace Components {
     /**
     * The icon shown.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * A visually hidden label text to improve accessibility which describes the function behind the button.
     */
@@ -73,7 +80,11 @@ export namespace Components {
     /**
     * The icon shown next to the label.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -205,10 +216,6 @@ export namespace Components {
   }
   interface PIcon {
     /**
-    * Specifies the label to use for accessibility. Defaults to the icon name.
-    */
-    'ariaLabel'?: string;
-    /**
     * Basic color variations.
     */
     'color'?: TextColor;
@@ -217,13 +224,18 @@ export namespace Components {
     */
     'lazy'?: boolean;
     /**
+    * Specifies which icon to use.
+    */
+    'name'?: IconName;
+    /**
     * The size of the icon.
     */
     'size'?: 'small' | 'medium' | 'large' | 'inherit';
     /**
-    * Specifies which icon to use.
+    * Specifies a whole icon path which can be used for custom icons.
     */
-    'source': string;
+    'source'?: string;
+    'variant'?: 'outline' | 'filled';
   }
   interface PMarque {
     /**
@@ -297,27 +309,25 @@ export namespace Components {
     */
     'ellipsis'?: boolean;
     /**
+    * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
     * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
     | 'div'
-    | 'label'
     | 'address'
     | 'blockquote'
     | 'figcaption'
     | 'cite'
     | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
     | 'legend';
     /**
-    * Style of the text.
+    * The weight of the text.
     */
-    'variant'?: TextVariant;
+    'weight'?: 'thin' | 'regular' | 'bold';
   }
   interface PTextLink {
     /**
@@ -335,11 +345,19 @@ export namespace Components {
     /**
     * The icon shown next to the label.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * Specifies the relationship of the target object to the link object.
     */
     'rel'?: string;
+    /**
+    * The style of the text.
+    */
+    'size'?: TextSize;
     /**
     * Set a custom HTML tag depending of the usage of the component.
     */
@@ -348,10 +366,6 @@ export namespace Components {
     * Target attribute where the link should be opened.
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
-    * The style of the text.
-    */
-    'variant'?: TextVariant;
   }
   interface PTextList {
     /**
@@ -490,7 +504,11 @@ declare namespace LocalJSX {
     /**
     * The icon shown.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * A visually hidden label text to improve accessibility which describes the function behind the button.
     */
@@ -532,7 +550,11 @@ declare namespace LocalJSX {
     /**
     * The icon shown next to the label.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
@@ -676,10 +698,6 @@ declare namespace LocalJSX {
   }
   interface PIcon extends JSXBase.HTMLAttributes<HTMLPIconElement> {
     /**
-    * Specifies the label to use for accessibility. Defaults to the icon name.
-    */
-    'ariaLabel'?: string;
-    /**
     * Basic color variations.
     */
     'color'?: TextColor;
@@ -688,11 +706,15 @@ declare namespace LocalJSX {
     */
     'lazy'?: boolean;
     /**
+    * Specifies which icon to use.
+    */
+    'name'?: IconName;
+    /**
     * The size of the icon.
     */
     'size'?: 'small' | 'medium' | 'large' | 'inherit';
     /**
-    * Specifies which icon to use.
+    * Specifies a whole icon path which can be used for custom icons.
     */
     'source'?: string;
   }
@@ -772,27 +794,25 @@ declare namespace LocalJSX {
     */
     'ellipsis'?: boolean;
     /**
+    * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
     * Sets a custom HTML tag depending of the usage of the text component.
     */
     'tag'?: | 'p'
     | 'span'
     | 'div'
-    | 'label'
     | 'address'
     | 'blockquote'
     | 'figcaption'
     | 'cite'
     | 'time'
-    | 'sup'
-    | 'sub'
-    | 'ul'
-    | 'ol'
-    | 'li'
     | 'legend';
     /**
-    * Style of the text.
+    * The weight of the text.
     */
-    'variant'?: TextVariant;
+    'weight'?: 'thin' | 'regular' | 'bold';
   }
   interface PTextLink extends JSXBase.HTMLAttributes<HTMLPTextLinkElement> {
     /**
@@ -810,7 +830,11 @@ declare namespace LocalJSX {
     /**
     * The icon shown next to the label.
     */
-    'icon'?: string;
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
     /**
     * Emitted when the link is clicked.
     */
@@ -820,6 +844,10 @@ declare namespace LocalJSX {
     */
     'rel'?: string;
     /**
+    * The style of the text.
+    */
+    'size'?: TextSize;
+    /**
     * Set a custom HTML tag depending of the usage of the component.
     */
     'tag'?: 'span' | 'a';
@@ -827,10 +855,6 @@ declare namespace LocalJSX {
     * Target attribute where the link should be opened.
     */
     'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
-    * The style of the text.
-    */
-    'variant'?: TextVariant;
   }
   interface PTextList extends JSXBase.HTMLAttributes<HTMLPTextListElement> {
     /**
