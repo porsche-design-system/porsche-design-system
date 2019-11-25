@@ -52,7 +52,7 @@ All button types are available in the following states:
 | active / hover | In active or hover state, the background color changes slightly and gets either a bit lighter or darker. |
 | disabled | Whenever the button function is not available, it is indicated by a greyed-out button color. |
 | loading | Indicates the loading process when clicking on the text link, the icon is replaced by a small loading spinner. |
-| focus | In focus state, the button is bordered by a 2 px line in focus color. |
+| focus | In focus state, the button is bordered by a 2 px line in focus color and with a distance of 1 px to the component. |
 
 ---
 
