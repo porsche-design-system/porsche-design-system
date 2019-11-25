@@ -22,17 +22,13 @@ import {
 export namespace Components {
   interface PButton {
     /**
-    * A visually hidden label text to improve accessibility which describes the function behind the button.
-    */
-    'allyLabel'?: string;
-    /**
     * Disables the button. No events will be triggered while disabled state is active.
     */
     'disabled'?: boolean;
     /**
     * Show or hide label
     */
-    'hideLabel'?: boolean;
+    'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
     * The icon shown.
     */
@@ -237,13 +233,9 @@ export namespace Components {
   }
   interface PLink {
     /**
-    * A visually hidden label text to improve accessibility which describes the function behind the link.
-    */
-    'allyLabel'?: string;
-    /**
     * Show or hide label
     */
-    'hideLabel'?: boolean;
+    'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
     * When providing an url then the component will be rendered as `<a>`.
     */
@@ -325,7 +317,7 @@ export namespace Components {
     /**
     * Predefined spinner sizes.
     */
-    'size'?: 'x-small' | 'small' | 'medium' | 'large';
+    'size'?: 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
     /**
     * Adapts the spinner color when used on dark background.
     */
@@ -537,17 +529,13 @@ declare global {
 declare namespace LocalJSX {
   interface PButton extends JSXBase.HTMLAttributes<HTMLPButtonElement> {
     /**
-    * A visually hidden label text to improve accessibility which describes the function behind the button.
-    */
-    'allyLabel'?: string;
-    /**
     * Disables the button. No events will be triggered while disabled state is active.
     */
     'disabled'?: boolean;
     /**
     * Show or hide label
     */
-    'hideLabel'?: boolean;
+    'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
     * The icon shown.
     */
@@ -759,13 +747,9 @@ declare namespace LocalJSX {
   }
   interface PLink extends JSXBase.HTMLAttributes<HTMLPLinkElement> {
     /**
-    * A visually hidden label text to improve accessibility which describes the function behind the link.
-    */
-    'allyLabel'?: string;
-    /**
     * Show or hide label
     */
-    'hideLabel'?: boolean;
+    'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
     * When providing an url then the component will be rendered as `<a>`.
     */
@@ -847,7 +831,7 @@ declare namespace LocalJSX {
     /**
     * Predefined spinner sizes.
     */
-    'size'?: 'x-small' | 'small' | 'medium' | 'large';
+    'size'?: 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
     /**
     * Adapts the spinner color when used on dark background.
     */

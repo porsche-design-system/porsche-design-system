@@ -1,5 +1,55 @@
 @import '../../../../../../packages/ui-kit-scss-utils/index';
 
+@mixin p-button-with-label() {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: {
+    top: rem(11px);
+    right: rem(15px);
+    bottom: rem(11px);
+    left: rem(39px);
+  }
+  white-space: normal;
+  overflow: visible;
+  border: 0;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin p-button-without-label() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+@mixin p-button-icon-with-label() {
+  position: absolute;
+  left: rem(11px);
+  top: rem(11px);
+  width: rem(24px);
+  height: rem(24px);
+  transform: translateX(0) translateY(0);
+}
+
+@mixin p-button-icon-without-label() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: rem(36px);
+  height: rem(36px);
+  display: block;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 :host {
   display: inline-flex;
   vertical-align: top;
@@ -155,45 +205,126 @@
   }
 
   &__label {
-    padding: {
-      top: rem(11px);
-      right: rem(15px);
-      bottom: rem(11px);
-      left: rem(39px);
-    }
     display: block;
-    width: 100%;
     box-sizing: border-box;
+
+    &--show {
+      @include p-button-with-label;
+
+      & ~ #{$bem-block}__icon,
+      & ~ #{$bem-block}__spinner {
+        @include p-button-icon-with-label;
+      }
+    }
+
+    &--hide {
+      @include p-button-without-label;
+
+      & ~ #{$bem-block}__icon,
+      & ~ #{$bem-block}__spinner {
+        @include p-button-icon-without-label;
+      }
+    }
+
+    @include p-breakpoint("xs") {
+      &--show-xs {
+        @include p-button-with-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-with-label;
+        }
+      }
+
+      &--hide-xs {
+        @include p-button-without-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-without-label;
+        }
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &--show-s {
+        @include p-button-with-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-with-label;
+        }
+      }
+
+      &--hide-s {
+        @include p-button-without-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-without-label;
+        }
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &--show-m {
+        @include p-button-with-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-with-label;
+        }
+      }
+
+      &--hide-m {
+        @include p-button-without-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-without-label;
+        }
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &--show-l {
+        @include p-button-with-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-with-label;
+        }
+      }
+
+      &--hide-l {
+        @include p-button-without-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-without-label;
+        }
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &--show-xl {
+        @include p-button-with-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-with-label;
+        }
+      }
+
+      &--hide-xl {
+        @include p-button-without-label;
+
+        & ~ #{$bem-block}__icon,
+        & ~ #{$bem-block}__spinner {
+          @include p-button-icon-without-label;
+        }
+      }
+    }
   }
 
-  &__label ~ &__icon,
-  &__label ~ &__spinner {
-    left: rem(11px);
-    top: rem(11px);
-    width: rem(24px);
-    height: rem(24px);
-    transform: translateX(0) translateY(0);
-  }
-
-  &__label ~ &__spinner {
-    width: rem(16px);
-    height: rem(16px);
-    top: rem(15px);
-  }
-
-  &__icon,
-  &__spinner {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: rem(36px);
-    height: rem(36px);
-    display: block;
-    transform: translateX(-50%) translateY(-50%);
-  }
-
-  &__spinner {
-    width: rem(16px);
-    height: rem(16px);
-  }
 }

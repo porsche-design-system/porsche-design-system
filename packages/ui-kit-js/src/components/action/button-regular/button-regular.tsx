@@ -78,7 +78,7 @@ export class ButtonRegular {
           <slot />
         </p-text>
         {this.loading ? (
-          <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
+          <p-spinner class={spinnerClasses} size='small' theme={this.useInvertedLoader()} />
         ) : (
           <p-icon class={iconClasses} name={this.icon} source={this.iconSource} />
         )}

@@ -30,7 +30,7 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 import { Components } from '@porsche-ui/ui-kit-js'
 
 export declare interface PButton extends Components.PButton {}
-@Component({ selector: 'p-button', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant'] })
+@Component({ selector: 'p-button', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant'] })
 export class PButton {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -38,7 +38,7 @@ export class PButton {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PButton, ['allyLabel', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant']);
+proxyInputs(PButton, ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant']);
 
 export declare interface PButtonRegular extends Components.PButtonRegular {}
 @Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })
@@ -122,7 +122,7 @@ export class PIcon {
 proxyInputs(PIcon, ['color', 'lazy', 'name', 'size', 'source']);
 
 export declare interface PLink extends Components.PLink {}
-@Component({ selector: 'p-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'hideLabel', 'href', 'icon', 'iconSource', 'tabbable', 'theme', 'variant'] })
+@Component({ selector: 'p-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'href', 'icon', 'iconSource', 'tabbable', 'theme', 'variant'] })
 export class PLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -130,7 +130,7 @@ export class PLink {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PLink, ['allyLabel', 'hideLabel', 'href', 'icon', 'iconSource', 'tabbable', 'theme', 'variant']);
+proxyInputs(PLink, ['hideLabel', 'href', 'icon', 'iconSource', 'tabbable', 'theme', 'variant']);
 
 export declare interface PMarque extends Components.PMarque {}
 @Component({ selector: 'p-marque', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['trademark'] })
