@@ -12,7 +12,8 @@ Choose between predefined styling variants.
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link variant="primary" href="https://www.porsche.com" :theme="theme">Some label</p-link>
-    <p-link variant="primary" href="https://www.porsche.com" ally-label="Some action description" :theme="theme" />
+    <p-link variant="primary" href="https://www.porsche.com" hide-label="true" :theme="theme">Some label</p-link>
+    <p-link variant="primary" href="https://www.porsche.com" hide-label="{ base: true, l: false }" :theme="theme">Some label</p-link>
   </template>
 </Playground>
 
@@ -20,8 +21,9 @@ Choose between predefined styling variants.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link :theme="theme">Some label</p-link>
-    <p-link ally-label="Some action description" :theme="theme" />
+    <p-link href="https://www.porsche.com" :theme="theme">Some label</p-link>
+    <p-link href="https://www.porsche.com" hide-label="true" :theme="theme">Some label</p-link>
+    <p-link href="https://www.porsche.com" hide-label="{ base: true, l: false }" :theme="theme">Some label</p-link>
   </template>
 </Playground>
 
@@ -29,26 +31,21 @@ Choose between predefined styling variants.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link variant="tertiary" :theme="theme">Some label</p-link>
-    <p-link variant="tertiary" ally-label="Some action description" :theme="theme" />
+    <p-link variant="tertiary" href="https://www.porsche.com" :theme="theme">Some label</p-link>
+    <p-link variant="tertiary" href="https://www.porsche.com" hide-label="true" :theme="theme">Some label</p-link>
+    <p-link variant="tertiary" href="https://www.porsche.com" hide-label="{ base: true, l: false }" :theme="theme">Some label</p-link>
   </template>
 </Playground>
 
 ---
 
-## Link with dynamic labeling
-In some cases (e.g. on smaller viewports) it might be necessary to show/hide the label programmatically and render the link as icon only. This can be achieved by changing the `hide-label` property with a boolean.
+## Link wrapped with an anker tag (e.g. for framework routing)
 
-<Playground :themeable="true">
-    <template #configurator>
-      <select @change="toggleLabel = $event.target.value">
-        <option selected value="true">Hide label</option>
-        <option value="false">Show label</option>
-      </select>
-    </template>
-    <template v-slot={theme}>
-      <p-link :hide-label="toggleLabel" :theme="theme">Some label</p-link>
-    </template>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <a href="https://www.porsche.com" style="outline: none;"><p-link :theme="theme">Some label</p-link></a>
+    <a href="https://www.porsche.com" style="outline: none;"><p-link hide-label="true" :theme="theme">Some label</p-link></a>
+  </template>
 </Playground>
 
 ---
@@ -58,11 +55,11 @@ If another icon needs to be implemented, just replace the default icon with your
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link icon="phone" :theme="theme">Some label</p-link>
-    <p-link :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme">Some label</p-link>
+    <p-link href="https://www.porsche.com" icon="phone" :theme="theme">Some label</p-link>
+    <p-link href="https://www.porsche.com" :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme">Some label</p-link>
     <br>
-    <p-link icon="phone" ally-label="Some action description" :theme="theme" />
-    <p-link :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" ally-label="Some action description" :theme="theme" />
+    <p-link href="https://www.porsche.com" hide-label="true" icon="phone" :theme="theme">Some label</p-link>
+    <p-link href="https://www.porsche.com" hide-label="true" :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" :theme="theme">Some label</p-link>
   </template>
 </Playground>
 
@@ -72,14 +69,14 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link
-        onclick="alert('click')"
+        href="https://www.porsche.com"
+        onclick="alert('click'); return false;"
         onfocus="console.log('focus')"
         onfocusin="console.log('focusin')"
         onblur="console.log('blur')"
         onfocusout="console.log('focusout')"
-        ally-label="Some action description"
         :theme="theme"
-    />
+   >Some label</p-link>
   </template>
 </Playground>
 
@@ -88,18 +85,7 @@ With setting the `tabbable` property to `false` you can remove the link from the
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link tabbable="true" ally-label="Some action description" :theme="theme" />
-    <p-link tabbable="false" ally-label="Some action description" :theme="theme" />
+    <p-link href="https://www.porsche.com" tabbable="true" :theme="theme">Some label</p-link>
+    <p-link href="https://www.porsche.com" tabbable="false" :theme="theme">Some label</p-link>
   </template>
 </Playground>
-
-
-<script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  
-  @Component
-  export default class PlaygroundTypography extends Vue {
-    public toggleLabel: boolean = true;
-    
-  }
-</script>

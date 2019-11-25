@@ -1,6 +1,6 @@
-import { JSX, Component, Prop, State, h, Element, Listen } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
-import { prefix, hasShadowDom } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, hasShadowDom } from '../../../utils';
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
 import {ButtonType, Theme} from '../../../types';
@@ -29,9 +29,6 @@ export class Button {
   /** Specifies the type of the button. */
   @Prop() public type?: ButtonType = 'button';
 
-  /** A visually hidden label text to improve accessibility which describes the function behind the button. */
-  @Prop() public allyLabel?: string = undefined;
-
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
@@ -51,26 +48,10 @@ export class Button {
   @Prop() public theme?: Theme = 'light';
 
   /** Show or hide label */
-  @Prop() public hideLabel?: boolean = false;
-
-  @State() public isSlotDefined?: boolean;
-
-  private slots: NodeListOf<ChildNode>;
-
-  public componentWillLoad() {
-    this.slots  = this.element.childNodes;
-    // this.slots.length !== 0 ? this.isSlotDefined = true : this.isSlotDefined = false;
-    this.slots.length === 0 || this.hideLabel && this.slots.length !== 0 ? this.isSlotDefined = false : this.isSlotDefined = true;
-  }
+  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
-    // console.log(this.element);
-    // console.log('123', this.element.shadowRoot.querySelectorAll('slot'));
-  }
-
-  public componentWillUpdate() {
-    this.slots.length === 0 || this.hideLabel && this.slots.length !== 0 ? this.isSlotDefined = false : this.isSlotDefined = true;
   }
 
   public render(): JSX.Element {
@@ -83,23 +64,23 @@ export class Button {
     );
     const iconClasses = prefix('button__icon');
     const spinnerClasses = prefix('button__spinner');
-    const labelClasses = prefix('button__label');
+    const labelClasses = cx(
+      prefix('button__label'),
+      mapBreakpointPropToPrefixedClasses('button__label-', this.hideLabel, ['hide', 'show'])
+    );
 
     return (
       <button
         class={buttonClasses}
         type={this.type}
         disabled={this.disabled || this.loading}
-        aria-label={this.allyLabel}
         tabindex={this.tabbable ? 0 : -1}
       >
-        {this.isSlotDefined ? (
-          <p-text tag='span' color='inherit' class={labelClasses}>
-            <slot/>
-          </p-text>
-        ) : null}
+        <p-text tag='span' color='inherit' class={labelClasses}>
+          <slot/>
+        </p-text>
         {this.loading ? (
-          <p-spinner class={spinnerClasses} size='x-small' theme={this.useInvertedLoader()} />
+          <p-spinner class={spinnerClasses} size='inherit' theme={this.useInvertedLoader()} />
         ) : (
           <p-icon class={iconClasses} size='inherit' name={this.icon} source={this.iconSource} />
         )}

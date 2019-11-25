@@ -2,14 +2,6 @@
 
 Basic animated spinner to visualize loading states, e.g. page loading, form validation, etc. The Spinner component sizes are predefined.
 
-### X-small
-
-<Playground :themeable="true">
-  <template v-slot={theme}>
-    <p-spinner size="x-small" ally-label="Loading" :theme="theme" />
-  </template>
-</Playground>
-
 ### Small
 
 <Playground :themeable="true">
@@ -31,5 +23,13 @@ Basic animated spinner to visualize loading states, e.g. page loading, form vali
 <Playground :themeable="true">
   <template v-slot={theme}>
     <p-spinner size="large" ally-label="Loading" :theme="theme" />
+  </template>
+</Playground>
+
+### X-Large
+
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-spinner size="x-large" ally-label="Loading" :theme="theme" />
   </template>
 </Playground>
