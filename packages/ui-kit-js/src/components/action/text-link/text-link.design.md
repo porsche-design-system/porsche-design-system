@@ -18,7 +18,7 @@ Per default, the text link component is set in **copytext size**. If a higher hi
 | **Active / Hover** | In active and hover state, both icon and text turn Porsche Red and underlined (in order to make these states visible also for users with red-green visual impairments). |
 | **Disabled** | When the Text Link isn't clickable, this is indicated by a greyed-out disabled state. |
 | **Loading** | To indicate the loading process when clicking on the text link, the icon is replaced by a small loading spinner. |
-| **Focus** | In focus state, the text link is bordered by a 2 px line in focus color. |
+| **Focus** | In focus state, the button is bordered by a 2 px line in focus color and with a distance of 1 px to the component. |
 
 ---
 
