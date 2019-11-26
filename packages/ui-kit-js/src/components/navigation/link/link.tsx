@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
-import {Theme} from '../../../types';
+import {Theme, LinkTarget} from '../../../types';
 
 @Component({
   tag: 'p-link',
@@ -41,6 +41,15 @@ export class Link {
   /** Adapts the link color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Target attribute where the link should be opened. */
+  @Prop() public target?: LinkTarget = '_self';
+
+  /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
+  @Prop() public download?: string = undefined;
+
+  /** Specifies the relationship of the target object to the link object. */
+  @Prop() public rel?: string = undefined;
+
   /** Show or hide label */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
@@ -67,8 +76,9 @@ export class Link {
     return (
       <TagType
         class={linkClasses}
-        //tabindex={(this.href && this.tabbable) ? 0 : -1}
         href={this.href}
+        {...(TagType === 'a' ? { href: this.href, target: `${this.target}`, download: this.download, rel: this.rel } : null)}
+        {...(TagType === 'a' && this.tabbable ? { tabindex: 0 } : { tabindex: -1 })}
       >
         <p-text tag='span' color='inherit' class={labelClasses}>
           <slot/>
