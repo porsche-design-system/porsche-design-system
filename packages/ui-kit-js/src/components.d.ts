@@ -27,7 +27,7 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * Show or hide label
+    * Show or hide label. For better accessibility it is recommended to show the label.
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
@@ -51,7 +51,7 @@ export namespace Components {
     */
     'tabbable'?: boolean;
     /**
-    * Adapts the button color when used on dark background.
+    * Adapts the button color depending on the theme.
     */
     'theme'?: Theme;
     /**
@@ -546,7 +546,7 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
-    * Show or hide label
+    * Show or hide label. For better accessibility it is recommended to show the label.
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
@@ -566,7 +566,7 @@ declare namespace LocalJSX {
     */
     'tabbable'?: boolean;
     /**
-    * Adapts the button color when used on dark background.
+    * Adapts the button color depending on the theme.
     */
     'theme'?: Theme;
     /**
