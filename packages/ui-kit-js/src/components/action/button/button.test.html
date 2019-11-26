@@ -23,14 +23,14 @@
 </div>
 
 <div class="playground light" title="should render button primary without label">
-  <p-button variant="primary"></p-button>
-  <p-button variant="primary" disabled="true"></p-button>
-  <p-button variant="primary" loading="true"></p-button>
+  <p-button variant="primary" hide-label="true">Some label</p-button>
+  <p-button variant="primary" hide-label="true" disabled="true">Some label</p-button>
+  <p-button variant="primary" hide-label="true" loading="true">Some label</p-button>
 </div>
 <div class="playground dark" title="should render button primary without label on dark theme">
-  <p-button variant="primary" theme="dark"></p-button>
-  <p-button variant="primary" theme="dark" disabled="true"></p-button>
-  <p-button variant="primary" theme="dark" loading="true"></p-button>
+  <p-button variant="primary" hide-label="true" theme="dark">Some label</p-button>
+  <p-button variant="primary" hide-label="true" theme="dark" disabled="true">Some label</p-button>
+  <p-button variant="primary" hide-label="true" theme="dark" loading="true">Some label</p-button>
 </div>
 
 
@@ -46,14 +46,14 @@
 </div>
 
 <div class="playground light" title="should render button secondary without label">
-  <p-button></p-button>
-  <p-button disabled="true"></p-button>
-  <p-button loading="true"></p-button>
+  <p-button hide-label="true">Some label</p-button>
+  <p-button hide-label="true" disabled="true">Some label</p-button>
+  <p-button hide-label="true" loading="true">Some label</p-button>
 </div>
 <div class="playground dark" title="should render button secondary without label on dark theme">
-  <p-button theme="dark"></p-button>
-  <p-button theme="dark" disabled="true"></p-button>
-  <p-button theme="dark" loading="true"></p-button>
+  <p-button hide-label="true" theme="dark">Some label</p-button>
+  <p-button hide-label="true" theme="dark" disabled="true">Some label</p-button>
+  <p-button hide-label="true" theme="dark" loading="true">Some label</p-button>
 </div>
 
 
@@ -69,25 +69,24 @@
 </div>
 
 <div class="playground light" title="should render button tertiary without label">
-  <p-button variant="tertiary"></p-button>
-  <p-button variant="tertiary" disabled="true"></p-button>
-  <p-button variant="tertiary" loading="true"></p-button>
+  <p-button variant="tertiary" hide-label="true">Some label</p-button>
+  <p-button variant="tertiary" hide-label="true" disabled="true">Some label</p-button>
+  <p-button variant="tertiary" hide-label="true" loading="true">Some label</p-button>
 </div>
 <div class="playground dark" title="should render button tertiary without label on dark theme">
-  <p-button variant="tertiary" theme="dark"></p-button>
-  <p-button variant="tertiary" theme="dark" disabled="true"></p-button>
-  <p-button variant="tertiary" theme="dark" loading="true"></p-button>
+  <p-button variant="tertiary" hide-label="true" theme="dark">Some label</p-button>
+  <p-button variant="tertiary" hide-label="true" theme="dark" disabled="true">Some label</p-button>
+  <p-button variant="tertiary" hide-label="true" theme="dark" loading="true">Some label</p-button>
 </div>
 
-<div class="playground light" title="should render button secondary with dynamic label">
-  <p-button hide-label="false">Some label</p-button>
-  <p-button hide-label="true">Some label</p-button>
+<div class="playground light" title="should render button secondary with responsive label">
+  <p-button hide-label="{'base': 'hide', 'l': 'show'}">Some label</p-button>
 </div>
 
 
 <div class="playground light" title="should render button secondary with specific icon">
-  <p-button icon="phone"></p-button>
-  <p-button icon-source="./assets/icon-custom-kaixin.svg"></p-button>
+  <p-button icon="phone">Some label</p-button>
+  <p-button icon-source="./assets/icon-custom-kaixin.svg">Some label</p-button>
 </div>
 
 </body>

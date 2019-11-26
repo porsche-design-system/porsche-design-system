@@ -8,6 +8,7 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ButtonType,
+  LinkTarget,
   TextColor,
   TextSize,
   Theme,
@@ -233,6 +234,10 @@ export namespace Components {
   }
   interface PLink {
     /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: string;
+    /**
     * Show or hide label
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
@@ -253,9 +258,17 @@ export namespace Components {
     */
     'nativeTabindex'?: number;
     /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
     * To remove the element from tab order.
     */
     'tabbable'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: LinkTarget;
     /**
     * Adapts the link color when used on dark background.
     */
@@ -747,6 +760,10 @@ declare namespace LocalJSX {
   }
   interface PLink extends JSXBase.HTMLAttributes<HTMLPLinkElement> {
     /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: string;
+    /**
     * Show or hide label
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
@@ -763,9 +780,17 @@ declare namespace LocalJSX {
     */
     'iconSource'?: string;
     /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
     * To remove the element from tab order.
     */
     'tabbable'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: LinkTarget;
     /**
     * Adapts the link color when used on dark background.
     */

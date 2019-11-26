@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <p-link> should render correctly in default mode with shadow dom 1`] = `
+<p-link>
+  <mock:shadow-root>
+    <span class="p-link" tabindex="-1">
+      <p-text class="p-link__label p-link__label--show" color="inherit" tag="span">
+        <slot></slot>
+      </p-text>
+      <p-icon class="p-link__icon" name="arrow-right-hair" size="inherit"></p-icon>
+    </span>
+  </mock:shadow-root>
+  Some label
+</p-link>
+`;

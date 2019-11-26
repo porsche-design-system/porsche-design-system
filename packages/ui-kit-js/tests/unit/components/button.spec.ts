@@ -27,15 +27,6 @@ describe('Component <p-button>', () => {
     expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('type','submit');
   });
 
-  it('should render with an aria label text', async () => {
-    const page = await newSpecPage({
-      components: [Button],
-      html: `<p-button ally-label="Text string"></p-button>`,
-    });
-    expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('aria-label','Text string');
-  });
-
   it('should have a disabled prop in button mode', async () => {
     const page = await newSpecPage({
       components: [Button],
