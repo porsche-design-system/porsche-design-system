@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, hasShadowDom } from '../../../utils';
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
-import {ButtonType, Theme} from '../../../types';
+import { ButtonType, Theme } from '../../../types';
 
 @Component({
   tag: 'p-button',
@@ -44,10 +44,10 @@ export class Button {
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
 
-  /** Adapts the button color when used on dark background. */
+  /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Show or hide label */
+  /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad() {
@@ -59,8 +59,8 @@ export class Button {
 
     const buttonClasses = cx(
       prefix('button'),
-      this.variant !== 'secondary' && prefix(`button--${this.variant}`),
-      this.theme !== 'light' && prefix('button--theme-dark')
+      prefix(`button--${this.variant}`),
+      prefix(`button--theme-${this.variant}`)
     );
     const iconClasses = prefix('button__icon');
     const spinnerClasses = prefix('button__spinner');
@@ -133,5 +133,4 @@ export class Button {
   private useInvertedLoader(): Theme {
     return this.variant !== 'tertiary' || this.theme === 'dark' ? 'dark' : 'light';
   }
-
 }

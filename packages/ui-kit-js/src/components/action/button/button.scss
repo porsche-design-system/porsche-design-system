@@ -66,11 +66,10 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: none $p-color-porsche-light;
+  outline: none;
   text-decoration: none;
-  color: $p-color-porsche-light;
-  background-color: $p-color-neutral-grey-8;
-  border: 1px solid $p-color-neutral-grey-8;
+  border-style: solid;
+  border-width: 1px;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     border-color $p-animation-hover-duration $p-animation-hover-bezier,
     outline-color $p-animation-hover-duration $p-animation-hover-bezier,
@@ -80,46 +79,22 @@
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
+  &--theme-light {
+    outline-color: $p-color-porsche-light;
+  }
+
   &--theme-dark {
-    color: $p-color-porsche-black;
-    background-color: $p-color-porsche-light;
-    border-color: $p-color-porsche-light;
     outline-color: $p-color-porsche-black;
   }
 
-  &:enabled,
-  &:not([disabled]) {
-    &:hover,
-    &:active {
-      color: $p-color-porsche-light;
-      background-color: $p-color-neutral-grey-7;
-      border-color: $p-color-neutral-grey-7;
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-porsche-black;
-        background-color: $p-color-neutral-grey-1;
-        border-color: $p-color-neutral-grey-1;
-      }
-    }
-
-    &:focus {
-      outline: 2px solid $p-color-state-focus;
-      outline-offset: 1px;
-    }
+  &:focus {
+    outline: 2px solid $p-color-state-focus;
+    outline-offset: 1px;
   }
 
   &:disabled,
   &[disabled] {
     pointer-events: none;
-    color: rgba($p-color-porsche-light, 0.55);
-    background-color: $p-color-grey-disabled-on-light;
-    border-color: $p-color-grey-disabled-on-light;
-
-    &#{$bem-block}--theme-dark {
-      color: rgba($p-color-porsche-light, 0.55);
-      background-color: $p-color-grey-disabled-on-dark;
-      border-color: $p-color-grey-disabled-on-dark;
-    }
   }
 
   &--primary {
@@ -159,6 +134,47 @@
         color: rgba($p-color-porsche-light, 0.55);
         background-color: $p-color-grey-disabled-on-light;
         border-color: $p-color-grey-disabled-on-light;
+      }
+    }
+  }
+
+  &--secondary {
+    color: $p-color-porsche-light;
+    background-color: $p-color-neutral-grey-8;
+    border-color: $p-color-neutral-grey-8;
+
+    &--theme-dark {
+      color: $p-color-porsche-black;
+      background-color: $p-color-porsche-light;
+      border-color: $p-color-porsche-light;
+    }
+
+    &:enabled,
+    &:not([disabled]) {
+      &:hover,
+      &:active {
+        color: $p-color-porsche-light;
+        background-color: $p-color-neutral-grey-7;
+        border-color: $p-color-neutral-grey-7;
+
+        &#{$bem-block}--theme-dark {
+          color: $p-color-porsche-black;
+          background-color: $p-color-neutral-grey-1;
+          border-color: $p-color-neutral-grey-1;
+        }
+      }
+    }
+
+    &:disabled,
+    &[disabled] {
+      color: rgba($p-color-porsche-light, 0.55);
+      background-color: $p-color-grey-disabled-on-light;
+      border-color: $p-color-grey-disabled-on-light;
+
+      &#{$bem-block}--theme-dark {
+        color: rgba($p-color-porsche-light, 0.55);
+        background-color: $p-color-grey-disabled-on-dark;
+        border-color: $p-color-grey-disabled-on-dark;
       }
     }
   }
@@ -326,5 +342,4 @@
       }
     }
   }
-
 }
