@@ -1,4 +1,4 @@
-describe('Button Icon', () => {
+describe('Button', () => {
   beforeEach(() => {
     window.localStorage.setItem('Feature: Q2/2019 Components', 'true');
   });
@@ -7,19 +7,19 @@ describe('Button Icon', () => {
     cy.visit('/#/web');
 
     cy.get('#app aside nav a')
-      .contains('Button Icon')
+      .contains('Button')
       .click()
       .parents('a')
       .should('have.class', 'router-link-active');
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'Button Icon');
+      .and('contain', 'Button');
   });
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/web/components/action/button-icon');
+      cy.visit('/#/web/components/action/button');
     });
 
     it('Should show tab navigation with first tab activated', () => {
@@ -43,7 +43,7 @@ describe('Button Icon', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Button Icon');
+      cy.get('#app main h1').should('contain', 'Button');
     });
 
     it('Should show code documentation', () => {
@@ -52,7 +52,7 @@ describe('Button Icon', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Button Icon');
+      cy.get('#app main h1').should('contain', 'Button');
     });
 
     it('Should show props documentation', () => {
@@ -61,7 +61,7 @@ describe('Button Icon', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Button Icon');
+      cy.get('#app main h1').should('contain', 'Button');
     });
   });
 });
