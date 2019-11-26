@@ -3,7 +3,6 @@ import {defineCustomElements, applyPolyfills} from '@porsche-ui/ui-kit-js/loader
 
 import {
   PButton,
-  PButtonRegular,
   PFlex,
   PFlexItem,
   PGrid,
@@ -21,7 +20,6 @@ import {
 
 const DECLARATIONS = [
   PButton,
-  PButtonRegular,
   PFlex,
   PFlexItem,
   PGrid,

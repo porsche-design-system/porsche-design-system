@@ -19,7 +19,7 @@ describe('Text Link', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/web/components/action/text-link');
+      cy.visit('/#/web/components/navigation/text-link');
     });
 
     it('Should show tab navigation with first tab activated', () => {

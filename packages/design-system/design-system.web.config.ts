@@ -140,20 +140,6 @@ export const config: DesignSystemConfig = {
           () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`),
         ],
       },
-      'Button Regular': {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.design.md`),
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.code.md`),
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.props.md`),
-        ],
-      },
     },
     Content: {
       'Text List': {

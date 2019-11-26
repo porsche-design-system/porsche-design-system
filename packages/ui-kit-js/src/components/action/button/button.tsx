@@ -39,16 +39,16 @@ export class Button {
   @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'plus';
+  @Prop() public icon?: IconName = 'arrow-right-hair';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
 
-  /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Adapts the button color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
@@ -60,14 +60,11 @@ export class Button {
     const buttonClasses = cx(
       prefix('button'),
       prefix(`button--${this.variant}`),
-      prefix(`button--theme-${this.variant}`)
+      mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label']),
+      prefix(`button--theme-${this.theme}`)
     );
     const iconClasses = prefix('button__icon');
-    const spinnerClasses = prefix('button__spinner');
-    const labelClasses = cx(
-      prefix('button__label'),
-      mapBreakpointPropToPrefixedClasses('button__label-', this.hideLabel, ['hide', 'show'])
-    );
+    const labelClasses = prefix('button__label');
 
     return (
       <button
@@ -76,18 +73,26 @@ export class Button {
         disabled={this.disabled || this.loading}
         tabindex={this.tabbable ? 0 : -1}
       >
+        {this.loading ? (
+          <p-spinner
+            class={iconClasses}
+            size='inherit'
+            theme={this.variant === 'tertiary' && this.theme === 'light' ? 'light' : 'dark'}
+          />
+        ) : (
+          <p-icon
+            class={iconClasses}
+            size='inherit'
+            name={this.icon}
+            source={this.iconSource}
+          />
+        )}
         <p-text tag='span' color='inherit' class={labelClasses}>
           <slot/>
         </p-text>
-        {this.loading ? (
-          <p-spinner class={spinnerClasses} size='inherit' theme={this.useInvertedLoader()} />
-        ) : (
-          <p-icon class={iconClasses} size='inherit' name={this.icon} source={this.iconSource} />
-        )}
       </button>
     );
   }
-
 
   /**
    * IE11 workaround to fix the event target
@@ -128,9 +133,5 @@ export class Button {
         }, 1);
       }
     }
-  }
-
-  private useInvertedLoader(): Theme {
-    return this.variant !== 'tertiary' || this.theme === 'dark' ? 'dark' : 'light';
   }
 }

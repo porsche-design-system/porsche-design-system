@@ -63,48 +63,6 @@ export namespace Components {
     */
     'variant'?: 'primary' | 'secondary' | 'tertiary';
   }
-  interface PButtonRegular {
-    /**
-    * Disables the button. No events will be triggered while disabled state is active.
-    */
-    'disabled'?: boolean;
-    /**
-    * When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.
-    */
-    'href'?: string;
-    /**
-    * The icon shown next to the label.
-    */
-    'icon'?: IconName;
-    /**
-    * A custom URL path to a custom icon.
-    */
-    'iconSource'?: string;
-    /**
-    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
-    */
-    'loading'?: boolean;
-    /**
-    * Displays the button smaller.
-    */
-    'small'?: boolean;
-    /**
-    * Target attribute where the link should be opened.
-    */
-    'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
-    * Adapts the button color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
-    /**
-    * Specifies the type of the button when no href prop is defined.
-    */
-    'type'?: 'button' | 'submit' | 'reset';
-    /**
-    * The style variant of the button.
-    */
-    'variant'?: 'highlight' | 'ghost' | 'default';
-  }
   interface PFlex {
     /**
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -430,12 +388,6 @@ declare global {
     new (): HTMLPButtonElement;
   };
 
-  interface HTMLPButtonRegularElement extends Components.PButtonRegular, HTMLStencilElement {}
-  var HTMLPButtonRegularElement: {
-    prototype: HTMLPButtonRegularElement;
-    new (): HTMLPButtonRegularElement;
-  };
-
   interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {}
   var HTMLPFlexElement: {
     prototype: HTMLPFlexElement;
@@ -521,7 +473,6 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
-    'p-button-regular': HTMLPButtonRegularElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
@@ -577,60 +528,6 @@ declare namespace LocalJSX {
     * The style variant of the button.
     */
     'variant'?: 'primary' | 'secondary' | 'tertiary';
-  }
-  interface PButtonRegular extends JSXBase.HTMLAttributes<HTMLPButtonRegularElement> {
-    /**
-    * Disables the button. No events will be triggered while disabled state is active.
-    */
-    'disabled'?: boolean;
-    /**
-    * When providing an url then the component will be rendered as `<a>` instead of `<button>` tag.
-    */
-    'href'?: string;
-    /**
-    * The icon shown next to the label.
-    */
-    'icon'?: IconName;
-    /**
-    * A custom URL path to a custom icon.
-    */
-    'iconSource'?: string;
-    /**
-    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
-    */
-    'loading'?: boolean;
-    /**
-    * Emitted when the button loses focus.
-    */
-    'onPBlur'?: (event: CustomEvent<void>) => void;
-    /**
-    * Emitted when the button is clicked.
-    */
-    'onPClick'?: (event: CustomEvent<void>) => void;
-    /**
-    * Emitted when the button has focus.
-    */
-    'onPFocus'?: (event: CustomEvent<void>) => void;
-    /**
-    * Displays the button smaller.
-    */
-    'small'?: boolean;
-    /**
-    * Target attribute where the link should be opened.
-    */
-    'target'?: 'self' | 'blank' | 'parent' | 'top';
-    /**
-    * Adapts the button color when used on dark background.
-    */
-    'theme'?: 'light' | 'dark';
-    /**
-    * Specifies the type of the button when no href prop is defined.
-    */
-    'type'?: 'button' | 'submit' | 'reset';
-    /**
-    * The style variant of the button.
-    */
-    'variant'?: 'highlight' | 'ghost' | 'default';
   }
   interface PFlex extends JSXBase.HTMLAttributes<HTMLPFlexElement> {
     /**
@@ -952,7 +849,6 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'p-button': PButton;
-    'p-button-regular': PButtonRegular;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
     'p-grid': PGrid;

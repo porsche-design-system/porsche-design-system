@@ -8,7 +8,6 @@ import { defineCustomElements, applyPolyfills } from '@porsche-ui/ui-kit-js/load
 
 applyPolyfills().then(() => { defineCustomElements(window); });
 export const PButton = createReactComponent<JSX.PButton, HTMLPButtonElement>('p-button');
-export const PButtonRegular = createReactComponent<JSX.PButtonRegular, HTMLPButtonRegularElement>('p-button-regular');
 export const PFlex = createReactComponent<JSX.PFlex, HTMLPFlexElement>('p-flex');
 export const PFlexItem = createReactComponent<JSX.PFlexItem, HTMLPFlexItemElement>('p-flex-item');
 export const PGrid = createReactComponent<JSX.PGrid, HTMLPGridElement>('p-grid');

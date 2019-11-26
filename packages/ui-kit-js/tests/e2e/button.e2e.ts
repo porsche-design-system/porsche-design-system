@@ -1,17 +1,17 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('button-icon', () => {
+describe('button', () => {
   it('should render', async () => {
     const page = await newE2EPage();
-    await page.setContent(`<p-button-icon></p-button-icon>`);
-    const el = await page.find('p-button-icon >>> button');
+    await page.setContent(`<p-button>Some label</p-button>`);
+    const el = await page.find('p-button >>> button');
     expect(el).not.toBeNull();
   });
 
   it('should dispatch correct click events', async () => {
     const page = await newE2EPage();
-    await page.setContent(`<div><p-button-icon id="hostElement"></p-button-icon></div>`);
-    const button = await page.find('p-button-icon >>> button');
+    await page.setContent(`<div><p-button id="hostElement">Some label</p-button></div>`);
+    const button = await page.find('p-button >>> button');
     const host = await page.find('#hostElement');
     const wrapper = await page.find('div');
     const hostEventSpy = await wrapper.spyOnEvent('click');
@@ -29,9 +29,9 @@ describe('button-icon', () => {
 
   it(`submits outer forms on click, if it's type submit`, async () => {
     const page = await newE2EPage();
-    await page.setContent(`<form onsubmit="return false;"><p-button-icon type="submit"></p-button-icon></form>`);
-    const button = await page.find('p-button-icon >>> button');
-    const host = await page.find('p-button-icon');
+    await page.setContent(`<form onsubmit="return false;"><p-button type="submit">Some label</p-button></form>`);
+    const button = await page.find('p-button >>> button');
+    const host = await page.find('p-button');
     const form = await page.find('form');
     for(const triggerElement of [host, button]) {
       const spy = await form.spyOnEvent('submit');
@@ -45,7 +45,7 @@ describe('button-icon', () => {
     await page.setContent(`
           <div id="wrapper">
             <form onsubmit="return false;">
-              <p-button-icon type="submit"></p-button-icon>
+              <p-button type="submit">Some label</p-button>
             </form>
           </div>
           <script>
@@ -54,7 +54,7 @@ describe('button-icon', () => {
             });
           </script>
     `);
-    const button = await page.find('p-button-icon >>> button');
+    const button = await page.find('p-button >>> button');
     const form = await page.find('form');
     const spy = await form.spyOnEvent('submit');
     await button.click();
@@ -66,11 +66,11 @@ describe('button-icon', () => {
     await page.setContent(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
-            <p-button-icon></p-button-icon>
+            <p-button>Some label</p-button>
             <a href="#" id="after">after</a>
           </div>
     `);
-    const button = await page.find('p-button-icon');
+    const button = await page.find('p-button');
     const before = await page.find('#before');
     const after = await page.find('#after');
     await before.focus();
@@ -122,25 +122,25 @@ describe('button-icon', () => {
     await page.setContent(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
-            <p-button-icon></p-button-icon>
+            <p-button>Some label</p-button>
           </div>
     `);
 
     async function buttonHasFocus() {
       return await page.evaluate(() => {
-        const buttonElement = document.querySelector('p-button-icon') as HTMLElement;
+        const buttonElement = document.querySelector('p-button') as HTMLElement;
         return document.activeElement === buttonElement;
       });
     }
 
-    const button = await page.find('p-button-icon');
+    const button = await page.find('p-button');
     const before = await page.find('#before');
     await before.focus();
     expect(await buttonHasFocus()).toBe(false);
     await button.focus();
     expect(await buttonHasFocus()).toBe(true);
     await page.evaluate(() => {
-      const buttonElement = document.querySelector('p-button-icon') as HTMLElement;
+      const buttonElement = document.querySelector('p-button') as HTMLElement;
       buttonElement.blur();
     });
     expect(await buttonHasFocus()).toBe(false);
@@ -151,12 +151,12 @@ describe('button-icon', () => {
     await page.setContent(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
-            <p-button-icon tabbable="false"></p-button-icon>
+            <p-button tabbable="false">Some label</p-button>
             <a href="#" id="after">after</a>
           </div>
     `);
 
-    const button = await page.find('p-button-icon');
+    const button = await page.find('p-button');
     const before = await page.find('#before');
     const after = await page.find('#after');
 
@@ -185,7 +185,7 @@ describe('button-icon', () => {
     await page.setContent(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
-            <p-button-icon tabindex="1"></p-button-icon>
+            <p-button tabindex="1">Some label</p-button>
             <a href="#" id="after">after</a>
           </div>
     `);
@@ -194,7 +194,7 @@ describe('button-icon', () => {
     expect(consoleLogs[0].type).toBe('warning');
     expect(consoleLogs[0].text).toBe('You can not set the tabindex on the host element of Porsche UI-Kit components. Please use `tabbable` instead.');
 
-    const button = await page.find('p-button-icon');
+    const button = await page.find('p-button');
     const before = await page.find('#before');
     const after = await page.find('#after');
 

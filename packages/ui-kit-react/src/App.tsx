@@ -7,8 +7,7 @@ import {
   PMarque,
   PHeadline,
   PText,
-  PButtonRegular,
-  PButtonIcon,
+  PButton,
   PTextLink,
   PTextList,
   PTextListItem,
@@ -34,8 +33,8 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size="10">
           <div className="playground light spacing-block">
-            <PMarque />
-            <PMarque trademark={false} />
+            <PMarque/>
+            <PMarque trademark={false}/>
           </div>
           <hr/>
         </PGridItem>
@@ -79,8 +78,7 @@ const App: React.FC = () => {
             </PText>
           </div>
           <div className="playground light spacing-block">
-            <PText>Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-              text</strong></PText>
+            <PText>Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong></PText>
           </div>
           <hr/>
         </PGridItem>
@@ -89,104 +87,85 @@ const App: React.FC = () => {
       <hr/>
       <PGrid>
         <PGridItem size="2">
-          <PHeadline variant="headline-4" tag="h4">&lt;p-button-regular&gt;</PHeadline>
+          <PHeadline variant="headline-4" tag="h4">&lt;p-button&gt;</PHeadline>
         </PGridItem>
         <PGridItem size="5">
           <div className="playground light spacing-inline">
-            <PButtonRegular variant="highlight">Some label</PButtonRegular>
-            <PButtonRegular variant="highlight" disabled={true}>Some label</PButtonRegular>
-            <PButtonRegular variant="highlight" loading={true}>Some label</PButtonRegular>
+            <PButton variant="primary">Some label</PButton>
+            <PButton variant="primary" disabled={true}>Some label</PButton>
+            <PButton variant="primary" loading={true}>Some label</PButton>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonRegular>Some label</PButtonRegular>
-            <PButtonRegular disabled={true}>Some label</PButtonRegular>
-            <PButtonRegular loading={true}>Some label</PButtonRegular>
+            <PButton>Some label</PButton>
+            <PButton disabled={true}>Some label</PButton>
+            <PButton loading={true}>Some label</PButton>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonRegular variant="ghost">Some label</PButtonRegular>
-            <PButtonRegular variant="ghost" disabled={true}>Some label</PButtonRegular>
-            <PButtonRegular variant="ghost" loading={true}>Some label</PButtonRegular>
+            <PButton variant="tertiary">Some label</PButton>
+            <PButton variant="tertiary" disabled={true}>Some label</PButton>
+            <PButton variant="tertiary" loading={true}>Some label</PButton>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonRegular icon="phone">Some label</PButtonRegular>
+            <PButton icon="phone">Some label</PButton>
+          </div>
+          <hr/>
+          <div className="playground light spacing-inline">
+            <PButton variant="primary" hideLabel={true}>Some label</PButton>
+            <PButton variant="primary" hideLabel={true} disabled={true}>Some label</PButton>
+            <PButton variant="primary" hideLabel={true} loading={true}>Some label</PButton>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonRegular small={true}>Some label</PButtonRegular>
-            <PButtonRegular small={true} variant="ghost">Some label</PButtonRegular>
-            <PButtonRegular small={true} variant="highlight">Some label</PButtonRegular>
+            <PButton hideLabel={true}>Some label</PButton>
+            <PButton disabled={true} hideLabel={true}>Some label</PButton>
+            <PButton loading={true} hideLabel={true}>Some label</PButton>
+          </div>
+          <div className="playground light spacing-inline">
+            <PButton variant="tertiary" hideLabel={true}>Some label</PButton>
+            <PButton variant="tertiary" hideLabel={true} disabled={true}>Some label</PButton>
+            <PButton variant="tertiary" hideLabel={true} loading={true}>Some label</PButton>
+          </div>
+          <div className="playground light spacing-inline">
+            <PButton icon="phone" hideLabel={true}>Some label</PButton>
           </div>
           <hr/>
         </PGridItem>
         <PGridItem size="5">
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark" variant="highlight">Some label</PButtonRegular>
-            <PButtonRegular theme="dark" variant="highlight" disabled={true}>Some label</PButtonRegular>
-            <PButtonRegular theme="dark" variant="highlight" loading={true}>Some label</PButtonRegular>
+            <PButton variant="primary" theme="dark">Some label</PButton>
+            <PButton variant="primary" theme="dark" disabled={true}>Some label</PButton>
+            <PButton variant="primary" theme="dark" loading={true}>Some label</PButton>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark">Some label</PButtonRegular>
-            <PButtonRegular theme="dark" disabled={true}>Some label</PButtonRegular>
-            <PButtonRegular theme="dark" loading={true}>Some label</PButtonRegular>
+            <PButton theme="dark">Some label</PButton>
+            <PButton theme="dark" disabled={true}>Some label</PButton>
+            <PButton theme="dark" loading={true}>Some label</PButton>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark" variant="ghost">Some label</PButtonRegular>
-            <PButtonRegular theme="dark" variant="ghost" disabled={true}>Some label</PButtonRegular>
-            <PButtonRegular theme="dark" variant="ghost" loading={true}>Some label</PButtonRegular>
+            <PButton theme="dark" variant="tertiary">Some label</PButton>
+            <PButton theme="dark" variant="tertiary" disabled={true}>Some label</PButton>
+            <PButton theme="dark" variant="tertiary" loading={true}>Some label</PButton>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark" icon="phone">Some label</PButtonRegular>
-          </div>
-          <div className="playground dark spacing-inline">
-            <PButtonRegular theme="dark" small={true}>Some label</PButtonRegular>
-            <PButtonRegular theme="dark" small={true} variant="ghost">Some label</PButtonRegular>
-            <PButtonRegular theme="dark" small={true} variant="highlight">Some label</PButtonRegular>
+            <PButton theme="dark" icon="phone">Some label</PButton>
           </div>
           <hr/>
-        </PGridItem>
-      </PGrid>
-      <PGrid>
-        <PGridItem size="2">
-          <PHeadline variant="headline-4" tag="h4">&lt;p-button-icon&gt;</PHeadline>
-        </PGridItem>
-        <PGridItem size="5">
-          <div className="playground light spacing-inline">
-            <PButtonIcon/>
-            <PButtonIcon disabled={true}/>
-            <PButtonIcon loading={true}/>
-          </div>
-          <div className="playground light spacing-inline">
-            <PButtonIcon variant="ghost"/>
-            <PButtonIcon variant="ghost" disabled={true}/>
-            <PButtonIcon variant="ghost" loading={true}/>
-          </div>
-          <div className="playground light spacing-inline">
-            <PButtonIcon variant="transparent"/>
-            <PButtonIcon variant="transparent" disabled={true}/>
-            <PButtonIcon variant="transparent" loading={true}/>
-          </div>
-          <div className="playground light spacing-inline">
-            <PButtonIcon icon="phone"/>
-          </div>
-          <hr/>
-        </PGridItem>
-        <PGridItem size="5">
           <div className="playground dark spacing-inline">
-            <PButtonIcon theme="dark"/>
-            <PButtonIcon theme="dark" disabled={true}/>
-            <PButtonIcon theme="dark" loading={true}/>
+            <PButton variant="primary" hideLabel={true} theme="dark">Some label</PButton>
+            <PButton variant="primary" hideLabel={true} theme="dark" disabled={true}>Some label</PButton>
+            <PButton variant="primary" hideLabel={true} theme="dark" loading={true}>Some label</PButton>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonIcon theme="dark" variant="ghost"/>
-            <PButtonIcon theme="dark" variant="ghost" disabled={true}/>
-            <PButtonIcon theme="dark" variant="ghost" loading={true}/>
+            <PButton theme="dark" hideLabel={true}>Some label</PButton>
+            <PButton theme="dark" hideLabel={true} disabled={true}>Some label</PButton>
+            <PButton theme="dark" hideLabel={true} loading={true}>Some label</PButton>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonIcon theme="dark" variant="transparent"/>
-            <PButtonIcon theme="dark" variant="transparent" disabled={true}/>
-            <PButtonIcon theme="dark" variant="transparent" loading={true}/>
+            <PButton theme="dark" hideLabel={true} variant="tertiary">Some label</PButton>
+            <PButton theme="dark" hideLabel={true} variant="tertiary" disabled={true}>Some label</PButton>
+            <PButton theme="dark" hideLabel={true} variant="tertiary" loading={true}>Some label</PButton>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonIcon theme="dark" icon="phone"/>
+            <PButton theme="dark" hideLabel={true} icon="phone">Some label</PButton>
           </div>
           <hr/>
         </PGridItem>
@@ -228,8 +207,7 @@ const App: React.FC = () => {
             <PTextList>
               <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
               <PTextListItem>
-                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
+                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
                 <PTextList>
                   <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
                   <PTextListItem>Lorem ipsum</PTextListItem>
@@ -241,9 +219,7 @@ const App: React.FC = () => {
           <div className="playground light spacing-block">
             <PTextList listType="ordered">
               <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-              <PTextListItem>
-                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
+              <PTextListItem>Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
                 <PTextList listType="ordered">
                   <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
                   <PTextListItem>Lorem ipsum</PTextListItem>
@@ -259,8 +235,7 @@ const App: React.FC = () => {
             <PTextList color="porsche-light">
               <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
               <PTextListItem>
-                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
+                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
                 <PTextList>
                   <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
                   <PTextListItem>Lorem ipsum</PTextListItem>
@@ -273,8 +248,7 @@ const App: React.FC = () => {
             <PTextList listType="ordered" color="inherit" style={{color: 'deeppink'}}>
               <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
               <PTextListItem>
-                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
+                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
                 <PTextList>
                   <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
                   <PTextListItem>Lorem ipsum</PTextListItem>
@@ -294,7 +268,7 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size="5">
           <div className="playground light spacing-inline">
-            <PSpinner size="x-small" allyLabel="Loading"/>
+            <PSpinner size="small" allyLabel="Loading"/>
             <PSpinner size="small" allyLabel="Loading"/>
             <PSpinner size="medium" allyLabel="Loading"/>
             <PSpinner size="large" allyLabel="Loading"/>
@@ -303,7 +277,7 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size="5">
           <div className="playground dark spacing-inline">
-            <PSpinner theme="dark" size="x-small" allyLabel="Loading"/>
+            <PSpinner theme="dark" size="small" allyLabel="Loading"/>
             <PSpinner theme="dark" size="small" allyLabel="Loading"/>
             <PSpinner theme="dark" size="medium" allyLabel="Loading"/>
             <PSpinner theme="dark" size="large" allyLabel="Loading"/>
@@ -436,33 +410,8 @@ const App: React.FC = () => {
         <PGridItem size="10">
           <div className="playground light spacing-block">
             <PFlex>
-              <PFlexItem width="one-quarter"/>
-              <PFlexItem width="one-quarter"/>
-              <PFlexItem width="one-quarter"/>
-              <PFlexItem width="one-quarter"/>
-            </PFlex>
-            <PFlex>
-              <PFlexItem width="one-third"/>
-              <PFlexItem width="one-third"/>
-              <PFlexItem width="one-third"/>
-            </PFlex>
-            <PFlex>
-              <PFlexItem width="half"/>
-              <PFlexItem width="half"/>
-            </PFlex>
-            <PFlex>
-              <PFlexItem width="two-thirds"/>
-              <PFlexItem width="one-third"/>
-            </PFlex>
-            <PFlex>
-              <PFlexItem width="three-quarters"/>
-              <PFlexItem width="one-quarter"/>
-            </PFlex>
-            <PFlex>
               <PFlexItem width="full"/>
             </PFlex>
-          </div>
-          <div className="playground light spacing-block">
             <PFlex>
               <PFlexItem offset="one-quarter" width="three-quarters"/>
             </PFlex>
