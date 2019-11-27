@@ -13,7 +13,8 @@ import {
   PTextListItem,
   PSpinner,
   PIcon,
-  PPagination
+  PPagination,
+  PLink
 } from '@porsche-ui/ui-kit-react';
 
 const App: React.FC = () => {
@@ -432,6 +433,69 @@ const App: React.FC = () => {
         </PGridItem>
       </PGrid>
       <PHeadline variant="headline-2">Navigation</PHeadline>
+      <hr/>
+      <PGrid>
+        <PGridItem size="2">
+          <PHeadline variant="headline-4" tag="h4">&lt;p-link&gt;</PHeadline>
+        </PGridItem>
+        <PGridItem size="5">
+          <div className="playground light spacing-inline">
+            <PLink variant="primary" href="https://ui.porsche.com">Some label</PLink>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLink href="https://ui.porsche.com">Some label</PLink>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLink variant="tertiary" href="https://ui.porsche.com">Some label</PLink>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLink icon="phone" href="https://ui.porsche.com">Some label</PLink>
+          </div>
+          <hr/>
+          <div className="playground light spacing-inline">
+            <PLink variant="primary" href="https://ui.porsche.com" hideLabel="true">Some label</PLink>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLink href="https://ui.porsche.com" hideLabel="true">Some label</PLink>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLink variant="tertiary" href="https://ui.porsche.com" hideLabel="true">Some label</PLink>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLink icon="phone" href="https://ui.porsche.com" hideLabel="true">Some label</PLink>
+          </div>
+          <hr/>
+        </PGridItem>
+        <PGridItem size="5">
+          <div className="playground dark spacing-inline">
+            <PLink variant="primary" href="https://ui.porsche.com" theme="dark">Some label</PLink>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLink href="https://ui.porsche.com" theme="dark">Some label</PLink>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLink variant="tertiary" href="https://ui.porsche.com" theme="dark">Some label</PLink>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLink icon="phone" href="https://ui.porsche.com" theme="dark">Some label</PLink>
+          </div>
+          <hr/>
+            <div className="playground dark spacing-inline">
+              <PLink variant="primary" href="https://ui.porsche.com" hideLabel="true" theme="dark">Some label</PLink>
+            </div>
+            <div className="playground dark spacing-inline">
+              <PLink href="https://ui.porsche.com" hideLabel="true" theme="dark">Some label</PLink>
+            </div>
+            <div className="playground dark spacing-inline">
+              <PLink variant="tertiary" href="https://ui.porsche.com" hideLabel="true" theme="dark">Some label
+              </PLink>
+            </div>
+            <div className="playground dark spacing-inline">
+              <PLink icon="phone" href="https://ui.porsche.com" hideLabel="true" theme="dark">Some label</PLink>
+            </div>
+            <hr/>
+        </PGridItem>
+      </PGrid>
       <hr/>
       <PGrid>
         <PGridItem size="2">
