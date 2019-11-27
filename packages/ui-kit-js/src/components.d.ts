@@ -196,7 +196,7 @@ export namespace Components {
     */
     'download'?: string;
     /**
-    * Show or hide label
+    * Show or hide label. For better accessibility it is recommended to show the label.
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
@@ -661,7 +661,7 @@ declare namespace LocalJSX {
     */
     'download'?: string;
     /**
-    * Show or hide label
+    * Show or hide label. For better accessibility it is recommended to show the label.
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
