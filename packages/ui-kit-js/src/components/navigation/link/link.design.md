@@ -1,4 +1,4 @@
-# Button Icon
+# Link
 
 A Button Icon is an icon-only squared button that enables the user to execute an action or jump to another page with a single tap. Since it only contains an icon and no further text information, it is highly recommended to use it only in cases where the user is fully aware of the button function (this can be ensured e.g. by using an expressive icon or by logical composition with other components - just think of a form field followed by a Button Icon with submit function).
 
