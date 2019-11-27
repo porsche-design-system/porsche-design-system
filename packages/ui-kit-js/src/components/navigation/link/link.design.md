@@ -15,19 +15,19 @@ The Link is provided in 2 different variants:
 
 ### **1. P**rimary
 
-LINK EINFÜGEN
+<p-link variant="primary" href="https://www.porsche.com">Some label</p-link>
 
 Link with color fill in Porsche Red. This type is only to be used for one or two high-priority actions, in order to give the user the best guidance possible.
 
 ### **2. S**econdary
 
-LINK EINFÜGEN
+<p-link href="https://www.porsche.com">Some label</p-link>
 
 Default link with monochrome color fill. To be used for all other stand-alone links that aren't high priority.
 
 ### **3. T**ertiary
 
-LINK EINFÜGEN
+<p-link variant="tertiary" href="https://www.porsche.com">Some label</p-link>
 
 An "outline only" link version. In hierarchy the tertiary link is always subordinated to the filled view. Thus, it can be used in two different cases:
 
@@ -44,8 +44,6 @@ All link types are available in the following states:
 |----|----|----|
 | default | Default link state. |
 | active / hover | In active or hover state, the background color changes slightly and gets either a bit lighter or darker. |
-| disabled | Whenever the link function is not available, it is indicated by a greyed-out link color. |
-| loading | To indicate the loading process when clicking on the text link, the icon is replaced by a small loading spinner. |
 | focus | In focus state, the link is framed by a 2 px line in focus color. |
 
 ---
@@ -63,8 +61,6 @@ The Link is available for both Porsche Light and Dark Theme. It always contains 
 
 By default the Link is to be positioned left-aligned within a module or a screen. Depending on content and user guidance, the position can be changed individually, e.g. placed right-aligned or at the end of a text (e.g. error notifications)
 
-BILD EINFÜGEN
-
 ---
 
 ## Usability & interaction
@@ -77,8 +73,7 @@ The whole link area is clickable. The clickability is indicated by a specific ho
 
 Even if there is no technical limit to the link width, you should always make sure that the link remains legible, even more so in multiline state. It is recommended to use max. 100 characters per line (equals approx. 700 px link width).
 
-### Disabled state
-
-All types of Link are available as disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
-
-EXAMPLES EINFÜGEN
+<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+    <img src="./assets/link-examples.png" alt=""/>
+</div>
