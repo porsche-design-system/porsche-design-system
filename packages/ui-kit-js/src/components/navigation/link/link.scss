@@ -1,16 +1,19 @@
 @import '../../../../../../packages/ui-kit-scss-utils/index';
 
 @mixin p-link-with-label() {
+  padding: rem(11px) rem(15px) rem(11px) rem(39px);
+}
+
+@mixin p-link-without-label() {
+  padding: 0;
+}
+
+@mixin p-link-label-with-label() {
   position: static;
   width: 100%;
   height: auto;
   margin: 0;
-  padding: {
-    top: rem(11px);
-    right: rem(15px);
-    bottom: rem(11px);
-    left: rem(39px);
-  }
+  padding: 0;
   white-space: normal;
   overflow: visible;
   border: 0;
@@ -18,7 +21,7 @@
   clip-path: none;
 }
 
-@mixin p-link-without-label() {
+@mixin p-link-label-without-label() {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -46,7 +49,6 @@
   top: 50%;
   width: rem(36px);
   height: rem(36px);
-  display: block;
   transform: translateX(-50%) translateY(-50%);
 }
 
@@ -55,16 +57,9 @@
   vertical-align: top;
 }
 
-:host-context(:focus) {
-  .#{$p-global-class-prefix}link {
-    outline: 2px solid $p-color-state-focus;
-    outline-offset: 1px;
-  }
-}
-
 .#{$p-global-class-prefix}link {
   $bem-block: &;
-  display: inline-flex;
+  display: flex;
   width: 100%;
   min-width: rem(48px);
   min-height: rem(48px);
@@ -73,11 +68,10 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: none $p-color-porsche-light;
+  outline: none;
   text-decoration: none;
-  color: $p-color-porsche-light;
-  background-color: $p-color-neutral-grey-8;
-  border: 1px solid $p-color-neutral-grey-8;
+  border-style: solid;
+  border-width: 1px;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
   border-color $p-animation-hover-duration $p-animation-hover-bezier,
   outline-color $p-animation-hover-duration $p-animation-hover-bezier,
@@ -87,29 +81,17 @@
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
-  &--theme-dark {
-    color: $p-color-porsche-black;
-    background-color: $p-color-porsche-light;
-    border-color: $p-color-porsche-light;
-    outline-color: $p-color-porsche-black;
-  }
-
-  &:hover,
-  &:active {
-    color: $p-color-porsche-light;
-    background-color: $p-color-neutral-grey-7;
-    border-color: $p-color-neutral-grey-7;
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-porsche-black;
-      background-color: $p-color-neutral-grey-1;
-      border-color: $p-color-neutral-grey-1;
-    }
-  }
-
   &:focus {
     outline: 2px solid $p-color-state-focus;
     outline-offset: 1px;
+  }
+
+  &--theme-light {
+    outline-color: $p-color-porsche-light;
+  }
+
+  &--theme-dark {
+    outline-color: $p-color-porsche-black;
   }
 
   &--primary {
@@ -135,7 +117,31 @@
         border-color: $p-color-porsche-dark-red;
       }
     }
+  }
 
+  &--secondary {
+    color: $p-color-porsche-light;
+    background-color: $p-color-neutral-grey-8;
+    border-color: $p-color-neutral-grey-8;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-black;
+      background-color: $p-color-porsche-light;
+      border-color: $p-color-porsche-light;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-porsche-light;
+      background-color: $p-color-surface-dark;
+      border-color: $p-color-surface-dark;
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-porsche-black;
+        background-color: $p-color-neutral-grey-1;
+        border-color: $p-color-neutral-grey-1;
+      }
+    }
   }
 
   &--tertiary {
@@ -152,8 +158,8 @@
     &:hover,
     &:active {
       color: $p-color-porsche-light;
-      background-color: $p-color-neutral-grey-8;
-      border-color: $p-color-neutral-grey-8;
+      background-color: $p-color-surface-dark;
+      border-color: $p-color-surface-dark;
 
       &#{$bem-block}--theme-dark {
         color: $p-color-porsche-black;
@@ -163,114 +169,162 @@
     }
   }
 
-  &__label {
-    display: block;
-    box-sizing: border-box;
+  &--with-label {
+    @include p-link-with-label;
 
-    &--show {
+    #{$bem-block}__label {
+      @include p-link-label-with-label;
+    }
+
+    #{$bem-block}__icon {
+      @include p-link-icon-with-label;
+    }
+  }
+
+  &--without-label {
+    @include p-link-without-label;
+
+    #{$bem-block}__label {
+      @include p-link-label-without-label;
+    }
+
+    #{$bem-block}__icon {
+      @include p-link-icon-without-label;
+    }
+  }
+
+  @include p-breakpoint("xs") {
+    &--with-label-xs {
       @include p-link-with-label;
 
-      & ~ #{$bem-block}__icon {
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
         @include p-link-icon-with-label;
       }
     }
 
-    &--hide {
+    &--without-label-xs {
       @include p-link-without-label;
 
-      & ~ #{$bem-block}__icon {
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
+      }
+
+      #{$bem-block}__icon {
         @include p-link-icon-without-label;
       }
     }
+  }
 
-    @include p-breakpoint("xs") {
-      &--show-xs {
-        @include p-link-with-label;
+  @include p-breakpoint("s") {
+    &--with-label-s {
+      @include p-link-with-label;
 
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-with-label;
-        }
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
       }
 
-      &--hide-xs {
-        @include p-link-without-label;
-
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-without-label;
-        }
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
       }
     }
 
-    @include p-breakpoint("s") {
-      &--show-s {
-        @include p-link-with-label;
+    &--without-label-s {
+      @include p-link-without-label;
 
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-with-label;
-        }
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
       }
 
-      &--hide-s {
-        @include p-link-without-label;
+      #{$bem-block}__icon {
+        @include p-link-icon-without-label;
+      }
+    }
+  }
 
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-without-label;
-        }
+  @include p-breakpoint("m") {
+    &--with-label-m {
+      @include p-link-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
       }
     }
 
-    @include p-breakpoint("m") {
-      &--show-m {
-        @include p-link-with-label;
+    &--without-label-m {
+      @include p-link-without-label;
 
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-with-label;
-        }
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
       }
 
-      &--hide-m {
-        @include p-link-without-label;
+      #{$bem-block}__icon {
+        @include p-link-icon-without-label;
+      }
+    }
+  }
 
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-without-label;
-        }
+  @include p-breakpoint("l") {
+    &--with-label-l {
+      @include p-link-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
       }
     }
 
-    @include p-breakpoint("l") {
-      &--show-l {
-        @include p-link-with-label;
+    &--without-label-l {
+      @include p-link-without-label;
 
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-with-label;
-        }
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
       }
 
-      &--hide-l {
-        @include p-link-without-label;
+      #{$bem-block}__icon {
+        @include p-link-icon-without-label;
+      }
+    }
+  }
 
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-without-label;
-        }
+  @include p-breakpoint("xl") {
+    &--with-label-xl {
+      @include p-link-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
       }
     }
 
-    @include p-breakpoint("xl") {
-      &--show-xl {
-        @include p-link-with-label;
+    &--without-label-xl {
+      @include p-link-without-label;
 
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-with-label;
-        }
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
       }
 
-      &--hide-xl {
-        @include p-link-without-label;
-
-        & ~ #{$bem-block}__icon {
-          @include p-link-icon-without-label;
-        }
+      #{$bem-block}__icon´ {
+        @include p-link-icon-without-label;
       }
     }
+  }
+
+  &__label {
+    display: block;
+    box-sizing: border-box;
   }
 }
