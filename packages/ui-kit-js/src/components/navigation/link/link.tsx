@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
-import {Theme, LinkTarget} from '../../../types';
+import { Theme, LinkTarget } from '../../../types';
 
 @Component({
   tag: 'p-link',
@@ -50,7 +50,7 @@ export class Link {
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string = undefined;
 
-  /** Show or hide label */
+  /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad() {
@@ -64,14 +64,12 @@ export class Link {
 
     const linkClasses = cx(
       prefix('link'),
-      this.variant !== 'secondary' && prefix(`link--${this.variant}`),
-      this.theme !== 'light' && prefix('link--theme-dark')
+      prefix(`link--${this.variant}`),
+      mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
+      prefix(`link--theme-${this.theme}`)
     );
     const iconClasses = prefix('link__icon');
-    const labelClasses = cx(
-      prefix('link__label'),
-      mapBreakpointPropToPrefixedClasses('link__label-', this.hideLabel, ['hide', 'show'])
-    );
+    const labelClasses = prefix('link__label');
 
     return (
       <TagType
@@ -80,10 +78,15 @@ export class Link {
         {...(TagType === 'a' ? { href: this.href, target: `${this.target}`, download: this.download, rel: this.rel } : null)}
         {...(TagType === 'a' && this.tabbable ? { tabindex: 0 } : { tabindex: -1 })}
       >
+        <p-icon
+          class={iconClasses}
+          size='inherit'
+          name={this.icon}
+          source={this.iconSource}
+        />
         <p-text tag='span' color='inherit' class={labelClasses}>
           <slot/>
         </p-text>
-        <p-icon class={iconClasses} size='inherit' name={this.icon} source={this.iconSource} />
       </TagType>
     );
   }
@@ -102,5 +105,4 @@ export class Link {
       this.element.click();
     }
   }
-
 }

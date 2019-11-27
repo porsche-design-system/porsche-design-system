@@ -1,5 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Link } from '../../../src/components/navigation/link/link';
+import {Button} from "../../../src/components/action/button/button";
 
 describe('Component <p-link>', () => {
 
@@ -10,7 +11,7 @@ describe('Component <p-link>', () => {
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Link],
-      html: `<p-link>Some label</p-link>`,
+      html: `<p-link href="https://ui.porsche.com">Some label</p-link>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-link')).toBeFalsy();
@@ -21,7 +22,7 @@ describe('Component <p-link>', () => {
   it('should render with href attribute', async () => {
     const page = await newSpecPage({
       components: [Link],
-      html: `<p-link href="https://ui.porsche.com">SOme label</p-link>`,
+      html: `<p-link href="https://ui.porsche.com">Some label</p-link>`,
     });
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('href','https://ui.porsche.com');
   });
@@ -50,5 +51,13 @@ describe('Component <p-link>', () => {
     expect(page.root.shadowRoot.querySelector('span.p-link')).toBeTruthy();
   });
 
+  it('should render with disabled tabbable capabilities', async () => {
+    const page = await newSpecPage({
+      components: [Link],
+      html: `<p-link href="https://ui.porsche.com" tabbable="false">Some label</p-link>`,
+    });
+    expect(page.root.shadowRoot).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('tabindex','-1');
+  });
 });
 
