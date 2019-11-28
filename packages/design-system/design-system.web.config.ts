@@ -159,6 +159,14 @@ export const config: DesignSystemConfig = {
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.design.md`),
         ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.props.md`),
+        ],
       },
       'Text Link': {
         Design: [

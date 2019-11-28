@@ -1,4 +1,4 @@
-# Button Regular
+# Button Pure
 
 A Button enables the user to execute an action, change the state of an application or jump to another page with a single tap. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of buttons (basic, highlight, ghost) can be used.
 

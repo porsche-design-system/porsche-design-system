@@ -29,31 +29,16 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 
 import { Components } from '@porsche-ui/ui-kit-js'
 
-export declare interface PButtonIcon extends Components.PButtonIcon {}
-@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
-export class PButtonIcon {
+export declare interface PButtonPure extends Components.PButtonPure {}
+@Component({ selector: 'p-button-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'type'] })
+export class PButtonPure {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PButtonIcon, ['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant']);
-
-export declare interface PButtonRegular extends Components.PButtonRegular {}
-@Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })
-export class PButtonRegular {
-  pClick!: EventEmitter<CustomEvent>;
-  pFocus!: EventEmitter<CustomEvent>;
-  pBlur!: EventEmitter<CustomEvent>;
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick', 'pFocus', 'pBlur']);
-  }
-}
-proxyInputs(PButtonRegular, ['disabled', 'href', 'icon', 'iconSource', 'loading', 'small', 'target', 'theme', 'type', 'variant']);
+proxyInputs(PButtonPure, ['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'type']);
 
 export declare interface PFlex extends Components.PFlex {}
 @Component({ selector: 'p-flex', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'] })
