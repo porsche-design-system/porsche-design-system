@@ -35,35 +35,35 @@
 ### Build
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-* `./docker.sh run-build` (builds the entire application)
-* `./docker.sh run-build --ui-kit-js` (builds the native web components)
-* `./docker.sh run-build --ui-kit-angular` (builds angular wrappers)
-* `./docker.sh run-build --ui-kit-react` (builds react wrappers)
-* `./docker.sh run-build --design-system` (builds storefront)
-* `./docker.sh run-build --utils` (builds utilities)
+ * `./docker.sh run-build` (builds the entire application)
+ * `./docker.sh run-build --ui-kit-js` (builds the native web components)
+ * `./docker.sh run-build --ui-kit-angular` (builds angular wrappers)
+ * `./docker.sh run-build --ui-kit-react` (builds react wrappers)
+ * `./docker.sh run-build --design-system` (builds storefront)
+ * `./docker.sh run-build --utils` (builds utilities)
 
 ### Start
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-* `./docker.sh run-start` (starts the entire application)
-* `./docker.sh run-start --ui-kit-js` (starts native web components)
-* `./docker.sh run-start --ui-kit-angular` (starts angular wrappers)
-* `./docker.sh run-start --ui-kit-react` (starts react wrappers)
-* `./docker.sh run-start --design-system` (starts storefront)
+ * `./docker.sh run-start` (starts the entire application)
+ * `./docker.sh run-start --ui-kit-js` (starts native web components)
+ * `./docker.sh run-start --ui-kit-angular` (starts angular wrappers)
+ * `./docker.sh run-start --ui-kit-react` (starts react wrappers)
+ * `./docker.sh run-start --design-system` (starts storefront)
 
 ### Linting
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-* `./docker.sh run-lint` (lints the entire application)
-* `./docker.sh run-lint --ui-kit-js` (lints native web components)
-* `./docker.sh run-lint --design-system` (lints storefront)
+ * `./docker.sh run-lint` (lints the entire application)
+ * `./docker.sh run-lint --ui-kit-js` (lints native web components)
+ * `./docker.sh run-lint --design-system` (lints storefront)
 
 ### Unit Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-* `./docker.sh run-test-unit` (unit tests for the entire application)
-* `./docker.sh run-test-unit --ui-kit-js` (unit tests for the native web components)
-* `./docker.sh run-test-unit --design-system` (unit tests for the storefront)
+ * `./docker.sh run-test-unit` (unit tests for the entire application)
+ * `./docker.sh run-test-unit --ui-kit-js` (unit tests for the native web components)
+ * `./docker.sh run-test-unit --design-system` (unit tests for the storefront)
 
 ### E2E Tests
 1. Switch to __project root directory__
@@ -75,19 +75,19 @@
 ### Visual Regression Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-* `./docker.sh run-test-vrt` (vrt tests for the entire application)
-* `./docker.sh run-test-vrt --ui-kit-js` (vrt tests for the native web components)
-* `./docker.sh run-test-vrt --ui-kit-angular` (vrt tests for angular components)
-* `./docker.sh run-test-vrt --ui-kit-react` (vrt tests for react components)
-* `./docker.sh run-test-vrt --design-system` (vrt tests for the storefront)
+ * `./docker.sh run-test-vrt` (vrt tests for the entire application)
+ * `./docker.sh run-test-vrt --ui-kit-js` (vrt tests for the native web components)
+ * `./docker.sh run-test-vrt --ui-kit-angular` (vrt tests for angular components)
+ * `./docker.sh run-test-vrt --ui-kit-react` (vrt tests for react components)
+ * `./docker.sh run-test-vrt --design-system` (vrt tests for the storefront)
 
 ### Cross Browser Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-* `./docker.sh run-test-cbt` (cbt tests for the entire application)
-* `./docker.sh run-test-cbt --ui-kit-js` (cbt tests for the native web components)
-* `./docker.sh run-test-cbt --ui-kit-angular` (cbt tests for angular components)
-* `./docker.sh run-test-cbt --ui-kit-react` (cbt tests for react components)
+ * `./docker.sh run-test-cbt` (cbt tests for the entire application)
+ * `./docker.sh run-test-cbt --ui-kit-js` (cbt tests for the native web components)
+ * `./docker.sh run-test-cbt --ui-kit-angular` (cbt tests for angular components)
+ * `./docker.sh run-test-cbt --ui-kit-react` (cbt tests for react components)
 
 #### What to do when vrt or cbt tests are failing
 1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/{vrt/cbt}/results`. Here you can find the belonging `diff` and `regression` images.
