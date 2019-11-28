@@ -69,13 +69,15 @@ export function syncEvent(node: Element, eventName: string, newEventHandler: (e:
     node.removeEventListener(eventName, oldEventHandler);
   }
 
-  // Bind new listener.
-  node.addEventListener(
-    eventName,
-    (eventStore[eventName] = function handler(e: Event) {
-      newEventHandler.call(this, e);
-    }),
-  );
+  if (newEventHandler != null) {
+    // Bind new listener.
+    node.addEventListener(
+      eventName,
+      (eventStore[eventName] = function handler(e: Event) {
+        newEventHandler.call(this, e);
+      }),
+    );
+  }
 }
 
 function arrayToMap(arr: string[] | DOMTokenList) {
