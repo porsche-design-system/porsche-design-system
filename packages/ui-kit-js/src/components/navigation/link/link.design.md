@@ -13,19 +13,19 @@ The Link is provided in 2 different variants:
 
 ## Link types
 
-### **1. P**rimary
+### 1. Primary
 
 <p-link variant="primary" href="https://www.porsche.com">Some label</p-link>
 
 Link with color fill in Porsche Red. This type is only to be used for one or two high-priority actions, in order to give the user the best guidance possible.
 
-### **2. S**econdary
+### 2. Secondary
 
 <p-link href="https://www.porsche.com">Some label</p-link>
 
 Default link with monochrome color fill. To be used for all other stand-alone links that aren't high priority.
 
-### **3. T**ertiary
+### 3. Tertiary
 
 <p-link variant="tertiary" href="https://www.porsche.com">Some label</p-link>
 

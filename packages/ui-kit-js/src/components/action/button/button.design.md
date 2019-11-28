@@ -13,19 +13,19 @@ The Button is provided in 2 different variants:
 
 ## Button types
 
-### **1. P**rimary
+### 1. Primary
 
 <p-button variant="primary">Some label</p-button> 
 
 Button with color fill in Porsche Red. This type is only to be used for one or two high-priority actions within the page, in order to give the user the best guidance possible.
 
-### **2. S**econdary
+### 2. Secondary
 
 <p-button>Some label</p-button>
 
 Default button with monochrome color fill. To be used for all other stand-alone buttons that aren't high priority.
 
-### **3. T**ertiary
+### 3. Tertiary
 
 <p-button variant="tertiary">Some label</p-button>
 
@@ -45,7 +45,7 @@ All button types are available in the following states:
 | default | Default button state. |
 | active / hover | In active or hover state, the background color changes slightly and gets either a bit lighter or darker. |
 | disabled | Whenever the button function is not available, it is indicated by a greyed-out button color. |
-| loading | To indicate the loading process when clicking on the text link, the icon is replaced by a small loading spinner. |
+| loading | To indicate the loading process when clicking on the label, the icon is replaced by a small loading spinner. |
 | focus | In focus state, the button is framed by a 2 px line in focus color. |
 
 ---
@@ -54,7 +54,7 @@ All button types are available in the following states:
 
 The Button is available for both Porsche Light and Dark Theme. It always contains the following sub-components:
 
-### **Icon**
+### Icon
 By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. In addition, it should be ensured that the icon only variant is used for internationally known icons.
 
 To ensure the alignment in all Porsche web appliccations we recommend to use dedicated, standardized icons for the following cases:
@@ -66,7 +66,7 @@ To ensure the alignment in all Porsche web appliccations we recommend to use ded
 | Edit | <p-icon name="edit" aria-label="Edit icon"></p-icon> |  |
 | Add | <p-icon name="plus" aria-label="Plusicon"></p-icon> |  |
 
-### **Text label**
+### Text label
 The text label is always set in copytext size. The length of the text label determines the size of the button. Multiline text is possible, while the content (both text and icon) are always positioned top left aligned within the button. It is recommended to keep the text label short and descriptive.
 
 ---
@@ -102,4 +102,4 @@ All types of Button are available as disabled state. However, disabled states sh
 
 ## Don'ts
   
-![Example for uppercase text](./assets/button-don't.png)
+![Example for uppercase text](./assets/button-do-not.png)
