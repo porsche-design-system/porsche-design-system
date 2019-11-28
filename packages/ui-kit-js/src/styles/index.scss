@@ -2,5 +2,5 @@
 @import "font-face";
 
 // TODO: get rid of global styles if "host-context" is more widely supported or polyfilled by Stencil
-@import "../components/navigation/link/link.host-context-focus.scss";
+@import "../components/navigation/link/link.host-context.scss";
 
