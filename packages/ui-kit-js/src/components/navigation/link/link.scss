@@ -1,0 +1,330 @@
+@import '../../../../../../packages/ui-kit-scss-utils/index';
+
+@mixin p-link-with-label() {
+  padding: rem(11px) rem(15px) rem(11px) rem(39px);
+}
+
+@mixin p-link-without-label() {
+  padding: 0;
+}
+
+@mixin p-link-label-with-label() {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  white-space: normal;
+  overflow: visible;
+  border: 0;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin p-link-label-without-label() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+@mixin p-link-icon-with-label() {
+  position: absolute;
+  left: rem(11px);
+  top: rem(11px);
+  width: rem(24px);
+  height: rem(24px);
+  transform: translateX(0) translateY(0);
+}
+
+@mixin p-link-icon-without-label() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: rem(36px);
+  height: rem(36px);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.#{$p-global-class-prefix}link {
+  $bem-block: &;
+  display: flex;
+  width: 100%;
+  min-width: rem(48px);
+  min-height: rem(48px);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  outline: none;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+  transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
+  border-color $p-animation-hover-duration $p-animation-hover-bezier,
+  outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+  color $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &::-moz-focus-inner {
+    border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  }
+
+  &:focus {
+    outline: 2px solid $p-color-state-focus;
+    outline-offset: 1px;
+  }
+
+  &--theme-light {
+    outline-color: $p-color-porsche-light;
+  }
+
+  &--theme-dark {
+    outline-color: $p-color-porsche-black;
+  }
+
+  &--primary {
+    color: $p-color-porsche-light;
+    background-color: $p-color-porsche-red;
+    border-color: $p-color-porsche-red;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-light;
+      background-color: $p-color-porsche-red;
+      border-color: $p-color-porsche-red;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-porsche-light;
+      background-color: $p-color-porsche-dark-red;
+      border-color: $p-color-porsche-dark-red;
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-porsche-light;
+        background-color: $p-color-porsche-dark-red;
+        border-color: $p-color-porsche-dark-red;
+      }
+    }
+  }
+
+  &--secondary {
+    color: $p-color-porsche-light;
+    background-color: $p-color-neutral-grey-8;
+    border-color: $p-color-neutral-grey-8;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-black;
+      background-color: $p-color-porsche-light;
+      border-color: $p-color-porsche-light;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-porsche-light;
+      background-color: $p-color-surface-dark;
+      border-color: $p-color-surface-dark;
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-porsche-black;
+        background-color: $p-color-neutral-grey-1;
+        border-color: $p-color-neutral-grey-1;
+      }
+    }
+  }
+
+  &--tertiary {
+    color: $p-color-porsche-black;
+    background-color: transparent;
+    border-color: $p-color-neutral-grey-8;
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-porsche-light;
+      background-color: transparent;
+      border-color: $p-color-porsche-light;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-porsche-light;
+      background-color: $p-color-surface-dark;
+      border-color: $p-color-surface-dark;
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-porsche-black;
+        background-color: $p-color-porsche-light;
+        border-color: $p-color-porsche-light;
+      }
+    }
+  }
+
+  &--with-label {
+    @include p-link-with-label;
+
+    #{$bem-block}__label {
+      @include p-link-label-with-label;
+    }
+
+    #{$bem-block}__icon {
+      @include p-link-icon-with-label;
+    }
+  }
+
+  &--without-label {
+    @include p-link-without-label;
+
+    #{$bem-block}__label {
+      @include p-link-label-without-label;
+    }
+
+    #{$bem-block}__icon {
+      @include p-link-icon-without-label;
+    }
+  }
+
+  @include p-breakpoint("xs") {
+    &--with-label-xs {
+      @include p-link-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
+      }
+    }
+
+    &--without-label-xs {
+      @include p-link-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-without-label;
+      }
+    }
+  }
+
+  @include p-breakpoint("s") {
+    &--with-label-s {
+      @include p-link-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
+      }
+    }
+
+    &--without-label-s {
+      @include p-link-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-without-label;
+      }
+    }
+  }
+
+  @include p-breakpoint("m") {
+    &--with-label-m {
+      @include p-link-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
+      }
+    }
+
+    &--without-label-m {
+      @include p-link-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-without-label;
+      }
+    }
+  }
+
+  @include p-breakpoint("l") {
+    &--with-label-l {
+      @include p-link-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
+      }
+    }
+
+    &--without-label-l {
+      @include p-link-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-without-label;
+      }
+    }
+  }
+
+  @include p-breakpoint("xl") {
+    &--with-label-xl {
+      @include p-link-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-icon-with-label;
+      }
+    }
+
+    &--without-label-xl {
+      @include p-link-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-label-without-label;
+      }
+
+      #{$bem-block}__icon´ {
+        @include p-link-icon-without-label;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    box-sizing: border-box;
+  }
+}
