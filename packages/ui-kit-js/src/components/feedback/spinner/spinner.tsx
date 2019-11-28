@@ -9,7 +9,7 @@ import { prefix } from '../../../utils';
 })
 export class Spinner {
   /** Predefined spinner sizes. */
-  @Prop() public size?: 'x-small' | 'small' | 'medium' | 'large' = 'small';
+  @Prop() public size?: 'small' | 'medium' | 'large' | 'x-large' | 'inherit' = 'small';
 
   /** Adapts the spinner color when used on dark background. */
   @Prop() public theme?: 'light' | 'dark' = 'light';

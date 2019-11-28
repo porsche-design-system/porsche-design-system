@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-button-pure</title>
+  <link rel="stylesheet" href="../../../../dist/porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="../../../../dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="../../../../dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+  <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
+</head>
+<body>
+
+<div class="playground light" title="should show default text link">
+  <p-button-pure>Some link with default icon</p-button-pure>
+</div>
+
+<div class="playground light" title="should show text link in different sizes">
+  <p-button-pure size="x-small">Some link with default icon</p-button-pure>
+  <br>
+  <p-button-pure>Some link with default icon</p-button-pure>
+  <br>
+  <p-button-pure size="medium">Some link with default icon</p-button-pure>
+  <br>
+  <p-button-pure size="large">Some link with default icon</p-button-pure>
+  <br>
+  <p-button-pure size="x-large">Some link with default icon</p-button-pure>
+</div>
+
+<div class="playground light" title="should show text link with different colors">
+  <p-button-pure color="porsche-black">Porsche Black</p-button-pure>
+  <br>
+  <p-button-pure color="porsche-light" style="background: black;">Porsche Light</p-button-pure>
+  <br>
+  <p-button-pure color="inherit" style="color: deeppink;">Inherited custom color</p-button-pure>
+</div>
+
+<div class="playground light" title="should show text link with different icon">
+  <p-button-pure icon="delete">Some link with a custom icon</p-button-pure>
+</div>
+
+</body>
+</html>
