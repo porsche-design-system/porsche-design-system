@@ -2126,12 +2126,12 @@
   resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.1.tgz#147e057d80a19dd7492413086d1868debeee1b63"
   integrity sha512-kp0jZfwTq6TzV745G3IiTk0rVKgMRNWD+JU1Z23m2cCBbzaKkneZp+U8QjuEVI1Gp8UUWYI/f5fUoC+dcejEWQ==
 
-"@stencil/core@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.4.0.tgz#309dbbb9470ed735b642397c12dd082c94e070fc"
-  integrity sha512-/iI87p7XsqE3U96ykx4SSY/btv9jZguI3JkG8RaTNlQipPUmPb0JmLei8sgijTUD/fY5TFuE3L1o8hwLI0rW3A==
+"@stencil/core@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.8.1.tgz#9b27487db4ef4acabf2267ef09fee24bb32e5912"
+  integrity sha512-VV8bJF6ZeOZyVUQEK4a24O+V4RXUxgAWSHonkNgbJVk7Z+hxfJMBTLGy6uZa9/5/IcKXqrTutIL9giV8WeNkHA==
   dependencies:
-    typescript "3.6.2"
+    typescript "3.7.2"
 
 "@stencil/postcss@^1.0.1":
   version "1.0.1"
@@ -2140,15 +2140,15 @@
   dependencies:
     postcss "~7.0.17"
 
-"@stencil/react-output-target@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.1.tgz#411f7befff114835e6592b1d2f43dfce467d90bd"
-  integrity sha512-LRGafNL3qkjMsqfVIG5K+KtmrndHv9CtxK2TpV13yDAYHtntAPeJvMx8McHOjCI4CtLoKIE3TFq3k30Y4hIovw==
+"@stencil/react-output-target@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.2.tgz#7619fd7ef6d5f511bdc09e5436321e8d5223daaf"
+  integrity sha512-sIja4vhkQgHZcNt0kChvL3blX74xP/STSAbchLyg2oMCBQU1KxfPYgiw/3zs7NVZsbEDMAVak8bM/oorNQJZYw==
 
-"@stencil/sass@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@stencil/sass/-/sass-1.0.1.tgz#9eec7b54029b14ba2f53f540687d91aeed90911a"
-  integrity sha512-3vmF8zir9FcVY/tYW0/V/pWrYSU684eASmALL2v29PGJvX6/CXh9n8LF7Jy95SpJPij3lisIUXLls7edXy2hYg==
+"@stencil/sass@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@stencil/sass/-/sass-1.1.1.tgz#866e146557b2dba213ca5455b07d49a17d918a52"
+  integrity sha512-Nny3JiFkpQa0RdXWCa4pzhKQYnHuDNzC9c4w35FcaZHXBVuZ1UHSHc7wI7By9SS1auYcySqpPOBVzgoCqXcYVQ==
 
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
@@ -2360,17 +2360,12 @@
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.4.4.tgz#be3fbd73e72725edb44e6f7f509cd52912d1550c"
   integrity sha512-+/sHcTPyDS1JQacDRRRWb+vNrjBwnD+cKvTaWlxlJ/uOOFvzCkjOwNaqVjYMLfsjzNi0WtDH9RyReDXPG1Cdug==
 
-"@types/jest-diff@*":
-  version "20.0.1"
-  resolved "https://registry.yarnpkg.com/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
-  integrity sha512-yALhelO3i0hqZwhjtcr6dYyaLoCHbAMshwtj6cGxTvHZAKXHsYGdff6E8EPw3xLKY0ELUTQ69Q1rQiJENnccMA==
-
-"@types/jest@24.0.18", "@types/jest@^24.0.17":
-  version "24.0.18"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.18.tgz#9c7858d450c59e2164a8a9df0905fc5091944498"
-  integrity sha512-jcDDXdjTcrQzdN06+TSVsPPqxvsZA/5QkYfIZlq1JMw7FdP5AZylbOc+6B/cuDurctRe+MziUMtQ3xQdrbjqyQ==
+"@types/jest@24.0.23", "@types/jest@^24.0.23":
+  version "24.0.23"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.23.tgz#046f8e2ade026fe831623e361a36b6fb9a4463e4"
+  integrity sha512-L7MBvwfNpe7yVPTXLn32df/EK+AMBFAFvZrRuArGs7npEWnlziUXK+5GMIUTI4NIuwok3XibsjXCs5HxviYXjg==
   dependencies:
-    "@types/jest-diff" "*"
+    jest-diff "^24.3.0"
 
 "@types/js-beautify@^1.8.1":
   version "1.8.1"
@@ -9074,7 +9069,7 @@ jest-diff@^23.6.0:
     jest-get-type "^22.1.0"
     pretty-format "^23.6.0"
 
-jest-diff@^24.9.0:
+jest-diff@^24.3.0, jest-diff@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-diff/-/jest-diff-24.9.0.tgz#931b7d0d5778a1baf7452cb816e325e3724055da"
   integrity sha512-qMfrTs8AdJE2iqrTp0hzh7kTd2PQWrsFyj9tORoKmu32xjPjeE4NyjVRDz8ybYwqS2ik8N4hsIpiVTyFeo2lBQ==
@@ -16139,15 +16134,15 @@ typescript@3.5.3, typescript@~3.5.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
 
-typescript@3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.2.tgz#105b0f1934119dde543ac8eb71af3a91009efe54"
-  integrity sha512-lmQ4L+J6mnu3xweP8+rOrUwzmN+MRAj7TgtJtDaXE5PMyX2kCrklhg3rvOsOIfNeAWMQWO2F1GPc1kMD2vLAfw==
-
 typescript@3.6.3, typescript@~3.6.3:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.3.tgz#fea942fabb20f7e1ca7164ff626f1a9f3f70b4da"
   integrity sha512-N7bceJL1CtRQ2RiG0AQME13ksR7DiuQh/QehubYcghzv20tnh+MQnQIuJddTmsbqYj+dztchykemz0zFzlvdQw==
+
+typescript@3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.2.tgz#27e489b95fa5909445e9fef5ee48d81697ad18fb"
+  integrity sha512-ml7V7JfiN2Xwvcer+XAf2csGO1bPBdRbFCkYBczNZggrBZ9c7G3riSUeJmqEU5uOtXNPMhE3n+R4FA/3YOAWOQ==
 
 uglify-js@3.4.x:
   version "3.4.10"

@@ -13,19 +13,19 @@ The Link is provided in 2 different variants:
 
 ## Link types
 
-### **1. P**rimary
+### 1. Primary
 
 <p-link variant="primary" href="https://www.porsche.com">Some label</p-link>
 
 Link with color fill in Porsche Red. This type is only to be used for one or two high-priority actions, in order to give the user the best guidance possible.
 
-### **2. S**econdary
+### 2. Secondary
 
 <p-link href="https://www.porsche.com">Some label</p-link>
 
 Default link with monochrome color fill. To be used for all other stand-alone links that aren't high priority.
 
-### **3. T**ertiary
+### 3. Tertiary
 
 <p-link variant="tertiary" href="https://www.porsche.com">Some label</p-link>
 
@@ -52,7 +52,7 @@ All link types are available in the following states:
 
 The Link is available for both Porsche Light and Dark Theme. It always contains the following sub-components:
 
-- **Icon** The icon can be replaced by any icon available in the Porsche web icon set. By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. 
+- **Icon** The icon can be replaced by any icon available in the Porsche web icon set. By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. For internal links the arrow should be sufficient in the most cases. External links can be displayed with the following icon: <p-icon name="link-extern" aria-label="Link extern"></p-icon>.
 - **Text label** The text label is always set in copytext size. The length of the text label determines the size of the link. Multiline text is possible, while the content (both text and icon) are always positioned top left aligned within the link. It is recommended to keep the text label short and descriptive.
 
 ---
