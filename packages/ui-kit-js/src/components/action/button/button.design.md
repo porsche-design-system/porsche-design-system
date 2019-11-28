@@ -54,8 +54,20 @@ All button types are available in the following states:
 
 The Button is available for both Porsche Light and Dark Theme. It always contains the following sub-components:
 
-- **Icon** The icon can be replaced by any icon available in the Porsche web icon set. By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. A good example might be to use a shopping icon or a plus icon for a Button "Add to cart".
-- **Text label** The text label is always set in copytext size. The length of the text label determines the size of the button. Multiline text is possible, while the content (both text and icon) are always positioned top left aligned within the button. It is recommended to keep the text label short and descriptive.
+### **Icon**
+By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. In addition, it should be ensured that the icon only variant is used for internationally known icons.
+
+To ensure the alignment in all Porsche web appliccations we recommend to use dedicated, standardized icons for the following cases:
+
+| INTERACTION | ICON | ADDITIONAL INFO | 
+|----|----|----|
+| Close/Cancel | <p-icon name="close" aria-label="Close icon"></p-icon> | Use a close icon for conclude content like modals and alerts (usally as an icon only) and a cancel icon for abandoning the process. | 
+| Delete | <p-icon name="delete" aria-label="Delete icon"></p-icon> |  |
+| Edit | <p-icon name="edit" aria-label="Edit icon"></p-icon> |  |
+| Add | <p-icon name="plus" aria-label="Plusicon"></p-icon> |  |
+
+### **Text label**
+The text label is always set in copytext size. The length of the text label determines the size of the button. Multiline text is possible, while the content (both text and icon) are always positioned top left aligned within the button. It is recommended to keep the text label short and descriptive.
 
 ---
 
