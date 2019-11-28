@@ -22,12 +22,12 @@
 1. Execute `cat ~/.npmrc`, find following line `//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=` and copy the generated _npm registry token_ from the file to your clipboard
 1. Create an `.env` file within __project root directory__ (never push this file to Git because it will contain secrets – by default it's ignored by `.gitignore`)
 1. Add _npm registry token_ in following format `PORSCHE_NPM_REGISTRY_TOKEN=YOUR_TOKEN_GOES_HERE`
-1. Make sure that Docker App is running
-1. Run `./docker.sh run-install` - this may take up to 15 minutes at first start
+1. Make sure that Docker app is running
+1. Run `./docker.sh run-install` - this may take up to several minutes at first start depending on your internet connection
 
 *Note: `./docker.sh run-install` should be executed after every pull.*
 
-### Docker Installation Steps
+### Docker installation steps
 1. Register your Docker account on [Hub-Docker](https://hub.docker.com)
 1. Download Docker app locally on your machine and login
 1. Start Docker
@@ -37,8 +37,8 @@
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-build` (builds the entire application)
     * `./docker.sh run-build --ui-kit-js` (builds the native web components)
-    * `./docker.sh run-build --ui-kit-angular` (builds angular wrappers)
-    * `./docker.sh run-build --ui-kit-react` (builds react wrappers)
+    * `./docker.sh run-build --ui-kit-angular` (builds angular components)
+    * `./docker.sh run-build --ui-kit-react` (builds react components)
     * `./docker.sh run-build --design-system` (builds storefront)
     * `./docker.sh run-build --utils` (builds utilities)
 
@@ -47,8 +47,8 @@
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-start` (starts the entire application)
     * `./docker.sh run-start --ui-kit-js` (starts native web components)
-    * `./docker.sh run-start --ui-kit-angular` (starts angular wrappers)
-    * `./docker.sh run-start --ui-kit-react` (starts react wrappers)
+    * `./docker.sh run-start --ui-kit-angular` (starts angular components)
+    * `./docker.sh run-start --ui-kit-react` (starts react components)
     * `./docker.sh run-start --design-system` (starts storefront)
 
 ### Linting
