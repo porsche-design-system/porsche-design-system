@@ -24,13 +24,13 @@
         </p-grid-item>
         <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text size="medium">
-            The Porsche UI Kit Web provides the design fundamentals and elements for efficiently creating aesthetic and qualitative
-            web applications. Including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything built and tested following the Porsche quality standards and corporate design
+            The Porsche UI Kit Web Design System provides the design fundamentals and elements for efficiently creating aesthetic and high-quality
+            web applications, including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything is built and tested following the Porsche quality standards and corporate design
             principles.
           </p-text>
           <p-text class="spacing-mt-32">
-            We are happy to announce our first alpha version 1.0.0-alpha.x release of Porsche UI Kit (JS/Angular/React). Please take some time to check it out!
-            We appreciate any feedback, feature requests or any suggestions on our public <a href="https://github.com/porscheui/porsche-ui-contribution/issues">Contribution Board</a>.
+            We are happy to announce our first alpha version 1.0.0-alpha.x release of Porsche UI Kit (JS/ Angular/ React). Please take some time to check it out!
+            We appreciate any feedback, feature requests or suggestions on our public <a href="https://github.com/porscheui/porsche-ui-contribution/issues">Contribution Board</a>.
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
