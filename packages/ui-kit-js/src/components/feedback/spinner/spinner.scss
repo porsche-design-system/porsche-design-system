@@ -11,8 +11,8 @@
   padding: 0;
   box-sizing: border-box;
   display: block;
-  width: rem(48px);
-  height: rem(48px);
+  width: rem(24px);
+  height: rem(24px);
   stroke-width: 2px;
   animation: rotate 1s linear infinite; // IE11 fallback
   animation-duration: var(--p-animation-duration__spinner);
@@ -49,47 +49,77 @@
     }
   }
 
-  &--x-small {
-    width: rem(16px);
-    height: rem(16px);
-    stroke-width: 5px;
+  &--inherit {
+    width: 100%;
+    height: auto;
+    stroke-width: 1px;
   }
 
   &--small {
-    width: rem(48px);
-    height: rem(48px);
+    width: rem(24px);
+    height: rem(24px);
     stroke-width: 2px;
   }
 
   &--medium {
-    width: rem(48px);
-    height: rem(48px);
-    stroke-width: 2px;
-
-    @include p-breakpoint('m') {
-      width: rem(72px);
-      height: rem(72px);
-      stroke-width: 2px;
-    }
+    width: rem(36px);
+    height: rem(36px);
+    stroke-width: 1px;
   }
 
   &--large {
     width: rem(48px);
     height: rem(48px);
-    stroke-width: 2px;
-
-    @include p-breakpoint('m') {
-      width: rem(72px);
-      height: rem(72px);
-      stroke-width: 2px;
-    }
-
-    @include p-breakpoint('l') {
-      width: rem(104px);
-      height: rem(104px);
-      stroke-width: 2px;
-    }
+    stroke-width: 1px;
   }
+
+  &--x-large {
+    width: rem(160px);
+    height: rem(160px);
+    stroke-width: 1px;
+  }
+
+  // &--x-small {
+  //  width: rem(16px);
+  //  height: rem(16px);
+  //  stroke-width: 5px;
+  // }
+  //
+  // &--small {
+  //  width: rem(48px);
+  //  height: rem(48px);
+  //  stroke-width: 2px;
+  // }
+  //
+  // &--medium {
+  //  width: rem(48px);
+  //  height: rem(48px);
+  //  stroke-width: 2px;
+  //
+  //  @include p-breakpoint('m') {
+  //    width: rem(72px);
+  //    height: rem(72px);
+  //    stroke-width: 2px;
+  //  }
+  // }
+  //
+  // &--large {
+  //  width: rem(48px);
+  //  height: rem(48px);
+  //  stroke-width: 2px;
+  //
+  //  @include p-breakpoint('m') {
+  //    width: rem(72px);
+  //    height: rem(72px);
+  //    stroke-width: 2px;
+  //  }
+  //
+  //  @include p-breakpoint('l') {
+  //    width: rem(104px);
+  //    height: rem(104px);
+  //    stroke-width: 2px;
+  //  }
+  // }
 }
 
 @keyframes rotate {
