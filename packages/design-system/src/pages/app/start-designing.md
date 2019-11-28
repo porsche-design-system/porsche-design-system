@@ -12,7 +12,7 @@ You can find a [detailed guideline how to use Absctract here](#/web/getting-star
 ## 2. Getting started
 To get a smooth and easy onboaring experience, you are welcome either to have a look into other digital Porsche projects within our [Porsche Abstract Organisation](https://app.abstract.com/organizations/bc37bb03-3469-4b15-99a2-60dbec187bce/projects). 
 
-Or you use our prebuilt Sketch Layout Templates, that contain artboards in all relevant screen sizes enriched by the right layout and grid presets. (Can be turned visible via: View → Canvas → Show Layout).  
+Or you use our pre-built Sketch Layout Templates, that contain artboards in all relevant screen sizes enriched by the right layout and grid presets. (Can be turned visible via: View → Canvas → Show Layout).  
 [Download Sketch Layout Template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch)
 
 ## 3. Using the Sketch Library
