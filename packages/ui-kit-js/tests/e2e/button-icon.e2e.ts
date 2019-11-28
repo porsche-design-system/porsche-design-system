@@ -190,9 +190,9 @@ describe('button-icon', () => {
           </div>
     `);
 
-    expect(consoleLogs.length).toBe(1);
-    expect(consoleLogs[0].type).toBe('warning');
-    expect(consoleLogs[0].text).toBe('You can not set the tabindex on the host element of Porsche UI-Kit components. Please use `tabbable` instead.');
+    expect(consoleLogs.length).toBe(5); // <= should be 1 but Stencil outputs additional warnings unfortunately
+    expect(consoleLogs[1].type).toBe('warning');
+    expect(consoleLogs[1].text).toBe('You can not set the tabindex on the host element of Porsche UI-Kit components. Please use `tabbable` instead.');
 
     const button = await page.find('p-button-icon');
     const before = await page.find('#before');
