@@ -1,5 +1,4 @@
 import React from 'react';
-import { generateUniqueId } from './utils/index';
 import { attachEventProps } from './utils/attachEventProps';
 
 interface LoadingElement {
@@ -23,11 +22,9 @@ export function createControllerComponent<
 
   return class ReactControllerComponent extends React.Component<Props> {
     controller?: LoadingElementType;
-    id: string;
 
     constructor(props: Props) {
       super(props);
-      this.id = generateUniqueId();
     }
 
     static get displayName() {
