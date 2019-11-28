@@ -154,6 +154,12 @@ export const config: DesignSystemConfig = {
           () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.props.md`),
         ],
       },
+      'Button Pure': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.design.md`),
+        ],
+      },
       'Text Link': {
         Design: [
           // @ts-ignore
@@ -258,6 +264,12 @@ export const config: DesignSystemConfig = {
       },
     },
     Navigation: {
+      'Link Pure': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.design.md`),
+        ]
+      },
       Pagination: {
         Design: [
           // @ts-ignore
