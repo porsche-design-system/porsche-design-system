@@ -1,6 +1,6 @@
 @import '../../../../../../packages/ui-kit-scss-utils/index';
 
-:focus {
+a:focus {
   p-link {
     outline: 2px solid $p-color-state-focus;
     outline-offset: 1px;
