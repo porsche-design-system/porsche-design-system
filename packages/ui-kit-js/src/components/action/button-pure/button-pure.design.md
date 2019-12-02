@@ -27,7 +27,19 @@ Per default, the button pure component is set in **copytext size**. If a higher
 The Button Pure component includes the following sub-components:
 
 ### Icon
-The icon within the Button Pure component can be replaced by any icon available in the Porsche web icon set. Per default, an arrow right is set that should serve in most of all cases. It should only be changed if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly.
+By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. In addition, it should be ensured that the icon only variant is used for internationally known icons.
+
+To ensure the alignment in all Porsche web appliccations we recommend to use dedicated, standardized icons for the following cases:
+
+| INTERACTION | ICON | ADDITIONAL INFO |
+|----|----|----|
+| Close/Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Use a close icon for conclude content like modals and alerts (usally as an icon only) and a cancel icon for abandoning the process.
+| Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | | 
+| Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | | 	
+| Add | <p-icon name="plus" aria-label="Plus"></p-icon> | | 
+| Mail | <p-icon name="email" aria-label="E-Mail"></p-icon> | | 
+| Phone | <p-icon name="phone" aria-label="Phone"></p-icon> | | 
+
 
 ### Text label 
 The text label within the Button Pure component should be short and descriptive.
@@ -45,3 +57,8 @@ A button pure in 20 px or larger can be accompanied by an additional copytext wi
 ## Button Pure groups
 
 Multiple buttons pure can be combined to one button pure group that must be stacked left-aligned in order to guarantee scanability and legibility. It is recommended to not group more than 6 buttons pure in a row.
+
+<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+    <img src="./assets/button-pure.png"/>
+</div>
