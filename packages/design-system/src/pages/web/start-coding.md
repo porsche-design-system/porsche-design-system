@@ -1,6 +1,6 @@
 # Start Coding
 
-Porsche UI Kit provides developers with a collection of presentational web components and corresponding wrappers for Angular and React to build clean and high-quality front-ends that innately come with the latest design definitions.
+Porsche UI Kit provides developers with a collection of presentational web components and corresponding wrappers for Angular and React to build clean and high-quality frontends that innately come with the latest design definitions.
 
 ## Requirements
 * [Node.js & NPM](https://nodejs.org)
@@ -13,14 +13,14 @@ Those packages can be consumed by one of the following private npm registries:
 * Porsche UI npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
 * My Porsche npm registry ([https://porschedev.jfrog.io](https://porschedev.jfrog.io))
 
-If you don't have an account to one of the previously mentioned npm registries, you can easily register for Porsche UI npm registry like following:
+If you don't have an account for one of the those npm registries, you can easily register for Porsche UI npm registry like as follows:
 
 <p-link target="_blank" href="http://eepurl.com/gnOIXD">Request a Porsche UI npm registry account</p-link>
 
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
-1. Enter username, password (Artifactory API Key __not__ Artifactory password!) and e-mail address when asked in terminal (this will add credentials to your global user `~/.npmrc`)
-1. Add local `.npmrc` at the root of your npm project and add following lines of code:
+1. Enter username, password (Artifactory API Key, __not__ Artifactory password!) and e-mail address when asked in the terminal (this will add the credentials to your global user `~/.npmrc`)
+1. Add local `.npmrc` at the root of your npm project and add the following lines of code:
 ``` 
 always-auth = true
 @porsche-ui:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
@@ -66,7 +66,7 @@ yarn add @porsche-ui/ui-kit-scss-utils --dev
 
 ### Vanilla JS
 
-If using web components in a static website, the following page setup is recommended (assuming a web server is running):
+If you're using web components in a static website, the following page setup is recommended (assuming a web server is running):
 
 ``` 
 <!DOCTYPE html>
@@ -91,7 +91,7 @@ If using web components in a static website, the following page setup is recomme
 
 The Angular wrapper of web components can be used like every other Angular library. 
 
-After adding `@porsche-ui/ui-kit-angular` package to your project, import the `PorscheUIKitModule` to your root module and the needed global (S)CSS. 
+After adding `@porsche-ui/ui-kit-angular` package to your project, import the `PorscheUIKitModule` to your root module as well as the needed global (S)CSS. 
 The following setup is a standard Angular CLI project with SCSS support:
 
 #### App module
@@ -133,7 +133,7 @@ export class AppComponent {}
 ``` 
 
 #### Load CSS
-In your `styles.scss` import Porsche UI Kit stylesheet.
+In your `styles.scss`, import the Porsche UI Kit stylesheet.
 
 ``` 
 @import "~@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
@@ -143,9 +143,9 @@ In your `styles.scss` import Porsche UI Kit stylesheet.
 
 ### React
 
-The React wrappers of web components can be used like every other React component (even with Typescript support). 
+The React wrappers for web components can be used like every other React component - even with Typescript support. 
 
-After adding `@porsche-ui/ui-kit-react` package to your project, import component(s) and (S)CSS.
+After adding `@porsche-ui/ui-kit-react` package to your project, importe th component(s) and the (S)CSS files..
 The following setup is a standard React Scripts (Create React App) setup with SCSS support:
 
 #### Index file
@@ -186,9 +186,9 @@ SCSS utils can be used for easier SCSS/SASS development. See [SCSS utils section
 
 --- 
 
-### Web components used with non supported framework
+### Web components used with non-supported framework
 
-AToW we only provide wrappers for Angular and React. But this doesn't mean, that web components can't be used with other frameworks like Vue or Ember. Just follow these guidelines to make web components work in other frameworks:
+At time of writing we only provide wrappers for Angular and React. But this doesn't mean that our web components can't be used with other frameworks like Vue or Ember. Just follow these guidelines to make our web components work in other frameworks:
 
 - [Guidelines for Vue](https://stenciljs.com/docs/vue)
 - [Guidelines for Ember](https://stenciljs.com/docs/ember)
