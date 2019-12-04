@@ -12,7 +12,7 @@ describe('Text Link', () => {
   it('should have no visual regression', async () => {
     expect(
       await vrt.test('text-link', async () => {
-        await vrt.goTo('/src/components/action/text-link/text-link.test.html');
+        await vrt.goTo('/src/components/navigation/text-link/text-link.test.html');
       })
     ).toBeFalsy();
   });

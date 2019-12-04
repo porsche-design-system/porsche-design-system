@@ -23,29 +23,14 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 
 import { Components } from '@porsche-ui/ui-kit-js'
 
-export declare interface PButtonIcon extends Components.PButtonIcon {}
-@ProxyInputs(['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'])
-@Component({ selector: 'p-button-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'label', 'loading', 'tabbable', 'target', 'theme', 'type', 'variant'] })
-export class PButtonIcon {
+export declare interface PButton extends Components.PButton {}
+@ProxyInputs(['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant'])
+@Component({ selector: 'p-button', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant'] })
+export class PButton {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-  }
-}
-
-export declare interface PButtonRegular extends Components.PButtonRegular {}
-@ProxyInputs(['disabled', 'href', 'icon', 'iconSource', 'loading', 'small', 'target', 'theme', 'type', 'variant'])
-@Component({ selector: 'p-button-regular', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'href', 'icon', 'iconSource', 'loading', 'small', 'target', 'theme', 'type', 'variant'] })
-export class PButtonRegular {
-  pClick!: EventEmitter<CustomEvent>;
-  pFocus!: EventEmitter<CustomEvent>;
-  pBlur!: EventEmitter<CustomEvent>;
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick', 'pFocus', 'pBlur']);
   }
 }
 
@@ -108,6 +93,17 @@ export declare interface PIcon extends Components.PIcon {}
 @ProxyInputs(['color', 'name', 'lazy', 'size', 'source'])
 @Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'name', 'lazy', 'size', 'source'] })
 export class PIcon {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface PLink extends Components.PLink {}
+@ProxyInputs(['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'tabbable', 'target', 'theme', 'variant'])
+@Component({ selector: 'p-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'tabbable', 'target', 'theme', 'variant'] })
+export class PLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
