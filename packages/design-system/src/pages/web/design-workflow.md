@@ -31,29 +31,29 @@ Both roles can be granted different rights.
 Changes within files are made by using the Abstract desktop app and Sketch. Within a project, the master branch represents all approved work as the latest version of the project. Tasks that are currently under development are nested in different branches and child branches. To release a finalised task, the specific branch must be merged into the master.
 
 ### 1. Start working on a change
-We open branches for any file change that we do in order to avoid updating the master too frequently. If you would like to pick up where someone else left off in a branch, you can open a child branch.
+We open branches for any file change we're doing to avoid having to update the master too frequently. If you would like to pick up where someone else left off in a branch, you can open a child branch.
 
 1. **Create a branch** either from the master or from an existing branch by clicking "New branch..." or by opening a file with "Edit in Sketch". Sketch files can also be opened untracked to test something without saving.
 2. **Name the branch** including the main topic, effort type or the issue number and your signature letters,  
 e.g. `pagination accessibility recolouring | mb | #44`. For more context, you can also add a description and a status to the branch.
 4. **Save changes in Sketch and sync them** regularly as commits to Abstract by clicking on "Commit changes" at the bottom. 
-5. **Describe the committed changes** to make them visible for others, e.g. `Changed text colour from to red`. Commit often and describe what you did. Adding detail of what you accomplished in each commit is useful for you and for your coworkers.
+5. **Describe the committed changes** to make them visible for others, e.g. `Changed text colour from blue to red`. Commit often and describe what you did. Adding detail of what you accomplished in each commit is useful for you and for your coworkers.
 
 ![Abstract branches](../../assets/web/abstract-branches.png)
 
 ### 2. Review and merge changes
-When you think you’re done with your branch, you should always add stakeholders or coworkers as reviewers to get feedback on your work before you merge it to master.
+When you think you’re done with your branch, you should always add stakeholders or coworkers as reviewers to get feedback on your work before you merge it to the master branch.
 
 1. Select your branch that you would like to be reviewed
 2. Click "Request Review" in the top right and type the team members whom you would like to review your changes
 
-Updating from the master every few weeks is effective at keeping your branch up to date and avoiding a huge workload when you’re finally ready to merge. Once your review has been approved, you’re ready to merge.
+Updating from the master every few weeks is effective for keeping your branch up to date and avoiding a huge workload when you’re finally ready to merge. Once your review has been approved, you’re ready to merge.
 
 1. Select the branch that you would like to merge into the master or a child branch you would like to merge into the parent branch.
 2. Click "Merge branch" at the top right and log a short but descriptive change in the notes.
 3. Click the button "Merge and archive".
-4. When your version of Master is out-of-date with the current version of Master (often a result of being offline) you get a diverged copy. Be sure to resolve this immediately.
-5. Inform the team about the merging.
+4. When your local version of the master branch is not up-to-date (often a result of being offline), you get a diverged copy. Be sure to resolve this immediately.
+5. Inform the team about your merging.
 
 ### 3. Engineering and stakeholder "handoff"
-Collections are very useful in focusing the attention of your fellow designers and stakeholders on the screens you’re modifying. You can arrange them according to the story you’re trying to tell and give additional context within them.
+Collections are very useful in focusing the attention of your fellow designers and stakeholders on the screens you’re modifying. You can arrange them according to the story you’re trying to tell and to give additional context within them.
