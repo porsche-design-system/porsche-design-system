@@ -1,37 +1,37 @@
 # Design Workflow with Abstract
 
 ## General information 
-We encourage an open and clear design workflow over all digital Porsche products with shared tools and workflows. Using the Abstract tool enables automated file management and version control - without the risk of losing data. The general accessibility of all files also brings the different roles and teams closer and enables a fast design collaboration.
+We encourage an open and clear design workflow over all digital Porsche products with shared tools and workflows. Using the Abstract tool enables automated file management and version control - without the risk of losing data. The overall accessibility of files also brings the different roles and teams closer together and enables a fast collaboration.
 
-[Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Videos from Abstract](https://vimeo.com/goabstract).
+[Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Abstract videos](https://vimeo.com/goabstract).
 
 ### Project and file structure
-The Porsche UI organisation is structured by context within different sections. Product-specific files are stored in different team projects. Team projects are visible for all organisation members by default. Confidential work is stored in private projects, which are only accessible by members on invitation.
+The Porsche UI organisation is structured along contexts within different sections. Product-specific files are stored in different team projects.?! Team projects are visible for all organisation members by default. Confidential work is stored in private projects, which are only accessible by members with prior invitation.
 
-For better discoverability, files and libraries within a project are recommended to be split and named by their features in lower case with hyphenation. All libraries created within the Porsche UI organisation should be named with the format `porsche-ui-kit-[projectname].sketch`.
+For better discoverability, files and libraries within a project are recommended to be split and named by their features in lower case with hyphenation. All libraries created within the Porsche UI organisation should be named according to the format `porsche-ui-kit-[projectname].sketch`.
 
 ![Abstract file structure](../../assets/web/abstract-filestructure.png)
 
 ### User roles and rights
-User roles define whether a user can just view or actually work on the stored files. Contributor seats for designers have to be paid and therefore [requested here](http://eepurl.com/gnOIXD).
+User roles define whether a user can just view or actually work on the stored files. Contributor seats for designers have to be paid and therefore requested [here](http://eepurl.com/gnOIXD).
 - **Contributors, usually designers,** have access to all features including creating, editing and updating files.
-- **Viewers, usually stakeholders and developers** are only able to view and comment on shared files.
+- **Viewers, usually stakeholders and developers,** are only able to view and comment on shared files.
 
 Both roles can be granted different rights. 
 - **Members** of the organisation have access to all public projects and can be invited individually to private projects.
-- **Guests** have to be invited for each project specifically to gain access.
+- **Guests** have to be invited individually for each project to gain access.
 
 ### Add members to your private project or invite guests
-1. Login for Abstract
-2. Navigate to your project and click "Members" from the left-hand navigation bar in Abstract
-3. Click on "..." on the right of a member to manage their role or remove them from the project
+1. Login to Abstract
+2. Navigate to your project and click on "Members" on the left-hand navigation bar
+3. Click on "..." on the right side of a member item to manage their role or remove them from the project
 4. Select "Invite People" to add new team members or invite guests
 
 ## Design workflow
-Changes within files are made using the Abstract desktop app and Sketch. Within a project, the master represents all approved work as the latest version of the files. Tasks that are currently under development are nested in different branches and child branches. To release a finalised task, the branch must be merged into the master.
+Changes within files are made by using the Abstract desktop app and Sketch. Within a project, the master branch represents all approved work as the latest version of the project. Tasks that are currently under development are nested in different branches and child branches. To release a finalised task, the specific branch must be merged into the master.
 
 ### 1. Start working on a change
-We always open branches for every change to files in order to avoid having to frequently update the master. If you would like to pick up where someone else left off in their branch, you can open a child branch under it.
+We open branches for any file change that we do in order to avoid updating the master too frequently. If you would like to pick up where someone else left off in a branch, you can open a child branch.
 
 1. **Create a branch** either from the master or from an existing branch by clicking "New branch..." or by opening a file with "Edit in Sketch". Sketch files can also be opened untracked to test something without saving.
 2. **Name the branch** including the main topic, effort type or the issue number and your signature letters,  
