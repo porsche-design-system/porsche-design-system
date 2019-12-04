@@ -1,8 +1,4 @@
 describe('Text Link', () => {
-  beforeEach(() => {
-    window.localStorage.setItem('Feature: Q2/2019 Components', 'true');
-  });
-
   it('Should navigate through main navigation', () => {
     cy.visit('/#/web');
 
@@ -19,7 +15,7 @@ describe('Text Link', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/web/components/action/text-link');
+      cy.visit('/#/web/components/navigation/text-link');
     });
 
     it('Should show tab navigation with first tab activated', () => {

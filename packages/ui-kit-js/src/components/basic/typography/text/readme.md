@@ -21,5 +21,6 @@
 
 ### Used by
 
- - [p-button-regular](../../../action/button-regular)
- - [p-text-link](../../../action/text-link)
+ - [p-button](../../../action/button)
+ - [p-link](../../../navigation/link)
+ - [p-text-link](../../../navigation/text-link)
