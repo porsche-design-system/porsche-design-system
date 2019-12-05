@@ -51,7 +51,7 @@ certain elements.
 ### White space (also: negative space)
 
 The empty space (also referred to as negative space) in a
-design. Although called white space, the blank space can be filled with any colour
+design. Although called white space, the blank space can be filled with any color
 as long as it’s free of elements like text, graphics or images, creating a
 well-spaced and clear product. White space helps deliver a good experience by
 giving elements space to breathe and letting the reader’s eye relax.

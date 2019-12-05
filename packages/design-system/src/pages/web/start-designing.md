@@ -20,7 +20,7 @@ There's no need to design from scratch anymore! Instead, you can use our pre-bui
 The components of the Porsche UI Kit are provided in two Sketch libraries that can be easily linked with Sketch by clicking on the following RSS library links. Once linked, Sketch will automatically check for updates. 
 
 ### Basic Library 
-The basic library contains the design fundamentals such as typography, colours and icons.  
+The basic library contains the design fundamentals such as typography, colors and icons.  
 [Download Porsche UI Kit Basic](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-basic.sketch.xml) 
 
 ### Web Library

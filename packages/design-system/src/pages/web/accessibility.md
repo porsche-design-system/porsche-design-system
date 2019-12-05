@@ -13,7 +13,7 @@ Have you ever had a problem using a desktop site on a mobile phone, or seen the 
 
 ## Why do we need it?
 As maintainers of the Porsche UI Kit, we always want the best experience for all users. You might argue that, as an OEM in the automotive sector, we do not need to give support to visually impaired people. But this is a very short-sighted point of view.
-Just think about all the services Porsche wants to offer around the cars that have nothing to do with driving itself. Or think about people who have a "simple" red-green colour blindness (about 10% of all humans). 
+Just think about all the services Porsche wants to offer around the cars that have nothing to do with driving itself. Or think about people who have a "simple" red-green color blindness (about 10% of all humans). 
 Or what about the average age of the target audience of Porsche customers? It's an average of 55 years! As you can see, web accessibility is for all users, not just blind people.
 
 The Porsche UI Kit approach is to deliver highly usable components that are not limited to certain use cases. They should work everywhere and for everyone! 
@@ -50,11 +50,11 @@ Further information:
 * WAI-ARIA basics
 * An introduction to WAI-ARIA
 ###  Contrasts (DESIGN)
-Best done early in the process, ensuring that the foreground and background colours of your site have sufficient contrast you will help make your site more readable for everyone. Contrast Ratio is one tool for checking the contrast of your colours for both standard-vision and colour-deficient users.
+Best done early in the process, ensuring that the foreground and background colors of your site have sufficient contrast you will help make your site more readable for everyone. Contrast Ratio is one tool for checking the contrast of your colors for both standard-vision and color-deficient users.
 
 ### Colours (DESIGN)
-* Be sure to layout and develop for some kinds of colour blindness
-* Never let colour be the only indicator for a type of use
+* Be sure to layout and develop for some kinds of color blindness
+* Never let color be the only indicator for a type of use
 * Never use red and green buttons side by side
 
 ### Font sizes (DESIGN)

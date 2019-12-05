@@ -12,7 +12,7 @@ A lot of useful tools make your workflow more efficient.
   
 ## Sketch Palettes  
 [GitHub - andrewfiorillo/sketch-palettes](https://github.com/andrewfiorillo/sketch-palettes)  
-A Sketch plugin for exporting and importing fill presets. It supports colours, gradients and pattern fills.
+A Sketch plugin for exporting and importing fill presets. It supports colors, gradients and pattern fills.
 → Useful for importing the porsche-ui-kit.sketchpalette!  
   
 ## ImageOptim  
