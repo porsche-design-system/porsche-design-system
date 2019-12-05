@@ -22,7 +22,7 @@ The components of the Porsche UI Kit are provided in two Sketch libraries that c
 Some of the components offer smooth layout behaviour such as automatic resizing and positioning. To use it you have to install the Sketch plugin [Anima](https://www.animaapp.com/). (Ensure to turn on the setting: Plugins → Anima Toolkit → Enable Padding and Stacks for Nested Symbols).   
 
 ### Basic Library and Porsche Typeface
-The basic library contains the design fundamentals, such as typography, colours and icons.  
+The basic library contains the design fundamentals, such as typography, colors and icons.  
 [Download Porsche UI Kit Basic](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-basic.sketch.xml) 
 
 To use the library properly you have to download and install the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 

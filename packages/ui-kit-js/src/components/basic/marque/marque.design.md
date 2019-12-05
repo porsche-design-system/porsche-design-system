@@ -47,6 +47,6 @@ Slight adjustments ensure that the Porsche marque is optimally perceived as equa
 ## Don'ts
 
 - The Marque may not be altered in relation to its two elements or their size. The Marque may never be used without the Porsche lettering, as the sender identification cannot be guaranteed.
-- The Porsche Marque may not be used against coloured or busy backgrounds (e.g. shading). As the Porsche Crest has a high level of graphical complexity, excessive visual turmoil may be created.
+- The Porsche Marque may not be used against colored or busy backgrounds (e.g. shading). As the Porsche Crest has a high level of graphical complexity, excessive visual turmoil may be created.
 
 ![Example for Porsche Marque](./assets/porsche-marque-donts-01.png)

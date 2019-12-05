@@ -25,7 +25,7 @@ Some examples for SemVer within the Porsche UI Kit:
 * Change to style that triggers a layout change or different wrapping behaviour
 * Markup change that must be included or is being updated
 * Change to code constants
-* Context-relevant changes in style basics, i.e. primary colour or icon assets with same meaning
+* Context-relevant changes in style basics, i.e. primary color or icon assets with same meaning
 * Changes that can affect layout outside of content, i.e. display properties
 * Update of dependencies
 * Deletion or move of shared mixins or placeholders

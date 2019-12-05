@@ -35,9 +35,9 @@ We always open branches for every change to files in order to avoid having to fr
 
 1. **Create a branch** either from the master or from an existing branch by clicking "New branch..." or by opening a file with "Edit in Sketch". Sketch files can also be opened untracked to test something without saving.
 2. **Name the branch** including the main topic, effort type or the issue number and your signature letters,  
-e.g. `pagination accessibility recolouring | mb | #44`. For more context, you can also add a description and a status to the branch.
+e.g. `pagination accessibility recoloring | mb | #44`. For more context, you can also add a description and a status to the branch.
 4. **Save changes in Sketch and sync them** regularly as commits to Abstract by clicking on "Commit changes" at the bottom. 
-5. **Describe the committed changes** to make them visible for others, e.g. `Changed text colour from to red`. Commit often and describe what you did. Adding detail of what you accomplished in each commit is useful for you and for your coworkers.
+5. **Describe the committed changes** to make them visible for others, e.g. `Changed text color from to red`. Commit often and describe what you did. Adding detail of what you accomplished in each commit is useful for you and for your coworkers.
 
 ![Abstract branches](../../assets/web/abstract-branches.png)
 
