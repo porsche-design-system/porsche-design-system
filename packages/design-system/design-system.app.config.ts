@@ -1,55 +1,55 @@
 // @ts-ignore
-import {DesignSystemConfig} from '@/interface';
+import { DesignSystemConfig } from '@/interface';
 
 export const config: DesignSystemConfig = {
   pages: {
     'Getting Started': {
       About: [
         // @ts-ignore
-        () => import(`@/pages/app/about.md`),
+        () => import(`@/pages/app/about.md`)
       ],
       'Start Designing': [
         // @ts-ignore
-        () => import(`@/pages/app/start-designing.md`),
+        () => import(`@/pages/app/start-designing.md`)
       ],
       'Design Workflow': [
         // @ts-ignore
-        () => import(`@/pages/app/design-workflow.md`),
-      ],
+        () => import(`@/pages/app/design-workflow.md`)
+      ]
     },
     News: {
       Updates: [
         // @ts-ignore
-        () => import(`@/pages/app/updates.md`),
+        () => import(`@/pages/app/updates.md`)
       ],
       Roadmap: [
         // @ts-ignore
-        () => import(`@/pages/app/roadmap.md`),
-      ],
+        () => import(`@/pages/app/roadmap.md`)
+      ]
     },
     Help: {
       Support: [
         // @ts-ignore
-        () => import(`@/pages/app/support.md`),
+        () => import(`@/pages/app/support.md`)
       ],
-      Faq: [
+      FAQ: [
         // @ts-ignore
-        () => import(`@/pages/app/faq.md`),
-      ],
-    },
+        () => import(`@/pages/app/faq.md`)
+      ]
+    }
   },
   stories: {
     Basic: {
       Color: [
         // @ts-ignore
-        () => import(`@/stories/app/color.md`),
-      ],
+        () => import(`@/stories/app/color.md`)
+      ]
     },
     Action: {
       Button: [
         // @ts-ignore
-        () => import(`@/stories/app/button.md`),
-      ],
-    },
+        () => import(`@/stories/app/button.md`)
+      ]
+    }
   }
 };
