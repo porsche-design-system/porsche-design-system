@@ -7,20 +7,20 @@ Porsche UI Kit provides developers with a collection of presentational web compo
 
 ## Installation
 
-All releases of the Porsche UI Kit are available as versioned npm package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-angular` and `@porsche-ui/ui-kit-react`.
+All releases of the Porsche UI Kit are available as versioned NPM package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-angular` and `@porsche-ui/ui-kit-react`.
 
-Those packages can be consumed by one of the following private npm registries:
-* Porsche UI npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
-* My Porsche npm registry ([https://porschedev.jfrog.io](https://porschedev.jfrog.io))
+Those packages can be consumed by one of the following private NPM registries:
+* Porsche UI NPM registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
+* My Porsche NPM registry ([https://porschedev.jfrog.io](https://porschedev.jfrog.io))
 
-If you don't have an account for one of the those npm registries, you can easily register for Porsche UI npm registry like as follows:
+If you don't have an account for one of the those NPM registries, you can easily register for Porsche UI NPM registry like as follows:
 
-<p-link target="_blank" href="http://eepurl.com/gnOIXD">Request a Porsche UI npm registry account</p-link>
+<p-link target="_blank" href="http://eepurl.com/gnOIXD">Request a Porsche UI NPM registry account</p-link>
 
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
 1. Enter username, password (Artifactory API Key, __not__ Artifactory password!) and e-mail address when asked in the terminal (this will add the credentials to your global user `~/.npmrc`)
-1. Add local `.npmrc` at the root of your npm project and add the following lines of code:
+1. Add local `.npmrc` at the root of your NPM project and add the following lines of code:
 ``` 
 always-auth = true
 @porsche-ui:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/

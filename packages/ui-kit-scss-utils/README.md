@@ -2,7 +2,7 @@
 This package contains helpful SCSS functions, mixins and variables.
 
 ### Install
-It's necessary to have access to Porsche UI private npm registry to be able to install `@porsche-ui/ui-kit-scss-utils` npm package. If you don't have an account yet, please first read more about getting started as developer on https://ui.porsche.com
+It's necessary to have access to Porsche UI private NPM registry to be able to install `@porsche-ui/ui-kit-scss-utils` NPM package. If you don't have an account yet, please first read more about getting started as developer on https://ui.porsche.com
 
 ```
 // install with npm:

@@ -63,7 +63,7 @@ export const config: DesignSystemConfig = {
         () => import(`@/pages/web/accessibility.md`)
       ]
     },
-    'Scss Utils': {
+    'SCSS Utils': {
       Introduction: [
         // @ts-ignore
         () => import(`@/pages/web/introduction.md`)
