@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.14.11] - 2019-12-05
+
+-   You can now configure the `required` and `spellCheck` property of `<Input>`.
+
+## [0.14.10] - 2019-11-21
+
+-   Republish to fix porschedev artifactory proxy issue.
+
+
 ## [0.14.9] - 2019-11-06
 
 -   You can now configure the `required` and `spellCheck` property of `<TextArea>`.

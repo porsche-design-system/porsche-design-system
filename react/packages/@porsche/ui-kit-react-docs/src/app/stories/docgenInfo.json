@@ -1,63 +1,4 @@
 {
-  "Breakpoint": {
-    "displayName": "Breakpoint",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The maximum breakpoint that includes the children."
-        ],
-        "name": "maxWidth",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx",
-          "name": "BreakpointProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"xs\"",
-          "\"s\"",
-          "\"m\"",
-          "\"l\"",
-          "\"xl\""
-        ]
-      },
-      {
-        "description": [
-          "The minimum breakpoint that includes the children."
-        ],
-        "name": "minWidth",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx",
-          "name": "BreakpointProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"xs\"",
-          "\"s\"",
-          "\"m\"",
-          "\"l\"",
-          "\"xl\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "Show and hide children based on minimum and maximum breakpoints.",
-        "The currently defined breakpoints are:",
-        "xs: 480,",
-        "s: 760,",
-        "m: 1000,",
-        "l: 1300,",
-        "xl: 1760"
-      ]
-    },
-    "path": "src/components/atoms/Breakpoint/Breakpoint.tsx"
-  },
   "Divider": {
     "displayName": "Divider",
     "methods": [],
@@ -120,6 +61,65 @@
       ]
     },
     "path": "src/components/atoms/Divider/Divider.tsx"
+  },
+  "Breakpoint": {
+    "displayName": "Breakpoint",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The maximum breakpoint that includes the children."
+        ],
+        "name": "maxWidth",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx",
+          "name": "BreakpointProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"xs\"",
+          "\"s\"",
+          "\"m\"",
+          "\"l\"",
+          "\"xl\""
+        ]
+      },
+      {
+        "description": [
+          "The minimum breakpoint that includes the children."
+        ],
+        "name": "minWidth",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/atoms/Breakpoint/Breakpoint.tsx",
+          "name": "BreakpointProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"xs\"",
+          "\"s\"",
+          "\"m\"",
+          "\"l\"",
+          "\"xl\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "Show and hide children based on minimum and maximum breakpoints.",
+        "The currently defined breakpoints are:",
+        "xs: 480,",
+        "s: 760,",
+        "m: 1000,",
+        "l: 1300,",
+        "xl: 1760"
+      ]
+    },
+    "path": "src/components/atoms/Breakpoint/Breakpoint.tsx"
   },
   "Icon": {
     "displayName": "Icon",
@@ -197,7 +197,50 @@
       },
       {
         "description": [
-          "The icon that should be used."
+          "Disables the button. No onClick will be triggered."
+        ],
+        "name": "disabled",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "The icon color when the user hovers over it. Since SVG won't support inherited text colors, you need to set this explicitly."
+        ],
+        "name": "hoverColor",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"black\"",
+          "\"grey-darker\"",
+          "\"grey-dark\"",
+          "\"grey\"",
+          "\"grey-light\"",
+          "\"grey-lighter\"",
+          "\"white\"",
+          "\"red-1\"",
+          "\"red-2\"",
+          "\"blue-1\"",
+          "\"blue-2\"",
+          "\"status-green\"",
+          "\"status-yellow\"",
+          "\"status-orange\"",
+          "\"status-red\""
+        ]
+      },
+      {
+        "description": [
+          "The icon name that should be used, or a path to a custom svg file."
         ],
         "name": "name",
         "parent": {
@@ -205,20 +248,33 @@
           "name": "IconProps"
         },
         "required": true,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"111_points_check\"",
-          "\"4WD\"",
-          "\"accident_free\"",
-          "\"arrow_both_ways_hair\"",
-          "\"arrow_down_hair\"",
-          "\"arrow_left_hair_first\"",
-          "\"arrow_left_hair\"",
-          "\"arrow_open_full_down\"",
-          "\"arrow_open_full_up\"",
-          "... 98 more ...",
-          "\"youtube\""
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called after a user's click."
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/atoms/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "React's original event.",
+            "type": null,
+            "name": "event"
+          },
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
         ]
       },
       {
@@ -259,7 +315,7 @@
     "docBlock": {
       "tags": [],
       "description": [
-        "Display an Icon from the Porsche icon font at various sizes."
+        ""
       ]
     },
     "path": "src/components/atoms/Icon/Icon.tsx"
@@ -1466,577 +1522,6 @@
     },
     "path": "src/components/layout/Grid/GridChild.tsx"
   },
-  "CookieNotification": {
-    "displayName": "CookieNotification",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass<any, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Called when the user clicks the close button of the notification"
-        ],
-        "name": "onClick",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/CookieNotification/CookieNotification.tsx",
-          "name": "CookieNotificationProps"
-        },
-        "required": true,
-        "type": "func",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The default Porsche notification message."
-      ]
-    },
-    "path": "src/components/organisms/CookieNotification/CookieNotification.tsx"
-  },
-  "Header": {
-    "displayName": "Header",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass<any, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The element type of the logo."
-        ],
-        "name": "logoComponent",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "string | ComponentClass<any, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Custom props of the logo."
-        ],
-        "name": "logoProps",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "object",
-        "tags": []
-      },
-      {
-        "description": [
-          "The navigation sections to be displayed."
-        ],
-        "name": "sections",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": true,
-        "type": "NavigationSection[]",
-        "tags": []
-      },
-      {
-        "description": [
-          "The mobile navigation trigger text."
-        ],
-        "name": "title",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
-          "name": "HeaderProps"
-        },
-        "required": false,
-        "type": "string | Element",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The page header with logo and navigation bar"
-      ]
-    },
-    "path": "src/components/organisms/Header/Header.tsx"
-  },
-  "Modal": {
-    "displayName": "Modal",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "Use setAppElement to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open.",
-          "If you can't you can disable that functionality by setting ariaHideApp={false}, but this is not recommended."
-        ],
-        "name": "ariaHideApp",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes for the modal content container."
-        ],
-        "name": "containerClassName",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          ""
-        ],
-        "name": "containerRef",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "RefObject<HTMLDivElement>",
-        "tags": []
-      },
-      {
-        "description": [
-          "String indicating how the content container should be announced to screenreaders."
-        ],
-        "name": "contentLabel",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Boolean describing if the modal should be shown or not. Defaults to false."
-        ],
-        "name": "isOpen",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": true,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "false",
-        "description": [
-          "Displays a loader and translucent backdrop above the entire content."
-        ],
-        "name": "loading",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Function that will be run when the modal is requested to be closed, prior to actually closing."
-        ],
-        "name": "onRequestClose",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": true,
-        "type": "func",
-        "tags": []
-      },
-      {
-        "defaultValue": "true",
-        "description": [
-          "A modal shows a close icon at its top right corner. You can disable this by setting showCloseIcon to false."
-        ],
-        "name": "showCloseIcon",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "defaultValue": "dynamic",
-        "description": [
-          "Usually a modal dynamically sets its width and height depending on its content. If you have dynamic contents and want to prevent the modal from changing its width or height, you can set the max-width, max-height or both with this property."
-        ],
-        "name": "size",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"dynamic\"",
-          "\"max-width\"",
-          "\"max-height\"",
-          "\"max\""
-        ]
-      },
-      {
-        "defaultValue": "false",
-        "description": [
-          "Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use wide to allow the modal to span the entire webpage (minus margins)."
-        ],
-        "name": "wide",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
-          "name": "ModalProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A modal container with a transparent background."
-      ]
-    },
-    "path": "src/components/organisms/Modal/Modal.tsx"
-  },
-  "ModalButtons": {
-    "displayName": "ModalButtons",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [
-        {
-          "title": "see",
-          "description": "Button"
-        }
-      ],
-      "description": [
-        "A container for modal action buttons. You should probably only use one or more <Button /> components as children."
-      ]
-    },
-    "path": "src/components/organisms/Modal/ModalButtons.tsx"
-  },
-  "ModalText": {
-    "displayName": "ModalText",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The copy text for a modal."
-      ]
-    },
-    "path": "src/components/organisms/Modal/ModalText.tsx"
-  },
-  "ModalTitle": {
-    "displayName": "ModalTitle",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The title for a modal."
-      ]
-    },
-    "path": "src/components/organisms/Modal/ModalTitle.tsx"
-  },
-  "Toast": {
-    "displayName": "Toast",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass<any, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The content of the toast."
-        ],
-        "name": "message",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
-          "name": "ToastProps"
-        },
-        "required": true,
-        "type": "string | Element",
-        "tags": []
-      },
-      {
-        "description": [
-          "Callback when the close button of the toast is clicked."
-        ],
-        "name": "onClick",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
-          "name": "ToastProps"
-        },
-        "required": false,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "All props of the component.",
-            "type": null,
-            "name": "data"
-          }
-        ]
-      },
-      {
-        "defaultValue": "info",
-        "description": [
-          "Toasts can have different urgencies, signified by different status colors."
-        ],
-        "name": "type",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
-          "name": "ToastProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"info\"",
-          "\"success\"",
-          "\"warning\"",
-          "\"error\""
-        ]
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A small, unintrusive, floating notification that should be closed by clicking or via a timeout."
-      ]
-    },
-    "path": "src/components/organisms/Toasts/Toast.tsx"
-  },
-  "ToastList": {
-    "displayName": "ToastList",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass<any, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Callback when close button of a toast is clicked."
-        ],
-        "name": "onCloseClick",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
-          "name": "ToastListProps"
-        },
-        "required": true,
-        "type": "func",
-        "tags": [
-          {
-            "title": "param",
-            "description": "The unique identifier of the queueable toast.",
-            "type": null,
-            "name": "toastId"
-          }
-        ]
-      },
-      {
-        "description": [
-          "An array of the toasts that should be displayed.",
-          "Inserted or deleted toasts are automatically animated based on the provided id.",
-          "New toasts should be appended at the end of the array and will be displayed at the bottom."
-        ],
-        "name": "toasts",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
-          "name": "ToastListProps"
-        },
-        "required": true,
-        "type": "QueuableToast[]",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A toast list displays an array of toasts. It automatically animates insertions and deletions using the unique identifier of each toast."
-      ]
-    },
-    "path": "src/components/organisms/Toasts/ToastList.tsx"
-  },
-  "ToastManager": {
-    "displayName": "ToastManager",
-    "methods": [],
-    "props": [],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The toast manager automatically queues and displays toasts created with its emit, info, success, warn, error methods."
-      ]
-    },
-    "path": "src/components/organisms/Toasts/ToastManager.tsx"
-  },
   "Button": {
     "displayName": "Button",
     "methods": [],
@@ -2091,21 +1576,8 @@
           "name": "ButtonProps"
         },
         "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"111_points_check\"",
-          "\"4WD\"",
-          "\"accident_free\"",
-          "\"arrow_both_ways_hair\"",
-          "\"arrow_down_hair\"",
-          "\"arrow_left_hair_first\"",
-          "\"arrow_left_hair\"",
-          "\"arrow_open_full_down\"",
-          "\"arrow_open_full_up\"",
-          "... 98 more ...",
-          "\"youtube\""
-        ]
+        "type": "string",
+        "tags": []
       },
       {
         "description": [
@@ -2173,9 +1645,9 @@
         "type": "enum",
         "tags": [],
         "value": [
-          "\"reset\"",
           "\"button\"",
-          "\"submit\""
+          "\"submit\"",
+          "\"reset\""
         ]
       },
       {
@@ -2363,21 +1835,8 @@
           "name": "ButtonIconProps"
         },
         "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"111_points_check\"",
-          "\"4WD\"",
-          "\"accident_free\"",
-          "\"arrow_both_ways_hair\"",
-          "\"arrow_down_hair\"",
-          "\"arrow_left_hair_first\"",
-          "\"arrow_left_hair\"",
-          "\"arrow_open_full_down\"",
-          "\"arrow_open_full_up\"",
-          "... 98 more ...",
-          "\"youtube\""
-        ]
+        "type": "string",
+        "tags": []
       },
       {
         "description": [
@@ -2445,9 +1904,9 @@
         "type": "enum",
         "tags": [],
         "value": [
-          "\"reset\"",
           "\"button\"",
-          "\"submit\""
+          "\"submit\"",
+          "\"reset\""
         ]
       },
       {
@@ -2862,21 +2321,21 @@
           "name": "InputProps"
         },
         "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"111_points_check\"",
-          "\"4WD\"",
-          "\"accident_free\"",
-          "\"arrow_both_ways_hair\"",
-          "\"arrow_down_hair\"",
-          "\"arrow_left_hair_first\"",
-          "\"arrow_left_hair\"",
-          "\"arrow_open_full_down\"",
-          "\"arrow_open_full_up\"",
-          "... 99 more ...",
-          "Element"
-        ]
+        "type": "string | Element",
+        "tags": []
+      },
+      {
+        "description": [
+          "Custom dom attributes for the input element only."
+        ],
+        "name": "inputProps",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "name": "InputProps"
+        },
+        "required": false,
+        "type": "object",
+        "tags": []
       },
       {
         "description": [
@@ -2926,9 +2385,9 @@
       },
       {
         "description": [
-          "pattern to restrict input"
+          "The placeholder of the input."
         ],
-        "name": "pattern",
+        "name": "placeholder",
         "parent": {
           "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
@@ -2939,15 +2398,28 @@
       },
       {
         "description": [
-          "The placeholder of the input."
+          ""
         ],
-        "name": "placeholder",
+        "name": "required",
         "parent": {
           "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
           "name": "InputProps"
         },
         "required": false,
-        "type": "string",
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "spellCheck",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Input/Input.tsx",
+          "name": "InputProps"
+        },
+        "required": false,
+        "type": "boolean",
         "tags": []
       },
       {
@@ -3665,32 +3137,6 @@
     "props": [
       {
         "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass<any, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
           "Highlight current page or disable previous/next page links when user is already on first/last page)."
         ],
         "name": "isActive",
@@ -3941,6 +3387,19 @@
         "tags": []
       },
       {
+        "description": [
+          "Custom dom attributes for the input element only."
+        ],
+        "name": "inputProps",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Radio/Radio.tsx",
+          "name": "RadioProps"
+        },
+        "required": false,
+        "type": "object",
+        "tags": []
+      },
+      {
         "defaultValue": "label",
         "description": [
           "Determine if the radio is rendered as HTML label or as span element. Use span if you have use the radio together with other elements in a wrapping label."
@@ -4173,6 +3632,102 @@
       ]
     },
     "path": "src/components/molecules/Radio/RadioGroup.tsx"
+  },
+  "Tab": {
+    "displayName": "Tab",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Aligns the tab items horizontally. By default the tabs are centered"
+        ],
+        "name": "alignment",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
+          "name": "TabProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"left\"",
+          "\"center\"",
+          "\"right\""
+        ]
+      },
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass<any, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Controls, if a grey divider line is added to separate content on white background"
+        ],
+        "name": "divider",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
+          "name": "TabProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Controls if the component is displayed with a smaller dimension"
+        ],
+        "name": "mini",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
+          "name": "TabProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "The different tab items"
+        ],
+        "name": "panes",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
+          "name": "TabProps"
+        },
+        "required": true,
+        "type": "TabPane[]",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The Tab component is a hidden section of content activated by a Menu."
+      ]
+    },
+    "path": "src/components/molecules/Tab/Tab.tsx"
   },
   "Select": {
     "displayName": "Select",
@@ -4447,102 +4002,6 @@
     },
     "path": "src/components/molecules/Select/SelectClearRenderer.tsx"
   },
-  "Tab": {
-    "displayName": "Tab",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "Aligns the tab items horizontally. By default the tabs are centered"
-        ],
-        "name": "alignment",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
-          "name": "TabProps"
-        },
-        "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"left\"",
-          "\"center\"",
-          "\"right\""
-        ]
-      },
-      {
-        "description": [
-          "The html element type to render as."
-        ],
-        "name": "as",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
-          "name": "ComponentProp"
-        },
-        "required": false,
-        "type": "string | ComponentClass<any, any>",
-        "tags": []
-      },
-      {
-        "description": [
-          "Additional CSS classes."
-        ],
-        "name": "className",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
-          "name": "ClassNameProp"
-        },
-        "required": false,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "Controls, if a grey divider line is added to separate content on white background"
-        ],
-        "name": "divider",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
-          "name": "TabProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "Controls if the component is displayed with a smaller dimension"
-        ],
-        "name": "mini",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
-          "name": "TabProps"
-        },
-        "required": false,
-        "type": "boolean",
-        "tags": []
-      },
-      {
-        "description": [
-          "The different tab items"
-        ],
-        "name": "panes",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/Tab/Tab.tsx",
-          "name": "TabProps"
-        },
-        "required": true,
-        "type": "TabPane[]",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "The Tab component is a hidden section of content activated by a Menu."
-      ]
-    },
-    "path": "src/components/molecules/Tab/Tab.tsx"
-  },
   "TextArea": {
     "displayName": "TextArea",
     "methods": [],
@@ -4635,21 +4094,8 @@
           "name": "TextAreaProps"
         },
         "required": false,
-        "type": "enum",
-        "tags": [],
-        "value": [
-          "\"111_points_check\"",
-          "\"4WD\"",
-          "\"accident_free\"",
-          "\"arrow_both_ways_hair\"",
-          "\"arrow_down_hair\"",
-          "\"arrow_left_hair_first\"",
-          "\"arrow_left_hair\"",
-          "\"arrow_open_full_down\"",
-          "\"arrow_open_full_up\"",
-          "... 98 more ...",
-          "\"youtube\""
-        ]
+        "type": "string",
+        "tags": []
       },
       {
         "description": [
@@ -4727,6 +4173,19 @@
         "description": [
           ""
         ],
+        "name": "required",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "name": "TextAreaProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
         "name": "resizable",
         "parent": {
           "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
@@ -4747,6 +4206,32 @@
         },
         "required": false,
         "type": "number",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "spellCheck",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "name": "TextAreaProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Custom dom attributes for the textarea element only."
+        ],
+        "name": "textareaProps",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/molecules/TextArea/TextArea.tsx",
+          "name": "TextAreaProps"
+        },
+        "required": false,
+        "type": "object",
         "tags": []
       },
       {
@@ -4787,6 +4272,616 @@
       ]
     },
     "path": "src/components/molecules/TextArea/TextArea.tsx"
+  },
+  "CookieNotification": {
+    "displayName": "CookieNotification",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass<any, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Called when the user clicks the close button of the notification"
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/CookieNotification/CookieNotification.tsx",
+          "name": "CookieNotificationProps"
+        },
+        "required": true,
+        "type": "func",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The default Porsche notification message."
+      ]
+    },
+    "path": "src/components/organisms/CookieNotification/CookieNotification.tsx"
+  },
+  "Header": {
+    "displayName": "Header",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass<any, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The element type of the logo."
+        ],
+        "name": "logoComponent",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "string | ComponentClass<any, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Custom props of the logo."
+        ],
+        "name": "logoProps",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "object",
+        "tags": []
+      },
+      {
+        "description": [
+          "The navigation sections to be displayed."
+        ],
+        "name": "sections",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": true,
+        "type": "NavigationSection[]",
+        "tags": []
+      },
+      {
+        "description": [
+          "The mobile navigation trigger text."
+        ],
+        "name": "title",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "required": false,
+        "type": "string | Element",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The page header with logo and navigation bar"
+      ]
+    },
+    "path": "src/components/organisms/Header/Header.tsx"
+  },
+  "Modal": {
+    "displayName": "Modal",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Use setAppElement to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open.",
+          "If you can't you can disable that functionality by setting ariaHideApp={false}, but this is not recommended."
+        ],
+        "name": "ariaHideApp",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes for the modal content container."
+        ],
+        "name": "containerClassName",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          ""
+        ],
+        "name": "containerRef",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "RefObject<HTMLDivElement>",
+        "tags": []
+      },
+      {
+        "description": [
+          "String indicating how the content container should be announced to screenreaders."
+        ],
+        "name": "contentLabel",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Boolean describing if the modal should be shown or not. Defaults to false."
+        ],
+        "name": "isOpen",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": true,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Displays a loader and translucent backdrop above the entire content."
+        ],
+        "name": "loading",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "description": [
+          "Function that will be run when the modal is requested to be closed, prior to actually closing."
+        ],
+        "name": "onRequestClose",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": true,
+        "type": "func",
+        "tags": []
+      },
+      {
+        "defaultValue": "true",
+        "description": [
+          "A modal shows a close icon at its top right corner. You can disable this by setting showCloseIcon to false."
+        ],
+        "name": "showCloseIcon",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      },
+      {
+        "defaultValue": "dynamic",
+        "description": [
+          "Usually a modal dynamically sets its width and height depending on its content. If you have dynamic contents and want to prevent the modal from changing its width or height, you can set the max-width, max-height or both with this property."
+        ],
+        "name": "size",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"dynamic\"",
+          "\"max-width\"",
+          "\"max-height\"",
+          "\"max\""
+        ]
+      },
+      {
+        "defaultValue": "false",
+        "description": [
+          "Usually a modal is fairly narrow to ensure a sensible text line length. If you have more complex content you can use wide to allow the modal to span the entire webpage (minus margins)."
+        ],
+        "name": "wide",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Modal/Modal.tsx",
+          "name": "ModalProps"
+        },
+        "required": false,
+        "type": "boolean",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A modal container with a transparent background."
+      ]
+    },
+    "path": "src/components/organisms/Modal/Modal.tsx"
+  },
+  "ModalButtons": {
+    "displayName": "ModalButtons",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [
+        {
+          "title": "see",
+          "description": "Button"
+        }
+      ],
+      "description": [
+        "A container for modal action buttons. You should probably only use one or more <Button /> components as children."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalButtons.tsx"
+  },
+  "ModalText": {
+    "displayName": "ModalText",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The copy text for a modal."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalText.tsx"
+  },
+  "ModalTitle": {
+    "displayName": "ModalTitle",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The title for a modal."
+      ]
+    },
+    "path": "src/components/organisms/Modal/ModalTitle.tsx"
+  },
+  "Toast": {
+    "displayName": "Toast",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass<any, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The content of the toast."
+        ],
+        "name": "message",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "name": "ToastProps"
+        },
+        "required": true,
+        "type": "string | Element",
+        "tags": []
+      },
+      {
+        "description": [
+          "Callback when the close button of the toast is clicked."
+        ],
+        "name": "onClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "name": "ToastProps"
+        },
+        "required": false,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "All props of the component.",
+            "type": null,
+            "name": "data"
+          }
+        ]
+      },
+      {
+        "defaultValue": "info",
+        "description": [
+          "Toasts can have different urgencies, signified by different status colors."
+        ],
+        "name": "type",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/Toast.tsx",
+          "name": "ToastProps"
+        },
+        "required": false,
+        "type": "enum",
+        "tags": [],
+        "value": [
+          "\"info\"",
+          "\"success\"",
+          "\"warning\"",
+          "\"error\""
+        ]
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A small, unintrusive, floating notification that should be closed by clicking or via a timeout."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/Toast.tsx"
+  },
+  "ToastList": {
+    "displayName": "ToastList",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The html element type to render as."
+        ],
+        "name": "as",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ComponentProp.ts",
+          "name": "ComponentProp"
+        },
+        "required": false,
+        "type": "string | ComponentClass<any, any>",
+        "tags": []
+      },
+      {
+        "description": [
+          "Additional CSS classes."
+        ],
+        "name": "className",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/lib/props/ClassNameProp.ts",
+          "name": "ClassNameProp"
+        },
+        "required": false,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "Callback when close button of a toast is clicked."
+        ],
+        "name": "onCloseClick",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
+          "name": "ToastListProps"
+        },
+        "required": true,
+        "type": "func",
+        "tags": [
+          {
+            "title": "param",
+            "description": "The unique identifier of the queueable toast.",
+            "type": null,
+            "name": "toastId"
+          }
+        ]
+      },
+      {
+        "description": [
+          "An array of the toasts that should be displayed.",
+          "Inserted or deleted toasts are automatically animated based on the provided id.",
+          "New toasts should be appended at the end of the array and will be displayed at the bottom."
+        ],
+        "name": "toasts",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/organisms/Toasts/ToastList.tsx",
+          "name": "ToastListProps"
+        },
+        "required": true,
+        "type": "QueuableToast[]",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A toast list displays an array of toasts. It automatically animates insertions and deletions using the unique identifier of each toast."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/ToastList.tsx"
+  },
+  "ToastManager": {
+    "displayName": "ToastManager",
+    "methods": [],
+    "props": [],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "The toast manager automatically queues and displays toasts created with its emit, info, success, warn, error methods."
+      ]
+    },
+    "path": "src/components/organisms/Toasts/ToastManager.tsx"
+  },
+  "ErrorScreen": {
+    "displayName": "ErrorScreen",
+    "methods": [],
+    "props": [
+      {
+        "description": [
+          "The text under the large title."
+        ],
+        "name": "text",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx",
+          "name": "ErrorScreenProps"
+        },
+        "required": true,
+        "type": "string",
+        "tags": []
+      },
+      {
+        "description": [
+          "The title of the error screen, displayed very large."
+        ],
+        "name": "title",
+        "parent": {
+          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx",
+          "name": "ErrorScreenProps"
+        },
+        "required": true,
+        "type": "string",
+        "tags": []
+      }
+    ],
+    "docBlock": {
+      "tags": [],
+      "description": [
+        "A generic error screen with a title and a text."
+      ]
+    },
+    "path": "src/components/screens/ErrorScreen/ErrorScreen.tsx"
   },
   "ContentWrapper": {
     "displayName": "ContentWrapper",
@@ -4842,45 +4937,6 @@
       ]
     },
     "path": "src/components/structures/ContentWrapper/ContentWrapper.tsx"
-  },
-  "ErrorScreen": {
-    "displayName": "ErrorScreen",
-    "methods": [],
-    "props": [
-      {
-        "description": [
-          "The text under the large title."
-        ],
-        "name": "text",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx",
-          "name": "ErrorScreenProps"
-        },
-        "required": true,
-        "type": "string",
-        "tags": []
-      },
-      {
-        "description": [
-          "The title of the error screen, displayed very large."
-        ],
-        "name": "title",
-        "parent": {
-          "fileName": "/Users/ohook/Work/GIT/porsche-ui-kit/v0/react/packages/@porsche/ui-kit-react/src/components/screens/ErrorScreen/ErrorScreen.tsx",
-          "name": "ErrorScreenProps"
-        },
-        "required": true,
-        "type": "string",
-        "tags": []
-      }
-    ],
-    "docBlock": {
-      "tags": [],
-      "description": [
-        "A generic error screen with a title and a text."
-      ]
-    },
-    "path": "src/components/screens/ErrorScreen/ErrorScreen.tsx"
   },
   "MaintenanceScreen": {
     "displayName": "MaintenanceScreen",

@@ -25,6 +25,9 @@ export interface InputProps extends ClassNameProp, ComponentProp {
     /** An input can display an error. */
     error?: boolean
 
+    required?: boolean
+    spellCheck?: boolean
+
     /** Displays an icon on the right of the input. */
     icon?: IconProps["name"] | JSX.Element
 
@@ -71,6 +74,8 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
         disabled,
         autofocus,
         error,
+        required,
+        spellCheck,
         icon,
         inputProps,
         name,
@@ -117,8 +122,8 @@ const _Input: React.StatelessComponent<InputProps> = (props) => {
                     name={name}
                     onChange={handleChange}
                     placeholder={placeholder}
-                    required={true}
-                    spellCheck={false}
+                    required={required}
+                    spellCheck={spellCheck}
                     type={type}
                     value={value}
                     {...inputProps}
