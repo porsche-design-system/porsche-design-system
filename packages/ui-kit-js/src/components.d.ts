@@ -9,17 +9,61 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ButtonType,
+  LinkTarget,
   TextColor,
   TextSize,
+  Theme,
 } from './types';
-import {
-  BreakpointCustomizable,
-} from './utils';
 import {
   IconName,
 } from './components/icon/icon/icon-name';
+import {
+  BreakpointCustomizable,
+} from './utils';
 
 export namespace Components {
+  interface PButton {
+    /**
+    * Disables the button. No events will be triggered while disabled state is active.
+    */
+    'disabled'?: boolean;
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    /**
+    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+    */
+    'loading'?: boolean;
+    /**
+    * Check native tabindex to ensure that it doesn't get set on the host element
+    */
+    'nativeTabindex'?: number;
+    /**
+    * To remove the element from tab order.
+    */
+    'tabbable'?: boolean;
+    /**
+    * Adapts the button color depending on the theme.
+    */
+    'theme'?: Theme;
+    /**
+    * Specifies the type of the button.
+    */
+    'type'?: ButtonType;
+    /**
+    * The style variant of the button.
+    */
+    'variant'?: 'primary' | 'secondary' | 'tertiary';
+  }
   interface PButtonPure {
     /**
     * Basic text color variations.
@@ -189,6 +233,52 @@ export namespace Components {
     'source'?: string;
     'variant'?: 'outline' | 'filled';
   }
+  interface PLink {
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: string;
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * When providing an url then the component will be rendered as `<a>`.
+    */
+    'href'?: string;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    /**
+    * Check native tabindex to ensure that it doesn't get set on the host element
+    */
+    'nativeTabindex'?: number;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
+    * To remove the element from tab order.
+    */
+    'tabbable'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: LinkTarget;
+    /**
+    * Adapts the link color when used on dark background.
+    */
+    'theme'?: Theme;
+    /**
+    * The style variant of the link.
+    */
+    'variant'?: 'primary' | 'secondary' | 'tertiary';
+  }
   interface PMarque {
     /**
     * Show/hide trademark sign.
@@ -335,6 +425,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLPButtonElement extends Components.PButton, HTMLStencilElement {}
+  var HTMLPButtonElement: {
+    prototype: HTMLPButtonElement;
+    new (): HTMLPButtonElement;
+  };
+
   interface HTMLPButtonPureElement extends Components.PButtonPure, HTMLStencilElement {}
   var HTMLPButtonPureElement: {
     prototype: HTMLPButtonPureElement;
@@ -375,6 +471,12 @@ declare global {
   var HTMLPIconElement: {
     prototype: HTMLPIconElement;
     new (): HTMLPIconElement;
+  };
+
+  interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {}
+  var HTMLPLinkElement: {
+    prototype: HTMLPLinkElement;
+    new (): HTMLPLinkElement;
   };
 
   interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {}
@@ -419,6 +521,7 @@ declare global {
     new (): HTMLPTextListItemElement;
   };
   interface HTMLElementTagNameMap {
+    'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
@@ -426,6 +529,7 @@ declare global {
     'p-grid-item': HTMLPGridItemElement;
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
+    'p-link': HTMLPLinkElement;
     'p-marque': HTMLPMarqueElement;
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
@@ -437,6 +541,44 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface PButton {
+    /**
+    * Disables the button. No events will be triggered while disabled state is active.
+    */
+    'disabled'?: boolean;
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    /**
+    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+    */
+    'loading'?: boolean;
+    /**
+    * To remove the element from tab order.
+    */
+    'tabbable'?: boolean;
+    /**
+    * Adapts the button color depending on the theme.
+    */
+    'theme'?: Theme;
+    /**
+    * Specifies the type of the button.
+    */
+    'type'?: ButtonType;
+    /**
+    * The style variant of the button.
+    */
+    'variant'?: 'primary' | 'secondary' | 'tertiary';
+  }
   interface PButtonPure {
     /**
     * Basic text color variations.
@@ -601,6 +743,48 @@ declare namespace LocalJSX {
     */
     'source'?: string;
   }
+  interface PLink {
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: string;
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * When providing an url then the component will be rendered as `<a>`.
+    */
+    'href'?: string;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
+    * To remove the element from tab order.
+    */
+    'tabbable'?: boolean;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: LinkTarget;
+    /**
+    * Adapts the link color when used on dark background.
+    */
+    'theme'?: Theme;
+    /**
+    * The style variant of the link.
+    */
+    'variant'?: 'primary' | 'secondary' | 'tertiary';
+  }
   interface PMarque {
     /**
     * Show/hide trademark sign.
@@ -752,6 +936,7 @@ declare namespace LocalJSX {
   interface PTextListItem {}
 
   interface IntrinsicElements {
+    'p-button': PButton;
     'p-button-pure': PButtonPure;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
@@ -759,6 +944,7 @@ declare namespace LocalJSX {
     'p-grid-item': PGridItem;
     'p-headline': PHeadline;
     'p-icon': PIcon;
+    'p-link': PLink;
     'p-marque': PMarque;
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
@@ -775,6 +961,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'p-button': LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
       'p-button-pure': LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
       'p-flex': LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
       'p-flex-item': LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
@@ -782,6 +969,7 @@ declare module "@stencil/core" {
       'p-grid-item': LocalJSX.PGridItem & JSXBase.HTMLAttributes<HTMLPGridItemElement>;
       'p-headline': LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
       'p-icon': LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
+      'p-link': LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
       'p-marque': LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
