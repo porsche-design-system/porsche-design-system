@@ -34,20 +34,14 @@
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
-              <p-button-regular
-                class="spacing-mt-16 spacing-mr-32"
-                variant="highlight"
-                href="#/web/getting-started/start-designing"
-              >Start Designing
-              </p-button-regular>
+              <router-link to="/web/getting-started/start-designing" class="router-link spacing-mt-16 spacing-mr-32">
+                <p-link variant="primary">Start Designing</p-link>
+              </router-link>
             </p-flex-item>
             <p-flex-item>
-              <p-button-regular
-                class="spacing-mt-16"
-                variant="highlight"
-                href="#/web/getting-started/start-coding"
-              >Start Coding
-              </p-button-regular>
+              <router-link to="/web/getting-started/start-coding" class="router-link spacing-mt-16">
+                <p-link variant="primary">Start Coding</p-link>
+              </router-link>
             </p-flex-item>
           </p-flex>
         </p-grid-item>
