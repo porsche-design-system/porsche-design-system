@@ -94,7 +94,7 @@ export namespace Components {
     */
     'nativeTabindex'?: number;
     /**
-    * Size of the button. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+    * Size of the button.
     */
     'size'?: BreakpointCustomizable<TextSize>;
     /**
@@ -605,7 +605,7 @@ declare namespace LocalJSX {
     */
     'loading'?: boolean;
     /**
-    * Size of the button. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+    * Size of the button.
     */
     'size'?: BreakpointCustomizable<TextSize>;
     /**

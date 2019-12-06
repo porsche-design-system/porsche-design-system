@@ -35,7 +35,7 @@ export class ButtonPure {
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
 
-  /** Size of the button. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
+  /** Size of the button. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
   /** The icon shown. */

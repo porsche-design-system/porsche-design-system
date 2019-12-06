@@ -87,7 +87,7 @@ export class Button {
             source={this.iconSource}
           />
         )}
-        <p-text tag='span' color='inherit' class={labelClasses}>
+        <p-text class={labelClasses} tag='span' color='inherit'>
           <slot/>
         </p-text>
       </button>
