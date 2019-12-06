@@ -52,7 +52,7 @@ Further information:
 ###  Contrasts (DESIGN)
 Best done early in the process, ensuring that the foreground and background colors of your site have sufficient contrast you will help make your site more readable for everyone. Contrast Ratio is one tool for checking the contrast of your colors for both standard-vision and color-deficient users.
 
-### Colours (DESIGN)
+### Colors (DESIGN)
 * Be sure to layout and develop for some kinds of color blindness
 * Never let color be the only indicator for a type of use
 * Never use red and green buttons side by side
