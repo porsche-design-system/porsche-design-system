@@ -37,8 +37,6 @@ To ensure the alignment in all Porsche web appliccations we recommend to use ded
 | Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | | 
 | Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | | 	
 | Add | <p-icon name="plus" aria-label="Plus"></p-icon> | | 
-| Mail | <p-icon name="email" aria-label="E-Mail"></p-icon> | | 
-| Phone | <p-icon name="phone" aria-label="Phone"></p-icon> | | 
 
 
 ### Text label 
@@ -57,8 +55,3 @@ A button pure in 20 px or larger can be accompanied by an additional copytext wi
 ## Button Pure groups
 
 Multiple buttons pure can be combined to one button pure group that must be stacked left-aligned in order to guarantee scanability and legibility. It is recommended to not group more than 6 buttons pure in a row.
-
-<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/button-pure.png"/>
-</div>
