@@ -1,6 +1,6 @@
 # Button Pure
 
-In addition to Button Primary, Secodary or Tertiary, you can use Button Pure as a more subtle call to action. A button enables the user to execute an action (like "submit", "delete", "add" or "edit", for example) or change the state of an application, which almost always happens on the same page. (Whenever you want to provide navigational elements, stick to the Link or Link Pure component instead.)
+In addition to Button Primary, Secodary or Tertiary, you can use Button Pure as a more subtle call to action. A button enables the user to execute an action (like "submit", "delete", "add" or "edit", for example) or change the state of an application, which almost always happens on the same page. (Whenever you want to provide navigational elements, stick to the [Link](#/web/navigation/link) or [Link Pure](#/web/navigation/link-pure) component instead.)
 
 ---
 
@@ -74,14 +74,8 @@ The text label within a button should always be short and give a hint on the ind
 
 ---
 
-## Buttons Pure on images
+## Special cases
 
-Buttons Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Button Pure can give the user an additional hint on the clickability of the whole image. 
-
-## Additional subtext
-
-A Button Pure in Medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the button text in the Button Pure component.
-
-## Button Pure groups
+### Button Pure groups
 
 Multiple Buttons Pure can be combined to one Button Pure group that must be stacked left-aligned in order to guarantee scannability and legibility. It is recommended to not group more than 6 Buttons Pure in a row.

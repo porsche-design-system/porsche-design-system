@@ -278,20 +278,6 @@ export const config: DesignSystemConfig = {
           () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`),
         ],
       },
-      'Text Link': {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.design.md`),
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.code.md`),
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.props.md`),
-        ],
-      },
     },
   }
 };
