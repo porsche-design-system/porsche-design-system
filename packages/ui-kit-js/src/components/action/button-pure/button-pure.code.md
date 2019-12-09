@@ -3,8 +3,7 @@
 ## Introduction
 The `<p-button-pure>` component is essential to perform events for interactions.
 
-It can be used with or without a label but it's recommend to keep the label visible for better accessibility whenever possible. 
-When used without a label, then it's best practice to provide a descriptive label text for screen readers.
+It can be used with or without a label. When hiding the label make sure to provide a descriptive label text for screen readers.
 
 ## Basic example
 
