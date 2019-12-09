@@ -67,10 +67,12 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-button icon="phone" :theme="theme">Some label</p-button>
+    <p-button icon="delete" :theme="theme">Some label</p-button>
     <p-button :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Some label</p-button>
   </template>
 </Playground>
+
+---
 
 ## Bind events to the Button
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the button.
@@ -88,12 +90,14 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   </template>
 </Playground>
 
+---
+
 ## Remove Button from tab order
 With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button tabbable="true" :theme="theme">Some label</p-button>
-    <p-button hide-label="true" tabbable="false" :theme="theme">Some label</p-button>
+    <p-button tabbable="false" hide-label="true" :theme="theme">Some label</p-button>
   </template>
 </Playground>

@@ -5,7 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../../utils';
-import {TextSize, TextColor} from '../../../../types';
+import {TextSize, TextColor, TextWeight} from '../../../../types';
 
 @Component({
   tag: 'p-text',
@@ -30,7 +30,7 @@ export class Text {
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
   /** The weight of the text. */
-  @Prop() public weight?: 'thin' | 'regular' | 'bold' = 'regular';
+  @Prop() public weight?: TextWeight = 'regular';
 
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
