@@ -5,7 +5,6 @@ import store from './store';
 import {defineCustomElements, applyPolyfills} from '@porsche-ui/ui-kit-js/loader';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
-import '@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css';
 
 /**
  * TODO: Bugfix for macOS + Slack automatic hash escaping (e.g. Slack on macOS manipulates following url
