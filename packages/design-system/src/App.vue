@@ -68,6 +68,12 @@
     display: block;
   }
 
+  .router-link {
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+  }
+
   .spacing-mt-8 {
     margin-top: $p-layout-small;
   }

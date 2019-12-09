@@ -2,14 +2,14 @@ import {NgModule} from '@angular/core';
 import {defineCustomElements, applyPolyfills} from '@porsche-ui/ui-kit-js/loader';
 
 import {
-  PButtonIcon,
-  PButtonRegular,
+  PButton,
   PFlex,
   PFlexItem,
   PGrid,
   PGridItem,
   PHeadline,
   PIcon,
+  PLink,
   PMarque,
   PPagination,
   PSpinner,
@@ -20,14 +20,14 @@ import {
 } from './ui-kit-wrapper.component';
 
 const DECLARATIONS = [
-  PButtonIcon,
-  PButtonRegular,
+  PButton,
   PFlex,
   PFlexItem,
   PGrid,
   PGridItem,
   PHeadline,
   PIcon,
+  PLink,
   PMarque,
   PPagination,
   PSpinner,

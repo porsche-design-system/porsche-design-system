@@ -20,6 +20,8 @@
 
 ### Used by
 
+ - [p-button](#/web/components/action/button)
  - [p-button-pure](#/web/components/action/button-pure)
+ - [p-link](#/web/components/navigation/link)
  - [p-pagination](#/web/components/navigation/pagination)
- - [p-text-link](#/web/components/action/text-link)
+ - [p-text-link](#/web/components/navigation/text-link)
