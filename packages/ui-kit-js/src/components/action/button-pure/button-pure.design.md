@@ -1,59 +1,87 @@
 # Button Pure
 
-A button enables the user to execute an action or change the state of an application.
+In addition to Button Primary, Secodary or Tertiary, you can use Button Pure as a more subtle call to action. A button enables the user to execute an action (like "submit", "delete", "add" or "edit", for example) or change the state of an application, which almost always happens on the same page. (Whenever you want to provide navigational elements, stick to the Link or Link Pure component instead.)
 
 ---
 
 ## Available sizes
 
-Per default, the button pure component is set in **copytext size**. If a higher hierarchy level is needed, the button pure can be set in 3 other sizes are used available in the typography's "additional sizes" set (always left-aligned). The size of the icon changes accordingly. 
+Per default, the Button Pure is set in **copytext size**. If another size or hierarchy level is needed, the Button Pure is available in the following sizes, whereas the size of the icon changes accordingly. 
+
+
+| Button Pure size | Font size | Example |
+|------|------|------|
+| X-Small | 12 px | <p-button-pure size="x-small">Button Pure</p-button-pure> |
+| Small | 16 px | <p-button-pure size="small">Button Pure</p-button-pure> |
+| Medium | 24 px | <p-button-pure size="medium">Button Pure</p-button-pure> |
+| Large | 36 px | <p-button-pure size="large">Button Pure</p-button-pure> |
+| X-Large | 52 px | <p-button-pure size="x-large">Button Pure</p-button-pure> |
+
+--- 
+
+## Available variants
+
+### Icon and Text
+
+<p-button-pure size="large">Button Pure</p-button-pure>
+
+This should be the variant of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility.
+
+### Icon only
+
+<p-button-pure size="large" hide-label="true">Button Pure</p-button-pure>
+
+When it's enough to indicate an action with an icon only, the text label can be hidden. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon. 
 
 ---
 
 ## States
 
-| STATE | DESCRIPTION |
-|----|----|----|
-| **Default** | The icon is either black or white in default state, depending on the Porsche Theme in use. |
-| **Active / Hover** | In active and hover state, both icon and text turn Porsche Red and underlined (in order to make these states visible also for users with red-green visual impairments) |
-| **Disabled** | When the Text Link isn't clickable, this is indicated by a greyed-out disabled state. |
-| **Loading** | To indicate the loading process when clicking on the label, the icon is replaced by a small loading spinner. |
-| **Focus** | In focus state, the button pure is bordered by a 2 px line in focus color and with a distance of 1 px to the component. |
+The Button Pure covers the following states:
+
+* Default
+* Hover
+* Disabled
+* Loading
+* Focus
 
 ---
 
 ## Content
 
-The Button Pure component includes the following sub-components:
-
 ### Icon
-By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. In addition, it should be ensured that the icon only variant is used for internationally known icons.
+The default icon is an arrow right that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. 
 
-To ensure the alignment in all Porsche web appliccations we recommend to use dedicated, standardized icons for the following cases:
 
-| INTERACTION | ICON | ADDITIONAL INFO |
+#### Standard icons
+
+To ensure a seamless UX in all Porsche web applications it is recommended to use standardized icons for the following cases:
+
+| Interaction | Icon | Example |
 |----|----|----|
-| Close/Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Use a close icon for conclude content like modals and alerts (usally as an icon only) and a cancel icon for abandoning the process.
-| Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | | 
-| Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | | 	
-| Add | <p-icon name="plus" aria-label="Plus"></p-icon> | | 
-| Mail | <p-icon name="email" aria-label="E-Mail"></p-icon> | | 
-| Phone | <p-icon name="phone" aria-label="Phone"></p-icon> | | 
+| Close | <p-icon name="close" aria-label="Close"></p-icon> | Close a current page or window. |
+| Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Abandoning a process, close a dialog. |
+| Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | Delete/erase content, e.g. a list item. | 
+| Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | Edit content, e.g. in lists or shop checkout. | 	
+| Add | <p-icon name="plus" aria-label="Plus"></p-icon> | Add content, e.g. a new item in a list. Counting up numbers, e.g. in a   | 
+| Mail / Send | <p-icon name="email" aria-label="E-Mail"></p-icon> | E-mail link, e-mail adress. | 
+| Phone / Call | <p-icon name="phone" aria-label="Phone"></p-icon> | Phone call link, phone number. | 
 
 
 ### Text label 
-The text label within the Button Pure component should be short and descriptive.
+
+The text label within a button should always be short and give a hint on the indicated action. It's recommended to include active verbs such as "add", "edit" or "delete". 
 
 ---
 
 ## Buttons Pure on images
 
-Buttons Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the button pure can give the user an additional hint on the clickability of the whole image. Make sure to always use regular font-weight in buttons pure that are placed on images to provide legibility.
+Buttons Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Button Pure can give the user an additional hint on the clickability of the whole image. 
 
 ## Additional subtext
 
-A button pure in 20 px or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the button text in the button pure component.
+A Button Pure in Medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the button text in the Button Pure component.
 
 ## Button Pure groups
 
-Multiple buttons pure can be combined to one button pure group that must be stacked left-aligned in order to guarantee scanability and legibility. It is recommended to not group more than 6 buttons pure in a row.
+Multiple Buttons Pure can be combined to one Button Pure group that must be stacked left-aligned in order to guarantee scannability and legibility. It is recommended to not group more than 6 Buttons Pure in a row.
