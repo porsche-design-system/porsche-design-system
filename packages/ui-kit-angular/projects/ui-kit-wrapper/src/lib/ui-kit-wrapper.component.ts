@@ -101,8 +101,8 @@ export class PIcon {
 }
 
 export declare interface PLink extends Components.PLink {}
-@ProxyInputs(['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'tabbable', 'target', 'theme', 'variant'])
-@Component({ selector: 'p-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'tabbable', 'target', 'theme', 'variant'] })
+@ProxyInputs(['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'target', 'theme', 'variant'])
+@Component({ selector: 'p-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'target', 'theme', 'variant'] })
 export class PLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
