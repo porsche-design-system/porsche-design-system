@@ -1,0 +1,74 @@
+@import '../../../../../../packages/ui-kit-scss-utils/index';
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.#{$p-global-class-prefix}text-link {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &:hover {
+    color: $p-color-porsche-red;
+  }
+
+  &:focus {
+    outline: 1px solid $p-color-state-focus;
+    outline-offset: 4px;
+  }
+
+  &--color {
+    &-inherit {
+      color: inherit;
+    }
+
+    &-porsche-light {
+      color: $p-color-porsche-light;
+    }
+
+    &-porsche-black {
+      color: $p-color-porsche-black;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+
+    &--x-small {
+      width: $p-text-size-x-small * 1.5;
+      height: $p-text-size-x-small * 1.5;
+    }
+
+    &--small {
+      width: $p-text-size-small * 1.5;
+      height: $p-text-size-small * 1.5;
+    }
+
+    &--medium {
+      width: $p-text-size-medium * 1.5;
+      height: $p-text-size-medium * 1.5;
+    }
+
+    &--large {
+      width: $p-text-size-large * 1.5;
+      height: $p-text-size-large * 1.5;
+    }
+
+    &--x-large {
+      width: $p-text-size-x-large * 1.5;
+      height: $p-text-size-x-large * 1.5;
+    }
+
+  }
+
+  &__text {
+    margin-left: $p-spacing-4;
+  }
+}

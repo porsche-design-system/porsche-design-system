@@ -1,3 +1,6 @@
 @import "variable";
 @import "font-face";
-@import "spacing";
+
+// TODO: get rid of global styles if "host-context" is more widely supported or polyfilled by Stencil
+@import "../components/navigation/link/link.host-context.scss";
+

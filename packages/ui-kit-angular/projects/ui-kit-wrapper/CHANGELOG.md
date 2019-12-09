@@ -2,6 +2,16 @@
 
 ## NOT RELEASED YET
 
+### Change
+
+* Text component
+  * Reduce amount of text variants in global interface
+  * Remove `ul | ol | li | sup | sub | label` from `tag` property
+  * Add `weight` property
+  
+* Text Link component
+  * Reduce amount of text variants (defined in global interface)
+
 ## [1.0.0-alpha.7] (2019-11-05)
 
 ### Change
@@ -25,7 +35,9 @@
   * Made `click`, `focus`, `focusin`, `blur` and `focusout` events behave like expected (like native elements) for p-button-icon
   * Added `tabbable` property to p-button-icon
   * It's now disallowed to use `tabindex` property on p-button-icon (will be ignored and warning is shown)
-
+* Icon 
+  * Renamed `icon` prop to `name` 
+  
 ### Bugfix
 * Button Icon
   * Fix submitting form behaviour of p-button-icon (it's now preventable by "preventDefault")

@@ -1,9 +1,9 @@
 import { Build, Component, Host, Element, Prop, State, Watch, h } from '@stencil/core';
-import { getName, isUrl } from './icon-helper';
 import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { TextColor } from '../../../types';
+import { IconName } from './icon-name';
 
 @Component({
   tag: 'p-icon',
@@ -16,14 +16,22 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public source: string;
+  @Prop() public name?: IconName = 'arrow-right-hair';
 
   /**
-   * Specifies the label to use for accessibility. Defaults to the icon name.
+   * Specifies a whole icon path which can be used for custom icons.
    */
-  @Prop({ mutable: true, reflectToAttr: true }) public ariaLabel?: string;
+  @Prop() public source?: string;
 
-  /** Basic color variations. */
+  /**
+   * @internal
+   * Specifies which icon variant to use.
+   */
+  @Prop() public variant?: 'outline' | 'filled' = 'outline';
+
+  /**
+   * Basic color variations.
+   */
   @Prop() public color?: TextColor = 'inherit';
 
   /**
@@ -60,6 +68,7 @@ export class Icon {
   }
 
   @Watch('source')
+  @Watch('name')
   public loadIcon() {
     if (Build.isBrowser && this.isVisible) {
       const url = this.getSource();
@@ -71,23 +80,17 @@ export class Icon {
         getSvgContent(url).then(() => this.svgContent = iconContent.get(url));
       }
     }
-
-    if (!this.ariaLabel) {
-      const name = getName(this.getSource());
-      // user did not provide a label
-      // come up with the label based on the icon name
-      if (name) {
-        this.ariaLabel = name.replace(/-/g, ' ');
-      }
-    }
   }
 
-  public getSource() {
-    if (this.source && !isUrl(this.source)) {
-      return `https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/icon_${this.source}.min.svg`;
-    } else {
+  public getSource(): string {
+    if (this.name && !this.source) {
+      return `https://cdn.ui.porsche.com/porsche-icons/icons/${this.variant}/${this.name}.svg`;
+    }
+    if (this.source) {
       return this.source;
     }
+    console.warn('Please provide either an name property or a source property!');
+    return '';
   }
 
   public render(): JSX.Element {
@@ -98,7 +101,7 @@ export class Icon {
     );
 
     return (
-      <Host role='img' >{(
+      <Host role='img'>{(
         (Build.isBrowser && this.svgContent)
           ? <i class={iconClasses} innerHTML={this.svgContent}/>
           : <i class={iconClasses}/>
@@ -126,6 +129,3 @@ export class Icon {
     }
   }
 }
-
-
-

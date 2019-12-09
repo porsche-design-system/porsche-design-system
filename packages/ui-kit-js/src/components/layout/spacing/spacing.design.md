@@ -1,55 +1,32 @@
 # Spacing
+We use defined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes the development easier. For fluid layouts the spacings should be used in combination with the [responsive grid](#/web/components/layout/grid).
 
-We use defined spacings to seperate components elements within a layout. Using the same defined spacing system provides a consistent and familiar user experience across all pages. For layouts the spacing should be used in combination with the [responsive grid](#/web/components/layout/grid).
-
-## 8 px spacing system - the Porsche formula
-We use a 8 px square grid system across all viewports to define dimensions, padding and margin of block and inline elements. The grid unit of 8 px refers to
-the general base size of 16 px (= 1 em), that is also applied in typography and other component sizes.
+### 8 px spacing system - the Porsche formula
+The Porsche spacing system is based on multiples of eight. The unit of 8 px refers to the general base size of 16 px (= 1 em), that is also applied in typography and other component sizes.
 
 ![The Porsche spacing formula](./assets/spacings-formula.png)
 
+## Spacing system and layout spacings
+For layouting we recommend to use the <strong><span style="color:#00D5B9">layout spacings</span></strong> that are available for developers as variables from x-small to xx-large.
+Additional increments of the spacing system can be used for specific requirements as long as it is based on the 8 px spacing system.
 
-## Applying the 8 px system
+|       	                                |                	| PX     	| REM 	| LAYOUT SPACING |
+|----------------------------------------	|---------------	|-------	|------	|------	|
+| ![spacing 4](./assets/spacing-4.png)    | **spacing-4**  	| 4 px  	| 0.25 	| x-small |
+| ![spacing 8](./assets/spacing-8.png)    | **spacing-8**  	| 8 px  	| 0.5 	| small |
+| ![spacing 16](./assets/spacing-16.png)  | **spacing-16** 	| 16 px 	| 1  	| medium |
+| ![spacing 24](./assets/spacing-24.png)  |**spacing-24** 	| 24 px 	| 1.5 	| - |
+| ![spacing 32](./assets/spacing-32.png)  |**spacing-32** 	| 32 px 	| 2  	| large |
+| ![spacing 40](./assets/spacing-40.png)  |**spacing-40** 	| 40 px 	| 2.5  	| - |
+| ![spacing 48](./assets/spacing-48.png)  |**spacing-48** 	| 48 px 	| 3  	| x-large |
+| ![spacing 56](./assets/spacing-56.png)  |**spacing-56** 	| 56 px 	| 3.5 	| - |
+| ![spacing 64](./assets/spacing-64.png)  |**spacing-64** 	| 64 px 	| 4 	| - |
+| ![spacing 72](./assets/spacing-72.png)  |**spacing-72** 	| 72 px 	| 4.5 	| - |
+| ![spacing 80](./assets/spacing-80.png)  |**spacing-80** 	| 80 px 	| 5 	| xx-large |
 
-- **Margins and paddings** are applied based on multiples of 8 px. Boxed UI elements are sized either by adapting to the fixed value or to the [fluid column widths](#/web/components/layout/grid).
-- **Typography as an exception** works with a baseline unit of 4 px for larger flexibility while ensuring the overall consistent rhythm.
-
-## Fixed and flexible spacings
-
-The Porsche UI Kit provides both fixed and flexible spacing. The two systems are built on the same definitions to complement the overall consistency but serve different roles. Additional increments can be added for specific needs as long as the 8 px spacing system is followed.
-
-### Fixed spacing 
-Spacings that do not need to change across different screen sizes.
-
-|       	                                |                	| PX     	| REM 	|
-|----------------------------------------	|---------------	|-------	|------	|
-| ![spacing 4](./assets/spacing-4.png)    | **spacing-4**  	| 4 px  	| 0.25 	|  
-| ![spacing 8](./assets/spacing-8.png)    | **spacing-8**  	| 8 px  	| 0.5  	| 
-| ![spacing 16](./assets/spacing-16.png)  | **spacing-16** 	| 16 px 	| 1    	| 
-| ![spacing 24](./assets/spacing-24.png)  |**spacing-24** 	| 24 px 	| 1.5  	| 
-| ![spacing 32](./assets/spacing-32.png)  |**spacing-32** 	| 32 px 	| 2    	| 
-| ![spacing 40](./assets/spacing-40.png)  |**spacing-40** 	| 40 px 	| 2.5  	| 
-| ![spacing 48](./assets/spacing-48.png)  |**spacing-48** 	| 48 px 	| 3    	| 
-| ![spacing 56](./assets/spacing-56.png)  |**spacing-56** 	| 56 px 	| 3.5  	| 
-| ![spacing 64](./assets/spacing-64.png)  |**spacing-64** 	| 64 px 	| 4    	| 
-| ![spacing 72](./assets/spacing-72.png)  |**spacing-72** 	| 72 px 	| 4.5  	| 
-| ![spacing 80](./assets/spacing-80.png)  |**spacing-80** 	| 80 px 	| 5    	| 
-
-### Flexible spacing 
-Spacings that change in accordance with the screen size at defined breakpoint widths.
-
-|               | 320 - 759 px (XS)| 760 - 999 px (S) | 1000 - 1299 px (M) | 1300 - 1759 px (L) | 1760  px or larger (XL) |
-| ------------- | ---------------- | ---------------- | ------------------ | ------------------ | ----------------------- |
-| **spacing-a** | 4 px             | 8 px             | 12 px              | 16 px              | 20 px                   |
-| **spacing-b** | 8 px             | 16 px            | 24 px              | 32 px              | 40 px                   |
-| **spacing-c** | 16 px            | 24 px            | 32 px              | 40 px              | 48 px                   |
-| **spacing-d** | 24 px            | 32 px            | 40 px              | 48 px              | 56 px                   |
-| **spacing-e** | 32 px            | 40 px            | 48 px              | 56 px              | 64 px                   |
-| **spacing-f** | 40 px            | 48 px            | 56 px              | 64 px              | 72 px                   |
-| **spacing-g** | 48 px            | 56 px            | 64 px              | 72 px              | 80 px                   |
 
 ![The Porsche spacing formula](./assets/spacings-example-02.png)
-Example: Mixed use of fixed, flexible and custom spacings.
+Example: Mixed use of the spacing system with layout and custom spacings.
 
 ## Working with space 
 
@@ -109,13 +86,11 @@ settings → Canvas.
 When it comes to design-to-dev-handover, we should always keep in mind that the handling of
 spacings is different: Whereas the designer sets the spacings manually in Sketch
 layouts, the developer implements them by using pre-defined spacing variables
-(e.g. spacing-8 or spacing-16). Therefore, we should always make sure that the
+(e.g. spacing-8 or spacing-16) or the layout variables (e.g. layout-small or layout-medium). Therefore, we should always make sure that the
 spacings in sketch are set as correctly as possible and that they the developer
 can easily read them in Abstract's inspect mode - of course, a personal
 conversation between designer and developer is always the best way to get
-optimal results. Last but not least a one-on-one is indispensable when it comes
-to spacings, as the developer might not know when to use a fixed or flexible
-spacing class (e.g. 8 px on mobile might as well be spacing-8 or spacing-b).
+optimal results.
 
 ![Abstract inspect view of spacing](./assets/spacings-inspect.png)
 
@@ -125,8 +100,6 @@ consider borders as solid space around elements by default. We recommend to
 ignore this fact while designing and to always set the focus on giving the developer
 the right spacing sizes between or inside elements, even if this results in
 slightly higher elements in implementation due to the additional border.
-
-
 
 ### Lines
 Lines can be created using either a narrow rectangle or a path

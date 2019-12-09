@@ -12,51 +12,14 @@ describe('Component <p-icon>', () => {
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Icon],
-      html: `<p-icon source="arrow-right-hair"></p-icon>`,
+      html: `<p-icon name="arrow-right-hair"></p-icon>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-icon')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('.p-icon')).toBeTruthy();
-    expect(page.root).toEqualAttribute('aria-label', 'icon arrow right hair');
     expect(page.root).toMatchSnapshot();
   });
 
-  it('should render custom aria-label attribute', async () => {
-    const page = await newSpecPage({
-      components: [Icon],
-      html: `<p-icon aria-label="some ally label"></p-icon>`,
-    });
-    expect(page.root).toEqualAttribute('aria-label', 'some ally label');
-  });
-});
-
-describe('getName', () => {
-  let i: Icon;
-
-  beforeEach(() => {
-    i = new Icon();
-  });
-
-  it('should return lowercase dashed svg file name without extension', () => {
-
-    i.source = 'https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/some_icon.svg';
-    expect(getName(i.source)).toBe('some-icon');
-
-    i.source = 'https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/Some_Icon.svg';
-    expect(getName(i.source)).toBe('some-icon');
-
-    i.source = 'https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/Some-Icon.svg';
-    expect(getName(i.source)).toBe('some-icon');
-
-    i.source = 'https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/Some-Icon.min.svg';
-    expect(getName(i.source)).toBe('some-icon');
-
-    i.source = 'https://cdn.ui.porsche.com/porsche-ui-kit/icon/v1/Some Icon.svg';
-    expect(getName(i.source)).toBe(null);
-
-    i.source = '';
-    expect(getName(i.source)).toBe(null);
-  });
 });
 
 describe('isUrl', () => {
