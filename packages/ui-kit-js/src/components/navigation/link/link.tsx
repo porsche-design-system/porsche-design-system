@@ -1,9 +1,9 @@
-import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { IconName } from '../../icon/icon/icon-name';
-import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
-import { Theme, LinkTarget } from '../../../types';
+import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
+import { LinkTarget, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link',
@@ -12,19 +12,6 @@ import { Theme, LinkTarget } from '../../../types';
 })
 export class Link {
   @Element() public element!: HTMLElement;
-
-  /**
-   * Check native tabindex to ensure that it doesn't get set on the host element
-   * @internal
-   */
-  @Prop({
-    mutable: true,
-    attribute: 'tabindex'
-  })
-  public nativeTabindex?: number = -1;
-
-  /** To remove the element from tab order. */
-  @Prop() public tabbable?: boolean = true;
 
   /** The style variant of the link. */
   @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
@@ -55,11 +42,38 @@ export class Link {
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
+
+    /**
+     * only apply workaround if not safari force touch
+     * browser (force touch wouldn't work and they do
+     * support shadow dom anyway)
+     */
+    if (!(MouseEvent as any).WEBKIT_FORCE_AT_FORCE_MOUSE_DOWN) {
+      /**
+       * IE11/Edge (not chromium based) workaround to
+       * fix the event target of click events (which normally
+       * shadow dom takes care of)
+       */
+      this.element.addEventListener('click', (event: MouseEvent): void => {
+        if (event.target !== this.element) {
+          event.stopPropagation();
+
+          if (window.navigator.userAgent.indexOf('Trident/') < 0) {
+            /**
+             * for ie11 (which is trident engine) we can not
+             * prevent the default, because clicks from js
+             * are not going to follow links
+             */
+            event.preventDefault();
+          }
+
+          this.element.click();
+        }
+      }, true);
+    }
   }
 
   public render(): JSX.Element {
-    preventNativeTabIndex(this);
-
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkClasses = cx(
@@ -76,7 +90,6 @@ export class Link {
         class={linkClasses}
         href={this.href}
         {...(TagType === 'a' ? { href: this.href, target: `${this.target}`, download: this.download, rel: this.rel } : null)}
-        {...(TagType === 'a' && this.tabbable ? { tabindex: 0 } : { tabindex: -1 })}
       >
         <p-icon
           class={iconClasses}
@@ -89,20 +102,5 @@ export class Link {
         </p-text>
       </TagType>
     );
-  }
-
-
-  /**
-   * IE11 workaround to fix the event target
-   * of click events (which normally shadow dom
-   * takes care of)
-   */
-  @Listen('click', { capture: true })
-  public fixEventTarget(event: MouseEvent): void {
-    if (event.target !== this.element) {
-      event.stopPropagation();
-      event.preventDefault();
-      this.element.click();
-    }
   }
 }

@@ -1,6 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Link } from '../../../src/components/navigation/link/link';
-import {Button} from "../../../src/components/action/button/button";
 
 describe('Component <p-link>', () => {
 
@@ -49,15 +48,6 @@ describe('Component <p-link>', () => {
       html: `<p-link>Some label</p-link>`,
     });
     expect(page.root.shadowRoot.querySelector('span.p-link')).toBeTruthy();
-  });
-
-  it('should render with disabled tabbable capabilities', async () => {
-    const page = await newSpecPage({
-      components: [Link],
-      html: `<p-link href="https://ui.porsche.com" tabbable="false">Some label</p-link>`,
-    });
-    expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('tabindex','-1');
   });
 });
 
