@@ -126,32 +126,18 @@ export const config: DesignSystemConfig = {
       }
     },
     Action: {
-      'Button Regular': {
+      Button: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.design.md`),
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.code.md`),
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-regular/button-regular.props.md`),
-        ],
-      },
-      'Button Icon': {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.design.md`),
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.code.md`),
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-icon/button-icon.props.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`),
         ],
       },
       'Button Pure': {
@@ -168,20 +154,6 @@ export const config: DesignSystemConfig = {
           () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.props.md`),
         ],
       },
-      'Text Link': {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.design.md`),
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.code.md`),
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/text-link/text-link.props.md`),
-        ],
-      }
     },
     Content: {
       'Text List': {
@@ -272,6 +244,20 @@ export const config: DesignSystemConfig = {
       },
     },
     Navigation: {
+      'Link': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.props.md`),
+        ],
+      },
       'Link Pure': {
         Design: [
           // @ts-ignore
@@ -290,6 +276,20 @@ export const config: DesignSystemConfig = {
         Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`),
+        ],
+      },
+      'Text Link': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.props.md`),
         ],
       },
     },

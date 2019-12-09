@@ -1,8 +1,4 @@
 describe('Flex', () => {
-  beforeEach(() => {
-    window.localStorage.setItem('Feature: Q2/2019 Components', 'true');
-  });
-
   it('Should navigate through main navigation', () => {
     cy.visit('/#/web');
 

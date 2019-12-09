@@ -46,7 +46,10 @@ export const config: Config = {
       // TODO: temporary disable overwriting ui-kit-wrapper.component.ts to add manual adjustments
       // https://ioniccustomersuccess.slack.com/archives/GL2Q8P9T7/p1571060767006100
       directivesProxyFile: '../ui-kit-angular/projects/ui-kit-wrapper/src/lib/ui-kit-wrapper.component.generated.ts'
-    })
+    }),
+  ],
+  bundles: [
+    {components: []}
   ],
   plugins: [
     sass(),

@@ -29,6 +29,17 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 
 import { Components } from '@porsche-ui/ui-kit-js'
 
+export declare interface PButton extends Components.PButton {}
+@Component({ selector: 'p-button', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant'] })
+export class PButton {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(PButton, ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant']);
+
 export declare interface PButtonPure extends Components.PButtonPure {}
 @Component({ selector: 'p-button-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'type'] })
 export class PButtonPure {
@@ -105,6 +116,17 @@ export class PIcon {
   }
 }
 proxyInputs(PIcon, ['color', 'lazy', 'name', 'size', 'source']);
+
+export declare interface PLink extends Components.PLink {}
+@Component({ selector: 'p-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'tabbable', 'target', 'theme', 'variant'] })
+export class PLink {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(PLink, ['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'tabbable', 'target', 'theme', 'variant']);
 
 export declare interface PMarque extends Components.PMarque {}
 @Component({ selector: 'p-marque', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['trademark'] })

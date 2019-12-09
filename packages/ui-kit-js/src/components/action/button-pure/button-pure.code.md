@@ -9,13 +9,20 @@ When used without a label, then it's best practice to provide a descriptive labe
 ## Basic example
 
 <Playground>
+<p-text>
+    Hallo <p-button-pure>Hallo</p-button-pure> Welt!
+    <br>
+    Hallo Hallo Welt!
+</p-text>
+    <br>
   <p-button-pure>Some label</p-button-pure>
+  <br>
   <p-button-pure hide-label="true">Some label</p-button-pure>
 </Playground>
 
 ### Responsive
 <Playground>
-  <p-button-pure hide-label="{ base: true, s: false }">Some label</p-button-pure>
+  <p-button-pure hide-label="{ base: true, l: false }">Some label</p-button-pure>
 </Playground>
 
 ---
