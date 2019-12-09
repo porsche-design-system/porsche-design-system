@@ -37,8 +37,6 @@ To ensure the alignment in all Porsche web appliccations we recommend to use ded
 | Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | | 
 | Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | | 	
 | Add | <p-icon name="plus" aria-label="Plus"></p-icon> | | 
-| Mail | <p-icon name="email" aria-label="E-Mail"></p-icon> | | 
-| Phone | <p-icon name="phone" aria-label="Phone"></p-icon> | | 
 
 
 ### Text label 
