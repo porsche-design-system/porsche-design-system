@@ -12,6 +12,7 @@ import {
   LinkTarget,
   TextColor,
   TextSize,
+  TextWeight,
   Theme,
 } from './types';
 import {
@@ -105,6 +106,10 @@ export namespace Components {
     * Specifies the type of the button.
     */
     'type'?: ButtonType;
+    /**
+    * The weight of the text (only has effect with visible label).
+    */
+    'weight'?: TextWeight;
   }
   interface PFlex {
     /**
@@ -369,7 +374,7 @@ export namespace Components {
     /**
     * The weight of the text.
     */
-    'weight'?: 'thin' | 'regular' | 'bold';
+    'weight'?: TextWeight;
   }
   interface PTextLink {
     /**
@@ -616,6 +621,10 @@ declare namespace LocalJSX {
     * Specifies the type of the button.
     */
     'type'?: ButtonType;
+    /**
+    * The weight of the text (only has effect with visible label).
+    */
+    'weight'?: TextWeight;
   }
   interface PFlex {
     /**
@@ -879,7 +888,7 @@ declare namespace LocalJSX {
     /**
     * The weight of the text.
     */
-    'weight'?: 'thin' | 'regular' | 'bold';
+    'weight'?: TextWeight;
   }
   interface PTextLink {
     /**

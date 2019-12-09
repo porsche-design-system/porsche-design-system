@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, hasShadowDom } from '../../../utils';
-import {ButtonType, TextSize, TextColor} from '../../../types';
+import {ButtonType, TextSize, TextColor, TextWeight} from '../../../types';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
 
@@ -38,6 +38,9 @@ export class ButtonPure {
   /** Size of the button. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
+  /** The weight of the text (only has effect with visible label). */
+  @Prop() public weight?: TextWeight = 'regular';
+
   /** The icon shown. */
   @Prop() public icon?: IconName = 'arrow-right-hair';
 
@@ -65,8 +68,7 @@ export class ButtonPure {
     );
 
     const iconClasses = cx(
-      prefix('button-pure__icon'),
-      prefix(`button-pure__icon--${this.size}`)
+      prefix('button-pure__icon')
     );
 
     const labelClasses = cx(
@@ -88,14 +90,20 @@ export class ButtonPure {
         ) : (
           <p-icon
             class={iconClasses}
+            color='inherit'
             size='inherit'
             name={this.icon}
             source={this.iconSource}
-            color='inherit'
           />
         )}
-        <p-text class={labelClasses} tag='span' color='inherit' size='inherit'>
-          <slot />
+        <p-text
+          class={labelClasses}
+          tag='span'
+          color='inherit'
+          size='inherit'
+          weight={this.weight}
+        >
+          <slot/>
         </p-text>
       </button>
     );

@@ -1,6 +1,8 @@
 // common type definitions
 export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
 
+export type TextWeight = 'thin' | 'regular' | 'bold';
+
 export type TextColor = 'porsche-black' | 'porsche-light' | 'porsche-red' | 'inherit';
 
 export type Theme = 'light' | 'dark';
