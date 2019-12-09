@@ -15,6 +15,9 @@
 * Spacing
   * Remove global static spacing classes
   * Remove responsive spacing classes (`a` to `g`)
+  
+* Global Setup
+  * `porsche-ui-kit.css` style should not be included by the application anymore
 
 ## [1.0.0-alpha.7] (2019-11-05)
 

@@ -58,6 +58,7 @@ export const config: Config = {
     })
   ],
   globalStyle: 'src/styles/index.scss',
+  globalScript: 'src/setup.ts',
   testing: {
     globalSetup: './jest.setup',
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
