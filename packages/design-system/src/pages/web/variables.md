@@ -63,14 +63,22 @@
 
 ## Spacing
 
-**Note:** Make sure to also checkout the pre-compiled [CSS margin/padding spacing classes](#/web/components/layout/spacing#code).
-
 Given values are:  
 `0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
 Possible variable for usage with SCSS (where {v} is the spacing value):
 ```
 $p-spacing-{v};
+```
+
+Or the reduced set of spacings which should be used as main layout spacings for spacings between elements.
+
+Given values are:  
+`x-small | small | medium | large | x-large | xx-large`
+
+Possible variable for usage with SCSS (where {v} is the spacing value):
+```
+$p-layout-{v};
 ```
 
 ---
@@ -96,12 +104,25 @@ $p-font-weight-{v};
 ```
 
 ### Size
+
+#### Font scaling system
 Given values are:  
-`small | copy | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
+
+`12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
 
 Possible variable for usage with SCSS (where {v} is the font size value):
 ```
 $p-font-size-{v};
+```
+
+#### Predefined text sizes
+Given values are:  
+ 
+`x-small | small | medium | large | x-large`
+
+Possible variable for usage with SCSS (where {v} is the font size value):
+```
+$p-text-size-{v};
 ```
 
 ---

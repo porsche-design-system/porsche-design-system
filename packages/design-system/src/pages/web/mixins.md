@@ -58,62 +58,6 @@ div {
 
 ---
 
-## Spacing
-
-**Note:** Make sure to also check out the pre-compiled [CSS margin/padding spacing classes](#/web/components/layout/spacing#code).
-
-Given values are:  
-`a | b | c | d | e | f | g`
-
-Available optional spacing **parameters**:  
-$type (default: margin): `'margin' | 'padding'`  
-$direction (default: null): `null | 'top' | 'right' | 'bottom' | 'left'`  
-$sign (default: null): `null | '+' | '-'`
-
-Possible spacing mixin for usage with SCSS (where {v} is the value):
-```
-@include p-spacing-{v}($type, $direction, $sign);
-```
-
-
-#### Example
-```
-div {
-  @include p-spacing-a('margin', 'top');
-}
-```
-
-#### Result
-```
-div {
-  margin-top: 0.25rem;
-}
-
-@media (min-width: 760px) {
-  div {
-    margin-top: 0.5rem;
-  }
-}
-
-@media (min-width: 1000px) {
-  div {
-    margin-top: 0.75rem;
-  }
-}
-
-@media (min-width: 1300px) {
-  div {
-    margin-top: 1rem;
-  }
-}
-
-@media (min-width: 1760px) {
-  div {
-    margin-top: 1.25rem;
-  }
-}
-```
-
 ## Typography
 
 **Note:** For font-styling it's recommended to use [`<p-headline>`](#/web/components/basic/typography#code)/[`<p-text>`](#/web/components/basic/typography#code) component.
@@ -176,18 +120,27 @@ h1 {
 
 ### Text
 
-Given values are:  
-`copy | small`
+With the text mixin, it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
+Default is `$p-text-size-small` and `$p-font-weight-regular`.
 
-Possible headline mixin for usage with SCSS (where {v} is the value):
+Pre defined variant values are:  
+`$p-text-size-x-small | $p-text-size-small | $p-text-size-medium | $p-text-size-large | $p-text-size-x-large`  
+
+Or more generic `$p-font-size-{v};` where `v` is:  
+`12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
+
+Pre defined weight values are:  
+`$p-font-weight-thin | $p-font-weight-regular | $p-font-weight-bold`
+
+#### Example text mixin for usage with SCSS (where {size} is the value for text size and {weight} for text weight):
 ```
-@include p-text-{v};
+@include p-text({size}, {weight});
 ```
 
-#### Example
+#### Example with defaults
 ```
 p {
-  @include p-text-copy;
+  @include p-text;
 }
 ```
 
@@ -198,6 +151,22 @@ p {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
-  margin-top: 1.5rem;
+}
+```
+
+#### Example with specific parameters
+```
+p {
+  @include p-text($p-text-size-medium, $p-font-weight-thin);
+}
+```
+
+#### Result
+```
+p {
+  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-weight: 200;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 ```

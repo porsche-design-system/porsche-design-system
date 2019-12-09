@@ -15,7 +15,7 @@ Those packages can be consumed by one of the following private npm registries:
 
 If you don't have an account to one of the previously mentioned npm registries, you can easily register for Porsche UI npm registry like following:
 
-<p-button-regular target="blank" href="http://eepurl.com/gnOIXD">Request a Porsche UI npm registry account</p-button-regular>
+<p-link target="_blank" href="http://eepurl.com/gnOIXD">Request a Porsche UI npm registry account</p-link>
 
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`

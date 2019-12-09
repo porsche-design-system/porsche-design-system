@@ -4,9 +4,9 @@ exports[`Component <p-spinner> should render correctly in default mode with shad
 <p-spinner>
   <mock:shadow-root>
     <span aria-busy="true" aria-live="polite" class="p-spinner p-spinner--small">
-      <svg class="p-spinner__image" role="img" viewBox="0 0 48 48">
-        <circle class="p-spinner__bg" cx="50%" cy="50%" r="21"></circle>
-        <circle class="p-spinner__fg" cx="50%" cy="50%" r="21"></circle>
+      <svg class="p-spinner__image" focusable="false" role="img" viewBox="0 0 32 32">
+        <circle class="p-spinner__bg" cx="50%" cy="50%" r="9"></circle>
+        <circle class="p-spinner__fg" cx="50%" cy="50%" r="9"></circle>
       </svg>
     </span>
   </mock:shadow-root>

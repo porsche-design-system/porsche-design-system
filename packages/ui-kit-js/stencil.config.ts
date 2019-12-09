@@ -44,7 +44,10 @@ export const config: Config = {
     angularOutputTarget({
       componentCorePackage: '@porsche-ui/ui-kit-js',
       directivesProxyFile: '../ui-kit-angular/projects/ui-kit-wrapper/src/lib/ui-kit-wrapper.component.ts'
-    })
+    }),
+  ],
+  bundles: [
+    {components: []}
   ],
   plugins: [
     sass(),

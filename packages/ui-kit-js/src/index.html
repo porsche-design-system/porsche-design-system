@@ -7,8 +7,8 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/build/porsche-ui-kit.css" />
     <link rel="stylesheet" href="/visual-regression-test.css" />
-    <script type="module" src="/build/porsche-ui-kit.esm.js"></script>
     <script nomodule src="/build/porsche-ui-kit.js"></script>
+    <script type="module" src="/build/porsche-ui-kit.esm.js"></script>
   </head>
   <body>
   <div id="app">
@@ -55,8 +55,8 @@
       </p-grid-item>
       <p-grid-item size="10">
         <div class="playground light spacing-block">
-          <p-text variant="copy">The quick brown fox jumps over the lazy dog</p-text>
-          <p-text variant="small">The quick brown fox jumps over the lazy dog</p-text>
+          <p-text>The quick brown fox jumps over the lazy dog</p-text>
+          <p-text size="x-small">The quick brown fox jumps over the lazy dog</p-text>
         </div>
         <div class="playground light spacing-block">
           <p-text color="porsche-black">Porsche Black</p-text>
@@ -80,104 +80,85 @@
     <hr>
     <p-grid>
       <p-grid-item size="2">
-        <p-headline variant="headline-4" tag="h4">&lt;p-button-regular&gt;</p-headline>
+        <p-headline variant="headline-4" tag="h4">&lt;p-button&gt;</p-headline>
       </p-grid-item>
       <p-grid-item size="5">
         <div class="playground light spacing-inline">
-          <p-button-regular variant="highlight">Some label</p-button-regular><!--
-        --><p-button-regular variant="highlight" disabled="true">Some label</p-button-regular><!--
-        --><p-button-regular variant="highlight" loading="true">Some label</p-button-regular>
+          <p-button variant="primary">Some label</p-button><!--
+        --><p-button variant="primary" disabled="true">Some label</p-button><!--
+        --><p-button variant="primary" loading="true">Some label</p-button>
         </div>
         <div class="playground light spacing-inline">
-          <p-button-regular>Some label</p-button-regular><!--
-        --><p-button-regular disabled="true">Some label</p-button-regular><!--
-        --><p-button-regular loading="true">Some label</p-button-regular>
+          <p-button>Some label</p-button><!--
+        --><p-button disabled="true">Some label</p-button><!--
+        --><p-button loading="true">Some label</p-button>
         </div>
         <div class="playground light spacing-inline">
-          <p-button-regular variant="ghost">Some label</p-button-regular><!--
-        --><p-button-regular variant="ghost" disabled="true">Some label</p-button-regular><!--
-        --><p-button-regular variant="ghost" loading="true">Some label</p-button-regular>
+          <p-button variant="tertiary">Some label</p-button><!--
+        --><p-button variant="tertiary" disabled="true">Some label</p-button><!--
+        --><p-button variant="tertiary" loading="true">Some label</p-button>
         </div>
         <div class="playground light spacing-inline">
-          <p-button-regular icon="phone">Some label</p-button-regular>
+          <p-button icon="phone">Some label</p-button>
+        </div>
+        <hr>
+        <div class="playground light spacing-inline">
+          <p-button variant="primary" hide-label="true">Some label</p-button><!--
+        --><p-button variant="primary" hide-label="true" disabled="true">Some label</p-button><!--
+        --><p-button variant="primary" hide-label="true" loading="true">Some label</p-button>
         </div>
         <div class="playground light spacing-inline">
-          <p-button-regular small="true">Some label</p-button-regular><!--
-        --><p-button-regular small="true" variant="ghost">Some label</p-button-regular><!--
-        --><p-button-regular small="true" variant="highlight">Some label</p-button-regular>
+          <p-button hide-label="true">Some label</p-button><!--
+        --><p-button disabled="true" hide-label="true">Some label</p-button><!--
+        --><p-button loading="true" hide-label="true">Some label</p-button>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-button variant="tertiary" hide-label="true">Some label</p-button><!--
+        --><p-button variant="tertiary" hide-label="true" disabled="true">Some label</p-button><!--
+        --><p-button variant="tertiary" hide-label="true" loading="true">Some label</p-button>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-button icon="phone" hide-label="true">Some label</p-button>
         </div>
         <hr>
       </p-grid-item>
       <p-grid-item size="5">
         <div class="playground dark spacing-inline">
-          <p-button-regular theme="dark" variant="highlight">Some label</p-button-regular><!--
-        --><p-button-regular theme="dark" variant="highlight" disabled="true">Some label</p-button-regular><!--
-        --><p-button-regular theme="dark" variant="highlight" loading="true">Some label</p-button-regular>
+          <p-button variant="primary" theme="dark">Some label</p-button><!--
+        --><p-button variant="primary" theme="dark" disabled="true">Some label</p-button><!--
+        --><p-button variant="primary" theme="dark" loading="true">Some label</p-button>
         </div>
         <div class="playground dark spacing-inline">
-          <p-button-regular theme="dark">Some label</p-button-regular><!--
-        --><p-button-regular theme="dark" disabled="true">Some label</p-button-regular><!--
-        --><p-button-regular theme="dark" loading="true">Some label</p-button-regular>
+          <p-button theme="dark">Some label</p-button><!--
+        --><p-button theme="dark" disabled="true">Some label</p-button><!--
+        --><p-button theme="dark" loading="true">Some label</p-button>
         </div>
         <div class="playground dark spacing-inline">
-          <p-button-regular theme="dark" variant="ghost">Some label</p-button-regular><!--
-        --><p-button-regular theme="dark" variant="ghost" disabled="true">Some label</p-button-regular><!--
-        --><p-button-regular theme="dark" variant="ghost" loading="true">Some label</p-button-regular>
+          <p-button theme="dark" variant="tertiary">Some label</p-button><!--
+        --><p-button theme="dark" variant="tertiary" disabled="true">Some label</p-button><!--
+        --><p-button theme="dark" variant="tertiary" loading="true">Some label</p-button>
         </div>
         <div class="playground dark spacing-inline">
-          <p-button-regular theme="dark" icon="phone">Some label</p-button-regular>
-        </div>
-        <div class="playground dark spacing-inline">
-          <p-button-regular theme="dark" small="true">Some label</p-button-regular><!--
-        --><p-button-regular theme="dark" small="true" variant="ghost">Some label</p-button-regular><!--
-        --><p-button-regular theme="dark" small="true" variant="highlight">Some label</p-button-regular>
+          <p-button theme="dark" icon="phone">Some label</p-button>
         </div>
         <hr>
-      </p-grid-item>
-    </p-grid>
-    <p-grid>
-      <p-grid-item size="2">
-        <p-headline variant="headline-4" tag="h4">&lt;p-button-icon&gt;</p-headline>
-      </p-grid-item>
-      <p-grid-item size="5">
-        <div class="playground light spacing-inline">
-          <p-button-icon></p-button-icon><!--
-        --><p-button-icon disabled="true"></p-button-icon><!--
-        --><p-button-icon loading="true"></p-button-icon>
-        </div>
-        <div class="playground light spacing-inline">
-          <p-button-icon variant="ghost"></p-button-icon><!--
-        --><p-button-icon variant="ghost" disabled="true"></p-button-icon><!--
-        --><p-button-icon variant="ghost" loading="true"></p-button-icon>
-        </div>
-        <div class="playground light spacing-inline">
-          <p-button-icon variant="transparent"></p-button-icon><!--
-        --><p-button-icon variant="transparent" disabled="true"></p-button-icon><!--
-        --><p-button-icon variant="transparent" loading="true"></p-button-icon>
-        </div>
-        <div class="playground light spacing-inline">
-          <p-button-icon icon="phone"></p-button-icon>
-        </div>
-        <hr>
-      </p-grid-item>
-      <p-grid-item size="5">
         <div class="playground dark spacing-inline">
-          <p-button-icon theme="dark"></p-button-icon><!--
-        --><p-button-icon theme="dark" disabled="true"></p-button-icon><!--
-        --><p-button-icon theme="dark" loading="true"></p-button-icon>
+          <p-button variant="primary" hide-label="true" theme="dark">Some label</p-button><!--
+        --><p-button variant="primary" hide-label="true" theme="dark" disabled="true">Some label</p-button><!--
+        --><p-button variant="primary" hide-label="true" theme="dark" loading="true">Some label</p-button>
         </div>
         <div class="playground dark spacing-inline">
-          <p-button-icon theme="dark" variant="ghost"></p-button-icon><!--
-        --><p-button-icon theme="dark" variant="ghost" disabled="true"></p-button-icon><!--
-        --><p-button-icon theme="dark" variant="ghost" loading="true"></p-button-icon>
+          <p-button theme="dark" hide-label="true">Some label</p-button><!--
+        --><p-button theme="dark" hide-label="true" disabled="true">Some label</p-button><!--
+        --><p-button theme="dark" hide-label="true" loading="true">Some label</p-button>
         </div>
         <div class="playground dark spacing-inline">
-          <p-button-icon theme="dark" variant="transparent"></p-button-icon><!--
-        --><p-button-icon theme="dark" variant="transparent" disabled="true"></p-button-icon><!--
-        --><p-button-icon theme="dark" variant="transparent" loading="true"></p-button-icon>
+          <p-button theme="dark" hide-label="true" variant="tertiary">Some label</p-button><!--
+        --><p-button theme="dark" hide-label="true" variant="tertiary" disabled="true">Some label</p-button><!--
+        --><p-button theme="dark" hide-label="true" variant="tertiary" loading="true">Some label</p-button>
         </div>
         <div class="playground dark spacing-inline">
-          <p-button-icon theme="dark" icon="phone"></p-button-icon>
+          <p-button theme="dark" hide-label="true" icon="phone">Some label</p-button>
         </div>
         <hr>
       </p-grid-item>
@@ -307,12 +288,12 @@
       </p-grid-item>
       <p-grid-item size="10">
         <div class="playground light spacing-inline">
-          <p-icon source="car-next"></p-icon><!--
-        --><p-icon source="car-next" size="medium"></p-icon><!--
-        --><p-icon source="car-next" size="large"></p-icon><!--
-        --><p-icon source="car-next" size="large" color="porsche-red"></p-icon><!--
-        --><p-icon source="car-next" size="large" color="inherit" style="color: deeppink;"></p-icon><!--
-        --><p-icon source="kaixin" size="large"></p-icon>
+          <p-icon name="car-next" aria-label="Car icon"></p-icon><!--
+        --><p-icon name="car-next" size="medium" aria-label="Car icon"></p-icon><!--
+        --><p-icon name="car-next" size="large" aria-label="Car icon"></p-icon><!--
+        --><p-icon name="car-next" size="large" color="porsche-red" aria-label="Car icon"></p-icon><!--
+        --><p-icon name="car-next" size="large" color="inherit" aria-label="Car icon" style="color: deeppink;"></p-icon><!--
+        --><p-icon name="kaixin" size="large" aria-label="Kaixin icon"></p-icon>
         </div>
         <hr>
       </p-grid-item>
@@ -424,33 +405,8 @@
       <p-grid-item size="10">
         <div class="playground light spacing-block">
           <p-flex>
-            <p-flex-item width="one-quarter"></p-flex-item>
-            <p-flex-item width="one-quarter"></p-flex-item>
-            <p-flex-item width="one-quarter"></p-flex-item>
-            <p-flex-item width="one-quarter"></p-flex-item>
-          </p-flex>
-          <p-flex>
-            <p-flex-item width="one-third"></p-flex-item>
-            <p-flex-item width="one-third"></p-flex-item>
-            <p-flex-item width="one-third"></p-flex-item>
-          </p-flex>
-          <p-flex>
-            <p-flex-item width="half"></p-flex-item>
-            <p-flex-item width="half"></p-flex-item>
-          </p-flex>
-          <p-flex>
-            <p-flex-item width="two-thirds"></p-flex-item>
-            <p-flex-item width="one-third"></p-flex-item>
-          </p-flex>
-          <p-flex>
-            <p-flex-item width="three-quarters"></p-flex-item>
-            <p-flex-item width="one-quarter"></p-flex-item>
-          </p-flex>
-          <p-flex>
             <p-flex-item width="full"></p-flex-item>
           </p-flex>
-        </div>
-        <div class="playground light spacing-block">
           <p-flex>
             <p-flex-item offset="one-quarter" width="three-quarters"></p-flex-item>
           </p-flex>
@@ -470,28 +426,69 @@
         <hr>
       </p-grid-item>
     </p-grid>
+    <p-headline variant="headline-2">Navigation</p-headline>
+    <hr>
     <p-grid>
       <p-grid-item size="2">
-        <p-headline variant="headline-4" tag="h4">Spacing</p-headline>
+        <p-headline variant="headline-4" tag="h4">&lt;p-link&gt;</p-headline>
       </p-grid-item>
-      <p-grid-item size="10">
+      <p-grid-item size="5">
         <div class="playground light spacing-inline">
-          <div class="p-spacing-pt-4 p-spacing-pr-4"></div><!--
-        --><div class="p-spacing-pt-8 p-spacing-pr-8"></div><!--
-        --><div class="p-spacing-pt-16 p-spacing-pr-16"></div><!--
-        --><div class="p-spacing-pt-24 p-spacing-pr-24"></div><!--
-        --><div class="p-spacing-pt-32 p-spacing-pr-32"></div><!--
-        --><div class="p-spacing-pt-40 p-spacing-pr-40"></div><!--
-        --><div class="p-spacing-pt-48 p-spacing-pr-48"></div><!--
-        --><div class="p-spacing-pt-56 p-spacing-pr-56"></div><!--
-        --><div class="p-spacing-pt-64 p-spacing-pr-64"></div><!--
-        --><div class="p-spacing-pt-72 p-spacing-pr-72"></div><!--
-        --><div class="p-spacing-pt-80 p-spacing-pr-80"></div>
+          <p-link variant="primary" href="https://ui.porsche.com">Some label</p-link>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link href="https://ui.porsche.com">Some label</p-link>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link variant="tertiary" href="https://ui.porsche.com">Some label</p-link>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link icon="phone" href="https://ui.porsche.com">Some label</p-link>
+        </div>
+        <hr>
+        <div class="playground light spacing-inline">
+          <p-link variant="primary" href="https://ui.porsche.com" hide-label="true">Some label</p-link>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link href="https://ui.porsche.com" hide-label="true">Some label</p-link>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link variant="tertiary" href="https://ui.porsche.com" hide-label="true">Some label</p-link>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link icon="phone" href="https://ui.porsche.com" hide-label="true">Some label</p-link>
+        </div>
+        <hr>
+      </p-grid-item>
+      <p-grid-item size="5">
+        <div class="playground dark spacing-inline">
+          <p-link variant="primary" href="https://ui.porsche.com" theme="dark">Some label</p-link>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link href="https://ui.porsche.com" theme="dark">Some label</p-link>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link variant="tertiary" href="https://ui.porsche.com" theme="dark">Some label</p-link>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link icon="phone" href="https://ui.porsche.com" theme="dark">Some label</p-link>
+        </div>
+        <hr>
+        <div class="playground dark spacing-inline">
+          <p-link variant="primary" href="https://ui.porsche.com" hide-label="true" theme="dark">Some label</p-link>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link href="https://ui.porsche.com" hide-label="true" theme="dark">Some label</p-link>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link variant="tertiary" href="https://ui.porsche.com" hide-label="true" theme="dark">Some label</p-link>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link icon="phone" href="https://ui.porsche.com" hide-label="true" theme="dark">Some label</p-link>
         </div>
         <hr>
       </p-grid-item>
     </p-grid>
-    <p-headline variant="headline-2">Navigation</p-headline>
     <hr>
     <p-grid>
       <p-grid-item size="2">
