@@ -57,6 +57,7 @@
   border: none;
   text-decoration: none;
   background: transparent;
+  color: inherit;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier;
 
@@ -79,8 +80,22 @@
 
   &:disabled,
   &[disabled] {
-    color: rgba($p-color-porsche-black, 0.5);
+    color: $p-color-grey-disabled-on-light;
     pointer-events: none;
+  }
+
+  &--color {
+    &-inherit {
+      color: inherit;
+    }
+
+    &-porsche-light {
+      color: $p-color-porsche-light;
+    }
+
+    &-porsche-black {
+      color: $p-color-porsche-black;
+    }
   }
 
   &--size {
@@ -348,52 +363,4 @@
     display: block;
     box-sizing: border-box;
   }
-
-  /*&--color {
-    &-inherit {
-      color: inherit;
-    }
-
-    &-porsche-light {
-      color: $p-color-porsche-light;
-    }
-
-    &-porsche-black {
-      color: $p-color-porsche-black;
-    }
-  }
-
-  &__icon {
-    flex-shrink: 0;
-
-    &--x-small {
-      width: $p-text-size-x-small * 1.5;
-      height: $p-text-size-x-small * 1.5;
-    }
-
-    &--small {
-      width: $p-text-size-small * 1.5;
-      height: $p-text-size-small * 1.5;
-    }
-
-    &--medium {
-      width: $p-text-size-medium * 1.5;
-      height: $p-text-size-medium * 1.5;
-    }
-
-    &--large {
-      width: $p-text-size-large * 1.5;
-      height: $p-text-size-large * 1.5;
-    }
-
-    &--x-large {
-      width: $p-text-size-x-large * 1.5;
-      height: $p-text-size-x-large * 1.5;
-    }
-
-  }
-
-  &__label {
-    margin-left: $p-spacing-4;
-  }*/
 }

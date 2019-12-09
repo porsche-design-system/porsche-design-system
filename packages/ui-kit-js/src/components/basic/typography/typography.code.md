@@ -101,8 +101,8 @@ There are predefined default text weights for copy text. Be aware of using the `
   <template #configurator>
     <select @change="weight = $event.target.value">
       <option disabled>Select a weight</option>
-      <option>regular</option>
       <option selected>thin</option>
+      <option>regular</option>
       <option>bold</option>
     </select>
   </template>
