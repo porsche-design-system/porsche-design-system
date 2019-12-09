@@ -3,5 +3,5 @@ export default () => {
   link.href = 'http://cdn.ui.porsche.com/porsche-ui-kit/styles/v1/porsche-ui-kit.css';
   link.type = 'text/css';
   link.rel = 'stylesheet';
-  document.getElementsByTagName( 'head')[0].appendChild(link);
+  document.getElementsByTagName('head')[0].appendChild(link);
 };
