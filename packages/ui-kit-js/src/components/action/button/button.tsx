@@ -95,15 +95,26 @@ export class Button {
   }
 
   /**
-   * IE11 workaround to fix the event target
-   * of click events (which normally shadow dom
-   * takes care of)
+   * IE11/Edge (not chromium based) workaround to
+   * fix the event target of click events (which normally
+   * shadow dom takes care of)
    */
   @Listen('click', { capture: true })
   public fixEventTarget(event: MouseEvent): void {
     if (event.target !== this.element) {
       event.stopPropagation();
-      event.preventDefault();
+
+      /**
+       * we can not prevent the default, because clicks
+       * to the host element wouldn't trigger the form
+       * submit and we add this behaviour only for
+       * browsers with shadowDOM, but this event
+       * target fix is only for browsers without
+       * shadowDOM (IE11/Edge (not chromium based))
+       *
+       * event.preventDefault();
+       */
+
       this.element.click();
     }
   }
