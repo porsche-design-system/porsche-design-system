@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
+import { ReactProps } from './ReactProps';
 import {
   attachEventProps,
   createForwardRef,
@@ -8,9 +9,14 @@ import {
   isCoveredByReact,
 } from './utils/index';
 
-interface IonicReactInternalProps<ElementType> extends React.HTMLAttributes<ElementType> {
+interface IonicReactInternalProps<ElementType> {
   forwardedRef?: React.Ref<ElementType>;
+  children?: React.ReactNode;
+  href?: string;
+  target?: string;
+  style?: string;
   ref?: React.Ref<any>;
+  className?: string;
 }
 
 export const createReactComponent = <PropType, ElementType>(tagName: string) => {
@@ -56,5 +62,5 @@ export const createReactComponent = <PropType, ElementType>(tagName: string) => 
       return displayName;
     }
   };
-  return createForwardRef<PropType, ElementType>(ReactComponent, displayName);
+  return createForwardRef<PropType & ReactProps, ElementType>(ReactComponent, displayName);
 };
