@@ -4,8 +4,16 @@
 
 ### Change
 
-* Link
-  * Remove tabbable attribute
+* Button component
+  * New custom element
+  
+* Button-Pure component
+  * New custom element
+ 
+* Remove button-regular and button-icon component
+
+* Link component
+  * New custom element
 
 * Text component
   * Reduce amount of text variants in global interface

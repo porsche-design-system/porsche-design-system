@@ -19,3 +19,4 @@
 ### Used by
 
  - [p-button](../../action/button)
+ - [p-button-pure](../../action/button-pure)

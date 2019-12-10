@@ -2,7 +2,7 @@ import 'jasmine';
 import {VisualRegressionTester} from '@porsche-ui/visual-regression-tester';
 import {getVisualRegressionTester} from '../helpers/setup';
 
-describe('Link', () => {
+describe('Button', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(async () => {
@@ -11,8 +11,8 @@ describe('Link', () => {
 
   it('should have no visual regression', async () => {
     expect(
-      await vrt.test('link', async () => {
-        await vrt.goTo('/src/components/navigation/link/link.test.html');
+      await vrt.test('button', async () => {
+        await vrt.goTo('/src/components/action/button/button.test.html');
       })
     ).toBeFalsy();
   });
