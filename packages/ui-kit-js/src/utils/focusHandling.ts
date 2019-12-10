@@ -111,17 +111,3 @@ export function improveFocusHandlingForCustomElement(element: HTMLElement) {
     }
   }
 }
-
-interface FocusableComponent {
-  nativeTabindex?: number;
-  element: HTMLElement;
-}
-
-export function preventNativeTabIndex(component: FocusableComponent) {
-  if (component.nativeTabindex > -1) {
-    console.warn('You can not set the tabindex on the host element of Porsche UI-Kit components. Please use `tabbable` instead.');
-    component.element.tabIndex = -1;
-    component.element.removeAttribute('tabindex');
-    component.nativeTabindex = -1;
-  }
-}

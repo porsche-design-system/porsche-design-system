@@ -45,10 +45,6 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
-    * Check native tabindex to ensure that it doesn't get set on the host element
-    */
-    'nativeTabindex'?: number;
-    /**
     * To remove the element from tab order.
     */
     'tabbable'?: boolean;
@@ -86,10 +82,6 @@ export namespace Components {
     * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
     */
     'loading'?: boolean;
-    /**
-    * Check native tabindex to ensure that it doesn't get set on the host element
-    */
-    'nativeTabindex'?: number;
     /**
     * Size of the button.
     */
