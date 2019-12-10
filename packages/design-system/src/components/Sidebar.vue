@@ -6,7 +6,7 @@
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
             <router-link class="link" :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`">
-              <p-text-link tag="span" color="inherit">{{ page }}</p-text-link>
+              <p-link-pure color="inherit">{{ page }}</p-link-pure>
             </router-link>
           </li>
         </ul>
@@ -20,7 +20,7 @@
         <ul>
           <li v-for="(v, story, index) in stories" :key="index">
             <router-link class="link" :to="`/${area}/components/${encodeUrl(category)}/${encodeUrl(story)}`">
-              <p-text-link tag="span" color="inherit">{{ story }}</p-text-link>
+              <p-link-pure color="inherit">{{ story }}</p-link-pure>
             </router-link>
           </li>
         </ul>
@@ -82,19 +82,13 @@ export default class Sidebar extends Vue {
   }
 
   .link {
-    padding: $p-spacing-4 0;
+    margin: $p-spacing-4 0;
+    display: inline-block;
     text-decoration: none;
     color: $p-color-porsche-black;
-    display: inline-block;
 
-  &.router-link-active,
-  &:hover {
-    color: $p-color-porsche-red;
+    &.router-link-active {
+      color: $p-color-porsche-red;
+    }
   }
-
-  &:focus {
-    outline: 1px solid $p-color-state-focus;
-    outline-offset: 4px;
-  }
-}
 </style>

@@ -24,4 +24,4 @@
  - [p-button](../../../action/button)
  - [p-button-pure](../../../action/button-pure)
  - [p-link](../../../navigation/link)
- - [p-text-link](../../../navigation/text-link)
+ - [p-link-pure](../../../navigation/link-pure)
