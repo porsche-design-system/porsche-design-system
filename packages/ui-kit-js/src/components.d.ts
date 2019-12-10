@@ -103,6 +103,10 @@ export namespace Components {
     */
     'tabbable'?: boolean;
     /**
+    * Adapts the button color depending on the theme.
+    */
+    'theme'?: Theme;
+    /**
     * Specifies the type of the button.
     */
     'type'?: ButtonType;
@@ -617,6 +621,10 @@ declare namespace LocalJSX {
     * To remove the element from tab order.
     */
     'tabbable'?: boolean;
+    /**
+    * Adapts the button color depending on the theme.
+    */
+    'theme'?: Theme;
     /**
     * Specifies the type of the button.
     */

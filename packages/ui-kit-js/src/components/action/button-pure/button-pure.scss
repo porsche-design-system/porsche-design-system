@@ -85,17 +85,19 @@
     pointer-events: none;
   }
 
-  &--color {
-    &-inherit {
-      color: inherit;
+  &--theme-light{
+    color: $p-color-porsche-dark;
+    &:disabled,
+    &[disabled] {
+      color: $p-color-grey-disabled-on-light;
     }
+  }
 
-    &-porsche-light {
-      color: $p-color-porsche-light;
-    }
-
-    &-porsche-black {
-      color: $p-color-porsche-black;
+  &--theme-dark {
+    color: $p-color-porsche-light;
+    &:disabled,
+    &[disabled] {
+      color: $p-color-grey-disabled-on-dark;
     }
   }
 

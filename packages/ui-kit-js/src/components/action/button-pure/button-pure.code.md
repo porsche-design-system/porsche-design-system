@@ -10,24 +10,30 @@ It can be used with or without a label. When hiding the label make sure to provi
 
 ### With label
 
-<Playground :childElementLayout="{spacing: 'inline'}">
-  <p-button-pure>Some label</p-button-pure>
-  <p-button-pure disabled="disabled">Some label</p-button-pure>
-  <p-button-pure loading="true">Some label</p-button-pure>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <p-button-pure :theme="theme">Some label</p-button-pure>
+    <p-button-pure disabled="disabled" :theme="theme">Some label</p-button-pure>
+    <p-button-pure loading="true" :theme="theme">Some label</p-button-pure>
+  </template>
 </Playground>
 
 ### Without label
 
-<Playground :childElementLayout="{spacing: 'inline'}">
-  <p-button-pure hide-label="true">Some label</p-button-pure>
-  <p-button-pure hide-label="true" disabled="disabled">Some label</p-button-pure>
-  <p-button-pure hide-label="true" loading="true">Some label</p-button-pure>
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <p-button-pure hide-label="true" :theme="theme">Some label</p-button-pure>
+    <p-button-pure hide-label="true" disabled="disabled" :theme="theme">Some label</p-button-pure>
+    <p-button-pure hide-label="true" loading="true" :theme="theme">Some label</p-button-pure>
+  </template>
 </Playground>
 
 ### Responsive
 
-<Playground>
-  <p-button-pure hide-label="{ base: true, l: false }">Some label</p-button-pure>
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-button-pure hide-label="{ base: true, l: false }" :theme="theme">Some label</p-button-pure>
+  </template>
 </Playground>
 
 ---
@@ -37,7 +43,7 @@ It can be used with or without a label. When hiding the label make sure to provi
 There are predefined text sizes for the component which should cover most use cases. 
 If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
-<Playground>
+<Playground :themeable="true">
   <template #configurator>
     <select @change="size = $event.target.value">
       <option disabled>Select a style variant</option>
@@ -49,15 +55,19 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
       <option>inherit</option>
     </select>
   </template>
-  <p-button-pure :size="size" :style="isInherit">Some label</p-button-pure>
+  <template v-slot={theme}>
+    <p-button-pure :size="size" :style="isInherit" :theme="theme">Some label</p-button-pure>
+  </template>
 </Playground>
 
 ### Responsive
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground>
-  <p-button-pure size="{ base: 'small', l: 'medium' }">Some label</p-button-pure>
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-button-pure size="{ base: 'small', l: 'medium' }" :theme="theme">Some label</p-button-pure>
+  </template>
 </Playground>
 
 ---
@@ -66,7 +76,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 There are predefined default text weights. Be aware of using the `thin` variant only with larger text sizes.
 
-<Playground>
+<Playground :themeable="true">
   <template #configurator>
     <select @change="weight = $event.target.value">
       <option disabled>Select a weight</option>
@@ -75,19 +85,9 @@ There are predefined default text weights. Be aware of using the `thin` variant 
       <option>bold</option>
     </select>
   </template>
-  <p-button-pure size="medium" :weight="weight">Some label</p-button-pure>
-</Playground>
-
----
-
-## Color
-
-The default text color is Porsche Black. But also predefined or inherited colors can be set.
-
-<Playground :childElementLayout="{spacing: 'inline'}">
-  <p-button-pure color="porsche-black">Porsche Black</p-button-pure>
-  <p-button-pure color="porsche-light" style="background: black;">Porsche Light</p-button-pure>
-  <p-button-pure color="inherit" style="color: deeppink;">Inherited custom color</p-button-pure>
+  <template v-slot={theme}>
+    <p-button-pure size="medium" :weight="weight" :theme="theme">Some label</p-button-pure>
+  </template>
 </Playground>
 
 ---
@@ -95,10 +95,12 @@ The default text color is Porsche Black. But also predefined or inherited colors
 ## Button with specific icon
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
-<Playground>
-  <p-button-pure icon="delete">Some label</p-button-pure>
-  <br>
-  <p-button-pure :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" hide-label="true">Some label</p-button-pure>
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-button-pure icon="delete" :theme="theme">Some label</p-button-pure>
+    <br>
+    <p-button-pure :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Some label</p-button-pure>
+  </template>
 </Playground>
 
 ---
@@ -107,14 +109,17 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the button.
 
-<Playground>
-  <p-button-pure
-    onclick="alert('click')"
-    onfocus="console.log('focus')"
-    onfocusin="console.log('focusin')"
-    onblur="console.log('blur')"
-    onfocusout="console.log('focusout')"
-  >Some label</p-button-pure>
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-button-pure
+      onclick="alert('click')"
+      onfocus="console.log('focus')"
+      onfocusin="console.log('focusin')"
+      onblur="console.log('blur')"
+      onfocusout="console.log('focusout')"
+      :theme="theme"
+    >Some label</p-button-pure>
+  </template>
 </Playground>
 
 ---
@@ -124,9 +129,11 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
 
 <Playground>
-  <p-button-pure tabbable="true">Some label</p-button-pure>
-  <br>
-  <p-button-pure tabbable="false" hide-label="true">Some label</p-button-pure>
+  <template v-slot={theme}>
+    <p-button-pure tabbable="true" :theme="theme">Some label</p-button-pure>
+    <br>
+    <p-button-pure tabbable="false" hide-label="true" :theme="theme">Some label</p-button-pure>
+  </template>
 </Playground>
 
 <script lang="ts">
