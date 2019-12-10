@@ -17,19 +17,19 @@
       <p-grid>
         <p-grid-item size='{"base": 12, "m": 4}'>
           <p-headline variant="headline-3" tag="h1">Porsche Design System</p-headline>
-          <p-text size="{ base: 'large', s: 'medium', xs: 'small' }">for web applications</p-text>
+          <p-text size="{ base:'small', s: 'medium' }">for web applications</p-text>
           <p-text class="spacing-mt-8">
             <router-link to="/web/getting-started/about">Learn more about it</router-link>
           </p-text>
         </p-grid-item>
         <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text size="medium">
-            The Porsche UI Kit Web provides the design fundamentals and elements for efficiently creating aesthetic and qualitative
+            The Porsche Design System Web provides the design fundamentals and elements for efficiently creating aesthetic and qualitative
             web applications. Including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything built and tested following the Porsche quality standards and corporate design
             principles.
           </p-text>
           <p-text class="spacing-mt-32">
-            We are happy to announce our first alpha version 1.0.0-alpha.x release of Porsche UI Kit (JS/Angular/React). Please take some time to check it out!
+            We are happy to announce our first alpha version 1.0.0-alpha.x release of Porsche Design System (JS/Angular/React). Please take some time to check it out!
             We appreciate any feedback, feature requests or any suggestions on our public <a href="https://github.com/porscheui/porsche-ui-contribution/issues">Contribution Board</a>.
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
