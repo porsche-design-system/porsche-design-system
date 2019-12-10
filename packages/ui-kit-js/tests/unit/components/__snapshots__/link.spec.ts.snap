@@ -3,7 +3,7 @@
 exports[`Component <p-link> should render correctly in default mode with shadow dom 1`] = `
 <p-link href="https://ui.porsche.com">
   <mock:shadow-root>
-    <a class="p-link p-link--secondary p-link--theme-light p-link--with-label" href="https://ui.porsche.com" tabindex="0" target="_self">
+    <a class="p-link p-link--secondary p-link--theme-light p-link--with-label" href="https://ui.porsche.com" target="_self">
       <p-icon class="p-link__icon" name="arrow-right-hair" size="inherit"></p-icon>
       <p-text class="p-link__label" color="inherit" tag="span">
         <slot></slot>

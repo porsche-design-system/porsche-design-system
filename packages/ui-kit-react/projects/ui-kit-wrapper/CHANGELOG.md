@@ -4,6 +4,9 @@
 
 ### Change
 
+* Link
+  * Remove tabbable attribute
+
 * Text component
   * Reduce amount of text variants in global interface
   * Remove `ul | ol | li | sup | sub | label` from `tag` property
