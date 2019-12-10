@@ -86,7 +86,7 @@ export function improveFocusHandlingForCustomElement(element: HTMLElement) {
   if (!element.shadowRoot || !element.shadowRoot.host) {
     /**
      * we don't have a shadowRoot. this usually means we're in
-     * internet explorer. but in any case we've to fix some
+     * IE11/Edge (not chromium based). but in any case we've to fix some
      * events that behave different without shadow dom
      */
     const firstChild = element.children.item(0);
@@ -109,19 +109,5 @@ export function improveFocusHandlingForCustomElement(element: HTMLElement) {
         event.stopPropagation();
       });
     }
-  }
-}
-
-interface FocusableComponent {
-  nativeTabindex?: number;
-  element: HTMLElement;
-}
-
-export function preventNativeTabIndex(component: FocusableComponent) {
-  if (component.nativeTabindex > -1) {
-    console.warn('You can not set the tabindex on the host element of Porsche UI-Kit components. Please use `tabbable` instead.');
-    component.element.tabIndex = -1;
-    component.element.removeAttribute('tabindex');
-    component.nativeTabindex = -1;
   }
 }

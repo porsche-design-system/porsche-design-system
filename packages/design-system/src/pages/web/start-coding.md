@@ -75,7 +75,6 @@ If you're using web components in a static website, the following page setup is 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Porsche UI Kit</title>
-    <link rel="stylesheet" href="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css">
     <script type="module" src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
     <script nomodule src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
   </head>
@@ -91,8 +90,8 @@ If you're using web components in a static website, the following page setup is 
 
 The Angular wrapper of web components can be used like every other Angular library. 
 
-After adding `@porsche-ui/ui-kit-angular` package to your project, import the `PorscheUIKitModule` to your root module as well as the needed global (S)CSS. 
-The following setup is a standard Angular CLI project with SCSS support:
+After adding the `@porsche-ui/ui-kit-angular` package to your project, import the `PorscheUIKitModule` to your root module. 
+The following setup is a standard Angular CLI project:
 
 #### App module
 ``` 
@@ -130,22 +129,13 @@ import {Component} from '@angular/core';
   styles: []
 })
 export class AppComponent {}
-``` 
-
-#### Load CSS
-In your `styles.scss`, import the Porsche UI Kit stylesheet.
-
-``` 
-@import "~@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css";
-``` 
-
---- 
+```
 
 ### React
 
 The React wrappers for web components can be used like every other React component - even with Typescript support. 
 
-After adding `@porsche-ui/ui-kit-react` package to your project, importe th component(s) and the (S)CSS files..
+After adding `@porsche-ui/ui-kit-react` package to your project, import component(s).
 The following setup is a standard React Scripts (Create React App) setup with SCSS support:
 
 #### Index file
@@ -154,7 +144,6 @@ import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.css';
 import './index.scss';
 import App from './App';
 

@@ -4,6 +4,17 @@
 
 ### Change
 
+* Button component
+  * New custom element
+  
+* Button-Pure component
+  * New custom element
+ 
+* Remove button-regular and button-icon component
+
+* Link component
+  * New custom element
+
 * Text component
   * Reduce amount of text variants in global interface
   * Remove `ul | ol | li | sup | sub | label` from `tag` property
@@ -11,6 +22,9 @@
   
 * Text Link component
   * Reduce amount of text variants (defined in global interface)
+
+* Global Setup
+  * `porsche-ui-kit.css` style should not be imported by the application anymore
 
 ## [1.0.0-alpha.7] (2019-11-05)
 
