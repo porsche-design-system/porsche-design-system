@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, hasShadowDom } from '../../../utils';
-import {ButtonType, TextSize, TextColor, TextWeight, Theme} from '../../../types';
+import {ButtonType, TextSize, TextWeight, Theme} from '../../../types';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
 
@@ -46,9 +46,6 @@ export class ButtonPure {
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
-
-  /** Basic text color variations. */
-  @Prop() public color?: TextColor = 'porsche-black';
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;

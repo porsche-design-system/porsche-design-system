@@ -167,7 +167,7 @@ import {Component} from '@angular/core';
         <p-grid-item [size]="2">
           <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-button-pure&gt;</p-headline>
         </p-grid-item>
-        <p-grid-item [size]="10">
+        <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
             <p-button-pure>Some label</p-button-pure>
             <p-button-pure [disabled]="true">Some label</p-button-pure>
@@ -188,15 +188,38 @@ import {Component} from '@angular/core';
             <p-button-pure [weight]="'bold'">Bold</p-button-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-button-pure [color]="'porsche-black'">Porsche Black</p-button-pure>
-            <p-button-pure [color]="'porsche-light'" style="background: black;">Porsche Light</p-button-pure>
-            <p-button-pure [color]="'inherit'" style="color: deeppink;">Inherited custom color</p-button-pure>
-          </div>
-          <div class="playground light spacing-inline">
             <p-button-pure [icon]="'delete'">Some button with a custom icon</p-button-pure>
           </div>
           <div class="playground light spacing-inline">
             <p-button-pure style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
+          </div>
+          <hr>
+        </p-grid-item>
+        <p-grid-item [size]="5">
+          <div class="playground dark spacing-inline">
+            <p-button-pure [theme]="'dark'">Some label</p-button-pure>
+            <p-button-pure [disabled]="true" [theme]="'dark'">Some label</p-button-pure>
+            <p-button-pure [loading]="true" [theme]="'dark'">Some label</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [hideLabel]="true" [theme]="'dark'">Some label</p-button-pure>
+            <p-button-pure [hideLabel]="true" [disabled]="true" [theme]="'dark'">Some label</p-button-pure>
+            <p-button-pure [hideLabel]="true" [loading]="true" [theme]="'dark'">Some label</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [size]="'medium'" [theme]="'dark'">Medium</p-button-pure>
+            <p-button-pure [size]="'inherit'" [theme]="'dark'" style="font-size: 48px;">Inherit</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [weight]="'thin'" [theme]="'dark'">Thin</p-button-pure>
+            <p-button-pure [weight]="'regular'" [theme]="'dark'">Regular</p-button-pure>
+            <p-button-pure [weight]="'bold'" [theme]="'dark'">Bold</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [icon]="'delete'" [theme]="'dark'">Some button with a custom icon</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
           </div>
           <hr>
         </p-grid-item>

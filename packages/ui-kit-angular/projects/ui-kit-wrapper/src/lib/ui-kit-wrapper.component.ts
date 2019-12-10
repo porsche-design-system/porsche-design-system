@@ -35,8 +35,8 @@ export class PButton {
 }
 
 export declare interface PButtonPure extends Components.PButtonPure {}
-@ProxyInputs(['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'type', 'weight'])
-@Component({ selector: 'p-button-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'type', 'weight'] })
+@ProxyInputs(['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight'])
+@Component({ selector: 'p-button-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight'] })
 export class PButtonPure {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
