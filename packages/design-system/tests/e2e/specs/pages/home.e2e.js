@@ -11,6 +11,6 @@ describe('Home', () => {
       .shadowGet('p-headline')
       .shadowFirst()
       .should('be.visible')
-      .and('contain', 'Porsche Design System');
+      .and('contain', 'Design System');
   });
 });
