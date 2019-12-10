@@ -95,7 +95,7 @@ deploy_to_gh_pages() {
   echo "task: [$(date)] \"deploy_to_gh_pages\""
   pushd "/opt/porsche-ui-kit-gh-pages"
     git add -A
-    git commit -m "Automated deployment of Porsche UI Kit (${P_WORKING_BRANCH}): ${GITHUB_SHA}" --allow-empty
+    git commit -m "Automated deployment of Porsche Design System (${P_WORKING_BRANCH}): ${GITHUB_SHA}" --allow-empty
     git push origin gh-pages --force-with-lease
   popd
 }

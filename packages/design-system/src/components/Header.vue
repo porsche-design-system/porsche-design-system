@@ -4,7 +4,7 @@
       <p-marque/>
     </router-link>
     <p-headline class="spacing-mt-16" variant="headline-4" tag="h1" align="center">
-      Porsche UI Kit
+      Design System
     </p-headline>
     <p-text size="x-small" align="center">{{subtitle}}</p-text>
   </header>
@@ -19,9 +19,9 @@ export default class Header extends Vue {
   get subtitle() {
     switch (this.area) {
       case 'app':
-        return `App Design System (v1)`;
+        return `App (v1)`;
       case 'web':
-        return `Web Design System (v1)`;
+        return `Web (v1)`;
       default:
         return '';
     }
