@@ -2,13 +2,13 @@
 
 Typography components are categorized into two different use cases:
 
-1. **Headline component** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
-2. **Text component** for predefined copy text sizes which are either fixed or can respond to different viewports.
+1. **Headline components** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
+2. **Text components** for predefined copy text sizes which are either fixed or can respond to different viewports.
 
 ## Headlines
 
 ### Style variants
-There are multiple predefined styling variants available. Additionally the correct semantic tag (h1 - h6) can be set.
+There are multiple predefined styling variants available. Additionally, the correct semantic tag (h1 - h6) can be set.
 
 <Playground>
   <p-headline variant="large-title" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
@@ -44,7 +44,7 @@ The default headline color is Porsche Black. But also predefined or inherited co
 ---
 
 ### Ellipsis mode
-This will force any text to never wrap into a new line and in case it's too long for a single line then dots (…) at the end are used to visualize it.
+This will force text to never wrap into a new line. In case it's too long for a single line, dots (…) at the end are used to visualize it.
 
 <Playground>
   <p-headline ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-headline>
@@ -133,7 +133,7 @@ The default text color is Porsche Black. But also predefined or inherited colors
 ---
 
 ### Ellipsis mode
-This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the end are used to visualize it.
+This will force any text to never wrap into a new line. In case it's too long for a single line, dots (…) at the end are used to visualize it.
 
 <Playground>
   <p-text ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
