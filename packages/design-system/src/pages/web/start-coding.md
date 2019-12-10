@@ -1,13 +1,13 @@
 # Start Coding
 
-Porsche UI Kit provides developers with a collection of presentational web components and corresponding wrappers for Angular and React to build clean and high-quality front-ends that innately come with the latest design definitions.
+Porsche Design System provides developers with a collection of presentational web components and corresponding wrappers for Angular and React to build clean and high-quality front-ends that innately come with the latest design definitions.
 
 ## Requirements
 * [Node.js & NPM](https://nodejs.org)
 
 ## Installation
 
-All releases of the Porsche UI Kit are available as versioned npm package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-angular` and `@porsche-ui/ui-kit-react`.
+All releases of the Porsche Design System are available as versioned npm package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-angular` and `@porsche-ui/ui-kit-react`.
 
 Those packages can be consumed by one of the following private npm registries:
 * Porsche UI npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
@@ -74,7 +74,7 @@ If using web components in a static website, the following page setup is recomme
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Porsche UI Kit</title>
+    <title>Porsche Design System</title>
     <script type="module" src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
     <script nomodule src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
   </head>

@@ -3,18 +3,14 @@
 import { Component, ElementRef, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { fromEvent } from 'rxjs';
 
-export function ProxyInputs(inputs: string[]) {
-  const decorator = function <T extends {new(...args:any[])}>(constructor:T) {
-    const Prototype = constructor.prototype;
-    inputs.forEach((item) => {
-      Object.defineProperty(Prototype, item, {
-        get() { return this.el[item]; },
-        set(val: any) { this.el[item] = val; },
-      });
+function proxyInputs(Cmp: any, inputs: string[]) {
+  const Prototype = Cmp.prototype;
+  inputs.forEach(item => {
+    Object.defineProperty(Prototype, item, {
+      get() { return this.el[item]; },
+      set(val: any) { this.el[item] = val; },
     });
-    return constructor;
-  };
-  return decorator;
+  });
 }
 
 function proxyMethods(Cmp: any, methods: string[]) {
@@ -32,9 +28,8 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
 }
 
 import { Components } from '@porsche-ui/ui-kit-js'
-export declare interface PButton extends Components.PButton {}
-@ProxyInputs(['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant'])
 
+export declare interface PButton extends Components.PButton {}
 @Component({ selector: 'p-button', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant'] })
 export class PButton {
   protected el: HTMLElement;
@@ -43,9 +38,9 @@ export class PButton {
     this.el = r.nativeElement;
   }
 }
-export declare interface PButtonPure extends Components.PButtonPure {}
-@ProxyInputs(['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight'])
+proxyInputs(PButton, ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant']);
 
+export declare interface PButtonPure extends Components.PButtonPure {}
 @Component({ selector: 'p-button-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight'] })
 export class PButtonPure {
   protected el: HTMLElement;
@@ -54,9 +49,9 @@ export class PButtonPure {
     this.el = r.nativeElement;
   }
 }
-export declare interface PFlex extends Components.PFlex {}
-@ProxyInputs(['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'])
+proxyInputs(PButtonPure, ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight']);
 
+export declare interface PFlex extends Components.PFlex {}
 @Component({ selector: 'p-flex', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'] })
 export class PFlex {
   protected el: HTMLElement;
@@ -65,9 +60,9 @@ export class PFlex {
     this.el = r.nativeElement;
   }
 }
-export declare interface PFlexItem extends Components.PFlexItem {}
-@ProxyInputs(['alignSelf', 'flex', 'grow', 'offset', 'shrink', 'width'])
+proxyInputs(PFlex, ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap']);
 
+export declare interface PFlexItem extends Components.PFlexItem {}
 @Component({ selector: 'p-flex-item', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignSelf', 'flex', 'grow', 'offset', 'shrink', 'width'] })
 export class PFlexItem {
   protected el: HTMLElement;
@@ -76,9 +71,9 @@ export class PFlexItem {
     this.el = r.nativeElement;
   }
 }
-export declare interface PGrid extends Components.PGrid {}
-@ProxyInputs(['direction'])
+proxyInputs(PFlexItem, ['alignSelf', 'flex', 'grow', 'offset', 'shrink', 'width']);
 
+export declare interface PGrid extends Components.PGrid {}
 @Component({ selector: 'p-grid', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['direction'] })
 export class PGrid {
   protected el: HTMLElement;
@@ -87,9 +82,9 @@ export class PGrid {
     this.el = r.nativeElement;
   }
 }
-export declare interface PGridItem extends Components.PGridItem {}
-@ProxyInputs(['offset', 'size'])
+proxyInputs(PGrid, ['direction']);
 
+export declare interface PGridItem extends Components.PGridItem {}
 @Component({ selector: 'p-grid-item', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['offset', 'size'] })
 export class PGridItem {
   protected el: HTMLElement;
@@ -98,9 +93,9 @@ export class PGridItem {
     this.el = r.nativeElement;
   }
 }
-export declare interface PHeadline extends Components.PHeadline {}
-@ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'variant'])
+proxyInputs(PGridItem, ['offset', 'size']);
 
+export declare interface PHeadline extends Components.PHeadline {}
 @Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
 export class PHeadline {
   protected el: HTMLElement;
@@ -109,9 +104,9 @@ export class PHeadline {
     this.el = r.nativeElement;
   }
 }
-export declare interface PIcon extends Components.PIcon {}
-@ProxyInputs(['color', 'lazy', 'name', 'size', 'source'])
+proxyInputs(PHeadline, ['align', 'color', 'ellipsis', 'tag', 'variant']);
 
+export declare interface PIcon extends Components.PIcon {}
 @Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'lazy', 'name', 'size', 'source'] })
 export class PIcon {
   protected el: HTMLElement;
@@ -120,9 +115,9 @@ export class PIcon {
     this.el = r.nativeElement;
   }
 }
-export declare interface PLink extends Components.PLink {}
-@ProxyInputs(['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'target', 'theme', 'variant'])
+proxyInputs(PIcon, ['color', 'lazy', 'name', 'size', 'source']);
 
+export declare interface PLink extends Components.PLink {}
 @Component({ selector: 'p-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'target', 'theme', 'variant'] })
 export class PLink {
   protected el: HTMLElement;
@@ -131,9 +126,9 @@ export class PLink {
     this.el = r.nativeElement;
   }
 }
-export declare interface PMarque extends Components.PMarque {}
-@ProxyInputs(['trademark'])
+proxyInputs(PLink, ['download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'target', 'theme', 'variant']);
 
+export declare interface PMarque extends Components.PMarque {}
 @Component({ selector: 'p-marque', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['trademark'] })
 export class PMarque {
   protected el: HTMLElement;
@@ -142,9 +137,9 @@ export class PMarque {
     this.el = r.nativeElement;
   }
 }
-export declare interface PPagination extends Components.PPagination {}
-@ProxyInputs(['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'])
+proxyInputs(PMarque, ['trademark']);
 
+export declare interface PPagination extends Components.PPagination {}
 @Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'] })
 export class PPagination {
   pClick!: EventEmitter<CustomEvent>;
@@ -155,9 +150,9 @@ export class PPagination {
     proxyOutputs(this, this.el, ['pClick']);
   }
 }
-export declare interface PSpinner extends Components.PSpinner {}
-@ProxyInputs(['allyLabel', 'size', 'theme'])
+proxyInputs(PPagination, ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount']);
 
+export declare interface PSpinner extends Components.PSpinner {}
 @Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'size', 'theme'] })
 export class PSpinner {
   protected el: HTMLElement;
@@ -166,9 +161,9 @@ export class PSpinner {
     this.el = r.nativeElement;
   }
 }
-export declare interface PText extends Components.PText {}
-@ProxyInputs(['align', 'color', 'ellipsis', 'size', 'tag', 'weight'])
+proxyInputs(PSpinner, ['allyLabel', 'size', 'theme']);
 
+export declare interface PText extends Components.PText {}
 @Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'size', 'tag', 'weight'] })
 export class PText {
   protected el: HTMLElement;
@@ -177,9 +172,9 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
-export declare interface PTextLink extends Components.PTextLink {}
-@ProxyInputs(['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'])
+proxyInputs(PText, ['align', 'color', 'ellipsis', 'size', 'tag', 'weight']);
 
+export declare interface PTextLink extends Components.PTextLink {}
 @Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'] })
 export class PTextLink {
   pClick!: EventEmitter<CustomEvent>;
@@ -190,9 +185,9 @@ export class PTextLink {
     proxyOutputs(this, this.el, ['pClick']);
   }
 }
-export declare interface PTextList extends Components.PTextList {}
-@ProxyInputs(['color', 'listType'])
+proxyInputs(PTextLink, ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target']);
 
+export declare interface PTextList extends Components.PTextList {}
 @Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType'] })
 export class PTextList {
   protected el: HTMLElement;
@@ -201,8 +196,9 @@ export class PTextList {
     this.el = r.nativeElement;
   }
 }
-export declare interface PTextListItem extends Components.PTextListItem {}
+proxyInputs(PTextList, ['color', 'listType']);
 
+export declare interface PTextListItem extends Components.PTextListItem {}
 @Component({ selector: 'p-text-list-item', changeDetection: 0, template: '<ng-content></ng-content>' })
 export class PTextListItem {
   protected el: HTMLElement;
