@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { BreakpointCustomizable, hasShadowDom, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { LinkTarget, Theme } from '../../../types';
@@ -44,31 +44,24 @@ export class Link {
     improveFocusHandlingForCustomElement(this.element);
 
     /**
-     * only apply workaround if not safari force touch
-     * browser (force touch wouldn't work and they do
-     * support shadow dom anyway)
+     * IE11/Edge (not chromium based) workaround to
+     * fix the event target of click events (which normally
+     * shadow dom takes care of)
+     *
+     * caution: if the click event would be bound on
+     * safari browsers with force touch, the force touch
+     * functionality wouldn't work anymore. but since they
+     * do have shadowDom the click event should never be
+     * bound.
      */
-    if (!(MouseEvent as any).WEBKIT_FORCE_AT_FORCE_MOUSE_DOWN) {
-      /**
-       * IE11/Edge (not chromium based) workaround to
-       * fix the event target of click events (which normally
-       * shadow dom takes care of)
-       */
+    if (!hasShadowDom(this.element)) {
       this.element.addEventListener('click', (event: MouseEvent): void => {
-        if (event.target !== this.element) {
-          event.stopPropagation();
-
-          if (window.navigator.userAgent.indexOf('Trident/') < 0) {
-            /**
-             * for ie11 (which is trident engine) we can not
-             * prevent the default, because clicks from js
-             * are not going to follow links
-             */
-            event.preventDefault();
-          }
-
-          this.element.click();
-        }
+        /**
+         * caution: do not preventDefault here, else ie11 wouldn't work
+         * anymore
+         */
+        event.stopPropagation();
+        this.element.click();
       }, true);
     }
   }
@@ -88,7 +81,6 @@ export class Link {
     return (
       <TagType
         class={linkClasses}
-        href={this.href}
         {...(TagType === 'a' ? { href: this.href, target: `${this.target}`, download: this.download, rel: this.rel } : null)}
       >
         <p-icon

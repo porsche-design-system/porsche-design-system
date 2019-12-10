@@ -1,6 +1,6 @@
 /* disable animations globally */
 :root {
-  --p-animation-duration__spinner: 0s;
+  --p-animation-duration__spinner: 0s !important;
 }
 
 .playground {
