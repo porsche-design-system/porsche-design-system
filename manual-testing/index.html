@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manual Testing</title>
+  <link rel="stylesheet" href="porsche-ui-kit/porsche-ui-kit.css">
+  <script type="module" src="porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+  <script nomodule src="porsche-ui-kit/porsche-ui-kit.js"></script>
+  <style>
+    p-headline {
+      margin: 32px 0 16px;
+    }
+    #logs {
+      border: 1px solid #0e1418;
+    }
+  </style>
+</head>
+<body>
+  <p-grid>
+    <p-grid-item size="{ base: 12, m: 6 }">
+      <p-headline variant="headline-1" tag="h1">Button</p-headline>
+      <p-headline variant="headline-2" tag="h2">Form</p-headline>
+      <form action="https://ui.porsche.com">
+        <input type="text" value="some value" />
+        <p-button type="button">Button</p-button>
+        <p-button type="reset">Reset</p-button>
+        <p-button type="submit">Submit</p-button>
+        <p-button tabbable="false">Skip for tabbing</p-button>
+        <p-button type="submit" disabled="true">Submit disabled</p-button>
+        <button type="button">Button nativ</button>
+        <button type="reset">Reset nativ</button>
+        <button type="submit">Submit nativ</button>
+        <button type="submit" disabled>Submit disabled native</button>
+      </form>
+      <p-headline variant="headline-2" tag="h2">No form</p-headline>
+      <p-button type="button">Button</p-button>
+      <p-button type="reset">Reset</p-button>
+      <p-button type="submit">Submit</p-button>
+      <p-button  type="submit" disabled="true">Submit disabled</p-button>
+      <button type="button">Button nativ</button>
+      <button type="reset">Reset nativ</button>
+      <button type="submit">Submit nativ</button>
+      <button type="submit" disabled>Submit disabled native</button>
+    </p-grid-item>
+    <p-grid-item size="{ base: 12, m: 6 }">
+      <p-headline variant="headline-1" tag="h1">Button Pure</p-headline>
+      <p-headline variant="headline-2" tag="h2">Form</p-headline>
+      <form action="https://ui.porsche.com">
+        <input type="text" value="some value" />
+        <p-button-pure type="button">Button</p-button-pure>
+        <p-button-pure type="reset">Reset</p-button-pure>
+        <p-button-pure type="submit">Submit</p-button-pure>
+        <p-button-pure tabbable="false">Skip for tabbing</p-button-pure>
+        <p-button-pure type="submit" disabled="true">Submit disabled</p-button-pure>
+      </form>
+      <p-headline variant="headline-2" tag="h2">No form</p-headline>
+      <p-button-pure>Button</p-button-pure>
+      <p-button-pure>Reset</p-button-pure>
+      <p-button-pure>Submit</p-button-pure>
+      <p-button-pure disabled="true">Disabled</p-button-pure>
+    </p-grid-item>
+  </p-grid>
+
+  <p-grid>
+    <p-grid-item size="{ base: 12, m: 6 }">
+      <p-headline variant="headline-1" tag="h1">Link</p-headline>
+      <p-link href="https://ui.porsche.com">Link</p-link>
+      <a href="https://ui.porsche.com">
+        <p-link>Wrapped link</p-link>
+      </a>
+      <p-link href="https://ui.porsche.com" target="_blank">Link target blank</p-link>
+      <a href="https://ui.porsche.com" target="_blank">
+        <p-link>Wrapped link target blank</p-link>
+      </a>
+      <a href="https://ui.porsche.com">Link native</a>
+    </p-grid-item>
+    <p-grid-item size="{ base: 12, m: 6 }">
+      <p-headline variant="headline-1" tag="h1">Link Pure</p-headline>
+      <p-text color="inherit" style="color: #d5001c">Todo: not yet ready</p-text>
+    </p-grid-item>
+  </p-grid>
+  <p-headline variant="headline-1" tag="h1">Logs</p-headline>
+  <div id="logs" style="min-height: 100px; max-height: 200px; overflow: auto;"></div>
+  <script>
+    var logsContainer = document.querySelector('#logs');
+    var clean = true;
+    var elements = document.querySelectorAll('p-link, p-button, p-button-pure, p-link-pure, button, a');
+    for(var i = 0; i < elements.length; i++) {
+      var element = elements[i];
+      element.addEventListener('click', function(event) {
+        var div = document.createElement('div');
+        div.innerHTML = 'clicked: ' + event.target.innerText;
+        clean = false;
+        logsContainer.prepend(div);
+      });
+      element.addEventListener('focus', function(event) {
+        var div = document.createElement('div');
+        div.innerHTML = 'focus: ' + event.target.innerText;
+        clean = false;
+        logsContainer.prepend(div);
+      });
+      element.addEventListener('focusin', function(event) {
+        var div = document.createElement('div');
+        div.innerHTML = 'focusin: ' + event.target.innerText;
+        clean = false;
+        logsContainer.prepend(div);
+      });
+      element.addEventListener('blur', function(event) {
+        var div = document.createElement('div');
+        div.innerHTML = 'blur: ' + event.target.innerText;
+        clean = false;
+        logsContainer.prepend(div);
+      });
+      element.addEventListener('focusout', function(event) {
+        var div = document.createElement('div');
+        div.innerHTML = 'focusout: ' + event.target.innerText;
+        clean = false;
+        logsContainer.prepend(div);
+      });
+    }
+
+    var forms = document.querySelectorAll('form');
+    for(var i = 0; i < forms.length; i++) {
+      var form = forms[i];
+      form.addEventListener('submit', function(event) {
+        var div = document.createElement('div');
+        div.innerHTML = 'form submitted...';
+        clean = false;
+        logsContainer.prepend(div);
+        event.preventDefault();
+      });
+    }
+
+    window.setInterval(function() {
+      if (!clean) {
+        clean = true;
+        var div = document.createElement('div');
+        div.innerHTML = '-------------';
+        logsContainer.prepend(div);
+      }
+    }, 500);
+  </script>
+</body>
+</html>
