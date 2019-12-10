@@ -93,15 +93,23 @@ export class Link {
 
 
   /**
-   * IE11 workaround to fix the event target
-   * of click events (which normally shadow dom
-   * takes care of)
+   * IE11/Edge (not chromium based) workaround to
+   * fix the event target of click events (which normally
+   * shadow dom takes care of)
    */
   @Listen('click', { capture: true })
   public fixEventTarget(event: MouseEvent): void {
     if (event.target !== this.element) {
       event.stopPropagation();
-      event.preventDefault();
+
+      if (window.navigator.userAgent.indexOf('Trident/') < 0) {
+        /**
+         * for ie11 we can not prevent the default, because
+         * clicks from js are not going to follow links
+         */
+        event.preventDefault();
+      }
+
       this.element.click();
     }
   }
