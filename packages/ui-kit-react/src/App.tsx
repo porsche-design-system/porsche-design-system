@@ -181,7 +181,7 @@ const App: React.FC = () => {
         <PGridItem size={2}>
           <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-button-pure&gt;</PHeadline>
         </PGridItem>
-        <PGridItem size={10}>
+        <PGridItem size={5}>
           <div className="playground light spacing-inline">
             <PButtonPure>Some label</PButtonPure>
             <PButtonPure disabled={true}>Some label</PButtonPure>
@@ -202,15 +202,38 @@ const App: React.FC = () => {
             <PButtonPure weight={'bold'}>Bold</PButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonPure color={'porsche-black'}>Porsche Black</PButtonPure>
-            <PButtonPure color={'porsche-light'} style={{ background: 'black' }}>Porsche Light</PButtonPure>
-            <PButtonPure color={'inherit'} style={{ color: 'deeppink' }}>Inherited custom color</PButtonPure>
-          </div>
-          <div className="playground light spacing-inline">
             <PButtonPure icon={'delete'}>Some button with a custom icon</PButtonPure>
           </div>
           <div className="playground light spacing-inline">
             <PButtonPure style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
+          </div>
+          <hr/>
+        </PGridItem>
+        <PGridItem size={5}>
+          <div className="playground dark spacing-inline">
+            <PButtonPure theme={'dark'}>Some label</PButtonPure>
+            <PButtonPure disabled={true} theme={'dark'}>Some label</PButtonPure>
+            <PButtonPure loading={true} theme={'dark'}>Some label</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure hideLabel={true} theme={'dark'}>Some label</PButtonPure>
+            <PButtonPure hideLabel={true} disabled={true} theme={'dark'}>Some label</PButtonPure>
+            <PButtonPure hideLabel={true} loading={true} theme={'dark'}>Some label</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure size={'medium'} theme={'dark'}>Medium</PButtonPure>
+            <PButtonPure size={'inherit'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure weight={'thin'} theme={'dark'}>Thin</PButtonPure>
+            <PButtonPure weight={'regular'} theme={'dark'}>Regular</PButtonPure>
+            <PButtonPure weight={'bold'} theme={'dark'}>Bold</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure icon={'delete'} theme={'dark'}>Some button with a custom icon</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
           </div>
           <hr/>
         </PGridItem>
