@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, hasShadowDom } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
 import { ButtonType, Theme } from '../../../types';
@@ -95,9 +95,9 @@ export class Button {
   }
 
   /**
-   * IE11 workaround to fix the event target
-   * of click events (which normally shadow dom
-   * takes care of)
+   * IE11/Edge (not chromium based) workaround to
+   * fix the event target of click events (which normally
+   * shadow dom takes care of)
    */
   @Listen('click', { capture: true })
   public fixEventTarget(event: MouseEvent): void {
@@ -110,7 +110,7 @@ export class Button {
 
   @Listen('click')
   public onClick(event: MouseEvent): void {
-    if (this.type === 'submit' && hasShadowDom(this.element)) {
+    if (this.type === 'submit') {
       // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
       const form = this.element.closest('form');
       if (form) {

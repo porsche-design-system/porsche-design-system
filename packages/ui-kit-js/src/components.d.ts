@@ -260,17 +260,9 @@ export namespace Components {
     */
     'iconSource'?: string;
     /**
-    * Check native tabindex to ensure that it doesn't get set on the host element
-    */
-    'nativeTabindex'?: number;
-    /**
     * Specifies the relationship of the target object to the link object.
     */
     'rel'?: string;
-    /**
-    * To remove the element from tab order.
-    */
-    'tabbable'?: boolean;
     /**
     * Target attribute where the link should be opened.
     */
@@ -777,10 +769,6 @@ declare namespace LocalJSX {
     * Specifies the relationship of the target object to the link object.
     */
     'rel'?: string;
-    /**
-    * To remove the element from tab order.
-    */
-    'tabbable'?: boolean;
     /**
     * Target attribute where the link should be opened.
     */

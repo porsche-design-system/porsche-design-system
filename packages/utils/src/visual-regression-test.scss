@@ -2,7 +2,7 @@
 
 // disable animations globally because of Browserstack VRT testing
 :root {
-  --p-animation-duration__spinner: 0s;
+  --p-animation-duration__spinner: 0s !important;
 }
 
 // disable animations for IE11
