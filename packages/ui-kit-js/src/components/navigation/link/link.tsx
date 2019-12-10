@@ -88,7 +88,6 @@ export class Link {
     return (
       <TagType
         class={linkClasses}
-        href={this.href}
         {...(TagType === 'a' ? { href: this.href, target: `${this.target}`, download: this.download, rel: this.rel } : null)}
       >
         <p-icon
