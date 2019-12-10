@@ -137,9 +137,23 @@ export const config: DesignSystemConfig = {
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`)
-        ]
-      }
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`),
+        ],
+      },
+      'Button Pure': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.props.md`),
+        ],
+      },
     },
     Content: {
       'Text List': {
@@ -230,21 +244,7 @@ export const config: DesignSystemConfig = {
       }
     },
     Navigation: {
-      Pagination: {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`)
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`)
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`)
-        ]
-      },
-      Link: {
+      'Link': {
         Design: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/navigation/link/link.design.md`)
@@ -258,20 +258,26 @@ export const config: DesignSystemConfig = {
           () => import(`@/../../ui-kit-js/src/components/navigation/link/link.props.md`)
         ]
       },
-      'Text Link': {
+      'Link Pure': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.design.md`)
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.design.md`),
+        ]
+      },
+      Pagination: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`),
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.code.md`)
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`),
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/text-link/text-link.props.md`)
-        ]
-      }
-    }
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`),
+        ],
+      },
+    },
   }
 };

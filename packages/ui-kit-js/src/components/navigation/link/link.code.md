@@ -94,23 +94,10 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   </template>
 </Playground>
 
-## Remove Link from tab order
-With setting the `tabbable` property to `false` you can remove the link from the tab order.
-
-<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot={theme}>
-    <p-link href="https://www.porsche.com" tabbable="true" :theme="theme">Some label</p-link>
-    <p-link href="https://www.porsche.com" tabbable="false" :theme="theme">Some label</p-link>
-  </template>
-</Playground>
-
-
 <style scoped lang="scss">
-
-.example-link {
-  display: inline-block;
-  outline: none;
-  text-decoration: none;
-}
-
+  .example-link {
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+  }
 </style>

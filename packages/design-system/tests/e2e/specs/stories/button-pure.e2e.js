@@ -1,21 +1,21 @@
-describe('Text Link', () => {
+describe('Button Pure', () => {
   it('Should navigate through main navigation', () => {
     cy.visit('/#/web');
 
     cy.get('#app aside nav a')
-      .contains('Text Link')
+      .contains('Button Pure')
       .click()
       .parents('a')
       .should('have.class', 'router-link-active');
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'Text Link');
+      .and('contain', 'Button Pure');
   });
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/web/components/navigation/text-link');
+      cy.visit('/#/web/components/action/button-pure');
     });
 
     it('Should show tab navigation with first tab activated', () => {
@@ -39,7 +39,7 @@ describe('Text Link', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Text Link');
+      cy.get('#app main h1').should('contain', 'Button Pure');
     });
 
     it('Should show code documentation', () => {
@@ -48,7 +48,7 @@ describe('Text Link', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Text Link');
+      cy.get('#app main h1').should('contain', 'Button Pure');
     });
 
     it('Should show props documentation', () => {
@@ -57,7 +57,7 @@ describe('Text Link', () => {
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Text Link');
+      cy.get('#app main h1').should('contain', 'Button Pure');
     });
   });
 });

@@ -12,6 +12,7 @@ import {
   LinkTarget,
   TextColor,
   TextSize,
+  TextWeight,
   Theme,
 } from './types';
 import {
@@ -44,10 +45,6 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
-    * Check native tabindex to ensure that it doesn't get set on the host element
-    */
-    'nativeTabindex'?: number;
-    /**
     * To remove the element from tab order.
     */
     'tabbable'?: boolean;
@@ -63,6 +60,48 @@ export namespace Components {
     * The style variant of the button.
     */
     'variant'?: 'primary' | 'secondary' | 'tertiary';
+  }
+  interface PButtonPure {
+    /**
+    * Disables the button. No events will be triggered while disabled state is active.
+    */
+    'disabled'?: boolean;
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    /**
+    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+    */
+    'loading'?: boolean;
+    /**
+    * Size of the button.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
+    * To remove the element from tab order.
+    */
+    'tabbable'?: boolean;
+    /**
+    * Adapts the button color depending on the theme.
+    */
+    'theme'?: Theme;
+    /**
+    * Specifies the type of the button.
+    */
+    'type'?: ButtonType;
+    /**
+    * The weight of the text (only has effect with visible label).
+    */
+    'weight'?: TextWeight;
   }
   interface PFlex {
     /**
@@ -213,17 +252,9 @@ export namespace Components {
     */
     'iconSource'?: string;
     /**
-    * Check native tabindex to ensure that it doesn't get set on the host element
-    */
-    'nativeTabindex'?: number;
-    /**
     * Specifies the relationship of the target object to the link object.
     */
     'rel'?: string;
-    /**
-    * To remove the element from tab order.
-    */
-    'tabbable'?: boolean;
     /**
     * Target attribute where the link should be opened.
     */
@@ -327,7 +358,7 @@ export namespace Components {
     /**
     * The weight of the text.
     */
-    'weight'?: 'thin' | 'regular' | 'bold';
+    'weight'?: TextWeight;
   }
   interface PTextLink {
     /**
@@ -387,6 +418,12 @@ declare global {
   var HTMLPButtonElement: {
     prototype: HTMLPButtonElement;
     new (): HTMLPButtonElement;
+  };
+
+  interface HTMLPButtonPureElement extends Components.PButtonPure, HTMLStencilElement {}
+  var HTMLPButtonPureElement: {
+    prototype: HTMLPButtonPureElement;
+    new (): HTMLPButtonPureElement;
   };
 
   interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {}
@@ -474,6 +511,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
+    'p-button-pure': HTMLPButtonPureElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
@@ -529,6 +567,48 @@ declare namespace LocalJSX {
     * The style variant of the button.
     */
     'variant'?: 'primary' | 'secondary' | 'tertiary';
+  }
+  interface PButtonPure {
+    /**
+    * Disables the button. No events will be triggered while disabled state is active.
+    */
+    'disabled'?: boolean;
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    /**
+    * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+    */
+    'loading'?: boolean;
+    /**
+    * Size of the button.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
+    * To remove the element from tab order.
+    */
+    'tabbable'?: boolean;
+    /**
+    * Adapts the button color depending on the theme.
+    */
+    'theme'?: Theme;
+    /**
+    * Specifies the type of the button.
+    */
+    'type'?: ButtonType;
+    /**
+    * The weight of the text (only has effect with visible label).
+    */
+    'weight'?: TextWeight;
   }
   interface PFlex {
     /**
@@ -682,10 +762,6 @@ declare namespace LocalJSX {
     */
     'rel'?: string;
     /**
-    * To remove the element from tab order.
-    */
-    'tabbable'?: boolean;
-    /**
     * Target attribute where the link should be opened.
     */
     'target'?: LinkTarget;
@@ -792,7 +868,7 @@ declare namespace LocalJSX {
     /**
     * The weight of the text.
     */
-    'weight'?: 'thin' | 'regular' | 'bold';
+    'weight'?: TextWeight;
   }
   interface PTextLink {
     /**
@@ -850,6 +926,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'p-button': PButton;
+    'p-button-pure': PButtonPure;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
     'p-grid': PGrid;
@@ -874,6 +951,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'p-button': LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
+      'p-button-pure': LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
       'p-flex': LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
       'p-flex-item': LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
       'p-grid': LocalJSX.PGrid & JSXBase.HTMLAttributes<HTMLPGridElement>;

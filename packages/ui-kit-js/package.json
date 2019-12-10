@@ -60,7 +60,7 @@
     "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
-    "@stencil/angular-output-target": "^0.0.1",
+    "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-plugins/releases/download/0.0.1-fixed/angular-output-target-0.0.1-fixed.tar.gz",
     "@stencil/core": "1.8.1",
     "@stencil/postcss": "^1.0.1",
     "@stencil/react-output-target": "^0.0.2",
