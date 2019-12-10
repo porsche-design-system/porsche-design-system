@@ -87,6 +87,7 @@ export default class Sidebar extends Vue {
     text-decoration: none;
     color: $p-color-porsche-black;
 
+    &:hover,
     &.router-link-active {
       color: $p-color-porsche-red;
     }

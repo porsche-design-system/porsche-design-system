@@ -59,7 +59,7 @@ export class LinkPure {
       prefix('link-pure'),
       mapBreakpointPropToPrefixedClasses('link-pure-', this.hideLabel, ['without-label', 'with-label']),
       mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
-      prefix(`link-pure--theme-${this.theme}`),
+      !this.color && prefix(`link-pure--theme-${this.theme}`),
       this.color && prefix(`link-pure--color-${this.color}`)
     );
 

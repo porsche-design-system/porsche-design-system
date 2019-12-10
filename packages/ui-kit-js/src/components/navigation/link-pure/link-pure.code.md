@@ -90,7 +90,7 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ## Color
 
-Though basic colors are set by the `theme` property, they can be overridden by the `color` property or even inherited from outside. 
+Though basic colors are set by the `theme` property, they can be overridden by the `color` property or even inherited from outside to customize coloring on specific needs. 
 
 <Playground :themeable="true">
   <template v-slot={theme}>
@@ -153,7 +153,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   import { Component, Vue } from 'vue-property-decorator';
   
   @Component
-  export default class PlaygroundButtonPure extends Vue {
+  export default class PlaygroundLinkPure extends Vue {
     public size: string = 'medium';
     public weight: string = 'thin';
     
