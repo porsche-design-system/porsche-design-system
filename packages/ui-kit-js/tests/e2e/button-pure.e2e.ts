@@ -172,44 +172,4 @@ describe('button pure', () => {
     expect(focusSpy.length).toBe(0);
     expect(afterFocusSpy.length).toBe(1);
   });
-
-  it(`should ignore native tab index and show a warning on console`, async () => {
-    const page = await newE2EPage();
-    const consoleLogs = [];
-    page.on('console', msg => {
-      consoleLogs.push({
-        type: msg.type(),
-        text: msg.text()
-      });
-    });
-    await page.setContent(`
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-button-pure tabindex="1">Some label</p-button-pure>
-            <a href="#" id="after">after</a>
-          </div>
-    `);
-
-    expect(consoleLogs.length).toBe(5); // <= should be 1 but Stencil outputs additional warnings unfortunately
-    expect(consoleLogs[1].type).toBe('warning');
-    expect(consoleLogs[1].text).toBe('You can not set the tabindex on the host element of Porsche UI-Kit components. Please use `tabbable` instead.');
-
-    const button = await page.find('p-button-pure');
-    const before = await page.find('#before');
-    const after = await page.find('#after');
-
-    const focusSpy = await button.spyOnEvent('focus');
-    const afterFocusSpy = await after.spyOnEvent('focus');
-
-    await before.focus();
-
-    expect(focusSpy.length).toBe(0);
-    expect(afterFocusSpy.length).toBe(0);
-    await page.keyboard.press('Tab');
-    expect(focusSpy.length).toBe(1);
-    expect(afterFocusSpy.length).toBe(0);
-    await page.keyboard.press('Tab');
-    expect(focusSpy.length).toBe(1);
-    expect(afterFocusSpy.length).toBe(1);
-  });
 });
