@@ -41,7 +41,7 @@ export class PButton {
 proxyInputs(PButton, ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant']);
 
 export declare interface PButtonPure extends Components.PButtonPure {}
-@Component({ selector: 'p-button-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'type', 'weight'] })
+@Component({ selector: 'p-button-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight'] })
 export class PButtonPure {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -49,7 +49,7 @@ export class PButtonPure {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(PButtonPure, ['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'type', 'weight']);
+proxyInputs(PButtonPure, ['color', 'disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight']);
 
 export declare interface PFlex extends Components.PFlex {}
 @Component({ selector: 'p-flex', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'] })

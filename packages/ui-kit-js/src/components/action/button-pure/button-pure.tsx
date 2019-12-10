@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, hasShadowDom } from '../../../utils';
-import {ButtonType, TextSize, TextColor, TextWeight} from '../../../types';
+import {ButtonType, TextSize, TextColor, TextWeight, Theme} from '../../../types';
 import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
 
@@ -53,6 +53,9 @@ export class ButtonPure {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Adapts the button color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
+
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
   }
@@ -64,7 +67,7 @@ export class ButtonPure {
       prefix('button-pure'),
       mapBreakpointPropToPrefixedClasses('button-pure-', this.hideLabel, ['without-label', 'with-label']),
       mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
-      prefix(`button-pure--color-${this.color}`)
+      prefix(`button-pure--theme-${this.theme}`)
     );
 
     const iconClasses = cx(
@@ -86,6 +89,7 @@ export class ButtonPure {
           <p-spinner
             class={iconClasses}
             size='inherit'
+            theme={this.theme}
           />
         ) : (
           <p-icon
