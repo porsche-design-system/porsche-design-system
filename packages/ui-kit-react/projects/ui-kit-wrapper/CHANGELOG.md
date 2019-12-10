@@ -14,6 +14,9 @@
 
 * Link component
   * New custom element
+  
+* Link-Pure component
+  * New custom element
 
 * Text component
   * Reduce amount of text variants in global interface

@@ -14,7 +14,8 @@ import {
   PSpinner,
   PIcon,
   PPagination,
-  PLink
+  PLink,
+  PLinkPure
 } from '@porsche-ui/ui-kit-react';
 
 const App: React.FC = () => {
@@ -546,7 +547,59 @@ const App: React.FC = () => {
             <hr/>
         </PGridItem>
       </PGrid>
-      <hr/>
+      <PGrid>
+        <PGridItem size={2}>
+          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-link-pure&gt;</PHeadline>
+        </PGridItem>
+        <PGridItem size={5}>
+          <div className="playground light spacing-inline">
+            <PLinkPure href={'https://ui.porsche.com'}>Some label</PLinkPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLinkPure hideLabel={true} href={'https://ui.porsche.com'}>Some label</PLinkPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLinkPure size={'medium'} href={'https://ui.porsche.com'}>Medium</PLinkPure>
+            <PLinkPure size={'inherit'} href={'https://ui.porsche.com'} style={{ fontSize: '48px' }}>Inherit</PLinkPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLinkPure weight={'thin'} href={'https://ui.porsche.com'}>Thin</PLinkPure>
+            <PLinkPure weight={'regular'} href={'https://ui.porsche.com'}>Regular</PLinkPure>
+            <PLinkPure weight={'bold'} href={'https://ui.porsche.com'}>Bold</PLinkPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLinkPure icon={'phone'} href={'https://ui.porsche.com'}>Some link with a custom icon</PLinkPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <PLinkPure href={'https://ui.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLinkPure>
+          </div>
+          <hr/>
+        </PGridItem>
+        <PGridItem size={5}>
+          <div className="playground dark spacing-inline">
+            <PLinkPure href={'https://ui.porsche.com'} theme={'dark'}>Some label</PLinkPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLinkPure hideLabel={true} href={'https://ui.porsche.com'} theme={'dark'}>Some label</PLinkPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLinkPure size={'medium'} href={'https://ui.porsche.com'} theme={'dark'}>Medium</PLinkPure>
+            <PLinkPure size={'inherit'} href={'https://ui.porsche.com'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</PLinkPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLinkPure weight={'thin'} href={'https://ui.porsche.com'} theme={'dark'}>Thin</PLinkPure>
+            <PLinkPure weight={'regular'} href={'https://ui.porsche.com'} theme={'dark'}>Regular</PLinkPure>
+            <PLinkPure weight={'bold'} href={'https://ui.porsche.com'} theme={'dark'}>Bold</PLinkPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLinkPure icon={'phone'} href={'https://ui.porsche.com'} theme={'dark'}>Some link with a custom icon</PLinkPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLinkPure href={'https://ui.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLinkPure>
+          </div>
+          <hr/>
+        </PGridItem>
+      </PGrid>
       <PGrid>
         <PGridItem size={2}>
           <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-pagination&gt;</PHeadline>
