@@ -103,25 +103,14 @@ export class Button {
   public fixEventTarget(event: MouseEvent): void {
     if (event.target !== this.element) {
       event.stopPropagation();
-
-      /**
-       * we can not prevent the default, because clicks
-       * to the host element wouldn't trigger the form
-       * submit and we add this behaviour only for
-       * browsers with shadowDOM, but this event
-       * target fix is only for browsers without
-       * shadowDOM (IE11/Edge (not chromium based))
-       *
-       * event.preventDefault();
-       */
-
+      event.preventDefault();
       this.element.click();
     }
   }
 
   @Listen('click')
   public onClick(event: MouseEvent): void {
-    if (this.type === 'submit' && hasShadowDom(this.element)) {
+    if (this.type === 'submit') {
       // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
       const form = this.element.closest('form');
       if (form) {
