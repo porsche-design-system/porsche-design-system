@@ -32,6 +32,21 @@
         <button type="submit">Submit nativ</button>
         <button type="submit" disabled>Submit disabled native</button>
       </form>
+      <p-headline variant="headline-2" tag="h2">Form prevented</p-headline>
+      <div class="preventDefault">
+        <form action="https://ui.porsche.com">
+          <input type="text" value="some value" />
+          <p-button type="button">Button</p-button>
+          <p-button type="reset">Reset</p-button>
+          <p-button type="submit">Submit</p-button>
+          <p-button tabbable="false">Skip for tabbing</p-button>
+          <p-button type="submit" disabled="true">Submit disabled</p-button>
+          <button type="button">Button nativ</button>
+          <button type="reset">Reset nativ</button>
+          <button type="submit">Submit nativ</button>
+          <button type="submit" disabled>Submit disabled native</button>
+        </form>
+      </div>
       <p-headline variant="headline-2" tag="h2">No form</p-headline>
       <p-button type="button">Button</p-button>
       <p-button type="reset">Reset</p-button>
@@ -53,6 +68,19 @@
         <p-button-pure tabbable="false">Skip for tabbing</p-button-pure>
         <p-button-pure type="submit" disabled="true">Submit disabled</p-button-pure>
       </form>
+
+      <div class="preventDefault">
+        <p-headline variant="headline-2" tag="h2">Form prevented</p-headline>
+        <form action="https://ui.porsche.com">
+          <input type="text" value="some value" />
+          <p-button-pure type="button">Button</p-button-pure>
+          <p-button-pure type="reset">Reset</p-button-pure>
+          <p-button-pure type="submit">Submit</p-button-pure>
+          <p-button-pure tabbable="false">Skip for tabbing</p-button-pure>
+          <p-button-pure type="submit" disabled="true">Submit disabled</p-button-pure>
+        </form>
+      </div>
+
       <p-headline variant="headline-2" tag="h2">No form</p-headline>
       <p-button-pure>Button</p-button-pure>
       <p-button-pure>Reset</p-button-pure>
@@ -127,6 +155,14 @@
         div.innerHTML = 'form submitted...';
         clean = false;
         logsContainer.prepend(div);
+        event.preventDefault();
+      });
+    }
+
+    var toPrevent = document.querySelectorAll('.preventDefault');
+    for(var i = 0; i < toPrevent.length; i++) {
+      var el = toPrevent[i];
+      el.addEventListener('click', function(event) {
         event.preventDefault();
       });
     }
