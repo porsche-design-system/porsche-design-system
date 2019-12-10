@@ -67,10 +67,6 @@ export namespace Components {
   }
   interface PButtonPure {
     /**
-    * Basic text color variations.
-    */
-    'color'?: TextColor;
-    /**
     * Disables the button. No events will be triggered while disabled state is active.
     */
     'disabled'?: boolean;
@@ -589,10 +585,6 @@ declare namespace LocalJSX {
     'variant'?: 'primary' | 'secondary' | 'tertiary';
   }
   interface PButtonPure {
-    /**
-    * Basic text color variations.
-    */
-    'color'?: TextColor;
     /**
     * Disables the button. No events will be triggered while disabled state is active.
     */
