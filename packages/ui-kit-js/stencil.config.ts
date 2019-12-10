@@ -43,9 +43,7 @@ export const config: Config = {
     }),
     angularOutputTarget({
       componentCorePackage: '@porsche-ui/ui-kit-js',
-      // TODO: temporary disable overwriting ui-kit-wrapper.component.ts to add manual adjustments
-      // https://ioniccustomersuccess.slack.com/archives/GL2Q8P9T7/p1571060767006100
-      directivesProxyFile: '../ui-kit-angular/projects/ui-kit-wrapper/src/lib/ui-kit-wrapper.component.generated.ts'
+      directivesProxyFile: '../ui-kit-angular/projects/ui-kit-wrapper/src/lib/ui-kit-wrapper.component.ts'
     }),
   ],
   bundles: [
@@ -58,6 +56,7 @@ export const config: Config = {
     })
   ],
   globalStyle: 'src/styles/index.scss',
+  globalScript: 'src/setup.ts',
   testing: {
     globalSetup: './jest.setup',
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
