@@ -128,7 +128,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
 
-<Playground>
+<Playground :themeable="true">
   <template v-slot={theme}>
     <p-button-pure tabbable="true" :theme="theme">Some label</p-button-pure>
     <br>
