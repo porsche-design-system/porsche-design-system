@@ -43,6 +43,17 @@ export class PButton {
     this.el = r.nativeElement;
   }
 }
+export declare interface PButtonPure extends Components.PButtonPure {}
+@ProxyInputs(['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight'])
+
+@Component({ selector: 'p-button-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'size', 'tabbable', 'theme', 'type', 'weight'] })
+export class PButtonPure {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
 export declare interface PFlex extends Components.PFlex {}
 @ProxyInputs(['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'])
 

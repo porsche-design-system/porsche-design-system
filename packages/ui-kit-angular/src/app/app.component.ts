@@ -94,6 +94,9 @@ import {Component} from '@angular/core';
           <div class="playground light spacing-inline">
             <p-button [icon]="'phone'">Some label</p-button>
           </div>
+          <div class="playground light spacing-inline">
+            <p-button style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+          </div>
           <hr>
           <div class="playground light spacing-inline">
             <p-button [variant]="'primary'" [hideLabel]="true">Some label</p-button>
@@ -134,6 +137,10 @@ import {Component} from '@angular/core';
           <div class="playground dark spacing-inline">
             <p-button [theme]="'dark'" [icon]="'phone'">Some label</p-button>
           </div>
+          <div class="playground dark spacing-inline">
+            <p-button [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing
+            </p-button>
+          </div>
           <hr>
           <div class="playground dark spacing-inline">
             <p-button [variant]="'primary'" [hideLabel]="true" [theme]="'dark'">Some label</p-button>
@@ -158,19 +165,61 @@ import {Component} from '@angular/core';
       </p-grid>
       <p-grid>
         <p-grid-item [size]="2">
-          <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-text-link&gt;</p-headline>
+          <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-button-pure&gt;</p-headline>
         </p-grid-item>
-        <p-grid-item [size]="10">
+        <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
-            <p-text-link [href]="'https://ui.porsche.com'">Some link with default icon</p-text-link>
+            <p-button-pure>Some label</p-button-pure>
+            <p-button-pure [disabled]="true">Some label</p-button-pure>
+            <p-button-pure [loading]="true">Some label</p-button-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-text-link [href]="'https://ui.porsche.com'" [color]="'porsche-black'">Porsche Black</p-text-link>
-            <p-text-link [href]="'https://ui.porsche.com'" [color]="'porsche-light'" style="background: black;">Porsche Light</p-text-link>
-            <p-text-link [href]="'https://ui.porsche.com'" [color]="'inherit'" style="color: deeppink;">Inherited custom color</p-text-link>
+            <p-button-pure [hideLabel]="true">Some label</p-button-pure>
+            <p-button-pure [hideLabel]="true" [disabled]="true">Some label</p-button-pure>
+            <p-button-pure [hideLabel]="true" [loading]="true">Some label</p-button-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-text-link [href]="'https://ui.porsche.com'" [icon]="'delete'">Some link with a custom icon</p-text-link>
+            <p-button-pure [size]="'medium'">Medium</p-button-pure>
+            <p-button-pure [size]="'inherit'" style="font-size: 48px;">Inherit</p-button-pure>
+          </div>
+          <div class="playground light spacing-inline">
+            <p-button-pure [weight]="'thin'">Thin</p-button-pure>
+            <p-button-pure [weight]="'regular'">Regular</p-button-pure>
+            <p-button-pure [weight]="'bold'">Bold</p-button-pure>
+          </div>
+          <div class="playground light spacing-inline">
+            <p-button-pure [icon]="'delete'">Some button with a custom icon</p-button-pure>
+          </div>
+          <div class="playground light spacing-inline">
+            <p-button-pure style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
+          </div>
+          <hr>
+        </p-grid-item>
+        <p-grid-item [size]="5">
+          <div class="playground dark spacing-inline">
+            <p-button-pure [theme]="'dark'">Some label</p-button-pure>
+            <p-button-pure [disabled]="true" [theme]="'dark'">Some label</p-button-pure>
+            <p-button-pure [loading]="true" [theme]="'dark'">Some label</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [hideLabel]="true" [theme]="'dark'">Some label</p-button-pure>
+            <p-button-pure [hideLabel]="true" [disabled]="true" [theme]="'dark'">Some label</p-button-pure>
+            <p-button-pure [hideLabel]="true" [loading]="true" [theme]="'dark'">Some label</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [size]="'medium'" [theme]="'dark'">Medium</p-button-pure>
+            <p-button-pure [size]="'inherit'" [theme]="'dark'" style="font-size: 48px;">Inherit</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [weight]="'thin'" [theme]="'dark'">Thin</p-button-pure>
+            <p-button-pure [weight]="'regular'" [theme]="'dark'">Regular</p-button-pure>
+            <p-button-pure [weight]="'bold'" [theme]="'dark'">Bold</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [icon]="'delete'" [theme]="'dark'">Some button with a custom icon</p-button-pure>
+          </div>
+          <div class="playground dark spacing-inline">
+            <p-button-pure [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
           </div>
           <hr>
         </p-grid-item>
@@ -284,7 +333,8 @@ import {Component} from '@angular/core';
             <p-icon [name]="'car-next'" [size]="'medium'" aria-label="Car icon"></p-icon>
             <p-icon [name]="'car-next'" [size]="'large'" aria-label="Car icon"></p-icon>
             <p-icon [name]="'car-next'" [size]="'large'" [color]="'porsche-red'" aria-label="Car icon"></p-icon>
-            <p-icon [name]="'car-next'" [size]="'large'" [color]="'inherit'" aria-label="Car icon" style="color: deeppink;"></p-icon>
+            <p-icon [name]="'car-next'" [size]="'large'" [color]="'inherit'" aria-label="Car icon"
+                    style="color: deeppink;"></p-icon>
             <p-icon [name]="'kaixin'" [size]="'large'" aria-label="Kaixin icon"></p-icon>
           </div>
           <hr>
@@ -437,6 +487,9 @@ import {Component} from '@angular/core';
           <div class="playground light spacing-inline">
             <p-link [icon]="'phone'" [href]="'https://ui.porsche.com'">Some label</p-link>
           </div>
+          <div class="playground light spacing-inline">
+            <p-link [href]="'https://ui.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
+          </div>
           <hr>
           <div class="playground light spacing-inline">
             <p-link [variant]="'primary'" [href]="'https://ui.porsche.com'" [hideLabel]="true">Some label</p-link>
@@ -465,18 +518,26 @@ import {Component} from '@angular/core';
           <div class="playground dark spacing-inline">
             <p-link [icon]="'phone'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Some label</p-link>
           </div>
+          <div class="playground dark spacing-inline">
+            <p-link [href]="'https://ui.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
+          </div>
           <hr>
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'primary'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
+            <p-link [variant]="'primary'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some
+              label
+            </p-link>
           </div>
           <div class="playground dark spacing-inline">
             <p-link [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'tertiary'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
+            <p-link [variant]="'tertiary'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some
+              label
+            </p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [icon]="'phone'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
+            <p-link [icon]="'phone'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label
+            </p-link>
           </div>
           <hr>
         </p-grid-item>

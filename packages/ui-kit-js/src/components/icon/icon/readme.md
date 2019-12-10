@@ -21,6 +21,7 @@
 ### Used by
 
  - [p-button](../../action/button)
+ - [p-button-pure](../../action/button-pure)
  - [p-link](../../navigation/link)
  - [p-pagination](../../navigation/pagination)
  - [p-text-link](../../navigation/text-link)

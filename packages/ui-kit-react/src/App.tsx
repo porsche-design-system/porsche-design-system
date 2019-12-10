@@ -8,7 +8,7 @@ import {
   PHeadline,
   PText,
   PButton,
-  PTextLink,
+  PButtonPure,
   PTextList,
   PTextListItem,
   PSpinner,
@@ -109,6 +109,9 @@ const App: React.FC = () => {
           <div className="playground light spacing-inline">
             <PButton icon={'phone'}>Some label</PButton>
           </div>
+          <div className="playground light spacing-inline">
+            <PButton style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+          </div>
           <hr/>
           <div className="playground light spacing-inline">
             <PButton variant={'primary'} hideLabel={true}>Some label</PButton>
@@ -149,6 +152,9 @@ const App: React.FC = () => {
           <div className="playground dark spacing-inline">
             <PButton theme={'dark'} icon={'phone'}>Some label</PButton>
           </div>
+          <div className="playground dark spacing-inline">
+            <PButton theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+          </div>
           <hr/>
           <div className="playground dark spacing-inline">
             <PButton variant={'primary'} hideLabel={true} theme={'dark'}>Some label</PButton>
@@ -173,23 +179,61 @@ const App: React.FC = () => {
       </PGrid>
       <PGrid>
         <PGridItem size={2}>
-          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-text-link&gt;</PHeadline>
+          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-button-pure&gt;</PHeadline>
         </PGridItem>
-        <PGridItem size={10}>
+        <PGridItem size={5}>
           <div className="playground light spacing-inline">
-            <PTextLink href={'https://ui.porsche.com'}>Some link with default icon</PTextLink>
+            <PButtonPure>Some label</PButtonPure>
+            <PButtonPure disabled={true}>Some label</PButtonPure>
+            <PButtonPure loading={true}>Some label</PButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PTextLink href={'https://ui.porsche.com'} color={'porsche-black'}>Porsche Black</PTextLink>
-            <PTextLink href={'https://ui.porsche.com'} color={'porsche-light'} style={{background: 'black'}}>Porsche
-              Light
-            </PTextLink>
-            <PTextLink href={'https://ui.porsche.com'} color={'inherit'} style={{color: 'deeppink'}}>Inherited custom
-              color
-            </PTextLink>
+            <PButtonPure hideLabel={true}>Some label</PButtonPure>
+            <PButtonPure hideLabel={true} disabled={true}>Some label</PButtonPure>
+            <PButtonPure hideLabel={true} loading={true}>Some label</PButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PTextLink href={'https://ui.porsche.com'} icon={'delete'}>Some link with a custom icon</PTextLink>
+            <PButtonPure size={'medium'}>Medium</PButtonPure>
+            <PButtonPure size={'inherit'} style={{ fontSize: '48px' }}>Inherit</PButtonPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <PButtonPure weight={'thin'}>Thin</PButtonPure>
+            <PButtonPure weight={'regular'}>Regular</PButtonPure>
+            <PButtonPure weight={'bold'}>Bold</PButtonPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <PButtonPure icon={'delete'}>Some button with a custom icon</PButtonPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <PButtonPure style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
+          </div>
+          <hr/>
+        </PGridItem>
+        <PGridItem size={5}>
+          <div className="playground dark spacing-inline">
+            <PButtonPure theme={'dark'}>Some label</PButtonPure>
+            <PButtonPure disabled={true} theme={'dark'}>Some label</PButtonPure>
+            <PButtonPure loading={true} theme={'dark'}>Some label</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure hideLabel={true} theme={'dark'}>Some label</PButtonPure>
+            <PButtonPure hideLabel={true} disabled={true} theme={'dark'}>Some label</PButtonPure>
+            <PButtonPure hideLabel={true} loading={true} theme={'dark'}>Some label</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure size={'medium'} theme={'dark'}>Medium</PButtonPure>
+            <PButtonPure size={'inherit'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure weight={'thin'} theme={'dark'}>Thin</PButtonPure>
+            <PButtonPure weight={'regular'} theme={'dark'}>Regular</PButtonPure>
+            <PButtonPure weight={'bold'} theme={'dark'}>Bold</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure icon={'delete'} theme={'dark'}>Some button with a custom icon</PButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PButtonPure theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
           </div>
           <hr/>
         </PGridItem>
@@ -451,6 +495,9 @@ const App: React.FC = () => {
           <div className="playground light spacing-inline">
             <PLink icon={'phone'} href={'https://ui.porsche.com'}>Some label</PLink>
           </div>
+          <div className="playground light spacing-inline">
+            <PLink href={'https://ui.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
+          </div>
           <hr/>
           <div className="playground light spacing-inline">
             <PLink variant={'primary'} href={'https://ui.porsche.com'} hideLabel={true}>Some label</PLink>
@@ -478,6 +525,9 @@ const App: React.FC = () => {
           </div>
           <div className="playground dark spacing-inline">
             <PLink icon={'phone'} href={'https://ui.porsche.com'} theme={'dark'}>Some label</PLink>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLink href={'https://ui.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
           </div>
           <hr/>
             <div className="playground dark spacing-inline">

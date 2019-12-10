@@ -1,8 +1,9 @@
-import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { IconName } from '../../icon/icon/icon-name';
-import { improveFocusHandlingForCustomElement, preventNativeTabIndex } from '../../../utils/focusHandling';
+import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
+import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
 import { ButtonType, Theme } from '../../../types';
 
 @Component({
@@ -12,16 +13,6 @@ import { ButtonType, Theme } from '../../../types';
 })
 export class Button {
   @Element() public element!: HTMLElement;
-
-  /**
-   * Check native tabindex to ensure that it doesn't get set on the host element
-   * @internal
-   */
-  @Prop({
-    mutable: true,
-    attribute: 'tabindex'
-  })
-  public nativeTabindex?: number = -1;
 
   /** To remove the element from tab order. */
   @Prop() public tabbable?: boolean = true;
@@ -52,11 +43,10 @@ export class Button {
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
+    improveButtonHandlingForCustomElement(this.element, this.type);
   }
 
   public render(): JSX.Element {
-    preventNativeTabIndex(this);
-
     const buttonClasses = cx(
       prefix('button'),
       prefix(`button--${this.variant}`),
@@ -87,51 +77,10 @@ export class Button {
             source={this.iconSource}
           />
         )}
-        <p-text tag='span' color='inherit' class={labelClasses}>
+        <p-text class={labelClasses} tag='span' color='inherit'>
           <slot/>
         </p-text>
       </button>
     );
-  }
-
-  /**
-   * IE11/Edge (not chromium based) workaround to
-   * fix the event target of click events (which normally
-   * shadow dom takes care of)
-   */
-  @Listen('click', { capture: true })
-  public fixEventTarget(event: MouseEvent): void {
-    if (event.target !== this.element) {
-      event.stopPropagation();
-      event.preventDefault();
-      this.element.click();
-    }
-  }
-
-  @Listen('click')
-  public onClick(event: MouseEvent): void {
-    if (this.type === 'submit') {
-      // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
-      const form = this.element.closest('form');
-      if (form) {
-        /**
-         * we've to wait if someone calls preventDefault on the event
-         * then we shouldn't submit the form
-         */
-        window.setTimeout(() => {
-          if(!event.defaultPrevented) {
-            const fakeButton = document.createElement('button');
-            fakeButton.type = this.type;
-            fakeButton.style.display = 'none';
-            form.appendChild(fakeButton);
-            fakeButton.addEventListener('click', (fakeButtonEvent) => {
-              fakeButtonEvent.stopPropagation();
-            });
-            fakeButton.click();
-            fakeButton.remove();
-          }
-        }, 1);
-      }
-    }
   }
 }
