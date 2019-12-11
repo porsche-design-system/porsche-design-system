@@ -30,7 +30,7 @@ For Chinese and Japanese language, the following system fonts are to be used, st
 
 ## Headline styles
 
-The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles only bold weight is used to provide a good readability and making it easy as possible to focus on the content sections of a page. The headline styles span from Large Title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
+The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles only semibold weight is used to provide a good readability and making it easy as possible to focus on the content sections of a page. The headline styles span from Large Title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
 
 |                  | 320 - 759 px (XS)     | 760 - 999 px (S)   | 1000 - 1299 px (M)   | 1300 - 1759 px (L)   | 1760  px or larger (XL)   |
 |------------------|---------------------  |------------------	|-------------------   |-------------------   |------------------------   |
@@ -128,9 +128,9 @@ The color to be used for Porsche Next depends on the [Porsche Color Theme](#/web
 ### Font weights
 
 The Porsche Next is available in different font weights that enable to add emphasis and create a visual content hierarchy.
-For digital applications, we recommend only to use Bold, Regular and Thin:
+For digital applications, we recommend only to use Semibold, Regular and Thin:
 
-- **Porsche Next Bold** for first-level headlines or copytext highlights.
+- **Porsche Next Semibold** for first-level headlines or copytext highlights.
 - **Porsche Next Regular** for copytext, stand-alone text or sublines (in combination with first-level headlines).
 - **Porsche Next Thin** for stand-alone text larger than 20 px.
 
@@ -217,8 +217,7 @@ for larger text sizes.
 
 Also, you should not rely on color only to convey information. 
 When communicating element states with text (for example a password validation 
-information in forms) make sure to always use additional text stylings 
-(e.g. bold text) to make it easy for visually impaired people to recognise
+information in forms) make sure to always use additional text stylings to make it easy for visually impaired people to recognise
 status information even if they can’t see the color – this is of even higher
 importance the more critical the information is.
 
