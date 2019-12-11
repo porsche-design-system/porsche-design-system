@@ -7,9 +7,10 @@ branding. Even more so when it comes to UX, color is to be used intentionally to
 patterns, set emphasis on important elements and by doing so, to provide visual
 guidance and information.
 
-The Porsche UI color system provides a general UI color palette as well as two
-Porsche UI color themes that are based on the Porsche color palette and to be
-used for different visual environments.
+The Porsche UI color system provides two Porsche UI color themes that are based on the Porsche color palette and to be
+used for different visual environments. The Porsche UI color palette includes both Brand Colors and Neutral Colors. 
+They must always be used in 100% opacity. The Porsche UI Kit Sketch library provides both.
+
 
 ---
 
@@ -30,8 +31,8 @@ When it comes to additional elements (such as tiles, dividers or other graphical
 In order to define the colors to be used within in the screen you should always check the **information level** of the respective elements.
 
 - Play with darker/lighter grey shades to make an element stand out from the background or to set emphasize on it. 
-- For large screen space make sure to only use the dedicated surface color for your theme (e.g. Surface Light). 
-- Use Porsche Red only for highlighting single elements.
+- For large screen space make sure to only use the dedicated surface color for your theme (e.g. Surface). 
+- Use the brand color only for highlighting single elements.
 
 ### Mixing themes
 Within certain limits it's allowed to mix the Porsche color themes. Let's say, for example, you could integrate a limited Dark Theme area in your Light Theme
@@ -43,30 +44,61 @@ The color proportion scales for each theme might be a little helper in doing so.
 ## Porsche Light Theme 
 ![Porsche Light Theme colors](./assets/color-theme-light.png)
 
+### Brand color
+The Porsche brand color are the core of the Porsche UI color palette. The usage
+and proportion of brand colors within a UI is defined by the specific Porsche
+color theme in use.
+
+|                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
+|-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
+| <ColorBadge theme="light" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
+
+
 ### Background colors
+The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
 
 |                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
 |-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
-| <ColorBadge color="porsche-light"/>  	                                    | **Porsche Light**        	| #FFFFFF 	| 255/255/255   	| Page background  |
-| <ColorBadge color="surface-light"/> 	                                    | **Surface Light**        	| #F2F2F2 	| 242/242/242     | Additional backgrounds, for example for tiles or contrasting content areas |
+| <ColorBadge theme="light" color="background"/>  	                                    | **Background**        	| #FFFFFF 	| 255/255/255   	| Page background  |
+| <ColorBadge theme="light" color="surface"/> 	                                    | **Surface**        	| #F2F2F2 	| 242/242/242     | Additional backgrounds, for example for tiles or contrasting content areas |
 
 ### Text / icon color
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
-| <ColorBadge color="porsche-black"/>    	                                      | **Porsche Black**        	| #000000 	| 0/0/0          	| Default text/icon color                   |
-| <ColorBadge color="porsche-red"/> 	                                          | **Porsche Red**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
-| <ColorBadge color="porsche-dark-red"/>  	                                    | **Porsche Dark Red**    	| #960014 	| 150/0/20       	| Hover state for text/icons in Porsche Red |
-| <ColorBadge color="neutral-grey-4"/>    	                                    | **Grey 4**              	| #96989A 	| 150/152/154    	| Disabled state or decorative text/icons   |
+| <ColorBadge theme="light" color="default"/>    	                                      | **Default**        	| #000000 	| 0/0/0          	| Default text/icon color                   |
 
-### Additional elements
-For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
+### Neutral colors
+The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
+The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
 |                                                                         	|                       	| HEX     	| RGB           	| Usage            |
 |--------------------------------------------------------------------------	|-------------------------|----------	|----------------	|----------------- |
-| <ColorBadge color="neutral-grey-6"/> 	                                    | **Grey 6**             	| #626669 	| 98/102/105    	| div. elements    |
-| <ColorBadge color="neutral-grey-7"/>                                      | **Grey 7**             	| #4A4E51 	| 74/78/81      	| div. elements    |
-| <ColorBadge color="neutral-grey-8"/>                                      | **Grey 8**             	| #323639 	| 50/54/57       	| div. elements    |
+| <ColorBadge theme="light" color="neutral-1"/> 	                                    | **Neutral 1**             	| #626669 	| 98/102/105    	| div. elements    |
+| <ColorBadge theme="light" color="neutral-2"/>                                      | **Neutral 2**             	| #4A4E51 	| 74/78/81      	| div. elements    |
+| <ColorBadge theme="light" color="neutral-3"/>                                      | **Neutral 3**             	| #323639 	| 50/54/57       	| div. elements    |
+
+### Notifications
+Notification colors are to be used only to display warnings, error or status messages.
+When using notification colors …
+
+- … always make sure not to rely on color only when displaying status (for more information scroll down to *Accessibility*).
+- … always check manually if the color contrast is sufficient depending on the Porsche color theme and, therefore, the background color in use.
+
+|                                                                         	|                         	| HEX     	| RGB         	|
+|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
+| <ColorBadge theme="light" color="notification-error"/> 	                          | **Error**          	| #E00000 	| 224/0/0   	  |
+| <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #13D246 	| 19/210/70  	  |
+| <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #E2B236 	| 226/178/54  	|
+
+### States
+The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
+Depending on the component it can be implemented in different ways, for example as border or surface color.
+
+|                                                                         	|                         	| HEX     	| RGB         	|
+|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
+| <ColorBadge theme="light" color="disabled"/>                            | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
+| <ColorBadge theme="light" color="state-focus"/>                          	  | **Focus**           	| #00D5B9 	| 0/213/185  	  |
 
 
 
@@ -81,99 +113,64 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 
 ![Porsche Dark Theme colors](./assets/color-theme-dark.png)
 
+### Brand color
+The Porsche brand color are the core of the Porsche UI color palette. The usage
+and proportion of brand colors within a UI is defined by the specific Porsche
+color theme in use.
+
+|                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
+|-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
+| <ColorBadge theme="dark" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
+
 ### Background colors
+The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
 
 |                                                                       	|                      	    | HEX     	| RGB           	| Usage            |
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
-| <ColorBadge color="porsche-dark"/> 	                                    | **Porsche Dark**        	| #0E1418 	| 14/20/24      	| Page background  |
-| <ColorBadge color="surface-dark"/>                                      | **Surface Dark**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
+| <ColorBadge theme="dark" color="background"/> 	                                    | **Background**        	| #0E1418 	| 14/20/24      	| Page background  |
+| <ColorBadge theme="dark" color="surface"/>                                      | **Surface**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
 
 ### Text / icon color
 
 |                                                                         	|                    	    | HEX     	| RGB           	| Usage                                   |
 |-------------------------------------------------------------------------	|-------------------------|----------	|----------------	|---------------------------------------- |
-| <ColorBadge color="porsche-light"/>  	                                    | **Porsche Light**      	| #FFFFFF 	| 255/255/255    	| Default text/icon color                 |
-| <ColorBadge color="porsche-red"/>  	                                      | **Porsche Red**        	| #D5001C 	| 213/0/28        | Hover state                             |
-| <ColorBadge color="neutral-grey-5"/>                                      | **Grey 5**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
-
-### Additional elements
-For coloring further architectonical elements such as dividers, smaller surfaces or other graphical assets.
-
-|                                                                         	|                       	| HEX     	| RGB              	| Usage            |
-|-------------------------------------------------------------------------	|-------------------------|----------	|-----------------	|----------------- |
-| <ColorBadge color="neutral-grey-1"/> 	                                    | **Grey 1**             	| #E3E4E5 	| 227/228/229     	| div. elements    |
-| <ColorBadge color="neutral-grey-2"/> 	                                    | **Grey 2**             	| #C9CACB 	| 201/202/203      	| div. elements    |
-| <ColorBadge color="neutral-grey-3"/> 	                                    | **Grey 3**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
-
-### Color proportions
-
-![Porsche Dark Theme color proportions](./assets/color-theme-proportions-dark.png)
-
----
-
-## Porsche UI color palette
-
-The Porsche UI color palette includes both Brand Colors and Neutral Colors. They must always be used in 100% opacity.
-The Porsche UI Kit Sketch library provides both 
-
-### Brand colors
-The Porsche brand colors are the core of the Porsche UI color palette. The usage
-and proportion of brand colors within a UI is defined by the specific Porsche
-color theme in use.
-
-|                	                                                                |                       | HEX     	| RGB         	|
-|---------------------------------------------------------------------------------|---------------------  |---------	|-------------	|
-| <ColorBadge color="porsche-red"/> 	                                            | **Porsche Red**      	| #D5001C 	| 213/0/28    	|
-| <ColorBadge color="porsche-dark-red"/> 	                                        | **Porsche Dark Red**	| #960014 	| 150/0/20    	|
-| <ColorBadge color="porsche-light"/>    	                                        | **Porsche Light**    	| #FFFFFF 	| 255/255/255 	|
-| <ColorBadge color="porsche-dark"/> 	                                            | **Porsche Dark**     	| #0E1418 	| 14/20/24    	|
-| <ColorBadge color="porsche-black"/> 	                                          | **Porsche Black**    	| #000000 	| 0/0/0       	|
-
-### Surface colors
-The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
-
-|                	                                                                |                       | HEX     	| RGB         	|
-|---------------------------------------------------------------------------------|---------------------  |---------	|-------------	|
-| <ColorBadge color="surface-light"/>                                             | **Surface Light**    	| #F2F2F2 	| 242/242/242 	|
-| <ColorBadge color="surface-dark"/>        	                                    | **Surface Dark**     	| #1A2023 	| 26/32/35    	|
+| <ColorBadge theme="dark" color="default"/>  	                                    | **Default**      	| #FFFFFF 	| 255/255/255    	| Default text/icon color                 |
 
 ### Neutral colors
 The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
-The set consists of 8 grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
+The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                          	|                	    | HEX     	| RGB         	|
-|---------------------------------------------------------------------------|-------------------  |---------	|-------------	|
-| <ColorBadge color="neutral-grey-1"/> 	                                    | **Grey 1**        	| #E3E4E5 	| 227/228/229  	|
-| <ColorBadge color="neutral-grey-2"/> 	                                    | **Grey 2**        	| #C9CACB 	| 201/202/203  	|
-| <ColorBadge color="neutral-grey-3"/> 	                                    | **Grey 3**        	| #B0B1B2 	| 176/177/178  	|
-| <ColorBadge color="neutral-grey-4"/> 	                                    | **Grey 4**        	| #96989A 	| 150/152/154  	|
-| <ColorBadge color="neutral-grey-5"/> 	                                    | **Grey 5**        	| #7C7F81 	| 124/127/129  	|
-| <ColorBadge color="neutral-grey-6"/> 	                                    | **Grey 6**        	| #626669 	| 98/102/105  	|
-| <ColorBadge color="neutral-grey-7"/> 	                                    | **Grey 7**        	| #4A4E51 	| 74/78/81  	  |
-| <ColorBadge color="neutral-grey-8"/> 	                                    | **Grey 8**        	| #323639 	| 50/54/57  	  |
+|                                                                         	|                       	| HEX     	| RGB              	| Usage            |
+|-------------------------------------------------------------------------	|-------------------------|----------	|-----------------	|----------------- |
+| <ColorBadge theme="dark" color="neutral-1"/> 	                                    | **Neutral 1**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
+| <ColorBadge theme="dark" color="neutral-2"/> 	                                    | **Neutral 2**             	| #C9CACB 	| 201/202/203      	| div. elements    |
+| <ColorBadge theme="dark" color="neutral-3"/> 	                                    | **Neutral 3**             	| #E3E4E5 	| 227/228/229     	| div. elements    |
 
-
-### Status colors
-Status colors are to be used only to display notifications, warnings, error or status messages.
-When using status colors …
+### Notifications
+Notification colors are to be used only to display warnings, error or status messages.
+When using notification colors …
 
 - … always make sure not to rely on color only when displaying status (for more information scroll down to *Accessibility*).
 - … always check manually if the color contrast is sufficient depending on the Porsche color theme and, therefore, the background color in use.
 
 |                                                                         	|                         	| HEX     	| RGB         	|
 |-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge color="status-red"/> 	                                        | **Status Red**          	| #E00000 	| 224/0/0   	  |
-| <ColorBadge color="status-green"/> 	                                      | **Status Green**        	| #13D246 	| 19/210/70  	  |
-| <ColorBadge color="status-yellow"/> 	                                    | **Status Yellow**        	| #E2B236 	| 226/178/54  	|
+| <ColorBadge theme="dark" color="notification-error"/> 	                                        | **Error**          	| #E00000 	| 224/0/0   	  |
+| <ColorBadge theme="dark" color="notification-success"/> 	                                      | **Success**        	| #13D246 	| 19/210/70  	  |
+| <ColorBadge theme="dark" color="notification-warning"/> 	                                    | **Warning**        	| #E2B236 	| 226/178/54  	|
 
-
-### Focus color
+### States
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
 Depending on the component it can be implemented in different ways, for example as border or surface color.
 
-|                                                                         	|                      	| HEX     	| RGB         	|
-|-------------------------------------------------------------------------	|-----------------------|---------	|-------------	|
-| <ColorBadge color="state-focus"/>                             	          | **Focus**           	| #00D5B9 	| 0/213/185  	  |
+|                                                                         	|                         	| HEX     	| RGB         	|
+|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
+| <ColorBadge theme="dark" color="disabled"/>                                      | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
+| <ColorBadge theme="dark" color="state-focus"/>                             	          | **Focus**           	| #00D5B9 	| 0/213/185  	  |
+
+### Color proportions
+
+![Porsche Dark Theme color proportions](./assets/color-theme-proportions-dark.png)
 
 
 --- 
@@ -199,7 +196,7 @@ colors.
 
 Sticking to the [Porsche Brand Code](https://brandguide.porsche.com/elements/manual/view/id/548) this means:
 
-- Generous (but also well-considered) use of white (or, when using the Porsche Dark Theme, dark grey) space to emphasise the brand’s exclusiveness and high quality.
+- Generous (but also well-considered) use of white space to emphasise the brand’s exclusiveness and high quality.
 - Form follows function – and so does color.
 - Use color to support a clean, precise design language. Stick to the essentials and avoid a non-functional decorative use of color.
 
