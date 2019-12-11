@@ -28,15 +28,23 @@
     transform-origin: center center;
     animation: rotate var(--p-animation-duration__spinner) linear infinite,
       dash var(--p-animation-duration__spinner) ease-in-out infinite;
-    stroke: $p-color-theme-light-neutral-1;
     stroke-dasharray: 100, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
   }
 
   &__bg {
-    stroke: $p-color-theme-light-neutral-1;
     opacity: 0.4;
+  }
+
+  &--theme-light {
+    #{$bem-block}__fg {
+      stroke: $p-color-theme-light-neutral-1;
+    }
+
+    #{$bem-block}__bg {
+      stroke: $p-color-theme-light-neutral-1;
+    }
   }
 
   &--theme-dark {
