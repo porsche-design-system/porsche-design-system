@@ -4,7 +4,6 @@ import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } fr
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { LinkTarget, Theme } from '../../../types';
-import { improveLinkHandlingForCustomElement } from '../../../utils/linkHandling';
 
 @Component({
   tag: 'p-link',
@@ -43,7 +42,6 @@ export class Link {
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
-    improveLinkHandlingForCustomElement(this.element);
   }
 
   public render(): JSX.Element {
