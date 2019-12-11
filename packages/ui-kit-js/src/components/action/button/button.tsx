@@ -30,7 +30,7 @@ export class Button {
   @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-right-hair';
+  @Prop() public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
