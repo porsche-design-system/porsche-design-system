@@ -357,7 +357,7 @@ export namespace Components {
     | 'time'
     | 'legend';
     /**
-    * Adapts the text color depending on the theme (has no effect when "inherit" is set as color prop).
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
     */
     'theme'?: Theme;
     /**
@@ -871,7 +871,7 @@ declare namespace LocalJSX {
     | 'time'
     | 'legend';
     /**
-    * Adapts the text color depending on the theme (has no effect when "inherit" is set as color prop).
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
     */
     'theme'?: Theme;
     /**

@@ -1,58 +1,8 @@
-# Typography
+# Text
 
-Typography components are categorized into two different use cases:
+**Text component** for predefined copy text sizes which are either fixed or can respond to different viewports.
 
-1. **Headline component** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
-2. **Text component** for predefined copy text sizes which are either fixed or can respond to different viewports.
-
-## Headlines
-
-### Style variants
-There are multiple predefined styling variants available. Additionally the correct semantic tag (h1 - h6) can be set.
-
-<Playground>
-  <p-headline variant="large-title" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
-  <p-headline variant="headline-1" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
-  <p-headline variant="headline-2" tag="h2">The quick brown fox jumps over the lazy dog</p-headline>
-  <p-headline variant="headline-3" tag="h3">The quick brown fox jumps over the lazy dog</p-headline>
-  <p-headline variant="headline-4" tag="h4">The quick brown fox jumps over the lazy dog</p-headline>
-  <p-headline variant="headline-5" tag="h5">The quick brown fox jumps over the lazy dog</p-headline>
-  <p-headline variant="headline-6" tag="h6">The quick brown fox jumps over the lazy dog</p-headline>
-</Playground>
-
----
-
-### Color variants
-The default headline color is Porsche Black. But also predefined or inherited colors can be set.
-
-<Playground>
-  <p-headline color="porsche-black">Porsche Black</p-headline>
-  <p-headline color="porsche-light" style="background: black;">Porsche Light</p-headline>
-  <p-headline color="inherit" style="color: deeppink;">Inherited custom color</p-headline>
-</Playground>
-
----
-
-### Alignment variants
-
-<Playground>
-  <p-headline align="left">Left</p-headline>
-  <p-headline align="center">Center</p-headline>
-  <p-headline align="right">Right</p-headline>
-</Playground>
-
----
-
-### Ellipsis mode
-This will force any text to never wrap into a new line and in case it's too long for a single line then dots (…) at the end are used to visualize it.
-
-<Playground>
-  <p-headline ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-headline>
-</Playground>
-
----
-
-## Text
+## Default
 
 The text component is the most flexible way to display text strings on your page.  
 Rendering defaults to variant `small` and font weight `regular`.  
@@ -66,7 +16,7 @@ The default semantic HTML element is `p`.
 
 --- 
 
-### Size
+## Size
 
 There are predefined default text sizes for the text component which should cover most use cases. If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
@@ -87,7 +37,7 @@ There are predefined default text sizes for the text component which should cove
   </template>
 </Playground>
 
-#### Responsive
+### Responsive
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
@@ -99,7 +49,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 --- 
 
-### Color
+## Color
 The default text color is Porsche Black. But also predefined or inherited colors can be set.
 
 <Playground :themeable="true">
@@ -124,7 +74,7 @@ The default text color is Porsche Black. But also predefined or inherited colors
 
 --- 
 
-### Weight
+## Weight
 
 There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text sizes.
 
@@ -144,7 +94,7 @@ There are predefined default text weights for copy text. Be aware of using the `
 
 ---
 
-### Alignment
+## Alignment
 
 <Playground :themeable="true">
   <template #configurator>
@@ -162,7 +112,7 @@ There are predefined default text weights for copy text. Be aware of using the `
 
 ---
 
-### Ellipsis mode
+## Ellipsis mode
 This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the end are used to visualize it.
 
 <Playground :themeable="true">
@@ -173,7 +123,7 @@ This will force any text to never wrap into a new line and in case it's to long 
 
 ---
 
-### Text with a link and bold text as children
+## Text with a link and bold text as children
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
