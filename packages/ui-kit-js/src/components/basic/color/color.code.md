@@ -5,7 +5,7 @@ There is no color web component available but predefined SCSS variables which ha
 
 ## Themes
 
-A light and dark theme is available depending on usage.
+A light and dark theme is available depending on usage.  
 
 <br>
 <select id="theme-selector" @change="theme = $event.target.value" :data-selected="theme">
@@ -14,121 +14,57 @@ A light and dark theme is available depending on usage.
   <option value="dark">Theme dark</option>
 </select>
 
-<div id="theme-light-colors"></div>
-
-## Theme light
+## Theme {{theme}}
 
 ### Brand colors
 
 |                                                   |                      	             |
 |---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="light" color="brand"/>  	    | `$p-color-theme-light-brand`       |
+| <ColorBadge :theme="theme" color="brand"/>  	    | `$p-color-theme-{{theme}}-brand`   |
 
 ### Default colors
 
 |                                                   |                      	             |
 |---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="light" color="default"/>  	    | `$p-color-theme-light-default`     |
+| <ColorBadge :theme="theme" color="default"/>      | `$p-color-theme-{{theme}}-default` |
 
 ### Surface colors
 
 |                                                   |                      	             |
 |---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="light" color="surface"/>  	    | `$p-color-theme-light-surface`     |
+| <ColorBadge :theme="theme" color="surface"/>      | `$p-color-theme-{{theme}}-surface` |
 
 ### Background colors
 
-|                                                   |                      	             |
-|---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="light" color="background"/>    | `$p-color-theme-light-background`  |
+|                                                   |                      	                |
+|---------------------------------------------------|---------------------------------------|
+| <ColorBadge :theme="theme" color="background"/>   | `$p-color-theme-{{theme}}-background` |
 
 
 ### Neutral colors
 
-|                                                   |                      	             |
-|---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="light" color="neutral-1"/>  	| `$p-color-theme-light-neutral-1`   |
-| <ColorBadge theme="light" color="neutral-2"/>  	| `$p-color-theme-light-neutral-2`   |
-| <ColorBadge theme="light" color="neutral-3"/>  	| `$p-color-theme-light-neutral-3`   |
+|                                                   |                      	                 |
+|---------------------------------------------------|----------------------------------------|
+| <ColorBadge :theme="theme" color="neutral-1"/>  	| `$p-color-theme-{{theme}}-neutral-1`   |
+| <ColorBadge :theme="theme" color="neutral-2"/>  	| `$p-color-theme-{{theme}}-neutral-2`   |
+| <ColorBadge :theme="theme" color="neutral-3"/>  	| `$p-color-theme-{{theme}}-neutral-3`   |
 
 ### Notification colors
 
-|                                                           |                      	                        |
-|-----------------------------------------------------------|-----------------------------------------------|
-| <ColorBadge theme="light" color="notification-success"/>  | `$p-color-theme-light-notification-success`   |
-| <ColorBadge theme="light" color="notification-warning"/>  | `$p-color-theme-light-notification-warning`   |
-| <ColorBadge theme="light" color="notification-error"/>  	| `$p-color-theme-light-notification-error`     |
+|                                                           |                      	                            |
+|-----------------------------------------------------------|---------------------------------------------------|
+| <ColorBadge :theme="theme" color="notification-success"/> | `$p-color-theme-{{theme}}-notification-success`   |
+| <ColorBadge :theme="theme" color="notification-warning"/> | `$p-color-theme-{{theme}}-notification-warning`   |
+| <ColorBadge :theme="theme" color="notification-error"/>  	| `$p-color-theme-{{theme}}-notification-error`     |
 
 ### State colors
 
-|                                                     |                      	              |
-|-----------------------------------------------------|---------------------------------------|
-| <ColorBadge theme="light" color="state-focus"/>  	  | `$p-color-theme-light-state-focus`    |
-| <ColorBadge theme="light" color="state-disabled"/>  | `$p-color-theme-light-state-disabled` |
+|                                                     |                      	                  |
+|-----------------------------------------------------|-------------------------------------------|
+| <ColorBadge :theme="theme" color="state-focus"/>    | `$p-color-theme-{{theme}}-state-focus`    |
+| <ColorBadge :theme="theme" color="state-disabled"/> | `$p-color-theme-{{theme}}-state-disabled` |
 
 ---
-
-<div id="theme-dark-colors"></div>
-
-## Theme dark
-
-### Brand colors
-
-|                                                   |                      	             |
-|---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="dark" color="brand"/>  	    | `$p-color-theme-dark-brand`       |
-
-### Default colors
-
-|                                                   |                      	             |
-|---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="dark" color="default"/>  	    | `$p-color-theme-dark-default`     |
-
-### Surface colors
-
-|                                                   |                      	             |
-|---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="dark" color="surface"/>  	    | `$p-color-theme-dark-surface`     |
-
-### Background colors
-
-|                                                   |                      	             |
-|---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="dark" color="background"/>    | `$p-color-theme-dark-background`  |
-
-
-### Neutral colors
-
-|                                                   |                      	             |
-|---------------------------------------------------|------------------------------------|
-| <ColorBadge theme="dark" color="neutral-1"/>  	| `$p-color-theme-dark-neutral-1`   |
-| <ColorBadge theme="dark" color="neutral-2"/>  	| `$p-color-theme-dark-neutral-2`   |
-| <ColorBadge theme="dark" color="neutral-3"/>  	| `$p-color-theme-dark-neutral-3`   |
-
-### Notification colors
-
-|                                                           |                      	                        |
-|-----------------------------------------------------------|-----------------------------------------------|
-| <ColorBadge theme="dark" color="notification-success"/>  | `$p-color-theme-dark-notification-success`   |
-| <ColorBadge theme="dark" color="notification-warning"/>  | `$p-color-theme-dark-notification-warning`   |
-| <ColorBadge theme="dark" color="notification-error"/>  	| `$p-color-theme-dark-notification-error`     |
-
-### State colors
-
-|                                                     |                      	              |
-|-----------------------------------------------------|---------------------------------------|
-| <ColorBadge theme="dark" color="state-focus"/>  	  | `$p-color-theme-dark-state-focus`    |
-| <ColorBadge theme="dark" color="state-disabled"/>  | `$p-color-theme-dark-state-disabled` |
-
----
-
-<select @change="theme = $event.target.value">
-  <option disabled>Select a theme</option>
-  <option value="light">Theme light</option>
-  <option value="dark">Theme dark</option>
-</select>
-
-<div id="external-brand-colors"></div>
 
 ## External brand colors
 
@@ -141,66 +77,6 @@ A light and dark theme is available depending on usage.
 | <ColorBadge color="external-twitter"/>  	    | `$p-color-external-twitter`    |
 | <ColorBadge color="external-wechat"/>  	    | `$p-color-external-wechat`     |
 | <ColorBadge color="external-youtube"/>  	    | `$p-color-external-youtube`    |
-
-<style scoped lang="scss">
-  #theme-selector[data-selected="light"] {
-    & ~ #theme-light-colors {
-      & ~ h2, 
-      & ~ h3, 
-      & ~ table, 
-      & ~ hr {
-        display: block;
-      }
-    }
-    
-    & ~ #theme-dark-colors {
-      & ~ h2, 
-      & ~ h3, 
-      & ~ table, 
-      & ~ hr {
-        display: none;
-      }
-    }
-    
-    & ~ #external-brand-colors {
-      & ~ h2, 
-      & ~ h3, 
-      & ~ table, 
-      & ~ hr {
-        display: block;
-      }
-    }
-  }
-  
-  #theme-selector[data-selected="dark"] {
-    & ~ #theme-light-colors {
-      & ~ h2, 
-      & ~ h3, 
-      & ~ table, 
-      & ~ hr {
-        display: none;
-      }
-    }
-    
-    & ~ #theme-dark-colors {
-      & ~ h2, 
-      & ~ h3, 
-      & ~ table, 
-      & ~ hr {
-        display: block;
-      }
-    }
-    
-    & ~ #external-brand-colors {
-      & ~ h2, 
-      & ~ h3, 
-      & ~ table, 
-      & ~ hr {
-        display: block;
-      }
-    }
-  }
-</style>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
