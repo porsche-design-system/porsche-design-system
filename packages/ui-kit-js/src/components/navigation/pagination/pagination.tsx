@@ -103,7 +103,7 @@ export class Pagination {
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.labelPrev}
               >
-                <p-icon name='arrow-head-left' />
+                <p-icon name='arrow-head-left' color='inherit' />
               </a>
             </li>
           ));
@@ -161,7 +161,7 @@ export class Pagination {
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.labelNext}
               >
-                <p-icon name='arrow-head-right' />
+                <p-icon name='arrow-head-right' color='inherit' />
               </a>
             </li>
           ));

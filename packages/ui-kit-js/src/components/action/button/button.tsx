@@ -75,6 +75,7 @@ export class Button {
             size='inherit'
             name={this.icon}
             source={this.iconSource}
+            color='inherit'
           />
         )}
         <p-text class={labelClasses} tag='span' color='inherit'>
