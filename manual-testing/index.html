@@ -13,6 +13,10 @@
     #logs {
       border: 1px solid #0e1418;
     }
+    .wrapper-link {
+      outline: none;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -93,11 +97,11 @@
     <p-grid-item size="{ base: 12, m: 6 }">
       <p-headline variant="headline-1" tag="h1">Link</p-headline>
       <p-link href="https://ui.porsche.com">Link</p-link>
-      <a href="https://ui.porsche.com">
+      <a href="https://ui.porsche.com" class="wrapper-link">
         <p-link>Wrapped link</p-link>
       </a>
       <p-link href="https://ui.porsche.com" target="_blank">Link target blank</p-link>
-      <a href="https://ui.porsche.com" target="_blank">
+      <a href="https://ui.porsche.com" target="_blank" class="wrapper-link">
         <p-link>Wrapped link target blank</p-link>
       </a>
       <a href="https://ui.porsche.com">Link native</a>
@@ -112,38 +116,32 @@
   <script>
     var logsContainer = document.querySelector('#logs');
     var clean = true;
-    var elements = document.querySelectorAll('p-link, p-button, p-button-pure, p-link-pure, button, a');
+    var elements = document.querySelectorAll('*:not(a) > p-link, p-button, p-button-pure, p-link-pure, button, a');
+
+    function addToLog(text) {
+      var div = document.createElement('div');
+      div.innerHTML = text;
+      console.log(text);
+      clean = false;
+      logsContainer.insertBefore(div, logsContainer.childNodes[0]);
+    }
+
     for(var i = 0; i < elements.length; i++) {
       var element = elements[i];
       element.addEventListener('click', function(event) {
-        var div = document.createElement('div');
-        div.innerHTML = 'clicked: ' + event.target.innerText;
-        clean = false;
-        logsContainer.prepend(div);
+        addToLog('clicked: ' + event.target.innerText);
       });
       element.addEventListener('focus', function(event) {
-        var div = document.createElement('div');
-        div.innerHTML = 'focus: ' + event.target.innerText;
-        clean = false;
-        logsContainer.prepend(div);
+        addToLog('focus: ' + event.target.innerText);
       });
       element.addEventListener('focusin', function(event) {
-        var div = document.createElement('div');
-        div.innerHTML = 'focusin: ' + event.target.innerText;
-        clean = false;
-        logsContainer.prepend(div);
+        addToLog('focusin: ' + event.target.innerText);
       });
       element.addEventListener('blur', function(event) {
-        var div = document.createElement('div');
-        div.innerHTML = 'blur: ' + event.target.innerText;
-        clean = false;
-        logsContainer.prepend(div);
+        addToLog('blur: ' + event.target.innerText);
       });
       element.addEventListener('focusout', function(event) {
-        var div = document.createElement('div');
-        div.innerHTML = 'focusout: ' + event.target.innerText;
-        clean = false;
-        logsContainer.prepend(div);
+        addToLog('focusout: ' + event.target.innerText);
       });
     }
 
@@ -151,10 +149,7 @@
     for(var i = 0; i < forms.length; i++) {
       var form = forms[i];
       form.addEventListener('submit', function(event) {
-        var div = document.createElement('div');
-        div.innerHTML = 'form submitted...';
-        clean = false;
-        logsContainer.prepend(div);
+        addToLog('form submitted...');
         event.preventDefault();
       });
     }
@@ -169,10 +164,8 @@
 
     window.setInterval(function() {
       if (!clean) {
+        addToLog('-------------');
         clean = true;
-        var div = document.createElement('div');
-        div.innerHTML = '-------------';
-        logsContainer.prepend(div);
       }
     }, 500);
   </script>
