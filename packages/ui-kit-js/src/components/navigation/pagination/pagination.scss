@@ -37,33 +37,33 @@
     box-sizing: border-box;
 
     &:focus {
-      // outline: 1px solid $p-color-state-focus;
+      // outline: 1px solid $p-color-theme-light-state-focus;
       // outline-offset: -1px;
       outline: none;
-      box-shadow: inset 0 0 0 1px $p-color-state-focus;
+      box-shadow: inset 0 0 0 1px $p-color-theme-light-state-focus;
     }
 
     &:active {
       outline: none;
-      color: $p-color-porsche-red;
+      color: $p-color-theme-light-brand;
     }
   }
 
   &__goto {
     @include p-text;
-    color: $p-color-porsche-black;
+    color: $p-color-theme-light-default;
     text-decoration: none;
     cursor: pointer;
 
     #{$bem-block}--theme-dark & {
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
     }
 
     &:hover {
-      color: $p-color-porsche-red;
+      color: $p-color-theme-light-brand;
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-porsche-red;
+        color: $p-color-theme-light-brand;
       }
     }
 
@@ -71,16 +71,16 @@
       cursor: default;
 
       &:hover {
-        color: $p-color-porsche-black;
+        color: $p-color-theme-light-default;
 
         #{$bem-block}--theme-dark & {
-          color: $p-color-porsche-light;
+          color: $p-color-theme-dark-default;
         }
       }
 
       &::after {
         content: '';
-        background-color: $p-color-porsche-red;
+        background-color: $p-color-theme-light-brand;
         display: block;
         position: absolute;
         bottom: 0;
@@ -94,10 +94,10 @@
       cursor: default;
 
       &:hover {
-        color: $p-color-porsche-black;
+        color: $p-color-theme-light-default;
 
         #{$bem-block}--theme-dark & {
-          color: $p-color-porsche-light;
+          color: $p-color-theme-dark-default;
         }
       }
 
@@ -109,35 +109,35 @@
 
   &__prev,
   &__next {
-    color: $p-color-porsche-black;
+    color: $p-color-theme-light-default;
     text-decoration: none;
     cursor: pointer;
 
     #{$bem-block}--theme-dark & {
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
     }
 
     &:hover {
-      color: $p-color-porsche-red;
+      color: $p-color-theme-light-brand;
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-porsche-red;
+        color: $p-color-theme-light-brand;
       }
     }
 
     &--disabled {
-      color: $p-color-neutral-grey-4;
+      color: $p-color-theme-light-state-disabled;
       cursor: default;
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-neutral-grey-6;
+        color: $p-color-theme-light-neutral-3;
       }
 
       &:hover {
-        color: $p-color-neutral-grey-4;
+        color: $p-color-theme-light-state-disabled;
 
         #{$bem-block}--theme-dark & {
-          color: $p-color-neutral-grey-6;
+          color: $p-color-theme-light-neutral-3;
         }
       }
     }

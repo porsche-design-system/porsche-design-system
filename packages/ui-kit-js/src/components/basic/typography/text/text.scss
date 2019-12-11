@@ -11,12 +11,12 @@
   }
 
   ::slotted(a:hover) {
-    color: $p-color-porsche-red;
+    color: $p-color-theme-light-brand;
     text-decoration: none;
   }
 
   ::slotted(a:focus) {
-    color: $p-color-state-focus;
+    color: $p-color-theme-light-state-focus;
     text-decoration: underline;
   }
 
@@ -200,11 +200,11 @@
     }
 
     &-porsche-light {
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
     }
 
     &-porsche-black {
-      color: $p-color-porsche-black;
+      color: $p-color-theme-light-default;
     }
   }
 
