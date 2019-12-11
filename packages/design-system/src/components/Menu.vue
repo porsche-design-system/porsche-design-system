@@ -35,14 +35,14 @@
 
     &:hover {
       .stripe {
-        background: $p-color-porsche-dark-red;
+        background: darken($p-color-theme-light-brand, 10%);
 
         &::before {
-          background: $p-color-porsche-dark-red;
+          background: darken($p-color-theme-light-brand, 10%);
         }
 
         &::after {
-          background: $p-color-porsche-dark-red;
+          background: darken($p-color-theme-light-brand, 10%);
         }
       }
     }
@@ -74,7 +74,7 @@
     width: rem(24px);
     height: 2px;
     display: block;
-    background: $p-color-porsche-red;
+    background: $p-color-theme-light-brand;
     transition-property: transform;
     transition-timing-function: cubic-bezier(.55, .055, .675, .19);
     transition-duration: 75ms;
@@ -89,7 +89,7 @@
       transition-timing-function: ease;
       transition-duration: .15s;
       transition-property: transform;
-      background: $p-color-porsche-red;
+      background: $p-color-theme-light-brand;
       transition: top 75ms ease .12s, opacity 75ms ease;
     }
 
@@ -103,7 +103,7 @@
       transition-timing-function: ease;
       transition-duration: .15s;
       transition-property: transform;
-      background: $p-color-porsche-red;
+      background: $p-color-theme-light-brand;
       transition: bottom 75ms ease .12s, transform 75ms cubic-bezier(.55, .055, .675, .19);
     }
   }

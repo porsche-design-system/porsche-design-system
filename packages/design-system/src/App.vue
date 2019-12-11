@@ -122,8 +122,8 @@
         bottom: 0;
         width: rem(280px);
         padding: $p-spacing-40 $p-spacing-32;
-        border-right: 1px solid $p-color-neutral-grey-2;
-        background: $p-color-porsche-light;
+        border-right: 1px solid $p-color-theme-dark-neutral-2;
+        background: $p-color-theme-light-background;
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
@@ -149,7 +149,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background: $p-color-porsche-light;
+        background: $p-color-theme-light-background;
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
@@ -173,7 +173,7 @@
           position: relative;
           padding: $p-spacing-32;
           z-index: 20;
-          background: $p-color-porsche-light;
+          background: $p-color-theme-light-background;
           opacity: 1;
           transition: opacity .3s;
 
