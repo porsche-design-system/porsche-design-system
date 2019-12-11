@@ -188,7 +188,7 @@ export namespace Components {
     /**
     * Basic text color variations depending on theme property.
     */
-    'color'?: ThemeColor;
+    'color'?: 'default' | 'inherit';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -703,7 +703,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations depending on theme property.
     */
-    'color'?: ThemeColor;
+    'color'?: 'default' | 'inherit';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
