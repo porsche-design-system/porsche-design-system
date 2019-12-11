@@ -69,8 +69,8 @@ The Porsche copy text styles are typically to be used for long-form writing. The
 
 | Copy text              | Font size      | Available states                           | 
 |------------------------- |---------------- |--------------------------------------------- |
-| text small (default)     | 16 px           | active, default, disabled, highlight, linked | 
-| text x-small  | 12 px    | active, default, disabled, highlight, linked | 
+| Text Small (default)     | 16 px           | active, default, disabled, highlight, linked | 
+| Text X-Small  | 12 px    | active, default, disabled, highlight, linked | 
 
 
 ![Copytext states](./assets/typography-copytext-states.png)
