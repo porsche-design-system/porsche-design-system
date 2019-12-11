@@ -97,7 +97,7 @@ Depending on the component it can be implemented in different ways, for example 
 
 |                                                                         	|                         	| HEX     	| RGB         	|
 |-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge theme="light" color="disabled"/>                            | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
+| <ColorBadge theme="light" color="state-disabled"/>                            | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
 | <ColorBadge theme="light" color="state-focus"/>                          	  | **Focus**           	| #00D5B9 	| 0/213/185  	  |
 
 
@@ -165,7 +165,7 @@ Depending on the component it can be implemented in different ways, for example 
 
 |                                                                         	|                         	| HEX     	| RGB         	|
 |-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge theme="dark" color="disabled"/>                                      | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
+| <ColorBadge theme="dark" color="state-disabled"/>                                      | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
 | <ColorBadge theme="dark" color="state-focus"/>                             	          | **Focus**           	| #00D5B9 	| 0/213/185  	  |
 
 ### Color proportions
