@@ -1,25 +1,25 @@
 # Button Pure
 
-In addition to Button Primary, Secodary or Tertiary, you can use Button Pure as a more subtle call to action. A button enables the user to execute an action (like "submit", "delete", "add" or "edit", for example) or change the state of an application, which almost always happens on the same page. (Whenever you want to provide navigational elements, stick to the [Link](#/web/navigation/link) or [Link Pure](#/web/navigation/link-pure) component instead.)
+In addition to Button Primary, Secodary or Tertiary, you can use Button Pure more subtle without a surface area. Buttons enable to execute an action (like "submit", "delete", "add" or "edit") or change the state of an application, which almost always happens on the same page. (Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) or [Link Pure](#/web/components/navigation/link-pure) component instead.)
 
 ---
 
-## Available sizes
+## Sizes
 
-Per default, the Button Pure is set in **copytext size**. If another size or hierarchy level is needed, the Button Pure is available in the following sizes, whereas the size of the icon changes accordingly. 
+Per default, the Button Pure is set in **copytext size** (Small). If another size or hierarchy level is needed, the Button Pure is available in the following sizes, whereas the size of the icon changes accordingly. 
 
 
 | Button Pure size | Font size | Example |
 |------|------|------|
-| X-Small | 12 px | <p-button-pure size="x-small">Button Pure</p-button-pure> |
-| Small | 16 px | <p-button-pure size="small">Button Pure</p-button-pure> |
-| Medium | 24 px | <p-button-pure size="medium">Button Pure</p-button-pure> |
-| Large | 36 px | <p-button-pure size="large">Button Pure</p-button-pure> |
-| X-Large | 52 px | <p-button-pure size="x-large">Button Pure</p-button-pure> |
+| **X-Small** | 12 px | <p-button-pure size="x-small">Button Pure</p-button-pure> |
+| **Small** | 16 px | <p-button-pure size="small">Button Pure</p-button-pure> |
+| **Medium** | 24 px | <p-button-pure size="medium">Button Pure</p-button-pure> |
+| **Large** | 36 px | <p-button-pure size="large">Button Pure</p-button-pure> |
+| **X-Large** | 52 px | <p-button-pure size="x-large">Button Pure</p-button-pure> |
 
 --- 
 
-## Available variants
+## Variants
 
 ### Icon and Text
 
@@ -60,7 +60,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Interaction | Icon | Example |
 |----|----|----|
 | Close | <p-icon name="close" aria-label="Close"></p-icon> | Close a current page or window. |
-| Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Abandoning a process, close a dialog. |
+| Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Abandoning a process. |
 | Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | Delete/erase content, e.g. a list item. | 
 | Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | Edit content, e.g. in lists or shop checkout. | 	
 | Add | <p-icon name="plus" aria-label="Plus"></p-icon> | Add content, e.g. a new item in a list. Counting up numbers, e.g. in a   | 
@@ -74,7 +74,7 @@ The text label within a button should always be short and give a hint on the ind
 
 ---
 
-## Special cases
+## Usage
 
 ### Button Pure groups
 
