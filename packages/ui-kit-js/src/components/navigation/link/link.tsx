@@ -71,6 +71,7 @@ export class Link {
           size='inherit'
           name={this.icon}
           source={this.iconSource}
+          color='inherit'
         />
         <p-text tag='span' color='inherit' class={labelClasses}>
           <slot/>
