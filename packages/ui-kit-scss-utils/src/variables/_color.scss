@@ -1,3 +1,79 @@
+/**
+ * Theme light
+ */
+
+// Porsche brand colors
+$p-color-theme-light-brand: #d5001c;
+
+// Default colors
+$p-color-theme-light-default: #000;
+
+// Surface colors
+$p-color-theme-light-surface: #f2f2f2;
+
+// Background colors
+$p-color-theme-light-background: #fff;
+
+// Neutral colors
+$p-color-theme-light-neutral-1: #323639;
+$p-color-theme-light-neutral-2: #4a4e51;
+$p-color-theme-light-neutral-3: #626669;
+
+// Notification colors
+$p-color-theme-light-notification-success: #13d246;
+$p-color-theme-light-notification-warning: #e2b236;
+$p-color-theme-light-notification-error: #e00000;
+
+// State colors
+$p-color-theme-light-state-focus: #00d5b9;
+$p-color-theme-light-state-disabled: #96989a;
+
+/**
+ * Theme dark
+ */
+
+// Porsche brand colors
+$p-color-theme-dark-brand: #d5001c;
+
+// Default colors
+$p-color-theme-dark-default: #fff;
+
+// Surface colors
+$p-color-theme-dark-surface: #1a2023;
+
+// Background colors
+$p-color-theme-dark-background: #0e1418;
+
+// Neutral colors
+$p-color-theme-dark-neutral-1: #e3e4e5;
+$p-color-theme-dark-neutral-2: #c9cacb;
+$p-color-theme-dark-neutral-3: #b0b1b2;
+
+// Notification colors
+$p-color-theme-dark-notification-success: #13d246;
+$p-color-theme-dark-notification-warning: #e2b236;
+$p-color-theme-dark-notification-error: #e00000;
+
+// State colors
+$p-color-theme-dark-state-focus: #00d5b9;
+$p-color-theme-dark-state-disabled: #7c7f81;
+
+/**
+ * External brand colors
+ */
+$p-color-external-facebook: #1877f2;
+$p-color-external-google: #4285f4;
+$p-color-external-instagram: #e1306c;
+$p-color-external-linkedin: #0077b5;
+$p-color-external-twitter: #1da1f2;
+$p-color-external-wechat: #1aad19;
+$p-color-external-youtube: #ff0000;
+
+
+
+
+
+
 // internal brand colors
 $p-color-porsche-red: #d5001c;
 $p-color-porsche-dark-red: #960014;
@@ -38,12 +114,3 @@ $p-color-status-yellow: #e2b236;
 
 // state colors
 $p-color-state-focus: #00d5b9;
-
-// external brand colors
-$p-color-external-facebook: #1877f2;
-$p-color-external-google: #4285f4;
-$p-color-external-instagram: #e1306c;
-$p-color-external-linkedin: #0077b5;
-$p-color-external-twitter: #1da1f2;
-$p-color-external-wechat: #1aad19;
-$p-color-external-youtube: #ff0000;
