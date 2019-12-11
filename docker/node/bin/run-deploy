@@ -73,8 +73,8 @@ copy_latest_stable_sketch_library_and_create_rss_feed() {
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>Porsche UI</title>
-    <description>A Porsche UI Sketch library.</description>
+    <title>Porsche Design System</title>
+    <description>Porsche Design System Sketch Library</description>
     <item>
       <title>${1} (v${P_LATEST_STABLE_SKETCH_VERSION})</title>
       <pubDate>${P_LATEST_STABLE_SKETCH_PUBLISH_DATE}</pubDate>
@@ -141,10 +141,10 @@ if isWorkingBranchLatestStableBranch; then
   add_deployment_version "latest"
   copy_latest_stable_sketch_file "porsche-ui-kit-layout-template.sketch"
   copy_latest_stable_sketch_file "porsche-ui-kit-colors.sketchpalette"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit App" "porsche-ui-kit-app.sketch"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Basic" "porsche-ui-kit-basic.sketch"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche UI Kit Web" "porsche-ui-kit-web.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System App" "porsche-ui-kit-app.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Basic" "porsche-ui-kit-basic.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Web" "porsche-ui-kit-web.sketch"
 fi
 deploy_to_gh_pages
 verify_deployment "${P_WORKING_BRANCH}"

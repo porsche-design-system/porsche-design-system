@@ -1,5 +1,5 @@
-# Porsche UI Kit Angular
-Angular wrappers for Porsche UI Kit web components package.  
+# Porsche Design System Angular
+Angular wrappers for Porsche Design System web components package.  
 
 
 ## Installation

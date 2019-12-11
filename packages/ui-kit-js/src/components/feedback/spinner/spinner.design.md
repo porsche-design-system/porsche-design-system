@@ -15,7 +15,7 @@ A looped indicator (spinner) is used to inform the user about an ongoing operati
 where the loading progress cannot be determined. Usually, spinners are recommended
 to be used for delays of 2-10 seconds.
 
-The Porsche UI Kit provides a spinner that can be used either stand-alone
+The Porsche Design System provides a spinner that can be used either stand-alone
 (for example as page loaders) or within components, such as in buttons to
 indicate progress after clicking "save".
 
