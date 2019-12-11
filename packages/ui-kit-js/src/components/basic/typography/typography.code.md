@@ -58,8 +58,10 @@ The text component is the most flexible way to display text strings on your page
 Rendering defaults to variant `small` and font weight `regular`.  
 The default semantic HTML element is `p`.
 
-<Playground>
-    <p-text>The quick brown fox jumps over the lazy dog</p-text>
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-text :theme="theme">The quick brown fox jumps over the lazy dog</p-text>
+  </template>
 </Playground>
 
 --- 
@@ -68,7 +70,7 @@ The default semantic HTML element is `p`.
 
 There are predefined default text sizes for the text component which should cover most use cases. If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
-<Playground>
+<Playground :themeable="true">
   <template #configurator>
     <select @change="size = $event.target.value">
       <option disabled>Select a size</option>
@@ -80,15 +82,44 @@ There are predefined default text sizes for the text component which should cove
       <option>inherit</option>
     </select>
   </template>
-  <p-text :size="size" :style="isInherit">The quick brown fox jumps over the lazy dog</p-text>
+  <template v-slot="{theme}">
+    <p-text :theme="theme" :size="size" :style="isInheritSize">The quick brown fox jumps over the lazy dog</p-text>
+  </template>
 </Playground>
 
 #### Responsive
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground>
-  <p-text size="{ base: 'small', l: 'medium' }">The quick brown fox jumps over the lazy dog</p-text>
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-text :theme="theme" size="{ base: 'small', l: 'medium' }">The quick brown fox jumps over the lazy dog</p-text>
+  </template>
+</Playground>
+
+--- 
+
+### Color
+The default text color is Porsche Black. But also predefined or inherited colors can be set.
+
+<Playground :themeable="true">
+  <template #configurator>
+    <select @change="color = $event.target.value">
+      <option disabled>Select a color</option>
+      <option value="brand">Brand</option>
+      <option value="default" selected>Default</option>
+      <option value="neutral-1">Neutral 1</option>
+      <option value="neutral-2">Neutral 2</option>
+      <option value="neutral-3">Neutral 3</option>
+      <option value="notification-success">Notification Success</option>
+      <option value="notification-warning">Notification Warning</option>
+      <option value="notification-error">Notification Error</option>
+      <option value="inherit">Inherit</option>
+    </select>
+  </template>
+  <template v-slot="{theme}">
+    <p-text :theme="theme" :color="color" :style="isInheritColor">The quick brown fox jumps over the lazy dog</p-text>
+  </template>
 </Playground>
 
 --- 
@@ -97,37 +128,36 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text sizes.
 
-<Playground>
+<Playground :themeable="true">
   <template #configurator>
     <select @change="weight = $event.target.value">
       <option disabled>Select a weight</option>
-      <option selected>thin</option>
-      <option>regular</option>
-      <option>bold</option>
+      <option value="thin" selected>Thin</option>
+      <option value="regular">Regular</option>
+      <option value="bold">Bold</option>
     </select>
   </template>
-  <p-text size="medium" :weight="weight">The quick brown fox jumps over the lazy dog</p-text>
+  <template v-slot="{theme}">
+    <p-text :theme="theme" size="medium" :weight="weight">The quick brown fox jumps over the lazy dog</p-text>
+  </template>
 </Playground>
 
 ---
 
-### Color
-The default text color is Porsche Black. But also predefined or inherited colors can be set.
-
-<Playground>
-  <p-text color="porsche-black">Porsche Black</p-text>
-  <p-text color="porsche-light" style="background: black;">Porsche Light</p-text>
-  <p-text color="inherit" style="color: deeppink;">Inherited custom color</p-text>
-</Playground>
-
---- 
-
 ### Alignment
 
-<Playground>
-  <p-text align="left">Left</p-text>
-  <p-text align="center">Center</p-text>
-  <p-text align="right">Right</p-text>
+<Playground :themeable="true">
+  <template #configurator>
+    <select @change="align = $event.target.value">
+      <option disabled>Select an alignment</option>
+      <option value="left">Left</option>
+      <option value="center" selected>Center</option>
+      <option value="right">Right</option>
+    </select>
+  </template>
+  <template v-slot="{theme}">
+    <p-text :theme="theme" :align="align">The quick brown fox jumps over the lazy dog</p-text>
+  </template>
 </Playground>
 
 ---
@@ -135,16 +165,20 @@ The default text color is Porsche Black. But also predefined or inherited colors
 ### Ellipsis mode
 This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the end are used to visualize it.
 
-<Playground>
-  <p-text ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-text :theme="theme" ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+  </template>
 </Playground>
 
 ---
 
 ### Text with a link and bold text as children
 
-<Playground>
-  <p-text>Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-text :theme="theme">Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>
+  </template>
 </Playground>
 
 
@@ -155,9 +189,15 @@ This will force any text to never wrap into a new line and in case it's to long 
   export default class PlaygroundTypography extends Vue {
     public size: string = 'medium';
     public weight: string = 'thin';
+    public color: string = 'default';
+    public align: string = 'center';
     
-    public get isInherit() {
+    public get isInheritSize() {
       return this.size === 'inherit' ? 'font-size: 48px' : undefined;
+    }
+    
+    public get isInheritColor() {
+      return this.color === 'inherit' ? 'color: deeppink' : undefined;
     }
   }
 </script>
