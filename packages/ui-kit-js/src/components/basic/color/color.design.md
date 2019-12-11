@@ -7,18 +7,18 @@ branding. Even more so when it comes to UX, color is to be used intentionally to
 patterns, set emphasis on important elements and by doing so, to provide visual
 guidance and information.
 
-The Porsche UI color system provides a general UI color palette as well as two
-Porsche UI color themes that are based on the Porsche color palette and to be
+The Porsche Design System color system provides a general UI color palette as well as two
+Porsche Design System color themes that are based on the Porsche color palette and to be
 used for different visual environments.
 
 ---
 
-## Porsche UI color themes
+## Porsche Design System color themes
 
-When designing Porsche UI applications the first decision to make is whether the content should be displayed in a merely light or dark environment.
-That's when the Porsche UI color themes come into play: **The first choice should always be the Porsche Light Theme**. The Porsche Dark Theme is only to be
+When designing Porsche applications the first decision to make is whether the content should be displayed in a merely light or dark environment.
+That's when the Porsche Design System color themes come into play: **The first choice should always be the Porsche Light Theme**. The Porsche Dark Theme is only to be
 used for exceptional cases, for example if an application is to stand out from the rest of visual communication for strategic reasons or if the context of use 
-is unsuitable for a bright shining display. All Porsche UI Kit components are optimized for Light and Dark Theme.
+is unsuitable for a bright shining display. All Porsche Design System components are optimized for Light and Dark Theme.
 
 ### Theme colors
 Each theme comes with a limited color set you should stick to for page backgrounds and text/icons. 
@@ -111,13 +111,13 @@ For coloring further architectonical elements such as dividers, smaller surfaces
 
 ---
 
-## Porsche UI color palette
+## Porsche Design System color palette
 
-The Porsche UI color palette includes both Brand Colors and Neutral Colors. They must always be used in 100% opacity.
-The Porsche UI Kit Sketch library provides both 
+The Porsche Design System color palette includes both Brand Colors and Neutral Colors. They must always be used in 100% opacity.
+The Porsche Design System Sketch library provides both 
 
 ### Brand colors
-The Porsche brand colors are the core of the Porsche UI color palette. The usage
+The Porsche brand colors are the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 

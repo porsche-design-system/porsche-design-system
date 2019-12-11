@@ -10,12 +10,12 @@ Porsche Design System provides developers with a collection of presentational we
 All releases of the Porsche Design System are available as versioned npm package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-angular` and `@porsche-ui/ui-kit-react`.
 
 Those packages can be consumed by one of the following private npm registries:
-* Porsche UI npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
+* Porsche Design System npm registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
 * My Porsche npm registry ([https://porschedev.jfrog.io](https://porschedev.jfrog.io))
 
-If you don't have an account to one of the previously mentioned npm registries, you can easily register for Porsche UI npm registry like following:
+If you don't have an account to one of the previously mentioned npm registries, you can easily register for Porsche Design System npm registry like following:
 
-<p-link target="_blank" href="http://eepurl.com/gnOIXD">Request a Porsche UI npm registry account</p-link>
+<p-link target="_blank" href="http://eepurl.com/gnOIXD">Request a Porsche Design System npm registry account</p-link>
 
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`

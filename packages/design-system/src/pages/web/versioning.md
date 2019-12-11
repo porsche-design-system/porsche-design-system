@@ -19,7 +19,7 @@ Teams should avoid mixing different versions of code and design library. Both pa
 * In design, the version must be contained in the library file name.
 
 ## Versioning examples
-Some examples for SemVer within the Porsche UI Kit:
+Some examples for SemVer within the Porsche Design System:
 
 ### MAJOR version when
 * Change to style that triggers a layout change or different wrapping behaviour

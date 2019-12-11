@@ -1,4 +1,4 @@
-# Porsche UI Kit Angular
+# Porsche Design System Angular
 
 ## NOT RELEASED YET
 
@@ -72,7 +72,7 @@
 ## [1.0.0-alpha.5] (2019-09-20)
 
 ### Bugfix
-* UI Kit Angular build
+* Design System Angular build
 
 
 ## [1.0.0-alpha.4] (2019-09-19)
@@ -84,7 +84,7 @@
 ## [1.0.0-alpha.3] (2019-09-09)
 
 ### Silent Change
-* added prefix to breakpoint mixin in UI Kit JS.
+* added prefix to breakpoint mixin in Design System JS.
 
 
 ## [1.0.0-alpha.2] (2019-08-22)

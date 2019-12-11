@@ -49,7 +49,7 @@ The `<p-text-link>` component is used to show a linkable icon-text-combination.
 ---
 
 ### Specific icon
-If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property.
+If another icon needs to be implemented, just replace the default icon with your new icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property.
 If you need to link to another icon hosted somewhere else, just set the whole icon path to the `icon` prop.
 
 <Playground>
@@ -60,7 +60,7 @@ If you need to link to another icon hosted somewhere else, just set the whole ic
 
 ### Usage with a framework specific router
 In order to work properly with a framework specific router component it's necessary to render `<p-text-link>` with a `<span>` tag and wrap it with an `<a>` tag created by a framework specific router component.
-Additionally it's necessary to add some styling information for the framework specific router link like in the following SCSS code block (SCSS variables are available in the Porsche UI SCSS Utility npm package).
+Additionally it's necessary to add some styling information for the framework specific router link like in the following SCSS code block (SCSS variables are available in the Porsche Design System SCSS Utility npm package).
 
 ```
 a {

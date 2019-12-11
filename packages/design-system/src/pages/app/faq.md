@@ -1,11 +1,11 @@
 # FAQ
 
-To answer the most frequently asked questions, Porsche UI is constantly adding FAQs to the following list. Please read through before using the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](#/web/help/support)**
+To answer the most frequently asked questions the following list is constantly updated. Please read through before using the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](#/web/help/support)**
 
 ## Who develops the Porsche Design System?
 The Porsche Design System is developed and maintained centrally by a designated team from Porsche AG in Germany. In an open community, everyone is encouraged to participate and contribute to the Porsche Design System and give feedback at any time.
 
-## How can I get in contact with the Porsche UI team?
+## How can I get in contact with the Porsche Design System team?
 We want to enable continuous communication within the community. Therefore we offer different use-case-related communication channels to get in contact or ask for support or submit support requests. You can find all of them [in the support section](#/web/help/support).
 
 ## How can I access the Porsche Design System files?
