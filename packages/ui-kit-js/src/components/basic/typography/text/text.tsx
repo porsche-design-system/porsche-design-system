@@ -5,7 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../../utils';
-import { TextSize, TextWeight, Theme, ThemeColor } from '../../../../types';
+import { TextSize, TextWeight, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-text',
@@ -36,7 +36,7 @@ export class Text {
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
   /** Basic text color variations depending on theme property. */
-  @Prop() public color?: ThemeColor = 'default';
+  @Prop() public color?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit' = 'default';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;

@@ -14,7 +14,6 @@ import {
   TextSize,
   TextWeight,
   Theme,
-  ThemeColor,
 } from './types';
 import {
   IconName,
@@ -339,7 +338,7 @@ export namespace Components {
     /**
     * Basic text color variations depending on theme property.
     */
-    'color'?: ThemeColor;
+    'color'?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -409,13 +408,17 @@ export namespace Components {
   }
   interface PTextList {
     /**
-    * Basic text list color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'inherit';
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
   }
   interface PTextListItem {}
 }
@@ -857,7 +860,7 @@ declare namespace LocalJSX {
     /**
     * Basic text color variations depending on theme property.
     */
-    'color'?: ThemeColor;
+    'color'?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -931,13 +934,17 @@ declare namespace LocalJSX {
   }
   interface PTextList {
     /**
-    * Basic text list color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'inherit';
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
   }
   interface PTextListItem {}
 

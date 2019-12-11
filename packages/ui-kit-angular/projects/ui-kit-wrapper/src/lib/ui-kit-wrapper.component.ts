@@ -191,9 +191,9 @@ export class PTextLink {
   }
 }
 export declare interface PTextList extends Components.PTextList {}
-@ProxyInputs(['color', 'listType'])
+@ProxyInputs(['color', 'listType', 'theme'])
 
-@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType'] })
+@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType', 'theme'] })
 export class PTextList {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
