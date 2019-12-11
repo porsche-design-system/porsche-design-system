@@ -67,26 +67,31 @@
   }
 
   &:focus {
-    outline: 2px solid $p-color-theme-light-state-focus;
+    outline-width: 2px;
+    outline-style: solid;
     outline-offset: 1px;
-  }
-
-  &:enabled,
-  &:not([disabled]) {
-    &:hover,
-    &:active {
-      color: $p-color-theme-light-brand;
-    }
   }
 
   &:disabled,
   &[disabled] {
-    color: $p-color-theme-light-state-disabled;
     pointer-events: none;
   }
 
   &--theme-light {
-    color: $p-color-theme-dark-background;
+    color: $p-color-theme-light-default;
+
+    &:focus {
+      outline-color: $p-color-theme-light-state-focus;
+    }
+
+    &:enabled,
+    &:not([disabled]) {
+      &:hover,
+      &:active {
+        color: $p-color-theme-light-brand;
+      }
+    }
+
     &:disabled,
     &[disabled] {
       color: $p-color-theme-light-state-disabled;
@@ -95,6 +100,19 @@
 
   &--theme-dark {
     color: $p-color-theme-dark-default;
+
+    &:focus {
+      outline-color: $p-color-theme-dark-state-focus;
+    }
+
+    &:enabled,
+    &:not([disabled]) {
+      &:hover,
+      &:active {
+        color: $p-color-theme-dark-brand;
+      }
+    }
+
     &:disabled,
     &[disabled] {
       color: $p-color-theme-dark-state-disabled;
