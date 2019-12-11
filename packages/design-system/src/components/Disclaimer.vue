@@ -20,6 +20,6 @@
 
   .disclaimer {
     padding: $p-spacing-8 $p-spacing-32;
-    background: $p-color-porsche-red;
+    background: $p-color-theme-light-brand;
   }
 </style>
