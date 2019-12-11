@@ -16,11 +16,11 @@
   transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
   &:hover {
-    color: $p-color-porsche-red;
+    color: $p-color-theme-light-brand;
   }
 
   &:focus {
-    outline: 1px solid $p-color-state-focus;
+    outline: 1px solid $p-color-theme-light-state-focus;
     outline-offset: 4px;
   }
 
@@ -30,11 +30,11 @@
     }
 
     &-porsche-light {
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
     }
 
     &-porsche-black {
-      color: $p-color-porsche-black;
+      color: $p-color-theme-light-default;
     }
   }
 
