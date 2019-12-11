@@ -2,7 +2,7 @@
 
 ## Color
 
-A light and dark theme is available depending on usage.  
+A light and dark theme is available depending on which background it's used.   
 
 <br>
 <select id="theme-selector" @change="theme = $event.target.value" :data-selected="theme">
