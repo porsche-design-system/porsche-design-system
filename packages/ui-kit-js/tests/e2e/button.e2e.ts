@@ -61,6 +61,24 @@ describe('button', () => {
     expect(spy.length).toBe(0);
   });
 
+  it(`should not submit the form if button is disabled`, async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+          <div id="wrapper">
+            <form onsubmit="return false;">
+              <p-button type="submit" disabled="true">Some label</p-button>
+            </form>
+          </div>
+    `);
+    const innerButton = await page.find('p-button >>> button');
+    const outerButton = await page.find('p-button');
+    const form = await page.find('form');
+    const spy = await form.spyOnEvent('submit');
+    await innerButton.click();
+    await outerButton.click();
+    expect(spy.length).toBe(0);
+  });
+
   it(`should trigger focus&blur events at the correct time`, async () => {
     const page = await newE2EPage();
     await page.setContent(`
