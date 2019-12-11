@@ -41,7 +41,7 @@ export class Text {
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
 
-  /** Adapts the text color depending on the theme (has no effect when "inherit" is set as color prop). */
+  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
