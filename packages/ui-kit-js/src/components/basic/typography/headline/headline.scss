@@ -59,16 +59,6 @@
   }
 
   &--color {
-    &-brand {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-brand;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-brand;
-      }
-    }
-
     &-default {
       &#{$bem-block}--theme-light {
         color: $p-color-theme-light-default;
@@ -76,66 +66,6 @@
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-default;
-      }
-    }
-
-    &-neutral-1 {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-neutral-1;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-neutral-1;
-      }
-    }
-
-    &-neutral-2 {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-neutral-2;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-neutral-2;
-      }
-    }
-
-    &-neutral-3 {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-neutral-3;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-neutral-3;
-      }
-    }
-
-    &-notification-success {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-notification-success;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-notification-success;
-      }
-    }
-
-    &-notification-warning {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-notification-warning;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-notification-warning;
-      }
-    }
-
-    &-notification-error {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-notification-error;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-notification-error;
       }
     }
 

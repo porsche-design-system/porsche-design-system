@@ -20,20 +20,13 @@ There are multiple predefined styling variants available. Additionally the corre
 ---
 
 ## Color
-Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
+A predefined default color associated with its theme is available but also inherit mode can be used to define a custom color.
 
 <Playground :themeable="true">
   <template #configurator>
     <select @change="color = $event.target.value">
       <option disabled>Select a color</option>
-      <option value="brand">Brand</option>
       <option value="default" selected>Default</option>
-      <option value="neutral-1">Neutral 1</option>
-      <option value="neutral-2">Neutral 2</option>
-      <option value="neutral-3">Neutral 3</option>
-      <option value="notification-success">Notification Success</option>
-      <option value="notification-warning">Notification Warning</option>
-      <option value="notification-error">Notification Error</option>
       <option value="inherit">Inherit</option>
     </select>
   </template>
