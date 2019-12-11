@@ -99,9 +99,9 @@ export class PGridItem {
   }
 }
 export declare interface PHeadline extends Components.PHeadline {}
-@ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'variant'])
+@ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'theme', 'variant'])
 
-@Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
+@Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'theme', 'variant'] })
 export class PHeadline {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {

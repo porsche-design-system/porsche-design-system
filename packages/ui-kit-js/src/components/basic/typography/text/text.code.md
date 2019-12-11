@@ -50,7 +50,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 --- 
 
 ## Color
-The default text color is Porsche Black. But also predefined or inherited colors can be set.
+Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :themeable="true">
   <template #configurator>

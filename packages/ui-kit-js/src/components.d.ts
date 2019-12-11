@@ -186,9 +186,9 @@ export namespace Components {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
-    * Basic text color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: ThemeColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -197,6 +197,10 @@ export namespace Components {
     * Sets a custom HTML tag depending of the usage of the headline component.
     */
     'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
     /**
     * Style of the text.
     */
@@ -697,9 +701,9 @@ declare namespace LocalJSX {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
-    * Basic text color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: ThemeColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -708,6 +712,10 @@ declare namespace LocalJSX {
     * Sets a custom HTML tag depending of the usage of the headline component.
     */
     'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
     /**
     * Style of the text.
     */
