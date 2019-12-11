@@ -338,12 +338,12 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size={10}>
           <div className="playground light spacing-inline">
-            <PIcon name={'car-next'} aria-label="Car icon"/>
-            <PIcon name={'car-next'} size={'medium'} aria-label="Car icon"/>
-            <PIcon name={'car-next'} size={'large'} aria-label="Car icon"/>
-            <PIcon name={'car-next'} size={'large'} color={'porsche-red'} aria-label="Car icon"/>
-            <PIcon name={'car-next'} size={'large'} color={'inherit'} aria-label="Car icon" style={{color: 'deeppink'}}/>
-            <PIcon name={'kaixin'} size={'large'} aria-label="Kaixin icon"/>
+            <PIcon name={'filter'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'medium'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'large'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'large'} color={'porsche-red'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'large'} color={'inherit'} aria-label="Filter icon" style={{color: 'deeppink'}}/>
+            <PIcon name={'delete'} size={'large'} aria-label="Delete icon"/>
           </div>
           <hr/>
         </PGridItem>

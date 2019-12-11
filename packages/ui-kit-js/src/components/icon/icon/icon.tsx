@@ -16,7 +16,7 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public name?: IconName = 'arrow-right-hair';
+  @Prop() public name?: IconName = 'arrow-head-right';
 
   /**
    * Specifies a whole icon path which can be used for custom icons.
