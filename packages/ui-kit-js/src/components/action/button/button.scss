@@ -218,8 +218,8 @@
       &:active {
         &#{$bem-block}--theme-light {
           color: $p-color-theme-dark-default;
-          background-color: $p-color-theme-light-neutral-1;
-          border-color: $p-color-theme-light-neutral-1;
+          background-color: darken($p-color-theme-light-neutral-1, 12%);
+          border-color: darken($p-color-theme-light-neutral-1, 12%);
         }
 
         &#{$bem-block}--theme-dark {
