@@ -1,6 +1,6 @@
 # Button Pure
 
-In addition to Button Primary, Secodary or Tertiary, you can use the Button Pure more subtle without a surface area. Buttons enable to execute an action (like "submit", "delete", "add" or "edit") or change the state of an application, which almost always happens on the same page. (Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) or [Link Pure](#/web/components/navigation/link-pure) component instead.)
+In addition to Button Primary, Secodary or Tertiary, you can use Button Pure more subtle without a surface area. Buttons enable to execute an action (like "submit", "delete", "add" or "edit") or change the state of an application, which almost always happens on the same page. (Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) or [Link Pure](#/web/components/navigation/link-pure) component instead.)
 
 ---
 
