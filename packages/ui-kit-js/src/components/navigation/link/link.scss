@@ -68,7 +68,7 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: none;
+  outline: none transparent;
   text-decoration: none;
   border-style: solid;
   border-width: 1px;
@@ -82,72 +82,87 @@
   }
 
   &:focus {
-    outline: 2px solid $p-color-theme-light-state-focus;
+    outline-width: 2px;
+    outline-style: solid;
     outline-offset: 1px;
   }
 
   &--theme-light {
-    outline-color: $p-color-theme-dark-default;
+    &:focus {
+      outline-color: $p-color-theme-light-state-focus;
+    }
   }
 
   &--theme-dark {
-    outline-color: $p-color-theme-light-default;
+    &:focus {
+      outline-color: $p-color-theme-dark-state-focus;
+    }
   }
 
   &--primary {
-    color: $p-color-theme-dark-default;
-    background-color: $p-color-theme-light-brand;
-    border-color: $p-color-theme-light-brand;
-
-    &#{$bem-block}--theme-dark {
+    &#{$bem-block}--theme-light {
       color: $p-color-theme-dark-default;
       background-color: $p-color-theme-light-brand;
       border-color: $p-color-theme-light-brand;
     }
 
+    &#{$bem-block}--theme-dark {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-dark-brand;
+      border-color: $p-color-theme-dark-brand;
+    }
+
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
-      background-color: darken($p-color-theme-light-brand, 10%);
-      border-color: darken($p-color-theme-light-brand, 10%);
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-dark-default;
+        background-color: darken($p-color-theme-light-brand, 12%);
+        border-color: darken($p-color-theme-light-brand, 12%);
+      }
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-light-brand, 10%);
-        border-color: darken($p-color-theme-light-brand, 10%);
+        background-color: darken($p-color-theme-dark-brand, 12%);
+        border-color: darken($p-color-theme-dark-brand, 12%);
       }
     }
   }
 
   &--secondary {
-    color: $p-color-theme-dark-default;
-    background-color: $p-color-theme-light-neutral-1;
-    border-color: $p-color-theme-light-neutral-1;
+    &#{$bem-block}--theme-light {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-light-neutral-1;
+      border-color: $p-color-theme-light-neutral-1;
+    }
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-light-default;
-      background-color: $p-color-theme-light-background;
+      background-color: $p-color-theme-dark-default;
       border-color: $p-color-theme-dark-default;
     }
 
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-dark-surface;
-      border-color: $p-color-theme-dark-surface;
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-dark-default;
+        background-color: darken($p-color-theme-light-neutral-1, 12%);
+        border-color: darken($p-color-theme-light-neutral-1, 12%);
+      }
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-light-default;
-        background-color: $p-color-theme-dark-neutral-1;
-        border-color: $p-color-theme-dark-neutral-1;
+        background-color: darken($p-color-theme-dark-default, 12%);
+        border-color: darken($p-color-theme-dark-default, 12%);
       }
     }
   }
 
   &--tertiary {
-    color: $p-color-theme-light-default;
-    background-color: transparent;
-    border-color: $p-color-theme-light-neutral-1;
+    &#{$bem-block}--theme-light {
+      color: $p-color-theme-light-default;
+      background-color: transparent;
+      border-color: $p-color-theme-light-neutral-1;
+    }
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
@@ -157,13 +172,15 @@
 
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-dark-surface;
-      border-color: $p-color-theme-dark-surface;
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-dark-default;
+        background-color: $p-color-theme-light-neutral-1;
+        border-color: $p-color-theme-light-neutral-1;
+      }
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-light-default;
-        background-color: $p-color-theme-light-background;
+        background-color: $p-color-theme-dark-default;
         border-color: $p-color-theme-dark-default;
       }
     }
