@@ -213,9 +213,9 @@ export namespace Components {
   }
   interface PIcon {
     /**
-    * Basic color variations.
+    * Basic color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -232,6 +232,10 @@ export namespace Components {
     * Specifies a whole icon path which can be used for custom icons.
     */
     'source'?: string;
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
     'variant'?: 'outline' | 'filled';
   }
   interface PLink {
@@ -732,9 +736,9 @@ declare namespace LocalJSX {
   }
   interface PIcon {
     /**
-    * Basic color variations.
+    * Basic color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -751,6 +755,10 @@ declare namespace LocalJSX {
     * Specifies a whole icon path which can be used for custom icons.
     */
     'source'?: string;
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
   }
   interface PLink {
     /**
