@@ -14,34 +14,34 @@ A light and dark theme is available depending on usage.
   <option value="dark">Theme dark</option>
 </select>
 
-## Theme {{theme}}
+### Theme {{theme}}
 
-### Brand colors
+#### Brand colors
 
 |                                                   |                      	             |
 |---------------------------------------------------|------------------------------------|
 | <ColorBadge :theme="theme" color="brand"/>  	    | `$p-color-theme-{{theme}}-brand`   |
 
-### Default colors
+#### Default colors
 
 |                                                   |                      	             |
 |---------------------------------------------------|------------------------------------|
 | <ColorBadge :theme="theme" color="default"/>      | `$p-color-theme-{{theme}}-default` |
 
-### Surface colors
+#### Surface colors
 
 |                                                   |                      	             |
 |---------------------------------------------------|------------------------------------|
 | <ColorBadge :theme="theme" color="surface"/>      | `$p-color-theme-{{theme}}-surface` |
 
-### Background colors
+#### Background colors
 
 |                                                   |                      	                |
 |---------------------------------------------------|---------------------------------------|
 | <ColorBadge :theme="theme" color="background"/>   | `$p-color-theme-{{theme}}-background` |
 
 
-### Neutral colors
+#### Neutral colors
 
 |                                                   |                      	                 |
 |---------------------------------------------------|----------------------------------------|
@@ -49,7 +49,7 @@ A light and dark theme is available depending on usage.
 | <ColorBadge :theme="theme" color="neutral-2"/>  	| `$p-color-theme-{{theme}}-neutral-2`   |
 | <ColorBadge :theme="theme" color="neutral-3"/>  	| `$p-color-theme-{{theme}}-neutral-3`   |
 
-### Notification colors
+#### Notification colors
 
 |                                                           |                      	                            |
 |-----------------------------------------------------------|---------------------------------------------------|
@@ -57,7 +57,7 @@ A light and dark theme is available depending on usage.
 | <ColorBadge :theme="theme" color="notification-warning"/> | `$p-color-theme-{{theme}}-notification-warning`   |
 | <ColorBadge :theme="theme" color="notification-error"/>  	| `$p-color-theme-{{theme}}-notification-error`     |
 
-### State colors
+#### State colors
 
 |                                                     |                      	                  |
 |-----------------------------------------------------|-------------------------------------------|
@@ -66,7 +66,7 @@ A light and dark theme is available depending on usage.
 
 ---
 
-## External brand colors
+### External brand colors
 
 |                                               |                      	         |
 |-----------------------------------------------|--------------------------------|
