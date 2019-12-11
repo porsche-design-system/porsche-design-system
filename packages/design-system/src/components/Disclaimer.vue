@@ -1,6 +1,6 @@
 <template>
   <div class="disclaimer">
-    <p-text color="porsche-light">
+    <p-text theme="dark" color="default">
       A stable version of the Porsche UI Kit 1.0 is not released yet. The available alpha version of Porsche UI Kit 1.0
       is meant to be used for testing purpose only.
     </p-text>

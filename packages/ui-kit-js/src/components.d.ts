@@ -14,6 +14,7 @@ import {
   TextSize,
   TextWeight,
   Theme,
+  ThemeColor,
 } from './types';
 import {
   IconName,
@@ -332,9 +333,9 @@ export namespace Components {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
-    * Basic text color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: ThemeColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -355,6 +356,10 @@ export namespace Components {
     | 'cite'
     | 'time'
     | 'legend';
+    /**
+    * Adapts the text color depending on the theme (has no effect when "inherit" is set as color prop).
+    */
+    'theme'?: Theme;
     /**
     * The weight of the text.
     */
@@ -842,9 +847,9 @@ declare namespace LocalJSX {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
-    * Basic text color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: ThemeColor;
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -865,6 +870,10 @@ declare namespace LocalJSX {
     | 'cite'
     | 'time'
     | 'legend';
+    /**
+    * Adapts the text color depending on the theme (has no effect when "inherit" is set as color prop).
+    */
+    'theme'?: Theme;
     /**
     * The weight of the text.
     */
