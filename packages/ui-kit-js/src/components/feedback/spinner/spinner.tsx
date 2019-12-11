@@ -21,7 +21,7 @@ export class Spinner {
     const spinnerClasses = cx(
       prefix('spinner'),
       prefix(`spinner--${this.size}`),
-      this.theme === 'dark' && prefix('spinner--theme-dark')
+      prefix(`spinner--theme-${this.theme}`)
     );
     const imageClasses = prefix('spinner__image');
     const bgClasses = prefix('spinner__bg');

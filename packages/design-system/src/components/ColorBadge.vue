@@ -1,35 +1,38 @@
 <template>
-  <div class="color-badge" :class="color">
+  <div class="color-badge" :class="[theme, color]">
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
+  import { Component, Prop, Vue } from 'vue-property-decorator';
+
+  type Theme = 'light' | 'dark';
 
   type Color =
-    'porsche-red'
-    | 'porsche-dark-red'
-    | 'porsche-light'
-    | 'porsche-dark'
-    | 'porsche-black'
-    | 'surface-light'
-    | 'surface-dark'
-    | 'neutral-grey-1'
-    | 'neutral-grey-2'
-    | 'neutral-grey-3'
-    | 'neutral-grey-4'
-    | 'neutral-grey-5'
-    | 'neutral-grey-6'
-    | 'neutral-grey-7'
-    | 'neutral-grey-8'
-    | 'status-red'
-    | 'status-green'
-    | 'status-yellow'
-    | 'state-focus';
+    'brand'
+    | 'default'
+    | 'surface'
+    | 'background'
+    | 'neutral-1'
+    | 'neutral-2'
+    | 'neutral-3'
+    | 'notification-success'
+    | 'notification-warning'
+    | 'notification-error'
+    | 'state-focus'
+    | 'state-disabled'
+    | 'external-facebook'
+    | 'external-google'
+    | 'external-instagram'
+    | 'external-linkedin'
+    | 'external-twitter'
+    | 'external-wechat'
+    | 'external-youtube';
 
   @Component
   export default class ColorBadge extends Vue {
-    @Prop({default: 'porsche-red'}) public color!: Color;
+    @Prop({default: 'light'}) public theme!: Theme;
+    @Prop({default: 'brand'}) public color!: Color;
   }
 </script>
 
@@ -39,84 +42,111 @@
   .color-badge {
     width: rem(160px);
     height: rem(40px);
-    border: 1px solid $p-color-neutral-grey-2;
+    border: 1px solid $p-color-theme-light-neutral-3;
 
-    &.porsche-red {
-      background: $p-color-porsche-red;
+    // Theme light
+    &.light {
+      &.brand {
+        background: $p-color-theme-light-brand;
+      }
+
+      &.default {
+        background: $p-color-theme-light-default;
+      }
+
+      &.surface {
+        background: $p-color-theme-light-surface;
+      }
+
+      &.background {
+        background: $p-color-theme-light-background;
+      }
+
+      &.neutral-1 {
+        background: $p-color-theme-light-neutral-1;
+      }
+
+      &.neutral-2 {
+        background: $p-color-theme-light-neutral-2;
+      }
+
+      &.neutral-3 {
+        background: $p-color-theme-light-neutral-3;
+      }
+
+      &.notification-success {
+        background: $p-color-theme-light-notification-success;
+      }
+
+      &.notification-warning {
+        background: $p-color-theme-light-notification-warning;
+      }
+
+      &.notification-error {
+        background: $p-color-theme-light-notification-error;
+      }
+
+      &.state-focus {
+        background: $p-color-theme-light-state-focus;
+      }
+
+      &.state-disabled {
+        background: $p-color-theme-light-state-disabled;
+      }
     }
 
-    &.porsche-dark-red {
-      background: $p-color-porsche-dark-red;
+    // Theme dark
+    &.dark {
+      &.brand {
+        background: $p-color-theme-dark-brand;
+      }
+
+      &.default {
+        background: $p-color-theme-dark-default;
+      }
+
+      &.surface {
+        background: $p-color-theme-dark-surface;
+      }
+
+      &.background {
+        background: $p-color-theme-dark-background;
+      }
+
+      &.neutral-1 {
+        background: $p-color-theme-dark-neutral-1;
+      }
+
+      &.neutral-2 {
+        background: $p-color-theme-dark-neutral-2;
+      }
+
+      &.neutral-3 {
+        background: $p-color-theme-dark-neutral-3;
+      }
+
+      &.notification-success {
+        background: $p-color-theme-dark-notification-success;
+      }
+
+      &.notification-warning {
+        background: $p-color-theme-dark-notification-warning;
+      }
+
+      &.notification-error {
+        background: $p-color-theme-dark-notification-error;
+      }
+
+      &.state-focus {
+        background: $p-color-theme-dark-state-focus;
+      }
+
+      &.state-disabled {
+        background: $p-color-theme-dark-state-disabled;
+      }
     }
 
-    &.porsche-light {
-      background: $p-color-porsche-light;
-    }
-
-    &.porsche-dark {
-      background: $p-color-porsche-dark;
-    }
-
-    &.porsche-black {
-      background: $p-color-porsche-black;
-    }
-
-    &.surface-light {
-      background: $p-color-surface-light;
-    }
-
-    &.surface-dark {
-      background: $p-color-surface-dark;
-    }
-
-    &.neutral-grey-1 {
-      background: $p-color-neutral-grey-1;
-    }
-
-    &.neutral-grey-2 {
-      background: $p-color-neutral-grey-2;
-    }
-
-    &.neutral-grey-3 {
-      background: $p-color-neutral-grey-3;
-    }
-
-    &.neutral-grey-4 {
-      background: $p-color-neutral-grey-4;
-    }
-
-    &.neutral-grey-5 {
-      background: $p-color-neutral-grey-5;
-    }
-
-    &.neutral-grey-6 {
-      background: $p-color-neutral-grey-6;
-    }
-
-    &.neutral-grey-7 {
-      background: $p-color-neutral-grey-7;
-    }
-
-    &.neutral-grey-8 {
-      background: $p-color-neutral-grey-8;
-    }
-
-    &.status-red {
-      background: $p-color-status-red;
-    }
-
-    &.status-green {
-      background: $p-color-status-green;
-    }
-
-    &.status-yellow {
-      background: $p-color-status-yellow;
-    }
-
-    &.state-focus {
-      background: $p-color-state-focus;
-    }
-
+    // External brand colors
     &.external-facebook {
       background: $p-color-external-facebook;
     }

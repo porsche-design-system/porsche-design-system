@@ -20,14 +20,17 @@ describe('Typography', () => {
 
     it('Should show tab navigation with first tab activated', () => {
       cy.get('#app main .tabs a').should(($a) => {
-        expect($a, '3 items').to.have.length(3);
+        expect($a, '4 items').to.have.length(4);
         expect($a.eq(0), 'first item')
           .to.contain('Design')
           .to.have.class('router-link-active');
         expect($a.eq(1), 'second item')
-          .to.contain('Code')
+          .to.contain('Code Headline')
           .not.to.have.class('router-link-active');
-        expect($a.eq(2), 'third item')
+        expect($a.eq(2), 'second item')
+          .to.contain('Code Text')
+          .not.to.have.class('router-link-active');
+        expect($a.eq(3), 'third item')
           .to.contain('Props')
           .not.to.have.class('router-link-active');
       });
@@ -42,13 +45,22 @@ describe('Typography', () => {
       cy.get('#app main h1').should('contain', 'Typography');
     });
 
-    it('Should show code documentation', () => {
+    it('Should show headline code documentation', () => {
       cy.get('#app main .tabs a')
-        .contains('Code')
+        .contains('Code Headline')
         .click()
         .should('have.class', 'router-link-active');
 
-      cy.get('#app main h1').should('contain', 'Typography');
+      cy.get('#app main h1').should('contain', 'Headline');
+    });
+
+    it('Should show text code documentation', () => {
+      cy.get('#app main .tabs a')
+        .contains('Code Text')
+        .click()
+        .should('have.class', 'router-link-active');
+
+      cy.get('#app main h1').should('contain', 'Text');
     });
 
     it('Should show props documentation', () => {
