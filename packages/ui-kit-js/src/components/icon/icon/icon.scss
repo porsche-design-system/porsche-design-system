@@ -41,15 +41,15 @@
     }
 
     &-porsche-light {
-      fill: $p-color-porsche-light;
+      fill: $p-color-theme-dark-default;
     }
 
     &-porsche-black {
-      fill: $p-color-porsche-black;
+      fill: $p-color-theme-light-default;
     }
 
     &-porsche-red {
-      fill: $p-color-porsche-red;
+      fill: $p-color-theme-light-brand;
     }
   }
 }

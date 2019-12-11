@@ -82,89 +82,89 @@
   }
 
   &:focus {
-    outline: 2px solid $p-color-state-focus;
+    outline: 2px solid $p-color-theme-light-state-focus;
     outline-offset: 1px;
   }
 
   &--theme-light {
-    outline-color: $p-color-porsche-light;
+    outline-color: $p-color-theme-dark-default;
   }
 
   &--theme-dark {
-    outline-color: $p-color-porsche-black;
+    outline-color: $p-color-theme-light-default;
   }
 
   &--primary {
-    color: $p-color-porsche-light;
-    background-color: $p-color-porsche-red;
-    border-color: $p-color-porsche-red;
+    color: $p-color-theme-dark-default;
+    background-color: $p-color-theme-light-brand;
+    border-color: $p-color-theme-light-brand;
 
     &#{$bem-block}--theme-dark {
-      color: $p-color-porsche-light;
-      background-color: $p-color-porsche-red;
-      border-color: $p-color-porsche-red;
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-light-brand;
+      border-color: $p-color-theme-light-brand;
     }
 
     &:hover,
     &:active {
-      color: $p-color-porsche-light;
-      background-color: $p-color-porsche-dark-red;
-      border-color: $p-color-porsche-dark-red;
+      color: $p-color-theme-dark-default;
+      background-color: darken($p-color-theme-light-brand, 10%);
+      border-color: darken($p-color-theme-light-brand, 10%);
 
       &#{$bem-block}--theme-dark {
-        color: $p-color-porsche-light;
-        background-color: $p-color-porsche-dark-red;
-        border-color: $p-color-porsche-dark-red;
+        color: $p-color-theme-dark-default;
+        background-color: darken($p-color-theme-light-brand, 10%);
+        border-color: darken($p-color-theme-light-brand, 10%);
       }
     }
   }
 
   &--secondary {
-    color: $p-color-porsche-light;
-    background-color: $p-color-neutral-grey-8;
-    border-color: $p-color-neutral-grey-8;
+    color: $p-color-theme-dark-default;
+    background-color: $p-color-theme-light-neutral-1;
+    border-color: $p-color-theme-light-neutral-1;
 
     &#{$bem-block}--theme-dark {
-      color: $p-color-porsche-black;
-      background-color: $p-color-porsche-light;
-      border-color: $p-color-porsche-light;
+      color: $p-color-theme-light-default;
+      background-color: $p-color-theme-light-background;
+      border-color: $p-color-theme-dark-default;
     }
 
     &:hover,
     &:active {
-      color: $p-color-porsche-light;
-      background-color: $p-color-surface-dark;
-      border-color: $p-color-surface-dark;
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-dark-surface;
+      border-color: $p-color-theme-dark-surface;
 
       &#{$bem-block}--theme-dark {
-        color: $p-color-porsche-black;
-        background-color: $p-color-neutral-grey-1;
-        border-color: $p-color-neutral-grey-1;
+        color: $p-color-theme-light-default;
+        background-color: $p-color-theme-dark-neutral-1;
+        border-color: $p-color-theme-dark-neutral-1;
       }
     }
   }
 
   &--tertiary {
-    color: $p-color-porsche-black;
+    color: $p-color-theme-light-default;
     background-color: transparent;
-    border-color: $p-color-neutral-grey-8;
+    border-color: $p-color-theme-light-neutral-1;
 
     &#{$bem-block}--theme-dark {
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
       background-color: transparent;
-      border-color: $p-color-porsche-light;
+      border-color: $p-color-theme-dark-default;
     }
 
     &:hover,
     &:active {
-      color: $p-color-porsche-light;
-      background-color: $p-color-surface-dark;
-      border-color: $p-color-surface-dark;
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-dark-surface;
+      border-color: $p-color-theme-dark-surface;
 
       &#{$bem-block}--theme-dark {
-        color: $p-color-porsche-black;
-        background-color: $p-color-porsche-light;
-        border-color: $p-color-porsche-light;
+        color: $p-color-theme-light-default;
+        background-color: $p-color-theme-light-background;
+        border-color: $p-color-theme-dark-default;
       }
     }
   }
