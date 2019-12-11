@@ -1,6 +1,6 @@
 # Button
 
-A Button enables the user to execute an action (like "submit", "delete", "add" or "edit", for example) or change the state of an application, which almost always happens on the same page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. (Whenever you want to provide navigational elements, stick to the [Link](#/web/navigation/link) component instead.)
+A Button enables the user to execute an action (like "submit", "delete", "add" or "edit", for example) or change the state of an application, which almost always happens on the same page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. (Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) component instead.)
 
 ---
 
@@ -10,7 +10,7 @@ A Button enables the user to execute an action (like "submit", "delete", "add" o
 
 <p-button variant="primary">Some label</p-button> 
 
-Button filled with the Porsche brand color. This type is only to be used for one or two high priority actions within a page in order to give the user optimal guidance.
+Button filled with the Porsche brand color. This type is only to be used for one or two first priority actions within a page in order to give the user optimal guidance.
 
 ### 2. Secondary
 
@@ -24,7 +24,7 @@ Default button with monochrome color fill. To be used for all other stand-alone 
 
 An "outline only" version of the Porsche Button. In hierarchy it is always subordinated to the filled views and can be used in two different cases:
 
-- In combination with a filled button (Primary or Secondary), for example in popular pairings such as "submit" (Primary or Secondary) and "cancel" (Tertiary).
+- In combination with a filled Button (Primary or Secondary), for example in popular pairings such as "submit" (Primary or Secondary) and "cancel" (Tertiary).
 - Stand-alone, when the priority of the action is lower compared to all other Button actions within this page.
 
 
@@ -97,11 +97,11 @@ By default the Button is to be positioned left-aligned within a page or module. 
 
 ### Button width
 
-Even if there is no technical limit to the button width, you should always make sure that the button remains legible, even more so in multiline state. It is recommended to use max. 100 characters per line (equals approx. 700 px button width).
+Even if there is no technical limit to the Button width, you should always make sure that the button remains legible, even more so in multiline state. It is recommended to use max. 100 characters per line (equals approx. 700 px button width).
 
-### Multi-line buttons
+### Multi-line Buttons
 
-Though it's technically possible to use multiline text in Porsche Buttons, it's recommended to keep the Button label short and, therefore, avoid multiline buttons. 
+Though it's technically possible to use multiline text in Porsche Buttons, it's recommended to keep the Button label short and, therefore, avoid multiline Buttons. 
 
 
 ### Disabled states

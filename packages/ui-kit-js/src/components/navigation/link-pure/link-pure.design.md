@@ -42,7 +42,6 @@ The Link Pure covers the following states:
 * Default
 * Active
 * Hover
-* Disabled
 * Loading
 * Focus
 
@@ -67,7 +66,7 @@ The text label within a link should always be short and descriptive.
 ---
 
 
-## Special cases
+## Usage
 
 ### Link Pure on images
 
@@ -75,7 +74,7 @@ A Link Pure can be placed on images, e.g. when using it as an additional link on
 
 ### Additional subtext
 
-A link pure in 20 px or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the link pure component.
+A Link Pure in Medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the link pure component.
 
 ### Link Pure groups
 
