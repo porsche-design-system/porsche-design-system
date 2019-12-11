@@ -4,7 +4,7 @@ In addition to Button Primary, Secodary or Tertiary, you can use Button Pure as 
 
 ---
 
-## Available sizes
+## Sizes
 
 Per default, the Button Pure is set in **copytext size**. If another size or hierarchy level is needed, the Button Pure is available in the following sizes, whereas the size of the icon changes accordingly. 
 
@@ -19,7 +19,7 @@ Per default, the Button Pure is set in **copytext size**. If another size or hi
 
 --- 
 
-## Available variants
+## Variants
 
 ### Icon and Text
 
@@ -60,7 +60,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Interaction | Icon | Example |
 |----|----|----|
 | Close | <p-icon name="close" aria-label="Close"></p-icon> | Close a current page or window. |
-| Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Abandoning a process, close a dialog. |
+| Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Abandoning a process. |
 | Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | Delete/erase content, e.g. a list item. | 
 | Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | Edit content, e.g. in lists or shop checkout. | 	
 | Add | <p-icon name="plus" aria-label="Plus"></p-icon> | Add content, e.g. a new item in a list. Counting up numbers, e.g. in a   | 
