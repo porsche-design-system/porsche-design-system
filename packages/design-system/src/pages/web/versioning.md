@@ -16,7 +16,7 @@ We try to release with a regular schedule to enable the planning of updates. A m
 ## Deprecation and maintenance rules
 We work hard to minimize the number of breaking changes and provide migration paths therefore. But of course sometimes major releases are neccessary.  
 
-In general we will mark removed, renamed or changes interfaces and elements as deprecated in major releases for one release cycle before we will delete them. Updates must be scheduled and integrated within 6 months.  
+In general we will mark removed, renamed or changed interfaces or elements as deprecated in major releases, if possible, for one major release cycle before we will delete them. Updates must be scheduled and integrated within 6 months.  
 
-Major releases are always fully backward-compatible. Thus we only provide bug fixes for the latest major release.  
+We try to keep our major releases as easy to update as possible. Thus we only provide bug fixes for the latest major release. Support for older major releases is stopped as soon as a new one is released.  
 In comparison to the component releases, the Sketch Libraries will only be provided as major versions to download without deprecated elements and bug fix support for outdated versions.
