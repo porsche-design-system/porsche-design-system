@@ -30,7 +30,7 @@ $p-spinner-size-large: rem(104px);
     transform-origin: center center;
     animation: rotate var(--p-animation-duration__spinner) linear infinite,
       dash var(--p-animation-duration__spinner) ease-in-out infinite;
-    stroke-dasharray: 100, 200;
+    stroke-dasharray: 40, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
   }
@@ -194,17 +194,15 @@ $p-spinner-size-large: rem(104px);
 
 @keyframes dash {
   0% {
-    stroke-dasharray: 1, 1000;
-    stroke-dashoffset: 0;
+    stroke-dasharray: 3, 1000;
   }
 
   50% {
-    stroke-dasharray: 160, 1000;
-    stroke-dashoffset: -40;
+    stroke-dasharray: 42, 1000;
   }
 
   100% {
-    stroke-dasharray: 0, 1000;
-    stroke-dashoffset: -124.33;
+    stroke-dasharray: 30, 1000;
+    stroke-dashoffset: -52;
   }
 }
