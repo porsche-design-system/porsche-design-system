@@ -13,7 +13,7 @@
       </li>
     </ul>
     <Divider v-if="config.stories" spacing="small" />
-    <p-headline v-if="config.stories" variant="headline-4" tag="h2">Components</p-headline>
+    <p-headline v-if="config.stories" variant="headline-3" tag="h2">Components</p-headline>
     <ul v-if="config.stories" class="list">
       <li v-for="(stories, category, index) in config.stories" :key="index">
         <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
