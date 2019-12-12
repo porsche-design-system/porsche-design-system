@@ -30,13 +30,11 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="10">
           <div class="playground light spacing-block">
-            <p-headline [variant]="'large-title'" [tag]="'h1'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-1'" [tag]="'h1'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-2'" [tag]="'h2'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-3'" [tag]="'h3'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-4'" [tag]="'h4'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-5'" [tag]="'h5'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-6'" [tag]="'h6'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'large-title'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-1'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-2'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-3'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-4'">The quick brown fox jumps over the lazy dog</p-headline>
           </div>
         </p-grid-item>
       </p-grid>
