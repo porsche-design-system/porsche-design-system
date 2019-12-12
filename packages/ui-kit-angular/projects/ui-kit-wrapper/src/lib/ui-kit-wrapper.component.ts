@@ -132,9 +132,9 @@ export class PLink {
   }
 }
 export declare interface PLinkPure extends Components.PLinkPure {}
-@ProxyInputs(['color', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'])
+@ProxyInputs(['active', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'])
 
-@Component({ selector: 'p-link-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'] })
+@Component({ selector: 'p-link-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['active', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'] })
 export class PLinkPure {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {

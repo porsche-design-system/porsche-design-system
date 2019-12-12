@@ -1,7 +1,5 @@
 # Link Pure
 
-## Introduction
-
 The `<p-link-pure>` component is essential to perform changes in page routes.
 
 It can be used with or without a label but it's recommend to keep the label visible for better accessibility whenever possible. When used without a label, then it's best practice to provide a descriptive label text for screen readers.
@@ -88,35 +86,36 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ---
 
-## Color
+## Link wrapped with an anchor tag (e.g. for framework routing)
 
-Though basic colors are set by the `theme` property, they can be overridden by the `color` property or even inherited from outside to customize coloring to specific needs. 
+If the component is used within a JS framework, it might be applied within a framework specific router component. 
+In this case the router component must be wrapped around `<p-link-pure>`. Please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
-<Playground :themeable="true">
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-pure href="https://www.porsche.com" color="brand" :theme="theme">Some label</p-link-pure><br>
-    <p-link-pure href="https://www.porsche.com" color="inherit" :theme="theme" class="example-color">Some label</p-link-pure><br>
-    <a href="https://www.porsche.com" class="example-link-color">
-      <p-link-pure color="inherit" :theme="theme">Some label</p-link-pure>
+    <a href="https://www.porsche.com" class="example-link">
+      <p-link-pure :theme="theme">Some label</p-link-pure>
     </a>
   </template>
 </Playground>
 
 ---
 
-## Link wrapped with an anchor tag (e.g. for framework routing)
-If the component is used within a JS framework, it might be applied within a framework specific router component. 
-In this case the router component must be wrapped around `<p-link-pure>`. Please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
+## Active state
 
+Providing visually differences if a link changes its state can be achieved by setting the `active` property. 
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <a href="https://www.porsche.com" class="example-link">
-      <p-link-pure :theme="theme">Some label</p-link-pure>
-    </a><br>
-    <a href="https://www.porsche.com" class="example-link">
-      <p-link-pure hide-label="true" :theme="theme">Some label</p-link-pure>
-    </a>
+      <p-link-pure active="true" href="https://www.porsche.com" :theme="theme">Some label</p-link-pure>
+  </template>
+</Playground>
+
+If the active state should not render an clickable anchor element, just replace the `href` property. 
+
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+      <p-link-pure active="true" :theme="theme">Some label</p-link-pure>
   </template>
 </Playground>
 

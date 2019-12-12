@@ -1,7 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { LinkTarget, TextColor, TextSize, TextWeight, Theme } from '../../../types';
+import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
 
@@ -28,8 +28,8 @@ export class LinkPure {
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string = undefined;
 
-  /** Override of default theming colors. */
-  @Prop() public color?: TextColor = undefined;
+  /** Display link in active state. */
+  @Prop() public active?: boolean = false;
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
@@ -57,8 +57,8 @@ export class LinkPure {
       prefix('link-pure'),
       mapBreakpointPropToPrefixedClasses('link-pure-', this.hideLabel, ['without-label', 'with-label']),
       mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
-      this.color !== 'inherit' && prefix(`link-pure--theme-${this.theme}`),
-      prefix(`link-pure--color-${this.color}`)
+      prefix(`link-pure--theme-${this.theme}`),
+      this.active && prefix(`link-pure--active`)
     );
 
     const iconClasses = cx(
