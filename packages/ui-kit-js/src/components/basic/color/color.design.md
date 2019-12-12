@@ -7,19 +7,19 @@ branding. Even more so when it comes to UX, color is to be used intentionally to
 patterns, set emphasis on important elements and, by doing so, provide visual
 guidance and information.
 
-The Porsche UI color system provides two Porsche UI color themes that are based on the Porsche color palette and can be
-used for different visual environments. The Porsche UI color palette includes both brand colors and neutral colors. 
-They must always be used in 100% opacity. The Porsche UI Kit Sketch library provides both themes.
+The Porsche Design System color system provides two Porsche Design System color themes that are based on the Porsche color palette and can be
+used for different visual environments. The Porsche Design System color palette includes both brand colors and neutral colors. 
+They must always be used in 100% opacity. The Porsche Design System Sketch library provides both themes.
 
 
 ---
 
-## Porsche UI color themes
+## Porsche Design System color themes
 
-When designing Porsche UI applications, the first decision to make is whether the content should be displayed in a merely light or dark environment.
-That's when the Porsche UI color themes come into play: **The first choice should always be the Porsche Light Theme**. The Porsche Dark Theme is only to be
+When designing Porsche applications, the first decision to make is whether the content should be displayed in a merely light or dark environment.
+That's when the Porsche Design System color themes come into play: **The first choice should always be the Porsche Light Theme**. The Porsche Dark Theme is only to be
 used for exceptional cases, e.g. if an application is to stand out from the rest of visual communication for strategic reasons or if the context of use 
-is unsuitable for a bright shining display. All Porsche UI Kit components are optimized for the Light and Dark Theme.
+is unsuitable for a bright shining display. All Porsche Design System components are optimized for the light and dark Theme.
 
 ### Theme colors
 Each theme comes with a limited color set you should stick to for page backgrounds and text/icons. 
@@ -45,7 +45,7 @@ The color proportion scales for each theme might be a little helper in doing so.
 ![Porsche Light Theme colors](./assets/color-theme-light.png)
 
 ### Brand color
-The Porsche brand color are the core of the Porsche UI color palette. The usage
+The Porsche brand color are the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 
@@ -114,7 +114,7 @@ Depending on the component it can be implemented in different ways, for example 
 ![Porsche Dark Theme colors](./assets/color-theme-dark.png)
 
 ### Brand color
-The Porsche brand color are the core of the Porsche UI color palette. The usage
+The Porsche brand color are the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 

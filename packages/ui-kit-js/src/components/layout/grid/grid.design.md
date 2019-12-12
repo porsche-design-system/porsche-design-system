@@ -3,7 +3,7 @@ The grid is a fixed component in the digital Porsche layout. It provides a visua
 
 ## Grid architecture
 
-- The Porsche UI grid uses **12 columns**, offering a high layout flexibility by
+- The Porsche Design System grid uses **12 columns**, offering a high layout flexibility by
 being dividable by 2, 3, 4 or 6. To enable a flexible adaption of content to any
 screen size, its width is based on percentages (resulting from total screen
 width minus gutter and margin width). For layouting on mobile screens (widths < 759px), it is recommended to use
@@ -15,7 +15,7 @@ ratios between elements on the respective screen size.
 sides. Grid margins are defined using percentages, going from 7% to 10% for
 screen widths larger than 1760px. 
 
-![Porsche UI grid architecture](./assets/grid-components.png)
+![Porsche Design System grid architecture](./assets/grid-components.png)
 
 ### Overview 
 
@@ -27,7 +27,7 @@ screen widths larger than 1760px.
 | **L** | 1300-1759 px  |  12 columns | 36 px | 7% | 
 | **XL** | 1760 px or larger |  12 columns | 36 px | 10% | 
 
-![Porsche UI grid architecture](./assets/grid-viewports.png)
+![Porsche Design System grid architecture](./assets/grid-viewports.png)
 
 ## Grid breakpoints 
 Breakpoints are predefined points at which the content is changed to ensure an optimised layout on all screen sizes.
@@ -65,7 +65,7 @@ Show Layout.
 ### Viewport range
 To provide consistency throughout all Porsche web experiences, all layouts should be optimised for a viewport range from **320px** to a maximum of **1920px**. For viewport sizes from 1920px onwards a growing white space outside the left and right edge should be used.
 
-![Porsche UI grid architecture](./assets/grid-maxwidth.png)
+![Porsche Design System grid architecture](./assets/grid-maxwidth.png)
 
 ## Tips for responsive layouting
 
@@ -74,9 +74,9 @@ To provide consistency throughout all Porsche web experiences, all layouts shoul
 All content elements that should behave responsively should be placed horizontally within the grid, always starting in a column. The spacing between content elements is therefore defined by the grid gutter. 
 In most cases, this should refer to modules or content boxes, while smaller spaces on a more or less "micro-level" (both vertical and horizontal) should be defined by using the [Spacing](#/web/components/layout/spacing) component.
 
-![Porsche UI grid alignment](./assets/grid-alignment.png)
+![Porsche Design System grid alignment](./assets/grid-alignment.png)
 
-### Wisely use the given possibilites
+### Use the given possibilites wisely
 
 When it comes to designing a component or module responsively, there are several screws that can be turned to adapt to different screen sizes, such as changing:
 
@@ -86,7 +86,7 @@ When it comes to designing a component or module responsively, there are several
 
 When designing responsive layouts, always aim to find the solution that works best for the specific case, keeping the user and the specific use context in mind.
 
-![Porsche UI grid behaviour](./assets/grid-behaviour.png)
+![Porsche Design System grid behaviour](./assets/grid-behaviour.png)
 
 ### Don’t be afraid to think outside of the box
 

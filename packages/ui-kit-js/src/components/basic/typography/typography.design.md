@@ -13,11 +13,11 @@ Formally, the impression of the Porsche Next is largely determined by the visual
 
 ### Download
 
-You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
+You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v2/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
 
 ### Language versions
 
-The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche UI Kit but available as separate typeface packages on request.
+The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche Design System but available as separate typeface packages on request.
 
 #### Chinese / Japanese
 For Chinese and Japanese language the following system fonts are to be used, sticking to the default Porsche font scaling system:
@@ -30,7 +30,7 @@ For Chinese and Japanese language the following system fonts are to be used, sti
 
 ## Headline styles
 
-The Porsche headline styles should **only be used for first-level headlines** whose function is to lead a page, section or content area. For Porsche headlines styles, only bold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. The headline styles span from large title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
+The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles, only bold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. The headline styles span from large title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
 
 |                  | 320 - 759 px (XS)     | 760 - 999 px (S)   | 1000 - 1299 px (M)   | 1300 - 1759 px (L)   | 1760  px or larger (XL)   |
 |------------------|---------------------  |------------------	|-------------------   |-------------------   |------------------------   |
@@ -78,7 +78,7 @@ The Porsche copytext styles are typically to be used for long-form writing. The 
 
 ## Additional styles
 
-For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche UI Kit. There are <strong><span style="color: #00D5B9">predefined default text sizes</span></strong>, which should cover most use cases.
+For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche Design System. There are <strong><span style="color: #00D5B9">predefined default text sizes</span></strong>, which should cover most use cases.
 
 | Additional text size                | Font size       |
 |------------------------- |---------------- |
@@ -128,9 +128,9 @@ The color to be used for Porsche Next depends on the [Porsche color theme](#/web
 ### Font weights
 
 The Porsche Next is available in different font weights that enable to add emphasis and create a visual content hierarchy.
-For digital applications, we recommend only to use the weights bold, regular and thin:
+For digital applications, we recommend only to use semibold, regular and thin:
 
-- **Porsche Next Bold** for first-level headlines or copytext highlights.
+- **Porsche Next Semibold** for first-level headlines or copytext highlights.
 - **Porsche Next Regular** for copytext, stand-alone text or sublines (in combination with first-level headlines).
 - **Porsche Next Thin** for stand-alone text larger than 20px.
 
@@ -201,7 +201,7 @@ Use typography wisely and always keep an eye on the user's needs and the purpose
 
 ### … a matter of course.
 Always use typography in a professional manner in order to support the exclusiveness and high-quality-standard of the brand.
-This not only means to make use of the pre-defined type styles provided in the Porsche UI Kit, but also to follow the general rules
+This not only means to make use of the pre-defined type styles provided in the Porsche Design System, but also to follow the general rules
 of good (micro) typography, such as using the right kind of apostrophes in the respective language. 
 
 ---
@@ -215,9 +215,9 @@ for larger text sizes.
 
 
 
-Also, you should not rely on color only when conveying information. 
-When communicating element states with text (for example a password validation in forms), make sure to always use additional text stylings 
-(e.g. bold text) to make it easy for visually impaired people to recognise
+Also, you should not rely on color only to convey information. 
+When communicating element states with text (for example a password validation 
+information in forms), make sure to always use additional text stylings to make it easy for visually impaired people to recognise
 status information even if they can’t see the color – this is of even higher
 importance the more critical the information is.
 

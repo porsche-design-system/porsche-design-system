@@ -1,11 +1,11 @@
 # Start Designing
 
-The Porsche UI Kit enables designers to create outstanding digital designs by using the pre-built libraries, styles and templates - fast and high-quality. 
+The Porsche Design System enables designers to create outstanding digital designs by using the pre-built libraries, styles and templates - fast and high-quality.
 
 ## 1. Tooling
 To improve output efficiency and reduce maintenance costs, at Porsche we decided to set the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/) as standard for designing. 
 
-Thus, please first [request a Porsche UI Abstract seat](http://eepurl.com/gnOIXD) to access and work within the Porsche UI organisation. Then install the latest [Abstract desktop app](https://app.goabstract.com/). 
+Thus, please first [request a Porsche Abstract seat](http://eepurl.com/gnOIXD) to access and work within the Porsche organisation. Then install the latest [Abstract desktop app](https://app.goabstract.com/). 
 
 You can find a [detailed guideline on how to use Abstract here](#/web/getting-started/design-workflow).
 
@@ -17,25 +17,25 @@ There's no need to design from scratch anymore! Instead, you can use our pre-bui
 [Download Sketch Layout Template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch)
 
 ## 4. Sketch libraries and resources
-The components of the Porsche UI Kit are provided in two Sketch libraries that can be easily linked with Sketch by clicking on the following RSS library links. Once linked, Sketch will automatically check for updates. 
+The components of the Porsche Design System are provided in two Sketch libraries that can be easily linked with Sketch by clicking on the following RSS library links. Once linked, Sketch will automatically check for updates. 
 
 ### Basic Library 
-The basic library contains the design fundamentals such as typography, colors and icons.  
-[Download Porsche UI Kit Basic](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-basic.sketch.xml) 
+The basic library contains the design fundamentals such as typography, colours and icons.  
+[Download Porsche Design System Basic](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-basic.sketch.xml) 
 
 ### Web Library
 The web library provides components like buttons, form elements and many more that can be used within web applications.  
-[Download Porsche UI Kit Web](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-web.sketch.xml)
+[Download Porsche Design System Web](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-web.sketch.xml)
 
 Please be aware of the used library version (Sketch: Preferences → Libraries) and coordinate with your developer counterpart to be aligned on the version you're using.
 
 ### Porsche Next font
-In order to design Porsche web applications and to use the Porsche UI Kit libraries properly you have to download and install the [Porsche Next font](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip).  
+In order to design Porsche web applications and to use the Porsche Design System libraries properly you have to download and install the [Porsche Next font](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip).  
 
 ## 5. Additional tools
 
 ## Sketch color palette
-Enrich your Porsche UI design experience by using the Porsche color palette in your Sketch color picker. The easiest way to import the palette in Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).  
+Enrich your Porsche design experience by using the Porsche color palette in your Sketch color picker. The easiest way to import the palette in Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).  
 [Download Porsche color palette](https://ui.porsche.com/latest/porsche-ui-kit-colors.sketchpalette)
 
 ## Other helpful Sketch plugins

@@ -1,11 +1,11 @@
 # Roadmap 
 
-Following our mission, we align all our doings along our three main objectives:  
-1. Accelerate developing and designing by means of more efficient explorations and launches.
-2. Establish the Porsche UI Kit for all digital Porsche products to improve the holistic UI quality and consistency.
-3. Foster collaboration of Developers, Designers and Decision-Makers trusting the Porsche UI Kit.
+Following our mission we align all our doings along our three main objectives:  
+1. Accelerate developing and designing by means of more efficient explorations and launches
+2. Establish the Porsche Design System for all digital Porsche products to improve the holistic UI quality and consistency  
+3. Foster collaboration of Developers, Designers and Decision-Makers trusting the Porsche Design System.
 
-The roadmap for the Porsche UI Kit is based on the planned tasks and changes for one quarter. Therefore there is no delivery commitment and the roadmap may be changed based on upcoming user needs, recent feedback and changing requirements.
+The roadmap for the Porsche Design System is based on the planned tasks and changes for one quarter. Therefore there is no delivery commitment and the roadmap may be changed based on upcoming user needs, recent feedback and changing requirements.
 
 ## Q4 2019
 ### Release 1.0 Stable
@@ -37,15 +37,15 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 * Establish automated cross browser testing (including IE11)
 ### Launch Porsche Icon Collection
 * Release icon collection 1.0 alpha
-### Extension of Porsche UI Kit to iOS 
-* Extend Porsche UI Kit infrastructure and split into Web and App
+### Extension of Porsche Design System to iOS 
+* Extend Porsche Design System infrastructure and split into Web and App
 
 ---
 
 ## Q2 2019
 ### CDN asset management
-- Setup Porsche UI Kit CDN
-- Host and manage Assets Icons, Porsche Crest and Fonts
+- Setup Porsche Design System CDN
+- Host and Manage Assets Icons, Porsche crest and fonts
 
 ### Finalize the style foundations
 - Color styles
@@ -71,8 +71,8 @@ The roadmap for the Porsche UI Kit is based on the planned tasks and changes for
 ## Q1 2019
 ### Setup infrastructure and toolchain for 1.0 release
 - Setup Open Design Tools and Processes (Abstract)
-- Provide versioned design libraries Basic and Web
-- Design and develop first release of the UI Kit Website 1.0 (https://ui.porsche.com)
+- Provide versioned Design Libraries Basic and Web
+- Design and develop first release of the Design System Website 1.0 (https://ui.porsche.com)
 - Setup code distribution infrastructure (NPM Registry)
 - Setup development and contribution infrastructure (GitHub, CI/CD)
 - Define User- and Access-Management

@@ -1,21 +1,22 @@
 # Start Coding
 
-Porsche UI Kit provides developers with a collection of presentational web components and corresponding wrappers for Angular and React to build clean and high-quality frontends that innately come with the latest design definitions.
+Porsche Design System provides developers with a collection of presentational web components and corresponding wrappers for Angular and React to build clean and high-quality frontends that innately come with the latest design definitions.
 
 ## Requirements
 * [Node.js & NPM](https://nodejs.org)
 
 ## Installation
 
-All releases of the Porsche UI Kit are available as versioned NPM package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-angular` and `@porsche-ui/ui-kit-react`.
+All releases of the Porsche Design System are available as versioned NPM package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-angular` and `@porsche-ui/ui-kit-react`.
 
 Those packages can be consumed by one of the following private NPM registries:
-* Porsche UI NPM registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
+* Porsche Design System NPM registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
 * My Porsche NPM registry ([https://porschedev.jfrog.io](https://porschedev.jfrog.io))
 
-If you don't have an account for one of the those NPM registries, you can easily register for Porsche UI NPM registry like as follows:
+If you don't have an account for one of the those NPM registries, you can easily register for the Porsche Design System NPM registry like as follows:
 
-<p-link target="_blank" href="http://eepurl.com/gnOIXD">Request a Porsche UI NPM registry account</p-link>
+
+<p-link target="_blank" href="http://eepurl.com/gnOIXD">Request a Porsche Design System npm registry account</p-link>
 
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
@@ -74,7 +75,7 @@ If you're using web components in a static website, the following page setup is 
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Porsche UI Kit</title>
+    <title>Porsche Design System</title>
     <script type="module" src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
     <script nomodule src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
   </head>

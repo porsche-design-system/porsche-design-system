@@ -61,12 +61,12 @@ giving elements space to breathe and letting the reader’s eye relax.
 ## Usage in Sketch
 
 ### Define the grid
-The Porsche UI Kit works with 8px
+The Porsche Design System works with 8px
 increments, but it allows 4px values in a few cases, where greater flexibility is
 needed. We recommend setting up the workspace with a 4px grid system. You can
 change the Sketch grid settings via: View → Canvas → Grid Settings → Grid Block
 Size: 4px. Or, when setting up a totally new UI design file, feel free to use
-the [Porsche UI Kit layout template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch) with predefined settings.
+the [Porsche Design System layout template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch) with predefined settings.
 
 ### Snap to grid
 Most design apps have the option to snap elements to the grid.
