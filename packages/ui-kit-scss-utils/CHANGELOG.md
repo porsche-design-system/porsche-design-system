@@ -1,4 +1,4 @@
-# Porsche UI Kit SCSS Utils
+# Porsche Design System SCSS Utils
 
 ## Not released yet
 

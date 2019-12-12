@@ -11,6 +11,6 @@ describe('Home', () => {
       .shadowGet('p-headline')
       .shadowFirst()
       .should('be.visible')
-      .and('contain', 'Porsche UI Kit');
+      .and('contain', 'Design System');
   });
 });

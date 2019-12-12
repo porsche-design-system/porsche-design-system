@@ -9,7 +9,7 @@
 ### [0.0.9] (2019-11-20)
 
 #### What's changed?
-* Reduced text styles in UI Kit Basic library
+* Reduced text styles in Design System Basic library
 
 ### [0.0.8] (2019-10-08)
 
@@ -28,12 +28,12 @@
 
 --- 
 
-## Code UI Kit
+## Code
 
 ### [1.0.0-alpha.5] (2019-09-20)
 
 #### Bugfix
-* UI Kit Angular build
+* Design System Angular build
 
 
 ### [1.0.0-alpha.4] (2019-09-19)

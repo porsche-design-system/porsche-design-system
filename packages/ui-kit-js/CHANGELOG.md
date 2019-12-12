@@ -1,4 +1,4 @@
-# Porsche UI Kit JS
+# Porsche Design System JS
 
 ## NOT RELEASED YET
 
@@ -119,7 +119,7 @@
 ## [1.0.0-alpha.5] (2019-09-20)
 
 ### Bugfix
-* UI Kit Angular build
+* Design System Angular build
 
 
 ## [1.0.0-alpha.4] (2019-09-19)
