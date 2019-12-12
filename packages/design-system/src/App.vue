@@ -14,7 +14,7 @@
       <main class="main" :class="{ 'is-menu-active': isMenuActive }">
         <router-view class="router-view" :class="{ 'is-menu-active': isMenuActive, 'is-loading': isLoading }"/>
         <p-spinner class="spinner" :class="{ 'is-loading': isLoading }" size="medium"
-                   ally-label="Loading page"></p-spinner>
+                   aria-label="Loading page"></p-spinner>
       </main>
       <Menu class="menu"></Menu>
     </div>
