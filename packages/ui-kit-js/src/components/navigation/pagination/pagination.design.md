@@ -6,7 +6,7 @@ The Pagination is used whenever a content (text, images, videos) is split into s
 
 ## Available sizes
 
-The Pagination comes in 2 different sizes. In both cases (for less than 5 or 7 pages) the itmens will be reduced accordingly and centered.
+The Pagination comes in 2 different sizes. In both cases (for less than 5 or 7 pages) the items will be reduced accordingly and centered.
 
 
 - **5 page links** Recommended to be used for device widths equal or smaller than 479 px.
@@ -49,7 +49,7 @@ The Pagination should always be placed centered beneath the related content, kee
 
 ### Clickability
 
-Each pagination item (arrows, numbers, ellipsis) spans over a clickable area of 40 x 40 px to guarantee a proper click- and touch-ability (on mobile devices).
+Each pagination item (arrows and numbers) spans over a clickable area of 40 x 40 px to guarantee a proper click- and touch-ability (on mobile devices).
 
 ### Disabled arrows
 
