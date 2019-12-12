@@ -99,9 +99,9 @@ export class PGridItem {
   }
 }
 export declare interface PHeadline extends Components.PHeadline {}
-@ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'variant'])
+@ProxyInputs(['align', 'color', 'ellipsis', 'tag', 'theme', 'variant'])
 
-@Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'variant'] })
+@Component({ selector: 'p-headline', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'tag', 'theme', 'variant'] })
 export class PHeadline {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -110,9 +110,9 @@ export class PHeadline {
   }
 }
 export declare interface PIcon extends Components.PIcon {}
-@ProxyInputs(['color', 'lazy', 'name', 'size', 'source'])
+@ProxyInputs(['color', 'lazy', 'name', 'size', 'source', 'theme'])
 
-@Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'lazy', 'name', 'size', 'source'] })
+@Component({ selector: 'p-icon', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'lazy', 'name', 'size', 'source', 'theme'] })
 export class PIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -131,6 +131,17 @@ export class PLink {
     this.el = r.nativeElement;
   }
 }
+export declare interface PLinkPure extends Components.PLinkPure {}
+@ProxyInputs(['active', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'])
+
+@Component({ selector: 'p-link-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['active', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'] })
+export class PLinkPure {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
 export declare interface PMarque extends Components.PMarque {}
 @ProxyInputs(['trademark'])
 
@@ -143,16 +154,16 @@ export class PMarque {
   }
 }
 export declare interface PPagination extends Components.PPagination {}
-@ProxyInputs(['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'])
+@ProxyInputs(['activePage', 'allyLabel', 'allyLabelNext', 'allyLabelPage', 'allyLabelPrev', 'itemsPerPage', 'maxNumberOfPageLinks', 'theme', 'totalItemsCount'])
 
-@Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'] })
+@Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'allyLabel', 'allyLabelNext', 'allyLabelPage', 'allyLabelPrev', 'itemsPerPage', 'maxNumberOfPageLinks', 'theme', 'totalItemsCount'] })
 export class PPagination {
-  pClick!: EventEmitter<CustomEvent>;
+  pageChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick']);
+    proxyOutputs(this, this.el, ['pageChange']);
   }
 }
 export declare interface PSpinner extends Components.PSpinner {}
@@ -167,9 +178,9 @@ export class PSpinner {
   }
 }
 export declare interface PText extends Components.PText {}
-@ProxyInputs(['align', 'color', 'ellipsis', 'size', 'tag', 'weight'])
+@ProxyInputs(['align', 'color', 'ellipsis', 'size', 'tag', 'theme', 'weight'])
 
-@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'size', 'tag', 'weight'] })
+@Component({ selector: 'p-text', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'size', 'tag', 'theme', 'weight'] })
 export class PText {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -177,23 +188,10 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
-export declare interface PTextLink extends Components.PTextLink {}
-@ProxyInputs(['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'])
-
-@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'] })
-export class PTextLink {
-  pClick!: EventEmitter<CustomEvent>;
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick']);
-  }
-}
 export declare interface PTextList extends Components.PTextList {}
-@ProxyInputs(['color', 'listType'])
+@ProxyInputs(['color', 'listType', 'theme'])
 
-@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType'] })
+@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType', 'theme'] })
 export class PTextList {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {

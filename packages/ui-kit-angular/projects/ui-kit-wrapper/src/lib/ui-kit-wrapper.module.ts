@@ -11,11 +11,11 @@ import {
   PHeadline,
   PIcon,
   PLink,
+  PLinkPure,
   PMarque,
   PPagination,
   PSpinner,
   PText,
-  PTextLink,
   PTextList,
   PTextListItem
 } from './ui-kit-wrapper.component';
@@ -30,11 +30,11 @@ const DECLARATIONS = [
   PHeadline,
   PIcon,
   PLink,
+  PLinkPure,
   PMarque,
   PPagination,
   PSpinner,
   PText,
-  PTextLink,
   PTextList,
   PTextListItem
 ];

@@ -2,7 +2,7 @@ import { Build, Component, Host, Element, Prop, State, Watch, h } from '@stencil
 import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-import { TextColor } from '../../../types';
+import { Theme } from '../../../types';
 import { IconName } from './icon-name';
 
 @Component({
@@ -16,7 +16,7 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public name?: IconName = 'arrow-right-hair';
+  @Prop() public name?: IconName = 'arrow-head-right';
 
   /**
    * Specifies a whole icon path which can be used for custom icons.
@@ -29,10 +29,8 @@ export class Icon {
    */
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
-  /**
-   * Basic color variations.
-   */
-  @Prop() public color?: TextColor = 'inherit';
+  /** Basic color variations depending on theme property. */
+  @Prop() public color?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit' = 'default';
 
   /**
    * The size of the icon.
@@ -44,6 +42,9 @@ export class Icon {
    * Default, `false`.
    */
   @Prop() public lazy?: boolean = false;
+
+  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
+  @Prop() public theme?: Theme = 'light';
 
   private io?: IntersectionObserver;
 
@@ -96,8 +97,9 @@ export class Icon {
   public render(): JSX.Element {
     const iconClasses = cx(
       prefix('icon'),
-      this.color !== 'inherit' && prefix(`icon--color-${this.color}`),
-      this.size && prefix(`icon--${this.size}`)
+      prefix(`icon--size-${this.size}`),
+      prefix(`icon--color-${this.color}`),
+      this.color !== 'inherit' && prefix(`icon--theme-${this.theme}`)
     );
 
     return (

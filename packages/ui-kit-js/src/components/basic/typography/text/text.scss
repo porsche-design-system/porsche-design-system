@@ -4,20 +4,20 @@
   display: block;
 
   ::slotted(a) {
-    outline: none;
+    outline: transparent none;
     color: inherit;
     text-decoration: underline;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+    color $p-animation-hover-duration $p-animation-hover-bezier;
   }
 
   ::slotted(a:hover) {
-    color: $p-color-porsche-red;
-    text-decoration: none;
+    color: $p-color-theme-light-brand;
   }
 
   ::slotted(a:focus) {
-    color: $p-color-state-focus;
-    text-decoration: underline;
+    outline: $p-color-theme-light-state-focus solid 2px;
+    outline-offset: 1px;
   }
 
   ::slotted(b, strong) {
@@ -30,8 +30,8 @@
   }
 }
 
-
 .#{$p-global-class-prefix}text {
+  $bem-block: &;
   @include p-text;
   padding: 0;
   margin: 0;
@@ -195,16 +195,88 @@
   }
 
   &--color {
+    &-brand {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-brand;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-brand;
+      }
+    }
+
+    &-default {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-default;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
+    &-neutral-1 {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-neutral-1;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-neutral-1;
+      }
+    }
+
+    &-neutral-2 {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-neutral-2;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-neutral-2;
+      }
+    }
+
+    &-neutral-3 {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-neutral-3;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-neutral-3;
+      }
+    }
+
+    &-notification-success {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-notification-success;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-success;
+      }
+    }
+
+    &-notification-warning {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-notification-warning;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-warning;
+      }
+    }
+
+    &-notification-error {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-notification-error;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-error;
+      }
+    }
+
     &-inherit {
       color: inherit;
-    }
-
-    &-porsche-light {
-      color: $p-color-porsche-light;
-    }
-
-    &-porsche-black {
-      color: $p-color-porsche-black;
     }
   }
 

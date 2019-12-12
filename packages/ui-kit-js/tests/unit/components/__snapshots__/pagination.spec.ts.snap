@@ -3,42 +3,42 @@
 exports[`Component <p-pagination> should render correctly in default mode with shadow dom 1`] = `
 <p-pagination active-page="1" items-per-page="10" total-items-count="50">
   <mock:shadow-root>
-    <nav aria-label="Pagination" class="p-pagination" role="navigation">
+    <nav aria-label="Pagination" class="p-pagination p-pagination--size-5 p-pagination--size-7-xs p-pagination--theme-light" role="navigation">
       <ul class="p-pagination__items">
         <li class="p-pagination__item" type="PREVIOUS_PAGE_LINK" value="1">
-          <a aria-disabled="true" aria-label="Previous page" class="p-pagination__prev p-pagination__prev--disabled">
-            <p-icon name="arrow-left-hair"></p-icon>
-          </a>
+          <span aria-disabled="true" aria-label="Previous page" class="p-pagination__prev p-pagination__prev--disabled" role="button">
+            <p-icon color="inherit" name="arrow-head-left"></p-icon>
+          </span>
         </li>
         <li class="p-pagination__item" isactive="" type="PAGE" value="1">
-          <span aria-current="page" aria-label="Page 1" class="p-pagination__goto p-pagination__goto--current" href="#">
+          <span aria-current="page" aria-disabled="true" aria-label="Page 1" class="p-pagination__goto p-pagination__goto--current" role="button">
             1
           </span>
         </li>
         <li class="p-pagination__item" type="PAGE" value="2">
-          <a aria-label="Page 2" class="p-pagination__goto" href="#">
+          <span aria-label="Page 2" class="p-pagination__goto" role="button" tabindex="0">
             2
-          </a>
+          </span>
         </li>
         <li class="p-pagination__item" type="PAGE" value="3">
-          <a aria-label="Page 3" class="p-pagination__goto" href="#">
+          <span aria-label="Page 3" class="p-pagination__goto" role="button" tabindex="0">
             3
-          </a>
+          </span>
         </li>
         <li class="p-pagination__item" type="PAGE" value="4">
-          <a aria-label="Page 4" class="p-pagination__goto" href="#">
+          <span aria-label="Page 4" class="p-pagination__goto" role="button" tabindex="0">
             4
-          </a>
+          </span>
         </li>
         <li class="p-pagination__item" type="PAGE" value="5">
-          <a aria-label="Page 5" class="p-pagination__goto" href="#">
+          <span aria-label="Page 5" class="p-pagination__goto" role="button" tabindex="0">
             5
-          </a>
+          </span>
         </li>
         <li class="p-pagination__item" isactive="" type="NEXT_PAGE_LINK" value="2">
-          <a aria-label="Next page" class="p-pagination__next" href="#">
-            <p-icon name="arrow-right-hair"></p-icon>
-          </a>
+          <span aria-label="Next page" class="p-pagination__next" role="button" tabindex="0">
+            <p-icon color="inherit" name="arrow-head-right"></p-icon>
+          </span>
         </li>
       </ul>
     </nav>

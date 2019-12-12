@@ -5,8 +5,8 @@
         <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
-            <router-link class="link" :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`">
-              <p-text-link tag="span" color="inherit">{{ page }}</p-text-link>
+            <router-link :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`" v-slot="{ href, navigate, isActive }">
+              <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
             </router-link>
           </li>
         </ul>
@@ -19,8 +19,8 @@
         <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, story, index) in stories" :key="index">
-            <router-link class="link" :to="`/${area}/components/${encodeUrl(category)}/${encodeUrl(story)}`">
-              <p-text-link tag="span" color="inherit">{{ story }}</p-text-link>
+            <router-link :to="`/${area}/components/${encodeUrl(category)}/${encodeUrl(story)}`" v-slot="{ href, navigate, isActive }">
+              <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ story }}</p-link-pure>
             </router-link>
           </li>
         </ul>
@@ -82,19 +82,9 @@ export default class Sidebar extends Vue {
   }
 
   .link {
-    padding: $p-spacing-4 0;
-    text-decoration: none;
-    color: $p-color-porsche-black;
+    margin: $p-spacing-4 0;
     display: inline-block;
-
-  &.router-link-active,
-  &:hover {
-    color: $p-color-porsche-red;
+    text-decoration: none;
+    display: inline-block;
   }
-
-  &:focus {
-    outline: 1px solid $p-color-state-focus;
-    outline-offset: 4px;
-  }
-}
 </style>

@@ -164,17 +164,17 @@ export default class CodeBlock extends Vue {
 
     &.light {
       .tabs {
-        color: $p-color-porsche-black;
+        color: $p-color-theme-light-default;
       }
 
       code,
       pre {
-        color: $p-color-porsche-black;
+        color: $p-color-theme-light-default;
         text-shadow: 0 1px rgba(255, 255, 255, .3);
       }
 
       pre {
-        border-color: $p-color-neutral-grey-6;
+        border-color: $p-color-theme-light-neutral-3;
 
         code ::v-deep {
           .token.comment,
@@ -237,17 +237,17 @@ export default class CodeBlock extends Vue {
 
     &.dark {
       .tabs {
-        color: $p-color-porsche-light;
+        color: $p-color-theme-dark-default;
       }
 
       code,
       pre {
-        color: $p-color-porsche-light;
+        color: $p-color-theme-dark-default;
         text-shadow: 0 1px rgba(0, 0, 0, .3);
       }
 
       pre {
-        border-color: $p-color-neutral-grey-3;
+        border-color: $p-color-theme-dark-neutral-3;
 
         code ::v-deep {
           .token.comment,
@@ -321,17 +321,17 @@ export default class CodeBlock extends Vue {
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
         &:hover {
-          color: $p-color-porsche-red;
+          color: $p-color-theme-light-brand;
         }
 
         &:focus {
-          outline: 1px solid $p-color-state-focus;
+          outline: 1px solid $p-color-theme-light-state-focus;
           outline-offset: 4px;
         }
 
         &.is-active {
           cursor: default;
-          color: $p-color-porsche-red;
+          color: $p-color-theme-light-brand;
         }
       }
     }
