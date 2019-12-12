@@ -4,7 +4,7 @@ exports[`Component <p-button> should render correctly in default mode with shado
 <p-button>
   <mock:shadow-root>
     <button class="p-button p-button--secondary p-button--theme-light p-button--with-label" tabindex="0" type="button">
-      <p-icon class="p-button__icon" name="arrow-right-hair" size="inherit"></p-icon>
+      <p-icon class="p-button__icon" color="inherit" name="arrow-head-right" size="inherit"></p-icon>
       <p-text class="p-button__label" color="inherit" tag="span">
         <slot></slot>
       </p-text>

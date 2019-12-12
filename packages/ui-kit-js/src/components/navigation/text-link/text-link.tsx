@@ -26,7 +26,7 @@ export class TextLink {
   @Prop() public size?: TextSize = 'small';
 
   /** The icon shown next to the label. */
-  @Prop() public icon?: IconName = 'arrow-right-hair';
+  @Prop() public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;

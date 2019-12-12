@@ -3,7 +3,7 @@
 exports[`Component <p-text-list> should render correctly in default mode without shadow dom 1`] = `
 <p-text-list class="p-text-list">
   <!---->
-  <ul class="p-text-list p-text-list--color-porsche-black">
+  <ul class="p-text-list p-text-list--color-default p-text-list--theme-light">
     <p-text-list-item class="p-text-list__item" role="listitem">
       <!---->
       Some list item

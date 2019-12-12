@@ -33,7 +33,7 @@ export class ButtonPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-right-hair';
+  @Prop() public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
@@ -46,7 +46,7 @@ export class ButtonPure {
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
-    improveButtonHandlingForCustomElement(this.element, this.type);
+    improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
   }
 
   public render(): JSX.Element {
@@ -69,7 +69,7 @@ export class ButtonPure {
       <button
         class={buttonPureClasses}
         type={this.type}
-        disabled={this.disabled || this.loading}
+        disabled={this.isDisabled()}
         tabindex={this.tabbable ? 0 : -1}
       >
         {this.loading ? (
@@ -98,5 +98,9 @@ export class ButtonPure {
         </p-text>
       </button>
     );
+  }
+
+  private isDisabled() {
+    return this.disabled || this.loading;
   }
 }
