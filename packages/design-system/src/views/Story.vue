@@ -127,7 +127,7 @@
   .tabs {
     display: flex;
     margin-bottom: $p-spacing-64;
-    border-bottom: 1px solid $p-color-neutral-grey-2;
+    border-bottom: 1px solid $p-color-theme-dark-neutral-2;
 
     .tab {
       font-size: $p-font-size-28;
@@ -141,22 +141,22 @@
         padding-bottom: $p-spacing-8;
         border-bottom: 3px solid transparent;
         text-decoration: none;
-        color: $p-color-neutral-grey-6;
+        color: $p-color-theme-light-neutral-3;
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
         &:hover {
-          color: $p-color-porsche-red;
+          color: $p-color-theme-light-brand;
         }
 
         &:focus {
-          outline: 1px solid $p-color-state-focus;
+          outline: 1px solid $p-color-theme-light-state-focus;
           outline-offset: 4px;
         }
 
         &.router-link-exact-active {
           cursor: default;
-          color: $p-color-porsche-black;
-          border-bottom-color: $p-color-porsche-red;
+          color: $p-color-theme-light-default;
+          border-bottom-color: $p-color-theme-light-brand;
         }
       }
     }

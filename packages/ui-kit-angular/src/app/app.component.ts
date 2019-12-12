@@ -38,6 +38,21 @@ import {Component} from '@angular/core';
             <p-headline [variant]="'headline-5'" [tag]="'h5'">The quick brown fox jumps over the lazy dog</p-headline>
             <p-headline [variant]="'headline-6'" [tag]="'h6'">The quick brown fox jumps over the lazy dog</p-headline>
           </div>
+        </p-grid-item>
+      </p-grid>
+      <p-grid>
+        <p-grid-item [size]="5" [offset]="2">
+          <div class="playground light spacing-block">
+            <p-headline [variant]="'headline-3'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-3'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-headline>
+          </div>
+          <hr>
+        </p-grid-item>
+        <p-grid-item size="5">
+          <div class="playground dark spacing-block">
+            <p-headline [variant]="'headline-3'" [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-3'" [theme]="'dark'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-headline>
+          </div>
           <hr>
         </p-grid-item>
       </p-grid>
@@ -50,11 +65,38 @@ import {Component} from '@angular/core';
             <p-text>The quick brown fox jumps over the lazy dog</p-text>
             <p-text [size]="'x-small'">The quick brown fox jumps over the lazy dog</p-text>
           </div>
+        </p-grid-item>
+      </p-grid>
+      <p-grid>
+        <p-grid-item [size]="5" [offset]="2">
           <div class="playground light spacing-block">
-            <p-text [color]="'porsche-black'">Porsche Black</p-text>
-            <p-text [color]="'porsche-light'" style="background: black; display: block;">Porsche Light</p-text>
-            <p-text [color]="'inherit'" style="color: deeppink;">Inherited custom color</p-text>
+            <p-text [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'brand'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'neutral-1'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'neutral-2'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'neutral-3'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'notification-success'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'notification-warning'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'notification-error'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
           </div>
+        </p-grid-item>
+        <p-grid-item size="5">
+          <div class="playground dark spacing-block">
+            <p-text [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'brand'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-1'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-2'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-3'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'notification-success'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'notification-warning'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'notification-error'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+          </div>
+        </p-grid-item>
+      </p-grid>
+      <p-grid>
+        <p-grid-item [size]="10" [offset]="2">
           <div class="playground light spacing-block">
             <p-text [ellipsis]="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
               tempor
@@ -266,12 +308,12 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-block">
-            <p-text-list [color]="'porsche-light'">
+            <p-text-list [theme]="'dark'">
               <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
               <p-text-list-item>
                 Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
                 text</strong>
-                <p-text-list>
+                <p-text-list [theme]="'dark'">
                   <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
                   <p-text-list-item>Lorem ipsum</p-text-list-item>
                 </p-text-list>
@@ -280,12 +322,12 @@ import {Component} from '@angular/core';
             </p-text-list>
           </div>
           <div class="playground dark spacing-block">
-            <p-text-list [listType]="'ordered'" [color]="'inherit'" style="color: deeppink;">
+            <p-text-list [theme]="'dark'" [listType]="'ordered'" [color]="'inherit'" style="color: deeppink;">
               <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
               <p-text-list-item>
                 Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
                 text</strong>
-                <p-text-list>
+                <p-text-list [theme]="'dark'">
                   <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
                   <p-text-list-item>Lorem ipsum</p-text-list-item>
                 </p-text-list>
@@ -327,15 +369,25 @@ import {Component} from '@angular/core';
         <p-grid-item [size]="2">
           <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-icon&gt;</p-headline>
         </p-grid-item>
-        <p-grid-item [size]="10">
+        <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
-            <p-icon [name]="'filter'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'medium'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'large'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'large'" [color]="'porsche-red'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon"
-                    style="color: deeppink;"></p-icon>
+            <p-icon [name]="'filter'" [color]="'neutral-1'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [size]="'medium'" [color]="'neutral-2'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [size]="'large'" [color]="'neutral-3'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [size]="'large'" [color]="'brand'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon" style="color: deeppink;"></p-icon>
             <p-icon [name]="'delete'" [size]="'large'" aria-label="Delete icon"></p-icon>
+          </div>
+          <hr>
+        </p-grid-item>
+        <p-grid-item [size]="5">
+          <div class="playground dark spacing-inline">
+            <p-icon [name]="'filter'" [theme]="'dark'" [color]="'neutral-1'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'medium'" [color]="'neutral-2'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'neutral-3'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'brand'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon" style="color: deeppink;"></p-icon>
+            <p-icon [name]="'delete'" [theme]="'dark'" [size]="'large'" aria-label="Delete icon"></p-icon>
           </div>
           <hr>
         </p-grid-item>

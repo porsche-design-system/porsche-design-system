@@ -99,9 +99,13 @@ export const config: DesignSystemConfig = {
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`),
         ],
-        Code: [
+        'Code Headline': [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.code.md`),
+        ],
+        'Code Text': [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.code.md`),
         ],
         Props: [
           // @ts-ignore

@@ -669,7 +669,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
     & > * {
       @include p-text;
       padding: 0 6vw;
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
       text-align: center;
 
       &:nth-child(1n) {

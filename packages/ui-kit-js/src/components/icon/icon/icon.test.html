@@ -10,35 +10,47 @@
 </head>
 <body>
 
-<div class="playground" title="should show a car as icon">
-  <p-icon name="car-next" aria-label="Car icon"></p-icon>
+<div class="playground light" title="should show a car as icon">
+  <p-icon name="highway" aria-label="Highway icon"></p-icon>
 </div>
 
-<div class="playground" title="should render icon with small size">
-  <p-icon name="car-next" size="small" aria-label="Car icon"></p-icon>
+<div class="playground light" title="should render icon with small size">
+  <p-icon name="highway" size="small" aria-label="Highway icon"></p-icon>
 </div>
 
-<div class="playground" title="should render icon with medium size">
-  <p-icon name="car-next" size="medium" aria-label="Car icon"></p-icon>
+<div class="playground light" title="should render icon with medium size">
+  <p-icon name="highway" size="medium" aria-label="Highway icon"></p-icon>
 </div>
 
-<div class="playground" title="should render icon with large size">
-  <p-icon name="car-next" size="large" aria-label="Car icon"></p-icon>
+<div class="playground light" title="should render icon with large size">
+  <p-icon name="highway" size="large" aria-label="Highway icon"></p-icon>
 </div>
 
-<div class="playground" title="should render icon with predefined colors">
-  <p-icon name="car-next" size="large" color="porsche-light" aria-label="Car icon" style="background: black;"></p-icon>
-  <p-icon name="car-next" size="large" color="porsche-black" aria-label="Car icon"></p-icon>
-  <p-icon name="car-next" size="large" color="porsche-red" aria-label="Car icon"></p-icon>
+<div class="playground light" title="should render icon with predefined colors on light background">
+  <p-icon name="highway" size="large" theme="light" color="brand" aria-label="Highway icon"> style="color: deeppink;"</p-icon>
+  <p-icon name="highway" size="large" theme="light" color="default" aria-label="Highway icon"  style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="neutral-1" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="neutral-2" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="neutral-3" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="notification-success" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="notification-warning" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="notification-error" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="inherit" aria-label="Highway icon" style="color: deeppink;"></p-icon>
 </div>
 
-<div class="playground" title="should render different icons with inherited color">
-  <p-icon style="color: deeppink;" name="afternoon" size="large" color="inherit" aria-label="Afternoon icon"></p-icon>
-  <p-icon style="color: deepskyblue;" name="all-day-next" size="large" color="inherit" aria-label="All day icon"></p-icon>
-  <p-icon style="color: cyan;" name="early-morning-next" size="large" color="inherit" aria-label="Early morning icon"></p-icon>
+<div class="playground dark" title="should render icon with predefined colors on dark background">
+  <p-icon name="highway" size="large" theme="dark" color="brand" aria-label="Highway icon"> style="color: deeppink;"</p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="default" aria-label="Highway icon"  style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="neutral-1" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="neutral-2" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="neutral-3" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="notification-success" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="notification-warning" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="notification-error" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="inherit" aria-label="Highway icon" style="color: deeppink;"></p-icon>
 </div>
 
-<div class="playground" title="should render custom icon with specific icon path">
+<div class="playground light" title="should render custom icon with specific icon path">
   <p-icon source="./assets/icon-custom-kaixin.svg" size="large" aria-label="Icon for social media platform Kaixin" />
 </div>
 

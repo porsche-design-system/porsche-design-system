@@ -36,10 +36,10 @@ A sample usage might look like as follows:
 @import '~@porsche-ui/ui-kit-scss-utils/index';
 
 #app {
-  color: $p-color-porsche-black;
+  color: $p-color-theme-light-default;
   
   @include p-breakpoint('s') {
-    color: $p-color-porsche-red;
+    color: $p-color-theme-light-brand;
   }
 }
 ```
