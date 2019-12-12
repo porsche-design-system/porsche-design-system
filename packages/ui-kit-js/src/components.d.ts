@@ -370,7 +370,7 @@ export namespace Components {
     /**
     * Size of the spinner.
     */
-    'size'?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'x-large' | 'inherit'>;
+    'size'?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
     /**
     * Adapts the spinner color depending on the theme.
     */
@@ -898,7 +898,7 @@ declare namespace LocalJSX {
     /**
     * Size of the spinner.
     */
-    'size'?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'x-large' | 'inherit'>;
+    'size'?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
     /**
     * Adapts the spinner color depending on the theme.
     */
