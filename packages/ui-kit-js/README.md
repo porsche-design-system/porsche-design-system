@@ -1,4 +1,4 @@
-# UI Kit JS
+# Design System JS
 
 ## Project setup
 ```

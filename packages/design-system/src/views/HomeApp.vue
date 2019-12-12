@@ -16,8 +16,8 @@
     <article class="intro">
       <p-grid>
         <p-grid-item size='{"base": 12, "m": 4}'>
-          <p-headline variant="headline-3" tag="h1">Porsche UI Kit</p-headline>
-          <p-text size="medium">App Design System</p-text>
+          <p-headline variant="headline-3" tag="h1">Porsche Design System</p-headline>
+          <p-text size="{ base:'small', s: 'medium' }">for native applications</p-text>
           <p-text class="spacing-mt-8">
             <router-link to="/app/getting-started/about">Learn more about it</router-link>
           </p-text>
