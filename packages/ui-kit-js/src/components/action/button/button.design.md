@@ -77,7 +77,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Abandoning a process. |
 | Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | Delete/erase content, e.g. a list item. | 
 | Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | Edit content, e.g. in lists or shop checkout. | 	
-| Add | <p-icon name="plus" aria-label="Plus"></p-icon> | Add content, e.g. a new item in a list. Counting up numbers, e.g. in a   | 
+| Add | <p-icon name="add" aria-label="Add"></p-icon> | Add content, e.g. a new item in a list. | 
 
 ### Text label
 The text label is always set in copytext size. It is recommended to always keep the Button label short and give the user a hint on the indicated action, for example by including active verbs such as "add", "edit" or "delete". 
