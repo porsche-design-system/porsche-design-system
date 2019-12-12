@@ -2,7 +2,7 @@
   <nav>
     <ul v-if="config.pages" class="list">
       <li v-for="(pages, category, index) in config.pages" :key="index">
-        <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
+        <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
             <router-link :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`" v-slot="{ href, navigate, isActive }">
@@ -16,7 +16,7 @@
     <p-headline v-if="config.stories" variant="headline-4" tag="h2">Components</p-headline>
     <ul v-if="config.stories" class="list">
       <li v-for="(stories, category, index) in config.stories" :key="index">
-        <p-headline variant="headline-5" tag="h3">{{ category }}</p-headline>
+        <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, story, index) in stories" :key="index">
             <router-link :to="`/${area}/components/${encodeUrl(category)}/${encodeUrl(story)}`" v-slot="{ href, navigate, isActive }">

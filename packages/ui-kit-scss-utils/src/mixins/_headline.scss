@@ -3,7 +3,7 @@
 
 @mixin p-large-title {
   font-family: $p-font-primary;
-  font-weight: 600;
+  font-weight: 500;
   font-size: rem(32px);
   line-height: 1.25;
 
@@ -30,7 +30,7 @@
 
 @mixin p-headline-1 {
   font-family: $p-font-primary;
-  font-weight: 600;
+  font-weight: 500;
   font-size: rem(28px);
   line-height: 1.285;
 
@@ -57,7 +57,7 @@
 
 @mixin p-headline-2 {
   font-family: $p-font-primary;
-  font-weight: 600;
+  font-weight: 500;
   font-size: rem(24px);
   line-height: 1.333;
 
@@ -84,7 +84,7 @@
 
 @mixin p-headline-3 {
   font-family: $p-font-primary;
-  font-weight: 600;
+  font-weight: 500;
   font-size: rem(20px);
   line-height: 1.4;
 
@@ -111,7 +111,7 @@
 
 @mixin p-headline-4 {
   font-family: $p-font-primary;
-  font-weight: 600;
+  font-weight: 500;
   font-size: rem(16px);
   line-height: 1.5;
 
@@ -134,11 +134,4 @@
     font-size: rem(24px);
     line-height: 1.333;
   }
-}
-
-@mixin p-headline-5 {
-  font-family: $p-font-primary;
-  font-weight: 600;
-  font-size: rem(16px);
-  line-height: 1.5;
 }
