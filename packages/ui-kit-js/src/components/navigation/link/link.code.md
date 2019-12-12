@@ -49,7 +49,7 @@ Choose between predefined styling variants.
 
 ---
 
-## Link wrapped with an anker tag (e.g. for framework routing)
+## Link wrapped with an anchor tag (e.g. for framework routing)
 If the component is used within a JS framework, it might be applied within a framework specific router component. 
 In this case the router component must be wrapped around `<p-link>`. Please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
