@@ -7,6 +7,8 @@
 * Headline component
   * Update color prop
   * Add Theme prop
+  * Reduce variants
+  * Change to semibold
   
 * Text component
   * Update color prop
