@@ -1,6 +1,6 @@
 # Link Pure
 
-Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to Link Primary, Secondary and Tertiarty. (In case you want the user to execute an action, you should select the [Button](#/web/action/button) or [Button Pure](#/web/action/button-pure) component instead.)
+Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to Link Primary, Secondary and Tertiarty. (In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) or [Button Pure](#/web/components/action/button-pure) component instead.)
 
 ---
 
@@ -55,7 +55,7 @@ The default icon is an arrow right that can be replaced by any icon available in
 #### External and internal links
 For internal links the arrow should be sufficient in most cases. External links can be displayed with the following icon: 
 
-<p-link-pure icon="link-extern" target="_blank" href="https://www.porsche.com">External link</p-link-pure>
+<p-link-pure icon="external" target="_blank" href="https://www.porsche.com">External link</p-link-pure>
 
 ### Text label 
 
@@ -81,7 +81,7 @@ Multiple Links Pure can be combined to one Link Pure group that must be stacked 
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/link-pure.png"/>
+    <img src="./assets/link-pure.png" alt="Example"/>
 </div>
 
 
