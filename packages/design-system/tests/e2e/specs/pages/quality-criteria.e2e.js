@@ -2,11 +2,10 @@ describe('Quality Criteria', () => {
   it('Should navigate through main navigation and show page title', () => {
     cy.visit('/#/web');
 
-    cy.get('#app aside nav a')
+    cy.get('#app aside nav p-link-pure')
       .contains('Quality Criteria')
       .click()
-      .parents('a')
-      .should('have.class', 'router-link-active');
+      .should('have.attr', 'active', 'true');
 
     cy.get('#app main h1')
       .should('be.visible')

@@ -131,6 +131,17 @@ export class PLink {
     this.el = r.nativeElement;
   }
 }
+export declare interface PLinkPure extends Components.PLinkPure {}
+@ProxyInputs(['active', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'])
+
+@Component({ selector: 'p-link-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['active', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'] })
+export class PLinkPure {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
 export declare interface PMarque extends Components.PMarque {}
 @ProxyInputs(['trademark'])
 
@@ -143,16 +154,16 @@ export class PMarque {
   }
 }
 export declare interface PPagination extends Components.PPagination {}
-@ProxyInputs(['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'])
+@ProxyInputs(['activePage', 'allyLabel', 'allyLabelNext', 'allyLabelPage', 'allyLabelPrev', 'itemsPerPage', 'maxNumberOfPageLinks', 'theme', 'totalItemsCount'])
 
-@Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'] })
+@Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'allyLabel', 'allyLabelNext', 'allyLabelPage', 'allyLabelPrev', 'itemsPerPage', 'maxNumberOfPageLinks', 'theme', 'totalItemsCount'] })
 export class PPagination {
-  pClick!: EventEmitter<CustomEvent>;
+  pageChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick']);
+    proxyOutputs(this, this.el, ['pageChange']);
   }
 }
 export declare interface PSpinner extends Components.PSpinner {}
@@ -175,19 +186,6 @@ export class PText {
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-  }
-}
-export declare interface PTextLink extends Components.PTextLink {}
-@ProxyInputs(['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'])
-
-@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'] })
-export class PTextLink {
-  pClick!: EventEmitter<CustomEvent>;
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick']);
   }
 }
 export declare interface PTextList extends Components.PTextList {}

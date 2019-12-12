@@ -34,6 +34,9 @@
   * Update color prop
   * Add Theme prop
   
+* Link-Pure component
+  * New custom element
+
 * Text component
   * Reduce amount of text variants in global interface
   * Remove `ul | ol | li | sup | sub | label` from `tag` property
