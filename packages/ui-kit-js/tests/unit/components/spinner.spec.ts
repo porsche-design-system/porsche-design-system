@@ -17,12 +17,4 @@ describe('Component <p-spinner>', () => {
     expect(page.root.shadowRoot.querySelector('.p-spinner')).toBeTruthy();
     expect(page.root).toMatchSnapshot();
   });
-
-  it('should render custom aria-label attribute', async () => {
-    const page = await newSpecPage({
-      components: [Spinner],
-      html: `<p-spinner ally-label="some ally label"></p-spinner>`,
-    });
-    expect(page.root.shadowRoot.querySelector('.p-spinner')).toEqualAttribute('aria-label', 'some ally label');
-  });
 });
