@@ -29,7 +29,7 @@ export class LinkPure {
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string = undefined;
 
-  /** To override default theming colors.. */
+  /** Override of default theming colors. */
   @Prop() public color?: TextColor = undefined;
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
@@ -59,8 +59,8 @@ export class LinkPure {
       prefix('link-pure'),
       mapBreakpointPropToPrefixedClasses('link-pure-', this.hideLabel, ['without-label', 'with-label']),
       mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
-      !this.color && prefix(`link-pure--theme-${this.theme}`),
-      this.color && prefix(`link-pure--color-${this.color}`)
+      this.color !== 'inherit' && prefix(`link-pure--theme-${this.theme}`),
+      prefix(`link-pure--color-${this.color}`)
     );
 
     const iconClasses = cx(

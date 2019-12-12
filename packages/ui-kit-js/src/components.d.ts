@@ -270,7 +270,7 @@ export namespace Components {
   }
   interface PLinkPure {
     /**
-    * To override default theming colors..
+    * Override of default theming colors.
     */
     'color'?: TextColor;
     /**
@@ -784,7 +784,7 @@ declare namespace LocalJSX {
   }
   interface PLinkPure {
     /**
-    * To override default theming colors..
+    * Override of default theming colors.
     */
     'color'?: TextColor;
     /**

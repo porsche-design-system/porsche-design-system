@@ -42,8 +42,6 @@ The Link Pure covers the following states:
 * Default
 * Active
 * Hover
-* Disabled
-* Loading
 * Focus
 
 ---

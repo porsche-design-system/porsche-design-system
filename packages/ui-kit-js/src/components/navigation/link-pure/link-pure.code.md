@@ -90,17 +90,21 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ## Color
 
-Though basic colors are set by the `theme` property, they can be overridden by the `color` property or even inherited from outside to customize coloring on specific needs. 
+Though basic colors are set by the `theme` property, they can be overridden by the `color` property or even inherited from outside to customize coloring to specific needs. 
 
 <Playground :themeable="true">
   <template v-slot={theme}>
-    <p-link-pure href="https://www.porsche.com" color="inherit" :theme="theme" style="color: deeppink;">Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" color="brand" :theme="theme">Some label</p-link-pure><br>
+    <p-link-pure href="https://www.porsche.com" color="inherit" :theme="theme" class="example-color">Some label</p-link-pure><br>
+    <a href="https://www.porsche.com" class="example-link-color">
+      <p-link-pure color="inherit" :theme="theme">Some label</p-link-pure>
+    </a>
   </template>
 </Playground>
 
 ---
 
-## Link wrapped with an anker tag (e.g. for framework routing)
+## Link wrapped with an anchor tag (e.g. for framework routing)
 If the component is used within a JS framework, it might be applied within a framework specific router component. 
 In this case the router component must be wrapped around `<p-link-pure>`. Please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
@@ -168,5 +172,14 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     display: inline-block;
     outline: none;
     text-decoration: none;
+  }
+  .example-link-color {
+    display: inline-block;
+    color: deeppink;
+    text-decoration: none;
+
+    &:hover {
+      color: green;
+    }
   }
 </style>
