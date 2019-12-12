@@ -1,5 +1,5 @@
 # About the Porsche Design System
-The Porsche Design System unites digital Porsche products around a shared design system, enabling everyone to speak the same language, work with the same tools and use prebuilt resources to efficiently create outstanding digital products: consistent, brand-appropriate and high-quality.
+The Porsche Design System unites digital Porsche products around a shared design system, enabling everyone to speak the same language, work with the same tools and use pre-built resources to efficiently create outstanding digital products: consistent, brand-appropriate and high-quality.
 
 ## Benefits for business, design and development
 
