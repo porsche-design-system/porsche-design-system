@@ -131,6 +131,17 @@ export class PLink {
     this.el = r.nativeElement;
   }
 }
+export declare interface PLinkPure extends Components.PLinkPure {}
+@ProxyInputs(['active', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'])
+
+@Component({ selector: 'p-link-pure', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['active', 'download', 'hideLabel', 'href', 'icon', 'iconSource', 'rel', 'size', 'target', 'theme', 'weight'] })
+export class PLinkPure {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
 export declare interface PMarque extends Components.PMarque {}
 @ProxyInputs(['trademark'])
 
@@ -175,19 +186,6 @@ export class PText {
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-  }
-}
-export declare interface PTextLink extends Components.PTextLink {}
-@ProxyInputs(['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'])
-
-@Component({ selector: 'p-text-link', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'download', 'href', 'icon', 'iconSource', 'rel', 'size', 'tag', 'target'] })
-export class PTextLink {
-  pClick!: EventEmitter<CustomEvent>;
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick']);
   }
 }
 export declare interface PTextList extends Components.PTextList {}
