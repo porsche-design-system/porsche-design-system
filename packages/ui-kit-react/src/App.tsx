@@ -9,8 +9,6 @@ import {
   PText,
   PButton,
   PButtonPure,
-  PTextList,
-  PTextListItem,
   PSpinner,
   PIcon,
   PPagination,
@@ -275,73 +273,6 @@ const App: React.FC = () => {
           </div>
           <div className="playground dark spacing-inline">
             <PButtonPure theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
-          </div>
-          <hr/>
-        </PGridItem>
-      </PGrid>
-      <PHeadline variant={'headline-2'}>Content</PHeadline>
-      <hr/>
-      <PGrid>
-        <PGridItem size={2}>
-          <PHeadline variant={'headline-4'} tag={'h4'}>
-            &lt;p-text-list&gt;<br/>
-            &lt;p-text-list-item&gt;
-          </PHeadline>
-        </PGridItem>
-        <PGridItem size={5}>
-          <div className="playground light spacing-block">
-            <PTextList>
-              <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-              <PTextListItem>
-                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
-                <PTextList>
-                  <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
-                  <PTextListItem>Lorem ipsum</PTextListItem>
-                </PTextList>
-              </PTextListItem>
-              <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-            </PTextList>
-          </div>
-          <div className="playground light spacing-block">
-            <PTextList listType={'ordered'}>
-              <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-              <PTextListItem>Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
-                <PTextList listType={'ordered'}>
-                  <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
-                  <PTextListItem>Lorem ipsum</PTextListItem>
-                </PTextList>
-              </PTextListItem>
-              <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-            </PTextList>
-          </div>
-          <hr/>
-        </PGridItem>
-        <PGridItem size={5}>
-          <div className="playground dark spacing-block">
-            <PTextList theme={'dark'}>
-              <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-              <PTextListItem>
-                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
-                <PTextList theme={'dark'}>
-                  <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
-                  <PTextListItem>Lorem ipsum</PTextListItem>
-                </PTextList>
-              </PTextListItem>
-              <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-            </PTextList>
-          </div>
-          <div className="playground dark spacing-block">
-            <PTextList theme={'dark'} listType={'ordered'} color={'inherit'} style={{color: 'deeppink'}}>
-              <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-              <PTextListItem>
-                Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
-                <PTextList theme={'dark'}>
-                  <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
-                  <PTextListItem>Lorem ipsum</PTextListItem>
-                </PTextList>
-              </PTextListItem>
-              <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
-            </PTextList>
           </div>
           <hr/>
         </PGridItem>

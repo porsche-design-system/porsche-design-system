@@ -22,5 +22,3 @@ export const PMarque = /*@__PURE__*/createReactComponent<JSX.PMarque, HTMLPMarqu
 export const PPagination = /*@__PURE__*/createReactComponent<JSX.PPagination, HTMLPPaginationElement>('p-pagination');
 export const PSpinner = /*@__PURE__*/createReactComponent<JSX.PSpinner, HTMLPSpinnerElement>('p-spinner');
 export const PText = /*@__PURE__*/createReactComponent<JSX.PText, HTMLPTextElement>('p-text');
-export const PTextList = /*@__PURE__*/createReactComponent<JSX.PTextList, HTMLPTextListElement>('p-text-list');
-export const PTextListItem = /*@__PURE__*/createReactComponent<JSX.PTextListItem, HTMLPTextListItemElement>('p-text-list-item');
