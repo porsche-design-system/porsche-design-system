@@ -1,8 +1,8 @@
 # Link Pure
 
-The `<p-link-pure>` component is essential to perform changes in page routes.
+The `<p-link-pure>` component is essential for performing changes in page routes.
 
-It can be used with or without a label but it's recommend to keep the label visible for better accessibility whenever possible. When used without a label, then it's best practice to provide a descriptive label text for screen readers.
+It can be used with or without a label but it's recommend to keep the label visible for better accessibility whenever possible. When used without a label  it's best practice to provide a descriptive label text for screen readers.
 
 ## Basic example
 
