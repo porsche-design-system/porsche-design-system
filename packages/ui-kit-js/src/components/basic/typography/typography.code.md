@@ -3,7 +3,7 @@
 Typography components are categorized into two different use cases:
 
 1. **Headline components** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
-2. **Text components** for predefined copy text sizes which are either fixed or can respond to different viewports.
+2. **Text components** for predefined copytext sizes which are either fixed or can respond to different viewports.
 
 ## Headlines
 
@@ -95,7 +95,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Weight
 
-There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text sizes.
+There are predefined default text weights for copytext. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground>
   <template #configurator>
