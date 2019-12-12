@@ -1,4 +1,4 @@
-# Porsche UI Kit React
+# Porsche Design System React
 
 ## NOT RELEASED YET
 
@@ -103,7 +103,7 @@
 ## [1.0.0-alpha.5] (2019-09-20)
 
 ### Bugfix
-* UI Kit Angular build
+* Design System Angular build
 
 
 ## [1.0.0-alpha.4] (2019-09-19)
@@ -120,7 +120,7 @@
 * bugfix: you can use now responsive objects in `PGrid` and `PFlex` and `PSpacing` components.
 
 ### Silent Change
-* added prefix to breakpoint mixin in UI Kit JS.
+* added prefix to breakpoint mixin in Design System JS.
 
 
 ## [1.0.0-alpha.2] (2019-08-22)

@@ -1,5 +1,5 @@
-# Porsche UI Kit React
-React wrappers for Porsche UI Kit web components package.  
+# Porsche Design System React
+React wrappers for Porsche Design System web components package.  
 
 ## Install
 ```

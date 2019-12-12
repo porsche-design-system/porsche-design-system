@@ -17,7 +17,7 @@ You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-
 
 ### Language versions
 
-The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche UI Kit but available as seperate typeface package on request.
+The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche Design System but available as seperate typeface package on request.
 
 #### Chinese / Japanese
 For Chinese and Japanese language, the following system fonts are to be used, sticking to the default Porsche font scaling system:
@@ -78,7 +78,7 @@ The Porsche copy text styles are typically to be used for long-form writing. The
 
 ## Additional styles
 
-For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche UI Kit. There are <strong><span style="color: #00D5B9">predefined default text sizes</span></strong>, which should cover most use cases.
+For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche Design System. There are <strong><span style="color: #00D5B9">predefined default text sizes</span></strong>, which should cover most use cases.
 
 | Additional text size                | Font size       |
 |------------------------- |---------------- |
@@ -201,7 +201,7 @@ Use typography wisely and always keep an eye on the user's needs and the purpose
 
 ### … a matter of course.
 Always use typography in a professional manner in order to support the exclusiveness and high-quality-standard of the brand.
-This not only means to make use of the pre-defined type styles provided in the Porsche UI Kit, but also to follow the general rules
+This not only means to make use of the pre-defined type styles provided in the Porsche Design System, but also to follow the general rules
 of good (micro) typography, such as using the right kind of apostrophes in the respective language. 
 
 ---
