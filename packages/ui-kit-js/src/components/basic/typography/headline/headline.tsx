@@ -10,18 +10,16 @@ import { Theme } from '../../../../types';
 })
 export class Headline {
 
-  /** Sets a custom HTML tag depending of the usage of the headline component. */
-  @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = 'h1';
-
   /** Style of the text. */
   @Prop() public variant?:
     | 'large-title'
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
-    | 'headline-4'
-    | 'headline-5'
-    | 'headline-6' = 'headline-1';
+    | 'headline-4' = 'headline-1';
+
+  /** Sets a custom HTML tag depending of the usage of the headline component. */
+  @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = undefined;
 
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
@@ -36,7 +34,13 @@ export class Headline {
   @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
-    const TagType = this.tag;
+    const TagType = !this.tag ?
+      this.variant === 'large-title' && 'h1'
+      || this.variant === 'headline-1' && 'h1'
+      || this.variant === 'headline-2' && 'h2'
+      || this.variant === 'headline-3' && 'h3'
+      || this.variant === 'headline-4' && 'h4'
+      : this.tag;
 
     const headlineClasses = cx(
       prefix('headline'),

@@ -1,7 +1,7 @@
 # Color
 
 There is no color web component available but predefined SCSS variables which has to be additionally installed with the `SCSS utility package` provided in an npm package.
-**[Read installation instructions for the Porsche UI Kit SCSS utils package](#/web/scss-utils/introduction)**
+**[Read installation instructions for the Porsche Design System SCSS utils package](#/web/scss-utils/introduction)**
 
 ## Themes
 

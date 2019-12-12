@@ -1,8 +1,12 @@
-# Porsche UI Kit SCSS Utils
+# Porsche Design System SCSS Utils
 
 ## Not released yet
 
 ### Change
+* Headline
+ * Add variable for semibold weight
+ * Remove headline-5 mixin
+ 
 * Color
   * Update and remove color variables
   

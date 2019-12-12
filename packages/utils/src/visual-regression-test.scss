@@ -30,7 +30,7 @@ hr {
 
 #human-readable-browser-name::before {
   content: 'Unknown browser';
-  @include p-headline-5;
+  @include p-headline-4;
 }
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {

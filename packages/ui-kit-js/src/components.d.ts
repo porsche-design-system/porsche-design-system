@@ -20,6 +20,9 @@ import {
 import {
   BreakpointCustomizable,
 } from './utils';
+import {
+  NumberOfPageLinks,
+} from './components/navigation/pagination/pagination';
 
 export namespace Components {
   interface PButton {
@@ -206,9 +209,7 @@ export namespace Components {
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
-    | 'headline-4'
-    | 'headline-5'
-    | 'headline-6';
+    | 'headline-4';
   }
   interface PIcon {
     /**
@@ -333,29 +334,29 @@ export namespace Components {
     */
     'activePage'?: number;
     /**
+    * Aria label what the pagination is used for.
+    */
+    'allyLabel'?: string;
+    /**
+    * Aria label for next page icon.
+    */
+    'allyLabelNext'?: string;
+    /**
+    * Aria label for page navigation.
+    */
+    'allyLabelPage'?: string;
+    /**
+    * Aria label for previous page icon.
+    */
+    'allyLabelPrev'?: string;
+    /**
     * The total count of items which should be shown per page.
     */
     'itemsPerPage': number;
     /**
-    * Aria label what the pagination is used for.
+    * The maximum number of page links rendered
     */
-    'label'?: string;
-    /**
-    * Aria label for next page icon.
-    */
-    'labelNext'?: string;
-    /**
-    * Aria label for page navigation.
-    */
-    'labelPage'?: string;
-    /**
-    * Aria label for previous page icon.
-    */
-    'labelPrev'?: string;
-    /**
-    * The number of pages between ellipsis. 'small' = mobile | 'large' = desktop | 'auto' = breakpoint specific
-    */
-    'pageRange'?: 'small' | 'large' | 'auto';
+    'maxNumberOfPageLinks'?: NumberOfPageLinks| BreakpointCustomizable<NumberOfPageLinks>;
     /**
     * Adapts the color when used on dark background.
     */
@@ -733,9 +734,7 @@ declare namespace LocalJSX {
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
-    | 'headline-4'
-    | 'headline-5'
-    | 'headline-6';
+    | 'headline-4';
   }
   interface PIcon {
     /**
@@ -859,33 +858,33 @@ declare namespace LocalJSX {
     */
     'activePage'?: number;
     /**
+    * Aria label what the pagination is used for.
+    */
+    'allyLabel'?: string;
+    /**
+    * Aria label for next page icon.
+    */
+    'allyLabelNext'?: string;
+    /**
+    * Aria label for page navigation.
+    */
+    'allyLabelPage'?: string;
+    /**
+    * Aria label for previous page icon.
+    */
+    'allyLabelPrev'?: string;
+    /**
     * The total count of items which should be shown per page.
     */
     'itemsPerPage'?: number;
     /**
-    * Aria label what the pagination is used for.
+    * The maximum number of page links rendered
     */
-    'label'?: string;
+    'maxNumberOfPageLinks'?: NumberOfPageLinks| BreakpointCustomizable<NumberOfPageLinks>;
     /**
-    * Aria label for next page icon.
+    * Emitted when the page changes.
     */
-    'labelNext'?: string;
-    /**
-    * Aria label for page navigation.
-    */
-    'labelPage'?: string;
-    /**
-    * Aria label for previous page icon.
-    */
-    'labelPrev'?: string;
-    /**
-    * Emitted when the link is clicked.
-    */
-    'onPClick'?: (event: CustomEvent<any>) => void;
-    /**
-    * The number of pages between ellipsis. 'small' = mobile | 'large' = desktop | 'auto' = breakpoint specific
-    */
-    'pageRange'?: 'small' | 'large' | 'auto';
+    'onPageChange'?: (event: CustomEvent<any>) => void;
     /**
     * Adapts the color when used on dark background.
     */

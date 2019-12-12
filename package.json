@@ -9,7 +9,7 @@
       "**/@types/jasmine"
     ]
   },
-  "description": "Porsche UI Monorepo",
+  "description": "Porsche Design System Monorepo",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
