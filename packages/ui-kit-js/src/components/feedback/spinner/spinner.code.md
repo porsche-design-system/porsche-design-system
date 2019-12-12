@@ -11,8 +11,8 @@ If a specific size is needed, the size can be set to `inherit` to specify the te
   <template #configurator>
     <select @change="size = $event.target.value">
       <option disabled>Select a size</option>
-      <option>small</option>
-      <option selected>medium</option>
+      <option selected>small</option>
+      <option>medium</option>
       <option>large</option>
       <option>inherit</option>
     </select>
@@ -32,15 +32,27 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   </template>
 </Playground>
 
+---
+
+## Technical notes
+
+For automated visual regression tests the spinner animation can be disabled by setting a global css variable: 
+
+```
+:root {
+  --p-animation-duration__spinner: 0s !important;
+}
+```
+
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   
   @Component
   export default class PlaygroundButtonPure extends Vue {
-    public size: string = 'medium';
+    public size: string = 'small';
     
     public get isInherit() {
-      return this.size === 'inherit' ? 'width: 96px' : undefined;
+      return this.size === 'inherit' ? 'width: 24px' : undefined;
     }
   }
 </script>

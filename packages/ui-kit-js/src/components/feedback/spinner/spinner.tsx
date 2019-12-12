@@ -9,7 +9,7 @@ import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } fr
 })
 export class Spinner {
   /** Size of the spinner. */
-  @Prop() public size?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'x-large' | 'inherit'> = 'small';
+  @Prop() public size?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'> = 'small';
 
   /** Adapts the spinner color depending on the theme. */
   @Prop() public theme?: 'light' | 'dark' = 'light';
