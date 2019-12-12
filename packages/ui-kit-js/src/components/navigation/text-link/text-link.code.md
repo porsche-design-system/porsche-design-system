@@ -68,11 +68,11 @@ a {
   
   // optional active state, class name depends on framework specific router
   .active {
-    color: $p-color-porsche-red
+    color: $p-color-theme-light-brand
   }
   
   &:focus {
-    outline: 1px solid $p-color-state-focus;
+    outline: 1px solid $p-color-theme-light-state-focus;
     outline-offset: 4px;
   }
 }
@@ -101,7 +101,7 @@ a {
     text-decoration: none;
       
     &:focus {
-      outline: 1px solid $p-color-state-focus;
+      outline: 1px solid $p-color-theme-light-state-focus;
       outline-offset: 4px;
     }
   }

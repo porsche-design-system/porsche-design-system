@@ -10,6 +10,7 @@
 }
 
 .#{$p-global-class-prefix}headline {
+  $bem-block: &;
   padding: 0;
   margin: 0;
 
@@ -58,16 +59,18 @@
   }
 
   &--color {
+    &-default {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-default;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
     &-inherit {
       color: inherit;
-    }
-
-    &-porsche-light {
-      color: $p-color-porsche-light;
-    }
-
-    &-porsche-black {
-      color: $p-color-porsche-black;
     }
   }
 

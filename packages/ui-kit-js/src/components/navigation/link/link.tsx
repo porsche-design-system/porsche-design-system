@@ -4,7 +4,6 @@ import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } fr
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { LinkTarget, Theme } from '../../../types';
-import { improveLinkHandlingForCustomElement } from '../../../utils/linkHandling';
 
 @Component({
   tag: 'p-link',
@@ -18,7 +17,7 @@ export class Link {
   @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-right-hair';
+  @Prop() public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
@@ -43,7 +42,6 @@ export class Link {
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
-    improveLinkHandlingForCustomElement(this.element);
   }
 
   public render(): JSX.Element {
@@ -73,6 +71,7 @@ export class Link {
           size='inherit'
           name={this.icon}
           source={this.iconSource}
+          color='inherit'
         />
         <p-text tag='span' color='inherit' class={labelClasses}>
           <slot/>

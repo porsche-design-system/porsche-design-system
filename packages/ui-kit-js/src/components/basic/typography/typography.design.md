@@ -1,5 +1,5 @@
 # Typography
-Typography plays an important role for the general brand impression and is indispensable for the use in digital applications - not to say: Typography **is** the interface. Typography enables meaningful information with well structured hierarchy and is therefore one of the most important elements to provide user guidance.
+Typography plays an important role for the general brand impression and is indispensable for the use in digital applications, not to say: Typography **is** the interface. Typography enables meaningful information with well structured hierarchy and is therefore one of the most important elements to provide user guidance.
 
 ---
 
@@ -17,7 +17,7 @@ You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-
 
 ### Language versions
 
-The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche UI Kit but available as separate typeface packs on request.
+The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche UI Kit but available as separate typeface packages on request.
 
 #### Chinese / Japanese
 For Chinese and Japanese language the following system fonts are to be used, sticking to the default Porsche font scaling system:
@@ -30,7 +30,7 @@ For Chinese and Japanese language the following system fonts are to be used, sti
 
 ## Headline styles
 
-The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles only bold weight is used to provide a good readability and making it easy as possible to focus on the content sections of a page. The headline styles span from "large title", which can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
+The Porsche headline styles should **only be used for first-level headlines** whose function is to lead a page, section or content area. For Porsche headlines styles, only bold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. The headline styles span from large title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
 
 |                  | 320 - 759 px (XS)     | 760 - 999 px (S)   | 1000 - 1299 px (M)   | 1300 - 1759 px (L)   | 1760  px or larger (XL)   |
 |------------------|---------------------  |------------------	|-------------------   |-------------------   |------------------------   |
@@ -69,8 +69,8 @@ The Porsche copytext styles are typically to be used for long-form writing. The 
 
 | Copy text              | Font size      | Available states                           | 
 |------------------------- |---------------- |--------------------------------------------- |
-| text small (default)     | 16 px           | active, default, disabled, highlight, linked | 
-| text x-small  | 12 px    | active, default, disabled, highlight, linked | 
+| Text Small (default)     | 16 px           | active, default, disabled, highlight, linked | 
+| Text X-Small  | 12 px    | active, default, disabled, highlight, linked | 
 
 
 ![Copytext states](./assets/typography-copytext-states.png)
@@ -82,9 +82,9 @@ For short text parts that are not explicitly a page or section headline, but nee
 
 | Additional text size                | Font size       |
 |------------------------- |---------------- |
-| text medium     | 24 px           |
-| text large  | 36 px    |
-| text x-large  | 52 px    |
+| Text Medium     | 24 px           |
+| Text Large  | 36 px    |
+| Text X-Large  | 52 px    |
 
 Depending on the information level of the respective text you can either chose between regular or thin weight. In both cases legibility should be ensured.
 
@@ -114,7 +114,7 @@ Additional text sizes can be defined based on the Porsche type scale system.
 
 ### Line height
 
-For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4px baseline unit that fits to the [8 px spacing system](#/web/layout/spacing)  in order to follow a harmonious overall vertical rhythm.
+For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4px baseline unit that fits to the [8 px spacing system](#/web/layout/spacing) in order to follow a harmonious overall vertical rhythm.
 
 
 ---

@@ -2,50 +2,66 @@
 
 ## Color
 
-### Brand colors
+A light and dark theme is available depending on which background it's used.   
 
-|                                               |                      	         |
-|-----------------------------------------------|--------------------------------|
-| <ColorBadge color="porsche-red"/>  	        | `$p-color-porsche-red`         |
-| <ColorBadge color="porsche-dark-red"/> 	    | `$p-color-porsche-dark-red`    |
-| <ColorBadge color="porsche-light"/> 	        | `$p-color-porsche-light`       |
-| <ColorBadge color="porsche-dark"/> 	        | `$p-color-porsche-dark`        |
-| <ColorBadge color="porsche-black"/> 	        | `$p-color-porsche-black`       |
+<br>
+<select id="theme-selector" @change="theme = $event.target.value" :data-selected="theme">
+  <option disabled>Select a theme</option>
+  <option value="light">Theme light</option>
+  <option value="dark">Theme dark</option>
+</select>
 
-### Surface colors
+### Theme {{theme}}
 
-|                                               |                      	         |
-|-----------------------------------------------|--------------------------------|
-| <ColorBadge color="surface-light"/>  	        | `$p-color-surface-light`       |
-| <ColorBadge color="surface-dark"/> 	        | `$p-color-surface-dark`        |
+#### Brand colors
 
-### Neutral colors
+|                                                   |                      	             |
+|---------------------------------------------------|------------------------------------|
+| <ColorBadge :theme="theme" color="brand"/>  	    | `$p-color-theme-{{theme}}-brand`   |
 
-|                                               |                      	                                        |
-|-----------------------------------------------|---------------------------------------------------------------|
-| <ColorBadge color="neutral-grey-1"/>  	    | `$p-color-neutral-grey-1` / `$p-color-grey-lightest`          |
-| <ColorBadge color="neutral-grey-2"/>  	    | `$p-color-neutral-grey-2` / `$p-color-grey-lighter`           |
-| <ColorBadge color="neutral-grey-3"/>  	    | `$p-color-neutral-grey-3` / `$p-color-grey-light`             |
-| <ColorBadge color="neutral-grey-4"/>  	    | `$p-color-neutral-grey-4` / `$p-color-grey-disabled-on-light` |
-| <ColorBadge color="neutral-grey-5"/>  	    | `$p-color-neutral-grey-5` / `$p-color-grey-disabled-on-dark`  |
-| <ColorBadge color="neutral-grey-6"/>  	    | `$p-color-neutral-grey-6` / `$p-color-grey-dark`              |
-| <ColorBadge color="neutral-grey-7"/>  	    | `$p-color-neutral-grey-7` / `$p-color-grey-darker`            |
-| <ColorBadge color="neutral-grey-8"/>  	    | `$p-color-neutral-grey-8` / `$p-color-grey-darkest`           |
+#### Default colors
+
+|                                                   |                      	             |
+|---------------------------------------------------|------------------------------------|
+| <ColorBadge :theme="theme" color="default"/>      | `$p-color-theme-{{theme}}-default` |
+
+#### Surface colors
+
+|                                                   |                      	             |
+|---------------------------------------------------|------------------------------------|
+| <ColorBadge :theme="theme" color="surface"/>      | `$p-color-theme-{{theme}}-surface` |
+
+#### Background colors
+
+|                                                   |                      	                |
+|---------------------------------------------------|---------------------------------------|
+| <ColorBadge :theme="theme" color="background"/>   | `$p-color-theme-{{theme}}-background` |
 
 
-### Status colors
+#### Neutral colors
 
-|                                               |                      	         |
-|-----------------------------------------------|--------------------------------|
-| <ColorBadge color="status-red"/>  	        | `$p-color-status-red`          |
-| <ColorBadge color="status-green"/> 	        | `$p-color-status-green`        |
-| <ColorBadge color="status-yellow"/> 	        | `$p-color-status-yellow`       |
+|                                                   |                      	                 |
+|---------------------------------------------------|----------------------------------------|
+| <ColorBadge :theme="theme" color="neutral-1"/>  	| `$p-color-theme-{{theme}}-neutral-1`   |
+| <ColorBadge :theme="theme" color="neutral-2"/>  	| `$p-color-theme-{{theme}}-neutral-2`   |
+| <ColorBadge :theme="theme" color="neutral-3"/>  	| `$p-color-theme-{{theme}}-neutral-3`   |
 
-### State colors
+#### Notification colors
 
-|                                               |                      	         |
-|-----------------------------------------------|--------------------------------|
-| <ColorBadge color="state-focus"/>  	        | `$p-color-state-focus`         |
+|                                                           |                      	                            |
+|-----------------------------------------------------------|---------------------------------------------------|
+| <ColorBadge :theme="theme" color="notification-success"/> | `$p-color-theme-{{theme}}-notification-success`   |
+| <ColorBadge :theme="theme" color="notification-warning"/> | `$p-color-theme-{{theme}}-notification-warning`   |
+| <ColorBadge :theme="theme" color="notification-error"/>  	| `$p-color-theme-{{theme}}-notification-error`     |
+
+#### State colors
+
+|                                                     |                      	                  |
+|-----------------------------------------------------|-------------------------------------------|
+| <ColorBadge :theme="theme" color="state-focus"/>    | `$p-color-theme-{{theme}}-state-focus`    |
+| <ColorBadge :theme="theme" color="state-disabled"/> | `$p-color-theme-{{theme}}-state-disabled` |
+
+---
 
 ### External brand colors
 
@@ -54,7 +70,7 @@
 | <ColorBadge color="external-facebook"/>  	    | `$p-color-external-facebook`   |
 | <ColorBadge color="external-google"/>  	    | `$p-color-external-google`     |
 | <ColorBadge color="external-instagram"/>  	| `$p-color-external-instagram`  |
-| <ColorBadge color="external-linkedin"/>  	    | `$p-color-external-linkedin`    |
+| <ColorBadge color="external-linkedin"/>  	    | `$p-color-external-linkedin`   |
 | <ColorBadge color="external-twitter"/>  	    | `$p-color-external-twitter`    |
 | <ColorBadge color="external-wechat"/>  	    | `$p-color-external-wechat`     |
 | <ColorBadge color="external-youtube"/>  	    | `$p-color-external-youtube`    |
@@ -134,3 +150,12 @@ $p-text-size-{v};
 $p-animation-hover-duration
 $p-animation-hover-bezier
 ```
+
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundColor extends Vue {
+    public theme: 'light' | 'dark' = 'light';
+  }
+</script>

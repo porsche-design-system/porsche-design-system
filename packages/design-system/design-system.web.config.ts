@@ -99,9 +99,13 @@ export const config: DesignSystemConfig = {
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`)
         ],
-        Code: [
+        'Code Headline': [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.code.md`)
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.code.md`)
+        ],
+        'Code Text': [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.code.md`)
         ],
         Props: [
           // @ts-ignore
@@ -137,23 +141,23 @@ export const config: DesignSystemConfig = {
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`),
-        ],
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`)
+        ]
       },
       'Button Pure': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.props.md`),
-        ],
-      },
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.props.md`)
+        ]
+      }
     },
     Content: {
       'Text List': {
@@ -244,7 +248,7 @@ export const config: DesignSystemConfig = {
       }
     },
     Navigation: {
-      'Link': {
+      Link: {
         Design: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/navigation/link/link.design.md`)
@@ -261,23 +265,23 @@ export const config: DesignSystemConfig = {
       'Link Pure': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.design.md`)
         ]
       },
       Pagination: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`),
-        ],
-      },
-    },
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`)
+        ]
+      }
+    }
   }
 };

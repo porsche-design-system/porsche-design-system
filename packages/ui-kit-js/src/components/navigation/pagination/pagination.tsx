@@ -64,7 +64,7 @@ export class Pagination {
     }
 
     const pageRange: number = this.pageRange !== 'auto' ? (this.pageRange === 'large' ? 1 : 0) : this.pageRangeAuto;
-    const paginationClasses = cx(prefix('pagination'), this.theme === 'dark' && prefix('pagination--theme-dark'));
+    const paginationClasses = cx(prefix('pagination'), prefix(`pagination--theme-${this.theme}`));
     const paginationItemsClasses = cx(prefix('pagination__items'));
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     const activePage = getCurrentActivePage(this.activePage, pageTotal);
@@ -103,7 +103,7 @@ export class Pagination {
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.labelPrev}
               >
-                <p-icon name='arrow-left-hair' />
+                <p-icon name='arrow-head-left' color='inherit' />
               </a>
             </li>
           ));
@@ -161,7 +161,7 @@ export class Pagination {
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.labelNext}
               >
-                <p-icon name='arrow-right-hair' />
+                <p-icon name='arrow-head-right' color='inherit' />
               </a>
             </li>
           ));
