@@ -10,7 +10,6 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ButtonType,
   LinkTarget,
-  TextColor,
   TextSize,
   TextWeight,
   Theme,
@@ -276,6 +275,52 @@ export namespace Components {
     */
     'variant'?: 'primary' | 'secondary' | 'tertiary';
   }
+  interface PLinkPure {
+    /**
+    * Display link in active state.
+    */
+    'active'?: boolean;
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: string;
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * When providing an url then the component will be rendered as `<a>`.
+    */
+    'href'?: string;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
+    * Size of the link.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: LinkTarget;
+    /**
+    * Adapts the button color depending on the theme.
+    */
+    'theme'?: Theme;
+    /**
+    * The weight of the text (only has effect with visible label).
+    */
+    'weight'?: TextWeight;
+  }
   interface PMarque {
     /**
     * Show/hide trademark sign.
@@ -372,44 +417,6 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
-  interface PTextLink {
-    /**
-    * Basic text color variations.
-    */
-    'color'?: TextColor;
-    /**
-    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
-    */
-    'download'?: string;
-    /**
-    * Target url to where the component should link to.
-    */
-    'href'?: string;
-    /**
-    * The icon shown next to the label.
-    */
-    'icon'?: IconName;
-    /**
-    * A custom URL path to a custom icon.
-    */
-    'iconSource'?: string;
-    /**
-    * Specifies the relationship of the target object to the link object.
-    */
-    'rel'?: string;
-    /**
-    * The style of the text.
-    */
-    'size'?: TextSize;
-    /**
-    * Set a custom HTML tag depending of the usage of the component.
-    */
-    'tag'?: 'span' | 'a';
-    /**
-    * Target attribute where the link should be opened.
-    */
-    'target'?: 'self' | 'blank' | 'parent' | 'top';
-  }
   interface PTextList {
     /**
     * Basic text color variations depending on theme property.
@@ -484,6 +491,12 @@ declare global {
     new (): HTMLPLinkElement;
   };
 
+  interface HTMLPLinkPureElement extends Components.PLinkPure, HTMLStencilElement {}
+  var HTMLPLinkPureElement: {
+    prototype: HTMLPLinkPureElement;
+    new (): HTMLPLinkPureElement;
+  };
+
   interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {}
   var HTMLPMarqueElement: {
     prototype: HTMLPMarqueElement;
@@ -508,12 +521,6 @@ declare global {
     new (): HTMLPTextElement;
   };
 
-  interface HTMLPTextLinkElement extends Components.PTextLink, HTMLStencilElement {}
-  var HTMLPTextLinkElement: {
-    prototype: HTMLPTextLinkElement;
-    new (): HTMLPTextLinkElement;
-  };
-
   interface HTMLPTextListElement extends Components.PTextList, HTMLStencilElement {}
   var HTMLPTextListElement: {
     prototype: HTMLPTextListElement;
@@ -535,11 +542,11 @@ declare global {
     'p-headline': HTMLPHeadlineElement;
     'p-icon': HTMLPIconElement;
     'p-link': HTMLPLinkElement;
+    'p-link-pure': HTMLPLinkPureElement;
     'p-marque': HTMLPMarqueElement;
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
-    'p-text-link': HTMLPTextLinkElement;
     'p-text-list': HTMLPTextListElement;
     'p-text-list-item': HTMLPTextListItemElement;
   }
@@ -798,6 +805,52 @@ declare namespace LocalJSX {
     */
     'variant'?: 'primary' | 'secondary' | 'tertiary';
   }
+  interface PLinkPure {
+    /**
+    * Display link in active state.
+    */
+    'active'?: boolean;
+    /**
+    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+    */
+    'download'?: string;
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * When providing an url then the component will be rendered as `<a>`.
+    */
+    'href'?: string;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    /**
+    * Specifies the relationship of the target object to the link object.
+    */
+    'rel'?: string;
+    /**
+    * Size of the link.
+    */
+    'size'?: BreakpointCustomizable<TextSize>;
+    /**
+    * Target attribute where the link should be opened.
+    */
+    'target'?: LinkTarget;
+    /**
+    * Adapts the button color depending on the theme.
+    */
+    'theme'?: Theme;
+    /**
+    * The weight of the text (only has effect with visible label).
+    */
+    'weight'?: TextWeight;
+  }
   interface PMarque {
     /**
     * Show/hide trademark sign.
@@ -898,48 +951,6 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
-  interface PTextLink {
-    /**
-    * Basic text color variations.
-    */
-    'color'?: TextColor;
-    /**
-    * Special download attribute to open native browser download dialog if target url points to a downloadable file.
-    */
-    'download'?: string;
-    /**
-    * Target url to where the component should link to.
-    */
-    'href'?: string;
-    /**
-    * The icon shown next to the label.
-    */
-    'icon'?: IconName;
-    /**
-    * A custom URL path to a custom icon.
-    */
-    'iconSource'?: string;
-    /**
-    * Emitted when the link is clicked.
-    */
-    'onPClick'?: (event: CustomEvent<void>) => void;
-    /**
-    * Specifies the relationship of the target object to the link object.
-    */
-    'rel'?: string;
-    /**
-    * The style of the text.
-    */
-    'size'?: TextSize;
-    /**
-    * Set a custom HTML tag depending of the usage of the component.
-    */
-    'tag'?: 'span' | 'a';
-    /**
-    * Target attribute where the link should be opened.
-    */
-    'target'?: 'self' | 'blank' | 'parent' | 'top';
-  }
   interface PTextList {
     /**
     * Basic text color variations depending on theme property.
@@ -966,11 +977,11 @@ declare namespace LocalJSX {
     'p-headline': PHeadline;
     'p-icon': PIcon;
     'p-link': PLink;
+    'p-link-pure': PLinkPure;
     'p-marque': PMarque;
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;
-    'p-text-link': PTextLink;
     'p-text-list': PTextList;
     'p-text-list-item': PTextListItem;
   }
@@ -991,11 +1002,11 @@ declare module "@stencil/core" {
       'p-headline': LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
       'p-icon': LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
       'p-link': LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
+      'p-link-pure': LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
       'p-marque': LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
-      'p-text-link': LocalJSX.PTextLink & JSXBase.HTMLAttributes<HTMLPTextLinkElement>;
       'p-text-list': LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
       'p-text-list-item': LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
     }

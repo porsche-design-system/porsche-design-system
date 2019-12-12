@@ -2,11 +2,10 @@ describe('Color', () => {
   it('Should navigate through main navigation', () => {
     cy.visit('/#/web');
 
-    cy.get('#app aside nav a')
+    cy.get('#app aside nav p-link-pure')
       .contains('Color')
       .click()
-      .parents('a')
-      .should('have.class', 'router-link-active');
+      .should('have.attr', 'active', 'true');
 
     cy.get('#app main h1')
       .should('be.visible')
