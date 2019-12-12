@@ -1,12 +1,11 @@
-describe('Link', () => {
+describe('Link Pure', () => {
   it('Should navigate through main navigation', () => {
     cy.visit('/#/web');
 
-    cy.get('#app aside nav a')
+    cy.get('#app aside nav p-link-pure')
       .contains('Link Pure')
       .click()
-      .parents('a')
-      .should('have.class', 'router-link-active');
+      .should('have.attr', 'active', 'true');
 
     cy.get('#app main h1')
       .should('be.visible')
