@@ -1,7 +1,7 @@
 # Mixins
 
 ## Breakpoint / Media query
-Predefined breakpoints can easily be used like in the following examples.
+Predefined breakpoints can easily be used as in the following examples.
 
 Available breakpoints:  
 `xxs | xs | s | m | l | xl | xxl`
