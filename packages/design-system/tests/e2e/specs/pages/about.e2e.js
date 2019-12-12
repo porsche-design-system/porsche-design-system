@@ -9,6 +9,6 @@ describe('About', () => {
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'About the Porsche UI Kit');
+      .and('contain', 'About the Porsche Design System');
   });
 });

@@ -2,7 +2,7 @@
   "name": "@porsche-ui/ui-kit-js",
   "version": "1.0.0-alpha.7",
   "scope": "@porsche-ui",
-  "description": "Porsche UI Web Components",
+  "description": "Porsche Design System Web Components JS",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",

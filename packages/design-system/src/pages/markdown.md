@@ -114,7 +114,7 @@ Right aligned columns
 
 [link text](https://ui.porsche.com/)
 
-[link with title](https://ui.porsche.com/ "Porsche UI")
+[link with title](https://ui.porsche.com/ "Porsche Design System")
 
 Autoconverted link https://ui.porsche.com/
 
