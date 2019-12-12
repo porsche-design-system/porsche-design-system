@@ -2,7 +2,7 @@
 
 ## What is web accessibility?
 When we say a site is accessible we mean that the site's content is available to, and its functionality can be operated by, literally anyone. (This includes non-human visitors to your site, e.g. search engine robots!)
-As developers, it's easy for them to assume that all users can see and use a keyboard, mouse or touch screen, and can interact with the page content the same way they do. 
+For developers, it's easy for them to assume that all users can see and use a keyboard, mouse or touch screen, and can interact with the page content the same way they do. 
 This can lead to an experience that works well for some people, but creates issues which range from simple annoyances to show-stoppers.
 
 Accessibility therefore relates to the experience of users who might be outside of the narrow range of the "typical" user, and who might access or interact with things differently than you expect. 
@@ -50,7 +50,7 @@ Further information:
 * WAI-ARIA basics
 * An introduction to WAI-ARIA
 ###  Contrasts (DESIGN)
-Best done early in the process, ensuring that the foreground and background colors of your site have sufficient contrast you will help make your site more readable for everyone. Contrast Ratio is one tool for checking the contrast of your colors for both standard-vision and color-deficient users.
+Best done early in the process, ensuring that the foreground and background colors of your site have sufficient contrast will help you making your site more readable for everyone. Contrast ratio is one tool for checking the contrast of your colors for both standard-vision and color-deficient users.
 
 ### Colors (DESIGN)
 * Be sure to layout and develop for some kinds of color blindness

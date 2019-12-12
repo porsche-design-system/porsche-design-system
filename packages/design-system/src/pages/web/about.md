@@ -4,7 +4,7 @@ The Porsche Design System unites digital Porsche products around a shared design
 ## Benefits for business, design and development
 
 **Ship faster and focus on value.**  
-Stop wasting time on repetitive work and recreating things that already exist. Use the components and working methods to enable faster releases and quick iterations. Focus on valuable results and solving important problems.
+Stop wasting time on repetitive work and recreating things that already exist. Use the components and working methods to enable faster releases and quick iterations. Focus on valuable results and on solving important problems.
 
 **Improve user experience.**  
 Reusing the pre-built design elements ensures a consistent look and feel across different products, platforms and disciplines.<!--  Design patterns along the products that match the marketing and improve familarity, brand awareness and overall experience. --> Along the products that match the marketing, design patterns improve familarity, brand awareness and overall experience. TODO: Abstimmen ?!?
