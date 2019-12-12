@@ -266,7 +266,15 @@ export const config: DesignSystemConfig = {
         Design: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.design.md`),
-        ]
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.props.md`),
+        ],
       },
       Pagination: {
         Design: [

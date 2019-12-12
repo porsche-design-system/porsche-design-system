@@ -1,6 +1,6 @@
 # Link Pure
 
-Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to Link Primary, Secondary and Tertiarty. (In case you want the user to execute an action, you should select the [Button](#/web/action/button) or [Button Pure](#/web/action/button-pure) component instead.)
+Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to Link Primary, Secondary and Tertiarty. (In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) or [Button Pure](#/web/components/action/button-pure) component instead.)
 
 ---
 
@@ -8,13 +8,13 @@ Link Pure is a clickable icon-text-combination used to **navigate the user to an
 
 Per default, the Link Pure is set in **copytext size**. If another size or hierarchy level is needed, the Link Pure is available in the following sizes, whereas the size of the icon changes accordingly. 
 
-| Button Pure size | Font size | Example |
+| Size | Example |
 |------|------|------|
-| X-Small | 12 px | <span style="color:#FF0090;">Link Pure [INSERT CODE EXAMPLE]</span> |
-| Small | 16 px | <span style="color:#FF0090;">Link Pure [INSERT CODE EXAMPLE]</span> |
-| Medium | 24 px | <span style="color:#FF0090;">Link Pure [INSERT CODE EXAMPLE]</span> |
-| Large | 36 px | <span style="color:#FF0090;">Link Pure [INSERT CODE EXAMPLE]</span> |
-| X-Large | 52 px | <span style="color:#FF0090;">Link Pure [INSERT CODE EXAMPLE]</span> |
+| X-Small | <p-link-pure size="x-small" href="https://ui.porsche.com">Link Pure</p-link-pure> |
+| Small | <p-link-pure size="small" href="https://ui.porsche.com">Link Pure</p-link-pure> |
+| Medium | <p-link-pure size="medium" href="https://ui.porsche.com">Link Pure</p-link-pure> |
+| Large | <p-link-pure size="large" href="https://ui.porsche.com">Link Pure</p-link-pure> |
+| X-Large | <p-link-pure size="x-large" href="https://ui.porsche.com">Link Pure</p-link-pure> |
 
 ---
 
@@ -22,13 +22,13 @@ Per default, the Link Pure is set in **copytext size**. If another size or hier
 
 ### Icon and Text
 
-<span style="color:#FF0090;">[ INSERT CODE EXAMPLE IN LARGE ]</span>
+<p-link-pure size="large" href="https://ui.porsche.com">Link Pure</p-link-pure>
 
 This should be the variant of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility.
 
 ### Icon only
 
-<span style="color:#FF0090;"> INSERT CODE EXAMPLE IN LARGE ]</span>
+<p-link-pure size="large" hide-label="true" href="https://ui.porsche.com">Link Pure</p-link-pure>
 
 When it's enough to indicate an interaction with an icon only, the text label can be hidden. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon.
 
@@ -42,7 +42,6 @@ The Link Pure covers the following states:
 * Default
 * Active
 * Hover
-* Loading
 * Focus
 
 ---
@@ -56,8 +55,7 @@ The default icon is an arrow right that can be replaced by any icon available in
 #### External and internal links
 For internal links the arrow should be sufficient in most cases. External links can be displayed with the following icon: 
 
-<span style="color:#FF0090;">[ LINK PURE EINFÜGEN MIT LABEL "External Link" UND EXTERN-ICON ]
-<p-icon name="link-extern" size="x-small" aria-label="Extern link"></p-icon></span>
+<p-link-pure icon="external" target="_blank" href="https://www.porsche.com">External link</p-link-pure>
 
 ### Text label 
 
@@ -70,20 +68,20 @@ The text label within a link should always be short and descriptive.
 
 ### Link Pure on images
 
-A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the link pure can give the user an additional hint on the clickability of the whole image. Make sure to always use regular font-weight in links pure that are placed on images to provide legibility.
+A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. Make sure to always use regular font-weight in links pure that are placed on images to provide legibility.
 
 ### Additional subtext
 
-A Link Pure in Medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the link pure component.
+Link Pure in size medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the Link Pure component.
 
 ### Link Pure groups
 
-Multiple Links Pure can be combined to one Button Pure group that must be stacked left-aligned in order to guarantee scannability and legibility. It is recommended to not group more than 6 Links Pure in a row.
+Multiple Links Pure can be combined to one Link Pure group that must be stacked left-aligned in order to guarantee scannability and legibility. It is recommended to not group more than 6 Links Pure in a row.
 
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/link-pure.png"/>
+    <img src="./assets/link-pure.png" alt="Example"/>
 </div>
 
 
