@@ -354,19 +354,19 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size={5}>
           <div className="playground light spacing-inline">
-            <PSpinner size={'small'} allyLabel={'Loading'}/>
-            <PSpinner size={'small'} allyLabel={'Loading'}/>
-            <PSpinner size={'medium'} allyLabel={'Loading'}/>
-            <PSpinner size={'large'} allyLabel={'Loading'}/>
+            <PSpinner size={'small'}/>
+            <PSpinner size={'medium'}/>
+            <PSpinner size={'large'}/>
+            <PSpinner size={'inherit'} style={{width: '24px'}}/>
           </div>
           <hr/>
         </PGridItem>
         <PGridItem size={5}>
           <div className="playground dark spacing-inline">
-            <PSpinner theme={'dark'} size={'small'} allyLabel={'Loading'}/>
-            <PSpinner theme={'dark'} size={'small'} allyLabel={'Loading'}/>
-            <PSpinner theme={'dark'} size={'medium'} allyLabel={'Loading'}/>
-            <PSpinner theme={'dark'} size={'large'} allyLabel={'Loading'}/>
+            <PSpinner theme={'dark'} size={'small'}/>
+            <PSpinner theme={'dark'} size={'medium'}/>
+            <PSpinner theme={'dark'} size={'large'}/>
+            <PSpinner theme={'dark'} size={'inherit'} style={{width: '24px'}}/>
           </div>
           <hr/>
         </PGridItem>
