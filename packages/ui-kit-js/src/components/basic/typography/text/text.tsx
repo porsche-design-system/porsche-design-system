@@ -5,7 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../../utils';
-import {TextSize, TextColor, TextWeight} from '../../../../types';
+import { TextSize, TextWeight, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-text',
@@ -35,11 +35,14 @@ export class Text {
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
-  /** Basic text color variations. */
-  @Prop() public color?: TextColor = 'porsche-black';
+  /** Basic text color variations depending on theme property. */
+  @Prop() public color?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit' = 'default';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
+
+  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
+  @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
     const TagType = this.tag;
@@ -47,10 +50,11 @@ export class Text {
     const textClasses = cx(
       prefix('text'),
       mapBreakpointPropToPrefixedClasses('text--size', this.size),
-      this.weight !== 'regular' && prefix(`text--weight-${this.weight}`),
-      this.align !== 'left' && prefix(`text--align-${this.align}`),
+      prefix(`text--weight-${this.weight}`),
+      prefix(`text--align-${this.align}`),
       prefix(`text--color-${this.color}`),
-      this.ellipsis && prefix('text--ellipsis')
+      this.ellipsis && prefix('text--ellipsis'),
+      this.color !== 'inherit' && prefix(`text--theme-${this.theme}`)
     );
 
     return (

@@ -15,7 +15,7 @@ The clean style of the Porsche icon set matches the Porsche brand aesthetically 
 
 ## Base area & grid
 
-All icons are placed on a transparent 24 x 24 pixel base area, including a dedicated safe zone. 
+All icons are placed on a transparent 24x24 pixel base area, including a dedicated safe zone. 
 
 The icons themselves are built upon a base grid structure and guidelines for sizing the different icon shapes. These scale guidelines ensure that each icon has the same visual weight so they all feel the same size, regardless of their overall shape. 
 

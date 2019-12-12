@@ -23,12 +23,12 @@
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
    &:hover {
-      color: $p-color-porsche-red;
+      color: $p-color-theme-light-brand;
       text-decoration: none;
     }
 
     &:focus {
-      color: $p-color-state-focus;
+      color: $p-color-theme-light-state-focus;
       text-decoration: underline;
     }
   }

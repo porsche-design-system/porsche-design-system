@@ -64,7 +64,7 @@ The text label within a link should always be short and descriptive.
 ---
 
 
-## Special cases
+## Usage
 
 ### Link Pure on images
 

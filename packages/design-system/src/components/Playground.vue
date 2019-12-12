@@ -111,25 +111,25 @@
         cursor: pointer;
         border: none;
         font: inherit;
-        color: $p-color-neutral-grey-6;
+        color: $p-color-theme-light-neutral-3;
         background-color: transparent;
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
         padding-bottom: $p-spacing-4;
         border-bottom: 3px solid transparent;
 
         &:hover {
-          color: $p-color-porsche-red;
+          color: $p-color-theme-light-brand;
         }
 
         &:focus {
-          outline: 1px solid $p-color-state-focus;
+          outline: 1px solid $p-color-theme-light-state-focus;
           outline-offset: 4px;
         }
 
         &.is-active {
           cursor: default;
-          color: $p-color-porsche-black;
-          border-bottom-color: $p-color-porsche-red;
+          color: $p-color-theme-light-default;
+          border-bottom-color: $p-color-theme-light-brand;
         }
       }
     }
@@ -142,13 +142,13 @@
 
     // Theme
     &.light {
-      border-color: $p-color-neutral-grey-2;
-      background-color: $p-color-porsche-light;
+      border-color: $p-color-theme-dark-neutral-2;
+      background-color: $p-color-theme-light-background;
     }
 
     &.dark {
-      border-color: $p-color-surface-dark;
-      background-color: $p-color-surface-dark;
+      border-color: $p-color-theme-dark-surface;
+      background-color: $p-color-theme-dark-surface;
     }
 
     // Child Layout "height"
