@@ -143,16 +143,16 @@ export class PMarque {
   }
 }
 export declare interface PPagination extends Components.PPagination {}
-@ProxyInputs(['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'])
+@ProxyInputs(['activePage', 'allyLabel', 'allyLabelNext', 'allyLabelPage', 'allyLabelPrev', 'itemsPerPage', 'maxNumberOfPageLinks', 'theme', 'totalItemsCount'])
 
-@Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'itemsPerPage', 'label', 'labelNext', 'labelPage', 'labelPrev', 'pageRange', 'theme', 'totalItemsCount'] })
+@Component({ selector: 'p-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['activePage', 'allyLabel', 'allyLabelNext', 'allyLabelPage', 'allyLabelPrev', 'itemsPerPage', 'maxNumberOfPageLinks', 'theme', 'totalItemsCount'] })
 export class PPagination {
-  pClick!: EventEmitter<CustomEvent>;
+  pageChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pClick']);
+    proxyOutputs(this, this.el, ['pageChange']);
   }
 }
 export declare interface PSpinner extends Components.PSpinner {}
