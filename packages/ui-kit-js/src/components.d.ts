@@ -206,9 +206,7 @@ export namespace Components {
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
-    | 'headline-4'
-    | 'headline-5'
-    | 'headline-6';
+    | 'headline-4';
   }
   interface PIcon {
     /**
@@ -737,9 +735,7 @@ declare namespace LocalJSX {
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
-    | 'headline-4'
-    | 'headline-5'
-    | 'headline-6';
+    | 'headline-4';
   }
   interface PIcon {
     /**
