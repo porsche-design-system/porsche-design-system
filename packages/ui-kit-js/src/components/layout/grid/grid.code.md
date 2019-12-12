@@ -151,7 +151,7 @@ Nesting inside columns with the following widths should be prevented, because al
   
   .example-grid > * {
     @include p-text;
-    color: $p-color-porsche-light;
+    color: $p-color-theme-dark-default;
     text-align: center;
     background: lightskyblue;
     background-clip: content-box;

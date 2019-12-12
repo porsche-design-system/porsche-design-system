@@ -6,6 +6,7 @@
 }
 
 .#{$p-global-class-prefix}icon {
+  $bem-block: &;
   display: flex;
   flex-shrink: 0;
   margin: 0;
@@ -13,43 +14,112 @@
   box-sizing: border-box;
   width: rem(24px);
   height: rem(24px);
-  fill: currentColor;
 
-  &--small {
-    width: rem(24px);
-    height: rem(24px);
-  }
+  &--size {
+    &-small {
+      width: rem(24px);
+      height: rem(24px);
+    }
 
-  &--medium {
-    width: rem(36px);
-    height: rem(36px);
-  }
+    &-medium {
+      width: rem(36px);
+      height: rem(36px);
+    }
 
-  &--large {
-    width: rem(48px);
-    height: rem(48px);
-  }
+    &-large {
+      width: rem(48px);
+      height: rem(48px);
+    }
 
-  &--inherit {
-    width: inherit;
-    height: inherit;
+    &-inherit {
+      width: inherit;
+      height: inherit;
+    }
   }
 
   &--color {
+    &-brand {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-theme-light-brand;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-brand;
+      }
+    }
+
+    &-default {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-theme-light-default;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-default;
+      }
+    }
+
+    &-neutral-1 {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-theme-light-neutral-1;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-neutral-1;
+      }
+    }
+
+    &-neutral-2 {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-theme-light-neutral-2;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-neutral-2;
+      }
+    }
+
+    &-neutral-3 {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-theme-light-neutral-3;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-neutral-3;
+      }
+    }
+
+    &-notification-success {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-theme-light-notification-success;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-notification-success;
+      }
+    }
+
+    &-notification-warning {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-theme-light-notification-warning;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-notification-warning;
+      }
+    }
+
+    &-notification-error {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-theme-light-notification-error;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-notification-error;
+      }
+    }
+
     &-inherit {
       fill: currentColor;
-    }
-
-    &-porsche-light {
-      fill: $p-color-porsche-light;
-    }
-
-    &-porsche-black {
-      fill: $p-color-porsche-black;
-    }
-
-    &-porsche-red {
-      fill: $p-color-porsche-red;
     }
   }
 }

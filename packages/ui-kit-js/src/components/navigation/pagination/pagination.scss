@@ -11,6 +11,60 @@
   margin: 0;
   padding: 0;
 
+  &--size {
+    &-5 {
+      counter-reset: size 5;
+    }
+    &-7 {
+      counter-reset: size 7;
+    }
+
+    @include p-breakpoint("xs") {
+      &-5-xs {
+        counter-reset: size 5;
+      }
+      &-7-xs {
+        counter-reset: size 7;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &-5-s {
+        counter-reset: size 5;
+      }
+      &-7-s {
+        counter-reset: size 7;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &-5-m {
+        counter-reset: size 5;
+      }
+      &-7-m {
+        counter-reset: size 7;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &-5-l {
+        counter-reset: size 5;
+      }
+      &-7-l {
+        counter-reset: size 7;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &-5-xl {
+        counter-reset: size 5;
+      }
+      &-7-xl {
+        counter-reset: size 7;
+      }
+    }
+  }
+
   &__items {
     display: flex;
     margin: 0;
@@ -30,40 +84,59 @@
     justify-content: center;
     align-items: center;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier,
-      box-shadow $p-animation-hover-duration $p-animation-hover-bezier;
+    outline-color $p-animation-hover-duration $p-animation-hover-bezier;
     position: relative;
     width: rem(40px);
     height: rem(40px);
     box-sizing: border-box;
+    outline: none transparent;
 
     &:focus {
-      // outline: 1px solid $p-color-state-focus;
-      // outline-offset: -1px;
-      outline: none;
-      box-shadow: inset 0 0 0 1px $p-color-state-focus;
+      outline-width: 2px;
+      outline-style: solid;
+
+      #{$bem-block}--theme-light & {
+        outline-color: $p-color-theme-light-state-focus;
+      }
+
+      #{$bem-block}--theme-dark & {
+        outline-color: $p-color-theme-dark-state-focus;
+      }
     }
 
     &:active {
       outline: none;
-      color: $p-color-porsche-red;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-theme-light-brand;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-brand;
+      }
     }
   }
 
   &__goto {
     @include p-text;
-    color: $p-color-porsche-black;
     text-decoration: none;
     cursor: pointer;
 
+    #{$bem-block}--theme-light & {
+      color: $p-color-theme-light-default;
+    }
+
     #{$bem-block}--theme-dark & {
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
     }
 
     &:hover {
-      color: $p-color-porsche-red;
+      #{$bem-block}--theme-light & {
+        color: $p-color-theme-light-brand;
+      }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-porsche-red;
+        color: $p-color-theme-dark-brand;
       }
     }
 
@@ -71,22 +144,31 @@
       cursor: default;
 
       &:hover {
-        color: $p-color-porsche-black;
+        #{$bem-block}--theme-light & {
+          color: $p-color-theme-light-default;
+        }
 
         #{$bem-block}--theme-dark & {
-          color: $p-color-porsche-light;
+          color: $p-color-theme-dark-default;
         }
       }
 
       &::after {
         content: '';
-        background-color: $p-color-porsche-red;
         display: block;
         position: absolute;
         bottom: 0;
         left: rem(6px);
         right: rem(6px);
         height: rem(4px);
+
+        #{$bem-block}--theme-light & {
+          background-color: $p-color-theme-light-brand;
+        }
+
+        #{$bem-block}--theme-dark & {
+          background-color: $p-color-theme-dark-brand;
+        }
       }
     }
 
@@ -94,10 +176,12 @@
       cursor: default;
 
       &:hover {
-        color: $p-color-porsche-black;
+        #{$bem-block}--theme-light & {
+          color: $p-color-theme-light-default;
+        }
 
         #{$bem-block}--theme-dark & {
-          color: $p-color-porsche-light;
+          color: $p-color-theme-dark-default;
         }
       }
 
@@ -109,35 +193,45 @@
 
   &__prev,
   &__next {
-    color: $p-color-porsche-black;
     text-decoration: none;
     cursor: pointer;
 
+    #{$bem-block}--theme-light & {
+      color: $p-color-theme-light-default;
+    }
+
     #{$bem-block}--theme-dark & {
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
     }
 
     &:hover {
-      color: $p-color-porsche-red;
+      #{$bem-block}--theme-light & {
+        color: $p-color-theme-light-brand;
+      }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-porsche-red;
+        color: $p-color-theme-dark-brand;
       }
     }
 
     &--disabled {
-      color: $p-color-neutral-grey-4;
       cursor: default;
 
+      #{$bem-block}--theme-light & {
+        color: $p-color-theme-light-state-disabled;
+      }
+
       #{$bem-block}--theme-dark & {
-        color: $p-color-neutral-grey-6;
+        color: $p-color-theme-dark-state-disabled;
       }
 
       &:hover {
-        color: $p-color-neutral-grey-4;
+        #{$bem-block}--theme-light & {
+          color: $p-color-theme-light-state-disabled;
+        }
 
         #{$bem-block}--theme-dark & {
-          color: $p-color-neutral-grey-6;
+          color: $p-color-theme-dark-state-disabled;
         }
       }
     }

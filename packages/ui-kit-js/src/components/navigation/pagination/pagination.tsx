@@ -1,14 +1,17 @@
-import { JSX, Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
+import { Component, Event, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
 import cx from 'classnames';
-import { throttle } from 'throttle-debounce';
-import { prefix, matchBreakpoint } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import {
-  getTotalPages,
-  getCurrentActivePage,
   createPaginationModel,
-  PaginationModelItem,
-  itemTypes
+  getCurrentActivePage,
+  getTotalPages,
+  itemTypes,
+  PaginationModelItem
 } from './pagination-helper';
+import { listenResize } from '../../../utils/window-resize-listener';
+import { readCounterResetValue } from '../../../utils/counter-reset-reader';
+
+export type NumberOfPageLinks = 5 | 7;
 
 @Component({
   tag: 'p-pagination',
@@ -16,6 +19,9 @@ import {
   shadow: true
 })
 export class Pagination {
+  private unlistenResize: () => void;
+  private navigationElement: HTMLElement;
+
   /** The total count of items. */
   @Prop() public totalItemsCount: number = 1;
 
@@ -23,48 +29,56 @@ export class Pagination {
   @Prop() public itemsPerPage: number = 1;
 
   /** Index of the currently active page. */
-  @Prop() public activePage?: number = 1;
+  @Prop({
+    reflect: true,
+    mutable: true
+  }) public activePage?: number = 1;
 
-  /** The number of pages between ellipsis. 'small' = mobile | 'large' = desktop | 'auto' = breakpoint specific */
-  @Prop() public pageRange?: 'small' | 'large' | 'auto' = 'auto';
+  /** The maximum number of page links rendered */
+  @Prop() public maxNumberOfPageLinks?: NumberOfPageLinks| BreakpointCustomizable<NumberOfPageLinks> = { base: 5, xs: 7 };
 
   /** Aria label what the pagination is used for. */
-  @Prop() public label?: string = 'Pagination';
+  @Prop() public allyLabel?: string = 'Pagination';
 
   /** Aria label for previous page icon. */
-  @Prop() public labelPrev?: string = 'Previous page';
+  @Prop() public allyLabelPrev?: string = 'Previous page';
 
   /** Aria label for page navigation. */
-  @Prop() public labelPage?: string = 'Page';
+  @Prop() public allyLabelPage?: string = 'Page';
 
   /** Aria label for next page icon. */
-  @Prop() public labelNext?: string = 'Next page';
+  @Prop() public allyLabelNext?: string = 'Next page';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
-  /** Emitted when the link is clicked. */
-  @Event() public pClick!: EventEmitter;
+  /** Emitted when the page changes. */
+  @Event() public pageChange!: EventEmitter;
 
-  /** changes pageRange if prop is set as 'auto' */
-  @State() private pageRangeAuto?: 0 | 1;
+  @Watch('activePage')
+  public onActivePageChange(page: number, previousPage: number) {
+    this.pageChange.emit({ page, previousPage });
+  }
+
+  @State() public breakpointMaxNumberOfPageLinks: number;
+
+  public componentDidLoad() {
+    this.unlistenResize = listenResize(() => {
+      this.updateMaxNumberOfPageLinks();
+    });
+
+    this.updateMaxNumberOfPageLinks();
+  }
+
+  public componentDidUnload() {
+    this.unlistenResize();
+  }
 
   public render(): JSX.Element {
-    if (this.pageRange === 'auto') {
-      const updatePageRange = () => {
-        matchBreakpoint('s') ? (this.pageRangeAuto = 1) : (this.pageRangeAuto = 0);
-      };
-      updatePageRange();
-      window.addEventListener(
-        'resize',
-        throttle(500, () => {
-          updatePageRange();
-        })
-      );
-    }
+    const breakpointClasses = mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks);
+    const pageRange = this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0;
 
-    const pageRange: number = this.pageRange !== 'auto' ? (this.pageRange === 'large' ? 1 : 0) : this.pageRangeAuto;
-    const paginationClasses = cx(prefix('pagination'), this.theme === 'dark' && prefix('pagination--theme-dark'));
+    const paginationClasses = cx(breakpointClasses, prefix('pagination'), prefix(`pagination--theme-${this.theme}`));
     const paginationItemsClasses = cx(prefix('pagination__items'));
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     const activePage = getCurrentActivePage(this.activePage, pageTotal);
@@ -91,20 +105,21 @@ export class Pagination {
 
           return (prevItem = (
             <li {...pageModel} class={paginationItemClasses}>
-              <a
+              <span
                 class={paginationPrevClasses}
-                href={pageModel.isActive && '#'}
-                onClick={(e) => {
-                  if (!this.onClick || !pageModel.isActive) {
-                    return;
-                  }
-                  this.onClick(e, pageModel.value);
+                role={'button'}
+                tabIndex={pageModel.isActive ? 0 : null}
+                onClick={() => {
+                  this.onClick(pageModel.value);
+                }}
+                onKeyDown={(e: KeyboardEvent) => {
+                  this.onKeyDown(e, pageModel.value)
                 }}
                 aria-disabled={!pageModel.isActive && 'true'}
-                aria-label={this.labelPrev}
+                aria-label={this.allyLabelPrev}
               >
-                <p-icon name='arrow-left-hair' />
-              </a>
+                <p-icon name='arrow-head-left' color='inherit' />
+              </span>
             </li>
           ));
         }
@@ -117,27 +132,28 @@ export class Pagination {
           );
         }
         if (pageModel.type === itemTypes.PAGE) {
-          const TagType = pageModel.isActive ? 'span' : 'a';
           const paginationGoToClasses = cx(
             prefix('pagination__goto'),
             pageModel.isActive && prefix('pagination__goto--current')
           );
           pageItems.push(
             <li {...pageModel} class={paginationItemClasses}>
-              <TagType
+              <span
                 class={paginationGoToClasses}
-                href='#'
-                onClick={(e) => {
-                  if (!this.onClick || pageModel.isActive) {
-                    return;
-                  }
-                  this.onClick(e, pageModel.value);
+                role={'button'}
+                tabIndex={pageModel.isActive ? null : 0}
+                aria-disabled={pageModel.isActive && 'true'}
+                onClick={() => {
+                  this.onClick(pageModel.value);
                 }}
-                aria-label={`${this.labelPage} ${pageModel.value}`}
+                onKeyDown={(e: KeyboardEvent) => {
+                  this.onKeyDown(e, pageModel.value)
+                }}
+                aria-label={`${this.allyLabelPage} ${pageModel.value}`}
                 aria-current={pageModel.isActive && 'page'}
               >
                 {pageModel.value}
-              </TagType>
+              </span>
             </li>
           );
         }
@@ -149,20 +165,21 @@ export class Pagination {
 
           return (nextItem = (
             <li {...pageModel} class={paginationItemClasses}>
-              <a
+              <span
                 class={paginationNextClasses}
-                href={pageModel.isActive && '#'}
-                onClick={(e) => {
-                  if (!this.onClick || !pageModel.isActive) {
-                    return;
-                  }
-                  this.onClick(e, pageModel.value);
+                role={'button'}
+                tabIndex={pageModel.isActive ? 0 : null}
+                onClick={() => {
+                  this.onClick(pageModel.value);
+                }}
+                onKeyDown={(e: KeyboardEvent) => {
+                  this.onKeyDown(e, pageModel.value)
                 }}
                 aria-disabled={!pageModel.isActive && 'true'}
-                aria-label={this.labelNext}
+                aria-label={this.allyLabelNext}
               >
-                <p-icon name='arrow-right-hair' />
-              </a>
+                <p-icon name='arrow-head-right' color='inherit' />
+              </span>
             </li>
           ));
         }
@@ -177,7 +194,11 @@ export class Pagination {
 
     const paginationItems = createPaginationItems();
     return (
-      <nav class={paginationClasses} role='navigation' aria-label={this.label}>
+      <nav class={paginationClasses}
+           role='navigation'
+           aria-label={this.allyLabel}
+           ref={el => this.navigationElement = el as HTMLElement}
+      >
         <ul class={paginationItemsClasses}>
           {paginationItems.prevItem}
           {paginationItems.pageItems}
@@ -187,8 +208,27 @@ export class Pagination {
     );
   }
 
-  private onClick(event, page: number) {
-    event.preventDefault();
-    this.pClick.emit({ event, page });
+  private onKeyDown(event: KeyboardEvent, page: number) {
+    /**
+     * from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
+     */
+    if (event.key === ' ' || event.key === 'Enter' || event.key === 'Spacebar') {
+      /**
+       * Prevent the default action to stop scrolling when space is pressed
+       */
+      event.preventDefault();
+      this.onClick(page);
+    }
+  }
+
+  private onClick(page: number) {
+    if (page !== this.activePage) {
+      this.activePage = page;
+    }
+  }
+
+  private updateMaxNumberOfPageLinks() {
+    const { size } = readCounterResetValue(this.navigationElement);
+    this.breakpointMaxNumberOfPageLinks = size;
   }
 }

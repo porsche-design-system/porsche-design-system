@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../../utils';
-import {TextColor} from '../../../../types';
+import { Theme } from '../../../../types';
 
 @Component({
   tag: 'p-headline',
@@ -26,11 +26,14 @@ export class Headline {
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
-  /** Basic text color variations. */
-  @Prop() public color?: TextColor = 'porsche-black';
+  /** Basic text color variations depending on theme property. */
+  @Prop() public color?: 'default' | 'inherit' = 'default';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
+
+  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
+  @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
     const TagType = this.tag;
@@ -40,7 +43,8 @@ export class Headline {
       prefix(`headline--variant-${this.variant}`),
       prefix(`headline--align-${this.align}`),
       prefix(`headline--color-${this.color}`),
-      this.ellipsis && prefix('headline--ellipsis')
+      this.ellipsis && prefix('headline--ellipsis'),
+      this.color !== 'inherit' && prefix(`headline--theme-${this.theme}`)
     );
 
     return (

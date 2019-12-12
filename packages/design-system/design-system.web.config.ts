@@ -105,9 +105,13 @@ export const config: DesignSystemConfig = {
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`),
         ],
-        Code: [
+        'Code Headline': [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.code.md`),
+        ],
+        'Code Text': [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.code.md`),
         ],
         Props: [
           // @ts-ignore
@@ -268,7 +272,15 @@ export const config: DesignSystemConfig = {
         Design: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.design.md`),
-        ]
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../ui-kit-js/src/components/navigation/link-pure/link-pure.props.md`),
+        ],
       },
       Pagination: {
         Design: [
