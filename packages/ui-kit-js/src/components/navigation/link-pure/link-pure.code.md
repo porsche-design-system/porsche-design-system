@@ -86,10 +86,9 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ---
 
-## Link wrapped with an anchor tag (e.g. for framework routing)
+## Link wrapped within an anchor tag
 
-If the component is used within a JS framework, it might be applied within a framework specific router component. 
-In this case the router component must be wrapped around `<p-link-pure>`. Please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
+In case the link-pure component must be wrapped within an anchor tag please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -98,15 +97,6 @@ In this case the router component must be wrapped around `<p-link-pure>`. Please
     </a>
   </template>
 </Playground>
-
-### Example with VueJS router (other frameworks follow soon...)
-
-``` 
-<router-link :to="/path/to/heaven" v-slot="{ href, navigate, isActive }">
-  <p-link-pure :href="href" @click="navigate" :active="isActive">Some label</p-link-pure>
-</router-link>
-```
-
 
 ---
 
@@ -129,6 +119,44 @@ If the active state should not render a clickable anchor tag, just remove the `h
 </Playground>
 
 ---
+
+## Examples how to use with Framework specific router and "active state" support
+
+### Angular
+
+``` 
+# style.css
+.link {
+  text-decoration:none;
+  outline: none;
+}
+
+# template.html
+<a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive" class="link">
+  <p-link-pure [active]="rla.isActive">Some label</p-link-pure>
+</a>
+```
+
+### React
+
+``` 
+# style.css
+.link {
+  text-decoration:none;
+  outline: none;
+}
+
+# template.html
+coming soon...
+```
+
+### VueJs
+
+``` 
+<router-link :to="/path/to/heaven" v-slot="{ href, navigate, isActive }">
+  <p-link-pure :href="href" @click="navigate" :active="isActive">Some label</p-link-pure>
+</router-link>
+```
 
 ## Link with specific icon
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
