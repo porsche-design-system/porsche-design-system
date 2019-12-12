@@ -66,32 +66,37 @@
   }
 
   &:focus {
-    outline: 2px solid $p-color-state-focus;
+    outline-width: 2px;
+    outline-style: solid;
     outline-offset: 1px;
   }
 
-  &:hover,
-  &:active {
-    color: $p-color-porsche-red;
-  }
+  &--theme-light {
+    color: $p-color-theme-light-default;
 
-  &--theme-light{
-    color: $p-color-porsche-dark;
+    &:focus {
+      outline-color: $p-color-theme-light-state-focus;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-theme-light-brand;
+    }
   }
 
   &--theme-dark {
-    color: $p-color-porsche-light;
-  }
+    color: $p-color-theme-dark-default;
 
-  &--color {
-    &-inherit {
-      color: inherit;
-      &:hover,
-      &:active {
-        color: inherit;
-      }
+    &:focus {
+      outline-color: $p-color-theme-dark-state-focus;
+    }
+
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-brand;
     }
   }
+
 
   &--size {
     &-x-small {
