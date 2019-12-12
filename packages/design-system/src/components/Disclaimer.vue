@@ -1,6 +1,6 @@
 <template>
   <div class="disclaimer">
-    <p-text color="porsche-light">
+    <p-text theme="dark" color="default">
       A stable version of the Porsche Design System 1.0 is not released yet. The available alpha version of Porsche Design System 1.0
       is meant to be used for testing purpose only.
     </p-text>
@@ -20,6 +20,6 @@
 
   .disclaimer {
     padding: $p-spacing-8 $p-spacing-32;
-    background: $p-color-porsche-red;
+    background: $p-color-theme-light-brand;
   }
 </style>

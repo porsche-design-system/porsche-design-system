@@ -104,7 +104,7 @@
           }
           border: 0;
           height: 1px;
-          background-color: $p-color-neutral-grey-2;
+          background-color: $p-color-theme-dark-neutral-2;
         }
 
         // Emphasis
@@ -127,7 +127,7 @@
         // Blockquote
         blockquote {
           padding-left: $p-spacing-24;
-          border-left: rem(5px) solid $p-color-neutral-grey-2;
+          border-left: rem(5px) solid $p-color-theme-dark-neutral-2;
         }
 
         // Lists
@@ -153,9 +153,9 @@
 
         :not(pre) > code {
           padding: 0.125rem $p-spacing-8;
-          background-color: mix($p-color-porsche-red, $p-color-porsche-light, 10%);
+          background-color: mix($p-color-theme-light-brand, $p-color-theme-light-background, 10%);
           border-radius: 3px;
-          color: $p-color-porsche-red;
+          color: $p-color-theme-light-brand;
         }
 
         pre {
@@ -164,8 +164,8 @@
           padding: $p-spacing-8 $p-spacing-24;
           word-break: break-all;
           word-wrap: break-word;
-          background-color: $p-color-surface-light;
-          color: $p-color-neutral-grey-7;
+          background-color: $p-color-theme-light-surface;
+          color: $p-color-theme-light-neutral-2;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
         }
@@ -187,7 +187,7 @@
           th {
             text-align: left;
             padding-bottom: $p-spacing-8;
-            border-bottom: 1px solid $p-color-neutral-grey-1;
+            border-bottom: 1px solid $p-color-theme-dark-neutral-1;
           }
 
           td {
@@ -196,7 +196,7 @@
               top: $p-spacing-8;
               bottom: $p-spacing-8;
             }
-            border-bottom: 1px solid $p-color-neutral-grey-1;
+            border-bottom: 1px solid $p-color-theme-dark-neutral-1;
             vertical-align: top;
             width: 10%;
           }
@@ -211,18 +211,18 @@
         a:not(.p-button-regular):not(.p-button-icon) {
           outline: none;
           text-decoration: underline;
-          color: $p-color-porsche-black;
+          color: $p-color-theme-light-default;
           transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
           &:hover {
             text-decoration: none;
-            color: $p-color-porsche-red;
+            color: $p-color-theme-light-brand;
 
           }
 
           &:focus {
             text-decoration: underline;
-            color: $p-color-state-focus;
+            color: $p-color-theme-light-state-focus;
           }
         }
 

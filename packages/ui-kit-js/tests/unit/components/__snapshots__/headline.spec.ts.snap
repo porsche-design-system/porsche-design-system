@@ -3,7 +3,7 @@
 exports[`Component <p-headline> should render correctly in default mode with shadow dom 1`] = `
 <p-headline>
   <mock:shadow-root>
-    <h1 class="p-headline p-headline--align-left p-headline--color-porsche-black p-headline--variant-headline-1">
+    <h1 class="p-headline p-headline--align-left p-headline--color-default p-headline--theme-light p-headline--variant-headline-1">
       <slot></slot>
     </h1>
   </mock:shadow-root>

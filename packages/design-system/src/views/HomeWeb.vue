@@ -107,8 +107,8 @@
     position: relative;
     padding-top: 34%;
     overflow: hidden;
-    background: $p-color-neutral-grey-2;
-    border-bottom: 1px solid $p-color-neutral-grey-2;
+    background: $p-color-theme-dark-neutral-2;
+    border-bottom: 1px solid $p-color-theme-dark-neutral-2;
   }
 
   .video {
@@ -137,16 +137,16 @@
 
     p a {
       text-decoration: none;
-      color: $p-color-porsche-red;
+      color: $p-color-theme-light-brand;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
-        color: $p-color-porsche-dark-red;
+        color: darken($p-color-theme-light-brand, 10%);
       }
     }
 
     h2 + p a {
-      border-bottom: 1px solid $p-color-porsche-red;
+      border-bottom: 1px solid $p-color-theme-light-brand;
     }
   }
 
@@ -164,7 +164,7 @@
       right: -$p-spacing-32;
     }
     padding: $p-spacing-32;
-    background: $p-color-surface-light;
+    background: $p-color-theme-light-surface;
 
     @include p-breakpoint('s') {
       margin: {
@@ -175,11 +175,11 @@
     }
 
     a {
-      color: $p-color-porsche-red;
+      color: $p-color-theme-light-brand;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
-        color: $p-color-porsche-dark-red;
+        color: darken($p-color-theme-light-brand, 10%);
       }
     }
   }

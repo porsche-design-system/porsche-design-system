@@ -1,61 +1,99 @@
 # Icon
 
-The Porsche Design System is using a **SVG icon system** to visually present an icon object. Each icon is hosted on the Porsche Design System CDN to be served and cached as fast as possible. To reference an icon just use the `icon` property with the icon file name (**without** the file extension `.svg`).
+The Porsche Design System is using a **SVG icon system** to visually present an icon object. Each icon is hosted on the Porsche Design System CDN to be served and cached as fast as possible. To reference an icon just use the `icon` property with a predefined icon id.
 
-For more information and a complete overview of all available Porsche icons, head over to Porsche Icons (https://icons.porsche.com).
+For more information and a complete overview of all available Porsche icons, head over to Porsche Icons ([Porsche Icons](https://icons.porsche.com)).
 
-## Icons
+## Size
 
-### Sizes
+There are predefined default sizes for the icon component which should cover most use cases. If a specific size is needed, the size can be set to `inherit` to specify the size from outside.
 
-#### Small - 24 x 24 px (default)
-<Playground>
-  <p-icon name="car-next" aria-label="Car icon" />
+<Playground :themeable="true">
+  <template #configurator>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
+      <option selected>small</option>
+      <option>medium</option>
+      <option>large</option>
+      <option>inherit</option>
+    </select>
+  </template>
+  <template v-slot="{theme}">
+    <p-icon :theme="theme" :size="size" name="highway" aria-label="Highway icon" :style="isInheritSize" />
+  </template>
 </Playground>
+    
+---
 
-#### Medium - 36 x 36 px
-<Playground>
-  <p-icon name="car-next" size="medium" aria-label="Car icon" />
-</Playground>
+## Color
+Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
-#### Large - 48 x 48 px
-<Playground>
-  <p-icon name="car-next" size="large" aria-label="Car icon" />
+<Playground :themeable="true">
+  <template #configurator>
+    <select @change="color = $event.target.value">
+      <option disabled>Select a color</option>
+      <option value="brand">Brand</option>
+      <option value="default" selected>Default</option>
+      <option value="neutral-1">Neutral 1</option>
+      <option value="neutral-2">Neutral 2</option>
+      <option value="neutral-3">Neutral 3</option>
+      <option value="notification-success">Notification Success</option>
+      <option value="notification-warning">Notification Warning</option>
+      <option value="notification-error">Notification Error</option>
+      <option value="inherit">Inherit</option>
+    </select>
+  </template>
+  <template v-slot="{theme}">
+    <p-icon :theme="theme" name="highway" size="large" :color="color" :style="isInheritColor" aria-label="Highway icon" />
+  </template>
 </Playground>
 
 ---
 
-### Color variants
-The default icon color inherits from its parent(s). But also predefined colors can be set. @see properties for possible color variants.
-
-<Playground>
-  <p-icon name="car-next" size="large" color="porsche-red" aria-label="Car icon" />
-</Playground>
-
----
-
-### Custom icon
+## Custom icon
 The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is a need to show a custom icon which doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be sure that the custom icon serves the specific needs like size and viewbox which are described in the [design documentation](#/web/components/icon/icon#design).
 
-<Playground>
-  <p-icon :source="require(`@/assets/web/icon-custom-kaixin.svg`)" size="large" aria-label="Icon for social media platform Kaixin" />
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-icon :theme="theme" :source="require(`@/assets/web/icon-custom-kaixin.svg`)" size="large" aria-label="Icon for social media platform Kaixin" />
+  </template>
 </Playground>
 
 ---
 
-### Lazy loaded icon
+## Lazy loaded icon
 Icons can be lazy loaded, which means that they are only loaded (fetched) if they get visible in the viewport.
 
-<Playground>
-  <p-icon name="info" size="large" lazy="true" aria-label="Information icon" />
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-icon :theme="theme" name="info" size="large" lazy="true" aria-label="Information icon" />
+  </template>
 </Playground>
 
 ---
 
-### Accessibility
+## Accessibility
 With using SVG icons, there are options to give more accessibility to users using screen readers. Here are some good practices:
 
 * If icons stand alone, adding descriptive text with an `aria-label` attribute is a good practice:
 ```
 <p-icon aria-label="descriptive text, e.g: close the layer" />
 ```
+
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundTypography extends Vue {
+    public size: string = 'small';
+    public color: string = 'default';
+    
+    public get isInheritSize() {
+      return this.size === 'inherit' ? 'width: 48px' : undefined;
+    }
+    
+    public get isInheritColor() {
+      return this.color === 'inherit' ? 'color: deeppink' : undefined;
+    }
+  }
+</script>

@@ -68,7 +68,7 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: none;
+  outline: none transparent;
   text-decoration: none;
   text-align: left;
   border-style: solid;
@@ -83,7 +83,8 @@
   }
 
   &:focus {
-    outline: 2px solid $p-color-state-focus;
+    outline-width: 2px;
+    outline-style: solid;
     outline-offset: 1px;
   }
 
@@ -93,132 +94,154 @@
   }
 
   &--theme-light {
-    outline-color: $p-color-porsche-light;
+    &:focus {
+      outline-color: $p-color-theme-light-state-focus;
+    }
   }
 
   &--theme-dark {
-    outline-color: $p-color-porsche-black;
+    &:focus {
+      outline-color: $p-color-theme-dark-state-focus;
+    }
   }
 
   &--primary {
-    color: $p-color-porsche-light;
-    background-color: $p-color-porsche-red;
-    border-color: $p-color-porsche-red;
+    &#{$bem-block}--theme-light {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-light-brand;
+      border-color: $p-color-theme-light-brand;
+    }
 
     &#{$bem-block}--theme-dark {
-      color: $p-color-porsche-light;
-      background-color: $p-color-porsche-red;
-      border-color: $p-color-porsche-red;
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-dark-brand;
+      border-color: $p-color-theme-dark-brand;
     }
 
     &:enabled,
     &:not([disabled]) {
       &:hover,
       &:active {
-        color: $p-color-porsche-light;
-        background-color: $p-color-porsche-dark-red;
-        border-color: $p-color-porsche-dark-red;
+        &#{$bem-block}--theme-light {
+          color: $p-color-theme-dark-default;
+          background-color: darken($p-color-theme-light-brand, 12%);
+          border-color: darken($p-color-theme-light-brand, 12%);
+        }
 
         &#{$bem-block}--theme-dark {
-          color: $p-color-porsche-light;
-          background-color: $p-color-porsche-dark-red;
-          border-color: $p-color-porsche-dark-red;
+          color: $p-color-theme-dark-default;
+          background-color: darken($p-color-theme-dark-brand, 12%);
+          border-color: darken($p-color-theme-dark-brand, 12%);
         }
       }
     }
 
     &:disabled,
     &[disabled] {
-      color: rgba($p-color-porsche-light, 0.55);
-      background-color: $p-color-grey-disabled-on-light;
-      border-color: $p-color-grey-disabled-on-light;
+      &#{$bem-block}--theme-light {
+        color: rgba($p-color-theme-dark-default, 0.55);
+        background-color: $p-color-theme-light-state-disabled;
+        border-color: $p-color-theme-light-state-disabled;
+      }
 
       &#{$bem-block}--theme-dark {
-        color: rgba($p-color-porsche-light, 0.55);
-        background-color: $p-color-grey-disabled-on-light;
-        border-color: $p-color-grey-disabled-on-light;
+        color: rgba($p-color-theme-dark-default, 0.55);
+        background-color: $p-color-theme-dark-state-disabled;
+        border-color: $p-color-theme-dark-state-disabled;
       }
     }
   }
 
   &--secondary {
-    color: $p-color-porsche-light;
-    background-color: $p-color-neutral-grey-8;
-    border-color: $p-color-neutral-grey-8;
+    &#{$bem-block}--theme-light {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-light-neutral-1;
+      border-color: $p-color-theme-light-neutral-1;
+    }
 
     &#{$bem-block}--theme-dark {
-      color: $p-color-porsche-black;
-      background-color: $p-color-porsche-light;
-      border-color: $p-color-porsche-light;
+      color: $p-color-theme-light-default;
+      background-color: $p-color-theme-dark-default;
+      border-color: $p-color-theme-dark-default;
     }
 
     &:enabled,
     &:not([disabled]) {
       &:hover,
       &:active {
-        color: $p-color-porsche-light;
-        background-color: $p-color-surface-dark;
-        border-color: $p-color-surface-dark;
+        &#{$bem-block}--theme-light {
+          color: $p-color-theme-dark-default;
+          background-color: darken($p-color-theme-light-neutral-1, 12%);
+          border-color: darken($p-color-theme-light-neutral-1, 12%);
+        }
 
         &#{$bem-block}--theme-dark {
-          color: $p-color-porsche-black;
-          background-color: $p-color-neutral-grey-1;
-          border-color: $p-color-neutral-grey-1;
+          color: $p-color-theme-light-default;
+          background-color: darken($p-color-theme-dark-default, 12%);
+          border-color: darken($p-color-theme-dark-default, 12%);
         }
       }
     }
 
     &:disabled,
     &[disabled] {
-      color: rgba($p-color-porsche-light, 0.55);
-      background-color: $p-color-grey-disabled-on-light;
-      border-color: $p-color-grey-disabled-on-light;
+      &#{$bem-block}--theme-light {
+        color: rgba($p-color-theme-dark-default, 0.55);
+        background-color: $p-color-theme-light-state-disabled;
+        border-color: $p-color-theme-light-state-disabled;
+      }
 
       &#{$bem-block}--theme-dark {
-        color: rgba($p-color-porsche-light, 0.55);
-        background-color: $p-color-grey-disabled-on-dark;
-        border-color: $p-color-grey-disabled-on-dark;
+        color: rgba($p-color-theme-dark-default, 0.55);
+        background-color: $p-color-theme-dark-state-disabled;
+        border-color: $p-color-theme-dark-state-disabled;
       }
     }
   }
 
   &--tertiary {
-    color: $p-color-porsche-black;
-    background-color: transparent;
-    border-color: $p-color-neutral-grey-8;
+    &#{$bem-block}--theme-light {
+      color: $p-color-theme-light-default;
+      background-color: transparent;
+      border-color: $p-color-theme-light-neutral-1;
+    }
 
     &#{$bem-block}--theme-dark {
-      color: $p-color-porsche-light;
+      color: $p-color-theme-dark-default;
       background-color: transparent;
-      border-color: $p-color-porsche-light;
+      border-color: $p-color-theme-dark-default;
     }
 
     &:enabled,
     &:not([disabled]) {
       &:hover,
       &:active {
-        color: $p-color-porsche-light;
-        background-color: $p-color-surface-dark;
-        border-color: $p-color-surface-dark;
+        &#{$bem-block}--theme-light {
+          color: $p-color-theme-dark-default;
+          background-color: darken($p-color-theme-light-neutral-1, 12%);
+          border-color: darken($p-color-theme-light-neutral-1, 12%);
+        }
 
         &#{$bem-block}--theme-dark {
-          color: $p-color-porsche-black;
-          background-color: $p-color-porsche-light;
-          border-color: $p-color-porsche-light;
+          color: $p-color-theme-light-default;
+          background-color: $p-color-theme-dark-default;
+          border-color: $p-color-theme-dark-default;
         }
       }
     }
 
     &:disabled,
     &[disabled] {
-      color: $p-color-grey-disabled-on-light;
-      background-color: transparent;
-      border-color: $p-color-grey-disabled-on-light;
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-state-disabled;
+        background-color: transparent;
+        border-color: $p-color-theme-light-state-disabled;
+      }
 
       &#{$bem-block}--theme-dark {
-        color: $p-color-grey-disabled-on-dark;
+        color: $p-color-theme-dark-state-disabled;
         background-color: transparent;
-        border-color: $p-color-grey-disabled-on-dark;
+        border-color: $p-color-theme-dark-state-disabled;
       }
     }
   }

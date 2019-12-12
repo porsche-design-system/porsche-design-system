@@ -3,6 +3,9 @@
 ## Not released yet
 
 ### Change
+* Color
+  * Update and remove color variables
+  
 * Text
   * Refine text variables and add default styles
   * Rename mixing `p-text-generic` to `p-text`

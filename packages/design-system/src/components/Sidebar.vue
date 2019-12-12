@@ -84,16 +84,16 @@ export default class Sidebar extends Vue {
   .link {
     padding: $p-spacing-4 0;
     text-decoration: none;
-    color: $p-color-porsche-black;
+    color: $p-color-theme-light-default;
     display: inline-block;
 
   &.router-link-active,
   &:hover {
-    color: $p-color-porsche-red;
+    color: $p-color-theme-light-brand;
   }
 
   &:focus {
-    outline: 1px solid $p-color-state-focus;
+    outline: 1px solid $p-color-theme-light-state-focus;
     outline-offset: 4px;
   }
 }
