@@ -65,7 +65,7 @@ Examples:
 
 ## Copy styles
 
-The Porsche copy text styles are typically to be used for long-form writing. The default copy text size is 16px, which is represented by the **text small** style. The copy **text x-small** is only recommended for additional, low-informative text such as disclaimers or captions. Copy text keeps the respective text size throughout all viewports.
+The Porsche copytext styles are typically to be used for long-form writing. The default copytext size is 16px, which is represented by the **text small** style. The copy **text x-small** is only recommended for additional, low-informative text such as disclaimers or captions. Copy text keeps the respective text size throughout all viewports.
 
 | Copy text              | Font size      | Available states                           | 
 |------------------------- |---------------- |--------------------------------------------- |
@@ -123,7 +123,7 @@ For reasons of legibility, the line height should always be adjusted to the resp
 
 ### Text color
 
-The color to be used for Porsche Next depends on the [Porsche color theme](#/web/basic/color) in use. In order to support both simplicity and legibility (sufficient contrast), default text is either to be set in Porsche Black or Porsche Light. For copy text sizes the Porsche color themes also provide different text state colors, such as Porsche Red for active states or Porsche Grey for disabled text.
+The color to be used for Porsche Next depends on the [Porsche color theme](#/web/basic/color) in use. In order to support both simplicity and legibility (sufficient contrast), default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche color themes also provide different text state colors, such as Porsche Red for active states or Porsche Grey for disabled text.
 
 ### Font weights
 
@@ -165,7 +165,7 @@ to read the full content.
 
 ### Paragraph spacing
 
-The vertical spacing between copy text paragraphs should be at least 24px, which equals the space of one line of text in-between.
+The vertical spacing between copytext paragraphs should be at least 24px, which equals the space of one line of text in-between.
 
 ![Copytext paragraph spacing](./assets/typography-paragraph-spacing.png)
 

@@ -1,6 +1,6 @@
 # Button
 
-A Button enables the user to execute an action or change the state of an application within the page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of buttons (primary, secondary, tertiary) can be used.
+A Button enables the user to execute an action or to change the state of an application within the page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of buttons (primary, secondary, tertiary) can be used.
 
 ---
 
@@ -8,8 +8,8 @@ A Button enables the user to execute an action or change the state of an applica
 
 The Button is provided in 2 different variants:
 
-- **Icon and Text** Default button size with 48 px height. The button length adapts to the length of the text label.
-- **Icon only** The icon only contains an icon and no further text information, it is highly recommended to use it only in cases where the user is fully aware of the button function (this can be ensured e.g. by using an expressive icon or by logical composition with other components - just think of a form field followed by a Button Icon with submit function)
+- **Icon and Text** Default button size with a height of 48px. The button length adapts to the length of the text label.
+- **Icon only** The icon only contains an icon and no further text information. It is highly recommended to use it only in cases where the user is fully aware of the button function (this can be ensured e.g. by using an expressive icon or by logical composition with other components - just think of a form field followed by a Button Icon with submit function).
 
 ## Button types
 
@@ -17,7 +17,7 @@ The Button is provided in 2 different variants:
 
 <p-button variant="primary">Some label</p-button> 
 
-Button with color fill in Porsche Red. This type is only to be used for one or two high-priority actions within the page, in order to give the user the best guidance possible.
+A button with a color fill in Porsche Red. This type is only to be used for one or two high-priority actions within the page, in order to give the user the best guidance possible.
 
 ### 2. Secondary
 
@@ -46,16 +46,16 @@ All button types are available in the following states:
 | active / hover | In active or hover state, the background color changes slightly and gets either a bit lighter or darker. |
 | disabled | Whenever the button function is not available, it is indicated by a greyed-out button color. |
 | loading | To indicate the loading process when clicking on the label, the icon is replaced by a small loading spinner. |
-| focus | In focus state, the button is framed by a 2 px line in focus color. |
+| focus | In focus state, the button is framed by a 2px line in the focus color. |
 
 ---
 
 ## Content
 
-The Button is available for both Porsche Light and Dark Theme. It always contains the following sub-components:
+The Button is available for both Porsche Light and Dark themes. It always contains the following sub-components:
 
 ### Icon
-By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. In addition, it should be ensured that the icon only variant is used for internationally known icons.
+By default, an arrow right is set that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. In addition, it should be ensured that the icon-only variant is used for internationally known icons.
 
 To ensure the alignment in all Porsche web appliccations we recommend to use dedicated, standardized icons for the following cases:
 
@@ -67,7 +67,7 @@ To ensure the alignment in all Porsche web appliccations we recommend to use ded
 | Add | <p-icon name="plus" aria-label="Plusicon"></p-icon> |  |
 
 ### Text label
-The text label is always set in copytext size. The length of the text label determines the size of the button. Multiline text is possible, while the content (both text and icon) are always positioned top left aligned within the button. It is recommended to keep the text label short and descriptive.
+The text label is always set in copytext size. The length of the text label determines the size of the button. Multiline text is possible, while the content (both text and icon) is always positioned top left aligned within the button. It is recommended to keep the text label short and descriptive.
 
 ---
 
