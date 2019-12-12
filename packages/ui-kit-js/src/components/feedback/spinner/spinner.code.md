@@ -1,35 +1,46 @@
 # Spinner
 
-Basic animated spinner to visualize loading states, e.g. page loading, form validation, etc. The Spinner component sizes are predefined.
+Basic animated spinner to visualize loading states, e.g. page loading, form validation, etc.
 
-### Small
+## Size
+
+There are predefined sizes for the component available which should cover most use cases. 
+If a specific size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :themeable="true">
+  <template #configurator>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
+      <option>small</option>
+      <option selected>medium</option>
+      <option>large</option>
+      <option>inherit</option>
+    </select>
+  </template>
   <template v-slot={theme}>
-    <p-spinner size="small" ally-label="Loading" :theme="theme" />
+    <p-spinner :size="size" :style="isInherit" :theme="theme" aria-label="Loading" />
   </template>
 </Playground>
 
-### Medium
+### Responsive
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground :themeable="true">
   <template v-slot={theme}>
-    <p-spinner size="medium" ally-label="Loading" :theme="theme" />
+    <p-spinner size="{ base: 'small', l: 'medium' }" :theme="theme" aria-label="Loading" />
   </template>
 </Playground>
 
-### Large
-
-<Playground :themeable="true">
-  <template v-slot={theme}>
-    <p-spinner size="large" ally-label="Loading" :theme="theme" />
-  </template>
-</Playground>
-
-### X-Large
-
-<Playground :themeable="true">
-  <template v-slot={theme}>
-    <p-spinner size="x-large" ally-label="Loading" :theme="theme" />
-  </template>
-</Playground>
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundButtonPure extends Vue {
+    public size: string = 'medium';
+    
+    public get isInherit() {
+      return this.size === 'inherit' ? 'width: 96px' : undefined;
+    }
+  }
+</script>

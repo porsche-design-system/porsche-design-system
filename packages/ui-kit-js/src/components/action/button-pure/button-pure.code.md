@@ -46,7 +46,7 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 <Playground :themeable="true">
   <template #configurator>
     <select @change="size = $event.target.value">
-      <option disabled>Select a style variant</option>
+      <option disabled>Select a size</option>
       <option>x-small</option>
       <option>small</option>
       <option selected>medium</option>
