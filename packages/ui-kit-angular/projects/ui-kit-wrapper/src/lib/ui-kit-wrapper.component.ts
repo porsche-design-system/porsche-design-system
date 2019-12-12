@@ -167,9 +167,9 @@ export class PPagination {
   }
 }
 export declare interface PSpinner extends Components.PSpinner {}
-@ProxyInputs(['allyLabel', 'size', 'theme'])
+@ProxyInputs(['size', 'theme'])
 
-@Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allyLabel', 'size', 'theme'] })
+@Component({ selector: 'p-spinner', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['size', 'theme'] })
 export class PSpinner {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
