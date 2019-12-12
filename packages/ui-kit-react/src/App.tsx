@@ -621,6 +621,9 @@ const App: React.FC = () => {
             <PLinkPure weight={'bold'} href={'https://ui.porsche.com'}>Bold</PLinkPure>
           </div>
           <div className="playground light spacing-inline">
+            <PLinkPure active={true} href={'https://ui.porsche.com'}>Some label</PLinkPure>
+          </div>
+          <div className="playground light spacing-inline">
             <PLinkPure icon={'phone'} href={'https://ui.porsche.com'}>Some link with a custom icon</PLinkPure>
           </div>
           <div className="playground light spacing-inline">
@@ -643,6 +646,9 @@ const App: React.FC = () => {
             <PLinkPure weight={'thin'} href={'https://ui.porsche.com'} theme={'dark'}>Thin</PLinkPure>
             <PLinkPure weight={'regular'} href={'https://ui.porsche.com'} theme={'dark'}>Regular</PLinkPure>
             <PLinkPure weight={'bold'} href={'https://ui.porsche.com'} theme={'dark'}>Bold</PLinkPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLinkPure active={true} href={'https://ui.porsche.com'} theme={'dark'}>Some label</PLinkPure>
           </div>
           <div className="playground dark spacing-inline">
             <PLinkPure icon={'phone'} href={'https://ui.porsche.com'} theme={'dark'}>Some link with a custom icon</PLinkPure>

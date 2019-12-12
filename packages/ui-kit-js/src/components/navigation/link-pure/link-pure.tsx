@@ -74,7 +74,7 @@ export class LinkPure {
         class={linkPureClasses}
         {...(TagType === 'a' ? {
           href: this.href,
-          target: `${this.target}`,
+          target: this.target,
           download: this.download,
           rel: this.rel
         } : null)}

@@ -99,6 +99,15 @@ In this case the router component must be wrapped around `<p-link-pure>`. Please
   </template>
 </Playground>
 
+### Example with VueJS router (other frameworks follow soon...)
+
+``` 
+<router-link :to="/path/to/heaven" v-slot="{ href, navigate, isActive }">
+  <p-link-pure :href="href" @click="navigate" :active="isActive">Some label</p-link-pure>
+</router-link>
+```
+
+
 ---
 
 ## Active state
@@ -111,7 +120,7 @@ Providing visually differences if a link changes its state can be achieved by se
   </template>
 </Playground>
 
-If the active state should not render an clickable anchor element, just replace the `href` property. 
+If the active state should not render a clickable anchor tag, just remove the `href` property. 
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
@@ -142,7 +151,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   <template v-slot={theme}>
     <p-link-pure
       href="https://www.porsche.com"
-      onclick="alert('click')"
+      onclick="alert('click'); return false;"
       onfocus="console.log('focus')"
       onfocusin="console.log('focusin')"
       onblur="console.log('blur')"
