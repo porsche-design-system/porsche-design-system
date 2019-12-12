@@ -103,15 +103,15 @@ slightly higher elements in implementation due to the additional border.
 
 ### Lines
 Lines can be created using either a narrow rectangle or a path
-with a stroke. ::For better readability of the space between elements, we
-recommend using paths with a stroke.::
+with a stroke. For better readability of the space between elements, we
+recommend using paths with a stroke.
 
 ### Text boxes
 Developers measure the spacing of typography from the bounding box
 of the text element. When working with typography, the bounding box should be
 placed within the grid parameters, even if the baseline of the typography is not
-on the grid line. ::MEMO: It's best to always create texts using the text tool, not as a
-box::
+on the grid line. MEMO: It's best to always create texts using the text tool, not as a
+box.
 
 ![Text box placement](./assets/spacings-bounding-box.png)
 
