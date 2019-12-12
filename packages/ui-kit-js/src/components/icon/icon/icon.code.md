@@ -1,6 +1,6 @@
 # Icon
 
-The Porsche UI Kit is using a **SVG icon system** to visually present an icon object. Each icon is hosted on the Porsche UI Kit CDN to be served and cached as fast as possible. To reference an icon just use the `icon` property with a predefined icon id.
+The Porsche Design System is using a **SVG icon system** to visually present an icon object. Each icon is hosted on the Porsche Design System CDN to be served and cached as fast as possible. To reference an icon just use the `icon` property with a predefined icon id.
 
 For more information and a complete overview of all available Porsche icons, head over to Porsche Icons ([Porsche Icons](https://icons.porsche.com)).
 
@@ -51,7 +51,7 @@ Predefined colors associated with its theme are available but also inherit mode 
 ---
 
 ## Custom icon
-The whole Porsche icon set is hosted on the Porsche UI Kit CDN. If there is a need to show a custom icon which doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be sure that the custom icon serves the specific needs like size and viewbox which are described in the [design documentation](#/web/components/icon/icon#design).
+The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is a need to show a custom icon which doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be sure that the custom icon serves the specific needs like size and viewbox which are described in the [design documentation](#/web/components/icon/icon#design).
 
 <Playground :themeable="true">
   <template v-slot="{theme}">

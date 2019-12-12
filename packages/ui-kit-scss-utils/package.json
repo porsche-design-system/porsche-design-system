@@ -2,7 +2,7 @@
   "name": "@porsche-ui/ui-kit-scss-utils",
   "version": "1.0.0-alpha.3",
   "scope": "@porsche-ui",
-  "description": "Porsche UI SCSS utilities",
+  "description": "Porsche Design System SCSS utilities",
   "files": [
     "src/",
     "_index.scss"

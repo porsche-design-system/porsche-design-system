@@ -68,7 +68,7 @@ In this case the router component must be wrapped around `<p-link>`. Please take
 ---
 
 ## Link with specific icon
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
