@@ -13,8 +13,8 @@ The Spinner `medium` and `large` adjust their size automatically based on the re
 
 | Size                      | Example                            | Recommended…                  |
 |---------------------------|-------------------------|-------------------------------------------------|
-| **X-Small**           |   <p-spinner size="x-small"></p-spinner>    | …for in-component loaders, such as in buttons or input fields. |
-| **Small / Medium / Large**     |   <p-spinner size="small"></p-spinner><p-spinner size="medium"></p-spinner><p-spinner size="large"></p-spinner>  | …for module or page loading, optionally accompanied by a text label.     |
+| **Small**           |   <p-spinner size="small"></p-spinner>    | …for in-component loaders and also for module or page loading in small breakpoints. |
+| **Medium / Large**     |   <p-spinner size="medium"></p-spinner><p-spinner size="large"></p-spinner>  | …for module or page loading, optionally accompanied by a text label.     |
 
 ---
 
@@ -27,9 +27,9 @@ It can be helpful to include text to improve clarity. Keep it simple by only exp
 the user from clicking twice on a shopping button in order not to create an extra order.
 A loading animation should always be a user-friendly helper, not a threat.
 
-* For X-Small size, you should use copytext.
+* For Small size, you should use copytext.
 * For larger Spinner sizes, you can use any additional size, depending on your needs and the available space.
-* Text must always be placed beneath or on the right side of the loader, keeping a minimum spacing of 16 px between Spinner and text.
+* Text must always be placed beneath or on the right side of the loader.
 
 ---
 
