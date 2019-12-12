@@ -12,11 +12,11 @@ For example, although we tend to centre our discussion of accessibility on users
 Have you ever had a problem using a desktop site on a mobile phone, or seen the message "This content is not available in your area", or been unable to find a familiar menu on a tablet? Those are all accessibility issues.
 
 ## Why do we need it?
-As maintainers of the Porsche UI Kit, we always want the best experience for all users. You might argue that, as an OEM in the automotive sector, we do not need to give support to visually impaired people. But this is a very short-sighted point of view.
-Just think about all the services Porsche wants to offer around the cars that have nothing to do with driving itself. Or think about people who have a "simple" red-green color blindness (about 10% of all humans). 
+As maintainers of Porsche Design System, we always want the best experience for all users. You might argue that, as an OEM in the automotive sector, we do not need to give support to visually impaired people. But this is a very short-sighted point of view.
+Just think about all the services Porsche wants to offer around the car that have nothing to do with driving itself. Or think about people which have a "simple" red-green color blindness (about 10% of all humans). 
 Or what about the average age of the target audience of Porsche customers? It's an average of 55 years! As you can see, web accessibility is for all users, not just blind people.
 
-The Porsche UI Kit approach is to deliver highly usable components that are not limited to certain use cases. They should work everywhere and for everyone! 
+The Porsche Design System approach is to deliver highly usable components that are not limited to certain use cases. They should work everywhere and for everyone! 
 That's why we develop and offer high-quality, standardised and accessible components for all possible environments and use cases.
 
 ## What level of web accessibility do we need to support?

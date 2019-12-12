@@ -83,6 +83,12 @@ export const config: DesignSystemConfig = {
     }
   },
   stories: {
+    General: {
+      'Blur On Focus': [
+        // @ts-ignore
+        () => import(`@/stories/web/blur-on-focus.md`)
+      ]
+    },
     Basic: {
       Color: {
         Design: [
