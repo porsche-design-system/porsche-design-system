@@ -1,5 +1,5 @@
-# About the Porsche UI Kit
-The Porsche UI Kit unites digital Porsche products around a shared design system, enabling everyone to speak the same language, work with the same tools and use prebuilt resources to efficiently create outstanding digital products: consistently, brand-appropriately and in high quality.
+# About the Porsche Design System
+The Porsche Design System unites digital Porsche products around a shared design system, enabling everyone to speak the same language, work with the same tools and use prebuilt resources to efficiently create outstanding digital products: consistently, brand-appropriately and in high quality.
 
 ## Benefits for business, design and development
 
@@ -15,8 +15,8 @@ Our centrally built and continuously maintained design system with standardised 
 **Leverage knowledge and clarity.**  
 With everyone having access to the system and using the same language, it is much easier to collaborate and share knowledge with a clear understanding. Onboardings for new members are much easier and faster.
 
-## Principles of success for the Porsche UI Kit
-The Porsche UI Kit encourages trust rather than policing by empowering self-responsible teamwork. To take full advantage of the benefits, we apply the following principles:
+## Principles of success for the Porsche Design System
+The Porsche Design System encourages trust rather than policing by empowering self-responsible teamwork. To take full advantage of the benefits, we apply the following principles:
 
 * **Use the contents as a foundation** without modification upon which to build individual designs.
 * **Collaborate** between design and development, just as we do.

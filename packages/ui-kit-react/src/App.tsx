@@ -47,13 +47,11 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size={10}>
           <div className="playground light spacing-block">
-            <PHeadline variant={'large-title'} tag={'h1'}>The quick brown fox jumps over the lazy dog</PHeadline>
-            <PHeadline variant={'headline-1'} tag={'h1'}>The quick brown fox jumps over the lazy dog</PHeadline>
-            <PHeadline variant={'headline-2'} tag={'h2'}>The quick brown fox jumps over the lazy dog</PHeadline>
-            <PHeadline variant={'headline-3'} tag={'h3'}>The quick brown fox jumps over the lazy dog</PHeadline>
-            <PHeadline variant={'headline-4'} tag={'h4'}>The quick brown fox jumps over the lazy dog</PHeadline>
-            <PHeadline variant={'headline-5'} tag={'h5'}>The quick brown fox jumps over the lazy dog</PHeadline>
-            <PHeadline variant={'headline-6'} tag={'h6'}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline variant={'large-title'}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline variant={'headline-1'}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline variant={'headline-2'}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline variant={'headline-3'}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline variant={'headline-4'}>The quick brown fox jumps over the lazy dog</PHeadline>
           </div>
         </PGridItem>
       </PGrid>
