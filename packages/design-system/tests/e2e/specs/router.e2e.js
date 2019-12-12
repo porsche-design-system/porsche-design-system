@@ -90,8 +90,8 @@ describe('Router', () => {
       cy.visit('/#/web/components/basic/typography#design');
       cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#design');
 
-      cy.visit('/#/web/components/basic/typography#code');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#code');
+      cy.visit('/#/web/components/basic/typography#code-headline');
+      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#code-headline');
 
       cy.visit('/#/web/components/basic/typography#props');
       cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#props');

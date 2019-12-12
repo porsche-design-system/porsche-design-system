@@ -185,9 +185,9 @@ export namespace Components {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
-    * Basic text color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'default' | 'inherit';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -196,6 +196,10 @@ export namespace Components {
     * Sets a custom HTML tag depending of the usage of the headline component.
     */
     'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
     /**
     * Style of the text.
     */
@@ -209,9 +213,9 @@ export namespace Components {
   }
   interface PIcon {
     /**
-    * Basic color variations.
+    * Basic color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -228,6 +232,10 @@ export namespace Components {
     * Specifies a whole icon path which can be used for custom icons.
     */
     'source'?: string;
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
     'variant'?: 'outline' | 'filled';
   }
   interface PLink {
@@ -378,9 +386,9 @@ export namespace Components {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
-    * Basic text color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -402,19 +410,27 @@ export namespace Components {
     | 'time'
     | 'legend';
     /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
+    /**
     * The weight of the text.
     */
     'weight'?: TextWeight;
   }
   interface PTextList {
     /**
-    * Basic text list color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'inherit';
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
   }
   interface PTextListItem {}
 }
@@ -700,9 +716,9 @@ declare namespace LocalJSX {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
-    * Basic text color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'default' | 'inherit';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -711,6 +727,10 @@ declare namespace LocalJSX {
     * Sets a custom HTML tag depending of the usage of the headline component.
     */
     'tag'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
     /**
     * Style of the text.
     */
@@ -724,9 +744,9 @@ declare namespace LocalJSX {
   }
   interface PIcon {
     /**
-    * Basic color variations.
+    * Basic color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
@@ -743,6 +763,10 @@ declare namespace LocalJSX {
     * Specifies a whole icon path which can be used for custom icons.
     */
     'source'?: string;
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
   }
   interface PLink {
     /**
@@ -896,9 +920,9 @@ declare namespace LocalJSX {
     */
     'align'?: 'left' | 'center' | 'right';
     /**
-    * Basic text color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
     * Adds an ellipsis to a single line of text if it overflows.
     */
@@ -920,19 +944,27 @@ declare namespace LocalJSX {
     | 'time'
     | 'legend';
     /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
+    /**
     * The weight of the text.
     */
     'weight'?: TextWeight;
   }
   interface PTextList {
     /**
-    * Basic text list color variations.
+    * Basic text color variations depending on theme property.
     */
-    'color'?: TextColor;
+    'color'?: 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'inherit';
     /**
     * The type of the text list.
     */
     'listType'?: 'unordered' | 'ordered';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
   }
   interface PTextListItem {}
 

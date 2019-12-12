@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                              | Type                                                                                                            | Default           |
-| ---------- | ---------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- | ----------------- |
-| `align`    | `align`    | Text alignment of the component.                                         | `"center" \| "left" \| "right"`                                                                                 | `'left'`          |
-| `color`    | `color`    | Basic text color variations.                                             | `"inherit" \| "porsche-black" \| "porsche-light" \| "porsche-red"`                                              | `'porsche-black'` |
-| `ellipsis` | `ellipsis` | Adds an ellipsis to a single line of text if it overflows.               | `boolean`                                                                                                       | `false`           |
-| `tag`      | `tag`      | Sets a custom HTML tag depending of the usage of the headline component. | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"`                                                                  | `'h1'`            |
-| `variant`  | `variant`  | Style of the text.                                                       | `"headline-1" \| "headline-2" \| "headline-3" \| "headline-4" \| "headline-5" \| "headline-6" \| "large-title"` | `'headline-1'`    |
+| Property   | Attribute  | Description                                                                                      | Type                                                                                                            | Default        |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- | -------------- |
+| `align`    | `align`    | Text alignment of the component.                                                                 | `"center" \| "left" \| "right"`                                                                                 | `'left'`       |
+| `color`    | `color`    | Basic text color variations depending on theme property.                                         | `"default" \| "inherit"`                                                                                        | `'default'`    |
+| `ellipsis` | `ellipsis` | Adds an ellipsis to a single line of text if it overflows.                                       | `boolean`                                                                                                       | `false`        |
+| `tag`      | `tag`      | Sets a custom HTML tag depending of the usage of the headline component.                         | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"`                                                                  | `'h1'`         |
+| `theme`    | `theme`    | Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. | `"dark" \| "light"`                                                                                             | `'light'`      |
+| `variant`  | `variant`  | Style of the text.                                                                               | `"headline-1" \| "headline-2" \| "headline-3" \| "headline-4" \| "headline-5" \| "headline-6" \| "large-title"` | `'headline-1'` |

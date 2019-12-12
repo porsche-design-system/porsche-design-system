@@ -55,6 +55,21 @@ const App: React.FC = () => {
             <PHeadline variant={'headline-5'} tag={'h5'}>The quick brown fox jumps over the lazy dog</PHeadline>
             <PHeadline variant={'headline-6'} tag={'h6'}>The quick brown fox jumps over the lazy dog</PHeadline>
           </div>
+        </PGridItem>
+      </PGrid>
+      <PGrid>
+        <PGridItem size={5} offset={2}>
+          <div className="playground light spacing-block">
+            <PHeadline variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PHeadline>
+          </div>
+          <hr/>
+        </PGridItem>
+        <PGridItem size={5}>
+          <div className="playground dark spacing-block">
+            <PHeadline theme={'dark'} variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline theme={'dark'} variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PHeadline>
+          </div>
           <hr/>
         </PGridItem>
       </PGrid>
@@ -67,11 +82,38 @@ const App: React.FC = () => {
             <PText>The quick brown fox jumps over the lazy dog</PText>
             <PText size={'x-small'}>The quick brown fox jumps over the lazy dog</PText>
           </div>
+        </PGridItem>
+      </PGrid>
+      <PGrid>
+        <PGridItem offset={2} size={5}>
           <div className="playground light spacing-block">
-            <PText color={'porsche-black'}>Porsche Black</PText>
-            <PText color={'porsche-light'} style={{background: 'black', display: 'block'}}>Porsche Light</PText>
-            <PText color={'inherit'} style={{color: 'deeppink'}}>Inherited custom color</PText>
+            <PText color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'neutral-1'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'neutral-2'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'neutral-3'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
           </div>
+        </PGridItem>
+        <PGridItem size={5}>
+          <div className="playground dark spacing-block">
+            <PText theme={'dark'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'neutral-1'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'neutral-2'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'neutral-3'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+          </div>
+        </PGridItem>
+      </PGrid>
+      <PGrid>
+        <PGridItem size={10} offset={2}>
           <div className="playground light spacing-block">
             <PText ellipsis={true}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
               tempor
@@ -278,11 +320,11 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size={5}>
           <div className="playground dark spacing-block">
-            <PTextList color={'porsche-light'}>
+            <PTextList theme={'dark'}>
               <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
               <PTextListItem>
                 Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
-                <PTextList>
+                <PTextList theme={'dark'}>
                   <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
                   <PTextListItem>Lorem ipsum</PTextListItem>
                 </PTextList>
@@ -291,11 +333,11 @@ const App: React.FC = () => {
             </PTextList>
           </div>
           <div className="playground dark spacing-block">
-            <PTextList listType={'ordered'} color={'inherit'} style={{color: 'deeppink'}}>
+            <PTextList theme={'dark'} listType={'ordered'} color={'inherit'} style={{color: 'deeppink'}}>
               <PTextListItem>First level - Lorem ipsum dolor sit amet</PTextListItem>
               <PTextListItem>
                 Lorem ipsum dolor sit amet <a href="https://ui.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
-                <PTextList>
+                <PTextList theme={'dark'}>
                   <PTextListItem>Second level - Lorem ipsum dolor sit amet</PTextListItem>
                   <PTextListItem>Lorem ipsum</PTextListItem>
                 </PTextList>
@@ -337,14 +379,25 @@ const App: React.FC = () => {
         <PGridItem size={2}>
           <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-icon&gt;</PHeadline>
         </PGridItem>
-        <PGridItem size={10}>
+        <PGridItem size={5}>
           <div className="playground light spacing-inline">
-            <PIcon name={'car-next'} aria-label="Car icon"/>
-            <PIcon name={'car-next'} size={'medium'} aria-label="Car icon"/>
-            <PIcon name={'car-next'} size={'large'} aria-label="Car icon"/>
-            <PIcon name={'car-next'} size={'large'} color={'porsche-red'} aria-label="Car icon"/>
-            <PIcon name={'car-next'} size={'large'} color={'inherit'} aria-label="Car icon" style={{color: 'deeppink'}}/>
-            <PIcon name={'kaixin'} size={'large'} aria-label="Kaixin icon"/>
+            <PIcon name={'filter'} color={'neutral-1'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'medium'} color={'neutral-2'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'large'} color={'neutral-3'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'large'} color={'brand'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'large'} color={'inherit'} aria-label="Filter icon" style={{color: 'deeppink'}}/>
+            <PIcon name={'delete'} size={'large'} aria-label="Delete icon"/>
+          </div>
+          <hr/>
+        </PGridItem>
+        <PGridItem size={5}>
+          <div className="playground dark spacing-inline">
+            <PIcon name={'filter'} theme={'dark'} color={'neutral-1'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} size={'medium'} color={'neutral-2'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'neutral-3'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'brand'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'inherit'} aria-label="Filter icon" style={{color: 'deeppink'}}/>
+            <PIcon name={'delete'} theme={'dark'} size={'large'} aria-label="Delete icon"/>
           </div>
           <hr/>
         </PGridItem>
