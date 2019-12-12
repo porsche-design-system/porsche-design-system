@@ -344,19 +344,19 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
-            <p-spinner [size]="'x-small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'medium'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'large'" [allyLabel]="'Loading'"></p-spinner>
+            <p-spinner [size]="'small'"></p-spinner>
+            <p-spinner [size]="'medium'"></p-spinner>
+            <p-spinner [size]="'large'"></p-spinner>
+            <p-spinner [size]="'inherit'" style="width: 24px;"></p-spinner>
           </div>
           <hr>
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-inline">
-            <p-spinner [theme]="'dark'" [size]="'x-small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'medium'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'large'" [allyLabel]="'Loading'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'small'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'medium'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'large'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'inherit'" style="width: 24px;"></p-spinner>
           </div>
           <hr>
         </p-grid-item>

@@ -368,15 +368,11 @@ export namespace Components {
   }
   interface PSpinner {
     /**
-    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    * Size of the spinner.
     */
-    'allyLabel'?: string;
+    'size'?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
     /**
-    * Predefined spinner sizes.
-    */
-    'size'?: 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
-    /**
-    * Adapts the spinner color when used on dark background.
+    * Adapts the spinner color depending on the theme.
     */
     'theme'?: 'light' | 'dark';
   }
@@ -900,15 +896,11 @@ declare namespace LocalJSX {
   }
   interface PSpinner {
     /**
-    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    * Size of the spinner.
     */
-    'allyLabel'?: string;
+    'size'?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
     /**
-    * Predefined spinner sizes.
-    */
-    'size'?: 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
-    /**
-    * Adapts the spinner color when used on dark background.
+    * Adapts the spinner color depending on the theme.
     */
     'theme'?: 'light' | 'dark';
   }
