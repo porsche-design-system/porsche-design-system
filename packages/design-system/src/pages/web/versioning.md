@@ -1,50 +1,22 @@
-# Versioning
+# Versioning and Releasing
+
+We value stability and transparency for the Porsche Design System. Thus we strive to ensure that our reusable components, Sketch Libraries and familiar practices dont't become obsolete often and unexpectedly.
 
 ## General information
-For updating and releasing new versions of code or design changes, the [SemanticVersioning](http://semver.org/) format is used:  
+The Porsche Design System components and Sketch Libraries are released seperately following [semantic versioning](http://semver.org/) whereby the numbers indicate the level of changes that are introduced. It should help you understand and plan the potential impact of updating.
 
-MAJOR.MINOR.PATCH e.g. 1.0.1
-* **Major** (X.y.z) contain breaking changes (defined below).
-* **Minor** (x.Y.z) add new features or deprecate existing features without breaking changes.
-* **Patch** (x.y.Z) fix defects or optimise existing features and file structure without breaking changes.
+MAJOR.MINOR.PATCH e.g. v1.0.1
+* **Major** (X.y.z) (breaking) changes in code or design, removal or renaming of existing features that require updates or refactorings within the application
+* **Minor** (x.Y.z) new feature (packages) in code or design
+* **Patch** (x.y.Z) bug fixes or structure optimisation
 
-Teams should avoid mixing different versions of code and design library. Both parties should drive updating in collaboration with the related counterpart.
+## Release planning
+We try to release with a regular schedule to enable the planning of updates. A major release every 6 months in summer and winter, and up to 3 minor releases for each major release.
 
-## Release rules
-* Once a versioned package has been released, the contents of that version must not be modified. Any modifications must be released as a new version. 
-* We align design and code versioning in major and minor
-* Version changes are part of every pull request following the SamVer rules
-* We only allow one breaking change per major release.
-* Every version change must be documented clearly in the change log. 
-* In design, the version must be contained in the library file name.
+## Deprecation and maintenance rules
+We work hard to minimize the number of breaking changes and provide migration paths therefore. But of course sometimes major releases are neccessary.  
 
-## Versioning examples
-Some examples for SemVer within the Porsche UI Kit:
+In general we will mark removed, renamed or changes interfaces and elements as deprecated in major releases for one release cycle before we will delete them. Updates must be scheduled and integrated within 6 months.  
 
-### MAJOR version when
-* Change to style that triggers a layout change or different wrapping behaviour
-* Markup change that must be included or is being updated
-* Change to code constants
-* Context-relevant changes in style basics, i.e. primary colour or icon assets with same meaning
-* Changes that can affect layout outside of content, i.e. display properties
-* Upgrade to dependencies
-* Deletion or moving of shared mixins or placeholders
-* Changing of hard-coded asset paths, i.e. background src
-* Removal of an accessibility-relevant attribute or property, relevant for assistive functionality.
-
-### MINOR version when
-* Addition of something new or a new variation of existing content, i.e. new error states
-* Addition of attributes to markup that don’t affect the rendering of the markup, i.e. new aria attributes
-* Updating of values of constants that do not result in a breaking change
-* Deprecation of existing contents without deletion
-
-### PATCH version when
-* Update to package dependencies
-* Structural changes not affecting refs
-* Fixing of defects and optimisation of existing code, e.g. a markup value or modification to constant keys
-* Changes to plugins or application-related improvements
-
-### NO RELEASE when
-* Update to dev dependencies
-* Addition of tests or examples
-* Update to examples and documentation
+Major releases are always fully backward-compatible. Thus we only provide bug fixes for the latest major release.  
+In comparison to the component releases, the Sketch Libraries will only be provided as major versions to download without deprecated elements and bug fix support for outdated versions.
