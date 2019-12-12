@@ -1,4 +1,4 @@
-# Start Designing
+## Start Designing
 
 The Porsche UI Kit enables designers to create outstanding digital designs by using the prebuild libraries, styles and templates - fast and qualitative. 
 
@@ -25,7 +25,7 @@ Some of the components offer smooth layout behaviour such as automatic resizing 
 The basic library contains the design fundamentals, such as typography, colours and icons.  
 [Download Porsche UI Kit Basic](sketch://add-library?url=https%3A%2F%2Fui.porsche.com%2Fporsche-ui-kit-basic.sketch.xml) 
 
-To use the library properly you have to download and install the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
+To use the library properly you have to download and install the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v2/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
 
 ### Web Library
 The web library provides components that are to be used within web applications, like buttons, form elements and many more.  
