@@ -188,24 +188,3 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
-export declare interface PTextList extends Components.PTextList {}
-@ProxyInputs(['color', 'listType', 'theme'])
-
-@Component({ selector: 'p-text-list', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['color', 'listType', 'theme'] })
-export class PTextList {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-export declare interface PTextListItem extends Components.PTextListItem {}
-
-@Component({ selector: 'p-text-list-item', changeDetection: 0, template: '<ng-content></ng-content>' })
-export class PTextListItem {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
