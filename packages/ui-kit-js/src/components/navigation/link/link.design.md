@@ -1,6 +1,6 @@
 # Link
 
-A Link enables the user to to **navigate the user to another page**. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Links (Primary, Secondary, Tertiary) can be used.
+The Porsche Design System Link enables the user to **navigate to another page**. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of links (primary, secondary, tertiary) can be used.
 (In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) component instead.)
 
 ---
@@ -17,15 +17,15 @@ Link filled with the Porsche brand color. This type is only to be used for one o
 
 <p-link href="https://www.porsche.com">Some label</p-link>
 
-Default Link with monochrome color fill. To be used for all other stand-alone Links that aren't high priority.
+Default link with monochrome color fill. To be used for all other stand-alone Links that aren't high priority.
 
 ### 3. Tertiary
 
 <p-link variant="tertiary" href="https://www.porsche.com">Some label</p-link>
 
-An "outline only" Link version. In hierarchy it is always subordinated to the filled view and can be used in two different cases:
+An "outline only"l link version. In hierarchy it is always subordinated to the filled view and can be used in two different cases:
 
-- In combination with a filled Link (Primary or Secondary), for example in popular pairings such as "submit" (Primary or Secondary) and "cancel" (Tertiary).
+- In combination with a filled link (primary or secondary), for example in popular pairings such as "submit" (primary or secondary) and "cancel" (tertiary).
 - Stand-alone, when the priority of the action is lower compared to all other link actions within this page.
 
 
@@ -37,7 +37,7 @@ An "outline only" Link version. In hierarchy it is always subordinated to the fi
 
 <p-link variant="primary" href="https://www.porsche.com">Some label</p-link> <p-link href="https://www.porsche.com" style="margin-left:16px;">Some label</p-link> <p-link variant="tertiary" href="https://www.porsche.com" style="margin-left:16px;">Some label</p-link>
 
-This should be the variant of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility. The length of the Link always adapts to the length of the text label. 
+This should be the option of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility. The length of the link always adapts to the length of the text label. 
 
 ### Icon only
 
@@ -49,7 +49,7 @@ This variant contains an icon only with no further text information. It is highl
 
 ## States
 
-The Link covers the following states:
+The link covers the following states:
 
 * Default
 * Active
@@ -71,7 +71,7 @@ For internal links the arrow should be sufficient in most cases. External links 
 
 ### Text label 
 
-The text label within a Link should always be short and descriptive.
+The text label within a link should always be short and descriptive.
 
 ---
 
@@ -79,15 +79,15 @@ The text label within a Link should always be short and descriptive.
 
 ### Link position
 
-By default the Link is to be positioned left-aligned within a module or a screen. In special cases, where it serves a better user guidance, the position can be changed.
+By default the link is to be positioned left-aligned within a module or a screen. In special cases, where it serves a better user guidance, the position can be changed.
 
 ### Link width
 
-Even if there is no technical limit to the Link width, you should always make sure that the Link remains legible, even more so in multiline state. It is recommended to use max. 100 characters per line (equals approx. 700 px link width).
+Even if there is no technical limit to the link width, you should always make sure that the link remains legible, even more so in multiline state. It is recommended to use max. 100 characters per line (equals approx. 700px link width).
 
-### Multi-line Links
+### Multiline links
 
-Though it's technically possible to use multiline text in Links, it's recommended to keep the text label short and, therefore, avoid multiline Links. 
+Though it's technically possible to use multiline text in links, it's recommended to keep the text label short and, therefore, avoid multiline links. 
 
 ---
 
