@@ -4,7 +4,6 @@ import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } fr
 import { LinkTarget, TextColor, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
-import { improveLinkHandlingForCustomElement } from '../../../utils/linkHandling';
 
 @Component({
   tag: 'p-link-pure',
@@ -21,7 +20,7 @@ export class LinkPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-right-hair';
+  @Prop() public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
@@ -49,7 +48,6 @@ export class LinkPure {
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
-    improveLinkHandlingForCustomElement(this.element);
   }
 
   public render(): JSX.Element {
