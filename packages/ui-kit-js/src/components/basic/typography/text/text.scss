@@ -4,20 +4,20 @@
   display: block;
 
   ::slotted(a) {
-    outline: none;
+    outline: transparent none;
     color: inherit;
     text-decoration: underline;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+    color $p-animation-hover-duration $p-animation-hover-bezier;
   }
 
   ::slotted(a:hover) {
     color: $p-color-theme-light-brand;
-    text-decoration: none;
   }
 
   ::slotted(a:focus) {
-    color: $p-color-theme-light-state-focus;
-    text-decoration: underline;
+    outline: $p-color-theme-light-state-focus solid 2px;
+    outline-offset: 1px;
   }
 
   ::slotted(b, strong) {
@@ -29,7 +29,6 @@
     vertical-align: top;
   }
 }
-
 
 .#{$p-global-class-prefix}text {
   $bem-block: &;
