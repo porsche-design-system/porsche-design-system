@@ -10,7 +10,6 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ButtonType,
   LinkTarget,
-  TextColor,
   TextSize,
   TextWeight,
   Theme,
@@ -278,9 +277,9 @@ export namespace Components {
   }
   interface PLinkPure {
     /**
-    * Override of default theming colors.
+    * Display link in active state.
     */
-    'color'?: TextColor;
+    'active'?: boolean;
     /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */
@@ -808,9 +807,9 @@ declare namespace LocalJSX {
   }
   interface PLinkPure {
     /**
-    * Override of default theming colors.
+    * Display link in active state.
     */
-    'color'?: TextColor;
+    'active'?: boolean;
     /**
     * Special download attribute to open native browser download dialog if target url points to a downloadable file.
     */

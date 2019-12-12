@@ -47,7 +47,6 @@
   $bem-block: &;
   display: flex;
   width: 100%;
-  font-size: $p-text-size-small;
   position: relative;
   margin: 0;
   padding: 0;
@@ -82,6 +81,10 @@
     &:active {
       color: $p-color-theme-light-brand;
     }
+
+    &#{$bem-block}--active {
+      color: $p-color-theme-light-brand;
+    }
   }
 
   &--theme-dark {
@@ -95,8 +98,11 @@
     &:active {
       color: $p-color-theme-dark-brand;
     }
-  }
 
+    &#{$bem-block}--active {
+      color: $p-color-theme-dark-brand;
+    }
+  }
 
   &--size {
     &-x-small {
