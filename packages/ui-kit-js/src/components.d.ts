@@ -414,21 +414,6 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
-  interface PTextList {
-    /**
-    * Basic text color variations depending on theme property.
-    */
-    'color'?: 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'inherit';
-    /**
-    * The type of the text list.
-    */
-    'listType'?: 'unordered' | 'ordered';
-    /**
-    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-    */
-    'theme'?: Theme;
-  }
-  interface PTextListItem {}
 }
 
 declare global {
@@ -517,18 +502,6 @@ declare global {
     prototype: HTMLPTextElement;
     new (): HTMLPTextElement;
   };
-
-  interface HTMLPTextListElement extends Components.PTextList, HTMLStencilElement {}
-  var HTMLPTextListElement: {
-    prototype: HTMLPTextListElement;
-    new (): HTMLPTextListElement;
-  };
-
-  interface HTMLPTextListItemElement extends Components.PTextListItem, HTMLStencilElement {}
-  var HTMLPTextListItemElement: {
-    prototype: HTMLPTextListItemElement;
-    new (): HTMLPTextListItemElement;
-  };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
@@ -544,8 +517,6 @@ declare global {
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
-    'p-text-list': HTMLPTextListElement;
-    'p-text-list-item': HTMLPTextListItemElement;
   }
 }
 
@@ -942,21 +913,6 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
-  interface PTextList {
-    /**
-    * Basic text color variations depending on theme property.
-    */
-    'color'?: 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'inherit';
-    /**
-    * The type of the text list.
-    */
-    'listType'?: 'unordered' | 'ordered';
-    /**
-    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-    */
-    'theme'?: Theme;
-  }
-  interface PTextListItem {}
 
   interface IntrinsicElements {
     'p-button': PButton;
@@ -973,8 +929,6 @@ declare namespace LocalJSX {
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;
-    'p-text-list': PTextList;
-    'p-text-list-item': PTextListItem;
   }
 }
 
@@ -998,8 +952,6 @@ declare module "@stencil/core" {
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
-      'p-text-list': LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
-      'p-text-list-item': LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
     }
   }
 }
