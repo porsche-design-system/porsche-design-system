@@ -10,7 +10,7 @@ describe('Component <p-link>', () => {
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Link],
-      html: `<p-link href="https://ui.porsche.com">Some label</p-link>`,
+      html: `<p-link href="https://designsystem.porsche.com">Some label</p-link>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-link')).toBeFalsy();
@@ -21,15 +21,15 @@ describe('Component <p-link>', () => {
   it('should render with href attribute', async () => {
     const page = await newSpecPage({
       components: [Link],
-      html: `<p-link href="https://ui.porsche.com">Some label</p-link>`,
+      html: `<p-link href="https://designsystem.porsche.com">Some label</p-link>`,
     });
-    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('href','https://ui.porsche.com');
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('href','https://designsystem.porsche.com');
   });
 
   it('should render with target attribute of "_blank"', async () => {
     const page = await newSpecPage({
       components: [Link],
-      html: `<p-link href="https://ui.porsche.com" target="_blank">Some label</p-link>`,
+      html: `<p-link href="https://designsystem.porsche.com" target="_blank">Some label</p-link>`,
     });
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target','_blank');
   });
@@ -37,7 +37,7 @@ describe('Component <p-link>', () => {
   it('should render with download attribute of "picture"', async () => {
     const page = await newSpecPage({
       components: [Link],
-      html: `<p-link href="https://ui.porsche.com" download="picture">Some label</p-link>`,
+      html: `<p-link href="https://designsystem.porsche.com" download="picture">Some label</p-link>`,
     });
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('download','picture');
   });

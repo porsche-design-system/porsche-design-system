@@ -2,7 +2,7 @@
   "name": "@porsche-ui/ui-kit-angular",
   "version": "1.0.0-alpha.7",
   "author": "Dr. Ing. h.c. F. Porsche AG",
-  "license": "SEE LICENSE IN https://ui.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "dependencies": {
     "@porsche-ui/ui-kit-js": "1.0.0-alpha.7"
   },
