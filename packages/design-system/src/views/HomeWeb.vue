@@ -29,7 +29,7 @@
             principles.
           </p-text>
           <p-text class="spacing-mt-32">
-            We are happy to announce our first alpha version 1.0.0-alpha.x release of Porsche Design System (JS/ Angular/ React). Please take some time to check it out!
+            We are happy to announce the first Release Candidate 1.0.0-RC.1 of the Porsche Design System (JS/ Angular/ React). Please take some time to check it out!
             We appreciate any feedback, feature requests or suggestions on our public <a href="https://github.com/porscheui/porsche-ui-contribution/issues">Contribution Board</a>.
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
