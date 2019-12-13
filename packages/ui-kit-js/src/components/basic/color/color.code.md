@@ -1,17 +1,17 @@
 # Color
 
-There is no color web component available but predefined SCSS variables which has to be additionally installed with the `SCSS utility package` provided in an npm package.
-**[Read installation instructions for the Porsche UI Kit SCSS utils package](#/web/scss-utils/introduction)**
+There is no color web component available but predefined SCSS variables which has to be additionally installed with the `SCSS utility package` provided in an NPM package.
+**[Read installation instructions for the Porsche Design System SCSS utils package](#/web/scss-utils/introduction)**
 
 ## Themes
 
-A light and dark theme is available depending on which background it's used.  
+A light and dark theme is available depending on which background is used.  
 
 <br>
 <select id="theme-selector" @change="theme = $event.target.value" :data-selected="theme">
   <option disabled>Select a theme</option>
-  <option value="light">Theme light</option>
-  <option value="dark">Theme dark</option>
+  <option value="light">Theme Light</option>
+  <option value="dark">Theme Dark</option>
 </select>
 
 ### Theme {{theme}}

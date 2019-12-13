@@ -1,5 +1,9 @@
 @import '../../../../../../packages/ui-kit-scss-utils/index';
 
+$p-spinner-size-small: rem(48px);
+$p-spinner-size-medium: rem(72px);
+$p-spinner-size-large: rem(104px);
+
 :host {
   display: inline-flex;
   vertical-align: top;
@@ -11,9 +15,7 @@
   padding: 0;
   box-sizing: border-box;
   display: block;
-  width: rem(24px);
-  height: rem(24px);
-  stroke-width: 2px;
+  stroke-width: 1px;
   animation: rotate 1s linear infinite; // IE11 fallback
   animation-duration: var(--p-animation-duration__spinner);
 
@@ -28,7 +30,7 @@
     transform-origin: center center;
     animation: rotate var(--p-animation-duration__spinner) linear infinite,
       dash var(--p-animation-duration__spinner) ease-in-out infinite;
-    stroke-dasharray: 100, 200;
+    stroke-dasharray: 40, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
   }
@@ -38,96 +40,150 @@
   }
 
   &--theme-light {
-    #{$bem-block}__fg {
-      stroke: $p-color-theme-light-neutral-1;
-    }
-
+    #{$bem-block}__fg,
     #{$bem-block}__bg {
       stroke: $p-color-theme-light-neutral-1;
     }
   }
 
   &--theme-dark {
-    #{$bem-block}__fg {
-      stroke: $p-color-theme-dark-default;
-    }
-
+    #{$bem-block}__fg,
     #{$bem-block}__bg {
       stroke: $p-color-theme-dark-default;
     }
   }
 
-  &--inherit {
-    width: 100%;
-    height: auto;
-    stroke-width: 1px;
-  }
+  &--size {
+    &-small {
+      width: $p-spinner-size-small;
+      height: $p-spinner-size-small;
+    }
 
-  &--small {
-    width: rem(24px);
-    height: rem(24px);
-    stroke-width: 2px;
-  }
+    &-medium {
+      width: $p-spinner-size-medium;
+      height: $p-spinner-size-medium;
+    }
 
-  &--medium {
-    width: rem(36px);
-    height: rem(36px);
-    stroke-width: 1px;
-  }
+    &-large {
+      width: $p-spinner-size-large;
+      height: $p-spinner-size-large;
+    }
 
-  &--large {
-    width: rem(48px);
-    height: rem(48px);
-    stroke-width: 1px;
-  }
+    &-inherit {
+      width: 100%;
+      height: auto;
+    }
 
-  &--x-large {
-    width: rem(160px);
-    height: rem(160px);
-    stroke-width: 1px;
-  }
+    @include p-breakpoint("xs") {
+      &-small-xs {
+        width: $p-spinner-size-small;
+        height: $p-spinner-size-small;
+      }
 
-  // &--x-small {
-  //  width: rem(16px);
-  //  height: rem(16px);
-  //  stroke-width: 5px;
-  // }
-  //
-  // &--small {
-  //  width: rem(48px);
-  //  height: rem(48px);
-  //  stroke-width: 2px;
-  // }
-  //
-  // &--medium {
-  //  width: rem(48px);
-  //  height: rem(48px);
-  //  stroke-width: 2px;
-  //
-  //  @include p-breakpoint('m') {
-  //    width: rem(72px);
-  //    height: rem(72px);
-  //    stroke-width: 2px;
-  //  }
-  // }
-  //
-  // &--large {
-  //  width: rem(48px);
-  //  height: rem(48px);
-  //  stroke-width: 2px;
-  //
-  //  @include p-breakpoint('m') {
-  //    width: rem(72px);
-  //    height: rem(72px);
-  //    stroke-width: 2px;
-  //  }
-  //
-  //  @include p-breakpoint('l') {
-  //    width: rem(104px);
-  //    height: rem(104px);
-  //    stroke-width: 2px;
-  //  }
-  // }
+      &-medium-xs {
+        width: $p-spinner-size-medium;
+        height: $p-spinner-size-medium;
+      }
+
+      &-large-xs {
+        width: $p-spinner-size-large;
+        height: $p-spinner-size-large;
+      }
+
+      &-inherit-xs {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &-small-s {
+        width: $p-spinner-size-small;
+        height: $p-spinner-size-small;
+      }
+
+      &-medium-s {
+        width: $p-spinner-size-medium;
+        height: $p-spinner-size-medium;
+      }
+
+      &-large-s {
+        width: $p-spinner-size-large;
+        height: $p-spinner-size-large;
+      }
+
+      &-inherit-s {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &-small-m {
+        width: $p-spinner-size-small;
+        height: $p-spinner-size-small;
+      }
+
+      &-medium-m {
+        width: $p-spinner-size-medium;
+        height: $p-spinner-size-medium;
+      }
+
+      &-large-m {
+        width: $p-spinner-size-large;
+        height: $p-spinner-size-large;
+      }
+
+      &-inherit-m {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &-small-l {
+        width: $p-spinner-size-small;
+        height: $p-spinner-size-small;
+      }
+
+      &-medium-l {
+        width: $p-spinner-size-medium;
+        height: $p-spinner-size-medium;
+      }
+
+      &-large-l {
+        width: $p-spinner-size-large;
+        height: $p-spinner-size-large;
+      }
+
+      &-inherit-l {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &-small-xl {
+        width: $p-spinner-size-small;
+        height: $p-spinner-size-small;
+      }
+
+      &-medium-xl {
+        width: $p-spinner-size-medium;
+        height: $p-spinner-size-medium;
+      }
+
+      &-large-xl {
+        width: $p-spinner-size-large;
+        height: $p-spinner-size-large;
+      }
+
+      &-inherit-xl {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
 }
 
 @keyframes rotate {
@@ -138,17 +194,15 @@
 
 @keyframes dash {
   0% {
-    stroke-dasharray: 1, 1000;
-    stroke-dashoffset: 0;
+    stroke-dasharray: 3, 1000;
   }
 
   50% {
-    stroke-dasharray: 160, 1000;
-    stroke-dashoffset: -40;
+    stroke-dasharray: 42, 1000;
   }
 
   100% {
-    stroke-dasharray: 0, 1000;
-    stroke-dashoffset: -124.33;
+    stroke-dasharray: 30, 1000;
+    stroke-dashoffset: -52;
   }
 }

@@ -9,6 +9,6 @@ describe('Browser Compatibility', () => {
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'Browser compatibility');
+      .and('contain', 'Browser Compatibility');
   });
 });

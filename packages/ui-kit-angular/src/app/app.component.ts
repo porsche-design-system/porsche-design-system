@@ -30,13 +30,11 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="10">
           <div class="playground light spacing-block">
-            <p-headline [variant]="'large-title'" [tag]="'h1'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-1'" [tag]="'h1'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-2'" [tag]="'h2'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-3'" [tag]="'h3'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-4'" [tag]="'h4'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-5'" [tag]="'h5'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-6'" [tag]="'h6'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'large-title'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-1'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-2'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-3'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-4'">The quick brown fox jumps over the lazy dog</p-headline>
           </div>
         </p-grid-item>
       </p-grid>
@@ -266,78 +264,6 @@ import {Component} from '@angular/core';
           <hr>
         </p-grid-item>
       </p-grid>
-      <p-headline [variant]="'headline-2'">Content</p-headline>
-      <hr>
-      <p-grid>
-        <p-grid-item [size]="2">
-          <p-headline [variant]="'headline-4'" [tag]="'h4'">
-            &lt;p-text-list&gt;<br>
-            &lt;p-text-list-item&gt;
-          </p-headline>
-        </p-grid-item>
-        <p-grid-item [size]="5">
-          <div class="playground light spacing-block">
-            <p-text-list>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-              <p-text-list-item>
-                Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
-                <p-text-list>
-                  <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-                  <p-text-list-item>Lorem ipsum</p-text-list-item>
-                </p-text-list>
-              </p-text-list-item>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-            </p-text-list>
-          </div>
-          <div class="playground light spacing-block">
-            <p-text-list [listType]="'ordered'">
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-              <p-text-list-item>
-                Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
-                <p-text-list [listType]="'ordered'">
-                  <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-                  <p-text-list-item>Lorem ipsum</p-text-list-item>
-                </p-text-list>
-              </p-text-list-item>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-            </p-text-list>
-          </div>
-          <hr>
-        </p-grid-item>
-        <p-grid-item [size]="5">
-          <div class="playground dark spacing-block">
-            <p-text-list [theme]="'dark'">
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-              <p-text-list-item>
-                Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
-                <p-text-list [theme]="'dark'">
-                  <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-                  <p-text-list-item>Lorem ipsum</p-text-list-item>
-                </p-text-list>
-              </p-text-list-item>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-            </p-text-list>
-          </div>
-          <div class="playground dark spacing-block">
-            <p-text-list [theme]="'dark'" [listType]="'ordered'" [color]="'inherit'" style="color: deeppink;">
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-              <p-text-list-item>
-                Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
-                <p-text-list [theme]="'dark'">
-                  <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-                  <p-text-list-item>Lorem ipsum</p-text-list-item>
-                </p-text-list>
-              </p-text-list-item>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-            </p-text-list>
-          </div>
-          <hr>
-        </p-grid-item>
-      </p-grid>
       <p-headline [variant]="'headline-2'">Feedback</p-headline>
       <hr>
       <p-grid>
@@ -346,19 +272,19 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
-            <p-spinner [size]="'x-small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'medium'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'large'" [allyLabel]="'Loading'"></p-spinner>
+            <p-spinner [size]="'small'"></p-spinner>
+            <p-spinner [size]="'medium'"></p-spinner>
+            <p-spinner [size]="'large'"></p-spinner>
+            <p-spinner [size]="'inherit'" style="width: 24px;"></p-spinner>
           </div>
           <hr>
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-inline">
-            <p-spinner [theme]="'dark'" [size]="'x-small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'medium'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'large'" [allyLabel]="'Loading'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'small'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'medium'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'large'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'inherit'" style="width: 24px;"></p-spinner>
           </div>
           <hr>
         </p-grid-item>

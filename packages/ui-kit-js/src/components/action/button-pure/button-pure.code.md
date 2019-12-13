@@ -46,7 +46,7 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 <Playground :themeable="true">
   <template #configurator>
     <select @change="size = $event.target.value">
-      <option disabled>Select a style variant</option>
+      <option disabled>Select a size</option>
       <option>x-small</option>
       <option>small</option>
       <option selected>medium</option>
@@ -62,7 +62,7 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 
 ### Responsive
 
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :themeable="true">
   <template v-slot={theme}>
@@ -93,7 +93,7 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 ---
 
 ## Button with specific icon
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche UI Kit CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :themeable="true">
   <template v-slot={theme}>

@@ -1,41 +1,41 @@
 # Color
 
 Together with other basic elements like typography, iconography or imagery, the
-right use of color gives every UI the specific Porsche feeling and is
+right use of colors gives every UI the specific Porsche feeling and is
 therefore one of the most important tools to create a consistent visual
 branding. Even more so when it comes to UX, color is to be used intentionally to create
-patterns, set emphasis on important elements and by doing so, to provide visual
+patterns, set emphasis on important elements and, by doing so, provide visual
 guidance and information.
 
-The Porsche UI color system provides two Porsche UI color themes that are based on the Porsche color palette and to be
-used for different visual environments. The Porsche UI color palette includes both Brand Colors and Neutral Colors. 
-They must always be used in 100% opacity. The Porsche UI Kit Sketch library provides both.
+The Porsche Design System color system provides two Porsche Design System color themes that are based on the Porsche color palette and can be
+used for different visual environments. The Porsche Design System color palette includes both brand colors and neutral colors. 
+They must always be used in 100% opacity. The Porsche Design System Sketch library provides both themes.
 
 
 ---
 
-## Porsche UI color themes
+## Porsche Design System color themes
 
-When designing Porsche UI applications the first decision to make is whether the content should be displayed in a merely light or dark environment.
-That's when the Porsche UI color themes come into play: **The first choice should always be the Porsche Light Theme**. The Porsche Dark Theme is only to be
-used for exceptional cases, for example if an application is to stand out from the rest of visual communication for strategic reasons or if the context of use 
-is unsuitable for a bright shining display. All Porsche UI Kit components are optimized for Light and Dark Theme.
+When designing Porsche applications, the first decision to make is whether the content should be displayed in a merely light or dark environment.
+That's when the Porsche Design System color themes come into play: **The first choice should always be the Porsche Light Theme**. The Porsche Dark Theme is only to be
+used for exceptional cases, e.g. if an application is to stand out from the rest of visual communication for strategic reasons or if the context of use 
+is unsuitable for a bright shining display. All Porsche Design System components are optimized for the light and dark Theme.
 
 ### Theme colors
 Each theme comes with a limited color set you should stick to for page backgrounds and text/icons. 
-When it comes to additional elements (such as tiles, dividers or other graphical elements), you have two options:
+When it comes to additional elements, such as tiles, dividers or other graphical elements, you have two options:
 
 - Use the accessibility-safe colors provided for the theme ("Additional elements" palette). This is highly recommended whenever you want to convey important information.
 - Use any other color of the Porsche color palette. This only makes sense for displaying "nice to have" or "aesthetic only" elements that are not crucial for information perception.
 
-In order to define the colors to be used within in the screen you should always check the **information level** of the respective elements.
+In order to define the colors to be used within the screen you should always check the **information level** of the respective elements.
 
 - Play with darker/lighter grey shades to make an element stand out from the background or to set emphasize on it. 
 - For large screen space make sure to only use the dedicated surface color for your theme (e.g. Surface). 
 - Use the brand color only for highlighting single elements.
 
 ### Mixing themes
-Within certain limits it's allowed to mix the Porsche color themes. Let's say, for example, you could integrate a limited Dark Theme area in your Light Theme
+Within certain limits it's allowed to mix the Porsche color themes. For example let's say you could integrate a limited Dark Theme area in your Light Theme
 to visually distinguish the footer from the content. Always make sure that the vast majority of the screen consists of the initially chosen theme.
 The color proportion scales for each theme might be a little helper in doing so.
 
@@ -45,7 +45,7 @@ The color proportion scales for each theme might be a little helper in doing so.
 ![Porsche Light Theme colors](./assets/color-theme-light.png)
 
 ### Brand color
-The Porsche brand color are the core of the Porsche UI color palette. The usage
+The Porsche brand color are the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 
@@ -114,7 +114,7 @@ Depending on the component it can be implemented in different ways, for example 
 ![Porsche Dark Theme colors](./assets/color-theme-dark.png)
 
 ### Brand color
-The Porsche brand color are the core of the Porsche UI color palette. The usage
+The Porsche brand color are the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 
@@ -196,7 +196,7 @@ colors.
 
 Sticking to the [Porsche Brand Code](https://brandguide.porsche.com/elements/manual/view/id/548) this means:
 
-- Generous (but also well-considered) use of white space to emphasise the brand’s exclusiveness and high quality.
+- Generous (but also well-considered) use of white space to emphasize the brand’s exclusiveness and high-quality.
 - Form follows function – and so does color.
 - Use color to support a clean, precise design language. Stick to the essentials and avoid a non-functional decorative use of color.
 
@@ -204,22 +204,17 @@ Sticking to the [Porsche Brand Code](https://brandguide.porsche.com/elements/man
 
 ## Accessibility
 
-In order to make content accessible for a wide range of people and, by doing so, to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](#/web/basics/accessibility-criteria).
-when designing Porsche web applications.
+In order to make content accessible for a wide range of people and to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](#/web/basics/accessibility-criteria) when designing Porsche web applications.
 
-- Always ensure a sufficient contrast ratio. The combination of text and
-background color should pass the WCAG AA standard and have a contrast ratio of
-at least 4.5:1 for standard text size and 3:1 for larger text sizes.
+- Always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA standard and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 for larger text sizes.
 
 
 
-- Combinations of other colored elements must pass the WCAG AA standard of a minimum 3:1 ratio, unless it's only a decorative element.
+- Combinations of other colored elements must pass the WCAG AA standard with a minimum 3:1 ratio, unless it's only a decorative element.
 
 
 
-- Don’t rely on color only to convey information (for example when displaying
-status or error messages). This is of high importance especially in critical
-cases, e.g. when displaying safety-relevant vehicle data.
+- Don’t rely on color only to convey information (for example when displaying status or error messages). This is of high importance especially in critical cases, e.g. when displaying safety-relevant vehicle data.
 
 ---
 

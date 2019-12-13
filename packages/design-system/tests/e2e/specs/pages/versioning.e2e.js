@@ -9,6 +9,6 @@ describe('Versioning', () => {
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'Versioning');
+      .and('contain', 'Versioning and releasing');
   });
 });
