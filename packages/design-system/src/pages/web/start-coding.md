@@ -89,16 +89,16 @@ If you're using web components in a static website, the following page setup is 
 
 ### Angular
 
-The Angular wrapper of web components can be used like every other Angular library. 
+The Angular components can be used like every other Angular library. 
 
-After adding the `@porsche-design-system/components-angular` package to your project, import the `PorscheUIKitModule` to your root module. 
+After adding the `@porsche-design-system/components-angular` package to your project, import the `PorscheDesignSystemModule` to your root module. 
 The following setup is a standard Angular CLI project:
 
 #### App module
 ``` 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { PorscheUIKitModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -107,7 +107,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    PorscheUIKitModule
+    PorscheDesignSystemModule
   ],
   providers: [],
   bootstrap: [AppComponent]
