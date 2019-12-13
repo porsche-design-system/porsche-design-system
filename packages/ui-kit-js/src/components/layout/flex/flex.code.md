@@ -666,7 +666,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 </Playground>
 
 <style scoped lang="scss">
-  @import '~@porsche-ui/ui-kit-scss-utils/index';
+  @import '~@porsche-design-system/scss-utils/index';
 
   $color-blue-1: lightskyblue;
   $color-blue-2: deepskyblue;

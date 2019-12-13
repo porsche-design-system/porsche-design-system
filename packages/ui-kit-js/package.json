@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-ui/ui-kit-js",
+  "name": "@porsche-design-system/components-js",
   "version": "1.0.0-alpha.7",
   "scope": "@porsche-ui",
   "description": "Porsche Design System Web Components JS",
@@ -57,7 +57,7 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-ui/cross-browser-tester": "^1.0.2",
-    "@porsche-ui/ui-kit-scss-utils": "^1.0.0-alpha.2",
+    "@porsche-design-system/scss-utils": "^1.0.0-alpha.2",
     "@porsche-ui/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-plugins/releases/download/0.0.1-fixed/angular-output-target-0.0.1-fixed.tar.gz",
