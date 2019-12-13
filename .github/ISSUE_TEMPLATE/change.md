@@ -17,7 +17,7 @@ What is not part of the issue scope
 Further information
 
 **Link to resources**
-- Documentation Preview: https://ui.porsche.com/issue/
+- Documentation Preview: https://designsystem.porsche.com/issue/
 - Abstract Branch:
 
 Subtasks

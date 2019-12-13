@@ -1,1 +1,1 @@
-SEE LICENSE IN https://ui.porsche.com
+SEE LICENSE IN https://designsystem.porsche.com
