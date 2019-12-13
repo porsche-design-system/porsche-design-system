@@ -1,6 +1,6 @@
 # Button Pure
 
-In addition to Button Primary, Secondary or Tertiary, you can use Button Pure as a more subtle call to action. A Button Pure enables the user to execute an action (like "submit", "delete", "add" or "edit" for example) or to change the state of the application, which almost always happens on the same page. Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) or [Link Pure](#/web/components/navigation/link-pure) component instead.
+In addition to Button Primary, Secondary or Tertiary, you can use Button Pure as a more subtle call to action. A Button Pure enables the user to execute an action (like "submit", "delete", "add" or "edit" for example) or to change the state of the application, which almost always happens on the same page. Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) or [Link Pure](#/web/components/****navigation/link-pure) component instead.
 
 ---
 
@@ -9,13 +9,13 @@ In addition to Button Primary, Secondary or Tertiary, you can use Button Pure as
 Per default, the Button Pure is set in **copytext size** (small). If another size or hierarchy level is needed, the Button Pure is available in the following sizes, whereas the size of the icon changes accordingly:
 
 
-| Button Pure size | Font size | Example |
-|------|------|------|
-| **X-Small** | 12 px | <p-button-pure size="x-small">Button Pure</p-button-pure> |
-| **Small** | 16 px | <p-button-pure size="small">Button Pure</p-button-pure> |
-| **Medium** | 24 px | <p-button-pure size="medium">Button Pure</p-button-pure> |
-| **Large** | 36 px | <p-button-pure size="large">Button Pure</p-button-pure> |
-| **X-Large** | 52 px | <p-button-pure size="x-large">Button Pure</p-button-pure> |
+| Button Pure size | Example |
+|------|------|
+| **X-Small** | <p-button-pure size="x-small">Button Pure</p-button-pure> |
+| **Small** | <p-button-pure size="small">Button Pure</p-button-pure> |
+| **Medium** | <p-button-pure size="medium">Button Pure</p-button-pure> |
+| **Large** | <p-button-pure size="large">Button Pure</p-button-pure> |
+| **X-Large** | <p-button-pure size="x-large">Button Pure</p-button-pure> |
 
 --- 
 
