@@ -10,11 +10,11 @@ Per default, the Link Pure is set in **copytext size**. If another size or hier
 
 | Size | Example |
 |------|------|------|
-| X-Small | <p-link-pure size="x-small" href="https://ui.porsche.com">Link Pure</p-link-pure> |
-| Small | <p-link-pure size="small" href="https://ui.porsche.com">Link Pure</p-link-pure> |
-| Medium | <p-link-pure size="medium" href="https://ui.porsche.com">Link Pure</p-link-pure> |
-| Large | <p-link-pure size="large" href="https://ui.porsche.com">Link Pure</p-link-pure> |
-| X-Large | <p-link-pure size="x-large" href="https://ui.porsche.com">Link Pure</p-link-pure> |
+| X-Small | <p-link-pure size="x-small" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
+| Small | <p-link-pure size="small" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
+| Medium | <p-link-pure size="medium" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
+| Large | <p-link-pure size="large" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
+| X-Large | <p-link-pure size="x-large" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
 
 ---
 
@@ -22,13 +22,13 @@ Per default, the Link Pure is set in **copytext size**. If another size or hier
 
 ### Icon and Text
 
-<p-link-pure size="large" href="https://ui.porsche.com">Link Pure</p-link-pure>
+<p-link-pure size="large" href="https://designsystem.porsche.com">Link Pure</p-link-pure>
 
 This should be the variant of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility.
 
 ### Icon only
 
-<p-link-pure size="large" hide-label="true" href="https://ui.porsche.com">Link Pure</p-link-pure>
+<p-link-pure size="large" hide-label="true" href="https://designsystem.porsche.com">Link Pure</p-link-pure>
 
 When it's enough to indicate an interaction with an icon only, the text label can be hidden. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon.
 
