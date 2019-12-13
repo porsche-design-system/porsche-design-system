@@ -50,4 +50,4 @@ export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[
   imports: [],
   providers: []
 })
-export class PorscheUIKitModule {}
+export class PorscheDesignSystemModule {}
