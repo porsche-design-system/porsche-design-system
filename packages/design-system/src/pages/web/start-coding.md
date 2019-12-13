@@ -1,6 +1,6 @@
 # Start Coding
 
-Porsche Design System provides developers with a collection of presentational web components and corresponding wrappers for Angular and React to build clean and high-quality frontends that innately come with the latest design definitions.
+Porsche Design System provides developers with a collection of Web components, Angular components and React components to build clean and high-quality frontends that innately come with the latest design definitions.
 
 ## Requirements
 * [Node.js & NPM](https://nodejs.org)
