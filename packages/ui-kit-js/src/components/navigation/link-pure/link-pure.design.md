@@ -1,6 +1,6 @@
 # Link Pure
 
-Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to Link Primary, Secondary and Tertiarty. (In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) or [Button Pure](#/web/components/action/button-pure) component instead.)
+Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to the normal Porsche Design System Link. (In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) or [Button Pure](#/web/components/action/button-pure) component instead.)
 
 ---
 
@@ -68,11 +68,11 @@ The text label within a link should always be short and descriptive.
 
 ### Link Pure on images
 
-A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. Make sure to always use regular font-weight in links pure that are placed on images to provide legibility.
+A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. Make sure to always use regular font-weight in Links Pure that are placed on images to provide legibility.
 
 ### Additional subtext
 
-Link Pure in size medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the Link Pure component.
+Links Pure in size medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the Link Pure component.
 
 ### Link Pure groups
 

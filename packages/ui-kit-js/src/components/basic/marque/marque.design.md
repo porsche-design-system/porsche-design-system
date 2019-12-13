@@ -1,6 +1,6 @@
 # Marque
 
-The Marque gives the Porsche brand a distinctive profile, sets it apart from others within the overall external image and represents the quality of the product. 
+The marque gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. 
 
 ---
 
@@ -10,7 +10,7 @@ The Marque gives the Porsche brand a distinctive profile, sets it apart from oth
 
 <p-marque></p-marque>
 
-In web applications for the United States and/or Canada as well as with international purpose *including* United States and/or Canada, the Porsche Marque must always be used with the ®. The ® is optimized to match the respective Crest size.
+In web applications for the United States and/or Canada as well as with international purpose *including* United States and/or Canada, the Porsche marque must always be used with the ®. The ® is optimized to match the respective crest size.
 
 
 ### Without registered trademark
@@ -47,7 +47,7 @@ The two elements that make up the overall logo for the Porsche marque are the **
 
 ## Don'ts
 
-- The Marque **may not be altered** in relation to its two elements or their size. The Marque may never be used without the Porsche lettering, as the sender identification cannot be guaranteed.
-- The Porsche Marque **may not be used against coloured or busy backgrounds** (e.g. shading). As the Porsche Crest has a high level of graphical complexity, excessive visual turmoil may be created.
+- The marque **may not be altered** in relation to its two elements or their size. The marque may never be used without the Porsche lettering, as the sender identification cannot be guaranteed.
+- The Porsche marque **may not be used against coloured or busy backgrounds** (e.g. shading). As the Porsche crest has a high level of graphical complexity, excessive visual turmoil may be created.
 
-![Example for Porsche Marque](./assets/porsche-marque-donts-01.png)
+![Example for Porsche marque](./assets/porsche-marque-donts-01.png)

@@ -1,6 +1,6 @@
 # Button
 
-Buttons enable to execute an action (like "submit", "delete", "add" or "edit") or change the state of an application, which almost always happens on the same page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. (Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) component instead.)
+Buttons enable you to execute an action (like "submit", "delete", "add" or "edit") or to change the state of an application, which almost always happens on the same page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) component instead.
 
 ---
 
@@ -10,7 +10,7 @@ Buttons enable to execute an action (like "submit", "delete", "add" or "edit") o
 
 <p-button variant="primary">Some label</p-button> 
 
-Button filled with the Porsche brand color. This type is only to be used for one or two first priority actions within a page in order to give the user optimal guidance.
+The Button filled with the Porsche brand color. This type is only to be used for one or two first priority actions within a page in order to give the user optimal guidance.
 
 ### 2. Secondary
 
@@ -64,7 +64,7 @@ All Button types are available in the following states:
 ## Content
 
 ### Icon
-The default icon is an arrow right that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. 
+The default icon is an arrow right that should serve in most cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. 
 
 
 #### Standard icons
@@ -80,7 +80,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Add | <p-icon name="plus" aria-label="Plus"></p-icon> | Add content, e.g. a new item in a list. Counting up numbers, e.g. in a   | 
 
 ### Text label
-The text label is always set in copytext size. It is recommended to always keep the Button label short and give the user a hint on the indicated action, for example by including active verbs such as "add", "edit" or "delete". 
+The text label is always set in copytext size. It is recommended to always keep the label short and give the user a hint on the indicated action, for example by including active verbs such as "add", "edit" or "delete". 
 
 ---
 

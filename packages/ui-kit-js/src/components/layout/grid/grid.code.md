@@ -1,6 +1,6 @@
 # Grid
 
-The Porsche Design System grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. Therefore the [Flex](#/web/components/layout/flex) component is the right choice.
+The Porsche Design System grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. For this, the [Flex](#/web/components/layout/flex) component is the right choice.
 
 ### Grid size
 
@@ -16,8 +16,9 @@ Following example shows a standard grid implementation.
   </p-grid>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-grid class="example-grid">
@@ -38,8 +39,9 @@ In some cases it can be necessary to indent columns. The grid gives basic indent
   </p-grid>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-grid class="example-grid">
@@ -51,7 +53,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Grid direction
 
-In some cases it might be necessary to define or change direction of the columns/rows. Default is `row`. But `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be achieved by setting `reverse`.
+In some cases it might be necessary to define or change direction of the columns/rows. The default setting is `row`. But `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be achieved by setting `reverse`.
 
 #### Row (default)
 
@@ -83,7 +85,7 @@ In some cases it might be necessary to define or change direction of the columns
   </p-grid>
 </Playground>
 
-#### Column reverse
+#### Column-reverse
 
 <Playground>
   <p-grid direction="column-reverse" class="example-grid">
@@ -93,8 +95,9 @@ In some cases it might be necessary to define or change direction of the columns
   </p-grid>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-grid direction="{ base: 'column', m: 'row' }" class="example-grid">

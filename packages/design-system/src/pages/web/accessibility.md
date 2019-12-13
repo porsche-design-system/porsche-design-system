@@ -1,11 +1,11 @@
 # Accessibility Criteria
 
 ## What is web accessibility?
-Broadly speaking, when we say a site is accessible, we mean that the site's content is available to, and its functionality can be operated by, literally anyone. (This includes non-human visitors to your site, e.g. search engine robots!)
-As developers, it's easy to assume that all users can see and use a keyboard, mouse or touch screen, and can interact with your page content the same way you do. 
-This can lead to an experience that works well for some people, but creates issues that range from simple annoyances to show-stoppers for others.
+When we say a site is accessible we mean that the site's content is available to, and its functionality can be operated by, literally anyone. (This includes non-human visitors to your site, e.g. search engine robots!)
+For developers, it's easy for them to assume that all users can see and use a keyboard, mouse or touch screen, and can interact with the page content the same way they do. 
+This can lead to an experience that works well for some people, but creates issues which range from simple annoyances to show-stoppers.
 
-Accessibility therefore relates to the experience of users who might be outside the narrow range of the "typical" user, and who might access or interact with things differently than you expect. 
+Accessibility therefore relates to the experience of users who might be outside of the narrow range of the "typical" user, and who might access or interact with things differently than you expect. 
 Specifically, it concerns users experiencing some type of impairment or disability – and bear in mind that such an experience might be non-physical or temporary.
 
 For example, although we tend to centre our discussion of accessibility on users with physical impairments, we can all relate to the experience of using an interface that is not accessible to us for other reasons. 
@@ -13,7 +13,7 @@ Have you ever had a problem using a desktop site on a mobile phone, or seen the 
 
 ## Why do we need it?
 As maintainers of Porsche Design System, we always want the best experience for all users. You might argue that, as an OEM in the automotive sector, we do not need to give support to visually impaired people. But this is a very short-sighted point of view.
-Just think about all the services Porsche wants to offer around the car that have nothing to do with driving itself. Or think about people which have a "simple" red-green colour blindness (about 10% of all humans). 
+Just think about all the services Porsche wants to offer around the car that have nothing to do with driving itself. Or think about people which have a "simple" red-green color blindness (about 10% of all humans). 
 Or what about the average age of the target audience of Porsche customers? It's an average of 55 years! As you can see, web accessibility is for all users, not just blind people.
 
 The Porsche Design System approach is to deliver highly usable components that are not limited to certain use cases. They should work everywhere and for everyone! 
@@ -25,15 +25,19 @@ Due to the fact that we, as the Porsche Company, are not required by law to full
 ### Semantic Markup (DEVELOPMENT)
 This is probably the most important thing we can do to support web accessibility. Make sure that you use the right HTML tags for the right task:
 
-Structure your code with a logical hierarchy of content blocks `(&lt;header>, &lt;main>, &lt;footer>, etc.) and headings (&lt;h1>, &lt;h2>, etc)` Always develop your markup with semantics in mind. Here is a list of possible HTML tags you can use (there is so much more than divs!): https://developer.mozilla.org/en-US/docs/Web/HTML/Element
-Don't forget important attributes (e.g. an image tag always needs an "alt" attribute)
-Keyboard navigation (DEVELOPMENT)
+Structure your code with a logical hierarchy of content blocks `(&lt;header>, &lt;main>, &lt;footer>, etc.) and headings (&lt;h1>, &lt;h2>, etc)`. Always develop your markup with semantics in mind. 
+
+Here is a list of possible HTML tags you can use (there is so much more than divs!): https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+* Don't forget important attributes (e.g. an image tag always needs an "alt" attribute)!
+* Keyboard navigation (DEVELOPMENT)
+
 For users who either cannot use or choose not to use a mouse, keyboard navigation is their primary means of reaching everything on screen. 
 This audience includes users with motor impairments, such as repetitive stress injury (RSI) or paralysis, as well as screen-reader users. 
 For a good keyboarding experience, aim to have a logical (semantic) tab order and easily discernable focus state styles.
 
 ### WAI-ARIA (DEVELOPMENT)
-Provide basic implementation of Web Accessibility Initiative's Accessible Rich Internet Applications specification (in short: WAI-ARIA) especially for screen-reader usage.
+Provide basic implementation of "Web Accessibility Initiative's Accessible Rich Internet Applications" specification (in short: WAI-ARIA) especially for screen-reader usage.
 WAI-ARIA can modify existing element semantics or add semantics to elements where no native semantics exist. It can also express semantic patterns that don't exist at all in HTML, like a menu or a tab panel. 
 Often, WAI-ARIA lets us create widget-type elements that wouldn't be possible with plain HTML.
 
@@ -43,19 +47,21 @@ Rules you can implement:
 
 Further information:
 * ARIA spec
-* WAI-ARIA Basics
+* WAI-ARIA basics
 * An introduction to WAI-ARIA
 ###  Contrasts (DESIGN)
-Best done early in the process, by ensuring that the foreground and background colours of your site have sufficient contrast, you will help make your site more readable for everyone. Contrast Ratio is one tool for checking the contrast of your colours for both standard-vision and colour-deficient users.
+Best done early in the process, ensuring that the foreground and background colors of your site have sufficient contrast will help you making your site more readable for everyone. Contrast ratio is one tool for checking the contrast of your colors for both standard-vision and color-deficient users.
 
-### Colours (DESIGN)
-Be sure to layout and develop for some kinds of colour blindness; never let colour be the only indicator for a type of use); never use red and green buttons side by side
+### Colors (DESIGN)
+* Be sure to layout and develop for some kinds of color blindness
+* Never let color be the only indicator for a type of use
+* Never use red and green buttons side by side
 
 ### Font sizes (DESIGN)
-While there is no official minimum font size for the web, it is generally agreed that 16px for body text is a good starting point. But keep in mind that different fonts may have huge differences in the visually rendered font size.
+While there is no official minimum font size for the web, generally 16px for body texts are a good starting point. Keep in mind that different fonts may have huge differences in the visually rendered font size.
 
 ### States (DEVELOPMENT + DESIGN)
-Always provide visually support for certain states of trigger elements if available (e.g. links, buttons, forms, etc.). This can be:
+Always provide visual support for certain states of trigger elements if available (e.g. links, buttons, forms, etc.). This can be:
 * hover
 * focus
 * active
@@ -63,7 +69,7 @@ Always provide visually support for certain states of trigger elements if availa
 * disabled
 * error
 
-Touch support (DESIGN)
+### Touch support (DESIGN)
 Design and develop user interfaces that support a wide range of possible browser input devices (e.g. mouse, finger, pen, etc.). For example, make clickable areas big enough and place them far enough apart from one another to prevent "fat finger syndrome" on touch devices.
 
 ## Tools to check web accessibility

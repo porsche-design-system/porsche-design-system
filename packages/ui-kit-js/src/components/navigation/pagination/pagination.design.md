@@ -1,12 +1,12 @@
 # Pagination
 
-The Pagination is used whenever a content (text, images, videos) is split into several pages. It provides information on the existing amount of pages, shows the current page position and allows the user to navigate between the single content pages. The pagination is the component of choice primarily for listed content (e.g. search results, archives etc.), where the user wants to find a specific item.
+The pagination component is used whenever a content (text, images, videos) is split into several pages. It provides information on the existing amount of pages, shows the current page position and allows the user to navigate between the single content pages. The pagination is the component of choice primarily for listed content (e.g. search results, archives etc.), where the user wants to find a specific item.
 
 ---
 
 ## Available sizes
 
-The Pagination comes in 2 different sizes. In both cases (for less than 5 or 7 pages) the items will be reduced accordingly and centered.
+The pagination comes in 2 different sizes. In both cases (for less than 5 or 7 pages) the items will be reduced accordingly and centered.
 
 
 - **5 page links** Recommended to be used for device widths equal or smaller than 479 px.
@@ -28,7 +28,7 @@ If there are at least 6 or 8 pages, an ellipsis ("...") is shown for a dedicated
 
 ## Content
 
-The Pagination component includes the following sub-components:
+The pagination component includes the following sub-components:
 
 - **Arrow left & right**
 An arrow is placed on the left and right of the page numbers, enabling to click
@@ -41,7 +41,7 @@ The ellipsis ("...") represents multiple pages that can't be displayed to limite
 
 ## Positioning and spacing
 
-The Pagination should always be placed centered beneath the related content, keeping a minimum top spacing of 32 px.
+The pagination should always be placed centered beneath the related content, keeping a minimum top spacing of 32px.
 
 ---
 

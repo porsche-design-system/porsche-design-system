@@ -1,4 +1,4 @@
-# Browser compatibility
+# Browser Compatibility
 
 With Porsche Design System we secure the visual and functional compatibility of all contents for a defined set of browsers and versions. The supported set is defined and updated based on a quarterly usage analysis. To consider local differences in our largest markets, any deviation of analytics data from China, the USA and Germany is determined.
 

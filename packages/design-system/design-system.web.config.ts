@@ -1,86 +1,86 @@
 // @ts-ignore
-import {DesignSystemConfig} from '@/interface';
+import { DesignSystemConfig } from '@/interface';
 
 export const config: DesignSystemConfig = {
   pages: {
     'Getting Started': {
       About: [
         // @ts-ignore
-        () => import(`@/pages/web/about.md`),
+        () => import(`@/pages/web/about.md`)
       ],
       'Start Designing': [
         // @ts-ignore
-        () => import(`@/pages/web/start-designing.md`),
+        () => import(`@/pages/web/start-designing.md`)
       ],
       'Design Workflow': [
         // @ts-ignore
-        () => import(`@/pages/web/design-workflow.md`),
+        () => import(`@/pages/web/design-workflow.md`)
       ],
       'Sketch Plugins': [
         // @ts-ignore
-        () => import(`@/pages/web/sketch-plugins.md`),
+        () => import(`@/pages/web/sketch-plugins.md`)
       ],
       'Start Coding': [
         // @ts-ignore
-        () => import(`@/pages/web/start-coding.md`),
-      ],
+        () => import(`@/pages/web/start-coding.md`)
+      ]
     },
     News: {
       Updates: [
         // @ts-ignore
-        () => import(`@/pages/web/updates.md`),
+        () => import(`@/pages/web/updates.md`)
       ],
       Versioning: [
         // @ts-ignore
-        () => import(`@/pages/web/versioning.md`),
+        () => import(`@/pages/web/versioning.md`)
       ],
       Roadmap: [
         // @ts-ignore
-        () => import(`@/pages/web/roadmap.md`),
-      ],
+        () => import(`@/pages/web/roadmap.md`)
+      ]
     },
     Help: {
       Support: [
         // @ts-ignore
-        () => import(`@/pages/web/support.md`),
+        () => import(`@/pages/web/support.md`)
       ],
       Faq: [
         // @ts-ignore
-        () => import(`@/pages/web/faq.md`),
-      ],
+        () => import(`@/pages/web/faq.md`)
+      ]
     },
     Basics: {
       'Browser Compatibility': [
         // @ts-ignore
-        () => import(`@/pages/web/browser-compatibility.md`),
+        () => import(`@/pages/web/browser-compatibility.md`)
       ],
       'Quality Criteria': [
         // @ts-ignore
-        () => import(`@/pages/web/quality-criteria.md`),
+        () => import(`@/pages/web/quality-criteria.md`)
       ],
       'Accessibility Criteria': [
         // @ts-ignore
-        () => import(`@/pages/web/accessibility.md`),
-      ],
+        () => import(`@/pages/web/accessibility.md`)
+      ]
     },
     'Scss Utils': {
       Introduction: [
         // @ts-ignore
-        () => import(`@/pages/web/introduction.md`),
+        () => import(`@/pages/web/introduction.md`)
       ],
       Variables: [
         // @ts-ignore
-        () => import(`@/pages/web/variables.md`),
+        () => import(`@/pages/web/variables.md`)
       ],
       Mixins: [
         // @ts-ignore
-        () => import(`@/pages/web/mixins.md`),
+        () => import(`@/pages/web/mixins.md`)
       ],
       Functions: [
         // @ts-ignore
-        () => import(`@/pages/web/functions.md`),
-      ],
-    },
+        () => import(`@/pages/web/functions.md`)
+      ]
+    }
   },
   stories: {
     General: {
@@ -93,115 +93,115 @@ export const config: DesignSystemConfig = {
       Color: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/color/color.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/color/color.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/color/color.code.md`),
-        ],
+          () => import(`@/../../ui-kit-js/src/components/basic/color/color.code.md`)
+        ]
       },
       Typography: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/typography.design.md`)
         ],
         'Code Headline': [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.code.md`)
         ],
         'Code Text': [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.code.md`)
         ],
         Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/basic/typography/headline/headline.props.md`),
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.props.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/typography/text/text.props.md`)
         ]
       },
       Marque: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.props.md`),
-        ],
+          () => import(`@/../../ui-kit-js/src/components/basic/marque/marque.props.md`)
+        ]
       }
     },
     Action: {
       Button: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button/button.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button/button.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`),
-        ],
+          () => import(`@/../../ui-kit-js/src/components/action/button/button.props.md`)
+        ]
       },
       'Button Pure': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.props.md`),
-        ],
-      },
+          () => import(`@/../../ui-kit-js/src/components/action/button-pure/button-pure.props.md`)
+        ]
+      }
     },
     Feedback: {
       Spinner: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.props.md`),
-        ],
-      },
+          () => import(`@/../../ui-kit-js/src/components/feedback/spinner/spinner.props.md`)
+        ]
+      }
     },
     Icon: {
       Icon: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.props.md`),
-        ],
+          () => import(`@/../../ui-kit-js/src/components/icon/icon/icon.props.md`)
+        ]
       }
     },
     Layout: {
       Flex: {
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/layout/flex/flex.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/layout/flex/flex.code.md`)
         ],
         Props: [
           // @ts-ignore
@@ -213,44 +213,44 @@ export const config: DesignSystemConfig = {
       Grid: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid.code.md`)
         ],
         Props: [
           // @ts-ignore
           () => import(`@/../../ui-kit-js/src/components/layout/grid/grid/grid.props.md`),
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid-item/grid-item.props.md`),
-        ],
+          () => import(`@/../../ui-kit-js/src/components/layout/grid/grid-item/grid-item.props.md`)
+        ]
       },
       Spacing: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.code.md`),
-        ],
-      },
+          () => import(`@/../../ui-kit-js/src/components/layout/spacing/spacing.code.md`)
+        ]
+      }
     },
     Navigation: {
-      'Link': {
+      Link: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.props.md`),
-        ],
+          () => import(`@/../../ui-kit-js/src/components/navigation/link/link.props.md`)
+        ]
       },
       'Link Pure': {
         Design: [
@@ -269,17 +269,17 @@ export const config: DesignSystemConfig = {
       Pagination: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`),
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`),
-        ],
-      },
-    },
+          () => import(`@/../../ui-kit-js/src/components/navigation/pagination/pagination.props.md`)
+        ]
+      }
+    }
   }
 };
