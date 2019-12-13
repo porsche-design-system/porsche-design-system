@@ -3,7 +3,16 @@
   "version": "1.0.0-rc.1",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Anna Krohmer <anna.krohmer@udg.de>",
+    "Oliver Hook <oliver.hook@mhp.com>",
+    "Olivia Pala <olivia.pala@udg.de>",
+    "Christoph Stickel <net.christoph.stickel@mhp.com>"
+  ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "description": "Porsche Design System Web Components React",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
@@ -14,12 +23,11 @@
     "build": "rm -rf './dist' && tsc -p './tsconfig.lib.json'"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "1.0.0-rc.1",
-    "classnames": "^2.2.6"
+    "@porsche-design-system/components-js": "1.0.0-rc.1"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react": ">=16.9.0 <17.0.0",
+    "react-dom": ">=16.9.0 <17.0.0"
   },
   "publishConfig": {
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
