@@ -7,9 +7,9 @@
   resolved "https://registry.ionicframework.com/@ionic-enterprise%2freact-component-lib/-/react-component-lib-0.0.1.tgz#efbccd4e223a80bf4e327778c69ef7853ccc5153"
   integrity sha512-e7Kjr9MM+dV1iqw2nN+JMwcZuzlWwfNj01gsG0D0ZBrnwaahQ2ElbepcAQCI92xg2bfnvYo/FFYOeG89FCD4nA==
 
-"@porsche-ui/ui-kit-js@1.0.0-alpha.2":
+"@porsche-design-system/components-js@1.0.0-alpha.2":
   version "1.0.0-alpha.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-js/-/@porsche-ui/ui-kit-js-1.0.0-alpha.2.tgz#d6d786a24fdf01009b8ac7b4a9a46a508099c203"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-js/-/@porsche-design-system/components-js-1.0.0-alpha.2.tgz#d6d786a24fdf01009b8ac7b4a9a46a508099c203"
   integrity sha1-1teGok/fAQCbise0qaRqUICZwgM=
   dependencies:
     throttle-debounce "^2.1.0"

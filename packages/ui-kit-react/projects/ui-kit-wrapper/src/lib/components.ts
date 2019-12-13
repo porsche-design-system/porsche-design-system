@@ -3,9 +3,9 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import { JSX } from '@porsche-ui/ui-kit-js';
+import { JSX } from '@porsche-design-system/components-js';
 
-import { defineCustomElements, applyPolyfills } from '@porsche-ui/ui-kit-js/loader';
+import { defineCustomElements, applyPolyfills } from '@porsche-design-system/components-js/loader';
 
 applyPolyfills().then(() => { defineCustomElements(window); });
 export const PButton = /*@__PURE__*/createReactComponent<JSX.PButton, HTMLPButtonElement>('p-button');
