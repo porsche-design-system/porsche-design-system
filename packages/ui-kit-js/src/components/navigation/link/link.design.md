@@ -23,7 +23,7 @@ Default link with monochrome color fill. To be used for all other stand-alone Li
 
 <p-link variant="tertiary" href="https://www.porsche.com">Some label</p-link>
 
-An "outline only"l link version. In hierarchy it is always subordinated to the filled view and can be used in two different cases:
+An "outline only" link version. In hierarchy it is always subordinated to the filled view and can be used in two different cases:
 
 - In combination with a filled link (primary or secondary), for example in popular pairings such as "submit" (primary or secondary) and "cancel" (tertiary).
 - Stand-alone, when the priority of the action is lower compared to all other link actions within this page.
