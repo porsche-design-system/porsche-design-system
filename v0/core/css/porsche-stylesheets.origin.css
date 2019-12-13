@@ -94,73 +94,73 @@ table {
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 200;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Thin.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Thin.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Thin.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Thin.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Thin.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Thin.svg#PorscheNext") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-latin/PorscheNextWLa-Thin.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-latin/PorscheNextWLa-Thin.woff") format("woff");
+  unicode-range: U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF;
+  font-display: swap; }
 
 @font-face {
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Regular.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Regular.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Regular.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Regular.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Regular.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Regular.svg#PorscheNext") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-latin/PorscheNextWLa-Regular.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-latin/PorscheNextWLa-Regular.woff") format("woff");
+  unicode-range: U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF;
+  font-display: swap; }
 
 @font-face {
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 600;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Bold.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Bold.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Bold.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Bold.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Bold.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-latin/PorscheNextWLa-Bold.svg#PorscheNext") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-latin/PorscheNextWLa-Bold.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-latin/PorscheNextWLa-Bold.woff") format("woff");
+  unicode-range: U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF;
+  font-display: swap; }
 
 @font-face {
-  font-family: 'Porsche Next Cyrilic';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 200;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Thin.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Thin.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Thin.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Thin.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Thin.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Thin.svg#PorscheNextCyril") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-greek/PorscheNextWGr-Thin.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-greek/PorscheNextWGr-Thin.woff") format("woff");
+  unicode-range: U+0370-03FF;
+  font-display: swap; }
 
 @font-face {
-  font-family: 'Porsche Next Cyrilic';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Regular.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Regular.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Regular.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Regular.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Regular.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Regular.svg#PorscheNextCyril") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-greek/PorscheNextWGr-Regular.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-greek/PorscheNextWGr-Regular.woff") format("woff");
+  unicode-range: U+0370-03FF;
+  font-display: swap; }
 
 @font-face {
-  font-family: 'Porsche Next Cyrilic';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 600;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Bold.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Bold.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Bold.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Bold.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Bold.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-cyril/PorscheNextWCy-Bold.svg#PorscheNextCyril") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-greek/PorscheNextWGr-Bold.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-greek/PorscheNextWGr-Bold.woff") format("woff");
+  unicode-range: U+0370-03FF;
+  font-display: swap; }
 
 @font-face {
-  font-family: 'Porsche Next Greek';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 200;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Thin.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Thin.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Thin.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Thin.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Thin.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Thin.svg#PorscheNextGreek") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-cyril/PorscheNextWCy-Thin.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-cyril/PorscheNextWCy-Thin.woff") format("woff");
+  unicode-range: U+0400-04FF;
+  font-display: swap; }
 
 @font-face {
-  font-family: 'Porsche Next Greek';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Regular.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Regular.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Regular.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Regular.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Regular.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Regular.svg#PorscheNextGreek") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-cyril/PorscheNextWCy-Regular.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-cyril/PorscheNextWCy-Regular.woff") format("woff");
+  unicode-range: U+0400-04FF;
+  font-display: swap; }
 
 @font-face {
-  font-family: 'Porsche Next Greek';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: 600;
-  font-display: fallback;
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Bold.eot");
-  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Bold.eot?#iefix") format("embedded-opentype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Bold.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Bold.woff") format("woff"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Bold.ttf") format("truetype"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v1/porsche-next-greek/PorscheNextWGr-Bold.svg#PorscheNextGreek") format("svg"); }
+  src: url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-cyril/PorscheNextWCy-Bold.woff2") format("woff2"), url("https://cdn.ui.porsche.com/porsche-ui-kit/font/v2/porsche-next-cyril/PorscheNextWCy-Bold.woff") format("woff");
+  unicode-range: U+0400-04FF;
+  font-display: swap; }
 
 @font-face {
   font-family: 'Porsche Next Arabic';
@@ -403,7 +403,7 @@ table {
 .-font-primary {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='ru'] .-font-primary, html[lang='ru-RU'] .-font-primary {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-font-primary, html[lang='zh-CN'] .-font-primary {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-font-primary, html[lang='ar-AE'] .-font-primary {
@@ -418,7 +418,7 @@ table {
 .-font-default {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='ru'] .-font-default, html[lang='ru-RU'] .-font-default {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-font-default, html[lang='zh-CN'] .-font-default {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-font-default, html[lang='ar-AE'] .-font-default {
@@ -1798,7 +1798,7 @@ table {
   line-height: 2.25rem;
   font-weight: 200; }
   html[lang='ru'] .-text-size-1-thin, html[lang='ru-RU'] .-text-size-1-thin {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-1-thin, html[lang='zh-CN'] .-text-size-1-thin {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-1-thin, html[lang='ar-AE'] .-text-size-1-thin {
@@ -1824,7 +1824,7 @@ table {
   font-size: 1.75rem;
   line-height: 2.25rem; }
   html[lang='ru'] .-text-size-1-regular, html[lang='ru-RU'] .-text-size-1-regular {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-1-regular, html[lang='zh-CN'] .-text-size-1-regular {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-1-regular, html[lang='ar-AE'] .-text-size-1-regular {
@@ -1851,7 +1851,7 @@ table {
   line-height: 2.125rem;
   font-weight: 200; }
   html[lang='ru'] .-text-size-2-thin, html[lang='ru-RU'] .-text-size-2-thin {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-2-thin, html[lang='zh-CN'] .-text-size-2-thin {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-2-thin, html[lang='ar-AE'] .-text-size-2-thin {
@@ -1877,7 +1877,7 @@ table {
   font-size: 1.625rem;
   line-height: 2.125rem; }
   html[lang='ru'] .-text-size-2-regular, html[lang='ru-RU'] .-text-size-2-regular {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-2-regular, html[lang='zh-CN'] .-text-size-2-regular {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-2-regular, html[lang='ar-AE'] .-text-size-2-regular {
@@ -1904,7 +1904,7 @@ table {
   line-height: 1.875rem;
   font-weight: 200; }
   html[lang='ru'] .-text-size-3-thin, html[lang='ru-RU'] .-text-size-3-thin {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-3-thin, html[lang='zh-CN'] .-text-size-3-thin {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-3-thin, html[lang='ar-AE'] .-text-size-3-thin {
@@ -1930,7 +1930,7 @@ table {
   font-size: 1.5rem;
   line-height: 1.875rem; }
   html[lang='ru'] .-text-size-3-regular, html[lang='ru-RU'] .-text-size-3-regular {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-3-regular, html[lang='zh-CN'] .-text-size-3-regular {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-3-regular, html[lang='ar-AE'] .-text-size-3-regular {
@@ -1957,7 +1957,7 @@ table {
   line-height: 1.75rem;
   font-weight: 200; }
   html[lang='ru'] .-text-size-4-thin, html[lang='ru-RU'] .-text-size-4-thin {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-4-thin, html[lang='zh-CN'] .-text-size-4-thin {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-4-thin, html[lang='ar-AE'] .-text-size-4-thin {
@@ -1983,7 +1983,7 @@ table {
   font-size: 1.25rem;
   line-height: 1.75rem; }
   html[lang='ru'] .-text-size-4-regular, html[lang='ru-RU'] .-text-size-4-regular {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-4-regular, html[lang='zh-CN'] .-text-size-4-regular {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-4-regular, html[lang='ar-AE'] .-text-size-4-regular {
@@ -2010,7 +2010,7 @@ table {
   line-height: 1.75rem;
   font-weight: 200; }
   html[lang='ru'] .-text-size-5-thin, html[lang='ru-RU'] .-text-size-5-thin {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-5-thin, html[lang='zh-CN'] .-text-size-5-thin {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-5-thin, html[lang='ar-AE'] .-text-size-5-thin {
@@ -2028,7 +2028,7 @@ table {
   font-size: 1.25rem;
   line-height: 1.75rem; }
   html[lang='ru'] .-text-size-5-regular, html[lang='ru-RU'] .-text-size-5-regular {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-5-regular, html[lang='zh-CN'] .-text-size-5-regular {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-5-regular, html[lang='ar-AE'] .-text-size-5-regular {
@@ -2046,7 +2046,7 @@ table {
   font-size: 1rem;
   line-height: 1.5rem; }
   html[lang='ru'] .-text-size-copy, html[lang='ru-RU'] .-text-size-copy {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-copy, html[lang='zh-CN'] .-text-size-copy {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-copy, html[lang='ar-AE'] .-text-size-copy {
@@ -2064,7 +2064,7 @@ table {
   font-size: 0.875rem;
   line-height: 1.25rem; }
   html[lang='ru'] .-text-size-small, html[lang='ru-RU'] .-text-size-small {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-small, html[lang='zh-CN'] .-text-size-small {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-small, html[lang='ar-AE'] .-text-size-small {
@@ -2082,7 +2082,7 @@ table {
   font-size: 0.75rem;
   line-height: 1.125rem; }
   html[lang='ru'] .-text-size-micro, html[lang='ru-RU'] .-text-size-micro {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .-text-size-micro, html[lang='zh-CN'] .-text-size-micro {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .-text-size-micro, html[lang='ar-AE'] .-text-size-micro {
@@ -3926,7 +3926,7 @@ table {
   border: 1px solid #626669;
   color: #fff; }
   html[lang='ru'] .button-primary, html[lang='ru-RU'] .button-primary {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .button-primary, html[lang='zh-CN'] .button-primary {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .button-primary, html[lang='ar-AE'] .button-primary {
@@ -4053,7 +4053,7 @@ table {
   border: 1px solid #626669;
   color: #000; }
   html[lang='ru'] .button-ghost, html[lang='ru-RU'] .button-ghost {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .button-ghost, html[lang='zh-CN'] .button-ghost {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .button-ghost, html[lang='ar-AE'] .button-ghost {
@@ -4154,7 +4154,7 @@ table {
   cursor: pointer;
   line-height: calc( 1.875rem - 1px * 2); }
   html[lang='ru'] .button-notification, html[lang='ru-RU'] .button-notification {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .button-notification, html[lang='zh-CN'] .button-notification {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .button-notification, html[lang='ar-AE'] .button-notification {
@@ -4340,7 +4340,7 @@ table {
       font-size: 0.875rem;
       line-height: 1.25rem; }
       html[lang='ru'] .button-inline__icon--multi-lines-centered, html[lang='ru-RU'] .button-inline__icon--multi-lines-centered {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .button-inline__icon--multi-lines-centered, html[lang='zh-CN'] .button-inline__icon--multi-lines-centered {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .button-inline__icon--multi-lines-centered, html[lang='ar-AE'] .button-inline__icon--multi-lines-centered {
@@ -4376,7 +4376,7 @@ table {
     line-height: inherit;
     display: block; }
     html[lang='ru'] .button-inline__label, html[lang='ru-RU'] .button-inline__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .button-inline__label, html[lang='zh-CN'] .button-inline__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .button-inline__label, html[lang='ar-AE'] .button-inline__label {
@@ -4400,7 +4400,7 @@ table {
       font-weight: 200;
       line-height: 3rem; }
       html[lang='ru'] .button-inline__label--multiline, html[lang='ru-RU'] .button-inline__label--multiline {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .button-inline__label--multiline, html[lang='zh-CN'] .button-inline__label--multiline {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .button-inline__label--multiline, html[lang='ar-AE'] .button-inline__label--multiline {
@@ -4426,7 +4426,7 @@ table {
   font-weight: 200;
   display: table; }
   html[lang='ru'] .symbol-marker, html[lang='ru-RU'] .symbol-marker {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .symbol-marker, html[lang='zh-CN'] .symbol-marker {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .symbol-marker, html[lang='ar-AE'] .symbol-marker {
@@ -4459,7 +4459,7 @@ table {
       background-position: center;
       background-image: url("data:image/svg+xml;base64,PHN2Zw0KICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIg0KICAgeG1sbnM6Y2M9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL25zIyINCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyINCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciDQogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciDQogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiDQogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSINCiAgIHZlcnNpb249IjEuMSINCiAgIGlkPSJFYmVuZV8xIg0KICAgeD0iMHB4Ig0KICAgeT0iMHB4Ig0KICAgdmlld0JveD0iMCAwIDM2IDQ1Ig0KICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSINCiAgIGlua3NjYXBlOnZlcnNpb249IjAuOTEgcjEzNzI1Ig0KICAgc29kaXBvZGk6ZG9jbmFtZT0icGluLW51bWJlcmVkX2Nyb3BwZWQuc3ZnIg0KICAgd2lkdGg9IjM2Ig0KICAgaGVpZ2h0PSI0NSI+PG1ldGFkYXRhDQogICAgIGlkPSJtZXRhZGF0YTEyIj48cmRmOlJERj48Y2M6V29yaw0KICAgICAgICAgcmRmOmFib3V0PSIiPjxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PjxkYzp0eXBlDQogICAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+PGRjOnRpdGxlPjwvZGM6dGl0bGU+PC9jYzpXb3JrPjwvcmRmOlJERj48L21ldGFkYXRhPjxkZWZzDQogICAgIGlkPSJkZWZzMTAiIC8+PHNvZGlwb2RpOm5hbWVkdmlldw0KICAgICBwYWdlY29sb3I9IiNmZmZmZmYiDQogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2Ig0KICAgICBib3JkZXJvcGFjaXR5PSIxIg0KICAgICBvYmplY3R0b2xlcmFuY2U9IjEwIg0KICAgICBncmlkdG9sZXJhbmNlPSIxMCINCiAgICAgZ3VpZGV0b2xlcmFuY2U9IjEwIg0KICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMCINCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiINCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxMjAxIg0KICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI5MjciDQogICAgIGlkPSJuYW1lZHZpZXc4Ig0KICAgICBzaG93Z3JpZD0iZmFsc2UiDQogICAgIGlua3NjYXBlOnpvb209IjEuODQzNzUiDQogICAgIGlua3NjYXBlOmN4PSItMjkuODMwNTA4Ig0KICAgICBpbmtzY2FwZTpjeT0iMjAuNjEwMTY5Ig0KICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMjk0Ig0KICAgICBpbmtzY2FwZTp3aW5kb3cteT0iNDUiDQogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjAiDQogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9IkViZW5lXzEiIC8+PHN0eWxlDQogICAgIHR5cGU9InRleHQvY3NzIg0KICAgICBpZD0ic3R5bGUzIj4NCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9DQo8L3N0eWxlPjxlbGxpcHNlDQogICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjEiDQogICAgIGlkPSJwYXRoNDE0OCINCiAgICAgY3g9IjE4LjMzODk4NCINCiAgICAgY3k9IjE2LjU5MzIyMiINCiAgICAgcng9IjE0LjM3Mjg4MSINCiAgICAgcnk9IjE0LjY0NDA2OCIgLz48Zw0KICAgICBpZD0iRWJlbmVfMV8xXyINCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwtODMpIiAvPjxwYXRoDQogICAgIGNsYXNzPSJzdDAiDQogICAgIGQ9Ik0gMTgsMCBDIDcuODcyLDAgMCw3LjE1ODA5OSAwLDE2LjM2NzYwNCAwLDI3LjYyODUyIDE4LDQ1IDE4LDQ1IDE4LDQ1IDM2LDI3LjYyODUyIDM2LDE2LjM2NzYwNCAzNiw3LjE1ODA5OSAyOC4xMjgsMCAxOCwwIG0gMCwyOS40MTgwNCBDIDEwLjA4LDI5LjQxODA0IDMuNjQ4LDIzLjU2OTM1IDMuNjQ4LDE2LjM2NzYwNCAzLjY0OCw5LjE2NTg1OCAxMC4wOCwzLjMxNzE2OCAxOCwzLjMxNzE2OCBjIDcuOTIsMCAxNC4zNTIsNS44NDg2OSAxNC4zNTIsMTMuMDUwNDM2IEMgMzIuMzUyLDIzLjU2OTM1IDI1LjkyLDI5LjQxODA0IDE4LDI5LjQxODA0Ig0KICAgICBpZD0icGF0aDYiDQogICAgIHN0eWxlPSJmaWxsOiNjYTA4MTM7ZmlsbC1vcGFjaXR5OjEiDQogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIC8+PC9zdmc+"); }
       html[lang='ru'] .symbol-marker, html[lang='ru-RU'] .symbol-marker {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .symbol-marker, html[lang='zh-CN'] .symbol-marker {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .symbol-marker, html[lang='ar-AE'] .symbol-marker {
@@ -4620,7 +4620,7 @@ table {
     text-align: center;
     margin-top: 1.125rem; }
     html[lang='ru'] .loader-application__label, html[lang='ru-RU'] .loader-application__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .loader-application__label, html[lang='zh-CN'] .loader-application__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .loader-application__label, html[lang='ar-AE'] .loader-application__label {
@@ -4675,7 +4675,7 @@ table {
     text-align: center;
     margin-top: 1.125rem; }
     html[lang='ru'] .loader-fullpage__label, html[lang='ru-RU'] .loader-fullpage__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .loader-fullpage__label, html[lang='zh-CN'] .loader-fullpage__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .loader-fullpage__label, html[lang='ar-AE'] .loader-fullpage__label {
@@ -4829,7 +4829,7 @@ table {
   color: #fff;
   transition: background-color 0.24s ease, border-color 0.24s ease, color 0.24s ease; }
   html[lang='ru'] .button-regular, html[lang='ru-RU'] .button-regular {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .button-regular, html[lang='zh-CN'] .button-regular {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .button-regular, html[lang='ar-AE'] .button-regular {
@@ -5179,7 +5179,7 @@ table {
     min-height: 1.625rem;
     cursor: pointer; }
     html[lang='ru'] .checkbox__label, html[lang='ru-RU'] .checkbox__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .checkbox__label, html[lang='zh-CN'] .checkbox__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .checkbox__label, html[lang='ar-AE'] .checkbox__label {
@@ -5334,7 +5334,7 @@ table {
     font-weight: normal;
     color: #000; }
     html[lang='ru'] .input__field, html[lang='ru-RU'] .input__field {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .input__field, html[lang='zh-CN'] .input__field {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .input__field, html[lang='ar-AE'] .input__field {
@@ -5396,7 +5396,7 @@ table {
     font-weight: normal;
     color: #959899; }
     html[lang='ru'] .input__label, html[lang='ru-RU'] .input__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .input__label, html[lang='zh-CN'] .input__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .input__label, html[lang='ar-AE'] .input__label {
@@ -5476,7 +5476,7 @@ table {
     color: #000;
     cursor: pointer; }
     html[lang='ru'] .radio__label, html[lang='ru-RU'] .radio__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .radio__label, html[lang='zh-CN'] .radio__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .radio__label, html[lang='ar-AE'] .radio__label {
@@ -5576,7 +5576,7 @@ table {
     line-height: normal;
     color: #000; }
     html[lang='ru'] .select__field, html[lang='ru-RU'] .select__field {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .select__field, html[lang='zh-CN'] .select__field {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .select__field, html[lang='ar-AE'] .select__field {
@@ -5615,7 +5615,7 @@ table {
     font-size: 0.875rem;
     color: #000; }
     html[lang='ru'] .textarea__field, html[lang='ru-RU'] .textarea__field {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .textarea__field, html[lang='zh-CN'] .textarea__field {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .textarea__field, html[lang='ar-AE'] .textarea__field {
@@ -5627,7 +5627,7 @@ table {
     html[lang='ur'] .textarea__field, html[lang='ur-PK'] .textarea__field {
       font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
     html[lang='ru'] .textarea__field, html[lang='ru-RU'] .textarea__field {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .textarea__field, html[lang='zh-CN'] .textarea__field {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .textarea__field, html[lang='ar-AE'] .textarea__field {
@@ -5674,7 +5674,7 @@ table {
     padding-left: 1.125rem;
     padding-right: 1.125rem; }
     html[lang='ru'] .textarea__label, html[lang='ru-RU'] .textarea__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .textarea__label, html[lang='zh-CN'] .textarea__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .textarea__label, html[lang='ar-AE'] .textarea__label {
@@ -5686,7 +5686,7 @@ table {
     html[lang='ur'] .textarea__label, html[lang='ur-PK'] .textarea__label {
       font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
     html[lang='ru'] .textarea__label, html[lang='ru-RU'] .textarea__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .textarea__label, html[lang='zh-CN'] .textarea__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .textarea__label, html[lang='ar-AE'] .textarea__label {
@@ -5935,7 +5935,7 @@ table {
     background-color: #eff0f1;
     color: #000; }
     html[lang='ru'] .dropdown-multi-function__item, html[lang='ru-RU'] .dropdown-multi-function__item {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .dropdown-multi-function__item, html[lang='zh-CN'] .dropdown-multi-function__item {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .dropdown-multi-function__item, html[lang='ar-AE'] .dropdown-multi-function__item {
@@ -6048,7 +6048,7 @@ table {
     line-height: 1.75rem;
     font-weight: 200; }
     html[lang='ru'] .list-view__title, html[lang='ru-RU'] .list-view__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-view__title, html[lang='zh-CN'] .list-view__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-view__title, html[lang='ar-AE'] .list-view__title {
@@ -6073,7 +6073,7 @@ table {
     font-size: 1rem;
     line-height: 1.5rem; }
     html[lang='ru'] .list-view__tags, html[lang='ru-RU'] .list-view__tags {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-view__tags, html[lang='zh-CN'] .list-view__tags {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-view__tags, html[lang='ar-AE'] .list-view__tags {
@@ -6210,7 +6210,7 @@ table {
     line-height: 1.75rem;
     font-weight: 200; }
     html[lang='ru'] .list-violation__title, html[lang='ru-RU'] .list-violation__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-violation__title, html[lang='zh-CN'] .list-violation__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-violation__title, html[lang='ar-AE'] .list-violation__title {
@@ -6235,7 +6235,7 @@ table {
     font-size: 1rem;
     line-height: 1.5rem; }
     html[lang='ru'] .list-violation__content, html[lang='ru-RU'] .list-violation__content {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-violation__content, html[lang='zh-CN'] .list-violation__content {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-violation__content, html[lang='ar-AE'] .list-violation__content {
@@ -6266,7 +6266,7 @@ table {
     font-size: 1rem;
     line-height: 1.5rem; }
     html[lang='ru'] .list-violation__tags, html[lang='ru-RU'] .list-violation__tags {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-violation__tags, html[lang='zh-CN'] .list-violation__tags {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-violation__tags, html[lang='ar-AE'] .list-violation__tags {
@@ -6324,7 +6324,7 @@ table {
   font-size: 1.25rem;
   line-height: 1.75rem; }
   html[lang='ru'] .list-orders__order-number, html[lang='ru-RU'] .list-orders__order-number {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .list-orders__order-number, html[lang='zh-CN'] .list-orders__order-number {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .list-orders__order-number, html[lang='ar-AE'] .list-orders__order-number {
@@ -6350,7 +6350,7 @@ table {
   font-size: 1rem;
   line-height: 1.5rem; }
   html[lang='ru'] .list-orders__content, html[lang='ru-RU'] .list-orders__content {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .list-orders__content, html[lang='zh-CN'] .list-orders__content {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .list-orders__content, html[lang='ar-AE'] .list-orders__content {
@@ -6381,7 +6381,7 @@ table {
   padding-left: 0;
   list-style: none; }
   html[lang='ru'] .list-orders__details, html[lang='ru-RU'] .list-orders__details {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .list-orders__details, html[lang='zh-CN'] .list-orders__details {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .list-orders__details, html[lang='ar-AE'] .list-orders__details {
@@ -6545,7 +6545,7 @@ table {
     line-height: 1.75rem;
     font-weight: 200; }
     html[lang='ru'] .list-message__title, html[lang='ru-RU'] .list-message__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-message__title, html[lang='zh-CN'] .list-message__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-message__title, html[lang='ar-AE'] .list-message__title {
@@ -6562,7 +6562,7 @@ table {
     font-size: 1rem;
     line-height: 1.5rem; }
     html[lang='ru'] .list-message__content, html[lang='ru-RU'] .list-message__content {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-message__content, html[lang='zh-CN'] .list-message__content {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-message__content, html[lang='ar-AE'] .list-message__content {
@@ -6590,7 +6590,7 @@ table {
     font-size: 1rem;
     line-height: 1.5rem; }
     html[lang='ru'] .list-message__tags, html[lang='ru-RU'] .list-message__tags {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-message__tags, html[lang='zh-CN'] .list-message__tags {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-message__tags, html[lang='ar-AE'] .list-message__tags {
@@ -6644,7 +6644,7 @@ table {
   line-height: 1.5rem;
   color: #fff; }
   html[lang='ru'] .list-tag, html[lang='ru-RU'] .list-tag {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .list-tag, html[lang='zh-CN'] .list-tag {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .list-tag, html[lang='ar-AE'] .list-tag {
@@ -6673,7 +6673,7 @@ table {
   line-height: 1.5rem;
   color: #d5001c; }
   html[lang='ru'] .list-bullet, html[lang='ru-RU'] .list-bullet {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .list-bullet, html[lang='zh-CN'] .list-bullet {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .list-bullet, html[lang='ar-AE'] .list-bullet {
@@ -6746,7 +6746,7 @@ table {
     margin-right: 0.1875rem;
     line-height: 2rem; }
     html[lang='ru'] .list-striped__item-label-text, html[lang='ru-RU'] .list-striped__item-label-text {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-striped__item-label-text, html[lang='zh-CN'] .list-striped__item-label-text {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-striped__item-label-text, html[lang='ar-AE'] .list-striped__item-label-text {
@@ -6770,7 +6770,7 @@ table {
   line-height: 2rem;
   font-weight: 600; }
   html[lang='ru'] .list-striped__item-value, html[lang='ru-RU'] .list-striped__item-value {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .list-striped__item-value, html[lang='zh-CN'] .list-striped__item-value {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .list-striped__item-value, html[lang='ar-AE'] .list-striped__item-value {
@@ -6805,7 +6805,7 @@ table {
     line-height: 1.5rem;
     color: #000; }
     html[lang='ru'] .list-empty__label, html[lang='ru-RU'] .list-empty__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .list-empty__label, html[lang='zh-CN'] .list-empty__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .list-empty__label, html[lang='ar-AE'] .list-empty__label {
@@ -6825,7 +6825,7 @@ table {
   color: #000;
   list-style-type: none; }
   html[lang='ru'] .list-unordered, html[lang='ru-RU'] .list-unordered {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .list-unordered, html[lang='zh-CN'] .list-unordered {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .list-unordered, html[lang='ar-AE'] .list-unordered {
@@ -6972,7 +6972,7 @@ table {
       font-size: 1rem;
       line-height: 1.5rem; }
       html[lang='ru'] .navigation-topbar-desktop__link-title, html[lang='ru-RU'] .navigation-topbar-desktop__link-title {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .navigation-topbar-desktop__link-title, html[lang='zh-CN'] .navigation-topbar-desktop__link-title {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .navigation-topbar-desktop__link-title, html[lang='ar-AE'] .navigation-topbar-desktop__link-title {
@@ -7023,7 +7023,7 @@ table {
       line-height: 1.75rem;
       font-weight: 200; }
       html[lang='ru'] .navigation-topbar-desktop__flyout-headline, html[lang='ru-RU'] .navigation-topbar-desktop__flyout-headline {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .navigation-topbar-desktop__flyout-headline, html[lang='zh-CN'] .navigation-topbar-desktop__flyout-headline {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .navigation-topbar-desktop__flyout-headline, html[lang='ar-AE'] .navigation-topbar-desktop__flyout-headline {
@@ -7055,7 +7055,7 @@ table {
       font-size: 1rem;
       line-height: 1.5rem; }
       html[lang='ru'] .navigation-topbar-desktop__flyout-link-title, html[lang='ru-RU'] .navigation-topbar-desktop__flyout-link-title {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .navigation-topbar-desktop__flyout-link-title, html[lang='zh-CN'] .navigation-topbar-desktop__flyout-link-title {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .navigation-topbar-desktop__flyout-link-title, html[lang='ar-AE'] .navigation-topbar-desktop__flyout-link-title {
@@ -7101,7 +7101,7 @@ table {
     justify-content: center;
     width: 100%; }
     html[lang='ru'] .navigation-topbar-mobile__headline, html[lang='ru-RU'] .navigation-topbar-mobile__headline {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .navigation-topbar-mobile__headline, html[lang='zh-CN'] .navigation-topbar-mobile__headline {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .navigation-topbar-mobile__headline, html[lang='ar-AE'] .navigation-topbar-mobile__headline {
@@ -7113,7 +7113,7 @@ table {
     html[lang='ur'] .navigation-topbar-mobile__headline, html[lang='ur-PK'] .navigation-topbar-mobile__headline {
       font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
     html[lang='ru'] .navigation-topbar-mobile__headline, html[lang='ru-RU'] .navigation-topbar-mobile__headline {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .navigation-topbar-mobile__headline, html[lang='zh-CN'] .navigation-topbar-mobile__headline {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .navigation-topbar-mobile__headline, html[lang='ar-AE'] .navigation-topbar-mobile__headline {
@@ -7176,7 +7176,7 @@ table {
     display: block;
     line-height: 4rem; }
     html[lang='ru'] .navigation-topbar-mobile__link, html[lang='ru-RU'] .navigation-topbar-mobile__link {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .navigation-topbar-mobile__link, html[lang='zh-CN'] .navigation-topbar-mobile__link {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .navigation-topbar-mobile__link, html[lang='ar-AE'] .navigation-topbar-mobile__link {
@@ -7188,7 +7188,7 @@ table {
     html[lang='ur'] .navigation-topbar-mobile__link, html[lang='ur-PK'] .navigation-topbar-mobile__link {
       font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
     html[lang='ru'] .navigation-topbar-mobile__link, html[lang='ru-RU'] .navigation-topbar-mobile__link {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .navigation-topbar-mobile__link, html[lang='zh-CN'] .navigation-topbar-mobile__link {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .navigation-topbar-mobile__link, html[lang='ar-AE'] .navigation-topbar-mobile__link {
@@ -7256,7 +7256,7 @@ table {
       display: block;
       padding: 1.25rem 3%; }
       html[lang='ru'] .navigation-topbar-mobile__flyout-link, html[lang='ru-RU'] .navigation-topbar-mobile__flyout-link {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .navigation-topbar-mobile__flyout-link, html[lang='zh-CN'] .navigation-topbar-mobile__flyout-link {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .navigation-topbar-mobile__flyout-link, html[lang='ar-AE'] .navigation-topbar-mobile__flyout-link {
@@ -7268,7 +7268,7 @@ table {
       html[lang='ur'] .navigation-topbar-mobile__flyout-link, html[lang='ur-PK'] .navigation-topbar-mobile__flyout-link {
         font-family: "Porsche Next Urdu", "Arial Narrow", Arial, sans-serif; }
       html[lang='ru'] .navigation-topbar-mobile__flyout-link, html[lang='ru-RU'] .navigation-topbar-mobile__flyout-link {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .navigation-topbar-mobile__flyout-link, html[lang='zh-CN'] .navigation-topbar-mobile__flyout-link {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .navigation-topbar-mobile__flyout-link, html[lang='ar-AE'] .navigation-topbar-mobile__flyout-link {
@@ -7333,7 +7333,7 @@ table {
       height: 100%;
       text-decoration: none; }
       html[lang='ru'] .navigation-topbar-mobile__flyout-footer-link, html[lang='ru-RU'] .navigation-topbar-mobile__flyout-footer-link {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .navigation-topbar-mobile__flyout-footer-link, html[lang='zh-CN'] .navigation-topbar-mobile__flyout-footer-link {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .navigation-topbar-mobile__flyout-footer-link, html[lang='ar-AE'] .navigation-topbar-mobile__flyout-footer-link {
@@ -7359,7 +7359,7 @@ table {
     display: inline-block;
     margin-right: 1.875rem; }
     html[lang='ru'] .navigation-header__item, html[lang='ru-RU'] .navigation-header__item {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .navigation-header__item, html[lang='zh-CN'] .navigation-header__item {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .navigation-header__item, html[lang='ar-AE'] .navigation-header__item {
@@ -7394,7 +7394,7 @@ table {
   line-height: 1.5rem;
   border-bottom: 0.0625rem solid #494e51; }
   html[lang='ru'] .navigation-steps, html[lang='ru-RU'] .navigation-steps {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .navigation-steps, html[lang='zh-CN'] .navigation-steps {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .navigation-steps, html[lang='ar-AE'] .navigation-steps {
@@ -7591,7 +7591,7 @@ table {
   font-weight: 200;
   color: #959899; }
   html[lang='ru'] .navigation-footer__category-name, html[lang='ru-RU'] .navigation-footer__category-name {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .navigation-footer__category-name, html[lang='zh-CN'] .navigation-footer__category-name {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .navigation-footer__category-name, html[lang='ar-AE'] .navigation-footer__category-name {
@@ -7671,7 +7671,7 @@ table {
   text-decoration: none;
   display: block; }
   html[lang='ru'] .navigation-footer__submenu-link, html[lang='ru-RU'] .navigation-footer__submenu-link {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .navigation-footer__submenu-link, html[lang='zh-CN'] .navigation-footer__submenu-link {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .navigation-footer__submenu-link, html[lang='ar-AE'] .navigation-footer__submenu-link {
@@ -7695,7 +7695,7 @@ table {
     font-weight: 200;
     color: #000; }
     html[lang='ru'] .page-header__title, html[lang='ru-RU'] .page-header__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .page-header__title, html[lang='zh-CN'] .page-header__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .page-header__title, html[lang='ar-AE'] .page-header__title {
@@ -7724,7 +7724,7 @@ table {
     color: #000;
     margin-top: 0.375rem; }
     html[lang='ru'] .page-header__description, html[lang='ru-RU'] .page-header__description {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .page-header__description, html[lang='zh-CN'] .page-header__description {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .page-header__description, html[lang='ar-AE'] .page-header__description {
@@ -7746,7 +7746,7 @@ table {
   display: inline-block;
   text-decoration: none; }
   html[lang='ru'] .link-icon-text, html[lang='ru-RU'] .link-icon-text {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .link-icon-text, html[lang='zh-CN'] .link-icon-text {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .link-icon-text, html[lang='ar-AE'] .link-icon-text {
@@ -7785,7 +7785,7 @@ table {
   display: inline-block;
   text-decoration: none; }
   html[lang='ru'] .link-text, html[lang='ru-RU'] .link-text {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .link-text, html[lang='zh-CN'] .link-text {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .link-text, html[lang='ar-AE'] .link-text {
@@ -7819,7 +7819,7 @@ table {
   font-size: 1rem;
   line-height: 1.5rem; }
   html[lang='ru'] .visualization-icon-text, html[lang='ru-RU'] .visualization-icon-text {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .visualization-icon-text, html[lang='zh-CN'] .visualization-icon-text {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .visualization-icon-text, html[lang='ar-AE'] .visualization-icon-text {
@@ -7943,7 +7943,7 @@ table {
     display: block;
     transition: .25s ease-in-out; }
     html[lang='ru'] .car-chooser__title, html[lang='ru-RU'] .car-chooser__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .car-chooser__title, html[lang='zh-CN'] .car-chooser__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .car-chooser__title, html[lang='ar-AE'] .car-chooser__title {
@@ -7974,7 +7974,7 @@ table {
     display: block;
     transition: .25s ease-in-out; }
     html[lang='ru'] .car-chooser__vin, html[lang='ru-RU'] .car-chooser__vin {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .car-chooser__vin, html[lang='zh-CN'] .car-chooser__vin {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .car-chooser__vin, html[lang='ar-AE'] .car-chooser__vin {
@@ -8090,7 +8090,7 @@ table {
       margin-left: auto;
       margin-right: auto; }
       html[lang='ru'] .car-chooser__dropdown-title, html[lang='ru-RU'] .car-chooser__dropdown-title {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-chooser__dropdown-title, html[lang='zh-CN'] .car-chooser__dropdown-title {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-chooser__dropdown-title, html[lang='ar-AE'] .car-chooser__dropdown-title {
@@ -8125,7 +8125,7 @@ table {
       margin-left: auto;
       margin-right: auto; }
       html[lang='ru'] .car-chooser__dropdown-subtitle, html[lang='ru-RU'] .car-chooser__dropdown-subtitle {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-chooser__dropdown-subtitle, html[lang='zh-CN'] .car-chooser__dropdown-subtitle {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-chooser__dropdown-subtitle, html[lang='ar-AE'] .car-chooser__dropdown-subtitle {
@@ -8146,7 +8146,7 @@ table {
       line-height: 1.5rem;
       padding-left: 1.3125rem; }
       html[lang='ru'] .car-chooser__dropdown-vin, html[lang='ru-RU'] .car-chooser__dropdown-vin {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-chooser__dropdown-vin, html[lang='zh-CN'] .car-chooser__dropdown-vin {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-chooser__dropdown-vin, html[lang='ar-AE'] .car-chooser__dropdown-vin {
@@ -8176,7 +8176,7 @@ table {
       width: 100%;
       max-width: 38.125rem; }
       html[lang='ru'] .car-chooser__dropdown-input, html[lang='ru-RU'] .car-chooser__dropdown-input {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-chooser__dropdown-input, html[lang='zh-CN'] .car-chooser__dropdown-input {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-chooser__dropdown-input, html[lang='ar-AE'] .car-chooser__dropdown-input {
@@ -8208,7 +8208,7 @@ table {
       margin-left: auto;
       margin-right: auto; }
       html[lang='ru'] .car-chooser__dropdown-search-message, html[lang='ru-RU'] .car-chooser__dropdown-search-message {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-chooser__dropdown-search-message, html[lang='zh-CN'] .car-chooser__dropdown-search-message {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-chooser__dropdown-search-message, html[lang='ar-AE'] .car-chooser__dropdown-search-message {
@@ -8308,7 +8308,7 @@ table {
       padding-left: 0.75rem;
       padding-right: 0.75rem; }
       html[lang='ru'] .car-selector__bar-title, html[lang='ru-RU'] .car-selector__bar-title {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-selector__bar-title, html[lang='zh-CN'] .car-selector__bar-title {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-selector__bar-title, html[lang='ar-AE'] .car-selector__bar-title {
@@ -8351,7 +8351,7 @@ table {
       color: #959899;
       margin-left: 1.5rem; }
       html[lang='ru'] .car-selector__bar-subtitle, html[lang='ru-RU'] .car-selector__bar-subtitle {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-selector__bar-subtitle, html[lang='zh-CN'] .car-selector__bar-subtitle {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-selector__bar-subtitle, html[lang='ar-AE'] .car-selector__bar-subtitle {
@@ -8438,7 +8438,7 @@ table {
       .car-selector__content {
         padding: 1.875rem 1.875rem; } }
     html[lang='ru'] .car-selector__content, html[lang='ru-RU'] .car-selector__content {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .car-selector__content, html[lang='zh-CN'] .car-selector__content {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .car-selector__content, html[lang='ar-AE'] .car-selector__content {
@@ -8592,7 +8592,7 @@ table {
       color: #000;
       display: block; }
       html[lang='ru'] .car-selector__car-list-item-title, html[lang='ru-RU'] .car-selector__car-list-item-title {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-selector__car-list-item-title, html[lang='zh-CN'] .car-selector__car-list-item-title {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-selector__car-list-item-title, html[lang='ar-AE'] .car-selector__car-list-item-title {
@@ -8628,7 +8628,7 @@ table {
       color: #959899;
       display: block; }
       html[lang='ru'] .car-selector__car-list-item-subtitle, html[lang='ru-RU'] .car-selector__car-list-item-subtitle {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .car-selector__car-list-item-subtitle, html[lang='zh-CN'] .car-selector__car-list-item-subtitle {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .car-selector__car-list-item-subtitle, html[lang='ar-AE'] .car-selector__car-list-item-subtitle {
@@ -8675,7 +8675,7 @@ table {
     cursor: pointer;
     border-radius: 0; }
     html[lang='ru'] .car-selector__button-action, html[lang='ru-RU'] .car-selector__button-action {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .car-selector__button-action, html[lang='zh-CN'] .car-selector__button-action {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .car-selector__button-action, html[lang='ar-AE'] .car-selector__button-action {
@@ -8729,7 +8729,7 @@ table {
           font-weight: 200;
           display: inline-block; }
           html[lang='ru'] .car-selector__button-action-label, html[lang='ru-RU'] .car-selector__button-action-label {
-            font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+            font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
           html[lang='zh'] .car-selector__button-action-label, html[lang='zh-CN'] .car-selector__button-action-label {
             font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
           html[lang='ar'] .car-selector__button-action-label, html[lang='ar-AE'] .car-selector__button-action-label {
@@ -8890,7 +8890,7 @@ table {
     align-self: center;
     display: block; }
     html[lang='ru'] .car-selector__derivative-list-item-title, html[lang='ru-RU'] .car-selector__derivative-list-item-title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .car-selector__derivative-list-item-title, html[lang='zh-CN'] .car-selector__derivative-list-item-title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .car-selector__derivative-list-item-title, html[lang='ar-AE'] .car-selector__derivative-list-item-title {
@@ -8961,7 +8961,7 @@ table {
     .callout {
       padding: 1.875rem 1.875rem; } }
   html[lang='ru'] .callout, html[lang='ru-RU'] .callout {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .callout, html[lang='zh-CN'] .callout {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .callout, html[lang='ar-AE'] .callout {
@@ -8981,7 +8981,7 @@ table {
     font-weight: 200;
     color: #000; }
     html[lang='ru'] .callout__title, html[lang='ru-RU'] .callout__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .callout__title, html[lang='zh-CN'] .callout__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .callout__title, html[lang='ar-AE'] .callout__title {
@@ -9105,7 +9105,7 @@ table {
     max-width: 85%;
     float: left; }
     html[lang='ru'] .slider-vehicle__title, html[lang='ru-RU'] .slider-vehicle__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .slider-vehicle__title, html[lang='zh-CN'] .slider-vehicle__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .slider-vehicle__title, html[lang='ar-AE'] .slider-vehicle__title {
@@ -9130,7 +9130,7 @@ table {
     width: 100%;
     float: left; }
     html[lang='ru'] .slider-vehicle__subtitle, html[lang='ru-RU'] .slider-vehicle__subtitle {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .slider-vehicle__subtitle, html[lang='zh-CN'] .slider-vehicle__subtitle {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .slider-vehicle__subtitle, html[lang='ar-AE'] .slider-vehicle__subtitle {
@@ -9205,7 +9205,7 @@ table {
   padding-right: 0.75rem;
   color: #fff; }
   html[lang='ru'] .notification__text, html[lang='ru-RU'] .notification__text {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .notification__text, html[lang='zh-CN'] .notification__text {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .notification__text, html[lang='ar-AE'] .notification__text {
@@ -9265,7 +9265,7 @@ table {
   background-color: #313639;
   padding: 1.125rem 0.9375rem; }
   html[lang='ru'] .notification-common, html[lang='ru-RU'] .notification-common {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .notification-common, html[lang='zh-CN'] .notification-common {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .notification-common, html[lang='ar-AE'] .notification-common {
@@ -9292,7 +9292,7 @@ table {
     line-height: 1.5rem;
     color: #fff; }
     html[lang='ru'] .notification-common__title, html[lang='ru-RU'] .notification-common__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .notification-common__title, html[lang='zh-CN'] .notification-common__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .notification-common__title, html[lang='ar-AE'] .notification-common__title {
@@ -9312,7 +9312,7 @@ table {
     line-height: 1.5rem;
     color: #fff; }
     html[lang='ru'] .notification-common__text, html[lang='ru-RU'] .notification-common__text {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .notification-common__text, html[lang='zh-CN'] .notification-common__text {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .notification-common__text, html[lang='ar-AE'] .notification-common__text {
@@ -9353,7 +9353,7 @@ table {
   border-left-color: #d5001c;
   border-left: solid; }
   html[lang='ru'] .notification-error-inline, html[lang='ru-RU'] .notification-error-inline {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .notification-error-inline, html[lang='zh-CN'] .notification-error-inline {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .notification-error-inline, html[lang='ar-AE'] .notification-error-inline {
@@ -9380,7 +9380,7 @@ table {
   line-height: 1.5rem;
   display: inline-block; }
   html[lang='ru'] .notification-icon, html[lang='ru-RU'] .notification-icon {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .notification-icon, html[lang='zh-CN'] .notification-icon {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .notification-icon, html[lang='ar-AE'] .notification-icon {
@@ -9438,7 +9438,7 @@ table {
     max-width: 50rem;
     color: #fff; }
     html[lang='ru'] .state-empty-action__title, html[lang='ru-RU'] .state-empty-action__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .state-empty-action__title, html[lang='zh-CN'] .state-empty-action__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .state-empty-action__title, html[lang='ar-AE'] .state-empty-action__title {
@@ -9547,7 +9547,7 @@ table {
     display: block;
     max-width: 90%; }
     html[lang='ru'] .modal-header__title, html[lang='ru-RU'] .modal-header__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .modal-header__title, html[lang='zh-CN'] .modal-header__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .modal-header__title, html[lang='ar-AE'] .modal-header__title {
@@ -9575,7 +9575,7 @@ table {
   height: 80%;
   overflow-y: scroll; }
   html[lang='ru'] .modal-body, html[lang='ru-RU'] .modal-body {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .modal-body, html[lang='zh-CN'] .modal-body {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .modal-body, html[lang='ar-AE'] .modal-body {
@@ -9660,7 +9660,7 @@ table {
     display: block;
     max-width: 90%; }
     html[lang='ru'] .modal-common__title, html[lang='ru-RU'] .modal-common__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .modal-common__title, html[lang='zh-CN'] .modal-common__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .modal-common__title, html[lang='ar-AE'] .modal-common__title {
@@ -9688,7 +9688,7 @@ table {
     height: 80%;
     overflow-y: scroll; }
     html[lang='ru'] .modal-common__body, html[lang='ru-RU'] .modal-common__body {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .modal-common__body, html[lang='zh-CN'] .modal-common__body {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .modal-common__body, html[lang='ar-AE'] .modal-common__body {
@@ -9771,7 +9771,7 @@ table {
     font-weight: 200;
     max-width: 90%; }
     html[lang='ru'] .modal-dynamic__title, html[lang='ru-RU'] .modal-dynamic__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .modal-dynamic__title, html[lang='zh-CN'] .modal-dynamic__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .modal-dynamic__title, html[lang='ar-AE'] .modal-dynamic__title {
@@ -9824,7 +9824,7 @@ table {
     overflow-x: hidden;
     overflow-y: auto; }
     html[lang='ru'] .modal-dynamic__body, html[lang='ru-RU'] .modal-dynamic__body {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .modal-dynamic__body, html[lang='zh-CN'] .modal-dynamic__body {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .modal-dynamic__body, html[lang='ar-AE'] .modal-dynamic__body {
@@ -9887,7 +9887,7 @@ table {
     white-space: nowrap;
     display: block; }
     html[lang='ru'] .tile__left, html[lang='ru-RU'] .tile__left {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tile__left, html[lang='zh-CN'] .tile__left {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tile__left, html[lang='ar-AE'] .tile__left {
@@ -9909,7 +9909,7 @@ table {
     white-space: nowrap;
     display: block; }
     html[lang='ru'] .tile__right, html[lang='ru-RU'] .tile__right {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tile__right, html[lang='zh-CN'] .tile__right {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tile__right, html[lang='ar-AE'] .tile__right {
@@ -10089,7 +10089,7 @@ table {
     font-weight: 200;
     display: block; }
     html[lang='ru'] .tile-image-text-link__headline, html[lang='ru-RU'] .tile-image-text-link__headline {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tile-image-text-link__headline, html[lang='zh-CN'] .tile-image-text-link__headline {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tile-image-text-link__headline, html[lang='ar-AE'] .tile-image-text-link__headline {
@@ -10172,7 +10172,7 @@ table {
   flex-direction: column;
   height: 100%; }
   html[lang='ru'] .tile-image-headline-button, html[lang='ru-RU'] .tile-image-headline-button {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .tile-image-headline-button, html[lang='zh-CN'] .tile-image-headline-button {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .tile-image-headline-button, html[lang='ar-AE'] .tile-image-headline-button {
@@ -10234,7 +10234,7 @@ table {
     color: #fff;
     position: relative; }
     html[lang='ru'] .tile-image-headline-button__headline, html[lang='ru-RU'] .tile-image-headline-button__headline {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tile-image-headline-button__headline, html[lang='zh-CN'] .tile-image-headline-button__headline {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tile-image-headline-button__headline, html[lang='ar-AE'] .tile-image-headline-button__headline {
@@ -10261,7 +10261,7 @@ table {
         line-height: 1.875rem;
         width: 85%; }
         html[lang='ru'] .tile-image-headline-button__headline, html[lang='ru-RU'] .tile-image-headline-button__headline {
-          font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+          font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
         html[lang='zh'] .tile-image-headline-button__headline, html[lang='zh-CN'] .tile-image-headline-button__headline {
           font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
         html[lang='ar'] .tile-image-headline-button__headline, html[lang='ar-AE'] .tile-image-headline-button__headline {
@@ -10315,7 +10315,7 @@ table {
   flex-direction: column;
   height: 100%; }
   html[lang='ru'] .tile-icon-headline-button, html[lang='ru-RU'] .tile-icon-headline-button {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .tile-icon-headline-button, html[lang='zh-CN'] .tile-icon-headline-button {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .tile-icon-headline-button, html[lang='ar-AE'] .tile-icon-headline-button {
@@ -10401,7 +10401,7 @@ table {
     white-space: nowrap;
     display: block; }
     html[lang='ru'] .tile-icon-headline-button__headline, html[lang='ru-RU'] .tile-icon-headline-button__headline {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tile-icon-headline-button__headline, html[lang='zh-CN'] .tile-icon-headline-button__headline {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tile-icon-headline-button__headline, html[lang='ar-AE'] .tile-icon-headline-button__headline {
@@ -10626,7 +10626,7 @@ table {
     line-height: 1.5rem;
     color: #959899; }
     html[lang='ru'] .tile-events__headline, html[lang='ru-RU'] .tile-events__headline {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tile-events__headline, html[lang='zh-CN'] .tile-events__headline {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tile-events__headline, html[lang='ar-AE'] .tile-events__headline {
@@ -10680,7 +10680,7 @@ table {
   position: relative;
   padding-left: 1.625rem; }
   html[lang='ru'] .tile-headline, html[lang='ru-RU'] .tile-headline {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .tile-headline, html[lang='zh-CN'] .tile-headline {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .tile-headline, html[lang='ar-AE'] .tile-headline {
@@ -10706,7 +10706,7 @@ table {
     line-height: 1.75rem;
     font-weight: 200; }
     html[lang='ru'] .tile-headline--small, html[lang='ru-RU'] .tile-headline--small {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tile-headline--small, html[lang='zh-CN'] .tile-headline--small {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tile-headline--small, html[lang='ar-AE'] .tile-headline--small {
@@ -10756,7 +10756,7 @@ table {
       font-size: 1.5rem;
       line-height: 1.875rem; }
       html[lang='ru'] .tile-headline--regular-s, html[lang='ru-RU'] .tile-headline--regular-s {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .tile-headline--regular-s, html[lang='zh-CN'] .tile-headline--regular-s {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .tile-headline--regular-s, html[lang='ar-AE'] .tile-headline--regular-s {
@@ -10782,7 +10782,7 @@ table {
       font-size: 1.5rem;
       line-height: 1.875rem; }
       html[lang='ru'] .tile-headline--regular-m, html[lang='ru-RU'] .tile-headline--regular-m {
-        font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+        font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
       html[lang='zh'] .tile-headline--regular-m, html[lang='zh-CN'] .tile-headline--regular-m {
         font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
       html[lang='ar'] .tile-headline--regular-m, html[lang='ar-AE'] .tile-headline--regular-m {
@@ -10816,7 +10816,7 @@ table {
    */
   padding-left: 1.625rem; }
   html[lang='ru'] .tile-paragraph, html[lang='ru-RU'] .tile-paragraph {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .tile-paragraph, html[lang='zh-CN'] .tile-paragraph {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .tile-paragraph, html[lang='ar-AE'] .tile-paragraph {
@@ -10890,7 +10890,7 @@ table {
     text-align: center;
     color: #fff; }
     html[lang='ru'] .tile-financial-services__headline, html[lang='ru-RU'] .tile-financial-services__headline {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tile-financial-services__headline, html[lang='zh-CN'] .tile-financial-services__headline {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tile-financial-services__headline, html[lang='ar-AE'] .tile-financial-services__headline {
@@ -10980,7 +10980,7 @@ table {
         margin-bottom: 1.875rem;
         color: #fff; }
         html[lang='ru'] .tile-financial-services__content-bottom-text, html[lang='ru-RU'] .tile-financial-services__content-bottom-text {
-          font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+          font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
         html[lang='zh'] .tile-financial-services__content-bottom-text, html[lang='zh-CN'] .tile-financial-services__content-bottom-text {
           font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
         html[lang='ar'] .tile-financial-services__content-bottom-text, html[lang='ar-AE'] .tile-financial-services__content-bottom-text {
@@ -11001,7 +11001,7 @@ table {
         margin-bottom: 0.375rem;
         color: #fff; }
         html[lang='ru'] .tile-financial-services__content-bottom-headline, html[lang='ru-RU'] .tile-financial-services__content-bottom-headline {
-          font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+          font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
         html[lang='zh'] .tile-financial-services__content-bottom-headline, html[lang='zh-CN'] .tile-financial-services__content-bottom-headline {
           font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
         html[lang='ar'] .tile-financial-services__content-bottom-headline, html[lang='ar-AE'] .tile-financial-services__content-bottom-headline {
@@ -11029,7 +11029,7 @@ table {
         margin-bottom: 1.125rem;
         color: #959899; }
         html[lang='ru'] .tile-financial-services__content-bottom-textarea, html[lang='ru-RU'] .tile-financial-services__content-bottom-textarea {
-          font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+          font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
         html[lang='zh'] .tile-financial-services__content-bottom-textarea, html[lang='zh-CN'] .tile-financial-services__content-bottom-textarea {
           font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
         html[lang='ar'] .tile-financial-services__content-bottom-textarea, html[lang='ar-AE'] .tile-financial-services__content-bottom-textarea {
@@ -11151,7 +11151,7 @@ table {
     display: inline-block;
     vertical-align: middle; }
     html[lang='ru'] .header-tile__title, html[lang='ru-RU'] .header-tile__title {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .header-tile__title, html[lang='zh-CN'] .header-tile__title {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .header-tile__title, html[lang='ar-AE'] .header-tile__title {
@@ -11190,7 +11190,7 @@ table {
     font-size: 1rem;
     line-height: 1.5rem; }
     html[lang='ru'] .header-tile__paragraph, html[lang='ru-RU'] .header-tile__paragraph {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .header-tile__paragraph, html[lang='zh-CN'] .header-tile__paragraph {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .header-tile__paragraph, html[lang='ar-AE'] .header-tile__paragraph {
@@ -11207,7 +11207,7 @@ table {
     font-size: 1rem;
     line-height: 1.5rem; }
     html[lang='ru'] .header-tile__subtitle, html[lang='ru-RU'] .header-tile__subtitle {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .header-tile__subtitle, html[lang='zh-CN'] .header-tile__subtitle {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .header-tile__subtitle, html[lang='ar-AE'] .header-tile__subtitle {
@@ -11229,7 +11229,7 @@ table {
   padding-top: 1.875rem;
   border-top: 1px solid #494e51; }
   html[lang='ru'] .footer__paragraph, html[lang='ru-RU'] .footer__paragraph {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .footer__paragraph, html[lang='zh-CN'] .footer__paragraph {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .footer__paragraph, html[lang='ar-AE'] .footer__paragraph {
@@ -11298,7 +11298,7 @@ table {
     cursor: pointer;
     font-size: 1rem; }
     html[lang='ru'] .tab-horizontal__item, html[lang='ru-RU'] .tab-horizontal__item {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .tab-horizontal__item, html[lang='zh-CN'] .tab-horizontal__item {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .tab-horizontal__item, html[lang='ar-AE'] .tab-horizontal__item {
@@ -11397,7 +11397,7 @@ table {
     text-decoration: none;
     cursor: pointer; }
     html[lang='ru'] .pagination__goto, html[lang='ru-RU'] .pagination__goto {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .pagination__goto, html[lang='zh-CN'] .pagination__goto {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .pagination__goto, html[lang='ar-AE'] .pagination__goto {
@@ -11552,7 +11552,7 @@ table {
   font-weight: 200;
   color: #fff; }
   html[lang='ru'] .next-best-actions__title, html[lang='ru-RU'] .next-best-actions__title {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .next-best-actions__title, html[lang='zh-CN'] .next-best-actions__title {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .next-best-actions__title, html[lang='ar-AE'] .next-best-actions__title {
@@ -11579,7 +11579,7 @@ table {
   line-height: 1.5rem;
   color: #fff; }
   html[lang='ru'] .next-best-actions__subtitle, html[lang='ru-RU'] .next-best-actions__subtitle {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .next-best-actions__subtitle, html[lang='zh-CN'] .next-best-actions__subtitle {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .next-best-actions__subtitle, html[lang='ar-AE'] .next-best-actions__subtitle {
@@ -11713,7 +11713,7 @@ table {
     display: block;
     margin-left: 1.875rem; }
     html[lang='ru'] .central-context-menu-button__label, html[lang='ru-RU'] .central-context-menu-button__label {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .central-context-menu-button__label, html[lang='zh-CN'] .central-context-menu-button__label {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .central-context-menu-button__label, html[lang='ar-AE'] .central-context-menu-button__label {
@@ -11778,7 +11778,7 @@ table {
     font-size: 1rem;
     line-height: 1.5rem; }
     html[lang='ru'] .central-context-menu-flyout__content, html[lang='ru-RU'] .central-context-menu-flyout__content {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .central-context-menu-flyout__content, html[lang='zh-CN'] .central-context-menu-flyout__content {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .central-context-menu-flyout__content, html[lang='ar-AE'] .central-context-menu-flyout__content {
@@ -11808,7 +11808,7 @@ table {
   color: #fff;
   display: inline-block; }
   html[lang='ru'] .tag, html[lang='ru-RU'] .tag {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .tag, html[lang='zh-CN'] .tag {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .tag, html[lang='ar-AE'] .tag {
@@ -12007,7 +12007,7 @@ table {
   line-height: 1.5rem;
   display: block; }
   html[lang='ru'] .password-complexity-hint__item, html[lang='ru-RU'] .password-complexity-hint__item {
-    font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+    font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
   html[lang='zh'] .password-complexity-hint__item, html[lang='zh-CN'] .password-complexity-hint__item {
     font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
   html[lang='ar'] .password-complexity-hint__item, html[lang='ar-AE'] .password-complexity-hint__item {
@@ -12065,7 +12065,7 @@ table {
       .media-center-modal__header {
         padding: 1.875rem 1.875rem; } }
     html[lang='ru'] .media-center-modal__header, html[lang='ru-RU'] .media-center-modal__header {
-      font-family: "Porsche Next Cyrilic", "Arial Narrow", Arial, sans-serif; }
+      font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif; }
     html[lang='zh'] .media-center-modal__header, html[lang='zh-CN'] .media-center-modal__header {
       font-family: "Porsche Next", 黑体, SimHei, 宋体, SimSun, sans-serif; }
     html[lang='ar'] .media-center-modal__header, html[lang='ar-AE'] .media-center-modal__header {
