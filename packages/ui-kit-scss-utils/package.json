@@ -19,7 +19,7 @@
     "utils",
     "utilities"
   ],
-  "homepage": "https://ui.porsche.com",
+  "homepage": "https://designsystem.porsche.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
@@ -33,5 +33,5 @@
   "scripts": {
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log"
   },
-  "license": "SEE LICENSE IN https://ui.porsche.com"
+  "license": "SEE LICENSE IN https://designsystem.porsche.com"
 }
