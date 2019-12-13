@@ -24,7 +24,7 @@ If you don't have an account for one of the those NPM registries, you can easily
 1. Add local `.npmrc` at the root of your NPM project and add the following lines of code:
 ``` 
 always-auth = true
-@porsche-ui:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
+@porsche-design-system:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
 ``` 
 
 #### Vanilla JS:
