@@ -1,11 +1,12 @@
-export type CounterResetValue = {
+export interface CounterResetValue {
   [key: string]: number;
-};
+}
 
-export type Accumulator = {
-  buffer: string | null,
-  result: CounterResetValue
-};
+export interface Accumulator {
+  buffer: string | null;
+  result: CounterResetValue;
+}
+
 export function readCounterResetValue(element: Element): CounterResetValue {
   const computedStyles = window.getComputedStyle(element);
   const resetValues = computedStyles.getPropertyValue('counter-reset');
@@ -21,7 +22,7 @@ export function readCounterResetValue(element: Element): CounterResetValue {
       buffer: null,
       result: {
         ...accumulator.result,
-        [accumulator.buffer]: parseInt(value)
+        [accumulator.buffer]: parseInt(value, 10)
       }
     };
   }, {
