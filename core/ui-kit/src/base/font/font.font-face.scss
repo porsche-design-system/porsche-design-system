@@ -1,132 +1,102 @@
 @import 'font.setup.scss';
 
-// latin charset
+// Latin
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-thin;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Thin.svg#PorscheNext') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Thin.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Thin.woff') format('woff');
+  unicode-range: U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F,
+  U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F,
+  U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF;
+  font-display: swap;
 }
 
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Regular.svg#PorscheNext') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Regular.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Regular.woff') format('woff');
+  unicode-range: U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F,
+  U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F,
+  U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF;
+  font-display: swap;
 }
 
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
   font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-latin/PorscheNextWLa-Bold.svg#PorscheNext') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Bold.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-latin/PorscheNextWLa-Bold.woff') format('woff');
+  unicode-range: U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F,
+  U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F,
+  U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF;
+  font-display: swap;
 }
 
-// cyrillic charset
+// Greek
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
-  font-family: 'Porsche Next Cyrilic';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-thin;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Thin.svg#PorscheNextCyril') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-greek/PorscheNextWGr-Thin.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-greek/PorscheNextWGr-Thin.woff') format('woff');
+  unicode-range: U+0370-03FF;
+  font-display: swap;
 }
 
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
-  font-family: 'Porsche Next Cyrilic';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Regular.svg#PorscheNextCyril') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-greek/PorscheNextWGr-Regular.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-greek/PorscheNextWGr-Regular.woff') format('woff');
+  unicode-range: U+0370-03FF;
+  font-display: swap;
 }
 
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
-  font-family: 'Porsche Next Cyrilic';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-cyril/PorscheNextWCy-Bold.svg#PorscheNextCyril') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-greek/PorscheNextWGr-Bold.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-greek/PorscheNextWGr-Bold.woff') format('woff');
+  unicode-range: U+0370-03FF;
+  font-display: swap;
 }
 
-// greek charset
+// Cyril
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
-  font-family: 'Porsche Next Greek';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-thin;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Thin.svg#PorscheNextGreek') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-cyril/PorscheNextWCy-Thin.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-cyril/PorscheNextWCy-Thin.woff') format('woff');
+  unicode-range: U+0400-04FF;
+  font-display: swap;
 }
 
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
-  font-family: 'Porsche Next Greek';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-regular;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Regular.svg#PorscheNextGreek') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-cyril/PorscheNextWCy-Regular.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-cyril/PorscheNextWCy-Regular.woff') format('woff');
+  unicode-range: U+0400-04FF;
+  font-display: swap;
 }
 
 @font-face {
-  // sass-lint:disable-block no-duplicate-properties indentation
-  font-family: 'Porsche Next Greek';
+  font-family: 'Porsche Next';
   font-style: normal;
   font-weight: $font-weight-bold;
-  font-display: fallback;
-  src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.eot'); // IE9 Compat Modes
-  src: url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.woff2') format('woff2'), // Super Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.woff') format('woff'), // Pretty Modern Browsers
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.ttf') format('truetype'), // Safari, Android, iOS
-  url('#{$font-resource-base-path}/porsche-next-greek/PorscheNextWGr-Bold.svg#PorscheNextGreek') format('svg'); // Legacy iOS
+  src: url('#{$p-font-face-source}/porsche-next-cyril/PorscheNextWCy-Bold.woff2') format('woff2'),
+  url('#{$p-font-face-source}/porsche-next-cyril/PorscheNextWCy-Bold.woff') format('woff');
+  unicode-range: U+0400-04FF;
+  font-display: swap;
 }
 
 // arabic charset

@@ -1,13 +1,14 @@
 $font-resource-base-path: 'https://cdn.ui.porsche.com/porsche-ui-kit/font/v1' !default;
+$p-font-face-source: 'https://cdn.ui.porsche.com/porsche-ui-kit/font/v2';
 
 $font-primary-family: 'Porsche Next', 'Arial Narrow', Arial, sans-serif !default;
 $font-default-family: 'Porsche Next', 'Arial Narrow', Arial, sans-serif !default;
 
-$font-primary-family-cyrilic: 'Porsche Next Cyrilic', 'Arial Narrow', Arial, sans-serif !default;
-$font-default-family-cyrilic: $font-primary-family-cyrilic;
+$font-primary-family-cyrilic: $font-primary-family;
+$font-default-family-cyrilic: $font-primary-family;
 
-$font-primary-family-greek: 'Porsche Next Greek', 'Arial Narrow', Arial, sans-serif !default;
-$font-default-family-greek: $font-primary-family-greek;
+$font-primary-family-greek: $font-primary-family;
+$font-default-family-greek: $font-primary-family;
 
 $font-primary-family-chinese: 'Porsche Next', 黑体, SimHei, 宋体, SimSun, sans-serif !default;
 $font-default-family-chinese: $font-primary-family-chinese !default;

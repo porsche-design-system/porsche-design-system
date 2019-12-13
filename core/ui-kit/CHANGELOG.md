@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.20.0] - 2019-12-13
+
+* Change path to default webfonts to match with Porsche Design System
+* Adapt font loading strategy of latin, cyril and greek
+
 ## [0.19.0] - 2019-07-30
 
 * Changed path of webfonts to deliver webfont files globally from Edgecast CDN
