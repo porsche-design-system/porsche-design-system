@@ -8,7 +8,7 @@ We encourage an open and clear design workflow over all digital Porsche products
 ### Project and file structure
 The Porsche organisation is structured by context within different sections. Product-specific files are stored in different team projects. Team projects are visible for all organisation members by default. Confidential work is stored in private projects, which are only accessible by members on invitation.
 
-For better discoverability, files and libraries within a project are recommended to be split and named by their features in lower case with hyphenation. All libraries created within the Porsche organisation should be named with the format `porsche-ui-kit-[projectname].sketch`.
+For better discoverability, files and libraries within a project are recommended to be split and named by their features in lower case with hyphenation. All libraries created within the Porsche organisation should be named with the format `porsche-design-system-[projectname].sketch`.
 
 ![Abstract file structure](../../assets/web/abstract-filestructure.png)
 

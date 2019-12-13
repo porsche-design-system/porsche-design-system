@@ -20,7 +20,7 @@ const fakeNpmPath = path.join(__dirname, 'scripts', 'fakenpm');
 process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
 
 export const config: Config = {
-  namespace: 'porsche-ui-kit',
+  namespace: 'porsche-design-system',
   outputTargets: [
     { type: 'dist', esmLoaderPath: '../loader' },
     {
