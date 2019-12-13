@@ -140,7 +140,7 @@ if isWorkingBranchLatestStableBranch; then
   copy_porsche_ui_kit "latest"
   add_deployment_version "latest"
   copy_latest_stable_sketch_file "porsche-design-system-layout-template.sketch"
-  copy_latest_stable_sketch_file "porsche-design-system.sketchpalette"
+  copy_latest_stable_sketch_file "porsche-design-system-colors.sketchpalette"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System App" "porsche-design-system-app.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Basic" "porsche-design-system-basic.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Web" "porsche-design-system-web.sketch"
