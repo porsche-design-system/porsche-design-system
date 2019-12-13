@@ -72,7 +72,7 @@ The roadmap for the Porsche Design System is based on the planned tasks and chan
 ### Setup infrastructure and toolchain for 1.0 release
 - Setup Open Design Tools and Processes (Abstract)
 - Provide versioned Design Libraries Basic and Web
-- Design and develop first release of the Design System Website 1.0 (https://ui.porsche.com)
+- Design and develop first release of the Design System Website 1.0 (https://designsystem.porsche.com)
 - Setup code distribution infrastructure (NPM Registry)
 - Setup development and contribution infrastructure (GitHub, CI/CD)
 - Define User- and Access-Management

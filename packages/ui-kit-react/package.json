@@ -30,7 +30,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "license": "SEE LICENSE IN https://ui.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "browserslist": {
     "production": [
       "last 2 version",
