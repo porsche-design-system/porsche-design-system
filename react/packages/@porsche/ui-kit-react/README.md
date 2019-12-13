@@ -39,7 +39,7 @@ Different components can be cross-referenced using the `@see` annotation inside 
 1. Update version of ui-kit-react dependency in `ui-kit-react-docs/package.json`
 1. Run project with `yarn start` to be sure everything works as expected
 1. Create a commit with following message structure `Release react:v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Run `yarn run publish:artifactory` which will deploy the artifact to the Artifactory repository an creates a git tag.
+1. Run `yarn publish` which will deploy the artifact to the Artifactory repository an creates a git tag.
 1. Create a Git tag `git tag v0.{MINOR_NUMBER}.{PATCH_NUMBER}/react`
 1. Push local commit with tag to `0.x` branch `git push --tags`
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche UI Kit channel of porsche.slack.com workspace

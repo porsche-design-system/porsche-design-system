@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.14.13] - 2019-12-13
+
+-   Change webfont paths to be equal to Porsche Design System path.
+
+## [0.14.12] - 2019-12-11
+
+-   Added SSR safeguard for Icon component.
+
 ## [0.14.11] - 2019-12-05
 
 -   You can now configure the `required` and `spellCheck` property of `<Input>`.
