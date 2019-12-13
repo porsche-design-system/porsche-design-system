@@ -40,7 +40,7 @@ setup() {
   P_WORKING_BRANCH="${GITHUB_REF:11}"
   P_LATEST_STABLE_BRANCH="$(git remote show origin | grep "HEAD branch" | sed "s/.*: //")"
   P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
-  P_LATEST_STABLE_SKETCH_VERSION="0.0.9"
+  P_LATEST_STABLE_SKETCH_VERSION="1.0.0"
 }
 
 checkout_gh_pages() {
@@ -139,12 +139,11 @@ if isWorkingBranchLatestStableBranch; then
   prepare_deployment "latest"
   copy_porsche_ui_kit "latest"
   add_deployment_version "latest"
-  copy_latest_stable_sketch_file "porsche-ui-kit-layout-template.sketch"
-  copy_latest_stable_sketch_file "porsche-ui-kit-colors.sketchpalette"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System App" "porsche-ui-kit-app.sketch"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Basic" "porsche-ui-kit-basic.sketch"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Web \"Prep\"" "porsche-ui-kit-web.prep.sketch"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Web" "porsche-ui-kit-web.sketch"
+  copy_latest_stable_sketch_file "porsche-design-system-layout-template.sketch"
+  copy_latest_stable_sketch_file "porsche-design-system.sketchpalette"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System App" "porsche-design-system-app.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Basic" "porsche-design-system-basic.sketch"
+  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Web" "porsche-design-system-web.sketch"
 fi
 deploy_to_gh_pages
 verify_deployment "${P_WORKING_BRANCH}"
