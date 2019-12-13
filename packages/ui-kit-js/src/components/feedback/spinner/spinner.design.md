@@ -27,7 +27,7 @@ Including text can be helpful to improve clarity. Keep it simple by only explain
 the user from clicking twice on a shopping button in order to not create an extra order.
 A loading animation should always be a user-friendly helper, not a threat.
 
-* For small size, you should use copytext.
+* For small sizes, you should use copytext.
 * For larger Spinner sizes, you can use any additional size, depending on your needs and the available space.
 * Text must always be placed beneath or on the right side of the loader.
 
