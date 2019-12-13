@@ -2,6 +2,16 @@
   "name": "@porsche-design-system/components-js",
   "version": "1.0.0-rc.1",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Anna Krohmer <anna.krohmer@udg.de>",
+    "Oliver Hook <oliver.hook@mhp.com>",
+    "Olivia Pala <olivia.pala@udg.de>",
+    "Christoph Stickel <net.christoph.stickel@mhp.com>"
+  ],
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Design System Web Components JS",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -13,14 +23,6 @@
   "files": [
     "dist/",
     "loader/"
-  ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "contributors": [
-    "Stephan Schröter <stephan.schroeter@mhp.com>",
-    "Marcel Bertram <marcel.bertram@porsche.de>",
-    "Anna Krohmer <anna.krohmer@udg.de>",
-    "Oliver Hook <oliver.hook@mhp.com>",
-    "Olivia Pala <olivia.pala@udg.de>"
   ],
   "keywords": [
     "porsche",
@@ -57,17 +59,17 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-ui/cross-browser-tester": "^1.0.2",
-    "@porsche-design-system/scss-utils": "^1.0.0-rc.1",
-    "@porsche-design-system/utils": "0.0.0",
+    "@porsche-design-system/scss-utils": "latest",
+    "@porsche-design-system/utils": "latest",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-plugins/releases/download/0.0.1-fixed/angular-output-target-0.0.1-fixed.tar.gz",
-    "@stencil/core": "1.8.1",
+    "@stencil/core": "^1.8.1",
     "@stencil/postcss": "^1.0.1",
     "@stencil/react-output-target": "^0.0.2",
     "@stencil/sass": "^1.1.1",
     "@types/autoprefixer": "^9.5.0",
     "@types/classnames": "^2.2.8",
-    "@types/jest": "24.0.23",
+    "@types/jest": "^24.0.23",
     "@types/json5": "^0.0.30",
     "@types/puppeteer": "^1.20.1",
     "@types/throttle-debounce": "^2.1.0",
@@ -80,7 +82,7 @@
     "jest-cli": "^24.8.0",
     "json5": "^2.1.1",
     "node-fetch": "^2.6.0",
-    "puppeteer": "1.20.0",
+    "puppeteer": "^1.20.0",
     "stylelint": "^11.0.0",
     "stylelint-config-prettier": "^6.0.0",
     "stylelint-config-standard": "^19.0.0",
@@ -89,8 +91,7 @@
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "~3.6.3",
+    "typescript": "^3.6.3",
     "wait-on": "^3.3.0"
-  },
-  "license": "SEE LICENSE IN https://designsystem.porsche.com"
+  }
 }
