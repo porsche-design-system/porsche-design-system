@@ -9,6 +9,6 @@ describe('Support', () => {
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'Support and Communication Channels');
+      .and('contain', 'Support and communication channels');
   });
 });

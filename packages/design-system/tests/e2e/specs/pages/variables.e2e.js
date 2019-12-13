@@ -1,6 +1,6 @@
 describe('Variables', () => {
   it('Should navigate through main navigation and show page title', () => {
-    cy.visit('/');
+    cy.visit('/#/web');
 
     cy.get('#app aside nav p-link-pure')
       .contains('Variables')
