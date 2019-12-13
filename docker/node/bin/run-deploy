@@ -78,7 +78,7 @@ copy_latest_stable_sketch_library_and_create_rss_feed() {
     <item>
       <title>${1} (v${P_LATEST_STABLE_SKETCH_VERSION})</title>
       <pubDate>${P_LATEST_STABLE_SKETCH_PUBLISH_DATE}</pubDate>
-      <enclosure url="https://ui.porsche.com/latest/${2}" sparkle:version="${P_LATEST_STABLE_SKETCH_VERSION}" type="application/octet-stream"/>
+      <enclosure url="https://designsystem.porsche.com/latest/${2}" sparkle:version="${P_LATEST_STABLE_SKETCH_VERSION}" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
@@ -108,7 +108,7 @@ verify_deployment() {
   local http_response=""
   while true
   do
-    http_response="$(curl -s -H "Cache-Control: no-cache" "https://ui.porsche.com/${1}/version.md")"
+    http_response="$(curl -s -H "Cache-Control: no-cache" "https://designsystem.porsche.com/${1}/version.md")"
     echo "Check deployment status (${1}). Attempt ${n}/${max} (${http_response}). [$(date)]"
     if [[ "${http_response}" == "${GITHUB_SHA}" ]]; then
       echo "All right, deployment was verified (${1})."

@@ -19,7 +19,7 @@ if [[ -z "${SLACK_WEBHOOK_URL}" ]]; then
 fi
 
 P_ABBR_REF="${GITHUB_REF:11}"
-P_SLACK_TEXT="Checkout https://ui.porsche.com/${P_ABBR_REF} :heart_eyes_cat:"
+P_SLACK_TEXT="Checkout https://designsystem.porsche.com/${P_ABBR_REF} :heart_eyes_cat:"
 P_SLACK_ATTACHMENT="$(git log -1 --format=%s "${GITHUB_SHA}" | cat)"
 P_CURL_STATUS="$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-type: application/json" --data "{\"text\": \"${P_SLACK_TEXT}\", \"attachments\": [{\"text\": \"${P_SLACK_ATTACHMENT}\"}]}" "${SLACK_WEBHOOK_URL}")"
 
