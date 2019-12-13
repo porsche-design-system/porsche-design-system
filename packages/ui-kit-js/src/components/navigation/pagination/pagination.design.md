@@ -32,9 +32,11 @@ The pagination component includes the following sub-components:
 
 ### Arrow left & right
 An arrow is placed on the left and right of the page numbers, enabling to click
-- **Page numbers**
+
+### Page numbers
 The page numbers are set in copysize and turn in Brand color on hover.
-- **Ellipsis (optional)**
+
+### Ellipsis (optional)
 The ellipsis ("...") represents multiple pages that can't be displayed to limited Pagination component width.
 
 ---
