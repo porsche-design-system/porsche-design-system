@@ -1,8 +1,7 @@
 <template>
   <div class="disclaimer">
-    <p-text theme="dark" color="default">
-      A stable version of the Porsche Design System 1.0 is not released yet. The available alpha version of Porsche Design System 1.0
-      is meant to be used for testing purposes only.
+    <p-text theme="dark">
+      We are very excited to announce the first Release Candidate 1.0.0-RC.1 of the Porsche Design System.
     </p-text>
   </div>
 </template>
@@ -19,6 +18,6 @@ export default class Disclaimer extends Vue {}
 
 .disclaimer {
   padding: $p-spacing-8 $p-spacing-32;
-  background: $p-color-theme-light-brand;
+  background: $p-color-theme-light-notification-success;
 }
 </style>
