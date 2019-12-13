@@ -3,10 +3,21 @@
   "workspaces": {
     "packages": [
       "packages/*",
+      "packages/ui-kit-angular/dist/ui-kit-wrapper",
       "packages/ui-kit-react/projects/ui-kit-wrapper"
     ],
     "nohoist": [
-      "**/@types/jasmine"
+      "**/@types/jasmine",
+      "**/ng-packagr",
+      "**/@angular-devkit/**",
+      "**/@angular/**",
+      "**/@vue/**",
+      "**/vue",
+      "**/vue-class-component",
+      "**/vue-property-decorator",
+      "**/vue-router",
+      "**/vuex",
+      "**/vue-template-compiler"
     ]
   },
   "description": "Porsche Design System Monorepo",
@@ -22,6 +33,7 @@
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
   "scripts": {
+    "preinstall": "mkdir -p './packages/ui-kit-angular/dist/ui-kit-wrapper' && cp './packages/ui-kit-angular/projects/ui-kit-wrapper/package.json' './packages/ui-kit-angular/dist/ui-kit-wrapper/package.json'",
     "start": "yarn build && concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn start:ui-kit-js\" \"yarn start:design-system\"",
     "start:ui-kit-js": "yarn --cwd ./packages/ui-kit-js start",
     "start:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular start",

@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-// import {version} from '@porsche-ui/ui-kit-js/package.json';
+// import {version} from '@porsche-design-system/components-js/package.json';
 
 @Component
 export default class Header extends Vue {
@@ -34,7 +34,7 @@ export default class Header extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-ui/ui-kit-scss-utils/index";
+  @import "~@porsche-design-system/scss-utils/index";
 
   .header {
     text-align: center;

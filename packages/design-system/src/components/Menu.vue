@@ -25,7 +25,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-ui/ui-kit-scss-utils/index";
+  @import "~@porsche-design-system/scss-utils/index";
 
   .menu {
     width: rem(40px);

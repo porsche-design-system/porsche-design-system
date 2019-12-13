@@ -31,7 +31,7 @@ function proxyOutputs(instance: any, el: any, events: string[]) {
   events.forEach(eventName => instance[eventName] = fromEvent(el, eventName));
 }
 
-import { Components } from '@porsche-ui/ui-kit-js'
+import { Components } from '@porsche-design-system/components-js'
 export declare interface PButton extends Components.PButton {}
 @ProxyInputs(['disabled', 'hideLabel', 'icon', 'iconSource', 'loading', 'tabbable', 'theme', 'type', 'variant'])
 
