@@ -3,7 +3,7 @@
 Following our mission we align all our doings along our three main objectives:  
 1. Accelerate developing and designing by means of more efficient explorations and launches
 2. Establish the Porsche Design System for all digital Porsche products to improve the holistic UI quality and consistency  
-3. Foster collaboration of Developers, Designers and Decision-Makers trusting the Porsche Design System.
+3. Foster collaboration of developers, designers and decision-makers trusting the Porsche Design System.
 
 The roadmap for the Porsche Design System is based on the planned tasks and changes for one quarter. Therefore there is no delivery commitment and the roadmap may be changed based on upcoming user needs, recent feedback and changing requirements.
 
