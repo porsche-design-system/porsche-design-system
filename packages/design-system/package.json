@@ -1,7 +1,7 @@
 {
-  "name": "@porsche-ui/design-system",
+  "name": "@porsche-design-system/storefront",
   "version": "1.0.0",
-  "scope": "@porsche-ui",
+  "scope": "@porsche-design-system",
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
@@ -27,7 +27,7 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
-    "@porsche-design-system/scss-utils": "^1.0.0-alpha.2",
+    "@porsche-design-system/scss-utils": "^1.0.0-rc.1",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@types/jest": "^24.0.23",
     "@types/js-beautify": "^1.8.1",

@@ -28,7 +28,7 @@ export const config: Config = {
       serviceWorker: null,
       copy: [
         {
-          src: require.resolve('@porsche-ui/utils/dist/visual-regression-test.css'),
+          src: require.resolve('@porsche-design-system/utils/dist/visual-regression-test.css'),
           dest: 'visual-regression-test.css'
         },
         {

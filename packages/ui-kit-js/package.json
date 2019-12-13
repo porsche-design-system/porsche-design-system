@@ -1,7 +1,7 @@
 {
   "name": "@porsche-design-system/components-js",
-  "version": "1.0.0-alpha.7",
-  "scope": "@porsche-ui",
+  "version": "1.0.0-rc.1",
+  "scope": "@porsche-design-system",
   "description": "Porsche Design System Web Components JS",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -37,7 +37,7 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "publishConfig": {
-    "@porsche-ui:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
     "start": "yarn build:iconNameTypings && stencil build --watch --serve",
@@ -57,8 +57,8 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-ui/cross-browser-tester": "^1.0.2",
-    "@porsche-design-system/scss-utils": "^1.0.0-alpha.2",
-    "@porsche-ui/utils": "0.0.0",
+    "@porsche-design-system/scss-utils": "^1.0.0-rc.1",
+    "@porsche-design-system/utils": "0.0.0",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-plugins/releases/download/0.0.1-fixed/angular-output-target-0.0.1-fixed.tar.gz",
     "@stencil/core": "1.8.1",
