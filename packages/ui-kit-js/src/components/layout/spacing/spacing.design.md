@@ -1,14 +1,16 @@
 # Spacing
-We use defined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes the development easier. For fluid layouts the spacings should be used in combination with the [responsive grid](#/web/components/layout/grid).
+We use predefined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes development easier. For fluid layouts the spacings should be used in combination with the [Responsive Grid](#/web/components/layout/grid).
 
-### 8 px spacing system - the Porsche formula
-The Porsche spacing system is based on multiples of eight. The unit of 8 px refers to the general base size of 16 px (= 1 em), that is also applied in typography and other component sizes.
+### 8px spacing system - the Porsche formula
+
+The Porsche spacing system is based on multiples of eight. The unit of 8px refers to the general base size of 16px (= 1em), that is also applied in the typography and other component sizes.
 
 ![The Porsche spacing formula](./assets/spacings-formula.png)
 
 ## Spacing system and layout spacings
+
 For layouting we recommend to use the <strong><span style="color:#00D5B9">layout spacings</span></strong> that are available for developers as variables from x-small to xx-large.
-Additional increments of the spacing system can be used for specific requirements as long as it is based on the 8 px spacing system.
+Additional increments of the spacing system can be used for specific requirements as long as it is based on the 8px spacing system.
 
 |       	                                |                	| PX     	| REM 	| LAYOUT SPACING |
 |----------------------------------------	|---------------	|-------	|------	|------	|
@@ -28,7 +30,7 @@ Additional increments of the spacing system can be used for specific requirement
 ![The Porsche spacing formula](./assets/spacings-example-02.png)
 Example: Mixed use of the spacing system with layout and custom spacings.
 
-## Working with space 
+## Working with space
 
 Spacing is a powerful design element, an integral part of every layout, which can create relationships, hierarchy, and rhythm between components.
 
@@ -51,7 +53,7 @@ certain elements.
 ### White space (also: negative space)
 
 The empty space (also referred to as negative space) in a
-design. Although called white space, the blank space can be filled with any colour
+design. Although called white space, the blank space can be filled with any color
 as long as it’s free of elements like text, graphics or images, creating a
 well-spaced and clear product. White space helps deliver a good experience by
 giving elements space to breathe and letting the reader’s eye relax.
@@ -59,12 +61,12 @@ giving elements space to breathe and letting the reader’s eye relax.
 ## Usage in Sketch
 
 ### Define the grid
-The Porsche UI Kit works with 8px
+The Porsche Design System works with 8px
 increments, but it allows 4px values in a few cases, where greater flexibility is
 needed. We recommend setting up the workspace with a 4px grid system. You can
 change the Sketch grid settings via: View → Canvas → Grid Settings → Grid Block
-Size: 4 px. Or, when setting up a totally new UI design file, feel free to use
-the [Porsche UI Kit layout template](http://ui.porsche.com/latest/porsche-ui-kit-layout-template.sketch) with predefined settings.
+Size: 4px. Or, when setting up a totally new UI design file, feel free to use
+the [Porsche Design System layout template](http://designsystem.porsche.com/latest/porsche-ui-kit-layout-template.sketch) with predefined settings.
 
 ### Snap to grid
 Most design apps have the option to snap elements to the grid.
@@ -74,10 +76,10 @@ Using this feature will help position elements faster in the layout.
 To make the UI design workflow as smooth as possible, it is helpful to adjust
 the nudging (= increments an element moves when using keyboard arrows) to the
 grid steps in use. We recommend the following settings, reachable via Sketch
-settings → Canvas.
+settings → Canvas:
 
-- Move objects **1 px** using Arrow keys. 
-- Move objects **8 px** using Shift-Arrow keys.
+- Move objects **1px** using Arrow keys. 
+- Move objects **8px** using Shift-Arrow keys.
 
 ## Design tools vs. web browser
 
@@ -95,7 +97,7 @@ optimal results.
 ![Abstract inspect view of spacing](./assets/spacings-inspect.png)
 
 ### Borders
-While in Sketch the border doesn't add to the shape size, browsers
+While in Sketch the border isn't added to the shape size, browsers
 consider borders as solid space around elements by default. We recommend to
 ignore this fact while designing and to always set the focus on giving the developer
 the right spacing sizes between or inside elements, even if this results in
@@ -110,18 +112,18 @@ recommend using paths with a stroke.
 Developers measure the spacing of typography from the bounding box
 of the text element. When working with typography, the bounding box should be
 placed within the grid parameters, even if the baseline of the typography is not
-on the grid line. MEMO: It's best to always create texts using the text tool, not as a
-box.
+on the grid line. It's best to always create texts using the text tool, not as a
+box!
 
 ![Text box placement](./assets/spacings-bounding-box.png)
 
 ### How to handle uneven image heights
-It is no rocket science setting the correct 8 px spacing values when the element
-heights correspond to the 4 px grid themselves. But there is an exception, where
+It is no rocket science setting the correct 8px spacing values when the element
+heights correspond to the 4px grid themselves. But there is an exception, where
 element heights don’t fit in perfectly: Images. They can be displayed in many
 different aspect ratios (such as 16:9 or 4:3) and follow various rules for
 handling responsiveness (like cropping or resizing). Depending on their width
-and the screen size, their height will most likely not fit in the 4 px grid. To
+and the screen size, their height will most likely not fit in the 4px grid. To
 follow a consistent rule, we recommend to always place the upper part (X/Y
 value) on the grid system, even if the bottom part doesn’t fit. The following
 element underneath should then be placed on the grid line again. As for the

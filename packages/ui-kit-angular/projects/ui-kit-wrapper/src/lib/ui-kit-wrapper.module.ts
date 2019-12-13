@@ -15,9 +15,7 @@ import {
   PMarque,
   PPagination,
   PSpinner,
-  PText,
-  PTextList,
-  PTextListItem
+  PText
 } from './ui-kit-wrapper.component';
 
 const DECLARATIONS = [
@@ -34,9 +32,7 @@ const DECLARATIONS = [
   PMarque,
   PPagination,
   PSpinner,
-  PText,
-  PTextList,
-  PTextListItem
+  PText
 ];
 
 export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {

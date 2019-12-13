@@ -3,17 +3,27 @@
 **Headline component** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
 
 ## Variant
-There are multiple predefined styling variants available. Additionally the correct semantic tag (h1 - h6) can be set.
+There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
-    <p-headline :theme="theme" variant="large-title" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
-    <p-headline :theme="theme" variant="headline-1" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
-    <p-headline :theme="theme" variant="headline-2" tag="h2">The quick brown fox jumps over the lazy dog</p-headline>
-    <p-headline :theme="theme" variant="headline-3" tag="h3">The quick brown fox jumps over the lazy dog</p-headline>
-    <p-headline :theme="theme" variant="headline-4" tag="h4">The quick brown fox jumps over the lazy dog</p-headline>
-    <p-headline :theme="theme" variant="headline-5" tag="h5">The quick brown fox jumps over the lazy dog</p-headline>
-    <p-headline :theme="theme" variant="headline-6" tag="h6">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="large-title">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="headline-1">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="headline-2">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="headline-3">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="headline-4">The quick brown fox jumps over the lazy dog</p-headline>
+  </template>
+</Playground>
+
+---
+
+## Custom tag hierarchy
+If a custom tag hierarchy is needed, individual headline tags can be set from `h1` to `h6`. 
+
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-headline :theme="theme" variant="headline-1" tag="h3">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="headline-3" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
   </template>
 </Playground>
 

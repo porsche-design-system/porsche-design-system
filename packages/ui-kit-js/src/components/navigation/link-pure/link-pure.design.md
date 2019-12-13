@@ -1,6 +1,6 @@
 # Link Pure
 
-Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to Link Primary, Secondary and Tertiarty. (In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) or [Button Pure](#/web/components/action/button-pure) component instead.)
+Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to the normal Porsche Design System Link. (In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) or [Button Pure](#/web/components/action/button-pure) component instead.)
 
 ---
 
@@ -10,11 +10,11 @@ Per default, the Link Pure is set in **copytext size**. If another size or hier
 
 | Size | Example |
 |------|------|------|
-| X-Small | <p-link-pure size="x-small" href="https://ui.porsche.com">Link Pure</p-link-pure> |
-| Small | <p-link-pure size="small" href="https://ui.porsche.com">Link Pure</p-link-pure> |
-| Medium | <p-link-pure size="medium" href="https://ui.porsche.com">Link Pure</p-link-pure> |
-| Large | <p-link-pure size="large" href="https://ui.porsche.com">Link Pure</p-link-pure> |
-| X-Large | <p-link-pure size="x-large" href="https://ui.porsche.com">Link Pure</p-link-pure> |
+| X-Small | <p-link-pure size="x-small" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
+| Small | <p-link-pure size="small" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
+| Medium | <p-link-pure size="medium" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
+| Large | <p-link-pure size="large" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
+| X-Large | <p-link-pure size="x-large" href="https://designsystem.porsche.com">Link Pure</p-link-pure> |
 
 ---
 
@@ -22,13 +22,13 @@ Per default, the Link Pure is set in **copytext size**. If another size or hier
 
 ### Icon and Text
 
-<p-link-pure size="large" href="https://ui.porsche.com">Link Pure</p-link-pure>
+<p-link-pure size="large" href="https://designsystem.porsche.com">Link Pure</p-link-pure>
 
 This should be the variant of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility.
 
 ### Icon only
 
-<p-link-pure size="large" hide-label="true" href="https://ui.porsche.com">Link Pure</p-link-pure>
+<p-link-pure size="large" hide-label="true" href="https://designsystem.porsche.com">Link Pure</p-link-pure>
 
 When it's enough to indicate an interaction with an icon only, the text label can be hidden. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon.
 
@@ -68,11 +68,11 @@ The text label within a link should always be short and descriptive.
 
 ### Link Pure on images
 
-A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. Make sure to always use regular font-weight in links pure that are placed on images to provide legibility.
+A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. Make sure to always use regular font-weight in Links Pure that are placed on images to provide legibility.
 
 ### Additional subtext
 
-Link Pure in size medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the Link Pure component.
+Links Pure in size medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the Link Pure component.
 
 ### Link Pure groups
 
