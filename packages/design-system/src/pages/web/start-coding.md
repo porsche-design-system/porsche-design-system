@@ -76,8 +76,8 @@ If you're using web components in a static website, the following page setup is 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Porsche Design System</title>
-    <script type="module" src="PATH/TO/PACKAGE/@porsche-design-system/components-js/dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
-    <script nomodule src="PATH/TO/PACKAGE/@porsche-design-system/components-js/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+    <script nomodule src="PATH/TO/PACKAGE/@porsche-design-system/components-js/dist/porsche-design-system/porsche-design-system.js"></script>
+    <script type="module" src="PATH/TO/PACKAGE/@porsche-design-system/components-js/dist/porsche-design-system/porsche-design-system.esm.js"></script>
   </head>
   <body>
     <p-headline variant="headline-1">Some text</p-headline>

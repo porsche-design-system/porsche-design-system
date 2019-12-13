@@ -58,7 +58,7 @@ The main breakpoints (see above) are deliberately chosen with some distance from
 
 ### Layout template 
 To make layouting from scratch as easy as possible, the
-optimized viewport sizes are provided by [Sketch artboard templates](http://designsystem.porsche.com/latest/porsche-ui-kit-layout-template.sketch). They
+optimized viewport sizes are provided by [Sketch artboard templates](http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch). They
 come with final layout settings (including the responsive grid) that can be turned visible via: View → Canvas →
 Show Layout.
 
