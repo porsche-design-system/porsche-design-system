@@ -11,7 +11,7 @@ We use Slack for public discussions and questions, that can be read and answered
 For sending notifications and personal account credentials we maintain a member list. Let us notify you whenever there is relevant news for you regarding Porsche Design System or general design topics. [Subscribe to mailing list](http://eepurl.com/ghVSjH). or [request an account](http://eepurl.com/gnOIXD).
 
 ## Bug, issue and contribution management at GitHub
-Bug reports or feature requests can be forwarded to the Porsche Design System team by creating issues in the [public Porsche Design System GitHub repository](https://github.com/porscheui/porsche-ui-contribution).If you want to contribute solutions or fixes, your can create pull requests in the [private Porsche Design System repository](https://github.com/porscheui/porsche-ui-kit) after you have been granted access.
+Bug reports or feature requests can be forwarded to the Porsche Design System team by creating issues in the [public Porsche Design System GitHub repository](https://github.com/porscheui/porsche-ui-contribution).If you want to contribute solutions or fixes, you can create pull requests in the [private Porsche Design System repository](https://github.com/porscheui/porsche-ui-kit) after you have been granted access.
 
 ## Exchange and consultation at the office hour
 Join our montly Porsche Design System demo and office hour appointment (on-site and remote, via [Slack channel #p-porsche-ui-kit](https://porsche.slack.com/messages/CDNR2AEH2)) for:
