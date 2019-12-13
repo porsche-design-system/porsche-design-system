@@ -5,6 +5,7 @@ services:
     build: ./docker/node
     working_dir: /opt/porsche-ui-kit-app
     user: "${RUN_UID}:${RUN_GID}"
+    ipc: "host"
     ports:
       - "8080:8080"
       - "3333:3333"
