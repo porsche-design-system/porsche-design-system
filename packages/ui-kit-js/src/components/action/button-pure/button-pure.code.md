@@ -62,7 +62,7 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 
 ### Responsive
 
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :themeable="true">
   <template v-slot={theme}>

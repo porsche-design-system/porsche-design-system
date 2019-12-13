@@ -106,11 +106,11 @@ _It's a job exclusively for the CI/CD pipeline, that's why it should not be exec
 1. Run `./docker.sh run-slack`
 
 ## Dependency updates
-Every week, we update our npm packages:
+Every week, we update our NPM packages:
 
 1. Switch to __project root directory__
 1. Run `./docker.sh run-upgrade`  
-This should output the dependencies you might want to update. Select the npm dependencies to be updated and press
+This should output the dependencies you might want to update. Select the NPM dependencies to be updated and press
 _Enter_. Afterwards execute automated tests to make sure application still works.
 1. Run `./docker.sh run-build`  
 1. Run `./docker.sh run-lint`  
@@ -123,8 +123,8 @@ As final check start application locally and have a look at it.
 
 ### Hints for updating
 1. Make sure you pulled the latest version before starting
-1. npm registry is linked to a private one (jFrog Artifactory). Make sure you've followed instructions mentioned in
-__Getting started__ section to be able to authenticate during npm dependency update process.
+1. NPM registry is linked to a private one (jFrog Artifactory). Make sure you've followed instructions mentioned in
+__Getting started__ section to be able to authenticate during NPM dependency update process.
 
 
 ## Build status
