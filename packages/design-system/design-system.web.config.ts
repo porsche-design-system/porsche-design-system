@@ -44,7 +44,7 @@ export const config: DesignSystemConfig = {
         // @ts-ignore
         () => import(`@/pages/web/support.md`)
       ],
-      FAQ: [
+      Faq: [
         // @ts-ignore
         () => import(`@/pages/web/faq.md`)
       ]
@@ -63,7 +63,7 @@ export const config: DesignSystemConfig = {
         () => import(`@/pages/web/accessibility.md`)
       ]
     },
-    'SCSS Utils': {
+    'Scss Utils': {
       Introduction: [
         // @ts-ignore
         () => import(`@/pages/web/introduction.md`)
