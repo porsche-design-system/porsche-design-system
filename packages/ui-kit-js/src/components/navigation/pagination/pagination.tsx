@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, Element, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import {
@@ -10,6 +10,7 @@ import {
 } from './pagination-helper';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
+import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 
 export type NumberOfPageLinks = 5 | 7;
 
@@ -19,6 +20,8 @@ export type NumberOfPageLinks = 5 | 7;
   shadow: true
 })
 export class Pagination {
+  @Element() public element!: HTMLElement;
+
   /** The total count of items. */
   @Prop() public totalItemsCount: number = 1;
 
@@ -63,6 +66,7 @@ export class Pagination {
   }
 
   public componentDidLoad() {
+    improveFocusHandlingForCustomElement(this.element);
     this.unlistenResize = listenResize(() => {
       this.updateMaxNumberOfPageLinks();
     });
