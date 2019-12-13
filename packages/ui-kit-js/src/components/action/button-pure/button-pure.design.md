@@ -63,7 +63,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Cancel | <p-icon name="close" aria-label="Close"></p-icon> | Abandoning a process. |
 | Delete | <p-icon name="delete" aria-label="Delete"></p-icon> | Delete/erase content, e.g. a list item. | 
 | Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | Edit content, e.g. in lists or shop checkout. | 	
-| Add | <p-icon name="plus" aria-label="Plus"></p-icon> | Add content, e.g. a new item in a list.  | 
+| Add | <p-icon name="add" aria-label="Add"></p-icon> | Add content, e.g. a new item in a list. | 
 | Mail / Send | <p-icon name="email" aria-label="E-Mail"></p-icon> | E-mail link, e-mail adress. | 
 | Phone / Call | <p-icon name="phone" aria-label="Phone"></p-icon> | Phone call link, phone number. | 
 
