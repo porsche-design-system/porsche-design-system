@@ -30,13 +30,11 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="10">
           <div class="playground light spacing-block">
-            <p-headline [variant]="'large-title'" [tag]="'h1'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-1'" [tag]="'h1'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-2'" [tag]="'h2'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-3'" [tag]="'h3'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-4'" [tag]="'h4'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-5'" [tag]="'h5'">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-6'" [tag]="'h6'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'large-title'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-1'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-2'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-3'">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-4'">The quick brown fox jumps over the lazy dog</p-headline>
           </div>
         </p-grid-item>
       </p-grid>
@@ -266,78 +264,6 @@ import {Component} from '@angular/core';
           <hr>
         </p-grid-item>
       </p-grid>
-      <p-headline [variant]="'headline-2'">Content</p-headline>
-      <hr>
-      <p-grid>
-        <p-grid-item [size]="2">
-          <p-headline [variant]="'headline-4'" [tag]="'h4'">
-            &lt;p-text-list&gt;<br>
-            &lt;p-text-list-item&gt;
-          </p-headline>
-        </p-grid-item>
-        <p-grid-item [size]="5">
-          <div class="playground light spacing-block">
-            <p-text-list>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-              <p-text-list-item>
-                Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
-                <p-text-list>
-                  <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-                  <p-text-list-item>Lorem ipsum</p-text-list-item>
-                </p-text-list>
-              </p-text-list-item>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-            </p-text-list>
-          </div>
-          <div class="playground light spacing-block">
-            <p-text-list [listType]="'ordered'">
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-              <p-text-list-item>
-                Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
-                <p-text-list [listType]="'ordered'">
-                  <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-                  <p-text-list-item>Lorem ipsum</p-text-list-item>
-                </p-text-list>
-              </p-text-list-item>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-            </p-text-list>
-          </div>
-          <hr>
-        </p-grid-item>
-        <p-grid-item [size]="5">
-          <div class="playground dark spacing-block">
-            <p-text-list [theme]="'dark'">
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-              <p-text-list-item>
-                Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
-                <p-text-list [theme]="'dark'">
-                  <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-                  <p-text-list-item>Lorem ipsum</p-text-list-item>
-                </p-text-list>
-              </p-text-list-item>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-            </p-text-list>
-          </div>
-          <div class="playground dark spacing-block">
-            <p-text-list [theme]="'dark'" [listType]="'ordered'" [color]="'inherit'" style="color: deeppink;">
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-              <p-text-list-item>
-                Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
-                text</strong>
-                <p-text-list [theme]="'dark'">
-                  <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
-                  <p-text-list-item>Lorem ipsum</p-text-list-item>
-                </p-text-list>
-              </p-text-list-item>
-              <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-            </p-text-list>
-          </div>
-          <hr>
-        </p-grid-item>
-      </p-grid>
       <p-headline [variant]="'headline-2'">Feedback</p-headline>
       <hr>
       <p-grid>
@@ -346,19 +272,19 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
-            <p-spinner [size]="'x-small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'medium'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [size]="'large'" [allyLabel]="'Loading'"></p-spinner>
+            <p-spinner [size]="'small'"></p-spinner>
+            <p-spinner [size]="'medium'"></p-spinner>
+            <p-spinner [size]="'large'"></p-spinner>
+            <p-spinner [size]="'inherit'" style="width: 24px;"></p-spinner>
           </div>
           <hr>
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-inline">
-            <p-spinner [theme]="'dark'" [size]="'x-small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'small'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'medium'" [allyLabel]="'Loading'"></p-spinner>
-            <p-spinner [theme]="'dark'" [size]="'large'" [allyLabel]="'Loading'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'small'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'medium'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'large'"></p-spinner>
+            <p-spinner [theme]="'dark'" [size]="'inherit'" style="width: 24px;"></p-spinner>
           </div>
           <hr>
         </p-grid-item>
@@ -528,67 +454,67 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
-            <p-link [variant]="'primary'" [href]="'https://ui.porsche.com'">Some label</p-link>
+            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [href]="'https://ui.porsche.com'">Some label</p-link>
+            <p-link [href]="'https://designsystem.porsche.com'">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [variant]="'tertiary'" [href]="'https://ui.porsche.com'">Some label</p-link>
+            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [icon]="'phone'" [href]="'https://ui.porsche.com'">Some label</p-link>
+            <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [href]="'https://ui.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
+            <p-link [href]="'https://designsystem.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
           </div>
           <hr>
           <div class="playground light spacing-inline">
-            <p-link [variant]="'primary'" [href]="'https://ui.porsche.com'" [hideLabel]="true">Some label</p-link>
+            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [href]="'https://ui.porsche.com'" [hideLabel]="true">Some label</p-link>
+            <p-link [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [variant]="'tertiary'" [href]="'https://ui.porsche.com'" [hideLabel]="true">Some label</p-link>
+            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [icon]="'phone'" [href]="'https://ui.porsche.com'" [hideLabel]="true">Some label</p-link>
+            <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
           </div>
           <hr>
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'primary'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Some label</p-link>
+            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [href]="'https://ui.porsche.com'" [theme]="'dark'">Some label</p-link>
+            <p-link [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'tertiary'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Some label</p-link>
+            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [icon]="'phone'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Some label</p-link>
+            <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [href]="'https://ui.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
+            <p-link [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
           </div>
           <hr>
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'primary'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some
+            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some
               label
             </p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
+            <p-link [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'tertiary'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some
+            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some
               label
             </p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [icon]="'phone'" [href]="'https://ui.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label
+            <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label
             </p-link>
           </div>
           <hr>
@@ -600,55 +526,55 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
-            <p-link-pure [href]="'https://ui.porsche.com'">Some label</p-link-pure>
+            <p-link-pure [href]="'https://designsystem.porsche.com'">Some label</p-link-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-link-pure [hideLabel]="true" [href]="'https://ui.porsche.com'">Some label</p-link-pure>
+            <p-link-pure [hideLabel]="true" [href]="'https://designsystem.porsche.com'">Some label</p-link-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-link-pure [size]="'medium'" [href]="'https://ui.porsche.com'">Medium</p-link-pure>
-            <p-link-pure [size]="'inherit'" [href]="'https://ui.porsche.com'" style="font-size: 48px;">Inherit</p-link-pure>
+            <p-link-pure [size]="'medium'" [href]="'https://designsystem.porsche.com'">Medium</p-link-pure>
+            <p-link-pure [size]="'inherit'" [href]="'https://designsystem.porsche.com'" style="font-size: 48px;">Inherit</p-link-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-link-pure [weight]="'thin'" [href]="'https://ui.porsche.com'">Thin</p-link-pure>
-            <p-link-pure [weight]="'regular'" [href]="'https://ui.porsche.com'">Regular</p-link-pure>
-            <p-link-pure [weight]="'bold'" [href]="'https://ui.porsche.com'">Bold</p-link-pure>
+            <p-link-pure [weight]="'thin'" [href]="'https://designsystem.porsche.com'">Thin</p-link-pure>
+            <p-link-pure [weight]="'regular'" [href]="'https://designsystem.porsche.com'">Regular</p-link-pure>
+            <p-link-pure [weight]="'bold'" [href]="'https://designsystem.porsche.com'">Bold</p-link-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-link-pure [active]="true" [href]="'https://ui.porsche.com'">Some label</p-link-pure>
+            <p-link-pure [active]="true" [href]="'https://designsystem.porsche.com'">Some label</p-link-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-link-pure [icon]="'phone'" [href]="'https://ui.porsche.com'">Some link with a custom icon</p-link-pure>
+            <p-link-pure [icon]="'phone'" [href]="'https://designsystem.porsche.com'">Some link with a custom icon</p-link-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-link-pure [href]="'https://ui.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-pure>
+            <p-link-pure [href]="'https://designsystem.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-pure>
           </div>
           <hr>
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-inline">
-            <p-link-pure [href]="'https://ui.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
+            <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [hideLabel]="true" [href]="'https://ui.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
+            <p-link-pure [hideLabel]="true" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [size]="'medium'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Medium</p-link-pure>
-            <p-link-pure [size]="'inherit'" [href]="'https://ui.porsche.com'" [theme]="'dark'" style="font-size: 48px;">Inherit</p-link-pure>
+            <p-link-pure [size]="'medium'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Medium</p-link-pure>
+            <p-link-pure [size]="'inherit'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="font-size: 48px;">Inherit</p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [weight]="'thin'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Thin</p-link-pure>
-            <p-link-pure [weight]="'regular'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Regular</p-link-pure>
-            <p-link-pure [weight]="'bold'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Bold</p-link-pure>
+            <p-link-pure [weight]="'thin'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Thin</p-link-pure>
+            <p-link-pure [weight]="'regular'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Regular</p-link-pure>
+            <p-link-pure [weight]="'bold'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Bold</p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [active]="true" [href]="'https://ui.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
+            <p-link-pure [active]="true" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [icon]="'phone'" [href]="'https://ui.porsche.com'" [theme]="'dark'">Some link with a custom icon</p-link-pure>
+            <p-link-pure [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some link with a custom icon</p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [href]="'https://ui.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-pure>
+            <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-pure>
           </div>
           <hr>
         </p-grid-item>

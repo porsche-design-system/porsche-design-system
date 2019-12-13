@@ -5,22 +5,22 @@ Typography plays an important role for the general brand impression and is indis
 
 ## Typeface: Porsche Next
 
-The special Porsche feeling and the high recognisability across different touchpoints is decisively shaped by the use of the corporate typeface Porsche Next, that has been exclusively designed for Porsche. Therefore, it is the only typeface allowed to be used for Porsche in both print and digital media.
+The special Porsche feeling and the high recognisability across different touchpoints is decisively shaped by the use of the corporate typeface Porsche Next, which has been exclusively designed for Porsche. Therefore it is the only typeface allowed to be used for Porsche in both print and digital media.
 
-Formally, the impression of the Porsche Next is largely determined by the visual character of the "squircle", a combination of square and circle. which is reflected in the curves and circular shapes of the typeface.
+Formally, the impression of the Porsche Next is largely determined by the visual character of the "squircle", a combination of square and circle, which is reflected in the curves and circular shapes of the typeface.
 
 ![Porsche Next Squircles](./assets/typography-squircle.png)
 
 ### Download
 
-You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v1/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
+You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v2/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
 
 ### Language versions
 
-The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche UI Kit but available as seperate typeface package on request.
+The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche Design System but available as separate typeface packages on request.
 
 #### Chinese / Japanese
-For Chinese and Japanese language, the following system fonts are to be used, sticking to the default Porsche font scaling system:
+For Chinese and Japanese language the following system fonts are to be used, sticking to the default Porsche font scaling system:
 
 - Chinese: 黑体, SimHei, 宋体, SimSun
 - Japanese: MS PGothic
@@ -30,7 +30,7 @@ For Chinese and Japanese language, the following system fonts are to be used, st
 
 ## Headline styles
 
-The Porsche headline styles should **only be used for first-level headlines** whose function is to lead a page, section or content area. For Porsche headlines styles only bold weight is used to provide a good readability and making it easy as possible to focus on the content sections of a page. The headline styles span from Large Title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
+The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles, only bold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. The headline styles span from large title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
 
 |                  | 320 - 759 px (XS)     | 760 - 999 px (S)   | 1000 - 1299 px (M)   | 1300 - 1759 px (L)   | 1760  px or larger (XL)   |
 |------------------|---------------------  |------------------	|-------------------   |-------------------   |------------------------   |
@@ -50,7 +50,7 @@ Also, please note that the headline class namings don't necessarily refer to the
 
 ### Headline-subline combinations
 
-A first-level headline can be supplemented by a corresponding subline. Sublines must be set in Regular using an "Additional sizes" class with minimum 16 px size.
+A first-level headline can be supplemented by a corresponding subline. Sublines must be set in Regular using an "additional sizes" class with minimum 16px size.
 
 | Headline size    | Subline size                                      |
 |------------------|-------------------------------------------------  |
@@ -65,7 +65,7 @@ Examples:
 
 ## Copy styles
 
-The Porsche copy text styles are typically to be used for long-form writing. The default copy text size is 16 px, which is represented by the **text small** style. The copy **text x-small** is only recommended for additional, low-informative text such as disclaimers or captions. Copy text keeps the respective text size throughout all viewports.
+The Porsche copytext styles are typically to be used for long-form writing. The default copytext size is 16px, which is represented by the **text small** style. The copy **text x-small** is only recommended for additional, low-informative text such as disclaimers or captions. Copy text keeps the respective text size throughout all viewports.
 
 | Copy text              | Font size      | Available states                           | 
 |------------------------- |---------------- |--------------------------------------------- |
@@ -78,7 +78,7 @@ The Porsche copy text styles are typically to be used for long-form writing. The
 
 ## Additional styles
 
-For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche UI Kit. There are <strong><span style="color: #00D5B9">predefined default text sizes</span></strong>, which should cover most use cases.
+For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche Design System. There are <strong><span style="color: #00D5B9">predefined default text sizes</span></strong>, which should cover most use cases.
 
 | Additional text size                | Font size       |
 |------------------------- |---------------- |
@@ -114,7 +114,7 @@ Additional text sizes can be defined based on the Porsche type scale system.
 
 ### Line height
 
-For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](#/web/components/layout/spacing) in order to follow a harmonious overall vertical rhythm.
+For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4px baseline unit that fits to the [8px spacing system](#/web/components/layout/spacing) in order to follow a harmonious overall vertical rhythm.
 
 
 ---
@@ -123,24 +123,24 @@ For reasons of legibility, the line height should always be adjusted to the resp
 
 ### Text color
 
-The color to be used for Porsche Next depends on the [Porsche Color Theme](#/web/basic/color) in use. In order to support both simplicity and and legibility (sufficient contrast) default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche Color Themes also provide different text state colors, such as Porsche Red for active states or Grey for disabled text.
+The color to be used for Porsche Next depends on the [Porsche color theme](#/web/basic/color) in use. In order to support both simplicity and legibility (sufficient contrast), default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche color themes also provide different text state colors, such as Porsche Red for active states or Porsche Grey for disabled text.
 
 ### Font weights
 
 The Porsche Next is available in different font weights that enable to add emphasis and create a visual content hierarchy.
-For digital applications, we recommend only to use Bold, Regular and Thin:
+For digital applications, we recommend only to use semibold, regular and thin:
 
-- **Porsche Next Bold** for first-level headlines or copytext highlights.
+- **Porsche Next Semibold** for first-level headlines or copytext highlights.
 - **Porsche Next Regular** for copytext, stand-alone text or sublines (in combination with first-level headlines).
-- **Porsche Next Thin** for stand-alone text larger than 20 px.
+- **Porsche Next Thin** for stand-alone text larger than 20px.
 
 ![Font Weights](./assets/typography-font-weights.png)
 
 ### Text alignment
 
 Per default, the Porsche Next is always used left-aligned. In individual cases or certain components it can also be used centered,
-but keep in mind not to exeed 3 text lines, as it is much harder to read. Also, right-aligned text is possible in exceptional
-cases, for example in tables where right-aligned numbers support readability.
+but keep in mind to not exceed 3 text lines, as it is much harder to read. Right-aligned text is also possible in exceptional
+cases, for example in tables where right-aligned numbers should support readability.
 
 Please avoid…
 
@@ -160,12 +160,12 @@ For UI applications it is recommended to use [no more than 80 characters or glyp
 
 ### Multi-column text
 
-Text paragraphs should always preferably be set as single column. Multi-column text should never acceed 3 columns and is only allowed when it can be ensured that all text columns are in the visible viewport range ("above the fold"). The user should not have to scroll before being able
+Generally, text paragraphs should be set as single column. Multi-column text should never exceed 3 columns and is only allowed when it can be ensured that all text columns are in the visible viewport range ("above the fold"). The user should not have to scroll before being able
 to read the full content.
 
 ### Paragraph spacing
 
-The vertical spacing between copy text paragraphs should be at least 24 px, which equals the space of one line of text in-between.
+The vertical spacing between copytext paragraphs should be at least 24px, which equals the space of one line of text in-between.
 
 ![Copytext paragraph spacing](./assets/typography-paragraph-spacing.png)
 
@@ -189,8 +189,8 @@ For Porsche web applications, good typography is…
 Use typography to provide clear hierarchy, to organize content and to guide the user through the digital product journey.
 
 ### … clear.
-Use typography to provide both efficiency and, from a more visual point of view, to support the clear and modern 
-look and feel of a Porsche application.
+Use typography to provide both efficiency and, from a more visual point of view, support for a clear and modern 
+look and feel of the Porsche application.
 
 ### … readable.
 Never use typography by the sake of itself or as "eye candy". It should always support the usability of 
@@ -201,13 +201,13 @@ Use typography wisely and always keep an eye on the user's needs and the purpose
 
 ### … a matter of course.
 Always use typography in a professional manner in order to support the exclusiveness and high-quality-standard of the brand.
-This not only means to make use of the pre-defined type styles provided in the Porsche UI Kit, but also to follow the general rules
+This not only means to make use of the pre-defined type styles provided in the Porsche Design System, but also to follow the general rules
 of good (micro) typography, such as using the right kind of apostrophes in the respective language. 
 
 ---
 
 ## Accessibility
-As we stick to the common [WCAG 2.1 Standard](#/web/basics/accessibility-criteria)
+As we stick to the common [WCAG 2.1 Standard](#/web/basics/accessibility-criteria),
 you should always ensure a sufficient contrast ratio when designing with text. 
 The combination of text and background color should pass the WCAG AA standard 
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
@@ -217,8 +217,7 @@ for larger text sizes.
 
 Also, you should not rely on color only to convey information. 
 When communicating element states with text (for example a password validation 
-information in forms) make sure to always use additional text stylings 
-(e.g. bold text) to make it easy for visually impaired people to recognise
+information in forms), make sure to always use additional text stylings to make it easy for visually impaired people to recognise
 status information even if they can’t see the color – this is of even higher
 importance the more critical the information is.
 

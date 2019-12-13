@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scope": "@porsche-ui",
   "private": true,
-  "description": "Porsche UI Design System",
+  "description": "Porsche Design System",
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",

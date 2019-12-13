@@ -6,9 +6,9 @@ We encourage an open and clear design workflow over all digital Porsche products
 [Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Videos from Abstract](https://vimeo.com/goabstract).
 
 ### Project and file structure
-The Porsche UI organisation is structured by context within different sections. Product-specific files are stored in different team projects. Team projects are visible for all organisation members by default. Confidential work is stored in private projects, which are only accessible by members on invitation.
+The Porsche organisation is structured by context within different sections. Product-specific files are stored in different team projects. Team projects are visible for all organisation members by default. Confidential work is stored in private projects, which are only accessible by members on invitation.
 
-For better discoverability, files and libraries within a project are recommended to be split and named by their features in lower case with hyphenation. All libraries created within the Porsche UI organisation should be named with the format `porsche-ui-kit-[projectname].sketch`.
+For better discoverability, files and libraries within a project are recommended to be split and named by their features in lower case with hyphenation. All libraries created within the Porsche organisation should be named with the format `porsche-ui-kit-[projectname].sketch`.
 
 ![Abstract file structure](../../assets/web/abstract-filestructure.png)
 
@@ -35,9 +35,9 @@ We always open branches for every change to files in order to avoid having to fr
 
 1. **Create a branch** either from the master or from an existing branch by clicking "New branch..." or by opening a file with "Edit in Sketch". Sketch files can also be opened untracked to test something without saving.
 2. **Name the branch** including the main topic, effort type or the issue number and your signature letters,  
-e.g. `pagination accessibility recolouring | mb | #44`. For more context, you can also add a description and a status to the branch.
+e.g. `pagination accessibility recoloring | mb | #44`. For more context, you can also add a description and a status to the branch.
 4. **Save changes in Sketch and sync them** regularly as commits to Abstract by clicking on "Commit changes" at the bottom. 
-5. **Describe the committed changes** to make them visible for others, e.g. `Changed text colour from to red`. Commit often and describe what you did. Adding detail of what you accomplished in each commit is useful for you and for your coworkers.
+5. **Describe the committed changes** to make them visible for others, e.g. `Changed text color from to red`. Commit often and describe what you did. Adding detail of what you accomplished in each commit is useful for you and for your coworkers.
 
 ![Abstract branches](../../assets/web/abstract-branches.png)
 

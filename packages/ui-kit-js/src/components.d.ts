@@ -20,6 +20,9 @@ import {
 import {
   BreakpointCustomizable,
 } from './utils';
+import {
+  NumberOfPageLinks,
+} from './components/navigation/pagination/pagination';
 
 export namespace Components {
   interface PButton {
@@ -206,9 +209,7 @@ export namespace Components {
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
-    | 'headline-4'
-    | 'headline-5'
-    | 'headline-6';
+    | 'headline-4';
   }
   interface PIcon {
     /**
@@ -333,29 +334,29 @@ export namespace Components {
     */
     'activePage'?: number;
     /**
+    * Aria label what the pagination is used for.
+    */
+    'allyLabel'?: string;
+    /**
+    * Aria label for next page icon.
+    */
+    'allyLabelNext'?: string;
+    /**
+    * Aria label for page navigation.
+    */
+    'allyLabelPage'?: string;
+    /**
+    * Aria label for previous page icon.
+    */
+    'allyLabelPrev'?: string;
+    /**
     * The total count of items which should be shown per page.
     */
     'itemsPerPage': number;
     /**
-    * Aria label what the pagination is used for.
+    * The maximum number of page links rendered
     */
-    'label'?: string;
-    /**
-    * Aria label for next page icon.
-    */
-    'labelNext'?: string;
-    /**
-    * Aria label for page navigation.
-    */
-    'labelPage'?: string;
-    /**
-    * Aria label for previous page icon.
-    */
-    'labelPrev'?: string;
-    /**
-    * The number of pages between ellipsis. 'small' = mobile | 'large' = desktop | 'auto' = breakpoint specific
-    */
-    'pageRange'?: 'small' | 'large' | 'auto';
+    'maxNumberOfPageLinks'?: NumberOfPageLinks| BreakpointCustomizable<NumberOfPageLinks>;
     /**
     * Adapts the color when used on dark background.
     */
@@ -367,15 +368,11 @@ export namespace Components {
   }
   interface PSpinner {
     /**
-    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    * Size of the spinner.
     */
-    'allyLabel'?: string;
+    'size'?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
     /**
-    * Predefined spinner sizes.
-    */
-    'size'?: 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
-    /**
-    * Adapts the spinner color when used on dark background.
+    * Adapts the spinner color depending on the theme.
     */
     'theme'?: 'light' | 'dark';
   }
@@ -417,21 +414,6 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
-  interface PTextList {
-    /**
-    * Basic text color variations depending on theme property.
-    */
-    'color'?: 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'inherit';
-    /**
-    * The type of the text list.
-    */
-    'listType'?: 'unordered' | 'ordered';
-    /**
-    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-    */
-    'theme'?: Theme;
-  }
-  interface PTextListItem {}
 }
 
 declare global {
@@ -520,18 +502,6 @@ declare global {
     prototype: HTMLPTextElement;
     new (): HTMLPTextElement;
   };
-
-  interface HTMLPTextListElement extends Components.PTextList, HTMLStencilElement {}
-  var HTMLPTextListElement: {
-    prototype: HTMLPTextListElement;
-    new (): HTMLPTextListElement;
-  };
-
-  interface HTMLPTextListItemElement extends Components.PTextListItem, HTMLStencilElement {}
-  var HTMLPTextListItemElement: {
-    prototype: HTMLPTextListItemElement;
-    new (): HTMLPTextListItemElement;
-  };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
@@ -547,8 +517,6 @@ declare global {
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
-    'p-text-list': HTMLPTextListElement;
-    'p-text-list-item': HTMLPTextListItemElement;
   }
 }
 
@@ -737,9 +705,7 @@ declare namespace LocalJSX {
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
-    | 'headline-4'
-    | 'headline-5'
-    | 'headline-6';
+    | 'headline-4';
   }
   interface PIcon {
     /**
@@ -863,33 +829,33 @@ declare namespace LocalJSX {
     */
     'activePage'?: number;
     /**
+    * Aria label what the pagination is used for.
+    */
+    'allyLabel'?: string;
+    /**
+    * Aria label for next page icon.
+    */
+    'allyLabelNext'?: string;
+    /**
+    * Aria label for page navigation.
+    */
+    'allyLabelPage'?: string;
+    /**
+    * Aria label for previous page icon.
+    */
+    'allyLabelPrev'?: string;
+    /**
     * The total count of items which should be shown per page.
     */
     'itemsPerPage'?: number;
     /**
-    * Aria label what the pagination is used for.
+    * The maximum number of page links rendered
     */
-    'label'?: string;
+    'maxNumberOfPageLinks'?: NumberOfPageLinks| BreakpointCustomizable<NumberOfPageLinks>;
     /**
-    * Aria label for next page icon.
+    * Emitted when the page changes.
     */
-    'labelNext'?: string;
-    /**
-    * Aria label for page navigation.
-    */
-    'labelPage'?: string;
-    /**
-    * Aria label for previous page icon.
-    */
-    'labelPrev'?: string;
-    /**
-    * Emitted when the link is clicked.
-    */
-    'onPClick'?: (event: CustomEvent<any>) => void;
-    /**
-    * The number of pages between ellipsis. 'small' = mobile | 'large' = desktop | 'auto' = breakpoint specific
-    */
-    'pageRange'?: 'small' | 'large' | 'auto';
+    'onPageChange'?: (event: CustomEvent<any>) => void;
     /**
     * Adapts the color when used on dark background.
     */
@@ -901,15 +867,11 @@ declare namespace LocalJSX {
   }
   interface PSpinner {
     /**
-    * A visually hidden aria-label text to improve accessibility which describes the function behind the loader.
+    * Size of the spinner.
     */
-    'allyLabel'?: string;
+    'size'?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
     /**
-    * Predefined spinner sizes.
-    */
-    'size'?: 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
-    /**
-    * Adapts the spinner color when used on dark background.
+    * Adapts the spinner color depending on the theme.
     */
     'theme'?: 'light' | 'dark';
   }
@@ -951,21 +913,6 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
-  interface PTextList {
-    /**
-    * Basic text color variations depending on theme property.
-    */
-    'color'?: 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'inherit';
-    /**
-    * The type of the text list.
-    */
-    'listType'?: 'unordered' | 'ordered';
-    /**
-    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-    */
-    'theme'?: Theme;
-  }
-  interface PTextListItem {}
 
   interface IntrinsicElements {
     'p-button': PButton;
@@ -982,8 +929,6 @@ declare namespace LocalJSX {
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;
-    'p-text-list': PTextList;
-    'p-text-list-item': PTextListItem;
   }
 }
 
@@ -1007,8 +952,6 @@ declare module "@stencil/core" {
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
-      'p-text-list': LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
-      'p-text-list-item': LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
     }
   }
 }

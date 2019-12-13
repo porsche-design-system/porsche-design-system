@@ -1,6 +1,6 @@
 # Marque
 
-Porsche Marque component for visualizing the main Porsche logo.
+Porsche marque component for visualizing the main Porsche logo.
 
 ## Variants
 
