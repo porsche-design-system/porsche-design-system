@@ -68,5 +68,11 @@ By changing values for total amount of items, items to display per page and numb
     public totalItemsCount:number = 500;
     public itemsPerPage:number = 25;
     public activePage:number = 1;
+    
+    mounted(){
+      this.$refs.paginationPlayground.addEventListener('pageChange', (e) => {
+        this.activePage = e.detail.page;
+      });
+    }
   }
 </script>
