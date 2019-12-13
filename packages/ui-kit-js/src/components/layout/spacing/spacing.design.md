@@ -112,7 +112,7 @@ recommend using paths with a stroke.
 Developers measure the spacing of typography from the bounding box
 of the text element. When working with typography, the bounding box should be
 placed within the grid parameters, even if the baseline of the typography is not
-on the grid line.It's best to always create texts using the text tool, not as a
+on the grid line. It's best to always create texts using the text tool, not as a
 box!
 
 ![Text box placement](./assets/spacings-bounding-box.png)

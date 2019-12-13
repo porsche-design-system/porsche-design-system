@@ -25,7 +25,7 @@ The roadmap for the Porsche Design System is based on the planned tasks and chan
 
 ## Q3 2019
 ### 1.0 Alpha release
-* Auto generation of Angular and Aeact components
+* Auto generation of Angular and React components
 * Finalize marque component
 * Refactor packages for Alpha 1.0 release including documentation
 * Alpha 1.0 release

@@ -7,7 +7,7 @@ The Porsche Design System unites digital Porsche products around a shared design
 Stop wasting time on repetitive work and recreating things that already exist. Use the components and working methods to enable faster releases and quick iterations. Focus on valuable results and on solving important problems.
 
 **Improve user experience.**  
-Reusing the pre-built design elements ensures a consistent look and feel across different products, platforms and disciplines.<!--  Design patterns along the products that match the marketing and improve familarity, brand awareness and overall experience.  TODO: Kontext richtig verstanden? --> Along the products that match the marketing, design patterns improve familarity, brand awareness and overall experience. 
+Reusing the pre-built design elements ensures a consistent look and feel across different products, platforms and disciplines. Along the products that match the marketing, design patterns improve familiarity, brand awareness and overall experience. 
 
 **Maintain quality in the long term.**  
 Using our centrally built and continuously maintained design system with standardised components and unified toolings leads to high-quality results. Everything meets the latest technical requirements and standards for accessibility, performance and usability.
@@ -18,7 +18,7 @@ With everyone having access to the system and using the same language, it is muc
 ## Principles of success for the Porsche Design System
 The Porsche Design System encourages trust rather than policing by empowering self-responsible teamwork. To take full advantage of the benefits, we apply the following principles:
 
-* **Use the contents as a foundation** without modification to create a base for building individual designs.  <!-- without modification upon which to build individual designs. TODO: Kontext richtig verstanden? -->
+* **Use the contents as a foundation** without modification to create a base for building individual designs.  
 * **Collaborate** between design and development, just as we do.
 * **Update continuously** to avoid increasing update deficits.
 * **Join the community** through our channels and rituals.
