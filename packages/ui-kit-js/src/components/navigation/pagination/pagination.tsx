@@ -19,9 +19,6 @@ export type NumberOfPageLinks = 5 | 7;
   shadow: true
 })
 export class Pagination {
-  private unlistenResize: () => void;
-  private navigationElement: HTMLElement;
-
   /** The total count of items. */
   @Prop() public totalItemsCount: number = 1;
 
@@ -55,12 +52,15 @@ export class Pagination {
   /** Emitted when the page changes. */
   @Event() public pageChange!: EventEmitter;
 
+  @State() public breakpointMaxNumberOfPageLinks: number;
+
+  private unlistenResize: () => void;
+  private navigationElement: HTMLElement;
+
   @Watch('activePage')
   public onActivePageChange(page: number, previousPage: number) {
     this.pageChange.emit({ page, previousPage });
   }
-
-  @State() public breakpointMaxNumberOfPageLinks: number;
 
   public componentDidLoad() {
     this.unlistenResize = listenResize(() => {
@@ -113,7 +113,7 @@ export class Pagination {
                   this.onClick(pageModel.value);
                 }}
                 onKeyDown={(e: KeyboardEvent) => {
-                  this.onKeyDown(e, pageModel.value)
+                  this.onKeyDown(e, pageModel.value);
                 }}
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.allyLabelPrev}
@@ -147,7 +147,7 @@ export class Pagination {
                   this.onClick(pageModel.value);
                 }}
                 onKeyDown={(e: KeyboardEvent) => {
-                  this.onKeyDown(e, pageModel.value)
+                  this.onKeyDown(e, pageModel.value);
                 }}
                 aria-label={`${this.allyLabelPage} ${pageModel.value}`}
                 aria-current={pageModel.isActive && 'page'}
@@ -173,7 +173,7 @@ export class Pagination {
                   this.onClick(pageModel.value);
                 }}
                 onKeyDown={(e: KeyboardEvent) => {
-                  this.onKeyDown(e, pageModel.value)
+                  this.onKeyDown(e, pageModel.value);
                 }}
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.allyLabelNext}
