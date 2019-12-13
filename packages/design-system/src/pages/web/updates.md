@@ -9,7 +9,7 @@
 ### [0.0.9] (2019-11-20)
 
 #### What's changed?
-* Reduced text styles in UI Kit Basic library
+* Reduced text styles in Design System Basic library
 
 ### [0.0.8] (2019-10-08)
 
@@ -28,26 +28,26 @@
 
 --- 
 
-## Code UI Kit
+## Code
 
 ### [1.0.0-alpha.5] (2019-09-20)
 
 #### Bugfix
-* UI Kit Angular build
+* Design System Angular build
 
 
 ### [1.0.0-alpha.4] (2019-09-19)
 
-#### Change
-* bugfix: updated react-output-plugin to fix typescript issue
+#### Changes
+* Bugfix: updated react-output-plugin to fix typescript issue
 * Add target attribute to `button-regular` and `button-icon` component
 
 
 ### [1.0.0-alpha.3] (2019-09-09)
 
 #### Changes
-* update of react output plugin. 
-* refactor use of breakpoint mixin to support latest `ui-kit-scss-utils` package.
+* Update of react output plugin.
+* Refactor use of breakpoint mixin to support latest `ui-kit-scss-utils` package
 
 
 ### [1.0.0-alpha.2] (2019-08-22)
@@ -55,7 +55,7 @@
 #### Bugfix
 * Fix false prop type for text-link download attribute
 
-#### Change
+#### Changes
 * Update Angular module name
 
 

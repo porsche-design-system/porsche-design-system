@@ -21,7 +21,7 @@ describe('Component <p-headline>', () => {
   it('should render correctly with tag of <h3>', async () => {
     const page = await newSpecPage({
       components: [Headline],
-      html: `<p-headline tag="h3">Some headline</p-headline>`,
+      html: `<p-headline variant="headline-1" tag="h3">Some headline</p-headline>`,
     });
     expect(page.root.shadowRoot.querySelector('h3.p-headline')).toBeTruthy();
   });

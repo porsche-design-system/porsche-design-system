@@ -1,12 +1,12 @@
 # Button Pure
 
-In addition to Button Primary, Secodary or Tertiary, you can use Button Pure more subtle without a surface area. Buttons enable to execute an action (like "submit", "delete", "add" or "edit") or change the state of an application, which almost always happens on the same page. (Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) or [Link Pure](#/web/components/navigation/link-pure) component instead.)
+In addition to Button Primary, Secondary or Tertiary, you can use Button Pure as a more subtle call to action. A Button Pure enables the user to execute an action (like "submit", "delete", "add" or "edit" for example) or to change the state of the application, which almost always happens on the same page. Whenever you want to provide navigational elements, stick to the [Link](#/web/navigation/link) or [Link Pure](#/web/navigation/link-pure) component instead.
 
 ---
 
 ## Sizes
 
-Per default, the Button Pure is set in **copytext size** (Small). If another size or hierarchy level is needed, the Button Pure is available in the following sizes, whereas the size of the icon changes accordingly. 
+Per default, the Button Pure is set in **copytext size** (small). If another size or hierarchy level is needed, the Button Pure is available in the following sizes, whereas the size of the icon changes accordingly:
 
 
 | Button Pure size | Font size | Example |
@@ -70,7 +70,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 ### Text label 
 
-The text label within a button should always be short and give a hint on the indicated action. It's recommended to include active verbs such as "add", "edit" or "delete". 
+The text label within a button should always be short and also give a hint on the indicated action. It's recommended to include active verbs such as "add", "edit" or "delete". 
 
 ---
 

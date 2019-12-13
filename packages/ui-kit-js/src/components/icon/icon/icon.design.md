@@ -1,6 +1,6 @@
 # Icon
 
-Along with the other Porsche basic elements - such as colors, typography and the Porsche Marque - icons are core components of the Porsche UI design. The clear graphic symbols allow for quick orientation and are internationally recognized.
+Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized.
 
 ## Icon overview
 A complete overview of all available Porsche icons, head over to Porsche Icons ([Porsche Icons](https://icons.porsche.com)).
@@ -29,12 +29,12 @@ For interactive icons you should use the [Button Icon](#/web/action/button-icon)
 
 ---
 
-## Best Practices
+## Best practices
 
 ### Color usage
 
-The icons come with standard colors within the Porsche UI Kit you should stick to. However, when deciding to override the default icon colors for special reasons, it is recommended to use the color(s) uniformly throughout your application in order to provide consistency.
+The icons come with standard colors you should stick to. However, when you decide to override the default icon colors for special reasons, it is recommended to use the color(s) uniformly throughout your application to provide consistency.
 
 ### Context
 
-Icons can stand alone for themselves as visual symbols or in combination with text. Either way, always keep in mind that a semantic element can have different meanings depending on the context it is put into, such as within different labels.
+Icons can stand alone as visual symbols or in combination with text. Either way, always keep in mind that a semantic element can have different meanings depending on the context it is put into, such as within different labels.

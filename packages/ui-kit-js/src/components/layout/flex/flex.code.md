@@ -1,9 +1,9 @@
 # Flex
 
-The Porsche UI Kit flex layout system is based on standard CSS flexbox browser behaviour and can be controlled by properties on the flex container and flex item. It can be used to quickly layout standard content blocks or components. It does not replace [Grid](#/web/components/layout/grid) component which should be used to define basic page structures.
+The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by the properties of the Flex container and Flex item. It can be used to quickly layout standard content blocks or components. It does not replace the [Grid](#/web/components/layout/grid) component which should be used to define basic page structures.
 
 ### Flex
-Initialize standard flexbox container to define flex context.
+Initialize standard Flexbox container to define Flex context.
 
 <Playground>
   <p-flex class="example-flex">
@@ -17,7 +17,7 @@ Initialize standard flexbox container to define flex context.
 </Playground>
 
 ### Inline
-Flex inline displays flex containers in a row.
+Flex inline displays Flex containers in a row.
 
 <Playground>
   <p-flex inline="true" class="example-flex">
@@ -31,7 +31,7 @@ Flex inline displays flex containers in a row.
 </Playground>
 
 ### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-flex inline="{ base: false, l: true }" class="example-flex">
@@ -48,7 +48,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex direction
 
-Define or change direction of the flex items to rows or columns and set order.
+Define or change direction of the Flex items to rows or columns and set order.
 
 #### Row
 
@@ -60,7 +60,7 @@ Define or change direction of the flex items to rows or columns and set order.
   </p-flex>
 </Playground>
 
-#### Row reverse
+#### Row-reverse
 
 <Playground>
   <p-flex direction="row-reverse" class="example-flex">
@@ -80,7 +80,7 @@ Define or change direction of the flex items to rows or columns and set order.
   </p-flex>
 </Playground>
 
-#### Column reverse
+#### Column-reverse
 
 <Playground>
   <p-flex direction="column-reverse" class="example-flex">
@@ -90,8 +90,9 @@ Define or change direction of the flex items to rows or columns and set order.
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-flex direction="{ base: 'column', l: 'row' }" class="example-flex">
@@ -105,7 +106,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex wrap
 
-The flex wrap property is used to force flex items to stay in line independently of the flex container width, or to flow in multiple lines forced by the flex container width.
+The flex wrap property is used to force Flex items to stay in line independently of the Flex container width, or to flow in multiple lines forced by the Flex container width.
 
 #### Nowrap
 
@@ -123,7 +124,7 @@ The flex wrap property is used to force flex items to stay in line independently
   </p-flex>
 </Playground>
 
-#### Wrap reverse
+#### Wrap-reverse
 
 <Playground>
   <p-flex wrap="wrap-reverse" class="example-flex">
@@ -131,8 +132,9 @@ The flex wrap property is used to force flex items to stay in line independently
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-flex wrap="{ base: 'wrap', l: 'nowrap' }" class="example-flex">
@@ -142,11 +144,11 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex justify content
+### Flex justify-content
 
-This property defines the alignment of flex items on the main axis in conjunction to their siblings.
+This property defines the alignment of Flex items on the main axis in conjunction to their siblings.
 
-#### Flex-Start
+#### Flex-start
 
 <Playground>
   <p-flex class="example-flex">
@@ -156,7 +158,7 @@ This property defines the alignment of flex items on the main axis in conjunctio
   </p-flex>
 </Playground>
 
-#### Flex-End
+#### Flex-end
 
 <Playground>
   <p-flex justify-content="flex-end" class="example-flex">
@@ -176,7 +178,7 @@ This property defines the alignment of flex items on the main axis in conjunctio
   </p-flex>
 </Playground>
 
-#### Space between
+#### Space-between
 
 <Playground>
   <p-flex justify-content="space-between" class="example-flex">
@@ -186,7 +188,7 @@ This property defines the alignment of flex items on the main axis in conjunctio
   </p-flex>
 </Playground>
 
-#### Space around
+#### Space-around
 
 <Playground>
   <p-flex justify-content="space-around" class="example-flex">
@@ -196,7 +198,7 @@ This property defines the alignment of flex items on the main axis in conjunctio
   </p-flex>
 </Playground>
 
-#### Space evenly
+#### Space-evenly
 
 <Playground>
   <p-flex justify-content="space-evenly" class="example-flex">
@@ -206,8 +208,9 @@ This property defines the alignment of flex items on the main axis in conjunctio
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-flex justify-content="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
@@ -219,9 +222,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex align items
+### Flex align-items
 
-This property defines the alignment of flex items on the cross axis in conjunction to their siblings.
+This property defines the alignment of Flex items on the cross axis in conjunction to their siblings.
 
 #### Stretch
 
@@ -233,7 +236,7 @@ This property defines the alignment of flex items on the cross axis in conjuncti
   </p-flex>
 </Playground>
 
-#### Flex-Start
+#### Flex-start
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items="flex-start" class="example-flex">
@@ -243,7 +246,7 @@ This property defines the alignment of flex items on the cross axis in conjuncti
   </p-flex>
 </Playground>
 
-#### Flex-End
+#### Flex-end
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items="flex-end" class="example-flex">
@@ -273,8 +276,9 @@ This property defines the alignment of flex items on the cross axis in conjuncti
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex align-items="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
@@ -286,10 +290,10 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex align content
+### Flex align-content
 
-This aligns flex items on the cross axis of the flex container when there is extra space available.
-This property has only effect when there is more than one line of flex items.
+This aligns Flex items on the cross axis of the Flex container when there is extra space available.
+This property has only effect when there is more than one line of Flex items.
 
 #### Stretch
 
@@ -299,7 +303,7 @@ This property has only effect when there is more than one line of flex items.
   </p-flex>
 </Playground>
 
-#### Flex-Start
+#### Flex-start
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="flex-start" class="example-flex">
@@ -307,7 +311,7 @@ This property has only effect when there is more than one line of flex items.
   </p-flex>
 </Playground>
 
-#### Flex-End
+#### Flex-end
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="flex-end" class="example-flex">
@@ -323,7 +327,7 @@ This property has only effect when there is more than one line of flex items.
   </p-flex>
 </Playground>
 
-#### Space between
+#### Space-between
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="space-between" class="example-flex">
@@ -331,7 +335,7 @@ This property has only effect when there is more than one line of flex items.
   </p-flex>
 </Playground>
 
-#### Space around
+#### Space-around
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="space-around" class="example-flex">
@@ -339,7 +343,7 @@ This property has only effect when there is more than one line of flex items.
   </p-flex>
 </Playground>
 
-#### Space evenly
+#### Space-evenly
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="space-evenly" class="example-flex">
@@ -347,8 +351,9 @@ This property has only effect when there is more than one line of flex items.
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex wrap="wrap" align-content="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
@@ -358,11 +363,11 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-## Modifier for flex items (children)
+## Modifier for Flex items (children)
 
-### Flex item width
+### Flex-item width
 
-The widths of flex items is normally defined through its contents by default.
+The widths of Flex items is normally defined through its contents by default.
 But it is also possible to define specific predefined widths.
 
 #### Specific
@@ -396,8 +401,9 @@ But it is also possible to define specific predefined widths.
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-flex wrap="wrap" class="example-flex">
@@ -410,7 +416,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex item offset
+### Flex-item offset
 
 Items can have different offsets that work similar like column widths.
 
@@ -435,7 +441,7 @@ Items can have different offsets that work similar like column widths.
 </Playground>
 
 #### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-flex class="example-flex">
@@ -445,9 +451,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex item align self
+### Flex-item align-self
 
-You can override the align items properties of the flex container for individual flex items.
+You can override the align-items properties of the Flex container for individual Flex items.
 
 #### Auto
 
@@ -471,7 +477,7 @@ You can override the align items properties of the flex container for individual
   </p-flex>
 </Playground>
 
-#### Flex-Start
+#### Flex-start
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex class="example-flex">
@@ -482,7 +488,7 @@ You can override the align items properties of the flex container for individual
   </p-flex>
 </Playground>
 
-#### Flex-End
+#### Flex-end
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex class="example-flex">
@@ -515,8 +521,9 @@ You can override the align items properties of the flex container for individual
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :childElementLayout="{height: 'fixed'}">
   <p-flex class="example-flex">
@@ -529,11 +536,11 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex item grow
+### Flex-item grow
 
-Flexbox default behaviour on how the item widths are rendered (stretched) can be overwritten with the following class names.
+Flexbox default behaviours on how the item widths are rendered (stretched) can be overwritten with the following class names.
 
-It handles how to grow an item based on the space that is left to fulfill the parents width.
+It handles how to grow an item based on the space that is left to fulfill the parent's width.
 
 #### Grow - 0
 
@@ -553,7 +560,8 @@ It handles how to grow an item based on the space that is left to fulfill the pa
   </p-flex>
 </Playground>
 
-#### Responsive
+#### Responsiveness
+
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground>
@@ -565,7 +573,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex item shrink
+### Flex-item shrink
 
 Flexbox default behaviour on how the item widths are rendered (shrinked) can be overwritten with the following class names.
 
@@ -589,8 +597,9 @@ It handles how to shrink an item based on the space that exceeds the parents wid
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-flex class="example-flex">
@@ -601,9 +610,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex item shorthand
+### Flex-item shorthand
 
-Setting shorthand properties for flex grow, shrink and base:
+Setting shorthand properties for Flex grow, shrink and base:
 
 #### Initial (grow:0, shrink:1 and base:auto)
 
@@ -645,8 +654,8 @@ Setting shorthand properties for flex grow, shrink and base:
   </p-flex>
 </Playground>
 
-#### Responsive
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+#### Responsiveness
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground>
   <p-flex class="example-flex">

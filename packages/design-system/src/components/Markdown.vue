@@ -81,13 +81,13 @@
         }
 
         h4 {
-          @include p-headline-5;
+          @include p-headline-4;
           margin-top: $p-spacing-32;
         }
 
         h5,
         h6 {
-          @include p-headline-5;
+          @include p-headline-4;
           margin-top: $p-spacing-24;
         }
 

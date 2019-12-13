@@ -1,7 +1,7 @@
 # Mixins
 
 ## Breakpoint / Media query
-Predefined breakpoints can be easily used like in following examples.  
+Predefined breakpoints can easily be used as in the following examples.
 
 Available breakpoints:  
 `xxs | xs | s | m | l | xl | xxl`
@@ -60,12 +60,12 @@ div {
 
 ## Typography
 
-**Note:** For font-styling it's recommended to use [`<p-headline>`](#/web/components/basic/typography#code)/[`<p-text>`](#/web/components/basic/typography#code) component.
+**Note:** For font-styling it's recommended to use the [`<p-headline>`](#/web/components/basic/typography#code)/[`<p-text>`](#/web/components/basic/typography#code) components.
 
 ### Headline
 
 Given values are:  
-`large-title | headline-1 | headline-2 | headline-3 | headline-4 | headline-5 | headline-6`
+`large-title | headline-1 | headline-2 | headline-3 | headline-4`
 
 Possible headline mixin for usage with SCSS (where {v} is the value):
 ```
