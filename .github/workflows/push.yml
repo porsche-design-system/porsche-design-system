@@ -4,10 +4,10 @@ on:
       - v*
       - issue/*
       - housekeeping/*
-name: 'Porsche UI Kit'
+name: 'Porsche Design System'
 jobs:
   ui-kit-js:
-    name: 'Porsche UI Kit JS'
+    name: 'Components JS'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -62,7 +62,7 @@ jobs:
           name: ui-kit-js-cbt-regression
           path: ./packages/ui-kit-js/tests/cbt/results
   ui-kit-angular:
-    name: 'Porsche UI Kit Angular'
+    name: 'Components Angular'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -102,7 +102,7 @@ jobs:
           name: ui-kit-angular-cbt-regression
           path: ./packages/ui-kit-angular/tests/cbt/results
   ui-kit-react:
-    name: 'Porsche UI Kit React'
+    name: 'Components React'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -142,7 +142,7 @@ jobs:
           name: ui-kit-react-cbt-regression
           path: ./packages/ui-kit-react/tests/cbt/results
   design-system:
-    name: 'Porsche Design System'
+    name: 'Storefront'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
