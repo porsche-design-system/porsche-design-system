@@ -5,23 +5,23 @@ Angular wrappers for Porsche Design System web components package.
 ## Installation
 ``` 
 // install with npm:
-npm install @porsche-ui/ui-kit-angular
+npm install @porsche-design-system/components-angular
 
 // install with yarn:
-yarn add @porsche-ui/ui-kit-angular
+yarn add @porsche-design-system/components-angular
 ```
 
 ## Usage
 The Angular wrapper of web components can be used like every other Angular library. 
 
-After adding `@porsche-ui/ui-kit-angular` package to your project, import the `PorscheUIKitModule` to your root module. 
+After adding `@porsche-design-system/components-angular` package to your project, import the `PorscheUIKitModule` to your root module. 
 The following setup is a standard Angular CLI project:
 
 #### App module
 ``` 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { PorscheUIKitModule } from '@porsche-ui/ui-kit-angular';
+import { PorscheUIKitModule } from '@porsche-design-system/components-angular';
 import { AppComponent } from './app.component';
 
 @NgModule({

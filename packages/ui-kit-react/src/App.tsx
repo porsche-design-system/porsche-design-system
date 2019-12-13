@@ -14,7 +14,7 @@ import {
   PPagination,
   PLink,
   PLinkPure
-} from '@porsche-ui/ui-kit-react';
+} from '@porsche-design-system/components-react';
 
 const App: React.FC = () => {
   return (

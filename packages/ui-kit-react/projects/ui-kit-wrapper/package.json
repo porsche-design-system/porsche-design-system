@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-ui/ui-kit-react",
+  "name": "@porsche-design-system/components-react",
   "version": "1.0.0-alpha.7",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
@@ -13,7 +13,7 @@
     "build": "rm -rf './dist' && tsc -p './tsconfig.lib.json'"
   },
   "dependencies": {
-    "@porsche-ui/ui-kit-js": "1.0.0-alpha.7",
+    "@porsche-design-system/components-js": "1.0.0-alpha.7",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {

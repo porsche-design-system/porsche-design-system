@@ -4,5 +4,5 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
-  "whitelistedNonPeerDependencies": ["@porsche-ui/ui-kit-js"]
+  "whitelistedNonPeerDependencies": ["@porsche-design-system/components-js"]
 }

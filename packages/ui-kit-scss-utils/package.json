@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-ui/ui-kit-scss-utils",
+  "name": "@porsche-design-system/scss-utils",
   "version": "1.0.0-alpha.3",
   "scope": "@porsche-ui",
   "description": "Porsche Design System SCSS utilities",
