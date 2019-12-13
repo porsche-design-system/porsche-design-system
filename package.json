@@ -7,7 +7,17 @@
       "packages/ui-kit-react/projects/ui-kit-wrapper"
     ],
     "nohoist": [
-      "**/@types/jasmine"
+      "**/@types/jasmine",
+      "**/ng-packagr",
+      "**/@angular-devkit/**",
+      "**/@angular/**",
+      "**/@vue/**",
+      "**/vue",
+      "**/vue-class-component",
+      "**/vue-property-decorator",
+      "**/vue-router",
+      "**/vuex",
+      "**/vue-template-compiler"
     ]
   },
   "description": "Porsche Design System Monorepo",

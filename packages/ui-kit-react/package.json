@@ -11,7 +11,7 @@
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "latest"
+    "@porsche-design-system/components-react": "1.0.0-rc.1"
   },
   "devDependencies": {
     "@porsche-ui/cross-browser-tester": "^1.0.2",
