@@ -7,7 +7,7 @@ Porsche Design System provides developers with a collection of presentational we
 
 ## Installation
 
-All releases of the Porsche Design System are available as versioned NPM package called `@porsche-ui/ui-kit-js`, `@porsche-ui/ui-kit-angular` and `@porsche-ui/ui-kit-react`.
+All releases of the Porsche Design System are available as versioned NPM package called `@porsche-design-system/components-js`, `@porsche-design-system/components-angular` and `@porsche-design-system/components-react`.
 
 Those packages can be consumed by one of the following private NPM registries:
 * Porsche Design System NPM registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
@@ -24,43 +24,43 @@ If you don't have an account for one of the those NPM registries, you can easily
 1. Add local `.npmrc` at the root of your NPM project and add the following lines of code:
 ``` 
 always-auth = true
-@porsche-ui:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
+@porsche-design-system:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
 ``` 
 
 #### Vanilla JS:
 ``` 
 // install with npm:
-npm install @porsche-ui/ui-kit-js
+npm install @porsche-design-system/components-js
 
 // install with yarn:
-yarn add @porsche-ui/ui-kit-js
+yarn add @porsche-design-system/components-js
 ```
 
 #### Angular:
 ``` 
 // install with npm:
-npm install @porsche-ui/ui-kit-angular
+npm install @porsche-design-system/components-angular
 
 // install with yarn:
-yarn add @porsche-ui/ui-kit-angular
+yarn add @porsche-design-system/components-angular
 ```
 
 #### React:
 ``` 
 // install with npm:
-npm install @porsche-ui/ui-kit-react
+npm install @porsche-design-system/components-react
 
 // install with yarn:
-yarn add @porsche-ui/ui-kit-react
+yarn add @porsche-design-system/components-react
 ```
 
 #### SCSS utils (optional):
 ``` 
 // install with npm:
-npm install @porsche-ui/ui-kit-scss-utils --save-dev
+npm install @porsche-design-system/scss-utils --save-dev
 
 // install with yarn:
-yarn add @porsche-ui/ui-kit-scss-utils --dev
+yarn add @porsche-design-system/scss-utils --dev
 ``` 
 
 ## Usage
@@ -76,8 +76,8 @@ If you're using web components in a static website, the following page setup is 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Porsche Design System</title>
-    <script type="module" src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
-    <script nomodule src="PATH/TO/PACKAGE/@porsche-ui/ui-kit-js/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
+    <script type="module" src="PATH/TO/PACKAGE/@porsche-design-system/components-js/dist/porsche-ui-kit/porsche-ui-kit.esm.js"></script>
+    <script nomodule src="PATH/TO/PACKAGE/@porsche-design-system/components-js/dist/porsche-ui-kit/porsche-ui-kit.js"></script>
   </head>
   <body>
     <p-headline variant="headline-1">Some text</p-headline>
@@ -91,14 +91,14 @@ If you're using web components in a static website, the following page setup is 
 
 The Angular wrapper of web components can be used like every other Angular library. 
 
-After adding the `@porsche-ui/ui-kit-angular` package to your project, import the `PorscheUIKitModule` to your root module. 
+After adding the `@porsche-design-system/components-angular` package to your project, import the `PorscheUIKitModule` to your root module. 
 The following setup is a standard Angular CLI project:
 
 #### App module
 ``` 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { PorscheUIKitModule } from '@porsche-ui/ui-kit-angular';
+import { PorscheUIKitModule } from '@porsche-design-system/components-angular';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -136,7 +136,7 @@ export class AppComponent {}
 
 The React wrappers for web components can be used like every other React component - even with Typescript support. 
 
-After adding `@porsche-ui/ui-kit-react` package to your project, import component(s).
+After adding `@porsche-design-system/components-react` package to your project, import component(s).
 The following setup is a standard React Scripts (Create React App) setup with SCSS support:
 
 #### Index file
@@ -155,7 +155,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 #### App file
 ``` 
 import React from 'react';
-import { PHeadline } from '@porsche-ui/ui-kit-react';
+import { PHeadline } from '@porsche-design-system/components-react';
 
 const App: React.FC = () => {
   return (

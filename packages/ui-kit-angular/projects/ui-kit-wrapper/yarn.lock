@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@porsche-ui/ui-kit-js@1.0.0-alpha.2":
+"@porsche-design-system/components-js@1.0.0-alpha.2":
   version "1.0.0-alpha.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/ui-kit-js/-/@porsche-ui/ui-kit-js-1.0.0-alpha.2.tgz#d6d786a24fdf01009b8ac7b4a9a46a508099c203"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-js/-/@porsche-design-system/components-js-1.0.0-alpha.2.tgz#d6d786a24fdf01009b8ac7b4a9a46a508099c203"
   integrity sha1-1teGok/fAQCbise0qaRqUICZwgM=
   dependencies:
     throttle-debounce "^2.1.0"

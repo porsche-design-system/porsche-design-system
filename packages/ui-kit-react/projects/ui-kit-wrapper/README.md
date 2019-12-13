@@ -4,16 +4,16 @@ React wrappers for Porsche Design System web components package.
 ## Install
 ```
 // install with npm:
-npm install @porsche-ui/ui-kit-react
+npm install @porsche-design-system/components-react
 
 // install with yarn:
-yarn add @porsche-ui/ui-kit-react
+yarn add @porsche-design-system/components-react
 ``` 
 
 ## Usage
 The React wrappers of web components can be used like every other React component (even with Typescript support). 
 
-After adding `@porsche-ui/ui-kit-react` package to your project, import component(s).
+After adding `@porsche-design-system/components-react` package to your project, import component(s).
 The following setup is a standard React Scripts (Create React App) setup with SCSS support:
 
 #### Index file
@@ -32,7 +32,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 #### App file
 ``` 
 import React from 'react';
-import { PHeadline } from '@porsche-ui/ui-kit-react';
+import { PHeadline } from '@porsche-design-system/components-react';
 
 const App: React.FC = () => {
   return (
