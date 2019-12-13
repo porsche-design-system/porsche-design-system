@@ -28,7 +28,7 @@ export const config: Config = {
       serviceWorker: null,
       copy: [
         {
-          src: require.resolve('@porsche-ui/utils/dist/visual-regression-test.css'),
+          src: require.resolve('@porsche-design-system/utils/dist/visual-regression-test.css'),
           dest: 'visual-regression-test.css'
         },
         {
@@ -38,11 +38,11 @@ export const config: Config = {
       ]
     },
     reactOutputTarget({
-      componentCorePackage: '@porsche-ui/ui-kit-js',
+      componentCorePackage: '@porsche-design-system/components-js',
       proxiesFile: '../ui-kit-react/projects/ui-kit-wrapper/src/lib/components.ts'
     }),
     angularOutputTarget({
-      componentCorePackage: '@porsche-ui/ui-kit-js',
+      componentCorePackage: '@porsche-design-system/components-js',
       directivesProxyFile: '../ui-kit-angular/projects/ui-kit-wrapper/src/lib/ui-kit-wrapper.component.ts'
     }),
   ],
