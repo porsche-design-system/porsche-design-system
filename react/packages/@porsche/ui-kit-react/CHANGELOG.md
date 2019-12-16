@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.14.14] - 2019-12-16
+
+-   Fix floating label behaviour of `<Input>` and `<TextArea> by setting` the `required` prop to true per default.
+
 ## [0.14.13] - 2019-12-13
 
 -   Change webfont paths to be equal to Porsche Design System path.
