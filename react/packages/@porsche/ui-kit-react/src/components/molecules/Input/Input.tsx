@@ -62,7 +62,8 @@ export interface InputProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<InputProps> = {
-    type: "text"
+    type: "text",
+    required: true
 }
 
 const _Input: React.StatelessComponent<InputProps> = (props) => {

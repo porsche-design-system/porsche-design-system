@@ -41,7 +41,8 @@ export interface TextAreaProps extends ClassNameProp, ComponentProp {
 }
 
 const defaultProps: Partial<TextAreaProps> = {
-    rows: 4
+    rows: 4,
+    required: true
 }
 
 const _TextArea: React.StatelessComponent<TextAreaProps> = (props) => {
