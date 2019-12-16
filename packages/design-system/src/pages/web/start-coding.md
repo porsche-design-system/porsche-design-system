@@ -91,7 +91,10 @@ If you're using web components in a static website, the following page setup is 
 
 The Angular components can be used like every other Angular library. 
 
-After adding the `@porsche-design-system/components-angular` package to your project, import the `PorscheDesignSystemModule` to your root module. 
+After adding the `@porsche-design-system/components-angular` package to your project,
+you've to import the `PorscheDesignSystemModule` in every module you want to use the
+components in. It declares and exports the Porsche Design System Compontents to make
+it available in the module that imports it. 
 The following setup is a standard Angular CLI project:
 
 #### App module
