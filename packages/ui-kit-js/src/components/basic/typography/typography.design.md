@@ -13,7 +13,7 @@ Formally, the impression of the Porsche Next is largely determined by the visual
 
 ### Download
 
-You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v2/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
+You can download the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip).
 
 ### Language versions
 
