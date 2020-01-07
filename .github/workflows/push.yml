@@ -6,7 +6,7 @@ on:
       - housekeeping/*
 name: 'Porsche Design System'
 jobs:
-  ui-kit-js:
+  components-js:
     name: 'Components JS'
     runs-on: ubuntu-latest
     steps:
@@ -25,28 +25,28 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-lint
-          args: --ui-kit-js
+          args: --components-js
       - name: 'Unit Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-unit
-          args: --ui-kit-js
+          args: --components-js
       - name: 'E2E Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-e2e
-          args: --ui-kit-js
+          args: --components-js
       - name: 'VRT Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
-          args: --ui-kit-js
+          args: --components-js
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ui-kit-js-vrt-regression
-          path: ./packages/ui-kit-js/tests/vrt/results
+          name: components-js-vrt-regression
+          path: ./packages/components-js/tests/vrt/results
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
@@ -54,14 +54,14 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-test-cbt
-          args: --ui-kit-js
+          args: --components-js
       - name: 'CBT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ui-kit-js-cbt-regression
-          path: ./packages/ui-kit-js/tests/cbt/results
-  ui-kit-angular:
+          name: components-js-cbt-regression
+          path: ./packages/components-js/tests/cbt/results
+  components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
     steps:
@@ -80,13 +80,13 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
-          args: --ui-kit-angular
+          args: --components-angular
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ui-kit-angular-vrt-regression
-          path: ./packages/ui-kit-angular/tests/vrt/results
+          name: components-angular-vrt-regression
+          path: ./packages/components-angular/tests/vrt/results
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
@@ -94,14 +94,14 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-test-cbt
-          args: --ui-kit-angular
+          args: --components-angular
       - name: 'CBT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ui-kit-angular-cbt-regression
-          path: ./packages/ui-kit-angular/tests/cbt/results
-  ui-kit-react:
+          name: components-angular-cbt-regression
+          path: ./packages/components-angular/tests/cbt/results
+  components-react:
     name: 'Components React'
     runs-on: ubuntu-latest
     steps:
@@ -120,13 +120,13 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
-          args: --ui-kit-react
+          args: --components-react
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ui-kit-react-vrt-regression
-          path: ./packages/ui-kit-react/tests/vrt/results
+          name: components-react-vrt-regression
+          path: ./packages/components-react/tests/vrt/results
       - name: 'CBT Test'
         uses: ./docker/node/
         env:
@@ -134,14 +134,14 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         with:
           entrypoint: run-test-cbt
-          args: --ui-kit-react
+          args: --components-react
       - name: 'CBT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ui-kit-react-cbt-regression
-          path: ./packages/ui-kit-react/tests/cbt/results
-  design-system:
+          name: components-react-cbt-regression
+          path: ./packages/components-react/tests/cbt/results
+  storefront:
     name: 'Storefront'
     runs-on: ubuntu-latest
     steps:
@@ -160,31 +160,31 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-lint
-          args: --design-system
+          args: --storefront
       - name: 'Unit Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-unit
-          args: --design-system
+          args: --storefront
       - name: 'E2E Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-e2e
-          args: --design-system
+          args: --storefront
       - name: 'VRT Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
-          args: --design-system
+          args: --storefront
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: design-system-vrt-regression
-          path: ./packages/design-system/tests/vrt/results
+          name: storefront-vrt-regression
+          path: ./packages/storefront/tests/vrt/results
   deployment:
     name: 'Deployment'
-    needs: [ui-kit-js, ui-kit-angular, ui-kit-react, design-system]
+    needs: [components-js, components-angular, components-react, storefront]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
