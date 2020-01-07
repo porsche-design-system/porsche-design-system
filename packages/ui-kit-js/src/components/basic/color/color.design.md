@@ -74,9 +74,9 @@ The set consists grey shades that are based on a pre-defined mixing ratio of bla
 
 |                                                                         	|                       	| HEX     	| RGB           	| Usage            |
 |--------------------------------------------------------------------------	|-------------------------|----------	|----------------	|----------------- |
-| <ColorBadge theme="light" color="neutral-1"/> 	                                    | **Neutral 1**             	| #626669 	| 98/102/105    	| div. elements    |
+| <ColorBadge theme="light" color="neutral-1"/> 	                                    | **Neutral 1**             	| #323639 	| 50/54/57       	| div. elements    |
 | <ColorBadge theme="light" color="neutral-2"/>                                      | **Neutral 2**             	| #4A4E51 	| 74/78/81      	| div. elements    |
-| <ColorBadge theme="light" color="neutral-3"/>                                      | **Neutral 3**             	| #323639 	| 50/54/57       	| div. elements    |
+| <ColorBadge theme="light" color="neutral-3"/>                                      | **Neutral 3**             	| #626669 	| 98/102/105    	| div. elements    |
 
 ### Notifications
 Notification colors are to be used only to display warnings, error or status messages.
@@ -142,9 +142,9 @@ The set consists grey shades that are based on a pre-defined mixing ratio of bla
 
 |                                                                         	|                       	| HEX     	| RGB              	| Usage            |
 |-------------------------------------------------------------------------	|-------------------------|----------	|-----------------	|----------------- |
-| <ColorBadge theme="dark" color="neutral-1"/> 	                                    | **Neutral 1**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
+| <ColorBadge theme="dark" color="neutral-1"/> 	                                    | **Neutral 1**             	| #E3E4E5 	| 227/228/229     	|  div. elements    |
 | <ColorBadge theme="dark" color="neutral-2"/> 	                                    | **Neutral 2**             	| #C9CACB 	| 201/202/203      	| div. elements    |
-| <ColorBadge theme="dark" color="neutral-3"/> 	                                    | **Neutral 3**             	| #E3E4E5 	| 227/228/229     	| div. elements    |
+| <ColorBadge theme="dark" color="neutral-3"/> 	                                    | **Neutral 3**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
 
 ### Notifications
 Notification colors are to be used only to display warnings, error or status messages.
