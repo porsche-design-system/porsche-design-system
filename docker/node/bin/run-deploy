@@ -26,7 +26,7 @@ if [[ -z "${GITHUB_SHA}" ]]; then
   exit 1
 fi
 
-if [[ -z "$(ls -A ./packages/design-system/dist)" ]]; then
+if [[ -z "$(ls -A ./packages/storefront/dist)" ]]; then
   echo "Please provide the build artifact."
   exit 1
 fi
@@ -45,31 +45,31 @@ setup() {
 
 checkout_gh_pages() {
   echo "task: [$(date)] \"checkout_gh_pages\""
-  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-ui-kit-gh-pages"
+  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-design-system-gh-pages"
 }
 
 prepare_deployment() {
   echo "task: [$(date)] \"prepare_deployment\" (${1})"
-  rm -rf "/opt/porsche-ui-kit-gh-pages/${1}"
+  rm -rf "/opt/porsche-design-system-gh-pages/${1}"
 }
 
 copy_porsche_ui_kit() {
   echo "task: [$(date)] \"copy_porsche_ui_kit\" (${1})"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${1}"
-  cp -r "./packages/design-system/dist/." "/opt/porsche-ui-kit-gh-pages/${1}"
+  mkdir -p "/opt/porsche-design-system-gh-pages/${1}"
+  cp -r "./packages/storefront/dist/." "/opt/porsche-design-system-gh-pages/${1}"
 }
 
 add_deployment_version() {
   echo "task: [$(date)] \"add_deployment_version\" (${1})"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/${1}"
-  echo "${GITHUB_SHA}" > "/opt/porsche-ui-kit-gh-pages/${1}/version.md"
+  mkdir -p "/opt/porsche-design-system-gh-pages/${1}"
+  echo "${GITHUB_SHA}" > "/opt/porsche-design-system-gh-pages/${1}/version.md"
 }
 
 copy_latest_stable_sketch_library_and_create_rss_feed() {
   echo "task: [$(date)] \"copy_latest_stable_sketch_library_and_create_rss_feed\" (${1}, ${2})"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
-  cp "./sketch/${2}" "/opt/porsche-ui-kit-gh-pages/latest"
-  cat << _EOF_ > "/opt/porsche-ui-kit-gh-pages/${2}.xml"
+  mkdir -p "/opt/porsche-design-system-gh-pages/latest"
+  cp "./sketch/${2}" "/opt/porsche-design-system-gh-pages/latest"
+  cat << _EOF_ > "/opt/porsche-design-system-gh-pages/${2}.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
@@ -87,13 +87,13 @@ _EOF_
 
 copy_latest_stable_sketch_file() {
   echo "task: [$(date)] \"copy_latest_stable_sketch_file\" (${1})"
-  mkdir -p "/opt/porsche-ui-kit-gh-pages/latest"
-  cp "./sketch/${1}" "/opt/porsche-ui-kit-gh-pages/latest"
+  mkdir -p "/opt/porsche-design-system-gh-pages/latest"
+  cp "./sketch/${1}" "/opt/porsche-design-system-gh-pages/latest"
 }
 
 deploy_to_gh_pages() {
   echo "task: [$(date)] \"deploy_to_gh_pages\""
-  pushd "/opt/porsche-ui-kit-gh-pages"
+  pushd "/opt/porsche-design-system-gh-pages"
     git add -A
     git commit -m "Automated deployment of Porsche Design System (${P_WORKING_BRANCH}): ${GITHUB_SHA}" --allow-empty
     git push origin gh-pages --force-with-lease

@@ -4,7 +4,7 @@
 # Porsche Design System
 
 ## Build status
-[![Actions Status](https://github.com/porscheui/porsche-ui-kit/workflows/Porsche%20UI%20Kit/badge.svg)](https://github.com/porscheui/porsche-ui-kit/actions)
+[![Actions Status](https://github.com/porscheui/porsche-design-system/workflows/Porsche%20Design%20System/badge.svg)](https://github.com/porscheui/porsche-design-system/actions)
 
 ## Setup
 
@@ -14,7 +14,7 @@
 * [Docker](https://www.docker.com) ([see below](#docker-installation-steps))
 
 ### Getting started
-1. Clone [`porsche-ui-kit` repository](https://github.com/porscheui/porsche-ui-kit)
+1. Clone [`porsche-design-system` repository](https://github.com/porscheui/porsche-design-system)
 1. Switch to __project root directory__
 1. Checkout branch __v1__ by executing `git checkout v1`
 1. Execute command `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
@@ -36,58 +36,58 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-build` (builds the entire application)
-    * `./docker.sh run-build --ui-kit-js` (builds the native web components)
-    * `./docker.sh run-build --ui-kit-angular` (builds angular components)
-    * `./docker.sh run-build --ui-kit-react` (builds react components)
-    * `./docker.sh run-build --design-system` (builds storefront)
+    * `./docker.sh run-build --components-js` (builds the native web components)
+    * `./docker.sh run-build --components-angular` (builds angular components)
+    * `./docker.sh run-build --components-react` (builds react components)
+    * `./docker.sh run-build --storefront` (builds storefront)
     * `./docker.sh run-build --utils` (builds utilities)
 
 ### Start
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-start` (starts the entire application)
-    * `./docker.sh run-start --ui-kit-js` (starts native web components)
-    * `./docker.sh run-start --ui-kit-angular` (starts angular components)
-    * `./docker.sh run-start --ui-kit-react` (starts react components)
-    * `./docker.sh run-start --design-system` (starts storefront)
+    * `./docker.sh run-start --components-js` (starts native web components)
+    * `./docker.sh run-start --components-angular` (starts angular components)
+    * `./docker.sh run-start --components-react` (starts react components)
+    * `./docker.sh run-start --storefront` (starts storefront)
 
 ### Linting
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-lint` (lints the entire application)
-    * `./docker.sh run-lint --ui-kit-js` (lints native web components)
-    * `./docker.sh run-lint --design-system` (lints storefront)
+    * `./docker.sh run-lint --components-js` (lints native web components)
+    * `./docker.sh run-lint --storefront` (lints storefront)
 
 ### Unit Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-unit` (unit tests for the entire application)
-    * `./docker.sh run-test-unit --ui-kit-js` (unit tests for the native web components)
-    * `./docker.sh run-test-unit --design-system` (unit tests for the storefront)
+    * `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
+    * `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
 
 ### E2E Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * Run `./docker.sh run-test-e2e` (e2e tests for the entire application)
-    * `./docker.sh run-test-e2e --ui-kit-js` (e2e tests for the native web components)
-    * `./docker.sh run-test-e2e --design-system` (e2e tests for the storefront)
+    * `./docker.sh run-test-e2e --components-js` (e2e tests for the native web components)
+    * `./docker.sh run-test-e2e --storefront` (e2e tests for the storefront)
 
 ### Visual Regression Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-vrt` (vrt tests for the entire application)
-    * `./docker.sh run-test-vrt --ui-kit-js` (vrt tests for the native web components)
-    * `./docker.sh run-test-vrt --ui-kit-angular` (vrt tests for angular components)
-    * `./docker.sh run-test-vrt --ui-kit-react` (vrt tests for react components)
-    * `./docker.sh run-test-vrt --design-system` (vrt tests for the storefront)
+    * `./docker.sh run-test-vrt --components-js` (vrt tests for the native web components)
+    * `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
+    * `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
+    * `./docker.sh run-test-vrt --storefront` (vrt tests for the storefront)
 
 ### Cross Browser Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-cbt` (cbt tests for the entire application)
-    * `./docker.sh run-test-cbt --ui-kit-js` (cbt tests for the native web components)
-    * `./docker.sh run-test-cbt --ui-kit-angular` (cbt tests for angular components)
-    * `./docker.sh run-test-cbt --ui-kit-react` (cbt tests for react components)
+    * `./docker.sh run-test-cbt --components-js` (cbt tests for the native web components)
+    * `./docker.sh run-test-cbt --components-angular` (cbt tests for angular components)
+    * `./docker.sh run-test-cbt --components-react` (cbt tests for react components)
 
 #### What to do when vrt or cbt tests are failing
 1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/{vrt/cbt}/results`. Here you can find the belonging `diff` and `regression` images.
@@ -129,14 +129,14 @@ __Getting started__ section to be able to authenticate during NPM dependency upd
 
 ## Build status
 
-[GitHub Actions](https://github.com/porscheui/porsche-ui-kit/actions)
+[GitHub Actions](https://github.com/porscheui/porsche-design-system/actions)
 
 
 ## Developing new components
 
 This tool automatically creates a catalog of ui components. For its magic to work, new components have to follow a few rules:
 
-1. **File location:** A component is developed as a self containing element under `packages/ui-kit-js/src/components`.
+1. **File location:** A component is developed as a self containing element under `packages/components-js/src/components`.
 1. **Component description:** A component should have a `COMPONENTNAME.code.md` and a `COMPONENTNAME.design.md` file which describes its general purpose, design/development specifications and examples.
 1. **Props:** The component has to describe its props using typescript types and documentation.
 
@@ -151,42 +151,42 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-build --utils`
 
 ### Components JS
-1. Run `./docker.sh run-build --ui-kit-js`
+1. Run `./docker.sh run-build --components-js`
 1. Check for needless auto generated files (e.g. *.props.md) which might be generated by the build task and discard them
-1. Switch to __packages/ui-kit-js directory__
+1. Switch to __packages/components-js directory__
 1. Execute `yarn version --no-git-tag-version` and enter new patch or minor version
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 
 ### Components Angular
-1. Switch to __packages/ui-kit-angular/projects/ui-kit-wrapper directory__
+1. Switch to __packages/components-angular/projects/components-wrapper directory__
 1. Execute `yarn version --no-git-tag-version` and enter new patch or minor version
 1. Update Components JS dependency to corresponding version number (must always be pinned)
 1. Update version number of `@porsche-design-system/components-angular` in the example project to corresponding version number
-1. Update `src/lib/ui-kit-wrapper.module.ts` if necessary
+1. Update `src/lib/components-wrapper.module.ts` if necessary
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Switch to __project root directory__
-1. Run `./docker.sh run-build --ui-kit-angular`
+1. Run `./docker.sh run-build --components-angular`
 
 ### Components React
-1. Switch to __packages/ui-kit-react/projects/ui-kit-wrapper directory__
+1. Switch to __packages/components-react/projects/components-wrapper directory__
 1. Execute `yarn version --no-git-tag-version` and enter new patch or minor version
 1. Update Components JS dependency to corresponding version number (must always be pinned)
 1. Update version number of `@porsche-design-system/components-react` in the example project to corresponding version number
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Switch to __project root directory__
-1. Run `./docker.sh run-build --ui-kit-react`
+1. Run `./docker.sh run-build --components-react`
 
 ### Test
 1. Switch to __project root directory__
-1. Run `./docker.sh run-lint --ui-kit-js`
-1. Run `./docker.sh run-test-unit --ui-kit-js`
-1. Run `./docker.sh run-test-e2e --ui-kit-js`
-1. Run `./docker.sh run-test-vrt --ui-kit-js`
-1. Run `./docker.sh run-test-vrt --ui-kit-angular`
-1. Run `./docker.sh run-test-vrt --ui-kit-react`
-1. Run `./docker.sh run-test-cbt --ui-kit-js`
-1. Run `./docker.sh run-test-cbt --ui-kit-angular`
-1. Run `./docker.sh run-test-cbt --ui-kit-react`
+1. Run `./docker.sh run-lint --components-js`
+1. Run `./docker.sh run-test-unit --components-js`
+1. Run `./docker.sh run-test-e2e --components-js`
+1. Run `./docker.sh run-test-vrt --components-js`
+1. Run `./docker.sh run-test-vrt --components-angular`
+1. Run `./docker.sh run-test-vrt --components-react`
+1. Run `./docker.sh run-test-cbt --components-js`
+1. Run `./docker.sh run-test-cbt --components-angular`
+1. Run `./docker.sh run-test-cbt --components-react`
 1. Check for needless auto generated files (e.g. *.props.md) which might be generated by the build task and discard them
 
 ### Commit
@@ -195,11 +195,11 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Push local commit with tag to release branch `git push && git push --tags`
 
 ### Publish
-1. Switch to __packages/ui-kit-js directory__
+1. Switch to __packages/components-js directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components JS artifact to the Artifactory repository.
-1. Switch to __packages/ui-kit-angular/dist/ui-kit-wrapper directory__ (make sure to release package within **dist** folder)
+1. Switch to __packages/components-angular/dist/components-wrapper directory__ (make sure to release package within **dist** folder)
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components Angular artifact to the Artifactory repository.
-1. Switch to __packages/ui-kit-react/projects/ui-kit-wrapper directory__ (make sure to release package within **projects** folder)
+1. Switch to __packages/components-react/projects/components-wrapper directory__ (make sure to release package within **projects** folder)
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components React artifact to the Artifactory repository.
 
 ### Communicate
@@ -214,7 +214,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `git pull`
 
 ### Design System SCSS Utils
-1. Switch to __packages/ui-kit-scss-utils directory__
+1. Switch to __packages/scss-utils directory__
 1. Execute `yarn version --no-git-tag-version` and enter new patch or minor version
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 
@@ -223,7 +223,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Push local commit to release branch `git push`
 
 ### Publish
-1. Switch to __packages/ui-kit-scss-utils directory__
+1. Switch to __packages/scss-utils directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System SCSS Utils artifact to the Artifactory repository.
 
 ### Communicate
