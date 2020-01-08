@@ -10,6 +10,9 @@
 
 * Assets
   * Update CDN asset paths
+  
+* Global behaviour
+  * Improve font-weight definitions
 
 ## [1.0.0-rc.1] (2019-12-13)
 
