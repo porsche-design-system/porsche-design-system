@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.14.15] - 2020-01-08
+
 * Change path to default webfonts to match with new font path of the Porsche Design System
 
 ## [0.14.14] - 2019-12-16

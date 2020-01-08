@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.20.1] - 2020-01-08
+
 * Change path to default webfonts to match with new font path of the Porsche Design System
 
 ## [0.20.0] - 2019-12-13
