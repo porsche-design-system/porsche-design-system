@@ -2,6 +2,12 @@
 
 ## NOT RELEASED YET
 
+* Components
+  * Button
+    - Add cursor pointer on hover
+  * Button Pure
+    - Add cursor pointer on hover
+
 * Assets
   * Update CDN asset paths
 
@@ -15,13 +21,13 @@
   * Add Text
   * Add Marque
   * Add Button
-  * Add Button-Pure
+  * Add Button Pure
   * Add Spinner
   * Add Icon
   * Add Flex
   * Add Grid
   * Add Link
-  * Add Link-Pure
+  * Add Link Pure
   * Add Pagination
   
 * Global behaviour
