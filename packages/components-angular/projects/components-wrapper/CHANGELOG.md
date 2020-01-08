@@ -2,6 +2,9 @@
 
 ## NOT RELEASED YET
 
+* Assets
+  * Update CDN asset paths
+
 ## [1.0.0-rc.1] (2019-12-13)
 
 ### Features
