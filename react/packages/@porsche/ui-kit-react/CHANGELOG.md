@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+* Change path to default webfonts to match with new font path of the Porsche Design System
+
 ## [0.14.14] - 2019-12-16
 
 -   Fix floating label behaviour of `<Input>` and `<TextArea> by setting` the `required` prop to true per default.
