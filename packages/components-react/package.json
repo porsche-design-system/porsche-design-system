@@ -16,16 +16,19 @@
   "devDependencies": {
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
-    "@types/jest": "^24.0.23",
-    "@types/node": "^12.7.5",
-    "@types/react": "^16.9.2",
+    "@types/jest": "^24.0.25",
+    "@types/node": "^13.1.4",
+    "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.0",
     "jasmine": "^3.5.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "~3.2.0",
+    "react-scripts": "~3.3.0",
     "react-test-renderer": "^16.10.2",
-    "typescript": "^3.6.3"
+    "typescript": "^3.7.4"
+  },
+  "resolutions": {
+    "@types/react": "^16.9.17"
   },
   "eslintConfig": {
     "extends": "react-app"
