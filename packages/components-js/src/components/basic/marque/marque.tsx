@@ -19,7 +19,7 @@ export class Marque {
       prefix('marque')
     );
 
-    const path = 'https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2';
+    const path = 'https://cdn.ui.porsche.com/porsche-design-system/marque/v1';
 
     const sourceTrademark = this.trademark === true ? '_trademark' : '';
 

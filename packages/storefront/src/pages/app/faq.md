@@ -22,7 +22,7 @@ All versioned releases of the Porsche Design System combine both design and code
 Contents marked as deprecated in `v0` releases of the Porsche Design System won't be deleted and can still be used, but without any guarantee that those patterns still fulfil the latest design definitions or browser compatibility. If possible, we recommend replacing those patterns with new ones from release `v1` or copying the ones you still need over into your application and maintaining them yourself.
 
 ## How to handle older versions?
-If you are still running older versions (e.g. `@porsche/ui-kit-core`–`v0` or `@porsche/components-react`–`v0`), we highly recommend updating to the latest Porsche Design System release if possible. If you have to stick to `v0` components because they do not exist in the new version, you can include both libraries in parallel.
+If you are still running older versions (e.g. `@porsche/ui-kit-core`–`v0` or `@porsche/ui-kit-react`–`v0`), we highly recommend updating to the latest Porsche Design System release if possible. If you have to stick to `v0` components because they do not exist in the new version, you can include both libraries in parallel.
 
 If using both libraries in parallel, only use one component of the same type, e.g. do not use `button` component of `v0` and `v1` in parallel, which could cause design inconsistencies and performance issues.
 
