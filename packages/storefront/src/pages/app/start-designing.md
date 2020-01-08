@@ -25,7 +25,7 @@ Some of the components offer smooth layout behaviour such as automatic resizing 
 The basic library contains the design fundamentals, such as typography, colors and icons.  
 [Download Porsche Design System Basic](sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-basic.sketch.xml) 
 
-To use the library properly you have to download and install the [Porsche Next font here](http://cdn.ui.porsche.com/porsche-ui-kit/font/v2/Porsche_Next_Desktop_OTF_Lat-Gr-Cyr.zip). 
+To use the library properly you have to download and install the [Porsche Next font here](https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip). 
 
 ### Web Library
 The web library provides components that are to be used within web applications, like buttons, form elements and many more.  

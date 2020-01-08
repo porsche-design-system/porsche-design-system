@@ -5,16 +5,16 @@ exports[`Component <p-marque> should render correctly in default mode with shado
   <mock:shadow-root>
     <picture class="p-marque">
       <source media="(min-width: 1000px)" srcset="
-            https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/porsche-marque-rgb-digital_S-L_R_trademark_large@1x.png 1x,
-            https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/porsche-marque-rgb-digital_S-L_R_trademark_large@2x.png 2x,
-            https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/porsche-marque-rgb-digital_S-L_R_trademark_large@3x.png 3x
+            https://cdn.ui.porsche.com/porsche-design-system/marque/v1/porsche-marque-rgb-digital_S-L_R_trademark_large@1x.png 1x,
+            https://cdn.ui.porsche.com/porsche-design-system/marque/v1/porsche-marque-rgb-digital_S-L_R_trademark_large@2x.png 2x,
+            https://cdn.ui.porsche.com/porsche-design-system/marque/v1/porsche-marque-rgb-digital_S-L_R_trademark_large@3x.png 3x
           ">
       <source srcset="
-            https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/porsche-marque-rgb-digital_S-L_R_trademark_small@1x.png 1x,
-            https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/porsche-marque-rgb-digital_S-L_R_trademark_small@2x.png 2x,
-            https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/porsche-marque-rgb-digital_S-L_R_trademark_small@3x.png 3x
+            https://cdn.ui.porsche.com/porsche-design-system/marque/v1/porsche-marque-rgb-digital_S-L_R_trademark_small@1x.png 1x,
+            https://cdn.ui.porsche.com/porsche-design-system/marque/v1/porsche-marque-rgb-digital_S-L_R_trademark_small@2x.png 2x,
+            https://cdn.ui.porsche.com/porsche-design-system/marque/v1/porsche-marque-rgb-digital_S-L_R_trademark_small@3x.png 3x
           ">
-      <img alt="Porsche" src="https://cdn.ui.porsche.com/porsche-ui-kit/marque/v2/porsche-marque-rgb-digital_S-L_R_trademark_large@2x.png">
+      <img alt="Porsche" src="https://cdn.ui.porsche.com/porsche-design-system/marque/v1/porsche-marque-rgb-digital_S-L_R_trademark_large@2x.png">
     </picture>
   </mock:shadow-root>
 </p-marque>
