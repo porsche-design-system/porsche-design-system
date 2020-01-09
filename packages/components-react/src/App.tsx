@@ -311,8 +311,8 @@ const App: React.FC = () => {
         <PGridItem size={5}>
           <div className="playground light spacing-inline">
             <PIcon name={'filter'} color={'neutral-contrast-high'} aria-label="Filter icon"/>
-            <PIcon name={'filter'} size={'medium'} color={'neutral-2'} aria-label="Filter icon"/>
-            <PIcon name={'filter'} size={'large'} color={'neutral-3'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'medium'} color={'neutral-contrast-medium'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} size={'large'} color={'neutral-contrast-low'} aria-label="Filter icon"/>
             <PIcon name={'filter'} size={'large'} color={'brand'} aria-label="Filter icon"/>
             <PIcon name={'filter'} size={'large'} color={'inherit'} aria-label="Filter icon" style={{color: 'deeppink'}}/>
             <PIcon name={'delete'} size={'large'} aria-label="Delete icon"/>
@@ -322,8 +322,8 @@ const App: React.FC = () => {
         <PGridItem size={5}>
           <div className="playground dark spacing-inline">
             <PIcon name={'filter'} theme={'dark'} color={'neutral-contrast-high'} aria-label="Filter icon"/>
-            <PIcon name={'filter'} theme={'dark'} size={'medium'} color={'neutral-2'} aria-label="Filter icon"/>
-            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'neutral-3'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} size={'medium'} color={'neutral-contrast-medium'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'neutral-contrast-low'} aria-label="Filter icon"/>
             <PIcon name={'filter'} theme={'dark'} size={'large'} color={'brand'} aria-label="Filter icon"/>
             <PIcon name={'filter'} theme={'dark'} size={'large'} color={'inherit'} aria-label="Filter icon" style={{color: 'deeppink'}}/>
             <PIcon name={'delete'} theme={'dark'} size={'large'} aria-label="Delete icon"/>
