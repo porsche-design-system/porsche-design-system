@@ -35,14 +35,14 @@
 
     &:hover {
       .stripe {
-        background: darken($p-color-theme-light-brand, 10%);
+        background: darken($p-color-theme-light-state-hover, 10%);
 
         &::before {
-          background: darken($p-color-theme-light-brand, 10%);
+          background: darken($p-color-theme-light-state-hover, 10%);
         }
 
         &::after {
-          background: darken($p-color-theme-light-brand, 10%);
+          background: darken($p-color-theme-light-state-hover, 10%);
         }
       }
     }

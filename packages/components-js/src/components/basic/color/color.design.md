@@ -51,7 +51,7 @@ color theme in use.
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
-| <ColorBadge theme="light" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
+| <ColorBadge theme="light" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| CI color                     |
 
 
 ### Background colors
@@ -96,11 +96,12 @@ When using notification colors …
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
 Depending on the component it can be implemented in different ways, for example as border or surface color.
 
-|                                                                         	|                         	| HEX     	| RGB         	|
-|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge theme="light" color="state-disabled"/>                            | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
-| <ColorBadge theme="light" color="state-focus"/>                          	  | **Focus**           	| #00D5B9 	| 0/213/185  	  |
-
+|                                                         |                 | HEX     	| RGB         	|                |
+|---------------------------------------------------------|-----------------|-----------|---------------|----------------|
+| <ColorBadge theme="light" color="state-hover"/> 	      | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
+| <ColorBadge theme="light" color="state-active"/> 	      | **Active**      | #D5001C 	| 213/0/28      | Active state   |
+| <ColorBadge theme="light" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus staten   |
+| <ColorBadge theme="light" color="state-disabled"/>      | **Disabled**    | #96989A 	| 150/152/154   | Disabled state |
 
 
 ### Color proportions
@@ -121,7 +122,7 @@ color theme in use.
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
-| <ColorBadge theme="dark" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
+| <ColorBadge theme="dark" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| CI color                    |
 
 ### Background colors
 The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
@@ -164,10 +165,12 @@ When using notification colors …
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
 Depending on the component it can be implemented in different ways, for example as border or surface color.
 
-|                                                                         	|                         	| HEX     	| RGB         	|
-|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge theme="dark" color="state-disabled"/>                                      | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
-| <ColorBadge theme="dark" color="state-focus"/>                             	          | **Focus**           	| #00D5B9 	| 0/213/185  	  |
+|                                                        |                 | HEX     	| RGB         	|                |
+|--------------------------------------------------------|-----------------|------------|---------------|----------------|
+| <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
+| <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #D5001C 	| 213/0/28      | Active state   |
+| <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus staten   |
+| <ColorBadge theme="dark" color="state-disabled"/>      | **Disabled**    | #7C7F81 	| 124/127/129   | Disabled state |
 
 ### Color proportions
 

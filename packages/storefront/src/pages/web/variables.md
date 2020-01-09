@@ -58,6 +58,8 @@ A light and dark theme is available depending on which background it's used.
 
 |                                                     |                      	                  |
 |-----------------------------------------------------|-------------------------------------------|
+| <ColorBadge :theme="theme" color="state-hover"/>    | `$p-color-theme-{{theme}}-state-hover`    |
+| <ColorBadge :theme="theme" color="state-active"/>   | `$p-color-theme-{{theme}}-state-active`   |
 | <ColorBadge :theme="theme" color="state-focus"/>    | `$p-color-theme-{{theme}}-state-focus`    |
 | <ColorBadge :theme="theme" color="state-disabled"/> | `$p-color-theme-{{theme}}-state-disabled` |
 

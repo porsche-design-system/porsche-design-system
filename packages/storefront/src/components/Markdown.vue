@@ -216,7 +216,7 @@
 
           &:hover {
             text-decoration: none;
-            color: $p-color-theme-light-brand;
+            color: $p-color-theme-light-state-hover;
 
           }
 

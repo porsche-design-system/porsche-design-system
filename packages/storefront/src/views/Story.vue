@@ -145,7 +145,7 @@
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
         &:hover {
-          color: $p-color-theme-light-brand;
+          color: $p-color-theme-light-state-hover;
         }
 
         &:focus {
@@ -156,7 +156,7 @@
         &.router-link-exact-active {
           cursor: default;
           color: $p-color-theme-light-default;
-          border-bottom-color: $p-color-theme-light-brand;
+          border-bottom-color: $p-color-theme-light-state-active;
         }
       }
     }

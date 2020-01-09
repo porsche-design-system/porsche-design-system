@@ -118,7 +118,7 @@
         border-bottom: 3px solid transparent;
 
         &:hover {
-          color: $p-color-theme-light-brand;
+          color: $p-color-theme-light-state-hover;
         }
 
         &:focus {
@@ -129,7 +129,7 @@
         &.is-active {
           cursor: default;
           color: $p-color-theme-light-default;
-          border-bottom-color: $p-color-theme-light-brand;
+          border-bottom-color: $p-color-theme-light-state-active;
         }
       }
     }
