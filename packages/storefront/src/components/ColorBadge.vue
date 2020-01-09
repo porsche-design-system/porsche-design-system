@@ -13,9 +13,9 @@
     | 'default'
     | 'surface'
     | 'background'
-    | 'neutral-1'
-    | 'neutral-2'
-    | 'neutral-3'
+    | 'neutral-contrast-high'
+    | 'neutral-contrast-medium'
+    | 'neutral-contrast-low'
     | 'notification-success'
     | 'notification-warning'
     | 'notification-error'
@@ -42,7 +42,7 @@
   .color-badge {
     width: rem(160px);
     height: rem(40px);
-    border: 1px solid $p-color-theme-light-neutral-3;
+    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
 
     // Theme light
     &.light {
@@ -62,16 +62,16 @@
         background: $p-color-theme-light-background;
       }
 
-      &.neutral-1 {
-        background: $p-color-theme-light-neutral-1;
+      &.neutral-contrast-high {
+        background: $p-color-theme-light-neutral-contrast-high;
       }
 
-      &.neutral-2 {
-        background: $p-color-theme-light-neutral-2;
+      &.neutral-contrast-medium {
+        background: $p-color-theme-light-neutral-contrast-medium;
       }
 
-      &.neutral-3 {
-        background: $p-color-theme-light-neutral-3;
+      &.neutral-contrast-low {
+        background: $p-color-theme-light-neutral-contrast-low;
       }
 
       &.notification-success {
@@ -113,16 +113,16 @@
         background: $p-color-theme-dark-background;
       }
 
-      &.neutral-1 {
-        background: $p-color-theme-dark-neutral-1;
+      &.neutral-contrast-high {
+        background: $p-color-theme-dark-neutral-contrast-high;
       }
 
-      &.neutral-2 {
-        background: $p-color-theme-dark-neutral-2;
+      &.neutral-contrast-medium {
+        background: $p-color-theme-dark-neutral-contrast-medium;
       }
 
-      &.neutral-3 {
-        background: $p-color-theme-dark-neutral-3;
+      &.neutral-contrast-low {
+        background: $p-color-theme-dark-neutral-contrast-low;
       }
 
       &.notification-success {

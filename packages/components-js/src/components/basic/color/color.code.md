@@ -43,11 +43,11 @@ A light and dark theme is available depending on which background is used.
 
 #### Neutral colors
 
-|                                                   |                      	                 |
-|---------------------------------------------------|----------------------------------------|
-| <ColorBadge :theme="theme" color="neutral-1"/>  	| `$p-color-theme-{{theme}}-neutral-1`   |
-| <ColorBadge :theme="theme" color="neutral-2"/>  	| `$p-color-theme-{{theme}}-neutral-2`   |
-| <ColorBadge :theme="theme" color="neutral-3"/>  	| `$p-color-theme-{{theme}}-neutral-3`   |
+|                                                   |                      	                                         |
+|---------------------------------------------------|----------------------------------------------------------------|
+| <ColorBadge :theme="theme" color="neutral-contrast-high"/>  	| `$p-color-theme-{{theme}}-neutral-contrast-high`   |
+| <ColorBadge :theme="theme" color="neutral-contrast-medium"/>  | `$p-color-theme-{{theme}}-neutral-contrast-medium` |
+| <ColorBadge :theme="theme" color="neutral-contrast-low"/>  	| `$p-color-theme-{{theme}}-neutral-contrast-low`    |
 
 #### Notification colors
 

@@ -72,11 +72,12 @@ The surface colors are the only colors to be used as filling for larger areas on
 The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
 The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                         	|                       	| HEX     	| RGB           	| Usage            |
-|--------------------------------------------------------------------------	|-------------------------|----------	|----------------	|----------------- |
-| <ColorBadge theme="light" color="neutral-1"/> 	                                    | **Neutral 1**             	| #323639 	| 50/54/57       	| div. elements    |
-| <ColorBadge theme="light" color="neutral-2"/>                                      | **Neutral 2**             	| #4A4E51 	| 74/78/81      	| div. elements    |
-| <ColorBadge theme="light" color="neutral-3"/>                                      | **Neutral 3**             	| #626669 	| 98/102/105    	| div. elements    |
+|                                                                         	|                                    | HEX      | RGB              | Usage           |
+|-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|
+| <ColorBadge theme="light" color="neutral-contrast-high"/> 	            | **Neutral contrast high**          | #323639 	| 50/54/57         | div. elements   |
+| <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral contrast medium**        | #626669 	| 74/78/81         | div. elements   |
+| <ColorBadge theme="light" color="neutral-contrast-low"/> 	                | **Neutral contrast low**           | #C9CACB 	| 201/202/203      | only for decorative elements (color is not accessibility conform) |
+
 
 ### Notifications
 Notification colors are to be used only to display warnings, error or status messages.
@@ -140,11 +141,11 @@ The surface colors are the only colors to be used as filling for larger areas on
 The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
 The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                         	|                       	| HEX     	| RGB              	| Usage            |
-|-------------------------------------------------------------------------	|-------------------------|----------	|-----------------	|----------------- |
-| <ColorBadge theme="dark" color="neutral-1"/> 	                                    | **Neutral 1**             	| #E3E4E5 	| 227/228/229     	|  div. elements    |
-| <ColorBadge theme="dark" color="neutral-2"/> 	                                    | **Neutral 2**             	| #C9CACB 	| 201/202/203      	| div. elements    |
-| <ColorBadge theme="dark" color="neutral-3"/> 	                                    | **Neutral 3**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
+|                                                                         	|                                    | HEX      | RGB              | Usage           |
+|-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|
+| <ColorBadge theme="dark" color="neutral-contrast-high"/> 	                | **Neutral contrast high**          | #E3E4E5 	| 227/228/229      | div. elements   |
+| <ColorBadge theme="dark" color="neutral-contrast-medium"/> 	            | **Neutral contrast medium**        | #B0B1B2 	| 176/177/178      | div. elements   |
+| <ColorBadge theme="dark" color="neutral-contrast-low"/> 	                | **Neutral contrast low**           | #4A4E51 	| 74/78/81         | only for decorative elements (color is not accessibility conform) |
 
 ### Notifications
 Notification colors are to be used only to display warnings, error or status messages.

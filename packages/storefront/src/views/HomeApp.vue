@@ -72,8 +72,8 @@
     position: relative;
     padding-top: 34%;
     overflow: hidden;
-    background: $p-color-theme-dark-neutral-2;
-    border-bottom: 1px solid $p-color-theme-dark-neutral-2;
+    background: $p-color-theme-light-neutral-contrast-low;
+    border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
   }
 
   .video {

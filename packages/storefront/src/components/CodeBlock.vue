@@ -174,7 +174,7 @@ export default class CodeBlock extends Vue {
       }
 
       pre {
-        border-color: $p-color-theme-light-neutral-3;
+        border-color: $p-color-theme-light-neutral-contrast-medium;
 
         code ::v-deep {
           .token.comment,
@@ -247,7 +247,7 @@ export default class CodeBlock extends Vue {
       }
 
       pre {
-        border-color: $p-color-theme-dark-neutral-3;
+        border-color: $p-color-theme-dark-neutral-contrast-medium;
 
         code ::v-deep {
           .token.comment,
