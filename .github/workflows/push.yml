@@ -10,7 +10,17 @@ jobs:
     name: 'Components JS'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
@@ -43,7 +53,7 @@ jobs:
           args: --components-js
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v1
         with:
           name: components-js-vrt-regression
           path: ./packages/components-js/tests/vrt/results
@@ -57,7 +67,7 @@ jobs:
           args: --components-js
       - name: 'CBT Regression'
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v1
         with:
           name: components-js-cbt-regression
           path: ./packages/components-js/tests/cbt/results
@@ -65,7 +75,17 @@ jobs:
     name: 'Components Angular'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
@@ -83,7 +103,7 @@ jobs:
           args: --components-angular
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v1
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
@@ -97,7 +117,7 @@ jobs:
           args: --components-angular
       - name: 'CBT Regression'
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v1
         with:
           name: components-angular-cbt-regression
           path: ./packages/components-angular/tests/cbt/results
@@ -105,7 +125,17 @@ jobs:
     name: 'Components React'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
@@ -123,7 +153,7 @@ jobs:
           args: --components-react
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v1
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
@@ -137,7 +167,7 @@ jobs:
           args: --components-react
       - name: 'CBT Regression'
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v1
         with:
           name: components-react-cbt-regression
           path: ./packages/components-react/tests/cbt/results
@@ -145,7 +175,17 @@ jobs:
     name: 'Storefront'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
@@ -178,7 +218,7 @@ jobs:
           args: --storefront
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v1
         with:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
@@ -187,7 +227,17 @@ jobs:
     needs: [components-js, components-angular, components-react, storefront]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
