@@ -141,7 +141,7 @@
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
-        color: darken($p-color-theme-light-brand, 10%);
+        color: darken($p-color-theme-light-state-hover, 10%);
       }
     }
 
@@ -179,7 +179,7 @@
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
-        color: darken($p-color-theme-light-brand, 10%);
+        color: darken($p-color-theme-light-state-hover, 10%);
       }
     }
   }

@@ -88,7 +88,7 @@
     &:not([disabled]) {
       &:hover,
       &:active {
-        color: $p-color-theme-light-brand;
+        color: $p-color-theme-light-state-hover;
       }
     }
 
@@ -109,7 +109,7 @@
     &:not([disabled]) {
       &:hover,
       &:active {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-hover;
       }
     }
 

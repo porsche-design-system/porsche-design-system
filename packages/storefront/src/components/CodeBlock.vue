@@ -321,7 +321,7 @@ export default class CodeBlock extends Vue {
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
         &:hover {
-          color: $p-color-theme-light-brand;
+          color: $p-color-theme-light-state-hover;
         }
 
         &:focus {
@@ -331,7 +331,7 @@ export default class CodeBlock extends Vue {
 
         &.is-active {
           cursor: default;
-          color: $p-color-theme-light-brand;
+          color: $p-color-theme-light-state-active;
         }
       }
     }

@@ -116,14 +116,14 @@
     &:active {
       &#{$bem-block}--theme-light {
         color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-light-brand, 12%);
-        border-color: darken($p-color-theme-light-brand, 12%);
+        background-color: darken($p-color-theme-light-state-hover, 12%);
+        border-color: darken($p-color-theme-light-state-hover, 12%);
       }
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-dark-brand, 12%);
-        border-color: darken($p-color-theme-dark-brand, 12%);
+        background-color: darken($p-color-theme-dark-state-hover, 12%);
+        border-color: darken($p-color-theme-dark-state-hover, 12%);
       }
     }
   }

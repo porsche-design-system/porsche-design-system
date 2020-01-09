@@ -19,6 +19,8 @@
     | 'notification-success'
     | 'notification-warning'
     | 'notification-error'
+    | 'state-hover'
+    | 'state-active'
     | 'state-focus'
     | 'state-disabled'
     | 'external-facebook'
@@ -86,6 +88,14 @@
         background: $p-color-theme-light-notification-error;
       }
 
+      &.state-hover {
+        background: $p-color-theme-light-state-hover;
+      }
+
+      &.state-active {
+        background: $p-color-theme-light-state-active;
+      }
+
       &.state-focus {
         background: $p-color-theme-light-state-focus;
       }
@@ -135,6 +145,14 @@
 
       &.notification-error {
         background: $p-color-theme-dark-notification-error;
+      }
+
+      &.state-hover {
+        background: $p-color-theme-dark-state-hover;
+      }
+
+      &.state-active {
+        background: $p-color-theme-dark-state-active;
       }
 
       &.state-focus {
