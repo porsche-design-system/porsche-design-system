@@ -156,8 +156,8 @@
   &--secondary {
     &#{$bem-block}--theme-light {
       color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-light-neutral-1;
-      border-color: $p-color-theme-light-neutral-1;
+      background-color: $p-color-theme-light-neutral-contrast-high;
+      border-color: $p-color-theme-light-neutral-contrast-high;
     }
 
     &#{$bem-block}--theme-dark {
@@ -172,8 +172,8 @@
       &:active {
         &#{$bem-block}--theme-light {
           color: $p-color-theme-dark-default;
-          background-color: darken($p-color-theme-light-neutral-1, 12%);
-          border-color: darken($p-color-theme-light-neutral-1, 12%);
+          background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+          border-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
         }
 
         &#{$bem-block}--theme-dark {
@@ -204,7 +204,7 @@
     &#{$bem-block}--theme-light {
       color: $p-color-theme-light-default;
       background-color: transparent;
-      border-color: $p-color-theme-light-neutral-1;
+      border-color: $p-color-theme-light-neutral-contrast-high;
     }
 
     &#{$bem-block}--theme-dark {
@@ -219,8 +219,8 @@
       &:active {
         &#{$bem-block}--theme-light {
           color: $p-color-theme-dark-default;
-          background-color: darken($p-color-theme-light-neutral-1, 12%);
-          border-color: darken($p-color-theme-light-neutral-1, 12%);
+          background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+          border-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
         }
 
         &#{$bem-block}--theme-dark {

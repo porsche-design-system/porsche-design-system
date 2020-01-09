@@ -85,9 +85,9 @@ const App: React.FC = () => {
           <div className="playground light spacing-block">
             <PText color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'neutral-1'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'neutral-2'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'neutral-3'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
@@ -98,9 +98,9 @@ const App: React.FC = () => {
           <div className="playground dark spacing-block">
             <PText theme={'dark'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText theme={'dark'} color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'neutral-1'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'neutral-2'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'neutral-3'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText theme={'dark'} color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText theme={'dark'} color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText theme={'dark'} color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
@@ -310,7 +310,7 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size={5}>
           <div className="playground light spacing-inline">
-            <PIcon name={'filter'} color={'neutral-1'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} color={'neutral-contrast-high'} aria-label="Filter icon"/>
             <PIcon name={'filter'} size={'medium'} color={'neutral-2'} aria-label="Filter icon"/>
             <PIcon name={'filter'} size={'large'} color={'neutral-3'} aria-label="Filter icon"/>
             <PIcon name={'filter'} size={'large'} color={'brand'} aria-label="Filter icon"/>
@@ -321,7 +321,7 @@ const App: React.FC = () => {
         </PGridItem>
         <PGridItem size={5}>
           <div className="playground dark spacing-inline">
-            <PIcon name={'filter'} theme={'dark'} color={'neutral-1'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} color={'neutral-contrast-high'} aria-label="Filter icon"/>
             <PIcon name={'filter'} theme={'dark'} size={'medium'} color={'neutral-2'} aria-label="Filter icon"/>
             <PIcon name={'filter'} theme={'dark'} size={'large'} color={'neutral-3'} aria-label="Filter icon"/>
             <PIcon name={'filter'} theme={'dark'} size={'large'} color={'brand'} aria-label="Filter icon"/>

@@ -111,7 +111,7 @@
         cursor: pointer;
         border: none;
         font: inherit;
-        color: $p-color-theme-light-neutral-3;
+        color: $p-color-theme-light-neutral-contrast-medium;
         background-color: transparent;
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
         padding-bottom: $p-spacing-4;
@@ -142,7 +142,7 @@
 
     // Theme
     &.light {
-      border-color: $p-color-theme-dark-neutral-2;
+      border-color: $p-color-theme-light-neutral-contrast-low;
       background-color: $p-color-theme-light-background;
     }
 

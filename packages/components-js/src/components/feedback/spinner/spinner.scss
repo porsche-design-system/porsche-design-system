@@ -42,7 +42,7 @@ $p-spinner-size-large: rem(104px);
   &--theme-light {
     #{$bem-block}__fg,
     #{$bem-block}__bg {
-      stroke: $p-color-theme-light-neutral-1;
+      stroke: $p-color-theme-light-neutral-contrast-high;
     }
   }
 
