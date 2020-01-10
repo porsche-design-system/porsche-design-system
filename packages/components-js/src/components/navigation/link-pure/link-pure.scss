@@ -79,7 +79,7 @@
 
     &:hover,
     &:active {
-      color: $p-color-theme-light-state-hover;
+      color: $p-color-theme-light-state-active;
     }
 
     &#{$bem-block}--active {
@@ -96,11 +96,11 @@
 
     &:hover,
     &:active {
-      color: $p-color-theme-dark-state-hover;
+      color: $p-color-theme-dark-state-active;
     }
 
     &#{$bem-block}--active {
-      color: $p-color-theme-dark-state-hover;
+      color: $p-color-theme-dark-state-active;
     }
   }
 
