@@ -25,8 +25,8 @@ is unsuitable for a bright shining display. All Porsche Design System components
 Each theme comes with a limited color set you should stick to for page backgrounds and text/icons. 
 When it comes to additional elements, such as tiles, dividers or other graphical elements, you have two options:
 
-- Use the accessibility-safe colors provided for the theme ("Additional elements" palette). This is highly recommended whenever you want to convey important information.
-- Use any other color of the Porsche color palette. This only makes sense for displaying "nice to have" or "aesthetic only" elements that are not crucial for information perception.
+- Use the accessibility-safe colors provided for the theme (Neutral Contrast High and Neutral Contrast Medium). This is highly recommended whenever you want to convey important information.
+- Use the Neutral Contrast Low for only displaying "nice to have" or "aesthetic only" elements that are not crucial for information perception.
 
 In order to define the colors to be used within the screen you should always check the **information level** of the respective elements.
 
@@ -74,9 +74,9 @@ The set consists grey shades that are based on a pre-defined mixing ratio of bla
 
 |                                                                         	|                                    | HEX      | RGB              | Usage           |
 |-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|
-| <ColorBadge theme="light" color="neutral-contrast-high"/> 	            | **Neutral contrast high**          | #323639 	| 50/54/57         | div. elements   |
-| <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral contrast medium**        | #626669 	| 74/78/81         | div. elements   |
-| <ColorBadge theme="light" color="neutral-contrast-low"/> 	                | **Neutral contrast low**           | #C9CACB 	| 201/202/203      | only for decorative elements (color is not accessibility conform) |
+| <ColorBadge theme="light" color="neutral-contrast-high"/> 	            | **Neutral Contrast High**          | #323639 	| 50/54/57         | div. elements   |
+| <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #626669 	| 98/102/105         | div. elements   |
+| <ColorBadge theme="light" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #C9CACB 	| 201/202/203      | only for decorative elements (color is not accessibility conform) |
 
 
 ### Notifications
@@ -144,9 +144,9 @@ The set consists grey shades that are based on a pre-defined mixing ratio of bla
 
 |                                                                         	|                                    | HEX      | RGB              | Usage           |
 |-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|
-| <ColorBadge theme="dark" color="neutral-contrast-high"/> 	                | **Neutral contrast high**          | #E3E4E5 	| 227/228/229      | div. elements   |
-| <ColorBadge theme="dark" color="neutral-contrast-medium"/> 	            | **Neutral contrast medium**        | #B0B1B2 	| 176/177/178      | div. elements   |
-| <ColorBadge theme="dark" color="neutral-contrast-low"/> 	                | **Neutral contrast low**           | #4A4E51 	| 74/78/81         | only for decorative elements (color is not accessibility conform) |
+| <ColorBadge theme="dark" color="neutral-contrast-high"/> 	                | **Neutral Contrast High**          | #E3E4E5 	| 227/228/229      | div. elements   |
+| <ColorBadge theme="dark" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #B0B1B2 	| 176/177/178      | div. elements   |
+| <ColorBadge theme="dark" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #4A4E51 	| 74/78/81         | only for decorative elements (color is not accessibility conform) |
 
 ### Notifications
 Notification colors are to be used only to display warnings, error or status messages.
