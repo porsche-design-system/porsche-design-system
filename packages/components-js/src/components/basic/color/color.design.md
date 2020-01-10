@@ -100,7 +100,7 @@ Depending on the component it can be implemented in different ways, for example 
 |---------------------------------------------------------|-----------------|-----------|---------------|----------------|
 | <ColorBadge theme="light" color="state-hover"/> 	      | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
 | <ColorBadge theme="light" color="state-active"/> 	      | **Active**      | #D5001C 	| 213/0/28      | Active state   |
-| <ColorBadge theme="light" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus staten   |
+| <ColorBadge theme="light" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus state   |
 | <ColorBadge theme="light" color="state-disabled"/>      | **Disabled**    | #96989A 	| 150/152/154   | Disabled state |
 
 
@@ -169,7 +169,7 @@ Depending on the component it can be implemented in different ways, for example 
 |--------------------------------------------------------|-----------------|------------|---------------|----------------|
 | <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
 | <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #D5001C 	| 213/0/28      | Active state   |
-| <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus staten   |
+| <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus state   |
 | <ColorBadge theme="dark" color="state-disabled"/>      | **Disabled**    | #7C7F81 	| 124/127/129   | Disabled state |
 
 ### Color proportions
