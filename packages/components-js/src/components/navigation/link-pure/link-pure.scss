@@ -79,11 +79,11 @@
 
     &:hover,
     &:active {
-      color: $p-color-theme-light-state-active;
+      color: $p-color-theme-light-state-hover;
     }
 
     &#{$bem-block}--active {
-      color: $p-color-theme-light-state-active;
+      color: $p-color-theme-light-brand;
     }
   }
 
