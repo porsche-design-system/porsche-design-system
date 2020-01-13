@@ -96,11 +96,11 @@
 
     &:hover,
     &:active {
-      color: $p-color-theme-dark-state-active;
+      color: $p-color-theme-dark-state-hover;
     }
 
     &#{$bem-block}--active {
-      color: $p-color-theme-dark-state-active;
+      color: $p-color-theme-dark-brand;
     }
   }
 
