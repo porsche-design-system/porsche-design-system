@@ -11,3 +11,16 @@
   }
   @return ($pxval / $base) * 1rem;
 }
+
+@function rem-to-px($rem) {
+  @if not unitless($rem) {
+    $rem: ($rem / ($rem * 0 + 1));
+  }
+
+  $base: $p-global-rem-base;
+  @if not unitless($base) {
+    $base: ($base / ($base * 0 + 1));
+  }
+
+  @return ($rem * $base) * 1px;
+}

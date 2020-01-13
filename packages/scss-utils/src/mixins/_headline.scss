@@ -1,137 +1,138 @@
 @import "../variables/index";
+@import "../functions/index";
 @import "./breakpoint";
 
 @mixin p-large-title {
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
-  font-size: rem(32px);
-  line-height: 1.25;
+  font-size: $p-font-size-32;
+  line-height: p-line-height($p-font-size-32);
 
   @include p-breakpoint("s", "m") {
-    font-size: rem(42px);
-    line-height: 1.238;
+    font-size: $p-font-size-42;
+    line-height: p-line-height($p-font-size-42);
   }
 
   @include p-breakpoint("m", "l") {
-    font-size: rem(52px);
-    line-height: 1.153;
+    font-size: $p-font-size-52;
+    line-height: p-line-height($p-font-size-52);
   }
 
   @include p-breakpoint("l", "xl") {
-    font-size: rem(62px);
-    line-height: 1.161;
+    font-size: $p-font-size-62;
+    line-height: p-line-height($p-font-size-62);
   }
 
   @include p-breakpoint("xl") {
-    font-size: rem(72px);
-    line-height: 1.166;
+    font-size: $p-font-size-72;
+    line-height: p-line-height($p-font-size-72);
   }
 }
 
 @mixin p-headline-1 {
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
-  font-size: rem(28px);
-  line-height: 1.285;
+  font-size: $p-font-size-28;
+  line-height: p-line-height($p-font-size-28);
 
   @include p-breakpoint("s", "m") {
-    font-size: rem(36px);
-    line-height: 1.222;
+    font-size: $p-font-size-36;
+    line-height: p-line-height($p-font-size-36);
   }
 
   @include p-breakpoint("m", "l") {
-    font-size: rem(44px);
-    line-height: 1.181;
+    font-size: $p-font-size-44;
+    line-height: p-line-height($p-font-size-44);
   }
 
   @include p-breakpoint("l", "xl") {
-    font-size: rem(52px);
-    line-height: 1.153;
+    font-size: $p-font-size-52;
+    line-height: p-line-height($p-font-size-52);
   }
 
   @include p-breakpoint("xl") {
-    font-size: rem(60px);
-    line-height: 1.133;
+    font-size: $p-font-size-60;
+    line-height: p-line-height($p-font-size-60);
   }
 }
 
 @mixin p-headline-2 {
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
-  font-size: rem(24px);
-  line-height: 1.333;
+  font-size: $p-font-size-24;
+  line-height: p-line-height($p-font-size-24);
 
   @include p-breakpoint("s", "m") {
-    font-size: rem(30px);
-    line-height: 1.333;
+    font-size: $p-font-size-30;
+    line-height: p-line-height($p-font-size-30);
   }
 
   @include p-breakpoint("m", "l") {
-    font-size: rem(36px);
-    line-height: 1.222;
+    font-size: $p-font-size-36;
+    line-height: p-line-height($p-font-size-36);
   }
 
   @include p-breakpoint("l", "xl") {
-    font-size: rem(42px);
-    line-height: 1.238;
+    font-size: $p-font-size-42;
+    line-height: p-line-height($p-font-size-42);
   }
 
   @include p-breakpoint("xl") {
-    font-size: rem(48px);
-    line-height: 1.166;
+    font-size: $p-font-size-48;
+    line-height: p-line-height($p-font-size-48);
   }
 }
 
 @mixin p-headline-3 {
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
-  font-size: rem(20px);
-  line-height: 1.4;
+  font-size: $p-font-size-20;
+  line-height: p-line-height($p-font-size-20);
 
   @include p-breakpoint("s", "m") {
-    font-size: rem(24px);
-    line-height: 1.333;
+    font-size: $p-font-size-24;
+    line-height: p-line-height($p-font-size-24);
   }
 
   @include p-breakpoint("m", "l") {
-    font-size: rem(28px);
-    line-height: 1.285;
+    font-size: $p-font-size-28;
+    line-height: p-line-height($p-font-size-28);
   }
 
   @include p-breakpoint("l", "xl") {
-    font-size: rem(32px);
-    line-height: 1.25;
+    font-size: $p-font-size-32;
+    line-height: p-line-height($p-font-size-32);
   }
 
   @include p-breakpoint("xl") {
-    font-size: rem(36px);
-    line-height: 1.222;
+    font-size: $p-font-size-36;
+    line-height: p-line-height($p-font-size-36);
   }
 }
 
 @mixin p-headline-4 {
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
-  font-size: rem(16px);
-  line-height: 1.5;
+  font-size: $p-font-size-16;
+  line-height: p-line-height($p-font-size-16);
 
   @include p-breakpoint("s", "m") {
-    font-size: rem(18px);
-    line-height: 1.333;
+    font-size: $p-font-size-18;
+    line-height: p-line-height($p-font-size-18);
   }
 
   @include p-breakpoint("m", "l") {
-    font-size: rem(20px);
-    line-height: 1.4;
+    font-size: $p-font-size-20;
+    line-height: p-line-height($p-font-size-20);
   }
 
   @include p-breakpoint("l", "xl") {
-    font-size: rem(22px);
-    line-height: 1.454;
+    font-size: rem(22px); // not in global type scale defined
+    line-height: p-line-height(rem(22px));
   }
 
   @include p-breakpoint("xl") {
-    font-size: rem(24px);
-    line-height: 1.333;
+    font-size: $p-font-size-24;
+    line-height: p-line-height($p-font-size-24);
   }
 }
