@@ -55,7 +55,7 @@ color theme in use.
 
 
 ### Background colors
-The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
+The surface colors are the only colors to be used as filling for larger areas on the page background.
 
 |                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
 |-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
@@ -125,7 +125,7 @@ color theme in use.
 | <ColorBadge theme="dark" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| CI color                    |
 
 ### Background colors
-The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
+The surface colors are the only colors to be used as filling for larger areas on the page background.
 
 |                                                                       	|                      	    | HEX     	| RGB           	| Usage            |
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
