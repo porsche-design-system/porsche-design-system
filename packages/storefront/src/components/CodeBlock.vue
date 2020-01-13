@@ -331,7 +331,7 @@ export default class CodeBlock extends Vue {
 
         &.is-active {
           cursor: default;
-          color: $p-color-theme-light-state-active;
+          color: $p-color-theme-light-brand;
         }
       }
     }
