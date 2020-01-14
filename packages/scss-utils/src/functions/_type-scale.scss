@@ -1,5 +1,4 @@
-@import "../variables/global";
-@import "rem";
+@import "converter";
 @import "utils";
 
 /**
@@ -9,11 +8,11 @@
 @function p-line-height($font-size) {
 
   @if p-is-rem($font-size) {
-    $font-size: rem-to-px($font-size);
+    $font-size: p-px($font-size);
   } @else if p-is-px($font-size) {
     $font-size: $font-size;
   } @else {
-    @error 'p-line-height() Sass function only accepts value in rem or px for $font-size, e.g. 12px or 1.5rem';
+    @error 'p-line-height() Sass function only accepts value in rem or px for param $font-size, e.g. 12px or 1.5rem';
   }
 
   $font-size: p-strip-unit($font-size);

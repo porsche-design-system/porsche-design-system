@@ -127,7 +127,7 @@
         // Blockquote
         blockquote {
           padding-left: $p-spacing-24;
-          border-left: rem(5px) solid $p-color-theme-dark-neutral-2;
+          border-left: p-rem(5px) solid $p-color-theme-dark-neutral-2;
         }
 
         // Lists

@@ -25,88 +25,88 @@
   }
   
   .f-12 {
-    font-size: rem(12px);
-    line-height: p-line-height( rem(12px) );
+    font-size: p-rem(12px);
+    line-height: p-line-height( p-rem(12px) );
   }
   
   .f-16 {
-    font-size: rem(16px);
-    line-height: p-line-height( rem(16px) );
+    font-size: p-rem(16px);
+    line-height: p-line-height( p-rem(16px) );
   }
   
   .f-18 {
-    font-size: rem(18px);
-    line-height: p-line-height( rem(18px) );
+    font-size: p-rem(18px);
+    line-height: p-line-height( p-rem(18px) );
   }
   
   .f-20 {
-    font-size: rem(20px);
-    line-height: p-line-height( rem(20px) );
+    font-size: p-rem(20px);
+    line-height: p-line-height( p-rem(20px) );
   }
   
   .f-24 {
-    font-size: rem(24px);
-    line-height: p-line-height( rem(24px) );
+    font-size: p-rem(24px);
+    line-height: p-line-height( p-rem(24px) );
   }
   
   .f-28 {
-    font-size: rem(28px);
-    line-height: p-line-height( rem(28px) );
+    font-size: p-rem(28px);
+    line-height: p-line-height( p-rem(28px) );
   }
   
   .f-30 {
-    font-size: rem(30px);
-    line-height: p-line-height( rem(30px) );
+    font-size: p-rem(30px);
+    line-height: p-line-height( p-rem(30px) );
   }
   
   .f-32 {
-    font-size: rem(32px);
-    line-height: p-line-height( rem(32px) );
+    font-size: p-rem(32px);
+    line-height: p-line-height( p-rem(32px) );
   }
   
   .f-36 {
-    font-size: rem(36px);
-    line-height: p-line-height( rem(36px) );
+    font-size: p-rem(36px);
+    line-height: p-line-height( p-rem(36px) );
   }
   
   .f-42 {
-    font-size: rem(42px);
-    line-height: p-line-height( rem(42px) );
+    font-size: p-rem(42px);
+    line-height: p-line-height( p-rem(42px) );
   }
   
   .f-44 {
-    font-size: rem(44px);
-    line-height: p-line-height( rem(44px) );
+    font-size: p-rem(44px);
+    line-height: p-line-height( p-rem(44px) );
   }
   
   .f-48 {
-    font-size: rem(48px);
-    line-height: p-line-height( rem(48px) );
+    font-size: p-rem(48px);
+    line-height: p-line-height( p-rem(48px) );
   }
   
   .f-52 {
-    font-size: rem(52px);
-    line-height: p-line-height( rem(52px) );
+    font-size: p-rem(52px);
+    line-height: p-line-height( p-rem(52px) );
   }
   
   .f-60 {
-    font-size: rem(60px);
-    line-height: p-line-height( rem(60px) );
+    font-size: p-rem(60px);
+    line-height: p-line-height( p-rem(60px) );
   }
   
   .f-62 {
-    font-size: rem(62px);
-    line-height: p-line-height( rem(62px) );
+    font-size: p-rem(62px);
+    line-height: p-line-height( p-rem(62px) );
   }
   
   .f-72 {
-    font-size: rem(72px);
-    line-height: p-line-height( rem(72px) );
+    font-size: p-rem(72px);
+    line-height: p-line-height( p-rem(72px) );
   }
   
   .f-84 {
-    font-size: rem(84px);
-    line-height: p-line-height( rem(84px) );
+    font-size: p-rem(84px);
+    line-height: p-line-height( p-rem(84px) );
   }
   
   
