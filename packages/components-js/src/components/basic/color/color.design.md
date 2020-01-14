@@ -45,7 +45,7 @@ The color proportion scales for each theme might be a little helper in doing so.
 ![Porsche Light Theme colors](./assets/color-theme-light.png)
 
 ### Brand color
-The Porsche brand color are the core of the Porsche Design System color palette. The usage
+The Porsche brand color is the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 
@@ -55,7 +55,6 @@ color theme in use.
 
 
 ### Background colors
-The surface colors are the only colors to be used as filling for larger areas on the page background.
 
 |                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
 |-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
@@ -72,11 +71,11 @@ The surface colors are the only colors to be used as filling for larger areas on
 The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
 The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                         	|                                    | HEX      | RGB              | Usage           |
-|-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|
-| <ColorBadge theme="light" color="neutral-contrast-high"/> 	            | **Neutral Contrast High**          | #323639 	| 50/54/57         | div. elements   |
-| <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #626669 	| 98/102/105         | div. elements   |
-| <ColorBadge theme="light" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #C9CACB 	| 201/202/203      | only for decorative elements (color is not accessibility conform) |
+|                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA for Light Theme           |
+|-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
+| <ColorBadge theme="light" color="neutral-contrast-high"/> 	            | **Neutral Contrast High**          | #323639 	| 50/54/57         | div. elements   | ✓   |
+| <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #626669 	| 98/102/105         | div. elements   | ✓   |
+| <ColorBadge theme="light" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #C9CACB 	| 201/202/203      | only for decorative elements   | -   |
 
 
 ### Notifications
@@ -116,7 +115,7 @@ Depending on the component it can be implemented in different ways, for example 
 ![Porsche Dark Theme colors](./assets/color-theme-dark.png)
 
 ### Brand color
-The Porsche brand color are the core of the Porsche Design System color palette. The usage
+The Porsche brand color is the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 
@@ -125,7 +124,6 @@ color theme in use.
 | <ColorBadge theme="dark" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| CI color                    |
 
 ### Background colors
-The surface colors are the only colors to be used as filling for larger areas on the page background.
 
 |                                                                       	|                      	    | HEX     	| RGB           	| Usage            |
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
@@ -142,11 +140,11 @@ The surface colors are the only colors to be used as filling for larger areas on
 The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
 The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                         	|                                    | HEX      | RGB              | Usage           |
-|-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|
-| <ColorBadge theme="dark" color="neutral-contrast-high"/> 	                | **Neutral Contrast High**          | #E3E4E5 	| 227/228/229      | div. elements   |
-| <ColorBadge theme="dark" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #B0B1B2 	| 176/177/178      | div. elements   |
-| <ColorBadge theme="dark" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #4A4E51 	| 74/78/81         | only for decorative elements (color is not accessibility conform) |
+|                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA for Dark Theme           |
+|-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
+| <ColorBadge theme="dark" color="neutral-contrast-high"/> 	                | **Neutral Contrast High**          | #E3E4E5 	| 227/228/229      | div. elements   | ✓   |
+| <ColorBadge theme="dark" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #B0B1B2 	| 176/177/178      | div. elements   | ✓   |
+| <ColorBadge theme="dark" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #4A4E51 	| 74/78/81         | only for decorative elements | -   |
 
 ### Notifications
 Notification colors are to be used only to display warnings, error or status messages.
