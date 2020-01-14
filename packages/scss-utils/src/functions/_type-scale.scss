@@ -1,3 +1,5 @@
+/* Internal functions */
+
 @import "converter";
 @import "utils";
 
@@ -12,7 +14,7 @@
   } @else if p-is-px($font-size) {
     $font-size: $font-size;
   } @else {
-    @error 'p-line-height() Sass function only accepts value in rem or px for param $font-size, e.g. 12px or 1.5rem';
+    @error 'p-line-height() Scss function only accepts value in rem or px for param $font-size, e.g. 12px or 1.5rem';
   }
 
   $font-size: p-strip-unit($font-size);
