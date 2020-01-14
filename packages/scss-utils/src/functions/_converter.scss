@@ -2,7 +2,7 @@
 @import "utils";
 
 /**
- * Converts px to rem units
+ * Converts px to rem unit
  * @param $px - only accepts value in px unit, e.g. 12px
  */
 @function p-rem($px) {
@@ -11,12 +11,12 @@
     $base: p-strip-unit($p-global-rem-base);
     @return ($px / $base) * 1rem;
   } @else {
-    @error 'p-rem() Sass function only accepts value in px for param $px, e.g. 12px';
+    @error 'p-rem() Scss function only accepts value in px for param $px, e.g. 12px';
   }
 }
 
 /**
- * Converts rem to px units
+ * Converts rem to px unit
  * @param $rem - only accepts value in rem unit, e.g. 1.5rem
  */
 @function p-px($rem) {
@@ -25,12 +25,14 @@
     $base: p-strip-unit($p-global-rem-base);
     @return ($rem * $base) * 1px;
   } @else {
-    @error 'p-px() Sass function only accepts value in rem for param $rem, e.g. 1.5rem';
+    @error 'p-px() Scss function only accepts value in rem for param $rem, e.g. 1.5rem';
   }
 }
 
 // @deprecated
 @function rem($pxval) {
+  @warn 'This Scss function is deprecated and will be removed with next major release.';
+
   @if not unitless($pxval) {
     $pxval: ($pxval / ($pxval * 0 + 1));
   }
