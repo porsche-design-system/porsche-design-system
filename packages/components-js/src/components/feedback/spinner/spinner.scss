@@ -1,8 +1,8 @@
 @import '../../../../../../packages/scss-utils/index';
 
-$p-spinner-size-small: rem(48px);
-$p-spinner-size-medium: rem(72px);
-$p-spinner-size-large: rem(104px);
+$p-spinner-size-small: p-rem(48px);
+$p-spinner-size-medium: p-rem(72px);
+$p-spinner-size-large: p-rem(104px);
 
 :host {
   display: inline-flex;

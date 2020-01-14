@@ -7,7 +7,7 @@ set to 16 px by default.
 #### Example
 ```
 div {
-  width: rem(123px);
+  width: p-rem(123px);
 }
 ```
 

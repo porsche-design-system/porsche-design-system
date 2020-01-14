@@ -127,8 +127,8 @@
   }
 
   @include p-breakpoint("l", "xl") {
-    font-size: rem(22px); // not in global type scale defined
-    line-height: p-line-height(rem(22px));
+    font-size: p-rem(22px); // not in global type scale defined
+    line-height: p-line-height(p-rem(22px));
   }
 
   @include p-breakpoint("xl") {

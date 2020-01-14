@@ -154,7 +154,7 @@
     // Child Layout "height"
     &.height-fixed .code {
       > * {
-        height: rem(180px);
+        height: p-rem(180px);
       }
     }
 
