@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- p-line-height() function - Calculates line-height depending on font-size that fits into Porsche Vertical Grid System
-- p-px() - Converts rem to px units
-- $p-font-size-22 to complete Porsche Type Scale variables
+- p-type-scale() mixin - Calculates font-size and line-height to fit into Porsche Vertical Grid System
+- p-px() function - Converts rem to px units
+- $p-font-size-22 variable to complete Porsche Type Scale
 
 ### Changed
 - Rename rem() to p-rem() function
