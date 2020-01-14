@@ -94,19 +94,20 @@ Depending on the information level of the respective text you can either chose b
 ### Porsche type scale
 Additional text sizes can be defined based on the Porsche type scale system. 
 
-<p-text size="x-small" tag="span" style="display: inline-block; margin-right: 16px">12</p-text>
-<p-text tag="span" style="display: inline-block; margin-right: 16px">16</p-text>
+<p-text size="x-small" tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">12</p-text>
+<p-text tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">16</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 18px;">18</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 20px;">20</p-text>
-<p-text size="medium" tag="span" style="display: inline-block; margin-right: 16px"><span style="color: #00D5B9">24</span></p-text>
+<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 22px;">22</p-text>
+<p-text size="medium" tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">24</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 28px;">28</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 30px;">30</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 32px;">32</p-text>
-<p-text size="large" tag="span" style="display: inline-block; margin-right: 16px"><span style="color: #00D5B9">36</span></p-text>
+<p-text size="large" tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">36</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 42px;">42</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 44px;">44</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 48px;">48</p-text>
-<p-text size="x-large" tag="span" style="display: inline-block; margin-right: 16px"><span style="color: #00D5B9">52</span></p-text>
+<p-text size="x-large" tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">52</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 60px;">60</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 62px;">62</p-text>
 <p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 72px;">72</p-text>
