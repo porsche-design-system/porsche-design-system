@@ -25,88 +25,71 @@
   }
   
   .f-12 {
-    font-size: p-rem(12px);
-    line-height: p-line-height(12px);
+    @include p-type-scale(12px);
   }
   
   .f-16 {
-    font-size: p-rem(16px);
-    line-height: p-line-height(16px);
+    @include p-type-scale(16px);
   }
   
   .f-18 {
-    font-size: p-rem(18px);
-    line-height: p-line-height(18px);
+    @include p-type-scale(18px);
   }
   
   .f-20 {
-    font-size: p-rem(20px);
-    line-height: p-line-height(20px);
+    @include p-type-scale(20px);
   }
   
   .f-24 {
-    font-size: p-rem(24px);
-    line-height: p-line-height(24px);
+    @include p-type-scale(24px);
   }
   
   .f-28 {
-    font-size: p-rem(28px);
-    line-height: p-line-height(28px);
+    @include p-type-scale(28px);
   }
   
   .f-30 {
-    font-size: p-rem(30px);
-    line-height: p-line-height(30px);
+    @include p-type-scale(30px);
   }
   
   .f-32 {
-    font-size: p-rem(32px);
-    line-height: p-line-height(32px);
+    @include p-type-scale(32px);
   }
   
   .f-36 {
-    font-size: p-rem(36px);
-    line-height: p-line-height(36px);
+    @include p-type-scale(36px);
   }
   
   .f-42 {
-    font-size: p-rem(42px);
-    line-height: p-line-height(42px);
+    @include p-type-scale(42px);
   }
   
   .f-44 {
-    font-size: p-rem(44px);
-    line-height: p-line-height(44px);
+    @include p-type-scale(44px);
   }
   
   .f-48 {
-    font-size: p-rem(48px);
-    line-height: p-line-height(48px);
+    @include p-type-scale(48px);
   }
   
   .f-52 {
-    font-size: p-rem(52px);
-    line-height: p-line-height(52px);
+    @include p-type-scale(52px);
   }
   
   .f-60 {
-    font-size: p-rem(60px);
-    line-height: p-line-height(60px);
+    @include p-type-scale(60px);
   }
   
   .f-62 {
-    font-size: p-rem(62px);
-    line-height: p-line-height(62px);
+    @include p-type-scale(62px);
   }
   
   .f-72 {
-    font-size: p-rem(72px);
-    line-height: p-line-height(72px);
+    @include p-type-scale(72px);
   }
   
   .f-84 {
-    font-size: p-rem(84px);
-    line-height: p-line-height(84px);
+    @include p-type-scale(84px);
   }
   
 </style>
