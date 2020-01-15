@@ -100,7 +100,7 @@
     display: flex;
 
     .tab {
-      font-size: $p-font-size-20;
+      @include p-type-scale($p-font-size-20);
 
       &:not(:last-child) {
         margin-right: $p-spacing-24;

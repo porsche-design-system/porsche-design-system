@@ -170,3 +170,24 @@ p {
   line-height: 1.5;
 }
 ```
+
+---
+
+### p-type-scale($size)`
+Calculates font-size and line-height to fit into Porsche Vertical Grid System.
+`$size` only accepts value in rem or px, e.g. 12px or 1.5rem.
+
+#### Example
+```
+p {
+  @include p-type-scale($p-font-size-16);
+}
+```
+
+#### Result
+```
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+```
