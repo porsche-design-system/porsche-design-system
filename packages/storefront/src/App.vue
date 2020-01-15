@@ -122,7 +122,7 @@
         bottom: 0;
         width: rem(280px);
         padding: $p-spacing-40 $p-spacing-32;
-        border-right: 1px solid $p-color-theme-dark-neutral-2;
+        border-right: 1px solid $p-color-theme-light-neutral-contrast-low;
         background: $p-color-theme-light-background;
         overflow-x: hidden;
         overflow-y: auto;
