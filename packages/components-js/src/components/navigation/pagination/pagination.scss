@@ -108,11 +108,11 @@
       outline: none;
 
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-brand;
+        color: $p-color-theme-light-state-active;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-active;
       }
     }
   }
@@ -132,11 +132,11 @@
 
     &:hover {
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-brand;
+        color: $p-color-theme-light-state-hover;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-hover;
       }
     }
 
@@ -206,11 +206,11 @@
 
     &:hover {
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-brand;
+        color: $p-color-theme-light-state-hover;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-hover;
       }
     }
 

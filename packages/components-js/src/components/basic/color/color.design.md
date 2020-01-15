@@ -25,8 +25,8 @@ is unsuitable for a bright shining display. All Porsche Design System components
 Each theme comes with a limited color set you should stick to for page backgrounds and text/icons. 
 When it comes to additional elements, such as tiles, dividers or other graphical elements, you have two options:
 
-- Use the accessibility-safe colors provided for the theme ("Additional elements" palette). This is highly recommended whenever you want to convey important information.
-- Use any other color of the Porsche color palette. This only makes sense for displaying "nice to have" or "aesthetic only" elements that are not crucial for information perception.
+- Use the accessibility-safe colors provided for the theme (Neutral Contrast High and Neutral Contrast Medium). This is highly recommended whenever you want to convey important information.
+- Use the Neutral Contrast Low for only displaying "nice to have" or "aesthetic only" elements that are not crucial for information perception.
 
 In order to define the colors to be used within the screen you should always check the **information level** of the respective elements.
 
@@ -45,17 +45,16 @@ The color proportion scales for each theme might be a little helper in doing so.
 ![Porsche Light Theme colors](./assets/color-theme-light.png)
 
 ### Brand color
-The Porsche brand color are the core of the Porsche Design System color palette. The usage
+The Porsche brand color is the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
-| <ColorBadge theme="light" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
+| <ColorBadge theme="light" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| CI color                     |
 
 
 ### Background colors
-The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
 
 |                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
 |-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
@@ -72,11 +71,12 @@ The surface colors are the only colors to be used as filling for larger areas on
 The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
 The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                         	|                       	| HEX     	| RGB           	| Usage            |
-|--------------------------------------------------------------------------	|-------------------------|----------	|----------------	|----------------- |
-| <ColorBadge theme="light" color="neutral-1"/> 	                                    | **Neutral 1**             	| #323639 	| 50/54/57       	| div. elements    |
-| <ColorBadge theme="light" color="neutral-2"/>                                      | **Neutral 2**             	| #4A4E51 	| 74/78/81      	| div. elements    |
-| <ColorBadge theme="light" color="neutral-3"/>                                      | **Neutral 3**             	| #626669 	| 98/102/105    	| div. elements    |
+|                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA for Light Theme           |
+|-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
+| <ColorBadge theme="light" color="neutral-contrast-high"/> 	            | **Neutral Contrast High**          | #323639 	| 50/54/57         | div. elements   | ✓   |
+| <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #626669 	| 98/102/105         | div. elements   | ✓   |
+| <ColorBadge theme="light" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #C9CACB 	| 201/202/203      | only for decorative elements   | -   |
+
 
 ### Notifications
 Notification colors are to be used only to display warnings, error or status messages.
@@ -95,11 +95,12 @@ When using notification colors …
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
 Depending on the component it can be implemented in different ways, for example as border or surface color.
 
-|                                                                         	|                         	| HEX     	| RGB         	|
-|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge theme="light" color="state-disabled"/>                            | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
-| <ColorBadge theme="light" color="state-focus"/>                          	  | **Focus**           	| #00D5B9 	| 0/213/185  	  |
-
+|                                                         |                 | HEX     	| RGB         	|                |
+|---------------------------------------------------------|-----------------|-----------|---------------|----------------|
+| <ColorBadge theme="light" color="state-hover"/> 	      | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
+| <ColorBadge theme="light" color="state-active"/> 	      | **Active**      | #D5001C 	| 213/0/28      | Active state   |
+| <ColorBadge theme="light" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus state   |
+| <ColorBadge theme="light" color="state-disabled"/>      | **Disabled**    | #96989A 	| 150/152/154   | Disabled state |
 
 
 ### Color proportions
@@ -114,16 +115,15 @@ Depending on the component it can be implemented in different ways, for example 
 ![Porsche Dark Theme colors](./assets/color-theme-dark.png)
 
 ### Brand color
-The Porsche brand color are the core of the Porsche Design System color palette. The usage
+The Porsche brand color is the core of the Porsche Design System color palette. The usage
 and proportion of brand colors within a UI is defined by the specific Porsche
 color theme in use.
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
-| <ColorBadge theme="dark" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| Hover or active state                     |
+| <ColorBadge theme="dark" color="brand"/> 	                                          | **Brand**         	| #D5001C 	| 213/0/28       	| CI color                    |
 
 ### Background colors
-The surface colors are the only colors to be used as filling for larger areas on the page backgrounds "Porsche Light" or "Porsche Dark".
 
 |                                                                       	|                      	    | HEX     	| RGB           	| Usage            |
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
@@ -140,11 +140,11 @@ The surface colors are the only colors to be used as filling for larger areas on
 The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
 The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                         	|                       	| HEX     	| RGB              	| Usage            |
-|-------------------------------------------------------------------------	|-------------------------|----------	|-----------------	|----------------- |
-| <ColorBadge theme="dark" color="neutral-1"/> 	                                    | **Neutral 1**             	| #E3E4E5 	| 227/228/229     	|  div. elements    |
-| <ColorBadge theme="dark" color="neutral-2"/> 	                                    | **Neutral 2**             	| #C9CACB 	| 201/202/203      	| div. elements    |
-| <ColorBadge theme="dark" color="neutral-3"/> 	                                    | **Neutral 3**             	| #B0B1B2 	| 176/177/178      	| div. elements    |
+|                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA for Dark Theme           |
+|-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
+| <ColorBadge theme="dark" color="neutral-contrast-high"/> 	                | **Neutral Contrast High**          | #E3E4E5 	| 227/228/229      | div. elements   | ✓   |
+| <ColorBadge theme="dark" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #B0B1B2 	| 176/177/178      | div. elements   | ✓   |
+| <ColorBadge theme="dark" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #4A4E51 	| 74/78/81         | only for decorative elements | -   |
 
 ### Notifications
 Notification colors are to be used only to display warnings, error or status messages.
@@ -163,10 +163,12 @@ When using notification colors …
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
 Depending on the component it can be implemented in different ways, for example as border or surface color.
 
-|                                                                         	|                         	| HEX     	| RGB         	|
-|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge theme="dark" color="state-disabled"/>                                      | **Disabled**            	| #7C7F81 	| 150/152/154     | Disabled state or decorative text/icons |
-| <ColorBadge theme="dark" color="state-focus"/>                             	          | **Focus**           	| #00D5B9 	| 0/213/185  	  |
+|                                                        |                 | HEX     	| RGB         	|                |
+|--------------------------------------------------------|-----------------|------------|---------------|----------------|
+| <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
+| <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #D5001C 	| 213/0/28      | Active state   |
+| <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus state   |
+| <ColorBadge theme="dark" color="state-disabled"/>      | **Disabled**    | #7C7F81 	| 124/127/129   | Disabled state |
 
 ### Color proportions
 

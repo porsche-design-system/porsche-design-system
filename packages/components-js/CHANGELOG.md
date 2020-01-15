@@ -7,6 +7,10 @@
     - Add cursor pointer on hover
   * Button Pure
     - Add cursor pointer on hover
+  * Icon
+    - Rename and optimize neutral colors
+  * Text
+    - Rename and optimize neutral colors
 
 * Assets
   * Update CDN asset paths
