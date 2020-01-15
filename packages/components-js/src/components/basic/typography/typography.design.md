@@ -119,14 +119,15 @@ For reasons of legibility, the line height should always be adjusted to the resp
 
 ### Type Scale Calculator
   
-<p-text>Enter a font-size in px unit based on Porsche Type Scale.</p-text>
-<label>
-  <input type="number" v-model="size" />
-</label>
+Enter a font-size in px unit based on Porsche Type Scale.  
+<input type="number" v-model="size" />
 
 ```
 {{this.typeScale(size)}}
 ```
+
+**Example Text**
+<p-text size="inherit" :style="typeScale(size, false)">The quick brown fox jumps over the lazy dog</p-text>
 
 ---
 
@@ -255,9 +256,9 @@ impact on the origin character of the company typeface. This includes:
   @Component
   export default class PlaygroundTypography extends Vue {
     public size: number = 16;
-    public typeScale(fontSize: number): string {
+    public typeScale(fontSize: number, comment: boolean = true): string {
       let e = 2.71828;
-      let exactLineHeightFactor = 0.911 / ( 2.95 + 0.01 * Math.pow( e, 0.1 * fontSize ) ) + 1.2;
+      let exactLineHeightFactor = 0.911 / ( 2.97 + 0.01 * Math.pow( e, 0.2 * fontSize ) ) + 1.2;
       let exactLineHeightPx = fontSize * exactLineHeightFactor;
       let remainingPx = exactLineHeightPx % 4;
 
@@ -268,8 +269,12 @@ impact on the origin character of the company typeface. This includes:
       let fittedLineHeightPx = exactLineHeightPx - remainingPx;
       let fittedLineHeightFactor = fittedLineHeightPx / fontSize;
       let fontSizeRem = fontSize / 16;
-
-      return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"px\nline-height: "+ fittedLineHeightFactor +";";
+      
+      if (comment) {
+        return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"px\nline-height: "+ fittedLineHeightFactor +"; // "+ fittedLineHeightPx +"px";
+      }
+      
+      return "font-size: "+ fontSizeRem +"rem; line-height: "+ fittedLineHeightFactor +";";
     }
   }
 </script>
