@@ -117,6 +117,16 @@ Additional text sizes can be defined based on the Porsche type scale system.
 
 For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](#/web/components/layout/spacing) in order to follow a harmonious overall vertical rhythm.
 
+### Type Scale Calculator
+  
+<p-text>Enter a font-size in px unit based on Porsche Type Scale.</p-text>
+<label>
+  <input type="number" v-model="size" />
+</label>
+
+```
+{{this.typeScale(size)}}
+```
 
 ---
 
@@ -238,3 +248,28 @@ impact on the origin character of the company typeface. This includes:
 - No use of opacity for text colors.
   
 ![Example for uppercase text](./assets/typography-donts.png)
+
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundTypography extends Vue {
+    public size: number = 16;
+    public typeScale(fontSize: number): string {
+      let e = 2.71828;
+      let exactLineHeightFactor = 0.911 / ( 2.95 + 0.01 * Math.pow( e, 0.1 * fontSize ) ) + 1.2;
+      let exactLineHeightPx = fontSize * exactLineHeightFactor;
+      let remainingPx = exactLineHeightPx % 4;
+
+      if (remainingPx > 2) {
+        remainingPx = remainingPx - 4;
+      }
+
+      let fittedLineHeightPx = exactLineHeightPx - remainingPx;
+      let fittedLineHeightFactor = fittedLineHeightPx / fontSize;
+      let fontSizeRem = fontSize / 16;
+
+      return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"px\nline-height: "+ fittedLineHeightFactor +";";
+    }
+  }
+</script>
