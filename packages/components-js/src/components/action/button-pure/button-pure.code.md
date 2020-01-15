@@ -145,7 +145,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
     public weight: string = 'thin';
     
     public get isInherit() {
-      return this.size === 'inherit' ? 'font-size: 48px' : undefined;
+      return this.size === 'inherit' ? 'font-size: 48px; line-height: 1.16667;' : undefined;
     }
   }
 </script>

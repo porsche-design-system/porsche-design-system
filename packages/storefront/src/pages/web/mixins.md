@@ -84,36 +84,35 @@ h1 {
 h1 {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 1.333;
-  margin-top: 4.5rem;
+  font-size: 1.75rem;
+  line-height: 1.4285714286;
 }
 
 @media (min-width: 760px) and (max-width: 999px) {
   h1 {
-    font-size: 1.875rem;
-    line-height: 1.333;
+    font-size: 2.25rem;
+    line-height: 1.2222222222;
   }
 }
 
 @media (min-width: 1000px) and (max-width: 1299px) {
   h1 {
-    font-size: 2.25rem;
-    line-height: 1.222;
+    font-size: 2.75rem;
+    line-height: 1.1818181818;
   }
 }
 
 @media (min-width: 1300px) and (max-width: 1759px) {
   h1 {
-    font-size: 2.625rem;
-    line-height: 1.238;
+    font-size: 3.25rem;
+    line-height: 1.2307692308;
   }
 }
 
 @media (min-width: 1760px) {
   h1 {
-    font-size: 3rem;
-    line-height: 1.166;
+    font-size: 3.75rem;
+    line-height: 1.2;
   }
 }
 ```
@@ -157,7 +156,7 @@ p {
 #### Example with specific parameters
 ```
 p {
-  @include p-text($p-text-size-medium, $p-font-weight-thin);
+  @include p-text($p-text-size-large, $p-font-weight-thin);
 }
 ```
 
@@ -165,9 +164,9 @@ p {
 ```
 p {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 200;
+  font-weight: 100;
   font-size: 1.5rem;
-  line-height: 1.5;
+  line-height: 1.2222222222222223;
 }
 ```
 
@@ -180,14 +179,14 @@ Calculates font-size and line-height to fit into Porsche Vertical Grid System.
 #### Example
 ```
 p {
-  @include p-type-scale($p-font-size-16);
+  @include p-type-scale($p-font-size-32);
 }
 ```
 
 #### Result
 ```
 p {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 2rem;
+  line-height: 1.25;
 }
 ```

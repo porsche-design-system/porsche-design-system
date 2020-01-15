@@ -198,7 +198,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     public weight: string = 'thin';
     
     public get isInherit() {
-      return this.size === 'inherit' ? 'font-size: 48px' : undefined;
+      return this.size === 'inherit' ? 'font-size: 48px; line-height: 1.16667;' : undefined;
     }
   }
 </script>

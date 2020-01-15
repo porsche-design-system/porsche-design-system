@@ -143,7 +143,7 @@ This will force any text to never wrap into a new line and in case it's to long 
     public align: string = 'center';
     
     public get isInheritSize() {
-      return this.size === 'inherit' ? 'font-size: 48px' : undefined;
+      return this.size === 'inherit' ? 'font-size: 48px; line-height: 1.16667;' : undefined;
     }
     
     public get isInheritColor() {

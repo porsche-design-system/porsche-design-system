@@ -94,24 +94,24 @@ Depending on the information level of the respective text you can either chose b
 ### Porsche type scale
 Additional text sizes can be defined based on the Porsche type scale system. 
 
-<p-text size="x-small" tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">12</p-text>
-<p-text tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">16</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 18px;">18</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 20px;">20</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 22px;">22</p-text>
-<p-text size="medium" tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">24</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 28px;">28</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 30px;">30</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 32px;">32</p-text>
-<p-text size="large" tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">36</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 42px;">42</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 44px;">44</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 48px;">48</p-text>
-<p-text size="x-large" tag="span" color="inherit" style="display: inline-block; margin-right: 16px; color: #00D5B9;">52</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 60px;">60</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 62px;">62</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; margin-right: 16px; font-size: 72px;">72</p-text>
-<p-text size="inherit" tag="span" style="display: inline-block; font-size: 84px;">84</p-text>
+<p-text size="x-small" tag="span" color="inherit" class="type-scale highlight">12</p-text>
+<p-text tag="span" color="inherit" class="type-scale highlight">16</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-18">18</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-20">20</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-22">22</p-text>
+<p-text size="medium" tag="span" color="inherit" class="type-scale highlight">24</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-28">28</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-30">30</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-32">32</p-text>
+<p-text size="large" tag="span" color="inherit" class="type-scale highlight">36</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-42">42</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-44">44</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-48">48</p-text>
+<p-text size="x-large" tag="span" color="inherit" class="type-scale highlight">52</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-60">60</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-62">62</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-72">72</p-text>
+<p-text size="inherit" tag="span" class="type-scale f-84">84</p-text>
 
 ### Line height
 
@@ -249,6 +249,71 @@ impact on the origin character of the company typeface. This includes:
 - No use of opacity for text colors.
   
 ![Example for uppercase text](./assets/typography-donts.png)
+
+<style lang="scss" scoped>
+  @import '~@porsche-design-system/scss-utils/index';
+  
+  .type-scale {
+    display: inline-block;
+    margin-right: 1rem;
+    
+    &.highlight {
+      color: #00D5B9;
+    }
+    
+    &.f-18 {
+      @include p-type-scale(18px);
+    }
+    
+    &.f-20 {
+      @include p-type-scale(20px);
+    }
+    
+    &.f-22 {
+      @include p-type-scale(22px);
+    }
+    
+    &.f-28 {
+      @include p-type-scale(28px);
+    }
+    
+    &.f-30 {
+      @include p-type-scale(30px);
+    }
+    
+    &.f-32 {
+      @include p-type-scale(32px);
+    }
+    
+    &.f-42 {
+      @include p-type-scale(42px);
+    }
+    
+    &.f-44 {
+      @include p-type-scale(44px);
+    }
+    
+    &.f-48 {
+      @include p-type-scale(48px);
+    }
+    
+    &.f-60 {
+      @include p-type-scale(60px);
+    }
+    
+    &.f-62 {
+      @include p-type-scale(62px);
+    }
+    
+    &.f-72 {
+      @include p-type-scale(72px);
+    }
+    
+    &.f-84 {
+      @include p-type-scale(84px);
+    }
+  }
+</style>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
