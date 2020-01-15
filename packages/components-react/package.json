@@ -23,7 +23,7 @@
     "jasmine": "^3.5.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "~3.3.0",
+    "react-scripts": "3.2.0",
     "react-test-renderer": "^16.10.2",
     "typescript": "^3.7.4"
   },
