@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rename rem() to p-rem() function
 
 ### Deprecated
-- Mark rem() as deprecated (will be removed in next major release)
+- Mark rem() function as deprecated (will be removed in next major release)
 
 ## [1.0.0-rc.1] - 2019-12-13
 

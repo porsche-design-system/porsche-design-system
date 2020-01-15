@@ -37,8 +37,14 @@
   $e: 2.71828;
   $exact-line-height-factor: 0.911 / ( 2.95 + 0.01 * p-pow( $e, 0.1 * $font-size ) ) + 1.2;
   $exact-line-height-px: $font-size * $exact-line-height-factor;
-  $vertical-grid-line-height-px: $exact-line-height-px - ($exact-line-height-px % 8);
-  $vertical-grid-line-height-factor: $vertical-grid-line-height-px / $font-size;
+  $remaining-px: $exact-line-height-px % 4;
 
-  @return $vertical-grid-line-height-factor;
+  @if $remaining-px > 2 {
+    $remaining-px: $remaining-px - 4;
+  }
+
+  $fitted-line-height-px: $exact-line-height-px - $remaining-px;
+  $fitted-line-height-factor: $fitted-line-height-px / $font-size;
+
+  @return $fitted-line-height-factor;
 }
