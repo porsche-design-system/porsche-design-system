@@ -50,7 +50,10 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
     </select>
   </template>
   <template v-slot={theme}>
-    <p-link-pure href="https://www.porsche.com" :size="size" :style="isInherit" :theme="theme">Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" :size="size" :style="isInherit" :theme="theme">Some label Some label Some label Some label Some label Some label Some label Some label Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure hide-label="true" href="https://www.porsche.com" :size="size" :style="isInherit" :theme="theme">Some label Some label Some label Some label Some label Some label Some label Some label Some label</p-link-pure>
   </template>
 </Playground>
 
