@@ -61,6 +61,10 @@ export class LinkPure {
       this.active && prefix(`link-pure--active`)
     );
 
+    const iconWrapperClasses = cx(
+      prefix('link-pure__icon-wrapper')
+    );
+
     const iconClasses = cx(
       prefix('link-pure__icon')
     );
@@ -79,13 +83,15 @@ export class LinkPure {
           rel: this.rel
         } : null)}
       >
-        <p-icon
-          class={iconClasses}
-          color='inherit'
-          size='inherit'
-          name={this.icon}
-          source={this.iconSource}
-        />
+        <span class={iconWrapperClasses}>
+          <p-icon
+            class={iconClasses}
+            color='inherit'
+            size='inherit'
+            name={this.icon}
+            source={this.iconSource}
+          />
+        </span>
         <p-text
           class={labelClasses}
           tag='span'

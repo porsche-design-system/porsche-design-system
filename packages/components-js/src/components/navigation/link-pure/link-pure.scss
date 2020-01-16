@@ -1,23 +1,11 @@
 @import '../../../../../../packages/scss-utils/index';
 
-@mixin p-link-pure-icon-with-label() {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-@mixin p-link-pure-icon-without-label() {
-  position: static;
-  top: auto;
-  left: auto;
-}
-
 @mixin p-link-pure-label-with-label() {
   position: static;
   width: 100%;
   height: auto;
-  margin: 0;
-  padding: 0 0 0 calc(1.5em + .25rem);
+  margin: 0 0 0 .25rem;
+  padding: 0;
   white-space: normal;
   overflow: visible;
   border: 0;
@@ -46,6 +34,7 @@
 .#{$p-global-class-prefix}link-pure {
   $bem-block: &;
   display: flex;
+  align-items: flex-start;
   width: 100%;
   position: relative;
   margin: 0;
@@ -237,20 +226,12 @@
   }
 
   &--with-label {
-    #{$bem-block}__icon {
-      @include p-link-pure-icon-with-label;
-    }
-
     #{$bem-block}__label {
       @include p-link-pure-label-with-label;
     }
   }
 
   &--without-label {
-    #{$bem-block}__icon {
-      @include p-link-pure-icon-without-label;
-    }
-
     #{$bem-block}__label {
       @include p-link-pure-label-without-label;
     }
@@ -258,20 +239,12 @@
 
   @include p-breakpoint("xs") {
     &--with-label-xs {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
     &--without-label-xs {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
@@ -280,20 +253,12 @@
 
   @include p-breakpoint("s") {
     &--with-label-s {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
     &--without-label-s {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
@@ -302,20 +267,12 @@
 
   @include p-breakpoint("m") {
     &--with-label-m {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
     &--without-label-m {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
@@ -324,20 +281,12 @@
 
   @include p-breakpoint("l") {
     &--with-label-l {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
     &--without-label-l {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
@@ -346,33 +295,45 @@
 
   @include p-breakpoint("xl") {
     &--with-label-xl {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
     &--without-label-xl {
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
     }
   }
 
-  &__icon {
+  &__icon-wrapper {
+    position: relative;
+    flex-shrink: 0;
     width: 1.5em;
-    height: 1.5em;
+    display: block;
+    line-height: inherit;
+    background: deepskyblue;
+
+    &::before {
+      content: " ";
+      display: inline-block;
+    }
+  }
+  
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate(0, -50%);
+    background: deeppink;
   }
 
   &__label {
     display: block;
     box-sizing: border-box;
+    background: deepskyblue;
   }
 }
