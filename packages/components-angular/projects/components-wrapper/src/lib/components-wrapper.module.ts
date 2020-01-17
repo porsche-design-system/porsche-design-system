@@ -15,7 +15,8 @@ import {
   PMarque,
   PPagination,
   PSpinner,
-  PText
+  PText,
+  PTextfield
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -32,7 +33,8 @@ const DECLARATIONS = [
   PMarque,
   PPagination,
   PSpinner,
-  PText
+  PText,
+  PTextfield
 ];
 
 export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {

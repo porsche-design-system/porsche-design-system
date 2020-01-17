@@ -1,0 +1,104 @@
+@import '../../../../../../packages/scss-utils/index';
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+
+.#{$p-global-class-prefix}textfield {
+  $bem-block: &;
+  position: relative;
+  display: block;
+
+  &__label {
+    display: block;
+    @include p-text;
+  }
+
+  &__form-element-wrapper {
+    display: block;
+    position: relative;
+
+    input {
+      @include p-text;
+      width: 100%;
+      height: rem(50px);
+      display: block;
+      padding: rem(17px) rem(18px);
+      outline: transparent none;
+      appearance: none;
+      box-sizing: border-box;
+      border: 1px solid $p-color-theme-light-neutral-contrast-high;
+      background: $p-color-theme-light-background;
+      transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+      color $p-animation-hover-duration $p-animation-hover-bezier;
+
+      &::placeholder {
+        color: $p-color-theme-light-neutral-contrast-medium;
+      }
+
+      &::-ms-clear {
+        width: 0;
+        height: 0;
+      }
+
+      &:focus {
+        outline: $p-color-theme-light-state-focus solid 2px;
+        outline-offset: 1px;
+      }
+
+      &:disabled {
+        color: $p-color-theme-light-neutral-contrast-medium;
+        border-color: $p-color-theme-light-neutral-contrast-medium;
+
+        &::placeholder {
+          color: $p-color-theme-light-neutral-contrast-medium;
+        }
+      }
+
+      // input type number - disabling the arrow icons
+      &[type='number'] {
+        appearance: none;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          appearance: none;
+        }
+      }
+    }
+  }
+
+
+  &--error {
+    input {
+      color: $p-color-theme-light-notification-error;
+      border-color: $p-color-theme-light-notification-error;
+      border-width: 2px;
+      padding: {
+        top: rem(16px);
+        right: rem(17px);
+        bottom: rem(16px);
+        left: rem(17px);
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: rem(1px);
+    right: rem(1px);
+    color: $p-color-theme-light-default;
+    cursor: pointer;
+    width: rem(48px);
+    height: rem(48px);
+
+    &:hover {
+      color: $p-color-theme-light-state-hover;
+    }
+
+    & ~ input {
+      padding-right: rem(56px);
+    }
+  }
+}

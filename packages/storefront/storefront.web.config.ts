@@ -181,6 +181,18 @@ export const config: StorefrontConfig = {
         ]
       }
     },
+    Form: {
+      Textfield: {
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textfield/textfield.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textfield/textfield.props.md`)
+        ]
+      }
+    },
     Icon: {
       Icon: {
         Design: [
