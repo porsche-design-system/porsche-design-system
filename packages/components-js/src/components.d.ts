@@ -414,6 +414,18 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
+  interface PTextfield {
+    'error'?: boolean;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    'label'?: string;
+  }
 }
 
 declare global {
@@ -502,6 +514,12 @@ declare global {
     prototype: HTMLPTextElement;
     new (): HTMLPTextElement;
   };
+
+  interface HTMLPTextfieldElement extends Components.PTextfield, HTMLStencilElement {}
+  var HTMLPTextfieldElement: {
+    prototype: HTMLPTextfieldElement;
+    new (): HTMLPTextfieldElement;
+  };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
@@ -517,6 +535,7 @@ declare global {
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
+    'p-textfield': HTMLPTextfieldElement;
   }
 }
 
@@ -913,6 +932,18 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
+  interface PTextfield {
+    'error'?: boolean;
+    /**
+    * The icon shown.
+    */
+    'icon'?: IconName;
+    /**
+    * A custom URL path to a custom icon.
+    */
+    'iconSource'?: string;
+    'label'?: string;
+  }
 
   interface IntrinsicElements {
     'p-button': PButton;
@@ -929,6 +960,7 @@ declare namespace LocalJSX {
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;
+    'p-textfield': PTextfield;
   }
 }
 
@@ -952,6 +984,7 @@ declare module "@stencil/core" {
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
+      'p-textfield': LocalJSX.PTextfield & JSXBase.HTMLAttributes<HTMLPTextfieldElement>;
     }
   }
 }

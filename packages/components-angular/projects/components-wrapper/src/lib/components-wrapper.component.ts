@@ -188,3 +188,14 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
+export declare interface PTextfield extends Components.PTextfield {}
+@ProxyInputs(['error', 'icon', 'iconSource', 'label'])
+
+@Component({ selector: 'p-textfield', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['error', 'icon', 'iconSource', 'label'] })
+export class PTextfield {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
