@@ -50,10 +50,10 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
     </select>
   </template>
   <template v-slot={theme}>
-    <p-link-pure href="https://www.porsche.com" :size="size" :style="isInherit" :theme="theme">Some label Some label Some label Some label Some label Some label Some label Some label Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" :size="size" :style="isInheritFontSize" :theme="theme">Some label Some label Some label Some label Some label Some label Some label Some label Some label</p-link-pure>
     <br>
     <br>
-    <p-link-pure hide-label="true" href="https://www.porsche.com" :size="size" :style="isInherit" :theme="theme">Some label Some label Some label Some label Some label Some label Some label Some label Some label</p-link-pure>
+    <p-link-pure hide-label="true" href="https://www.porsche.com" :size="size" :style="isInheritWidth" :theme="theme">Some label Some label Some label Some label Some label Some label Some label Some label Some label</p-link-pure>
   </template>
 </Playground>
 
@@ -63,7 +63,31 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground :themeable="true">
   <template v-slot={theme}>
-    <p-link-pure href="https://www.porsche.com" size="{ base: 'small', l: 'medium' }" :theme="theme">Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" hide-label="{ base: true, xs: false, xl: true }" size="{ base: 'small', xs: 'medium', l: 'large', xl: 'x-large' }" :theme="theme">Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure href="https://www.porsche.com" hide-label="{ base: true, xs: false, l: true, xl: false }" size="{ base: 'small', xs: 'medium', xl: 'x-large' }" :theme="theme">Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false, xl: true }" size="{ base: 'small', l: 'medium', xl: 'small' }" :theme="theme">Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false, xl: true }" size="small" :theme="theme">Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure href="https://www.porsche.com" hide-label="true" size="{ base: 'small', l: 'medium', xl: 'small' }" :theme="theme">Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure href="https://www.porsche.com" hide-label="{ base: false, l: true, xl: false }" size="{ base: 'medium', l: 'small', xl: 'medium' }" :theme="theme">Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure href="https://www.porsche.com" hide-label="{ base: false, l: true, xl: false }" size="medium" :theme="theme">Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure href="https://www.porsche.com" hide-label="false" size="{ base: 'medium', l: 'small', xl: 'medium' }" :theme="theme">Some label</p-link-pure>
+    <br>
+    <br>
+    <p-link-pure href="https://www.porsche.com" hide-label="{ base: false, l: true, xl: false }" size="{ base: 'inherit', l: 'inherit', xl: 'medium' }" class="test" :theme="theme">Some label</p-link-pure>
   </template>
 </Playground>
 
@@ -200,8 +224,12 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     public size: string = 'medium';
     public weight: string = 'thin';
     
-    public get isInherit() {
+    public get isInheritFontSize() {
       return this.size === 'inherit' ? 'font-size: 48px; line-height: 1.16667;' : undefined;
+    }
+    
+    public get isInheritWidth() {
+      return this.size === 'inherit' ? 'width: 48px;' : undefined;
     }
   }
 </script>
@@ -220,5 +248,10 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     &:hover {
       color: green;
     }
+  }
+  
+  .test {
+    @media (max-width: 1299px) { font-size: 48px; line-height: 56px; } 
+    @media (min-width: 1300px) and (max-width: 1760px) { width: 48px; }
   }
 </style>
