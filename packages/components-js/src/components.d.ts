@@ -415,7 +415,6 @@ export namespace Components {
     'weight'?: TextWeight;
   }
   interface PTextfield {
-    'error'?: boolean;
     /**
     * The icon shown.
     */
@@ -424,7 +423,18 @@ export namespace Components {
     * A custom URL path to a custom icon.
     */
     'iconSource'?: string;
+    /**
+    * The label text.
+    */
     'label'?: string;
+    /**
+    * The message.
+    */
+    'message'?: string;
+    /**
+    * The status
+    */
+    'status'?: 'success' | 'error';
   }
 }
 
@@ -933,7 +943,6 @@ declare namespace LocalJSX {
     'weight'?: TextWeight;
   }
   interface PTextfield {
-    'error'?: boolean;
     /**
     * The icon shown.
     */
@@ -942,7 +951,18 @@ declare namespace LocalJSX {
     * A custom URL path to a custom icon.
     */
     'iconSource'?: string;
+    /**
+    * The label text.
+    */
     'label'?: string;
+    /**
+    * The message.
+    */
+    'message'?: string;
+    /**
+    * The status
+    */
+    'status'?: 'success' | 'error';
   }
 
   interface IntrinsicElements {
