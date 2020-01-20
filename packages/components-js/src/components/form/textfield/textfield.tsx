@@ -10,6 +10,7 @@ import { IconName } from '../../icon/icon/icon-name';
 })
 export class Textfield {
 
+  /** The label text. */
   @Prop() public label?: string = undefined;
 
   /** The icon shown. */
@@ -18,17 +19,22 @@ export class Textfield {
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string = undefined;
 
-  @Prop() public error?: boolean = false;
+  /** The status */
+  @Prop() public status?: 'success' | 'error' = undefined;
+
+  /** The message. */
+  @Prop() public message?: string = undefined;
 
   public render(): JSX.Element {
-    const textfieldClasses = cx(prefix('textfield'));
+    const textfieldClasses = cx(prefix('textfield'), this.status === 'error' && prefix('textfield--error'), this.status === 'success' && prefix('textfield--success'));
     const formElementWrapperClasses = cx(prefix('textfield__form-element-wrapper'));
     const iconClasses = cx(prefix('textfield__icon'));
     const labelClasses = cx(prefix('textfield__label'));
+    const messageClasses = cx(prefix('textfield__message'), this.status === 'error' && prefix('textfield__message--error'), this.status === 'success' && prefix('textfield__message--success'));
 
     return (
-      <Host>
-        <label class={textfieldClasses}>
+      <Host class={textfieldClasses}>
+        <label>
           <p-text class={labelClasses} size='small' color='inherit' tag='span'>
             {this.label}
           </p-text>
@@ -43,6 +49,18 @@ export class Textfield {
             <slot />
           </span>
         </label>
+        {this.message &&
+          <p-text
+            class={messageClasses}
+            aria-live='assertive'
+            aria-relevant='additions removals'
+            color='inherit'
+            size='small'
+            tag='span'
+          >
+              {this.message}
+          </p-text>
+        }
       </Host>
     );
   }

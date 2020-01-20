@@ -1,15 +1,10 @@
 @import '../../../../../../packages/scss-utils/index';
 
-:host {
-  display: inline-flex;
-  vertical-align: top;
-}
-
-
 .#{$p-global-class-prefix}textfield {
   $bem-block: &;
+  display: inline-block;
+  vertical-align: top;
   position: relative;
-  display: block;
 
   &__label {
     display: block;
@@ -31,11 +26,14 @@
       box-sizing: border-box;
       border: 1px solid $p-color-theme-light-neutral-contrast-high;
       background: $p-color-theme-light-background;
+      color: $p-color-theme-light-default;
       transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+      border-color $p-animation-hover-duration $p-animation-hover-bezier,
       color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &::placeholder {
         color: $p-color-theme-light-neutral-contrast-medium;
+        font-style: italic;
       }
 
       &::-ms-clear {
@@ -69,21 +67,6 @@
     }
   }
 
-
-  &--error {
-    input {
-      color: $p-color-theme-light-notification-error;
-      border-color: $p-color-theme-light-notification-error;
-      border-width: 2px;
-      padding: {
-        top: rem(16px);
-        right: rem(17px);
-        bottom: rem(16px);
-        left: rem(17px);
-      }
-    }
-  }
-
   &__icon {
     position: absolute;
     top: rem(1px);
@@ -99,6 +82,35 @@
 
     & ~ input {
       padding-right: rem(56px);
+    }
+  }
+
+  &--error {
+    input {
+      color: $p-color-theme-light-notification-error;
+      border-color: $p-color-theme-light-notification-error;
+      border-width: 2px;
+      padding: rem(16px) rem(17px);
+    }
+  }
+
+  &--success {
+    input {
+      border-color: $p-color-theme-light-notification-success;
+      border-width: 2px;
+      padding: rem(16px) rem(17px);
+    }
+  }
+
+  &__message {
+    @include p-text;
+    display: block;
+
+    &--error {
+      color: $p-color-theme-light-notification-error;
+    }
+    &--success {
+      color: $p-color-theme-light-notification-success;
     }
   }
 }
