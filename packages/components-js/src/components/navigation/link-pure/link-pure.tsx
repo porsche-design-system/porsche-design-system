@@ -46,8 +46,39 @@ export class LinkPure {
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string = undefined;
 
+  private linkTag: HTMLElement;
+  private iconWrapper: HTMLElement;
+
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
+    this.linkTag.addEventListener('transitionend', e => {
+      if (e.propertyName === 'font-size') {
+        this.updateLineHeight();
+      }
+    });
+
+    this.updateLineHeight();
+  }
+
+  private updateLineHeight() {
+    const fontSize = parseInt(window.getComputedStyle(this.linkTag).fontSize, 10);
+    const lineHeight = this.typeScale(fontSize);
+    this.linkTag.style.lineHeight = `${lineHeight}px`;
+    this.iconWrapper.style.height = `${lineHeight}px`;
+    this.iconWrapper.style.width = `${lineHeight}px`;
+  }
+
+  private typeScale(fontSize: number): number {
+    const e = 2.71828;
+    const exactLineHeightFactor = 0.911 / ( 2.97 + 0.01 * Math.pow( e, 0.2 * fontSize ) ) + 1.2;
+    const exactLineHeightPx = fontSize * exactLineHeightFactor;
+    let remainingPx = exactLineHeightPx % 4;
+
+    if (remainingPx > 2) {
+      remainingPx = remainingPx - 4;
+    }
+
+    return exactLineHeightPx - remainingPx;
   }
 
   public render(): JSX.Element {
@@ -82,8 +113,12 @@ export class LinkPure {
           download: this.download,
           rel: this.rel
         } : null)}
+        ref={el => this.linkTag = el as HTMLElement}
       >
-        <span class={iconWrapperClasses}>
+        <span
+          class={iconWrapperClasses}
+          ref={el => this.iconWrapper = el as HTMLElement}
+        >
           <p-icon
             class={iconClasses}
             color='inherit'

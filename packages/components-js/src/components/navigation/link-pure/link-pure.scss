@@ -1,70 +1,5 @@
 @import '../../../../../../packages/scss-utils/index';
 
-@mixin p-link-pure-with-label($font-size) {
-  width: 100%;
-  height: auto;
-  @if ($font-size == inherit) {
-    font-size: inherit;
-    line-height: inherit;
-  } @else {
-    @include p-type-scale($font-size);
-  }
-}
-
-@mixin p-link-pure-without-label($size) {
-  @if ($size == inherit) {
-    width: inherit;
-    height: inherit;
-  } @else {
-    width: $size;
-    height: $size;
-  }
-  font-size: inherit;
-  line-height: inherit;
-}
-
-@mixin p-link-pure-icon-wrapper-with-label() {
-  position: relative;
-  flex-shrink: 0;
-  width: 1.5em;
-  height: auto;
-
-  &::before {
-    content: " ";
-    display: inline-block;
-  }
-}
-
-@mixin p-link-pure-icon-wrapper-without-label() {
-  position: static;
-  flex-shrink: 1;
-  width: inherit;
-  height: inherit;
-
-  &::before {
-    content: "";
-    display: none;
-  }
-}
-
-@mixin p-link-pure-icon-with-label() {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: translate(0, -50%);
-}
-
-@mixin p-link-pure-icon-without-label() {
-  position: static;
-  top: auto;
-  left: auto;
-  width: inherit;
-  height: inherit;
-  transform: translate(0, 0);
-}
-
 @mixin p-link-pure-label-with-label() {
   position: static;
   width: 100%;
@@ -100,6 +35,7 @@
   $bem-block: &;
   display: flex;
   align-items: flex-start;
+  width: 100%;
   position: relative;
   margin: 0;
   padding: 0;
@@ -111,7 +47,8 @@
   text-align: left;
   background: transparent;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier;
+  color $p-animation-hover-duration $p-animation-hover-bezier,
+  font-size 0.00001ms linear;
 
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
@@ -157,1014 +94,231 @@
     }
   }
 
+  &--size {
+    &-x-small {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &-small {
+      @include p-type-scale($p-text-size-small);
+    }
+    &-medium {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &-large {
+      @include p-type-scale($p-text-size-large);
+    }
+    &-x-large {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &-inherit {
+      font-size: inherit;
+    }
+
+    @include p-breakpoint("xs") {
+      &-x-small-xs {
+        @include p-type-scale($p-text-size-x-small);
+      }
+      &-small-xs {
+        @include p-type-scale($p-text-size-small);
+      }
+      &-medium-xs {
+        @include p-type-scale($p-text-size-medium);
+      }
+      &-large-xs {
+        @include p-type-scale($p-text-size-large);
+      }
+      &-x-large-xs {
+        @include p-type-scale($p-text-size-x-large);
+      }
+      &-inherit-xs {
+        font-size: inherit;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &-x-small-s {
+        @include p-type-scale($p-text-size-x-small);
+      }
+      &-small-s {
+        @include p-type-scale($p-text-size-small);
+      }
+      &-medium-s {
+        @include p-type-scale($p-text-size-medium);
+      }
+      &-large-s {
+        @include p-type-scale($p-text-size-large);
+      }
+      &-x-large-s {
+        @include p-type-scale($p-text-size-x-large);
+      }
+      &-inherit-s {
+        font-size: inherit;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &-x-small-m {
+        @include p-type-scale($p-text-size-x-small);
+      }
+      &-small-m {
+        @include p-type-scale($p-text-size-small);
+      }
+      &-medium-m {
+        @include p-type-scale($p-text-size-medium);
+      }
+      &-large-m {
+        @include p-type-scale($p-text-size-large);
+      }
+      &-x-large-m {
+        @include p-type-scale($p-text-size-x-large);
+      }
+      &-inherit-m {
+        font-size: inherit;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &-x-small-l {
+        @include p-type-scale($p-text-size-x-small);
+      }
+      &-small-l {
+        @include p-type-scale($p-text-size-small);
+      }
+      &-medium-l {
+        @include p-type-scale($p-text-size-medium);
+      }
+      &-large-l {
+        @include p-type-scale($p-text-size-large);
+      }
+      &-x-large-l {
+        @include p-type-scale($p-text-size-x-large);
+      }
+      &-inherit-l {
+        font-size: inherit;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &-x-small-xl {
+        @include p-type-scale($p-text-size-x-small);
+      }
+      &-small-xl {
+        @include p-type-scale($p-text-size-small);
+      }
+      &-medium-xl {
+        @include p-type-scale($p-text-size-medium);
+      }
+      &-large-xl {
+        @include p-type-scale($p-text-size-large);
+      }
+      &-x-large-xl {
+        @include p-type-scale($p-text-size-x-large);
+      }
+      &-inherit-xl {
+        font-size: inherit;
+      }
+    }
+  }
+
   &--with-label {
-
-    &#{$bem-block}--size-x-small {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &#{$bem-block}--size-small {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &#{$bem-block}--size-medium {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &#{$bem-block}--size-large {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &#{$bem-block}--size-x-large {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &#{$bem-block}--size-inherit {
-      @include p-link-pure-with-label(inherit);
-    }
-
-    #{$bem-block}__icon-wrapper {
-      @include p-link-pure-icon-wrapper-with-label;
-    }
-
-    #{$bem-block}__icon {
-      @include p-link-pure-icon-with-label;
-    }
-
     #{$bem-block}__label {
       @include p-link-pure-label-with-label;
     }
   }
 
   &--without-label {
-
-    &#{$bem-block}--size-x-small {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &#{$bem-block}--size-small {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &#{$bem-block}--size-medium {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &#{$bem-block}--size-large {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &#{$bem-block}--size-x-large {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &#{$bem-block}--size-inherit {
-      @include p-link-pure-without-label(inherit);
-    }
-
-    #{$bem-block}__icon-wrapper {
-      @include p-link-pure-icon-wrapper-without-label;
-    }
-
-    #{$bem-block}__icon {
-      @include p-link-pure-icon-without-label;
-    }
-
     #{$bem-block}__label {
       @include p-link-pure-label-without-label;
     }
   }
 
   @include p-breakpoint("xs") {
-    &--with-label#{&}--size-x-small-xs,
-    &--with-label-xs#{&}--size-x-small {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label#{&}--size-small-xs,
-    &--with-label-xs#{&}--size-small {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label#{&}--size-medium-xs,
-    &--with-label-xs#{&}--size-medium {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label#{&}--size-large-xs,
-    &--with-label-xs#{&}--size-large {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label#{&}--size-x-large-xs,
-    &--with-label-xs#{&}--size-x-large {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label#{&}--size-inherit-xs,
-    &--with-label-xs#{&}--size-inherit {
-      @include p-link-pure-with-label(inherit);
-    }
-
     &--with-label-xs {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-with-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
-    &--without-label#{&}--size-x-small-xs,
-    &--without-label-xs#{&}--size-x-small {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label#{&}--size-small-xs,
-    &--without-label-xs#{&}--size-small {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label#{&}--size-medium-xs,
-    &--without-label-xs#{&}--size-medium {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label#{&}--size-large-xs,
-    &--without-label-xs#{&}--size-large {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label#{&}--size-x-large-xs,
-    &--without-label-xs#{&}--size-x-large {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label#{&}--size-inherit-xs,
-    &--without-label-xs#{&}--size-inherit {
-      @include p-link-pure-without-label(inherit);
-    }
-
     &--without-label-xs {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-without-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
-    }
-
-    &--with-label-xs#{&}--size-x-small-xs {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label-xs#{&}--size-small-xs {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label-xs#{&}--size-medium-xs {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label-xs#{&}--size-large-xs {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label-xs#{&}--size-x-large-xs {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label-xs#{&}--size-inherit-xs {
-      @include p-link-pure-with-label(inherit);
-    }
-
-    &--without-label-xs#{&}--size-x-small-xs {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label-xs#{&}--size-small-xs {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label-xs#{&}--size-medium-xs {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label-xs#{&}--size-large-xs {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label-xs#{&}--size-x-large-xs {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label-xs#{&}--size-inherit-xs {
-      @include p-link-pure-without-label(inherit);
     }
   }
 
   @include p-breakpoint("s") {
-    &--with-label#{&}--size-x-small-s,
-    &--with-label-xs#{&}--size-x-small-s,
-    &--with-label-s#{&}--size-x-small,
-    &--with-label-s#{&}--size-x-small-xs {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label#{&}--size-small-s,
-    &--with-label-xs#{&}--size-small-s,
-    &--with-label-s#{&}--size-small,
-    &--with-label-s#{&}--size-small-xs {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label#{&}--size-medium-s,
-    &--with-label-xs#{&}--size-medium-s,
-    &--with-label-s#{&}--size-medium,
-    &--with-label-s#{&}--size-medium-xs {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label#{&}--size-large-s,
-    &--with-label-xs#{&}--size-large-s,
-    &--with-label-s#{&}--size-large,
-    &--with-label-s#{&}--size-large-xs {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label#{&}--size-x-large-s,
-    &--with-label-xs#{&}--size-x-large-s,
-    &--with-label-s#{&}--size-x-large,
-    &--with-label-s#{&}--size-x-large-xs {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label#{&}--size-inherit-s,
-    &--with-label-xs#{&}--size-inherit-s,
-    &--with-label-s#{&}--size-inherit,
-    &--with-label-s#{&}--size-inherit-xs {
-      @include p-link-pure-with-label(inherit);
-    }
-
     &--with-label-s {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-with-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
-    &--without-label#{&}--size-x-small-s,
-    &--without-label-xs#{&}--size-x-small-s,
-    &--without-label-s#{&}--size-x-small,
-    &--without-label-s#{&}--size-x-small-xs {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label#{&}--size-small-s,
-    &--without-label-xs#{&}--size-small-s,
-    &--without-label-s#{&}--size-small,
-    &--without-label-s#{&}--size-small-xs {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label#{&}--size-medium-s,
-    &--without-label-xs#{&}--size-medium-s,
-    &--without-label-s#{&}--size-medium,
-    &--without-label-s#{&}--size-medium-xs {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label#{&}--size-large-s,
-    &--without-label-xs#{&}--size-large-s,
-    &--without-label-s#{&}--size-large,
-    &--without-label-s#{&}--size-large-xs {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label#{&}--size-x-large-s,
-    &--without-label-xs#{&}--size-x-large-s,
-    &--without-label-s#{&}--size-x-large,
-    &--without-label-s#{&}--size-x-large-xs {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label#{&}--size-inherit-s,
-    &--without-label-xs#{&}--size-inherit-s,
-    &--without-label-s#{&}--size-inherit,
-    &--without-label-s#{&}--size-inherit-xs {
-      @include p-link-pure-without-label(inherit);
-    }
-
     &--without-label-s {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-without-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
-    }
-
-    &--with-label-s#{&}--size-x-small-s {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label-s#{&}--size-small-s {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label-s#{&}--size-medium-s {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label-s#{&}--size-large-s {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label-s#{&}--size-x-large-s {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label-s#{&}--size-inherit-s {
-      @include p-link-pure-with-label(inherit);
-    }
-
-    &--without-label-s#{&}--size-x-small-s {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label-s#{&}--size-small-s {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label-s#{&}--size-medium-s {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label-s#{&}--size-large-s {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label-s#{&}--size-x-large-s {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label-s#{&}--size-inherit-s {
-      @include p-link-pure-without-label(inherit);
     }
   }
 
   @include p-breakpoint("m") {
-    &--with-label#{&}--size-x-small-m,
-    &--with-label-xs#{&}--size-x-small-m,
-    &--with-label-s#{&}--size-x-small-m,
-    &--with-label-m#{&}--size-x-small,
-    &--with-label-m#{&}--size-x-small-xs,
-    &--with-label-m#{&}--size-x-small-s {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label#{&}--size-small-m,
-    &--with-label-xs#{&}--size-small-m,
-    &--with-label-s#{&}--size-small-m,
-    &--with-label-m#{&}--size-small,
-    &--with-label-m#{&}--size-small-xs,
-    &--with-label-m#{&}--size-small-s {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label#{&}--size-medium-m,
-    &--with-label-xs#{&}--size-medium-m,
-    &--with-label-s#{&}--size-medium-m,
-    &--with-label-m#{&}--size-medium,
-    &--with-label-m#{&}--size-medium-xs,
-    &--with-label-m#{&}--size-medium-s {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label#{&}--size-large-m,
-    &--with-label-xs#{&}--size-large-m,
-    &--with-label-s#{&}--size-large-m,
-    &--with-label-m#{&}--size-large,
-    &--with-label-m#{&}--size-large-xs,
-    &--with-label-m#{&}--size-large-s {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label#{&}--size-x-large-m,
-    &--with-label-xs#{&}--size-x-large-m,
-    &--with-label-s#{&}--size-x-large-m,
-    &--with-label-m#{&}--size-x-large,
-    &--with-label-m#{&}--size-x-large-xs,
-    &--with-label-m#{&}--size-x-large-s {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label#{&}--size-inherit-m,
-    &--with-label-xs#{&}--size-inherit-m,
-    &--with-label-s#{&}--size-inherit-m,
-    &--with-label-m#{&}--size-inherit,
-    &--with-label-m#{&}--size-inherit-xs,
-    &--with-label-m#{&}--size-inherit-s {
-      @include p-link-pure-with-label(inherit);
-    }
-
     &--with-label-m {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-with-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
-    &--without-label#{&}--size-x-small-m,
-    &--without-label-xs#{&}--size-x-small-m,
-    &--without-label-s#{&}--size-x-small-m,
-    &--without-label-m#{&}--size-x-small,
-    &--without-label-m#{&}--size-x-small-xs,
-    &--without-label-m#{&}--size-x-small-s {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label#{&}--size-small-m,
-    &--without-label-xs#{&}--size-small-m,
-    &--without-label-s#{&}--size-small-m,
-    &--without-label-m#{&}--size-small,
-    &--without-label-m#{&}--size-small-xs,
-    &--without-label-m#{&}--size-small-s {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label#{&}--size-medium-m,
-    &--without-label-xs#{&}--size-medium-m,
-    &--without-label-s#{&}--size-medium-m,
-    &--without-label-m#{&}--size-medium,
-    &--without-label-m#{&}--size-medium-xs,
-    &--without-label-m#{&}--size-medium-s {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label#{&}--size-large-m,
-    &--without-label-xs#{&}--size-large-m,
-    &--without-label-s#{&}--size-large-m,
-    &--without-label-m#{&}--size-large,
-    &--without-label-m#{&}--size-large-xs,
-    &--without-label-m#{&}--size-large-s {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label#{&}--size-x-large-m,
-    &--without-label-xs#{&}--size-x-large-m,
-    &--without-label-s#{&}--size-x-large-m,
-    &--without-label-m#{&}--size-x-large,
-    &--without-label-m#{&}--size-x-large-xs,
-    &--without-label-m#{&}--size-x-large-s {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label#{&}--size-inherit-m,
-    &--without-label-xs#{&}--size-inherit-m,
-    &--without-label-s#{&}--size-inherit-m,
-    &--without-label-m#{&}--size-inherit,
-    &--without-label-m#{&}--size-inherit-xs,
-    &--without-label-m#{&}--size-inherit-s {
-      @include p-link-pure-without-label(inherit);
-    }
-
     &--without-label-m {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-without-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
-    }
-
-    &--with-label-m#{&}--size-x-small-m {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label-m#{&}--size-small-m {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label-m#{&}--size-medium-m {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label-m#{&}--size-large-m {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label-m#{&}--size-x-large-m {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label-m#{&}--size-inherit-m {
-      @include p-link-pure-with-label(inherit);
-    }
-
-    &--without-label-m#{&}--size-x-small-m {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label-m#{&}--size-small-m {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label-m#{&}--size-medium-m {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label-m#{&}--size-large-m {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label-m#{&}--size-x-large-m {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label-m#{&}--size-inherit-m {
-      @include p-link-pure-without-label(inherit);
     }
   }
 
   @include p-breakpoint("l") {
-    &--with-label#{&}--size-x-small-l,
-    &--with-label-xs#{&}--size-x-small-l,
-    &--with-label-s#{&}--size-x-small-l,
-    &--with-label-m#{&}--size-x-small-l,
-    &--with-label-l#{&}--size-x-small,
-    &--with-label-l#{&}--size-x-small-xs,
-    &--with-label-l#{&}--size-x-small-s,
-    &--with-label-l#{&}--size-x-small-m {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label#{&}--size-small-l,
-    &--with-label-xs#{&}--size-small-l,
-    &--with-label-s#{&}--size-small-l,
-    &--with-label-m#{&}--size-small-l,
-    &--with-label-l#{&}--size-small,
-    &--with-label-l#{&}--size-small-xs,
-    &--with-label-l#{&}--size-small-s,
-    &--with-label-l#{&}--size-small-m {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label#{&}--size-medium-l,
-    &--with-label-xs#{&}--size-medium-l,
-    &--with-label-s#{&}--size-medium-l,
-    &--with-label-m#{&}--size-medium-l,
-    &--with-label-l#{&}--size-medium,
-    &--with-label-l#{&}--size-medium-xs,
-    &--with-label-l#{&}--size-medium-s,
-    &--with-label-l#{&}--size-medium-m {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label#{&}--size-large-l,
-    &--with-label-xs#{&}--size-large-l,
-    &--with-label-s#{&}--size-large-l,
-    &--with-label-m#{&}--size-large-l,
-    &--with-label-l#{&}--size-large,
-    &--with-label-l#{&}--size-large-xs,
-    &--with-label-l#{&}--size-large-s,
-    &--with-label-l#{&}--size-large-m {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label#{&}--size-x-large-l,
-    &--with-label-xs#{&}--size-x-large-l,
-    &--with-label-s#{&}--size-x-large-l,
-    &--with-label-m#{&}--size-x-large-l,
-    &--with-label-l#{&}--size-x-large,
-    &--with-label-l#{&}--size-x-large-xs,
-    &--with-label-l#{&}--size-x-large-s,
-    &--with-label-l#{&}--size-x-large-m {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label#{&}--size-inherit-l,
-    &--with-label-xs#{&}--size-inherit-l,
-    &--with-label-s#{&}--size-inherit-l,
-    &--with-label-m#{&}--size-inherit-l,
-    &--with-label-l#{&}--size-inherit,
-    &--with-label-l#{&}--size-inherit-xs,
-    &--with-label-l#{&}--size-inherit-s,
-    &--with-label-l#{&}--size-inherit-m {
-      @include p-link-pure-with-label(inherit);
-    }
-
     &--with-label-l {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-with-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
-    &--without-label#{&}--size-x-small-l,
-    &--without-label-xs#{&}--size-x-small-l,
-    &--without-label-s#{&}--size-x-small-l,
-    &--without-label-m#{&}--size-x-small-l,
-    &--without-label-l#{&}--size-x-small,
-    &--without-label-l#{&}--size-x-small-xs,
-    &--without-label-l#{&}--size-x-small-s,
-    &--without-label-l#{&}--size-x-small-m {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label#{&}--size-small-l,
-    &--without-label-xs#{&}--size-small-l,
-    &--without-label-s#{&}--size-small-l,
-    &--without-label-m#{&}--size-small-l,
-    &--without-label-l#{&}--size-small,
-    &--without-label-l#{&}--size-small-xs,
-    &--without-label-l#{&}--size-small-s,
-    &--without-label-l#{&}--size-small-m {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label#{&}--size-medium-l,
-    &--without-label-xs#{&}--size-medium-l,
-    &--without-label-s#{&}--size-medium-l,
-    &--without-label-m#{&}--size-medium-l,
-    &--without-label-l#{&}--size-medium,
-    &--without-label-l#{&}--size-medium-xs,
-    &--without-label-l#{&}--size-medium-s,
-    &--without-label-l#{&}--size-medium-m {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label#{&}--size-large-l,
-    &--without-label-xs#{&}--size-large-l,
-    &--without-label-s#{&}--size-large-l,
-    &--without-label-m#{&}--size-large-l,
-    &--without-label-l#{&}--size-large,
-    &--without-label-l#{&}--size-large-xs,
-    &--without-label-l#{&}--size-large-s,
-    &--without-label-l#{&}--size-large-m {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label#{&}--size-x-large-l,
-    &--without-label-xs#{&}--size-x-large-l,
-    &--without-label-s#{&}--size-x-large-l,
-    &--without-label-m#{&}--size-x-large-l,
-    &--without-label-l#{&}--size-x-large,
-    &--without-label-l#{&}--size-x-large-xs,
-    &--without-label-l#{&}--size-x-large-s,
-    &--without-label-l#{&}--size-x-large-m {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label#{&}--size-inherit-l,
-    &--without-label-xs#{&}--size-inherit-l,
-    &--without-label-s#{&}--size-inherit-l,
-    &--without-label-m#{&}--size-inherit-l,
-    &--without-label-l#{&}--size-inherit,
-    &--without-label-l#{&}--size-inherit-xs,
-    &--without-label-l#{&}--size-inherit-s,
-    &--without-label-l#{&}--size-inherit-m {
-      @include p-link-pure-without-label(inherit);
-    }
-
     &--without-label-l {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-without-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
-    }
-
-    &--with-label-l#{&}--size-x-small-l {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label-l#{&}--size-small-l {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label-l#{&}--size-medium-l {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label-l#{&}--size-large-l {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label-l#{&}--size-x-large-l {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label-l#{&}--size-inherit-l {
-      @include p-link-pure-with-label(inherit);
-    }
-
-    &--without-label-l#{&}--size-x-small-l {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label-l#{&}--size-small-l {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label-l#{&}--size-medium-l {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label-l#{&}--size-large-l {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label-l#{&}--size-x-large-l {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label-l#{&}--size-inherit-l {
-      @include p-link-pure-without-label(inherit);
     }
   }
 
   @include p-breakpoint("xl") {
-    &--with-label#{&}--size-x-small-xl,
-    &--with-label-xs#{&}--size-x-small-xl,
-    &--with-label-s#{&}--size-x-small-xl,
-    &--with-label-m#{&}--size-x-small-xl,
-    &--with-label-l#{&}--size-x-small-xl,
-    &--with-label-xl#{&}--size-x-small,
-    &--with-label-xl#{&}--size-x-small-xs,
-    &--with-label-xl#{&}--size-x-small-s,
-    &--with-label-xl#{&}--size-x-small-m,
-    &--with-label-xl#{&}--size-x-small-l {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label#{&}--size-small-xl,
-    &--with-label-xs#{&}--size-small-xl,
-    &--with-label-s#{&}--size-small-xl,
-    &--with-label-m#{&}--size-small-xl,
-    &--with-label-l#{&}--size-small-xl,
-    &--with-label-xl#{&}--size-small,
-    &--with-label-xl#{&}--size-small-xs,
-    &--with-label-xl#{&}--size-small-s,
-    &--with-label-xl#{&}--size-small-m,
-    &--with-label-xl#{&}--size-small-l {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label#{&}--size-medium-xl,
-    &--with-label-xs#{&}--size-medium-xl,
-    &--with-label-s#{&}--size-medium-xl,
-    &--with-label-m#{&}--size-medium-xl,
-    &--with-label-l#{&}--size-medium-xl,
-    &--with-label-xl#{&}--size-medium,
-    &--with-label-xl#{&}--size-medium-xs,
-    &--with-label-xl#{&}--size-medium-s,
-    &--with-label-xl#{&}--size-medium-m,
-    &--with-label-xl#{&}--size-medium-l {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label#{&}--size-large-xl,
-    &--with-label-xs#{&}--size-large-xl,
-    &--with-label-s#{&}--size-large-xl,
-    &--with-label-m#{&}--size-large-xl,
-    &--with-label-l#{&}--size-large-xl,
-    &--with-label-xl#{&}--size-large,
-    &--with-label-xl#{&}--size-large-xs,
-    &--with-label-xl#{&}--size-large-s,
-    &--with-label-xl#{&}--size-large-m,
-    &--with-label-xl#{&}--size-large-l {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label#{&}--size-x-large-xl,
-    &--with-label-xs#{&}--size-x-large-xl,
-    &--with-label-s#{&}--size-x-large-xl,
-    &--with-label-m#{&}--size-x-large-xl,
-    &--with-label-l#{&}--size-x-large-xl,
-    &--with-label-xl#{&}--size-x-large,
-    &--with-label-xl#{&}--size-x-large-xs,
-    &--with-label-xl#{&}--size-x-large-s,
-    &--with-label-xl#{&}--size-x-large-m,
-    &--with-label-xl#{&}--size-x-large-l {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label#{&}--size-inherit-xl,
-    &--with-label-xs#{&}--size-inherit-xl,
-    &--with-label-s#{&}--size-inherit-xl,
-    &--with-label-m#{&}--size-inherit-xl,
-    &--with-label-l#{&}--size-inherit-xl,
-    &--with-label-xl#{&}--size-inherit,
-    &--with-label-xl#{&}--size-inherit-xs,
-    &--with-label-xl#{&}--size-inherit-s,
-    &--with-label-xl#{&}--size-inherit-m,
-    &--with-label-xl#{&}--size-inherit-l {
-      @include p-link-pure-with-label(inherit);
-    }
-
     &--with-label-xl {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-with-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-with-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-with-label;
       }
     }
 
-    &--without-label#{&}--size-x-small-xl,
-    &--without-label-xs#{&}--size-x-small-xl,
-    &--without-label-s#{&}--size-x-small-xl,
-    &--without-label-m#{&}--size-x-small-xl,
-    &--without-label-l#{&}--size-x-small-xl,
-    &--without-label-xl#{&}--size-x-small,
-    &--without-label-xl#{&}--size-x-small-xs,
-    &--without-label-xl#{&}--size-x-small-s,
-    &--without-label-xl#{&}--size-x-small-m,
-    &--without-label-xl#{&}--size-x-small-l {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label#{&}--size-small-xl,
-    &--without-label-xs#{&}--size-small-xl,
-    &--without-label-s#{&}--size-small-xl,
-    &--without-label-m#{&}--size-small-xl,
-    &--without-label-l#{&}--size-small-xl,
-    &--without-label-xl#{&}--size-small,
-    &--without-label-xl#{&}--size-small-xs,
-    &--without-label-xl#{&}--size-small-s,
-    &--without-label-xl#{&}--size-small-m,
-    &--without-label-xl#{&}--size-small-l {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label#{&}--size-medium-xl,
-    &--without-label-xs#{&}--size-medium-xl,
-    &--without-label-s#{&}--size-medium-xl,
-    &--without-label-m#{&}--size-medium-xl,
-    &--without-label-l#{&}--size-medium-xl,
-    &--without-label-xl#{&}--size-medium,
-    &--without-label-xl#{&}--size-medium-xs,
-    &--without-label-xl#{&}--size-medium-s,
-    &--without-label-xl#{&}--size-medium-m,
-    &--without-label-xl#{&}--size-medium-l {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label#{&}--size-large-xl,
-    &--without-label-xs#{&}--size-large-xl,
-    &--without-label-s#{&}--size-large-xl,
-    &--without-label-m#{&}--size-large-xl,
-    &--without-label-l#{&}--size-large-xl,
-    &--without-label-xl#{&}--size-large,
-    &--without-label-xl#{&}--size-large-xs,
-    &--without-label-xl#{&}--size-large-s,
-    &--without-label-xl#{&}--size-large-m,
-    &--without-label-xl#{&}--size-large-l {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label#{&}--size-x-large-xl,
-    &--without-label-xs#{&}--size-x-large-xl,
-    &--without-label-s#{&}--size-x-large-xl,
-    &--without-label-m#{&}--size-x-large-xl,
-    &--without-label-#{&}--size-x-large-xl,
-    &--without-label-xl#{&}--size-x-large,
-    &--without-label-xl#{&}--size-x-large-xs,
-    &--without-label-xl#{&}--size-x-large-s,
-    &--without-label-xl#{&}--size-x-large-m,
-    &--without-label-xl#{&}--size-x-large-l {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label#{&}--size-inherit-xl,
-    &--without-label-xl#{&}--size-inherit {
-      @include p-link-pure-without-label(inherit);
-    }
-
     &--without-label-xl {
-      #{$bem-block}__icon-wrapper {
-        @include p-link-pure-icon-wrapper-without-label;
-      }
-
-      #{$bem-block}__icon {
-        @include p-link-pure-icon-without-label;
-      }
-
       #{$bem-block}__label {
         @include p-link-pure-label-without-label;
       }
     }
-
-    &--with-label-xl#{&}--size-x-small-xl {
-      @include p-link-pure-with-label($p-text-size-x-small);
-    }
-
-    &--with-label-xl#{&}--size-small-xl {
-      @include p-link-pure-with-label($p-text-size-small);
-    }
-
-    &--with-label-xl#{&}--size-medium-xl {
-      @include p-link-pure-with-label($p-text-size-medium);
-    }
-
-    &--with-label-xl#{&}--size-large-xl {
-      @include p-link-pure-with-label($p-text-size-large);
-    }
-
-    &--with-label-xl#{&}--size-x-large-xl {
-      @include p-link-pure-with-label($p-text-size-x-large);
-    }
-
-    &--with-label-xl#{&}--size-inherit-xl {
-      @include p-link-pure-with-label(inherit);
-    }
-
-    &--without-label-xl#{&}--size-x-small-xl {
-      @include p-link-pure-without-label($p-font-size-16);
-    }
-
-    &--without-label-xl#{&}--size-small-xl {
-      @include p-link-pure-without-label($p-font-size-24);
-    }
-
-    &--without-label-xl#{&}--size-medium-xl {
-      @include p-link-pure-without-label($p-font-size-36);
-    }
-
-    &--without-label-xl#{&}--size-large-xl {
-      @include p-link-pure-without-label($p-font-size-44);
-    }
-
-    &--without-label-xl#{&}--size-x-large-xl {
-      @include p-link-pure-without-label(p-rem(64px));
-    }
-
-    &--without-label-xl#{&}--size-inherit-xl {
-      @include p-link-pure-without-label(inherit);
-    }
   }
 
   &__icon-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
     display: block;
-    font-size: inherit;
     line-height: inherit;
-    background: aqua;
+    background: deepskyblue;
   }
 
   &__icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate(0, -50%);
     background: deeppink;
   }
 
