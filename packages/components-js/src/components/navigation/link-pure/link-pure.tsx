@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeight, throttle } from '../../../utils';
 import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
@@ -53,32 +53,11 @@ export class LinkPure {
     improveFocusHandlingForCustomElement(this.element);
     this.linkTag.addEventListener('transitionend', e => {
       if (e.propertyName === 'font-size') {
-        this.updateLineHeight();
+        throttle(this.updateLineHeight(), 50);
       }
     });
 
-    this.updateLineHeight();
-  }
-
-  private updateLineHeight() {
-    const fontSize = parseInt(window.getComputedStyle(this.linkTag).fontSize, 10);
-    const lineHeight = this.typeScale(fontSize);
-    this.linkTag.style.lineHeight = `${lineHeight}px`;
-    this.iconWrapper.style.height = `${lineHeight}px`;
-    this.iconWrapper.style.width = `${lineHeight}px`;
-  }
-
-  private typeScale(fontSize: number): number {
-    const e = 2.71828;
-    const exactLineHeightFactor = 0.911 / ( 2.97 + 0.01 * Math.pow( e, 0.2 * fontSize ) ) + 1.2;
-    const exactLineHeightPx = fontSize * exactLineHeightFactor;
-    let remainingPx = exactLineHeightPx % 4;
-
-    if (remainingPx > 2) {
-      remainingPx = remainingPx - 4;
-    }
-
-    return exactLineHeightPx - remainingPx;
+    throttle(this.updateLineHeight(), 50);
   }
 
   public render(): JSX.Element {
@@ -139,4 +118,12 @@ export class LinkPure {
       </TagType>
     );
   }
+
+  private updateLineHeight() {
+    const fontSize = parseInt(window.getComputedStyle(this.linkTag).fontSize, 10);
+    const lineHeightValue = lineHeight(fontSize);
+    this.linkTag.style.lineHeight = `${lineHeightValue}px`;
+    this.iconWrapper.style.width = `${lineHeightValue}px`;
+  }
+
 }
