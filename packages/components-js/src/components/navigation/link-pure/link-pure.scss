@@ -4,7 +4,7 @@
   position: static;
   width: 100%;
   height: auto;
-  margin: 0 0 0 .25rem;
+  margin: 0 0 0 .25em;
   padding: 0;
   white-space: normal;
   overflow: visible;
@@ -94,129 +94,127 @@
     }
   }
 
-  &--size {
-    &-x-small {
+  &--size-x-small {
+    @include p-type-scale($p-text-size-x-small);
+  }
+  &--size-small {
+    @include p-type-scale($p-text-size-small);
+  }
+  &--size-medium {
+    @include p-type-scale($p-text-size-medium);
+  }
+  &--size-large {
+    @include p-type-scale($p-text-size-large);
+  }
+  &--size-x-large {
+    @include p-type-scale($p-text-size-x-large);
+  }
+  &--size-inherit {
+    font-size: inherit;
+  }
+
+  @include p-breakpoint("xs") {
+    &--size-x-small-xs {
       @include p-type-scale($p-text-size-x-small);
     }
-    &-small {
+    &--size-small-xs {
       @include p-type-scale($p-text-size-small);
     }
-    &-medium {
+    &--size-medium-xs {
       @include p-type-scale($p-text-size-medium);
     }
-    &-large {
+    &--size-large-xs {
       @include p-type-scale($p-text-size-large);
     }
-    &-x-large {
+    &--size-x-large-xs {
       @include p-type-scale($p-text-size-x-large);
     }
-    &-inherit {
+    &--size-inherit-xs {
       font-size: inherit;
     }
+  }
 
-    @include p-breakpoint("xs") {
-      &-x-small-xs {
-        @include p-type-scale($p-text-size-x-small);
-      }
-      &-small-xs {
-        @include p-type-scale($p-text-size-small);
-      }
-      &-medium-xs {
-        @include p-type-scale($p-text-size-medium);
-      }
-      &-large-xs {
-        @include p-type-scale($p-text-size-large);
-      }
-      &-x-large-xs {
-        @include p-type-scale($p-text-size-x-large);
-      }
-      &-inherit-xs {
-        font-size: inherit;
-      }
+  @include p-breakpoint("s") {
+    &--size-x-small-s {
+      @include p-type-scale($p-text-size-x-small);
     }
-
-    @include p-breakpoint("s") {
-      &-x-small-s {
-        @include p-type-scale($p-text-size-x-small);
-      }
-      &-small-s {
-        @include p-type-scale($p-text-size-small);
-      }
-      &-medium-s {
-        @include p-type-scale($p-text-size-medium);
-      }
-      &-large-s {
-        @include p-type-scale($p-text-size-large);
-      }
-      &-x-large-s {
-        @include p-type-scale($p-text-size-x-large);
-      }
-      &-inherit-s {
-        font-size: inherit;
-      }
+    &--size-small-s {
+      @include p-type-scale($p-text-size-small);
     }
-
-    @include p-breakpoint("m") {
-      &-x-small-m {
-        @include p-type-scale($p-text-size-x-small);
-      }
-      &-small-m {
-        @include p-type-scale($p-text-size-small);
-      }
-      &-medium-m {
-        @include p-type-scale($p-text-size-medium);
-      }
-      &-large-m {
-        @include p-type-scale($p-text-size-large);
-      }
-      &-x-large-m {
-        @include p-type-scale($p-text-size-x-large);
-      }
-      &-inherit-m {
-        font-size: inherit;
-      }
+    &--size-medium-s {
+      @include p-type-scale($p-text-size-medium);
     }
-
-    @include p-breakpoint("l") {
-      &-x-small-l {
-        @include p-type-scale($p-text-size-x-small);
-      }
-      &-small-l {
-        @include p-type-scale($p-text-size-small);
-      }
-      &-medium-l {
-        @include p-type-scale($p-text-size-medium);
-      }
-      &-large-l {
-        @include p-type-scale($p-text-size-large);
-      }
-      &-x-large-l {
-        @include p-type-scale($p-text-size-x-large);
-      }
-      &-inherit-l {
-        font-size: inherit;
-      }
+    &--size-large-s {
+      @include p-type-scale($p-text-size-large);
     }
+    &--size-x-large-s {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-s {
+      font-size: inherit;
+    }
+  }
 
-    @include p-breakpoint("xl") {
-      &-x-small-xl {
-        @include p-type-scale($p-text-size-x-small);
-      }
-      &-small-xl {
-        @include p-type-scale($p-text-size-small);
-      }
-      &-medium-xl {
-        @include p-type-scale($p-text-size-medium);
-      }
-      &-large-xl {
-        @include p-type-scale($p-text-size-large);
-      }
-      &-x-large-xl {
-        @include p-type-scale($p-text-size-x-large);
-      }
-      &-inherit-xl {
-        font-size: inherit;
-      }
+  @include p-breakpoint("m") {
+    &--size-x-small-m {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &--size-small-m {
+      @include p-type-scale($p-text-size-small);
+    }
+    &--size-medium-m {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &--size-large-m {
+      @include p-type-scale($p-text-size-large);
+    }
+    &--size-x-large-m {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-m {
+      font-size: inherit;
+    }
+  }
+
+  @include p-breakpoint("l") {
+    &--size-x-small-l {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &--size-small-l {
+      @include p-type-scale($p-text-size-small);
+    }
+    &--size-medium-l {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &--size-large-l {
+      @include p-type-scale($p-text-size-large);
+    }
+    &--size-x-large-l {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-l {
+      font-size: inherit;
+    }
+  }
+
+  @include p-breakpoint("xl") {
+    &--size-x-small-xl {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &--size-small-xl {
+      @include p-type-scale($p-text-size-small);
+    }
+    &--size-medium-xl {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &--size-large-xl {
+      @include p-type-scale($p-text-size-large);
+    }
+    &--size-x-large-xl {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-xl {
+      font-size: inherit;
     }
   }
 
@@ -305,20 +303,14 @@
   &__icon-wrapper {
     position: relative;
     flex-shrink: 0;
-    width: 1em;
-    height: 1em;
     display: block;
     line-height: inherit;
     background: deepskyblue;
   }
 
   &__icon {
-    position: absolute;
-    top: 50%;
-    left: 0;
     width: 100%;
     height: 100%;
-    transform: translate(0, -50%);
     background: deeppink;
   }
 
