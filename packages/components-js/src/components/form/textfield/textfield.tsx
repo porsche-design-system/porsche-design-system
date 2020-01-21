@@ -1,7 +1,7 @@
-import { JSX, Host, Component, Prop, h } from '@stencil/core';
+import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-import { IconName } from '../../icon/icon/icon-name';
+// import { IconName } from '../../icon/icon/icon-name';
 
 @Component({
   tag: 'p-textfield',
@@ -13,22 +13,19 @@ export class Textfield {
   /** The label text. */
   @Prop() public label?: string = undefined;
 
-  /** The icon shown. */
-  @Prop() public icon?: IconName = undefined;
-
-  /** A custom URL path to a custom icon. */
-  @Prop() public iconSource?: string = undefined;
-
   /** The state */
   @Prop() public state?: 'success' | 'error' = undefined;
 
   /** The message. */
   @Prop() public message?: string = undefined;
 
+  // private slots: NodeListOf<HTMLSlotElement>;
+  @Element() private element!: HTMLElement;
+
   public render(): JSX.Element {
     const textfieldClasses = cx(prefix('textfield'), this.state === 'error' && prefix('textfield--error'), this.state === 'success' && prefix('textfield--success'));
     const formElementWrapperClasses = cx(prefix('textfield__form-element-wrapper'));
-    const iconWrapperClasses = cx(prefix('textfield__icon-wrapper'));
+    const iconButtonClasses = cx(prefix('textfield__icon-button'));
     const iconClasses = cx(prefix('textfield__icon'));
     const labelClasses = cx(prefix('textfield__label'));
     const messageClasses = cx(prefix('textfield__message'), this.state === 'error' && prefix('textfield__message--error'), this.state === 'success' && prefix('textfield__message--success'));
@@ -40,18 +37,17 @@ export class Textfield {
             {this.label}
           </p-text>
           <span class={formElementWrapperClasses}>
-            {this.icon &&
-              <span class={iconWrapperClasses}>
+            <slot />
+            {this.isTypePassword() &&
+              <button type='button' onClick={() => this.togglePassword()} class={iconButtonClasses}>
                 <p-icon
                   class={iconClasses}
                   color='inherit'
                   size='small'
-                  name={this.icon}
-                  source={this.iconSource}
+                  name='view'
                 />
-              </span>
+              </button>
             }
-            <slot />
           </span>
         </label>
         {this.message &&
@@ -68,6 +64,17 @@ export class Textfield {
         }
       </Host>
     );
+  }
+
+  private isTypePassword():boolean {
+    const inputType = this.element.querySelector('input').type;
+    return inputType === 'password';
+  }
+
+  private togglePassword():void {
+    const input = this.element.querySelector('input');
+    const inputType = input.type;
+    inputType === 'password' ? input.type='text' :  input.type='password';
   }
 
 }

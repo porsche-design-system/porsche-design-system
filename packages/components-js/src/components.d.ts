@@ -416,14 +416,6 @@ export namespace Components {
   }
   interface PTextfield {
     /**
-    * The icon shown.
-    */
-    'icon'?: IconName;
-    /**
-    * A custom URL path to a custom icon.
-    */
-    'iconSource'?: string;
-    /**
     * The label text.
     */
     'label'?: string;
@@ -943,14 +935,6 @@ declare namespace LocalJSX {
     'weight'?: TextWeight;
   }
   interface PTextfield {
-    /**
-    * The icon shown.
-    */
-    'icon'?: IconName;
-    /**
-    * A custom URL path to a custom icon.
-    */
-    'iconSource'?: string;
     /**
     * The label text.
     */
