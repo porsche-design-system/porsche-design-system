@@ -38,6 +38,7 @@ An "outline only" link version. In hierarchy it is always subordinated to the fi
 <p-link variant="primary" href="https://www.porsche.com">Some label</p-link> <p-link href="https://www.porsche.com" style="margin-left:16px;">Some label</p-link> <p-link variant="tertiary" href="https://www.porsche.com" style="margin-left:16px;">Some label</p-link>
 
 This should be the option of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility. The length of the link always adapts to the length of the text label. 
+The size of the icon container always equals the line height of the text it's combined with.
 
 ### Icon only
 

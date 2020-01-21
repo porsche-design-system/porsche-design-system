@@ -7,37 +7,42 @@ branding. Even more so when it comes to UX, color is to be used intentionally to
 patterns, set emphasis on important elements and, by doing so, provide visual
 guidance and information.
 
-The Porsche Design System color system provides two Porsche Design System color themes that are based on the Porsche color palette and can be
-used for different visual environments. The Porsche Design System color palette includes both brand colors and neutral colors. 
-They must always be used in 100% opacity. The Porsche Design System Sketch library provides both themes.
-
+The Porsche Design System color system provides two color themes that are based on the Porsche color palette and can be
+used for different visual environments. Both themings are to be found in the Porsche Design System Sketch library.
 
 ---
 
 ## Porsche Design System color themes
 
 When designing Porsche applications, the first decision to make is whether the content should be displayed in a merely light or dark environment.
-That's when the Porsche Design System color themes come into play: **The first choice should always be the Porsche Light Theme**. The Porsche Dark Theme is only to be
-used for exceptional cases, e.g. if an application is to stand out from the rest of visual communication for strategic reasons or if the context of use 
-is unsuitable for a bright shining display. All Porsche Design System components are optimized for the light and dark Theme.
+That's when the Porsche Design System color themes come into play that come with a limited color set you should stick to for page backgrounds as well as for text and icons: 
 
-### Theme colors
-Each theme comes with a limited color set you should stick to for page backgrounds and text/icons. 
-When it comes to additional elements, such as tiles, dividers or other graphical elements, you have two options:
+- **The Porsche Light Theme should always be first choice.**
+- The Porsche Dark Theme is only to be used for exceptional cases, e.g. if an application is to stand out from the rest of visual communication for strategic reasons or if the context of use is unsuitable for a bright shining display. 
+  
+All Porsche Design System components are optimized for both Light and Dark Theme. 
 
-- Use the accessibility-safe colors provided for the theme (Neutral Contrast High and Neutral Contrast Medium). This is highly recommended whenever you want to convey important information.
-- Use the Neutral Contrast Low for only displaying "nice to have" or "aesthetic only" elements that are not crucial for information perception.
+### Additional elements
+For designing additional elements (such as tiles, dividers or other graphical elements) you have several options:
 
-In order to define the colors to be used within the screen you should always check the **information level** of the respective elements.
+- Use the accessibility-safe colors provided for the theme (Neutral Contrast High and Neutral Contrast Medium), as they guarantee optimal contrast on the theming's backgrounds. This is highly recommended whenever you want to convey important information.
+- Neutral Contrast Low is not accessibility-safe and, therefore, recommended to be used only for displaying "nice to have" or merely decorative elements that are not crucial for information perception. 
+
+### Information level
+
+In order to define the colors to be used within the screen the **information level** of the respective elements is crucial. 
 
 - Play with darker/lighter grey shades to make an element stand out from the background or to set emphasize on it. 
 - For large screen space make sure to only use the dedicated surface color for your theme (e.g. Surface). 
 - Use the brand color only for highlighting single elements.
 
 ### Mixing themes
-Within certain limits it's allowed to mix the Porsche color themes. For example let's say you could integrate a limited Dark Theme area in your Light Theme
-to visually distinguish the footer from the content. Always make sure that the vast majority of the screen consists of the initially chosen theme.
+Within certain limits it's allowed to mix the Porsche color themes. For example you could integrate a limited Dark Theme area in your Light Theme
+to visually distinguish it from the rest of the content. **Always make sure that the vast majority of the screen consists of the initially chosen theme.**
 The color proportion scales for each theme might be a little helper in doing so.
+
+### Color usage
+All colors must always be used in 100% opacity.
 
 ---
 
@@ -45,9 +50,6 @@ The color proportion scales for each theme might be a little helper in doing so.
 ![Porsche Light Theme colors](./assets/color-theme-light.png)
 
 ### Brand color
-The Porsche brand color is the core of the Porsche Design System color palette. The usage
-and proportion of brand colors within a UI is defined by the specific Porsche
-color theme in use.
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
@@ -68,8 +70,8 @@ color theme in use.
 | <ColorBadge theme="light" color="default"/>    	                                      | **Default**        	| #000000 	| 0/0/0          	| Default text/icon color                   |
 
 ### Neutral colors
-The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
-The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
+The neutral palette is to be used for all basic architectonic page elements such as tile backgrounds, dividers or other graphical elements.
+The set consists of several grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
 |                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA for Light Theme           |
 |-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
@@ -92,14 +94,12 @@ When using notification colors …
 | <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #E2B236 	| 226/178/54  	|
 
 ### States
-The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
-Depending on the component it can be implemented in different ways, for example as border or surface color.
 
-|                                                         |                 | HEX     	| RGB         	|                |
+|                                                         |                 | HEX     	| RGB         	| Usage          |
 |---------------------------------------------------------|-----------------|-----------|---------------|----------------|
 | <ColorBadge theme="light" color="state-hover"/> 	      | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
 | <ColorBadge theme="light" color="state-active"/> 	      | **Active**      | #D5001C 	| 213/0/28      | Active state   |
-| <ColorBadge theme="light" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus state   |
+| <ColorBadge theme="light" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Only to be used to highlight components on focus enabling keyboard navigation. Implementation depending on the component, e.g. as border or surface color.   |
 | <ColorBadge theme="light" color="state-disabled"/>      | **Disabled**    | #96989A 	| 150/152/154   | Disabled state |
 
 
@@ -115,9 +115,6 @@ Depending on the component it can be implemented in different ways, for example 
 ![Porsche Dark Theme colors](./assets/color-theme-dark.png)
 
 ### Brand color
-The Porsche brand color is the core of the Porsche Design System color palette. The usage
-and proportion of brand colors within a UI is defined by the specific Porsche
-color theme in use.
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
@@ -137,8 +134,8 @@ color theme in use.
 | <ColorBadge theme="dark" color="default"/>  	                                    | **Default**      	| #FFFFFF 	| 255/255/255    	| Default text/icon color                 |
 
 ### Neutral colors
-The neutral palette is to be used for all basic architectonic page elements – going from tile background colors to text or icon colors.
-The set consists grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
+The neutral palette is to be used for all basic architectonic page elements such as tile backgrounds, dividers or other graphical elements.
+The set consists of several grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
 |                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA for Dark Theme           |
 |-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
@@ -163,11 +160,11 @@ When using notification colors …
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
 Depending on the component it can be implemented in different ways, for example as border or surface color.
 
-|                                                        |                 | HEX     	| RGB         	|                |
+|                                                        |                 | HEX     	| RGB         	| Usage              |
 |--------------------------------------------------------|-----------------|------------|---------------|----------------|
 | <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
 | <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #D5001C 	| 213/0/28      | Active state   |
-| <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Focus state   |
+| <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Only to be used to highlight components on focus enabling keyboard navigation. Implementation depending on the component, e.g. as border or surface color.   |
 | <ColorBadge theme="dark" color="state-disabled"/>      | **Disabled**    | #7C7F81 	| 124/127/129   | Disabled state |
 
 ### Color proportions
@@ -210,11 +207,7 @@ In order to make content accessible for a wide range of people and to improve th
 
 - Always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA standard and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 for larger text sizes.
 
-
-
 - Combinations of other colored elements must pass the WCAG AA standard with a minimum 3:1 ratio, unless it's only a decorative element.
-
-
 
 - Don’t rely on color only to convey information (for example when displaying status or error messages). This is of high importance especially in critical cases, e.g. when displaying safety-relevant vehicle data.
 
