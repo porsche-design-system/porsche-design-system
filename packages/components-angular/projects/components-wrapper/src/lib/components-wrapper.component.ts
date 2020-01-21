@@ -189,9 +189,9 @@ export class PText {
   }
 }
 export declare interface PTextfield extends Components.PTextfield {}
-@ProxyInputs(['icon', 'iconSource', 'label', 'message', 'status'])
+@ProxyInputs(['icon', 'iconSource', 'label', 'message', 'state'])
 
-@Component({ selector: 'p-textfield', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['icon', 'iconSource', 'label', 'message', 'status'] })
+@Component({ selector: 'p-textfield', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['icon', 'iconSource', 'label', 'message', 'state'] })
 export class PTextfield {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
