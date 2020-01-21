@@ -8,7 +8,6 @@
 
   &__label {
     display: block;
-    @include p-text;
   }
 
   &__form-element-wrapper {
@@ -18,9 +17,9 @@
     input {
       @include p-text;
       width: 100%;
-      height: rem(50px);
+      height: rem(48px);
       display: block;
-      padding: rem(17px) rem(18px);
+      padding: rem(11px) rem(18px);
       outline: transparent none;
       appearance: none;
       box-sizing: border-box;
@@ -32,45 +31,80 @@
       color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &::placeholder {
-        color: $p-color-theme-light-neutral-contrast-medium;
-        font-style: italic;
+        color: $p-color-theme-light-state-disabled;
+        opacity: 1;
       }
 
-      &::-ms-clear {
-        width: 0;
-        height: 0;
+      &::-moz-placeholder {
+        color: $p-color-theme-light-state-disabled;
+        opacity: 1;
       }
 
-      &:focus {
-        outline: $p-color-theme-light-state-focus solid 2px;
-        outline-offset: 1px;
-      }
+      &[type='search'] {
+        /* clears the 'X' from Internet Explorer */
+        &::-ms-clear {
+          display: none;
+          width: 0;
+          height: 0;
+        }
+        &::-ms-reveal {
+          display: none;
+          width: 0;
+          height: 0;
+        }
 
-      &:disabled {
-        color: $p-color-theme-light-neutral-contrast-medium;
-        border-color: $p-color-theme-light-neutral-contrast-medium;
-
-        &::placeholder {
-          color: $p-color-theme-light-neutral-contrast-medium;
+        /* clears the 'X' from Chrome */
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration {
+          display: none;
         }
       }
 
       // input type number - disabling the arrow icons
       &[type='number'] {
         appearance: none;
+        -moz-appearance: textfield;
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
           appearance: none;
+          -webkit-appearance: none;
+        }
+      }
+
+      &:focus:not(:read-only) {
+        outline: $p-color-theme-light-state-focus solid 2px;
+        outline-offset: 1px;
+      }
+
+      &:disabled {
+        color: $p-color-theme-light-state-disabled;
+        border-color: $p-color-theme-light-state-disabled;
+
+        &::placeholder {
+          color: $p-color-theme-light-state-disabled;
         }
       }
     }
   }
 
-  &__icon {
+  // DRAFT!!!!
+  p-button-pure {
     position: absolute;
-    top: rem(1px);
-    right: rem(1px);
+    top: 0;
+    right: 0;
+    color: $p-color-theme-light-default;
+    cursor: pointer;
+    width: rem(48px);
+    height: rem(48px);
+  }
+
+  &__icon-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
     color: $p-color-theme-light-default;
     cursor: pointer;
     width: rem(48px);
@@ -85,12 +119,19 @@
     }
   }
 
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   &--error {
     input {
       color: $p-color-theme-light-notification-error;
       border-color: $p-color-theme-light-notification-error;
       border-width: 2px;
-      padding: rem(16px) rem(17px);
+      padding: rem(10px) rem(17px);
     }
   }
 

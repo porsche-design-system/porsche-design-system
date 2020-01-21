@@ -432,9 +432,9 @@ export namespace Components {
     */
     'message'?: string;
     /**
-    * The status
+    * The state
     */
-    'status'?: 'success' | 'error';
+    'state'?: 'success' | 'error';
   }
 }
 
@@ -960,9 +960,9 @@ declare namespace LocalJSX {
     */
     'message'?: string;
     /**
-    * The status
+    * The state
     */
-    'status'?: 'success' | 'error';
+    'state'?: 'success' | 'error';
   }
 
   interface IntrinsicElements {
