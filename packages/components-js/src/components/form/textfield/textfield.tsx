@@ -1,7 +1,6 @@
 import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-// import { IconName } from '../../icon/icon/icon-name';
 
 @Component({
   tag: 'p-textfield',
@@ -19,7 +18,6 @@ export class Textfield {
   /** The message. */
   @Prop() public message?: string = undefined;
 
-  // private slots: NodeListOf<HTMLSlotElement>;
   @Element() private element!: HTMLElement;
 
   public render(): JSX.Element {
@@ -67,13 +65,13 @@ export class Textfield {
   }
 
   private isTypePassword():boolean {
-    const inputType = this.element.querySelector('input').type;
+    const inputType: string = this.element.querySelector('input').type;
     return inputType === 'password';
   }
 
   private togglePassword():void {
-    const input = this.element.querySelector('input');
-    const inputType = input.type;
+    const input: HTMLInputElement = this.element.querySelector('input');
+    const inputType: string = input.type;
     inputType === 'password' ? input.type='text' :  input.type='password';
   }
 
