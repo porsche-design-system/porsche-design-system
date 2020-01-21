@@ -106,7 +106,7 @@
 
 ## Test form events and some layouts
 
-### Native submit
+### Native submit (aligned with align-items)
 <Playground>
   <template>
     <form novalidate onsubmit="alert('Form submitted')">
@@ -120,7 +120,7 @@
   </template>
 </Playground>
 
-### JS submit
+### JS submit (aligned with margin-top)
 <Playground>
   <template>
     <form id="form2" novalidate onsubmit="alert('Form submitted')">
@@ -134,7 +134,7 @@
   </template>
 </Playground>
 
-### Submit with message
+### Submit with message (can't be aligned)
 <Playground>
   <template>
     <form id="form3" novalidate onsubmit="alert('Form submitted')">
@@ -149,7 +149,7 @@
 </Playground>
 
 <script>
-  formSubmit = function() {
+  const formSubmit = function() {
     document.getElementById('form2').submit();
   };
 </script>
