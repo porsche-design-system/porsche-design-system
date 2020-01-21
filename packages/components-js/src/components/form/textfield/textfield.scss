@@ -74,6 +74,13 @@
         }
       }
 
+      &::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+      &[type='date']::-webkit-input-placeholder {
+        visibility: hidden !important;
+      }
+
       &:focus:not(:read-only) {
         outline: $p-color-theme-light-state-focus solid 2px;
         outline-offset: 1px;
@@ -90,8 +97,7 @@
     }
   }
 
-  // DRAFT!!!!
-  p-button-pure {
+  &__icon-button {
     position: absolute;
     top: 0;
     right: 0;
@@ -99,18 +105,12 @@
     cursor: pointer;
     width: rem(48px);
     height: rem(48px);
-  }
+    border: none;
+    outline: none;
+    background: transparent;
 
-  &__icon-wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: $p-color-theme-light-default;
-    cursor: pointer;
-    width: rem(48px);
-    height: rem(48px);
-
-    &:hover {
+    &:hover,
+    &:focus {
       color: $p-color-theme-light-state-hover;
     }
 

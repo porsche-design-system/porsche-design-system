@@ -25,7 +25,7 @@
 ### Required
 <Playground>
   <template>
-    <p-textfield label="Some label*">
+    <p-textfield label="Some label">
       <input type="text" name="some-name" required="true"/>
     </p-textfield>
   </template>
@@ -55,7 +55,7 @@
 ### Textfield type date with icon
 <Playground>
   <template>
-    <p-textfield label="Some label" icon="calender">
+    <p-textfield label="Some label">
       <input type="date" name="some-name"/>
     </p-textfield>
   </template>
@@ -65,7 +65,7 @@
 <Playground>
   <template>
   <form novalidate>
-    <p-textfield label="Some label" icon="clock">
+    <p-textfield label="Some label">
       <input type="time" name="some-name"/>
     </p-textfield>
    </form>
@@ -73,12 +73,11 @@
 </Playground>
 
 
-### Example: Textfield type password with custom icon-button
+### Type password with icon-button
 <Playground>
   <template>
     <p-textfield label="Some label">
       <input type="password" name="some-name"/>
-      <p-button-pure hide-label="true" icon="view" size="small">Show or hide password</p-button-pure>
     </p-textfield>
   </template>
 </Playground>
