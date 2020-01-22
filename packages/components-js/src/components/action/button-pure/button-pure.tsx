@@ -1,10 +1,11 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeight } from '../../../utils';
 import { ButtonType, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
 import { IconName } from '../../icon/icon/icon-name';
+import { throttle } from 'throttle-debounce';
 
 @Component({
   tag: 'p-button-pure',
@@ -44,9 +45,24 @@ export class ButtonPure {
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  private buttonTag: HTMLElement;
+  private iconTag: HTMLElement;
+
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
     improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
+
+    this.buttonTag.addEventListener('transitionend', e => {
+      if (e.propertyName === 'font-size') {
+        throttle(50, () => {
+          this.updateLineHeight();
+        })();
+      }
+    });
+
+    throttle(50, () => {
+      this.updateLineHeight();
+    })();
   }
 
   public render(): JSX.Element {
@@ -71,12 +87,14 @@ export class ButtonPure {
         type={this.type}
         disabled={this.isDisabled()}
         tabindex={this.tabbable ? 0 : -1}
+        ref={el => this.buttonTag = el as HTMLElement}
       >
         {this.loading ? (
           <p-spinner
             class={iconClasses}
             size='inherit'
             theme={this.theme}
+            ref={el => this.iconTag = el as HTMLElement}
           />
         ) : (
           <p-icon
@@ -85,6 +103,7 @@ export class ButtonPure {
             size='inherit'
             name={this.icon}
             source={this.iconSource}
+            ref={el => this.iconTag = el as HTMLElement}
           />
         )}
         <p-text
@@ -98,6 +117,13 @@ export class ButtonPure {
         </p-text>
       </button>
     );
+  }
+
+  private updateLineHeight() {
+    const fontSize = parseInt(window.getComputedStyle(this.buttonTag).fontSize, 10);
+    const lineHeightFactor = lineHeight(fontSize);
+    this.buttonTag.style.lineHeight = `${lineHeightFactor}`;
+    this.iconTag.style.width = `${lineHeightFactor}em`;
   }
 
   private isDisabled() {
