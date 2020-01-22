@@ -70,9 +70,9 @@ import {Component} from '@angular/core';
           <div class="playground light spacing-block">
             <p-text [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [color]="'brand'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'neutral-1'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'neutral-2'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'neutral-3'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'neutral-contrast-high'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'neutral-contrast-medium'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'neutral-contrast-low'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [color]="'notification-success'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [color]="'notification-warning'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [color]="'notification-error'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
@@ -83,9 +83,9 @@ import {Component} from '@angular/core';
           <div class="playground dark spacing-block">
             <p-text [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [theme]="'dark'" [color]="'brand'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'neutral-1'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'neutral-2'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'neutral-3'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-contrast-high'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-contrast-medium'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-contrast-low'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [theme]="'dark'" [color]="'notification-success'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [theme]="'dark'" [color]="'notification-warning'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [theme]="'dark'" [color]="'notification-error'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
@@ -297,9 +297,9 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
-            <p-icon [name]="'filter'" [color]="'neutral-1'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'medium'" [color]="'neutral-2'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'large'" [color]="'neutral-3'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [color]="'neutral-contrast-high'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [size]="'medium'" [color]="'neutral-contrast-medium'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [size]="'large'" [color]="'neutral-contrast-low'" aria-label="Filter icon"></p-icon>
             <p-icon [name]="'filter'" [size]="'large'" [color]="'brand'" aria-label="Filter icon"></p-icon>
             <p-icon [name]="'filter'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon" style="color: deeppink;"></p-icon>
             <p-icon [name]="'delete'" [size]="'large'" aria-label="Delete icon"></p-icon>
@@ -308,9 +308,9 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-inline">
-            <p-icon [name]="'filter'" [theme]="'dark'" [color]="'neutral-1'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'medium'" [color]="'neutral-2'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'neutral-3'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [color]="'neutral-contrast-high'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'medium'" [color]="'neutral-contrast-medium'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'neutral-contrast-low'" aria-label="Filter icon"></p-icon>
             <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'brand'" aria-label="Filter icon"></p-icon>
             <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon" style="color: deeppink;"></p-icon>
             <p-icon [name]="'delete'" [theme]="'dark'" [size]="'large'" aria-label="Delete icon"></p-icon>
