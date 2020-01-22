@@ -44,7 +44,7 @@ There are predefined text sizes for the component which should cover most use ca
 If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 **Hint:** If you are in `hideLabel`-mode, be aware that the box-size of the rendered element will not be the same as the given (font-size) pixel value, 
-e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"** width/height but instead a box size generated out of our type-scaling formula which will end in **"52px"** width/height.
+e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"** width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"** width/height.
 
 <Playground :themeable="true">
   <template #configurator>

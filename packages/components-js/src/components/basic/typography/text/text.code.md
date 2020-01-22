@@ -21,6 +21,8 @@ The default semantic HTML element is `p`.
 There are predefined default text sizes for the text component which should cover most use cases. 
 If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
+**Hint:** Be aware of that the line-height will be calculated based on the Porsche type-scaling formula automatically. This is the case for predefined text sizes as well as for `inherit` mode.
+
 <Playground :themeable="true">
   <template #configurator>
     <select @change="size = $event.target.value">
