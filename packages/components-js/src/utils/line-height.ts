@@ -14,6 +14,9 @@ export const lineHeight = (fontSize: number): number => {
     remainingPx = remainingPx - 4;
   }
 
-  return exactLineHeightPx - remainingPx;
+  const fittedLineHeightPx = exactLineHeightPx - remainingPx;
+  const fittedLineHeightFactor = fittedLineHeightPx / fontSize;
+
+  return fittedLineHeightFactor;
 };
 

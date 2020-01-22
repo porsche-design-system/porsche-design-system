@@ -118,9 +118,8 @@ export class LinkPure {
 
   private updateLineHeight() {
     const fontSize = parseInt(window.getComputedStyle(this.linkTag).fontSize, 10);
-    const lineHeightValue = lineHeight(fontSize);
-    const calcSize = lineHeightValue/fontSize;
-    this.linkTag.style.lineHeight = `${calcSize}`;
-    this.iconTag.style.width = `${calcSize}em`;
+    const lineHeightFactor = lineHeight(fontSize);
+    this.linkTag.style.lineHeight = `${lineHeightFactor}`;
+    this.iconTag.style.width = `${lineHeightFactor}em`;
   }
 }
