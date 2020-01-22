@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Add cursor pointer on hover
   * Button Pure
     - Add cursor pointer on hover
+  * Icon
+    - Rename and optimize neutral colors
+  * Text
+    - Rename and optimize neutral colors
 
 * Assets
   * Update CDN asset paths

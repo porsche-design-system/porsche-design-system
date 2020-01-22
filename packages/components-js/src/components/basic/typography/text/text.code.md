@@ -59,9 +59,9 @@ Predefined colors associated with its theme are available but also inherit mode 
       <option disabled>Select a color</option>
       <option value="brand">Brand</option>
       <option value="default" selected>Default</option>
-      <option value="neutral-1">Neutral 1</option>
-      <option value="neutral-2">Neutral 2</option>
-      <option value="neutral-3">Neutral 3</option>
+      <option value="neutral-contrast-high">Neutral Contrast High</option>
+      <option value="neutral-contrast-medium">Neutral Contrast Medium</option>
+      <option value="neutral-contrast-low">Neutral Contrast Low</option>
       <option value="notification-success">Notification Success</option>
       <option value="notification-warning">Notification Warning</option>
       <option value="notification-error">Notification Error</option>
