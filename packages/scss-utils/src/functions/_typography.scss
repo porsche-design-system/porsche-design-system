@@ -35,7 +35,7 @@
 
   $font-size: p-strip-unit($font-size);
   $e: 2.71828;
-  $exact-line-height-factor: 0.911 / ( 2.97 + 0.01 * p-pow( $e, 0.2 * $font-size ) ) + 1.2;
+  $exact-line-height-factor: 0.911 / ( 2.97 + 0.005 * p-pow( $e, 0.2 * $font-size ) ) + 1.2;
   $exact-line-height-px: $font-size * $exact-line-height-factor;
   $remaining-px: $exact-line-height-px % 4;
 

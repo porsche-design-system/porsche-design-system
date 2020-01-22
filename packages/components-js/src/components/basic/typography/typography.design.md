@@ -317,23 +317,15 @@ impact on the origin character of the company typeface. This includes:
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
+  import { lineHeightFactor } from '@/../../components-js/src/utils';
   
   @Component
   export default class PlaygroundTypography extends Vue {
     public size: number = 16;
     public typeScale(fontSize: number, comment: boolean = true): string {
-      let e = 2.71828;
-      let exactLineHeightFactor = 0.911 / ( 2.97 + 0.01 * Math.pow( e, 0.2 * fontSize ) ) + 1.2;
-      let exactLineHeightPx = fontSize * exactLineHeightFactor;
-      let remainingPx = exactLineHeightPx % 4;
-
-      if (remainingPx > 2) {
-        remainingPx = remainingPx - 4;
-      }
-
-      let fittedLineHeightPx = exactLineHeightPx - remainingPx;
-      let fittedLineHeightFactor = fittedLineHeightPx / fontSize;
-      let fontSizeRem = fontSize / 16;
+      const fittedLineHeightFactor = lineHeightFactor(fontSize);
+      const fittedLineHeightPx = Math.round(fontSize * fittedLineHeightFactor);
+      const fontSizeRem = fontSize / 16;
       
       if (comment) {
         return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"px\nline-height: "+ fittedLineHeightFactor +"; // "+ fittedLineHeightPx +"px";
