@@ -104,7 +104,7 @@
           }
           border: 0;
           height: 1px;
-          background-color: $p-color-theme-dark-neutral-2;
+          background-color: $p-color-theme-light-neutral-contrast-low;
         }
 
         // Emphasis
@@ -127,7 +127,7 @@
         // Blockquote
         blockquote {
           padding-left: $p-spacing-24;
-          border-left: p-rem(5px) solid $p-color-theme-dark-neutral-2;
+          border-left: p-rem(5px) solid $p-color-theme-light-neutral-contrast-low;
         }
 
         // Lists
@@ -165,7 +165,7 @@
           word-break: break-all;
           word-wrap: break-word;
           background-color: $p-color-theme-light-surface;
-          color: $p-color-theme-light-neutral-2;
+          color: $p-color-theme-light-neutral-contrast-high;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
         }
@@ -187,7 +187,7 @@
           th {
             text-align: left;
             padding-bottom: $p-spacing-8;
-            border-bottom: 1px solid $p-color-theme-dark-neutral-1;
+            border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
           }
 
           td {
@@ -196,7 +196,7 @@
               top: $p-spacing-8;
               bottom: $p-spacing-8;
             }
-            border-bottom: 1px solid $p-color-theme-dark-neutral-1;
+            border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
             vertical-align: top;
             width: 10%;
           }
@@ -216,7 +216,7 @@
 
           &:hover {
             text-decoration: none;
-            color: $p-color-theme-light-brand;
+            color: $p-color-theme-light-state-hover;
 
           }
 
