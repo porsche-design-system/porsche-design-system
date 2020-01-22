@@ -121,6 +121,7 @@ export class ButtonPure {
     const fontSize = parseInt(window.getComputedStyle(this.buttonTag).fontSize, 10);
     const lineHeightFactorValue = lineHeightFactor(fontSize);
     this.iconTag.style.width = `${lineHeightFactorValue}em`;
+    this.iconTag.style.height = `${lineHeightFactorValue}em`;
   }
 
   private isDisabled() {
