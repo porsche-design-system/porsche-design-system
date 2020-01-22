@@ -58,33 +58,33 @@
       }
     }
 
-    &-neutral-1 {
+    &-neutral-contrast-high {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-1;
+        fill: $p-color-theme-light-neutral-contrast-high;
       }
 
       &#{$bem-block}--theme-dark {
-        fill: $p-color-theme-dark-neutral-1;
+        fill: $p-color-theme-dark-neutral-contrast-high;
       }
     }
 
-    &-neutral-2 {
+    &-neutral-contrast-medium {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-2;
+        fill: $p-color-theme-light-neutral-contrast-medium;
       }
 
       &#{$bem-block}--theme-dark {
-        fill: $p-color-theme-dark-neutral-2;
+        fill: $p-color-theme-dark-neutral-contrast-medium;
       }
     }
 
-    &-neutral-3 {
+    &-neutral-contrast-low {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-3;
+        fill: $p-color-theme-light-neutral-contrast-low;
       }
 
       &#{$bem-block}--theme-dark {
-        fill: $p-color-theme-dark-neutral-3;
+        fill: $p-color-theme-dark-neutral-contrast-low;
       }
     }
 

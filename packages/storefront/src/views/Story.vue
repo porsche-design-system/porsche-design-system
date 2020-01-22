@@ -127,7 +127,7 @@
   .tabs {
     display: flex;
     margin-bottom: $p-spacing-64;
-    border-bottom: 1px solid $p-color-theme-dark-neutral-2;
+    border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
 
     .tab {
       @include p-type-scale($p-font-size-28);
@@ -141,11 +141,11 @@
         padding-bottom: $p-spacing-8;
         border-bottom: 3px solid transparent;
         text-decoration: none;
-        color: $p-color-theme-light-neutral-3;
+        color: $p-color-theme-light-neutral-contrast-medium;
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
         &:hover {
-          color: $p-color-theme-light-brand;
+          color: $p-color-theme-light-state-hover;
         }
 
         &:focus {

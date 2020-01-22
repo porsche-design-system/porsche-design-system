@@ -30,7 +30,7 @@ export class Icon {
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit' = 'default';
+  @Prop() public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit' = 'default';
 
   /**
    * The size of the icon.

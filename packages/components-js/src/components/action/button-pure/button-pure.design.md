@@ -26,6 +26,7 @@ Per default, the Button Pure is set in **copytext size** (small). If another si
 <p-button-pure size="large">Button Pure</p-button-pure>
 
 This should be the variant of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility.
+The size of the icon container always equals the line height of the text it's combined with.
 
 ### Icon only
 
