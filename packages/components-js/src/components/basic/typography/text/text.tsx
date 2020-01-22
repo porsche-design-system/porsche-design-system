@@ -84,7 +84,6 @@ export class Text {
 
   private updateLineHeight() {
     const fontSize = parseInt(window.getComputedStyle(this.textTag).fontSize, 10);
-    console.log(fontSize);
     const lineHeightFactorValue = lineHeightFactor(fontSize);
     this.textTag.style.lineHeight = `${lineHeightFactorValue}`;
   }
