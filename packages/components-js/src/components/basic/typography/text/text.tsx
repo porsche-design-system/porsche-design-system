@@ -57,9 +57,7 @@ export class Text {
       }
     });
 
-    throttle(50, () => {
-      this.updateLineHeight();
-    })();
+    this.updateLineHeight();
   }
 
   public render(): JSX.Element {
