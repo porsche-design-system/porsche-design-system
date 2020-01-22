@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeight } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeightFactor } from '../../../utils';
 import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
@@ -118,8 +118,8 @@ export class LinkPure {
 
   private updateLineHeight() {
     const fontSize = parseInt(window.getComputedStyle(this.linkTag).fontSize, 10);
-    const lineHeightFactor = lineHeight(fontSize);
-    this.linkTag.style.lineHeight = `${lineHeightFactor}`;
-    this.iconTag.style.width = `${lineHeightFactor}em`;
+    const lineHeightFactorValue = lineHeightFactor(fontSize);
+    this.linkTag.style.lineHeight = `${lineHeightFactorValue}`;
+    this.iconTag.style.width = `${lineHeightFactorValue}em`;
   }
 }
