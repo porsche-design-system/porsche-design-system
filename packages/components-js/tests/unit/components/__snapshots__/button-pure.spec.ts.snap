@@ -3,8 +3,8 @@
 exports[`Component <p-button-pure> should render correctly in default mode with shadow dom 1`] = `
 <p-button-pure>
   <mock:shadow-root>
-    <button class="p-button-pure p-button-pure--size-small p-button-pure--theme-light p-button-pure--with-label" tabindex="0" type="button">
-      <p-icon class="p-button-pure__icon" color="inherit" name="arrow-head-right" size="inherit"></p-icon>
+    <button class="p-button-pure p-button-pure--size-small p-button-pure--theme-light p-button-pure--with-label" tabindex="0" type="button" style="line-height: NaN;">
+      <p-icon class="p-button-pure__icon" color="inherit" name="arrow-head-right" size="inherit" style="width: NaNem;"></p-icon>
       <p-text class="p-button-pure__label" color="inherit" size="inherit" tag="span" weight="regular">
         <slot></slot>
       </p-text>

@@ -53,10 +53,7 @@ e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"**
     </select>
   </template>
   <template v-slot={theme}>
-    <p-link-pure href="https://www.porsche.com" :size="size" :style="isInherit" :theme="theme">Some label Some label Some label Some label Some label Some label Some label Some label Some label</p-link-pure>
-    <br>
-    <br>
-    <p-link-pure hide-label="true" href="https://www.porsche.com" :size="size" :style="isInherit" :theme="theme">Some label Some label Some label Some label Some label Some label Some label Some label Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" :size="size" :style="isInherit" :theme="theme">Some label</p-link-pure>
   </template>
 </Playground>
 
