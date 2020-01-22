@@ -1,9 +1,10 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeight, throttle } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeight } from '../../../utils';
 import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
+import { throttle } from 'throttle-debounce';
 
 @Component({
   tag: 'p-link-pure',
@@ -47,17 +48,21 @@ export class LinkPure {
   @Prop() public rel?: string = undefined;
 
   private linkTag: HTMLElement;
-  private iconWrapper: HTMLElement;
+  private iconTag: HTMLElement;
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
     this.linkTag.addEventListener('transitionend', e => {
       if (e.propertyName === 'font-size') {
-        throttle(this.updateLineHeight(), 50);
+        throttle(50, () => {
+          this.updateLineHeight();
+        })();
       }
     });
 
-    throttle(this.updateLineHeight(), 50);
+    throttle(50, () => {
+      this.updateLineHeight();
+    })();
   }
 
   public render(): JSX.Element {
@@ -69,10 +74,6 @@ export class LinkPure {
       mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
       prefix(`link-pure--theme-${this.theme}`),
       this.active && prefix(`link-pure--active`)
-    );
-
-    const iconWrapperClasses = cx(
-      prefix('link-pure__icon-wrapper')
     );
 
     const iconClasses = cx(
@@ -94,18 +95,14 @@ export class LinkPure {
         } : null)}
         ref={el => this.linkTag = el as HTMLElement}
       >
-        <span
-          class={iconWrapperClasses}
-          ref={el => this.iconWrapper = el as HTMLElement}
-        >
-          <p-icon
-            class={iconClasses}
-            color='inherit'
-            size='inherit'
-            name={this.icon}
-            source={this.iconSource}
-          />
-        </span>
+        <p-icon
+          class={iconClasses}
+          color='inherit'
+          size='inherit'
+          name={this.icon}
+          source={this.iconSource}
+          ref={el => this.iconTag = el as HTMLElement}
+        />
         <p-text
           class={labelClasses}
           tag='span'
@@ -122,8 +119,8 @@ export class LinkPure {
   private updateLineHeight() {
     const fontSize = parseInt(window.getComputedStyle(this.linkTag).fontSize, 10);
     const lineHeightValue = lineHeight(fontSize);
-    this.linkTag.style.lineHeight = `${lineHeightValue}px`;
-    this.iconWrapper.style.width = `${lineHeightValue}px`;
+    const calcSize = lineHeightValue/fontSize;
+    this.linkTag.style.lineHeight = `${calcSize}`;
+    this.iconTag.style.width = `${calcSize}em`;
   }
-
 }
