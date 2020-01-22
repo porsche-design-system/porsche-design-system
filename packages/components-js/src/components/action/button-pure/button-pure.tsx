@@ -55,20 +55,17 @@ export class ButtonPure {
     this.buttonTag.addEventListener('transitionend', e => {
       if (e.propertyName === 'font-size') {
         throttle(50, () => {
-          this.updateLineHeight();
+          this.updateScaling();
         })();
       }
     });
 
-    throttle(50, () => {
-      this.updateLineHeight();
-    })();
+    this.updateScaling();
   }
 
   public render(): JSX.Element {
     const buttonPureClasses = cx(
       prefix('button-pure'),
-      mapBreakpointPropToPrefixedClasses('button-pure-', this.hideLabel, ['without-label', 'with-label']),
       mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
       prefix(`button-pure--theme-${this.theme}`)
     );
@@ -78,7 +75,8 @@ export class ButtonPure {
     );
 
     const labelClasses = cx(
-      prefix('button-pure__label')
+      prefix('button-pure__label'),
+      mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
 
     return (
@@ -119,10 +117,9 @@ export class ButtonPure {
     );
   }
 
-  private updateLineHeight() {
+  private updateScaling() {
     const fontSize = parseInt(window.getComputedStyle(this.buttonTag).fontSize, 10);
     const lineHeightFactorValue = lineHeightFactor(fontSize);
-    this.buttonTag.style.lineHeight = `${lineHeightFactorValue}`;
     this.iconTag.style.width = `${lineHeightFactorValue}em`;
   }
 

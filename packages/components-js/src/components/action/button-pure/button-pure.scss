@@ -1,27 +1,23 @@
 @import '../../../../../../packages/scss-utils/index';
 
-@mixin p-button-pure-label-with-label() {
+@mixin p-button-pure-label-visible() {
   position: static;
   width: 100%;
   height: auto;
-  margin: 0 0 0 rem(4px);
-  padding: 0;
+  margin: 0 0 0 p-rem(4px);
   white-space: normal;
   overflow: visible;
-  border: 0;
   clip: auto;
   clip-path: none;
 }
 
-@mixin p-button-pure-label-without-label() {
+@mixin p-button-pure-label-hidden() {
   position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
-  padding: 0;
   white-space: nowrap;
   overflow: hidden;
-  border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
 }
@@ -45,11 +41,11 @@
   text-decoration: none;
   text-align: left;
   background: transparent;
+  cursor: pointer;
   color: inherit;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier,
-  font-size 0.00001ms linear;
-  cursor: pointer;
+  font-size 0.00001ms linear; // used for transitionend event listener
 
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
@@ -117,18 +113,23 @@
   &--size-x-small {
     @include p-type-scale($p-text-size-x-small);
   }
+
   &--size-small {
     @include p-type-scale($p-text-size-small);
   }
+
   &--size-medium {
     @include p-type-scale($p-text-size-medium);
   }
+
   &--size-large {
     @include p-type-scale($p-text-size-large);
   }
+
   &--size-x-large {
     @include p-type-scale($p-text-size-x-large);
   }
+
   &--size-inherit {
     font-size: inherit;
     line-height: inherit;
@@ -244,88 +245,6 @@
     }
   }
 
-  &--with-label {
-    #{$bem-block}__label {
-      @include p-button-pure-label-with-label;
-    }
-  }
-
-  &--without-label {
-    #{$bem-block}__label {
-      @include p-button-pure-label-without-label;
-    }
-  }
-
-  @include p-breakpoint("xs") {
-    &--with-label-xs {
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
-    }
-
-    &--without-label-xs {
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
-    }
-  }
-
-  @include p-breakpoint("s") {
-    &--with-label-s {
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
-    }
-
-    &--without-label-s {
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
-    }
-  }
-
-  @include p-breakpoint("m") {
-    &--with-label-m {
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
-    }
-
-    &--without-label-m {
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
-    }
-  }
-
-  @include p-breakpoint("l") {
-    &--with-label-l {
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
-    }
-
-    &--without-label-l {
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
-    }
-  }
-
-  @include p-breakpoint("xl") {
-    &--with-label-xl {
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
-    }
-
-    &--without-label-xl {
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
-    }
-  }
-
   &__icon {
     flex-shrink: 0;
     width: 1em;
@@ -334,5 +253,65 @@
   &__label {
     display: block;
     box-sizing: border-box;
+    padding: 0;
+    border: 0;
+
+    &--visible {
+      @include p-button-pure-label-visible;
+    }
+
+    &--hidden {
+      @include p-button-pure-label-hidden;
+    }
+
+    @include p-breakpoint("xs") {
+      &--visible-xs {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-xs {
+        @include p-button-pure-label-hidden;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &--visible-s {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-s {
+        @include p-button-pure-label-hidden;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &--visible-m {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-m {
+        @include p-button-pure-label-hidden;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &--visible-l {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-l {
+        @include p-button-pure-label-hidden;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &--visible-xl {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-xl {
+        @include p-button-pure-label-hidden;
+      }
+    }
   }
 }
