@@ -67,9 +67,12 @@
       outline-color: $p-color-theme-light-state-focus;
     }
 
-    &:hover,
-    &:active {
+    &:hover{
       color: $p-color-theme-light-state-hover;
+    }
+
+    &:active {
+      color: $p-color-theme-light-state-active;
     }
 
     &#{$bem-block}--active {
@@ -84,9 +87,12 @@
       outline-color: $p-color-theme-dark-state-focus;
     }
 
-    &:hover,
-    &:active {
+    &:hover {
       color: $p-color-theme-dark-state-hover;
+    }
+
+    &:active {
+      color: $p-color-theme-dark-state-active;
     }
 
     &#{$bem-block}--active {

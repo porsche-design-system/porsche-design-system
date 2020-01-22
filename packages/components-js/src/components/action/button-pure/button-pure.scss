@@ -75,9 +75,12 @@
 
     &:enabled,
     &:not([disabled]) {
-      &:hover,
-      &:active {
+      &:hover {
         color: $p-color-theme-light-state-hover;
+      }
+
+      &:active {
+        color: $p-color-theme-light-state-active;
       }
     }
 
@@ -96,9 +99,12 @@
 
     &:enabled,
     &:not([disabled]) {
-      &:hover,
-      &:active {
+      &:hover {
         color: $p-color-theme-dark-state-hover;
+      }
+
+      &:active {
+        color: $p-color-theme-dark-state-active;
       }
     }
 
