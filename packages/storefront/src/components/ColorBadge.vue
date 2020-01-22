@@ -44,7 +44,7 @@
   .color-badge {
     width: p-rem(160px);
     height: p-rem(40px);
-    border: 1px solid $p-color-theme-light-neutral-3;
+    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
 
     // Theme light
     &.light {

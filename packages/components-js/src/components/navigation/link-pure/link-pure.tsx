@@ -55,14 +55,12 @@ export class LinkPure {
     this.linkTag.addEventListener('transitionend', e => {
       if (e.propertyName === 'font-size') {
         throttle(50, () => {
-          this.updateLineHeight();
+          this.updateScaling();
         })();
       }
     });
 
-    throttle(50, () => {
-      this.updateLineHeight();
-    })();
+    this.updateScaling();
   }
 
   public render(): JSX.Element {
@@ -70,7 +68,6 @@ export class LinkPure {
 
     const linkPureClasses = cx(
       prefix('link-pure'),
-      mapBreakpointPropToPrefixedClasses('link-pure-', this.hideLabel, ['without-label', 'with-label']),
       mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
       prefix(`link-pure--theme-${this.theme}`),
       this.active && prefix(`link-pure--active`)
@@ -81,7 +78,8 @@ export class LinkPure {
     );
 
     const labelClasses = cx(
-      prefix('link-pure__label')
+      prefix('link-pure__label'),
+      mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
 
     return (
@@ -116,10 +114,10 @@ export class LinkPure {
     );
   }
 
-  private updateLineHeight() {
+  private updateScaling() {
     const fontSize = parseInt(window.getComputedStyle(this.linkTag).fontSize, 10);
-    const lineHeightFactorValue = lineHeightFactor(fontSize);
-    this.linkTag.style.lineHeight = `${lineHeightFactorValue}`;
-    this.iconTag.style.width = `${lineHeightFactorValue}em`;
+    const calcFactor = lineHeightFactor(fontSize);
+    this.linkTag.style.lineHeight = `${calcFactor}`;
+    this.iconTag.style.width = `${calcFactor}em`;
   }
 }
