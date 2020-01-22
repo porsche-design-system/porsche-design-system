@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeight } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeightFactor } from '../../../utils';
 import { ButtonType, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
@@ -121,9 +121,9 @@ export class ButtonPure {
 
   private updateLineHeight() {
     const fontSize = parseInt(window.getComputedStyle(this.buttonTag).fontSize, 10);
-    const lineHeightFactor = lineHeight(fontSize);
-    this.buttonTag.style.lineHeight = `${lineHeightFactor}`;
-    this.iconTag.style.width = `${lineHeightFactor}em`;
+    const lineHeightFactorValue = lineHeightFactor(fontSize);
+    this.buttonTag.style.lineHeight = `${lineHeightFactorValue}`;
+    this.iconTag.style.width = `${lineHeightFactorValue}em`;
   }
 
   private isDisabled() {

@@ -4,7 +4,7 @@
  * @param fontSize
  * @returns number
  */
-export const lineHeight = (fontSize: number): number => {
+export const lineHeightFactor = (fontSize: number): number => {
   const e = 2.71828;
   const exactLineHeightFactor = 0.911 / ( 2.97 + 0.01 * Math.pow( e, 0.2 * fontSize ) ) + 1.2;
   const exactLineHeightPx = fontSize * exactLineHeightFactor;

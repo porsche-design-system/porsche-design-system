@@ -1,11 +1,13 @@
-import {JSX, Component, Prop, h} from '@stencil/core';
+import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
   mapBreakpointPropToPrefixedClasses,
-  prefix
+  prefix,
+  lineHeightFactor
 } from '../../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../../types';
+import { throttle } from 'throttle-debounce';
 
 @Component({
   tag: 'p-text',
@@ -44,6 +46,22 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
+  private textTag: HTMLElement;
+
+  public componentDidLoad() {
+    this.textTag.addEventListener('transitionend', e => {
+      if (e.propertyName === 'font-size') {
+        throttle(50, () => {
+          this.updateLineHeight();
+        })();
+      }
+    });
+
+    throttle(50, () => {
+      this.updateLineHeight();
+    })();
+  }
+
   public render(): JSX.Element {
     const TagType = this.tag;
 
@@ -58,9 +76,16 @@ export class Text {
     );
 
     return (
-      <TagType class={textClasses}>
+      <TagType class={textClasses} ref={el => this.textTag = el as HTMLElement}>
         <slot />
       </TagType>
     );
+  }
+
+  private updateLineHeight() {
+    const fontSize = parseInt(window.getComputedStyle(this.textTag).fontSize, 10);
+    console.log(fontSize);
+    const lineHeightFactorValue = lineHeightFactor(fontSize);
+    this.textTag.style.lineHeight = `${lineHeightFactorValue}`;
   }
 }
