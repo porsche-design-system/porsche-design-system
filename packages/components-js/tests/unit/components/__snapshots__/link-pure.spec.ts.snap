@@ -3,8 +3,8 @@
 exports[`Component <p-link-pure> should render correctly in default mode with shadow dom 1`] = `
 <p-link-pure href="https://designsystem.porsche.com">
   <mock:shadow-root>
-    <a class="p-link-pure p-link-pure--size-small p-link-pure--theme-light p-link-pure--with-label" href="https://designsystem.porsche.com" target="_self">
-      <p-icon class="p-link-pure__icon" color="inherit" name="arrow-head-right" size="inherit"></p-icon>
+    <a class="p-link-pure p-link-pure--size-small p-link-pure--theme-light p-link-pure--with-label" href="https://designsystem.porsche.com" target="_self" style="line-height: NaN;">
+      <p-icon class="p-link-pure__icon" color="inherit" name="arrow-head-right" size="inherit" style="width: NaNem;"></p-icon>
       <p-text class="p-link-pure__label" color="inherit" size="inherit" tag="span" weight="regular">
         <slot></slot>
       </p-text>
