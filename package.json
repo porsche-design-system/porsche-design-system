@@ -3,16 +3,27 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "packages/ui-kit-react/projects/ui-kit-wrapper"
+      "packages/components-angular/dist/components-wrapper",
+      "packages/components-react/projects/components-wrapper"
     ],
     "nohoist": [
-      "**/@types/jasmine"
+      "**/@types/jasmine",
+      "**/ng-packagr",
+      "**/@angular-devkit/**",
+      "**/@angular/**",
+      "**/@vue/**",
+      "**/vue",
+      "**/vue-class-component",
+      "**/vue-property-decorator",
+      "**/vue-router",
+      "**/vuex",
+      "**/vue-template-compiler"
     ]
   },
-  "description": "Porsche UI Monorepo",
+  "description": "Porsche Design System Monorepo",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-ui-kit.git"
+    "url": "git+https://github.com/porscheui/porsche-design-system.git"
   },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -22,32 +33,37 @@
     "Marcel Bertram <marcel.bertram@porsche.de>"
   ],
   "scripts": {
-    "start": "yarn build && concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn start:ui-kit-js\" \"yarn start:design-system\"",
-    "start:ui-kit-js": "yarn --cwd ./packages/ui-kit-js start",
-    "start:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular start",
-    "start:ui-kit-react": "yarn --cwd ./packages/ui-kit-react start",
-    "start:design-system": "yarn --cwd ./packages/design-system start",
-    "build": "concurrently -n \"utils\" \"yarn build:utils\" && concurrently -n \"ui-kit-js\" \"yarn build:ui-kit-js\" && concurrently --kill-others-on-fail -n \"ui-kit-angular,ui-kit-react,design-system\" \"yarn build:ui-kit-angular\" \"yarn build:ui-kit-react\" \"yarn build:design-system\"",
-    "build:ui-kit-js": "yarn --cwd ./packages/ui-kit-js build",
-    "build:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular build",
-    "build:ui-kit-react": "yarn --cwd ./packages/ui-kit-react build",
-    "build:design-system": "yarn --cwd ./packages/design-system build",
+    "preinstall": "mkdir -p './packages/components-angular/dist/components-wrapper' && cp './packages/components-angular/projects/components-wrapper/package.json' './packages/components-angular/dist/components-wrapper/package.json'",
+    "start": "yarn build && concurrently --kill-others-on-fail -n \"components-js,storefront\" \"yarn start:components-js\" \"yarn start:storefront\"",
+    "start:components-js": "yarn --cwd ./packages/components-js start",
+    "start:components-angular": "yarn --cwd ./packages/components-angular start",
+    "start:components-react": "yarn --cwd ./packages/components-react start",
+    "start:storefront": "yarn --cwd ./packages/storefront start",
+    "build": "concurrently -n \"utils\" \"yarn build:utils\" && concurrently -n \"components-js\" \"yarn build:components-js\" && concurrently --kill-others-on-fail -n \"components-angular,components-react,storefront\" \"yarn build:components-angular\" \"yarn build:components-react\" \"yarn build:storefront\"",
+    "build:components-js": "yarn --cwd ./packages/components-js build",
+    "build:components-angular": "yarn --cwd ./packages/components-angular build",
+    "build:components-react": "yarn --cwd ./packages/components-react build",
+    "build:storefront": "yarn --cwd ./packages/storefront build",
     "build:utils": "yarn --cwd ./packages/utils build",
-    "lint": "concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn lint:ui-kit-js\" \"yarn lint:design-system\"",
-    "lint:ui-kit-js": "yarn --cwd ./packages/ui-kit-js lint",
-    "lint:design-system": "yarn --cwd ./packages/design-system lint",
+    "lint": "concurrently --kill-others-on-fail -n \"components-js,storefront\" \"yarn lint:components-js\" \"yarn lint:storefront\"",
+    "lint:components-js": "yarn --cwd ./packages/components-js lint",
+    "lint:storefront": "yarn --cwd ./packages/storefront lint",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
-    "test:unit": "concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn test:unit:ui-kit-js\" \"yarn test:unit:design-system\"",
-    "test:unit:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:unit",
-    "test:unit:design-system": "yarn --cwd ./packages/design-system test:unit",
-    "test:e2e": "concurrently --kill-others-on-fail -n \"ui-kit-js,design-system\" \"yarn test:e2e:ui-kit-js\" \"yarn test:e2e:design-system\"",
-    "test:e2e:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:e2e",
-    "test:e2e:design-system": "yarn --cwd ./packages/design-system test:e2e --headless",
-    "test:vrt": "concurrently --kill-others-on-fail -n \"ui-kit-js,ui-kit-angular,ui-kit-react,design-system\" \"yarn test:vrt:ui-kit-js\" \"yarn test:vrt:ui-kit-angular\" \"yarn test:vrt:ui-kit-react\" \"yarn test:vrt:design-system\"",
-    "test:vrt:ui-kit-js": "yarn --cwd ./packages/ui-kit-js test:vrt",
-    "test:vrt:ui-kit-angular": "yarn --cwd ./packages/ui-kit-angular test:vrt",
-    "test:vrt:ui-kit-react": "yarn --cwd ./packages/ui-kit-react test:vrt",
-    "test:vrt:design-system": "yarn --cwd ./packages/design-system test:vrt",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./packages/ui-kit-js clean && yarn --cwd ./packages/ui-kit-scss-utils clean && yarn --cwd ./packages/design-system clean && yarn --cwd ./packages/ui-kit-angular clean && yarn --cwd ./packages/ui-kit-react clean && yarn --cwd ./packages/utils clean"
+    "test:unit": "concurrently --kill-others-on-fail -n \"components-js,storefront\" \"yarn test:unit:components-js\" \"yarn test:unit:storefront\"",
+    "test:unit:components-js": "yarn --cwd ./packages/components-js test:unit",
+    "test:unit:storefront": "yarn --cwd ./packages/storefront test:unit",
+    "test:e2e": "concurrently --kill-others-on-fail -n \"components-js,storefront\" \"yarn test:e2e:components-js\" \"yarn test:e2e:storefront\"",
+    "test:e2e:components-js": "yarn --cwd ./packages/components-js test:e2e",
+    "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e --headless",
+    "test:vrt": "concurrently --kill-others-on-fail -n \"components-js,components-angular,components-react,storefront\" \"yarn test:vrt:components-js\" \"yarn test:vrt:components-angular\" \"yarn test:vrt:components-react\" \"yarn test:vrt:storefront\"",
+    "test:vrt:components-js": "yarn --cwd ./packages/components-js test:vrt",
+    "test:vrt:components-angular": "yarn --cwd ./packages/components-angular test:vrt",
+    "test:vrt:components-react": "yarn --cwd ./packages/components-react test:vrt",
+    "test:vrt:storefront": "yarn --cwd ./packages/storefront test:vrt",
+    "test:cbt": "concurrently --kill-others-on-fail -n \"components-js,components-angular,components-react\" \"yarn test:cbt:components-js\" \"yarn test:cbt:components-angular\" \"yarn test:cbt:components-react\"",
+    "test:cbt:components-js": "yarn --cwd ./packages/components-js test:cbt",
+    "test:cbt:components-angular": "yarn --cwd ./packages/components-angular test:cbt",
+    "test:cbt:components-react": "yarn --cwd ./packages/components-react test:cbt",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./packages/components-js clean && yarn --cwd ./packages/scss-utils clean && yarn --cwd ./packages/storefront clean && yarn --cwd ./packages/components-angular clean && yarn --cwd ./packages/components-react clean && yarn --cwd ./packages/utils clean"
   }
 }

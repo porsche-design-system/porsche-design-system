@@ -1,0 +1,289 @@
+@import '../../../../../../../packages/scss-utils/index';
+
+:host {
+  display: block;
+
+  ::slotted(a) {
+    outline: transparent none;
+    color: inherit;
+    text-decoration: underline;
+    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+    color $p-animation-hover-duration $p-animation-hover-bezier;
+  }
+
+  ::slotted(a:hover) {
+    color: $p-color-theme-light-state-hover;
+  }
+
+  ::slotted(a:focus) {
+    outline: $p-color-theme-light-state-focus solid 2px;
+    outline-offset: 1px;
+  }
+
+  ::slotted(b, strong) {
+    font-weight: $p-font-weight-bold;
+  }
+
+  ::slotted(span, cite, time) {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.#{$p-global-class-prefix}text {
+  $bem-block: &;
+  @include p-text;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  > strong,
+  > b {
+    font-weight: $p-font-weight-bold;
+  }
+
+  &--size {
+    &-x-small {
+      font-size: $p-text-size-x-small;
+    }
+    &-small {
+      font-size: $p-text-size-small;
+    }
+    &-medium {
+      font-size: $p-text-size-medium;
+    }
+    &-large {
+      font-size: $p-text-size-large;
+    }
+    &-x-large {
+      font-size: $p-text-size-x-large;
+    }
+    &-inherit {
+      font-size: inherit;
+    }
+
+    @include p-breakpoint("xs") {
+      &-x-small-xs {
+        font-size: $p-text-size-x-small;
+      }
+      &-small-xs {
+        font-size: $p-text-size-small;
+      }
+      &-medium-xs {
+        font-size: $p-text-size-medium;
+      }
+      &-large-xs {
+        font-size: $p-text-size-large;
+      }
+      &-x-large-xs {
+        font-size: $p-text-size-x-large;
+      }
+      &-inherit-xs {
+        font-size: inherit;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &-x-small-s {
+        font-size: $p-text-size-x-small;
+      }
+      &-small-s {
+        font-size: $p-text-size-small;
+      }
+      &-medium-s {
+        font-size: $p-text-size-medium;
+      }
+      &-large-s {
+        font-size: $p-text-size-large;
+      }
+      &-x-large-s {
+        font-size: $p-text-size-x-large;
+      }
+      &-inherit-s {
+        font-size: inherit;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &-x-small-m {
+        font-size: $p-text-size-x-small;
+      }
+      &-small-m {
+        font-size: $p-text-size-small;
+      }
+      &-medium-m {
+        font-size: $p-text-size-medium;
+      }
+      &-large-m {
+        font-size: $p-text-size-large;
+      }
+      &-x-large-m {
+        font-size: $p-text-size-x-large;
+      }
+      &-inherit-m {
+        font-size: inherit;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &-x-small-l {
+        font-size: $p-text-size-x-small;
+      }
+      &-small-l {
+        font-size: $p-text-size-small;
+      }
+      &-medium-l {
+        font-size: $p-text-size-medium;
+      }
+      &-large-l {
+        font-size: $p-text-size-large;
+      }
+      &-x-large-l {
+        font-size: $p-text-size-x-large;
+      }
+      &-inherit-l {
+        font-size: inherit;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &-x-small-xl {
+        font-size: $p-text-size-x-small;
+      }
+      &-small-xl {
+        font-size: $p-text-size-small;
+      }
+      &-medium-xl {
+        font-size: $p-text-size-medium;
+      }
+      &-large-xl {
+        font-size: $p-text-size-large;
+      }
+      &-x-large-xl {
+        font-size: $p-text-size-x-large;
+      }
+      &-inherit-xl {
+        font-size: inherit;
+      }
+    }
+  }
+
+  &--weight {
+    &-thin {
+      font-weight: $p-font-weight-thin;
+    }
+    &-regular {
+      font-weight: $p-font-weight-regular;
+    }
+    &-bold {
+      font-weight: $p-font-weight-bold;
+    }
+  }
+
+  &--align {
+    &-left {
+      text-align: left;
+    }
+
+    &-center {
+      text-align: center;
+    }
+
+    &-right {
+      text-align: right;
+    }
+  }
+
+  &--color {
+    &-brand {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-brand;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-brand;
+      }
+    }
+
+    &-default {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-default;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
+    &-neutral-contrast-high {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-neutral-contrast-high;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-neutral-contrast-high;
+      }
+    }
+
+    &-neutral-contrast-medium {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-neutral-contrast-medium;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-neutral-contrast-medium;
+      }
+    }
+
+    &-neutral-contrast-low {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-neutral-contrast-low;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-neutral-contrast-low;
+      }
+    }
+
+    &-notification-success {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-notification-success;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-success;
+      }
+    }
+
+    &-notification-warning {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-notification-warning;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-warning;
+      }
+    }
+
+    &-notification-error {
+      &#{$bem-block}--theme-light {
+        color: $p-color-theme-light-notification-error;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-error;
+      }
+    }
+
+    &-inherit {
+      color: inherit;
+    }
+  }
+
+  &--ellipsis {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

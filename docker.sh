@@ -7,11 +7,11 @@ SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 
 export RUN_UID="$(id -u)"
 export RUN_GID="$(id -g)"
-export COMPOSE_PROJECT_NAME="porsche-ui-kit-v1"
+export COMPOSE_PROJECT_NAME="porsche-design-system-v1"
 
-SERVICE=ui-kit
+SERVICE=design-system
 if [[ "run-deploy" == "${1}" ]]; then
-  SERVICE=ui-kit-deploy
+  SERVICE=design-system-deploy
 fi
 
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" build

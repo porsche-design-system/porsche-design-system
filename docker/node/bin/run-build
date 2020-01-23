@@ -4,10 +4,10 @@ set -o errexit
 set -o pipefail
 
 if
-  [[ "--ui-kit-js" == "${1}" ]] ||
-  [[ "--ui-kit-angular" == "${1}" ]] ||
-  [[ "--ui-kit-react" == "${1}" ]] ||
-  [[ "--design-system" == "${1}" ]] ||
+  [[ "--components-js" == "${1}" ]] ||
+  [[ "--components-angular" == "${1}" ]] ||
+  [[ "--components-react" == "${1}" ]] ||
+  [[ "--storefront" == "${1}" ]] ||
   [[ "--utils" == "${1}" ]]
 then
   yarn build:${1:2}
