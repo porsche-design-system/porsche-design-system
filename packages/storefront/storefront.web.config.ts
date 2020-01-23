@@ -185,11 +185,11 @@ export const config: StorefrontConfig = {
       Textfield: {
         Code: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/textfield/textfield.code.md`)
+          () => import(`@/../../components-js/src/components/form/textfield-wrapper/textfield-wrapper.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/textfield/textfield.props.md`)
+          () => import(`@/../../components-js/src/components/form/textfield-wrapper/textfield-wrapper.props.md`)
         ]
       }
     },

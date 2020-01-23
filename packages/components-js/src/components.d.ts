@@ -414,11 +414,11 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
-  interface PTextfield {
+  interface PTextfieldWrapper {
     /**
     * The label text.
     */
-    'label'?: string;
+    'label': string;
     /**
     * The message.
     */
@@ -517,10 +517,10 @@ declare global {
     new (): HTMLPTextElement;
   };
 
-  interface HTMLPTextfieldElement extends Components.PTextfield, HTMLStencilElement {}
-  var HTMLPTextfieldElement: {
-    prototype: HTMLPTextfieldElement;
-    new (): HTMLPTextfieldElement;
+  interface HTMLPTextfieldWrapperElement extends Components.PTextfieldWrapper, HTMLStencilElement {}
+  var HTMLPTextfieldWrapperElement: {
+    prototype: HTMLPTextfieldWrapperElement;
+    new (): HTMLPTextfieldWrapperElement;
   };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
@@ -537,7 +537,7 @@ declare global {
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
-    'p-textfield': HTMLPTextfieldElement;
+    'p-textfield-wrapper': HTMLPTextfieldWrapperElement;
   }
 }
 
@@ -934,7 +934,7 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
-  interface PTextfield {
+  interface PTextfieldWrapper {
     /**
     * The label text.
     */
@@ -964,7 +964,7 @@ declare namespace LocalJSX {
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;
-    'p-textfield': PTextfield;
+    'p-textfield-wrapper': PTextfieldWrapper;
   }
 }
 
@@ -988,7 +988,7 @@ declare module "@stencil/core" {
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
-      'p-textfield': LocalJSX.PTextfield & JSXBase.HTMLAttributes<HTMLPTextfieldElement>;
+      'p-textfield-wrapper': LocalJSX.PTextfieldWrapper & JSXBase.HTMLAttributes<HTMLPTextfieldWrapperElement>;
     }
   }
 }

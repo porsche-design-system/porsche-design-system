@@ -1,18 +1,17 @@
 @import '../../../../../../packages/scss-utils/index';
 
-.#{$p-global-class-prefix}textfield {
-  $bem-block: &;
+.#{$p-global-class-prefix}textfield-wrapper {
+  position: relative;
   display: inline-block;
   vertical-align: top;
-  position: relative;
 
   &__label {
     display: block;
   }
 
-  &__form-element-wrapper {
-    display: block;
+  &__input {
     position: relative;
+    display: block;
 
     input {
       @include p-text;
@@ -31,11 +30,6 @@
       color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &::placeholder {
-        color: $p-color-theme-light-state-disabled;
-        opacity: 1;
-      }
-
-      &::-moz-placeholder {
         color: $p-color-theme-light-state-disabled;
         opacity: 1;
       }
@@ -95,9 +89,26 @@
         }
       }
     }
+
+    &--error {
+      input {
+        color: $p-color-theme-light-notification-error;
+        border-color: $p-color-theme-light-notification-error;
+        border-width: 2px;
+        padding: rem(10px) rem(17px);
+      }
+    }
+
+    &--success {
+      input {
+        border-color: $p-color-theme-light-notification-success;
+        border-width: 2px;
+        padding: rem(16px) rem(17px);
+      }
+    }
   }
 
-  &__icon-button {
+  &__button {
     position: absolute;
     top: 0;
     right: 0;
@@ -109,8 +120,11 @@
     outline: none;
     background: transparent;
 
-    &:hover,
     &:focus {
+      color: $p-color-theme-light-state-focus;
+    }
+
+    &:hover {
       color: $p-color-theme-light-state-hover;
     }
 
@@ -124,34 +138,5 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-
-  &--error {
-    input {
-      color: $p-color-theme-light-notification-error;
-      border-color: $p-color-theme-light-notification-error;
-      border-width: 2px;
-      padding: rem(10px) rem(17px);
-    }
-  }
-
-  &--success {
-    input {
-      border-color: $p-color-theme-light-notification-success;
-      border-width: 2px;
-      padding: rem(16px) rem(17px);
-    }
-  }
-
-  &__message {
-    @include p-text;
-    display: block;
-
-    &--error {
-      color: $p-color-theme-light-notification-error;
-    }
-    &--success {
-      color: $p-color-theme-light-notification-success;
-    }
   }
 }
