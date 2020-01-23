@@ -2,55 +2,49 @@
 name: Component
 about: Changes or adding of components resulting in a major, minor or patch release
 title: ''
-labels: 'component, to be refined'
+labels: component, to be refined
 assignees: ''
 
 ---
 
-**Scope**
-[Describe clearly the scope of the change. If possible use the format of a user story]
+**Scope**  
+Short description of the issue scope
 
-**Out of Scope**  
-[List topics that are not part of this issue to be worked on]
+**Out of scope**  
+What is not part of the issue scope
 
 **Notes**  
-- Abstract Link LIGHT:
-- Abstract Link DARK:
-- [Share any further information that is relevant for processing]
+Further information
 
-**Props** (if relevant)  
-- Name: e.g. Button Square
-- States: e.g. default, hover, focus, active, disabled, loading
-- Variants: e.g. filled, ghost
-- Themes: e.g. light + dark
-- Cases/Templates: e.g. row
+**Link to resources**
+- Documentation Preview: https://designsystem.porsche.com/issue/
+- Abstract Branch:
 
-**Subtasks**  
-// DESIGN
-- [ ] Create UI decision proposal based on research and testing
-- [ ] Define naming and hierarchy structure and naming of all related states and variants
-- [ ] Approve UI definition
-- [ ] Create branch in Abstract according to issue number, update sketch library and add collection link issue
-- [ ] Create must-have design docu including (optionally create and upload assets)
-- [ ] Remove elements from prep library (optional)
+Subtasks
+---
 
-// DEV
+**DOCU**
+- [ ] Write design docu including assets
+- [ ] Write code docu
+
+**SKETCH**
+
+**– Preparation**
+- [ ] Component research and documentation in [notion](https://www.notion.so/porscheui/Component-Research-e698a613cb554a618a1b01402f45df14) (based on [template](https://www.notion.so/porscheui/Template-component-name-06f8685182c34decbc1e3c5bb4e9b64e))
+
+**– Component setup in Sketch according to [checklist](https://www.notion.so/porscheui/Sketch-Component-setup-210aa34e558641d69d1b2976e8f6a3ec)**
+- [ ] Initial definitions (component states/variants)
+- [ ] Design setup (library template, namings) 
+- [ ] Create first component draft incl. states/variants and provide it in Abstract collection (insert link above)
+- [ ] Discuss draft with team (at least with one designer and developer), optional: iterative optimization
+- [ ] Design final Sketch symbols (incl. smart nesting and functionality)
+- [ ] Structural clean-up 
+- [ ] Sketch symbol QA (self-check of native symbols and instance functionality from a consumer’s perspective)
+
+**CODE**
 - [ ] Setup of hierarchy structure and naming of all related states and variants
-- [ ] Create/update related code CSS / JS
+- [ ] Create/update related code CSS/JS
 - [ ] Create samples of all possible states and variants
-- [ ] Create code docs (implementation guidelines)
 - [ ] Include compiled angular and react component in test page
-- [ ] Create VRT tests
-- [ ] Create unit test (optional)
-- [ ] Create E2E test (optional)
-- [ ] Test code visual and functional for optimized viewports (only one browser): 320px, 375px, 480px, 768px, 1024px, 1366px, 1920px
-- [ ] Test code visual and functional for all supported browsers in viewports: 320px, 480px, 760px, 1000px, 1300px, 1760px, 1920px
-
-// QA
-- [ ] 3rd party design sketch review
-- [ ] 3rd party design docu review
-- [ ] 3rd party code review
-- [ ] 3rd party code docu review
-- [ ] Code docu review by design 
-- [ ] Merge corresponding Abstract branch to master
-- [ ] Export sketch lib file from Abstract into GitHub
+- [ ] Create tests
+- [ ] Provide visual reference for optimized viewports and all supported browsers

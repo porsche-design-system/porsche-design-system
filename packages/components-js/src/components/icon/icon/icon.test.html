@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>p-icon</title>
+  <script type="module" src="../../../../dist/porsche-design-system/porsche-design-system.esm.js"></script>
+  <script nomodule src="../../../../dist/porsche-design-system/porsche-design-system.js"></script>
+  <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
+</head>
+<body>
+
+<div class="playground light" title="should show a car as icon">
+  <p-icon name="highway" aria-label="Highway icon"></p-icon>
+</div>
+
+<div class="playground light" title="should render icon with small size">
+  <p-icon name="highway" size="small" aria-label="Highway icon"></p-icon>
+</div>
+
+<div class="playground light" title="should render icon with medium size">
+  <p-icon name="highway" size="medium" aria-label="Highway icon"></p-icon>
+</div>
+
+<div class="playground light" title="should render icon with large size">
+  <p-icon name="highway" size="large" aria-label="Highway icon"></p-icon>
+</div>
+
+<div class="playground light" title="should render icon with predefined colors on light background">
+  <p-icon name="highway" size="large" theme="light" color="brand" aria-label="Highway icon"> style="color: deeppink;"</p-icon>
+  <p-icon name="highway" size="large" theme="light" color="default" aria-label="Highway icon"  style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="neutral-contrast-high" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="neutral-contrast-medium" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="neutral-contrast-low" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="notification-success" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="notification-warning" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="notification-error" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="light" color="inherit" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+</div>
+
+<div class="playground dark" title="should render icon with predefined colors on dark background">
+  <p-icon name="highway" size="large" theme="dark" color="brand" aria-label="Highway icon"> style="color: deeppink;"</p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="default" aria-label="Highway icon"  style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="neutral-contrast-high" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="neutral-contrast-medium" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="neutral-contrast-low" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="notification-success" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="notification-warning" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="notification-error" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+  <p-icon name="highway" size="large" theme="dark" color="inherit" aria-label="Highway icon" style="color: deeppink;"></p-icon>
+</div>
+
+<div class="playground light" title="should render custom icon with specific icon path">
+  <p-icon source="./assets/icon-custom-kaixin.svg" size="large" aria-label="Icon for social media platform Kaixin" />
+</div>
+
+</body>
+</html>

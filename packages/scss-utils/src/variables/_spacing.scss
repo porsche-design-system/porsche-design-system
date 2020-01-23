@@ -1,0 +1,22 @@
+@import "./../functions/rem";
+
+// global spacing variables
+$p-spacing-4: rem(4px);
+$p-spacing-8: rem(8px);
+$p-spacing-16: rem(16px);
+$p-spacing-24: rem(24px);
+$p-spacing-32: rem(32px);
+$p-spacing-40: rem(40px);
+$p-spacing-48: rem(48px);
+$p-spacing-56: rem(56px);
+$p-spacing-64: rem(64px);
+$p-spacing-72: rem(72px);
+$p-spacing-80: rem(80px);
+
+// reduced layout spacings
+$p-layout-x-small: $p-spacing-4;
+$p-layout-small: $p-spacing-8;
+$p-layout-medium: $p-spacing-16;
+$p-layout-large: $p-spacing-32;
+$p-layout-x-large: $p-spacing-48;
+$p-layout-xx-large: $p-spacing-80;

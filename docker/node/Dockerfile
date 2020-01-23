@@ -1,6 +1,6 @@
 FROM node:12.10.0-stretch@sha256:c953b001ea2acf18a6ef99a90fc50630e70a7c0a6b49d774a7aee1f9c937b645
 
-ENV PATH="/opt/porsche-ui-kit/bin:${PATH}"
+ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
 RUN apt-get update && \
     apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
@@ -11,8 +11,8 @@ RUN apt-get update && \
     libgtk2.0-0 xvfb && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ./entrypoint.sh "/opt/porsche-ui-kit/entrypoint.sh"
-COPY ./bin "/opt/porsche-ui-kit/bin"
-COPY ./shared "/opt/porsche-ui-kit/shared"
+COPY ./entrypoint.sh "/opt/porsche-design-system/entrypoint.sh"
+COPY ./bin "/opt/porsche-design-system/bin"
+COPY ./shared "/opt/porsche-design-system/shared"
 
-ENTRYPOINT [ "/opt/porsche-ui-kit/entrypoint.sh" ]
+ENTRYPOINT [ "/opt/porsche-design-system/entrypoint.sh" ]

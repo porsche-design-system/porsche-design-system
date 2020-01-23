@@ -3,17 +3,27 @@ on:
     branches:
       - v*
       - issue/*
-name: 'Porsche UI Kit'
+      - housekeeping/*
+name: 'Porsche Design System'
 jobs:
-  ui-kit-js:
-    name: 'Porsche UI Kit JS'
+  components-js:
+    name: 'Components JS'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
@@ -25,31 +35,60 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-lint
-          args: --ui-kit-js
+          args: --components-js
       - name: 'Unit Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-unit
-          args: --ui-kit-js
+          args: --components-js
       - name: 'E2E Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-e2e
-          args: --ui-kit-js
+          args: --components-js
       - name: 'VRT Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
-          args: --ui-kit-js
-  ui-kit-angular:
-    name: 'Porsche UI Kit Angular'
+          args: --components-js
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: components-js-vrt-regression
+          path: ./packages/components-js/tests/vrt/results
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        with:
+          entrypoint: run-test-cbt
+          args: --components-js
+      - name: 'CBT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: components-js-cbt-regression
+          path: ./packages/components-js/tests/cbt/results
+  components-angular:
+    name: 'Components Angular'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
@@ -61,16 +100,45 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
-          args: --ui-kit-angular
-  ui-kit-react:
-    name: 'Porsche UI Kit React'
+          args: --components-angular
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: components-angular-vrt-regression
+          path: ./packages/components-angular/tests/vrt/results
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        with:
+          entrypoint: run-test-cbt
+          args: --components-angular
+      - name: 'CBT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: components-angular-cbt-regression
+          path: ./packages/components-angular/tests/cbt/results
+  components-react:
+    name: 'Components React'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
@@ -82,16 +150,45 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
-          args: --ui-kit-react
-  design-system:
-    name: 'Porsche Design System'
+          args: --components-react
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: components-react-vrt-regression
+          path: ./packages/components-react/tests/vrt/results
+      - name: 'CBT Test'
+        uses: ./docker/node/
+        env:
+          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        with:
+          entrypoint: run-test-cbt
+          args: --components-react
+      - name: 'CBT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: components-react-cbt-regression
+          path: ./packages/components-react/tests/cbt/results
+  storefront:
+    name: 'Storefront'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
       - name: 'Install'
         uses: ./docker/node/
         env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
@@ -99,43 +196,49 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
+      - name: 'Store build artifact'
+        uses: actions/upload-artifact@v1
+        with:
+          name: storefront-build
+          path: ./packages/storefront/dist
       - name: 'Lint'
         uses: ./docker/node/
         with:
           entrypoint: run-lint
-          args: --design-system
+          args: --storefront
       - name: 'Unit Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-unit
-          args: --design-system
+          args: --storefront
       - name: 'E2E Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-e2e
-          args: --design-system
+          args: --storefront
       - name: 'VRT Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-vrt
-          args: --design-system
+          args: --storefront
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: storefront-vrt-regression
+          path: ./packages/storefront/tests/vrt/results
   deployment:
     name: 'Deployment'
-    needs: [ui-kit-js, ui-kit-angular, ui-kit-react, design-system]
+    needs: [components-js, components-angular, components-react, storefront]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: 'Install'
-        uses: ./docker/node/
-        env:
-          IONIC_NPM_REGISTRY_TOKEN: ${{ secrets.IONIC_NPM_REGISTRY_TOKEN }}
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Restore build artifact'
+        uses: actions/download-artifact@v1
         with:
-          entrypoint: run-install
-      - name: 'Build'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-build
+          name: storefront-build
+          path: ./packages/storefront/dist
       - name: 'Deploy'
         uses: ./docker/node/
         env:

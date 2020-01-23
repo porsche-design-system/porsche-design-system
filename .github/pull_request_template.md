@@ -1,11 +1,10 @@
 **References**  
-Corresponding Issue Number, the Abstract Collection Design Spec and the  Documentation Preview
 - Closes #
-- [Design Spec](https://share.goabstract.com/...)
-- [Documentaion Preview](https://porscheui.github.io/porsche-ui-kit/issue/...)
+- Documentation Preview: https://designsystem.porsche.com/issue/.../
 
 **Scope**  
 Short description of the pull request scope
 
-**Tasks before Merge**  
-- [ ] Copy over Sketch lib from Abstract into PR commit
+**Tasks before GitHub Merge**  
+- [ ] Abstract Merge corresponding Sketch Branch to Master
+- [ ] Export Sketch lib into PR commit from Abstract (https://share.goabstract.com/...)
