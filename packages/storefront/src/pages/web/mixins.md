@@ -165,8 +165,8 @@ p {
 p {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 100;
-  font-size: 1.5rem;
-  line-height: 1.2222222222222223;
+  font-size: 2.25rem;
+  line-height: 1.33333;
 }
 ```
 
@@ -187,6 +187,6 @@ p {
 ```
 p {
   font-size: 2rem;
-  line-height: 1.25;
+  line-height: 1.375;
 }
 ```
