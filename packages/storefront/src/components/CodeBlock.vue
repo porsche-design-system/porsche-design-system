@@ -106,14 +106,19 @@ export default class CodeBlock extends Vue {
   private convertToAngular(markup: string): string {
     return (
       markup
-        // transform all attributes to camel case
-        .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
-          return `${camelCase($key)}="${$value}"`;
+        // transform to event binding syntax
+        .replace(/(\son.*?)="(.*?)"/g, (m, $key, $value) => {
+          return `(${$key.substring(3)})="${$value}"`;
         })
-        // transform key evaluate syntax when object is provided as value
-        .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-          return `[${$key}]="{${$value}}"`;
+        // // transform all attributes to camel case
+        .replace(/(\S*[a-zA-Z-]+)="(.*?)"/g, (m, $key, $value) => {
+          return `[${camelCase($key)}]="${$value}"`;
         })
+        // // transform key evaluate syntax when object is provided as value
+        .replace(/(\[.*?])="{(.*?)}"/g, (m, $key, $value) => {
+          return `${$key}="{${$value}}"`;
+        })
+
     );
   }
 
