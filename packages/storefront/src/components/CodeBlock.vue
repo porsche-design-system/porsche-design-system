@@ -145,6 +145,10 @@ export default class CodeBlock extends Vue {
         .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
           return `</${upperFirst(camelCase($tag))}>`;
         })
+        // transform to camelCase event binding syntax
+        .replace(/(\son.*?)="(.*?)"/g, (m, $key, $value) => {
+          return `${$key.substring(0,3)+$key.substring(3,4).toUpperCase()+$key.substring(4)}="${$value}"`;
+        })
     );
   }
 
