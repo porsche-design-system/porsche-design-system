@@ -47,27 +47,6 @@
         </p-grid-item>
       </p-grid>
     </article>
-
-    <article class="newsletter">
-      <p-grid>
-        <p-grid-item size='{"base": 12, "m": 3}'>
-          <p-headline variant="headline-3" tag="h2">Always stay informed</p-headline>
-        </p-grid-item>
-        <p-grid-item size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
-          <p-text
-            size="medium"
-          >Join our mailing list and get informed about relevant updates and topics.
-          </p-text>
-          <p-text variant="18" class="spacing-mt-16">
-            <a
-              href="http://eepurl.com/gnOIXD"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Subscribe to mailing list</a>
-          </p-text>
-        </p-grid-item>
-      </p-grid>
-    </article>
   </div>
 </template>
 

@@ -1,11 +1,10 @@
 # Start Designing
 
-The Porsche Design System enables designers to create outstanding digital designs by using the pre-built libraries, styles and templates - fast and high-quality.
+The Porsche Design System enables designers to create outstanding digital designs by using the pre-built libraries, styles and templates - fast and high-quality. If you are working for a digital product of Porsche we are happy to invite you to our UX onboarding process and tell you more about our culture of designing great digital experiences and give you access to all of our frameworks standards and tools: [Sign Up for the Onboarding](ux.porsche.com/). 
 
 ## 1. Tooling
-To improve output efficiency and reduce maintenance costs, at Porsche we decided to set the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/) as standard for designing. 
+To improve output efficiency and reduce maintenance costs, at Porsche we decided to set the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/) as standard for designing. Please install the latest [Abstract desktop app](https://app.goabstract.com/). 
 
-Thus, please first [request a Porsche Abstract seat](http://eepurl.com/gnOIXD) to access and work within the Porsche organisation. Then install the latest [Abstract desktop app](https://app.goabstract.com/). 
 
 You can find a [detailed guideline on how to use Abstract here](#/web/getting-started/design-workflow).
 
