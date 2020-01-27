@@ -1,10 +1,15 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeightFactor } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  calcLineHeightForElement,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+  transitionListener
+} from '../../../utils';
 import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
-import { throttle } from 'throttle-debounce';
 
 @Component({
   tag: 'p-link-pure',
@@ -52,15 +57,12 @@ export class LinkPure {
 
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
-    this.linkTag.addEventListener('transitionend', e => {
-      if (e.propertyName === 'font-size') {
-        throttle(50, () => {
-          this.updateScaling();
-        })();
-      }
-    });
 
-    this.updateScaling();
+    transitionListener(this.linkTag, 'font-size', () => {
+      const size = calcLineHeightForElement(this.linkTag);
+      this.iconTag.style.width = `${size}em`;
+      this.iconTag.style.height = `${size}em`;
+    });
   }
 
   public render(): JSX.Element {
@@ -112,12 +114,5 @@ export class LinkPure {
         </p-text>
       </TagType>
     );
-  }
-
-  private updateScaling() {
-    const fontSize = parseInt(window.getComputedStyle(this.linkTag).fontSize, 10);
-    const calcFactor = lineHeightFactor(fontSize);
-    this.iconTag.style.width = `${calcFactor}em`;
-    this.iconTag.style.height = `${calcFactor}em`;
   }
 }
