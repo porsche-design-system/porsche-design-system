@@ -19,3 +19,8 @@ export const lineHeightFactor = (fontSize: number): number => {
 
   return fittedLineHeightFactor;
 };
+
+export const calcLineHeightForElement = (tag: HTMLElement): number => {
+  const fontSize = parseInt(window.getComputedStyle(tag).fontSize, 10);
+  return lineHeightFactor(fontSize);
+};

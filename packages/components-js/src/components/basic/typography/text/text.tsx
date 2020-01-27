@@ -4,10 +4,10 @@ import {
   BreakpointCustomizable,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  lineHeightFactor
+  transitionListener,
+  calcLineHeightForElement
 } from '../../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../../types';
-import { throttle } from 'throttle-debounce';
 
 @Component({
   tag: 'p-text',
@@ -49,15 +49,9 @@ export class Text {
   private textTag: HTMLElement;
 
   public componentDidLoad() {
-    this.textTag.addEventListener('transitionend', e => {
-      if (e.propertyName === 'font-size') {
-        throttle(50, () => {
-          this.updateLineHeight();
-        })();
-      }
+    transitionListener(this.textTag, 'font-size', () => {
+      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
     });
-
-    this.updateLineHeight();
   }
 
   public render(): JSX.Element {
@@ -75,14 +69,8 @@ export class Text {
 
     return (
       <TagType class={textClasses} ref={el => this.textTag = el as HTMLElement}>
-        <slot />
+        <slot/>
       </TagType>
     );
-  }
-
-  private updateLineHeight() {
-    const fontSize = parseInt(window.getComputedStyle(this.textTag).fontSize, 10);
-    const lineHeightFactorValue = lineHeightFactor(fontSize);
-    this.textTag.style.lineHeight = `${lineHeightFactorValue}`;
   }
 }

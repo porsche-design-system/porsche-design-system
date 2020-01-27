@@ -1,11 +1,16 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, lineHeightFactor } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  calcLineHeightForElement,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+  transitionListener
+} from '../../../utils';
 import { ButtonType, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
 import { IconName } from '../../icon/icon/icon-name';
-import { throttle } from 'throttle-debounce';
 
 @Component({
   tag: 'p-button-pure',
@@ -52,15 +57,11 @@ export class ButtonPure {
     improveFocusHandlingForCustomElement(this.element);
     improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
 
-    this.buttonTag.addEventListener('transitionend', e => {
-      if (e.propertyName === 'font-size') {
-        throttle(50, () => {
-          this.updateScaling();
-        })();
-      }
+    transitionListener(this.buttonTag, 'font-size', () => {
+      const size = calcLineHeightForElement(this.buttonTag);
+      this.iconTag.style.width = `${size}em`;
+      this.iconTag.style.height = `${size}em`;
     });
-
-    this.updateScaling();
   }
 
   public render(): JSX.Element {
@@ -115,13 +116,6 @@ export class ButtonPure {
         </p-text>
       </button>
     );
-  }
-
-  private updateScaling() {
-    const fontSize = parseInt(window.getComputedStyle(this.buttonTag).fontSize, 10);
-    const lineHeightFactorValue = lineHeightFactor(fontSize);
-    this.iconTag.style.width = `${lineHeightFactorValue}em`;
-    this.iconTag.style.height = `${lineHeightFactorValue}em`;
   }
 
   private isDisabled() {
