@@ -1,4 +1,4 @@
-import { Build, Component, Host, Element, Prop, State, Watch, h } from '@stencil/core';
+import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';

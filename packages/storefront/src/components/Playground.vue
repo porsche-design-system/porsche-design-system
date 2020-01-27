@@ -100,7 +100,7 @@
     display: flex;
 
     .tab {
-      font-size: $p-font-size-20;
+      @include p-type-scale($p-font-size-20);
 
       &:not(:last-child) {
         margin-right: $p-spacing-24;
@@ -154,7 +154,7 @@
     // Child Layout "height"
     &.height-fixed .code {
       > * {
-        height: rem(180px);
+        height: p-rem(180px);
       }
     }
 

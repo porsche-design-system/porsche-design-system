@@ -1,9 +1,11 @@
-import {JSX, Component, Prop, h} from '@stencil/core';
+import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
   mapBreakpointPropToPrefixedClasses,
-  prefix
+  prefix,
+  transitionListener,
+  calcLineHeightForElement
 } from '../../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../../types';
 
@@ -44,6 +46,14 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
+  private textTag: HTMLElement;
+
+  public componentDidLoad() {
+    transitionListener(this.textTag, 'font-size', () => {
+      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
+    });
+  }
+
   public render(): JSX.Element {
     const TagType = this.tag;
 
@@ -58,8 +68,8 @@ export class Text {
     );
 
     return (
-      <TagType class={textClasses}>
-        <slot />
+      <TagType class={textClasses} ref={el => this.textTag = el as HTMLElement}>
+        <slot/>
       </TagType>
     );
   }
