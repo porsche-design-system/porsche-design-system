@@ -68,6 +68,7 @@ All colors must always be used in 100% opacity.
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
 | <ColorBadge theme="light" color="default"/>    	                                      | **Default**        	| #000000 	| 0/0/0          	| Default text/icon color                   |
+| <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #626669 	| 98/102/105         | Neutral text, e.g. Label   |
 
 ### Neutral colors
 The neutral palette is to be used for all basic architectonic page elements such as tile backgrounds, dividers or other graphical elements.
@@ -132,6 +133,7 @@ When using notification colors …
 |                                                                         	|                    	    | HEX     	| RGB           	| Usage                                   |
 |-------------------------------------------------------------------------	|-------------------------|----------	|----------------	|---------------------------------------- |
 | <ColorBadge theme="dark" color="default"/>  	                                    | **Default**      	| #FFFFFF 	| 255/255/255    	| Default text/icon color                 |
+| <ColorBadge theme="dark" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**         | #B0B1B2 	| 176/177/178         | Neutral text, e.g. Label   |
 
 ### Neutral colors
 The neutral palette is to be used for all basic architectonic page elements such as tile backgrounds, dividers or other graphical elements.
