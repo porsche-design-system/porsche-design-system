@@ -1,12 +1,12 @@
 # Components Ready
 
-Since the components are lazy loaded, it might he hard to tell, when they
+Since the components are lazy loaded, it might be hard to tell, when they
 are ready, if you rely programmatically on them. To solve that we provide
 the `componentsReady` function which returns a promise that resolves as
 soon as all currently used components are loaded and ready to use.
 
 If the DOM changes later on you can call it again to know when the
-new components are loaded and the web components are stable again.
+new components are loaded.
 
 Example:
 ```javascript

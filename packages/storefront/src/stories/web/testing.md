@@ -62,9 +62,9 @@ any issues. However there are a lot of different setups for E2E tests.
 
 If you face any problems, we would appreciate if you report them. We'll
 do our best to find a solution.  
-Also  it might be handy to know that all components get a `hydrated` class
-that you can wait for. Waiting functionality is available in most E2E
-frameworks.  
+Also  it might be handy to know that all components get a `hydrated` class,
+as soon as they are loaded and ready, that you can wait for. Waiting
+functionality is available in most E2E frameworks.  
 Another option would be to make the `componentsReady` function available
 in the browser and call it from the E2E tests to know when the page is
 ready.
