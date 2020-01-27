@@ -115,7 +115,7 @@ Additional text sizes can be defined based on the Porsche type scale system.
 
 ### Line height
 
-For reasons of legibility, the line height should always be adjusted to the respective text size. It is recommended that the line height should be [at least 150% of the text size in use](https://www.w3.org/TR/WCAG20-TECHS/C21.html). The text styles provided do not only follow this recommendation, but also work with a 4 px baseline unit that fits to the [8 px spacing system](#/web/components/layout/spacing) in order to follow a harmonious overall vertical rhythm.
+For reasons of legibility, the line height should always be adjusted to the respective text size. The text styles provided work with a 4 px baseline unit that fits to the [8 px spacing system](#/web/components/layout/spacing) in order to follow a harmonious overall vertical rhythm.
 
 ### Type Scale Calculator
   
