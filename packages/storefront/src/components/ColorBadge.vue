@@ -13,12 +13,14 @@
     | 'default'
     | 'surface'
     | 'background'
-    | 'neutral-1'
-    | 'neutral-2'
-    | 'neutral-3'
+    | 'neutral-contrast-high'
+    | 'neutral-contrast-medium'
+    | 'neutral-contrast-low'
     | 'notification-success'
     | 'notification-warning'
     | 'notification-error'
+    | 'state-hover'
+    | 'state-active'
     | 'state-focus'
     | 'state-disabled'
     | 'external-facebook'
@@ -40,9 +42,9 @@
   @import "~@porsche-design-system/scss-utils/index";
 
   .color-badge {
-    width: rem(160px);
-    height: rem(40px);
-    border: 1px solid $p-color-theme-light-neutral-3;
+    width: p-rem(160px);
+    height: p-rem(40px);
+    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
 
     // Theme light
     &.light {
@@ -62,16 +64,16 @@
         background: $p-color-theme-light-background;
       }
 
-      &.neutral-1 {
-        background: $p-color-theme-light-neutral-1;
+      &.neutral-contrast-high {
+        background: $p-color-theme-light-neutral-contrast-high;
       }
 
-      &.neutral-2 {
-        background: $p-color-theme-light-neutral-2;
+      &.neutral-contrast-medium {
+        background: $p-color-theme-light-neutral-contrast-medium;
       }
 
-      &.neutral-3 {
-        background: $p-color-theme-light-neutral-3;
+      &.neutral-contrast-low {
+        background: $p-color-theme-light-neutral-contrast-low;
       }
 
       &.notification-success {
@@ -84,6 +86,14 @@
 
       &.notification-error {
         background: $p-color-theme-light-notification-error;
+      }
+
+      &.state-hover {
+        background: $p-color-theme-light-state-hover;
+      }
+
+      &.state-active {
+        background: $p-color-theme-light-state-active;
       }
 
       &.state-focus {
@@ -113,16 +123,16 @@
         background: $p-color-theme-dark-background;
       }
 
-      &.neutral-1 {
-        background: $p-color-theme-dark-neutral-1;
+      &.neutral-contrast-high {
+        background: $p-color-theme-dark-neutral-contrast-high;
       }
 
-      &.neutral-2 {
-        background: $p-color-theme-dark-neutral-2;
+      &.neutral-contrast-medium {
+        background: $p-color-theme-dark-neutral-contrast-medium;
       }
 
-      &.neutral-3 {
-        background: $p-color-theme-dark-neutral-3;
+      &.neutral-contrast-low {
+        background: $p-color-theme-dark-neutral-contrast-low;
       }
 
       &.notification-success {
@@ -135,6 +145,14 @@
 
       &.notification-error {
         background: $p-color-theme-dark-notification-error;
+      }
+
+      &.state-hover {
+        background: $p-color-theme-dark-state-hover;
+      }
+
+      &.state-active {
+        background: $p-color-theme-dark-state-active;
       }
 
       &.state-focus {

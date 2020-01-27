@@ -86,8 +86,8 @@
     transition: color $p-animation-hover-duration $p-animation-hover-bezier,
     outline-color $p-animation-hover-duration $p-animation-hover-bezier;
     position: relative;
-    width: rem(40px);
-    height: rem(40px);
+    width: p-rem(40px);
+    height: p-rem(40px);
     box-sizing: border-box;
     outline: none transparent;
 
@@ -108,11 +108,11 @@
       outline: none;
 
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-brand;
+        color: $p-color-theme-light-state-active;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-active;
       }
     }
   }
@@ -132,11 +132,11 @@
 
     &:hover {
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-brand;
+        color: $p-color-theme-light-state-hover;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-hover;
       }
     }
 
@@ -158,9 +158,9 @@
         display: block;
         position: absolute;
         bottom: 0;
-        left: rem(6px);
-        right: rem(6px);
-        height: rem(4px);
+        left: p-rem(6px);
+        right: p-rem(6px);
+        height: p-rem(4px);
 
         #{$bem-block}--theme-light & {
           background-color: $p-color-theme-light-brand;
@@ -206,11 +206,11 @@
 
     &:hover {
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-brand;
+        color: $p-color-theme-light-state-hover;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-hover;
       }
     }
 

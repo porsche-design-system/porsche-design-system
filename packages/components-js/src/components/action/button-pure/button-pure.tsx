@@ -1,6 +1,12 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  calcLineHeightForElement,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+  transitionListener
+} from '../../../utils';
 import { ButtonType, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
@@ -44,15 +50,23 @@ export class ButtonPure {
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  private buttonTag: HTMLElement;
+  private iconTag: HTMLElement;
+
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
     improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
+
+    transitionListener(this.buttonTag, 'font-size', () => {
+      const size = calcLineHeightForElement(this.buttonTag);
+      this.iconTag.style.width = `${size}em`;
+      this.iconTag.style.height = `${size}em`;
+    });
   }
 
   public render(): JSX.Element {
     const buttonPureClasses = cx(
       prefix('button-pure'),
-      mapBreakpointPropToPrefixedClasses('button-pure-', this.hideLabel, ['without-label', 'with-label']),
       mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
       prefix(`button-pure--theme-${this.theme}`)
     );
@@ -62,7 +76,8 @@ export class ButtonPure {
     );
 
     const labelClasses = cx(
-      prefix('button-pure__label')
+      prefix('button-pure__label'),
+      mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
 
     return (
@@ -71,12 +86,14 @@ export class ButtonPure {
         type={this.type}
         disabled={this.isDisabled()}
         tabindex={this.tabbable ? 0 : -1}
+        ref={el => this.buttonTag = el as HTMLElement}
       >
         {this.loading ? (
           <p-spinner
             class={iconClasses}
             size='inherit'
             theme={this.theme}
+            ref={el => this.iconTag = el as HTMLElement}
           />
         ) : (
           <p-icon
@@ -85,6 +102,7 @@ export class ButtonPure {
             size='inherit'
             name={this.icon}
             source={this.iconSource}
+            ref={el => this.iconTag = el as HTMLElement}
           />
         )}
         <p-text
