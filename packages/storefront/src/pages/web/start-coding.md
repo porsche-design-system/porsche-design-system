@@ -175,7 +175,7 @@ export default App;
 
 ### SCSS utils
 
-SCSS utils can be used for easier SCSS/SASS development. See [SCSS utils section](#/web/scss-utils/introduction) for further information.
+SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/web/scss-utils/introduction) for further information.
 
 --- 
 
