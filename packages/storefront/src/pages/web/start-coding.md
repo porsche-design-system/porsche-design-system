@@ -1,6 +1,6 @@
 # Start Coding
 
-Porsche Design System provides developers with a collection of Web components, Angular components and React components to build clean and high-quality frontends that innately come with the latest design definitions. If you are working for a digital product of Porsche we are happy to invite you to our UX onboarding process and tell you more about our culture of designing great digital experiences and give you access to all of our frameworks standards and tools: [Sign Up for the Onboarding](ux.porsche.com/). 
+Porsche Design System provides developers with a collection of Web components, Angular components and React components to build clean and high-quality frontends that innately come with the latest design definitions. If you are working for a digital product of Porsche we are happy to invite you to our UX onboarding process and tell you more about our culture of designing great digital experiences and give you access to all of our frameworks standards and tools: [Sign Up for the Onboarding](https://ux.porsche.com/). 
 
 ## Requirements
 * [Node.js & NPM](https://nodejs.org)
