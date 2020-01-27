@@ -72,8 +72,8 @@
     position: relative;
     padding-top: 34%;
     overflow: hidden;
-    background: $p-color-theme-dark-neutral-2;
-    border-bottom: 1px solid $p-color-theme-dark-neutral-2;
+    background: $p-color-theme-light-neutral-contrast-low;
+    border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
   }
 
   .video {
@@ -106,7 +106,7 @@
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
-        color: darken($p-color-theme-light-brand, 10%);
+        color: darken($p-color-theme-light-state-hover, 10%);
       }
     }
 

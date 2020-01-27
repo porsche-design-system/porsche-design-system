@@ -1,8 +1,8 @@
 @import '../../../../../../packages/scss-utils/index';
 
-$p-spinner-size-small: rem(48px);
-$p-spinner-size-medium: rem(72px);
-$p-spinner-size-large: rem(104px);
+$p-spinner-size-small: p-rem(48px);
+$p-spinner-size-medium: p-rem(72px);
+$p-spinner-size-large: p-rem(104px);
 
 :host {
   display: inline-flex;
@@ -19,30 +19,10 @@ $p-spinner-size-large: rem(104px);
   animation: rotate 1s linear infinite; // IE11 fallback
   animation-duration: var(--p-animation-duration__spinner);
 
-  &__image {
-    display: block;
-    position: relative;
-    fill: none;
-    transform: translate3d(0, 0, 0);
-  }
-
-  &__fg {
-    transform-origin: center center;
-    animation: rotate var(--p-animation-duration__spinner) linear infinite,
-      dash var(--p-animation-duration__spinner) ease-in-out infinite;
-    stroke-dasharray: 40, 200;
-    stroke-dashoffset: 0;
-    stroke-linecap: round;
-  }
-
-  &__bg {
-    opacity: 0.4;
-  }
-
   &--theme-light {
     #{$bem-block}__fg,
     #{$bem-block}__bg {
-      stroke: $p-color-theme-light-neutral-1;
+      stroke: $p-color-theme-light-neutral-contrast-high;
     }
   }
 
@@ -70,8 +50,8 @@ $p-spinner-size-large: rem(104px);
     }
 
     &-inherit {
-      width: 100%;
-      height: auto;
+      width: inherit;
+      height: inherit;
     }
 
     @include p-breakpoint("xs") {
@@ -91,8 +71,8 @@ $p-spinner-size-large: rem(104px);
       }
 
       &-inherit-xs {
-        width: 100%;
-        height: auto;
+        width: inherit;
+        height: inherit;
       }
     }
 
@@ -113,8 +93,8 @@ $p-spinner-size-large: rem(104px);
       }
 
       &-inherit-s {
-        width: 100%;
-        height: auto;
+        width: inherit;
+        height: inherit;
       }
     }
 
@@ -135,8 +115,8 @@ $p-spinner-size-large: rem(104px);
       }
 
       &-inherit-m {
-        width: 100%;
-        height: auto;
+        width: inherit;
+        height: inherit;
       }
     }
 
@@ -157,8 +137,8 @@ $p-spinner-size-large: rem(104px);
       }
 
       &-inherit-l {
-        width: 100%;
-        height: auto;
+        width: inherit;
+        height: inherit;
       }
     }
 
@@ -179,10 +159,30 @@ $p-spinner-size-large: rem(104px);
       }
 
       &-inherit-xl {
-        width: 100%;
-        height: auto;
+        width: inherit;
+        height: inherit;
       }
     }
+  }
+
+  &__image {
+    display: block;
+    position: relative;
+    fill: none;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &__bg {
+    opacity: 0.4;
+  }
+
+  &__fg {
+    transform-origin: center center;
+    animation: rotate var(--p-animation-duration__spinner) linear infinite,
+    dash var(--p-animation-duration__spinner) ease-in-out infinite;
+    stroke-dasharray: 40, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
   }
 }
 

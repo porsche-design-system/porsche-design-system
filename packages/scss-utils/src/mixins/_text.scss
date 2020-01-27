@@ -1,8 +1,0 @@
-@import "../variables/index";
-
-@mixin p-text($size: $p-text-size-small, $weight: $p-font-weight-regular) {
-  font-family: $p-font-primary;
-  font-weight: $weight;
-  font-size: $size;
-  line-height: 1.5;
-}
