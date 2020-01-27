@@ -22,6 +22,26 @@
   clip-path: inset(50%);
 }
 
+@mixin p-button-pure-size($prefix, $size) {
+
+  @if $size == 'inherit' {
+    font-size: inherit;
+    line-height: inherit;
+
+    & #{$prefix}__icon {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  } @else {
+    @include p-type-scale($size);
+
+    & #{$prefix}__icon {
+      width: #{p-line-height($size)}em;
+      height: #{p-line-height($size)}em;
+    }
+  }
+}
+
 :host {
   display: inline-flex;
   vertical-align: top;
@@ -111,143 +131,138 @@
   }
 
   &--size-x-small {
-    @include p-type-scale($p-text-size-x-small);
+    @include p-button-pure-size($bem-block, $p-text-size-x-small);
   }
 
   &--size-small {
-    @include p-type-scale($p-text-size-small);
+    @include p-button-pure-size($bem-block, $p-text-size-small);
   }
 
   &--size-medium {
-    @include p-type-scale($p-text-size-medium);
+    @include p-button-pure-size($bem-block, $p-text-size-medium);
   }
 
   &--size-large {
-    @include p-type-scale($p-text-size-large);
+    @include p-button-pure-size($bem-block, $p-text-size-large);
   }
 
   &--size-x-large {
-    @include p-type-scale($p-text-size-x-large);
+    @include p-button-pure-size($bem-block, $p-text-size-x-large);
   }
 
   &--size-inherit {
-    font-size: inherit;
-    line-height: inherit;
+    @include p-button-pure-size($bem-block, 'inherit');
   }
 
   @include p-breakpoint("xs") {
     &--size-x-small-xs {
-      @include p-type-scale($p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
     &--size-small-xs {
-      @include p-type-scale($p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-text-size-small);
     }
     &--size-medium-xs {
-      @include p-type-scale($p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
     }
     &--size-large-xs {
-      @include p-type-scale($p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-text-size-large);
     }
     &--size-x-large-xs {
-      @include p-type-scale($p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
     }
     &--size-inherit-xs {
-      font-size: inherit;
-      line-height: inherit;
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   @include p-breakpoint("s") {
     &--size-x-small-s {
-      @include p-type-scale($p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
     &--size-small-s {
-      @include p-type-scale($p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-text-size-small);
     }
     &--size-medium-s {
-      @include p-type-scale($p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
     }
     &--size-large-s {
-      @include p-type-scale($p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-text-size-large);
     }
     &--size-x-large-s {
-      @include p-type-scale($p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
     }
     &--size-inherit-s {
-      font-size: inherit;
-      line-height: inherit;
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   @include p-breakpoint("m") {
     &--size-x-small-m {
-      @include p-type-scale($p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
     &--size-small-m {
-      @include p-type-scale($p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-text-size-small);
     }
     &--size-medium-m {
-      @include p-type-scale($p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
     }
     &--size-large-m {
-      @include p-type-scale($p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-text-size-large);
     }
     &--size-x-large-m {
-      @include p-type-scale($p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
     }
     &--size-inherit-m {
-      font-size: inherit;
-      line-height: inherit;
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   @include p-breakpoint("l") {
     &--size-x-small-l {
-      @include p-type-scale($p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
     &--size-small-l {
-      @include p-type-scale($p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-text-size-small);
     }
     &--size-medium-l {
-      @include p-type-scale($p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
     }
     &--size-large-l {
-      @include p-type-scale($p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-text-size-large);
     }
     &--size-x-large-l {
-      @include p-type-scale($p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
     }
     &--size-inherit-l {
-      font-size: inherit;
-      line-height: inherit;
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   @include p-breakpoint("xl") {
     &--size-x-small-xl {
-      @include p-type-scale($p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
     &--size-small-xl {
-      @include p-type-scale($p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-text-size-small);
     }
     &--size-medium-xl {
-      @include p-type-scale($p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
     }
     &--size-large-xl {
-      @include p-type-scale($p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-text-size-large);
     }
     &--size-x-large-xl {
-      @include p-type-scale($p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
     }
     &--size-inherit-xl {
-      font-size: inherit;
-      line-height: inherit;
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   &__icon {
     flex-shrink: 0;
-    width: 1em;
+    width: 1.5em;
+    height: 1.5em;
   }
 
   &__label {
