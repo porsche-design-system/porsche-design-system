@@ -87,6 +87,14 @@ export const config: StorefrontConfig = {
       'Blur On Focus': [
         // @ts-ignore
         () => import(`@/stories/web/blur-on-focus.md`)
+      ],
+      'Components Ready': [
+        // @ts-ignore
+        () => import(`@/stories/web/components-ready.md`)
+      ],
+      'Testing': [
+        // @ts-ignore
+        () => import(`@/stories/web/testing.md`)
       ]
     },
     Basic: {
