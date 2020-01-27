@@ -3,7 +3,7 @@
 exports[`Component <p-text> should render correctly in default mode with shadow dom 1`] = `
 <p-text>
   <mock:shadow-root>
-    <p class="p-text p-text--align-left p-text--color-default p-text--size-small p-text--theme-light p-text--weight-regular" style="line-height: NaN;">
+    <p class="p-text p-text--align-left p-text--color-default p-text--size-small p-text--theme-light p-text--weight-regular">
       <slot></slot>
     </p>
   </mock:shadow-root>

@@ -30,8 +30,9 @@
 }
 
 // @deprecated
+// Please use p-rem() instead.
 @function rem($pxval) {
-  @warn 'This Scss function is deprecated and will be removed with next major release.';
+  @warn 'This Scss function is deprecated and will be removed with next major release. Please use p-rem() instead.';
 
   @if not unitless($pxval) {
     $pxval: ($pxval / ($pxval * 0 + 1));
