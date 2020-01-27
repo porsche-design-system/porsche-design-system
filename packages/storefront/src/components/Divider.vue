@@ -17,7 +17,7 @@
   .divider {
     border: 0;
     height: 1px;
-    background: $p-color-theme-dark-neutral-2;
+    background: $p-color-theme-light-neutral-contrast-low;
 
     &.spacing-small {
       margin: $p-spacing-24 0;

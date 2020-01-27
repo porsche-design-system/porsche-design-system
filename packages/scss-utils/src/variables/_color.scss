@@ -15,9 +15,9 @@ $p-color-theme-light-surface: #f2f2f2;
 $p-color-theme-light-background: #fff;
 
 // Neutral colors
-$p-color-theme-light-neutral-1: #323639;
-$p-color-theme-light-neutral-2: #4a4e51;
-$p-color-theme-light-neutral-3: #626669;
+$p-color-theme-light-neutral-contrast-high: #323639;
+$p-color-theme-light-neutral-contrast-medium: #626669;
+$p-color-theme-light-neutral-contrast-low: #c9cacb;
 
 // Notification colors
 $p-color-theme-light-notification-success: #13d246;
@@ -25,6 +25,8 @@ $p-color-theme-light-notification-warning: #e2b236;
 $p-color-theme-light-notification-error: #e00000;
 
 // State colors
+$p-color-theme-light-state-hover: #d5001c;
+$p-color-theme-light-state-active: #d5001c;
 $p-color-theme-light-state-focus: #00d5b9;
 $p-color-theme-light-state-disabled: #96989a;
 
@@ -45,9 +47,9 @@ $p-color-theme-dark-surface: #1a2023;
 $p-color-theme-dark-background: #0e1418;
 
 // Neutral colors
-$p-color-theme-dark-neutral-1: #e3e4e5;
-$p-color-theme-dark-neutral-2: #c9cacb;
-$p-color-theme-dark-neutral-3: #b0b1b2;
+$p-color-theme-dark-neutral-contrast-high: #e3e4e5;
+$p-color-theme-dark-neutral-contrast-medium: #b0b1b2;
+$p-color-theme-dark-neutral-contrast-low: #4a4e51;
 
 // Notification colors
 $p-color-theme-dark-notification-success: #13d246;
@@ -55,6 +57,8 @@ $p-color-theme-dark-notification-warning: #e2b236;
 $p-color-theme-dark-notification-error: #e00000;
 
 // State colors
+$p-color-theme-dark-state-hover: #d5001c;
+$p-color-theme-dark-state-active: #d5001c;
 $p-color-theme-dark-state-focus: #00d5b9;
 $p-color-theme-dark-state-disabled: #7c7f81;
 

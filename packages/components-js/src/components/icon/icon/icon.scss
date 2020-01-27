@@ -12,23 +12,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: rem(24px);
-  height: rem(24px);
+  width: p-rem(24px);
+  height: p-rem(24px);
 
   &--size {
     &-small {
-      width: rem(24px);
-      height: rem(24px);
+      width: p-rem(24px);
+      height: p-rem(24px);
     }
 
     &-medium {
-      width: rem(36px);
-      height: rem(36px);
+      width: p-rem(36px);
+      height: p-rem(36px);
     }
 
     &-large {
-      width: rem(48px);
-      height: rem(48px);
+      width: p-rem(48px);
+      height: p-rem(48px);
     }
 
     &-inherit {
@@ -58,33 +58,33 @@
       }
     }
 
-    &-neutral-1 {
+    &-neutral-contrast-high {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-1;
+        fill: $p-color-theme-light-neutral-contrast-high;
       }
 
       &#{$bem-block}--theme-dark {
-        fill: $p-color-theme-dark-neutral-1;
+        fill: $p-color-theme-dark-neutral-contrast-high;
       }
     }
 
-    &-neutral-2 {
+    &-neutral-contrast-medium {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-2;
+        fill: $p-color-theme-light-neutral-contrast-medium;
       }
 
       &#{$bem-block}--theme-dark {
-        fill: $p-color-theme-dark-neutral-2;
+        fill: $p-color-theme-dark-neutral-contrast-medium;
       }
     }
 
-    &-neutral-3 {
+    &-neutral-contrast-low {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-3;
+        fill: $p-color-theme-light-neutral-contrast-low;
       }
 
       &#{$bem-block}--theme-dark {
-        fill: $p-color-theme-dark-neutral-3;
+        fill: $p-color-theme-dark-neutral-contrast-low;
       }
     }
 
