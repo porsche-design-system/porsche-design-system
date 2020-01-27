@@ -1,4 +1,4 @@
-import { Build, Component, Host, Element, Prop, State, Watch, h } from '@stencil/core';
+import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
@@ -30,7 +30,7 @@ export class Icon {
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?: 'brand' | 'default' | 'neutral-1' | 'neutral-2' | 'neutral-3' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit' = 'default';
+  @Prop() public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit' = 'default';
 
   /**
    * The size of the icon.

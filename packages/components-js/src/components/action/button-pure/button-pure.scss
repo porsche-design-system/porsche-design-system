@@ -1,41 +1,45 @@
 @import '../../../../../../packages/scss-utils/index';
 
-@mixin p-button-pure-icon-with-label() {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-@mixin p-button-pure-icon-without-label() {
-  position: static;
-  top: auto;
-  left: auto;
-}
-
-@mixin p-button-pure-label-with-label() {
+@mixin p-button-pure-label-visible() {
   position: static;
   width: 100%;
   height: auto;
-  margin: 0;
-  padding: 0 0 0 calc(1.5em + .25rem);
+  margin: 0 0 0 p-rem(4px);
   white-space: normal;
   overflow: visible;
-  border: 0;
   clip: auto;
   clip-path: none;
 }
 
-@mixin p-button-pure-label-without-label() {
+@mixin p-button-pure-label-hidden() {
   position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
-  padding: 0;
   white-space: nowrap;
   overflow: hidden;
-  border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
+}
+
+@mixin p-button-pure-size($prefix, $size) {
+
+  @if $size == 'inherit' {
+    font-size: inherit;
+    line-height: inherit;
+
+    & #{$prefix}__icon {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  } @else {
+    @include p-type-scale($size);
+
+    & #{$prefix}__icon {
+      width: #{p-line-height($size)}em;
+      height: #{p-line-height($size)}em;
+    }
+  }
 }
 
 :host {
@@ -57,10 +61,11 @@
   text-decoration: none;
   text-align: left;
   background: transparent;
+  cursor: pointer;
   color: inherit;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier;
-  cursor: pointer;
+  color $p-animation-hover-duration $p-animation-hover-bezier,
+  font-size 0.00001ms linear; // used for transitionend event listener
 
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
@@ -86,9 +91,12 @@
 
     &:enabled,
     &:not([disabled]) {
-      &:hover,
+      &:hover {
+        color: $p-color-theme-light-state-hover;
+      }
+
       &:active {
-        color: $p-color-theme-light-brand;
+        color: $p-color-theme-light-state-active;
       }
     }
 
@@ -107,9 +115,12 @@
 
     &:enabled,
     &:not([disabled]) {
-      &:hover,
+      &:hover {
+        color: $p-color-theme-dark-state-hover;
+      }
+
       &:active {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-active;
       }
     }
 
@@ -119,263 +130,137 @@
     }
   }
 
-  &--size {
-    &-x-small {
-      font-size: $p-text-size-x-small;
-    }
-    &-small {
-      font-size: $p-text-size-small;
-    }
-    &-medium {
-      font-size: $p-text-size-medium;
-    }
-    &-large {
-      font-size: $p-text-size-large;
-    }
-    &-x-large {
-      font-size: $p-text-size-x-large;
-    }
-    &-inherit {
-      font-size: inherit;
-    }
-
-    @include p-breakpoint("xs") {
-      &-x-small-xs {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-xs {
-        font-size: $p-text-size-small;
-      }
-      &-medium-xs {
-        font-size: $p-text-size-medium;
-      }
-      &-large-xs {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-xs {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-xs {
-        font-size: inherit;
-      }
-    }
-
-    @include p-breakpoint("s") {
-      &-x-small-s {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-s {
-        font-size: $p-text-size-small;
-      }
-      &-medium-s {
-        font-size: $p-text-size-medium;
-      }
-      &-large-s {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-s {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-s {
-        font-size: inherit;
-      }
-    }
-
-    @include p-breakpoint("m") {
-      &-x-small-m {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-m {
-        font-size: $p-text-size-small;
-      }
-      &-medium-m {
-        font-size: $p-text-size-medium;
-      }
-      &-large-m {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-m {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-m {
-        font-size: inherit;
-      }
-    }
-
-    @include p-breakpoint("l") {
-      &-x-small-l {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-l {
-        font-size: $p-text-size-small;
-      }
-      &-medium-l {
-        font-size: $p-text-size-medium;
-      }
-      &-large-l {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-l {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-l {
-        font-size: inherit;
-      }
-    }
-
-    @include p-breakpoint("xl") {
-      &-x-small-xl {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-xl {
-        font-size: $p-text-size-small;
-      }
-      &-medium-xl {
-        font-size: $p-text-size-medium;
-      }
-      &-large-xl {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-xl {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-xl {
-        font-size: inherit;
-      }
-    }
+  &--size-x-small {
+    @include p-button-pure-size($bem-block, $p-text-size-x-small);
   }
 
-  &--with-label {
-    #{$bem-block}__icon {
-      @include p-button-pure-icon-with-label;
-    }
-
-    #{$bem-block}__label {
-      @include p-button-pure-label-with-label;
-    }
+  &--size-small {
+    @include p-button-pure-size($bem-block, $p-text-size-small);
   }
 
-  &--without-label {
-    #{$bem-block}__icon {
-      @include p-button-pure-icon-without-label;
-    }
+  &--size-medium {
+    @include p-button-pure-size($bem-block, $p-text-size-medium);
+  }
 
-    #{$bem-block}__label {
-      @include p-button-pure-label-without-label;
-    }
+  &--size-large {
+    @include p-button-pure-size($bem-block, $p-text-size-large);
+  }
+
+  &--size-x-large {
+    @include p-button-pure-size($bem-block, $p-text-size-x-large);
+  }
+
+  &--size-inherit {
+    @include p-button-pure-size($bem-block, 'inherit');
   }
 
   @include p-breakpoint("xs") {
-    &--with-label-xs {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-with-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
+    &--size-x-small-xs {
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
-
-    &--without-label-xs {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-without-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
+    &--size-small-xs {
+      @include p-button-pure-size($bem-block, $p-text-size-small);
+    }
+    &--size-medium-xs {
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
+    }
+    &--size-large-xs {
+      @include p-button-pure-size($bem-block, $p-text-size-large);
+    }
+    &--size-x-large-xs {
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+    }
+    &--size-inherit-xs {
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   @include p-breakpoint("s") {
-    &--with-label-s {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-with-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
+    &--size-x-small-s {
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
-
-    &--without-label-s {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-without-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
+    &--size-small-s {
+      @include p-button-pure-size($bem-block, $p-text-size-small);
+    }
+    &--size-medium-s {
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
+    }
+    &--size-large-s {
+      @include p-button-pure-size($bem-block, $p-text-size-large);
+    }
+    &--size-x-large-s {
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+    }
+    &--size-inherit-s {
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   @include p-breakpoint("m") {
-    &--with-label-m {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-with-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
+    &--size-x-small-m {
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
-
-    &--without-label-m {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-without-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
+    &--size-small-m {
+      @include p-button-pure-size($bem-block, $p-text-size-small);
+    }
+    &--size-medium-m {
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
+    }
+    &--size-large-m {
+      @include p-button-pure-size($bem-block, $p-text-size-large);
+    }
+    &--size-x-large-m {
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+    }
+    &--size-inherit-m {
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   @include p-breakpoint("l") {
-    &--with-label-l {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-with-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
+    &--size-x-small-l {
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
-
-    &--without-label-l {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-without-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
+    &--size-small-l {
+      @include p-button-pure-size($bem-block, $p-text-size-small);
+    }
+    &--size-medium-l {
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
+    }
+    &--size-large-l {
+      @include p-button-pure-size($bem-block, $p-text-size-large);
+    }
+    &--size-x-large-l {
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+    }
+    &--size-inherit-l {
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   @include p-breakpoint("xl") {
-    &--with-label-xl {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-with-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-with-label;
-      }
+    &--size-x-small-xl {
+      @include p-button-pure-size($bem-block, $p-text-size-x-small);
     }
-
-    &--without-label-xl {
-      #{$bem-block}__icon {
-        @include p-button-pure-icon-without-label;
-      }
-
-      #{$bem-block}__label {
-        @include p-button-pure-label-without-label;
-      }
+    &--size-small-xl {
+      @include p-button-pure-size($bem-block, $p-text-size-small);
+    }
+    &--size-medium-xl {
+      @include p-button-pure-size($bem-block, $p-text-size-medium);
+    }
+    &--size-large-xl {
+      @include p-button-pure-size($bem-block, $p-text-size-large);
+    }
+    &--size-x-large-xl {
+      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+    }
+    &--size-inherit-xl {
+      @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
   &__icon {
+    flex-shrink: 0;
     width: 1.5em;
     height: 1.5em;
   }
@@ -383,5 +268,65 @@
   &__label {
     display: block;
     box-sizing: border-box;
+    padding: 0;
+    border: 0;
+
+    &--visible {
+      @include p-button-pure-label-visible;
+    }
+
+    &--hidden {
+      @include p-button-pure-label-hidden;
+    }
+
+    @include p-breakpoint("xs") {
+      &--visible-xs {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-xs {
+        @include p-button-pure-label-hidden;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &--visible-s {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-s {
+        @include p-button-pure-label-hidden;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &--visible-m {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-m {
+        @include p-button-pure-label-hidden;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &--visible-l {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-l {
+        @include p-button-pure-label-hidden;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &--visible-xl {
+        @include p-button-pure-label-visible;
+      }
+
+      &--hidden-xl {
+        @include p-button-pure-label-hidden;
+      }
+    }
   }
 }

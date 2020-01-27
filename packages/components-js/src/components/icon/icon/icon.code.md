@@ -34,9 +34,9 @@ Predefined colors associated with its theme are available. Furthermore, inherit 
       <option disabled>Select a color</option>
       <option value="brand">Brand</option>
       <option value="default" selected>Default</option>
-      <option value="neutral-1">Neutral 1</option>
-      <option value="neutral-2">Neutral 2</option>
-      <option value="neutral-3">Neutral 3</option>
+      <option value="neutral-contrast-high">Neutral Contrast High</option>
+      <option value="neutral-contrast-medium">Neutral Contrast Medium</option>
+      <option value="neutral-contrast-low">Neutral Contrast Low</option>
       <option value="notification-success">Notification Success</option>
       <option value="notification-warning">Notification Warning</option>
       <option value="notification-error">Notification Error</option>
@@ -89,11 +89,11 @@ With the use of SVG icons, there are options to give more accessibility to users
     public color: string = 'default';
     
     public get isInheritSize() {
-      return this.size === 'inherit' ? 'width: 48px' : undefined;
+      return this.size === 'inherit' ? 'width: 96px; height: 96px;' : undefined;
     }
     
     public get isInheritColor() {
       return this.color === 'inherit' ? 'color: deeppink' : undefined;
     }
   }
-</script>
+</script>w
