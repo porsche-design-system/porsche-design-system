@@ -48,7 +48,7 @@ describe('CodeBlock.vue', () => {
 
     expect(wrapper.find('.tabs .tab:nth-child(2) button').classes()).toContain('is-active');
     expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag someAttribute="some value">
+      `<p-some-tag [someAttribute]="some value">
   <span>some text</span>
 </p-some-tag>`
     );
@@ -216,7 +216,7 @@ describe('CodeBlock.vue', () => {
     await tick();
 
     expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag someAttribute="some value" attribute="some value" class="some-class" [anotherAttribute]="{ bar: 'foo' }">
+      `<p-some-tag [someAttribute]="some value" [attribute]="some value" [class]="some-class" [anotherAttribute]="{ bar: 'foo' }">
   <span>some text</span>
 </p-some-tag>`
     );
