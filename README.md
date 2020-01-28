@@ -247,7 +247,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __sketch directory__
 1. Replace existing file with new file
 1. Switch to __docker/node/bin directory__ and open `run-deploy`
-1. Increase version increment according to the update `P_LATEST_STABLE_SKETCH_VERSION="v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}"`
+1. Increase version increment according to the update `P_LATEST_STABLE_SKETCH_VERSION="{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}"`
 
 ### Commit
 1. Create a commit
