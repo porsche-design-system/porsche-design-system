@@ -1,7 +1,7 @@
 <template>
   <div class="disclaimer">
     <p-text theme="dark">
-      We are very excited to announce the first Release Candidate 1.0.0-RC.1 of the Porsche Design System.
+      We are very excited to announce the first stable release v1.0.0 of the Porsche Design System.
     </p-text>
   </div>
 </template>
@@ -18,6 +18,6 @@ export default class Disclaimer extends Vue {}
 
 .disclaimer {
   padding: $p-spacing-8 $p-spacing-32;
-  background: $p-color-theme-light-notification-success;
+  background: $p-color-theme-light-neutral-contrast-high;
 }
 </style>
