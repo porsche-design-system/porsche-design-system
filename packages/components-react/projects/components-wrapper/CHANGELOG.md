@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] (2020-01-28)
+
 ### Added
 - Cursor pointer on hover for `Button` and `Button Pure`
 - Line-height gets calculated based on Porsche type-scaling formula automatically for `Text`, `Link Pure` and `Button Pure`
