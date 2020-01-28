@@ -1,7 +1,7 @@
 @import '../../../../../../packages/scss-utils/index';
 
 @mixin p-button-with-label() {
-  padding: rem(11px) rem(15px) rem(11px) rem(39px);
+  padding: p-rem(11px) p-rem(15px) p-rem(11px) p-rem(39px);
 }
 
 @mixin p-button-without-label() {
@@ -36,10 +36,10 @@
 
 @mixin p-button-icon-with-label() {
   position: absolute;
-  left: rem(11px);
-  top: rem(11px);
-  width: rem(24px);
-  height: rem(24px);
+  left: p-rem(11px);
+  top: p-rem(11px);
+  width: p-rem(24px);
+  height: p-rem(24px);
   transform: translateX(0) translateY(0);
 }
 
@@ -47,8 +47,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: rem(36px);
-  height: rem(36px);
+  width: p-rem(36px);
+  height: p-rem(36px);
   transform: translateX(-50%) translateY(-50%);
 }
 
@@ -61,8 +61,8 @@
   $bem-block: &;
   display: flex;
   width: 100%;
-  min-width: rem(48px);
-  min-height: rem(48px);
+  min-width: p-rem(48px);
+  min-height: p-rem(48px);
   position: relative;
   margin: 0;
   padding: 0;
@@ -125,14 +125,14 @@
       &:active {
         &#{$bem-block}--theme-light {
           color: $p-color-theme-dark-default;
-          background-color: darken($p-color-theme-light-brand, 12%);
-          border-color: darken($p-color-theme-light-brand, 12%);
+          background-color: darken($p-color-theme-light-state-hover, 12%);
+          border-color: darken($p-color-theme-light-state-hover, 12%);
         }
 
         &#{$bem-block}--theme-dark {
           color: $p-color-theme-dark-default;
-          background-color: darken($p-color-theme-dark-brand, 12%);
-          border-color: darken($p-color-theme-dark-brand, 12%);
+          background-color: darken($p-color-theme-dark-state-hover, 12%);
+          border-color: darken($p-color-theme-dark-state-hover, 12%);
         }
       }
     }
@@ -156,8 +156,8 @@
   &--secondary {
     &#{$bem-block}--theme-light {
       color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-light-neutral-1;
-      border-color: $p-color-theme-light-neutral-1;
+      background-color: $p-color-theme-light-neutral-contrast-high;
+      border-color: $p-color-theme-light-neutral-contrast-high;
     }
 
     &#{$bem-block}--theme-dark {
@@ -172,8 +172,8 @@
       &:active {
         &#{$bem-block}--theme-light {
           color: $p-color-theme-dark-default;
-          background-color: darken($p-color-theme-light-neutral-1, 12%);
-          border-color: darken($p-color-theme-light-neutral-1, 12%);
+          background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+          border-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
         }
 
         &#{$bem-block}--theme-dark {
@@ -204,7 +204,7 @@
     &#{$bem-block}--theme-light {
       color: $p-color-theme-light-default;
       background-color: transparent;
-      border-color: $p-color-theme-light-neutral-1;
+      border-color: $p-color-theme-light-neutral-contrast-high;
     }
 
     &#{$bem-block}--theme-dark {
@@ -219,8 +219,8 @@
       &:active {
         &#{$bem-block}--theme-light {
           color: $p-color-theme-dark-default;
-          background-color: darken($p-color-theme-light-neutral-1, 12%);
-          border-color: darken($p-color-theme-light-neutral-1, 12%);
+          background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+          border-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
         }
 
         &#{$bem-block}--theme-dark {

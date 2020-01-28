@@ -1,37 +1,34 @@
 # Porsche Design System | Components Angular
+All notable changes to this project will be documented in this file.
 
-## NOT RELEASED YET
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-* Components
-  * Button
-    - Add cursor pointer on hover
-  * Button Pure
-    - Add cursor pointer on hover
+## [Unreleased]
 
-* Assets
-  * Update CDN asset paths
-  
-* Global behaviour
-  * Improve font-weight definitions
+### Added
+- Cursor pointer on hover for `Button` and `Button Pure`
+- Line-height gets calculated based on Porsche type-scaling formula automatically for `Text`, `Link Pure` and `Button Pure`
+- Test helper function `componentsReady()` which indicates when lazy loaded components fully have loaded
+
+### Changed
+- Update CDN asset paths
+- Improve font-weight definitions
+- Rename and optimize neutral colors for `Icon` and `Text`
 
 ## [1.0.0-rc.1] (2019-12-13)
 
-### Features
-* Initial release
-
-* Components
-  * Add Headline
-  * Add Text
-  * Add Marque
-  * Add Button
-  * Add Button Pure
-  * Add Spinner
-  * Add Icon
-  * Add Flex
-  * Add Grid
-  * Add Link
-  * Add Link Pure
-  * Add Pagination
-  
-* Global behaviour
-  * Add Blur on Focus
+### Added
+- `Headline`
+- `Text`
+- `Marque`
+- `Button`
+- `Button Pure`
+- `Spinner`
+- `Icon`
+- `Flex`
+- `Grid`
+- `Link`
+- `Link Pure`
+- `Pagination`
+- "Blur on focus"
