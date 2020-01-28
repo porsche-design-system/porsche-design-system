@@ -222,6 +222,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Design System SCSS Utils
 1. Switch to __packages/scss-utils directory__
 1. Execute `yarn version --no-git-tag-version` and enter new patch or minor version
+1. Update version number of `@porsche-design-system/scss-utils` in the mono repo to corresponding version number
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 
 ### Commit

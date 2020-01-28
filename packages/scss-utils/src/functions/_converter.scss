@@ -6,9 +6,9 @@
  * @param $px - only accepts value in px unit, e.g. 12px
  */
 @function p-rem($px) {
-  @if p-is-px($px) {
-    $px: p-strip-unit($px);
-    $base: p-strip-unit($p-global-rem-base);
+  @if __p-is-px($px) {
+    $px: __p-strip-unit($px);
+    $base: __p-strip-unit($p-global-rem-base);
     @return ($px / $base) * 1rem;
   } @else {
     @error 'p-rem() Scss function only accepts value in px for param $px, e.g. 12px';
@@ -20,9 +20,9 @@
  * @param $rem - only accepts value in rem unit, e.g. 1.5rem
  */
 @function p-px($rem) {
-  @if p-is-rem($rem) {
-    $rem: p-strip-unit($rem);
-    $base: p-strip-unit($p-global-rem-base);
+  @if __p-is-rem($rem) {
+    $rem: __p-strip-unit($rem);
+    $base: __p-strip-unit($p-global-rem-base);
     @return ($rem * $base) * 1px;
   } @else {
     @error 'p-px() Scss function only accepts value in rem for param $rem, e.g. 1.5rem';

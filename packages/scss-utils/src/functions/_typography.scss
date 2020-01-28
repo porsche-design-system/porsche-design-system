@@ -1,5 +1,3 @@
-/* Internal functions */
-
 @import "converter";
 @import "utils";
 
@@ -8,9 +6,9 @@
  * @param $font-size - only accepts value in rem or px, e.g. 12px or 1.5rem
  */
 @function p-font-size($font-size) {
-  @if p-is-rem($font-size) {
+  @if __p-is-rem($font-size) {
     $font-size: $font-size;
-  } @else if p-is-px($font-size) {
+  } @else if __p-is-px($font-size) {
     $font-size: p-rem($font-size);
   } @else {
     @error 'p-font-size() Scss function only accepts value in rem or px for param $font-size, e.g. 12px or 1.5rem';
@@ -25,17 +23,17 @@
  */
 @function p-line-height($font-size) {
 
-  @if p-is-rem($font-size) {
+  @if __p-is-rem($font-size) {
     $font-size: p-px($font-size);
-  } @else if p-is-px($font-size) {
+  } @else if __p-is-px($font-size) {
     $font-size: $font-size;
   } @else {
     @error 'p-line-height() Scss function only accepts value in rem or px for param $font-size, e.g. 12px or 1.5rem';
   }
 
-  $font-size: p-strip-unit($font-size);
+  $font-size: __p-strip-unit($font-size);
   $e: 2.71828;
-  $exact-line-height-factor: 0.911 / ( 2.97 + 0.005 * p-pow( $e, 0.2 * $font-size ) ) + 1.2;
+  $exact-line-height-factor: 0.911 / ( 2.97 + 0.005 * __p-pow( $e, 0.2 * $font-size ) ) + 1.2;
   $exact-line-height-px: $font-size * $exact-line-height-factor;
   $remaining-px: $exact-line-height-px % 4;
 

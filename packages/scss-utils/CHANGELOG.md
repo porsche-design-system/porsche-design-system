@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2020-01-28
+
 ### Added
 - p-type-scale() mixin - Calculates font-size and line-height to fit into Porsche Vertical Grid System
 - p-px() function - Converts rem to px units
