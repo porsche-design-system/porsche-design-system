@@ -58,7 +58,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@porsche-design-system/scss-utils": "1.0.0-rc.1",
+    "@porsche-design-system/scss-utils": "1.0.0",
     "@porsche-design-system/utils": "0.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",

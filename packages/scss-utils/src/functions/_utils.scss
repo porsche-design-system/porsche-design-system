@@ -1,6 +1,6 @@
-/* Internal functions */
+/* Internal functions, - interface or output might change in future releases! */
 
-@function p-strip-unit($number) {
+@function __p-strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
     @return $number / ($number * 0 + 1);
   }
@@ -8,21 +8,21 @@
   @return $number;
 }
 
-@function p-is-number($value) {
+@function __p-is-number($value) {
   @return type-of($value) == 'number';
 }
 
-@function p-is-rem($value) {
-  @return p-is-number($value) and index('rem', unit($value)) != null;
+@function __p-is-rem($value) {
+  @return __p-is-number($value) and index('rem', unit($value)) != null;
 }
 
-@function p-is-px($value) {
-  @return p-is-number($value) and index('px', unit($value)) != null;
+@function __p-is-px($value) {
+  @return __p-is-number($value) and index('px', unit($value)) != null;
 }
 
-@function p-pow($number, $exponent) {
+@function __p-pow($number, $exponent) {
   @if (round($exponent) != $exponent) {
-    @return p-exp($exponent * p-ln($number));
+    @return __p-exp($exponent * __p-ln($number));
   }
 
   $value: 1;
@@ -40,7 +40,7 @@
   @return $value;
 }
 
-@function p-factorial($value) {
+@function __p-factorial($value) {
   $result: 1;
 
   @if $value == 0 {
@@ -54,7 +54,7 @@
   @return $result;
 }
 
-@function p-summation($iteratee, $input, $initial: 0, $limit: 100) {
+@function __p-summation($iteratee, $input, $initial: 0, $limit: 100) {
   $sum: 0;
 
   @for $index from $initial to $limit {
@@ -64,25 +64,25 @@
   @return $sum;
 }
 
-@function p-exp-maclaurin($x, $n) {
-  @return (p-pow($x, $n) / p-factorial($n));
+@function __p-exp-maclaurin($x, $n) {
+  @return (__p-pow($x, $n) / __p-factorial($n));
 }
 
-@function p-exp($value) {
-  @return p-summation('p-exp-maclaurin', $value, 0, 100);
+@function __p-exp($value) {
+  @return __p-summation('__p-exp-maclaurin', $value, 0, 100);
 }
 
-@function p-ln-maclaurin($x, $n) {
-  @return (p-pow(-1, $n + 1) / $n) * (p-pow($x - 1, $n));
+@function __p-ln-maclaurin($x, $n) {
+  @return (__p-pow(-1, $n + 1) / $n) * (__p-pow($x - 1, $n));
 }
 
-@function p-ln($value) {
+@function __p-ln($value) {
   $ten-exp: 1;
   $ln-ten: 2.30258509;
 
-  @while ($value > p-pow(10, $ten-exp)) {
+  @while ($value > __p-pow(10, $ten-exp)) {
     $ten-exp: $ten-exp + 1;
   }
 
-  @return p-summation(p-ln-maclaurin, $value / p-pow(10, $ten-exp), 1, 100) + $ten-exp * $ln-ten;
+  @return __p-summation(__p-ln-maclaurin, $value / __p-pow(10, $ten-exp), 1, 100) + $ten-exp * $ln-ten;
 }
