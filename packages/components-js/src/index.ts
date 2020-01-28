@@ -1,1 +1,2 @@
-export { Components } from './components';
+export * from './components';
+export * from './utils/public_api';

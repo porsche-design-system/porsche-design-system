@@ -100,7 +100,7 @@
     display: flex;
 
     .tab {
-      font-size: $p-font-size-20;
+      @include p-type-scale($p-font-size-20);
 
       &:not(:last-child) {
         margin-right: $p-spacing-24;
@@ -111,14 +111,14 @@
         cursor: pointer;
         border: none;
         font: inherit;
-        color: $p-color-theme-light-neutral-3;
+        color: $p-color-theme-light-neutral-contrast-medium;
         background-color: transparent;
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
         padding-bottom: $p-spacing-4;
         border-bottom: 3px solid transparent;
 
         &:hover {
-          color: $p-color-theme-light-brand;
+          color: $p-color-theme-light-state-hover;
         }
 
         &:focus {
@@ -142,7 +142,7 @@
 
     // Theme
     &.light {
-      border-color: $p-color-theme-dark-neutral-2;
+      border-color: $p-color-theme-light-neutral-contrast-low;
       background-color: $p-color-theme-light-background;
     }
 
@@ -154,7 +154,7 @@
     // Child Layout "height"
     &.height-fixed .code {
       > * {
-        height: rem(180px);
+        height: p-rem(180px);
       }
     }
 
