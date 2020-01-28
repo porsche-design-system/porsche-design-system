@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Cursor pointer on hover for `Button` and `Button Pure`
 - Line-height gets calculated based on Porsche type-scaling formula automatically for `Text`, `Link Pure` and `Button Pure`
+- Test helper function `componentsReady()` which indicates when lazy loaded components fully have loaded
 
 ### Changed
 - Update CDN asset paths
