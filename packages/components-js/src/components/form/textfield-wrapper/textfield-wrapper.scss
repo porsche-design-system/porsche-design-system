@@ -16,9 +16,9 @@
     input {
       @include p-text;
       width: 100%;
-      height: rem(48px);
+      height: p-rem(48px);
       display: block;
-      padding: rem(11px) rem(18px);
+      padding: p-rem(11px) p-rem(18px);
       outline: transparent none;
       appearance: none;
       box-sizing: border-box;
@@ -95,7 +95,7 @@
         color: $p-color-theme-light-notification-error;
         border-color: $p-color-theme-light-notification-error;
         border-width: 2px;
-        padding: rem(10px) rem(17px);
+        padding: p-rem(10px) p-rem(17px);
       }
     }
 
@@ -103,7 +103,7 @@
       input {
         border-color: $p-color-theme-light-notification-success;
         border-width: 2px;
-        padding: rem(16px) rem(17px);
+        padding: p-rem(16px) p-rem(17px);
       }
     }
   }
@@ -114,8 +114,8 @@
     right: 0;
     color: $p-color-theme-light-default;
     cursor: pointer;
-    width: rem(48px);
-    height: rem(48px);
+    width: p-rem(48px);
+    height: p-rem(48px);
     border: none;
     outline: none;
     background: transparent;
@@ -129,7 +129,7 @@
     }
 
     & ~ input {
-      padding-right: rem(56px);
+      padding-right: p-rem(56px);
     }
   }
 
