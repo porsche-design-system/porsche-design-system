@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-js",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -17,7 +17,7 @@
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/components.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "files": [
@@ -58,7 +58,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@porsche-design-system/scss-utils": "1.0.0-rc.1",
+    "@porsche-design-system/scss-utils": "1.0.0",
     "@porsche-design-system/utils": "0.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",

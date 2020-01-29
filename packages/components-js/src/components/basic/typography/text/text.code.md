@@ -18,7 +18,10 @@ The default semantic HTML element is `p`.
 
 ## Size
 
-There are predefined default text sizes for the text component which should cover most use cases. If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
+There are predefined default text sizes for the text component which should cover most use cases. 
+If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
+
+**Hint:** Be aware of that the line-height will be calculated based on the Porsche type-scaling formula automatically. This is the case for predefined text sizes as well as for `inherit` mode.
 
 <Playground :themeable="true">
   <template #configurator>
@@ -143,7 +146,7 @@ This will force any text to never wrap into a new line and in case it's to long 
     public align: string = 'center';
     
     public get isInheritSize() {
-      return this.size === 'inherit' ? 'font-size: 48px' : undefined;
+      return this.size === 'inherit' ? 'font-size: 48px;' : undefined;
     }
     
     public get isInheritColor() {

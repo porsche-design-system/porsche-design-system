@@ -52,7 +52,7 @@ For automated visual regression tests the spinner animation can be disabled by s
     public size: string = 'small';
     
     public get isInherit() {
-      return this.size === 'inherit' ? 'width: 24px' : undefined;
+      return this.size === 'inherit' ? 'width: 96px; height: 96px;' : undefined;
     }
   }
 </script>

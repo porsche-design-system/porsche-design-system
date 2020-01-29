@@ -130,7 +130,7 @@
     border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
 
     .tab {
-      font-size: $p-font-size-28;
+      @include p-type-scale($p-font-size-28);
 
       &:not(:last-child) {
         margin-right: $p-spacing-40;
