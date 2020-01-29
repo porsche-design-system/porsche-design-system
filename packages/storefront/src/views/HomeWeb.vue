@@ -29,8 +29,8 @@
             principles.
           </p-text>
           <p-text class="spacing-mt-32">
-            We are happy to announce the first Release Candidate 1.0.0-RC.1 of the Porsche Design System (JS/ Angular/ React). Please take some time to check it out!
-            We appreciate any feedback, feature requests or suggestions on our public <a href="https://github.com/porscheui/porsche-ui-contribution/issues">Contribution Board</a>.
+            We are very excited to announce the first stable release v1.0.0 of the Porsche Design System. (JS/ Angular/ React). Please take some time to check it out!
+            We appreciate any feedback, feature requests or suggestions on our public <a href="https://github.com/porscheui/porsche-design-system-contribution/issues">Contribution Board</a>.
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
@@ -47,23 +47,17 @@
         </p-grid-item>
       </p-grid>
     </article>
-
     <article class="newsletter">
       <p-grid>
         <p-grid-item size='{"base": 12, "m": 3}'>
-          <p-headline variant="headline-3" tag="h2">Always stay informed</p-headline>
+          <p-headline variant="headline-3" tag="h2">Learn more about UX Design at Porsche</p-headline>
         </p-grid-item>
         <p-grid-item size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
           <p-text
-            size="medium"
-          >Join our mailing list and get informed about relevant updates and topics.
+            size="medium">Are you working for a digital product or application at Porsche? We are happy to invite you to our UX onboarding and tell you more about our culture of digital experience design.
           </p-text>
           <p-text variant="18" class="spacing-mt-16">
-            <a
-              href="http://eepurl.com/gnOIXD"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Subscribe to mailing list</a>
+            <p-link variant="tertiary" href="https://ux.porsche.com">Sign Up for UX Onboarding</p-link>
           </p-text>
         </p-grid-item>
       </p-grid>

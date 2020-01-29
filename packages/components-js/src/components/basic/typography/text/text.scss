@@ -36,162 +36,159 @@
   padding: 0;
   margin: 0;
   list-style-type: none;
+  display: inherit;
+  transition: font-size 0.00001ms linear; // used for transitionend event listener
 
-  > strong,
-  > b {
+  &--size-x-small {
+    @include p-type-scale($p-text-size-x-small);
+  }
+  &--size-small {
+    @include p-type-scale($p-text-size-small);
+  }
+  &--size-medium {
+    @include p-type-scale($p-text-size-medium);
+  }
+  &--size-large {
+    @include p-type-scale($p-text-size-large);
+  }
+  &--size-x-large {
+    @include p-type-scale($p-text-size-x-large);
+  }
+  &--size-inherit {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  @include p-breakpoint("xs") {
+    &--size-x-small-xs {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &--size-small-xs {
+      @include p-type-scale($p-text-size-small);
+    }
+    &--size-medium-xs {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &--size-large-xs {
+      @include p-type-scale($p-text-size-large);
+    }
+    &--size-x-large-xs {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-xs {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  @include p-breakpoint("s") {
+    &--size-x-small-s {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &--size-small-s {
+      @include p-type-scale($p-text-size-small);
+    }
+    &--size-medium-s {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &--size-large-s {
+      @include p-type-scale($p-text-size-large);
+    }
+    &--size-x-large-s {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-s {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  @include p-breakpoint("m") {
+    &--size-x-small-m {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &--size-small-m {
+      @include p-type-scale($p-text-size-small);
+    }
+    &--size-medium-m {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &--size-large-m {
+      @include p-type-scale($p-text-size-large);
+    }
+    &--size-x-large-m {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-m {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  @include p-breakpoint("l") {
+    &--size-x-small-l {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &--size-small-l {
+      @include p-type-scale($p-text-size-small);
+    }
+    &--size-medium-l {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &--size-large-l {
+      @include p-type-scale($p-text-size-large);
+    }
+    &--size-x-large-l {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-l {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  @include p-breakpoint("xl") {
+    &--size-x-small-xl {
+      @include p-type-scale($p-text-size-x-small);
+    }
+    &--size-small-xl {
+      @include p-type-scale($p-text-size-small);
+    }
+    &--size-medium-xl {
+      @include p-type-scale($p-text-size-medium);
+    }
+    &--size-large-xl {
+      @include p-type-scale($p-text-size-large);
+    }
+    &--size-x-large-xl {
+      @include p-type-scale($p-text-size-x-large);
+    }
+    &--size-inherit-xl {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  &--weight-thin {
+    font-weight: $p-font-weight-thin;
+  }
+  &--weight-regular {
+    font-weight: $p-font-weight-regular;
+  }
+  &--weight-bold {
     font-weight: $p-font-weight-bold;
   }
 
-  &--size {
-    &-x-small {
-      font-size: $p-text-size-x-small;
-    }
-    &-small {
-      font-size: $p-text-size-small;
-    }
-    &-medium {
-      font-size: $p-text-size-medium;
-    }
-    &-large {
-      font-size: $p-text-size-large;
-    }
-    &-x-large {
-      font-size: $p-text-size-x-large;
-    }
-    &-inherit {
-      font-size: inherit;
-    }
-
-    @include p-breakpoint("xs") {
-      &-x-small-xs {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-xs {
-        font-size: $p-text-size-small;
-      }
-      &-medium-xs {
-        font-size: $p-text-size-medium;
-      }
-      &-large-xs {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-xs {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-xs {
-        font-size: inherit;
-      }
-    }
-
-    @include p-breakpoint("s") {
-      &-x-small-s {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-s {
-        font-size: $p-text-size-small;
-      }
-      &-medium-s {
-        font-size: $p-text-size-medium;
-      }
-      &-large-s {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-s {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-s {
-        font-size: inherit;
-      }
-    }
-
-    @include p-breakpoint("m") {
-      &-x-small-m {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-m {
-        font-size: $p-text-size-small;
-      }
-      &-medium-m {
-        font-size: $p-text-size-medium;
-      }
-      &-large-m {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-m {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-m {
-        font-size: inherit;
-      }
-    }
-
-    @include p-breakpoint("l") {
-      &-x-small-l {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-l {
-        font-size: $p-text-size-small;
-      }
-      &-medium-l {
-        font-size: $p-text-size-medium;
-      }
-      &-large-l {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-l {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-l {
-        font-size: inherit;
-      }
-    }
-
-    @include p-breakpoint("xl") {
-      &-x-small-xl {
-        font-size: $p-text-size-x-small;
-      }
-      &-small-xl {
-        font-size: $p-text-size-small;
-      }
-      &-medium-xl {
-        font-size: $p-text-size-medium;
-      }
-      &-large-xl {
-        font-size: $p-text-size-large;
-      }
-      &-x-large-xl {
-        font-size: $p-text-size-x-large;
-      }
-      &-inherit-xl {
-        font-size: inherit;
-      }
-    }
+  &--align-left {
+    text-align: left;
   }
 
-  &--weight {
-    &-thin {
-      font-weight: $p-font-weight-thin;
-    }
-    &-regular {
-      font-weight: $p-font-weight-regular;
-    }
-    &-bold {
-      font-weight: $p-font-weight-bold;
-    }
+  &--align-center {
+    text-align: center;
   }
 
-  &--align {
-    &-left {
-      text-align: left;
-    }
-
-    &-center {
-      text-align: center;
-    }
-
-    &-right {
-      text-align: right;
-    }
+  &--align-right {
+    text-align: right;
   }
 
   &--color {
