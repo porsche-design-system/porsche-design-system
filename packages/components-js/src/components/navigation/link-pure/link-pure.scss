@@ -5,6 +5,7 @@
   width: 100%;
   height: auto;
   margin: 0 0 0 p-rem(4px);
+  padding: 0 .125em 0 0;
   white-space: normal;
   overflow: visible;
   clip: auto;
@@ -16,6 +17,7 @@
   width: 1px;
   height: 1px;
   margin: -1px;
+  padding: 0;
   white-space: nowrap;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
@@ -45,6 +47,7 @@
 :host {
   display: inline-flex;
   vertical-align: top;
+  position: relative;
 }
 
 .#{$p-global-class-prefix}link-pure {
@@ -52,7 +55,6 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-  position: relative;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -62,15 +64,27 @@
   text-decoration: none;
   text-align: left;
   background: transparent;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier,
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier,
   font-size 0.00001ms linear; // used for transitionend event listener
+
+  // gives possibility to enlarge click area on host element
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    outline: transparent none;
+    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier;
+  }
 
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
-  &:focus {
+  &:focus::before {
     outline-width: 2px;
     outline-style: solid;
     outline-offset: 1px;
@@ -79,7 +93,7 @@
   &--theme-light {
     color: $p-color-theme-light-default;
 
-    &:focus {
+    &:focus::before {
       outline-color: $p-color-theme-light-state-focus;
     }
 
@@ -99,7 +113,7 @@
   &--theme-dark {
     color: $p-color-theme-dark-default;
 
-    &:focus {
+    &:focus::before {
       outline-color: $p-color-theme-dark-state-focus;
     }
 
@@ -254,7 +268,6 @@
   &__label {
     display: block;
     box-sizing: border-box;
-    padding: 0;
     border: 0;
 
     &--visible {
