@@ -1,0 +1,46 @@
+@import "../variables/global";
+@import "utils";
+
+/**
+ * Converts px to rem unit
+ * @param $px - only accepts value in px unit, e.g. 12px
+ */
+@function p-rem($px) {
+  @if __p-is-px($px) {
+    $px: __p-strip-unit($px);
+    $base: __p-strip-unit($p-global-rem-base);
+    @return ($px / $base) * 1rem;
+  } @else {
+    @error 'p-rem() Scss function only accepts value in px for param $px, e.g. 12px';
+  }
+}
+
+/**
+ * Converts rem to px unit
+ * @param $rem - only accepts value in rem unit, e.g. 1.5rem
+ */
+@function p-px($rem) {
+  @if __p-is-rem($rem) {
+    $rem: __p-strip-unit($rem);
+    $base: __p-strip-unit($p-global-rem-base);
+    @return ($rem * $base) * 1px;
+  } @else {
+    @error 'p-px() Scss function only accepts value in rem for param $rem, e.g. 1.5rem';
+  }
+}
+
+// @deprecated
+// Please use p-rem() instead.
+@function rem($pxval) {
+  @warn 'This Scss function is deprecated and will be removed with next major release. Please use p-rem() instead.';
+
+  @if not unitless($pxval) {
+    $pxval: ($pxval / ($pxval * 0 + 1));
+  }
+
+  $base: $p-global-rem-base;
+  @if not unitless($base) {
+    $base: ($base / ($base * 0 + 1));
+  }
+  @return ($pxval / $base) * 1rem;
+}

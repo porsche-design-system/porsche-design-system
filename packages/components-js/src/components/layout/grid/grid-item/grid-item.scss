@@ -1,11 +1,11 @@
 @import "../../../../../../../packages/scss-utils/index";
 
-$p-grid-gutter: rem(16px);
-$p-grid-gutter-xs: rem(16px);
-$p-grid-gutter-s: rem(24px);
-$p-grid-gutter-m: rem(36px);
-$p-grid-gutter-l: rem(36px);
-$p-grid-gutter-xl: rem(36px);
+$p-grid-gutter: p-rem(16px);
+$p-grid-gutter-xs: p-rem(16px);
+$p-grid-gutter-s: p-rem(24px);
+$p-grid-gutter-m: p-rem(36px);
+$p-grid-gutter-l: p-rem(36px);
+$p-grid-gutter-xl: p-rem(36px);
 
 $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333333% 66.666667% 75% 83.333333% 91.666667% 100%;
 

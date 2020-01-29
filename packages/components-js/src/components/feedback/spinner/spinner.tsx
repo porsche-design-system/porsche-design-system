@@ -26,7 +26,7 @@ export class Spinner {
 
     return (
       <span class={spinnerClasses} aria-busy='true' aria-live='polite'>
-        <svg class={imageClasses} viewBox='0 0 32 32' role='img' focusable='false'>
+        <svg class={imageClasses} viewBox='0 0 32 32' width='100%' height='100%' role='img' focusable='false'>
           <circle class={bgClasses} cx='50%' cy='50%' r='9' />
           <circle class={fgClasses} cx='50%' cy='50%' r='9' />
         </svg>
