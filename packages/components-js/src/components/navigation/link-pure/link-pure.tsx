@@ -1,6 +1,12 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  calcLineHeightForElement,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+  transitionListener
+} from '../../../utils';
 import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
@@ -46,8 +52,17 @@ export class LinkPure {
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string = undefined;
 
+  private linkTag: HTMLElement;
+  private iconTag: HTMLElement;
+
   public componentDidLoad() {
     improveFocusHandlingForCustomElement(this.element);
+
+    transitionListener(this.linkTag, 'font-size', () => {
+      const size = calcLineHeightForElement(this.linkTag);
+      this.iconTag.style.width = `${size}em`;
+      this.iconTag.style.height = `${size}em`;
+    });
   }
 
   public render(): JSX.Element {
@@ -55,7 +70,6 @@ export class LinkPure {
 
     const linkPureClasses = cx(
       prefix('link-pure'),
-      mapBreakpointPropToPrefixedClasses('link-pure-', this.hideLabel, ['without-label', 'with-label']),
       mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
       prefix(`link-pure--theme-${this.theme}`),
       this.active && prefix(`link-pure--active`)
@@ -66,7 +80,8 @@ export class LinkPure {
     );
 
     const labelClasses = cx(
-      prefix('link-pure__label')
+      prefix('link-pure__label'),
+      mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
 
     return (
@@ -78,6 +93,7 @@ export class LinkPure {
           download: this.download,
           rel: this.rel
         } : null)}
+        ref={el => this.linkTag = el as HTMLElement}
       >
         <p-icon
           class={iconClasses}
@@ -85,6 +101,7 @@ export class LinkPure {
           size='inherit'
           name={this.icon}
           source={this.iconSource}
+          ref={el => this.iconTag = el as HTMLElement}
         />
         <p-text
           class={labelClasses}

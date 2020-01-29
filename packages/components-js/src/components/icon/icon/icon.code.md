@@ -89,11 +89,11 @@ With the use of SVG icons, there are options to give more accessibility to users
     public color: string = 'default';
     
     public get isInheritSize() {
-      return this.size === 'inherit' ? 'width: 48px' : undefined;
+      return this.size === 'inherit' ? 'width: 96px; height: 96px;' : undefined;
     }
     
     public get isInheritColor() {
       return this.color === 'inherit' ? 'color: deeppink' : undefined;
     }
   }
-</script>
+</script>w
