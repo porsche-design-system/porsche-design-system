@@ -32,7 +32,7 @@ The size of the icon container always equals the line height of the text it's co
 
 <p-button-pure size="large" hide-label="true">Button Pure</p-button-pure>
 
-When it's enough to indicate an action with an icon only, the text label can be hidden. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon. 
+When it's enough to indicate an action with an icon only, the text label can be hidden but a minimum height of 40 px must be maintained. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon. 
 
 ---
 
