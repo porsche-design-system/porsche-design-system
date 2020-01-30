@@ -110,13 +110,13 @@ export default class CodeBlock extends Vue {
         .replace(/(\son.*?)="(.*?)"/g, (m, $key, $value) => {
           return `(${$key.substring(3)})="${$value}"`;
         })
-        // // transform all attributes to camel case
-        .replace(/(\S*[a-zA-Z-]+)="(.*?)"/g, (m, $key, $value) => {
-          return `[${camelCase($key)}]="${$value}"`;
+        // transform all keys to camel case and surrounding brackets and surround all values with ''
+        .replace(/(\S*[a-zA-Z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
+          return `[${camelCase($key)}]="'${$value}'"`;
         })
-        // // transform key evaluate syntax when object is provided as value
-        .replace(/(\[.*?])="{(.*?)}"/g, (m, $key, $value) => {
-          return `${$key}="{${$value}}"`;
+        // remove single quotes from boolean values
+        .replace(/(\S*\[*\w])="'((true|false).*?)'"/g, (m, $key, $value) => {
+          return `${$key}="${$value}"`;
         })
 
     );
@@ -125,17 +125,25 @@ export default class CodeBlock extends Vue {
   private convertToReact(markup: string): string {
     return (
       markup
-        // transform all attributes to camel case
-        .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
-          return `${camelCase($key)}="${$value}"`;
+        // remove quotes from object values but add double brackets and camelCase
+        .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+          return `${camelCase($key)}={{${$value}}}`;
         })
-        // remove quotes from object values but add double brackets
-        .replace(/="{(.*?)}"/g, (m, $value) => {
-          return `={{${$value}}}`;
+        // transform all standard attributes to camel case
+        .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
+          return `${camelCase($key)}={"${$value}"}`;
         })
         // transform class attribute to JSX compatible one
         .replace(/class="(.*?)"/g, (m, $value) => {
-          return `className="${$value}"`;
+          return `className={"${$value}"}`;
+        })
+        // transform to camelCase event binding syntax
+        .replace(/(\son.*?)={"(.*?)"}/g, (m, $key, $value) => {
+          return `${$key.substring(0,3)+$key.substring(3,4).toUpperCase()+$key.substring(4)}={() => {${$value}}}`;
+        })
+        // transform boolean
+        .replace(/(\S+)={"(true|false)"}/g, (m, $key, $value) => {
+          return `${$key}={${$value}}`;
         })
         // transform custom element opening tags to pascal case
         .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
@@ -144,10 +152,6 @@ export default class CodeBlock extends Vue {
         // transform custom element closing tags to pascal case
         .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
           return `</${upperFirst(camelCase($tag))}>`;
-        })
-        // transform to camelCase event binding syntax
-        .replace(/(\son.*?)="(.*?)"/g, (m, $key, $value) => {
-          return `${$key.substring(0,3)+$key.substring(3,4).toUpperCase()+$key.substring(4)}="${$value}"`;
         })
     );
   }
