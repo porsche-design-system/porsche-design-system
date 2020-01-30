@@ -2,6 +2,16 @@
 
 ## Design
 
+## [1.0.0] (2020-01-28)
+
+### Added
+- New textstyle for neutral color in light and dark theme
+- Line-height gets calculated based on Porsche type-scaling formula automatically for Text, Link Pure and Button Pure
+
+### Changed
+- Stylistic adjustment of the icons
+- Rename and optimize neutral colors for Icon and Text
+
 ## [1.0.0-rc.1] (2019-12-13)
 
 ### Added
@@ -21,6 +31,11 @@
 --- 
 
 ## Code
+
+## [1.0.1] (2020-01-30)
+
+### Added
+- Clickable area of `Link Pure` and `Button Pure` is optionally configurable by defining padding on host element
 
 ## [1.0.0] (2020-01-28)
 

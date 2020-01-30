@@ -174,6 +174,26 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ---
 
+## Link with custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines.
+Therefore a custom padding can be set on the host element.
+
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <p-link-pure href="https://www.porsche.com" :theme="theme" style="padding: 1rem;">Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" :theme="theme" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
+    <a href="https://www.porsche.com" class="example-link">
+      <p-link-pure :theme="theme" style="padding: 1rem;">Some label</p-link-pure>
+    </a>
+    <a href="https://www.porsche.com" class="example-link">
+      <p-link-pure :theme="theme" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
+    </a>
+  </template>
+</Playground>
+
+---
+
 ## Bind events to the link
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the link.
