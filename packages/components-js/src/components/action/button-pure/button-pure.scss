@@ -47,7 +47,7 @@
 :host {
   display: inline-flex;
   vertical-align: top;
-  position: relative;
+  position: relative !important;
 }
 
 .#{$p-global-class-prefix}button-pure {
