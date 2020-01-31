@@ -30,7 +30,7 @@ This should be the variant of your choice whenever possible, as icons should pre
 
 <p-link-pure size="large" hide-label="true" href="https://designsystem.porsche.com">Link Pure</p-link-pure>
 
-When it's enough to indicate an interaction with an icon only, the text label can be hidden. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon.
+When it's enough to indicate an interaction with an icon only, the text label can be hidden but a minimum height of 40 px must be maintained. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon.
 
 
 ---
