@@ -107,20 +107,24 @@ export default class CodeBlock extends Vue {
     return (
       markup
         // transform to event binding syntax
-        .replace(/(\son.*?)="(.*?)"/g, (m, $key, $value) => {
-          return `(${$key.substring(3)})="${$value}"`;
+        .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
+          return ` (${$key.substring(2)})="${$value}"`;
         })
-        // transform all keys of obect values to camel case and surround them in brackets
-        .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-          return `[${camelCase($key)}]="{${$value}}"`;
+        // transform all keys of object values to camel case and surround them in brackets
+        .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+          return ` [${camelCase($key)}]="{${$value}}"`;
         })
         // transform all other keys to camel case, surround them in brackets and surround all values with ''
-        .replace(/(\S*[a-zA-Z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
-          return `[${camelCase($key)}]="'${$value}'"`;
+        .replace(/\s(\S*[a-z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
+          return ` [${camelCase($key)}]="'${$value}'"`;
+        })
+        // transform all keys to camel case which have digits as a value
+        .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
+          return ` [${camelCase($key)}]="${$value}"`;
         })
         // remove single quotes from boolean values
-        .replace(/(\S*\[*\w])="'((true|false).*?)'"/g, (m, $key, $value) => {
-          return `${$key}="${$value}"`;
+        .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
+          return ` [${camelCase($key)}]="${$value}"`;
         })
 
     );
@@ -130,24 +134,28 @@ export default class CodeBlock extends Vue {
     return (
       markup
         // remove quotes from object values but add double brackets and camelCase
-        .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-          return `${camelCase($key)}={{${$value}}}`;
+        .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+          return ` ${camelCase($key)}={{${$value}}}`;
         })
         // transform all standard attributes to camel case and add brackets
-        .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
-          return `${camelCase($key)}={"${$value}"}`;
+        .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
+          return ` ${camelCase($key)}={"${$value}"}`;
         })
         // transform class attribute to JSX compatible one
-        .replace(/class={"(.*?)"}/g, (m, $value) => {
-          return `className={"${$value}"}`;
+        .replace(/\sclass={"(.*?)"}/g, (m, $value) => {
+          return ` className={"${$value}"}`;
         })
         // transform to camelCase event binding syntax
-        .replace(/(\son.*?)={"(.*?)"}/g, (m, $key, $value) => {
-          return `${$key.substring(0,3)+$key.substring(3,4).toUpperCase()+$key.substring(4)}={() => {${$value}}}`;
+        .replace(/\s(on.+?)={"(.*?)"}/g, (m, $key, $value) => {
+          return ` on${upperFirst($key.substring(2))}={() => {${$value}}}`;
         })
         // transform boolean
-        .replace(/(\S+)={"(true|false)"}/g, (m, $key, $value) => {
-          return `${$key}={${$value}}`;
+        .replace(/\s(\S+)={"(true|false)"}/g, (m, $key, $value) => {
+          return ` ${$key}={${$value}}`;
+        })
+        // transform all keys to camel case which have digits as a value
+        .replace(/\s(\S+)={"(\d.*?)"}/g, (m, $key, $value) => {
+          return ` ${$key}={${$value}}`;
         })
         // transform custom element opening tags to pascal case
         .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
