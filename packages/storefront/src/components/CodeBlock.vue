@@ -106,31 +106,56 @@ export default class CodeBlock extends Vue {
   private convertToAngular(markup: string): string {
     return (
       markup
-        // transform all attributes to camel case
-        .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
-          return `${camelCase($key)}="${$value}"`;
+        // transform to event binding syntax
+        .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
+          return ` (${$key.substring(2)})="${$value}"`;
         })
-        // transform key evaluate syntax when object is provided as value
-        .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-          return `[${$key}]="{${$value}}"`;
+        // transform all keys of object values to camel case and surround them in brackets
+        .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+          return ` [${camelCase($key)}]="{${$value}}"`;
         })
+        // transform all other keys to camel case, surround them in brackets and surround all values with ''
+        .replace(/\s(\S*[a-z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
+          return ` [${camelCase($key)}]="'${$value}'"`;
+        })
+        // transform all keys to camel case which have digits as a value
+        .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
+          return ` [${camelCase($key)}]="${$value}"`;
+        })
+        // remove single quotes from boolean values
+        .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
+          return ` [${camelCase($key)}]="${$value}"`;
+        })
+
     );
   }
 
   private convertToReact(markup: string): string {
     return (
       markup
-        // transform all attributes to camel case
-        .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
-          return `${camelCase($key)}="${$value}"`;
+        // remove quotes from object values but add double brackets and camelCase
+        .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+          return ` ${camelCase($key)}={{${$value}}}`;
         })
-        // remove quotes from object values but add double brackets
-        .replace(/="{(.*?)}"/g, (m, $value) => {
-          return `={{${$value}}}`;
+        // transform all standard attributes to camel case and add brackets
+        .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
+          return ` ${camelCase($key)}={"${$value}"}`;
         })
         // transform class attribute to JSX compatible one
-        .replace(/class="(.*?)"/g, (m, $value) => {
-          return `className="${$value}"`;
+        .replace(/\sclass={"(.*?)"}/g, (m, $value) => {
+          return ` className={"${$value}"}`;
+        })
+        // transform to camelCase event binding syntax
+        .replace(/\s(on.+?)={"(.*?)"}/g, (m, $key, $value) => {
+          return ` on${upperFirst($key.substring(2))}={() => {${$value}}}`;
+        })
+        // transform boolean
+        .replace(/\s(\S+)={"(true|false)"}/g, (m, $key, $value) => {
+          return ` ${$key}={${$value}}`;
+        })
+        // transform all keys to camel case which have digits as a value
+        .replace(/\s(\S+)={"(\d.*?)"}/g, (m, $key, $value) => {
+          return ` ${$key}={${$value}}`;
         })
         // transform custom element opening tags to pascal case
         .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
