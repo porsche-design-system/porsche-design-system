@@ -108,6 +108,20 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ---
 
+## Button with custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of a button to fulfill accessibility guidelines.
+Therefore a custom padding can be set on the host element.
+
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <p-button-pure :theme="theme" style="padding: 1rem;">Some label</p-button-pure>
+    <p-button-pure :theme="theme" hide-label="true" style="padding: 1rem;">Some label</p-button-pure>
+  </template>
+</Playground>
+
+---
+
 ## Bind events to the button
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the button.
