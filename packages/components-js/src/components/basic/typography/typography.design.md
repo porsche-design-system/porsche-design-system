@@ -20,10 +20,7 @@ You can download the [Porsche Next font here](https://cdn.ui.porsche.com/porsche
 The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche Design System but available as separate typeface packages on request.
 
 #### Chinese / Japanese
-For Chinese and Japanese language the following system fonts are to be used, sticking to the default Porsche font scaling system:
-
-- Chinese: 黑体, SimHei, 宋体, SimSun
-- Japanese: MS PGothic
+For Chinese and Japanese language the sans serif system fonts are to be used, sticking to the default Porsche font scaling system.
 
 ---
 
