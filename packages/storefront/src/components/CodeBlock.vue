@@ -110,7 +110,11 @@ export default class CodeBlock extends Vue {
         .replace(/(\son.*?)="(.*?)"/g, (m, $key, $value) => {
           return `(${$key.substring(3)})="${$value}"`;
         })
-        // transform all keys to camel case and surrounding brackets and surround all values with ''
+        // transform all keys of obect values to camel case and surround them in brackets
+        .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+          return `[${camelCase($key)}]="{${$value}}"`;
+        })
+        // transform all other keys to camel case, surround them in brackets and surround all values with ''
         .replace(/(\S*[a-zA-Z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
           return `[${camelCase($key)}]="'${$value}'"`;
         })
@@ -129,12 +133,12 @@ export default class CodeBlock extends Vue {
         .replace(/(\S+)="{(.*?)}"/g, (m, $key, $value) => {
           return `${camelCase($key)}={{${$value}}}`;
         })
-        // transform all standard attributes to camel case
+        // transform all standard attributes to camel case and add brackets
         .replace(/(\S+)="(.*?)"/g, (m, $key, $value) => {
           return `${camelCase($key)}={"${$value}"}`;
         })
         // transform class attribute to JSX compatible one
-        .replace(/class="(.*?)"/g, (m, $value) => {
+        .replace(/class={"(.*?)"}/g, (m, $value) => {
           return `className={"${$value}"}`;
         })
         // transform to camelCase event binding syntax
