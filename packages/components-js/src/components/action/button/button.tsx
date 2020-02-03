@@ -62,6 +62,7 @@ export class Button {
         type={this.type}
         disabled={this.isDisabled()}
         tabindex={this.tabbable ? 0 : -1}
+        aria-busy={this.loading && 'true'}
       >
         {this.loading ? (
           <p-spinner
@@ -76,6 +77,7 @@ export class Button {
             name={this.icon}
             source={this.iconSource}
             color='inherit'
+            aria-hidden='true'
           />
         )}
         <p-text class={labelClasses} tag='span' color='inherit'>
