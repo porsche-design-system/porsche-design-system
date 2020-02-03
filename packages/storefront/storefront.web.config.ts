@@ -191,6 +191,10 @@ export const config: StorefrontConfig = {
     },
     Form: {
       Textfield: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textfield-wrapper/textfield-wrapper.design.md`)
+        ],
         Code: [
           // @ts-ignore
           () => import(`@/../../components-js/src/components/form/textfield-wrapper/textfield-wrapper.code.md`)
