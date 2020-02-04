@@ -2,32 +2,6 @@
 
 :host {
   display: block;
-
-  ::slotted(a) {
-    outline: transparent none;
-    color: inherit;
-    text-decoration: underline;
-    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-    color $p-animation-hover-duration $p-animation-hover-bezier;
-  }
-
-  ::slotted(a:hover) {
-    color: $p-color-theme-light-state-hover;
-  }
-
-  ::slotted(a:focus) {
-    outline: $p-color-theme-light-state-focus solid 2px;
-    outline-offset: 1px;
-  }
-
-  ::slotted(b, strong) {
-    font-weight: $p-font-weight-bold;
-  }
-
-  ::slotted(span, cite, time) {
-    display: inline-block;
-    vertical-align: top;
-  }
 }
 
 .#{$p-global-class-prefix}text {
@@ -42,18 +16,23 @@
   &--size-x-small {
     @include p-type-scale($p-text-size-x-small);
   }
+
   &--size-small {
     @include p-type-scale($p-text-size-small);
   }
+
   &--size-medium {
     @include p-type-scale($p-text-size-medium);
   }
+
   &--size-large {
     @include p-type-scale($p-text-size-large);
   }
+
   &--size-x-large {
     @include p-type-scale($p-text-size-x-large);
   }
+
   &--size-inherit {
     font-size: inherit;
     line-height: inherit;
@@ -172,9 +151,11 @@
   &--weight-thin {
     font-weight: $p-font-weight-thin;
   }
+
   &--weight-regular {
     font-weight: $p-font-weight-regular;
   }
+
   &--weight-bold {
     font-weight: $p-font-weight-bold;
   }

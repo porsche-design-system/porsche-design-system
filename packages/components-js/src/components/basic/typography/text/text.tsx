@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h } from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -8,6 +8,7 @@ import {
   calcLineHeightForElement
 } from '../../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../../types';
+import { insertSlottedStyles } from '../../../../utils/slotted-styles';
 
 @Component({
   tag: 'p-text',
@@ -15,6 +16,8 @@ import { TextSize, TextWeight, Theme } from '../../../../types';
   shadow: true
 })
 export class Text {
+
+  @Element() public element!: HTMLElement;
 
   /** Sets a custom HTML tag depending of the usage of the text component. */
   @Prop() public tag?:
@@ -49,6 +52,38 @@ export class Text {
   private textTag: HTMLElement;
 
   public componentDidLoad() {
+
+    const tagName= this.element.tagName.toLowerCase();
+    const style = `${tagName} a {
+      outline: none transparent;
+      color: inherit;
+      text-decoration: underline;
+      -webkit-transition: outline-color .24s ease, color .24s ease;
+      transition: outline-color .24s ease, color .24s ease;
+    }
+    
+    ${tagName} a:hover {
+      color: #d5001c;
+    }
+    
+    ${tagName} a:focus {
+      outline: 2px solid #00d5b9;
+      outline-offset: 1px;
+    }
+    
+    ${tagName} b, 
+    ${tagName} strong {
+      font-weight: 700;
+    }
+    
+    ${tagName} span, 
+    ${tagName} cite, 
+    ${tagName} time {
+      display: inline-block;
+      vertical-align: top;
+    }`;
+
+    insertSlottedStyles(this.element, style);
     transitionListener(this.textTag, 'font-size', () => {
       this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
     });
