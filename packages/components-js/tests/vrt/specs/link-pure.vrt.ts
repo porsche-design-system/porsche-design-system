@@ -13,6 +13,7 @@ describe('Link Pure', () => {
     expect(
       await vrt.test('link-pure', async () => {
         await vrt.goTo('/src/components/navigation/link-pure/link-pure.test.html');
+        await vrt.focus('#test-focus-state');
       })
     ).toBeFalsy();
   });

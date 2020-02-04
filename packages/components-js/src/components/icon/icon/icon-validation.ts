@@ -19,6 +19,9 @@ export const validateContent = (svgContent: string | null) => {
       // fix IE11 focus SVG elements on tab
       svgElm.setAttribute('focusable', 'false');
 
+      // Hide from Screen Readers
+      svgElm.setAttribute('aria-hidden', 'true');
+
       // root element must be an svg
       // lets double check we've got valid elements
       // do not allow scripts

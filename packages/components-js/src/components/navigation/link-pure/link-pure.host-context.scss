@@ -1,8 +1,0 @@
-@import '../../../../../../packages/scss-utils/index';
-
-a:focus {
-  p-link-pure {
-    outline: 2px solid $p-color-theme-light-state-focus;
-    outline-offset: 1px;
-  }
-}
