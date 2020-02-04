@@ -232,13 +232,4 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     outline: none;
     text-decoration: none;
   }
-  .example-link-color {
-    display: inline-block;
-    color: deeppink;
-    text-decoration: none;
-
-    &:hover {
-      color: green;
-    }
-  }
 </style>

@@ -1,7 +1,8 @@
-import { JSX, Component, Prop, h } from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../../utils';
 import { Theme } from '../../../../types';
+import { insertSlottedStyles } from '../../../../utils/slotted-styles';
 
 @Component({
   tag: 'p-headline',
@@ -9,6 +10,8 @@ import { Theme } from '../../../../types';
   shadow: true
 })
 export class Headline {
+
+  @Element() public element!: HTMLElement;
 
   /** Style of the text. */
   @Prop() public variant?:
@@ -32,6 +35,17 @@ export class Headline {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
+
+  public componentDidLoad() {
+
+    const tagName= this.element.tagName.toLowerCase();
+    const style = `${tagName} a {
+      color: inherit;
+      text-decoration: none;
+    }`;
+
+    insertSlottedStyles(this.element, style);
+  }
 
   public render(): JSX.Element {
     const TagType = !this.tag ?
