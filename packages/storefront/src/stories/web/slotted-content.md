@@ -1,7 +1,6 @@
 # Slotted Content
 
-Some of our components use slots to provide textual content with our styling (e.g. `p-text` or `p-link-pure`). 
-We basically do support slotted content which is even wrapped inside HTML and/or contains HTML:
+Some of our components use slots to provide text/html content with predefined styling (e.g. `p-text` or `p-link-pure`).
 
 ```html
 <p-text>
@@ -10,34 +9,34 @@ We basically do support slotted content which is even wrapped inside HTML and/or
 ```  
 
 ## Problem
-In some circumstances it is common to provide such content with the help of innerHTML (which will eventually break!):
+In some circumstances it is common to provide such content with the help of innerHTML or innerText (which breaks in browser not supporting Shadow DOM):
 
 ### Angular
-```angularjs
+```angular
 <p-text [innerHTML]="theHTMLString"></p-text>
 ```  
 
 ### React
-```javascript
-<p-text dangerouslySetInnerHTML={theHTMLString()}></p-text>
+```react
+<PText dangerouslySetInnerHTML={theHTMLString()}></PText>
 ```  
 
-The above examples break in case that the component is rendered in polyfill mode without a shadow dom (e.g. in IE11).
-That's because the inner HTML will strip out all the contents of the component.
+The above examples break in case that the component is rendered in polyfill mode without a Shadow DOM (e.g. in IE11).
+That's because the innerHTML will strip out all the contents of the component.
 
 
 ## Solution
 As a workaround, you have to provide the contents like this:
 
 ### Angular
-```angularjs
+```angular
 <p-text>
   <span [innerHTML]="theHTMLString"></span>
 </p-text>
 ``` 
 ### React
-```javascript
-<p-text>
+```react
+<PText>
   <span dangerouslySetInnerHTML={theHTMLString()}></span>
-</p-text>
+</PText>
 ``` 
