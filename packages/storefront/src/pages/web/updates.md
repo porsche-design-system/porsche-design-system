@@ -32,6 +32,11 @@
 
 ## Code
 
+## [1.0.2] (2020-02-04)
+
+### Fixed
+- Inheritable styling of slotted content
+
 ## [1.0.1] (2020-01-30)
 
 ### Added
