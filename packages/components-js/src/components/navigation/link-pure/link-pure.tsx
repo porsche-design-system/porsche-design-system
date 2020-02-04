@@ -10,6 +10,7 @@ import {
 import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName } from '../../icon/icon/icon-name';
+import { insertSlottedStyles } from '../../../utils/slotted-styles';
 
 @Component({
   tag: 'p-link-pure',
@@ -56,8 +57,14 @@ export class LinkPure {
   private iconTag: HTMLElement;
 
   public componentDidLoad() {
-    improveFocusHandlingForCustomElement(this.element);
+    const tagName= this.element.tagName.toLowerCase();
+    const style = `a:focus ${tagName} {
+      outline: 2px solid #00d5b9;
+      outline-offset: 1px;
+    }`;
 
+    insertSlottedStyles(this.element, style);
+    improveFocusHandlingForCustomElement(this.element);
     transitionListener(this.linkTag, 'font-size', () => {
       const size = calcLineHeightForElement(this.linkTag);
       this.iconTag.style.width = `${size}em`;

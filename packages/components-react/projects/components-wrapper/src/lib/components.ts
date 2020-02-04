@@ -22,4 +22,3 @@ export const PMarque = /*@__PURE__*/createReactComponent<JSX.PMarque, HTMLPMarqu
 export const PPagination = /*@__PURE__*/createReactComponent<JSX.PPagination, HTMLPPaginationElement>('p-pagination');
 export const PSpinner = /*@__PURE__*/createReactComponent<JSX.PSpinner, HTMLPSpinnerElement>('p-spinner');
 export const PText = /*@__PURE__*/createReactComponent<JSX.PText, HTMLPTextElement>('p-text');
-export const PTextfieldWrapper = /*@__PURE__*/createReactComponent<JSX.PTextfieldWrapper, HTMLPTextfieldWrapperElement>('p-textfield-wrapper');

@@ -26,4 +26,3 @@
  - [p-link](../../navigation/link)
  - [p-link-pure](../../navigation/link-pure)
  - [p-pagination](../../navigation/pagination)
- - [p-textfield-wrapper](../../form/textfield-wrapper)
