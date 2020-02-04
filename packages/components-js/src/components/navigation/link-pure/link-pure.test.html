@@ -77,8 +77,19 @@
   <p-link-pure href="https://www.porsche.com" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-pure>
 </div>
 
+<div class="playground light" title="should render link-pure with custom clickable area">
+  <p-link-pure href="https://www.porsche.com" style="padding: 1rem;">Some label</p-link-pure>
+  <p-link-pure href="https://www.porsche.com" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
+  <a href="https://www.porsche.com" class="example-link">
+    <p-link-pure style="padding: 1rem;">Some label</p-link-pure>
+  </a>
+  <a href="https://www.porsche.com" class="example-link">
+    <p-link-pure hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
+  </a>
+</div>
+
 <div class="playground light" title="should render link-pure within an anchor tag">
-  <a class="example-link" href="#">
+  <a id="test-focus-state" class="example-link" href="#">
     <p-link-pure>Some label</p-link-pure>
   </a>
 </div>

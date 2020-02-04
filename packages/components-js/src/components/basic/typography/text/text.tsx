@@ -59,28 +59,28 @@ export class Text {
       color: inherit;
       text-decoration: underline;
       -webkit-transition: outline-color .24s ease, color .24s ease;
-      transition: outline-color .24s ease, color .24s ease
+      transition: outline-color .24s ease, color .24s ease;
     }
     
     ${tagName} a:hover {
-      color: #d5001c
+      color: #d5001c;
     }
     
     ${tagName} a:focus {
       outline: 2px solid #00d5b9;
-      outline-offset: 1px
+      outline-offset: 1px;
     }
     
     ${tagName} b, 
     ${tagName} strong {
-      font-weight: 700
+      font-weight: 700;
     }
     
     ${tagName} span, 
     ${tagName} cite, 
     ${tagName} time {
       display: inline-block;
-      vertical-align: top
+      vertical-align: top;
     }`;
 
     insertSlottedStyles(this.element, style);
