@@ -95,6 +95,10 @@ export const config: StorefrontConfig = {
       'Testing': [
         // @ts-ignore
         () => import(`@/stories/web/testing.md`)
+      ],
+      'Slotted Content': [
+        // @ts-ignore
+        () => import(`@/stories/web/slotted-content.md`)
       ]
     },
     Basic: {
