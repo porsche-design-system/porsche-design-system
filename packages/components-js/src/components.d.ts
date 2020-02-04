@@ -414,20 +414,6 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
-  interface PTextfieldWrapper {
-    /**
-    * The label text.
-    */
-    'label': string;
-    /**
-    * The message.
-    */
-    'message'?: string;
-    /**
-    * The state
-    */
-    'state'?: 'success' | 'error';
-  }
 }
 
 declare global {
@@ -516,12 +502,6 @@ declare global {
     prototype: HTMLPTextElement;
     new (): HTMLPTextElement;
   };
-
-  interface HTMLPTextfieldWrapperElement extends Components.PTextfieldWrapper, HTMLStencilElement {}
-  var HTMLPTextfieldWrapperElement: {
-    prototype: HTMLPTextfieldWrapperElement;
-    new (): HTMLPTextfieldWrapperElement;
-  };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
@@ -537,7 +517,6 @@ declare global {
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
-    'p-textfield-wrapper': HTMLPTextfieldWrapperElement;
   }
 }
 
@@ -934,20 +913,6 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
-  interface PTextfieldWrapper {
-    /**
-    * The label text.
-    */
-    'label'?: string;
-    /**
-    * The message.
-    */
-    'message'?: string;
-    /**
-    * The state
-    */
-    'state'?: 'success' | 'error';
-  }
 
   interface IntrinsicElements {
     'p-button': PButton;
@@ -964,7 +929,6 @@ declare namespace LocalJSX {
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;
-    'p-textfield-wrapper': PTextfieldWrapper;
   }
 }
 
@@ -988,7 +952,6 @@ declare module "@stencil/core" {
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
-      'p-textfield-wrapper': LocalJSX.PTextfieldWrapper & JSXBase.HTMLAttributes<HTMLPTextfieldWrapperElement>;
     }
   }
 }

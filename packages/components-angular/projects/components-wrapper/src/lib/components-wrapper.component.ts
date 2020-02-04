@@ -188,14 +188,3 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
-export declare interface PTextfieldWrapper extends Components.PTextfieldWrapper {}
-@ProxyInputs(['label', 'message', 'state'])
-
-@Component({ selector: 'p-textfield-wrapper', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['label', 'message', 'state'] })
-export class PTextfieldWrapper {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
