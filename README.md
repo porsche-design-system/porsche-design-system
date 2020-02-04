@@ -176,6 +176,9 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __project root directory__
 1. Run `./docker.sh run-build --components-react`
 
+### Storefront
+1. Update `updates.md`
+
 ### Test
 1. Switch to __project root directory__
 1. Run `./docker.sh run-lint --components-js`
