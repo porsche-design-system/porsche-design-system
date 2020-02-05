@@ -2,16 +2,39 @@
 
 The **Text Field Wrapper** component supports basic input types and is essential for mostly any form.
 
-### Default
+A `label` is a caption which informs the user what information a particular form field is asking for. The `Text Field Wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
-A `label` is a caption which informs the user what information a particular form field is asking for. And it's required to fulfill accessibility standards.  
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
+
+### With label
 
 <Playground :childElementLayout="{spacing: 'block'}">    
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name"/>
   </p-text-field-wrapper>
   <p-text-field-wrapper label="Some label">
+    <input type="text" name="some-name" placeholder="Some placeholder text"/>
+  </p-text-field-wrapper>
+</Playground>
+
+### Without label
+
+<Playground :childElementLayout="{spacing: 'block'}">    
+  <p-text-field-wrapper label="Some label" hide-label="true">
+    <input type="text" name="some-name"/>
+  </p-text-field-wrapper>
+  <p-text-field-wrapper label="Some label" hide-label="true">
+    <input type="text" name="some-name" placeholder="Some placeholder text"/>
+  </p-text-field-wrapper>
+</Playground>
+
+### Responsive
+
+<Playground :childElementLayout="{spacing: 'block'}">    
+  <p-text-field-wrapper label="Some label" hide-label="{ base: true, l: false }">
+    <input type="text" name="some-name"/>
+  </p-text-field-wrapper>
+  <p-text-field-wrapper label="Some label" hide-label="{ base: true, l: false }">
     <input type="text" name="some-name" placeholder="Some placeholder text"/>
   </p-text-field-wrapper>
 </Playground>

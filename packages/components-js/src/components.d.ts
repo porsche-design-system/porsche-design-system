@@ -417,6 +417,10 @@ export namespace Components {
   }
   interface PTextFieldWrapper {
     /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
     * The label text.
     */
     'label'?: string;
@@ -936,6 +940,10 @@ declare namespace LocalJSX {
     'weight'?: TextWeight;
   }
   interface PTextFieldWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
     * The label text.
     */
