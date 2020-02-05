@@ -1,5 +1,29 @@
 @import '../../../../../../packages/scss-utils/index';
 
+@mixin p-text-field-wrapper-label-text-visible() {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin: 0 0 $p-spacing-4 0;
+  padding: 0;
+  white-space: normal;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin p-text-field-wrapper-label-text-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
 :host {
   display: block;
 }
@@ -51,46 +75,104 @@
 .#{$p-global-class-prefix}text-field-wrapper {
 
   &__label {
+    position: relative;
     display: block;
   }
 
   &__label-text {
-    margin-bottom: $p-spacing-4;
+
+    &--visible {
+      @include p-text-field-wrapper-label-text-visible;
+    }
+
+    &--hidden {
+      @include p-text-field-wrapper-label-text-hidden;
+    }
+
+    @include p-breakpoint("xs") {
+      &--visible-xs {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-xs {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &--visible-s {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-s {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &--visible-m {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-m {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &--visible-l {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-l {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &--visible-xl {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-xl {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
   }
 
   &__message {
     margin-top: $p-spacing-4;
   }
 
-  //&__button {
-  //  position: absolute;
-  //  top: 0;
-  //  right: 0;
-  //  color: $p-color-theme-light-default;
-  //  cursor: pointer;
-  //  width: p-rem(48px);
-  //  height: p-rem(48px);
-  //  border: none;
-  //  outline: none;
-  //  background: transparent;
+  // &__button {
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   color: $p-color-theme-light-default;
+  //   cursor: pointer;
+  //   width: p-rem(48px);
+  //   height: p-rem(48px);
+  //   border: none;
+  //   outline: none;
+  //   background: transparent;
   //
-  //  &:focus {
-  //    color: $p-color-theme-light-state-focus;
-  //  }
+  //   &:focus {
+  //     color: $p-color-theme-light-state-focus;
+  //   }
   //
-  //  &:hover {
-  //    color: $p-color-theme-light-state-hover;
-  //  }
+  //   &:hover {
+  //     color: $p-color-theme-light-state-hover;
+  //   }
   //
-  //  & ~ input {
-  //    padding-right: p-rem(56px);
-  //  }
-  //}
+  //   & ~ input {
+  //     padding-right: p-rem(56px);
+  //   }
+  // }
   //
-  //&__icon {
-  //  position: absolute;
-  //  top: 50%;
-  //  left: 50%;
-  //  transform: translate(-50%, -50%);
-  //}
+  // &__icon {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  // }
 }

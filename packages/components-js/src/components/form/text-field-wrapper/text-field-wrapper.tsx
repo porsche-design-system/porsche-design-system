@@ -1,6 +1,6 @@
 import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
 import { FormState, FormStateColor } from '../../../types';
 
@@ -21,6 +21,9 @@ export class TextFieldWrapper {
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
+
+  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad() {
 
@@ -77,7 +80,10 @@ export class TextFieldWrapper {
   public render(): JSX.Element {
 
     const labelClasses = cx(prefix('text-field-wrapper__label'));
-    const labelTextClasses = cx(prefix('text-field-wrapper__label-text'));
+    const labelTextClasses = cx(
+      prefix('text-field-wrapper__label-text'),
+      mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+    );
     const messageClasses = cx(prefix('text-field-wrapper__message'));
 
     return (
