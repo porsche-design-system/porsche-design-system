@@ -414,6 +414,24 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
+  interface PTextFieldWrapper {
+    /**
+    * The label text.
+    */
+    'label': string;
+    /**
+    * The error message.
+    */
+    'messageError'?: string;
+    /**
+    * The success message.
+    */
+    'messageSuccess'?: string;
+    /**
+    * The state
+    */
+    'state'?: 'success' | 'error';
+  }
 }
 
 declare global {
@@ -502,6 +520,12 @@ declare global {
     prototype: HTMLPTextElement;
     new (): HTMLPTextElement;
   };
+
+  interface HTMLPTextFieldWrapperElement extends Components.PTextFieldWrapper, HTMLStencilElement {}
+  var HTMLPTextFieldWrapperElement: {
+    prototype: HTMLPTextFieldWrapperElement;
+    new (): HTMLPTextFieldWrapperElement;
+  };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
@@ -517,6 +541,7 @@ declare global {
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
+    'p-text-field-wrapper': HTMLPTextFieldWrapperElement;
   }
 }
 
@@ -913,6 +938,24 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
+  interface PTextFieldWrapper {
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The error message.
+    */
+    'messageError'?: string;
+    /**
+    * The success message.
+    */
+    'messageSuccess'?: string;
+    /**
+    * The state
+    */
+    'state'?: 'success' | 'error';
+  }
 
   interface IntrinsicElements {
     'p-button': PButton;
@@ -929,6 +972,7 @@ declare namespace LocalJSX {
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;
+    'p-text-field-wrapper': PTextFieldWrapper;
   }
 }
 
@@ -952,6 +996,7 @@ declare module "@stencil/core" {
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
+      'p-text-field-wrapper': LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
     }
   }
 }
