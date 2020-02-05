@@ -43,21 +43,21 @@ export class TextFieldWrapper {
     }
     
     ${tagName} input {
-      border-color: #323639 !important;
+      border-color: #626669 !important;
       border-width: 1px !important;
-      padding: .6875rem 1.125rem !important;
+      padding: calc(.75rem - 1px) !important;
     }
     
     ${tagName}[state='success'] input {
       border-color: #13d246 !important;
       border-width: 2px !important;
-      padding: .625rem 1.0625rem !important;
+      padding: calc(.75rem - 2px) !important;
     }
     
     ${tagName}[state='error'] input {
       border-color: #e00000 !important;
       border-width: 2px !important;
-      padding: .625rem 1.0625rem !important;
+      padding: calc(.75rem - 2px) !important;
     }
     
     ${tagName} input[type='number']::-webkit-outer-spin-button {
