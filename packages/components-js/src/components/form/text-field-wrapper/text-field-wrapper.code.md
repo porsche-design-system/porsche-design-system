@@ -15,7 +15,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
     <input type="text" name="some-name" placeholder="Some placeholder text"/>
   </p-text-field-wrapper>
   <p-text-field-wrapper label="Some label (disabled)">
-    <input type="text" name="some-name" disabled="disabled" placeholder="Some placeholder text" />
+    <input type="text" name="some-name" value="Some value" disabled="disabled" />
   </p-text-field-wrapper>
   <p-text-field-wrapper label="Some label (read only)">
     <input type="text" name="some-name" value="Some value" readonly="readonly" />
