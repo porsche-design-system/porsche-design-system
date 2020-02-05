@@ -8,16 +8,30 @@ A `label` is a caption which informs the user what information a particular form
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
 
 <Playground :childElementLayout="{spacing: 'block'}">    
-  <p-text-field-wrapper label="Some label (default)">
+  <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name"/>
   </p-text-field-wrapper>
-  <p-text-field-wrapper label="Some label (with placeholder)">
+  <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" placeholder="Some placeholder text"/>
   </p-text-field-wrapper>
-  <p-text-field-wrapper label="Some label (disabled)">
+</Playground>
+
+---
+
+### Disabled
+
+<Playground>    
+  <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" value="Some value" disabled="disabled" />
   </p-text-field-wrapper>
-  <p-text-field-wrapper label="Some label (read only)">
+</Playground>
+
+---
+
+### Read only
+
+<Playground>    
+  <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" value="Some value" readonly="readonly" />
   </p-text-field-wrapper>
 </Playground>
