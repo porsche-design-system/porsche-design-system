@@ -41,13 +41,11 @@
   }
 
   &__label-text {
-    position: relative;
-    z-index: 1; // necessary so that focus of optional anchor tag inside label is overlaying input field
+    margin-bottom: $p-spacing-4;
   }
 
   &__message {
-    position: relative;
-    z-index: 1; // necessary so that focus of optional anchor tag inside label is overlaying input field
+    margin-top: $p-spacing-4;
   }
 
   //&__button {
