@@ -7,12 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute         | Description          | Type                   | Default     |
-| ---------------- | ----------------- | -------------------- | ---------------------- | ----------- |
-| `label`          | `label`           | The label text.      | `string`               | `undefined` |
-| `messageError`   | `message-error`   | The error message.   | `string`               | `undefined` |
-| `messageSuccess` | `message-success` | The success message. | `string`               | `undefined` |
-| `state`          | `state`           | The state            | `"error" \| "success"` | `undefined` |
+| Property  | Attribute | Description                                       | Type                   | Default     |
+| --------- | --------- | ------------------------------------------------- | ---------------------- | ----------- |
+| `label`   | `label`   | The label text.                                   | `string`               | `''`        |
+| `message` | `message` | The message styled depending on validation state. | `string`               | `''`        |
+| `state`   | `state`   | The validation state.                             | `"error" \| "success"` | `undefined` |
 
 
 ## Dependencies

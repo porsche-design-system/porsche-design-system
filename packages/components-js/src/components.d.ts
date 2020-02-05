@@ -9,6 +9,7 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ButtonType,
+  FormState,
   LinkTarget,
   TextSize,
   TextWeight,
@@ -418,19 +419,15 @@ export namespace Components {
     /**
     * The label text.
     */
-    'label': string;
+    'label'?: string;
     /**
-    * The error message.
+    * The message styled depending on validation state.
     */
-    'messageError'?: string;
+    'message'?: string;
     /**
-    * The success message.
+    * The validation state.
     */
-    'messageSuccess'?: string;
-    /**
-    * The state
-    */
-    'state'?: 'success' | 'error';
+    'state'?: FormState;
   }
 }
 
@@ -944,17 +941,13 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     /**
-    * The error message.
+    * The message styled depending on validation state.
     */
-    'messageError'?: string;
+    'message'?: string;
     /**
-    * The success message.
+    * The validation state.
     */
-    'messageSuccess'?: string;
-    /**
-    * The state
-    */
-    'state'?: 'success' | 'error';
+    'state'?: FormState;
   }
 
   interface IntrinsicElements {

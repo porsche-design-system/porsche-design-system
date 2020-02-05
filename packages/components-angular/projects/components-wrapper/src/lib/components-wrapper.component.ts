@@ -189,9 +189,9 @@ export class PText {
   }
 }
 export declare interface PTextFieldWrapper extends Components.PTextFieldWrapper {}
-@ProxyInputs(['label', 'messageError', 'messageSuccess', 'state'])
+@ProxyInputs(['label', 'message', 'state'])
 
-@Component({ selector: 'p-text-field-wrapper', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['label', 'messageError', 'messageSuccess', 'state'] })
+@Component({ selector: 'p-text-field-wrapper', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['label', 'message', 'state'] })
 export class PTextFieldWrapper {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {

@@ -1,4 +1,4 @@
-# Text field
+# Text Field
 
 Use text fields in forms to help people enter, select, and search for text. Text fields are normally found within a form but can also be part of a modal, search, or card. Common text input types include: usernames, descriptions, URLs, emails, addresses, and plain text searches.
 

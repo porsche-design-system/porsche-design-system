@@ -5,146 +5,138 @@
 }
 
 ::slotted(input) {
-  @include p-text;
   width: 100% !important;
   height: p-rem(48px) !important;
   display: block !important;
-  padding: p-rem(11px) p-rem(18px) !important;
   outline: transparent none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 1px solid $p-color-theme-light-neutral-contrast-high !important;
+  border-style: solid !important;
   background: $p-color-theme-light-background !important;
+  font-family: $p-font-primary !important;
+  font-weight: $p-font-weight-regular !important;
+  font-size: p-font-size($p-text-size-small) !important;
+  line-height: p-line-height($p-text-size-small) !important;
   color: $p-color-theme-light-default !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   border-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier !important;
-
-  &::placeholder {
-    color: $p-color-theme-light-state-disabled !important;
-    opacity: 1 !important;
-  }
-
-  &[type='search'] {
-    /* clears the 'X' from Internet Explorer */
-    &::-ms-clear {
-      display: none !important;
-      width: 0 !important;
-      height: 0 !important;
-    }
-    &::-ms-reveal {
-      display: none !important;
-      width: 0 !important;
-      height: 0 !important;
-    }
-
-    /* clears the 'X' from Chrome */
-    &::-webkit-search-decoration,
-    &::-webkit-search-cancel-button,
-    &::-webkit-search-results-button,
-    &::-webkit-search-results-decoration {
-      display: none !important;
-    }
-  }
-
-  // input type number - disabling the arrow icons
-  &[type='number'] {
-    appearance: none !important;
-    -moz-appearance: textfield !important;
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      appearance: none !important;
-      -webkit-appearance: none !important;
-    }
-  }
-
-  &::-webkit-calendar-picker-indicator {
-    display: none !important;
-  }
-  &[type='date']::-webkit-input-placeholder {
-    visibility: hidden !important;
-  }
 }
 
-::slotted(input:focus:not(:read-only)) {
+// Focus
+::slotted(input:focus) {
   outline: $p-color-theme-light-state-focus solid 2px !important;
   outline-offset: 1px !important;
 }
 
+// Disabled
 ::slotted(input:disabled) {
   color: $p-color-theme-light-state-disabled !important;
-  border-color: $p-color-theme-light-state-disabled !important;
 }
 
-::slotted(input:disabled::placeholder) {
-  color: $p-color-theme-light-state-disabled !important;
+// Type search
+::slotted(input[type='search']::-ms-clear) { /* clears the 'X' from Internet Explorer */
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::slotted(input[type='search']::-ms-reveal) { /* clears the 'X' from Internet Explorer */
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::slotted(input[type='search']::-webkit-search-decoration) { /* clears the 'X' from Chrome */
+  display: none !important;
+}
+
+::slotted(input[type='search']::-webkit-search-cancel-button) { /* clears the 'X' from Chrome */
+  display: none !important;
+}
+
+::slotted(input[type='search']::-webkit-search-results-button) { /* clears the 'X' from Chrome */
+  display: none !important;
+}
+
+::slotted(input[type='search']::-webkit-search-results-decoration) { /* clears the 'X' from Chrome */
+  display: none !important;
+}
+
+// Type number
+::slotted(input[type='number']::-webkit-outer-spin-button) {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+::slotted(input[type='number']::-webkit-inner-spin-button) {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+// Type date
+::slotted(input[type='date']::-webkit-calendar-picker-indicator) {
+  display: none !important;
+}
+
+::slotted(input[type='date']::-webkit-input-placeholder) {
+  visibility: hidden !important;
+}
+
+// Type time
+::slotted(input[type='time']::-webkit-calendar-picker-indicator) {
+  display: none !important;
+}
+
+::slotted(input[type='time']::-webkit-input-placeholder) {
+  visibility: hidden !important;
 }
 
 .#{$p-global-class-prefix}text-field-wrapper {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-
-  a {
-    color: deeppink;
-  }
 
   &__label {
     display: block;
   }
 
-  &__input {
+  &__label-text {
     position: relative;
-    display: block;
-
-    &--error {
-      input {
-        color: $p-color-theme-light-notification-error;
-        border-color: $p-color-theme-light-notification-error;
-        border-width: 2px;
-        padding: p-rem(10px) p-rem(17px);
-      }
-    }
-
-    &--success {
-      input {
-        border-color: $p-color-theme-light-notification-success;
-        border-width: 2px;
-        padding: p-rem(16px) p-rem(17px);
-      }
-    }
+    z-index: 1; // necessary so that focus of optional anchor tag inside label is overlaying input field
   }
 
-  &__button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: $p-color-theme-light-default;
-    cursor: pointer;
-    width: p-rem(48px);
-    height: p-rem(48px);
-    border: none;
-    outline: none;
-    background: transparent;
-
-    &:focus {
-      color: $p-color-theme-light-state-focus;
-    }
-
-    &:hover {
-      color: $p-color-theme-light-state-hover;
-    }
-
-    & ~ input {
-      padding-right: p-rem(56px);
-    }
+  &__message {
+    position: relative;
+    z-index: 1; // necessary so that focus of optional anchor tag inside label is overlaying input field
   }
 
-  &__icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  //&__button {
+  //  position: absolute;
+  //  top: 0;
+  //  right: 0;
+  //  color: $p-color-theme-light-default;
+  //  cursor: pointer;
+  //  width: p-rem(48px);
+  //  height: p-rem(48px);
+  //  border: none;
+  //  outline: none;
+  //  background: transparent;
+  //
+  //  &:focus {
+  //    color: $p-color-theme-light-state-focus;
+  //  }
+  //
+  //  &:hover {
+  //    color: $p-color-theme-light-state-hover;
+  //  }
+  //
+  //  & ~ input {
+  //    padding-right: p-rem(56px);
+  //  }
+  //}
+  //
+  //&__icon {
+  //  position: absolute;
+  //  top: 50%;
+  //  left: 50%;
+  //  transform: translate(-50%, -50%);
+  //}
 }
