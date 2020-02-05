@@ -17,7 +17,7 @@ export class TextFieldWrapper {
   @Prop() public label?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = undefined;
+  @Prop() public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -58,6 +58,16 @@ export class TextFieldWrapper {
       border-color: #e00000 !important;
       border-width: 2px !important;
       padding: .625rem 1.0625rem !important;
+    }
+    
+    ${tagName} input[type='number']::-webkit-outer-spin-button {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+    }
+    
+    ${tagName} input[type='number']::-webkit-inner-spin-button {
+      appearance: none !important;
+      -webkit-appearance: none !important;
     }
     `;
 

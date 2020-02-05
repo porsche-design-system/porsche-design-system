@@ -6,7 +6,6 @@
 
 ::slotted(input) {
   width: 100% !important;
-  height: p-rem(48px) !important;
   display: block !important;
   outline: transparent none !important;
   appearance: none !important;
@@ -32,64 +31,7 @@
 // Disabled
 ::slotted(input:disabled) {
   color: $p-color-theme-light-state-disabled !important;
-}
-
-// Type search
-::slotted(input[type='search']::-ms-clear) { /* clears the 'X' from Internet Explorer */
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-::slotted(input[type='search']::-ms-reveal) { /* clears the 'X' from Internet Explorer */
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-::slotted(input[type='search']::-webkit-search-decoration) { /* clears the 'X' from Chrome */
-  display: none !important;
-}
-
-::slotted(input[type='search']::-webkit-search-cancel-button) { /* clears the 'X' from Chrome */
-  display: none !important;
-}
-
-::slotted(input[type='search']::-webkit-search-results-button) { /* clears the 'X' from Chrome */
-  display: none !important;
-}
-
-::slotted(input[type='search']::-webkit-search-results-decoration) { /* clears the 'X' from Chrome */
-  display: none !important;
-}
-
-// Type number
-::slotted(input[type='number']::-webkit-outer-spin-button) {
-  appearance: none !important;
-  -webkit-appearance: none !important;
-}
-
-::slotted(input[type='number']::-webkit-inner-spin-button) {
-  appearance: none !important;
-  -webkit-appearance: none !important;
-}
-
-// Type date
-::slotted(input[type='date']::-webkit-calendar-picker-indicator) {
-  display: none !important;
-}
-
-::slotted(input[type='date']::-webkit-input-placeholder) {
-  visibility: hidden !important;
-}
-
-// Type time
-::slotted(input[type='time']::-webkit-calendar-picker-indicator) {
-  display: none !important;
-}
-
-::slotted(input[type='time']::-webkit-input-placeholder) {
-  visibility: hidden !important;
+  cursor: not-allowed;
 }
 
 .#{$p-global-class-prefix}text-field-wrapper {

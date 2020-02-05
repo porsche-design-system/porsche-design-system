@@ -11,7 +11,8 @@
   margin: 0;
   list-style-type: none;
   display: inherit;
-  transition: font-size 0.00001ms linear; // used for transitionend event listener
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier,
+  font-size 0.00001ms linear; // used for transitionend event listener
 
   &--size-x-small {
     @include p-type-scale($p-text-size-x-small);

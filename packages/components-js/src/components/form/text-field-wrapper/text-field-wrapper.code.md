@@ -1,161 +1,102 @@
 # Text Field
 
-## Introduction
+The **Text Field Wrapper** component supports basic input types and is essential for mostly any form.
 
 ### Default
+
+A `label` is a caption which informs the user what information a particular form field is asking for. And it's required to fulfill accessibility standards.  
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
+
+<Playground :childElementLayout="{spacing: 'block'}">    
+  <p-text-field-wrapper label="Some label (default)">
+    <input type="text" name="some-name"/>
+  </p-text-field-wrapper>
+  <p-text-field-wrapper label="Some label (with placeholder)">
+    <input type="text" name="some-name" placeholder="Some placeholder text"/>
+  </p-text-field-wrapper>
+  <p-text-field-wrapper label="Some label (disabled)">
+    <input type="text" name="some-name" disabled="disabled" placeholder="Some placeholder text" />
+  </p-text-field-wrapper>
+  <p-text-field-wrapper label="Some label (read only)">
+    <input type="text" name="some-name" value="Some value" readonly="readonly" />
+  </p-text-field-wrapper>
+</Playground>
+
+---
+
+### Types
+
+Types present in the configurator below are supported. Browser specific UI helpers (e.g. calender dropdown in Chrome) may occur inside the input field which are explicitly not reset by the `Text Field Wrapper` component.
+For better accessibility it's recommended to **not** reset these browser default UI helpers.
+
+<Playground>
+  <template #configurator>
+    <select v-model="type">
+      <option disabled>Select a type</option>
+      <option value="text">Text</option>
+      <option value="password">Password</option>
+      <option value="number">Number</option>
+      <option value="email">Email</option>
+      <option value="tel">Tel</option>
+      <option value="search">Search</option>
+      <option value="url">Url</option>
+      <option value="date">Date</option>
+      <option value="time">Time</option>
+      <option value="month">Month</option>
+      <option value="week">Week</option>
+    </select>
+  </template>
+  <template>
+    <p-text-field-wrapper label="Some label">
+      <input :type="type" name="some-name"/>
+    </p-text-field-wrapper>
+  </template>
+</Playground>
+
+---
+
+### Validation states
+
+The `Text Field Wrapper` component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
+
+<Playground>
+  <template #configurator>
+    <select v-model="state">
+      <option disabled>Select a validation state</option>
+      <option value="error">Error</option>
+      <option value="success">Success</option>
+      <option value="none">None</option>
+    </select>
+  </template>
+  <template>
+    <p-text-field-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
+      <input type="text" name="some-name" />
+    </p-text-field-wrapper>
+  </template>
+</Playground>
+
+---
+
+### Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
+
 <Playground>
   <template>
-    <p-text-field-wrapper label="some label">
+    <p-text-field-wrapper state="error">
+      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
       <input type="text" name="some-name" placeholder="Some placeholder"/>
-    </p-text-field-wrapper> 
-    <p-text-field-wrapper label="some label" state="error" message="Some error message">
-      <input type="text" name="some-name" placeholder="Some placeholder"/>
-    </p-text-field-wrapper>
-    <p-text-field-wrapper state="success">
-      <span slot="label"><strong>S</strong>ome <a href="#">Label</a><b>!</b></span>
-      <input type="text" name="some-name" placeholder="Some placeholder"/>
-      <span slot="message"><strong>S</strong>ome <a href="#">Success</a><b>!</b></span>
+      <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-text-field-wrapper>
   </template>
 </Playground>
 
-### Placeholder
-<Playground>    
-  <template>
-    <p-text-field-wrapper label="Some label">
-      <input type="text" name="some-name" placeholder="Some placeholder text"/>
-    </p-text-field-wrapper>
-  </template>
-</Playground>
-
-
-### Required
-<Playground>
-  <template>
-    <p-text-field-wrapper label="Some label">
-      <input type="text" name="some-name" required="true"/>
-    </p-text-field-wrapper>
-  </template>
-</Playground>
-
-
-### Disabled
-<Playground>
-  <template>
-    <p-text-field-wrapper label="Some label">
-      <input type="text" name="some-name" disabled="disabled" />
-    </p-text-field-wrapper>
-  </template>
-</Playground>
-
-
-### Readonly
-<Playground>
-  <template>
-    <p-text-field-wrapper label="Some label">
-      <input type="text" name="some-name" value="Some value" readonly="readonly" />
-    </p-text-field-wrapper>
-  </template>
-</Playground>
-
-
-### Textfield type date with icon
-<Playground>
-  <template>
-    <p-text-field-wrapper label="Some label">
-      <input type="date" name="some-name"/>
-    </p-text-field-wrapper>
-  </template>
-</Playground>
-
-### Textfield type time with icon
-<Playground>
-  <template>
-  <form novalidate>
-    <p-text-field-wrapper label="Some label">
-      <input type="time" name="some-name"/>
-    </p-text-field-wrapper>
-   </form>
-  </template>
-</Playground>
-
-
-### Type password with icon-button
-<Playground>
-  <template>
-    <p-text-field-wrapper label="Some label">
-      <input type="password" name="some-name"/>
-    </p-text-field-wrapper>
-  </template>
-</Playground>
-
-
-### Textfield with error message
-<Playground>
-  <template>
-    <p-text-field-wrapper label="Some label" state="error" message="Your phone number is not valid.">
-      <input type="number" name="some-name" aria-invalid="true" value="01722345678" />
-    </p-text-field-wrapper>
-  </template>
-</Playground>
-
-
-### Textfield with success message
-<Playground>
-  <template>
-    <p-text-field-wrapper label="Some label" state="success" message="Your phone number is valid.">
-      <input type="number" name="some-name" value="01722345678" />
-    </p-text-field-wrapper>
-  </template>
-</Playground>
-
-
-## Test form events and some layouts
-
-### Native submit (aligned with align-items)
-<Playground>
-  <template>
-    <form novalidate onsubmit="alert('Form submitted')">
-    <p-flex align-items="flex-end">
-        <p-text-field-wrapper label="Some label">
-          <input type="text" name="some-name"/>
-        </p-text-field-wrapper>
-        <p-button type="submit">Form submit</p-button>
-      </p-flex>
-     </form>
-  </template>
-</Playground>
-
-### JS submit (aligned with margin-top)
-<Playground>
-  <template>
-    <form id="form2" novalidate onsubmit="alert('Form submitted')">
-     <p-flex>
-       <p-text-field-wrapper label="Some label">
-        <input type="text" name="some-name"/>
-       </p-text-field-wrapper>
-       <p-button type="submit" onClick="formSubmit();" style="margin-top: 24px">Form submit</p-button>
-      </p-flex>
-     </form>
-  </template>
-</Playground>
-
-### Submit with message (can't be aligned)
-<Playground>
-  <template>
-    <form id="form3" novalidate onsubmit="alert('Form submitted')">
-      <p-flex align-items="flex-end">
-        <p-text-field-wrapper label="Some very long label which will hopefully break" state="error" message="Fill in the required field" style="width:200px;">
-          <input type="text" name="some-name"/>
-        </p-text-field-wrapper>
-        <p-button type="submit">Form submit</p-button>
-      </p-flex>
-     </form>
-  </template>
-</Playground>
-
-<script>
-  const formSubmit = function() {
-    document.getElementById('form2').submit();
-  };
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundTextFieldWrapper extends Vue {
+    public type: string = 'text';
+    public state: string = 'error';
+  }
 </script>

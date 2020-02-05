@@ -9,6 +9,6 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
-export type FormState = 'success' | 'error' | undefined;
+export type FormState = 'success' | 'error' | 'none';
 
 export type FormStateColor = 'notification-success' | 'notification-error' | 'default';
