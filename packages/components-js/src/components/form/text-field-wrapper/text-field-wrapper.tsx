@@ -2,6 +2,7 @@ import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
+import { FormState, FormStateColor } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -9,96 +10,88 @@ import { insertSlottedStyles } from '../../../utils/slotted-styles';
   shadow: true
 })
 export class TextFieldWrapper {
+
   @Element() public element!: HTMLElement;
 
   /** The label text. */
-  @Prop() public label: string = undefined;
+  @Prop() public label?: string = '';
 
-  /** The state */
-  @Prop() public state?: 'success' | 'error' = undefined;
+  /** The validation state. */
+  @Prop() public state?: FormState = undefined;
 
-  /** The error message. */
-  @Prop() public messageError?: string = undefined;
-
-  /** The success message. */
-  @Prop() public messageSuccess?: string = undefined;
+  /** The message styled depending on validation state. */
+  @Prop() public message?: string = '';
 
   public componentDidLoad() {
 
-    const style = `a {
+    const tagName = this.element.tagName.toLowerCase();
+    const style = `${tagName} a {
       outline: none transparent;
       color: inherit;
       text-decoration: underline;
       -webkit-transition: outline-color .24s ease, color .24s ease;
-      transition: outline-color .24s ease, color .24s ease
+      transition: outline-color .24s ease, color .24s ease;
     }
     
-    a:hover {
-      color: #d5001c
+    ${tagName} a:hover {
+      color: #d5001c;
     }
     
-    a:focus {
+    ${tagName} a:focus {
       outline: 2px solid #00d5b9;
-      outline-offset: 1px
+      outline-offset: 1px;
     }
     
-    b, strong {
-      font-weight: 700
+    ${tagName} input {
+      border-color: #323639 !important;
+      border-width: 1px !important;
+      padding: .6875rem 1.125rem !important;
     }
     
-    span, cite, time {
-      display: inline-block;
-      vertical-align: top
-    }`;
+    ${tagName}[state='success'] input {
+      border-color: #13d246 !important;
+      border-width: 2px !important;
+      padding: .625rem 1.0625rem !important;
+    }
+    
+    ${tagName}[state='error'] input {
+      border-color: #e00000 !important;
+      border-width: 2px !important;
+      padding: .625rem 1.0625rem !important;
+    }
+    `;
 
     insertSlottedStyles(this.element, style);
   }
 
   public render(): JSX.Element {
 
-    const textFieldWrapperClasses = cx(prefix('text-field-wrapper'));
-
     const labelClasses = cx(prefix('text-field-wrapper__label'));
-
-    // const textClasses = cx(prefix('text-field-wrapper__text'));
-
-    const inputClasses = cx(
-      prefix('text-field-wrapper__input'),
-      this.state === 'error' && prefix('text-field-wrapper__input--error'),
-      this.state === 'success' && prefix('text-field-wrapper__input--success')
-    );
-    //
-    // const buttonClasses = cx(prefix('text-field-wrapper__button'));
-    //
-    // const iconClasses = cx(prefix('text-field-wrapper__icon'));
+    const labelTextClasses = cx(prefix('text-field-wrapper__label-text'));
+    const messageClasses = cx(prefix('text-field-wrapper__message'));
 
     return (
-      <Host class={textFieldWrapperClasses}>
+      <Host>
         <label class={labelClasses}>
-          <p-text tag='span'>
-            <span> { /* is needed to forward named slot to default slot in Stencil JS */}
-              {this.label ? this.label : <slot name='label'/>}
-            </span>
+          <p-text class={labelTextClasses} tag='span'>
+            {this.label ? this.label : <slot name='label'/>}
           </p-text>
-          <span class={inputClasses}>
-            <slot/>
-          </span>
+          <slot/>
         </label>
-        {(this.state === 'error' || this.state === 'success') &&
-        <p-text color={this.getColorState(this.state)}>
-          <span> { /* is needed to forward named slot to default slot in Stencil JS */}
-            {this.state === 'error' && this.messageError && this.messageError}
-            {this.state === 'error' && !this.messageError && <slot name='message-error'/>}
-            {this.state === 'success' && this.messageSuccess && this.messageSuccess}
-            {this.state === 'success' && !this.messageSuccess && <slot name='message-success'/>}
-          </span>
+        {this.showMessage(this.state) &&
+        <p-text class={messageClasses} color={this.getStateColor(this.state)}>
+          {this.message ? this.message : <slot name='message'/>}
         </p-text>
         }
       </Host>
     );
   }
 
-  private getColorState(state: 'error' | 'success'): 'notification-success' | 'notification-error' | 'default' {
+  private showMessage(state: FormState): boolean {
+    return ['success', 'error'].includes(state);
+  }
+
+  private getStateColor(state: FormState): FormStateColor {
     switch (state) {
       case 'success':
         return 'notification-success';
