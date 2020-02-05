@@ -28,6 +28,18 @@
   outline-offset: 1px !important;
 }
 
+::slotted(input:read-only:focus) {
+  outline: none !important;
+}
+
+// Read only
+::slotted(input:read-only) {
+  background-color: $p-color-theme-light-background !important;
+  border: 0 !important;
+  color: $p-color-theme-light-neutral-contrast-medium !important;
+  padding: .75rem 0 !important;
+}
+
 // Disabled
 ::slotted(input:disabled) {
   background-color: $p-color-theme-light-surface !important;
