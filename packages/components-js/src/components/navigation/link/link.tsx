@@ -4,6 +4,7 @@ import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } fr
 import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { LinkTarget, Theme } from '../../../types';
+import { insertSlottedStyles } from '../../../utils/slotted-styles';
 
 @Component({
   tag: 'p-link',
@@ -41,6 +42,13 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad() {
+    const tagName= this.element.tagName.toLowerCase();
+    const style = `a:focus ${tagName} {
+      outline: 2px solid #00d5b9;
+      outline-offset: 1px;
+    }`;
+
+    insertSlottedStyles(this.element, style);
     improveFocusHandlingForCustomElement(this.element);
   }
 

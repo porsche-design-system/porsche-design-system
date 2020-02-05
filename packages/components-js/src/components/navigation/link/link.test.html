@@ -7,6 +7,13 @@
   <script type="module" src="../../../../dist/porsche-design-system/porsche-design-system.esm.js"></script>
   <script nomodule src="../../../../dist/porsche-design-system/porsche-design-system.js"></script>
   <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
+  <style type="text/css">
+    .example-link {
+      display: inline-block;
+      outline: none;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -67,6 +74,12 @@
 
 <div class="playground light" title="should render link with multiline label">
   <p-link style="width: 240px;" href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
+</div>
+
+<div class="playground light" title="should render link within an anchor tag">
+  <a id="test-focus-state" class="example-link" href="#">
+    <p-link>Some label</p-link>
+  </a>
 </div>
 
 </body>

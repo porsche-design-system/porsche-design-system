@@ -13,6 +13,7 @@ describe('Link', () => {
     expect(
       await vrt.test('link', async () => {
         await vrt.goTo('/src/components/navigation/link/link.test.html');
+        await vrt.focus('#test-focus-state');
       })
     ).toBeFalsy();
   });
