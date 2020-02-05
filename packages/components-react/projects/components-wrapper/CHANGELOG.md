@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `Text Field Wrapper`
+- `Text` slightly animates color transitions
+
+### Changed
+- Add proper cursor for disabled state for `Button` and `Button Pure`
+
 ## [1.0.2] (2020-02-04)
 
 ### Fixed
