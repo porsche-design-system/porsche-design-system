@@ -11,7 +11,7 @@
   appearance: none !important;
   box-sizing: border-box !important;
   border-style: solid !important;
-  background: $p-color-theme-light-background !important;
+  background-color: $p-color-theme-light-background !important;
   font-family: $p-font-primary !important;
   font-weight: $p-font-weight-regular !important;
   font-size: p-font-size($p-text-size-small) !important;
@@ -30,8 +30,10 @@
 
 // Disabled
 ::slotted(input:disabled) {
+  background-color: $p-color-theme-light-surface !important;
+  border-color: $p-color-theme-light-surface !important;
   color: $p-color-theme-light-state-disabled !important;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 .#{$p-global-class-prefix}text-field-wrapper {
