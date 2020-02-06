@@ -26,6 +26,10 @@ EXAMPLE
 Use optional label if the form has only a few optional areas, mark them with "(optional)" next to the label.
  
 EXAMPLE
+
+### 4. Pure (without label) TBD
+
+Use Pure only for a dedicated use where the need for a stringing of fields is necessary, e.g. XY
  
 ---
  
