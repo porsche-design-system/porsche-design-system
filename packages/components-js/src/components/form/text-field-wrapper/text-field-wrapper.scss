@@ -148,6 +148,20 @@
 
   &__message {
     margin-top: $p-spacing-4;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--success {
+      color: $p-color-theme-light-notification-success;
+    }
+
+    &--error {
+      color: $p-color-theme-light-notification-error;
+    }
+
+    &--none {
+      color: $p-color-theme-light-default;
+    }
   }
 
   &__button {

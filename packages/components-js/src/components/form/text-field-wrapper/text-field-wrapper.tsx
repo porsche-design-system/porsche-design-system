@@ -2,7 +2,7 @@ import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
-import { FormState, FormStateColor } from '../../../types';
+import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -90,7 +90,10 @@ export class TextFieldWrapper {
       mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     );
     const buttonClasses = cx(prefix('text-field-wrapper__button'));
-    const messageClasses = cx(prefix('text-field-wrapper__message'));
+    const messageClasses = cx(
+      prefix('text-field-wrapper__message'),
+      prefix(`text-field-wrapper__message--${this.state}`)
+    );
 
     return (
       <Host>
@@ -108,7 +111,7 @@ export class TextFieldWrapper {
           }
         </span>
         {this.showMessage(this.state) &&
-        <p-text class={messageClasses} color={this.getStateColor(this.state)}>
+        <p-text class={messageClasses} color='inherit'>
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
         }
@@ -118,17 +121,6 @@ export class TextFieldWrapper {
 
   private showMessage(state: FormState): boolean {
     return ['success', 'error'].includes(state);
-  }
-
-  private getStateColor(state: FormState): FormStateColor {
-    switch (state) {
-      case 'success':
-        return 'notification-success';
-      case 'error':
-        return 'notification-error';
-      default:
-        return 'default';
-    }
   }
 
   private setFocusToInput(): void {
