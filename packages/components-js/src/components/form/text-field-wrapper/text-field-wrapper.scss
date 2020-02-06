@@ -30,6 +30,7 @@
 
 ::slotted(input) {
   width: 100% !important;
+  height: p-rem(48px) !important;
   display: block !important;
   outline: transparent none !important;
   appearance: none !important;
@@ -74,8 +75,12 @@
 
 .#{$p-global-class-prefix}text-field-wrapper {
 
-  &__label {
+  &__wrapper {
     position: relative;
+    display: block;
+  }
+
+  &__label {
     display: block;
   }
 
@@ -144,35 +149,38 @@
     margin-top: $p-spacing-4;
   }
 
-  // &__button {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   color: $p-color-theme-light-default;
-  //   cursor: pointer;
-  //   width: p-rem(48px);
-  //   height: p-rem(48px);
-  //   border: none;
-  //   outline: none;
-  //   background: transparent;
-  //
-  //   &:focus {
-  //     color: $p-color-theme-light-state-focus;
-  //   }
-  //
-  //   &:hover {
-  //     color: $p-color-theme-light-state-hover;
-  //   }
-  //
-  //   & ~ input {
-  //     padding-right: p-rem(56px);
-  //   }
-  // }
-  //
-  // &__icon {
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  // }
+  &__button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    width: p-rem(48px);
+    height: p-rem(48px);
+    padding: p-rem(12px);
+    box-sizing: border-box;
+    outline: transparent none;
+    appearance: none;
+    border: none;
+    text-decoration: none;
+    background: transparent;
+    cursor: pointer;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &::-moz-focus-inner {
+      border: 0; // fix for Firefox, avoid dotted outline in button on focus
+    }
+
+    &:hover {
+      color: $p-color-theme-light-state-hover;
+    }
+
+    &:active {
+      color: $p-color-theme-light-state-active;
+    }
+
+    &:focus {
+      color: $p-color-theme-light-state-focus;
+    }
+  }
 }
