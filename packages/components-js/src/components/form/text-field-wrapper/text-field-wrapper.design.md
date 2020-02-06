@@ -13,19 +13,25 @@ available:
  
 Per default use label only if the user is aware that these are only mandatory fields. For example a login form - containing only one field username and one field password.
  
-<p-textfield-wrapper label="Some label"><input type="text" name="some-name"></p-textfield-wrapper>
+<p-text-field-wrapper label="Some label"><input type="text" name="some-name"></p-text-field-wrapper>
  
 ### 2. Required label
  
 Use required label if the form has only a few mandatory fields and mark them with an asterisk next to the label and mention near the form that asterisks indicate required fields.
  
-<p-textfield-wrapper label="Some label*"><input type="text" name="some-name" required="required"></p-textfield-wrapper>
+<p-text-field-wrapper label="Some label*"><input type="text" name="some-name"></p-text-field-wrapper>
  
 ### 3. Optional label
  
 Use optional label if the form has only a few optional fields, mark them with "(optional)" next to the label.
  
-<p-textfield-wrapper label="Some label (optional)"><input type="text" name="some-name"></p-textfield-wrapper>
+<p-text-field-wrapper label="Some label (optional)"><input type="text" name="some-name"></p-text-field-wrapper>
+
+### 4. Pure (whitout label)
+ 
+Use Pure only for a dedicated use where the need for a stringing of fields is necessary, e.g. for a two-factor authentication.
+ 
+<p-text-field-wrapper label="Some label" hide-label="true"><input type="text" name="some-name"></p-text-field-wrapper>
  
 ---
  
@@ -35,27 +41,27 @@ Use optional label if the form has only a few optional fields, mark them with "(
  
 Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. But we don't recommend to use placeholder text it since users can misinterpret it as final content.
  
-<p-textfield-wrapper label="Some label"><input type="text" name="some-name" placeholder="Some placeholder text"></p-textfield-wrapper>
+<p-text-field-wrapper label="Some label"><input type="text" name="some-name" placeholder="Some placeholder text"></p-text-field-wrapper>
  
 ### 2. Password
  
 In password fields, when a user starts typing display a password show icon and password hide icon on press.
  
-<p-textfield-wrapper label="Some label"><input type="password" name="some-name"></p-textfield-wrapper>
+<p-text-field-wrapper label="Some label"><input type="password" name="some-name"></p-text-field-wrapper>
  
 ### 3. Read only
  
 Use a read-only Text Field only if you want your input to be read only and not edited.
  
-<p-textfield-wrapper label="Some label"><input type="text" name="some-name" value="Some value" readonly="readonly"></p-textfield-wrapper>
+<p-text-field-wrapper label="Some label"><input type="text" name="some-name" value="Some value" readonly="readonly"></p-text-field-wrapper>
  
 ### 4. Error
  
-<p-textfield-wrapper label="Some label" state="error" message="Your phone number is not valid."><input type="number" name="some-name" aria-invalid="true" value="01722345678"></p-textfield-wrapper>
+<p-text-field-wrapper label="Some label" state="error" message="Some error validation message."><input type="text" name="some-name"></p-text-field-wrapper>
  
 ### 5. Success
  
-<p-textfield-wrapper label="Some label" state="success" message="Your phone number is valid."><input type="number" name="some-name" value="01722345678"></p-textfield-wrapper>
+<p-text-field-wrapper label="Some label" state="success" message="Some success validation message."><input type="text" name="some-name" class=""></p-text-field-wrapper>
  
 ---
  
