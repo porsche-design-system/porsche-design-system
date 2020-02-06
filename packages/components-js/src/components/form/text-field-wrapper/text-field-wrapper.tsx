@@ -97,19 +97,19 @@ export class TextFieldWrapper {
         <span class={wrapperClasses}>
           <label class={labelClasses} onClick={() => this.setFocusToInput()}>
             <p-text class={labelTextClasses} tag='span'>
-              {this.label ? this.label : <slot name='label'/>}
+              {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
             <slot/>
           </label>
           {this.isPasswordToggleable &&
           <button type='button' class={buttonClasses} onClick={() => this.togglePassword()}>
-            <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit'>Some label</p-icon>
+            <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit'/>
           </button>
           }
         </span>
         {this.showMessage(this.state) &&
         <p-text class={messageClasses} color={this.getStateColor(this.state)}>
-          {this.message ? this.message : <slot name='message'/>}
+          {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
         }
       </Host>
