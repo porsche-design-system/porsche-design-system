@@ -256,3 +256,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Commit
 1. Create a commit
 1. Push local commit to issue branch `git push`
+
+### Release
+1. Create Pull Request & Review
+1. Merge into "master" branch
