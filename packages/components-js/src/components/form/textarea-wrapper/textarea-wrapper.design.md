@@ -1,6 +1,6 @@
 # Textarea
  
-Use Textareas in forms to help people enter and select text. Textareas are normally found within a form but can also be part of a modal search, or card. Textareas should be always accompanied by labels.
+Use Textareas in forms to help people enter and select text. Textareas should be always accompanied by labels.
  
 ---
  
@@ -9,15 +9,15 @@ Use Textareas in forms to help people enter and select text. Textareas are norma
 In order to provide an optimal user guidance within a page, different types of Textareas are 
 available:
  
-### 1. Label only
+### 1. Default label
  
-Per default use label only if the user is aware that these are only mandatory area.
+Use default label if the user is aware that these are only mandatory areas.
  
 EXAMPLE
  
 ### 2. Required label
  
-Use required label if the form has only a few mandatory areas and mark them with an asterisk next to the label and mention near the form that asterisks indicate required areas.
+Use required label if the form has only a few mandatory areas and mark them with an asterisk next to the label and mention next the form that asterisks indicate required areas.
  
 EXAMPLE
  
@@ -29,7 +29,7 @@ EXAMPLE
 
 ### 4. Pure (without label) TBD
 
-Use Pure only for a dedicated use where the need for a stringing of fields is necessary, e.g. XY
+Use Pure (without label) only for a dedicated use where the need for a stringing of fields is necessary, e.g. XY
  
 ---
  
@@ -76,11 +76,7 @@ Use placeholder text to give a concrete example of what you should write.
 ### Width and height
  
 Textarea don’t have a specific width and height, depending on the layout you can set the size either depending on the text length or by adjusting to grid.
-However the initial width is set to 320 px and 192 px height (equals grid width on 375 px). Just pick your preferred Textarea, make a text override and set the size manually.
  
-### Clickability
- 
-The entire Textarea is clickable. The clickability is indicated by the focus state.
  
 ### Disabled state
  
