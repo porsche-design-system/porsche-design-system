@@ -1,4 +1,4 @@
-import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
@@ -24,6 +24,9 @@ export class TextFieldWrapper {
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  @State() private isPasswordToggleable: boolean = false;
+  @State() private showPassword: boolean = false;
 
   public componentDidLoad() {
 
@@ -75,25 +78,35 @@ export class TextFieldWrapper {
     `;
 
     insertSlottedStyles(this.element, style);
+    this.updatePasswordToggleable();
   }
 
   public render(): JSX.Element {
 
+    const wrapperClasses = cx(prefix('text-field-wrapper__wrapper'));
     const labelClasses = cx(prefix('text-field-wrapper__label'));
     const labelTextClasses = cx(
       prefix('text-field-wrapper__label-text'),
       mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     );
+    const buttonClasses = cx(prefix('text-field-wrapper__button'));
     const messageClasses = cx(prefix('text-field-wrapper__message'));
 
     return (
       <Host>
-        <label class={labelClasses}>
-          <p-text class={labelTextClasses} tag='span'>
-            {this.label ? this.label : <slot name='label'/>}
-          </p-text>
-          <slot/>
-        </label>
+        <span class={wrapperClasses}>
+          <label class={labelClasses} onClick={() => this.setFocusToInput()}>
+            <p-text class={labelTextClasses} tag='span'>
+              {this.label ? this.label : <slot name='label'/>}
+            </p-text>
+            <slot/>
+          </label>
+          {this.isPasswordToggleable &&
+          <button type='button' class={buttonClasses} onClick={() => this.togglePassword()}>
+            <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit'>Some label</p-icon>
+          </button>
+          }
+        </span>
         {this.showMessage(this.state) &&
         <p-text class={messageClasses} color={this.getStateColor(this.state)}>
           {this.message ? this.message : <slot name='message'/>}
@@ -118,15 +131,22 @@ export class TextFieldWrapper {
     }
   }
 
-  //
-  // private isTypePassword(): boolean {
-  //   const inputType: string = this.element.querySelector('input').type;
-  //   return inputType === 'password';
-  // }
-  //
-  // private togglePassword(): void {
-  //   const input: HTMLInputElement = this.element.querySelector('input');
-  //   const inputType: string = input.type;
-  //   inputType === 'password' ? input.type = 'text' : input.type = 'password';
-  // }
+  private setFocusToInput(): void {
+    this.element.querySelector('input').focus();
+  }
+
+  private updatePasswordToggleable(): void {
+    const input = this.element.querySelector('input');
+    this.isPasswordToggleable = input.type === 'password';
+    if (this.isPasswordToggleable) {
+      input.style.cssText = 'padding-right: 3rem !important';
+    }
+  }
+
+  private togglePassword(): void {
+    const input = this.element.querySelector('input');
+    input.type === 'password' ? input.type = 'text' : input.type = 'password';
+    input.focus();
+    this.showPassword = !this.showPassword;
+  }
 }
