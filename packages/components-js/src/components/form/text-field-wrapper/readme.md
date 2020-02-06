@@ -20,3 +20,4 @@
 ### Depends on
 
 - [p-text](../../basic/typography/text)
+- [p-icon](../../icon/icon)

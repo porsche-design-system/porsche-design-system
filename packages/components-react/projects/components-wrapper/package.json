@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-react",
-  "version": "1.0.2",
+  "version": "1.1.0-0",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -23,7 +23,7 @@
     "build": "rm -rf './dist' && tsc -p './tsconfig.lib.json'"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "1.0.2"
+    "@porsche-design-system/components-js": "1.1.0-0"
   },
   "peerDependencies": {
     "react": ">=16.9.0 <17.0.0",
