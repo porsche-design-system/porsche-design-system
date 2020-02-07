@@ -81,4 +81,8 @@ Textarea don’t have a specific width and height, depending on the layout you c
 ### Disabled state
  
 All types of Textarea are available as disabled state. However, disabled states (e.g. read only) should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
- 
+
+ <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+    <img src="./assets/form-textarea-examples.png" alt="Examples for textareas"/>
+</div>
