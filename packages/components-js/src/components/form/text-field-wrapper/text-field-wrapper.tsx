@@ -98,8 +98,8 @@ export class TextFieldWrapper {
     return (
       <Host>
         <span class={wrapperClasses}>
-          <label class={labelClasses} onClick={() => this.setFocusToInput()}>
-            <p-text class={labelTextClasses} tag='span'>
+          <label class={labelClasses}>
+            <p-text class={labelTextClasses} tag='span' onClick={() => this.setFocusToInput()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
             <slot/>
@@ -138,7 +138,7 @@ export class TextFieldWrapper {
   private togglePassword(): void {
     const input = this.element.querySelector('input');
     input.type === 'password' ? input.type = 'text' : input.type = 'password';
-    input.focus();
     this.showPassword = !this.showPassword;
+    this.setFocusToInput();
   }
 }
