@@ -38,39 +38,39 @@ export class TextFieldWrapper {
       -webkit-transition: outline-color .24s ease, color .24s ease;
       transition: outline-color .24s ease, color .24s ease;
     }
-    
+
     ${tagName} a:hover {
       color: #d5001c;
     }
-    
+
     ${tagName} a:focus {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
     }
-    
+
     ${tagName} input {
       border-color: #626669 !important;
       border-width: 1px !important;
       padding: calc(.75rem - 1px) !important;
     }
-    
+
     ${tagName}[state='success'] input {
       border-color: #13d246 !important;
       border-width: 2px !important;
       padding: calc(.75rem - 2px) !important;
     }
-    
+
     ${tagName}[state='error'] input {
       border-color: #e00000 !important;
       border-width: 2px !important;
       padding: calc(.75rem - 2px) !important;
     }
-    
+
     ${tagName} input[type='number']::-webkit-outer-spin-button {
       appearance: none !important;
       -webkit-appearance: none !important;
     }
-    
+
     ${tagName} input[type='number']::-webkit-inner-spin-button {
       appearance: none !important;
       -webkit-appearance: none !important;
@@ -120,7 +120,7 @@ export class TextFieldWrapper {
   }
 
   private showMessage(state: FormState): boolean {
-    return ['success', 'error'].includes(state);
+    return ['success', 'error'].includes(state) && !!this.message;
   }
 
   private setFocusToInput(): void {
