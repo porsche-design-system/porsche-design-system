@@ -97,7 +97,7 @@ describe('slottedStyles', () => {
 
     it('should prepend for the same tag name for each shadow root', () => {
       const container2 = document.createElement('div');
-      container.attachShadow({mode: 'open'});
+      container2.attachShadow({mode: 'open'});
 
       const divElement = document.createElement('div');
       const divElement2 = document.createElement('div');
