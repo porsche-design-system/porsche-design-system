@@ -80,6 +80,7 @@ export class Link {
           name={this.icon}
           source={this.iconSource}
           color='inherit'
+          aria-hidden='true'
         />
         <p-text tag='span' color='inherit' class={labelClasses}>
           <slot/>
