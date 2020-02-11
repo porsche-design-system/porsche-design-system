@@ -120,7 +120,7 @@ export class TextFieldWrapper {
   }
 
   private showMessage(state: FormState): boolean {
-    return ['success', 'error'].includes(state) && !!this.message;
+    return ['success', 'error'].includes(state);
   }
 
   private setFocusToInput(): void {
