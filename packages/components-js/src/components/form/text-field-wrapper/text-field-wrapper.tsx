@@ -99,7 +99,7 @@ export class TextFieldWrapper {
       <Host>
         <span class={wrapperClasses}>
           <label class={labelClasses}>
-            <p-text class={labelTextClasses} tag='span' onClick={() => this.setFocusToInput()}>
+            <p-text class={labelTextClasses} tag='span' onClick={() => this.focusOnInput()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
             <slot/>
@@ -110,7 +110,7 @@ export class TextFieldWrapper {
           </button>
           }
         </span>
-        {this.showMessage(this.state) &&
+        {this.isMessageVisible &&
         <p-text class={messageClasses} color='inherit'>
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
@@ -119,11 +119,11 @@ export class TextFieldWrapper {
     );
   }
 
-  private showMessage(state: FormState): boolean {
-    return ['success', 'error'].includes(state);
+  private get isMessageVisible(): boolean {
+    return ['success', 'error'].includes(this.state);
   }
 
-  private setFocusToInput(): void {
+  private focusOnInput(): void {
     this.element.querySelector('input').focus();
   }
 
@@ -139,6 +139,6 @@ export class TextFieldWrapper {
     const input = this.element.querySelector('input');
     input.type === 'password' ? input.type = 'text' : input.type = 'password';
     this.showPassword = !this.showPassword;
-    this.setFocusToInput();
+    this.focusOnInput();
   }
 }
