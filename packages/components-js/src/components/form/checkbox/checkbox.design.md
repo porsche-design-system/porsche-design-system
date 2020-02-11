@@ -22,10 +22,9 @@ EXAMPLE
 All Checkboxes types are available in the following states:
  
 * default 
-* activ
+* focus (activ)
 * undefined 
 * disabled 
-* focus
 * error 
 
 ---
@@ -34,18 +33,11 @@ All Checkboxes types are available in the following states:
 
 The Checkbox can contain the following sub-components:
 
-- **Checkbox**
+- **Headings**
 XY
 
 - **Label**
-XY
-
-Label every Checkbox
-Use sentence-style capitalization
-Write the label so that it describes the selected state of the Checkbox.
-For a group of Checkboxes, use parallel phrasing and try to keep the length about the same for all labels.
-Describe just the option with the label. 
-Keep labels brief so it's easy to refer to them in messages and documentation.
+Label text (≤ 20 characters) is used to inform users as to what information is requested for a Checkbox. Every Checkbox should have a label.
 
 ---
 
@@ -53,7 +45,7 @@ Keep labels brief so it's easy to refer to them in messages and documentation.
 
 Checkboxes have several usage patterns:
 
-### individual choice
+### Individual choice
 A single checkbox is used to select an individual choice.
 
 ### Independent choices (zero or more)
@@ -63,18 +55,9 @@ A group of Checkboxes is used to select from a set of zero or more choices. (Unl
 A group of Checkboxes can also be used to select from a set of one or more choices.  Error is displayed when none of the options are selected. A group of Checkboxes is used where at least one protocol must be selected. 
 
 ### A stand-alone Checkbox
-is used for a single option that the user can turn on or off.
-
----
-
-## Usability & Interaction
-
-### Clickability
-
-The whole Checkbox area is clickable. The clickability is indicated by a specific hover state (slightly changing color).
+Is used for a single option that the user can turn on or off.
 
 ### Disabled State
-
 All Checkboxes are provided in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. 
 
 ---
@@ -91,5 +74,6 @@ All Checkboxes are provided in disabled state. However, disabled states should b
 
 ### Radio Buttons
 
-**Radio Buttons** are used when there is a list of two or more options that are **mutually exclusive** and the user must select exactly one choice. In other words, clicking a non-selected Radio Button will deselect whatever other button was previously selected in the list.
+**Radio Buttons** are used when there is a list of two or more options that are **mutually exclusive** and the user must select exactly one choice. 
+In other words, clicking a non-selected Radio Button will deselect whatever other button was previously selected in the list.
 
