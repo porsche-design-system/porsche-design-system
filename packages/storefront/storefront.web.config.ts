@@ -177,6 +177,14 @@ export const config: StorefrontConfig = {
         ]
       }
     },
+    Forms: {
+      'Checkbox': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox/checkbox.design.md`)
+        ]
+      }
+    },
     Feedback: {
       Spinner: {
         Design: [
