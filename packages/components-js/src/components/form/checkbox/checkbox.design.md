@@ -9,10 +9,10 @@ Use a Checkboxe for a list of options that allow the user to make choices. The c
 ### 1. Default
 EXAMPLE
 
-### 2. Active
+### 2. Checked
 EXAMPLE
 
-### 3. Undefined
+### 3. Indeterminate
 EXAMPLE
 
 ---
@@ -22,9 +22,10 @@ EXAMPLE
 All Checkboxes types are available in the following states:
  
 * default 
-* focus (activ)
-* undefined 
+* checked
 * disabled 
+* focus
+* indeterminate 
 * error 
 
 ---
