@@ -62,11 +62,17 @@ All Checkboxes are provided in disabled state. However, disabled states should b
 
 ---
 
-## EXAMPLES
-
----
-
 ## Don'ts
+
+- Please avoid the mix of radio buttons and checkboxes. These must be considered separately
+- Set checkboxes best vertically instead of horizontally
+- Checkboxes are always aligned left
+
+![Dont mix buttons](./assets/dont-mix-buttons-checkbox.png)
+
+![Set cheboxes dont vertically](./assets/dont-alignment-checkbox.png)
+
+![Example for alignement](./assets/dont-position-checkbox.png)
 
 ---
 
