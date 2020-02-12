@@ -111,7 +111,7 @@ export namespace Components {
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
-    * Mask the visual appearance of a checkbox with a state in-between checked and unchecked.
+    * Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.
     */
     'indeterminate'?: boolean;
     /**
@@ -636,7 +636,7 @@ declare namespace LocalJSX {
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
-    * Mask the visual appearance of a checkbox with a state in-between checked and unchecked.
+    * Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.
     */
     'indeterminate'?: boolean;
     /**

@@ -24,7 +24,7 @@ export class CheckboxWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Mask the visual appearance of a checkbox with a state in-between checked and unchecked. */
+  /** Mask the visual appearance of a checkbox which has a state in-between checked and unchecked. */
   @Prop() public indeterminate?: boolean = false;
 
   @State() private input: HTMLInputElement;
