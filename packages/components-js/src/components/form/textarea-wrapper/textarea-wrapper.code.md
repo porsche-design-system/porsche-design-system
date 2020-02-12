@@ -14,6 +14,9 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
   <p-textarea-wrapper label="Some label">
     <textarea name="some-name"></textarea>
   </p-textarea-wrapper>
+  <p-textarea-wrapper label="Some label">
+    <textarea name="some-name" placeholder="Some placeholder text"></textarea>
+  </p-textarea-wrapper>
 </Playground>
 
 ### Without label
@@ -21,14 +24,6 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 <Playground :childElementLayout="{spacing: 'block'}">    
   <p-textarea-wrapper label="Some label" hide-label="true">
     <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
-</Playground>
-
-### With placeholder
-
-<Playground :childElementLayout="{spacing: 'block'}">    
-  <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" placeholder="Some placeholder text"></textarea>
   </p-textarea-wrapper>
 </Playground>
 
