@@ -9,6 +9,7 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ButtonType,
+  FormState,
   LinkTarget,
   TextSize,
   TextWeight,
@@ -414,6 +415,24 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
+  interface PTextareaWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: FormState;
+  }
 }
 
 declare global {
@@ -502,6 +521,12 @@ declare global {
     prototype: HTMLPTextElement;
     new (): HTMLPTextElement;
   };
+
+  interface HTMLPTextareaWrapperElement extends Components.PTextareaWrapper, HTMLStencilElement {}
+  var HTMLPTextareaWrapperElement: {
+    prototype: HTMLPTextareaWrapperElement;
+    new (): HTMLPTextareaWrapperElement;
+  };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
@@ -517,6 +542,7 @@ declare global {
     'p-pagination': HTMLPPaginationElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
+    'p-textarea-wrapper': HTMLPTextareaWrapperElement;
   }
 }
 
@@ -913,6 +939,24 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
+  interface PTextareaWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: FormState;
+  }
 
   interface IntrinsicElements {
     'p-button': PButton;
@@ -929,6 +973,7 @@ declare namespace LocalJSX {
     'p-pagination': PPagination;
     'p-spinner': PSpinner;
     'p-text': PText;
+    'p-textarea-wrapper': PTextareaWrapper;
   }
 }
 
@@ -952,6 +997,7 @@ declare module "@stencil/core" {
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
+      'p-textarea-wrapper': LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
     }
   }
 }
