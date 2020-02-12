@@ -53,26 +53,7 @@ export class CheckboxWrapper {
     ${tagName} a:focus {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
-    }
-
-    ${tagName} input {
-      border-color: #626669 !important;
-      border-width: 1px !important;
-    }
-
-    ${tagName} input:checked {
-      border-color: #323639 !important;
-    }
-    
-    ${tagName} input:disabled {
-      border-color: #96989a !important;
-    }
-    
-    ${tagName}[state='error'] input {
-      border-color: #e00000 !important;
-      border-width: 2px !important;
-    }
-    `;
+    }`;
 
     insertSlottedStyles(this.element, style);
   }
@@ -80,11 +61,15 @@ export class CheckboxWrapper {
   public render(): JSX.Element {
 
     const labelClasses = cx(prefix('checkbox-wrapper__label'));
+    const iconWrapperClasses = cx(
+      prefix('checkbox-wrapper__icon-wrapper'),
+      this.checked && prefix(`checkbox-wrapper__icon-wrapper--checked`),
+      this.disabled && prefix(`checkbox-wrapper__icon-wrapper--disabled`),
+      this.state !== 'none' && prefix(`checkbox-wrapper__icon-wrapper--${this.state}`)
+    );
     const iconClasses = cx(
       prefix('checkbox-wrapper__icon'),
-      this.checked && prefix(`checkbox-wrapper__icon--checked`),
-      this.disabled && prefix(`checkbox-wrapper__icon--disabled`),
-      this.state !== 'none' && prefix(`checkbox-wrapper__icon--${this.state}`)
+      this.checked && prefix(`checkbox-wrapper__icon--checked`)
     );
     const labelTextClasses = cx(
       prefix('checkbox-wrapper__label-text'),
@@ -99,8 +84,10 @@ export class CheckboxWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          <p-icon class={iconClasses} name={this.indeterminate ? 'subtract' : 'check'} theme='dark'/>
-          <slot/>
+          <span class={iconWrapperClasses}>
+            <p-icon class={iconClasses} name={this.indeterminate ? 'subtract' : 'check'} theme='dark' size='inherit' />
+            <slot/>
+          </span>
           <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.clickOnInput()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
