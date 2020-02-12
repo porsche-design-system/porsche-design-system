@@ -1,0 +1,168 @@
+@import '../../../../../../packages/scss-utils/index';
+
+@mixin p-textarea-wrapper-label-text-visible() {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0 0 $p-spacing-4 0;
+  padding: 0;
+  white-space: normal;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin p-textarea-wrapper-label-text-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+:host {
+  display: block;
+}
+
+::slotted(textarea) {
+  width: 100% !important;
+  min-height: p-rem(192px);
+  display: block !important;
+  outline: transparent none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border-style: solid !important;
+  border-radius: 0 !important;
+  background-color: $p-color-theme-light-background !important;
+  opacity: 1 !important;
+  font-family: $p-font-primary !important;
+  font-weight: $p-font-weight-regular !important;
+  font-size: p-font-size($p-text-size-small) !important;
+  line-height: p-line-height($p-text-size-small) !important;
+  color: $p-color-theme-light-default !important;
+  resize: vertical;
+  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+  border-color $p-animation-hover-duration $p-animation-hover-bezier,
+  color $p-animation-hover-duration $p-animation-hover-bezier !important;
+}
+
+// Focus
+::slotted(textarea:focus) {
+  outline: $p-color-theme-light-state-focus solid 2px !important;
+  outline-offset: 1px !important;
+}
+
+::slotted(textarea:read-only:focus) {
+  outline: none !important;
+}
+
+// Read only
+::slotted(textarea:not(:disabled):read-only) {
+  background-color: $p-color-theme-light-background !important;
+  border: 0 !important;
+  color: $p-color-theme-light-neutral-contrast-medium !important;
+  padding: .75rem 0 !important;
+}
+
+// Disabled
+::slotted(textarea:disabled) {
+  background-color: $p-color-theme-light-surface !important;
+  border-color: $p-color-theme-light-surface !important;
+  color: $p-color-theme-light-state-disabled !important;
+  cursor: not-allowed !important;
+}
+
+.#{$p-global-class-prefix}textarea-wrapper {
+
+  &__wrapper {
+    display: block;
+  }
+
+  &__label {
+    display: block;
+  }
+
+  &__label-text {
+    display: inline-block;
+
+    &--visible {
+      @include p-textarea-wrapper-label-text-visible;
+    }
+
+    &--hidden {
+      @include p-textarea-wrapper-label-text-hidden;
+    }
+
+    @include p-breakpoint("xs") {
+      &--visible-xs {
+        @include p-textarea-wrapper-label-text-visible;
+      }
+
+      &--hidden-xs {
+        @include p-textarea-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &--visible-s {
+        @include p-textarea-wrapper-label-text-visible;
+      }
+
+      &--hidden-s {
+        @include p-textarea-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &--visible-m {
+        @include p-textarea-wrapper-label-text-visible;
+      }
+
+      &--hidden-m {
+        @include p-textarea-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &--visible-l {
+        @include p-textarea-wrapper-label-text-visible;
+      }
+
+      &--hidden-l {
+        @include p-textarea-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &--visible-xl {
+        @include p-textarea-wrapper-label-text-visible;
+      }
+
+      &--hidden-xl {
+        @include p-textarea-wrapper-label-text-hidden;
+      }
+    }
+  }
+
+  &__message {
+    margin-top: $p-spacing-4;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--success {
+      color: $p-color-theme-light-notification-success;
+    }
+
+    &--error {
+      color: $p-color-theme-light-notification-error;
+    }
+
+    &--none {
+      color: $p-color-theme-light-default;
+    }
+  }
+}

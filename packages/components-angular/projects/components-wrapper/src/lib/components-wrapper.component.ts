@@ -188,3 +188,14 @@ export class PText {
     this.el = r.nativeElement;
   }
 }
+export declare interface PTextareaWrapper extends Components.PTextareaWrapper {}
+@ProxyInputs(['hideLabel', 'label', 'message', 'state'])
+
+@Component({ selector: 'p-textarea-wrapper', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
+export class PTextareaWrapper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}

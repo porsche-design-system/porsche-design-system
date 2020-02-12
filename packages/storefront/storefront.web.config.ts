@@ -177,6 +177,22 @@ export const config: StorefrontConfig = {
         ]
       }
     },
+    Forms: {
+      Textarea: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textarea-wrapper/textarea-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textarea-wrapper/textarea-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textarea-wrapper/textarea-wrapper.props.md`)
+        ]
+      }
+    },
     Feedback: {
       Spinner: {
         Design: [
