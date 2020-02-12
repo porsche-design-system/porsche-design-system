@@ -54,6 +54,17 @@ export class PButtonPure {
     this.el = r.nativeElement;
   }
 }
+export declare interface PCheckboxWrapper extends Components.PCheckboxWrapper {}
+@ProxyInputs(['hideLabel', 'indeterminate', 'label', 'message', 'state'])
+
+@Component({ selector: 'p-checkbox-wrapper', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'indeterminate', 'label', 'message', 'state'] })
+export class PCheckboxWrapper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
 export declare interface PFlex extends Components.PFlex {}
 @ProxyInputs(['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'])
 

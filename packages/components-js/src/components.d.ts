@@ -105,6 +105,28 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
+  interface PCheckboxWrapper {
+    /**
+    * Show or hide label. For better accessibility it's recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * Mask the visual appearance of a checkbox with a state in-between checked and unchecked.
+    */
+    'indeterminate'?: boolean;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: 'error' | 'none';
+  }
   interface PFlex {
     /**
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -431,6 +453,12 @@ declare global {
     new (): HTMLPButtonPureElement;
   };
 
+  interface HTMLPCheckboxWrapperElement extends Components.PCheckboxWrapper, HTMLStencilElement {}
+  var HTMLPCheckboxWrapperElement: {
+    prototype: HTMLPCheckboxWrapperElement;
+    new (): HTMLPCheckboxWrapperElement;
+  };
+
   interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {}
   var HTMLPFlexElement: {
     prototype: HTMLPFlexElement;
@@ -505,6 +533,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
+    'p-checkbox-wrapper': HTMLPCheckboxWrapperElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
@@ -600,6 +629,28 @@ declare namespace LocalJSX {
     * The weight of the text (only has effect with visible label).
     */
     'weight'?: TextWeight;
+  }
+  interface PCheckboxWrapper {
+    /**
+    * Show or hide label. For better accessibility it's recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * Mask the visual appearance of a checkbox with a state in-between checked and unchecked.
+    */
+    'indeterminate'?: boolean;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: 'error' | 'none';
   }
   interface PFlex {
     /**
@@ -917,6 +968,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'p-button': PButton;
     'p-button-pure': PButtonPure;
+    'p-checkbox-wrapper': PCheckboxWrapper;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
     'p-grid': PGrid;
@@ -940,6 +992,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'p-button': LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
       'p-button-pure': LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
+      'p-checkbox-wrapper': LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
       'p-flex': LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
       'p-flex-item': LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
       'p-grid': LocalJSX.PGrid & JSXBase.HTMLAttributes<HTMLPGridElement>;

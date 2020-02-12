@@ -1,0 +1,165 @@
+@import '../../../../../../packages/scss-utils/index';
+
+@mixin p-checkbox-wrapper-label-text-visible() {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0 0 0 $p-spacing-8;
+  white-space: normal;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin p-checkbox-wrapper-label-text-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+:host {
+  display: inline-block;
+  vertical-align: top;
+}
+
+::slotted(input) {
+  position: relative !important;
+  width: p-rem(24px) !important;
+  height: p-rem(24px) !important;
+  display: block !important;
+  outline: transparent none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border-style: solid !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+  border-color $p-animation-hover-duration $p-animation-hover-bezier !important;
+}
+
+// Focus
+::slotted(input:focus) {
+  outline: $p-color-theme-light-state-focus solid 2px !important;
+  outline-offset: 1px !important;
+}
+
+// Disabled
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+}
+
+.#{$p-global-class-prefix}checkbox-wrapper {
+
+  &__label {
+    position: relative;
+    display: flex;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background-color: $p-color-theme-light-neutral-contrast-high;
+    transition: opacity $p-animation-hover-duration $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--checked {
+      opacity: 1;
+    }
+
+    &--disabled {
+      background-color: $p-color-theme-light-state-disabled;
+    }
+
+    &--error {
+      background-color: $p-color-theme-light-notification-error;
+    }
+  }
+
+  &__label-text {
+    display: inline-block;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+    }
+
+    &--visible {
+      @include p-checkbox-wrapper-label-text-visible;
+    }
+
+    &--hidden {
+      @include p-checkbox-wrapper-label-text-hidden;
+    }
+
+    @include p-breakpoint("xs") {
+      &--visible-xs {
+        @include p-checkbox-wrapper-label-text-visible;
+      }
+
+      &--hidden-xs {
+        @include p-checkbox-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &--visible-s {
+        @include p-checkbox-wrapper-label-text-visible;
+      }
+
+      &--hidden-s {
+        @include p-checkbox-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &--visible-m {
+        @include p-checkbox-wrapper-label-text-visible;
+      }
+
+      &--hidden-m {
+        @include p-checkbox-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &--visible-l {
+        @include p-checkbox-wrapper-label-text-visible;
+      }
+
+      &--hidden-l {
+        @include p-checkbox-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &--visible-xl {
+        @include p-checkbox-wrapper-label-text-visible;
+      }
+
+      &--hidden-xl {
+        @include p-checkbox-wrapper-label-text-hidden;
+      }
+    }
+  }
+
+  &__message {
+    margin-top: $p-spacing-4;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--error {
+      color: $p-color-theme-light-notification-error;
+    }
+  }
+}
