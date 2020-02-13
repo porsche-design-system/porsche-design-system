@@ -13,7 +13,8 @@ import {
   PIcon,
   PPagination,
   PLink,
-  PLinkPure
+  PLinkPure,
+  PCheckboxWrapper
 } from '@porsche-design-system/components-react';
 
 const App: React.FC = () => {
@@ -601,6 +602,51 @@ const App: React.FC = () => {
         <PGridItem size={5}>
           <div className="playground dark spacing-block">
             <PPagination theme={'dark'} totalItemsCount={500} itemsPerPage={25} activePage={1}/>
+          </div>
+          <hr/>
+        </PGridItem>
+      </PGrid>
+      <PHeadline variant={'headline-2'}>Form</PHeadline>
+      <hr/>
+      <PGrid>
+        <PGridItem size={2}>
+          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-checkbox-wrapper&gt;</PHeadline>
+        </PGridItem>
+        <PGridItem size={10}>
+          <div className="playground light spacing-inline">
+            <PCheckboxWrapper label={'Some label'}>
+              <input type="checkbox" name="some-name"/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper label={'Some label'}>
+              <input type="checkbox" name="some-name" checked={true}/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper label={'Some label'} hideLabel={true}>
+              <input type="checkbox" name="some-name"/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper label={'Some label'} hideLabel={true}>
+              <input type="checkbox" name="some-name" checked={true}/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper label={'Some label'} indeterminate={true}>
+              <input type="checkbox" name="some-name"/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper label={'Some label'} indeterminate={true}>
+              <input type="checkbox" name="some-name" checked={true}/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper label={'Some label'}>
+              <input type="checkbox" name="some-name" disabled={true}/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper label={'Some label'}>
+              <input type="checkbox" name="some-name" checked={true} disabled={true}/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper label={'Some label'} state={'error'} message={'Some error validation message.'}>
+              <input type="checkbox" name="some-name"/>
+            </PCheckboxWrapper>
+            <PCheckboxWrapper state="error">
+              <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <input type="checkbox" name="some-name"/>
+              <span slot="message">Some error message with a <a
+                href="https://designsystem.porsche.com">link</a>.</span>
+            </PCheckboxWrapper>
           </div>
           <hr/>
         </PGridItem>
