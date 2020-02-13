@@ -15,6 +15,7 @@ describe('Component <p-button>', () => {
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-button')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('.p-button')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('aria-busy', null);
     expect(page.root).toMatchSnapshot();
     done();
   });
@@ -62,6 +63,7 @@ describe('Component <p-button>', () => {
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('disabled','');
+    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('aria-busy', 'true');
     done();
   });
 });
