@@ -1,4 +1,4 @@
-import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
@@ -25,7 +25,15 @@ export class TextareaWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  @State() private textarea: HTMLTextAreaElement;
+  @State() private disabled: boolean;
+
   public componentDidLoad() {
+
+    this.setTextarea();
+    this.setState();
+    this.bindStateListener();
+
     const tagName = this.element.tagName.toLowerCase();
     const style = `${tagName} a {
       outline: none transparent;
@@ -72,7 +80,8 @@ export class TextareaWrapper {
     const labelClasses = cx(prefix('textarea-wrapper__label'));
     const labelTextClasses = cx(
       prefix('textarea-wrapper__label-text'),
-      mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
+      this.disabled && prefix('textarea-wrapper__label-text--disabled')
     );
     const messageClasses = cx(
       prefix('textarea-wrapper__message'),
@@ -83,7 +92,7 @@ export class TextareaWrapper {
       <Host>
         <span class={wrapperClasses}>
           <label class={labelClasses}>
-            <p-text class={labelTextClasses} tag='span' onClick={() => this.focusOnTextarea()}>
+            <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.focusOnTextarea()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
             <slot/>
@@ -106,7 +115,21 @@ export class TextareaWrapper {
     return ['success', 'error'].includes(this.state) && (!!this.message || this.isMessageSlotDefined);
   }
 
+  private setTextarea(): void {
+    this.textarea = this.element.querySelector('textarea');
+  }
+
+  private setState(): void {
+    this.disabled = this.textarea.disabled;
+  }
+
   private focusOnTextarea(): void {
-    this.element.querySelector('textarea').focus();
+    this.textarea.focus();
+  }
+
+  private bindStateListener(): void {
+    this.textarea.addEventListener('change', () => {
+      this.setState();
+    });
   }
 }

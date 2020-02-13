@@ -62,16 +62,14 @@
 
 // Read only
 ::slotted(textarea:not(:disabled):read-only) {
-  background-color: $p-color-theme-light-background !important;
-  border: 0 !important;
+  background-color: $p-color-theme-light-surface !important;
+  border-color: $p-color-theme-light-surface !important;
   color: $p-color-theme-light-neutral-contrast-medium !important;
-  padding: .75rem 0 !important;
 }
 
 // Disabled
 ::slotted(textarea:disabled) {
-  background-color: $p-color-theme-light-surface !important;
-  border-color: $p-color-theme-light-surface !important;
+  border-color: $p-color-theme-light-state-disabled !important;
   color: $p-color-theme-light-state-disabled !important;
   cursor: not-allowed !important;
 }
@@ -88,6 +86,12 @@
 
   &__label-text {
     display: inline-block;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+    }
 
     &--visible {
       @include p-textarea-wrapper-label-text-visible;
