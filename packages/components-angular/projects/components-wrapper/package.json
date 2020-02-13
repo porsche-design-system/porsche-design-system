@@ -17,8 +17,8 @@
     "@porsche-design-system/components-js": "1.0.2"
   },
   "peerDependencies": {
-    "@angular/common": ">=8.2.0 <=9.0.0-rc.6",
-    "@angular/core": ">=8.2.0 <=9.0.0-rc.6"
+    "@angular/common": ">=8.2.0 <10.0.0",
+    "@angular/core": ">=8.2.0 <10.0.0"
   },
   "publishConfig": {
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
