@@ -26,7 +26,6 @@ export class TextareaWrapper {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad() {
-
     const tagName = this.element.tagName.toLowerCase();
     const style = `${tagName} a {
       outline: none transparent;
@@ -99,8 +98,12 @@ export class TextareaWrapper {
     );
   }
 
+  private get isMessageSlotDefined(): boolean {
+    return !!this.element.querySelector('span[slot="message"]');
+  }
+
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state);
+    return ['success', 'error'].includes(this.state) && (!!this.message || this.isMessageSlotDefined);
   }
 
   private focusOnTextarea(): void {
