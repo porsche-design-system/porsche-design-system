@@ -124,7 +124,7 @@ export class CheckboxWrapper {
   }
 
   private inputChangeListener(): void {
-    transitionListener(this.input, 'opacity', () => {
+    transitionListener(this.input, 'border-top-color', () => {
       this.setState();
     });
   }
