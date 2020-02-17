@@ -44,12 +44,25 @@
   opacity: 1 !important;
   outline: transparent solid 2px !important;
   outline-offset: 1px !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier !important;
+  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+  opacity 0.00001ms linear !important;
 }
 
 // Focus
 ::slotted(input:focus) {
   outline-color: $p-color-theme-light-state-focus !important;
+}
+
+::slotted(input:checked) {
+  opacity: 0.99 !important;
+}
+
+::slotted(input:disabled) {
+  opacity: 0.98 !important;
+}
+
+::slotted(input:disabled:checked) {
+  opacity: 0.97 !important;
 }
 
 // Disabled
