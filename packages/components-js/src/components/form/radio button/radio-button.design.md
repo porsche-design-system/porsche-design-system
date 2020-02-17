@@ -9,10 +9,10 @@ In a group of radio buttons should be selected one option by default. However, t
 ## Variants
  
 ### 1. Default
-EXAMPLE
+!!! EXAMPLES !!!
  
 ### 2. Checked
-EXAMPLE
+!!! EXAMPLES !!!
  
 ---
  
@@ -31,7 +31,7 @@ All Radio Buttons are available in the following states:
 The Radio Button can contain the following sub-components:
  
 - **Headings**
-XY
+TBD
  
 - **Label**
 Label text (≤ 20 characters) is used to inform users as to what information is requested for a Radio Button. Every Radio Button should have a label.
@@ -56,7 +56,9 @@ All types of Radio Buttons are available in disabled state. However, disabled st
 - Don't align radio buttons horizontally as it is more difficult to scan.
 - Avoid using a radio button as a single choice.
  
-!!! EXAMPLES !!!
+![Example for long radio button list](./assets/dont-spacing-radio button-list.png)
+![Example for alignment](./assets/dont-spacing-radio button-alignment.png)
+![Example for single choice](./assets/dont-spacing-radio button-vs.-checkbox.png)
  
 ---
  
