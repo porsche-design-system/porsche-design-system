@@ -1,6 +1,11 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+  transitionListener
+} from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
 
 @Component({
@@ -35,7 +40,7 @@ export class CheckboxWrapper {
 
     this.setInput();
     this.setState();
-    this.bindStateListener();
+    this.inputChangeListener();
 
     const tagName = this.element.tagName.toLowerCase();
     const style = `${tagName} a {
@@ -118,8 +123,8 @@ export class CheckboxWrapper {
     this.disabled = this.input.disabled;
   }
 
-  private bindStateListener(): void {
-    this.input.addEventListener('change', () => {
+  private inputChangeListener(): void {
+    transitionListener(this.input, 'opacity', () => {
       this.setState();
     });
   }
