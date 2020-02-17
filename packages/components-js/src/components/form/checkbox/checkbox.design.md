@@ -7,13 +7,17 @@ Use a Checkboxe for a list of options that allow the user to make choices. The c
 ## Variants
 
 ### 1. Default
-EXAMPLE
+!!! EXAMPLE !!!
 
 ### 2. Checked
-EXAMPLE
+!!! EXAMPLE !!!
 
 ### 3. Indeterminate
-EXAMPLE
+The indeterminate state represents the mixed selection states of dependent checkboxes in a group. 
+Once some of the dependent fields have been selected and subsequently deselected. 
+This is only a visual state and cannot be achieved by direct user interaction. 
+
+!!! EXAMPLE !!!
 
 ---
 
@@ -35,19 +39,18 @@ All Checkboxes types are available in the following states:
 The Checkbox can contain the following sub-components:
 
 - **Headings**
-XY
+!!! TBD !!!
+
+- **Checkbox**
+The indicator is used to show whether the checkbox is checked (“on”) or not (“off”).
 
 - **Label**
 Label text (≤ 20 characters) is used to inform users as to what information is requested for a Checkbox. Every Checkbox should have a label.
-
 ---
 
 ## Usage
 
 Checkboxes have several usage patterns:
-
-### Individual choice
-A single checkbox is used to select an individual choice.
 
 ### Independent choices (zero or more)
 A group of Checkboxes is used to select from a set of zero or more choices. (Unlike single-selection controls such as Radio Buttons, users can select any combination of options in a group of Checkboxes.)
