@@ -31,7 +31,10 @@ All Radio Buttons are available in the following states:
 The Radio Button can contain the following sub-components:
  
 - **Headings**
-TBD
+!!! TBD !!!
+
+- **Radio Button**
+The indicator is used to show whether the radio button is checked or not.
  
 - **Label**
 Label text (≤ 20 characters) is used to inform users as to what information is requested for a Radio Button. Every Radio Button should have a label.
@@ -46,9 +49,13 @@ The singular property of a radio button makes it distinct from a checkbox, which
 ### Disabled states
 All types of Radio Buttons are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
  
-!!! EXAMPLES !!!
- 
+<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+    <img src="./assets/form-radio-butto-examples.png" alt="Examples for button usage"/>
+</div>
+
 ---
+
  
 ## Don'ts
  
