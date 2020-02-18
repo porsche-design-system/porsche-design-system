@@ -21,7 +21,7 @@ export class CheckboxWrapper {
   @Prop() public label?: string = '';
 
   /** The validation state. */
-  @Prop({reflect: true}) public state?: 'error' | 'none' = 'none';
+  @Prop() public state?: 'error' | 'none' = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -106,8 +106,12 @@ export class CheckboxWrapper {
     );
   }
 
+  private get isMessageDefined(): boolean {
+    return !!this.message || !!this.element.querySelector('[slot="message"]');
+  }
+
   private get isMessageVisible(): boolean {
-    return ['error'].includes(this.state);
+    return ['error'].includes(this.state) && this.isMessageDefined;
   }
 
   private setInput(): void {
