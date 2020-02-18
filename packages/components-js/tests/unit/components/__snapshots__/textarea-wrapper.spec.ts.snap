@@ -5,10 +5,12 @@ exports[`Component <p-textarea-wrapper> should render correctly in default mode 
   <mock:shadow-root>
     <span class="p-textarea-wrapper__wrapper">
       <label class="p-textarea-wrapper__label">
-        <p-text class="p-textarea-wrapper__label-text p-textarea-wrapper__label-text--visible" tag="span">
+        <p-text class="p-textarea-wrapper__label-text p-textarea-wrapper__label-text--visible" color="inherit" tag="span">
           Some label
         </p-text>
-        <slot></slot>
+        <span class="p-textarea-wrapper__container p-textarea-wrapper__container--none">
+          <slot></slot>
+        </span>
       </label>
     </span>
   </mock:shadow-root>
