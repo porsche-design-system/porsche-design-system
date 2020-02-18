@@ -181,15 +181,15 @@ export const config: StorefrontConfig = {
       'Checkbox': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/checkbox/checkbox.design.md`)
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/checkbox/checkbox-wrapper.code.md`)
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/checkbox/checkbox.props.md`)
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
         ]
       }
     },

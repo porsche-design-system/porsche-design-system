@@ -6,18 +6,26 @@ Use a Checkboxe for a list of options that allow the user to make choices. The c
 
 ## Variants
 
-### 1. Default
-!!! EXAMPLE !!!
+### 1. Default  
+<br>
+<p-checkbox-wrapper label="Some label">
+  <input type="checkbox"/>
+</p-checkbox-wrapper>
 
 ### 2. Checked
-!!! EXAMPLE !!!
+<br>
+<p-checkbox-wrapper label="Some label">
+  <input type="checkbox" checked="checked" />
+</p-checkbox-wrapper>
 
 ### 3. Indeterminate
 The indeterminate state represents the mixed selection states of dependent checkboxes in a group. 
 Once some of the dependent fields have been selected and subsequently deselected. 
-This is only a visual state and cannot be achieved by direct user interaction. 
-
-!!! EXAMPLE !!!
+This is only a visual state and cannot be achieved by direct user interaction.  
+<br>
+<p-checkbox-wrapper label="Some label" indeterminate="true">
+  <input type="checkbox" checked="checked"/>
+</p-checkbox-wrapper>
 
 ---
 
