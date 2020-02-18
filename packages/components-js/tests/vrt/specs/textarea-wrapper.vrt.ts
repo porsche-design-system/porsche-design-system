@@ -2,7 +2,7 @@ import 'jasmine';
 import {VisualRegressionTester} from '@porsche-ui/visual-regression-tester';
 import {getVisualRegressionTester} from '../helpers/setup';
 
-fdescribe('Textarea Wrapper', () => {
+describe('Textarea Wrapper', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(async () => {
