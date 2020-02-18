@@ -1,6 +1,6 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, transitionListener } from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
 import { FormState } from '../../../types';
 
@@ -25,10 +25,17 @@ export class TextFieldWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  @State() private input: HTMLInputElement;
+  @State() private disabled: boolean;
+  @State() private readonly: boolean;
   @State() private isPasswordToggleable: boolean = false;
   @State() private showPassword: boolean = false;
 
   public componentDidLoad() {
+
+    this.setInput();
+    this.setState();
+    this.bindStateListener();
 
     const tagName = this.element.tagName.toLowerCase();
     const style = `${tagName} a {
@@ -46,24 +53,6 @@ export class TextFieldWrapper {
     ${tagName} a:focus {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
-    }
-
-    ${tagName} input {
-      border-color: #626669 !important;
-      border-width: 1px !important;
-      padding: calc(.75rem - 1px) !important;
-    }
-
-    ${tagName}[state='success'] input {
-      border-color: #13d246 !important;
-      border-width: 2px !important;
-      padding: calc(.75rem - 2px) !important;
-    }
-
-    ${tagName}[state='error'] input {
-      border-color: #e00000 !important;
-      border-width: 2px !important;
-      padding: calc(.75rem - 2px) !important;
     }
 
     ${tagName} input[type='number']::-webkit-outer-spin-button {
@@ -89,6 +78,12 @@ export class TextFieldWrapper {
       prefix('text-field-wrapper__label-text'),
       mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     );
+    const inputContainerClasses = cx(
+      prefix('text-field-wrapper__container'),
+      prefix(`text-field-wrapper__container--${this.state}`),
+      this.disabled && prefix('text-field-wrapper__container--disabled'),
+      this.readonly && prefix('text-field-wrapper__container--readonly')
+    );
     const buttonClasses = cx(prefix('text-field-wrapper__button'));
     const messageClasses = cx(
       prefix('text-field-wrapper__message'),
@@ -102,7 +97,9 @@ export class TextFieldWrapper {
             <p-text class={labelTextClasses} tag='span' onClick={() => this.focusOnInput()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
-            <slot/>
+            <span class={inputContainerClasses}>
+              <slot/>
+            </span>
           </label>
           {this.isPasswordToggleable &&
           <button type='button' class={buttonClasses} onClick={() => this.togglePassword()}>
@@ -119,12 +116,31 @@ export class TextFieldWrapper {
     );
   }
 
+  private get isMessageSlotDefined(): boolean {
+    return !!this.element.querySelector('span[slot="message"]');
+  }
+
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state);
+    return ['success', 'error'].includes(this.state) && (!!this.message || this.isMessageSlotDefined);
+  }
+
+  private setInput(): void {
+    this.input = this.element.querySelector('input');
+  }
+
+  private setState(): void {
+    this.disabled = this.input.disabled;
+    this.readonly = this.input.readOnly;
   }
 
   private focusOnInput(): void {
-    this.element.querySelector('input').focus();
+    this.input.focus();
+  }
+
+  private bindStateListener(): void {
+    transitionListener(this.input, 'border-top-color', () => {
+      this.setState();
+    });
   }
 
   private updatePasswordToggleable(): void {
