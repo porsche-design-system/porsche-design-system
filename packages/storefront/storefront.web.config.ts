@@ -177,6 +177,14 @@ export const config: StorefrontConfig = {
         ]
       }
     },
+    Forms: {
+      Select: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select/select.design.md`)
+        ]
+      }
+    },
     Feedback: {
       Spinner: {
         Design: [
