@@ -177,6 +177,14 @@ export const config: StorefrontConfig = {
         ]
       }
     },
+    Form: {
+      'Radio Button': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/forms/radio button/radio-button.design.md`)
+        ]
+      }
+    },
     Feedback: {
       Spinner: {
         Design: [
