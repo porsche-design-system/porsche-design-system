@@ -49,7 +49,6 @@
   color: $p-color-theme-light-default !important;
   resize: vertical;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier,
   border-top-color 0.00001ms linear !important; // used for transitionend event listener;
 }
