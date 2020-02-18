@@ -1,6 +1,6 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, transitionListener } from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
 import { FormState } from '../../../types';
 
@@ -27,6 +27,7 @@ export class TextareaWrapper {
 
   @State() private textarea: HTMLTextAreaElement;
   @State() private disabled: boolean;
+  @State() private readonly: boolean;
 
   public componentDidLoad() {
 
@@ -51,24 +52,6 @@ export class TextareaWrapper {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
     }
-
-    ${tagName} textarea {
-      border-color: #626669 !important;
-      border-width: 1px !important;
-      padding: calc(.75rem - 1px) !important;
-    }
-
-    ${tagName}[state='success'] textarea {
-      border-color: #13d246 !important;
-      border-width: 2px !important;
-      padding: calc(.75rem - 2px) !important;
-    }
-
-    ${tagName}[state='error'] textarea {
-      border-color: #e00000 !important;
-      border-width: 2px !important;
-      padding: calc(.75rem - 2px) !important;
-    }
     `;
 
     insertSlottedStyles(this.element, style);
@@ -83,6 +66,12 @@ export class TextareaWrapper {
       mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('textarea-wrapper__label-text--disabled')
     );
+    const textareaContainerClasses = cx(
+      prefix('textarea-wrapper__container'),
+      prefix(`textarea-wrapper__container--${this.state}`),
+      this.disabled && prefix('textarea-wrapper__container--disabled'),
+      this.readonly && prefix('textarea-wrapper__container--readonly')
+    );
     const messageClasses = cx(
       prefix('textarea-wrapper__message'),
       prefix(`textarea-wrapper__message--${this.state}`)
@@ -95,7 +84,9 @@ export class TextareaWrapper {
             <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.focusOnTextarea()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
-            <slot/>
+            <span class={textareaContainerClasses}>
+              <slot/>
+            </span>
           </label>
         </span>
         {this.isMessageVisible &&
@@ -121,6 +112,7 @@ export class TextareaWrapper {
 
   private setState(): void {
     this.disabled = this.textarea.disabled;
+    this.readonly = this.textarea.readOnly;
   }
 
   private focusOnTextarea(): void {
@@ -128,7 +120,7 @@ export class TextareaWrapper {
   }
 
   private bindStateListener(): void {
-    this.textarea.addEventListener('change', () => {
+    transitionListener(this.textarea, 'border-top-color', () => {
       this.setState();
     });
   }

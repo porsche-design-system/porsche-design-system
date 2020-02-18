@@ -41,7 +41,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 <Playground>    
   <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" disabled="disabled" placeholder="Some placeholder text"></textarea>
+    <textarea name="some-name" disabled="disabled">Some value</textarea>
   </p-textarea-wrapper>
 </Playground>
 
@@ -51,7 +51,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 <Playground>    
   <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" readonly="readonly">Some value with longer text</textarea>
+    <textarea name="some-name" readonly="readonly">Some value</textarea>
   </p-textarea-wrapper>
 </Playground>
 
