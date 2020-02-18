@@ -30,29 +30,32 @@
 
 ::slotted(input) {
   width: 100% !important;
-  height: p-rem(48px) !important;
+  height: p-rem(24px) !important;
   display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
   outline: transparent none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border-style: solid !important;
-  border-radius: 0 !important;
-  background-color: $p-color-theme-light-background !important;
+  border-width: 0 !important;
+  border-top-color: transparent !important;
+  background-color: transparent !important;
   opacity: 1 !important;
   font-family: $p-font-primary !important;
   font-weight: $p-font-weight-regular !important;
   font-size: p-font-size($p-text-size-small) !important;
   line-height: p-line-height($p-text-size-small) !important;
+  text-indent: 0 !important;
   color: $p-color-theme-light-default !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier !important;
+  color $p-animation-hover-duration $p-animation-hover-bezier,
+  border-top-color 0.00001ms linear !important; // used for transitionend event listener;
 }
 
 // Focus
 ::slotted(input:focus) {
   outline: $p-color-theme-light-state-focus solid 2px !important;
-  outline-offset: 1px !important;
+  outline-offset: calc(.75rem + 1px) !important;
 }
 
 ::slotted(input:read-only:focus) {
@@ -61,16 +64,13 @@
 
 // Read only
 ::slotted(input:not(:disabled):read-only) {
-  background-color: $p-color-theme-light-background !important;
-  border: 0 !important;
+  border-top-color: $p-color-theme-light-surface !important;
   color: $p-color-theme-light-neutral-contrast-medium !important;
-  padding: .75rem 0 !important;
 }
 
 // Disabled
 ::slotted(input:disabled) {
-  background-color: $p-color-theme-light-surface !important;
-  border-color: $p-color-theme-light-surface !important;
+  border-top-color: $p-color-theme-light-state-disabled !important;
   color: $p-color-theme-light-state-disabled !important;
   cursor: not-allowed !important;
 }
@@ -145,6 +145,38 @@
       &--hidden-xl {
         @include p-text-field-wrapper-label-text-hidden;
       }
+    }
+  }
+
+  &__container {
+    display: block;
+    background-color: $p-color-theme-light-background;
+    border: 1px solid $p-color-theme-light-default;
+    padding: calc(.75rem - 1px);
+    box-sizing: border-box;
+    transition: border-color $p-animation-hover-duration $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--disabled {
+      border-color: $p-color-theme-light-state-disabled;
+      background-color: $p-color-theme-light-background;
+    }
+
+    &--readonly {
+      border-color: $p-color-theme-light-surface;
+      background-color: $p-color-theme-light-surface;
+    }
+
+    &--success {
+      border-color: $p-color-theme-light-notification-success;
+      border-width: 2px;
+      padding: calc(.75rem - 2px);
+    }
+
+    &--error {
+      border-color: $p-color-theme-light-notification-error;
+      border-width: 2px;
+      padding: calc(.75rem - 2px);
     }
   }
 
