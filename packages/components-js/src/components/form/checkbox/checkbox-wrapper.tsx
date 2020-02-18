@@ -39,7 +39,6 @@ export class CheckboxWrapper {
   public componentDidLoad() {
 
     this.setInput();
-    this.setState();
     this.inputChangeListener();
 
     const tagName = this.element.tagName.toLowerCase();
