@@ -54,22 +54,22 @@
   outline-color: $p-color-theme-light-state-focus !important;
 }
 
+// Checked
 ::slotted(input:checked) {
   border-top-color: rgba(255,255,255,0.01) !important;
-}
-
-::slotted(input:disabled) {
-  border-top-color: rgba(255,255,255,0.02) !important;
-}
-
-::slotted(input:disabled:checked) {
-  border-top-color: rgba(255,255,255,0.03) !important;
 }
 
 // Disabled
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
+  border-top-color: rgba(255,255,255,0.02) !important;
 }
+
+// Disabled + Checked
+::slotted(input:disabled:checked) {
+  border-top-color: rgba(255,255,255,0.03) !important;
+}
+
 
 .#{$p-global-class-prefix}checkbox-wrapper {
 

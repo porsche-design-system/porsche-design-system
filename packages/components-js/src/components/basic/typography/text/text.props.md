@@ -24,6 +24,6 @@
 
  - [p-button](#/web/components/action/button)
  - [p-button-pure](#/web/components/action/button-pure)
- - [p-checkbox-wrapper](#/web/components/form/checkbox)
+ - [p-checkbox-wrapper](#/web/components/form/checkbox-wrapper)
  - [p-link](#/web/components/navigation/link)
  - [p-link-pure](#/web/components/navigation/link-pure)
