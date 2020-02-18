@@ -177,11 +177,11 @@ export const config: StorefrontConfig = {
         ]
       }
     },
-    Form: {
+    Forms: {
       'Radio Button': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/forms/radio button/radio-button.design.md`)
+          () => import(`@/../../components-js/src/components/form/radio button/radio-button.design.md`)
         ]
       }
     },
