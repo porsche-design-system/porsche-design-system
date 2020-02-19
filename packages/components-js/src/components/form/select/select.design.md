@@ -5,6 +5,25 @@ Select components are more compact allowing users to save space and prevent from
  
 ---
 
+## Types
+ 
+In order to provide an optimal user guidance within a page, different types of Selects are 
+available:
+ 
+### 1. Default 
+ 
+Use default select especially within a form without any context around.
+ 
+!!! EXAMPLE !!!
+
+### 2. Pure (without label)
+ 
+Use Pure (without label) only if a separate description is intended, e.g. within copytext.
+ 
+!!! EXAMPLE !!!
+ 
+---
+
 ## States
  
 All Selects are available in the following states:
