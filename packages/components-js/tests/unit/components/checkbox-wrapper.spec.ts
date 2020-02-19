@@ -16,6 +16,4 @@ describe('Component <p-checkbox-wrapper>', () => {
     expect(page.root.querySelector('.p-checkbox-wrapper__icon-wrapper')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('.p-checkbox-wrapper__icon-wrapper')).toBeTruthy();
   });
-
-  // TODO: add test for checked and disabled when changed programmatically
 });
