@@ -1,11 +1,9 @@
 import {PGrid, PGridItem, PHeadline, PLink, PLinkPure, PPagination} from '@porsche-design-system/components-react';
 import React from "react";
-import {SystemLog} from "./SystemLog";
 
 export function Navigation(){
   return(
     <div>
-      <SystemLog/>
       <PHeadline variant={'headline-2'}>Navigation</PHeadline>
       <hr/>
       <PGrid>

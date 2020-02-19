@@ -1,11 +1,9 @@
 import {PButton, PButtonPure, PGrid, PGridItem, PHeadline} from '@porsche-design-system/components-react';
 import React from "react";
-import {SystemLog} from "./SystemLog";
 
 export function Action(){
   return(
     <div>
-      <SystemLog/>
       <PHeadline variant={'headline-2'}>Action</PHeadline>
       <hr/>
       <PGrid>

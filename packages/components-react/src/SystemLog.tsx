@@ -3,7 +3,7 @@ import React from "react";
 
 export function SystemLog(){
 return (
-  <div id="App">
+  <div>
     <PText>
       <b id="human-readable-browser-name"></b>
       <br/>

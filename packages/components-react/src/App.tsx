@@ -22,7 +22,7 @@ const App: React.FC = () => {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             <Home/>
           </Route>
          <Route path="/basic">
@@ -54,9 +54,6 @@ function Home(){
 
       <div>
         <SystemLog/>
-        <Link to="/">
-          <PLinkPure href={"/home"}>Home</PLinkPure>
-        </Link>
         <Link to="/basic">
           <PLinkPure href={"/basic"}>Basic</PLinkPure>
         </Link>

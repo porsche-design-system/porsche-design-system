@@ -1,11 +1,9 @@
 import {PGrid, PGridItem, PHeadline, PIcon} from '@porsche-design-system/components-react';
 import React from "react";
-import {SystemLog} from "./SystemLog";
 
 export function Icon(){
   return(
     <div>
-      <SystemLog/>
       <PHeadline variant={'headline-2'}>Icon</PHeadline>
       <hr/>
       <PGrid>

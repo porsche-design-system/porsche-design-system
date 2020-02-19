@@ -1,11 +1,9 @@
 import {PGrid, PGridItem, PHeadline, PMarque, PText} from '@porsche-design-system/components-react';
 import React from "react";
-import {SystemLog} from "./SystemLog";
 
 export function Basic(){
   return(
     <div >
-      <SystemLog/>
       <PHeadline variant={'headline-2'} tag={'h2'}>Basic</PHeadline>
       <hr/>
       <PGrid>
