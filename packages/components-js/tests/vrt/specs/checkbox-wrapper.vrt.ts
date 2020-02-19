@@ -12,7 +12,7 @@ describe('Checkbox Wrapper', () => {
   it('should have no visual regression', async () => {
     expect(
       await vrt.test('checkbox-wrapper', async () => {
-        await vrt.goTo('/src/components/form/checkbox/checkbox-wrapper.test.html');
+        await vrt.goTo('/src/components/form/checkbox-wrapper/checkbox-wrapper.test.html');
         await vrt.focus('#test-focus-state');
       })
     ).toBeFalsy();
