@@ -1,11 +1,9 @@
 import {PGrid, PGridItem, PHeadline, PSpinner} from '@porsche-design-system/components-react';
 import React from "react";
-import {SystemLog} from "./SystemLog";
 
 export function Feedback(){
   return(
     <div>
-      <SystemLog/>
       <PHeadline variant={'headline-2'}>Feedback</PHeadline>
       <hr/>
       <PGrid>

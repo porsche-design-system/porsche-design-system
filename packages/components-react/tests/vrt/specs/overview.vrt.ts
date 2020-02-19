@@ -9,10 +9,49 @@ describe('Components Overview', () => {
     vrt = await getVisualRegressionTester();
   });
 
-  it('should have no visual regression', async () => {
+  it('Basic should have no visual regression', async () => {
     expect(
-      await vrt.test('overview', async () => {
-        await vrt.goTo('/');
+      await vrt.test('basic', async () => {
+        await vrt.goTo('/basic');
+      })
+    ).toBeFalsy();
+  });
+  
+  it('Action should have no visual regression', async () => {
+    expect( await vrt.test('action', async () => {
+        await vrt.goTo('/action');
+      })
+    ).toBeFalsy();
+  });
+
+  it('Feedback should have no visual regression', async () => {
+    expect(
+      await vrt.test('feedback', async () => {
+        await vrt.goTo('/feedback');
+      })
+    ).toBeFalsy();
+  });
+
+  it('Icon should have no visual regression', async () => {
+    expect(
+      await vrt.test('icon', async () => {
+        await vrt.goTo('/icon');
+      })
+    ).toBeFalsy();
+  });
+
+  it('Layout should have no visual regression', async () => {
+    expect(
+      await vrt.test('layout', async () => {
+        await vrt.goTo('/layout');
+      })
+    ).toBeFalsy();
+  });
+
+  it('Navigation should have no visual regression', async () => {
+    expect(
+      await vrt.test('navigation', async () => {
+        await vrt.goTo('/navigation');
       })
     ).toBeFalsy();
   });

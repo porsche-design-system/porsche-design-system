@@ -1,11 +1,9 @@
 import {PFlex, PFlexItem, PGrid, PGridItem, PHeadline} from '@porsche-design-system/components-react';
 import React from "react";
-import {SystemLog} from "./SystemLog";
 
 export function Layout(){
   return(
     <div>
-      <SystemLog/>
       <PHeadline variant={'headline-2'}>Layout</PHeadline>
       <hr/>
       <PGrid>
