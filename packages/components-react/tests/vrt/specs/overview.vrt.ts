@@ -16,7 +16,7 @@ describe('Components Overview', () => {
       })
     ).toBeFalsy();
   });
-  
+
   it('Action should have no visual regression', async () => {
     expect( await vrt.test('action', async () => {
         await vrt.goTo('/action');
