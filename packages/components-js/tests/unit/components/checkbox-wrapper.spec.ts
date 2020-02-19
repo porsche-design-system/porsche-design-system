@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CheckboxWrapper } from '../../../src/components/form/checkbox/checkbox-wrapper';
+import { CheckboxWrapper } from '../../../src/components/form/checkbox-wrapper/checkbox-wrapper';
 
 describe('Component <p-checkbox-wrapper>', () => {
 
