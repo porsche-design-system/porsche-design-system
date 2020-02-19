@@ -1,22 +1,10 @@
 # Select
  
-Use a Select dropdown to allows the user to search through a large list of choices and choose one item at a time, similarly to radio buttons. 
+Use a Select to allows the user to search through a large list of choices and choose one item at a time, similarly to radio buttons. 
 Select components are more compact allowing users to save space and prevent from entering erroneous data, since they only show legal choices.
  
 ---
 
-### Types
- 
-The types of Select elements that are available for the Porsche Design System:
- 
-### 1. Selection
-A dropdown can be used to select between choices in a form.
-
-### 2.Search Selection 
-A selection dropdown can allow a user to search through a large list of choices.
-
----
- 
 ## States
  
 All Selects are available in the following states:
@@ -34,6 +22,12 @@ All Selects are available in the following states:
 - **Headings**
 !!! TBD !!!
 
+- **Label**
+Label text (≤ 20 characters) is used to inform users as to what information is requested for a Select. Every Select should have a label. !!! TBD !!!
+
+- **Select suffix**
+Indicates there are options to choose from.
+
 - **Validation message**
 Validation text for a select is placed right below the field box (≤ 90 characters). This places the error next to the offending select, 
 so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it.
@@ -42,12 +36,14 @@ so there is no confusion for the user as to what field failed validation. Effect
  
 ## Usage
  
-### Labels
-Consider adding text to the field, such as ‘Select one’ to help the user recognize the necessary action.
-Describe just the option with the label.
+### Selection
+Use a default selection, if possible or a placeholder option, such as “Select…” if no default is available.
  
-### Spacing
-Keep enough space between each Select component. Use correct spacings according to the 8 px system.
+### Prompt Text
+Keep the prompt text in view while the dropdown list is open. The selection description, reminds the user what he has just selected.
+
+### Sorting
+Use common sort order for menu items (Frequency of use, alpha or numeric).
 
 ### Disabled State
 All Selects are provided in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow.
@@ -62,3 +58,12 @@ All Selects are provided in disabled state. However, disabled states should be a
 - Avoid dropdown boxes when typing may be faster.
  
 !!! EXAMPLES !!!
+
+--- 
+ 
+## Related Components
+
+* [Text Field](#/web/components/form/text-field)
+* [Textarea](#/web/components/form/textarea)
+* [Checkbox](#/web/components/form/checkbox)
+* [Radio Button](#/web/components/form/radio-button)
