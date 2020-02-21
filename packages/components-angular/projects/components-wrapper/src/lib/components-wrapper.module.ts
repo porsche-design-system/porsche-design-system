@@ -14,6 +14,7 @@ import {
   PLinkPure,
   PMarque,
   PPagination,
+  PRadioButtonWrapper,
   PSpinner,
   PText
 } from './components-wrapper.component';
@@ -31,6 +32,7 @@ const DECLARATIONS = [
   PLinkPure,
   PMarque,
   PPagination,
+  PRadioButtonWrapper,
   PSpinner,
   PText
 ];
