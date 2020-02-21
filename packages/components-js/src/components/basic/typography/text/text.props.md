@@ -26,3 +26,4 @@
  - [p-button-pure](#/web/components/action/button-pure)
  - [p-link](#/web/components/navigation/link)
  - [p-link-pure](#/web/components/navigation/link-pure)
+ - [p-radio-button-wrapper](#/web/components/form/radio-button)

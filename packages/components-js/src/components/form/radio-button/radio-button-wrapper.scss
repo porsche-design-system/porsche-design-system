@@ -1,0 +1,215 @@
+@import '../../../../../../packages/scss-utils/index';
+
+@mixin p-radio-button-wrapper-label-text-visible() {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0 0 0 $p-spacing-8;
+  white-space: normal;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin p-radio-button-wrapper-label-text-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+:host {
+  display: inline-block;
+  vertical-align: top;
+}
+
+::slotted(input) {
+  position: absolute !important;
+  border-radius: 50% !important;
+  top: -2px !important;
+  left: -2px !important;
+  width: p-rem(26px) !important;
+  height: p-rem(26px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  appearance: none !important;
+  border: 0 rgba(255,255,255,0) !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+  outline: transparent solid 2px !important;
+  outline-offset: 1px !important;
+  transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+  border-color 0.00001ms linear !important;
+}
+
+// Focus
+::slotted(input:focus) {
+  box-shadow: 0 0 0 2px $p-color-theme-light-state-focus;
+}
+
+// Checked
+::slotted(input:checked) {
+  border-color: rgba(255,255,255,0.01) !important;
+}
+
+// Disabled
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  border-color: rgba(255,255,255,0.02) !important;
+}
+
+// Disabled + Checked
+::slotted(input:disabled:checked) {
+  border-color: rgba(255,255,255,0.03) !important;
+}
+
+.#{$p-global-class-prefix}radio-button-wrapper {
+
+  &__label {
+    position: relative;
+    display: flex;
+  }
+
+  &__input-wrapper {
+    position: relative;
+    width: p-rem(24px);
+    height: p-rem(24px);
+    border-radius: 50%;
+    display: block;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
+    background-color: $p-color-theme-light-background;
+    transition: border-color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &::before {
+      content: "";
+      width: p-rem(16px);
+      height: p-rem(16px);
+      border-radius: 50%;
+      background-color: transparent;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: background-color $p-animation-hover-duration $p-animation-hover-bezier;
+    }
+
+    &--checked {
+      border-color: $p-color-theme-light-neutral-contrast-high;
+
+      &::before {
+        background-color: $p-color-theme-light-neutral-contrast-high;
+      }
+    }
+
+    &--checked#{&}--disabled {
+
+      &::before {
+        background-color: $p-color-theme-light-state-disabled;
+      }
+    }
+
+    &--checked#{&}--error {
+      background-color: $p-color-theme-light-notification-error;
+
+      &::before {
+        background-color: $p-color-theme-light-notification-error;
+      }
+    }
+
+    &--disabled {
+      border-color: $p-color-theme-light-state-disabled;
+    }
+
+    &--error {
+      border-width: 2px;
+      border-color: $p-color-theme-light-notification-error;
+    }
+  }
+
+  &__label-text {
+    display: inline-block;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+    }
+
+    &--visible {
+      @include p-radio-button-wrapper-label-text-visible;
+    }
+
+    &--hidden {
+      @include p-radio-button-wrapper-label-text-hidden;
+    }
+
+    @include p-breakpoint("xs") {
+      &--visible-xs {
+        @include p-radio-button-wrapper-label-text-visible;
+      }
+
+      &--hidden-xs {
+        @include p-radio-button-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &--visible-s {
+        @include p-radio-button-wrapper-label-text-visible;
+      }
+
+      &--hidden-s {
+        @include p-radio-button-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &--visible-m {
+        @include p-radio-button-wrapper-label-text-visible;
+      }
+
+      &--hidden-m {
+        @include p-radio-button-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &--visible-l {
+        @include p-radio-button-wrapper-label-text-visible;
+      }
+
+      &--hidden-l {
+        @include p-radio-button-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &--visible-xl {
+        @include p-radio-button-wrapper-label-text-visible;
+      }
+
+      &--hidden-xl {
+        @include p-radio-button-wrapper-label-text-hidden;
+      }
+    }
+  }
+
+  &__message {
+    margin-top: $p-spacing-4;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--error {
+      color: $p-color-theme-light-notification-error;
+    }
+  }
+}

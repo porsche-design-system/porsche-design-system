@@ -181,7 +181,15 @@ export const config: StorefrontConfig = {
       'Radio Button': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/radio button/radio-button.design.md`)
+          () => import(`@/../../components-js/src/components/form/radio-button/radio-button-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button/radio-button-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button/radio-button-wrapper.props.md`)
         ]
       }
     },

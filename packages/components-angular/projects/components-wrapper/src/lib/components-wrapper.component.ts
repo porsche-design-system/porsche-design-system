@@ -177,6 +177,17 @@ export class PPagination {
   }
 }
 
+export declare interface PRadioButtonWrapper extends Components.PRadioButtonWrapper {}
+@ProxyCmp({inputs: ['hideLabel', 'label', 'message', 'state']})
+@Component({ selector: 'p-radio-button-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
+export class PRadioButtonWrapper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface PSpinner extends Components.PSpinner {}
 @ProxyCmp({inputs: ['size', 'theme']})
 @Component({ selector: 'p-spinner', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['size', 'theme'] })
