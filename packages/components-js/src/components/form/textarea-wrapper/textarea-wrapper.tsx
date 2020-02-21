@@ -98,12 +98,12 @@ export class TextareaWrapper {
     );
   }
 
-  private get isMessageSlotDefined(): boolean {
-    return !!this.element.querySelector('span[slot="message"]');
+  private get isMessageDefined(): boolean {
+    return !!this.message || !!this.element.querySelector('span[slot="message"]');
   }
 
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && (!!this.message || this.isMessageSlotDefined);
+    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
   }
 
   private setTextarea(): void {
