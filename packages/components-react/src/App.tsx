@@ -19,12 +19,31 @@ import {SystemLog} from "./SystemLog";
 
 const App: React.FC = () => {
   return (
+
     <Router>
-      <div>
+      <div id="app">
+        <SystemLog/>
+        <Link to="/basic">
+          <PLinkPure>Basic</PLinkPure>
+        </Link>
+        <Link to="/action">
+          <PLinkPure>Action</PLinkPure>
+        </Link>
+        <Link to="/feedback">
+          <PLinkPure>Feedback</PLinkPure>
+        </Link>
+        <Link to="/icon">
+          <PLinkPure>Icon</PLinkPure>
+        </Link>
+        <Link to="/layout">
+          <PLinkPure>Layout</PLinkPure>
+        </Link>
+        <Link to="/navigation">
+          <PLinkPure>Navigation</PLinkPure>
+        </Link>
+        <hr/>
+
         <Switch>
-          <Route exact path="/">
-            <Home/>
-          </Route>
          <Route path="/basic">
            <Basic/>
           </Route>
@@ -44,36 +63,11 @@ const App: React.FC = () => {
             <Navigation/>
           </Route>
         </Switch>
-      </div>
+    </div>
     </Router>
+
+
   );
 };
-
-function Home(){
-  return(
-
-      <div>
-        <SystemLog/>
-        <Link to="/basic">
-          <PLinkPure href={"/basic"}>Basic</PLinkPure>
-        </Link>
-        <Link to="/action">
-          <PLinkPure href={"/action"}>Action</PLinkPure>
-        </Link>
-        <Link to="/feedback">
-          <PLinkPure href={"/feedback"}>Feedback</PLinkPure>
-        </Link>
-        <Link to="/icon">
-          <PLinkPure href={"/icon"}>Icon</PLinkPure>
-        </Link>
-        <Link to="/layout">
-          <PLinkPure href={"/layout"}>Layout</PLinkPure>
-        </Link>
-        <Link to="/navigation">
-          <PLinkPure href={"/navigation"}>Navigation</PLinkPure>
-        </Link>
-      </div>
-  );
-}
 
 export default App;
