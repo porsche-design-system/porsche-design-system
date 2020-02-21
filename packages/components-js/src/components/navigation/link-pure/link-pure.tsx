@@ -109,6 +109,7 @@ export class LinkPure {
           name={this.icon}
           source={this.iconSource}
           ref={el => this.iconTag = el as HTMLElement}
+          aria-hidden='true'
         />
         <p-text
           class={labelClasses}
