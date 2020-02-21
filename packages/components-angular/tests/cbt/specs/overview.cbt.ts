@@ -9,7 +9,22 @@ describe('Components Overview', () => {
     cbt = await getCrossBrowserTester();
   });
 
-  it('should have no visual regression in IE11', async () => {
-    expect(await cbt.test('overview', '/')).toBeFalsy();
+  it('basic should have no visual regression in IE11', async () => {
+    expect(await cbt.test('basic', '/basic')).toBeFalsy();
+  });
+  it('action should have no visual regression in IE11', async () => {
+    expect(await cbt.test('action', '/action')).toBeFalsy();
+  });
+  it('feedback should have no visual regression in IE11', async () => {
+    expect(await cbt.test('feedback', '/feedback')).toBeFalsy();
+  });
+  it('icon should have no visual regression in IE11', async () => {
+    expect(await cbt.test('icon', '/icon')).toBeFalsy();
+  });
+  it('layout should have no visual regression in IE11', async () => {
+    expect(await cbt.test('layout', '/layout')).toBeFalsy();
+  });
+  it('navigation should have no visual regression in IE11', async () => {
+    expect(await cbt.test('navigation', '/navigation')).toBeFalsy();
   });
 });
