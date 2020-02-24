@@ -1,7 +1,6 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, transitionListener } from '../../../utils';
-import { insertSlottedStyles } from '../../../utils/slotted-styles';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, transitionListener, insertSlottedStyles } from '../../../utils';
 import { FormState } from '../../../types';
 
 @Component({
@@ -17,7 +16,7 @@ export class TextFieldWrapper {
   @Prop() public label?: string = '';
 
   /** The validation state. */
-  @Prop({ reflect: true }) public state?: FormState = 'none';
+  @Prop() public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
