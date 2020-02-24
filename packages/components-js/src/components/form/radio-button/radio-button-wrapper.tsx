@@ -68,11 +68,12 @@ export class RadioButtonWrapper {
       mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('radio-button-wrapper__label-text--disabled')
     );
-    const inputWrapperClasses = cx(
-      prefix('radio-button-wrapper__input-wrapper'),
-      this.checked && prefix(`radio-button-wrapper__input-wrapper--checked`),
-      this.disabled && prefix(`radio-button-wrapper__input-wrapper--disabled`),
-      this.state !== 'none' && prefix(`radio-button-wrapper__input-wrapper--${this.state}`)
+    const inputWrapperClasses = cx(prefix('radio-button-wrapper__input-wrapper'));
+    const inputStyleClasses = cx(
+      prefix('radio-button-wrapper__input-style'),
+      this.checked && prefix(`radio-button-wrapper__input-style--checked`),
+      this.disabled && prefix(`radio-button-wrapper__input-style--disabled`),
+      this.state !== 'none' && prefix(`radio-button-wrapper__input-style--${this.state}`)
     );
     const messageClasses = cx(
       prefix('radio-button-wrapper__message'),
@@ -83,7 +84,9 @@ export class RadioButtonWrapper {
       <Host>
         <label class={labelClasses}>
           <span class={inputWrapperClasses}>
-            <slot/>
+            <span class={inputStyleClasses}>
+              <slot/>
+            </span>
           </span>
           <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.clickOnInput()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
@@ -120,7 +123,7 @@ export class RadioButtonWrapper {
   }
 
   private inputChangeListener(): void {
-    transitionListener(this.input, 'border-color', () => {
+    transitionListener(this.input, 'border-top-color', () => {
       this.setState();
     });
   }
