@@ -22,23 +22,23 @@ const App: React.FC = () => {
     <Router>
       <div id="app">
         <SystemLog/>
-        <Link to="/basic" style={{ textDecoration: 'none', outline: 'none'}}>
-          <PLinkPure>Basic</PLinkPure>
+        <Link to="/basic" component={PLinkPure} >
+         Basic
         </Link>
-        <Link to="/action" style={{ textDecoration: 'none', outline: 'none'}}>
-          <PLinkPure>Action</PLinkPure>
+        <Link to="/action" component={PLinkPure}>
+          Action
         </Link>
-        <Link to="/feedback" style={{ textDecoration: 'none', outline: 'none'}}>
-          <PLinkPure>Feedback</PLinkPure>
+        <Link to="/feedback" component={PLinkPure}>
+          Feedback
         </Link>
-        <Link to="/icon" style={{ textDecoration: 'none', outline: 'none'}}>
-          <PLinkPure>Icon</PLinkPure>
+        <Link to="/icon" component={PLinkPure}>
+          Icon
         </Link>
-        <Link to="/layout" style={{ textDecoration: 'none', outline: 'none'}}>
-          <PLinkPure>Layout</PLinkPure>
+        <Link to="/layout" component={PLinkPure}>
+          Layout
         </Link>
-        <Link to="/navigation" style={{ textDecoration: 'none', outline: 'none'}}>
-          <PLinkPure>Navigation</PLinkPure>
+        <Link to="/navigation" component={PLinkPure}>
+          Navigation
         </Link>
         <hr/>
 
