@@ -32,7 +32,7 @@ import {Component} from '@angular/core';
       <router-outlet></router-outlet>
     </div>
   `,
-  styles: []
+  styles: ['a { text-decoration:none; outline: none;}']
 })
 export class AppComponent {
 }
