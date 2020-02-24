@@ -30,9 +30,9 @@
 
 ::slotted(input) {
   width: 100% !important;
-  height: p-rem(24px) !important;
+  height: p-rem(44px) !important;
   display: block !important;
-  padding: 0 !important;
+  padding: 10px !important;
   margin: 0 !important;
   outline: transparent none !important;
   appearance: none !important;
@@ -55,7 +55,7 @@
 // Focus
 ::slotted(input:focus) {
   outline: $p-color-theme-light-state-focus solid 2px !important;
-  outline-offset: calc(.75rem + 1px) !important;
+  outline-offset: 3px !important;
 }
 
 ::slotted(input:read-only:focus) {
@@ -152,7 +152,7 @@
     display: block;
     background-color: $p-color-theme-light-background;
     border: 1px solid $p-color-theme-light-default;
-    padding: calc(.75rem - 1px);
+    padding: 1px;
     box-sizing: border-box;
     transition: border-color $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier;
@@ -170,13 +170,13 @@
     &--success {
       border-color: $p-color-theme-light-notification-success;
       border-width: 2px;
-      padding: calc(.75rem - 2px);
+      padding: 0;
     }
 
     &--error {
       border-color: $p-color-theme-light-notification-error;
       border-width: 2px;
-      padding: calc(.75rem - 2px);
+      padding: 0;
     }
   }
 
