@@ -93,7 +93,7 @@ export class CheckboxWrapper {
             <p-icon class={iconClasses} name={this.indeterminate ? 'subtract' : 'check'} theme='dark' size='inherit' />
             <slot/>
           </span>
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.clickOnInput()}>
+          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
         </label>
@@ -118,8 +118,8 @@ export class CheckboxWrapper {
     this.input = this.element.querySelector('input[type="checkbox"]');
   }
 
-  private clickOnInput(): void {
-    this.input.click();
+  private labelClick(): void {
+    this.input.checked = !this.input.checked;
   }
 
   private setState(): void {
