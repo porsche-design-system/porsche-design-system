@@ -32,8 +32,8 @@
 ::slotted(input) {
   position: absolute !important;
   border-radius: 50% !important;
-  top: -2px !important;
-  left: -2px !important;
+  top: -1px !important;
+  left: -1px !important;
   width: p-rem(26px) !important;
   height: p-rem(26px) !important;
   margin: 0 !important;
@@ -43,31 +43,31 @@
   border: 0 rgba(255,255,255,0) !important;
   background-color: transparent !important;
   opacity: 1 !important;
-  outline: transparent solid 2px !important;
-  outline-offset: 1px !important;
+  outline: none !important;
+  box-shadow: 0 0 0 0 transparent !important;
   transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
-  border-color 0.00001ms linear !important;
+  border-top-color 0.00001ms linear !important;
 }
 
 // Focus
 ::slotted(input:focus) {
-  box-shadow: 0 0 0 2px $p-color-theme-light-state-focus;
+  box-shadow: 0 0 0 2px $p-color-theme-light-state-focus !important;
 }
 
 // Checked
 ::slotted(input:checked) {
-  border-color: rgba(255,255,255,0.01) !important;
+  border-top-color: rgba(255,255,255,0.01) !important;
 }
 
 // Disabled
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  border-color: rgba(255,255,255,0.02) !important;
+  border-top-color: rgba(255,255,255,0.02) !important;
 }
 
 // Disabled + Checked
 ::slotted(input:disabled:checked) {
-  border-color: rgba(255,255,255,0.03) !important;
+  border-top-color: rgba(255,255,255,0.03) !important;
 }
 
 .#{$p-global-class-prefix}radio-button-wrapper {
@@ -79,11 +79,15 @@
 
   &__input-wrapper {
     position: relative;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  &__input-style {
     width: p-rem(24px);
     height: p-rem(24px);
     border-radius: 50%;
     display: block;
-    flex-shrink: 0;
     box-sizing: border-box;
     border: 1px solid $p-color-theme-light-neutral-contrast-medium;
     background-color: $p-color-theme-light-background;
@@ -111,15 +115,12 @@
     }
 
     &--checked#{&}--disabled {
-
       &::before {
         background-color: $p-color-theme-light-state-disabled;
       }
     }
 
     &--checked#{&}--error {
-      background-color: $p-color-theme-light-notification-error;
-
       &::before {
         background-color: $p-color-theme-light-notification-error;
       }
