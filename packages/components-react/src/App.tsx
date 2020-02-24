@@ -16,29 +16,28 @@ import {Layout} from "./Layout";
 import {Navigation} from "./Navigation";
 import {SystemLog} from "./SystemLog";
 
-
 const App: React.FC = () => {
   return (
 
     <Router>
       <div id="app">
         <SystemLog/>
-        <Link to="/basic">
+        <Link to="/basic" style={{ textDecoration: 'none', outline: 'none'}}>
           <PLinkPure>Basic</PLinkPure>
         </Link>
-        <Link to="/action">
+        <Link to="/action" style={{ textDecoration: 'none', outline: 'none'}}>
           <PLinkPure>Action</PLinkPure>
         </Link>
-        <Link to="/feedback">
+        <Link to="/feedback" style={{ textDecoration: 'none', outline: 'none'}}>
           <PLinkPure>Feedback</PLinkPure>
         </Link>
-        <Link to="/icon">
+        <Link to="/icon" style={{ textDecoration: 'none', outline: 'none'}}>
           <PLinkPure>Icon</PLinkPure>
         </Link>
-        <Link to="/layout">
+        <Link to="/layout" style={{ textDecoration: 'none', outline: 'none'}}>
           <PLinkPure>Layout</PLinkPure>
         </Link>
-        <Link to="/navigation">
+        <Link to="/navigation" style={{ textDecoration: 'none', outline: 'none'}}>
           <PLinkPure>Navigation</PLinkPure>
         </Link>
         <hr/>
