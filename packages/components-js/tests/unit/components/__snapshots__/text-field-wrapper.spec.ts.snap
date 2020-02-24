@@ -1,14 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component <p-text-field-wrapper> should render correctly in default mode with shadow dom 1`] = `
-<p-text-field-wrapper label="Some label" state="none">
+<p-text-field-wrapper label="Some label">
   <mock:shadow-root>
     <span class="p-text-field-wrapper__wrapper">
       <label class="p-text-field-wrapper__label">
         <p-text class="p-text-field-wrapper__label-text p-text-field-wrapper__label-text--visible" tag="span">
           Some label
         </p-text>
-        <slot></slot>
+        <span class="p-text-field-wrapper__container p-text-field-wrapper__container--none">
+          <slot></slot>
+        </span>
       </label>
     </span>
   </mock:shadow-root>
