@@ -75,6 +75,7 @@
   &__label {
     position: relative;
     display: flex;
+    align-items: flex-start;
   }
 
   &__input-wrapper {
