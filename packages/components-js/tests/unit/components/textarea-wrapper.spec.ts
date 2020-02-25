@@ -13,8 +13,8 @@ describe('Component <p-textarea-wrapper>', () => {
       html: `<p-textarea-wrapper label="Some label"><textarea name="some-name"></textarea></p-textarea-wrapper>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.querySelector('.p-textarea-wrapper__wrapper')).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector('.p-textarea-wrapper__wrapper')).toBeTruthy();
+    expect(page.root.querySelector('.p-textarea-wrapper__fake-textarea')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.p-textarea-wrapper__fake-textarea')).toBeTruthy();
     expect(page.root).toMatchSnapshot();
     done();
   });
