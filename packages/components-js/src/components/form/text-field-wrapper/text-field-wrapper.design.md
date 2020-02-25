@@ -105,3 +105,19 @@ All types of Text Field are available as disabled state. However, disabled state
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
     <img src="./assets/form-text-field-examples.png" alt="Examples for text fields"/>
 </div>
+
+## Don'ts
+- Placeholder text should not be used as a label. Placeholder text is best used to let people know how they might use the input (e.g.: 'Search user') or to show an example of what kind of text the input expects.
+
+- Don't ask for information that is really not needed.
+
+- Don't use the Text Field component if you need to allow users to enter longer text. In this case, you should use the Textarea component. 
+
+--- 
+ 
+## Related Components
+
+* [Textarea](#/web/components/form/textarea)
+* [Checkbox](#/web/components/form/checkbox)
+* [Radio Button](#/web/components/form/radio-button)
+* [Select](#/web/components/form/select)
