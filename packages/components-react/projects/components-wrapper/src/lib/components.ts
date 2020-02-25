@@ -20,5 +20,6 @@ export const PLink = /*@__PURE__*/createReactComponent<JSX.PLink, HTMLPLinkEleme
 export const PLinkPure = /*@__PURE__*/createReactComponent<JSX.PLinkPure, HTMLPLinkPureElement>('p-link-pure');
 export const PMarque = /*@__PURE__*/createReactComponent<JSX.PMarque, HTMLPMarqueElement>('p-marque');
 export const PPagination = /*@__PURE__*/createReactComponent<JSX.PPagination, HTMLPPaginationElement>('p-pagination');
+export const PSelectWrapper = /*@__PURE__*/createReactComponent<JSX.PSelectWrapper, HTMLPSelectWrapperElement>('p-select-wrapper');
 export const PSpinner = /*@__PURE__*/createReactComponent<JSX.PSpinner, HTMLPSpinnerElement>('p-spinner');
 export const PText = /*@__PURE__*/createReactComponent<JSX.PText, HTMLPTextElement>('p-text');
