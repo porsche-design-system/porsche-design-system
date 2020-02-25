@@ -107,11 +107,15 @@ All types of Text Field are available as disabled state. However, disabled state
 </div>
 
 ## Don'ts
-- Placeholder text should not be used as a label. Placeholder text is best used to let people know how they might use the input (e.g.: 'Search user') or to show an example of what kind of text the input expects.
 
-- Don't ask for information that is really not needed.
+### Label
+Placeholder text should not be used as a label. Placeholder text is best used to let people know how they might use the input (e.g.: 'Search user') or to show an example of what kind of text the input expects.
 
-- Don't use the Text Field component if you need to allow users to enter longer text. In this case, you should use the Textarea component. 
+### Information
+Don't ask for information that is really not needed.
+
+### Component
+Don't use the Text Field component if you need to allow users to enter longer text. In this case, you should use the Textarea component. 
 
 --- 
  
