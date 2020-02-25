@@ -616,11 +616,11 @@
           --><p-checkbox-wrapper label="Some label" hide-label="true">
             <input type="checkbox" name="some-name" checked="checked"/>
           </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label" indeterminate="true">
-            <input type="checkbox" name="some-name"/>
+          --><p-checkbox-wrapper label="Some label">
+            <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
           </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label" indeterminate="true">
-            <input type="checkbox" name="some-name" checked="checked"/>
+          --><p-checkbox-wrapper label="Some label">
+            <input type="checkbox" name="some-name" checked="checked" class="example-set-to-indeterminate" />
           </p-checkbox-wrapper><!--
           --><p-checkbox-wrapper label="Some label">
             <input type="checkbox" name="some-name" disabled="disabled"/>
@@ -642,6 +642,10 @@
     </p-grid>
   </div>
   <script type="text/javascript">
+    document.querySelectorAll('.example-set-to-indeterminate').forEach(function(checkbox) {
+      checkbox.indeterminate = true;
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       var html = document.querySelector('html');
       function callOnHydrated(cb) {

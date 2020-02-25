@@ -111,10 +111,6 @@ export namespace Components {
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
-    * Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.
-    */
-    'indeterminate'?: boolean;
-    /**
     * The label text.
     */
     'label'?: string;
@@ -635,10 +631,6 @@ declare namespace LocalJSX {
     * Show or hide label. For better accessibility it's recommended to show the label.
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
-    /**
-    * Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.
-    */
-    'indeterminate'?: boolean;
     /**
     * The label text.
     */

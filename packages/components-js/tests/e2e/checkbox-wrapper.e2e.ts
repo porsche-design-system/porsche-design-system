@@ -1,5 +1,4 @@
 import { newE2EPage } from '@stencil/core/testing';
-import {check} from "jest-cli/build/cli/args";
 
 describe('checkbox-wrapper', () => {
   it('should render', async () => {
