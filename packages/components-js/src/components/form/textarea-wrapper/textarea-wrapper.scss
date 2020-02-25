@@ -31,9 +31,9 @@
 ::slotted(textarea) {
   position: relative !important;
   width: 100% !important;
-  min-height: p-rem(192px);
+  min-height: p-rem(188px);
   display: block !important;
-  padding: p-rem(12px) !important;
+  padding: p-rem(8px) !important;
   margin: 0 !important;
   outline: transparent none !important;
   appearance: none !important;
@@ -57,7 +57,7 @@
 // Focus
 ::slotted(textarea:focus) {
   outline: $p-color-theme-light-state-focus solid 2px !important;
-  outline-offset: 1px !important;
+  outline-offset: 3px !important;
 }
 
 ::slotted(textarea:read-only:focus) {
@@ -153,6 +153,7 @@
 
   &__fake-textarea {
     display: block;
+    padding: p-rem(2px);
     background-color: $p-color-theme-light-background;
     box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
     box-sizing: border-box;

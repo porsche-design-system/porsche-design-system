@@ -59,7 +59,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Validation states
 
-The **Textarea Wrapper** component supports the visualisation of inline validation. The `message` and `textarea` is colored and visible/hidden depending on the defined `state`.
+The **Textarea Wrapper** component supports the visualisation of inline validation. 
 
 <Playground>
   <template #configurator>
