@@ -127,6 +127,8 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ### Angular
 
+Because <p-link-pure> component is just wrapped the outer links have to be styled to prevent the links from being underlined.
+
 ``` 
 # style.css
 .link {
@@ -139,11 +141,11 @@ If the active state should not render a clickable anchor tag, just remove the `h
   <p-link-pure [active]="rla.isActive">Some label</p-link-pure>
 </a>
 
-Because <p-link-pure> component is just wrapped the outer links have to be styled to prevent the links from being underlined.
 ```
 
 ### React
-To pass properties to the PLinkPure component the spread operator can be used
+
+To pass properties to the PLinkPure component the spread operator can be used.
 
 ``` 
 # template.html
@@ -163,6 +165,7 @@ To pass properties to the PLinkPure component the spread operator can be used
 ```
 
 ## Link with specific icon
+
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :themeable="true">
