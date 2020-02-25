@@ -33,13 +33,12 @@ All Selects are available in the following states:
 * focus
 * read only
 * error
+* success
+
  
 ---
  
 ## Content
-
-- **Headings**
-!!! TBD !!!
 
 - **Label**
 Label text (≤ 20 characters) is used to inform users as to what information is requested for a Select. Every Select should have a label. !!! TBD !!!
