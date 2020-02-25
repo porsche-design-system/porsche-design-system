@@ -9,7 +9,7 @@ describe('Select Wrapper', () => {
     vrt = await getVisualRegressionTester();
   });
 
-  fit('should have no visual regression', async () => {
+  it('should have no visual regression', async () => {
     expect(
       await vrt.test('select-wrapper', async () => {
         await vrt.goTo('/src/components/form/select-wrapper/select-wrapper.test.html');

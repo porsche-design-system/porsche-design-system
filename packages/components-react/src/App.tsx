@@ -13,7 +13,8 @@ import {
   PIcon,
   PPagination,
   PLink,
-  PLinkPure
+  PLinkPure,
+  PSelectWrapper
 } from '@porsche-design-system/components-react';
 
 const App: React.FC = () => {
@@ -56,15 +57,19 @@ const App: React.FC = () => {
       <PGrid>
         <PGridItem size={5} offset={2}>
           <div className="playground light spacing-block">
-            <PHeadline variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PHeadline>
-            <PHeadline variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</PHeadline>
+            <PHeadline variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</PHeadline>
           </div>
           <hr/>
         </PGridItem>
         <PGridItem size={5}>
           <div className="playground dark spacing-block">
-            <PHeadline theme={'dark'} variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PHeadline>
-            <PHeadline theme={'dark'} variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline theme={'dark'} variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick
+              brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline theme={'dark'} variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick
+              brown fox jumps over the lazy dog</PHeadline>
           </div>
           <hr/>
         </PGridItem>
@@ -85,26 +90,41 @@ const App: React.FC = () => {
           <div className="playground light spacing-block">
             <PText color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
             <PText color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
+            <PText color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
+            <PText color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
+            <PText color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
+            <PText color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
+            <PText color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
             <PText color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
           </div>
         </PGridItem>
         <PGridItem size={5}>
           <div className="playground dark spacing-block">
-            <PText theme={'dark'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
-            <PText theme={'dark'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
+            <PText theme={'dark'} color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
+            <PText theme={'dark'} color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</PText>
+            <PText theme={'dark'} color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox
+              jumps over the lazy dog</PText>
+            <PText theme={'dark'} color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</PText>
+            <PText theme={'dark'} color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</PText>
+            <PText theme={'dark'} color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</PText>
+            <PText theme={'dark'} color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</PText>
+            <PText theme={'dark'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</PText>
           </div>
         </PGridItem>
       </PGrid>
@@ -118,7 +138,8 @@ const App: React.FC = () => {
             </PText>
           </div>
           <div className="playground light spacing-block">
-            <PText>Lorem ipsum dolor sit amet <a href="https://designsystem.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong></PText>
+            <PText>Lorem ipsum dolor sit amet <a href="https://designsystem.porsche.com">linked text</a> et, <b>bold
+              text</b> &amp; <strong>strong text</strong></PText>
           </div>
           <hr/>
         </PGridItem>
@@ -149,7 +170,7 @@ const App: React.FC = () => {
             <PButton icon={'phone'}>Some label</PButton>
           </div>
           <div className="playground light spacing-inline">
-            <PButton style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+            <PButton style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
           </div>
           <hr/>
           <div className="playground light spacing-inline">
@@ -192,7 +213,7 @@ const App: React.FC = () => {
             <PButton theme={'dark'} icon={'phone'}>Some label</PButton>
           </div>
           <div className="playground dark spacing-inline">
-            <PButton theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+            <PButton theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
           </div>
           <hr/>
           <div className="playground dark spacing-inline">
@@ -233,7 +254,7 @@ const App: React.FC = () => {
           </div>
           <div className="playground light spacing-inline">
             <PButtonPure size={'medium'}>Medium</PButtonPure>
-            <PButtonPure size={'inherit'} style={{ fontSize: '48px' }}>Inherit</PButtonPure>
+            <PButtonPure size={'inherit'} style={{fontSize: '48px'}}>Inherit</PButtonPure>
           </div>
           <div className="playground light spacing-inline">
             <PButtonPure weight={'thin'}>Thin</PButtonPure>
@@ -244,7 +265,7 @@ const App: React.FC = () => {
             <PButtonPure icon={'delete'}>Some button with a custom icon</PButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonPure style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
+            <PButtonPure style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
           </div>
           <hr/>
         </PGridItem>
@@ -261,7 +282,7 @@ const App: React.FC = () => {
           </div>
           <div className="playground dark spacing-inline">
             <PButtonPure size={'medium'} theme={'dark'}>Medium</PButtonPure>
-            <PButtonPure size={'inherit'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</PButtonPure>
+            <PButtonPure size={'inherit'} theme={'dark'} style={{fontSize: '48px'}}>Inherit</PButtonPure>
           </div>
           <div className="playground dark spacing-inline">
             <PButtonPure weight={'thin'} theme={'dark'}>Thin</PButtonPure>
@@ -272,7 +293,8 @@ const App: React.FC = () => {
             <PButtonPure icon={'delete'} theme={'dark'}>Some button with a custom icon</PButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonPure theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
+            <PButtonPure theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur
+              sadipscing</PButtonPure>
           </div>
           <hr/>
         </PGridItem>
@@ -314,7 +336,8 @@ const App: React.FC = () => {
             <PIcon name={'filter'} size={'medium'} color={'neutral-contrast-medium'} aria-label="Filter icon"/>
             <PIcon name={'filter'} size={'large'} color={'neutral-contrast-low'} aria-label="Filter icon"/>
             <PIcon name={'filter'} size={'large'} color={'brand'} aria-label="Filter icon"/>
-            <PIcon name={'filter'} size={'large'} color={'inherit'} aria-label="Filter icon" style={{color: 'deeppink'}}/>
+            <PIcon name={'filter'} size={'large'} color={'inherit'} aria-label="Filter icon"
+                   style={{color: 'deeppink'}}/>
             <PIcon name={'delete'} size={'large'} aria-label="Delete icon"/>
           </div>
           <hr/>
@@ -322,10 +345,13 @@ const App: React.FC = () => {
         <PGridItem size={5}>
           <div className="playground dark spacing-inline">
             <PIcon name={'filter'} theme={'dark'} color={'neutral-contrast-high'} aria-label="Filter icon"/>
-            <PIcon name={'filter'} theme={'dark'} size={'medium'} color={'neutral-contrast-medium'} aria-label="Filter icon"/>
-            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'neutral-contrast-low'} aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} size={'medium'} color={'neutral-contrast-medium'}
+                   aria-label="Filter icon"/>
+            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'neutral-contrast-low'}
+                   aria-label="Filter icon"/>
             <PIcon name={'filter'} theme={'dark'} size={'large'} color={'brand'} aria-label="Filter icon"/>
-            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'inherit'} aria-label="Filter icon" style={{color: 'deeppink'}}/>
+            <PIcon name={'filter'} theme={'dark'} size={'large'} color={'inherit'} aria-label="Filter icon"
+                   style={{color: 'deeppink'}}/>
             <PIcon name={'delete'} theme={'dark'} size={'large'} aria-label="Delete icon"/>
           </div>
           <hr/>
@@ -479,7 +505,8 @@ const App: React.FC = () => {
             <PLink icon={'phone'} href={'https://designsystem.porsche.com'}>Some label</PLink>
           </div>
           <div className="playground light spacing-inline">
-            <PLink href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
+            <PLink href={'https://designsystem.porsche.com'} style={{width: '240px'}}>Lorem ipsum dolor sit amet,
+              consetetur sadipscing</PLink>
           </div>
           <hr/>
           <div className="playground light spacing-inline">
@@ -510,23 +537,27 @@ const App: React.FC = () => {
             <PLink icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLink>
           </div>
           <div className="playground dark spacing-inline">
-            <PLink href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
+            <PLink href={'https://designsystem.porsche.com'} theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor
+              sit amet, consetetur sadipscing</PLink>
           </div>
           <hr/>
-            <div className="playground dark spacing-inline">
-              <PLink variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</PLink>
-            </div>
-            <div className="playground dark spacing-inline">
-              <PLink href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</PLink>
-            </div>
-            <div className="playground dark spacing-inline">
-              <PLink variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label
-              </PLink>
-            </div>
-            <div className="playground dark spacing-inline">
-              <PLink icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</PLink>
-            </div>
-            <hr/>
+          <div className="playground dark spacing-inline">
+            <PLink variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some
+              label</PLink>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLink href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</PLink>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLink variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some
+              label
+            </PLink>
+          </div>
+          <div className="playground dark spacing-inline">
+            <PLink icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some
+              label</PLink>
+          </div>
+          <hr/>
         </PGridItem>
       </PGrid>
       <PGrid>
@@ -542,7 +573,8 @@ const App: React.FC = () => {
           </div>
           <div className="playground light spacing-inline">
             <PLinkPure size={'medium'} href={'https://designsystem.porsche.com'}>Medium</PLinkPure>
-            <PLinkPure size={'inherit'} href={'https://designsystem.porsche.com'} style={{ fontSize: '48px' }}>Inherit</PLinkPure>
+            <PLinkPure size={'inherit'} href={'https://designsystem.porsche.com'}
+                       style={{fontSize: '48px'}}>Inherit</PLinkPure>
           </div>
           <div className="playground light spacing-inline">
             <PLinkPure weight={'thin'} href={'https://designsystem.porsche.com'}>Thin</PLinkPure>
@@ -556,7 +588,8 @@ const App: React.FC = () => {
             <PLinkPure icon={'phone'} href={'https://designsystem.porsche.com'}>Some link with a custom icon</PLinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <PLinkPure href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLinkPure>
+            <PLinkPure href={'https://designsystem.porsche.com'} style={{width: '240px'}}>Lorem ipsum dolor sit amet,
+              consetetur sadipscing</PLinkPure>
           </div>
           <hr/>
         </PGridItem>
@@ -569,7 +602,8 @@ const App: React.FC = () => {
           </div>
           <div className="playground dark spacing-inline">
             <PLinkPure size={'medium'} href={'https://designsystem.porsche.com'} theme={'dark'}>Medium</PLinkPure>
-            <PLinkPure size={'inherit'} href={'https://designsystem.porsche.com'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</PLinkPure>
+            <PLinkPure size={'inherit'} href={'https://designsystem.porsche.com'} theme={'dark'}
+                       style={{fontSize: '48px'}}>Inherit</PLinkPure>
           </div>
           <div className="playground dark spacing-inline">
             <PLinkPure weight={'thin'} href={'https://designsystem.porsche.com'} theme={'dark'}>Thin</PLinkPure>
@@ -580,10 +614,12 @@ const App: React.FC = () => {
             <PLinkPure active={true} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PLinkPure icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some link with a custom icon</PLinkPure>
+            <PLinkPure icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some link with a custom
+              icon</PLinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PLinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLinkPure>
+            <PLinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{width: '240px'}}>Lorem ipsum
+              dolor sit amet, consetetur sadipscing</PLinkPure>
           </div>
           <hr/>
         </PGridItem>
@@ -601,6 +637,48 @@ const App: React.FC = () => {
         <PGridItem size={5}>
           <div className="playground dark spacing-block">
             <PPagination theme={'dark'} totalItemsCount={500} itemsPerPage={25} activePage={1}/>
+          </div>
+          <hr/>
+        </PGridItem>
+      </PGrid>
+      <PHeadline variant={'headline-2'}>Forms</PHeadline>
+      <hr/>
+      <PGrid>
+        <PGridItem size={2}>
+          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-select-wrapper&gt;</PHeadline>
+        </PGridItem>
+        <PGridItem size={10}>
+          <div className="playground light spacing-block">
+            <PSelectWrapper label={'Some label'}>
+              <select name="some-name">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+            </PSelectWrapper>
+            <PSelectWrapper label={'Some label'}>
+              <select name="some-name" disabled={true}>
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+            </PSelectWrapper>
+            <PSelectWrapper label={'Some label'} state={'error'} message={'Some error message.'}>
+              <select name="some-name">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+            </PSelectWrapper>
+            <PSelectWrapper state={'success'}>
+              <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <select name="some-name">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+              <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+            </PSelectWrapper>
           </div>
           <hr/>
         </PGridItem>
