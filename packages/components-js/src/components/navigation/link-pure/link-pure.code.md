@@ -127,7 +127,7 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ### Angular
 
-Because <p-link-pure> component is just wrapped the outer links have to be styled to prevent the links from being underlined.
+Because `<p-link-pure>` component is just wrapped the outer links have to be styled to prevent the links from being underlined.
 
 ``` 
 # style.css
