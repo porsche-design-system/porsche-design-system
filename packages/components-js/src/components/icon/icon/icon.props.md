@@ -26,3 +26,4 @@
  - [p-link](#/web/components/navigation/link)
  - [p-link-pure](#/web/components/navigation/link-pure)
  - [p-pagination](#/web/components/navigation/pagination)
+ - [p-select-wrapper](#/web/components/form/select-wrapper)
