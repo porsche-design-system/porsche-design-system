@@ -40,11 +40,11 @@
 </div>
 
 <div class="playground light" title="should render in indeterminate mode">
-  <p-checkbox-wrapper label="Some label" indeterminate="true">
-    <input type="checkbox" name="some-name"/>
+  <p-checkbox-wrapper label="Some label">
+    <input type="checkbox" name="some-name" class="example-set-to-indeterminate"/>
   </p-checkbox-wrapper>
-  <p-checkbox-wrapper label="Some label" indeterminate="true">
-    <input type="checkbox" name="some-name" checked="checked"/>
+  <p-checkbox-wrapper label="Some label">
+    <input type="checkbox" name="some-name" checked="checked" class="example-set-to-indeterminate"/>
   </p-checkbox-wrapper>
 </div>
 
@@ -94,6 +94,10 @@
     <input type="checkbox" name="some-name"/>
   </p-checkbox-wrapper>
 </div>
-
+<script type="text/javascript">
+  document.querySelectorAll('.example-set-to-indeterminate').forEach(function(checkbox) {
+    checkbox.indeterminate = true;
+  });
+</script>
 </body>
 </html>

@@ -626,11 +626,16 @@ const App: React.FC = () => {
             <PCheckboxWrapper label={'Some label'} hideLabel={true}>
               <input type="checkbox" name="some-name" checked={true}/>
             </PCheckboxWrapper>
-            <PCheckboxWrapper label={'Some label'} indeterminate={true}>
-              <input type="checkbox" name="some-name"/>
+            <PCheckboxWrapper label={'Some label'}>
+              <input type="checkbox"
+                     ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
+                     name="some-name" />
             </PCheckboxWrapper>
-            <PCheckboxWrapper label={'Some label'} indeterminate={true}>
-              <input type="checkbox" name="some-name" checked={true}/>
+            <PCheckboxWrapper label={'Some label'}>
+              <input type="checkbox"
+                     name="some-name"
+                     ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
+                     checked={true} />
             </PCheckboxWrapper>
             <PCheckboxWrapper label={'Some label'}>
               <input type="checkbox" name="some-name" disabled={true}/>

@@ -4,9 +4,9 @@ import {
   BreakpointCustomizable,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
+  insertSlottedStyles
 } from '../../../utils';
-import { insertSlottedStyles } from '../../../utils/slotted-styles';
 
 @Component({
   tag: 'p-checkbox-wrapper',
@@ -29,12 +29,10 @@ export class CheckboxWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Mask the visual appearance of a checkbox which has a state in-between checked and unchecked. */
-  @Prop() public indeterminate?: boolean = false;
-
   @State() private input: HTMLInputElement;
   @State() private checked: boolean;
   @State() private disabled: boolean;
+  @State() private indeterminate: boolean;
 
   public componentDidLoad() {
 
@@ -68,13 +66,13 @@ export class CheckboxWrapper {
     const labelClasses = cx(prefix('checkbox-wrapper__label'));
     const iconWrapperClasses = cx(
       prefix('checkbox-wrapper__icon-wrapper'),
-      this.checked && prefix(`checkbox-wrapper__icon-wrapper--checked`),
+      (this.checked || this.indeterminate) && prefix(`checkbox-wrapper__icon-wrapper--checked`),
       this.disabled && prefix(`checkbox-wrapper__icon-wrapper--disabled`),
       this.state !== 'none' && prefix(`checkbox-wrapper__icon-wrapper--${this.state}`)
     );
     const iconClasses = cx(
       prefix('checkbox-wrapper__icon'),
-      this.checked && prefix(`checkbox-wrapper__icon--checked`)
+      (this.checked || this.indeterminate) && prefix(`checkbox-wrapper__icon--checked`)
     );
     const labelTextClasses = cx(
       prefix('checkbox-wrapper__label-text'),
@@ -119,12 +117,13 @@ export class CheckboxWrapper {
   }
 
   private labelClick(): void {
-    this.input.checked = !this.input.checked;
+    this.input.click();
   }
 
   private setState(): void {
     this.checked = this.input.checked;
     this.disabled = this.input.disabled;
+    this.indeterminate = this.input.indeterminate;
   }
 
   private inputChangeListener(): void {

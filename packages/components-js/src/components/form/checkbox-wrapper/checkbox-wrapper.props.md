@@ -7,13 +7,12 @@
 
 ## Properties
 
-| Property        | Attribute       | Description                                                                                  | Type                                             | Default  |
-| --------------- | --------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------ | -------- |
-| `hideLabel`     | `hide-label`    | Show or hide label. For better accessibility it's recommended to show the label.             | `BreakpointValues<boolean> \| boolean \| string` | `false`  |
-| `indeterminate` | `indeterminate` | Mask the visual appearance of a checkbox which has a state in-between checked and unchecked. | `boolean`                                        | `false`  |
-| `label`         | `label`         | The label text.                                                                              | `string`                                         | `''`     |
-| `message`       | `message`       | The message styled depending on validation state.                                            | `string`                                         | `''`     |
-| `state`         | `state`         | The validation state.                                                                        | `"error" \| "none"`                              | `'none'` |
+| Property    | Attribute    | Description                                                                      | Type                                             | Default  |
+| ----------- | ------------ | -------------------------------------------------------------------------------- | ------------------------------------------------ | -------- |
+| `hideLabel` | `hide-label` | Show or hide label. For better accessibility it's recommended to show the label. | `BreakpointValues<boolean> \| boolean \| string` | `false`  |
+| `label`     | `label`      | The label text.                                                                  | `string`                                         | `''`     |
+| `message`   | `message`    | The message styled depending on validation state.                                | `string`                                         | `''`     |
+| `state`     | `state`      | The validation state.                                                            | `"error" \| "none"`                              | `'none'` |
 
 
 ## Dependencies

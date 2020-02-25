@@ -616,11 +616,11 @@ import {Component} from '@angular/core';
             <p-checkbox-wrapper [label]="'Some label'" [hideLabel]="true">
               <input type="checkbox" name="some-name" checked="checked"/>
             </p-checkbox-wrapper>
-            <p-checkbox-wrapper [label]="'Some label'" [indeterminate]="true">
-              <input type="checkbox" name="some-name"/>
+            <p-checkbox-wrapper [label]="'Some label'">
+              <input type="checkbox" name="some-name" [indeterminate]="true" />
             </p-checkbox-wrapper>
-            <p-checkbox-wrapper [label]="'Some label'" [indeterminate]="true">
-              <input type="checkbox" name="some-name" checked="checked"/>
+            <p-checkbox-wrapper [label]="'Some label'">
+              <input type="checkbox" name="some-name" checked="checked" [indeterminate]="true" />
             </p-checkbox-wrapper>
             <p-checkbox-wrapper [label]="'Some label'">
               <input type="checkbox" name="some-name" disabled="disabled"/>
