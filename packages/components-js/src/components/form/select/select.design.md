@@ -58,7 +58,7 @@ so there is no confusion for the user as to what field failed validation. Effect
 Use a default selection, if possible or a placeholder option, such as “Select…” if no default is available.
  
 ### Prompt Text
-Keep the prompt text in view while the dropdown list is open. The selection description, reminds the user what he has just selected.
+Keep the prompt text in view while the select list is open. The selection description, reminds the user what he has just selected.
 
 ### Sorting
 Use common sort order for menu items (Frequency of use, alpha or numeric).
@@ -70,12 +70,17 @@ All Selects are provided in disabled state. However, disabled states should be a
 
 ## Don'ts
  
-- Don´t include too many items whenever possible. If you have many items, consider alternative ways of presenting them.
-- Avoid dropdown boxes for data that is highly familiar such as the day, month, or year. Having to find these options in a long menu is tedious, breaks the previous guideline, and can create even more work for users.
-- Very long dropdowns that require scrolling make it impossible for users to see all their choices in one glance.
-- Avoid dropdown boxes when typing may be faster.
- 
-!!! EXAMPLES !!!
+### Items
+Don´t include too many items whenever possible. If you have many items, consider alternative ways of presenting them.
+
+### Content
+Avoid select boxes for data that is highly familiar such as the day, month, or year. Having to find these options in a long menu is tedious, breaks the previous guideline, and can create even more work for users.
+
+### Length
+Very long select boxes that require scrolling make it impossible for users to see all their choices in one glance.
+
+### Purpose
+Avoid select boxes when typing may be faster.
 
 --- 
  
