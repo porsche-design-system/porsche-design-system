@@ -78,21 +78,17 @@
     align-items: flex-start;
   }
 
-  &__input-wrapper {
+  &__fake-radio {
     position: relative;
     flex-shrink: 0;
     display: block;
-  }
-
-  &__input-style {
     width: p-rem(24px);
     height: p-rem(24px);
     border-radius: 50%;
-    display: block;
     box-sizing: border-box;
-    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
+    box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
     background-color: $p-color-theme-light-background;
-    transition: border-color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier;
 
     &::before {
       content: "";
@@ -127,13 +123,22 @@
       }
     }
 
+    &--checked#{&}--success {
+      &::before {
+        background-color: $p-color-theme-light-notification-success;
+      }
+    }
+
     &--disabled {
       border-color: $p-color-theme-light-state-disabled;
     }
 
     &--error {
-      border-width: 2px;
-      border-color: $p-color-theme-light-notification-error;
+      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+    }
+
+    &--success {
+      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
     }
   }
 
@@ -212,6 +217,10 @@
 
     &--error {
       color: $p-color-theme-light-notification-error;
+    }
+
+    &--success {
+      color: $p-color-theme-light-notification-success;
     }
   }
 }

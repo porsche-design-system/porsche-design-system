@@ -7,6 +7,7 @@ import {
   transitionListener,
   insertSlottedStyles
 } from '../../../utils';
+import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-radio-button-wrapper',
@@ -21,7 +22,7 @@ export class RadioButtonWrapper {
   @Prop() public label?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: 'error' | 'none' = 'none';
+  @Prop() public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -68,12 +69,11 @@ export class RadioButtonWrapper {
       mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('radio-button-wrapper__label-text--disabled')
     );
-    const inputWrapperClasses = cx(prefix('radio-button-wrapper__input-wrapper'));
-    const inputStyleClasses = cx(
-      prefix('radio-button-wrapper__input-style'),
-      this.checked && prefix(`radio-button-wrapper__input-style--checked`),
-      this.disabled && prefix(`radio-button-wrapper__input-style--disabled`),
-      this.state !== 'none' && prefix(`radio-button-wrapper__input-style--${this.state}`)
+    const fakeRadioClasses = cx(
+      prefix('radio-button-wrapper__fake-radio'),
+      this.checked && prefix(`radio-button-wrapper__fake-radio--checked`),
+      this.disabled && prefix(`radio-button-wrapper__fake-radio--disabled`),
+      this.state !== 'none' && prefix(`radio-button-wrapper__fake-radio--${this.state}`)
     );
     const messageClasses = cx(
       prefix('radio-button-wrapper__message'),
@@ -83,10 +83,8 @@ export class RadioButtonWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          <span class={inputWrapperClasses}>
-            <span class={inputStyleClasses}>
-              <slot/>
-            </span>
+          <span class={fakeRadioClasses}>
+            <slot/>
           </span>
           <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.clickOnInput()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
@@ -106,7 +104,7 @@ export class RadioButtonWrapper {
   }
 
   private get isMessageVisible(): boolean {
-    return ['error'].includes(this.state) && this.isMessageDefined;
+    return ['error','success'].includes(this.state) && this.isMessageDefined;
   }
 
   private setInput(): void {

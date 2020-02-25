@@ -9,6 +9,7 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ButtonType,
+  FormState,
   LinkTarget,
   TextSize,
   TextWeight,
@@ -382,7 +383,7 @@ export namespace Components {
     /**
     * The validation state.
     */
-    'state'?: 'error' | 'none';
+    'state'?: FormState;
   }
   interface PSpinner {
     /**
@@ -906,7 +907,7 @@ declare namespace LocalJSX {
     /**
     * The validation state.
     */
-    'state'?: 'error' | 'none';
+    'state'?: FormState;
   }
   interface PSpinner {
     /**
