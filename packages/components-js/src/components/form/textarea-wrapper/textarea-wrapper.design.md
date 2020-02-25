@@ -14,33 +14,25 @@ available:
 Use default label if the user is aware that these are only mandatory areas.
 
  
-  <p-textarea-wrapper label="Some label">
-    <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
+<p-textarea-wrapper label="Some label"><textarea name="some-name"></textarea></p-textarea-wrapper>
  
 ### 2. Required label
  
 Use required label if the form has only a few mandatory areas and mark them with an asterisk next to the label and mention next the form that asterisks indicate required areas.
  
-  <p-textarea-wrapper label="Some label*">
-    <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
+<p-textarea-wrapper label="Some label*"><textarea name="some-name"></textarea></p-textarea-wrapper>
  
 ### 3. Optional label
  
 Use optional label if the form has only a few optional areas, mark them with "(optional)" next to the label.
  
-  <p-textarea-wrapper label="Some label (otional)">
-    <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
+<p-textarea-wrapper label="Some label (optional)"><textarea name="some-name"></textarea></p-textarea-wrapper>
 
-### 4. Pure (without label) TBD
+### 4. Pure (without label)
 
 Use Pure (without label) only for a dedicated use where the need for a stringing of fields is necessary.
 
-  <p-textarea-wrapper label="Some label" hide-label="true">
-    <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
+<p-textarea-wrapper label="Some label" hide-label="true"><textarea name="some-name"></textarea></p-textarea-wrapper>
  
 ---
  
@@ -50,17 +42,13 @@ Use Pure (without label) only for a dedicated use where the need for a stringing
  
 Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. But we don't recommend to use placeholder text it since users can misinterpret it as final content.
  
-  <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" placeholder="Some placeholder text"></textarea>
-  </p-textarea-wrapper>
- 
+<p-textarea-wrapper label="Some label"><textarea name="some-name" placeholder="Some placeholder text"></textarea></p-textarea-wrapper>
+
 ### 2. Read only
  
 Use a read-only Textarea only if you want your input to be read only and not edited.
  
-  <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" readonly="readonly">Some value</textarea>
-  </p-textarea-wrapper>
+<p-textarea-wrapper label="Some label"><textarea name="some-name" readonly="readonly">Some value</textarea></p-textarea-wrapper>
  
 ---
  
@@ -107,9 +95,11 @@ All types of Textarea are available as disabled state. However, disabled states 
 
 ## Don'ts
 
-- Don´t use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, such as a phone number or name. In this case, you should use the text area component.
+### Component
+Don´t use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, such as a phone number or name. In this case, you should use the text area component.
 
-- To ensure that we don´t overwhelm users, there should be no more than two Textareas on a page.
+### Number of Textareas
+To ensure that we don´t overwhelm users, there should be no more than two Textareas on a page.
 
 ---
  
