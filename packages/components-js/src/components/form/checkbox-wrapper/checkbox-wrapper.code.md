@@ -43,14 +43,22 @@ A `label` is a caption which informs the user what information a particular form
 
 ## Indeterminate
 
-Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.
+Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.  
+This is especially useful for a checkbox that is used to set the state of a group of checkboxes
+at once. However this group might have a mixed state. In this case we recommend to use `checked=false`
+and `indeterminate=true`.
 
-<Playground :childElementLayout="{spacing: 'inline'}">    
-  <p-checkbox-wrapper label="Some label" indeterminate="true">
-    <input type="checkbox" name="some-name"/>
+**Note: The `indeterminate` attribute can only be set through the DOM node.
+There is no HTML attribute to set it. Also it's worth to know, that the `indeterminate` attribute
+only affects how the checkbox is shown. The current value is hidden from the user, but the
+checkbox still keeps it's `checked` state. You can find more details in [the specification](https://www.w3.org/TR/html52/sec-forms.html#dom-htmlinputelement-indeterminate).**
+
+<Playground :childElementLayout="{spacing: 'inline'}">
+  <p-checkbox-wrapper label="Some label">
+    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
   </p-checkbox-wrapper>
   <p-checkbox-wrapper label="Some label" indeterminate="true">
-    <input type="checkbox" name="some-name" checked="checked"/>
+    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked="checked"/>
   </p-checkbox-wrapper>
 </Playground>
 
@@ -110,5 +118,14 @@ Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `labe
   @Component
   export default class PlaygroundCheckboxWrapper extends Vue {
     public state: string = 'error';
+    
+    mounted() {
+      this.$nextTick(function () {
+        const inputs = document.querySelectorAll('.example-set-to-indeterminate');
+        inputs.forEach(input => {
+          input.indeterminate = true;
+        });
+      });
+    }
   }
 </script>
