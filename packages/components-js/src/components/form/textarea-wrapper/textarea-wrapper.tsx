@@ -17,7 +17,7 @@ export class TextareaWrapper {
   @Prop() public label?: string = '';
 
   /** The validation state. */
-  @Prop({ reflect: true }) public state?: FormState = 'none';
+  @Prop() public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -59,18 +59,17 @@ export class TextareaWrapper {
 
   public render(): JSX.Element {
 
-    const wrapperClasses = cx(prefix('textarea-wrapper__wrapper'));
     const labelClasses = cx(prefix('textarea-wrapper__label'));
     const labelTextClasses = cx(
       prefix('textarea-wrapper__label-text'),
       mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('textarea-wrapper__label-text--disabled')
     );
-    const textareaContainerClasses = cx(
-      prefix('textarea-wrapper__container'),
-      prefix(`textarea-wrapper__container--${this.state}`),
-      this.disabled && prefix('textarea-wrapper__container--disabled'),
-      this.readonly && prefix('textarea-wrapper__container--readonly')
+    const fakeTextareaClasses = cx(
+      prefix('textarea-wrapper__fake-textarea'),
+      prefix(`textarea-wrapper__fake-textarea--${this.state}`),
+      this.disabled && prefix('textarea-wrapper__fake-textarea--disabled'),
+      this.readonly && prefix('textarea-wrapper__fake-textarea--readonly')
     );
     const messageClasses = cx(
       prefix('textarea-wrapper__message'),
@@ -79,16 +78,14 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <span class={wrapperClasses}>
-          <label class={labelClasses}>
-            <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.focusOnTextarea()}>
-              {this.label ? this.label : <span><slot name='label'/></span>}
-            </p-text>
-            <span class={textareaContainerClasses}>
-              <slot/>
-            </span>
-          </label>
-        </span>
+        <label class={labelClasses}>
+          <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.focusOnTextarea()}>
+            {this.label ? this.label : <span><slot name='label'/></span>}
+          </p-text>
+          <span class={fakeTextareaClasses}>
+            <slot/>
+          </span>
+        </label>
         {this.isMessageVisible &&
         <p-text class={messageClasses} color='inherit'>
           {this.message ? this.message : <span><slot name='message'/></span>}
