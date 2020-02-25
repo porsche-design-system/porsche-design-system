@@ -138,19 +138,20 @@ If the active state should not render a clickable anchor tag, just remove the `h
 <a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive" class="link">
   <p-link-pure [active]="rla.isActive">Some label</p-link-pure>
 </a>
+
+Because <p-link-pure> component is just wrapped the outer links have to be styled to prevent the links from being underlined.
 ```
 
 ### React
+To pass properties to the PLinkPure component the spread operator can be used
 
 ``` 
-# style.css
-.link {
-  text-decoration:none;
-  outline: none;
-}
-
 # template.html
-coming soon...
+
+<Link to="/path/to/heaven" {...{active: true}} component={PLinkPure}>
+  Some label
+</Link>
+
 ```
 
 ### VueJs
