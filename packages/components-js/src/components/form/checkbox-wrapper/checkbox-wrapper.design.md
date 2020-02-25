@@ -23,9 +23,9 @@ The indeterminate state represents the mixed selection states of dependent check
 Once some of the dependent fields have been selected and subsequently deselected. 
 This is only a visual state and cannot be achieved by direct user interaction.  
 <br>
-<p-checkbox-wrapper label="Some label" indeterminate="true">
-  <input type="checkbox" checked="checked"/>
-</p-checkbox-wrapper>
+  <p-checkbox-wrapper label="Some label">
+    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
+  </p-checkbox-wrapper>
 
 ---
 
@@ -39,6 +39,7 @@ All Checkboxes types are available in the following states:
 * focus
 * indeterminate 
 * error 
+* success
 
 ---
 
@@ -46,14 +47,12 @@ All Checkboxes types are available in the following states:
 
 The Checkbox can contain the following sub-components:
 
-- **Headings**
-!!! TBD !!!
-
 - **Checkbox**
 The indicator is used to show whether the checkbox is checked (“on”) or not (“off”).
 
 - **Label**
 Label text (≤ 20 characters) is used to inform users as to what information is requested for a Checkbox. Every Checkbox should have a label.
+
 ---
 
 ## Usage
@@ -69,6 +68,9 @@ A group of Checkboxes can also be used to select from a set of one or more choic
 ### A stand-alone Checkbox
 Is used for a single option that the user can turn on or off.
 
+### Groups
+Groups of Checkboxes should be programmatically grouped together with an associated legend or description.
+
 ### Disabled State
 All Checkboxes are provided in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. 
 
@@ -81,22 +83,29 @@ All Checkboxes are provided in disabled state. However, disabled states should b
 
 ## Don'ts
 
-- Please avoid the mix of radio buttons and checkboxes. These must be considered separately
-- Set checkboxes best vertically instead of horizontally
-- Checkboxes are always aligned left
+### Mixing
+
+Please avoid the mix of radio buttons and checkboxes. These must be considered separately
 
 ![Dont mix buttons](./assets/dont-mix-buttons-checkbox.png)
 
+### Alignement
+
+Set checkboxes best vertically instead of horizontally
+
 ![Set cheboxes dont vertically](./assets/dont-alignment-checkbox.png)
+
+Checkboxes are always aligned left
 
 ![Example for alignement](./assets/dont-position-checkbox.png)
 
 ---
+ 
+## Related Components
+ 
+* [Text Field](#/web/components/form/text-field)
+* [Textarea](#/web/components/form/textarea)
+* [Radio Button](#/web/components/form/radio-button)
+* [Select](#/web/components/form/select)
 
-## Related components 
-
-### Radio Buttons
-
-**Radio Buttons** are used when there is a list of two or more options that are **mutually exclusive** and the user must select exactly one choice. 
-In other words, clicking a non-selected Radio Button will deselect whatever other button was previously selected in the list.
 
