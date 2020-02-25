@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <p-radio-button-wrapper> should render correctly in default mode with shadow dom 1`] = `
+<p-radio-button-wrapper label="Some label">
+  <mock:shadow-root>
+    <label class="p-radio-button-wrapper__label">
+      <span class="p-radio-button-wrapper__fake-radio">
+        <slot></slot>
+      </span>
+      <p-text class="p-radio-button-wrapper__label-text p-radio-button-wrapper__label-text--visible" color="inherit" tag="span">
+        Some label
+      </p-text>
+    </label>
+  </mock:shadow-root>
+  <input name="some-name" type="radio">
+</p-radio-button-wrapper>
+`;
