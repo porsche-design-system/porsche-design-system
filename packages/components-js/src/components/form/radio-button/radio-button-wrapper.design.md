@@ -9,10 +9,12 @@ In a group of radio buttons should be selected one option by default. However, t
 ## Variants
  
 ### 1. Default
-!!! EXAMPLES !!!
+
+<p-radio-button-wrapper label="Some label" hide-label="false"><input type="radio" name="some-name-1" value="no"></p-radio-button-wrapper>
  
 ### 2. Checked
-!!! EXAMPLES !!!
+
+<p-radio-button-wrapper label="Some label" hide-label="false"><input type="radio" name="some-name-1" value="yes"></p-radio-button-wrapper>
  
 ---
  
@@ -23,15 +25,13 @@ All Radio Buttons are available in the following states:
 * disabled
 * focus
 * error
+* success
  
 ---
  
 ## Content
  
 The Radio Button can contain the following sub-components:
- 
-- **Headings**
-!!! TBD !!!
 
 - **Radio Button**
 The indicator is used to show whether the radio button is checked or not.
@@ -46,6 +46,9 @@ Label text (≤ 20 characters) is used to inform users as to what information is
 ### Single-selection control
 The singular property of a radio button makes it distinct from a checkbox, which allows more than one (or no) item to be selected and for the unselected state to be restored. As soon as two options are mutually exclusive, a radio button is used.
 
+### Hint text
+If needed, add a hint explaining this, for example, ‘Select one option’.
+
 ### Disabled states
 All types of Radio Buttons are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
  
@@ -54,24 +57,31 @@ All types of Radio Buttons are available in disabled state. However, disabled st
     <img src="./assets/form-radio-butto-examples.png" alt="Examples for button usage"/>
 </div>
 
----
-
  
 ## Don'ts
  
-- Use for a large number of items (≥ 7 items) a select component instead.
-- Don't align radio buttons horizontally as it is more difficult to scan.
-- Avoid using a radio button as a single choice.
- 
+### Items
+Use for a large number of items (≥ 7 items) a select component instead.
+<br>
 ![Example for long radio button list](./assets/dont-spacing-radio button-list.png)
+
+### Alignement
+Don't align radio buttons horizontally as it is more difficult to scan.
+<br>
 ![Example for alignment](./assets/dont-spacing-radio button-alignment.png)
+
+### Single chioce
+Avoid using a radio button as a single choice.
+ <br>
 ![Example for single choice](./assets/dont-spacing-radio button-vs.-checkbox.png)
  
 ---
  
-## Related components
+## Related Components
  
-### Checkboxes
- 
-**Checkboxes** are used when there are lists of options and the user may **select any number** of choices, including zero, one, or several. In other words, each Checkbox is independent of all other Checkboxes in the list, so checking one box doesn't uncheck the others.
+* [Text Field](#/web/components/form/text-field)
+* [Textarea](#/web/components/form/textarea)
+* [Checkbox](#/web/components/form/checkbox)
+* [Select](#/web/components/form/select)
+
  
