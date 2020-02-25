@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -41,15 +41,23 @@ import {Component} from '@angular/core';
       <p-grid>
         <p-grid-item [size]="5" [offset]="2">
           <div class="playground light spacing-block">
-            <p-headline [variant]="'headline-3'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-3'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-3'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps
+              over the lazy dog
+            </p-headline>
+            <p-headline [variant]="'headline-3'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps
+              over the lazy dog
+            </p-headline>
           </div>
           <hr>
         </p-grid-item>
         <p-grid-item size="5">
           <div class="playground dark spacing-block">
-            <p-headline [variant]="'headline-3'" [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-headline>
-            <p-headline [variant]="'headline-3'" [theme]="'dark'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-headline>
+            <p-headline [variant]="'headline-3'" [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick
+              brown fox jumps over the lazy dog
+            </p-headline>
+            <p-headline [variant]="'headline-3'" [theme]="'dark'" [color]="'inherit'" style="color: deeppink;">The quick
+              brown fox jumps over the lazy dog
+            </p-headline>
           </div>
           <hr>
         </p-grid-item>
@@ -70,26 +78,56 @@ import {Component} from '@angular/core';
           <div class="playground light spacing-block">
             <p-text [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
             <p-text [color]="'brand'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'neutral-contrast-high'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'neutral-contrast-medium'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'neutral-contrast-low'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'notification-success'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'notification-warning'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [color]="'notification-error'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [color]="'neutral-contrast-high'" style="color: deeppink;">The quick brown fox jumps over the lazy
+              dog
+            </p-text>
+            <p-text [color]="'neutral-contrast-medium'" style="color: deeppink;">The quick brown fox jumps over the lazy
+              dog
+            </p-text>
+            <p-text [color]="'neutral-contrast-low'" style="color: deeppink;">The quick brown fox jumps over the lazy
+              dog
+            </p-text>
+            <p-text [color]="'notification-success'" style="color: deeppink;">The quick brown fox jumps over the lazy
+              dog
+            </p-text>
+            <p-text [color]="'notification-warning'" style="color: deeppink;">The quick brown fox jumps over the lazy
+              dog
+            </p-text>
+            <p-text [color]="'notification-error'" style="color: deeppink;">The quick brown fox jumps over the lazy
+              dog
+            </p-text>
             <p-text [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
           </div>
         </p-grid-item>
         <p-grid-item size="5">
           <div class="playground dark spacing-block">
-            <p-text [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'brand'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'neutral-contrast-high'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'neutral-contrast-medium'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'neutral-contrast-low'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'notification-success'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'notification-warning'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'notification-error'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
-            <p-text [theme]="'dark'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog</p-text>
+            <p-text [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the
+              lazy dog
+            </p-text>
+            <p-text [theme]="'dark'" [color]="'brand'" style="color: deeppink;">The quick brown fox jumps over the lazy
+              dog
+            </p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-contrast-high'" style="color: deeppink;">The quick brown fox
+              jumps over the lazy dog
+            </p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-contrast-medium'" style="color: deeppink;">The quick brown fox
+              jumps over the lazy dog
+            </p-text>
+            <p-text [theme]="'dark'" [color]="'neutral-contrast-low'" style="color: deeppink;">The quick brown fox jumps
+              over the lazy dog
+            </p-text>
+            <p-text [theme]="'dark'" [color]="'notification-success'" style="color: deeppink;">The quick brown fox jumps
+              over the lazy dog
+            </p-text>
+            <p-text [theme]="'dark'" [color]="'notification-warning'" style="color: deeppink;">The quick brown fox jumps
+              over the lazy dog
+            </p-text>
+            <p-text [theme]="'dark'" [color]="'notification-error'" style="color: deeppink;">The quick brown fox jumps
+              over the lazy dog
+            </p-text>
+            <p-text [theme]="'dark'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the
+              lazy dog
+            </p-text>
           </div>
         </p-grid-item>
       </p-grid>
@@ -259,7 +297,8 @@ import {Component} from '@angular/core';
             <p-button-pure [icon]="'delete'" [theme]="'dark'">Some button with a custom icon</p-button-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-button-pure [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
+            <p-button-pure [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing
+            </p-button-pure>
           </div>
           <hr>
         </p-grid-item>
@@ -298,21 +337,29 @@ import {Component} from '@angular/core';
         <p-grid-item [size]="5">
           <div class="playground light spacing-inline">
             <p-icon [name]="'filter'" [color]="'neutral-contrast-high'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'medium'" [color]="'neutral-contrast-medium'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'large'" [color]="'neutral-contrast-low'" aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [size]="'medium'" [color]="'neutral-contrast-medium'"
+                    aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [size]="'large'" [color]="'neutral-contrast-low'"
+                    aria-label="Filter icon"></p-icon>
             <p-icon [name]="'filter'" [size]="'large'" [color]="'brand'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon" style="color: deeppink;"></p-icon>
+            <p-icon [name]="'filter'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon"
+                    style="color: deeppink;"></p-icon>
             <p-icon [name]="'delete'" [size]="'large'" aria-label="Delete icon"></p-icon>
           </div>
           <hr>
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-inline">
-            <p-icon [name]="'filter'" [theme]="'dark'" [color]="'neutral-contrast-high'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'medium'" [color]="'neutral-contrast-medium'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'neutral-contrast-low'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'brand'" aria-label="Filter icon"></p-icon>
-            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon" style="color: deeppink;"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [color]="'neutral-contrast-high'"
+                    aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'medium'" [color]="'neutral-contrast-medium'"
+                    aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'neutral-contrast-low'"
+                    aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'brand'"
+                    aria-label="Filter icon"></p-icon>
+            <p-icon [name]="'filter'" [theme]="'dark'" [size]="'large'" [color]="'inherit'" aria-label="Filter icon"
+                    style="color: deeppink;"></p-icon>
             <p-icon [name]="'delete'" [theme]="'dark'" [size]="'large'" aria-label="Delete icon"></p-icon>
           </div>
           <hr>
@@ -466,17 +513,21 @@ import {Component} from '@angular/core';
             <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [href]="'https://designsystem.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
+            <p-link [href]="'https://designsystem.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet,
+              consetetur sadipscing
+            </p-link>
           </div>
           <hr>
           <div class="playground light spacing-inline">
-            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
+            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label
+            </p-link>
           </div>
           <div class="playground light spacing-inline">
             <p-link [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
           </div>
           <div class="playground light spacing-inline">
-            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
+            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label
+            </p-link>
           </div>
           <div class="playground light spacing-inline">
             <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
@@ -485,23 +536,28 @@ import {Component} from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="5">
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link>
+            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label
+            </p-link>
           </div>
           <div class="playground dark spacing-inline">
             <p-link [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link>
+            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label
+            </p-link>
           </div>
           <div class="playground dark spacing-inline">
             <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
+            <p-link [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor
+              sit amet, consetetur sadipscing
+            </p-link>
           </div>
           <hr>
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some
+            <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true"
+                    [theme]="'dark'">Some
               label
             </p-link>
           </div>
@@ -509,12 +565,14 @@ import {Component} from '@angular/core';
             <p-link [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some
+            <p-link [variant]="'tertiary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true"
+                    [theme]="'dark'">Some
               label
             </p-link>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label
+            <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true" [theme]="'dark'">
+              Some label
             </p-link>
           </div>
           <hr>
@@ -533,7 +591,9 @@ import {Component} from '@angular/core';
           </div>
           <div class="playground light spacing-inline">
             <p-link-pure [size]="'medium'" [href]="'https://designsystem.porsche.com'">Medium</p-link-pure>
-            <p-link-pure [size]="'inherit'" [href]="'https://designsystem.porsche.com'" style="font-size: 48px;">Inherit</p-link-pure>
+            <p-link-pure [size]="'inherit'" [href]="'https://designsystem.porsche.com'" style="font-size: 48px;">
+              Inherit
+            </p-link-pure>
           </div>
           <div class="playground light spacing-inline">
             <p-link-pure [weight]="'thin'" [href]="'https://designsystem.porsche.com'">Thin</p-link-pure>
@@ -544,10 +604,13 @@ import {Component} from '@angular/core';
             <p-link-pure [active]="true" [href]="'https://designsystem.porsche.com'">Some label</p-link-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-link-pure [icon]="'phone'" [href]="'https://designsystem.porsche.com'">Some link with a custom icon</p-link-pure>
+            <p-link-pure [icon]="'phone'" [href]="'https://designsystem.porsche.com'">Some link with a custom icon
+            </p-link-pure>
           </div>
           <div class="playground light spacing-inline">
-            <p-link-pure [href]="'https://designsystem.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-pure>
+            <p-link-pure [href]="'https://designsystem.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet,
+              consetetur sadipscing
+            </p-link-pure>
           </div>
           <hr>
         </p-grid-item>
@@ -556,25 +619,37 @@ import {Component} from '@angular/core';
             <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [hideLabel]="true" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
+            <p-link-pure [hideLabel]="true" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label
+            </p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [size]="'medium'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Medium</p-link-pure>
-            <p-link-pure [size]="'inherit'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="font-size: 48px;">Inherit</p-link-pure>
+            <p-link-pure [size]="'medium'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Medium
+            </p-link-pure>
+            <p-link-pure [size]="'inherit'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'"
+                         style="font-size: 48px;">Inherit
+            </p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [weight]="'thin'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Thin</p-link-pure>
-            <p-link-pure [weight]="'regular'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Regular</p-link-pure>
-            <p-link-pure [weight]="'bold'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Bold</p-link-pure>
+            <p-link-pure [weight]="'thin'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Thin
+            </p-link-pure>
+            <p-link-pure [weight]="'regular'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Regular
+            </p-link-pure>
+            <p-link-pure [weight]="'bold'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Bold
+            </p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [active]="true" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
+            <p-link-pure [active]="true" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some label
+            </p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some link with a custom icon</p-link-pure>
+            <p-link-pure [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Some link with a
+              custom icon
+            </p-link-pure>
           </div>
           <div class="playground dark spacing-inline">
-            <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-pure>
+            <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum
+              dolor sit amet, consetetur sadipscing
+            </p-link-pure>
           </div>
           <hr>
         </p-grid-item>
@@ -592,6 +667,48 @@ import {Component} from '@angular/core';
         <p-grid-item [size]="5">
           <div class="playground dark spacing-block">
             <p-pagination [theme]="'dark'" [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></p-pagination>
+          </div>
+          <hr>
+        </p-grid-item>
+      </p-grid>
+      <p-headline [variant]="'headline-2'">Forms</p-headline>
+      <hr>
+      <p-grid>
+        <p-grid-item [size]="2">
+          <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-select-wrapper&gt;</p-headline>
+        </p-grid-item>
+        <p-grid-item [size]="10">
+          <div class="playground light spacing-block">
+            <p-select-wrapper [label]="'Some label'">
+              <select name="some-name">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+            </p-select-wrapper>
+            <p-select-wrapper [label]="'Some label'">
+              <select name="some-name" disabled="disabled">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+            </p-select-wrapper>
+            <p-select-wrapper [label]="'Some label'" [state]="'error'" [message]="'Some error message.'">
+              <select name="some-name">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+            </p-select-wrapper>
+            <p-select-wrapper [state]="'success'">
+              <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <select name="some-name">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+              <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+            </p-select-wrapper>
           </div>
           <hr>
         </p-grid-item>
