@@ -41,13 +41,14 @@ A `label` is a caption which informs the user what information a particular form
 
 ## Validation states
 
-The **Radio Button Wrapper** component supports the visualisation of inline validation with the usage of `p-text`. The `radio` element is colored and visible/hidden depending on the defined `state`.
+The **Radio Button Wrapper** component supports the visualisation of inline validation.
 
 <Playground :childElementLayout="{spacing: 'block'}">
   <template #configurator>
     <select v-model="state">
       <option disabled>Select a validation state</option>
       <option value="error">Error</option>
+      <option value="success">Success</option>
       <option value="none">None</option>
     </select>
   </template>
