@@ -17,12 +17,12 @@ import {Navigation} from "./Navigation";
 import {SystemLog} from "./SystemLog";
 
 const App: React.FC = () => {
-  return (
 
+  return (
     <Router>
       <div id="app">
         <SystemLog/>
-        <Link to="/basic" component={PLinkPure} >
+        <Link to="/basic" component={PLinkPure}>
          Basic
         </Link>
         <Link to="/action" component={PLinkPure}>
