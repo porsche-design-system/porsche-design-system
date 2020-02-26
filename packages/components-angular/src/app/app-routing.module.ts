@@ -1,42 +1,41 @@
-import {NgModule} from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
-import {AppComponent} from "./app.component";
-import {AppBasicComponent} from "./app-basic/app-basic.component";
-import {AppActionComponent} from "./app-action/app-action.component";
-import {AppFeedbackComponent} from "./app-feedback/app-feedback.component";
-import {AppIconComponent} from "./app-icon/app-icon.component";
-import {AppLayoutComponent} from "./app-layout/app-layout.component";
-import {AppNavigationComponent} from "./app-navigation/app-navigation.component";
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { BasicComponent } from "./pages/basic/basic.component";
+import { ActionComponent } from "./pages/action/action.component";
+import { FeedbackComponent } from "./pages/feedback/feedback.component";
+import { IconComponent } from "./pages/icon/icon.component";
+import { LayoutComponent } from "./pages/layout/layout.component";
+import { NavigationComponent } from "./pages/navigation/navigation.component";
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    redirectTo: 'basic',
     pathMatch: 'full'
   },
   {
     path: 'basic',
-    component: AppBasicComponent
+    component: BasicComponent
   },
   {
     path: 'action',
-    component: AppActionComponent
+    component: ActionComponent
   },
   {
     path: 'feedback',
-    component: AppFeedbackComponent
+    component: FeedbackComponent
   },
   {
     path: 'icon',
-    component: AppIconComponent
+    component: IconComponent
   },
   {
     path: 'layout',
-    component: AppLayoutComponent
+    component: LayoutComponent
   },
   {
     path: 'navigation',
-    component: AppNavigationComponent
+    component: NavigationComponent
   }
 ];
 
@@ -51,4 +50,5 @@ const appRoutes: Routes = [
   ]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
