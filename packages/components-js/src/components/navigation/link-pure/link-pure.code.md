@@ -127,7 +127,8 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ### Angular
 
-Because `<p-link-pure>` component is just wrapped the outer links have to be styled to prevent the links from being underlined.
+If you wrap `<p-link-pure>` with an `<a>`, it's important to reset `text-decoration` and `outline`, since the inner
+component has no control over the elements that are around it.
 
 ``` 
 # style.css
@@ -148,12 +149,9 @@ Because `<p-link-pure>` component is just wrapped the outer links have to be sty
 To pass properties to the PLinkPure component the spread operator can be used.
 
 ``` 
-# template.html
-
 <Link to="/path/to/heaven" {...{active: true}} component={PLinkPure}>
   Some label
 </Link>
-
 ```
 
 ### VueJs
