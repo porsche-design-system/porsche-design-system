@@ -87,6 +87,7 @@ export class ButtonPure {
         disabled={this.isDisabled()}
         tabindex={this.tabbable ? 0 : -1}
         ref={el => this.buttonTag = el as HTMLElement}
+        aria-busy={this.loading && 'true'}
       >
         {this.loading ? (
           <p-spinner
@@ -103,6 +104,7 @@ export class ButtonPure {
             name={this.icon}
             source={this.iconSource}
             ref={el => this.iconTag = el as HTMLElement}
+            aria-hidden='true'
           />
         )}
         <p-text
