@@ -1,31 +1,25 @@
 # Checkbox
 
-Use a Checkboxe for a list of options that allow the user to make choices. The choice of one or several options (checked state) or no option (unchecked state). Each checkbox has a label and is independent of all other checkboxes in the list. Checking one box doesn't uncheck the others. By default checkboxes are not selected.
+Use a Checkbox for a list of options that allow the user to make choices. The choice of one or several options (checked state) or no option (unchecked state) is valid. Each checkbox has a separate label and is independent to all other checkboxes. Checking one box doesn't uncheck the others. By default checkboxes are not selected.
 
 ---
 
 ## Variants
 
 ### 1. Default  
-<br>
-<p-checkbox-wrapper label="Some label">
-  <input type="checkbox"/>
-</p-checkbox-wrapper>
+
+<p-checkbox-wrapper label="Some label"><input type="checkbox" name="some-name"></p-checkbox-wrapper>
 
 ### 2. Checked
-<br>
-<p-checkbox-wrapper label="Some label">
-  <input type="checkbox" checked="checked" />
-</p-checkbox-wrapper>
+
+<p-checkbox-wrapper label="Some label"><input type="checkbox" name="some-name" checked="checked"></p-checkbox-wrapper>
 
 ### 3. Indeterminate
 The indeterminate state represents the mixed selection states of dependent checkboxes in a group. 
 Once some of the dependent fields have been selected and subsequently deselected. 
 This is only a visual state and cannot be achieved by direct user interaction.  
-<br>
-  <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
-  </p-checkbox-wrapper>
+
+<p-checkbox-wrapper label="Some label"><input type="checkbox" name="some-name" class="example-set-to-indeterminate"></p-checkbox-wrapper>
 
 ---
 
@@ -109,3 +103,18 @@ Checkboxes are always aligned left
 * [Select](#/web/components/form/select)
 
 
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundCheckboxWrapperDesign extends Vue {    
+    mounted() {
+      this.$nextTick(function () {
+        const inputs = document.querySelectorAll('.example-set-to-indeterminate');
+        inputs.forEach(input => {
+          input.indeterminate = true;
+        });
+      });
+    }
+  }
+</script>
