@@ -18,12 +18,12 @@
     </p-text>
     <hr>
     <div>
-    <p-link-pure href="/#basic">Basic</p-link-pure><!--
-    --><p-link-pure href="/#action">Action</p-link-pure><!--
-    --><p-link-pure href="/#feedback">Feedback</p-link-pure><!--
-    --><p-link-pure href="/#icon">Icon</p-link-pure><!--
-    --><p-link-pure href="/#layout">Layout</p-link-pure><!--
-    --><p-link-pure href="/#navigation">Navigation</p-link-pure><!--
+    <p-link-pure href="/index.html#basic">Basic</p-link-pure><!--
+    --><p-link-pure href="/index.html#action">Action</p-link-pure><!--
+    --><p-link-pure href="/index.html#feedback">Feedback</p-link-pure><!--
+    --><p-link-pure href="/index.html#icon">Icon</p-link-pure><!--
+    --><p-link-pure href="/index.html#layout">Layout</p-link-pure><!--
+    --><p-link-pure href="/index.html#navigation">Navigation</p-link-pure><!--
     --></div>
     <hr>
     <div data-router-outlet></div>
@@ -67,7 +67,9 @@
           const target = document.location.hash.substr(1);
 
           fetch('pages/' + target + '.html').then(function(template) {
-            routerOutlet.innerHTML = template.text();
+            return template.text();
+          }).then(function (text) {
+            routerOutlet.innerHTML = text;
           });
         };
         window.addEventListener("hashchange", updateRoute);
