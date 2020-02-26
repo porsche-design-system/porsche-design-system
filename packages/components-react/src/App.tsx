@@ -5,21 +5,25 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import { LinkPure } from '@porsche-design-system/components-react';
-import { Basic } from "./Basic";
-import { Action } from "./Action";
-import { Feedback } from "./Feedback";
-import { Icons } from "./Icons";
-import { Layout } from "./Layout";
-import { Navigation } from "./Navigation";
-import { SystemLog } from "./SystemLog";
+import { LinkPure, Text } from '@porsche-design-system/components-react';
+import { Basic } from "./pages/Basic";
+import { Action } from "./pages/Action";
+import { Feedback } from "./pages/Feedback";
+import { Icons } from "./pages/Icons";
+import { Layout } from "./pages/Layout";
+import { Navigation } from "./pages/Navigation";
 
 const App: React.FC = () => {
 
   return (
     <Router>
       <div id="app">
-        <SystemLog/>
+        <Text>
+          <b id="human-readable-browser-name"/>
+          <br/>
+          <span id="system-log"/>
+        </Text>
+        <hr/>
         <Link to="/basic" component={LinkPure}>
           Basic
         </Link>
