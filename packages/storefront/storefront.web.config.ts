@@ -181,7 +181,7 @@ export const config: StorefrontConfig = {
         ]
       }
     },
-    Forms: {
+    Form: {
       Select: {
         Design: [
           // @ts-ignore
