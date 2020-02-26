@@ -4,8 +4,8 @@ If you experience any problems with the Porsche Design System, it's always a goo
 first if there is a known solution for it.
 
 ## Components are not working in IE11
-1. With old new relic snippets there might be incompatibilities with the loaded polyfills. This might
-   break the components in IE11. Please try to update your new relic snippet to the latest version.
+1. With old New Relic snippets there might be incompatibilities with the loaded polyfills. This might
+   break the components in IE11. Please try to update your New Relic snippet to the latest version.
 1. There might be polyfill conflicts with other libraries that you use. Please check if there are
    any libs that load polyfills, especially ones that provide web components. For example if the
    widely used [`document-register-element`](https://github.com/WebReflection/document-register-element)
