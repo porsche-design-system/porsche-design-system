@@ -12,7 +12,7 @@ describe('Radio Button Wrapper', () => {
   it('should have no visual regression', async () => {
     expect(
       await vrt.test('radio-button-wrapper', async () => {
-        await vrt.goTo('/src/components/form/radio-button/radio-button-wrapper.test.html');
+        await vrt.goTo('/src/components/form/radio-button-wrapper/radio-button-wrapper.test.html');
         await vrt.focus('#test-focus-state');
       })
     ).toBeFalsy();
