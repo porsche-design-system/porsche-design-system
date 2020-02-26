@@ -1,155 +1,155 @@
-import {PGrid, PGridItem, PHeadline, PLink, PLinkPure, PPagination} from '@porsche-design-system/components-react';
+import {Grid, GridItem, Headline, Link, LinkPure, Pagination} from '@porsche-design-system/components-react';
 import React from "react";
 
 export function Navigation(){
   return(
     <div>
-      <PHeadline variant={'headline-2'}>Navigation</PHeadline>
+      <Headline variant={'headline-2'}>Navigation</Headline>
       <hr/>
-      <PGrid>
-        <PGridItem size={2}>
-          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-link&gt;</PHeadline>
-        </PGridItem>
-        <PGridItem size={5}>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>&lt;p-link&gt;</Headline>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <PLink variant={'primary'} href={'https://designsystem.porsche.com'}>Some label</PLink>
+            <Link variant={'primary'} href={'https://designsystem.porsche.com'}>Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <PLink href={'https://designsystem.porsche.com'}>Some label</PLink>
+            <Link href={'https://designsystem.porsche.com'}>Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <PLink variant={'tertiary'} href={'https://designsystem.porsche.com'}>Some label</PLink>
+            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'}>Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <PLink icon={'phone'} href={'https://designsystem.porsche.com'}>Some label</PLink>
+            <Link icon={'phone'} href={'https://designsystem.porsche.com'}>Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <PLink href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
+            <Link href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Link>
           </div>
           <hr/>
           <div className="playground light spacing-inline">
-            <PLink variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</PLink>
+            <Link variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <PLink href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</PLink>
+            <Link href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <PLink variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</PLink>
+            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <PLink icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</PLink>
+            <Link icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</Link>
           </div>
           <hr/>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <PLink variant={'primary'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLink>
+            <Link variant={'primary'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</Link>
           </div>
           <div className="playground dark spacing-inline">
-            <PLink href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLink>
+            <Link href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</Link>
           </div>
           <div className="playground dark spacing-inline">
-            <PLink variant={'tertiary'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLink>
+            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</Link>
           </div>
           <div className="playground dark spacing-inline">
-            <PLink icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLink>
+            <Link icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</Link>
           </div>
           <div className="playground dark spacing-inline">
-            <PLink href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
+            <Link href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Link>
           </div>
           <hr/>
           <div className="playground dark spacing-inline">
-            <PLink variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</PLink>
+            <Link variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</Link>
           </div>
           <div className="playground dark spacing-inline">
-            <PLink href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</PLink>
+            <Link href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</Link>
           </div>
           <div className="playground dark spacing-inline">
-            <PLink variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label
-            </PLink>
+            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label
+            </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <PLink icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</PLink>
+            <Link icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</Link>
           </div>
           <hr/>
-        </PGridItem>
-      </PGrid>
-      <PGrid>
-        <PGridItem size={2}>
-          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-link-pure&gt;</PHeadline>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+      </Grid>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>&lt;p-link-pure&gt;</Headline>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <PLinkPure href={'https://designsystem.porsche.com'}>Some label</PLinkPure>
+            <LinkPure href={'https://designsystem.porsche.com'}>Some label</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <PLinkPure hideLabel={true} href={'https://designsystem.porsche.com'}>Some label</PLinkPure>
+            <LinkPure hideLabel={true} href={'https://designsystem.porsche.com'}>Some label</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <PLinkPure size={'medium'} href={'https://designsystem.porsche.com'}>Medium</PLinkPure>
-            <PLinkPure size={'inherit'} href={'https://designsystem.porsche.com'} style={{ fontSize: '48px' }}>Inherit</PLinkPure>
+            <LinkPure size={'medium'} href={'https://designsystem.porsche.com'}>Medium</LinkPure>
+            <LinkPure size={'inherit'} href={'https://designsystem.porsche.com'} style={{ fontSize: '48px' }}>Inherit</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <PLinkPure weight={'thin'} href={'https://designsystem.porsche.com'}>Thin</PLinkPure>
-            <PLinkPure weight={'regular'} href={'https://designsystem.porsche.com'}>Regular</PLinkPure>
-            <PLinkPure weight={'bold'} href={'https://designsystem.porsche.com'}>Bold</PLinkPure>
+            <LinkPure weight={'thin'} href={'https://designsystem.porsche.com'}>Thin</LinkPure>
+            <LinkPure weight={'regular'} href={'https://designsystem.porsche.com'}>Regular</LinkPure>
+            <LinkPure weight={'bold'} href={'https://designsystem.porsche.com'}>Bold</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <PLinkPure active={true} href={'https://designsystem.porsche.com'}>Some label</PLinkPure>
+            <LinkPure active={true} href={'https://designsystem.porsche.com'}>Some label</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <PLinkPure icon={'phone'} href={'https://designsystem.porsche.com'}>Some link with a custom icon</PLinkPure>
+            <LinkPure icon={'phone'} href={'https://designsystem.porsche.com'}>Some link with a custom icon</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <PLinkPure href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLinkPure>
+            <LinkPure href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</LinkPure>
           </div>
           <hr/>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <PLinkPure href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLinkPure>
+            <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PLinkPure hideLabel={true} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLinkPure>
+            <LinkPure hideLabel={true} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PLinkPure size={'medium'} href={'https://designsystem.porsche.com'} theme={'dark'}>Medium</PLinkPure>
-            <PLinkPure size={'inherit'} href={'https://designsystem.porsche.com'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</PLinkPure>
+            <LinkPure size={'medium'} href={'https://designsystem.porsche.com'} theme={'dark'}>Medium</LinkPure>
+            <LinkPure size={'inherit'} href={'https://designsystem.porsche.com'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PLinkPure weight={'thin'} href={'https://designsystem.porsche.com'} theme={'dark'}>Thin</PLinkPure>
-            <PLinkPure weight={'regular'} href={'https://designsystem.porsche.com'} theme={'dark'}>Regular</PLinkPure>
-            <PLinkPure weight={'bold'} href={'https://designsystem.porsche.com'} theme={'dark'}>Bold</PLinkPure>
+            <LinkPure weight={'thin'} href={'https://designsystem.porsche.com'} theme={'dark'}>Thin</LinkPure>
+            <LinkPure weight={'regular'} href={'https://designsystem.porsche.com'} theme={'dark'}>Regular</LinkPure>
+            <LinkPure weight={'bold'} href={'https://designsystem.porsche.com'} theme={'dark'}>Bold</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PLinkPure active={true} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</PLinkPure>
+            <LinkPure active={true} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PLinkPure icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some link with a custom icon</PLinkPure>
+            <LinkPure icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some link with a custom icon</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PLinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PLinkPure>
+            <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</LinkPure>
           </div>
           <hr/>
-        </PGridItem>
-      </PGrid>
-      <PGrid>
-        <PGridItem size={2}>
-          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-pagination&gt;</PHeadline>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+      </Grid>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>&lt;p-pagination&gt;</Headline>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground light spacing-block">
-            <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1}/>
+            <Pagination totalItemsCount={500} itemsPerPage={25} activePage={1}/>
           </div>
           <hr/>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground dark spacing-block">
-            <PPagination theme={'dark'} totalItemsCount={500} itemsPerPage={25} activePage={1}/>
+            <Pagination theme={'dark'} totalItemsCount={500} itemsPerPage={25} activePage={1}/>
           </div>
           <hr/>
-        </PGridItem>
-      </PGrid>
+        </GridItem>
+      </Grid>
     </div>
   );
 }
