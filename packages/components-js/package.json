@@ -56,9 +56,6 @@
     "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61422 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
-  "dependencies": {
-    "whatwg-fetch": "^3.0.0"
-  },
   "devDependencies": {
     "@porsche-design-system/scss-utils": "1.0.0",
     "@porsche-design-system/utils": "0.0.0",
@@ -94,6 +91,7 @@
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.7.4",
-    "wait-on": "^3.3.0"
+    "wait-on": "^3.3.0",
+    "whatwg-fetch": "^3.0.0"
   }
 }
