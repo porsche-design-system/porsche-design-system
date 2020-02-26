@@ -1,163 +1,163 @@
-import {PButton, PButtonPure, PGrid, PGridItem, PHeadline} from '@porsche-design-system/components-react';
+import {Button, ButtonPure, Grid, GridItem, Headline} from '@porsche-design-system/components-react';
 import React from "react";
 
 export function Action(){
   return(
     <div>
-      <PHeadline variant={'headline-2'}>Action</PHeadline>
+      <Headline variant={'headline-2'}>Action</Headline>
       <hr/>
-      <PGrid>
-        <PGridItem size={2}>
-          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-button&gt;</PHeadline>
-        </PGridItem>
-        <PGridItem size={5}>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>&lt;p-button&gt;</Headline>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <PButton variant={'primary'}>Some label</PButton>
-            <PButton variant={'primary'} disabled={true}>Some label</PButton>
-            <PButton variant={'primary'} loading={true}>Some label</PButton>
+            <Button variant={'primary'}>Some label</Button>
+            <Button variant={'primary'} disabled={true}>Some label</Button>
+            <Button variant={'primary'} loading={true}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <PButton>Some label</PButton>
-            <PButton disabled={true}>Some label</PButton>
-            <PButton loading={true}>Some label</PButton>
+            <Button>Some label</Button>
+            <Button disabled={true}>Some label</Button>
+            <Button loading={true}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <PButton variant={'tertiary'}>Some label</PButton>
-            <PButton variant={'tertiary'} disabled={true}>Some label</PButton>
-            <PButton variant={'tertiary'} loading={true}>Some label</PButton>
+            <Button variant={'tertiary'}>Some label</Button>
+            <Button variant={'tertiary'} disabled={true}>Some label</Button>
+            <Button variant={'tertiary'} loading={true}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <PButton icon={'phone'}>Some label</PButton>
+            <Button icon={'phone'}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <PButton style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+            <Button style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
           </div>
           <hr/>
           <div className="playground light spacing-inline">
-            <PButton variant={'primary'} hideLabel={true}>Some label</PButton>
-            <PButton variant={'primary'} hideLabel={true} disabled={true}>Some label</PButton>
-            <PButton variant={'primary'} hideLabel={true} loading={true}>Some label</PButton>
+            <Button variant={'primary'} hideLabel={true}>Some label</Button>
+            <Button variant={'primary'} hideLabel={true} disabled={true}>Some label</Button>
+            <Button variant={'primary'} hideLabel={true} loading={true}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <PButton hideLabel={true}>Some label</PButton>
-            <PButton disabled={true} hideLabel={true}>Some label</PButton>
-            <PButton loading={true} hideLabel={true}>Some label</PButton>
+            <Button hideLabel={true}>Some label</Button>
+            <Button disabled={true} hideLabel={true}>Some label</Button>
+            <Button loading={true} hideLabel={true}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <PButton variant={'tertiary'} hideLabel={true}>Some label</PButton>
-            <PButton variant={'tertiary'} hideLabel={true} disabled={true}>Some label</PButton>
-            <PButton variant={'tertiary'} hideLabel={true} loading={true}>Some label</PButton>
+            <Button variant={'tertiary'} hideLabel={true}>Some label</Button>
+            <Button variant={'tertiary'} hideLabel={true} disabled={true}>Some label</Button>
+            <Button variant={'tertiary'} hideLabel={true} loading={true}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <PButton icon={'phone'} hideLabel={true}>Some label</PButton>
+            <Button icon={'phone'} hideLabel={true}>Some label</Button>
           </div>
           <hr/>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <PButton variant={'primary'} theme={'dark'}>Some label</PButton>
-            <PButton variant={'primary'} theme={'dark'} disabled={true}>Some label</PButton>
-            <PButton variant={'primary'} theme={'dark'} loading={true}>Some label</PButton>
+            <Button variant={'primary'} theme={'dark'}>Some label</Button>
+            <Button variant={'primary'} theme={'dark'} disabled={true}>Some label</Button>
+            <Button variant={'primary'} theme={'dark'} loading={true}>Some label</Button>
           </div>
           <div className="playground dark spacing-inline">
-            <PButton theme={'dark'}>Some label</PButton>
-            <PButton theme={'dark'} disabled={true}>Some label</PButton>
-            <PButton theme={'dark'} loading={true}>Some label</PButton>
+            <Button theme={'dark'}>Some label</Button>
+            <Button theme={'dark'} disabled={true}>Some label</Button>
+            <Button theme={'dark'} loading={true}>Some label</Button>
           </div>
           <div className="playground dark spacing-inline">
-            <PButton theme={'dark'} variant={'tertiary'}>Some label</PButton>
-            <PButton theme={'dark'} variant={'tertiary'} disabled={true}>Some label</PButton>
-            <PButton theme={'dark'} variant={'tertiary'} loading={true}>Some label</PButton>
+            <Button theme={'dark'} variant={'tertiary'}>Some label</Button>
+            <Button theme={'dark'} variant={'tertiary'} disabled={true}>Some label</Button>
+            <Button theme={'dark'} variant={'tertiary'} loading={true}>Some label</Button>
           </div>
           <div className="playground dark spacing-inline">
-            <PButton theme={'dark'} icon={'phone'}>Some label</PButton>
+            <Button theme={'dark'} icon={'phone'}>Some label</Button>
           </div>
           <div className="playground dark spacing-inline">
-            <PButton theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+            <Button theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
           </div>
           <hr/>
           <div className="playground dark spacing-inline">
-            <PButton variant={'primary'} hideLabel={true} theme={'dark'}>Some label</PButton>
-            <PButton variant={'primary'} hideLabel={true} theme={'dark'} disabled={true}>Some label</PButton>
-            <PButton variant={'primary'} hideLabel={true} theme={'dark'} loading={true}>Some label</PButton>
+            <Button variant={'primary'} hideLabel={true} theme={'dark'}>Some label</Button>
+            <Button variant={'primary'} hideLabel={true} theme={'dark'} disabled={true}>Some label</Button>
+            <Button variant={'primary'} hideLabel={true} theme={'dark'} loading={true}>Some label</Button>
           </div>
           <div className="playground dark spacing-inline">
-            <PButton theme={'dark'} hideLabel={true}>Some label</PButton>
-            <PButton theme={'dark'} hideLabel={true} disabled={true}>Some label</PButton>
-            <PButton theme={'dark'} hideLabel={true} loading={true}>Some label</PButton>
+            <Button theme={'dark'} hideLabel={true}>Some label</Button>
+            <Button theme={'dark'} hideLabel={true} disabled={true}>Some label</Button>
+            <Button theme={'dark'} hideLabel={true} loading={true}>Some label</Button>
           </div>
           <div className="playground dark spacing-inline">
-            <PButton theme={'dark'} hideLabel={true} variant={'tertiary'}>Some label</PButton>
-            <PButton theme={'dark'} hideLabel={true} variant={'tertiary'} disabled={true}>Some label</PButton>
-            <PButton theme={'dark'} hideLabel={true} variant={'tertiary'} loading={true}>Some label</PButton>
+            <Button theme={'dark'} hideLabel={true} variant={'tertiary'}>Some label</Button>
+            <Button theme={'dark'} hideLabel={true} variant={'tertiary'} disabled={true}>Some label</Button>
+            <Button theme={'dark'} hideLabel={true} variant={'tertiary'} loading={true}>Some label</Button>
           </div>
           <div className="playground dark spacing-inline">
-            <PButton theme={'dark'} hideLabel={true} icon={'phone'}>Some label</PButton>
+            <Button theme={'dark'} hideLabel={true} icon={'phone'}>Some label</Button>
           </div>
           <hr/>
-        </PGridItem>
-      </PGrid>
-      <PGrid>
-        <PGridItem size={2}>
-          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-button-pure&gt;</PHeadline>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+      </Grid>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>&lt;p-button-pure&gt;</Headline>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <PButtonPure>Some label</PButtonPure>
-            <PButtonPure disabled={true}>Some label</PButtonPure>
-            <PButtonPure loading={true}>Some label</PButtonPure>
+            <ButtonPure>Some label</ButtonPure>
+            <ButtonPure disabled={true}>Some label</ButtonPure>
+            <ButtonPure loading={true}>Some label</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonPure hideLabel={true}>Some label</PButtonPure>
-            <PButtonPure hideLabel={true} disabled={true}>Some label</PButtonPure>
-            <PButtonPure hideLabel={true} loading={true}>Some label</PButtonPure>
+            <ButtonPure hideLabel={true}>Some label</ButtonPure>
+            <ButtonPure hideLabel={true} disabled={true}>Some label</ButtonPure>
+            <ButtonPure hideLabel={true} loading={true}>Some label</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonPure size={'medium'}>Medium</PButtonPure>
-            <PButtonPure size={'inherit'} style={{ fontSize: '48px' }}>Inherit</PButtonPure>
+            <ButtonPure size={'medium'}>Medium</ButtonPure>
+            <ButtonPure size={'inherit'} style={{ fontSize: '48px' }}>Inherit</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonPure weight={'thin'}>Thin</PButtonPure>
-            <PButtonPure weight={'regular'}>Regular</PButtonPure>
-            <PButtonPure weight={'bold'}>Bold</PButtonPure>
+            <ButtonPure weight={'thin'}>Thin</ButtonPure>
+            <ButtonPure weight={'regular'}>Regular</ButtonPure>
+            <ButtonPure weight={'bold'}>Bold</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonPure icon={'delete'}>Some button with a custom icon</PButtonPure>
+            <ButtonPure icon={'delete'}>Some button with a custom icon</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <PButtonPure style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
+            <ButtonPure style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</ButtonPure>
           </div>
           <hr/>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <PButtonPure theme={'dark'}>Some label</PButtonPure>
-            <PButtonPure disabled={true} theme={'dark'}>Some label</PButtonPure>
-            <PButtonPure loading={true} theme={'dark'}>Some label</PButtonPure>
+            <ButtonPure theme={'dark'}>Some label</ButtonPure>
+            <ButtonPure disabled={true} theme={'dark'}>Some label</ButtonPure>
+            <ButtonPure loading={true} theme={'dark'}>Some label</ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonPure hideLabel={true} theme={'dark'}>Some label</PButtonPure>
-            <PButtonPure hideLabel={true} disabled={true} theme={'dark'}>Some label</PButtonPure>
-            <PButtonPure hideLabel={true} loading={true} theme={'dark'}>Some label</PButtonPure>
+            <ButtonPure hideLabel={true} theme={'dark'}>Some label</ButtonPure>
+            <ButtonPure hideLabel={true} disabled={true} theme={'dark'}>Some label</ButtonPure>
+            <ButtonPure hideLabel={true} loading={true} theme={'dark'}>Some label</ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonPure size={'medium'} theme={'dark'}>Medium</PButtonPure>
-            <PButtonPure size={'inherit'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</PButtonPure>
+            <ButtonPure size={'medium'} theme={'dark'}>Medium</ButtonPure>
+            <ButtonPure size={'inherit'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonPure weight={'thin'} theme={'dark'}>Thin</PButtonPure>
-            <PButtonPure weight={'regular'} theme={'dark'}>Regular</PButtonPure>
-            <PButtonPure weight={'bold'} theme={'dark'}>Bold</PButtonPure>
+            <ButtonPure weight={'thin'} theme={'dark'}>Thin</ButtonPure>
+            <ButtonPure weight={'regular'} theme={'dark'}>Regular</ButtonPure>
+            <ButtonPure weight={'bold'} theme={'dark'}>Bold</ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonPure icon={'delete'} theme={'dark'}>Some button with a custom icon</PButtonPure>
+            <ButtonPure icon={'delete'} theme={'dark'}>Some button with a custom icon</ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <PButtonPure theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
+            <ButtonPure theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</ButtonPure>
           </div>
           <hr/>
-        </PGridItem>
-      </PGrid>
+        </GridItem>
+      </Grid>
     </div>
   );
 }

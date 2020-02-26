@@ -1,34 +1,34 @@
-import {PGrid, PGridItem, PHeadline, PSpinner} from '@porsche-design-system/components-react';
+import {Grid, GridItem, Headline, Spinner} from '@porsche-design-system/components-react';
 import React from "react";
 
 export function Feedback(){
   return(
     <div>
-      <PHeadline variant={'headline-2'}>Feedback</PHeadline>
+      <Headline variant={'headline-2'}>Feedback</Headline>
       <hr/>
-      <PGrid>
-        <PGridItem size={2}>
-          <PHeadline variant={'headline-4'} tag={'h4'}>&lt;p-spinner&gt;</PHeadline>
-        </PGridItem>
-        <PGridItem size={5}>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>&lt;p-spinner&gt;</Headline>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <PSpinner size={'small'}/>
-            <PSpinner size={'medium'}/>
-            <PSpinner size={'large'}/>
-            <PSpinner size={'inherit'} style={{width: '24px'}}/>
+            <Spinner size={'small'}/>
+            <Spinner size={'medium'}/>
+            <Spinner size={'large'}/>
+            <Spinner size={'inherit'} style={{width: '24px'}}/>
           </div>
           <hr/>
-        </PGridItem>
-        <PGridItem size={5}>
+        </GridItem>
+        <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <PSpinner theme={'dark'} size={'small'}/>
-            <PSpinner theme={'dark'} size={'medium'}/>
-            <PSpinner theme={'dark'} size={'large'}/>
-            <PSpinner theme={'dark'} size={'inherit'} style={{width: '24px'}}/>
+            <Spinner theme={'dark'} size={'small'}/>
+            <Spinner theme={'dark'} size={'medium'}/>
+            <Spinner theme={'dark'} size={'large'}/>
+            <Spinner theme={'dark'} size={'inherit'} style={{width: '24px'}}/>
           </div>
           <hr/>
-        </PGridItem>
-      </PGrid>
+        </GridItem>
+      </Grid>
     </div>
   );
 }

@@ -5,16 +5,14 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import {
-  PLinkPure
-} from '@porsche-design-system/components-react';
-import {Basic} from "./Basic";
-import {Action} from "./Action";
-import {Feedback} from "./Feedback";
-import {Icon} from "./Icon";
-import {Layout} from "./Layout";
-import {Navigation} from "./Navigation";
-import {SystemLog} from "./SystemLog";
+import { LinkPure } from '@porsche-design-system/components-react';
+import { Basic } from "./Basic";
+import { Action } from "./Action";
+import { Feedback } from "./Feedback";
+import { Icons } from "./Icons";
+import { Layout } from "./Layout";
+import { Navigation } from "./Navigation";
+import { SystemLog } from "./SystemLog";
 
 const App: React.FC = () => {
 
@@ -22,29 +20,28 @@ const App: React.FC = () => {
     <Router>
       <div id="app">
         <SystemLog/>
-        <Link to="/basic" component={PLinkPure}>
-         Basic
+        <Link to="/basic" component={LinkPure}>
+          Basic
         </Link>
-        <Link to="/action" component={PLinkPure}>
+        <Link to="/action" component={LinkPure}>
           Action
         </Link>
-        <Link to="/feedback" component={PLinkPure}>
+        <Link to="/feedback" component={LinkPure}>
           Feedback
         </Link>
-        <Link to="/icon" component={PLinkPure}>
+        <Link to="/icon" component={LinkPure}>
           Icon
         </Link>
-        <Link to="/layout" component={PLinkPure}>
+        <Link to="/layout" component={LinkPure}>
           Layout
         </Link>
-        <Link to="/navigation" component={PLinkPure}>
+        <Link to="/navigation" component={LinkPure}>
           Navigation
         </Link>
         <hr/>
-
         <Switch>
-         <Route path="/basic">
-           <Basic/>
+          <Route path="/basic">
+            <Basic/>
           </Route>
           <Route path="/action">
             <Action/>
@@ -53,7 +50,7 @@ const App: React.FC = () => {
             <Feedback/>
           </Route>
           <Route path="/icon">
-            <Icon/>
+            <Icons/>
           </Route>
           <Route path="/layout">
             <Layout/>
@@ -62,10 +59,8 @@ const App: React.FC = () => {
             <Navigation/>
           </Route>
         </Switch>
-    </div>
+      </div>
     </Router>
-
-
   );
 };
 
