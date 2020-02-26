@@ -26,4 +26,4 @@
  - [p-button-pure](../../../action/button-pure)
  - [p-link](../../../navigation/link)
  - [p-link-pure](../../../navigation/link-pure)
- - [p-radio-button-wrapper](../../../form/radio-button)
+ - [p-radio-button-wrapper](../../../form/radio-button-wrapper)

@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { RadioButtonWrapper } from '../../../src/components/form/radio-button/radio-button-wrapper';
+import { RadioButtonWrapper } from '../../../src/components/form/radio-button-wrapper/radio-button-wrapper';
 
 describe('Component <p-radio-button-wrapper>', () => {
 
