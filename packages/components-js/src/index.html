@@ -26,7 +26,7 @@
     --><p-link-pure href="/#navigation">Navigation</p-link-pure><!--
     --></div>
     <hr>
-    <div router-outlet></div>
+    <div data-router-outlet></div>
   </div>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
@@ -57,7 +57,7 @@
           document.body.style.display = 'block';
         }, 10000);
         /* Router to reduce page size for VRT/CBT tests*/
-        const routerOutlet = document.querySelector('[router-outlet]');
+        const routerOutlet = document.querySelector('[data-router-outlet]');
         const updateRoute = function() {
           if(['#', ''].indexOf(document.location.hash) > -1) {
             document.location.hash = 'basic';
@@ -67,9 +67,7 @@
           const target = document.location.hash.substr(1);
 
           fetch('pages/' + target + '.html').then(function(template) {
-            return template.text();
-          }).then(function (text) {
-            routerOutlet.innerHTML = text;
+            routerOutlet.innerHTML = template.text();
           });
         };
         window.addEventListener("hashchange", updateRoute);
