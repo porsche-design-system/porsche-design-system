@@ -1,5 +1,5 @@
 import {Button, ButtonPure, Grid, GridItem, Headline} from '@porsche-design-system/components-react';
-import React from "react";
+import React from 'react';
 
 export function Action(){
   return(

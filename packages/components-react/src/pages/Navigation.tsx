@@ -1,5 +1,5 @@
 import {Grid, GridItem, Headline, Link, LinkPure, Pagination} from '@porsche-design-system/components-react';
-import React from "react";
+import React from 'react';
 
 export function Navigation(){
   return(

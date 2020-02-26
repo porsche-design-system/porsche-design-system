@@ -1,5 +1,5 @@
 import {Grid, GridItem, Headline, Icon} from '@porsche-design-system/components-react';
-import React from "react";
+import React from 'react';
 
 export function Icons(){
   return(
