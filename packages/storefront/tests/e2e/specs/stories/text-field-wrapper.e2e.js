@@ -14,7 +14,7 @@ describe('Text Field', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/web/components/forms/text-field');
+      cy.visit('/#/web/components/form/text-field');
     });
 
     it('Should show tab navigation with first tab activated', () => {
