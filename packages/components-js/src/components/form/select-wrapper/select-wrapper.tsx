@@ -30,8 +30,9 @@ export class SelectWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private select: HTMLSelectElement;
   @State() private disabled: boolean;
+
+  private select: HTMLSelectElement;
 
   public componentDidLoad() {
     this.setSelect();
@@ -65,7 +66,7 @@ export class SelectWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.focusOnInput()}>
+          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
           <span class={fakeSelectClasses}>
@@ -98,7 +99,7 @@ export class SelectWrapper {
     this.disabled = this.select.disabled;
   }
 
-  private focusOnInput(): void {
+  private labelClick(): void {
     this.select.focus();
   }
 
