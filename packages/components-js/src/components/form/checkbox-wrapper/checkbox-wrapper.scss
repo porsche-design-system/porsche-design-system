@@ -45,7 +45,12 @@
   outline: transparent solid 2px !important;
   outline-offset: 1px !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-top-color 0.00001ms linear !important;
+  border-top-color 1ms linear !important;
+}
+
+// hide native checkbox on IE11
+::slotted(input::-ms-check) {
+  display: none;
 }
 
 // Focus
