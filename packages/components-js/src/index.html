@@ -71,6 +71,10 @@
             return template.text();
           }).then(function (text) {
             routerOutlet.innerHTML = text;
+
+            document.querySelectorAll('.example-set-to-indeterminate').forEach(function(checkbox) {
+              checkbox.indeterminate = true;
+            });
           });
         };
         window.addEventListener("hashchange", updateRoute);
