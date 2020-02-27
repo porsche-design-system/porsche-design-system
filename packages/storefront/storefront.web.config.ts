@@ -181,6 +181,22 @@ export const config: StorefrontConfig = {
         ]
       }
     },
+    Form: {
+      Select: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.props.md`)
+        ]
+      }
+    },
     Feedback: {
       Spinner: {
         Design: [
