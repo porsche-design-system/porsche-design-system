@@ -28,3 +28,4 @@
  - [p-link-pure](#/web/components/navigation/link-pure)
  - [p-pagination](#/web/components/navigation/pagination)
  - [p-select-wrapper](#/web/components/form/select-wrapper)
+ - [p-text-field-wrapper](#/web/components/form/text-field-wrapper)

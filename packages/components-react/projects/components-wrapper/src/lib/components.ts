@@ -24,3 +24,4 @@ export const PPagination = /*@__PURE__*/createReactComponent<JSX.PPagination, HT
 export const PSelectWrapper = /*@__PURE__*/createReactComponent<JSX.PSelectWrapper, HTMLPSelectWrapperElement>('p-select-wrapper');
 export const PSpinner = /*@__PURE__*/createReactComponent<JSX.PSpinner, HTMLPSpinnerElement>('p-spinner');
 export const PText = /*@__PURE__*/createReactComponent<JSX.PText, HTMLPTextElement>('p-text');
+export const PTextFieldWrapper = /*@__PURE__*/createReactComponent<JSX.PTextFieldWrapper, HTMLPTextFieldWrapperElement>('p-text-field-wrapper');
