@@ -10,6 +10,7 @@ import { Basic } from "./pages/Basic";
 import { Action } from "./pages/Action";
 import { Form } from "./pages/Form";
 import { Feedback } from "./pages/Feedback";
+import { Form } from "./pages/Form";
 import { Icons } from "./pages/Icons";
 import { Layout } from "./pages/Layout";
 import { Navigation } from "./pages/Navigation";
