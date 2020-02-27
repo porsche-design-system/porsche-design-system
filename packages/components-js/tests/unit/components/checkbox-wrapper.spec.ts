@@ -13,7 +13,7 @@ describe('Component <p-checkbox-wrapper>', () => {
       html: `<p-checkbox-wrapper><input type="checkbox" name="some-name"/></p-checkbox-wrapper>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.querySelector('.p-checkbox-wrapper__icon-wrapper')).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector('.p-checkbox-wrapper__icon-wrapper')).toBeTruthy();
+    expect(page.root.querySelector('.p-checkbox-wrapper__fake-checkbox')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.p-checkbox-wrapper__fake-checkbox')).toBeTruthy();
   });
 });

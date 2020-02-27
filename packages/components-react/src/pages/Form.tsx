@@ -1,4 +1,4 @@
-import { Grid, GridItem, Headline, SelectWrapper, CheckboxWrapper } from '@porsche-design-system/components-react';
+import { Grid, GridItem, Headline, SelectWrapper, CheckboxWrapper} from '@porsche-design-system/components-react';
 import React from 'react';
 
 export function Form() {
@@ -81,6 +81,15 @@ export function Form() {
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'}>
               <input type="checkbox" name="some-name" checked={true} disabled={true}/>
+            </CheckboxWrapper>
+            <CheckboxWrapper label={'Some label'} state={'success'} message={'Some success validation message.'}>
+              <input type="checkbox" name="some-name"/>
+            </CheckboxWrapper>
+            <CheckboxWrapper state="success">
+              <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <input type="checkbox" name="some-name"/>
+              <span slot="message">Some success message with a <a
+                href="https://designsystem.porsche.com">link</a>.</span>
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'} state={'error'} message={'Some error validation message.'}>
               <input type="checkbox" name="some-name"/>
