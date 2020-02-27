@@ -8,6 +8,7 @@ import {
 import { LinkPure, Text } from '@porsche-design-system/components-react';
 import { Basic } from "./pages/Basic";
 import { Action } from "./pages/Action";
+import { Form } from "./pages/Form";
 import { Feedback } from "./pages/Feedback";
 import { Icons } from "./pages/Icons";
 import { Layout } from "./pages/Layout";
@@ -30,6 +31,9 @@ const App: React.FC = () => {
         <Link to="/action" component={LinkPure}>
           Action
         </Link>
+        <Link to="/form" component={LinkPure}>
+          Form
+        </Link>
         <Link to="/feedback" component={LinkPure}>
           Feedback
         </Link>
@@ -49,6 +53,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/action">
             <Action/>
+          </Route>
+          <Route path="/form">
+            <Form/>
           </Route>
           <Route path="/feedback">
             <Feedback/>
