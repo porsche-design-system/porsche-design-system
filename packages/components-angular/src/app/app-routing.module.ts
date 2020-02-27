@@ -1,11 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { BasicComponent } from "./pages/basic/basic.component";
-import { ActionComponent } from "./pages/action/action.component";
-import { FeedbackComponent } from "./pages/feedback/feedback.component";
-import { IconComponent } from "./pages/icon/icon.component";
-import { LayoutComponent } from "./pages/layout/layout.component";
-import { NavigationComponent } from "./pages/navigation/navigation.component";
+import { BasicComponent } from "./pages/basic.component";
+import { ActionComponent } from "./pages/action.component";
+import { FormComponent } from './pages/form.component';
+import { FeedbackComponent } from "./pages/feedback.component";
+import { IconComponent } from "./pages/icon.component";
+import { LayoutComponent } from "./pages/layout.component";
+import { NavigationComponent } from "./pages/navigation.component";
 
 const appRoutes: Routes = [
   {
@@ -20,6 +21,10 @@ const appRoutes: Routes = [
   {
     path: 'action',
     component: ActionComponent
+  },
+  {
+    path: 'form',
+    component: FormComponent
   },
   {
     path: 'feedback',
