@@ -6,16 +6,38 @@
   </p-grid-item>
   <p-grid-item size="10">
     <div class="playground light spacing-block">
-      <p-text-field-wrapper label="Some label"><input type="text" name="some-name"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper label="Some label"><input type="text" name="some-name" placeholder="Some placeholder text"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper><input type="text" name="some-name"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper label="Some label" hide-label="{ base: true, l: false }"><input type="text" name="some-name"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper label="Some label"><input type="text" name="some-name" disabled="disabled"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper label="Some label"><input type="text" name="some-name" readonly="readonly" value="Some value"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper label="Some label"><input type="password" name="some-name" value="some-password"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper label="Some label" state="error" message="Error message"><input type="text" name="some-name"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper label="Some label" state="success" message="Success message"><input type="text" name="some-name"/></p-text-field-wrapper><!--
-   --><p-text-field-wrapper state="error"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><input type="text" name="some-name" placeholder="Some placeholder"/><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name" placeholder="Some placeholder text"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label" hide-label="true">
+        <input type="text" name="some-name"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label" hide-label="{ base: true, l: false }">
+        <input type="text" name="some-name"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name" disabled="disabled"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name" readonly="readonly" value="Some value"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label">
+        <input type="password" name="some-name" value="some-password"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label" state="error" message="Error message">
+        <input type="text" name="some-name"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label" state="success" message="Success message">
+        <input type="text" name="some-name"/>
+      </p-text-field-wrapper>
+      <p-text-field-wrapper state="error">
+        <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+        <input type="text" name="some-name" placeholder="Some placeholder"/>
+        <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      </p-text-field-wrapper>
     </div>
     <hr>
   </p-grid-item>
@@ -68,44 +90,44 @@
     <div class="playground light spacing-inline">
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name" checked="checked"/>
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label" hide-label="true">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label" hide-label="true">
-      <input type="checkbox" name="some-name" checked="checked"/>
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name" checked="checked" class="example-set-to-indeterminate" />
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name" disabled="disabled"/>
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name" checked="checked" disabled="disabled"/>
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label" state="success" message="Some success validation message.">
-      <input type="checkbox" name="some-name" />
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper state="success">
-      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="checkbox" name="some-name" />
-      <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
-      <input type="checkbox" name="some-name" />
-    </p-checkbox-wrapper><!--
-          --><p-checkbox-wrapper state="error">
-      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="checkbox" name="some-name" />
-      <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
-    </p-checkbox-wrapper>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name" checked="checked"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label" hide-label="true">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label" hide-label="true">
+        <input type="checkbox" name="some-name" checked="checked"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name" class="example-set-to-indeterminate"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name" checked="checked" class="example-set-to-indeterminate"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name" disabled="disabled"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name" checked="checked" disabled="disabled"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label" state="success" message="Some success validation message.">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper state="success">
+        <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+        <input type="checkbox" name="some-name"/>
+        <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper state="error">
+        <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+        <input type="checkbox" name="some-name"/>
+        <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      </p-checkbox-wrapper>
     </div>
     <hr>
   </p-grid-item>

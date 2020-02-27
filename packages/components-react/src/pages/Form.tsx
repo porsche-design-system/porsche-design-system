@@ -14,7 +14,7 @@ export function Form() {
           <div className="playground light spacing-block">
             <TextFieldWrapper label={"Some label"}><input type="text" name="some-name"/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" placeholder="Some placeholder text"/></TextFieldWrapper>
-            <TextFieldWrapper><input type="text" name="some-name"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"} hideLabel={true}><input type="text" name="some-name"/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"} hideLabel={{ base: true, l: false }}><input type="text" name="some-name"/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" disabled /></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" readOnly value="Some value"/></TextFieldWrapper>

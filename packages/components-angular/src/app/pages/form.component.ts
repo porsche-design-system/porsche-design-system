@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-block">
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name" placeholder="Some placeholder text"/></p-text-field-wrapper>
-          <p-text-field-wrapper><input type="text" name="some-name"/></p-text-field-wrapper>
+          <p-text-field-wrapper [label]="'Some label'" [hideLabel]="true"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'" [hideLabel]="{ base: true, l: false }"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name" disabled="disabled"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name" readonly="readonly" value="Some value"/></p-text-field-wrapper>
