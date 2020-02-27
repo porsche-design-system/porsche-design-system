@@ -47,6 +47,10 @@ export const config: StorefrontConfig = {
       Faq: [
         // @ts-ignore
         () => import(`@/pages/web/faq.md`)
+      ],
+      Troubleshooting: [
+        // @ts-ignore
+        () => import(`@/pages/web/troubleshooting.md`)
       ]
     },
     Basics: {
