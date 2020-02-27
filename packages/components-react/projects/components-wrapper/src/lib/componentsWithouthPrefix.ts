@@ -13,5 +13,6 @@ export {
   PPagination as Pagination,
   PSpinner as Spinner,
   PText as Text,
-  PSelectWrapper as SelectWrapper
+  PSelectWrapper as SelectWrapper,
+  PCheckboxWrapper as CheckboxWrapper
 } from './components';

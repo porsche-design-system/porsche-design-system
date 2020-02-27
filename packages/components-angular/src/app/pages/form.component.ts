@@ -75,6 +75,14 @@ import { Component } from '@angular/core';
           <p-checkbox-wrapper [label]="'Some label'">
             <input type="checkbox" name="some-name" checked="checked" disabled="disabled"/>
           </p-checkbox-wrapper>
+          <p-checkbox-wrapper [label]="'Some label'" [state]="'success'" [message]="'Some success validation message.'">
+            <input type="checkbox" name="some-name" />
+          </p-checkbox-wrapper>
+          <p-checkbox-wrapper [state]="'success'">
+            <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+            <input type="checkbox" name="some-name" />
+            <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          </p-checkbox-wrapper>
           <p-checkbox-wrapper [label]="'Some label'" [state]="'error'" [message]="'Some error validation message.'">
             <input type="checkbox" name="some-name" />
           </p-checkbox-wrapper>

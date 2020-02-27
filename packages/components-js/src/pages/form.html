@@ -40,8 +40,6 @@
     <hr>
   </p-grid-item>
 </p-grid>
-<p-headline variant="headline-2">Form</p-headline>
-<hr>
 <p-grid>
   <p-grid-item size="2">
     <p-headline variant="headline-4" tag="h4">&lt;p-checkbox-wrapper&gt;</p-headline>
@@ -71,6 +69,14 @@
     </p-checkbox-wrapper><!--
           --><p-checkbox-wrapper label="Some label">
       <input type="checkbox" name="some-name" checked="checked" disabled="disabled"/>
+    </p-checkbox-wrapper><!--
+          --><p-checkbox-wrapper label="Some label" state="success" message="Some error validation message.">
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper><!--
+          --><p-checkbox-wrapper state="success">
+      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <input type="checkbox" name="some-name" />
+      <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-checkbox-wrapper><!--
           --><p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
       <input type="checkbox" name="some-name" />

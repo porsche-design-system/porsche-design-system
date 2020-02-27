@@ -46,11 +46,11 @@ export class CheckboxWrapper {
   public render(): JSX.Element {
 
     const labelClasses = cx(prefix('checkbox-wrapper__label'));
-    const iconWrapperClasses = cx(
-      prefix('checkbox-wrapper__icon-wrapper'),
-      (this.checked || this.indeterminate) && prefix(`checkbox-wrapper__icon-wrapper--checked`),
-      this.disabled && prefix(`checkbox-wrapper__icon-wrapper--disabled`),
-      this.state !== 'none' && prefix(`checkbox-wrapper__icon-wrapper--${this.state}`)
+    const fakeCheckboxClasses = cx(
+      prefix('checkbox-wrapper__fake-checkbox'),
+      (this.checked || this.indeterminate) && prefix(`checkbox-wrapper__fake-checkbox--checked`),
+      this.disabled && prefix(`checkbox-wrapper__fake-checkbox--disabled`),
+      this.state !== 'none' && prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)
     );
     const iconClasses = cx(
       prefix('checkbox-wrapper__icon'),
@@ -69,7 +69,7 @@ export class CheckboxWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          <span class={iconWrapperClasses}>
+          <span class={fakeCheckboxClasses}>
             <p-icon class={iconClasses} name={this.indeterminate ? 'subtract' : 'check'} theme='dark' size='inherit' />
             <slot/>
           </span>
