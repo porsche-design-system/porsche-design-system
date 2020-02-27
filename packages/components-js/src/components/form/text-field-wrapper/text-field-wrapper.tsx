@@ -149,6 +149,16 @@ export class TextFieldWrapper {
     ${tagName} a:focus {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
+    }
+
+    ${tagName} input::-webkit-outer-spin-button {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+    }
+
+    ${tagName} input::-webkit-inner-spin-button {
+      appearance: none !important;
+      -webkit-appearance: none !important;
     }`;
 
     insertSlottedStyles(this.host, style);

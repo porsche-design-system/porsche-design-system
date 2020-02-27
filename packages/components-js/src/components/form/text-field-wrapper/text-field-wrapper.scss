@@ -56,14 +56,6 @@
   border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
-::slotted(input[type='number']::-webkit-outer-spin-button) {
-  appearance: none !important;
-}
-
-::slotted(input[type='number']::-webkit-inner-spin-button) {
-  appearance: none !important;
-}
-
 // Focus
 ::slotted(input:focus) {
   outline: $p-color-theme-light-state-focus solid 2px !important;
