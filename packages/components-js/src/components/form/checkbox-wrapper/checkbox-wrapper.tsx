@@ -141,6 +141,5 @@ export class CheckboxWrapper {
     }`;
 
     insertSlottedStyles(this.host, style);
-
   }
 }
