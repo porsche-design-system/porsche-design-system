@@ -181,7 +181,7 @@ export const config: StorefrontConfig = {
         ]
       }
     },
-    Forms: {
+    Form: {
       'Radio Button': {
         Design: [
           // @ts-ignore
@@ -194,6 +194,20 @@ export const config: StorefrontConfig = {
         Props: [
           // @ts-ignore
           () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`)
+        ]
+      },
+      Select: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.props.md`)
         ]
       }
     },

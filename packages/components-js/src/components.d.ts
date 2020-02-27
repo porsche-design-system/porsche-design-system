@@ -367,9 +367,9 @@ export namespace Components {
     */
     'totalItemsCount': number;
   }
-  interface PRadioButtonWrapper {
+  interface PSelectWrapper {
     /**
-    * Show or hide label. For better accessibility it's recommended to show the label.
+    * Show or hide label. For better accessibility it is recommended to show the label.
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
@@ -510,10 +510,10 @@ declare global {
     new (): HTMLPPaginationElement;
   };
 
-  interface HTMLPRadioButtonWrapperElement extends Components.PRadioButtonWrapper, HTMLStencilElement {}
-  var HTMLPRadioButtonWrapperElement: {
-    prototype: HTMLPRadioButtonWrapperElement;
-    new (): HTMLPRadioButtonWrapperElement;
+  interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {}
+  var HTMLPSelectWrapperElement: {
+    prototype: HTMLPSelectWrapperElement;
+    new (): HTMLPSelectWrapperElement;
   };
 
   interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {}
@@ -540,7 +540,7 @@ declare global {
     'p-link-pure': HTMLPLinkPureElement;
     'p-marque': HTMLPMarqueElement;
     'p-pagination': HTMLPPaginationElement;
-    'p-radio-button-wrapper': HTMLPRadioButtonWrapperElement;
+    'p-select-wrapper': HTMLPSelectWrapperElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
   }
@@ -891,9 +891,9 @@ declare namespace LocalJSX {
     */
     'totalItemsCount'?: number;
   }
-  interface PRadioButtonWrapper {
+  interface PSelectWrapper {
     /**
-    * Show or hide label. For better accessibility it's recommended to show the label.
+    * Show or hide label. For better accessibility it is recommended to show the label.
     */
     'hideLabel'?: BreakpointCustomizable<boolean>;
     /**
@@ -971,7 +971,7 @@ declare namespace LocalJSX {
     'p-link-pure': PLinkPure;
     'p-marque': PMarque;
     'p-pagination': PPagination;
-    'p-radio-button-wrapper': PRadioButtonWrapper;
+    'p-select-wrapper': PSelectWrapper;
     'p-spinner': PSpinner;
     'p-text': PText;
   }
@@ -995,7 +995,7 @@ declare module "@stencil/core" {
       'p-link-pure': LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
       'p-marque': LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
-      'p-radio-button-wrapper': LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
+      'p-select-wrapper': LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
     }

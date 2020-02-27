@@ -13,5 +13,6 @@ export {
   PRadioButtonWrapper as RadioButtonWrapper,
   PPagination as Pagination,
   PSpinner as Spinner,
-  PText as Text
+  PText as Text,
+  PSelectWrapper as SelectWrapper
 } from './components';

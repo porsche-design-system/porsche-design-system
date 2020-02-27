@@ -16,7 +16,8 @@ import {
   PPagination,
   PRadioButtonWrapper,
   PSpinner,
-  PText
+  PText,
+  PSelectWrapper
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -34,7 +35,8 @@ const DECLARATIONS = [
   PPagination,
   PRadioButtonWrapper,
   PSpinner,
-  PText
+  PText,
+  PSelectWrapper
 ];
 
 export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {
