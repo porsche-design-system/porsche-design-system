@@ -83,11 +83,11 @@ Please avoid the mix of radio buttons and checkboxes. These must be considered s
 
 ![Dont mix buttons](./assets/dont-mix-buttons-checkbox.png)
 
-### Alignement
+### Alignment
 
 Set checkboxes best vertically instead of horizontally
 
-![Set cheboxes dont vertically](./assets/dont-alignment-checkbox.png)
+![Set checkboxes dont vertically](./assets/dont-alignment-checkbox.png)
 
 Checkboxes are always aligned left
 
