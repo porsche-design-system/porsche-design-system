@@ -209,6 +209,20 @@ export const config: StorefrontConfig = {
           // @ts-ignore
           () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.props.md`)
         ]
+      },
+      Checkbox: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
+        ]
       }
     },
     Feedback: {
