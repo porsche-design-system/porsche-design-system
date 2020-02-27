@@ -451,6 +451,24 @@ export namespace Components {
     */
     'weight'?: TextWeight;
   }
+  interface PTextFieldWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: FormState;
+  }
 }
 
 declare global {
@@ -551,6 +569,12 @@ declare global {
     prototype: HTMLPTextElement;
     new (): HTMLPTextElement;
   };
+
+  interface HTMLPTextFieldWrapperElement extends Components.PTextFieldWrapper, HTMLStencilElement {}
+  var HTMLPTextFieldWrapperElement: {
+    prototype: HTMLPTextFieldWrapperElement;
+    new (): HTMLPTextFieldWrapperElement;
+  };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
@@ -568,6 +592,7 @@ declare global {
     'p-select-wrapper': HTMLPSelectWrapperElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
+    'p-text-field-wrapper': HTMLPTextFieldWrapperElement;
   }
 }
 
@@ -1000,6 +1025,24 @@ declare namespace LocalJSX {
     */
     'weight'?: TextWeight;
   }
+  interface PTextFieldWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: FormState;
+  }
 
   interface IntrinsicElements {
     'p-button': PButton;
@@ -1018,6 +1061,7 @@ declare namespace LocalJSX {
     'p-select-wrapper': PSelectWrapper;
     'p-spinner': PSpinner;
     'p-text': PText;
+    'p-text-field-wrapper': PTextFieldWrapper;
   }
 }
 
@@ -1043,6 +1087,7 @@ declare module "@stencil/core" {
       'p-select-wrapper': LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
+      'p-text-field-wrapper': LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
     }
   }
 }

@@ -182,6 +182,20 @@ export const config: StorefrontConfig = {
       }
     },
     Form: {
+      'Text Field': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.props.md`)
+        ]
+      },
       Select: {
         Design: [
           // @ts-ignore
