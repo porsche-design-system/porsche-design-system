@@ -8,37 +8,23 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Basic example
 
-### With label
-
-<Playground :childElementLayout="{spacing: 'block'}">    
-  <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name"/>
-  </p-text-field-wrapper>
-  <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name" placeholder="Some placeholder text"/>
-  </p-text-field-wrapper>
-</Playground>
-
-### Without label
-
-<Playground :childElementLayout="{spacing: 'block'}">    
-  <p-text-field-wrapper label="Some label" hide-label="true">
-    <input type="text" name="some-name"/>
-  </p-text-field-wrapper>
-  <p-text-field-wrapper label="Some label" hide-label="true">
-    <input type="text" name="some-name" placeholder="Some placeholder text"/>
-  </p-text-field-wrapper>
-</Playground>
-
-### Responsive
-
-<Playground :childElementLayout="{spacing: 'block'}">    
-  <p-text-field-wrapper label="Some label" hide-label="{ base: true, l: false }">
-    <input type="text" name="some-name"/>
-  </p-text-field-wrapper>
-  <p-text-field-wrapper label="Some label" hide-label="{ base: true, l: false }">
-    <input type="text" name="some-name" placeholder="Some placeholder text"/>
-  </p-text-field-wrapper>
+<Playground :childElementLayout="{spacing: 'block'}">
+  <template #configurator>
+    <select v-model="label">
+      <option disabled>Select a label mode</option>
+      <option selected value="show">With label</option>
+      <option value="hide">Without label</option>
+      <option value="responsive">Responsive</option>
+    </select>
+  </template>
+  <template>
+    <p-text-field-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+      <input type="text" name="some-name"/>
+    </p-text-field-wrapper>
+    <p-text-field-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+      <input type="text" placeholder="Some placeholder text" name="some-name"/>
+    </p-text-field-wrapper>
+  </template>
 </Playground>
 
 ---
@@ -145,6 +131,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
   
   @Component
   export default class PlaygroundTextFieldWrapper extends Vue {
+    public label: string = 'show';
     public type: string = 'text';
     public state: string = 'error';
   }
