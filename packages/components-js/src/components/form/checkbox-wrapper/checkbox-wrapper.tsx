@@ -99,7 +99,14 @@ export class CheckboxWrapper {
   }
 
   private labelClick(): void {
-    this.input.click();
+    /**
+     * we only want to simulate the checkbox click by label click
+     * for real shadow dom, else the native behaviour works out
+     * of the box
+     */
+    if (this.host.shadowRoot && this.host.shadowRoot.host) {
+      this.input.click();
+    }
   }
 
   private setState(): void {
