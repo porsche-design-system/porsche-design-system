@@ -27,3 +27,4 @@
  - [p-checkbox-wrapper](#/web/components/form/checkbox-wrapper)
  - [p-link](#/web/components/navigation/link)
  - [p-link-pure](#/web/components/navigation/link-pure)
+ - [p-select-wrapper](#/web/components/form/select-wrapper)

@@ -16,7 +16,8 @@ import {
   PPagination,
   PSpinner,
   PText,
-  PCheckboxWrapper
+  PCheckboxWrapper,
+  PSelectWrapper
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -34,7 +35,8 @@ const DECLARATIONS = [
   PPagination,
   PSpinner,
   PText,
-  PCheckboxWrapper
+  PCheckboxWrapper,
+  PSelectWrapper
 ];
 
 export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {

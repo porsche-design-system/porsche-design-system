@@ -47,6 +47,10 @@ export const config: StorefrontConfig = {
       Faq: [
         // @ts-ignore
         () => import(`@/pages/web/faq.md`)
+      ],
+      Troubleshooting: [
+        // @ts-ignore
+        () => import(`@/pages/web/troubleshooting.md`)
       ]
     },
     Basics: {
@@ -177,8 +181,22 @@ export const config: StorefrontConfig = {
         ]
       }
     },
-    Forms: {
-      'Checkbox': {
+    Form: {
+      Select: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.props.md`)
+        ]
+      },
+      Checkbox: {
         Design: [
           // @ts-ignore
           () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.design.md`)
