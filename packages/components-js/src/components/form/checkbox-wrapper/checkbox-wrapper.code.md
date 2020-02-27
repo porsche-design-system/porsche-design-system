@@ -86,6 +86,7 @@ The **Checkbox Wrapper** component supports the visualisation of inline validati
     <select v-model="state">
       <option disabled>Select a validation state</option>
       <option value="error">Error</option>
+      <option value="success">Success</option>
       <option value="none">None</option>
     </select>
   </template>
@@ -101,6 +102,7 @@ The **Checkbox Wrapper** component supports the visualisation of inline validati
 ## Slots
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
+For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
 
 <Playground>
   <template>
