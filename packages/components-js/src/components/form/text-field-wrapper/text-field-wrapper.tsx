@@ -56,7 +56,7 @@ export class TextFieldWrapper {
     );
     const fakeInputClasses = cx(
       prefix('text-field-wrapper__fake-input'),
-      prefix(`text-field-wrapper__fake-input--${this.state}`),
+      this.state !== 'none' && prefix(`text-field-wrapper__fake-input--${this.state}`),
       this.disabled && prefix('text-field-wrapper__fake-input--disabled'),
       this.readonly && prefix('text-field-wrapper__fake-input--readonly')
     );
