@@ -121,6 +121,10 @@
       background-color: $p-color-theme-light-notification-error;
     }
 
+    &--checked#{&}--success {
+      background-color: $p-color-theme-light-notification-success;
+    }
+
     &--disabled {
       border-color: $p-color-theme-light-state-disabled;
     }
@@ -128,6 +132,11 @@
     &--error {
       border-width: 2px;
       border-color: $p-color-theme-light-notification-error;
+    }
+
+    &--success {
+      border-width: 2px;
+      border-color: $p-color-theme-light-notification-success;
     }
   }
 
@@ -220,6 +229,9 @@
 
     &--error {
       color: $p-color-theme-light-notification-error;
+    }
+    &--success {
+      color: $p-color-theme-light-notification-success;
     }
   }
 }

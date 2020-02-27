@@ -57,6 +57,24 @@
   </p-checkbox-wrapper>
 </div>
 
+<div class="playground light" title="should render with success state and success message">
+  <p-checkbox-wrapper label="Some label" state="success" message="Some success message.">
+    <input type="checkbox" name="some-name"/>
+  </p-checkbox-wrapper>
+  <p-checkbox-wrapper label="Some label" state="success" message="Some success message.">
+    <input type="checkbox" name="some-name" checked="checked"/>
+  </p-checkbox-wrapper>
+</div>
+
+<div class="playground light" title="should render with success state and no success message">
+  <p-checkbox-wrapper label="Some label" state="success">
+    <input type="checkbox" name="some-name"/>
+  </p-checkbox-wrapper>
+  <p-checkbox-wrapper label="Some label" state="success">
+    <input type="checkbox" name="some-name" checked="checked" />
+  </p-checkbox-wrapper>
+</div>
+
 <div class="playground light" title="should render with error state and error message">
   <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
     <input type="checkbox" name="some-name">

@@ -122,7 +122,7 @@ export namespace Components {
     /**
     * The validation state.
     */
-    'state'?: 'error' | 'none';
+    'state'?: FormState;
   }
   interface PFlex {
     /**
@@ -668,7 +668,7 @@ declare namespace LocalJSX {
     /**
     * The validation state.
     */
-    'state'?: 'error' | 'none';
+    'state'?: FormState;
   }
   interface PFlex {
     /**
