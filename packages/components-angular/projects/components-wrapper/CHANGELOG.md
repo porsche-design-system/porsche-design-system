@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `Select Wrapper`
 
+### Fixed
+- `Text Field Wrapper` toggle password visibility
+
 ## [1.0.3] (2020-02-13)
 
 ### Fixed
