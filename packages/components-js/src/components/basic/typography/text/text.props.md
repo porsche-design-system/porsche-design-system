@@ -26,4 +26,5 @@
  - [p-button-pure](#/web/components/action/button-pure)
  - [p-link](#/web/components/navigation/link)
  - [p-link-pure](#/web/components/navigation/link-pure)
+ - [p-select-wrapper](#/web/components/form/select-wrapper)
  - [p-text-field-wrapper](#/web/components/form/text-field-wrapper)

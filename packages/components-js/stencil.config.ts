@@ -34,6 +34,9 @@ export const config: Config = {
         {
           src: './favicon.ico',
           dest: 'favicon.ico'
+        },
+        {
+          src: './pages'
         }
       ]
     },
