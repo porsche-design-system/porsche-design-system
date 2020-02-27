@@ -16,6 +16,7 @@ import {
   PPagination,
   PSpinner,
   PText,
+  PCheckboxWrapper,
   PSelectWrapper
 } from './components-wrapper.component';
 
@@ -34,6 +35,7 @@ const DECLARATIONS = [
   PPagination,
   PSpinner,
   PText,
+  PCheckboxWrapper,
   PSelectWrapper
 ];
 

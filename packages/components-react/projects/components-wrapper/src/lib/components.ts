@@ -10,6 +10,7 @@ import { defineCustomElements, applyPolyfills } from '@porsche-design-system/com
 applyPolyfills().then(() => { defineCustomElements(window); });
 export const PButton = /*@__PURE__*/createReactComponent<JSX.PButton, HTMLPButtonElement>('p-button');
 export const PButtonPure = /*@__PURE__*/createReactComponent<JSX.PButtonPure, HTMLPButtonPureElement>('p-button-pure');
+export const PCheckboxWrapper = /*@__PURE__*/createReactComponent<JSX.PCheckboxWrapper, HTMLPCheckboxWrapperElement>('p-checkbox-wrapper');
 export const PFlex = /*@__PURE__*/createReactComponent<JSX.PFlex, HTMLPFlexElement>('p-flex');
 export const PFlexItem = /*@__PURE__*/createReactComponent<JSX.PFlexItem, HTMLPFlexItemElement>('p-flex-item');
 export const PGrid = /*@__PURE__*/createReactComponent<JSX.PGrid, HTMLPGridElement>('p-grid');

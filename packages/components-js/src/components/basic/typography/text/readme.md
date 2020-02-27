@@ -24,6 +24,7 @@
 
  - [p-button](../../../action/button)
  - [p-button-pure](../../../action/button-pure)
+ - [p-checkbox-wrapper](../../../form/checkbox-wrapper)
  - [p-link](../../../navigation/link)
  - [p-link-pure](../../../navigation/link-pure)
  - [p-select-wrapper](../../../form/select-wrapper)
