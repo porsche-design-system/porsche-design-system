@@ -367,6 +367,24 @@ export namespace Components {
     */
     'totalItemsCount': number;
   }
+  interface PSelectWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: FormState;
+  }
   interface PSpinner {
     /**
     * Size of the spinner.
@@ -510,6 +528,12 @@ declare global {
     new (): HTMLPPaginationElement;
   };
 
+  interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {}
+  var HTMLPSelectWrapperElement: {
+    prototype: HTMLPSelectWrapperElement;
+    new (): HTMLPSelectWrapperElement;
+  };
+
   interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {}
   var HTMLPSpinnerElement: {
     prototype: HTMLPSpinnerElement;
@@ -540,6 +564,7 @@ declare global {
     'p-link-pure': HTMLPLinkPureElement;
     'p-marque': HTMLPMarqueElement;
     'p-pagination': HTMLPPaginationElement;
+    'p-select-wrapper': HTMLPSelectWrapperElement;
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
     'p-text-field-wrapper': HTMLPTextFieldWrapperElement;
@@ -891,6 +916,24 @@ declare namespace LocalJSX {
     */
     'totalItemsCount'?: number;
   }
+  interface PSelectWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: FormState;
+  }
   interface PSpinner {
     /**
     * Size of the spinner.
@@ -971,6 +1014,7 @@ declare namespace LocalJSX {
     'p-link-pure': PLinkPure;
     'p-marque': PMarque;
     'p-pagination': PPagination;
+    'p-select-wrapper': PSelectWrapper;
     'p-spinner': PSpinner;
     'p-text': PText;
     'p-text-field-wrapper': PTextFieldWrapper;
@@ -995,6 +1039,7 @@ declare module "@stencil/core" {
       'p-link-pure': LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
       'p-marque': LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
       'p-pagination': LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
+      'p-select-wrapper': LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
       'p-text-field-wrapper': LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;

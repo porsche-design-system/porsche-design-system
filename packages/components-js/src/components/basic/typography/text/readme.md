@@ -26,4 +26,5 @@
  - [p-button-pure](../../../action/button-pure)
  - [p-link](../../../navigation/link)
  - [p-link-pure](../../../navigation/link-pure)
+ - [p-select-wrapper](../../../form/select-wrapper)
  - [p-text-field-wrapper](../../../form/text-field-wrapper)
