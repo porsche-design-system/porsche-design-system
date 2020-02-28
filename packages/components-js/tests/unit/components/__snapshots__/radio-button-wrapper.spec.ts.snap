@@ -4,7 +4,7 @@ exports[`Component <p-radio-button-wrapper> should render correctly in default m
 <p-radio-button-wrapper label="Some label">
   <mock:shadow-root>
     <label class="p-radio-button-wrapper__label">
-      <span class="p-radio-button-wrapper__fake-radio">
+      <span class="p-radio-button-wrapper__fake-radio-button">
         <slot></slot>
       </span>
       <p-text class="p-radio-button-wrapper__label-text p-radio-button-wrapper__label-text--visible" color="inherit" tag="span">
