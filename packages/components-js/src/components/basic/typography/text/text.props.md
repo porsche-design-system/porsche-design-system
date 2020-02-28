@@ -24,7 +24,8 @@
 
  - [p-button](#/web/components/action/button)
  - [p-button-pure](#/web/components/action/button-pure)
+ - [p-checkbox-wrapper](#/web/components/form/checkbox-wrapper)
  - [p-link](#/web/components/navigation/link)
  - [p-link-pure](#/web/components/navigation/link-pure)
- - [p-radio-button-wrapper](#/web/components/form/radio-button-wrapper)
  - [p-select-wrapper](#/web/components/form/select-wrapper)
+ - [p-text-field-wrapper](#/web/components/form/text-field-wrapper)

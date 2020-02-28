@@ -1,6 +1,7 @@
 export {
   PButton as Button,
   PButtonPure as ButtonPure,
+  PCheckboxWrapper as CheckboxWrapper,
   PFlex as Flex,
   PFlexItem as FlexItem,
   PGrid as Grid,
@@ -12,7 +13,8 @@ export {
   PMarque as Marque,
   PRadioButtonWrapper as RadioButtonWrapper,
   PPagination as Pagination,
+  PSelectWrapper as SelectWrapper,
   PSpinner as Spinner,
   PText as Text,
-  PSelectWrapper as SelectWrapper
+  PTextFieldWrapper as TextFieldWrapper
 } from './components';
