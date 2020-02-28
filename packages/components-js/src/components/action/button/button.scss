@@ -91,7 +91,7 @@
 
   &:disabled,
   &[disabled] {
-    pointer-events: none;
+    cursor: not-allowed;
   }
 
   &--theme-light {

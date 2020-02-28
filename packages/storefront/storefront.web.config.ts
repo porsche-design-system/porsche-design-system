@@ -182,18 +182,18 @@ export const config: StorefrontConfig = {
       }
     },
     Form: {
-      'Radio Button': {
+      'Text Field': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.design.md`)
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.code.md`)
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`)
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.props.md`)
         ]
       },
       Select: {
@@ -209,7 +209,35 @@ export const config: StorefrontConfig = {
           // @ts-ignore
           () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.props.md`)
         ]
-      }
+      },
+      Checkbox: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
+        ]
+      },
+      'Radio Button': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`)
+        ]
+      },
     },
     Feedback: {
       Spinner: {
