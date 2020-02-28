@@ -16,10 +16,10 @@ A `label` is a caption which informs the user what information a particular form
   </template>
   <template>
     <p-radio-button-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <input type="radio" name="some-name-1" value="yes" />
+      <input type="radio" name="some-name-1" />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <input type="radio" name="some-name-1" value="no" />
+      <input type="radio" name="some-name-1" />
     </p-radio-button-wrapper>
   </template>
 </Playground>
@@ -30,10 +30,10 @@ A `label` is a caption which informs the user what information a particular form
 
 <Playground :childElementLayout="{spacing: 'block'}">    
   <p-radio-button-wrapper label="Some label">
-    <input type="radio" name="some-name-4" value="yes" disabled="disabled"/>
+    <input type="radio" name="some-name-4" disabled="disabled"/>
   </p-radio-button-wrapper>
   <p-radio-button-wrapper label="Some label">
-    <input type="radio" name="some-name-4" value="no" checked="checked" disabled="disabled"/>
+    <input type="radio" name="some-name-4" checked="checked" disabled="disabled"/>
   </p-radio-button-wrapper>
 </Playground>
 
@@ -41,7 +41,7 @@ A `label` is a caption which informs the user what information a particular form
 
 ## Validation states
 
-The **Radio Button Wrapper** component supports the visualisation of inline validation.
+The **Radio Button Wrapper** component supports the visualisation of inline validation. The `message` and `radio` is colored and visible/hidden depending on the defined `state`.
 
 <Playground :childElementLayout="{spacing: 'block'}">
   <template #configurator>
@@ -54,10 +54,10 @@ The **Radio Button Wrapper** component supports the visualisation of inline vali
   </template>
   <template>
     <p-radio-button-wrapper label="Some label" :state="state">
-      <input type="radio" name="some-name-5" value="yes" />
+      <input type="radio" name="some-name-5" />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="radio" name="some-name-5" value="no" />
+      <input type="radio" name="some-name-5" />
     </p-radio-button-wrapper>
   </template>
 </Playground>
@@ -67,16 +67,17 @@ The **Radio Button Wrapper** component supports the visualisation of inline vali
 ## Slots
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
+For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
 
 <Playground :childElementLayout="{spacing: 'block'}">
   <template>
     <p-radio-button-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="radio" name="some-name-6" value="yes" />
+      <input type="radio" name="some-name-6" />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="radio" name="some-name-6" value="no" />
+      <input type="radio" name="some-name-6" />
       <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-radio-button-wrapper>
   </template>
@@ -91,9 +92,3 @@ Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `labe
     public label: string = 'show';
   }
 </script>
-
-<style lang="css">
-  p-radio-button-wrapper {
-    display: block;
-  }
-</style>

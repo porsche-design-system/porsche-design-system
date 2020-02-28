@@ -6,37 +6,22 @@ A `label` is a caption which informs the user what information a particular form
 
 ## Basic example
 
-### With label
-
-<Playground :childElementLayout="{spacing: 'inline'}">    
-  <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name"/>
-  </p-checkbox-wrapper>
-  <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" checked="checked"/>
-  </p-checkbox-wrapper>
-</Playground>
-
-### Without label
-
-<Playground :childElementLayout="{spacing: 'inline'}">    
-  <p-checkbox-wrapper label="Some label" hide-label="true">
-    <input type="checkbox" name="some-name"/>
-  </p-checkbox-wrapper>
-  <p-checkbox-wrapper label="Some label" hide-label="true">
-    <input type="checkbox" name="some-name" checked="checked"/>
-  </p-checkbox-wrapper>
-</Playground>
-
-### Responsive
-
-<Playground :childElementLayout="{spacing: 'inline'}"> 
-  <p-checkbox-wrapper label="Some label" hide-label="{ base: true, l: false }">
-    <input type="checkbox" name="some-name"/>
-  </p-checkbox-wrapper>
-  <p-checkbox-wrapper label="Some label" hide-label="{ base: true, l: false }">
-    <input type="checkbox" name="some-name" checked="checked"/>
-  </p-checkbox-wrapper>
+<Playground :childElementLayout="{spacing: 'block'}">
+  <template #configurator>
+    <select v-model="label">
+      <option selected value="show">With label</option>
+      <option value="hide">Without label</option>
+      <option value="responsive">Responsive</option>
+    </select>
+  </template>
+  <template>
+    <p-checkbox-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+      <input type="checkbox" name="some-name" checked="checked"/>
+    </p-checkbox-wrapper>
+  </template>
 </Playground>
 
 ---
@@ -120,6 +105,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
   @Component
   export default class PlaygroundCheckboxWrapper extends Vue {
     public state: string = 'error';
+    public label: string = 'show';
     
     mounted() {
       this.$nextTick(function () {

@@ -16,7 +16,7 @@ import { FormState } from '../../../types';
 })
 export class RadioButtonWrapper {
 
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The label text. */
   @Prop() public label?: string = '';
@@ -30,17 +30,92 @@ export class RadioButtonWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private input: HTMLInputElement;
   @State() private checked: boolean;
   @State() private disabled: boolean;
 
-  public componentDidLoad() {
+  private input: HTMLInputElement;
 
+  public componentDidLoad() {
     this.setInput();
     this.setState();
-    this.inputChangeListener();
+    this.bindStateListener();
+    this.addSlottedStyles();
+  }
 
-    const tagName = this.element.tagName.toLowerCase();
+  public render(): JSX.Element {
+
+    const labelClasses = cx(prefix('radio-button-wrapper__label'));
+    const fakeRadioButtonClasses = cx(
+      prefix('radio-button-wrapper__fake-radio-button'),
+      this.checked && prefix(`radio-button-wrapper__fake-radio-button--checked`),
+      this.disabled && prefix(`radio-button-wrapper__fake-radio-button--disabled`),
+      this.state !== 'none' && prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)
+    );
+    const labelTextClasses = cx(
+      prefix('radio-button-wrapper__label-text'),
+      mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
+      this.disabled && prefix('radio-button-wrapper__label-text--disabled')
+    );
+    const messageClasses = cx(
+      prefix('radio-button-wrapper__message'),
+      this.state !== 'none' && prefix(`radio-button-wrapper__message--${this.state}`)
+    );
+
+    return (
+      <Host>
+        <label class={labelClasses}>
+          <span class={fakeRadioButtonClasses}>
+            <slot/>
+          </span>
+          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
+            {this.label ? this.label : <span><slot name='label'/></span>}
+          </p-text>
+        </label>
+        {this.isMessageVisible &&
+        <p-text class={messageClasses} color='inherit'>
+          {this.message ? this.message : <span><slot name='message'/></span>}
+        </p-text>
+        }
+      </Host>
+    );
+  }
+
+  private get isMessageDefined(): boolean {
+    return !!this.message || !!this.host.querySelector('[slot="message"]');
+  }
+
+  private get isMessageVisible(): boolean {
+    return ['success','error'].includes(this.state) && this.isMessageDefined;
+  }
+
+  private setInput(): void {
+    this.input = this.host.querySelector('input[type="radio"]');
+  }
+
+  private labelClick(): void {
+    /**
+     * we only want to simulate the checkbox click by label click
+     * for real shadow dom, else the native behaviour works out
+     * of the box
+     */
+    if (this.host.shadowRoot && this.host.shadowRoot.host) {
+      this.input.click();
+    }
+  }
+
+  private setState(): void {
+    this.checked = this.input.checked;
+    this.disabled = this.input.disabled;
+  }
+
+  private bindStateListener(): void {
+    transitionListener(this.input, 'border-top-color', () => {
+      this.setState();
+    });
+  }
+
+  private addSlottedStyles(): void {
+    const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
       outline: none transparent;
       color: inherit;
@@ -58,71 +133,6 @@ export class RadioButtonWrapper {
       outline-offset: 1px;
     }`;
 
-    insertSlottedStyles(this.element, style);
-  }
-
-  public render(): JSX.Element {
-
-    const labelClasses = cx(prefix('radio-button-wrapper__label'));
-    const labelTextClasses = cx(
-      prefix('radio-button-wrapper__label-text'),
-      mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-      this.disabled && prefix('radio-button-wrapper__label-text--disabled')
-    );
-    const fakeRadioClasses = cx(
-      prefix('radio-button-wrapper__fake-radio'),
-      this.checked && prefix(`radio-button-wrapper__fake-radio--checked`),
-      this.disabled && prefix(`radio-button-wrapper__fake-radio--disabled`),
-      this.state !== 'none' && prefix(`radio-button-wrapper__fake-radio--${this.state}`)
-    );
-    const messageClasses = cx(
-      prefix('radio-button-wrapper__message'),
-      this.state !== 'none' && prefix(`radio-button-wrapper__message--${this.state}`)
-    );
-
-    return (
-      <Host>
-        <label class={labelClasses}>
-          <span class={fakeRadioClasses}>
-            <slot/>
-          </span>
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.clickOnInput()}>
-            {this.label ? this.label : <span><slot name='label'/></span>}
-          </p-text>
-        </label>
-        {this.isMessageVisible &&
-        <p-text class={messageClasses} color='inherit'>
-          {this.message ? this.message : <span><slot name='message'/></span>}
-        </p-text>
-        }
-      </Host>
-    );
-  }
-
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.element.querySelector('[slot="message"]');
-  }
-
-  private get isMessageVisible(): boolean {
-    return ['error','success'].includes(this.state) && this.isMessageDefined;
-  }
-
-  private setInput(): void {
-    this.input = this.element.querySelector('input[type="radio"]');
-  }
-
-  private clickOnInput(): void {
-    this.input.click();
-  }
-
-  private setState(): void {
-    this.checked = this.input.checked;
-    this.disabled = this.input.disabled;
-  }
-
-  private inputChangeListener(): void {
-    transitionListener(this.input, 'border-top-color', () => {
-      this.setState();
-    });
+    insertSlottedStyles(this.host, style);
   }
 }
