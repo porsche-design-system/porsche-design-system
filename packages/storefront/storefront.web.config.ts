@@ -47,6 +47,10 @@ export const config: StorefrontConfig = {
       Faq: [
         // @ts-ignore
         () => import(`@/pages/web/faq.md`)
+      ],
+      Troubleshooting: [
+        // @ts-ignore
+        () => import(`@/pages/web/troubleshooting.md`)
       ]
     },
     Basics: {
@@ -177,7 +181,49 @@ export const config: StorefrontConfig = {
         ]
       }
     },
-    Forms: {
+    Form: {
+      'Text Field': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.props.md`)
+        ]
+      },
+      Select: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.props.md`)
+        ]
+      },
+      Checkbox: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
+        ]
+      },
       Textarea: {
         Design: [
           // @ts-ignore
