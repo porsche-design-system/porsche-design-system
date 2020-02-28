@@ -4,6 +4,7 @@ import {defineCustomElements, applyPolyfills} from '@porsche-design-system/compo
 import {
   PButton,
   PButtonPure,
+  PCheckboxWrapper,
   PFlex,
   PFlexItem,
   PGrid,
@@ -16,12 +17,15 @@ import {
   PPagination,
   PSpinner,
   PText,
+  PTextFieldWrapper,
+  PSelectWrapper,
   PTextareaWrapper
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
   PButton,
   PButtonPure,
+  PCheckboxWrapper,
   PFlex,
   PFlexItem,
   PGrid,
@@ -34,6 +38,8 @@ const DECLARATIONS = [
   PPagination,
   PSpinner,
   PText,
+  PTextFieldWrapper,
+  PSelectWrapper,
   PTextareaWrapper
 ];
 

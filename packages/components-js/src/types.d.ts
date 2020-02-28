@@ -9,4 +9,4 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
-export type FormState = 'success' | 'error' | 'none';
+export type FormState = 'none' | 'error' | 'success';
