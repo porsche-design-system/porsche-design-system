@@ -48,6 +48,11 @@
   border-top-color 1ms linear !important;
 }
 
+// hide native radio on IE11
+::slotted(input::-ms-check) {
+  display: none !important;
+}
+
 // Focus
 ::slotted(input:focus) {
   box-shadow: 0 0 0 2px $p-color-theme-light-state-focus !important;
