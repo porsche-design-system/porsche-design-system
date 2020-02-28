@@ -14,7 +14,7 @@ describe('Radio Button', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/web/components/forms/radio-button');
+      cy.visit('/#/web/components/form/radio-button');
     });
 
     it('Should show tab navigation with first tab activated', () => {
