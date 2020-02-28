@@ -11,7 +11,7 @@ import { FormState } from '../../../types';
 })
 export class TextareaWrapper {
 
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The label text. */
   @Prop() public label?: string = '';
@@ -35,7 +35,7 @@ export class TextareaWrapper {
     this.setState();
     this.bindStateListener();
 
-    const tagName = this.element.tagName.toLowerCase();
+    const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
       outline: none transparent;
       color: inherit;
@@ -54,7 +54,7 @@ export class TextareaWrapper {
     }
     `;
 
-    insertSlottedStyles(this.element, style);
+    insertSlottedStyles(this.host, style);
   }
 
   public render(): JSX.Element {
@@ -96,7 +96,7 @@ export class TextareaWrapper {
   }
 
   private get isMessageDefined(): boolean {
-    return !!this.message || !!this.element.querySelector('span[slot="message"]');
+    return !!this.message || !!this.host.querySelector('[slot="message"]');
   }
 
   private get isMessageVisible(): boolean {
@@ -104,7 +104,7 @@ export class TextareaWrapper {
   }
 
   private setTextarea(): void {
-    this.textarea = this.element.querySelector('textarea');
+    this.textarea = this.host.querySelector('textarea');
   }
 
   private setState(): void {
