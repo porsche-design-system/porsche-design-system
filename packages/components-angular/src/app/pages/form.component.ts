@@ -117,6 +117,9 @@ import { Component } from '@angular/core';
           <p-checkbox-wrapper [label]="'Some label'">
             <input type="checkbox" name="some-name" checked="checked" disabled="disabled"/>
           </p-checkbox-wrapper>
+          <p-checkbox-wrapper [label]="'Some label'" [state]="'success'">
+            <input type="checkbox" name="some-name" />
+          </p-checkbox-wrapper>
           <p-checkbox-wrapper [label]="'Some label'" [state]="'success'" [message]="'Some success validation message.'">
             <input type="checkbox" name="some-name" />
           </p-checkbox-wrapper>
@@ -124,6 +127,9 @@ import { Component } from '@angular/core';
             <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
             <input type="checkbox" name="some-name" />
             <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          </p-checkbox-wrapper>
+          <p-checkbox-wrapper [label]="'Some label'" [state]="'error'">
+            <input type="checkbox" name="some-name" />
           </p-checkbox-wrapper>
           <p-checkbox-wrapper [label]="'Some label'" [state]="'error'" [message]="'Some error validation message.'">
             <input type="checkbox" name="some-name" />
@@ -149,11 +155,22 @@ import { Component } from '@angular/core';
           <p-radio-button-wrapper [label]="'Some label'">
             <input type="radio" name="some-name-1" checked="checked"/>
           </p-radio-button-wrapper>
-          <p-radio-button-wrapper [label]="'Some label'" [hide-label]="true">
+          <p-radio-button-wrapper [label]="'Some label'" [hideLabel]="true">
             <input type="radio" name="some-name-1"/>
           </p-radio-button-wrapper>
           <p-radio-button-wrapper [label]="'Some label'">
             <input type="radio" name="some-name-1" disabled="disabled"/>
+          </p-radio-button-wrapper>
+          <p-radio-button-wrapper [label]="'Some label'" [state]="'success'">
+            <input type="radio" name="some-name-1"/>
+          </p-radio-button-wrapper>
+          <p-radio-button-wrapper [label]="'Some label'" [state]="'success'" [message]="'Some success validation message.'">
+            <input type="radio" name="some-name-1"/>
+          </p-radio-button-wrapper>
+          <p-radio-button-wrapper [state]="'success'">
+            <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+            <input type="radio" name="some-name-1">
+            <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
           </p-radio-button-wrapper>
           <p-radio-button-wrapper [label]="'Some label'" [state]="'error'">
             <input type="radio" name="some-name-1"/>
