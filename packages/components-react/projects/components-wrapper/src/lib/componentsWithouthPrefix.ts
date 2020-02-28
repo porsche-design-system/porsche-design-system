@@ -16,4 +16,5 @@ export {
   PSpinner as Spinner,
   PText as Text,
   PTextFieldWrapper as TextFieldWrapper,
+  PTextareaWrapper as TextareaWrapper,
 } from './components';
