@@ -13,8 +13,8 @@ describe('Component <p-radio-button-wrapper>', () => {
       html: `<p-radio-button-wrapper label='Some label'><input type='radio' name='some-name'/></p-radio-button-wrapper>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.querySelector('.p-radio-button-wrapper__fake-radio')).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector('.p-radio-button-wrapper__fake-radio')).toBeTruthy();
+    expect(page.root.querySelector('.p-radio-button-wrapper__fake-radio-button')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.p-radio-button-wrapper__fake-radio-button')).toBeTruthy();
     expect(page.root).toMatchSnapshot();
   });
 });
