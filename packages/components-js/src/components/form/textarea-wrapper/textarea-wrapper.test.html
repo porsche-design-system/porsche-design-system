@@ -40,6 +40,12 @@
   </p-textarea-wrapper>
 </div>
 
+<div class="playground light" title="should render with placeholder with disabled state">
+  <p-textarea-wrapper label="Some label">
+    <textarea name="some-name" disabled="disabled" placeholder="Some placeholder"></textarea>
+  </p-textarea-wrapper>
+</div>
+
 <div class="playground light" title="should render in readonly state">
   <p-textarea-wrapper label="Some label">
     <textarea name="some-name" readonly="readonly">Some value</textarea>
@@ -60,6 +66,12 @@
 
 <div class="playground light" title="should render with success state and success message">
   <p-textarea-wrapper label="Some label" state="success" message="success message">
+    <textarea name="some-name">Some value</textarea>
+  </p-textarea-wrapper>
+</div>
+
+<div class="playground light" title="should render with success state and no success message">
+  <p-textarea-wrapper label="Some label" state="success">
     <textarea name="some-name">Some value</textarea>
   </p-textarea-wrapper>
 </div>
@@ -89,6 +101,12 @@
 <div class="playground light" title="should render in focus state">
   <p-textarea-wrapper label="Some label">
     <textarea id="test-focus-state" name="some-name" style="caret-color: transparent;"></textarea>
+  </p-textarea-wrapper>
+</div>
+
+<div class="playground light" title="should render with multiline label/message and cut off too long option text">
+  <p-textarea-wrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" state="error" message="At vero eos et accusam et justo duo dolores et ea rebum." style="width: 240px;">
+    <textarea name="some-name">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,</textarea>
   </p-textarea-wrapper>
 </div>
 

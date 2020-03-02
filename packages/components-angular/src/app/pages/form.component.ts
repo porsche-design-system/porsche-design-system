@@ -124,6 +124,7 @@ import { Component } from '@angular/core';
           <p-textarea-wrapper [label]="'Some label'"><textarea name="some-name"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'"><textarea name="some-name" placeholder="Some placeholder text"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'" [hideLabel]="true"><textarea name="some-name"></textarea></p-textarea-wrapper>
+          <p-textarea-wrapper [label]="'Some label'" [hideLabel]="{ base: true, l: false }"><textarea name="some-name"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'"><textarea name="some-name" disabled="disabled"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'"><textarea name="some-name" readonly="readonly">Some value</textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'" [state]="'error'" [message]="'error message'"><textarea name="some-name"></textarea></p-textarea-wrapper>
