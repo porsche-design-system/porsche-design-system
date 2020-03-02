@@ -92,6 +92,7 @@
   &__label-text {
     display: inline-block;
     color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
       color: $p-color-theme-light-state-disabled;
