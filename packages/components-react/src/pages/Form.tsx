@@ -1,4 +1,4 @@
-import { Grid, GridItem, Headline, SelectWrapper, TextFieldWrapper, CheckboxWrapper } from '@porsche-design-system/components-react';
+import { Grid, GridItem, Headline, SelectWrapper, TextFieldWrapper, CheckboxWrapper, TextareaWrapper } from '@porsche-design-system/components-react';
 import React from 'react';
 
 export function Form() {
@@ -120,6 +120,25 @@ export function Form() {
               <span slot="message">Some error message with a <a
                 href="https://designsystem.porsche.com">link</a>.</span>
             </CheckboxWrapper>
+          </div>
+          <hr/>
+        </GridItem>
+      </Grid>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>&lt;p-textarea-wrapper&gt;</Headline>
+        </GridItem>
+        <GridItem size={10}>
+          <div className="playground light spacing-block">
+            <TextareaWrapper label={'Some label'}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'}><textarea name="some-name" placeholder="Some placeholder text"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} hideLabel={true}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} hideLabel={{ base: true, l: false }}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'}><textarea name="some-name" disabled={true}></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'}><textarea name="some-name" readOnly={true}>Some value</textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} state={'error'} message={'error message'}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} state={'success'} message={'success message'}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper state={'error'}><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><textarea name="some-name">Some value</textarea><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></TextareaWrapper>
           </div>
           <hr/>
         </GridItem>
