@@ -18,7 +18,8 @@ import {
   PSpinner,
   PText,
   PTextFieldWrapper,
-  PSelectWrapper
+  PSelectWrapper,
+  PTextareaWrapper
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -38,7 +39,8 @@ const DECLARATIONS = [
   PSpinner,
   PText,
   PTextFieldWrapper,
-  PSelectWrapper
+  PSelectWrapper,
+  PTextareaWrapper
 ];
 
 export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {

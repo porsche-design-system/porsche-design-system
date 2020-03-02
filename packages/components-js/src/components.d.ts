@@ -469,6 +469,24 @@ export namespace Components {
     */
     'state'?: FormState;
   }
+  interface PTextareaWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: FormState;
+  }
 }
 
 declare global {
@@ -575,6 +593,12 @@ declare global {
     prototype: HTMLPTextFieldWrapperElement;
     new (): HTMLPTextFieldWrapperElement;
   };
+
+  interface HTMLPTextareaWrapperElement extends Components.PTextareaWrapper, HTMLStencilElement {}
+  var HTMLPTextareaWrapperElement: {
+    prototype: HTMLPTextareaWrapperElement;
+    new (): HTMLPTextareaWrapperElement;
+  };
   interface HTMLElementTagNameMap {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
@@ -593,6 +617,7 @@ declare global {
     'p-spinner': HTMLPSpinnerElement;
     'p-text': HTMLPTextElement;
     'p-text-field-wrapper': HTMLPTextFieldWrapperElement;
+    'p-textarea-wrapper': HTMLPTextareaWrapperElement;
   }
 }
 
@@ -1043,6 +1068,24 @@ declare namespace LocalJSX {
     */
     'state'?: FormState;
   }
+  interface PTextareaWrapper {
+    /**
+    * Show or hide label. For better accessibility it is recommended to show the label.
+    */
+    'hideLabel'?: BreakpointCustomizable<boolean>;
+    /**
+    * The label text.
+    */
+    'label'?: string;
+    /**
+    * The message styled depending on validation state.
+    */
+    'message'?: string;
+    /**
+    * The validation state.
+    */
+    'state'?: FormState;
+  }
 
   interface IntrinsicElements {
     'p-button': PButton;
@@ -1062,6 +1105,7 @@ declare namespace LocalJSX {
     'p-spinner': PSpinner;
     'p-text': PText;
     'p-text-field-wrapper': PTextFieldWrapper;
+    'p-textarea-wrapper': PTextareaWrapper;
   }
 }
 
@@ -1088,6 +1132,7 @@ declare module "@stencil/core" {
       'p-spinner': LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
       'p-text': LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
       'p-text-field-wrapper': LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
+      'p-textarea-wrapper': LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
     }
   }
 }

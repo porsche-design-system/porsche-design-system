@@ -15,5 +15,6 @@ export {
   PSelectWrapper as SelectWrapper,
   PSpinner as Spinner,
   PText as Text,
-  PTextFieldWrapper as TextFieldWrapper
+  PTextFieldWrapper as TextFieldWrapper,
+  PTextareaWrapper as TextareaWrapper,
 } from './components';

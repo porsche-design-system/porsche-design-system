@@ -1,6 +1,7 @@
 import 'jasmine';
 import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
+import { redraw } from '../../../../components-js/tests/vrt/helpers/redraw';
 
 describe('Components Overview', () => {
   let vrt: VisualRegressionTester;
@@ -28,6 +29,7 @@ describe('Components Overview', () => {
     expect(
       await vrt.test('overview-form', async () => {
         await vrt.goTo('/form', 1000);
+        await redraw(vrt.getPage());
       })
     ).toBeFalsy();
   });
