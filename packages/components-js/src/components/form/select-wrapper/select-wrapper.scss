@@ -50,10 +50,11 @@
   font-size: p-font-size($p-text-size-small) !important;
   line-height: p-line-height($p-text-size-small) !important;
   text-indent: 0 !important;
-  color: $p-color-theme-light-default !important;
+  color: transparent !important; // else Firefox shows a dotted outline on focus
+  text-shadow: 0 0 0 $p-color-theme-light-default !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-top-color 0.00001ms linear !important; // used for transitionend event listener;
+  text-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+  border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
 // avoid styling of select in IE
@@ -64,7 +65,7 @@
 // avoid styling of select in IE
 ::slotted(select:focus::-ms-value) {
   background-color: transparent !important;
-  color: $p-color-theme-light-default !important;
+  text-shadow: 0 0 0 $p-color-theme-light-default !important;
 }
 
 // Focus
@@ -75,7 +76,8 @@
 // Disabled
 ::slotted(select:disabled) {
   border-top-color: rgba(255,255,255,0.01) !important;
-  color: $p-color-theme-light-state-disabled !important;
+  text-shadow: 0 0 0 $p-color-theme-light-state-disabled !important;
+
   cursor: not-allowed !important;
 }
 
@@ -88,6 +90,7 @@
   &__label-text {
     display: inline-block;
     color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
       color: $p-color-theme-light-state-disabled;
