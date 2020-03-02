@@ -11,6 +11,7 @@ export {
   PLink as Link,
   PLinkPure as LinkPure,
   PMarque as Marque,
+  PRadioButtonWrapper as RadioButtonWrapper,
   PPagination as Pagination,
   PSelectWrapper as SelectWrapper,
   PSpinner as Spinner,

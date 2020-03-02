@@ -237,6 +237,20 @@ export const config: StorefrontConfig = {
           // @ts-ignore
           () => import(`@/../../components-js/src/components/form/textarea-wrapper/textarea-wrapper.props.md`)
         ]
+      },
+      'Radio Button': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`)
+        ]
       }
     },
     Feedback: {

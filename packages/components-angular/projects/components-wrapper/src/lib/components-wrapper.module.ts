@@ -15,10 +15,11 @@ import {
   PLinkPure,
   PMarque,
   PPagination,
+  PRadioButtonWrapper,
+  PSelectWrapper,
   PSpinner,
   PText,
   PTextFieldWrapper,
-  PSelectWrapper,
   PTextareaWrapper
 } from './components-wrapper.component';
 
@@ -36,10 +37,11 @@ const DECLARATIONS = [
   PLinkPure,
   PMarque,
   PPagination,
+  PRadioButtonWrapper,
+  PSelectWrapper,
   PSpinner,
   PText,
   PTextFieldWrapper,
-  PSelectWrapper,
   PTextareaWrapper
 ];
 
