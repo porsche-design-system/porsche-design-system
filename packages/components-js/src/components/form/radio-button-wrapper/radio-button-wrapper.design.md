@@ -1,8 +1,7 @@
 # Radio Button
  
-Use a Radio Button to allows the user to choose/select only one of a predefined set of mutually exclusive options.
-In a group of radio buttons should be selected one option by default. However, there is an exception if the pre-selection of an option can lead to wrong assumptions, i.e. "Male" or "Female". In this case no option should be selected by default.
-.
+Use a Radio Button to allow to choose or select only one of a predefined set of mutually exclusive options.
+In a group of radio buttons one option should be selected by default. However, there is an exception if the pre-selection of an option can lead to wrong assumptions, i.e. "Male" or "Female". In this case no option should be selected by default.
 
 ---
  
@@ -10,11 +9,11 @@ In a group of radio buttons should be selected one option by default. However, t
  
 ### 1. Default
 
-<p-radio-button-wrapper label="Some label" hide-label="false"><input type="radio" name="some-name-1" value="no"></p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label" hide-label="false"><input type="radio" name="some-name-1"></p-radio-button-wrapper>
  
 ### 2. Checked
 
-<p-radio-button-wrapper label="Some label" hide-label="false"><input type="radio" name="some-name-1" value="yes"></p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label" hide-label="false"><input type="radio" name="some-name-1" checked="checked"></p-radio-button-wrapper>
  
 ---
  

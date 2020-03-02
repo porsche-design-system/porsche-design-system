@@ -158,7 +158,8 @@
     border-radius: 50%;
     box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
     background-color: $p-color-theme-light-background;
-    transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &::before {
       content: "";
@@ -217,12 +218,12 @@
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &--error {
-      color: $p-color-theme-light-notification-error;
-    }
-
     &--success {
       color: $p-color-theme-light-notification-success;
+    }
+
+    &--error {
+      color: $p-color-theme-light-notification-error;
     }
   }
 }
