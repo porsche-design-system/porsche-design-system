@@ -224,6 +224,20 @@ export const config: StorefrontConfig = {
           () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
         ]
       },
+      Textarea: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textarea-wrapper/textarea-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textarea-wrapper/textarea-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/textarea-wrapper/textarea-wrapper.props.md`)
+        ]
+      },
       'Radio Button': {
         Design: [
           // @ts-ignore
@@ -237,7 +251,7 @@ export const config: StorefrontConfig = {
           // @ts-ignore
           () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`)
         ]
-      },
+      }
     },
     Feedback: {
       Spinner: {

@@ -30,3 +30,4 @@
  - [p-radio-button-wrapper](#/web/components/form/radio-button-wrapper)
  - [p-select-wrapper](#/web/components/form/select-wrapper)
  - [p-text-field-wrapper](#/web/components/form/text-field-wrapper)
+ - [p-textarea-wrapper](#/web/components/form/textarea-wrapper)
