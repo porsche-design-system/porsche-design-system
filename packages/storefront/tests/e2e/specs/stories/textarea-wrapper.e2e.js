@@ -14,7 +14,7 @@ describe('Textarea', () => {
 
   describe('Tabs', () => {
     beforeEach(() => {
-      cy.visit('/#/web/components/forms/textarea');
+      cy.visit('/#/web/components/form/textarea');
     });
 
     it('Should show tab navigation with first tab activated', () => {
