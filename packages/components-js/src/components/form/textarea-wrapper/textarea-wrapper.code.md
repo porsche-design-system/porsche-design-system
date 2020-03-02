@@ -8,31 +8,23 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Basic example
 
-### With label
-
 <Playground :childElementLayout="{spacing: 'block'}">
-  <p-textarea-wrapper label="Some label">
-    <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
-  <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" placeholder="Some placeholder text"></textarea>
-  </p-textarea-wrapper>
-</Playground>
-
-### Without label
-
-<Playground :childElementLayout="{spacing: 'block'}">    
-  <p-textarea-wrapper label="Some label" hide-label="true">
-    <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
-</Playground>
-
-### Responsive
-
-<Playground :childElementLayout="{spacing: 'block'}">    
-  <p-textarea-wrapper label="Some label" hide-label="{ base: true, l: false }">
-    <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
+  <template #configurator>
+    <select v-model="label">
+      <option disabled>Select a label mode</option>
+      <option selected value="show">With label</option>
+      <option value="hide">Without label</option>
+      <option value="responsive">Responsive</option>
+    </select>
+  </template>
+  <template>
+    <p-textarea-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+      <textarea name="some-name"></textarea>
+    </p-textarea-wrapper>
+    <p-textarea-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+      <textarea name="some-name" placeholder="Some placeholder text"></textarea>
+    </p-textarea-wrapper>
+  </template>
 </Playground>
 
 ---
@@ -99,6 +91,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
   
   @Component
   export default class PlaygroundTextareaWrapper extends Vue {
+    public label: string = 'show';
     public state: string = 'error';
   }
 </script>
