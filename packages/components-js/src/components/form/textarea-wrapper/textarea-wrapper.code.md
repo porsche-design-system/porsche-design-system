@@ -10,9 +10,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ### With label
 
-<Playground :childElementLayout="{spacing: 'block'}">  
-<p-text-field-wrapper label="Some label"><input type="text" name="some-name" placeholder="Some placeholder text"></p-text-field-wrapper>
-  
+<Playground :childElementLayout="{spacing: 'block'}">
   <p-textarea-wrapper label="Some label">
     <textarea name="some-name"></textarea>
   </p-textarea-wrapper>
