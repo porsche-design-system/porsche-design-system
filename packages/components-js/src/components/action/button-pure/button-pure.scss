@@ -66,7 +66,7 @@
   cursor: pointer;
   color: inherit;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier,
-  font-size 0.00001ms linear; // used for transitionend event listener
+  font-size 1ms linear; // used for transitionend event listener
 
   // gives possibility to enlarge click area on host element
   &::before {

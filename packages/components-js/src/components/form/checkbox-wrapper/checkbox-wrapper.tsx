@@ -73,7 +73,7 @@ export class CheckboxWrapper {
             <p-icon class={iconClasses} name={this.indeterminate ? 'subtract' : 'check'} theme='dark' size='inherit' />
             <slot/>
           </span>
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
+          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent) => this.labelClick(e)}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
         </label>
@@ -98,13 +98,18 @@ export class CheckboxWrapper {
     this.input = this.host.querySelector('input[type="checkbox"]');
   }
 
-  private labelClick(): void {
+  private labelClick(event: MouseEvent): void {
     /**
      * we only want to simulate the checkbox click by label click
      * for real shadow dom, else the native behaviour works out
-     * of the box
+     * of the box.
+     * also we don't want to click to the input, if a link is
+     * clicked.
      */
-    if (this.host.shadowRoot && this.host.shadowRoot.host) {
+    if (
+      this.host.shadowRoot && this.host.shadowRoot.host
+      && (event.target as HTMLElement).closest('a') === null
+    ) {
       this.input.click();
     }
   }
