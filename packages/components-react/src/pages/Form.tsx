@@ -133,6 +133,7 @@ export function Form() {
             <TextareaWrapper label={'Some label'}><textarea name="some-name"></textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'}><textarea name="some-name" placeholder="Some placeholder text"></textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'} hideLabel={true}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} hideLabel={{ base: true, l: false }}><textarea name="some-name"></textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'}><textarea name="some-name" disabled={true}></textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'}><textarea name="some-name" readOnly={true}>Some value</textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'} state={'error'} message={'error message'}><textarea name="some-name"></textarea></TextareaWrapper>

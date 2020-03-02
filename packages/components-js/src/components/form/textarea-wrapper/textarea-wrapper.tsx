@@ -1,4 +1,4 @@
-import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, transitionListener } from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
@@ -25,36 +25,16 @@ export class TextareaWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private textarea: HTMLTextAreaElement;
   @State() private disabled: boolean;
   @State() private readonly: boolean;
 
-  public componentDidLoad() {
+  private textarea: HTMLTextAreaElement;
 
+  public componentDidLoad() {
     this.setTextarea();
     this.setState();
     this.bindStateListener();
-
-    const tagName = this.host.tagName.toLowerCase();
-    const style = `${tagName} a {
-      outline: none transparent;
-      color: inherit;
-      text-decoration: underline;
-      -webkit-transition: outline-color .24s ease, color .24s ease;
-      transition: outline-color .24s ease, color .24s ease;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c;
-    }
-
-    ${tagName} a:focus {
-      outline: 2px solid #00d5b9;
-      outline-offset: 1px;
-    }
-    `;
-
-    insertSlottedStyles(this.host, style);
+    this.addSlottedStyles();
   }
 
   public render(): JSX.Element {
@@ -79,7 +59,7 @@ export class TextareaWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.focusOnTextarea()}>
+          <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
           <span class={fakeTextareaClasses}>
@@ -112,7 +92,7 @@ export class TextareaWrapper {
     this.readonly = this.textarea.readOnly;
   }
 
-  private focusOnTextarea(): void {
+  private labelClick(): void {
     this.textarea.focus();
   }
 
@@ -120,5 +100,28 @@ export class TextareaWrapper {
     transitionListener(this.textarea, 'border-top-color', () => {
       this.setState();
     });
+  }
+
+  private addSlottedStyles(): void {
+    const tagName = this.host.tagName.toLowerCase();
+    const style = `${tagName} a {
+      outline: none transparent;
+      color: inherit;
+      text-decoration: underline;
+      -webkit-transition: outline-color .24s ease, color .24s ease;
+      transition: outline-color .24s ease, color .24s ease;
+    }
+
+    ${tagName} a:hover {
+      color: #d5001c;
+    }
+
+    ${tagName} a:focus {
+      outline: 2px solid #00d5b9;
+      outline-offset: 1px;
+    }
+    `;
+
+    insertSlottedStyles(this.host, style);
   }
 }

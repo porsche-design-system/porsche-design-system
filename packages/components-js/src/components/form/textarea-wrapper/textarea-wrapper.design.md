@@ -68,7 +68,7 @@ All Textareas types are available in the following states:
  
 ## Content
  
-The Textarea can contains the following sub-components:
+The Textarea may contain the following sub-components:
  
 - **Label**
 Label text (≤ 20 characters) is used to inform users as to what information is requested for a Textarea. Every Textarea should have a label.
@@ -96,7 +96,7 @@ All types of Textarea are available as disabled state. However, disabled states 
 ## Don'ts
 
 ### Component
-Don´t use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, such as a phone number or name. In this case, you should use the text area component.
+Don´t use a Textarea component if you want to allow users to enter short values that are not longer than a single line, such as a phone number or name. In this case, you should use the [text field](#/web/components/form/text-field#design) component.
 
 ### Number of Textareas
 To ensure that we don´t overwhelm users, there should be no more than two Textareas on a page.
