@@ -140,6 +140,25 @@
 </p-grid>
 <p-grid>
   <p-grid-item size="2">
+    <p-headline variant="headline-4" tag="h4">&lt;p-textarea-wrapper&gt;</p-headline>
+  </p-grid-item>
+  <p-grid-item size="10">
+    <div class="playground light spacing-block">
+      <p-textarea-wrapper label="Some label"><textarea name="some-name"></textarea></p-textarea-wrapper><!--
+        --><p-textarea-wrapper label="Some label"><textarea name="some-name" placeholder="Some placeholder text"></textarea></p-textarea-wrapper><!--
+        --><p-textarea-wrapper label="Some label" hide-label="true"><textarea name="some-name"></textarea></p-textarea-wrapper><!--
+        --><p-textarea-wrapper label="Some label" hide-label="{ base: true, l: false }"><textarea name="some-name"></textarea></p-textarea-wrapper><!--
+        --><p-textarea-wrapper label="Some label"><textarea name="some-name" disabled="disabled"></textarea></p-textarea-wrapper><!--
+        --><p-textarea-wrapper label="Some label"><textarea name="some-name" readonly="readonly">Some value</textarea></p-textarea-wrapper><!--
+        --><p-textarea-wrapper label="Some label" state="error" message="error message"><textarea name="some-name"></textarea></p-textarea-wrapper><!--
+        --><p-textarea-wrapper label="Some label" state="success" message="success message"><textarea name="some-name"></textarea></p-textarea-wrapper><!--
+        --><p-textarea-wrapper state="error"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><textarea name="some-name">Some value</textarea><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-textarea-wrapper>
+    </div>
+    <hr>
+  </p-grid-item>
+</p-grid>
+<p-grid>
+  <p-grid-item size="2">
     <p-headline variant="headline-4" tag="h4">&lt;p-radio-button&gt;</p-headline>
   </p-grid-item>
   <p-grid-item size="10">
@@ -182,4 +201,3 @@
     <hr>
   </p-grid-item>
 </p-grid>
-
