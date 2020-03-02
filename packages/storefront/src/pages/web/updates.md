@@ -32,10 +32,29 @@
 
 ## Code
 
+## [1.1.0-rc.0] (2020-03-02)
+
+### Added
+- `Select Wrapper`
+- `Checkbox Wrapper`
+- `Radio Button Wrapper`
+- `Textarea Wrapper`
+
+### Fixed
+- `Text Field Wrapper` toggle password visibility
+
 ## [1.0.3] (2020-02-13)
 
 ### Fixed
 - JS framework compatibility
+
+## [1.1.0-0] (2020-02-06)
+
+### Added
+- `Text Field Wrapper`
+
+### Changed
+- Add proper cursor for disabled state for `Button` and `Button Pure`
 
 ## [1.0.2] (2020-02-04)
 
