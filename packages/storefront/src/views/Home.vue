@@ -4,8 +4,8 @@
       <div class="cover">
         <video
           class="video"
-          src="../assets/web/porsche-design-system.mp4"
-          poster="../assets/web/porsche-design-system.jpg"
+          src="../assets/porsche-design-system.mp4"
+          poster="../assets/porsche-design-system.jpg"
           autoplay
           muted
           playsinline
