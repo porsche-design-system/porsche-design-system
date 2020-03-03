@@ -166,7 +166,13 @@ export class TextFieldWrapper {
     ${tagName} input::-webkit-inner-spin-button {
       appearance: none !important;
       -webkit-appearance: none !important;
-    }`;
+    }
+
+    ${tagName} input[type=password]::-webkit-contacts-auto-fill-button,
+    ${tagName} input[type=password]::-webkit-credentials-auto-fill-button {
+      margin-right: 32px;
+    }
+    `;
 
     insertSlottedStyles(this.host, style);
   }
