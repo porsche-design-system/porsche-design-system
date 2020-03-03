@@ -6,7 +6,7 @@
 
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator';
-  import { config as webConfig } from '@/../storefront.web.config';
+  import { config as webConfig } from '@/../storefront.config';
   import { decodeUrl } from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
   import { ComponentListImport, Pages } from '@/interface';
