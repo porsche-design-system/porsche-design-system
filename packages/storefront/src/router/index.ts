@@ -6,51 +6,42 @@ Vue.use(Router);
 
 const router = new Router({
   routes: [
-    // Home
     {
       path: '/',
       name: 'home',
-      redirect: '/web'
+      component: () => import('@/views/Home.vue')
     },
-    // Web
     {
       path: '/web',
-      name: 'home-web',
-      meta: { area: 'web' },
-      component: () => import('@/views/HomeWeb.vue')
-    },
-    {
-      path: '/web/404',
-      name: '404-web',
-      meta: { area: 'web' },
-      component: () => import('@/views/NotFound.vue')
-    },
-    {
-      path: '/web/:page',
-      name: 'custom-web',
-      meta: { area: 'web' },
-      component: () => import('@/views/Custom.vue')
-    },
-    {
-      path: '/web/:category/:page',
-      name: 'page-web',
-      meta: { area: 'web' },
-      component: () => import('@/views/Page.vue')
-    },
-    {
-      path: '/web/components/:category/:story',
-      name: 'story-web',
-      meta: { area: 'web' },
-      component: () => import('@/views/Story.vue')
+      redirect: { name: 'home' }
     },
     {
       path: '/web/*',
-      redirect: { name: '404-web' }
+      redirect: { name: 'home' }
     },
-    // Default
+    {
+      path: '/404',
+      name: '404',
+      component: () => import('@/views/NotFound.vue')
+    },
+    {
+      path: '/:page',
+      name: 'custom',
+      component: () => import('@/views/Custom.vue')
+    },
+    {
+      path: '/:category/:page',
+      name: 'page',
+      component: () => import('@/views/Page.vue')
+    },
+    {
+      path: '/components/:category/:story',
+      name: 'story',
+      component: () => import('@/views/Story.vue')
+    },
     {
       path: '*',
-      redirect: { name: 'home' }
+      redirect: { name: '404' }
     }
   ]
 });
