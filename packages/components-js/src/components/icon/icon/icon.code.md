@@ -55,7 +55,7 @@ The whole Porsche icon set is hosted on the Porsche Design System CDN. If there 
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
-    <p-icon :theme="theme" :source="require(`@/assets/icon-custom-kaixin.svg`)" size="large" aria-label="Icon for social media platform Kaixin" />
+    <p-icon :theme="theme" :source="require(`./assets/icon-custom-kaixin.svg`)" size="large" aria-label="Icon for social media platform Kaixin" />
   </template>
 </Playground>
 
