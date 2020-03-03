@@ -170,7 +170,7 @@ If another icon needs to be implemented, just replace the default icon with anot
   <template v-slot={theme}>
     <p-link-pure href="https://www.porsche.com" icon="phone" :theme="theme">Some label</p-link-pure>
     <br>
-    <p-link-pure :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme" href="https://www.porsche.com">Some label</p-link-pure>
+    <p-link-pure :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme" href="https://www.porsche.com">Some label</p-link-pure>
   </template>
 </Playground>
 
