@@ -26,17 +26,17 @@ If there are at least 6 or 8 pages, an ellipsis ("...") is shown for a dedicated
 
 ---
 
-## Content
+## Styling
 
 The pagination component includes the following sub-components:
 
-### Arrow left & right
+- **Arrow left & right**
 An arrow is placed on the left and right of the page numbers, enabling to click
 
-### Page numbers
+- **Page numbers**
 The page numbers are set in copysize and turn in Brand color on hover.
 
-### Ellipsis (optional)
+- **Ellipsis (optional)**
 The ellipsis ("...") represents multiple pages that can't be displayed to limited Pagination component width.
 
 ---
@@ -47,7 +47,7 @@ The pagination should always be placed centered beneath the related content, kee
 
 ---
 
-## Usability & interaction
+## Interaction
 
 ### Clickability
 

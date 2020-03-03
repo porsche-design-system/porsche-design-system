@@ -41,14 +41,21 @@ The Select component is available in the following states:
 
 ---
 
-## Content
+## Styling
 
 - **Label**
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two).
 
+- **Width**
+The Select has no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that:  “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations). The initial width is set to 272 px (corresponds to the grid width on viewport XS). For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
+
 - **Validation and error**
 Validation text for a Select is placed right below the field box. This places the error next to the offending select,
 so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it.
+For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
+
+- **Spacing**
+According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
 For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
 
 ---
@@ -60,15 +67,6 @@ It's recommended to use common sort order for menu items (frequency of use, alph
 
 ### Disabled state
 All Selects are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
-
-## Layout
-
-### Width
-The Select has no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that:  “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations). The initial width is set to 272 px (corresponds to the grid width on viewport XS). For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
-
-### Spacing
-According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
 
 ## Interaction
 The whole Select area is clickable. They can be removed by clicking outside the Select element or on the parent element.

@@ -23,7 +23,7 @@ The indeterminate state is only a visual state and cannot be achieved by direct 
 
 ---
 
-## Content
+## Styling
 
 - **Checkbox**
 The squared box is used as a typical Checkbox indicator and can have different states, depending on whether it's checked or not.
@@ -35,6 +35,10 @@ The label text (always in copytext) gives the user an information about the opti
 Contrary to Radio Buttons, each Checkbox item can have its own validation message.
 For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
 
+- **Spacing**
+According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
+For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
+
 ---
 
 ## Usage
@@ -44,12 +48,6 @@ Is used for a single option that the user can turn on or off (e.g. in case of a 
 
 ### Disabled State
 All Checkboxes are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
-
-## Layout
-
-### Spacing
-According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
 
 ## Interaction
 The whole Checkbox area is clickable.
