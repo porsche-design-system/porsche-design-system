@@ -95,5 +95,5 @@ Never use images or symbols within a selection list.
 
 ## Related Components
 
-* [Checkbox](#/web/components/form/checkbox)
-* [Radio Button](#/web/components/form/radio-button)
+* [Checkbox](#/components/form/checkbox)
+* [Radio Button](#/components/form/radio-button)

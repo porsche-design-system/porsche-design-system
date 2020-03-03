@@ -73,7 +73,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link href="https://www.porsche.com" icon="phone" :theme="theme">Some label</p-link>
-    <p-link href="https://www.porsche.com" :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Some label</p-link>
+    <p-link href="https://www.porsche.com" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Some label</p-link>
   </template>
 </Playground>
 
