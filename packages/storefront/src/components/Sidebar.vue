@@ -34,7 +34,7 @@
 <script lang="ts">
   import { Component, Vue, Prop } from 'vue-property-decorator';
   import { StorefrontConfig } from '@/interface';
-  import { config as webConfig } from '@/../storefront.web.config';
+  import { config as webConfig } from '@/../storefront.config';
   import { encodeUrl } from '@/services/utils';
   import Divider from '@/components/Divider.vue';
 
