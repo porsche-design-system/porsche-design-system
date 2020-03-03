@@ -16,10 +16,6 @@ import Markdown from '@/components/Markdown.vue';
 export default class Custom extends Vue {
   public component: any = null;
 
-  private get area(): string {
-    return this.$route.meta.area;
-  }
-
   private get page(): string {
     return this.$route.params.page.toLowerCase();
   }
@@ -44,7 +40,7 @@ export default class Custom extends Vue {
   }
 
   private redirect(): void {
-    this.$router.replace({name: `404-${this.area}`});
+    this.$router.replace({name: `404`});
   }
 }
 </script>

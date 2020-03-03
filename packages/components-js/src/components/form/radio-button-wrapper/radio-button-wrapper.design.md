@@ -78,9 +78,9 @@ Avoid using a radio button as a single choice.
  
 ## Related Components
  
-* [Text Field](#/web/components/form/text-field)
-* [Textarea](#/web/components/form/textarea)
-* [Checkbox](#/web/components/form/checkbox)
-* [Select](#/web/components/form/select)
+* [Text Field](#/components/form/text-field)
+* [Textarea](#/components/form/textarea)
+* [Checkbox](#/components/form/checkbox)
+* [Select](#/components/form/select)
 
  
