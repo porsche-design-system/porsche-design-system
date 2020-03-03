@@ -1,6 +1,12 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, transitionListener } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+  randomString,
+  transitionListener
+} from '../../../utils';
 import { insertSlottedStyles } from '../../../utils/slotted-styles';
 import { FormState } from '../../../types';
 
@@ -29,6 +35,7 @@ export class TextareaWrapper {
   @State() private readonly: boolean;
 
   private textarea: HTMLTextAreaElement;
+  private labelId = randomString();
 
   public componentDidLoad() {
     this.setTextarea();
@@ -58,7 +65,7 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <label class={labelClasses}>
+        <label class={labelClasses} id={this.labelId}>
           <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
@@ -67,7 +74,12 @@ export class TextareaWrapper {
           </span>
         </label>
         {this.isMessageVisible &&
-        <p-text class={messageClasses} color='inherit'>
+        <p-text
+          class={messageClasses}
+          color='inherit'
+          role={this.state === 'error' && 'alert'}
+          aria-describedby={this.state === 'error' && this.labelId}
+        >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
         }
