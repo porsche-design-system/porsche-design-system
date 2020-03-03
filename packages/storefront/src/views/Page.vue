@@ -20,10 +20,6 @@
   export default class Page extends Vue {
     public components: ComponentType[] = [];
 
-    private get area(): string {
-      return this.$route.meta.area;
-    }
-
     private get category(): string {
       return decodeUrl(this.$route.params.category);
     }
@@ -65,7 +61,7 @@
     }
 
     private redirect(): void {
-      this.$router.replace({name: `404-${this.area}`});
+      this.$router.replace({name: `404`});
     }
   }
 </script>

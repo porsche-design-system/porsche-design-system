@@ -5,7 +5,7 @@
         <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
-            <router-link :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`"
+            <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`"
                          v-slot="{ href, navigate, isActive }">
               <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
             </router-link>
@@ -20,7 +20,7 @@
         <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, story, index) in stories" :key="index">
-            <router-link :to="`/${area}/components/${encodeUrl(category)}/${encodeUrl(story)}`"
+            <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`"
                          v-slot="{ href, navigate, isActive }">
               <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ story }}</p-link-pure>
             </router-link>
@@ -45,10 +45,6 @@
   })
   export default class Sidebar extends Vue {
     public encodeUrl = encodeUrl;
-
-    get area(): string {
-      return this.$route.meta.area;
-    }
 
     get config(): StorefrontConfig {
       return webConfig;

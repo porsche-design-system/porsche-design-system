@@ -41,10 +41,6 @@
       return Object.keys(story);
     }
 
-    private get area(): string {
-      return this.$route.meta.area;
-    }
-
     private get category(): string {
       return decodeUrl(this.$route.params.category);
     }
@@ -107,7 +103,7 @@
       if (this.hasTabs) {
         await this.$router.replace(this.getTabLink(this.getFirstTabName()));
       } else {
-        await this.$router.replace({name: `404-${this.area}`});
+        await this.$router.replace({name: `404`});
       }
     }
   }
