@@ -17,7 +17,7 @@ All Radio Buttons are available in the following states:
 
 ---
 
-## Content
+## Styling
 
 - **Radio Button**
 A circle is typically used to indicate a Radio Button selection.
@@ -29,6 +29,10 @@ The label text (always in copytext) gives the user an information about the opti
 For a group of Radio Buttons the validation message is set at the end of the list. This means that the validation for a Radio Button behaves differently from the other form elements where the validation is set for each individual component.
 For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
 
+- **Spacing**
+According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
+For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
+
 ---
 
 ## Usage
@@ -38,12 +42,6 @@ We recommend using a Radio Button for a selection of 3-6 items. For a larger num
 
 ### Disabled states
 All types of Radio Buttons are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
-
-## Layout
-
-### Spacing
-According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
 
 ## Interaction
 The whole Radio Button area is clickable.

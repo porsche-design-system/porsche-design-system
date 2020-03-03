@@ -39,7 +39,7 @@ All Text Fields types are available in the following states:
 
 ---
 
-## Content
+## Styling
 
 - **Label**
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two).
@@ -47,8 +47,18 @@ The label text (always in copytext) gives the user an information about the opti
 - **Input area**
 Enables users to enter a single line text.
 
+- **Width**
+Text fields have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that: “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations) The initial width is set to 272 px (corresponds to the grid width on viewport XS). For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
+
+- **Help text**
+Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. If deeper, longer descriptions are necessary, which can optionally be read through and would interrupt the reading flow of the form, they should be hidden in a info tooltip, which is placed 8 px behind the label.
+
 - **Validation and error**
 Validation text for a field is placed right below the field box in order to make it clear for the user which text field the validation belongs to.
+For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
+
+- **Spacing**
+According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
 For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
 
 ---
@@ -70,18 +80,6 @@ By doing so…
 ### Disabled state
 
 All types of Text Field are available as disabled state. However, disabled states (e.g. read only) should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
-
-## Layout
-
-### Width
-Text fields have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that: “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations) The initial width is set to 272 px (corresponds to the grid width on viewport XS). For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
-
-### Spacing
-According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
-
-### Help text
-Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. If deeper, longer descriptions are necessary, which can optionally be read through and would interrupt the reading flow of the form, they should be hidden in a info tooltip, which is placed 8 px behind the label.
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
