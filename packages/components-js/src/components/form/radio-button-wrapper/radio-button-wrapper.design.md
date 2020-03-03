@@ -25,6 +25,9 @@ A circle is typically used to indicate a Radio Button selection.
 - **Label**
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two).
 
+- **Help text**
+Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. If deeper, longer descriptions are necessary, which can optionally be read through and would interrupt the reading flow of the form, they should be hidden in a info tooltip, which is placed 8 px behind the label.
+
 - **Validation and error**
 For a group of Radio Buttons the validation message is set at the end of the list. This means that the validation for a Radio Button behaves differently from the other form elements where the validation is set for each individual component.
 For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
