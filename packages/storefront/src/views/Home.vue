@@ -19,7 +19,7 @@
           <p-headline variant="headline-3" tag="h1">Porsche Design System</p-headline>
           <p-text size="{ base:'small', s: 'medium' }">for web applications</p-text>
           <p-text class="spacing-mt-8">
-            <router-link to="/web/getting-started/about">Learn more about it</router-link>
+            <router-link to="/getting-started/about">Learn more about it</router-link>
           </p-text>
         </p-grid-item>
         <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
@@ -34,12 +34,12 @@
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
-              <router-link to="/web/getting-started/start-designing" class="router-link spacing-mt-16 spacing-mr-32">
+              <router-link to="/getting-started/start-designing" class="router-link spacing-mt-16 spacing-mr-32">
                 <p-link variant="primary">Start Designing</p-link>
               </router-link>
             </p-flex-item>
             <p-flex-item>
-              <router-link to="/web/getting-started/start-coding" class="router-link spacing-mt-16">
+              <router-link to="/getting-started/start-coding" class="router-link spacing-mt-16">
                 <p-link variant="primary">Start Coding</p-link>
               </router-link>
             </p-flex-item>
