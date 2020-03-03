@@ -5,7 +5,8 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles
+  insertSlottedStyles,
+  randomString
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -36,6 +37,7 @@ export class TextFieldWrapper {
 
   private input: HTMLInputElement;
   private isPasswordToggleable: boolean;
+  private labelId = randomString();
 
   public componentDidLoad() {
     this.setInput();
@@ -69,7 +71,7 @@ export class TextFieldWrapper {
     return (
       <Host>
         <span class={containerClasses}>
-          <label class={labelClasses}>
+          <label class={labelClasses} id={this.labelId}>
             <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
@@ -84,7 +86,12 @@ export class TextFieldWrapper {
           }
         </span>
         {this.isMessageVisible &&
-        <p-text class={messageClasses} color='inherit'>
+        <p-text
+          class={messageClasses}
+          color='inherit'
+          role={this.state === 'error' && 'alert'}
+          aria-describedby={this.state === 'error' && this.labelId}
+        >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
         }

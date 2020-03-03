@@ -5,7 +5,8 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles
+  insertSlottedStyles,
+  randomString
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -34,6 +35,7 @@ export class RadioButtonWrapper {
   @State() private disabled: boolean;
 
   private input: HTMLInputElement;
+  private labelId = randomString();
 
   public componentDidLoad() {
     this.setInput();
@@ -63,7 +65,7 @@ export class RadioButtonWrapper {
 
     return (
       <Host>
-        <label class={labelClasses}>
+        <label class={labelClasses} id={this.labelId}>
           <span class={fakeRadioButtonClasses}>
             <slot/>
           </span>
@@ -72,7 +74,12 @@ export class RadioButtonWrapper {
           </p-text>
         </label>
         {this.isMessageVisible &&
-        <p-text class={messageClasses} color='inherit'>
+        <p-text
+          class={messageClasses}
+          color='inherit'
+          role={this.state === 'error' && 'alert'}
+          aria-describedby={this.state === 'error' && this.labelId}
+        >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
         }
