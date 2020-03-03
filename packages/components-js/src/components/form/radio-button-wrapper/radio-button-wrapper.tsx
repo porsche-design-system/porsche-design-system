@@ -65,7 +65,7 @@ export class RadioButtonWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.labelId}>
+        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
           <span class={fakeRadioButtonClasses}>
             <slot/>
           </span>

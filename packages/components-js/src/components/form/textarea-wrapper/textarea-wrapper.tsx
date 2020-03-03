@@ -65,7 +65,7 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.labelId}>
+        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
           <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
