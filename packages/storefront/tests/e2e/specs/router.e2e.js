@@ -12,59 +12,6 @@ describe('Router', () => {
     });
   });
 
-  describe('App', () => {
-    it('Should route to home', () => {
-      cy.visit('/#/app');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app');
-    });
-
-    it('Should route to 404', () => {
-      cy.visit('/#/app/404');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-    });
-
-    it('Should route to custom view', () => {
-      cy.visit('/#/app/license');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/license');
-    });
-
-    it('Should route to page', () => {
-      cy.visit('/#/app/getting-started/about');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/getting-started/about');
-    });
-
-    it('Should route to story', () => {
-      cy.visit('/#/app/components/basic/color');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/components/basic/color');
-    });
-
-    it('Should redirect to 404', () => {
-      cy.visit('/#/app/some-invalid-custom-view');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/some-invalid-category/some-invalid-page');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/some-invalid-category/about');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/getting-started/some-invalid-page');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/components/some-invalid-category/some-invalid-story');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/components/some-invalid-category/typography');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/components/basic/some-invalid-story');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/some/completely/invalid/url');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-    });
-  });
-
   describe('Web', () => {
     it('Should route to home', () => {
       cy.visit('/#/web');
