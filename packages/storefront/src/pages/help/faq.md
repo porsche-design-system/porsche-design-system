@@ -1,12 +1,12 @@
 # FAQ
 
-To answer the most frequently asked questions the following list is constantly updated. Please read through before using the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](#/web/help/support)**
+To answer the most frequently asked questions the following list is constantly updated. Please read through before using the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](#/help/support)**
 
 ## Who develops the Porsche Design System?
 The Porsche Design System is developed and maintained centrally by a designated team from Porsche AG in Germany. In an open community, everyone is encouraged to participate and contribute to the Porsche Design System and give feedback at any time.
 
 ## How can I get in contact with the Porsche Design System team?
-We want to enable continuous communication within the community. Therefore we offer different use-case-related communication channels to get in contact or ask for support or submit support requests. You can find all of them [in the support section](#/web/help/support).
+We want to enable continuous communication within the community. Therefore we offer different use-case-related communication channels to get in contact or ask for support or submit support requests. You can find all of them [in the support section](#/help/support).
 
 ## How can I access the Porsche Design System files?
 **Developer**  
@@ -16,7 +16,7 @@ The scource code of the Porsche Design System is stored and developed within a p
 The Porsche Design System Sketch library is created and maintained within a private Abstract project. Access can be also requested using our online subscription form.  
 
 ## What is the release strategy and how are the issues priorized?
-All versioned releases of the Porsche Design System combine both design and code. All changes are based on the overall business goals and the actual needs of the teams. The upcoming release content is accessible in the [quarterly roadmap](#/web/news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs, feedback and associated requirements.
+All versioned releases of the Porsche Design System combine both design and code. All changes are based on the overall business goals and the actual needs of the teams. The upcoming release content is accessible in the [quarterly roadmap](#/news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs, feedback and associated requirements.
 
 ## What happens with contents marked as deprecated?
 Contents marked as deprecated in `v0` releases of the Porsche Design System won't be deleted and can still be used, but without any guarantee that those patterns still fulfil the latest design definitions or browser compatibility. If possible, we recommend replacing those patterns with new ones from release `v1` or copying the ones you still need over into your application and maintaining them yourself.

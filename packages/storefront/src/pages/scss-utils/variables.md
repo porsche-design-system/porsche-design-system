@@ -96,7 +96,7 @@ $p-layout-{v};
 ---
 
 ## Font
-For font styling it's recommended to use the [`<p-headline>`](#/web/components/basic/typography#code)/[`<p-text>`](#/web/components/basic/typography#code) component or [text/headline scss mixins](#/web/scss-utils/mixins).
+For font styling it's recommended to use the [`<p-headline>`](#/components/basic/typography#code)/[`<p-text>`](#/components/basic/typography#code) component or [text/headline scss mixins](#/scss-utils/mixins).
 
 ### Family
 Contains Porsche Next and predefined fallback fonts:

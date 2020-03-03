@@ -96,7 +96,7 @@ All types of Textarea are available as disabled state. However, disabled states 
 ## Don'ts
 
 ### Component
-Don´t use a Textarea component if you want to allow users to enter short values that are not longer than a single line, such as a phone number or name. In this case, you should use the [text field](#/web/components/form/text-field#design) component.
+Don´t use a Textarea component if you want to allow users to enter short values that are not longer than a single line, such as a phone number or name. In this case, you should use the [text field](#/components/form/text-field#design) component.
 
 ### Number of Textareas
 To ensure that we don´t overwhelm users, there should be no more than two Textareas on a page.
@@ -105,8 +105,8 @@ To ensure that we don´t overwhelm users, there should be no more than two Texta
  
 ## Related Components
  
-* [Text Field](#/web/components/form/text-field)
-* [Checkbox](#/web/components/form/checkbox)
-* [Radio Button](#/web/components/form/radio-button)
-* [Select](#/web/components/form/select)
+* [Text Field](#/components/form/text-field)
+* [Checkbox](#/components/form/checkbox)
+* [Radio Button](#/components/form/radio-button)
+* [Select](#/components/form/select)
 

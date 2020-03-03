@@ -97,10 +97,10 @@ Checkboxes are always aligned left
  
 ## Related Components
  
-* [Text Field](#/web/components/form/text-field)
-* [Textarea](#/web/components/form/textarea)
-* [Radio Button](#/web/components/form/radio-button)
-* [Select](#/web/components/form/select)
+* [Text Field](#/components/form/text-field)
+* [Textarea](#/components/form/textarea)
+* [Radio Button](#/components/form/radio-button)
+* [Select](#/components/form/select)
 
 
 <script lang="ts">

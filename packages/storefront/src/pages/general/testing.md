@@ -3,7 +3,7 @@
 One problem you might encounter while testing is, that the components get
 lazy loaded. That means, that they might not be ready when your tests start
 to access the elements.  
-You can solve that by using the [componentsReady-function](#/web/components/general/components-ready)
+You can solve that by using the [componentsReady-function](#/components/general/components-ready)
  to know when all loading is finished.
 
 ## Unit Tests

@@ -86,7 +86,7 @@ Avoid select boxes when typing may be faster.
  
 ## Related Components
 
-* [Text Field](#/web/components/form/text-field)
-* [Textarea](#/web/components/form/textarea)
-* [Checkbox](#/web/components/form/checkbox)
-* [Radio Button](#/web/components/form/radio-button)
+* [Text Field](#/components/form/text-field)
+* [Textarea](#/components/form/textarea)
+* [Checkbox](#/components/form/checkbox)
+* [Radio Button](#/components/form/radio-button)
