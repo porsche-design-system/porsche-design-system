@@ -12,41 +12,6 @@ const router = new Router({
       name: 'home',
       redirect: '/web'
     },
-    // App
-    {
-      path: '/app',
-      name: 'home-app',
-      meta: { area: 'app' },
-      component: () => import('@/views/HomeApp.vue')
-    },
-    {
-      path: '/app/404',
-      name: '404-app',
-      meta: { area: 'app' },
-      component: () => import('@/views/NotFound.vue')
-    },
-    {
-      path: '/app/:page',
-      name: 'custom-app',
-      meta: { area: 'app' },
-      component: () => import('@/views/Custom.vue')
-    },
-    {
-      path: '/app/:category/:page',
-      name: 'page-app',
-      meta: { area: 'app' },
-      component: () => import('@/views/Page.vue')
-    },
-    {
-      path: '/app/components/:category/:story',
-      name: 'story-app',
-      meta: { area: 'app' },
-      component: () => import('@/views/Story.vue')
-    },
-    {
-      path: '/app/*',
-      redirect: { name: '404-app' }
-    },
     // Web
     {
       path: '/web',

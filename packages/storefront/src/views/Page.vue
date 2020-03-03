@@ -5,13 +5,12 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config as webConfig} from '@/../storefront.web.config';
-  import {config as appConfig} from '@/../storefront.app.config';
-  import {decodeUrl} from '@/services/utils';
+  import { Component, Vue, Watch } from 'vue-property-decorator';
+  import { config as webConfig } from '@/../storefront.web.config';
+  import { decodeUrl } from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
-  import {ComponentListImport, Pages} from '@/interface';
-  import {Component as ComponentType} from 'vue/types/options';
+  import { ComponentListImport, Pages } from '@/interface';
+  import { Component as ComponentType } from 'vue/types/options';
 
   @Component({
     components: {
@@ -34,14 +33,7 @@
     }
 
     private get config(): Pages {
-      switch (this.area) {
-        case 'app':
-          return appConfig.pages;
-        case 'web':
-          return webConfig.pages;
-        default:
-          return webConfig.pages;
-      }
+      return webConfig.pages;
     }
 
     private get pages(): ComponentListImport {

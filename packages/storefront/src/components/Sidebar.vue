@@ -5,21 +5,23 @@
         <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
-            <router-link :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`" v-slot="{ href, navigate, isActive }">
+            <router-link :to="`/${area}/${encodeUrl(category)}/${encodeUrl(page)}`"
+                         v-slot="{ href, navigate, isActive }">
               <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
             </router-link>
           </li>
         </ul>
       </li>
     </ul>
-    <Divider v-if="config.stories" spacing="small" />
+    <Divider v-if="config.stories" spacing="small"/>
     <p-headline v-if="config.stories" variant="headline-3" tag="h2">Components</p-headline>
     <ul v-if="config.stories" class="list">
       <li v-for="(stories, category, index) in config.stories" :key="index">
         <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, story, index) in stories" :key="index">
-            <router-link :to="`/${area}/components/${encodeUrl(category)}/${encodeUrl(story)}`" v-slot="{ href, navigate, isActive }">
+            <router-link :to="`/${area}/components/${encodeUrl(category)}/${encodeUrl(story)}`"
+                         v-slot="{ href, navigate, isActive }">
               <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ story }}</p-link-pure>
             </router-link>
           </li>
@@ -30,33 +32,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import {StorefrontConfig} from '@/interface';
-import {config as webConfig} from '@/../storefront.web.config';
-import {config as appConfig} from '@/../storefront.app.config';
-import {encodeUrl} from '@/services/utils';
-import Divider from '@/components/Divider.vue';
+  import { Component, Vue, Prop } from 'vue-property-decorator';
+  import { StorefrontConfig } from '@/interface';
+  import { config as webConfig } from '@/../storefront.web.config';
+  import { encodeUrl } from '@/services/utils';
+  import Divider from '@/components/Divider.vue';
 
-@Component({
-  components: {
-    Divider
-  }
-})
-export default class Sidebar extends Vue {
-  public encodeUrl = encodeUrl;
+  @Component({
+    components: {
+      Divider
+    }
+  })
+  export default class Sidebar extends Vue {
+    public encodeUrl = encodeUrl;
 
-  get area(): string {
-    return this.$route.meta.area;
-  }
+    get area(): string {
+      return this.$route.meta.area;
+    }
 
-  get config(): StorefrontConfig {
-    switch (this.area) {
-      case 'app': return appConfig;
-      case 'web': return webConfig;
-      default: return webConfig;
+    get config(): StorefrontConfig {
+      return webConfig;
     }
   }
-}
+
 </script>
 
 <style scoped lang="scss">

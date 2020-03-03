@@ -14,7 +14,6 @@
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator';
   import {config as webConfig} from '@/../storefront.web.config';
-  import {config as appConfig} from '@/../storefront.app.config';
   import {decodeUrl, encodeUrl} from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
   import {ComponentListImport, Stories} from '@/interface';
@@ -59,14 +58,7 @@
     }
 
     private get config(): Stories {
-      switch (this.area) {
-        case 'app':
-          return appConfig.stories;
-        case 'web':
-          return webConfig.stories;
-        default:
-          return webConfig.stories;
-      }
+      return webConfig.stories;
     }
 
     private get stories(): ComponentListImport {
