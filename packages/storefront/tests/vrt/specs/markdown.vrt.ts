@@ -14,7 +14,7 @@ describe('Markdown', () => {
       await vrt.test(
         'markdown',
         async () => {
-          await vrt.goTo('/#/web/markdown');
+          await vrt.goTo('/#/markdown');
         },
         '#app > .content > .main > .router-view'
       )
