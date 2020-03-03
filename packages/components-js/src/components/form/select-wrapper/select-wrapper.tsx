@@ -67,7 +67,7 @@ export class SelectWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.labelId}>
+        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
           <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
