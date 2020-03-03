@@ -5,7 +5,7 @@
 This package contains helpful SCSS functions, mixins and variables.
 
 ### Install
-It's necessary to have access to the Porsche Design System private NPM registry to be able to install the `@porsche-design-system/scss-utils` NPM package. If you don't have an account yet, please first [read more about getting started as developer](#/web/getting-started/start-coding).
+It's necessary to have access to the Porsche Design System private NPM registry to be able to install the `@porsche-design-system/scss-utils` NPM package. If you don't have an account yet, please first [read more about getting started as developer](#/getting-started/start-coding).
 ```
 // install with npm:
 npm install @porsche-design-system/scss-utils --save-dev

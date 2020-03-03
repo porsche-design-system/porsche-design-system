@@ -21,11 +21,11 @@
 
 ### Used by
 
- - [p-button](#/web/components/action/button)
- - [p-button-pure](#/web/components/action/button-pure)
- - [p-checkbox-wrapper](#/web/components/form/checkbox-wrapper)
- - [p-link](#/web/components/navigation/link)
- - [p-link-pure](#/web/components/navigation/link-pure)
- - [p-pagination](#/web/components/navigation/pagination)
- - [p-select-wrapper](#/web/components/form/select-wrapper)
- - [p-text-field-wrapper](#/web/components/form/text-field-wrapper)
+ - [p-button](#/components/action/button)
+ - [p-button-pure](#/components/action/button-pure)
+ - [p-checkbox-wrapper](#/components/form/checkbox-wrapper)
+ - [p-link](#/components/navigation/link)
+ - [p-link-pure](#/components/navigation/link-pure)
+ - [p-pagination](#/components/navigation/pagination)
+ - [p-select-wrapper](#/components/form/select-wrapper)
+ - [p-text-field-wrapper](#/components/form/text-field-wrapper)

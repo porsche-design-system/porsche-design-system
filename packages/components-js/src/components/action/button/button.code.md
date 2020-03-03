@@ -68,7 +68,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button icon="delete" :theme="theme">Some label</p-button>
-    <p-button :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Some label</p-button>
+    <p-button :icon-source="require(`@/assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Some label</p-button>
   </template>
 </Playground>
 

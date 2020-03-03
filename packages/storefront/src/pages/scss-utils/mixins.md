@@ -60,7 +60,7 @@ div {
 
 ## Typography
 
-**Note:** For font-styling it's recommended to use the [`<p-headline>`](#/web/components/basic/typography#code)/[`<p-text>`](#/web/components/basic/typography#code) components.
+**Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/basic/typography#code)/[`<p-text>`](#/components/basic/typography#code) components.
 
 ### Headline
 
