@@ -30,11 +30,11 @@ Help text should be displayed openly and directly, also in order not to expect t
 
 - **Validation and error**
 For a group of Radio Buttons the validation message is set at the end of the list. This means that the validation for a Radio Button behaves differently from the other form elements where the validation is set for each individual component.
-For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
+For further information we recommend to read the general form guideline. [Forms Guideline](#/pattern/forms)
 
 - **Spacing**
 According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general form guideline. [Forms Guideline](www.link.de)
+For further information we recommend to read the general form guideline. [Forms Guideline](#/pattern/forms)
 
 ---
 
