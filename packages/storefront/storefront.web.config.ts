@@ -6,83 +6,83 @@ export const config: StorefrontConfig = {
     'Getting Started': {
       About: [
         // @ts-ignore
-        () => import(`@/pages/web/about.md`)
+        () => import(`@/pages/getting-started/about.md`)
       ],
       'Start Designing': [
         // @ts-ignore
-        () => import(`@/pages/web/start-designing.md`)
+        () => import(`@/pages/getting-started/start-designing.md`)
       ],
       'Design Workflow': [
         // @ts-ignore
-        () => import(`@/pages/web/design-workflow.md`)
+        () => import(`@/pages/getting-started/design-workflow.md`)
       ],
       'Sketch Plugins': [
         // @ts-ignore
-        () => import(`@/pages/web/sketch-plugins.md`)
+        () => import(`@/pages/getting-started/sketch-plugins.md`)
       ],
       'Start Coding': [
         // @ts-ignore
-        () => import(`@/pages/web/start-coding.md`)
+        () => import(`@/pages/getting-started/start-coding.md`)
       ]
     },
     News: {
       Updates: [
         // @ts-ignore
-        () => import(`@/pages/web/updates.md`)
+        () => import(`@/pages/news/updates.md`)
       ],
       Versioning: [
         // @ts-ignore
-        () => import(`@/pages/web/versioning.md`)
+        () => import(`@/pages/news/versioning.md`)
       ],
       Roadmap: [
         // @ts-ignore
-        () => import(`@/pages/web/roadmap.md`)
+        () => import(`@/pages/news/roadmap.md`)
       ]
     },
     Help: {
       Support: [
         // @ts-ignore
-        () => import(`@/pages/web/support.md`)
+        () => import(`@/pages/help/support.md`)
       ],
       Faq: [
         // @ts-ignore
-        () => import(`@/pages/web/faq.md`)
+        () => import(`@/pages/help/faq.md`)
       ],
       Troubleshooting: [
         // @ts-ignore
-        () => import(`@/pages/web/troubleshooting.md`)
+        () => import(`@/pages/help/troubleshooting.md`)
       ]
     },
     Basics: {
       'Browser Compatibility': [
         // @ts-ignore
-        () => import(`@/pages/web/browser-compatibility.md`)
+        () => import(`@/pages/basics/browser-compatibility.md`)
       ],
       'Quality Criteria': [
         // @ts-ignore
-        () => import(`@/pages/web/quality-criteria.md`)
+        () => import(`@/pages/basics/quality-criteria.md`)
       ],
       'Accessibility Criteria': [
         // @ts-ignore
-        () => import(`@/pages/web/accessibility.md`)
+        () => import(`@/pages/basics/accessibility.md`)
       ]
     },
     'Scss Utils': {
       Introduction: [
         // @ts-ignore
-        () => import(`@/pages/web/introduction.md`)
+        () => import(`@/pages/scss-utils/introduction.md`)
       ],
       Variables: [
         // @ts-ignore
-        () => import(`@/pages/web/variables.md`)
+        () => import(`@/pages/scss-utils/variables.md`)
       ],
       Mixins: [
         // @ts-ignore
-        () => import(`@/pages/web/mixins.md`)
+        () => import(`@/pages/scss-utils/mixins.md`)
       ],
       Functions: [
         // @ts-ignore
-        () => import(`@/pages/web/functions.md`)
+        () => import(`@/pages/scss-utils/functions.md`)
       ]
     }
   },
@@ -90,19 +90,19 @@ export const config: StorefrontConfig = {
     General: {
       'Blur On Focus': [
         // @ts-ignore
-        () => import(`@/stories/web/blur-on-focus.md`)
+        () => import(`@/pages/general/blur-on-focus.md`)
       ],
       'Components Ready': [
         // @ts-ignore
-        () => import(`@/stories/web/components-ready.md`)
+        () => import(`@/pages/general/components-ready.md`)
       ],
       'Testing': [
         // @ts-ignore
-        () => import(`@/stories/web/testing.md`)
+        () => import(`@/pages/general/testing.md`)
       ],
       'Slotted Content': [
         // @ts-ignore
-        () => import(`@/stories/web/slotted-content.md`)
+        () => import(`@/pages/general/slotted-content.md`)
       ]
     },
     Basic: {
