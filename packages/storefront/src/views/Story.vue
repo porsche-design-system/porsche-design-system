@@ -13,7 +13,7 @@
 
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config as webConfig} from '@/../storefront.config';
+  import {config as storefrontConfig} from '@/../storefront.config';
   import {decodeUrl, encodeUrl} from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
   import {ComponentListImport, Stories} from '@/interface';
@@ -54,7 +54,7 @@
     }
 
     private get config(): Stories {
-      return webConfig.stories;
+      return storefrontConfig.stories;
     }
 
     private get stories(): ComponentListImport {
