@@ -5,13 +5,12 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config as webConfig} from '@/../storefront.web.config';
-  import {config as appConfig} from '@/../storefront.app.config';
-  import {decodeUrl} from '@/services/utils';
+  import { Component, Vue, Watch } from 'vue-property-decorator';
+  import { config as storefrontConfig } from '@/../storefront.config';
+  import { decodeUrl } from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
-  import {ComponentListImport, Pages} from '@/interface';
-  import {Component as ComponentType} from 'vue/types/options';
+  import { ComponentListImport, Pages } from '@/interface';
+  import { Component as ComponentType } from 'vue/types/options';
 
   @Component({
     components: {
@@ -20,10 +19,6 @@
   })
   export default class Page extends Vue {
     public components: ComponentType[] = [];
-
-    private get area(): string {
-      return this.$route.meta.area;
-    }
 
     private get category(): string {
       return decodeUrl(this.$route.params.category);
@@ -34,14 +29,7 @@
     }
 
     private get config(): Pages {
-      switch (this.area) {
-        case 'app':
-          return appConfig.pages;
-        case 'web':
-          return webConfig.pages;
-        default:
-          return webConfig.pages;
-      }
+      return storefrontConfig.pages;
     }
 
     private get pages(): ComponentListImport {
@@ -73,7 +61,7 @@
     }
 
     private redirect(): void {
-      this.$router.replace({name: `404-${this.area}`});
+      this.$router.replace({name: `404`});
     }
   }
 </script>

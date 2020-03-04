@@ -31,4 +31,4 @@
 
 ### Depends on
 
-- [p-icon](#/web/components/icon/icon)
+- [p-icon](#/components/icon/icon)
