@@ -36,11 +36,11 @@ Help text should be displayed openly and directly, also in order not to expect t
 
 - **Validation and error**
 Contrary to Radio Buttons, each Checkbox item can have its own validation message.
-For further information we recommend to read the general form guideline. [Forms Guideline](#/pattern/forms)
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
 
 - **Spacing**
-According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general form guideline. [Forms Guideline](#/pattern/forms)
+According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity) objects that are near or proximate to each other tend to be grouped together.
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
 
 ---
 
