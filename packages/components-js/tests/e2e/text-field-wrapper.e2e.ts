@@ -30,6 +30,28 @@ describe('Text Field Wrapper', () => {
     expect(el).not.toBeNull();
   });
 
+  it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-text-field-wrapper>
+        <input type="text" name="some-name"/>
+      </p-text-field-wrapper>`);
+
+    const textFieldComponent = await page.find('p-text-field-wrapper');
+    const getLabelText = async () => {
+      return textFieldComponent.shadowRoot.querySelector('.p-text-field-wrapper__label-text');
+    };
+
+    expect(await getLabelText()).toBeNull();
+
+    textFieldComponent.setProperty('label', 'Some label');
+
+    await page.waitForChanges();
+
+    expect(await getLabelText()).not.toBeNull();
+
+  });
+
   it(`should focus input when label text is clicked`, async () => {
     const page = await newE2EPage();
     await page.setContent(`

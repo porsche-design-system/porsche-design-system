@@ -12,6 +12,28 @@ describe('Textarea Wrapper', () => {
     expect(el).not.toBeNull();
   });
 
+  it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-textarea-wrapper>
+        <textarea name="some-name"></textarea>
+      </p-textarea-wrapper>`);
+
+    const textareaComponent = await page.find('p-textarea-wrapper');
+    const getLabelText = async () => {
+      return textareaComponent.shadowRoot.querySelector('.p-textarea-wrapper__label-text');
+    };
+
+    expect(await getLabelText()).toBeNull();
+
+    textareaComponent.setProperty('label', 'Some label');
+
+    await page.waitForChanges();
+
+    expect(await getLabelText()).not.toBeNull();
+
+  });
+
   it(`should focus textarea when label text is clicked`, async () => {
     const page = await newE2EPage();
     await page.setContent(`

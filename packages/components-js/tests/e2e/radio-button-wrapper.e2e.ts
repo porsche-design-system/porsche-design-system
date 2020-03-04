@@ -11,6 +11,28 @@ describe('radio-button-wrapper', () => {
     expect(el).not.toBeNull();
   });
 
+  it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-radio-button-wrapper>
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>`);
+
+    const radioComponent = await page.find('p-radio-button-wrapper');
+    const getLabelText = async () => {
+      return radioComponent.shadowRoot.querySelector('.p-radio-button-wrapper__label-text');
+    };
+
+    expect(await getLabelText()).toBeNull();
+
+    radioComponent.setProperty('label', 'Some label');
+
+    await page.waitForChanges();
+
+    expect(await getLabelText()).not.toBeNull();
+
+  });
+
   it('should check radio-button when input is clicked', async () => {
     const page = await newE2EPage();
     await page.setContent(`
