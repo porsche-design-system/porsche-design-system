@@ -13,6 +13,28 @@ describe('checkbox-wrapper', () => {
     expect(el).not.toBeNull();
   });
 
+  it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-checkbox-wrapper>
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>`);
+
+    const checkboxComponent = await page.find('p-checkbox-wrapper');
+    const getLabelText = async () => {
+      return checkboxComponent.shadowRoot.querySelector('.p-checkbox-wrapper__label-text');
+    };
+
+    expect(await getLabelText()).toBeNull();
+
+    checkboxComponent.setProperty('label', 'Some label');
+
+    await page.waitForChanges();
+
+    expect(await getLabelText()).not.toBeNull();
+
+  });
+
   it('should toggle checkbox when input is clicked', async () => {
     const page = await newE2EPage();
     await page.setContent(`

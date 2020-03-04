@@ -14,6 +14,32 @@ describe('select-wrapper', () => {
     expect(el).not.toBeNull();
   });
 
+  it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-select-wrapper>
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`);
+
+    const selectComponent = await page.find('p-select-wrapper');
+    const getLabelText = async () => {
+      return selectComponent.shadowRoot.querySelector('.p-select-wrapper__label-text');
+    };
+
+    expect(await getLabelText()).toBeNull();
+
+    selectComponent.setProperty('label', 'Some label');
+
+    await page.waitForChanges();
+
+    expect(await getLabelText()).not.toBeNull();
+
+  });
+
   it('should focus select when label text is clicked', async () => {
     const page = await newE2EPage();
     await page.setContent(`<p-select-wrapper label="Some label">
