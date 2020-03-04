@@ -104,7 +104,7 @@ The **Text Field Wrapper** component supports the visualisation of inline valida
   </template>
   <template>
     <p-text-field-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="text" :aria-invalid="state === 'error' && true" name="some-name" />
+      <input type="text" :aria-invalid="state === 'error'" name="some-name" />
     </p-text-field-wrapper>
   </template>
 </Playground>

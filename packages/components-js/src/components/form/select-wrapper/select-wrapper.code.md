@@ -57,7 +57,7 @@ The **Select Wrapper** component supports the visualisation of inline validation
   </template>
   <template>
     <p-select-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <select name="some-name" :aria-invalid="state === 'error' && true">
+      <select name="some-name" :aria-invalid="state === 'error'">
         <option value="a">Option A</option>
         <option value="b">Option B</option>
         <option value="c">Option C</option>
