@@ -40,6 +40,51 @@ describe('select-wrapper', () => {
 
   });
 
+  it('should add/remove message text and add/remove aria attributes to message if state changes programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`);
+
+    const selectComponent = await page.find('p-select-wrapper');
+    const getMessage = async () => {
+      return selectComponent.shadowRoot.querySelector('.p-select-wrapper__message');
+    };
+
+    expect(await getMessage()).toBeNull();
+
+    selectComponent.setProperty('state', 'error');
+    selectComponent.setProperty('message', 'some message');
+
+    await page.waitForChanges();
+
+    const label = await page.find('p-select-wrapper >>> .p-select-wrapper__label');
+    const labelId = label.getAttribute('id');
+
+    expect(await getMessage()).not.toBeNull();
+    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+
+    selectComponent.setProperty('state', 'success');
+
+    await page.waitForChanges();
+
+    expect(await getMessage()).not.toBeNull();
+    expect(await getMessage()).not.toHaveAttribute('role');
+    expect(await getMessage()).not.toHaveAttribute('aria-describedby');
+
+    selectComponent.setProperty('state', 'none');
+
+    await page.waitForChanges();
+
+    expect(await getMessage()).toBeNull();
+
+  });
+
   it('should focus select when label text is clicked', async () => {
     const page = await newE2EPage();
     await page.setContent(`<p-select-wrapper label="Some label">
