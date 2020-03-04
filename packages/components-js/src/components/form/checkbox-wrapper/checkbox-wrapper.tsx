@@ -73,9 +73,11 @@ export class CheckboxWrapper {
             <p-icon class={iconClasses} name={this.indeterminate ? 'subtract' : 'check'} theme='dark' size='inherit' />
             <slot/>
           </span>
+          {this.isLabelVisible &&
           <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent) => this.labelClick(e)}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
+          }
         </label>
         {this.isMessageVisible &&
         <p-text class={messageClasses} color='inherit'>
@@ -84,6 +86,10 @@ export class CheckboxWrapper {
         }
       </Host>
     );
+  }
+
+  private get isLabelVisible(): boolean {
+    return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
   private get isMessageDefined(): boolean {
