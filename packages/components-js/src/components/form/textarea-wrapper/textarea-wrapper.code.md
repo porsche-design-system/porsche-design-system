@@ -64,7 +64,7 @@ The **Textarea Wrapper** component supports the visualisation of inline validati
   </template>
   <template>
     <p-textarea-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <textarea :aria-invalid="state === 'error' && true" name="some-name">Some value</textarea>
+      <textarea :aria-invalid="state === 'error'" name="some-name">Some value</textarea>
     </p-textarea-wrapper>
   </template>
 </Playground>

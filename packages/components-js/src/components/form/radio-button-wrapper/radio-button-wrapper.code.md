@@ -57,7 +57,7 @@ The **Radio Button Wrapper** component supports the visualisation of inline vali
       <input type="radio" name="some-name-5" />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="radio" :aria-invalid="state === 'error' && true" name="some-name-5" />
+      <input type="radio" :aria-invalid="state === 'error'" name="some-name-5" />
     </p-radio-button-wrapper>
   </template>
 </Playground>

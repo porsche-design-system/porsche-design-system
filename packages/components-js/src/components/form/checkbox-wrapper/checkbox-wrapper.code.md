@@ -77,7 +77,7 @@ The **Checkbox Wrapper** component supports the visualisation of inline validati
   </template>
   <template>
     <p-checkbox-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="checkbox" :aria-invalid="state === 'error' && true" name="some-name" />
+      <input type="checkbox" :aria-invalid="state === 'error'" name="some-name" />
     </p-checkbox-wrapper>
   </template>
 </Playground>
