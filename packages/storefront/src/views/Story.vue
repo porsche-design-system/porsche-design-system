@@ -13,8 +13,7 @@
 
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator';
-  import {config as webConfig} from '@/../storefront.web.config';
-  import {config as appConfig} from '@/../storefront.app.config';
+  import {config as storefrontConfig} from '@/../storefront.config';
   import {decodeUrl, encodeUrl} from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
   import {ComponentListImport, Stories} from '@/interface';
@@ -42,10 +41,6 @@
       return Object.keys(story);
     }
 
-    private get area(): string {
-      return this.$route.meta.area;
-    }
-
     private get category(): string {
       return decodeUrl(this.$route.params.category);
     }
@@ -59,14 +54,7 @@
     }
 
     private get config(): Stories {
-      switch (this.area) {
-        case 'app':
-          return appConfig.stories;
-        case 'web':
-          return webConfig.stories;
-        default:
-          return webConfig.stories;
-      }
+      return storefrontConfig.stories;
     }
 
     private get stories(): ComponentListImport {
@@ -115,7 +103,7 @@
       if (this.hasTabs) {
         await this.$router.replace(this.getTabLink(this.getFirstTabName()));
       } else {
-        await this.$router.replace({name: `404-${this.area}`});
+        await this.$router.replace({name: `404`});
       }
     }
   }
