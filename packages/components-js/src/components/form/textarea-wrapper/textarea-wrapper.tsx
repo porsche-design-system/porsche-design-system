@@ -66,9 +66,11 @@ export class TextareaWrapper {
     return (
       <Host>
         <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+          {this.isLabelVisible &&
           <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
+          }
           <span class={fakeTextareaClasses}>
             <slot/>
           </span>
@@ -85,6 +87,10 @@ export class TextareaWrapper {
         }
       </Host>
     );
+  }
+
+  private get isLabelVisible(): boolean {
+    return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
   private get isMessageDefined(): boolean {

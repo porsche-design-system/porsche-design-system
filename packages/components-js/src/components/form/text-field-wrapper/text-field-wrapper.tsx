@@ -72,9 +72,11 @@ export class TextFieldWrapper {
       <Host>
         <span class={containerClasses}>
           <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+            {this.isLabelVisible &&
             <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
+            }
             <span class={fakeInputClasses}>
               <slot/>
             </span>
@@ -97,6 +99,10 @@ export class TextFieldWrapper {
         }
       </Host>
     );
+  }
+
+  private get isLabelVisible(): boolean {
+    return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
   private get isMessageDefined(): boolean {
