@@ -1,3 +1,0 @@
-# Button
-
-Lorem ipsum.

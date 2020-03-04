@@ -19,4 +19,4 @@
 
 ### Depends on
 
-- [p-text](#/web/components/basic/typography/text)
+- [p-text](#/components/basic/typography/text)

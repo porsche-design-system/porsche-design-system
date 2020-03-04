@@ -121,7 +121,7 @@ Don't use the Text Field component if you need to allow users to enter longer te
  
 ## Related Components
 
-* [Textarea](#/web/components/form/textarea)
-* [Checkbox](#/web/components/form/checkbox)
-* [Radio Button](#/web/components/form/radio-button)
-* [Select](#/web/components/form/select)
+* [Textarea](#/components/form/textarea)
+* [Checkbox](#/components/form/checkbox)
+* [Radio Button](#/components/form/radio-button)
+* [Select](#/components/form/select)
