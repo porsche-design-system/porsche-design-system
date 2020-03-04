@@ -14,7 +14,7 @@ Placeholder text disappears when a user types in the input. If a user doesn’t 
 
 ### Pure (without label)
 
-Use the component Pure (without label) only if the context is clearly described and no further explanation is required.
+The component Pure (without label) is only used if the context clearly describes what the component Pure is to be used for and no further explanation is required.
 
 <p-textarea-wrapper label="Some label" hide-label="true"><textarea name="some-name"></textarea></p-textarea-wrapper>
 
@@ -42,7 +42,7 @@ The label text (always in copytext) gives the user an information about the opti
 Enables users to enter a multiline text.
 
 - **Width and height**
-Textareas have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. The initial width is set to 272 px (corresponds to the grid width on viewport XS). We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. In this case we recommend to adapt the Text Area to the content. For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+Textareas have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. The initial width of the sketch symbol is set to 272 px (corresponds to the grid width on viewport XS). We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. In this case we recommend to adapt the Text Area to the content. For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
 
 - **Help text**
 Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. If deeper, longer descriptions are necessary, which can optionally be read through and would interrupt the reading flow of the form, they should be hidden in a info tooltip, which is placed 8 px behind the label.
