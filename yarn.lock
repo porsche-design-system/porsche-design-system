@@ -2817,12 +2817,12 @@
   resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.2.tgz#e534c736d204f9cc7c95f72c9c4d56739beba836"
   integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
 
-"@stencil/core@^1.8.7":
-  version "1.8.7"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.8.7.tgz#8e5d8f8b0eb71a00e5ba38e57fd777fdd4a82df8"
-  integrity sha512-5nlb2VIDjAiwpHogsy8/p7TR5ni4I1S9mfLZcgmsR1zx1b9F1jRCA16E4oWF+tS+QV5AWURCSZOJJrQQqWSMww==
+"@stencil/core@^1.8.11":
+  version "1.8.11"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.8.11.tgz#256aa9de100813ad241440ec2173aa09d62fd8c4"
+  integrity sha512-CWalrysaD+AFyPSd6ZJzBnGdp6vZIF9MajvnQg+jJd2s67HbO1B9lPDKtX8mPW9HF3/3o0XMVQR1F9uLBqIviA==
   dependencies:
-    typescript "3.7.5"
+    typescript "3.8.2"
 
 "@stencil/postcss@^1.0.1":
   version "1.0.1"
@@ -2831,10 +2831,10 @@
   dependencies:
     postcss "~7.0.17"
 
-"@stencil/react-output-target@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.2.tgz#7619fd7ef6d5f511bdc09e5436321e8d5223daaf"
-  integrity sha512-sIja4vhkQgHZcNt0kChvL3blX74xP/STSAbchLyg2oMCBQU1KxfPYgiw/3zs7NVZsbEDMAVak8bM/oorNQJZYw==
+"@stencil/react-output-target@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.3.tgz#096eee65a56f74784f7c3b0d5c3bef5f8d0bfefb"
+  integrity sha512-OjvDi7gd2OUgj8aF4iSVCt68e+38zxtpCoG/8R4b984IlaiL6QUFMc+pBbGYsyMC0Wd13oXRHZze0KYiL+l0GA==
 
 "@stencil/sass@^1.1.1":
   version "1.1.1"
@@ -16674,10 +16674,10 @@ typescript@3.5.3, typescript@~3.5.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
 
-typescript@3.7.5:
-  version "3.7.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
-  integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
+typescript@3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.2.tgz#91d6868aaead7da74f493c553aeff76c0c0b1d5a"
+  integrity sha512-EgOVgL/4xfVrCMbhYKUQTdF37SQn4Iw73H5BgCrF1Abdun7Kwy/QZsE/ssAy0y4LxBbvua3PIbFsbRczWWnDdQ==
 
 typescript@^3.7.4, typescript@~3.7.4:
   version "3.7.4"
