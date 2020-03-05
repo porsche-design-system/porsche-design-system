@@ -223,7 +223,19 @@ Even though live inline validation should be your first choice from a UX perspec
 
 ### Tonality and content
 
-<span style="color:red; font-weight: 800;">[ !!! HIER WARTE ICH NOCH AUF INPUT AUS DER UX GUILD, INFOS FOLGEN !!! ]</span>
+Sure, nobody likes error messages! But as they're sometimes inevitable, we should focus on how we talk to our users. Error messages should never be scaring or intrusive, as this might (in worst case) lead the user to cancelling the form. Error messages rather should give the user security and make it easy to correct the error, so that the delay caused by the error appears as short as possible. So, designing custom error messages is key for a good UX and to increase conversions ([90 Percent of Everything, 2009](https://www.90percentofeverything.com/2009/02/16/karl-sabino-on-the-roi-of-well-designed-error-messages/)).
+
+**How we write error messages in Porsche web applications:**
+
+|               | <p-text color="notification-success">DO</p-text> 👍  | <p-text color="notification-error">DON'T</p-text> 👎 |
+|---------------|------------------------------------------------------|------------------------------------------------------|
+| We always state **why** the user's input was not correct and – very important! – we **always** **provide opportunities** on how the user can quickly and easily correct the error. | <p-text color="notification-success">"The credit card number seems to be incomplete. Please check it again."</p-text> | <p-text color="notification-error">"Invalid input."</p-text> |
+| Error messages should be **short, specific and descriptive**. | <p-text color="notification-success">"The e-mail needs an 'at' symbol."</p-text> | <p-text color="notification-error">"The e-mail is invalid."</p-text> |
+| We always **address users directly** and at eye level – just like if we talked to them in real life. | <p-text color="notification-success">"Please check your input."</p-text>| <p-text color="notification-error">"Invalid input."</p-text> |
+| We **use our voice dynamically** – depending to the current situation we speak for example rather descriptive, clearly or motivating. Whenever the user needs help, **we speak empathetic and encouraging**. | <p-text color="notification-success">"What would you like to tell us?"</p-text> | <p-text color="notification-error">"Please enter your message."</p-text> |
+| We use **active voice** in case of instructions. | <p-text color="notification-success">"Enter your name."</p-text> | <p-text color="notification-error">"First name must be entered."</p-text> |
+| We **avoid using negative words** like "invalid", "forbidden", "error" or "problem". We should never make the user feel bad or guilty. | <p-text color="notification-success">"The credit card expiration date must be in the future."</p-text> | <p-text color="notification-error">"The credit card is invalid."</p-text> |
+| We should **always provide positive submission notifications**, showing the user that the process is completely and correctly finished and providing them information for next steps. This good feeling directly relates to a good brand experience. | <p-text color="notification-success">"You have successfully completed your registration. We now wish you a pleasant visit to the Porsche website."</p-text>| <p-text color="notification-error">"You have successfully completed your registration. Now you can make orders in the Porsche Shop, manage your personal data and much more. We wish you a lot of fun. We also recommend the following services: …"</p-text> |
 
 ---
 
