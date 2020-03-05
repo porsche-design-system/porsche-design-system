@@ -19,7 +19,6 @@ The digital world cannot be imagined without forms. **Whenever we need informati
 A typical form in Porsche web applications is made up of five basic elements:
 
 <span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG MIT NUMMERIERUNG FOLGT !!! ]</span>
-<span style="color:red; font-weight: 800;">[ @DEV: ORDERED LIST IM MARKDOWN SCHEINT NICHT ZU FUNKTIONIEREN, WIRD ALS BULLETS AUSGEGEBEN? ]</span>
 
 1. **The general structure** is defined by how the form is being layed out within the specific page, involving column layout, logical sections as well as proper spacings helping the user to capture the form at first sight.
 2. **Form fields** provide all input options the user needs to fill out the form, whether it's commonly used free-form text input (Text Fields, Textareas) or specific data inputs (such as Checkboxes, Radio Buttons, Select). They can have different states and variants that are described in the specific component guidelines.
@@ -90,7 +89,8 @@ Sometimes it's helpful for the user to get further information, for example on t
 * **Short and/or very important information** that's essential for the completion of the form should be displayed directly outside the form field, so that users are not forced to make further clicks. At Porsche, we always place help text on top of the form fields (as the bottom space is reserved for validation messages) in Copytext x-small in order to distinguish it from label text. You'll find detailed information on the correct placement of the help text in the specific form component guidelines.  
 <span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG FOLGT !!! ]</span>
 * **Longer and/or less important information** (even more so if it's optional to read) should be hidden in an "information" icon that is placed directly (spacing 8 px) after the field label and reveals an explanation in a tooltip on hover (desktop) or on click (tablet/mobile). As soon as the user continues filling out the form, the tooltip should disappear. This way, we keep the form short and prevent the user from extra scrolling. But be aware to use tooltips sparingly.  
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG FOLGT !!! ]</span>
+    
+  ![Information displayed in tooltip](../../assets/patterns-forms-helptext-tooltip.png)
 
 ### Handle with care: Sensitive and personal data
 
