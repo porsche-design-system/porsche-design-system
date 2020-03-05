@@ -7,7 +7,7 @@ import { JSX } from '@porsche-design-system/components-js';
 
 import { defineCustomElements, applyPolyfills } from '@porsche-design-system/components-js/loader';
 
-applyPolyfills().then(() => { defineCustomElements(window); });
+applyPolyfills().then(() => defineCustomElements());
 export const PButton = /*@__PURE__*/createReactComponent<JSX.PButton, HTMLPButtonElement>('p-button');
 export const PButtonPure = /*@__PURE__*/createReactComponent<JSX.PButtonPure, HTMLPButtonPureElement>('p-button-pure');
 export const PCheckboxWrapper = /*@__PURE__*/createReactComponent<JSX.PCheckboxWrapper, HTMLPCheckboxWrapperElement>('p-checkbox-wrapper');
