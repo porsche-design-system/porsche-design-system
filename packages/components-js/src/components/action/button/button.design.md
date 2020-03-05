@@ -63,11 +63,11 @@ All Button types are available in the following states:
 
 ## Styling
 
-- **Icon**
+### Icon
 The default icon is an arrow right that should serve in most cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. 
 
 
-- **Standard icons**
+### Standard icons
 To ensure a seamless UX in all Porsche web applications it is recommended to use standardized icons for the following cases:
 
 | Interaction | Icon | Example |
@@ -78,7 +78,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Edit | <p-icon name="edit" aria-label="Edit"></p-icon> | Edit content, e.g. in lists or shop checkout. | 	
 | Add | <p-icon name="add" aria-label="Add"></p-icon> | Add content, e.g. a new item in a list. | 
 
-- **Text label**
+### Text label
 The text label is always set in copytext size. It is recommended to always keep the label short and give the user a hint on the indicated action, for example by including active verbs such as "add", "edit" or "delete". 
 
 ---
