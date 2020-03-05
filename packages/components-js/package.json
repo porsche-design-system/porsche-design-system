@@ -64,7 +64,7 @@
     "@stencil/angular-output-target": "^0.0.2",
     "@stencil/core": "^1.8.11",
     "@stencil/postcss": "^1.0.1",
-    "@stencil/react-output-target": "^0.0.3",
+    "@stencil/react-output-target": "^0.0.4",
     "@stencil/sass": "^1.1.1",
     "@types/autoprefixer": "^9.5.0",
     "@types/classnames": "^2.2.8",

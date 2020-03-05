@@ -2831,10 +2831,10 @@
   dependencies:
     postcss "~7.0.17"
 
-"@stencil/react-output-target@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.3.tgz#096eee65a56f74784f7c3b0d5c3bef5f8d0bfefb"
-  integrity sha512-OjvDi7gd2OUgj8aF4iSVCt68e+38zxtpCoG/8R4b984IlaiL6QUFMc+pBbGYsyMC0Wd13oXRHZze0KYiL+l0GA==
+"@stencil/react-output-target@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.4.tgz#7923a964e102fe622616bf2703d942da9384159e"
+  integrity sha512-Ty2nJ2igC1jVNVcEc04Ut19wb7ac+NMd8HVEHvdZbO3HZZ98yAIERN72Z5Up0jpFPZGLAJ+SMGTc2HP2hoUjnw==
 
 "@stencil/sass@^1.1.1":
   version "1.1.1"
@@ -3194,7 +3194,7 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.9.17":
+"@types/react@*":
   version "16.9.17"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.17.tgz#58f0cc0e9ec2425d1441dd7b623421a867aa253e"
   integrity sha512-UP27In4fp4sWF5JgyV6pwVPAQM83Fj76JOcg02X5BZcpSu5Wx+fP9RMqc2v0ssBoQIFvD5JdKY41gjJJKmw6Bg==
