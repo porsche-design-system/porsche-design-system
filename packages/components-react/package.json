@@ -28,7 +28,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.2.0",
     "react-test-renderer": "^16.13.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   },
   "resolutions": {
     "@types/react": "^16.9.17"
