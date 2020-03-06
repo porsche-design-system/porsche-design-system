@@ -77,7 +77,7 @@ The **Checkbox Wrapper** component supports the visualisation of inline validati
   </template>
   <template>
     <p-checkbox-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="checkbox" name="some-name" />
+      <input type="checkbox" :aria-invalid="state === 'error'" name="some-name" />
     </p-checkbox-wrapper>
   </template>
 </Playground>
@@ -93,7 +93,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
   <template>
     <p-checkbox-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="checkbox" name="some-name" />
+      <input type="checkbox" aria-invalid="true" name="some-name" />
       <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-checkbox-wrapper>
   </template>
