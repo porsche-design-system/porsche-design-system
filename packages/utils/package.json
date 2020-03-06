@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "@porsche-design-system/scss-utils": "1.0.0",
-    "node-sass-tilde-importer": "^1.0.0",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.13.1",
+    "node-sass-tilde-importer": "^1.0.0"
   },
   "files": [
     "dist/"
