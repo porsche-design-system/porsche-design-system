@@ -57,7 +57,7 @@ The **Radio Button Wrapper** component supports the visualisation of inline vali
       <input type="radio" name="some-name-5" />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="radio" name="some-name-5" />
+      <input type="radio" :aria-invalid="state === 'error'" name="some-name-5" />
     </p-radio-button-wrapper>
   </template>
 </Playground>
@@ -73,11 +73,11 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
   <template>
     <p-radio-button-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="radio" name="some-name-6" />
+      <input type="radio" aria-invalid="true" name="some-name-6" />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="radio" name="some-name-6" />
+      <input type="radio" aria-invalid="true" name="some-name-6" />
       <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-radio-button-wrapper>
   </template>
