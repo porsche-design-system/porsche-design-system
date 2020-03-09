@@ -33,6 +33,48 @@ describe('radio-button-wrapper', () => {
 
   });
 
+  it('should add/remove message text and add/remove aria attributes to message if state changes programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-radio-button-wrapper label="Some label">
+        <input type="radio" name="some-name"/>
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>`);
+
+    const radioComponent = await page.find('p-radio-button-wrapper');
+    const getMessage = async () => {
+      return radioComponent.shadowRoot.querySelector('.p-radio-button-wrapper__message');
+    };
+
+    expect(await getMessage()).toBeNull();
+
+    radioComponent.setProperty('state', 'error');
+    radioComponent.setProperty('message', 'some message');
+
+    await page.waitForChanges();
+
+    const label = await page.find('p-radio-button-wrapper >>> .p-radio-button-wrapper__label');
+    const labelId = label.getAttribute('id');
+
+    expect(await getMessage()).not.toBeNull();
+    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+
+    radioComponent.setProperty('state', 'success');
+
+    await page.waitForChanges();
+
+    expect(await getMessage()).not.toBeNull();
+    expect(await getMessage()).not.toHaveAttribute('role');
+    expect(await getMessage()).not.toHaveAttribute('aria-describedby');
+
+    radioComponent.setProperty('state', 'none');
+
+    await page.waitForChanges();
+
+    expect(await getMessage()).toBeNull();
+
+  });
+
   it('should check radio-button when input is clicked', async () => {
     const page = await newE2EPage();
     await page.setContent(`

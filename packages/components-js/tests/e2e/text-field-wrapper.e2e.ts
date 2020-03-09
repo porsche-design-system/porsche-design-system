@@ -52,6 +52,47 @@ describe('Text Field Wrapper', () => {
 
   });
 
+  it('should add/remove message text and add/remove aria attributes to message if state changes programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name"/>
+      </p-text-field-wrapper>`);
+
+    const textFieldComponent = await page.find('p-text-field-wrapper');
+    const getMessage = async () => {
+      return textFieldComponent.shadowRoot.querySelector('.p-text-field-wrapper__message');
+    };
+
+    expect(await getMessage()).toBeNull();
+
+    textFieldComponent.setProperty('state', 'error');
+    textFieldComponent.setProperty('message', 'some message');
+
+    await page.waitForChanges();
+
+    const label = await page.find('p-text-field-wrapper >>> .p-text-field-wrapper__label');
+    const labelId = label.getAttribute('id');
+
+    expect(await getMessage()).not.toBeNull();
+    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+
+    textFieldComponent.setProperty('state', 'success');
+
+    await page.waitForChanges();
+
+    expect(await getMessage()).not.toBeNull();
+    expect(await getMessage()).not.toHaveAttribute('role');
+    expect(await getMessage()).not.toHaveAttribute('aria-describedby');
+
+    textFieldComponent.setProperty('state', 'none');
+
+    await page.waitForChanges();
+
+    expect(await getMessage()).toBeNull();
+
+  });
+
   it(`should focus input when label text is clicked`, async () => {
     const page = await newE2EPage();
     await page.setContent(`
