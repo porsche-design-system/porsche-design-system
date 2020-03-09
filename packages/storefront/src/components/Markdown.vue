@@ -144,6 +144,10 @@
           }
         }
 
+        ol {
+          list-style-type: decimal;
+        }
+
         // Code
         code,
         pre {
