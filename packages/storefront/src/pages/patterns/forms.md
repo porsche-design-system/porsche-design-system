@@ -18,13 +18,14 @@ The digital world cannot be imagined without forms. **Whenever we need informati
 
 A typical form in Porsche web applications is made up of five basic elements:
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG MIT NUMMERIERUNG FOLGT !!! ]</span>
-
 1. **The general structure** is defined by how the form is being layed out within the specific page, involving column layout, logical sections as well as proper spacings helping the user to capture the form at first sight.
 2. **Form fields** provide all input options the user needs to fill out the form, whether it's commonly used free-form text input (Text Fields, Textareas) or specific data inputs (such as Checkboxes, Radio Buttons, Select). They can have different states and variants that are described in the specific component guidelines.
 3. **Labels** accompany the form fields, helping the user to understand the type of input that is required. They should always be short and descriptive (optimal: 1-3 words), stating the required input. Always start labels capitalized. In all Porsche Design System components, labels are placed top-aligned to support scannability and speed up form completion.
 4. Good **feedback** is crucial to give the user both a feeling of success when completing the form fields correctly as well as providing valuable support in case of a wrong entry.
-5. A **call-to-action** is needed to initiate further processing, for example submitting, sending or cancelling a form input. Most forms come with two call-to-actions. The successive (and therefore most important) button should be emphasized. As red is a very sensitive color in forms (due to error notifications) we highly recommend to go for a Secondary Button ([https://designsystem.porsche.com/latest/#/web/components/action/button#design](https://designsystem.porsche.com/latest/#/web/components/action/button#design)) in grey, accompanied by a Tertiary Button for the cancelling / least important option. Button labels have an effect on the conversion rate and should always be short and descriptive, informing the user about what to expect. Something like "submit" is not clear enough. Good examples are "Get a free demo", "Create account" or "Subscribe now".
+5. A **call-to-action** is needed to initiate further processing, for example submitting, sending or cancelling a form input. Most forms come with two call-to-actions. The successive (and therefore most important) button should be emphasized. As red is a very sensitive color in forms (due to error notifications) we highly recommend to go for a [Secondary Button](#/components/action/button) in grey, accompanied by a Tertiary Button for the cancelling / least important option. Button labels have an effect on the conversion rate and should always be short and descriptive, informing the user about what to expect. Something like "submit" is not clear enough. Good examples are "Get a free demo", "Create account" or "Subscribe now".  
+
+  
+ ![The five basic elements of Porsche forms](../../assets/patterns-forms-dna.png)
 
 ---
 
@@ -37,12 +38,11 @@ Follow these basic tips to design forms for Porsche web applications that make u
 **Only ask for information that is really needed from the user.**  
   Not only will the user be more likely to fill our the form, but you also preserve the user from cognitive load (especially on mobile devices). The shorter the form, the better the completion time – and the better the conversion rate.  
 
-
 **Start with fields that are easy to fill in.**  
   Keep the hurdle for the user low to fill out the complete form by providing easy-to-fill-out fields first. Good example: Start with name and e-mail before asking for the credit card number.  
 
 **Pre-fill or auto-detect as much as possible.**  
-  We already know some information about the user, like name, country or e-mail adress, for example? Perfect! Pre-fill the form with this information in order to make it easier for the user to fill in the form.
+  We already know some information about the user, like name, country or e-mail address, for example? Perfect! Pre-fill the form with this information in order to make it easier for the user to fill in the form.
 
 ### Your form should be intuitive
 
@@ -87,8 +87,10 @@ Give the user a hint on the progress state, success or error states or the compl
 Sometimes it's helpful for the user to get further information, for example on the input format or on why the information is needed. It depends on the length and quality of the information how it should be displayed:
 
 * **Short and/or very important information** that's essential for the completion of the form should be displayed directly outside the form field, so that users are not forced to make further clicks. At Porsche, we always place help text on top of the form fields (as the bottom space is reserved for validation messages) in Copytext x-small in order to distinguish it from label text. You'll find detailed information on the correct placement of the help text in the specific form component guidelines.  
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG FOLGT !!! ]</span>
-* **Longer and/or less important information** (even more so if it's optional to read) should be hidden in an "information" icon that is placed directly (spacing 8 px) after the field label and reveals an explanation in a tooltip on hover (desktop) or on click (tablet/mobile). As soon as the user continues filling out the form, the tooltip should disappear. This way, we keep the form short and prevent the user from extra scrolling. But be aware to use tooltips sparingly.  
+    
+  ![Information displayed outside the form field](../../assets/patterns-forms-helptext-open.png)  
+
+* **Longer and/or less important information** (even more so if it's optional to read) should be hidden in an "information" icon that is placed directly (spacing 4 px) after the field label and reveals an explanation in a tooltip on hover (desktop) or on click (tablet/mobile). As soon as the user continues filling out the form, the tooltip should disappear. This way, we keep the form short and prevent the user from extra scrolling. But be aware to use tooltips sparingly.  
     
   ![Information displayed in tooltip](../../assets/patterns-forms-helptext-tooltip.png)
 
@@ -103,25 +105,26 @@ Users shouldn't get the feeling that they are being asked for irrelevant or unne
 **Give deeper information on specific input.**  
 Sometimes it's helpful to give some more information on the "why" of a required input, in order to remove any doubt from the user, even more when it comes to very specific data the user is not used to fill in or when the further processing of an information is not clear enough. In this case, a tooltip with an "information" icon (right behind the input label) is the best way to go.
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG MIT GEÖFFNETEM TOOLTIP + ENTSPRECHENDER MESSAGE FOLGT !!! ]</span>
+  ![Tooltip information on personal data input](../../assets/patterns-forms-personal-data.png)
   
 **Respect GDPR an other legal regulations.**  
 The user should be asked to enter only information that is absolutely necessary.
 
 ### Mandatory and optional fields
 
-Due to the form design mantra "Less is more" optional fields should be avoided whenever possible (Nielsen Norman Group, [https://www.nngroup.com/articles/web-form-design/](https://www.nngroup.com/articles/web-form-design/)). So the majority of form fields should always be mandatory. 
+Due to the form design mantra "Less is more" optional fields should be avoided whenever possible ([Nielsen Norman Group, 2016](https://www.nngroup.com/articles/web-form-design/)). So the majority of form fields should always be mandatory. 
 Due to this fact we can avoid visual and cognitive overload by **marking only the optional fields which are in the minority.** We recommend adding an "… (optional)" to the respective form label.   
   
 
-Further benefits:  
+Further benefits:
 
 * This also gives the user a more positive feeling, as people are more likely to share optional information from a psychological perspective.
 * Users are not supposed to read a global explanation ("All fields marked with *…").
 * The asterisk (*) is freely available for other purposes, for example footnotes.
 * Generally, the form looks cleaner and we avoid distraction.
-
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG FORMULAR (MOBILE DEVICE) MIT AUSGEZEICHNETEN OPTIONAL FIELDS FOLGT !!! ]</span>
+  
+  
+![Mobile form with optional form field](../../assets/patterns-forms-optional-fields.png)
 
 ---
 
@@ -129,15 +132,11 @@ Further benefits:
 
 ### Anatomy
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG ABSTRAHIERTES FORMULAR MIT 1.-3. FOLGT !!! ]</span>
-
 1. **Headline and subline**
    A clear title gives the user some information what to expect when filling out the form.
 2. **Sections with form elements**
 3. **Call-to-actions**
    Call-to-actions (commonly we provide two for either cancelling the form input or submitting) should always be placed left-aligned.
-
-<span style="color:red; font-weight: 800;">[ !!! INFO BZGL. SONDERFALL "WEITER/ZURÜCK" IN MULTI-STEP-FORMULAREN FOLGT !!! ]</span>
 
 
 ### Single-column layout
@@ -158,14 +157,11 @@ For designing a single-column form layout, we recommend the following **maximum 
 - **M (1000-1299 px):** 8 columns
 - **L/XL (1300 px or larger):** 6 columns
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG FOLGT !!! ]</span>
-
-
 ### Form field width
 
 It's commonly recommended to set the form field width to the estimated length of the required input. Though, as we design for international markets at Porsche it's often quite hard to predict the estimated length depending on the language. Also this might lead to a quite unbalanced, "fluttering" look and feel of the form in general. We therefore recommend to go the "golden middle way" in order to cover both the reflection of the intended content length, but also visual pleasure:
 
-- Generally, form field widths should be set to the full form column width.
+- Generally, **form field widths should be set to the full form column width**.
 - Within a form column, it's possible to set multiple form fields in a row, for example in case of ZIP code and city input. In this case, it's helpful to set the form fields to the estimated width.
 - In case of very short forms (up to 2 or 3 form fields) you might also go for estimated lengths, as the fluttering effect is kept low anyway.
 
@@ -177,11 +173,13 @@ According to the ["law of proximity" in Gestalt psychology](https://lawsofux.com
 2. **The spacing between different form fields** might be a bit larger. We recommend at least 16 px (both vertical and horizontal).<
 3. In longer forms, multiple form fields can be grouped together in sections. **Inbetween these sections the spacing should be larger** than between the form fields itself to build visual groups. 40 px is the minimum spacing to go for between two fieldsets. 
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG ABSTRAHIERTES FORMULAR MIT AUSZEICHNUNG FOLGT !!! ]</span>
-
 ### Form sections
 
 Form fields that require similar information should be grouped together to create a logical order. This can be set as a coding property "fieldset". Each fieldset should be initiated by a title (we recommend headline-4) that gives the user a short information on what data is required in this section.
+
+![Mobile form layout with spacings](../../assets/patterns-forms-anatomy-mobile-spacings.png)  
+  
+![Desktop form layout with spacings](../../assets/patterns-forms-anatomy-desktop-spacings.png)
 
 ---
 
@@ -193,21 +191,18 @@ As we know different cases in which we should provide validation feedback, we pr
 
 ### Live inline validation
 
-**In the best case, you should alway give direct feedback** on the correctness of the user's input whilst filling out the form, whether it's about existence or formatting of the data (think of unique user names, ZIP codes or credit card numbers) or having filled out all mandatory fields. This way, we enable users to correct errors quickly and easily and prevent them from being frustrated when one or more errors pop up after already having submitted the form.  
+**In the best case, you should always give direct feedback** on the correctness of the user's input whilst filling out the form, whether it's about existence or formatting of the data (think of unique user names, ZIP codes or credit card numbers) or having filled out all mandatory fields. This way, we enable users to correct errors quickly and easily and prevent them from being frustrated when one or more errors pop up after already having submitted the form.  
 
 Technically, the feedback should be displayed when the input is already done, **directly after leaving the form field**, as this speeds up progressing time and lowers error rates (as we all know how frustrating and time-consuming it is to get a hint that the "@" is still missing when you only started typing in your e-mail address).
-
-<span style="color:red; font-weight: 800;">[ !!! INFO ÜBER VALIDIERUNG BEI KORREKTUREINGABE FOLGT; HIER SOLLTE VALIDIERUNG WÄHREND DER EINGABE ERFOLGEN, DAMIT DIE ERROR MESSAGE SCHNELL VERSCHWINDET !!! ]</span>
 
 **Position and styling**  
 Inline validation feedback should always be displayed in the direct context of the action, ideally **below the respective form field** (you can find this as a preset property in the Porsche Design System form components).
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG FORMULAR-AUSSCHNITT MIT INLINE-VALIDIERUNG FOLGT !!! ]</span>
-
 **Feedback for error and success**  
 We should give the user not only feedback on errors, but also on successful input as positive reinforcement is a motivation for the user ([Userlutions, 2019](https://userlutions.com/blog/usability-insights/inline-validation)).
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG FÜR ERROR & SUCCESS FEEDBACK FOLGT !!! ]</span>
+![Form layouts with error and success notification](../../assets/patterns-forms-feedback-error-success.png)
+
 
 **Permanent view**  
 The validation should be displayed permanently so that the user can scan the page again for possible errors at any time until finally submitting the form.
@@ -219,7 +214,8 @@ Even though live inline validation should be your first choice from a UX perspec
 - … an **error summary** at the beginning of the form (ideally the user should jump automatically to the summary after submitting). Within the error summary all errors should be listed and linked, so that the user can easily jump to the selected field errors.
 - … **inline error notifications** that are placed below the respective form fields enable the user to perceive errors quickly, also whilst scrolling. In order to avoid double maintenance (and also reading effort for the user), the specific error text should in best case be written in a style that can also be used 1:1 in the error summary.
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG AUSSCHNITT MIT SUMMARY + INLINE NOTIFICATION FOLGT !!! ]</span>
+![Form layouts with error summary and inline error notifications](../../assets/patterns-forms-error-on-submit.png)
+
 
 ### Tonality and content
 
@@ -251,7 +247,7 @@ Set the visual focus to the current form field to give orientation and enable th
 
 Users are familiar with device-specific UI patterns (for example the iOS date picker). So the first choice for a good mobile UX should be to go for native elements instead of individual UI patterns.
 
-<span style="color:red; font-weight: 800;">[ !!! 📷 BEISPIELABBILDUNG iOS DATE PICKER FOLGT !!! ]</span>
+![iPhone screen with native date picker](../../assets/patterns-forms-native-date-picker.png)
 
 ### Provide correct input types
 
