@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-js",
-  "version": "1.0.3",
+  "version": "1.1.0-rc.0",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -52,22 +52,22 @@
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:cbt",
     "test:unit": "jest",
     "test:e2e": "stencil test --e2e --max-workers=1 ''",
+    "test:e2e:watch": "stecil test --e2e --max-workers=8 '' --watch",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61422 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61422 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
-  "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/scss-utils": "1.0.0",
     "@porsche-design-system/utils": "0.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@stencil/angular-output-target": "^0.0.2",
-    "@stencil/core": "^1.8.7",
+    "@stencil/core": "^1.8.11",
     "@stencil/postcss": "^1.0.1",
-    "@stencil/react-output-target": "^0.0.2",
+    "@stencil/react-output-target": "^0.0.4",
     "@stencil/sass": "^1.1.1",
-    "@types/autoprefixer": "^9.5.0",
+    "@types/autoprefixer": "^9.7.0",
     "@types/classnames": "^2.2.8",
     "@types/jest": "^24.9.0",
     "@types/json5": "^0.0.30",
@@ -83,15 +83,15 @@
     "json5": "^2.1.1",
     "node-fetch": "^2.6.0",
     "puppeteer": "^2.1.1",
-    "stylelint": "^13.0.0",
+    "stylelint": "^13.2.0",
     "stylelint-config-prettier": "^8.0.1",
-    "stylelint-config-standard": "^19.0.0",
-    "stylelint-scss": "^3.11.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.14.2",
     "throttle-debounce": "^2.1.0",
     "ts-node": "^8.6.2",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.4",
-    "wait-on": "^3.3.0"
+    "typescript": "^3.8.3",
+    "wait-on": "^4.0.1"
   }
 }
