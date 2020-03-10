@@ -33,11 +33,17 @@ export const createReactComponent = <PropType, ElementType>(tagName: string) => 
       const { children, forwardedRef, style, className, ref, ...cProps } = this.props;
 
       const propsToPass = Object.keys(cProps).reduce((acc, name) => {
-        if (name.indexOf('on') === 0 && name[2] === name[2].toUpperCase()) {
+        const isEventProp = name.indexOf('on') === 0 && name[2] === name[2].toUpperCase();
+        const isDataProp = name.indexOf('data-') === 0;
+        const isAriaProp = name.indexOf('aria-') === 0;
+
+        if (isEventProp) {
           const eventName = name.substring(2).toLowerCase();
           if (isCoveredByReact(eventName)) {
             (acc as any)[name] = (cProps as any)[name];
           }
+        } else if (isDataProp || isAriaProp) {
+          (acc as any)[name] = (cProps as any)[name];
         }
         return acc;
       }, {});

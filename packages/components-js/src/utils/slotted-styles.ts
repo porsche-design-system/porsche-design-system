@@ -11,11 +11,11 @@ function getElementMap(element: HTMLElement) {
   return newMap;
 }
 
-function getNodeToPrependTo(rootNode: Node) {
+function getNodeToPrependTo(rootNode: HTMLElement | Document): HTMLElement {
   if (rootNode === document) {
     return (rootNode as Document).head;
   }
-  return rootNode;
+  return rootNode as HTMLElement;
 }
 
 /**
@@ -35,6 +35,13 @@ export function insertSlottedStyles(element: HTMLElement, css: string): void {
     style.appendChild(document.createTextNode(css));
 
     const prependTo = getNodeToPrependTo(rootNode);
+    const charsetTag = prependTo.querySelector('meta[charset]');
+
+    if (charsetTag !== null) {
+      prependTo.insertBefore(style, charsetTag.nextSibling);
+      return;
+    }
+
     if (prependTo.childNodes.length > 0) {
       prependTo.insertBefore(style, prependTo.firstChild);
       return;

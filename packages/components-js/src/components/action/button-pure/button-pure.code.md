@@ -102,7 +102,7 @@ If another icon needs to be implemented, just replace the default icon with anot
   <template v-slot={theme}>
     <p-button-pure icon="delete" :theme="theme">Some label</p-button-pure>
     <br>
-    <p-button-pure :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Some label</p-button-pure>
+    <p-button-pure :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Some label</p-button-pure>
   </template>
 </Playground>
 

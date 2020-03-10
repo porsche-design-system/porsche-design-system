@@ -69,18 +69,6 @@ export class Text {
     ${tagName} a:focus {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
-    }
-    
-    ${tagName} b, 
-    ${tagName} strong {
-      font-weight: 700;
-    }
-    
-    ${tagName} span, 
-    ${tagName} cite, 
-    ${tagName} time {
-      display: inline-block;
-      vertical-align: top;
     }`;
 
     insertSlottedStyles(this.element, style);
