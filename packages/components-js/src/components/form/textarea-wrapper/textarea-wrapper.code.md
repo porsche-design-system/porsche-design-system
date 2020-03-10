@@ -64,7 +64,7 @@ The **Textarea Wrapper** component supports the visualisation of inline validati
   </template>
   <template>
     <p-textarea-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <textarea name="some-name">Some value</textarea>
+      <textarea :aria-invalid="state === 'error'" name="some-name">Some value</textarea>
     </p-textarea-wrapper>
   </template>
 </Playground>
@@ -80,7 +80,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
   <template>
     <p-textarea-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <textarea name="some-name" placeholder="Some placeholder"></textarea>
+      <textarea name="some-name" aria-invalid="true" placeholder="Some placeholder"></textarea>
       <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-textarea-wrapper>
   </template>

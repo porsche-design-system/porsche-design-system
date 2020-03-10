@@ -57,7 +57,7 @@ The **Select Wrapper** component supports the visualisation of inline validation
   </template>
   <template>
     <p-select-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <select name="some-name">
+      <select name="some-name" :aria-invalid="state === 'error'">
         <option value="a">Option A</option>
         <option value="b">Option B</option>
         <option value="c">Option C</option>
@@ -77,7 +77,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
   <template>
     <p-select-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <select name="some-name">
+      <select name="some-name" aria-invalid="true">
         <option value="a">Option A</option>
         <option value="b">Option B</option>
         <option value="c">Option C</option>

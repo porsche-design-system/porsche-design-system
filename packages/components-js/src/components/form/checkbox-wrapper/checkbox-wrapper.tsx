@@ -5,7 +5,8 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles
+  insertSlottedStyles,
+  randomString
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -35,6 +36,7 @@ export class CheckboxWrapper {
   @State() private indeterminate: boolean;
 
   private input: HTMLInputElement;
+  private labelId = randomString();
 
   public componentDidLoad() {
     this.setInput();
@@ -68,7 +70,7 @@ export class CheckboxWrapper {
 
     return (
       <Host>
-        <label class={labelClasses}>
+        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
           <span class={fakeCheckboxClasses}>
             <p-icon class={iconClasses} name={this.indeterminate ? 'subtract' : 'check'} theme='dark' size='inherit' />
             <slot/>
@@ -80,7 +82,12 @@ export class CheckboxWrapper {
           }
         </label>
         {this.isMessageVisible &&
-        <p-text class={messageClasses} color='inherit'>
+        <p-text
+          class={messageClasses}
+          color='inherit'
+          role={this.state === 'error' && 'alert'}
+          aria-describedby={this.state === 'error' && this.labelId}
+        >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
         }

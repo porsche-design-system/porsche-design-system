@@ -35,6 +35,47 @@ describe('checkbox-wrapper', () => {
 
   });
 
+  it('should add/remove message text and add/remove aria attributes to message if state changes programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>`);
+
+    const checkboxComponent = await page.find('p-checkbox-wrapper');
+    const getMessage = async () => {
+      return checkboxComponent.shadowRoot.querySelector('.p-checkbox-wrapper__message');
+    };
+
+    expect(await getMessage()).toBeNull();
+
+    checkboxComponent.setProperty('state', 'error');
+    checkboxComponent.setProperty('message', 'some message');
+
+    await page.waitForChanges();
+
+    const label = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__label');
+    const labelId = label.getAttribute('id');
+
+    expect(await getMessage()).not.toBeNull();
+    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+
+    checkboxComponent.setProperty('state', 'success');
+
+    await page.waitForChanges();
+
+    expect(await getMessage()).not.toBeNull();
+    expect(await getMessage()).not.toHaveAttribute('role');
+    expect(await getMessage()).not.toHaveAttribute('aria-describedby');
+
+    checkboxComponent.setProperty('state', 'none');
+
+    await page.waitForChanges();
+
+    expect(await getMessage()).toBeNull();
+
+  });
+
   it('should toggle checkbox when input is clicked', async () => {
     const page = await newE2EPage();
     await page.setContent(`
