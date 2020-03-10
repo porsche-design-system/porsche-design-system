@@ -71,10 +71,10 @@ For further information we recommend to read the general form guideline. [Forms 
 Generally, it’s recommended to avoid optional fields in forms due to the fact that we should not give the user the feeling of having to give information that is not absolutely necessary. That being said, we would then have to label almost every (mandatory) form field with the well-known asterisk accompanied by a global explanation (“All fields marked with * ...“). In order to give the Porsche forms a more positive connotation and for the reason that users are more likely to provide voluntary information, we  recommend to mark only optional fields by adding “(optional)” next to the input label.
 
 By doing so…
-… user feel less overwhelmed, as there are way less “(optional)” labels than there would be asterisks.
-… users do not have to read a global explanation (“All fields marked with * ...“).
-… the asterisk is obsolete or freely available for other purposes, e.g. footnotes.
-… forms not only seem to be more positive, but also look more cleaned up in general.
+ * user feel less overwhelmed, as there are way less “(optional)” labels than there would be asterisks.
+ * users do not have to read a global explanation (“All fields marked with * ...“).
+ * the asterisk is obsolete or freely available for other purposes, e.g. footnotes.
+ * forms not only seem to be more positive, but also look more cleaned up in general.
 
 <p-text-field-wrapper label="Some label (optional)"><input type="text" name="some-name"></p-text-field-wrapper>
 

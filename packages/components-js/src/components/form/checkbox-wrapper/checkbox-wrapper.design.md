@@ -1,6 +1,6 @@
 # Checkbox
 
-Use a Checkbox for a list of options when you want to enable the user to select no, one or more options (This distinguishes the Checkbox from the radio button, where the user has only one choice). Checking one box doesn't uncheck the others to all other Checkboxes, which means each box can be checked without unchecking the others. By default Checkboxes are not selected.
+Use a Checkbox for a list of options when you want to enable the user to select no, one or more options (This distinguishes the Checkbox from the radio button, where the user has only one choice). Checking one box doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
 
 ---
 
