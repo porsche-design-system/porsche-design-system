@@ -65,6 +65,17 @@ export class PButtonPure {
   }
 }
 
+export declare interface PCheckboxWrapper extends Components.PCheckboxWrapper {}
+@ProxyCmp({inputs: ['hideLabel', 'label', 'message', 'state']})
+@Component({ selector: 'p-checkbox-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
+export class PCheckboxWrapper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface PFlex extends Components.PFlex {}
 @ProxyCmp({inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap']})
 @Component({ selector: 'p-flex', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'] })
@@ -177,6 +188,28 @@ export class PPagination {
   }
 }
 
+export declare interface PRadioButtonWrapper extends Components.PRadioButtonWrapper {}
+@ProxyCmp({inputs: ['hideLabel', 'label', 'message', 'state']})
+@Component({ selector: 'p-radio-button-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
+export class PRadioButtonWrapper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface PSelectWrapper extends Components.PSelectWrapper {}
+@ProxyCmp({inputs: ['hideLabel', 'label', 'message', 'state']})
+@Component({ selector: 'p-select-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
+export class PSelectWrapper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface PSpinner extends Components.PSpinner {}
 @ProxyCmp({inputs: ['size', 'theme']})
 @Component({ selector: 'p-spinner', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['size', 'theme'] })
@@ -192,6 +225,28 @@ export declare interface PText extends Components.PText {}
 @ProxyCmp({inputs: ['align', 'color', 'ellipsis', 'size', 'tag', 'theme', 'weight']})
 @Component({ selector: 'p-text', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['align', 'color', 'ellipsis', 'size', 'tag', 'theme', 'weight'] })
 export class PText {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface PTextFieldWrapper extends Components.PTextFieldWrapper {}
+@ProxyCmp({inputs: ['hideLabel', 'label', 'message', 'state']})
+@Component({ selector: 'p-text-field-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
+export class PTextFieldWrapper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface PTextareaWrapper extends Components.PTextareaWrapper {}
+@ProxyCmp({inputs: ['hideLabel', 'label', 'message', 'state']})
+@Component({ selector: 'p-textarea-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
+export class PTextareaWrapper {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

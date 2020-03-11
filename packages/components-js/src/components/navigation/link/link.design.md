@@ -1,7 +1,7 @@
 # Link
 
 The Porsche Design System Link enables the user to **navigate to another page**. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of links (primary, secondary, tertiary) can be used.
-(In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) component instead.)
+(In case you want the user to execute an action, you should select the [Button](#/components/action/button) component instead.)
 
 ---
 
@@ -60,18 +60,17 @@ The link covers the following states:
 
 ---
 
-## Content
+## Styling
 
 ### Icon
 The default icon is an arrow right that can be replaced by any icon available in the Porsche web icon set. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly.  
 
-#### External and internal links
+### External and internal links
 For internal links the arrow should be sufficient in most cases. External links can be displayed with the following icon: 
 
 <p-link href="https://www.porsche.com" icon="link-extern" aria-label="Extern link">Some label</p-link>
 
-### Text label 
-
+### Text label
 The text label within a link should always be short and descriptive.
 
 ---
@@ -90,7 +89,6 @@ Even if there is no technical limit to the link width, you should always make su
 
 Though it's technically possible to use multiline text in links, it's recommended to keep the text label short and, therefore, avoid multiline links. 
 
----
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>

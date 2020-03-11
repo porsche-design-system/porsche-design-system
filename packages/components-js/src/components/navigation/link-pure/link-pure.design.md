@@ -1,6 +1,6 @@
 # Link Pure
 
-Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to the normal Porsche Design System Link. (In case you want the user to execute an action, you should select the [Button](#/web/components/action/button) or [Button Pure](#/web/components/action/button-pure) component instead.)
+Link Pure is a clickable icon-text-combination used to **navigate the user to another page**. It can be used as a more subtle call to action compared to the normal Porsche Design System Link. (In case you want the user to execute an action, you should select the [Button](#/components/action/button) or [Button Pure](#/components/action/button-pure) component instead.)
 
 ---
 
@@ -47,18 +47,17 @@ The Link Pure covers the following states:
 ---
 
 
-## Content
+## Styling
 
 ### Icon
 The default icon is an arrow right that can be replaced by any icon available in the Porsche web icon set. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly.  
 
-#### External and internal links
+### External and internal links
 For internal links the arrow should be sufficient in most cases. External links can be displayed with the following icon: 
 
 <p-link-pure icon="external" target="_blank" href="https://www.porsche.com">External link</p-link-pure>
 
-### Text label 
-
+### Text label
 The text label within a link should always be short and descriptive.
 
 ---

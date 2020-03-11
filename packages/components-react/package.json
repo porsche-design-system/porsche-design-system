@@ -6,26 +6,29 @@
     "start": "react-scripts start",
     "build": "cd projects/components-wrapper && yarn build",
     "test": "yarn test:vrt && yarn test:cbt",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 180000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"BROWSER=none yarn start\" \"wait-on -t 180000 http-get://localhost:3000 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "1.0.3"
+    "@porsche-design-system/components-react": "1.1.0"
   },
   "devDependencies": {
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@types/jest": "^24.9.0",
-    "@types/node": "^13.1.6",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.0",
+    "@types/node": "^13.7.7",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-router-dom": "^5.1.3",
     "jasmine": "^3.5.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.2.0",
-    "react-test-renderer": "^16.10.2",
-    "typescript": "^3.7.4"
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.2.0",
+    "react-test-renderer": "^16.13.0",
+    "typescript": "^3.8.3"
   },
   "resolutions": {
     "@types/react": "^16.9.17"
