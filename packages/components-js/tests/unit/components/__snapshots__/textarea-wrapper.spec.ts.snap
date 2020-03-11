@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <p-textarea-wrapper> should render correctly in default mode with shadow dom 1`] = `
+<p-textarea-wrapper label="Some label">
+  <mock:shadow-root>
+    <label class="p-textarea-wrapper__label">
+      <p-text class="p-textarea-wrapper__label-text p-textarea-wrapper__label-text--visible" color="inherit" tag="span">
+        Some label
+      </p-text>
+      <span class="p-textarea-wrapper__fake-textarea p-textarea-wrapper__fake-textarea--none">
+        <slot></slot>
+      </span>
+    </label>
+  </mock:shadow-root>
+  <textarea name="some-name"></textarea>
+</p-textarea-wrapper>
+`;

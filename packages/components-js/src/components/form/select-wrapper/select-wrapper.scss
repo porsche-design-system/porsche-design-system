@@ -1,0 +1,205 @@
+@import '../../../../../../packages/scss-utils/index';
+
+@mixin p-text-field-wrapper-label-text-visible() {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0 0 $p-spacing-4 0;
+  padding: 0;
+  white-space: normal;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin p-text-field-wrapper-label-text-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+:host {
+  display: block;
+}
+
+::slotted(select) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  padding: p-rem(12px) p-rem(48px) p-rem(12px) p-rem(12px) !important;
+  margin: 0 !important;
+  outline: transparent none !important;
+  outline-offset: 1px !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border-width: 0 !important;
+  border-top-color: transparent !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+  font-family: $p-font-primary !important;
+  font-weight: $p-font-weight-regular !important;
+  font-size: p-font-size($p-text-size-small) !important;
+  line-height: p-line-height($p-text-size-small) !important;
+  text-indent: 0 !important;
+  color: transparent !important; // else Firefox shows a dotted outline on focus
+  text-shadow: 0 0 0 $p-color-theme-light-default !important;
+  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+  text-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+  border-top-color 1ms linear !important; // used for transitionend event listener;
+}
+
+// avoid styling of select in IE
+::slotted(select::-ms-expand) {
+  display: none !important;
+}
+
+// avoid styling of select in IE
+::slotted(select:focus::-ms-value) {
+  background-color: transparent !important;
+  text-shadow: 0 0 0 $p-color-theme-light-default !important;
+}
+
+// Focus
+::slotted(select:focus) {
+  outline: $p-color-theme-light-state-focus solid 2px !important;
+}
+
+// Disabled
+::slotted(select:disabled) {
+  border-top-color: rgba(255,255,255,0.01) !important;
+  text-shadow: 0 0 0 $p-color-theme-light-state-disabled !important;
+  cursor: not-allowed !important;
+}
+
+.#{$p-global-class-prefix}select-wrapper {
+
+  &__label {
+    display: block;
+  }
+
+  &__label-text {
+    display: inline-block;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+    }
+
+    &--visible {
+      @include p-text-field-wrapper-label-text-visible;
+    }
+
+    &--hidden {
+      @include p-text-field-wrapper-label-text-hidden;
+    }
+
+    @include p-breakpoint("xs") {
+      &--visible-xs {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-xs {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &--visible-s {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-s {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &--visible-m {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-m {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &--visible-l {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-l {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &--visible-xl {
+        @include p-text-field-wrapper-label-text-visible;
+      }
+
+      &--hidden-xl {
+        @include p-text-field-wrapper-label-text-hidden;
+      }
+    }
+  }
+
+  &__fake-select {
+    position: relative;
+    width: 100%;
+    height: p-rem(48px);
+    display: block;
+    background-color: $p-color-theme-light-background;
+    box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
+    transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--disabled {
+      box-shadow: inset 0 0 0 1px $p-color-theme-light-state-disabled;
+      background-color: $p-color-theme-light-background;
+    }
+
+    &--success {
+      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+    }
+
+    &--error {
+      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: p-rem(12px);
+    right: p-rem(12px);
+    color: $p-color-theme-light-default;
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+    }
+  }
+
+  &__message {
+    margin-top: $p-spacing-4;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &--success {
+      color: $p-color-theme-light-notification-success;
+    }
+
+    &--error {
+      color: $p-color-theme-light-notification-error;
+    }
+  }
+}

@@ -127,6 +127,9 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ### Angular
 
+If you wrap `<p-link-pure>` with an `<a>`, it's important to reset `text-decoration` and `outline`, since the inner
+component has no control over the elements that are around it.
+
 ``` 
 # style.css
 .link {
@@ -138,19 +141,17 @@ If the active state should not render a clickable anchor tag, just remove the `h
 <a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive" class="link">
   <p-link-pure [active]="rla.isActive">Some label</p-link-pure>
 </a>
+
 ```
 
 ### React
 
-``` 
-# style.css
-.link {
-  text-decoration:none;
-  outline: none;
-}
+To pass properties to the PLinkPure component the spread operator can be used.
 
-# template.html
-coming soon...
+``` 
+<Link to="/path/to/heaven" {...{active: true}} component={PLinkPure}>
+  Some label
+</Link>
 ```
 
 ### VueJs
@@ -162,13 +163,14 @@ coming soon...
 ```
 
 ## Link with specific icon
+
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :themeable="true">
   <template v-slot={theme}>
     <p-link-pure href="https://www.porsche.com" icon="phone" :theme="theme">Some label</p-link-pure>
     <br>
-    <p-link-pure :icon-source="require(`@/assets/web/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme" href="https://www.porsche.com">Some label</p-link-pure>
+    <p-link-pure :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme" href="https://www.porsche.com">Some label</p-link-pure>
   </template>
 </Playground>
 

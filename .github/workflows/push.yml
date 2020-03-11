@@ -57,20 +57,20 @@ jobs:
         with:
           name: components-js-vrt-regression
           path: ./packages/components-js/tests/vrt/results
-      - name: 'CBT Test'
-        uses: ./docker/node/
-        env:
-          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-        with:
-          entrypoint: run-test-cbt
-          args: --components-js
-      - name: 'CBT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v1
-        with:
-          name: components-js-cbt-regression
-          path: ./packages/components-js/tests/cbt/results
+#      - name: 'CBT Test'
+#        uses: ./docker/node/
+#        env:
+#          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+#          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+#        with:
+#          entrypoint: run-test-cbt
+#          args: --components-js
+#      - name: 'CBT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: components-js-cbt-regression
+#          path: ./packages/components-js/tests/cbt/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
@@ -107,20 +107,20 @@ jobs:
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
-      - name: 'CBT Test'
-        uses: ./docker/node/
-        env:
-          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-        with:
-          entrypoint: run-test-cbt
-          args: --components-angular
-      - name: 'CBT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v1
-        with:
-          name: components-angular-cbt-regression
-          path: ./packages/components-angular/tests/cbt/results
+#      - name: 'CBT Test'
+#        uses: ./docker/node/
+#        env:
+#          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+#          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+#        with:
+#          entrypoint: run-test-cbt
+#          args: --components-angular
+#      - name: 'CBT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: components-angular-cbt-regression
+#          path: ./packages/components-angular/tests/cbt/results
   components-react:
     name: 'Components React'
     runs-on: ubuntu-latest
@@ -157,20 +157,20 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-      - name: 'CBT Test'
-        uses: ./docker/node/
-        env:
-          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-        with:
-          entrypoint: run-test-cbt
-          args: --components-react
-      - name: 'CBT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v1
-        with:
-          name: components-react-cbt-regression
-          path: ./packages/components-react/tests/cbt/results
+#      - name: 'CBT Test'
+#        uses: ./docker/node/
+#        env:
+#          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
+#          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+#        with:
+#          entrypoint: run-test-cbt
+#          args: --components-react
+#      - name: 'CBT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: components-react-cbt-regression
+#          path: ./packages/components-react/tests/cbt/results
   storefront:
     name: 'Storefront'
     runs-on: ubuntu-latest

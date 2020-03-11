@@ -1,140 +1,78 @@
 describe('Router', () => {
-  describe('Home', () => {
-    it('Should redirect to home of web design system', () => {
-      cy.visit('/');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web');
-
-      cy.visit('/#/some-invalid-url');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web');
-
-      cy.visit('/#/some/completely/invalid/url');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web');
-    });
+  it('Should redirect to home of web design system', () => {
+    cy.visit('/');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/');
   });
 
-  describe('App', () => {
-    it('Should route to home', () => {
-      cy.visit('/#/app');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app');
-    });
+  it('Should route to home', () => {
+    cy.visit('/#/web');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/');
 
-    it('Should route to 404', () => {
-      cy.visit('/#/app/404');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-    });
+    cy.visit('/#/web/some-invalid-url');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/');
 
-    it('Should route to custom view', () => {
-      cy.visit('/#/app/license');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/license');
-    });
-
-    it('Should route to page', () => {
-      cy.visit('/#/app/getting-started/about');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/getting-started/about');
-    });
-
-    it('Should route to story', () => {
-      cy.visit('/#/app/components/basic/color');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/components/basic/color');
-    });
-
-    it('Should redirect to 404', () => {
-      cy.visit('/#/app/some-invalid-custom-view');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/some-invalid-category/some-invalid-page');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/some-invalid-category/about');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/getting-started/some-invalid-page');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/components/some-invalid-category/some-invalid-story');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/components/some-invalid-category/typography');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/components/basic/some-invalid-story');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-
-      cy.visit('/#/app/some/completely/invalid/url');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/app/404');
-    });
+    cy.visit('/#/web/some/completely/invalid/url');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/');
   });
 
-  describe('Web', () => {
-    it('Should route to home', () => {
-      cy.visit('/#/web');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web');
-    });
+  it('Should route to 404', () => {
+    cy.visit('/#/404');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
 
-    it('Should route to 404', () => {
-      cy.visit('/#/web/404');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
-    });
+    cy.visit('/#/some-invalid-url');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
 
-    it('Should route to custom view', () => {
-      cy.visit('/#/web/license');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/license');
-    });
+    cy.visit('/#/some/completely/invalid/url');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
 
-    it('Should route to page', () => {
-      cy.visit('/#/web/getting-started/about');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/getting-started/about');
-    });
+    cy.visit('/#/some-invalid-category/about');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
 
-    it('Should route to story', () => {
-      cy.visit('/#/web/components/basic/typography#design');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#design');
+    cy.visit('/#/getting-started/some-invalid-page');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
 
-      cy.visit('/#/web/components/basic/typography#code-headline');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#code-headline');
+    cy.visit('/#/components/some-invalid-category/some-invalid-story');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
 
-      cy.visit('/#/web/components/basic/typography#props');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#props');
-    });
+    cy.visit('/#/components/some-invalid-category/typography');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
 
-    it('Should route to story and fallback to available first tab', () => {
-      cy.visit('/#/web/components/basic/typography');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#design');
+    cy.visit('/#/components/basic/some-invalid-story');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
+  });
 
-      cy.visit('/#/web/components/basic/typography#some-invalid-tab');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/basic/typography#design');
+  it('Should route to custom view', () => {
+    cy.visit('/#/license');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/license');
+  });
 
-      cy.visit('/#/web/components/layout/flex');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/layout/flex#code');
+  it('Should route to page', () => {
+    cy.visit('/#/getting-started/about');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/getting-started/about');
+  });
 
-      cy.visit('/#/web/components/layout/flex#some-invalid-tab');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/components/layout/flex#code');
-    });
+  it('Should route to story', () => {
+    cy.visit('/#/components/basic/typography');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/components/basic/typography#design');
 
-    it('Should redirect to 404', () => {
-      cy.visit('/#/web/some-invalid-custom-view');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
+    cy.visit('/#/components/basic/typography#design');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/components/basic/typography#design');
 
-      cy.visit('/#/web/some-invalid-category/some-invalid-page');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
+    cy.visit('/#/components/basic/typography#code-headline');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/components/basic/typography#code-headline');
 
-      cy.visit('/#/web/some-invalid-category/about');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
+    cy.visit('/#/components/basic/typography#props');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/components/basic/typography#props');
+  });
 
-      cy.visit('/#/web/getting-started/some-invalid-page');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
+  it('Should route to story and fallback to available first tab', () => {
+    cy.visit('/#/components/basic/typography#some-invalid-tab');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/components/basic/typography#design');
 
-      cy.visit('/#/web/components/some-invalid-category/some-invalid-story');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
+    cy.visit('/#/components/layout/flex');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/components/layout/flex#code');
 
-      cy.visit('/#/web/components/some-invalid-category/typography');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
-
-      cy.visit('/#/web/components/basic/some-invalid-story');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
-
-      cy.visit('/#/web/some/completely/invalid/url');
-      cy.url().should('eq', Cypress.config().baseUrl + '/#/web/404');
-    });
+    cy.visit('/#/components/layout/flex#some-invalid-tab');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/components/layout/flex#code');
   });
 });

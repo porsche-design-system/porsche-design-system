@@ -1,6 +1,6 @@
 # Button
 
-Buttons enable you to execute an action (like "submit", "delete", "add" or "edit") or to change the state of an application, which almost always happens on the same page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) component instead.
+Buttons enable you to execute an action (like "submit", "delete", "add" or "edit") or to change the state of an application, which almost always happens on the same page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. Whenever you want to provide navigational elements, stick to the [Link](#/components/navigation/link) component instead.
 
 ---
 
@@ -61,14 +61,13 @@ All Button types are available in the following states:
 
 ---
 
-## Content
+## Styling
 
 ### Icon
 The default icon is an arrow right that should serve in most cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. 
 
 
-#### Standard icons
-
+### Standard icons
 To ensure a seamless UX in all Porsche web applications it is recommended to use standardized icons for the following cases:
 
 | Interaction | Icon | Example |
@@ -106,14 +105,11 @@ Though it's technically possible to use multiline text in Porsche Buttons, it's 
 All types of Button are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
 
 
----
-
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
     <img src="./assets/button-examples.png" alt="Examples for button usage"/>
 </div>
 
----
 
 ## Don'ts
 

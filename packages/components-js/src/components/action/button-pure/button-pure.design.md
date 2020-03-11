@@ -1,6 +1,6 @@
 # Button Pure
 
-In addition to Button Primary, Secondary or Tertiary, you can use Button Pure as a more subtle call to action. A Button Pure enables the user to execute an action (like "submit", "delete", "add" or "edit" for example) or to change the state of the application, which almost always happens on the same page. Whenever you want to provide navigational elements, stick to the [Link](#/web/components/navigation/link) or [Link Pure](#/web/components/navigation/link-pure) component instead.
+In addition to Button Primary, Secondary or Tertiary, you can use Button Pure as a more subtle call to action. A Button Pure enables the user to execute an action (like "submit", "delete", "add" or "edit" for example) or to change the state of the application, which almost always happens on the same page. Whenever you want to provide navigational elements, stick to the [Link](#/components/navigation/link) or [Link Pure](#/components/navigation/link-pure) component instead.
 
 ---
 
@@ -48,14 +48,14 @@ The Button Pure covers the following states:
 
 ---
 
-## Content
+## Styling
 
 ### Icon
+
 The default icon is an arrow right that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. 
 
 
-#### Standard icons
-
+### Standard icons
 To ensure a seamless UX in all Porsche web applications it is recommended to use standardized icons for the following cases:
 
 | Interaction | Icon | Example |
@@ -69,8 +69,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Phone / Call | <p-icon name="phone" aria-label="Phone"></p-icon> | Phone call link, phone number. | 
 
 
-### Text label 
-
+### Text label
 The text label within a button should always be short and also give a hint on the indicated action. It's recommended to include active verbs such as "add", "edit" or "delete". 
 
 ---
