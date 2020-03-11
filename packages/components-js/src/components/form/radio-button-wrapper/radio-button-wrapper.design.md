@@ -1,22 +1,11 @@
 # Radio Button
- 
-Use a Radio Button to allow to choose or select only one of a predefined set of mutually exclusive options.
-In a group of radio buttons one option should be selected by default. However, there is an exception if the pre-selection of an option can lead to wrong assumptions, i.e. "Male" or "Female". In this case no option should be selected by default.
+
+Use a Radio Button to enable a user to select one value from a predefined list.
+In a group of Radio Buttons one option should be selected by default, except for cases where a pre-selection can lead to wrong assumptions, i.e. "Male" or "Female".
+In this case no option should be selected by default. The singular property of a Radio Button makes it distinct from a checkbox, which allows more than one (or no) item to be selected and for the unselected state to be restored. As soon as two options are mutually exclusive, a Radio Button is used.
 
 ---
- 
-## Variants
- 
-### 1. Default
 
-<p-radio-button-wrapper label="Some label" hide-label="false"><input type="radio" name="some-name-1"></p-radio-button-wrapper>
- 
-### 2. Checked
-
-<p-radio-button-wrapper label="Some label" hide-label="false"><input type="radio" name="some-name-1" checked="checked"></p-radio-button-wrapper>
- 
----
- 
 ## States
 All Radio Buttons are available in the following states:
 * default
@@ -25,62 +14,63 @@ All Radio Buttons are available in the following states:
 * focus
 * error
 * success
- 
----
- 
-## Content
- 
-The Radio Button can contain the following sub-components:
 
-- **Radio Button**
-The indicator is used to show whether the radio button is checked or not.
- 
-- **Label**
-Label text (≤ 20 characters) is used to inform users as to what information is requested for a Radio Button. Every Radio Button should have a label.
- 
 ---
- 
+
+## Styling
+
+### Radio Button
+A circle is typically used to indicate a Radio Button selection.
+
+### Label
+The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two).
+
+### Help text
+Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+
+### Validation and error
+For a group of Radio Buttons the validation message is set at the end of the list. This means that the validation for a Radio Button behaves differently from the other form elements where the validation is set for each individual component.
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+
+### Spacing
+According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+
+---
+
 ## Usage
- 
-### Single-selection control
-The singular property of a radio button makes it distinct from a checkbox, which allows more than one (or no) item to be selected and for the unselected state to be restored. As soon as two options are mutually exclusive, a radio button is used.
 
-### Hint text
-If needed, add a hint explaining this, for example, ‘Select one option’.
+### Items
+We recommend using a Radio Button for a selection of 3-6 items. For a larger number of items (≥ 7) it is recommended to use a Select component instead. "If possible, use radio buttons rather than Selects. Radio buttons have lower cognitive load because they make all options permanently visible so that users can easily compare (…)." (Jakob Nielsen, 2004)
 
 ### Disabled states
 All types of Radio Buttons are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
- 
+
+## Interaction
+The whole Radio Button area is clickable.
+
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/form-radio-butto-examples.png" alt="Examples for button usage"/>
+    <img src="./assets/form-radio-button-examples.png" alt="Examples for button usage"/>
 </div>
 
- 
+
 ## Don'ts
- 
-### Items
-Use for a large number of items (≥ 7 items) a select component instead.
-<br>
-![Example for long radio button list](./assets/dont-spacing-radio button-list.png)
 
-### Alignement
-Don't align radio buttons horizontally as it is more difficult to scan.
-<br>
-![Example for alignment](./assets/dont-spacing-radio button-alignment.png)
+### Alignment
+Always align Radio Buttons vertically left-aligned, as a horizontal alignment is more difficult to scan for the user.
 
-### Single chioce
-Avoid using a radio button as a single choice.
- <br>
-![Example for single choice](./assets/dont-spacing-radio button-vs.-checkbox.png)
- 
+![Example for alignment](./assets/dont-spacing-radio-button-alignment.png)
+
+### Single choice
+Never use a Radio Button alone.
+
+![Example for single choice](./assets/dont-spacing-radio-button-vs-checkbox.png)
+
 ---
- 
+
 ## Related Components
- 
-* [Text Field](#/components/form/text-field)
-* [Textarea](#/components/form/textarea)
+
 * [Checkbox](#/components/form/checkbox)
 * [Select](#/components/form/select)
-
- 
