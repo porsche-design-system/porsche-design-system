@@ -159,8 +159,8 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Components Angular
 1. Switch to __packages/components-angular/projects/components-wrapper directory__
 1. Execute `yarn version --patch --no-git-tag-version` or `yarn version --minor --no-git-tag-version` and enter new patch or minor version
-1. Update Components JS dependency to corresponding version number (must always be pinned)
-1. Update version number of `@porsche-design-system/components-angular` in the example project to corresponding version number
+1. Update version number of `@porsche-design-system/components-js` in __components-wrapper__ to corresponding version number (must always be pinned)
+1. Update version number of `@porsche-design-system/components-angular` in the __example project__ to corresponding version number (must always be pinned)
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Switch to __project root directory__
 1. Run `./docker.sh run-build --components-angular`
@@ -168,8 +168,8 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Components React
 1. Switch to __packages/components-react/projects/components-wrapper directory__
 1. Execute `yarn version --patch --no-git-tag-version` or `yarn version --minor --no-git-tag-version` and enter new patch or minor version
-1. Update Components JS dependency to corresponding version number (must always be pinned)
-1. Update version number of `@porsche-design-system/components-react` in the example project to corresponding version number
+1. Update version number of `@porsche-design-system/components-js` in __components-wrapper__ to corresponding version number (must always be pinned)
+1. Update version number of `@porsche-design-system/components-react` in the __example project__ to corresponding version number (must always be pinned)
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 1. Switch to __project root directory__
 1. Run `./docker.sh run-build --components-react`
