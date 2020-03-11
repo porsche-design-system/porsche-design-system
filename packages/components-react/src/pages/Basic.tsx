@@ -1,9 +1,15 @@
-import {Grid, GridItem, Headline, Marque, Text} from '@porsche-design-system/components-react';
+import {
+  PGrid as Grid,
+  PGridItem as GridItem,
+  PHeadline as Headline,
+  PMarque as Marque,
+  PText as Text
+} from '@porsche-design-system/components-react';
 import React from 'react';
 
-export function Basic(){
-  return(
-    <div >
+export function Basic() {
+  return (
+    <div>
       <Headline variant={'headline-2'} tag={'h2'}>Basic</Headline>
       <hr/>
       <Grid>
@@ -35,15 +41,19 @@ export function Basic(){
       <Grid>
         <GridItem size={5} offset={2}>
           <div className="playground light spacing-block">
-            <Headline variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Headline>
-            <Headline variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Headline>
+            <Headline variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</Headline>
+            <Headline variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</Headline>
           </div>
           <hr/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-block">
-            <Headline theme={'dark'} variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Headline>
-            <Headline theme={'dark'} variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Headline>
+            <Headline theme={'dark'} variant={'headline-3'} color={'default'} style={{color: 'deeppink'}}>The quick
+              brown fox jumps over the lazy dog</Headline>
+            <Headline theme={'dark'} variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick
+              brown fox jumps over the lazy dog</Headline>
           </div>
           <hr/>
         </GridItem>
@@ -64,26 +74,41 @@ export function Basic(){
           <div className="playground light spacing-block">
             <Text color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
             <Text color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
+            <Text color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
+            <Text color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
+            <Text color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
+            <Text color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
+            <Text color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
+            <Text color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
             <Text color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
           </div>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-block">
-            <Text theme={'dark'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text theme={'dark'} color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text theme={'dark'} color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text theme={'dark'} color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text theme={'dark'} color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text theme={'dark'} color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text theme={'dark'} color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text theme={'dark'} color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
-            <Text theme={'dark'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy dog</Text>
+            <Text theme={'dark'} color={'default'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
+            <Text theme={'dark'} color={'brand'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
+            <Text theme={'dark'} color={'neutral-contrast-high'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</Text>
+            <Text theme={'dark'} color={'neutral-contrast-medium'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</Text>
+            <Text theme={'dark'} color={'neutral-contrast-low'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</Text>
+            <Text theme={'dark'} color={'notification-success'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</Text>
+            <Text theme={'dark'} color={'notification-warning'} style={{color: 'deeppink'}}>The quick brown fox jumps
+              over the lazy dog</Text>
+            <Text theme={'dark'} color={'notification-error'} style={{color: 'deeppink'}}>The quick brown fox jumps over
+              the lazy dog</Text>
+            <Text theme={'dark'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps over the lazy
+              dog</Text>
           </div>
         </GridItem>
       </Grid>
@@ -97,7 +122,8 @@ export function Basic(){
             </Text>
           </div>
           <div className="playground light spacing-block">
-            <Text>Lorem ipsum dolor sit amet <a href="https://designsystem.porsche.com">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong></Text>
+            <Text>Lorem ipsum dolor sit amet <a href="https://designsystem.porsche.com">linked text</a> et, <b>bold
+              text</b> &amp; <strong>strong text</strong></Text>
           </div>
           <hr/>
         </GridItem>

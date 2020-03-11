@@ -5,7 +5,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import { LinkPure, Text } from '@porsche-design-system/components-react';
+import { PLinkPure as LinkPure, PText as Text } from '@porsche-design-system/components-react';
 import { Basic } from "./pages/Basic";
 import { Action } from "./pages/Action";
 import { Form } from "./pages/Form";
