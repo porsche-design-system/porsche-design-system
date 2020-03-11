@@ -26,7 +26,7 @@ If there are at least 6 or 8 pages, an ellipsis ("...") is shown for a dedicated
 
 ---
 
-## Content
+## Styling
 
 The pagination component includes the following sub-components:
 
@@ -47,7 +47,7 @@ The pagination should always be placed centered beneath the related content, kee
 
 ---
 
-## Usability & interaction
+## Interaction
 
 ### Clickability
 
