@@ -19,27 +19,21 @@ Further information
 **Link to resources**
 - Documentation Preview: https://designsystem.porsche.com/issue/
 - Abstract Branch:
+- Research in notion: 
 
 Subtasks
 ---
 
-**DOCU**
-- [ ] Write design docu including assets
-- [ ] Write code docu
-
-**SKETCH**
-
-**– Preparation**
-- [ ] Component research and documentation in [notion](https://www.notion.so/porscheui/Component-Research-e698a613cb554a618a1b01402f45df14) (based on [template](https://www.notion.so/porscheui/Template-component-name-06f8685182c34decbc1e3c5bb4e9b64e))
-
-**– Component setup in Sketch according to [checklist](https://www.notion.so/porscheui/Sketch-Component-setup-210aa34e558641d69d1b2976e8f6a3ec)**
-- [ ] Initial definitions (component states/variants)
-- [ ] Design setup (library template, namings) 
-- [ ] Create first component draft incl. states/variants and provide it in Abstract collection (insert link above)
-- [ ] Discuss draft with team (at least with one designer and developer), optional: iterative optimization
-- [ ] Design final Sketch symbols (incl. smart nesting and functionality)
-- [ ] Structural clean-up 
-- [ ] Sketch symbol QA (self-check of native symbols and instance functionality from a consumer’s perspective)
+**Design**
+- [ ] Component research in [notion](https://www.notion.so/porscheui/Tab-Navigation-40defbf4f12343abb70d18ceb5780cd9) 
+- [ ] Definition of naming, required states & variants together with Dev
+- [ ] Create component in Sketch (symbols incl. smart nesting/functionality)
+- [ ] 3rd party design (Abstract) and dev review and iteration
+- [ ] Provide Abstract collection for Dev (paste link in this issue) 
+- [ ] Sketch clean-up incl. removal of components from prep library
+- [ ] Write must-have design guideline
+- [ ] Create and integrate design docu assets
+- [ ] Update changelog ([notion](https://www.notion.so/porscheui/Changelog-3fc7172e41954fbbb037a38578fa7cee) and GitHub)
 
 **CODE**
 - [ ] Setup of hierarchy structure and naming of all related states and variants
@@ -48,3 +42,4 @@ Subtasks
 - [ ] Include compiled angular and react component in test page
 - [ ] Create tests
 - [ ] Provide visual reference for optimized viewports and all supported browsers
+- [ ] Write code docu
