@@ -124,6 +124,17 @@ export namespace Components {
     */
     'state'?: FormState;
   }
+  interface PDivider {
+    /**
+    * Basic divider color variations depending on theme property.
+    */
+    'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+    'orientation'?: 'vertical';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
+  }
   interface PFlex {
     /**
     * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -528,6 +539,12 @@ declare global {
     new (): HTMLPCheckboxWrapperElement;
   };
 
+  interface HTMLPDividerElement extends Components.PDivider, HTMLStencilElement {}
+  var HTMLPDividerElement: {
+    prototype: HTMLPDividerElement;
+    new (): HTMLPDividerElement;
+  };
+
   interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {}
   var HTMLPFlexElement: {
     prototype: HTMLPFlexElement;
@@ -627,6 +644,7 @@ declare global {
     'p-button': HTMLPButtonElement;
     'p-button-pure': HTMLPButtonPureElement;
     'p-checkbox-wrapper': HTMLPCheckboxWrapperElement;
+    'p-divider': HTMLPDividerElement;
     'p-flex': HTMLPFlexElement;
     'p-flex-item': HTMLPFlexItemElement;
     'p-grid': HTMLPGridElement;
@@ -744,6 +762,17 @@ declare namespace LocalJSX {
     * The validation state.
     */
     'state'?: FormState;
+  }
+  interface PDivider {
+    /**
+    * Basic divider color variations depending on theme property.
+    */
+    'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+    'orientation'?: 'vertical';
+    /**
+    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    */
+    'theme'?: Theme;
   }
   interface PFlex {
     /**
@@ -1134,6 +1163,7 @@ declare namespace LocalJSX {
     'p-button': PButton;
     'p-button-pure': PButtonPure;
     'p-checkbox-wrapper': PCheckboxWrapper;
+    'p-divider': PDivider;
     'p-flex': PFlex;
     'p-flex-item': PFlexItem;
     'p-grid': PGrid;
@@ -1162,6 +1192,7 @@ declare module "@stencil/core" {
       'p-button': LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
       'p-button-pure': LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
       'p-checkbox-wrapper': LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
+      'p-divider': LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
       'p-flex': LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
       'p-flex-item': LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
       'p-grid': LocalJSX.PGrid & JSXBase.HTMLAttributes<HTMLPGridElement>;

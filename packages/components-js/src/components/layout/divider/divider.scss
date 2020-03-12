@@ -1,0 +1,59 @@
+@import '../../../../../scss-utils/index';
+
+:host {
+  display: block;
+}
+
+.#{$p-global-class-prefix}divider {
+  $bem-block: &;
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  border: none;
+
+  &--color {
+    &-neutral-contrast-high {
+      &#{$bem-block}--theme-light {
+        border-color: $p-color-theme-light-neutral-contrast-high;
+      }
+
+      &#{$bem-block}--theme-dark {
+        background-color: $p-color-theme-dark-neutral-contrast-high;
+      }
+    }
+
+    &-neutral-contrast-medium {
+      &#{$bem-block}--theme-light {
+        background-color: $p-color-theme-light-neutral-contrast-medium;
+      }
+
+      &#{$bem-block}--theme-dark {
+        background-color: $p-color-theme-dark-neutral-contrast-medium;
+      }
+    }
+
+    &-neutral-contrast-low {
+      &#{$bem-block}--theme-light {
+        background-color: $p-color-theme-light-neutral-contrast-low;
+      }
+
+      &#{$bem-block}--theme-dark {
+        background-color: $p-color-theme-dark-neutral-contrast-low;
+      }
+    }
+  }
+
+  &--orientation {
+    &-vertical {
+      height: auto;
+      width: 1px;
+      align-self: stretch;
+      background-color:  $p-color-theme-light-neutral-contrast-high;
+    }
+  }
+}
+
+
+
+
+
