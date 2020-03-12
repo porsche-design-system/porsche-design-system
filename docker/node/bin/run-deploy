@@ -36,10 +36,6 @@ setup() {
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
   git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
-
-  P_CURRENT_BRANCH="${GITHUB_REF:11}"
-  P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
-  P_LATEST_STABLE_SKETCH_VERSION="1.1.0"
 }
 
 checkout_gh_pages() {
@@ -123,17 +119,17 @@ verify_deployment() {
 }
 
 isCurrentBranchMasterBranch() {
-  echo "Current working branch: ${P_CURRENT_BRANCH}"
   if [[ "${P_CURRENT_BRANCH}" == "master" ]]; then
-    echo ">>> true"
     return 0
   fi
-  echo ">>> false"
   return 1
 }
 
+P_CURRENT_BRANCH="${GITHUB_REF:11}"
+P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
+P_LATEST_STABLE_SKETCH_VERSION="1.1.0"
+
 if isCurrentBranchMasterBranch; then
-  echo ">>> true:isCurrentBranchMasterBranch"
   setup
   checkout_gh_pages
   prepare_deployment "latest"
@@ -146,7 +142,6 @@ if isCurrentBranchMasterBranch; then
   deploy_to_gh_pages
   verify_deployment "latest"
 else
-  echo ">>> false:isCurrentBranchMasterBranch"
   setup
   checkout_gh_pages
   prepare_deployment "${P_CURRENT_BRANCH}"
