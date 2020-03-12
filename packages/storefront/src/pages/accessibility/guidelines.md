@@ -1,12 +1,12 @@
 # Guidelines
 
-## What level of Web Accessibility do we need to support?
-As a global company Porsche has to fulfill certain accessibility criteria which can be different from country to country. 
+## Level of Web Accessibility we need to support
+As a <strong>global company</strong> Porsche has to fulfill certain accessibility criteria which can be different from country to country. 
 To grant a well balanced and global level of accessibility, we recommend to make all web applications compliant with the Web Content Accessibility Guidelines 2.0 [WCAG-2.0](https://www.w3.org/TR/WCAG20/) with **level AA**. 
 
 
 ## Checklist to reduce the risk of legal exposure
-The following list is a distilled set of rules to reduce the risk of legal exposure. It is always recommended to fulfill the whole WCAG 2.0 ruleset but as a first step it can be helpful to take this as a starting point.
+The following list is a <strong>distilled set of rules</strong> to reduce the risk of legal exposure. It is always recommended to fulfill the whole WCAG 2.0 ruleset but as a first step it can be helpful to take this as a starting point.
 
 1. Test your application with the [WAVE Browser plugin](https://wave.webaim.org/) and fix the red errors (e.g. missing alt-text)
 1. Make your 5 top visited sites accessible and start with your **homepage**
