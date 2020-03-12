@@ -292,6 +292,20 @@ export const config: StorefrontConfig = {
       }
     },
     Layout: {
+      Divider: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/divider/divider.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/divider/divider.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/divider/divider.props.md`),
+        ]
+      },
       Flex: {
         Code: [
           // @ts-ignore
