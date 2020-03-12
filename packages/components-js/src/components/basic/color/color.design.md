@@ -87,11 +87,12 @@ When using notification colors …
 - … always make sure not to rely on color only when displaying status (for more information scroll down to *Accessibility*).
 - … always check manually if the color contrast is sufficient depending on the Porsche color theme and, therefore, the background color in use.
 
-|                                                                         	|                         	| HEX     	| RGB         	|
-|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge theme="light" color="notification-error"/> 	                          | **Error**          	| #E00000 	| 224/0/0   	  |
-| <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #13D246 	| 19/210/70  	  |
-| <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #E2B236 	| 226/178/54  	|
+|                                                                         	|                         	| HEX     	| RGB         	| Accessibility Level AA 
+for Light Theme           |
+|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|-----------------|
+| <ColorBadge theme="light" color="notification-error"/> 	                          | **Error**          	| #E00000 	| 224/0/0   	  | ✓   |
+| <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #018A16 	| 1/138/22  	  | ✓   |
+| <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #FF9B00 	| 255/155/0  	| -   |
 
 ### States
 
@@ -150,11 +151,12 @@ When using notification colors …
 - … always make sure not to rely on color only when displaying status (for more information scroll down to *Accessibility*).
 - … always check manually if the color contrast is sufficient depending on the Porsche color theme and, therefore, the background color in use.
 
-|                                                                         	|                         	| HEX     	| RGB         	|
-|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|
-| <ColorBadge theme="dark" color="notification-error"/> 	                                        | **Error**          	| #E00000 	| 224/0/0   	  |
-| <ColorBadge theme="dark" color="notification-success"/> 	                                      | **Success**        	| #13D246 	| 19/210/70  	  |
-| <ColorBadge theme="dark" color="notification-warning"/> 	                                    | **Warning**        	| #E2B236 	| 226/178/54  	|
+|                                                                         	|                         	| HEX     	| RGB         	| Accessibility Level AA 
+for Dark Theme           |
+|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|-----------------|
+| <ColorBadge theme="dark" color="notification-error"/> 	                                        | **Error**          	| #FC1717 	| 252/23/23   	  | ✓   |
+| <ColorBadge theme="dark" color="notification-success"/> 	                                      | **Success**        	| #01BA1D 	| 1/186/29  	  | ✓   |
+| <ColorBadge theme="dark" color="notification-warning"/> 	                                    | **Warning**        	| #FF9B00 	| 255/155/0  	| ✓   |
 
 ### States
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
