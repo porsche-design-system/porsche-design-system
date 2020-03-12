@@ -5,7 +5,6 @@ The Porsche Design System enables designers to create outstanding digital design
 ## 1. Tooling
 To improve output efficiency and reduce maintenance costs, at Porsche we decided to set the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/) as standard for designing. Please install the latest [Abstract desktop app](https://app.goabstract.com/). 
 
-
 You can find a [detailed guideline on how to use Abstract here](#/getting-started/design-workflow).
 
 ## 2. Get inspired 

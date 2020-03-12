@@ -1,8 +1,14 @@
-import {Button, ButtonPure, Grid, GridItem, Headline} from '@porsche-design-system/components-react';
+import {
+  PButton as Button,
+  PButtonPure as ButtonPure,
+  PGrid as Grid,
+  PGridItem as GridItem,
+  PHeadline as Headline
+} from '@porsche-design-system/components-react';
 import React from 'react';
 
-export function Action(){
-  return(
+export function Action() {
+  return (
     <div>
       <Headline variant={'headline-2'}>Action</Headline>
       <hr/>
@@ -30,7 +36,7 @@ export function Action(){
             <Button icon={'phone'}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <Button style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
+            <Button style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
           </div>
           <hr/>
           <div className="playground light spacing-inline">
@@ -73,7 +79,7 @@ export function Action(){
             <Button theme={'dark'} icon={'phone'}>Some label</Button>
           </div>
           <div className="playground dark spacing-inline">
-            <Button theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
+            <Button theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
           </div>
           <hr/>
           <div className="playground dark spacing-inline">
@@ -114,7 +120,7 @@ export function Action(){
           </div>
           <div className="playground light spacing-inline">
             <ButtonPure size={'medium'}>Medium</ButtonPure>
-            <ButtonPure size={'inherit'} style={{ fontSize: '48px' }}>Inherit</ButtonPure>
+            <ButtonPure size={'inherit'} style={{fontSize: '48px'}}>Inherit</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
             <ButtonPure weight={'thin'}>Thin</ButtonPure>
@@ -125,7 +131,7 @@ export function Action(){
             <ButtonPure icon={'delete'}>Some button with a custom icon</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <ButtonPure style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</ButtonPure>
+            <ButtonPure style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</ButtonPure>
           </div>
           <hr/>
         </GridItem>
@@ -142,7 +148,7 @@ export function Action(){
           </div>
           <div className="playground dark spacing-inline">
             <ButtonPure size={'medium'} theme={'dark'}>Medium</ButtonPure>
-            <ButtonPure size={'inherit'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</ButtonPure>
+            <ButtonPure size={'inherit'} theme={'dark'} style={{fontSize: '48px'}}>Inherit</ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
             <ButtonPure weight={'thin'} theme={'dark'}>Thin</ButtonPure>
@@ -153,7 +159,8 @@ export function Action(){
             <ButtonPure icon={'delete'} theme={'dark'}>Some button with a custom icon</ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <ButtonPure theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</ButtonPure>
+            <ButtonPure theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur
+              sadipscing</ButtonPure>
           </div>
           <hr/>
         </GridItem>

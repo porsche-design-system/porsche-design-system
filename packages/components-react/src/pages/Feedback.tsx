@@ -1,8 +1,13 @@
-import {Grid, GridItem, Headline, Spinner} from '@porsche-design-system/components-react';
+import {
+  PGrid as Grid,
+  PGridItem as GridItem,
+  PHeadline as Headline,
+  PSpinner as Spinner
+} from '@porsche-design-system/components-react';
 import React from 'react';
 
-export function Feedback(){
-  return(
+export function Feedback() {
+  return (
     <div>
       <Headline variant={'headline-2'}>Feedback</Headline>
       <hr/>

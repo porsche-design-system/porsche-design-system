@@ -77,6 +77,12 @@ export const config: StorefrontConfig = {
         () => import(`@/pages/accessibility/guidelines.md`)
       ]
     },
+    Patterns: {
+      Forms: [
+        // @ts-ignore
+        () => import(`@/pages/patterns/forms.md`)
+      ]
+    },
     'Scss Utils': {
       Introduction: [
         // @ts-ignore
