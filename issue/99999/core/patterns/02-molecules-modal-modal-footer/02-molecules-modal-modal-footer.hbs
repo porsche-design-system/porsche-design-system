@@ -1,9 +1,0 @@
-<div class="modal-footer {{ styleModifier }}">
-  {{#if modal-footer_addFormButtonGroup }}
-    {{> organisms-form-button-group }}
-  {{else if modal-footer_addFormButtonGroupCustom }}
-    {{#> modal-footer_buttonGroupCustomContent }}{{/modal-footer_buttonGroupCustomContent}}
-  {{else}}
-    {{> molecules-button-regular button-regular_label=modal-footer_buttonLabel button-regular_icon="arrow-right-thin" button-regular_highlight=modal-footer_buttonColorRed }}
-  {{/if}}
-</div>
