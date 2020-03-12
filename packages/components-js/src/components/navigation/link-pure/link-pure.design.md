@@ -47,18 +47,17 @@ The Link Pure covers the following states:
 ---
 
 
-## Content
+## Styling
 
 ### Icon
 The default icon is an arrow right that can be replaced by any icon available in the Porsche web icon set. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly.  
 
-#### External and internal links
+### External and internal links
 For internal links the arrow should be sufficient in most cases. External links can be displayed with the following icon: 
 
 <p-link-pure icon="external" target="_blank" href="https://www.porsche.com">External link</p-link-pure>
 
-### Text label 
-
+### Text label
 The text label within a link should always be short and descriptive.
 
 ---

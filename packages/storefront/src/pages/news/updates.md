@@ -2,85 +2,111 @@
 
 ## Design
 
-## [1.0.0] (2020-01-28)
+### [1.1.0] (2020-03-11)
 
-### Added
-- New textstyle for neutral color in light and dark theme
-- Line-height gets calculated based on Porsche type-scaling formula automatically for Text, Link Pure and Button Pure
+**Added**
 
-### Changed
-- Stylistic adjustment of the icons
-- Rename and optimize neutral colors for Icon and Text
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | `Checkbox` `Radio Button` `Select` `Text Field` `Textarea` | Icons for "arrow-down", "arrow-up", "plus" and "minus" (without circle) |
+Text Styles |  | Text styles for error and success |
+Layer Styles | Layer styles for form components |  |
 
-## [1.0.0-rc.1] (2019-12-13)
+- General forms guideline (in "patterns" section)
 
-### Added
-- `Headline`
-- `Text`
-- `Marque`
-- `Button`
-- `Button Pure`
-- `Spinner`
-- `Icon`
-- `Flex`
-- `Grid`
-- `Link`
-- `Link Pure`
-- `Pagination`
+
+
+### [1.0.3] (2020-02-28)
+
+**Fixed**
+- Various structural bugfixes 
+
+### [1.0.2] (2020-02-19)
+
+**Fixed**
+- Various structural bugfixes 
+
+### [1.0.1] (2020-02-07)
+
+**Fixed**
+- Various structural bugfixes 
+
+### [1.0.0] (2020-01-28)
+
+**Added**
+- Text style for neutral color in Light and Dark Theme
+- Line-height is calculated automatically based on Porsche type scaling formula for Text, Link Pure and Button Pure
+
+**Changed**
+- Stylistic adjustment of the Icons
+- Renaming and optimization of neutral colors for Icon and Text
+
+### [1.0.0-rc.1] (2019-12-13)
+
+**Added**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` `Grid` `Link` `Link Pure` `Pagination` `Spinner` |
 
 --- 
 
 ## Code
 
-## [1.1.0-rc.0] (2020-03-02)
+### [1.1.0] (2020-03-11)
 
-### Added
+**Fixed**
+- Minor improvements
+
+### [1.1.0-rc.0] (2020-03-02)
+
+**Added**
 - `Select Wrapper`
 - `Checkbox Wrapper`
 - `Radio Button Wrapper`
 - `Textarea Wrapper`
 
-### Fixed
+**Fixed**
 - `Text Field Wrapper` toggle password visibility
 
-## [1.0.3] (2020-02-13)
+### [1.0.3] (2020-02-13)
 
-### Fixed
+**Fixed**
 - JS framework compatibility
 
-## [1.1.0-0] (2020-02-06)
+### [1.1.0-0] (2020-02-06)
 
-### Added
+**Added**
 - `Text Field Wrapper`
 
-### Changed
+**Changed**
 - Add proper cursor for disabled state for `Button` and `Button Pure`
 
-## [1.0.2] (2020-02-04)
+### [1.0.2] (2020-02-04)
 
-### Fixed
+**Fixed**
 - Inheritable styling of slotted content
 
-## [1.0.1] (2020-01-30)
+### [1.0.1] (2020-01-30)
 
-### Added
+**Added**
 - Clickable area of `Link Pure` and `Button Pure` is optionally configurable by defining padding on host element
 
-## [1.0.0] (2020-01-28)
+### [1.0.0] (2020-01-28)
 
-### Added
+**Added**
 - Cursor pointer on hover for `Button` and `Button Pure`
 - Line-height gets calculated based on Porsche type-scaling formula automatically for `Text`, `Link Pure` and `Button Pure`
 - Test helper function `componentsReady()` which indicates when lazy loaded components fully have loaded
 
-### Changed
+**Changed**
 - Update CDN asset paths
 - Improve font-weight definitions
 - Rename and optimize neutral colors for `Icon` and `Text`
 
-## [1.0.0-rc.1] (2019-12-13)
+### [1.0.0-rc.1] (2019-12-13)
 
-### Added
+**Added**
 - `Headline`
 - `Text`
 - `Marque`

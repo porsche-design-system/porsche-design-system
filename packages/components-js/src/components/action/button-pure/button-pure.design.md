@@ -48,14 +48,14 @@ The Button Pure covers the following states:
 
 ---
 
-## Content
+## Styling
 
 ### Icon
+
 The default icon is an arrow right that should serve in most of all cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. 
 
 
-#### Standard icons
-
+### Standard icons
 To ensure a seamless UX in all Porsche web applications it is recommended to use standardized icons for the following cases:
 
 | Interaction | Icon | Example |
@@ -69,8 +69,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Phone / Call | <p-icon name="phone" aria-label="Phone"></p-icon> | Phone call link, phone number. | 
 
 
-### Text label 
-
+### Text label
 The text label within a button should always be short and also give a hint on the indicated action. It's recommended to include active verbs such as "add", "edit" or "delete". 
 
 ---

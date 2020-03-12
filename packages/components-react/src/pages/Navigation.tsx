@@ -1,8 +1,15 @@
-import {Grid, GridItem, Headline, Link, LinkPure, Pagination} from '@porsche-design-system/components-react';
+import {
+  PGrid as Grid,
+  PGridItem as GridItem,
+  PHeadline as Headline,
+  PLink as Link,
+  PLinkPure as LinkPure,
+  PPagination as Pagination
+} from '@porsche-design-system/components-react';
 import React from 'react';
 
-export function Navigation(){
-  return(
+export function Navigation() {
+  return (
     <div>
       <Headline variant={'headline-2'}>Navigation</Headline>
       <hr/>
@@ -24,7 +31,8 @@ export function Navigation(){
             <Link icon={'phone'} href={'https://designsystem.porsche.com'}>Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <Link href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Link>
+            <Link href={'https://designsystem.porsche.com'} style={{width: '240px'}}>Lorem ipsum dolor sit amet,
+              consetetur sadipscing</Link>
           </div>
           <hr/>
           <div className="playground light spacing-inline">
@@ -55,21 +63,25 @@ export function Navigation(){
             <Link icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Link>
+            <Link href={'https://designsystem.porsche.com'} theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor
+              sit amet, consetetur sadipscing</Link>
           </div>
           <hr/>
           <div className="playground dark spacing-inline">
-            <Link variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</Link>
+            <Link variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some
+              label</Link>
           </div>
           <div className="playground dark spacing-inline">
             <Link href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label
+            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some
+              label
             </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some label</Link>
+            <Link icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some
+              label</Link>
           </div>
           <hr/>
         </GridItem>
@@ -87,7 +99,8 @@ export function Navigation(){
           </div>
           <div className="playground light spacing-inline">
             <LinkPure size={'medium'} href={'https://designsystem.porsche.com'}>Medium</LinkPure>
-            <LinkPure size={'inherit'} href={'https://designsystem.porsche.com'} style={{ fontSize: '48px' }}>Inherit</LinkPure>
+            <LinkPure size={'inherit'} href={'https://designsystem.porsche.com'}
+                      style={{fontSize: '48px'}}>Inherit</LinkPure>
           </div>
           <div className="playground light spacing-inline">
             <LinkPure weight={'thin'} href={'https://designsystem.porsche.com'}>Thin</LinkPure>
@@ -101,7 +114,8 @@ export function Navigation(){
             <LinkPure icon={'phone'} href={'https://designsystem.porsche.com'}>Some link with a custom icon</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</LinkPure>
+            <LinkPure href={'https://designsystem.porsche.com'} style={{width: '240px'}}>Lorem ipsum dolor sit amet,
+              consetetur sadipscing</LinkPure>
           </div>
           <hr/>
         </GridItem>
@@ -114,7 +128,8 @@ export function Navigation(){
           </div>
           <div className="playground dark spacing-inline">
             <LinkPure size={'medium'} href={'https://designsystem.porsche.com'} theme={'dark'}>Medium</LinkPure>
-            <LinkPure size={'inherit'} href={'https://designsystem.porsche.com'} theme={'dark'} style={{ fontSize: '48px' }}>Inherit</LinkPure>
+            <LinkPure size={'inherit'} href={'https://designsystem.porsche.com'} theme={'dark'}
+                      style={{fontSize: '48px'}}>Inherit</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
             <LinkPure weight={'thin'} href={'https://designsystem.porsche.com'} theme={'dark'}>Thin</LinkPure>
@@ -125,10 +140,12 @@ export function Navigation(){
             <LinkPure active={true} href={'https://designsystem.porsche.com'} theme={'dark'}>Some label</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some link with a custom icon</LinkPure>
+            <LinkPure icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>Some link with a custom
+              icon</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</LinkPure>
+            <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{width: '240px'}}>Lorem ipsum
+              dolor sit amet, consetetur sadipscing</LinkPure>
           </div>
           <hr/>
         </GridItem>

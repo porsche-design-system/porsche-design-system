@@ -1,72 +1,60 @@
 # Checkbox
 
-Use a Checkbox for a list of options that allow the user to make choices. The choice of one or several options (checked state) or no option (unchecked state) is valid. Each checkbox has a separate label and is independent to all other checkboxes. Checking one box doesn't uncheck the others. By default checkboxes are not selected.
-
----
-
-## Variants
-
-### 1. Default  
-
-<p-checkbox-wrapper label="Some label"><input type="checkbox" name="some-name"></p-checkbox-wrapper>
-
-### 2. Checked
-
-<p-checkbox-wrapper label="Some label"><input type="checkbox" name="some-name" checked="checked"></p-checkbox-wrapper>
-
-### 3. Indeterminate
-The indeterminate state represents the mixed selection states of dependent checkboxes in a group. 
-Once some of the dependent fields have been selected and subsequently deselected. 
-This is only a visual state and cannot be achieved by direct user interaction.  
-
-<p-checkbox-wrapper label="Some label"><input type="checkbox" name="some-name" class="example-set-to-indeterminate"></p-checkbox-wrapper>
+Use a Checkbox for a list of options when you want to enable the user to select no, one or more options (This distinguishes the Checkbox from the radio button, where the user has only one choice). Checking one box doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
 
 ---
 
 ## States
- 
-All Checkboxes types are available in the following states:
- 
-* default 
+
+All Checkboxes are available in the following states:
+
+* default
 * checked
-* disabled 
+* disabled
 * focus
-* indeterminate 
-* error 
+* indeterminate
+
+The indeterminate state is only a visual state and cannot be achieved by direct user interaction. The indeterminate state occurs if the checkbox contains a sublist of selections, some of which are selected, and some unselected.
+
+![Example of indeterminate checkbox](./assets/example-indeterminate-checkbox.png)
+
+* error
 * success
 
 ---
 
-## Content
+## Styling
 
-The Checkbox can contain the following sub-components:
+### Checkbox
+The squared box is used as a typical Checkbox indicator and can have different states, depending on whether it's checked or not.
 
-- **Checkbox**
-The indicator is used to show whether the checkbox is checked (“on”) or not (“off”).
+### Label
+The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two)
 
-- **Label**
-Label text (≤ 20 characters) is used to inform users as to what information is requested for a Checkbox. Every Checkbox should have a label.
+### Help text
+Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+
+### Validation and error
+Contrary to Radio Buttons, each Checkbox item can have its own validation message.
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+
+### Spacing
+According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
 
 ---
 
 ## Usage
 
-Checkboxes have several usage patterns:
-
-### Independent choices (zero or more)
-A group of Checkboxes is used to select from a set of zero or more choices. (Unlike single-selection controls such as Radio Buttons, users can select any combination of options in a group of Checkboxes.)
-
-### Dependent choices (one or more)
-A group of Checkboxes can also be used to select from a set of one or more choices.  Error is displayed when none of the options are selected. A group of Checkboxes is used where at least one protocol must be selected. 
-
 ### A stand-alone Checkbox
-Is used for a single option that the user can turn on or off.
-
-### Groups
-Groups of Checkboxes should be programmatically grouped together with an associated legend or description.
+Is used for a single option that the user can turn on or off (e.g. in case of a confirmation of terms and conditions).
 
 ### Disabled State
-All Checkboxes are provided in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. 
+All Checkboxes are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
+
+## Interaction
+The whole Checkbox area is clickable.
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
@@ -77,35 +65,31 @@ All Checkboxes are provided in disabled state. However, disabled states should b
 
 ## Don'ts
 
-### Mixing
+### Mixing with Radio Buttons
 
-Please avoid the mix of radio buttons and checkboxes. These must be considered separately
+Never mix Radio Buttons and Checkboxes.
 
-![Dont mix buttons](./assets/dont-mix-buttons-checkbox.png)
+![Don't mix Checkboxes and Radio Buttons](./assets/dont-mix-buttons-checkbox.png)
 
 ### Alignment
 
-Set checkboxes best vertically instead of horizontally
+Preferably set checkboxes vertically left-aligned, as this supports scannability way better than a horizontal alignment.
 
-![Set checkboxes dont vertically](./assets/dont-alignment-checkbox.png)
+![Don't set checkboxes vertically](./assets/dont-alignment-checkbox.png)
 
-Checkboxes are always aligned left
-
-![Example for alignement](./assets/dont-position-checkbox.png)
+![Example for alignment](./assets/dont-position-checkbox.png)
 
 ---
- 
+
 ## Related Components
- 
-* [Text Field](#/components/form/text-field)
-* [Textarea](#/components/form/textarea)
 * [Radio Button](#/components/form/radio-button)
 * [Select](#/components/form/select)
 
 
+
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
-  
+
   @Component
   export default class PlaygroundCheckboxWrapperDesign extends Vue {    
     mounted() {

@@ -1,8 +1,14 @@
-import {Flex, FlexItem, Grid, GridItem, Headline} from '@porsche-design-system/components-react';
+import {
+  PFlex as Flex,
+  PFlexItem as FlexItem,
+  PGrid as Grid,
+  PGridItem as GridItem,
+  PHeadline as Headline
+} from '@porsche-design-system/components-react';
 import React from 'react';
 
-export function Layout(){
-  return(
+export function Layout() {
+  return (
     <div>
       <Headline variant={'headline-2'}>Layout</Headline>
       <hr/>
