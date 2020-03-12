@@ -1,4 +1,5 @@
 import {
+  PDivider as Divider,
   PGrid as Grid,
   PGridItem as GridItem,
   PHeadline as Headline,
@@ -12,7 +13,7 @@ export function Navigation() {
   return (
     <div>
       <Headline variant={'headline-2'}>Navigation</Headline>
-      <hr/>
+      <Divider/>
       <Grid>
         <GridItem size={2}>
           <Headline variant={'headline-4'} tag={'h4'}>&lt;p-link&gt;</Headline>
@@ -34,7 +35,7 @@ export function Navigation() {
             <Link href={'https://designsystem.porsche.com'} style={{width: '240px'}}>Lorem ipsum dolor sit amet,
               consetetur sadipscing</Link>
           </div>
-          <hr/>
+          <Divider/>
           <div className="playground light spacing-inline">
             <Link variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</Link>
           </div>
@@ -47,7 +48,7 @@ export function Navigation() {
           <div className="playground light spacing-inline">
             <Link icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true}>Some label</Link>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
@@ -66,7 +67,7 @@ export function Navigation() {
             <Link href={'https://designsystem.porsche.com'} theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor
               sit amet, consetetur sadipscing</Link>
           </div>
-          <hr/>
+          <Divider/>
           <div className="playground dark spacing-inline">
             <Link variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some
               label</Link>
@@ -83,7 +84,7 @@ export function Navigation() {
             <Link icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>Some
               label</Link>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -117,7 +118,7 @@ export function Navigation() {
             <LinkPure href={'https://designsystem.porsche.com'} style={{width: '240px'}}>Lorem ipsum dolor sit amet,
               consetetur sadipscing</LinkPure>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
@@ -147,7 +148,7 @@ export function Navigation() {
             <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{width: '240px'}}>Lorem ipsum
               dolor sit amet, consetetur sadipscing</LinkPure>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -158,13 +159,13 @@ export function Navigation() {
           <div className="playground light spacing-block">
             <Pagination totalItemsCount={500} itemsPerPage={25} activePage={1}/>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-block">
             <Pagination theme={'dark'} totalItemsCount={500} itemsPerPage={25} activePage={1}/>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
     </div>
