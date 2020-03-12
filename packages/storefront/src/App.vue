@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <div class="topbar">
-      <Disclaimer/>
-    </div>
     <div class="content">
       <aside class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
         <Header/>
@@ -117,7 +114,7 @@
         left: 0;
         bottom: 0;
         width: p-rem(280px);
-        padding: $p-spacing-40 $p-spacing-32;
+        padding: $p-spacing-24 $p-spacing-32 $p-spacing-40;
         border-right: 1px solid $p-color-theme-light-neutral-contrast-low;
         background: $p-color-theme-light-background;
         overflow-x: hidden;
