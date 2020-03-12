@@ -1,7 +1,7 @@
 # Divider
 
 The **Divider component** is used as 'Horizontal Rule' and displays a dividing line.
-The default semantic HTML Element is `<hr>` which means the component is self closing. Slotted input between the component tags won't be displayed. 
+The default semantic HTML Element is `<hr>` which means the component is self closing. Slotted content between the component tags won't be displayed. 
 
 
 ## Default
@@ -16,9 +16,9 @@ The default use of the Divider component is a horizontal, grey line.
 
 ## Vertical
 
-The standart horizontal line can also be displayed `vertical`.
+The Divider can also be displayed `vertical`.
 
-**Hint:** The component cant know a vertical height unless we set a container which provides it. 
+**Hint:** The component has not an implicit vertical height unless we set a container which provides it.
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
@@ -30,7 +30,7 @@ The standart horizontal line can also be displayed `vertical`.
 
 ## Responsive
 
-You can change the divider orientation by using different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+You can change the Divider orientation by using different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
@@ -43,15 +43,15 @@ You can change the divider orientation by using different major breakpoints `xs`
 
 ## Colors
 
-There are three predefined colors `neutral-contrast-high` `neutral-contrast-medium` `neutral-contrast-low`. The default color is set to be `neutral-contrast-low`.
+There are three predefined colors `neutral-contrast-low`, `neutral-contrast-medium`, `neutral-contrast-high`.
 
 <Playground :themeable="true">
  <template #configurator>
     <select @change="color = $event.target.value">
       <option disabled>Select a Color</option>
       <option selected>neutral-contrast-low</option>
-      <option>neutral-contrast-high</option>
       <option>neutral-contrast-medium</option>
+      <option>neutral-contrast-high</option>
     </select>
   </template>
   <template v-slot="{theme}">
@@ -65,8 +65,8 @@ There are three predefined colors `neutral-contrast-high` `neutral-contrast-medi
   import { Component, Vue } from 'vue-property-decorator';
   
   @Component
-  export default class PlaygroundTypography extends Vue {
-    public color: string = 'default';
+  export default class PlaygroundDivider extends Vue {
+    public color: string = 'neutral-contrast-low';
   }
 </script>
 <style scoped lang="scss">

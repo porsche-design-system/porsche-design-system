@@ -11,14 +11,24 @@
 <body>
 
 <div class="playground light" title="should show a divider">
-  <div class="playground light" title="should render with label">
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>
     <p-divider></p-divider>
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name" checked="checked"/>
-    </p-checkbox-wrapper>
-  </div>
 </div>
+
+<div class="playground dark" title="should show divider on dark background">
+  <p-divider theme="dark"></p-divider>
+</div>
+
+<div class="playground light" title="should show different colors of divider">
+  <p-divider color="neutral-contrast-medium"></p-divider>
+  <br>
+  <br>
+  <p-divider color="neutral-contrast-high"></p-divider>
+</div>
+
+<div class="playground light" title="should show vertical divider">
+  <p-divider orientation="vertical"></p-divider>
+</div>
+
+
+
 </body>

@@ -5,7 +5,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import { PLinkPure as LinkPure, PText as Text } from '@porsche-design-system/components-react';
+import { PLinkPure as LinkPure, PText as Text, PDivider as Divider } from '@porsche-design-system/components-react';
 import { Basic } from "./pages/Basic";
 import { Action } from "./pages/Action";
 import { Form } from "./pages/Form";
@@ -24,7 +24,7 @@ const App: React.FC = () => {
           <br/>
           <span id="system-log"/>
         </Text>
-        <hr/>
+        <Divider></Divider>
         <Link to="/basic" component={LinkPure}>
           Basic
         </Link>
@@ -46,7 +46,7 @@ const App: React.FC = () => {
         <Link to="/navigation" component={LinkPure}>
           Navigation
         </Link>
-        <hr/>
+        <Divider></Divider>
         <Switch>
           <Route path="/basic">
             <Basic/>
