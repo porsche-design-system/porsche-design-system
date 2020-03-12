@@ -3,9 +3,6 @@
 set -o errexit
 set -o pipefail
 
-SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
-source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
-
 if [[ -z "${GITHUB_REPOSITORY}" ]]; then
   echo "Please provide the \$GITHUB_REPOSITORY environment variable."
   exit 1
@@ -128,6 +125,9 @@ isCurrentBranchMasterBranch() {
 P_CURRENT_BRANCH="${GITHUB_REF:11}"
 P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
 P_LATEST_STABLE_SKETCH_VERSION="1.1.0"
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+
+source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
 
 if isCurrentBranchMasterBranch; then
   setup
