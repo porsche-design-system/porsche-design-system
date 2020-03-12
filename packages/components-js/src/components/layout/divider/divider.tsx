@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop, } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../utils';
+import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { Theme } from '../../../types';
 
 @Component({
@@ -10,9 +10,9 @@ import { Theme } from '../../../types';
 })
 export class Divider {
   /** Basic divider color variations depending on theme property. */
-  @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+  @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'default' = 'neutral-contrast-low';
 
-  @Prop() public orientation?: 'vertical';
+  @Prop() public orientation?: 'vertical' | 'horizontal' | 'default' = 'horizontal';
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
@@ -22,7 +22,7 @@ export class Divider {
       prefix('divider'),
       prefix(`divider--color-${this.color}`),
       prefix(`divider--theme-${this.theme}`),
-      prefix(`divider--orientation-${this.orientation}`)
+      mapBreakpointPropToPrefixedClasses('divider--orientation', this.orientation)
     );
 
     return (

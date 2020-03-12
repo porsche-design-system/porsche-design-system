@@ -8,13 +8,13 @@
   $bem-block: &;
   margin: 0;
   padding: 0;
-  height: 1px;
+  height: 0;
   border: none;
 
   &--color {
     &-neutral-contrast-high {
       &#{$bem-block}--theme-light {
-        border-color: $p-color-theme-light-neutral-contrast-high;
+        background-color: $p-color-theme-light-neutral-contrast-high;
       }
 
       &#{$bem-block}--theme-dark {
@@ -44,12 +44,72 @@
   }
 
   &--orientation {
-    &-vertical {
-      height: auto;
-      width: 1px;
-      align-self: stretch;
-      background-color:  $p-color-theme-light-neutral-contrast-high;
+
+    &-horizontal {
+      height: 1px;
+      width: auto;
     }
+
+    &-vertical {
+      height: 100%;
+      width: 1px;
+    }
+
+    @include p-breakpoint("xs") {
+      &-horizontal-xs {
+        height: 1px;
+        width: auto;
+      }
+      &-vertical-xs {
+        height: 100%;
+        width: 1px;
+      }
+    }
+
+    @include p-breakpoint("s") {
+      &-horizontal-s {
+        height: 1px;
+        width: auto;
+      }
+      &-vertical-s {
+        height: 100%;
+        width: 1px;
+      }
+    }
+
+    @include p-breakpoint("m") {
+      &-horizontal-m {
+        height: 1px;
+        width: auto;
+      }
+      &-vertical-m {
+        height: 100%;
+        width: 1px;
+      }
+    }
+
+    @include p-breakpoint("l") {
+      &-horizontal-l {
+        height: 1px;
+        width: auto;
+      }
+      &-vertical-l {
+        height: 100%;
+        width: 1px;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &-horizontal-xl {
+        height: 1px;
+        width: auto;
+      }
+      &-vertical-xl {
+        height: 100%;
+        width: 1px;
+      }
+    }
+
   }
 }
 
