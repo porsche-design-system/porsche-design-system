@@ -2,7 +2,7 @@ describe('Support', () => {
   it('Should navigate through main navigation and show page title', () => {
     cy.visit('/');
 
-    cy.get('#app aside nav p-link-pure')
+    cy.get('#app .sidebar nav p-link-pure')
       .contains('Support')
       .click()
       .should('have.attr', 'active', 'true');
