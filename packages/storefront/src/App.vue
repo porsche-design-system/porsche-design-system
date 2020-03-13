@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <div class="content">
-      <aside class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
-        <Header/>
-        <Divider spacing="small"/>
-        <Sidebar/>
-        <Divider spacing="small"/>
-        <Footer/>
-      </aside>
+      <div class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
+        <div>
+          <Header/>
+          <Divider spacing="small"/>
+          <Sidebar/>
+          <Divider spacing="small"/>
+          <Footer/>
+        </div>
+      </div>
       <main class="main" :class="{ 'is-menu-active': isMenuActive }">
         <router-view class="router-view" :class="{ 'is-menu-active': isMenuActive, 'is-loading': isLoading }"/>
         <p-spinner class="spinner" :class="{ 'is-loading': isLoading }" size="medium"
