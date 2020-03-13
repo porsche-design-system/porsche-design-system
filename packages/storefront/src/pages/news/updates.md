@@ -53,6 +53,11 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 
 ## Code
 
+### [1.1.1] (2020-03-13)
+
+**Changed**
+- Icon of `Checkbox` indeterminate state
+
 ### [1.1.0] (2020-03-11)
 
 **Fixed**
