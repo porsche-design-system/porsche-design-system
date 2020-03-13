@@ -73,7 +73,7 @@ All colors must always be used in 100% opacity.
 The neutral palette is to be used for all basic architectonic page elements such as tile backgrounds, dividers or other graphical elements.
 The set consists of several grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA for Light Theme           |
+|                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA           |
 |-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
 | <ColorBadge theme="light" color="neutral-contrast-high"/> 	            | **Neutral Contrast High**          | #323639 	| 50/54/57         | div. elements   | ✓   |
 | <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #626669 	| 98/102/105         | div. elements   | ✓   |
@@ -87,12 +87,11 @@ When using notification colors …
 - … always make sure not to rely on color only when displaying status (for more information scroll down to *Accessibility*).
 - … always check manually if the color contrast is sufficient depending on the Porsche color theme and, therefore, the background color in use.
 
-|                                                                         	|                         	| HEX     	| RGB         	| Accessibility Level AA 
-for Light Theme           |
-|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|-----------------|
-| <ColorBadge theme="light" color="notification-error"/> 	                          | **Error**          	| #E00000 	| 224/0/0   	  | ✓   |
-| <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #018A16 	| 1/138/22  	  | ✓   |
-| <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #FF9B00 	| 255/155/0  	| -   |
+|                                                                         	|                         	| HEX     	| RGB         	| Usage            |Accessibility Level AA          |
+|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|-----------------| -----------------|
+| <ColorBadge theme="light" color="notification-error"/> 	                          | **Error**          	| #E00000 	| 224/0/0   | Error notification 	  | ✓   |
+| <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #018A16 	| 1/138/22  	  | Success notification 	  | ✓   |
+| <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification (only to be used on default background)	  | - |
 
 ### States
 
@@ -138,7 +137,7 @@ for Light Theme           |
 The neutral palette is to be used for all basic architectonic page elements such as tile backgrounds, dividers or other graphical elements.
 The set consists of several grey shades that are based on a pre-defined mixing ratio of black in combination with a slightly touch of blue.
 
-|                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA for Dark Theme           |
+|                                                                         	|                                    | HEX      | RGB              | Usage           | Accessibility Level AA           |
 |-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
 | <ColorBadge theme="dark" color="neutral-contrast-high"/> 	                | **Neutral Contrast High**          | #E3E4E5 	| 227/228/229      | div. elements   | ✓   |
 | <ColorBadge theme="dark" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #B0B1B2 	| 176/177/178      | div. elements   | ✓   |
@@ -151,12 +150,11 @@ When using notification colors …
 - … always make sure not to rely on color only when displaying status (for more information scroll down to *Accessibility*).
 - … always check manually if the color contrast is sufficient depending on the Porsche color theme and, therefore, the background color in use.
 
-|                                                                         	|                         	| HEX     	| RGB         	| Accessibility Level AA 
-for Dark Theme           |
-|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|-----------------|
-| <ColorBadge theme="dark" color="notification-error"/> 	                                        | **Error**          	| #FC1717 	| 252/23/23   	  | ✓   |
-| <ColorBadge theme="dark" color="notification-success"/> 	                                      | **Success**        	| #01BA1D 	| 1/186/29  	  | ✓   |
-| <ColorBadge theme="dark" color="notification-warning"/> 	                                    | **Warning**        	| #FF9B00 	| 255/155/0  	| ✓   |
+|                                                                         	|                         	| HEX     	| RGB         	| Usage            |Accessibility Level AA          |
+|-------------------------------------------------------------------------	|---------------------------|---------	|-------------	|-----------------| -----------------|
+| <ColorBadge theme="dark" color="notification-error"/> 	                                        | **Error**          	| #FC1717 	| 252/23/23   	  | Error notification | ✓   |
+| <ColorBadge theme="dark" color="notification-success"/> 	                                      | **Success**        	| #01BA1D 	| 1/186/29  	  | Success notification |  ✓   |
+| <ColorBadge theme="dark" color="notification-warning"/> 	                                    | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification | ✓   |
 
 ### States
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
