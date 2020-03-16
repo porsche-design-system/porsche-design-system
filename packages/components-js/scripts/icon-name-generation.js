@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 (async () => {
-  const iconResponse = await fetch('https://cdn.ui.porsche.com/porsche-icons/icons.json');
+  const iconResponse = await fetch('https://cdn.ui.porsche.com/porsche-icons/v2/icons.json');
   const iconData = await iconResponse.json();
   const iconNames = [];
   iconData.icons.forEach((icon) => {

@@ -2,7 +2,7 @@ describe('Select', () => {
   it('Should navigate through main navigation', () => {
     cy.visit('/');
 
-    cy.get('#app aside nav p-link-pure')
+    cy.get('#app .sidebar nav p-link-pure')
       .contains('Select')
       .click()
       .should('have.attr', 'active', 'true');
