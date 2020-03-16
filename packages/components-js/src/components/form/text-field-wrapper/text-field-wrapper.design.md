@@ -32,6 +32,7 @@ All Text Fields types are available in the following states:
 
 * default
 * disabled
+* hover
 * read only
 * focus
 * error
