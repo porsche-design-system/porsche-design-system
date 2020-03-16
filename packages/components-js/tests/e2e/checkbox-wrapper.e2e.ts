@@ -243,7 +243,7 @@ describe('checkbox-wrapper', () => {
       expect(await showsIcon(page)).toBe(false);
 
       await setIndeterminate(page, true);
-      expect(await getIconName(page)).toBe('subtract');
+      expect(await getIconName(page)).toBe('minus');
       expect(await showsIcon(page)).toBe(true);
 
       await setIndeterminate(page, false);
@@ -261,7 +261,7 @@ describe('checkbox-wrapper', () => {
       const input = await page.find('input[type="checkbox"]');
 
       await setIndeterminate(page, true);
-      expect(await getIconName(page)).toBe('subtract');
+      expect(await getIconName(page)).toBe('minus');
       expect(await showsIcon(page)).toBe(true);
 
       await input.click();
@@ -269,7 +269,7 @@ describe('checkbox-wrapper', () => {
       expect(await showsIcon(page)).toBe(true);
 
       await setIndeterminate(page, true);
-      expect(await getIconName(page)).toBe('subtract');
+      expect(await getIconName(page)).toBe('minus');
       expect(await showsIcon(page)).toBe(true);
 
       await input.click();
@@ -285,15 +285,15 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`);
 
       await setIndeterminate(page, true);
-      expect(await getIconName(page)).toBe('subtract');
+      expect(await getIconName(page)).toBe('minus');
       expect(await showsIcon(page)).toBe(true);
 
       await setChecked(page, true);
-      expect(await getIconName(page)).toBe('subtract');
+      expect(await getIconName(page)).toBe('minus');
       expect(await showsIcon(page)).toBe(true);
 
       await setChecked(page, false);
-      expect(await getIconName(page)).toBe('subtract');
+      expect(await getIconName(page)).toBe('minus');
       expect(await showsIcon(page)).toBe(true);
     });
   });

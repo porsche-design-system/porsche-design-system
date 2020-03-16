@@ -8,7 +8,7 @@
 
 Type | Web Library | Basic Library |
 |---|---|---|
-Components | `Checkbox` `Radio Button` `Select` `Text Field` `Textarea` | Icons for "arrow-down", "arrow-up", "plus" and "minus" (without circle) |
+Components | `Checkbox` `Radio Button` `Select` `Text Field` `Textarea` | Icons for "arrow-left", "arrow-right", "plus" and "minus" |
 Text Styles |  | Text styles for error and success |
 Layer Styles | Layer styles for form components |  |
 
@@ -52,6 +52,11 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 --- 
 
 ## Code
+
+### [1.1.1] (2020-03-13)
+
+**Changed**
+- Icon of `Checkbox` indeterminate state
 
 ### [1.1.0] (2020-03-11)
 
