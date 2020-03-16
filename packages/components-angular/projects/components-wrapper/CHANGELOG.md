@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `Divider`
 
+## [1.1.1] (2020-03-13)
+
+### Changed
+- Icon of `Checkbox` indeterminate state
+
 ## [1.1.0] (2020-03-11)
 
 ### Fixed
