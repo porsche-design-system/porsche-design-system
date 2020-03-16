@@ -2,7 +2,7 @@ describe('Updates', () => {
   it('Should navigate through main navigation and show page title', () => {
     cy.visit('/');
 
-    cy.get('#app .sidebar nav p-link-pure')
+    cy.get('#app .sidebar nav p-link-pure[href*="news/updates"]')
       .contains('Updates')
       .click()
       .should('have.attr', 'active', 'true');
