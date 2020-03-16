@@ -72,7 +72,7 @@ export class CheckboxWrapper {
       <Host>
         <label class={labelClasses} id={this.state === 'error' && this.labelId}>
           <span class={fakeCheckboxClasses}>
-            <p-icon class={iconClasses} name={this.indeterminate ? 'subtract' : 'check'} theme='dark' size='inherit' />
+            <p-icon class={iconClasses} name={this.indeterminate ? 'minus' : 'check'} theme='dark' size='inherit' />
             <slot/>
           </span>
           {this.isLabelVisible &&
