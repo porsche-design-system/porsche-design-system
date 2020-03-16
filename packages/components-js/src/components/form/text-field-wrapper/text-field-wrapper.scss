@@ -4,8 +4,8 @@
   position: static;
   width: auto;
   height: auto;
-  margin: 0 0 $p-spacing-4 0;
-  padding: 0;
+  margin: 0;
+  padding: 0 0 $p-spacing-4 0;
   white-space: normal;
   overflow: visible;
   clip: auto;
@@ -79,7 +79,7 @@
 }
 
 .#{$p-global-class-prefix}text-field-wrapper {
-
+  $bem-block: &;
   &__container {
     position: relative;
     display: block;
@@ -167,6 +167,11 @@
     transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
+    &:hover:not(&--disabled):not(&--readonly):not(&--success):not(&--error),
+    #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--readonly):not(&--success):not(&--error) {
+      box-shadow: inset 0 0 0 1px $p-color-theme-light-default;
+    }
+
     &--disabled {
       box-shadow: inset 0 0 0 1px $p-color-theme-light-state-disabled;
       background-color: $p-color-theme-light-background;
@@ -179,10 +184,18 @@
 
     &--success {
       box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+      &:hover,
+      #{$bem-block}__label-text:hover ~ & {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-success, 12%);
+      }
     }
 
     &--error {
       box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+      &:hover,
+      #{$bem-block}__label-text:hover ~ & {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-error, 12%);
+      }
     }
   }
 
