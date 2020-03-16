@@ -9,14 +9,15 @@ In Porsche web applications dividers **should only be used sparingly as structur
 ## Variants
 
 ### Horizontal divider
-The horizontal dividers comes with 1 px height and is preset with 100% height thus technically adapts to the height of surrounding elements per default.
-
-<p-text color="brand">[ 🍭 @DEV: HIER KOMPONENTE IN HIGH CONTRAST / LIGHT THEME EINFÜGEN ]</p-text>
+The horizontal dividers comes with 1 px height and is preset with auto-width thus technically adapts to the width of surrounding elements per default.    
+<div style="width:20%; margin-top:32px;">
+<p-divider></p-divider>
+</div>
 
 ### Vertical divider
 The vertical divider has a 1 px width and a preset default height of 100%.
 
-<p-text color="brand">[ 🍭 @DEV: HIER KOMPONENTE IN HIGH CONTRAST / LIGHT THEME EINFÜGEN ]</p-text>
+<p-divider orientation="vertical" style="height:120px;" class="divider-vertical-example"></p-divider>
 
 #### Responsiveness
 Both variants provide a responsive behaviour, so it's also possible to switch between the variants responsively (e.g. when it's necessary to switch from a horizontal divider on desktop to a vertical divider on mobile screens).
