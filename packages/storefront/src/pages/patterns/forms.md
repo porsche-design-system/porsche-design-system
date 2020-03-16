@@ -265,7 +265,7 @@ When it makes sense you should set input constraints to your Text Fields and Tex
 
 ## Accessibility
 
-Always stick to the defined [Accessibility criteria](https://designsystem.porsche.com/latest/#/web/basics/accessibility-criteria) (WCAG level AA) when designing web applications for Porsche. For form design you should consider in particular the following aspects:
+Always stick to the defined [Accessibility criteria](../basics/accessibility.md) (WCAG level AA) when designing web applications for Porsche. For form design you should consider in particular the following aspects:
 
 * Forms should **provide 100% keyboard navigation**, which means: Users should be able to jump through the whole form using the tab key.
 * Always **provide focus states** to show the user both the starting and when proceeding the current position. The Porsche Design System form components are provided with a focus state on board.
