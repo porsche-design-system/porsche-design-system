@@ -3,9 +3,9 @@
     <div class="content">
       <aside class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
         <Header/>
-        <Divider spacing="small"/>
+        <p-divider class="divider--spacing-small"></p-divider>
         <Sidebar/>
-        <Divider spacing="small"/>
+        <p-divider class="divider--spacing-small"></p-divider>
         <Footer/>
       </aside>
       <main class="main" :class="{ 'is-menu-active': isMenuActive }">
@@ -24,7 +24,6 @@
   import Header from '@/components/Header.vue';
   import Sidebar from '@/components/Sidebar.vue';
   import Footer from '@/components/Footer.vue';
-  import Divider from '@/components/Divider.vue';
   import Menu from '@/components/Menu.vue';
 
   @Component({
@@ -33,7 +32,6 @@
       Header,
       Sidebar,
       Footer,
-      Divider,
       Menu
     }
   })
@@ -81,6 +79,10 @@
 
   .spacing-mr-32 {
     margin-right: $p-layout-large;
+  }
+
+  .divider--spacing-small{
+      margin: $p-spacing-24 0;
   }
 
   @include p-breakpoint('m') {
