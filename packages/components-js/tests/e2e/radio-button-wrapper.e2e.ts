@@ -1,4 +1,4 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('radio-button-wrapper', () => {
   it('should render', async () => {
@@ -212,5 +212,48 @@ describe('radio-button-wrapper', () => {
     }
 
     expect(await getFakeRadio1()).not.toHaveClass('p-radio-button-wrapper__fake-radio-button--disabled');
+  });
+
+  describe('hover state', () => {
+    const getBoxShadow = async (page: E2EPage) => {
+      const fakeRadioButton = await page.find('p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
+      const styles = await fakeRadioButton.getComputedStyle();
+      return styles.boxShadow;
+    };
+
+    it('should change box-shadow color when fake radio button is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`
+      <p-radio-button-wrapper label="Some label" id="radio-1">
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>`);
+
+      const fakeRadioButton = await page.find('p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeRadioButton.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+
+    });
+
+    it('should change box-shadow color of fake radio button when label text is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`
+      <p-radio-button-wrapper label="Some label" id="radio-1">
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>`);
+
+      const fakeRadioButton = await page.find('p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeRadioButton.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+
+    });
+
   });
 });

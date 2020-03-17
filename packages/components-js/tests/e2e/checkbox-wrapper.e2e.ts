@@ -297,4 +297,47 @@ describe('checkbox-wrapper', () => {
       expect(await showsIcon(page)).toBe(true);
     });
   });
+
+  describe('hover state', () => {
+    const getBoxShadow = async (page: E2EPage) => {
+      const fakeCheckbox = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+      const styles = await fakeCheckbox.getComputedStyle();
+      return styles.boxShadow;
+    };
+
+    it('should change box-shadow color when fake checkbox is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>`);
+
+      const fakeCheckbox = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeCheckbox.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+
+    });
+
+    it('should change box-shadow color of fake checkbox when label text is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>`);
+
+      const fakeCheckbox = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeCheckbox.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+
+    });
+
+  });
 });
