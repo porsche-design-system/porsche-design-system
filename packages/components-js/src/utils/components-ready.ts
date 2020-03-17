@@ -1,5 +1,3 @@
-import { moduleCache } from '@stencil/core/dist/client';
-
 let loadingQueueCount = 0;
 let resolvePromiseTimeout = null;
 let onLoadedPromise: Promise<void>;
@@ -27,34 +25,27 @@ function createOnLoadedPromise() {
 createOnLoadedPromise();
 
 /**
- * decorate get method of stencil moduleCache to know when
- * stencil starts to lazy load a missing component
+ * stencil starts to lazy load a component
  */
-moduleCache.get = (origGet => (...args) => {
-  const module = origGet.call(moduleCache, ...args);
-  if (!module) {
-    /**
-     * module not found, so stencil is going to load it
-     */
-    loadingQueueCount++;
-    if (resolvePromiseTimeout) {
-      window.clearTimeout(resolvePromiseTimeout);
-    }
+window.addEventListener('stencil_componentWillLoad', () => {
+  console.log('stencil_componentWillLoad');
+  loadingQueueCount++;
+  if (resolvePromiseTimeout) {
+    window.clearTimeout(resolvePromiseTimeout);
   }
-  return module;
-})(moduleCache.get);
+});
 
 /**
- * decorate set method of stencil moduleCache to know when
- * stencil finished to lazy load a missing component
+ * stencil finished to lazy load a component
  */
-moduleCache.set = (origSet => (...args) => {
+window.addEventListener('stencil_componentDidLoad', () => {
+  console.log('stencil_componentDidLoad');
   loadingQueueCount--;
   checkForPromiseResolve();
-  return origSet.call(moduleCache, ...args);
-})(moduleCache.set);
+});
 
 export function componentsReady(): Promise<void> {
+  console.log('componentsReady');
   checkForPromiseResolve();
   return onLoadedPromise;
 }
