@@ -95,6 +95,7 @@
 }
 
 .#{$p-global-class-prefix}checkbox-wrapper {
+  $bem-block: &;
 
   &__label {
     position: relative;
@@ -102,6 +103,7 @@
   }
 
   &__label-text {
+    order: 1;
     display: inline-block;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
@@ -180,6 +182,11 @@
     transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
+    &:hover:not(&--disabled):not(&--success):not(&--error),
+    #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
+      box-shadow: inset 0 0 0 1px $p-color-theme-light-default;
+    }
+
     &--checked {
       box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-high;
       background-color: $p-color-theme-light-neutral-contrast-high;
@@ -203,10 +210,18 @@
 
     &--error {
       box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+      &:hover,
+      #{$bem-block}__label-text:hover ~ & {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-error, 12%);
+      }
     }
 
     &--success {
       box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+      &:hover,
+      #{$bem-block}__label-text:hover ~ & {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-success, 12%);
+      }
     }
   }
 
