@@ -66,14 +66,14 @@ export class RadioButtonWrapper {
     return (
       <Host>
         <label class={labelClasses} id={this.state === 'error' && this.labelId}>
-          <span class={fakeRadioButtonClasses}>
-            <slot/>
-          </span>
           {this.isLabelVisible &&
           <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent) => this.labelClick(e)}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
           }
+          <span class={fakeRadioButtonClasses}>
+            <slot/>
+          </span>
         </label>
         {this.isMessageVisible &&
         <p-text

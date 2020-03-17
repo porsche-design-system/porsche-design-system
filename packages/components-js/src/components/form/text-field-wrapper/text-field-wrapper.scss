@@ -80,6 +80,7 @@
 
 .#{$p-global-class-prefix}text-field-wrapper {
   $bem-block: &;
+
   &__container {
     position: relative;
     display: block;
