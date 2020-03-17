@@ -198,4 +198,50 @@ describe('Text Field Wrapper', () => {
     expect(input.getAttribute('type')).toBe('password');
     expect(inputFocusSpy.length).toBe(2);
   });
+
+  describe('hover state', () => {
+    const getBoxShadow = async (page: E2EPage) => {
+      const fakeInput = await page.find('p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
+      const styles = await fakeInput.getComputedStyle();
+      return styles.boxShadow;
+    };
+
+    it('should change box-shadow color when fake input is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`
+        <p-text-field-wrapper label="Some label">
+          <input type="text" name="some-name">
+        </p-text-field-wrapper>
+      `);
+
+      const fakeInput = await page.find('p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeInput.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+
+    });
+
+    it('should change box-shadow color of fake input when label text is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`
+        <p-text-field-wrapper label="Some label">
+          <input type="text" name="some-name">
+        </p-text-field-wrapper>
+      `);
+
+      const fakeInput = await page.find('p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeInput.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+
+    });
+
+  });
 });
+

@@ -1,4 +1,4 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('select-wrapper', () => {
   it('should render', async () => {
@@ -151,5 +151,54 @@ describe('select-wrapper', () => {
     }
 
     expect((await getFakeSelect())).not.toHaveClass('p-select-wrapper__fake-select--disabled');
+  });
+
+  describe('hover state', () => {
+    const getBoxShadow = async (page: E2EPage) => {
+      const fakeSelect = await page.find('p-select-wrapper >>> .p-select-wrapper__fake-select');
+      const styles = await fakeSelect.getComputedStyle();
+      return styles.boxShadow;
+    };
+
+    it('should change box-shadow color when fake select is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`<p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`);
+
+      const fakeSelect = await page.find('p-select-wrapper >>> .p-select-wrapper__fake-select');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeSelect.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+
+    });
+
+    it('should change box-shadow color of fake select when label text is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`<p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`);
+
+      const fakeSelect = await page.find('p-select-wrapper >>> .p-select-wrapper__label-text');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeSelect.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+
+    });
+
   });
 });
