@@ -31,7 +31,7 @@
     "@angular/cli": "^9.0.5",
     "@angular/compiler-cli": "^9.0.6",
     "@angular/language-service": "^9.0.6",
-    "@porsche-design-system/scss-utils": "1.0.0",
+    "@porsche-design-system/scss-utils": "1.0.1",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@types/jasmine": "^3.5.7",
