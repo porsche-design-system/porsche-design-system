@@ -1,7 +1,7 @@
 # Divider
 
-The **Divider component** is used as 'Horizontal Rule' and displays a dividing line.
-The default semantic HTML Element is `<hr>` which means the component is self closing. Slotted content between the component tags won't be displayed. 
+The **Divider component** is used as 'horizontal or vertical rule' and displays a dividing line.
+The component is self closing. Slotted content between the component tags won't be displayed. 
 
 
 ## Default
@@ -23,7 +23,7 @@ The Divider can also be displayed `vertical`.
 <Playground :themeable="true">
   <template v-slot="{theme}">
   <div class="divider-vertical-container-example">
-    <p-divider :theme="theme" orientation="vertical" class="divider-vertical-example"></p-divider>
+    <p-divider :theme="theme" orientation="vertical"></p-divider>
   </div>
   </template>
 </Playground>
@@ -34,8 +34,8 @@ You can change the Divider orientation by using different major breakpoints `xs`
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
-  <div class="divider-vertical-container-example">
-    <p-divider :theme="theme" orientation="{base: 'horizontal', l: 'vertical'}" class="divider-vertical-example"></p-divider>
+  <div class="divider-vertical-responsive-container-example">
+    <p-divider :theme="theme" orientation="{base: 'horizontal', l: 'vertical'}"></p-divider>
   </div>
   </template>
 </Playground>
@@ -70,12 +70,14 @@ There are three predefined colors `neutral-contrast-low`, `neutral-contrast-medi
   }
 </script>
 <style scoped lang="scss">
-  .divider-vertical-container-example {
-    display: flex;
-    height: 100px;
-  }
-  .divider-vertical-example{
-    align-self: stretch;
-    width: 100%;
-  }
+    .divider-vertical-container-example {
+                display: flex;
+                height: 100px;
+          }
+    @media (min-width: 1300px) {
+      .divider-vertical-responsive-container-example {
+            display: flex;
+            height: 100px;
+      }
+    }
 </style>

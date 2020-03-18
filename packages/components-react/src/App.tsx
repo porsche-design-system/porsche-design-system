@@ -24,7 +24,7 @@ const App: React.FC = () => {
           <br/>
           <span id="system-log"/>
         </Text>
-        <Divider></Divider>
+        <Divider/>
         <Link to="/basic" component={LinkPure}>
           Basic
         </Link>
@@ -46,7 +46,7 @@ const App: React.FC = () => {
         <Link to="/navigation" component={LinkPure}>
           Navigation
         </Link>
-        <Divider></Divider>
+        <Divider/>
         <Switch>
           <Route path="/basic">
             <Basic/>
