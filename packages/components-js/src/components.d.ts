@@ -128,8 +128,8 @@ export namespace Components {
     /**
     * Basic divider color variations depending on theme property.
     */
-    'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'default';
-    'orientation'?: 'vertical' | 'horizontal' | 'default';
+    'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+    'orientation'?: 'vertical' | 'horizontal';
     /**
     * Adapts the text color depending on the theme.
     */
@@ -767,8 +767,8 @@ declare namespace LocalJSX {
     /**
     * Basic divider color variations depending on theme property.
     */
-    'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'default';
-    'orientation'?: 'vertical' | 'horizontal' | 'default';
+    'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+    'orientation'?: 'vertical' | 'horizontal';
     /**
     * Adapts the text color depending on the theme.
     */
