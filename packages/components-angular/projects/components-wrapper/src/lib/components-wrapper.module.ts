@@ -19,6 +19,8 @@ import {
   PSelectWrapper,
   PSpinner,
   PText,
+  PTextList,
+  PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper
 } from './components-wrapper.component';
@@ -41,6 +43,8 @@ const DECLARATIONS = [
   PSelectWrapper,
   PSpinner,
   PText,
+  PTextList,
+  PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper
 ];

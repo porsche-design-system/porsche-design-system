@@ -243,6 +243,28 @@ export class PTextFieldWrapper {
   }
 }
 
+export declare interface PTextList extends Components.PTextList {}
+@ProxyCmp({inputs: ['listType', 'theme']})
+@Component({ selector: 'p-text-list', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['listType', 'theme'] })
+export class PTextList {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface PTextListItem extends Components.PTextListItem {}
+
+@Component({ selector: 'p-text-list-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+export class PTextListItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface PTextareaWrapper extends Components.PTextareaWrapper {}
 @ProxyCmp({inputs: ['hideLabel', 'label', 'message', 'state']})
 @Component({ selector: 'p-textarea-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
