@@ -1,0 +1,24 @@
+@import '../../../../../../../packages/scss-utils/index';
+
+.#{$p-global-class-prefix}text-list {
+  @include p-text;
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+
+  &-theme-light {
+    &,
+    & .#{$p-global-class-prefix}text-list {
+      color: $p-color-theme-light-default;
+    }
+  }
+
+  &-theme-dark {
+    &,
+    & .#{$p-global-class-prefix}text-list {
+      color: $p-color-theme-dark-default;
+    }
+  }
+}
