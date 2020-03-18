@@ -8,14 +8,14 @@
   list-style-type: none;
 
 
-  &-theme-light {
+  &--theme-light {
     &,
     & .#{$p-global-class-prefix}text-list {
       color: $p-color-theme-light-default;
     }
   }
 
-  &-theme-dark {
+  &--theme-dark {
     &,
     & .#{$p-global-class-prefix}text-list {
       color: $p-color-theme-dark-default;
