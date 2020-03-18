@@ -131,7 +131,7 @@ export namespace Components {
     'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'default';
     'orientation'?: 'vertical' | 'horizontal' | 'default';
     /**
-    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    * Adapts the text color depending on the theme.
     */
     'theme'?: Theme;
   }
@@ -770,7 +770,7 @@ declare namespace LocalJSX {
     'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'default';
     'orientation'?: 'vertical' | 'horizontal' | 'default';
     /**
-    * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+    * Adapts the text color depending on the theme.
     */
     'theme'?: Theme;
   }

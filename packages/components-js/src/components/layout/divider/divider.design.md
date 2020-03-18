@@ -17,7 +17,7 @@ The horizontal dividers comes with 1 px height and is preset with auto-width thu
 ### Vertical divider
 The vertical divider has a 1 px width and a preset default height of 100%.
 
-<p-divider orientation="vertical" style="height:120px;" class="divider-vertical-example"></p-divider>
+<p-divider orientation="vertical" style="height:120px;"></p-divider>
 
 #### Responsiveness
 Both variants provide a responsive behaviour, so it's also possible to switch between the variants responsively (e.g. when it's necessary to switch from a horizontal divider on desktop to a vertical divider on mobile screens).

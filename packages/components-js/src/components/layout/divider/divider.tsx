@@ -10,11 +10,11 @@ import { Theme } from '../../../types';
 })
 export class Divider {
   /** Basic divider color variations depending on theme property. */
-  @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'default' = 'neutral-contrast-low';
+  @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low'  = 'neutral-contrast-low';
 
-  @Prop() public orientation?: 'vertical' | 'horizontal' | 'default' = 'horizontal';
+  @Prop() public orientation?: 'vertical' | 'horizontal' = 'horizontal';
 
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
+  /** Adapts the text color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {

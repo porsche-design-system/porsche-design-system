@@ -150,13 +150,13 @@ export function Layout() {
             <Divider/>
             <br/>
             <br/>
-            <Divider color="neutral-contrast-medium"></Divider>
+            <Divider color="neutral-contrast-medium"/>
             <br/>
             <br/>
-            <Divider color="neutral-contrast-high"></Divider>
+            <Divider color="neutral-contrast-high"/>
             <br/>
             <br/>
-            <Divider orientation={'vertical'} style={{"height": "100px"}}></Divider>
+            <Divider orientation={'vertical'} style={{"height": "100px"}}/>
           </div>
           <Divider/>
         </GridItem>
