@@ -12,6 +12,6 @@ exports[`Component <p-radio-button-wrapper> should render correctly in default m
       </p-text>
     </label>
   </mock:shadow-root>
-  <input name="some-name" type="radio">
+  <input aria-label="Some label" name="some-name" type="radio">
 </p-radio-button-wrapper>
 `;
