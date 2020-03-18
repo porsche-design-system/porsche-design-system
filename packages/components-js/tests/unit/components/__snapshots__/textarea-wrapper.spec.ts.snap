@@ -12,6 +12,6 @@ exports[`Component <p-textarea-wrapper> should render correctly in default mode 
       </span>
     </label>
   </mock:shadow-root>
-  <textarea name="some-name"></textarea>
+  <textarea aria-label="Some label" name="some-name"></textarea>
 </p-textarea-wrapper>
 `;
