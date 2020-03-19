@@ -8,109 +8,107 @@
   $bem-block: &;
   margin: 0;
   padding: 0;
-  height: 0;
   border: none;
   text-align: left;
 
-  &--color {
-    &-neutral-contrast-high {
-      &#{$bem-block}--theme-light {
-        background-color: $p-color-theme-light-neutral-contrast-high;
-      }
-
-      &#{$bem-block}--theme-dark {
-        background-color: $p-color-theme-dark-neutral-contrast-high;
-      }
+  &--color-neutral-contrast-high {
+    &#{$bem-block}--theme-light {
+      background-color: $p-color-theme-light-neutral-contrast-high;
     }
 
-    &-neutral-contrast-medium {
-      &#{$bem-block}--theme-light {
-        background-color: $p-color-theme-light-neutral-contrast-medium;
-      }
-
-      &#{$bem-block}--theme-dark {
-        background-color: $p-color-theme-dark-neutral-contrast-medium;
-      }
-    }
-
-    &-neutral-contrast-low {
-      &#{$bem-block}--theme-light {
-        background-color: $p-color-theme-light-neutral-contrast-low;
-      }
-
-      &#{$bem-block}--theme-dark {
-        background-color: $p-color-theme-dark-neutral-contrast-low;
-      }
+    &#{$bem-block}--theme-dark {
+      background-color: $p-color-theme-dark-neutral-contrast-high;
     }
   }
 
-  &--orientation {
-
-    &-horizontal {
-      height: 1px;
-      width: auto;
+  &--color-neutral-contrast-medium {
+    &#{$bem-block}--theme-light {
+      background-color: $p-color-theme-light-neutral-contrast-medium;
     }
 
-    &-vertical {
+    &#{$bem-block}--theme-dark {
+      background-color: $p-color-theme-dark-neutral-contrast-medium;
+    }
+  }
+
+  &--color-neutral-contrast-low {
+    &#{$bem-block}--theme-light {
+      background-color: $p-color-theme-light-neutral-contrast-low;
+    }
+
+    &#{$bem-block}--theme-dark {
+      background-color: $p-color-theme-dark-neutral-contrast-low;
+    }
+  }
+
+  &--orientation-horizontal {
+    height: 1px;
+    width: 100%;
+  }
+
+  &--orientation-vertical {
+    height: 100%;
+    width: 1px;
+  }
+
+  @include p-breakpoint("xs") {
+    &--orientation-horizontal-xs {
+      height: 1px;
+      width: 100%;
+    }
+
+    &--orientation-vertical-xs {
       height: 100%;
       width: 1px;
     }
+  }
 
-    @include p-breakpoint("xs") {
-      &-horizontal-xs {
-        height: 1px;
-        width: auto;
-      }
-      &-vertical-xs {
-        height: 100%;
-        width: 1px;
-      }
+  @include p-breakpoint("s") {
+    &--orientation-horizontal-s {
+      height: 1px;
+      width: 100%;
     }
 
-    @include p-breakpoint("s") {
-      &-horizontal-s {
-        height: 1px;
-        width: auto;
-      }
-      &-vertical-s {
-        height: 100%;
-        width: 1px;
-      }
+    &--orientation-vertical-s {
+      height: 100%;
+      width: 1px;
+    }
+  }
+
+  @include p-breakpoint("m") {
+    &--orientation-horizontal-m {
+      height: 1px;
+      width: 100%;
     }
 
-    @include p-breakpoint("m") {
-      &-horizontal-m {
-        height: 1px;
-        width: auto;
-      }
-      &-vertical-m {
-        height: 100%;
-        width: 1px;
-      }
+    &--orientation-vertical-m {
+      height: 100%;
+      width: 1px;
+    }
+  }
+
+  @include p-breakpoint("l") {
+    &--orientation-horizontal-l {
+      height: 1px;
+      width: 100%;
     }
 
-    @include p-breakpoint("l") {
-      &-horizontal-l {
-        height: 1px;
-        width: auto;
-      }
-      &-vertical-l {
-        height: 100%;
-        width: 1px;
-      }
+    &--orientation-vertical-l {
+      height: 100%;
+      width: 1px;
+    }
+  }
+
+  @include p-breakpoint("xl") {
+    &--orientation-horizontal-xl {
+      height: 1px;
+      width: 100%;
     }
 
-    @include p-breakpoint("xl") {
-      &-horizontal-xl {
-        height: 1px;
-        width: auto;
-      }
-      &-vertical-xl {
-        height: 100%;
-        width: 1px;
-      }
+    &--orientation-vertical-xl {
+      height: 100%;
+      width: 1px;
     }
-
   }
 }
 

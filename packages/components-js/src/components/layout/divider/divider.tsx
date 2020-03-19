@@ -9,12 +9,13 @@ import { Theme } from '../../../types';
   shadow: true
 })
 export class Divider {
-  /** Basic divider color variations depending on theme property. */
+  /** Defines color depending on theme. */
   @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low'  = 'neutral-contrast-low';
 
+  /** Defines orientation. */
   @Prop() public orientation?: 'vertical' | 'horizontal' = 'horizontal';
 
-  /** Adapts the text color depending on the theme. */
+  /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
@@ -29,5 +30,4 @@ export class Divider {
       <hr class={dividerClasses}/>
     );
   }
-
 }
