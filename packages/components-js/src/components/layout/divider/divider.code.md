@@ -4,9 +4,7 @@ The **Divider component** is used as 'horizontal or vertical rule' and displays 
 The component is self closing. Slotted content between the component tags won't be displayed. 
 
 
-## Default
-
-The default use of the Divider component is a horizontal, grey line.
+## Horizontal
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
@@ -16,9 +14,7 @@ The default use of the Divider component is a horizontal, grey line.
 
 ## Vertical
 
-The Divider can also be displayed `vertical`.
-
-**Hint:** The component has not an implicit vertical height unless we set a container which provides it.
+**Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the height on the component itself.
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
@@ -43,12 +39,12 @@ You can change the Divider orientation by using different major breakpoints `xs`
 
 ## Colors
 
-There are three predefined colors `neutral-contrast-low`, `neutral-contrast-medium`, `neutral-contrast-high`.
+Predefined colors associated with its theme are available.
 
 <Playground :themeable="true">
  <template #configurator>
-    <select @change="color = $event.target.value">
-      <option disabled>Select a Color</option>
+    <select v-model="color">
+      <option disabled>Select a color</option>
       <option selected>neutral-contrast-low</option>
       <option>neutral-contrast-medium</option>
       <option>neutral-contrast-high</option>
@@ -59,8 +55,6 @@ There are three predefined colors `neutral-contrast-low`, `neutral-contrast-medi
   </template>
 </Playground>
 
---- 
-
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   
@@ -70,14 +64,16 @@ There are three predefined colors `neutral-contrast-low`, `neutral-contrast-medi
   }
 </script>
 <style scoped lang="scss">
-    .divider-vertical-container-example {
-                display: flex;
-                height: 100px;
-          }
-    @media (min-width: 1300px) {
-      .divider-vertical-responsive-container-example {
-            display: flex;
-            height: 100px;
-      }
+  @import '~@porsche-design-system/scss-utils/index';
+
+  .divider-vertical-container-example {
+    display: flex;
+    height: 100px;
+  }
+  @include p-breakpoint("l") {
+    .divider-vertical-responsive-container-example {
+      display: flex;
+      height: 100px;
     }
+  }
 </style>
