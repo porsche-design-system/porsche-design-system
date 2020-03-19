@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Component <p-divider> should render correctly in default mode with shadow dom 1`] = `
-<p-divider>
-  <mock:shadow-root>
-    <hr class="p-divider p-divider--color-neutral-contrast-low p-divider--orientation-horizontal p-divider--theme-light">
-  </mock:shadow-root>
-</p-divider>
-`;
