@@ -6,17 +6,35 @@ A text list groups and organizes related content vertically in two hierarchical 
 
 ## Variants
 
-### Unordered List
+### Unordered List 
 
 To show content with equal value.
 
-!!! CODE EXAMPLE !!!
+<p-text-list>
+  <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+  <p-text-list-item> Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
+    <p-text-list>
+      <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>Lorem ipsum</p-text-list-item>
+    </p-text-list>
+  </p-text-list-item>
+  <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+</p-text-list>
 
-### Ordered List
+### Ordered List 
 
 With an implicated sequence.
 
-!!! CODE EXAMPLE !!!
+<p-text-list list-type="ordered">
+  <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+  <p-text-list-item> Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
+    <p-text-list list-type="ordered">
+      <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>Lorem ipsum</p-text-list-item>
+    </p-text-list>
+  </p-text-list-item>
+  <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+</p-text-list>
 
 ---
 
