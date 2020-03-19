@@ -136,12 +136,15 @@
           @include p-text;
           margin-top: $p-spacing-24;
           padding-left: $p-spacing-32;
-          list-style-type: square;
 
           ul,
           ol {
             margin-top: 0;
           }
+        }
+
+        ul {
+          list-style-type: square;
         }
 
         ol {
