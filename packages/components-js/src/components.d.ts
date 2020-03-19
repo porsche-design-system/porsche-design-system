@@ -126,12 +126,15 @@ export namespace Components {
   }
   interface PDivider {
     /**
-    * Basic divider color variations depending on theme property.
+    * Defines color depending on theme.
     */
     'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+    /**
+    * Defines orientation.
+    */
     'orientation'?: 'vertical' | 'horizontal';
     /**
-    * Adapts the text color depending on the theme.
+    * Adapts color depending on theme.
     */
     'theme'?: Theme;
   }
@@ -765,12 +768,15 @@ declare namespace LocalJSX {
   }
   interface PDivider {
     /**
-    * Basic divider color variations depending on theme property.
+    * Defines color depending on theme.
     */
     'color'?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+    /**
+    * Defines orientation.
+    */
     'orientation'?: 'vertical' | 'horizontal';
     /**
-    * Adapts the text color depending on the theme.
+    * Adapts color depending on theme.
     */
     'theme'?: Theme;
   }
