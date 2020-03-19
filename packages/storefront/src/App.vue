@@ -4,9 +4,9 @@
       <div class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
         <div>
           <Header/>
-          <p-divider class="divider--spacing-small"></p-divider>
+          <p-divider class="divider-spacing-small"></p-divider>
           <Sidebar/>
-          <p-divider class="divider--spacing-small"></p-divider>
+          <p-divider class="divider-spacing-small"></p-divider>
           <Footer/>
         </div>
       </div>
@@ -83,7 +83,7 @@
     margin-right: $p-layout-large;
   }
 
-  .divider--spacing-small{
+  .divider-spacing-small {
       margin: $p-spacing-24 0;
   }
 

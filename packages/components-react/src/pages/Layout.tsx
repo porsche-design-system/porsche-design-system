@@ -4,7 +4,7 @@ import {
   PFlexItem as FlexItem,
   PGrid as Grid,
   PGridItem as GridItem,
-  PHeadline as Headline,
+  PHeadline as Headline
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -150,13 +150,13 @@ export function Layout() {
             <Divider/>
             <br/>
             <br/>
-            <Divider color="neutral-contrast-medium"/>
+            <Divider color={'neutral-contrast-medium'}/>
             <br/>
             <br/>
-            <Divider color="neutral-contrast-high"/>
+            <Divider color={'neutral-contrast-high'}/>
             <br/>
             <br/>
-            <Divider orientation={'vertical'} style={{"height": "100px"}}/>
+            <Divider orientation={'vertical'} style={{'height': '100px'}}/>
           </div>
           <Divider/>
         </GridItem>
