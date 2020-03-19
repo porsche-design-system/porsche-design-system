@@ -13,7 +13,7 @@
         </ul>
       </li>
     </ul>
-    <p-divider v-if="config.stories" class="divider--spacing-small"></p-divider>
+    <p-divider v-if="config.stories" class="divider-spacing-small"></p-divider>
     <p-headline v-if="config.stories" variant="headline-3" tag="h2">Components</p-headline>
     <ul v-if="config.stories" class="list">
       <li v-for="(stories, category, index) in config.stories" :key="index">
