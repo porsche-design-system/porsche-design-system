@@ -1,16 +1,22 @@
-import {JSX, Component, Prop, h, Host} from '@stencil/core';
+import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../../utils';
 import { Theme } from '../../../../types';
 
 @Component({
   tag: 'p-text-list',
-  styleUrl: 'text-list.scss'
+  styleUrl: 'text-list.scss',
+  shadow: true
 })
 export class TextList {
 
+  @Element() public host!: HTMLElement;
+
   /** The type of the text list. */
-  @Prop() public listType?: 'unordered' | 'ordered' = 'unordered';
+  @Prop({reflect: true}) public listType?: 'unordered' | 'ordered' = 'unordered';
+
+  /** The list style type of an ordered list. */
+  @Prop() public orderType?: 'numbered' | 'alphabetically' = 'numbered';
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
@@ -19,22 +25,24 @@ export class TextList {
 
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
 
-    const hostClasses = cx(
-      prefix('text-list')
-    );
-
     const textListClasses = cx(
       prefix('text-list'),
+      prefix( `text-list--${this.listType}`),
       prefix(`text-list--theme-${this.theme}`),
-      this.listType === 'ordered' && prefix('text-list--ordered')
+      this.isNestedList && prefix('text-list--nested')
     );
 
     return (
-      <Host class={hostClasses}>
+      <Host slot={this.isNestedList && 'nested'}>
         <TagType class={textListClasses}>
           <slot/>
         </TagType>
       </Host>
     );
+  }
+
+  private get isNestedList():boolean {
+    const nestedList = this.host.closest(prefix('text-list-item'));
+    return nestedList && true;
   }
 }

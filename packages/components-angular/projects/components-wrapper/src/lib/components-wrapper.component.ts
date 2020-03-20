@@ -244,8 +244,8 @@ export class PTextFieldWrapper {
 }
 
 export declare interface PTextList extends Components.PTextList {}
-@ProxyCmp({inputs: ['listType', 'theme']})
-@Component({ selector: 'p-text-list', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['listType', 'theme'] })
+@ProxyCmp({inputs: ['listType', 'orderType', 'theme']})
+@Component({ selector: 'p-text-list', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['listType', 'orderType', 'theme'] })
 export class PTextList {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
