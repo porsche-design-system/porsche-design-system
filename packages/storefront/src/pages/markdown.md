@@ -52,12 +52,8 @@ Unordered
 Ordered
 
 1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
+1. Consectetur adipiscing elit
+1. Integer molestie lorem at massa
 
 Start numbering with offset:
 

@@ -13,7 +13,7 @@ describe('Home', () => {
     expect(
       await vrt.test('home', async () => {
         await vrt.goTo('/');
-      })
+      }, '', ['.sidebar .header p-text[size="x-small"]'])
     ).toBeFalsy();
   });
 });

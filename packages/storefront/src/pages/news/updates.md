@@ -2,6 +2,16 @@
 
 ## Design
 
+### [1.1.1] (2020-03-17)
+
+**Added**
+- Text style warning for copytext small and x-small
+
+**Changed**
+- Update notification colors for light and dark theme
+- Update text style for error and success
+- Update sketch color palette
+
 ### [1.1.0] (2020-03-11)
 
 **Added**
@@ -13,8 +23,6 @@ Text Styles |  | Text styles for error and success |
 Layer Styles | Layer styles for form components |  |
 
 - General forms guideline (in "patterns" section)
-
-
 
 ### [1.0.3] (2020-02-28)
 
@@ -52,6 +60,11 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 --- 
 
 ## Code
+
+### [1.1.2] (2020-03-17)
+
+**Changed**
+- Notification colors
 
 ### [1.1.1] (2020-03-13)
 
