@@ -106,6 +106,7 @@ export class SelectWrapper {
 
   private setSelect(): void {
     this.select = this.host.querySelector('select');
+    this.select.setAttribute('aria-label', this.label);
   }
 
   private setState(): void {
