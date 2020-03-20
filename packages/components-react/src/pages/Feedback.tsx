@@ -2,7 +2,8 @@ import {
   PGrid as Grid,
   PGridItem as GridItem,
   PHeadline as Headline,
-  PSpinner as Spinner
+  PSpinner as Spinner,
+  PDivider as Divider
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -10,7 +11,7 @@ export function Feedback() {
   return (
     <div>
       <Headline variant={'headline-2'}>Feedback</Headline>
-      <hr/>
+      <Divider/>
       <Grid>
         <GridItem size={2}>
           <Headline variant={'headline-4'} tag={'h4'}>&lt;p-spinner&gt;</Headline>
@@ -22,7 +23,7 @@ export function Feedback() {
             <Spinner size={'large'}/>
             <Spinner size={'inherit'} style={{width: '24px'}}/>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
@@ -31,7 +32,7 @@ export function Feedback() {
             <Spinner theme={'dark'} size={'large'}/>
             <Spinner theme={'dark'} size={'inherit'} style={{width: '24px'}}/>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
     </div>

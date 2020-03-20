@@ -76,6 +76,17 @@ export class PCheckboxWrapper {
   }
 }
 
+export declare interface PDivider extends Components.PDivider {}
+@ProxyCmp({inputs: ['color', 'orientation', 'theme']})
+@Component({ selector: 'p-divider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'orientation', 'theme'] })
+export class PDivider {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface PFlex extends Components.PFlex {}
 @ProxyCmp({inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap']})
 @Component({ selector: 'p-flex', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignContent', 'alignItems', 'direction', 'inline', 'justifyContent', 'wrap'] })

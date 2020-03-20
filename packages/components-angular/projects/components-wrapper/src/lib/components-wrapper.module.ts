@@ -20,7 +20,8 @@ import {
   PSpinner,
   PText,
   PTextFieldWrapper,
-  PTextareaWrapper
+  PTextareaWrapper,
+  PDivider
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -42,7 +43,8 @@ const DECLARATIONS = [
   PSpinner,
   PText,
   PTextFieldWrapper,
-  PTextareaWrapper
+  PTextareaWrapper,
+  PDivider
 ];
 
 export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {

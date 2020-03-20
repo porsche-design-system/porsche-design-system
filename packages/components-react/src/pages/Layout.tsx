@@ -1,4 +1,5 @@
 import {
+  PDivider as Divider,
   PFlex as Flex,
   PFlexItem as FlexItem,
   PGrid as Grid,
@@ -11,7 +12,7 @@ export function Layout() {
   return (
     <div>
       <Headline variant={'headline-2'}>Layout</Headline>
-      <hr/>
+      <Divider/>
       <Grid>
         <GridItem size={2}>
           <Headline variant={'headline-4'} tag={'h4'}>
@@ -104,7 +105,7 @@ export function Layout() {
               <GridItem offset={11} size={1}/>
             </Grid>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -135,7 +136,29 @@ export function Layout() {
               <FlexItem offset={'three-quarters'} width={'one-quarter'}/>
             </Flex>
           </div>
-          <hr/>
+          <Divider/>
+        </GridItem>
+      </Grid>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>
+            &lt;p-divider&gt;
+          </Headline>
+        </GridItem>
+        <GridItem size={10}>
+          <div className="playground light spacing-block">
+            <Divider/>
+            <br/>
+            <br/>
+            <Divider color={'neutral-contrast-medium'}/>
+            <br/>
+            <br/>
+            <Divider color={'neutral-contrast-high'}/>
+            <br/>
+            <br/>
+            <Divider orientation={'vertical'} style={{'height': '100px'}}/>
+          </div>
+          <Divider/>
         </GridItem>
       </Grid>
     </div>
