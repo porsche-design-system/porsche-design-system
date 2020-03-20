@@ -109,6 +109,7 @@ export class CheckboxWrapper {
 
   private setInput(): void {
     this.input = this.host.querySelector('input[type="checkbox"]');
+    this.input.setAttribute('aria-label', this.label);
   }
 
   private labelClick(event: MouseEvent): void {
