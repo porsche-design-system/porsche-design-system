@@ -7,7 +7,7 @@ describe('Component <p-textarea-wrapper>', () => {
     expect(new TextareaWrapper()).toBeTruthy();
   });
 
-  it('should render correctly in default mode with shadow dom', async (done) => {
+  it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [TextareaWrapper],
       html: `<p-textarea-wrapper label="Some label"><textarea name="some-name"></textarea></p-textarea-wrapper>`,
@@ -15,8 +15,6 @@ describe('Component <p-textarea-wrapper>', () => {
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-textarea-wrapper__fake-textarea')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('.p-textarea-wrapper__fake-textarea')).toBeTruthy();
-    expect(page.root).toMatchSnapshot();
-    done();
   });
 
   it('should not render slotted message if no state is set', async (done) => {
