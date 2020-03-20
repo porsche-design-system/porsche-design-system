@@ -115,6 +115,7 @@ export class TextFieldWrapper {
 
   private setInput(): void {
     this.input = this.host.querySelector('input');
+    this.input.setAttribute('aria-label', this.label);
   }
 
   private setState(): void {
