@@ -2,7 +2,8 @@ import {
   PGrid as Grid,
   PGridItem as GridItem,
   PHeadline as Headline,
-  PIcon as Icon
+  PIcon as Icon,
+  PDivider as Divider
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -10,7 +11,7 @@ export function Icons() {
   return (
     <div>
       <Headline variant={'headline-2'}>Icon</Headline>
-      <hr/>
+      <Divider/>
       <Grid>
         <GridItem size={2}>
           <Headline variant={'headline-4'} tag={'h4'}>&lt;p-icon&gt;</Headline>
@@ -25,7 +26,7 @@ export function Icons() {
                   style={{color: 'deeppink'}}/>
             <Icon name={'delete'} size={'large'} aria-label="Delete icon"/>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
@@ -39,7 +40,7 @@ export function Icons() {
                   style={{color: 'deeppink'}}/>
             <Icon name={'delete'} theme={'dark'} size={'large'} aria-label="Delete icon"/>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
     </div>

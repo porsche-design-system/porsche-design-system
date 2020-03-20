@@ -13,7 +13,7 @@
         </ul>
       </li>
     </ul>
-    <Divider v-if="config.stories" spacing="small"/>
+    <p-divider v-if="config.stories" class="divider-spacing-small"></p-divider>
     <p-headline v-if="config.stories" variant="headline-3" tag="h2">Components</p-headline>
     <ul v-if="config.stories" class="list">
       <li v-for="(stories, category, index) in config.stories" :key="index">
@@ -36,13 +36,8 @@
   import { StorefrontConfig } from '@/interface';
   import { config as storefrontConfig } from '@/../storefront.config';
   import { encodeUrl } from '@/services/utils';
-  import Divider from '@/components/Divider.vue';
 
-  @Component({
-    components: {
-      Divider
-    }
-  })
+  @Component
   export default class Sidebar extends Vue {
     public encodeUrl = encodeUrl;
 
