@@ -2,7 +2,7 @@
   <nav>
     <ul v-if="config.pages" class="list">
       <li v-for="(pages, category, index) in config.pages" :key="index">
-        <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
+        <p-headline variant="headline-4" tag="h2">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
             <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`"
