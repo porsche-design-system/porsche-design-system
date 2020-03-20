@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-basic',
   template: `
     <p-headline [variant]="'headline-2'" [tag]="'h2'">Basic</p-headline>
-    <hr>
+    <p-divider></p-divider>
     <p-grid>
       <p-grid-item [size]="2">
         <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-marque&gt;</p-headline>
@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
           <p-marque></p-marque>
           <p-marque [trademark]="false"></p-marque>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -43,7 +43,7 @@ import { Component } from '@angular/core';
             the lazy dog
           </p-headline>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
       <p-grid-item size="5">
         <div class="playground dark spacing-block">
@@ -54,7 +54,7 @@ import { Component } from '@angular/core';
             brown fox jumps over the lazy dog
           </p-headline>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -136,7 +136,7 @@ import { Component } from '@angular/core';
           <p-text>Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong
             text</strong></p-text>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>`
 })

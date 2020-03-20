@@ -6,7 +6,8 @@ import {
   PSelectWrapper as SelectWrapper,
   PRadioButtonWrapper as RadioButtonWrapper,
   PTextFieldWrapper as TextFieldWrapper,
-  PTextareaWrapper as TextareaWrapper
+  PTextareaWrapper as TextareaWrapper,
+  PDivider as Divider
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -14,7 +15,7 @@ export function Form() {
   return (
     <div>
       <Headline variant={'headline-2'}>Form</Headline>
-      <hr/>
+      <Divider/>
       <Grid>
         <GridItem size={2}>
           <Headline variant={"headline-4"} tag={"h4"}>&lt;p-text-field-wrapper&gt;</Headline>
@@ -43,7 +44,7 @@ export function Form() {
               slot="message">Some error message with a <a
               href="https://designsystem.porsche.com">link</a>.</span></TextFieldWrapper>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -84,7 +85,7 @@ export function Form() {
                 href="https://designsystem.porsche.com">link</a>.</span>
             </SelectWrapper>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -143,7 +144,7 @@ export function Form() {
               <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
             </CheckboxWrapper>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -172,7 +173,7 @@ export function Form() {
               name="some-name">Some value</textarea><span slot="message">Some error message with a <a
               href="https://designsystem.porsche.com">link</a>.</span></TextareaWrapper>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -217,7 +218,7 @@ export function Form() {
               <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
             </RadioButtonWrapper>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
     </div>

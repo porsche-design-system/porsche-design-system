@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
         <br>
         <span id="system-log"></span>
       </p-text>
-      <hr>
+      <p-divider></p-divider>
       <a [routerLink]="['basic']">
         <p-link-pure>Basic</p-link-pure>
       </a>
@@ -37,7 +37,7 @@ import { Component } from '@angular/core';
       <a [routerLink]="['navigation']">
         <p-link-pure>Navigation</p-link-pure>
       </a>
-      <hr>
+      <p-divider></p-divider>
       <router-outlet></router-outlet>
     </div>
   `
