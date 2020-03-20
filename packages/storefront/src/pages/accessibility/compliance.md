@@ -25,9 +25,9 @@ To make a Porsche web application accessibility conform with ADA's directives yo
 ### Europe
 
 #### EU Web Accessibility Directive / European Accessibility Act
-The [EU Web Accessibility Directive](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.327.01.0001.01.ENG), in force since 22 December 2016, will provide people with disabilities with better access to the websites and mobile apps of public services.
+The [EU Web Accessibility Directive](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.327.01.0001.01.ENG), in force since 22 December 2016, will provide people with disabilities better access to the websites and mobile apps of public services.
 
-To make a Porsche web application accessibility conform with the EU's directives, you have to follow the latest harmonized standard of [Accessibility requirements for ICTproducts and services](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf) which are also based on the [WCAG 2.1 AA guidelines](https://www.w3.org/TR/WCAG21/).
+To make a Porsche web application accessibility conform with the EU's directives, you have to follow the latest harmonized standard of [Accessibility requirements for ICT products and services](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf) which are also based on the [WCAG 2.1 AA guidelines](https://www.w3.org/TR/WCAG21/).
 
 ### Germany
 
