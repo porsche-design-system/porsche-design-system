@@ -11,6 +11,7 @@ applyPolyfills().then(() => defineCustomElements());
 export const PButton = /*@__PURE__*/createReactComponent<JSX.PButton, HTMLPButtonElement>('p-button');
 export const PButtonPure = /*@__PURE__*/createReactComponent<JSX.PButtonPure, HTMLPButtonPureElement>('p-button-pure');
 export const PCheckboxWrapper = /*@__PURE__*/createReactComponent<JSX.PCheckboxWrapper, HTMLPCheckboxWrapperElement>('p-checkbox-wrapper');
+export const PDivider = /*@__PURE__*/createReactComponent<JSX.PDivider, HTMLPDividerElement>('p-divider');
 export const PFlex = /*@__PURE__*/createReactComponent<JSX.PFlex, HTMLPFlexElement>('p-flex');
 export const PFlexItem = /*@__PURE__*/createReactComponent<JSX.PFlexItem, HTMLPFlexItemElement>('p-flex-item');
 export const PGrid = /*@__PURE__*/createReactComponent<JSX.PGrid, HTMLPGridElement>('p-grid');

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-layout',
   template: `
     <p-headline [variant]="'headline-2'">Layout</p-headline>
-    <hr>
+    <p-divider></p-divider>
     <p-grid>
       <p-grid-item [size]="2">
         <p-headline [variant]="'headline-4'" [tag]="'h4'">
@@ -97,7 +97,7 @@ import { Component, OnInit } from '@angular/core';
             <p-grid-item [offset]="11" [size]="1"></p-grid-item>
           </p-grid>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -128,7 +128,29 @@ import { Component, OnInit } from '@angular/core';
             <p-flex-item [offset]="'three-quarters'" [width]="'one-quarter'"></p-flex-item>
           </p-flex>
         </div>
-        <hr>
+        <p-divider></p-divider>
+      </p-grid-item>
+    </p-grid>
+    <p-grid>
+      <p-grid-item [size]="2">
+        <p-headline [variant]="'headline-4'" [tag]="'h4'">
+          &lt;p-divider&gt;
+        </p-headline>
+      </p-grid-item>
+      <p-grid-item [size]="10">
+        <div class="playground light spacing-block">
+          <p-divider></p-divider>
+          <br>
+          <br>
+          <p-divider [color]="'neutral-contrast-medium'"></p-divider>
+          <br>
+          <br>
+          <p-divider [color]="'neutral-contrast-high'"></p-divider>
+          <br>
+          <br>
+          <p-divider [orientation]="'vertical'" style="height: 100px"></p-divider>
+        </div>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
   `

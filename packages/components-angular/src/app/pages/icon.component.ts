@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-icon',
   template: `
     <p-headline [variant]="'headline-2'">Icon</p-headline>
-    <hr>
+    <p-divider></p-divider>
     <p-grid>
       <p-grid-item [size]="2">
         <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-icon&gt;</p-headline>
@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
                   style="color: deeppink;"></p-icon>
           <p-icon [name]="'delete'" [size]="'large'" aria-label="Delete icon"></p-icon>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
       <p-grid-item [size]="5">
         <div class="playground dark spacing-inline">
@@ -37,7 +37,7 @@ import { Component } from '@angular/core';
                   style="color: deeppink;"></p-icon>
           <p-icon [name]="'delete'" [theme]="'dark'" [size]="'large'" aria-label="Delete icon"></p-icon>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
   `

@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `Divider`
+
 ### Fixed
 - Support label text of form elements for Screen readers
 
