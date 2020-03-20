@@ -3,7 +3,8 @@ import {
   PGridItem as GridItem,
   PHeadline as Headline,
   PMarque as Marque,
-  PText as Text
+  PText as Text,
+  PDivider as Divider
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -11,7 +12,7 @@ export function Basic() {
   return (
     <div>
       <Headline variant={'headline-2'} tag={'h2'}>Basic</Headline>
-      <hr/>
+      <Divider/>
       <Grid>
         <GridItem size={2}>
           <Headline variant={'headline-4'} tag={'h4'}>&lt;p-marque&gt;</Headline>
@@ -21,7 +22,7 @@ export function Basic() {
             <Marque/>
             <Marque trademark={false}/>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -46,7 +47,7 @@ export function Basic() {
             <Headline variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick brown fox jumps
               over the lazy dog</Headline>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-block">
@@ -55,7 +56,7 @@ export function Basic() {
             <Headline theme={'dark'} variant={'headline-3'} color={'inherit'} style={{color: 'deeppink'}}>The quick
               brown fox jumps over the lazy dog</Headline>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -125,7 +126,7 @@ export function Basic() {
             <Text>Lorem ipsum dolor sit amet <a href="https://designsystem.porsche.com">linked text</a> et, <b>bold
               text</b> &amp; <strong>strong text</strong></Text>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
     </div>

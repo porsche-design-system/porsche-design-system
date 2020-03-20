@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-form',
   template: `
     <p-headline [variant]="'headline-2'">Form</p-headline>
-    <hr>
+    <p-divider></p-divider>
     <p-grid>
       <p-grid-item [size]="2">
         <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-text-field-wrapper&gt;</p-headline>
@@ -22,7 +22,7 @@ import { Component } from '@angular/core';
           <p-text-field-wrapper [label]="'Some label'" [state]="'success'" [message]="'Success message'"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [state]="'error'"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><input type="text" name="some-name" placeholder="Some placeholder"/><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-text-field-wrapper>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -62,7 +62,7 @@ import { Component } from '@angular/core';
             <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
           </p-select-wrapper>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -118,7 +118,7 @@ import { Component } from '@angular/core';
             <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
           </p-checkbox-wrapper>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -137,7 +137,7 @@ import { Component } from '@angular/core';
           <p-textarea-wrapper [label]="'Some label'" [state]="'success'" [message]="'success message'"><textarea name="some-name"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [state]="'error'"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><textarea name="some-name">Some value</textarea><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-textarea-wrapper>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -181,7 +181,7 @@ import { Component } from '@angular/core';
             <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
           </p-radio-button-wrapper>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
   `
