@@ -2,7 +2,7 @@ describe('Design Workflow', () => {
   it('Should navigate through main navigation and show page title', () => {
     cy.visit('/');
 
-    cy.get('#app .sidebar nav p-link-pure')
+    cy.get('#app .sidebar nav p-link-pure[href*="getting-started/design-workflow"]')
       .contains('Design Workflow')
       .click()
       .should('have.attr', 'active', 'true');
