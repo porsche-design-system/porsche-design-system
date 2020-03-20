@@ -2,7 +2,7 @@ describe('Browser Compatibility', () => {
   it('Should navigate through main navigation and show page title', () => {
     cy.visit('/');
 
-    cy.get('#app .sidebar nav p-link-pure')
+    cy.get('#app .sidebar nav p-link-pure[href*="basics/browser-compatibility"]')
       .contains('Browser Compatibility')
       .click()
       .should('have.attr', 'active', 'true');

@@ -2,7 +2,7 @@ describe('Start Coding', () => {
   it('Should navigate through main navigation and show page title', () => {
     cy.visit('/');
 
-    cy.get('#app .sidebar nav p-link-pure')
+    cy.get('#app .sidebar nav p-link-pure[href*="getting-started/start-coding"]')
       .contains('Start Coding')
       .click()
       .should('have.attr', 'active', 'true');
