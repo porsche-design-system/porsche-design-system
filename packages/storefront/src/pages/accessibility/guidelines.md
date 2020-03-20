@@ -73,7 +73,7 @@ The following list is a **distilled set of rules** to reduce the risk of legal e
 1. Check off easy WWCAG 2.0 Wins
     - language and descriptive title tags
     - consistent navigation
-    - no pop-ups/distractors (you can technically have pop-ups/automatic content but I recommend against them)
+    - no pop-ups/distractors (you can technically have pop-ups/automatic content but we recommend against them)
     - no error pages
     - clean code
     - no time constraints
