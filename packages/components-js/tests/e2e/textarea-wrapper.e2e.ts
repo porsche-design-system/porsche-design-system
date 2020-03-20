@@ -12,6 +12,17 @@ describe('Textarea Wrapper', () => {
     expect(el).not.toBeNull();
   });
 
+  it('should add aria-label to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-textarea-wrapper label="Some label">
+        <textarea name="some-name"></textarea>
+      </p-textarea-wrapper>
+    `);
+    const textarea = await page.find('p-textarea-wrapper textarea');
+    expect(textarea.getAttribute('aria-label')).toBe('Some label');
+  });
+
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     const page = await newE2EPage();
     await page.setContent(`

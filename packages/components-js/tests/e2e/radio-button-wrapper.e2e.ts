@@ -6,9 +6,21 @@ describe('radio-button-wrapper', () => {
     await page.setContent(`
       <p-radio-button-wrapper label="Some label">
         <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>`);
+      </p-radio-button-wrapper>
+    `);
     const el = await page.find('p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
     expect(el).not.toBeNull();
+  });
+
+  it('should add aria-label to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-radio-button-wrapper label="Some label">
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>
+    `);
+    const input = await page.find('p-radio-button-wrapper input');
+    expect(input.getAttribute('aria-label')).toBe('Some label');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {

@@ -3,15 +3,32 @@ import { E2EPage, newE2EPage } from '@stencil/core/testing';
 describe('select-wrapper', () => {
   it('should render', async () => {
     const page = await newE2EPage();
-    await page.setContent(`<p-select-wrapper label="Some label">
-      <select name="some-name">
-        <option value="a">Option A</option>
-        <option value="b">Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>`);
+    await page.setContent(`
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
     const el = await page.find('p-select-wrapper >>> .p-select-wrapper__fake-select');
     expect(el).not.toBeNull();
+  });
+
+  it('should add aria-label to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+    const select = await page.find('p-select-wrapper select');
+    expect(select.getAttribute('aria-label')).toBe('Some label');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {

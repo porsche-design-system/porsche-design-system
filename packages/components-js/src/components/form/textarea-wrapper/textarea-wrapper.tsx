@@ -103,6 +103,7 @@ export class TextareaWrapper {
 
   private setTextarea(): void {
     this.textarea = this.host.querySelector('textarea');
+    this.textarea.setAttribute('aria-label', this.label);
   }
 
   private setState(): void {

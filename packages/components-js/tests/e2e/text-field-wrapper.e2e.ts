@@ -30,6 +30,17 @@ describe('Text Field Wrapper', () => {
     expect(el).not.toBeNull();
   });
 
+  it('should add aria-label to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name">
+      </p-text-field-wrapper>
+    `);
+    const input = await page.find('p-text-field-wrapper input');
+    expect(input.getAttribute('aria-label')).toBe('Some label');
+  });
+
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     const page = await newE2EPage();
     await page.setContent(`
