@@ -9,7 +9,9 @@
           autoplay
           muted
           playsinline
-        ></video>
+        >
+          <track src="../assets/captions_en.vtt" kind="captions" srclang="en" label="english captions">
+        </video>
       </div>
     </header>
 

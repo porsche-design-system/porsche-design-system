@@ -2,7 +2,7 @@ describe('About', () => {
   it('Should navigate through main navigation and show page title', () => {
     cy.visit('/');
 
-    cy.get('#app .sidebar nav p-link-pure')
+    cy.get('#app .sidebar nav p-link-pure[href*="getting-started/about"]')
       .contains('About')
       .click()
       .should('have.attr', 'active', 'true');
