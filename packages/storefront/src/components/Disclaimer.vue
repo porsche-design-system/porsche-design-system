@@ -1,5 +1,5 @@
 <template>
-  <div class="disclaimer">
+  <div class="disclaimer" role="complementary" aria-label="disclaimer">
     <p-text theme="dark">
       We are very excited to announce the first stable release v1.0.0 of the Porsche Design System.
     </p-text>
