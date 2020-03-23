@@ -26,13 +26,22 @@ Text lists are used to display listed data in form of an unordered or ordered li
   <template v-slot="{theme}">
     <p-text-list list-type="ordered" :theme="theme">
       <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
-      <p-text-list-item>
-        Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
+      <p-text-list-item>Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp; <strong>strong text</strong>
         <p-text-list list-type="ordered" :theme="theme">
           <p-text-list-item>Second level - Lorem ipsum dolor sit amet</p-text-list-item>
           <p-text-list-item>Lorem ipsum</p-text-list-item>
         </p-text-list>
       </p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
+      <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
       <p-text-list-item>First level - Lorem ipsum dolor sit amet</p-text-list-item>
     </p-text-list>
   </template>

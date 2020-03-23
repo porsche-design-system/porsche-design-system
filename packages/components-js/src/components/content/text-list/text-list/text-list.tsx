@@ -16,7 +16,7 @@ export class TextList {
   @Prop({reflect: true}) public listType?: 'unordered' | 'ordered' = 'unordered';
 
   /** The list style type of an ordered list. */
-  @Prop() public orderType?: 'numbered' | 'alphabetically' = 'numbered';
+  @Prop({reflect: true}) public orderType?: 'numbered' | 'alphabetically' = 'numbered';
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
@@ -33,7 +33,7 @@ export class TextList {
     );
 
     return (
-      <Host slot={this.isNestedList && 'nested'}>
+      <Host nested={this.isNestedList && true}>
         <TagType class={textListClasses}>
           <slot/>
         </TagType>
