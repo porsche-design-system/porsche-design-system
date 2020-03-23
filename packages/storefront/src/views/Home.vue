@@ -10,7 +10,7 @@
           muted
           playsinline
         >
-          <track src="../assets/captions_en.vtt" kind="captions" srclang="en" label="english captions">
+          <track src="../assets/captions_en.vtt" kind="descriptions" srclang="en" label="english captions">
         </video>
       </div>
     </header>
