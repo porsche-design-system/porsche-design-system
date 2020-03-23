@@ -232,7 +232,6 @@ describe('Text Field Wrapper', () => {
       await fakeInput.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
 
     it('should change box-shadow color of fake input when label text is hovered', async () => {
@@ -243,16 +242,14 @@ describe('Text Field Wrapper', () => {
         </p-text-field-wrapper>
       `);
 
-      const fakeInput = await page.find('p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
+      const labelText = await page.find('p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
 
       const initialBoxShadow = await getBoxShadow(page);
 
-      await fakeInput.hover();
+      await labelText.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
-
   });
 });
 

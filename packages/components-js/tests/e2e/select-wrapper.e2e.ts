@@ -194,7 +194,6 @@ describe('select-wrapper', () => {
       await fakeSelect.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
 
     it('should change box-shadow color of fake select when label text is hovered', async () => {
@@ -207,15 +206,13 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>`);
 
-      const fakeSelect = await page.find('p-select-wrapper >>> .p-select-wrapper__label-text');
+      const labelText = await page.find('p-select-wrapper >>> .p-select-wrapper__label-text');
 
       const initialBoxShadow = await getBoxShadow(page);
 
-      await fakeSelect.hover();
+      await labelText.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
-
   });
 });

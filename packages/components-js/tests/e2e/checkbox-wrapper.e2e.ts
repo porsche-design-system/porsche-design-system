@@ -331,7 +331,6 @@ describe('checkbox-wrapper', () => {
       await fakeCheckbox.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
 
     it('should change box-shadow color of fake checkbox when label text is hovered', async () => {
@@ -341,15 +340,13 @@ describe('checkbox-wrapper', () => {
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-      const fakeCheckbox = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
+      const labelText = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
 
       const initialBoxShadow = await getBoxShadow(page);
 
-      await fakeCheckbox.hover();
+      await labelText.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
-
   });
 });

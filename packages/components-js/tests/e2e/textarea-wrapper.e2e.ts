@@ -68,7 +68,7 @@ describe('Textarea Wrapper', () => {
     const labelId = label.getAttribute('id');
 
     expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+    expect(await getMessage()).toEqualAttributes({'role': 'alert', 'aria-describedby': labelId});
 
     textareaComponent.setProperty('state', 'success');
 
@@ -126,7 +126,6 @@ describe('Textarea Wrapper', () => {
       await fakeTextarea.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
 
     it('should change box-shadow color of fake textarea when label text is hovered', async () => {
@@ -137,15 +136,13 @@ describe('Textarea Wrapper', () => {
         </p-textarea-wrapper>
       `);
 
-      const fakeTextarea = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+      const labelText = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
 
       const initialBoxShadow = await getBoxShadow(page);
 
-      await fakeTextarea.hover();
+      await labelText.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
-
   });
 });
