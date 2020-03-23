@@ -2,8 +2,9 @@
 
 :host {
   position: relative !important;
-  display: block !important;
+  display: list-item !important;
   color: inherit !important;
+  list-style-type: none !important;
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--unordered) {
@@ -17,26 +18,23 @@
     width: p-rem(4px);
     height: p-rem(4px);
     background-color: currentColor;
-    font-size: inherit;
-    line-height: inherit;
   }
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--ordered) {
-  padding-left: p-rem(36px) !important;
+  padding-left: p-rem(40px) !important;
 
   &::before {
     position: absolute;
-    right:calc(100% - 24px);
-    counter-increment: section;
     content: counters(section, '.', decimal) '.';
+    counter-increment: section;
+    right: calc(100% - 24px);
     text-align: right;
   }
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--ordered-alphabetically) {
   &::before {
-    counter-increment: section;
     content: counters(section, '.', lower-latin) '.';
   }
 }
@@ -47,8 +45,4 @@
     width: p-rem(8px);
     top: calc(1.5em / 2);
   }
-}
-
-:host(.#{$p-global-class-prefix}text-list-item--ordered.#{$p-global-class-prefix}text-list-item--nested) {
-  // padding-left: p-rem(36px) !important;
 }

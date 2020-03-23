@@ -18,8 +18,7 @@ export class TextListItem {
   public render(): JSX.Element {
     const textListItemClasses = cx(
       prefix('text-list-item'),
-      this.typeOfList === 'unordered' && prefix('text-list-item--unordered'),
-      this.typeOfList === 'ordered' && prefix('text-list-item--ordered'),
+      prefix(`text-list-item--${this.typeOfList}`),
       this.typeOfList === 'ordered' && prefix(`text-list-item--ordered-${this.typeOfOrderedList}`),
       this.isNestedList && prefix('text-list-item--nested')
     );

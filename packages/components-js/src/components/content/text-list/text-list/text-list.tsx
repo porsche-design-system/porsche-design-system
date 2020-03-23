@@ -34,7 +34,7 @@ export class TextList {
 
     return (
       <Host nested={this.isNestedList && true}>
-        <TagType class={textListClasses}>
+        <TagType role='list' class={textListClasses}>
           <slot/>
         </TagType>
       </Host>
