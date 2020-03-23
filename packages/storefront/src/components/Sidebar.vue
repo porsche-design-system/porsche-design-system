@@ -2,7 +2,7 @@
   <nav>
     <ul v-if="config.pages" class="list">
       <li v-for="(pages, category, index) in config.pages" :key="index">
-        <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
+        <p-headline variant="headline-4" tag="h2">{{ category }}</p-headline>
         <ul>
           <li v-for="(v, page, index) in pages" :key="index">
             <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`"
@@ -13,7 +13,7 @@
         </ul>
       </li>
     </ul>
-    <Divider v-if="config.stories" spacing="small"/>
+    <p-divider v-if="config.stories" class="divider-spacing-small"></p-divider>
     <p-headline v-if="config.stories" variant="headline-3" tag="h2">Components</p-headline>
     <ul v-if="config.stories" class="list">
       <li v-for="(stories, category, index) in config.stories" :key="index">
@@ -36,13 +36,8 @@
   import { StorefrontConfig } from '@/interface';
   import { config as storefrontConfig } from '@/../storefront.config';
   import { encodeUrl } from '@/services/utils';
-  import Divider from '@/components/Divider.vue';
 
-  @Component({
-    components: {
-      Divider
-    }
-  })
+  @Component
   export default class Sidebar extends Vue {
     public encodeUrl = encodeUrl;
 

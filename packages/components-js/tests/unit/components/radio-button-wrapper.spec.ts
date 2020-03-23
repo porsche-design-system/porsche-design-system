@@ -15,6 +15,5 @@ describe('Component <p-radio-button-wrapper>', () => {
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-radio-button-wrapper__fake-radio-button')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('.p-radio-button-wrapper__fake-radio-button')).toBeTruthy();
-    expect(page.root).toMatchSnapshot();
   });
 });

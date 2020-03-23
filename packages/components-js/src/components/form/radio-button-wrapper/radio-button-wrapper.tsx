@@ -103,6 +103,7 @@ export class RadioButtonWrapper {
 
   private setInput(): void {
     this.input = this.host.querySelector('input[type="radio"]');
+    this.input.setAttribute('aria-label', this.label);
   }
 
   private labelClick(event: MouseEvent): void {

@@ -22,7 +22,8 @@ import {
   PTextList,
   PTextListItem,
   PTextFieldWrapper,
-  PTextareaWrapper
+  PTextareaWrapper,
+  PDivider
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -46,7 +47,8 @@ const DECLARATIONS = [
   PTextList,
   PTextListItem,
   PTextFieldWrapper,
-  PTextareaWrapper
+  PTextareaWrapper,
+  PDivider
 ];
 
 export function ApplyPolyfillAndDefineCustomElements<T extends {new(...args:any[])}>(constructor:T) {
