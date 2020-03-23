@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `Divider`
+- Hover state for form elements
 
 ### Fixed
 - Support label text of form elements for Screen readers
