@@ -71,15 +71,15 @@ export class CheckboxWrapper {
     return (
       <Host>
         <label class={labelClasses} id={this.state === 'error' && this.labelId}>
-          <span class={fakeCheckboxClasses}>
-            <p-icon class={iconClasses} name={this.indeterminate ? 'minus' : 'check'} theme='dark' size='inherit' />
-            <slot/>
-          </span>
           {this.isLabelVisible &&
           <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent) => this.labelClick(e)}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
           }
+          <span class={fakeCheckboxClasses}>
+            <p-icon class={iconClasses} name={this.indeterminate ? 'minus' : 'check'} theme='dark' size='inherit' />
+            <slot/>
+          </span>
         </label>
         {this.isMessageVisible &&
         <p-text
