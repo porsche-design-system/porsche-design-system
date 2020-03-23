@@ -11,13 +11,13 @@
   padding-left: p-rem(24px) !important;
 
   &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: calc(1.5em / 2 - 0.125em);
-    width: p-rem(4px);
-    height: p-rem(4px);
-    background-color: currentColor;
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: calc(1.5em / 2 - 0.125em) !important;
+    width: p-rem(4px) !important;
+    height: p-rem(4px) !important;
+    background-color: currentColor !important;
   }
 }
 
@@ -25,24 +25,25 @@
   padding-left: p-rem(40px) !important;
 
   &::before {
-    position: absolute;
-    content: counters(section, '.', decimal) '.';
-    counter-increment: section;
-    right: calc(100% - 24px);
-    text-align: right;
+    position: absolute !important;
+    content: counters(section, '.', decimal) '.' !important;
+    counter-increment: section !important;
+    right: calc(100% - 24px) !important;
+    text-align: right !important;
+    @include p-text;
   }
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--ordered-alphabetically) {
   &::before {
-    content: counters(section, '.', lower-latin) '.';
+    content: counters(section, '.', lower-latin) '.' !important;
   }
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--unordered.#{$p-global-class-prefix}text-list-item--nested) {
   &::before {
-    height: 1px;
-    width: p-rem(8px);
-    top: calc(1.5em / 2);
+    height: 1px !important;
+    width: p-rem(8px) !important;
+    top: calc(1.5em / 2) !important;
   }
 }
