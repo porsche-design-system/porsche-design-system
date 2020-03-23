@@ -2,12 +2,12 @@
 
 :host {
   position: relative !important;
-  display: list-item !important;
+  display: block !important;
   color: inherit !important;
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--unordered) {
-  padding-left: p-rem(28px) !important;
+  padding-left: p-rem(24px) !important;
 
   &::before {
     content: '';
@@ -23,11 +23,14 @@
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--ordered) {
+  padding-left: p-rem(36px) !important;
+
   &::before {
+    position: absolute;
+    right:calc(100% - 24px);
     counter-increment: section;
     content: counters(section, '.', decimal) '.';
-    display: inline-block;
-    min-width: p-rem(28px);
+    text-align: right;
   }
 }
 
@@ -47,9 +50,5 @@
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--ordered.#{$p-global-class-prefix}text-list-item--nested) {
-  padding-left: p-rem(28px) !important;
-
-  &::before {
-    min-width: p-rem(36px);
-  }
+  // padding-left: p-rem(36px) !important;
 }
