@@ -247,7 +247,6 @@ describe('radio-button-wrapper', () => {
       await fakeRadioButton.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
 
     it('should change box-shadow color of fake radio button when label text is hovered', async () => {
@@ -257,15 +256,13 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-      const fakeRadioButton = await page.find('p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
+      const labelText = await page.find('p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
 
       const initialBoxShadow = await getBoxShadow(page);
 
-      await fakeRadioButton.hover();
+      await labelText.hover();
 
       expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
-
     });
-
   });
 });
