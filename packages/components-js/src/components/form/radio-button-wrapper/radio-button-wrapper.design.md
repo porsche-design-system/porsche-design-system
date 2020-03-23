@@ -11,6 +11,7 @@ All Radio Buttons are available in the following states:
 * default
 * checked
 * disabled
+* hover
 * focus
 * error
 * success

@@ -38,7 +38,7 @@
   margin: 0 !important;
   padding: 0 !important;
   appearance: none !important;
-  border: 0 rgba(255,255,255,0) !important;
+  border: 0 rgba(255, 255, 255, 0) !important;
   border-radius: 50% !important;
   background-color: transparent !important;
   opacity: 1 !important;
@@ -60,21 +60,22 @@
 
 // Checked
 ::slotted(input:checked) {
-  border-top-color: rgba(255,255,255,0.01) !important;
+  border-top-color: rgba(255, 255, 255, 0.01) !important;
 }
 
 // Disabled
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  border-top-color: rgba(255,255,255,0.02) !important;
+  border-top-color: rgba(255, 255, 255, 0.02) !important;
 }
 
 // Disabled + Checked
 ::slotted(input:disabled:checked) {
-  border-top-color: rgba(255,255,255,0.03) !important;
+  border-top-color: rgba(255, 255, 255, 0.03) !important;
 }
 
 .#{$p-global-class-prefix}radio-button-wrapper {
+  $bem-block: &;
 
   &__label {
     position: relative;
@@ -82,6 +83,7 @@
   }
 
   &__label-text {
+    order: 1;
     display: inline-block;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
@@ -161,6 +163,11 @@
     transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
+    &:hover:not(&--disabled):not(&--success):not(&--error),
+    #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
+      box-shadow: inset 0 0 0 1px $p-color-theme-light-default;
+    }
+
     &::before {
       content: "";
       width: p-rem(16px);
@@ -206,10 +213,20 @@
 
     &--error {
       box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+
+      &:hover,
+      #{$bem-block}__label-text:hover ~ & {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-error, 12%);
+      }
     }
 
     &--success {
       box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+
+      &:hover,
+      #{$bem-block}__label-text:hover ~ & {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-success, 12%);
+      }
     }
   }
 
