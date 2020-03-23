@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-action',
   template: `
     <p-headline [variant]="'headline-2'">Action</p-headline>
-    <hr>
+    <p-divider></p-divider>
     <p-grid>
       <p-grid-item [size]="2">
         <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-button&gt;</p-headline>
@@ -31,7 +31,7 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-inline">
           <p-button style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
         </div>
-        <hr>
+        <p-divider></p-divider>
         <div class="playground light spacing-inline">
           <p-button [variant]="'primary'" [hideLabel]="true">Some label</p-button>
           <p-button [variant]="'primary'" [hideLabel]="true" [disabled]="true">Some label</p-button>
@@ -50,7 +50,7 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-inline">
           <p-button [icon]="'phone'" [hideLabel]="true">Some label</p-button>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
       <p-grid-item [size]="5">
         <div class="playground dark spacing-inline">
@@ -75,7 +75,7 @@ import { Component } from '@angular/core';
           <p-button [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing
           </p-button>
         </div>
-        <hr>
+        <p-divider></p-divider>
         <div class="playground dark spacing-inline">
           <p-button [variant]="'primary'" [hideLabel]="true" [theme]="'dark'">Some label</p-button>
           <p-button [variant]="'primary'" [hideLabel]="true" [theme]="'dark'" [disabled]="true">Some label</p-button>
@@ -94,7 +94,7 @@ import { Component } from '@angular/core';
         <div class="playground dark spacing-inline">
           <p-button [theme]="'dark'" [hideLabel]="true" [icon]="'phone'">Some label</p-button>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -127,7 +127,7 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-inline">
           <p-button-pure style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
       <p-grid-item [size]="5">
         <div class="playground dark spacing-inline">
@@ -156,7 +156,7 @@ import { Component } from '@angular/core';
           <p-button-pure [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing
           </p-button-pure>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
   `

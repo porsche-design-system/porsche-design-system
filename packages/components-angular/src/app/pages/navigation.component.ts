@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-navigation',
   template: `
     <p-headline [variant]="'headline-2'">Navigation</p-headline>
-    <hr>
+    <p-divider></p-divider>
     <p-grid>
       <p-grid-item [size]="2">
         <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-link&gt;</p-headline>
@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
             consetetur sadipscing
           </p-link>
         </div>
-        <hr>
+        <p-divider></p-divider>
         <div class="playground light spacing-inline">
           <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label
           </p-link>
@@ -42,7 +42,7 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-inline">
           <p-link [icon]="'phone'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true">Some label</p-link>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
       <p-grid-item [size]="5">
         <div class="playground dark spacing-inline">
@@ -64,7 +64,7 @@ import { Component } from '@angular/core';
             sit amet, consetetur sadipscing
           </p-link>
         </div>
-        <hr>
+        <p-divider></p-divider>
         <div class="playground dark spacing-inline">
           <p-link [variant]="'primary'" [href]="'https://designsystem.porsche.com'" [hideLabel]="true"
                   [theme]="'dark'">Some
@@ -85,7 +85,7 @@ import { Component } from '@angular/core';
             Some label
           </p-link>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -122,7 +122,7 @@ import { Component } from '@angular/core';
             consetetur sadipscing
           </p-link-pure>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
       <p-grid-item [size]="5">
         <div class="playground dark spacing-inline">
@@ -161,7 +161,7 @@ import { Component } from '@angular/core';
             dolor sit amet, consetetur sadipscing
           </p-link-pure>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
     <p-grid>
@@ -172,13 +172,13 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-block">
           <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></p-pagination>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
       <p-grid-item [size]="5">
         <div class="playground dark spacing-block">
           <p-pagination [theme]="'dark'" [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></p-pagination>
         </div>
-        <hr>
+        <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
   `

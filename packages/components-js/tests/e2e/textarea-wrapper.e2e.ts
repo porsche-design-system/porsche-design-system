@@ -1,4 +1,4 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('Textarea Wrapper', () => {
   it('should render', async () => {
@@ -10,6 +10,17 @@ describe('Textarea Wrapper', () => {
     `);
     const el = await page.find('p-textarea-wrapper >>> label');
     expect(el).not.toBeNull();
+  });
+
+  it('should add aria-label to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-textarea-wrapper label="Some label">
+        <textarea name="some-name"></textarea>
+      </p-textarea-wrapper>
+    `);
+    const textarea = await page.find('p-textarea-wrapper textarea');
+    expect(textarea.getAttribute('aria-label')).toBe('Some label');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -57,7 +68,7 @@ describe('Textarea Wrapper', () => {
     const labelId = label.getAttribute('id');
 
     expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+    expect(await getMessage()).toEqualAttributes({'role': 'alert', 'aria-describedby': labelId});
 
     textareaComponent.setProperty('state', 'success');
 
@@ -91,5 +102,47 @@ describe('Textarea Wrapper', () => {
     await labelText.click();
 
     expect(textareaFocusSpy.length).toBe(1);
+  });
+
+  describe('hover state', () => {
+    const getBoxShadow = async (page: E2EPage) => {
+      const fakeTextarea = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
+      const styles = await fakeTextarea.getComputedStyle();
+      return styles.boxShadow;
+    };
+
+    it('should change box-shadow color when fake textarea is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`
+        <p-textarea-wrapper label="Some label">
+          <textarea name="some-name"></textarea>
+        </p-textarea-wrapper>
+      `);
+
+      const fakeTextarea = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await fakeTextarea.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+    });
+
+    it('should change box-shadow color of fake textarea when label text is hovered', async () => {
+      const page = await newE2EPage();
+      await page.setContent(`
+        <p-textarea-wrapper label="Some label">
+          <textarea name="some-name"></textarea>
+        </p-textarea-wrapper>
+      `);
+
+      const labelText = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+
+      const initialBoxShadow = await getBoxShadow(page);
+
+      await labelText.hover();
+
+      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+    });
   });
 });

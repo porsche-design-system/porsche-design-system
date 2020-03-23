@@ -33,6 +33,7 @@ The Select component is available in the following states:
 
 * default
 * disabled
+* hover
 * focus
 * error
 * success

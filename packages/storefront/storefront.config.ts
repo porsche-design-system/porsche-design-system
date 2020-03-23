@@ -61,10 +61,20 @@ export const config: StorefrontConfig = {
       'Quality Criteria': [
         // @ts-ignore
         () => import(`@/pages/basics/quality-criteria.md`)
-      ],
-      'Accessibility Criteria': [
+      ]
+    },
+    Accessibility: {
+      Introduction: [
         // @ts-ignore
-        () => import(`@/pages/basics/accessibility.md`)
+        () => import(`@/pages/accessibility/introduction.md`)
+      ],
+      Compliance: [
+        // @ts-ignore
+        () => import(`@/pages/accessibility/compliance.md`)
+      ],
+      Guidelines: [
+        // @ts-ignore
+        () => import(`@/pages/accessibility/guidelines.md`)
       ]
     },
     Patterns: {
@@ -292,6 +302,20 @@ export const config: StorefrontConfig = {
       }
     },
     Layout: {
+      Divider: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/divider/divider.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/divider/divider.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/divider/divider.props.md`),
+        ]
+      },
       Flex: {
         Code: [
           // @ts-ignore

@@ -3,7 +3,8 @@ import {
   PButtonPure as ButtonPure,
   PGrid as Grid,
   PGridItem as GridItem,
-  PHeadline as Headline
+  PHeadline as Headline,
+  PDivider as Divider
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -11,7 +12,7 @@ export function Action() {
   return (
     <div>
       <Headline variant={'headline-2'}>Action</Headline>
-      <hr/>
+      <Divider/>
       <Grid>
         <GridItem size={2}>
           <Headline variant={'headline-4'} tag={'h4'}>&lt;p-button&gt;</Headline>
@@ -38,7 +39,7 @@ export function Action() {
           <div className="playground light spacing-inline">
             <Button style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
           </div>
-          <hr/>
+          <Divider/>
           <div className="playground light spacing-inline">
             <Button variant={'primary'} hideLabel={true}>Some label</Button>
             <Button variant={'primary'} hideLabel={true} disabled={true}>Some label</Button>
@@ -57,7 +58,7 @@ export function Action() {
           <div className="playground light spacing-inline">
             <Button icon={'phone'} hideLabel={true}>Some label</Button>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
@@ -81,7 +82,7 @@ export function Action() {
           <div className="playground dark spacing-inline">
             <Button theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
           </div>
-          <hr/>
+          <Divider/>
           <div className="playground dark spacing-inline">
             <Button variant={'primary'} hideLabel={true} theme={'dark'}>Some label</Button>
             <Button variant={'primary'} hideLabel={true} theme={'dark'} disabled={true}>Some label</Button>
@@ -100,7 +101,7 @@ export function Action() {
           <div className="playground dark spacing-inline">
             <Button theme={'dark'} hideLabel={true} icon={'phone'}>Some label</Button>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
       <Grid>
@@ -133,7 +134,7 @@ export function Action() {
           <div className="playground light spacing-inline">
             <ButtonPure style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</ButtonPure>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
@@ -162,7 +163,7 @@ export function Action() {
             <ButtonPure theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur
               sadipscing</ButtonPure>
           </div>
-          <hr/>
+          <Divider/>
         </GridItem>
       </Grid>
     </div>

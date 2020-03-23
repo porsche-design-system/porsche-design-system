@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-js",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -58,7 +58,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "devDependencies": {
-    "@porsche-design-system/scss-utils": "1.0.0",
+    "@porsche-design-system/scss-utils": "1.0.1",
     "@porsche-design-system/utils": "0.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
