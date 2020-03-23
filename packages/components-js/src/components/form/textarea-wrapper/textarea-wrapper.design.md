@@ -26,6 +26,7 @@ All Textareas types are available in the following states:
 
 * default
 * disabled
+* hover
 * read only
 * focus
 * error
