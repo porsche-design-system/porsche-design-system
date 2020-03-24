@@ -21,7 +21,7 @@ export function Content() {
           <div className="playground light spacing-block">
             <TextList>
               <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
-              <TextListItem>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+              <TextListItem>The quick <a href={'https://designsystem.porsche.com'}>brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
                 <TextList>
                   <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
                   <TextListItem>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</TextListItem>
@@ -34,7 +34,7 @@ export function Content() {
           <div className="playground light spacing-block">
             <TextList listType={'ordered'}>
               <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
-              <TextListItem>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+              <TextListItem>The quick <a href={'https://designsystem.porsche.com'}>brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
                 <TextList listType={'ordered'}>
                   <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
                   <TextListItem>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</TextListItem>
@@ -47,7 +47,7 @@ export function Content() {
           <div className="playground light spacing-block">
             <TextList listType={'ordered'} orderType={'alphabetically'}>
               <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
-              <TextListItem>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+              <TextListItem>The quick <a href={'https://designsystem.porsche.com'}>brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
                 <TextList listType={'ordered'} orderType={'alphabetically'}>
                   <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
                   <TextListItem>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</TextListItem>
@@ -62,7 +62,7 @@ export function Content() {
           <div className="playground dark spacing-block">
             <TextList theme={'dark'}>
               <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
-              <TextListItem>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+              <TextListItem>The quick <a href={'https://designsystem.porsche.com'}>brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
                 <TextList theme={'dark'}>
                   <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
                   <TextListItem>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</TextListItem>
@@ -75,7 +75,7 @@ export function Content() {
           <div className="playground dark spacing-block">
             <TextList listType={'ordered'} theme={'dark'}>
               <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
-              <TextListItem>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+              <TextListItem>The quick <a href={'https://designsystem.porsche.com'}>brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
                 <TextList listType={'ordered'} theme={'dark'}>
                   <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
                   <TextListItem>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</TextListItem>
@@ -88,7 +88,7 @@ export function Content() {
           <div className="playground dark spacing-block">
             <TextList listType={'ordered'} orderType={'alphabetically'} theme={'dark'}>
               <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
-              <TextListItem>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+              <TextListItem>The quick <a href={'https://designsystem.porsche.com'}>brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
                 <TextList listType={'ordered'} orderType={'alphabetically'} theme={'dark'}>
                   <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
                   <TextListItem>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</TextListItem>
