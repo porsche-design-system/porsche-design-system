@@ -8,6 +8,7 @@ import {
 import { PLinkPure as LinkPure, PText as Text, PDivider as Divider } from '@porsche-design-system/components-react';
 import { Basic } from "./pages/Basic";
 import { Action } from "./pages/Action";
+import { Content } from "./pages/Content";
 import { Form } from "./pages/Form";
 import { Feedback } from "./pages/Feedback";
 import { Icons } from "./pages/Icons";
@@ -31,6 +32,9 @@ const App: React.FC = () => {
         <Link to="/action" component={LinkPure}>
           Action
         </Link>
+        <Link to="/content" component={LinkPure}>
+          Content
+        </Link>
         <Link to="/form" component={LinkPure}>
           Form
         </Link>
@@ -53,6 +57,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/action">
             <Action/>
+          </Route>
+          <Route path="/content">
+            <Content/>
           </Route>
           <Route path="/form">
             <Form/>
