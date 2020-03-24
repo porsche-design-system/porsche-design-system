@@ -22,6 +22,9 @@ import { Component } from '@angular/core';
       <a [routerLink]="['action']">
         <p-link-pure>Action</p-link-pure>
       </a>
+      <a [routerLink]="['content']">
+        <p-link-pure>Content</p-link-pure>
+      </a>
       <a [routerLink]="['form']">
         <p-link-pure>Form</p-link-pure>
       </a>
