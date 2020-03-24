@@ -21,16 +21,30 @@
   }
 }
 
+:host(.#{$p-global-class-prefix}text-list-item--unordered.#{$p-global-class-prefix}text-list-item--nested) {
+  &::before {
+    height: 1px !important;
+    width: p-rem(8px) !important;
+    top: calc(1.5em / 2) !important;
+  }
+}
+
 :host(.#{$p-global-class-prefix}text-list-item--ordered) {
   padding-left: p-rem(40px) !important;
 
   &::before {
     position: absolute !important;
-    content: counters(section, '.', decimal) '.' !important;
-    counter-increment: section !important;
     right: calc(100% - 24px) !important;
+    top: 0 !important;
+    counter-increment: section !important;
     text-align: right !important;
     @include p-text;
+  }
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--ordered-numbered) {
+  &::before {
+    content: counters(section, '.', decimal) '.' !important;
   }
 }
 
@@ -40,10 +54,14 @@
   }
 }
 
-:host(.#{$p-global-class-prefix}text-list-item--unordered.#{$p-global-class-prefix}text-list-item--nested) {
+:host(.#{$p-global-class-prefix}text-list-item--ordered-numbered.#{$p-global-class-prefix}text-list-item--nested) {
   &::before {
-    height: 1px !important;
-    width: p-rem(8px) !important;
-    top: calc(1.5em / 2) !important;
+    content: counters(section, '.', decimal) !important;
+  }
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--ordered-alphabetically.#{$p-global-class-prefix}text-list-item--nested) {
+  &::before {
+    content: counters(section, '.', lower-latin) !important;
   }
 }
