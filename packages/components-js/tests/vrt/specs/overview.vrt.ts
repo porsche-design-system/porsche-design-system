@@ -26,6 +26,14 @@ describe('Components Overview', () => {
     ).toBeFalsy();
   });
 
+  it('should have no visual regression for content', async () => {
+    expect(
+      await vrt.test('overview-content', async () => {
+        await vrt.goTo('/index.html#content', 1000);
+      })
+    ).toBeFalsy();
+  });
+
   it('should have no visual regression for form', async () => {
     expect(
       await vrt.test('overview-form', async () => {
