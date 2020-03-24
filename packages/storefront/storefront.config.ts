@@ -23,6 +23,10 @@ export const config: StorefrontConfig = {
       'Start Coding': [
         // @ts-ignore
         () => import(`@/pages/getting-started/start-coding.md`)
+      ],
+      'Example Projects': [
+        // @ts-ignore
+        () => import(`@/pages/getting-started/example-projects.md`)
       ]
     },
     News: {
