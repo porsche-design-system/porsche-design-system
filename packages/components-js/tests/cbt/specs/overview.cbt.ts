@@ -15,6 +15,9 @@ describe('Components Overview', () => {
   it('should have no visual regression in IE11 for action', async () => {
     expect(await cbt.test('overview-action', '/index.html#action')).toBeFalsy();
   });
+  it('should have no visual regression in IE11 for content', async () => {
+    expect(await cbt.test('overview-content', '/index.html#content')).toBeFalsy();
+  });
   it('should have no visual regression in IE11 for feedback', async () => {
     expect(await cbt.test('overview-form', '/index.html#form')).toBeFalsy();
   });
