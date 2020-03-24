@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { BasicComponent } from "./pages/basic.component";
 import { ActionComponent } from "./pages/action.component";
+import { ContentComponent } from "./pages/content.component";
 import { FormComponent } from './pages/form.component';
 import { FeedbackComponent } from "./pages/feedback.component";
 import { IconComponent } from "./pages/icon.component";
@@ -21,6 +22,10 @@ const appRoutes: Routes = [
   {
     path: 'action',
     component: ActionComponent
+  },
+  {
+    path: 'content',
+    component: ContentComponent
   },
   {
     path: 'form',
