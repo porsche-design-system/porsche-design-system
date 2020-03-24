@@ -2,15 +2,36 @@
 
 ## Design
 
+### [1.1.2] (2020-03-24)
+
+**Added**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | Password (focus) |  |
+
+
+**Fixed**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | Icon pinned in password Text Field  |  |
+
 ### [1.1.1] (2020-03-17)
 
 **Added**
-- Text style warning for copytext small and x-small
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components |  | Text style warning for copytext small and x-small |
 
 **Changed**
-- Update notification colors for light and dark theme
-- Update text style for error and success
-- Update sketch color palette
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Basic |  | Update notification colors for light and dark theme |
+Components | Update text style for error and success |  |
+Basic |  | Update sketch color palette |
 
 ### [1.1.0] (2020-03-11)
 
