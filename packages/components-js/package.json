@@ -65,7 +65,7 @@
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-ui/visual-regression-tester": "^1.0.0",
     "@stencil/angular-output-target": "^0.0.2",
-    "@stencil/core": "^1.9.2",
+    "@stencil/core": "1.9.2",
     "@stencil/postcss": "^1.0.1",
     "@stencil/react-output-target": "^0.0.4",
     "@stencil/sass": "^1.1.1",

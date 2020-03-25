@@ -2237,10 +2237,10 @@
   resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.2.tgz#e534c736d204f9cc7c95f72c9c4d56739beba836"
   integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
 
-"@stencil/core@^1.9.2":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.11.0.tgz#d60b6dd972b92bb51ab101c5f870ad6a92abd620"
-  integrity sha512-26p8VKe6+VtNaxsFN92griT0a4+IU3xQP2UMAeenZAd6eAFwubxFrvoh+KJNYhg39Jf5W1o00OZpN2zIRCXpXQ==
+"@stencil/core@1.9.2":
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.9.2.tgz#19a36190821dce288f3ece60da318b3cd4dee67f"
+  integrity sha512-ddkPvesgeVV5RPEcx8lWhYcid5vCmcfcg6KPvul8rgiBLxPsvwcVJ+SbJuuJhy5cQrEkHq/SZcpcxB72LTBWbQ==
   dependencies:
     typescript "3.8.3"
 
