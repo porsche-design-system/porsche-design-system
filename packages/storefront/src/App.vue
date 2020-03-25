@@ -75,6 +75,10 @@
     margin-top: $p-layout-medium;
   }
 
+  .spacing-mt-24 {
+    margin-top: $p-spacing-24;
+  }
+
   .spacing-mt-32 {
     margin-top: $p-layout-large;
   }
@@ -83,8 +87,24 @@
     margin-right: $p-layout-large;
   }
 
+  .spacing-mt-48 {
+    margin-top: $p-layout-x-large;
+  }
+
+  .spacing-mt-56 {
+    margin-top: $p-spacing-56;
+  }
+
+  .spacing-mt-80 {
+    margin-top: $p-layout-xx-large;
+  }
+
   .divider-spacing-small {
       margin: $p-spacing-24 0;
+  }
+
+  .example-form-grid {
+    max-width: p-rem(488px);
   }
 
   @include p-breakpoint('m') {
