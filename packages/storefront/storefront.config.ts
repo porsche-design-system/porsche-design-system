@@ -78,10 +78,20 @@ export const config: StorefrontConfig = {
       ]
     },
     Patterns: {
-      Forms: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/forms.md`)
-      ]
+      Forms: {
+        Guidelines: [
+          // @ts-ignore
+          () => import(`@/pages/patterns/forms/guidelines.md`)
+        ],
+        Design: [
+          // @ts-ignore
+          () => import(`@/pages/patterns/forms/design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/pages/patterns/forms/code.md`)
+        ]
+      }
     },
     'Scss Utils': {
       Introduction: [
