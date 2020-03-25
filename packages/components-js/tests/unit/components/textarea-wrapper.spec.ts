@@ -3,10 +3,6 @@ import { TextareaWrapper } from '../../../src/components/form/textarea-wrapper/t
 
 describe('Component <p-textarea-wrapper>', () => {
 
-  it('should build', () => {
-    expect(new TextareaWrapper()).toBeTruthy();
-  });
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [TextareaWrapper],
@@ -17,7 +13,7 @@ describe('Component <p-textarea-wrapper>', () => {
     expect(page.root.shadowRoot.querySelector('.p-textarea-wrapper__fake-textarea')).toBeTruthy();
   });
 
-  it('should not render slotted message if no state is set', async (done) => {
+  it('should not render slotted message if no state is set', async () => {
     const page = await newSpecPage({
       components: [TextareaWrapper],
       html: `
@@ -27,10 +23,9 @@ describe('Component <p-textarea-wrapper>', () => {
         </p-textarea-wrapper>`,
     });
     expect(page.root.shadowRoot.querySelector('.p-textarea-wrapper__message')).toBeFalsy();
-    done();
   });
 
-  it('should render message after message is inserted and state is set', async (done) => {
+  it('should render message after message is inserted and state is set', async () => {
     const page = await newSpecPage({
       components: [TextareaWrapper],
       html: `
@@ -50,6 +45,5 @@ describe('Component <p-textarea-wrapper>', () => {
     (component as any).state = 'error';
     await page.waitForChanges();
     expect(page.root.shadowRoot.querySelector('.p-textarea-wrapper__message')).toBeTruthy();
-    done();
   });
 });
