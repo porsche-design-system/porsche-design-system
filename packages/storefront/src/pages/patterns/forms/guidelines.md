@@ -1,4 +1,4 @@
-# Form Patterns Guidelines
+# Form Patterns - Guidelines
 
 The digital world cannot be imagined without forms. **Whenever we need information from the user that is to be processed by the application or when we want to enable the user to configure options**, forms are best to be used.
 

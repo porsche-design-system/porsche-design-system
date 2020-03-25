@@ -9,6 +9,6 @@ describe('Patterns Forms', () => {
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'Forms');
+      .and('contain', 'Form Patterns - Guidelines');
   });
 });
