@@ -30,7 +30,10 @@
     "Stephan Schröter <stephan.schroeter@mhp.com>",
     "Oliver Hook <oliver.hook@mhp.com>",
     "Anna Krohmer <anna.krohmer@udg.de>",
-    "Marcel Bertram <marcel.bertram@porsche.de>"
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Olivia Pala <olivia.pala@udg.de>",
+    "Matthias Hägele <matthias.haegele@mhp.com>",
+    "Melanie Kolar <melanie.kolar@udg.de>"
   ],
   "scripts": {
     "preinstall": "mkdir -p './packages/components-angular/dist/components-wrapper' && cp './packages/components-angular/projects/components-wrapper/package.json' './packages/components-angular/dist/components-wrapper/package.json'",
