@@ -1,4 +1,4 @@
-# Forms
+# Form Patterns Guidelines
 
 The digital world cannot be imagined without forms. **Whenever we need information from the user that is to be processed by the application or when we want to enable the user to configure options**, forms are best to be used.
 
@@ -25,7 +25,7 @@ A typical form in Porsche web applications is made up of five basic elements:
 5. A **call-to-action** is needed to initiate further processing, for example submitting, sending or cancelling a form input. Most forms come with two call-to-actions. The successive (and therefore most important) button should be emphasized. As red is a very sensitive color in forms (due to error notifications) we highly recommend to go for a [Secondary Button](#/components/action/button) in grey, accompanied by a Tertiary Button for the cancelling / least important option. Button labels have an effect on the conversion rate and should always be short and descriptive, informing the user about what to expect. Something like "submit" is not clear enough. Good examples are "Get a free demo", "Create account" or "Subscribe now".  
 
   
- ![The five basic elements of Porsche forms](../../assets/patterns-forms-dna.png)
+ ![The five basic elements of Porsche forms](../../../assets/patterns-forms-dna.png)
 
 ---
 
@@ -88,11 +88,11 @@ Sometimes it's helpful for the user to get further information, for example on t
 
 * **Short and/or very important information** that's essential for the completion of the form should be displayed directly outside the form field, so that users are not forced to make further clicks. At Porsche, we always place help text on top of the form fields (as the bottom space is reserved for validation messages) in Copytext x-small in order to distinguish it from label text. You'll find detailed information on the correct placement of the help text in the specific form component guidelines.  
     
-  ![Information displayed outside the form field](../../assets/patterns-forms-helptext-open.png)  
+  ![Information displayed outside the form field](../../../assets/patterns-forms-helptext-open.png)  
 
 * **Longer and/or less important information** (even more so if it's optional to read) should be hidden in an "information" icon that is placed directly (spacing 4 px) after the field label and reveals an explanation in a tooltip on hover (desktop) or on click (tablet/mobile). As soon as the user continues filling out the form, the tooltip should disappear. This way, we keep the form short and prevent the user from extra scrolling. But be aware to use tooltips sparingly.  
     
-  ![Information displayed in tooltip](../../assets/patterns-forms-helptext-tooltip.png)
+  ![Information displayed in tooltip](../../../assets/patterns-forms-helptext-tooltip.png)
 
 ### Handle with care: Sensitive and personal data
 
@@ -105,7 +105,7 @@ Users shouldn't get the feeling that they are being asked for irrelevant or unne
 **Give deeper information on specific input.**  
 Sometimes it's helpful to give some more information on the "why" of a required input, in order to remove any doubt from the user, even more when it comes to very specific data the user is not used to fill in or when the further processing of an information is not clear enough. In this case, a tooltip with an "information" icon (right behind the input label) is the best way to go.
 
-  ![Tooltip information on personal data input](../../assets/patterns-forms-personal-data.png)
+  ![Tooltip information on personal data input](../../../assets/patterns-forms-personal-data.png)
   
 **Respect GDPR an other legal regulations.**  
 The user should be asked to enter only information that is absolutely necessary.
@@ -124,7 +124,7 @@ Further benefits:
 * Generally, the form looks cleaner and we avoid distraction.
   
   
-![Mobile form with optional form field](../../assets/patterns-forms-optional-fields.png)
+![Mobile form with optional form field](../../../assets/patterns-forms-optional-fields.png)
 
 ---
 
@@ -177,9 +177,9 @@ According to the ["law of proximity" in Gestalt psychology](https://lawsofux.com
 
 Form fields that require similar information should be grouped together to create a logical order. This can be set as a coding property "fieldset". Each fieldset should be initiated by a title (we recommend headline-4) that gives the user a short information on what data is required in this section.
 
-![Mobile form layout with spacings](../../assets/patterns-forms-anatomy-mobile-spacings.png)  
+![Mobile form layout with spacings](../../../assets/patterns-forms-anatomy-mobile-spacings.png)  
   
-![Desktop form layout with spacings](../../assets/patterns-forms-anatomy-desktop-spacings.png)
+![Desktop form layout with spacings](../../../assets/patterns-forms-anatomy-desktop-spacings.png)
 
 ---
 
@@ -201,7 +201,7 @@ Inline validation feedback should always be displayed in the direct context of t
 **Feedback for error and success**  
 We should give the user not only feedback on errors, but also on successful input as positive reinforcement is a motivation for the user ([Userlutions, 2019](https://userlutions.com/blog/usability-insights/inline-validation)).
 
-![Form layouts with error and success notification](../../assets/patterns-forms-feedback-error-success.png)
+![Form layouts with error and success notification](../../../assets/patterns-forms-feedback-error-success.png)
 
 
 **Permanent view**  
@@ -214,7 +214,7 @@ Even though live inline validation should be your first choice from a UX perspec
 - … an **error summary** at the beginning of the form (ideally the user should jump automatically to the summary after submitting). Within the error summary all errors should be listed and linked, so that the user can easily jump to the selected field errors.
 - … **inline error notifications** that are placed below the respective form fields enable the user to perceive errors quickly, also whilst scrolling. In order to avoid double maintenance (and also reading effort for the user), the specific error text should in best case be written in a style that can also be used 1:1 in the error summary.
 
-![Form layouts with error summary and inline error notifications](../../assets/patterns-forms-error-on-submit.png)
+![Form layouts with error summary and inline error notifications](../../../assets/patterns-forms-error-on-submit.png)
 
 
 ### Tonality and content
@@ -247,7 +247,7 @@ Set the visual focus to the current form field to give orientation and enable th
 
 Users are familiar with device-specific UI patterns (for example the iOS date picker). So the first choice for a good mobile UX should be to go for native elements instead of individual UI patterns.
 
-![iPhone screen with native date picker](../../assets/patterns-forms-native-date-picker.png)
+![iPhone screen with native date picker](../../../assets/patterns-forms-native-date-picker.png)
 
 ### Provide correct input types
 
