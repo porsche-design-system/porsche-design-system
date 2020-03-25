@@ -39,7 +39,7 @@
     "@vue/cli-service": "^4.2.0",
     "@vue/test-utils": "1.0.0-beta.32",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^25.2.0",
     "concurrently": "^5.1.0",
     "cypress-shadow-dom": "^1.0.0",
     "jasmine": "^3.5.0",
