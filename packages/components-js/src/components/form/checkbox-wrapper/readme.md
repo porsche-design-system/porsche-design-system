@@ -19,5 +19,5 @@
 
 ### Depends on
 
-- [p-icon](../../icon/icon)
 - [p-text](../../basic/typography/text)
+- [p-icon](../../icon/icon)
