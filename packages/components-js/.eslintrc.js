@@ -14,7 +14,6 @@ module.exports = {
   },
   "plugins": [
     "@typescript-eslint",
-    "@typescript-eslint/tslint",
     "prefer-arrow"
   ],
   "rules": {
@@ -183,15 +182,6 @@ module.exports = {
     ],
     "spaced-comment": "error",
     "use-isnan": "error",
-    "valid-typeof": "off",
-    "@typescript-eslint/tslint/config": [
-      "error",
-      {
-        "rules": {
-          "jsdoc-format": true,
-          "no-reference-import": true
-        }
-      }
-    ]
+    "valid-typeof": "off"
   }
 };

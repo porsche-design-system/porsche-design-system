@@ -3,11 +3,8 @@ import { Pagination } from '../../../src/components/navigation/pagination/pagina
 import * as PaginationHelper from '../../../src/components/navigation/pagination/pagination-helper';
 import { formatPaginationModelToASCII } from './pagination-test-helper';
 
-// tslint:disable-next-line:ban-types
 const createPaginationModel = PaginationHelper.createPaginationModel as Function;
-// tslint:disable-next-line:ban-types
 const getTotalPages = PaginationHelper.getTotalPages as Function;
-// tslint:disable-next-line:ban-types
 const getCurrentActivePage = PaginationHelper.getCurrentActivePage as Function;
 
 describe('Component <p-pagination>', () => {

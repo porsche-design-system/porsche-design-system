@@ -93,7 +93,7 @@ const createNextPageLink = (options: PaginationModelOptions): PaginationModelIte
   };
 };
 
-const createPageFunctionFactory = (options: PaginationModelOptions): Function => {
+const createPageFunctionFactory = (options: PaginationModelOptions): (pageNumber: number) => PaginationModelItem => {
   const { activePage } = options;
 
   return (pageNumber: number): PaginationModelItem => ({
