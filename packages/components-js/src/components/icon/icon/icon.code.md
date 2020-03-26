@@ -66,7 +66,7 @@ Icons can be lazy loaded, which means that they are being loaded (fetched) when 
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
-    <p-icon :theme="theme" name="info" size="large" lazy="true" aria-label="Information icon" />
+    <p-icon :theme="theme" name="information" size="large" lazy="true" aria-label="Information icon" />
   </template>
 </Playground>
 

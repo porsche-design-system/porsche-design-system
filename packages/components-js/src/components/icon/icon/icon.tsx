@@ -46,6 +46,9 @@ export class Icon {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
+  /** If true, the icon is hidden from assistive technologies. If false an aria-label must be added. */
+  @Prop() public decorative?: boolean = true;
+
   private io?: IntersectionObserver;
 
   @State() private svgContent?: string;
@@ -103,11 +106,12 @@ export class Icon {
     );
 
     return (
-      <Host role='img'>{(
-        (Build.isBrowser && this.svgContent)
+      <Host role={!this.decorative && 'img'} aria-hidden={this.decorative && 'true'}>
+        {
+          (Build.isBrowser && this.svgContent)
           ? <i class={iconClasses} innerHTML={this.svgContent}/>
           : <i class={iconClasses}/>
-      )}
+        }
       </Host>
     );
   }
