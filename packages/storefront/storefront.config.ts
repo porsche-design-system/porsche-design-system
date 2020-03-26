@@ -3,30 +3,38 @@ import { StorefrontConfig } from '@/interface';
 
 export const config: StorefrontConfig = {
   pages: {
-    'Getting Started': {
-      About: [
+    'About': {
+      'Introduction': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/about.md`)
+        () => import(`@/pages/about/introduction.md`)
+      ]
+    },
+    'Start Coding': {
+      'Introduction': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/introduction.md`)
       ],
-      'Start Designing': [
+      'Example Project React': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/start-designing.md`)
+        () => import(`@/pages/start-coding/example-project-react.md`)
+      ],
+      'Example Project Angular': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/example-project-angular.md`)
+      ]
+    },
+    'Start Designing': {
+      'Introduction': [
+        // @ts-ignore
+        () => import(`@/pages/start-designing/introduction.md`)
       ],
       'Design Workflow': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/design-workflow.md`)
+        () => import(`@/pages/start-designing/design-workflow.md`)
       ],
       'Sketch Plugins': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/sketch-plugins.md`)
-      ],
-      'Start Coding': [
-        // @ts-ignore
-        () => import(`@/pages/getting-started/start-coding.md`)
-      ],
-      'Example Projects': [
-        // @ts-ignore
-        () => import(`@/pages/getting-started/example-projects.md`)
+        () => import(`@/pages/start-designing/sketch-plugins.md`)
       ]
     },
     News: {
