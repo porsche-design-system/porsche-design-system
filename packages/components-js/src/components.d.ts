@@ -250,6 +250,10 @@ export namespace Components {
     */
     'color'?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
     /**
+    * If true, the icon is hidden from assistive technologies. If false an aria-label must be added.
+    */
+    'decorative'?: boolean;
+    /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */
     'lazy'?: boolean;
@@ -891,6 +895,10 @@ declare namespace LocalJSX {
     * Basic color variations depending on theme property.
     */
     'color'?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
+    /**
+    * If true, the icon is hidden from assistive technologies. If false an aria-label must be added.
+    */
+    'decorative'?: boolean;
     /**
     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
     */

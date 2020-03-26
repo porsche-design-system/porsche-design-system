@@ -143,8 +143,8 @@ export class PHeadline {
 }
 
 export declare interface PIcon extends Components.PIcon {}
-@ProxyCmp({inputs: ['color', 'lazy', 'name', 'size', 'source', 'theme']})
-@Component({ selector: 'p-icon', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'lazy', 'name', 'size', 'source', 'theme'] })
+@ProxyCmp({inputs: ['color', 'decorative', 'lazy', 'name', 'size', 'source', 'theme']})
+@Component({ selector: 'p-icon', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'decorative', 'lazy', 'name', 'size', 'source', 'theme'] })
 export class PIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
