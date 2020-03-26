@@ -7,7 +7,6 @@
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator';
   import Markdown from '@/components/Markdown.vue';
-  import { decodeUrl } from "@/services/utils";
 
   @Component({
     components: {
