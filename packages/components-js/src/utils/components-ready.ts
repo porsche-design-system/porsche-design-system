@@ -3,7 +3,7 @@ let resolvePromiseTimeout = null;
 let onLoadedPromise: Promise<void>;
 let resolveOnLoadedPromise: () => void;
 
-function checkForPromiseResolve() {
+const checkForPromiseResolve = (): void => {
   if (loadingQueueCount === 0) {
     /**
      * we debounce 30ms, because the loader is doing the
@@ -14,13 +14,13 @@ function checkForPromiseResolve() {
       createOnLoadedPromise();
     }, 30);
   }
-}
+};
 
-function createOnLoadedPromise() {
+const createOnLoadedPromise = (): void => {
   onLoadedPromise = new Promise(resolve => {
     resolveOnLoadedPromise = resolve;
   });
-}
+};
 
 createOnLoadedPromise();
 
@@ -42,7 +42,7 @@ window.addEventListener('stencil_componentDidLoad', () => {
   checkForPromiseResolve();
 });
 
-export function componentsReady(): Promise<void> {
+export const componentsReady = (): Promise<void> => {
   checkForPromiseResolve();
   return onLoadedPromise;
-}
+};

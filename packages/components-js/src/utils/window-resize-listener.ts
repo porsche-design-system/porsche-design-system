@@ -8,24 +8,24 @@ const handleResize = throttle(500, () => {
   });
 });
 
-function attachListenerIfNeeded() {
+export const attachListenerIfNeeded = (): void => {
   if (listeners.size === 1) {
     window.addEventListener('resize', handleResize);
   }
-}
+};
 
-function removeListenerIfNotNeededAnymore() {
+export const removeListenerIfNotNeededAnymore = (): void => {
   if (listeners.size < 1) {
     window.removeEventListener('resize', handleResize);
   }
-}
+};
 
-export function listenResize(callback: () => void) {
+export const listenResize = (callback: () => void): () => void => {
   const token = {};
   listeners.set(token, callback);
   attachListenerIfNeeded();
-  return () => {
+  return (): void => {
     listeners.delete(token);
     removeListenerIfNotNeededAnymore();
   };
-}
+};
