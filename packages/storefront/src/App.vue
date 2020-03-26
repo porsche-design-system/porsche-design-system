@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <main v-if="isStandalone" id="app-standalone">
+    <router-view/>
+  </main>
+  <div v-else id="app">
     <div class="content">
       <div class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
         <div>
@@ -44,6 +47,10 @@
 
     public get isMenuActive(): boolean {
       return this.$store.getters.isMenuActive;
+    }
+
+    public get isStandalone(): boolean {
+      return this.$route.meta.standalone;
     }
   }
 </script>
@@ -103,13 +110,23 @@
       margin: $p-spacing-24 0;
   }
 
-  .example-form-grid {
-    max-width: p-rem(488px);
-  }
-
   @include p-breakpoint('m') {
     .spacing-mt-0-min-m {
       margin-top: 0;
+    }
+  }
+
+  // TODO: this is a temporary class to add the missing behaviour to add safe-zone spacings to our grid component.
+  .safe-zone {
+    padding-left: calc(100vw - 100%);
+    width: calc(100vw - 7vw * 2);
+    max-width: 96rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: content-box;
+
+    @include p-breakpoint('xl') {
+      width: calc(100vw - 10vw * 2);
     }
   }
 </style>

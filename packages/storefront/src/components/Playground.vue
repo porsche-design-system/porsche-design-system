@@ -22,7 +22,12 @@
         </button>
       </p-text>
     </div>
-    <div
+    <div v-if="isStandalone">
+      <div class="code">
+        <slot :theme="theme"/>
+      </div>
+    </div>
+    <div v-else
       class="example"
       :class="{
         'light': (themeable && theme === 'light' || themeable === false),
@@ -66,6 +71,10 @@
 
     public theme: Theme = 'light';
     public markup: string = '';
+
+    public get isStandalone(): boolean {
+      return this.$route.meta.standalone;
+    }
 
     public switchTheme(theme: Theme): void {
       this.theme = theme;
