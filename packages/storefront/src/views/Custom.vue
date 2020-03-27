@@ -14,7 +14,7 @@ import Markdown from '@/components/Markdown.vue';
   }
 })
 export default class Custom extends Vue {
-  public component: any = null;
+  public component: any = null; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   private get page(): string {
     return this.$route.params.page.toLowerCase();

@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue, Prop } from 'vue-property-decorator';
+  import { Component, Vue } from 'vue-property-decorator';
   import { StorefrontConfig } from '@/interface';
   import { config as storefrontConfig } from '@/../storefront.config';
   import { encodeUrl } from '@/services/utils';
