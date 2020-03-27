@@ -83,13 +83,9 @@ export const config: StorefrontConfig = {
           // @ts-ignore
           () => import(`@/pages/patterns/forms/guidelines.md`)
         ],
-        Design: [
+        Resources: [
           // @ts-ignore
-          () => import(`@/pages/patterns/forms/design.md`)
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/pages/patterns/forms/code.md`)
+          () => import(`@/pages/patterns/forms/resources.md`)
         ]
       }
     },
