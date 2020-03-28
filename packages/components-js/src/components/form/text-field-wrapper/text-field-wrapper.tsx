@@ -63,7 +63,6 @@ export class TextFieldWrapper {
       this.readonly && prefix('text-field-wrapper__fake-input--readonly')
     );
     const buttonClasses = cx(prefix('text-field-wrapper__button'));
-    const buttonLabelClasses = cx(prefix('text-field-wrapper__button-label'));
     const messageClasses = cx(
       prefix('text-field-wrapper__message'),
       this.state !== 'none' && prefix(`text-field-wrapper__message--${this.state}`)
@@ -83,8 +82,14 @@ export class TextFieldWrapper {
             </span>
           </label>
           {this.isPasswordToggleable &&
-          <button type='button' class={buttonClasses} onClick={() => this.togglePassword()} disabled={this.disabled}>
-            <span class={buttonLabelClasses}>Toggle password</span>
+          <button
+            type='button'
+            class={buttonClasses}
+            onClick={() => this.togglePassword()}
+            disabled={this.disabled}
+            aria-label='Show password'
+            aria-pressed={this.showPassword ? 'true' : 'false'}
+          >
             <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit' aria-hidden='true'/>
           </button>
           }

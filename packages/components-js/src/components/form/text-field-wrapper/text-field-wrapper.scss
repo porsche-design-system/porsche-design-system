@@ -255,8 +255,4 @@
       cursor: not-allowed !important;
     }
   }
-
-  &__button-label {
-    @include p-text-field-wrapper-label-text-hidden;
-  }
 }
