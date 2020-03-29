@@ -1,24 +1,19 @@
 # Roadmap 
-The roadmap for the Porsche Design System is based on the planned enhancement and release path for one quarter. It is no delivery commitment as it may be changed based on user needs,  feedback and changing requirements.
+The roadmap for the Porsche Design System is based on the planned enhancement and release path for one quarter. It is no delivery commitment as it may be changed based on user needs, feedback and changing requirements.
 
-## Q1 2020
+## Q2 2020
 
 ### Operations
-* Enable React testing with Jest and JSDOM 
+* Enable React testing with Jest and JSDOM
 * Setup sample integration projects for Angular/React/Gatsby/NextJS
 * Enable SSR support
 * Prepare IE11 drop strategy
-
-### Form Elements
-* Release Form components: Text Field, Textarea, Select, Checkbox, Radio Button
 
 ### Patterns
 * Offer pre-build form patterns
 * Offer pre-build button and link patterns
 
 ### Basic Components
-* Release Divider component
-* Update notification colors for light and dark theme to meet accessibility contrasts
 * Refine Pagination component
 * Release Text List component
 * Release Form Fieldset component
@@ -32,7 +27,7 @@ The roadmap for the Porsche Design System is based on the planned enhancement an
 ### Provide Components via CDN
 * Components going into Cloud (CDN)
 * Automate release management
-* improve CDN settings and China delivery
+* Improve CDN settings and China delivery
 
 ### Tab Navigation Component
 * Release Tab Navigation component
@@ -43,6 +38,14 @@ The roadmap for the Porsche Design System is based on the planned enhancement an
 ---
 
 # Achievements
+
+## Q1 2020
+### Form Elements
+* Release Form components: Text Field, Textarea, Select, Checkbox, Radio Button
+
+### Basic Components
+* Release Divider component
+* Update notification colors for light and dark theme to meet accessibility contrasts
 
 ## Q4 2019
 ### Release 1.0 Stable
