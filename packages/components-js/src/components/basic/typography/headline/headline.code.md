@@ -12,6 +12,7 @@ There are multiple predefined styling variants available. Default semantic tag h
     <p-headline :theme="theme" variant="headline-2">The quick brown fox jumps over the lazy dog</p-headline>
     <p-headline :theme="theme" variant="headline-3">The quick brown fox jumps over the lazy dog</p-headline>
     <p-headline :theme="theme" variant="headline-4">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="headline-5">The quick brown fox jumps over the lazy dog</p-headline>
   </template>
 </Playground>
 
