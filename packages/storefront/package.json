@@ -4,12 +4,12 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
-    "build": "vue-cli-service build --skip-plugins @vue/cli-plugin-eslint",
+    "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --browser chrome",
-    "lint": "vue-cli-service lint",
+    "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist",
-    "start": "vue-cli-service serve --skip-plugins @vue/cli-plugin-eslint",
+    "start": "vue-cli-service serve",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\""
   },
@@ -34,7 +34,6 @@
     "@typescript-eslint/parser": "^2.18.0",
     "@vue/cli-plugin-babel": "^4.2.0",
     "@vue/cli-plugin-e2e-cypress": "^4.2.0",
-    "@vue/cli-plugin-eslint": "^4.2.0",
     "@vue/cli-plugin-router": "^4.2.0",
     "@vue/cli-plugin-typescript": "^4.2.0",
     "@vue/cli-plugin-unit-jest": "^4.2.0",
