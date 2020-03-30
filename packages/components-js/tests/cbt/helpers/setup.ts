@@ -17,7 +17,7 @@ const options: CrossBrowserTestOptions = {
   fixturesDir: 'tests/cbt/fixtures',
   resultsDir: 'tests/cbt/results',
   tolerance: 0,
-  baseUrl: 'http://localhost:61422',
+  baseUrl: 'http://localhost:61424',
   timeout: 20
 };
 

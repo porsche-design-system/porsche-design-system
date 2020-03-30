@@ -1,4 +1,4 @@
-FROM node:12.10.0-stretch@sha256:c953b001ea2acf18a6ef99a90fc50630e70a7c0a6b49d774a7aee1f9c937b645
+FROM node:12.16.1-stretch@sha256:facc1cbde6e5aa3255092b1a1417451953c80bd31ab5a4403f8bcd90b90a8407
 
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
