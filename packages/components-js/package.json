@@ -47,7 +47,7 @@
     "start": "yarn build:iconNameTypings && stencil build --watch --serve",
     "start:vrt-server": "yarn build && http-server -p 61423 -P http://localhost:61423/www",
     "start:cbt-server": "yarn build && http-server -p 61424 -P http://localhost:61424/www",
-    "build": "yarn build:iconNameTypings && stencil build --docs && node ./scripts/doc.js",
+    "build": "yarn build:iconNameTypings && stencil build --next --docs && node ./scripts/doc.js",
     "build:iconNameTypings": "node ./scripts/icon-name-generation.js",
     "lint": "yarn lint:scss && yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",
