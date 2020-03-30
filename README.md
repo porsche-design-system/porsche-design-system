@@ -35,7 +35,7 @@
 ### Build
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-    * `c` (builds the entire application)
+    * `./docker.sh run-build` (builds the entire application)
     * `./docker.sh run-build --components-js` (builds the native web components)
     * `./docker.sh run-build --components-angular` (builds angular components)
     * `./docker.sh run-build --components-react` (builds react components)
