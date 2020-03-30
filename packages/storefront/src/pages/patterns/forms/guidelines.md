@@ -170,7 +170,7 @@ It's commonly recommended to set the form field width to the estimated length of
 According to the ["law of proximity" in Gestalt psychology](https://lawsofux.com/law-of-proximity) objects that are near or proximate to each other tend to be grouped together. So in order to make it easy for the user to scan the form you should cluster the form in logical, coherent parts by working with spacings. We differ the following spacings (according to the **Porsche Design System spacing system**): 
 
 1. The smallest grouped element and therefore **the smallest spacing should be set between label and form field**. We recommend using 4 px, that is also preset in the Porsche Design System form elements.
-2. **The spacing between different form fields** might be a bit larger. We recommend at least 16 px (both vertical and horizontal).<
+2. **The spacing between different form fields** might be a bit larger. We recommend at least 16 px (both vertical and horizontal).
 3. In longer forms, multiple form fields can be grouped together in sections. **Inbetween these sections the spacing should be larger** than between the form fields itself to build visual groups. 40 px is the minimum spacing to go for between two fieldsets. 
 
 ### Form sections
