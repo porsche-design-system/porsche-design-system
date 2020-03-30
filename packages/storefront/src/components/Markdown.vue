@@ -215,7 +215,7 @@
         }
 
         // Links
-        a:not(.p-button-regular):not(.p-button-icon) {
+        a:not(.p-button):not(.p-link) {
           outline: none;
           text-decoration: underline;
           color: $p-color-theme-light-default;
