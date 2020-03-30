@@ -35,7 +35,7 @@
 ### Build
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-    * `./docker.sh run-build` (builds the entire application)
+    * `c` (builds the entire application)
     * `./docker.sh run-build --components-js` (builds the native web components)
     * `./docker.sh run-build --components-angular` (builds angular components)
     * `./docker.sh run-build --components-react` (builds react components)
@@ -74,7 +74,6 @@
 
 ### Visual Regression Tests
 1. Switch to __project root directory__
-1. Run `./docker.sh run-build`
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-vrt` (vrt tests for the entire application)
     * `./docker.sh run-test-vrt --components-js` (vrt tests for the native web components)
@@ -84,7 +83,6 @@
 
 ### Cross Browser Tests
 1. Switch to __project root directory__
-1. Run `./docker.sh run-build`
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-cbt` (cbt tests for the entire application)
     * `./docker.sh run-test-cbt --components-js` (cbt tests for the native web components)
