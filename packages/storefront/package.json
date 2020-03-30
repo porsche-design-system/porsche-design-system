@@ -4,7 +4,7 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --skip-plugins @vue/cli-plugin-eslint",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --browser chrome",
     "lint": "vue-cli-service lint",

@@ -74,6 +74,5 @@
     margin: $p-spacing-4 0;
     display: inline-block;
     text-decoration: none;
-    display: inline-block;
   }
 </style>

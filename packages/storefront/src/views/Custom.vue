@@ -7,6 +7,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import Markdown from '@/components/Markdown.vue';
+import { Component as ComponentType } from 'vue/types/options';
 
 @Component({
   components: {
@@ -14,7 +15,7 @@ import Markdown from '@/components/Markdown.vue';
   }
 })
 export default class Custom extends Vue {
-  public component: any = null; // eslint-disable-line @typescript-eslint/no-explicit-any
+  public component: ComponentType | null = null;
 
   private get page(): string {
     return this.$route.params.page.toLowerCase();
