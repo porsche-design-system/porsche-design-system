@@ -3,11 +3,11 @@ import { validateContent } from './icon-validation';
 export const iconContent = new Map<string, string>();
 const requests = new Map<string, Promise<any>>();
 
-export const getSvgContent = (url: string) => {
+export const getSvgContent = (url: string): Promise<string> => {
   // see if we already have a request for this url
   let req = requests.get(url);
 
-  if (!req) {
+  if (req === undefined) {
     // we don't already have a request
     req = fetch(url).then(rsp => {
       if (rsp.ok) {

@@ -8,7 +8,7 @@ export const breakpoints: any = {
   xxl: '(min-width: 1920px)'
 };
 
-export const matchBreakpoint = (breakpoint: string | undefined) => {
+export const matchBreakpoint = (breakpoint: string | undefined): boolean => {
   if (breakpoint === undefined || breakpoint === '') {
     return true;
   }

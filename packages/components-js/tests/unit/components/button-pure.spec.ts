@@ -3,11 +3,7 @@ import { ButtonPure } from '../../../src/components/action/button-pure/button-pu
 
 describe('Component <p-button-pure>', () => {
 
-  it('should build', () => {
-    expect(new ButtonPure()).toBeTruthy();
-  });
-
-  it('should render correctly in default mode with shadow dom', async (done) => {
+  it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [ButtonPure],
       html: `<p-button-pure>Some label</p-button-pure>`,
@@ -16,31 +12,27 @@ describe('Component <p-button-pure>', () => {
     expect(page.root.querySelector('.p-button-pure')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('.p-button-pure')).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('aria-busy', null);
-    expect(page.root).toMatchSnapshot();
-    done();
   });
 
-  it('should render with type of submit', async (done) => {
+  it('should render with type of submit', async () => {
     const page = await newSpecPage({
       components: [ButtonPure],
       html: `<p-button-pure type="submit">Some label</p-button-pure>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('type','submit');
-    done();
+    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('type', 'submit');
   });
 
-  it('should render with disabled tabbable capabilities', async (done) => {
+  it('should render with disabled tabbable capabilities', async () => {
     const page = await newSpecPage({
       components: [ButtonPure],
       html: `<p-button-pure tabbable="false">Some label</p-button-pure>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('tabindex','-1');
-    done();
+    expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('tabindex', '-1');
   });
 
-  it('should have a disabled prop in button mode', async (done) => {
+  it('should have a disabled prop in button mode', async () => {
     const page = await newSpecPage({
       components: [ButtonPure],
       html: `<div></div>`
@@ -53,10 +45,9 @@ describe('Component <p-button-pure>', () => {
     await page.waitForChanges();
 
     expect(page.rootInstance.disabled).toBe(true);
-    done();
   });
 
-  it('should have a disabled prop in loading state', async (done) => {
+  it('should have a disabled prop in loading state', async () => {
     const page = await newSpecPage({
       components: [ButtonPure],
       html: `<p-button-pure loading="true">Some label</p-button-pure>`,
@@ -64,6 +55,5 @@ describe('Component <p-button-pure>', () => {
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('disabled', '');
     expect(page.root.shadowRoot.querySelector('button')).toEqualAttribute('aria-busy', 'true');
-    done();
   });
 });
