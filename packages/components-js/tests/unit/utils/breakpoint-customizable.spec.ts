@@ -32,7 +32,12 @@ describe('breakpointCustomizable', () => {
   });
 
   it('should create class by passing an "object" prop', () => {
-    const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', {base: 'some-string', xs: true, m: false, xl: 123}, ['a', 'b']);
+    const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', {
+      base: 'some-string',
+      xs: true,
+      m: false,
+      xl: 123
+    }, ['a', 'b']);
     const resultB = mapBreakpointPropToPrefixedClasses('some-class-prefix', {base: true}, ['a', 'b']);
     const resultC = mapBreakpointPropToPrefixedClasses('some-class-prefix', {base: false}, ['a', 'b']);
     const resultD = mapBreakpointPropToPrefixedClasses('some-class-prefix', {base: 123});

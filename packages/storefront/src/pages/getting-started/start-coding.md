@@ -7,11 +7,15 @@ Porsche Design System provides developers with a collection of Web components, A
 
 ## Installation
 
-All releases of the Porsche Design System are available as versioned NPM package called `@porsche-design-system/components-js`, `@porsche-design-system/components-angular` and `@porsche-design-system/components-react`.
+All releases of the Porsche Design System are available as versioned NPM packages called
+* `@porsche-design-system/components-js`
+* `@porsche-design-system/components-angular`
+* `@porsche-design-system/components-react`
 
 Those packages can be consumed by one of the following private NPM registries:
 * Porsche Design System NPM registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
 * My Porsche NPM registry ([https://porschedev.jfrog.io](https://porschedev.jfrog.io))
+* Porsche Highway NPM registry ([https://highway.porsche.com/artifactory/](https://highway.porsche.com/artifactory/))
 
 If you don't have an account for one of the those NPM registries, you can easily register for the Porsche Design System NPM registry like as follows:
 

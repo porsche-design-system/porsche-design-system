@@ -1,20 +1,20 @@
 import { ButtonType } from '../types';
 
-export function improveButtonHandlingForCustomElement(
+export const improveButtonHandlingForCustomElement = (
   element: HTMLElement,
   getType: () => ButtonType,
   getDisabled: () => boolean
-) {
+): void => {
   element.addEventListener('click', event => fixEventTarget(event, element), true);
   element.addEventListener('click', event => handleButtonEvent(event, element, getType, getDisabled));
-}
+};
 
-function handleButtonEvent(
+const handleButtonEvent = (
   event: MouseEvent,
   element: HTMLElement,
   getType: () => ButtonType,
   getDisabled: () => boolean
-): void {
+): void => {
   // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
   const form = element.closest('form');
   const type = getType();
@@ -38,17 +38,17 @@ function handleButtonEvent(
       }
     }, 1);
   }
-}
+};
 
 /**
  * IE11/Edge (not chromium based) workaround to
  * fix the event target of click events (which normally
  * shadow dom takes care of)
  */
-function fixEventTarget(event: MouseEvent, element: HTMLElement): void {
+const fixEventTarget = (event: MouseEvent, element: HTMLElement): void => {
   if (event.target !== element) {
     event.stopPropagation();
     event.preventDefault();
     element.click();
   }
-}
+};
