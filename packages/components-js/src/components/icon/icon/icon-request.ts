@@ -7,7 +7,7 @@ export const getSvgContent = (url: string): Promise<string> => {
   // see if we already have a request for this url
   let req = requests.get(url);
 
-  if (!req) { // eslint-disable-line @typescript-eslint/no-misused-promises
+  if (req !== undefined) {
     // we don't already have a request
     req = fetch(url).then(rsp => {
       if (rsp.ok) {

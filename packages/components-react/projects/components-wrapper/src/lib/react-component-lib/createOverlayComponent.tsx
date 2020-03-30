@@ -54,6 +54,7 @@ export function createOverlayComponent<
     }
 
     async present(prevProps?: Props) {
+      // tslint:disable-next-line:no-empty
       const { children, isOpen, onDidDismiss = () => {}, ...cProps } = this.props;
       const elementProps = {
         ...cProps,
