@@ -11,6 +11,8 @@ services:
       - "3000:3000"
       - "4200:4200"
       - "3334:3334"
+      - "61423:61423"
+      - "61424:61424"
     environment:
       - HOME=/home/design-system
       - PORSCHE_NPM_REGISTRY_TOKEN

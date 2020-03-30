@@ -65,7 +65,7 @@
     @Prop({default: () => ({height: 'auto', spacing: 'none'})}) public childElementLayout!: ChildElementLayout;
 
     public theme: Theme = 'light';
-    public markup: string = '';
+    public markup = '';
 
     public switchTheme(theme: Theme): void {
       this.theme = theme;
