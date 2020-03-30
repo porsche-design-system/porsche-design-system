@@ -87,7 +87,7 @@
 
         h5,
         h6 {
-          @include p-headline-4;
+          @include p-headline-5;
           margin-top: $p-spacing-24;
         }
 
