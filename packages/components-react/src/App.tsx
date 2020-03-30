@@ -26,25 +26,25 @@ const App: React.FC = () => {
           <span id="system-log"/>
         </Text>
         <Divider/>
-        <Link to="/basic" >
+        <Link to="/basic" className={'removeLinkStyle'} >
           <LinkPure>Basic</LinkPure>
         </Link>
-        <Link to="/action">
+        <Link to="/action" className={'removeLinkStyle'}>
           <LinkPure>Action</LinkPure>
         </Link>
-        <Link to="/form">
+        <Link to="/form" className={'removeLinkStyle'}>
           <LinkPure>Form</LinkPure>
         </Link>
-        <Link to="/feedback">
+        <Link to="/feedback" className={'removeLinkStyle'}>
           <LinkPure>Feedback</LinkPure>
         </Link>
-        <Link to="/icon">
+        <Link to="/icon" className={'removeLinkStyle'}>
           <LinkPure>Icon</LinkPure>
         </Link>
-        <Link to="/layout">
+        <Link to="/layout" className={'removeLinkStyle'}>
           <LinkPure>Layout</LinkPure>
         </Link>
-        <Link to="/navigation">
+        <Link to="/navigation" className={'removeLinkStyle'}>
           <LinkPure>Navigation</LinkPure>
         </Link>
         <Divider/>
