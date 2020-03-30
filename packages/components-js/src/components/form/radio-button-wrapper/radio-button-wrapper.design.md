@@ -60,7 +60,7 @@ The whole Radio Button area is clickable.
 ## Don'ts
 
 ### Alignment
-Always align Radio Buttons vertically left-aligned, as a horizontal alignment is more difficult to scan for the user.
+Always align Radio Buttons with more than 2 items vertically left-aligned, as a horizontal alignment is more difficult to scan for the user and more difficult to see which label belongs to which radio.
 
 ![Example for alignment](./assets/dont-spacing-radio-button-alignment.png)
 

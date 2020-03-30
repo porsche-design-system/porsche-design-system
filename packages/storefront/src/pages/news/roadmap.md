@@ -1,27 +1,61 @@
 # Roadmap 
+The roadmap for the Porsche Design System is based on the planned enhancement and release path for one quarter. It is no delivery commitment as it may be changed based on user needs, feedback and changing requirements.
 
-Following our mission we align all our doings along our three main objectives:  
-1. Accelerate developing and designing by means of more efficient explorations and launches
-2. Establish the Porsche Design System for all digital Porsche products to improve the holistic UI quality and consistency  
-3. Foster collaboration of developers, designers and decision-makers trusting the Porsche Design System.
+## Q2 2020
 
-The roadmap for the Porsche Design System is based on the planned tasks and changes for one quarter. Therefore there is no delivery commitment and the roadmap may be changed based on upcoming user needs, recent feedback and changing requirements.
+### Operations
+* Enable React testing with Jest and JSDOM
+* Setup sample integration projects for Angular/React/Gatsby/NextJS
+* Enable SSR support
+* Prepare IE11 drop strategy
+
+### Patterns
+* Offer pre-build form patterns
+* Offer pre-build button and link patterns
+
+### Basic Components
+* Refine Pagination component
+* Release Text List component
+* Release Form Fieldset component
+* Release Button Social component
+
+### Icon Enhancement
+* Refine existing icons
+* Add new icons for Porsche Product App
+* Optimize icon workflow and automatisation
+
+### Provide Components via CDN
+* Components going into Cloud (CDN)
+* Automate release management
+* Improve CDN settings and China delivery
+
+### Tab Navigation Component
+* Release Tab Navigation component
+
+### Component Tracking
+* Spike component tracking
+  
+---
+
+# Achievements
+
+## Q1 2020
+### Form Elements
+* Release Form components: Text Field, Textarea, Select, Checkbox, Radio Button
+
+### Basic Components
+* Release Divider component
+* Update notification colors for light and dark theme to meet accessibility contrasts
 
 ## Q4 2019
 ### Release 1.0 Stable
 * Stable Sketch library without plugin dependencies (replacement of Anima plugin with native Smart Layout functions)
 * Refactoring of component APIs (events, objects, inherits)
-* Refinement of text styles and spacings
+* Refinement of design basics and utils (text, spacings and colors)
 * Refinement of font handling including introduction of SemiBold font weight for headlines
 * Refinement of focus states
 * Ensuring stabilization and performance of packages and pipeline
 * Icon refinement for 1.0 stable
-### Prototype & Test Storefront redesign
-* Conduct user interviews and testings
-  
----
-
-# Achievements
 
 ## Q3 2019
 ### 1.0 Alpha release
