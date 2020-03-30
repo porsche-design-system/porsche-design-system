@@ -1,23 +1,19 @@
 # Sample project integration react
-You can find the repository of the react example project here [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
-
-## Requirements
-
-To use the Porsche Design System in your React Application you have to consume private npm-packages. You can find a description on how to do it [here](#/start-coding/introduction)
+You can find the repository of the react example project here: [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
 
 ---
 
 ## Get the project up and running
 * Clone the repository by executing <br>
 `git clone https://github.com/porscheui/sample-integration-react.git`
-<br>
+
 ### npm
 * Install dependencies via `npm install`
 * Run tests via `npm test`
 * Run the application via `npm start`
 * Build the application via `npm run build`
 
-###yarn
+### yarn
 * Install dependencies via `yarn install`
 * Run tests via `yarn test`
 * Run the application via `yarn start`
