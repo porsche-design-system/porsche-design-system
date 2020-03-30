@@ -146,11 +146,21 @@ component has no control over the elements that are around it.
 
 ### React
 
-To pass properties to the PLinkPure component the spread operator can be used.
+You can wrap the `<PLinkPure>` component with the `<Link>` component of react router. If you do so, it's important to reset `text-decoration` and `outline`, since the inner
+component has no control over the elements that are around it.<br>
+Use the spread operator call props of PLinkPure.
 
 ``` 
-<Link to="/path/to/heaven" {...{active: true}} component={PLinkPure}>
-  Some label
+# .css
+a.link {
+  text-decoration:none;
+  outline: none;
+}
+
+<Link to="/path/to/heaven">
+    <PLinkPure {...{active: true}}>
+        Some label
+    </PLinkPure>
 </Link>
 ```
 

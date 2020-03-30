@@ -13,6 +13,7 @@ import { Feedback } from "./pages/Feedback";
 import { Icons } from "./pages/Icons";
 import { Layout } from "./pages/Layout";
 import { Navigation } from "./pages/Navigation";
+import './App.css';
 
 const App: React.FC = () => {
 
@@ -25,26 +26,26 @@ const App: React.FC = () => {
           <span id="system-log"/>
         </Text>
         <Divider/>
-        <Link to="/basic" component={LinkPure}>
-          Basic
+        <Link to="/basic" >
+          <LinkPure>Basic</LinkPure>
         </Link>
-        <Link to="/action" component={LinkPure}>
-          Action
+        <Link to="/action">
+          <LinkPure>Action</LinkPure>
         </Link>
-        <Link to="/form" component={LinkPure}>
-          Form
+        <Link to="/form">
+          <LinkPure>Form</LinkPure>
         </Link>
-        <Link to="/feedback" component={LinkPure}>
-          Feedback
+        <Link to="/feedback">
+          <LinkPure>Feedback</LinkPure>
         </Link>
-        <Link to="/icon" component={LinkPure}>
-          Icon
+        <Link to="/icon">
+          <LinkPure>Icon</LinkPure>
         </Link>
-        <Link to="/layout" component={LinkPure}>
-          Layout
+        <Link to="/layout">
+          <LinkPure>Layout</LinkPure>
         </Link>
-        <Link to="/navigation" component={LinkPure}>
-          Navigation
+        <Link to="/navigation">
+          <LinkPure>Navigation</LinkPure>
         </Link>
         <Divider/>
         <Switch>
