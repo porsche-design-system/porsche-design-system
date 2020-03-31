@@ -78,6 +78,10 @@
     margin-top: $p-layout-small;
   }
 
+  .spacing-mr-8 {
+    margin-right: $p-layout-small;
+  }
+
   .spacing-mt-16 {
     margin-top: $p-layout-medium;
   }
@@ -106,6 +110,23 @@
     margin-top: $p-layout-xx-large;
   }
 
+  // padding
+  .spacing-pt-8 {
+    padding-top: $p-layout-small;
+  }
+
+  .spacing-pr-8 {
+    padding-right: $p-layout-small;
+  }
+
+  .spacing-pb-8 {
+    padding-bottom: $p-layout-small;
+  }
+
+  .spacing-pl-8 {
+    padding-left: $p-layout-small;
+  }
+
   .divider-spacing-small {
       margin: $p-spacing-24 0;
   }
@@ -127,6 +148,89 @@
 
     @include p-breakpoint('xl') {
       width: calc(100vw - 10vw * 2);
+    }
+  }
+
+  .form-row-spacing {
+    &-m {
+      margin-top: $p-spacing-16;
+
+      @include p-breakpoint('m') {
+        margin-top: $p-spacing-24;
+      }
+    }
+    &-l {
+      margin-top: $p-spacing-40;
+
+      @include p-breakpoint('m') {
+        margin-top: $p-spacing-56;
+      }
+    }
+  }
+
+  .form-grid-item {
+    width: 100%;
+
+    + .form-grid-item {
+      margin-top: 16px;
+      @include p-breakpoint('m') {
+        margin-top: 0;
+      }
+    }
+
+    @include p-breakpoint('m') {
+      &--s-l {
+        width: 50%;
+        padding-right: $p-layout-small;
+      }
+      &--s-r {
+        width: 50%;
+        padding-left: $p-layout-small;
+      }
+      &--m-l {
+        width: 100%;
+        padding-right: $p-layout-small;
+      }
+      &--m-r {
+        width: 100%;
+        padding-left: $p-layout-small;
+      }
+    }
+    @include p-breakpoint('l') {
+      &--s-l {
+        width: 25%;
+        padding-right: $p-layout-small;
+      }
+      &--s-r {
+        width: 25%;
+        padding-left: $p-layout-small;
+      }
+      &--m-l {
+        width: 33.333%;
+        padding-right: $p-layout-small;
+      }
+      &--m-r {
+        width: 33.333%;
+        padding-left: $p-layout-small;
+      }
+    }
+    @include p-breakpoint('m') {
+      &--l-l {
+        width: 50%;
+        padding-right: $p-layout-small;
+      }
+      &--l-r {
+        width: 50%;
+        padding-left: $p-layout-small;
+      }
+      &--xl-l {
+        width: 66.666%;
+        padding-right: $p-layout-small;
+      }
+      &--xl-r {
+        width: 66.666%;
+        padding-left: $p-layout-small;
+      }
     }
   }
 </style>
