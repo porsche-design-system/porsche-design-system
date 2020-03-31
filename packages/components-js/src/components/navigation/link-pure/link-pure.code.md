@@ -152,12 +152,12 @@ Use the spread operator call props of PLinkPure.
 
 ``` 
 # .css
-a.link {
+.link {
   text-decoration:none;
   outline: none;
 }
 
-<Link to="/path/to/heaven">
+<Link to="/path/to/heaven" className={"link"}>
     <PLinkPure {...{active: true}}>
         Some label
     </PLinkPure>
