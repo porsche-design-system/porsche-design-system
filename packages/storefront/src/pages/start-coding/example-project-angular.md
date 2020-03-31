@@ -83,5 +83,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {}
 ```
-
+Run the application by executing `npm start` or `yarn start` and see if the Porsche Design System component is rendered correctly.
+<br>
+<br>
 You are now ready to build your own angular application using the Porsche Desing System.
