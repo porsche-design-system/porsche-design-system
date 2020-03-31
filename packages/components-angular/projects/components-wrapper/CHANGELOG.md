@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- Improve form elements
+
+### Fixed
 - Minor accessibility improvements of `icons` and `text-field-wrapper`
 
 ## [1.2.0] - 2020-03-25

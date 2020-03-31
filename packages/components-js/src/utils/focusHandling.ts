@@ -4,7 +4,7 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus
  */
 
-function getFocusableElements(element: HTMLElement|ShadowRoot|Document = document): HTMLElement[] {
+const getFocusableElements = (element: HTMLElement|ShadowRoot|Document = document): HTMLElement[] => {
   /**
    * from https://github.com/salesforce/lwc/blob/28ac669d6f3e318bbebe74290b5a7ee6c6ceaa93/packages/%40lwc/synthetic-shadow/src/faux-shadow/focus.ts#L48
    */
@@ -35,14 +35,12 @@ function getFocusableElements(element: HTMLElement|ShadowRoot|Document = documen
    * preserved
    * https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
    */
-  focusable.sort((a, b) => {
-    return a.tabIndex - b.tabIndex;
-  });
+  focusable.sort((a, b) => a.tabIndex - b.tabIndex);
 
   return focusable;
-}
+};
 
-function createFocusEvent(type: string, bubbles: boolean): FocusEvent {
+const createFocusEvent = (type: string, bubbles: boolean): FocusEvent => {
   if (typeof FocusEvent === 'function') {
     return new FocusEvent(type, { bubbles });
   }
@@ -53,9 +51,9 @@ function createFocusEvent(type: string, bubbles: boolean): FocusEvent {
   const focusEvent = document.createEvent('FocusEvent');
   focusEvent.initEvent(type, bubbles, false);
   return focusEvent;
-}
+};
 
-function getActiveElement(element: HTMLElement): HTMLElement {
+const getActiveElement = (element: HTMLElement): HTMLElement => {
   if (element.shadowRoot && element.shadowRoot.host) {
     return element.shadowRoot.activeElement as HTMLElement;
   }
@@ -65,18 +63,18 @@ function getActiveElement(element: HTMLElement): HTMLElement {
    */
   const rootNode = element.getRootNode() as Document;
   return rootNode.activeElement as HTMLElement;
-}
+};
 
-export function improveFocusHandlingForCustomElement(element: HTMLElement) {
+export const improveFocusHandlingForCustomElement = (element: HTMLElement): void => {
   const childElementContainer = element.shadowRoot ? element.shadowRoot : element;
-  element.focus = () => {
+  element.focus = (): void => { // eslint-disable-line @typescript-eslint/unbound-method
     const [firstFocusableChild, ] = getFocusableElements(childElementContainer);
     if (firstFocusableChild) {
       firstFocusableChild.focus();
     }
   };
 
-  element.blur = () => {
+  element.blur = (): void => { // eslint-disable-line @typescript-eslint/unbound-method
     const activeElement = getActiveElement(element);
     if (activeElement && childElementContainer.contains(activeElement)) {
       activeElement.blur();
@@ -110,4 +108,4 @@ export function improveFocusHandlingForCustomElement(element: HTMLElement) {
       });
     }
   }
-}
+};

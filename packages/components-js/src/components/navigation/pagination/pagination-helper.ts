@@ -23,11 +23,11 @@ export interface ItemTypes {
 }
 
 export interface ItemKeys {
+  [type: string]: number;
   FIRST_ELLIPSIS: number;
   SECOND_ELLIPSIS: number;
   PREVIOUS_PAGE_LINK: number;
   NEXT_PAGE_LINK: number;
-  [type: string]: number;
 }
 
 export interface PaginationModelOptions {
@@ -57,23 +57,19 @@ const itemKeys: ItemKeys = {
   NEXT_PAGE_LINK: -5
 };
 
-const createFirstEllipsis = (pageNumber: number): PaginationModelItem => {
-  return {
-    type: itemTypes.ELLIPSIS,
-    key: itemKeys.FIRST_ELLIPSIS,
-    value: pageNumber,
-    isActive: false
-  };
-};
+const createFirstEllipsis = (pageNumber: number): PaginationModelItem => ({
+  type: itemTypes.ELLIPSIS,
+  key: itemKeys.FIRST_ELLIPSIS,
+  value: pageNumber,
+  isActive: false
+});
 
-const createSecondEllipsis = (pageNumber: number): PaginationModelItem => {
-  return {
-    type: itemTypes.ELLIPSIS,
-    key: itemKeys.SECOND_ELLIPSIS,
-    value: pageNumber,
-    isActive: false
-  };
-};
+const createSecondEllipsis = (pageNumber: number): PaginationModelItem => ({
+  type: itemTypes.ELLIPSIS,
+  key: itemKeys.SECOND_ELLIPSIS,
+  value: pageNumber,
+  isActive: false
+});
 
 const createPreviousPageLink = (options: PaginationModelOptions): PaginationModelItem => {
   const { activePage } = options;
@@ -97,28 +93,26 @@ const createNextPageLink = (options: PaginationModelOptions): PaginationModelIte
   };
 };
 
-const createPageFunctionFactory = (options: PaginationModelOptions) => {
+const createPageFunctionFactory = (options: PaginationModelOptions): (pageNumber: number) => PaginationModelItem => {
   const { activePage } = options;
 
-  return (pageNumber: number): PaginationModelItem => {
-    return {
-      type: itemTypes.PAGE,
-      key: pageNumber,
-      value: pageNumber,
-      isActive: pageNumber === activePage
-    };
-  };
+  return (pageNumber: number): PaginationModelItem => ({
+    type: itemTypes.PAGE,
+    key: pageNumber,
+    value: pageNumber,
+    isActive: pageNumber === activePage
+  });
 };
 
-function createRange(start: number, end: number): number[] {
+const createRange = (start: number, end: number): number[] => {
   const range: number[] = [];
   for (let i = start; i <= end; i++) {
     range.push(i);
   }
   return range;
-}
+};
 
-export function createPaginationModel(options: PaginationModelOptions): PaginationModelItem[] {
+export const createPaginationModel = (options: PaginationModelOptions): PaginationModelItem[] => {
   // exception tests
   if (options == null) { throw new Error('createPaginationModel(): options object should be a passed'); }
 
@@ -181,9 +175,9 @@ export function createPaginationModel(options: PaginationModelOptions): Paginati
   paginationModel.push(createNextPageLink(options));
 
   return paginationModel;
-}
+};
 
-export const getCurrentActivePage = (activePage: number, totalPages: number) => {
+export const getCurrentActivePage = (activePage: number, totalPages: number): number => {
   // exception tests
   if (activePage === undefined || totalPages === undefined) { throw new Error('getCurrentActivePage(): activePage and totalPages props must be provided'); }
 
@@ -200,7 +194,7 @@ export const getCurrentActivePage = (activePage: number, totalPages: number) => 
   return activePage;
 };
 
-export const getTotalPages = (totalItemsCount: number, itemsPerPage: number) => {
+export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): number => {
   // exception test
   if (totalItemsCount === undefined || itemsPerPage === undefined) { throw new Error('getTotalPages(): totalItemsCount and itemsPerPage props must be provided'); }
 
