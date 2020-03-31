@@ -7,7 +7,7 @@ export interface Accumulator {
   result: CounterResetValue;
 }
 
-export function readCounterResetValue(element: Element): CounterResetValue {
+export const readCounterResetValue = (element: Element): CounterResetValue => {
   const computedStyles = window.getComputedStyle(element);
   const resetValues = computedStyles.getPropertyValue('counter-reset');
   const resetValuesAsObject = resetValues.split(' ').reduce((accumulator: Accumulator, value: string) => {
@@ -31,4 +31,4 @@ export function readCounterResetValue(element: Element): CounterResetValue {
   });
 
   return resetValuesAsObject.result;
-}
+};

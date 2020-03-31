@@ -13,7 +13,7 @@ const testOptions: VisualRegressionTestOptions = {
   fixturesDir: 'tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
-  baseUrl: 'http://localhost:61422',
+  baseUrl: 'http://localhost:61423',
   timeout: 90000
 };
 

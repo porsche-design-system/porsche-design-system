@@ -36,7 +36,7 @@ export class SelectWrapper {
   private select: HTMLSelectElement;
   private labelId = randomString();
 
-  public componentDidLoad() {
+  public componentWillLoad() {
     this.setSelect();
     this.setState();
     this.bindStateListener();
