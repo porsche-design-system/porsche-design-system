@@ -1,0 +1,7 @@
+plugins:
+  - addAttributesToSVGElement:
+      attributes:
+        - width: '100%'
+        - height: '100%'
+        - focusable: false
+        - aria-hidden: true
