@@ -6,24 +6,22 @@
         <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">Log in to your Porsche account to manage your vehicles and services.</p-text>
       </p-grid-item>
     </p-grid>
-    <p-grid>
+    <p-grid class="form-row-spacing-l">
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 4 }">
-        <form novalidate class="spacing-mt-56">
-          <div class="example-form-grid">
-            <p-text-field-wrapper label="Porsche ID (email address)">
-              <input type="email" name="email">
-            </p-text-field-wrapper>
-            <p-text-field-wrapper label="Password" class="spacing-mt-24">
-              <input type="password" name="password">
-            </p-text-field-wrapper>
-            <div class="spacing-mt-8">
-              <p-link-pure href="#">Forgot password?</p-link-pure>
-            </div>
-            <p-button type="submit" class="spacing-mt-56">Log in</p-button>
-            <p-checkbox-wrapper label="Keep me logged in" class="spacing-mt-24">
-              <input type="checkbox" name="login">
-            </p-checkbox-wrapper>
+        <form novalidate>
+          <p-text-field-wrapper label="Porsche ID (email address)">
+            <input type="email" name="email">
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Password" class="form-row-spacing-m">
+            <input type="password" name="password">
+          </p-text-field-wrapper>
+          <div class="spacing-mt-8">
+            <p-link-pure href="#">Forgot password?</p-link-pure>
           </div>
+          <p-button type="submit" class="form-row-spacing-l">Log in</p-button>
+          <p-checkbox-wrapper label="Keep me logged in" class="form-row-spacing-m">
+            <input type="checkbox" name="login">
+          </p-checkbox-wrapper>
         </form>
       </p-grid-item>
     </p-grid>

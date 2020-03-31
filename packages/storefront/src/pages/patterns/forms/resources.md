@@ -8,6 +8,7 @@ If you would like to see more examples, head over to our contribution board and 
 
 | Form type  | Download Sketch file | View code example |
 |------------|----------------------|-------------------|
-| Login Form | <p-link-pure href="href" icon="download" download="download">Download Sketch file</p-link-pure> | <p-link-pure href="#/patterns/forms/example-login" icon="external" target="_blank">Example Login Form</p-link-pure> |
+| Login | <p-link-pure href="#" icon="download" download="download">Download Sketch file</p-link-pure> | <p-link-pure href="#/patterns/forms/example-login" icon="external" target="_blank">Example - Login</p-link-pure> |
+| Create Account | <p-link-pure href="#" icon="download" download="download">Download Sketch file</p-link-pure> | <p-link-pure href="#/patterns/forms/example-create-account" icon="external" target="_blank">Example - Create Account</p-link-pure> |
 
 
