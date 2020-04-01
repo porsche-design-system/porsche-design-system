@@ -37,7 +37,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
   private labelId = randomString();
 
-  public componentDidLoad() {
+  public componentWillLoad() {
     this.setInput();
     this.setState();
     this.bindStateListener();

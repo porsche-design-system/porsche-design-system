@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - New headline size `headline-5` to `p-headline` 
 
+### Fixed
+- Improve form elements
+
 ## [1.2.0] - 2020-03-25
 
 ### Added
