@@ -1,6 +1,6 @@
 import { isStr } from './icon-helper';
 
-export const validateContent = (svgContent: string | null) => {
+export const validateContent = (svgContent: string | null): string => {
   if (svgContent) {
     const div = document.createElement('div');
     div.innerHTML = svgContent;
@@ -33,7 +33,7 @@ export const validateContent = (svgContent: string | null) => {
   return '';
 };
 
-export const isValid = (elm: HTMLElement) => {
+export const isValid = (elm: HTMLElement): boolean => {
   if (elm.nodeType === 1) {
     if (elm.nodeName.toLowerCase() === 'script') {
       return false;
@@ -41,7 +41,7 @@ export const isValid = (elm: HTMLElement) => {
 
     for (let i = 0; i < elm.attributes.length; i++) {
       const val = elm.attributes[i].value;
-      if (isStr(val) && val.toLowerCase().indexOf('on') === 0) {
+      if (isStr(val) && val.toLowerCase().startsWith('on')) {
         return false;
       }
     }

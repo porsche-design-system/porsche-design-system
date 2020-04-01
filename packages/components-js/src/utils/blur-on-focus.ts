@@ -1,4 +1,4 @@
-export function initBlurOnFocus() {
+export const initBlurOnFocus = (): void => {
   document.addEventListener('click', () => {
     const element = document.activeElement;
     const optOutElement = element.closest('.p-re-enable-focus-on-click');
@@ -7,4 +7,4 @@ export function initBlurOnFocus() {
       (document.activeElement as HTMLElement).blur();
     }
   });
-}
+};

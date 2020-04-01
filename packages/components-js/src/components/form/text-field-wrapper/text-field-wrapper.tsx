@@ -39,7 +39,7 @@ export class TextFieldWrapper {
   private isPasswordToggleable: boolean;
   private labelId = randomString();
 
-  public componentDidLoad() {
+  public componentWillLoad() {
     this.setInput();
     this.setState();
     this.updatePasswordToggleable();
