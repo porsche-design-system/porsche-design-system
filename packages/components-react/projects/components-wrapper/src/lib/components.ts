@@ -20,6 +20,7 @@ export const PHeadline = /*@__PURE__*/createReactComponent<JSX.PHeadline, HTMLPH
 export const PIcon = /*@__PURE__*/createReactComponent<JSX.PIcon, HTMLPIconElement>('p-icon');
 export const PLink = /*@__PURE__*/createReactComponent<JSX.PLink, HTMLPLinkElement>('p-link');
 export const PLinkPure = /*@__PURE__*/createReactComponent<JSX.PLinkPure, HTMLPLinkPureElement>('p-link-pure');
+export const PLinkSocial = /*@__PURE__*/createReactComponent<JSX.PLinkSocial, HTMLPLinkSocialElement>('p-link-social');
 export const PMarque = /*@__PURE__*/createReactComponent<JSX.PMarque, HTMLPMarqueElement>('p-marque');
 export const PPagination = /*@__PURE__*/createReactComponent<JSX.PPagination, HTMLPPaginationElement>('p-pagination');
 export const PRadioButtonWrapper = /*@__PURE__*/createReactComponent<JSX.PRadioButtonWrapper, HTMLPRadioButtonWrapperElement>('p-radio-button-wrapper');
