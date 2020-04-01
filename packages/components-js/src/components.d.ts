@@ -327,6 +327,28 @@ export namespace Components {
          */
         "weight"?: TextWeight;
     }
+    interface PLinkSocial {
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing a social share url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The social icon shown.
+         */
+        "icon"?: "logo-facebook" | "logo-linkedin" | "logo-instagram" | "logo-twitter" | "logo-wechat" | "logo-youtube";
+        /**
+          * A custom URL path to a custom social icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Adapts the link color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PMarque {
         /**
           * Show/hide trademark sign.
@@ -557,6 +579,12 @@ declare global {
         prototype: HTMLPLinkPureElement;
         new (): HTMLPLinkPureElement;
     };
+    interface HTMLPLinkSocialElement extends Components.PLinkSocial, HTMLStencilElement {
+    }
+    var HTMLPLinkSocialElement: {
+        prototype: HTMLPLinkSocialElement;
+        new (): HTMLPLinkSocialElement;
+    };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
     var HTMLPMarqueElement: {
@@ -618,6 +646,7 @@ declare global {
         "p-icon": HTMLPIconElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
+        "p-link-social": HTMLPLinkSocialElement;
         "p-marque": HTMLPMarqueElement;
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
@@ -945,6 +974,28 @@ declare namespace LocalJSX {
          */
         "weight"?: TextWeight;
     }
+    interface PLinkSocial {
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing a social share url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The social icon shown.
+         */
+        "icon"?: "logo-facebook" | "logo-linkedin" | "logo-instagram" | "logo-twitter" | "logo-wechat" | "logo-youtube";
+        /**
+          * A custom URL path to a custom social icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Adapts the link color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PMarque {
         /**
           * Show/hide trademark sign.
@@ -1118,6 +1169,7 @@ declare namespace LocalJSX {
         "p-icon": PIcon;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
+        "p-link-social": PLinkSocial;
         "p-marque": PMarque;
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
@@ -1144,6 +1196,7 @@ declare module "@stencil/core" {
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
+            "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;

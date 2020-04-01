@@ -21,10 +21,10 @@ export class LinkSocial {
   /** When providing a social share url then the component will be rendered as `<a>`. */
   @Prop() public href?: string = undefined;
 
-  /** Adapts the link color when used on dark background. */
+  /** Adapts the icon color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = true;
 
   public componentDidLoad() {

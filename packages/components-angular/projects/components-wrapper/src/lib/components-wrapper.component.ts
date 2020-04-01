@@ -175,6 +175,17 @@ export class PLinkPure {
   }
 }
 
+export declare interface PLinkSocial extends Components.PLinkSocial {}
+@ProxyCmp({inputs: ['hideLabel', 'href', 'icon', 'iconSource', 'theme']})
+@Component({ selector: 'p-link-social', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'href', 'icon', 'iconSource', 'theme'] })
+export class PLinkSocial {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface PMarque extends Components.PMarque {}
 @ProxyCmp({inputs: ['trademark']})
 @Component({ selector: 'p-marque', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['trademark'] })
