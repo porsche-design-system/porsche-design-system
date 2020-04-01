@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue, { VueConstructor } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -23,7 +23,7 @@ Vue.config.ignoredElements = [/p-\w*/];
 })();
 
 Vue.use({
-  install(vue: any) {
+  install(vue: VueConstructor) {
     vue.component('Playground', Playground);
     vue.component('ColorBadge', ColorBadge);
   },

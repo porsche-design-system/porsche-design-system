@@ -29,7 +29,7 @@ interface BreakpointValues<T> {
 
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | JSON5String;
 
-function parseJSON5(prop: BreakpointCustomizable<BreakpointValue>): BreakpointValues<BreakpointValue> | BreakpointValue {
+const parseJSON5 = (prop: BreakpointCustomizable<BreakpointValue>): BreakpointValues<BreakpointValue> | BreakpointValue => {
   if (typeof prop === 'string') {
     try {
       // prop is JSON5 string, e.g. "{ base: 'block', l: 'inline' }"
@@ -43,24 +43,24 @@ function parseJSON5(prop: BreakpointCustomizable<BreakpointValue>): BreakpointVa
   // or number, e.g. 123
   // or boolean, e.g. true
   return prop;
-}
+};
 
-function getClassName(value: BreakpointValue, classSuffixes: ClassSuffixes): string {
+const getClassName = (value: BreakpointValue, classSuffixes: ClassSuffixes): string => {
   if (typeof value === 'boolean') {
     return value ? classSuffixes[0] : classSuffixes[1];
   }
   return value.toString();
-}
+};
 
-function getBreakpointSuffix(breakpoint: Breakpoint): string {
+const getBreakpointSuffix = (breakpoint: Breakpoint): string => {
   if (breakpoint !== 'base') {
     return `-${breakpoint}`;
   }
 
   return '';
-}
+};
 
-function createClass(classPrefix: string, value: BreakpointValue, breakpoint: Breakpoint, classSuffixes: ClassSuffixes): JSXClasses {
+const createClass = (classPrefix: string, value: BreakpointValue, breakpoint: Breakpoint, classSuffixes: ClassSuffixes): JSXClasses => {
   if (value === undefined || value === null) {
     return {};
   }
@@ -71,7 +71,7 @@ function createClass(classPrefix: string, value: BreakpointValue, breakpoint: Br
   return {
     [prefix(`${classPrefix}-${className}${breakpointSuffix}`)]: true
   };
-}
+};
 
 /**
  *
@@ -90,12 +90,10 @@ export const mapBreakpointPropToPrefixedClasses = (
   const parsedProp = parseJSON5(prop);
 
   if (typeof parsedProp === 'object') {
-    return Object.entries(parsedProp).reduce((classes, [breakpoint, value]) => {
-      return {
-        ...classes,
-        ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes)
-      };
-    }, {});
+    return Object.entries(parsedProp).reduce((classes, [breakpoint, value]) => ({
+      ...classes,
+      ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes)
+    }), {});
   }
 
   return createClass(classPrefix, parsedProp, Breakpoint.base, classSuffixes);
