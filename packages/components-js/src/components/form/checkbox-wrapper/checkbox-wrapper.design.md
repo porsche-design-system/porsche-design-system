@@ -11,6 +11,7 @@ All Checkboxes are available in the following states:
 * default
 * checked
 * disabled
+* hover
 * focus
 * indeterminate
 

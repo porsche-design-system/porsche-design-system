@@ -8,9 +8,6 @@ const getTotalPages = PaginationHelper.getTotalPages as Function;
 const getCurrentActivePage = PaginationHelper.getCurrentActivePage as Function;
 
 describe('Component <p-pagination>', () => {
-  it('should build', () => {
-    expect(new Pagination()).toBeTruthy();
-  });
 
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
@@ -20,7 +17,6 @@ describe('Component <p-pagination>', () => {
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-pagination')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('.p-pagination')).toBeTruthy();
-    expect(page.root).toMatchSnapshot();
   });
 
   it('should render 7 items in total with first item active and disabled prev link', async () => {

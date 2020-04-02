@@ -3,10 +3,6 @@ import { CheckboxWrapper } from '../../../src/components/form/checkbox-wrapper/c
 
 describe('Component <p-checkbox-wrapper>', () => {
 
-  it('should build', () => {
-    expect(new CheckboxWrapper()).toBeTruthy();
-  });
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [CheckboxWrapper],

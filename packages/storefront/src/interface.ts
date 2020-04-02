@@ -9,15 +9,15 @@ export type ComponentListImport =  Array<() => Promise<EsModuleComponent>>;
 
 export interface Pages {
   [category: string]: {
-    [page: string]: ComponentListImport
+    [page: string]: ComponentListImport;
   };
 }
 
 export interface Stories {
   [category: string]: {
     [story: string]: {
-      [tab: string]: ComponentListImport
-    } | ComponentListImport
+      [tab: string]: ComponentListImport;
+    } | ComponentListImport;
   };
 }
 

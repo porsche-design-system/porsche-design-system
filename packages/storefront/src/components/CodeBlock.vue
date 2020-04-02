@@ -169,7 +169,7 @@ export default class CodeBlock extends Vue {
   }
 
   private beautify(markup: string): string {
-    return html(markup, {indent_size: 2});
+    return html(markup, {indent_size: 2}); // eslint-disable-line @typescript-eslint/camelcase
   }
 
   private highlight(markup: string): string {

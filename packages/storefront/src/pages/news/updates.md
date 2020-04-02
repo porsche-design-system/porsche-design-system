@@ -2,15 +2,38 @@
 
 ## Design
 
+### [1.2.0] (2020-03-25)
+
+**Added**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | Password (focus) |  |
+Components | Divider |  |
+Components | Hover state at form elements |  |
+Components | Focus symbol in Textarea, Text Field, Select and Password |  |
+
+**Fixed**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | Icon pinned in password Text Field  |  |
+
 ### [1.1.1] (2020-03-17)
 
 **Added**
-- Text style warning for copytext small and x-small
+    
+Type | Web Library | Basic Library |
+|---|---|---|
+Components |  | Text style warning for copytext small and x-small |
 
 **Changed**
-- Update notification colors for light and dark theme
-- Update text style for error and success
-- Update sketch color palette
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Basic |  | Update notification colors for light and dark theme |
+Components | Update text style for error and success |  |
+Basic |  | Update sketch color palette |
 
 ### [1.1.0] (2020-03-11)
 
@@ -60,6 +83,15 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 --- 
 
 ## Code
+
+### [1.2.0] (2020-03-25)
+
+**Added**
+- `Divider`
+- Hover state for form elements
+
+**Fixed**
+- Support label text of form elements for Screen readers
 
 ### [1.1.2] (2020-03-17)
 

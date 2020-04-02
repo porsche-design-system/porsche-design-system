@@ -6,8 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Improve form elements
+
+## [1.2.0] - 2020-03-25
+
 ### Added
 - `Divider`
+- Hover state for form elements
 
 ### Fixed
 - Support label text of form elements for Screen readers
