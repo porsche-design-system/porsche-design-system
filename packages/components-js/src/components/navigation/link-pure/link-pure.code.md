@@ -147,20 +147,19 @@ component has no control over the elements that are around it.
 ### React
 
 You can wrap the `<PLinkPure>` component with the `<Link>` component of react router. If you do so, it's important to reset `text-decoration` and `outline`, since the inner
-component has no control over the elements that are around it.<br>
-Use the spread operator call props of PLinkPure.
+component has no control over the elements that are around it.  
+Use the spread operator to call props of **PLinkPure**.
 
 ``` 
-# .css
+# Style.css
 .link {
   text-decoration:none;
   outline: none;
 }
 
+# Component.tsx
 <Link to="/path/to/heaven" className={"link"}>
-    <PLinkPure {...{active: true}}>
-        Some label
-    </PLinkPure>
+  <PLinkPure {...{active: true}}>Some label</PLinkPure>
 </Link>
 ```
 
