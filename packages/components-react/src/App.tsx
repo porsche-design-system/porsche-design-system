@@ -13,6 +13,7 @@ import { Feedback } from "./pages/Feedback";
 import { Icons } from "./pages/Icons";
 import { Layout } from "./pages/Layout";
 import { Navigation } from "./pages/Navigation";
+import './App.css';
 
 const App: React.FC = () => {
 
@@ -25,26 +26,26 @@ const App: React.FC = () => {
           <span id="system-log"/>
         </Text>
         <Divider/>
-        <Link to="/basic" component={LinkPure}>
-          Basic
+        <Link to="/basic" className={'removeLinkStyle'} >
+          <LinkPure>Basic</LinkPure>
         </Link>
-        <Link to="/action" component={LinkPure}>
-          Action
+        <Link to="/action" className={'removeLinkStyle'}>
+          <LinkPure>Action</LinkPure>
         </Link>
-        <Link to="/form" component={LinkPure}>
-          Form
+        <Link to="/form" className={'removeLinkStyle'}>
+          <LinkPure>Form</LinkPure>
         </Link>
-        <Link to="/feedback" component={LinkPure}>
-          Feedback
+        <Link to="/feedback" className={'removeLinkStyle'}>
+          <LinkPure>Feedback</LinkPure>
         </Link>
-        <Link to="/icon" component={LinkPure}>
-          Icon
+        <Link to="/icon" className={'removeLinkStyle'}>
+          <LinkPure>Icon</LinkPure>
         </Link>
-        <Link to="/layout" component={LinkPure}>
-          Layout
+        <Link to="/layout" className={'removeLinkStyle'}>
+          <LinkPure>Layout</LinkPure>
         </Link>
-        <Link to="/navigation" component={LinkPure}>
-          Navigation
+        <Link to="/navigation" className={'removeLinkStyle'}>
+          <LinkPure>Navigation</LinkPure>
         </Link>
         <Divider/>
         <Switch>
