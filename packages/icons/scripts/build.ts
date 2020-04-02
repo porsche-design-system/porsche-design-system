@@ -8,7 +8,7 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config
   fs.rmdirSync('./dist', {recursive: true});
   fs.mkdirSync('./dist/svg', {recursive: true});
 
-  let manifest = {};
+  const manifest = {};
   const svgo = new SVGO(config);
 
   for (let file of files) {
@@ -27,8 +27,8 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config
   }
 
   fs.writeFileSync('./dist/index.js', `
-export const cdn = "${cdn}";
-export const manifest = ${JSON.stringify(manifest)};
+module.exports.cdn = "${cdn}";
+module.exports.manifest = ${JSON.stringify(manifest)};
 `.trim());
 };
 
