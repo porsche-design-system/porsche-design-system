@@ -1,27 +1,15 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as svgo from 'svgo';
+import * as yaml from 'js-yaml';
+import * as SVGO from 'svgo';
 import { getFiles, toHash, toKebabCase } from './utils';
 
-const svgOptimizer = new svgo({
-  plugins: [
-    {
-      addAttributesToSVGElement: {
-        attributes: [
-          {width: '100%' /* ensures optimal scaling behaviour */},
-          {height: '100%' /* ensures optimal scaling behaviour */},
-          {focusable: false /* disables focus in IE11 */}
-        ]
-      }
-    }
-  ]
-});
+const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config: SVGO.Options): Promise<void> => {
+  fs.rmdirSync('./dist', {recursive: true});
+  fs.mkdirSync('./dist/svg', {recursive: true});
 
-const createManifestAndOptimizeSVG = async (cdn: string, files: string[]): Promise<void> => {
   let manifest = {};
-
-  fs.rmdirSync('./dist', { recursive: true });
-  fs.mkdirSync('./dist/svg', { recursive: true });
+  const svgo = new SVGO(config);
 
   for (let file of files) {
     const name = path.basename(file, '.svg');
@@ -30,7 +18,7 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[]): Promi
     if (name in manifest) throw new Error(`Icon name "${name}" is not unique.`);
 
     const buffer = fs.readFileSync(file);
-    const svg = (await svgOptimizer.optimize(buffer.toString())).data;
+    const svg = (await svgo.optimize(buffer.toString())).data;
     const hash = toHash(svg);
     const filename = `${name}.min.${hash}.svg`;
 
@@ -47,7 +35,14 @@ export const manifest = ${JSON.stringify(manifest)};
 (async () => {
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/icons';
   const files = getFiles('./src', '.svg');
-  await createManifestAndOptimizeSVG(cdn, files).catch(e => {
+  const config = yaml.safeLoad(fs.readFileSync('./.svgo.yml', 'utf8'));
+
+  // build icon types
+  // use hashed icons in icon.tsx
+  // create json database
+  // deploy icon set to cdn by ci/cd when release will be made (check if package version of pds is available on artifactory)
+  // deploy json database to icon platform when release will be made (only reflects latest icons)
+  await createManifestAndOptimizeSVG(cdn, files, config).catch(e => {
     console.error(e);
     process.exit(1);
   });
