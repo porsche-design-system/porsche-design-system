@@ -146,7 +146,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Preparation
 1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
 1. Switch to __project root directory__
-1. Run `git pull origin {current v-branch}`
+1. Run `git pull origin {current master- or v-branch}`
 1. Run `./docker.sh run-install`
 1. Run `./docker.sh run-build --utils`
 
@@ -198,7 +198,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Create a Git tag `git tag v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}`
 
 ### Push
-1. Push local commit with tag to release branch `git push && git push --tags`
+1. Push local commit with tag to release branch `git push origin {current master- or v-branch} && git push --tags`
 
 ### Publish
 1. Switch to __packages/components-js directory__
@@ -217,7 +217,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Preparation
 1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
 1. Switch to __project root directory__
-1. Run `git pull origin {current v-branch}`
+1. Run `git pull origin {current master- or v-branch}`
 
 ### Design System SCSS Utils
 1. Switch to __packages/scss-utils directory__
@@ -227,7 +227,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ### Commit
 1. Create a commit with following message structure `Release Porsche Design System SCSS Utils v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push local commit to release branch `git push origin {current v-branch}`
+1. Push local commit to release branch `git push origin {current master- or v-branch}`
 
 ### Publish
 1. Switch to __packages/scss-utils directory__
