@@ -2035,6 +2035,18 @@
   dependencies:
     infer-owner "^1.0.4"
 
+"@porsche-design-system/components-angular@1.2.0":
+  version "1.2.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-angular/-/@porsche-design-system/components-angular-1.2.0.tgz#0cffa610c1a45978161760224893418e39bde321"
+  integrity sha1-DP+mEMGkWXgWF2AiSJNBjjm94yE=
+  dependencies:
+    "@porsche-design-system/components-js" "1.2.0"
+
+"@porsche-design-system/components-js@1.1.2":
+  version "1.1.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-js/-/@porsche-design-system/components-js-1.1.2.tgz#c2c9eea234a58f6d2eb28d2f1249993b6fd523f9"
+  integrity sha1-wsnuojSlj20uso0vEkmZO2/VI/k=
+
 "@porsche-ui/cross-browser-tester@^1.0.2":
   version "1.0.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/cross-browser-tester/-/@porsche-ui/cross-browser-tester-1.0.2.tgz#d6013a3514407b470ee607914bf31d6bff0697d2"
