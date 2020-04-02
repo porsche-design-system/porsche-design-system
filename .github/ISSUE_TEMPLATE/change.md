@@ -41,5 +41,6 @@ Subtasks
 - [ ] Create samples of all possible states and variants
 - [ ] Include compiled angular and react component in test page
 - [ ] Create tests
+- [ ] Create react mock
 - [ ] Provide visual reference for optimized viewports and all supported browsers
 - [ ] Write code docu
