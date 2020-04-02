@@ -44,3 +44,17 @@ const App: React.FC = () => {
 
 export default App;
 ```
+
+#### App.test file
+
+To enable jest testing we provide mocks. You can access them in your jest.mock function with ComponentNameMock. 
+
+``` 
+jest.mock('@porsche-design-system/components-react', () => {
+  const { PHeadlineMock } = require('@porsche-design-system/components-react');
+
+  return({
+      PHeadline: PHeadlineMock,
+  });
+});
+```
