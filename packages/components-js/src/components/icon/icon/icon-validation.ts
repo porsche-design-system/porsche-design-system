@@ -16,9 +16,6 @@ export const validateContent = (svgContent: string | null): string => {
     const svgElm = div.firstElementChild;
     if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
 
-      // fix IE11 focus SVG elements on tab
-      svgElm.setAttribute('focusable', 'false');
-
       // Hide from Screen Readers
       svgElm.setAttribute('aria-hidden', 'true');
 
